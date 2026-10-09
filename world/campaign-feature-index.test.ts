@@ -18,8 +18,10 @@ import { canonicalJson } from './pack.ts';
 import type { AcquisitionOptions, AcquisitionRequest, AcquisitionResult } from './production-types.ts';
 import type { SourceRecord } from './types.ts';
 import type { FeatureIndexSessionConfiguration } from './feature-index-session.ts';
-import { openFeatureIndexSession } from './feature-index-session.ts';
-import type { FeatureIndexCaptureInput, FeatureIndexSessionAuditInput } from './feature-index-session.ts';
+import { openFeatureIndexSession, assertValidatedFeatureIndexAuditProof, featureIndexAuditWorkerDigest } from './feature-index-session.ts';
+import type { FeatureIndexCaptureInput, FeatureIndexSessionAuditInput, FeatureIndexSessionAuditSnapshot } from './feature-index-session.ts';
+import { campaignIndexAuditJob, buildQualifiedCampaignIndexAuditCompletion, validateQualifiedCampaignIndexAuditCompletion,
+  CAMPAIGN_INDEX_AUDIT_KIND, FEATURE_INDEX_AUDIT_FORMAT, type CampaignIndexAuditFrozenInput } from './campaign-index-audit-state.ts';
 import type { GridQueryCampaign } from './grid-query-types.ts';
 import { Ledger } from './ledger.ts';
 
@@ -139,21 +141,89 @@ print(json.dumps([{'extractPath':str(extract),'receiptPath':str(receipt),'expect
     const auditInputs: FeatureIndexSessionAuditInput[] = captures.map(({ observation, ...input }) =>
       ({ ...input, requiredObservations: [observation!] })).sort((a, b) =>
         a.expected.requestHash < b.expected.requestHash ? -1 : a.expected.requestHash > b.expected.requestHash ? 1 : 0);
+    // The real raw inputs use synthetic contexts; this proves the held SDK/job
+    // handoff, not real campaign graph membership or country completeness.
+    const seed = await openFeatureIndexSession(config);
+    let seedClosed = false;
+    try {
+      for (const input of captures) await seed.ingestCapture(input);
+      await assert.rejects(seed.auditCaptures(auditInputs.slice(0, 1), 2, {
+        beforeAudit: async () => { throw new Error('incomplete corpus must not reach callback'); },
+      }), /complete durable capture set/i);
+      assert.deepEqual(await seed.close(), { indexHash: seed.indexHash, captures: 2 }); seedClosed = true;
+    } finally { if (!seedClosed) await seed.close().catch(() => {}); }
+    const root = path.join(config.namespaceRoot, seed.indexHash);
+    await assert.rejects(readFile(path.join(root, 'audit.json')), { code: 'ENOENT' });
+    const captureBefore = sha(await readFile(path.join(root, 'capture.json')));
+    const rejected = await openFeatureIndexSession(config); let rejectedClosed = false;
+    try {
+      const unknown = auditInputs.map(input => ({ ...input, requiredObservations: input.requiredObservations.map(
+        context => ({ ...context, jobId: `${context.jobId}-unknown` })) }));
+      await assert.rejects(rejected.auditCaptures(unknown, 2, {
+        beforeAudit: async () => { throw new Error('unknown history must not reach callback'); },
+      }), /known canonical campaign context/i);
+      assert.deepEqual(await rejected.close(), { indexHash: rejected.indexHash, captures: 0 }); rejectedClosed = true;
+    } finally { if (!rejectedClosed) await rejected.close().catch(() => {}); }
+    const refused = await openFeatureIndexSession(config); let refusedClosed = false;
+    try {
+      await assert.rejects(refused.auditCaptures(auditInputs, 2, { beforeAudit: async snapshot => {
+        assert.equal(snapshot.captureControllerRecord.sha256, captureBefore);
+        assert.ok(Object.isFrozen(snapshot)); assert.ok(Object.isFrozen(snapshot.captureControllerRecord));
+        await assert.rejects(refused.ingestCapture(captures[0]!), /in-flight|no ingestion after audit/i);
+        throw new Error('synthetic lease gate refusal');
+      } }), /synthetic lease gate refusal/);
+      assert.deepEqual(await refused.close(), { indexHash: refused.indexHash, captures: 0 }); refusedClosed = true;
+    } finally { if (!refusedClosed) await refused.close().catch(() => {}); }
+    await assert.rejects(readFile(path.join(root, 'audit.json')), { code: 'ENOENT' });
+    assert.equal(sha(await readFile(path.join(root, 'capture.json'))), captureBefore);
+    const ledgerPath = path.join(campaignTemp, 'synthetic-audit-ledger.sqlite');
+    const ledger = new Ledger(ledgerPath, { databaseBytes: 1024 * 1024 });
     const session = await openFeatureIndexSession(config);
     let closed = false;
     let audit: Record<string, unknown>;
+    let frozen: CampaignIndexAuditFrozenInput | undefined;
+    let liveClaim: ReturnType<Ledger['claim']> = null;
+    let frozenSnapshot: FeatureIndexSessionAuditSnapshot | undefined;
     try {
-      for (const input of captures) await session.ingestCapture(input);
-      audit = await session.auditCaptures(auditInputs, 2);
+      audit = await session.auditCaptures(auditInputs, 2, { beforeAudit: async snapshot => {
+        frozenSnapshot = snapshot;
+        frozen = { campaignId: 'synthetic-retained-audit', campaignHash: captures[0]!.observation!.campaignHash,
+          inventoryHash: sha('synthetic inventory'), planHash: captures[0]!.observation!.planHash,
+          configurationHash: sha('synthetic campaign index configuration'), indexHash: snapshot.indexHash,
+          captureControllerRecord: snapshot.captureControllerRecord, completeCaptureSetSha256: snapshot.captureSetSha256,
+          requiredObservationSetSha256: snapshot.requiredObservationsSha256, auditInputSha256: snapshot.auditInputSha256,
+          auditFormat: FEATURE_INDEX_AUDIT_FORMAT };
+        ledger.enqueue(campaignIndexAuditJob(frozen, 2));
+        assert.equal(ledger.claim('wrong-kind', 0, 60_000, { kind: 'campaign-index-capture' }), null);
+        liveClaim = ledger.claim('actual-sdk-audit', 0, 60_000, { kind: CAMPAIGN_INDEX_AUDIT_KIND });
+        assert.ok(liveClaim); assert.equal(liveClaim.kind, CAMPAIGN_INDEX_AUDIT_KIND);
+        assert.equal(ledger.heartbeat(liveClaim.id, liveClaim.token, 1, 60_000), true);
+        await assert.rejects(readFile(path.join(root, 'audit.json')), { code: 'ENOENT' });
+      } });
       const result = (audit.audit as { result: { counts: Record<string, number> } }).result;
       assert.equal(result.counts.rawFeatures, 2283);
       assert.equal(result.counts.requiredObservations, 2);
       assert.equal((audit.auditController as Record<string, unknown>).attempts, 1);
+      const proof = audit.campaignProof;
+      assertValidatedFeatureIndexAuditProof(proof);
+      assert.equal(proof.captureSetSha256, frozenSnapshot!.captureSetSha256);
+      assert.equal(proof.workerReportSha256, featureIndexAuditWorkerDigest(audit.audit));
+      assert.equal(proof.controllerRecordSha256, sha(await readFile(path.join(root, 'audit.json'))));
+      assert.ok(Object.isFrozen(proof)); assert.ok(Object.isFrozen(proof.qualifications));
+      assert.throws(() => assertValidatedFeatureIndexAuditProof(JSON.parse(JSON.stringify(proof))), /not been validated/i);
+      const completion = buildQualifiedCampaignIndexAuditCompletion(frozen!, proof, audit.audit, 1, 2);
+      assert.equal(completion.status, 'audit-complete');
+      assert.deepEqual(validateQualifiedCampaignIndexAuditCompletion(completion, frozen!, proof, audit.audit, 1, 2), completion);
+      assert.throws(() => buildQualifiedCampaignIndexAuditCompletion({ ...frozen!, completeCaptureSetSha256: sha('changed') }, proof, audit.audit, 1, 2), /frozen campaign/i);
+      assert.throws(() => buildQualifiedCampaignIndexAuditCompletion(frozen!, proof,
+        { ...(audit.audit as object), inputSha256: sha('different physical envelope') }, 1, 2), /digest/i);
+      assert.ok(liveClaim!);
+      assert.equal(ledger.complete(liveClaim!.id, liveClaim!.token, 2, completion), true);
+      assert.equal((Ledger.readOnlyList(ledgerPath).find(job => job.id === liveClaim!.id)!.result as { status: string }).status, 'audit-complete');
       await assert.rejects(session.ingestCapture(captures[0]!), /no ingestion after audit/i);
       await assert.rejects(session.auditCaptures(auditInputs, 2), /one final audit/i);
-      assert.deepEqual(await session.close(), { indexHash: session.indexHash, captures: 2 }); closed = true;
-    } finally { if (!closed) await session.close().catch(() => {}); }
-    const root = path.join(config.namespaceRoot, session.indexHash);
+      assert.deepEqual(await session.close(), { indexHash: session.indexHash, captures: 0 }); closed = true;
+    } finally { ledger.close(); if (!closed) await session.close().catch(() => {}); }
     const before = new Map<string, string>();
     for (const name of ['capture.json', 'audit.json', 'features.sqlite']) before.set(name, sha(await readFile(path.join(root, name))));
     const replay = await openFeatureIndexSession(config); let replayClosed = false;

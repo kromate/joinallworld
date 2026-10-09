@@ -8,6 +8,7 @@ import { canonicalJson, sha256 } from './pack.ts';
 import {
   CAMPAIGN_INDEX_AUDIT_KIND, CAMPAIGN_INDEX_AUDIT_JOB_FORMAT, FEATURE_INDEX_AUDIT_FORMAT,
   campaignIndexAuditJob, buildCampaignIndexAuditCompletion, validateCampaignIndexAuditCompletion,
+  buildQualifiedCampaignIndexAuditCompletion, validateQualifiedCampaignIndexAuditCompletion,
   type CampaignIndexAuditFrozenInput,
 } from './campaign-index-audit-state.ts';
 
@@ -152,6 +153,15 @@ test('completion records raw audit evidence but leaves unavailable read-only and
   assert.deepEqual(validateCampaignIndexAuditCompletion(draft, frozen, report, 4), draft);
 });
 
+test('legacy draft keeps physical worker and logical controller input hashes distinct', () => {
+  const base = syntheticReport();
+  const worker = base.audit as Record<string, unknown>;
+  const report = syntheticReport(frozen, { audit: { ...worker, inputSha256: h('9') } });
+  const draft = buildCampaignIndexAuditCompletion(frozen, report, 4);
+  assert.equal(draft.controllerInputSha256, frozen.auditInputSha256);
+  assert.equal(draft.status, 'audit-incomplete');
+});
+
 test('known observation membership still cannot promote an absent campaign qualification', () => {
   const report = syntheticReport();
   const draft = buildCampaignIndexAuditCompletion(frozen, report, 4,
@@ -192,4 +202,32 @@ test('failed raw qualification or altered report identities cannot produce a com
       recordSha256: h('5'), replayed: false, scope: 'raw-feature-conservation-and-required-observations',
       requiredObservationSetSha256: frozen.requiredObservationSetSha256 } }), 4), /invalid fields/i);
   assert.throws(() => buildCampaignIndexAuditCompletion(frozen, null, 4), /object/i);
+});
+
+test('qualified completion rejects unbranded, malformed, retargeted, or forged proof-shaped values', () => {
+  const worker = syntheticReport().audit;
+  const forged = {
+    format: 'feature-index-session-audit-proof-v1', indexHash: frozen.indexHash,
+    captureControllerRecord: frozen.captureControllerRecord, captureSetSha256: frozen.completeCaptureSetSha256,
+    requiredObservationsSha256: frozen.requiredObservationSetSha256,
+    auditInputSha256: frozen.auditInputSha256, knownCanonicalObservationSetSha256: frozen.requiredObservationSetSha256,
+    originalStateSha256: h('6'), workerReportSha256: h('7'), controllerRecordSha256: h('8'),
+    qualifications: { rawIndexConservation: 'complete', readOnlyStatePreserved: 'complete', campaignObservationCompleteness: 'complete' },
+  };
+  const rejectUnbranded = (proof: unknown) => assert.throws(() =>
+    buildQualifiedCampaignIndexAuditCompletion(frozen, proof as never, worker, 1, 4), /validated|proof/i);
+  rejectUnbranded(forged);
+  rejectUnbranded({ ...forged, captureSetSha256: h('9') });
+  rejectUnbranded({ ...forged, knownCanonicalObservationSetSha256: h('9') });
+  rejectUnbranded({ ...forged, workerReportSha256: h('9') });
+  rejectUnbranded({ ...forged, qualifications: { ...forged.qualifications, readOnlyStatePreserved: 'incomplete' } });
+  rejectUnbranded(null);
+  let getterCalled = false;
+  const accessor = { ...forged };
+  Object.defineProperty(accessor, 'indexHash', { enumerable: true, get() { getterCalled = true; return frozen.indexHash; } });
+  rejectUnbranded(accessor);
+  assert.equal(getterCalled, false);
+  assert.throws(() => validateQualifiedCampaignIndexAuditCompletion({}, frozen, forged as never, worker, 1, 4), /validated|proof/i);
+  // A synthetic report with matching digest-looking strings still receives only the legacy incomplete draft.
+  assert.equal(buildCampaignIndexAuditCompletion(frozen, syntheticReport(), 4).status, 'audit-incomplete');
 });

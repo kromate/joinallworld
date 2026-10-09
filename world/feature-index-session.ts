@@ -51,11 +51,67 @@ export interface FeatureIndexSessionAuditInput {
   extractPath: string; receiptPath: string; expected: CaptureExpectation;
   requiredObservations: readonly FeatureIndexObservation[];
 }
+export interface FeatureIndexSessionAuditSnapshot {
+  readonly format: 'feature-index-session-audit-snapshot-v1';
+  readonly indexHash: string;
+  readonly captureControllerRecord: CaptureBytePin;
+  readonly captureSetSha256: string;
+  readonly requiredObservationsSha256: string;
+  readonly auditInputSha256: string;
+  readonly knownCanonicalObservationSetSha256: string;
+  readonly captures: number;
+  readonly requiredObservations: number;
+}
+export interface FeatureIndexSessionAuditProof {
+  readonly format: 'feature-index-session-audit-proof-v1';
+  readonly indexHash: string;
+  readonly captureControllerRecord: CaptureBytePin;
+  readonly captureSetSha256: string;
+  readonly requiredObservationsSha256: string;
+  readonly auditInputSha256: string;
+  readonly knownCanonicalObservationSetSha256: string;
+  readonly originalStateSha256: string;
+  readonly workerReportSha256: string;
+  readonly controllerRecordSha256: string;
+  readonly qualifications: {
+    readonly rawIndexConservation: 'complete';
+    readonly readOnlyStatePreserved: 'complete';
+    readonly campaignObservationCompleteness: 'complete';
+  };
+}
+export interface FeatureIndexSessionAuditOptions {
+  /** Called with frozen actual control-file evidence while both index leases are
+   * held, before any audit frame/worker. The campaign caller must independently
+   * derive every supplied context from its validated completed leaf/index rows.
+   * Enqueue/claim the immutable audit job here; throwing safely refuses launch.
+   */
+  beforeAudit(snapshot: FeatureIndexSessionAuditSnapshot): Promise<void>;
+}
+const validatedAuditProofs = new WeakSet<object>();
+/** JSON shape or copied hashes alone cannot qualify a campaign completion. */
+export function assertValidatedFeatureIndexAuditProof(value: unknown): asserts value is FeatureIndexSessionAuditProof {
+  if (!value || typeof value !== 'object' || !validatedAuditProofs.has(value)) {
+    throw new Error('Audit proof has not been validated against actual held index/control evidence.');
+  }
+}
+function freezeAuditEvidence<T>(value: T): T {
+  if (value && typeof value === 'object') {
+    for (const item of Object.values(value)) freezeAuditEvidence(item);
+    Object.freeze(value);
+  }
+  return value;
+}
+/** Exact Python ensure_ascii canonical report spelling, excluding its newline. */
+export function featureIndexAuditWorkerDigest(value: unknown): string {
+  const copied = cloneJson(value, 'Audit worker digest', new Set(), { nodes: 20_000, bytes: 64_000, depth: 48 });
+  return sha256(asciiJsonLine(copied, 64_001, 'Audit worker digest').subarray(0, -1));
+}
 export interface FeatureIndexSession {
   readonly indexHash: string;
   readonly ready: FeatureIndexSessionReady;
   ingestCapture(input: FeatureIndexCaptureInput): Promise<Record<string, unknown>>;
-  auditCaptures(inputs: readonly FeatureIndexSessionAuditInput[], attemptLimit?: number): Promise<Record<string, unknown>>;
+  auditCaptures(inputs: readonly FeatureIndexSessionAuditInput[], attemptLimit?: number,
+    options?: FeatureIndexSessionAuditOptions): Promise<Record<string, unknown>>;
   close(): Promise<{ indexHash: string; captures: number }>;
 }
 
@@ -621,17 +677,17 @@ async function readPrivateAuditFile(filename: string, maximum: number): Promise<
   } finally { await fd.close(); }
 }
 
-/** Tie the terminal worker reply back to the actual durable input and report.
- * This opens only bounded control files; original SQLite/sidecars stay unopened.
+/** Project the complete actual capture record into the logical audit corpus.
+ * In qualified mode every historical pin must have a supplied canonical context,
+ * and every required context must be present in durable attempt history. No SQL
+ * or source-geometry read is used to infer missing campaign membership.
  */
-async function verifyAuditReplyInputs(rootPath: string, report: Record<string, unknown>,
-                                    inputs: readonly FeatureIndexSessionAuditInput[], attemptLimit: number,
-                                    admission: Record<string, unknown>): Promise<void> {
-  const worker = report.audit as Record<string, unknown>, controller = report.auditController as Record<string, unknown>;
-  const indexIdentity = { indexHash: worker.indexHash, rootDevice: admission.rootDevice, rootInode: admission.rootInode,
+async function captureAuditSnapshot(rootPath: string, indexHash: string,
+    inputs: readonly FeatureIndexSessionAuditInput[], admission: Record<string, unknown>,
+    requireKnownContexts: boolean): Promise<FeatureIndexSessionAuditSnapshot> {
+  const indexIdentity = { indexHash, rootDevice: admission.rootDevice, rootInode: admission.rootInode,
     lockDevice: admission.lockDevice, lockInode: admission.lockInode };
   const captureBytes = await readPrivateAuditFile(path.join(rootPath, 'capture.json'), 512_000);
-  if (sha256(captureBytes) !== worker.captureRecordSha256) throw new Error('Actual capture record differs from the audited pin.');
   const capture = parseCaptureJson(captureBytes, { bytes: 512_000, nodes: 200_000, depth: 48 }) as Record<string, unknown>;
   if (canonicalJson(capture.index) !== canonicalJson(indexIdentity)) throw new Error('Audit capture record differs from the held admission identity.');
   const jobs = capture.jobs;
@@ -644,20 +700,57 @@ async function verifyAuditReplyInputs(rootPath: string, report: Record<string, u
     if (owned.extractPath !== input.extractPath || owned.receiptPath !== input.receiptPath
         || canonicalJson(owned.expected) !== canonicalJson({ sha256: sha256(expectedBytes), bytes: expectedBytes.byteLength })) throw new Error('Audit reply raw membership/expectation differs.');
     const allowed = new Map<string, CaptureBytePin>();
+    const known = new Set(input.requiredObservations.map(observation => {
+      const p = featureIndexObservationPin(observation); return `${p.sha256}:${p.bytes}`;
+    }));
     for (const item of job.attempts) {
       const attempt = item as Record<string, unknown>;
       if (attempt.phase !== 'terminal') throw new Error('Audit reply contains an unsettled capture attempt.');
       if (attempt.observation !== null && attempt.observation !== undefined) {
-        const p = pin(attempt.observation, 4096, 'Durable attempt observation'); allowed.set(`${p.sha256}:${p.bytes}`, p);
+        const p = pin(attempt.observation, 4096, 'Durable attempt observation');
+        const key = `${p.sha256}:${p.bytes}`;
+        if (requireKnownContexts && !known.has(key)) throw new Error('Historical observation pin lacks a known canonical campaign context.');
+        allowed.set(key, p);
       }
+    }
+    if (requireKnownContexts && [...known].some(key => !allowed.has(key))) {
+      throw new Error('Required campaign context lacks a durable capture attempt observation.');
     }
     return { extractPath: input.extractPath, receiptPath: input.receiptPath, expectedBase64: expectedBytes.toString('base64'),
       requiredObservations: input.requiredObservations, allowedObservationPins: [...allowed.values()].sort((a, b) =>
         a.sha256 < b.sha256 ? -1 : a.sha256 > b.sha256 ? 1 : a.bytes - b.bytes) };
   });
-  const logical = { format: 'feature-index-audit-input-v1', indexHash: worker.indexHash,
-    captureRecord: { sha256: worker.captureRecordSha256, bytes: captureBytes.byteLength }, captures: descriptors };
+  const captureRecord = { sha256: sha256(captureBytes), bytes: captureBytes.byteLength };
+  const logical = { format: 'feature-index-audit-input-v1', indexHash,
+    captureRecord, captures: descriptors };
   const logicalHash = sha256(asciiJsonLine(logical, 512_001, 'Audit logical input').subarray(0, -1));
+  const required = inputs.filter(input => input.requiredObservations.length).map(input =>
+    ({ requestHash: input.expected.requestHash, observations: input.requiredObservations }));
+  const requiredHash = sha256(asciiJsonLine(required, 512_001, 'Audit required contexts').subarray(0, -1));
+  return freezeAuditEvidence({ format: 'feature-index-session-audit-snapshot-v1', indexHash,
+    captureControllerRecord: captureRecord,
+    captureSetSha256: sha256(asciiJsonLine(descriptors, 512_001, 'Audit capture set').subarray(0, -1)),
+    requiredObservationsSha256: requiredHash, auditInputSha256: logicalHash,
+    knownCanonicalObservationSetSha256: requiredHash, captures: inputs.length,
+    requiredObservations: inputs.reduce((sum, input) => sum + input.requiredObservations.length, 0) });
+}
+
+/** Tie the terminal worker reply back to the actual durable input and report.
+ * This opens only bounded control files; original SQLite/sidecars stay unopened.
+ * Proof creation is private and follows the actual fixed-controller verification
+ * under both live leases. Pure report validators never register a proof.
+ */
+async function verifyAuditReplyInputs(rootPath: string, report: Record<string, unknown>,
+    inputs: readonly FeatureIndexSessionAuditInput[], attemptLimit: number,
+    admission: Record<string, unknown>, frozen?: FeatureIndexSessionAuditSnapshot): Promise<FeatureIndexSessionAuditProof | undefined> {
+  const worker = report.audit as Record<string, unknown>, controller = report.auditController as Record<string, unknown>;
+  const indexHash = worker.indexHash as string;
+  const indexIdentity = { indexHash, rootDevice: admission.rootDevice, rootInode: admission.rootInode,
+    lockDevice: admission.lockDevice, lockInode: admission.lockInode };
+  const snapshot = await captureAuditSnapshot(rootPath, indexHash, inputs, admission, frozen !== undefined);
+  if (snapshot.captureControllerRecord.sha256 !== worker.captureRecordSha256) throw new Error('Actual capture record differs from the audited pin.');
+  if (frozen && canonicalJson(snapshot) !== canonicalJson(frozen)) throw new Error('Actual audit membership changed after the frozen campaign gate.');
+  const logicalHash = snapshot.auditInputSha256;
   if (controller.inputSha256 !== logicalHash) throw new Error('Audit reply logical input differs from the requested corpus and required contexts.');
   const recordBytes = await readPrivateAuditFile(path.join(rootPath, 'audit.json'), 64_000);
   if (sha256(recordBytes) !== controller.recordSha256) throw new Error('Audit reply differs from its durable controller record.');
@@ -672,16 +765,26 @@ async function verifyAuditReplyInputs(rootPath: string, report: Record<string, u
       || last.inputSha256 !== worker.inputSha256 || last.resultSha256 !== sha256(asciiJsonLine(worker, 64_001, 'Audit report').subarray(0, -1))) throw new Error('Audit reply lacks its exact terminal durable report.');
   const info = exactObject(record.input, ['captureRecordSha256', 'captureRecordBytes', 'captureSetSha256',
     'requiredObservationsSha256', 'auditInputSha256', 'originalStateSha256'], 'Durable audit input');
-  const required = inputs.filter(input => input.requiredObservations.length).map(input =>
-    ({ requestHash: input.expected.requestHash, observations: input.requiredObservations }));
   if (info.auditInputSha256 !== logicalHash || info.captureRecordSha256 !== worker.captureRecordSha256
-      || info.captureRecordBytes !== captureBytes.byteLength
-      || info.captureSetSha256 !== sha256(asciiJsonLine(descriptors, 512_001, 'Audit capture set').subarray(0, -1))
-      || info.requiredObservationsSha256 !== sha256(asciiJsonLine(required, 512_001, 'Audit required contexts').subarray(0, -1))) throw new Error('Audit durable input pins differ.');
+      || info.captureRecordBytes !== snapshot.captureControllerRecord.bytes
+      || info.captureSetSha256 !== snapshot.captureSetSha256
+      || info.requiredObservationsSha256 !== snapshot.requiredObservationsSha256) throw new Error('Audit durable input pins differ.');
   const evidence = report.guard === null ? report.guardEvidence as Record<string, unknown> : report.guard as Record<string, unknown>;
   const retainedGuard = Object.fromEntries(['returnCode', 'reason', 'maximumObservedWorkerRssBytes',
     'inheritedLease', 'inheritedNamespaceLease'].map(key => [key, evidence[key]]));
   if (canonicalJson(last.guard) !== canonicalJson(retainedGuard)) throw new Error('Audit reply differs from its retained terminal guard evidence.');
+  if (!frozen) return undefined;
+  const proof: FeatureIndexSessionAuditProof = freezeAuditEvidence({
+    format: 'feature-index-session-audit-proof-v1', indexHash,
+    captureControllerRecord: { ...snapshot.captureControllerRecord },
+    captureSetSha256: snapshot.captureSetSha256, requiredObservationsSha256: snapshot.requiredObservationsSha256,
+    auditInputSha256: snapshot.auditInputSha256, knownCanonicalObservationSetSha256: snapshot.knownCanonicalObservationSetSha256,
+    originalStateSha256: sha(info.originalStateSha256, 'Preserved original index state'),
+    workerReportSha256: featureIndexAuditWorkerDigest(worker), controllerRecordSha256: sha256(recordBytes),
+    qualifications: { rawIndexConservation: 'complete', readOnlyStatePreserved: 'complete', campaignObservationCompleteness: 'complete' },
+  });
+  validatedAuditProofs.add(proof);
+  return proof;
 }
 
 /** Validate the actual per-index admission report against its bound root and lock inodes. */
@@ -1038,13 +1141,30 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
         inFlight = operation;
         return operation;
       },
-      async auditCaptures(rawInputs, attemptLimit = 8) {
+      async auditCaptures(rawInputs, attemptLimit = 8, auditOptions) {
         if (state !== 'ready' || inFlight || auditStarted) throw new Error('Feature index session accepts one final audit operation.');
         const prepared = prepareFeatureIndexSessionAudit(rawInputs, attemptLimit);
-        auditStarted = true; pendingAudit = true; pendingResponse = undefined;
+        if (auditOptions !== undefined) {
+          const options = exactObject(auditOptions, ['beforeAudit'], 'Campaign audit gate');
+          if (typeof options.beforeAudit !== 'function') throw new TypeError('Campaign audit gate must be a callback.');
+        }
+        const beforeAudit = auditOptions?.beforeAudit;
+        auditStarted = true; pendingResponse = undefined;
         state = 'inflight';
+        let wireStarted = false;
         const operation = (async () => {
           try {
+            let frozen: FeatureIndexSessionAuditSnapshot | undefined;
+            if (beforeAudit) {
+              frozen = await captureAuditSnapshot(rootPath, indexHash, prepared.inputs, ready.admission, true);
+              await beforeAudit(frozen);
+              // The callback can enqueue/claim and await a heartbeat, but cannot
+              // change the admitted corpus between job binding and worker launch.
+              const current = await captureAuditSnapshot(rootPath, indexHash, prepared.inputs, ready.admission, true);
+              if (canonicalJson(current) !== canonicalJson(frozen)) throw new Error('Capture membership changed during the frozen campaign gate.');
+            }
+            if (terminalError) throw terminalError;
+            wireStarted = true; pendingAudit = true;
             for (const frame of prepared.frames) await send(frame);
             const frame = await readFrame();
             pendingResponse = frame;
@@ -1059,10 +1179,15 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
             }
             const report = validateFeatureIndexSessionAuditResult(frame, indexHash, prepared.inputs,
               prepared.attemptLimit, binding, limitsObj);
-            await verifyAuditReplyInputs(rootPath, report, prepared.inputs, prepared.attemptLimit, ready.admission);
+            const proof = await verifyAuditReplyInputs(rootPath, report, prepared.inputs, prepared.attemptLimit, ready.admission, frozen);
             pendingAudit = false; pendingResponse = undefined; state = 'audited';
-            return report;
+            return proof ? { ...report, campaignProof: proof } : report;
           } catch (error) {
+            // No audit frame was sent. Python is still ready for an ordinary
+            // close; do not pretend an audit is pending or abandon the leases.
+            if (state === 'inflight' && !wireStarted && !terminalError) {
+              pendingAudit = false; pendingResponse = undefined; state = 'audited';
+            }
             if (state === 'inflight') state = 'failed';
             if (state === 'failed') return await abortOwned(error);
             throw error;

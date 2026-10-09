@@ -15,7 +15,7 @@ const factoryUrl = pathToFileURL(path.join(here, 'native-prepared-factory.bundle
 const base3af = '3af17a01b8bd406bfb830ca0d2ee66d2d0093d28';
 const pins = [
   ['src/scene/body/poses.ts', '7f328e67ec33d1c94516d76746635e45d8f90a01416176534fa0448d4e797d5e'],
-  ['src/scene/body/foot-contact.ts', '6f98bb61fde23e51016148d06136fcb0b46b0d5c03cefc73c7ad47745df8c6'],
+  ['src/scene/body/foot-contact.ts', '6f98bb61fde23e51016148d06136fcb0b46b0b9d5c03cefc73c7ad47745df8c6'],
   ['src/scene/body/skinned.ts', '971a080a5d52bbe351f6b59e5377116d605a8a5c73d8c5e63e146db73a445aab'],
   ['src/scene/props.ts', 'd1a379c92b72d994bdb45e740ded30408a90d786c3074c4a42edc1a79aa4c907'],
   ['src/scene/home-scene.ts', '31a744babf552bc4bcfdac00e23b59f23ed363ed7f2f94dbd06da5e8b4bcb47d'],

@@ -283,6 +283,8 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     if (!thigh || !calf || !foot) throw new Error(`Native foot solve lacks ${side} leg bones`);
     return { side, thigh, calf, foot };
   });
+  const hips = skeleton.bones.find((bone) => bone.name === 'mixamorigHips');
+  if (!hips?.parent) throw new Error('Authored foot solve lacks a movable pelvis bone');
 
   function pointInActor(x: number, y: number, z: number): THREE.Vector3 {
     const point = new THREE.Vector3(x, y, z);
@@ -331,17 +333,69 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     return Math.abs(reach - requested) > 0.001;
   }
 
+  function wouldExceedLegReach(contact: FootContact, targetY: number, leg: typeof legs[number]): boolean {
+    const sole = pointInActor(contact.x, contact.y, contact.z);
+    const correctedSole = pointInActor(contact.x, targetY, contact.z);
+    const targetAnkle = boneActorPoint(leg.foot).add(correctedSole.sub(sole));
+    const hip = boneActorPoint(leg.thigh), knee = boneActorPoint(leg.calf), ankle = boneActorPoint(leg.foot);
+    const maximumReach = hip.distanceTo(knee) + knee.distanceTo(ankle);
+    return targetAnkle.distanceTo(hip) > maximumReach + 0.001;
+  }
+
+  function shiftPelvisParentY(deltaY: number): void {
+    if (!isVerticalParent(actor)) throw new Error('Grounded pelvis correction requires a vertical actor parent');
+    updateActorWorld(actor);
+    const parent = actor.parent;
+    let worldDeltaY = deltaY;
+    if (parent) {
+      parent.updateWorldMatrix(true, false);
+      const origin = new THREE.Vector3(0, 0, 0).applyMatrix4(parent.matrixWorld);
+      const offset = new THREE.Vector3(0, deltaY, 0).applyMatrix4(parent.matrixWorld).sub(origin);
+      worldDeltaY = offset.y;
+    }
+    const worldHip = hips.getWorldPosition(new THREE.Vector3());
+    worldHip.y += worldDeltaY;
+    hips.parent!.worldToLocal(worldHip);
+    hips.position.copy(worldHip);
+    updateActorWorld(actor);
+  }
+
   function solve(heightAt: (contact: FootContact) => number, mode: 'motion' | 'grounded' = 'motion'): FootSolveResult {
     if (disposed) throw new Error('Authored foot contacts are disposed');
     let limited = false;
     const desiredSoleY = new Map<'left' | 'right', number>();
     const correctedSides = new Set<'left' | 'right'>();
+    let pelvisCorrection = 0;
     let after = sample();
     // Weighted toe/sole vertices do not move as a perfectly rigid ankle point.
     // Re-sample and apply the remaining error a few times, while preserving the
     // actual ankle-to-sole offset on every pass.
     for (let pass = 0; pass < 4; pass++) {
       let passError = 0;
+      if (mode === 'grounded' && isVerticalParent(actor)) {
+        let requiredLowering = 0;
+        for (const contact of after) {
+          let targetY = -Infinity;
+          for (const point of contact.points ?? [contact]) targetY = Math.max(targetY, heightAt(point));
+          if (!Number.isFinite(targetY) || targetY >= contact.y - 0.0002) continue;
+          const leg = legs.find((candidate) => candidate.side === contact.side)!;
+          if (wouldExceedLegReach(contact, targetY, leg)) requiredLowering = Math.max(requiredLowering, contact.y - targetY);
+        }
+        if (requiredLowering > 0.0002) {
+          const remaining = Math.max(0, 0.08 - pelvisCorrection);
+          const lowering = Math.min(requiredLowering, remaining);
+          if (lowering > 0.0002) {
+            // The source frame's ankles are beyond leg extension. Lower only the pelvis bone,
+            // preserving actor placement and limb segment lengths, then resample before IK.
+            shiftPelvisParentY(-lowering);
+            pelvisCorrection += lowering;
+            after = sample();
+            if (lowering + 0.001 < requiredLowering) limited = true;
+            continue;
+          }
+          limited = true;
+        }
+      }
       for (const contact of after) {
         let targetY = mode === 'grounded' ? -Infinity : contact.y;
         for (const point of contact.points ?? [contact]) targetY = Math.max(targetY, heightAt(point));
@@ -381,10 +435,13 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
 function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
-  const contactBones = ['mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigRightUpLeg', 'mixamorigRightLeg']
+  // Grounded IK may translate the pelvis when the source legs are already at
+  // full extension. Include it in the checkpoint so repeated host solves
+  // always start from the same sampled pose instead of accumulating drift.
+  const contactBones = ['mixamorigHips', 'mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigRightUpLeg', 'mixamorigRightLeg']
     .map((name) => bones.get(name))
     .filter((bone): bone is THREE.Bone => Boolean(bone));
-  if (contactBones.length !== 4) throw new Error('Native authored contact checkpoint lacks thigh/calf bones');
+  if (contactBones.length !== 5) throw new Error('Native authored contact checkpoint lacks hips/thigh/calf bones');
   const contactBaseline = contactBones.map((bone) => ({ bone, position: new THREE.Vector3(), quaternion: new THREE.Quaternion(), scale: new THREE.Vector3() }));
   let contactBaselineReady = false;
   let blend: { clip: string; fade: number; from: Map<THREE.Bone, { p: THREE.Vector3; q: THREE.Quaternion; s: THREE.Vector3 }> } | null = null;

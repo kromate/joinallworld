@@ -51,8 +51,17 @@ Receipts: `.cache/world-build/evidence/feature-index-registry-final-python-v2.*`
 and `feature-index-registry-actual-verification-v1.*`. The source acceptance hashes
 actual inputs, tests and existing receipts. All TypeScript source is unchanged
 from3ff26b6c; the previous compiler receipt remains previous evidence, not a compiler
-run in this phase. Clean committed-source policy and main publication are recorded
-below after their actual terminal results.
+run in this phase.
+
+Implementation commitd1a3ab12548b9f69afb4b1aca9f79ddbe959f5f3 passes all5 clean
+release-source policy tests: terminal36764 exit0,133,767,421logical bytes,
+140,288,000archive bytes/8,559members, under256MiB and10,000member caps. Free space
+and data-filter/regular-directory checks pass; only the owned archive/checkout was
+removed. Receipts: `feature-index-registry-clean-policy-v1.{tap,stderr,json}`.
+This yields **174 focused checks**, not runtime/production/global-world acceptance.
+Fetched maind92bbc6f changes only coordination documentation relative to3ff26b6c;
+no foreign runtime source is adopted. Main synchronization/publication follows this
+verified source checkpoint; no runtime artifact upload accompanies it.
 
 No acquisition, actual namespace/campaign ledger, output product, Nigeria/game data
 or runtime deployment was changed. WARNING memory pressure retained heavy1 and128MiB

@@ -32,8 +32,8 @@ jobs:
       - name: Install exact locked dependencies
         run: npm ci --no-audit --no-fund
 
-      - name: Seal the deterministic sofa render controls
-        run: node evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/seal-review-sources-sofa-v1.mjs
+      - name: Verify the committed deterministic sofa render controls
+        run: node --max-old-space-size=32 evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-seal-fix-v2/verify-frozen-review.mjs 51bd62aa03ee4dae22d5e1656337f08e9db3cbc26e842e07bcd511b232ae2b91
 
       - name: Run reviewed serial split compilation and one-copy finalization
         run: python3 evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-cpu-v1/run-bounded-linux-package-sofa-v1.py

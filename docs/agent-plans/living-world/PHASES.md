@@ -2,6 +2,10 @@
 
 ## Current acceptance evidence — 9 October 2026, 12:02 UTC
 
+Current continuation made progress. Independent review found the client locally recomputes the career view, so later teaching activation needs a server-owned display capability; engine view keys alone do not transport it. Integration chose trusted Node `ServerOptions.interactiveTeachingStarts` and Worker `INTERACTIVE_TEACHING_STARTS === '1'`, default OFF. Updated Worker fixture starts ON and restarts same SQLite twice OFF, retains/finishes existing lesson once and checks a fresh OFF start is markerless; source only, UNRUN. Unapplied engine gate tests and existing positive fixture migration pass source-only apply checks. [Independent policy review](teaching-policy-review-8f39fa52.json).
+
+Latest actual consolidated run [37927617823](https://github.com/kromate/joinallworld/actions/runs/37927617823), exact `49c6afc93acd55c24cf3567698ca9526b4795e23`, terminalFAIL: raw startup615427 exceeds unchanged615000 cap by427; gzip222818/223000 and Brotli195397/195600PASS. Typecheck startup-gate untyped parameters/disposable conversion and businessJourney202 expected0/actual4 fail; release policyPASS, fullSKIPPED. These are Integration/GRAPHICS-owned repairs; no shared-host edits here. Next exact combined-source test must incorporate all owner packets and safe gate wiring before release.
+
 Native persistent goal ACTIVE; broader phases remain open. This saved record does not run when the runtime stops.
 
 Anthony's verified latest direction is **one consolidated delivery of all existing implemented work**, then resume phased releases. No new feature expansion until consolidation closes. Integration alone writes the assembly/shared hosts; WORLD alone uploads. LIVING's active feature is teaching; physical journey safety is queued under LIVING, with GRAPHICS evidence retained. Existing primary work/assets/saves and original six untracked evidence files are preserved.

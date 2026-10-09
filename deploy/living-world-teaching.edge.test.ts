@@ -36,11 +36,12 @@ async function fixture(t: TestContext) {
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true,
     format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] })
   const script = await readFile(bundle, 'utf8')
-  async function start() {
+  async function start(startEnabled = true) {
     await worker?.dispose()
     worker = new Miniflare({ ...convertV4MiniflareOptions({ name: 'joinallworld-teaching', script, modules: true,
       compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } },
-      durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'teaching-fixture', FOUNDER_EMAIL_SHA256: '' },
+      durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'teaching-fixture', FOUNDER_EMAIL_SHA256: '',
+        ...(startEnabled ? { INTERACTIVE_TEACHING_STARTS: '1' } : {}) },
       serviceBindings: { ASSETS: () => new Response('asset') } }), resourcePersistencePath: join(folder, 'storage'), handleStructuredLogs: () => {} })
     await worker.ready
   }
@@ -107,8 +108,9 @@ test('active lesson, authored answers, once receipt, and completed shift survive
   const initialCash = initial.cash, initialRemaining = initialAction.remaining
   const generation = initialAction.teachingGeneration
 
-  // Dispose the Worker and recreate it against the same durable SQLite storage directory.
-  await h.start()
+  // Recreate the Worker against the same SQLite directory with new interactive starts disabled.
+  // The existing marker must remain readable and answerable under the gate-off host policy.
+  await h.start(false)
   const restored = await h.life(cookie), restoredAction = activeTeaching(restored)
   assert.deepEqual([restoredAction.teaching, restoredAction.teachingGeneration, restored.career.teachingGeneration,
     restoredAction.remaining, restored.cash], [initialAction.teaching, generation, generation, initialRemaining, initialCash])
@@ -138,7 +140,7 @@ test('active lesson, authored answers, once receipt, and completed shift survive
     completed.career.shifts, completed.skills.charisma, completed.career.performance,
     completed.ledger.filter(row => row.amount === 3000).length], [null, 3000, 1, 1, 25, 60, 1])
 
-  await h.start()
+  await h.start(false)
   const completedAfterRestart = await h.life(cookie)
   assert.deepEqual([completedAfterRestart.activeAction, completedAfterRestart.cash, completedAfterRestart.ledger],
     [null, completed.cash, completed.ledger])
@@ -147,4 +149,17 @@ test('active lesson, authored answers, once receipt, and completed shift survive
   const afterReplay = await h.life(cookie)
   assert.deepEqual([afterReplay.cash, afterReplay.completedShifts, afterReplay.career.shifts,
     afterReplay.ledger.filter(row => row.amount === 3000).length], [completed.cash, 1, 1, 1])
+
+  // With the same gate-off Worker, a new public teaching start remains the legacy timed activity.
+  const legacyCookie = await h.player('Legacy teacher')
+  assert.equal((await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'career.auto', payload: { on: false } })).code, 'auto_set')
+  assert.equal((await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'apply-job', payload: { id: 'teaching' } })).code, 'applied')
+  assert.equal((await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'spot', payload: { id: 'work' } })).code, 'selected')
+  const legacyStart = await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'activity', payload: { id: 'teaching-shift' } })
+  assert.deepEqual([legacyStart.status, legacyStart.code], [200, 'started'])
+  const legacy = await h.life(legacyCookie)
+  assert.ok(legacy.activeAction?.kind === 'activity' && legacy.activeAction.id === 'teaching-shift')
+  assert.equal('teaching' in legacy.activeAction, false)
+  assert.equal('teachingGeneration' in legacy.activeAction, false)
+  assert.equal(legacy.career.teachingGeneration, 0)
 })

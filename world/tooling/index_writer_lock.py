@@ -9,6 +9,7 @@ import fcntl
 import os
 from pathlib import Path
 import stat
+import weakref
 
 
 def verify_index_lease_report(child, value):
@@ -37,6 +38,58 @@ class IndexWriterLease:
     descriptor: int
     device: int
     inode: int
+
+
+_SHARD_HANDOFF_SEAL = object()
+
+
+@dataclass(frozen=True, eq=False)
+class IndexShardHandoff:
+    """Local lease handoff receipt; it proves no source coverage or ingestion."""
+    root: Path
+    identity: tuple
+    namespace_lease: IndexWriterLease
+    authority: object
+    summary: bytes
+    record_sha256: str
+    anchor_sha256: str
+    _seal: object
+
+
+_SHARD_HANDOFFS = weakref.WeakSet()
+
+
+def _register_shard_handoff(value):
+    _SHARD_HANDOFFS.add(value)
+    return value
+
+
+def _verify_shard_handoff(handoff, lease, authority):
+    from index_root import _lease
+    if (type(handoff) is not IndexShardHandoff or handoff not in _SHARD_HANDOFFS
+            or handoff._seal is not _SHARD_HANDOFF_SEAL
+            or authority is not handoff.authority or type(lease) is not IndexWriterLease
+            or lease is not handoff.namespace_lease or lease.root != handoff.root):
+        raise TypeError("shard access requires its exact sealed handoff, authority and caller lease")
+    root, info = _lease(lease); lock = (root/"writer.lock").lstat()
+    lock_id = handoff.identity[2:]
+    if ((info.st_dev, info.st_ino) != handoff.identity[:2]
+            or (lease.device, lease.inode) != lock_id or (lock.st_dev, lock.st_ino) != lock_id):
+        raise ValueError("caller namespace lease/root identity changed")
+    probe = os.open(root/"writer.lock", os.O_RDWR | os.O_NOFOLLOW | os.O_NONBLOCK)
+    try:
+        held = os.fstat(probe)
+        if (held.st_dev, held.st_ino) != handoff.identity[2:]:
+            raise ValueError("namespace lock inode changed")
+        try: fcntl.flock(probe, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError: pass
+        else:
+            fcntl.flock(probe, fcntl.LOCK_UN)
+            raise ValueError("caller namespace lease is no longer held")
+    finally: os.close(probe)
+    from index_controller_state import verify_shard_handoff
+    verify_shard_handoff(handoff, lease, authority)
+    return root
 
 
 def _private_directory(info):

@@ -1,5 +1,14 @@
 # Decisions and repeatable rollout after the first compiler
 
+9 October2026: exact cfb5c3b1/run37908535625 accepts an in-process sealed batch
+handoff and actual source-to-plan engine-capacity gate:478 tests, three policy
+checks and World TypeScript, unchanged45-source/1MiB control limits. Read
+INDEX-SHARD-HANDOFF-OPERATIONS.md. Next explicitly integrate V2 child workers,
+restartable256-capture/600s windows after one admission, a real inherited campaign
+lease and finite cumulative namespace accounting. Source membership/union audit,
+geometry, Nigeria integration and physical phones remain required; no map release.
+The session and global-accounting documents are unimplemented designs, not proof.
+
 9 October 2026: supervised full-plan admission is accepted on exact ab0589e67,
 run37905609552:467 tests, three policy checks and World TypeScript. Actual
 SIGKILL/recovery and 4096-request/16-shard admission retain the original limits.

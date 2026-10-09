@@ -1,8 +1,10 @@
-import { featureIndexObservationPin, type FeatureIndexObservation } from './feature-index.ts';
+import { FEATURE_INDEX_CEILINGS, featureIndexObservationPin, type FeatureIndexObservation } from './feature-index.ts';
 import { asciiJsonLine, prepareFeatureIndexSessionAudit, type FeatureIndexSessionAuditInput } from './feature-index-session.ts';
 import type { FeatureIndexShardPlanRequest } from './index-shard-plan.ts';
 import type { CaptureBytePin } from './capture-binding.ts';
 import { sha256 } from './pack.ts';
+import { validateFeatureIndexShardPlan, type FeatureIndexShardPlan } from './index-shard-plan.ts';
+import type { FeatureIndexLimits } from './feature-index.ts';
 
 const MAX_ATTEMPTS = 8;
 const MAX_LINE_BYTES = 128_000;
@@ -138,4 +140,51 @@ export function calculateFeatureIndexShardEnvelopeOverhead(
     captures: [],
   };
   return asciiJsonLine(wrapper, 100_000, 'Shard audit envelope overhead').byteLength + 1;
+}
+
+const ENGINE_LIMIT_FIELDS = ['databaseBytes', 'captures', 'occurrences', 'versions', 'observations'] as const;
+
+function exactEngineLimits(value: unknown): FeatureIndexLimits {
+  if (!value || typeof value !== 'object' || Array.isArray(value)
+      || (Object.getPrototypeOf(value) !== Object.prototype && Object.getPrototypeOf(value) !== null)) {
+    throw new TypeError('Shard evidence requires the exact base engine limits object.');
+  }
+  const keys = Reflect.ownKeys(value);
+  if (keys.length !== ENGINE_LIMIT_FIELDS.length || keys.some(key => typeof key !== 'string'
+      || !ENGINE_LIMIT_FIELDS.includes(key as typeof ENGINE_LIMIT_FIELDS[number]))) {
+    throw new TypeError('Shard evidence engine limits have missing or unknown fields.');
+  }
+  const limits = {} as FeatureIndexLimits;
+  for (const key of ENGINE_LIMIT_FIELDS) {
+    const descriptor = Object.getOwnPropertyDescriptor(value, key);
+    if (!descriptor || !descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) {
+      throw new TypeError('Shard evidence engine limits must be enumerable data properties.');
+    }
+    const minimum = key === 'databaseBytes' ? 65_536 : 1;
+    const maximum = FEATURE_INDEX_CEILINGS[key];
+    const item = descriptor.value;
+    if (typeof item !== 'number' || !Number.isSafeInteger(item) || item < minimum || item > maximum
+        || (key === 'databaseBytes' && item % 4096 !== 0)) {
+      throw new RangeError(`Base engine limit ${key} is outside its immutable ceiling.`);
+    }
+    limits[key] = item;
+  }
+  return limits;
+}
+
+/** Refuse a namespace plan whose individual shard exceeds the unchanged base engine caps.
+ * Occurrence/version capacity and physical disk headroom still need measured runtime admission;
+ * these metadata counts only prove capture and observation row limits.
+ */
+export function assertFeatureIndexShardEngineCapacity(planValue: unknown, engineLimitsValue: unknown): void {
+  const plan: FeatureIndexShardPlan = validateFeatureIndexShardPlan(planValue);
+  const engineLimits = exactEngineLimits(engineLimitsValue);
+  for (const shard of plan.shards) {
+    if (shard.requestCount > engineLimits.captures) {
+      throw new RangeError(`Shard ${shard.ordinal} requires ${shard.requestCount} captures, above the base limit ${engineLimits.captures}.`);
+    }
+    if (shard.requiredObservationCount > engineLimits.observations) {
+      throw new RangeError(`Shard ${shard.ordinal} requires ${shard.requiredObservationCount} observations, above the base limit ${engineLimits.observations}.`);
+    }
+  }
 }

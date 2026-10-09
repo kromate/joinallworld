@@ -1,5 +1,14 @@
 # Independent world-data builder
 
+Latest admitted-child handoff and source-capacity milestone passes **478 tests,
+three policy checks and World TypeScript**, exact cfb5c3b1/run37908535625. Real
+admitted children open sequentially under the original held namespace lease
+without registry SQL or extra attempts. Source-derived plans must fit each
+child's original capture/observation row caps. See
+[INDEX-SHARD-HANDOFF-OPERATIONS.md](INDEX-SHARD-HANDOFF-OPERATIONS.md).
+Durable multi-session windows, V2 ingest/audit, global accounting and country
+geometry remain next. This source phase adds no production map detail.
+
 Latest supervised batch milestone passes **467 tests, three policy checks and
 World TypeScript**, exact ab0589e67/run37905609552. It atomically charges complete
 plans, publishes their roots and recovers actual interrupted workers, including

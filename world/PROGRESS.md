@@ -1,5 +1,45 @@
 # Implementation checkpoint — 9 October 2026
 
+Exact **cfb5c3b1a12d80d1bb94aa7b3bf3e0c75c63d323**, run **37908535625**, is
+terminal **SUCCESS**: **478 tests +3 policy =481 distinct checks**, plus World
+TypeScript. Python317=19audit/11session/94affected/193remaining;
+Node161=27protocol/58contracts/12actualSDK-source/39campaign-Ledger/20planner/5release.
+All22 artifacts,10 changed source/workflow blobs and45 fixed inputs match the
+exact final source. See [index-shard-handoff-acceptance.json](index-shard-handoff-acceptance.json)
+and [INDEX-SHARD-HANDOFF-OPERATIONS.md](INDEX-SHARD-HANDOFF-OPERATIONS.md).
+The earlier v28 passed the same478 tests; its retained provisional receipt is
+superseded by the exact final serialized-summary comparison. Caps remain unchanged.
+
+The actual reaped V3 worker/controller now supplies an identity-branded local
+handoff only while the caller's inherited namespace lease remains held. Both
+children open sequentially with parent SQL forbidden and unchanged namespace
+attempt/record bytes. Clones, closed/default leases, busy children, changed durable
+records and metadata/database/binding/root/lock mutations refuse. Handle-preserving
+exception behavior uses a sentinel, not an actual unreaped-worker settlement.
+Source-derived four-leaf synthetic campaigns now refuse oversized child row caps
+and accept an explicit fitting split without source/namespace writes. This is
+structural/source-plan acceptance, not actual V2 ingestion or country coverage.
+
+Batch source **eb879b64** is published on main **1b0617b0**; fresh main
+**6ce21467** differs only in reviewed coordination docs, now synced into this
+worktree. MainCI37906987727 passes fasttypecheck/build/download/smoke/policy;
+fullSKIPPED. Earlier1b run37906941313 auto-cancelled on that successor. No runtime
+or map upload: production remains APPUIa446/version64ed.
+
+Next implement actual inherited campaign/acquisition locks, finite same-campaign
+namespace charges, explicit V2 child workers and durable bounded multi-session
+windows without spending a registry attempt per window. Current PID/path stale
+lock removal has a recovery race; inherited-FD design needs actual Mac/Linux
+process tests. Read the unaccepted [session design](INDEX-SHARD-SESSION-INTEGRATION-DRAFT.md)
+and [lease/global-accounting design](CAMPAIGN-LEASE-GLOBAL-ACCOUNTING-DRAFT.md).
+Complete source union, geometry/streaming, Nigeria adapter/rendering, rights,
+connected journeys and physical-phone acceptance remain OPEN. Latest09:07UTC
+memoryNORMAL1 is transient with worsening474MiBpageouts/164MiBswapouts and~10.48GB
+swap; optional local heavy work remains deferred. WORLD has no local heavy/browser/
+build/test/server/upload. Full goalACTIVE. Earlier checkpoints are historical.
+
+# Implementation checkpoint — 9 October 2026
+
 Exact **ab0589e67db3d8dfc8f79733f180753204b67c5b**, run **37905609552**, is
 terminal **SUCCESS**: **467 tests +3 policy =470 distinct checks**, plus World
 TypeScript. Python311=19audit/11session/88affected/193remaining; Node156 unchanged.

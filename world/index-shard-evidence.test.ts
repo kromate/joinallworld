@@ -6,6 +6,10 @@ import { asciiJsonLine } from './feature-index-session.ts';
 import type { FeatureIndexSessionAuditInput } from './feature-index-session.ts';
 import { sha256 } from './pack.ts';
 import { calculateFeatureIndexShardEnvelopeOverhead, prepareFeatureIndexShardPlanRequest } from './index-shard-evidence.ts';
+import { assertFeatureIndexShardEngineCapacity } from './index-shard-evidence.ts';
+import { FEATURE_INDEX_SHARD_PLAN_INPUT_FORMAT, encodeFeatureIndexShardPlan,
+  type FeatureIndexShardPlanInput, type FeatureIndexShardPlanRequest } from './index-shard-plan.ts';
+import type { FeatureIndexLimits } from './feature-index.ts';
 
 const h = (letter: string) => letter.repeat(64);
 const observation = (jobId = 'caf\u00e9'): FeatureIndexObservation => ({
@@ -111,4 +115,79 @@ test('wrapper estimate includes the final ASCII wrapper, maximal pins and one se
   assert.throws(() => calculateFeatureIndexShardEnvelopeOverhead('/root', 64 * 1024 * 1024 + 1, 65_536), /file limit/i);
   assert.throws(() => calculateFeatureIndexShardEnvelopeOverhead('/root', 1_000_000, 65_537), /page-aligned/i);
   assert.throws(() => calculateFeatureIndexShardEnvelopeOverhead('/root', 1_000_000, 64 * 1024 * 1024 + 1), /database limit/i);
+});
+
+const capacityHash = (value: number) => value.toString(16).padStart(64, '0');
+function capacityRequest(value: number, observations = 1): FeatureIndexShardPlanRequest {
+  return { requestHash: capacityHash(value), captureInputHash: capacityHash(value + 10_000),
+    requiredObservationSetHash: capacityHash(value + 20_000), requiredObservationCount: observations,
+    auditDescriptorBytes: 100 };
+}
+function capacityPlan(requests: FeatureIndexShardPlanRequest[], maxCaptures: number) {
+  const input: FeatureIndexShardPlanInput = {
+    format: FEATURE_INDEX_SHARD_PLAN_INPUT_FORMAT,
+    bindings: { campaignHash: capacityHash(1), countryGridPlanHash: capacityHash(2),
+      sourceConfigurationHash: capacityHash(3), toolingManifestHash: capacityHash(4),
+      baseIndexBindingHash: capacityHash(5) },
+    policy: { aggregateBytes: 128 * 1024 * 1024, registryControlBytes: 1024 * 1024,
+      shardReservedBytes: 16 * 1024 * 1024, maxCaptures, descriptorBytes: 100_000,
+      envelopeOverheadBytes: 100, maxShards: 256, maxAttempts: 8 },
+    requests,
+  };
+  return encodeFeatureIndexShardPlan(input).plan;
+}
+const engineLimits = (overrides: Partial<FeatureIndexLimits> = {}): FeatureIndexLimits => ({
+  databaseBytes: 64 * 1024 * 1024, captures: 4096, occurrences: 250_000,
+  versions: 100_000, observations: 16_384, ...overrides,
+});
+
+test('engine capacity accepts exact per-shard capture and observation boundaries', () => {
+  const exact = capacityPlan([capacityRequest(1), capacityRequest(2, 2)], 2);
+  assert.doesNotThrow(() => assertFeatureIndexShardEngineCapacity(exact,
+    engineLimits({ captures: 2, observations: 3 })));
+  assert.throws(() => assertFeatureIndexShardEngineCapacity(
+    capacityPlan([capacityRequest(1), capacityRequest(2), capacityRequest(3)], 3),
+    engineLimits({ captures: 2 })), /requires 3 captures.*base limit 2/);
+  assert.throws(() => assertFeatureIndexShardEngineCapacity(
+    capacityPlan([capacityRequest(1, 2), capacityRequest(2, 2)], 2),
+    engineLimits({ observations: 3 })), /requires 4 observations.*base limit 3/);
+});
+
+test('capacity is checked per shard, so global totals may exceed a child engine limit', () => {
+  const plan = capacityPlan([capacityRequest(1, 2), capacityRequest(2, 2), capacityRequest(3, 2),
+    capacityRequest(4, 2), capacityRequest(5, 2)], 2);
+  assert.equal(plan.requestCount, 5);
+  assert.ok(plan.requiredObservationCount > 4);
+  assert.deepEqual(plan.shards.map(shard => [shard.requestCount, shard.requiredObservationCount]),
+    [[2, 4], [2, 4], [1, 2]]);
+  assert.doesNotThrow(() => assertFeatureIndexShardEngineCapacity(plan,
+    engineLimits({ captures: 2, observations: 4 })));
+});
+
+test('engine limits require every original field, strict values, and data properties', () => {
+  const plan = capacityPlan([capacityRequest(1)], 1);
+  assert.throws(() => assertFeatureIndexShardEngineCapacity(plan,
+    { ...engineLimits(), extra: 1 }), /missing or unknown fields/);
+  assert.throws(() => assertFeatureIndexShardEngineCapacity(plan,
+    engineLimits({ captures: 4097 })), /captures.*immutable ceiling/);
+  assert.throws(() => assertFeatureIndexShardEngineCapacity(plan,
+    engineLimits({ databaseBytes: 65_537 })), /databaseBytes.*immutable ceiling/);
+  let read = false;
+  const accessor = { ...engineLimits() } as Record<string, unknown>;
+  Object.defineProperty(accessor, 'captures', { enumerable: true, get() { read = true; return 4096; } });
+  assert.throws(() => assertFeatureIndexShardEngineCapacity(plan, accessor), /data properties/);
+  assert.equal(read, false);
+  const changed = engineLimits();
+  assert.doesNotThrow(() => assertFeatureIndexShardEngineCapacity(plan, changed));
+  changed.captures = 0;
+  assert.throws(() => assertFeatureIndexShardEngineCapacity(plan, changed), /captures.*immutable ceiling/);
+});
+
+test('engine capacity refuses a forged or non-frozen plan receipt before counting shards', () => {
+  const plan = capacityPlan([capacityRequest(1)], 1);
+  assert.throws(() => assertFeatureIndexShardEngineCapacity({ ...plan, requestCount: 0 }, engineLimits()),
+    /totals or membership differ from deterministic recomputation/);
+  const accessor = { ...plan } as Record<string, unknown>;
+  Object.defineProperty(accessor, 'shards', { enumerable: true, get() { throw new Error('must not read'); } });
+  assert.throws(() => assertFeatureIndexShardEngineCapacity(accessor, engineLimits()), /data properties|accessor/i);
 });

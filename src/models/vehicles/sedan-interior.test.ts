@@ -14,6 +14,12 @@ function near(actual: number, expected: number, epsilon = 1e-6): void {
   assert.ok(Math.abs(actual - expected) <= epsilon, `${actual} differs from ${expected}`)
 }
 
+function vertices(attribute: THREE.BufferAttribute, start: number, count: number): number[] {
+  const result: number[] = []
+  for (let i = start; i < start + count; i += 1) result.push(attribute.getX(i), attribute.getY(i), attribute.getZ(i))
+  return result
+}
+
 test('map sedan interior builds bounded floor and four anchor-derived seats as one render batch', () => {
   const model = buildVehicle('sedan', { detail: 'map' })
   try {
@@ -25,11 +31,11 @@ test('map sedan interior builds bounded floor and four anchor-derived seats as o
       assert.equal(SEDAN_INTERIOR_LAYOUT.frame, 'vehicle-body-local')
       assert.equal(SEDAN_INTERIOR_LAYOUT.units, 'vehicle-world-units')
       assert.equal(SEDAN_INTERIOR_LAYOUT.forward, '+Z')
-      assert.equal(interior.triangleCount, 108)
+      assert.equal(interior.triangleCount, 284)
       assert.equal(interior.geometry.getAttribute('position').count / 3, interior.triangleCount)
       assert.equal(interior.group.children.length, 1)
       assert.equal(interior.group.children[0]?.name, 'sedan-interior-solids')
-      assert.equal(interior.solids.length, 9)
+      assert.equal(interior.solids.length, 11)
       assert.equal(interior.supportSurfaces.length, 5)
       assert.equal(interior.supportSurfaces[0]?.surfaceY, 0.52)
       assert.equal(interior.supportSurfaces[0]?.id, 'cabin-floor-support')
@@ -41,6 +47,48 @@ test('map sedan interior builds bounded floor and four anchor-derived seats as o
         'creating an interior must not rewrite the published driver or passenger anchors')
 
       const positions = interior.geometry.getAttribute('position')
+      const normals = interior.geometry.getAttribute('normal')
+      const steering = interior.solids.find(solid => solid.id === 'steering-wheel')
+      const dashboard = interior.solids.find(solid => solid.id === 'dashboard')
+      assert.ok(steering && dashboard)
+      const centeredWheel = vertices(positions, steering.vertexStart, steering.vertexCount)
+      const centeredWheelNormals = vertices(normals, steering.vertexStart, steering.vertexCount)
+      let topVertex = steering.vertexStart
+      for (let i = topVertex + 1; i < steering.vertexStart + steering.vertexCount; i += 1) {
+        if (positions.getY(i) > positions.getY(topVertex)) topVertex = i
+      }
+      const neutralTopX = positions.getX(topVertex)
+      const stationary = new Map<number, number[]>()
+      for (let start = 0; start < steering.vertexStart; start += 1) stationary.set(start, vertices(positions, start, 1))
+      for (let start = steering.vertexStart + steering.vertexCount; start < positions.count; start += 1) stationary.set(start, vertices(positions, start, 1))
+      interior.poseSteering(1)
+      const turnedWheel = vertices(positions, steering.vertexStart, steering.vertexCount)
+      assert.ok(positions.getX(topVertex) > neutralTopX, 'right input turns the top of the wheel toward the driver’s right')
+      const turnedWheelNormals = vertices(normals, steering.vertexStart, steering.vertexCount)
+      assert.notDeepEqual(turnedWheel, centeredWheel, 'steering rotates the actual wheel vertices')
+      assert.notDeepEqual(turnedWheelNormals, centeredWheelNormals, 'steering rotates wheel normals with the vertices')
+      for (const [vertex, expected] of stationary) assert.deepEqual(vertices(positions, vertex, 1), expected,
+        'floor, seats, and dashboard remain stationary')
+      interior.poseSteering(50)
+      assert.deepEqual(vertices(positions, steering.vertexStart, steering.vertexCount), turnedWheel, 'input is clamped')
+      interior.poseSteering(Number.NaN)
+      assert.deepEqual(vertices(positions, steering.vertexStart, steering.vertexCount), centeredWheel, 'invalid input centers the wheel')
+      assert.deepEqual(vertices(normals, steering.vertexStart, steering.vertexCount), centeredWheelNormals)
+      interior.poseSteering(-1)
+      assert.ok(positions.getX(topVertex) < neutralTopX, 'left input turns the top of the wheel toward the driver’s left')
+      const sphere = interior.geometry.boundingSphere
+      assert.ok(sphere)
+      for (const input of [-1, -0.5, 0, 0.5, 1]) {
+        interior.poseSteering(input)
+        for (let i = 0; i < positions.count; i += 1) {
+          assert.ok(Math.hypot(positions.getX(i) - sphere.center.x, positions.getY(i) - sphere.center.y, positions.getZ(i) - sphere.center.z) <= sphere.radius + 1e-6, 'animated vertices stay inside the culling sphere')
+        }
+      }
+      interior.poseSteering(-1)
+      assert.notDeepEqual(vertices(positions, steering.vertexStart, steering.vertexCount), centeredWheel)
+      interior.poseSteering(0)
+      assert.deepEqual(vertices(positions, steering.vertexStart, steering.vertexCount), centeredWheel, 'neutral restores exact authored vertices')
+      assert.deepEqual(vertices(normals, steering.vertexStart, steering.vertexCount), centeredWheelNormals)
       const envelope = SEDAN_INTERIOR_LAYOUT.shell
       for (const solid of interior.solids) {
         const { min, max } = solid.bounds
@@ -128,15 +176,24 @@ test('only the street sedan attaches once within existing budgets and follows it
     const staleAlias = { object3D: model.object3D, userData: { ...model.userData } }
     const interior = attachSedanInterior(model)
     assert.equal(interior.group.parent, model.userData.parts.body)
-    assert.equal(model.userData.triangles, priorTriangles + 108)
+    assert.equal(model.userData.triangles, priorTriangles + SEDAN_INTERIOR_LAYOUT.triangles)
     assert.equal(model.userData.drawCalls, priorDrawCalls + 1)
-    assert.deepEqual([model.userData.triangles, model.userData.drawCalls], [814, 8])
+    assert.deepEqual([model.userData.triangles, model.userData.drawCalls], [990, 8])
     assert.equal(attachSedanInterior(model), interior, 'repeat attachment returns the same resource without recounting')
     assert.equal(attachSedanInterior({ object3D: model.object3D, userData: model.userData }), interior,
       'wrapper aliases share the physical vehicle resource owner')
     assert.throws(() => attachSedanInterior(staleAlias), /canonical vehicle metadata owner/)
-    assert.equal(model.userData.triangles, 814)
+    assert.equal(model.userData.triangles, 990)
     assert.equal(model.userData.drawCalls, 8)
+    const steering = interior.solids.find(solid => solid.id === 'steering-wheel')
+    assert.ok(steering)
+    const position = interior.geometry.getAttribute('position')
+    const centered = vertices(position, steering.vertexStart, steering.vertexCount)
+    interior.poseSteering(0.5)
+    assert.notDeepEqual(vertices(position, steering.vertexStart, steering.vertexCount), centered,
+      'the attached street interior exposes the steering pose')
+    interior.poseSteering(0)
+    assert.deepEqual(vertices(position, steering.vertexStart, steering.vertexCount), centered)
 
     const driver = model.userData.anchors.driver
     const body = model.userData.parts.body

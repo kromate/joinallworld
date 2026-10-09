@@ -28,7 +28,7 @@ test('active street sedan interior, anchors and open-door hinge agree with the p
     assert.equal(interior.group.parent, car.userData.parts.body)
     assert.equal(car.userData.triangles, SEDAN_BOARDING_DESCRIPTOR.sedan.geometryBudget.triangles)
     assert.equal(car.userData.drawCalls, SEDAN_BOARDING_DESCRIPTOR.sedan.geometryBudget.drawCalls)
-    assert.equal(interior.solids.length, 9)
+    assert.equal(interior.solids.length, 11)
     assert.equal(interior.supportSurfaces.length, 5)
     car.object3D.updateWorldMatrix(true, true)
     const driver = car.userData.anchors.driver.position

@@ -3,6 +3,7 @@ import type { DrivingInput, DrivingRoute, DrivingState } from '../../../game/liv
 import type { Look } from '../../../types/life.ts'
 import type { StandIn } from '../../../scene/body/stand-in.ts'
 import type { VehicleModel, VehiclePose } from '../../../models/vehicles/index.ts'
+import type { AttachedSedanInterior } from '../../../models/vehicles/sedan-interior.ts'
 
 export interface DrivingScene {
   present(state: DrivingState): void
@@ -59,17 +60,19 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
   }
 
   let partialCar: VehicleModel | null = null
+  let partialInterior: AttachedSedanInterior | null = null
   let partialAvatar: import('../../../scene/characters.ts').RiggedAvatar | null = null
   try {
     // One close-view practice car uses the existing street LOD budget; ambient map cars stay unchanged.
     partialCar = buildVehicle('sedan', { colour: '#277f9b', detail: 'street' })
-    attachSedanInterior(partialCar)
+    partialInterior = attachSedanInterior(partialCar)
     partialAvatar = buildAvatar(kit, sceneLook(look), { rig: true, detail: 'low', scale: FALLBACK_SCALE })
     scene.add(partialCar.object3D, partialAvatar)
   } catch (error) {
     partialCar?.userData.dispose(); partialAvatar?.userData.dispose(); kit.dispose(); renderer.dispose(); scene.clear(); throw error
   }
   const car = partialCar!, avatar = partialAvatar!
+  const interior = partialInterior!
   let phase: Phase = 'idle', phaseTime = 0, state: DrivingState | null = null
   let input: DrivingInput = { throttle: 0, brake: 1, steer: 0 }, clock = 0, stridePhase = 0
   let visible = true, disposed = false, firstFrame = true, renderPending = true, lastDraw = 0, frame = 0
@@ -134,7 +137,10 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
     if (pose === 'walk') { standIn.gait(stride, false, at.y); actorPose = 'walk' }
     fallbackAt(fallback, heading, pose, stride)
   }
-  const poseCar = (pose: Omit<VehiclePose, 'distance'> = {}) => poseVehicle(car, { ...pose, distance: wheelDistance })
+  const poseCar = (pose: Omit<VehiclePose, 'distance'> = {}) => {
+    interior.poseSteering((pose.steering ?? 0) / 0.62)
+    return poseVehicle(car, { ...pose, distance: wheelDistance })
+  }
   const placeCar = (nextState: DrivingState) => {
     car.object3D.position.set(nextState.position.x, 0, nextState.position.z)
     car.object3D.rotation.y = nextState.heading; car.object3D.updateWorldMatrix(true, true)

@@ -11,11 +11,11 @@ export const SEDAN_BOARDING_DESCRIPTOR = Object.freeze({
     revision: 'sedan-interior-content-pins-v2',
     baselineRevision: '75ad421adc6d1eb455c9f7a258bc63e315ce5955',
     sha256: Object.freeze({
-      'src/models/vehicles/sedan-interior.ts': 'fee4c0f203868acd4bc99a47a05918c66163ffddc40451cd39bb012bd4b14059',
+      'src/models/vehicles/sedan-interior.ts': '3d9a5b3a516031fb7b6e14058a3d3c2615a3f531a38b56781d2f4a66bf8b0a57',
       'src/models/vehicles/index.ts': '7db039a0b25373a86354639fd703a96aab3a3de48a3088c14c555cc0fa6afc19',
       'src/models/vehicles/geometry.ts': '4bf847bd17a735050daa4686ed0be495c64a7936ed3c65c6e306e740edc94885',
-      'src/game/living-world/vehicle-clearance.ts': '8396fafd672d4cd8d0d710a0166fc59160cd3a609b12e620b5cf8b461c4e5e1b',
-      'src/app/features/living-world/drivingScene.ts': '41381b92f248655081eab1ac9215dec97ffaa442206e45122dc37f5a63d25156',
+      'src/game/living-world/vehicle-clearance.ts': '79cb9a34053f36cd7ed400f5a1bb2c14c8adee8ef3e6daf8af7f499f609cc5f4',
+      'src/app/features/living-world/drivingScene.ts': '3d42051273229265a17fcc5e04b7e5c95ddb72e7fa5fd00520d910cd19cf006c',
       'src/scene/body/stand-in.ts': '55c39f33f08d43a0ac7f7ab1766522e1ef48ddfb4c7aced20cd762fd57156098',
       'src/scene/body/skinned.ts': 'ee2ec68e2a707c5b8976aa1e28f085129f84142e466fd622d09b51633bbf197a',
       'src/scene/body/poses.ts': '7f328e67ec33d1c94516d76746635e45d8f90a01416176534fa0448d4e797d5e',
@@ -32,7 +32,7 @@ export const SEDAN_BOARDING_DESCRIPTOR = Object.freeze({
   }),
   sedan: Object.freeze({
     detail: 'street',
-    geometryBudget: Object.freeze({ triangles: 814, triangleLimit: 1500, drawCalls: 8 }),
+    geometryBudget: Object.freeze({ triangles: 990, triangleLimit: 1500, drawCalls: 8 }),
     bodyShell: Object.freeze({ width: 1.9, length: 4.35, height: 1.58 }),
     // Street trim includes a rear plate reaching z=-2.27; the map-detail envelope is shorter.
     conservativeStaticEnvelope: Object.freeze({ halfWidth: 1.302, halfLength: 2.271 }),
@@ -42,7 +42,7 @@ export const SEDAN_BOARDING_DESCRIPTOR = Object.freeze({
       sideProfileZ: Object.freeze([-2.175, 2.175]),
       sideGlassZ: Object.freeze([-1.214, 0.854]),
       roofY: 1.53,
-      floorOrSeatSolids: 'sedan-interior.ts authors a body-local floor and four cushion/backrest seats; actor fit and interior collision are unverified',
+      floorOrSeatSolids: 'sedan-interior.ts authors a body-local floor, four seats, dashboard and animated steering wheel; actor fit and interior collision are unverified',
       clearDoorway: 'unknown',
     }),
     driverDoor: Object.freeze({

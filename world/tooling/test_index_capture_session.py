@@ -92,13 +92,29 @@ class IndexCaptureSessionTests(unittest.TestCase):
                 "extractPath": str(extract), "receiptPath": str(receipt),
                 "expected": expected, "observation": observation}
 
+    @staticmethod
+    def audit_begin(count, attempt_limit=8):
+        return {"format": "feature-index-session-audit-begin-v1", "id": 1,
+                "count": count, "attemptLimit": attempt_limit}
+
+    @staticmethod
+    def audit_capture(capture, observation, ordinal, *, extract_path=None, receipt_path=None):
+        extract, receipt, expected = capture
+        return {"format": "feature-index-session-audit-capture-v1", "id": 1,
+                "ordinal": ordinal, "extractPath": str(extract) if extract_path is None else extract_path,
+                "receiptPath": str(receipt) if receipt_path is None else receipt_path,
+                "expected": expected, "requiredObservations": [observation]}
+
+    @staticmethod
+    def audit_run():
+        return {"format": "feature-index-session-audit-run-v1", "id": 1}
+
     def test_retained_captures_share_one_admission_per_session_and_reopen_replays(self):
         with self.prepared() as (namespace, source):
             init = self.init(namespace, source)
             retained = inputs()
             first_payload = line(init) + b"".join(line(self.capture_job(i, capture, context(f"synthetic-{i}")))
-                                                       for i, capture in enumerate(retained, 1)) + line(
-                {"format": "feature-index-session-close-v1"})
+                                                       for i, capture in enumerate(retained, 1)) + line({"format": "feature-index-session-close-v1"})
             first = self.run_session(first_payload)
             self.assertEqual(first.returncode, 0, first.stderr.decode("utf-8", "replace"))
             messages = [json.loads(raw) for raw in first.stdout.splitlines()]
@@ -124,6 +140,86 @@ class IndexCaptureSessionTests(unittest.TestCase):
             self.assertEqual(reopened[-1]["captures"], 1)
             self.assertEqual(len(json.loads((namespace/"controller.json").read_bytes())["attempts"]), 2)
             self.assertTrue((namespace/index_hash/RECORD).is_file())
+
+    def test_final_audit_and_reopened_audit_conserve_captures_without_new_ingestion(self):
+        with self.prepared() as (namespace, source):
+            init = self.init(namespace, source); retained = inputs()
+            jobs = [self.capture_job(i, capture, context(f"audit-{i}")) for i, capture in enumerate(retained, 1)]
+            descriptors = sorted((self.audit_capture(capture, job["observation"], 0)
+                                  for capture, job in zip(retained, jobs)), key=lambda item: item["expected"]["requestHash"])
+            for ordinal, item in enumerate(descriptors): item["ordinal"] = ordinal
+            frames = line(self.audit_begin(len(descriptors))) + b"".join(line(item) for item in descriptors) + line(self.audit_run())
+            first = self.run_session(line(init) + b"".join(line(job) for job in jobs) + frames + line({"format": "feature-index-session-close-v1"}))
+            self.assertEqual(first.returncode, 0, first.stderr.decode("utf-8", "replace"))
+            messages = [json.loads(raw) for raw in first.stdout.splitlines()]
+            report = messages[-2]["report"]
+            self.assertEqual(report["audit"]["result"]["counts"]["rawFeatures"], 2283)
+            self.assertEqual(report["audit"]["result"]["counts"]["requiredObservations"], 2)
+            self.assertEqual(report["auditController"]["attempts"], 1)
+            self.assertEqual(messages[-1]["captures"], 2)
+            index_hash = messages[0]["indexHash"]; root = namespace/index_hash
+            before = {name: (root/name).read_bytes() for name in ("capture.json", "audit.json", "features.sqlite")}
+            second = self.run_session(line(init) + frames)  # EOF after a terminal audit is safe.
+            self.assertEqual(second.returncode, 0, second.stderr.decode("utf-8", "replace"))
+            replay = [json.loads(raw) for raw in second.stdout.splitlines()]
+            self.assertEqual(replay[1]["report"]["auditController"]["attempts"], 1)
+            self.assertTrue(replay[1]["report"]["auditController"]["replayed"])
+            self.assertIsNone(replay[1]["report"]["guard"])
+            self.assertEqual(replay[-1]["captures"], 0)
+            for name, raw in before.items(): self.assertEqual((root/name).read_bytes(), raw)
+
+    def test_audit_descriptor_order_and_close_before_run_fail_explicitly(self):
+        for premature_close in (False, True):
+            with self.subTest(premature_close=premature_close), self.prepared() as (namespace, source):
+                capture = inputs()[0]; observation = context("audit-order")
+                payload = line(self.init(namespace, source)) + line(self.capture_job(1, capture, observation))
+                payload += line(self.audit_begin(1))
+                if premature_close:
+                    payload += line({"format": "feature-index-session-close-v1"})
+                else:
+                    payload += line(self.audit_capture(capture, observation, 1))
+                result = self.run_session(payload)
+                self.assertNotEqual(result.returncode, 0)
+                messages = [json.loads(raw) for raw in result.stdout.splitlines()]
+                self.assertEqual([item["format"] for item in messages], [
+                    "feature-index-session-ready-v1", "feature-index-session-result-v1"])
+                self.assertIn(b"audit", result.stderr.lower())
+                self.assertFalse((namespace/messages[0]["indexHash"]/"audit.json").exists())
+
+    def test_audit_descriptor_aggregate_limit_includes_expanded_expectations_and_pins(self):
+        with self.prepared() as (namespace, source):
+            capture = inputs()[0]; observation = context("audit-size")
+            payload = line(self.init(namespace, source)) + line(self.capture_job(1, capture, observation))
+            payload += line(self.audit_begin(256))
+            for ordinal in range(256):
+                payload += line(self.audit_capture(capture, observation, ordinal,
+                    extract_path="/"+"e"*3900, receipt_path="/"+"r"*3900))
+            payload += line(self.audit_run()) + line({"format": "feature-index-session-close-v1"})
+            result = self.run_session(payload)
+            self.assertEqual(result.returncode, 0, result.stderr.decode("utf-8", "replace"))
+            messages = [json.loads(raw) for raw in result.stdout.splitlines()]
+            self.assertEqual([item["format"] for item in messages], [
+                "feature-index-session-ready-v1", "feature-index-session-result-v1",
+                "feature-index-session-audit-result-v1", "feature-index-session-done-v1"])
+            self.assertIn("512000", messages[2]["error"])
+            self.assertEqual(messages[-1]["captures"], 1)
+            self.assertFalse((namespace/messages[0]["indexHash"]/"audit.json").exists())
+
+    def test_audit_error_is_terminal_but_still_allows_session_close(self):
+        with self.prepared() as (namespace, source):
+            capture = inputs()[0]; observation = context("audit-error")
+            payload = line(self.init(namespace, source)) + line(self.capture_job(1, capture, observation))
+            payload += line(self.audit_begin(1))
+            payload += line(self.audit_capture(capture, observation, 0, extract_path="/wrong"))
+            payload += line(self.audit_run()) + line({"format": "feature-index-session-close-v1"})
+            result = self.run_session(payload)
+            self.assertEqual(result.returncode, 0, result.stderr.decode("utf-8", "replace"))
+            messages = [json.loads(raw) for raw in result.stdout.splitlines()]
+            self.assertEqual([item["format"] for item in messages], [
+                "feature-index-session-ready-v1", "feature-index-session-result-v1",
+                "feature-index-session-audit-result-v1", "feature-index-session-done-v1"])
+            self.assertIn("error", messages[2])
+            self.assertEqual(messages[-1]["captures"], 1)
 
     def test_malformed_duplicate_or_oversized_init_fails_before_admission(self):
         cases = [b'{"format":"feature-index-session-init-v1","format":"x"}\n',

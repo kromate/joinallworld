@@ -33,6 +33,7 @@ _INIT_FIELDS = {"format", "namespaceRoot", "aggregateBytes", "repositoryRoot", "
 _JOB_FIELDS = {"format", "id", "extractPath", "receiptPath", "expected", "observation"}
 _SESSION_LINE = 128000
 _SESSION_MAX_JOBS = 256
+_SESSION_AUDIT_MAX_BYTES = 512_000
 
 
 from index_resource_limits import IndexSessionInterrupted as _SessionInterrupted, IndexWorkerUnreaped
@@ -99,6 +100,65 @@ def _session_error(error):
     sys.stderr.buffer.flush()
 
 
+def _session_audit_record(admitted):
+    from index_capture_record import settled_capture_observation_pins
+    from index_capture_state import RECORD
+    from index_controller_state import read_private
+    root, _ = _lease(admitted.lease)
+    return settled_capture_observation_pins(read_private(root/RECORD, 512_000))
+
+
+def _session_audit_begin(message, admitted):
+    if (set(message) != {"format", "id", "count", "attemptLimit"} or message.get("format") != _SESSION+"audit-begin-v1"
+            or type(message.get("id")) is not int or message["id"] != 1
+            or type(message.get("count")) is not int or not 1 <= message["count"] <= _SESSION_MAX_JOBS
+            or type(message.get("attemptLimit")) is not int or not 1 <= message["attemptLimit"] <= 8):
+        raise ValueError("bad audit begin")
+    return dict(count=message["count"], attemptLimit=message["attemptLimit"], jobs=_session_audit_record(admitted),
+                captures=[], size=0, ordinal=0, error=None, terminal=False)
+
+
+def _session_audit_step(message, audit, admitted, init, manifest, configuration, index_hash):
+    import index_resource_limits
+    captures = audit["captures"]
+    if audit["terminal"]: raise ValueError("only close or EOF may follow the audit result")
+    if audit["ordinal"] < audit["count"]:
+        if (set(message) != {"format", "id", "ordinal", "extractPath", "receiptPath", "expected", "requiredObservations"}
+                or message.get("format") != _SESSION+"audit-capture-v1"): raise ValueError("bad audit descriptor")
+        if (type(message["id"]) is not int or message["id"] != 1 or type(message["ordinal"]) is not int
+                or message["ordinal"] != audit["ordinal"] or type(message["extractPath"]) is not str
+                or type(message["receiptPath"]) is not str): raise ValueError("bad audit descriptor order/fields")
+        from index_ingest import prepare_audit_capture_descriptor
+        if audit["error"] is None:
+            try:
+                capture, size = prepare_audit_capture_descriptor(message, audit["jobs"])
+                size += audit["size"] + bool(captures)
+                if size + 2 > _SESSION_AUDIT_MAX_BYTES: raise ValueError("audit descriptors exceed 512000 bytes")
+                audit["size"] = size; captures.append(capture)
+            except Exception as caught:
+                audit["error"] = str(caught).encode("utf-8", "replace")[:4096].decode("utf-8", "ignore") or "audit input failed"
+                captures.clear()
+        audit["ordinal"] += 1
+        return False
+    if (set(message) != {"format", "id"} or message.get("format") != _SESSION+"audit-run-v1"
+            or type(message.get("id")) is not int or message["id"] != 1): raise ValueError("bad audit run order")
+    report = None; error = audit["error"]; interrupted = False
+    try:
+        if error is None:
+            from index_audit_controller import audit_capture_index
+            report = audit_capture_index(admitted, init["repositoryRoot"], manifest, configuration,
+                                         init["node"], captures, attempt_limit=audit["attemptLimit"])
+    except IndexWorkerUnreaped: raise
+    except _SessionInterrupted as caught: error = str(caught); interrupted = True
+    except Exception as caught:
+        error = str(caught).encode("utf-8", "replace")[:4096].decode("utf-8", "ignore") or "audit failed"
+    if index_resource_limits.SESSION_INTERRUPTION and error is None: error = "audit interrupted"
+    _session_emit({"format": _SESSION+"audit-result-v1", "id": 1, "indexHash": index_hash,
+                   "report" if error is None else "error": report if error is None else error})
+    audit["terminal"] = True
+    return interrupted or bool(index_resource_limits.SESSION_INTERRUPTION)
+
+
 def capture_session():
     """Caller holds paired leases; unconfirmed workers inherit them."""
     import index_resource_limits
@@ -132,9 +192,20 @@ def capture_session():
             _session_emit({"format": _SESSION+"ready-v1", "indexHash": index_hash, "admission": admission})
             ready = True
             from index_capture_controller import ingest_capture_job
+            audit = None
             while True:
                 message = _session_readline(pending, _SESSION_LINE)
-                if message is None or message == {"format": _SESSION+"close-v1"}: break
+                if message is None or message == {"format": _SESSION+"close-v1"}:
+                    if audit is not None and not audit["terminal"]:
+                        raise ValueError("audit session closed before the run frame")
+                    break
+                if audit is None and set(message) == {"format", "id", "count", "attemptLimit"}:
+                    audit = _session_audit_begin(message, admitted)
+                    continue
+                if audit is not None:
+                    if _session_audit_step(message, audit, admitted, init, manifest, configuration, index_hash):
+                        interrupted = True; break
+                    continue
                 if (processed == _SESSION_MAX_JOBS or set(message) != _JOB_FIELDS
                         or message.get("format") != _SESSION+"capture-v1"):
                     raise ValueError("bad session job")

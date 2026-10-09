@@ -23,8 +23,8 @@ from index_execution_snapshot import _capture, CONFIGURATION
 from index_ingest import ingest_index, capture_descriptors, _expected, observation_pin
 from index_resource_limits import IndexWorkerUnreaped, bounded_integer
 from index_root import ChargedIndexRoot, _lease, _binding
-from index_storage_footprint import index_storage_footprint
-from index_tooling import verify_index_tooling, decode_tooling_manifest, FILES
+from index_storage_footprint import AUDIT_FILES, AUDIT_DIRECTORIES, index_storage_footprint
+from index_tooling import verify_index_tooling, decode_tooling_manifest, source_snapshot_allowance
 
 MIB = 1024*1024
 _POISONED_LEASES = weakref.WeakValueDictionary()
@@ -85,9 +85,12 @@ def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configu
             or config["reservedBytes"] != admitted.reserved_bytes):
         raise ValueError("capture controller root, binding or paired namespace differs")
     _binding(root, admitted.binding_bytes)
+    if any((root/name).exists() or (root/name).is_symlink()
+           for name in AUDIT_FILES | AUDIT_DIRECTORIES):
+        raise ValueError("index is frozen for audit; further ingestion would change immutable audit input")
     executable, runtime_before = _node_pin(node, config["runtime"])
     repository = Path(repository_root)
-    tooling = verify_index_tooling(repository, manifest_bytes, config["toolingManifest"])
+    verify_index_tooling(repository, manifest_bytes, config["toolingManifest"])
     manifest = decode_tooling_manifest(manifest_bytes, config["toolingManifest"])
     if _capture(repository, CONFIGURATION, config["source"]["configuration"]) != source_configuration:
         raise ValueError("capture controller source configuration differs")
@@ -115,7 +118,7 @@ def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configu
     begin_capture(header, expected["requestHash"], capture_input, context_pin)
     with capture_descriptors(extract_path, receipt_path, expected, observation=observation): pass
     limits = config["processLimits"]
-    snapshot_reserve = tooling["sourceBytes"] + len(source_configuration) + (len(FILES)+4)*8192 + 65536
+    snapshot_reserve = source_snapshot_allowance(manifest, len(source_configuration))
     if snapshot_reserve > MIB:
         raise ValueError("persistent capture source cannot fit its unchanged 1MiB slot")
     # Fixed record and staged record can coexist; include block padding, the full

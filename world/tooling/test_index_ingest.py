@@ -2,6 +2,9 @@
 import json
 import os
 from pathlib import Path
+import hashlib
+import re
+import stat
 import shutil
 import tempfile
 import unittest
@@ -20,12 +23,85 @@ pin = bootstrap_fixture.pin
 ROOT = Path(__file__).resolve().parent.parent.parent
 
 
+def retained_input_path(entry, root=ROOT):
+    """Use the original pinned cache when present, otherwise its tracked raw copy.
+
+    Missing cache bytes may use a byte-identical portable fixture. Corrupt or
+    unsafe existing cache entries must fail; they never trigger a fallback.
+    This helper opens no SQL, creates no cache state and performs no download.
+    """
+    relative = entry.get("path")
+    if type(relative) is not str:
+        raise ValueError("retained raw fixture requires a relative path")
+    parts = relative.split("/")
+    if (len(parts) != 5 or parts[:3] != [".cache", "world-build", "acquisitions"]
+            or not re.fullmatch(r"[a-f0-9]{64}", parts[3])
+            or parts[4] not in {"extract.geojson", "receipt.json"}):
+        raise ValueError("retained raw fixture path is outside its exact namespace")
+    maximum = 20_000_000 if parts[4] == "extract.geojson" else 1_000_000
+    if (type(entry.get("bytes")) is not int or not 1 <= entry["bytes"] <= maximum
+            or type(entry.get("sha256")) is not str or not re.fullmatch(r"[a-f0-9]{64}", entry["sha256"])):
+        raise ValueError("retained raw fixture pin is outside its bound")
+    file = root/relative
+    try: file.lstat()
+    except FileNotFoundError: file = root/"world/campaign-fixtures/index-audit"/parts[3]/parts[4]
+    if file.resolve(strict=True) != file:
+        raise ValueError("retained raw fixture is not canonical")
+    fd = os.open(file, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    try:
+        before = os.fstat(fd)
+        if (not stat.S_ISREG(before.st_mode) or before.st_nlink != 1
+                or before.st_uid != os.getuid() or before.st_mode & 0o022 or before.st_size != entry["bytes"]):
+            raise ValueError("retained raw fixture is unsafe or differs from its size")
+        digest = hashlib.sha256(); total = 0
+        while total <= entry["bytes"]:
+            chunk = os.read(fd, min(65536, entry["bytes"]-total+1))
+            if not chunk: break
+            digest.update(chunk); total += len(chunk)
+        identity = lambda info: (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
+        if (total != entry["bytes"] or digest.hexdigest() != entry["sha256"]
+                or identity(os.fstat(fd)) != identity(before) or identity(file.lstat()) != identity(before)):
+            raise ValueError("retained raw fixture differs from its exact pin/identity")
+    finally: os.close(fd)
+    return file
+
+
+class RetainedInputPathTests(unittest.TestCase):
+    def test_portable_copy_only_replaces_missing_cache_and_never_repairs_corruption(self):
+        with tempfile.TemporaryDirectory(prefix="raw-fixture-path-") as temporary:
+            root = Path(temporary).resolve(strict=True); content = b"pinned raw fixture"
+            entry = {"path": ".cache/world-build/acquisitions/"+"a"*64+"/extract.geojson", **pin(content)}
+            copy = root/"world/campaign-fixtures/index-audit"/("a"*64)/"extract.geojson"
+            copy.parent.mkdir(parents=True); copy.write_bytes(content)
+            self.assertEqual(retained_input_path(entry, root), copy)
+            original = root/entry["path"]; original.parent.mkdir(parents=True); original.write_bytes(content)
+            self.assertEqual(retained_input_path(entry, root), original)
+            original.write_bytes(b"corrupt")
+            with self.assertRaisesRegex(ValueError, "size"):
+                retained_input_path(entry, root)
+            self.assertEqual(copy.read_bytes(), content)
+            self.assertEqual(original.read_bytes(), b"corrupt")
+
+    def test_portable_fixture_refuses_bad_pin_or_symlink_without_cache_creation(self):
+        with tempfile.TemporaryDirectory(prefix="raw-fixture-path-") as temporary:
+            root = Path(temporary).resolve(strict=True); content = b"pinned"
+            entry = {"path": ".cache/world-build/acquisitions/"+"b"*64+"/receipt.json", **pin(content)}
+            copy = root/"world/campaign-fixtures/index-audit"/("b"*64)/"receipt.json"
+            copy.parent.mkdir(parents=True); target = root/"target"; target.write_bytes(content); copy.symlink_to(target)
+            with self.assertRaisesRegex(ValueError, "canonical"):
+                retained_input_path(entry, root)
+            copy.unlink(); copy.write_bytes(content)
+            with self.assertRaisesRegex(ValueError, "exact pin"):
+                retained_input_path({**entry, "sha256": "c"*64}, root)
+            self.assertFalse((root/".cache").exists())
+
+
 def inputs():
     products = json.loads((ROOT/"world/regional-fanout.json").read_bytes())["products"][:2]
     result = []
     for product in products:
         extract = product["parentInput"]; receipt = product["parentReceipt"]
-        ep = ROOT/extract["path"]; rp = ROOT/receipt["path"]
+        ep = retained_input_path(extract); rp = retained_input_path(receipt)
         receipt_raw = rp.read_bytes()
         if pin(receipt_raw) != {key: receipt[key] for key in ["sha256", "bytes"]}:
             raise ValueError("retained receipt does not match product pin")

@@ -31,6 +31,7 @@ WORKERS = {
     "index-engine-bootstrap": HERE / "index_bootstrap.ts",
     "index-bootstrap-crash": HERE / "index_bootstrap_crash.ts",
     "index-capture-ingest": HERE / "index_ingest.ts",
+    "index-capture-audit": HERE / "index_audit.ts",
     "index-ingest-crash": HERE / "index_ingest_crash.ts",
     "index-registry-startup": HERE / "index_registry_worker.py",
     "index-registry-admit": HERE / "index_admission_worker.py",
@@ -152,7 +153,7 @@ def recovered_witness(root):
 def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
                        wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB, lease_descriptor=None,
                        execution_root=None, namespace_descriptor=None, registry_configuration=None,
-                       capture_configuration=None):
+                       capture_configuration=None, audit_configuration=None):
     """Private fixed-worker boundary. Never dispose caller-owned database/WAL.
 
     Caller supplies the actual held kernel lease; inode checks cannot prove flock
@@ -254,6 +255,24 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
             inherited += (descriptor,)
     elif capture_configuration is not None:
         raise ValueError("capture descriptors are accepted only by the fixed ingestion worker")
+    audit_worker = worker == "index-capture-audit"
+    if audit_worker:
+        if (type(audit_configuration) is not dict or set(audit_configuration) != {"metadataDescriptor", "metadataSha256"}
+                or lease_descriptor is None or namespace_descriptor is None or execution_root is None):
+            raise ValueError("fixed audit requires both leases, frozen source and exact metadata")
+        descriptor = audit_configuration["metadataDescriptor"]
+        bounded_integer(descriptor, 3, 2147483647, "audit descriptor")
+        digest = audit_configuration["metadataSha256"]
+        if descriptor in inherited or type(digest) is not str or not re.fullmatch(r"[a-f0-9]{64}", digest):
+            raise ValueError("audit metadata identity is invalid")
+        info = os.fstat(descriptor)
+        if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_nlink != 0
+                or stat.S_IMODE(info.st_mode) != 0o600 or not 1 <= info.st_size <= 512000
+                or fcntl.fcntl(descriptor, fcntl.F_GETFL) & os.O_ACCMODE != os.O_RDONLY):
+            raise ValueError("audit metadata must be bounded readonly anonymous input")
+        inherited += (descriptor,)
+    elif audit_configuration is not None:
+        raise ValueError("audit metadata is accepted only by the fixed audit worker")
     node = Path(node)
     if not node.is_absolute():
         raise ValueError("Node executable must be absolute")
@@ -295,6 +314,9 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     if capture_worker:
         environment["WORLD_INDEX_CAPTURE_DESCRIPTOR"] = str(capture_configuration["metadataDescriptor"])
         environment["WORLD_INDEX_CAPTURE_SHA256"] = capture_configuration["metadataSha256"]
+    if audit_worker:
+        environment["WORLD_INDEX_AUDIT_DESCRIPTOR"] = str(audit_configuration["metadataDescriptor"])
+        environment["WORLD_INDEX_AUDIT_SHA256"] = audit_configuration["metadataSha256"]
     if registry_worker:
         environment.update({"WORLD_INDEX_NAMESPACE_BUDGET": str(registry_configuration["aggregateBytes"]),
             "WORLD_INDEX_PYTHON_VERSION": registry_configuration["pythonVersion"],

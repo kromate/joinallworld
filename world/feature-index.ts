@@ -64,6 +64,13 @@ const DEFINITIONS: Record<string, string> = {
 };
 const SCHEMA_HASH = sha256(canonicalJson(DEFINITIONS));
 
+/** Read-only layout declaration for independent auditors; constructing a writer is unnecessary. */
+export const FEATURE_INDEX_STORAGE_CONTRACT = Object.freeze({
+  applicationId: APPLICATION_ID, userVersion: 1, version: FEATURE_INDEX_VERSION,
+  identityVersion: FEATURE_IDENTITY_VERSION, schemaHash: SCHEMA_HASH,
+  schema: Object.freeze({ ...DEFINITIONS }),
+});
+
 function integer(value: unknown, min: number, max: number, label: string): number {
   if (typeof value !== 'number' || !Number.isSafeInteger(value) || value < min || value > max) throw new RangeError(`${label} exceeds its index bound.`);
   return value;

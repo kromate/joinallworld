@@ -18,6 +18,8 @@ import { canonicalJson } from './pack.ts';
 import type { AcquisitionOptions, AcquisitionRequest, AcquisitionResult } from './production-types.ts';
 import type { SourceRecord } from './types.ts';
 import type { FeatureIndexSessionConfiguration } from './feature-index-session.ts';
+import { openFeatureIndexSession } from './feature-index-session.ts';
+import type { FeatureIndexCaptureInput, FeatureIndexSessionAuditInput } from './feature-index-session.ts';
 import type { GridQueryCampaign } from './grid-query-types.ts';
 import { Ledger } from './ledger.ts';
 
@@ -116,6 +118,56 @@ async function indexConfiguration(state: { campaignTemp: string }, rootName = 'i
     sourceConfiguration: Buffer.from(material.sourceBase64, 'base64'),
     bindingBytes: Buffer.from(material.bindingBase64, 'base64') };
 }
+
+test('actual Node to Python final audit preserves retained Dakar captures and replays without a new audit attempt', async () => {
+  const campaignTemp = await realpath(await mkdtemp(path.join(os.tmpdir(), 'index-session-audit-')));
+  try {
+    const config = await indexConfiguration({ campaignTemp }, 'index-namespace', ['buildings', 'roads']);
+    const script = String.raw`
+import json,pathlib,sys
+sys.path.insert(0,str(pathlib.Path(sys.argv[1])/'world/tooling'))
+from test_index_ingest import inputs
+print(json.dumps([{'extractPath':str(extract),'receiptPath':str(receipt),'expected':expected}
+                 for extract,receipt,expected in inputs()],sort_keys=True,separators=(',',':')))
+`;
+    const raw = execFileSync(PYTHON, ['-I', '-B', '-c', script, ROOT], { encoding: 'utf8', maxBuffer: 128_000 });
+    const retained = JSON.parse(raw) as Omit<FeatureIndexCaptureInput, 'observation'>[];
+    const captures: FeatureIndexCaptureInput[] = retained.map((input, ordinal) => ({ ...input, observation: {
+      campaignHash: sha('synthetic-session-audit-context'), planHash: sha('synthetic-session-plan'),
+      jobId: `session-audit-${ordinal}`, rootCellId: 'geo-grid-v1:l1:x324:y209', queryPath: '0',
+    } }));
+    const auditInputs: FeatureIndexSessionAuditInput[] = captures.map(({ observation, ...input }) =>
+      ({ ...input, requiredObservations: [observation!] })).sort((a, b) =>
+        a.expected.requestHash < b.expected.requestHash ? -1 : a.expected.requestHash > b.expected.requestHash ? 1 : 0);
+    const session = await openFeatureIndexSession(config);
+    let closed = false;
+    let audit: Record<string, unknown>;
+    try {
+      for (const input of captures) await session.ingestCapture(input);
+      audit = await session.auditCaptures(auditInputs, 2);
+      const result = (audit.audit as { result: { counts: Record<string, number> } }).result;
+      assert.equal(result.counts.rawFeatures, 2283);
+      assert.equal(result.counts.requiredObservations, 2);
+      assert.equal((audit.auditController as Record<string, unknown>).attempts, 1);
+      await assert.rejects(session.ingestCapture(captures[0]!), /no ingestion after audit/i);
+      await assert.rejects(session.auditCaptures(auditInputs, 2), /one final audit/i);
+      assert.deepEqual(await session.close(), { indexHash: session.indexHash, captures: 2 }); closed = true;
+    } finally { if (!closed) await session.close().catch(() => {}); }
+    const root = path.join(config.namespaceRoot, session.indexHash);
+    const before = new Map<string, string>();
+    for (const name of ['capture.json', 'audit.json', 'features.sqlite']) before.set(name, sha(await readFile(path.join(root, name))));
+    const replay = await openFeatureIndexSession(config); let replayClosed = false;
+    try {
+      const retainedReport = await replay.auditCaptures(auditInputs, 2);
+      assert.equal(retainedReport.guard, null);
+      assert.equal((retainedReport.auditController as Record<string, unknown>).replayed, true);
+      assert.equal((retainedReport.auditController as Record<string, unknown>).attempts, 1);
+      assert.deepEqual(retainedReport.audit, audit!.audit);
+      assert.deepEqual(await replay.close(), { indexHash: replay.indexHash, captures: 0 }); replayClosed = true;
+    } finally { if (!replayClosed) await replay.close().catch(() => {}); }
+    for (const [name, hash] of before) assert.equal(sha(await readFile(path.join(root, name))), hash);
+  } finally { await rm(campaignTemp, { recursive: true, force: true }); }
+});
 
 function makeAcquire(failFirst?: () => boolean) {
   let calls = 0;

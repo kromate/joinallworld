@@ -4,8 +4,16 @@ Current campaign-index checkpoint — 9 October 2026: actual held-session ingest
 frozen query membership and live-token completion are implemented.228 Python +43
 Node tests and full World TypeScript pass. Implementationa75c59af also passes
 five exact source-policy checks:276 distinct checks plus compiler. Source and acceptance94d95a88 are published on main; runtime upload is not
-part of this phase. FEATURE-INDEX-AUDIT-SPEC.md defines the next unimplemented
-gate, including failed-attempt observation handling and charged WAL-aware copies. Read the first PROGRESS.md section and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
+part of this phase. FEATURE-INDEX-AUDIT-SPEC.md defines the next gate, now in
+local implementation and not yet accepted: raw/SQL kernel, fixed worker,
+charged WAL-aware copies and durable controller recovery. File-only inventory
+checks pass11; current small no-worker suite passes30 including14 capture-record,
+7 codec/file,2 capacity and7 tooling checks. Registry/capture/audit use shared8KiB-rounding
+preflight with unchanged storage caps. Earlier logical kernel7 and World
+TypeScript pass. Final-source kernel/compiler, real audit execution,
+the drafted terminal session/SDK bridge, campaign integration and the
+independent acceptance fixtures remain open. Read the first PROGRESS.md section
+and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
 Next independent raw/index audit, deterministic globally admitted shards/operator
 materials and compiled streamed country geometry. Geographic foundation remains
 distinct from explorable/playable coverage; no runtime upload/map detail thisphase.

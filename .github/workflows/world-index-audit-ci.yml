@@ -1,0 +1,78 @@
+name: World index audit diagnostic
+
+on:
+  push:
+    branches: [codex/world-index-audit-diagnostic]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: world-index-audit-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22.19.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.14'
+      - name: Record exact source and runtime paths
+        run: |
+          mkdir -p diagnostic-evidence
+          printf 'WORLD_TEST_NODE=%s\n' "$(realpath "$(command -v node)")" >> "$GITHUB_ENV"
+          printf 'WORLD_TEST_PYTHON=%s\n' "$(realpath "$(command -v python)")" >> "$GITHUB_ENV"
+          git rev-parse HEAD > diagnostic-evidence/source-sha.txt
+          node -p 'JSON.stringify(process.versions)' > diagnostic-evidence/node-runtime.json
+          python -c 'import json,sqlite3,sys; print(json.dumps({"python":sys.version,"sqlite":sqlite3.sqlite_version}))' > diagnostic-evidence/python-runtime.json
+      - name: Install locked TypeScript dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Verify six immutable raw copies and unchanged storage preflight
+        env:
+          PYTHONPATH: world/tooling
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python -B -c 'import json,pathlib; from test_index_ingest import retained_input_path; from index_tooling import FILES,FORMAT,source_snapshot_allowance; root=pathlib.Path.cwd(); fixture=json.loads((root/"world/campaign-fixtures/index-audit/manifest.json").read_bytes()); paths=[retained_input_path(item["original"]) for item in fixture["files"]]; manifest={"format":FORMAT,"files":{name:{"sha256":"a"*64,"bytes":(root/name).stat().st_size} for name in FILES}}; source=source_snapshot_allowance(manifest,(root/"world/acquisition-sources.json").stat().st_size); control=source+2*65536+2*8192+8192; assert control<=1048576; print(json.dumps({"files":len(paths),"bytes":sum(p.stat().st_size for p in paths),"sourceAllowance":source,"registryControlWithOperation":control}))' > diagnostic-evidence/preflight.json
+      - name: Pure audit protocol and kernel
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --experimental-strip-types --test --test-concurrency=1 world/feature-index-session.test.ts world/feature-index-audit.test.ts > diagnostic-evidence/node-audit.tap 2>&1
+      - name: Actual audit controller and recovery
+        env:
+          PYTHONPATH: world/tooling
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: /usr/bin/time -v python -B -m unittest test_index_audit_controller > diagnostic-evidence/python-audit.stdout 2> diagnostic-evidence/python-audit.stderr
+      - name: Actual held Python sessions and audit replay
+        env:
+          PYTHONPATH: world/tooling
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: /usr/bin/time -v python -B -m unittest test_index_capture_session > diagnostic-evidence/python-session.stdout 2> diagnostic-evidence/python-session.stderr
+      - name: Actual Node to Python retained-capture audit
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --experimental-strip-types --test --test-concurrency=1 --test-name-pattern='actual Node to Python final audit' world/campaign-feature-index.test.ts > diagnostic-evidence/sdk-audit.tap 2>&1
+      - name: Affected registry, capture and ingestion regression checks
+        env:
+          PYTHONPATH: world/tooling
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
+      - name: World TypeScript
+        env:
+          NODE_OPTIONS: --max-old-space-size=384
+        run: node_modules/.bin/tsc --noEmit -p world/tsconfig.json > diagnostic-evidence/world-typecheck.stdout 2> diagnostic-evidence/world-typecheck.stderr
+      - name: Retain exact-source diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: world-index-audit-${{ github.sha }}
+          path: diagnostic-evidence/
+          retention-days: 7
+          if-no-files-found: error

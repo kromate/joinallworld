@@ -22,8 +22,8 @@
     },
     {
       "path": "src/game/cities/cotonou/geometry.ts",
-      "bytes": 73766,
-      "sha256": "269cd837c31c2115a07baae2c1c199533d20357aa30da8d02251f8edc1d337dc"
+      "bytes": 73757,
+      "sha256": "5580502f9bc149aa669cc81f2f52d4f76139409571d59890e94fec728eb683f5"
     },
     {
       "path": "src/game/cities/cotonou/index.ts",
@@ -47,8 +47,8 @@
     },
     {
       "path": "src/game/cities/abidjan/geometry.ts",
-      "bytes": 78457,
-      "sha256": "6ec21e51e5ca17dba63f76bbe77144d9659145b1947922ebd4d22048f938127e"
+      "bytes": 78448,
+      "sha256": "4f03b7155eb99fc40e8e2e8424546c7fe20f09d892cb1610d52d8a6068351a63"
     },
     {
       "path": "src/game/cities/abidjan/index.ts",
@@ -72,8 +72,8 @@
     },
     {
       "path": "src/game/cities/dakar/geometry.ts",
-      "bytes": 84638,
-      "sha256": "4df2ae414b596f460135087b4c19b9821ce3fb8714d56fdfb4e4ccfe84c5b36b"
+      "bytes": 84629,
+      "sha256": "fb1264aad64c4143371348ff6937f6ca809aff326177f1eca1e3ec0c3d544b3f"
     },
     {
       "path": "src/game/cities/dakar/index.ts",
@@ -97,8 +97,8 @@
     },
     {
       "path": "src/game/cities/cape-town/geometry.ts",
-      "bytes": 60454,
-      "sha256": "68c0dd69c1a5661523df69851312ef3521bbb9c7b05a1cd6714ec38a75c5beb6"
+      "bytes": 60445,
+      "sha256": "fdbc5f0fb55c39b810f137231da48d6111a4c2ec8c53522aff44729fc798d799"
     },
     {
       "path": "src/game/cities/cape-town/index.ts",
@@ -122,8 +122,8 @@
     },
     {
       "path": "src/game/cities/addis-ababa/geometry.ts",
-      "bytes": 75655,
-      "sha256": "7413bedb93399e0ec82364794d8cb47133b573fa2dccf2077ec8d71002ffa64f"
+      "bytes": 75646,
+      "sha256": "d3a45e16d24076b9a5d50e69f56b0d8bb065d6b413caa490785a06b066540f26"
     },
     {
       "path": "src/game/cities/addis-ababa/index.ts",
@@ -142,8 +142,8 @@
     },
     {
       "path": "scripts/world/build-playable-africa-wave2.py",
-      "bytes": 7646,
-      "sha256": "9c2e8f882e7a3cf3b667c12e1d80a0158587ecccc2484d7803af14ecadd76d29"
+      "bytes": 7637,
+      "sha256": "0842dd6a4230a88f06206108854f9ebd9f9d2eaeaea6ec8044c29fbc6c64572f"
     },
     {
       "path": "scripts/world/verify-playable-destination.ts",
@@ -163,12 +163,12 @@
     {
       "path": "world/playable-africa-wave2/abidjan-sources.json",
       "bytes": 4456,
-      "sha256": "89d313fe74b0001c26743a52ce51fdb31a8eb01517bc968fc854fb3961d808e8"
+      "sha256": "d70cbd90df6f827bac5d98270c204bf8c35532ac6b475f444e1aa8f74678c4f2"
     },
     {
       "path": "world/playable-africa-wave2/addis-ababa-sources.json",
       "bytes": 4317,
-      "sha256": "418bcb1ce8f69eb890ac57b6cd872793dc508ac6fb71f8209d781815295eef76"
+      "sha256": "0e6735ba071e0008f97e41c16c4dc182a967baff5995207cc0c69a8d2892d865"
     },
     {
       "path": "world/playable-africa-wave2/airports.json",
@@ -178,17 +178,17 @@
     {
       "path": "world/playable-africa-wave2/cape-town-sources.json",
       "bytes": 4056,
-      "sha256": "f20f8a3dade6cbb2a897b7e9a12bc14b446a5fdb660886e0193ad8a20a64d41e"
+      "sha256": "92e0bc525582ba9197b48e635b1e49278ad1f14770751320678163dbd699adc2"
     },
     {
       "path": "world/playable-africa-wave2/cotonou-sources.json",
       "bytes": 4036,
-      "sha256": "e7e8ff11992b72ac3c6641dcf09632d2d535b4dfbb45ed384c19aa567d79c609"
+      "sha256": "4a9e261efcc83cc76a7d7d9fcc8be4668859e01e8843f2fd801c56a2e735c3e0"
     },
     {
       "path": "world/playable-africa-wave2/dakar-sources.json",
       "bytes": 3929,
-      "sha256": "c851e163bc20670dca3c44ad874ab1c338dccc0f7dbf93613f4fe16e3df44e00"
+      "sha256": "e3319344685ee916f2459e61f07050326ef87afcbabf6b907b560bdacbce123a"
     },
     {
       "path": "world/playable-africa-wave2/inventory.json",
@@ -201,11 +201,47 @@
     "passed": 5,
     "heapMb": 256,
     "scope": "Isolated source/engine; real host/browser/budget/prod acceptance pending",
-    "remoteAudit": "pending",
+    "remoteAudit": "pending fresh annotation/source mirror audit",
     "priorRemoteAudit": {
       "source": "bd25c1ef540d04da5f3fd37db515ea8635e45df0",
       "url": "https://github.com/kromate/joinallworld/actions/runs/37942876943",
       "status": "FAIL one verifier typing omission: optional airHub.venueId index requires explicit arrival-venue assertion. Runtime city journeys/pins passed bothnodes. Guard corrected; fresh audit required."
+    },
+    "priorAcceptedRemoteAudit": {
+      "source": "5f5f4a9220aaf98ebe6c8327c5488986fbc45f32",
+      "url": "https://github.com/kromate/joinallworld/actions/runs/37943469335",
+      "status": "PASS Node22/24 assets, five isolated journeys and strict compiler before geometry typing-only repair"
+    },
+    "typeBoundaryRepair": {
+      "geographyUnchanged": true,
+      "literalPayloads": [
+        {
+          "city": "cotonou",
+          "literalPayloadSha256": "45feeec3897034ad17955670e92fdf6e21d1c6473e842536921367b0ef9dbb6a",
+          "geographyUnchanged": true
+        },
+        {
+          "city": "abidjan",
+          "literalPayloadSha256": "d442566bfa2e0402da29f93ab93f2585ea0e5929364f40323695052125bcec0f",
+          "geographyUnchanged": true
+        },
+        {
+          "city": "dakar",
+          "literalPayloadSha256": "87440c42c86656366c60c0dac1fd3e795d9cb9a19efcd54335e4a824ca0479a5",
+          "geographyUnchanged": true
+        },
+        {
+          "city": "cape-town",
+          "literalPayloadSha256": "0d4caad8c798804c6892293e701f0e72a2cdc2be175338044681e3ab6b26e0d3",
+          "geographyUnchanged": true
+        },
+        {
+          "city": "addis-ababa",
+          "literalPayloadSha256": "d181e8d7b2331e8fe643d01910f2cefe03ee204594b4f8c36202bee511d37274",
+          "geographyUnchanged": true
+        }
+      ],
+      "scope": "Explicit exported DestinationGeometry boundary; no coordinates, source acquisitions, limits, gameplay or shared registry changes"
     }
   },
   "reuseSharedAdmission": "Existing first-wave country metadata/atlas adapter; Integration owns all shared edits.",

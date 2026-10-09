@@ -28,17 +28,18 @@ interface CachedSource {
 interface CoordinatePoint { readonly lon: number; readonly lat: number }
 
 function usage(): never {
-  throw new Error('Usage: node --experimental-strip-types scripts/city/build-city.ts <city-id> [--check]')
+  throw new Error('Usage: node --experimental-strip-types scripts/city/build-city.ts <city-id> [--check] | --check-batch <city-id>...')
 }
 
-function parseArguments(): { readonly cityId: string; readonly check: boolean } {
+function parseArguments(): { readonly cityIds: readonly string[]; readonly check: boolean; readonly batch: boolean } {
   const args = process.argv.slice(2)
-  const unknown = args.filter(arg => arg !== '--check' && arg.startsWith('-'))
+  const batch = args.includes('--check-batch')
+  const check = args.includes('--check') || batch
+  const unknown = args.filter(arg => arg !== '--check' && arg !== '--check-batch' && arg.startsWith('-'))
   const cityIds = args.filter(arg => !arg.startsWith('-'))
-  if (unknown.length || cityIds.length !== 1) return usage()
-  const cityId = cityIds[0]!
-  if (!SLUG.test(cityId)) throw new Error('City id must be a lowercase slug')
-  return { cityId, check: args.includes('--check') }
+  if (unknown.length || !cityIds.length || (batch ? args.includes('--check') : cityIds.length !== 1)) return usage()
+  for (const cityId of cityIds) if (!SLUG.test(cityId)) throw new Error('City id must be a lowercase slug')
+  return { cityIds, check, batch }
 }
 
 async function moduleAt(path: string): Promise<Record<string, unknown>> {
@@ -359,17 +360,40 @@ function runCatalogue(check: boolean): void {
   if (result.status !== 0) throw new Error(`City catalogue ${check ? 'check' : 'generation'} failed with status ${result.status ?? 'unknown'}`)
 }
 
-async function main(): Promise<void> {
-  const { cityId, check } = parseArguments()
+async function verifyCity(cityId: string, check: boolean): Promise<boolean> {
   const cityDirectory = join(root, 'src', 'game', 'cities', cityId)
   const recipePath = join(cityDirectory, 'recipe.ts')
-  if (existsSync(recipePath)) {
-    if (await verifyLegacy(cityId, recipePath, check)) runCatalogue(check)
-    return
-  }
+  if (existsSync(recipePath)) return verifyLegacy(cityId, recipePath, check)
   const specPath = join(cityDirectory, 'spec.ts')
   if (!existsSync(specPath)) throw new Error(`${relative(root, specPath)} is missing`)
-  if (await buildFormula(cityId, specPath, check)) runCatalogue(check)
+  return buildFormula(cityId, specPath, check)
+}
+
+async function main(): Promise<void> {
+  const { cityIds, check, batch } = parseArguments()
+  if (!batch) {
+    if (await verifyCity(cityIds[0]!, check)) runCatalogue(check)
+    return
+  }
+
+  let failed = false
+  for (const cityId of cityIds) {
+    try {
+      if (!await verifyCity(cityId, true)) failed = true
+    } catch (error) {
+      console.error(`${cityId}: ${error instanceof Error ? error.message : String(error)}`)
+      failed = true
+    }
+  }
+  try {
+    // The catalogue is global, so validate it once after every requested city.
+    runCatalogue(true)
+    console.log('Batch catalogue check passed.')
+  } catch (error) {
+    console.error(error instanceof Error ? error.message : String(error))
+    failed = true
+  }
+  if (failed) process.exitCode = 1
 }
 
 const entry = process.argv[1]

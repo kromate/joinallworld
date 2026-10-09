@@ -37,6 +37,7 @@ await Promise.all(cityIds.map((id) => loadCityContent(id)))
 
 test('every generated city passes its offline source and output check', () => {
   const authored = new Set(['lagos', 'ibadan', 'abeokuta', 'ota', 'ijebu-ode', 'port-harcourt', 'abuja', 'kano'])
+  const generated: string[] = []
   for (const id of cityIds) {
     const directory = join(root, 'src/game/cities', id)
     if (existsSync(join(directory, 'recipe.ts'))) {
@@ -46,10 +47,11 @@ test('every generated city passes its offline source and output check', () => {
       assert.ok(authored.has(id), `${id}: a new city requires a source spec`)
       continue
     }
-    execFileSync(process.execPath, ['--experimental-strip-types', join(root, 'scripts/city/build-city.ts'), id, '--check'], {
-      cwd: root, encoding: 'utf8', timeout: 60_000,
-    })
+    generated.push(id)
   }
+  if (generated.length) execFileSync(process.execPath, ['--experimental-strip-types', join(root, 'scripts/city/build-city.ts'), '--check-batch', ...generated], {
+    cwd: root, encoding: 'utf8', timeout: 60_000,
+  })
 })
 
 test('every playable city is covered by the shared city contracts', async () => {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
-import { execFileSync } from 'node:child_process'
+import { execFileSync, spawnSync } from 'node:child_process'
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
@@ -354,6 +354,20 @@ test('Sagamu generated runtime preserves the exact original baseline', async () 
 
 test('Sagamu offline generator check accepts current generated files', () => {
   execFileSync(process.execPath, ['--experimental-strip-types', 'scripts/city/build-city.ts', 'sagamu', '--check'], { cwd: root, stdio: 'pipe' })
+})
+
+test('batch checking reports a failed city, continues to a valid city and remains read-only', () => {
+  const result = spawnSync(process.execPath, ['--experimental-strip-types', 'scripts/city/build-city.ts', '--check-batch', 'missing-city-fixture', 'sagamu'], {
+    cwd: root, encoding: 'utf8', timeout: 60_000,
+  })
+  assert.equal(result.error, undefined)
+  assert.equal(result.status, 1, 'one missing city prevents batch success')
+  assert.match(result.stderr, /missing-city-fixture: .*spec\.ts is missing/)
+  assert.match(result.stdout, /sagamu: legacy rules, content and geometry match \d+ baseline bytes/)
+  assert.match(result.stdout, /Batch catalogue check passed\./, 'the final global catalogue check still runs')
+  for (const [file, text] of Object.entries(legacyGeneratedFiles(SAGAMU_LEGACY_RECIPE))) {
+    assert.equal(generatedTextIsCurrent(join(root, 'src/game/cities/sagamu', file), text), true, `${file} remains current`)
+  }
 })
 
 test('the generated content file writes the cast as plain data with bare keys, one regular to a line', () => {

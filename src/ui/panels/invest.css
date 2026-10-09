@@ -8,6 +8,7 @@
 .invest-amounts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,104px),1fr));gap:6px;margin:var(--s-2) 0 var(--s-3)}
 .invest-amounts button{border:0;background:var(--c-fill);border-radius:var(--r-sm);overflow-wrap:anywhere;padding:10px 8px;min-height:var(--tap);font:700 13px var(--font);cursor:pointer;color:var(--c-ink);font-variant-numeric:tabular-nums}
 .invest-amounts button[aria-pressed=true]{background:var(--app-tint,var(--c-ink));color:#fff}
+.invest-amounts button:disabled{opacity:.6;cursor:wait}
 .invest-terms{display:grid;gap:6px}
 .invest-term{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--s-2);width:100%;min-height:54px;padding:8px 14px;border:0;border-radius:var(--r-sm);background:color-mix(in srgb,var(--app-tint,#7c3aed) 10%,#fff);color:var(--c-ink);font:inherit;text-align:left;cursor:pointer}
 .invest-term:hover:enabled{background:color-mix(in srgb,var(--app-tint,#7c3aed) 17%,#fff)}

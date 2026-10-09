@@ -61,7 +61,8 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
     <ReliefLink />
     <section class="bank-wallet" aria-label="Your game wallet"><div class="bank-wallet-top"><span>Your game wallet</span><AppArtwork app="bank" /></div><strong>{{ money(state.cash) }}</strong><div class="bank-wallet-note">
       <template v-if="bills.due">
-        Due every Saturday: <b>{{ money(economy.weeklyBills) }}</b> · next {{ economy.nextDueLabel }}.
+        Usual weekly bills: <b>{{ money(economy.weeklyBills) }}</b> · next billing date {{ economy.nextDueLabel }}.
+        <template v-if="loan && loan.prepaid > 0 && !loan.cleared"> {{ loan.nextCollection }}</template>
         <template v-if="bills.tail === 'pay'"> Your job pays up to {{ money(career.weeklyPay) }} a week.</template>
         <template v-else-if="bills.tail === 'no-job'"> You have no job yet — open Jobs to start earning.</template>
       </template>

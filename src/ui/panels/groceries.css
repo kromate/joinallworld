@@ -4,7 +4,7 @@
 .groceries-offline{margin:2px 0 0!important}
 .groceries-grid{margin-top:var(--s-2)!important}
 /* One tap, one pack: the price is on the button. The stepper under it fills the basket instead. */
-.groceries-buy{min-height:var(--tap);margin:0 0 6px;padding:8px;border:0;border-radius:var(--r-pill);background:var(--app-tint,var(--c-green-dark));color:#fff;font:700 12.5px var(--font);font-variant-numeric:tabular-nums;white-space:normal;overflow-wrap:anywhere;cursor:pointer}
+.groceries-buy{min-height:var(--tap);margin:0 0 6px;padding:8px;border:0;border-radius:var(--r-sm);background:var(--c-green-dark);color:#fff;font:700 14px var(--font);font-variant-numeric:tabular-nums;white-space:normal;overflow-wrap:anywhere;cursor:pointer}
 .groceries-buy:enabled:hover{filter:brightness(1.08)}
 .groceries-buy:enabled:active{filter:brightness(.92)}
 .groceries-buy:disabled{background:var(--c-fill-2);color:var(--c-muted);cursor:not-allowed}

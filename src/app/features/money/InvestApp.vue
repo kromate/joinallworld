@@ -45,7 +45,7 @@ const close = (id: string): Promise<boolean> => act(`close:${id}`, () => command
       <h3>Open a deposit</h3>
       <p class="ui-note">Pick an amount, then a term. Closing early returns the amount without interest.</p>
       <div class="invest-amounts" role="group" aria-label="Deposit amount">
-        <button v-for="item in savings.amounts" :key="item.amount" type="button" :aria-pressed="item.amount === pick.amount" @click="chosen = item.amount">{{ money(item.amount) }}</button>
+        <button v-for="item in savings.amounts" :key="item.amount" type="button" :aria-pressed="item.amount === pick.amount" :disabled="wait" @click="chosen = item.amount">{{ money(item.amount) }}</button>
       </div>
       <div class="invest-terms">
         <button v-for="term in savings.terms" :key="term.id" type="button" class="invest-term" :disabled="Boolean(blocked) || wait" :title="blocked ?? undefined" @click="open(term.id)">

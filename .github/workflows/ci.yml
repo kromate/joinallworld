@@ -102,12 +102,21 @@ jobs:
           src/app/features/tables/chessBoard.test.ts
           src/app/features/tables/weaveModel.test.ts
           src/app/features/tables/weaveBoard.test.ts
+          server/economy/effects.test.ts
+          server/recovery-action-intent.test.ts
+          server/salt.test.ts
 
       - name: Existing shopping, housing and career checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:'
           src/app/features/panelsA.test.ts
+
+      - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
+      - name: Existing Worker host and timed-action checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts
 
   full:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks

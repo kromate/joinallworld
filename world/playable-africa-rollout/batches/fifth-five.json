@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "base": "1d9a8a8f1157dc127413100ddca53db616f238c4",
+  "scope": "Fifth batch of African starter source and isolated engine verification only. No host, browser, strict-types, durable-save, download-budget, phone, or production acceptance is claimed.",
+  "destinationIds": [
+    "dar",
+    "brazz",
+    "kin",
+    "antananarivo",
+    "lilongwe"
+  ],
+  "registeredInProduction": false,
+  "geometry": {
+    "buildings": 1384,
+    "roads": 349,
+    "extent": "Five bounded central OpenStreetMap samples, pinned Natural Earth country outlines and OurAirports dataset points; estimated building silhouettes and missing heights are explicit estimates; not whole cities or countries."
+  },
+  "sourceSummaries": [
+    {
+      "city": "dar",
+      "countryIso2": "TZ",
+      "osmSha256": "ebcd6df766e1604cb7b0df9e1551010458c0a12139dd440093cd4f9780e814d3",
+      "sourceBytes": 6927731,
+      "retained": {
+        "buildings": 350,
+        "roads": 154
+      }
+    },
+    {
+      "city": "brazz",
+      "countryIso2": "CG",
+      "osmSha256": "70bf9bdcd37ec675312c3c5eba1f22f7e42247a1119fda33f473ea15fdafe8eb",
+      "sourceBytes": 2861352,
+      "retained": {
+        "buildings": 350,
+        "roads": 37
+      }
+    },
+    {
+      "city": "kin",
+      "countryIso2": "CD",
+      "osmSha256": "a533a757f73d739cbe33c4b4d9e2d3139a7fea2c153b9f11d0619e69e3e3eef6",
+      "sourceBytes": 336792,
+      "retained": {
+        "buildings": 146,
+        "roads": 32
+      }
+    },
+    {
+      "city": "antananarivo",
+      "countryIso2": "MG",
+      "osmSha256": "8c44aa84ed1a6b91bbf553ee11089d6a3e0907a335413cac51d670e3b4261d29",
+      "sourceBytes": 2372902,
+      "retained": {
+        "buildings": 350,
+        "roads": 107
+      }
+    },
+    {
+      "city": "lilongwe",
+      "countryIso2": "MW",
+      "osmSha256": "98469fc045a776e828a5d1c62004210cc2ccbb292a86aa4adae9dafce3fa289a",
+      "sourceBytes": 362464,
+      "retained": {
+        "buildings": 188,
+        "roads": 19
+      }
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": ".github/workflows/africa-rollout-audit-ci.yml",
+      "bytes": 3195,
+      "sha256": "cdfd05d6dd2cbdce2227df8770004f039dfaa3f3dc65f6b5396918b8ecbf1c91"
+    },
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 36127,
+      "sha256": "2bd17e5bd65da0a5cb0b8aa3f2b15fc7777c02625d2c8200cdb57db1732cf120"
+    },
+    {
+      "path": "scripts/world/build-playable-africa.py",
+      "bytes": 13380,
+      "sha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+    },
+    {
+      "path": "scripts/world/verify-playable-destination.ts",
+      "bytes": 13771,
+      "sha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/inventory.json",
+      "bytes": 173999,
+      "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+    },
+    {
+      "path": "world/playable-africa-rollout/generation.md",
+      "bytes": 4052,
+      "sha256": "0a71ea3458c89262fa289a43c7ad16fa7b0abe9952705042165806160048ba88"
+    },
+    {
+      "path": "world/playable-africa-rollout/batches/fifth-five.md",
+      "bytes": 3702,
+      "sha256": "bc842a4b5399dee82368df52f3d926ca3fd9cc32e6599f12d41caf3110b60108"
+    },
+    {
+      "path": "src/game/cities/dar/facts.ts",
+      "bytes": 1488,
+      "sha256": "d48ef43c020a58351fffeb1a7ce7ff8ef574340f696f198a55cff417701a4f53"
+    },
+    {
+      "path": "src/game/cities/dar/geometry.ts",
+      "bytes": 156442,
+      "sha256": "67476f16797ea609e1fb770c877b25bc73e4642b5531726aa2e8f81d0eacd313"
+    },
+    {
+      "path": "src/game/cities/dar/index.ts",
+      "bytes": 254,
+      "sha256": "567dfef275041d0bd0a030e4e4e5333845b4c30bce740351cf4404f4823ced59"
+    },
+    {
+      "path": "src/game/cities/dar/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/dar/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/dar.json",
+      "bytes": 3508,
+      "sha256": "580d24acc89453ae2971f8de5b2a6d6c40229a3d5d6f3b3e1061b3a2cefc57f6"
+    },
+    {
+      "path": "src/game/cities/brazz/facts.ts",
+      "bytes": 1463,
+      "sha256": "06fe9cb8bc951a3175253de08df57666a7cdac1f378363dc5b43f6ca69442f8d"
+    },
+    {
+      "path": "src/game/cities/brazz/geometry.ts",
+      "bytes": 89990,
+      "sha256": "7f813cc825c1830f58927a333c8acc91408647770c316c627586aef5075f8a77"
+    },
+    {
+      "path": "src/game/cities/brazz/index.ts",
+      "bytes": 256,
+      "sha256": "5d55ed463ae0a811f757f22aed2af1fd60be25503db4713bc73a956ac2b874af"
+    },
+    {
+      "path": "src/game/cities/brazz/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/brazz/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/brazz.json",
+      "bytes": 3488,
+      "sha256": "584787f5109165eea4b366a2a6fa19c80febffd5a66e1107bc597ac8202b6a62"
+    },
+    {
+      "path": "src/game/cities/kin/facts.ts",
+      "bytes": 1469,
+      "sha256": "e48eb2d76b4eaf9871d92b7b1eab832beb346d8ef72df6c82149daa4de7ea013"
+    },
+    {
+      "path": "src/game/cities/kin/geometry.ts",
+      "bytes": 41447,
+      "sha256": "f5cccad1bfd7582f7b746391b5605ffe714397455e5e9275a2d01021737a6933"
+    },
+    {
+      "path": "src/game/cities/kin/index.ts",
+      "bytes": 254,
+      "sha256": "33bc1300af2fa02448b3f9bc07918f53207f87180850e271707c5a8365b1e5c2"
+    },
+    {
+      "path": "src/game/cities/kin/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/kin/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/kin.json",
+      "bytes": 3487,
+      "sha256": "5b8beb4845e3c5e89c4d39d553e3c070e52892455307af7ae12887adc0ce3da9"
+    },
+    {
+      "path": "src/game/cities/antananarivo/facts.ts",
+      "bytes": 1480,
+      "sha256": "5565180a2a04576b2cda69528ee0292ee09aef188fce925594eb956f21d40abf"
+    },
+    {
+      "path": "src/game/cities/antananarivo/geometry.ts",
+      "bytes": 104379,
+      "sha256": "95f872d15399c4cdab82bc82f7b593736b0e37808cb26ae0810a2b4dbfefb4a1"
+    },
+    {
+      "path": "src/game/cities/antananarivo/index.ts",
+      "bytes": 263,
+      "sha256": "0bfec5558cf4d540f9d6972eb5b256d4721a75310855e6c73d963122ab2ac173"
+    },
+    {
+      "path": "src/game/cities/antananarivo/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/antananarivo/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/antananarivo.json",
+      "bytes": 3520,
+      "sha256": "5ff6aa84918b8b1a3d4c99ad20871546a3b3cb2a5c813469639d3a2bae5f116b"
+    },
+    {
+      "path": "src/game/cities/lilongwe/facts.ts",
+      "bytes": 1469,
+      "sha256": "879909e89cebbad8648d039b8da74c6eaea4660168715bb3f65c3738970d4572"
+    },
+    {
+      "path": "src/game/cities/lilongwe/geometry.ts",
+      "bytes": 54421,
+      "sha256": "b27efff59a83c8b67b350ea08ff9ba4eb5d8ed9a90e1b854a9157d383fb5aa1b"
+    },
+    {
+      "path": "src/game/cities/lilongwe/index.ts",
+      "bytes": 259,
+      "sha256": "a067dd94d7736e0ada11e2433b93ce1a71c3b88282b86a50ed62c5c8382ffa4f"
+    },
+    {
+      "path": "src/game/cities/lilongwe/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/lilongwe/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/lilongwe.json",
+      "bytes": 3502,
+      "sha256": "81a014310ebda5a635081f169dc6f97a7de7a221c21f4b8b768eafce9d3bb65e"
+    }
+  ],
+  "validation": {
+    "localSourceChecks": "PASS all five post-merge offline source checks report pinned-assets-match",
+    "isolatedEngineVerifiers": "PASS all five post-merge isolated city engine verifiers report verified",
+    "scope": "Source pin and isolated engine checks only; Node 22/24 remote CI, strict types, host/browser behavior, durable saves, download/phone budgets and production admission remain pending."
+  },
+  "dependencyNotes": [
+    "TZ, CG and CD compact city/state identifiers follow the documented explicit internal identity policy; they are not official place or administrative codes.",
+    "Natural Earth place/capital classifications are pinned source labels and may be stale; no current official capital designation is claimed.",
+    "OurAirports names and coordinates are dataset points, not official aviation reference points, confirmation of current operation, or commercial schedules/routes.",
+    "Visitor services, prices, descriptions and travel links are authored game content. Acquired building and road samples are bounded and do not establish whole-city coverage."
+  ]
+}

@@ -24,12 +24,14 @@ OpenStreetMap bytes in total and these retained feature counts:
 | MG | Antananarivo (`antananarivo`) | 350 | 107 | 2,372,902 |
 | MW | Lilongwe (`lilongwe`) | 188 | 19 | 362,464 |
 
-All five offline source checks report `pinned-assets-match`; all five isolated
-city engine verifiers report `verified`. Dar's first verifier attempt stopped
-before assertions because shared `three` package metadata was invalid
-(`ERR_INVALID_PACKAGE_CONFIG`); the recovered verifier run passed. These
-counts describe bounded acquired samples, not whole-city coverage. The
-`fifth-five.json` batch packet remains pending ROOT's post-merge request.
+Against the post-merge source state, all five offline source checks report
+`pinned-assets-match`; all five isolated city engine verifiers report
+`verified`. Dar's first verifier attempt stopped before assertions because
+shared `three` package metadata was invalid (`ERR_INVALID_PACKAGE_CONFIG`); its
+recovered verifier run passed. These counts describe bounded acquired samples,
+not whole-city coverage. The accompanying JSON packet pins the five receipts
+and the exact 37 tracked source paths for this source-and-isolated-engine
+review.
 
 The settlement names, city coordinates and “Admin-0 capital” classifications
 come from the pinned Natural Earth place inventory; its capital classification
@@ -53,5 +55,7 @@ dataset record does not establish present operations or an official aviation
 reference point. Its country geometry is the pinned Natural Earth outline, and
 its building and road counts describe only the bounded central sample.
 
-The source and isolated engine checks do not establish hosted travel, save
-behavior, strict compiler, browser checks, or production availability.
+The source and isolated engine checks do not establish Node 22/24 remote CI,
+strict types, host/browser behavior, durable save behavior, download or phone
+budgets, or production availability. These cities remain unregistered in
+production.

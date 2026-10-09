@@ -1,0 +1,36 @@
+{
+  "schema": "sofa-upholstery-v1-source-provenance",
+  "baselineSource": "src/scene/home-scene.ts",
+  "baselineSha256": "2ec633a024f2e3c86f42c4a204c465207cbde121f12a18898819183babbc447f",
+  "baselineCloneSha256": "a82072da2863646f74312525d503b1d080a47e7a11e97296b7e188e61aced7e3",
+  "candidateCloneSha256": "f273ec8d27c2393c98ef581b2364f3b31002791d290d5f0b8b2cfaefd5e48f65",
+  "candidateChanges": [
+    "Face4 modeling support in ignored home-scene clone",
+    "one local chamfered cushion helper",
+    "replace only two sofa cushion slabs with beveled pads"
+  ],
+  "productionChanged": false,
+  "metrics": {
+    "velvetSofa": {
+      "trianglesBefore": 192,
+      "trianglesAfter": 184,
+      "geometryBytesBefore": 14976,
+      "geometryBytesAfter": 14352,
+      "drawMeshesBeforeAfter": 1
+    },
+    "familySofa": {
+      "trianglesBefore": 240,
+      "trianglesAfter": 228,
+      "geometryBytesBefore": 18720,
+      "geometryBytesAfter": 17784,
+      "drawMeshesBeforeAfter": 1
+    },
+    "productionBundleCost": "not measured; diagnostic clone raw/gzip/Brotli delta only"
+  },
+  "test": {
+    "command": "node --experimental-strip-types --test evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/sofa-upholstery.test.mjs",
+    "result": "3 passed",
+    "scope": "Actual baseline and candidate Home scene builders; furniture geometry, placement, collision solids, entrance, selected walk cells, seat anchors, and bevel face orientation/edge joins."
+  },
+  "visualReview": "UNRUN; day/night and gameplay-camera pixel comparison still required."
+}

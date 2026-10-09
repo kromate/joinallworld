@@ -3,11 +3,13 @@ import {
   InterleavedBufferAttribute,
   Matrix4,
   SkinnedMesh,
+  Vector2,
   Vector3,
 } from 'three';
 import type { BufferAttribute } from 'three';
 import { DEFAULT_AVATAR_APPEARANCE, normalizeAvatarAppearance } from '../../types/avatar.ts';
 import type { AvatarAppearance, AvatarAgeAppearance } from '../../types/avatar.ts';
+import type { Expression, Face } from '../avatar-look.ts';
 
 type Attribute = BufferAttribute | InterleavedBufferAttribute;
 type UnsupportedReason =
@@ -24,6 +26,8 @@ type UnsupportedReason =
 export interface AppearanceChange {
   readonly ok: true;
   readonly appearance: Readonly<AvatarAppearance>;
+  readonly face: Face;
+  readonly expression: Expression;
   readonly changed: boolean;
 }
 export interface AppearanceFailure {
@@ -35,8 +39,10 @@ export type AppearanceResult = AppearanceChange | AppearanceFailure;
 export interface AvatarAppearanceController {
   /** Current cosmetic categories; never contains user identity or real-age data. */
   readonly appearance: Readonly<AvatarAppearance>;
-  /** Apply one of the closed cosmetic presets. Repeated values do not rewrite geometry. */
-  apply(value: unknown): AppearanceResult;
+  readonly face: Face;
+  readonly expression: Expression;
+  /** Apply bounded cosmetic categories and the authored face silhouette. Repeated values do not rewrite geometry. */
+  apply(value: unknown, face?: unknown, expression?: unknown): AppearanceResult;
   /** Restore the exact source POSITION attribute. */
   reset(): void;
   /** Restore source positions and release this controller's bounded cached arrays. */
@@ -55,6 +61,9 @@ interface FaceVertex {
   readonly height: number;
   readonly side: number;
   readonly front: number;
+  readonly mouth: number;
+  readonly mouthSide: number;
+  readonly mouthVertical: number;
 }
 
 interface Bounds {
@@ -98,16 +107,24 @@ function restBonePosition(mesh: SkinnedMesh, index: number, meshMatrix: Matrix4)
   // animated bone.matrixWorld here: appearance changes can happen while a clip is playing.
   return new Vector3().setFromMatrixPosition(inverseBind.clone().invert()).applyMatrix4(meshMatrix);
 }
-function normalizeResult(appearance: AvatarAppearance): Readonly<AvatarAppearance> {
+type CurrentLook = Readonly<AvatarAppearance> & { face: Face; expression: Expression };
+function normalizeResult(appearance: AvatarAppearance, face: Face, expression: Expression): CurrentLook {
   return Object.freeze({
     height: appearance.height,
     build: appearance.build,
     ageAppearance: appearance.ageAppearance,
+    face,
+    expression,
   });
 }
-function sameAppearance(a: AvatarAppearance, b: AvatarAppearance): boolean {
-  return a.height === b.height && a.build === b.build && a.ageAppearance === b.ageAppearance;
+function appearanceOnly(look: CurrentLook): Readonly<AvatarAppearance> {
+  return { height: look.height, build: look.build, ageAppearance: look.ageAppearance };
 }
+function sameAppearance(a: CurrentLook, b: CurrentLook): boolean {
+  return a.height === b.height && a.build === b.build && a.ageAppearance === b.ageAppearance && a.face === b.face && a.expression === b.expression;
+}
+function normalizeFace(value: unknown): Face { return value === 'round' || value === 'long' ? value : 'oval'; }
+function normalizeExpression(value: unknown): Expression { return value === 'smile' || value === 'grin' ? value : 'neutral'; }
 function morphAmount(age: AvatarAgeAppearance): number {
   return age === 'elder' ? 1 : age === 'mature' ? 0.55 : 0;
 }
@@ -129,6 +146,8 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
   const mesh = input;
   const geometry = mesh.geometry;
   const position = geometry.getAttribute('position');
+  const normal = geometry.getAttribute('normal');
+  const uv = geometry.getAttribute('uv');
   const skinIndex = geometry.getAttribute('skinIndex');
   const skinWeight = geometry.getAttribute('skinWeight');
   const region = geometry.getAttribute('color');
@@ -184,55 +203,89 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
   const depth = headBounds.maxZ - headBounds.minZ;
   if (width < 0.04 || height < 0.06 || depth < 0.04) return { ok: false, reason: 'no_face_region' };
   const centerX = headRest.x;
+  const texture = (Array.isArray(mesh.material) ? mesh.material : [mesh.material]).map((material) => material.map).find(Boolean);
+  texture?.updateMatrix();
+  const textureMatrix = texture?.matrix;
   const frontStart = headBounds.minZ + depth * 0.62;
   const candidates: FaceVertex[] = [];
   for (const index of headVertices) {
     const at = index * 3, x = sourceBody[at]!, y = sourceBody[at + 1]!, z = sourceBody[at + 2]!;
     const heightFraction = (y - faceBaseY) / faceHeight;
     const front = smoothstep(frontStart, headBounds.minZ + depth * 0.78, z);
-    if (front < 0.5 || heightFraction < 0.04 || heightFraction > 0.96) continue;
+    if (heightFraction < 0.04 || heightFraction > 0.96) continue;
+    let mouth = 0, mouthSide = 0, mouthVertical = 0;
+    if (uv && textureMatrix) {
+      const faceUv = new Vector2(uv.getX(index), uv.getY(index)).applyMatrix3(textureMatrix);
+      const du = (faceUv.x - 0.175) / 0.035;
+      const dv = (faceUv.y - 0.266) / 0.019;
+      const radius = Math.hypot(du, dv);
+      mouth = (1 - smoothstep(0.7, 1, radius)) * (region.getX(index) >= 0.45 ? 1 : 0);
+      mouthSide = Math.max(-1, Math.min(1, du));
+      mouthVertical = Math.max(-1, Math.min(1, dv));
+    }
     candidates.push({
       index, x, y, z, height: heightFraction,
       side: Math.max(-1, Math.min(1, (x - centerX) / (width * 0.5))),
       front,
+      mouth, mouthSide, mouthVertical,
     });
   }
   if (candidates.length === 0) return { ok: false, reason: 'no_face_region' };
 
-  let current = normalizeResult(DEFAULT_AVATAR_APPEARANCE);
+  let current = normalizeResult(DEFAULT_AVATAR_APPEARANCE, 'oval', 'neutral');
   let activePosition: Attribute = position;
   let morphedPosition: Float32BufferAttribute | null = null;
+  let morphedNormal: Float32BufferAttribute | null = null;
   let disposed = false;
 
   function usePosition(next: Attribute): void {
-    if (activePosition === next) return;
-    // Three releases only currently attached attribute buffers when a geometry is disposed.
-    geometry.dispose();
+    if (activePosition === next) {
+      if (next !== position && normal && geometry.index && morphedNormal) {
+        geometry.computeVertexNormals();
+        morphedNormal.needsUpdate = true;
+      }
+      return;
+    }
     geometry.setAttribute('position', next);
+    if (next === position) {
+      if (normal) geometry.setAttribute('normal', normal);
+      else geometry.deleteAttribute('normal');
+    }
+    else if (normal && geometry.index) {
+      morphedNormal ??= new Float32BufferAttribute(new Float32Array(position.count * 3), 3)
+        .setUsage(position instanceof InterleavedBufferAttribute ? position.data.usage : position.usage);
+      geometry.setAttribute('normal', morphedNormal);
+      // Deforming the authored face changes its surface normals too. Rebuild from immutable topology
+      // so stronger saved shapes do not retain the source face's lighting across the cheek/jaw.
+      geometry.computeVertexNormals();
+    }
+    // Three releases attached GPU buffers on dispose; the immutable CPU attributes remain cached.
+    geometry.dispose();
     activePosition = next;
   }
 
-  function restore(appearance: AvatarAppearance = DEFAULT_AVATAR_APPEARANCE): void {
+  function restore(appearance: AvatarAppearance = DEFAULT_AVATAR_APPEARANCE, face: Face = 'oval', expression: Expression = 'neutral'): void {
     if (geometry.getAttribute('position') === activePosition) usePosition(position);
     activePosition = position;
-    current = normalizeResult(appearance);
+    current = normalizeResult(appearance, face, expression);
   }
 
-  function apply(value: unknown): AppearanceResult {
+  function apply(value: unknown, requestedFace: unknown = current.face, requestedExpression: unknown = current.expression): AppearanceResult {
     if (disposed) return { ok: false, reason: 'disposed' };
     if (mesh.geometry !== geometry || geometry.getAttribute('position') !== activePosition) return { ok: false, reason: 'mesh_changed' };
-    const next = normalizeResult(normalizeAvatarAppearance(value));
-    if (sameAppearance(current, next)) return { ok: true, appearance: next, changed: false };
-    if (next.ageAppearance === current.ageAppearance) {
+    const next = normalizeResult(normalizeAvatarAppearance(value), normalizeFace(requestedFace), normalizeExpression(requestedExpression));
+    if (sameAppearance(current, next)) return { ok: true, appearance: appearanceOnly(next), face: next.face, expression: next.expression, changed: false };
+    if (next.ageAppearance === current.ageAppearance && next.face === current.face && next.expression === current.expression) {
       current = next;
-      return { ok: true, appearance: next, changed: false };
+      return { ok: true, appearance: appearanceOnly(next), face: next.face, expression: next.expression, changed: false };
     }
-    if (next.ageAppearance === 'adult') {
-      restore(next);
-      return { ok: true, appearance: next, changed: true };
+    if (next.ageAppearance === 'adult' && next.face === 'oval' && next.expression === 'neutral') {
+      restore(next, next.face, next.expression);
+      return { ok: true, appearance: appearanceOnly(next), face: next.face, expression: next.expression, changed: true };
     }
 
     const amount = morphAmount(next.ageAppearance);
+    const faceScale = next.face === 'round' ? 0.9142857 : next.face === 'long' ? 1.0714286 : 1;
     const maxDown = next.ageAppearance === 'elder' ? 0.0038 : 0.0022;
     const maxWidth = next.ageAppearance === 'elder' ? 0.002 : 0.0012;
     const forehead = next.ageAppearance === 'elder' ? 0.001 : 0.0006;
@@ -250,9 +303,15 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
       const foreheadWeight = smoothstep(0.68, 0.82, vertex.height) * (1 - smoothstep(0.92, 0.99, vertex.height));
       const cheekShape = cheek * sideWeight * vertex.front;
       const jawShape = jaw * vertex.front;
+      const faceWeight = smoothstep(0.02, 0.16, vertex.height) * (1 - smoothstep(0.96, 1, vertex.height));
+      const shapedY = vertex.y + (vertex.y - maxY) * (faceScale - 1) * faceWeight;
+      const smile = next.expression === 'smile' ? 1 : 0;
+      const grin = next.expression === 'grin' ? 1 : 0;
+      const cornerLift = Math.pow(Math.abs(vertex.mouthSide), 2) * (smile * 0.00065 + grin * 0.0014) * vertex.mouth;
+      const mouthOpen = grin * Math.sign(-vertex.mouthVertical) * Math.abs(vertex.mouthVertical) * 0.002 * vertex.mouth;
       const bodyPoint = new Vector3(
         Math.max(minX, Math.min(maxX, vertex.x + Math.sign(vertex.side) * maxWidth * amount * cheekShape)),
-        Math.max(minY, Math.min(maxY, vertex.y - maxDown * amount * (0.55 * jawShape + 0.45 * cheekShape))),
+        Math.max(minY - 0.025, Math.min(maxY, shapedY - maxDown * amount * (0.55 * jawShape + 0.45 * cheekShape) + cornerLift + mouthOpen)),
         Math.max(minZ, Math.min(maxZ, vertex.z - forehead * amount * foreheadWeight * vertex.front)),
       );
       bodyPoint.applyMatrix4(inverseMeshMatrix);
@@ -262,11 +321,13 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
     morphedPosition.needsUpdate = true;
     usePosition(morphedPosition);
     current = next;
-    return { ok: true, appearance: next, changed: true };
+    return { ok: true, appearance: appearanceOnly(next), face: next.face, expression: next.expression, changed: true };
   }
 
   const controller: AvatarAppearanceController = {
-    get appearance() { return current; },
+    get appearance() { return appearanceOnly(current); },
+    get face() { return current.face; },
+    get expression() { return current.expression; },
     apply,
     reset() { if (!disposed && mesh.geometry === geometry) restore(); },
     dispose() {

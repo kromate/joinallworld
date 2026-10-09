@@ -5,9 +5,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import * as THREE from 'three';
-import { createVenueWorld, HOST_LIGHTING } from './venue-world.ts';
+import { createVenueWorld } from './venue-world.ts';
 import type { VenueWorld, VenueWorldOptions, SceneSpotRequest, SceneTag, AvatarPosition, ShownTag } from './venue-world.ts';
 import { LIGHTING, MAX_CROWD } from './scene/venue-scenes.ts';
+import { WALK_SPEED } from './scene/movement.ts';
 import { createLife } from './life.ts';
 
 /** The host is handed a renderer and a container; these are the narrow stand-ins the tests drive it with (there is no WebGL or DOM under node). */
@@ -110,7 +111,7 @@ test('an idle venue with a crowd renders zero frames; the crowd, the player and 
   } finally { globalThis.requestAnimationFrame = original.raf; globalThis.setInterval = original.interval; }
 });
 
-test('leaving a venue disposes its scene; home shows the player’s avatar and guests under the host’s default lighting', () => {
+test('leaving a venue disposes its scene; Home shows the player and guests under indoor lighting', () => {
   const live = new Set(), setIndex = THREE.BufferGeometry.prototype.setIndex;
   THREE.BufferGeometry.prototype.setIndex = function tracked(...args) {
     if (!live.has(this)) { live.add(this); this.addEventListener('dispose', () => live.delete(this)); }
@@ -131,7 +132,7 @@ test('leaving a venue disposes its scene; home shows the player’s avatar and g
     const state = createLife({ location: 'home', spot: 'kitchen', name: 'Ada' }, { now: NOON, cityId: 'lagos' });
     world.setLocation('home');
     world.setState(state);
-    assert.deepEqual([world.diagnostics().lighting.hemi, world.diagnostics().lighting.sun], [HOST_LIGHTING.hemi[2], HOST_LIGHTING.sun[1]], 'a scene without lighting() gets the host defaults back');
+    assert.deepEqual([world.diagnostics().lighting.hemi, world.diagnostics().lighting.sun], [LIGHTING.indoor.day.hemi[2], LIGHTING.indoor.day.sun[1]], 'Home applies the current indoor light instead of default outdoor day');
     world.setCrowd([{ id: '00000009-2222-4333-8444-555555555555', name: 'Guest', kind: 'player' }]);
     assert.deepEqual(world.diagnostics().tags.map((tag) => [tag.kind, tag.text]), [['self', 'Ada'], ['player', '@Guest']], 'you and your guest stand in your home');
     const drawn = world.diagnostics().renderCount;
@@ -183,8 +184,10 @@ test('only the motion loop may name a frame callback; no scene, map or shell sou
 
 /** A browser's frame callback, a window and a document, all driven by hand. */
 function motionBench({ width = 1280, height = 800, location = 'park' } = {}) {
-  const original = { raf: globalThis.requestAnimationFrame, caf: globalThis.cancelAnimationFrame, window: browser.window, document: browser.document, matchMedia: browser.matchMedia };
+  const original = { raf: globalThis.requestAnimationFrame, caf: globalThis.cancelAnimationFrame, window: browser.window, document: browser.document, matchMedia: browser.matchMedia, clock: globalThis.performance.now };
   let queue: ((time: number) => void)[] = [], time = 5000, reduce = false;
+  // wake() and the synthetic frame timestamps must use the same clock, even after slow imports.
+  globalThis.performance.now = () => time;
   const docListeners = new Map<string, () => void>();
   globalThis.requestAnimationFrame = (fn) => { queue.push(fn); return queue.length; };
   globalThis.cancelAnimationFrame = () => { queue = []; };
@@ -208,7 +211,7 @@ function motionBench({ width = 1280, height = 800, location = 'park' } = {}) {
     send: (type: string, props: Record<string, unknown> = {}) => listeners.get(type)?.({ pointerId: 1, button: 0, detail: 1, clientX: 0, clientY: 0, preventDefault() {}, stopImmediatePropagation() {}, ...props }),
     hide(hidden: boolean) { fakeDocument.visibilityState = hidden ? 'hidden' : 'visible'; docListeners.get('visibilitychange')?.(); },
     reduceMotion(on: boolean) { reduce = on; },
-    restore() { world.dispose(); globalThis.requestAnimationFrame = original.raf; globalThis.cancelAnimationFrame = original.caf; browser.window = original.window; browser.document = original.document; browser.matchMedia = original.matchMedia; },
+    restore() { world.dispose(); globalThis.requestAnimationFrame = original.raf; globalThis.cancelAnimationFrame = original.caf; browser.window = original.window; browser.document = original.document; browser.matchMedia = original.matchMedia; globalThis.performance.now = original.clock; },
   };
 }
 const PARK = { location: 'park', spot: 'amphitheatre', t: NOON, name: 'Ada' };
@@ -228,11 +231,13 @@ test('RELEASE GATE: idle → zero frames; walking → frames; after arrival → 
     // A key is held: frames, one render each, and the avatar moves away from the camera.
     bench.key('walk-up');
     assert.equal(world.diagnostics().loop.running, true);
-    assert.equal(bench.pump(30), 30, 'walking: a frame every tick');
+    const walkingFrames = 65;
+    assert.equal(bench.pump(walkingFrames), walkingFrames, 'walking: a frame every tick through 1040 ms at human walking speed');
     const walking = world.diagnostics();
-    assert.equal(walking.renderCount, idle.renderCount + 30, 'walking: exactly one render per frame');
+    assert.equal(walking.renderCount, idle.renderCount + walkingFrames, 'walking: exactly one render per frame');
     assert.ok(walking.avatar.moving && walking.avatar.mode === 'keys');
-    assert.ok(walking.avatar.z < idle.avatar.z - 1.5, `W moved the avatar away from the camera (${idle.avatar.z} → ${walking.avatar.z})`);
+    const expectedZ = idle.avatar.z - WALK_SPEED * walkingFrames * 0.016 * Math.cos(idle.camera.yaw);
+    assert.ok(Math.abs(walking.avatar.z - expectedZ) < 0.02, `W follows the calibrated speed (${walking.avatar.z} vs ${expectedZ})`);
     // Released: the avatar stops, the camera finishes easing after it, and the loop ends by itself.
     bench.keyUp('walk-up');
     const tail = bench.pump(400);
@@ -352,7 +357,8 @@ test('arrows and W A S D walk in the camera’s frame; walls and furniture stop 
   try {
     const { world } = bench;
     world.setState(PARK);
-    const hold = (action: string, frames = 10, jog = false) => { const from = world.diagnostics().avatar; bench.key(action, 'venue', jog); bench.pump(frames); bench.keyUp(action); bench.pump(400); const to = world.diagnostics().avatar; return { dx: to.x - from.x, dz: to.z - from.z, facing: to.facing, from, to }; };
+    const walkingFrames = 24;
+    const hold = (action: string, frames = walkingFrames, jog = false) => { const from = world.diagnostics().avatar; bench.key(action, 'venue', jog); bench.pump(frames); bench.keyUp(action); bench.pump(400); const to = world.diagnostics().avatar; return { dx: to.x - from.x, dz: to.z - from.z, facing: to.facing, from, to }; };
     // The park camera looks from the front right (+x, +z): away is −x −z, the camera's right is +x −z.
     const yaw = world.diagnostics().camera.yaw;
     const away = [-Math.sin(yaw), -Math.cos(yaw)], right = [Math.cos(yaw), -Math.sin(yaw)];
@@ -361,14 +367,14 @@ test('arrows and W A S D walk in the camera’s frame; walls and furniture stop 
       world.walkTo(6, 4); bench.pump(2000);
       const move = hold(action);
       const forward = along(move, axis) * sign, sideways = Math.abs(along(move, axis === away ? right : away));
-      assert.ok(forward > 0.6 && sideways < 0.05, `${action}: ${forward.toFixed(2)} the right way, ${sideways.toFixed(2)} sideways`);
+      assert.ok(Math.abs(forward - WALK_SPEED * walkingFrames * 0.016) < 0.02 && sideways < 0.05, `${action}: ${forward.toFixed(2)} the right way, ${sideways.toFixed(2)} sideways`);
       const heading = Math.atan2(move.dx, move.dz);
       assert.ok(Math.abs(Math.atan2(Math.sin(move.facing - heading), Math.cos(move.facing - heading))) < 0.05, `${action}: the avatar faces where it went`);
     }
     world.walkTo(6, 4); bench.pump(2000);
     const walk = hold('walk-up');
     world.walkTo(6, 4); bench.pump(2000);
-    const jog = hold('walk-up', 10, true);
+    const jog = hold('walk-up', walkingFrames, true);
     assert.ok(Math.hypot(jog.dx, jog.dz) > Math.hypot(walk.dx, walk.dz) * 1.5, 'Shift jogs');
     // Rotate the camera: the same key follows the camera.
     bench.send('pointerdown', { clientX: 400, clientY: 300 }); bench.send('pointermove', { clientX: 150, clientY: 300 }); bench.send('pointerup', {});
@@ -377,7 +383,7 @@ test('arrows and W A S D walk in the camera’s frame; walls and furniture stop 
     assert.ok(turned > yaw + 1);
     world.walkTo(6, 4); bench.pump(2000);
     const after = hold('walk-up');
-    assert.ok(along(after, [-Math.sin(turned), -Math.cos(turned)]) > 0.6, 'W is still away from the camera after turning it');
+    assert.ok(Math.abs(along(after, [-Math.sin(turned), -Math.cos(turned)]) - WALK_SPEED * walkingFrames * 0.016) < 0.02, 'W is still away from the camera after turning it at the calibrated speed');
     // The fountain (centre of the park, at 0, 2.4): walking straight at it stops short of it.
     bench.key('zoom-fit'); bench.pump(600);
     world.walkTo(0, 2.4); bench.pump(2000);
@@ -552,9 +558,12 @@ test('home: furniture is solid, a tap on the floor walks there, and Buy mode kee
     assert.equal(spawn.camera.limits.azimuth, null, 'the camera may orbit all the way round the room');
     assert.deepEqual(spawn.walls, { back: true, left: true }, 'from the composed view both walls are behind the room and showing');
     assert.ok(spawn.avatar.x < -4, 'the avatar appears by the door');
-    bench.key('walk-right'); bench.pump(30); bench.keyUp('walk-right'); bench.pump(400);
+    const walkingFrames = 60;
+    bench.key('walk-right'); bench.pump(walkingFrames); bench.keyUp('walk-right'); bench.pump(400);
     const moved = world.diagnostics().avatar;
-    assert.ok(Math.hypot(moved.x - spawn.avatar.x, moved.z - spawn.avatar.z) > 0.8, 'walks in the room');
+    // This eight-tile room occupies ten scene units; its avatar/walker uses a 0.72 tile scale.
+    const expectedDistance = WALK_SPEED * walkingFrames * 0.016 * (10 / 8) * 0.72;
+    assert.ok(Math.abs(Math.hypot(moved.x - spawn.avatar.x, moved.z - spawn.avatar.z) - expectedDistance) < 0.02, 'walks at the calibrated room scale');
     assert.equal(world.diagnostics().loop.running, false);
     // Buy mode keeps its own taps: a click on the floor walks nowhere (the scene's own picking handles it).
     const floor = world.diagnostics().tags[0]!;

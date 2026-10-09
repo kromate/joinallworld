@@ -22,12 +22,12 @@ const NPC_PLACES: Record<string, string> = {
   'protocol-segun': 'steps', 'madam-secretary': 'office',
   'agent-bimpe': 'desk', 'porter-sule': 'arrivals', 'engineer-chioma': 'control', 'driver-mustapha': 'loading',
 };
-const npc = (id: NpcId, venue: string, name: string, role: string, emoji: string, quotes: string[], extra: Pick<NpcDefinition, 'beta' | 'note'> = { beta: true }): Omit<NpcDefinition, 'at'> => ({ id, venue, name, role, emoji, quotes, ...extra });
+const npc = (id: NpcId, venue: string, name: string, role: string, emoji: string, quotes: string[], extra: Pick<NpcDefinition, 'beta' | 'note' | 'look'> = { beta: true }): Omit<NpcDefinition, 'at'> => ({ id, venue, name, role, emoji, quotes, ...extra });
 export const NPCS: Record<NpcId, NpcDefinition> = Object.fromEntries([
   npc('amaka', 'amala-shitta', 'Amaka', 'Serving', '👩🏾‍🍳', ['Extra meat is extra money, no vex.', 'This pot has fed half of Surulere today.', 'You look like somebody that skipped breakfast.'], { note: 'Name and role are fixed; quotes are original.' }),
   npc('baba-sege', 'amala-shitta', 'Baba Sege', 'Regular customer', '👴🏾', ['I have eaten here since before you were born.', 'Abula first, wahala later.'],),
   npc('kunle', 'park', 'Kunle', 'Sketching by the trees', '🧑🏾‍🎨', ['Sit small, let me draw your shadow.', 'Art no dey rush. Lagos dey rush.', 'This breeze is the only free thing left.']),
-  npc('mama-ronke', 'park', 'Mama Ronke', 'Selling zobo', '👩🏾', ['Cold zobo, sweet like better news.', 'My customer! You no greet today?']),
+  npc('mama-ronke', 'park', 'Mama Ronke', 'Selling zobo', '👩🏾', ['Cold zobo, sweet like better news.', 'My customer! You no greet today?'], { beta: true, look: { body: 'woman' } }),
   npc('zainab', 'library', 'Zainab', 'Reading in the lounge', '👩🏾‍💼', ['Shh. This chapter is getting good.', 'Have you read anything that changed your mind lately?']),
   npc('deji', 'library', 'Deji', 'Behind the bar', '🧑🏾‍🍳', ['Chapman or something stronger?', 'Everybody tells the barman the truth.']),
   npc('tega', 'cchub', 'Tega', 'Debugging', '🧑🏾‍💻', ['It works on my machine. NEPA took the machine.', 'Ship first, sleep later.']),

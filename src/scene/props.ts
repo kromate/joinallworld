@@ -11,8 +11,9 @@ import type * as THREE from 'three';
 import { GLOW, GLASS } from './build.ts';
 import { drawAvatar } from './characters.ts';
 import type { DrawOptions, DrawnAvatar, Pose } from './characters.ts';
+import { authoredExtraHandler } from './authored-people.ts';
 import type { Kit } from './kit.ts';
-import type { Batch, BatchOptions, Colour, Vec3 } from './types.ts';
+import type { Batch, BatchOptions, Colour, Face4, Vec3 } from './types.ts';
 
 export const WOOD = '#8a6644', WOOD_DARK = '#5f4630', WOOD_LIGHT = '#b08a5c', METAL = '#7d858c', METAL_DARK = '#3d444b';
 export const WHITE = '#ece8dc', BLACK = '#22252a', LEAF = '#3f8a57', LEAF_DARK = '#2c6b4a', LEAF_LIGHT = '#6aa95a', WARM = '#ffd58a';
@@ -106,7 +107,24 @@ export function stall(b: Batch, x: number, z: number, { w = 3.6, ry = 0, awning 
       b.box(side * (w / 2 - 0.08), 1.75, -0.75, 0.12, 3.5, 0.12, frame);
     }
     const stripes = 6;
-    for (let i = 0; i < stripes; i++) b.box(-w / 2 + (i + 0.5) * (w / stripes), 3.32, 0.1, w / stripes, 0.1, 2.3, awning[i % awning.length]!, { rx: 0.2 });
+    for (let i = 0; i < stripes; i++) {
+      const stripeWidth = w / stripes, halfWidth = stripeWidth / 2, halfDepth = 1.15, thickness = 0.012;
+      const point = (x: number, y: number, z: number) => Object.freeze([x, y, z] as const);
+      const panel = (y: number, top: boolean): Face4 => {
+        const corners: Face4 = top
+        ? [point(-halfWidth, y, halfDepth), point(halfWidth, y, halfDepth), point(halfWidth, y, -halfDepth), point(-halfWidth, y, -halfDepth)]
+        : [point(-halfWidth, y, -halfDepth), point(halfWidth, y, -halfDepth), point(halfWidth, y, halfDepth), point(-halfWidth, y, halfDepth)];
+        return Object.freeze(corners);
+      };
+      const x = -w / 2 + (i + 0.5) * stripeWidth;
+      const footprint = { bounds: [[-halfWidth, -0.05, -halfDepth, halfWidth, 0.05, halfDepth] as const] };
+      // A thin fabric skin replaces the old 0.1 m block. Put the tilt on its parent transform so
+      // the recorder's single old-box envelope follows nested transforms exactly.
+      b.at(x, 3.32, 0.1, 0, () => {
+        b.face4(panel(thickness / 2, true), awning[i % awning.length]!, { footprint });
+        b.face4(panel(-thickness / 2, false), awning[i % awning.length]!, { footprint: false });
+      }, 0.2);
+    }
     b.box(0, 0.95, 0.2, w - 0.3, 0.12, 1.3, WOOD);
     b.box(0, 0.45, 0.2, w - 0.5, 0.9, 1.1, WOOD_DARK);
     const heaps = goods.length;
@@ -137,11 +155,28 @@ export function screen(b: Batch, x: number, y: number, z: number, { w = 3, h = 1
   });
 }
 
-export interface PlantOptions { s?: number; pot?: Colour; leaf?: Colour }
-export function plant(b: Batch, x: number, z: number, { s = 1, pot = '#b06a4a', leaf = LEAF }: PlantOptions = {}): void {
-  b.cyl(x, 0.3 * s, z, 0.34 * s, 0.6 * s, pot, { top: 1.25, seg: 7 });
-  b.ico(x, 1.05 * s, z, 0.5 * s, 0.7 * s, 0.5 * s, leaf);
-  b.ico(x + 0.2 * s, 1.5 * s, z - 0.1 * s, 0.34 * s, 0.5 * s, 0.34 * s, LEAF_LIGHT);
+export interface PlantOptions { s?: number; pot?: Colour; leaf?: Colour; part?: string }
+/** Closed tapered leaves share the host's opaque batch, including a furniture floor part. */
+export function plant(b: Batch, x: number, z: number, { s = 1, pot = '#b06a4a', leaf = LEAF, part }: PlantOptions = {}): void {
+  b.at(x, 0, z, 0, () => {
+    const authoredFootprint = { bounds: [
+      [-0.34 * s, 0.3 * s - 0.6 * s / 2, -0.34 * s, 0.34 * s, 0.3 * s + 0.6 * s / 2, 0.34 * s],
+      [-0.5 * s, 1.05 * s - 0.7 * s, -0.5 * s, 0.5 * s, 1.05 * s + 0.7 * s, 0.5 * s],
+      [0.2 * s - 0.34 * s, 1.5 * s - 0.5 * s, -0.1 * s - 0.34 * s, 0.2 * s + 0.34 * s, 1.5 * s + 0.5 * s, -0.1 * s + 0.34 * s],
+    ] as const };
+    b.cyl(0, 0.3 * s, 0, 0.34 * s, 0.6 * s, pot, { top: 1.25, seg: 7, part, footprint: authoredFootprint });
+    b.disc(0, 0.601 * s, 0, 0.37 * s, '#3f3328', { seg: 7, part, footprint: false });
+    for (let i = 0; i < 8; i++) {
+      const length = (i % 3 === 0 ? 1.35 : i % 3 === 1 ? 1.1 : 0.9) * s;
+      const shade = i % 3 === 0 ? leaf : i % 3 === 1 ? LEAF_DARK : LEAF_LIGHT;
+      b.at(0, 0.56 * s, 0.12 * s, i * Math.PI / 4 + 0.35, () => {
+        b.at(0, 0, 0, 0, () => {
+          b.cone(0, length * 0.18, 0, 0.2 * s, length * 0.36, shade, { seg: 3, sz: 0.2, open: true, rz: Math.PI, part, footprint: false });
+          b.cone(0, length * 0.68, 0, 0.2 * s, length * 0.64, shade, { seg: 3, sz: 0.2, open: true, part, footprint: false });
+        }, 0.25 + i % 3 * 0.19);
+      });
+    }
+  });
 }
 
 export interface PalmOptions { s?: number; lean?: number; ry?: number }
@@ -434,14 +469,28 @@ export function tallTree(b: Batch, x: number, z: number, { h = 8, s = 1, tone = 
 }
 
 export interface CarOptions { ry?: number; color?: Colour; glass?: Colour }
-/** Simple parked car. */
+type CarPoint = readonly [number, number, number];
+const carPoint = (x: number, y: number, z: number): CarPoint => Object.freeze([x, y, z]) as CarPoint;
+const carFace = (a: CarPoint, b: CarPoint, c: CarPoint, d: CarPoint): Face4 => Object.freeze([a, b, c, d]);
+const CAR_WINDOWS: readonly { outer: Face4; inner: Face4 }[] = [
+  { outer: carFace(carPoint(-0.75, 0.92, 0.96), carPoint(0.75, 0.92, 0.96), carPoint(0.62, 1.5, 0.72), carPoint(-0.62, 1.5, 0.72)), inner: carFace(carPoint(-0.57, 0.99, 0.9310344828), carPoint(0.57, 0.99, 0.9310344828), carPoint(0.47, 1.43, 0.7489655172), carPoint(-0.47, 1.43, 0.7489655172)) },
+  { outer: carFace(carPoint(0.75, 0.92, -1.25), carPoint(-0.75, 0.92, -1.25), carPoint(-0.62, 1.5, -1.02), carPoint(0.62, 1.5, -1.02)), inner: carFace(carPoint(0.57, 0.99, -1.2222413793), carPoint(-0.57, 0.99, -1.2222413793), carPoint(-0.47, 1.43, -1.0477586207), carPoint(0.47, 1.43, -1.0477586207)) },
+  { outer: carFace(carPoint(0.75, 0.92, 0.96), carPoint(0.75, 0.92, -1.25), carPoint(0.62, 1.5, -1.02), carPoint(0.62, 1.5, 0.72)), inner: carFace(carPoint(0.7343103448, 0.99, 0.68), carPoint(0.7343103448, 0.99, -0.97), carPoint(0.6356896552, 1.43, -0.81), carPoint(0.6356896552, 1.43, 0.52)) },
+  { outer: carFace(carPoint(-0.75, 0.92, -1.25), carPoint(-0.75, 0.92, 0.96), carPoint(-0.62, 1.5, 0.72), carPoint(-0.62, 1.5, -1.02)), inner: carFace(carPoint(-0.7343103448, 0.99, -0.97), carPoint(-0.7343103448, 0.99, 0.68), carPoint(-0.6356896552, 1.43, 0.52), carPoint(-0.6356896552, 1.43, -0.81)) },
+];
+const CAR_CABIN_FACES: readonly Face4[] = CAR_WINDOWS.flatMap(({ outer, inner }) => [
+  carFace(outer[0], outer[1], inner[1], inner[0]), carFace(outer[1], outer[2], inner[2], inner[1]),
+  carFace(outer[2], outer[3], inner[3], inner[2]), carFace(outer[3], outer[0], inner[0], inner[3]), inner,
+]);
+const CAR_ROOF = carFace(carPoint(-0.62, 1.5, 0.72), carPoint(0.62, 1.5, 0.72), carPoint(0.62, 1.5, -1.02), carPoint(-0.62, 1.5, -1.02));
+/** Simple parked car with a closed, tapered cabin. */
 export function car(b: Batch, x: number, z: number, { ry = 0, color = '#22262c', glass = '#8fb8cc' }: CarOptions = {}): void {
   b.at(x, 0, z, ry, () => {
     b.box(0, 0.62, 0, 1.9, 0.6, 4.2, color);
-    b.box(0, 1.2, -0.2, 1.7, 0.6, 2.3, color);
-    b.box(0, 1.22, -0.2, 1.74, 0.42, 2.0, glass);
+    for (let i = 0; i < CAR_CABIN_FACES.length; i++) b.face4(CAR_CABIN_FACES[i]!, i % 5 === 4 ? glass : color);
+    b.face4(CAR_ROOF, color);
     for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.cyl(sx * 0.9, 0.36, sz * 1.35, 0.36, 0.24, BLACK, { seg: 8, rz: Math.PI / 2 });
-    for (const sx of [-1, 1]) b.box(sx * 0.62, 0.72, 2.11, 0.36, 0.16, 0.04, WARM, GLOW);
+    for (const sx of [-1, 1]) b.quad(sx * 0.62, 0.72, 2.13, 0.36, 0.16, WARM, GLOW);
   });
 }
 
@@ -450,7 +499,15 @@ export interface Landmark { key: string; match: RegExp; x: number; z: number; ry
 export const landmark = (key: string, match: RegExp, x: number, z: number, ry = 0, more?: Record<string, unknown>): Landmark => ({ key, match, x, z, ry, ...more });
 
 /** A background character baked into the static scene (staff, regulars). Looks come from the seed. */
-export const extra = (b: Batch, seed: unknown, x: number, z: number, ry = 0, pose: Pose = 'stand', more?: DrawOptions & { look?: unknown }): DrawnAvatar => drawAvatar(b, more?.look ?? null, { seed, x, z, ry, pose, ...more });
+export const extra = (b: Batch, seed: unknown, x: number, z: number, ry = 0, pose: Pose = 'stand', more?: DrawOptions & { look?: unknown }): DrawnAvatar => {
+  const drawOriginal = () => drawAvatar(b, more?.look ?? null, { seed, x, z, ry, pose, ...more });
+  const handler = authoredExtraHandler(b);
+  if (!handler) return drawOriginal();
+  // A handler may inspect/delegate more than once; an authored extra must still draw at most once.
+  let drawn: DrawnAvatar | undefined;
+  const drawOnce = () => drawn ?? (drawn = drawOriginal());
+  return handler({ seed, x, z, ry, pose, more }, drawOnce) ?? drawOnce();
+};
 
 // ---------------------------------------------------------------------------------------------
 // Block lettering: text is drawn from a 3×5 cell font as flat panels — no canvas, no textures.

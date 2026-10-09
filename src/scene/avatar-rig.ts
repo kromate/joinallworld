@@ -29,12 +29,13 @@
  * is drawing anyway.
  */
 import * as characters from './characters.ts';
+import { normalizeLook } from './avatar-look.ts';
 import { avatarProportions } from '../types/avatar.ts';
 import type { DetailLevel, Pose } from './characters.ts';
 
 /** Relative authored stride distance after bounded cosmetic height/depth fitting. */
 export function avatarStrideScale(look: unknown): number {
-  const proportions = avatarProportions(characters.normalizeLook(look).appearance);
+  const proportions = avatarProportions(normalizeLook(look).appearance);
   return proportions.height * proportions.depth;
 }
 

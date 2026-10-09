@@ -1,0 +1,54 @@
+name: Environment whole-slice v5 CPU package review (compile-only v2)
+
+on:
+  push:
+    branches:
+      - codex/graphics-environment-next-phase-v5-review
+
+permissions:
+  contents: read
+
+concurrency:
+  group: environment-whole-slice-v5-reviewed-v2-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Pinned full-host diagnostic package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout the exact review-branch commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Run serial compile-only and one-copy finalization phases
+        run: python3 evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v2/run-bounded-linux-reviewed-v2.py
+
+      - name: Upload source pins, compile/final manifests, output routes, and bounded-run receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-whole-slice-v5-reviewed-v2-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/environment-next-phase-v5/source-pins.json
+            evidence/graphics-loop/environment-next-phase-v5/compile-v5-record.json
+            evidence/graphics-loop/environment-next-phase-v5/static-v5/**
+            evidence/graphics-loop/environment-next-phase-v5/static-fixture/build-manifest.json
+            evidence/graphics-loop/environment-next-phase-v5/compile-v5-progress.jsonl
+            evidence/graphics-loop/environment-next-phase-v5/finalize-v5-progress.jsonl
+            evidence/graphics-loop/environment-next-phase-v5/finalization-v5-observed.json
+            evidence/graphics-loop/environment-next-phase-v5/finalizer-pins.json
+            evidence/graphics-loop/environment-next-phase-v5/review-host-v5-staged.json
+            evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v2/remote-results/**
+          if-no-files-found: warn
+          retention-days: 14

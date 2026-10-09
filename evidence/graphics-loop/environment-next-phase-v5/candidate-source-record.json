@@ -1,0 +1,175 @@
+{
+  "status": "candidate-clones-regenerated-before-static-build; no build executed by preparation",
+  "transformation": "Production source imports are rebased only; candidate host overrides venue/home builders; candidate batcher changes only the existing solid-box vertex-color push.",
+  "sourceInputs": [
+    {
+      "path": "src/venue-world.ts",
+      "sha256": "0f7aade6cb6fe56ec8baa74d9ae3b583eee9045bdf34cf7a2154ced36e14f5ea",
+      "rawBytes": 103080
+    },
+    {
+      "path": "src/scene/build.ts",
+      "sha256": "02249a6dde42e9c2b0ecff24fac440dd055b91645b3b5b9ca3b314965e5da84d",
+      "rawBytes": 15211
+    },
+    {
+      "path": "src/scene/home-scene.ts",
+      "sha256": "2ec633a024f2e3c86f42c4a204c465207cbde121f12a18898819183babbc447f",
+      "rawBytes": 89947
+    },
+    {
+      "path": "src/scene/neighbourhood-scene.ts",
+      "sha256": "9a3ec62adfb308ae60e48d1d9865d1bc911f4ac318d7a70720b880b3d4d62df5",
+      "rawBytes": 30318
+    },
+    {
+      "path": "src/scene/venue-scenes.ts",
+      "sha256": "34c85df02988feaed4255d5a6e869cba4a0b13c16a5328e26656c51f6a87e0aa",
+      "rawBytes": 81637
+    },
+    {
+      "path": "src/scene/kit.ts",
+      "sha256": "c1d88627e7c4c7a9418c28f3e716215465e6c9fced1c4b85c5e44a4c751b064a",
+      "rawBytes": 5238
+    },
+    {
+      "path": "src/scene/types.ts",
+      "sha256": "0efcf5e2a08aec59c4301a0eed5f20fc0fc4e62f4b96116ad9a53b3b0f000aa6",
+      "rawBytes": 12611
+    },
+    {
+      "path": "src/scene/props.ts",
+      "sha256": "39a6d8080d6382fb61cd363ca933d8c39b3b908f75cf5fe2c7b1f056f08b16df",
+      "rawBytes": 36414
+    },
+    {
+      "path": "src/scene/characters.ts",
+      "sha256": "abf273d014427e7b0e805af97dfe6d6a1db456be5f14a66d9f55c8c98ed44b7e",
+      "rawBytes": 111334
+    },
+    {
+      "path": "src/game/cities/registry.ts",
+      "sha256": "323f1dd7bdf322ffa2783b6eabb7aec5bed2accf60e4a07439b1348d17b7ce71",
+      "rawBytes": 14572
+    },
+    {
+      "path": "src/game/cities/loaders.generated.ts",
+      "sha256": "c4675caccc62f00a06a016d70f8b81f04f49674efbf38c2b3ed55a985281de87",
+      "rawBytes": 2423
+    },
+    {
+      "path": "src/game/cities/lagos/index.ts",
+      "sha256": "3e4ce952a377d3879e76774e68074a1ddc71296a560393144233f9df1187d4f3",
+      "rawBytes": 607
+    },
+    {
+      "path": "src/scene/city-scenes.ts",
+      "sha256": "1eaa59908d99a4f45983a5d01680693e2b38019721f63bf71afc482f753fb90e",
+      "rawBytes": 6670
+    },
+    {
+      "path": "src/scene/body/gate.ts",
+      "sha256": "0217b20637f77717a1fda754bd465a8ca47b4028cdef70ad68c227785e101204",
+      "rawBytes": 2600
+    },
+    {
+      "path": "src/scene/body/stand-in.ts",
+      "sha256": "826d8eac3b48e24b2abb898ae73e45f250ddcdeeeb6bd8d5bd856890ca597608",
+      "rawBytes": 9465
+    },
+    {
+      "path": "src/scene/body/foot-contact.ts",
+      "sha256": "6f98bb61fde23e51016148d06136fcb0b46b0b9d5c03cefc73c7ad47745df8c6",
+      "rawBytes": 9374
+    },
+    {
+      "path": "src/scene/body/skinned.ts",
+      "sha256": "4fa64261e15a7e104f527ad4782aff2bb80c53d559dc7a448d95d797d92c6bdb",
+      "rawBytes": 24451
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v3/viewer.ts",
+      "sha256": "dd927f5dc94ec1aa9c1744eda61dd144a09939540ba1df05930142ab9d8aa09a",
+      "rawBytes": 32690
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v3/index.html",
+      "sha256": "3c189370e0d0c6f1f00bab981bb13459caf96b889956f74a8995ea7c4d9e3e49",
+      "rawBytes": 5721
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v3/vite.fixture.config.ts",
+      "sha256": "d0c53ffac189b0c4d53419c119fb1e5cb25797f1689c8ad7d1f54bce9fc45f23",
+      "rawBytes": 6214
+    }
+  ],
+  "candidateCopies": [
+    {
+      "name": "src/venue-world.ts",
+      "input": {
+        "sha256": "0f7aade6cb6fe56ec8baa74d9ae3b583eee9045bdf34cf7a2154ced36e14f5ea",
+        "rawBytes": 103080
+      },
+      "output": {
+        "sha256": "e07bd950da62f56fabe0a454b3e8682b52fa041effb027fb1448003eecdddbcc",
+        "rawBytes": 103185
+      },
+      "outputPath": "candidate-world.ts",
+      "rebasedImports": 34
+    },
+    {
+      "name": "src/scene/home-scene.ts",
+      "input": {
+        "sha256": "2ec633a024f2e3c86f42c4a204c465207cbde121f12a18898819183babbc447f",
+        "rawBytes": 89947
+      },
+      "output": {
+        "sha256": "81439f8017a4f083e446874627a3253a8ffd86869c565f83a18479fa85e85b04",
+        "rawBytes": 90127
+      },
+      "outputPath": "candidate-home-scene.ts",
+      "rebasedImports": 30
+    },
+    {
+      "name": "src/scene/neighbourhood-scene.ts",
+      "input": {
+        "sha256": "9a3ec62adfb308ae60e48d1d9865d1bc911f4ac318d7a70720b880b3d4d62df5",
+        "rawBytes": 30318
+      },
+      "output": {
+        "sha256": "382e15151ba17a11b6203ca93e8acbc90125daa517178b2a00a12d841a857501",
+        "rawBytes": 30412
+      },
+      "outputPath": "candidate-neighbourhood-scene.ts",
+      "rebasedImports": 15
+    },
+    {
+      "name": "src/scene/venue-scenes.ts",
+      "input": {
+        "sha256": "34c85df02988feaed4255d5a6e869cba4a0b13c16a5328e26656c51f6a87e0aa",
+        "rawBytes": 81637
+      },
+      "output": {
+        "sha256": "e66e15829a1c0def86053c4ca9bd96f352021615fee9d294e01bd88611c01a02",
+        "rawBytes": 81892
+      },
+      "outputPath": "candidate-venue-scenes.ts",
+      "rebasedImports": 32
+    },
+    {
+      "name": "src/scene/build.ts + warmTop color substitution",
+      "input": {
+        "sha256": "02249a6dde42e9c2b0ecff24fac440dd055b91645b3b5b9ca3b314965e5da84d",
+        "rawBytes": 15211
+      },
+      "output": {
+        "sha256": "f855faf42e824195c7f2bab31886d31730d9fa8ef7b8b2f3e28cb9c2049ee1f1",
+        "rawBytes": 15331
+      },
+      "outputPath": "candidate-build.ts",
+      "warmTopSubstitutions": 1
+    }
+  ],
+  "runtime": "The fixture still calls production loadCityContent/loadCityScenes and actual createVenueWorld body/material/scene paths. Only the authored solid-box vertex-color push differs in the candidate branch. Lagos map alias remains handled by the production Vite build config plus fixture browser-condition resolver.",
+  "staticBundleBytes": "not measured; populated by the later Vite static build record hook"
+}

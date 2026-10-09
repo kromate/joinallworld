@@ -193,3 +193,12 @@ the user's5191 preview and unknown processes. WORLD keeps release coordination.
 Owner GRAPHICS source report27c50d0f was adopted as qualified documentation only,
 preserving earlier main report and adding exact asset-scope erratum/executed block;
 no ignored primary graphics runtime was copied or accepted by this adoption.
+
+
+### GRAPHICS authored NPC review — 9 October 2026, 00:12 UTC
+
+Local primary candidate integrates source-authored NPCs into the existing canonical body queue with stable seed identities, local pose/seat/scale and full parent transforms. Exact per-Batch part scope preserves other scene batches; original fallback remains until commit and low-tier/unsupported devices retain merged original geometry. WORLD was notified before props/build and additive VenueDiagnostics changes. Candidate remains unpublished runtime and unreleased.
+
+Actual matched synthetic application-host Market/day has12public and6authored canonical entries, loading0. Original67504tri/33draws vs candidate94334tri/45draws: existing17k scene capFAIL, no raised budget or actor-omission waiver. Actual walk11.4→10.7; idle86renders/61frames unchanged, reentry18canonical, consolewarn/error[], finalgeom/tex/scenes0. Desktop390×844 night94286tri/44draws; physical-phone performance, package bytes, all-venue poses and persisted journeys remain unverified. Affected86/86 tests passed at recorded hashes; corrected compiler0 followed two retained failures. Compiler-only repairs and later host diagnostics mean latest-source/fixture retest still pending. Evidence local venue-authored-people-v1 and venue-authored-people-browser-v1.
+
+OwnedChrome1412593798closed, viewportreset,5184server67843/browser39184terminal130; no root heavy/upload. Existing Luna source-only LOD review completed: install validated source-index detail baseline before wardrobe renderer captures mask/restore state; no generated assets or LOD acceptance. Five-minute memory monitor remains active, latest raw2warning; defer new optional heavy work until measured recovery while current bounded/source work continues. Human concurrency amendment at top remains authoritative. Main d07c467e synchronized with78dirty/untracked source/asset hashes preserved. WORLD remains sole production upload owner.

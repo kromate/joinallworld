@@ -68,3 +68,28 @@ startup limits, Nigeria journeys and old saves. Verify exact candidate build siz
 normal country selection, paid travel, save/reload, network failures and mobile
 rendering before promotion. Do not merge the WORLD source branch wholesale:
 automatic catalogue generation would otherwise register unadmitted city modules.
+
+## Portable reader source checkpoint, 9 October at22:11UTC
+
+`world/tooling/country-directory-http-reader.mjs` implements the same metadata
+contract with browser-standard Fetch, streams, WebCrypto, TextDecoder and abort
+controllers. It has no Node, compiler or game imports. Fourteen isolated fixtures
+pass, including hash/schema/UTF-8 failures, streamed oversize, canceled error
+bodies, cancellation that never settles, shared subscriber cancellation, retries,
+disposal and the unchanged10-second timeout. Its cache includes index bytes and
+caps two distinct requests. Content-hashed URLs use normal HTTP caching; responses
+still require byte/hash validation.
+
+The portable module also read the actual pinned54-country export through injected
+local `Response` streams: one index request, one selected Libya request and no
+additional repeated-selection request. Nigeria's40rows and Tanzania's corrected
+receipt lineage survived unchanged. Final resident raw JSON was31,852bytes for
+index plus Libya/Nigeria/Tanzania. This is source compatibility evidence, not an
+actual HTTP server, browser, cache-hit, transfer, production or device measurement.
+See `country-directory-http-reader-acceptance.json`. Runtime import, explicit
+admission, candidate budget measurement and native journeys remain Integration's
+next acceptance boundary.
+
+```sh
+node --max-old-space-size=128 --test world/tooling/country-directory-http-reader.test.mjs
+```

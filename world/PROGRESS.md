@@ -1,4 +1,4 @@
-# Current world checkpoint, 9 October 2026 at 22:06 UTC
+# Current world checkpoint, 9 October 2026 at 22:11 UTC
 
 Production has **11 green/open African countries**, independently observed on the
 live map and running exact C1. Generated foreign starter source count is **46**;
@@ -14,6 +14,12 @@ measured compressed startup savings. See `COUNTRY-DIRECTORY-PROTOTYPE.md` and
 `country-directory-prototype-acceptance.json`. Next: reviewed portable runtime
 boundary, exact combined budget measurement and staged destination admission by
 Integration, while bounded source generation continues independently.
+
+The portable HTTP reader source now passes14 isolated fixtures and the actual
+pinned export compatibility check through local Response streams. It has no
+Node/game/compiler imports and preserves all metadata statuses. No browser,
+actual HTTP transfer, compressed startup savings or new-country admission is
+claimed. See `country-directory-http-reader-acceptance.json`.
 
 The earlier checkpoints below retain their original dates and evidence scopes.
 

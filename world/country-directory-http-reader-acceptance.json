@@ -1,0 +1,84 @@
+{
+  "format": "world-country-directory-http-reader-source-acceptance-v1",
+  "status": "passed-source-only",
+  "checkedAtUtc": "2026-10-09T22:11:16.794Z",
+  "registeredInProduction": false,
+  "runtimeImported": false,
+  "sourceFiles": [
+    {
+      "path": "world/tooling/country-directory-http-reader.mjs",
+      "bytes": 14403,
+      "sha256": "ae57c079625bef6edc25aca2180a832f88d890a3c816e368c98cd9d25f4c879e"
+    },
+    {
+      "path": "world/tooling/country-directory-http-reader.test.mjs",
+      "bytes": 14972,
+      "sha256": "2dffcdb64d0dbb401c43b0012e84e8a9d8119459e767f3af313f7cfd4b6bbb7c"
+    }
+  ],
+  "tests": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "log": {
+      "path": ".cache/world-build/evidence/country-directory-http-reader-tests.log",
+      "bytes": 1381,
+      "sha256": "67f6422b1e6a0de13a14eb93103f215f4579992e70312d81ce0856a649e36f3f"
+    }
+  },
+  "actualExportCompatibility": {
+    "status": "passed",
+    "checkedAtUtc": "2026-10-09T22:11:16.794Z",
+    "scope": "Actual pinned export via injected local Response streams; no network, HTTP server, browser or game runtime.",
+    "indexSha256": "16c43260898cc476a414ebf6539a608b3d260fe71a0892315a57d94c4a23b118",
+    "countryCount": 54,
+    "initialRequests": 1,
+    "selectedLibyaAdditionalRequests": 1,
+    "repeatedSelectionAdditionalRequests": 0,
+    "initialRawBytes": 14060,
+    "indexPlusLibyaRawBytes": 16533,
+    "finalResidentRawBytes": 31852,
+    "originalNigeriaRows": 40,
+    "queuedLibyaAndTanzaniaRemainClosed": true,
+    "requests": [
+      "index-16c43260898cc476a414ebf6539a608b3d260fe71a0892315a57d94c4a23b118.json",
+      "countries/ly-dec404945cacfc888a87df66b022c6c62eaaccece03548c708bb8f234279add7.json",
+      "countries/ng-b077a3091b67a5287ce8f48871cac81c1c634468a78a25ef34441ccdcac7f129.json",
+      "countries/tz-fb7c81e79b955380730e371b1f5baf81ff001e9dbdf27920d25efb9a918e3416.json"
+    ],
+    "limitations": [
+      "No actual HTTP transfer or cache-hit measurement.",
+      "Raw JSON residency is not JavaScript heap allocation.",
+      "No startup-bundle savings, runtime admission, production travel or physical-device acceptance."
+    ]
+  },
+  "evidence": [
+    {
+      "path": ".cache/world-build/evidence/check-http-actual-export.mjs",
+      "bytes": 2987,
+      "sha256": "7743199b2e0a9aa21080d275410914e41ac3dcbc656b15cac6714f2aacd9aa68"
+    },
+    {
+      "path": ".cache/world-build/evidence/country-directory-http-actual-export.json",
+      "bytes": 1196,
+      "sha256": "cc8dab9a723d51a5b93e86efb8a3ea88f4746ea652dbc1c906b8454f175528af"
+    }
+  ],
+  "bounds": {
+    "indexAndShardRawBytes": 131072,
+    "residentCachedRawBytesIncludingIndex": 524288,
+    "distinctPendingCountryReads": 2,
+    "timeoutMs": 10000
+  },
+  "reviewedCorrections": [
+    "HTTP error bodies are canceled before rejection.",
+    "Cancellation is nonblocking even when an underlying cancel promise never settles.",
+    "Content-hashed URLs use standard HTTP caching while every body remains hash verified."
+  ],
+  "limits": [
+    "Portable module has no Node/game/compiler imports, but execution evidence is Node WebAPI fixtures and local Response streams.",
+    "No actual browser/HTTP transfer or cache-hit measurement.",
+    "No actual shipped startup-bundle savings or new game admission.",
+    "Raw JSON accounting does not measure JS heap or device memory."
+  ]
+}

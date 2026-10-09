@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "base": "f3160b8064bb3ab4a68e5d8c13b0bdd6da75db3f",
+  "scope": "Eighth source-only batch: five bounded African starter samples. Actual serial acquisition and exact-contract resume passed; no runtime, native, hosted, production, physical-phone or whole-city acceptance.",
+  "destinationIds": [
+    "bangui",
+    "khartoum",
+    "djibouti",
+    "asmara",
+    "bamako"
+  ],
+  "registeredInProduction": false,
+  "geometry": {
+    "buildings": 1750,
+    "roads": 402,
+    "sourceBytes": 4436730,
+    "extent": "Bounded central OSM samples and selected airport dataset points; not complete cities or countries."
+  },
+  "sourceSummaries": [
+    {
+      "city": "bangui",
+      "country": "CF",
+      "sourceBytes": 1091178,
+      "roads": 39,
+      "buildings": 350,
+      "retainedVertices": 2226,
+      "outsideBounds": 0,
+      "bounds": [
+        18.506801,
+        4.351644,
+        18.573288,
+        4.41048
+      ]
+    },
+    {
+      "city": "khartoum",
+      "country": "SD",
+      "sourceBytes": 524508,
+      "roads": 75,
+      "buildings": 350,
+      "retainedVertices": 2383,
+      "outsideBounds": 0,
+      "bounds": [
+        32.5152546,
+        15.575024,
+        32.5652,
+        15.605024
+      ]
+    },
+    {
+      "city": "djibouti",
+      "country": "DJ",
+      "sourceBytes": 1272666,
+      "roads": 149,
+      "buildings": 350,
+      "retainedVertices": 3360,
+      "outsideBounds": 0,
+      "bounds": [
+        43.133002,
+        11.5353,
+        43.1715,
+        11.610014
+      ]
+    },
+    {
+      "city": "asmara",
+      "country": "ER",
+      "sourceBytes": 867770,
+      "roads": 79,
+      "buildings": 350,
+      "retainedVertices": 2848,
+      "outsideBounds": 0,
+      "bounds": [
+        38.898702,
+        15.2799,
+        38.948324,
+        15.348339
+      ]
+    },
+    {
+      "city": "bamako",
+      "country": "ML",
+      "sourceBytes": 680608,
+      "roads": 60,
+      "buildings": 350,
+      "retainedVertices": 2422,
+      "outsideBounds": 0,
+      "bounds": [
+        -8.016985,
+        12.5215,
+        -7.93794,
+        12.66696
+      ]
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/game/cities/bangui/facts.ts",
+      "bytes": 1468,
+      "sha256": "34678a68e80cd358d3fa83b2950b7581e50d03c1638e977a3d98672857459f93"
+    },
+    {
+      "path": "src/game/cities/bangui/geometry.ts",
+      "bytes": 79297,
+      "sha256": "137c83a0e199fc865342b6c06dc2a2235b8cd921c48ea605c3c653ab845f969d"
+    },
+    {
+      "path": "src/game/cities/bangui/index.ts",
+      "bytes": 257,
+      "sha256": "1233652cf4ec0c5be7acb990bce9fbe3ca10bd6b90d237c1a5522648b54059d1"
+    },
+    {
+      "path": "src/game/cities/bangui/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/bangui/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/bangui.json",
+      "bytes": 3494,
+      "sha256": "7ab7bc19c26362d6e7939720bc4c7fb169a5fa42d41b7f192e9b3e88d47aefe5"
+    },
+    {
+      "path": "src/game/cities/khartoum/facts.ts",
+      "bytes": 1611,
+      "sha256": "c5d0f7de3bf4a677a2d92f75853053ab8701b6a58083083295ed730e12006b3f"
+    },
+    {
+      "path": "src/game/cities/khartoum/geometry.ts",
+      "bytes": 87966,
+      "sha256": "356442858cef5892256dfc256736921c6d70a2fe229b9a8b3f938be207ef62eb"
+    },
+    {
+      "path": "src/game/cities/khartoum/index.ts",
+      "bytes": 259,
+      "sha256": "0cec2896b7dad7044dff28cd9b6e0840205c59969c1195202ba43f275ec03892"
+    },
+    {
+      "path": "src/game/cities/khartoum/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/khartoum/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/khartoum.json",
+      "bytes": 3495,
+      "sha256": "80d1fb73d9b16c3cb8f21d5c1af3fdf672cbf690239c6f9e4b918ca07976cc80"
+    },
+    {
+      "path": "src/game/cities/djibouti/facts.ts",
+      "bytes": 1457,
+      "sha256": "fa959163ede32e4c48117bfbdad1185470f10104cc447fea73e325f9ba3c910a"
+    },
+    {
+      "path": "src/game/cities/djibouti/geometry.ts",
+      "bytes": 118582,
+      "sha256": "a54cdbbe6a759ec90563b1e86c6e20bcf1fbf69d89d8726a3110510c78a179f4"
+    },
+    {
+      "path": "src/game/cities/djibouti/index.ts",
+      "bytes": 259,
+      "sha256": "a7503d7c38a93f981c8fb785151a76f649ca2bff46e2ea5627d764999e541393"
+    },
+    {
+      "path": "src/game/cities/djibouti/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/djibouti/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/djibouti.json",
+      "bytes": 3485,
+      "sha256": "b94c6c7b09de72ae07ca98ddd24cf532491059e18387a24a9d250a05b2b9bcec"
+    },
+    {
+      "path": "src/game/cities/asmara/facts.ts",
+      "bytes": 1456,
+      "sha256": "c12d93976146e8aef29c955eae058eb53d3886dc826fb3cf86a1cb3fbc798dee"
+    },
+    {
+      "path": "src/game/cities/asmara/geometry.ts",
+      "bytes": 99767,
+      "sha256": "69d92a00010d14fb687f92174a35a20194ff686edb96ce78a13489c4509b2bb7"
+    },
+    {
+      "path": "src/game/cities/asmara/index.ts",
+      "bytes": 257,
+      "sha256": "b65cc149279e2d35a1c143cea861ac01ea071ca6ecdea78d10728302e9bddfd0"
+    },
+    {
+      "path": "src/game/cities/asmara/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/asmara/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/asmara.json",
+      "bytes": 3488,
+      "sha256": "885654fb38925574b92e616f560623d12771db908167ded91cde31c75d3b80ad"
+    },
+    {
+      "path": "src/game/cities/bamako/facts.ts",
+      "bytes": 1453,
+      "sha256": "cd5e5d3668f661c0a0a53caae975fdb831fa0332f2e87d379d4a52ba92961aa2"
+    },
+    {
+      "path": "src/game/cities/bamako/geometry.ts",
+      "bytes": 87662,
+      "sha256": "8022546a35fcd7f4a22c3494b5eb321916afbc689c2f0ad63d6c01d9de884939"
+    },
+    {
+      "path": "src/game/cities/bamako/index.ts",
+      "bytes": 257,
+      "sha256": "20ea458c45b34c4c56742e11039066a82091272e2c2e5b62ff4df7b96c2e97ba"
+    },
+    {
+      "path": "src/game/cities/bamako/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/bamako/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/bamako.json",
+      "bytes": 3479,
+      "sha256": "935424c8c3e2386b72d34ea78c73534d470d1222a947b371fce75172d16e777d"
+    },
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 39500,
+      "sha256": "1c4fffb0d08b45d719b0e0900ad69e006b4e4148e50804481cc705fef4db9273"
+    },
+    {
+      "path": "scripts/world/build-playable-africa.py",
+      "bytes": 13380,
+      "sha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+    },
+    {
+      "path": "scripts/world/verify-playable-destination.ts",
+      "bytes": 13771,
+      "sha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/inventory.json",
+      "bytes": 173999,
+      "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+    },
+    {
+      "path": "world/tooling/atomic_starter_publication.py",
+      "bytes": 22078,
+      "sha256": "4f3b998e1b878585bdbe461bceb99447d8c1c23b84b83ab4b4e7655395b54bac"
+    },
+    {
+      "path": "world/tooling/run_africa_starters.py",
+      "bytes": 43555,
+      "sha256": "af8d2348113de428109ff6abe4a44b9fea777dd39041965c44e0265cf385f3bb"
+    }
+  ],
+  "validation": {
+    "contractSha256": "2e6db21dd8d400ba1f6031afe505db808379a6b73659f5b01523c8f438a42168",
+    "status": "complete",
+    "actualSerialRun": true,
+    "actualExactContractResume": true,
+    "windows": [
+      {
+        "budgetSeconds": 60,
+        "elapsedSeconds": 12.093,
+        "finishedAt": "2026-10-09T21:47:06Z",
+        "startedAt": "2026-10-09T21:46:54Z"
+      },
+      {
+        "budgetSeconds": 60,
+        "elapsedSeconds": 3.261,
+        "finishedAt": "2026-10-09T21:47:42Z",
+        "startedAt": "2026-10-09T21:47:39Z"
+      }
+    ],
+    "allFiveSourceAndIsolatedEngineVerified": true,
+    "fifteenSourceAndRequestFilesUnchanged": true,
+    "allRetainedCoordinatesWithinBounds": true,
+    "auditPath": ".cache/world-build/evidence/africa-eighth-resume-audit.json",
+    "auditSha256": "7adbb68a8bd91fa01290ef107648342cb8de072e1e103be7c5466293b2c87126",
+    "contractPath": ".cache/world-build/playable-africa-runs/2e6db21dd8d400ba1f6031afe505db808379a6b73659f5b01523c8f438a42168/contract.json",
+    "contractFileSha256": "05bff27381280965d930c1f2bb2ff700cfab8992c36d868e038f234942c496c9",
+    "reportPath": ".cache/world-build/playable-africa-runs/2e6db21dd8d400ba1f6031afe505db808379a6b73659f5b01523c8f438a42168/report.json",
+    "reportSha256": "f5653d1e4b4033b570bf6cdf873d57e589c55737569e45c8dcd7c6502b5e27ca",
+    "maxCountries": 5,
+    "maxPotentialReservationBytes": 41943040,
+    "secondsPerWindow": 60
+  },
+  "limitations": [
+    "Natural Earth city/capital labels can be stale.",
+    "OurAirports records do not certify current operations, routes or official ARPs.",
+    "Unmeasured building heights are estimates and visitor venues are fictional gameplay content.",
+    "Shared runtime catalogue/routes remain deployed C1; these modules alone do not open countries."
+  ]
+}

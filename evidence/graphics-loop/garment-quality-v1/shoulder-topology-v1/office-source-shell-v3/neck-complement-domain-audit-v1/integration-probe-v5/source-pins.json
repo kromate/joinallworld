@@ -1,0 +1,21 @@
+{
+  "status": "prepared-for-root-review-not-published",
+  "purpose": "Isolated v5 diagnosis and correction for zeroed complement skin weights; no production files changed.",
+  "priorRun": {
+    "v4RunId": 37907511660,
+    "v4ManifestSha256": "7da48d57bf57270799c75d62e65cdf3ee3bf384df885781b7514eeef6fa99d98",
+    "failure": "Structured CDP payload reports Pose-witness skin weights do not sum to one at vertex 0: 0."
+  },
+  "cause": "The source weight accessor is normalized integer storage. V4 computes fractional barycentric weights but passes those fractions directly to the original integer typed-array constructor. Values below one truncate to zero. V5 writes the generated weights to a Float32BufferAttribute, preserves per-bone barycentric support, and rejects non-finite/negative/non-unit rows.",
+  "sourceBodySha256": {
+    "male": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "female": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "clips": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "execution": "Source-prepared only. No v5 tests, bundle, asset parse, browser, or visual validation has run. Root owns review and any remote publication/execution.",
+  "candidatePath": "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v5/neck-complement-v5.ts",
+  "candidateSha256": "f70c8d7d224c1d5715956df5c63ba0c8ab3f585ced2596759e2441ec7d7da7cd",
+  "regressionPath": "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v5/skin-weight-encoding.test.ts",
+  "regressionSha256": "b5bff78cc5b30aaeadfbc9caa519f45adb50ee7add882e2289b5ae95d1b4b13a",
+  "fixtureSha256": "268e650fc8ca4d212cc771fae708112bec76880309e4b8efb3c739c8b8e8a576"
+}

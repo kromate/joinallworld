@@ -170,6 +170,7 @@ try {
     sameHomeHasBothSavedIdentityRecords: captures.some((item) => item.name === 'male-casual-standing')
       && completed.samples?.['female-office-standing']?.boneCount > 0,
     playerBodyRendered: completed.samples?.['male-casual-standing']?.boneCount > 0 && completed.samples?.['male-casual-standing']?.render?.triangles > 0,
+    preparedNativeBodyRendered: completed.samples?.['male-casual-standing']?.preparedNativeRigDetected === true,
     bodyGeometryChangesAcrossRequestedPoses: actionNames.every((id) => {
       const active = completed.samples?.[id]?.bodyPoseSignature;
       const standing = completed.samples?.['male-casual-standing']?.bodyPoseSignature;

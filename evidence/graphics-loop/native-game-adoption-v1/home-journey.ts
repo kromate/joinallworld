@@ -15,6 +15,7 @@ interface JourneySample {
   readonly bodyShown: boolean;
   readonly actorMeshes: readonly string[];
   readonly boneCount: number;
+  readonly preparedNativeRigDetected: boolean;
   readonly bodyPoseSignature: string | null;
   readonly sceneObjectPhase: string;
   readonly sceneRestPose: string;
@@ -124,9 +125,13 @@ function createJourney() {
     }
     const actionId = state.activeAction?.kind === 'activity' ? state.activeAction.id : null;
     const rest = entry.walk.rest();
+    if (!rest) throw new Error('Home scene has no current public rest state');
+    const actorNames = [...names].sort();
+    const preparedNativeRigDetected = boneCount === 52
+      && ['Eyes', 'Teeth', 'Tongue'].every((name) => actorNames.includes(name));
     const snapshot: JourneySample = {
       name, requestedPose, actionId, spot: state.spot, bodyShown: entry.bodyShown,
-      actorMeshes: [...names].sort(), boneCount, bodyPoseSignature: signature, bodyPosition: position,
+      actorMeshes: actorNames, boneCount, preparedNativeRigDetected, bodyPoseSignature: signature, bodyPosition: position,
       sceneObjectPhase: entry.objectPhase, sceneRestPose: rest.pose,
       navigationWaypoints: lastNavigationWaypoints,
       visibleFurniture: entry.objects(), render: { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles },
@@ -161,12 +166,7 @@ function createJourney() {
   }
   async function requestCapture(name: string): Promise<void> {
     captureRequest = name;
-    const request = new Promise<void>((resolve) => { resolveCaptureRequest = resolve; });
-    let timeoutId = 0;
-    const timeout = new Promise<void>((resolve) => { timeoutId = window.setTimeout(resolve, 7_500); });
-    await Promise.race([request, timeout]);
-    window.clearTimeout(timeoutId);
-    if (captureRequest === name) errors.push(`Browser harness did not capture requested stage ${name}`);
+    await new Promise<void>((resolve) => { resolveCaptureRequest = resolve; });
     captureRequest = null;
     resolveCaptureRequest = null;
   }
@@ -185,7 +185,7 @@ function createJourney() {
   async function navigateIntoActiveAction(): Promise<void> {
     if (!entry) throw new Error('Home scene is not initialized');
     const rest = entry.walk.rest();
-    if (!rest.busy) throw new Error(`Home scene did not expose an active furniture action: ${JSON.stringify(rest)}`);
+    if (!rest || !rest.busy) throw new Error(`Home scene did not expose an active furniture action: ${JSON.stringify(rest)}`);
     const bodyActor = entry.group.getObjectByName('skinned-body');
     if (!bodyActor) throw new Error('Native home actor is missing before action navigation');
     bodyActor.updateWorldMatrix(true, true);

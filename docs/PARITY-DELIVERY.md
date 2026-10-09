@@ -1,6 +1,6 @@
 # Combined reliability and feature-parity delivery
 
-This is the current tracker for the combined work from the research chat and “Review thread for remaining work” (01a115e4-c2fc-7300-a97c-d9d0dedf9e91). Updated 8 October 2026.
+This is the current tracker for the combined work from the research chat and “Review thread for remaining work” (01a115e4-c2fc-7300-a97c-d9d0dedf9e91). Updated 9 October 2026.
 
 ## Messaging release, 8 October 2026
 
@@ -32,7 +32,7 @@ Current source already has quoted replies, reactions, pictures, pin/search/group
 | Groups view and swipe reply | Deployed at bd69e765 | Compiled-browser gesture check, phone-width layout and public navigation verified | Physical-device follow-up |
 | Recorded voice notes, video, stickers | Voice boundaries started locally | Unwired Opus parser/recorder; see VOICE-NOTES-WIP.md. No voice-note release | Resume after the user-prioritized app redesign; finish the full private send/playback path |
 | Phone UI polish | Deployed at bb04c64f | 42 rendered 3D raster icons, calmer wallpaper, four category pages; 27 existing checks and typecheck passed; desktop/mobile inspected, paging defect fixed | Public artwork and saved-state continuity verified |
-| App interiors and headers | Reopened; first pass deployed at cfbc133b | User reported Boutique selected-state failure and unfinished card/Family flows. APP-FLOW-AUDIT.md replaces entry-only acceptance | Complete component migrations and state/action verification across screens |
+| App interiors and headers | Further source/local slices ready through0e2afb59; receiptb4bec444; first releases remain separate | Exact CI37887179344 passes353 focused checks. Boutique/Jobs/Profile/ordinary chats, funded Cars, immediate deposits, normal Business, directories and owned-house navigation/free return have real local action/save/receipt proof in APP-FLOW-AUDIT.md | Other system integrates fresh main, resolves conflicts, seals Worker and verifies production; remaining offline/media/identity/physical-device cases stay explicit |
 | HUD/recovery polish and sustained mobile performance | Queued | Prior linked-chat viewport check is not physical-device proof | Measure representative current build; preserve download budgets |
 | Real-player Family roles | Deployed at a44629b3 | Node/SQLite restart probes, two-player browser flow and live synthetic consent/unlink/continuity passed | Existing call transport is reused; physical-device audio remains a separate check |
 | Housing, household/staff/family, economy and player work | Re-audit required | Historical parity inventory is stale | Reconcile current source before accepting a missing feature; deliver bounded complete loops |

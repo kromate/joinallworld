@@ -18,6 +18,10 @@ Current decisions and production proof belong in [PARITY-DELIVERY.md](../PARITY-
 
 The original capture recorded 109 visible replies on the linked chat announcement, 395 on the feature-request post, and selected related discussions. It did not exhaust every comment on every similar post. Ranked/hidden replies and truncated discussions remain explicit gaps. The parity overview lists the next court, cohabitation, nightlife, city-launch and launch reply trees to inspect, followed by the remaining source-linked announcements.
 
+The [9 October reply follow-up](lagos-life-reply-followup-2026-10-09.md) adds reviewed court, cohabitation and nightlife evidence:34/149/45 distinct descendant-inclusive statuses and57 deduplicated reader findings. Its per-post ledger records Relevant sorting, visible branches and unavailable probable-spam boundaries. These figures are not direct-comment totals or completeness proof. City-launch and original-launch follow-up is in progress; the old archive's Allworld gap columns remain historical.
+
+The [current-source comparison and implementation order](lagos-life-current-comparison-2026-10-09.md) distinguishes existing cars/messages/visits/justice/recovery/capture from permanent household permissions, safe design delegation, asset transfers and other unresolved requirements. It preserves the difference between source, local acceptance and deployed behavior.
+
 The raw capture remains at `/Users/anthonyakpan/Desktop/JoinAllworld/docs/research/lagos-life-browser-evidence-2026-10-08.txt`; it contains duplicated browser UI and unrelated recommendations and is deliberately not committed here. The public source links needed to continue are retained in these catalogues.
 
 ## Original document fingerprints

@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-09T23:04:28.276043+00:00",
+  "observedAt": "2026-10-09T23:12:07.848362+00:00",
   "candidateSource": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
   "ciRun": 37998929401,
   "ciUrl": "https://github.com/kromate/joinallworld/actions/runs/37998929401",
@@ -419,5 +419,122 @@
     "durationMs": 110.736875,
     "logSha256": "e66b83ca26d1bfdcfa0c920dd1c42ebb831186cdc4fb6571c29de99eef99c762",
     "scope": "Pure domain only; no host provenance, durable money settlement, NPC appearance rendering, native interaction or deployment accepted."
+  },
+  "sealedPackage": {
+    "runId": 38002567221,
+    "jobId": 114063866800,
+    "toolingHeadSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+    "actualSourceSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "packageManifestSourceSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "packageDigest": "96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad",
+    "releaseReady": false,
+    "outcomes": [
+      {
+        "check": "source-and-package-identity",
+        "status": "passed"
+      },
+      {
+        "check": "sealed-worker-start-and-sqlite",
+        "status": "passed"
+      },
+      {
+        "check": "packaged-assets-all-destinations",
+        "status": "passed",
+        "count": 21,
+        "cities": [
+          "yaounde",
+          "lome",
+          "accra",
+          "nairobi",
+          "algiers",
+          "cotonou",
+          "abidjan",
+          "dakar",
+          "cape-town",
+          "addis-ababa"
+        ]
+      },
+      {
+        "check": "air-travel-save-reload-meal-return-first-five",
+        "status": "passed",
+        "cities": [
+          "yaounde",
+          "lome",
+          "accra",
+          "nairobi",
+          "algiers"
+        ]
+      },
+      {
+        "check": "homeward-route-and-save-recovery-first-five",
+        "status": "passed",
+        "cities": [
+          "yaounde",
+          "lome",
+          "accra",
+          "nairobi",
+          "algiers"
+        ]
+      },
+      {
+        "check": "air-travel-save-reload-meal-return-second-four",
+        "status": "passed",
+        "cities": [
+          "cotonou",
+          "abidjan",
+          "dakar",
+          "cape-town"
+        ]
+      },
+      {
+        "check": "homeward-route-and-save-recovery-second-four",
+        "status": "passed",
+        "cities": [
+          "cotonou",
+          "abidjan",
+          "dakar",
+          "cape-town"
+        ]
+      },
+      {
+        "check": "air-travel-save-reload-meal-return-addis-ababa",
+        "status": "passed",
+        "cities": [
+          "addis-ababa"
+        ]
+      },
+      {
+        "check": "homeward-route-and-save-recovery-addis-ababa",
+        "status": "passed",
+        "cities": [
+          "addis-ababa"
+        ]
+      },
+      {
+        "check": "sqlite-restart",
+        "status": "passed"
+      }
+    ],
+    "assetsPassed": 21,
+    "adminRateWaits": [
+      {
+        "status": 429,
+        "code": "rate_limited",
+        "bucketCount": 31,
+        "windowMs": 60000,
+        "waitNumber": 1,
+        "remainingMs": 110950,
+        "phase": "receipt-replay",
+        "delayMs": 5850,
+        "intentSha256": "b6154747e7795310c269017d360fe20dccbcf4cb241f5a26bfb55ec2d0d7ea28",
+        "sameIntentRetried": true,
+        "sameAdminAddress": true,
+        "authenticatedFounderBucket": true
+      }
+    ],
+    "observationFileSha256": "67abed017e9bad319f803be203e2413dafd10a656d01eb7e192e5f817b4abef2",
+    "logSha256": "f920e6925f8534ad96a20dff6af58e4eac05a070743a92d916c117dbddf2e93f",
+    "artifactZipSha256": "c39db7f335d517160f12bb0e3e48ca430a3e2a036027ad1948bc4c1eec7e45d1",
+    "qualification": "Exact sealed synthetic Worker/Assets travel+SQLite outcomes only. Not interactive-teaching ON/native, original C1 store upgrade or production acceptance. Package download/archive identity remains WORLD owner gate."
   }
 }

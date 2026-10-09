@@ -1,0 +1,34 @@
+--- a/server/living-world/driving-service.test.ts
++++ b/server/living-world/driving-service.test.ts
+@@ -77,11 +77,13 @@
+   const f = await livingFixture(t)
+   const player = await onboard(f)
+   const start = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+-  const journey = start.session!
++  assert.ok(start.ok && start.session, 'the ordinary start returns a saved driving session')
++  const journey = start.session
+   f.advance(100)
+   const legacy = { cityId: 'lagos', journeyId: journey.journeyId, sequence: 1,
+     frames: [{ throttle: 1, brake: 0, steer: 0 }] }
+   const forward = await post(f, `${drivingPath}/input`, legacy, player.cookie)
++  assert.ok(forward.ok && forward.session, 'accepted legacy controls return canonical motion')
+   assert.deepEqual([forward.ok, forward.session?.state.speed > 0, forward.session?.state.position.z > journey.state.position.z], [true, true, true])
+   const legacyRow = await f.server.store.read(db => (db.livingWorld as { driving: Record<string, { v: number }> }).driving[player.id])
+   assert.equal(legacyRow.v, 1, 'old three-field controls retain the strict v1 save format')
+@@ -92,6 +94,7 @@
+     frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'reverse' }] }
+   f.advance(100)
+   const stopped = await post(f, `${drivingPath}/input`, reverse, player.cookie)
++  assert.ok(stopped.ok && stopped.session, 'accepted reverse selection returns canonical stopped motion')
+   assert.deepEqual([stopped.ok, stopped.session?.state.speed, stopped.session?.state.position], [true, 0, forward.session?.state.position],
+     'requesting the opposite direction brakes to zero without flipping velocity')
+   const reverseReplay = await post(f, `${drivingPath}/input`, reverse, player.cookie)
+@@ -104,7 +107,7 @@
+   assert.ok(backing.ok && backing.session)
+   assert.ok(backing.session.state.speed > 0 && backing.session.state.speed <= 3)
+   assert.equal(backing.session.state.gear, 'reverse')
+-  assert.ok(backing.session.state.position.z < stopped.session!.state.position.z, 'the server computes backward movement from accepted controls')
++  assert.ok(backing.session.state.position.z < stopped.session.state.position.z, 'the server computes backward movement from accepted controls')
+   const reverseRow = await f.server.store.read(db => (db.livingWorld as { driving: Record<string, { v: number; state: { speed: number; gear?: string } }> }).driving[player.id])
+   assert.deepEqual([reverseRow.v, reverseRow.state.speed > 0, reverseRow.state.gear], [2, true, 'reverse'], 'reverse motion upgrades only the driving row to its explicit v2 contract')
+ 

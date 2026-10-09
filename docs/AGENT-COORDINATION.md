@@ -1,3 +1,13 @@
+## GRAPHICS measured parallel results — 9 October 2026, 06:22 UTC
+
+Crowd remote v3 run37892165759 exact991a30e1 SUCCESS: root verified24PNG hashes/controlsets and7stable source pins,21.992s1287577600B<1280MiB remote cap,cleanuptrue. Root representative source/compact views preserve recognizable identity but shoulder cutouts/coarse hair remain. Render triangles male3794→3744/female4862→4546,3draws unchanged. Byte figures are typed-geometry payloads, not proven net residency savings. Static diagnostic only. Separatev8 real RAF walk/full-body framing sourceprepared; no actualplay or framing acceptance yet.
+
+Environment v4 run37892370818 exact6ad217d2 SUCCESS, root verified5626output hashes/5392public hashes and7550pre/postsourcepins;8.107s322592768B<384MiB remote cap,cleanuptrue,40citymapchunks/1143importrefs. Raw diagnostic94496047B is not a production/no-growth certificate. Actual environment render-v3 exact1b7db382/run37893098060 is IN_PROGRESS/unverified, separate source branch includes7178 exact package/recipe pins and validates old artifact commit/run independently.
+
+Clothing v5 run37892825715 exactd832ff95 failed: private appearance replay now passes attribute equality, then combined raw-vs-displayed fitted bind state guard fails. Controller waited12sec and subsequently crossed remote1280MiB cap at1344770048B/20.76s;36sourcepins stable/cleanuptrue/0PNG. Cause-specific bind/fit witness and immediate failure handling next; no cap escalation or production adoption.
+
+Existing five-minute monitor ACTIVE and three existing Luna lanes concurrent. Latest06:15WARNING2 renewed paging: no new local heavy build/browser/server. Main518ae92f safely adopted preserving82mixeddraft hashes. WORLDsoleproductionuploader; no graphicsruntime main merge/upload. Shared diagnostic cap changes384MiBCPU/1280MiBChrome apply only remote tools; mobile/game/local budgets and whole-game visual/performance gates remain OPEN. Goal ACTIVE/incomplete.
+
 ## GRAPHICS parallel acceleration — 9 October 2026, 06:10 UTC
 
 Three existing GPT-6 Luna lanes are active concurrently with separate source ownership; the five-minute memory monitor is already ACTIVE. No duplicated monitor or new local heavy browser/server/build. Last monitor reports NORMAL1 recovery but continued paging; root holds only optional new local intensive work. WORLD remains sole production uploader.

@@ -39,3 +39,5 @@ Hashes below identify the original copied documents before archive labeling was 
 | [lagos-life-source-audit-2026-10-08.md](lagos-life-source-audit-2026-10-08.md) | `57019b0c0474e24fe35bf898939f6fe0dc666d66d5f7fa67539168f588130a1d` |
 | [lagos-life-implementation-plan-2026-10-08.md](lagos-life-implementation-plan-2026-10-08.md) | `3bc8dfe7e827e2c34181e1341cede1471a58aaff1900e13ba1cf886bbd772741` |
 | [lagos-life-parity-2026-10-08.md](lagos-life-parity-2026-10-08.md) | `abc62de329e6e82798d3b6683e87843d194e5c0fbc28a60591db670151369ca4` |
+
+The [original-launch follow-up](lagos-life-original-launch-followup-2026-10-09.md) captures490 distinct descendant-inclusive replies, expands all3 discovered truncated root posts, and reviews the first20 of156 inventoried branches. It adds66 deduplicated reader findings and records contradictory same-day bail claims rather than treating them as shipping proof. [161 pending branch pages and66 image-bearing posts](lagos-life-original-pending-first20.md) preserve the exact first-batch continuation snapshot. The city129-page queue remains separate.

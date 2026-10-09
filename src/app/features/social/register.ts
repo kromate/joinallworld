@@ -10,32 +10,33 @@ import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { social } from './useSocial.ts'
 import { knocksWaiting, requestsWaiting } from './socialModel.ts'
+import { bodyLoader } from '../../state/panelBody.ts'
 
 export const people = definePanel({
   id: 'people', title: 'People', placement: 'sim-tab', order: 50, phone: true, group: 'people',
   badge: () => requestsWaiting(social.me),
-  component: defineAsyncComponent(() => import('./PeopleApp.vue')),
+  component: defineAsyncComponent(bodyLoader('social/PeopleApp')),
 })
 
 export const person = definePanel({
   id: 'person', title: 'Person', placement: 'modal',
-  component: defineAsyncComponent(() => import('./PersonApp.vue')),
+  component: defineAsyncComponent(bodyLoader('social/PersonApp')),
 })
 
 export const contacts = definePanel({
   id: 'contacts', title: 'Contacts', placement: 'phone', order: 20, group: 'people',
-  component: defineAsyncComponent(() => import('./ContactsApp.vue')),
+  component: defineAsyncComponent(bodyLoader('social/ContactsApp')),
 })
 
 export const family = definePanel({
   id: 'family', title: 'Family', placement: 'phone', order: 36, group: 'people',
-  component: defineAsyncComponent(() => import('./FamilyApp.vue')),
+  component: defineAsyncComponent(bodyLoader('social/FamilyApp')),
 })
 
 export const invite = definePanel({
   id: 'invite', title: 'Invite', placement: 'phone', order: 38, group: 'people',
   badge: () => knocksWaiting(social.me),
-  component: defineAsyncComponent(() => import('./InviteApp.vue')),
+  component: defineAsyncComponent(bodyLoader('social/InviteApp')),
 })
 
 /** Spread into NATIVE_PANELS (src/app/features/panels.ts). Messages is registered there already. */

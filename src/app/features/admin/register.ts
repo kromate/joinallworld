@@ -4,10 +4,11 @@ import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { ADMIN_PANEL, adminGate } from './adminGate.ts'
+import { bodyLoader } from '../../state/panelBody.ts'
 
 export const admin = definePanel({
   id: ADMIN_PANEL, title: 'Admin', placement: 'phone', order: 98, live: false, group: 'city',
   hidden: () => !adminGate.admin,
-  component: defineAsyncComponent(() => import('./AdminApp.vue')),
+  component: defineAsyncComponent(bodyLoader('admin/AdminApp')),
 })
 export const ADMIN_PANELS: readonly VuePanel[] = [admin]

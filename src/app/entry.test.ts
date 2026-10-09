@@ -217,6 +217,7 @@ test('automatic game startup, including one selected city, stays within the orig
     return found[0] ?? ''
   }
   const homewardRules = one(/^homeward-rules-[\w-]{8}\.js$/, 'recovery reader and planner have one conditional chunk')
+  const panelBodies = one(/^panelBodies-[\w-]{8}\.js$/, 'unopened app body loaders have one conditional chunk')
   const measure = (names: readonly string[]) => names.reduce((sum, name) => {
     const bytes = readFileSync(join(dist, name))
     return { raw: sum.raw + bytes.length, gzip: sum.gzip + gzipSync(bytes).length }
@@ -229,19 +230,22 @@ test('automatic game startup, including one selected city, stays within the orig
     const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     const rules = one(new RegExp(`^city-${escaped}-rules-[\\w-]+\\.js$`), `${id} has one lazy rules chunk`)
     const content = one(new RegExp(`^city-${escaped}-content-[\\w-]+\\.js$`), `${id} has one lazy content chunk`)
-    const catalogueStart = commonCode.indexOf(JSON.stringify(row))
+    const catalogueStart = commonCode.indexOf(JSON.stringify(row.slice(0, 4)).slice(0, -1) + ',')
     assert.ok(catalogueStart >= 0, `${id}'s compact catalogue tuple is in the built startup`)
     const catalogueTuple = arrayLiteralAt(commonCode, catalogueStart)
     const loaderPattern = new RegExp(`\\["\\./${rules.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}","${exportName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\]`)
     const loaderMatch = loaderPattern.exec(commonCode)
     assert.ok(loaderMatch?.index !== undefined, `${id}'s emitted rule URL and export share one compact loader tuple`)
     const loaderTuple = arrayLiteralAt(commonCode, loaderMatch.index)
-    assert.deepEqual(JSON.parse(catalogueTuple), row)
+    // Terser writes fractional coordinates as -.21 or .55; keep full numeric equality after parsing.
+    const jsonTuple = catalogueTuple.replace(/"(?:\\.|[^"\\])*"|(?<=[[,])(-?\.\d+(?:e[+-]?\d+)?)(?=[,\]])/g, (token: string, fraction: string | undefined) => fraction === undefined ? token : JSON.stringify(Number(fraction)))
+    assert.deepEqual(JSON.parse(jsonTuple), row)
     assert.deepEqual(JSON.parse(loaderTuple), [`./${rules}`, exportName])
     const marginal = Buffer.byteLength(catalogueTuple) + Buffer.byteLength(loaderTuple) + 2
     assert.ok(marginal <= 150, `${id} adds ${marginal} built bytes of catalogue and loader rows (limit 150)`)
     const names = eagerChunks(dist, [...common, rules, content].map((name) => `assets/${name}`))
     assert.ok(!names.includes(`assets/${homewardRules}`), `${id} does not preload conditional homeward rules`)
+    assert.ok(!names.includes(`assets/${panelBodies}`), `${id} does not preload unopened app body loaders`)
     assert.ok(names.includes(`assets/${rules}`) && names.includes(`assets/${content}`) && names.includes(`assets/${routes[0]}`), `${id} loads its rules, content and authored routes`)
     assert.deepEqual(names.filter((name) => /\/city-.+-(?:rules|content)-[\w-]+\.js$/.test(name) && !name.includes(`city-${id}-`) && !/\/city-(?:formula|ogun)-rules-/.test(name) && !/\/city-(?:ogun-)?content-builder-/.test(name) && !/\/city-ogun-content-/.test(name) && !/\/city-formula-content-/.test(name)), [], `${id} does not load another city's rules or content`)
     assert.deepEqual(names.filter((name) => /\/city-.+-map-[\w-]+\.js$/.test(name)), [], `${id} does not load a map at startup`)

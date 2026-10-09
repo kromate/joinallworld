@@ -23,8 +23,10 @@ const realFetch = globalThis.fetch
 const load = async <T = { default: Component }>(path: string): Promise<T> => await vite.ssrLoadModule(path) as T
 const text = (html: string): string => html.replace(/<!--.*?-->/g, '').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, '\'').replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim()
 async function render(props: Record<string, unknown> = {}): Promise<string> {
-  const component = (await load('/src/app/features/business/BusinessApp.vue')).default
-  return renderToString(createSSRApp({ render: () => h(component, props) }))
+  const component = (await load('/src/app/features/phone/PanelHost.vue')).default
+  const panel = app.shell.byId.get('business')
+  assert.ok(panel, 'Business is registered before its component loads')
+  return renderToString(createSSRApp({ render: () => h(component, { ...props, panel }) }))
 }
 const buttonTag = (html: string, label: string): string => {
   const hit = [...html.matchAll(/<button\b[^>]*>.*?<\/button>/gs)].map((match) => match[0]).find((tag) => text(tag).includes(label))
@@ -41,6 +43,8 @@ before(async () => {
   cache = (await load<{ useCivic: () => Civic }>('/src/app/features/civic/useCivic.ts')).useCivic()
   assert.equal(await app.game.connect(), true)
   app.game.stop()
+  assert.ok(!vite.moduleGraph.getModuleById(`${root}src/app/state/panelBodies.ts`)?.ssrModule, 'registering and connecting does not execute unopened body loaders')
+  assert.ok(!vite.moduleGraph.getModuleById(`${root}src/app/features/business/BusinessApp.vue`)?.ssrModule, 'Business stays unloaded until PanelHost renders it')
 })
 after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch })
 

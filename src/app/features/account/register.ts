@@ -4,6 +4,7 @@
 import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
+import { bodyLoader } from '../../state/panelBody.ts'
 
 /** The id the rest of the game opens: `shell.open(ACCOUNT_PANEL, { intent: 'save' | 'sign-in' })`. */
 export const ACCOUNT_PANEL = 'account-sign-in'
@@ -14,7 +15,7 @@ export const ACCOUNT_PANEL = 'account-sign-in'
  */
 export const accountSignIn = definePanel({
   id: ACCOUNT_PANEL, title: 'Your account', placement: 'modal', role: 'session-gate', live: false, order: 200,
-  component: defineAsyncComponent(() => import('./AccountSignIn.vue')),
+  component: defineAsyncComponent(bodyLoader('account/AccountSignIn')),
 })
 
 export const ACCOUNT_PANELS: readonly VuePanel[] = [accountSignIn]

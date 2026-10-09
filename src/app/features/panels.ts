@@ -24,60 +24,61 @@ import { BUSINESS_PANELS } from './business/register.ts'
 import { POLITICS_PANELS } from './politics/register.ts'
 import { ADMIN_PANELS } from './admin/register.ts'
 import { LIVING_WORLD_PANELS } from './living-world/register.ts'
+import { bodyLoader } from '../state/panelBody.ts'
 
-export const bank = phonePanel('bank', 'Bank', () => import('./bank/BankApp.vue'), {
+export const bank = phonePanel('bank', 'Bank', bodyLoader('bank/BankApp'), {
   icon: '🏦', order: 14, group: 'money', badge: billsDue,
 })
 
-export const messages = phonePanel('messages', 'Messages', () => import('./messages/MessagesApp.vue'), {
+export const messages = phonePanel('messages', 'Messages', bodyLoader('messages/MessagesApp'), {
   icon: '✉️', order: 12, group: 'people',
   badge: (_state, view) => messagesBadge(social.me, view.connected, noticeMarks.fresh(view.cityId, view.social?.notices)),
   notifications: (_state, view) => notificationLines(social.me, { connected: view.connected, now: view.now, notices: view.social?.notices, seen: noticeMarks.seen(view.cityId) }),
 })
 
-export const support = phonePanel('support', 'Report a problem', () => import('./support/ReportApp.vue'), { short: 'Report', icon: '🛟', order: 96, group: 'city', badge: () => reportReplies() })
+export const support = phonePanel('support', 'Report a problem', bodyLoader('support/ReportApp'), { short: 'Report', icon: '🛟', order: 96, group: 'city', badge: () => reportReplies() })
 
-export const jobs = phonePanel('jobs', 'Jobs', () => import('./jobs/JobsApp.vue'), { order: 10, group: 'money' })
+export const jobs = phonePanel('jobs', 'Jobs', bodyLoader('jobs/JobsApp'), { order: 10, group: 'money' })
 
-export const career = lazyPanel('career', 'Career', 'sim-tab', () => import('./jobs/CareerTab.vue'), { order: 60, phone: true, group: 'money' })
+export const career = lazyPanel('career', 'Career', 'sim-tab', bodyLoader('jobs/CareerTab'), { order: 60, phone: true, group: 'money' })
 
-export const statement = phonePanel('statement', 'Statement', () => import('./money/StatementApp.vue'), { order: 15, group: 'money' })
+export const statement = phonePanel('statement', 'Statement', bodyLoader('money/StatementApp'), { order: 15, group: 'money' })
 
-export const invest = phonePanel('invest', 'Invest', () => import('./money/InvestApp.vue'), { order: 50, group: 'money' })
+export const invest = phonePanel('invest', 'Invest', bodyLoader('money/InvestApp'), { order: 50, group: 'money' })
 
-export const houses = phonePanel('houses', 'Houses', () => import('./home/HousesApp.vue'), { order: 30, group: 'life' })
+export const houses = phonePanel('houses', 'Houses', bodyLoader('home/HousesApp'), { order: 30, group: 'life' })
 
-export const landPanel = phonePanel('land', 'My land', () => import('./neighbourhood/LandPanel.vue'), { icon: 'home', order: 30.5, group: 'life' })
+export const landPanel = phonePanel('land', 'My land', bodyLoader('neighbourhood/LandPanel'), { icon: 'home', order: 30.5, group: 'life' })
 
-export const neighbourhoodPanel = phonePanel('neighbourhood', 'My street', () => import('./neighbourhood/NeighbourhoodPanel.vue'), { icon: 'home', order: 31, group: 'life' })
+export const neighbourhoodPanel = phonePanel('neighbourhood', 'My street', bodyLoader('neighbourhood/NeighbourhoodPanel'), { icon: 'home', order: 31, group: 'life' })
 
-export const stories = phonePanel('stories', 'Story scenes', () => import('./stories/StoriesApp.vue'), { icon: 'sparkles', order: 53, group: 'life' })
+export const stories = phonePanel('stories', 'Story scenes', bodyLoader('stories/StoriesApp'), { icon: 'sparkles', order: 53, group: 'life' })
 export const storyChip = lazyPanel('story-chip', 'Story scene', 'hud', () => import('./stories/StoryChip.vue'), { order: 22 })
 
 export const captureChip = lazyPanel('capture-chip', 'Recording', 'hud', () => import('./capture/CaptureChip.vue'), { slot: 'alert', order: 3 })
 
-export const capture = phonePanel('capture', 'Capture', () => import('./capture/CaptureApp.vue'), { icon: 'camera', order: 54, group: 'life' })
+export const capture = phonePanel('capture', 'Capture', bodyLoader('capture/CaptureApp'), { icon: 'camera', order: 54, group: 'life' })
 
-export const cars = phonePanel('cars', 'Cars', () => import('./home/CarsApp.vue'), { order: 34, group: 'life' })
+export const cars = phonePanel('cars', 'Cars', bodyLoader('home/CarsApp'), { order: 34, group: 'life' })
 
-export const groceries = phonePanel('groceries', 'Groceries', () => import('./home/GroceriesApp.vue'), { order: 16, group: 'life' })
+export const groceries = phonePanel('groceries', 'Groceries', bodyLoader('home/GroceriesApp'), { order: 16, group: 'life' })
 
-export const health = phonePanel('health', 'Health', () => import('./life/HealthApp.vue'), { order: 22, group: 'life',
+export const health = phonePanel('health', 'Health', bodyLoader('life/HealthApp'), { order: 22, group: 'life',
   /** Sick or run down: something to act on. */
   badge: (_state, view) => (view.health?.sick || view.health?.rundown ? 1 : 0),
 })
 
-export const goals = lazyPanel('goals', 'Goals', 'sim-tab', () => import('./life/GoalsTab.vue'), { order: 30, phone: true, group: 'life' })
+export const goals = lazyPanel('goals', 'Goals', 'sim-tab', bodyLoader('life/GoalsTab'), { order: 30, phone: true, group: 'life' })
 
-export const profile = lazyPanel('profile', 'Profile', 'sim-tab', () => import('./sim/ProfileTab.vue'), { order: 10, live: false })
+export const profile = lazyPanel('profile', 'Profile', 'sim-tab', bodyLoader('sim/ProfileTab'), { order: 10, live: false })
 
-export const needs = lazyPanel('needs', 'Needs', 'sim-tab', () => import('./sim/NeedsTab.vue'), { order: 20 })
+export const needs = lazyPanel('needs', 'Needs', 'sim-tab', bodyLoader('sim/NeedsTab'), { order: 20 })
 
-export const skills = lazyPanel('skills', 'Skills', 'sim-tab', () => import('./sim/SkillsTab.vue'), { order: 40 })
+export const skills = lazyPanel('skills', 'Skills', 'sim-tab', bodyLoader('sim/SkillsTab'), { order: 40 })
 
-export const settings = lazyPanel('settings', 'Settings', 'sim-tab', () => import('./sim/SettingsTab.vue'), { order: 70, phone: true, group: 'life' })
+export const settings = lazyPanel('settings', 'Settings', 'sim-tab', bodyLoader('sim/SettingsTab'), { order: 70, phone: true, group: 'life' })
 
-export const boutique = phonePanel('boutique', 'Boutique', () => import('./life/BoutiqueApp.vue'), { order: 32, group: 'life' })
+export const boutique = phonePanel('boutique', 'Boutique', bodyLoader('life/BoutiqueApp'), { order: 32, group: 'life' })
 
 export const healthChip = lazyPanel('health-chip', 'Health', 'hud', () => import('./life/HealthChip.vue'), { slot: 'alert', order: 6 })
 
@@ -90,7 +91,7 @@ export const homeChip = lazyPanel('home-chip', 'Home', 'hud', () => import('./ho
   slot: () => (homeScene.status === 'error' ? 'alert' : 'hud'),
 })
 
-export const buy = lazyPanel('buy', 'Buy', 'nav', () => import('./home/BuyMode.vue'), {
+export const buy = lazyPanel('buy', 'Buy', 'nav', bodyLoader('home/BuyMode'), {
   /** Buy is only available at home; elsewhere the nav button is disabled with this reason. */
   enabled: (state) => social.me?.visiting ? 'Leave the visit before rearranging your furniture' : state.stories?.running ? 'End your scene before rearranging furniture' : state.location === 'home' || 'Go home to buy furniture',
 })

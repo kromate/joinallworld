@@ -5,11 +5,12 @@ import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { civicBadgeStore } from '../civic/civicBadges.ts'
+import { bodyLoader } from '../../state/panelBody.ts'
 
 export const business = definePanel({
   id: 'business', title: 'Business', placement: 'phone', order: 13, live: false, group: 'money', tint: '#b4541a',
   badge: (_state, view) => ((civicBadgeStore.value?.cache.get(`business:mine:${view.cityId}`)?.data as { mine?: { alert?: string } | null } | null)?.mine?.alert ? 1 : 0),
-  component: defineAsyncComponent(() => import('./BusinessApp.vue')),
+  component: defineAsyncComponent(bodyLoader('business/BusinessApp')),
 })
 
 export const BUSINESS_PANELS: readonly VuePanel[] = [business]

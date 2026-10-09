@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T16:53:14.189092+00:00",
+  "updatedAt": "2026-10-09T17:24:01.365440+00:00",
   "branch": "codex/allworld-consolidated-delivery",
   "assemblyOwner": "Integration",
   "uploadOwner": "WORLD",
@@ -1449,8 +1449,8 @@
     "phase": "First five starter capitals in next verified consolidated release",
     "manifest": "world/playable-africa/packet.json",
     "countries": [
-      "Cameroon / Yaound\u00e9",
-      "Togo / Lom\u00e9",
+      "Cameroon / Yaoundé",
+      "Togo / Lomé",
       "Ghana / Accra",
       "Kenya / Nairobi",
       "Algeria / Algiers"
@@ -1552,7 +1552,7 @@
         "brotli": 197564,
         "status": "failed",
         "buildSeconds": 35.39,
-        "conditionalChunkRaw": 3910
+        "conditionalChunkRaw": 3914
       },
       "remainingOverCap": {
         "raw": 8535,
@@ -1561,6 +1561,58 @@
       },
       "limitsUnchanged": true,
       "note": "Source async import alone was defeated by catch-all game manual chunk. Explicit reader/planner chunk now excluded from emitted startup closures; this is not final source/compiler/full/native/provider acceptance."
+    },
+    "panelLoaderBoundary": {
+      "status": "local-built-startup-and-focused-pass; native/compiler/full/provider pending",
+      "source": "this commit; parent 2a34897c4ba781fda70cdab6d4496dbd591b3117",
+      "loaders": 55,
+      "registryFiles": 15,
+      "design": "One pure conditional component-loader catalogue; existing metadata, callbacks, wrappers, HUD/START direct loads and practice gateway identity retained. Narrow import errors show explicit retry/remount and normal reload; no automatic action or cached rejected promise. Astra source approved.",
+      "buildSeconds": 47.28,
+      "startup": {
+        "raw": 611290,
+        "gzip": 221851,
+        "brotli": 194883,
+        "limits": [
+          615000,
+          223000,
+          195600
+        ],
+        "cities": 45,
+        "manifest": "assets/panelBodies-2472ec30.js",
+        "eagerCities": []
+      },
+      "checks": "Actual final runtime: 57 focused app checks PASS within 72/71/1 run. Lone failure was the compiled-coordinate test parser. Final corrected smoke 15/15 PASS, zero skips, 2.061958667s, including all45 exact catalogue/loader/closure assertions. No suite totals combined.",
+      "failureProof": "Separate actual SSR manifest/body forced import failures both rendered <!----> before repair. SSR does not prove reactive/native recovery after capture. Initial coordinate normalization matched ordinary fractional suffixes; corrected to array-token boundaries, exact numeric equality retained; runtime coordinates never changed. Red receipts retained.",
+      "artifacts": [
+        {
+          "path": "/tmp/allworld-panel-loader-recovery-build.log",
+          "sha256": "debc85ff31299b9760702319b80f3237f2e20b5150834e873eb74a784d77e842"
+        },
+        {
+          "path": "/tmp/allworld-panel-loader-recovery-budget.json",
+          "sha256": "a590ea1d8ad411f3a491bcbdf707ed3b9ccf20c80554c8da4f2d354046b42ecd"
+        },
+        {
+          "path": "/tmp/allworld-panel-loader-recovery-final.log",
+          "sha256": "1fc00acbc3443af92344e8942b7c78dcb30ca54f0165dbb99c67d667c0a42dba"
+        },
+        {
+          "path": "/tmp/allworld-panel-loader-smoke-final.log",
+          "sha256": "462181db9429c29101e8c11471ec9485e57639c33c680e0d8874ef7170dc36c3"
+        },
+        {
+          "path": "/tmp/allworld-panel-loader-fault-before.log",
+          "sha256": "d5390c4692644f8771307ea1209d9ee2d5240197d17d34eca00d08b60f2d413e"
+        }
+      ],
+      "remaining": [
+        "Exact remote compiler and full Node22/24 six partitions, Worker/host/UI required checks",
+        "Actual native delayed open/close/latest params/exposed keys/focus and manifest/body retry/reload",
+        "Sealed Worker SQLite/ASSETS journeys and first-five rendered travel/save/return acceptance",
+        "WORLD-only coordinated upload, expected public bundle adoption and post-deploy continuity",
+        "Physical devices/Safari/native zoom/thermal/public research programme remain open"
+      ]
     }
   }
 }

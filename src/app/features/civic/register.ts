@@ -12,37 +12,38 @@ import { civicTitle, civicOffice } from '../../../game/cities/terminology.ts'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { civicNews } from './civicBadges.ts'
+import { bodyLoader } from '../../state/panelBody.ts'
 
 export const governor = definePanel({
   id: 'governor', title: 'Chairman', titleFor: state => civicTitle(state.estate.city), placement: 'phone', order: 40, live: false, group: 'city',
   badge: (state, view) => civicNews(view, state),
-  component: defineAsyncComponent(() => import('./GovernorApp.vue')),
+  component: defineAsyncComponent(bodyLoader('civic/GovernorApp')),
 })
 export const stateHouse = definePanel({
   id: 'state-house', title: 'State House', titleFor: state => civicOffice(state.estate.city), placement: 'modal',
-  component: defineAsyncComponent(() => import('./StateHouseSheet.vue')),
+  component: defineAsyncComponent(bodyLoader('civic/StateHouseSheet')),
 })
 export const neighbours = definePanel({
   id: 'neighbours', title: 'Neighbours', placement: 'phone', order: 42, group: 'city',
-  component: defineAsyncComponent(() => import('./NeighboursApp.vue')),
+  component: defineAsyncComponent(bodyLoader('civic/NeighboursApp')),
 })
 export const ads = definePanel({
   id: 'ads', title: 'Billboards', placement: 'phone', order: 44, live: false, group: 'city',
-  component: defineAsyncComponent(() => import('./AdsApp.vue')),
+  component: defineAsyncComponent(bodyLoader('civic/AdsApp')),
 })
 export const huntSheet = definePanel({
   id: 'hunt-sheet', title: 'Gem hunt', placement: 'phone', order: 45, group: 'city',
   /** All gems found and the prize not collected yet. */
   badge: (_state, view) => (view.civic?.hunt?.canClaim ? 1 : 0),
-  component: defineAsyncComponent(() => import('./HuntSheet.vue')),
+  component: defineAsyncComponent(bodyLoader('civic/HuntSheet')),
 })
 export const radio = definePanel({
   id: 'radio', title: 'Radio', placement: 'phone', order: 46, live: false, group: 'city',
-  component: defineAsyncComponent(() => import('./RadioApp.vue')),
+  component: defineAsyncComponent(bodyLoader('civic/RadioApp')),
 })
 export const richlist = definePanel({
   id: 'richlist', title: 'Rich List', placement: 'phone', order: 48, group: 'money',
-  component: defineAsyncComponent(() => import('./RichListApp.vue')),
+  component: defineAsyncComponent(bodyLoader('civic/RichListApp')),
 })
 
 /** HUD chips (placement 'hud'). */

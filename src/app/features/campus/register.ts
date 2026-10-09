@@ -4,7 +4,8 @@
 import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
+import { bodyLoader } from '../../state/panelBody.ts'
 
 export const CAMPUS_PANELS: readonly VuePanel[] = [
-  definePanel({ id: 'campus', title: 'Campus', placement: 'phone', order: 47, group: 'city', tint: '#8f2434', live: true, component: defineAsyncComponent(() => import('./CampusApp.vue')) }),
+  definePanel({ id: 'campus', title: 'Campus', placement: 'phone', order: 47, group: 'city', tint: '#8f2434', live: true, component: defineAsyncComponent(bodyLoader('campus/CampusApp')) }),
 ]

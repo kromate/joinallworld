@@ -21,19 +21,36 @@ import type { LifeContextInit, LifeState } from '../types/life.ts';
 
 const HOOKS = `
 import { existsSync, watch, writeFileSync } from 'node:fs';
-import { basename, dirname } from 'node:path';
+import { dirname } from 'node:path';
 let failedTeachingImport = false;
 let teachingResolveCount = 0;
+let hookTraceCount = 0;
+function hookTrace(event, data) {
+  if (process.env.TEACHING_GATE_DIAGNOSTICS === '1' && hookTraceCount < 24) {
+    hookTraceCount++;
+    process.stderr.write('[teaching-hook] ' + event + ' ' + JSON.stringify(data) + '\\n');
+  }
+}
 async function teachingBarrier(url) {
   const target = process.env.TEACHING_GATE_BARRIER;
   if (!target || !/\\/living-world\\/teaching-state\\.ts(?:$|\\?)/.test(url) || existsSync(target)) return;
   await new Promise((resolve, reject) => {
-    let watcher;
+    let watcher, eventCount = 0, namedEvents = 0;
     const finish = (error) => { clearTimeout(timer); watcher?.close(); error ? reject(error) : resolve(); };
-    const timer = setTimeout(() => finish(new Error('teaching gate barrier timed out')), 20000);
+    const timer = setTimeout(() => {
+      hookTrace('barrier-timeout', { eventCount, namedEvents, targetExists: existsSync(target) });
+      finish(new Error('teaching gate barrier timed out'));
+    }, 20000);
+    // The filename is optional in fs.watch notifications. The exact-target existence check below
+    // keeps unrelated directory events harmless without depending on that optional value.
     watcher = watch(dirname(target), (_event, name) => {
-      if (name?.toString() === basename(target) && existsSync(target)) finish();
+      eventCount++;
+      if (name != null) namedEvents++;
+      const targetExists = existsSync(target);
+      if (eventCount <= 4) hookTrace('barrier-event', { eventCount, filenamePresent: name != null, targetExists });
+      if (targetExists) finish();
     });
+    hookTrace('barrier-watch-installed', { targetExists: existsSync(target) });
     if (existsSync(target)) finish();
   });
 }
@@ -42,6 +59,7 @@ export async function resolve(specifier, context, next) {
     teachingResolveCount++;
     const requestMarker = process.env.TEACHING_GATE_REQUEST_MARKER;
     if (requestMarker) writeFileSync(requestMarker, String(teachingResolveCount));
+    hookTrace('parser-requested', { count: teachingResolveCount, requestMarkerWritten: Boolean(requestMarker) });
     if (process.env.TEACHING_GATE_FAIL_FIRST === '1' && !failedTeachingImport) {
       failedTeachingImport = true;
       const marker = process.env.TEACHING_GATE_FAIL_MARKER;
@@ -63,7 +81,7 @@ const REGISTER = `import { register } from 'node:module'; register('data:text/ja
 const url = (path: string): string => pathToFileURL(new URL(path, import.meta.url).pathname).href;
 const PROBE = `
 import { existsSync, readFileSync, watch, writeFileSync } from 'node:fs';
-import { basename, dirname } from 'node:path';
+import { dirname } from 'node:path';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, viewLife } from '${url('../life.ts')}';
 import { campusFor, loadCampus } from '${url('./campus-gate.ts')}';
@@ -76,15 +94,36 @@ const fixtures = await import('${url('./cities/testing/fictionalCity.test-fixtur
 registerCityForTest(fixtures.fictionalCity); registerCityForTest(fixtures.fictionalNeighbourCity);
 await Promise.all([loadCityContent('lagos'), loadCityContent('ibadan'), loadCityContent(fixtures.FICTIONAL_CITY_ID), loadCityContent(fixtures.FICTIONAL_NEIGHBOUR_CITY_ID)]);
 const input = JSON.parse(readFileSync(process.argv[1], 'utf8'));
+let probeTraceCount = 0;
+const probeTrace = (event, data) => {
+  if (process.env.TEACHING_GATE_DIAGNOSTICS === '1' && probeTraceCount < 24) {
+    probeTraceCount++;
+    process.stderr.write('[teaching-probe] ' + event + ' ' + JSON.stringify(data) + '\\n');
+  }
+};
+probeTrace('probe-start', { mode: input.mode, city: 'lagos', targetCity: input.mode === 'teaching-switch' ? 'ibadan' : null });
 const response = (status, body) => ({ ok: status < 300, status, json: async () => body });
-const waitForFile = (target) => new Promise((resolve, reject) => {
+const waitForFile = (target, markerKind) => new Promise((resolve, reject) => {
   if (existsSync(target)) return resolve();
-  let watcher;
+  let watcher, eventCount = 0, namedEvents = 0;
   const finish = (error) => { clearTimeout(timer); watcher?.close(); error ? reject(error) : resolve(); };
-  const timer = setTimeout(() => finish(new Error('probe marker timed out')), 20000);
-  watcher = watch(dirname(target), (_event, name) => { if (name?.toString() === basename(target) && existsSync(target)) finish(); });
+  const timer = setTimeout(() => {
+    probeTrace('marker-timeout', { mode: input.mode, markerKind, eventCount, namedEvents, targetExists: existsSync(target) });
+    finish(new Error('probe marker timed out'));
+  }, 20000);
+  // Node may omit the filename; inspect only the requested marker path on every event.
+  watcher = watch(dirname(target), (_event, name) => {
+    eventCount++;
+    if (name != null) namedEvents++;
+    const targetExists = existsSync(target);
+    if (eventCount <= 4) probeTrace('marker-event', { mode: input.mode, markerKind, eventCount, filenamePresent: name != null, targetExists });
+    if (targetExists) finish();
+  });
+  probeTrace('marker-watch-installed', { mode: input.mode, markerKind, targetExists: existsSync(target) });
   if (existsSync(target)) finish();
 });
+const awaitRequestMarker = async () => { await waitForFile(input.requestMarker, 'request'); probeTrace('request-seen', { mode: input.mode }); };
+const releaseGate = () => { writeFileSync(input.release, 'release'); probeTrace('release-created', { mode: input.mode }); };
 if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.mode === 'teaching-retry-connect' || input.mode === 'teaching-switch') {
   const gate = await import('${url('./teaching-gate.ts')}');
   const { createClient } = await import('${url('../client.ts')}');
@@ -110,14 +149,15 @@ if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.
     storage: { getItem: (key) => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) },
     onChange: (next) => { if (next.activeAction?.teaching) markedChanges++; },
   });
+  probeTrace('client-created', { mode: input.mode, city: client.cityId });
   if (input.mode === 'teaching-cache') {
     assert.equal(client.state.activeAction, null, 'the marked cache waits for its strict parser');
     const waiting = gate.teachingFor(input.snapshot);
     assert.ok(waiting instanceof Promise);
-    await waitForFile(input.requestMarker);
+    await awaitRequestMarker();
     assert.equal(readFileSync(input.requestMarker, 'utf8'), '1');
     assert.equal(gate.readTeachingSnapshot(input.snapshot.activeAction.teaching), null, 'the strict reader is not installed while the gate import is pending');
-    writeFileSync(input.release, 'release');
+    releaseGate();
     await waiting;
     assert.deepEqual(gate.readTeachingSnapshot(input.snapshot.activeAction.teaching), input.snapshot.activeAction.teaching);
     await Promise.resolve();
@@ -137,15 +177,16 @@ if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.
   }
   if (input.mode === 'teaching-newer') {
     const connected = await client.connect();
+    probeTrace('connect-completed', { mode: input.mode, connected, city: client.cityId });
     assert.equal(connected, true, 'the newer plain server snapshot is accepted while the cache parser is pending');
     assert.equal(client.state.cash, input.plain.cash);
     assert.equal(client.state.activeAction, null);
     const waiting = gate.teachingFor(input.snapshot);
     assert.ok(waiting instanceof Promise);
-    await waitForFile(input.requestMarker);
+    await awaitRequestMarker();
     assert.equal(readFileSync(input.requestMarker, 'utf8'), '1');
     assert.equal(gate.readTeachingSnapshot(input.snapshot.activeAction.teaching), null);
-    writeFileSync(input.release, 'release');
+    releaseGate();
     await waiting; await Promise.resolve();
     assert.equal(client.state.cash, input.plain.cash);
     assert.equal(client.state.activeAction, null, 'late cached practice cannot overwrite an accepted server snapshot');
@@ -154,15 +195,18 @@ if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.
   }
   if (input.mode === 'teaching-switch') {
     assert.equal(await client.connect(), true);
+    probeTrace('connect-completed', { mode: input.mode, connected: true, city: client.cityId });
     assert.equal(client.state.activeAction, null);
     const switching = client.switchCity('ibadan');
-    await waitForFile(input.requestMarker);
+    probeTrace('city-switch-start', { mode: input.mode, from: 'lagos', to: 'ibadan' });
+    await awaitRequestMarker();
     assert.equal(readFileSync(input.requestMarker, 'utf8'), '1');
     assert.equal(gate.readTeachingSnapshot(input.switchSnapshot.activeAction.teaching), null, 'switchCity waits while the parser is unavailable');
     assert.equal(client.cityId, 'ibadan');
     assert.equal(client.state.activeAction, null, 'the marked response is not exposed before validation');
-    writeFileSync(input.release, 'release');
+    releaseGate();
     const switched = await switching;
+    probeTrace('city-switch-completed', { mode: input.mode, ok: switched.ok, city: client.cityId });
     assert.equal(switched.ok, true, 'switchCity accepts the marked same-owner server response');
     assert.deepEqual(client.state.activeAction.teaching, input.switchSnapshot.activeAction.teaching);
     assert.equal(client.state.cash, input.switchSnapshot.cash);
@@ -174,6 +218,7 @@ if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.
   assert.equal(existsSync(input.failureMarker), true, 'the first lazy parser resolution was deliberately rejected');
   assert.equal(readFileSync(input.requestMarker, 'utf8'), '1');
   const connected = await client.connect();
+  probeTrace('connect-completed', { mode: input.mode, connected, city: client.cityId });
   assert.equal(connected, true, 'connect retries the failed lazy parser for the same-owner server snapshot');
   assert.equal(readFileSync(input.requestMarker, 'utf8'), '2', 'the gate made a second resolve request after the first rejection');
   assert.deepEqual(client.state.activeAction.teaching, input.snapshot.activeAction.teaching);
@@ -221,8 +266,10 @@ process.stdout.write(JSON.stringify({ playing, standInsLeft: isStandIn('unilagSt
 const START = Date.UTC(2026, 0, 5, 8);
 const CAMPUS_KEYS = ['unilagStudent', 'unilagCommunity', 'unilagShuttle'];
 function probe(input: string, hookEnv: Record<string, string> = {}): string {
+  const diagnostics = Object.keys(hookEnv).some(key => key.startsWith('TEACHING_GATE_'))
+    ? { TEACHING_GATE_DIAGNOSTICS: '1' } : {};
   return execFileSync(process.execPath, ['--experimental-strip-types', '--no-warnings', '--import', `data:text/javascript,${encodeURIComponent(REGISTER)}`, '--input-type=module', '--eval', PROBE, input], {
-    encoding: 'utf8', timeout: 60_000, maxBuffer: 64 * 1024 * 1024, env: { ...process.env, ...hookEnv },
+    encoding: 'utf8', timeout: 60_000, maxBuffer: 64 * 1024 * 1024, env: { ...process.env, ...diagnostics, ...hookEnv },
   });
 }
 

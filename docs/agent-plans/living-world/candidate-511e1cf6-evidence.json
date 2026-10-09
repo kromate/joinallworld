@@ -3,34 +3,54 @@
   "sourceSha": "511e1cf6e1e19110e09372d56075b28da64c8439",
   "runId": 37884258018,
   "url": "https://github.com/kromate/joinallworld/actions/runs/37884258018",
-  "observedAt": "2026-10-09T04:38:00Z",
-  "status": "in_progress",
+  "observedAt": "2026-10-09T05:07:00Z",
+  "status": "completed",
   "fullNode24": {
     "jobId": 113670600410,
-    "status": "in_progress",
+    "status": "completed",
     "step": "npm test",
     "compiler": "pass",
     "build": "pass",
     "unchangedDownloadBudgets": "pass",
-    "edge": "pending"
+    "edge": "skipped",
+    "conclusion": "cancelled",
+    "reason": "The job has exceeded the maximum execution time of 25m0s",
+    "matrixFailFast": false,
+    "finalTestSummaryAvailable": false,
+    "logSha256": "833fde914cdc127f680bee775d2998837635b2813ee0c68c5e18078c3cb7b957",
+    "timeoutDiagnosis": "Last completed social tests; next sorted stuck suite is an inference, not proved cause"
   },
   "fullNode22": {
     "jobId": 113670600761,
-    "status": "in_progress",
+    "status": "completed",
     "step": "npm test",
     "compiler": "pass",
     "build": "pass",
     "unchangedDownloadBudgets": "pass",
-    "edge": "pending"
+    "edge": "skipped",
+    "conclusion": "failure",
+    "tests": 3404,
+    "passed": 3399,
+    "failed": 1,
+    "skipped": 4,
+    "durationMs": 1222278.639973,
+    "failure": {
+      "file": "server/chess-table.test.ts",
+      "line": 125,
+      "error": "Cannot read properties of null (reading 'winners')",
+      "repair": "uncommitted actual terminal-state acknowledgement; untested"
+    },
+    "logSha256": "9330c356396601c9ee2c26888f4158f578d8d83b5d055e437863514fadccb828"
   },
   "releasePolicy": "pass",
   "providerTimeoutMinutes": 25,
   "supersedeWhileLive": false,
   "priorScopedEvidence": "candidate-615638dc-evidence.json",
-  "exactCompilerFullWorker": "canonical compiler/build/size pass both22/24; full npm test live and edge pending",
+  "exactCompilerFullWorker": "compiler/build/unchanged budgets pass both; full Node22 fails one chess fixture; Node24 provider timeout; edge skipped",
   "stagingGameplaySaveContinuity": "not accepted",
   "routeAuthorized": false,
   "programmeDeployments": 0,
   "goalmaticDeployments": 0,
-  "productionBuild": "joinallworld-a44629b38be751a9ad446051564"
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "conclusion": "failure"
 }

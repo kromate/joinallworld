@@ -1,5 +1,13 @@
 # Living-world implementation checkpoint
 
+## Full exact-source CI and repaired stage checkpoint - 2026-10-09T18:34:27.187173+00:00
+
+Previous user-status turn was a status report, not implementation progress. This continuation completed independent source/receipt review, found a failed-resume cleanup defect, delivered it to WORLD and reviewed published repair245e2875e1378580f25cbc085456704a699d839a. Failed pre-start resumed disposal now marks cleanup_failed/currentPID and later resume refuses; actual runtime continuity remains unproven. [Qualified sealed-stage review](sealed-africa-3af-review.json). Six exact-package synthetic checks PASS with releaseReady:false; authenticated admin funding and accelerated SQLite timing are not ordinary earned progression, unadjusted downtime or production proof.
+
+Exact3af17a01b8bd406bfb830ca0d2ee66d2d0093d28 fullCI37970635606 is now TERMINAL SUCCESS: all14 required jobs PASS, two fast-mode jobs appropriately skipped. Node22/24 game each2567PASS/1existingSKIP/0FAIL; host each1020PASS/3existingSKIP/0FAIL; tooling each36/36PASS; Worker each154/154PASS0skip. Compiler/build/unchanged download caps and separate host/UI/integration groups PASS. [Official exact logs/counts/hashes](affordable-homeward-repair-review.json) retained privately without overlapping totals. No whole-programme or native/release acceptance.
+
+Native goal ACTIVE. Integration sole assembly/test/native-handoff owner, WORLD sole stage/package/uploader; no Root runtime/test/browser/server/upload. One essential local native window owner-coordinated under latest normal pressure. No programme upload; last verified productiona446 health only. Zero extra spend and10October05:00UTC cutoff preserved. Next actual Astra exact-package active teaching/travel/mobile, same identity/funding/paid receipt reload/restart/resume, original terms/unadjusted downtime, then accepted WORLD production release/live saves and continued full physical/later/live Goalmatic programme.
+
 ## Exact candidate compiler/download and Worker parity - 2026-10-09T18:19:00.564060+00:00
 
 Same live3af fullCI37970635606 now has official Node22/24 compiler/build/download PASS with611402raw/221884gzip/194866Brotli across45city closures; unchanged headroom3598/1116/734. Both Workers154/154PASS0skip; integration repairs134/134PASS and separatehost/UIgroupsPASS. Node22host1020PASS/3existingSKIP and tooling36/36PASS. [Updated source/CI/private log receipts](affordable-homeward-repair-review.json). Remaining game22job113956051120/game24job113956051248 confirmedlive; Node24host/toolingqueued. Do not restart on observationtimeout or transfer oldsource evidence. No whole-suite/native/stage/release acceptance.

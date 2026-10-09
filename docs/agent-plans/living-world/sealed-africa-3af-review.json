@@ -1,0 +1,104 @@
+{
+  "observedAt": "2026-10-09T18:34:27.187173+00:00",
+  "sourceSha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+  "verifierSha": "63f03be2d3c046ed86f87d3132a6568999e303bf",
+  "verifierRun": 37971328269,
+  "verifierJob": 113958422674,
+  "verifierJobConclusion": "success",
+  "releaseReady": false,
+  "deployed": false,
+  "nativeStageAcceptance": false,
+  "scope": "local synthetic sealed-package verification only; not production continuity, ordinary guest funding, physical-device verification, deployment, or approval",
+  "outcomes": [
+    {
+      "check": "source-and-package-identity",
+      "status": "passed"
+    },
+    {
+      "check": "sealed-worker-start-and-sqlite",
+      "status": "passed"
+    },
+    {
+      "check": "packaged-assets",
+      "status": "passed",
+      "count": 11,
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "first-five-air-travel-save-reload-meal-return",
+      "status": "passed"
+    },
+    {
+      "check": "homeward-route-and-save-recovery",
+      "status": "passed"
+    },
+    {
+      "check": "sqlite-restart",
+      "status": "passed"
+    }
+  ],
+  "elapsedMs": 43514,
+  "packageDigest": "f776481de86aab4779496116ac95a57b302f20a11b219168f5f7127c4b4df8dc",
+  "retained": {
+    "sealedReceipt": {
+      "sha256": "0b37691479046755365b4d915e005c473cefa145d3aa9b0bdefc13629a861426",
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/3af-sealedReceipt.json"
+    },
+    "localPackageProof": {
+      "sha256": "206520b2caf6305a5d2c3764095fe3275accbf5f70a1fc78400fb2c13d064ec2",
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/3af-localPackageProof.json"
+    }
+  },
+  "independentReadChecks": [
+    "Exact source/package identity and canonical source HTML transformation reviewed; transformed served bytes compared strictly against pinned source function, not served response as expected value",
+    "Worker and manifest hashes, plus 11 sampled disk asset hashes independently matched owner receipts; Root did not rerun the full 6177-file guard or archive hash",
+    "Synthetic funding uses authenticated admin intent and replays identical intent with duplicate=true and unchanged after value",
+    "Isolated fixture elapse changes stored updatedAt; accelerated timing does not prove unadjusted real downtime",
+    "Only isolated fixture SQL fault/ticket/liability mutations; no user or production store touched"
+  ],
+  "resumeHelper": {
+    "sha": "926e97821964e00a6c9596517211de034c4df892",
+    "remoteBranchVerified": "codex/world-foundation",
+    "scope": "Source review only; no Root execution or private control-file read",
+    "checks": [
+      "Missing filesystem import corrected",
+      "Resume requires stopped checkpoint, dead prior PID, matching source/package/store marker, private canonical directories and original loopback port",
+      "Existing synthetic cookie/public provider JWK reused; actual admin identity checked; no fresh founder/player funding on resume",
+      "SIGHUP uses same port/store and does not extend current stage deadline; a separately authorized resume starts a new bounded window"
+    ],
+    "finding": {
+      "status": "Published repair independently source-reviewed clear; no Root runtime claim",
+      "condition": "Resumed startup fails before stageStarted=true and Miniflare disposal fails",
+      "observedSource": "finally retains prior checkpoint but skips updateOwnedControl when stageStarted=false, leaving old stopped/dead owner metadata",
+      "acceptance": "Successful cleanup may preserve stopped checkpoint; failed cleanup must make further resume refuse",
+      "deliveredTo": [
+        "WORLD",
+        "Integration"
+      ],
+      "repair": "Failed pre-start resumed disposal updates same owned checkpoint to cleanup_failed with current PID; successful cleanup preserves prior stopped checkpoint; validateCheckpoint refuses cleanup_failed."
+    },
+    "repairSha": "245e2875e1378580f25cbc085456704a699d839a",
+    "repairRemoteEqualsLocal": true
+  },
+  "remaining": [
+    "Verified actual Astra native journeys, responsive controls and active teaching",
+    "Same player/funding receipt and original paid terms across actual reload/restart/resume",
+    "Unadjusted downtime and interruption recovery proof",
+    "WORLD accepted production release and live gameplay/save observations"
+  ],
+  "ownership": "Root read-only source/evidence; Integration sole assembly/test owner; WORLD sole stage/package/uploader",
+  "productionLastVerifiedSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+  "fullCI": {
+    "run": 37970635606,
+    "sha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+    "conclusion": "success",
+    "requiredJobsPassed": 14,
+    "expectedFastModeJobsSkipped": 2
+  }
+}

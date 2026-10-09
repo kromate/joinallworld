@@ -173,7 +173,7 @@
       "source": "Official completed exact3af GitHub job log"
     }
   ],
-  "next": "Observe same live exactCI37970635606, repair concrete new failures if any, verifiedAstra native/exact isolatedstage/save acceptance then WORLDrelease/live before usercutoff.",
+  "next": "Exact-package verified Astra native/active-teaching/mobile and interrupted save/original terms/unadjusted downtime staging gates; WORLD accepted release and live continuity. Full physical/later programme and Goalmatic remain open.",
   "publishedCandidate": {
     "sha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
     "branch": "codex/allworld-consolidated-delivery",
@@ -190,7 +190,7 @@
   "ci": {
     "id": 37970635606,
     "url": "https://github.com/kromate/joinallworld/actions/runs/37970635606",
-    "conclusion": "",
+    "conclusion": "success",
     "jobs": [
       {
         "conclusion": "success",
@@ -223,10 +223,10 @@
         "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051025,
         "name": "full-node (24, tooling)",
-        "status": "queued"
+        "status": "completed"
       },
       {
         "conclusion": "success",
@@ -247,16 +247,16 @@
         "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051120,
         "name": "full-node (22, game)",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051121,
         "name": "full-node (24, host)",
-        "status": "queued"
+        "status": "completed"
       },
       {
         "conclusion": "success",
@@ -265,10 +265,10 @@
         "status": "completed"
       },
       {
-        "conclusion": "",
+        "conclusion": "success",
         "id": 113956051248,
         "name": "full-node (24, game)",
-        "status": "in_progress"
+        "status": "completed"
       },
       {
         "conclusion": "success",
@@ -290,8 +290,8 @@
       }
     ],
     "sha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
-    "status": "queued",
-    "observedAt": "2026-10-09T18:19:00.564060+00:00",
+    "status": "completed",
+    "observedAt": "2026-10-09T18:34:27.187173+00:00",
     "uiGroups": [
       {
         "tests": 436,
@@ -329,7 +329,7 @@
         "durationMs": 2752.792683
       }
     ],
-    "qualification": "Distinct scoped CI groups retained separately, no aggregate full/native/UI gameplay acceptance. Fullrun incomplete; fast-mode skipped jobs expected.",
+    "qualification": "All14 required exact-source full-mode jobs succeeded; two fast-mode jobs skipped by selected full mode. Separate suite counts/known skips retained; not native gameplay, stage acceptance, production or physical-device proof.",
     "integrationRepairResult": {
       "tests": 134,
       "pass": 134,
@@ -424,6 +424,54 @@
       "fail": 0,
       "skip": 0,
       "durationMs": 6117.213626
+    },
+    "additionalNodeResults": {
+      "node22-game": {
+        "tests": 2568,
+        "pass": 2567,
+        "fail": 0,
+        "skipped": 1,
+        "duration_ms": 1206652.625022
+      },
+      "node24-host": {
+        "tests": 1023,
+        "pass": 1020,
+        "fail": 0,
+        "skipped": 3,
+        "duration_ms": 261153.791181
+      },
+      "node24-tooling": {
+        "tests": 36,
+        "pass": 36,
+        "fail": 0,
+        "skipped": 0,
+        "duration_ms": 6495.109122
+      },
+      "node24-game": {
+        "tests": 2568,
+        "pass": 2567,
+        "fail": 0,
+        "skipped": 1,
+        "duration_ms": 1210129.170437
+      }
+    },
+    "additionalNodeLogs": {
+      "node22-game": {
+        "sha256": "97b5d4ce129f6675ebd98170c114ed5ed624b7403842e6b4fd06b7c8d5327593",
+        "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-node22-game.log"
+      },
+      "node24-host": {
+        "sha256": "3a49bd4e6aad088f8b7cf9ba975763c2f980c8a187036948c5802dfd083b2773",
+        "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-node24-host.log"
+      },
+      "node24-tooling": {
+        "sha256": "a72c136f264821cd19b54ad2ea655fbb4d4525a09e8701ebedd34ac6c1222728",
+        "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-node24-tooling.log"
+      },
+      "node24-game": {
+        "sha256": "2ca4a9ecde20ed259d88392c34445f0b4aa14a49a5ae1db99f06a19fe47eac75",
+        "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/affordable-homeward-repair-review.json"
+      }
     }
   },
   "startup": {

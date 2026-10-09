@@ -1,0 +1,92 @@
+name: NPC startup gate Market and Beach render diagnostic v4
+on:
+  push:
+    branches:
+      - codex/graphics-environment-npc-startup-fix-v1-render-v4
+permissions:
+  actions: read
+  contents: read
+concurrency:
+  group: npc-startup-render-v4-${{ github.run_id }}
+  cancel-in-progress: false
+jobs:
+  render:
+    name: ${{ matrix.scope }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        scope: [market-surface-true, market-surface-false, market-canvas-clip, beach-surface-true, beach-surface-false, beach-canvas-clip]
+    steps:
+      - name: Checkout exact diagnostic recipe commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Verify the staged workflow and seal the exact v4 render recipe
+        run: |
+          cmp evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/workflow-review-npc-v4.yml .github/workflows/graphics-environment-npc-startup-fix-v1-render-v4.yml
+          node evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/seal-review-sources-npc-v4.mjs
+      - name: Checkout exact CPU package source revision for attestation verification
+        uses: actions/checkout@v4
+        with:
+          ref: 0da02ca0f0e0c4350f2754615f58b2dcd6eaed37
+          path: cpu-source-input
+          persist-credentials: false
+      - name: Set up Node 22 for CDP and locked ws dependency
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install exact render-recipe and sealed CPU-source dependencies
+        run: |
+          npm ci --no-audit --no-fund
+          npm ci --prefix cpu-source-input --no-audit --no-fund
+
+      - name: Link-check controller exports and all six screenshot scopes before Chrome
+        run: |
+          node --test evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/startup-attestation-npc-v4.test.mjs
+          node evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/preflight-module-links-npc-v4.mjs
+      - name: Download the explicitly selected CPU package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: environment-npc-startup-fix-v1-package-v1-37911271949
+          run-id: 37911271949
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/package-input
+      - name: Verify every package output and all source pins against the sealed CPU checkout before Chrome
+        env:
+          PACKAGE_ROOT: evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/package-input
+          CPU_SOURCE_ROOT: cpu-source-input
+        run: node evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/preflight-package-artifact-npc-v4.mjs
+      - name: Record runner Chrome identity
+        shell: bash
+        run: |
+          CHROME_PATH="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_PATH"
+          CHROME_REAL="$(readlink -f "$CHROME_PATH")"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+      - name: Run one fail-closed screenshot-method diagnostic
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          REVIEW_SCOPE: ${{ matrix.scope }}
+          PINNED_CPU_PACKAGE_RUN_ID: '37911271949'
+          PINNED_CPU_PACKAGE_COMMIT: '0da02ca0f0e0c4350f2754615f58b2dcd6eaed37'
+          PINNED_CPU_PACKAGE_ARTIFACT: environment-npc-startup-fix-v1-package-v1-37911271949
+          CPU_SOURCE_ROOT: cpu-source-input
+        run: >-
+          python3 evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/run-bounded-linux-render-npc-v4.py
+          browser $(sha256sum evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/review-sources-npc-v4.json | cut -d' ' -f1)
+          37911271949 0da02ca0f0e0c4350f2754615f58b2dcd6eaed37 ${{ matrix.scope }}
+      - name: Upload durable proofs, captures, and process evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: npc-startup-market-beach-render-v4-${{ github.run_id }}-${{ matrix.scope }}
+          path: evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v4/render/remote-results/${{ github.run_id }}-${{ matrix.scope }}/
+          if-no-files-found: warn
+          retention-days: 14

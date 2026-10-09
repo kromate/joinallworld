@@ -1,0 +1,15 @@
+# NPC startup-gate renderer diagnostic v4
+
+This isolated render recipe consumes only the root-verified CPU artifact `environment-npc-startup-fix-v1-package-v1-37911271949`, from run `37911271949` at commit `0da02ca0f0e0c4350f2754615f58b2dcd6eaed37`. The artifact was root-verified as a completed diagnostic build (5,626 outputs, 5,392 public files, 40 city chunks); it is not a production-size or mobile certificate.
+
+The push-bound workflow branch is `codex/graphics-environment-npc-startup-fix-v1-render-v4`; its active workflow path is `.github/workflows/graphics-environment-npc-startup-fix-v1-render-v4.yml`, which must byte-match `workflow-review-npc-v4.yml`. The CPU run, commit, artifact, and full source-pin digest remain pinned to the existing successful CPU package. The clean render-recipe checkout does not stand in for that source snapshot: the workflow checks out the exact CPU commit separately at `cpu-source-input`, runs its locked `npm ci` to restore the 378 pinned `node_modules` files, then checks every source pin against it. The source-pin inventory audit found no other paths missing from that commit. A pre-Chrome artifact preflight verifies the compiled output routes and hashes.
+
+Startup evidence has two separate roles. `src/venue-world.ts` and `src/scene/body/startup-gate.ts` must appear in the app compile receipt with their sealed hashes. `src/scene/body/startup-gate.test.ts` must instead match the sealed source pin and the independent test receipt/log, whose exact bounded command reports 5 tests passed and 0 failed. The shared `startup-attestation-npc-v4.mjs` verifier is called by both artifact preflight and the browser controller so neither path can accidentally require a Node test file in the production compile graph. The three root attestation files are also hash-checked against the exact CPU source checkout.
+
+The source inventory audit compared all 7,567 pins with the exact CPU commit tree: all 7,189 tracked paths are present, and the only 378 untracked pins are `node_modules/**`. The workflow's locked `npm ci --prefix cpu-source-input` restores those dependencies before full source verification. Unlike sofa v5, no generated review-pin file is absent from this CPU commit and no extra source sealer needs to be replayed.
+
+The downloaded v1 package keeps its original build paths and schemas. The v4 recipe changes only render-review controls and attestations; it does not alter the package, runtime, or production acceptance status.
+
+Before Chrome, the workflow seals its recipe and runs `preflight-module-links-npc-v4.mjs` after `npm ci`. That preflight links the controller's full ESM graph, checks all named exports, exact artifact selection, and the six Market/Beach × screenshot-method scopes. Each scope retains the home control, one target capture, and a peer transition. Limits remain 2 GiB owned process-group RSS, Node 96 MiB old space, 60 seconds, and three parallel scopes.
+
+Source-only preparation and low-memory static checks only; no new package build or browser render has run. Screenshot evidence is diagnostic and does not claim physical-device performance or visual acceptance.

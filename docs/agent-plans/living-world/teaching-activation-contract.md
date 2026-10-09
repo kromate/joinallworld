@@ -1,0 +1,36 @@
+# Teaching start capability: integration contract
+
+Status: planning only. Source reviewed from Integration HEAD `9a369dc1cbca1c934a43014aedda9b4b9a9e58c0`. This proposal is for work after the consolidated default-off compatibility baseline. It does not activate interactive starts or establish rendered acceptance.
+
+The described API paths are from that 9a baseline; subsequent QA-helper and numeric-only work does not change this contract.
+
+## Current source boundary
+
+The host already has a trusted opt-in. Node `ServerOptions.interactiveTeachingStarts` defaults to `false` (`server/server.ts:64-71,158-160`); Cloudflare reads only `env.INTERACTIVE_TEACHING_STARTS === '1'` (`deploy/cloudflare-worker.ts:366`). `lifeAuthority` passes that value into `applyLifeAction` for player and server actions (`server/host-context.ts:258,282-293`). It is not an action request field.
+
+The career system uses the flag to create a new practice marker when a teaching activity starts and to describe the available shift (`src/game/systems/career.ts:330,430-437,545-547`; Jobs copy reads the view at `src/app/features/jobs/JobsApp.vue:114`). Existing markers are ordinary saved `activeAction.teaching` plus a generation counter (`src/types/life.ts:160-166,308-312`); neither is the host capability. The browser projection currently calls `viewLife(life, { now, cityId })` without the host flag (`src/app/state/game.ts:170-179`), so its derived `CareerView.interactiveTeachingStarts` is false even when the server started the practice.
+
+Successful `GET /api/life` and `POST /api/action` responses carry `state` and revision (`src/types/protocol.ts:149-154,173-180`; `server/routes/core.ts:235-266`). The API key lists are exact and tested (`src/types/protocol.ts:817-820`). The client rebuilds snapshots through `accept`, which checks request identity and revision, loads state-dependent rules, then installs state (`src/client.ts:375-406,458-462,610-617`). The client snapshot is not the same thing as the persisted `LifeState`.
+
+## Smallest coherent transport
+
+Add an optional, response-only `capabilities` object to `LifeResponse` and `ActionResponse`, containing only `{ interactiveTeachingStarts: true }` when the trusted host option is enabled. Omit it when disabled. Do not place it in `LifeState`, saved activity rows, pending action payloads, request headers, or local storage. Preserve all current OFF key sets exactly; define separate ON expectations adding `capabilities` to each applicable `LIFE_RESPONSE_KEYS`, `ACTION_RESPONSE_KEYS`, and `ACTION_DUPLICATE_RESPONSE_KEYS` fixture (`src/types/protocol.ts:817-820`). `storage: 'failing'` remains independent.
+
+Expose the host option through the server’s internal `ServerConfig`/`RouteContext` on both hosts. The core life and action handlers should attach the response capability from that host value after producing the existing state/result. Node uses its explicit option (omission is false); Worker accepts exactly the existing literal environment value `'1'` (every other value is false). Do not expose this setting from `/api/session`, health metadata, or arbitrary route responses.
+
+In `src/client.ts`, accept capability input alongside the corresponding life snapshot, but update the ephemeral client value only at the end of the existing accepted-snapshot path: after `responseCurrent`, load/rule awaits, revision/overtake checks, and state construction have all succeeded. Only the exact supported literal `true` enables the value; absent, malformed, unknown, or old-server data means false. Transport-failed, malformed, or stale snapshots cannot update it. An accepted HTTP 200 action refusal or duplicate still carries the server's current authoritative state, so its capability updates together with that accepted snapshot. Clear it when changing actor/city scope and at reconnect/session invalidation; do not restore it from a cached life.
+
+Pass the accepted ephemeral value into the local `viewLife` context in `src/app/state/game.ts:170-179`. This should make the existing `CareerView.interactiveTeachingStarts` and Jobs copy truthful without changing the action request payload. Preserve a separate read path for an already saved teaching marker: when a marked lesson exists, the view and `career.teach`/cancel flow remain available even if the current start capability is false. The capability gates creation of *new* marked lessons only.
+
+## Compatibility and acceptance
+
+- Omitted/default-off Node option and Worker environment show the existing timed-shift copy and create no new marker or generation increment. Only explicit Node `true` and Worker string `'1'` enable the new-shift copy and marker creation.
+- Both successful life and action snapshots carry the same host capability; duplicates/refusals still use their existing current state and receipt behavior. Exact response keys and old-server responses without the optional property remain supported.
+- Client tests hold a response while identity, city, connection generation, or accepted revision changes; its capability must not leak into the replacement scope. A current accepted response may change the UI copy; a stale response may not. Reconnect begins fail-closed until a current snapshot arrives.
+- Reload a real saved marked lesson after capability is switched off. The marker, generation, ordered lesson state and once-only wage remain intact and actionable; no timer completion or extra payment occurs. Reload with no marker and no capability stays on the legacy timed path. No capability value is added to save data.
+- Test the supported update/reload path with an older cached client after host opt-in: it must not settle or claim a timer wage for a marked interactive lesson. If compatible-client rollout and reload behavior cannot be demonstrated, keep both hosts OFF.
+- Exercise Node HTTP and actual Worker routes in both ON and OFF modes, including current snapshots, default-off/invalid Worker env values, action response shape, restart/reload, and stale response fences. Keep the app’s context/city/identity and storage failure behavior intact.
+- Run the normal exact-SHA typecheck, protocol and career/client tests, Node HTTP tests, Worker tests, then the existing rendered desktop/touch teaching QA. Verify the UI’s stage/prompt/input flow and once-only wage; a source-only or pure-engine pass is not browser acceptance.
+- Keep both shipped host defaults OFF. Activation depends on a verified compatible OFF reader/recovery baseline, followed by exact-SHA staging, release, native-rendered, and live continuity checks. Once markers exist, do not roll back to `a446` or another marker-unaware reader. Preserve the agreed observation checks through stage and live; only the Integration/WORLD release owners may select activation after they pass.
+
+Keep this display capability separate from authority: the host remains the only party that can create a marker, and the client sends only its existing bounded teaching choice. This is fictional simulation currency. It does not affect legal or civic decisions, healthcare, account entitlements, ownership, or real-money commerce.

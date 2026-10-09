@@ -1,15 +1,17 @@
 {
-  "status": "unapplied source proposal",
+  "status": "Corrected source reference already applied in Integration ab6a7a16; not compiler/browser acceptance. Do not blindly reapply to changed helper.",
   "base_commit": "3d5b2005387c420aec5c028c81a457d8e4906b56",
   "target_file": "scripts/living-world-browser-qa.mjs",
   "base_sha256": "98f03ee2c4c2c07b77f4bc13e060552bffbd8ae6b55727b5fdcc3a9973ae4c09",
-  "proposed_sha256": "6b4cc61e6d0bae70b52970e84846cd063e48aba09b90dc5a1ef8fe0aa9df9d4e",
+  "proposed_sha256": "1a7afb50705589198cc98ff21505e6585984713fc787e6d8b8a1aeaf5f75068b",
   "patch_file": "browser-qa-native-scroll.patch",
-  "patch_sha256": "4459f06abffc54e6898793a336162aedab6372145df8e3e05a21f158b5f1ee1b",
+  "patch_sha256": "203eae020b442c535571b674fc4fce5f456d0c939c18fced1ff028145176bed6",
   "checks": {
     "node_check": "PASS: node --check on temporary proposed helper only",
     "git_apply_check": "PASS: against temporary scripts/ helper extracted from the exact base commit",
-    "browser_or_fixture_execution": "NOT RUN by assignment"
+    "browser_or_fixture_execution": "NOT RUN by assignment",
+    "root_corrected_source": "PASS exact source hash, apply, byte equality, Node syntax and cooked-expression semantic examples; no browser/fixture",
+    "artifact_context": "Blank context lines have no trailing spaces; independent ordinary git apply --check and byte-identical application passed."
   },
   "changes": [
     "Replace simultaneous visibility of every choice with per-target bounded reachability through native CDP wheel/touch input; each target is capped at 12 gestures and each viewport at 96, with no-progress refusal.",
@@ -17,7 +19,10 @@
     "Check fixed classroom text, stage title, prompt, choices and cancel separately. Text ranges must remain clipped-visible and hit-test to their target; stage identity is rechecked between prompt and selected-control observations.",
     "Aggregate More cue visibility and overlap against clipped-visible question/context bounds during reachability checks; absent cue remains notObserved.",
     "Count only same-session GET /api/life?city=lagos responses with HTTP 200, completed body and expected unchanged cash/stage/revision; then verify rendered focus and scroller offset remain after two frames.",
-    "Keep receipt projections bounded to booleans/numbers and existing gameplay/reload evidence; no response bodies or private state are written to artifacts."
+    "Keep receipt projections bounded to booleans/numbers and existing gameplay/reload evidence; no response bodies or private state are written to artifacts.",
+    "Integration initializes both failure observation entries before initial cue checks.",
+    "Integration corrects source template escaping; independently cooked runtime expression passes six positive/negative cue-label examples.",
+    "Wrong-answer retry feedback must be natively reachable both before and after reload."
   ],
   "limits": [
     "The refresh check proves a successful unchanged server response followed by retained rendered focus/scroll; it does not claim internal client acceptance.",
@@ -26,7 +31,7 @@
   ],
   "independent_root_review": {
     "reviewer": "Sol",
-    "status": "source proposal accepted for Integration application; runtime acceptance unrun",
+    "status": "Corrected source/syntax/apply/cooked-expression review passed at ab6a7a16; runtime acceptance unrun",
     "checks": [
       "current helper baseline SHA256 unchanged",
       "only one runtime target in unapplied patch",
@@ -35,8 +40,22 @@
       "temporary applied bytes equal proposed bytes",
       "Node syntax passed",
       "direction-aware native touch, bounded/no-progress reachability, range hit-test occlusion, immediate clipped cue-overlap refusal and failure flag retention reviewed",
-      "same-session HTTP200 unchanged-state response observation has explicitly limited acceptance claim"
+      "same-session HTTP200 unchanged-state response observation has explicitly limited acceptance claim",
+      "Exact Integration ab6 helper SHA256 matches published source",
+      "Temporary corrected patch applies byte-identically to exact baseline",
+      "Cooked runtime regexp matches More, More with space/arrow/newline; rejects Moresomething and Smores"
     ],
     "compiler_and_browser": "UNRUN; Integration must verify final assembled SHA; Astra is next browser operator"
-  }
+  },
+  "superseding_findings": [
+    {
+      "source": "Integration source-only Astra review",
+      "finding": "Single source backslash in cue regexp is consumed by cooked template, causing a runtime More+s pattern and potentially false notObserved/overlap acceptance",
+      "required_fix": "Double source backslash, inspect compiled expression semantics; final Integration helper includes ordered failure records and readable retry feedback",
+      "state": "Correction published in exact Integration ab6a7a16 helper; compiler/build/native acceptance still pending"
+    }
+  ],
+  "superseded_original_proposed_sha256": "6b4cc61e6d0bae70b52970e84846cd063e48aba09b90dc5a1ef8fe0aa9df9d4e",
+  "superseded_original_patch_sha256": "4459f06abffc54e6898793a336162aedab6372145df8e3e05a21f158b5f1ee1b",
+  "applied_integration_source_commit": "ab6a7a16517090237bb0ec652e6797cb7a847e9c"
 }

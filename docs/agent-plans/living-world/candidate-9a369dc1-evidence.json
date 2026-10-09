@@ -1,0 +1,60 @@
+{
+  "sourceSha": "9a369dc1cbca1c934a43014aedda9b4b9a9e58c0",
+  "scope": "local serial exact-source release gate attempt, not full CI/browser/staging",
+  "accepted": false,
+  "status": "failed",
+  "receipt": {
+    "sourceSha": "9a369dc1cbca1c934a43014aedda9b4b9a9e58c0",
+    "node": "v24.19.0",
+    "heapMiB": 1536,
+    "minifierMaxWorkers": 1,
+    "stages": [
+      {
+        "title": "preflight",
+        "log": "/tmp/allworld-final-9a369-preflight.log",
+        "status": "passed",
+        "startedAt": 1791556136.181023,
+        "exitCode": 0,
+        "durationSeconds": 0.233
+      },
+      {
+        "title": "catalogue",
+        "log": "/tmp/allworld-final-9a369-catalogue.log",
+        "status": "passed",
+        "startedAt": 1791556136.464401,
+        "exitCode": 0,
+        "durationSeconds": 0.239
+      },
+      {
+        "title": "compiler",
+        "log": "/tmp/allworld-final-9a369-compiler.log",
+        "status": "failed",
+        "startedAt": 1791556136.758733,
+        "exitCode": 1,
+        "durationSeconds": 81.141
+      }
+    ],
+    "status": "failed"
+  },
+  "receiptSha256": "350a9074dc392b5dba5b2cf15e4a3a674a075c69f85d36a1d77ede4a4fe96be8",
+  "compilerLog": {
+    "path": "/tmp/allworld-final-9a369-compiler.log",
+    "sha256": "07654dac51c191ddfacf07ef3c5576427d430920781ae7603e6bbfe40d25048d",
+    "retainedDiagnostics": "client: compiler did not complete (SIGABRT)\ntest: compiler did not complete (SIGABRT)\nsrc/game/cities/africa/types.ts:69:14 TS2304 Cannot find name 'URL'.\nsrc/game/cities/africa/types.ts:70:21 TS2552 Cannot find name 'URL'. Did you mean 'url'?\nserver/testing/africaJourney.ts:135:65 TS2571 Object is of type 'unknown'.\nserver/testing/africaJourney.ts:135:128 TS18046 'sum' is of type 'unknown'.\n\nTypecheck failed. New .ts and .vue code must be clean. For existing JavaScript, fix the new errors; if they came in with a merge of untyped code, record them with `node scripts/typecheck.ts --update` and say so in the commit.\n"
+  },
+  "diagnostics": [
+    "TS2304/TS2552 missing engine URL global types",
+    "TS2571/TS18046 unknown accumulator in hosted journey fixture",
+    "client/test compiler child SIGABRT; underlying cause not proved by this truncated parent log"
+  ],
+  "notRun": [
+    "build",
+    "download budget",
+    "native browser",
+    "staging",
+    "production release"
+  ],
+  "runtimeReviewFinding": "Cooked-template cue regexp flaw; Integration corrected working source, so initial diagnostic result cannot establish final candidate acceptance",
+  "resources": "Original Integration session65175 terminal exit1,81.141seconds compiler; no Root process or duplicate run",
+  "next": "Integration owns type/diagnostic/geometry corrections and final source freeze; independently validate final helper semantics, canonical compiler/caps, full appropriate changed-source tests and exact native UI before release"
+}

@@ -2,7 +2,7 @@
 +++ b/scripts/living-world-browser-qa.mjs
 @@ -18,17 +18,21 @@
  const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
- 
+
  /** @typedef {Record<string, unknown>} JsonRecord */
 -/** @typedef {JsonRecord & {request?: {url?: string}; requestId?: string; errorReason?: string; url?: string; frame?: {id?: string; loaderId?: string}; frameId?: string; name?: string; loaderId?: string}} DevToolsEvent */
 -/** @typedef {JsonRecord & {data?: string; product?: string; browserContextId?: string; targetId?: string; sessionId?: string; frameTree?: {frame?: {id?: string; loaderId?: string}}; errorText?: string; loaderId?: string; exceptionDetails?: object; result?: {value?: unknown}}} DevToolsResult */
@@ -56,10 +56,12 @@
      ...(typeof value.product === 'string' ? { product: value.product } : {}),
      ...(typeof value.browserContextId === 'string' ? { browserContextId: value.browserContextId } : {}),
      ...(typeof value.targetId === 'string' ? { targetId: value.targetId } : {}),
-@@ -92,6 +106,21 @@
+@@ -90,6 +104,21 @@
+   return typeof value.readyState === 'string' && typeof value.lessonChoiceCount === 'number'
+     && booleanKeys.every(key => typeof value[key] === 'boolean')
      && Object.values(value.knownText).every((item) => typeof item === 'boolean')
- }
- 
++}
++
 +/** @param {unknown} value @returns {value is TargetObservation} */
 +function isTargetObservation(value) {
 +  if (!isRecord(value)) return false
@@ -73,11 +75,9 @@
 +function isCueObservation(value) {
 +  return isRecord(value) && typeof value.observed === 'boolean' && typeof value.visible === 'boolean'
 +    && typeof value.overlapsQuestion === 'boolean' && typeof value.overlapsContext === 'boolean'
-+}
-+
+ }
+
  /** @param {unknown} value @returns {value is ViewportObservation} */
- function isViewportObservation(value) {
-   return isRecord(value) && typeof value.width === 'number' && Number.isFinite(value.width)
 @@ -225,6 +254,23 @@
      /** @type {(() => void) | null} */
      this.unlistenException = null
@@ -100,9 +100,9 @@
 +    /** @type {(() => void) | null} */
 +    this.unlistenLifeFailure = null
    }
- 
+
    /** @param {string} cookie @param {boolean} mobile @param {() => void} noteExternalRequest */
-@@ -246,9 +292,63 @@
+@@ -246,8 +292,62 @@
        void send(sameOrigin ? 'Fetch.continueRequest' : 'Fetch.failRequest',
          sameOrigin ? { requestId: event.requestId } : { requestId: event.requestId, errorReason: 'BlockedByClient' }).catch(() => {})
      })
@@ -122,7 +122,7 @@
 +          this.pendingLifeReads.set(event.requestId, { sequence: this.startedLifeReads, status200: false })
 +        }
 +      } catch { /* a malformed URL never becomes a counted refresh */ }
-     })
++    })
 +    this.unlistenLifeResponse = this.devtools.on('Network.responseReceived', (event, eventSession) => {
 +      if (eventSession !== sessionId || typeof event.requestId !== 'string') return
 +      const pending = this.pendingLifeReads.get(event.requestId)
@@ -164,16 +164,13 @@
 +    this.unlistenLifeFailure = this.devtools.on('Network.loadingFailed', (event, eventSession) => {
 +      if (eventSession !== sessionId) return
 +      if (typeof event.requestId === 'string') this.pendingLifeReads.delete(event.requestId)
-+    })
+     })
      this.unlistenSocket = this.devtools.on('Network.webSocketCreated', event => {
        if (typeof event.url !== 'string' || !isFixtureOrigin(event.url, this.origin)) noteExternalRequest()
-     })
-@@ -338,8 +438,192 @@
-   async waitChoice(label) {
-     const encoded = JSON.stringify(label)
+@@ -340,6 +440,190 @@
      await this.wait(`[...document.querySelectorAll('.teaching-shift__choice')].some(node => node.textContent.trim() === ${encoded})`, 'expected next teaching choice did not render')
-+  }
-+
+   }
+
 +  /** @param {number} afterStarted @param {{cash: number; stage: string; revision: number}} expected @returns {Promise<number>} */
 +  async waitForLifeRead(afterStarted, expected) {
 +    const deadline = Date.now() + PAGE_WAIT_MS
@@ -291,8 +288,8 @@
 +      await this.scrollNative(targetKey,state,delta,mobile)
 +    }
 +    throw new Error('required teaching target exceeded the bounded native scroll steps')
-   }
- 
++  }
++
 +  /** @param {string} stageText @param {string} prompt @param {string} choice @param {boolean} mobile */
 +  async prepareChoice(stageText, prompt, choice, mobile) {
 +    const before=await this.inspectTarget('.teaching-shift__stage',stageText)
@@ -338,7 +335,7 @@
 +  async cueObservation() {
 +    const value=await this.evaluate(`(() => {
 +      const lesson=document.querySelector('.teaching-shift'), cues=[...document.querySelectorAll('.attn-cue')];
-+      const cue=cues.find(node=>/^More(?:\s|→|$)/u.test(node.textContent.trim()));
++      const cue=cues.find(node=>/^More(?:\\s|→|$)/u.test(node.textContent.trim()));
 +      if(!cue||!lesson)return {observed:false,visible:false,overlapsQuestion:false,overlapsContext:false};
 +      const style=getComputedStyle(cue);
 +      const visibleBounds=(node)=>{if(!node)return null;const b=node.getBoundingClientRect();let l=Math.max(0,b.left),t=Math.max(0,b.top),right=Math.min(innerWidth,b.right),bottom=Math.min(innerHeight,b.bottom);
@@ -371,7 +368,7 @@
      })()`, message)
    }
 @@ -414,23 +698,10 @@
- 
+
    /** @param {string} label @returns {Promise<BrowserPoint>} */
    async rect(label) {
 -    const encoded = JSON.stringify(label)
@@ -396,7 +393,7 @@
 +      'expected rendered lesson choice was not visible, unobscured, and at least 44px')
 +    return { x: state.inputX, y: state.inputY, width: state.width, height: state.height }
    }
- 
+
    /** @param {string} label */
 @@ -465,11 +736,13 @@
        if (await this.evaluate(`(() => {
@@ -494,13 +491,13 @@
    phase = 'chrome-startup'
    const browser = await startBrowser(t, CHROME)
    browserVersion = browser.version
-@@ -709,14 +1035,28 @@
+@@ -709,15 +1035,30 @@
    const appPage = await browser.page(f.base, desktopTeacher.device.cookie, false, captureFailure)
    try {
      await appPage.page.wait("document.querySelector('.teaching-shift') !== null", 'the rendered Teaching controls did not appear')
 -    await appPage.page.waitRendered({ cash: desktopCash, stage: '1 · Notice the learner’s idea' }, 'desktop app hydration did not show the active lesson and server balance')
-+    await appPage.page.cueObservation()
 +    scrollObservations.desktop = { contextTargets: 0, choicesReached: 0, cancelReached: false, nativeScrolls: 0, focusRetained: false, moreCue: 'notObserved', cueOverlapsQuestion: false, cueOverlapsContext: false }
++    await appPage.page.cueObservation()
 +    await appPage.page.waitRendered({ cash: desktopCash, stage: stages[0].label }, 'desktop app hydration did not show the active lesson and server balance')
      await appPage.page.screenshot('teaching-desktop-before.png')
      screenshots.push('teaching-desktop-before.png')
@@ -518,23 +515,26 @@
 +    scrollObservations.desktop.focusRetained = await appPage.page.focusedChoiceAndScroll(wrongDesktopChoice, focusBeforePoll.scrollTop)
 +    requireCondition(focusBeforePoll.scrollTop > 0, 'focus/scroll preservation needs an actual nonzero native scroll offset')
 +    requireCondition(scrollObservations.desktop.focusRetained, 'unchanged server refresh moved the focused teaching choice or its scroll position')
- 
+
      phase = 'desktop-wrong-choice'
 -    await appPage.page.click('They think the numerator is the number of equal parts in the whole.')
 +    await appPage.page.click(wrongDesktopChoice)
      await appPage.page.wait("document.querySelector('.teaching-shift__feedback')?.textContent.includes('Try again:')", 'wrong desktop choice did not render retry feedback')
++    await appPage.page.ensureReadable('.teaching-shift__feedback', 'Try again: keep the whole the same size and explain what the denominator counts.', false)
      let serverState = (await life(f, desktopTeacher.device.cookie)).state
      requireCondition(serverState.activeAction?.teaching?.stage === 'diagnose'
-@@ -731,22 +1071,24 @@
- 
+       && serverState.activeAction.teaching.feedback === 'retry'
+@@ -731,22 +1072,25 @@
+
      phase = 'desktop-reload-retry'
      await appPage.page.reload()
 -    await appPage.page.waitRendered({ cash: desktopCash, stage: '1 · Notice the learner’s idea', retry: true }, 'desktop reload did not hydrate the same retry lesson and balance')
 +    await appPage.page.waitRendered({ cash: desktopCash, stage: stages[0].label, retry: true }, 'desktop reload did not hydrate the same retry lesson and balance')
++    await appPage.page.ensureReadable('.teaching-shift__feedback', 'Try again: keep the whole the same size and explain what the denominator counts.', false)
 +    await prepareAnswer(appPage.page, stages[0], stages[0].choices[0], false)
      await appPage.page.screenshot('teaching-desktop-reloaded.png')
      screenshots.push('teaching-desktop-reloaded.png')
- 
+
 -    const desktopChoices = [
 -      'They think a larger denominator makes the fraction larger.',
 -      'Show equal-sized wholes split into thirds and fourths; one third is the larger piece.',
@@ -556,24 +556,24 @@
      await appPage.page.wait("!document.querySelector('.teaching-shift')", 'last desktop answer did not complete the rendered lesson')
      const completedDesktop = (await life(f, desktopTeacher.device.cookie)).state
      requireCondition(completedDesktop.activeAction === null, 'desktop controls did not complete the authored lesson')
-@@ -778,7 +1120,9 @@
+@@ -778,7 +1122,9 @@
    phase = 'mobile-render'
    const mobilePage = await browser.page(f.base, mobileTeacher.device.cookie, true, captureFailure)
    try {
 -    await mobilePage.page.waitRendered({ cash: mobileBefore.cash, stage: '1 · Notice the learner’s idea' }, 'mobile app hydration did not show the active lesson and server balance')
 +    await mobilePage.page.waitRendered({ cash: mobileBefore.cash, stage: stages[0].label }, 'mobile app hydration did not show the active lesson and server balance')
-+    await mobilePage.page.cueObservation()
 +    scrollObservations.mobile390 = { contextTargets: 0, choicesReached: 0, cancelReached: false, nativeScrolls: 0, focusRetained: false, moreCue: 'notObserved', cueOverlapsQuestion: false, cueOverlapsContext: false }
++    await mobilePage.page.cueObservation()
      await mobilePage.page.screenshot('teaching-mobile-before.png')
      screenshots.push('teaching-mobile-before.png')
      const mobileView = await mobilePage.page.viewport()
-@@ -786,20 +1130,27 @@
+@@ -786,20 +1132,27 @@
      requireCondition(mobileView.buttons.length === 3 && mobileView.buttons.every(button => button.width >= 44 && button.height >= 44),
        '390px teaching controls did not retain usable touch targets')
      measurements.mobile390 = mobileView
 +    await inspectClassroom(mobilePage.page, true, scrollObservations.mobile390)
 +    await inspectStageControls(mobilePage.page, stages[0], true, scrollObservations.mobile390)
- 
+
      phase = 'mobile-progress'
 -    await mobilePage.page.touch('They think a larger denominator makes the fraction larger.')
 -    await mobilePage.page.waitChoice('Show equal-sized wholes split into thirds and fourths; one third is the larger piece.')
@@ -601,7 +601,7 @@
      await mobilePage.page.wait("!document.querySelector('.teaching-shift')", 'last mobile answer did not complete the rendered lesson')
      mobileState = (await life(f, mobileTeacher.device.cookie)).state
      requireCondition(mobileState.activeAction === null && mobileState.cash === mobileBefore.cash + 3000,
-@@ -808,6 +1159,7 @@
+@@ -808,6 +1161,7 @@
      await mobilePage.page.waitRendered({ cash: mobileState.cash, noTeaching: true }, 'mobile HUD did not render the settled balance with no active lesson')
      await mobilePage.page.screenshot('teaching-mobile-after.png')
      screenshots.push('teaching-mobile-after.png')
@@ -609,10 +609,10 @@
      phase = 'mobile-terminal-reload'
      await mobilePage.page.reload()
      await mobilePage.page.waitRendered({ cash: mobileState.cash, noTeaching: true }, 'completed mobile reload did not hydrate the terminal state and current balance')
-@@ -822,6 +1174,13 @@
+@@ -822,6 +1176,13 @@
      await browser.close()
    }
- 
+
 +  scrollObservations.desktop.moreCue = appPage.page.cueSeen ? 'observed' : 'notObserved'
 +  scrollObservations.desktop.cueOverlapsQuestion = appPage.page.cueQuestionOverlap
 +  scrollObservations.desktop.cueOverlapsContext = appPage.page.cueContextOverlap
@@ -622,8 +622,8 @@
 +
    phase = 'external-origin-check'
    requireCondition(browser.externalRequests() === 0, 'browser attempted an external-origin request; all such requests are blocked and this QA run refuses it')
- 
-@@ -834,6 +1193,7 @@
+
+@@ -834,6 +1195,7 @@
      node: process.version,
      platform: process.platform,
      viewportObservations: measurements,
@@ -631,7 +631,7 @@
      screenshots,
      qualification: 'headless Chromium desktop and 390px touch emulation; not a physical-device or whole-journey result',
    }
-@@ -845,7 +1205,7 @@
+@@ -845,7 +1207,7 @@
      await writeReceipt({
        result: 'failed', scope: 'disposable local Node HTTP fixture; rendered teaching practice only',
        sourceSha: sha, expectedSha, health: healthReceipt, browser: browserVersion,

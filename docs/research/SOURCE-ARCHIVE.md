@@ -22,6 +22,8 @@ The [9 October reply follow-up](lagos-life-reply-followup-2026-10-09.md) adds re
 
 The [current-source comparison and implementation order](lagos-life-current-comparison-2026-10-09.md) distinguishes existing cars/messages/visits/justice/recovery/capture from permanent household permissions, safe design delegation, asset transfers and other unresolved requirements. It preserves the difference between source, local acceptance and deployed behavior.
 
+The [city/original-launch follow-up](lagos-life-launch-reply-followup-2026-10-09.md) adds731 observed city-launch replies across100 expanded branches,63 deduplicated findings and20 geographic-request groups. X stopped rendering independent pages; original launch remained unreadable and a direct fallback returned403. [135 remaining branch URLs](lagos-life-pending-replies-2026-10-09.md) are published as the precise continuation queue. These are not135 unread comments, and no complete-tree claim is made.
+
 The raw capture remains at `/Users/anthonyakpan/Desktop/JoinAllworld/docs/research/lagos-life-browser-evidence-2026-10-08.txt`; it contains duplicated browser UI and unrelated recommendations and is deliberately not committed here. The public source links needed to continue are retained in these catalogues.
 
 ## Original document fingerprints

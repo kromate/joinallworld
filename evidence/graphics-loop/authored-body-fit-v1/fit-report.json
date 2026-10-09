@@ -1,0 +1,463 @@
+{
+  "method": {
+    "candidatePredicate": "Head joint weight >= 0.25; remove skin vertices (region red >= 0.45, alpha <= 0.2) OR scalp vertices (region alpha >= 0.45), with rest Y >= neck Y - 0.015 m. Fit bounds use skin vertices only.",
+    "removalRule": "Remove only triangles whose three vertices satisfy the head-weight, skin-or-scalp, and neck-Y conditions. Mixed head/neck and shoulder triangles stay on the original body; scalp removal does not expand head-fit bounds.",
+    "important": "These are source-rest bounds and index counts, not rendered head/neck seam proof. Lower-boundary filtering may leave overlap; the root full-body GPU test must check seams during motion."
+  },
+  "authored": {
+    "path": "evidence/graphics-loop/authored-head-spike-v1/downloaded-37934994451/authored-face-37934994451/generated/expressive-head-lod.glb",
+    "sha256": "ba62be0114e4656e2cf8ba636d3f85a5aadbdcc723dd7ebe96e77299917d1a81",
+    "bytes": 2206528,
+    "triangles": 18196,
+    "bounds": {
+      "min": [
+        -0.09322348237037659,
+        1.4701367616653442,
+        -0.12739163637161255
+      ],
+      "max": [
+        0.09322348237037659,
+        1.745874047279358,
+        0.09680044651031494
+      ],
+      "size": [
+        0.18644696474075317,
+        0.27573728561401367,
+        0.2241920828819275
+      ],
+      "center": [
+        0,
+        1.608005404472351,
+        -0.015295594930648804
+      ]
+    },
+    "fitMaterials": [
+      "VitSkin",
+      "VitMouth"
+    ],
+    "nodeTransforms": [
+      {
+        "mesh": 0,
+        "name": "Eye_L_eyeball",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.03347014635801315,
+          1.6344083547592163,
+          0.046756915748119354,
+          1
+        ]
+      },
+      {
+        "mesh": 1,
+        "name": "Eye_R_eyeball",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.03347014635801315,
+          1.6344083547592163,
+          0.046756915748119354,
+          1
+        ]
+      },
+      {
+        "mesh": 2,
+        "name": "Eyeshadow_L",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "mesh": 3,
+        "name": "Eyeshadow_R",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "mesh": 4,
+        "name": "Tearline",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "mesh": 5,
+        "name": "Lacrimal_Caruncle",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "mesh": 6,
+        "name": "cm_vitruvian",
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "bodies": {
+    "male": {
+      "key": "male",
+      "keyHash": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+      "bodyBytes": 133756,
+      "bodyTriangles": 9002,
+      "headIndex": 6,
+      "neckIndex": 5,
+      "meshMatrix": [
+        0.0001134064,
+        0,
+        0,
+        0,
+        0,
+        0.0001134064,
+        0,
+        0,
+        0,
+        0,
+        0.0001134064,
+        0,
+        -0.928504586,
+        -0.00950966962,
+        -0.163450792,
+        1
+      ],
+      "headRest": [
+        -3.769875744907836e-9,
+        1.5998000144267321,
+        -0.017400021049433112
+      ],
+      "neckRest": [
+        -3.769875966952441e-9,
+        1.5204998491276813,
+        -0.041400055137210276
+      ],
+      "headNeckGap": 0.07930016529905082,
+      "candidateVertexCount": 976,
+      "skinFitVertexCount": 655,
+      "fitVertexCount": 655,
+      "fitBounds": {
+        "min": [
+          -0.09065810279999997,
+          1.57160235918,
+          -0.10618056000000001
+        ],
+        "max": [
+          0.0906787308,
+          1.81009601838,
+          0.11450829439999999
+        ],
+        "size": [
+          0.18133683359999997,
+          0.23849365919999999,
+          0.2206888544
+        ],
+        "center": [
+          0.000010314000000011259,
+          1.69084918878,
+          0.0041638671999999904
+        ]
+      },
+      "removedTriangles": 1722,
+      "retainedTriangles": 7280,
+      "bodyTrianglesAfterHeadRegionRemoval": 7280
+    },
+    "female": {
+      "key": "female",
+      "keyHash": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+      "bodyBytes": 132296,
+      "bodyTriangles": 9002,
+      "headIndex": 6,
+      "neckIndex": 5,
+      "meshMatrix": [
+        0.00010860843,
+        0,
+        0,
+        0,
+        0,
+        0.00010860843,
+        0,
+        0,
+        0,
+        0,
+        0.00010860843,
+        0,
+        -0.83443296,
+        -0.00840717554,
+        -0.162469536,
+        1
+      ],
+      "headRest": [
+        -2.822728273343955e-9,
+        1.5496000135798493,
+        -0.010900011086078493
+      ],
+      "neckRest": [
+        -2.8227281623216527e-9,
+        1.4848999421932991,
+        -0.04060003060383588
+      ],
+      "headNeckGap": 0.0647000713865502,
+      "candidateVertexCount": 1043,
+      "skinFitVertexCount": 707,
+      "fitVertexCount": 707,
+      "fitBounds": {
+        "min": [
+          -0.08883608804999998,
+          1.5373080002200001,
+          -0.11294409191999999
+        ],
+        "max": [
+          0.08884730343000002,
+          1.7664717875200002,
+          0.11187535818000002
+        ],
+        "size": [
+          0.17768339148,
+          0.2291637873000001,
+          0.2248194501
+        ],
+        "center": [
+          0.000005607690000020149,
+          1.6518898938700002,
+          -0.0005343668699999832
+        ]
+      },
+      "removedTriangles": 1849,
+      "retainedTriangles": 7153,
+      "bodyTrianglesAfterHeadRegionRemoval": 7153
+    }
+  },
+  "fitProposals": {
+    "male": {
+      "method": "uniform scale to candidate skin-region height; align lower Y seam, horizontal center X and depth center Z",
+      "rootLocalToBodyParent": [
+        0.864930757075238,
+        0,
+        0,
+        0,
+        0,
+        0.864930757075238,
+        0,
+        0,
+        0,
+        0,
+        0.864930757075238,
+        0,
+        0.000010314000000011259,
+        0.300035856908655,
+        0.017393497703282232,
+        1
+      ],
+      "uniformScale": 0.864930757075238,
+      "translation": [
+        0.000010314000000011259,
+        0.300035856908655,
+        0.017393497703282232
+      ],
+      "targetBounds": {
+        "min": [
+          -0.09065810279999997,
+          1.57160235918,
+          -0.10618056000000001
+        ],
+        "max": [
+          0.0906787308,
+          1.81009601838,
+          0.11450829439999999
+        ],
+        "size": [
+          0.18133683359999997,
+          0.23849365919999999,
+          0.2206888544
+        ],
+        "center": [
+          0.000010314000000011259,
+          1.69084918878,
+          0.0041638671999999904
+        ]
+      },
+      "transformedAuthoredBounds": {
+        "min": [
+          -0.08062154318379991,
+          1.57160235918,
+          -0.09279144678867005
+        ],
+        "max": [
+          0.08064217118379993,
+          1.81009601838,
+          0.10111918118867001
+        ]
+      },
+      "sourceToTargetDimensionRatios": [
+        0.9725920389862145,
+        0.864930757075238,
+        0.9843739866417474
+      ],
+      "note": "This is a deterministic fit proposal from source bounds. It does not prove neck sealing, face alignment, or animation quality."
+    },
+    "female": {
+      "method": "uniform scale to candidate skin-region height; align lower Y seam, horizontal center X and depth center Z",
+      "rootLocalToBodyParent": [
+        0.8310946660321856,
+        0,
+        0,
+        0,
+        0,
+        0.8310946660321856,
+        0,
+        0,
+        0,
+        0,
+        0.8310946660321856,
+        0,
+        0.000005607690000020149,
+        0.31548517926210207,
+        0.012177720490651175,
+        1
+      ],
+      "uniformScale": 0.8310946660321856,
+      "translation": [
+        0.000005607690000020149,
+        0.31548517926210207,
+        0.012177720490651175
+      ],
+      "targetBounds": {
+        "min": [
+          -0.08883608804999998,
+          1.5373080002200001,
+          -0.11294409191999999
+        ],
+        "max": [
+          0.08884730343000002,
+          1.7664717875200002,
+          0.11187535818000002
+        ],
+        "size": [
+          0.17768339148,
+          0.2291637873000001,
+          0.2248194501
+        ],
+        "center": [
+          0.000005607690000020149,
+          1.6518898938700002,
+          -0.0005343668699999832
+        ]
+      },
+      "transformedAuthoredBounds": {
+        "min": [
+          -0.07747193125696546,
+          1.5373080002200001,
+          -0.09369678899490778
+        ],
+        "max": [
+          0.0774831466369655,
+          1.7664717875200002,
+          0.09262805525490782
+        ]
+      },
+      "sourceToTargetDimensionRatios": [
+        0.9529969647243196,
+        0.8310946660321856,
+        1.0027983468907906
+      ],
+      "note": "This is a deterministic fit proposal from source bounds. It does not prove neck sealing, face alignment, or animation quality."
+    }
+  }
+}

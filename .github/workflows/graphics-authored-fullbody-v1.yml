@@ -1,0 +1,44 @@
+name: Authored full body and motion experiment
+on:
+  push:
+    branches: [codex/graphics-authored-fullbody-v1]
+permissions:
+  contents: read
+jobs:
+  face:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare reduced authored head
+        run: |
+          python3 -m pip install --break-system-packages pillow
+          python3 evidence/graphics-loop/authored-head-spike-v1/download-source.py
+          python3 evidence/graphics-loop/authored-head-spike-v1/retain-head.py
+          node --max-old-space-size=128 evidence/graphics-loop/authored-head-spike-v1/simplify-head.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-head-spike-v1/compress-head.mjs evidence/graphics-loop/authored-head-spike-v1/generated/expressive-head-lod.glb
+      - name: Build full body comparison
+        run: node --max-old-space-size=192 evidence/graphics-loop/authored-body-fit-v1/build-preview.mjs
+      - name: Capture actual full body poses and expressions
+        env:
+          STATIC_PREVIEW: 1
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
+          mkdir -p evidence/graphics-loop/authored-body-fit-v1/results
+          python3 evidence/graphics-loop/authored-body-fit-v1/bounded-render.py evidence/graphics-loop/authored-body-fit-v1/results/render.log evidence/graphics-loop/authored-body-fit-v1/results/resources.json node evidence/graphics-loop/authored-body-fit-v1/render.mjs
+      - name: Check character TypeScript
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-body-fit-v1/typecheck.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: authored-body-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/authored-body-fit-v1/results/
+            evidence/graphics-loop/authored-head-spike-v1/generated/
+          if-no-files-found: error

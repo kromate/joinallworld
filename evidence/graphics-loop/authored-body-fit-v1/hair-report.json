@@ -1,0 +1,36 @@
+{
+  "status": "source-only prototype; no browser or renderer acceptance",
+  "source": {
+    "path": "evidence/graphics-loop/authored-head-spike-v1/downloaded-37934994451/authored-face-37934994451/generated/expressive-head-lod.glb",
+    "sha256": "ba62be0114e4656e2cf8ba636d3f85a5aadbdcc723dd7ebe96e77299917d1a81",
+    "measuredMesh": "cm_vitruvian_1",
+    "nativeSceneBounds": {
+      "min": [-0.0979931578040123, 1.4583238363265991, -0.13642708584666252],
+      "max": [0.0979931578040123, 1.757686972618103, 0.10583589598536491]
+    },
+    "measurement": "Image-stripped GLTFLoader/MeshoptDecoder parse; scene.updateMatrixWorld(true); Box3.setFromObject on the main skin mesh."
+  },
+  "api": "createAuthoredHair(style: 'short' | 'bun', color: string, seed: string) -> { object, triangles, drawCalls, dispose() }",
+  "coordinateContract": "The returned group uses the authored GLB native scene coordinates. Attach it under an identity native-space group; do not attach under a translated bone-local frame without converting coordinates.",
+  "geometry": {
+    "short": {"vertices": 3469, "triangles": 5760, "drawCalls": 1, "composition": "1,440 cap + 90 curls × 48 triangles"},
+    "bun": {"vertices": 2689, "triangles": 4640, "drawCalls": 1, "composition": "1,440 cap + 896 bun base + 48 curls × 48 triangles"},
+    "limitTrianglesPerHair": 7000,
+    "sharedSurface": "One connected sampled scalp/curl surface with shared vertices and computed normals; bun adds one ellipsoid and 48 curled locks into the same merged geometry/material."
+  },
+  "boundedCheck": {
+    "status": "stale for the current clustered-curl revision; it checked the previous smooth-cap candidate only",
+    "command": "node --max-old-space-size=48 --experimental-strip-types (inline geometry invariants)",
+    "receipt": "evidence/graphics-loop/authored-body-fit-v1/geometry-check-v2.receipt.json",
+    "exitCode": 0,
+    "elapsedSeconds": 0.32,
+    "peakGroupRssBytes": 82116608,
+    "limits": {"seconds": 45, "rssBytes": 134217728},
+    "assertions": ["previous revision: one draw-call result", "reported triangles equal index triangles", "finite positions and normals", "all indices in range" ]
+  },
+  "limitations": [
+    "The module fits the exact authored LOD asset above; it does not claim the same bounds for other heads or future LODs.",
+    "The current revision adds deterministic short spiral/ringlet tubes on a connected scalp shell; it has not been locally geometry-checked or visually reviewed.",
+    "Hairline, side profile, bun placement and highlights require remote visual review with the production head material and motion."
+  ]
+}

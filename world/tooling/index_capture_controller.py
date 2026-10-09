@@ -12,15 +12,15 @@ import weakref
 from index_binding import decode_index_binding
 from index_binding_publish import publish_index_binding
 from index_bootstrap import _node_pin
-from index_capture_record import (FORMAT, MAX_RECORD_BYTES, MAX_ATTEMPTS, MAX_JOBS,
-    encode_capture_record, begin_capture, capture_snapshot_ready, finish_capture)
+from index_capture_record import (FORMAT, FORMAT_V2, MAX_RECORD_BYTES, MAX_ATTEMPTS, MAX_JOBS,
+    encode_capture_record, decode_capture_record, begin_capture, capture_snapshot_ready, finish_capture)
 from index_capture_state import (RECORD, PENDING, read_record, publish_record,
                                  seal_record, settlement)
 from index_capture_snapshot import (CAPTURE_EXECUTION, CAPTURE_RECLAIM,
     copy_capture_snapshot, capture_snapshot, cleanup_capture_snapshot)
 from index_controller_state import read_private
 from index_execution_snapshot import _capture, CONFIGURATION
-from index_ingest import ingest_index, capture_descriptors, _expected
+from index_ingest import ingest_index, capture_descriptors, _expected, observation_pin
 from index_resource_limits import IndexWorkerUnreaped, bounded_integer
 from index_root import ChargedIndexRoot, _lease, _binding
 from index_storage_footprint import index_storage_footprint
@@ -59,7 +59,8 @@ def _cleanup_slot(root, record, manifest_bytes, config, source_configuration):
 
 
 def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configuration, node,
-                       extract_path, receipt_path, expected, *, attempt_limit=8, job_limit=256):
+                       extract_path, receipt_path, expected, *, attempt_limit=8, job_limit=256,
+                       observation=None):
     """Charge one request attempt before frozen execution allocation or SQL.
 
     Both actual leases must be held with no live previous worker. Following an
@@ -71,6 +72,10 @@ def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configu
         raise TypeError("capture ownership requires its actual charged root")
     if _POISONED_LEASES.get(id(admitted.lease)) is admitted.lease:
         raise RuntimeError("capture lease has an unconfirmed worker; reacquire actual leases before recovery")
+    context_pin = observation_pin(observation)
+    # Only string-valued compact contexts are admitted. Retain our own copy
+    # across descriptor verification, durable publication and actual worker SQL.
+    observation = None if observation is None else dict(observation)
     bounded_integer(attempt_limit, 1, MAX_ATTEMPTS, "capture attempt limit")
     bounded_integer(job_limit, 1, MAX_JOBS, "capture job limit")
     config = decode_index_binding(admitted.binding_bytes)
@@ -93,13 +98,22 @@ def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configu
         raise ValueError("capture expectation exceeds its durable pin bound")
     capture_input = {"expected": {"sha256": hashlib.sha256(expected_bytes).hexdigest(), "bytes": len(expected_bytes)},
                      "extractPath": str(extract_path), "receiptPath": str(receipt_path)}
-    header = {"format": FORMAT, "index": {"indexHash": admitted.index_hash,
+    record_format = FORMAT if observation is None else FORMAT_V2
+    try:
+        previous = decode_capture_record(read_private(root/RECORD, MAX_RECORD_BYTES))
+    except FileNotFoundError:
+        previous = None
+    if previous is not None:
+        record_format = previous["format"]
+        if record_format == FORMAT and observation is not None:
+            raise ValueError("v1 capture quota cannot be migrated to campaign observations; preserve attempts")
+    header = {"format": record_format, "index": {"indexHash": admitted.index_hash,
         "rootDevice": info.st_dev, "rootInode": info.st_ino,
         "lockDevice": admitted.lease.device, "lockInode": admitted.lease.inode},
         "limits": {"attempts": attempt_limit, "jobs": job_limit}, "jobs": [], "current": None}
     # Validate lexical fields and actual readonly raw pins before state allocation.
-    begin_capture(header, expected["requestHash"], capture_input)
-    with capture_descriptors(extract_path, receipt_path, expected): pass
+    begin_capture(header, expected["requestHash"], capture_input, context_pin)
+    with capture_descriptors(extract_path, receipt_path, expected, observation=observation): pass
     limits = config["processLimits"]
     snapshot_reserve = tooling["sourceBytes"] + len(source_configuration) + (len(FILES)+4)*8192 + 65536
     if snapshot_reserve > MIB:
@@ -113,7 +127,7 @@ def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configu
     if record is None:
         if any(_present(root/name) for name in (CAPTURE_EXECUTION, CAPTURE_RECLAIM)):
             raise ValueError("unbound capture execution slot; preserve it")
-        record = begin_capture(header, expected["requestHash"], capture_input)
+        record = begin_capture(header, expected["requestHash"], capture_input, context_pin)
         publish_index_binding(admitted)
         publish_record(root, record)
     else:
@@ -130,10 +144,11 @@ def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configu
         reconciled = 1; prepared = None
     if prepared is None:
         _cleanup_slot(root, record, manifest_bytes, config, source_configuration)
-        record = begin_capture(record, expected["requestHash"], capture_input)
+        record = begin_capture(record, expected["requestHash"], capture_input, context_pin)
         publish_record(root, record)
-    elif prepared["requestHash"] != expected["requestHash"] or prepared["input"] != capture_input:
-        raise ValueError("unlaunched capture attempt owns a different input; preserve it")
+    elif (prepared["requestHash"] != expected["requestHash"] or prepared["input"] != capture_input
+            or prepared["attempts"][-1].get("observation") != context_pin):
+        raise ValueError("unlaunched capture attempt owns a different input or observation; preserve it")
     execution_path = copy_capture_snapshot(root, repository, manifest, source_configuration,
                                            config["source"]["configuration"])
     execution = capture_snapshot(root, manifest_bytes, config["toolingManifest"], source_configuration,
@@ -146,7 +161,8 @@ def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configu
         raise RuntimeError("Node runtime changed before durable capture launch; preserve state")
     try:
         result = ingest_index(admitted, repository, manifest_bytes, source_configuration, executable,
-                              extract_path, receipt_path, expected, _execution=execution)
+                              extract_path, receipt_path, expected, _execution=execution,
+                              observation=observation)
     except IndexWorkerUnreaped as error:
         _POISONED_LEASES[id(admitted.lease)] = admitted.lease
         error.retained_snapshot = execution_path
@@ -168,6 +184,7 @@ def ingest_capture_job(admitted, repository_root, manifest_bytes, source_configu
         "reservedWallSeconds": len(job["attempts"])*limits["wallSeconds"],
         "reconciledInterruptedAttempts": reconciled,
         "recordSha256": hashlib.sha256(encode_capture_record(record)).hexdigest(),
-        "scope": "Pinned capture replay only; no campaign observation/completion or country coverage."}
+        "scope": ("Pinned capture replay and atomic supplied observation; campaign membership/completion and country coverage require the scheduler."
+                  if observation is not None else "Pinned capture replay only; no campaign observation/completion or country coverage.")}
     result["footprint"] = footprint
     return result

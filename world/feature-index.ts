@@ -101,8 +101,22 @@ function observationData(value: FeatureIndexObservation): string {
   const root = typeof value.rootCellId === 'string' && /^geo-grid-v1:l(0|[1-9]|1[0-6]):x(0|[1-9][0-9]{0,7}):y(0|[1-9][0-9]{0,7})$/.exec(value.rootCellId);
   if (!root || geographicGridCell(Number(root[1]), Number(root[2]), Number(root[3])).id !== value.rootCellId) throw new TypeError('Observation root is not a canonical query grid cell.');
   if (typeof value.jobId !== 'string' || !value.jobId.trim() || value.jobId.length > 512 || /[\u0000-\u001f\u007f]/.test(value.jobId)) throw new TypeError('Observation job ID must be bounded text.');
+  for (let i = 0; i < value.jobId.length; i++) {
+    const code = value.jobId.charCodeAt(i);
+    if (code >= 0xd800 && code <= 0xdbff) {
+      const low = value.jobId.charCodeAt(++i);
+      if (!(low >= 0xdc00 && low <= 0xdfff)) throw new TypeError('Observation job ID contains an unpaired surrogate.');
+    } else if (code >= 0xdc00 && code <= 0xdfff) throw new TypeError('Observation job ID contains an unpaired surrogate.');
+  }
   if (typeof value.queryPath !== 'string' || !/^[0-3]{0,8}$/.test(value.queryPath)) throw new TypeError('Observation query path is invalid.');
   return boundedJson(value);
+}
+
+/** Validate compact context before an opener can run SQL. Membership in the
+ * frozen campaign/plan remains the scheduler's responsibility. */
+export function featureIndexObservationPin(value: FeatureIndexObservation): CaptureBytePin {
+  const data = observationData(value);
+  return { sha256: sha256(data), bytes: Buffer.byteLength(data) };
 }
 
 /**

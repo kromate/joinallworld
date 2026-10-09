@@ -10,6 +10,7 @@ import re
 from index_binding import _nonfinite, _pairs
 
 FORMAT = "feature-index-capture-controller-v1"
+FORMAT_V2 = "feature-index-capture-controller-v2"
 MAX_RECORD_BYTES = 512_000
 MAX_JOBS = 256
 MAX_ATTEMPTS = 8
@@ -23,6 +24,7 @@ _JOB = {"requestHash", "input", "attempts"}
 _INPUT = {"expected", "extractPath", "receiptPath"}
 _PIN = {"sha256", "bytes"}
 _ATTEMPT = {"number", "phase", "snapshotDevice", "snapshotInode", "resultSha256"}
+_ATTEMPT_V2 = _ATTEMPT | {"observation"}
 
 
 def _object(value, fields, label):
@@ -63,8 +65,13 @@ def _validate_input(value):
     _capture_path(value["receiptPath"], "receipt path")
 
 
-def _validate_attempt(attempt, expected_number, *, last):
-    _object(attempt, _ATTEMPT, "capture attempt")
+def _validate_attempt(attempt, expected_number, *, last, v2):
+    _object(attempt, _ATTEMPT_V2 if v2 else _ATTEMPT, "capture attempt")
+    if v2:
+        observation = attempt["observation"]
+        if observation is not None:
+            _pin(observation, "capture observation")
+            _integer(observation["bytes"], 1, 4096, "capture observation bytes")
     _integer(attempt["number"], 1, MAX_ATTEMPTS, "capture attempt number")
     if attempt["number"] != expected_number:
         raise ValueError("capture attempt numbers must be contiguous and one-based")
@@ -89,8 +96,9 @@ def _validate_attempt(attempt, expected_number, *, last):
 
 def _validate(value):
     _object(value, _TOP, "capture controller record")
-    if type(value["format"]) is not str or value["format"] != FORMAT:
+    if type(value["format"]) is not str or value["format"] not in {FORMAT, FORMAT_V2}:
         raise ValueError("unsupported capture controller record format")
+    v2 = value["format"] == FORMAT_V2
 
     index = value["index"]
     _object(index, _INDEX, "capture index identity")
@@ -122,7 +130,7 @@ def _validate(value):
         if type(attempts) is not list or not 1 <= len(attempts) <= limits["attempts"]:
             raise ValueError("capture job attempts exceed their immutable bound")
         for number, attempt in enumerate(attempts, 1):
-            _validate_attempt(attempt, number, last=number == len(attempts))
+            _validate_attempt(attempt, number, last=number == len(attempts), v2=v2)
             if attempt["phase"] == "prepared":
                 prepared_count += 1
                 prepared_request = request_hash
@@ -181,11 +189,19 @@ def _last_attempt(record, request_hash):
     return job, job["attempts"][-1]
 
 
-def begin_capture(record, request_hash, input):
+def begin_capture(record, request_hash, input, observation=None):
     """Prepare one bounded attempt with immutable raw-input ownership pins."""
     result = _clone(record)
     _sha(request_hash, "capture request hash")
     _validate_input(input)
+    if result["format"] == FORMAT and observation is not None:
+        raise ValueError("v1 capture records do not accept campaign observation pins")
+    if observation is not None:
+        _pin(observation, "capture observation")
+        _integer(observation["bytes"], 1, 4096, "capture observation bytes")
+        frozen_observation = {"sha256": observation["sha256"], "bytes": observation["bytes"]}
+    else:
+        frozen_observation = None
     # Copy through canonical JSON so later caller mutation cannot alter the job.
     frozen_input = json.loads(json.dumps(input, sort_keys=True, separators=(",", ":"),
                                         ensure_ascii=True, allow_nan=False))
@@ -202,13 +218,16 @@ def begin_capture(record, request_hash, input):
         raise ValueError("capture request already owns different immutable input pins")
     if len(job["attempts"]) >= result["limits"]["attempts"]:
         raise ValueError("capture attempt budget is exhausted")
-    job["attempts"].append({
+    attempt = {
         "number": len(job["attempts"]) + 1,
         "phase": "prepared",
         "snapshotDevice": None,
         "snapshotInode": None,
         "resultSha256": None,
-    })
+    }
+    if result["format"] == FORMAT_V2:
+        attempt["observation"] = frozen_observation
+    job["attempts"].append(attempt)
     result["current"] = request_hash
     encode_capture_record(result)
     return result

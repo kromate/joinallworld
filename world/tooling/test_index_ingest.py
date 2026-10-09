@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from index_ingest import ingest_index, capture_descriptors
+from index_ingest import ingest_index, capture_descriptors, observation_pin
 from index_binding import decode_index_binding, encode_index_binding
 from index_resource_limits import _run_fixed_process, IndexWorkerUnreaped
 from index_root import charged_index_root
@@ -205,6 +205,101 @@ class IndexIngestTests(unittest.TestCase):
                     # No worker was launched by this explicit lifecycle fixture.
                     for descriptor in error.retained_capture_descriptors: os.close(descriptor)
                     shutil.rmtree(error.retained_snapshot)
+
+    @staticmethod
+    def _synthetic_observation(*, job_id="synthetic-job", plan_hash="b"*64, query_path="01"):
+        # Fixture context exercises engine persistence; it is not a claim of
+        # membership in a real campaign or plan.
+        return {"campaignHash": "a"*64, "planHash": plan_hash, "jobId": job_id,
+                "rootCellId": "geo-grid-v1:l0:x0:y0", "queryPath": query_path}
+
+    def test_retained_capture_observations_replay_and_allow_multiple_contexts(self):
+        with source_fixture() as (source, manifest, config), fixture() as (_, namespace, registry):
+            with charged_index_root(namespace, registry, self.bound(manifest, config)) as admitted:
+                capture = inputs()[0]
+                first_context = self._synthetic_observation()
+                first = ingest_index(admitted, source, manifest, config, self.node, *capture,
+                                     observation=first_context)
+                replay = ingest_index(admitted, source, manifest, config, self.node, *capture,
+                                      observation=first_context)
+                second_context = self._synthetic_observation(job_id="synthetic-job-2", query_path="012")
+                second = ingest_index(admitted, source, manifest, config, self.node, *capture,
+                                      observation=second_context)
+                self.assertEqual(first["ingest"]["result"]["observationHash"], observation_pin(first_context)["sha256"])
+                self.assertEqual(replay["ingest"]["result"]["observationHash"], observation_pin(first_context)["sha256"])
+                self.assertTrue(replay["ingest"]["result"]["replayed"])
+                self.assertEqual(second["ingest"]["result"]["observationHash"], observation_pin(second_context)["sha256"])
+                self.assertTrue(second["ingest"]["result"]["replayed"])
+                self.assertEqual(second["ingest"]["stats"]["observations"], 2)
+
+    def test_conflicting_campaign_job_observation_rolls_back_atomically(self):
+        with source_fixture() as (source, manifest, config), fixture() as (_, namespace, registry):
+            with charged_index_root(namespace, registry, self.bound(manifest, config)) as admitted:
+                capture = inputs()[0]
+                original = self._synthetic_observation()
+                first = ingest_index(admitted, source, manifest, config, self.node, *capture,
+                                     observation=original)
+                conflict = self._synthetic_observation(plan_hash="c"*64)
+                with self.assertRaisesRegex(RuntimeError, "fixed ingestion worker failed"):
+                    ingest_index(admitted, source, manifest, config, self.node, *capture,
+                                 observation=conflict)
+                replay = ingest_index(admitted, source, manifest, config, self.node, *capture,
+                                      observation=original)
+                self.assertTrue(replay["ingest"]["result"]["replayed"])
+                self.assertEqual(replay["ingest"]["stats"]["observations"], 1)
+                self.assertEqual(replay["ingest"]["result"]["observationHash"],
+                                 first["ingest"]["result"]["observationHash"])
+
+    def test_malformed_observation_refuses_before_worker_or_sql(self):
+        malformed = [
+            {"rootCellId": "geo-grid-v1:l0:x360:y0"},
+            {"queryPath": "4"},
+            {"jobId": "\ud800"},
+            {"jobId": "x" * 513},
+        ]
+        with source_fixture() as (source, manifest, config), fixture() as (_, namespace, registry):
+            with charged_index_root(namespace, registry, self.bound(manifest, config)) as admitted:
+                for change in malformed:
+                    context = self._synthetic_observation()
+                    context.update(change)
+                    with self.subTest(change=tuple(change)):
+                        with patch("index_ingest._run_fixed_process") as launch:
+                            with self.assertRaises(ValueError):
+                                ingest_index(admitted, source, manifest, config, self.node, *inputs()[0],
+                                             observation=context)
+                            launch.assert_not_called()
+                        self.assertFalse((admitted.lease.root/"features.sqlite").exists())
+                        self.assertFalse((admitted.lease.root/"bootstrap.sqlite").exists())
+
+    def test_fixed_worker_rejects_malformed_v2_context_before_bootstrap_sql(self):
+        with source_fixture() as (source, manifest, config), fixture() as (_, namespace, registry):
+            with charged_index_root(namespace, registry, self.bound(manifest, config)) as admitted:
+                bad_context = self._synthetic_observation()
+                bad_context["rootCellId"] = "geo-grid-v1:l0:x360:y0"
+                raw_context = json.dumps(bad_context, ensure_ascii=False, sort_keys=True,
+                                         separators=(",", ":")).encode("utf-8")
+                with patch("index_ingest._freeze_observation", return_value=(bad_context, raw_context)):
+                    with self.assertRaisesRegex(RuntimeError, "fixed ingestion worker failed"):
+                        ingest_index(admitted, source, manifest, config, self.node, *inputs()[0],
+                                     observation=self._synthetic_observation())
+                self.assertFalse((admitted.lease.root/"features.sqlite").exists())
+                self.assertFalse((admitted.lease.root/"bootstrap.sqlite").exists())
+
+    def test_observation_report_hash_tampering_is_rejected(self):
+        with source_fixture() as (source, manifest, config), fixture() as (_, namespace, registry):
+            with charged_index_root(namespace, registry, self.bound(manifest, config)) as admitted:
+                capture = inputs()[0]
+                context = self._synthetic_observation()
+                def alter_report(*args, **kwargs):
+                    result = _run_fixed_process(*args, **kwargs)
+                    report = json.loads(result["stdout"])
+                    report["result"]["observationHash"] = "0"*64
+                    result["stdout"] = json.dumps(report)
+                    return result
+                with patch("index_ingest._run_fixed_process", side_effect=alter_report):
+                    with self.assertRaisesRegex(ValueError, "pinned capture/observation"):
+                        ingest_index(admitted, source, manifest, config, self.node, *capture,
+                                     observation=context)
 
 
 if __name__ == "__main__": unittest.main()

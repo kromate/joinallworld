@@ -7,6 +7,7 @@ export interface ClaimedJob {
   id: string; kind: string; inputHash: string; payload: unknown;
   attempt: number; token: string; leaseUntil: number;
 }
+export interface ClaimFilter { kind: string }
 type JobRow = {
   id: string; kind: string; input_hash: string; payload: string; max_attempts: number;
   attempt: number; token_seq: number; status: string; available_at: number;
@@ -30,6 +31,20 @@ function requiredText(value: string, name: string): void {
 }
 function finiteTime(value: number, name: string): void {
   if (!Number.isFinite(value)) throw new TypeError(`${name} must be finite`);
+}
+function claimKind(filter: ClaimFilter | undefined): string | undefined {
+  if (filter === undefined) return undefined;
+  if (!filter || typeof filter !== 'object' || Array.isArray(filter) || Object.getPrototypeOf(filter) !== Object.prototype
+      || Reflect.ownKeys(filter).length !== 1) throw new TypeError('claim filter must be a plain object with only kind');
+  const descriptor = Object.getOwnPropertyDescriptor(filter, 'kind');
+  if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) {
+    throw new TypeError('claim filter kind must be an enumerable data property');
+  }
+  const value: unknown = descriptor.value;
+  if (typeof value !== 'string' || !value.trim() || value.length > 128 || /[\u0000-\u001f\u007f-\u009f]/.test(value)) {
+    throw new TypeError('claim filter kind must be bounded control-free text');
+  }
+  return value;
 }
 function assertJsonValue(value: unknown, stack = new Set<object>()): void {
   if (value === null || typeof value === 'string' || typeof value === 'boolean') return;
@@ -131,13 +146,18 @@ export class Ledger {
         .run(input.id, input.kind, input.inputHash, payload, input.maxAttempts, priority);
     });
   }
-  claim(worker: string, now: number, leaseMs: number): ClaimedJob | null {
+  claim(worker: string, now: number, leaseMs: number, filter?: ClaimFilter): ClaimedJob | null {
     requiredText(worker, 'worker'); finiteTime(now, 'now');
     if (!Number.isFinite(leaseMs) || leaseMs <= 0) throw new RangeError('leaseMs must be positive and finite');
+    // Validate before opening a transaction: malformed filters cannot expire
+    // leases or otherwise mutate jobs as a side effect of a failed claim.
+    const kind = claimKind(filter);
     return this.#transaction(() => {
       this.#db.prepare(`UPDATE jobs SET status=CASE WHEN attempt>=max_attempts THEN 'failed' ELSE 'queued' END,
         lease_until=NULL, lease_token=NULL, available_at=? WHERE status='leased' AND lease_until<=?`).run(now, now);
-      const row = this.#db.prepare(`SELECT * FROM jobs WHERE status='queued' AND available_at<=? AND attempt<max_attempts ORDER BY priority,available_at,id LIMIT 1`).get(now) as JobRow | undefined;
+      const row = (kind === undefined
+        ? this.#db.prepare(`SELECT * FROM jobs WHERE status='queued' AND available_at<=? AND attempt<max_attempts ORDER BY priority,available_at,id LIMIT 1`).get(now)
+        : this.#db.prepare(`SELECT * FROM jobs WHERE status='queued' AND available_at<=? AND attempt<max_attempts AND kind=? ORDER BY priority,available_at,id LIMIT 1`).get(now, kind)) as JobRow | undefined;
       if (!row) return null;
       const attempt = row.attempt + 1, seq = row.token_seq + 1;
       const token = `${seq}:${worker}`;

@@ -2,7 +2,7 @@
 import unittest
 
 from index_capture_record import (
-    FORMAT, MAX_JOBS, MAX_RECORD_BYTES, begin_capture, capture_snapshot_ready,
+    FORMAT, FORMAT_V2, MAX_JOBS, MAX_RECORD_BYTES, begin_capture, capture_snapshot_ready,
     decode_capture_record, encode_capture_record, finish_capture,
 )
 
@@ -12,9 +12,9 @@ SHA_B = "b" * 64
 SHA_C = "c" * 64
 
 
-def record(*, attempts=2, jobs=2):
+def record(*, attempts=2, jobs=2, format=FORMAT):
     return {
-        "format": FORMAT,
+        "format": format,
         "index": {
             "indexHash": SHA_A,
             "rootDevice": 0,
@@ -37,6 +37,21 @@ def capture_input():
 
 
 class CaptureRecordTests(unittest.TestCase):
+    def test_v1_encoding_and_default_transition_remain_exact(self):
+        value = record()
+        expected = (b'{"current":null,"format":"feature-index-capture-controller-v1",'
+                    b'"index":{"indexHash":"' + SHA_A.encode("ascii") +
+                    b'","lockDevice":0,"lockInode":2,"rootDevice":0,"rootInode":1},'
+                    b'"jobs":[],"limits":{"attempts":2,"jobs":2}}\n')
+        self.assertEqual(encode_capture_record(value), expected)
+        self.assertEqual(decode_capture_record(expected), value)
+        pending = begin_capture(value, SHA_B, capture_input())
+        self.assertEqual(set(pending["jobs"][0]["attempts"][0]), {
+            "number", "phase", "snapshotDevice", "snapshotInode", "resultSha256",
+        })
+        with self.assertRaisesRegex(ValueError, "v1 capture records"):
+            begin_capture(value, SHA_B, capture_input(), {"sha256": SHA_C, "bytes": 8})
+
     def test_round_trip_is_canonical_ascii_with_newline(self):
         value = record()
         raw = encode_capture_record(value)
@@ -115,6 +130,44 @@ class CaptureRecordTests(unittest.TestCase):
         self.assertEqual(attempt["resultSha256"], SHA_C)
         self.assertEqual(done["jobs"][0]["input"], capture_input())
         self.assertEqual(decode_capture_record(encode_capture_record(done)), done)
+
+    def test_v2_observation_pin_is_defensive_and_per_attempt(self):
+        first = {"sha256": SHA_B, "bytes": 123}
+        second = {"sha256": SHA_C, "bytes": 456}
+        pending = begin_capture(record(format=FORMAT_V2), SHA_A, capture_input(), first)
+        first["sha256"] = SHA_A
+        self.assertEqual(pending["jobs"][0]["attempts"][0]["observation"],
+                         {"sha256": SHA_B, "bytes": 123})
+        ready = capture_snapshot_ready(pending, SHA_A, 0, 42)
+        self.assertEqual(ready["jobs"][0]["attempts"][0]["observation"],
+                         {"sha256": SHA_B, "bytes": 123})
+        done = finish_capture(ready, SHA_A, SHA_C)
+        self.assertEqual(done["jobs"][0]["attempts"][0]["observation"],
+                         {"sha256": SHA_B, "bytes": 123})
+        retry = begin_capture(done, SHA_A, capture_input(), second)
+        self.assertEqual(retry["current"], SHA_A)
+        self.assertEqual([attempt["observation"] for attempt in retry["jobs"][0]["attempts"]],
+                         [{"sha256": SHA_B, "bytes": 123}, {"sha256": SHA_C, "bytes": 456}])
+        self.assertEqual(decode_capture_record(encode_capture_record(retry)), retry)
+
+    def test_v2_observation_pins_are_strict_and_v1_rejects_v2_attempt_fields(self):
+        for pin in ({"sha256": "A" * 64, "bytes": 10},
+                    {"sha256": SHA_A, "bytes": 0},
+                    {"sha256": SHA_A, "bytes": 4097},
+                    {"sha256": SHA_A, "bytes": True}):
+            with self.subTest(pin=pin), self.assertRaises(ValueError):
+                begin_capture(record(format=FORMAT_V2), SHA_B, capture_input(), pin)
+
+        value = record(format=FORMAT_V2)
+        pending = begin_capture(value, SHA_A, capture_input())
+        pending["jobs"][0]["attempts"][0]["observation"] = {"sha256": SHA_A, "bytes": 4097}
+        with self.assertRaises(ValueError):
+            encode_capture_record(pending)
+
+        legacy = begin_capture(record(), SHA_A, capture_input())
+        legacy["jobs"][0]["attempts"][0]["observation"] = None
+        with self.assertRaises(ValueError):
+            encode_capture_record(legacy)
 
     def test_begin_capture_enforces_one_prepared_attempt_and_immutable_job_input(self):
         pending = begin_capture(record(), SHA_A, capture_input())

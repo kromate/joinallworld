@@ -1,5 +1,19 @@
 # Copy-and-paste continuation prompt
 
+Latest observation checkpoint: optional pinned campaign/query context now travels
+through the real durable capture worker and atomic feature transaction.221 Python,
+32 engine/Ledger checks and full World TypeScript pass; actual raw replay retains
+two synthetic associations across fresh held sessions and unchanged877 historical
+pins. Exact-kind Ledger.claim is additive; current campaign orchestration still
+needs integration. Read first PROGRESS.md section, FEATURE-INDEX-CAPTURE-OPERATIONS.md
+and CAMPAIGN-FEATURE-INDEX-SPEC.md. Preserve V1 bytes/quotas; V2 pins each attempt's
+observation separately from immutable raw capture inputs and never resets charges.
+Next implement real persistent JSONL held-session bridge plus same-Ledger indexing
+phase with frozen query membership and current live-token completion. Backfill
+legacy captures without changing source rows/results/usage. Synthetic contexts
+do not prove actual campaign membership. Then independently audit raw/index and
+compile/publish owned country shards; no new runtime upload/map detail thisphase.
+
 Latest capture checkpoint: durable per-request raw-input/attempt ownership now feeds
 real fixed-worker replay inside a held supervised index session.209 Python/23 guarded
 engine checks and fresh full World TypeScript pass. Actual controller SIGKILL before

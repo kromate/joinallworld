@@ -1,5 +1,79 @@
 # Implementation checkpoint — 9 October 2026
 
+## Atomic capture observations and separate scheduler claims
+
+Previous turn was a status report, with no implementation progress. This
+continuation implements optional campaign observations through the real durable
+capture controller and fixed worker. Luna owns the V2 codec, Python/TS ingestion
+and exact-kind Ledger API; root reviews/integrates the engine validator,
+controller and actual recovery fixtures. No AI per feature, new scheduler or
+runtime source dependency is introduced.
+
+Each V2 ingestion attempt separately pins canonical UTF8 observation SHA/length
+(at most4,096bytes), while raw request/paths/expectations remain immutable. V1
+default envelope/record bytes stay unchanged; initialized V1 capture quotas
+refuse implicit migration. V2 can later plain-replay with a null context. An
+unlaunched attempt cannot change its context; launched interrupted work settles
+after a real writer gap and raw-replays with another charged attempt. The fixed
+worker independently validates context before SQL, records it atomically with
+features, and reports the exact expected observation hash. Unicode/pair validation
+matches the Python pin. Same campaign/job with changed plan/query/capture refuses
+atomically. Multiple associations of one retained capture remain separately charged.
+
+Ledger.claim now optionally selects one exact kind, with existing priority/retry/
+global-expiration behavior. Invalid filters refuse before any transaction, lease
+expiration or attempt spend; old unfiltered calls retain their behavior. This
+allows the next campaign phase to separate query and index work without resetting
+acquisition rows. It does not yet enqueue or complete actual campaign index jobs.
+Read [CAMPAIGN-FEATURE-INDEX-SPEC.md](CAMPAIGN-FEATURE-INDEX-SPEC.md).
+
+Focused actual/pure checks pass **38**, terminal90588 exit0,37.127s unittest/
+37.31s process/160,940,032B maximum RSS. Full affected Python tooling passes
+**221**, terminal33692 exit0,77.663s unittest/77.84s process/186,531,840B maxRSS.
+Actual SIGKILL before transaction, after COMMIT and after checkpoint preserves
+one atomic observation after fresh raw replay and two charged attempts. Tests
+also cover mixed/plain contexts, immutable unlaunched attempts, V1 quota refusal,
+conflicting associations, report tampering and malformed V2 input rejected by
+the actual fixed worker even when the fixture bypasses parent validation.
+
+Actual verifier8308 exit0,4.71s/161,841,152B maxRSS: two held sessions on two
+retained Dakar captures produce2captures/2,283ordinals/1,810versions/two
+observations/zero conflicted keys, one reservation, same index/registry inodes
+and independent attempt1→2 per capture. Parent SQL is forbidden. These are
+explicitly **synthetic contexts**, not proof of actual frozen query membership.
+Nine original capture/ledger files and all **877 historical pins** remain
+byte-identical before/after. No network, actual campaign/output/Nigeria/game
+writes or runtime upload. Snapshot physical charge524,288B/envelope4,096B fits
+the unchanged allowance. Fixed44-source closure439,437B;5,602-byte manifest
+SHA`64f8f79053623b8a3a35079850391829dc3220c7d61e3a9ff7dc11b8c5b2963f`.
+
+Final engine/Ledger **32 Node checks pass** (24 engine/eight Ledger), plus
+guarded actual engine24/24 and full World TypeScript (terminal80513 exit0,
+3.57s/446,267,392B maxRSS/384MiB heap). Earlier32-check receipt predates the
+final surrogate guard; the finalized source passed again. **253 distinct focused
+checks** before committed-source policy acceptance; guarded engine24 is not
+double-counted. Evidence:`feature-index-observation-focused-v1`,
+`feature-index-observation-all-v1`, `feature-index-observation-actual-v1.json`,
+`feature-index-observation-engine-v2`, `feature-index-observation-engine-guard-v1.json`,
+`feature-index-observation-typecheck-v1`, and
+`feature-index-observation-source-acceptance-v1.json` under the evidence cache.
+
+GRAPHICS/LIVING handed back their terminal local turns before these checks.
+All WORLD test/verifier/typecheck handles are terminal; next finite exact-phase
+GRAPHICS checks receive the shared slot. Host memory remains WARNING; heavy1,
+browser1/server1 and all established worker/database/startup caps remain unchanged.
+No new player-visible country detail or game acceptance accompanies this phase.
+
+**Next:** implement the actual held-session JSONL bridge and same-Ledger index
+phase under the frozen contract: revalidate query membership/raw pins, reconcile
+legacy captured and indexed-but-pending work without reacquisition, heartbeat and
+complete only the current live index claim. Prove it using retained real frozen
+query captures in disposable state. Then independently audit raw/index conservation
+and crossing-feature ownership, compile owned full-country geometry and publish
+bounded streamed shards. Deterministic sharding/global admission, Nigeria combined
+rendering, terrain/regional conditions, throughput and physical phone acceptance
+remain required; the whole-world objective stays active.
+
 ## Durable capture attempts and actual controller-loss recovery
 
 Previous goal turn was a status restatement (no build progress). This continuation

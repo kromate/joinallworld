@@ -1,8 +1,9 @@
 """One bounded verified-capture ingestion into an externally charged index root.
 
-No acquisition, observation, campaign completion or quota refund. Caller still
-owns namespace admission and durable job/attempt fencing. Raw cache files are
-readonly inputs, not copied into the index allowance. This is not a sandbox.
+Optional compact observation context is stored with the capture; it does not
+validate campaign membership, complete a campaign, or refund quota. Caller owns
+namespace admission and durable job/attempt fencing. Raw cache files are readonly
+inputs, not copied into the index allowance. This is not a sandbox.
 """
 from contextlib import contextmanager, nullcontext
 import hashlib
@@ -26,6 +27,11 @@ MIB = 1024*1024
 EXTRACT_BYTES = 20_000_000
 RECEIPT_BYTES = 1_000_000
 ENVELOPE_BYTES = 64000
+_OBSERVATION_FIELDS = ("campaignHash", "planHash", "jobId", "rootCellId", "queryPath")
+_OBSERVATION_SHA = re.compile(r"[a-f0-9]{64}", re.ASCII)
+_ROOT_CELL = re.compile(r"^geo-grid-v1:l(0|[1-9]|1[0-6]):x(0|[1-9][0-9]{0,7}):y(0|[1-9][0-9]{0,7})$", re.ASCII)
+_QUERY_PATH = re.compile(r"[0-3]{0,8}", re.ASCII)
+_JS_TRIM = "\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff"
 
 
 def _expected(value):
@@ -37,6 +43,70 @@ def _expected(value):
         raise ValueError("capture request must be an object")
     _pin(value["extract"], EXTRACT_BYTES, "extract")
     _pin(value["receipt"], RECEIPT_BYTES, "receipt")
+
+
+def _scalar_string(value, label):
+    """Return an equivalent scalar string, rejecting malformed UTF-16 input."""
+    if type(value) is not str:
+        raise ValueError(f"observation {label} must be a string")
+    result = []
+    index = 0
+    while index < len(value):
+        code = ord(value[index])
+        if 0xD800 <= code <= 0xDBFF:
+            if index + 1 >= len(value):
+                raise ValueError(f"observation {label} contains an unpaired surrogate")
+            low = ord(value[index + 1])
+            if not 0xDC00 <= low <= 0xDFFF:
+                raise ValueError(f"observation {label} contains an unpaired surrogate")
+            result.append(chr(0x10000 + ((code - 0xD800) << 10) + (low - 0xDC00)))
+            index += 2
+            continue
+        if 0xDC00 <= code <= 0xDFFF:
+            raise ValueError(f"observation {label} contains an unpaired surrogate")
+        result.append(value[index])
+        index += 1
+    return "".join(result)
+
+
+def _freeze_observation(value):
+    if value is None:
+        return None, None
+    if type(value) is not dict or set(value) != set(_OBSERVATION_FIELDS):
+        raise ValueError("observation requires its exact context fields")
+    frozen = {key: _scalar_string(value[key], key) for key in _OBSERVATION_FIELDS}
+    for key in ("campaignHash", "planHash"):
+        if not _OBSERVATION_SHA.fullmatch(frozen[key]):
+            raise ValueError(f"observation {key} requires a lowercase SHA-256")
+    match = _ROOT_CELL.fullmatch(frozen["rootCellId"])
+    if match is None:
+        raise ValueError("observation root is not a canonical query grid cell")
+    level, column, row = map(int, match.groups())
+    if column >= 360 * (2 ** level) or row >= 180 * (2 ** level):
+        raise ValueError("observation root is outside its geographic grid bounds")
+    job_id = frozen["jobId"]
+    if (not job_id.strip(_JS_TRIM)
+            or len(job_id.encode("utf-16-le", "strict")) // 2 > 512
+            or any(ord(character) <= 0x1f or ord(character) == 0x7f for character in job_id)):
+        raise ValueError("observation job ID must be bounded text")
+    if not _QUERY_PATH.fullmatch(frozen["queryPath"]):
+        raise ValueError("observation query path is invalid")
+    try:
+        raw = json.dumps(frozen, ensure_ascii=False, sort_keys=True, separators=(",", ":"),
+                         allow_nan=False).encode("utf-8")
+    except (UnicodeError, TypeError, ValueError, RecursionError) as error:
+        raise ValueError("observation cannot be encoded as canonical UTF-8 JSON") from error
+    if not 1 <= len(raw) <= 4096:
+        raise ValueError("observation exceeds its 4096-byte bound")
+    return frozen, raw
+
+
+def observation_pin(value):
+    """Return the canonical engine observation pin, or None for no context."""
+    frozen, raw = _freeze_observation(value)
+    if frozen is None:
+        return None
+    return {"sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)}
 
 
 def _verify_capture_file(descriptor, path, pin):
@@ -57,7 +127,7 @@ def _verify_capture_file(descriptor, path, pin):
 
 
 @contextmanager
-def capture_descriptors(extract_path, receipt_path, expected):
+def capture_descriptors(extract_path, receipt_path, expected, *, observation=None):
     """Own three readonly descriptors; retain handles on unconfirmed worker exit.
 
     The tiny metadata file is unlinked after opening. Its actual allocated bytes
@@ -65,6 +135,7 @@ def capture_descriptors(extract_path, receipt_path, expected):
     its cache path. The worker rereads and verifies hashes before SQL.
     """
     _expected(expected)
+    frozen_observation, _ = _freeze_observation(observation)
     descriptors = []; observed = []; metadata_path = None; preserve = False
     try:
         for supplied, pin in [(extract_path, expected["extract"]), (receipt_path, expected["receipt"])]:
@@ -74,8 +145,11 @@ def capture_descriptors(extract_path, receipt_path, expected):
             descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
             descriptors.append(descriptor)
             observed.append((descriptor, path, _verify_capture_file(descriptor, path, pin)))
-        envelope = {"format": "feature-index-ingest-input-v1", "expected": expected,
+        envelope = {"format": "feature-index-ingest-input-v1" if frozen_observation is None
+                    else "feature-index-ingest-input-v2", "expected": expected,
                     "extractDescriptor": descriptors[0], "receiptDescriptor": descriptors[1]}
+        if frozen_observation is not None:
+            envelope["observation"] = frozen_observation
         try:
             raw = json.dumps(envelope, sort_keys=True, ensure_ascii=True, separators=(",", ":"),
                              allow_nan=False).encode("ascii")
@@ -122,8 +196,10 @@ def capture_descriptors(extract_path, receipt_path, expected):
 
 
 def ingest_index(admitted, repository_root, manifest_bytes, source_configuration, node,
-                 extract_path, receipt_path, expected, *, _execution=None):
+                 extract_path, receipt_path, expected, *, _execution=None, observation=None):
     """Ingest one pinned capture; successful return proves neither campaign coverage nor playability."""
+    frozen_observation, observation_raw = _freeze_observation(observation)
+    observation_hash = None if observation_raw is None else hashlib.sha256(observation_raw).hexdigest()
     if type(admitted) is not ChargedIndexRoot:
         raise TypeError("capture ingestion requires its actual charged root")
     config = decode_index_binding(admitted.binding_bytes)
@@ -144,7 +220,8 @@ def ingest_index(admitted, repository_root, manifest_bytes, source_configuration
         if (_capture(_execution.root, CONFIGURATION, config["source"]["configuration"]) != source_configuration
                 or _inventory(_execution.root) != _execution.charged_bytes):
             raise ValueError("persistent capture execution bytes or charge changed")
-    with capture_descriptors(extract_path, receipt_path, expected) as (capture, metadata_charged):
+    with capture_descriptors(extract_path, receipt_path, expected,
+                             observation=frozen_observation) as (capture, metadata_charged):
         with (nullcontext(_execution) if _execution is not None else verified_execution_snapshot(
                 repository_root, manifest_bytes, config["toolingManifest"], source_configuration,
                 config["source"]["configuration"])) as execution:
@@ -170,12 +247,13 @@ def ingest_index(admitted, repository_root, manifest_bytes, source_configuration
             if result["returnCode"] != 0 or result["reason"] != "exit":
                 raise RuntimeError(f"fixed ingestion worker failed ({result['reason']}, {result['returnCode']}): {result['stderr'][:4096]}")
             report = json.loads(result["stdout"], object_pairs_hook=_pairs, parse_constant=_nonfinite)
-            _report(report, admitted, config, capture["metadataSha256"], expected["requestHash"])
+            _report(report, admitted, config, capture["metadataSha256"], expected["requestHash"],
+                    observation_hash)
             return {"ingest": report, "guard": result, "footprint": footprint,
                     "executionSnapshotChargedBytes": execution.charged_bytes, "captureEnvelopeChargedBytes": metadata_charged}
 
 
-def _report(report, admitted, config, input_hash, request_hash):
+def _report(report, admitted, config, input_hash, request_hash, observation_hash=None):
     if (type(report) is not dict or set(report) != {"format", "indexHash", "inputSha256", "nodeVersion", "sqliteVersion",
             "result", "stats", "databaseBytes", "maximumRssKiB"}
             or report["format"] != "feature-index-ingest-v1" or report["indexHash"] != admitted.index_hash
@@ -198,8 +276,8 @@ def _report(report, admitted, config, input_hash, request_hash):
     if (type(outcome) is not dict or set(outcome) != {"indexVersion", "requestHash", "captureHash", "features", "admitted",
             "exceptions", "dispositionsHash", "replayed", "insertedVersions", "observationHash"}
             or outcome["indexVersion"] != config["engineVersion"] or type(outcome["replayed"]) is not bool
-            or outcome["observationHash"] is not None or outcome["requestHash"] != request_hash):
-        raise ValueError("ingestion outcome requires exact capture fields and no campaign observation")
+            or outcome["observationHash"] != observation_hash or outcome["requestHash"] != request_hash):
+        raise ValueError("ingestion outcome differs from its pinned capture/observation")
     for key in ["requestHash", "captureHash", "dispositionsHash"]:
         if type(outcome[key]) is not str or not re.fullmatch(r"[a-f0-9]{64}", outcome[key]):
             raise ValueError("ingestion outcome requires exact hashes")

@@ -1,0 +1,50 @@
+name: Authored trouser sock trim A-B diagnostic
+on:
+  push:
+    branches: [codex/graphics-trouser-sock-trim-ab-v2]
+permissions:
+  contents: read
+jobs:
+  sock-trim-ab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare the body GLB used by the pinned V29 factory
+        run: |
+          python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
+          python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
+      - name: Typecheck the isolated sock-trim fixture
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v2.typecheck.json
+      - name: Bundle the fixture against the byte-pinned V29 factory snapshot
+        if: always()
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v2/bundle-trouser-sock-trim-ab.mjs
+      - name: Check real actor shoe geometry and ownership on bounded CPU
+        if: always()
+        run: python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/trouser-sock-trim-cpu-resources.log /tmp/trouser-sock-trim-cpu-resources.json node --max-old-space-size=160 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-check-v2.mjs
+      - name: Capture actual source and privately trimmed shoes on matched actors
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
+          python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/trouser-sock-trim-resources.log /tmp/trouser-sock-trim-resources.json node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v2/render-trouser-sock-trim-ab.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trouser-sock-trim-ab-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/trouser-sock-trim-ab-${{ github.run_id }}/
+            /tmp/trouser-sock-trim-resources.log
+            /tmp/trouser-sock-trim-resources.json
+            /tmp/trouser-sock-trim-cpu-resources.log
+            /tmp/trouser-sock-trim-cpu-resources.json
+          if-no-files-found: error

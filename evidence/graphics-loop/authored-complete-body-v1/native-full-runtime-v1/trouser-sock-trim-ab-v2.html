@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authored trouser sock trim A/B</title>
+  <style>
+    :root { color-scheme: light; font: 14px/1.4 system-ui, sans-serif; background: #edf0f2; color: #18232b; }
+    body { margin: 0; padding: 16px; }
+    main { display: grid; grid-template-columns: minmax(340px, 1fr) 310px; gap: 14px; max-width: 1160px; margin: auto; }
+    canvas { width: 100%; height: min(78vh, 760px); min-height: 520px; display: block; background: #d7e2e6; border-radius: 8px; }
+    aside { padding: 14px; background: white; border-radius: 8px; }
+    fieldset { margin: 0 0 12px; border: 1px solid #c5cdd2; border-radius: 6px; }
+    label { display: block; margin: 8px 0; }
+    button { margin: 3px; padding: 7px 10px; }
+    #status[data-state="error"] { color: #a21b1b; }
+    pre { overflow: auto; max-height: 35vh; font-size: 11px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <main>
+    <canvas id="stage"></canvas>
+    <aside>
+      <h1>Actual trouser sock trim A/B</h1>
+      <p>Same prepared actor, skeleton, pose, garment, and camera. Compare original shoes01 against a private shoe index with only sock triangles above the active trouser hems removed. The female office look is a skirt no-op.</p>
+      <fieldset><legend>Body family</legend>
+        <button id="load-man">Load male casual</button>
+        <button id="load-woman">Load female casual</button>
+        <button id="load-woman-office">Load female office</button>
+      </fieldset>
+      <fieldset><legend>Shoe geometry</legend>
+        <button id="source-shoes">Source shoes</button><button id="trimmed-shoes">Hem-trimmed shoes</button>
+      </fieldset>
+      <fieldset><legend>Pose and view</legend>
+        <button id="pose-idle">Idle</button><button id="pose-walk-a">Walk π/2</button><button id="pose-walk-b">Walk 3π/2</button>
+        <button id="view-front">Front</button><button id="view-side">Side</button><button id="view-back">Back</button>
+      </fieldset>
+      <div id="status" data-state="loading">Loading viewer module…</div>
+      <pre id="status-json">{}</pre>
+    </aside>
+  </main>
+  <script type="module" src="./trouser-sock-trim-ab-v2/trouser-sock-trim-ab-v2.js"></script>
+</body>
+</html>

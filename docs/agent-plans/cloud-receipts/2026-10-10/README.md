@@ -27,3 +27,13 @@ See workers.json for six accepted spawn requests, canonical worker IDs, exact ba
 WORLD candidate `d173b2c4c3d28e4323c169d88521236abef710ee` on `codex/cloud-country-admission-20261010` was pushed and remoteverified. Only runtime-admission.test.ts changes. Readable escalatedfocusedrun:17namedtestsPASS0fail0skip; frozen routingprojection pin matches. No newcity/runtimecaller activated. Other implementation workers remain active/pending at this checkpoint. Rootgraphics factorybridge `ba63c0bc262d4dacdc948a199330fb796d82cc62` on `codex/cloud-graphics-wiring-v9-20261010` only exposes FootSolveResult and is not a contactfix.
 
 GraphicsV9 remains unaccepted: actualbed penetration reproduced. OfficeCI pass is ownerreported and does not establish allvisualacceptance; actualphoneFPS is unverified. LIVING frozenoverlay hashes verified, implementation/review stillactive. All original/dirty primary/source is preserved.
+
+## Additional exact receipts
+
+Household proposal8e6757eb92653b3df621cf5e88653b5d6f9bbab4 contains ONLY newconsentView.ts, SHA2564f48fe97c498ccf579045b51b921366be9f9828d96637e5a2e5ec55893c2fd0c; focusedstrictcompiler/tworuntimeobservations passed. Trustedbackend/atomicconsumer/receipt/lifecycle wiring absent, independentreview pending.
+
+WORLD exact5dd7ae415da8e6b58fb3f7a2b0f0cbb8dc5249bf focusedtests16PASS, buildPASS, budgetsPASS startup613014raw/222381gzip/195277Br. Readable1536MiB compilerFAIL client/testOOM; smokeFAIL historical reviewedmjsallowlist; neither iswaived. Sourceunchanged. Senegal/Dakar atlasfocus diagnosis is source-only: C1 atlas/catalogue/registry/routes/MapWorld blobs match workertraceexactly; selection isnotautomatictravel.
+
+Moroni exact704d592cc207851e9822d9fc0e0db82fd81a23ca:33focusedPythonfixturesPASS0exit, originalpublicpacket pinsverified; NOacquisition. Startedreservationuseslegacydirectwritewithnoatomicsync/lock, so charge-before-network crashdurability remainsunproven. Holdremainingrequest pendingownerreview.
+
+Graphics wiredheadsource2adc68179e502eff30bf43816406ea731ab46f9c: rootstrictofficecompilerFAIL7TS18047 nullablecapturedheaderrors; GHA38006120110 ownerconfirmedhomefailedsameerrorsandsameV9bedpenetration. Workernarrowfixactive. These are controlledrenderfeedback, notreleaseacceptance.

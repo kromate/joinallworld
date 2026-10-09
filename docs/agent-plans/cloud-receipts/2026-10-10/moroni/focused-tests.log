@@ -1,0 +1,13 @@
+........................usage: python3 -m unittest [-h] [--country COUNTRY] [--resume RESUME]
+                           [--python PYTHON] [--node NODE] [--seconds SECONDS]
+                           [--max-countries MAX_COUNTRIES]
+                           [--max-reserved-bytes MAX_RESERVED_BYTES]
+                           [--juba-selection JUBA_SELECTION]
+                           [--juba-selection-sha256 JUBA_SELECTION_SHA256]
+                           [--source-query-revision {moroni-wide-001}]
+python3 -m unittest: error: --source-query-revision requires the KM-only selection
+.........
+----------------------------------------------------------------------
+Ran 33 tests in 0.617s
+
+OK

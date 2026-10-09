@@ -1,0 +1,20 @@
+checkout=/workspace/remote-verification/repositories/worker-world-moroni
+head=704d592cc207851e9822d9fc0e0db82fd81a23ca
+base=5dd7ae415da8e6b58fb3f7a2b0f0cbb8dc5249bf
+status=clean after fixture-generated __pycache__ removal
+command=AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 node --experimental-strip-types scripts/agent-slot.ts heavy -- python3 -m unittest world.tooling.test_africa_starter_selection world.tooling.test_run_africa_starters
+started_utc=2026-10-09T23:45:49Z
+finished_utc=2026-10-09T23:45:50Z
+exit=0
+result=Ran 33 tests in 0.617s; OK
+stdout_stderr_log=/workspace/remote-verification/worker-results/world-moroni/focused-tests.log
+stdout_stderr_log_sha256=ef631c2be40600f2227311e6fe449f89fc489486d0bcea86cd20f5dd380a3021
+owned_file_blob_pins:
+  scripts/world/build-africa-starters.py 35d5533dd753b33e717c3913735fb219e2f74ab2
+  world/tooling/run_africa_starters.py 5c7bfd72a6858b17e1231393c87b02737796e57f
+  world/tooling/test_africa_starter_selection.py ba76b49eaa8bf1f96c22c84a04c0071f7370ca0a
+  world/tooling/test_run_africa_starters.py be72a7d70b917b5405a36fe29bf46c7d30a6a4fb
+packet_manifest_sha256=d2bca4c02dee0a00c3db8a88e70bc54a41e95bc8687a02dc59296cfcea8ca40a
+packet_source_osm_bytes=5965
+packet_source_osm_sha256=37734866669249890f3e773dfa53e377502745d2b7635b6bbba7354fbfb10129
+review=not safe to spend the remaining request: the started-ledger reservation is written via legacy Path.write_text, without atomic replacement or fsync before urlopen; interruption durability is not proved.

@@ -1,5 +1,5 @@
 {
-  "recorded_at_utc": "2026-10-09T23:39:46.992394+00:00",
+  "recorded_at_utc": "2026-10-09T23:50:47.216511+00:00",
   "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
   "hostname": "96cc63a2f9d2",
   "node": "v24.19.0",
@@ -51,7 +51,16 @@
         "server/households/consentView.ts"
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
-      "runtime_model_id": "not independently exposed"
+      "runtime_model_id": "not independently exposed",
+      "pushed_sha": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
+      "completed_proposal": "household consent view loader; focused strict compiler + two runtime observations passed",
+      "next_assignment": {
+        "scope": "CompanionHost.vue only",
+        "checkout": "/workspace/remote-verification/repositories/worker-companion-yield",
+        "branch": "codex/cloud-companion-yield-20261010",
+        "base_sha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+        "status": "pins verified, implementation active"
+      }
     },
     {
       "worker_id": "/root/world_country_cloud",
@@ -69,7 +78,13 @@
       "status": "source checkpoint completed/pushed; read-only Senegal diagnosis active",
       "latest_test_result": "17 named assertions passed, zero failed/skipped in escalated execution",
       "latest_log": "/workspace/remote-verification/worker-results/world-country/focused-tests-escalated.log",
-      "latest_log_sha256": "3e713211e116304ad548825483730d4ddec843a9a123c258bbf6f04f5b3268e8"
+      "latest_log_sha256": "3e713211e116304ad548825483730d4ddec843a9a123c258bbf6f04f5b3268e8",
+      "moroni_review": {
+        "sha": "704d592cc207851e9822d9fc0e0db82fd81a23ca",
+        "tests": 33,
+        "exit_status": 0,
+        "acquisition": "none; reservation crash durability unproven"
+      }
     },
     {
       "worker_id": "/root/living_driving_cloud",
@@ -100,7 +115,8 @@
       ],
       "checkout_receipt": "worker acknowledged clean exact base",
       "runtime_model_id": "not independently exposed",
-      "status": "typed source head/rest quaternion and controller implementation, focused readable rerun requested"
+      "status": "head checkpoint reviewed/wired; strict nullability fix and NPC fixture follow-up active",
+      "pushed_sha": "cae2b9fd1200ce0c22ccf27b0cf2973ef83ace0b"
     }
   ]
 }

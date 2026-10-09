@@ -1,0 +1,126 @@
+
+> joinallworld@0.1.0 test:smoke
+> node --experimental-strip-types --test --test-concurrency=1 src/app/entry.test.ts server/release.test.ts src/types/protocol.test.ts
+
+✖ JavaScript is limited to the service worker, release shims and exact reviewed tooling (16.234741ms)
+✔ the two release shims only point at the TypeScript they stand for (0.556242ms)
+✔ every file in public/ is an asset the release package admits (no dot-file, no map, no manifest, no xml) (9.889001ms)
+✔ the Worker config is the one the release package fixes, and the Worker exports its Durable Object (0.562261ms)
+✔ the default build config emits no source map (maps are opt-in, SOURCEMAPS=1, into dist-maps/) (0.290655ms)
+✔ the first download paints without the game shell, rules engine or city content; the startup closure reads them through the browser system set (1.213225ms)
+✔ the shared shell does not statically import a city venue or regular catalogue (0.266999ms)
+✔ each generated catalogue row has one checked-in Node and Worker loader (0.646887ms)
+✔ Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell (1.747223ms)
+✔ the eager JavaScript does not grow and contains only the loading screen and Vue (4.790685ms)
+ℹ assets/vue-32f50792.js 81170 raw 30886 gzip; assets/preload-helper-86ad5cfe.js 1260 raw 698 gzip; assets/app-36da1f57.js 9039 raw 3992 gzip; total 91469 raw 35576 gzip
+✔ automatic game startup, including one selected city, stays within the original first-load budget (766.243559ms)
+ℹ lagos automatic startup: 613014 raw 222381 gzip bytes
+ℹ ibadan automatic startup: 580678 raw 214324 gzip bytes
+ℹ abuja automatic startup: 592337 raw 215244 gzip bytes
+ℹ port-harcourt automatic startup: 582061 raw 214874 gzip bytes
+ℹ abeokuta automatic startup: 570066 raw 211442 gzip bytes
+ℹ ota automatic startup: 568682 raw 210797 gzip bytes
+ℹ ijebu-ode automatic startup: 569357 raw 211067 gzip bytes
+ℹ sagamu automatic startup: 572950 raw 212596 gzip bytes
+ℹ kano automatic startup: 593542 raw 215383 gzip bytes
+ℹ enugu automatic startup: 583165 raw 215270 gzip bytes
+ℹ benin-city automatic startup: 584143 raw 215313 gzip bytes
+ℹ calabar automatic startup: 586253 raw 216252 gzip bytes
+ℹ uyo automatic startup: 581022 raw 214307 gzip bytes
+ℹ umuahia automatic startup: 587583 raw 215394 gzip bytes
+ℹ owerri automatic startup: 589100 raw 215652 gzip bytes
+ℹ yenagoa automatic startup: 589546 raw 215564 gzip bytes
+ℹ awka automatic startup: 586657 raw 215502 gzip bytes
+ℹ kaduna automatic startup: 583800 raw 214840 gzip bytes
+ℹ maiduguri automatic startup: 584141 raw 214722 gzip bytes
+ℹ gombe automatic startup: 583559 raw 214821 gzip bytes
+ℹ yola automatic startup: 583610 raw 214798 gzip bytes
+ℹ ilorin automatic startup: 582529 raw 214758 gzip bytes
+ℹ minna automatic startup: 579859 raw 214322 gzip bytes
+ℹ osogbo automatic startup: 581515 raw 214424 gzip bytes
+ℹ damaturu automatic startup: 579260 raw 213812 gzip bytes
+ℹ jalingo automatic startup: 579541 raw 213777 gzip bytes
+ℹ akure automatic startup: 581534 raw 214378 gzip bytes
+ℹ ado-ekiti automatic startup: 579406 raw 213968 gzip bytes
+ℹ asaba automatic startup: 579577 raw 214315 gzip bytes
+ℹ lokoja automatic startup: 578712 raw 213790 gzip bytes
+ℹ jos automatic startup: 586307 raw 215649 gzip bytes
+ℹ lafia automatic startup: 578708 raw 213739 gzip bytes
+ℹ katsina automatic startup: 587582 raw 215311 gzip bytes
+ℹ sokoto automatic startup: 585682 raw 215235 gzip bytes
+ℹ birnin-kebbi automatic startup: 584351 raw 214997 gzip bytes
+ℹ gusau automatic startup: 581764 raw 214244 gzip bytes
+ℹ dutse automatic startup: 582975 raw 214766 gzip bytes
+ℹ bauchi automatic startup: 588087 raw 215420 gzip bytes
+ℹ makurdi automatic startup: 580547 raw 214112 gzip bytes
+ℹ abakaliki automatic startup: 580229 raw 214291 gzip bytes
+ℹ accra automatic startup: 569388 raw 211382 gzip bytes
+ℹ algiers automatic startup: 569516 raw 211472 gzip bytes
+ℹ lome automatic startup: 569419 raw 211444 gzip bytes
+ℹ nairobi automatic startup: 569461 raw 211445 gzip bytes
+ℹ yaounde automatic startup: 569433 raw 211439 gzip bytes
+ℹ abidjan automatic startup: 569520 raw 211521 gzip bytes
+ℹ addis-ababa automatic startup: 569473 raw 211435 gzip bytes
+ℹ cape-town automatic startup: 569607 raw 211531 gzip bytes
+ℹ cotonou automatic startup: 569482 raw 211473 gzip bytes
+ℹ dakar automatic startup: 569449 raw 211447 gzip bytes
+✔ every registered route is typed, and every typed route is registered (10.814324ms)
+✔ every frame type the server accepts or sends is typed (51.38204ms)
+✔ the Cloudflare Worker runs the shared registries: the same routes and frames, plus what the types say only it does (2.915851ms)
+✔ core, social, civic and support answers carry exactly the typed keys (577.637743ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 14
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2397.999428
+
+✖ failing tests:
+
+test at server/release.test.ts:19:1
+✖ JavaScript is limited to the service worker, release shims and exact reviewed tooling (16.234741ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      'deploy/cloudflare-worker.js',
+      'deploy/cloudflare.test.mjs',
+      'public/sw.js',
+      'scripts/check-joinallworld-source.mjs',
+  ...
+      'scripts/package-joinallworld.mjs',
+  +   'world/tooling/check-country-directory-prototype.mjs',
+  +   'world/tooling/country-directory-http-reader.mjs',
+  +   'world/tooling/country-directory-http-reader.test.mjs',
+  +   'world/tooling/country-directory-prototype.mjs',
+  +   'world/tooling/country-directory-prototype.test.mjs',
+      'world/tooling/index_resource_witness.mjs',
+  +   'world/tooling/sealed-admin-rate-policy.mjs',
+  +   'world/tooling/sealed-admin-rate-policy.test.mjs',
+  +   'world/tooling/sealed-africa-coverage.mjs',
+  +   'world/tooling/sealed-africa-coverage.test.mjs',
+  +   'world/tooling/serve-sealed-africa.mjs',
+  +   'world/tooling/stage-capability-policy.mjs',
+  +   'world/tooling/stage-capability-policy.test.mjs',
+  +   'world/tooling/stage-checkpoint-policy.mjs',
+  +   'world/tooling/stage-checkpoint-policy.test.mjs',
+  +   'world/tooling/stage-control-file.mjs',
+  +   'world/tooling/stage-control-file.test.mjs',
+  +   'world/tooling/verify-sealed-africa.mjs'
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/remote-verification/repositories/world-5dd7ae41/server/release.test.ts:21:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'deploy/cloudflare-worker.js', 'deploy/cloudflare.test.mjs', 'public/sw.js', 'scripts/check-joinallworld-source.mjs', 'scripts/check-workflows.mjs', 'scripts/guard-joinallworld-package.mjs', 'scripts/guard-joinallworld-package.test.mjs', 'scripts/living-world-browser-qa.mjs', 'scripts/package-joinallworld.mjs', 'world/tooling/check-country-directory-prototype.mjs', 'world/tooling/country-directory-http-reader.mjs', 'world/tooling/country-directory-http-reader.test.mjs', 'world/tooling/country-directory-prototype.mjs', 'world/tooling/country-directory-prototype.test.mjs', 'world/tooling/index_resource_witness.mjs', 'world/tooling/sealed-admin-rate-policy.mjs', 'world/tooling/sealed-admin-rate-policy.test.mjs', 'world/tooling/sealed-africa-coverage.mjs', 'world/tooling/sealed-africa-coverage.test.mjs', 'world/tooling/serve-sealed-africa.mjs', 'world/tooling/stage-capability-policy.mjs', 'world/tooling/stage-capability-policy.test.mjs', 'world/tooling/stage-checkpoint-policy.mjs', 'world/tooling/stage-checkpoint-policy.test.mjs', 'world/tooling/stage-control-file.mjs', 'world/tooling/stage-control-file.test.mjs', 'world/tooling/verify-sealed-africa.mjs' ],
+    expected: [ 'deploy/cloudflare-worker.js', 'deploy/cloudflare.test.mjs', 'public/sw.js', 'scripts/check-joinallworld-source.mjs', 'scripts/check-workflows.mjs', 'scripts/guard-joinallworld-package.mjs', 'scripts/guard-joinallworld-package.test.mjs', 'scripts/living-world-browser-qa.mjs', 'scripts/package-joinallworld.mjs', 'world/tooling/index_resource_witness.mjs' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

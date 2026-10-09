@@ -1,0 +1,74 @@
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (71s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (72s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (73s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (74s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (75s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (76s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (77s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (78s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (79s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (80s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (81s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (82s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (83s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (84s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (85s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (86s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (87s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (88s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (89s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (2m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27197 in /workspace/remote-verification/repositories/household-35731140: npm run typecheck (3m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27243 in /workspace/remote-verification/repositories/worker-household-identity: /workspace/remote-verification/repositories/household-35731140/node_modules/.bin/tsc --ignoreConfig --noEmit --strict --target ES2023 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --skipLibCheck server/households/records.ts server/households/consent.ts server/households/consentView.ts (3m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27319 in /workspace/remote-verification/repositories/world-5dd7ae41: node --experimental-strip-types --test --test-concurrency=1 scripts/city/runtime-admission.test.ts src/browser/countryDirectory.test.ts (3m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27480 in /workspace/remote-verification/repositories/worker-graphics-head: npm run typecheck (2m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27480 in /workspace/remote-verification/repositories/worker-graphics-head: npm run typecheck (3m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27480 in /workspace/remote-verification/repositories/worker-graphics-head: npm run typecheck (4m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 28517 in /workspace/remote-verification/repositories/worker-household-identity: /workspace/remote-verification/repositories/household-35731140/node_modules/.bin/tsc --ignoreConfig --noEmit --strict --target ES2023 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --skipLibCheck server/households/records.ts server/households/consent.ts server/households/consentView.ts (2m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 27274 in /workspace/remote-verification/repositories/household-35731140: npm run test:smoke (5m))
+
+> joinallworld@0.1.0 pretypecheck
+> npm run -s preflight
+
+
+> joinallworld@0.1.0 typecheck
+> node --experimental-strip-types scripts/typecheck.ts --serial
+
+client: compiler did not complete (SIGABRT)
+<--- Last few GCs --->
+
+[29264:0x10f79000]    15715 ms: Mark-Compact 1515.0 (1526.5) -> 1511.0 (1526.5) MB, pooled: 0 MB, 476.38 / 0.00 ms  (average mu = 0.270, current mu = 0.210) allocation failure; GC in old space requested
+[29264:0x10f79000]    16312 ms: Mark-Compact 1511.0 (1526.5) -> 1511.0 (1524.0) MB, pooled: 6 MB, 597.56 / 0.00 ms  (average mu = 0.141, current mu = 0.000) allocation failure; GC in old space requested
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x75356c node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0xc52cd0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 3: 0xc52dbf  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 4: 0xef6695  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 5: 0xef66c2  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 6: 0xef69ba  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 7: 0xf076ba  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 8: 0xf0ba60  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 9: 0x199e0d1  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+test: compiler did not complete (SIGABRT)
+<--- Last few GCs --->
+
+[29607:0x2e258000]    14300 ms: Mark-Compact 1518.7 (1541.9) -> 1517.6 (1542.9) MB, pooled: 6 MB, 598.65 / 0.00 ms  (average mu = 0.132, current mu = 0.012) allocation failure; scavenge might not succeed
+[29607:0x2e258000]    14937 ms: Mark-Compact 1521.7 (1542.9) -> 1520.2 (1552.4) MB, pooled: 0 MB, 632.36 / 0.00 ms  (average mu = 0.071, current mu = 0.008) allocation failure; scavenge might not succeed
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x75356c node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0xc52cd0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 3: 0xc52dbf  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 4: 0xef6695  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 5: 0xf07ffc  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 6: 0xedd4b3  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 7: 0xeb2fc0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 8: 0x13aa8b8  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 9: 0x1ab39b6  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+
+Typecheck failed. New .ts and .vue code must be clean. For existing JavaScript, fix the new errors; if they came in with a merge of untyped code, record them with `node scripts/typecheck.ts --update` and say so in the commit.

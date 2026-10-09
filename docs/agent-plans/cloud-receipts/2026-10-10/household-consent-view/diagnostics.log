@@ -1,0 +1,31 @@
+Task: bounded household consent view loader proposal
+Host: 96cc63a2f9d2 (from task packet)
+Configured spawn model: gpt-6-luna (from task packet); shell/runtime model attestation unavailable
+Checkout: /workspace/remote-verification/repositories/worker-household-identity
+Base SHA: 35731140a32da445b8bfd95075f79c0948010694
+Parent SHA: eec14690544a4646e4cd8a5ad280d61bbe2709ca
+Branch: codex/cloud-household-consent-view-20261010
+Final commit: 8e6757eb92653b3df621cf5e88653b5d6f9bbab4
+Remote push: origin/codex/cloud-household-consent-view-20261010 succeeded; proposal branch only
+
+Approved source pins (all matched the integration manifest):
+server/households/records.ts d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4
+server/households/consent.ts 2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a
+server/households/lifeIdentity.ts 31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d
+Owned new file source SHA256: 4f48fe97c498ccf579045b51b921366be9f9828d96637e5a2e5ec55893c2fd0c
+
+Validation:
+- Node v24.19.0 module import and strip-types parse: exit 0.
+- Inline focused observations: register uses requested home and preserves an explicitly absent household; non-register missing household refuses before home read: both passed.
+- Focused strict TypeScript compiler against records.ts, consent.ts, consentView.ts, target ES2023, NodeNext, strict, skipLibCheck: exit 0, no diagnostics. Command: AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 NODE_OPTIONS=--max-old-space-size=4096 node --experimental-strip-types scripts/agent-slot.ts heavy -- /workspace/remote-verification/repositories/household-35731140/node_modules/.bin/tsc --ignoreConfig --noEmit --strict --target ES2023 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --skipLibCheck server/households/records.ts server/households/consent.ts server/households/consentView.ts
+- git diff --cached --check: exit 0.
+- Initial compiler attempt without --ignoreConfig returned TS5112; corrected invocation passed. Earlier focused attempt then caught an unreachable register case; it was removed before the passing run.
+- Full project typecheck/build/test not claimed. Parent owns full candidate checks; prior fullcheck notes from foundation checkpoint remain as documented there.
+- No new repository tests or environment config changes. No routes, admissions, deploys, or workflows were activated.
+
+Implementation scope and remaining gaps:
+- Adds only server/households/consentView.ts. It defines an internal typed transaction port, bounded point reads for the eleven reducer operations, exact home/household binding, session-derived actor facts, separate trusted system authority, strict read validation, and crosslink checks for membership/invitation records. It never mutates storage.
+- No actual Node/SQLite transaction adapter is connected. Durable receipt semantics, all-expectations-first application, mandatory liability handoff consumption, lifecycle index maintenance, route/host integration, and end-to-end behavior remain unimplemented and disabled.
+- Working tree was clean after commit. Existing records.ts, consent.ts, and lifeIdentity.ts content hashes are unchanged from approved pins.
+
+Diagnostic log SHA256: 

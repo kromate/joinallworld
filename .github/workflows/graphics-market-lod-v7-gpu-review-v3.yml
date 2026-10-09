@@ -1,0 +1,58 @@
+name: Market LOD v7 remote source-compact diagnostic v3
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-lod-v7-gpu-review-v3
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: market-lod-v7-remote-gpu-review-v3
+  cancel-in-progress: false
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify exact remote-review source recipe before downloading/running
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: bb6daf68b91b1f49b14282c0c0626b57c06265818e6470c6d7d48469777efc6e
+        run: node evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v3/verify-source-snapshot.mjs "$EXPECTED_SOURCE_MANIFEST_SHA256"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Locate the installed runner Google Chrome
+        run: |
+          CHROME_PATH="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_PATH"
+          printf 'CHROME_BIN=%s\n' "$CHROME_PATH" >> "$GITHUB_ENV"
+          "$CHROME_PATH" --version
+      - name: Download only the frozen v7 package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: market-lod-v7-cpu-package-37888890296
+          run-id: 37888890296
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v3/downloaded-artifact
+      - name: Install locked Node dependencies required by CDP
+        run: npm ci --no-audit --no-fund
+      - name: Run same-actor source/compact angle and pose comparison
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: bb6daf68b91b1f49b14282c0c0626b57c06265818e6470c6d7d48469777efc6e
+        run: python3 evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v3/run-bounded-linux.py
+      - name: Preserve review evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-lod-v7-remote-gpu-review-v3-${{ github.run_id }}
+          path: evidence/graphics-loop/crowd-lod-market-v7/remote-gpu-review-v3/remote-results/**
+          if-no-files-found: warn

@@ -29,7 +29,7 @@
  *   host's frame loop alive — and lets it stop the moment the avatar arrives.
  */
 
-import type { Batch, BatchOptions } from './types.ts';
+import type { Batch, BatchOptions, Face4 } from './types.ts';
 
 import { AVATAR_RADIUS } from './walk-grid.ts';
 import type { WalkGrid, WalkPoint, WalkRect } from './walk-grid.ts';
@@ -76,6 +76,32 @@ export interface FootprintRecorder { batch: Batch; shapes(): FootprintShapes }
 export function footprintRecorder(inner: Batch, { low = 0.34, high = 1.2 }: { low?: number; high?: number } = {}): FootprintRecorder {
   const block: WalkRect[] = [], solids: FootprintSolid[] = [];
   let floor: WalkRect | null = null, floorArea = 0, walls: { backZ: number; leftX: number } | null = null;
+  /** Applies the existing footprint rules to world-space bounds shared by every primitive. */
+  function classify(x0: number, x1: number, y0: number, y1: number, z0: number, z1: number, o: BatchOptions | undefined, flat = false, record = true): BatchOptions | undefined {
+    const area = (x1 - x0) * (z1 - z0);
+    const glass = o?.layer === 'glass';
+    if (record && !glass && !flat && y1 > -0.06 && y1 <= 0.2 && area > floorArea) { floorArea = area; floor = [x0, z0, x1, z1]; }
+    if (record && y0 < high && y1 > low) block.push([x0, z0, x1, z1]);
+    else if (record && glass && y1 <= low && y1 > -0.2 && area > 6) block.push([x0, z0, x1, z1]); // water lying on the ground
+    // Wholly inside the strip along a declared wall: it belongs to that wall and hides with it.
+    const part = !walls || o?.part ? null : z1 <= walls.backZ + WALL_REACH ? 'wallBack' : x1 <= walls.leftX + WALL_REACH ? 'wallLeft' : null;
+    if (part) return { ...o, part };
+    if (record && !flat && !glass && !o?.part && y1 > 0.9 && y1 - y0 > 0.4 && Math.min(x1 - x0, z1 - z0) > 0.25 && area < 80) solids.push([x0, y0, z0, x1, y1, z1]);
+    return o;
+  }
+  /** Bounds are in the current batch's local frame; inner.world applies all parent transforms. */
+  function recordLocalBounds(bounds: readonly [number, number, number, number, number, number], o: BatchOptions | undefined, flat = false): void {
+    const [x0, y0, z0, x1, y1, z1] = bounds;
+    let ax0 = Infinity, ax1 = -Infinity, ay0 = Infinity, ay1 = -Infinity, az0 = Infinity, az1 = -Infinity;
+    for (let i = 0; i < 8; i++) {
+      const p = inner.world(i & 1 ? x1 : x0, i & 2 ? y1 : y0, i & 4 ? z1 : z0);
+      ax0 = Math.min(ax0, p.x); ax1 = Math.max(ax1, p.x); ay0 = Math.min(ay0, p.y); ay1 = Math.max(ay1, p.y); az0 = Math.min(az0, p.z); az1 = Math.max(az1, p.z);
+    }
+    classify(ax0, ax1, ay0, ay1, az0, az1, o, flat, true);
+  }
+  function recordOverrides(o: BatchOptions | undefined, flat = false): void {
+    if (o?.footprint) for (const bounds of o.footprint.bounds) recordLocalBounds(bounds, o, flat);
+  }
   /** Records one primitive's footprint; returns the options to draw it with (the same, or with its wall part). */
   function note(x: number, y: number, z: number, hx: number, hy: number, hz: number, o: BatchOptions | undefined, flat = false): BatchOptions | undefined {
     const c = Math.cos(o?.ry || 0), s = Math.sin(o?.ry || 0);
@@ -92,16 +118,9 @@ export function footprintRecorder(inner: Batch, { low = 0.34, high = 1.2 }: { lo
       const p = inner.world(x + sx * c + sz * s, y + sy, z - sx * s + sz * c);
       x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); z0 = Math.min(z0, p.z); z1 = Math.max(z1, p.z); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y);
     }
-    const area = (x1 - x0) * (z1 - z0);
-    const glass = o?.layer === 'glass';
-    if (!glass && !flat && y1 > -0.06 && y1 <= 0.2 && area > floorArea) { floorArea = area; floor = [x0, z0, x1, z1]; }
-    if (y0 < high && y1 > low) block.push([x0, z0, x1, z1]);
-    else if (glass && y1 <= low && y1 > -0.2 && area > 6) block.push([x0, z0, x1, z1]); // water lying on the ground
-    // Wholly inside the strip along a declared wall: it belongs to that wall and hides with it.
-    const part = !walls || o?.part ? null : z1 <= walls.backZ + WALL_REACH ? 'wallBack' : x1 <= walls.leftX + WALL_REACH ? 'wallLeft' : null;
-    if (part) return { ...o, part };
-    if (!flat && !glass && !o?.part && y1 > 0.9 && y1 - y0 > 0.4 && Math.min(x1 - x0, z1 - z0) > 0.25 && area < 80) solids.push([x0, y0, z0, x1, y1, z1]);
-    return o;
+    const result = classify(x0, x1, y0, y1, z0, z1, o, flat, o?.footprint === undefined);
+    recordOverrides(o, flat);
+    return result;
   }
   const batch: Batch = {
     isBatch: true,
@@ -111,6 +130,20 @@ export function footprintRecorder(inner: Batch, { low = 0.34, high = 1.2 }: { lo
     ball(x, y, z, rx, ry, rz, colour, o) { inner.ball(x, y, z, rx, ry, rz, colour, note(x, y, z, rx, ry, rz, o)); return batch; },
     ico(x, y, z, rx, ry, rz, colour, o) { inner.ico(x, y, z, rx, ry, rz, colour, note(x, y, z, rx, ry, rz, o)); return batch; },
     quad(x, y, z, w, h, colour, o) { inner.quad(x, y, z, w, h, colour, note(x, y, z, w / 2, h / 2, 0.02, o)); return batch; },
+    face4(points: Face4, colour, o) {
+      const cy = Math.cos(o?.ry || 0), sy = Math.sin(o?.ry || 0), cx = Math.cos(o?.rx || 0), sx = Math.sin(o?.rx || 0), cz = Math.cos(o?.rz || 0), sz = Math.sin(o?.rz || 0);
+      let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity, z0 = Infinity, z1 = -Infinity;
+      for (const point of points) {
+        let [x, y, z] = point;
+        const ax = x * cz - y * sz, ay = x * sz + y * cz;
+        const by = ay * cx - z * sx, bz = ay * sx + z * cx;
+        const world = inner.world(ax * cy + bz * sy, by, -ax * sy + bz * cy);
+        x0 = Math.min(x0, world.x); x1 = Math.max(x1, world.x); y0 = Math.min(y0, world.y); y1 = Math.max(y1, world.y); z0 = Math.min(z0, world.z); z1 = Math.max(z1, world.z);
+      }
+      const noted = classify(x0, x1, y0, y1, z0, z1, o, false, o?.footprint === undefined);
+      recordOverrides(o);
+      inner.face4(points, colour, noted); return batch;
+    },
     disc(x, y, z, r, colour, o) { inner.disc(x, y, z, r, colour, note(x, y, z, r * (o?.sx || 1), 0.01, r * (o?.sz || 1), o, true)); return batch; },
     at(x, y, z, ry, draw, rx, rz, scale) { inner.at(x, y, z, ry, () => draw(batch), rx, rz, scale); return batch; },
     light(x, y, z, colour, intensity, distance) { inner.light(x, y, z, colour, intensity, distance); return batch; },

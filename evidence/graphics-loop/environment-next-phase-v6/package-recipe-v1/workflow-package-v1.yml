@@ -1,0 +1,57 @@
+name: Environment whole-slice v6 diagnostic package (split compiler recipe v1)
+
+on:
+  push:
+    branches:
+      - codex/graphics-environment-next-phase-v6-package-v1
+
+permissions:
+  contents: read
+
+concurrency:
+  group: environment-whole-slice-v6-package-v1-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Pinned full-host diagnostic package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact review-branch commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Run reviewed serial split compilation and one-copy finalization
+        run: python3 evidence/graphics-loop/environment-next-phase-v6/package-recipe-v1/run-bounded-linux-package-v1.py
+
+      - name: Upload v6 source pins, phase receipts, static routes, and bounded result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-whole-slice-v6-package-v1-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/environment-next-phase-v6/source-pins-v6.json
+            evidence/graphics-loop/environment-next-phase-v6/source-precompile-v6.json
+            evidence/graphics-loop/environment-next-phase-v6/source-postcompile-v6.json
+            evidence/graphics-loop/environment-next-phase-v6/vendor-v6-record.json
+            evidence/graphics-loop/environment-next-phase-v6/addons-v6-record.json
+            evidence/graphics-loop/environment-next-phase-v6/app-v6-record.json
+            evidence/graphics-loop/environment-next-phase-v6/compile-v6-record.json
+            evidence/graphics-loop/environment-next-phase-v6/static-v6/**
+            evidence/graphics-loop/environment-next-phase-v6/static-fixture-v6/build-manifest.json
+            evidence/graphics-loop/environment-next-phase-v6/finalizer-pins-v6.json
+            evidence/graphics-loop/environment-next-phase-v6/finalization-v6-observed.json
+            evidence/graphics-loop/environment-next-phase-v6/review-host-v6-staged.json
+            evidence/graphics-loop/environment-next-phase-v6/package-recipe-v1/remote-results/**
+          if-no-files-found: warn
+          retention-days: 14

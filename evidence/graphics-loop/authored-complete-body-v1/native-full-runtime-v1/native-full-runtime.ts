@@ -3,6 +3,7 @@ import type { BodyPose } from '../../../../src/scene/body/poses.ts';
 import { DOOR, INTO, OUT, SEATED, STILL, WORK_INTO, WORK_OUT, STAIRS } from '../../../../src/scene/body/poses.ts';
 import type { FootContact, FootSolveResult } from '../../../../src/scene/body/foot-contact.ts';
 import type { WardrobeMetrics, WardrobePresentation } from '../../../../src/scene/wardrobe/renderer.ts';
+import type { NativePropRestSupport, NativeRestPose } from '../native-rest-contact-v1/rest-pose-adapter.ts';
 
 export interface NativePlacement { readonly x: number; readonly y: number; readonly z: number; readonly ry: number }
 export interface NativeSeat {
@@ -44,6 +45,7 @@ export type NativePoseSupport =
   | Readonly<{ kind: 'flat-feet'; floorY: number }>
   | Readonly<{ kind: 'stair-feet'; leftFloorY: number; rightFloorY: number }>
   | Readonly<{ kind: 'seat-anchor'; hipWorld: readonly [number, number, number]; seatTopY: number; floorY: number }>
+  | NativePropRestSupport
   | Readonly<{ kind: 'diagnostic'; floorY: number }>;
 
 export interface NativePreparedActor {
@@ -90,6 +92,8 @@ export interface NativeFullRuntimeOptions<Candidate = unknown, Frame = unknown> 
   /** Per-foot world-space stair levels; absent contact data deliberately rejects stair samples. */
   readonly stairContact?: (input: NativeStairContactInput) => NativePoseSupport;
   readonly workContact?: (placement: NativePlacement) => NativePoseSupport;
+  /** Resolves an actual bed/mat/tub/shower surface selected by the host before a rest pose is requested. */
+  readonly restContact?: (pose: NativeRestPose) => NativePoseSupport;
   /** Convert host parent-local floor coordinates to world Y for built-in support. */
   readonly toWorldFloor?: (parentLocalY: number) => number;
   readonly initialLook?: Candidate;
@@ -137,6 +141,18 @@ const DEFAULT_SIT_CONTACT = 0.47;
 const DEFAULT_SIT_BACK = 0.332;
 const DEFAULT_CROSSFADE = 0.16;
 const ANCHORED = new Set([...Object.values(INTO), ...Object.values(OUT), ...Object.values(WORK_INTO), ...Object.values(WORK_OUT)]);
+const REST_POSES = new Set<NativeRestPose>(['lie', 'soak', 'wash']);
+
+function asRestPose(pose: BodyPose): NativeRestPose | null {
+  return REST_POSES.has(pose as NativeRestPose) ? pose as NativeRestPose : null;
+}
+
+function restPoseForTransition(clip: string): NativeRestPose | null {
+  for (const pose of ['lie', 'soak', 'wash'] as const) {
+    if (INTO[pose] === clip || OUT[pose] === clip || WORK_INTO[pose] === clip || WORK_OUT[pose] === clip) return pose;
+  }
+  return null;
+}
 const finite = (value: number, name: string): number => {
   if (!Number.isFinite(value)) throw new Error(`Native body ${name} must be finite`);
   return value;
@@ -210,6 +226,8 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
     return Number.isFinite(floorY) ? { kind: 'flat-feet', floorY } : { kind: 'diagnostic', floorY: 0 };
   }
   function supportFor(poseName: BodyPose): NativePoseSupport {
+    const restPose = asRestPose(poseName);
+    if (restPose) return options.restContact?.(restPose) ?? { kind: 'diagnostic', floorY: options.toWorldFloor?.(standing.y) ?? standing.y };
     if (seat && SEATED.has(poseName)) return options.seatContact?.(seat) ?? { kind: 'diagnostic', floorY: options.toWorldFloor?.(standing.y) ?? standing.y };
     if (WORK_INTO[poseName] && working) return options.workContact?.(working) ?? defaultFloor(working.y);
     if (strideClimb) {
@@ -221,6 +239,8 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
     return defaultFloor(standing.y);
   }
   function supportForTransition(clip: string): NativePoseSupport {
+    const restPose = restPoseForTransition(clip);
+    if (restPose) return options.restContact?.(restPose) ?? { kind: 'diagnostic', floorY: options.toWorldFloor?.(standing.y) ?? standing.y };
     const seatedExit = Object.values(OUT).includes(clip);
     if (seat && (SEATED.has(currentPose) || seatedExit)) {
       return options.seatContact?.(seat) ?? { kind: 'diagnostic', floorY: standing.y };
@@ -240,6 +260,10 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
     if ((poseName === 'sit' || transition?.clip === clip && (clip === INTO.sit || clip === OUT.sit))
       && support.kind !== 'seat-anchor') {
       throw new Error(`Native sit requires an actual seat support callback; got ${support.kind}`);
+    }
+    const requestedRest = asRestPose(poseName) ?? (transition?.clip === clip ? restPoseForTransition(clip) : null);
+    if (requestedRest && (support.kind !== 'prop-rest' || support.surface.pose !== requestedRest)) {
+      throw new Error(`Native ${requestedRest} requires a matching registered prop-rest support; got ${support.kind}`);
     }
     const duration = requireClip(clip);
     const t = Math.min(Math.max(finite(time, 'sample time'), 0), duration);
@@ -302,6 +326,13 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
     if (next === 'sit' && supportFor('sit').kind !== 'seat-anchor') {
       throw new Error('Native sit requires an actual seat support callback');
     }
+    const restPose = asRestPose(next);
+    if (restPose) {
+      const support = supportFor(restPose);
+      if (support.kind !== 'prop-rest' || support.surface.pose !== restPose) {
+        throw new Error(`Native ${restPose} requires an actual matching bed, mat, tub, or shower surface callback`);
+      }
+    }
     if (next === currentPose && transition && animate) return;
     if (next === currentPose && !transition) { sampleStill(next); return; }
     const previous = currentPose;
@@ -346,6 +377,11 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
     sampleUse(next, seconds) {
       ensureOpen(); if (transition) return;
       if (next === 'sit' && supportFor('sit').kind !== 'seat-anchor') throw new Error('Native sit requires an actual seat support callback');
+      const restPose = asRestPose(next);
+      if (restPose) {
+        const support = supportFor(restPose);
+        if (support.kind !== 'prop-rest' || support.surface.pose !== restPose) throw new Error(`Native ${restPose} requires an actual matching prop-rest surface callback`);
+      }
       const previous = currentPose;
       const previousClimb = strideClimb;
       const { clip } = STILL[next], length = requireClip(clip);

@@ -24,6 +24,8 @@ import { createNativeClipSolver, type NativeClipSolver, type NativeClipSupport }
 import { createNativeDirectionRetargeter, type NativeDirectionRetargeter } from '../native-direction-retarget.ts';
 import { createNativeSeatSurfaceProbe } from '../native-seat-surface.ts';
 import { solveNativeSeatPose } from '../native-seat-pose-adapter.ts';
+import { createNativeRestContactProbe } from '../native-rest-contact-v1/native-rest-contact.ts';
+import { createNativeRestPoseAdapter, type NativePropRestSupport, type NativeRestPose } from '../native-rest-contact-v1/rest-pose-adapter.ts';
 import { DOOR, INTO, OUT, SEATED, STAIRS, STILL, WORK_INTO, WORK_OUT } from '../../../../src/scene/body/poses.ts';
 
 export interface NativePreparedFactoryOptions {
@@ -40,6 +42,8 @@ export interface NativePreparedFactoryOptions {
   readonly stairContactHeightAt?: (contact: FootContact, actor: THREE.Group) => number | null;
   /** Object-use callback receives parent-local host coordinates and must return support in world coordinates. */
   readonly workSupport?: (placement: NativePlacement, actor: THREE.Group) => NativePoseSupport;
+  /** The host selects/ registers the real bed, mat, tub or shower before requesting this pose. */
+  readonly restSupport?: (pose: NativeRestPose, actor: THREE.Group) => NativePropRestSupport | null;
 }
 
 export interface NativePreparedMetrics {
@@ -152,6 +156,7 @@ function solverSupport(support: NativePoseSupport): NativeClipSupport {
     case 'flat-feet': return { kind: 'flat-feet', floorY: support.floorY };
     case 'stair-feet': return { kind: 'stair-feet', leftFloorY: support.leftFloorY, rightFloorY: support.rightFloorY };
     case 'seat-anchor': return { kind: 'seat-anchor', hipWorld: support.hipWorld, floorY: support.floorY };
+    case 'prop-rest': return { kind: 'body-contact-diagnostic', floorY: 0, diagnosticOnly: true };
     case 'diagnostic': return { kind: 'body-contact-diagnostic', floorY: support.floorY, diagnosticOnly: true };
   }
 }
@@ -185,7 +190,7 @@ function updateActorWorld(actor: THREE.Group): void {
 }
 
 function worldSupport(root: THREE.Object3D, support: NativePoseSupport): NativeClipSupport {
-  if (support.kind === 'seat-anchor' || support.kind === 'diagnostic') return solverSupport(support);
+  if (support.kind === 'seat-anchor' || support.kind === 'prop-rest' || support.kind === 'diagnostic') return solverSupport(support);
   if (support.kind === 'flat-feet') {
     return isVerticalParent(root) && Number.isFinite(support.floorY) ? solverSupport(support)
       : { kind: 'body-contact-diagnostic', floorY: 0, diagnosticOnly: true };
@@ -435,7 +440,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
   return { sample, solve, dispose() { disposed = true; contacts.length = 0; } };
 }
 
-function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
+function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
   // Grounded IK may translate the pelvis when the source legs are already at
@@ -466,25 +471,58 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
     updateActorWorld(root);
     return true;
   }
+  function solvePropFeet(surface: NativePropRestSupport['surface']): void {
+    const heightAt = (contact: FootContact): number => {
+      updateActorWorld(root);
+      const worldPoint = new THREE.Vector3(contact.x, contact.y, contact.z);
+      if (root.parent) {
+        root.parent.updateWorldMatrix(true, false);
+        worldPoint.applyMatrix4(root.parent.matrixWorld);
+      }
+      const worldY = surface.surfaceYAt(worldPoint.x, worldPoint.z);
+      if (worldY === null || !Number.isFinite(worldY)) throw new Error(`Native ${surface.pose} host surface is missing beneath ${contact.side} foot`);
+      const parentY = worldFloorToParent(root, worldY);
+      if (!Number.isFinite(parentY)) throw new Error(`Native ${surface.pose} host surface cannot be transformed to actor-parent space`);
+      return parentY;
+    };
+    let result = contacts.solve(heightAt, 'grounded');
+    for (let pass = 0; pass < 3 && result.limited && result.maxError > 0.002; pass++) result = contacts.solve(heightAt, 'grounded');
+    if (result.limited || result.maxError > 0.004) throw new Error(`Native ${surface.pose} foot support failed (${result.maxError} m, limited=${result.limited})`);
+  }
   return {
     apply(frame: NativeWristSourceFrame, context: Readonly<{ clip: string; seconds: number; pose: BodyPose; support: NativePoseSupport }>): boolean {
       if (frame.clipName !== resolveClip(context.clip)) return false;
-      if (['lie', 'soak', 'wash'].includes(context.pose)) {
-        throw new Error(`Native ${context.pose} remains unsupported; no validated body-surface support is installed`);
+      const restSupport = context.support.kind === 'prop-rest' ? context.support : null;
+      const requestedRest = context.pose === 'lie' || context.pose === 'soak' || context.pose === 'wash';
+      if (requestedRest && (!restSupport || restSupport.surface.pose !== context.pose)) {
+        throw new Error(`Native ${context.pose} requires an actual matching prop-rest support`);
       }
-      if (context.support.kind === 'stair-feet') {
+      if (restSupport && !restAdapter) throw new Error(`Native ${restSupport.surface.pose} has no constructed visible body/wardrobe contact probe`);
+      let restPrepared = false;
+      let restApplied = false;
+      if (restSupport) {
+        const mapped = solver.applyFrame(frame, solverSupport(restSupport));
+        if (mapped.supportStatus !== 'body-contact-diagnostic-only') {
+          throw new Error(`Native ${restSupport.surface.pose} source frame was not applied in diagnostic mapping mode`);
+        }
+        restPrepared = true;
+      }
+      if (!restSupport && (context.pose === 'lie' || context.pose === 'soak' || context.pose === 'wash')) {
+        throw new Error(`Native ${context.pose} remains unsupported without its real prop surface`);
+      }
+      if (!restPrepared && context.support.kind === 'stair-feet') {
         if (!stairContactHeightAt) throw new Error('Native stairs require an actual host stair-surface query');
         const seed = solver.applyFrame(frame, worldSupport(root, context.support));
         if (seed.supportStatus !== 'feet-supported') throw new Error(`Native stair source frame is unsupported (${seed.supportStatus})`);
       }
-      if (directionRetargeter && context.support.kind === 'flat-feet') {
+      if (!restPrepared && directionRetargeter && context.support.kind === 'flat-feet') {
         const mappedSupport = worldSupport(root, context.support);
         if (mappedSupport.kind !== 'flat-feet') throw new Error(`Native direction retargeting rejected transformed floor support for ${context.pose}`);
         // Captured after family rest correction and before any pose. This keeps native bone
         // translations/lengths; actual shoe contacts, not the retargeter's body-sole estimate,
         // own the host floor correction below.
         directionRetargeter.apply(frame, mappedSupport.floorY);
-      } else if (context.support.kind === 'seat-anchor') {
+      } else if (!restPrepared && context.support.kind === 'seat-anchor') {
         if (!seatSurface) throw new Error('Native sit requires a cached visible posterior body-and-clothing surface');
         if (context.pose === 'sit' && context.clip === 'sit') {
           solveNativeSeatPose({
@@ -500,12 +538,16 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
             throw new Error(`Native seated transition lacks seat/foot support (${applied.supportStatus}; feet=${applied.seatFeetStatus ?? 'missing'})`);
           }
         }
-      } else if (context.support.kind !== 'stair-feet') {
+      } else if (!restPrepared && context.support.kind !== 'stair-feet' && context.support.kind !== 'flat-feet'
+        && context.support.kind !== 'prop-rest') {
         if (directionRetargeter) throw new Error(`Native direction retargeting does not support ${context.support.kind}`);
         const applied = solver.applyFrame(frame, worldSupport(root, context.support));
         if (applied.supportStatus !== 'feet-supported') {
           throw new Error(`Native ${context.pose} pose is not contact-supported (${applied.supportStatus}; clip ${frame.clipName})`);
         }
+      } else if (!restPrepared && !directionRetargeter && context.support.kind === 'flat-feet') {
+        const applied = solver.applyFrame(frame, worldSupport(root, context.support));
+        if (applied.supportStatus !== 'feet-supported') throw new Error(`Native ${context.pose} pose is not contact-supported (${applied.supportStatus})`);
       }
       const support = context.support;
       let heightAt = support.kind === 'flat-feet'
@@ -549,6 +591,15 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
         }
         updateActorWorld(root);
       }
+      if (restPrepared && restSupport) {
+        const unregister = restAdapter!.register(restSupport);
+        try {
+          // The exact frame has already been mapped and crossfaded above; the adapter now
+          // measures/corrects that final current pose without resampling it.
+          restAdapter!.apply(restSupport.surface.pose, restSupport, () => {}, () => contacts.sample(), (surface) => solvePropFeet(surface));
+          restApplied = true;
+        } finally { unregister(); }
+      }
       if (support.kind === 'stair-feet') {
         if (!stairContactHeightAt) throw new Error('Native stairs require an actual host stair-surface query');
         // Query every actual sole point after source pose and transition crossfade. Reapplying the
@@ -572,7 +623,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
       // Each solve must start from the sampled/crossfaded animation pose, not
       // from a prior IK result, so repeated host solving is deterministic.
       captureContactBaseline();
-      solveAuthoredContacts();
+      if (!restApplied) solveAuthoredContacts();
       wrists.apply(frame);
       hands.apply(context.pose === 'walk' || context.pose === 'jog' ? 'walk' : ['cook','cookLow','eat','drink'].includes(context.pose) ? 'grip' : 'relaxed', context.seconds);
       return true;
@@ -614,6 +665,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
   let solver: NativeClipSolver | undefined;
   let contacts: ReturnType<typeof createAuthoredFootContacts> | undefined;
   let seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined;
+  let restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined;
   let hands: ReturnType<typeof createNativeHandPoseController> | undefined;
   let wrists: ReturnType<typeof createNativeWristOrientationController> | undefined;
   let directionRetargeter: NativeDirectionRetargeter | undefined;
@@ -624,6 +676,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     actorDisposed = true;
     const actions: (() => void)[] = [
       () => contacts?.dispose(),
+      () => restAdapter?.dispose(),
       () => sampler?.dispose(),
       () => hands?.dispose(),
       () => wrists?.dispose(),
@@ -700,6 +753,16 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       throw new Error(`Measured authored standing body height is out of range: ${standingHeight}`);
     }
     contacts = createAuthoredFootContacts(character.object, footwear.object);
+    if (options.restSupport) {
+      const clothingName = initialLook.outfit === 'office' ? 'Authored office suit' : 'Authored casual suit';
+      const clothing = character.object.getObjectByName(clothingName) as THREE.SkinnedMesh | null;
+      const hips = character.object.getObjectByName('mixamorigHips') as THREE.Bone | null;
+      if (!clothing?.isSkinnedMesh || !clothing.visible || !hips?.isBone) {
+        throw new Error('Native prop-rest support requires visible authored clothing and the actor Hips bone');
+      }
+      const restProbe = createNativeRestContactProbe(character.object, [body, clothing, footwear.object]);
+      restAdapter = createNativeRestPoseAdapter(character.object, hips, restProbe);
+    }
 
     const initialBridgeLook = initialLook;
     const lookBridge = createAuthoredLookBridge({
@@ -745,7 +808,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       },
     };
     let lastDirectionContactSolve: FootSolveResult | null = null;
-    const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, contacts, seatSurface,
+    const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, contacts, seatSurface, restAdapter,
       options.stairContactHeightAt, hands, wrists, resolveClip, (result) => { lastDirectionContactSolve = result; });
     const native = createNativeFullRuntime({
       actor: {
@@ -795,6 +858,10 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
         : undefined,
       workContact: (placement) => options.workSupport?.(placement, character!.object)
         ?? { kind: 'flat-feet', floorY: parentFloorToWorld(character!.object, placement.y) },
+      restContact: options.restSupport
+        ? (pose) => options.restSupport!(pose, character!.object)
+          ?? { kind: 'diagnostic', floorY: parentFloorToWorld(character!.object, standing.y) }
+        : undefined,
       initialLook,
       sceneScale: options.sceneScale,
       lift: 0,
@@ -818,7 +885,9 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       contactSource: 'authored-footwear-sole',
       contactLimitations: Object.freeze([
         'Sitting is available only when the host supplies a measured chair top and floor; the cached posterior body-and-clothing surface must converge within 1 mm and both feet must be supported.',
-        'Lie, soak, and wash remain unsupported because no tested bed, tub, or wash-station surface adapter is installed.',
+        options.restSupport
+          ? 'Lie, soak, and wash require matching host-registered bed/mat/tub/shower geometry; the adapter checks sampled visible posterior/sole/head points and is not a whole-mesh collision proof.'
+          : 'Lie, soak, and wash remain unsupported until the host supplies an actual bed/mat/tub/shower surface callback.',
         'Stairs require a host query of the actual terrain beneath the deformed authored shoe soles; unknown or unreachable surfaces reject the pose.',
         'Host must call solveFeet after pose sampling; this factory does not own a frame loop.',
       ]),
@@ -882,5 +951,6 @@ export const NATIVE_PREPARED_TRANSITION_COVERAGE: readonly string[] = Object.fre
 ]);
 /** Conditional capabilities require a host callback which samples the actual visible furniture/terrain. */
 export const NATIVE_PREPARED_CONDITIONAL_CONTACT_COVERAGE = Object.freeze({
-  poses: Object.freeze(['sit']), transitions: Object.freeze([INTO.sit!, OUT.sit!, STAIRS.up, STAIRS.down]),
+  poses: Object.freeze(['sit', 'lie', 'soak', 'wash']),
+  transitions: Object.freeze([INTO.sit!, OUT.sit!, INTO.lie!, OUT.lie!, INTO.soak!, OUT.soak!, WORK_INTO.wash!, WORK_OUT.wash!, STAIRS.up, STAIRS.down]),
 });

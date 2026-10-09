@@ -25,19 +25,46 @@ const loose = (value: unknown) => value as LifeState;
 function harness({ online = true } = {}) {
   const calls: Call[] = [], statuses: [string, boolean][] = [], changes: LifeState[] = [];
   let life = createLife({ name: 'Ada' }), up = online, session: OwnSession | null = { id: 'public-1', name: 'Ada' };
+  let revision = 1, actionSnapshot: LifeState | null = null, actionCode = 'started', lifeFailure: { path: string; status: number } | null = null;
+  let teachingField: unknown, teachingFieldPresent = false;
+  let heldLife: { started: () => void; release: () => void; waiting: Promise<void> } | null = null;
   const memory = new Map();
   const fetch = async (path: string, options: RequestInit = {}) => {
     calls.push([options.method || 'GET', path, options.body ? JSON.parse(options.body as string) as SentBody : undefined]);
     if (!up) throw new TypeError('fetch failed');
     if (path === '/api/session') return session ? json(200, { session, serverTime: 5000 }) : json(401, { error: 'device_session_required' });
-    if (path.startsWith('/api/life')) return json(200, { state: life, serverTime: 5000 });
-    if (path === '/api/action') { life = { ...life, cash: life.cash - 400, message: 'Travelling to The Library.' }; return json(200, { ok: true, code: 'started', state: life, serverTime: 5000 }); }
+    if (path.startsWith('/api/life')) {
+      if (lifeFailure?.path === path) return json(lifeFailure.status, { error: lifeFailure.status === 401 ? 'session_expired' : 'city_moved' });
+      const answer: Record<string, unknown> = { state: life, rev: revision, serverTime: 5000 };
+      if (teachingFieldPresent) answer.interactiveTeachingStarts = teachingField;
+      const held = heldLife; heldLife = null;
+      if (held) { held.started(); await held.waiting; }
+      return json(200, answer);
+    }
+    if (path === '/api/action') { life = actionSnapshot ?? { ...life, cash: life.cash - 400, message: 'Travelling to The Library.' }; actionSnapshot = null; revision += 1; return json(200, { ok: true, code: actionCode, state: life, rev: revision, serverTime: 5000, ...(teachingFieldPresent ? { interactiveTeachingStarts: teachingField } : {}) }); }
     return json(404, { error: 'not_found' });
   };
   const client = createClient({ fetch, now: () => 1000, randomUUID: () => '11111111-1111-4111-8111-111111111111', setTimeout: () => 0, clearTimeout: () => {},
     storage: { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value) },
     onStatus: (text, error) => statuses.push([text, error]), onChange: state => changes.push(state) });
-  return { client, calls, statuses, changes, memory, setUp: (value: boolean) => { up = value; }, dropSession: () => { session = null; } };
+  return {
+    client, calls, statuses, changes, memory,
+    setUp: (value: boolean) => { up = value; },
+    dropSession: () => { session = null; },
+    setTeachingField: (value: unknown, present = true) => { teachingField = value; teachingFieldPresent = present; },
+    setSession: (id: string, name: string) => { session = { id, name }; },
+    setLife: (value: LifeState, nextRevision: number) => { life = value; revision = nextRevision; },
+    setActionSnapshot: (value: LifeState, code = 'started') => { actionSnapshot = value; actionCode = code; },
+    failLife: (path: string, status: number) => { lifeFailure = { path, status }; },
+    get revision() { return revision; },
+    holdNextLife: () => {
+      let release = () => {}, started = () => {};
+      const waiting = new Promise<void>(resolve => { release = resolve; });
+      const began = new Promise<void>(resolve => { started = resolve; });
+      heldLife = { started, release, waiting };
+      return { began, release };
+    },
+  };
 }
 
 test('offline client is read-only: no request, no local grant, state unchanged', async () => {
@@ -72,6 +99,126 @@ test('a fresh visitor stays preview-only until its first authoritative life is a
   const h=harness();assert.equal(h.client.snapshotPhase,'preview');await h.client.connect();assert.equal(h.client.snapshotPhase,'available')
   const saved=JSON.parse(h.memory.get(STORAGE_KEY));assert.equal(saved.ownerId,'public-1');assert.equal(saved.state.cash,5000)
 })
+
+test('teaching display capability is strict, snapshot-bound, nonpersistent and cleared across reconnect races', async () => {
+  const h = harness();
+  h.setTeachingField(true);
+  assert.equal(await h.client.connect(), true);
+  assert.equal(h.client.interactiveTeachingStarts, true);
+  const saved = JSON.parse(String(h.memory.get(STORAGE_KEY)));
+  assert.equal('interactiveTeachingStarts' in saved, false, 'the host capability is not saved at the top level');
+  assert.equal('interactiveTeachingStarts' in saved.state, false, 'the host capability is not saved with LifeState');
+
+  // A same-actor, same-revision accepted snapshot can turn the display capability off.
+  assert.equal(h.revision, 1);
+  h.setTeachingField('true');
+  assert.equal(await h.client.refresh(), true);
+  assert.equal(h.client.revision, 1);
+  assert.equal(h.client.interactiveTeachingStarts, false, 'only literal true is accepted');
+  h.setTeachingField(true);
+  assert.equal(await h.client.refresh(), true);
+  assert.equal(h.client.interactiveTeachingStarts, true);
+  h.setTeachingField(undefined, false);
+  assert.equal(await h.client.refresh(), true);
+  assert.equal(h.client.interactiveTeachingStarts, false, 'an accepted older-host snapshot clears the optional capability');
+
+  h.setTeachingField(true);
+  const delayed = h.holdNextLife();
+  const oldRefresh = h.client.refresh();
+  await delayed.began;
+  h.setTeachingField(undefined, false);
+  const reconnect = h.client.connect();
+  assert.equal(h.client.interactiveTeachingStarts, false, 'reconnect clears capability before its response');
+  assert.equal(await reconnect, true);
+  assert.equal(h.client.interactiveTeachingStarts, false);
+  delayed.release();
+  assert.equal(await oldRefresh, true, 'same-owner life refresh keeps its pre-existing state acceptance semantics');
+  assert.equal(h.client.interactiveTeachingStarts, false);
+
+  h.setTeachingField(true);
+  assert.equal(await h.client.refresh(), true);
+  assert.equal(h.client.interactiveTeachingStarts, true);
+  h.setSession('public-2', 'Bola');
+  h.setTeachingField(undefined, false);
+  const replacement = h.client.connect();
+  assert.equal(h.client.interactiveTeachingStarts, false, 'actor replacement also clears capability immediately');
+  assert.equal(await replacement, true);
+  assert.equal(h.client.interactiveTeachingStarts, false);
+});
+
+test('a valid intercity action snapshot is adopted and capability binds to its authoritative city', async () => {
+  const h = harness();
+  h.setTeachingField(true);
+  assert.equal(await h.client.connect(), true);
+  const ibadan = createLife({ ...h.client.state, estate: { ...h.client.state.estate, city: 'ibadan' }, location: 'agodi-gardens' }, { cityId: 'ibadan' });
+  h.setActionSnapshot(ibadan, 'departed');
+  const result = await h.client.command('estate.relocate', { to: 'ibadan', mode: 'road' });
+  assert.deepEqual([result.ok, result.code], [true, 'departed']);
+  assert.deepEqual([h.client.cityId, h.client.state.estate.city, h.client.state.location, h.client.interactiveTeachingStarts], ['ibadan', 'ibadan', 'agodi-gardens', true]);
+  assert.equal(h.client.pendingAction, null, 'the successful authoritative move settles the original intent once');
+  const saved = JSON.parse(String(h.memory.get(STORAGE_KEY)));
+  assert.deepEqual([saved.cityId, saved.state.estate.city, saved.state.location], ['ibadan', 'ibadan', 'agodi-gardens']);
+});
+
+test('an expired city switch clears display capability and preserves the last accepted life', async () => {
+  const h = harness();
+  h.setTeachingField(true);
+  assert.equal(await h.client.connect(), true);
+  const before = JSON.stringify(h.client.state);
+  h.failLife('/api/life?city=ibadan', 401);
+  const result = await h.client.switchCity('ibadan');
+  assert.equal(result.ok, false);
+  assert.deepEqual([h.client.cityId, JSON.stringify(h.client.state), h.client.interactiveTeachingStarts, h.client.online], ['lagos', before, false, false]);
+});
+
+test('a refresh begun during a refused switch cannot restore its captured teaching capability afterward', async () => {
+  const life = createLife({ name: 'Ada' })
+  let holdSwitch = false, holdRefresh = false
+  let releaseSwitch = () => {}, releaseRefresh = () => {}, switchStarted = () => {}, refreshStarted = () => {}
+  let switchWait = new Promise<void>(resolve => { releaseSwitch = resolve })
+  let refreshWait = new Promise<void>(resolve => { releaseRefresh = resolve })
+  const switchSeen = new Promise<void>(resolve => { switchStarted = resolve })
+  const refreshSeen = new Promise<void>(resolve => { refreshStarted = resolve })
+  const client = createClient({ storage: { getItem: () => null, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {},
+    fetch: async path => {
+      if (path === '/api/session') return json(200, { session: { id: 'public-a', name: 'Ada', cities: ['lagos', 'ibadan'] }, serverTime: 1000 })
+      if (path === '/api/life?city=ibadan' && holdSwitch) { holdSwitch = false; switchStarted(); await switchWait; return json(503, { error: 'server_busy' }) }
+      if (path === '/api/life?city=lagos' && holdRefresh) { holdRefresh = false; refreshStarted(); await refreshWait }
+      return json(200, { state: life, rev: 1, serverTime: 1000, interactiveTeachingStarts: true })
+    } })
+  assert.equal(await client.connect(), true)
+  assert.equal(client.interactiveTeachingStarts, true)
+  holdSwitch = true
+  const switching = client.switchCity('ibadan')
+  await switchSeen
+  holdRefresh = true
+  const refresh = client.refresh()
+  await refreshSeen
+  releaseSwitch()
+  assert.equal((await switching).ok, false)
+  assert.equal(client.interactiveTeachingStarts, false)
+  releaseRefresh()
+  assert.equal(await refresh, true, 'the overlapping life remains subject to its existing state acceptance rules')
+  assert.equal(client.interactiveTeachingStarts, false, 'its capability was captured before the transition settled')
+  assert.equal(await client.refresh(), true)
+  assert.equal(client.interactiveTeachingStarts, true, 'a new read after refusal can restore the host capability')
+})
+
+test('a pre-switch old-city response cannot replace the newly accepted city capability', async () => {
+  const h = harness();
+  h.setTeachingField(true);
+  assert.equal(await h.client.connect(), true);
+  const delayed = h.holdNextLife();
+  const oldRefresh = h.client.refresh();
+  await delayed.began;
+  const ibadan = createLife({ ...h.client.state, estate: { ...h.client.state.estate, city: 'ibadan' }, location: 'agodi-gardens' }, { cityId: 'ibadan' });
+  h.setLife(ibadan, 2);
+  assert.equal((await h.client.switchCity('ibadan')).ok, true);
+  assert.deepEqual([h.client.cityId, h.client.state.estate.city, h.client.interactiveTeachingStarts], ['ibadan', 'ibadan', true]);
+  delayed.release();
+  assert.equal(await oldRefresh, false, 'the older revision is rejected by the existing snapshot acceptance guard');
+  assert.deepEqual([h.client.cityId, h.client.state.estate.city, h.client.interactiveTeachingStarts], ['ibadan', 'ibadan', true]);
+});
 
 test('a different confirmed identity cannot inherit a cached name, balance or scene when its wallet is quarantined', async () => {
   const old=createLife({name:'Ada',cash:4600,location:'library'}),memory=new Map([[STORAGE_KEY,JSON.stringify({version:1,state:old,ownerId:'public-a',identity:{name:'Ada'},cityId:'lagos'})]])
@@ -154,7 +301,7 @@ test('a late refresh from the previous identity cannot claim the replacement rec
     lifeCalls+=1;if(lifeCalls===1)return json(200,{state:a,rev:1,serverTime:1000});if(lifeCalls===2){started();return delayed}return json(409,{error:'economy_unavailable'})
   }})
   assert.equal(await client.connect(),true);const oldRefresh=client.refresh();await refreshStarted;assert.equal(await client.connect(),false);assert.deepEqual([client.session?.id,client.snapshotPhase,client.link],['public-b','unavailable','recovery'])
-  release(json(200,{state:{...a,cash:5000},rev:2,serverTime:1000}));assert.equal(await oldRefresh,false);assert.deepEqual([client.session?.id,client.snapshotPhase,client.link,client.state.cash],['public-b','unavailable','recovery',4600]);assert.notEqual(client.state.cash,b.cash)
+  release(json(200,{state:{...a,cash:5000},rev:2,serverTime:1000,interactiveTeachingStarts:true}));assert.equal(await oldRefresh,false);assert.deepEqual([client.session?.id,client.snapshotPhase,client.link,client.state.cash,client.interactiveTeachingStarts],['public-b','unavailable','recovery',4600,false]);assert.notEqual(client.state.cash,b.cash)
 })
 
 test('an uncertain action survives reload and an exact retry cannot overwrite a newer accepted revision', async () => {

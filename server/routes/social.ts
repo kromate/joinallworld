@@ -219,6 +219,7 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/social/reports': route((db, session, body) => service.report(db, session, body)),
     'GET /api/social/conversations': route((db, session, body, request) => service.conversations(db, session, { limit: limitOf(request, 'limit'), after: request.query.get('after') })),
     'GET /api/social/conversations/:id': route((db, session, body, request) => service.history(db, session, request.params.id, after(request), { before: seqOf(request, 'before'), limit: limitOf(request, 'limit') })),
+    'POST /api/social/conversations/:id/pins': route((db, session, body, request) => service.messagePins(db, session, { ...body, conv: request.params.id })),
     'GET /api/social/everyone': route((db, session, body, request) => service.everyone(db, session, { q: request.query.get('q'), sort: request.query.get('sort'), city: request.query.get('city'), after: request.query.get('after'), limit: request.query.get('limit') })),
     'POST /api/social/chats/open': route((db, session, body) => service.openChat(db, session, body)),
     'POST /api/social/messages/many': route((db, session, body) => service.sendMany(db, session, body)),

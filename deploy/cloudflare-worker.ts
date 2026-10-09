@@ -370,6 +370,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const openOf = (id: string): HostSocket[] => [...this.held.byPlayer.get(id) ?? []].filter(ws => ws.readyState === 1);
     const context: RouteContext = this.context = {
       store: this.store, images: this.images, voices: this.voices, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
+      ...(env.INTERACTIVE_TEACHING_STARTS === '1' ? { interactiveTeachingStarts: true } : {}),
       randomId: () => crypto.randomUUID(),
       // Relay credentials for calls (server/call-relay.ts): the day's count lives in the object's own storage, so the ceiling holds across restarts.
       callRelay: createCallRelay({

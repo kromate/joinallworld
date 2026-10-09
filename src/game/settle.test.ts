@@ -167,6 +167,9 @@ test('a new life that moves in straight away ends at home, with the first goal s
   const chip = goalChip(g);
   assert.deepEqual([chip.id, chip.go, chip.title], ['first-fun', ['park', 'trees'], 'Play a round of Ayo'], 'the goal that needed the venue still says where to go');
   assert.match(chip.hint, /^Head out to Freedom Park/);
+  const cash = g.state.cash;
+  assert.equal(g.run('bedroom', 'nap').ok, true);
+  assert.deepEqual([g.state.goals.chain, g.state.cash, reasons(g.state).includes('Goal: Play a round of Ayo')], [0, cash, false], 'a home nap does not complete the public activity the chip asks for');
   assert.equal(g.act('travel', { id: 'park', mode: 'trek' }).ok, true); g.finish();
   if (g.state.travel.event) g.act('world.roadside', { choice: need(need(g.view().travel.event).choices.at(-1)).id });
   assert.equal(g.run('trees', 'play-ayo').ok, true);

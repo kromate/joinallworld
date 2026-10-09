@@ -145,13 +145,14 @@ function markSeen(state: LifeState, test: (done: StarterGoalCondition, goal: Sta
 /**
  * Did the activity that just finished complete a goal that names one (`done.activity`)? The named activity always does.
  * A goal that is done `here` (wherever the player stands) also accepts the kind of thing its chip points at when the
- * named one cannot be done: away from the goal's venue, or while the named activity cannot be started there (the venue
+ * named one cannot be done: at another public venue, or while the named activity cannot be started there (the venue
  * is closed, say) — a free, unpaid pastime that is not work. So the goal is completed by what the chip asked for, a
  * paid gig or a shift never ticks it by accident, and a player is never left with a goal that cannot be met.
  */
 function intended(state: LifeState, goal: StarterGoal, data: Data | undefined, ctx: LifeContext): boolean {
   if (data?.id === goal.done.activity) return true;
   if (!goal.here) return false;
+  if (state.location === 'home') return false; // The chip directs a settled player out to the goal's venue.
   const def = data?.def;
   if (!isRecord(def) || def.cost || def.reward || def.requiresJob || def.home) return false;
   if (!goal.go) throw new TypeError('A goal done here has a place to go'); // the original read goal.go[0] of undefined

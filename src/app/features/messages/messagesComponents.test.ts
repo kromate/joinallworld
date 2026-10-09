@@ -8,7 +8,7 @@ import type { ViteDevServer } from 'vite'
 import { createSSRApp, h } from 'vue'
 import type { Component } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import type { Conversation, Message, SocialOverview } from '../../../types/social.ts'
+import type { Conversation, Message, MessagePinsView, SocialOverview } from '../../../types/social.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))
 let vite: ViteDevServer
@@ -20,7 +20,7 @@ async function render(path: string, props: Record<string, unknown>): Promise<str
 }
 const words = (html: string): string => html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
 const line = (extra: Partial<Message> = {}): Message => ({ seq: 4, id: 'g.1#4', conv: 'g.1', from: { id: 'bola', name: 'Bola' }, body: 'Hi', at: 1, ...extra })
-const bubble = (item: Message, extra: Record<string, unknown> = {}): Promise<string> => render('/src/app/features/messages/MessageBubble.vue', { item, meId: 'ada', group: true, head: true, tail: true, time: '10:15', canReact: true, ...extra })
+const bubble = (item: Message, extra: Record<string, unknown> = {}): Promise<string> => render('/src/app/features/messages/MessageBubble.vue', { item, meId: 'ada', group: true, head: true, tail: true, time: '10:15', canReact: true, canActions: true, ...extra })
 
 test('a bubble shows the name on the first line of a run, mention chips that open a card, and the time on the last', async () => {
   const html = await bubble(line({ body: 'Hi @Ada and @everyone', mentions: [{ id: 'ada', start: 3, end: 7 }, { id: 'everyone', start: 12, end: 21 }] }))
@@ -54,16 +54,44 @@ test('a gift is a money line with the amount, and the share that paid a ride deb
   assert.match(await bubble(gift), /aria-label="coin"|<svg/)
 })
 
-test('reactions are counted chips, yours is pressed, and the six quick ones are in the menu', async () => {
+test('reaction permission is separate from the accessible message actions used in house chats', async () => {
   const html = await bubble(line({ reactions: [{ emoji: '👍', count: 2, mine: true }, { emoji: '😂', count: 1 }] }))
   assert.match(html, /aria-pressed="true" aria-label="👍 2, yours"/)
   assert.match(html, /aria-pressed="false" aria-label="😂 1"/)
-  const off = await bubble(line({ reactions: [{ emoji: '👍', count: 1 }] }), { canReact: false })
-  assert.match(off, /<button[^>]*class="reaction"[^>]*disabled/)
-  assert.ok(!off.includes('bubble-more'))
+  const houseHost = await bubble(line({ reactions: [{ emoji: '👍', count: 1 }] }), { canReact: false, canActions: true, canPin: true })
+  assert.match(houseHost, /<button[^>]*class="reaction"[^>]*disabled/)
+  assert.match(houseHost, /class="bubble-more"[^>]*aria-label="Message actions, including Pin message"/)
+  const readOnly = await bubble(line(), { canReact: false, canActions: false, canPin: false })
+  assert.ok(!readOnly.includes('bubble-more'))
   const picker = await render('/src/app/features/messages/EmojiPicker.vue', {})
   assert.match(picker, /aria-label="Search emoji"/)
   assert.ok((picker.match(/<button[^>]*aria-label="[^"]*"[^>]*>[^<]+<\/button>/g) ?? []).length > 50, 'a grid of emoji buttons')
+})
+
+test('pinned messages render three bounded rows, filtered-empty management, and offline controls', async () => {
+  const items = [line({ seq: 1, id: 'g.1#1', body: 'Meet at the library' }), line({ seq: 2, id: 'g.1#2', body: '', image: { id: 'picture', width: 80, height: 60 } }), line({ seq: 3, id: 'g.1#3', body: '', voice: { id: 'voice', durationMs: 5000 } })]
+  const pins: MessagePinsView = { scope: 'scope-1', revision: 3, canManage: true, items: items.map((message) => ({ message })) }
+  const html = await render('/src/app/features/messages/PinnedMessages.vue', { pins, kind: 'group', loading: false, pending: false, retryable: false, disabled: false, error: '' })
+  const rows = [...html.matchAll(/<button[^>]*class="pinned-row"[^>]*>(.*?)<\/button>/g)].map((match) => words(match[1] ?? ''))
+  assert.deepEqual(rows, ['Bola Meet at the library', 'Bola Picture', 'Bola Voice message'])
+  assert.ok(words(html).includes('Clear all also removes shared pins you cannot see.'))
+
+  const filtered: MessagePinsView = { ...pins, items: [] }
+  const offline = await render('/src/app/features/messages/PinnedMessages.vue', { pins: filtered, kind: 'group', loading: false, pending: false, retryable: false, disabled: true, error: '' })
+  assert.ok(words(offline).includes('No shared pins you can see.'))
+  assert.match(offline, /class="pinned-clear"[^>]*disabled/)
+  const member = await render('/src/app/features/messages/PinnedMessages.vue', { pins: { ...filtered, canManage: false, items: [{ message: items[0]! }] }, kind: 'group', loading: false, pending: false, retryable: false, disabled: false, error: '' })
+  assert.ok(!member.includes('pinned-clear') && words(member).includes('Only the group owner can change them.'))
+})
+
+test('an older pinned picture or voice preview stays label-only and does not load media', async () => {
+  const picture = await bubble(line({ body: 'Caption', image: { id: 'private-picture', width: 80, height: 60 } }), { preview: true, canReact: false, canActions: true, canPin: true, pinned: true })
+  assert.ok(words(picture).includes('Picture Caption'))
+  assert.ok(!picture.includes('<img') && !picture.includes('private-picture'))
+  assert.match(picture, /aria-label="Message actions, including Unpin message"/)
+  const voice = await bubble(line({ body: '', voice: { id: 'private-voice', durationMs: 5000 } }), { preview: true, canReact: false, canActions: true, canPin: true, pinned: true })
+  assert.ok(words(voice).includes('Voice message'))
+  assert.ok(!voice.includes('<audio') && !voice.includes('/api/social/voice') && !voice.includes('private-voice'))
 })
 
 test('the composer shows the message being answered and a message box that is named', async () => {

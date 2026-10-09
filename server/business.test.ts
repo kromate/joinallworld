@@ -4,11 +4,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { fixture, flakyDisk } from './test-fixture.ts';
 import { createServer } from './server.ts';
+import { createStore } from './store.ts';
+import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts';
 import { createOnce } from './routes/once.ts';
-import { businessJourney } from './testing/businessJourney.ts';
+import { businessFunding, businessJourney } from './testing/businessJourney.ts';
 import { JOURNEY_TIME } from './testing/cityJourney.ts';
 import { loadCityContent } from '../src/game/cities/registry.ts';
 import { BUSINESS } from '../src/game/content/business.ts';
@@ -75,28 +78,62 @@ async function harness(t: Parameters<typeof fixture>[0], options: Parameters<typ
 
 test('a shop from opening to winding up, on the Node host', { timeout: 60000 }, async (t) => {
   const disk = flakyDisk();
-  const f = await fixture(t, { disk });
+  const project = 'allworld-business-node-test', founder = 'business-founder@example.test';
+  const key = await makeKey('business-node-founder'), provider = fakeProvider([key]);
+  const options = {
+    env: { ACCOUNTS_FIREBASE_PROJECT_ID: project, ACCOUNTS_FIREBASE_API_KEY: 'business-test-key-000000000000000000000000',
+      FOUNDER_EMAIL_SHA256: createHash('sha256').update(founder).digest('hex') },
+    fetch: provider.fetch,
+  };
+  const f = await fixture(t, { disk, ...options });
   f.advance(JOURNEY_TIME - f.now());
   let server = f.server, base = f.base;
+  const request = (path: string, body?: object, cookie?: string): Promise<Response> => fetch(base + path, {
+    method: body ? 'POST' : 'GET', headers: { Origin: base, ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  });
+  const guest = await request('/api/session', { name: 'Business fixture founder' });
+  assert.equal(guest.status, 200);
+  const guestCookie = guest.headers.get('set-cookie')?.split(';')[0];
+  assert.ok(guestCookie);
+  assert.equal((await request('/api/life?city=lagos', undefined, guestCookie)).status, 200);
+  const account = object(await (await request('/api/account', undefined, guestCookie)).json());
+  assert.ok(typeof account.csrf === 'string');
+  const token = await signToken(key, claimsFor(project, f.now(), { subject: 'BusinessFixtureFounder', email: founder, n: 1 }));
+  const signedIn = await request('/api/account/sign-in', { csrf: account.csrf, idToken: token }, guestCookie);
+  assert.equal(signedIn.status, 200);
+  const founderCookie = signedIn.headers.get('set-cookie')?.split(';')[0];
+  assert.ok(founderCookie);
+  assert.equal(object(await (await request('/api/admin/me', undefined, founderCookie)).json()).level, 'root');
+  const founderId = object(object(await (await request('/api/session', undefined, founderCookie)).json()).session).id;
+  assert.ok(typeof founderId === 'string');
+  const funding = businessFunding(request, founderCookie, clientId => server.store.read(db => {
+    const session = Object.values(db.sessions).find(entry => entry.publicId === founderId);
+    assert.ok(session);
+    const receipt = object(session.once ?? {})[clientId];
+    return receipt === undefined ? null : JSON.stringify(receipt);
+  }));
   try {
     const result = await businessJourney({
       now: f.now,
-      request: async (path, body, cookie) => fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) }),
+      request,
+      funding,
       elapse: async (_device, _city, ms) => { f.advance(ms); },
-      edit: async (device, city, change) => { await server.store.transact((db) => { const state = db.sessions[device.cookie.slice(device.cookie.indexOf('=') + 1)]?.cities[city as 'lagos']?.state; assert.ok(state); change(state as unknown as Record<string, unknown>); }); },
       age: async (ms) => { f.advance(ms); },
       failPersistence: async () => { disk.fail = 'ENOSPC'; },
       recoverPersistence: async () => { disk.fail = null; },
       restart: async () => {
         await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
         await server.store.close?.();
-        server = await createServer({ dataDir: f.dir, now: f.now, sessionTtlMs: 2592000000 });
+        const store = await createStore(f.dir, { io: disk.io });
+        server = await createServer({ store, dataDir: f.dir, now: f.now, sessionTtlMs: 2592000000, ...options });
         server.listen(0, '127.0.0.1');
         await new Promise<void>((resolve, reject) => { server.once('listening', resolve); server.once('error', reject); });
         const address = server.address();
         if (!address || typeof address === 'string') throw new Error('Restarted server has no TCP address');
         base = `http://127.0.0.1:${address.port}`;
       },
+      advanceAdminWindow: async () => { f.advance(60001); },
       hasReceipt: async (device, requestId) => server.store.read((db) => {
         const session = db.sessions[device.cookie.slice(device.cookie.indexOf('=') + 1)];
         return Object.hasOwn(session?.once ?? {}, requestId);

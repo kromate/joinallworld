@@ -116,6 +116,7 @@ export const LIMITS = Object.freeze({
   pins: 3, reactionKinds: 6, mentions: 5, everyoneMs: 600000, groupAddsPerHour: 30, mentionMessages: 20, friendPicks: 20, quote: 80, giftLine: 40,
   escrowMs: 7 * 86400000, playerIdleMs: 45 * 86400000, sweepMs: 3600000,
 });
+const MESSAGE_PIN_LIMIT = 3;
 export const REPORT_REASONS: readonly ReportReason[] = Object.freeze<ReportReason[]>(['harassment', 'scam', 'spam', 'cheating', 'offensive-name', 'other']);
 
 const CONTROL = /[\u0000-\u0008\u000b-\u001f\u007f]/;
@@ -281,7 +282,7 @@ function buildService(ctx: RouteContext) {
     }
     const key = dmId(id, founder);
     if (Object.hasOwn(s.convs, key)) return; // they have talked before: no note
-    const conv: ConversationRecord = s.convs[key] = { id: key, kind: 'dm', members: [id, founder].sort(), seq: 1, created: t, messages: [{ seq: 1, from: founder, body: '', at: t, auto: true, start: startOf(session, p.name, id) }] };
+    const conv: ConversationRecord = s.convs[key] = { id: key, kind: 'dm', members: [id, founder].sort(), seq: 1, created: t, messages: [{ seq: 1, from: founder, body: '', at: t, auto: true, start: startOf(session, p.name, id) }], pinScope: ctx.randomId() };
     index(s, id, conv);
   }
   /**
@@ -579,6 +580,86 @@ function buildService(ctx: RouteContext) {
       ...(message.editedAt ? { editedAt: message.editedAt } : {}), ...(message.deletedAt ? { deleted: true as const } : {}), ...(message.forwarded ? { forwarded: true as const } : {}) };
   }
   const visibleTo = (s: SocialCollection, viewer: string, message: MessageRecord): boolean => !message.from || !s.players[viewer]?.blocked[message.from];
+  const scopeOf = (conv: ConversationRecord): string => {
+    const legacy = `legacy.${sha256Hex(`${conv.id}:${conv.created}`).slice(0, 32)}`;
+    if (conv.pinScope !== undefined && (typeof conv.pinScope !== 'string' || !UUID_PATTERN.test(conv.pinScope) && conv.pinScope !== legacy)) throw ctx.fail(500, 'invalid_message_pins');
+    return conv.pinScope ?? legacy;
+  };
+  function pinsOf(conv: ConversationRecord): { revision: number; entries: { seq: number; by: string; at: number }[] } {
+    const raw: unknown = conv.messagePins;
+    if (raw === undefined) return { revision: 0, entries: [] };
+    if (!isRecord(raw) || !Number.isSafeInteger(raw.revision) || Number(raw.revision) < 0 || !Array.isArray(raw.entries) || raw.entries.length > MESSAGE_PIN_LIMIT) throw ctx.fail(500, 'invalid_message_pins');
+    const entries: { seq: number; by: string; at: number }[] = [];
+    for (const entry of raw.entries) {
+      if (!isRecord(entry) || !Number.isSafeInteger(entry.seq) || Number(entry.seq) < 1 || typeof entry.by !== 'string' || !UUID_PATTERN.test(entry.by) || typeof entry.at !== 'number' || !Number.isFinite(entry.at) || entry.at < 0) throw ctx.fail(500, 'invalid_message_pins');
+      entries.push({ seq: Number(entry.seq), by: entry.by, at: entry.at });
+    }
+    if (new Set(entries.map((entry) => entry.seq)).size !== entries.length) throw ctx.fail(500, 'invalid_message_pins');
+    return { revision: Number(raw.revision), entries };
+  }
+  const nextPinRevision = (revision: number): number => {
+    if (revision >= Number.MAX_SAFE_INTEGER) throw ctx.fail(409, 'pins_changed');
+    return revision + 1;
+  };
+  const globallyPinnable = (message: MessageRecord): boolean => Boolean(message.from && !message.sys && !message.auto && !message.gift && !message.deletedAt &&
+    (!message.img || !message.img.gone && !message.img.hid) && (!message.voice || !message.voice.gone && !message.voice.hidden && now() - message.at <= VOICE_POLICY.retentionMs));
+  function canManagePins(s: SocialCollection, conv: ConversationRecord, viewer: string): boolean {
+    if (conv.kind === 'dm') return !blockedEither(s, viewer, conv.members.find((member) => member !== viewer)!);
+    return conv.owner === viewer;
+  }
+  function pinProjection(s: SocialCollection, conv: ConversationRecord, viewer: string) {
+    const state = pinsOf(conv), canManage = canManagePins(s, conv, viewer);
+    const items = conv.kind === 'dm' && !canManage ? [] : [...state.entries].sort((a, b) => a.at - b.at || a.seq - b.seq).flatMap((entry) => {
+      const message = conv.messages.find((line) => line.seq === entry.seq);
+      if (!message || !globallyPinnable(message) || !visibleTo(s, viewer, message)) return [];
+      const image = pictureView(s, conv, message, viewer), voice = voiceView(s, message, viewer);
+      if (message.img && image?.state !== undefined || message.voice && voice?.state !== undefined) return [];
+      return [{ message: messageView(s, conv, message, viewer) }];
+    });
+    return { scope: scopeOf(conv), revision: state.revision, canManage, items };
+  }
+  function trimHistory(s: SocialCollection, conv: ConversationRecord): void {
+    const pinned = new Set(pinsOf(conv).entries.map((entry) => entry.seq));
+    while (conv.messages.length > LIMITS.history) {
+      const at = conv.messages.findIndex((message) => !pinned.has(message.seq));
+      if (at < 0) throw ctx.fail(500, 'invalid_message_pins');
+      const [old] = conv.messages.splice(at, 1);
+      if (old?.img && !old.img.gone) endedIn(s).drops.ids.push(old.img.id);
+      if (old?.voice && !old.voice.gone) endedIn(s).drops.voices.push(old.voice.id);
+    }
+  }
+  function reconcilePins(s: SocialCollection, conv: ConversationRecord): boolean {
+    const state = pinsOf(conv), entries = state.entries.filter((entry) => {
+      const message = conv.messages.find((line) => line.seq === entry.seq);
+      return Boolean(message && globallyPinnable(message));
+    });
+    if (entries.length === state.entries.length) return false;
+    conv.pinScope ??= scopeOf(conv);
+    conv.messagePins = { revision: nextPinRevision(state.revision), entries };
+    trimHistory(s, conv);
+    return true;
+  }
+  function pinPushes(s: SocialCollection, conv: ConversationRecord): PushList {
+    return conv.members.flatMap((member) => s.players[member]?.convs[conv.id] ? [[member, { type: 'message-pins', conv: summary(s, conv, member), pins: pinProjection(s, conv, member) }] as PushList[number]] : []);
+  }
+  function pinPushFor(s: SocialCollection, conv: ConversationRecord, viewer: string): PushList {
+    return s.players[viewer]?.convs[conv.id] ? [[viewer, { type: 'message-pins', conv: summary(s, conv, viewer), pins: pinProjection(s, conv, viewer) }]] : [];
+  }
+  function reconcilePinsAndQueue(s: SocialCollection, conv: ConversationRecord): boolean {
+    if (!reconcilePins(s, conv)) return false;
+    endedIn(s).pushes.push(...pinPushes(s, conv));
+    return true;
+  }
+  function visibilityPinPushes(s: SocialCollection, viewer: string, author: string, except?: string): PushList {
+    const entry = s.players[viewer];
+    if (!entry) return [];
+    return Object.keys(entry.convs).flatMap((key) => {
+      if (key === except) return [];
+      const conv = s.convs[key], state = conv && pinsOf(conv);
+      if (!conv || !state?.entries.some((pin) => conv.messages.some((message) => message.seq === pin.seq && message.from === author))) return [];
+      return pinPushFor(s, conv, viewer);
+    });
+  }
   /** A line someone wrote: not the automatic welcome note and not a system line. A chat holding only those is not yet a conversation. */
   const realLine = (message: MessageRecord): boolean => !message.auto && !message.sys;
   /** What a conversation holds unread for `viewer` (a muted group whose viewer turned mentions off counts none). The same rule as summary(). */
@@ -608,9 +689,7 @@ function buildService(ctx: RouteContext) {
   function append(s: SocialCollection, conv: ConversationRecord, from: string | null, body: string, cid: string | null, sys = false, extra: Partial<MessageRecord> = {}): MessageRecord {
     const message: MessageRecord = { seq: ++conv.seq, from, body, at: now(), ...(cid ? { cid } : {}), ...(sys ? { sys: true as const } : {}), ...extra };
     conv.messages.push(message);
-    if (conv.messages.length > LIMITS.history) {
-      for (const old of conv.messages.splice(0, conv.messages.length - LIMITS.history)) { if (old.img && !old.img.gone) endedIn(s).drops.ids.push(old.img.id); if (old.voice && !old.voice.gone) endedIn(s).drops.voices.push(old.voice.id); }
-    }
+    trimHistory(s, conv);
     if (from && s.players[from]?.convs[conv.id]) s.players[from]!.convs[conv.id]!.read = message.seq;
     return message;
   }
@@ -651,6 +730,10 @@ function buildService(ctx: RouteContext) {
     const conv = Object.hasOwn(s.convs, id) ? s.convs[id] ?? null : null;
     return conv && conv.members.includes(me) && s.players[me]!.convs[id] ? conv : null;
   }
+  /** House membership is time-sensitive even while the hourly collection sweep is throttled. */
+  function pruneConversationHouse(s: SocialCollection, id: string): void {
+    if (id.startsWith('h.')) pruneHouse(s, id.slice(2));
+  }
 
   // ---- houses --------------------------------------------------------------------------------
   /** Is the host's stored life at home in the visit's city? When that cannot be known (no host helper, no document) the answer is no. */
@@ -686,10 +769,10 @@ function buildService(ctx: RouteContext) {
     const id = `h.${hostId}`, guests = Object.keys(s.houses[hostId]?.guests || {});
     let conv = s.convs[id];
     if (!guests.length) {
-      if (conv) { for (const member of conv.members) delete s.players[member]?.convs[id]; delete s.convs[id]; }
+      if (conv) { for (const member of conv.members) delete s.players[member]?.convs[id]; delete s.convs[id]; endedIn(s).drops.convs.push(id); }
       return;
     }
-    conv ||= s.convs[id] = { id, kind: 'house', owner: hostId, members: [], seq: 0, created: now(), messages: [] };
+    conv ||= s.convs[id] = { id, kind: 'house', owner: hostId, members: [], seq: 0, created: now(), messages: [], pinScope: ctx.randomId() };
     const members = [hostId, ...guests];
     for (const member of conv.members) if (!members.includes(member)) delete s.players[member]?.convs[id];
     conv.members = members;
@@ -1276,6 +1359,9 @@ function buildService(ctx: RouteContext) {
       endedIn(s).blocks.push(['block', id, target]);
       cut(s, db, id, target, cityId);
       const push: PushList = [];
+      const direct = s.convs[dmId(id, target)];
+      if (direct?.kind === 'dm') push.push(...pinPushes(s, direct));
+      push.push(...visibilityPinPushes(s, id, target, direct?.id));
       for (const [host, guest] of [[id, target], [target, id]] as [string, string][]) if (endVisit(s, host, guest)) { housePush(s, host, push); push.push([guest, { type: 'invite-house', house: houseView(s, host, guest) }]); }
       delete s.houses[id]?.knocks[target]; delete s.houses[target]?.knocks[id];
       return yes('blocked', { push });
@@ -1286,7 +1372,10 @@ function buildService(ctx: RouteContext) {
       if (p.blocked[target]) endedIn(s).blocks.push(['unblock', id, target]);
       delete p.blocked[target];
       directoryStamp += 1;
-      return yes('unblocked');
+      const direct = s.convs[dmId(id, target)], push: PushList = [];
+      if (direct?.kind === 'dm') push.push(...pinPushes(s, direct));
+      push.push(...visibilityPinPushes(s, id, target, direct?.id));
+      return yes('unblocked', { push });
     },
     /** File a report for moderators. The reporter gets a receipt that survives reloads. */
     report(db: Db, session: SessionRecord, body: SocialBody) {
@@ -1354,14 +1443,61 @@ function buildService(ctx: RouteContext) {
     history(db: Db, session: SessionRecord, rawConv: unknown, after: unknown, opts: { before?: number; limit?: number } = {}) {
       const key = convId(rawConv);
       const { s, p, id } = enter(db, session);
+      pruneConversationHouse(s, key);
       const conv = memberConv(s, id, key);
       if (!conv) return no('not_a_member', 'You are not in that conversation.');
+      reconcilePinsAndQueue(s, conv);
       const from = typeof after === 'number' && Number.isSafeInteger(after) && after >= 0 ? after : 0;
       const take = Math.max(1, Math.min(opts.limit ?? (from === 0 && opts.before === undefined ? LIMITS.openPage : LIMITS.page), PAGE_MAX));
       const visible = conv.messages.filter((message) => message.seq > from && (opts.before === undefined || message.seq < opts.before) && visibleTo(s, id, message));
       const chosen = visible.slice(-take), firstSeq = chosen[0]?.seq ?? opts.before ?? 0;
       const more = from === 0 && conv.messages.some((message) => message.seq < firstSeq && visibleTo(s, id, message));
-      return yes('ok', { conv: summary(s, conv, id), messages: chosen.map((message) => messageView(s, conv, message, id)), read: p.convs[key]!.read, more });
+      return yes('ok', { conv: summary(s, conv, id), messages: chosen.map((message) => messageView(s, conv, message, id)), read: p.convs[key]!.read, more, pins: pinProjection(s, conv, id) });
+    },
+    /** Shared individual-message pins for a current conversation member. */
+    messagePins(db: Db, session: SessionRecord, body: SocialBody) {
+      const key = convId(body.conv), cid = clientId(body.clientId);
+      if (typeof body.scope !== 'string' || body.scope.length < 1 || body.scope.length > 80 ||
+        typeof body.pinRevision !== 'number' || !Number.isSafeInteger(body.pinRevision) || body.pinRevision < 0 ||
+        body.op !== 'set' && body.op !== 'clear-all') throw bad('invalid_message_pin');
+      if (body.op === 'set' && (typeof body.seq !== 'number' || !Number.isSafeInteger(body.seq) || body.seq < 1 ||
+        typeof body.messageVersion !== 'number' || !Number.isSafeInteger(body.messageVersion) || body.messageVersion < 0 ||
+        typeof body.pinned !== 'boolean')) throw bad('invalid_message_pin');
+      ctx.onceId(cid);
+      const { s, id } = enter(db, session);
+      pruneConversationHouse(s, key);
+      const conv = memberConv(s, id, key);
+      if (!conv) return no('not_a_member', 'You are not in that conversation.');
+      const scope = scopeOf(conv);
+      if (body.scope !== scope) return no('conversation_changed', 'That conversation changed. Open it again.');
+      if (!canManagePins(s, conv, id)) return no(conv.kind === 'dm' ? 'blocked' : 'owner_only', conv.kind === 'house' ? 'Only the current host can change shared pins.' : conv.kind === 'group' ? 'Only the person who runs this group can change shared pins.' : 'Shared pins are unavailable while this chat is blocked.');
+      reconcilePinsAndQueue(s, conv);
+      const fingerprint = body.op === 'clear-all'
+        ? [key, scope, 'clear-all', body.pinRevision]
+        : [key, scope, 'set', body.seq, body.messageVersion, body.pinRevision, body.pinned];
+      const outcome = ctx.once(db, session, { id: cid, kind: 'message.pin', fingerprint }, () => {
+        const state = pinsOf(conv);
+        if (state.revision !== body.pinRevision) return no('pins_changed', 'Shared pins changed. Open them again.');
+        if (state.revision >= Number.MAX_SAFE_INTEGER) return no('pins_changed', 'Shared pins cannot be changed.');
+        if (body.op === 'clear-all') {
+          if (!state.entries.length) return yes('updated', { changed: false });
+          conv.pinScope ??= scope; conv.messagePins = { revision: nextPinRevision(state.revision), entries: [] }; trimHistory(s, conv);
+          return yes('updated', { changed: true });
+        }
+        const line = conv.messages.find((message) => message.seq === body.seq);
+        const image = line && pictureView(s, conv, line, id), voice = line && voiceView(s, line, id);
+        if (!line || !globallyPinnable(line) || !visibleTo(s, id, line) || line.img && image?.state !== undefined || line.voice && voice?.state !== undefined) return no('unknown_message', 'That message is not available.');
+        if ((line.version ?? 0) !== body.messageVersion) return no('message_changed', 'That message changed. Open it again.');
+        const at = state.entries.findIndex((entry) => entry.seq === line.seq), already = at >= 0;
+        if (already === body.pinned) return yes('updated', { changed: false });
+        if (body.pinned && state.entries.length >= MESSAGE_PIN_LIMIT) return no('pin_limit', `A conversation can have ${MESSAGE_PIN_LIMIT} shared pins.`);
+        const entries = body.pinned ? [...state.entries, { seq: line.seq, by: id, at: now() }] : state.entries.filter((entry) => entry.seq !== line.seq);
+        conv.pinScope ??= scope; conv.messagePins = { revision: nextPinRevision(state.revision), entries }; trimHistory(s, conv);
+        return yes('updated', { changed: true });
+      });
+      if (!outcome.ok) return outcome;
+      const pins = pinProjection(s, conv, id);
+      return yes('updated', { pins, ...(repeated(outcome) ? { duplicate: true as const } : Reflect.get(outcome, 'changed') === true ? { push: pinPushes(s, conv) } : {}) });
     },
     read(db: Db, session: SessionRecord, body: SocialBody) {
       const key = convId(body.conv);
@@ -1428,7 +1564,7 @@ function buildService(ctx: RouteContext) {
           if (!friends && p.chats.count >= LIMITS.newChatsPerDay) return no('new_chat_limit', `You can start ${LIMITS.newChatsPerDay} chats with new people a day. Add friends to message freely.`);
           if (!friends && media) return no('friends_only', 'Attachments can only be sent to friends.');
           if (!friends) p.chats.count += 1;
-          conv = s.convs[key] = { id: key, kind: 'dm', members: [id, partner].sort(), seq: 0, created: now(), messages: [] };
+          conv = s.convs[key] = { id: key, kind: 'dm', members: [id, partner].sort(), seq: 0, created: now(), messages: [], pinScope: ctx.randomId() };
         }
         if (!friends && !conv.messages.some((item) => item.from === partner) && conv.messages.filter((item) => item.from === id).length >= LIMITS.strangerMessages) {
           return no('awaiting_reply', `${target.name} has not replied yet. You can send ${LIMITS.strangerMessages} messages until they do, or become friends first.`);
@@ -1464,9 +1600,11 @@ function buildService(ctx: RouteContext) {
         const day = lagosTime(now()).day;
         p.voiceCount = { day, count: (p.voiceCount?.day === day ? p.voiceCount.count : 0) + 1 };
       }
+      const pinsChanged = reconcilePins(s, conv);
       const stored = append(s, conv, id, message, cid, false, { ...(forwarded ? { forwarded: true as const } : {}), ...(men.length ? { men } : {}), ...(quoted ? { re: quoted } : {}), ...(picture ? { img: picture.ref } : {}), ...(voice ? { voice, voiceHash: voice.hash } : {}) });
       const push: PushList = [];
       fanOut(s, conv, stored, push, null);
+      if (pinsChanged) push.push(...pinPushes(s, conv));
       notifyMentions(s, conv, id, stored, push);
       return yes('sent', { conv: summary(s, conv, id), message: messageView(s, conv, stored, id), push });
     },
@@ -1492,7 +1630,7 @@ function buildService(ctx: RouteContext) {
           if (why) return why;
           if (!ctx.allow(`social:groupadd:${id}`, LIMITS.groupAddsPerHour, 3600000)) return no('rate_limited', 'You have added a lot of people to groups this hour. Try again later.');
         }
-        const conv = s.convs[`g.${++s.seq}`] = { id: `g.${s.seq}`, kind: 'group', name, owner: id, creator: id, members: [id, ...members], seq: 0, created: now(), messages: [] };
+        const conv = s.convs[`g.${++s.seq}`] = { id: `g.${s.seq}`, kind: 'group', name, owner: id, creator: id, members: [id, ...members], seq: 0, created: now(), messages: [], pinScope: ctx.randomId() };
         for (const member of conv.members) index(s, member, conv);
         const first = append(s, conv, null, `${p.name} created “${name}”.`, null, true);
         fanOut(s, conv, first, push, id);
@@ -1515,7 +1653,7 @@ function buildService(ctx: RouteContext) {
       const say = (line: string) => fanOut(s, conv, append(s, conv, null, line, null, true), push, null);
       if (body.op === 'leave') {
         leaveConv(s, conv, id);
-        if (s.convs[key]) fanOut(s, conv, conv.messages.at(-1)!, push, null);
+        if (s.convs[key]) { fanOut(s, conv, conv.messages.at(-1)!, push, null); push.push(...pinPushes(s, conv)); }
         return yes('left', { push });
       }
       if (conv.owner !== id) return no('owner_only', `Only ${pub(s, conv.owner!).name}, who runs this group, can do that.`);
@@ -1574,6 +1712,8 @@ function buildService(ctx: RouteContext) {
           line.deletedAt = now(); delete line.rx; delete line.re;
           if (line.voice) { endedIn(s).drops.voices.push(line.voice.id); delete line.voice; }
           if (line.img) { line.img.gone = true; endedIn(s).drops.ids.push(line.img.id); delete line.img; }
+          const state = pinsOf(conv), kept = state.entries.filter((entry) => entry.seq !== line.seq);
+          if (kept.length !== state.entries.length) { conv.pinScope ??= scopeOf(conv); conv.messagePins = { revision: nextPinRevision(state.revision), entries: kept }; trimHistory(s, conv); push.push(...pinPushes(s, conv)); }
         }
         const changed = [line];
         for (const quoted of conv.messages) if (quoted.re?.seq === line.seq) {
@@ -1582,6 +1722,7 @@ function buildService(ctx: RouteContext) {
           changed.push(quoted);
         }
         for (const member of conv.members) for (const message of changed) if (visibleTo(s, member, message)) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, message, member) }]);
+        if (pinsOf(conv).entries.some((entry) => entry.seq === line.seq)) push.push(...pinPushes(s, conv));
         return yes('updated');
       });
       if (!outcome.ok) return outcome;
@@ -1611,6 +1752,7 @@ function buildService(ctx: RouteContext) {
       line.version = (line.version ?? 0) + 1;
       const push: PushList = [];
       for (const member of conv.members) if (visibleTo(s, member, line)) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+      if (pinsOf(conv).entries.some((entry) => entry.seq === line.seq)) push.push(...pinPushes(s, conv));
       // The author is told quietly, in Updates, one line for the message: "Joy and 2 others reacted". Never a toast, mail or phone notification.
       const author = line.from;
       if (emoji !== null && author && author !== id && s.players[author] && !blockedEither(s, id, author)) {
@@ -1789,6 +1931,8 @@ function buildService(ctx: RouteContext) {
         if (image.rp.length >= settingsOf().reportsToHide) image.hid = true;
         for (const member of conv.members) if (member !== id) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line!, member) }]);
         push.push([id, { type: 'message-changed', conv: summary(s, conv, id), message: messageView(s, conv, line!, id) }]);
+        if (reconcilePins(s, conv)) push.push(...pinPushes(s, conv));
+        else if (pinsOf(conv).entries.some((entry) => entry.seq === line!.seq)) push.push(...pinPushFor(s, conv, id));
       }
       if (!ctx.allow(`social:report:${id}`, 5, 3600000)) return no('rate_limited', 'You have filed several reports this hour. Try again later.');
       const evidence = picture ? [`Picture ${picture} in ${conv.id}`, ...(line!.body ? [line!.body] : [])] : conv.messages.filter((item) => item.from && item.from !== id).slice(-8).map((item) => `${pub(s, item.from!).name}: ${bodyOf(item)}`);
@@ -1832,6 +1976,8 @@ function buildService(ctx: RouteContext) {
       const receipt: PlayerReportReceipt = { id: report.id, about: report.about, name: report.aboutName, reason, at: report.at, status: report.status };
       p.reports.push(receipt); if (p.reports.length > LIMITS.ownReports) p.reports.shift();
       const push: PushList = conv.members.map(member => [member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+      if (reconcilePins(s, conv)) push.push(...pinPushes(s, conv));
+      else if (pinsOf(conv).entries.some((entry) => entry.seq === line.seq)) push.push(...pinPushFor(s, conv, id));
       notify(s, id, 'report', `Report ${report.id} was received. A moderator will review the voice note.`, { report: report.id }, push);
       return yes('reported', { receipt, push });
     },
@@ -1851,6 +1997,7 @@ function buildService(ctx: RouteContext) {
       else { if (line.voice.gone) return no('gone', 'That recording has expired.'); delete line.voice.hidden; delete line.voice.reports; }
       line.version = (line.version ?? 0) + 1;
       const push: PushList = conv.members.map(member => [member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+      if (reconcilePins(s, conv)) push.push(...pinPushes(s, conv));
       return yes(action === 'remove' ? 'removed' : 'restored', { push });
     },
     /** For the operator: pictures that were reported or hidden, newest first, at most 100. */
@@ -1875,6 +2022,7 @@ function buildService(ctx: RouteContext) {
       const push: PushList = [];
       if (action === 'remove') { if (!line.img.gone) { line.img.gone = true; endedIn(s).drops.ids.push(imageId); } } else { if (line.img.gone) return no('gone', 'That picture has been deleted.'); delete line.img.hid; delete line.img.rp; }
       for (const member of conv.members) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+      if (reconcilePins(s, conv)) push.push(...pinPushes(s, conv));
       return yes(action === 'remove' ? 'removed' : 'restored', { push });
     },
     /** The operator stops (or allows again) one player's pictures. */
@@ -2137,7 +2285,7 @@ function buildService(ctx: RouteContext) {
         if (!sent.ok) return no(sent.code, sent.reason!);
         target.recv.amount += counted;
         // The gift is a line in the two players' chat: "You sent ₦1,500" for the sender, "Ada sent you ₦1,500" for the receiver.
-        const gkey = dmId(id, to), chat = s.convs[gkey] ??= { id: gkey, kind: 'dm', members: [id, to].sort(), seq: 0, created: t, messages: [] };
+        const gkey = dmId(id, to), chat = s.convs[gkey] ??= { id: gkey, kind: 'dm', members: [id, to].sort(), seq: 0, created: t, messages: [], pinScope: ctx.randomId() };
         index(s, id, chat, chat.seq); index(s, to, chat, chat.seq);
         const line = append(s, chat, id, `Sent ${naira(amount)}`, null, false, { gift: { n: amount } });
         const credited = owe(s, db, to, creditCity, { op: 'transfer-in', from: id, name: p.name, amount, transferId }, { keep: true, gift: { conv: gkey, seq: line.seq } });

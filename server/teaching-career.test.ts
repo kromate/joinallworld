@@ -63,3 +63,21 @@ test('a failed final teaching save rolls back wage, XP, performance and receipt 
   assert.equal(repaired.state.cash, state.cash + 3000)
   assert.equal((await f.action(player.cookie, last)).duplicate, true)
 })
+
+
+test('a gate-off HTTP teaching start ignores a request-supplied interactive capability', async t => {
+  const f = await fixture(t)
+  const player = await f.device('Legacy teacher')
+  assert.equal((await f.action(player.cookie, { type: 'apply-job', payload: { id: 'teaching' } })).ok, true)
+  assert.equal((await f.action(player.cookie, { type: 'spot', payload: { id: 'work' } })).ok, true)
+  const started = await f.action(player.cookie, { type: 'activity', payload: { id: 'teaching-shift', interactiveTeachingStarts: true } })
+  assert.equal(started.ok, true)
+  assert.ok(started.state.activeAction?.kind === 'activity')
+  assert.equal(started.state.activeAction.id, 'teaching-shift')
+  assert.equal('teaching' in started.state.activeAction, false)
+  assert.equal('teachingGeneration' in started.state.activeAction, false)
+  assert.equal(started.state.career.teachingGeneration, 0)
+  const lifeReply = await f.request('/api/life?city=lagos', null, player.cookie)
+  assert.equal(lifeReply.status, 200)
+  assert.equal('interactiveTeachingStarts' in (await lifeReply.json() as Record<string, unknown>), false)
+})

@@ -15,7 +15,7 @@ import { normalizeCharacter, swapLegacyLife, legacyLifeCity } from '../character
  * ctx.act carries, so a server-only action type (src/game/registry.ts) is always refused here.
  */
 import type { LifeState } from '../../src/types/life.ts';
-import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../../src/types/protocol.ts';
+import type { ActionRequest, CityId, IceServerConfig, LifeResponse, PublicSession } from '../../src/types/protocol.ts';
 import type { ActionOutcome, CommandOptions, Db, MuteVerdict, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
 import { hasAction } from '../../src/game/registry.ts';
 import { validateName, validateActionPayload, publicSession, isSharedAddress, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.ts';
@@ -253,7 +253,8 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       // (or the request was refused) the route host re-checks the rooms against the stored life instead
       // — core.revalidate(publicId), after every API request (server.js).
       await core.validateMemberships(request.secret, city, state, publicId);
-      return { body: { state, rev }, renew: true };
+      const teachingDisplay: Pick<LifeResponse, 'interactiveTeachingStarts'> = ctx.interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {};
+      return { body: { state, rev, ...teachingDisplay }, renew: true };
     },
     'POST /api/action': async (request) => {
       const body = await request.json();
@@ -263,7 +264,8 @@ export default function coreRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       // saved the rooms are told with the state it produced (a repeat is checked like a first answer).
       // A rejected or unsaved action changed nothing: the route host then re-checks the rooms against
       // the stored life (core.revalidate, server.js).
-      return { body: await executeCommand(ctx, request, body, {}, true, true), renew: true };
+      const outcome = await executeCommand(ctx, request, body, {}, true, true);
+      return { body: ctx.interactiveTeachingStarts === true ? { ...outcome, interactiveTeachingStarts: true } : outcome, renew: true };
     },
   };
 }

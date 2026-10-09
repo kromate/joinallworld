@@ -88,6 +88,8 @@ export interface ClientOptions {
   onNeedName?: (problem?: NameProblem) => void
   /** A session was established or replaced. */
   onSession?: (session: OwnSession, createdNew: boolean) => void
+  /** The teaching display capability was cleared before a character transition; this is not an accepted life event. */
+  onTeachingCapabilityCleared?: () => void
   /** City-rule loader seam used by tests; production uses the registry loader. */
   loadLifeCities?: typeof loadLifeCities
   /** Campus-rule loader seam used by tests. */
@@ -120,6 +122,8 @@ export interface Client {
   readonly online: boolean
   readonly pendingAction: PendingActionIntent | null
   readonly snapshotPhase: SnapshotPhase
+  /** Server-advertised for this in-memory actor/city/connection snapshot only; never saved. */
+  readonly interactiveTeachingStarts: boolean
   api: Api
   fetchJson: Api
   connect(createNew?: boolean, startCity?: string): Promise<boolean>
@@ -245,7 +249,7 @@ export function outgoing<P>(type: string, payload: P): P | Record<string, unknow
  *   'unreachable'  the device is online but the server did not answer (down, timed out, 5xx)
  */
 export function createClient({ fetch = globalThis.fetch?.bind(globalThis), storage, now = Date.now, setTimeout: later = globalThis.setTimeout, clearTimeout: cancel = globalThis.clearTimeout,
-  randomUUID = () => uuid(), isHidden = () => false, isOnline = () => globalThis.navigator?.onLine !== false, onChange = () => {}, onStatus = () => {}, onSessionExpired = () => {}, onNeedName = () => {}, onSession = () => {}, loadLifeCities: loadLife = loadLifeCities, loadCampus = campusFor }: ClientOptions = {}): Client {
+  randomUUID = () => uuid(), isHidden = () => false, isOnline = () => globalThis.navigator?.onLine !== false, onChange = () => {}, onStatus = () => {}, onSessionExpired = () => {}, onNeedName = () => {}, onSession = () => {}, onTeachingCapabilityCleared = () => {}, loadLifeCities: loadLife = loadLifeCities, loadCampus = campusFor }: ClientOptions = {}): Client {
   const cancelTimer = cancel as (handle: unknown) => void;
   let saved: SavedClient | null | undefined;
   let cached: string | null = null;
@@ -258,6 +262,9 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   let snapshotOwner = typeof saved?.ownerId === 'string' && saved.ownerId ? saved.ownerId : null
   let snapshotPhase: SnapshotPhase = saved?.identity ? 'unconfirmed' : 'preview'
   let snapshotGeneration = 0, connectGeneration = 0
+  let teachingCapability: { owner: string; city: CityId; connection: number; snapshot: number } | null = null
+  type TeachingTransition = { connection: number; snapshot: number }
+  let teachingTransition: TeachingTransition | null = null
   const featureRules = (snapshot: unknown) => {
     const waiting = [loadCampus(snapshot), teachingFor(snapshot), homewardFor(snapshot)].filter(value => value !== null)
     return waiting.length > 1 ? Promise.all(waiting) : waiting[0] ?? null
@@ -289,6 +296,11 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     get online() { return client.ready && Boolean(client.session); },
     get pendingAction() { return pendingAction ? structuredClone(pendingAction) : null; },
     get snapshotPhase() { return snapshotPhase; },
+    get interactiveTeachingStarts() {
+      const current = teachingCapability
+      return Boolean(current && client.ready && client.session?.id === current.owner && client.cityId === current.city
+        && connectGeneration === current.connection && snapshotGeneration === current.snapshot)
+    },
     get revision() { return revision; },
     api, fetchJson: fetchScoped, connect, command, retryPendingAction, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
   };
@@ -409,7 +421,27 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
    * it as the life. `rev` is the answer's revision and `askedAt` the value of `taken` when it was asked for; an answer
    * that a newer one overtook is dropped (false).
    */
-  async function accept(next: unknown, rev: number | undefined, askedAt: number, cause: ChangeCause, responseCurrent: () => boolean, responseOwner: string | null): Promise<boolean> {
+  const teachingScope = (): (() => boolean) => {
+    const connection = connectGeneration, snapshot = snapshotGeneration
+    return () => connection === connectGeneration && snapshot === snapshotGeneration
+  }
+  const beginTeachingTransition = (notifyStore = false): TeachingTransition => {
+    snapshotGeneration += 1
+    teachingCapability = null
+    const transition = { connection: connectGeneration, snapshot: snapshotGeneration }
+    teachingTransition = transition
+    if (notifyStore) onTeachingCapabilityCleared()
+    return transition
+  }
+  const finishTeachingTransition = (transition: TeachingTransition): void => {
+    if (teachingTransition !== transition) return
+    teachingTransition = null
+    snapshotGeneration += 1
+    if (teachingCapability?.connection === transition.connection && teachingCapability.snapshot === transition.snapshot) {
+      teachingCapability = { ...teachingCapability, snapshot: snapshotGeneration }
+    }
+  }
+  async function accept(next: unknown, rev: number | undefined, askedAt: number, cause: ChangeCause, responseCurrent: () => boolean, responseOwner: string | null, teachingStarts: boolean, teachingCurrent: () => boolean, transition: TeachingTransition | null = null): Promise<boolean> {
     const overtaken = (): boolean => typeof rev === 'number' && rev < revision && askedAt < taken;
     if (!responseCurrent() || overtaken()) return false;
     await loadLife(next, [client.cityId]); // every city the life refers to, before it is rebuilt
@@ -433,6 +465,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     // (a running campus shuttle, today's quiz) must not drop what the server has just sent.
     client.state = built;
     if (isCityId(client.state.estate.city)) client.cityId = client.state.estate.city as CityId;
+    if (teachingCurrent() && (teachingTransition === null ? transition === null : teachingTransition === transition)) teachingCapability = teachingStarts && responseOwner && responseOwner === client.session?.id
+      ? { owner: responseOwner, city: client.cityId, connection: connectGeneration, snapshot: snapshotGeneration } : null
     persist();
     onChange(client.state, previous, why);
     schedule();
@@ -441,6 +475,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   /** Another session, or none: what was held about revisions belonged to the one before. */
   function forgetRevisions(): void { revision = -1; announced = -1; announcedElsewhere = -1; sentIds.length = 0; }
   function expired() {
+    teachingCapability = null; teachingTransition = null
     forgetRevisions();
     client.ready = false; client.session = null; client.link = 'expired'; cancelTimer(pollTimer);
     status('Device session expired · saved preview preserved', true);
@@ -449,6 +484,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   /** The request did not get an answer worth having: the device is offline, or the server is not reachable. */
   const down = (): LinkState => (isOnline() ? 'unreachable' : 'offline');
   function lost(error: ApiError, text?: string): void {
+    teachingCapability = null; teachingTransition = null
     client.ready = false; client.link = error.code === 'economy_unavailable' ? 'recovery' : down();
     status(client.link === 'recovery' ? error.reason || TEXT.paused.recovery : text || error.message, true);
     onChange(client.state, client.state);
@@ -490,9 +526,10 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   const lifeScope = () => { const generation = identityGeneration, owner = client.session?.id ?? null; return { owner, current: () => owner !== null && generation === identityGeneration && client.session?.id === owner } }
   async function refresh(lostText = 'Reconnect to refresh progress', cause: ChangeCause = 'own', suppliedCurrent?: () => boolean, suppliedOwner?: string | null): Promise<boolean> {
     const scope = lifeScope(), responseCurrent = suppliedCurrent ?? scope.current, responseOwner = suppliedOwner ?? scope.owner
+    const responseTeachingCurrent = teachingScope()
     if (!client.online || !responseCurrent()) return false;
     const askedAt = taken;
-    try { const response = await fetchCurrentLife(client.cityId, responseCurrent); return await accept(response.state, response.rev, askedAt, cause, responseCurrent, responseOwner); }
+    try { const response = await fetchCurrentLife(client.cityId, responseCurrent); return await accept(response.state, response.rev, askedAt, cause, responseCurrent, responseOwner, response.interactiveTeachingStarts === true, responseTeachingCurrent); }
     catch (e) {
       const error = e as ApiError;
       if (!responseCurrent() || error.code === 'stale_identity_response') return false;
@@ -536,7 +573,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   async function connect(createNew = false, startCity?: string): Promise<boolean> {
     const attempt = ++connectGeneration, current = (): boolean => attempt === connectGeneration
-    client.link = 'connecting'; client.refusal = null; client.retryAfter = null;
+    teachingCapability = null; teachingTransition = null; client.ready = false; client.link = 'connecting'; client.refusal = null; client.retryAfter = null;
     status('Connecting…');
     try {
       if (createNew && startCity !== undefined) {
@@ -577,8 +614,9 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       else onSession(client.session, createNew)
       if (!ownsSnapshot) persist()
       const askedAt = taken;
+      const responseTeachingCurrent = teachingScope()
       const first = await fetchCurrentLife(client.cityId, current);
-      if (!current() || !(await accept(first.state, first.rev, askedAt, 'own', current, response.session.id))) return false
+      if (!current() || !(await accept(first.state, first.rev, askedAt, 'own', current, response.session.id, first.interactiveTeachingStarts === true, responseTeachingCurrent))) return false
       client.ready = true; client.link = 'online';
       // Initial accept() runs before readiness; start visible polling once the connection is usable.
       schedule();
@@ -638,6 +676,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (client.session?.id !== intent.sessionId) return { ok: false, code: 'action_recovery_required', reason: 'Reconnect to the same character before retrying this action.' }
     const generation = identityGeneration
     const responseCurrent = (): boolean => isCurrentIntent(intent, generation)
+    const responseTeachingCurrent = teachingScope()
     client.busy = true;
     try {
       const body: Omit<ActionRequest, 'actionId'> & { actionId: string } = { actionId: intent.actionId, cityId: intent.cityId, type: intent.type, ...(intent.payload ? { payload: structuredClone(intent.payload) } : {}) }
@@ -646,7 +685,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       const response = await api<ActionResponse>('/api/action', { method: 'POST', body }, responseCurrent);
       await loadedSnapshot(response, responseCurrent);
       if (!responseCurrent()) return { ok: false, code: 'stale_identity_response' }
-      await accept(response.state, response.rev, askedAt, 'own', responseCurrent, intent.sessionId);
+      await accept(response.state, response.rev, askedAt, 'own', responseCurrent, intent.sessionId, response.interactiveTeachingStarts === true, responseTeachingCurrent);
       if (!responseCurrent()) return { ok: false, code: 'stale_identity_response' }
       clearPending(intent, generation)
       if (!response.ok && client.state.message) status(client.state.message, true);
@@ -657,7 +696,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       if (error.code === 'city_moved' && isCityId(error.city)) {
         try {
           const askedAt = taken, moved = await fetchCurrentLife(error.city, responseCurrent);
-          if (!(await accept(moved.state, moved.rev, askedAt, 'elsewhere', responseCurrent, intent.sessionId))) return { ok: false, code: 'stale_identity_response' };
+          if (!(await accept(moved.state, moved.rev, askedAt, 'elsewhere', responseCurrent, intent.sessionId, moved.interactiveTeachingStarts === true, responseTeachingCurrent))) return { ok: false, code: 'stale_identity_response' };
         } catch (recoveryError) {
           if (!responseCurrent() || (recoveryError as ApiError).code === 'stale_identity_response') return { ok: false, code: 'stale_identity_response' };
           lost(recoveryError as ApiError);
@@ -705,18 +744,20 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   async function switchLegacy(id: string, clientId: string): Promise<CommandResult> {
     if (client.busy || client.state.activeAction) return { ok: false, code: 'busy' };
+    const transition = beginTeachingTransition(true)
     const scope = lifeScope(), generation = identityGeneration
+    const responseTeachingCurrent = teachingScope()
     client.busy = true;
     try {
       const result = await api<{ ok: true; city: string }>('/api/characters/switch', { method: 'POST', body: { id, clientId } }, scope.current);
       const askedAt = taken;
       const current = await fetchCurrentLife(result.city, scope.current);
-      if (!(await accept(current.state, current.rev, askedAt, 'own', scope.current, scope.owner))) return { ok: false, code: 'stale_identity_response' };
+      if (!(await accept(current.state, current.rev, askedAt, 'own', scope.current, scope.owner, current.interactiveTeachingStarts === true, responseTeachingCurrent, transition))) return { ok: false, code: 'stale_identity_response' };
       return { ok: true, code: 'switched' };
     } catch (error) {
       if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
       return { ok: false, code: error instanceof Error ? (error as ApiError).code ?? 'network' : 'network', reason: error instanceof Error ? error.message : 'Could not switch characters.' };
-    } finally { if (generation === identityGeneration) client.busy = false; }
+    } finally { finishTeachingTransition(transition); if (generation === identityGeneration) client.busy = false; }
   }
 
   /** Move to another city's life. Refused mid-action and while offline. */
@@ -724,7 +765,9 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (typeof id !== 'string' || !isCityId(id)) return { ok: false, code: 'invalid_city' };
     if (client.state.activeAction) return { ok: false, code: 'busy', reason: 'Complete or cancel your current action before switching cities.' };
     if (!client.online) { const reason = client.session ? 'Reconnect before switching cities.' : 'Connect before entering a city.'; status(reason, true); return { ok: false, code: 'offline', reason }; }
+    const transition = beginTeachingTransition()
     const scope = lifeScope()
+    const responseTeachingCurrent = teachingScope()
     try {
       await loadCityContent(id);
       if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
@@ -733,7 +776,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       await loadedSnapshot(data, scope.current);
       if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
       client.cityId = id as CityId;
-      if (!(await accept(data.state, data.rev, askedAt, 'own', scope.current, scope.owner))) { if (scope.current()) client.cityId = client.state.estate.city as CityId; return { ok: false, code: 'stale_identity_response' }; }
+      if (!(await accept(data.state, data.rev, askedAt, 'own', scope.current, scope.owner, data.interactiveTeachingStarts === true, responseTeachingCurrent, transition))) { if (scope.current()) client.cityId = client.state.estate.city as CityId; return { ok: false, code: 'stale_identity_response' }; }
       holdCity(id as CityId);
       return { ok: true, code: 'switched' };
     } catch (e) {
@@ -742,7 +785,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       client.cityId = client.state.estate.city as CityId
       if (error.status === 401) expired(); else status(error.message, true);
       return { ok: false, code: error.code || 'network', reason: error.message };
-    }
+    } finally { finishTeachingTransition(transition); }
   }
 
   return client;

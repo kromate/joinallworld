@@ -17,7 +17,7 @@ import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
 import type { Conversation, Message, SearchResult } from '../../../types/social.ts'
 import type { PlayerRef } from '../../../types/protocol.ts'
-import { call, cityId as socialCityId, discard, newClientId, openThread, perform, reconnect as reconnectSocial, retry, send, social, start as startSocial, sync, threadView } from '../social/useSocial.ts'
+import { call, cityId as socialCityId, discard, newClientId, onCallFrame, onSocketOpen, openThread, perform, reconnect as reconnectSocial, retry, send, social, start as startSocial, sync, threadView } from '../social/useSocial.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -50,6 +50,9 @@ import { filterChats, sortChats, threadRows } from './messagesText.ts'
 import Composer from './Composer.vue'
 import MessageAction from './MessageAction.vue'
 import MessageBubble from './MessageBubble.vue'
+import PinnedMessages from './PinnedMessages.vue'
+import { canPinMessage, createMessagePins } from './messagePins.ts'
+import { isMessagePinsFrame } from './messagePinsFrame.ts'
 import FriendPicker from './FriendPicker.vue'
 import GroupManage from './GroupManage.vue'
 import ChatSettings from './ChatSettings.vue'
@@ -60,6 +63,9 @@ const finding = ref(false)
 const props = defineProps<{ params?: unknown }>()
 const { game, shell, api, menu } = useApp()
 const growth = useGrowth()
+const pins = createMessagePins({ fetchJson: game.fetchJson, newId: () => game.newId(), actor: () => game.session.value?.id ?? null, connected: () => game.connected.value })
+const pinPreview = ref<number | null>(null)
+const previewedPin = computed(() => pins.state.view?.items.find((entry) => entry.message.seq === pinPreview.value)?.message ?? null)
 
 /**
  * The social client is reactive (useSocial), and it also calls api.refresh() on every change,
@@ -118,6 +124,10 @@ const socket = computed(() => { void tick.value; return social.socket })
 
 // ---- the thread ----------------------------------------------------------------------------
 const conv = computed<Conversation | null>(() => (ui.open ? me.value?.conversations.find((item) => item.id === ui.open) ?? null : null))
+watch([() => game.session.value?.id ?? null, () => ui.open, () => conv.value?.owner ?? null, () => conv.value?.members.map((member) => member.id).join(',') ?? ''], () => {
+  pinPreview.value = null
+  pins.setContext(game.session.value?.id ?? null, conv.value)
+}, { immediate: true, flush: 'sync' })
 const thread = computed(() => { void tick.value; const now = ui.open ? social.threads.get(ui.open) : undefined; return now ? { loaded: now.loaded, error: now.error } : null })
 const items = computed(() => { void tick.value; return ui.open ? threadView(ui.open) : [] })
 /** The other player of the direct chat on screen, also before its first message (messagesThread.ts partnerOf). */
@@ -354,7 +364,11 @@ onMounted(() => {
   if (ui.open) { social.openConv = ui.open; if (!ui.open.startsWith('to:')) void openThread(ui.open) }
 })
 // Off screen, no conversation is "open": a message that arrives then is unread, with its toast and its badge.
-onBeforeUnmount(() => { social.openConv = null })
+const stopPinFrames = onCallFrame((frame) => {
+  if (isMessagePinsFrame(frame)) pins.receive(frame)
+})
+const stopPinReconnect = onSocketOpen(() => pins.reconnect())
+onBeforeUnmount(() => { social.openConv = null; stopPinFrames(); stopPinReconnect(); pins.dispose() })
 
 defineExpose({
   /** Esc inside a conversation goes back to the list first; the next Esc leaves the app. */
@@ -398,6 +412,15 @@ defineExpose({
         <div v-if="partner && conv?.kind === 'dm'" class="messages-visit"><VisitButton compact :id="partner" :name="title" /></div>
         <div v-if="conv?.kind === 'house'" class="messages-note is-inset">House chat: only the host and the guests inside can read this.</div>
 
+        <PinnedMessages v-if="conv && pins.state.view" :pins="pins.state.view" :kind="conv.kind" :loading="pins.state.loading" :pending="pins.state.pending" :retryable="pins.state.retryable" :disabled="!connected" :error="pins.state.error" @open="(message) => { pinPreview = message?.seq ?? null }" @clear="pins.change({ clearAll: true })" @retry="pins.retryChange" @dismiss="pins.dismissRetry" />
+        <div v-else-if="conv && (pins.state.loading || pins.state.error)" class="messages-note is-inset" :class="{ 'is-warn': pins.state.error }" :role="pins.state.error ? 'alert' : 'status'">
+          {{ pins.state.error || 'Loading pinned messages…' }} <button v-if="pins.state.error" type="button" class="messages-link" @click="pins.load">Try again</button>
+        </div>
+        <section v-if="previewedPin" class="messages-pin-preview" aria-label="Pinned message">
+          <MessageBubble :item="previewedPin" :me-id="me.me.id" :group="isGroup" :head="true" :tail="true" :time="time(previewedPin.at)" :can-react="false" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(previewedPin))" :pinned="true" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" preview @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @player="openCard" @jump="jump" @report-voice="reportVoice" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
+          <button type="button" aria-label="Close pinned message" @click="pinPreview = null">Close</button>
+        </section>
+
         <GroupManage v-if="conv?.kind === 'group' && ui.manage" :conv="conv" :me="me" @left="groupLeft" @player="openCard" />
         <section v-else-if="partner && ui.manage" class="messages-manage" aria-label="Chat options">
           <BaseButton small data-chat="send-money" @click="sendMoneyTo(partner, title)">Send money</BaseButton>
@@ -430,7 +453,7 @@ defineExpose({
                 </span>
               </div>
               <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
-              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
+              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(row.item))" :pinned="Boolean(pins.state.view?.items.some((entry) => entry.message.seq === row.item.seq))" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
             </template>
           </div>
           <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>
@@ -568,6 +591,9 @@ defineExpose({
 .messages-note.is-inset { margin: 6px 14px; }
 .messages-visit { display: flex; margin: 4px 14px 0; }
 .messages-visit:empty { display: none; }
+.messages-pin-preview { flex: none; display: flex; align-items: center; gap: 8px; margin: 6px 10px 0; padding: 8px 10px; border-left: 3px solid var(--c-green-dark); background: var(--c-fill); font-size: 12px; }
+.messages-pin-preview :deep(.bubble-wrap) { flex: 1; min-width: 0; }
+.messages-pin-preview button { min-width: 44px; min-height: 44px; border: 0; background: none; color: var(--c-green-dark); font: 650 12px var(--font); cursor: pointer; }
 .messages-link { min-height: 32px; padding: 0 4px; border: 0; background: none; color: var(--c-green-dark); font: 600 12px var(--font); text-decoration: underline; cursor: pointer; }
 .messages-why { display: block; margin-top: 2px; font-size: 12px; line-height: 1.4; color: var(--c-red); }
 .messages-badge { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; background: var(--c-badge); color: #fff; font-size: 11px; font-weight: 700; line-height: 1; }

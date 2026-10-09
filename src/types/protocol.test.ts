@@ -18,7 +18,7 @@ import { CATEGORIES, STATUSES } from '../../server/support/service.ts'
 import { REPORT_REASONS as SERVER_REPORT_REASONS } from '../../server/social/service.ts'
 import {
   ACTION_DUPLICATE_RESPONSE_KEYS, ACTION_RESPONSE_KEYS, CHAT_FRAME_KEYS, CLIENT_FRAME_TYPES, ERROR_BODY_KEYS, HEALTH_RESPONSE_KEYS, HTTP_ROUTE_KEYS,
-  LIFE_RESPONSE_KEYS, PRESENCE_MEMBER_KEYS, OWN_SESSION_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
+  LIFE_RESPONSE_KEYS, LIFE_RESPONSE_TEACHING_KEYS, ACTION_RESPONSE_TEACHING_KEYS, ACTION_DUPLICATE_RESPONSE_TEACHING_KEYS, PRESENCE_MEMBER_KEYS, OWN_SESSION_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
   WORKER_CLIENT_FRAME_TYPES, WORKER_HOST_ROUTE_KEYS, WORKER_HTTP_ROUTE_KEYS, WORKER_SERVER_FRAME_TYPES,
 } from './protocol.ts'
 import { CONVERSATION_KEYS, HOUSE_VIEW_KEYS, OWN_MESSAGE_KEYS, PEOPLE_LISTING_KEYS, REPORT_REASONS, SOCIAL_LIMITS_KEYS, SOCIAL_OVERVIEW_KEYS } from './social.ts'
@@ -127,6 +127,27 @@ test('the Cloudflare Worker runs the shared registries: the same routes and fram
   for (const file of ['src/community.ts', 'src/app/features/social/socialClient.ts', 'src/tables/client.ts']) assert.match(await readFile(join(root, file), 'utf8'), /type: 'heartbeat-ack'/, file)
   // The documented addition to the health answer (WorkerHealthResponse).
   assert.match(source, /\{ transport: 'cloudflare', buildId: /)
+})
+
+test('only a trusted interactive-teaching host adds the ephemeral display capability to life and action snapshots', async (t) => {
+  const enabled = await fixture(t, { interactiveTeachingStarts: true })
+  const player = await enabled.device('Ada')
+  const lifeResponse = await enabled.request('/api/life?city=lagos', undefined, player.cookie)
+  const life = sameKeys(await body(lifeResponse), LIFE_RESPONSE_TEACHING_KEYS, 'enabled host life snapshot')
+  assert.equal(life.interactiveTeachingStarts, true)
+
+  const action = { actionId: enabled.id(), cityId: 'lagos', type: 'spot', payload: { id: 'trees' } }
+  const accepted = sameKeys(await body(await enabled.request('/api/action', action, player.cookie)), ACTION_RESPONSE_TEACHING_KEYS, 'enabled host action snapshot')
+  assert.equal(accepted.interactiveTeachingStarts, true)
+  const duplicate = sameKeys(await body(await enabled.request('/api/action', action, player.cookie)), ACTION_DUPLICATE_RESPONSE_TEACHING_KEYS, 'enabled host duplicate snapshot')
+  assert.equal(duplicate.interactiveTeachingStarts, true)
+
+  const disabled = await fixture(t)
+  const legacy = await disabled.device('Legacy')
+  const oldLife = await body(await disabled.request('/api/life?city=lagos', undefined, legacy.cookie))
+  assert.deepEqual(Object.keys(oldLife).sort(), [...LIFE_RESPONSE_KEYS].sort(), 'default-off keeps the existing wire keyset')
+  const oldAction = await body(await disabled.request('/api/action', { actionId: disabled.id(), cityId: 'lagos', type: 'spot', payload: { id: 'trees' } }, legacy.cookie))
+  assert.deepEqual(Object.keys(oldAction).sort(), [...ACTION_RESPONSE_KEYS].sort(), 'default-off does not add the capability')
 })
 
 test('core, social, civic and support answers carry exactly the typed keys', async (t) => {

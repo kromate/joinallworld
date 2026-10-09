@@ -3,6 +3,9 @@
 // item, the cash box collected once, rent and winding up — and what it costs in rows: looking at a shop writes none.
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { claimsFor, makeKey, signToken } from '../server/accounts/test-tokens.ts'
+import { TOKEN_KEYS_URL } from '../server/accounts/token.ts'
 import { mkdtemp, readFile, rm } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { tmpdir } from 'node:os'
@@ -10,7 +13,7 @@ import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { JOURNEY_TIME, object } from '../server/testing/cityJourney.ts'
 import type { JourneyDevice } from '../server/testing/cityJourney.ts'
-import { businessJourney } from '../server/testing/businessJourney.ts'
+import { businessFunding, businessJourney } from '../server/testing/businessJourney.ts'
 import type { BusinessHost } from '../server/testing/businessJourney.ts'
 import { lagosTime } from '../src/game/clock.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
@@ -43,25 +46,65 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
   const folder = await mkdtemp(join(tmpdir(), 'business-worker-'))
   const bundle = join(folder, 'worker.mjs')
   const root = fileURLToPath(new URL('..', import.meta.url))
-  // This entry exists only in the test bundle: the Worker's clock stands still, and time passes by moving the stored shops back.
+  const project = 'allworld-business-worker-test', founder = 'business-founder@example.test'
+  const key = await makeKey('business-worker-founder')
+  const clockSeed = '__BUSINESS_TEST_CLOCK_SEED__', clockPath = '/__business-test/clock', origin = 'https://business.test'
+  // This entry exists only in the generated test bundle. create() injects the current monotonic seed before a runtime exists.
   await build({
     stdin: {
       contents: `
-        Date.now = () => ${JOURNEY_TIME};
+        let businessRuntimeNow = Number('${clockSeed}');
+        let businessClockAdvanced = businessRuntimeNow !== ${JOURNEY_TIME};
+        Date.now = () => businessRuntimeNow;
         const host = await import('./deploy/cloudflare-worker.ts');
         export const JoinAllworldState = host.JoinAllworldState;
-        export default host.default;
+        export default {
+          async fetch(request, env, context) {
+            const path = new URL(request.url).pathname;
+            if (path === '${clockPath}') {
+              if (request.method === 'GET') return request.body === null ? Response.json({ now: businessRuntimeNow }) : new Response(null, { status: 400 });
+              if (request.method !== 'POST') return new Response(null, { status: 405 });
+              if (businessClockAdvanced) return new Response(null, { status: 409 });
+              const expected = JSON.stringify({ from: businessRuntimeNow, to: businessRuntimeNow + 60001 });
+              if (await request.text() !== expected) return new Response(null, { status: 400 });
+              businessRuntimeNow += 60001;
+              businessClockAdvanced = true;
+              return Response.json({ now: businessRuntimeNow });
+            }
+            if (path.startsWith('/__business-test/')) return new Response(null, { status: 404 });
+            return host.default.fetch(request, env, context);
+          },
+        };
       `,
       resolveDir: root, sourcefile: 'business-test-worker.ts', loader: 'ts',
     },
     outfile: bundle, bundle: true, format: 'esm', platform: 'neutral', external: ['cloudflare:workers'],
   })
+  const template = await readFile(bundle, 'utf8')
+  assert.equal(template.split(clockSeed).length, 2, 'the generated bundle has exactly one clock seed')
   const options = {
-    name: 'business', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
-    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { ...layoutBindings(), BUILD_ID: 'local-business' },
+    name: 'business', modules: true, compatibilityDate: '2026-10-01',
+    durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } },
+    bindings: { ...layoutBindings(), BUILD_ID: 'local-business', ACCOUNTS_FIREBASE_PROJECT_ID: project,
+      ACCOUNTS_FIREBASE_API_KEY: 'business-edge-key-000000000000000000000000', FOUNDER_EMAIL_SHA256: createHash('sha256').update(founder).digest('hex') },
+    outboundService: async (request: Request): Promise<Response> => {
+      if (request.url.split('?')[0] === TOKEN_KEYS_URL) return new Response(JSON.stringify({ keys: [key.jwk] }), { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=3600' } })
+      return new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } })
+    },
   }
-  const create = () => new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
-  let worker = create()
+  const acknowledged = async (target: { dispatchFetch(url: string, init?: RequestInit): Promise<WorkerResponse> }, expected: number): Promise<void> => {
+    const response = await target.dispatchFetch(origin + clockPath, { method: 'GET' })
+    assert.equal(response.status, 200)
+    assert.deepEqual(object(await response.json()), { now: expected })
+  }
+  const create = (seed: number): WorkerHost => {
+    const script = template.replace(clockSeed, String(seed))
+    assert.equal(script.includes(clockSeed), false)
+    return new Miniflare({ ...convertV4MiniflareOptions({ ...options, script }), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
+  }
+  let fixtureNow = JOURNEY_TIME
+  let worker = create(fixtureNow)
+  const restartAcks: number[] = []
   const responses: WorkerResponse[] = []
   let businessWriteProbe = false
   const stop = async (): Promise<void> => {
@@ -80,7 +123,7 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
     await rm(folder, { recursive: true, force: true })
   })
   await deadline(worker.ready, 'Worker startup')
-  const origin = 'https://business.test'
+  await acknowledged(worker, fixtureNow)
   const send = async (path: string, init: RequestInit): Promise<WorkerResponse> => { const response = await worker.dispatchFetch(origin + path, init); responses.push(response); return response }
   const keyOf = (device: JourneyDevice): string => device.cookie.slice(device.cookie.indexOf('=') + 1)
   const execOf = (db: { exec(query: string, ...bindings: (string | number | null)[]): Promise<unknown[]> }): AsyncExec => (query, ...bindings) => db.exec(query, ...bindings) as Promise<Record<string, unknown>[]>
@@ -89,19 +132,52 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
     const text = await readStoredCollection(execOf(await storage()), 'business')
     return text === undefined ? null : object(JSON.parse(text))
   }
+  const request: BusinessHost['request'] = (path, body, cookie) => send(path, {
+    method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  })
+  const guest = await request('/api/session', { name: 'Business fixture founder' })
+  assert.equal(guest.status, 200)
+  const guestCookie = guest.headers.get('set-cookie')?.split(';')[0]
+  assert.ok(guestCookie)
+  assert.equal((await request('/api/life?city=lagos', undefined, guestCookie)).status, 200)
+  const account = object(await (await request('/api/account', undefined, guestCookie)).json())
+  assert.ok(typeof account.csrf === 'string')
+  const token = await signToken(key, claimsFor(project, JOURNEY_TIME, { subject: 'BusinessFixtureFounder', email: founder, n: 1 }))
+  const signedIn = await request('/api/account/sign-in', { csrf: account.csrf, idToken: token }, guestCookie)
+  assert.equal(signedIn.status, 200)
+  const founderCookie = signedIn.headers.get('set-cookie')?.split(';')[0]
+  assert.ok(founderCookie)
+  assert.equal(object(await (await request('/api/admin/me', undefined, founderCookie)).json()).level, 'root')
+  const founderId = object(object(await (await request('/api/session', undefined, founderCookie)).json()).session).id
+  assert.ok(typeof founderId === 'string')
+  const funding = businessFunding(request, founderCookie, async clientId => {
+    const rows = await (await storage()).exec('SELECT value FROM once_receipts WHERE sender = ? AND id = ?', founderId, clientId)
+    const receipt = rows[0]?.value
+    assert.ok(receipt === undefined || typeof receipt === 'string')
+    return receipt ?? null
+  })
+  // Legacy collection-write probes below retain their separate raw setup; the shared journey cannot call this helper.
+  const edit = async (device: JourneyDevice, city: string, change: (state: Record<string, unknown>) => void): Promise<void> => {
+    const rows = await (await storage()).exec('SELECT value FROM sessions WHERE secret = ?', keyOf(device))
+    assert.equal(rows.length, 1)
+    const session = object(JSON.parse(String(object(rows[0]).value)))
+    change(object(object(object(session.cities)[city]).state))
+    await (await storage()).exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), keyOf(device))
+  }
   const host: BusinessHost = {
-    now: () => JOURNEY_TIME,
-    request: (path, body, cookie) => send(path, {
-      method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) },
-      ...(body ? { body: JSON.stringify(body) } : {}),
-    }),
-    elapse: async () => { /* nothing in this run waits for a timed action */ },
-    edit: async (device, city, change) => {
-      const rows = await (await storage()).exec('SELECT value FROM sessions WHERE secret = ?', keyOf(device))
+    now: () => fixtureNow,
+    request,
+    funding,
+    elapse: async (device, city, ms) => {
+      const db = await storage()
+      const rows = await db.exec('SELECT value FROM sessions WHERE secret = ?', keyOf(device))
       assert.equal(rows.length, 1)
       const session = object(JSON.parse(String(object(rows[0]).value)))
-      change(object(object(object(session.cities)[city]).state))
-      await (await storage()).exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), keyOf(device))
+      const entry = object(object(session.cities)[city])
+      assert.ok(typeof entry.updatedAt === 'number')
+      entry.updatedAt -= ms
+      await db.exec('UPDATE sessions SET value = ? WHERE secret = ?', JSON.stringify(session), keyOf(device))
     },
     // The clock stands still, so the shops are moved back instead: everything a shop dates itself by.
     age: async (ms) => {
@@ -117,13 +193,37 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
       await (await storage()).exec(`CREATE TRIGGER fail_business_receipt BEFORE INSERT ON once_receipts WHEN NEW.id = '${requestId}' BEGIN SELECT RAISE(ABORT, 'injected business receipt failure'); END`)
     },
     recoverPersistence: async () => { await (await storage()).exec('DROP TRIGGER fail_business_receipt') },
-    restart: async () => { await stop(); worker = create(); await deadline(worker.ready, 'Worker restart') },
+    restart: async () => {
+      await stop()
+      worker = create(fixtureNow)
+      await deadline(worker.ready, 'Worker restart')
+      await acknowledged(worker, fixtureNow)
+      restartAcks.push(fixtureNow)
+    },
+    advanceAdminWindow: async () => {
+      assert.equal(fixtureNow, JOURNEY_TIME, 'the fixture clock advances once')
+      const next = JOURNEY_TIME + 60001
+      assert.equal((await worker.dispatchFetch(origin + clockPath, { method: 'PUT' })).status, 405)
+      assert.equal((await worker.dispatchFetch(origin + '/__business-test/unexpected', { method: 'GET' })).status, 404)
+      assert.equal((await worker.dispatchFetch(origin + clockPath, { method: 'POST', body: '{}' })).status, 400)
+      await acknowledged(worker, fixtureNow)
+      const body = JSON.stringify({ from: fixtureNow, to: next })
+      const response = await worker.dispatchFetch(origin + clockPath, { method: 'POST', body })
+      assert.equal(response.status, 200)
+      assert.deepEqual(object(await response.json()), { now: next })
+      await acknowledged(worker, next)
+      assert.equal((await worker.dispatchFetch(origin + clockPath, { method: 'POST', body })).status, 409, 'a second clock advance is refused')
+      fixtureNow = next
+    },
     hasReceipt: async (device, requestId) => {
       const rows = await (await storage()).exec('SELECT COUNT(*) AS n FROM once_receipts WHERE sender = (SELECT public_id FROM sessions WHERE secret = ?) AND id = ?', keyOf(device), requestId)
       return Number(object(rows[0]).n) > 0
     },
   }
   const result = await businessJourney(host)
+  assert.deepEqual(restartAcks, [JOURNEY_TIME, JOURNEY_TIME + 60001], 'both actual restarts preserve the authoritative fixture clock')
+  assert.equal(host.now(), JOURNEY_TIME + 60001)
+  await acknowledged(worker, host.now())
   assert.deepEqual([result.setup, result.bought, result.raced, result.closed], [15000, 1400, ['bought', 'sold_out'], true])
 
   // ---- rows: a new shop is one collection row; looking at it, as owner or as passer-by, is none --------------------------
@@ -134,7 +234,7 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
   }
   const dele = await cookieOf('Dele')
   assert.equal((await host.request('/api/life?city=lagos', undefined, dele.cookie)).status, 200)
-  await host.edit(dele, 'lagos', (state) => { state.cash = 50000; state.ledger = []; state.ledgerDays = []; state.location = 'market' })
+  await edit(dele, 'lagos', (state) => { state.cash = 50000; state.ledger = []; state.ledgerDays = []; state.location = 'market' })
   const businessDb = await storage()
   await businessDb.exec('CREATE TABLE test_business_write_probe (writes INTEGER NOT NULL)')
   await businessDb.exec('INSERT INTO test_business_write_probe(writes) VALUES(0)')

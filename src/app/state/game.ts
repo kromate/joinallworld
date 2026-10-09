@@ -121,6 +121,7 @@ export function createGame(options: GameOptions = {}): Game {
     onChange(next, previous, cause = 'own') { publish(); if (client.snapshotPhase === 'available') { announce(next, cause === 'own'); telemetry.state(next, previous, client); emit('accepted', next, previous, cause) } },
     onSessionExpired() { publish(); emit('expired') },
     onNeedName(problem) { publish(); telemetry.needName(); emit('needName', problem ?? null) },
+    onTeachingCapabilityCleared() { publish() },
     // The session is known a moment before its life is (GET /api/life follows): 'connected' is published with that life,
     // not here, so no panel is drawn as connected over the placeholder state (the goal chip would offer character creation
     // to a life that has long moved in).
@@ -133,6 +134,7 @@ export function createGame(options: GameOptions = {}): Game {
   const session = shallowRef<OwnSession | null>(client.session)
   const pendingAction = shallowRef<PendingActionIntent | null>(client.pendingAction)
   const snapshotPhase = ref<SnapshotPhase>(client.snapshotPhase)
+  const interactiveTeachingStarts = ref(client.interactiveTeachingStarts)
   const cityId = ref<CityId>(client.cityId)
   const online = ref(client.online)
   const connected = computed(() => online.value)
@@ -145,6 +147,7 @@ export function createGame(options: GameOptions = {}): Game {
     session.value = client.session
     pendingAction.value = client.pendingAction
     snapshotPhase.value = client.snapshotPhase
+    interactiveTeachingStarts.value = client.interactiveTeachingStarts
     cityId.value = client.cityId
     if (withOnline) online.value = client.online
   }
@@ -173,7 +176,7 @@ export function createGame(options: GameOptions = {}): Game {
     const catalogue = contentFor(city)
     const now = client.serverNow()
     return {
-      ...viewLife(life, { now, cityId: city }),
+      ...viewLife(life, { now, cityId: city, interactiveTeachingStarts: interactiveTeachingStarts.value }),
       cityId: city, city: clientCity(city), connected: online.value, link: link.value, session: session.value, net: net.value, storage: storage.value,
       // The life's own name (the server keeps it equal to the session nickname), so a rename shows as soon as the next state arrives.
       name: life.name || client.identity.name, now,
@@ -225,7 +228,9 @@ export function createGame(options: GameOptions = {}): Game {
   }
 
   async function switchCity(id: string): Promise<SwitchCityResult> {
-    const result = await client.switchCity(id)
+    const pending = client.switchCity(id)
+    publish()
+    const result = await pending
     publish()
     if (!result.ok && result.reason) toast(result.reason, 'error')
     return result

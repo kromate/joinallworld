@@ -4,20 +4,20 @@ import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
-import { fixture, snapshot } from './test-fixture.ts';
+import { fixture, flakyDisk, snapshot } from './test-fixture.ts';
 import type { Device, FixtureOptions } from './test-fixture.ts';
 import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts';
 import { emailHash } from './social/founder.ts';
 import { cleanPicture, sniff } from './social/images.ts';
 import { SHIFT_SECONDS } from '../src/game/content/jobs.ts';
-import type { Conversation, Message, SocialOverview } from '../src/types/social.ts';
+import type { Conversation, Message, MessagePinsView, SocialOverview } from '../src/types/social.ts';
 import type { ServerFrame } from '../src/types/protocol.ts';
 import type { SocialCollection } from './types.ts';
 
 type Fixture = Awaited<ReturnType<typeof fixture>>;
 interface Reply {
   status: number; error: string; ok: boolean; code: string; reason: string; duplicate: boolean
-  conv: Conversation; conversations: Conversation[]; messages: Message[]; message: Message; updates: SocialOverview['updates']; prefs: SocialOverview['prefs']
+  conv: Conversation; conversations: Conversation[]; messages: Message[]; message: Message; updates: SocialOverview['updates']; prefs: SocialOverview['prefs']; pins?: MessagePinsView
   results: { id: string; name: string }[]; friends: SocialOverview['friends']; limits: SocialOverview['limits']; receipt: { id: string }; pictures: { id: string; reports: number; hidden: boolean; removed: boolean }[]
   state: { cash: number }
   [key: string]: unknown
@@ -46,6 +46,105 @@ async function until(peer: { next(): Promise<ServerFrame> }, type: string): Prom
 }
 
 // ---- groups -------------------------------------------------------------------------------------------------
+
+test('shared message pins: DM members and group owners manage exact current projections', async (t) => {
+  const f = await fixture(t);
+  const [ada, bola, chi] = await people(f, ['Ada', 'Bola', 'Chidi']);
+  await befriend(f, ada, bola); await befriend(f, ada, chi);
+
+  const dmLine = await post(f, '/api/social/messages', { to: bola.id, body: 'keep this', clientId: f.id() }, ada);
+  const dm = dmLine.conv.id, dmHistory = await get(f, `/api/social/conversations/${dm}`, bola);
+  const dmScope = defined(dmHistory.pins).scope, dmIntent = f.id();
+  const dmPinned = await post(f, `/api/social/conversations/${dm}/pins`, { scope: dmScope, pinRevision: 0, clientId: dmIntent, op: 'set', seq: dmLine.message.seq, messageVersion: 0, pinned: true }, bola);
+  assert.deepEqual([dmPinned.pins?.revision, dmPinned.pins?.items[0]?.message.body], [1, 'keep this']);
+  assert.equal((await get(f, `/api/social/conversations/${dm}`, ada)).pins?.items[0]?.message.body, 'keep this');
+  await post(f, '/api/social/block', { id: ada.id, cityId: 'lagos' }, bola);
+  assert.deepEqual([(await get(f, `/api/social/conversations/${dm}`, bola)).pins?.canManage, (await get(f, `/api/social/conversations/${dm}`, bola)).pins?.items.length], [false, 0]);
+  await post(f, '/api/social/unblock', { id: ada.id }, bola);
+  assert.deepEqual([(await get(f, `/api/social/conversations/${dm}`, bola)).pins?.canManage, (await get(f, `/api/social/conversations/${dm}`, bola)).pins?.items[0]?.message.body], [true, 'keep this']);
+  assert.equal((await post(f, `/api/social/conversations/${dm}/pins`, { scope: dmScope, pinRevision: 0, clientId: dmIntent, op: 'set', seq: dmLine.message.seq, messageVersion: 0, pinned: true }, bola)).duplicate, true);
+  const conflict = await post(f, `/api/social/conversations/${dm}/pins`, { scope: dmScope, pinRevision: 1, clientId: dmIntent, op: 'clear-all' }, bola);
+  assert.deepEqual([conflict.status, conflict.error], [409, 'client_id_conflict']);
+  await befriend(f, ada, bola);
+
+  const made = await group(f, ada, 'Pin crew', [bola, chi]), gid = made.conv.id;
+  const lines = [];
+  for (const body of ['one', 'two', 'three', 'four']) lines.push((await say(f, ada, gid, body)).message);
+  let pins = defined((await get(f, `/api/social/conversations/${gid}`, ada)).pins);
+  for (const line of lines.slice(0, 3)) {
+    const changed = await post(f, `/api/social/conversations/${gid}/pins`, { scope: pins.scope, pinRevision: pins.revision, clientId: f.id(), op: 'set', seq: line.seq, messageVersion: line.version ?? 0, pinned: true }, ada);
+    pins = defined(changed.pins);
+  }
+  assert.deepEqual(pins.items.map((item) => item.message.body), ['one', 'two', 'three']);
+  assert.equal((await post(f, `/api/social/conversations/${gid}/pins`, { scope: pins.scope, pinRevision: pins.revision, clientId: f.id(), op: 'set', seq: lines[3]!.seq, messageVersion: 0, pinned: true }, ada)).code, 'pin_limit');
+  assert.equal((await post(f, `/api/social/conversations/${gid}/pins`, { scope: pins.scope, pinRevision: pins.revision, clientId: f.id(), op: 'clear-all' }, bola)).code, 'owner_only');
+  await f.server.store.transact((db) => {
+    const conv = defined(defined(db.social).convs[gid]);
+    for (let i = 0; i < 200; i += 1) conv.messages.push({ seq: ++conv.seq, from: ada.id, body: `retained-${i}`, at: f.now() + i });
+  });
+  await say(f, ada, gid, 'trim now');
+  const retained = defined((await social(f)).convs[gid]);
+  assert.deepEqual([retained.messages.length, retained.messages.filter((line) => retained.messagePins?.entries.some((pin) => pin.seq === line.seq)).length], [200, 3]);
+  assert.ok(lines.slice(0, 3).every((line) => retained.messages.some((kept) => kept.seq === line.seq)), 'all three old pins survive beside the newest 197 nonpins');
+  await post(f, `/api/social/groups/${gid}`, { op: 'leave' }, ada);
+  const inherited = defined((await get(f, `/api/social/conversations/${gid}`, bola)).pins);
+  assert.equal(inherited.canManage, true);
+  const unpinIntent = f.id(), unpinBody = { scope: inherited.scope, pinRevision: inherited.revision, clientId: unpinIntent, op: 'set', seq: lines[0]!.seq, messageVersion: lines[0]!.version ?? 0, pinned: false };
+  const unpinned = await post(f, `/api/social/conversations/${gid}/pins`, unpinBody, bola);
+  assert.deepEqual([unpinned.pins?.revision, unpinned.pins?.items.length], [4, 2]);
+  assert.equal(defined((await social(f)).convs[gid]).messages.some((line) => line.seq === lines[0]!.seq), true, 'under the 200-record cap an unpinned line remains ordinary history');
+  await say(f, bola, gid, 'one more retained line');
+  assert.equal(defined((await social(f)).convs[gid]).messages.some((line) => line.seq === lines[0]!.seq), false, 'an old record loses its retention exemption immediately when unpinned');
+  const replayedUnpin = await post(f, `/api/social/conversations/${gid}/pins`, unpinBody, bola);
+  assert.deepEqual([replayedUnpin.duplicate, replayedUnpin.pins?.revision, replayedUnpin.pins?.items.length], [true, 4, 2], 'a successful unpin replays current projection after its target has been evicted');
+  const cleared = await post(f, `/api/social/conversations/${gid}/pins`, { scope: inherited.scope, pinRevision: 4, clientId: f.id(), op: 'clear-all' }, bola);
+  assert.deepEqual([cleared.pins?.revision, cleared.pins?.items.length], [5, 0]);
+});
+
+test('shared message pin state and its receipt roll back together when persistence fails', async (t) => {
+  const disk = flakyDisk(), f = await fixture(t, { disk, lazyFlushMs: 0 });
+  const [ada, bola] = await people(f, ['Ada', 'Bola']);
+  await befriend(f, ada, bola);
+  const sent = await post(f, '/api/social/messages', { to: bola.id, body: 'durable pin', clientId: f.id() }, ada);
+  const scope = defined((await get(f, `/api/social/conversations/${sent.conv.id}`, ada)).pins).scope;
+  const intent = { scope, pinRevision: 0, clientId: f.id(), op: 'set', seq: sent.message.seq, messageVersion: 0, pinned: true };
+  disk.fail = 'ENOSPC';
+  assert.equal((await post(f, `/api/social/conversations/${sent.conv.id}/pins`, intent, ada)).status, 503);
+  assert.deepEqual([(await get(f, `/api/social/conversations/${sent.conv.id}`, ada)).pins?.revision, (await get(f, `/api/social/conversations/${sent.conv.id}`, ada)).pins?.items.length], [0, 0]);
+  disk.fail = null;
+  const retried = await post(f, `/api/social/conversations/${sent.conv.id}/pins`, intent, ada);
+  assert.deepEqual([retried.status, retried.duplicate, retried.pins?.revision, retried.pins?.items[0]?.message.body], [200, undefined, 1, 'durable pin']);
+  assert.equal((await post(f, `/api/social/conversations/${sent.conv.id}/pins`, intent, ada)).duplicate, true);
+});
+
+test('house shared pins belong to one active visit cohort and only its host manages them', async (t) => {
+  const f = await fixture(t);
+  const [host, guest, outsider] = await people(f, ['Host', 'Guest', 'Outsider']);
+  await f.action(host.cookie, { type: 'travel', id: 'home', mode: 'trek' });
+  f.advance(20000);
+  const home = await f.socket(host);
+  home.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'home' }));
+  await until(home, 'presence');
+  const enter = async () => {
+    assert.equal((await post(f, '/api/social/house/knock', { host: host.id, cityId: 'lagos' }, guest)).code, 'knocking');
+    assert.equal((await post(f, '/api/social/house/answer', { visitor: guest.id, answer: 'accept' }, host)).code, 'accepted');
+  };
+  await enter();
+  const key = `h.${host.id}`, line = await say(f, guest, key, 'house words');
+  const opened = await get(f, `/api/social/conversations/${key}`, host), scope = defined(opened.pins).scope, intent = f.id();
+  const pinned = await post(f, `/api/social/conversations/${key}/pins`, { scope, pinRevision: 0, clientId: intent, op: 'set', seq: line.message.seq, messageVersion: 0, pinned: true }, host);
+  assert.deepEqual([pinned.pins?.revision, pinned.pins?.items[0]?.message.body], [1, 'house words']);
+  assert.deepEqual([(await get(f, `/api/social/conversations/${key}`, guest)).pins?.canManage, (await post(f, `/api/social/conversations/${key}/pins`, { scope, pinRevision: 1, clientId: f.id(), op: 'clear-all' }, guest)).code], [false, 'owner_only']);
+  assert.equal((await get(f, `/api/social/conversations/${key}`, outsider)).code, 'not_a_member');
+  f.advance(30 * 60000 + 1);
+  assert.equal((await get(f, `/api/social/conversations/${key}`, guest)).code, 'not_a_member', 'history prunes this house even while the hourly sweep is throttled');
+  assert.equal((await post(f, `/api/social/conversations/${key}/pins`, { scope, pinRevision: 0, clientId: intent, op: 'set', seq: line.message.seq, messageVersion: 0, pinned: true }, host)).code, 'not_a_member', 'an exact old successful receipt cannot acknowledge an expired house cohort');
+  await enter();
+  const recreated = defined((await get(f, `/api/social/conversations/${key}`, host)).pins);
+  assert.notEqual(recreated.scope, scope);
+  assert.deepEqual([recreated.revision, recreated.items.length], [0, 0]);
+  assert.equal((await post(f, `/api/social/conversations/${key}/pins`, { scope, pinRevision: 0, clientId: intent, op: 'set', seq: line.message.seq, messageVersion: 0, pinned: true }, host)).code, 'conversation_changed');
+});
 
 test('groups: who can add whom, roles, mute, pins, hide, hand-over and system lines', async (t) => {
   const f = await fixture(t);
@@ -228,6 +327,19 @@ test('conversations stored before groups had roles, mutes, mentions, replies or 
   assert.equal(old.unread, 1); assert.equal(old.muted, undefined); assert.equal(old.pinned, undefined); assert.equal(old.mentions, undefined);
   const history = await get(f, '/api/social/conversations/g.900', ada);
   assert.deepEqual(history.messages.map((m) => [m.body, m.mentions, m.replyTo, m.image, m.gift]), [['Ada created “Old crew”.', undefined, undefined, undefined, undefined], ['old words', undefined, undefined, undefined, undefined]]);
+  assert.deepEqual([history.pins?.revision, history.pins?.items.length, history.pins?.scope.startsWith('legacy.')], [0, 0, true]);
+  for (const corrupt of [null, false]) {
+    await f.server.store.transact((db) => { Reflect.set(defined(db.social).convs['g.900']!, 'messagePins', corrupt); });
+    const refused = await get(f, '/api/social/conversations/g.900', ada);
+    assert.deepEqual([refused.status, refused.error], [500, 'invalid_message_pins']);
+  }
+  await f.server.store.transact((db) => {
+    const conv = defined(defined(db.social).convs['g.900']);
+    conv.messagePins = { revision: Number.MAX_SAFE_INTEGER, entries: [{ seq: 2, by: ada.id, at: 2 }] };
+  });
+  const maxed = await post(f, '/api/social/conversations/g.900/pins', { scope: history.pins?.scope, pinRevision: Number.MAX_SAFE_INTEGER, clientId: f.id(), op: 'clear-all' }, ada);
+  assert.deepEqual([maxed.status, maxed.ok, maxed.code], [200, false, 'pins_changed']);
+  assert.equal(defined((await social(f)).convs['g.900']).messagePins?.revision, Number.MAX_SAFE_INTEGER, 'overflow refusal preserves the malformed boundary state for diagnosis');
   assert.equal((await say(f, ada, 'g.900', 'new words')).code, 'sent');
   assert.equal((await post(f, '/api/social/groups/g.900', { op: 'rename', name: 'Older crew' }, ada)).conv.name, 'Older crew');
 });
@@ -489,6 +601,9 @@ test('pictures in groups, the founder rule, reports that hide a picture, and ope
   const shot = await upload(ada, { conv: gid });
   assert.equal(shot.code, 'sent');
   const id = defined(shot.message.image).id;
+  const beforePin = defined((await get(f, `/api/social/conversations/${gid}`, ada)).pins);
+  const picturePin = await post(f, `/api/social/conversations/${gid}/pins`, { scope: beforePin.scope, pinRevision: beforePin.revision, clientId: f.id(), op: 'set', seq: shot.message.seq, messageVersion: shot.message.version ?? 0, pinned: true }, ada);
+  assert.equal(picturePin.pins?.items[0]?.message.image?.id, id);
   assert.equal((await fetchImage(id, chi)).status, 200);
   // A report hides it for the reporter at once and for everyone once two players have reported.
   assert.equal((await post(f, '/api/social/reports', { conv: gid, image: id, reason: 'harassment' }, bola)).code, 'reported');
@@ -496,10 +611,12 @@ test('pictures in groups, the founder rule, reports that hide a picture, and ope
   assert.equal((await fetchImage(id, bola)).status, 404);
   assert.equal((await fetchImage(id, chi)).status, 200);
   assert.equal((await get(f, `/api/social/conversations/${gid}`, bola)).messages.at(-1)?.image?.state, 'reported');
+  assert.deepEqual([(await get(f, `/api/social/conversations/${gid}`, bola)).pins?.items.length, (await get(f, `/api/social/conversations/${gid}`, chi)).pins?.items[0]?.message.image?.id], [0, id], 'a reporter cannot use the shared pin to recover hidden media, while another viewer still can');
   assert.equal((await post(f, '/api/social/reports', { conv: gid, image: id, reason: 'spam' }, ada)).code, 'unknown_picture', 'not your own');
   assert.equal((await post(f, '/api/social/reports', { conv: gid, image: id, reason: 'spam' }, chi)).code, 'reported');
   assert.equal((await fetchImage(id, ada)).status, 404, 'hidden for everyone pending review');
   assert.equal((await get(f, `/api/social/conversations/${gid}`, ada)).messages.at(-1)?.image?.state, 'hidden');
+  assert.deepEqual([(await get(f, `/api/social/conversations/${gid}`, ada)).pins?.revision, (await get(f, `/api/social/conversations/${gid}`, ada)).pins?.items.length], [2, 0], 'global quarantine removes the pin once and exposes no stale media row');
   // The operator sees it, looks at it, and decides.
   const mod = (path: string, body?: object) => fetch(f.base + path, { method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer ${'m'.repeat(32)}`, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined });
   assert.equal((await fetch(f.base + '/api/mod/pictures')).status, 401);
@@ -509,6 +626,7 @@ test('pictures in groups, the founder rule, reports that hide a picture, and ope
   assert.equal(looked.status, 200); assert.equal(looked.headers.get('content-type'), 'image/jpeg');
   assert.equal(((await (await mod(`/api/mod/pictures/${id}`, { action: 'restore' })).json()) as Reply).code, 'restored');
   assert.equal((await fetchImage(id, ada)).status, 200);
+  assert.equal((await get(f, `/api/social/conversations/${gid}`, ada)).pins?.items.length, 0, 'restoring media does not recreate a removed pin');
   assert.equal(((await (await mod(`/api/mod/pictures/${id}`, { action: 'remove' })).json()) as Reply).code, 'removed');
   assert.equal((await fetchImage(id, chi)).status, 404);
   assert.equal((await get(f, `/api/social/conversations/${gid}`, chi)).messages.at(-1)?.image?.state, 'expired');

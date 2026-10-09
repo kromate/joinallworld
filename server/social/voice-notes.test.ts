@@ -7,6 +7,13 @@ import { fixture } from '../test-fixture.ts'
 import { createFileVoices } from './voice-files.ts'
 import { runVoiceJourney, syntheticWebmOpus, type VoiceAnswer, type VoiceJourneyHost } from '../testing/voiceJourney.ts'
 
+interface PinVoiceMessage { seq: number; version?: number; voice?: { id: string; state?: string } }
+interface PinVoiceReply {
+  status: number; code?: string; conv?: { id: string }; message?: PinVoiceMessage; messages?: PinVoiceMessage[]
+  pins?: { scope: string; revision: number; items: { message: PinVoiceMessage }[] }
+}
+const required = <T>(value: T | null | undefined): T => { if (value === null || value === undefined) throw new TypeError('Expected response field'); return value }
+
 test('Node voice-note HTTP journey enforces private playback, retry identity, revocation, reports, and deletion cleanup', async t => {
   const f = await fixture(t)
   const request = (path: string, body: unknown | null, who?: { cookie: string }, expectedActor?: string): Promise<Response> => expectedActor === undefined
@@ -37,6 +44,62 @@ test('Node voice-note HTTP journey enforces private playback, retry identity, re
     id: f.id,
   }
   await runVoiceJourney(host)
+})
+
+test('Node shared voice pins refresh for blocks and reports, then reconcile at expiry', async t => {
+  const f = await fixture(t)
+  const json = async (path: string, body: unknown | null, who: { cookie: string }) => {
+    const response = await f.request(path, body ?? undefined, who.cookie)
+    return { status: response.status, ...await response.json() as object } as PinVoiceReply
+  }
+  const actors = await Promise.all(['Pin Ada', 'Pin Bola', 'Pin Chi'].map(async name => {
+    const actor = await f.device(name); await json('/api/life?city=lagos', null, actor); await json('/api/social/me', null, actor); return actor
+  }))
+  const [ada, bola, chi] = actors as [typeof actors[number], typeof actors[number], typeof actors[number]]
+  for (const other of [bola, chi]) {
+    assert.equal((await json('/api/social/friends/request', { to: other.id, cityId: 'lagos' }, ada)).code, 'requested')
+    assert.equal((await json('/api/social/friends/answer', { from: ada.id, accept: true, cityId: 'lagos' }, other)).code, 'accepted')
+  }
+  const group = await json('/api/social/groups', { name: 'Pinned voices', members: [bola.id, chi.id], clientId: f.id() }, ada)
+  const conv = required(group.conv).id, data = Buffer.from(syntheticWebmOpus()).toString('base64')
+  const sent = await json('/api/social/voice', { conv, clientId: f.id(), data }, ada)
+  const opened = await json(`/api/social/conversations/${conv}`, null, ada)
+  const sentMessage = required(sent.message), sentVoice = required(sentMessage.voice), openedPins = required(opened.pins)
+  const pin = await json(`/api/social/conversations/${conv}/pins`, { scope: openedPins.scope, pinRevision: 0, clientId: f.id(), op: 'set', seq: sentMessage.seq, messageVersion: sentMessage.version ?? 0, pinned: true }, ada)
+  assert.equal(required(required(required(pin.pins).items[0]).message.voice).id, sentVoice.id)
+
+  const chiSocket = await f.socket(chi), adaSocket = await f.socket(ada)
+  const nextPins = async (peer: Awaited<ReturnType<typeof f.socket>>) => {
+    for (let attempt = 0; attempt < 10; attempt += 1) { const frame = await peer.next(); if (frame.type === 'message-pins') return frame.pins }
+    throw new Error('Expected message-pins frame')
+  }
+  assert.equal((await json('/api/social/block', { id: ada.id, cityId: 'lagos' }, chi)).code, 'blocked')
+  assert.equal((await nextPins(chiSocket)).items.length, 0)
+  assert.equal(required((await json(`/api/social/conversations/${conv}`, null, chi)).pins).items.length, 0)
+  assert.equal((await json('/api/social/unblock', { id: ada.id }, chi)).code, 'unblocked')
+  assert.equal((await nextPins(chiSocket)).items.length, 1)
+  assert.equal(required(required(required(required((await json(`/api/social/conversations/${conv}`, null, chi)).pins).items[0]).message.voice).id), sentVoice.id)
+  assert.equal((await json('/api/social/reports', { conv, voice: sentVoice.id, reason: 'other' }, chi)).code, 'reported')
+  assert.equal((await nextPins(chiSocket)).items.length, 0)
+  assert.deepEqual([required((await json(`/api/social/conversations/${conv}`, null, chi)).pins).items.length, required((await json(`/api/social/conversations/${conv}`, null, bola)).pins).items.length], [0, 1])
+  assert.equal((await json('/api/social/reports', { conv, voice: sentVoice.id, reason: 'other' }, bola)).code, 'reported')
+  assert.deepEqual([(await nextPins(adaSocket)).revision, (await nextPins(chiSocket)).revision], [2, 2])
+  assert.deepEqual([required((await json(`/api/social/conversations/${conv}`, null, ada)).pins).revision, required((await json(`/api/social/conversations/${conv}`, null, ada)).pins).items.length], [2, 0])
+
+  const fresh = await json('/api/social/voice', { conv, clientId: f.id(), data }, ada)
+  const freshMessage = required(fresh.message)
+  const repinned = await json(`/api/social/conversations/${conv}/pins`, { scope: openedPins.scope, pinRevision: 2, clientId: f.id(), op: 'set', seq: freshMessage.seq, messageVersion: freshMessage.version ?? 0, pinned: true }, ada)
+  assert.equal(required(repinned.pins).revision, 3)
+  assert.deepEqual([(await nextPins(adaSocket)).revision, (await nextPins(chiSocket)).revision], [3, 3])
+  f.advance(15 * 86400000)
+  for (const actor of [ada, chi]) assert.equal((await f.request('/api/session', undefined, actor.cookie)).status, 200, 'the same authenticated actor renews through the normal session route')
+  f.advance(15 * 86400000 + 1)
+  const expired = await json(`/api/social/conversations/${conv}`, null, ada)
+  assert.deepEqual([required(expired.pins).revision, required(expired.pins).items.length, expired.messages?.find(message => message.seq === freshMessage.seq)?.voice?.state], [4, 0, 'expired'])
+  assert.deepEqual([(await nextPins(adaSocket)).revision, (await nextPins(chiSocket)).revision], [4, 4], 'history reconciliation clears every active viewer after commit')
+  const replacement = await json('/api/social/messages', { conv, body: 'replacement pin', clientId: f.id() }, ada), replacementMessage = required(replacement.message)
+  const reused = await json(`/api/social/conversations/${conv}/pins`, { scope: openedPins.scope, pinRevision: 4, clientId: f.id(), op: 'set', seq: replacementMessage.seq, messageVersion: replacementMessage.version ?? 0, pinned: true }, ada)
+  assert.deepEqual([required(reused.pins).revision, required(reused.pins).items[0]?.message.seq], [5, replacementMessage.seq], 'expired voice no longer consumes shared capacity')
 })
 
 test('Node voice files survive a store restart and retention trimming removes old private bytes', async t => {

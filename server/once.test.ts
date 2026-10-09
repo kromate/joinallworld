@@ -11,7 +11,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.ts';
 import { createServer } from './server.ts';
-import { ONCE } from './routes/once.ts';
+import { LIGHT_KINDS, ONCE } from './routes/once.ts';
 import { ROUTE_MODULES } from './routes/index.ts';
 import { registerSystem } from '../src/game/registry.ts';
 import { createLife } from '../src/life.ts';
@@ -30,6 +30,7 @@ interface Answer {
   credited: boolean; creditedCity: string
 }
 const HOUR = 3600000, DAY = 86400000;
+assert.ok(LIGHT_KINDS.includes('message.pin'), 'shared pin receipts use the interaction allowance, never the money allowance');
 const answer = async (res: Response): Promise<Answer> => ({ status: res.status, ...((await res.json()) as Dict) }) as Answer;
 const get = async (f: Fixture, path: string, who?: Who) => answer(await f.request(path, null, who?.cookie));
 const post = async (f: Fixture, path: string, body: unknown, who?: Who) => answer(await f.request(path, body, who?.cookie));

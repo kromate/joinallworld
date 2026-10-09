@@ -23,7 +23,7 @@ interface WorkerTools {
   Miniflare: new (options: Record<string, unknown>) => WorkerHost
   convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown>
 }
-interface TeachingReply { status: number; ok?: boolean; code?: string; duplicate?: boolean; state?: LifeState; error?: string }
+interface TeachingReply { status: number; ok?: boolean; code?: string; duplicate?: boolean; state?: LifeState; interactiveTeachingStarts?: unknown; error?: string }
 
 const require = createRequire(resolve(process.env['JOINALLWORLD_TOOLS'] || 'deploy/tooling', 'package.json'))
 const { Miniflare, convertV4MiniflareOptions } = require('miniflare') as WorkerTools
@@ -40,12 +40,12 @@ async function fixture(t: TestContext) {
   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true,
     format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] })
   const script = await readFile(bundle, 'utf8')
-  async function start(startEnabled = true) {
+  async function start(startEnabled = true, malformedTeachingBinding = false) {
     await worker?.dispose()
     worker = new Miniflare({ ...convertV4MiniflareOptions({ name: 'joinallworld-teaching', script, modules: true,
       compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } },
       durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'teaching-fixture', FOUNDER_EMAIL_SHA256: '',
-        ...(startEnabled ? { INTERACTIVE_TEACHING_STARTS: '1' } : {}) },
+        ...(startEnabled ? { INTERACTIVE_TEACHING_STARTS: malformedTeachingBinding ? 'true' : '1' } : {}) },
       serviceBindings: { ASSETS: () => new Response('asset') } }), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
     await worker.ready
   }
@@ -77,12 +77,13 @@ async function fixture(t: TestContext) {
     const response = await request('/api/action', cookie, body)
     return { status: response.status, ...await response.json() as Omit<TeachingReply, 'status'> }
   }
-  async function life(cookie: string): Promise<LifeState> {
+  async function lifeReply(cookie: string): Promise<TeachingReply> {
     const response = await request('/api/life?city=lagos', cookie)
     assert.equal(response.status, 200)
-    return (await response.json() as { state: LifeState }).state
+    return { status: response.status, ...await response.json() as Omit<TeachingReply, 'status'> }
   }
-  return { start, player, action, life, storage }
+  async function life(cookie: string): Promise<LifeState> { return (await lifeReply(cookie)).state as LifeState }
+  return { start, player, action, life, lifeReply, storage }
 }
 
 function activeTeaching(state: LifeState) {
@@ -105,6 +106,7 @@ test('active lesson, authored answers, once receipt, and completed shift survive
   const h = await fixture(t)
   await h.start()
   const cookie = await h.player('Teacher')
+  assert.equal((await h.lifeReply(cookie)).interactiveTeachingStarts, true, 'the literal Worker binding is reflected in the current authenticated snapshot')
 
   // Normal public setup: turn off automatic travel, take the job, select its actual work spot, start the shift.
   assert.equal((await h.action(cookie, { actionId: newId(), cityId: 'lagos', type: 'career.auto', payload: { on: false } })).code, 'auto_set')
@@ -119,6 +121,7 @@ test('active lesson, authored answers, once receipt, and completed shift survive
   // Recreate the Worker against the same SQLite directory with new interactive starts disabled.
   // The existing marker must remain readable and answerable under the gate-off host policy.
   await h.start(false)
+  assert.equal(Object.hasOwn(await h.lifeReply(cookie), 'interactiveTeachingStarts'), false, 'gate-off Worker omits the capability while preserving the lesson marker')
   const restored = await h.life(cookie), restoredAction = activeTeaching(restored)
   assert.deepEqual([restoredAction.teaching, restoredAction.teachingGeneration, restored.career.teachingGeneration,
     restoredAction.remaining, restored.cash], [initialAction.teaching, generation, generation, initialRemaining, initialCash])
@@ -182,11 +185,21 @@ test('active lesson, authored answers, once receipt, and completed shift survive
   assert.equal((await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'career.auto', payload: { on: false } })).code, 'auto_set')
   assert.equal((await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'apply-job', payload: { id: 'teaching' } })).code, 'applied')
   assert.equal((await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'spot', payload: { id: 'work' } })).code, 'selected')
-  const legacyStart = await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'activity', payload: { id: 'teaching-shift' } })
+  // A request-supplied flag is not host authority: the gate-off Worker still creates the legacy timed shift.
+  const legacyStart = await h.action(legacyCookie, { actionId: newId(), cityId: 'lagos', type: 'activity', payload: { id: 'teaching-shift', interactiveTeachingStarts: true } })
   assert.deepEqual([legacyStart.status, legacyStart.code], [200, 'started'])
   const legacy = await h.life(legacyCookie)
   assert.ok(legacy.activeAction?.kind === 'activity' && legacy.activeAction.id === 'teaching-shift')
   assert.equal('teaching' in legacy.activeAction, false)
   assert.equal('teachingGeneration' in legacy.activeAction, false)
   assert.equal(legacy.career.teachingGeneration, 0)
+
+  await h.start(true, true)
+  const malformedCookie = await h.player('Malformed teacher')
+  assert.equal(Object.hasOwn(await h.lifeReply(malformedCookie), 'interactiveTeachingStarts'), false, 'only the literal Worker binding enables display')
+  assert.equal((await h.action(malformedCookie, { actionId: newId(), cityId: 'lagos', type: 'apply-job', payload: { id: 'teaching' } })).code, 'applied')
+  assert.equal((await h.action(malformedCookie, { actionId: newId(), cityId: 'lagos', type: 'spot', payload: { id: 'work' } })).code, 'selected')
+  const malformedStart = await h.action(malformedCookie, { actionId: newId(), cityId: 'lagos', type: 'activity', payload: { id: 'teaching-shift' } })
+  assert.equal(malformedStart.code, 'started')
+  assert.equal('teaching' in (malformedStart.state?.activeAction ?? {}), false, 'malformed host configuration retains the legacy timed shift')
 })

@@ -147,6 +147,8 @@ export interface SessionResponse extends ApiEnvelope {
 }
 
 export interface LifeResponse extends ApiEnvelope {
+  /** Present only when the serving trusted host enables interactive starts; never persisted in the life. */
+  interactiveTeachingStarts?: true
   /** The server-held life, settled to `serverTime`. */
   state: LifeState
   /** The character's revision when this answer was made (see LifeChangedFrame). */
@@ -171,6 +173,8 @@ export interface ActionRequest {
  * answers `{ ok, code, state, duplicate: true }` with the CURRENT state and no `reason`.
  */
 export interface ActionResponse extends ApiEnvelope {
+  /** Present only when the serving trusted host enables interactive starts; never accepted from the request. */
+  interactiveTeachingStarts?: true
   ok: boolean
   code: string
   state: LifeState
@@ -545,6 +549,7 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/social/reports',
   'GET /api/social/conversations',
   'GET /api/social/conversations/:id',
+  'POST /api/social/conversations/:id/pins',
   'GET /api/social/everyone',
   'POST /api/social/chats/open',
   'POST /api/social/messages/many',
@@ -800,7 +805,7 @@ export const SERVER_FRAME_TYPES = [
   'people-interaction', 'invite-knock', 'invite-answer', 'invite-house', 'transfer',
   'tables', 'table-state', 'tables-changed',
   'call-incoming', 'call-state', 'call-signal', 'call-settings', 'call-ice',
-  'life-changed', 'social-read', 'social-changed', 'message-changed',
+  'life-changed', 'social-read', 'social-changed', 'message-changed', 'message-pins',
   'live-snapshot', 'live-move',
   'ping-incoming', 'ping-joined', 'ping-ended',
   'notice', 'pulse', 'announce',
@@ -815,9 +820,13 @@ export const PUBLIC_SESSION_KEYS = ['id', 'name'] as const satisfies readonly (k
 /** What the Node server sends as its own session. */
 export const OWN_SESSION_KEYS = ['cities', 'id', 'name'] as const satisfies readonly (keyof OwnSession)[]
 export const LIFE_RESPONSE_KEYS = ['rev', 'serverTime', 'state'] as const satisfies readonly (keyof LifeResponse)[]
+/** The same answer from a host that advertises interactive teaching starts. The default-off keyset above stays compatible. */
+export const LIFE_RESPONSE_TEACHING_KEYS = ['interactiveTeachingStarts', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof LifeResponse)[]
 /** A first answer to an accepted action; a refusal with a sentence adds `reason`, a repeat adds `duplicate`. */
 export const ACTION_RESPONSE_KEYS = ['code', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
+export const ACTION_RESPONSE_TEACHING_KEYS = ['code', 'interactiveTeachingStarts', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
 export const ACTION_DUPLICATE_RESPONSE_KEYS = ['code', 'duplicate', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
+export const ACTION_DUPLICATE_RESPONSE_TEACHING_KEYS = ['code', 'duplicate', 'interactiveTeachingStarts', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
 export const VOICE_CONFIG_RESPONSE_KEYS = ['iceServers', 'mode', 'radius', 'serverTime', 'turnConfigured'] as const satisfies readonly (keyof VoiceConfigResponse)[]
 export const ERROR_BODY_KEYS = ['error'] as const satisfies readonly (keyof ApiErrorBody)[]
 export const PRESENCE_MEMBER_KEYS = ['enabled', 'id', 'muted', 'name', 'position'] as const satisfies readonly (keyof PresenceMember)[]

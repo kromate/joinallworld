@@ -26,7 +26,7 @@ const { Miniflare, convertV4MiniflareOptions } = require('miniflare') as Minifla
 const { build } = require('esbuild') as { build(options: BundleOptions): Promise<unknown> };
 
 interface Device { id: string; name: string; cookie: string }
-interface Answer { ok?: boolean; code?: string; error?: string; conv?: { id: string; owner?: string; unread: number; muted?: true }; message?: { seq: number; mentions?: { id: string; start: number; end: number }[]; replyTo?: { text: string }; reactions?: { emoji: string; count: number }[]; image?: { id: string; width: number; height: number }; gift?: { amount: number } }; messages?: Answer['message'][]; conversations?: NonNullable<Answer['conv']>[]; updates?: { kind: string; text: string }[] }
+interface Answer { ok?: boolean; code?: string; error?: string; duplicate?: boolean; conv?: { id: string; owner?: string; unread: number; muted?: true }; message?: { seq: number; version?: number; body?: string; mentions?: { id: string; start: number; end: number }[]; replyTo?: { text: string }; reactions?: { emoji: string; count: number }[]; image?: { id: string; width: number; height: number }; gift?: { amount: number } }; messages?: Answer['message'][]; conversations?: NonNullable<Answer['conv']>[]; updates?: { kind: string; text: string }[]; pins?: { scope: string; revision: number; canManage: boolean; items: { message: NonNullable<Answer['message']> }[] } }
 const pause = (ms = 25): Promise<void> => new Promise((done) => setTimeout(done, ms));
 
 /** `sleeps`: the object may sleep while sockets are connected (SLEEP_BETWEEN_BEATS), for a test that puts it to sleep. */
@@ -77,7 +77,7 @@ async function fixture(t: TestContext, sleeps = false) {
     return { ws, frames, until };
   }
   const image = (path: string, who?: Device) => send(origin + path, { headers: { origin, ...(who ? { cookie: who.cookie } : {}) } });
-  return { request, player, socket, id, image, page: (path: string) => send(origin + path) };
+  return { request, player, socket, id, image, restart: () => mf.unsafeEvictDurableObject('joinallworld-chat', 'JoinAllworldState', { name: 'joinallworld-v1' }), page: (path: string) => send(origin + path) };
 }
 const jpeg = (): Uint8Array => Uint8Array.from([0xff, 0xd8, 0xff, 0xe1, 0, 11, 0x45, 0x78, 0x69, 0x66, 0, 0, 0x47, 0x50, 0x53, 0xff, 0xe0, 0, 16, 0x4a, 0x46, 0x49, 0x46, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0xff, 0xc0, 0, 17, 8, 0, 8, 0, 8, 3, 1, 0x22, 0, 2, 0x11, 1, 3, 0x11, 1, 0xff, 0xda, 0, 12, 3, 1, 0, 2, 0x11, 3, 0x11, 0, 63, 0, 1, 2, 3, 0xff, 0xd9]);
 
@@ -103,9 +103,20 @@ test('Cloudflare messages: a group with a mention, a quoted reply, a reaction, a
   assert.equal(reply.message?.replyTo?.text, body);
   const reacted = await f.request(`/api/social/conversations/${gid}/react`, { seq: sent.message?.seq, emoji: '👍🏽' }, chi);
   assert.deepEqual(reacted.message?.reactions, [{ emoji: "👍🏽", count: 1, mine: true }]);
+  const history = await f.request(`/api/social/conversations/${gid}`, null, ada), scope = String(history.pins?.scope);
+  const pinIntent = f.id();
+  const pinBody = { scope, pinRevision: 0, clientId: pinIntent, op: 'set', seq: sent.message?.seq, messageVersion: reacted.message?.version ?? 0, pinned: true };
+  const pin = await f.request(`/api/social/conversations/${gid}/pins`, pinBody, ada);
+  assert.deepEqual([pin.pins?.revision, pin.pins?.items[0]?.message.body], [1, body]);
+  await f.restart();
+  const replayedPin = await f.request(`/api/social/conversations/${gid}/pins`, pinBody, ada);
+  assert.deepEqual([replayedPin.duplicate, replayedPin.pins?.revision, replayedPin.pins?.items[0]?.message.body], [true, 1, body]);
+  assert.equal((await f.request(`/api/social/conversations/${gid}/pins`, { scope, pinRevision: 1, clientId: f.id(), op: 'clear-all' }, chi)).code, 'owner_only');
   assert.equal((await f.request(`/api/social/conversations/${gid}/prefs`, { mute: true, pin: true }, bola)).conv?.muted, true);
   assert.equal((await f.request(`/api/social/groups/${gid}`, { op: 'leave' }, ada)).code, 'left');
   assert.equal((await f.request('/api/social/conversations', null, bola)).conversations?.find((c) => c.id === gid)?.owner, bola.id);
+  const cleared = await f.request(`/api/social/conversations/${gid}/pins`, { scope, pinRevision: 1, clientId: f.id(), op: 'clear-all' }, bola);
+  assert.deepEqual([cleared.pins?.revision, cleared.pins?.items.length], [2, 0]);
 });
 
 test('Cloudflare pictures: stored in the object\'s own table without metadata, served to the conversation\'s members only, gone with the conversation', { timeout: 120000 }, async (t) => {

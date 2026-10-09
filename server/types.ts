@@ -361,6 +361,10 @@ export interface ConversationRecord {
   created: number
   /** Bounded history: the last 200. */
   messages: MessageRecord[]
+  /** Shared message pins. Missing on old saves means revision 0 and no pins. */
+  messagePins?: { revision: number; entries: { seq: number; by: string; at: number }[] }
+  /** Stable identity of this incarnation, especially when a house id is reused. */
+  pinScope?: string
 }
 export interface KnockRecord {
   at: number
@@ -1134,6 +1138,8 @@ export interface ContextCore {
 export interface RouteContext {
   commerceGateway?: CommerceGateway | undefined
   streetAssets?: import('./street/types.ts').StreetAssetReader
+  /** Trusted host-only display capability. Never read from a request or persisted life. */
+  interactiveTeachingStarts?: boolean
   store: Store
   /** Server time in ms — never call Date.now(). */
   now(): number

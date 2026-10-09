@@ -7,7 +7,7 @@ import { join, resolve } from 'node:path'
 import { createRequire } from 'node:module'
 import { randomUUID } from 'node:crypto'
 import { layoutBindings } from '../server/testing/sqliteStorage.ts'
-import { runVoiceJourney, type VoiceAnswer, type VoiceJourneyHost } from '../server/testing/voiceJourney.ts'
+import { runVoiceJourney, syntheticWebmOpus, type VoiceAnswer, type VoiceJourneyHost } from '../server/testing/voiceJourney.ts'
 
 interface MiniflareInstance {
   ready: Promise<URL>
@@ -90,4 +90,18 @@ async function fixture(t: TestContext) {
 
 test('Worker voice-note HTTP journey keeps SQLite blobs private through restart, revocation, reports, and deletion cleanup', { timeout: 120000 }, async t => {
   await runVoiceJourney(await fixture(t))
+})
+
+test('Worker shared voice pin receipt and projection survive Durable Object restart', { timeout: 120000 }, async t => {
+  const host = await fixture(t), ada = await host.actor('Worker Pin Ada'), bola = await host.actor('Worker Pin Bola')
+  assert.equal((await host.json('/api/social/friends/request', { to: bola.id, cityId: 'lagos' }, ada)).code, 'requested')
+  assert.equal((await host.json('/api/social/friends/answer', { from: ada.id, accept: true, cityId: 'lagos' }, bola)).code, 'accepted')
+  const sent = await host.json('/api/social/voice', { to: bola.id, clientId: host.id(), data: Buffer.from(syntheticWebmOpus()).toString('base64') }, ada)
+  const conv = String(sent.conv?.id), history = await host.json(`/api/social/conversations/${conv}`, null, ada) as VoiceAnswer & { pins: { scope: string; revision: number; items: unknown[] } }
+  const intent = host.id(), body = { scope: history.pins.scope, pinRevision: 0, clientId: intent, op: 'set', seq: sent.message?.seq, messageVersion: sent.message?.version ?? 0, pinned: true }
+  const pinned = await host.json(`/api/social/conversations/${conv}/pins`, body, ada) as VoiceAnswer & { pins: { revision: number; items: { message: { voice?: { id: string } } }[] } }
+  assert.deepEqual([pinned.pins.revision, pinned.pins.items[0]?.message.voice?.id], [1, sent.message?.voice?.id])
+  await host.restart?.()
+  const replayed = await host.json(`/api/social/conversations/${conv}/pins`, body, ada) as VoiceAnswer & { pins: { revision: number; items: unknown[] } }
+  assert.deepEqual([replayed.duplicate, replayed.pins.revision, replayed.pins.items.length], [true, 1, 1])
 })

@@ -513,6 +513,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
     store, images: createFileImages(join(dataDir, 'chat-images')), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
+    ...(interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {}),
     randomId,
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },

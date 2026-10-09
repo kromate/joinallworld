@@ -1,11 +1,12 @@
 import { loadCityContent as preloadCityContent } from '../../game/cities/registry.ts';
-await preloadCityContent('lagos');
+await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 // The typed game store over the real client model, against a server that runs the real rules.
 // Runs in Node without a DOM: the store is Vue reactivity and the client model only.
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { watch } from 'vue'
 import { createGame } from './game.ts'
+import type { LifeState } from '../../types/life.ts'
 import type { ToastKind } from '../types/panel.ts'
 import { LINK_STATES } from '../types/client.ts'
 import { createFakeServer, memoryStorage } from '../testing/fakeServer.ts'
@@ -37,6 +38,120 @@ test('connect: the store publishes the server life, the session and the link', a
   assert.equal(game.view.value.wallet.cash, game.state.value.cash, 'the view is the engine\'s, for the published state')
   assert.equal(game.view.value.city.name, 'Lagos')
   assert.match(game.net.value.text, /Connected/)
+})
+
+test('the store clears teaching display immediately during a held city switch and preserves the accepted life on refusal', async () => {
+  const server = createFakeServer()
+  let release: () => void = () => {}, reached: () => void = () => {}
+  let holdSwitch = true, allowMovedCity = false
+  const waiting = new Promise<void>(resolve => { release = resolve })
+  const started = new Promise<void>(resolve => { reached = resolve })
+  const game = createGame({
+    fetch: async (path, init) => {
+      if (path === '/api/life?city=ibadan' && holdSwitch) {
+        holdSwitch = false
+        reached()
+        await waiting
+        return { ok: false, status: 503, json: async () => ({ error: 'server_busy', reason: 'Try again shortly.' }) }
+      }
+      const response = await server.fetch(path, init)
+      if (path.startsWith('/api/life') || path === '/api/action') {
+        const body = await response.json() as Record<string, unknown>
+        if (path === '/api/life?city=ibadan' && allowMovedCity) {
+          const life = body.state as LifeState
+          body.state = { ...life, estate: { ...life.estate, city: 'ibadan' }, location: 'agodi-gardens' }
+        }
+        return { ok: response.ok, status: response.status, json: async () => ({ ...body, interactiveTeachingStarts: true }) }
+      }
+      return response
+    },
+    storage: memoryStorage(), now: () => server.now(), setTimeout: () => 0, clearTimeout: () => {},
+  })
+  assert.equal(await game.connect(), true)
+  assert.equal(game.view.value.career.interactiveTeachingStarts, true)
+  const accepted = JSON.stringify(game.state.value)
+  const switching = game.switchCity('ibadan')
+  assert.equal(game.view.value.career.interactiveTeachingStarts, false, 'publish runs after the client clears its in-memory capability, before the request resolves')
+  assert.equal(JSON.stringify(game.state.value), accepted, 'a pending city request has not changed the accepted life')
+  await started
+  assert.equal(await game.refresh(), true, 'an ordinary refresh may still accept the current life while the switch is pending')
+  assert.equal(game.view.value.career.interactiveTeachingStarts, false, 'that overlapping old-city read cannot restore the display during transition')
+  release()
+  const result = await switching
+  assert.equal(result.ok, false)
+  assert.deepEqual([game.cityId.value, JSON.stringify(game.state.value), game.view.value.career.interactiveTeachingStarts], ['lagos', accepted, false])
+  server.tick(2000) // Let the real client cooldown expire before a fresh read.
+  assert.equal(await game.refresh(), true, 'a new read begun after refusal may restore the host capability')
+  assert.equal(game.view.value.career.interactiveTeachingStarts, true)
+  allowMovedCity = true
+  const moved = game.switchCity('ibadan')
+  assert.equal(game.view.value.career.interactiveTeachingStarts, false)
+  assert.equal((await moved).ok, true)
+  assert.deepEqual([game.cityId.value, game.state.value.estate.city, game.view.value.career.interactiveTeachingStarts], ['ibadan', 'ibadan', true])
+})
+
+test('a direct legacy-character switch clears display, blocks overlapping refresh restoration, and publishes no fake acceptance', async () => {
+  const server = createFakeServer()
+  let release: () => void = () => {}, reached: () => void = () => {}
+  const waiting = new Promise<void>(resolve => { release = resolve })
+  const started = new Promise<void>(resolve => { reached = resolve })
+  let refused = false, holdSuccessfulSwitch = false
+  let releaseSuccessfulSwitch: () => void = () => {}, successfulSwitchReached: () => void = () => {}
+  const successfulSwitchWait = new Promise<void>(resolve => { releaseSuccessfulSwitch = resolve })
+  const successfulSwitchStarted = new Promise<void>(resolve => { successfulSwitchReached = resolve })
+  const game = createGame({
+    fetch: async (path, init) => {
+      if (path === '/api/characters/switch') {
+        if (!refused) {
+          reached()
+          await waiting
+          refused = true
+          return { ok: false, status: 503, json: async () => ({ error: 'server_busy', reason: 'Try again shortly.' }) }
+        }
+        if (holdSuccessfulSwitch) { holdSuccessfulSwitch = false; successfulSwitchReached(); await successfulSwitchWait }
+        return { ok: true, status: 200, json: async () => ({ ok: true, city: 'lagos' }) }
+      }
+      const response = await server.fetch(path, init)
+      if (path.startsWith('/api/life')) {
+        const body = await response.json() as Record<string, unknown>
+        return { ok: response.ok, status: response.status, json: async () => ({ ...body, interactiveTeachingStarts: true }) }
+      }
+      return response
+    },
+    storage: memoryStorage(), now: () => server.now(), setTimeout: () => 0, clearTimeout: () => {},
+  })
+  assert.equal(await game.connect(), true)
+  assert.equal(game.view.value.career.interactiveTeachingStarts, true)
+  let acceptedEvents = 0
+  game.on('accepted', () => { acceptedEvents += 1 })
+  const acceptedBefore = acceptedEvents, stateBefore = JSON.stringify(game.state.value)
+  const switching = game.client.switchLegacy('legacy-character', 'legacy-client')
+  assert.equal(game.view.value.career.interactiveTeachingStarts, false, 'the direct SettingsTab client call synchronously publishes the clear')
+  assert.equal(acceptedEvents, acceptedBefore, 'clearing display metadata does not report a new accepted life')
+  await started
+  assert.equal(await game.refresh(), true)
+  assert.equal(game.view.value.career.interactiveTeachingStarts, false, 'a normal refresh during the transition cannot restore the flag')
+  release()
+  assert.equal((await switching).ok, false)
+  assert.equal(game.view.value.career.interactiveTeachingStarts, false, 'a refused character switch stays conservatively off')
+  assert.equal(JSON.stringify(game.state.value), stateBefore)
+  server.tick(2000) // Let the real client cooldown expire before a fresh read.
+  assert.equal(await game.refresh(), true, 'a fresh read after refusal may restore the host capability')
+  assert.equal(game.view.value.career.interactiveTeachingStarts, true)
+
+  const acceptedBeforeSuccess = acceptedEvents
+  holdSuccessfulSwitch = true
+  const successful = game.client.switchLegacy('legacy-character-2', 'legacy-client-2')
+  assert.equal(game.view.value.career.interactiveTeachingStarts, false, 'a successful direct legacy switch also clears while pending')
+  assert.equal(acceptedEvents, acceptedBeforeSuccess, 'the synchronous clear is not an accepted-life event')
+  await successfulSwitchStarted
+  assert.equal(await game.refresh(), true)
+  assert.equal(game.view.value.career.interactiveTeachingStarts, false, 'an ordinary read cannot restore capability while the successful transition is held')
+  assert.equal(acceptedEvents, acceptedBeforeSuccess + 1, 'the ordinary read is one real accepted event')
+  releaseSuccessfulSwitch()
+  assert.equal((await successful).ok, true, 'the fake transport returns an accepted legacy snapshot')
+  assert.deepEqual([game.cityId.value, game.state.value.estate.city, game.view.value.career.interactiveTeachingStarts], ['lagos', 'lagos', true])
+  assert.equal(acceptedEvents, acceptedBeforeSuccess + 2, 'the switch response publishes exactly one additional accepted event')
 })
 
 test('command: a typed action changes nothing until the server answers, then publishes its state', async () => {

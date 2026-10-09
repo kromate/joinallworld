@@ -126,6 +126,12 @@ export interface Message {
   deleted?: true
   forwarded?: true
 }
+export interface MessagePinsView {
+  scope: string
+  revision: number
+  canManage: boolean
+  items: { message: Message }[]
+}
 /** What a picture is to the one looking at it. `state` is absent when it can be shown. */
 export interface PictureView {
   id: string
@@ -322,6 +328,8 @@ export type PictureRefusal = 'pictures_off' | 'pictures_blocked' | 'pictures_ref
 export interface NotifyPrefsBody { text?: boolean; groups?: 'mentions' | 'all'; pause?: '1h' | '8h' | 'tomorrow' | 'off'; quietDm?: boolean; quietGroups?: boolean }
 export interface NotifyPrefs { text: boolean; groups: 'mentions' | 'all'; pausedUntil: number | null; quietDm: boolean; quietGroups: boolean }
 export interface ReactBody { seq: number; emoji: string | null }
+export type MessagePinsBody = { scope: string; pinRevision: number; clientId: string } &
+  ({ op: 'set'; seq: number; messageVersion: number; pinned: boolean } | { op: 'clear-all' })
 export interface ConvPrefsBody { mute?: boolean; pin?: boolean; hide?: true }
 export interface ChatPrefsBody { voiceNotes?: 'friends' | 'nobody'; groups?: 'friends' | 'nobody'; mentions?: 'on' | 'off'; pictures?: 'friends' | 'nobody'; introductions?: 'on' | 'off' }
 /** The caller's answer to an introduction a regular offered (PeopleListing.introduction): `accept` sends the friend request. */
@@ -363,7 +371,7 @@ export type UnblockResult = Done<'unblocked'>
 export type PlayerReportResult = Done<'reported', { receipt: PlayerReportReceipt } & Repeat> | Refusal<'self' | 'unknown_player' | 'rate_limited'>
 export type ConversationsResult = Done<'ok', { conversations: Conversation[]; unread: number; total?: number; next?: string | null; unreadOlder?: number }>
 /** At most 50 messages after `?after=<seq>`; `read` is the caller's read marker. */
-export type HistoryResult = Done<'ok', { conv: Conversation; messages: Message[]; read: number; more?: boolean }> | Refusal<'not_a_member'>
+export type HistoryResult = Done<'ok', { conv: Conversation; messages: Message[]; read: number; more?: boolean; pins?: MessagePinsView }> | Refusal<'not_a_member'>
 
 /** One row of the Players view (GET /api/social/everyone): the founder's, or an admin's. Never an address. */
 export interface PlayerRow extends PlayerRef, Whereabouts {
@@ -456,6 +464,7 @@ export interface SocialHttpRoutes {
   'POST /api/social/reports': { body: PlayerReportBody; response: Ok<PlayerReportResult>; errors: SocialPost | 'invalid_player' | 'invalid_reason' | 'invalid_report_text' }
   'GET /api/social/conversations': { query: { limit?: number; after?: string }; response: Ok<ConversationsResult>; errors: SocialCommon | 'invalid_cursor' }
   'GET /api/social/conversations/:id': { params: { id: ConversationId }; query: { after?: number; before?: number; limit?: number }; response: Ok<HistoryResult>; errors: SocialCommon | 'invalid_conversation' }
+  'POST /api/social/conversations/:id/pins': { params: { id: ConversationId }; body: MessagePinsBody; response: Ok<Done<'updated', { pins: MessagePinsView } & Repeat> | Refusal<string>>; errors: SocialPost | OnceErrorCode | 'invalid_conversation' | 'invalid_message_pin' }
   /** The Players view: founder and admins; anyone else 404 `not_found`. */
   'GET /api/social/everyone': { query: { q?: string; sort?: PlayerSort; city?: CityId; after?: string; limit?: number }; response: Ok<EveryoneResult>; errors: SocialCommon | 'not_found' | 'invalid_query' | 'invalid_cursor' | 'invalid_city' }
   'POST /api/social/chats/open': { body: { with: string }; response: Ok<Done<'ok', { conv: Conversation | null }> | Refusal<OtherPlayerRefusal>>; errors: SocialPost | 'invalid_player' }
@@ -544,6 +553,7 @@ export interface SocialSyncFrame { type: 'social-sync' }
  */
 /** A message changed after it was sent (a picture hidden, a gift's share of a ride debt): the message as the recipient now sees it. */
 export interface MessageChangedFrame { type: 'message-changed'; conv: Conversation; message: Message }
+export interface MessagePinsChangedFrame { type: 'message-pins'; conv: Conversation; pins: MessagePinsView }
 export interface SocialReadFrame { type: 'social-read'; conv?: Conversation; updates?: true }
 /** To every open socket of a player whose own request changed their friends, groups, blocks or visits: read the overview again. */
 export interface SocialChangedFrame { type: 'social-changed' }
@@ -565,7 +575,7 @@ export type SocialReplyFrame = DmSentFrame | DmFailedFrame | DmReadOkFrame | Peo
 export type SocialPushFrame =
   | DmFrame | SocialUpdateFrame | SocialSyncFrame | FriendRequestFrame | FriendAcceptedFrame | PeoplePresenceFrame | PeopleChangedFrame
   | PeopleInteractionFrame | InviteKnockFrame | InviteAnswerFrame | InviteHouseFrame | TransferFrame
-  | SocialReadFrame | SocialChangedFrame | MessageChangedFrame | PingServerFrame
+  | SocialReadFrame | SocialChangedFrame | MessageChangedFrame | MessagePinsChangedFrame | PingServerFrame
 export type SocialServerFrame = SocialReplyFrame | SocialPushFrame
 
 // ---- browser side --------------------------------------------------------------------------------

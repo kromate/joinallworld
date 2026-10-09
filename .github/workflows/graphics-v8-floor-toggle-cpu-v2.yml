@@ -1,0 +1,48 @@
+name: Market floor-reference diagnostic CPU package v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-v8-floor-toggle-cpu-v2
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-floor-reference-cpu-v2
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify closure, explicit pins, snapshot, and current file bytes agree
+        env:
+          EXPECTED_SNAPSHOT_SHA256: aa67dd415abf31dbcddf794543e7d954635ceb6792a8ac424f28fe4f5ac9abd8
+        run: node --max-old-space-size=32 evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v4/verify-input-closure.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify pose-preserving floor toggle contract
+        run: node --test evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/floor-free-diagnostic-v1/floor-visibility-contract.test.mjs
+      - name: Install exact package dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Package under the pinned 220 MiB / 25 second process-group guard
+        env:
+          EXPECTED_BRANCH: codex/graphics-v8-floor-toggle-cpu-v2
+          EXPECTED_SNAPSHOT_SHA256: aa67dd415abf31dbcddf794543e7d954635ceb6792a8ac424f28fe4f5ac9abd8
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v4/run-bounded-linux.py
+      - name: Preserve package and bounded-process receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-floor-toggle-cpu-package-v2-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v4/static-fixture-market-gpu-v8-floor-toggle-v2/**
+            evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v4/remote-results/**
+          if-no-files-found: warn

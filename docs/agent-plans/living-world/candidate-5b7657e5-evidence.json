@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "5b7657e58f984424623ffa923c7a0b4e94d74979",
+  "runId": 37883541040,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37883541040",
+  "status": "completed",
+  "conclusion": "failure",
+  "observedAt": "2026-10-09T04:28:41Z",
+  "compiler": {
+    "status": "failure",
+    "diagnostics": 3,
+    "file": "src/campus/unilag/scene.test.ts",
+    "reason": "high/low instance groups possibly undefined",
+    "sourceRepair": "428559cf"
+  },
+  "buildUnchangedBudgetsSmokePolicy": "pass",
+  "smoke": {
+    "tests": 15,
+    "pass": 15,
+    "fail": 0
+  },
+  "download": {
+    "startupRaw": 612819,
+    "startupGzip": 222326,
+    "startupBrotli": 194861,
+    "firstPaintBrotli": 35705,
+    "capsUnchanged": true
+  },
+  "expandedUI": {
+    "tests": 419,
+    "pass": 418,
+    "fail": 1,
+    "skip": 0,
+    "durationMs": 119976.015078,
+    "failure": "shuttle connector test expects removed paired portals; geographic shared-grid full-line validation repaired09c28dd9, rerun pending"
+  },
+  "scene": {
+    "tests": 5,
+    "pass": 5,
+    "residentZones": 50,
+    "indexedZones": 81,
+    "worstMeasuredTriangles": 57921,
+    "worstMeasuredDrawCalls": 30,
+    "fullCrowdLandmarkAssertions": 12,
+    "caps": {
+      "triangles": 60000,
+      "drawCalls": 60
+    },
+    "geometryReuseAndObservedExactlyOnceDisposal": "pass"
+  },
+  "clearanceHelper": {
+    "tests": 3,
+    "pass": 3
+  },
+  "logHashes": {
+    "ui": "d43cc96f759bbbc8919b7b64f8c047db6bbc7a442f1ec00d57853c19a68478ba",
+    "compiler": "34a45aa8f71fe854a2d547f1328233c2c0334568c1681d7138515d54919c0a8c",
+    "build": "65b9b03f4037a4d3dd1f315ccf48e924da6d9b412724c00e8451842abf29ec79"
+  },
+  "commerceWorker": "skipped after UI failure",
+  "full": "omitted and remains required",
+  "browserStagingLiveJourney": "not established",
+  "routeAuthorized": false,
+  "programmeDeployments": 0
+}

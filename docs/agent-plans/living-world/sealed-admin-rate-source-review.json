@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-10-09T20:38:09.036771+00:00",
-  "sourceState": "Owner draft after frozen diagnostic d4eb7249f24aaef93ddd63e0eceafed348d2dc39; immutable repaired SHA still required.",
+  "checkedAt": "2026-10-09T20:44:26.385095+00:00",
+  "sourceState": "Frozen corrected caller fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
   "sourcePins": [
     {
       "path": "world/tooling/verify-sealed-africa.mjs",
-      "bytes": 26477,
-      "sha256": "8541318eb30535785df8ad5a9e81407feb6390a6c0083845f709c37a00bc72a5"
+      "bytes": 28276,
+      "sha256": "41209efdf36d1e345370356ba889a84344b4fc0ae6bbb32582c1a94e9488a573"
     },
     {
       "path": "world/tooling/sealed-admin-rate-policy.mjs",
@@ -23,7 +23,7 @@
       "sha256": "f93c5a79d7ea19bf4a6f732ac7ae9d296f01a7c2a30d9057b28fe65b7ce3f892"
     }
   ],
-  "verdict": "Accepted at source for observed canonical synthetic fixture; actual tests, frozen identity and new sealed Worker acceptance pending.",
+  "verdict": "Source accepted for identified fixed-address/authenticated-bucket corrections. Actual changed Worker lookup/transport, final Astra source and fresh exact sealed acceptance remain required.",
   "observedDiagnostic": {
     "runId": 37987303569,
     "httpStatus": 429,
@@ -45,8 +45,61 @@
     "addedPolicyCases": 4,
     "existingChecks": 17,
     "localPasses": 21,
-    "evidenceQualification": "Owner report only; Root has not read the local log or run tests. Remote source/tooling and actual sealed retest pending."
+    "evidenceQualification": "Root independently read and hash-matched exact local21 policy/checkpoint/coverage log. These checks do not execute new actual Worker account lookup/request transport.",
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 237.074042,
+    "logBytes": 2084,
+    "logSha256": "f4f1ba13d99949d4095dff50d650e57d4208a97513f8274c9a7612f48e908398"
   },
   "nativeScope": "Synthetic verifier transport only. Does not authorize access to original private retained store or fake native gameplay clocks.",
-  "sharedRuntimeMutatedByRoot": false
+  "sharedRuntimeMutatedByRoot": false,
+  "priorRootSourceReview": {
+    "sourceState": "Owner draft after frozen diagnostic d4eb7249f24aaef93ddd63e0eceafed348d2dc39; immutable repaired SHA still required.",
+    "sourcePins": [
+      {
+        "path": "world/tooling/verify-sealed-africa.mjs",
+        "bytes": 26477,
+        "sha256": "8541318eb30535785df8ad5a9e81407feb6390a6c0083845f709c37a00bc72a5"
+      },
+      {
+        "path": "world/tooling/sealed-admin-rate-policy.mjs",
+        "bytes": 2628,
+        "sha256": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b"
+      },
+      {
+        "path": "world/tooling/sealed-admin-rate-policy.test.mjs",
+        "bytes": 2523,
+        "sha256": "714f4a2cb34b7243f14a74a27959cdf6f2deba196f2a8be6bd2641d6451766a7"
+      },
+      {
+        "path": ".github/workflows/africa-rollout-audit-ci.yml",
+        "bytes": 4458,
+        "sha256": "f93c5a79d7ea19bf4a6f732ac7ae9d296f01a7c2a30d9057b28fe65b7ce3f892"
+      }
+    ],
+    "qualification": "Initial bounded single-bucket policy source review did not prove authenticated bucket ownership or fixed admin address. Astra required caller changes; 7ea is superseded for launch."
+  },
+  "additionalCallerReview": [
+    "One fixed founder/admin address198.51.100.251 across founder lifecycle/admin reads/actions/confirmation/replay/retry; ordinary fixture retains explicitly qualified rotating addresses",
+    "Readonly parameterized lookup joins account_devices\u2192accounts\u2192sessions by exact synthetic founder binding cookie",
+    "Account.id/device account_id/email/session.account/publicId/canonical admin shortRef/live expiry must agree, without printing private values",
+    "Readonly exact protected key admin-w:account.id replaces unrelated LIKE row scan",
+    "Same request-body/clientId/confirmation/founder/origin and real-wall deadline wait preserved; no secret/grant/store/limiter mutation"
+  ],
+  "remoteAudits": [
+    {
+      "sourceSha": "7ea9353108d064dddd5b079a6f19863dda00ea8e",
+      "runId": 37988260293,
+      "status": "completed",
+      "conclusion": "success",
+      "qualification": "Earlier caller; does not certify changed fa8 lookup."
+    },
+    {
+      "sourceSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+      "runId": 37988762213,
+      "status": "in_progress",
+      "qualification": "Official run list confirmed live; no acceptance transfer."
+    }
+  ]
 }

@@ -1,5 +1,9 @@
 # Living-world implementation checkpoint
 
+## User-requested 24-hour status and exact game failure - 2026-10-09T17:49:12.294242+00:00
+
+Candidate5e12 exactCI37966065099 Node22 game113940601415 terminal2568tests/2562pass/5fail/1existing skip,1226257.336205ms. Allfive reliefComponents failures retained in official local log SHA256 225d332c578e24f35a69fe099b2c37d860a47ce5104e788efef38539c8fddfdc. Loader readiness card/clinic/wallet, scoped-attribute assertion and blank visitor credit sent to sole Integration writer; no Root runtime edits or unchanged rerun. Node24 game/host live and tooling queued at observation. Compiler/unchanged size and Worker parity remain scoped PASS. Updated STATUS-2026-10-09.md answers human request with actual achievements and unreleased requirements. Native goal ACTIVE; full physical/later/Goalmatic programme and staging/live/save gates remain open. Last retained productiona446 health only, no programme upload. Next owner diagnosis/repair and remaining exact gates.
+
 ## Scoped native recovery and Worker parity - 2026-10-09T17:42:18.388970+00:00
 
 Exact5e12CI37966065099 Worker22/24 each154/154PASS0skip; Node22host1020PASS/3existingdesign-conflictSKIP and tooling36/36PASS. Game22/24 still confirmed live, Node24host/tooling queued. No whole-suite acceptance or job restart. [Updated exact receipt](candidate-5e12d3a5-review.json).

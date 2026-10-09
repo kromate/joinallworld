@@ -1,0 +1,34 @@
+name: Actual idle pose retarget and shoe solver stage diagnosis
+on:
+  push:
+    branches: [codex/graphics-native-idle-diagnostic-v1]
+permissions:
+  contents: read
+jobs:
+  identity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Bundle exact game seed through production creator API
+        run: node --max-old-space-size=256 evidence/graphics-loop/native-game-adoption-v1/bundle-idle-pose-diagnostic.mjs
+      - name: Strict creator fixture types
+        if: always()
+        run: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/idle-pose-diagnostic.typecheck.json
+      - name: Render actual same-seed returned bodies and direct preview canvas
+        if: always()
+        run: python3 evidence/graphics-loop/native-game-adoption-v1/bounded-render.py /tmp/idle-pose-diagnostic-render.log /tmp/idle-pose-diagnostic-render-receipt.json node evidence/graphics-loop/native-game-adoption-v1/render-idle-pose-diagnostic.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: idle-pose-diagnostic-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/native-game-adoption-v1/idle-pose-results/
+            /tmp/idle-pose-diagnostic-render.log
+            /tmp/idle-pose-diagnostic-render-receipt.json

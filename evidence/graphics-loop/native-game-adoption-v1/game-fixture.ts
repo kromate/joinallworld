@@ -5,7 +5,7 @@ import type { SceneEntry, SceneVenue } from '../../../src/scene/types.ts';
 import { createStandIn } from '../../../src/scene/body/stand-in.ts';
 import type { StandIn, StandInScene } from '../../../src/scene/body/stand-in.ts';
 import type { BodyPose, SkinnedBody } from '../../../src/scene/body/skinned.ts';
-import { loadGameBody, NATIVE_GAME_BODY_CAPABILITIES } from '../../../src/scene/body/provider.ts';
+import { loadGameBody, PLAYER_BODY_POSES } from '../../../src/scene/body/provider.ts';
 import { crowdList } from '../../../src/scene/crowd.ts';
 import { advanceLife, createLife, dispatch, viewLife } from '../../../src/life.ts';
 import { loadCityContent } from '../../../src/game/cities/registry.ts';
@@ -27,6 +27,7 @@ interface FixtureSnapshot {
   crowd: { desired: number; canonical: number; procedural: number; loading: number };
   player: Record<string, unknown>;
   npcs: Record<string, Record<string, unknown>>;
+  nativeCoverage: { player: boolean; npcs: Record<string, boolean>; allRequestedActorsPrepared: boolean };
   unsupportedProbe: Record<string, unknown> | null;
   interaction: Record<string, unknown> | null;
   currentCamera: string;
@@ -58,8 +59,6 @@ const PLAYER_LOOK = Object.freeze({
   outfitColor: 'navy', bottomsColor: 'blue', accessories: [], face: 'oval', expression: 'smile',
   appearance: { height: 'average', build: 'average', ageAppearance: 'adult' },
 });
-const PLAYER_POSES: readonly BodyPose[] = Object.freeze(['idle', 'walk', 'interact', 'cook', 'eat', 'drink']);
-const NPC_POSES: readonly BodyPose[] = Object.freeze(['idle', 'walk', 'interact']);
 
 function required<T extends Element>(selector: string): T {
   const value = document.querySelector<T>(selector);
@@ -291,13 +290,15 @@ function createFixture() {
 
   const playerLoader = async (owner: Kit, look: unknown, seed: unknown, scale: number): Promise<SkinnedBody> => {
     const identitySeed = String(seed ?? PLAYER_SEED);
-    const context = { scene: 'venue' as const, role: 'player' as const, poses: PLAYER_POSES };
+    const context = { scene: 'venue' as const, role: 'player' as const, poses: PLAYER_BODY_POSES };
     const body = await loadGameBody(owner, look, identitySeed, scale, context);
     const audit: ActorAudit = { requestedLook: look, seed: identitySeed, context, body, lastSolve: null, contacts: 0 };
     const solve = body.solveFeet.bind(body), sample = body.sampleFootContacts.bind(body);
     body.solveFeet = (heightAt) => { const result = solve(heightAt); audit.lastSolve = result; lastContact = result; return result; };
     body.sampleFootContacts = () => { const points = sample(); audit.contacts = points.reduce((count, item) => count + (item.points?.length ?? 1), 0); return points; };
-    body.object.userData.nativeGameFixture = { seed: identitySeed, context: audit.context, hasPreparedMetrics: 'preparedMetrics' in body };
+    const preparedNative = 'preparedMetrics' in body;
+    body.object.userData.nativeGameFixture = { seed: identitySeed, context: audit.context, preparedNative,
+      representation: preparedNative ? 'native-prepared' : 'legacy-fallback', requestedLifecyclePoses: [...PLAYER_BODY_POSES] };
     actors.set('player', audit);
     return body;
   };
@@ -609,7 +610,10 @@ function createFixture() {
   function inspectNpc(npcId: string) {
     const canonicalName = `canonical-crowd:npc:${npcId}`;
     const root = entry?.group.getObjectByName(canonicalName) ?? null;
-    return { ...nativeMeshEvidence(root), mounted: Boolean(root), gamePose: root?.userData.nativeGameNpcPose ?? null,
+    const provider = root?.userData.nativeGameProviderEvidence as { preparedNative?: unknown; representation?: unknown; requestedLifecyclePoses?: unknown } | undefined;
+    return { ...nativeMeshEvidence(root), mounted: Boolean(root), preparedNative: provider?.preparedNative === true,
+      representation: provider?.representation ?? 'provider-evidence-missing', requestedLifecyclePoses: provider?.requestedLifecyclePoses ?? null,
+      gamePose: root?.userData.nativeGameNpcPose ?? null,
       jaw: nativeJawWeights(root) };
   }
 
@@ -623,6 +627,7 @@ function createFixture() {
     const playerPose = playerAudit?.body.pose ?? 'missing';
     const expectedPlayerPose = mode === 'idle' ? 'idle' : mode === 'walk' ? 'walk' : 'interact';
     const npcAudits = Object.fromEntries(['mrs-okafor', 'dapo'].map((id) => [id, inspectNpc(id)]));
+    const npcNativeCoverage = Object.fromEntries(Object.entries(npcAudits).map(([id, audit]) => [id, audit.preparedNative]));
     const npcPreparedCount = Object.values(npcAudits).filter((person) => person.authoredRig && person.mounted).length;
     const contact = playerAudit?.lastSolve ?? lastContact;
     const unsupported = unsupportedProbe;
@@ -641,6 +646,8 @@ function createFixture() {
         seed: playerAudit?.seed ?? PLAYER_SEED,
         look: PLAYER_LOOK,
         prepared: playerPrepared,
+        representation: playerPrepared ? 'native-prepared' : 'legacy-fallback',
+        requestedLifecyclePoses: [...PLAYER_BODY_POSES],
         authoredRig: playerEvidence.authoredRig,
         meshes: playerEvidence.meshes,
         morphs: playerEvidence.morphs,
@@ -658,6 +665,8 @@ function createFixture() {
         source: regulars.find((npc) => npc.id === id) ? 'viewLife(createLife(...)).social.here' : 'missing',
         actions: regulars.find((npc) => npc.id === id)?.actions ?? [],
       }])),
+      nativeCoverage: { player: playerPrepared, npcs: npcNativeCoverage,
+        allRequestedActorsPrepared: playerPrepared && Object.values(npcNativeCoverage).every(Boolean) },
       unsupportedProbe: unsupported,
       interaction,
       currentCamera,
@@ -743,7 +752,7 @@ function createFixture() {
     renderForCapture,
     probeUnsupportedPose,
     performNpcAction,
-    scenePoses: NATIVE_GAME_BODY_CAPABILITIES,
+    scenePoses: PLAYER_BODY_POSES,
     dispose,
   };
   window.addEventListener('resize', resize);

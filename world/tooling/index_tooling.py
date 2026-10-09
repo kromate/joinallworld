@@ -1,6 +1,6 @@
 """Bounded read-only verification of fixed index tooling inputs.
 
-This list covers the current engine/runtime helpers, not a future ingestion worker.
+This list covers the fixed engine/runtime helpers and verified-capture worker.
 No source execution, Node probing, SQLite, writes or dependency auto-discovery.
 """
 import hashlib
@@ -36,6 +36,9 @@ FILES = tuple(sorted([
     "world/tooling/index_bootstrap.py",
     "world/tooling/index_bootstrap.ts",
     "world/tooling/index_bootstrap_crash.ts",
+    "world/tooling/index_ingest.py",
+    "world/tooling/index_ingest.ts",
+    "world/tooling/index_ingest_crash.ts",
     "world/tooling/index_lease_witness.ts",
 ]))
 

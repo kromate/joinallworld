@@ -1,5 +1,17 @@
 # Copy-and-paste continuation prompt
 
+Latest ingestion checkpoint: fixed verified-capture ingestion passes178 Python,
+23 guarded engine checks and full World TypeScript. Actual retained Dakar inputs
+give2captures/2,283ordinals/1,810versions; fresh workers replay without duplicate
+versions. Actual SIGKILL after COMMIT leaves WAL which a fresh worker recovers and
+verifies against every raw ordinal. All877 historical pins remain unchanged.
+Read the first PROGRESS.md section and FEATURE-INDEX-INGEST-OPERATIONS.md.
+Next implement supervised admission and persistent capture attempt/input ownership,
+then fenced campaign observation/completion and independent raw/index audit before
+country geometry/sharding/streaming. This endpoint still consumes external charged
+admission; it does not complete the unattended country pipeline or deploy new
+playable detail. Preserve raw inputs, attempts, namespace witnesses and Nigeria.
+
 Latest recovery checkpoint: persistent fixed-registry startup passes167 Python and
 23 engine checks, including actual controller loss and a fresh recovery API using
 the inherited namespace lock. Read the first PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md

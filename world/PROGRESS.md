@@ -1,5 +1,69 @@
 # Implementation checkpoint — 9 October 2026
 
+## Fixed verified-capture ingestion — actual data and crash acceptance
+
+The previous status turn made no implementation progress. The next available
+implementation now connects retained raw captures to the guarded transactional
+index. Luna owned only the two fixed Node worker files; root implemented the
+Python descriptor boundary, guard registration, complete source closure and actual
+integration/recovery checks. Read [FEATURE-INDEX-INGEST-OPERATIONS.md](FEATURE-INDEX-INGEST-OPERATIONS.md).
+
+The endpoint consumes an actual externally charged root and both inherited
+namespace/index leases. Raw files are opened readonly without copying them;
+the anonymous64,000-byte-bounded envelope and readonly execution snapshot count
+against live index storage. Guard `F_GETFL` verifies all three descriptor access
+modes; descriptors cannot alias leases or another input role. Worker hashes and
+stable bigint filesystem checks, source/request/receipt reconstruction and
+binding-layer membership run before any SQL. The existing atomic bootstrap and
+capture transaction then conserve each original ordinal. Integrity/FK checks,
+closed physical state and unchanged root/database/lease inodes precede reporting.
+Reported peak RSS must fit the admitted cap, in addition to sampled RSS checks.
+Unconfirmed exit retains the actual input handles and owned source snapshot.
+
+**178 Python tests pass**, terminal29436 exit0,32.612s unittest/32.77s process,
+186,351,616B maxRSS. The11 new ingestion tests separately pass in9.480s with
+161,103,872B maxRSS. First launch failed before any test because the relative
+shared-wrapper path used the wrong cwd; its receipt remains. No cap was raised.
+Actual worker failures before SQL cover wrong pins/source request, out-of-binding
+layers, changed raw input and duplicate receipt keys. Quota failure preserves
+the previous capture; raw replay after fresh reopen passes. The original guard,
+snapshot, namespace and persistent controller checks remain in the combined run.
+
+The separate actual evidence verifier, terminal63623 exit0,6.43s/
+159,793,152B maxRSS, indexes473 and1,810 cached Dakar source rows. Result:
+2captures/2,283ordinals/1,810versions/473overlapping duplicates/0conflicted keys.
+Fresh workers raw-replay both with0 inserted versions and identical disposition
+hashes after reacquiring the same charged root; one reservation and database inode
+remain. Actual SIGKILL atbefore-transaction/after-commit/after-checkpoint produces
+no success report. The after-commit witness retains a nonempty WAL; a fresh worker
+recovers it and verifies all473 ordinals without inserting another version.
+All three boundaries preserve the same database inode and reservation. Nine
+current capture/ledger files and all877 historical pins are unchanged; no network,
+actual acquisition/campaign/output/Nigeria/game or runtime production write occurs.
+The separately guarded23 engine tests pass, for **201 focused checks**.
+
+Full World TypeScript passes, terminal19845 exit0,5.13s/442,171,392B maxRSS,
+384MiB heap, after explicit GRAPHICS/LIVING terminal resource handoffs. All root
+test/compiler/acceptance handles are terminal; no WORLD browser/server/upload.
+Memory returned NORMAL but paging continued, so heavy1 and existing limits remain.
+No full game build, physical-device or production map-detail acceptance is claimed.
+
+Current36-input manifest:367,210source bytes/4,547manifest bytes,
+SHA b2e6bc0de4de3a0ac3829dcc52803a3d4785d7f8f27c970bd7c75bbaf07faf6d;
+actual source snapshot438,272charged bytes, anonymous envelope4,096bytes.
+Exact pins and receipts are `.cache/world-build/evidence/feature-index-ingest-*`.
+Compiler accepts this source, not the earlier registry-only source. Committed-source
+policy and latest main synchronization follow this checkpoint.
+
+**Next:** implement actual supervised namespace admission and persistent per-index
+capture attempt/input ownership using the fixed registry recovery records, then
+validate/fence frozen campaign observations and completion. Independently conserve
+raw/index ordinals before full-country owned geometry/sharding/streaming publication.
+This endpoint requires external admission; it is not the full unattended scheduler.
+The complete world objective, Nigeria renderer integration, conditions/terrain
+upgrades and phone-visible global detail remain incomplete. Do not substitute more
+initializer fixtures for the remaining end-to-end country pipeline.
+
 ## Persistent fixed-registry recovery — focused acceptance
 
 Previous goal turn was **progress**: implementationd1a3ab12,174 focused checks and

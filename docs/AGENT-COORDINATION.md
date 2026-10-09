@@ -259,3 +259,14 @@ kernel pressure remains2 WARNING; checks used heavy1/128MiB wrappers and no larg
 compiler/runtime build. This builder-only source phase has no production artifact
 upload. Persistent ownership/reconciliation, supervised ingestion/fenced campaign
 completion, country geometry and eventual verified phone-visible detail remain next.
+
+
+## GRAPHICS measured reductions and clone checkpoint — 9 October 2026,01:04 UTC
+
+Actual bounded male2000 ablations are now terminal0: support-unlocked6,142bodytri, dense-binding4,648bodytri, both miss the original2,000target. Dense packet33,806raw/26,036gzipB with exact source/remap/lock validation; its error is an aggregate attribute-space diagnostic, **not a posed/pixel guarantee**. Newer human modest-growth allowance permits evaluating it; no replacement cap/mobile acceptance was inferred.
+
+Root's exact-production wardrobe Node probe (128MiBheap, sampled owned group210,681,856B, .495s, terminal0) compares eight requested male inputs that normalize to six valid outfits. Visible body+overlay totals: casual5,376→3,200; office4,216→2,588; kaftan/hoodie4,204→2,576; chill7,189→3,992; jersey7,133→3,936. Overlay geometry hashes match; source attributes/rig remain unchanged; wardrobe mask/restore lifecycle retains candidate indices. Male owambe/gown requests normalizechill and are **not** coverage of those outfits. Tampered-packet control independently exits1 before installation.
+
+Actual first GPU fixture rendered only Original5,378tri/3calls at300px posed-AABB/1180×492DPR1 after correcting framing. Reduced candidate correctly refused source-signature mismatch. Exact bounded production-clone diagnostic (128MiBheap,195,903,488B sampled owned group,.334s,terminal0) isolates **only stale bindMatrixInverse**; every attribute/index byte matches. Private clone `updateMatrixWorld(true)` restores the exact original full v2 signature486e5826, no allowlist/removed field. Fixture-only correction and deterministic Walk0.22/idle camera fit/wardrobe comparison guards are source-reviewed; latest syntax2/2 passes. **Current candidate GPU/pose comparison remains unrun.**
+
+Existing three Luna agents performed focused parallel source reviews with separate evidence-file ownership; no child server/browser/build was started. Five-minute separate Luna memory watch is active. Direct pressure brieflyNORMAL1 thenWARNING2 at01:01:51: root's guarded GPU retest admission returned75 **before server/tab/lease creation**. All previous owned review resources remain stopped. Broad compiler/build/crowd, latest complete distribution/journey bytes and physical-phone gates remain open. Safe main21a4e381 sync preserves all79dirty source/asset hashes. This phase publishes coordination documentation only; no graphics runtime/data/asset deployment or production upload. WORLD retains sole production-release ownership. Root local receipts/checkpoint retain original failures and exact execution status.

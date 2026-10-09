@@ -194,8 +194,8 @@ const topBar = computed(() => bar(top.value))
 const bottomBar = computed(() => bar(bottom.value))
 const pairs = computed(() => pairMoves(view.value.history))
 const lastPly = computed(() => view.value.history.length - 1)
-const status = computed(() => statusText(view.value, sides.value))
-const banner = computed(() => (view.value.over ? overBanner(view.value.over) : ''))
+const status = computed(() => props.state.result?.calledOff ? 'Game called off' : statusText(view.value, sides.value))
+const banner = computed(() => props.state.result?.calledOff ? 'Game called off' : view.value.over ? overBanner(view.value.over) : '')
 const listEl = ref<HTMLElement | null>(null)
 watch(() => view.value.history.length, async () => {
   await nextTick()
@@ -242,7 +242,7 @@ onBeforeUnmount(() => clearTimeout(disarm))
   <section class="cb" aria-label="Chess">
     <div class="cb-main">
       <div class="cb-bar" :class="{ 'is-turn': topBar.turn }">
-        <span class="cb-who"><b>{{ topBar.name }}</b><small v-if="topBar.bot"> (bot)</small><small v-if="topBar.you"> (you)</small></span>
+        <span class="cb-who"><b>{{ topBar.name }}</b><small v-if="topBar.you"> (you)</small></span>
         <BaseChip v-if="topBar.bot">Computer{{ level ? `, ${level}` : '' }}</BaseChip>
         <span class="cb-taken" :aria-label="`Captured: ${topBar.words}`"><i v-for="(piece, at) in topBar.pieces" :key="at" v-html="pieceSvg(piece)" /><em v-if="topBar.lead > 0">+{{ topBar.lead }}</em></span>
         <span v-if="topBar.clock" class="cb-clock" :class="{ 'is-low': topBar.clock.low, 'is-live': topBar.clock.live }"><small v-if="topBar.clock.note">{{ topBar.clock.note }}</small>{{ topBar.clock.text }}</span>
@@ -279,7 +279,7 @@ onBeforeUnmount(() => clearTimeout(disarm))
       </div>
 
       <div class="cb-bar" :class="{ 'is-turn': bottomBar.turn }">
-        <span class="cb-who"><b>{{ bottomBar.name }}</b><small v-if="bottomBar.bot"> (bot)</small><small v-if="bottomBar.you"> (you)</small></span>
+        <span class="cb-who"><b>{{ bottomBar.name }}</b><small v-if="bottomBar.you"> (you)</small></span>
         <BaseChip v-if="bottomBar.bot">Computer{{ level ? `, ${level}` : '' }}</BaseChip>
         <span class="cb-taken" :aria-label="`Captured: ${bottomBar.words}`"><i v-for="(piece, at) in bottomBar.pieces" :key="at" v-html="pieceSvg(piece)" /><em v-if="bottomBar.lead > 0">+{{ bottomBar.lead }}</em></span>
         <span v-if="bottomBar.clock" class="cb-clock" :class="{ 'is-low': bottomBar.clock.low, 'is-live': bottomBar.clock.live }"><small v-if="bottomBar.clock.note">{{ bottomBar.clock.note }}</small>{{ bottomBar.clock.text }}</span>

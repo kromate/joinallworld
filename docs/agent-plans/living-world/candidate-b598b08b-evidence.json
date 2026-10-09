@@ -1,6 +1,6 @@
 {
   "candidateSha": "b598b08b8d8e7d563b97de4600ddeb759dfa2396",
-  "observedAt": "2026-10-09T13:47:26.473550+00:00",
+  "observedAt": "2026-10-09T14:14:07.541354+00:00",
   "runId": 37937692605,
   "accepted": false,
   "sourceOnlyRepairSha": "4d7a8958ee7764d2c2a88c66412f361dd733fbae",
@@ -21,8 +21,26 @@
     "startupBrotli": 195413,
     "unchangedCaps": "pass"
   },
-  "fullNode22": "running original handle113843795948",
-  "fullNode24": "running original handle113843795894",
+  "fullNode22": {
+    "status": "completed",
+    "conclusion": "success",
+    "tests": 3578,
+    "passed": 3574,
+    "failed": 0,
+    "skipped": 4,
+    "durationMs": 1338330.971948,
+    "scope": "exactb598; cannot establish acceptance of later countries/UI/helper changes"
+  },
+  "fullNode24": {
+    "status": "completed",
+    "conclusion": "success",
+    "tests": 3578,
+    "passed": 3574,
+    "failed": 0,
+    "skipped": 4,
+    "durationMs": 1303226.085259,
+    "scope": "exactb598; cannot establish acceptance of later countries/UI/helper changes"
+  },
   "fullWorker22": {
     "tests": 153,
     "pass": 153,
@@ -175,11 +193,27 @@
     {
       "path": "/tmp/joinallworld-browser-b598b08b/run-manifest.json",
       "sha256": "2fadb648adf457c39930e4cd983846df15b5dc3f1019172a145ae5549391af72"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-b598-node22.log",
+      "sha256": "84558820e45bc3f9ef2dec0cd7dc18635bf83eb72a18598cdc5d71c8afedd094"
+    },
+    {
+      "path": "/tmp/joinallworld-consolidated-b598-node24.log",
+      "sha256": "e9d306796c1214edd693fe200ea330c4701a0dfb864d0f32f765c6155d776849"
     }
   ],
   "production": {
     "source": "a44629b38be751a9ad446051564704f6c3c6ae1b",
     "programmeRelease": false
   },
-  "next": "Integration alone repairs proven visual layout/helper boundary; freeze exact changed source, pass compiler/caps and native readable/reachable UI without hidden-control substitutes before release gates"
+  "next": "Integration alone repairs proven visual layout/helper boundary; freeze exact changed source, pass compiler/caps and native readable/reachable UI without hidden-control substitutes before release gates",
+  "overallStatus": "completed",
+  "overallConclusion": "failure (compiler14 diagnostics; visual acceptance separately fails)",
+  "currentAssembly": {
+    "localSha": "23c9d232d4311219b92cca8169ca17a64e410c5c",
+    "state": "five-country/UI/travel source committed locally, four further travel files dirty, native QA packet under review; not frozen or released",
+    "sharedWriter": "Integration",
+    "nativeHelperPacket": "existing verified Luna_journeys prepares source-only temp helper and unapplied patch, Root reviews; sole verified Astra operates next browser after explicit frozen-source handoff"
+  }
 }

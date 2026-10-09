@@ -34,7 +34,7 @@ button.social-row{width:100%;border:0;border-bottom:1px solid var(--c-line);back
 .social-presence.is-reconnecting{color:var(--c-amber-dark);font-weight:600}
 .social-actions{display:flex;flex-wrap:wrap;gap:6px;flex:none!important}
 .social-btn{border:0;background:var(--c-fill);color:var(--c-ink);border-radius:var(--r-sm);padding:8px 14px;min-height:var(--tap);font:600 13px var(--font);cursor:pointer}
-.social-btn.is-primary{background:var(--app-tint,var(--c-green-dark));color:#fff}.social-btn.is-danger{background:var(--c-red-soft);color:var(--c-red-dark)}
+.social-btn.is-primary{background:var(--c-green-dark);background:color-mix(in srgb,var(--app-tint,var(--c-green-dark)) 45%,#000);color:#fff}.social-btn.is-danger{background:var(--c-red-soft);color:var(--c-red-dark)}
 .social-btn:disabled{opacity:.5;cursor:not-allowed}
 .social-why{display:block;font-size:12px;line-height:1.4;color:var(--c-red);margin-top:2px}
 .social-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:8px;margin:8px 0}

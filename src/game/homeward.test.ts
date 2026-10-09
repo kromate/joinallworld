@@ -203,3 +203,23 @@ test('a pending legitimate starter reward is evaluated after the loan ticket deb
   assert.equal(life.state.ledger.at(-1)?.reason, 'Goal: Play ayo in the park')
   assert.equal(life.state.ledger.some(line => line.reason.startsWith('Dream achieved:')), false)
 })
+
+test('trusted issued loans reject malformed saved liabilities before ordinary debt cleanup', () => {
+  const life = visitor()
+  const quote = life.view().estate.ride.journey
+  assert.ok(quote)
+  assert.equal(life.run('homeward.accept', { quote: quote.key }).code, 'departed')
+  for (const corrupt of [
+    (state: LifeState) => Reflect.set(state.travel, 'rideDebt', -1),
+    (state: LifeState) => Reflect.set(state.travel, 'rideDebt', '12000'),
+    (state: LifeState) => Reflect.set(state.travel, 'rideDebt', 1.5),
+    (state: LifeState) => Reflect.set(state.travel, 'rideDebt', 1000001),
+    (state: LifeState) => Reflect.deleteProperty(state, 'travel'),
+  ]) {
+    const saved = structuredClone(life.state)
+    corrupt(saved)
+    const bytes = JSON.stringify(saved)
+    assert.throws(() => createLife(saved, { ...life.context(), trustedSave: true }), /trusted homeward ticket.*ride debt/i)
+    assert.equal(JSON.stringify(saved), bytes)
+  }
+})

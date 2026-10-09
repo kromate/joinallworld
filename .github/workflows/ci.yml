@@ -135,6 +135,9 @@ jobs:
           server/settlement-clock.test.ts
           src/app/features/commerceStatementIdentity.test.ts
           src/app/features/money/statementModel.test.ts
+          src/app/features/landing/landing.test.ts
+          src/app/features/landing/landingLoader.test.ts
+          src/quick-start/model.test.ts
 
       - name: Existing shopping, housing and career checks
         run: >-
@@ -215,6 +218,9 @@ jobs:
           server/settlement-clock.test.ts
           src/app/features/commerceStatementIdentity.test.ts
           src/app/features/money/statementModel.test.ts
+          src/app/features/landing/landing.test.ts
+          src/app/features/landing/landingLoader.test.ts
+          src/quick-start/model.test.ts
           src/app/features/social/socialComponents.test.ts
           src/ui/npc-mark.test.ts
           src/app/features/campus/campusWalkability.test.ts

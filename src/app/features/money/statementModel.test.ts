@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { createLife } from '../../../life.ts'
+import { loadCityContent } from '../../../game/cities/registry.ts'
 import { sameStatement } from './statementModel.ts'
 import { statementOf } from '../../../game/wallet-statement.ts'
 import type { WalletStatement } from '../../../types/view.ts'
@@ -30,7 +31,8 @@ test('statement agreement compares its opening day and every movement total', ()
   assert.equal(sameStatement(serverStatement, { ...localStatement, reconciled: false }, 105), false, 'an unreconciled local statement cannot agree')
 })
 
-test('an unreconciled local ledger cannot agree just because its daily totals match', () => {
+test('an unreconciled local ledger cannot agree just because its daily totals match', async () => {
+  await loadCityContent('lagos')
   const state = createLife({}, { now: 1 })
   state.cash = 105
   state.ledger = [{ at: 1, amount: 5, reason: 'Recorded movement', balance: 104 }]

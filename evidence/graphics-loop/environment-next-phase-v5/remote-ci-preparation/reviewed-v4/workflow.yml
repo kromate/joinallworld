@@ -1,0 +1,57 @@
+name: Environment whole-slice v5 diagnostic package (split compiler v4)
+
+on:
+  push:
+    branches:
+      - codex/graphics-environment-next-phase-v5-review-v4
+
+permissions:
+  contents: read
+
+concurrency:
+  group: environment-whole-slice-v5-reviewed-v4-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Pinned full-host diagnostic package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact review-branch commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Run v4 serial split compilation and one-copy finalization
+        run: python3 evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v4/run-bounded-linux-reviewed-v4.py
+
+      - name: Upload v4 source pins, phase receipts, static routes, and bounded result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-whole-slice-v5-reviewed-v4-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/environment-next-phase-v5/source-pins-v4.json
+            evidence/graphics-loop/environment-next-phase-v5/source-precompile-v4.json
+            evidence/graphics-loop/environment-next-phase-v5/source-postcompile-v4.json
+            evidence/graphics-loop/environment-next-phase-v5/vendor-v4-record.json
+            evidence/graphics-loop/environment-next-phase-v5/addons-v4-record.json
+            evidence/graphics-loop/environment-next-phase-v5/app-v4-record.json
+            evidence/graphics-loop/environment-next-phase-v5/compile-v4-record.json
+            evidence/graphics-loop/environment-next-phase-v5/static-v4/**
+            evidence/graphics-loop/environment-next-phase-v5/static-fixture-v4/build-manifest.json
+            evidence/graphics-loop/environment-next-phase-v5/finalizer-pins-v4.json
+            evidence/graphics-loop/environment-next-phase-v5/finalization-v4-observed.json
+            evidence/graphics-loop/environment-next-phase-v5/review-host-v4-staged.json
+            evidence/graphics-loop/environment-next-phase-v5/remote-ci-preparation/reviewed-v4/remote-results/**
+          if-no-files-found: warn
+          retention-days: 14

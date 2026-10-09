@@ -1,0 +1,9 @@
+# Remote render review v5
+
+This is a distinct remote-only diagnostic recipe on `codex/graphics-environment-next-phase-v5-render-review-v5`. It downloads and validates the fixed successful full-slice package from run `37892370818`, package commit `6ad217d26d02c268af70ccb69758bca75b19d6f4`, artifact `environment-whole-slice-v5-reviewed-v4-37892370818`. It does not change or rebuild that package.
+
+The previous render attempt, run `37893540520`, completed all 7,550 source and 5,626 output hash checks before Chrome launch, then exceeded the old 1,280 MiB remote process-group cap at 11.902 seconds (peak 1,344,147,456 bytes) before the first screenshot. The observed startup included six processes. V5 raises only the remote GitHub-runner diagnostic process-group ceiling to 2 GiB so the scene review can produce useful stage evidence. The Node old-space limit stays 96 MiB and the wall-clock limit stays 60 seconds. This is not a game, download, battery, or phone budget change.
+
+The controller validates the full package chain and static output tree before opening Chrome. It uses the existing one-process headless Chrome/ANGLE SwiftShader topology and captures the synthetic Lagos Home, Street, Market, and Beach fixture at day/night, then movement, rebuild, and disposal evidence. Per-process state/RSS peaks and controller phase events are recorded in `supervisor-events.jsonl`; controller launch, source/output validation, Chrome launch, navigation, host status, captures, and cleanup are appended to `stage-events.jsonl`. The controller writes a SIGTERM event before cleanup when interrupted, so a cap failure retains its last reached stage.
+
+Screenshots/counters are visual diagnostics only. SwiftShader timing is not real GPU performance, mobile performance, or visual acceptance. The staged workflow remains inactive until root publishes it at `.github/workflows/graphics-environment-next-phase-v5-render-review-v5.yml`.

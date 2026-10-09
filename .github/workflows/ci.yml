@@ -16,6 +16,11 @@ on:
         required: false
         type: boolean
         default: false
+      startup_report:
+        description: Observe the exact fast build startup graph outside dist; no release gate exemption
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -61,7 +66,22 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - run: npm run build
+      - name: Build with optional read-only startup observer
+        run: |
+          if [ '${{ inputs.startup_report }}' = 'true' ]; then
+            npm run -s prebuild
+            node --experimental-strip-types scripts/living-world-startup-report.ts
+          else
+            npm run build
+          fi
+      - name: Retain exact startup graph
+        if: always() && inputs.startup_report
+        uses: actions/upload-artifact@v4
+        with:
+          name: living-world-startup-${{ github.sha }}
+          path: .tmp/living-world-startup-report.json
+          if-no-files-found: error
+          retention-days: 3
       - run: npm run size:download
       - run: npm run test:smoke
 
@@ -98,7 +118,7 @@ jobs:
       NODE_OPTIONS: --max-old-space-size=1536
     steps:
       - name: Refuse ambiguous evidence mode
-        if: inputs.full_checks
+        if: inputs.full_checks || inputs.startup_report
         run: exit 1
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -116,6 +136,7 @@ jobs:
           src/game/living-world/parcel.test.ts
           src/game/living-world/fleet.test.ts
           src/game/living-world/vehicle-clearance.test.ts
+          scripts/living-world-startup-report.test.ts
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
       - name: Actual Worker SQLite permission, account and restart checks
         run: >-

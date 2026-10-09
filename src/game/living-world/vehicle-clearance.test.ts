@@ -85,6 +85,8 @@ test('source stamp, timestamp, and geometry inputs are strict and fail closed', 
   assert.equal(inspectSedanRoadFootprint({ ...input, atMs: -1 }).code, 'invalid_time')
   assert.equal(inspectSedanRoadFootprint({ ...input, road: { ...road, width: 0 } }).code, 'invalid_geometry')
   assert.equal(inspectSedanRoadFootprint({ ...input, vehicle: { center: { x: 100_001, z: 0 }, headingRadians: 0 } }).code, 'invalid_geometry')
+  const futurePose = { ...input, futureMotion: 'unverified' }
+  assert.equal(inspectSedanRoadFootprint(futurePose).code, 'invalid_geometry', 'future pose fields cannot silently change the inspected meaning')
 })
 
 test('no player capsule is guessed or accepted as trusted clearance evidence', () => {

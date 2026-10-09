@@ -183,6 +183,8 @@ export function inspectSedanRoadFootprint(input: ClearanceInput): VehicleClearan
   }
   try {
     if (!record(input) || !provenanceMatches(input.provenance)) return result('unsupported_provenance', null, emptyScopes, null)
+    const keys = ['provenance', 'road', 'vehicle', 'atMs', ...(Object.hasOwn(input, 'actorCapsule') ? ['actorCapsule'] : [])]
+    if (!exactKeys(input, keys)) return result('invalid_geometry', null, emptyScopes, null)
     if (!Number.isSafeInteger(input.atMs) || input.atMs < 0) return result('invalid_time', null, emptyScopes, null)
     if (!validActorCapsule(input.actorCapsule)) return result('invalid_actor_capsule', input.atMs, emptyScopes, null)
     if (!validRoad(input.road) || !validVehicle(input.vehicle)) return result('invalid_geometry', input.atMs, emptyScopes, null)

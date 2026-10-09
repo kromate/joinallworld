@@ -147,8 +147,8 @@
     },
     {
       "path": "scripts/world/verify-playable-destination.ts",
-      "bytes": 13162,
-      "sha256": "4b158162c5923fc7042d0933b317724b50b6fcbae2d13ef03fa8e497b89623a2"
+      "bytes": 13193,
+      "sha256": "e6a6823984c8d212e6e6f888e43dfd7f4e6819ada2723cebd8becea85f03e2a7"
     },
     {
       "path": ".github/workflows/africa-wave2-audit-ci.yml",
@@ -201,7 +201,12 @@
     "passed": 5,
     "heapMb": 256,
     "scope": "Isolated source/engine; real host/browser/budget/prod acceptance pending",
-    "remoteAudit": "pending"
+    "remoteAudit": "pending",
+    "priorRemoteAudit": {
+      "source": "bd25c1ef540d04da5f3fd37db515ea8635e45df0",
+      "url": "https://github.com/kromate/joinallworld/actions/runs/37942876943",
+      "status": "FAIL one verifier typing omission: optional airHub.venueId index requires explicit arrival-venue assertion. Runtime city journeys/pins passed bothnodes. Guard corrected; fresh audit required."
+    }
   },
   "reuseSharedAdmission": "Existing first-wave country metadata/atlas adapter; Integration owns all shared edits.",
   "validationLogs": [

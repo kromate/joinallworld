@@ -170,7 +170,7 @@ async function verifyDestination(cityId: string): Promise<void> {
   await assertCityMapContract(city, map)
   const [content, scene] = await Promise.all([city.loadContent(), map.loadScene()])
   const airHub = city.rules.hubs.find(hub => hub.mode === 'air')
-  assert.ok(airHub, 'opened destination declares an air hub')
+  assert.ok(airHub?.venueId, 'opened destination declares an air hub with an arrival venue')
   const arrival = scene.sites[airHub.venueId]
   assert.ok(arrival, 'actual airport venue is present in the rendered scene')
   assert.equal(airHub.name, facts.airport.name, 'air hub name matches the sourced airport')

@@ -27,7 +27,7 @@ const candidateNames = ['candidate-build.ts', 'candidate-home-scene.ts', 'candid
 const fixtureNames = [
   'README.md', 'root-local-integration.json', 'root-integrated-startup-tests.json', 'root-integrated-startup-tests.log',
   'remote-diagnostic-v1/README.md', 'remote-diagnostic-v1/index-npc-v1.html', 'remote-diagnostic-v1/viewer-npc-v1.ts',
-  'publication-inputs-npc-v2.json',
+  'publication-inputs-npc-v3.json',
 ]
 const parentFixtureNames = ['readiness-protocol-v6.mjs', 'readiness-protocol-v6.d.mts', 'readiness-protocol-v6.test.mjs']
 const controlNames = ['scope-plan-npc-v1.mjs', 'scope-plan-npc-v1.test.mjs', 'remote-control-npc-v1.mjs', 'remote-control-npc-v1.test.mjs']

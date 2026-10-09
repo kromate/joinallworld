@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authored clothing/body/shoe coverage A/B</title>
+  <style>
+    :root { color-scheme: light; font: 14px/1.4 system-ui, sans-serif; background: #edf0f2; color: #18232b; }
+    body { margin: 0; padding: 16px; }
+    main { display: grid; grid-template-columns: minmax(340px, 1fr) 340px; gap: 14px; max-width: 1300px; margin: auto; }
+    canvas { width: 100%; height: min(78vh, 760px); min-height: 520px; display: block; background: #d7e2e6; border-radius: 8px; }
+    aside { padding: 14px; background: white; border-radius: 6px; }
+    fieldset { margin: 0 0 12px; border: 1px solid #c5cdd2; border-radius: 6px; }
+    button { margin: 3px; padding: 7px 9px; }
+    #status[data-state="error"] { color: #a21b1b; }
+    pre { overflow: auto; max-height: 35vh; font-size: 11px; white-space: pre-wrap; }
+    @media(max-width: 800px) { main { grid-template-columns: 1fr; } canvas { height: 68vh; } }
+  </style>
+</head>
+<body>
+  <main>
+    <canvas id="stage"></canvas>
+    <aside>
+      <h1>Clothing/body/shoe A/B</h1>
+      <p>Candidate combines the source-indexed office blouse coverage patch seeded from an attributed skin pixel with private trouser-hem sock trimming. The same loaded look, actor, pose and camera are used for each pair. Female office is a skirt and leaves shoe geometry unchanged.</p>
+      <fieldset><legend>Actor and outfit</legend>
+        <button id="load-man">Male casual</button>
+        <button id="load-woman">Female casual</button>
+        <button id="load-man-office">Male office trousers</button>
+        <button id="load-woman-office">Female office skirt</button>
+      </fieldset>
+      <fieldset><legend>Source / candidate</legend>
+        <button id="source-shoes">Original body/shoes</button>
+        <button id="trimmed-shoes">Coverage + hem-trim candidate</button>
+      </fieldset>
+      <fieldset><legend>Pose</legend>
+        <button id="pose-idle">Idle</button>
+        <button id="pose-walk-a">Walk π/2</button>
+        <button id="pose-walk-b">Walk 3π/2</button>
+        <button id="pose-interact">Interact</button>
+      </fieldset>
+      <fieldset><legend>Camera</legend>
+        <button id="view-front">Front</button>
+        <button id="view-quarter">Quarter</button>
+        <button id="view-side">Side</button>
+        <button id="view-back">Back</button>
+      </fieldset>
+      <div id="status" data-state="loading">Loading viewer module…</div>
+      <pre id="status-json">{}</pre>
+    </aside>
+  </main>
+  <script type="module" src="./clothing-body-shoe-ab-v1.js"></script>
+</body>
+</html>

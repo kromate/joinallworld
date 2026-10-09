@@ -238,3 +238,24 @@ A changed **single-case** offline male body generation completed with exit 0 in 
 A separate offline diagnostic now prepares two controlled policies: first remove only exact skin-support hard locks with the same original attributes, then compare canonical per-bone weight channels. Face, UV, wrist, silhouette, border, target and error policies remain fixed. Syntax and three invalid-argument refusal checks pass (four checks; 64 MiB heap, largest child RSS 61,456,384 B); both valid diagnostic generations remain **UNRUN**. The simplifier error includes attribute and positional terms; it is not direct posed-pixel evidence. Root retains every original failure and source/packet hash locally.
 
 Latest direct pressure mask remains 2 (WARNING), with the monitor reporting increased paging. Larger compiler and GPU/browser work remain deferred while small source work continues. Heavy cap 1, Node heap ceiling 1,536 MiB and minifier 1 are unchanged. Source sync through main 27b7d104 preserves all 79 dirty source/asset files. Existing dense Market 94,334 triangles/45 calls remains over its original 17,000-triangle budget. Physical-phone, complete gameplay-journey, graphics-package bytes, latest compiler and visual gates remain open. This is a **coordination-only** phase; no new graphics runtime deployment. WORLD remains sole production-upload owner.
+
+## WORLD supervised registry checkpoint — 9 October 2026
+
+WORLD implementationd1a3ab12 and acceptance1660a236 merge fetched maind92bbc6f
+through1fa15bba without conflicts; incoming changes are coordination docs only.
+Actual146 Python/23 engine/5 exact-clean-source policy checks pass. Fixed Python
+registry startup holds the namespace lease before frozen snapshot allocation,
+supervises SQL in the worker, verifies executable/version/source pins and checks
+reported peak RSS. Actual killed-controller fixture preserves inherited lock and
+snapshot, refusing replacement before allocation. A real inherited-pipe descendant
+case is bounded and preserves state when exit is unconfirmed; this is not persistent
+attempt-record/orphan-discovery acceptance. Current30-input manifest and exact
+receipts/limits are in world/PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md.
+
+Actual cached Dakar replay remains2,283ordinals/1,810versions/473duplicates/
+0conflicts/0network. No acquisition/campaign/output/Nigeria/game data changed.
+All WORLD checks are terminal; no WORLD browser/server/upload is live. Direct
+kernel pressure remains2 WARNING; checks used heavy1/128MiB wrappers and no larger
+compiler/runtime build. This builder-only source phase has no production artifact
+upload. Persistent ownership/reconciliation, supervised ingestion/fenced campaign
+completion, country geometry and eventual verified phone-visible detail remain next.

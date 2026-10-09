@@ -101,7 +101,7 @@ export function createFacialDetail(base: THREE.SkinnedMesh, key: BodyKey, look: 
     buildingShape = shape; vertices = [];
     const smile = shape === 'smile' ? 0.65 : shape === 'grin' ? 1 : 0;
     for (const eye of eyes) {
-      const closed = shape === 'blink', ry = closed ? 0.0005 : 0.0095 - smile * 0.0015;
+      const closed = shape === 'blink', ry = closed ? 0.0005 : 0.0115 - smile * 0.001;
       disc(eye.clone().add(new THREE.Vector3(0, 0, 0.003)), 0.019, ry, closed ? 0.001 : 0.011, closed ? 'skin' : 'white');
       const front = eye.clone().add(new THREE.Vector3(0, closed ? 0 : 0.0018, closed ? 0.0032 : 0.0142));
       disc(front, 0.0072, closed ? 0.0001 : ry * 0.88, 0.0012, closed ? 'skin' : 'iris', 2);

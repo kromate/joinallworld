@@ -64,6 +64,7 @@ interface FaceVertex {
   readonly mouth: number;
   readonly mouthSide: number;
   readonly mouthVertical: number;
+  readonly upperLid: number;
 }
 
 interface Bounds {
@@ -213,7 +214,7 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
     const heightFraction = (y - faceBaseY) / faceHeight;
     const front = smoothstep(frontStart, headBounds.minZ + depth * 0.78, z);
     if (heightFraction < 0.04 || heightFraction > 0.96) continue;
-    let mouth = 0, mouthSide = 0, mouthVertical = 0;
+    let mouth = 0, mouthSide = 0, mouthVertical = 0, upperLid = 0;
     if (uv && textureMatrix) {
       const faceUv = new Vector2(uv.getX(index), uv.getY(index)).applyMatrix3(textureMatrix);
       const du = (faceUv.x - 0.1875) / 0.035;
@@ -222,12 +223,17 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
       mouth = (1 - smoothstep(0.7, 1, radius)) * (region.getX(index) >= 0.45 ? 1 : 0);
       mouthSide = Math.max(-1, Math.min(1, du));
       mouthVertical = Math.max(-1, Math.min(1, dv));
+      // Raise the authored upper lid with the smile. Leave the eye centre fixed so the
+      // separate eyeball can stay on its bind anchor throughout an expression change.
+      const eyeU = Math.min(Math.abs(faceUv.x - 0.137), Math.abs(faceUv.x - 0.234));
+      upperLid = (1 - smoothstep(0.012, 0.027, eyeU))
+        * smoothstep(0.143, 0.159, faceUv.y) * (1 - smoothstep(0.170, 0.177, faceUv.y));
     }
     candidates.push({
       index, x, y, z, height: heightFraction,
       side: Math.max(-1, Math.min(1, (x - centerX) / (width * 0.5))),
       front,
-      mouth, mouthSide, mouthVertical,
+      mouth, mouthSide, mouthVertical, upperLid,
     });
   }
   if (candidates.length === 0) return { ok: false, reason: 'no_face_region' };
@@ -309,9 +315,11 @@ export function createAvatarAppearanceController(input: unknown): AppearanceCont
       const grin = next.expression === 'grin' ? 1 : 0;
       const cornerLift = Math.pow(Math.abs(vertex.mouthSide), 2) * (smile * 0.004 + grin * 0.006) * vertex.mouth;
       const mouthOpen = grin * Math.sign(-vertex.mouthVertical) * Math.abs(vertex.mouthVertical) * 0.004 * vertex.mouth;
+      const lidLift = (smile * 0.004 + grin * 0.006) * vertex.upperLid;
+      const cheekLift = (smile * 0.0015 + grin * 0.0025) * cheekShape;
       const bodyPoint = new Vector3(
         Math.max(minX, Math.min(maxX, vertex.x + Math.sign(vertex.side) * maxWidth * amount * cheekShape)),
-        Math.max(minY - 0.025, Math.min(maxY, shapedY - maxDown * amount * (0.55 * jawShape + 0.45 * cheekShape) + cornerLift + mouthOpen)),
+        Math.max(minY - 0.025, Math.min(maxY, shapedY - maxDown * amount * (0.55 * jawShape + 0.45 * cheekShape) + cornerLift + mouthOpen + lidLift + cheekLift)),
         Math.max(minZ, Math.min(maxZ, vertex.z - forehead * amount * foreheadWeight * vertex.front)),
       );
       bodyPoint.applyMatrix4(inverseMeshMatrix);

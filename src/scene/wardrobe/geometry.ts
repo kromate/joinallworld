@@ -525,19 +525,8 @@ function headCover(b: ClothBuilder, id: string, fabric: THREE.Color): void {
     for (let j = 0; j < 4; j++) b.ring(new THREE.Vector3(0.063, top + 0.022 + j * 0.016, 0.033), 0.086 - j * 0.018, 0.076 - j * 0.015, 0, 0.021, fabric.clone().multiplyScalar(0.9 + j * 0.045), weights, 12);
   }
 }
-interface CrownProfile {
-  readonly centreX: number;
-  readonly centreZ: number;
-  readonly baseY: number;
-  readonly topY: number;
-  readonly rx: number;
-  readonly rz: number;
-  section(fraction: number): { y: number; rx: number; rz: number };
-  point(angle: number, fraction: number): THREE.Vector3;
-}
-
-/** A guide above the source buzz cap; extra styles never replace the real cap or descend over the face. */
-function hairCrown(b: ClothBuilder, tint: THREE.Color, weights: Weights, height: number): CrownProfile {
+/** A connected, lightly curled crown overlapping the source cap without descending over the face. */
+function hairCrown(b: ClothBuilder, tint: THREE.Color, weights: Weights, height: number, curlAmplitude = 0): void {
   const source = b.rest.bounds.get('hair') ?? b.rest.bounds.get('Head');
   if (!source || source.isEmpty()) throw new Error('Hair geometry needs source scalp bounds');
   const centreX = (source.min.x + source.max.x) * 0.5;
@@ -555,27 +544,19 @@ function hairCrown(b: ClothBuilder, tint: THREE.Color, weights: Weights, height:
     { y: 0.86, x: 0.76, z: 0.77 }, { y: 0.98, x: 0.28, z: 0.29 },
     { y: 1, x: 0.025, z: 0.025 },
   ];
-  const section = (fraction: number) => {
-    const f = THREE.MathUtils.clamp(fraction, 0, 1);
-    let index = 0;
-    while (index < profile.length - 2 && f > profile[index + 1]!.y) index++;
-    const a = profile[index]!, next = profile[index + 1]!;
-    const t = (f - a.y) / (next.y - a.y);
-    return {
-      y: baseY + height * f,
-      rx: rx * THREE.MathUtils.lerp(a.x, next.x, t),
-      rz: rz * THREE.MathUtils.lerp(a.z, next.z, t),
-    };
-  };
-  const point = (angle: number, fraction: number) => {
-    const row = section(fraction);
-    return new THREE.Vector3(centreX + Math.cos(angle) * row.rx, row.y, centreZ + Math.sin(angle) * row.rz);
-  };
-  const levels = profile.map(row => ({ y: baseY + height * row.y, rx: rx * row.x, rz: rz * row.z, x: centreX, z: centreZ }));
-  b.loft(levels, tint, () => weights, 20);
+  // Use one shared, densely sampled crown surface instead of separate low-poly balls.
+  // The gentle two-frequency radial wave gives curls a connected silhouette and lets
+  // computeVertexNormals smooth across every lobe without changing the hair draw.
+  const segments = 48;
+  const rows = profile.map(row => Array.from({ length: segments }, (_, i) => {
+    const angle = TAU * i / segments, envelope = Math.sin(Math.PI * row.y);
+    const curl = envelope * curlAmplitude * (Math.sin(angle * 12 + row.y * TAU) + 0.35 * Math.sin(angle * 22 - row.y * TAU));
+    return new THREE.Vector3(centreX + Math.cos(angle) * rx * row.x * (1 + curl),
+      baseY + height * row.y, centreZ + Math.sin(angle) * rz * row.z * (1 + curl));
+  }));
+  b.surface(rows, tint, () => weights);
   // The final loft ring is tiny; this overlapping tip closes the crown without extending its hairline.
   b.ball(new THREE.Vector3(centreX, topY, centreZ), [rx * 0.035, height * 0.012, rz * 0.035], tint, weights, 10, 3);
-  return { centreX, centreZ, baseY, topY, rx, rz, section, point };
 }
 
 function quadraticHairPath(start: THREE.Vector3, control: THREE.Vector3, end: THREE.Vector3, steps = 7): THREE.Vector3[] {
@@ -595,23 +576,10 @@ function hairStyle(b: ClothBuilder, style: string, tint: THREE.Color): void {
     const radii = points.map((_, i) => radius * (i === 0 ? 0.82 : i === points.length - 1 ? 0.62 : 1));
     b.tube(points, radii, colour, () => weights, 8);
   };
-  const addCurls = (count: number, radius: number) => {
-    const crown = hairCrown(b, tint, weights, 0.14);
-    const lowerCount = Math.ceil(count * 0.58), upperCount = count - lowerCount;
-    for (let i = 0; i < lowerCount; i++) {
-      const angle = TAU * i / lowerCount + 0.11, normal = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)).normalize();
-      const centre = crown.point(angle, 0.63).addScaledVector(normal, radius * 0.22);
-      b.ball(centre, [radius, radius * 0.88, radius], tint, weights, 10, 4);
-    }
-    for (let i = 0; i < upperCount; i++) {
-      const angle = TAU * i / upperCount + Math.PI / upperCount, normal = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)).normalize();
-      const centre = crown.point(angle, 0.88).addScaledVector(normal, radius * 0.22);
-      b.ball(centre, [radius * 0.94, radius * 0.86, radius * 0.94], tint, weights, 10, 4);
-    }
-  };
+  const addCurls = (amplitude: number) => { hairCrown(b, tint, weights, 0.14, amplitude); };
   switch (style) {
-    case 'curls': addCurls(18, 0.022); break;
-    case 'afro': addCurls(24, 0.027); break;
+    case 'curls': addCurls(0.075); break;
+    case 'afro': addCurls(0.12); break;
     case 'bun': {
       const hair = b.rest.bounds.get('hair'), centreX = hair ? (hair.min.x + hair.max.x) * 0.5 : head.x;
       const centreZ = hair ? (hair.min.z + hair.max.z) * 0.5 : head.z;
@@ -621,7 +589,7 @@ function hairStyle(b: ClothBuilder, style: string, tint: THREE.Color): void {
       const centre = new THREE.Vector3(centreX + radiusX * 0.08, top + 0.02, centreZ - radiusZ * 0.48);
       const base = new THREE.Vector3(centreX, top - 0.035, centreZ - radiusZ * 0.72);
       strand(base, base.clone().lerp(centre, 0.55).add(new THREE.Vector3(0, 0.025, -0.018)), centre.clone().add(new THREE.Vector3(0, -0.035, 0)), 0.018);
-      b.ball(centre, [0.056, 0.053, 0.055], tint, weights, 12, 6);
+      b.ball(centre, [0.056, 0.053, 0.055], tint, weights, 20, 10);
       const coil = Array.from({ length: 16 }, (_, i) => {
         const t = i / 15, angle = TAU * 1.7 * t;
         return new THREE.Vector3(centre.x + Math.cos(angle) * 0.044, centre.y - 0.04 + t * 0.08, centre.z + Math.sin(angle) * 0.043);

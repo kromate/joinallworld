@@ -1,0 +1,191 @@
+--- a/src/app/features/living-world/DrivingApp.vue
++++ b/src/app/features/living-world/DrivingApp.vue
+@@ -2,7 +2,7 @@
+ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+ import { useApp } from '../../state/app.ts'
+ import type { DrivingControlPacket, DrivingLifecycleRequest, DrivingResponse, DrivingSessionView, QualificationClaimRequest, QualificationResponse, StarterRentalClaimRequest, StarterRentalResponse } from '../../../types/living-world.ts'
+-import type { DrivingInput, DrivingRoute, DrivingState } from '../../../game/living-world/driving.ts'
++import type { DrivingGear, DrivingInput, DrivingRoute, DrivingState } from '../../../game/living-world/driving.ts'
+ import { createDriving, stepDriving } from '../../../game/living-world/driving.ts'
+ import type { Look } from '../../../types/life.ts'
+ import type { DrivingScene } from './drivingScene.ts'
+@@ -37,6 +37,8 @@
+ const touch = new Map<number, TouchControl>()
+ const keys = new Set<string>()
+ const held = ref<DrivingInput>({ throttle: 0, brake: 0, steer: 0 })
++// null preserves the legacy three-field control frame until a player explicitly picks a direction.
++const requestedGear = ref<DrivingGear | null>(null)
+ const wheelSteer = ref(0)
+ const scene = ref<DrivingScene | null>(null)
+ const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')
+@@ -141,9 +143,22 @@
+     && reply.eligible === true && reply.valid === false && reply.permission === null
+   })
+ const practiceLabel = 'Authored simulated practice course · not a mapped public road or real licence test.'
++const canonicalGear = computed<DrivingGear>(() => serverState.value?.gear === 'reverse' ? 'reverse' : 'forward')
++const transmissionStatus = computed(() => {
++  const saved = serverState.value
++  if (!saved) return 'Server-confirmed direction is not available.'
++  const confirmed = canonicalGear.value === 'reverse' ? 'Reverse' : 'Drive'
++  const requested = requestedGear.value
++  if (!requested) return `Server-confirmed direction: ${confirmed}.`
++  const selected = requested === 'reverse' ? 'Reverse' : 'Drive'
++  if (requested === canonicalGear.value) return `Requested ${selected}; server confirms ${confirmed} is engaged.`
++  const shift = saved.status === 'running' && saved.speed > 0
++    ? `Braking in ${confirmed} before the shift.` : `Waiting for the server to confirm the shift from ${confirmed}.`
++  return `Requested ${selected}; ${shift} Server-confirmed direction: ${confirmed}.`
++})
+ function responseCurrent(token: number, key: string): boolean { return !disposed && token === generation && key === contextKey.value }
+ function clearHeld(): void {
+-  keys.clear(); touch.clear(); held.value = { throttle: 0, brake: 0, steer: 0 }
++  keys.clear(); touch.clear(); requestedGear.value = null; held.value = { throttle: 0, brake: 0, steer: 0 }
+   const gesture = wheelGesture; wheelGesture = null; wheelSteer.value = 0
+   if (gesture?.target.hasPointerCapture(gesture.pointerId)) gesture.target.releasePointerCapture(gesture.pointerId)
+   scene.value?.setInput(held.value)
+@@ -159,8 +174,16 @@
+   const brake = keys.has('ArrowDown') || keys.has('s') || values.includes('brake')
+   const buttonSteering = Number(right) - Number(left)
+   const manualSteering = keys.has('ArrowLeft') || keys.has('a') || keys.has('ArrowRight') || keys.has('d') || values.includes('left') || values.includes('right')
+-  held.value = { throttle: throttle ? 1 : 0, brake: brake ? 1 : 0, steer: manualSteering ? buttonSteering : wheelSteer.value }
++  const next: DrivingInput = { throttle: throttle ? 1 : 0, brake: brake ? 1 : 0, steer: manualSteering ? buttonSteering : wheelSteer.value }
++  if (requestedGear.value !== null) next.gear = requestedGear.value
++  held.value = next
+   scene.value?.setInput(held.value)
++}
++function selectGear(gear: DrivingGear): void {
++  if (!active.value || !online.value || needsRefresh.value) return
++  if (requestedGear.value !== gear) pendingFrames = []
++  requestedGear.value = gear
++  updateHeld()
+ }
+ function steeringDown(event: PointerEvent): void {
+   if (!active.value || wheelGesture || event.button !== 0 || !Number.isFinite(event.clientX)) return
+@@ -275,6 +298,7 @@
+ }
+ async function load(): Promise<void> {
+   restartConfirmation.value = false
++  clearHeld()
+   const token = generation, key = contextKey.value, request = ++loadRequest
+   const expectedJourney = session.value?.journeyId, actor = game.view.value.session?.id ?? null, city = cityId.value
+   const requestCurrent = (): boolean => responseCurrent(token, key) && request === loadRequest && actor === (game.view.value.session?.id ?? null)
+@@ -548,6 +572,7 @@
+ }
+ async function lifecycle(action: 'resume' | 'pause', prior = session.value, allowLeaving = false, applyResult = true): Promise<void> {
+   if (!prior) return
++  clearHeld()
+   const token = generation, key = contextKey.value
+   const body: DrivingLifecycleRequest = { cityId: prior.cityId, journeyId: prior.journeyId, revision: prior.revision, requestId: game.newId() }
+   lifecyclePending.value++
+@@ -754,6 +779,11 @@
+       <small>{{ dashboard.state }} · Zone distance is straight-line to its edge, not distance along the road.</small>
+     </section>
+     <section class="controls" aria-label="Driving controls" :aria-disabled="!active">
++      <div class="gear-selector" role="group" aria-label="Select requested direction">
++        <button type="button" :disabled="!active || !online || needsRefresh" :aria-pressed="requestedGear === 'forward'" @click="selectGear('forward')">Drive</button>
++        <button type="button" :disabled="!active || !online || needsRefresh" :aria-pressed="requestedGear === 'reverse'" @click="selectGear('reverse')">Reverse</button>
++      </div>
++      <p class="transmission-status" role="status">{{ transmissionStatus }}</p>
+       <div class="wheel-controls" aria-label="Steering">
+         <button type="button" aria-label="Steer left" :disabled="!active" @pointerdown.prevent="touchDown('left', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">←</button>
+         <div class="steering-control">
+@@ -849,6 +879,10 @@
+ .restart-actions button.secondary { background: #e7edf0; color: #25323a; }
+ button:disabled { opacity: .48; }
+ .controls { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 10px; }
++ .gear-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; grid-column: 1 / -1; }
++.gear-selector button { min-height: 48px; }
++.gear-selector button[aria-pressed="true"] { outline: 3px solid #f1b83a; outline-offset: 1px; }
++.transmission-status { grid-column: 1 / -1; margin: 0; padding: 7px 9px; border-radius: 8px; background: #f1f5f6; color: #29373e; font-size: 12px; line-height: 1.35; }
+ .wheel-controls { display: grid; grid-template-columns: 44px 88px 44px; justify-content: center; align-items: center; gap: 8px; grid-column: 1 / -1; }
+ .wheel-controls button { font-size: 21px; }
+ .wheel-controls > button { width: 44px; min-width: 44px; padding: 0; }
+--- a/src/app/features/living-world/practiceIdentity.test.ts
++++ b/src/app/features/living-world/practiceIdentity.test.ts
+@@ -42,7 +42,7 @@
+   queue.push({ path: request.path, resolve: body => resolve({ status: 200, body }) })
+   pending.set(endpoint, queue)
+ }))
+-for (const endpoint of ['/api/living-world/driving/start', '/api/living-world/driving/input']) server.route(`POST ${endpoint}`, request => new Promise<{ status: number; body: unknown }>(resolve => {
++for (const endpoint of ['/api/living-world/driving/start', '/api/living-world/driving/input', '/api/living-world/driving/pause']) server.route(`POST ${endpoint}`, request => new Promise<{ status: number; body: unknown }>(resolve => {
+   const queue = pending.get(endpoint) ?? []
+   queue.push({ path: request.path, resolve: body => resolve({ status: 200, body }) })
+   pending.set(endpoint, queue)
+@@ -266,6 +266,78 @@
+     assert.equal((setupValue(mounted.setup, 'rentalReply') as { code?: string }).code, 'eligible')
+   } finally {
+     mounted.unmount(); traced.restore(); restoreIdentity(oldIdentity)
++  }
++})
++
++test('Driving keeps legacy frames until direction is chosen and shows requested versus server gear', async () => {
++  pending.clear(); intervalCallbacks.clear(); server.requests.splice(0)
++  const component = (await load('/src/app/features/living-world/DrivingApp.vue')).default
++  const oldIdentity = captureIdentity()
++  setIdentity(session('reverse-ui-owner'), 'lagos')
++  const traced = traceApi(), mounted = mount(component)
++  try {
++    await waitFor(() => count('/api/living-world/driving') === 1)
++    resolveAt('/api/living-world/driving', 0, drivingReply(server.now(), { ok: true, code: 'no_journey' }))
++    await waitFor(() => count('/api/living-world/qualification') === 1)
++    resolveAt('/api/living-world/qualification', 0, { ok: true, code: 'not_qualified', valid: false, qualification: null, serverTime: server.now() })
++    await waitFor(() => count('/api/living-world/rental') === 1)
++    resolveAt('/api/living-world/rental', 0, { ok: true, code: 'eligible', permission: null, revision: null, eligible: true, valid: false, tripAvailable: false, allocation: 'none', serverTime: server.now() })
++    await waitFor(() => setupValue(mounted.setup, 'busy') === false && setupValue(mounted.setup, 'rentalBusy') === false)
++
++    const scene = { present() {}, setInput() {}, setReducedMotion() {}, begin(ready?: () => void) { ready?.() }, exit() {}, setVisible() {}, resize() {}, dispose() {} }
++    Reflect.set(mounted.setup, 'scene', scene)
++    const location = app.game.state.value.location
++    const start = setupValue(mounted.setup, 'startLesson') as () => Promise<void>
++    const starting = start()
++    await waitFor(() => count('/api/living-world/driving/start') === 1)
++    const started = runningView(location)
++    resolveAt('/api/living-world/driving/start', 0, drivingReply(server.now(), { ok: true, code: 'started', session: started }))
++    await starting
++    assert.equal(setupValue(mounted.setup, 'active'), true)
++
++    const selectGear = setupValue(mounted.setup, 'selectGear') as (gear: 'forward' | 'reverse') => void
++    const touchDown = setupValue(mounted.setup, 'touchDown') as (control: 'throttle', event: PointerEvent) => void
++    selectGear('reverse')
++    touchDown('throttle', { currentTarget: { setPointerCapture() {} }, pointerId: 67 } as unknown as PointerEvent)
++    const sample = [...intervalCallbacks.values()][0]
++    assert.ok(sample)
++    for (let index = 0; index < 4; index += 1) sample()
++    const sendFrames = setupValue(mounted.setup, 'sendFrames') as () => Promise<void>
++    const backing = sendFrames()
++    await waitFor(() => count('/api/living-world/driving/input') === 1)
++    const reverseRequest = server.requests.find(request => request.method === 'POST' && request.path === '/api/living-world/driving/input')
++    assert.ok(reverseRequest?.body)
++    assert.deepEqual(reverseRequest.body.frames, Array.from({ length: 4 }, () => ({ throttle: 1, brake: 0, steer: 0, gear: 'reverse' })))
++    const reversing: DrivingSessionView = { ...started, revision: 2, nextSequence: 2,
++      state: { ...started.state, gear: 'reverse', speed: 1.208, position: { x: -0.2416, z: 0 } } }
++    resolveAt('/api/living-world/driving/input', 0, drivingReply(server.now(), { ok: true, code: 'controls_accepted', session: reversing }))
++    await backing
++    assert.match(String(setupValue(mounted.setup, 'transmissionStatus')), /Requested Reverse; server confirms Reverse is engaged/)
++
++    selectGear('forward')
++    sample()
++    const braking = sendFrames()
++    await waitFor(() => count('/api/living-world/driving/input') === 2)
++    const forwardRequest = server.requests.filter(request => request.method === 'POST' && request.path === '/api/living-world/driving/input')[1]
++    assert.deepEqual(forwardRequest?.body?.frames, [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }])
++    const stillReversing: DrivingSessionView = { ...reversing, revision: 3, nextSequence: 3,
++      state: { ...reversing.state, speed: 0.408, position: { x: -0.2824, z: 0 } } }
++    resolveAt('/api/living-world/driving/input', 1, drivingReply(server.now(), { ok: true, code: 'controls_accepted', session: stillReversing }))
++    await braking
++    assert.match(String(setupValue(mounted.setup, 'transmissionStatus')), /Requested Drive; Braking in Reverse before the shift\. Server-confirmed direction: Reverse\./)
++
++    const pause = setupValue(mounted.setup, 'pauseLesson') as () => Promise<void>
++    const pausing = pause()
++    assert.equal(setupValue(mounted.setup, 'requestedGear'), null, 'pausing clears the requested selector')
++    assert.deepEqual(setupValue(mounted.setup, 'held'), { throttle: 0, brake: 0, steer: 0 }, 'pausing clears held controls')
++    await waitFor(() => count('/api/living-world/driving/pause') === 1)
++    const paused: DrivingSessionView = { ...stillReversing, revision: 4,
++      state: { ...stillReversing.state, gear: 'forward', speed: 0, status: 'paused', stopDwellMs: 0 } }
++    resolveAt('/api/living-world/driving/pause', 0, drivingReply(server.now(), { ok: true, code: 'paused', session: paused }))
++    await pausing
++    assert.match(String(setupValue(mounted.setup, 'transmissionStatus')), /Server-confirmed direction: Drive/)
++  } finally {
++    mounted.unmount(); traced.restore(); restoreIdentity(oldIdentity); intervalCallbacks.clear(); server.requests.splice(0)
+   }
+ })
+ 

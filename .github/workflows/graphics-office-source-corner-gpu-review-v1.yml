@@ -1,0 +1,55 @@
+# Template for root-reviewed remote execution. Copy to .github/workflows only after review.
+name: Office source-corner GPU artifact review
+on:
+  push:
+    branches:
+      - codex/graphics-office-source-corner-gpu-review-v1
+permissions:
+  contents: read
+concurrency:
+  group: office-source-corner-gpu-review-v1-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify immutable closure before dependency install
+        env:
+          EXPECTED_SNAPSHOT_SHA256: b214814872c166e71943f0088c60fa8cd52d11607cf2bcf8038e51ddfc237620
+        run: node --experimental-strip-types evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v1/remote-ci-v1/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Record preinstalled runner Chrome binary
+        shell: bash
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_BIN"
+          CHROME_REAL="$(readlink -f "$CHROME_BIN")"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+      - name: Bundle fixture under 96 MiB heap, 220 MiB RSS, 25 seconds
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v1/remote-ci-v1/run-bounded-linux.py build b214814872c166e71943f0088c60fa8cd52d11607cf2bcf8038e51ddfc237620
+      - name: Run actual WebGL shader and matched frame review under 768 MiB RSS, 60 seconds
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v1/remote-ci-v1/run-bounded-linux.py browser b214814872c166e71943f0088c60fa8cd52d11607cf2bcf8038e51ddfc237620
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: office-source-corner-gpu-v1-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v1/remote-ci-v1/remote-results/${{ github.run_id }}/
+            evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v1/remote-ci-v1/dist/
+          if-no-files-found: warn
+          retention-days: 14

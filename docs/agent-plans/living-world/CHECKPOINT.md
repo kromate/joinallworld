@@ -1,5 +1,16 @@
 # Living-world implementation checkpoint
 
+## Latest status receipt: 9 October 2026, 03:32 UTC
+
+This receipt supersedes older current/live statements below. Native goal remains ACTIVE. Latest pushed runtime candidate is `29b99e800bd80daf94427d4ff90213b62c08338b` on `codex/living-world`. No programme or Goalmatic deployment occurred.
+
+- Exact [CI 37879285573](https://github.com/kromate/joinallworld/actions/runs/37879285573) is terminal FAILURE. Canonical compiler, build, unchanged download-size budgets, smoke and release policy PASS. UI has one remaining failure: Rich List test assumes CSS class order `ranking-row is-you`, while actual rendered markup has `is-you ranking-row`. Storage/journaling setup is repaired; this remaining assertion must verify class membership and preserve player/rank/visibility checks. Later shopping/career/Worker UI stages skipped. This does not establish full regression acceptance.
+- Exact source `09f38007b5c165b9b790cb1e8592500b454e6b67` has passing fast/compiler/build/size and focused results: 285 Node checks, 283 pass, zero fail, two dist-only skips; five actual Worker SQLite checks pass. Startup is 612819 raw / 222339 gzip / 194841 Brotli bytes against unchanged limits. Conditional landing loading and stale identity/city guards are implemented. These focused checks are not staging, mobile, multiplayer or complete journey acceptance.
+- Current uncommitted depot descriptor and generic street overlay are reviewed proposals, unregistered and untested. Route authorization remains false; actor-volume and continuous-motion proof remain open. All three existing verified gpt-6-luna workers returned their bounded tasks. Sol remains verified gpt-6.1-sol and sole programme integrator/release owner. Preserve primary-checkout agent work and owned dirty source/evidence.
+- Fresh production health at 03:31 UTC reports `joinallworld-a44629b38be751a9ad446051564`, serverTime 1791516688917. Full published source remains `a44629b38be751a9ad446051564704f6c3c6ae1b`. Health is not live gameplay/save-continuity acceptance.
+- Complete school-to-licence-to-rental-to-mapped-driving-to-restocking-to-barber-to-earnings-to-improvement-to-reload journey remains OPEN, along with exact-SHA staging, desktop/mobile/interrupted/multiplayer acceptance and later careers/business phases. Goalmatic private repository and contracts were inspected; live integration remains disabled pending target workspace/installation and exact Goals schema/consent mapping. Mock fixtures are not a live integration.
+- Next bounded action: repair the order-sensitive UI assertion through the existing Luna journey worker, independently review and commit the owned test path, rerun exact UI gates, then full Node22/24/Worker regression. Continue reviewed depot/renderer wiring and actual gameplay after coordinated resource handback; deploy only after all required exact-SHA gates pass. This goal/checkpoint does not execute while the runtime is stopped.
+
 ## Latest status receipt: 9 October 2026, 03:04 UTC
 
 This receipt supersedes older current/live statements below. Native goal remains ACTIVE. Latest pushed runtime candidate is `fe64b06f68a992ee6c00e4f9a260f21ba997d117` on `codex/living-world`, following reviewed account/city response fences at `b258b64b051d8e0e900da7fdac9255b300eae5a4`. No programme or Goalmatic deployment occurred.

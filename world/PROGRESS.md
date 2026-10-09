@@ -85,6 +85,13 @@ Memory monitor02:26:29 reportsNORMAL with paging still active; existing caps sta
 unchanged. Final main synchronization/source publication follows this acceptance;
 it does not imply a runtime upload or more playable map detail.
 
+Sourcec1ad6448 and acceptance1f711852 are pushed to main (terminal73602 exit0).
+Before publication all71 accepted source/test pins remained identical. Fresh
+fetches then identified upstream86aa4ed8 and8866945b; both change only the shared
+coordination document. Fast-forwarded them into WORLD without source/test or
+dependency overlap. The next held-session Python/Node source lanes are dispatched
+under separate ownership; their future uncommitted edits are not this acceptance.
+
 ## Durable capture attempts and actual controller-loss recovery
 
 Previous goal turn was a status restatement (no build progress). This continuation

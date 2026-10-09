@@ -2,6 +2,32 @@
 
 Canonical repository: kromate/joinallworld. Agents on every computer read the latest GitHub/main copy before claiming files, integrating a phase, or releasing. Local chat messages supplement this record; they do not reach every computer.
 
+## WORLD atomic observations and next held-session phase — 9 October 2026
+
+Verified sourcec1ad6448/acceptance1f711852 is published to main. Optional durable
+observation pins now reach actual fixed-worker feature transactions; V1 bytes/
+quotas remain intact and exact-kind Ledger claims prepare separate index work.
+221 Python+32 engine/Ledger+five exact committed-source policy checks pass
+(258 distinct checks), plus full World TypeScript at384MiB heap. Two retained
+Dakar captures across fresh held sessions retain2,283ordinals/1,810versions/two
+synthetic observations, one reservation and all9actual+877historical file pins.
+Synthetic context does not prove frozen campaign membership. No map-detail/runtime
+upload, actual campaign/output/Nigeria writes, cap increase or quota reset.
+
+All WORLD local handles90588/33692/8308/80513/54630 and sourcepush73602 are terminal.
+Owned archive/scratch removed; GRAPHICS received the next finite local turn.
+Monitor02:26:29 reportsNORMAL with active paging; keep established limits.
+WORLD inspected and fast-forwarded both upstream coordination commits86aa4ed8/
+8866945b; no builder/test/dependency/source overlap. Next two narrow Luna source
+owners: capture_execution owns index_admission.py+new Python session tests;
+capture_job_contract owns new feature-index-session.ts+its tests. Root owns
+campaign integration/review. Do not edit these lanes or actual builder ledgers.
+They are unaccepted source work until actual serialized checks. Frozen contract:
+world/CAMPAIGN-FEATURE-INDEX-SPEC.md. Next actual held-session bridge must backfill
+captures without reacquisition, validate frozen membership, and fence completion
+with the live index claim; independent raw/index audit and streamed country
+geometry remain required. Production upload ownership remains singular.
+
 ## Current human concurrency amendment — 9 October 2026
 
 The user's latest direct instruction authorizes **multiple concurrent browser tabs and multiple agents**, with memory monitoring, to accelerate work. This supersedes the historical one-local-intensive-owner/no-fanout restriction below. Use bounded agents with explicit file ownership; simultaneous reviews use distinct owned tabs and ports. Do not change shared browser viewport/window/session state while another review depends on it. Keep one writer per file, preserve existing services/user tabs, and retain sole WORLD production-upload ownership.

@@ -19,6 +19,7 @@ The human requested pushed slices for the agent on the other system to integrate
 | Older-character Settings | ce4d861e | 37859045285 passed | Delayed identity changes, switch retries and reconnect |
 | Shared hints | e524bf55 | 37860276621 passed | Storage denial, all consumers, dismiss/reopen/reload and manual versus automatic tours |
 | Events / public records | 75ca35a9 | 37861362311 passed | Filter races, pagination/retry, offline calendar/actions and narrow cards |
+| Groceries batch / Health layout | d03eb8c9 | 37864614906 passed, including 103 existing UI checks | Partial orders, identity/close/reopen/lost-reply races, fuel offers and narrow layouts |
 | Voice-note checkpoint | b193bd77 on `codex/voice-notes-checkpoint` | Historical only; older base | Fresh-main integration, current compiler, private media lifecycle, Worker restart, capture/playback and compatibility |
 
 Production acceptance in this thread is still the separately recorded a44629b3 phase. None of the newer review slices is claimed deployed here. Source inspection has not replaced the requested full screen-by-screen browser audit.
@@ -219,3 +220,5 @@ Groceries previously read its mutable basket throughout an asynchronous order, w
 Groceries price labels and uses wrap, cards have a larger minimum width, and the basket toolbar wraps. Health status and cure-price rows wrap and redundant card shadows are removed; the game's health rules are unchanged. Required acceptance: delayed/partial/refused orders, Clear/stepper during pending, close/reopen, city changes, A→B→A transitions, lost replies/recovery receipt, refuel versus grocery concurrency, and 320/390px long prices. Use disposable characters and check both inventory and ledger. Baseline CI does not prove these new race scenarios.
 
 The generator quick-buy now offers up to five litres bounded by both tank room and current game cash. Previously it enabled a five-litre purchase when only one litre was affordable. The displayed quantity/price now matches the sent amount; no game price changed. Include zero-cash, one-to-four affordable litres and a nearly full tank in acceptance.
+
+Exact grocery/health candidated03eb8c9016c9c52b1423681ae8a596ee9997bbb passed remote CI37864614906: typecheck, production build/download/smoke, release policy, 100 existing UI model/component checks and 3 targeted existing Groceries/Health checks (103 passed,0 failed). This does not replace the new purchase-race acceptance scenarios above.

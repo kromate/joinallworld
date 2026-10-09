@@ -8,6 +8,8 @@ import { arrive, debit, spotsOf } from '../../game/api.ts';
 import { LEFT_OUT, PLAYS } from '../../game/profile.ts';
 import { busy, fail, ok } from '../../game/util.ts';
 import { ANCHORS, ROADS } from './layout.ts';
+import { CAMPUS_MAP } from './map.generated.ts';
+import { roadCorridorClear } from './shuttle-clearance.ts';
 import type { CampusAnchor } from './layout.ts';
 import { createCampusWalk } from './walk.ts';
 import type { WalkPoint } from './walk.ts';
@@ -74,7 +76,7 @@ interface RoadEdge {
   points: Point[]
 }
 
-interface RoadSegment { a: Point; b: Point; ak: string; bk: string }
+interface RoadSegment { a: Point; b: Point; ak: string; bk: string; roadId: string; width: number }
 interface RoadProjection extends RoadSegment { point: Point; distance: number }
 
 const roadGraph = new Map<string, RoadEdge[]>();
@@ -84,17 +86,19 @@ const edgesAt = (graph: Map<string, RoadEdge[]>, key: string): RoadEdge[] => {
   if (!edges) { edges = []; graph.set(key, edges); }
   return edges;
 };
-const addEdge = (a: Point, b: Point): void => {
+const buildingRings = CAMPUS_MAP.buildings.map((building) => building.ring);
+const addEdge = (a: Point, b: Point, roadId: string, width: number): void => {
   const ak = pointKey(a), bk = pointKey(b), span = distance(a, b);
+  if (!roadCorridorClear(a, b, width, buildingRings)) return;
   edgesAt(roadGraph, ak).push({ to: bk, length: span, points: [a, b] });
   edgesAt(roadGraph, bk).push({ to: ak, length: span, points: [b, a] });
-  roadSegments.push({ a, b, ak, bk });
+  roadSegments.push({ a, b, ak, bk, roadId, width });
 };
 for (const road of ROADS) {
   for (let index = 1; index < road.points.length; index += 1) {
     const from = road.points[index - 1], to = road.points[index];
     if (!from || !to) continue; // index is always in range
-    addEdge({ x: from[0], z: from[1] }, { x: to[0], z: to[1] });
+    addEdge({ x: from[0], z: from[1] }, { x: to[0], z: to[1] }, road.id, road.width);
   }
 }
 

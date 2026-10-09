@@ -15,6 +15,11 @@ DATA = ROOT / "world/playable-africa-rollout"
 OUTPUT = ROOT / "src/game/cities"
 RECEIPTS = DATA / "receipts"
 EARLY = {"NG", "CM", "TG", "GH", "KE", "DZ", "BJ", "CI", "SN", "ZA", "ET"}
+COMPACT_IDENTITIES = {
+    "TZ": ("dar", "tz-zone", "Starter"), "CG": ("brazz", "cg-zone", "Starter"), "CD": ("kin", "cd-zone", "Starter"),
+    "CF": (None, "cf-zone", "Starter"), "BF": (None, "bf-zone", "Starter"),
+    "MG": (None, "mg-zone", "Starter"), "ST": (None, "st-zone", "Starter"),
+}
 _spec = importlib.util.spec_from_file_location("starter_geography", Path(__file__).with_name("build-playable-africa.py"))
 if _spec is None or _spec.loader is None:
     raise RuntimeError("The accepted bounded geography converter is missing")
@@ -54,11 +59,19 @@ def js_number(value):
     return str(int(number)) if number.is_integer() else repr(number)
 
 
-def catalogue_bytes(identifier, name, country_iso, country_name, centre):
+def generation_identity(row):
+    code = row["iso2"]
+    compact = COMPACT_IDENTITIES.get(code)
+    identifier = (compact[0] or city_id(row["chosenCity"]["name"])) if compact else city_id(row["chosenCity"]["name"])
+    return {"cityId": identifier, "stateId": compact[1] if compact else code.lower()+"-starter",
+            "stateName": compact[2] if compact else "Starter zone"}
+
+
+def catalogue_bytes(identifier, name, country_iso, country_name, centre, state_id, state_name):
     # Match scripts/city/build-catalogue.ts's exact generated row and loader serialization.
     quote = lambda value: json.dumps(value, ensure_ascii=False, separators=(",", ":"))
     extra = f',{quote(country_iso.lower())},{quote(country_name)}'
-    row = f'[{quote(identifier)},{quote(name)},{quote(country_iso.lower()+"-starter")},{quote("Starter zone")},{js_number(centre[0])},{js_number(centre[1])},1{extra}],'
+    row = f'[{quote(identifier)},{quote(name)},{quote(state_id)},{quote(state_name)},{js_number(centre[0])},{js_number(centre[1])},1{extra}],'
     loader = f'async()=>(await import({quote("./"+identifier+"/index.ts")})).city,'
     return len(row.encode()) + len(loader.encode())
 
@@ -100,12 +113,16 @@ def valid_point(value):
     return isinstance(value, list) and len(value) == 2 and all(isinstance(n, (int, float)) and not isinstance(n, bool) and math.isfinite(n) for n in value) and -180 <= value[0] <= 180 and -90 <= value[1] <= 90
 
 
-def verify_assets(receipt, row, place, airport, identifier, inventory_hash):
+def verify_assets(receipt, row, place, airport, identity, inventory_hash):
+    identifier = identity["cityId"]
     if receipt.get("countryIso2") != row["iso2"] or receipt.get("cityId") != identifier:
         raise ValueError(f"Receipt identity mismatch: {identifier}")
     if (receipt.get("inventorySha256") != inventory_hash or receipt.get("selectedPlace") != place
             or receipt.get("airportCandidate") != airport or receipt.get("sources", {}).get("naturalEarth") != row["admin0Geometry"]):
         raise ValueError(f"Receipt source identity changed: {identifier}")
+    recorded_identity = receipt.get("generationIdentity")
+    if (row["iso2"] in COMPACT_IDENTITIES and recorded_identity != identity) or (recorded_identity is not None and recorded_identity != identity):
+        raise ValueError(f"Receipt generation identity changed: {identifier}")
     expected_names = {"facts.ts", "geometry.ts", "index.ts", "content.ts", "map.ts"}
     if set(receipt.get("assets", {})) != expected_names:
         raise ValueError(f"Receipt asset list mismatch: {identifier}")
@@ -143,8 +160,9 @@ def main():
         for row in rows:
             try:
                 place, timezone, airport = validate_row(row, verify_cached_sources=False)
-                identifier = city_id(place["name"])
-                size = catalogue_bytes(identifier, place["name"], row["iso2"], row["country"], place["coordinatesWgs84"])
+                identity = generation_identity(row)
+                identifier = identity["cityId"]
+                size = catalogue_bytes(identifier, place["name"], row["iso2"], row["country"], place["coordinatesWgs84"], identity["stateId"], identity["stateName"])
                 cache_dir = ROOT / ".cache/world-build/playable-africa" / identifier
                 raw_path, source_receipt = cache_dir / "source.osm", cache_dir / "source.json"
                 malformed_cache = raw_path.exists() != source_receipt.exists()
@@ -162,22 +180,23 @@ def main():
                     status = "refused-malformed-cache"
                 elif not cache and exhausted:
                     status = "refused-request-budget-exhausted"
-                print(json.dumps({"country": row["iso2"], "city": identifier, "settlement": place["name"], "settlementRole": place.get("sourceClass"), "timezone": timezone, "airportDatasetName": airport["name"], "airportDatasetPoint": airport["coordinatesWgs84"], "airportEvidence": airport.get("coordinateEvidence"), "catalogueBytes": size, "catalogueLimit": 150, "cachedSample": cache, "wouldRequest": size <= 150 and not cache and not exhausted and not malformed_cache, "status": status}))
+                print(json.dumps({"country": row["iso2"], "city": identifier, "settlement": place["name"], "settlementRole": place.get("sourceClass"), "timezone": timezone, "stateId": identity["stateId"], "stateName": identity["stateName"], "airportDatasetName": airport["name"], "airportDatasetPoint": airport["coordinatesWgs84"], "airportEvidence": airport.get("coordinateEvidence"), "catalogueBytes": size, "catalogueLimit": 150, "cachedSample": cache, "wouldRequest": size <= 150 and not cache and not exhausted and not malformed_cache, "status": status}))
             except (KeyError, TypeError, ValueError) as error:
                 print(json.dumps({"country": row.get("iso2"), "status": "refused", "reason": str(error)}))
         return
     validated = [validate_row(row, verify_cached_sources=not args.check_assets) for row in rows]
-    identifiers = [city_id(item[0]["name"]) for item in validated]
+    identities = [generation_identity(row) for row in rows]
+    identifiers = [identity["cityId"] for identity in identities]
     if len(set(identifiers)) != len(identifiers):
         raise ValueError("Selected city names produce colliding city ids")
     if args.check or args.check_assets:
         inventory_hash = sha(DATA / "inventory.json")
-        for row, (place, timezone, airport), identifier in zip(rows, validated, identifiers):
+        for row, (place, timezone, airport), identity, identifier in zip(rows, validated, identities, identifiers):
             receipt_path = RECEIPTS / f"{identifier}.json"
             if not receipt_path.is_file():
                 raise ValueError(f"Missing starter receipt: {receipt_path}")
             receipt = json.loads(receipt_path.read_text())
-            verify_assets(receipt, row, place, airport, identifier, inventory_hash)
+            verify_assets(receipt, row, place, airport, identity, inventory_hash)
             if args.check_assets:
                 print(json.dumps({"country": row["iso2"], "city": identifier, "status": "pinned-assets-match"}))
                 continue
@@ -192,7 +211,7 @@ def main():
 
     RECEIPTS.mkdir(parents=True, exist_ok=True)
     inventory_hash = sha(DATA / "inventory.json")
-    for row, (place, timezone, airport_source), identifier in zip(rows, validated, identifiers):
+    for row, (place, timezone, airport_source), identity, identifier in zip(rows, validated, identities, identifiers):
         code = row["iso2"]
         if city_id(place["name"]) != identifier:
             raise ValueError(f"Unstable city id for {code}")
@@ -204,11 +223,13 @@ def main():
             old = json.loads(receipt_path.read_text())
             if old.get("countryIso2") != code or old.get("cityId") != identifier:
                 raise ValueError(f"Existing receipt belongs to another country: {receipt_path}")
+            if code in COMPACT_IDENTITIES and old.get("generationIdentity") != identity:
+                raise ValueError(f"Refusing legacy or mismatched compact identity receipt: {receipt_path}")
             for filename, expected in old["assets"].items():
                 target = out / filename
                 if not target.is_file() or target.stat().st_size != expected["bytes"] or sha(target) != expected["sha256"]:
                     raise ValueError(f"Refusing to overwrite modified prior output: {target}")
-        if catalogue_bytes(identifier, place["name"], code, row["country"], place["coordinatesWgs84"]) > 150:
+        if catalogue_bytes(identifier, place["name"], code, row["country"], place["coordinatesWgs84"], identity["stateId"], identity["stateName"]) > 150:
             raise ValueError(f"{identifier} exceeds the 150-byte catalogue row plus loader limit")
         centre = place["coordinatesWgs84"]
         alon, alat = airport_source["coordinatesWgs84"]
@@ -230,7 +251,7 @@ def main():
         if not buildings or not roads:
             raise ValueError(f"No usable buildings and roads in bounded source sample for {identifier}")
         facts = {"id": identifier, "name": place["name"], "country": {"idISOlower": code.lower(), "name": row["country"]},
-                 "state": {"idunique": code.lower()+"-starter", "name": "Starter zone"}, "timezone": timezone,
+                 "state": {"idunique": identity["stateId"], "name": identity["stateName"]}, "timezone": timezone,
                  "centre": {"lon": centre[0], "lat": centre[1]},
                  "airport": {"id": identifier+"-airport", "name": airport_source["name"], "lon": alon, "lat": alat, "sourceUrl": airport_source["sourceRecordUrl"]},
                  "sourceLabel": "Natural Earth, OpenStreetMap contributors and OurAirports dataset",
@@ -246,7 +267,7 @@ def main():
         }
         for name, text in files.items():
             (out / name).write_text(text)
-        receipt = {"countryIso2": code, "cityId": identifier, "inventorySha256": inventory_hash, "selectedPlace": place, "airportCandidate": airport_source,
+        receipt = {"countryIso2": code, "cityId": identifier, "generationIdentity": identity, "inventorySha256": inventory_hash, "selectedPlace": place, "airportCandidate": airport_source,
                    "airportDatasetCaveat": "Dataset point only; no current operating, schedule, or official ARP claim.", "bounds": bounds,
                    "sources": {"osm": source, "naturalEarth": row["admin0Geometry"]},
                    "kept": {"buildings": len(buildings), "roads": len(roads)}, "observed": counts,

@@ -4,6 +4,8 @@ on:
   push:
     branches: [codex/world-foundation]
     paths:
+      - 'src/game/cities/africa/**'
+      - 'scripts/world/build-playable-africa.py'
       - 'src/game/cities/cairo/**'
       - 'src/game/cities/rabat/**'
       - 'src/game/cities/kigali/**'

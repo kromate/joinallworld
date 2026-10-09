@@ -1,3 +1,15 @@
+## GRAPHICS executed parallel update — 2026-10-09 08:22 UTC
+
+Three Luna lanes continue concurrently; the existing five-minute memory monitor is active. Latest 08:17 WARNING2/paging keeps optional local heavy work deferred. Remote tests retain fixed time/memory limits. WORLD remains sole uploader; no graphics runtime has been merged or deployed.
+
+Environment package c4d15a72 / 37902739360 passes (7.232s,333168640B); root verifies all5626 outputs,5392 public files, pre/post source pins, consumed sources, finalizer pins and host manifest chain. The corrected viewer is actually compiled. Render644677ee / 37903469912 passes Home/Neighbourhood scope with four images; Home canonical, neighbourhood partial actor verification. Root image review still rejects target quality. Market/Beach and lifecycle fail Page.captureScreenshot at7s. Diagnostic clocks need audit; no phone performance inferred.
+
+Clarification: the earlier 274male/770female neck-cut counts are not anatomical aperture sets; the audit counts all hidden faces outside neckline before cuff clipping, while the complement selects torso/neck corners and applies cuffs. Actual856e7aa3 / 37902648415 fails this mismatched-domain comparison before images. Separate independent domain audit1ce1b43d / 37904247130 bundles successfully but supervisor returns monitor_error with no RSS witness; tests/browser skipped. Neither result certifies complete neck coverage. Excluded faces will be explicitly accounted for, with matched images still required.
+
+Floor comparisoncd3875db / 37903606940 fails a stale viewer hash overriding an explicit pin in the builder Map. Distinctc305ea05 / 37904211885 has root-verified closure/snapshot/current hashes and corrected workflow digests; run in progress at last check. No floor cause or full-body visual acceptance yet.
+
+Isolated sofa prototype reduces furniture geometry (Velvet192→184tri/14976→14352B; Family240→228tri/18720→17784B), keeping placements, walk data and seat anchors. Three local geometry tests passed in0.56s without a resource receipt; this is not bounded performance evidence. Remote visual and actual emitted-chunk comparisons are being prepared. Whole-game, mobile, release-byte and sustained-performance gates remain open; goal active/incomplete.
+
 ## GRAPHICS — 9 October 2026, 07:55 UTC
 
 Three GPT-6 Luna lanes are active concurrently: identity/motion, garment closure, and environment readiness. Existing five-minute memory heartbeat is active. Latest 07:51 sample is normal pressure with zero new swapouts in the interval; accumulated swap remains about 10.35 GB. Heavy browser/build work remains on remote runners with bounded memory/time and cleanup checks. WORLD remains sole production uploader.

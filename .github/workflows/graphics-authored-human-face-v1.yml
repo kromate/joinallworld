@@ -1,7 +1,7 @@
 name: Authored human face visible experiment
 on:
   push:
-    branches: [codex/graphics-authored-human-face-v3]
+    branches: [codex/graphics-authored-human-face-v4]
 permissions:
   contents: read
 jobs:
@@ -21,6 +21,7 @@ jobs:
           python3 -m pip install --break-system-packages pillow
           python3 evidence/graphics-loop/authored-head-spike-v1/download-source.py
           python3 evidence/graphics-loop/authored-head-spike-v1/retain-head.py
+          node --max-old-space-size=128 evidence/graphics-loop/authored-head-spike-v1/compress-head.mjs
       - name: Build standalone face comparison
         run: node --max-old-space-size=192 evidence/graphics-loop/authored-head-spike-v1/build-preview.mjs
       - name: Capture actual authored expressions and mobile layout

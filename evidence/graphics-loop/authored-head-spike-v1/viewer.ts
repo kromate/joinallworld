@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { loadBody as loadBaseline } from '../expressive-character-v1/skinned-baseline.ts';
 import { createKit } from '../../../src/scene/kit.ts';
@@ -10,7 +11,7 @@ renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFi
 const scenes=[new THREE.Scene(),new THREE.Scene()];
 for(const scene of scenes){scene.add(new THREE.HemisphereLight('#f7e9dd','#736e74',2));for(const [c,p,x,y,z]of[['#fff1d6',2.6,-3,4,5],['#d8e8ff',1,3,2,4],['#ffe5c1',2,1,4,-4]]as const){const light=new THREE.DirectionalLight(c,p);light.position.set(x,y,z);scene.add(light)}}
 const baseline=await loadBaseline(createKit(),normalizeLook({body:'woman',hair:'bun',outfit:'casual',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',expression:'neutral'},'authored-face'), 'authored-face',1);scenes[0]!.add(baseline.object);
-const gltf=await new GLTFLoader().loadAsync(new URL('./generated/expressive-head.glb',import.meta.url).href);
+const gltf=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync(new URL('./generated/expressive-head-compressed.glb',import.meta.url).href);
 const head=new THREE.Group();head.add(gltf.scene);head.scale.setScalar(1.32);head.position.y=2.27-1.63*1.32;scenes[1]!.add(head);
 const morphs:THREE.Mesh[]=[];
 gltf.scene.traverse(node=>{if(!(node instanceof THREE.Mesh))return;const materials=Array.isArray(node.material)?node.material:[node.material];for(const material of materials){if(material instanceof THREE.MeshStandardMaterial){material.vertexColors=false;if(material.name==='VitSkin')material.color.set('#c99c7c')}}if(node.morphTargetDictionary)morphs.push(node)});

@@ -13,6 +13,7 @@ for mesh in g['meshes']:
   mesh['extras']['targetNames']=selected
   mesh['weights']=[0]*len(keep)
   for primitive in mesh['primitives']:primitive['targets']=[primitive['targets'][i] for i in keep]
+ mesh['primitives']=[p for p in mesh['primitives'] if not g['materials'][p['material']]['name'].startswith('VitCornea')]
  for p in mesh['primitives']:
   p['attributes']={k:v for k,v in p['attributes'].items() if k in ['POSITION','NORMAL','TEXCOORD_0']}
 # Omit optional static eyeshadow; all actual face/eyes and moving mouth remain.
@@ -61,7 +62,7 @@ for src,size,fmt in [('vit_face_bc.png',1024,'JPEG'),('vit_mouth.png',512,'JPEG'
  file=out/(Path(src).stem+('.jpg' if fmt=='JPEG' else '.png'));im.save(file,fmt,quality=88,optimize=True)
  vi=append(file.read_bytes());ix=len(g['images']);g['images'].append({'bufferView':vi,'mimeType':'image/jpeg' if fmt=='JPEG' else 'image/png'});textures[src]=len(g['textures']);g['textures'].append({'source':ix})
 for material in g['materials']:
- name=material['name'];p=material['pbrMetallicRoughness'];p['baseColorFactor']=[1,1,1,1];p['roughnessFactor']=0.65
+ name=material['name'];material['doubleSided']=False;p=material['pbrMetallicRoughness'];p['baseColorFactor']=[1,1,1,1];p['roughnessFactor']=0.65
  if name.startswith('VitSkin'):p['baseColorTexture']={'index':textures['vit_face_bc.png']}
  elif name.startswith('VitMouth'):p['baseColorTexture']={'index':textures['vit_mouth.png']}
  elif name.startswith('VitIris'):p['baseColorTexture']={'index':textures['vit_iris.png']};p['roughnessFactor']=0.3

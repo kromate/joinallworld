@@ -168,17 +168,54 @@ test('messages: thread wording, where a message goes, and when it cannot be writ
   assert.equal(readOnlyReason('h.me', me, null), null, 'the host can always write in their own house chat')
 })
 
-test('messages: which notices were read is kept per city on this device', () => {
-  const storage = memoryStorage()
-  const marks = createNoticeMarks(storage)
+test('messages: read marks belong to an actor and city, including A to B to A and reload', () => {
+  const storage = memoryStorage(), marks = createNoticeMarks(storage)
   const notices = [{ id: 1, kind: 'rent', text: 'a', at: 100 }, { id: 2, kind: 'loan', text: 'b', at: 200 }]
-  assert.equal(marks.fresh('lagos', notices), 2)
-  assert.equal(marks.mark('lagos', notices), true)
-  assert.equal(marks.mark('lagos', notices), false, 'nothing new to mark')
-  assert.deepEqual([marks.fresh('lagos', notices), marks.fresh('ibadan', notices)], [0, 2])
-  assert.equal(createNoticeMarks(storage).seen('lagos'), 200, 'it survives a reload')
-  assert.equal(createNoticeMarks(memoryStorage({ 'joinallworld-notices-seen': '[not json' })).seen('lagos'), 0)
-  assert.equal(createNoticeMarks(null).mark('lagos', notices), true, 'without storage it is remembered for this visit')
+  assert.equal(marks.fresh('ada', 'lagos', notices), 2)
+  assert.equal(marks.mark('ada', 'lagos', notices), true)
+  assert.equal(marks.mark('ada', 'lagos', notices), false, 'nothing new to mark')
+  assert.equal(marks.fresh('bola', 'lagos', notices.slice(0, 1)), 1, 'A at 200 cannot hide B at 100')
+  assert.equal(marks.mark('bola', 'lagos', notices.slice(0, 1)), true)
+  assert.deepEqual([marks.seen('ada', 'lagos'), marks.seen('bola', 'lagos')], [200, 100], 'returning to A preserves both actors')
+  assert.deepEqual([marks.fresh('ada', 'lagos', notices), marks.fresh('ada', 'ibadan', notices)], [0, 2])
+  assert.equal(marks.mark('ada', 'ibadan', notices.slice(0, 1)), true)
+  const restored = createNoticeMarks(storage)
+  assert.deepEqual([restored.seen('ada', 'lagos'), restored.seen('ada', 'ibadan'), restored.seen('bola', 'lagos'), restored.seen('bola', 'ibadan')], [200, 100, 100, 0])
+  assert.equal(restored.fresh('bola', 'lagos', notices), 1)
+})
+
+test('messages: legacy unscoped marks stay untouched and are never assigned to an actor', () => {
+  const legacy = JSON.stringify({ lagos: 900 }), storage = memoryStorage({ 'joinallworld-notices-seen': legacy })
+  const marks = createNoticeMarks(storage), notices = [{ id: 1, kind: 'rent', text: 'a', at: 100 }]
+  assert.deepEqual([marks.seen('ada', 'lagos'), marks.seen('bola', 'lagos')], [0, 0])
+  assert.equal(marks.mark('ada', 'lagos', notices), true)
+  assert.equal(storage.getItem('joinallworld-notices-seen'), legacy)
+  assert.equal(createNoticeMarks(storage).seen('bola', 'lagos'), 0)
+  assert.equal(createNoticeMarks(memoryStorage({ 'joinallworld-notices-seen:ada': '[not json' })).seen('ada', 'lagos'), 0)
+})
+
+test('messages: no actor has no read marks, no fresh notices and no storage access', () => {
+  let accesses = 0
+  const marks = createNoticeMarks({ getItem: () => { accesses++; return null }, setItem: () => { accesses++ } })
+  const notices = [{ id: 1, kind: 'rent', text: 'a', at: 100 }]
+  for (const actor of [null, '']) {
+    assert.equal(marks.seen(actor, 'lagos'), 0)
+    assert.equal(marks.fresh(actor, 'lagos', notices), 0)
+    assert.equal(marks.mark(actor, 'lagos', notices), false)
+  }
+  assert.equal(accesses, 0)
+})
+
+test('messages: storage failures preserve separate actor marks for this visit', () => {
+  const unavailable = { getItem: (): string | null => { throw Error('unavailable') }, setItem: (): void => { throw Error('unavailable') } }
+  const notices = [{ id: 1, kind: 'rent', text: 'a', at: 100 }, { id: 2, kind: 'loan', text: 'b', at: 200 }]
+  for (const storage of [null, unavailable]) {
+    const marks = createNoticeMarks(storage)
+    assert.equal(marks.mark('ada', 'lagos', notices), true)
+    assert.equal(marks.fresh('bola', 'lagos', notices.slice(0, 1)), 1)
+    assert.equal(marks.mark('bola', 'lagos', notices.slice(0, 1)), true)
+    assert.deepEqual([marks.seen('ada', 'lagos'), marks.seen('bola', 'lagos'), marks.seen('ada', 'ibadan')], [200, 100, 0])
+  }
 })
 
 const component = { render: () => null }

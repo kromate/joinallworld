@@ -51,9 +51,11 @@ export const FRAME_MARGIN = 0.3;
  * otherwise the nearest wider level whose frame holds it.
  * @param levels widest first
  */
-export function focusLevel(level: number, lon: number, lat: number, levels: readonly { frame: Box4 }[]): number {
+export function focusLevel(level: number, lon: number, lat: number, levels: readonly { frame: Box4; country?: string }[], country: string | null = null): number {
   let index = level;
   while (index > 0) {
+    // A padded framing box may include a neighbour; its actual country must keep its own map.
+    if (country && levels[index]!.country && levels[index]!.country !== country) { index -= 1; continue; }
     const [west, south, east, north] = levels[index]!.frame, mx = (east - west) * FRAME_MARGIN, my = (north - south) * FRAME_MARGIN;
     if (lon >= west - mx && lon <= east + mx && lat >= south - my && lat <= north + my) break;
     index -= 1;

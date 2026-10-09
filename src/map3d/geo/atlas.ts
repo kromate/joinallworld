@@ -471,7 +471,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   function settleLevel() {
     if (!fits) return;
     const [lon, lat] = centre();
-    wanted = focusLevel(levelAt(rig.view.distance, cuts, wanted), lon, lat, ATLAS_LEVELS);
+    const country = sheets[AFRICA]?.picker.pick(lon, lat) ?? sheets[NIGERIA]?.around?.picker.pick(lon, lat) ?? sheets[WORLD]?.picker.pick(lon, lat);
+    wanted = focusLevel(levelAt(rig.view.distance, cuts, wanted), lon, lat, ATLAS_LEVELS, country?.id ?? null);
     if (!sheets[wanted]) void ensure(wanted);
     // Heading out: have the next level ready before the threshold is reached.
     if (wanted > WORLD && !sheets[wanted - 1] && rig.view.distance > cuts[wanted - 1]! * 0.62) void ensure(wanted - 1);

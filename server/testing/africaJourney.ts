@@ -8,7 +8,12 @@ import { routeUnavailable } from '../../src/game/cities/routeAvailability.ts'
 import { driver } from './cityJourney.ts'
 import type { JourneyDevice } from './cityJourney.ts'
 
-export const AFRICA_CAPITALS = ['yaounde', 'lome', 'accra', 'nairobi', 'algiers'] as const
+export const AFRICA_DESTINATIONS = ['yaounde', 'lome', 'accra', 'nairobi', 'algiers'] as const
+export const AFRICA_DESTINATION_BATCHES = [
+  AFRICA_DESTINATIONS,
+  ['cotonou', 'abidjan', 'dakar', 'cape-town'],
+  ['addis-ababa'],
+] as const
 
 export interface JourneyStoredSnapshot {
   bytes: string
@@ -52,8 +57,8 @@ async function json(response: Response): Promise<Record<string, unknown>> {
   return value
 }
 
-export async function africaJourney(host: AfricaJourneyHost): Promise<void> {
-  await Promise.all([...AFRICA_CAPITALS, 'lagos'].map(city => loadCityContent(city)))
+export async function africaJourney(host: AfricaJourneyHost, destinations: readonly string[] = AFRICA_DESTINATIONS): Promise<void> {
+  await Promise.all([...destinations, 'lagos'].map(city => loadCityContent(city)))
   const deviceResponse = await host.request('/api/session', { name: 'Africa Journey', onboarding: true })
   const deviceAnswer = await json(deviceResponse)
   const cookie = deviceResponse.headers.get('set-cookie')?.split(';')[0]
@@ -92,9 +97,14 @@ export async function africaJourney(host: AfricaJourneyHost): Promise<void> {
   assert.equal(creditEffects[0]?.balanceAfter, credited.cash)
 
   const links = allCityLinks()
-  for (const city of AFRICA_CAPITALS) {
+  const routes = destinations.map(city => {
     const route = links.find(link => (link.a === 'lagos' && link.b === city || link.b === 'lagos' && link.a === city) && link.mode === 'air')
     assert.ok(route, `${city} has its production airport link from Lagos`)
+    return { city, route }
+  })
+  const roundTripFare = routes.reduce((total, { route }) => total + route.fare * 2, 0)
+  assert.ok(Number(credited.cash) >= roundTripFare, 'the actual credited balance covers this destination batch without assuming a lottery outcome')
+  for (const { city, route } of routes) {
     const before = await life('lagos')
     const beforeLedgerLength = list(before.ledger).length
     const tripId = id(host.now())
@@ -169,9 +179,9 @@ export async function africaJourney(host: AfricaJourneyHost): Promise<void> {
 }
 
 /** Real host consent, paired loan settlement, saved connections and original-home restoration. */
-export async function homewardJourney(host: AfricaJourneyHost): Promise<void> {
+export async function homewardJourney(host: AfricaJourneyHost, destinations: readonly string[] = AFRICA_DESTINATIONS): Promise<void> {
   const home = 'maiduguri'
-  for (const foreign of AFRICA_CAPITALS) {
+  for (const foreign of destinations) {
     await Promise.all([home, foreign, 'lagos'].map(city => loadCityContent(city)))
     const unit = cityRules(home)?.units[0]?.id
     assert.ok(unit)
@@ -216,7 +226,7 @@ export async function homewardJourney(host: AfricaJourneyHost): Promise<void> {
 
     const toHub = planHomewardRoute(home, 'lagos', linksFrom, isOpenCityId)
     const flight = linksFrom('lagos').find(link => link.to === foreign && link.mode === 'air' && !routeUnavailable(link))
-    assert.ok(toHub && flight, 'normal outward setup uses the actual Lagos connection and capital flight')
+    assert.ok(toHub && flight, 'normal outward setup uses the actual Lagos connection and destination flight')
     const outward = [...toHub.legs, { from: 'lagos', to: flight.to, mode: flight.mode, fare: flight.fare, seconds: flight.seconds }]
     await Promise.all(outward.map(leg => loadCityContent(leg.to)))
     let staleQuote: string | undefined

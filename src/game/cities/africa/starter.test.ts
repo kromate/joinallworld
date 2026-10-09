@@ -5,6 +5,11 @@ import type { CityPack } from '../../../map3d/types.ts'
 import { assertCityContentContract } from '../cityContractTest.test.ts'
 import { city as accra } from '../accra/index.ts'
 import { city as algiers } from '../algiers/index.ts'
+import { city as cotonou } from '../cotonou/index.ts'
+import { city as abidjan } from '../abidjan/index.ts'
+import { city as dakar } from '../dakar/index.ts'
+import { city as capeTown } from '../cape-town/index.ts'
+import { city as addisAbaba } from '../addis-ababa/index.ts'
 import { city as lome } from '../lome/index.ts'
 import { city as nairobi } from '../nairobi/index.ts'
 import { city as yaounde } from '../yaounde/index.ts'
@@ -113,7 +118,7 @@ test('starter business metadata uses the shared neutral market and plate rules',
   }
 })
 
-for (const module of [accra, lome, yaounde, nairobi, algiers]) test(`${module.id}: opened content contract`, async () => {
+for (const module of [accra, lome, yaounde, nairobi, algiers, cotonou, abidjan, dakar, capeTown, addisAbaba]) test(`${module.id}: opened content contract`, async () => {
   const content = await module.loadContent()
   assertCityContentContract(module, content, { profile: 'opened' })
   const table = content.tablePlaces.find(place => place.game === 'chess')

@@ -7,7 +7,7 @@ import { join, resolve } from 'node:path'
 import { createRequire } from 'node:module'
 import { claimsFor, makeKey, signToken } from '../server/accounts/test-tokens.ts'
 import { TOKEN_KEYS_URL } from '../server/accounts/token.ts'
-import { africaJourney, homewardJourney } from '../server/testing/africaJourney.ts'
+import { AFRICA_DESTINATION_BATCHES, africaJourney, homewardJourney } from '../server/testing/africaJourney.ts'
 import type { AfricaJourneyHost } from '../server/testing/africaJourney.ts'
 import type { JourneyDevice } from '../server/testing/cityJourney.ts'
 import { layoutBindings } from '../server/testing/sqliteStorage.ts'
@@ -44,8 +44,8 @@ const object = (value: unknown): Record<string, unknown> => {
   return value as Record<string, unknown>
 }
 
-test('Worker HTTP host: all five capital trips and cashless homeward journeys preserve original homes across SQLite restart', { timeout: 120000 }, async t => {
-  const folder = await mkdtemp(join(tmpdir(), 'africa-capitals-worker-'))
+for (const destinations of AFRICA_DESTINATION_BATCHES) test(`Worker HTTP host: ${destinations.join(', ')} destination trips and cashless homeward journeys preserve original homes across SQLite restart`, { timeout: 120000 }, async t => {
+  const folder = await mkdtemp(join(tmpdir(), 'africa-destinations-worker-'))
   let worker: WorkerHost | null = null
   const current = (): WorkerHost => { assert.ok(worker); return worker }
   async function stop(): Promise<void> {
@@ -221,7 +221,7 @@ test('Worker HTTP host: all five capital trips and cashless homeward journeys pr
       assert.equal(replay.after, answer.after)
     },
   }
-  await africaJourney(host)
-  await homewardJourney(host)
+  await africaJourney(host, destinations)
+  await homewardJourney(host, destinations)
   assert.ok(outbound.includes(TOKEN_KEYS_URL.split('?')[0] ?? ''), 'the test provider served the configured signing key')
 })

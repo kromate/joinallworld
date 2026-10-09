@@ -159,8 +159,8 @@ test('open versus coming soon is derived from the additive city catalogue', () =
   const openStates = [...new Set(nigeriaCities.map((city) => city.state.id))];
   assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)).sort(), openStates.slice().sort());
   const openForeignCountries = [...new Set(cityCatalogue().filter((city) => city.open && city.countryISO && city.countryISO !== 'ng').map((city) => city.countryISO!))].sort();
-  assert.deepEqual(openForeignCountries, ['cm', 'dz', 'gh', 'ke', 'tg'], 'each open foreign-city catalogue entry admits its country');
-  assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)).sort(), ['cm', 'dz', 'gh', 'ke', 'ng', 'tg'], 'Nigeria and the five open foreign-city countries are enterable');
+  assert.deepEqual(openForeignCountries, ['bj', 'ci', 'cm', 'dz', 'et', 'gh', 'ke', 'sn', 'tg', 'za'], 'each open foreign-city catalogue entry admits its country');
+  assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)).sort(), ['bj', 'ci', 'cm', 'dz', 'et', 'gh', 'ke', 'ng', 'sn', 'tg', 'za'], 'Nigeria and the ten open foreign-city countries are enterable');
   const context = { current: 'lagos', held: ['lagos'], routes: null };
   for (const feature of nigeria.features) {
     const info = regionInfo({ kind: 'state', id: feature.id }, { ...context, feature });
@@ -210,7 +210,11 @@ test('open versus coming soon is derived from the additive city catalogue', () =
   assert.equal(regionInfo({ kind: 'state', id: 'oyo' }, { ...context, routes: mine, feature: nigeria.byId.get('oyo') }).routes[0]!.live, true);
   assert.equal(regionInfo({ kind: 'state', id: 'oyo' }, { held: ['lagos', 'ibadan'], feature: nigeria.byId.get('oyo') }).action!.label, 'Go to Ibadan');
   // Statuses are data: planned countries are the "Later" list, each with a hub and so a planned route.
-  assert.deepEqual(plannedRoutes('lagos').map((route) => route.to.name), ['Johannesburg', 'London']);
+  assert.deepEqual(plannedRoutes('lagos').map((route) => route.to.name), ['London']);
+  assert.equal(regionStatus('country', 'za'), 'open', 'Cape Town opens South Africa without leaving its old planned hub in Later');
+  assert.equal(regionEntry('country', 'za').city, 'cape-town');
+  assert.equal(isOpenCityId('johannesburg'), false, 'country admission does not open an unregistered city');
+  assert.equal(cityAccess('johannesburg', context), 'soon');
   for (const route of plannedRoutes('lagos')) assert.ok(MORE_REGIONS.includes(world.byId.get(route.to.id)!.name), route.to.id);
   assert.equal(regionStatus('country', 'fr'), 'soon'); assert.equal(regionStatus('country', 'aq'), null); assert.equal(regionEntry('country', 'ng').level, 'nigeria');
   assert.equal(regionInfo({ kind: 'country', id: 'ng' }, { ...context, feature: africa.byId.get('ng') }).action!.kind, 'zoom');
@@ -232,6 +236,11 @@ test('levels: thresholds half-way between the fits, hysteresis at each, and a cl
   assert.equal(levelAt(cuts[0]! * 0.97, cuts, 0), 0); assert.equal(levelAt(cuts[0]! / HYSTERESIS - 1, cuts, 0), 1);
   assert.equal(levelAt(cuts[1]! * 1.03, cuts, 2), 2); assert.equal(levelAt(cuts[1]! * HYSTERESIS + 1, cuts, 2), 1);
   assert.equal(levelAt(10, cuts, 0), 2, 'a jump across two levels lands on the right one'); assert.equal(levelAt(800, cuts, 2), 0);
+  assert.equal(focusLevel(2, -0.12, 5.6, ATLAS_LEVELS, 'gh'), 1, 'Accra is inside the padded Nigeria frame, but Ghana remains Africa');
+  assert.equal(focusLevel(2, 1.2, 6.1, ATLAS_LEVELS, 'tg'), 1, 'the same boundary rule protects Togo');
+  assert.equal(focusLevel(2, 11.5, 3.87, ATLAS_LEVELS, 'cm'), 1, 'Cameroon does not inherit Nigeria through the padded frame');
+  assert.equal(focusLevel(2, 3.38, 6.52, ATLAS_LEVELS, 'ng'), 2, 'Lagos retains the Nigeria state map');
+  assert.equal(focusLevel(2, -50, -10, ATLAS_LEVELS, 'br'), 0, 'foreign countries outside Africa remain World');
   assert.equal(focusLevel(2, 8, 9, ATLAS_LEVELS), 2, 'over Nigeria'); assert.equal(focusLevel(2, 30, -2, ATLAS_LEVELS), 1, 'zoomed in on Uganda is still Africa');
   assert.equal(focusLevel(2, -50, -10, ATLAS_LEVELS), 0, 'zoomed in on Brazil is still the world'); assert.equal(focusLevel(1, 100, 40, ATLAS_LEVELS), 0);
   assert.ok(FRAME_MARGIN > 0 && focusLevel(2, 16, 9, ATLAS_LEVELS) === 2, 'a little outside the frame still counts');
@@ -304,11 +313,11 @@ test('routes: the roads pass real towns in Nigeria, every link has a line, and a
 });
 
 // ---- the view: a fake renderer and a hand-cranked frame queue, as in ../map3d.test.ts ----
-function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0, failures = new Set<string>(), countryDetail }: { reducedMotion?: boolean; width?: number; height?: number; delay?: number; failures?: Set<string>; countryDetail?: CountryDetailService } = {}) {
+function harness({ reducedMotion = false, width = 1280, height = 800, delay = 0, waitFor, failures = new Set<string>(), countryDetail }: { reducedMotion?: boolean; width?: number; height?: number; delay?: number; waitFor?: (id: string) => Promise<void>; failures?: Set<string>; countryDetail?: CountryDetailService } = {}) {
   const queue: (() => void)[] = [], env = { now: 1000, hidden: false, loads: [] as string[], opened: [] as string[], entered: [] as string[] }, calls = { render: 0, routeVisible: false };
   const renderer = { calls, domElement: {} as HTMLCanvasElement, info: { render: {} }, setPixelRatio() {}, setSize() {}, setClearColor() {}, dispose() {}, render(scene: THREE.Scene) { calls.render += 1; calls.routeVisible = scene.children.some((object) => object.renderOrder === 9 && object.visible && object instanceof THREE.Mesh && object.geometry.getAttribute('position').count > 0); } };
   const container = { hidden: false, getBoundingClientRect: () => ({ left: 0, top: 0, right: width, bottom: height, width, height }) };
-  const load = async (id: string) => { env.loads.push(id); if (delay) await new Promise((done) => setTimeout(done, delay)); if (failures.has(id)) throw new Error(`Unavailable test level: ${id}`); return ATLAS_LEVELS.find((level) => level.id === id)!.data(); };
+  const load = async (id: string) => { env.loads.push(id); if (delay) await new Promise((done) => setTimeout(done, delay)); if (waitFor) await waitFor(id); if (failures.has(id)) throw new Error(`Unavailable test level: ${id}`); return ATLAS_LEVELS.find((level) => level.id === id)!.data(); };
   const atlas = createAtlas(container as unknown as HTMLElement, { renderer, reducedMotion, load, countryDetail, raf: (fn) => { queue.push(fn); return queue.length; }, caf: () => { queue.length = 0; }, now: () => env.now, tabHidden: () => env.hidden,
     onOpenCity: (id) => env.opened.push(id), onEnterCity: (id) => env.entered.push(id) });
   /** Run frames until nothing asks for another (or the limit). Returns how many ran. */
@@ -373,6 +382,56 @@ test('battery rule: nothing renders while idle, a level change is a bounded burs
   assert.equal(atlas.diagnostics().levelId, 'africa');
   assert.ok(calls.render - before < 60, `the cross-fade took ${calls.render - before} frames`);
   atlas.destroy();
+});
+
+test('country list fly-to remains on Africa after settling over Ghana, Togo and Cameroon, with Nigeria still explicit', async () => {
+  for (const reducedMotion of [false, true]) {
+    const { atlas, settle, run, env } = harness({ reducedMotion, width: 390, height: 844 });
+    try {
+      await atlas.ready; atlas.resize(); await settle();
+      for (const id of ['gh', 'tg', 'cm']) {
+        atlas.goLevel(1); await settle();
+        assert.equal(atlas.select({ kind: 'country', id }, { from: 'list', flyTo: true }), true);
+        await settle();
+        assert.equal(atlas.diagnostics().levelId, 'africa', `${id}: the settled view must keep African countries`);
+        assert.deepEqual(atlas.diagnostics().selected, { kind: 'country', id });
+        assert.equal(run(), 0, 'the completed animation remains idle');
+      }
+      atlas.goLevel(2); await settle();
+      assert.equal(atlas.diagnostics().levelId, 'nigeria');
+      assert.equal(atlas.select({ kind: 'state', id: 'lagos' }), true);
+      assert.deepEqual(atlas.diagnostics().selected, { kind: 'state', id: 'lagos' });
+      assert.deepEqual([env.opened, env.entered], [[], []], 'browsing countries never enters or moves a character');
+    } finally { atlas.destroy(); }
+  }
+});
+
+test('Nigeria surroundings keep a foreign selection coherent while the Africa sheet is delayed', async () => {
+  let release = () => {};
+  const waiting = new Promise<void>((resolve) => { release = resolve; });
+  const { atlas, settle, run, env } = harness({ reducedMotion: true, width: 390, height: 844, waitFor: (id) => id === 'africa' ? waiting : Promise.resolve() });
+  try {
+    await atlas.ready; atlas.resize(); await settle();
+    assert.equal(atlas.diagnostics().levelId, 'nigeria');
+    assert.equal(atlas.select({ kind: 'country', id: 'gh' }, { from: 'list', flyTo: true }), true);
+    await settle();
+    assert.equal(atlas.diagnostics().wanted, 1, 'the Nigeria surroundings picker requests Africa for Ghana');
+    assert.deepEqual(atlas.diagnostics().selected, { kind: 'country', id: 'gh' });
+    assert.ok(env.loads.includes('africa'));
+    release(); await settle();
+    assert.equal(atlas.diagnostics().levelId, 'africa');
+    assert.deepEqual(atlas.diagnostics().selected, { kind: 'country', id: 'gh' });
+    assert.equal(run(), 0);
+    assert.deepEqual([env.opened, env.entered], [[], []]);
+  } finally { release(); atlas.destroy(); }
+});
+
+test('country containment permits the Nigeria state map only on the Nigerian side of the Benin border', () => {
+  const picker = createPicker(africa);
+  for (const [lon, country, level] of [[2.6, 'bj', 1], [2.9, 'ng', 2]] as const) {
+    assert.equal(picker.pick(lon, 6.7)?.id, country);
+    assert.equal(focusLevel(2, lon, 6.7, ATLAS_LEVELS, picker.pick(lon, 6.7)?.id ?? null), level);
+  }
 });
 
 test('country detail is explicit, isolated from map selection and idle rendering, and keeps Nigeria protected', async () => {

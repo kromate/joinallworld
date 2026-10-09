@@ -64,7 +64,7 @@ export const away = definePanel({
   slot: (_state, view) => {
     const growth = sharedGrowth.value
     if (!growth || !awayWanted(view)) return 'hud'
-    const lines = notificationLines(social.me, { connected: view.connected, now: view.now, notices: view.social?.notices, seen: noticeMarks.seen(view.cityId) })
+    const lines = notificationLines(social.me, { connected: view.connected, now: view.now, notices: view.social?.notices, seen: noticeMarks.seen(view.session?.id ?? null, view.cityId) })
     return awayCardFor(view, growth.state.hello, growth.awayDismissed.value, lines) ? 'alert' : 'hud'
   },
   component: defineAsyncComponent(() => import('./AwayChip.vue')),

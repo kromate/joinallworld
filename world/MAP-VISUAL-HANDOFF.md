@@ -70,6 +70,16 @@ Source tracing shows `atlas.ts:select()` opens the selected country/card;
 The `Countries` outline viewer is a distinct geographic reference panel.
 Clicking a country/list row and purchasing a flight are separate actions.
 
+Independent source inspection also finds only World, Africa and Nigeria in
+`regions.ts:ATLAS_LEVELS`. `travelModel.ts:mapLevels()` assigns a foreign country
+breadcrumb to the existing Africa level `1`. A foreign country has no dedicated
+country atlas level. The country list passes `flyTo: true`, so it can frame the
+selected outline and open its card without creating a new level or travelling.
+`regionEntry('country', 'sn')` resolves the first open catalogue row with country
+ISO `sn`; the admitted facts bind that row to `dakar` and Senegal. This is source
+evidence of the current navigation structure. It does not reproduce or prove
+the reported return-to-current-location behavior.
+
 The existing remote country worker has been asked to inspect this flow without
 editing Integration-owned selection files. Reproduce the precise Senegal row,
 card, requested Dakar target, flight/arrival and subsequent map focus with the

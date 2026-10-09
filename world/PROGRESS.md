@@ -72,33 +72,46 @@ environment failures. No dependency install or primary-checkout edit was used. R
 regional conditions, unattended global execution and physical-device performance
 remain in the full active world objective.
 
-The live first phase also exposed two interaction defects: selecting Ghana can
-leave the foreign card selected while the map changes to Nigeria, and the Lumo
-floating guide can intercept a country-row tap at mobile width. Integration has
-pushed candidate `cd18a230aa10b54fc88ba4111759b4b1ed84bf6e` to fix these and
-is checking it in [full CI](https://github.com/kromate/joinallworld/actions/runs/37982009828).
-At the latest observation, both compiler/build/download jobs, UI regressions,
-release policy and Worker runtime acceptance passed; other required jobs remained
-live or queued. No upload of that candidate has occurred. Actual rendered map,
-guide lifecycle and actor-switch notice checks remain required before release.
+The live first phase exposed two interaction defects: selecting Ghana can leave
+its card selected while the map changes to Nigeria, and the Lumo floating guide
+can intercept a country-row tap at mobile width. The next admission also opens
+Cotonou, Abidjan, Dakar, Cape Town and Addis Ababa. Integration has frozen the
+combined eleven-country candidate at
+`c1f7c1f7369139ce559292318ba9842c23a28267`, with exact
+[full CI](https://github.com/kromate/joinallworld/actions/runs/37984507814).
+At 20:10 UTC, release policy, UI regressions and host acceptance passed; remaining
+required jobs were running or queued. Earlier 801 CI failed a stale South Africa
+Later expectation. The corrected fixtures pass 38 atlas and three politics checks
+locally. No prior candidate's pass is transferred to c1f. Production remains six
+countries until the exact candidate passes its release gates and is deployed.
 
-The next admission targets Cotonou, Abidjan, Dakar, Cape Town and Addis Ababa.
-Integration owns their shared catalogue and route registration. WORLD is reviewing
-a bounded serial starter runner and per-city crash-resumable publication. The local operations suite now passes 38 Python checks and eight checkpoint-policy
-checks, including actual owned subprocess kills and surviving-grandchild timeout.
-The runner delegates matching-intent partial recovery offline to the publisher;
-unknown or corrupt partials and spent requests remain preserved and refused. See
-[starter-operations-local-acceptance.json](starter-operations-local-acceptance.json).
-Exact remote acceptance and an actual serial source/engine run remain required.
-No unattended whole-world execution is claimed.
-Explicit fixture-source upgrade is committed as `915e66709a91c66c00880ef497e3a974a975120c` so the next sealed
-package can reuse the retained original test player, store and origin without
-another fixture grant. No new stage is running, and no private game state has
-been edited. Integration has frozen the combined eleven-country source at
-`80122bfb1ef8c3638b4e5968ff5073120ddd77a7`; its exact
-[full CI](https://github.com/kromate/joinallworld/actions/runs/37983496643)
-is confirmed pending. This candidate includes the map fixes and next-five
-admission; production remains the six-country `3af17a01` release.
+The bounded serial starter runner and owned per-city publisher pass 38 isolated
+Python checks, including actual owned subprocess kills, a surviving-grandchild
+timeout and matching-intent offline partial recovery. Unknown or corrupt partials
+and spent requests remain preserved and refused. Exact source
+`18689d1ea276752e0015b3264ff22d4984acbf43` completed an actual cached five-country
+window and exact-contract resume for Tanzania, Congo, DR Congo, Madagascar and
+Malawi in 3.735 and 2.574 seconds. Each city passed source and engine checks in
+both windows; all 15 original cache and request-ledger files retained identical
+bytes. Download reservation was zero. See
+[starter-operations-cached-acceptance.json](starter-operations-cached-acceptance.json).
+This proves cached execution and resume, not new network acquisition, shared
+runtime admission or unattended whole-world completion. The first attempt's
+bytecode/source-gate refusal remains recorded; source18689 disables child
+bytecode writes. Source audits ca8877/run37983815428 and9f490/run37984309787 are
+terminal SUCCESS; source18689/run37984779322 remains live at this checkpoint.
+
+Preserved-store source upgrade now uses fsynced atomic checkpoint replacement
+and reports the committed inode if a post-rename operation fails. Local policy,
+file-safety and all-ten destination coverage suites pass 17 checks. The actual
+caller state-adoption transition is tested with a throwaway private checkpoint
+and an injected post-rename fault; stopped cleanup uses the adopted committed
+inode. See [sealed-stage-postrename-acceptance.json](sealed-stage-postrename-acceptance.json).
+Final source review remains before using it on the retained private checkpoint. All ten admitted destinations must appear once
+across the three source-exported journey batches and each must have both map and
+geometry assets. The original actor, store, port, key and funding intent remain
+unchanged; no new stage or upload has started. Exact sealed Worker, native map
+and guide behavior, save continuity and final release gates remain required.
 
 Earlier candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130 focused
 checks and 12 overlapping checks. Its

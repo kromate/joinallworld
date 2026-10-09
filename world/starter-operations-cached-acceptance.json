@@ -1,0 +1,154 @@
+{
+  "format": "africa-starter-cached-execution-acceptance-v1",
+  "checkedAt": "2026-10-09T20:06:19.081540+00:00",
+  "sourceSha": "18689d1ea276752e0015b3264ff22d4984acbf43",
+  "contractSha256": "1f2f05e4c72e84e7222a6c501bea61b54848d8b846635ed861a0cf980ea7f9c8",
+  "sourcePins": {
+    "scripts/agent-slot.ts": {
+      "bytes": 14218,
+      "sha256": "873fcf993506655018cffff78fc37b9dce92410ffba184bd92360aa9a77bb566"
+    },
+    "scripts/world/build-africa-starters.py": {
+      "bytes": 37095,
+      "sha256": "58b05f46629a8d204a014ce3a737c90f2f02fa46990ad58494af3dc8c3797717"
+    },
+    "scripts/world/build-playable-africa.py": {
+      "bytes": 13380,
+      "sha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+    },
+    "scripts/world/verify-playable-destination.ts": {
+      "bytes": 13771,
+      "sha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae"
+    },
+    "world/playable-africa-rollout/inventory.json": {
+      "bytes": 173999,
+      "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+    },
+    "world/tooling/atomic_starter_publication.py": {
+      "bytes": 22078,
+      "sha256": "4f3b998e1b878585bdbe461bceb99447d8c1c23b84b83ab4b4e7655395b54bac"
+    },
+    "world/tooling/run_africa_starters.py": {
+      "bytes": 43555,
+      "sha256": "af8d2348113de428109ff6abe4a44b9fea777dd39041965c44e0265cf385f3bb"
+    }
+  },
+  "countries": [
+    "TZ",
+    "CG",
+    "CD",
+    "MG",
+    "MW"
+  ],
+  "cities": [
+    "antananarivo",
+    "brazz",
+    "dar",
+    "kin",
+    "lilongwe"
+  ],
+  "uniqueCountries": 5,
+  "windows": [
+    {
+      "budgetSeconds": 180,
+      "elapsedSeconds": 3.735,
+      "finishedAt": "2026-10-09T20:04:08Z",
+      "startedAt": "2026-10-09T20:04:05Z"
+    },
+    {
+      "budgetSeconds": 180,
+      "elapsedSeconds": 2.574,
+      "finishedAt": "2026-10-09T20:05:23Z",
+      "startedAt": "2026-10-09T20:05:20Z"
+    }
+  ],
+  "sourceAndEnginePerCity": "passed on initial window and exact-contract resume",
+  "reservedDownloadBytes": 0,
+  "cacheAndRequestLedgerFiles": [
+    {
+      "path": ".cache/world-build/playable-africa/dar/requests.json",
+      "bytes": 243,
+      "sha256": "511c0bbc33e50f891c0d8095e6b5c38e85a0174b3a483f570b333197816ad16d"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/dar/source.json",
+      "bytes": 342,
+      "sha256": "dc5d406b32a7c9e3441be2e6f99d4c3ec9a22f4d9aaa3b0c56a7a6b69c2f7b7d"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/dar/source.osm",
+      "bytes": 6927731,
+      "sha256": "ebcd6df766e1604cb7b0df9e1551010458c0a12139dd440093cd4f9780e814d3"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/brazz/requests.json",
+      "bytes": 241,
+      "sha256": "2db1bfda5ab768092f8155b0fa1bc239544480447de5eef5a0a6da8dc0fbc053"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/brazz/source.json",
+      "bytes": 338,
+      "sha256": "010f2adea5f78c00895ec5bca346fe479ba7b5bddd974df3b832c8d9212f879a"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/brazz/source.osm",
+      "bytes": 2861352,
+      "sha256": "70bf9bdcd37ec675312c3c5eba1f22f7e42247a1119fda33f473ea15fdafe8eb"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/kin/requests.json",
+      "bytes": 242,
+      "sha256": "c7ad5c808e5ad2428d1a6df72018b7e720afa9e9387e2ec4dad7a51aa018a667"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/kin/source.json",
+      "bytes": 341,
+      "sha256": "4bf8c5d208fabaa0d6c58976b230aaa81c4b27f45b33cfafef6fee68b16c48f0"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/kin/source.osm",
+      "bytes": 336792,
+      "sha256": "a533a757f73d739cbe33c4b4d9e2d3139a7fea2c153b9f11d0619e69e3e3eef6"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/antananarivo/requests.json",
+      "bytes": 245,
+      "sha256": "6c7c080071ff69e21390c0da2a5bd793680fbcf6e1d772109986517cb60cd74b"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/antananarivo/source.json",
+      "bytes": 346,
+      "sha256": "811412a3286f023b83dd29f6817a9683979b0ff4678ab2f988fd834b690a6ab1"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/antananarivo/source.osm",
+      "bytes": 2372902,
+      "sha256": "8c44aa84ed1a6b91bbf553ee11089d6a3e0907a335413cac51d670e3b4261d29"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/lilongwe/requests.json",
+      "bytes": 244,
+      "sha256": "36a84bdbfb05ff61ecd361d9ea3804e61d3df927430a0a7243d17fed4b74f964"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/lilongwe/source.json",
+      "bytes": 345,
+      "sha256": "046f8b6a917fd5f97d29d9082985cc8359489519599e9ea316181f32dc0ec730"
+    },
+    {
+      "path": ".cache/world-build/playable-africa/lilongwe/source.osm",
+      "bytes": 362464,
+      "sha256": "98469fc045a776e828a5d1c62004210cc2ccbb292a86aa4adae9dafce3fa289a"
+    }
+  ],
+  "originalCacheAndLedgersUnchanged": true,
+  "productionCountriesOpen": 6,
+  "productionMutation": false,
+  "limitations": [
+    "Cached execution proof, not new network-source acquisition.",
+    "Repeated checks do not add more covered countries.",
+    "This source wrapper does not perform shared catalogue/runtime admission.",
+    "Production, physical-device performance and whole-country geometry remain separate."
+  ],
+  "originalRefusal": "First real invocation generated source bytecode before the strict source gate; it refused before creating a run contract. Source18689 disables bytecode writes. Original log and owned bytecode are retained separately."
+}

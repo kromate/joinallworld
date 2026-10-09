@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { chmod, lstat, mkdtemp, readFile, readdir, realpath, rename, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { replacePrivateControl } from './stage-control-file.mjs';
+import { ControlPublicationError, publishControlState, replacePrivateControl } from './stage-control-file.mjs';
 
 async function fixture(t) {
   const parent = await realpath(await mkdtemp(join(tmpdir(), 'sealed-control-policy-')));
@@ -34,6 +34,39 @@ test('successful atomic replacement returns the new identity and refuses the old
   assert.equal(await readFile(state.path, 'utf8'), replacement);
   await assert.rejects(replacePrivateControl(state.path, state.identity, '{"stageStatus":"stopped"}\n'), /identity changed/);
   assert.equal(await readFile(state.path, 'utf8'), replacement);
+  assert.deepEqual(await readdir(state.parent), ['control.json']);
+});
+
+test('post-publication sync failure exposes the committed identity for owned cleanup', async t => {
+  const state = await fixture(t);
+  const publication = { controlIdentity: state.identity, controlState: undefined, stageStarted: false, forceRetainCheckpoint: false };
+  const running = { stageStatus: 'running', sourceSha: 'fixture' };
+  const write = (identity, value) => replacePrivateControl(state.path, identity, `${JSON.stringify(value)}\n`, {
+    afterRename: async () => { throw new Error('injected directory sync failure'); },
+  });
+  let publicationError;
+  try {
+    await publishControlState(publication, running, write);
+  } catch (error) { publicationError = error; }
+  assert.ok(publicationError instanceof ControlPublicationError);
+  assert.equal(publicationError.message, 'checkpoint was published but post-rename durability or verification failed');
+  assert.ok(Number.isSafeInteger(publicationError.committedIdentity.dev));
+  assert.ok(Number.isSafeInteger(publicationError.committedIdentity.ino));
+  assert.equal(await readFile(state.path, 'utf8'), '{"stageStatus":"running","sourceSha":"fixture"}\n');
+  assert.deepEqual(publication.controlIdentity, publicationError.committedIdentity);
+  assert.deepEqual(publication.controlState, running);
+  assert.equal(publication.stageStarted, true);
+  assert.equal(publication.forceRetainCheckpoint, true);
+  const committedStat = await lstat(state.path);
+  assert.deepEqual(publicationError.committedIdentity, { dev: committedStat.dev, ino: committedStat.ino });
+
+  const stopped = { ...publication.controlState, stageStatus: 'stopped' };
+  await publishControlState(publication, stopped, (identity, value) => replacePrivateControl(state.path, identity, `${JSON.stringify(value)}\n`));
+  assert.equal(await readFile(state.path, 'utf8'), '{"stageStatus":"stopped","sourceSha":"fixture"}\n');
+  await assert.rejects(replacePrivateControl(state.path, state.identity, '{"stageStatus":"running"}\n'), /identity changed/);
+  assert.deepEqual(publication.controlState, stopped);
+  assert.equal(publication.stageStarted, true);
+  assert.notDeepEqual(publication.controlIdentity, state.identity);
   assert.deepEqual(await readdir(state.parent), ['control.json']);
 });
 

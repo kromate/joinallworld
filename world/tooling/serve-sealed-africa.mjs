@@ -10,7 +10,7 @@ import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { verifySourceAndPackage } from './verify-sealed-africa.mjs';
 import { assertOwnedGroupGone, checkpointPolicy, validateUpgradeArguments } from './stage-checkpoint-policy.mjs';
-import { replacePrivateControl } from './stage-control-file.mjs';
+import { publishControlState, replacePrivateControl } from './stage-control-file.mjs';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_FILE [--seconds 600] [--retain-store]
        node --experimental-strip-types world/tooling/serve-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR --control ABSOLUTE_CHECKPOINT --resume-control ABSOLUTE_CHECKPOINT [--recover-interrupted | --upgrade-from EXACT40_SHA] [--seconds 600] [--retain-store]
@@ -263,8 +263,7 @@ async function main(args) {
   if (!resumed) await writePrivateJson(storeMarkerPath, { schemaVersion: 1, sourceSha: args.sha, packageDigest: checked.packageDigest, storeId });
   const responseBodies = new Set();
   let worker;
-  let controlIdentity = resumed?.identity;
-  let controlState;
+  const checkpointState = { controlIdentity: resumed?.identity, controlState: undefined, stageStarted: false, forceRetainCheckpoint: false };
   let deadlineTimer;
   let resolveFinished;
   let restartTask;
@@ -273,12 +272,14 @@ async function main(args) {
   let origin;
   let deadlineAt;
   let stageReady = false;
-  let stageStarted = false;
   let restarting = false;
   let stopRequested = false;
   const requestControllers = new Set();
   const removeSignals = [];
   const finished = new Promise(resolveFinishedFn => { resolveFinished = resolveFinishedFn; });
+  const publishControl = async value => {
+    return publishControlState(checkpointState, value, (identity, nextValue) => updateOwnedControl(args.control, identity, nextValue));
+  };
   const cancelUnusedBodies = async () => {
     for (const response of responseBodies) if (response.body && !response.bodyUsed) await response.body.cancel().catch(() => {});
     responseBodies.clear();
@@ -423,7 +424,7 @@ async function main(args) {
 
     deadlineAt = Date.now() + args.seconds * 1000;
     const deadline = new Date(deadlineAt).toISOString();
-    controlState = {
+    checkpointState.controlState = {
       schemaVersion: 1,
       stageStatus: 'running',
       stageUrl: origin,
@@ -441,15 +442,15 @@ async function main(args) {
       founderCookieForAdminCredit: founderCookie,
     };
     if (resumed?.provenance.upgraded) {
-      controlState.storeOrigin = resumed.provenance.storeOrigin;
-      controlState.sourceUpgradeHistory = resumed.provenance.sourceUpgradeHistory;
+      checkpointState.controlState.storeOrigin = resumed.provenance.storeOrigin;
+      checkpointState.controlState.sourceUpgradeHistory = resumed.provenance.sourceUpgradeHistory;
     } else if (resumed?.checkpoint.storeOrigin !== undefined) {
-      controlState.storeOrigin = resumed.checkpoint.storeOrigin;
-      controlState.sourceUpgradeHistory = resumed.checkpoint.sourceUpgradeHistory;
+      checkpointState.controlState.storeOrigin = resumed.checkpoint.storeOrigin;
+      checkpointState.controlState.sourceUpgradeHistory = resumed.checkpoint.sourceUpgradeHistory;
     }
-    if (resumed) controlIdentity = await updateOwnedControl(args.control, controlIdentity, controlState);
-    else controlIdentity = await writeControl(args.control, controlState);
-    stageStarted = true;
+    if (resumed) await publishControl(checkpointState.controlState);
+    else checkpointState.controlIdentity = await writeControl(args.control, checkpointState.controlState);
+    checkpointState.stageStarted = true;
     stageReady = true;
     process.stdout.write(`${JSON.stringify({ stageUrl: origin, buildId: `joinallworld-${args.sha}`, sourceSha: args.sha, packageDigest: checked.packageDigest, deadline })}\n`);
     deadlineTimer = setTimeout(() => onStop('deadline'), args.seconds * 1000);
@@ -461,18 +462,19 @@ async function main(args) {
     if (restartTask) await restartTask.catch(() => {});
     await cancelUnusedBodies();
     try { await dispose(); } catch { cleanupFailed = true; }
-    retainFolder = (args.retainStore && Boolean(controlIdentity)) || Boolean(resumed && !stageStarted);
+    retainFolder = checkpointState.forceRetainCheckpoint || (args.retainStore && Boolean(checkpointState.controlIdentity)) || Boolean(resumed && !checkpointState.stageStarted);
     if (retainFolder) {
       try {
-        if (stageStarted) controlIdentity = await updateOwnedControl(args.control, controlIdentity, { ...controlState, stageStatus: cleanupFailed ? 'cleanup_failed' : 'stopped', stoppedAt: new Date().toISOString(), restartCount });
-        else if (resumed && cleanupFailed) controlIdentity = await updateOwnedControl(args.control, controlIdentity, {
+        if (checkpointState.stageStarted) await publishControl({ ...checkpointState.controlState, stageStatus: cleanupFailed ? 'cleanup_failed' : 'stopped', stoppedAt: new Date().toISOString(), restartCount });
+        else if (resumed && cleanupFailed) await publishControl({
           ...resumed.checkpoint, stageStatus: 'cleanup_failed', ownerChildPid: process.pid,
           stoppedAt: new Date().toISOString(),
         });
       } catch { cleanupFailed = true; }
     } else {
-      try { await removeOwnedControl(args.control, controlIdentity); } catch { cleanupFailed = true; }
+      try { await removeOwnedControl(args.control, checkpointState.controlIdentity); } catch { cleanupFailed = true; }
     }
+    if (checkpointState.forceRetainCheckpoint) retainFolder = true;
     if (!retainFolder) {
       try { await rm(folder, { recursive: true, force: true }); } catch { cleanupFailed = true; }
     }

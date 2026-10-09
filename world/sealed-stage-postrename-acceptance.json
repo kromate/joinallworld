@@ -1,0 +1,51 @@
+{
+  "format": "sealed-stage-postrename-source-acceptance-v1",
+  "checkedAt": "2026-10-09T20:11:32.543646+00:00",
+  "implementationParentSha": "18689d1ea276752e0015b3264ff22d4984acbf43",
+  "sourcePins": {
+    "world/tooling/serve-sealed-africa.mjs": {
+      "bytes": 28862,
+      "sha256": "3f2efe35627c786b325e7e3cb46aeaafb98e721d0a89bd2ed311ba01af023e44"
+    },
+    "world/tooling/stage-control-file.mjs": {
+      "bytes": 5093,
+      "sha256": "bdeecb804a0d2f8c63ec6d1fa2823ba4ca0a91efa37f5d71dd744fb38e5b721a"
+    },
+    "world/tooling/stage-control-file.test.mjs": {
+      "bytes": 5356,
+      "sha256": "7ae4bbf0e8f7424dea0afcb7358e87a5c74cf904f368e32e75cd018089c0242c"
+    },
+    "world/tooling/stage-checkpoint-policy.mjs": {
+      "bytes": 5359,
+      "sha256": "2975f3f67c71c01b279d4de3adbd942180dd443b9ca2e5c818cec002866622ff"
+    },
+    "world/tooling/sealed-africa-coverage.mjs": {
+      "bytes": 2977,
+      "sha256": "43e6ba953cfc97056e143cedc4038522e066fa25da4418ba34ec1458b01efb8e"
+    },
+    "world/tooling/verify-sealed-africa.mjs": {
+      "bytes": 24748,
+      "sha256": "d521402e3a8050697d3b54f1fc2fd6ac52335009af17a7cd2099523f8a161122"
+    }
+  },
+  "localTests": {
+    "tests": 17,
+    "pass": 17,
+    "fail": 0,
+    "node": "24.19.0",
+    "heapMiB": 128,
+    "sharedHeavySlot": true,
+    "terminalExit": 0,
+    "logSha256": "5117ddaf75a13fa82dbd910a0cd986b09f77bf28ee5e9c9da08b6b61beef6377"
+  },
+  "syntaxAndHelp": "passed",
+  "callerPath": "Actual serve-sealed-africa publication transition delegates to tested publishControlState. Throwaway private checkpoint replacement faults after rename; caller adopts committed inode/state and retention, then writes stopped with adopted inode. Stale inode remains refused.",
+  "originalRetainedCheckpointMutated": false,
+  "actualWorkerStarted": false,
+  "releaseReady": false,
+  "limitations": [
+    "Isolated source acceptance; final exact source review remains required.",
+    "Does not prove actual source upgrade of original retained Worker/store.",
+    "No browser, physical-phone, production continuity or deployment proof."
+  ]
+}

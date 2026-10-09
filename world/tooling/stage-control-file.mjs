@@ -6,6 +6,32 @@ import { basename, dirname, join } from 'node:path';
 
 const MAX_CONTROL_BYTES = 16 * 1024;
 
+export class ControlPublicationError extends Error {
+  constructor(committedIdentity, cause) {
+    super('checkpoint was published but post-rename durability or verification failed');
+    this.name = 'ControlPublicationError';
+    this.committedIdentity = committedIdentity;
+    this.cause = cause;
+  }
+}
+
+export async function publishControlState(state, value, write) {
+  try {
+    state.controlIdentity = await write(state.controlIdentity, value);
+    state.controlState = value;
+    state.stageStarted = true;
+    return state.controlIdentity;
+  } catch (error) {
+    if (error instanceof ControlPublicationError) {
+      state.controlIdentity = error.committedIdentity;
+      state.controlState = value;
+      state.stageStarted = true;
+      state.forceRetainCheckpoint = true;
+    }
+    throw error;
+  }
+}
+
 async function privateParent(path, uid) {
   const parent = dirname(path);
   const stat = await lstat(parent);
@@ -34,7 +60,7 @@ async function removeOwned(path, identity) {
   } catch (error) { if (error?.code !== 'ENOENT') throw error; }
 }
 
-export async function replacePrivateControl(path, identity, contents, { beforeRename } = {}) {
+export async function replacePrivateControl(path, identity, contents, { beforeRename, afterRename } = {}) {
   assert.equal(typeof constants.O_NOFOLLOW, 'number', 'this platform must support O_NOFOLLOW for checkpoint safety');
   assert.equal(typeof contents, 'string');
   assert.ok(Buffer.byteLength(contents, 'utf8') <= MAX_CONTROL_BYTES, 'resume checkpoint exceeds the 16384-byte limit');
@@ -49,6 +75,7 @@ export async function replacePrivateControl(path, identity, contents, { beforeRe
     try {
       const stat = await handle.stat();
       temporaryIdentity = { dev: stat.dev, ino: stat.ino };
+      assert.ok(Number.isSafeInteger(temporaryIdentity.dev) && Number.isSafeInteger(temporaryIdentity.ino), 'temporary control identity must use safe integers');
       await handle.chmod(0o600);
       await handle.writeFile(contents, { encoding: 'utf8' });
       await handle.sync();
@@ -62,16 +89,21 @@ export async function replacePrivateControl(path, identity, contents, { beforeRe
     assert.ok(temporaryStat.isFile() && temporaryStat.dev === temporaryIdentity.dev && temporaryStat.ino === temporaryIdentity.ino, 'owned control temporary identity changed');
     await rename(temporary, path);
     renamed = true;
-
-    const directory = await open(parent, constants.O_RDONLY | constants.O_NOFOLLOW | (constants.O_DIRECTORY ?? 0));
-    try { await directory.sync(); } finally { await directory.close(); }
-    const replacement = await lstat(path);
-    assert.ok(replacement.isFile() && !replacement.isSymbolicLink(), 'replacement control file must be regular');
-    assert.equal(replacement.dev, temporaryIdentity.dev);
-    assert.equal(replacement.ino, temporaryIdentity.ino);
-    assert.equal(replacement.uid, uid);
-    assert.equal(replacement.mode & 0o777, 0o600);
-    return { dev: replacement.dev, ino: replacement.ino };
+    const committedIdentity = { ...temporaryIdentity };
+    try {
+      if (afterRename) await afterRename(committedIdentity);
+      const directory = await open(parent, constants.O_RDONLY | constants.O_NOFOLLOW | (constants.O_DIRECTORY ?? 0));
+      try { await directory.sync(); } finally { await directory.close(); }
+      const replacement = await lstat(path);
+      assert.ok(replacement.isFile() && !replacement.isSymbolicLink(), 'replacement control file must be regular');
+      assert.equal(replacement.dev, committedIdentity.dev);
+      assert.equal(replacement.ino, committedIdentity.ino);
+      assert.equal(replacement.uid, uid);
+      assert.equal(replacement.mode & 0o777, 0o600);
+      return committedIdentity;
+    } catch (error) {
+      throw new ControlPublicationError(committedIdentity, error);
+    }
   } catch (error) {
     if (!renamed) await removeOwned(temporary, temporaryIdentity).catch(() => {});
     throw error;

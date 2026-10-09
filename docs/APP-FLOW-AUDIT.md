@@ -4,7 +4,7 @@
 
 ## Current integration queue
 
-Exact cumulative source `3b394f4b` passed remote CI [37867392052](https://github.com/kromate/joinallworld/actions/runs/37867392052): typecheck, build/download/smoke, release policy, **100 existing UI model/component checks and 9 existing shopping/housing/career checks (109 passed, 0 failed)**. These cover existing regressions, not every newly listed delayed-response/browser scenario. No new test expectations were added or changed.
+Exact cumulative source `19e3e77f` passed remote CI [37869331514](https://github.com/kromate/joinallworld/actions/runs/37869331514): typecheck, build/download/smoke, release policy, **147 existing UI/start model/component checks and 9 existing shopping/housing/career checks (156 passed, 0 failed)**. These cover existing regressions, not every newly listed delayed-response/browser scenario. No new test expectations were added or changed.
 
 The human requested pushed slices for the agent on the other system to integrate, resolve conflicts and fix follow-up bugs. The UI branch is `codex/allworld-integrated-preview`. Merge its cumulative changes onto fresh main; individual correction commits are not standalone features. Fast CI proves type/build/download/smoke/policy gates, not complete browser behavior. The historical checkpoints below preserve the remaining acceptance details.
 
@@ -20,7 +20,8 @@ The human requested pushed slices for the agent on the other system to integrate
 | Shared hints | e524bf55 | 37860276621 passed | Storage denial, all consumers, dismiss/reopen/reload and manual versus automatic tours |
 | Events / public records | 75ca35a9 | 37861362311 passed | Filter races, pagination/retry, offline calendar/actions and narrow cards |
 | Groceries batch / Health layout | d03eb8c9 | 37864614906 passed, including 103 existing UI checks | Partial orders, identity/close/reopen/lost-reply races, fuel offers and narrow layouts |
-| Career choices / catalogue wrapping / Bank records | 3b394f4b | 37867392052 passed, including 109 existing UI checks | Browser navigation after reload, delayed dilemma/retry, enlarged text and actual funded property actions |
+| Career choices / catalogue wrapping / Bank records | 3b394f4b | 37867392052 passed, including 109 existing UI checks | Navigation and Jobs apply/switch/quit/reload accepted locally; delayed dilemma/retry, enlarged text and funded property actions remain |
+| Embedded settling / focus scrolling / guest rental labels | 19e3e77f | 37869331514 passed, including 156 existing UI/start checks | Home320, Ready/Look390 and desktop, Face zoom and new landing accepted locally; physical-device and production acceptance remain |
 | Voice-note checkpoint | b193bd77 on `codex/voice-notes-checkpoint` | Historical only; older base | Fresh-main integration, current compiler, private media lifecycle, Worker restart, capture/playback and compatibility |
 
 Production acceptance in this thread is still the separately recorded a44629b3 phase. None of the newer review slices is claimed deployed here. Source inspection has not replaced the requested full screen-by-screen browser audit.
@@ -233,3 +234,17 @@ Runtime3b394f4b follows c26c1437. Career clears the previous dilemma synchronous
 Bank wraps bill names/amounts and quick links, removes bill shadows, and shows complete transaction reasons and balance text. Wallet, payment commands, action receipts, prices and stored saves are unchanged by this unit.
 
 Exact CI37866893652 passed type/build/download/smoke/policy but failed two newly included existing markup checks: the Jobs empty-state introduction and CarArt image label. The introduction now explains the unemployed state and next action; the artwork keeps a truthful drawing/3D description. No test expectations were changed. Corrected exact CI37867392052 passed all gates, 100 existing UI checks and9 existing shopping/housing/career checks (109 pass,0 fail). Logs: /tmp/allworld-bank-career-ui-ci.log. These are remote automated gates, not full browser or production acceptance.
+
+### Verified phone settling repair, 9 October
+
+Runtime19e3e77f includes b528d3dd and the focus-scroll correction. A phone-hosted fullscreen panel no longer applies the outer fullscreen dialog styles. Embedded settling uses the phone frame, removes the green backdrop/nested panel padding/shadow, and only mounts the avatar stage for Look. The form owns its scrolling; the phone viewport, creator root and panel use overflow:clip so native focus/scrollIntoView cannot move them. New step headings receive focus after the transition completes. Guest rental cards no longer claim Your home, and all guest move controls explain the existing settlement requirement. Gameplay commands, prices, wallet receipts and saves are unchanged.
+
+Astra browser acceptance used two disposable actors on an isolated5196 backend. Jobs search/open filter/details, apply, switch, quit, navigation and reload passed. Boutique preview/reset/selected contrast passed; settlement then Braids purchase3500 produced Wearing and a matching Bank debit/balance72500, retained on reload; free Low cut wear also passed. Houses/Cars costs, shortfalls and empty garage were inspected. Guest/settled Houses labels and controls now agree with actual settlement state. Home320 and Ready→Look390 retain outer scrollTop0; the new heading is focused, preview and footer remain visible. Face zoom increased 3D render count4→25 and visibly enlarged the character. Fresh desktop landing retained its fullscreen preview, name field and footer. Messages list and Lumo layout were inspected without sending messages.
+
+Early cross-app navigation failures disappeared after fresh reload and were dev-HMR artifacts. The initially suspected Face no-op was disproved by the frozen-source comparison. No unrelated shell or camera rewrite was made.
+
+Reviewable synthetic screenshots: [Home320](evidence/app-ui-2026-10-09/home-sealed-320.jpg), [Look body390](evidence/app-ui-2026-10-09/look-body-sealed-390.jpg), [Look Face390](evidence/app-ui-2026-10-09/look-face-sealed-390.jpg), [new desktop landing](evidence/app-ui-2026-10-09/fresh-landing-final-desktop.jpg). Original report: /tmp/allworld-app-ui-evidence/acceptance-notes.md. All owned tabs, server and browser leases were closed; shared slots were verified free. The user requested quick reversible spacing/glitch repairs discovered during continued testing, including adjacent screens.
+
+Exact final CI37869331514 passed type/build/download/smoke/release policy and156 existing UI/start checks. Startup remains614846raw/222895gzip, within unchanged615000/223000 caps. New onboarding/model/component invocation was added to the opt-in UI job; no test expectations were changed. Public health independently returned a44629b3 via curl after this source-only phase; there was no production upload.
+
+Open acceptance remains funded car buy/use/sell, rental move/receipt/reload, offline Boutique, delayed promotion dilemmas, ordinary player-chat viewport, enlarged text, physical-device performance and fresh-main integration/production checks. This closes the named local spacing/guest-label milestone; it does not close all apps or the full parity roadmap.

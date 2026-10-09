@@ -1,0 +1,37 @@
+{
+  "observedAt": "2026-10-09T19:31:16.506542+00:00",
+  "productionSource": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+  "providerVersion": "90ba4ff2-4204-4261-ab10-519787ab51f2",
+  "observationScope": "VerifiedAstra publicexistingplayer session keptread-only; noexistingplayer moved/charged. ActualpaidliveUI journey notclaimed.",
+  "issues": [
+    {
+      "id": "live-map-country-selection",
+      "operator": "Integration verifiedAstra",
+      "source": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+      "repro": "Ghana card stays selected while map changes to Nigeria level",
+      "owner": "Integration sole sharedruntimewriter",
+      "acceptance": [
+        "Countrycard/maplevel and city/quote context agree after navigation and reload",
+        "Actualdesktop and320/390px native selection checks",
+        "Originalplayer unchanged; no accidentaltravel/fare",
+        "Exactchangedsource focusedtests/compiler/budgets andsamepackage staging/release/livechecks"
+      ]
+    },
+    {
+      "id": "live-map-lumo-mobile-tap",
+      "operator": "Integration verifiedAstra",
+      "source": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+      "repro": "Lumo intercepts country-row tap on mobile",
+      "owner": "Integration sole sharedruntimewriter",
+      "acceptance": [
+        "Country rows reliably receive intendedtouch at320/390px",
+        "Lumo remainsavailable through explicitreachablecontrol",
+        "No accidentaltravel/fare or existingplayer change",
+        "ActualAstra native/browser andchangedsource exactreleasegates"
+      ]
+    }
+  ],
+  "owner": "Integration sole sharedruntimeassembler; WORLDsole releaseowner; Root/Luna source/evidence reviewers.",
+  "status": "Observedlivebugs open; noappliedpatch/test/nativefix/release evidence yet.",
+  "nextFullProgramme": "Afterfinite2mapfixbatch, ONactive teaching andfullphysical/careers/business/liveGoalmatic. Firstfive isnotcompletion."
+}

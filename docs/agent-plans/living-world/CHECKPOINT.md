@@ -1,5 +1,11 @@
 # Living-world implementation checkpoint
 
+## Live observations generated next finite fixes - 2026-10-09T19:31:16.506542+00:00
+
+VerifiedAstra actualpublicexistingplayer inspection reports6opencountries but2reproducibleUI bugs: Ghanacard remainsselectedwhilemapchanges toNigerialevel, andLumo interceptsmobilecountry-row taps. Operator keptsessionread-only; no existingplayer moved/charged, no actualpaidliveUIflight claimed. Integration preparingfinitefixbatch; acceptanceincludesconsistentcard/map/city/quote state and320/390touch/Lumo reachability with unchangedplayer/financialstate. [Observedbugs/owner/criteria](live-map-next-batch.json). Do notclosebugs fromcurrentgreenCI/provider/save receipts; changedsource needsfreshgates/native/release/liveevidence.
+
+Owncheckpointpush53353 ended0 (dafc5834→e9cb6520), no duplicateretry. Currentproductionremains exact3af, provider90ba4ff2-4204-4261-ab10-519787ab51f2/100%, sameoriginalnamespace11bindings, scoped original9field/once-receipt continuity passed. Nativefunded5roundtrips/22fare-home/30restart/save checks andactualterminal0stage retained. CurrentMacWARNING/churn; Rootreadonlysource/docs only, no localbuild/npm/GPU/browser/server and no unseenmemory-cause claim. FullgoalACTIVE: firstfive milestone notfinish; ONteaching/fullphysical/later/business/liveGoalmatic remainsrequired. Zeroextra spend/cutoff10October05UTC unchanged.
+
 ## Provider and original production-save receipt verified - 2026-10-09T19:23:31.494910+00:00
 
 Root independentlyread/hashed sanitizedprovider191ee2b8: version90ba4ff2-4204-4261-ab10-519787ab51f2 at100%, deploymentd1b044f1-0969-48c8-8033-e2092b68f7e5, sameoriginalnamespacehash,11secretbindings, configured3af andteachingbindingabsent. Continuity187ee35a passes originalretainedsyntheticidentity, sameintentduplicate and9namedstablefields cash/home/homeOwned/property/estate/inventory/business/location/spot, no newactor. This is notgamewide/export/browser/reconnect/physicalphone acceptance. Actualstop1853448d confirms terminal0/stopped19:09:00.576/store retained/finalnative51ac. [Provider/continuity qualifiedevidence](production-3af-public-adoption.json). No privateAPI responses/rawsnapshots/credentials/cookies read. ActualcurrentAstra parentboundsession latest19:21:05 gpt-6-astra/medium reverified; owns livepublic6country map/gameplay witness.

@@ -1,3 +1,5 @@
+Currentnextboundedbatch 2026-10-09T19:31:16.506542+00:00: twoactualAstra live3af bugs. Ghana countrycard staysselected whilemapchanges toNigeria; Lumo interceptsmobilecountry-row tap. Integration ownsfixes; acceptancecard/map/city/quote agreement acrossnavigation/reload, reliable320/390touch andexplicitLumo access, no accidentaltravel/fare/playerchanges, exactchangedsource tests/compiler/budgets/Astra/native/stage/WORLDrelease/livechecks. [Finiteobservedbatch](live-map-next-batch.json). Then separateONactive teaching andfullphysical/laterprogramme.
+
 Latest scoped evidence 2026-10-09T19:11:25.359192+00:00: fundedfive-country stage accepted, exact22-check finalreceipt07d76433 and30-field restart saves retained. Fullprogramme stillunfinished.
 
 Current finite batch: WORLD accepted exact3af/f776 production release and live gameplay/save verification. FullCI14PASS and scopedfunded five-country native/save/receipt acceptance passed. Preserve existingproduction namespace/bindings and compatibleforward recovery; no previoussource test transfer.

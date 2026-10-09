@@ -65,10 +65,15 @@ export function createKit({ matte = false }: { matte?: boolean } = {}): Kit {
     return object;
   }
   const cleanups = new Set<() => void>();
+  let disposed = false;
   return {
     THREE, matte, material, mesh, boxGeometry, sphereGeometry, cylinderGeometry, crownGeometry,
     /** Run `fn` when the kit is disposed. Returns a function that withdraws it. */
-    onDispose(fn: () => void) { cleanups.add(fn); return () => cleanups.delete(fn); },
+    onDispose(fn: () => void) {
+      if (disposed) { fn(); return () => false; }
+      cleanups.add(fn);
+      return () => cleanups.delete(fn);
+    },
     /** Run `fn(material)` on every material the kit has made and on each one it makes from now on (the host's see-through patch). */
     eachMaterial(fn: (material: THREE.Material) => void) { prepare = fn; materials.forEach((item) => fn(item)); },
     /** box(x, y, z, width, height, depth, colour, parent, glow?) */
@@ -78,6 +83,8 @@ export function createKit({ matte = false }: { matte?: boolean } = {}): Kit {
     /** sphere(x, y, z, radius, colour, parent) */
     sphere: (x, y, z, r, c, p) => mesh(sphereGeometry, x, y, z, r, r, r, c, p),
     dispose() {
+      if (disposed) return;
+      disposed = true;
       for (const fn of [...cleanups]) { cleanups.delete(fn); fn(); }
       geometries.forEach((geometry) => geometry.dispose()); materials.forEach((item) => item.dispose());
     },

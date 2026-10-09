@@ -615,7 +615,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
     updateActorWorld(root);
     return true;
   }
-  function solvePropFeet(surface: NativePropRestSupport['surface'], transitionFloorY?: number): void {
+  function solvePropFeet(surface: NativePropRestSupport['surface'], transitionFloorY?: number): FootSolveResult {
     const worldAt = (contact: FootContact) => {
       const worldPoint = new THREE.Vector3(contact.x, contact.y, contact.z);
       if (root.parent) {
@@ -670,6 +670,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
       }));
       throw new Error(`Native ${surface.pose} foot support failed (${result.maxError} m, limited=${result.limited}); diagnostics=${JSON.stringify({ result, contacts: finalContacts, bones, actorRoot: root.getWorldPosition(new THREE.Vector3()).toArray() })}`);
     }
+    return result;
   }
   return {
     apply(frame: NativeWristSourceFrame, context: Readonly<{ clip: string; seconds: number; pose: BodyPose; support: NativePoseSupport; contactPhase: 'still' | 'transition'; restAnchorBlend: number }>): boolean | Readonly<{ accepted: true; rootWorldCorrection?: number; rootWorldCorrectionXZ?: readonly [number, number] }> {

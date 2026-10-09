@@ -310,6 +310,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   /** JSON request to the same origin. Rejects with Error{status, code, reason?}; a network failure reads as connection lost. */
   const staleIdentityResponse = (): ApiError => Object.assign(Error('Response belongs to a replaced identity'), { code: 'stale_identity_response' })
+  /** Same synchronous fence at every throwing checkpoint, before any reply envelope is applied. */
+  function requireCurrent(current: () => boolean): void { if (!current()) throw staleIdentityResponse(); }
   async function api<T extends object = Record<string, unknown>>(path: string, options: ApiOptions = {}, responseCurrent: () => boolean = () => true): Promise<T & ApiEnvelope> {
     const cooling = cooldownError(path); if (cooling) throw cooling
     let response: FetchResponse;
@@ -317,10 +319,10 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       // A string, or a falsy value, goes out as it is (fetch decides); anything else is JSON.
       response = await fetch(path, { ...options, body: options.body && typeof options.body !== 'string' ? JSON.stringify(options.body) : options.body as BodyInit | null | undefined,
         headers: { 'Content-Type': 'application/json', ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(10000) });
-    } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error(TEXT.connectionLost); }
+    } catch { requireCurrent(responseCurrent); throw Error(TEXT.connectionLost); }
     let payload: Payload;
-    try { payload = await response.json() as Payload; } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error('Server returned an unreadable response'); }
-    if (!responseCurrent()) throw staleIdentityResponse();
+    try { payload = await response.json() as Payload; } catch { requireCurrent(responseCurrent); throw Error('Server returned an unreadable response'); }
+    requireCurrent(responseCurrent);
     if (payload === null || typeof payload !== 'object') throw Error('Server returned an unreadable response');
     if (typeof payload.serverTime === 'number' && Number.isFinite(payload.serverTime)) client.serverTimeOffset = payload.serverTime - now();
     // What the server says about its own storage, shown as it is: a success carrying storage "failing"
@@ -422,14 +424,14 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   async function loadedSnapshot<T extends { state: LifeState }>(response: T, responseCurrent: () => boolean = () => true): Promise<T> {
     await loadLife(response.state);
-    if (!responseCurrent()) throw staleIdentityResponse();
+    requireCurrent(responseCurrent);
     return response;
   }
 
   async function fetchCurrentLife(city: string, responseCurrent: () => boolean = () => true): Promise<LifeResponse> {
     try {
       await loadCityContent(city);
-      if (!responseCurrent()) throw staleIdentityResponse();
+      requireCurrent(responseCurrent);
       return await loadedSnapshot(await api<LifeResponse>(`/api/life?city=${city}`, {}, responseCurrent), responseCurrent);
     }
     catch (error) {
@@ -437,9 +439,9 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       const destination: unknown = Reflect.get(error, 'city');
       if (typeof destination !== 'string' || !isCityId(destination)) throw error;
       await loadCityContent(destination);
-      if (!responseCurrent()) throw staleIdentityResponse();
+      requireCurrent(responseCurrent);
       const response = await loadedSnapshot(await api<LifeResponse>(`/api/life?city=${destination}`, {}, responseCurrent), responseCurrent);
-      if (!responseCurrent()) throw staleIdentityResponse();
+      requireCurrent(responseCurrent);
       client.cityId = destination as CityId;
       return response;
     }

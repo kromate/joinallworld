@@ -1,3 +1,15 @@
+## 2026-10-09 19:44 UTC — Map context and actor notice fixes prepared
+
+This candidate repairs the two live map issues reproduced against production `3af17a01`. The atlas now checks the actual containing country before entering Nigeria's state level, while preserving explicit Nigeria navigation and existing zoom thresholds. The floating Lumo character is suppressed on maps so it cannot intercept country controls. Guide chat and independent tour instructions remain available. City and event tracking continue while the floater is absent.
+
+The guide's stage is disposed on map or background entry and recreated on return. Creation is guarded against duplicate pending work, stale canvas adoption and unmount. A successful discarded stale-canvas result can trigger one guarded replacement; a failed creation does not automatically retry. Current size and reduced-motion settings are applied on adoption, and late pose callbacks cannot revive a hidden or replacement stage. A creation already pending may briefly allocate before disposal; this is not a zero-allocation or physical battery claim. Explicit Astra source review accepted actual `CompanionHost.vue` SHA-256 `413c82efc07c46f57ba10ef2fded7dcc5fb381b174899c6a099ab6ff6f099467` for affected checks and native verification.
+
+Life-notice read marks now belong to an actor and city. All nine callers supply the current session identity. The ownerless legacy device key is retained and ignored rather than attributed to a new player. No saves, funds, homes, inventory, receipts or server storage are changed. Actual two-actor phone verification remains required.
+
+Local Node 24 at heap 256 passed all 38 atlas checks, including animated and reduced-motion Ghana, Togo and Cameroon selection, delayed Africa data using Nigeria's surrounding-country picker, Benin/Nigeria border containment and idle rendering. The combined command exited one because the notice model file failed before executing: the shared local Vue module did not export `ref`. Existing primary dependencies were preserved. This failure is not a notice-test result; clean pinned-lockfile CI must verify the notice cases, compiler and unchanged download budgets.
+
+No new deployment or repaired browser acceptance is claimed. Production remains `3af17a01`, provider `90ba4ff2-4204-4261-ab10-519787ab51f2`. WORLD remains the sole uploader. New source needs exact combined CI, sealed-package checks, native map/guide and actor-switch acceptance, then coordinated production acceptance. The next five-country source packet was independently inventoried and remains unadmitted; broader parity, media, device and research work remain open.
+
 ## 2026-10-09 19:28 UTC — First-five release adopted; map repairs remain open
 
 The delivered runtime is `3af17a01b8bd406bfb830ca0d2ee66d2d0093d28`. Integration promoted that exact commit to `main` with an ordinary fast-forward push. WORLD uploaded the verified package without rebuilding it. Provider version `90ba4ff2-4204-4261-ab10-519787ab51f2` is active at 100%. Public health now reports `joinallworld-3af17a01b8bd406bfb830ca0d2e`.

@@ -32,8 +32,8 @@ export const bank = phonePanel('bank', 'Bank', bodyLoader('bank/BankApp'), {
 
 export const messages = phonePanel('messages', 'Messages', bodyLoader('messages/MessagesApp'), {
   icon: '✉️', order: 12, group: 'people',
-  badge: (_state, view) => messagesBadge(social.me, view.connected, noticeMarks.fresh(view.cityId, view.social?.notices)),
-  notifications: (_state, view) => notificationLines(social.me, { connected: view.connected, now: view.now, notices: view.social?.notices, seen: noticeMarks.seen(view.cityId) }),
+  badge: (_state, view) => messagesBadge(social.me, view.connected, noticeMarks.fresh(view.session?.id ?? null, view.cityId, view.social?.notices)),
+  notifications: (_state, view) => notificationLines(social.me, { connected: view.connected, now: view.now, notices: view.social?.notices, seen: noticeMarks.seen(view.session?.id ?? null, view.cityId) }),
 })
 
 export const support = phonePanel('support', 'Report a problem', bodyLoader('support/ReportApp'), { short: 'Report', icon: '🛟', order: 96, group: 'city', badge: () => reportReplies() })

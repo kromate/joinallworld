@@ -22,7 +22,7 @@ const card = computed(() => {
   void shell.legacyTick.value
   if (!wanted.value) return null
   const v = view.value
-  const lines = notificationLines(social.me, { connected: v.connected, now: v.now, notices: v.social?.notices, seen: noticeMarks.seen(v.cityId) })
+  const lines = notificationLines(social.me, { connected: v.connected, now: v.now, notices: v.social?.notices, seen: noticeMarks.seen(v.session?.id ?? null, v.cityId) })
   return awayCardFor(v, growth.state.hello, growth.awayDismissed.value, lines)
 })
 watch(wanted, (ready) => { if (ready) void growth.load() }, { immediate: true })

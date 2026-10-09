@@ -17,27 +17,34 @@ export const SEEN_KEY = 'joinallworld-notices-seen'
 export const unreadChats = (me: Pick<SocialOverview, 'conversations' | 'conversationsMore'> | null): number => (me?.conversations ?? []).reduce((sum, conv) => sum + (conv.muted ? conv.mentions ?? 0 : conv.unread), me?.conversationsMore?.unreadOlder ?? 0)
 export const unreadUpdates = (me: Pick<SocialOverview, 'updates'> | null): number => (me?.updates ?? []).filter((update) => !update.read && !REQUEST_KINDS.includes(update.kind)).length
 
-/**
- * Which life notices have been read is remembered on this device only, per city: the server time
- * of the newest one already seen. The same key the existing Messages panel uses, so the two agree.
- */
+/** Life-notice read marks belong to one actor and city. Legacy device-wide marks have no known owner. */
 export function createNoticeMarks(storage: Pick<Storage, 'getItem' | 'setItem'> | null) {
-  let seenAt: Record<string, number> | null = null
-  function load(): Record<string, number> {
-    if (seenAt) return seenAt
-    try { const saved: unknown = JSON.parse(storage?.getItem(SEEN_KEY) ?? 'null'); seenAt = saved && typeof saved === 'object' && !Array.isArray(saved) ? saved as Record<string, number> : {} } catch { seenAt = {} }
-    return seenAt
+  const actors = new Map<string, Map<string, number>>()
+  function load(actor: string): Map<string, number> {
+    const kept = actors.get(actor)
+    if (kept) return kept
+    const marks = new Map<string, number>()
+    try {
+      const saved: unknown = JSON.parse(storage?.getItem(`${SEEN_KEY}:${actor}`) ?? 'null')
+      if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
+        for (const [city, at] of Object.entries(saved)) if (typeof at === 'number' && Number.isFinite(at) && at >= 0) marks.set(city, at)
+      }
+    } catch { /* read for this visit only */ }
+    actors.set(actor, marks)
+    return marks
   }
-  const seen = (cityId: string): number => Number(load()[cityId]) || 0
+  const seen = (actor: string | null, cityId: string): number => actor ? load(actor).get(cityId) ?? 0 : 0
   return {
     seen,
-    fresh: (cityId: string, notices: readonly Notice[] = []): number => notices.filter((notice) => notice.at > seen(cityId)).length,
+    fresh: (actor: string | null, cityId: string, notices: readonly Notice[] = []): number => actor ? notices.filter((notice) => notice.at > seen(actor, cityId)).length : 0,
     /** Mark every notice as read. Returns true when that changed anything. */
-    mark(cityId: string, notices: readonly Notice[] = []): boolean {
+    mark(actor: string | null, cityId: string, notices: readonly Notice[] = []): boolean {
+      if (!actor) return false
       const newest = Math.max(0, ...notices.map((notice) => notice.at))
-      if (newest <= seen(cityId)) return false
-      load()[cityId] = newest
-      try { storage?.setItem(SEEN_KEY, JSON.stringify(seenAt)) } catch { /* read for this visit only */ }
+      if (newest <= seen(actor, cityId)) return false
+      const marks = load(actor)
+      marks.set(cityId, newest)
+      try { storage?.setItem(`${SEEN_KEY}:${actor}`, JSON.stringify(Object.fromEntries(marks))) } catch { /* read for this visit only */ }
       return true
     },
   }

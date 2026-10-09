@@ -47,6 +47,8 @@ const settled = computed(() => game.connected.value && game.view.value.onboardin
 const callUp = computed(() => callStore.view.phase !== 'idle' || callStore.confirm !== null)
 const effective = computed<CompanionMode>(() => (prefs.mode === 'off' ? 'off' : coachHints.value ? prefs.mode : 'quiet'))
 const shown = computed(() => settled.value && prefs.mode !== 'off' && !callUp.value)
+// Map controls own the map's tap area. Messages and the tour remain available without the floating stage.
+const floating = computed(() => shown.value && game.mode.value !== 'map')
 const size = ref(window.innerWidth <= 480 ? 92 : 124)
 const pos = reactive({ x: 8, y: 400 })
 const override = ref<{ x: number; y: number } | null>(null)
@@ -55,6 +57,8 @@ const root = ref<HTMLElement | null>(null)
 const webgl = ref(true)
 const mood = ref<'idle' | 'happy' | 'think' | 'sleepy' | 'talk' | 'wave'>('idle')
 let stage: Stage | null = null
+let starting: Promise<Stage> | null = null
+let mounted = false
 let dragged = false
 
 const clamp = (v: number, lo: number, hi: number): number => Math.max(lo, Math.min(hi, hi < lo ? lo : v))
@@ -71,34 +75,58 @@ const style = computed(() => ({ left: `${pos.x}px`, top: `${pos.y}px`, width: `$
 
 // ---- the stage ------------------------------------------------------------------------------------------------------------
 async function start(): Promise<void> {
-  if (stage || !canvas.value) return
+  if (stage || starting || !mounted || !floating.value || document.hidden || !canvas.value) return
+  const target = canvas.value
+  const pending = createStage(target, size.value, reduced.value)
+  starting = pending
+  let retry = false
   try {
-    stage = await createStage(canvas.value, size.value, reduced.value)
-    if (!shown.value) { stage.run(false); return }
-    stage.run(!document.hidden)
+    const created = await pending
+    if (!mounted || !floating.value || document.hidden || canvas.value !== target) {
+      created.dispose()
+      retry = mounted && floating.value && !document.hidden && canvas.value !== null && canvas.value !== target
+      return
+    }
+    webgl.value = true
+    created.resize(size.value)
+    created.reduced(reduced.value)
+    stage = created
     stage.play('wave')
     applyBase()
-  } catch (error) { webgl.value = false; console.warn('The companion is shown flat on this device:', error) }
+    stage.run(true)
+  } catch (error) {
+    if (mounted) webgl.value = false
+    console.warn('The companion is shown flat on this device:', error)
+  } finally {
+    if (starting === pending) starting = null
+    if (retry) void nextTick(() => { void start() })
+  }
 }
 const night = (ctx: CompanionContext): boolean => ctx.hour >= 23 || ctx.hour < 5
 function applyBase(): void { if (!stage) return; stage.base(night(contextFromGame(app)) ? 'sleepy' : 'idle') }
 function dispose(): void { stage?.dispose(); stage = null }
-watch(shown, (on) => { if (on) void nextTick(() => { place(); if (stage) stage.run(!document.hidden); else void start() }); else stage?.run(false) })
-function onVisibility(): void { stage?.run(shown.value && !document.hidden) }
-watch(reduced, (on) => stage?.reduced(on))
+function activeStage(): Stage | null { return floating.value && !document.hidden ? stage : null }
+watch(floating, (on) => { if (on) void nextTick(() => { place(); void start() }); else dispose() }, { flush: 'sync' })
+function onVisibility(): void { if (document.hidden) dispose(); else if (floating.value) void nextTick(() => { void start() }) }
+watch(reduced, (on) => activeStage()?.reduced(on))
 function say(mode: 'happy' | 'think' | 'wave' | 'nod' | 'celebrate' | 'point' | undefined, text: string): void {
   const pose = mode === 'happy' || !mode ? 'nod' : mode
-  stage?.play(pose === 'think' ? 'think' : pose)
+  const actor = activeStage()
+  actor?.play(pose === 'think' ? 'think' : pose)
   mood.value = pose === 'wave' ? 'wave' : pose === 'celebrate' || pose === 'nod' ? 'happy' : pose === 'think' ? 'think' : 'talk'
-  stage?.talk(true)
+  actor?.talk(true)
   const ms = reduced.value ? 900 : Math.min(3600, 500 + text.length * 40)
-  setTimeout(() => { stage?.talk(false); mood.value = 'idle'; if (pose === 'think') stage?.base('idle') }, ms)
+  setTimeout(() => {
+    if (activeStage() === actor) { actor?.talk(false); if (pose === 'think') actor?.base('idle') }
+    mood.value = 'idle'
+  }, ms)
   signal('speak', { mood: pose })
 }
 function look(event: PointerEvent): void {
-  if (!stage || !shown.value) return
+  const actor = activeStage()
+  if (!actor) return
   const cx = pos.x + size.value / 2, cy = pos.y + size.value / 2
-  stage.look(clamp((event.clientX - cx) / 300, -1, 1), clamp(-(event.clientY - cy) / 300, -1, 1))
+  actor.look(clamp((event.clientX - cx) / 300, -1, 1), clamp(-(event.clientY - cy) / 300, -1, 1))
 }
 let lastLook = 0
 function onPointerMove(event: PointerEvent): void { const now = event.timeStamp; if (now - lastLook < 80) return; lastLook = now; look(event) }
@@ -143,6 +171,7 @@ function log(from: 'lumo' | 'you', text: string, actions?: CompanionAction[], re
 }
 function closeBubble(): void { clearTimeout(bubbleTimer); bubble.value = null }
 function show(nudge: Nudge): void {
+  if (!floating.value) { log('lumo', nudge.text, nudge.actions, false); return }
   const now = Date.now()
   memory.setNudge(afterShown(memory.data, nudge, now, dayOf(now)))
   const key = milestoneKey(nudge.id)
@@ -184,7 +213,7 @@ async function send(message: string): Promise<void> {
   if (!clean || thinking.value) return
   log('you', clean)
   thinking.value = true
-  stage?.base('idle'); stage?.play('think', 1400)
+  activeStage()?.base('idle'); activeStage()?.play('think', 1400)
   mood.value = 'think'
   const started = Date.now()
   const history = memory.data.log.slice(-7, -1).map((line) => ({ role: line.from === 'you' ? 'user' as const : 'assistant' as const, text: line.text }))
@@ -202,7 +231,7 @@ function openChat(): void {
   companionUi.open = true
 }
 watch(() => companionUi.open, (open) => {
-  if (open) { closeBubble(); memory.markRead(); sync(); stage?.play('wave'); if (!lines.value.length) log('lumo', `Hi ${first()}! I am ${COMPANION_NAME}, the world’s guide. Ask me anything about Allworld, or tap one of these.`) }
+  if (open) { closeBubble(); memory.markRead(); sync(); activeStage()?.play('wave'); if (!lines.value.length) log('lumo', `Hi ${first()}! I am ${COMPANION_NAME}, the world’s guide. Ask me anything about Allworld, or tap one of these.`) }
 })
 const first = (): string => (game.view.value.name || 'friend').trim().split(/\s+/)[0] ?? 'friend'
 function setMode(next: CompanionMode): void {
@@ -243,6 +272,7 @@ function tick(): void {
   previous = ctx
   const now = Date.now()
   pending = pending.filter((item) => now - item.at < 120_000)
+  if (!floating.value) return
   if (!introDone && intro(ctx)) return
   const nudge = decide({ now, day: dayOf(now), mode: effective.value, ctx, quiet: quiet(), idleMs: now - lastInput, events: pending.map((item) => item.event), memory: memory.data, showing: bubble.value !== null, openMs: now - openedAt })
   if (nudge) { pending = []; show(nudge) }
@@ -277,18 +307,19 @@ watch(founderKey, (key) => {
   const actions: CompanionAction[] = [{ kind: 'ask', text: 'What should I do now?', label: 'Something fun to do' }, { kind: 'ask', text: 'Who is online?', label: 'Who is online?' }]
   const text = 'The founder will see your message when they are back. Meanwhile, want something fun to do?'
   log('lumo', text, actions, companionUi.open)
-  if (effective.value === 'lively' && !companionUi.open) { bubble.value = { id: 'founder-away', kind: 'social', text, actions, mood: 'wave' }; say('wave', text); clearTimeout(bubbleTimer); bubbleTimer = window.setTimeout(() => { bubble.value = null }, 16_000) }
+  if (effective.value === 'lively' && !companionUi.open && floating.value) { bubble.value = { id: 'founder-away', kind: 'social', text, actions, mood: 'wave' }; say('wave', text); clearTimeout(bubbleTimer); bubbleTimer = window.setTimeout(() => { bubble.value = null }, 16_000) }
 }, { immediate: true })
 /** A message from the people who run the game: the banner shows it, and the guide says it aloud when it is lively and the sheet is closed. */
 watch(() => announceUi.banner?.id, (id) => {
   const item = announceUi.banner
-  if (!id || !item || effective.value !== 'lively' || companionUi.open) return
+  if (!id || !item || effective.value !== 'lively' || companionUi.open || !floating.value) return
   const text = `${item.title}: ${item.body}`.slice(0, 200)
   bubble.value = { id: `announce:${id}`, kind: 'social', text, actions: [], mood: 'wave' }; say('wave', text); clearTimeout(bubbleTimer); bubbleTimer = window.setTimeout(() => { bubble.value = null }, 16_000)
 })
 const stop = game.on('accepted', () => { window.setTimeout(tick, 500) })
 let timer = 0
 onMounted(() => {
+  mounted = true
   place()
   void start()
   timer = window.setInterval(tick, 4000)
@@ -303,6 +334,7 @@ onMounted(() => {
   reducedQuery?.addEventListener('change', onReduced)
 })
 onBeforeUnmount(() => {
+  mounted = false
   clearInterval(timer); clearTimeout(bubbleTimer); stop(); dispose()
   for (const type of ['pointerdown', 'keydown', 'wheel', 'touchstart'] as const) window.removeEventListener(type, noteInput)
   window.removeEventListener('pointermove', onPointerMove); window.removeEventListener('resize', onResize); document.removeEventListener('visibilitychange', onVisibility)
@@ -312,11 +344,11 @@ onBeforeUnmount(() => {
 function speak(line: Say): void {
   heard(line)
   const nudge: Nudge = { id: `moment:${line.id}`, kind: 'moment', mood: 'celebrate', text: line.text, actions: line.actions ? [...line.actions] : [] }
-  if (effective.value === 'lively') show(nudge); else log('lumo', nudge.text, nudge.actions, false)
+  if (effective.value === 'lively' && floating.value) show(nudge); else log('lumo', nudge.text, nudge.actions, false)
 }
 function onSay(event: CustomEvent<Say>): void { if (event.detail?.text) speak(event.detail) }
 function onReduced(): void { reduced.value = reducedQuery?.matches === true }
-function onResize(): void { size.value = window.innerWidth <= 480 ? 92 : 124; stage?.resize(size.value); place() }
+function onResize(): void { size.value = window.innerWidth <= 480 ? 92 : 124; activeStage()?.resize(size.value); place() }
 watch(() => [game.mode.value, shell.sheet.value], () => { void nextTick(place) })
 watch(who, () => { memory = createMemory(ls, who.value); introDone = false; previous = null; sync() })
 
@@ -326,7 +358,7 @@ const hit = (a: Box, b: Box): boolean => a.left < b.left + b.width && b.left < a
 let pointKey = ''
 function onPoint(event: CustomEvent<{ active: boolean; target?: Box | null; card?: Box | null }>): void {
   const detail = event.detail
-  if (!detail?.active) { override.value = null; pointKey = ''; place(); stage?.play('celebrate', 1400); return }
+  if (!detail?.active) { override.value = null; pointKey = ''; place(); activeStage()?.play('celebrate', 1400); return }
   const target = detail.target ?? null, card = detail.card ?? null
   const anchor = target ?? card
   if (!anchor) return
@@ -347,15 +379,15 @@ function onPoint(event: CustomEvent<{ active: boolean; target?: Box | null; card
   if (target) {
     const dx = target.left + target.width / 2 - (override.value.x + s / 2), dy = target.top + target.height / 2 - (override.value.y + s / 2), len = Math.hypot(dx, dy) || 1
     const key = `${Math.round(target.left)}:${Math.round(target.top)}`
-    stage?.point(dx / len, -dy / len)
-    if (key !== pointKey) { pointKey = key; stage?.play('point', 2400) }
+    activeStage()?.point(dx / len, -dy / len)
+    if (key !== pointKey) { pointKey = key; activeStage()?.play('point', 2400) }
   }
 }
 </script>
 
 <template>
   <Teleport to="body">
-    <div v-if="shown" ref="root" class="lumo-root" :class="{ 'is-still': reduced, 'is-moving': override !== null }" :style="style">
+    <div v-if="shown" v-show="floating" ref="root" class="lumo-root" :class="{ 'is-still': reduced, 'is-moving': override !== null }" :style="style">
       <div v-if="bubble && !companionUi.open && !tour.active" class="lumo-bubble" :class="[side, above ? 'is-above' : 'is-below']" role="status">
         <p>{{ bubble.text }}</p>
         <div class="lumo-bubble-actions">

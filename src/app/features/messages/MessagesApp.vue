@@ -315,16 +315,16 @@ function answerNotify(yes: boolean): void { noteAskedAboutNotifications(); asked
 
 // ---- updates -------------------------------------------------------------------------------
 const chats = computed(() => unreadChats(me.value))
-const updates = computed(() => { void tick.value; return me.value ? updatesCount(me.value, noticeMarks.fresh(view.value.cityId, notices.value)) : 0 })
+const updates = computed(() => { void tick.value; return me.value ? updatesCount(me.value, noticeMarks.fresh(view.value.session?.id ?? null, view.value.cityId, notices.value)) : 0 })
 /** The mark from before the tab was opened: what was new stays marked "New" while it is read. */
 const seenBefore = ref<number | null>(null)
-const lines = computed(() => [...updateLines(me.value?.updates ?? [], notices.value, seenBefore.value ?? noticeMarks.seen(view.value.cityId)), ...announceLines(announceUi.items, announceUi.seen)].sort((a, b) => b.at - a.at))
+const lines = computed(() => [...updateLines(me.value?.updates ?? [], notices.value, seenBefore.value ?? noticeMarks.seen(view.value.session?.id ?? null, view.value.cityId)), ...announceLines(announceUi.items, announceUi.seen)].sort((a, b) => b.at - a.at))
 // Updates are drawn thirty at a time as the reader goes down (the server keeps at most fifty of its own).
 const shownLines = chunkedView(() => lines.value, 30)
 function readUpdates(): void {
   if (ui.tab !== 'updates' || ui.open || !me.value) { seenBefore.value = null; return }
-  seenBefore.value ??= noticeMarks.seen(view.value.cityId)
-  if (noticeMarks.mark(view.value.cityId, notices.value)) shell.bump()
+  seenBefore.value ??= noticeMarks.seen(view.value.session?.id ?? null, view.value.cityId)
+  if (noticeMarks.mark(view.value.session?.id ?? null, view.value.cityId, notices.value)) shell.bump()
 }
 function showTab(tab: 'chats' | 'groups' | 'updates'): void {
   ui.tab = tab

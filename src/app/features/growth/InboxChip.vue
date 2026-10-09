@@ -19,7 +19,7 @@ const chip = computed(() => {
   const v = view.value
   return inboxChip({
     connected: v.connected, onboardingRequired: Boolean(v.onboarding?.required), me: social.me, error: social.error,
-    unreadChats: unreadChats(social.me), unreadUpdates: unreadUpdates(social.me), freshNotices: noticeMarks.fresh(v.cityId, v.social?.notices),
+    unreadChats: unreadChats(social.me), unreadUpdates: unreadUpdates(social.me), freshNotices: noticeMarks.fresh(v.session?.id ?? null, v.cityId, v.social?.notices),
     short: linkWords(v)?.short ?? '',
   })
 })

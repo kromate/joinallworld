@@ -1,0 +1,29 @@
+name: Active female office torso clothing diagnostic
+on:
+  push:
+    branches: [codex/graphics-torso-clothing-v1]
+permissions:
+  contents: read
+jobs:
+  torso:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare pinned source assets
+        run: |
+          python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
+      - name: Probe actual direction-mode office actor clothing
+        run: node --max-old-space-size=160 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/torso-clothing-mask-check.mjs > evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/torso-clothing-mask-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: torso-clothing-${{ github.run_id }}
+          path: evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/torso-clothing-mask-result.json
+          if-no-files-found: error

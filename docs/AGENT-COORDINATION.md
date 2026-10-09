@@ -12,6 +12,22 @@ Diagnostic branches only; no graphics runtime main merge or production upload. L
 
 # Allworld agent coordination and phased production releases
 
+## WORLD bounded shard codec and lifecycle checks accepted — 9 October 2026
+
+Exact efaead40/run37893015341 SUCCESS:399tests+3release-policy+WorldTypeScript,
+zeroNodefails/skips, unchanged raw797134B/source892928B/control1048576B preflight.
+Actual SDK/campaigns and strengthened inherited-lock recovery pass; pure shard
+planner9 and release-source-boundary5 pass. Planner charges fixed17MiB base,
+preserves quota-independent shard IDs and externally pinned plan identity, and
+remains not-admitted/not-compiled/occupancy-not-checked. Full global admission,
+geometry, audit physical-interruption/corruption list and phones remain open.
+Priorfbc/run37892251302 failure retained; f716mainCI cancelled by newer docs push,
+not counted passing. New atomic opaque reservation batch is source-prepared by
+existing Luna in only index_reservations.py/test, unaccepted until remote checks.
+No game/runtime/Nigeria edits or production upload; WORLD sole uploader. Renewed
+WARNING2 paging means no optional localheavy/compiler/worker/browser/server/upload.
+
+
 ## WORLD campaign audit accepted and source synchronized — 9 October 2026
 
 Exact diagnostic4c0b96cb/run37890936198 passes384 tests,3release-policy checks and

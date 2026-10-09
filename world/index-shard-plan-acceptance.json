@@ -1,0 +1,159 @@
+{
+  "format": "index-shard-plan-acceptance-v1",
+  "verifiedAt": "2026-10-09",
+  "testedSourceSha": "efaead4019f4830fc474d453383e14a16dbcc37e",
+  "runId": 37893015341,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37893015341",
+  "conclusion": "success",
+  "pythonTests": {
+    "python-audit.stderr": 19,
+    "python-session.stderr": 11,
+    "python-regression.stderr": 77,
+    "python-boundary.stderr": 151
+  },
+  "nodeTests": {
+    "node-audit.tap": 22,
+    "node-contracts.tap": 58,
+    "sdk-audit.tap": 8,
+    "campaign-regression.tap": 39,
+    "shard-plan.tap": 9,
+    "release-source.tap": 5
+  },
+  "distinctTests": 399,
+  "releasePolicyChecks": 3,
+  "worldTypeScript": "pass",
+  "storagePreflight": {
+    "files": 6,
+    "bytes": 797134,
+    "sourceAllowance": 892928,
+    "registryControlWithOperation": 1048576
+  },
+  "sourceFiles": {
+    ".github/workflows/world-index-audit-ci.yml": {
+      "sha256": "f63663b53834d9d50490ad1dcb6d7466e429e956519ddacab89ee4aeb8129c4b",
+      "bytes": 8124
+    },
+    "server/release.test.ts": {
+      "sha256": "36f90b4c59c2d987ba821813d6f63737b21d1e5ced7fe1d69dc94bee99ed64dd",
+      "bytes": 3694
+    },
+    "world/feature-index-session.ts": {
+      "sha256": "0b32210b46d9c983f5af603b67bb6e82a8d5004b9c42030a0692c88479375964",
+      "bytes": 101958
+    },
+    "world/feature-index-session.test.ts": {
+      "sha256": "b164f13673cd02fb75d80c538c7c9eae651f89e6b88cd26e8723e5537460146e",
+      "bytes": 20907
+    },
+    "world/tooling/test_index_capture_loss.py": {
+      "sha256": "c9f62820b40ffdddf52be6666b23ad9bd053f3fd56ae6d14478ef62f93f81823",
+      "bytes": 9701
+    },
+    "world/index-shard-plan.ts": {
+      "sha256": "1d597d610d5f44eb0455bf5ed2342e3eb39236f3817cf9f514e6dd4960c737e2",
+      "bytes": 22445
+    },
+    "world/index-shard-plan.test.ts": {
+      "sha256": "347f6e6d8918331bc07bb39f173bae000c14b44edb267198de556b322f333479",
+      "bytes": 9641
+    }
+  },
+  "artifacts": {
+    "campaign-regression.tap": {
+      "sha256": "288364371a414e4ae142eb2941b15294c49a00b4d45c38a185ca6737e79c4fa8",
+      "bytes": 10419
+    },
+    "node-audit.tap": {
+      "sha256": "6c117965bd93f89be53c2289690e1c248d5218cdb2559a04484beea631626b11",
+      "bytes": 5846
+    },
+    "node-contracts.tap": {
+      "sha256": "c338cda57fba762e1ce284e36d51c1b63b77e526b22532477b0342566505473d",
+      "bytes": 14359
+    },
+    "node-runtime.json": {
+      "sha256": "2931df3302362ff6c1d8c300d931582f65b90f6ec7771441bef9658ec5162810",
+      "bytes": 472
+    },
+    "preflight.json": {
+      "sha256": "2e7f0b7bdbde4b30bc6ac11e91db2c1a00c0fa95979f7ad2c2bc2d882ee30cc4",
+      "bytes": 98
+    },
+    "python-audit.stderr": {
+      "sha256": "29ff2aee771b66e5e3b8237fe040f9da90de7ec085a005d5222e26d98afdd465",
+      "bytes": 902
+    },
+    "python-audit.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-boundary.stderr": {
+      "sha256": "fcd530a10d32b16e20d2db0faa26adb170dd599c9662460bc50f48a9d9f6e9ff",
+      "bytes": 1411
+    },
+    "python-boundary.stdout": {
+      "sha256": "d9af37a547fdfeaab04ee7f3c3ee0228b656349cc033ef39b5209282f571dde3",
+      "bytes": 6828
+    },
+    "python-regression.stderr": {
+      "sha256": "3ca235824f510076528eeb8745e86e159b1acce04a308bbcaa4c9d89a9e01855",
+      "bytes": 1133
+    },
+    "python-regression.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-runtime.json": {
+      "sha256": "c7add24d36b0d589f034f53ad2e3c7f71ab102dc1fd944cb43114fdba8da0529",
+      "bytes": 85
+    },
+    "python-session.stderr": {
+      "sha256": "5a74c9d56d26b4fe9c97c87df24af6a39d72c937b63b5e4af9692e5815c6d9c0",
+      "bytes": 888
+    },
+    "python-session.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stdout": {
+      "sha256": "bc911f618d86653ec56effa5788909148e4ae588ee42e31d1ec0a25c1fd1ed9f",
+      "bytes": 157
+    },
+    "release-source.tap": {
+      "sha256": "025ec8dc5fb55062462c168c98aeb7f3e659ba5c687f96ce6dd4b747e3519af5",
+      "bytes": 1362
+    },
+    "sdk-audit.tap": {
+      "sha256": "7413f3eb751e50d0b25020f2bed103c26eb9785328502e00ecc1d77c2d279b08",
+      "bytes": 2500
+    },
+    "shard-plan.tap": {
+      "sha256": "113f2ac79b34e11c0f22183608fcc9f1a658187ee319612a0b61a6ef60d193a2",
+      "bytes": 2485
+    },
+    "source-sha.txt": {
+      "sha256": "0375c1d52381e8992d099cbd17c4b014125c64b54f156139339144063811a156",
+      "bytes": 41
+    },
+    "world-typecheck.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "world-typecheck.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "limitations": [
+    "Pure planner is not actual batch admission; namespace occupancy remains unchecked.",
+    "Opaque batched reservation, explicit membership-bound child binding and held controller execution remain open.",
+    "Finite global aggregate admission, complete cross-shard references/ownership and country geometry/streaming remain open.",
+    "Retained geographic raw captures are real; portable campaign contexts are synthetic; protected original Senegal fixture excluded.",
+    "Full audit interruption/corruption coverage, Nigeria renderer integration and physical-device proof remain open.",
+    "No production runtime upload or new playable destination."
+  ]
+}

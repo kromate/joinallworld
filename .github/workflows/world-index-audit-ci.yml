@@ -86,6 +86,16 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=128
         run: node --experimental-strip-types --test --test-concurrency=1 world/campaign.test.ts world/grid-query-campaign.test.ts world/ledger.test.ts world/ledger-subdivision.test.ts world/ledger-permanent.test.ts world/ledger-quota.test.ts > diagnostic-evidence/campaign-regression.tap 2>&1
+      - name: Frozen namespace shard-plan codec
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --experimental-strip-types --test --test-concurrency=1 world/index-shard-plan.test.ts > diagnostic-evidence/shard-plan.tap 2>&1
+      - name: Exact reviewed JavaScript and public-release source boundary
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --experimental-strip-types --test --test-concurrency=1 server/release.test.ts > diagnostic-evidence/release-source.tap 2>&1
       - name: Exact checked-out release workflow policy
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:

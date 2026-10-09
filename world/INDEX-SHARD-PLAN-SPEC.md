@@ -1,5 +1,11 @@
 # Bounded index shard planning
 
+Status: pure codec/planner passes9 targeted cases within successful exact-source
+run37893015341 (399tests+3policy+World TypeScript). See
+[index-shard-plan-acceptance.json](index-shard-plan-acceptance.json). Actual batch
+reservation/admission, global accounting and geometry are not accepted by this
+planner result.
+
 ## Purpose and acceptance boundary
 
 A schema2 country campaign can exceed the current single-binding 256-capture

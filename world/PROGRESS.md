@@ -1,5 +1,43 @@
 # Implementation checkpoint — 9 October 2026
 
+Latest exact-source diagnostic **37893015341** at
+**efaead4019f4830fc474d453383e14a16dbcc37e** is terminal **SUCCESS**:
+**399 tests +3 release-policy checks =402 distinct checks, plus World TypeScript**.
+Python258 =19audit/11session/77affected/151remaining; Node141 =22protocol/kernel/
+58contracts/8actual SDK-campaign/39legacy campaign-Ledger/9shard planner/5release
+source-boundary. All Node suites report zero skips/failures; all Python modules OK.
+Exact accepted source blobs, downloaded artifact hashes and unchanged raw/storage
+preflight are recorded in [index-shard-plan-acceptance.json](index-shard-plan-acceptance.json).
+This is one run; earlier passing subsets are not added to its count.
+
+The pure namespace batch planner deterministically partitions complete request
+units under count and prepared descriptor allowances, includes the fixed17 MiB
+registry charge plus additional margin, and pins full membership. Quota-only
+changes cannot mint new shard IDs; persisted plan validation also checks an
+externally retained immutable hash. It remains not-admitted/not-compiled and does
+not know current namespace occupancy. Runtime must reconstruct exact actual
+capture/context/physical-envelope/storage charges before reserving any child.
+
+The source-boundary witness allowlist repair is verified, without wildcards.
+Session RSS now samples explicit process state: zero is allowed only for a zombie,
+never as reap proof; positive96 MiB RSS enforcement and actual close/done/deadline
+proof remain unchanged. Unreaped diagnostics retain bounded original causes and
+owned handles. The real controller-death fixture requires actual inherited kernel
+lease release within its original6-second wait before recovering or deleting
+scratch. Both earlier failing actual paths pass this successor; full lifecycle
+soak/corruption acceptance is still open. Negative37892251302 artifacts retained.
+
+Next Luna task is actual atomic opaque reservation batches in the existing
+registry, before versioned membership-bound admission/controller integration.
+Finite global aggregate accounting, cross-shard references/owner compilation,
+country geometry/streaming, Nigeria rendering and physical-device proof remain
+open. No new production runtime/map detail accompanies this builder milestone.
+Main coordination-only1b2c1d2e has been fetched for review; prior f716 main CI was
+cancelled by a newer main push, not accepted or manually restarted. Local optional
+heavy work remains deferred under renewed WARNING2/paging. Whole-world goal ACTIVE.
+Older chronological paragraphs below retain the superseded diagnostics.
+
+
 Successor diagnostic **efaead4019f4830fc474d453383e14a16dbcc37e** is published
 on the existing diagnostic branch; fresh actual run discovery is pending. It adds
 strict RSS+process-state parsing, zero only for an explicit zombie (never terminal

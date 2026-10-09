@@ -11,11 +11,15 @@ export interface NativeSourceWristRotations {
 export interface NativeWristSourceFrame extends NativeSourceFrame {
   /** Mutable, sampler-owned values. Consume before requesting another sample. */
   readonly wristRotations: NativeSourceWristRotations;
+  /** Root-relative source head orientation sampled from the animated Head node. */
+  readonly headRotation: THREE.Quaternion;
 }
 export interface NativeSourceLandmarkSampler {
   readonly restLandmarks: SourceLandmarks;
   /** Root-relative rest quaternions for the source forearm and hand bones. */
   readonly restWristRotations: NativeSourceWristRotations;
+  /** Root-relative source Head orientation in the corrected rest pose. */
+  readonly restHeadRotation: THREE.Quaternion;
   readonly durations: ReadonlyMap<string, number>;
   /** Reuses one mixer, its actions and one mutable frame object; consume before the next sample. */
   sample(clipName: LegacyPoseClip, seconds: number): NativeWristSourceFrame;
@@ -80,6 +84,7 @@ export function createNativeSourceLandmarkSampler(
     left: { forearm: joints.get('LeftForeArm')!, hand: joints.get('LeftHand')! },
     right: { forearm: joints.get('RightForeArm')!, hand: joints.get('RightHand')! },
   };
+  const headNode = joints.get('Head')!;
   function rootRelativeRotation(node: THREE.Object3D, target: THREE.Quaternion): THREE.Quaternion {
     sourceRoot.getWorldQuaternion(targetRootRotation).invert();
     node.getWorldQuaternion(targetNodeRotation);
@@ -89,7 +94,9 @@ export function createNativeSourceLandmarkSampler(
     forearm: Object.freeze({ left: new THREE.Quaternion(), right: new THREE.Quaternion() }),
     hand: Object.freeze({ left: new THREE.Quaternion(), right: new THREE.Quaternion() }),
   });
+  const mutableHeadRotation = new THREE.Quaternion();
   sourceRoot.updateWorldMatrix(true, true);
+  const restHeadRotation = rootRelativeRotation(headNode, new THREE.Quaternion());
   for (const side of ['left', 'right'] as const) {
     rootRelativeRotation(wristNodes[side].forearm, restWristRotations.forearm[side]);
     rootRelativeRotation(wristNodes[side].hand, restWristRotations.hand[side]);
@@ -102,6 +109,7 @@ export function createNativeSourceLandmarkSampler(
     clipName: '', duration: 0,
     landmarks: mutableLandmarks as SourceLandmarks,
     wristRotations: mutableWristRotations,
+    headRotation: mutableHeadRotation,
   };
 
   function restoreNodes(): void {
@@ -136,6 +144,7 @@ export function createNativeSourceLandmarkSampler(
       rootRelativeRotation(wristNodes[side].forearm, mutableWristRotations.forearm[side]);
       rootRelativeRotation(wristNodes[side].hand, mutableWristRotations.hand[side]);
     }
+    rootRelativeRotation(headNode, mutableHeadRotation);
     return Object.assign(frame, { clipName, duration: clip.duration });
   }
   function sample(clipName: LegacyPoseClip, seconds: number): NativeWristSourceFrame {
@@ -145,6 +154,7 @@ export function createNativeSourceLandmarkSampler(
   return {
     restLandmarks,
     restWristRotations,
+    restHeadRotation,
     durations: new Map([...clipMap].map(([name, clip]) => [name, clip.duration])),
     sample,
     sampleClip,

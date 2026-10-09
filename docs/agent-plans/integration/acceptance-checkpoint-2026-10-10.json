@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-09T23:37:52.175654+00:00",
+  "observedAt": "2026-10-09T23:47:58.681964+00:00",
   "scope": "Evidence checkpoint only; runtime source remains eec, production C1. No new feature activation.",
   "runtimeSource": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
   "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
@@ -40,8 +40,9 @@
     "isolatedConsentObservationsPassed": 75,
     "isolatedIdentityObservationsPassed": 46,
     "integrated": false,
-    "remoteCompiler": "failed at1536MiB; bounded compiler-only4096MiB retry on existing remote machine pending",
-    "remoteBuild": "cloud reported PASS; no compiler acceptance inferred"
+    "remoteCompiler": "PASS: actual five projects, 0 TS/Vue errors, 0 JavaScript baseline, Node24.19/4096MiB/168.247451s on existing included remote host. Source and three pins unchanged. Prior1536MiB failure retained.",
+    "remoteBuild": "cloud reported PASS; no compiler acceptance inferred",
+    "remoteCompilerLogSha256": "d99e305a49dec04c936af5bc6897aa37f8cec31c47d34020b49f9a98762fbd4c"
   },
   "native": {
     "status": "PARTIAL_ON_MARKER_PRESERVED",
@@ -56,7 +57,23 @@
       "second actor IAB availability",
       "message pins/private media/identity browser journeys"
     ],
-    "cleanup": "Owned tab closed; browser lease terminal0. Final screenshot/close exceeded browser cutoff about1.5s; no answer/game action in cleanup. WORLD stage terminal0 and child absent."
+    "cleanup": "Owned tab closed; browser lease terminal0. Final screenshot/close exceeded browser cutoff about1.5s; no answer/game action in cleanup. WORLD stage terminal0 and child absent.",
+    "secondOnWindow": {
+      "browserReceiptSha256": "e0e64a6eeda8de96eb9cc88e8618ec0c479714a980bdfde6f21536c963ae1a1d",
+      "beforeOwnerReceiptSha256": "161fb0ef5896d0800e3f1ddaed128dbd5067611d1d46a3c1943d8499d323627c",
+      "afterOwnerReceiptSha256": "14f2e22fff6f861118d5a6239b3cfc2af0832fb3c390d07beb09bd654a43107a",
+      "outcome": "Wrong choices retained stage/retry; correct choices advanced diagnose/explain to check. Reload persisted unanswered check. Owner actual revision5/generation1, cash366500, shifts0.",
+      "preservation": "Both original actors all nine protected-field hashes plus publicId/name/onboarding/character/home.storage matched this preoperator baseline. All prior action/once/wallet-effect row contents preserved; A44actions from40, B12unchanged; old school entire record unchanged, paused/score0/noqualification.",
+      "scope": "This second-window comparison does not explain earlier character-hash differences or certify preupgrade entire-save equality.",
+      "browserCleanup": "Owned tab closed; lease9901 terminal130 and slotfree23:43:18 before cutoff. WORLD stage50155 stays live until internal deadline23:54:44.306; no unsafe early signal.",
+      "pending": "Serial OFF final-choice continuation/wage once/replay after clean terminal stage."
+    },
+    "uiDefect": {
+      "file": "src/app/features/companion/CompanionHost.vue",
+      "baseSha256": "89c2e2e889ede89f7aefbcaedb47b59bf8e7482dd7d8e51c87a7bb4a9b9abe1c",
+      "reproduced": "Lumo app guide covers right-edge teaching text at320px; normal screenshots/source checked.",
+      "status": "Queued scoped remote repair; not fixed or browser accepted. External100x overlay preserved."
+    }
   },
   "countryProposal": {
     "source": "03b9f36aa995abc7e9cf54b3442ce22245ecce89",

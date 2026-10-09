@@ -128,5 +128,41 @@
     "durationMs": 7658.440459
   },
   "regressionProposal": "Luna stopped and removed duplicate temp case after seeing owner already authored it; no duplicate/shared source edits",
-  "reviewCaution": "A direct reason-only checkDream suppression can miss nested progressChain reward wallet events while cash is temporarily elevated. Preserve observer semantics and standing formula; evaluate paired final-wallet observability or scoped nested-event-safe treatment."
+  "reviewCaution": "A direct reason-only checkDream suppression can miss nested progressChain reward wallet events while cash is temporarily elevated. Preserve observer semantics and standing formula; evaluate paired final-wallet observability or scoped nested-event-safe treatment.",
+  "followupHostAndUi": {
+    "recordedAt": "2026-10-09T16:13:44.061917+00:00",
+    "tests": 78,
+    "pass": 77,
+    "fail": 1,
+    "skipped": 0,
+    "durationMs": 21686.112333,
+    "log": "/tmp/allworld-homeward-host-and-ui-first.log",
+    "logSha256": "5df9731294f41c48d0da66acd8a3236d563959ea86dd246b9246767d83f26f43",
+    "wealthRegression": "pass; original red reproduction remains retained",
+    "workerHttp": "combined five-capital and actualhomewardJourney pass7043.946584ms, includes SQLite restart at each connection and exact loan/receipt effects",
+    "nodeHttp": "fails before homeward acceptance during synthetic founder-admin debit: existing confirmation_required boundary not handled by fixture",
+    "requiredRepair": "Use existing ask/token/confirmed debit and confirmed-intent replay. Do not disable admin confirmation.",
+    "sourceReviewedRepairs": [
+      "goals positive borrowed-principal event now stops before chain/dream evaluation; paired debit still evaluates ordinary completion",
+      "legacy consent watchers reset on actor/city/currentoffer",
+      "current homeward progress text wraps rather than ellipsis"
+    ],
+    "notProven": [
+      "native mobile/desktop",
+      "corrupt stored-row preservation and write-failure HTTP proof",
+      "final Node/Worker exhaustive source",
+      "startup caps",
+      "stage/release/live gameplay"
+    ]
+  },
+  "followupSourceHashes": {
+    "src/game/systems/goals.ts": "910a7fe9e1bf1da4d781829f5d1ceaff25bca2ea4b0e16ac5d80f8e3c1bfb8cd",
+    "server/testing/africaJourney.ts": "72c610474a7b9af4891e31bb6f071abf0a636417f36b0f13a30d514eec931e18",
+    "server/africa-host.test.ts": "53e6c007c04deb2b757ba7a275f2f6704262089def848cb43e64cdab71068c39",
+    "deploy/africa-host.test.ts": "eb4b44c43c95e8b07247808eca61136c74d67128ed3a197183ac7335a95ede6c",
+    "src/app/features/travel/VisitorHome.vue": "047cec9f33fb07f17b2100765414fbb96356063fbe96850afc4beb07416c8159",
+    "src/app/features/relief/ReliefActions.vue": "833686d82a9b8a5926b45625cabf8211e2c5b5d5de5e92040c790fcabe41bb0f",
+    "src/app/features/venue/RunningActionProgress.vue": "3a7e780e8506e5601821a15852355aadfd2e830dcbaec112500e50fa0d92e1a4"
+  },
+  "reviewQuestion": "civic.wallet.changed currently counts borrowed principal in earnedThisWeek; source documentation also says received. Owner should resolve gross receipts versus earnings semantics narrowly, not change historical awards."
 }

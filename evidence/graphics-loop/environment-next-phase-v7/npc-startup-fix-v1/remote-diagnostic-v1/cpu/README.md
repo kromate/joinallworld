@@ -1,0 +1,5 @@
+# NPC startup-fix remote CPU package recipe v1
+
+This adapts the previously successful serial split compiler recipe to the actual production variant of the deterministic Lagos host. The package input closure contains the complete production `src/`, `public/`, all 40 map modules, Three addon closure, startup-fix receipts, current host viewer, and this CPU/render diagnostic recipe. The viewer HTML selects `variant=baseline`, which routes scene construction through the current production `createVenueWorld`, `buildHomeScene`, and `buildNeighbourhoodScene`; renderer candidates remain present only as a control selector and are not selected for capture.
+
+It uses the successful separated-Node compiler sequence: Three core/module, addons, full host application graph, output-closure verification, source pre/post seals, and one streamed public copy. The remote-only ceiling remains 384 MiB owned process-group RSS, 96 MiB Node old space, and 25 seconds total. This remains diagnostic packaging, not the production build or download certificate.

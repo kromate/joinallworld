@@ -96,9 +96,11 @@ import { rewardChips, cheer } from './scene/reward.ts';
 import { applyRendererLook, renderTier, createSky, createGround, mixHex, matteScenery } from './scene/look.ts';
 import { createWalker, createPositionReporter, gaitPhase, WALK_SPEED, JOG_SPEED } from './scene/movement.ts';
 import { createSceneControls } from './scene/controls.ts';
+import { separateTags } from './scene/tag-layout.ts';
 import { buildVenueScene, DEFAULT_CAMERA, MAX_CROWD, SPOT_REACH, TABLE_REACH } from './scene/venue-scenes.ts';
 import { buildHomeScene } from './scene/home-scene.ts';
 import { bodyAllowed, drawsWebGL2 } from './scene/body/gate.ts';
+import { createRetryableStartup } from './scene/body/startup-gate.ts';
 import type { StandIn } from './scene/body/stand-in.ts';
 import { spotsOf } from './life.ts';
 import type * as THREE from 'three';
@@ -153,6 +155,12 @@ export interface VenueDiagnostics extends SceneDiagnostics {
   pixelRatio: number | undefined
   shadowMap: number
   avatarPx: number | null
+  /** Which geometry is actually mounted for self; resolved look alone does not prove identity fidelity. */
+  avatarRendering: 'canonical' | 'procedural' | 'none'
+  canonicalBodyEligible: boolean
+  crowdRendering?: { desired: number; canonical: number; procedural: number; loading: number }
+  /** Authored staff/regulars are additional to public presence capacity. */
+  authoredPeople?: { desired: number; captured: number; canonical: number; procedural: number; loading: number }
   tags: ShownTag[]
 }
 /** The spot the avatar was sent to or rests beside (options.onSpot). */
@@ -181,6 +189,8 @@ export interface LightPreset {
   hemi: readonly [Colour, Colour, number]
   sun: readonly [Colour, number, Vec3]
   rim?: readonly [Colour, number]
+  /** Brightness of the existing shared emissive surfaces; default 1. */
+  glow?: number
 }
 /** Where a scene rests the avatar (walk.rest()): its spot, the seat of a running activity, the way out. */
 export interface HostRest {
@@ -218,8 +228,10 @@ export interface HostScene {
   lighting?(): LightPreset
   setPlayer?(player: Partial<PlayerLook>): boolean
   setCrowd?(people: unknown): unknown
+  startCrowd?(renderer: { getContext?: () => unknown }, changed: () => void): void
   readonly easing?: boolean
   readonly bodyShown?: boolean
+  readonly crowdRendering?: { desired: number; canonical: number; procedural: number; loading: number }
   stepCrowd?(dt: number): boolean
   settleCrowd?(): void
   look?(x: number, z: number): boolean
@@ -267,7 +279,7 @@ export interface VenueWorld {
  * light from behind the scene as the camera sees it, which separates dark hair and shoulders from
  * the wall or the night behind them; it casts no shadow.
  */
-export const HOST_LIGHTING = Object.freeze<Required<LightPreset>>({ hemi: ['#bdd4e7', '#8a8474', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]], rim: ['#cfe2ff', 0.7] });
+export const HOST_LIGHTING = Object.freeze<Required<LightPreset>>({ hemi: ['#bdd4e7', '#8a8474', 1.6], sun: ['#c7dbec', 1.4, [-12, 25, 8]], rim: ['#cfe2ff', 0.7], glow: 1 });
 const DEFAULT_BACKGROUND = '#182a25';
 
 /**
@@ -287,6 +299,7 @@ export function createHostLights(THREE: ThreeModule, scene: THREE.Scene, { shado
   rim.castShadow = false;
   rim.position.set(-14, 12, -18);
   scene.add(hemi, sun, rim, rim.target);
+  let disposed = false;
   return {
     hemi, sun, rim,
     apply(preset?: Partial<LightPreset> | null) {
@@ -303,6 +316,14 @@ export function createHostLights(THREE: ThreeModule, scene: THREE.Scene, { shado
       rim.position.set(x + ux * 16 - uz * 7, y + 11, z + uz * 16 + ux * 7);
       rim.target.position.set(x, y, z);
       rim.target.updateMatrixWorld?.();
+    },
+    dispose() {
+      if (disposed) return;
+      disposed = true;
+      // Renderer teardown does not own light shadow targets. Release them while its
+      // render-target dispose listeners can still free the GPU allocations.
+      sun.dispose(); rim.dispose();
+      scene.remove(hemi, sun, rim, rim.target);
     },
   };
 }
@@ -368,7 +389,7 @@ function ghostPatch(uniforms: { uGhost: THREE.IUniform<THREE.Vector4>; uGhostDep
 type TagData = Omit<DomTag, 'marker'> & { marker?: string };
 export interface ShownTag { id: string; kind: string; text: string; name: string; marker: string | undefined; colour: string | undefined; x: number; y: number; visible: boolean }
 /** A tag's DOM node, with the last values written to it (so a frame only touches what moved). */
-type TagNode = HTMLElement & { jawX: number; jawY: number; jawShown: boolean };
+type TagNode = HTMLElement & { jawX: number; jawY: number; jawShown: boolean; jawWidth: number; jawHeight: number };
 /** What a click at a point of the canvas would pick (pick()). */
 type Target =
   | { type: 'spot'; spot: WalkSpot }
@@ -401,7 +422,8 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   const lights = createHostLights(THREE, scene, { shadowMap: tier.shadowMap });
   // The skinned body in place of the player's procedural figure in a venue (scene/body/stand-in.ts, fetched after the
   // first frame on a device the gate allows; home has its own). Null until then, and for good without one.
-  let standIn: StandIn | null = null, standInAsked = false, gone = false;
+  let standIn: StandIn | null = null, gone = false;
+  const standInStartup = createRetryableStartup({ cooldownMs: 2_000 });
   // The graded sky behind the scene and the soft ground under it (one texture, one mesh, for every venue).
   const sky = createSky(THREE), ground = createGround(THREE);
   scene.background = sky.texture;
@@ -1212,6 +1234,8 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
         return node;
       });
       tagLayer.replaceChildren(...tagNodes, spotHint!);
+      // Read sizes together once when labels change, never during the movement frame loop.
+      for (const node of tagNodes) { node.jawWidth = node.offsetWidth; node.jawHeight = node.offsetHeight; }
     }
     if (spotHint && hover?.type === 'spot') {
       point.set(hover.spot!.x, hover.spot!.y + 0.1, hover.spot!.z);
@@ -1219,6 +1243,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       point.project(camera);
       spotHint.style.left = `${Math.round(((point.x + 1) / 2) * size.width)}px`; spotHint.style.top = `${Math.round(((1 - point.y) / 2) * size.height)}px`;
     }
+    separateTags(shownTags, tagNodes, size.width, Math.max(insets.top, hintTop), size.height - insets.bottom);
     for (let i = 0; i < tagNodes.length; i++) {
       const node = tagNodes[i]!, tag = shownTags[i]!;
       if (node.jawShown !== tag.visible) { node.jawShown = tag.visible; node.hidden = !tag.visible; }
@@ -1242,12 +1267,48 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     current.look(camera.position.x - offset.x, camera.position.z - offset.z);
   }
   // A scene that is not on screen (the map is in front) is not drawn: it is drawn when it is shown again (resize()).
-  function renderScene() { if (container.hidden === true) return; lookIn(); aimGhost(); lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz); renderer.render(scene, camera); renderCount += 1; projectTags(); if (!standInAsked) fetchStandIn(); else standIn?.start(renderer); }
-  function fetchStandIn() {
-    standInAsked = true;
-    if (bodyAllowed() && drawsWebGL2(renderer)) import('./scene/body/stand-in.ts').then((module) => { if (gone) return; standIn = module.createStandIn(kit, () => { if (!loop.running) renderScene(); }); dressStandIn(); standIn.pose(restPose?.pose ?? 'stand', restPose?.seat, false); standIn.move(walker.x, avatarY, walker.z, walker.ry); standIn.start(renderer); }, () => {});
+  function crowdReady() { if (gone) return; readTags(); if (!loop.running) renderScene(); }
+  function renderScene() {
+    if (container.hidden === true) return;
+    lookIn(); aimGhost();
+    lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz);
+    renderer.render(scene, camera); renderCount += 1; projectTags();
+    if (standIn) standIn.start(renderer); else fetchStandIn();
+    // The scene owns its own device/WebGL eligibility guard. Do not make venue NPC loading wait
+    // for the local body import: one failed or delayed player-body request must not freeze the crowd.
+    current?.startCrowd?.(renderer, crowdReady);
   }
-  function dressStandIn() { standIn?.wear(player.look, player.seed); standIn?.attach(venueFor(cityId, currentLocation!)?.scene?.kind !== 'home' && current?.walk ? { group: current.group, avatar: current.walk.avatar, scale: current.walk.scale } : null); }
+  function fetchStandIn() {
+    standInStartup.start(bodyAllowed() && drawsWebGL2(renderer),
+      () => import('./scene/body/stand-in.ts'),
+      module => {
+        if (gone) return;
+        standIn = module.createStandIn(kit, () => { if (!loop.running) renderScene(); });
+        dressStandIn();
+        standIn.pose(restPose?.pose ?? 'stand', restPose?.seat, false);
+        standIn.move(walker.x, avatarY, walker.z, walker.ry);
+        standIn.start(renderer);
+      },
+      error => console.warn('Skinned body module unavailable; keeping the drawn avatar:', error));
+  }
+  function dressStandIn() {
+    standIn?.wear(player.look, player.seed);
+    const entry = current, walk = entry?.walk;
+    if (!entry || !walk || venueFor(cityId, currentLocation!)?.scene?.kind === 'home') {
+      standIn?.attach(null); return;
+    }
+    const contactHeightAt = walk.contactHeightAt;
+    standIn?.attach({
+      group: entry.group, avatar: walk.avatar, scale: walk.scale,
+      // The surface resolver is scene-local. Never correct feet while navigation or an activity
+      // places the figure between supports, or after this attachment's scene has been left.
+      contactHeightAt: contactHeightAt ? (x, z, expectedY) => {
+        if (gone || current !== entry || walker.hopping || walk.onStairs || locked || restPose ||
+          afterPose || lastState?.activeAction || entry.easing || standIn?.easing) return null;
+        return contactHeightAt.call(walk, x, z, expectedY);
+      } : undefined,
+    });
+  }
 
   /** Build a venue's scene when it is shown. A scene with dispose() is freed on leaving and rebuilt next time. */
   function sceneFor(id: string) {
@@ -1264,7 +1325,11 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   }
   /** Take the lighting and clear colour the current scene asks for. */
   function applyLook() {
-    lights.apply(current?.lighting?.());
+    const preset = current?.lighting?.();
+    lights.apply(preset);
+    // Shared meshes take the active scene's glow, including Home and the street.
+    // No private material or extra rendering pass is needed for a clock change.
+    sceneMaterials(kit).glow.color.setScalar(typeof preset?.glow === 'number' && Number.isFinite(preset.glow) && preset.glow >= 0 ? preset.glow : HOST_LIGHTING.glow);
     background = current?.background || DEFAULT_BACKGROUND;
     renderer.setClearColor(background);
     // sky: [horizon, zenith]. A scene that names only a background gets a gentle rise from it.
@@ -1411,7 +1476,10 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       if (!venueFor(cityId, id) || id === currentLocation) return false;
       if (prepared && prepared !== id && prepared !== currentLocation) { const old = built.get(prepared); if (old) { old.dispose?.(); scene.remove(old.group); built.delete(prepared); } }
       prepared = id;
-      sceneFor(id);
+      // Venue construction sets the kit's shared glow material. Preparing a hidden
+      // destination must not change the light of the scene the player still sees.
+      try { sceneFor(id); }
+      finally { applyLook(); }
       return true;
     },
     diagnostics() {
@@ -1437,6 +1505,10 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
         location: currentLocation, background, scenes: built.size, crowd: crowd.length,
         lighting: { hemi: lights.hemi.intensity, sun: lights.sun.intensity, sky: `#${lights.hemi.color.getHexString()}` },
         tier: tier.name, matte: kit.matte, pixelRatio: renderer.getPixelRatio?.(), shadowMap: lights.sun.shadow.mapSize.x, avatarPx: avatarPixels(),
+        avatarRendering: !current?.walk ? 'none' : current.bodyShown || standIn?.shown ? 'canonical' : 'procedural',
+        canonicalBodyEligible: bodyAllowed() && drawsWebGL2(renderer),
+        ...(current?.crowdRendering ? { crowdRendering: current.crowdRendering } : {}),
+        ...(current?.group.userData.authoredPeople ? { authoredPeople: current.group.userData.authoredPeople } : {}),
         tags: shownTags.map((tag) => ({ ...tag })),
       };
     },
@@ -1489,7 +1561,8 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     /** Where the avatar stands right now, in presence units: { x, z, location } — what onMove reports while it moves. */
     position() { const k = presenceScale(); return { x: Math.round(walker.x * k * 100) / 100, z: Math.round(walker.z * k * 100) / 100, location: currentLocation }; },
     dispose() {
-      gone = true; loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
+      if (gone) return;
+      gone = true; standInStartup.dispose(); loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
       win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
@@ -1499,6 +1572,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       built.clear();
       sky.dispose(); ground.dispose();
       kit.dispose();
+      lights.dispose();
       renderer.dispose();
       renderer.domElement.remove?.();
       tagLayer?.remove();

@@ -1,0 +1,100 @@
+{
+  "schema": "environment-next-phase-v7-npc-startup-remote-review-pins/1",
+  "status": "PRE-REVIEW-SEALED",
+  "selectedPackagePolicy": "workflow_dispatch run ID and commit must resolve to this exact artifact-name scheme; controller verifies package source seal gitCommit and every source/output hash before launch",
+  "limits": {
+    "ownedProcessGroupRssBytes": 2147483648,
+    "nodeOldSpaceMiB": 96,
+    "timeoutSeconds": 60,
+    "maxParallel": 3,
+    "screenshotTimeoutMs": 7000
+  },
+  "scopes": [
+    "market-surface-true",
+    "market-surface-false",
+    "market-canvas-clip",
+    "beach-surface-true",
+    "beach-surface-false",
+    "beach-canvas-clip"
+  ],
+  "perScope": {
+    "screenshots": [
+      "home-control",
+      "single target"
+    ],
+    "exactTargetCaptureAttempts": 1,
+    "peerTransitionsWithoutScreenshot": 1
+  },
+  "files": [
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/README.md",
+      "bytes": 2371,
+      "sha256": "d03ff67648bf405b6c5156900a74d872a1e76f3d8f80f4856e64c579cbfbbfa3"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/package-selection-npc-v1.mjs",
+      "bytes": 532,
+      "sha256": "e578af4c95c9fe0f865a43374a76dfce3a035c2004666637a1dfe8f35037833e"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/remote-control-npc-v1.mjs",
+      "bytes": 4008,
+      "sha256": "bbd405ed7a4299982b44fc32c844e9d54acec5fd445fbb8bf1f598a73e33602f"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/remote-control-npc-v1.test.mjs",
+      "bytes": 4158,
+      "sha256": "67a69534b0e315c780edcda70667b97013bde1588dd9dd5ffc3150ab67dee196"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/result-dir-contract-npc-v1.mjs",
+      "bytes": 1469,
+      "sha256": "ddf7a332445ad19060594ae99fec20f0c1fa7f60ca66054c995fc975f2ee1e3c"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/review-render-cdp-npc-v1.mjs",
+      "bytes": 55930,
+      "sha256": "d6650269f677843adf9426e766c8cc1c04078bf8d3f36858fdb71486cfb36937"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/run-bounded-linux-render-npc-v1.py",
+      "bytes": 20172,
+      "sha256": "ec17edc40365908f82f9cbbfe991cf32ba47221a1d1d373bf86bf283c6f20888"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/scope-plan-npc-v1.mjs",
+      "bytes": 4063,
+      "sha256": "47c1feca79e5c555a12a45cadd6387790f88ad6129d97ba91df9c7837c7aa30f"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/scope-plan-npc-v1.test.mjs",
+      "bytes": 2166,
+      "sha256": "09300f28ac911ff4ea71baeab2a8ff9edc7b6e970e07ab804dda0f75075e5200"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/seal-review-sources-npc-v1.mjs",
+      "bytes": 2324,
+      "sha256": "23830122de1b0508703c972dcd9d97dab2923fa7a4f570f82b4375ff67680e53"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/test-package-selection-npc-v1.mjs",
+      "bytes": 680,
+      "sha256": "0b54cdf0f9b7b579c10c5eaf47e54f38a19f519533c853a3d12994245e6ff22c"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/test-result-dir-contract-npc-v1.mjs",
+      "bytes": 917,
+      "sha256": "e04467a6b1835b0d1ff4af028dda9dc6e28ca278a8cd7353cbd114a7fdb523d5"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/test-runner-contract-npc-v1.py",
+      "bytes": 1364,
+      "sha256": "9c6d029f95530c645f9689143dd5ec5779a329c367f577f49b2b68151ac2013e"
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v1/render/workflow-review-npc-v1.yml",
+      "bytes": 3881,
+      "sha256": "d74a620f4c02154f63a2b09e13cad01baa5747a1c2142c81d056c4d1129fc431"
+    }
+  ]
+}

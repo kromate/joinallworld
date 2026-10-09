@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: a gate miss leaves startup available when eligibility arrives later
+ok 1 - a gate miss leaves startup available when eligibility arrives later
+  ---
+  duration_ms: 2.594208
+  type: 'test'
+  ...
+# Subtest: a rejected import can retry after a bounded cooldown, but not on every frame
+ok 2 - a rejected import can retry after a bounded cooldown, but not on every frame
+  ---
+  duration_ms: 0.593584
+  type: 'test'
+  ...
+# Subtest: pending startup deduplicates repeated render calls
+ok 3 - pending startup deduplicates repeated render calls
+  ---
+  duration_ms: 0.431792
+  type: 'test'
+  ...
+# Subtest: disposing while a chunk is pending prevents mount and disposes a late value
+ok 4 - disposing while a chunk is pending prevents mount and disposes a late value
+  ---
+  duration_ms: 0.389834
+  type: 'test'
+  ...
+# Subtest: persistently ineligible frames never start the optional import
+ok 5 - persistently ineligible frames never start the optional import
+  ---
+  duration_ms: 0.151709
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 130.110625

@@ -14,6 +14,7 @@ test('the entry script is read from the module script tag, and chunk errors are 
   assert.equal(entryScriptOf('<head><script type="module" crossorigin src="/assets/app-AbC.js"></script><link rel="modulepreload" href="/assets/x.js"></head>'), '/assets/app-AbC.js')
   assert.equal(entryScriptOf('<script src="/a.js"></script>'), null)
   assert.ok(isChunkLoadError(new TypeError('Failed to fetch dynamically imported module: https://x/assets/a-1.js')))
+  assert.ok(isChunkLoadError(new Error('Error loading dynamically imported module: /assets/a-1.js')))
   assert.ok(!isChunkLoadError(new Error('boom')))
 })
 
@@ -42,6 +43,34 @@ function fakeDoc(entry = '/assets/app-old.js') {
 }
 const host = (entry: string, count: { n: number }): typeof fetch => (async () => { count.n += 1; return new Response(`<script type="module" src="${entry}"></script>`) }) as typeof fetch
 const settle = (): Promise<void> => new Promise((done) => setTimeout(done, 0))
+
+test('quiet checks and chunk failures share the in-flight request and negative-result cooldown', async () => {
+  resetUpdateNotice()
+  let time = 0, calls = 0
+  const page = fakeDoc()
+  let answer!: (response: Response) => void
+  const fetcher = (async () => {
+    calls += 1
+    return new Promise<Response>((resolve) => { answer = resolve })
+  }) as typeof fetch
+  const stop = watchForUpdates(page.doc, fetcher, () => time)
+  try {
+    time = LOOK_EVERY_MS
+    page.show()
+    const failure = noteChunkFailure(fetcher, page.doc, () => time)
+    assert.equal(calls, 1, 'a concurrent import failure reuses the quiet request')
+    answer(new Response('<script type="module" src="/assets/app-old.js"></script>'))
+    await failure
+    await noteChunkFailure(fetcher, page.doc, () => time + 1)
+    assert.equal(calls, 1, 'the shared negative result prevents a second immediate request')
+    time += 60_001
+    const retry = noteChunkFailure(fetcher, page.doc, () => time)
+    assert.equal(calls, 2)
+    answer(new Response('<script type="module" src="/assets/app-new.js"></script>'))
+    await retry
+    assert.equal(updateAvailable.value, true, 'a later real failure can still detect a newer build')
+  } finally { stop(); resetUpdateNotice() }
+})
 
 test('a tab shown again after a while asks once whether the host has a newer build, and offers the reload when it does', async () => {
   resetUpdateNotice()

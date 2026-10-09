@@ -1,0 +1,9 @@
+# Venue NPC startup remote diagnostic v1
+
+Scope: current production `src/venue-world.ts` + `src/scene/body/startup-gate.ts` startup behavior, actual Market/Beach rendering, canonical actor readiness, transition integrity, renderer draw/triangle/geometry counters, and controlled screenshot-method comparison.
+
+The fixture is deterministic and synthetic, not a full onboarding journey. It defaults to the production variant (not the frozen alternative renderer candidate), with Lagos content loaded, twelve public crowd requests, a five-house street fixture available, and seeded actor looks. Initial Market mount is sampled and must reach canonical player/crowd readiness before captures. Each remote scope then records a Home control and one Market or Beach target screenshot using one fixed CDP method; it transitions to the peer venue for structured readiness/counter verification without another screenshot.
+
+Target screenshots are fail-closed: no PNG request occurs unless the snapshot has the current canonical readiness ticket, canonical avatar, twelve canonical public actors, zero public procedural/loading actors, required authored-person counts reconciled as canonical, available draw/triangle/geometry counters, an attached visible canvas, and a fresh render witness. Before each screenshot, the controller fsyncs the complete readiness snapshot, wait receipt, scene/canvas identity, layout metrics, renderer counters, and screencast frame records. The single CDP request gets a 7-second deadline with request ID and relative monotonic start/return timing. A timeout is recorded as a failed method, with no retry.
+
+Screenshots are diagnostic evidence from the remote Linux headless Chrome / ANGLE SwiftShader topology only. No physical GPU timing, mobile performance, download budget, full app journey, live server, or visual-quality acceptance is claimed. The CPU recipe and renderer share the strict caps documented in their subfolders.

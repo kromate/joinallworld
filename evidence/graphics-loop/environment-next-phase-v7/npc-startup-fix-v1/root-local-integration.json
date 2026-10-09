@@ -1,0 +1,11 @@
+{
+  "status": "local-runtime-fix-applied-not-remotely-accepted",
+  "beforeVenueWorldSha256": "0f7aade6cb6fe56ec8baa74d9ae3b583eee9045bdf34cf7a2154ced36e14f5ea",
+  "applied": {
+    "src/venue-world.ts": "837e64cf31ab499f72732f4d3e76c5a278815206a8c741ff50280a13968cbc59",
+    "src/scene/body/startup-gate.ts": "f3e4021b278ddf00f3b7f6fcf1134c1e705091c6bce823d8038ab5a0a97b829e",
+    "src/scene/body/startup-gate.test.ts": "b19d25826b962e5fd34d3e01aa0226bb3f00e91c5afc12c9c7d386ad8e109d7c"
+  },
+  "scope": "host crowd startup independent of player stand-in, retryable eligible import with2s cooldown/dedup/disposal; no mapinterface changes",
+  "remaining": "actual Market/Beach render/budgets/transition checks and compiler regression"
+}

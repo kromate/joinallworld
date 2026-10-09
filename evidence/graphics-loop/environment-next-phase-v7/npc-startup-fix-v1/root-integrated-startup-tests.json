@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "exitCode": 0,
+  "peakGroupRssBytes": 133758976,
+  "elapsedSeconds": 0.211,
+  "limits": {
+    "rssBytes": 134217728,
+    "seconds": 45
+  },
+  "command": [
+    "node",
+    "--max-old-space-size=32",
+    "--experimental-strip-types",
+    "--test",
+    "src/scene/body/startup-gate.test.ts"
+  ]
+}

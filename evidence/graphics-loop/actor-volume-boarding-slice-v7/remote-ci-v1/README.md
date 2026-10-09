@@ -1,0 +1,9 @@
+# Actor-volume v7 bounded source test recipe
+
+This is a remote Linux recipe for one actual-source CPU provenance/lifecycle test. It is not a production integration and cannot certify GPU output, continuous swept clearance, entry/seat/exit collision, or boarding authority. `canBoard` and `routeAuthorized` remain false.
+
+The workflow is branch-scoped to `codex/actor-volume-boarding-v7-actual-host-review`. It checks a SHA-256 snapshot of every test, adapter, local runtime/type dependency, source pin, asset, package/configuration file, and workflow helper before installing dependencies. It also resolves the declared local import closure and requires every executable local import to be pinned. It then runs exactly one Node 24 test with `--max-old-space-size=96`, a 220 MiB process-group RSS ceiling, and a 25 second wall limit. The runner requires a positive live process RSS witness, rechecks the same snapshot after execution, and records cleanup of the complete child process group. No full suite, Vite build, browser, or production budget change is part of this job.
+
+The test uses the shipped male/female GLBs and clip pack. It strips only image/texture references and supplies a 1×1 `DataTexture`; body topology, rig, weights, clips, production loader/cache, wardrobe generation/materials, and procedural fallback remain the actual code path. This substitution makes the result a CPU lifecycle/provenance check, not a rendered visual result.
+
+The snapshot file and workflow cannot pin themselves without recursion. Every other workflow input is included in `snapshot-files.json`; the workflow embeds that exact manifest SHA. The receipt and log upload even on failure. A passing run requires test exit 0, positive process witness, peak RSS within 220 MiB, wall time within 25 seconds, unchanged source hashes, and verified process-group cleanup. Preparation only: no remote execution result is claimed here.

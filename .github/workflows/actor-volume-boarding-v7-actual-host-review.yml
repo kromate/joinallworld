@@ -1,0 +1,47 @@
+name: Actor-volume v7 actual-host bounded CPU review
+
+on:
+  push:
+    branches: [codex/actor-volume-boarding-v7-actual-host-review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: graphics-actor-volume-v7-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  actual-host-cpu-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Verify exact source snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 720628b952e9472ba855e2257e27e4ee57ce024cfc92238860fe5d542e32ea99
+        run: node evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v1/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify executable import closure
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 720628b952e9472ba855e2257e27e4ee57ce024cfc92238860fe5d542e32ea99
+        run: node evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v1/verify-import-closure.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Install exact locked dependency tree
+        run: npm ci --no-audit --no-fund
+      - name: Run one actual-source test with RSS, time, and cleanup guards
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 720628b952e9472ba855e2257e27e4ee57ce024cfc92238860fe5d542e32ea99
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v1/run-bounded-linux.py test
+      - name: Upload test log and authoritative resource receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: actor-volume-v7-${{ github.run_id }}
+          path: evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v1/remote-results/${{ github.run_id }}/
+          if-no-files-found: warn
+          retention-days: 14

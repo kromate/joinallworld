@@ -1,0 +1,49 @@
+{
+  "format": "actor-volume-boarding-v7-runtime-closure",
+  "entry": "evidence/graphics-loop/actor-volume-boarding-slice-v7/actual-host-adapter.test.ts",
+  "testCommand": "node --max-old-space-size=96 --experimental-strip-types --experimental-loader evidence/graphics-loop/actor-volume-boarding-slice-v7/asset-url-loader.mjs --test --test-concurrency=1 evidence/graphics-loop/actor-volume-boarding-slice-v7/actual-host-adapter.test.ts",
+  "localRuntimeModules": [
+    "evidence/graphics-loop/actor-volume-boarding-slice-v7/actual-host-adapter.ts",
+    "evidence/graphics-loop/actor-volume-boarding-slice-v7/actual-host-adapter.test.ts",
+    "evidence/graphics-loop/actor-volume-boarding-slice-v7/asset-url-loader.mjs",
+    "evidence/graphics-loop/actor-volume-boarding-slice-v7/source-pins.json",
+    "evidence/graphics-loop/actor-volume-boarding-slice-v6/evaluated-actor-contract.ts",
+    "src/scene/kit.ts",
+    "src/scene/build.ts",
+    "src/scene/characters.ts",
+    "src/scene/types.ts",
+    "src/scene/avatar-look.ts",
+    "src/scene/body/skinned.ts",
+    "src/scene/body/shared-resource-cache.ts",
+    "src/scene/body/files.ts",
+    "src/scene/body/manifest.ts",
+    "src/scene/body/poses.ts",
+    "src/scene/body/tint.ts",
+    "src/scene/body/animation-pose.ts",
+    "src/scene/body/face-shader.ts",
+    "src/scene/body/appearance.ts",
+    "src/scene/body/foot-contact.ts",
+    "src/scene/wardrobe/renderer.ts",
+    "src/scene/wardrobe/geometry.ts",
+    "src/game/wardrobe/rules.ts",
+    "src/game/wardrobe/catalogue.ts",
+    "src/types/avatar.ts",
+    "src/types/content.ts",
+    "src/types/life.ts",
+    "src/map3d/types.ts",
+    "src/map3d/context.ts",
+    "src/map3d/geo/frame.ts",
+    "src/budgets.ts"
+  ],
+  "dataInputs": [
+    "src/scene/body/assets/base-body-male.glb",
+    "src/scene/body/assets/base-body-female.glb",
+    "src/scene/body/assets/clip-pack.glb"
+  ],
+  "externalRuntime": [
+    "three@package-lock.json-pinned",
+    "node-builtins:assert/strict,crypto,fs/promises,path,url,test"
+  ],
+  "scope": "Source-only CPU diagnostic. The test strips only image references from the shipped body GLBs and substitutes a 1px DataTexture; production loadBody, Kit cache, rig, clips, wardrobe geometry, materials and fallback builder remain the actual source path.",
+  "notIncluded": ["GPU rendering", "continuous swept-volume proof", "vehicle clearance", "route authorization"]
+}

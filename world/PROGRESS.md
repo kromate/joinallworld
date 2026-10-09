@@ -17,7 +17,7 @@ without another upload, reset or rollback. At 19:20:47 UTC the original producti
 synthetic player, nine stable save fields and original same-ID duplicate receipt
 passed. This is one retained actor's continuity, not a game-wide export or restore.
 
-The frozen Integration candidate is
+The currently deployed and accepted Integration candidate is
 `3af17a01b8bd406bfb830ca0d2ee66d2d0093d28`.
 [Full CI](https://github.com/kromate/joinallworld/actions/runs/37970635606)
 completed successfully with all 14 required jobs passing on Node 22 and 24.
@@ -60,11 +60,36 @@ Integration on synchronized main. Twenty later starters now have source assets, 
 are not yet playable in production. The newest source batch adds Dar es Salaam,
 Brazzaville, Kinshasa, Antananarivo and Lilongwe with 1,384 retained footprints and
 349 roads from 12,861,241 source bytes. All five cached-source and isolated engine
-checks passed serially before synchronization; exact post-merge remote checks
-remain required. Earlier Three.js metadata and Git mmap failures are retained as
+checks passed serially before and after synchronization. At exact WORLD source
+`560da3a6ff410d1f344dcc9ee44c69ed149c6b50`, the
+[15-city rollout audit](https://github.com/kromate/joinallworld/actions/runs/37981332409),
+[first-five audit](https://github.com/kromate/joinallworld/actions/runs/37981332967)
+and [next-five audit](https://github.com/kromate/joinallworld/actions/runs/37981522022)
+all completed successfully on Node 22 and 24. The fifth packet has 37 verified
+source pins. These audits establish source and engine acceptance, not runtime
+registration or production deployment. Earlier Three.js metadata and Git mmap failures are retained as
 environment failures. No dependency install or primary-checkout edit was used. Remaining African geometry, deeper cities,
 regional conditions, unattended global execution and physical-device performance
 remain in the full active world objective.
+
+The live first phase also exposed two interaction defects: selecting Ghana can
+leave the foreign card selected while the map changes to Nigeria, and the Lumo
+floating guide can intercept a country-row tap at mobile width. Integration has
+pushed candidate `cd18a230aa10b54fc88ba4111759b4b1ed84bf6e` to fix these and
+is checking it in [full CI](https://github.com/kromate/joinallworld/actions/runs/37982009828).
+At the latest observation, both compiler/build/download jobs, UI regressions,
+release policy and Worker runtime acceptance passed; other required jobs remained
+live or queued. No upload of that candidate has occurred. Actual rendered map,
+guide lifecycle and actor-switch notice checks remain required before release.
+
+The next admission targets Cotonou, Abidjan, Dakar, Cape Town and Addis Ababa.
+Integration owns their shared catalogue and route registration. WORLD is reviewing
+a bounded serial starter runner and per-city crash-resumable publication. Those
+uncommitted tools are implementation candidates, not accepted unattended execution.
+A separate explicit fixture-source upgrade is in development so the next sealed
+package can reuse the retained original test player, store and origin without
+another fixture grant. No new stage is running, and no private game state has
+been edited.
 
 Earlier candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130 focused
 checks and 12 overlapping checks. Its

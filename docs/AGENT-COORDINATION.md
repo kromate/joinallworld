@@ -260,6 +260,31 @@ compiler/runtime build. This builder-only source phase has no production artifac
 upload. Persistent ownership/reconciliation, supervised ingestion/fenced campaign
 completion, country geometry and eventual verified phone-visible detail remain next.
 
+## WORLD persistent fixed-registry recovery — 9 October 2026
+
+Implementationc38bac61 and acceptance d77cacf6 merge coordination-only main716da1de
+through e3bc1944 without conflicts. Actual167 Python/23 engine/5 exact-clean-source
+policy checks pass. Persistent fixed registry records, one source-pinned execution
+slot and resumable reclaim share the unchanged17MiB registry allowance. Actual
+controller SIGKILL/fresh API recovery retains the permanent lock/database inodes
+and both charged attempts; no old Popen/PID is supplied or signalled by recovery.
+Missing/replaced initialized ledger, lost quota/witness files and ambiguous short
+witness prefixes fail closed. This is fixed registry acceptance, not capture/
+campaign recovery, global throughput, country geometry or a runtime release.
+
+All WORLD handles are terminal; no owned browser/server/upload is live. Heavy1/
+128MiB wrappers remain, pressure brieflyNORMAL thenWARNING, no cap expansion or
+large compiler/build. Source/runtime and exact failed/successful receipts are in
+world/PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md. Actual acquisition/campaign/
+output/Nigeria/game data are untouched. Supervised verified-capture ingestion and
+fenced campaign completion are next; production artifact remains unchanged.
+
+LIVING's isolated remote-CI-only experiment is allocated exactly one config line,
+Terser passes2→3, retaining heap1536/maxWorkers1 and all unchanged byte/semantics
+gates. GRAPHICS confirms no active config writer; preserve its primary historical
+dirty config. Keep a clean revert and reject if existing gates stay open. This
+allocation does not adopt its runtime source into main or authorize an upload.
+
 
 ## GRAPHICS measured reductions and clone checkpoint — 9 October 2026,01:04 UTC
 

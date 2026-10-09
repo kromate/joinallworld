@@ -34,6 +34,7 @@ WORKERS = {
     "index-registry-admit-crash": HERE / "index_admission_worker.py",
     "index-registry-admit-plan": HERE / "index_admission_worker.py",
     "index-registry-admit-plan-crash": HERE / "index_admission_worker.py",
+    "index-registry-verify-plan": HERE / "index_admission_worker.py",
     "index-registry-lease-witness": HERE / "index_registry_worker.py",
     "index-registry-plan-witness": HERE / "index_admission_worker.py",
 }
@@ -148,54 +149,61 @@ def _identity(info):
             info.st_uid, info.st_mode, info.st_nlink)
 
 
-def _source_pin(root, name, expected):
-    # Only FILES entries reach this helper, through the validated manifest.
+def _capture(root, name, expected):
+    """Read one bounded pinned source via no-follow descriptors and return bytes."""
     descriptors = []
     observed_directories = []
     file = None
     try:
-        before = root.lstat(); _directory(before)
+        before = root.lstat()
+        _directory(before)
         current = os.open(root, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
         descriptors.append(current)
         if _identity(os.fstat(current)) != _identity(before):
-            raise ValueError("tooling root changed during open")
+            raise ValueError("source root changed during open")
         segments = name.split("/")
         for segment in segments[:-1]:
             child = os.open(segment, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=current)
             descriptors.append(child)
-            info = os.fstat(child); _directory(info)
+            info = os.fstat(child)
+            _directory(info)
             observed_directories.append((current, segment, child, info))
             current = child
         file = os.open(segments[-1], os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=current)
         info = os.fstat(file)
         if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_nlink != 1
                 or stat.S_IMODE(info.st_mode) & 0o022 or info.st_size != expected["bytes"]):
-            raise ValueError("tooling file is unsafe or differs from its pinned size")
-        digest = hashlib.sha256(); total = 0
-        while True:
-            chunk = os.read(file, min(65536, expected["bytes"]-total+1))
+            raise ValueError("source file is unsafe or differs from its pinned size")
+        content = bytearray()
+        digest = hashlib.sha256()
+        while len(content) <= expected["bytes"]:
+            chunk = os.read(file, min(65536, expected["bytes"] - len(content) + 1))
             if not chunk:
                 break
-            total += len(chunk)
-            if total > expected["bytes"]:
-                raise ValueError("tooling file grew beyond its pinned byte bound")
+            content.extend(chunk)
             digest.update(chunk)
-        if total != expected["bytes"] or digest.hexdigest() != expected["sha256"]:
-            raise ValueError("tooling source bytes differ from their retained pin")
+        if len(content) != expected["bytes"] or digest.hexdigest() != expected["sha256"]:
+            raise ValueError("source bytes differ from their retained pin")
         if (_identity(os.fstat(file)) != _identity(info)
                 or _identity(os.stat(segments[-1], dir_fd=current, follow_symlinks=False)) != _identity(info)):
-            raise ValueError("tooling file changed during verification")
+            raise ValueError("source file changed during capture")
         for parent, segment, child, original in observed_directories:
             if (_identity(os.fstat(child)) != _identity(original)
                     or _identity(os.stat(segment, dir_fd=parent, follow_symlinks=False)) != _identity(original)):
-                raise ValueError("tooling directory changed during verification")
+                raise ValueError("source directory changed during capture")
         if root.resolve(strict=True) != root or _identity(root.lstat()) != _identity(before):
-            raise ValueError("tooling root changed during verification")
+            raise ValueError("source root changed during capture")
+        return bytes(content)
     finally:
         if file is not None:
             os.close(file)
         for descriptor in reversed(descriptors):
             os.close(descriptor)
+
+
+def _source_pin(root, name, expected):
+    # Only FILES entries reach this helper, through the validated manifest.
+    _capture(root, name, expected)
 
 
 def verify_index_tooling(root, raw, pin):

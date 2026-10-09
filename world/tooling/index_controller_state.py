@@ -1,9 +1,4 @@
-"""Private, bounded controller files. No SQL, signalling or arbitrary paths.
-
-Mutation requires the actual namespace lease. Deterministic pending prefixes can
-resume; contradictory state is preserved. State and snapshot share the existing
-17MiB registry allowance, including the conservative four database-file ceilings.
-"""
+"""Bounded controller state; mutations need lease and preserve conflicts."""
 import os
 from pathlib import Path
 import fcntl
@@ -177,6 +172,30 @@ def verify_registry_anchor(root):
     if raw!=expected: raise ValueError("initialized registry identity/metadata disappeared or changed; preserve state")
 
 
+def shard_admission_summary(root, authority):
+    """Verify planned roots and locks without SQL."""
+    from index_root import _binding, planned_index_reservations
+    entries = planned_index_reservations(authority)
+    identities = []
+    for key, binding, _ in entries:
+        child = root/key
+        _binding(child, binding, authority)
+        names = {entry.name for entry in os.scandir(child)}
+        if "binding.json" not in names or "binding.pending" in names:
+            raise ValueError("every charged shard must have its published immutable binding")
+        info = child.lstat(); lock = (child/"writer.lock").lstat()
+        if (not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
+                or stat.S_IMODE(info.st_mode) != 0o700 or lock.st_uid != os.getuid()
+                or not stat.S_ISREG(lock.st_mode) or lock.st_nlink != 1
+                or stat.S_IMODE(lock.st_mode) != 0o600 or lock.st_size != 0):
+            raise ValueError("published shard root or permanent lock is unsafe")
+        identities.append({"indexHash":key,"rootDevice":info.st_dev,"rootInode":info.st_ino,
+            "lockDevice":lock.st_dev,"lockInode":lock.st_ino})
+    encoded=json.dumps(identities,sort_keys=True,separators=(",",":"),ensure_ascii=True).encode("ascii")
+    return {"planHash":authority.plan_hash,"shards":len(entries),
+        "reservedBytes":sum(row[2] for row in entries),"rootIdentitySha256":hashlib.sha256(encoded).hexdigest()}
+
+
 _SHARD_HANDOFFS = weakref.WeakSet()
 
 
@@ -208,7 +227,6 @@ def verify_shard_handoff(handoff, lease, authority):
             or any((handoff.root/name).exists() or (handoff.root/name).is_symlink()
                    for name in (PENDING, RECLAIM, EXECUTION, REGISTRY_PENDING, "namespace.pending"))):
         raise ValueError("settled controller record or registry anchor changed")
-    from index_admission_worker import shard_admission_summary
     packed = json.dumps(shard_admission_summary(handoff.root, authority), sort_keys=True,
                         separators=(",", ":"), ensure_ascii=True).encode("ascii")
     if packed != handoff.summary: raise ValueError("complete shard root/lock identity set changed")
@@ -247,7 +265,6 @@ def _mint_shard_handoff(root, lease, authority, summary, record, anchor, operati
         raise ValueError("controller settlement is not final")
     if read_private(root/RECORD) != record or read_private(root/REGISTRY, 4096) != anchor:
         raise ValueError("durable controller record or registry anchor changed before handoff")
-    from index_admission_worker import shard_admission_summary
     expected_summary = shard_admission_summary(root, authority)
     packed = json.dumps(summary, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii")
     if packed != json.dumps(expected_summary, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii"):

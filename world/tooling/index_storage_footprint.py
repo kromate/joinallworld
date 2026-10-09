@@ -1,11 +1,12 @@
-"""Bounded private-index file inventory; not a namespace reservation or opener.
-
-Call only with the actual writer lease and no live worker/reader write activity.
-Does not open SQLite, interpret a binding, reserve storage, unlink or repair files.
-"""
+"""Private-index inventory and held-lease immutable verification."""
 import os
+import hashlib
+import sqlite3
 import stat
+import sys
 from pathlib import Path
+from contextlib import contextmanager
+from urllib.parse import quote
 
 from index_writer_lock import IndexWriterLease
 
@@ -121,6 +122,65 @@ def index_storage_footprint(lease, *, file_bytes, aggregate_bytes):
             "aggregateLimitBytes": aggregate_bytes}
 
 
+@contextmanager
+def readonly_reservation_database(path, maximum_bytes):
+    """Open a checkpointed private registry immutably and verify it stayed fixed."""
+    from index_registry_worker import _private_database
+    _bound(maximum_bytes, 4096, 4*MIB, "registry database bytes")
+    path=Path(path); sidecars=[path.with_name(path.name+suffix) for suffix in ("-wal","-shm","-journal")]
+    if any(item.exists() or item.is_symlink() for item in sidecars):
+        raise ValueError("read-only registry verification requires a checkpointed sidecar-free database")
+    before=_private_database(path)
+    if not 4096<=before.st_size<=maximum_bytes:
+        raise ValueError("registry database exceeds its fixed file bound")
+    stamp=lambda info:(info.st_dev,info.st_ino,info.st_size,info.st_mtime_ns,info.st_ctime_ns,
+        info.st_uid,info.st_mode,info.st_nlink)
+    identity=stamp(before); uri="file:"+quote(str(path),safe="/")+"?mode=ro&immutable=1"
+    db=sqlite3.connect(uri,uri=True,isolation_level=None,timeout=0.25)
+    try:
+        db.execute("PRAGMA query_only=ON")
+        if db.execute("PRAGMA query_only").fetchone()!=(1,):
+            raise ValueError("registry verification connection is not query-only")
+        yield db,before
+    finally:
+        db.close()
+        after=_private_database(path)
+        if stamp(after)!=identity or any(item.exists() or item.is_symlink() for item in sidecars):
+            raise ValueError("read-only registry verification changed database files")
+
+
+def verify_terminal_registry(root, budget, lease, record_raw, authority, base_raw):
+    """Verify a terminal plan under its held namespace lease without writes."""
+    from index_controller_state import read_private, verify_registry_anchor, shard_admission_summary
+    from index_namespace import namespace_binding
+    from index_registry_worker import _read_exact_private, _rss_kib
+    from index_reservations import DATABASE_BYTES, verify_terminal_plan_rows
+    from index_root import _lease
+    leased_root, _ = _lease(lease)
+    if leased_root != Path(root): raise ValueError("verification lease names another root")
+    root = leased_root
+    metadata=namespace_binding(budget,sqlite_version=sqlite3.sqlite_version)
+    _read_exact_private(root/"namespace.json",metadata); verify_registry_anchor(root)
+    pending=("controller.pending","controller.execution","controller.reclaim",
+        "controller.registry.pending","namespace.pending")
+    if any((root/name).exists() or (root/name).is_symlink() for name in pending):
+        raise ValueError("terminal registry contains unsettled controller state")
+    summary=shard_admission_summary(root,authority)
+    with readonly_reservation_database(root/"reservations.sqlite",DATABASE_BYTES) as (db,database):
+        stats=verify_terminal_plan_rows(db,budget,authority,base_raw,summary)
+    verify_registry_anchor(root)
+    if (read_private(root/"controller.json")!=record_raw
+            or _read_exact_private(root/"namespace.json",metadata) is None
+            or shard_admission_summary(root,authority)!=summary):
+        raise ValueError("terminal registry evidence changed during verification")
+    _lease(lease)
+    return {"format":"feature-index-registry-verify-plan-v1",
+        "namespaceBindingSha256":hashlib.sha256(metadata).hexdigest(),
+        "aggregateBytes":budget,"replayed":True,"pythonVersion":sys.version.split()[0],
+        "sqliteVersion":sqlite3.sqlite_version,"stats":stats,"databaseBytes":database.st_size,
+        "maximumRssKiB":_rss_kib(),"shardAdmission":summary}
+
+
 def audit_execution_footprint(root, *, file_bytes, aggregate_bytes):
     """Bounded exact audit-slot inventory, including partially copied owned files.
 
@@ -179,3 +239,24 @@ def audit_execution_footprint(root, *, file_bytes, aggregate_bytes):
         finally:
             os.close(directory)
     return {"logicalBytes":logical, "chargedBytes":charged}
+
+
+def verify_admission_report(value, namespace, binding_bytes, stats):
+    from index_binding import decode_index_binding
+    from index_root import _binding
+    from index_namespace import _read_owned
+    from index_writer_lock import verify_index_lease_report
+    config = decode_index_binding(binding_bytes); index_hash = hashlib.sha256(binding_bytes).hexdigest()
+    if (type(value) is not dict or set(value) != {"indexHash", "reservedBytes", "replayed",
+            "rootDevice", "rootInode", "lockDevice", "lockInode"}
+            or value["indexHash"] != index_hash or type(value["reservedBytes"]) is not int
+            or value["reservedBytes"] != config["reservedBytes"] or type(value["replayed"]) is not bool
+            or stats["reservations"] < 1 or stats["heldBytes"] < value["reservedBytes"]):
+        raise ValueError("admission report differs from its charged binding")
+    for key in ["rootDevice", "rootInode", "lockDevice", "lockInode"]:
+        if type(value[key]) is not int or not (1 if key.endswith("Inode") else 0) <= value[key] <= (1<<63)-1:
+            raise ValueError("admission inode report exceeds its strict bound")
+    child = namespace/index_hash
+    verify_index_lease_report(child, value)
+    _binding(child, binding_bytes)
+    _read_owned(child, "binding.json", 4096, exact=binding_bytes)

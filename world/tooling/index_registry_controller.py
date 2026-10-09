@@ -1,26 +1,23 @@
-"""Restartable fixed-registry controller, not a country/acquisition campaign.
-
-Records and the sole fixed execution slot live inside the namespace allowance.
-The fixed registry worker inherits its permanent lease. A new controller must
-reacquire that lease before touching retained execution bytes; no PID signalling,
-process-name guessing or unknown snapshot scavenging. A prepared attempt may have
-launched before controller loss; it stays fully charged. Terminal digest binds
-settlement of that attempt, not a successful SQL result or coverage claim.
+"""Registry controller: retain leases, unknown state and charged attempts.
+Settlement does not prove worker success or coverage.
 """
 import hashlib
+import fcntl
 import os
 from pathlib import Path
-import shutil
-import stat
+import shutil  # shared cleanup test hook
 from contextlib import nullcontext
 
 from index_controller_record import (FORMAT, FORMAT_V2, FORMAT_V3, encode_controller_record, decode_controller_record,
-                                      start_attempt, snapshot_ready, finish_attempt, settlement, _has_initialized_result)
+                                      start_attempt, snapshot_ready, finish_attempt, settlement, _has_initialized_result,
+                                      verify_terminal_plan_header)
 from index_controller_state import (RECORD, PENDING, EXECUTION, RECLAIM, REGISTRY, REGISTRY_PENDING, read_private, publish,
-                                    footprint, identity, anchor_registry, verify_registry_anchor, _mint_shard_handoff)
-from index_execution_snapshot import CONFIGURATION, _capture, _inventory, VerifiedIndexExecution
+                                    footprint, anchor_registry, verify_registry_anchor, _mint_shard_handoff,
+                                    shard_admission_summary)
+from index_execution_snapshot import (CONFIGURATION, _capture, _inventory, VerifiedIndexExecution,
+    _copy_snapshot, _snapshot, _cleanup)
 from index_namespace import _aggregate, _root, _preflight, namespace_binding
-from index_tooling import FILES, decode_tooling_manifest, verify_index_tooling, source_snapshot_allowance
+from index_tooling import decode_tooling_manifest, verify_index_tooling, source_snapshot_allowance
 from index_bootstrap import _node_pin
 from index_registry_startup import _runtime, startup_index_namespace
 from index_reservations import DATABASE_BYTES, REGISTRY_ALLOWANCE
@@ -32,108 +29,11 @@ from index_admission_input import binding_pin, validate_admission_binding
 MIB = 1024*1024
 
 
-def _copy_snapshot(root, repository, manifest, configuration, source_pin):
-    execution = root/EXECUTION
-    try: execution.mkdir(mode=0o700)
-    except FileExistsError: pass
-    footprint(root)
-    pins = {**manifest["files"], CONFIGURATION:source_pin}
-    for name in (*FILES, CONFIGURATION):
-        expected = _capture(repository, name, pins[name])
-        file = execution/name; directory = execution
-        for segment in name.split("/")[:-1]:
-            directory = directory/segment
-            try: directory.mkdir(mode=0o700)
-            except FileExistsError: pass
-            info = directory.lstat()
-            if (not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
-                    or stat.S_IMODE(info.st_mode) != 0o700 or directory.resolve(strict=True) != directory):
-                raise ValueError("unsafe persistent snapshot directory")
-        try: old = read_private(file, pins[name]["bytes"], (0o400,0o600))
-        except FileNotFoundError: old = b""
-        if not expected.startswith(old): raise ValueError("contradictory snapshot prefix; preserve state")
-        directory_fd = os.open(directory, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
-        descriptor = None
-        try:
-            try: descriptor = os.open(file.name, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,0o600,dir_fd=directory_fd)
-            except FileExistsError:
-                info = file.lstat()
-                if stat.S_IMODE(info.st_mode)==0o400:
-                    if old!=expected: raise ValueError("immutable snapshot file is incomplete")
-                    continue
-                descriptor = os.open(file.name,os.O_WRONLY | os.O_APPEND | os.O_NOFOLLOW,dir_fd=directory_fd)
-                if identity(os.fstat(descriptor)) != identity(info): raise ValueError("snapshot inode changed")
-            view = memoryview(expected)[len(old):]
-            while view:
-                written=os.write(descriptor,view)
-                if written<1: raise OSError("short persistent snapshot write")
-                view=view[written:]
-            os.fchmod(descriptor,0o400); os.fsync(descriptor); os.fsync(directory_fd)
-        finally:
-            if descriptor is not None: os.close(descriptor)
-            os.close(directory_fd)
-    for directory in [execution/"world/tooling",execution/"world",execution,root]:
-        descriptor=os.open(directory,os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
-        try: os.fsync(descriptor)
-        finally: os.close(descriptor)
-    return execution
-
-
-def _snapshot(root, manifest_bytes, manifest_pin, configuration, source_pin):
-    execution=root/EXECUTION
-    verify_index_tooling(execution,manifest_bytes,manifest_pin)
-    if _capture(execution,CONFIGURATION,source_pin)!=configuration: raise ValueError("retained snapshot configuration differs")
-    charged=_inventory(execution)
-    return VerifiedIndexExecution(execution,manifest_bytes,dict(manifest_pin),configuration,dict(source_pin),charged)
-
-
-def _cleanup(root, record, manifest_bytes, manifest_pin, configuration, source_pin):
-    execution=root/EXECUTION
-    reclaim=root/RECLAIM
-    try: info=execution.lstat()
-    except FileNotFoundError:
-        try: info=reclaim.lstat()
-        except FileNotFoundError: return
-    attempt=record["attempts"][-1]
-    if (info.st_dev,info.st_ino)!=(attempt["snapshotDevice"],attempt["snapshotInode"]):
-        raise ValueError("retained snapshot inode differs; preserve it")
-    if execution.exists():
-        if reclaim.exists() or reclaim.is_symlink(): raise ValueError("mixed execution/reclaim slots; preserve both")
-        _snapshot(root,manifest_bytes,manifest_pin,configuration,source_pin)
-        os.rename(execution,reclaim)
-        descriptor=os.open(root,os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
-        try: os.fsync(descriptor)
-        finally: os.close(descriptor)
-    footprint(root)
-    # A deletion interruption leaves a subset of the exact pinned files. Verify
-    # every remaining byte before completing reclaim; never require deleted files
-    # to reappear, and never delete foreign/symlink/changed survivors.
-    pins={**decode_tooling_manifest(manifest_bytes,manifest_pin)["files"],CONFIGURATION:source_pin}
-    for name,expected in pins.items():
-        file=reclaim/name
-        try: file.lstat()
-        except FileNotFoundError: continue
-        if stat.S_IMODE(file.lstat().st_mode)!=0o400:
-            raise ValueError("reclaim survivor mode differs; preserve it")
-        _capture(reclaim,name,expected)
-    if (reclaim.lstat().st_dev,reclaim.lstat().st_ino)!=(info.st_dev,info.st_ino):
-        raise ValueError("reclaim root changed; preserve it")
-    shutil.rmtree(reclaim)  # Only the fixed, leased, verified subset of this owned slot.
-    descriptor=os.open(root,os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
-    try: os.fsync(descriptor)
-    finally: os.close(descriptor)
-
-
 def restartable_registry_startup(namespace_root, aggregate_bytes, repository_root, manifest_bytes,
                                  manifest_pin, source_configuration, source_pin, python, python_runtime,
                                  *, cpu_seconds=10,wall_seconds=15,rss_limit_bytes=96*MIB,attempt_limit=16,
                                  _binding_bytes=None, _inherited_lease=None, _plan_input=None):
-    """One charged startup attempt with conservative restart/reconciliation.
-
-    This returns only a supervised registry report, never a live SQL writer. The
-    same complete pins and limits are required on restart. Exhaustion is terminal
-    admission failure, not an invitation to delete/reset the journal.
-    """
+    """Run one charged attempt; restarts retain pins, snapshot and exhausted quota."""
     aggregate=_aggregate(aggregate_bytes); repository=Path(repository_root)
     runtime=_runtime(python_runtime)
     bounded_integer(cpu_seconds,1,60,"CPU seconds"); bounded_integer(wall_seconds,1,60,"wall seconds")
@@ -244,3 +144,82 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
             result["_shardHandoff"]=_mint_shard_handoff(
                 root,lease,authority,result["registry"]["shardAdmission"],encode_controller_record(record),anchor,operation)
         return result
+
+
+def verify_terminal_shard_admission(namespace_root, aggregate_bytes, repository_root, manifest_bytes,
+                                    manifest_pin, source_configuration, source_pin, python, python_runtime,
+                                    *, cpu_seconds=10, wall_seconds=15, rss_limit_bytes=96*MIB,
+                                    attempt_limit=16, _binding_bytes=None, _plan_input=None,
+                                    _inherited_lease=None, _expected=None):
+    """Verify a completed V3 plan under its actual lease without another attempt."""
+    if (_inherited_lease is None or type(_binding_bytes) is not bytes
+            or type(_plan_input) is not dict or set(_plan_input)!={"raw","pin"}
+            or type(_expected) is not dict
+            or set(_expected)!={"controllerRecordSha256","registryAnchorSha256","shardAdmission"}):
+        raise ValueError("terminal shard verification requires its exact held lease and durable receipt")
+    aggregate=_aggregate(aggregate_bytes); root,_=_root(namespace_root); repository=Path(repository_root)
+    runtime=_runtime(python_runtime)
+    bounded_integer(cpu_seconds,1,60,"CPU seconds"); bounded_integer(wall_seconds,1,60,"wall seconds")
+    bounded_integer(rss_limit_bytes,64*MIB,512*MIB,"sampled RSS bytes")
+    bounded_integer(attempt_limit,1,16,"attempt limit")
+    raw=_plan_input["raw"]; plan_pin=dict(_plan_input["pin"])
+    authority=prepare_index_shard_plan_authority(raw,plan_pin,_binding_bytes)
+    if authority.aggregate_bytes!=aggregate: raise ValueError("terminal plan aggregate differs from the held namespace")
+    _lease(_inherited_lease)
+    if _inherited_lease.root!=root: raise ValueError("terminal verifier inherited a different namespace lease")
+    probe=os.open(root/"writer.lock",os.O_RDWR|os.O_NOFOLLOW|os.O_NONBLOCK)
+    try:
+        held=os.fstat(probe)
+        if (held.st_dev,held.st_ino)!=( _inherited_lease.device,_inherited_lease.inode):
+            raise ValueError("namespace lock inode changed before verification")
+        try: fcntl.flock(probe,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        except BlockingIOError: pass
+        else:
+            fcntl.flock(probe,fcntl.LOCK_UN)
+            raise ValueError("caller does not hold the actual namespace flock")
+    finally: os.close(probe)
+    if any((root/name).exists() or (root/name).is_symlink()
+           for name in (PENDING,EXECUTION,RECLAIM,REGISTRY_PENDING,"namespace.pending")):
+        raise ValueError("terminal shard admission has unsettled controller state")
+    record_raw=read_private(root/RECORD); record=decode_controller_record(record_raw)
+    anchor=read_private(root/REGISTRY,4096); verify_registry_anchor(root)
+    operation={"kind":"admit-plan","plan":dict(plan_pin),"baseBinding":binding_pin(_binding_bytes)}
+    info=root.lstat(); lock=(root/"writer.lock").lstat()
+    namespace={"device":info.st_dev,"inode":info.st_ino,"lockDevice":lock.st_dev,
+        "lockInode":lock.st_ino,"aggregateBytes":aggregate}
+    verify_terminal_plan_header(record,operation,runtime,manifest_pin,source_pin,
+        {"cpuSeconds":cpu_seconds,"wallSeconds":wall_seconds,"rssBytes":rss_limit_bytes,
+         "attempts":attempt_limit},namespace)
+    summary=shard_admission_summary(root,authority)
+    for key in ("controllerRecordSha256","registryAnchorSha256"):
+        value=_expected[key]
+        if type(value) is not str or len(value)!=64 or any(char not in "0123456789abcdef" for char in value):
+            raise ValueError("terminal admission receipt has an invalid SHA-256 pin")
+    if (hashlib.sha256(record_raw).hexdigest()!=_expected["controllerRecordSha256"]
+            or hashlib.sha256(anchor).hexdigest()!=_expected["registryAnchorSha256"]
+            or _expected["shardAdmission"]!=summary):
+        raise ValueError("terminal admission receipt differs from durable controller/registry evidence")
+    before=(record_raw,anchor,summary)
+    from index_registry_startup import verify_index_shard_namespace
+    result=verify_index_shard_namespace(root,aggregate,repository,manifest_bytes,manifest_pin,
+        source_configuration,source_pin,python,runtime,cpu_seconds=cpu_seconds,wall_seconds=wall_seconds,
+        rss_limit_bytes=rss_limit_bytes,_inherited_lease=_inherited_lease,
+        _binding_bytes=_binding_bytes,_plan_input={"raw":raw,"pin":dict(plan_pin)})
+    _lease(_inherited_lease)
+    if (read_private(root/RECORD)!=before[0] or read_private(root/REGISTRY,4096)!=before[1]
+            or shard_admission_summary(root,authority)!=before[2]):
+        raise ValueError("terminal registry evidence changed during verification")
+    report=result.get("registry"); guard=result.get("guard")
+    if (type(report) is not dict or report.get("format")!="feature-index-registry-verify-plan-v1"
+            or report.get("shardAdmission")!=summary or type(guard) is not dict
+            or guard.get("returnCode")!=0 or guard.get("reason")!="exit"
+            or guard.get("inheritedLease") is not True or guard.get("inheritedNamespaceLease") is not True):
+        raise ValueError("fixed terminal verifier did not return its exact reaped proof")
+    attempts=record["attempts"]
+    record_sha=hashlib.sha256(record_raw).hexdigest()
+    result["controller"]={"attempts":len(attempts),"attemptLimit":attempt_limit,
+        "recordSha256":record_sha,"reopened":True,
+        "scope":"Read-only verification of terminal plan reservations and child identities; no new admission."}
+    result["_shardHandoff"]=_mint_shard_handoff(root,_inherited_lease,authority,summary,
+        record_raw,anchor,operation)
+    return result

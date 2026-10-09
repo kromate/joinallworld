@@ -213,6 +213,38 @@ def _has_initialized_result(record):
     return False
 
 
+def verify_terminal_plan_record(raw, operation, source, namespace, python_version, sqlite_version):
+    """Validate a terminal V3 operation, runtime/source identity and success digest."""
+    record=decode_controller_record(raw); attempts=record["attempts"]
+    prepared=decode_controller_record(raw)
+    if attempts: prepared["attempts"][-1].update(phase="prepared",workerPid=None,resultSha256=None)
+    runtime=record["runtime"]
+    if (record["format"]!=FORMAT_V3 or record["operation"]!=operation
+            or runtime["pythonVersion"]!=python_version or runtime["sqliteVersion"]!=sqlite_version
+            or record["sourceConfiguration"]!=source or record["namespace"]!=namespace or not attempts
+            or any(item["phase"]!="terminal" for item in attempts)
+            or attempts[-1]["resultSha256"]!=settlement(prepared,initialized=True)):
+        raise ValueError("terminal plan header or initialized settlement differs")
+    return record
+
+
+def verify_terminal_plan_header(record, operation, runtime, manifest, source, limits, namespace):
+    """Match every caller pin to the immutable V3 header before launch."""
+    if (record["format"]!=FORMAT_V3 or record["operation"]!=operation or record["runtime"]!=runtime
+            or record["toolingManifest"]!=manifest or record["sourceConfiguration"]!=source
+            or record["limits"]!=limits or record["namespace"]!=namespace):
+        raise ValueError("terminal V3 header differs from caller pins")
+
+
+def prepare_terminal_plan_record(raw, plan_pin, base_raw, source, namespace, python_version, sqlite_version):
+    from index_admission_input import binding_pin, validate_admission_binding
+    source_pin={"sha256":hashlib.sha256(source).hexdigest(),"bytes":len(source)}
+    operation={"kind":"admit-plan","plan":dict(plan_pin),"baseBinding":binding_pin(base_raw)}
+    record=verify_terminal_plan_record(raw,operation,source_pin,namespace,python_version,sqlite_version)
+    validate_admission_binding(base_raw,record["toolingManifest"],source_pin,source)
+    return record,operation,source_pin
+
+
 def start_attempt(record, operation=None):
     """Return a defensive copy with the next immutable-budget attempt prepared.
 

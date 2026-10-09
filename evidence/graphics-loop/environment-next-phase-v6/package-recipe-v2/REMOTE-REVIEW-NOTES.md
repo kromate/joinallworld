@@ -1,0 +1,3 @@
+The separate remote scene reviewer is staged under `remote-review-v2/recipe/`. Its source/workflow/control files are included in the full v6 package source seal. The review workflow is manually dispatched against an exact package run ID and source commit; three scope jobs cover all four scenes in day/night plus a separate lifecycle-only job. Each job retains its own 2 GiB/96 MiB/60 second caps. This is diagnostic CI headroom and does not alter production, phone, quality, or release budgets.
+
+The package source seal includes the staged reviewer recipe and the generated review source pins. Preserve the successful v5 recipe and all earlier v6 evidence; this v6 recipe has not been run.

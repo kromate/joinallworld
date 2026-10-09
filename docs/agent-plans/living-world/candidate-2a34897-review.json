@@ -1,0 +1,80 @@
+{
+  "observedAt": "2026-10-09T17:09:55.668403+00:00",
+  "candidate": "2a34897c4ba781fda70cdab6d4496dbd591b3117",
+  "accepted": false,
+  "programmeReleased": false,
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "productionEvidence": "HTTP health only; no new live gameplay/save acceptance",
+  "focusedRuntimeChecks": {
+    "pass": 130,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 33958.150625,
+    "qualification": "Owner scoped runtime run before final chunk-config commit; not exhaustive exact-SHA acceptance"
+  },
+  "overlappingProfileChecks": {
+    "pass": 12,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 6580.757959,
+    "qualification": "Overlapping scope; do not add to 130"
+  },
+  "officialPreviousCI": {
+    "sha": "f54d5f79df0c0672036bba900be1ac6d6dee7d0e",
+    "runId": 37962397132,
+    "compiler": "pass",
+    "releasePolicy": "pass",
+    "build": "pass",
+    "startupBudget": "fail",
+    "fullSuites": "skipped",
+    "startupBytes": [
+      627208,
+      226993,
+      198637
+    ]
+  },
+  "candidateDiagnostic": {
+    "startupBytes": [
+      623535,
+      225784,
+      197564
+    ],
+    "caps": [
+      615000,
+      223000,
+      195600
+    ],
+    "overBytes": [
+      8535,
+      2784,
+      1964
+    ],
+    "deferredReaderRawBytes": 3914,
+    "startupClosuresChecked": 45,
+    "readerEager": false,
+    "qualification": "Local compiled-artifact diagnostic, all three startup checks still fail; no official candidate CI found at observation"
+  },
+  "logs": {
+    "allworld-homeward-readiness-final.log": {
+      "sha256": "07ddd226748716494d9a8643e914ce567a7d6e39d1bb9a4df0c073ac38204591",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/07ddd2267487-allworld-homeward-readiness-final.log"
+    },
+    "allworld-homeward-profile-and-progress-final.log": {
+      "sha256": "a16b2f51634196207c9ad769113005600be003ce230306e3a6bd343dd5625575",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/a16b2f516341-allworld-homeward-profile-and-progress-final.log"
+    },
+    "allworld-homeward-readiness-chunk-budget.json": {
+      "sha256": "cdc25330aef291a7bfc144fd6d0aac1acc469d353cc804dba2380f7397a53a1d",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/cdc25330aef2-allworld-homeward-readiness-chunk-budget.json"
+    },
+    "allworld-homeward-chunk-graph.log": {
+      "sha256": "49e85d15df1f7748096af42281ab85770c36fa0415748a18a96f88d789dcf0bf",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/49e85d15df1f-allworld-homeward-chunk-graph.log"
+    },
+    "joinallworld-f54d5f79-fast.log": {
+      "sha256": "4df2730c6a46657f542222e72daec3f4f5945e13bcbc6f1186b0294f5f06a96f",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/4df2730c6a46-joinallworld-f54d5f79-fast.log"
+    }
+  },
+  "next": "Integration reduces measured startup without relaxing limits, then exact-source full, desktop/mobile, staging and save-continuity gates before WORLD release."
+}

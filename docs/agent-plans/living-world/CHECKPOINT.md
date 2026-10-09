@@ -1,5 +1,9 @@
 # Living-world implementation checkpoint
 
+## User status and measured candidate - 2026-10-09T17:09:55.668403+00:00
+
+Published candidate2a34897c4ba781fda70cdab6d4496dbd591b3117 now has actual compiled recovery-reader deferral across45 startup closures. Scoped runtime130/130 and overlapping profile12/12 pass. Previous f54 official compiler/policy/build pass but startup caps fail and full suites skip. Latest local startup623535/225784/197564 remains over8535/2784/1964; wrapper success does not accept failing budget rows. [Exact qualified receipt](candidate-2a34897-review.json), [updated user status](STATUS-2026-10-09.md). Production fresh healtha446 only; no programme release. Next Integration measured startup repair, full/native/isolated-stage/save gates then WORLD release. Complete driving/later phases and live Goalmatic remain open. Native goal ACTIVE; records do not run while stopped. Root preserves eight historical untracked records and existing owner work.
+
 ## Actual browser/save repairs and130 focused passes - 2026-10-09T16:53:22.736452+00:00
 
 Previous turn made concrete progress through review findings, owner fixes and durable8ab146c0. This turn verified ACTUAL unsupported-marker red39/38/1 and valid-ticket/negative-browser-debt red3/2/1, reviewed shared frozenV1 liability/client guard and metadata-based retry recognition, and retained next51/50/1 read-only pending-intent defect. Final actual owned Node24heap256 run is TERMINAL130/130PASS0skip33.958s. Root observed PID37919 live then absent; no restart/cap/provider change. [Exact qualified receipt and durable local log copies](homeward-readiness-dirty-review.json). No overlapping totals, full source or exact stage acceptance inferred.

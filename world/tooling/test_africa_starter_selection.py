@@ -305,5 +305,104 @@ class JubaSelectionTests(unittest.TestCase):
             GEN.retained_sample_bounds(initial, [], [{"points": [[10.05, float("nan")]]}])
 
 
+class MoroniQueryRevisionTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name).resolve()
+        self.centre = [43.240244, -11.704158]
+        self.original = self.root / ".cache/world-build/playable-africa/moroni"
+        self.revision = self.root / ".cache/world-build/playable-africa-revisions/moroni" / GEN.MORONI_QUERY_REVISION
+        self.original.mkdir(parents=True)
+        self.original_url_bounds = [round(self.centre[0]-.003, 6), round(self.centre[1]-.003, 6),
+                                    round(self.centre[0]+.003, 6), round(self.centre[1]+.003, 6)]
+        self.original_url = "https://api.openstreetmap.org/api/0.6/map?bbox=" + ",".join(map(str, self.original_url_bounds))
+        raw = b"<osm version='0.6'></osm>"
+        self.original.joinpath("source.osm").write_bytes(raw)
+        self.original.joinpath("source.json").write_text(json.dumps({"url": self.original_url, "bounds": self.original_url_bounds,
+                                                                       "bytes": len(raw), "sha256": digest(raw)}))
+        self.original.joinpath("requests.json").write_text(json.dumps([{"url": self.original_url,
+                                                                          "reservedBytes": GEN.MAX_DOWNLOAD,
+                                                                          "status": "complete", "receivedBytes": len(raw),
+                                                                          "sha256": digest(raw)}]))
+        self.patch = patch.object(GEN, "ROOT", self.root)
+        self.patch.start()
+
+    def tearDown(self):
+        self.patch.stop()
+        self.temp.cleanup()
+
+    def test_revision_uses_same_point_wider_fixed_bbox_and_one_remaining_lifetime_attempt(self):
+        before = {path.name: path.read_bytes() for path in self.original.iterdir()}
+        cached, malformed, exhausted, url, bounds = GEN.moroni_revision_state(self.centre)
+        self.assertEqual(bounds, [43.228244, -11.716158, 43.252244, -11.692158])
+        self.assertEqual(url, "https://api.openstreetmap.org/api/0.6/map?bbox=43.228244,-11.716158,43.252244,-11.692158")
+        self.assertEqual((cached, malformed, exhausted), (False, False, False))
+        self.assertEqual({path.name: path.read_bytes() for path in self.original.iterdir()}, before,
+                         "planning is read-only against the prior Moroni cache and request ledger")
+
+    def test_mocked_revision_acquisition_debits_separate_ledger_without_touching_original(self):
+        before = {path.name: path.read_bytes() for path in self.original.iterdir()}
+        payload = b"<osm version='0.6'></osm>"
+
+        class Response:
+            def __init__(self):
+                self.sent = False
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_):
+                return False
+
+            def read(self, _size):
+                if self.sent:
+                    return b""
+                self.sent = True
+                return payload
+
+        with patch.object(GEN.urllib.request, "urlopen", return_value=Response()) as open_url:
+            raw, receipt = GEN.acquire_moroni_revision(self.centre)
+        self.assertEqual(raw, payload)
+        self.assertEqual(receipt["queryRevision"], GEN.MORONI_QUERY_REVISION)
+        open_url.assert_called_once()
+        self.assertEqual(open_url.call_args.kwargs["timeout"], 30)
+        self.assertEqual({path.name: path.read_bytes() for path in self.original.iterdir()}, before)
+        revision_ledger = json.loads((self.revision / "requests.json").read_text())
+        self.assertEqual(len(revision_ledger), 1)
+        self.assertEqual(revision_ledger[0]["reservedBytes"], GEN.MAX_DOWNLOAD)
+        self.assertEqual(revision_ledger[0]["status"], "complete")
+        self.assertEqual(GEN.moroni_revision_state(self.centre)[:3], (True, False, True))
+
+    def test_revision_cache_requires_completed_unique_request_and_exact_source_identity(self):
+        self.revision.mkdir(parents=True)
+        raw = b"<osm version='0.6'></osm>"
+        url, bounds = GEN.moroni_revision_query(self.centre)
+        receipt = {"url": url, "bounds": bounds, "bytes": len(raw), "sha256": digest(raw),
+                   "queryRevision": GEN.MORONI_QUERY_REVISION}
+        self.revision.joinpath("source.osm").write_bytes(raw)
+        self.revision.joinpath("source.json").write_text(json.dumps(receipt))
+        self.revision.joinpath("requests.json").write_text(json.dumps([{"url": url, "reservedBytes": GEN.MAX_DOWNLOAD,
+                                                                           "status": "complete", "receivedBytes": len(raw), "sha256": digest(raw)}]))
+        self.assertEqual(GEN.moroni_revision_state(self.centre)[:3], (True, False, True))
+        receipt["bounds"] = [0, 0, 1, 1]
+        self.revision.joinpath("source.json").write_text(json.dumps(receipt))
+        with self.assertRaisesRegex(ValueError, "does not match the pinned query"):
+            GEN.moroni_revision_state(self.centre)
+
+    def test_combined_attempt_cap_malformed_ledger_and_symlink_cache_refuse(self):
+        self.revision.mkdir(parents=True)
+        url, _ = GEN.moroni_revision_query(self.centre)
+        self.revision.joinpath("requests.json").write_text(json.dumps([{"url": url, "reservedBytes": GEN.MAX_DOWNLOAD,
+                                                                           "status": "started"}]))
+        self.assertEqual(GEN.moroni_revision_state(self.centre)[:3], (False, False, True))
+        self.revision.joinpath("requests.json").write_text("{}")
+        with self.assertRaisesRegex(ValueError, "must be a list"):
+            GEN.moroni_revision_state(self.centre)
+        self.revision.joinpath("requests.json").unlink()
+        self.revision.joinpath("source.osm").symlink_to(self.original / "source.osm")
+        with self.assertRaises(ValueError):
+            GEN.moroni_revision_state(self.centre)
+
+
 if __name__ == "__main__":
     unittest.main()

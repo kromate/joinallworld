@@ -17,8 +17,9 @@ _spec.loader.exec_module(runner)
 class FixtureCampaign:
     def __init__(self, root, *, fail_acquire=False, cache_on_failure=True, partial_output=False):
         self.root = root
-        self.cache = {"aa": False, "bb": False}
+        self.cache = {"aa": False, "bb": False, "km": False}
         self.calls = []
+        self.commands = []
         self.fail_acquire = fail_acquire
         self.cache_on_failure = cache_on_failure
         self.partial_output = partial_output
@@ -27,23 +28,27 @@ class FixtureCampaign:
         self.assert_timeout(timeout)
         values = [str(item) for item in command]
         if any(value.endswith(runner.BUILDER) for value in values):
+            self.commands.append(values)
             countries = [values[index + 1] for index, value in enumerate(values) if value == "--country"]
             mode = next((value for value in ("--plan", "--acquire", "--check") if value in values), "generate")
             if mode == "--plan":
                 self.calls.append(("plan", tuple(countries)))
                 rows = []
                 for country in countries:
-                    city = "alpha" if country == "AA" else "beta"
+                    city = {"AA": "alpha", "BB": "beta", "KM": "moroni"}[country]
                     cached = self.cache[country.lower()]
-                    rows.append({"country": country, "city": city, "settlement": city.title(), "settlementRole": "city",
+                    row = {"country": country, "city": city, "settlement": city.title(), "settlementRole": "city",
                                  "timezone": "Etc/UTC", "stateId": f"{country.lower()}-zone", "stateName": "Starter",
                                  "airportDatasetName": "Airport dataset point", "airportDatasetPoint": [1, 2],
                                  "airportEvidence": {"source": "fixture"}, "catalogueBytes": 100, "catalogueLimit": 150,
                                  "cachedSample": cached, "wouldRequest": not cached,
-                                 "status": "ready"})
+                                 "status": "ready"}
+                    if "--source-query-revision" in values:
+                        row["sourceQueryRevision"] = {"id": values[values.index("--source-query-revision") + 1], "url": "fixture", "bounds": [1, 2, 3, 4]}
+                    rows.append(row)
                 return SimpleNamespace(returncode=0, stdout=("\n".join(json.dumps(row) for row in rows) + "\n").encode(), stderr=b"")
             country = countries[0]
-            city = "alpha" if country == "AA" else "beta"
+            city = {"AA": "alpha", "BB": "beta", "KM": "moroni"}[country]
             if mode == "--acquire":
                 self.calls.append(("acquire", city))
                 if self.cache_on_failure:
@@ -74,6 +79,43 @@ class FixtureCampaign:
 
 
 class RunAfricaStartersTests(unittest.TestCase):
+    def test_moroni_revision_is_explicit_km_only_and_binds_every_builder_mode(self):
+        revision = runner.MORONI_QUERY_REVISION
+        for mode in ("--plan", "--acquire", "--check", None):
+            command = runner.builder_command(sys.executable, Path("/fixture"), "KM", mode, None, revision)
+            self.assertEqual(command[-2:], ["--source-query-revision", revision])
+        ordinary = runner.builder_command(sys.executable, Path("/fixture"), "ST", "--check", None, revision)
+        self.assertNotIn("--source-query-revision", ordinary)
+        self.assertEqual(runner.stable_plan({"country": "ST", "city": "alpha"}),
+                         {key: {"country": "ST", "city": "alpha"}.get(key) for key in runner.PLAN_FIELDS})
+        revision_plan = {"country": "KM", "city": "moroni", "sourceQueryRevision": {"id": revision}}
+        self.assertEqual(runner.stable_plan(revision_plan)["sourceQueryRevision"], {"id": revision})
+        self.assertNotIn("sourceQueryRevision", runner.stable_plan({"country": "ST", "city": "alpha"}))
+
+    def test_moroni_revision_runner_flag_requires_km_only(self):
+        args = runner.parse_args(["--country", "KM", "--source-query-revision", runner.MORONI_QUERY_REVISION])
+        self.assertEqual(args.country, ["KM"])
+        with self.assertRaises(SystemExit):
+            runner.parse_args(["--country", "KM", "--country", "ST", "--source-query-revision", runner.MORONI_QUERY_REVISION])
+
+    def test_frozen_moroni_run_reuses_revision_flag_on_resume(self):
+        revision = runner.MORONI_QUERY_REVISION
+        fixture = FixtureCampaign(self.root)
+        config = self.config(countries=["KM"], maxReservedBytes=runner.DOWNLOAD_RESERVATION,
+                             sourceQueryRevision=revision)
+        result = runner.execute_campaign(self.root, config, execute=fixture)
+        contract = json.loads(self.frozen_contract().read_text())
+        self.assertEqual(contract["sourceQueryRevision"], revision)
+        self.assertEqual(contract["plans"][0]["sourceQueryRevision"]["id"], revision)
+        self.assertTrue(all(command[-2:] == ["--source-query-revision", revision]
+                            for command in fixture.commands if "--country" in command and command[command.index("--country") + 1] == "KM"))
+        fixture.commands.clear()
+        resume_config = self.config(countries=None, resume=str(self.frozen_contract()), sourceQueryRevision=None,
+                                    maxReservedBytes=runner.DOWNLOAD_RESERVATION)
+        runner.execute_campaign(self.root, resume_config, execute=fixture)
+        self.assertTrue(all(command[-2:] == ["--source-query-revision", revision]
+                            for command in fixture.commands if "--country" in command and command[command.index("--country") + 1] == "KM"))
+
     def test_mixed_batch_passes_selection_only_to_south_sudan_operations(self):
         selection = ("selection.json", "a" * 64)
         for mode in ("--acquire", "--check", None):

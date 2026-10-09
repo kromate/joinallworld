@@ -1,3 +1,33 @@
+# Remote source handoff checkpoint, 9 October 2026 at 23:43 UTC
+
+Production remains C1 with eleven open countries. A fresh fetch of origin/main
+returns the same exact C1 revision. Source inventory remains 52 foreign starters,
+42 unadmitted, and missing Moroni/KM. No additional country has shipped.
+
+The explicit Moroni wider-query proposal preserves the selected point and the
+original spent request. Its public source/receipt/ledger packet is copied with
+exact hashes; no revised source request ran. Coordinator review corrected the
+default contract shape and a fixture identity expectation. Four Python files
+parse and diff whitespace checks pass; remote fixture/acquisition acceptance
+is still required. See MORONI-QUERY-REVISION-PROPOSAL.md. This proposal is queued
+behind the active remote country admission work, with no new local worker.
+
+MAP-VISUAL-HANDOFF.md records the exact production source, renderer paths,
+starter-data limitations and file exclusions for a possible Claude proposal.
+The reported Senegal selection mismatch remains unverified; the existing remote
+country worker is tracing it separately from visual map layout.
+
+Original native stage13438 ended normally at its fixed deadline, exit0, with
+child16414 absent and all seven original control/store fields retained. Read-only
+A/B wallet, home and home.storage hashes match the prior baseline; full character
+hash differences remain qualified unknown. A has the normally issued diagnose
+marker and the old paused school, with no completed shift or added wallet effect.
+The reviewed new explicit ON stage50155/child20477 has a 900-second window ending
+23:54:44.306 UTC, browser action cutoff23:53:44.306. Its separate finite 990-second
+outer watchdog reserves startup/cleanup time. Actual health, all retained fields,
+API literal true and whole canonical-origin HTML equality pass. This is local
+readiness, not full lesson, paired-media or production acceptance.
+
 # Country runtime compiler checkpoint, 9 October 2026 at 23:26 UTC
 
 Exact03b9f36a CI38003489740 passes all five strict compiler projects with zero

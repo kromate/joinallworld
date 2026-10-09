@@ -11,7 +11,10 @@ import os
 from pathlib import Path
 import re
 import stat
+import time
 import unicodedata
+import urllib.request
+import xml.etree.ElementTree as ET
 from contextlib import ExitStack
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -43,6 +46,9 @@ MAX_SELECTION_BYTES = 256 * 1024
 MAX_POINT_BYTES = 16 * 1024
 MAX_LEDGER_BYTES = 64 * 1024
 MAX_SAMPLE_EXTENT_EXPANSION_DEGREES = 0.02
+MORONI_QUERY_REVISION = "moroni-wide-001"
+MORONI_QUERY_RADIUS = 0.012
+MORONI_CENTRE = [43.240244, -11.704158]
 SELECTION_GAP_ASSET = "no selected-place output asset for this city point"
 SELECTION_GAP_A3 = "chosen place ADM0_A3 differs from country ADM0_A3 despite exact ISO_A2 match; verify join before contract"
 
@@ -123,6 +129,14 @@ def read_beneath(root, relative, limit, label):
             os.close(descriptor)
     finally:
         os.close(directory)
+
+
+def read_cache_bounded(path, limit, label):
+    try:
+        relative = Path(path).relative_to(ROOT).as_posix()
+    except ValueError as error:
+        raise ValueError(f"{label} path escaped the repository root") from error
+    return read_beneath(ROOT, relative, limit, label)
 
 
 def resolve_juba_selection(row, packet_path, expected_hash, *, root=ROOT, inventory_raw=None):
@@ -289,6 +303,162 @@ def source_request_state(cache_dir, centre):
     return cached, malformed, exhausted
 
 
+def moroni_revision_cache():
+    return ROOT / ".cache/world-build/playable-africa-revisions/moroni" / MORONI_QUERY_REVISION
+
+
+def validate_cache_directory(path, *, create=False, required=False):
+    try:
+        relative = Path(path).relative_to(ROOT)
+    except ValueError as error:
+        raise ValueError("Cache directory escaped the repository root") from error
+    current = ROOT
+    for part in relative.parts:
+        current = current / part
+        if os.path.lexists(current):
+            info = current.lstat()
+            if not stat.S_ISDIR(info.st_mode) or current.resolve() != current:
+                raise ValueError(f"Cache directory has a symlink or non-directory component: {current}")
+        elif create:
+            current.mkdir()
+        elif required:
+            raise ValueError(f"Required source cache directory is missing: {current}")
+        else:
+            return False
+    return True
+
+
+def moroni_revision_query(centre):
+    if centre != MORONI_CENTRE:
+        raise ValueError("Moroni revision is pinned to the original selected settlement point")
+    bounds = [round(centre[0]-MORONI_QUERY_RADIUS, 6), round(centre[1]-MORONI_QUERY_RADIUS, 6),
+              round(centre[0]+MORONI_QUERY_RADIUS, 6), round(centre[1]+MORONI_QUERY_RADIUS, 6)]
+    return "https://api.openstreetmap.org/api/0.6/map?bbox=" + ",".join(map(str, bounds)), bounds
+
+
+def bounded_ledger(path, label):
+    if not os.path.lexists(path):
+        return []
+    value = json.loads(read_cache_bounded(path, MAX_LEDGER_BYTES, label))
+    if not isinstance(value, list) or len(value) > 2:
+        raise ValueError(f"{label} must be a list of at most two lifetime attempts")
+    seen = set()
+    for entry in value:
+        if (not isinstance(entry, dict) or not isinstance(entry.get("url"), str)
+                or entry.get("reservedBytes") != MAX_DOWNLOAD
+                or entry.get("status") not in {"started", "budget_exhausted", "complete"}
+                or entry["url"] in seen):
+            raise ValueError(f"{label} contains a malformed or repeated request")
+        seen.add(entry["url"])
+    return value
+
+
+def moroni_revision_state(centre):
+    """Inspect both immutable original and opt-in revision budgets without writes."""
+    original = ROOT / ".cache/world-build/playable-africa/moroni"
+    revision = moroni_revision_cache()
+    validate_cache_directory(original, required=True)
+    validate_cache_directory(revision)
+    url, bounds = moroni_revision_query(centre)
+    original_ledger = bounded_ledger(original / "requests.json", "original Moroni request ledger")
+    original_bounds = [round(centre[0]-.003, 6), round(centre[1]-.003, 6),
+                       round(centre[0]+.003, 6), round(centre[1]+.003, 6)]
+    original_url = "https://api.openstreetmap.org/api/0.6/map?bbox=" + ",".join(map(str, original_bounds))
+    original_raw_path, original_receipt_path = original / "source.osm", original / "source.json"
+    if os.path.lexists(original_raw_path) != os.path.lexists(original_receipt_path):
+        raise ValueError("Original Moroni source cache is incomplete; preserving it without repair")
+    if os.path.lexists(original_raw_path):
+        original_raw = read_cache_bounded(original_raw_path, MAX_DOWNLOAD, "original Moroni OSM cache")
+        original_receipt = json.loads(read_cache_bounded(original_receipt_path, MAX_LEDGER_BYTES, "original Moroni source receipt"))
+        if (not isinstance(original_receipt, dict) or original_receipt.get("url") != original_url
+                or original_receipt.get("bounds") != original_bounds or original_receipt.get("bytes") != len(original_raw)
+                or original_receipt.get("sha256") != hashlib.sha256(original_raw).hexdigest()):
+            raise ValueError("Original Moroni source cache identity changed; preserving it")
+        if (len(original_ledger) != 1 or original_ledger[0].get("status") != "complete"
+                or original_ledger[0].get("receivedBytes") != len(original_raw)
+                or original_ledger[0].get("sha256") != original_receipt.get("sha256")):
+            raise ValueError("Original Moroni request ledger does not match its cached source")
+    if any(entry["url"] != original_url for entry in original_ledger):
+        raise ValueError("Original Moroni ledger is not bound to its original pinned query")
+    if (len(original_ledger) != 1 or original_ledger[0].get("status") != "complete"
+            or not os.path.lexists(original_raw_path) or not os.path.lexists(original_receipt_path)):
+        raise ValueError("Moroni source revision requires the single preserved completed original request")
+    revision_ledger = bounded_ledger(revision / "requests.json", "Moroni revision request ledger")
+    if len(original_ledger) + len(revision_ledger) > 2:
+        raise ValueError("Moroni original and revision ledgers exceed the two-attempt lifetime cap")
+    urls = [entry["url"] for entry in original_ledger + revision_ledger]
+    if len(set(urls)) != len(urls):
+        raise ValueError("Moroni original and revision ledgers repeat a request URL")
+    if any(entry["reservedBytes"] != MAX_DOWNLOAD for entry in original_ledger + revision_ledger):
+        raise ValueError("Moroni lifetime request reservations exceed the fixed per-attempt cap")
+    raw_path, receipt_path = revision / "source.osm", revision / "source.json"
+    raw_exists, receipt_exists = os.path.lexists(raw_path), os.path.lexists(receipt_path)
+    malformed = raw_exists != receipt_exists
+    raw = read_cache_bounded(raw_path, MAX_DOWNLOAD, "Moroni revision OSM cache") if raw_exists else None
+    receipt_raw = read_cache_bounded(receipt_path, MAX_LEDGER_BYTES, "Moroni revision source receipt") if receipt_exists else None
+    cached = False
+    if not malformed and raw_exists:
+        receipt = json.loads(receipt_raw)
+        if (not isinstance(receipt, dict) or receipt.get("url") != url or receipt.get("bounds") != bounds
+                or receipt.get("queryRevision") != MORONI_QUERY_REVISION or receipt.get("bytes") != len(raw)
+                or receipt.get("sha256") != hashlib.sha256(raw).hexdigest()):
+            raise ValueError("Moroni revision cache does not match the pinned query")
+        matching = [entry for entry in revision_ledger if entry.get("url") == url]
+        if (len(matching) != 1 or matching[0].get("status") != "complete"
+                or matching[0].get("receivedBytes") != len(raw) or matching[0].get("sha256") != receipt.get("sha256")):
+            raise ValueError("Moroni revision cache is not backed by its completed request ledger entry")
+        cached = True
+    exhausted = url in urls or len(urls) >= 2
+    return cached, malformed, exhausted, url, bounds
+
+
+def acquire_moroni_revision(centre):
+    cached, malformed, exhausted, url, bounds = moroni_revision_state(centre)
+    if malformed:
+        raise ValueError("Moroni revision cache is incomplete")
+    cache = moroni_revision_cache()
+    if cached:
+        raw = read_cache_bounded(cache / "source.osm", MAX_DOWNLOAD, "Moroni revision OSM cache")
+        receipt = json.loads(read_cache_bounded(cache / "source.json", MAX_LEDGER_BYTES, "Moroni revision source receipt"))
+        return raw, receipt
+    if exhausted:
+        raise ValueError("Moroni revision URL was already attempted or the combined lifetime request budget is exhausted")
+    validate_cache_directory(cache, create=True)
+    ledger_path = cache / "requests.json"
+    original = ROOT / ".cache/world-build/playable-africa/moroni"
+    ledger = bounded_ledger(original / "requests.json", "original Moroni request ledger") + bounded_ledger(ledger_path, "Moroni revision request ledger")
+    if len(ledger) >= 2 or any(item["url"] == url for item in ledger):
+        raise ValueError("Moroni combined request budget changed before revision acquisition")
+    revision_ledger = ledger[len(bounded_ledger(original / "requests.json", "original Moroni request ledger")):]
+    revision_ledger.append({"url": url, "reservedBytes": MAX_DOWNLOAD, "status": "started"})
+    _starter.dump(ledger_path, revision_ledger)
+    request = urllib.request.Request(url, headers={"User-Agent": "AllworldStarterMaps/1.0 (bounded geography research)", "Accept": "application/xml"})
+    started = time.monotonic()
+    with urllib.request.urlopen(request, timeout=30) as response:
+        pieces, count = [], 0
+        while True:
+            piece = response.read(65536)
+            if not piece:
+                break
+            count += len(piece)
+            if count > MAX_DOWNLOAD or time.monotonic() - started > 45:
+                revision_ledger[-1].update({"status": "budget_exhausted", "receivedBytes": count})
+                _starter.dump(ledger_path, revision_ledger)
+                raise ValueError("Moroni revision source budget exhausted")
+            pieces.append(piece)
+    raw = b"".join(pieces)
+    ET.fromstring(raw)
+    receipt = {"url": url, "bounds": bounds, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest(),
+               "fetchedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+               "attribution": "© OpenStreetMap contributors", "licence": "ODbL-1.0",
+               "queryRevision": MORONI_QUERY_REVISION}
+    (cache / "source.osm").write_bytes(raw)
+    _starter.dump(cache / "source.json", receipt)
+    revision_ledger[-1].update({"status": "complete", "receivedBytes": len(raw), "sha256": receipt["sha256"]})
+    _starter.dump(ledger_path, revision_ledger)
+    return raw, receipt
+
+
 def city_id(name):
     ascii_name = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode("ascii").lower()
     result = re.sub(r"[^a-z0-9]+", "-", ascii_name).strip("-")
@@ -430,6 +600,7 @@ def main():
     parser.add_argument("--acquire", action="store_true", help="Allow one bounded source request for selected cities with no cached sample")
     parser.add_argument("--juba-selection", help="Opt into the pinned South Sudan point selection packet")
     parser.add_argument("--juba-selection-sha256", help="Expected SHA256 of the Juba selection packet")
+    parser.add_argument("--source-query-revision", choices=[MORONI_QUERY_REVISION], help="Opt into the separately cached Moroni bounded query revision (KM only)")
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument("--check", action="store_true", help="Offline verify assets and local source caches against receipts")
     modes.add_argument("--check-assets", action="store_true", help="Offline verify tracked assets and receipt identities without local source caches")
@@ -449,7 +620,12 @@ def main():
             raise ValueError(f"{code} belongs to an existing release wave")
         if code not in by_iso:
             raise ValueError(f"No exact ISO country row for {code}")
+    if args.source_query_revision and selected != ["KM"]:
+        raise ValueError("Moroni source-query revision requires an explicit KM-only selection")
     rows = [by_iso[code] for code in selected]
+    if args.source_query_revision and (rows[0].get("chosenCity", {}).get("name") != "Moroni"
+                                       or rows[0].get("chosenCity", {}).get("coordinatesWgs84") != MORONI_CENTRE):
+        raise ValueError("Moroni revision requires the unchanged pinned settlement identity and point")
     selection_inventory = read_beneath(ROOT, "world/playable-africa-rollout/inventory.json", MAX_SELECTION_BYTES, "rollout inventory") if args.juba_selection else None
     rows, selection_bindings = apply_optional_juba_selection(rows, args.juba_selection, args.juba_selection_sha256, inventory_raw=selection_inventory)
     rows = [dict(row, jubaSelectionBinding=selection_bindings["SS"]) if row.get("iso2") == "SS" and "SS" in selection_bindings else row for row in rows]
@@ -460,8 +636,11 @@ def main():
                 identity = generation_identity(row)
                 identifier = identity["cityId"]
                 size = catalogue_bytes(identifier, place["name"], row["iso2"], row["country"], place["coordinatesWgs84"], identity["stateId"], identity["stateName"])
-                cache_dir = ROOT / ".cache/world-build/playable-africa" / identifier
-                cache, malformed_cache, exhausted = source_request_state(cache_dir, place["coordinatesWgs84"])
+                cache_dir = moroni_revision_cache() if args.source_query_revision else ROOT / ".cache/world-build/playable-africa" / identifier
+                if args.source_query_revision:
+                    cache, malformed_cache, exhausted, query_url, query_bounds = moroni_revision_state(place["coordinatesWgs84"])
+                else:
+                    cache, malformed_cache, exhausted = source_request_state(cache_dir, place["coordinatesWgs84"])
                 status = "ready" if size <= 150 else "refused-catalogue-cap"
                 if size > 150:
                     status = "refused-catalogue-cap"
@@ -470,6 +649,8 @@ def main():
                 elif not cache and exhausted:
                     status = "refused-request-budget-exhausted"
                 plan = {"country": row["iso2"], "city": identifier, "settlement": place["name"], "settlementRole": place.get("sourceClass"), "timezone": timezone, "stateId": identity["stateId"], "stateName": identity["stateName"], "airportDatasetName": airport["name"], "airportDatasetPoint": airport["coordinatesWgs84"], "airportEvidence": airport.get("coordinateEvidence"), "catalogueBytes": size, "catalogueLimit": 150, "cachedSample": cache, "wouldRequest": size <= 150 and not cache and not exhausted and not malformed_cache, "status": status}
+                if args.source_query_revision:
+                    plan["sourceQueryRevision"] = {"id": MORONI_QUERY_REVISION, "url": query_url, "bounds": query_bounds}
                 if row["iso2"] in selection_bindings:
                     plan["selectionEvidence"] = selection_bindings[row["iso2"]]
                 print(json.dumps(plan))
@@ -495,12 +676,22 @@ def main():
                     raise ValueError(f"Missing starter receipt: {receipt_path}")
                 receipt = json.loads(receipt_path.read_text())
                 verify_assets(receipt, row, place, airport, identity, inventory_hash)
+                if args.source_query_revision:
+                    expected_url, expected_bounds = moroni_revision_query(place["coordinatesWgs84"])
+                    osm_identity = receipt.get("sources", {}).get("osm", {})
+                    if (osm_identity.get("queryRevision") != MORONI_QUERY_REVISION
+                            or osm_identity.get("url") != expected_url or osm_identity.get("bounds") != expected_bounds):
+                        raise ValueError("Moroni receipt does not bind the selected source-query revision")
                 if args.check_assets:
                     print(json.dumps({"country": row["iso2"], "city": identifier, "status": "pinned-assets-match"}))
                     continue
                 osm = receipt["sources"]["osm"]
-                cached_osm = ROOT / ".cache/world-build/playable-africa" / identifier / "source.osm"
-                if not cached_osm.is_file() or sha(cached_osm) != osm["sha256"]:
+                cached_osm = (moroni_revision_cache() if args.source_query_revision else ROOT / ".cache/world-build/playable-africa" / identifier) / "source.osm"
+                if args.source_query_revision:
+                    cached, malformed, _, _, _ = moroni_revision_state(place["coordinatesWgs84"])
+                    if not cached or malformed or hashlib.sha256(read_cache_bounded(cached_osm, MAX_DOWNLOAD, "Moroni revision OSM cache")).hexdigest() != osm["sha256"]:
+                        raise ValueError(f"Pinned OSM source missing or changed: {identifier}")
+                elif not cached_osm.is_file() or sha(cached_osm) != osm["sha256"]:
                     raise ValueError(f"Pinned OSM source missing or changed: {identifier}")
                 for part in receipt["sources"]["naturalEarth"]["outlineParts"]:
                     pinned(ROOT / part["path"], part["sha256"])
@@ -512,7 +703,7 @@ def main():
             code = row["iso2"]
             out = OUTPUT / identifier
             receipt_path = RECEIPTS / f"{identifier}.json"
-            cache_dir = ROOT / ".cache/world-build/playable-africa" / identifier
+            cache_dir = moroni_revision_cache() if args.source_query_revision else ROOT / ".cache/world-build/playable-africa" / identifier
             raw_path = cache_dir / "source.osm"
             stage_relative = f".cache/world-build/africa-starter-publication/{identifier}"
             if os.path.lexists(receipt_path) and not os.path.lexists(out):
@@ -524,7 +715,7 @@ def main():
             initial_bounds = [round(min(centre[0]-.015, alon-.012), 6), round(min(centre[1]-.015, alat-.012), 6), round(max(centre[0]+.015, alon+.012), 6), round(max(centre[1]+.015, alat+.012), 6)]
             if not raw_path.exists() and not args.acquire:
                 raise ValueError(f"Missing bounded OSM sample for {identifier}; pass --acquire")
-            raw, source = acquire(identifier, centre)
+            raw, source = acquire_moroni_revision(centre) if args.source_query_revision else acquire(identifier, centre)
             buildings, roads, counts = convert(raw, centre)
             if not buildings or not roads:
                 raise ValueError(f"No usable buildings and roads in bounded source sample for {identifier}")

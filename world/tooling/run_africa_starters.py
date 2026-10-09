@@ -24,6 +24,7 @@ INVENTORY = "world/playable-africa-rollout/inventory.json"
 SLOT = "scripts/agent-slot.ts"
 RUNNER = "world/tooling/run_africa_starters.py"
 OPTIONAL_PUBLICATION_HELPER = "world/tooling/atomic_starter_publication.py"
+MORONI_QUERY_REVISION = "moroni-wide-001"
 RUNS = ".cache/world-build/playable-africa-runs"
 DOWNLOAD_RESERVATION = 8 * 1024 * 1024
 MAX_COUNTRIES = 5
@@ -347,22 +348,26 @@ def remaining(deadline):
     return seconds
 
 
-def builder_command(python, root, country, mode, juba):
+def builder_command(python, root, country, mode, juba, source_revision=None):
     command = [python, "-I", "-B", str(root / BUILDER), "--country", country]
     if mode is not None:
         command.append(mode)
     if juba and country == "SS":
         command.extend(["--juba-selection", juba[0], "--juba-selection-sha256", juba[1]])
+    if source_revision and country == "KM":
+        command.extend(["--source-query-revision", source_revision])
     return command
 
 
-def make_plans(root, python, countries, juba, deadline, execute):
+def make_plans(root, python, countries, juba, source_revision, deadline, execute):
     command = [python, "-I", "-B", str(root / BUILDER)]
     for country in countries:
         command.extend(["--country", country])
     command.append("--plan")
     if juba:
         command.extend(["--juba-selection", juba[0], "--juba-selection-sha256", juba[1]])
+    if source_revision:
+        command.extend(["--source-query-revision", source_revision])
     result = execute(command, cwd=root, timeout=remaining(deadline))
     rows = parse_json_lines(result.stdout, "starter plan")
     if len(rows) != len(countries):
@@ -380,7 +385,10 @@ def make_plans(root, python, countries, juba, deadline, execute):
 
 
 def stable_plan(row):
-    return {key: row.get(key) for key in PLAN_FIELDS}
+    value = {key: row.get(key) for key in PLAN_FIELDS}
+    if "sourceQueryRevision" in row:
+        value["sourceQueryRevision"] = row["sourceQueryRevision"]
+    return value
 
 
 def contract_hash(contract):
@@ -502,7 +510,10 @@ def execute_campaign(root, config, *, execute=run_command, now=time.monotonic):
         juba = contract.get("jubaSelection")
         seconds = contract["budgets"]["seconds"]
         deadline = start + seconds
-        plans = make_plans(root, python, countries, juba, deadline, execute)
+        source_revision = contract.get("sourceQueryRevision")
+        if source_revision is not None and (source_revision != MORONI_QUERY_REVISION or countries != ["KM"]):
+            raise RunnerError("frozen Moroni source-query revision has an invalid country selection")
+        plans = make_plans(root, python, countries, juba, source_revision, deadline, execute)
         expected = contract["plans"]
         if [stable_plan(row) for row in plans] != expected:
             raise RunnerError("current plan identity differs from the frozen country selection")
@@ -519,7 +530,10 @@ def execute_campaign(root, config, *, execute=run_command, now=time.monotonic):
             raise RunnerError("select between one and --max-countries countries")
         python, node = str(Path(config["python"]).resolve()), str(Path(config["node"]).resolve())
         juba = config.get("jubaSelection")
-        plans = make_plans(root, python, countries, juba, deadline, execute)
+        source_revision = config.get("sourceQueryRevision")
+        if source_revision is not None and (source_revision != MORONI_QUERY_REVISION or countries != ["KM"]):
+            raise RunnerError("Moroni source-query revision requires the KM-only country selection")
+        plans = make_plans(root, python, countries, juba, source_revision, deadline, execute)
         reserved = sum(DOWNLOAD_RESERVATION for row in plans if row["wouldRequest"])
         if reserved > config["maxReservedBytes"]:
             raise RunnerError(f"potential source reservation {reserved} exceeds --max-reserved-bytes {config['maxReservedBytes']}")
@@ -539,6 +553,8 @@ def execute_campaign(root, config, *, execute=run_command, now=time.monotonic):
             "budgets": {"seconds": config["seconds"], "maxCountries": config["maxCountries"], "maxReservedBytes": config["maxReservedBytes"],
                         "reservedPotentialBytes": reserved, "perCityReservationBytes": DOWNLOAD_RESERVATION},
         }
+        if source_revision is not None:
+            contract["sourceQueryRevision"] = source_revision
         contract["contractSha256"] = contract_hash(contract)
         resume_dir = contract_location(root, contract).parent
         ensure_run_directory(root, resume_dir, create=True)
@@ -577,7 +593,8 @@ def execute_campaign(root, config, *, execute=run_command, now=time.monotonic):
             city = planned["city"]
             state = report["cities"].setdefault(city, {"country": country, "status": "planned"})
             original_cache = next(item for item in contract["initialCacheState"] if item["city"] == city)
-            check = lambda: execute(builder_command(python, root, country, "--check", juba), cwd=root, timeout=remaining(deadline))
+            source_revision = contract.get("sourceQueryRevision")
+            check = lambda: execute(builder_command(python, root, country, "--check", juba, source_revision), cwd=root, timeout=remaining(deadline))
             verify = lambda: execute([node, "--max-old-space-size=256", "--experimental-strip-types", str(root / VERIFIER), city],
                                      cwd=root, timeout=remaining(deadline), env={**os.environ, "NODE_OPTIONS": "--max-old-space-size=256"})
             if state.get("generated") is not True:
@@ -606,9 +623,9 @@ def execute_campaign(root, config, *, execute=run_command, now=time.monotonic):
                 state["acquisitionAuthorized"] = acquire or state.get("acquisitionAuthorized", False)
                 report_write(root, report_path, report)
                 if acquire:
-                    command = builder_command(python, root, country, "--acquire", juba)
+                    command = builder_command(python, root, country, "--acquire", juba, source_revision)
                 else:
-                    command = builder_command(python, root, country, None, juba)
+                    command = builder_command(python, root, country, None, juba, source_revision)
                 result = execute(command, cwd=root, timeout=remaining(deadline))
                 generated = parse_json_lines(result.stdout, f"generation {city}")
                 if len(generated) != 1 or generated[0].get("status") != "generated" or generated[0].get("country") != country or generated[0].get("city") != city:
@@ -657,6 +674,7 @@ def parse_args(argv=None):
     parser.add_argument("--max-reserved-bytes", type=int, help="Maximum potential source download reservation, at most 64 MiB")
     parser.add_argument("--juba-selection")
     parser.add_argument("--juba-selection-sha256")
+    parser.add_argument("--source-query-revision", choices=[MORONI_QUERY_REVISION])
     parser.add_argument("--_inside-slot", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     if args.seconds is not None and not 1 <= args.seconds <= MAX_SECONDS:
@@ -670,14 +688,16 @@ def parse_args(argv=None):
     if args.juba_selection_sha256 and (len(args.juba_selection_sha256) != 64 or any(c not in "0123456789abcdef" for c in args.juba_selection_sha256)):
         parser.error("--juba-selection-sha256 must be 64 lowercase hexadecimal characters")
     if args.resume:
-        if args.country or args.seconds is not None or args.max_countries is not None or args.max_reserved_bytes is not None or args.juba_selection:
-            parser.error("--resume uses the frozen selection and budgets; do not pass country, budget, or Juba overrides")
+        if args.country or args.seconds is not None or args.max_countries is not None or args.max_reserved_bytes is not None or args.juba_selection or args.source_query_revision:
+            parser.error("--resume uses the frozen selection and budgets; do not pass country, budget, Juba, or source-revision overrides")
     elif not args.country:
         parser.error("new runs require at least one --country")
     if args.country:
         args.country = [country.upper() for country in args.country]
         if len(set(args.country)) != len(args.country) or any(len(country) != 2 or not country.isalpha() or not country.isascii() for country in args.country):
             parser.error("use distinct two-letter ASCII ISO2 country codes")
+        if args.source_query_revision and args.country != ["KM"]:
+            parser.error("--source-query-revision requires the KM-only selection")
     return args
 
 
@@ -809,6 +829,7 @@ def main(argv=None):
         "maxCountries": args.max_countries if args.max_countries is not None else (resume_contract["budgets"]["maxCountries"] if resume_contract else 5),
         "maxReservedBytes": args.max_reserved_bytes if args.max_reserved_bytes is not None else (resume_contract["budgets"]["maxReservedBytes"] if resume_contract else 40 * 1024 * 1024),
         "jubaSelection": [args.juba_selection, args.juba_selection_sha256] if args.juba_selection else None,
+        "sourceQueryRevision": args.source_query_revision,
     }
     result = execute_campaign(ROOT, config)
     print(json.dumps(result, sort_keys=True))

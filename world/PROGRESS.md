@@ -107,7 +107,11 @@ file-safety and all-ten destination coverage suites pass 17 checks. The actual
 caller state-adoption transition is tested with a throwaway private checkpoint
 and an injected post-rename fault; stopped cleanup uses the adopted committed
 inode. See [sealed-stage-postrename-acceptance.json](sealed-stage-postrename-acceptance.json).
-Final source review remains before using it on the retained private checkpoint. All ten admitted destinations must appear once
+The first remote post-rename test failed because it compared an initial inode
+after two replacements and Linux had reused the freed inode. The corrected test
+checks each immediately displaced identity, preserving the runtime implementation.
+That failed run37985320742 remains recorded. Final exact-source remote acceptance
+and source review remain before using the retained private checkpoint. All ten admitted destinations must appear once
 across the three source-exported journey batches and each must have both map and
 geometry assets. The original actor, store, port, key and funding intent remain
 unchanged; no new stage or upload has started. Exact sealed Worker, native map

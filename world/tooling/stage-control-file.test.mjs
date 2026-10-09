@@ -60,13 +60,17 @@ test('post-publication sync failure exposes the committed identity for owned cle
   const committedStat = await lstat(state.path);
   assert.deepEqual(publicationError.committedIdentity, { dev: committedStat.dev, ino: committedStat.ino });
 
+  await assert.rejects(replacePrivateControl(state.path, state.identity, '{"stageStatus":"running"}\n'), /identity changed/);
+  assert.notDeepEqual(publication.controlIdentity, state.identity);
+
   const stopped = { ...publication.controlState, stageStatus: 'stopped' };
   await publishControlState(publication, stopped, (identity, value) => replacePrivateControl(state.path, identity, `${JSON.stringify(value)}\n`));
   assert.equal(await readFile(state.path, 'utf8'), '{"stageStatus":"stopped","sourceSha":"fixture"}\n');
-  await assert.rejects(replacePrivateControl(state.path, state.identity, '{"stageStatus":"running"}\n'), /identity changed/);
+  await assert.rejects(replacePrivateControl(state.path, publicationError.committedIdentity, '{"stageStatus":"running"}\n'), /identity changed/);
   assert.deepEqual(publication.controlState, stopped);
   assert.equal(publication.stageStarted, true);
-  assert.notDeepEqual(publication.controlIdentity, state.identity);
+  assert.equal(publication.forceRetainCheckpoint, true);
+  assert.notDeepEqual(publication.controlIdentity, publicationError.committedIdentity);
   assert.deepEqual(await readdir(state.parent), ['control.json']);
 });
 

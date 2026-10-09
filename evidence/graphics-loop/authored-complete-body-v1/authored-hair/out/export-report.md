@@ -4,12 +4,14 @@ The converter exported two independently pinned CC0 hair assets with source text
 
 | Asset | GLB bytes / SHA-256 | Source topology | Body anchor support | Texture |
 | --- | --- | --- | --- | --- |
-| `short02` | 3,808,372 / `55215b63770913a050e6adb8e7b7ad1e3a09a75f7644f1e81a85934af171ffbf` | 1,755 source vertices, 2,061 UV-split vertices, 3,344 triangles | 1,755/1,755 MHCLO triples correspond to a possible triangle of the source body quads | 2048×2048 RGBA, 3,553,543 bytes, `47fe33831a3929567c733356dd66243116e05df2ace1f884ddca0080b728229f` |
-| `afro01` | 5,080,108 / `3835b5bce566452213bd030eaebee8f90651c778f30a838bf07f3c766e7679c6` | 2,196 source vertices, 2,276 UV-split vertices, 2,192 triangles | 2,182/2,196 triples match a possible body-quad triangle; the other 14 valid authored MHCLO triples are preserved exactly, not remapped | 2048×2048 RGBA, 4,817,185 bytes, `dc0db7dd8a13802f02303ca7e49844b219e09db134471b7061538a8af8f7c7fb` |
+| `short02` | 3,808,368 / `2ebb82af65352ccf72e1108c8d4a7e2ec206b991061abc5018a44bd54343abee` | 1,755 source vertices, 2,061 UV-split vertices, 3,344 triangles | 1,755/1,755 MHCLO triples correspond to a possible triangle of the source body quads | 2048×2048 RGBA, 3,553,543 bytes, `47fe33831a3929567c733356dd66243116e05df2ace1f884ddca0080b728229f` |
+| `afro01` | 5,080,104 / `510b3d92625608892299a9e2e1edd64ae8fea4adc87a5cd41f891224c614fa68` | 2,196 source vertices, 2,276 UV-split vertices, 2,192 triangles | 2,182/2,196 triples match a possible body-quad triangle; the other 14 valid authored MHCLO triples are preserved exactly, not remapped | 2048×2048 RGBA, 4,817,185 bytes, `dc0db7dd8a13802f02303ca7e49844b219e09db134471b7061538a8af8f7c7fb` |
 
 Each MHCLO row maps directly to three weighted source body IDs. All referenced source IDs have exact weights from the pinned Anny `weights.mixamo.json`; each hair vertex receives the strongest four barycentrically blended influences, with negative blends clamped to zero before normalization. Neither hair asset needed a clamp or zero-sum fallback in this export, and independent GLB decoding confirms nonnegative normalized lanes. Both exports retain `bodyFeminine` and `bodyMasculine` position morphs from the existing one-third ethnicity recipes, and neither source MHCLO has a body delete mask.
 
 The texture bytes were fetched individually from the official MakeHuman mirror. The exact pinned repository files are Git LFS pointers: short02 pointer SHA-256 `27e0a8d958c8d00ae7ff0dd3d59d4b6712f9a3c2b33d34c5fa5154aaa809b5ef`, afro01 pointer SHA-256 `f558e275ba7fe28b213ad12e462ab8f63fd6a6de2f42497e7b7509c9ff91269f`; both pointers name the corresponding PNG hashes and byte sizes above. The pinned MHMAT files reference these `diffuseTexture` paths and specify transparency; the resulting GLB materials embed the verified RGBA PNG, set `alphaMode: BLEND`, and are double-sided.
+
+The regenerated GLBs use the pinned MHMAT's white `diffuseColor` as baseColorFactor. Hair `vt` values are converted with `v_glTF = 1-v_OBJ`; clothing UVs retain the existing mapping. A source-triangle alpha-coverage analysis that motivated these corrections is documented in `hair-source-diagnosis.md`.
 
 The pinned-hair OBJ comparison against the converter's mapped source positions gives these source-unit errors:
 

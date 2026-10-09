@@ -71,8 +71,8 @@ interface OutfitGeometryEntry {
 const BODY_SOURCE_INDEX_SHA256 = '4c29f318e20b87a2c0ddce3689fa0ab285ee390fc02e5f3a017736df772a3661';
 const OUTFIT_SHA256 = '1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f';
 const BODY_HIDE_MAP_SHA256 = 'dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099';
-const SHORT_HAIR_SHA256 = '9e2f77d23b6bcf34b5e4fef12c672d73496f5d43ed6a88b7dbf48748dc680a8c';
-const AFRO_HAIR_SHA256 = '3ce7a4c9c42268f3d7333fe1cb1cca9a8529a244ddd98870009b2c6b44a97ce9';
+const SHORT_HAIR_SHA256 = 'a2637b4d14055cbd537b9b0f6e46c695b4a5bdc99e7d779956d58218ffc626a0';
+const AFRO_HAIR_SHA256 = '3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474';
 const BODY_SOURCE_REVISION = 'ec8d1d270b93b8e2e87e8a6160bb908665fe1fcd';
 const OUTFIT_SOURCE_REVISION = '8cf9645b975a98eea056b140df11a1d278da0d10';
 const BODY_SOURCE_TRIANGLES = 26_756;
@@ -372,7 +372,7 @@ function categorizeOutfitTriangle(
     + legInfluence(skinWeight, skinIndex, c, jointNames)) / 3;
   // This source suit has no OBJ material groups. The lower leg chain plus its
   // native waist height keeps full authored triangles intact at the color split.
-  return centerY < 0.91 && legs >= 0.12 ? 'trousers' : 'shirt';
+  return centerY < 0.91 ? 'trousers' : 'shirt';
 }
 
 function acquireOutfitGeometry(outfit: OutfitTemplate, body: THREE.SkinnedMesh): OutfitGeometryEntry {

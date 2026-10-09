@@ -29,6 +29,30 @@ def read_glb(path):
     return doc, data[bin_header + 8:bin_header + 8 + bin_len]
 
 
+def accessor_values(document, binary, index, fmt, width):
+    accessor = document["accessors"][index]
+    view = document["bufferViews"][accessor["bufferView"]]
+    offset = view.get("byteOffset", 0) + accessor.get("byteOffset", 0)
+    count = accessor["count"] * width
+    return struct.unpack_from("<" + fmt * count, binary, offset)
+
+
+def source_uvs_by_vertex(name):
+    source = HERE.parent / "source" / f"{name}.obj"
+    uvs, result = [], {}
+    for line in source.read_text().splitlines():
+        if line.startswith("vt "):
+            fields = line.split()
+            uvs.append((float(fields[1]), float(fields[2])))
+        elif line.startswith("f "):
+            for token in line.split()[1:]:
+                fields = token.split("/")
+                if len(fields) > 1 and fields[1]:
+                    vertex, uv = int(fields[0]) - 1, int(fields[1]) - 1
+                    result.setdefault(vertex, set()).add(uvs[uv])
+    return result
+
+
 class HairExportTest(unittest.TestCase):
     def test_assets_and_lfs_diffuse(self):
         for name, expected in EXPECTED.items():
@@ -59,6 +83,15 @@ class HairExportTest(unittest.TestCase):
                 self.assertEqual(doc["meshes"][0]["extras"]["targetNames"], ["bodyFeminine", "bodyMasculine"])
                 self.assertEqual(doc["materials"][0]["alphaMode"], "BLEND")
                 self.assertTrue(doc["materials"][0]["doubleSided"])
+                self.assertEqual(doc["materials"][0]["pbrMetallicRoughness"]["baseColorFactor"], [1.0, 1.0, 1.0, 1.0])
+                source_ids = accessor_values(doc, binary, attrs["_MH_SOURCE_VERTEX"], "I", 1)
+                output_uvs = accessor_values(doc, binary, attrs["TEXCOORD_0"], "f", 2)
+                source_uvs = source_uvs_by_vertex(name)
+                for vertex, source_id in enumerate(source_ids):
+                    u, v = output_uvs[vertex * 2:vertex * 2 + 2]
+                    self.assertTrue(any(abs(u - source_u) < 1e-6 and abs(v - (1.0 - source_v)) < 1e-6
+                                        for source_u, source_v in source_uvs[source_id]),
+                                    f"{name} vertex {vertex} does not use flipped OBJ UV for source vertex {source_id}")
                 image = doc["images"][0]
                 view = doc["bufferViews"][image["bufferView"]]
                 png = binary[view["byteOffset"]:view["byteOffset"] + view["byteLength"]]

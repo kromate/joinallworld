@@ -24,8 +24,8 @@ const pins = {
   clipPath: '89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47',
   suitPath: '1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f',
   hidePath: 'dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099',
-  shortPath: '9e2f77d23b6bcf34b5e4fef12c672d73496f5d43ed6a88b7dbf48748dc680a8c',
-  afroPath: '3ce7a4c9c42268f3d7333fe1cb1cca9a8529a244ddd98870009b2c6b44a97ce9',
+  shortPath: 'a2637b4d14055cbd537b9b0f6e46c695b4a5bdc99e7d779956d58218ffc626a0',
+  afroPath: '3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474',
 };
 const expectedBodyIndex = '4c29f318e20b87a2c0ddce3689fa0ab285ee390fc02e5f3a017736df772a3661';
 const LEG_BONES_DIAG = new Set(['leftupleg', 'rightupleg', 'leftleg', 'rightleg', 'leftfoot', 'rightfoot', 'lefttoebase', 'righttoebase']);

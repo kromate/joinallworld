@@ -8,6 +8,7 @@ import { applyAuthoredPresentation } from './authored-presentation.ts';
 import { completeCharacterKit } from './assets.ts';
 import { applyAuthoredEyeMaterial } from './eye-material.ts';
 import { applySkinMaterial } from './skin-material.ts';
+import { createNativePoseController } from './native-pose.ts';
 
 const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
@@ -39,6 +40,7 @@ let candidate:Awaited<ReturnType<typeof loadCompleteCharacter>>|null=null;
 let presentation:Awaited<ReturnType<typeof applyAuthoredPresentation>>|null=null;
 let eyes:ReturnType<typeof applyAuthoredEyeMaterial>|null=null;
 let skin:Awaited<ReturnType<typeof applySkinMaterial>>|null=null;
+let nativePose:ReturnType<typeof createNativePoseController>|null=null;
 let state={body:'woman',expression:'grin',pose:'idle',focus:'body'};
 let yaw=-.2,seconds=0,running=false,generation=0;
 let frames:number[]=[];
@@ -69,7 +71,7 @@ function draw(){
     if(state.pose==='rest'){
       const body=candidate.object.getObjectByName('Body') as THREE.SkinnedMesh;
       body.skeleton.pose();candidate.object.updateMatrixWorld(true);
-    }else candidate.sample(seconds,state.pose as 'idle'|'walk'|'dance');
+    }else nativePose?.apply(seconds,state.pose==='walk'?'walk':'idle');
     candidate.setExpression(state.expression as 'neutral'|'smile'|'grin'|'talk'|'blink',seconds);
   }
   scenes.forEach((scene,index)=>{
@@ -92,7 +94,7 @@ async function set(next:Partial<typeof state>){
   const seed='complete-authored-human';
   const look=normalizeLook({body:state.body,hair:state.body==='woman'?'afro':'lowcut',outfit:'casual',fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
   if(!candidate||previous.body!==state.body){
-    const ticket=++generation;skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();candidate?.dispose();skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
+    const ticket=++generation;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
     const loaded=await Promise.all([loadBody(kits[0]!,look,seed,1),loadCompleteCharacter(authoredKit,look,seed)]);
     if(ticket!==generation){loaded.forEach(body=>body.dispose());return;}
     const loadedSkin=await applySkinMaterial(loaded[1].object,look.body,look.skin);
@@ -102,6 +104,9 @@ async function set(next:Partial<typeof state>){
     baseline=loaded[0];candidate=loaded[1];skin=loadedSkin;
     presentation=loadedPresentation;
     eyes=applyAuthoredEyeMaterial(candidate.object);
+    const nativeBody=candidate.object.getObjectByName('Body') as THREE.SkinnedMesh;
+    nativeBody.skeleton.pose();candidate.object.updateMatrixWorld(true);
+    nativePose=createNativePoseController(candidate.object);nativePose.apply(0,'idle');
     fitAuthoredHeight(candidate.object);
     scenes[0]!.add(baseline.object);scenes[1]!.add(candidate.object);
   }else baseline!.wear(look,seed);
@@ -117,5 +122,5 @@ let drag:number|null=null;
 canvas.addEventListener('pointerdown',event=>{drag=event.clientX;canvas.setPointerCapture(event.pointerId);});
 canvas.addEventListener('pointermove',event=>{if(drag===null)return;yaw+=(event.clientX-drag)*.012;drag=event.clientX;draw();});
 for(const type of['pointerup','pointercancel'])canvas.addEventListener(type,()=>{drag=null;});window.addEventListener('resize',draw);
-Object.assign(window,{characterReview:{set,sample(time:number,angle=yaw){seconds=time;yaw=angle;draw();},snapshot(){return{state,yaw,seconds,frames,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,fit:candidate?.metrics,hair:presentation?.metrics,eyes:eyes?.metrics,skin:skin?.metrics};}}});
+Object.assign(window,{characterReview:{set,sample(time:number,angle=yaw){seconds=time;yaw=angle;draw();},snapshot(){return{state,yaw,seconds,frames,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,fit:candidate?.metrics,hair:presentation?.metrics,eyes:eyes?.metrics,skin:skin?.metrics,animation:'native-rig idle/walk prototype, no transferred rotations'};}}});
 await set({});Object.assign(window,{characterReady:true});

@@ -56,7 +56,7 @@ try {
       await evaluate(`window.characterReview.sample(.4, ${angle})`);
       await capture(body + '-idle-' + angleName);
     }
-    for (const pose of ['walk', 'dance']) {
+    for (const pose of ['walk']) {
       await evaluate(`window.characterReview.set(${JSON.stringify({pose})})`);
       for (const [frameName, time, angle] of [['front-a', .25, -.2], ['front-b', .8, -.2], ['profile', .55, Math.PI / 2]]) {
         await evaluate(`window.characterReview.sample(${time}, ${angle})`);

@@ -14,13 +14,13 @@ HERE = Path(__file__).resolve().parent
 EXPECTED = {
     "short02": {
         "input": "short02.glb",
-        "originalGlb": "55215b63770913a050e6adb8e7b7ad1e3a09a75f7644f1e81a85934af171ffbf",
+        "originalGlb": "2ebb82af65352ccf72e1108c8d4a7e2ec206b991061abc5018a44bd54343abee",
         "textureSha": "47fe33831a3929567c733356dd66243116e05df2ace1f884ddca0080b728229f",
         "textureBytes": 3_553_543,
     },
     "afro01": {
         "input": "afro01.glb",
-        "originalGlb": "3835b5bce566452213bd030eaebee8f90651c778f30a838bf07f3c766e7679c6",
+        "originalGlb": "510b3d92625608892299a9e2e1edd64ae8fea4adc87a5cd41f891224c614fa68",
         "textureSha": "dc0db7dd8a13802f02303ca7e49844b219e09db134471b7061538a8af8f7c7fb",
         "textureBytes": 4_817_185,
     },

@@ -12,8 +12,8 @@ from PIL import Image
 HERE = Path(__file__).resolve().parent
 MOBILE = runpy.run_path(str(HERE / "mobile-hair.py"))
 EXPECTED = {
-    "short02": ("9e2f77d23b6bcf34b5e4fef12c672d73496f5d43ed6a88b7dbf48748dc680a8c", 504432),
-    "afro01": ("3ce7a4c9c42268f3d7333fe1cb1cca9a8529a244ddd98870009b2c6b44a97ce9", 659460),
+    "short02": ("a2637b4d14055cbd537b9b0f6e46c695b4a5bdc99e7d779956d58218ffc626a0", 504432),
+    "afro01": ("3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474", 659456),
 }
 
 

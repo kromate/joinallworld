@@ -34,7 +34,7 @@ HAIR_INPUTS = {
         "mhmat": ("https://raw.githubusercontent.com/s20220526/makehuman-assets/" + ASSET_PIN + "/base/hair/short02/short02.mhmat", "2ed04c8aad9c1a35d858ca72091525d32b1da3b61b5a031634dd528fd8530f6d", 1_323),
         "texture": ("https://download.tuxfamily.org/makehuman/assets/1.1/base/hair/short02/short02_diffuse.png", "47fe33831a3929567c733356dd66243116e05df2ace1f884ddca0080b728229f", 3_553_543, "47fe33831a3929567c733356dd66243116e05df2ace1f884ddca0080b728229f"),
         "pointer": ("https://raw.githubusercontent.com/s20220526/makehuman-assets/" + ASSET_PIN + "/base/hair/short02/short02_diffuse.png", "27e0a8d958c8d00ae7ff0dd3d59d4b6712f9a3c2b33d34c5fa5154aaa809b5ef", 132),
-        "textureName": "short02_diffuse.png", "textureLfsSize": 3_553_543, "textureField": "diffuseTexture short02_diffuse.png", "color": [0.36, 0.23, 0.13, 1.0],
+        "textureName": "short02_diffuse.png", "textureLfsSize": 3_553_543, "textureField": "diffuseTexture short02_diffuse.png", "color": [1.0, 1.0, 1.0, 1.0],
     },
     "afro01": {
         "kind": "hair", "obj": ("https://raw.githubusercontent.com/s20220526/makehuman-assets/" + ASSET_PIN + "/base/hair/afro01/afro01.obj", "8344fffef15120a05a89219f31184ca2958537223fa885c885137ad1e97edcb8", 130_040),
@@ -42,7 +42,7 @@ HAIR_INPUTS = {
         "mhmat": ("https://raw.githubusercontent.com/s20220526/makehuman-assets/" + ASSET_PIN + "/base/hair/afro01/afro01.mhmat", "6da1c6778df2450b135009274ed0145dc2dffbc5d8e287fc1d4c69ba539b483c", 1_030),
         "texture": ("https://download.tuxfamily.org/makehuman/assets/1.1/base/hair/afro01/afro_diffuse.png", "dc0db7dd8a13802f02303ca7e49844b219e09db134471b7061538a8af8f7c7fb", 4_817_185, "dc0db7dd8a13802f02303ca7e49844b219e09db134471b7061538a8af8f7c7fb"),
         "pointer": ("https://raw.githubusercontent.com/s20220526/makehuman-assets/" + ASSET_PIN + "/base/hair/afro01/afro_diffuse.png", "f558e275ba7fe28b213ad12e462ab8f63fd6a6de2f42497e7b7509c9ff91269f", 132),
-        "textureName": "afro_diffuse.png", "textureLfsSize": 4_817_185, "textureField": "diffuseTexture afro_diffuse.png", "color": [0.18, 0.11, 0.065, 1.0],
+        "textureName": "afro_diffuse.png", "textureLfsSize": 4_817_185, "textureField": "diffuseTexture afro_diffuse.png", "color": [1.0, 1.0, 1.0, 1.0],
     },
 }
 for sex in ("female", "male"):
@@ -355,7 +355,13 @@ def main():
         anchor_vertex_ids.extend(rows[source_vertex][0])
         anchor_barycentrics.extend(rows[source_vertex][1])
         positions.extend(transform(mapped_neutral[source_vertex]))
-        uvs.extend(garment_uv[uv_index] if uv_index >= 0 else (0.0, 0.0))
+        # OBJ vt coordinates conventionally use a lower-left image origin;
+        # glTF TEXCOORD_0 uses the image upper-left origin. The pinned source
+        # maps confirm this transform: flipping V raises alpha coverage on the
+        # source hair triangles from 59.14% to 79.02% (short02) and from 57.91%
+        # to 97.64% (afro01). Clothing exports retain their existing OBJ UVs.
+        source_uv = garment_uv[uv_index] if uv_index >= 0 else (0.0, 0.0)
+        uvs.extend((source_uv[0], 1.0 - source_uv[1]) if hair else source_uv)
         morph_f.extend(tuple((mapped_female[source_vertex][k] - mapped_neutral[source_vertex][k]) * 0.1 for k in range(3)))
         morph_m.extend(tuple((mapped_male[source_vertex][k] - mapped_neutral[source_vertex][k]) * 0.1 for k in range(3)))
         indices, bary, _ = rows[source_vertex]
@@ -488,7 +494,7 @@ def main():
         "maleFitErrorSourceUnits": {"mean": mean_error, "p95": p95_error, "max": max_error},
         "sourceFitErrorByBodyShapeUnits": {"neutral": fit_neutral, "bodyFeminine": fit_female, "bodyMasculine": fit_male},
         "renderAcceptance": "not performed; this is source-space/export evidence only",
-        "material": {"mhmat": f"{asset_name}.mhmat" if hair else "no hair texture", "diffuseTexture": hair["textureName"] if hair else None, "pngWidthHeight": [2048, 2048] if hair else None, "pngBitDepth": 8 if hair else None, "pngColorType": "RGBA" if hair else None, "alphaMode": "BLEND" if hair else "OPAQUE", "textureColorSpace": "sRGB" if hair else None},
+        "material": {"mhmat": f"{asset_name}.mhmat" if hair else "no hair texture", "diffuseTexture": hair["textureName"] if hair else None, "sourceDiffuseColor": hair["color"][:3] if hair else None, "objToGltfV": "1-v" if hair else "unchanged", "pngWidthHeight": [2048, 2048] if hair else None, "pngBitDepth": 8 if hair else None, "pngColorType": "RGBA" if hair else None, "alphaMode": "BLEND" if hair else "OPAQUE", "textureColorSpace": "sRGB" if hair else None},
         "generatedGlb": str(output),
     }
     args.output_dir.mkdir(parents=True, exist_ok=True)

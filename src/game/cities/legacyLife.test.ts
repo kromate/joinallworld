@@ -16,9 +16,12 @@ const NOW = Date.UTC(2026, 0, 5, 14)
 
 test('a Lagos life saved without the city fields is read as it was, with its job and hunt filed under Lagos', () => {
   const old = saved()
+  const beforeNormalization = structuredClone(old)
   assert.equal('city' in (old.career as object), false)
   assert.equal('city' in ((old.civic as { hunt: object }).hunt), false)
   const state = createLife(old, { now: NOW, cityId: 'lagos' })
+  assert.deepEqual(old, beforeNormalization, 'reading a legacy save never rewrites its stored input')
+  assert.equal(state.career.teachingGeneration, 0, 'legacy saves receive only the initial teaching generation')
   assert.equal(state.career.city, 'lagos')
   assert.equal(state.civic.hunt?.city, 'lagos')
   assert.equal(state.job, 'community-helper')
@@ -32,7 +35,7 @@ test('a Lagos life saved without the city fields is read as it was, with its job
   // A life saved before businesses existed gains the empty business slice and nothing else.
   assert.deepEqual(read.business, { opened: 0, sales: 0, spent: 0, buys: { day: 0, spent: 0, count: 0 }, bag: {} })
   delete read.business; delete read.stories
-  delete read.career.city; delete read.career.transferDay; delete read.travel.skipped; delete read.estate.home; delete read.estate.homeAt; delete read.economy.headsUp; delete read.home.fuel; if (read.civic.hunt) delete read.civic.hunt.city
+  delete read.career.city; delete read.career.transferDay; delete read.career.teachingGeneration; delete read.travel.skipped; delete read.estate.home; delete read.estate.homeAt; delete read.economy.headsUp; delete read.home.fuel; if (read.civic.hunt) delete read.civic.hunt.city
   assert.deepEqual(read, { ...old, t: read.t })
   assert.deepEqual(plain(createLife(plain(state), { now: NOW, cityId: 'lagos' })), plain(state), 'reading it again changes nothing')
   assert.equal(viewLife(state, { now: NOW, cityId: 'lagos' }).career.employed, true)

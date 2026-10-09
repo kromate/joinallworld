@@ -1,4 +1,50 @@
-# Accepted worker recovery phase — 9 October 2026
+# World delivery checkpoint, 9 October 2026
+
+Production still has one travel-enabled country, Nigeria, on
+`joinallworld-a44629b38be751a9ad446051564`. Source files and passing source audits
+do not open countries in production. The immediate target is Cameroon, Togo,
+Ghana, Kenya and Algeria, with actual visits, reloads and return to the original
+home. Integration owns the combined branch; WORLD remains the sole uploader of
+the exact accepted package.
+
+Integration candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130
+focused checks and 12 overlapping checks. Its
+[fast CI](https://github.com/kromate/joinallworld/actions/runs/37962397132)
+passed compiler, build and policy, but startup downloads failed unchanged caps:
+627208/615000 raw, 226993/223000 gzip and 198637/195600 Brotli bytes. Full suites
+were skipped. Vite grouped the dynamically imported recovery reader and planner
+into the eager game chunk; Integration is repairing that grouping. Final size,
+complete required suites, rendered journeys, sealed package and production
+continuity remain unaccepted. No new upload has occurred.
+
+All 45 first-five packet files and both selected airport-desk files match that
+immutable candidate. The reusable check in
+[SOURCE-PACKET-HANDOFF.md](SOURCE-PACKET-HANDOFF.md) has ten isolated CLI tests;
+its output always keeps `releaseReady: false`. Twenty starter cities retain
+source assets across four batches. At WORLD source
+`3bfd549ec3d784da30cfe8a650b4bd3dbba3b50f`, the
+[first-five audit](https://github.com/kromate/joinallworld/actions/runs/37963180060)
+and [ten-city rollout audit](https://github.com/kromate/joinallworld/actions/runs/37963180253)
+passed on Node 22.19 and 24. The later fifteen cities remain outside the first
+production phase; these small central samples are not whole-city coverage.
+
+The separate [Juba selection](playable-africa-rollout/south-sudan/selection.json)
+resolves source identity through exact ISO SS and strict containment inside the
+pinned South Sudan polygon. It retains the internal SDS/SSD discrepancy and
+capital/timezone caveats. Its reproducible point generator passed 17 synthetic
+checks and a real cached-data check in 1.43 seconds at 225 MB peak RSS, zero swaps,
+under the shared heavy-one slot. Existing inventory and city receipts are
+unchanged. This point is not a new playable destination; a future generation
+adapter must consume it explicitly.
+
+Keep the full world goal active: country and city depth, efficient unattended
+acquisition/compilation/streaming, sourced regional conditions, Nigeria rendering
+and save preservation, other continents, and physical-device performance remain
+required. Serialize local heavy work through the shared slot; current Integration
+build ownership takes priority. The worker-recovery checkpoints below are
+historical and do not describe the current active release task.
+
+## Historical accepted worker recovery phase, 9 October 2026
 
 Exact e9eb7bbfd915e6e4d5fbb7c1b8bf96add66ebd27 is accepted on Linux and macOS.
 [Run 37923993054](https://github.com/kromate/joinallworld/actions/runs/37923993054)

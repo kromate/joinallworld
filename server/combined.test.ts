@@ -88,10 +88,30 @@ async function world(t: TestContext, options: FixtureOptions = {}) {
   }
   /** Make a player a trader: money earned from work, hungry enough to eat, standing at a market. */
   const trader = (who: Who, city = 'lagos', venue = 'market') => edit(who, (state) => { state.cash = 300000; state.ledger = []; state.ledgerDays = []; state.location = venue; state.social.earned = 30000; state.needs.hunger = 30; }, city);
+  const buyQuotes = new Map<string, { expectedPrice: number; expectedTotal: number }>();
   const shop = {
     open: (who: Who, city = 'lagos', venue = 'market', extra: object = {}) => post('/api/business/open', { cityId: city, venue, type: 'food', name: 'Mama Put', colour: 'gold', icon: '🍲', requestId: f.id(), ...extra }, who),
     stock: (who: Who, items: object, city = 'lagos') => post('/api/business/stock', { cityId: city, items, requestId: f.id() }, who),
-    buy: (who: Who, owner: string, product = 'jollof', units = 1, city = 'lagos', requestId = f.id()) => post('/api/business/buy', { cityId: city, shop: owner, product, units, requestId }, who),
+    buy: async (who: Who, owner: string, product = 'jollof', units = 1, city = 'lagos', requestId = f.id()) => {
+      const body: Record<string, unknown> = { cityId: city, shop: owner, product, units, requestId };
+      if (product && Number.isSafeInteger(units) && units >= 1 && units <= 3) {
+        let quoted = buyQuotes.get(requestId);
+        if (!quoted) {
+          const venue = await get(`/api/business/venue?city=${city}&venue=market`, who);
+          const shops = Array.isArray(venue.shops) ? venue.shops.map(object) : [];
+          const stall = shops.find((entry) => entry.id === owner || object(entry.owner).id === owner);
+          const item = stall && Array.isArray(stall.items) ? stall.items.map(object).find((entry) => entry.id === product) : undefined;
+          const quotes = item && Array.isArray(item.quotes) ? item.quotes.map(object) : [];
+          const quote = quotes.find((entry) => entry.units === units);
+          if (item && quote) {
+            quoted = { expectedPrice: Number(item.price), expectedTotal: Number(quote.total) };
+            buyQuotes.set(requestId, quoted);
+          }
+        }
+        if (quoted) Object.assign(body, quoted);
+      }
+      return post('/api/business/buy', body, who);
+    },
     mine: async (who: Who, city = 'lagos') => object((await get(`/api/business/mine?city=${city}`, who)).mine),
   };
   return { f, post, get, player, signIn, befriend, ear, until, quiet, edit, life, act, trip, trader, shop };

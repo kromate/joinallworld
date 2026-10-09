@@ -141,6 +141,17 @@ jobs:
           --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:|sim tabs:|Profile:|Goals:'
           src/app/features/panelsA.test.ts
 
+      - name: Business quote and identity-safe retry acceptance
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          server/business.test.ts server/combined.test.ts
+          server/politics.test.ts server/politics-assembly.test.ts
+          server/once.test.ts src/app/features/civic/civicCore.test.ts
+          src/client.test.ts
+
+      - name: Private voice Node acceptance
+        run: node --experimental-strip-types --test --test-concurrency=1 server/social/voice-notes.test.ts
+
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
       - name: Existing Worker host and timed-action checks
         run: >-
@@ -148,6 +159,11 @@ jobs:
           deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts
           deploy/admin.edge.test.ts deploy/ride-credit.edge.test.ts
           deploy/visit.edge.test.ts
+
+      - name: Business quote and private voice Worker acceptance
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          deploy/business.edge.test.ts deploy/voice-notes.edge.test.ts
 
   full:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks

@@ -11,7 +11,7 @@ import { defineAsyncComponent } from 'vue'
 import { civicTitle, civicOffice } from '../../../game/cities/terminology.ts'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
-import { civicNews } from './civicCore.ts'
+import { civicNews } from './civicBadges.ts'
 
 export const governor = definePanel({
   id: 'governor', title: 'Chairman', titleFor: state => civicTitle(state.estate.city), placement: 'phone', order: 40, live: false, group: 'city',

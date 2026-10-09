@@ -103,7 +103,12 @@ async function open(): Promise<void> {
   const result = await paid('open', 'open', '/api/business/open', { venue: here.value, type: draft.type, name: draft.name.trim(), colour: draft.colour, icon: draft.icon }, '')
   if (result.ok) { draft.name = ''; tab.value = 'mine' }
 }
-const buy = (card: ShopCard, item: ShopItem): Promise<SendResult> => paid('buy', `buy:${card.id}:${item.id}`, '/api/business/buy', { shop: card.id, product: item.id, units: 1 }, `${item.label} from ${card.name}.`)
+const quoteOf = (item: ShopItem) => item.quotes?.find((quote) => quote.units === 1)
+async function buy(card: ShopCard, item: ShopItem): Promise<SendResult> {
+  const quote = quoteOf(item)
+  if (!quote) { market.reload(); return { ok: false, code: 'quote_required' } }
+  return paid('buy', `buy:${card.id}:${item.id}`, '/api/business/buy', { shop: card.id, product: item.id, units: 1, expectedPrice: item.price, expectedTotal: quote.total }, `${item.label} from ${card.name}.`)
+}
 async function rate(card: ShopCard, stars: number): Promise<void> { taken(await server.send(`rate:${card.id}`, '/api/business/rate', { shop: card.id, stars }, { success: 'Thanks for rating.' })) }
 async function report(card: ShopCard): Promise<void> { await server.send(`report:${card.id}`, '/api/business/report', { shop: card.id, reason: 'name' }, { success: 'Reported. A moderator will look at it.' }) }
 
@@ -226,8 +231,9 @@ const rules = [
               </header>
               <ul class="biz-list">
                 <li v-for="item in card.items" :key="item.id">
-                  <div class="biz-what"><strong>{{ item.label }}</strong><small>{{ item.does }} · {{ item.stock > 0 ? `${item.stock} left` : 'sold out' }}</small></div>
-                  <CivicAction primary :working="server.busy(`buy:${card.id}:${item.id}`)" :reason="buyWhy(card, item, wallet)" @click="buy(card, item)">Buy · {{ money(item.price) }}</CivicAction>
+                  <div class="biz-what"><strong>{{ item.label }}</strong><small>{{ item.does }} · {{ item.stock > 0 ? `${item.stock} left` : 'sold out' }}</small><small v-if="quoteOf(item)">Total includes {{ money(quoteOf(item)?.tax ?? 0) }} tax</small></div>
+                  <CivicAction v-if="quoteOf(item)" primary :working="server.busy(`buy:${card.id}:${item.id}`)" :reason="buyWhy(card, { ...item, price: quoteOf(item)?.total ?? item.price }, wallet)" @click="buy(card, item)">Buy · {{ money(quoteOf(item)?.total ?? item.price) }}</CivicAction>
+                  <BaseButton v-else small @click="market.reload">Refresh price</BaseButton>
                 </li>
               </ul>
               <div v-if="card.canRate" class="biz-rate" role="group" :aria-label="`Rate ${card.name}`"><span>Rate your purchase</span><button v-for="stars in 5" :key="stars" type="button" :aria-label="plural(stars, 'star')" @click="rate(card, stars)">★</button></div>

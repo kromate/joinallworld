@@ -31,6 +31,7 @@ async function save(body: ChatPrefsBody): Promise<void> {
     <label class="switch"><input type="checkbox" :disabled="saving" :checked="displayed.mentions === 'on'" @change="save({ mentions: ($event.target as HTMLInputElement).checked ? 'on' : 'off' })"> Let a mention reach me even when a group is muted</label>
     <label class="switch"><input type="checkbox" :disabled="saving" :checked="displayed.introductions === 'on'" @change="save({ introductions: ($event.target as HTMLInputElement).checked ? 'on' : 'off' })"> Let regulars offer to introduce me to people I keep bumping into</label>
     <p>Only people who have this on too are ever offered, and only when they are standing in the same place as you. Switching it off deletes what was kept about your visits.</p>
+    <fieldset :disabled="saving"><legend>Voice notes</legend><label><input type="checkbox" :checked="displayed.voiceNotes !== 'nobody'" @change="save({ voiceNotes: ($event.target as HTMLInputElement).checked ? 'friends' : 'nobody' })"> Receive voice notes from friends and groups</label><p>Recordings only download when you press play. Turn this off to stop receiving them.</p></fieldset>
     <p v-if="saving" role="status">Saving chat settings…</p>
     <p v-if="error" class="settings-error" role="alert">{{ error }}</p>
     <NotifySettings :notify="prefs.notify" />

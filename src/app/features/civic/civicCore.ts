@@ -7,11 +7,10 @@
 //   - after a success the life is re-synced so the wallet shows the new balance.
 // The cache is reactive, so a screen reads it and redraws by itself; nothing here calls render.
 // Rules and validation live on the server (server/civic) and in src/game/systems/civic.ts.
-// This file is in the first download (the Governor badge reads the cache): the request helpers the civic screens use are in
-// civicClient.ts, fetched with them.
+// Loaded with civic screens. The panel registry reads the store through civicBadges.ts after it is created.
 import { reactive, shallowReactive } from 'vue'
-import type { CivicNotice } from '../../../types/civic.ts'
-import { pulseKey, unseenNews } from './civicBasics.ts'
+import { civicBadgeStore } from './civicBadges.ts'
+export { civicNews, newestNotice } from './civicBadges.ts'
 
 export interface CivicEntry<T = unknown> { data: T | null; at: number; path: string; loading: boolean; error: string | null }
 const blank = <T>(): CivicEntry<T> => ({ data: null, at: 0, path: '', loading: false, error: null })
@@ -27,10 +26,10 @@ export type SendResult = { ok: boolean; code: string; reason?: string } & Record
 
 const NEWS_KEY = 'joinallworld-civic-news-read'
 export interface NewsRead { at(cityId: string): number; mark(cityId: string, newest: number): boolean }
-export function createNewsRead(storage: () => Pick<Storage, 'getItem' | 'setItem'> | null | undefined): NewsRead {
+export function createNewsRead(storage: () => Pick<Storage, 'getItem' | 'setItem'> | null | undefined, key = NEWS_KEY): NewsRead {
   let read: Record<string, number> | null = null
   const load = (): Record<string, number> => {
-    if (!read) { try { read = JSON.parse(storage()?.getItem(NEWS_KEY) ?? 'null') || {} } catch { read = {} } }
+    if (!read) { try { read = JSON.parse(storage()?.getItem(key) ?? 'null') || {} } catch { read = {} } }
     return read ?? {}
   }
   return {
@@ -39,7 +38,7 @@ export function createNewsRead(storage: () => Pick<Storage, 'getItem' | 'setItem
       const all = load()
       if (newest <= (Number(all[cityId]) || 0)) return false
       all[cityId] = newest
-      try { storage()?.setItem(NEWS_KEY, JSON.stringify(all)) } catch { /* read for this visit only */ }
+      try { storage()?.setItem(key, JSON.stringify(all)) } catch { /* read for this visit only */ }
       return true
     },
   }
@@ -48,31 +47,31 @@ export function createNewsRead(storage: () => Pick<Storage, 'getItem' | 'setItem
 // ---- the one shared store of this page ---------------------------------------------------------
 
 export interface CivicStore {
+  actor: { id: string | null; generation: number }
   cache: Map<string, CivicEntry>
   /** Tags of the writes that are on their way: reactive, so a pressed control shows "Working…". */
   pending: Set<string>
   news: NewsRead
+  newsFor(actor: string | null): NewsRead
 }
-export const createStore = (storage: () => Pick<Storage, 'getItem' | 'setItem'> | null | undefined = () => globalThis.localStorage): CivicStore => ({
-  cache: new Map(), pending: reactive(new Set<string>()), news: createNewsRead(storage),
+export const createStore = (storage: () => Pick<Storage, 'getItem' | 'setItem'> | null | undefined = () => globalThis.localStorage): CivicStore => shallowReactive({
+  actor: shallowReactive({ id: null, generation: 0 }), cache: shallowReactive(new Map<string, CivicEntry>()), pending: reactive(new Set<string>()), news: createNewsRead(storage),
+  newsFor: (actor: string | null) => createNewsRead(actor === null ? () => null : storage, `${NEWS_KEY}:${actor ?? 'anonymous'}`),
 })
 export const sharedStore: CivicStore = createStore()
+civicBadgeStore.value = sharedStore
+
+export function civicActor(store: CivicStore, actor: string | null): void {
+  if (store.actor.id === actor) return
+  store.actor.id = actor
+  store.actor.generation += 1
+  for (const item of store.cache.values()) Object.assign(item, blank())
+  store.pending.clear()
+  store.news = store.newsFor(actor)
+}
 
 export const entryOf = <T>(store: CivicStore, key: string): CivicEntry<T> => {
   let item = store.cache.get(key)
   if (!item) { item = shallowReactive(blank()); store.cache.set(key, item) }
   return item as CivicEntry<T>
-}
-
-export function newestNotice(store: CivicStore, cityId: string): readonly Pick<CivicNotice, 'at'>[] {
-  const own = (store.cache.get(pulseKey(cityId))?.data as { notices?: readonly CivicNotice[] } | null)?.notices
-  return own ?? []
-}
-/**
- * City news (a new Governor, an announcement) that is new to THIS life and that the player has not
- * opened the Governor app for yet: its badge on the Phone. News from before the life began in the
- * city (state.civic.since) never counts, so a brand-new life starts with no badge.
- */
-export function civicNews(view: { cityId: string }, state: { civic?: { since?: number | null } | null }, store: CivicStore = sharedStore): number {
-  return unseenNews(newestNotice(store, view.cityId), { readAt: store.news.at(view.cityId), since: state.civic?.since ?? null })
 }

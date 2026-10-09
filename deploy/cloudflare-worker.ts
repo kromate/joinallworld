@@ -45,6 +45,7 @@ import { ADMIN_HOST_ENV, ADMIN_ROBOTS, ADMIN_SHELL, adminAddress, adminHostName,
 import { withPathMeta } from '../server/path-meta.ts';
 import { createSqliteStore } from './sqlite-store.ts';
 import { parseLayout } from '../server/keyed.ts';
+import { createSqliteVoices } from './sqlite-voices.ts';
 import { createSqliteImages } from './sqlite-images.ts';
 import { LIMITER_CAPS, createMemoryLimiter, limiterBatch, limiterClass, type LimiterClass } from '../server/limiter.ts';
 import { sqliteShardBackend } from './sqlite-shards.ts';
@@ -71,7 +72,7 @@ import telemetryRoutes from '../server/telemetry/routes.ts';
 import { capacityConfig, type CapacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from '../server/host-context.ts';
 import { SESSION_TTL_MS, ACTION_WINDOW_MS, UUID_PATTERN, protocolError, publicSession, isSameOrigin, renewSession, renewResolved, sessionOfCookie, collection, canOccupyVenue, STUN_ONLY_CONFIG, validateVoiceConfig, SOCKET_BUSY_CODE } from '../server/protocol.ts';
 import type { CityId, HeartbeatFrame, ServerFrame, SocketErrorCode } from '../src/types/protocol.ts';
-import type { AccountDeviceRecord, Db, HttpError, ImageStore, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
+import type { AccountDeviceRecord, Db, HttpError, ImageStore, VoiceStore, IncomingFrame, PageHandler, RouteContext, RouteResult, RouteTable, ServerEvents, SessionRecord, ShardStore, WsDispatch } from '../server/types.ts';
 import type { HostSocket, SocketInfo, SqliteStore, WorkerRequest } from './host-seam.ts';
 
 /** How often connected sockets are asked for a sign of life (a timer in memory), and how often the alarm wakes the object whoever is connected. */
@@ -300,6 +301,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   store: SqliteStore;
   shards: ShardStore;
   images: ImageStore;
+  voices: VoiceStore;
   sweepAt: number;
   expirySweepAt: number;
   shortLimits: ReturnType<typeof createMemoryLimiter>;
@@ -328,6 +330,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     this.sleeps = env.SLEEP_BETWEEN_BEATS === '1';
     this.store = createSqliteStore(storage, { barrier, lazyFlushMs: this.sleeps ? 0 : LAZY_FLUSH_MS, layout: parseLayout(env.STORE_LAYOUT) ?? 'legacy', log });
     this.images = createSqliteImages(storage);
+    this.voices = createSqliteVoices(storage);
     // The world registry: one append-only shard per local government, as rows beside the main tables (sqlite-shards.ts).
     this.shards = createShardStoreOn(sqliteShardBackend(storage, { barrier, beforeWrite: () => this.store.assertWritable() }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
     // THE LIMITER (server/limiter.ts), bounded per class. SHORT windows (a minute or less: every request, every socket frame) are
@@ -365,7 +368,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const open = (): HostSocket[] => [...this.held.all].filter(ws => ws.readyState === 1);
     const openOf = (id: string): HostSocket[] => [...this.held.byPlayer.get(id) ?? []].filter(ws => ws.readyState === 1);
     const context: RouteContext = this.context = {
-      store: this.store, images: this.images, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
+      store: this.store, images: this.images, voices: this.voices, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
       randomId: () => crypto.randomUUID(),
       // Relay credentials for calls (server/call-relay.ts): the day's count lives in the object's own storage, so the ceiling holds across restarts.
       callRelay: createCallRelay({
@@ -619,6 +622,8 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   session(request: WorkerRequest, db: Db, renew = false): SessionRecord | undefined {
     const found = sessionOfCookie(db, request.cookie, Date.now(), request.binding !== undefined);
     if (!found) return undefined;
+    const expectedActor = request.raw.headers.get('x-allworld-actor');
+    if (expectedActor !== null && expectedActor !== found.session.publicId) throw protocolError(409, 'actor_changed');
     if (renew) renewResolved(found, Date.now(), SESSION_TTL_MS, RENEW_SLACK_MS);
     request.secret = found.session.secret;
     return found.session;
@@ -670,7 +675,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (result.file && status < 300) {
         // Bytes a route hands over as they are (a chat picture): private to the caller, never sniffed, shown in the page.
         this.telemetry.http({ method: raw.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId });
-        return new Response(result.file.bytes, { status, headers: headersOf({ 'content-type': result.file.type, 'cache-control': 'private, max-age=300', 'x-content-type-options': 'nosniff', 'content-disposition': 'inline', 'cross-origin-resource-policy': 'same-origin' }) });
+        return new Response(result.file.bytes, { status, headers: headersOf({ 'content-type': result.file.type, 'cache-control': result.file.cache ?? 'private, max-age=300', 'x-content-type-options': 'nosniff', 'content-disposition': 'inline', 'cross-origin-resource-policy': 'same-origin' }) });
       }
       this.telemetry.http({ method: raw.method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId, body: result.body, action: { type: request.body?.['type'], code: (result.body as { code?: unknown } | undefined)?.code } });
       const plain = result.body && typeof result.body === 'object' && !Array.isArray(result.body);

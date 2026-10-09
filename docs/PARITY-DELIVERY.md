@@ -2,6 +2,28 @@
 
 This is the current tracker for the combined work from the research chat and “Review thread for remaining work” (01a115e4-c2fc-7300-a97c-d9d0dedf9e91). Updated 9 October 2026.
 
+## Current consolidated delivery, 9 October 2026
+
+Anthony authorized one consolidated delivery on **`codex/allworld-consolidated-delivery`**, with Integration as sole assembly writer and WORLD as sole production uploader. All existing implemented UI, voice, gameplay, graphics and WORLD work must be accounted for; rejected diagnostics remain preserved and parked with reasons. New feature expansion waits until consolidation closes. The broader persistent programme below remains active.
+
+[The consolidation manifest](ALLWORLD-CONSOLIDATION-MANIFEST.json) records owner, source, accepted/repairing/safely-disabled/parked state and gates, including every submitted GRAPHICS path. Fresh main `4c0899d2` merged cleanly at `019f4297`. The dirty Desktop checkout remains untouched. Accepted source is not a production acceptance claim.
+
+| Unit | Source state | Evidence / remaining gate |
+|---|---|---|
+| Reviewed UI `b9de1ab7` and accepted WORLD foundation | Assembled | Historical exact UI CI37909238070; current combined gates pending |
+| Business unit price and inclusive totals, quantities 1–3 | Implemented, repairing | Stale/malformed/tax/legacy-receipt probes prepared, not executed |
+| Actor-scoped Civic/client/host/voice requests | Astra source review complete | Eight focused actor/retry cases prepared; authoritative runtime and budget acceptance pending |
+| Private voice checkpoint `b193bd77` | Assembled preserving Family/UI | Node/Worker permissions/replay/delete/restart probes prepared; actual browser and Safari AAC open |
+| WORLD recovery and Nigeria renderer | Exact owner packet requested | Recovery remote37923993054 passed; combined integration pending |
+| LIVING implemented source | Full intended inventory requested | Runtime snapshot not blanket accepted; owner repair and Worker teaching proof pending |
+| Interactive teaching starts | Safely disabled plan; exact patch pending | Old a446 drops markers and can pay an unfinished shift. Keep compatible reader guards; establish compatible baseline before activation |
+| GRAPHICS | 63-path inventory preserved | Minimal NPC packet requested; rejected hair/loader/neckline/sofa and physical provenance remain parked |
+| Research | Exact public queues preserved | Original739 IDs/254 scheduled traversals; 6 branches,58 images,28 residual URLs and Recent sweep remain; city743/129 branches and truncated/image follow-up open |
+
+Fresh health on 9 October at11:31UTC confirms `joinallworld-a44629b38be751a9ad446051564`, Cloudflare transport. Provider version64ed is the last recorded receipt, not freshly queried. No save reset, namespace replacement, paid-tier change or new deployment occurred. Mac WARNING2/paging prevents new local heavy QA; bounded source work and remote exact-source validation continue.
+
+The monitor progress page carries the same consolidation inventory, source/CI/deployment events and historical safe preview images. Production ETA is unknown until exact combined compiler, budgets, Node/Worker/browser, compatible recovery, sealed upload and continuity gates pass. Physical iPhone/Safari/PWA, native200%zoom, sustained heat/lag and complete public-source research remain qualified gaps.
+
 ## Messaging release, 8 October 2026
 
 Source `bd69e765373e15a0e884b6406f7b4a06139a6acb` is deployed to `joinallworld-next`. Cloudflare version `2a557cac-ae7a-4a24-94eb-2a9be114b1ec` received 100% traffic at 11:13:50 UTC. Public health adopted `joinallworld-bd69e765373e15a0e884b6406f7` at 11:19:10 UTC. The existing provider binding names/types and SQLite namespace were verified unchanged.

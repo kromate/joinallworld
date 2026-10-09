@@ -109,8 +109,8 @@ export interface Refusal<Code extends string = string> {
 export type HostErrorCode = 'origin_rejected' | 'rate_limited' | 'not_found' | 'internal_error'
 /** request.json(): 415, 413 (body over 8 KB), 400. */
 export type JsonBodyErrorCode = 'json_required' | 'body_too_large' | 'invalid_json'
-/** request.requireSession(): 401. */
-export type SessionErrorCode = 'device_session_required'
+/** Session resolution: 401 if absent, 409 if the expected actor no longer owns the device session. */
+export type SessionErrorCode = 'device_session_required' | 'actor_changed'
 /** A write that could not be saved was undone: 503 with a `reason` (server/store.ts storageError). */
 export type StorageErrorCode = 'storage_unavailable'
 /** ctx.once / ctx.onceId (server/routes/once.ts): 400, 400, 409, 409, 429, 503. */
@@ -541,6 +541,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/social/conversations/:id/react',
   'POST /api/social/conversations/:id/message',
   'POST /api/social/notify',
+  'POST /api/social/voice',
+  'GET /api/social/voice/:id',
   'POST /api/social/images',
   'GET /api/social/images/:id',
   'GET /api/social/house/:host',
@@ -630,6 +632,8 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/admin/moderation/content/remove',
   'GET /api/admin/audit',
   'GET /api/admin/tools',
+  'GET /api/admin/moderation/voice/:id',
+  'POST /api/admin/moderation/voice/:id/act',
   'GET /api/admin/moderation/pictures',
   'GET /api/admin/moderation/pictures/:id',
   'POST /api/admin/moderation/pictures/:id/act',

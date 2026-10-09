@@ -175,7 +175,12 @@ export interface TypeView {
   known: boolean
   products: ProductView[]
 }
-export interface ShopItem { id: string; label: string; icon: string; price: number; stock: number; does: string }
+export interface ShopQuote { units: number; total: number; tax: number }
+export interface ShopItem {
+  id: string; label: string; icon: string; price: number; stock: number; does: string
+  /** Combined-subtotal sale levies, computed by the server. Older cached views may omit quotes. */
+  quotes?: ShopQuote[]
+}
 /** A shop as anybody at the market sees it. */
 export interface ShopCard {
   id: string
@@ -286,7 +291,7 @@ export interface BusinessHttpRoutes {
   'POST /api/business/bag': { body: Paid<{ venue: string; product: string; units: number }>; response: Ok<ShopWriteResponse>; errors: BusinessWrite | OnceErrorCode }
   'POST /api/business/bag/stock': { body: Paid; response: Ok<ShopWriteResponse>; errors: BusinessWrite | OnceErrorCode }
   'POST /api/business/bag/return': { body: Paid; response: Ok<ShopWriteResponse>; errors: BusinessWrite | OnceErrorCode }
-  'POST /api/business/buy': { body: Paid<{ shop: string; product: string; units: number }>; response: Ok<ShopBuyResponse>; errors: BusinessWrite | OnceErrorCode }
+  'POST /api/business/buy': { body: Paid<{ shop: string; product: string; units: number; expectedPrice?: number; expectedTotal?: number }>; response: Ok<ShopBuyResponse>; errors: BusinessWrite | OnceErrorCode }
   'POST /api/business/rate': { body: { cityId: CityId; shop: string; stars: number }; response: Ok<{ ok: boolean; code: string; reason?: string; market: VenueShopsResponse }>; errors: BusinessWrite }
   'POST /api/business/report': { body: { cityId: CityId; shop: string; reason: 'name' | 'scam' | 'other' }; response: Ok<{ ok: boolean; code: string; reason?: string }>; errors: BusinessWrite }
   'GET /api/mod/business/reports': { response: Ok<{ reports: (ShopReport & { live: boolean; current: string | null | undefined })[]; shops: number }>; errors: OperatorError }

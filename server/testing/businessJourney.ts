@@ -38,6 +38,30 @@ export async function businessJourney(host: BusinessHost): Promise<BusinessResul
   const mine = async (device: JourneyDevice): Promise<Record<string, unknown> | null> => { const found = (await get('/api/business/mine?city=lagos', device)).mine; return found ? object(found) : null }
   const market = (device?: JourneyDevice) => get('/api/business/venue?city=lagos&venue=market', device)
   const item = (shop: Record<string, unknown>, product: string) => { const found = list(shop.items).find((entry) => entry.id === product); assert.ok(found, product); return found }
+  const quote = (shop: Record<string, unknown>, product: string, units: number) => {
+    const found = list(item(shop, product).quotes).find((entry) => entry.units === units)
+    assert.ok(found, `${product} × ${units} quote`)
+    return found
+  }
+  const quotes = new Map<string, { expectedPrice: number; expectedTotal: number }>()
+  async function buy(shopId: string, product: string, units: number, requestId: string, device: JourneyDevice): Promise<Record<string, unknown>> {
+    const body: Record<string, unknown> = { cityId: 'lagos', shop: shopId, product, units, requestId }
+    if (typeof shopId === 'string' && product && Number.isSafeInteger(units) && units >= 1 && units <= 3) {
+      let quoted = quotes.get(requestId)
+      if (!quoted) {
+        const view = await market(device)
+        const shop = list(view.shops).find((entry) => entry.id === shopId || object(entry.owner).id === shopId)
+        const found = shop && list(shop.items).find((entry) => entry.id === product)
+        const quote = found && list(found.quotes).find((entry) => entry.units === units)
+        if (found && quote) {
+          quoted = { expectedPrice: number(found.price), expectedTotal: number(quote.total) }
+          quotes.set(requestId, quoted)
+        }
+      }
+      if (quoted) Object.assign(body, quoted)
+    }
+    return post('/api/business/buy', body, device)
+  }
   /** A settled player standing in the Lagos market with money they worked for. */
   async function trader(name: string): Promise<JourneyDevice> {
     const device = await start(`${name}${randomUUID().slice(0, 4)}`, 'lagos', 'ikeja')
@@ -91,15 +115,41 @@ export async function businessJourney(host: BusinessHost): Promise<BusinessResul
   const stall = seen[0] ?? {}
   assert.deepEqual([stall.name, stall.mine, stall.blocked, object(stall.owner).id, item(stall, 'jollof').price, stall.stars], ['Mama Put', false, false, ada.id, 700, 3])
   const shop = String(stall.id)
-  assert.equal((await post('/api/business/buy', { cityId: 'lagos', shop, product: 'jollof', units: 1, requestId: id() }, ada)).code, 'own_shop')
-  assert.equal((await post('/api/business/buy', { cityId: 'lagos', shop, product: 'jollof', units: 9, requestId: id() }, bola)).code, 'invalid_units')
+  const twoQuote = quote(stall, 'jollof', 2)
+  assert.deepEqual([twoQuote.total, twoQuote.tax], [1400, 0], 'the listed total includes the zero sale tax')
+  const unchangedBuyerCash = number((await life(bola, 'lagos')).cash)
+  const unchangedSellerTill = number(object(await mine(ada)).till)
+  const quoteFailures = [
+    { expectedPrice: 699, expectedTotal: 1400 },
+    {},
+    { expectedPrice: 700 },
+    { expectedTotal: 1400 },
+    { expectedPrice: '700', expectedTotal: 1400 },
+    { expectedPrice: 700, expectedTotal: '1400' },
+  ]
+  for (const invalid of quoteFailures) {
+    const refused = await post('/api/business/buy', { cityId: 'lagos', shop, product: 'jollof', units: 2, requestId: id(), ...invalid }, bola)
+    assert.equal(refused.code, invalid.expectedPrice === 699 ? 'quote_changed' : 'quote_required')
+    assert.equal(object(refused.state).cash, unchangedBuyerCash, 'a refused quote does not debit the buyer')
+  }
+  assert.equal(number(object(await mine(ada)).till), unchangedSellerTill, 'refused quotes do not credit the seller')
+  assert.equal((await buy(shop, 'jollof', 1, id(), ada)).code, 'own_shop')
+  assert.equal((await buy(shop, 'jollof', 9, id(), bola)).code, 'invalid_units')
   assert.equal((await post('/api/business/rate', { cityId: 'lagos', shop, stars: 5 }, bola)).code, 'nothing_to_rate')
   const buying = id(), stockBefore = number(item(list((await market(bola)).shops)[0] ?? {}, 'jollof').stock)
-  const bought = await post('/api/business/buy', { cityId: 'lagos', shop, product: 'jollof', units: 2, requestId: buying }, bola)
+  const buyerCashBefore = number((await life(bola, 'lagos')).cash)
+  const sellerTillBefore = number(object(await mine(ada)).till)
+  const bought = await buy(shop, 'jollof', 2, buying, bola)
   assert.deepEqual([bought.ok, bought.code, bought.amount, object(bought.state).cash], [true, 'bought', 1400, 98600])
+  assert.equal(buyerCashBefore - number(object(bought.state).cash), 1400, 'the buyer pays the exact tax-inclusive quote')
+  assert.equal(number(object(await mine(ada)).till) - sellerTillBefore, 1400, 'the seller receives the base amount exactly once')
   assert.ok(number(object(object(bought.state).needs).hunger) > 30, 'the buyer ate')
-  const replay = await post('/api/business/buy', { cityId: 'lagos', shop, product: 'jollof', units: 2, requestId: buying }, bola)
+  const changedQuote = await post('/api/business/buy', { cityId: 'lagos', shop, product: 'jollof', units: 2, expectedPrice: 701, expectedTotal: 1400, requestId: buying }, bola)
+  assert.deepEqual([changedQuote.status, changedQuote.error], [409, 'client_id_conflict'], 'a successful request id cannot be reused with another quote')
+  assert.equal((await post('/api/business/price', { cityId: 'lagos', prices: { jollof: 701 } }, ada)).code, 'priced')
+  const replay = await buy(shop, 'jollof', 2, buying, bola)
   assert.deepEqual([replay.duplicate, object(replay.state).cash], [true, 98600])
+  assert.equal(number(object(await mine(ada)).till) - sellerTillBefore, 1400, 'the old successful quote replays once after the menu price changes')
   assert.ok(number(item(list(object(replay.market).shops)[0] ?? {}, 'jollof').stock) >= stockBefore - 2 - 3, 'two left the shelf for the player, whatever passers-by took meanwhile')
   assert.equal(list(object(bought.market).shops)[0]?.canRate, true)
   // The owner is told, in Messages → Updates, whether or not they are looking.
@@ -112,14 +162,14 @@ export async function businessJourney(host: BusinessHost): Promise<BusinessResul
   assert.equal((await post('/api/business/rate', { cityId: 'lagos', shop, stars: 1 }, bola)).code, 'nothing_to_rate')
   // A full buyer is not sold a meal.
   await host.edit(chi, 'lagos', (state) => { object(state.needs).hunger = 100 })
-  assert.equal((await post('/api/business/buy', { cityId: 'lagos', shop, product: 'jollof', units: 1, requestId: id() }, chi)).code, 'not_needed')
+  assert.equal((await buy(shop, 'jollof', 1, id(), chi)).code, 'not_needed')
   await host.edit(chi, 'lagos', (state) => { object(state.needs).hunger = 20 })
   await host.edit(bola, 'lagos', (state) => { object(state.needs).hunger = 20 })
 
   // ---- two players, one item left --------------------------------------------------------------------------------------
   const last = number(item(list((await market(chi)).shops)[0] ?? {}, 'puff-puff').stock)
   assert.equal(last, 1, 'one puff-puff on the shelf')
-  const race = await Promise.all([bola, chi].map((who) => post('/api/business/buy', { cityId: 'lagos', shop, product: 'puff-puff', units: 1, requestId: id() }, who)))
+  const race = await Promise.all([bola, chi].map((who) => buy(shop, 'puff-puff', 1, id(), who)))
   const raced = race.map((answer) => String(answer.code)).sort()
   assert.deepEqual(raced, ['bought', 'sold_out'])
   assert.equal(item(list((await market(chi)).shops)[0] ?? {}, 'puff-puff').stock, 0)

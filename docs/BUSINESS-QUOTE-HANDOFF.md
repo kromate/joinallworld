@@ -2,6 +2,8 @@
 
 Source audit: 9 October 2026, APP UI runtime `22fb786e`. This is an implementation plan, not a completed fix or production proof.
 
+Integration is now implementing this contract in the clean delivery checkout. Current source emits tax-inclusive quantity quotes and compares them inside `createOnce` before real shop settlement. The UI sends the shown price/total; fixture callers and focused acceptance cases are being migrated. Account-safe retries are the same active delivery phase. Until exact-source Node/Worker/browser gates and named production adoption pass, this remains unaccepted source. [PARITY-DELIVERY](PARITY-DELIVERY.md) is the current release tracker; the audit below records the original defect.
+
 The Business screen sends shop, product and quantity. The server charges the seller's current price plus current sale levies. A seller can change the price after the buyer loads the screen, and the market response does not expose a tax-inclusive quote. Binding only the unit price would still leave the tax amount unconfirmed.
 
 New purchases should require the displayed unit price and the displayed total for the requested quantity. Existing saved receipts must remain replayable. Accepting a new unquoted purchase from an old tab cannot also guarantee that its unseen old price was honored.

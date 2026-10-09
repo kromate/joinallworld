@@ -1,0 +1,851 @@
+{
+  "updatedAt": "2026-10-09T11:48:15.421243+00:00",
+  "branch": "codex/allworld-consolidated-delivery",
+  "assemblyOwner": "Integration",
+  "uploadOwner": "WORLD",
+  "baseMain": "4c0899d240ace4818bca6b45f437c1ac9a4bca62",
+  "assemblyCheckpoint": "019f4297cca191a3f4fbe87aed3f32f6780fb990",
+  "status": "assembling",
+  "instructions": "One consolidated delivery; repair and verify existing implemented work together. No new feature expansion until consolidation closes. Preserve rejected source and unrelated dirty work. Status accepted means source accepted, not production delivery. Exact combined runtime gates still pending.",
+  "manifest": [
+    {
+      "owner": "Integration",
+      "title": "Reviewed UI and Family-preserving fresh-main merge",
+      "status": "accepted",
+      "commit": "019f4297cca191a3f4fbe87aed3f32f6780fb990",
+      "reason": "Reviewed UI b9de1ab7 retained; fresh main 4c0899d2 merged without conflicts. Historical UI CI passed; combined acceptance pending."
+    },
+    {
+      "owner": "Integration",
+      "title": "Business quoted unit prices, inclusive totals and legacy receipts",
+      "status": "repairing",
+      "commit": "working source",
+      "reason": "Implemented; quoted caller migration and stale/tax/receipt probes prepared. Exact compiler/Node/Worker/browser gates not run."
+    },
+    {
+      "owner": "Integration",
+      "title": "Civic actor cache, pending replies and uncertain retries",
+      "status": "repairing",
+      "commit": "working source",
+      "reason": "Astra-reviewed client and Node/Worker actor fences applied; focused actor acceptance source prepared. Runtime evidence pending."
+    },
+    {
+      "owner": "Integration",
+      "title": "Private voice checkpoint and persistence boundaries",
+      "status": "repairing",
+      "commit": "b193bd771c744ae0ce5b007180f36eb5838e704e",
+      "reason": "21 implementation files assembled onto current UI/Family. Node/Worker private-media and restart probes prepared. WebM/Opus only; actual browser permissions/codec journeys and cleanup acceptance pending."
+    },
+    {
+      "owner": "WORLD",
+      "title": "Accepted world foundation and inherited builder lease milestone",
+      "status": "accepted",
+      "commit": "d2c4796993f00387a901f0db4953e471a34f797b",
+      "reason": "Already in fresh main. Owner reports main CI37916439330 acceptance. Builder cache is not automatically production assets."
+    },
+    {
+      "owner": "WORLD",
+      "title": "Terminal reopen and paired lease recovery",
+      "status": "repairing",
+      "commit": "e9eb7bbfd915e6e4d5fbb7c1b8bf96add66ebd27",
+      "reason": "Owner reports remote37923993054 Linux/macOS success. Awaiting bounded coherent 16-path packet; do not merge diagnostic branch."
+    },
+    {
+      "owner": "WORLD",
+      "title": "Nigeria renderer packet",
+      "status": "repairing",
+      "commit": "01c4c8f1",
+      "reason": "Owner-reviewed source/local render checks; exact packet forthcoming. Combined budget, graphics, normal-game and phone acceptance open."
+    },
+    {
+      "owner": "LIVING",
+      "title": "Driving, rental, parcel, barber, campus, courts and teaching implemented source",
+      "status": "repairing",
+      "commit": "4596cb25890e227647644c0208fc2d0e09258733",
+      "reason": "Full intended source inventory requested. Do not merge whole runtime snapshot; known generation fixture and browser fixture repairs remain separately accounted."
+    },
+    {
+      "owner": "LIVING",
+      "title": "New interactive teaching activation",
+      "status": "safely-disabled",
+      "commit": "6e4cc72bde9ca6465dfc88781e6838045af29082",
+      "reason": "Chosen first-release plan gates new starts off and keeps compatible reader/restore guards. Exact patch pending. Old a446 strips teaching markers and can pay an unfinished shift: cannot be rollback target after activation."
+    },
+    {
+      "owner": "LIVING",
+      "title": "Mapped physical journey handoff",
+      "status": "safely-disabled",
+      "commit": "5d11705334ad54f92208d7f4b693a4faf8a500ac",
+      "reason": "No accepted physical provenance producer; boarding authority stays false. Owned by LIVING; preserve source without granting routes."
+    },
+    {
+      "owner": "GRAPHICS",
+      "title": "Independent NPC startup and retry",
+      "status": "repairing",
+      "commit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "reason": "CPU37925043902 success. Minimal reviewed NPC hunks/dependencies requested; no actual NPC browser/mobile acceptance yet."
+    },
+    {
+      "owner": "GRAPHICS",
+      "title": "Hair anchor",
+      "status": "parked-with-reason",
+      "commit": "10d2814cc3d36f39770170246aec65073e5df8ae",
+      "reason": "Floating afro rejected in actual PNG; scalp-derived v6 queued, hashes stale after final contract edit."
+    },
+    {
+      "owner": "GRAPHICS",
+      "title": "Body loader",
+      "status": "parked-with-reason",
+      "commit": "b97fc3bea5be95c79dcd5e0bf18f3b33b82823fd",
+      "reason": "Female FileLoader ERR_ABORTED persists; v12 direct-fetch candidate source only, not published."
+    },
+    {
+      "owner": "GRAPHICS",
+      "title": "Office neckline",
+      "status": "parked-with-reason",
+      "commit": "a752de194a616ef76d151fa2c1af0132c8c53abd",
+      "reason": "Actual neck colour and collar gap rejected; contour fixture unrendered."
+    },
+    {
+      "owner": "GRAPHICS",
+      "title": "Sofa",
+      "status": "parked-with-reason",
+      "commit": "1762e2ef607b1b84dcd5284729d7b5698de2a0ce",
+      "reason": "Eight actual PNGs reviewed; too boxy for target."
+    },
+    {
+      "owner": "LIVING",
+      "title": "Physical actor safety",
+      "status": "parked-with-reason",
+      "commit": "5d11705334ad54f92208d7f4b693a4faf8a500ac",
+      "reason": "Handed to LIVING; actual production provenance test returns null; boarding authority remains false."
+    }
+  ],
+  "graphicsFiles": [
+    {
+      "path": "scripts/body/build-body.ts",
+      "sourceCommit": null,
+      "sha256": "c43fd7da2bf994b25a86a179add5fbe5f64cff21f447d77e757bf04f13edee33",
+      "bytes": 23610,
+      "baseSHA256": "2c89b7695b671c1dc4973c29c5a80dc30dffdfa2d12a3fdc7acc22b3b5c27980",
+      "integrationSHA256": "2c89b7695b671c1dc4973c29c5a80dc30dffdfa2d12a3fdc7acc22b3b5c27980",
+      "alreadyMatchesIntegration": false,
+      "status": "parked-with-reason",
+      "reason": "Current bytes differ from frozen source; preserve local file and review before extraction."
+    },
+    {
+      "path": "scripts/body/wardrobe-preview.html",
+      "sourceCommit": null,
+      "sha256": "8c151d8d7e482819013b4ceb906ccd6aba455b56bff3c07fce47e0872331f6e7",
+      "bytes": 8939,
+      "baseSHA256": "e6d164f703e4953adf4d5f192b7a311cf16896c2d568551dacd003107d00f7fd",
+      "integrationSHA256": "e6d164f703e4953adf4d5f192b7a311cf16896c2d568551dacd003107d00f7fd",
+      "alreadyMatchesIntegration": false,
+      "status": "parked-with-reason",
+      "reason": "Current bytes differ from frozen source; preserve local file and review before extraction."
+    },
+    {
+      "path": "src/scene/authored-people.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "8b3a5bb230ed667faa2ece3c768245c894b05bf7c93a2ec65b4820ce643dccec",
+      "bytes": 12048,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/authored-people.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "9381b7e804c441e97a79990bc5a57358c8d615aa342d1afafc049c73376af013",
+      "bytes": 8303,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/avatar-look.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "0abe0606b0b6bf4c5585b7724de81da627ed5eddd994294bd5894754aea4207e",
+      "bytes": 1602,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/avatar-look.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "cf65f259386708d80be763e0a068e1e767433a73978fd30a2fbf7b2bbd80c257",
+      "bytes": 7467,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/avatar-preview.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "03d39c6b6570c4aafe136efa90c1df9c2656df76ab936121c2c94b3ea37d1593",
+      "bytes": 30674,
+      "baseSHA256": "6002bed87fb6ac8be9f71babe046d615ced8f43da634114955fe9bf42484d839",
+      "integrationSHA256": "6002bed87fb6ac8be9f71babe046d615ced8f43da634114955fe9bf42484d839",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/avatar-preview.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "6b6eb2b7fa87823963fb0f050285dc39affd355df821a6fbb307192e1017d0c5",
+      "bytes": 23039,
+      "baseSHA256": "41dccd0cf9cb6f9bdd2866a3461703d7a495b1e7f745215887071acd87fbd9b7",
+      "integrationSHA256": "41dccd0cf9cb6f9bdd2866a3461703d7a495b1e7f745215887071acd87fbd9b7",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/avatar-rig.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "3547f6dd5e1272c3e977ce0a432f48b742e48ff9cea2bb645f2b6b9f251cbfd6",
+      "bytes": 8354,
+      "baseSHA256": "d15716188aae1029f1d1b549645cc92c526052d132e3468151a1ec4d0ba4947d",
+      "integrationSHA256": "d15716188aae1029f1d1b549645cc92c526052d132e3468151a1ec4d0ba4947d",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/animation-pose.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "9080a1b5e803c36b2b7b9c50761216f917c0bf13cd7c81c93d1c93785f8659b6",
+      "bytes": 6251,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/animation-pose.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "24498791f072471bfc81bd1f01b41d8807c411fbc54b17e91a70d9fccd6dfb6b",
+      "bytes": 1255,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/appearance.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "4947ed757fa5dc00646e9828abd0a273c30d1936418290dcf89dd1f135b97cac",
+      "bytes": 3788,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/appearance.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "8aa5fcbaeb04f8609f8921659444d80aa64295c76c77b9cf813fb947548d8b91",
+      "bytes": 16963,
+      "baseSHA256": "017f8ba22a27de0a3221eb894efa596e62387d57737b3c870ef4a19497fad311",
+      "integrationSHA256": "017f8ba22a27de0a3221eb894efa596e62387d57737b3c870ef4a19497fad311",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/assets/base-body-female.glb",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+      "bytes": 132296,
+      "baseSHA256": "ee8b9eb6d7ad2b35abfb026f2997d85384b7484342922cb99503e72462c2c5ad",
+      "integrationSHA256": "ee8b9eb6d7ad2b35abfb026f2997d85384b7484342922cb99503e72462c2c5ad",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/assets/base-body-male.glb",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+      "bytes": 133756,
+      "baseSHA256": "a375403639d688da351b0c87d5a70afa0080dafcf85dbf64b64395ce76e66f7c",
+      "integrationSHA256": "a375403639d688da351b0c87d5a70afa0080dafcf85dbf64b64395ce76e66f7c",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/body-template.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "9a566f17275de4e0bc63ad674f0d31d95f55e65c20a7288cf2ed3b4fa271f26a",
+      "bytes": 4930,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/canonical-crowd.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "798c44ab78598e629e5c08ea14b73e105d380333b0d147ee0c2d3f08b0404ee2",
+      "bytes": 13914,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/canonical-crowd.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "496944e4b94af1b502daf17f577043b3b835df3712ca36cacd20be8e6bad3a10",
+      "bytes": 6173,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/face-shader.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "3c254a2e2520500e68d9185ffaf474707bbea819ca9def4d78e96ad5caf089ba",
+      "bytes": 2224,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/face-shader.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "344ede555027388dad22ef30680c620ffccf4b407a12373ad8a88807d09bd368",
+      "bytes": 1735,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/manifest.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "8f53bf4cffe93e45bbea62c9b728e32ed2ebbb676e060a1e6fb2776673a75af3",
+      "bytes": 3053,
+      "baseSHA256": "bea27314fd3d8acdc166f151c7227389e8f764cf8bd5beaaebc4da397100b745",
+      "integrationSHA256": "bea27314fd3d8acdc166f151c7227389e8f764cf8bd5beaaebc4da397100b745",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/shared-resource-cache.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "b294c599bfd14a4206db06656874146e1b636efe18c5925035602b3c26c96387",
+      "bytes": 4192,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/shared-resource-cache.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "c6b8828689b11d5c228665be2a84e9cfae37f64ae71de0da37358bf1060967b4",
+      "bytes": 2748,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/skinned.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "4fa64261e15a7e104f527ad4782aff2bb80c53d559dc7a448d95d797d92c6bdb",
+      "bytes": 24451,
+      "baseSHA256": "ee2ec68e2a707c5b8976aa1e28f085129f84142e466fd622d09b51633bbf197a",
+      "integrationSHA256": "ee2ec68e2a707c5b8976aa1e28f085129f84142e466fd622d09b51633bbf197a",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/stand-in.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "c8db14cd49fdebebcac6b657a59969901e9ed1eb104f7e6349b9ea154f096833",
+      "bytes": 17728,
+      "baseSHA256": "1fc36a98e7cfa915424b44732fdfa3d6c30060d29989c2b76f0da1040726244c",
+      "integrationSHA256": "1fc36a98e7cfa915424b44732fdfa3d6c30060d29989c2b76f0da1040726244c",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/stand-in.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "826d8eac3b48e24b2abb898ae73e45f250ddcdeeeb6bd8d5bd856890ca597608",
+      "bytes": 9465,
+      "baseSHA256": "77adc9ed660137a074987855b9853357da3a059c912f2be2922dcadc5e4c257f",
+      "integrationSHA256": "77adc9ed660137a074987855b9853357da3a059c912f2be2922dcadc5e4c257f",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/startup-gate.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "b19d25826b962e5fd34d3e01aa0226bb3f00e91c5afc12c9c7d386ad8e109d7c",
+      "bytes": 3172,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/startup-gate.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "f3e4021b278ddf00f3b7f6fcf1134c1e705091c6bce823d8038ab5a0a97b829e",
+      "bytes": 1279,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/body/tint.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "7f00fffa5d35c878ff9d26c988d0d0542ae5f24ca14e3b1caf045fed1d67960f",
+      "bytes": 3157,
+      "baseSHA256": "2c940e0aeaa05e59debefc44ea482932146e375f477e5e6b0ef02b58c4dfb3f3",
+      "integrationSHA256": "2c940e0aeaa05e59debefc44ea482932146e375f477e5e6b0ef02b58c4dfb3f3",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/build-face4.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "adc08075b9e7243b551b97bce739c7ae4562471696246aa3bf55a57a6d57d2bb",
+      "bytes": 4108,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/build.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "02249a6dde42e9c2b0ecff24fac440dd055b91645b3b5b9ca3b314965e5da84d",
+      "bytes": 15211,
+      "baseSHA256": "26d0e6f8c05333c903730e0eb99f9270f65057c055ed2c5ed7ad21559312163f",
+      "integrationSHA256": "26d0e6f8c05333c903730e0eb99f9270f65057c055ed2c5ed7ad21559312163f",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/characters.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "abf273d014427e7b0e805af97dfe6d6a1db456be5f14a66d9f55c8c98ed44b7e",
+      "bytes": 111334,
+      "baseSHA256": "3d5990a1dd7a01098a1ab37f820e5f27027d4336090972b56f1e96c44ada55b6",
+      "integrationSHA256": "3d5990a1dd7a01098a1ab37f820e5f27027d4336090972b56f1e96c44ada55b6",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/crowd.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "f1da36273a45371ec4b1f0394b35cfd42a407704563a75c4ce77a03b86f5ac05",
+      "bytes": 6957,
+      "baseSHA256": "40370249239619a4d3b890a087d1b7b29d7029ed73d4b3ca07710b2a1241a3d6",
+      "integrationSHA256": "40370249239619a4d3b890a087d1b7b29d7029ed73d4b3ca07710b2a1241a3d6",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/crowd.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "9daeea969336946fe9f1437cf1e4890f852cab636e7dbc5f5c24948209178a2c",
+      "bytes": 5543,
+      "baseSHA256": "9060a1aaf5ab8f554b9c91d7c3b0553e7b6a21833ffcc7909dacadc7fdc1e791",
+      "integrationSHA256": "9060a1aaf5ab8f554b9c91d7c3b0553e7b6a21833ffcc7909dacadc7fdc1e791",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/home-appliance.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "581e9b380d53caffbf9eed5c5be7cd74a0f149cdc58c57c93e1ac969172303dd",
+      "bytes": 1711,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/home-crowd.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "35e55959cdc3eae0a2942a89c20fabbd97deaadedb155f32954f5730ead4ac3b",
+      "bytes": 9261,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/home-lighting.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "05c26b94f227485face1d0ebbfede580b92e746b029019257d758a7286ea13b6",
+      "bytes": 6429,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/home-scene.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "2ec633a024f2e3c86f42c4a204c465207cbde121f12a18898819183babbc447f",
+      "bytes": 89947,
+      "baseSHA256": "514d773dc2dd2e9ea3fcd662698705f4f427e78b1ee8e61c1c9beb791efed0af",
+      "integrationSHA256": "514d773dc2dd2e9ea3fcd662698705f4f427e78b1ee8e61c1c9beb791efed0af",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/home-window.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "8f8892522c0c2167be29511abd01084f349aa6761348b115164e64aef58146b5",
+      "bytes": 3234,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/kit-lifecycle.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "e0d7d582c23751e44976c64e4d66f4ec52f2d08313da7ab92f7ea99b589ac72b",
+      "bytes": 497,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/kit.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "c1d88627e7c4c7a9418c28f3e716215465e6c9fced1c4b85c5e44a4c751b064a",
+      "bytes": 5238,
+      "baseSHA256": "5f7f32f8993bbd6892857584c0c34624c09597470e90f7bfc0ae6183c837d287",
+      "integrationSHA256": "5f7f32f8993bbd6892857584c0c34624c09597470e90f7bfc0ae6183c837d287",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/lighting.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "53e435a7eea766b804f9922b4ff07d4308033700c7d649209f6b750f5bc26d22",
+      "bytes": 3268,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/movement.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "10652ba88cb198a9b2a5b454db352975237044e1e40837f9e04ee018d961fa97",
+      "bytes": 26098,
+      "baseSHA256": "e217d30986aea85c4edc1e0a112760f2cec1b6bff8cfb81097bb12f95d3ad05b",
+      "integrationSHA256": "e217d30986aea85c4edc1e0a112760f2cec1b6bff8cfb81097bb12f95d3ad05b",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/movement.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "49ca098d1a3ba005e4aa0981aa44ec27e062fa1872b1f0e99b503ba8060e71a9",
+      "bytes": 28596,
+      "baseSHA256": "9ec7dfb5e9a2596d7f1234aaed9f32779f930cd78bb3e1cf329b9be004cfd33e",
+      "integrationSHA256": "9ec7dfb5e9a2596d7f1234aaed9f32779f930cd78bb3e1cf329b9be004cfd33e",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/neighbourhood-scene.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "92efcd172607c2bac227a533bc87f187c1fc14f941e1ba4474f4a029ebaebbf6",
+      "bytes": 10280,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/neighbourhood-scene.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "9a3ec62adfb308ae60e48d1d9865d1bc911f4ac318d7a70720b880b3d4d62df5",
+      "bytes": 30318,
+      "baseSHA256": "a69dca7548c63e3cf5b819cf0e8a3cb67e68db294a83a9fe1acfd007bab303c5",
+      "integrationSHA256": "a69dca7548c63e3cf5b819cf0e8a3cb67e68db294a83a9fe1acfd007bab303c5",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/props-car.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "160f0d1a097a8a9361df5d3d15ce3e5f652b28a31117bce21458a2ed21eb261a",
+      "bytes": 4372,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/props.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "39a6d8080d6382fb61cd363ca933d8c39b3b908f75cf5fe2c7b1f056f08b16df",
+      "bytes": 36414,
+      "baseSHA256": "d1a379c92b72d994bdb45e740ded30408a90d786c3074c4a42edc1a79aa4c907",
+      "integrationSHA256": "d1a379c92b72d994bdb45e740ded30408a90d786c3074c4a42edc1a79aa4c907",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/stall-awning.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "3bc820c992dc505aa9939ad565d9e2e04b7f187579aae40b011314367bd10bb7",
+      "bytes": 6207,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/tag-layout.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "45730a23d68195f6407d1ab1717cce2d1299b98c48ddf0b2392a6ef1d670d4ab",
+      "bytes": 2466,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/tag-layout.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "a7a25536f7535cecbc4b09c033678f79e75916e79e770aec18ab7817b051854a",
+      "bytes": 1638,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/types.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "0efcf5e2a08aec59c4301a0eed5f20fc0fc4e62f4b96116ad9a53b3b0f000aa6",
+      "bytes": 12611,
+      "baseSHA256": "0267a092e93f2f77152852719cc103b0986db2da9f2a4f1072475a5f1f13b948",
+      "integrationSHA256": "0267a092e93f2f77152852719cc103b0986db2da9f2a4f1072475a5f1f13b948",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/venue-authored-people.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "6db0178927c7ab2743de5ebb2d5082541a1e6959a979656ef011f72e2b4663c8",
+      "bytes": 5393,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/venue-canonical-crowd.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "aedd5734fbd164aed4cbe52bef8995919fff05f4e230eb0516303bb7939cf63c",
+      "bytes": 8142,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/venue-contact.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "0aaae4bf49c32e30ab91584b823484c695b97ff14d6d33fa68301c77351c8bb6",
+      "bytes": 3919,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/venue-scenes.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "34c85df02988feaed4255d5a6e869cba4a0b13c16a5328e26656c51f6a87e0aa",
+      "bytes": 81637,
+      "baseSHA256": "e11ce77c3e6abd1f5626a9cc7e0911aac11dcaa20ba7d7516f0b77af109bc789",
+      "integrationSHA256": "e11ce77c3e6abd1f5626a9cc7e0911aac11dcaa20ba7d7516f0b77af109bc789",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/wardrobe/geometry.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "ed36a546c5799cc85472de1b4fbc77bc7229433739f12bd05651ad0e33cbead8",
+      "bytes": 17480,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/wardrobe/geometry.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "1b2dbfc4dd9557b6216eceb01ddd5f9bcf4119e48788a220589444902d5458ec",
+      "bytes": 49067,
+      "baseSHA256": "d685fe56a4131d85d34c296e006c1023cef1cda60b185d116c2fec6730cbc917",
+      "integrationSHA256": "d685fe56a4131d85d34c296e006c1023cef1cda60b185d116c2fec6730cbc917",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/scene/wardrobe/renderer.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "4b053592fdc8efdad0e9cd5071cb853594c2db53829cd74116bf578f439f82da",
+      "bytes": 11138,
+      "baseSHA256": "4627d0704750cea6ff7a5b531f38bd21bfc0daec75660f2bf5148dca4a54989e",
+      "integrationSHA256": "4627d0704750cea6ff7a5b531f38bd21bfc0daec75660f2bf5148dca4a54989e",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/types/view.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "e7dd2e664757a2057771c2a5e607bd950aa13fe52066b57edc9a7a201129c824",
+      "bytes": 44927,
+      "baseSHA256": "44f51da0cd10023fd03d91b76556eb5021c59d54bb1caa46e270acde17f1897d",
+      "integrationSHA256": "44f51da0cd10023fd03d91b76556eb5021c59d54bb1caa46e270acde17f1897d",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/venue-world-lights.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "6391c5aa5dfa68a3569af9014e00d7a5c4e8e0f8ccd8522cc435f04180bdc647",
+      "bytes": 2660,
+      "baseSHA256": null,
+      "integrationSHA256": null,
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/venue-world.test.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "c50335dcbc8b30344b2d58222640664a56bf51c4659d38d85619932dbdb2a45b",
+      "bytes": 64573,
+      "baseSHA256": "93e3f9ee768d3cc5afa8ad2126b029d05be373076e5ef68eaea74537af008fc8",
+      "integrationSHA256": "93e3f9ee768d3cc5afa8ad2126b029d05be373076e5ef68eaea74537af008fc8",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    },
+    {
+      "path": "src/venue-world.ts",
+      "sourceCommit": "b005ccc1cdb08294a0e0543dfd742faa6082f207",
+      "sha256": "837e64cf31ab499f72732f4d3e76c5a278815206a8c741ff50280a13968cbc59",
+      "bytes": 103524,
+      "baseSHA256": "51204505879720943359e953c9139458db4e81ce3b9201bec26f7f32bfadc547",
+      "integrationSHA256": "51204505879720943359e953c9139458db4e81ce3b9201bec26f7f32bfadc547",
+      "alreadyMatchesIntegration": false,
+      "status": "repairing",
+      "reason": "Frozen owned runtime source for owner review; not a visually or mobile accepted whole graphics patch."
+    }
+  ],
+  "gates": [
+    {
+      "title": "Final combined compiler/build/download limits",
+      "status": "pending",
+      "url": "",
+      "detail": "Current working source not yet tested. Limits unchanged."
+    },
+    {
+      "title": "Node and Worker quote/identity/voice acceptance",
+      "status": "pending",
+      "url": "",
+      "detail": "Prepared relevant probes; final source execution pending."
+    },
+    {
+      "title": "Compatible teaching rollback and activation",
+      "status": "blocked",
+      "url": "",
+      "detail": "Need exact safe activation gate and compatible recovery baseline."
+    },
+    {
+      "title": "Actual browser/mobile journeys",
+      "status": "pending",
+      "url": "",
+      "detail": "Mac WARNING2 prevents new local heavy work; owner remote graphics/gameplay proofs pending."
+    },
+    {
+      "title": "Sealed WORLD deployment and save/receipt continuity",
+      "status": "pending",
+      "url": "https://joinallworld.com/api/health",
+      "detail": "Live build remains a446. No upload performed."
+    }
+  ]
+}

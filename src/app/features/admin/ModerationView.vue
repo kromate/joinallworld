@@ -10,7 +10,7 @@ import type { Item, Kind, PictureRow, Reports, ShopRow } from './moderationModel
 
 const emit = defineEmits<{ player: [id: string] }>()
 const api = useAdmin()
-interface Report extends Reports { evidence: string[]; note?: string }
+interface Report extends Reports { voice?: string; evidence: string[]; note?: string }
 const reports = ref<Report[]>([]), shops = ref<ShopRow[]>([]), pictures = ref<PictureRow[]>([]), error = ref(''), loaded = ref(false)
 const filter = ref<Kind | 'all'>('all'), chosen = ref<string | null>(null), canned = ref(CANNED[0]!.id), note = ref(''), minutes = ref(60), viewing = ref(false), busy = ref(false)
 async function load(): Promise<void> {
@@ -19,6 +19,12 @@ async function load(): Promise<void> {
   if (r.ok) { reports.value = r.data.reports; error.value = '' } else error.value = r.error.reason
   if (s.ok) shops.value = s.data.reports
   if (p.ok) pictures.value = p.data.pictures
+}
+async function voiceAction(action: 'remove' | 'restore'): Promise<void> {
+  const id = report.value?.voice
+  if (!id || busy.value) return
+  busy.value = true
+  try { const result = await api.post(`/api/admin/moderation/voice/${encodeURIComponent(id)}/act`, { action }, 'voice-moderation'); if (!result.ok) error.value = result.error.reason; else await load() } finally { busy.value = false }
 }
 const all = computed(() => queue(reports.value, shops.value, pictures.value, Date.now()))
 const tally = computed(() => counts(all.value))
@@ -106,6 +112,7 @@ const KINDS = [['all', 'All'], ['report', 'Reports'], ['shop', 'Shops'], ['pictu
           <h3>{{ item.title }}</h3>
           <p class="adm-sub">{{ item.kind }} {{ item.id }} · waiting {{ age(item.at, Date.now()) }}<template v-if="item.kind === 'report'"> · {{ absolute(item.at) }}</template></p>
           <template v-if="report"><p v-if="report.text">“{{ report.text }}”</p><p class="adm-sub">Reported by {{ report.byName }}</p>
+            <div v-if="report.voice" class="adm-sub"><audio :key="report.voice" controls preload="none" :src="`/api/admin/moderation/voice/${encodeURIComponent(report.voice)}`" aria-label="Reported voice note" /><div><button type="button" :disabled="busy" @click="voiceAction('remove')">Remove recording</button><button type="button" :disabled="busy" @click="voiceAction('restore')">Restore hidden recording</button></div></div>
             <ul v-if="report.evidence.length" class="adm-sub"><li v-for="line in report.evidence" :key="line">{{ line }}</li></ul></template>
           <p v-else-if="item.summary">{{ item.summary }}</p>
           <div v-if="item.player" class="adm-prior"><h4>About {{ item.player.name }}</h4>

@@ -263,7 +263,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     get pendingAction() { return pendingAction ? structuredClone(pendingAction) : null; },
     get snapshotPhase() { return snapshotPhase; },
     get revision() { return revision; },
-    api, fetchJson: api, connect, command, retryPendingAction, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
+    api, fetchJson: fetchScoped, connect, command, retryPendingAction, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
   };
   let pollTimer: unknown = null;
   let identityGeneration = 0;
@@ -309,13 +309,17 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   /** JSON request to the same origin. Rejects with Error{status, code, reason?}; a network failure reads as connection lost. */
   const staleIdentityResponse = (): ApiError => Object.assign(Error('Response belongs to a replaced identity'), { code: 'stale_identity_response' })
+  function fetchScoped<T extends object = Record<string, unknown>>(path: string, options: ApiOptions = {}): Promise<T & ApiEnvelope> {
+    const generation = identityGeneration, actor = client.session?.id ?? null
+    return api<T>(path, options, () => generation === identityGeneration && actor === (client.session?.id ?? null))
+  }
   async function api<T extends object = Record<string, unknown>>(path: string, options: ApiOptions = {}, responseCurrent: () => boolean = () => true): Promise<T & ApiEnvelope> {
     const cooling = cooldownError(path); if (cooling) throw cooling
     let response: FetchResponse;
     try {
       // A string, or a falsy value, goes out as it is (fetch decides); anything else is JSON.
       response = await fetch(path, { ...options, body: options.body && typeof options.body !== 'string' ? JSON.stringify(options.body) : options.body as BodyInit | null | undefined,
-        headers: { 'Content-Type': 'application/json', ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(10000) });
+        headers: { 'Content-Type': 'application/json', ...(client.session && path !== '/api/session' ? { 'X-Allworld-Actor': client.session.id } : {}), ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(10000) });
     } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error(TEXT.connectionLost); }
     let payload: Payload;
     try { payload = await response.json() as Payload; } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error('Server returned an unreadable response'); }

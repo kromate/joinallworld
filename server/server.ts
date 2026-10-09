@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
+import { createFileVoices } from './social/voice-files.ts';
 import { createFileImages } from './social/image-files.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
@@ -228,6 +229,8 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   const sessionFor = (req: IncomingMessage, db: Db, renew = false): SessionRecord | undefined => {
     const found = sessionOfCookie(db, cookieId(req), now(), bindingOf(req) !== undefined);
     if (!found) return undefined;
+    const expectedActor = req.headers['x-allworld-actor'];
+    if (expectedActor !== undefined && expectedActor !== found.session.publicId) throw fail(409, 'actor_changed');
     if (renew) renewResolved(found, now(), sessionTtlMs);
     return found.session;
   };
@@ -381,7 +384,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
         if (result.file && status < 300) {
           // Bytes a route hands over as they are (a chat picture): private to the caller, never sniffed, shown in the page.
           if (!res.headersSent && !res.destroyed) {
-            res.writeHead(status, { ...apiHeaders(factsOf(req)), 'Content-Type': result.file.type, 'Cache-Control': 'private, max-age=300', 'Content-Disposition': 'inline', 'Content-Length': String(result.file.bytes.length) });
+            res.writeHead(status, { ...apiHeaders(factsOf(req)), 'Content-Type': result.file.type, 'Cache-Control': result.file.cache ?? 'private, max-age=300', 'Content-Disposition': 'inline', 'Content-Length': String(result.file.bytes.length) });
             res.end(Buffer.from(result.file.bytes));
           }
           telemetry.http({ method, route: route.key, status, ms: performance.now() - at.began, publicId: request.publicId });
@@ -507,7 +510,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   /** Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })). */
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
-    store, images: createFileImages(join(dataDir, 'chat-images')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
+    store, images: createFileImages(join(dataDir, 'chat-images')), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
     randomId,
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },

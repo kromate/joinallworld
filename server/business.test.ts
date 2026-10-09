@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fixture } from './test-fixture.ts';
+import { createOnce } from './routes/once.ts';
 import { businessJourney } from './testing/businessJourney.ts';
 import { JOURNEY_TIME } from './testing/cityJourney.ts';
 import { loadCityContent } from '../src/game/cities/registry.ts';
@@ -45,7 +46,27 @@ async function harness(t: Parameters<typeof fixture>[0], options: Parameters<typ
   }
   const open = (device: Device, extra: object = {}) => post('/api/business/open', { cityId: 'lagos', venue: 'market', type: 'food', name: 'Mama Put', colour: 'gold', icon: '🍲', requestId: f.id(), ...extra }, device);
   const stock = (device: Device, items: object) => post('/api/business/stock', { cityId: 'lagos', items, requestId: f.id() }, device);
-  const buy = (device: Device, shop: string, product = 'jollof', units = 1, headers: Record<string, string> = {}) => post('/api/business/buy', { cityId: 'lagos', shop, product, units, requestId: f.id() }, device, headers);
+  const buyQuotes = new Map<string, { expectedPrice: number; expectedTotal: number }>();
+  const buy = async (device: Device, shop: string, product = 'jollof', units = 1, headers: Record<string, string> = {}, requestId = f.id()) => {
+    const body: Record<string, unknown> = { cityId: 'lagos', shop, product, units, requestId };
+    if (typeof shop === 'string' && product && Number.isSafeInteger(units) && units >= 1 && units <= 3) {
+      let quoted = buyQuotes.get(requestId);
+      if (!quoted) {
+        const venue = await get('/api/business/venue?city=lagos&venue=market', device);
+        const stalls = Array.isArray(venue.shops) ? venue.shops.map(object) : [];
+        const stall = stalls.find((entry) => entry.id === shop || object(entry.owner).id === shop);
+        const item = stall && Array.isArray(stall.items) ? stall.items.map(object).find((entry) => entry.id === product) : undefined;
+        const quotes = item && Array.isArray(item.quotes) ? item.quotes.map(object) : [];
+        const quote = quotes.find((entry) => entry.units === units);
+        if (item && quote) {
+          quoted = { expectedPrice: Number(item.price), expectedTotal: Number(quote.total) };
+          buyQuotes.set(requestId, quoted);
+        }
+      }
+      if (quoted) Object.assign(body, quoted);
+    }
+    return post('/api/business/buy', body, device, headers);
+  };
   const database = async (): Promise<Database> => { await f.flush(); return JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')) as Database; };
   return { f, post, get, edit, trader, open, stock, buy, database };
 }
@@ -107,7 +128,28 @@ test('the owner must stand at the market to open, stock, price and upgrade; a bu
   await edit(bola, (state) => { state.location = 'park'; });
   assert.equal((await buy(bola, ada.id)).code, 'not_at_shop');
   await edit(bola, (state) => { state.location = 'market'; });
-  assert.equal((await buy(bola, ada.id)).code, 'bought');
+  const requestId = f.id();
+  const buyerBefore = Number((await get('/api/life?city=lagos', bola)).state?.cash);
+  const sellerBefore = Number(object((await get('/api/business/mine?city=lagos', ada)).mine).till);
+  const first = await buy(bola, ada.id, 'jollof', 1, {}, requestId);
+  assert.equal(first.code, 'bought');
+  assert.equal(buyerBefore - Number(first.state?.cash), 600);
+  assert.equal(Number(object((await get('/api/business/mine?city=lagos', ada)).mine).till) - sellerBefore, 600);
+  // Rebuild this real purchase's receipt through the historical four-field createOnce contract.
+  const oldReceipt = await f.server.store.transact((db) => {
+    const session = db.sessions[bola.cookie.slice(4)];
+    assert.ok(session);
+    const saved = session.once?.[requestId];
+    assert.ok(saved);
+    delete session.once![requestId];
+    return createOnce({ now: f.now, windowMs: DAY }).once(db, session, {
+      id: requestId, kind: 'business.buy', fingerprint: ['lagos', ada.id, 'jollof', '1'],
+    }, () => saved.result as { ok?: boolean });
+  });
+  assert.equal(oldReceipt.ok, true);
+  const replay = await post('/api/business/buy', { cityId: 'lagos', shop: ada.id, product: 'jollof', units: 1, requestId }, bola);
+  assert.deepEqual([replay.code, replay.duplicate, replay.state?.cash], ['bought', true, first.state?.cash]);
+  assert.equal(Number(object((await get('/api/business/mine?city=lagos', ada)).mine).till) - sellerBefore, 600, 'the historical replay does not credit the seller twice');
 });
 
 test('upgrades, rent ahead and closing by choice: each charged once, and closing returns less than was put in', async (t) => {

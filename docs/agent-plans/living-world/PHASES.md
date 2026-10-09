@@ -1,3 +1,5 @@
+Latest scoped evidence 2026-10-09T19:05:05.992909+00:00: exact3af fullCI14PASS; actual same-store WINCH restart plus sanitized30-field paired save comparison c2741a35 accepted. Operator reports Cameroon/Togo return and arrival Accra; remaining country/finalfare/home native acceptance and production release still open. TeachingOFF current consolidation does not satisfy later ON active-choice teaching. Full programme phases remain OPEN. [Evidence](sealed-africa-3af-review.json).
+
 # Phases, tests and release sessions
 
 ## Current exact-source acceptance - 9 October 2026

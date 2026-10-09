@@ -1,5 +1,13 @@
 # Living-world implementation checkpoint
 
+## Paired restart save comparison retained - 2026-10-09T19:05:05.992909+00:00
+
+Previous turn answered the user's status request and added no implementation. This continuation independently confirmed helper87118/exact3af health live19:04:14UTC and read/hashed the sanitized paired save report c2741a35. It declares30matching source/actor/city/money/ledger/receipt/once/ownership/home/inventory/car/estate fields and links actual lifecycle receipt1974bdfe. Integration's private before/after comparison and verified Astra reload support scoped same-city restart continuity; Root did not read raw snapshots or use browser/store. OriginalHUP129 remains failed. [Exact qualified record](sealed-africa-3af-review.json).
+
+WORLD reports Cameroon/Togo round trips complete and arrival Accra. Ghana return, Kenya/Algeria and finalten-fare/home witness remain pending in the same original stage/store/player/intent with fixed19:09:00.456UTC deadline. Owner must provide completed or failed named evidence; no repeated restart or substitute guest/funding. Exact3af fullCI14PASS unchanged. Production remainsa446; no programme upload.
+
+Next complete this finite native travel batch, independently review finalreceipt and accepted WORLD release/live saves. Current teachingOFF consolidation is distinct from later required ON active-choice acceptance. Full physical/careers/business/liveGoalmatic remains unfinished, native goalACTIVE, zeroextra spend and10October05:00UTC human cutoff preserved. Existing work/saves and exclusive writer/uploader/browser boundaries remain intact.
+
 ## Repaired restart verified; same-player native continuation - 2026-10-09T18:58:56.411344+00:00
 
 The previous turn made progress with the full CI pass, staging repairs and verified operator metadata. This continuation supplied two concrete source diagnoses and reviewed the owners' repairs: SQLite row prototypes differed from JSON snapshots, and pinned Miniflare exits on HUP before asynchronous cleanup. Strict financial comparisons remain intact. Original stage40497 ended129; its premature restart pass was explicitly withdrawn. WORLD's published bdd0f3e3 uses SIGWINCH and guarded interrupted recovery. Root confirmed recovery86054 alive and healthy at18:51:13; WORLD reported clean exit0 and a stopped checkpoint at18:51:35.933, before the original deadline. No replacement player, grant, clock or save edits were used.

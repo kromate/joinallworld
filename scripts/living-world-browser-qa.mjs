@@ -604,7 +604,7 @@ class BrowserPage {
   async cueObservation() {
     const value=await this.evaluate(`(() => {
       const lesson=document.querySelector('.teaching-shift'), cues=[...document.querySelectorAll('.attn-cue')];
-      const cue=cues.find(node=>/^More(?:\s|→|$)/u.test(node.textContent.trim()));
+      const cue=cues.find(node=>/^More(?:\\s|→|$)/u.test(node.textContent.trim()));
       if(!cue||!lesson)return {observed:false,visible:false,overlapsQuestion:false,overlapsContext:false};
       const style=getComputedStyle(cue);
       const visibleBounds=(node)=>{if(!node)return null;const b=node.getBoundingClientRect();let l=Math.max(0,b.left),t=Math.max(0,b.top),right=Math.min(innerWidth,b.right),bottom=Math.min(innerHeight,b.bottom);
@@ -1058,6 +1058,7 @@ test('rendered teaching practice survives interruption and settles one wage on d
     phase = 'desktop-wrong-choice'
     await appPage.page.click(wrongDesktopChoice)
     await appPage.page.wait("document.querySelector('.teaching-shift__feedback')?.textContent.includes('Try again:')", 'wrong desktop choice did not render retry feedback')
+    await appPage.page.ensureReadable('.teaching-shift__feedback', 'Try again: keep the whole the same size and explain what the denominator counts.', false)
     let serverState = (await life(f, desktopTeacher.device.cookie)).state
     requireCondition(serverState.activeAction?.teaching?.stage === 'diagnose'
       && serverState.activeAction.teaching.feedback === 'retry'
@@ -1072,6 +1073,7 @@ test('rendered teaching practice survives interruption and settles one wage on d
     phase = 'desktop-reload-retry'
     await appPage.page.reload()
     await appPage.page.waitRendered({ cash: desktopCash, stage: stages[0].label, retry: true }, 'desktop reload did not hydrate the same retry lesson and balance')
+    await appPage.page.ensureReadable('.teaching-shift__feedback', 'Try again: keep the whole the same size and explain what the denominator counts.', false)
     await prepareAnswer(appPage.page, stages[0], stages[0].choices[0], false)
     await appPage.page.screenshot('teaching-desktop-reloaded.png')
     screenshots.push('teaching-desktop-reloaded.png')

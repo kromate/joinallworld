@@ -114,7 +114,7 @@ async function main(): Promise<number> {
     const { errors, stray } = parse(project, out)
     // Non-owned imported diagnostics may legitimately yield exit 1 and are reconciled in their
     // owning project. A killed compiler or a failure without diagnostics never proves clean code.
-    if (signal || status === null) failures.push(`${project}: compiler did not complete (${signal ?? 'missing exit status'})`)
+    if (signal || status === null) failures.push(`${project}: compiler did not complete (${signal ?? 'missing exit status'})${out.trim() ? `\n${out.trim()}` : ''}`)
     else if (status !== 0 && status !== 1 && status !== 2) failures.push(`${project}: compiler exited unexpected status ${status}`)
     else if (status !== 0 && !errors.length && !stray.length) failures.push(`${project}: compiler exited ${status} without readable TypeScript diagnostics${out.trim() ? `: ${out.trim().split('\n')[0]}` : ''}`)
     // A configuration error (a missing file, a bad option) has no path: never baselined.

@@ -132,7 +132,7 @@ export async function africaJourney(host: AfricaJourneyHost): Promise<void> {
     const initialLedger = list(credited.ledger)
     const finalLedger = list(returned.ledger)
     assert.deepEqual(finalLedger.slice(0, initialLedger.length), initialLedger, `${city}: existing balance ledger entries are retained`)
-    assert.equal(Number(returned.cash), Number(credited.cash) + finalLedger.slice(initialLedger.length).reduce((sum, entry) => sum + Number(object(entry).amount), 0), `${city}: returned balance matches the retained ledger and trip expenses`)
+    assert.equal(Number(returned.cash), Number(credited.cash) + finalLedger.slice(initialLedger.length).reduce<number>((sum, entry) => sum + Number(object(entry).amount), 0), `${city}: returned balance matches the retained ledger and trip expenses`)
     assert.deepEqual(finalLedger.slice(returnLedgerLength).map(object).filter(line => Number(line.amount) === -route.fare).length, 1, `${city}: exactly one return fare is recorded in the wallet ledger`)
 
     const replayAfterRestart = await action('lagos', 'estate.relocate', { to: city, mode: 'air' }, tripId)

@@ -1,0 +1,50 @@
+{
+  "observedAt": "2026-10-09T23:18:36.697640+00:00",
+  "baselineSource": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "implementationPatchSha256": "9482e2cdff947f726298040ee32c6102623277ee67ca1d05c84955999901f1d7",
+  "testFirstPatchSha256": "1eec18cb72ebfb2c89f73501a3e30026515503eec01e91515dec3c991661e0ce",
+  "moduleSha256": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+  "testSha256": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+  "baselineAndGreenSourceBytesIndependentlyVerified": true,
+  "executionReceiptSha256": "cf5f25a8ab45613478b311ff1364f50a6d76ecd6db852f9807072437c5e1b5e1",
+  "ownerDeclaredNode": 24,
+  "ownerDeclaredHeapMiB": 256,
+  "runs": {
+    "baseline": {
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "logSha256": "8de61e4de8a17e6fe5db948a9ff33fb0315be6ed8c99254fc57b2fbb60d5cb04",
+      "logBytes": 1590
+    },
+    "red": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "exitCode": 1,
+      "logSha256": "7395339ec8c9a643570c029102a78c133c5e9551dd6ba6270a37818cc18441ed",
+      "logBytes": 1085
+    },
+    "green": {
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "logSha256": "46c6bcf034f770ca2d28953efbaa9577aa11db13b5078b37d31e8a51fec70a14",
+      "logBytes": 2296
+    }
+  },
+  "decision": "PURE_REVERSE_RED_GREEN_ACCEPTED",
+  "scope": "Existing baseline passes15. New named road-edge regression fails because old controls reject gear and pause. Candidate22passes validates reverse motion/3mps cap/no pivot/swept boundary/checkpoint refusal/stop-before-shift/strictv1v2. Synthetic pure states only.",
+  "remaining": [
+    "Actual authenticated driving HTTP service+retry/version/reload checks",
+    "Independent v1/v2 issuance gate and rollback reader review",
+    "Client component execution and exact candidate compiler/budgets",
+    "Native keyboard/touch/interruption/qualification on same actor with normal controls",
+    "No retained score0 repair/forgiveness or original native rootcause claim"
+  ]
+}

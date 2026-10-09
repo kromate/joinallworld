@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, rm, readFile, symlink, mkdir, writeFile } from 'node:fs/promises';
+import { mkdtemp, rm, readFile, symlink, mkdir, writeFile, truncate, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
@@ -186,4 +186,41 @@ test('immutable publication tolerates an abandoned partial staging file and conc
     await assert.rejects(store.writeImmutable('tiles/stable.json', new Uint8Array([5, 4, 3])), /collision/);
     assert.deepEqual(await readFile(path.join(root, 'tiles/stable.json')), Buffer.from(contents));
   } finally { await rm(dir, { recursive: true, force: true }); }
+});
+
+
+test('read-only ledger status includes live WAL rows without source sidecar or lease changes', async () => {
+  const dir=await mkdtemp(path.join(tmpdir(),'world-ledger-readonly-'));
+  const file=path.join(dir,'queue.sqlite'),ledger=new Ledger(file);
+  try{
+    ledger.enqueue({id:'wal-only',kind:'campaign-grid-query',inputHash:'raw',payload:{query:'retained'},maxAttempts:2});
+    const claim=ledger.claim('owner',0,5)!;
+    const names=(await readdir(dir)).sort();
+    assert.ok(names.includes('queue.sqlite-wal'));
+    const before=await Promise.all(names.map(name=>readFile(path.join(dir,name))));
+    const wal=before[names.indexOf('queue.sqlite-wal')]!;assert.ok(wal.length>0);
+    const snapshot=Ledger.readOnlyList(file);
+    assert.equal(snapshot.length,1);assert.equal(snapshot[0]!.status,'leased');
+    assert.equal(snapshot[0]!.attempt,1);assert.equal(snapshot[0]!.leaseUntil,5);
+    assert.deepEqual(snapshot[0]!.payload,{query:'retained'});
+    assert.deepEqual((await readdir(dir)).sort(),names);
+    assert.deepEqual(await Promise.all(names.map(name=>readFile(path.join(dir,name)))),before);
+    assert.equal(ledger.complete(claim.id,claim.token,1,{done:true}),true);
+  }finally{ledger.close();await rm(dir,{recursive:true,force:true});}
+});
+
+test('read-only ledger snapshot refuses oversized database or WAL and symlinked state before SQL',async()=>{
+  const dir=await mkdtemp(path.join(tmpdir(),'world-ledger-readonly-bounds-'));
+  const file=path.join(dir,'queue.sqlite');
+  try{
+    await writeFile(file,Buffer.alloc(0));await truncate(file,64*1024*1024+1);
+    assert.throws(()=>Ledger.readOnlyList(file),/unsafe or oversized/);
+    await truncate(file,0);await writeFile(`${file}-wal`,Buffer.alloc(0));await truncate(`${file}-wal`,64*1024*1024+1);
+    assert.throws(()=>Ledger.readOnlyList(file),/unsafe or oversized/);
+    await rm(`${file}-wal`);await symlink(file,`${file}-wal`);
+    assert.throws(()=>Ledger.readOnlyList(file),/unsafe or oversized/);
+    await rm(`${file}-wal`);await symlink(file,path.join(dir,'link.sqlite'));
+    assert.throws(()=>Ledger.readOnlyList(path.join(dir,'link.sqlite')),/unsafe or oversized/);
+    assert.deepEqual((await readdir(dir)).sort(),['link.sqlite','queue.sqlite']);
+  }finally{await rm(dir,{recursive:true,force:true});}
 });

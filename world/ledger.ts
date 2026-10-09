@@ -1,4 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
+import { closeSync, constants, fstatSync, lstatSync, mkdtempSync, openSync, readSync, rmSync, writeSync, type Stats } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 
 export interface EnqueueInput {
   id: string; kind: string; inputHash: string; payload: unknown; maxAttempts: number; priority?: number;
@@ -66,6 +69,54 @@ function assertJsonValue(value: unknown, stack = new Set<object>()): void {
 
 /** A local, crash-resumable job ledger. All mutations use short IMMEDIATE transactions. */
 export class Ledger {
+  /** Inspection opens an existing ledger without schema, journal or lease writes. */
+  static readOnlyList(filename: string): Array<Record<string, unknown>> {
+    requiredText(filename,'path');
+    // SQLite may create WAL/SHM sidecars even with readOnly:true. Query a private
+    // stable copy instead; never mark a live source immutable or ignore its WAL.
+    const before=new Map<string,string|null>(),limit=64*1024*1024;
+    const signature=(info:Stats)=>[info.dev,info.ino,info.size,info.mtimeMs,info.ctimeMs].join(':');
+    const inspect=(file:string,optional:boolean)=>{
+      try{const info=lstatSync(file);if(!info.isFile()||info.isSymbolicLink()||info.nlink!==1||info.size>limit)throw new Error('read-only ledger snapshot refuses unsafe or oversized state');return signature(info);}
+      catch(error){if(optional&&(error as NodeJS.ErrnoException).code==='ENOENT')return null;throw error;}
+    };
+    const sources=[filename,`${filename}-wal`];
+    for(const file of sources)before.set(file,inspect(file,file!==filename));
+    const scratch=mkdtempSync(path.join(tmpdir(),'world-ledger-status-')),copy=path.join(scratch,'ledger.sqlite');
+    let db:DatabaseSync|undefined;
+    try {
+      for(const file of sources){
+        if(before.get(file)===null)continue;
+        const descriptor=openSync(file,constants.O_RDONLY|constants.O_NOFOLLOW);
+        try{
+          if(signature(fstatSync(descriptor))!==before.get(file))throw new Error('ledger changed during read-only snapshot');
+          const size=fstatSync(descriptor).size;
+          const output=openSync(file===filename?copy:`${copy}-wal`,constants.O_WRONLY|constants.O_CREAT|constants.O_EXCL|constants.O_NOFOLLOW,0o600);
+          try{
+            // Copy only the prechecked length, with fixed memory, even if a
+            // concurrent writer keeps appending. Changed files refuse below.
+            const buffer=Buffer.allocUnsafe(65536);
+            for(let offset=0;offset<size;){
+              const count=readSync(descriptor,buffer,0,Math.min(buffer.length,size-offset),offset);
+              if(count===0)throw new Error('ledger changed during read-only snapshot');
+              for(let written=0;written<count;){
+                const countWritten=writeSync(output,buffer,written,count-written,offset+written);
+                if(countWritten===0)throw new Error('ledger snapshot write did not advance');
+                written+=countWritten;
+              }
+              offset+=count;
+            }
+            if(signature(fstatSync(descriptor))!==before.get(file))throw new Error('ledger changed during read-only snapshot');
+          }finally{closeSync(output);}
+        }finally{closeSync(descriptor);}
+      }
+      for(const file of sources)if(inspect(file,file!==filename)!==before.get(file))throw new Error('ledger changed during read-only snapshot; retry status');
+      db=new DatabaseSync(copy,{readOnly:true});
+      return (db.prepare(`SELECT id,kind,input_hash AS inputHash,payload,max_attempts AS maxAttempts,priority,attempt,status,
+        available_at AS availableAt,lease_until AS leaseUntil,result,error FROM jobs ORDER BY id`).all() as Array<Record<string,unknown>>)
+        .map(row=>({...row,payload:JSON.parse(String(row.payload)),result:row.result===null?null:JSON.parse(String(row.result))}));
+    } finally { try{db?.close();}finally{rmSync(scratch,{recursive:true});} }
+  }
   #db: DatabaseSync;
   #bounded = false;
   constructor(path: string, storageLimits?: { databaseBytes: number }) {

@@ -1,8 +1,10 @@
 # Campaign indexing integration
 
-This is the next implementation contract after durable capture observations.
+This contract is implemented by the campaign phase and persistent JSONL session.
 It uses the existing campaign Ledger and fixed supervised ingestion controller.
-It is not implemented by compact observation validation alone.
+228 Python +43 Node checks and full World TypeScript pass; exact source-policy
+publication is pending. Read CAMPAIGN-FEATURE-INDEX-OPERATIONS.md and PROGRESS.md.
+Independent raw/index audit, global shard admission and country geometry remain open.
 
 ## Scheduler and identities
 
@@ -64,7 +66,8 @@ Index rows cannot consume the frozen query denominator/maxJobs. Add explicit
 indexCoverage with eligible captured, pending, leased, failed and verified indexed
 counts, labeled source-feature-index / geometry-not-compiled. Keep compiled and
 playable coverage unchanged. A read-only status command reports missing index rows
-as pending without enqueuing or launching workers. Specify source/index phase work
+as untracked without enqueuing or launching workers; untracked contributes to
+the unfinished backlog. Specify source/index phase work
 limits so a paused source batch leaves its indexing backlog visible and resumable.
 
 Acceptance must include a real retained frozen-plan query capture, not only

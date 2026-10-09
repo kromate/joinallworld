@@ -442,3 +442,21 @@ unattended world/Nigeria integration/terrain/conditions/phone goal stays active.
 [Draft PR23](https://github.com/kromate/joinallworld/pull/23) exacthead **61e554eb815a977c83c570bf082743cb7cb35415**, sixfiles based on0327d072. Contains standing feet support from actual baked floor/deck triangles, conservative action/easing/stair gates, support preflight and regression tests; no new assets/deps or dirty primary body/NPC/movement/wardrobe work. Initial428c1bed compiler failures retained and repaired. [ExactCI37874622682](https://github.com/kromate/joinallworld/actions/runs/37874622682) PASS compiler/build/download/smoke15/15/release-policy, fullSKIPPED; Lagos startup614960raw/222898gzip within unchanged caps. Clean managedcheckout actual StandIn9/9 +venue3/3 PASS at128heap, sampledgroup169410560/209027072B below220MiB, terminal0. Exacthost pixels/motion/action and low undeclared-prop policy review, frame/input/per-journey/fullpackage comparisons and physical phones stillpending. **Draft/unaccepted; do not deploy this phase yet.** WORLD remains sole production uploader.
 
 Actual source-only shoulder projectionv4 diagnostic reached outputs but failed220MiB RSSguard (269008896B, stopped143), after originalJSsyntax failure retained. Candidate worsensrestfold/posedstretch; rejected beforeGPU. Smaller per-family/worst-witness diagnostic prepared by existingLuna; no capraise or garmentproduction edit. Environmentactualhome/street/market fixture ready source-only; no latestGPUacceptance. Three bounded existingLuna lanes, five-minute monitor ACTIVE; warningpressure afterbriefnormal prohibits expansion without measuredheadroom. GRAPHICS own60094/60150/60215/60360 terminal; no liveheavy/server/browser/upload. Handedfiniteintensive turn backWORLD. Primary adopted1f711852 with all80dirty/untrackedpins preserved; user5191 services/tabs untouched.
+
+
+## WORLD campaign-index implementation checkpoint — 9 October 2026
+
+Held Node/Python session and schema2 same-Ledger indexing are integrated locally.
+228 Python +43 Node checks and full World TypeScript pass; exact committed-source
+release policy/publication pending. Actual retained Senegal frozen-query indexing,
+stale-token replay and idle/in-flight SIGTERM pass. Source attempts/usage stay
+separate; no actual campaign update, runtime upload, Nigeria change or newly
+playable detail. Independent raw/index audit and globally admitted country shards
+remain next. Read WORLD PROGRESS.md and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
+
+All WORLD broad-check handles terminal. GRAPHICS review server/browser presently
+owns the shared resources; WORLD is doing source/docs only and has requested
+terminal handback for one bounded clean-source policy check. No WORLD server,
+browser or upload. Latest03:12:26 memory sample WARNING2 with paging: retain
+heavy1 and original worker/build caps; no memory-heavy concurrency expansion.
+Upstreamfbd24b5d adopted safely; GRAPHICS's coordination append preserved.

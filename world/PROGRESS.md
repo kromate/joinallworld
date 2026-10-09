@@ -1,5 +1,60 @@
 # Implementation checkpoint — 9 October 2026
 
+## Campaign source indexing implemented — 9 October 2026
+
+The held Node→Python JSONL session and same-Ledger schema2 indexing phase are
+implemented. One actual supervised admission processes sequential captures;
+source and index claims have separate exact kinds and work limits. Frozen query
+membership, retained raw/receipt pins and the canonical observation are checked
+before ingestion. Completion uses the current live token. Actual ingestion with
+an expired completion token is subsequently replayed under a fresh charged claim.
+Source rows, acquisition attempts and network journals remain separate.
+
+Final affected validation passes **271 distinct tests**:228 Python (terminal22232,
+85.965s unittest/86.13s process,186,482,688B maxRSS) and43 Node (terminal55992,
+23.782s TAP/23.94s process,381,632,512B maxRSS). Full World TypeScript passes
+(terminal57195,3.86s,452,902,912B maxRSS,existing384MiB heap). Focused earlier runs
+are included, not added to this total. Exact committed-source release policy is
+pending; no runtime build or production upload follows from these checks.
+
+Acceptance includes an actual retained Senegal frozen-query capture copied into
+isolated state with zero reacquisition; actual stale-token replay; split-child
+membership with parent exclusion; legacy backfill; pause/resume and missing-row
+status; malformed/pin changes; and actual idle/in-flight SIGTERM. Python handlers
+set a flag, so protected worker cleanup cannot be interrupted by an asynchronous
+exception. Node bounds protocol bytes/time/calls and samples the owned Python
+coordinator under the existing96MiB ceiling. Unconfirmed exit preserves state.
+
+Schema2 status launches no worker, enqueues no rows and repairs no journal.
+SQLite inspection streams through a fixed64KiB buffer to a bounded private stable
+DB/WAL snapshot, preserving live WAL rows and refusing oversized/symlinked state,
+to avoid source
+sidecar writes; schema1 retains historical bounded journal repair. Final accepted
+retained-source tests compare actual campaign/control/raw file hashes before/after.
+All877 historical pins and nine protected actual files remain unchanged. The
+fixed44-source closure is447,668B;5,603-byte manifest SHA
+`87de97bfc4859224f48b1fcd988f27232b7efd0d892a003729bff49aa311b9ef`.
+Source evidence:`campaign-index-source-acceptance-v2.json`; terminal receipts
+`campaign-index-python-all-v1`, `campaign-index-node-v4`, `campaign-index-typecheck-v3`
+under the evidence cache. EarlierNodev3/sourcev1 receipts predate the bounded-copy
+review and are superseded. An earlier inspection exposed SQLite read-only sidecar creation; the private-copy
+fix is covered by a no-write status fixture. No durable actual campaign updates,
+source network use, Nigeria/game changes or new player-visible geometry this phase.
+
+Coverage is explicitly recorded-source-feature-index/geometry-not-compiled;
+independent raw/index audit remains required. Admission stops at256 scheduler
+rows and the original engine/storage/attempt budgets, which can stop earlier.
+Overflow remains visible and cannot be bypassed with unlimited new namespaces.
+Compiled and playable coverage remain unchanged. Read
+[CAMPAIGN-FEATURE-INDEX-OPERATIONS.md](CAMPAIGN-FEATURE-INDEX-OPERATIONS.md).
+
+Next: commit and verify the exact source policy; implement independent raw/index
+conservation and crossing-feature ownership; deterministic globally admitted
+bounded shards and operator materials; compile/publish/stream country geometry;
+measure real nonempty country throughput and phone performance. Global conditions,
+terrain and protected Nigeria rendering integration remain full-goal requirements.
+The previous sections below are historical where superseded by this checkpoint.
+
 ## Atomic capture observations and separate scheduler claims
 
 Previous turn was a status report, with no implementation progress. This

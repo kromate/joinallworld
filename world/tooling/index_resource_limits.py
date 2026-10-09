@@ -42,6 +42,11 @@ BOOTSTRAP_CASES = {"empty-file", "schema-checkpointed", "before-rename", "after-
 INGEST_CASES = {"before-transaction", "after-commit", "after-checkpoint"}
 ADMISSION_CASES = {"reserved", "binding-published"}
 MIB = 1024 * 1024
+SESSION_INTERRUPTION = None
+
+
+class IndexSessionInterrupted(Exception):
+    pass
 
 
 class IndexWorkerUnreaped(RuntimeError):
@@ -312,6 +317,8 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     next_rss = started
     inherited_pipe_exit_unconfirmed = False
     try:
+        if SESSION_INTERRUPTION:
+            raise IndexSessionInterrupted(SESSION_INTERRUPTION)
         process = subprocess.Popen(command, cwd=execution, env=environment,
                                    stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                    start_new_session=True, preexec_fn=apply_limits, pass_fds=inherited)
@@ -319,6 +326,8 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
         for name, stream in (("stdout", process.stdout), ("stderr", process.stderr)):
             selector.register(stream, selectors.EVENT_READ, name)
         while selector.get_map() or process.poll() is None:
+            if SESSION_INTERRUPTION:
+                raise IndexSessionInterrupted(SESSION_INTERRUPTION)
             now = time.monotonic()
             if now - started >= wall_seconds:
                 # A reaped leader does not prove that descendants which inherited

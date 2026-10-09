@@ -1,5 +1,15 @@
 # Decisions and repeatable rollout after the first compiler
 
+Current campaign-index checkpoint — 9 October 2026: actual held-session ingestion,
+frozen query membership and live-token completion are implemented.228 Python +43
+Node tests and full World TypeScript pass. Exact source-policy publication remains
+pending. Read the first PROGRESS.md section and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
+Next independent raw/index audit, deterministic globally admitted shards/operator
+materials and compiled streamed country geometry. Geographic foundation remains
+distinct from explorable/playable coverage; no runtime upload/map detail thisphase.
+Older checkpoint paragraphs below are historical where superseded. Existing memory
+caps and serialized intensive-work handoffs remain in force while pressure warns.
+
 Current builder checkpoint — 9 October 2026: canonical namespace recovery and paired
 worker leases pass126 Python/23 engine checks plus World TypeScript; see PROGRESS.md.
 Global outlines/places and regional pilots remain distinct from national3D coverage.

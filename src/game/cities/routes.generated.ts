@@ -266,5 +266,60 @@ export const AUTHORED_CITY_LINKS = Object.freeze([
       "fare": 9000,
       "km": 450,
       "seconds": 45
+    },
+    {
+      "a": "lagos",
+      "b": "accra",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Accra",
+      "icon": "✈️",
+      "km": 412,
+      "fare": 53000,
+      "seconds": 15
+    },
+    {
+      "a": "lagos",
+      "b": "algiers",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Algiers",
+      "icon": "✈️",
+      "km": 3371,
+      "fare": 290000,
+      "seconds": 20
+    },
+    {
+      "a": "lagos",
+      "b": "lome",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Lomé",
+      "icon": "✈️",
+      "km": 243,
+      "fare": 39000,
+      "seconds": 13
+    },
+    {
+      "a": "lagos",
+      "b": "nairobi",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Nairobi",
+      "icon": "✈️",
+      "km": 3807,
+      "fare": 325000,
+      "seconds": 20
+    },
+    {
+      "a": "lagos",
+      "b": "yaounde",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Yaoundé",
+      "icon": "✈️",
+      "km": 943,
+      "fare": 95000,
+      "seconds": 20
     }
   ] satisfies readonly CityLink[])

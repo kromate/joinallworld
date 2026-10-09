@@ -44,7 +44,7 @@ test('the region registry preserves the original nine and derives every additive
   const nigeriaCities = citiesOf('nigeria');
   assert.ok(original.every((id, index) => nigeriaCities.some((city) => city.id === id) && (index === 0 || nigeriaCities.findIndex((city) => city.id === original[index - 1]) < nigeriaCities.findIndex((city) => city.id === id))), 'the original map city order is preserved');
   for (const id of original) assert.equal(cityEntry(id)?.status, 'playable', `${id}: original city remains playable`);
-  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), cityCatalogue().map((city) => [city.id, city.open ? 'playable' : 'soon']));
+  assert.deepEqual(citiesOf('nigeria').map((city) => [city.id, city.status]), cityCatalogue().filter((city) => !city.countryISO || city.countryISO === 'ng').map((city) => [city.id, city.open ? 'playable' : 'soon']));
   for (const country of Object.values(COUNTRIES)) {
     assert.ok(country.outline.length > 8 && country.name, country.id);
     const flat = projector(country.id, 1000);

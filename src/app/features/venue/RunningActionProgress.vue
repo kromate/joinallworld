@@ -2,7 +2,7 @@
 // What is happening right now: the running activity (or trip) with its bar, the time left, and
 // Cancel with the real cancel rule. The time is the server's: it moves when a state arrives
 // (about once a second while something runs), never on a timer of its own.
-import { computed, defineAsyncComponent, ref } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { cityName } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -19,6 +19,57 @@ const view = game.view
 const active = computed(() => state.value.activeAction)
 const activity = computed(() => view.value.activities.active)
 const teaching = computed(() => view.value.career.teaching)
+const card = ref<HTMLElement | null>(null)
+let sizing: ResizeObserver | undefined
+let sizingFrame = 0
+function measureLesson(): void {
+  sizingFrame = 0
+  const progressCard = card.value
+  if (!progressCard) return
+  const slot = progressCard.closest<HTMLElement>('[data-slot="progress"]')
+  const stack = slot?.parentElement
+  const overlay = stack?.closest<HTMLElement>('.life-ui')
+  if (!slot || !stack || !overlay) return
+  if (!teaching.value) { slot.style.removeProperty('--teaching-progress-height'); return }
+  const bounds = overlay.getBoundingClientRect(), bottom = stack.getBoundingClientRect()
+  const scale = bounds.width / overlay.clientWidth || 1
+  let top = bounds.top
+  const progressBounds = progressCard.getBoundingClientRect()
+  for (const element of overlay.querySelectorAll<HTMLElement>('.hud-bar,.notice,.life-quick,.life-goal,.life-alerts')) {
+    if (stack.contains(element) || !element.getClientRects().length) continue
+    const area = element.getBoundingClientRect()
+    if (area.right > progressBounds.left && area.left < progressBounds.right) top = Math.max(top, area.bottom)
+  }
+  const otherRows = bottom.height - slot.getBoundingClientRect().height
+  const height = Math.max(0, (Math.min(bottom.bottom, bounds.bottom) - top - otherRows) / scale - 12)
+  slot.style.setProperty('--teaching-progress-height', `${height}px`)
+}
+function sizeLesson(): void {
+  if (!sizingFrame) sizingFrame = requestAnimationFrame(measureLesson)
+}
+onMounted(() => {
+  const stack = card.value?.closest<HTMLElement>('.life-bottom')
+  const overlay = stack?.closest<HTMLElement>('.life-ui')
+  if (overlay) {
+    sizing = new ResizeObserver(sizeLesson)
+    sizing.observe(overlay)
+    if (stack) sizing.observe(stack)
+    const sidebar = overlay.querySelector('.life-sidebar')
+    if (sidebar) sizing.observe(sidebar)
+    for (const element of overlay.querySelectorAll('.hud-bar,.notice,.life-quick,.life-goal,.life-alerts')) {
+      if (!stack?.contains(element)) sizing.observe(element)
+    }
+  }
+  window.addEventListener('resize', sizeLesson)
+  sizeLesson()
+})
+watch(view, sizeLesson, { flush: 'post' })
+onBeforeUnmount(() => {
+  sizing?.disconnect()
+  window.removeEventListener('resize', sizeLesson)
+  cancelAnimationFrame(sizingFrame)
+  card.value?.closest<HTMLElement>('[data-slot="progress"]')?.style.removeProperty('--teaching-progress-height')
+})
 const placeOf = (id: string): string => { const venue = view.value.venues.find((item) => item.id === id); return venue ? (id === 'home' ? 'Home' : venue.label) : 'your destination' }
 const name = computed(() => {
   const now = active.value
@@ -48,7 +99,7 @@ async function cancel(): Promise<void> {
 </script>
 
 <template>
-  <section v-if="active" class="life-progress" aria-label="Current activity">
+  <section v-if="active" ref="card" class="life-progress" aria-label="Current activity">
     <span class="life-progress-icon" aria-hidden="true"><GameIcon inline kind="activity" :id="activity?.id" :emoji="activity?.icon || (isTrip(active) ? '🧭' : '⏳')" /></span>
     <div><strong>{{ name }}</strong><small v-if="teaching">Your teaching choices complete the shift</small><small v-else>{{ Math.ceil(active.remaining) }}s left</small></div>
     <button v-if="!fixed && !teaching" type="button" :disabled="cancelling" :aria-label="cancelLabel" @click="cancel">{{ cancelling ? 'Cancelling…' : sleeping ? 'Wake up' : 'Cancel' }}</button>

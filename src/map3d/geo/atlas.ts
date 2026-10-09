@@ -633,7 +633,15 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   // ---- friends: a badge on each city (or country, further out) they are in, and the list behind it ------------
   let friendsNow: FriendsModel = EMPTY_FRIENDS, friendsOpen: string | null = null;
   const friendNodes = new Map<string, HTMLElement>();
-  const countryOf = (cityId: string): string | null => cityEntry(cityId)?.country ?? null;
+  const countryOf = (cityId: string): string | null => {
+    const country = cityEntry(cityId)?.country;
+    return country === 'nigeria' ? 'ng' : country ?? null;
+  };
+  const cityRegion = (cityId: string): RegionRef | null => {
+    const state = stateOfCity(cityId), country = countryOf(cityId);
+    return state ? { kind: 'state', id: state } : country ? { kind: 'country', id: country } : null;
+  };
+  const cityLevel = (cityId: string) => countryOf(cityId) === 'ng' ? NIGERIA : AFRICA;
   /** The groups drawn at this level, each with the place it stands at on the screen. */
   function friendBadges(): { key: string; title: string; friends: FriendHere[]; x: number; y: number }[] {
     if (!fits) return [];
@@ -756,13 +764,16 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
       const sheet = sheets[AFRICA];
       for (const feature of sheet.topology.features) {
         const top = sheet.top(feature), open = statusOf('country', feature.id) === 'open', b = feature.bounds;
-        push(`country:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name, { room: open ? undefined : roomOf(feature, top) * 0.9, priority: open ? 1000 : 40 + Math.min(30, (b.maxLon - b.minLon) * (b.maxLat - b.minLat) * 0.1), fixed: open, size: open ? dn.city : dn.other, compact: open, cls: open ? `is-city is-open${feature.id === ATLAS_LEVELS[NIGERIA]!.country ? ' is-you' : ''}` : 'is-region', note: open ? (feature.id === ATLAS_LEVELS[NIGERIA]!.country ? 'You are here' : 'Open') : undefined, anchor: open ? 'above' : 'centre' });
+        push(`country:${feature.id}`, at(feature.at[0], feature.at[1], top), feature.name, { room: open ? undefined : roomOf(feature, top) * 0.9, priority: open ? 1000 : 40 + Math.min(30, (b.maxLon - b.minLon) * (b.maxLat - b.minLat) * 0.1), fixed: open, size: open ? dn.city : dn.other, compact: open, cls: open ? `is-city is-open${feature.id === (countryOf(current) === 'nigeria' ? 'ng' : countryOf(current)) ? ' is-you' : ''}` : 'is-region', note: open ? (feature.id === (countryOf(current) === 'nigeria' ? 'ng' : countryOf(current)) ? 'You are here' : 'Open') : undefined, anchor: open ? 'above' : 'centre' });
         if (feature.cap && MAJOR_CAPITALS.has(feature.cap[0])) push(`cap:${feature.id}`, at(feature.cap[1], feature.cap[2], top), feature.cap[0], { priority: feature.cap[0] === 'Abuja' ? 60 : 30, size: 10, anchor: 'right', cls: 'is-capital' });
       }
     } else if (sheets[WORLD]) {
       for (const continent of Object.values(CONTINENTS)) push(`continent:${continent.id}`, at(relLon(continent.lon), continent.lat), continent.name, { priority: 100, size: 13, cls: 'is-continent' });
-      const home = sheets[WORLD].topology.byId.get(ATLAS_LEVELS[NIGERIA]!.country!);
-      if (home) push('country:home', at(home.at[0], home.at[1]), home.name, { priority: 1000, fixed: true, size: dn.city, compact: true, anchor: 'above', cls: 'is-city is-open is-you', note: 'You are here' });
+      const here = countryOf(current) === 'nigeria' ? 'ng' : countryOf(current);
+      for (const country of sheets[WORLD].topology.features.filter(feature => statusOf('country', feature.id) === 'open')) {
+        const mine = country.id === here;
+        push(mine ? 'country:home' : `country:${country.id}`, at(relLon(country.at[0]), country.at[1]), country.name, { priority: mine ? 1000 : 500, fixed: true, size: dn.city, compact: true, anchor: 'above', cls: `is-city is-open${mine ? ' is-you' : ''}`, note: mine ? 'You are here' : 'Open' });
+      }
       for (const route of plannedRoutes(current)) push(`hub:${route.to.id}`, at(relLon(route.to.lon), route.to.lat), route.to.name, { priority: 60, size: 10, anchor: 'right', cls: 'is-capital' });
     }
     return out;
@@ -1071,8 +1082,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   }
   /** Open a city's card: select its state and, in a state with several cities, choose that one. */
   function selectCity(id: string): boolean {
-    const state = stateOfCity(id);
-    if (!state || !select({ kind: 'state', id: state }, { from: 'map' })) return false;
+    const region = cityRegion(id);
+    if (!region || !select(region, { from: 'map' })) return false;
     selectedCity = id; confirming = null;
     if (isOpenCityId(id) && !cachedCityContent(id)) void loadCityContent(id).then(() => { if (selectedCity === id) drawSheet(); }, () => {});
     drawSheet();
@@ -1125,7 +1136,13 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     renderer.setPixelRatio?.(Math.min(globalThis.devicePixelRatio || 1, size.width <= 720 ? 1.75 : 2));
     renderer.setSize?.(size.width, size.height, false);
     layout(); syncResolution();
-    if (!opened || (resetView && !wasShown)) { opened = true; resetView = false; rig.jump(levelView(NIGERIA)); selected = stateOfCity(current) ? { kind: 'state', id: stateOfCity(current)! } : null; routeShown = null; drawChrome(); layout(); rig.jump(levelView(NIGERIA)); }
+    if (!opened || (resetView && !wasShown)) {
+      opened = true; resetView = false;
+      const initialLevel = cityLevel(current);
+      void ensure(initialLevel);
+      rig.jump(levelView(initialLevel)); selected = cityRegion(current); routeShown = null;
+      drawChrome(); layout(); rig.jump(levelView(initialLevel));
+    }
     else if (!rig.moving) rig.jump({ distance: clamp(rig.view.distance, minDistance(), maxDistance()) });
     wasShown = true;
     settleLevel(); request();
@@ -1348,13 +1365,13 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     watcher?.observe(container, { attributes: true, attributeFilter: ['hidden'] });
   }
 
-  const ready = ensure(NIGERIA).then(() => { void ensure(WORLD); return true; });
+  const ready = ensure(cityLevel(current)).then(() => { void ensure(WORLD); return true; });
   drawCrumbs?.();
 
   return {
     ready,
     /** The city the player is in: its state is "You are here" and the default selection. */
-    setCity(id) { if (!cityEntry(id)) return; countryDetailModel?.close(); current = id; selected = stateOfCity(id) ? { kind: 'state', id: stateOfCity(id)! } : null; routeShown = null; resetView = true; drawChrome(); request(); },
+    setCity(id) { if (!cityEntry(id)) return; countryDetailModel?.close(); current = id; selected = cityRegion(id); routeShown = null; resetView = true; drawChrome(); request(); },
     /** The life's state: a trip between cities is shown where the server's timer says it is. */
     setState(state) {
       const next = interCityTripOf(state);

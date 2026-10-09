@@ -47,7 +47,7 @@ export interface CrowdInput {
   positions?: unknown;
 }
 interface PlayerIn { id?: unknown; name?: unknown; here?: unknown; look?: unknown; friend?: unknown }
-interface NpcIn { id?: unknown; name?: unknown; at?: unknown }
+interface NpcIn { id?: unknown; name?: unknown; at?: unknown; look?: unknown }
 /** The server's who-is-here listing for a venue room. */
 export interface PresenceListing { error?: unknown; venue?: unknown; cityId?: unknown; players?: unknown }
 
@@ -69,7 +69,7 @@ export function crowdList({ players = [], npcs = [], selfId = null, max = CROWD_
   }
   for (const npc of (Array.isArray(npcs) ? npcs : []) as (NpcIn | null)[]) {
     if (!npc || typeof npc.id !== 'string') continue;
-    list.push({ id: `npc:${npc.id}`, name: String(npc.name ?? ''), kind: 'npc', seed: npc.id, ...(typeof npc.at === 'string' ? { spot: npc.at } : {}) });
+    list.push({ id: `npc:${npc.id}`, name: String(npc.name ?? ''), kind: 'npc', seed: npc.id, ...(npc.look && typeof npc.look === 'object' && !Array.isArray(npc.look) ? { look: npc.look as Record<string, unknown> } : {}), ...(typeof npc.at === 'string' ? { spot: npc.at } : {}) });
   }
   return list.slice(0, Math.max(0, max));
 }

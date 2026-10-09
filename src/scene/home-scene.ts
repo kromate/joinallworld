@@ -80,6 +80,8 @@ import { createUseProps } from './smart-objects/props.ts';
 import { createHingedHomeDoor } from './smart-objects/door.ts';
 import type { ObjectAction } from './smart-objects/sequence.ts';
 import type { BodyPose, SkinnedBody } from './body/skinned.ts';
+import { createStandInNativeSupport, hostSurfaceYAt } from './body/native-scene-support.ts';
+import type { NativePropRestSupport, NativeRestPose } from './body/native/native-rest-contact-v1/rest-pose-adapter.ts';
 import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
 import { housesFor } from '../game/cities/housingRuntime.ts';
 import { cachedCityContent } from '../game/cities/registry.ts';
@@ -346,6 +348,7 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   const wantsBody = bodyAllowed();
   let body: SkinnedBody | null = null, bodyLoading = false, bodyFailed = false, gone = false, seatAt: Rest | null = null, sat: Spot | undefined;
   const floorAt = { x: 0, y: 0.03, z: 0, ry: 0 }, headAt = new THREE.Vector3();
+  let nativeRestAt: Rest | null = null;
   let hinge: ReturnType<typeof createHingedHomeDoor> | null = null, doorDone: (() => void) | null = null, doorVisual = false;
   const doorGrip = new THREE.Vector3(), doorRelease = { x: 0, z: 0 };
   const lastGait = { x: NaN, y: 0, z: 0 };
@@ -480,6 +483,39 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     applyParts();
   }
 
+  /** Resolve contact against the current real furniture item, including bounded exits from it. */
+  function nativeRestSupport(pose: NativeRestPose, actor: THREE.Group): NativePropRestSupport | null {
+    const rest = nativeRestAt;
+    if (!rest || rest.pose !== pose) return null;
+    const item = itemsOf(lastState).find((value) => value.id === rest.id);
+    const def = item && FURNITURE[item.itemId];
+    if (!item || !def) return null;
+    const prop = def.shape;
+    if (prop !== 'bed' && prop !== 'mat' && prop !== 'tub' && prop !== 'shower') return null;
+    if ((pose === 'lie' && prop !== 'bed' && prop !== 'mat') || (pose === 'soak' && prop !== 'tub') || (pose === 'wash' && prop !== 'shower')) return null;
+    const mount = mountOf(def, item.x, item.y, item.rot, floorOf(item));
+    const maximum = mount.y + (prop === 'tub' ? 0.15 : prop === 'shower' ? 0.1 : prop === 'mat' ? 0.15 : 0.65) * tile;
+    group.updateWorldMatrix(true, false);
+    const top = group.localToWorld(new THREE.Vector3(mount.x, maximum, mount.z)).y;
+    const bottom = group.localToWorld(new THREE.Vector3(mount.x, mount.y - 0.02 * tile, mount.z)).y;
+    return { kind: 'prop-rest', surface: {
+      id: item.id, pose, prop,
+      surfaceYAt(worldX, worldZ) {
+        return hostSurfaceYAt(furniture, actor, worldX, worldZ, top, bottom, (hit) => objectAt(group.worldToLocal(hit.point.clone())) === item.id);
+      },
+      ...(prop === 'shower' ? { headZone: { contains(worldPoint: THREE.Vector3) {
+        group.updateWorldMatrix(true, false);
+        const local = group.worldToLocal(worldPoint.clone());
+        const dx = (local.x - mount.x) / tile, dz = (local.z - mount.z) / tile;
+        const cos = Math.cos(mount.ry), sin = Math.sin(mount.ry);
+        const x = dx * cos - dz * sin, z = dx * sin + dz * cos;
+        const y = (local.y - mount.y) / tile;
+        // The actual 0.24m showerhead at (-.2,SHOWER_HEAD,-.2), with its bounded spray column.
+        return Math.abs(x + 0.2) <= 0.2 && Math.abs(z + 0.2) <= 0.2 && y >= SHOWER_HEAD - 0.65 && y <= SHOWER_HEAD + 0.02;
+      } } } : {}),
+    } };
+  }
+
   // ---- the skinned body (capability-gated) ---------------------------------------------------
   /** After the room's first frame: fetch the body module and the body, once. Any failure keeps the procedural figure. */
   function startBody(renderer: THREE.WebGLRenderer) {
@@ -488,7 +524,10 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     bodyLoading = true;
     const look = who.look ?? lastState?.onboarding?.look ?? null, seed = who.seed;
     setTimeout(() => {
-      importBody().then((module) => module.loadBody(kit, look, seed, tile * AVATAR_SCALE)).then((loaded) => {
+      importBody().then(() => import('./body/provider.ts')).then((module) => module.loadGameBody(kit, look, seed, tile * AVATAR_SCALE, {
+        scene: 'home', role: 'player', poses: module.PLAYER_BODY_POSES,
+        nativeSupport: { ...createStandInNativeSupport(() => ({ group: people, avatar, scale: tile * AVATAR_SCALE, contactHeightAt }), () => group), restSupport: nativeRestSupport },
+      })).then((loaded) => {
         bodyLoading = false;
         if (gone) { loaded.dispose(); return; }
         // The look changed while it loaded: recolour, or (the other body) start again on the next frame.
@@ -552,10 +591,15 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   function poseBody(pose: Pose, animate: boolean) {
     if (!body) return;
     const next = pose === 'work' && seatAt ? seatAt.pose : pose === 'sit' && !seatAt ? 'idle' : BODY_POSE[pose];
-    placeBody();
-    body.show(next, animate);
-    // Getting up (sit-exit, get-up) happens where it sat or lay: the last spot, until the clip ends (stepCrowd).
+    const restPose = next === 'lie' || next === 'soak' || next === 'wash';
+    if (restPose && seatAt?.pose === next) nativeRestAt = seatAt;
+    else if (!body.seated && !body.easing) nativeRestAt = null;
+    // Register the real object and its placement before the first supported pose sample.
     const at = next === seatAt?.pose ? seatAt.at : body.seated ? sat : undefined;
+    placeBody();
+    if (at) placeUse(at);
+    body.show(next, animate);
+    // A bounded exit keeps the old prop anchor until the source transition finishes.
     if (at) { sat = at; placeUse(at); } else placeBody();
     markAvatar();
   }

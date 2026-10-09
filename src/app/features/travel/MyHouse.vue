@@ -46,7 +46,7 @@ const makeMain = (): Promise<boolean> => act('make-main', () => command('estate.
 function showOnMap(): void {
   const plot = estate.value.plot
   if (!plot) return
-  shell.open('map')
+  shell.open('map', { destination: null, layer: 'city' })
   focusMap({ plot })
 }
 </script>

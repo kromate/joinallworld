@@ -34,7 +34,7 @@ function surfaceY(meshes: readonly THREE.Mesh[], worldX: number, worldZ: number)
     mesh.updateMatrixWorld(true);
   }
   const ray = new THREE.Raycaster(new THREE.Vector3(worldX, 12, worldZ), new THREE.Vector3(0, -1, 0), 0, 24);
-  return ray.intersectObjects(meshes, false)[0]?.point.y ?? null;
+  return ray.intersectObjects(meshes.slice(), false)[0]?.point.y ?? null;
 }
 
 /** Exact SHAPES.chair geometry from the pinned home-scene.ts definition. */

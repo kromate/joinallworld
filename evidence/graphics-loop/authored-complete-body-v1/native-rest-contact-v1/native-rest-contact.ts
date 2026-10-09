@@ -41,11 +41,11 @@ export interface NativeRestContactProbe {
   sample(surface: NativeRestPropSurface, contacts: readonly FootContact[]): NativeRestContactMeasure;
 }
 
-const PROP_FOR_POSE: Readonly<Record<NativeRestPose, readonly NativeRestProp[]>> = Object.freeze({
-  lie: Object.freeze(['bed', 'mat']),
-  soak: Object.freeze(['tub']),
-  wash: Object.freeze(['shower']),
-});
+const PROP_FOR_POSE = Object.freeze({
+  lie: Object.freeze(['bed', 'mat'] as const),
+  soak: Object.freeze(['tub'] as const),
+  wash: Object.freeze(['shower'] as const),
+} satisfies Readonly<Record<NativeRestPose, readonly NativeRestProp[]>>);
 const REGION_BONES: Readonly<Record<NativeRestRegion, readonly string[]>> = Object.freeze({
   'pelvis-back': Object.freeze(['mixamorigHips']),
   'torso-back': Object.freeze(['mixamorigSpine', 'mixamorigSpine1', 'mixamorigSpine2']),
@@ -135,7 +135,7 @@ function posteriorSamples(
 ): number[] {
   const point = new THREE.Vector3();
   const names = REGION_BONES[region];
-  const bones = names.map((name) => root.getObjectByName(name)).filter((node): node is THREE.Bone => Boolean(node?.isBone));
+  const bones = names.map((name) => root.getObjectByName(name)).filter((node): node is THREE.Bone => node instanceof THREE.Bone);
   if (!bones.length) fail(`actor is missing a region bone for ${region}`);
   const center = new THREE.Vector3();
   for (const bone of bones) center.add(bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(inverseRoot));
@@ -178,7 +178,7 @@ export function createNativeRestContactProbe(
   const toeDirection = (side: 'Left' | 'Right') => {
     const foot = root.getObjectByName(`mixamorig${side}Foot`);
     const toe = root.getObjectByName(`mixamorig${side}ToeBase`);
-    if (!foot?.isBone || !toe?.isBone) fail(`actor is missing ${side.toLowerCase()} foot/toe landmarks`);
+    if (!(foot instanceof THREE.Bone) || !(toe instanceof THREE.Bone)) fail(`actor is missing ${side.toLowerCase()} foot/toe landmarks`);
     return toe.getWorldPosition(new THREE.Vector3()).sub(foot.getWorldPosition(new THREE.Vector3()));
   };
   const forward = toeDirection('Left').add(toeDirection('Right'));
@@ -208,9 +208,9 @@ export function createNativeRestContactProbe(
   for (const region of Object.keys(REGION_BONES) as NativeRestRegion[]) if (!totals[region]) fail(`no visible vertices sampled for ${region}`);
 
   const point = new THREE.Vector3();
-  return Object.freeze({
+  const probe: NativeRestContactProbe = {
     metrics: Object.freeze({ candidateVertices: Object.freeze({ ...totals }), capPerRegion: maximumVerticesPerRegion }),
-    sample(surface, contacts) {
+    sample(surface: NativeRestPropSurface, contacts: readonly FootContact[]) {
       validateNativeRestPropSurface(surface);
       root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
       for (const mesh of meshes) mesh.skeleton.update();
@@ -233,7 +233,9 @@ export function createNativeRestContactProbe(
         regionMeasures[region] = Object.freeze({ vertices: totals[region], sampled, contactVertices,
           minimumGap: sampled ? minimumGap : Infinity, maximumGap: sampled ? maximumGap : Infinity });
       }
-      const footGaps = { left: { sampled: 0, minimumGap: Infinity }, right: { sampled: 0, minimumGap: Infinity } };
+      const footGaps: Record<'left' | 'right', { sampled: number; minimumGap: number }> = {
+        left: { sampled: 0, minimumGap: Infinity }, right: { sampled: 0, minimumGap: Infinity },
+      };
       for (const contact of contacts) for (const point of contact.points ?? [contact]) {
         const y = surface.surfaceYAt(point.x, point.z);
         if (y === null) continue;
@@ -266,5 +268,6 @@ export function createNativeRestContactProbe(
         footGaps: Object.freeze({ left: Object.freeze(footGaps.left), right: Object.freeze(footGaps.right) }),
         headInZone, supported, reason });
     },
-  });
+  };
+  return Object.freeze(probe);
 }

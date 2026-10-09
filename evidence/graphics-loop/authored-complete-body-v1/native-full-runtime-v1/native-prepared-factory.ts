@@ -201,6 +201,13 @@ function worldSupport(root: THREE.Object3D, support: NativePoseSupport): NativeC
 }
 
 interface SoleGroup { readonly side: 'left' | 'right'; readonly vertices: readonly number[] }
+interface ContactSolveDiagnostics {
+  readonly limitedReasons: readonly Readonly<Record<string, number | string>>[];
+  readonly pelvisPasses: readonly Readonly<{ requestedLowering: number; appliedLowering: number; cumulativeLowering: number }>[];
+  readonly finalSolePoints: readonly Readonly<{ side: 'left' | 'right'; index: number; y: number; floorY: number; gap: number }>[];
+  readonly finalLegReach: readonly Readonly<{ side: 'left' | 'right'; upperLength: number; lowerLength: number; actualAnkleReach: number; requestedAnkleReach: number; maximumReach: number; extensionRatio: number }>[];
+}
+interface DetailedFootSolveResult extends FootSolveResult { readonly diagnostics: ContactSolveDiagnostics }
 
 /**
  * The legacy foot controller reads raw position and skin attributes, then applies skinning a second time.
@@ -368,9 +375,11 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     updateActorWorld(actor);
   }
 
-  function solve(heightAt: (contact: FootContact) => number, mode: 'motion' | 'grounded' = 'motion'): FootSolveResult {
+  function solve(heightAt: (contact: FootContact) => number, mode: 'motion' | 'grounded' = 'motion'): DetailedFootSolveResult {
     if (disposed) throw new Error('Authored foot contacts are disposed');
     let limited = false;
+    const limitedReasons: Array<Readonly<Record<string, number | string>>> = [];
+    const pelvisPasses: Array<{ requestedLowering: number; appliedLowering: number; cumulativeLowering: number }> = [];
     const desiredSoleY = new Map<'left' | 'right', number>();
     const correctedSides = new Set<'left' | 'right'>();
     let pelvisCorrection = 0;
@@ -398,23 +407,35 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
             shiftPelvisParentY(-lowering);
             pelvisCorrection += lowering;
             after = sample();
-            if (lowering + 0.001 < requiredLowering) limited = true;
+            if (lowering + 0.001 < requiredLowering) {
+              limited = true;
+              limitedReasons.push(Object.freeze({ code: 'pelvis-lowering-cap', requestedLowering: requiredLowering, appliedLowering: lowering, remainingBudget: remaining }));
+            }
+            pelvisPasses.push(Object.freeze({ requestedLowering: requiredLowering, appliedLowering: lowering, cumulativeLowering: pelvisCorrection }));
             continue;
           }
           limited = true;
+          limitedReasons.push(Object.freeze({ code: 'pelvis-lowering-budget-exhausted', requestedLowering: requiredLowering, cumulativeLowering: pelvisCorrection }));
         }
       }
       for (const contact of after) {
         let targetY = mode === 'grounded' ? -Infinity : contact.y;
         for (const point of contact.points ?? [contact]) targetY = Math.max(targetY, heightAt(point));
-        if (!Number.isFinite(targetY)) { limited = true; continue; }
+        if (!Number.isFinite(targetY)) {
+          limited = true;
+          limitedReasons.push(Object.freeze({ code: 'missing-or-nonfinite-support-height', side: contact.side, value: targetY }));
+          continue;
+        }
         const amount = targetY - contact.y;
         if (mode === 'motion' && amount < -0.024) continue; // Preserve a deliberate swing foot.
         desiredSoleY.set(contact.side, targetY);
         passError = Math.max(passError, Math.abs(amount));
         if (Math.abs(amount) <= 0.0002) continue;
         const bounded = THREE.MathUtils.clamp(amount, mode === 'grounded' ? -0.12 : 0, 0.12);
-        if (Math.abs(amount - bounded) > 0.001) limited = true;
+        if (Math.abs(amount - bounded) > 0.001) {
+          limited = true;
+          limitedReasons.push(Object.freeze({ code: 'per-pass-foot-correction-cap', side: contact.side, requested: amount, applied: bounded }));
+        }
         // IK targets the ankle, not the sole. Preserve the current ankle-to-sole
         // vector and translate it by the support delta in actor space.
         const sole = pointInActor(contact.x, contact.y, contact.z);
@@ -433,8 +454,35 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
       if (targetY === undefined) continue;
       maxError = Math.max(maxError, Math.abs(contact.y - targetY));
     }
-    if (maxError > 0.004) limited = true;
-    return Object.freeze({ corrected: correctedSides.size, maxError, limited });
+    if (maxError > 0.004) {
+      limited = true;
+      limitedReasons.push(Object.freeze({ code: 'final-sole-target-error', maximum: maxError, threshold: 0.004 }));
+    }
+    const finalContacts = sample();
+    const finalSolePoints: ContactSolveDiagnostics['finalSolePoints'][number][] = [];
+    const finalLegReach: ContactSolveDiagnostics['finalLegReach'][number][] = [];
+    for (const contact of finalContacts) {
+      let targetY = -Infinity;
+      const points = contact.points ?? [contact];
+      for (const point of points) targetY = Math.max(targetY, heightAt(point));
+      points.forEach((point, index) => {
+        const floorY = heightAt(point);
+        finalSolePoints.push(Object.freeze({ side: contact.side, index, y: point.y, floorY, gap: point.y - floorY }));
+      });
+      const leg = legs.find((candidate) => candidate.side === contact.side)!;
+      const hip = boneActorPoint(leg.thigh), knee = boneActorPoint(leg.calf), ankle = boneActorPoint(leg.foot);
+      const upperLength = hip.distanceTo(knee), lowerLength = knee.distanceTo(ankle);
+      const currentSole = pointInActor(contact.x, contact.y, contact.z);
+      const targetSole = pointInActor(contact.x, targetY, contact.z);
+      const requestedAnkleReach = ankle.distanceTo(ankle.clone().add(targetSole.sub(currentSole)));
+      const actualAnkleReach = hip.distanceTo(ankle);
+      const maximumReach = upperLength + lowerLength;
+      finalLegReach.push(Object.freeze({ side: contact.side, upperLength, lowerLength, actualAnkleReach,
+        requestedAnkleReach, maximumReach, extensionRatio: requestedAnkleReach / maximumReach }));
+    }
+    const diagnostics = Object.freeze({ limitedReasons: Object.freeze(limitedReasons), pelvisPasses: Object.freeze(pelvisPasses),
+      finalSolePoints: Object.freeze(finalSolePoints), finalLegReach: Object.freeze(finalLegReach) });
+    return Object.freeze({ corrected: correctedSides.size, maxError, limited, diagnostics });
   }
 
   return { sample, solve, dispose() { disposed = true; contacts.length = 0; } };
@@ -567,7 +615,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
           throw new Error(`Native ${context.pose} static sole support failed (${result.maxError} m, limited=${result.limited})`);
         }
         if (support.kind === 'stair-feet') {
-          if (result.limited || result.maxError > 0.004) throw new Error(`Native stair sole correction failed (${result.maxError} m, limited=${result.limited})`);
+          if (result.limited || result.maxError > 0.004) throw new Error(`Native stair sole correction failed (${result.maxError} m, limited=${result.limited}); diagnostics=${JSON.stringify(result.diagnostics)}`);
           const finalContacts = contacts.sample();
           let grounded = false;
           for (const contact of finalContacts) for (const point of contact.points ?? [contact]) {
@@ -860,7 +908,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
         ?? { kind: 'flat-feet', floorY: parentFloorToWorld(character!.object, placement.y) },
       restContact: options.restSupport
         ? (pose) => options.restSupport!(pose, character!.object)
-          ?? { kind: 'diagnostic', floorY: parentFloorToWorld(character!.object, standing.y) }
+          ?? { kind: 'diagnostic', floorY: parentFloorToWorld(character!.object, character!.object.position.y) }
         : undefined,
       initialLook,
       sceneScale: options.sceneScale,

@@ -8,6 +8,8 @@ import {
   validateNativeRestPropSurface,
 } from './native-rest-contact.ts';
 
+export type { NativeRestPose } from './native-rest-contact.ts';
+
 /** The prop must be registered by the host before it asks the body to enter a rest pose. */
 export interface NativePropRestSupport {
   readonly kind: 'prop-rest';
@@ -129,7 +131,7 @@ export function createNativeRestPoseAdapter(
         if (active === support.surface) active = previous;
       };
     },
-    apply(pose, support, applyMappedSourceFrame, contacts, solveHostFeet) {
+    apply(pose, support, applyMappedSourceFrame, sampleParentLocalContacts, solveHostFeet) {
       if (disposed) throw new Error('Native rest adapter is disposed');
       validateNativeRestPropSurface(support.surface);
       if (support.surface.pose !== pose) throw new Error(`Native ${pose} request does not match registered ${support.surface.pose} prop support`);

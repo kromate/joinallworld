@@ -1,0 +1,50 @@
+name: Market hair-anchor A/B CPU package v3
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-v8-hair-anchor-cpu-v3
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-hair-anchor-cpu-v3
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify closure, explicit pins, snapshot, and current file bytes agree
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 96252c819f977cf7c6e0594f26438372253e4cd241b62b56640c7901dcd8a63f
+        run: node --max-old-space-size=32 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/verify-input-closure.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify source/candidate hair-witness contract
+        run: node --test evidence/graphics-loop/parallel-execution-2026-10-09/remote-publication-0945/hair-v3-numeric.test.mjs
+      - name: Verify compact range and scalp-marker partition contracts
+        run: node --test evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/compact-wardrobe-ranges.test.mjs evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/scalp-marker-contract.test.mjs
+      - name: Install exact package dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Package under the pinned 220 MiB / 25 second process-group guard
+        env:
+          EXPECTED_BRANCH: codex/graphics-market-v8-hair-anchor-cpu-v3
+          EXPECTED_SNAPSHOT_SHA256: 96252c819f977cf7c6e0594f26438372253e4cd241b62b56640c7901dcd8a63f
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/run-bounded-linux.py
+      - name: Preserve package and bounded-process receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-hair-anchor-cpu-package-v3-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/static-fixture-market-hair-anchor-v3/**
+            evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/remote-results/**
+          if-no-files-found: warn

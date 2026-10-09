@@ -1,3 +1,22 @@
+# Latest source coverage, 9 October 2026 at 22:03 UTC
+
+The ninth batch completed Chad/N'Djamena, Eswatini/Mbabane,
+Burundi/Bujumbura, Lesotho/Maseru and Gabon/Libreville. Initial execution took
+11.482s; exact-contract resume took 2.870s. All15 source/request files stayed
+byte-identical. All five isolated engine/source checks passed. Independent
+retained and land vertex containment found zero outside declared bounds.
+Packet: `playable-africa-rollout/batches/ninth-five.json`.
+
+There are now **41 foreign generated starter sources**, of which ten are admitted;
+**31 remain unadmitted**. Production remains **11 open countries including Nigeria**.
+Twelve remaining source-inventory countries lack starter modules: SS,NE,BF,GW,MR,GQ,
+GM,SC,MU,KM,ST,CV. South Sudan requires its explicit pinned source-selection packet.
+These counts use54 sovereign countries, separate from the56-entry game atlas.
+Nigeria retains its existing40-city implementation. No new runtime or provider
+upload was performed for this source batch.
+
+The historical source checkpoints below retain their original counts and pins.
+
 # Africa starter coverage and next batch
 
 The pinned inventory has 43 remaining-country rows and eleven excluded rows, a dataset denominator of 54 sovereign-country candidates. The atlas has 56 country-or-territory entries, a different denominator. Ten earlier-wave city modules are present: Yaoundé, Lomé, Accra, Nairobi, Algiers, Cotonou, Abidjan, Dakar, Cape Town and Addis Ababa. All ten foreign starters and Nigeria are deployed in C1. Full CI, all-ten sealed verification and scoped native round trips passed before its production upload. The provider accepted version c844916f-0ffb-49f1-9c26-ccc6d2ec9469 at100%; the public backend adopted C1 at21:35:32UTC and original synthetic identity, nine saved fields and duplicate receipt passed at21:35:43UTC. The live eleven-open map, green country polygons and five new fare cards were independently observed at21:38UTC; see production-c1-eleven-country-acceptance.json. This read-only production witness does not claim completed production flights or physical-device acceptance. Do not treat generated files or source packets as runtime or production admission.

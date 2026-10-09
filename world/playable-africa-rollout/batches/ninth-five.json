@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "base": "2bf3cd65ef3461b754100406c498b8471a8bb473",
+  "scope": "Ninth source-only batch: five bounded African starter samples. Actual serial acquisition and exact-contract resume passed; no runtime, native, hosted, production, physical-phone or whole-city acceptance.",
+  "destinationIds": [
+    "n-djamena",
+    "mbabane",
+    "bujumbura",
+    "maseru",
+    "libreville"
+  ],
+  "registeredInProduction": false,
+  "geometry": {
+    "buildings": 1163,
+    "roads": 313,
+    "sourceBytes": 3117378,
+    "extent": "Bounded central OSM samples and selected airport dataset points; not complete cities or countries."
+  },
+  "sourceSummaries": [
+    {
+      "city": "n-djamena",
+      "country": "TD",
+      "sourceBytes": 706432,
+      "roads": 28,
+      "buildings": 350,
+      "retainedVertices": 2388,
+      "landVertices": 7,
+      "outsideBounds": 0,
+      "bounds": [
+        15.022,
+        12.100042,
+        15.062202,
+        12.1457
+      ]
+    },
+    {
+      "city": "mbabane",
+      "country": "SZ",
+      "sourceBytes": 693369,
+      "roads": 127,
+      "buildings": 280,
+      "retainedVertices": 2939,
+      "landVertices": 5,
+      "outsideBounds": 0,
+      "bounds": [
+        31.118335,
+        -26.370611,
+        31.728944,
+        -26.301651
+      ]
+    },
+    {
+      "city": "bujumbura",
+      "country": "BI",
+      "sourceBytes": 436574,
+      "roads": 31,
+      "buildings": 166,
+      "retainedVertices": 1441,
+      "landVertices": 5,
+      "outsideBounds": 0,
+      "bounds": [
+        29.306501,
+        -3.391087,
+        29.375006,
+        -3.31202
+      ]
+    },
+    {
+      "city": "maseru",
+      "country": "LS",
+      "sourceBytes": 943354,
+      "roads": 83,
+      "buildings": 246,
+      "retainedVertices": 2505,
+      "landVertices": 5,
+      "outsideBounds": 0,
+      "bounds": [
+        27.468273,
+        -29.468277,
+        27.566456,
+        -29.301674
+      ]
+    },
+    {
+      "city": "libreville",
+      "country": "GA",
+      "sourceBytes": 337649,
+      "roads": 44,
+      "buildings": 121,
+      "retainedVertices": 1246,
+      "landVertices": 6,
+      "outsideBounds": 0,
+      "bounds": [
+        9.40014,
+        0.370389,
+        9.472965,
+        0.470951
+      ]
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/game/cities/n-djamena/facts.ts",
+      "bytes": 1461,
+      "sha256": "0d2a00f6c5a74c4d137beab1ac4325d47821154ce1966eee21d57a13922de77d"
+    },
+    {
+      "path": "src/game/cities/n-djamena/geometry.ts",
+      "bytes": 84880,
+      "sha256": "30022133cd8503fb6db29bd5799951919d52ffe801893a741f2d8182b9ebaea6"
+    },
+    {
+      "path": "src/game/cities/n-djamena/index.ts",
+      "bytes": 260,
+      "sha256": "0671f0f6741c441b2c0e176848a877bc481376019a1d716d7c64b0e3eb86eef5"
+    },
+    {
+      "path": "src/game/cities/n-djamena/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/n-djamena/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/n-djamena.json",
+      "bytes": 3488,
+      "sha256": "aa97d94b20dea98bf27aa46ace67cb079f7613c5f8c9d9cc7a01ac7fb6e58229"
+    },
+    {
+      "path": "src/game/cities/mbabane/facts.ts",
+      "bytes": 1480,
+      "sha256": "6d16b92d24093e4f3d48ccdc52b3f4680f80b8fd3276a7f9ca5448915c98507e"
+    },
+    {
+      "path": "src/game/cities/mbabane/geometry.ts",
+      "bytes": 102751,
+      "sha256": "bb60ed7f7cb284c7ba41393197015bdf13cffdf55fa7e85008d907f31e262ec3"
+    },
+    {
+      "path": "src/game/cities/mbabane/index.ts",
+      "bytes": 258,
+      "sha256": "39e8e146091f640f9b8007036846d375dca01b06a3225c6face8686e92e0f4ce"
+    },
+    {
+      "path": "src/game/cities/mbabane/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/mbabane/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/mbabane.json",
+      "bytes": 3509,
+      "sha256": "7c5d5502cdd4d937375216a2187234909785b7d13e9f41c87162e9a09c8886e5"
+    },
+    {
+      "path": "src/game/cities/bujumbura/facts.ts",
+      "bytes": 1490,
+      "sha256": "010b402a5f54931d18a67dae9bbe3ca9de80f48fcdf4078d437afe53bec8d0f2"
+    },
+    {
+      "path": "src/game/cities/bujumbura/geometry.ts",
+      "bytes": 48907,
+      "sha256": "f64f63255a8e3763b548d11369c8e14f579194a6569655a7a38cf9d3b898c8be"
+    },
+    {
+      "path": "src/game/cities/bujumbura/index.ts",
+      "bytes": 260,
+      "sha256": "08afa98c8a1143eb3b1df2f9aa507d459051496bab7fe0819401aaf3439f770e"
+    },
+    {
+      "path": "src/game/cities/bujumbura/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/bujumbura/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/bujumbura.json",
+      "bytes": 3514,
+      "sha256": "fd3f46ba5ce5b65fcc1742809944734ee0ffeb13887da32a09d3f5d628e8d6c1"
+    },
+    {
+      "path": "src/game/cities/maseru/facts.ts",
+      "bytes": 1472,
+      "sha256": "444244e2082aeeaf9d8e574e1155e9f92a53c027cfe4838bee7aab30fdda71bd"
+    },
+    {
+      "path": "src/game/cities/maseru/geometry.ts",
+      "bytes": 86319,
+      "sha256": "3936a7cdeab052160e6f8df4646e5679f25fde69a62479012715549c043d5234"
+    },
+    {
+      "path": "src/game/cities/maseru/index.ts",
+      "bytes": 257,
+      "sha256": "546d7ffcd9481e70034aed4a92433a1feeaf1d0f1817db78631cc8e26805d346"
+    },
+    {
+      "path": "src/game/cities/maseru/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/maseru/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/maseru.json",
+      "bytes": 3497,
+      "sha256": "2baf138e5135f3a14984f6654cb9c977207979abf1f70a05785384a54d1fc2f8"
+    },
+    {
+      "path": "src/game/cities/libreville/facts.ts",
+      "bytes": 1474,
+      "sha256": "125aac04ed1d94c84c823fdb0e18c8d0b083d3e614b0350cc7b0ffba0c972e27"
+    },
+    {
+      "path": "src/game/cities/libreville/geometry.ts",
+      "bytes": 39521,
+      "sha256": "b07005b9ae34dad01da2ec2f31b8573f81596be870afedddfbbc8789c3c29a11"
+    },
+    {
+      "path": "src/game/cities/libreville/index.ts",
+      "bytes": 261,
+      "sha256": "d014715f6042c967ccf29ad5706e8baa3b7f564ae673457d4c2f106e6d146e10"
+    },
+    {
+      "path": "src/game/cities/libreville/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/libreville/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/libreville.json",
+      "bytes": 3502,
+      "sha256": "94341b9bde700e6f2ae2b6c94d94605f2c55b44eadc73c2bc6c7a59d3010f76f"
+    },
+    {
+      "path": "scripts/agent-slot.ts",
+      "bytes": 14218,
+      "sha256": "873fcf993506655018cffff78fc37b9dce92410ffba184bd92360aa9a77bb566"
+    },
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 39500,
+      "sha256": "1c4fffb0d08b45d719b0e0900ad69e006b4e4148e50804481cc705fef4db9273"
+    },
+    {
+      "path": "scripts/world/build-playable-africa.py",
+      "bytes": 13380,
+      "sha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+    },
+    {
+      "path": "scripts/world/verify-playable-destination.ts",
+      "bytes": 13771,
+      "sha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/inventory.json",
+      "bytes": 173999,
+      "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+    },
+    {
+      "path": "world/tooling/atomic_starter_publication.py",
+      "bytes": 22078,
+      "sha256": "4f3b998e1b878585bdbe461bceb99447d8c1c23b84b83ab4b4e7655395b54bac"
+    },
+    {
+      "path": "world/tooling/run_africa_starters.py",
+      "bytes": 43555,
+      "sha256": "af8d2348113de428109ff6abe4a44b9fea777dd39041965c44e0265cf385f3bb"
+    }
+  ],
+  "validation": {
+    "contractSha256": "bbf2b2a23039fbd4b895b5d878562458aa1a2ba9d06bb67d1877c90ad5a567ec",
+    "status": "complete",
+    "actualSerialRun": true,
+    "actualExactContractResume": true,
+    "windows": [
+      {
+        "budgetSeconds": 60,
+        "elapsedSeconds": 11.482,
+        "finishedAt": "2026-10-09T22:00:18Z",
+        "startedAt": "2026-10-09T22:00:07Z"
+      },
+      {
+        "budgetSeconds": 60,
+        "elapsedSeconds": 2.87,
+        "finishedAt": "2026-10-09T22:01:01Z",
+        "startedAt": "2026-10-09T22:00:58Z"
+      }
+    ],
+    "allFiveSourceAndIsolatedEngineVerified": true,
+    "fifteenSourceAndRequestFilesUnchanged": true,
+    "allRetainedAndLandCoordinatesWithinBounds": true,
+    "auditPath": ".cache/world-build/evidence/africa-ninth-resume-audit.json",
+    "auditSha256": "11ea6fe9e8d808766f81d0316b7d88eccc2f14d766c53935365ea312f506e305",
+    "contractPath": ".cache/world-build/playable-africa-runs/bbf2b2a23039fbd4b895b5d878562458aa1a2ba9d06bb67d1877c90ad5a567ec/contract.json",
+    "contractFileSha256": "f4fe4fba3427dd830f849261f2a58d81db03e4c91ac23eae12a9516d4d516eda",
+    "reportPath": ".cache/world-build/playable-africa-runs/bbf2b2a23039fbd4b895b5d878562458aa1a2ba9d06bb67d1877c90ad5a567ec/report.json",
+    "reportSha256": "337c2dad7360cbfeca0a1f9a61b8488ff7802e49385f55466db3dd9758060949",
+    "maxCountries": 5,
+    "maxPotentialReservationBytes": 41943040,
+    "secondsPerWindow": 60
+  },
+  "limitations": [
+    "Natural Earth city/capital labels can be stale. Burundi selection remains the pinned Bujumbura settlement, not a current capital claim.",
+    "OurAirports records do not certify current operations, routes or official ARPs.",
+    "Unmeasured building heights are estimates and visitor venues are fictional gameplay content.",
+    "Shared runtime catalogue/routes remain deployed C1; these modules alone do not open countries."
+  ]
+}

@@ -45,7 +45,6 @@ FILES = tuple(sorted([
     "world/tooling/index_capture_controller.py",
     "world/tooling/index_admission_input.py",
     "world/tooling/index_admission_worker.py",
-    "world/tooling/index_admission_crash.py",
     "world/tooling/index_admission.py",
     "world/tooling/index_lease_witness.ts",
 ]))

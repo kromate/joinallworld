@@ -734,7 +734,14 @@ export async function prepareCampaignIndexShardPlan(
     if (!descriptor || !descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) throw new TypeError('shard policy requires exact data properties');
     Object.defineProperty(policy, key, { value: descriptor.value, enumerable: true, writable: false });
   }
-  const config = freezeCampaignIndexConfiguration(prepareFeatureIndexSessionConfiguration(configuration));
+  const preparedConfig = prepareFeatureIndexSessionConfiguration(configuration);
+  const config = freezeCampaignIndexConfiguration({
+    pythonExecutable: preparedConfig.pythonExecutable, pythonRuntime: preparedConfig.pythonRuntime,
+    nodeExecutable: preparedConfig.nodeExecutable, namespaceRoot: preparedConfig.namespaceRoot,
+    aggregateBytes: preparedConfig.aggregateBytes, repositoryRoot: preparedConfig.repositoryRoot,
+    manifestBytes: preparedConfig.manifestBytes, sourceConfiguration: preparedConfig.sourceConfiguration,
+    bindingBytes: preparedConfig.bindingBytes,
+  });
   const manifestBytes = Buffer.from(config.manifestBytes), sourceConfigBytes = Buffer.from(config.sourceConfiguration),
     baseBytes = Buffer.from(config.bindingBytes);
   const deadline = Date.now() + 60_000;

@@ -16,6 +16,7 @@ import unittest
 from unittest.mock import patch
 
 from index_admission import supervised_charged_index
+import index_admission_worker
 from index_binding import decode_index_binding, encode_index_binding
 from index_controller_record import decode_controller_record, FORMAT, FORMAT_V2
 from index_controller_state import RECORD, EXECUTION
@@ -56,6 +57,16 @@ class IndexAdmissionTests(unittest.TestCase):
         result.update(changes); return result
 
     def record(self, namespace): return decode_controller_record((namespace/RECORD).read_bytes())
+
+    def test_crash_worker_accepts_only_exact_fixed_boundary_arguments(self):
+        for argv in (["index_admission_worker.py", "--crash"],
+                     ["index_admission_worker.py", "--crash", "reserved", "extra"],
+                     ["index_admission_worker.py", "--crash", "foreign"]):
+            with self.subTest(argv=argv), patch.object(index_admission_worker.sys, "argv", list(argv)), \
+                    patch.object(index_admission_worker, "_runtime_environment",
+                                 side_effect=AssertionError("invalid CLI reached runtime setup")):
+                with self.assertRaisesRegex(ValueError, "fixed boundary"):
+                    index_admission_worker.main()
 
     def test_actual_admission_ingestion_and_reopen_never_open_parent_sql(self):
         with self.prepared() as (namespace, source), patch("sqlite3.connect", side_effect=AssertionError("parent SQL forbidden")):

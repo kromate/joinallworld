@@ -13,7 +13,9 @@ const observation = (jobId = 'caf\u00e9'): FeatureIndexObservation => ({
 });
 const input = (contexts: FeatureIndexObservation[] = [observation()]): FeatureIndexSessionAuditInput => ({
   extractPath: '/capture/extract.json', receiptPath: '/capture/receipt.json',
-  expected: { requestHash: h('c'), request: { z: 1, a: '\u00e9' },
+  // Synthetic JSON only: these codec fixtures exercise canonical framing,
+  // not a real acquisition request accepted by the campaign producer.
+  expected: { requestHash: h('c'), request: { z: 1, a: '\u00e9' } as unknown as FeatureIndexSessionAuditInput['expected']['request'],
     extract: { sha256: h('d'), bytes: 3 }, receipt: { sha256: h('e'), bytes: 4 } },
   requiredObservations: contexts,
 });
@@ -83,7 +85,8 @@ test('attempt allowance must cover every required context and required set is no
 
 test('oversized expectation is rejected by the bounded frame/preflight contract', () => {
   const large = input();
-  large.expected.request = { value: 'x'.repeat(70_000) };
+  // Intentional oversized synthetic JSON, not a valid acquisition request.
+  large.expected.request = { value: 'x'.repeat(70_000) } as unknown as FeatureIndexSessionAuditInput['expected']['request'];
   assert.throws(() => prepareFeatureIndexShardPlanRequest(large, 1), /fixed line byte bound|bounded cloning byte limit/i);
 });
 

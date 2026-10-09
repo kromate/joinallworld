@@ -36,7 +36,7 @@ WORKERS = {
     "index-ingest-crash": HERE / "index_ingest_crash.ts",
     "index-registry-startup": HERE / "index_registry_worker.py",
     "index-registry-admit": HERE / "index_admission_worker.py",
-    "index-registry-admit-crash": HERE / "index_admission_crash.py",
+    "index-registry-admit-crash": HERE / "index_admission_worker.py",
     "index-registry-lease-witness": HERE / "index_registry_worker.py",
     "index-registry-plan-witness": HERE / "index_admission_worker.py",
 }
@@ -195,9 +195,9 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     Caller supplies the actual held kernel lease; inode checks cannot prove flock
     ownership. This is not a public durable opener or aggregate-budget admission.
     """
-    allowed_cases = (CASES if worker == "witness" else BOOTSTRAP_CASES if worker == "index-bootstrap-crash"
-                     else ADMISSION_CASES if worker == "index-registry-admit-crash"
-                     else INGEST_CASES if worker == "index-ingest-crash" else {None})
+    allowed_cases = {"witness":CASES, "index-bootstrap-crash":BOOTSTRAP_CASES,
+                     "index-registry-admit-crash":ADMISSION_CASES,
+                     "index-ingest-crash":INGEST_CASES}.get(worker,{None})
     if worker not in WORKERS or case not in allowed_cases:
         raise ValueError("only a registered worker and its fixed cases are accepted")
     bounded_integer(file_bytes, 65536, 64*MIB, "file bytes")
@@ -386,8 +386,8 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
         if worker != "witness":
             command.append("--experimental-strip-types")
         command.append(str(script))
-    if case is not None:
-        command.append(case)
+    if worker == "index-registry-admit-crash": command.extend(("--crash", case))
+    elif case: command.append(case)
     plan_pipe = None
     plan_size = plan_pin["bytes"] if plan_pin else 0
     if plan_worker:

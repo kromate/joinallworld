@@ -240,7 +240,7 @@ test('v2 shard binding refuses malformed pins, changed base identity, wrong vers
   assert.equal(called, false);
 
   const encoded = prepareFeatureIndexShardBinding(staticV1Binding, pins);
-  assert.throws(() => validateFeatureIndexShardBinding(Buffer.concat([Buffer.from(encoded.bytes), Buffer.from('\n')]))), /ASCII bytes|canonical JSON/i);
+  assert.throws(() => validateFeatureIndexShardBinding(Buffer.concat([Buffer.from(encoded.bytes), Buffer.from('\n')])), /ASCII bytes|canonical JSON/i);
   const parsed = JSON.parse(Buffer.from(encoded.bytes).toString('ascii')) as Record<string, unknown>;
   const wrongVersion = { ...parsed, engineVersion: 'complete-feature-index-v2' };
   assert.throws(() => validateFeatureIndexShardBinding(Buffer.from(canonicalJson(wrongVersion), 'ascii')), /versions differ/i);

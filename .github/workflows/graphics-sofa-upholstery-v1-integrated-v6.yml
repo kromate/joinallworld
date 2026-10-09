@@ -1,0 +1,111 @@
+name: Sofa upholstery fixed-frame review v6 (pinned CPU package)
+
+on:
+  push:
+    branches:
+      - codex/graphics-sofa-upholstery-v1-integrated-v6
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: environment-sofa-fixed-frame-v6-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    name: Eight canonical seated Home comparisons
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Checkout the sealed review controller
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Seal review controls and validate report assembly before Chrome
+        run: |
+          cmp evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/workflow-integrated-sofa-v6.yml .github/workflows/graphics-sofa-upholstery-v1-integrated-v6.yml
+          node evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/seal-review-sources-sofa-v6.mjs
+          node evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/preflight-module-links-sofa-v6.mjs
+          node --test evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/test-review-report-sofa-v6.mjs
+          python3 evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/test-runner-contract-sofa-v6.py
+          node --test evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/package-boundary-contract-sofa-v6.test.mjs
+
+      - name: Download the exact frozen successful sofa CPU package
+        uses: actions/download-artifact@v4
+        with:
+          name: environment-sofa-upholstery-cpu-v5-37914543927
+          run-id: 37914543927
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/candidate-input
+
+      - name: Download the exact successful v7 whole-slice baseline
+        uses: actions/download-artifact@v4
+        with:
+          name: environment-whole-slice-v7-package-v3-37902739360
+          run-id: 37902739360
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/baseline-v7-input
+
+      - name: Checkout exact sofa CPU source snapshot for package-boundary verification
+        uses: actions/checkout@v4
+        with:
+          ref: 10b383754b68c758ba002bb9fbe1e5f5fe668511
+          path: cpu-source-input
+          persist-credentials: false
+
+      - name: Reconstruct the v5 source-seal inputs from the exact CPU checkout
+        run: |
+          npm ci --prefix cpu-source-input --no-audit --no-fund
+          cd cpu-source-input
+          node evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v5/seal-review-sources-sofa-v5.mjs
+
+      - name: Verify actual candidate and baseline artifacts against their source/output manifests
+        env:
+          PACKAGE_ROOT: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/candidate-input
+          BASELINE_PACKAGE_ROOT: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/baseline-v7-input
+          CPU_SOURCE_ROOT: cpu-source-input
+        run: node evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/preflight-package-sofa-v6.mjs
+
+      - name: Record runner Chrome identity
+        shell: bash
+        run: |
+          CHROME_PATH="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_PATH"
+          CHROME_REAL="$(readlink -f "$CHROME_PATH")"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+
+      - name: Run fixed-frame comparison with strict canonical readiness
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF: ${{ github.ref }}
+          PACKAGE_ROOT: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/candidate-input
+          BASELINE_PACKAGE_ROOT: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/baseline-v7-input
+        run: >-
+          python3 evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/run-bounded-linux-render-sofa-v6.py
+          browser $(sha256sum evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/review-sources-sofa-v6.json | cut -d' ' -f1)
+          37914543927 10b383754b68c758ba002bb9fbe1e5f5fe668511 sofa-home
+
+      - name: Upload screenshots and diagnostic receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-sofa-upholstery-render-v6-${{ github.run_id }}
+          path: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v6/remote-results/${{ github.run_id }}-sofa-home/
+          if-no-files-found: warn
+          retention-days: 14

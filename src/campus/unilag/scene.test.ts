@@ -43,6 +43,7 @@ function assertTreeInstanceBudget(scene:ReturnType<typeof buildUnilag>){
  assert.equal(trees.reduce((sum,mesh)=>sum+mesh.count,0),CAMPUS_TREES.length,'near and far instances cover every authored tree exactly once');
  if(trees.length===2){
   const [high,low]=trees.slice().sort((a,b)=>b.geometry.attributes.position!.count-a.geometry.attributes.position!.count);
+  assert.ok(high&&low,'two instance groups provide both detail templates');
   assert.ok(high.geometry.attributes.position!.count>low.geometry.attributes.position!.count,'near-tree geometry is the higher-detail template');
   assert.ok(high.count<=24,'the higher-detail tree instance group stays within its authored cap');
  }else assert.equal(trees[0]!.count,CAMPUS_TREES.length,'when no near instance set exists, the sole set is the far-tree population');

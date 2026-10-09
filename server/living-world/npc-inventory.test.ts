@@ -217,7 +217,7 @@ test('lost or understated settlement witnesses quarantine retained terminal parc
   }
   assert.equal(valid.npcInventory.delivered[actor]!.settlements, 2, 'repeated deliveries retain their count in the latest watermark')
   for (const loseWitness of [false, true]) {
-    const corrupt = snapshot(valid)
+    const corrupt = snapshot(valid) as typeof valid
     if (loseWitness) delete corrupt.npcInventory.delivered[actor]
     else corrupt.npcInventory.delivered[actor]!.settlements = 1
     db.livingWorld = corrupt

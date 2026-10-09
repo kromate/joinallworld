@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "51aa9f5f34ace039e19c26d51ea9e40ab3de625c",
+  "runId": 37892795175,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37892795175",
+  "status": "completed",
+  "conclusion": "failure",
+  "observedAt": "2026-10-09T06:24:25.792016+00:00",
+  "jobs": [
+    {
+      "name": "full-source (22)",
+      "id": 113697261384,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "name": "release-policy",
+      "id": 113697261478,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "full-source (24)",
+      "id": 113697261594,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "name": "full-server",
+      "id": 113697944672,
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "full-worker",
+      "id": 113697945162,
+      "status": "completed",
+      "conclusion": "skipped"
+    }
+  ],
+  "failure": "Both Node22/24 compiler steps reported only two TS18046 diagnostics, npc-inventory.test.ts221/222: corrupt is unknown. No SIGABRT in these diagnostics. Build and test waves did not run.",
+  "log": {
+    "path": "/tmp/joinallworld-51aa9f5f-failed.log",
+    "bytes": 4234,
+    "sha256": "58d69109ae5060523d0b0417c6a538216f75f41c2e95d303243dc2e3fe39cf4a"
+  },
+  "repair": "Restore the already server-seeded fixture shape on snapshot(valid) with as typeof valid. All rejection/quarantine/unchanged assertions retained; independent Luna source review confirms no behaviour weakening.",
+  "focusedRetest": {
+    "tests": 9,
+    "pass": 9,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 58.833541,
+    "elapsedSeconds": 0.373144792,
+    "sampledOwnedGroupPeakBytes": 137560064,
+    "heapMiB": 128,
+    "sampledGroupLimitMiB": 220,
+    "wallSeconds": 15,
+    "log": "/tmp/joinallworld-npc-inventory-types-retest.log"
+  },
+  "fullAcceptance": false,
+  "programmeDeployments": 0,
+  "goalmaticDeployments": 0,
+  "nextAction": "Publish reviewed fixture correction; reconcile reviewed freshmain source before a new exact full wave run."
+}

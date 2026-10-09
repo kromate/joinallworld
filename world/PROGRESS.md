@@ -1,5 +1,21 @@
 # Implementation checkpoint — 9 October 2026
 
+Successor37886998309 at1b56590b is terminal failure:19 protocol/kernel tests
+pass again; controller18 methods finish with four publication-subcase errors.
+The actual retained nonempty/zero-feature, committed-WAL, corruption, copy
+recovery and replay cases now pass. The four errors are the fault injector
+indexing `attempts[-1]` while publishing the initial empty audit record, before
+its intended interruption boundary. The injector now delegates empty records;
+nine local no-worker codec/file methods pass (root-controls-v3, terminal25b161
+exit0). This does not accept the actual publication cases until rerun. CI now
+continues independent serial checks after a test failure only when raw/storage
+preflight passed, retaining an overall failed result. Full later tests were
+skipped in both earlier runs and remain open. All negative artifacts retained.
+Fresh main0b7da1be was reviewed and safely fast-forwarded: coordination docs only,
+WORLD implementation preserved. Fixed47-source bytes569,910 still allocate892,928B;
+registry/control with operation remains1,048,576B, no cap increase. Luna source
+review confirms mandatory namespace reservation proof remains in admission.
+
 Diagnostic37886772443 is now terminal **failure**, not release acceptance.
 Its19 protocol/kernel tests passed; actual controller17 tests produced14 errors
 (including publication subcases), all before audit launch because `_original_pins`

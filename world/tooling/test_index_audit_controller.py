@@ -35,6 +35,16 @@ from index_controller_state import footprint as controller_footprint
 
 class IndexAuditCodecTests(unittest.TestCase):
     """Small file/codec checks; no Node workers or SQLite connections."""
+    def test_interruption_injector_preserves_initial_empty_attempt_publication(self):
+        for phase in ("reporting-write", "reporting-rename", "terminal-write", "terminal-rename"):
+            with self.subTest(phase=phase), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary).resolve(strict=True)
+                raw = _json({"attempts": []})
+                publish = IndexAuditControllerTests()._interrupt_publish(phase)
+                publish(root, raw, "audit.json", "audit.pending", 64000)
+                self.assertEqual((root/"audit.json").read_bytes(), raw)
+                self.assertFalse((root/"audit.pending").exists())
+
     def test_original_controls_match_real_root_and_preserve_optional_metadata(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary).resolve(strict=True)
@@ -408,10 +418,10 @@ class IndexAuditControllerTests(unittest.TestCase):
                 selected = True
             elif final_name == "audit.json" and phase.startswith("reporting-"):
                 value = json.loads(raw.decode("ascii"))
-                selected = value["attempts"][-1]["phase"] == "reporting"
+                selected = bool(value["attempts"]) and value["attempts"][-1]["phase"] == "reporting"
             elif final_name == "audit.json" and phase.startswith("terminal-"):
                 value = json.loads(raw.decode("ascii"))
-                selected = (value["attempts"][-1]["phase"] == "terminal"
+                selected = (bool(value["attempts"]) and value["attempts"][-1]["phase"] == "terminal"
                             and value["attempts"][-1]["report"] is not None)
             if not selected:
                 return _publish_bytes_real(root, raw, final_name, pending_name, maximum)

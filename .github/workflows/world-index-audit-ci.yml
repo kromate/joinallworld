@@ -36,35 +36,42 @@ jobs:
       - name: Install locked TypeScript dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Verify six immutable raw copies and unchanged storage preflight
+        id: preflight
         env:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
           python -B -c 'import json,pathlib; from test_index_ingest import retained_input_path; from index_tooling import FILES,FORMAT,source_snapshot_allowance; root=pathlib.Path.cwd(); fixture=json.loads((root/"world/campaign-fixtures/index-audit/manifest.json").read_bytes()); paths=[retained_input_path(item["original"]) for item in fixture["files"]]; manifest={"format":FORMAT,"files":{name:{"sha256":"a"*64,"bytes":(root/name).stat().st_size} for name in FILES}}; source=source_snapshot_allowance(manifest,(root/"world/acquisition-sources.json").stat().st_size); control=source+2*65536+2*8192+8192; assert control<=1048576; print(json.dumps({"files":len(paths),"bytes":sum(p.stat().st_size for p in paths),"sourceAllowance":source,"registryControlWithOperation":control}))' > diagnostic-evidence/preflight.json
       - name: Pure audit protocol and kernel
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_OPTIONS: --max-old-space-size=128
         run: node --experimental-strip-types --test --test-concurrency=1 world/feature-index-session.test.ts world/feature-index-audit.test.ts > diagnostic-evidence/node-audit.tap 2>&1
       - name: Actual audit controller and recovery
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
         run: /usr/bin/time -v python -B -m unittest test_index_audit_controller > diagnostic-evidence/python-audit.stdout 2> diagnostic-evidence/python-audit.stderr
       - name: Actual held Python sessions and audit replay
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
         run: /usr/bin/time -v python -B -m unittest test_index_capture_session > diagnostic-evidence/python-session.stdout 2> diagnostic-evidence/python-session.stderr
       - name: Actual Node to Python retained-capture audit
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_OPTIONS: --max-old-space-size=128
         run: node --experimental-strip-types --test --test-concurrency=1 --test-name-pattern='actual Node to Python final audit' world/campaign-feature-index.test.ts > diagnostic-evidence/sdk-audit.tap 2>&1
       - name: Affected registry, capture and ingestion regression checks
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
         run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
       - name: World TypeScript
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_OPTIONS: --max-old-space-size=384
         run: node_modules/.bin/tsc --noEmit -p world/tsconfig.json > diagnostic-evidence/world-typecheck.stdout 2> diagnostic-evidence/world-typecheck.stderr

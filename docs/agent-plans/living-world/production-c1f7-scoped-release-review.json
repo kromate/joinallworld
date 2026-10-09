@@ -1,0 +1,153 @@
+{
+  "reviewedAt": "2026-10-09T21:40:31.402369+00:00",
+  "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+  "decision": "ACCEPT scoped upload/provider/public backend adoption and retained synthetic nine-field/same-ID replay continuity; live native/observation evidence still pending independent review",
+  "providerVersion": "c844916f-0ffb-49f1-9c26-ccc6d2ec9469",
+  "providerDeployment": "a0331c29-52c3-46dd-a451-81d444f86535",
+  "publicHealth": {
+    "independentlyReadAt": "2026-10-09T21:37:52Z",
+    "build": "joinallworld-c1f7c1f7369139ce559292318ba",
+    "ok": true
+  },
+  "beforeAfterNamespaceHashEqual": true,
+  "secretsPreserved": 11,
+  "teachingStartsOff": true,
+  "newGrantActorOrPaidProductionFlight": false,
+  "receipts": [
+    {
+      "name": "production-c1f-upload.json",
+      "bytes": 439,
+      "sha256": "d3fcdac04082dc9126d3b102923aa9a4dab402347886f134d877216cf7ada227",
+      "report": {
+        "format": "world-production-c1f-upload-v1",
+        "checkedAt": "2026-10-09T21:27:59.075168+00:00",
+        "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+        "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+        "uploaderPid": 65435,
+        "terminalExit": 1,
+        "versionIds": [],
+        "preserveVarsAtUpload": true,
+        "rebundled": false,
+        "originalCheckpointPreserved": true,
+        "publicAdoptionVerified": false
+      }
+    },
+    {
+      "name": "production-c1f-retry-upload.json",
+      "bytes": 526,
+      "sha256": "23ba5c74d239a2c8853707ce1c2d982f397b13969913bd6d12011aeae45a99b4",
+      "report": {
+        "format": "world-production-c1f-upload-v1",
+        "checkedAt": "2026-10-09T21:30:06.444256+00:00",
+        "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+        "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+        "uploaderPid": 65967,
+        "terminalExit": 0,
+        "versionIds": [
+          "c844916f-0ffb-49f1-9c26-ccc6d2ec9469"
+        ],
+        "preserveVarsAtUpload": true,
+        "rebundled": false,
+        "originalCheckpointPreserved": true,
+        "publicAdoptionVerified": false,
+        "originalFailedStartupRetained": true
+      }
+    },
+    {
+      "name": "production-c1f-before-provider-preflight.json",
+      "bytes": 737,
+      "sha256": "ab44e2772f4aad14d0850da69229230530f686b7546b40e05ef7be21f4629358",
+      "report": {
+        "format": "world-production-provider-read-v1",
+        "checkedAt": "2026-10-09T21:19:11.795138+00:00",
+        "worker": "joinallworld-next",
+        "authenticatedProviderRead": true,
+        "providerMutation": false,
+        "deploymentId": "d1b044f1-0969-48c8-8033-e2092b68f7e5",
+        "versions": [
+          {
+            "version_id": "90ba4ff2-4204-4261-ab10-519787ab51f2",
+            "percentage": 100
+          }
+        ],
+        "namespaceIdSha256": "90d37132012f19aafbea7ecea829df0423cae5b255afc4439afe2546990b851a",
+        "namespaceUnchanged": true,
+        "className": "JoinAllworldState",
+        "configuredBuild": "joinallworld-3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+        "teachingBindingNames": [],
+        "retainedPlainVariableCount": 1,
+        "secretBindingCount": 11,
+        "preserveVarsAtUpload": true
+      }
+    },
+    {
+      "name": "production-c1f-after-provider-preflight.json",
+      "bytes": 737,
+      "sha256": "b37f42db6d11143b3d9d66145254d3205d1301d716ad3a7550890636e877407f",
+      "report": {
+        "format": "world-production-provider-read-v1",
+        "checkedAt": "2026-10-09T21:30:32.243142+00:00",
+        "worker": "joinallworld-next",
+        "authenticatedProviderRead": true,
+        "providerMutation": false,
+        "deploymentId": "a0331c29-52c3-46dd-a451-81d444f86535",
+        "versions": [
+          {
+            "version_id": "c844916f-0ffb-49f1-9c26-ccc6d2ec9469",
+            "percentage": 100
+          }
+        ],
+        "namespaceIdSha256": "90d37132012f19aafbea7ecea829df0423cae5b255afc4439afe2546990b851a",
+        "namespaceUnchanged": true,
+        "className": "JoinAllworldState",
+        "configuredBuild": "joinallworld-c1f7c1f7369139ce559292318ba9842c23a28267",
+        "teachingBindingNames": [],
+        "retainedPlainVariableCount": 1,
+        "secretBindingCount": 11,
+        "preserveVarsAtUpload": true
+      }
+    },
+    {
+      "name": "continuity-after-release-c1f-2135.json",
+      "bytes": 855,
+      "sha256": "8789f674befbb8e5624fcd335c481a3a7e5cd4c86b36fc8e1bd998b20dae696c",
+      "report": {
+        "format": "world-consolidated-continuity-check-v1",
+        "checkedAt": "2026-10-09T21:35:43.630950+00:00",
+        "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+        "expectedPublicBuild": "joinallworld-c1f7c1f7369139ce559292318ba",
+        "scope": "retained synthetic actor and original same-spot receipt only",
+        "status": "passed",
+        "newActorCreated": false,
+        "sameOriginalIdentity": true,
+        "sameIdReceiptDuplicate": true,
+        "stableFields": [
+          "cash",
+          "home",
+          "homeOwned",
+          "property",
+          "estate",
+          "inventory",
+          "business",
+          "location",
+          "spot"
+        ],
+        "privateWitnessSha256": "e64720ae8af21e9f30cc7ed74564a7bd3e80bc7d27a616922837c48575097c87",
+        "limitations": [
+          "not a game-wide export or restore",
+          "not provider full-source identity proof",
+          "not bundle, browser, reconnect or physical-phone acceptance"
+        ]
+      }
+    }
+  ],
+  "liveNativeOwnerReport": "WORLD final reports eleven green/open country cards and fares. Actual Astra report/model/cleanup and agreed observation evidence requested; not independently accepted here.",
+  "limitations": [
+    "Retained synthetic save scope only, not all users or full export/restore",
+    "Public health is not browser, gameplay or physical-phone proof",
+    "School parking/qualification and full physical career chain remain incomplete",
+    "Teaching proposal is unapplied/unexecuted and starts stay OFF",
+    "Goalmatic adapter remains disabled/mock"
+  ]
+}

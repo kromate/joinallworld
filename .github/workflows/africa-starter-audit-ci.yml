@@ -1,6 +1,12 @@
 name: African starter destination audit
 on:
   workflow_dispatch:
+    inputs:
+      sealed_source_sha:
+        description: Optional exact game SHA for sealed Worker verification instead of source-only audit
+        required: false
+        default: ''
+        type: string
   push:
     branches: [codex/world-foundation]
     paths:
@@ -17,6 +23,7 @@ permissions:
   contents: read
 jobs:
   source-and-engine:
+    if: github.event_name != 'workflow_dispatch' || inputs.sealed_source_sha == ''
     runs-on: ubuntu-latest
     timeout-minutes: 12
     strategy:
@@ -40,3 +47,8 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=1536
         run: node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck --types node src/game/cities/africa/*.ts src/game/cities/yaounde/*.ts src/game/cities/lome/*.ts src/game/cities/accra/*.ts src/game/cities/nairobi/*.ts src/game/cities/algiers/*.ts
+  sealed-worker:
+    if: github.event_name == 'workflow_dispatch' && inputs.sealed_source_sha != ''
+    uses: ./.github/workflows/world-sealed-africa-ci.yml
+    with:
+      source_sha: ${{ inputs.sealed_source_sha }}

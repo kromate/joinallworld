@@ -1,0 +1,100 @@
+name: Sealed Africa Worker verification
+
+on:
+  workflow_call:
+    inputs:
+      source_sha:
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact public game source SHA to build and verify, without deployment
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: world-sealed-africa-verification
+  cancel-in-progress: false
+
+jobs:
+  sealed-journeys:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NODE_OPTIONS: --max-old-space-size=1536
+    steps:
+      - name: Check out verification tooling
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Validate exact game source identifier
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: node -e 'if (!/^[a-f0-9]{40}$/.test(process.argv[1])) throw Error("Exact source SHA required")' "$SOURCE_SHA"
+      - name: Check out immutable game source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: kromate/joinallworld
+          ref: ${{ inputs.source_sha }}
+          path: game-source
+          persist-credentials: false
+      - name: Set up pinned Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.19.0
+      - name: Verify source identity and install locked dependencies
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          test "$(git -C game-source rev-parse HEAD)" = "$SOURCE_SHA"
+          test -z "$(git -C game-source status --porcelain --untracked-files=no)"
+          npm ci --ignore-scripts --no-audit --no-fund --prefix game-source
+          npm ci --ignore-scripts --no-audit --no-fund --prefix game-source/deploy/tooling
+      - name: Build once and enforce existing download budgets
+        timeout-minutes: 4
+        working-directory: game-source
+        run: |
+          npm run build
+          npm run size:download
+      - name: Seal the exact Worker and built assets
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          node game-source/scripts/package-joinallworld.mjs "$GITHUB_WORKSPACE/game-source" "$RUNNER_TEMP/africa-package" "$SOURCE_SHA" false "$GITHUB_WORKSPACE/game-source/deploy/tooling"
+          node game-source/scripts/guard-joinallworld-package.mjs check "$RUNNER_TEMP/africa-package" "$SOURCE_SHA" false
+      - name: Exercise sealed SQLite Worker and actual Assets
+        id: journeys
+        timeout-minutes: 4
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          mkdir -p verification-evidence
+          timeout --signal=TERM --kill-after=5s 175s node --experimental-strip-types world/tooling/verify-sealed-africa.mjs --source "$GITHUB_WORKSPACE/game-source" --package "$RUNNER_TEMP/africa-package" --sha "$SOURCE_SHA" --tools "$GITHUB_WORKSPACE/game-source/deploy/tooling" > verification-evidence/sealed-africa.json
+      - name: Retain sanitized journey observations on success or failure
+        if: ${{ !cancelled() && (steps.journeys.outcome == 'success' || steps.journeys.outcome == 'failure') }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sealed-africa-observations-${{ inputs.source_sha }}
+          path: verification-evidence/sealed-africa.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Archive the verified package without rebuilding
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          node game-source/scripts/guard-joinallworld-package.mjs check "$RUNNER_TEMP/africa-package" "$SOURCE_SHA" false > verification-evidence/package-digest.txt
+          tar --sort=name --owner=0 --group=0 --numeric-owner --mtime='UTC 2020-01-01' -C "$RUNNER_TEMP/africa-package" -cf "$RUNNER_TEMP/africa-package.tar" .
+          sha256sum "$RUNNER_TEMP/africa-package.tar" > verification-evidence/archive-sha256.txt
+      - name: Retain exact verified package and public synthetic evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sealed-africa-${{ inputs.source_sha }}
+          path: |
+            ${{ runner.temp }}/africa-package.tar
+            verification-evidence/
+          if-no-files-found: error
+          retention-days: 7

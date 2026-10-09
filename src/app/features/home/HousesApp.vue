@@ -69,7 +69,7 @@ const move = (id: HouseId): Promise<boolean> => act(`move:${id}`, () => command(
         <template #status><span v-if="house.current" class="ui-chip is-good">Your home</span><span v-else-if="house.tag" class="ui-chip">{{ house.tag }}</span></template>
         <p class="houses-description">{{ house.description }}</p>
         <dl class="houses-specs"><div><dt>Move-in cost</dt><dd>{{ money(house.moveIn) }}</dd></div><div><dt>Weekly rent</dt><dd>{{ money(house.rent) }}</dd></div><div><dt>Room size</dt><dd>{{ house.grid }} × {{ house.grid }}</dd></div></dl>
-        <template v-if="!house.current" #actions><BaseButton variant="primary" :reason="moveReason(house, offline)" :disabled="pending !== null" @click="move(house.id)">Move in for {{ money(house.moveIn) }}</BaseButton></template>
+        <template v-if="!house.current" #actions><BaseButton variant="primary" :reason="moveReason(house, offline)" :disabled="pending !== null" @click="move(house.id)">{{ pending === `move:${house.id}` ? 'Moving…' : `Move in for ${money(house.moveIn)}` }}</BaseButton></template>
         <template v-if="!house.current && moveReason(house, offline)" #note><p class="ui-why">{{ moveReason(house, offline) }}</p></template>
       </CatalogueCard>
     </div>

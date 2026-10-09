@@ -1,3 +1,15 @@
+## GRAPHICS parallel acceleration — 9 October 2026, 06:10 UTC
+
+Three existing GPT-6 Luna lanes are active concurrently with separate source ownership; the five-minute memory monitor is already ACTIVE. No duplicated monitor or new local heavy browser/server/build. Last monitor reports NORMAL1 recovery but continued paging; root holds only optional new local intensive work. WORLD remains sole production uploader.
+
+Crowd v7 remote run37891411499 exactb3b8337b writes24 source/compact PNGs with actor/look/bone checkpoint controls PASS. Root verifies all24 hashes/control sets and7before/after source pins, independently inspects woman03 frontwalk and man02 sideidle pairs: recognizable identity/broad silhouette remains but source shoulder gaps/hair faceting persist. Wrapper FAIL monitor_error after child result due zero-RSS termination race; peak1325576192B under remote1280MiB, cleanup verified. Failure retained; partial static evidence only, no mobile/sustained-motion/dense-market acceptance. Distinct v3 wrapper fix underway.
+
+Garment v3 CPU exact-position PASS remains separate from visual acceptance. Actual GPUv3 run37890812978 exceeds768MiB861863936B/5.957s,0PNG. Remote-only1280MiB harness ceiling adopted after measured938/861MiB startup evidence and peer notification; this is not game/mobile/local budget growth. GPUv4 run37891791038 exactd190bb9f buildPASS, browserchild1/22.356s/1322229760B belowcap,36pinsstable,0PNG. Stage breadcrumbs expose fixture failure: raw source normal attribute layout differs from production displayed body. Luna audits canonical loader normals and private source-index recovery; strict geometry/skin/mask controls remain. No production garment adoption.
+
+Environment reviewed-v3 run37890579453 fails missing assertPinned import after source/vendor pass; reviewed-v3-fix1 run37891492143 exact9c1d7f6e passes source seal/preverification/vendor/addons then full-app crosses self-imposed220MiB diagnostic cap by221184B at3.434s. Failures retained. Distinct v4 uses remote-only384MiB build harness with per-process peaks, unchanged Node96MiB/25sec/source checks/full public inventory. No local/game/mobile/graphics-byte budget change. Remote full environment images remain unrun; complete city/house/NPC/mobile acceptance remains open.
+
+Diagnostic branches only; no graphics runtime main merge or production upload. Local checkpoint docs/GRAPHICS-EXECUTION-CHECKPOINT.md. Root actual reviews retained beside exact downloaded run artifacts. Goal ACTIVE and incomplete.
+
 # Allworld agent coordination and phased production releases
 
 ## WORLD campaign audit accepted and source synchronized — 9 October 2026

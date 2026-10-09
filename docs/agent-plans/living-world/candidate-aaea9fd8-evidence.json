@@ -1,9 +1,9 @@
 {
   "sourceSha": "aaea9fd8fc715df70d9577dda59cebf33a6a867f",
-  "observedAtUtc": "2026-10-09T06:53:00Z",
+  "observedAtUtc": "2026-10-09T07:35:00Z",
   "runId": 37893825921,
   "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37893825921",
-  "status": "in_progress",
+  "status": "completed",
   "accepted": false,
   "jobs": {
     "release-policy": "success",
@@ -41,8 +41,54 @@
       "logPath": "/tmp/joinallworld-aaea9fd8-source24.log",
       "logSha256": "cf8fa97ae898eee9d1046d8ab9cd580d45c90db2a3efd0075b0b1b57352afad0"
     },
-    "full-server (22/24)": "in_progress: canonical server partition",
-    "full-worker (22/24)": "awaiting dependency"
+    "full-server (22)": {
+      "status": "completed",
+      "conclusion": "success",
+      "tests": 973,
+      "pass": 970,
+      "fail": 0,
+      "skipped": 3,
+      "durationMs": 346852.443595
+    },
+    "full-worker (22)": {
+      "status": "completed",
+      "conclusion": "failure",
+      "tests": 151,
+      "pass": 148,
+      "fail": 3,
+      "skipped": 0,
+      "workerImportMs": 834.1,
+      "workerImportCapMs": 400,
+      "failures": [
+        "business physical-write counter assertion",
+        "SQLite collection list missing LivingWorld",
+        "Worker startup import exceeds400ms"
+      ]
+    },
+    "full-server (24)": {
+      "status": "completed",
+      "conclusion": "success",
+      "tests": 973,
+      "pass": 970,
+      "fail": 0,
+      "skipped": 3,
+      "durationMs": 348033.937873
+    },
+    "full-worker (24)": {
+      "status": "completed",
+      "conclusion": "failure",
+      "tests": 151,
+      "pass": 148,
+      "fail": 3,
+      "skipped": 0,
+      "workerImportMs": 814.342,
+      "workerImportCapMs": 400,
+      "failures": [
+        "business physical-write counter assertion",
+        "SQLite collection list missing LivingWorld",
+        "Worker startup import exceeds400ms"
+      ]
+    }
   },
   "mandatoryAcceptance": "Policy and all six exhaustive Node22/24 source/server/Worker jobs must succeed; device/save/staging gates separately required.",
   "exactCandidateLocalCheck": {
@@ -72,5 +118,7 @@
     "programmeDeployment": false,
     "gameplayOrSaveAcceptance": false
   },
-  "sourceSkip": "One original design-conflict skip: paid gradual gains test assumes nonrefundable start charge rather than the existing metered pricing policy. No new skips introduced."
+  "sourceSkip": "One original design-conflict skip: paid gradual gains test assumes nonrefundable start charge rather than the existing metered pricing policy. No new skips introduced.",
+  "conclusion": "failure",
+  "excludedUntrackedSourceQualification": "Historical aaea exclusion only; service is integrated from e69f29e9, scoped actual HTTP tests later pass. No retroactive aaea acceptance."
 }

@@ -2,6 +2,10 @@
 
 Finite batch selected 9 October 2026 from actual source/review gaps: the NPC stock helper lacked an authenticated transaction boundary and real simulated wallet action, and existing account lifecycle/privacy did not cover its proposed parcel envelopes. This is one dependency of the complete school-to-driving-to-restocking-to-barber journey. Route activation, mapped delivery and programme acceptance remain separate requirements.
 
+## Current evidence — 9 October 2026, 07:36 UTC
+
+All six service and both actual wage HTTP cases pass on exact87a/e569; erase=true account lifecycle passes e569. Whole account replay still awaits final repaired fixture; compiler repair924 and steering7c are published with exact scoped CI37899822721 in progress. Terminal a3 failed on test-only Error.code typing; 924 repairs it. Full aaea source/server pass22/24, Worker fails three cases per runtime; no phase acceptance or production restock registration. Trusted mapped producer, consumption and gameplay/device/save/staging remain required. [Current checkpoint](CHECKPOINT.md) supersedes older pending-run notes below.
+
 ## Acceptance criteria
 
 1. Read the current strictly validated actor/account-bound delivered parcel from storage; refuse browser actor, amount, pose or terminal state. Recheck current ownership before any cached success. Preserve same-actor retry identity across legitimate adoption/restore/keep-as-guest transitions.

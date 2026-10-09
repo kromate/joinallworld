@@ -37,6 +37,36 @@
     "sha": "54af4a2a0366081d7e4e10eca1d49f5586e7b803",
     "logSha256": "4c333a0df33191ab19807fd04f91c2340d6b5585c011bf4d73967ccf5f608545"
   },
-  "sourceVerdict": "Onlytest/docs/receipt changes; verify immediately displaced identity within actual single-writer lifetime rather than assertinodeneverrecycles. Runtimeunchanged. Correctedremote37985609841 stillpending; no originalstage accepted.",
-  "checkedAt": "2026-10-09T20:18:48.258647+00:00"
+  "sourceVerdict": "Corrected test-only 52611 remote audit passes on both Node versions, 17 checks each. Runtime/caller unchanged from explicitly Astra-reviewed 54af. Actual preserved-store upgrade remains unexecuted and exact game seal failed separately.",
+  "checkedAt": "2026-10-09T20:27:42.010279+00:00",
+  "remoteAudit": {
+    "runId": 37985609841,
+    "sourceSha": "52611b45318ee0f33dc0c6a38e01f32eecb62d85",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "node": "22.19.0",
+        "jobId": 114006723056,
+        "tests": 17,
+        "pass": 17,
+        "fail": 0,
+        "skip": 0,
+        "rawJobLogBytes": 37395,
+        "rawJobLogSha256": "e77a367f6e515304e7e15b719a37c5caea6b6dd17ebaa94bbf5745e7bf8c48f4",
+        "evidence": "Root independently downloaded completed official job log and read actual test summary."
+      },
+      {
+        "node": "24",
+        "jobId": 114006723505,
+        "tests": 17,
+        "pass": 17,
+        "fail": 0,
+        "skip": 0,
+        "rawJobLogBytes": 32725,
+        "rawJobLogSha256": "fd3190205249e48ac70bd563759d2aac85c0e93a653e260a8b5ec13f09a4d191",
+        "evidence": "Root independently downloaded completed official job log and read actual test summary."
+      }
+    ]
+  }
 }

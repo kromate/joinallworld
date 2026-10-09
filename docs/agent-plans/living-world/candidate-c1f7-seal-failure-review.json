@@ -1,0 +1,122 @@
+{
+  "checkedAt": "2026-10-09T20:27:42.010279+00:00",
+  "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "toolingSha": "52611b45318ee0f33dc0c6a38e01f32eecb62d85",
+  "runId": 37986247546,
+  "jobId": 114008865678,
+  "conclusion": "failure",
+  "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+  "artifactId": 11643311872,
+  "artifactJsonSha256": "7ece25c6871f563cec752a178cf9c16ad081efe5343dd34e7a4197ad01e42e10",
+  "artifactZipSha256": "cc37984114a31e3304dfda2b052184c18a5329703b278e3c17f2454c5e47f265",
+  "jobLogSha256": "d94ba750972fc01184c5c1650e738815b3b66010c5a6943cdded706fd8fce4d6",
+  "elapsedMs": 49316,
+  "outcomes": [
+    {
+      "check": "source-and-package-identity",
+      "status": "passed"
+    },
+    {
+      "check": "sealed-worker-start-and-sqlite",
+      "status": "passed"
+    },
+    {
+      "check": "packaged-assets-all-destinations",
+      "status": "passed",
+      "count": 21,
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers",
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town",
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-second-four",
+      "status": "failed"
+    }
+  ],
+  "failure": "funding receipt replays without a second effect + actual - expected + undefined - true ",
+  "reachedAddisJourney": false,
+  "releaseReady": false,
+  "rootSourceReview": {
+    "verifierCreditLines": "274-279",
+    "diagnosticGap": "Replay JSON is asserted without checking HTTP status; undefined duplicate does not distinguish refused request from missing receipt.",
+    "rateLimitCandidate": "server/admin/gate.ts applies 30 writes per minute to one account before ctx.once in server/routes/admin.ts. Rotating source IP does not change that key.",
+    "causalStatus": "Inference only; actual returned status/body and failing action context still required.",
+    "limits": "Keep duplicate oracle, actual original store/player/grant, 168-second internal and 175-second outer watchdog, production security limits and once-only reward semantics."
+  },
+  "ownership": {
+    "fixture": "WORLD",
+    "sharedRuntime": "Integration",
+    "Root": "Read-only source and official evidence review"
+  },
+  "next": "Owner diagnoses returned response, makes bounded fixture/runtime repair as appropriate, publishes exact tooling/source pins and retests original sealed coverage; stage/native/release/live gates remain.",
+  "programmeRemaining": [
+    "Actual staged school/driving interruption and qualification",
+    "Trusted ON active teaching display and native choices/retry/reload/once wage",
+    "Mapped physical host and trip/parcel/restock bridge",
+    "Barber earnings/improvement/reload",
+    "Later careers/civic/real-business/live consented Goalmatic",
+    "Multiplayer and physical-mobile acceptance"
+  ],
+  "independentGameCi": {
+    "runId": 37984507814,
+    "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "requiredJobsPassedAtLastQuery": 11,
+    "pending": [
+      "full-node (22, game)",
+      "full-node (24, host)",
+      "full-node (24, tooling)"
+    ],
+    "node24Game": {
+      "jobId": 114003432947,
+      "tests": 2589,
+      "pass": 2588,
+      "fail": 0,
+      "existingSkip": 1,
+      "durationMs": 773096.557363,
+      "logBytes": 523599,
+      "logSha256": "56f4f1d3d110bc15da31fec215fb92cf292e48ef3ec4084647a10bcbcb218b33"
+    },
+    "fullAcceptance": false
+  }
+}

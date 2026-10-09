@@ -1,5 +1,21 @@
 # Living-world implementation checkpoint
 
+## Current checkpoint — 9 October 2026, 07:02 UTC
+
+Native persistent goal remains ACTIVE. Previously verified assignments: Sol gpt-6.1-sol/high; all three Luna workers gpt-6-luna/high. Current published source is **309e031f6d22e8a85db7be8c991dc6d8972d45e0**, codex/living-world. Published commits: e69f29e9 (NPC inventory, fixed simulated wage, account/privacy continuity), eb2c2485 (actual sedan contact sampler), 0cff758d (independently reviewed WORLD main 86c3e715 merge), 309e031f (compile scoped evidence first). Preserve primary checkout work and existing untracked evidence.
+
+Exact older candidate aaea9fd8 full CI [37893825921](https://github.com/kromate/joinallworld/actions/runs/37893825921): policy, source and server suites PASS on Node 22 and 24; both Worker jobs IN PROGRESS. Source suites each report 2481 tests, 2480 pass, zero failure/cancellation, one original skip. Compiler/build/download checks PASS. Startup Brotli 194887 / 195600 bytes leaves only 713 bytes headroom. These results do not validate newer source 309e031f.
+
+Exact new candidate 309e031f scoped CI [37896189763](https://github.com/kromate/joinallworld/actions/runs/37896189763) is TERMINAL FAILURE at compiler: npc-inventory.ts:147 TS2322 unknown version; privacy.ts:207 twice and :208 TS2339 Lookup row narrowing. HTTP/wallet/account/Worker checks were SKIPPED, not passed. Next bounded action: repair these four diagnostics without weakening runtime validation, independently review, publish a new candidate and retest on the scoped ref. Do not cancel the older full run or repeat unchanged failed source.
+
+Actual bounded local CPU evidence: 20/20 combined NPC/privacy/sedan checks, final sedan hinge 3/3, final NPC/owner privacy 18/18, zero skips. Two initial privacy fixture failures were diagnosed and repaired before retest. No local HTTP or compiler acceptance claimed. Fixed wage and stock update share a transaction; erasure anonymizes inventory settlement counts while preserving stock; expected account ownership is checked. Production restock route remains unregistered and trusted mapped parcel/fleet producer is absent; twenty-delivery capacity still needs consumption.
+
+Luna completed new sedan-interior.ts/test.ts source only: floor and four seats plus actual generated solid/support descriptors. UNTRACKED, UNRUN, not wired into the sedan renderer yet; actor fit, continuous boarding and route authority remain unknown. GRAPHICS acknowledged exclusive LIVING cabin/vehicle ownership and retains its actor/body/wardrobe sampler lane, with frame/provenance/coverage blockers. No garment or actor clearance certification.
+
+Private Goalmatic repository/contracts were inspected through existing authorized access. Consented target workspace/installation/Goals schema, allowed observations, revocation and stable create/upsert/milestone contracts remain unresolved. Disabled/mock adapter only; no live integration or Goalmatic deployment.
+
+Production health freshly returned ok=true, build **joinallworld-a44629b38be751a9ad446051564**, source **a44629b38be751a9ad446051564704f6c3c6ae1b**. No programme staging or deployment. First connected journey and all phase exits/A1–A10 remain OPEN; actual desktop/mobile, solo/multiplayer, interruption/save continuity, exact-SHA staging and live observation are still required. Resource WARNING defers optional local heavy jobs; no intervention in others' processes. Next after compiler repair: review/test and wire actual sedan interior, then connect trusted mapped delivery authority and interactive controls.
+
 ## Current checkpoint — 9 October 2026, 06:33 UTC
 
 This supersedes older current/live statements below. Native goal ACTIVE; verified Sol `gpt-6.1-sol/high` and three Luna workers `gpt-6-luna/high`. Source candidate **aaea9fd8fc715df70d9577dda59cebf33a6a867f**, pushed to `codex/living-world`, incorporates independently reviewed public main **1b2c1d2e61a085491087fcf0d51a675c58beb3a2** while preserving both coordination histories. Primary checkout edits, assets, saves and older untracked evidence remain untouched.

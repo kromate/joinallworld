@@ -3,14 +3,14 @@
   "baselineSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "draftPatchSha256": "572cd3cf50d292ba6c24193eb28766001da330e583f8c0f211a108274c32dbf6",
   "draftBytes": 38310,
-  "decision": "APPROVE corrected isolated source proposal for private Integration assembly and fresh independent Astra review; runtime/activation/release acceptance remains unproven",
+  "decision": "APPROVE production-source mechanism for private assembly; independent Astra closes both production P2s but requires two test-clock repairs before execution. No runtime/activation/release acceptance.",
   "worker": {
     "sessionId": "01a11c38-5fc5-7172-9351-f264122ea2aa",
     "parentId": "01a11c35-ad88-7aa3-ac5b-6b7d910724ad",
     "model": "gpt-6-luna",
     "effort": "high",
     "actualTurnContextAt": "2026-10-09T21:03:04.617Z",
-    "actualFinalTurnContextAt": "2026-10-09T21:19:32.515Z"
+    "actualFinalTurnContextAt": "2026-10-09T21:37:08.859Z"
   },
   "sol": {
     "actualTurnContextAt": "2026-10-09T21:01:59.899Z",
@@ -129,5 +129,22 @@
     ],
     "runtimeWritesForbidden": true
   },
-  "runtimeEvidence": "UNEXECUTED: tests/typecheck/build/Worker/browser/activation; source hash/apply comparisons only"
+  "runtimeEvidence": "UNEXECUTED: tests/typecheck/build/Worker/browser/activation; source hash/apply comparisons only",
+  "independentFinalAstraReview": {
+    "report": "/tmp/allworld-teaching-capability-final-astra-review.md",
+    "sha256": "a3f4782b96f275ff6316af7d7c94d6eb7bc601f586fa8f9e2160494fcc957a8c",
+    "bytes": 6088,
+    "patchSha256": "9853a38d9b6a0f0a240a695325991dc710bc85a8d14d96173389ddc1c0168254",
+    "manifestSha256": "45c9ca8078164e25e5e59b1bcae8cf475155af35559db0fb1403c0ffb9fa066b",
+    "actualModel": "gpt-6-astra",
+    "effort": "medium",
+    "parentThread": "01a12069-9bd0-7eb1-bfe9-150d8af9cd46",
+    "actualTurnContextAt": "2026-10-09T21:39:44.845Z",
+    "productionFindings": "Both earlier P2s closed by source inspection",
+    "testFinding": "Two post-503 Vue fresh-read assertions use a frozen clock within existing cooldown; advance test clock after immediate refusal assertions, preserve production cooldown",
+    "smallSourceQualification": "First backoff without retryAfter is jitter500..999ms, not report>=1000; existing fakeServer.tick(1001 or2000) safely exceeds it",
+    "testsOrRuntimeExecuted": false
+  },
+  "privateIntegrationRepairOwner": "Integration owns two narrow test-clock lines in private combined source, preserves immutable9853 proposal and all message-pin additions; Root does not compete or write runtime.",
+  "publishedProposalCommit": "314c286ec113dc8db80727af7f557387d0f9c763"
 }

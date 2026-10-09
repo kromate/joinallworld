@@ -70,6 +70,22 @@ jobs:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
         run: /usr/bin/time -v python -B -m unittest test_index_tooling test_index_capture_record test_index_storage_footprint test_index_registry_startup test_index_registry_controller test_index_admission test_index_capture_controller test_index_ingest > diagnostic-evidence/python-regression.stdout 2> diagnostic-evidence/python-regression.stderr
+      - name: Remaining process, bootstrap, lease and recovery regression checks
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        env:
+          PYTHONPATH: world/tooling
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: /usr/bin/time -v python -B -m unittest test_index_process_boundary test_index_namespace test_index_resource_limits test_index_controller_record test_index_capture_loss test_index_writer_lock test_index_registry_restart test_index_binding test_index_capture_observation test_index_binding_publish test_index_registry_worker test_index_registry_persistent test_index_root test_index_reservations test_index_bootstrap test_index_execution_snapshot > diagnostic-evidence/python-boundary.stdout 2> diagnostic-evidence/python-boundary.stderr
+      - name: Existing identity and index contracts plus draft audit job contract
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --experimental-strip-types --test --test-concurrency=1 world/capture-binding.test.ts world/feature-identity.test.ts world/feature-index.test.ts world/campaign-index-audit-state.test.ts > diagnostic-evidence/node-contracts.tap 2>&1
+      - name: Exact checked-out release workflow policy
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        env:
+          NODE_OPTIONS: --max-old-space-size=64
+        run: node scripts/check-workflows.mjs > diagnostic-evidence/release-policy.stdout 2> diagnostic-evidence/release-policy.stderr
       - name: World TypeScript
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:

@@ -1,5 +1,27 @@
 # Implementation checkpoint — 9 October 2026
 
+Run37887462988 at115593ad is terminal **SUCCESS**. Actual artifacts match the
+source revision:19 protocol/kernel,19 controller/recovery,11 held Python session,
+one real Node→Python retained-Dakar audit and77 affected regression tests all
+pass: **127 distinct checks plus World TypeScript**. The real session audit
+reopens without an additional audit attempt and preserves capture/audit/DB bytes;
+the controller proves retained nonempty/zero-feature and WAL-aware comparisons,
+copy/publish recovery and corruption refusal on disposable admitted namespaces.
+This accepts the tested session/controller path, not the full global campaign
+audit requirements (all corruption/physical-interruption fixtures and same-Ledger
+campaign fencing remain open). Artifacts retained under remote-audit-37887462988.
+No local full workers, game/browser/server/upload or production change occurred.
+
+Next diagnostic broadens to previously uncovered process/lease/bootstrap/recovery
+regressions because fixed worker admission/source inventory changed, and exact
+checked-out release policy. One existing Luna prepared a separate pure
+campaign-index-audit-state module/test: immutable single campaign/index job ID,
+membership hashes, finite retries and conservative incomplete receipt parsing.
+Root rejected speculative qualification fields and bulk clone allocation; source
+now accepts current exact reports and bounds cloning incrementally. This module
+is not wired into campaign execution and cannot establish global qualification.
+Its tests and compiler remain pending; no new agents or local worker fanout.
+
 Run37887178336 at58e695cd is terminal failure with complete retained artifacts:
 19 protocol/kernel and19 actual controller/recovery tests pass,77 affected
 registry/capture/ingestion regressions pass, and World TypeScript passes.

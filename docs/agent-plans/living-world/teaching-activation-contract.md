@@ -1,5 +1,7 @@
 # Teaching start capability: integration contract
 
+Current implementation update 2026-10-09T22:11:52.818404+00:00: the published eec14690544a4646e4cd8a5ad280d61bbe2709ca uses the optional top-level response field `interactiveTeachingStarts?: true`, not the capabilities object proposed below. It is emitted only from trusted authenticated life/action responses, omitted when OFF and held only as client display metadata alongside an accepted snapshot. Transition display races and exact OFF key sets have source/focused evidence; exact eec full compiler/CI and ON native/reload/issued-marker compatibility/release acceptance remain OPEN. Both shipped host defaults remain OFF. The following9a-era proposal is historical, not the current wire schema.
+
 Status: planning only. Source reviewed from Integration HEAD `9a369dc1cbca1c934a43014aedda9b4b9a9e58c0`. This proposal is for work after the consolidated default-off compatibility baseline. It does not activate interactive starts or establish rendered acceptance.
 
 The described API paths are from that 9a baseline; subsequent QA-helper and numeric-only work does not change this contract.

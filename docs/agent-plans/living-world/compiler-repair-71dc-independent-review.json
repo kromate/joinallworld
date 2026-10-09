@@ -1,0 +1,233 @@
+{
+  "checked_at": "2026-10-09T22:08:52.168463+00:00",
+  "baseline": "71dc696f1f37d0b59dac7dba64d1299634c20aef",
+  "assembly": "Integration-owned eight-file compiler/test repair, not yet frozen as new commit",
+  "source_pins": [
+    {
+      "path": "src/app/features/messages/MessageBubble.vue",
+      "base_matches": true,
+      "source_sha256": "c2a36fbbbad1c725f414677680ab052aecf68b8fc78fb3d1f6689f1a88a19503",
+      "manifest_result_matches": true
+    },
+    {
+      "path": "src/app/features/messages/MessagesApp.vue",
+      "base_matches": true,
+      "source_sha256": "3917d57bcc88f023edc2d5a4d05ed63d34967b650163ccff3b79697160b7923a",
+      "manifest_result_matches": true
+    },
+    {
+      "path": "src/app/features/messages/messagePins.ts",
+      "base_matches": true,
+      "source_sha256": "6194259c60027837a6db1db6c9311a129594fe9d5cc913087e919cd01a474339",
+      "manifest_result_matches": true
+    },
+    {
+      "path": "src/app/features/messages/messagePinsFrame.ts",
+      "base_matches": true,
+      "source_sha256": "5862bdebc543049e4535c2805d2be94ed09ef65472ae662be284b5c9ba024ba5",
+      "manifest_result_matches": true
+    },
+    {
+      "path": "src/app/features/messages/messagePins.test.ts",
+      "base_matches": true,
+      "source_sha256": "d7b3f636e8fc64a1943a690c1192002aeeedb5b3e009fd5ef06e5c2260c61430",
+      "manifest_result_matches": true
+    },
+    {
+      "path": "src/app/state/game.test.ts",
+      "base_matches": true,
+      "source_sha256": "f1c0c23b48b7d37bdc55bb4be66f3826e7f4f6184d774c87a972eb23aad9c033",
+      "manifest_result_matches": false
+    },
+    {
+      "path": "server/chat.test.ts",
+      "base_matches": true,
+      "source_sha256": "10fa145c34676be3676bdbda8bac91ab979d19efe9ff52d63a5725175dedffff",
+      "manifest_result_matches": true
+    },
+    {
+      "path": "server/recovery-receipt-isolation.test.ts",
+      "base_matches": true,
+      "source_sha256": "57c45677307aa6b8b33c8b901393802d66627edd96b439c94d138d0f9a33f1a9",
+      "manifest_result_matches": true
+    }
+  ],
+  "logs": [
+    {
+      "path": "/private/tmp/allworld-compiler-fixture-repair-node.log",
+      "bytes": 4931,
+      "sha256": "979e172d1bd56ce81619d434888ef6b8328c9d312f13980cf143696573b5ec6f",
+      "summary": {
+        "tests": 38,
+        "pass": 36,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 2,
+        "todo": 0
+      },
+      "existing_skips": [
+        "\ufe63 interaction receipts are short-lived: after ten minutes the flood has expired and an old interaction id is decided afresh (0.1135ms) # design conflict: receipts here live as long as their timed id can be accepted (24 h), and an expired id is refused, never decided afresh",
+        "\ufe63 a receipt table written under the old shared allowance is read as it is after a restart: money kept, old interactions due (0.149208ms) # storage conflict: the earlier shared table is not kept here; its untimed ids are refused, so nothing in it can be replayed"
+      ],
+      "qualification": "focused log read; overlapping scopes are not additive; no compiler/fullCI/browser acceptance"
+    },
+    {
+      "path": "/private/tmp/allworld-compiler-repair-focused-node-admitted.log",
+      "bytes": 17447,
+      "sha256": "35470f04b22f2bd8c658289892296dc5cbe8856011cb0a60a818f6e191989123",
+      "summary": {
+        "tests": 140,
+        "pass": 138,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 2,
+        "todo": 0
+      },
+      "existing_skips": [
+        "\ufe63 interaction receipts are short-lived: after ten minutes the flood has expired and an old interaction id is decided afresh (0.1125ms) # design conflict: receipts here live as long as their timed id can be accepted (24 h), and an expired id is refused, never decided afresh",
+        "\ufe63 a receipt table written under the old shared allowance is read as it is after a restart: money kept, old interactions due (0.147459ms) # storage conflict: the earlier shared table is not kept here; its untimed ids are refused, so nothing in it can be replayed"
+      ],
+      "qualification": "focused log read; overlapping scopes are not additive; no compiler/fullCI/browser acceptance"
+    },
+    {
+      "path": "/private/tmp/allworld-compiler-repair-focused-node.log",
+      "bytes": 742,
+      "sha256": "a36de548b04d766baf73cb847aa82596a33943b37a08af2a556d13bb83149fe3",
+      "summary": {},
+      "existing_skips": [],
+      "qualification": "slot refusal, not test execution"
+    }
+  ],
+  "independent_astra": {
+    "path": "/private/tmp/allworld-compiler-repair-astra-review.json",
+    "bytes": 3956,
+    "sha256": "5799a33de3b3982f916d9eb54494b1c805cf1d30dd1815f9a93e118a2c12ecbd",
+    "actual_model": "gpt-6-astra",
+    "effort": "medium",
+    "turn_context": "2026-10-09T22:03:04.258Z",
+    "parent_thread": "01a12069-9bd0-7eb1-bfe9-150d8af9cd46",
+    "decision": "source-only APPROVE eight files after explicit Close hide(true); no tests/browser/release acceptance"
+  },
+  "root_source_findings": [
+    {
+      "file": "src/app/state/game.test.ts",
+      "decision": "MODIFY fixture delegation",
+      "finding": "Both callbacks normalize Request.url for interception but delegate raw Request to fakeServer which calls String(input), yielding [object Request] route. Delegate normalized pathname+search. Tests currently use strings; do not overclaim Request compatibility.",
+      "handoff": "Integration sole writer notified; no Root runtime writes"
+    },
+    {
+      "file": "server/recovery-receipt-isolation.test.ts",
+      "decision": "qualified source acceptance",
+      "finding": "message.pin mutates bounded conversation metadata, membership/scope/role checked before once, version/revision/visibility within new-intent callback. No pin-specific wallet/title effect. General existing social enter settlement remains separate. Exact light-kind list retained, unknown/transfers remain money class."
+    },
+    {
+      "file": "src/app/features/messages/MessageBubble.vue",
+      "decision": "source acceptance",
+      "finding": "Explicit hide(true) retains prior event-truthy focus restoration; source approval does not prove native keyboard focus."
+    }
+  ],
+  "release_status": "OPEN: new frozen SHA/updated pins/relevant retest, exact full compiler+CI, unchanged measured caps, native active teaching/ON-OFF-reader/reload/once wage/identity/privacy and staging/release/live observation remain",
+  "production": "c1f7c1f7369139ce559292318ba9842c23a28267; teaching OFF",
+  "full_programme": "Original school/licence/rental/mapped driving/parcel-restock/barber/earnings/improvement/reload chain and later careers/civic/business/liveGoalmatic/phone/multiplayer unfinished",
+  "final_candidate": {
+    "sha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "branch": "codex/allworld-consolidated-delivery",
+    "remote_exact_verified": true,
+    "checked_at": "2026-10-09T22:11:52.818404+00:00",
+    "eight_base_result_pins": [
+      {
+        "path": "src/app/features/messages/MessageBubble.vue",
+        "base_sha256": "1cdd93367a5976602eb9047c852e5178cf944e1d4ef605e112e954b56bec17c1",
+        "candidate_sha256": "c2a36fbbbad1c725f414677680ab052aecf68b8fc78fb3d1f6689f1a88a19503"
+      },
+      {
+        "path": "src/app/features/messages/MessagesApp.vue",
+        "base_sha256": "77b3dbcf64559d5c410d4e7e17ad765b77f483755251c027347b838ef548f38a",
+        "candidate_sha256": "3917d57bcc88f023edc2d5a4d05ed63d34967b650163ccff3b79697160b7923a"
+      },
+      {
+        "path": "src/app/features/messages/messagePins.ts",
+        "base_sha256": "0dca3ca857f007303adac4a11d16b08f85dfa16583cd907ed707ca66305e5e77",
+        "candidate_sha256": "6194259c60027837a6db1db6c9311a129594fe9d5cc913087e919cd01a474339"
+      },
+      {
+        "path": "src/app/features/messages/messagePinsFrame.ts",
+        "base_sha256": "bda195f85ee6af503fded421d30f30063df1716593ca54117bf5c75b7acde7b7",
+        "candidate_sha256": "5862bdebc543049e4535c2805d2be94ed09ef65472ae662be284b5c9ba024ba5"
+      },
+      {
+        "path": "src/app/features/messages/messagePins.test.ts",
+        "base_sha256": "dd2c458ebaf03e485cd9f5ed47632a9fee55d853ec13b146358eb01a450c8cd6",
+        "candidate_sha256": "d7b3f636e8fc64a1943a690c1192002aeeedb5b3e009fd5ef06e5c2260c61430"
+      },
+      {
+        "path": "src/app/state/game.test.ts",
+        "base_sha256": "794d678cfa5935d49e8a4f3488f522435c3d35c7327831de32a23e8c1476ed4c",
+        "candidate_sha256": "f1c0c23b48b7d37bdc55bb4be66f3826e7f4f6184d774c87a972eb23aad9c033"
+      },
+      {
+        "path": "server/chat.test.ts",
+        "base_sha256": "1a0bdf7120abce84ed7dee0f850d8fd2fab9143d7b3b7ede4ff557b2a861b9aa",
+        "candidate_sha256": "10fa145c34676be3676bdbda8bac91ab979d19efe9ff52d63a5725175dedffff"
+      },
+      {
+        "path": "server/recovery-receipt-isolation.test.ts",
+        "base_sha256": "87681e6361506fbdc9447ee9dc91f267401b4821332bd524d8fe621d7c6d5c37",
+        "candidate_sha256": "57c45677307aa6b8b33c8b901393802d66627edd96b439c94d138d0f9a33f1a9"
+      }
+    ],
+    "Request_delegation_finding": "CLOSED at source: both delegates receive normalized path; explicit init preserved; not a general Request body/options forwarder",
+    "assertion_and_clock_lines_preserved": true,
+    "normalized_game_log": {
+      "path": "/private/tmp/allworld-compiler-repair-normalized-game.log",
+      "bytes": 1259,
+      "sha256": "52caa49954afc520298bcbdf216172644ff935936ee91240df70406055d46e7a",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "duration_ms": 3752.966292
+    },
+    "final_astra": {
+      "path": "/private/tmp/allworld-compiler-repair-final-astra-review.json",
+      "bytes": 2822,
+      "sha256": "acae9c4097f172572d25d6c743b7f0344890c0508faee8172e00b73dc5518231",
+      "actual_model": "gpt-6-astra",
+      "effort": "medium",
+      "turn_context": "2026-10-09T22:08:34.199Z",
+      "decision": "source-only APPROVE final fixture delta; other seven source pins unchanged"
+    },
+    "build": {
+      "path": "/private/tmp/allworld-compiler-repair-build.log",
+      "bytes": 86362,
+      "sha256": "0471bb2ed19916c34008e3fce6fc05e73e2ddbad747b6f737d8a8b889964c0f1",
+      "completed_seconds": 50.01,
+      "qualification": "Built before final two test-only delegations; runtime-source pins unchanged. Fresh exact compiler/fullCI still required."
+    },
+    "budgets": {
+      "path": "/private/tmp/allworld-compiler-repair-download.log",
+      "bytes": 5009,
+      "sha256": "8ee9d53f85e9bb54b4633b97e3ed663653afbef0ebf32bec10853198e3f8829e",
+      "startup": {
+        "raw": 614094,
+        "gzip": 222684,
+        "brotli": 195571
+      },
+      "caps": {
+        "raw": 615000,
+        "gzip": 223000,
+        "brotli": 195600
+      },
+      "headroom": {
+        "raw": 906,
+        "gzip": 316,
+        "brotli": 29
+      },
+      "first_paint_brotli": 35699,
+      "ten_applicable_checks": "PASS",
+      "wardrobe_and_street_tiles": "N/A; no artifact matches"
+    },
+    "remaining": "Exact eec compiler/fullCI/staging/active ON gameplay/reload/OFF-issued-marker reader/native/save/privacy/once-wage/release/live observation; no new deployment"
+  },
+  "decision": "Qualified SOURCE acceptance of final eec eight-file repair, original Request finding closed. Release OPEN."
+}

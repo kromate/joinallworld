@@ -36,6 +36,7 @@ jobs:
       - run: node --test scripts/guard-joinallworld-package.test.mjs
 
   typecheck-fast:
+    name: ${{ inputs.focused_living_world && 'evidence-only - typecheck omitted' || 'typecheck-fast' }}
     if: github.event_name != 'workflow_dispatch' || (!inputs.full_checks && !inputs.focused_living_world)
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -49,6 +50,7 @@ jobs:
       - run: npm run typecheck
 
   build-and-smoke-fast:
+    name: ${{ inputs.focused_living_world && 'evidence-only - build and smoke omitted' || 'build-and-smoke-fast' }}
     if: github.event_name != 'workflow_dispatch' || (!inputs.full_checks && !inputs.focused_living_world)
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -64,6 +66,7 @@ jobs:
       - run: npm run test:smoke
 
   full:
+    name: ${{ inputs.focused_living_world && 'evidence-only - full omitted' || format('full ({0})', matrix.node) }}
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks && !inputs.focused_living_world
     runs-on: ubuntu-latest
     timeout-minutes: 25

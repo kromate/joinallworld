@@ -1,0 +1,53 @@
+{
+  "observedAt": "2026-10-09T16:31:06.326019+00:00",
+  "accepted": false,
+  "programmeReleased": false,
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "publishedCandidate": "39d94b117a6ab4b0e8e063b835889517c9d70dca",
+  "previousCandidate": "be4142f814596b1f34c0d1505022e66a7a53d8a2",
+  "scopedChecks": {
+    "previousFrozenHomeward": {
+      "passed": 106,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 28731.06875
+    },
+    "newLiabilityRepair": {
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 7963.219959,
+      "qualification": "Owner run independently read; scoped source reviewed. Not full candidate acceptance."
+    }
+  },
+  "previousCandidateCI": {
+    "runId": 37958381221,
+    "typecheckFast": "success",
+    "releasePolicy": "success",
+    "downloadBudgets": "failure",
+    "startupRaw": 621661,
+    "startupGzip": 225224,
+    "startupBrotli": 197355,
+    "caps": [
+      615000,
+      223000,
+      195600
+    ],
+    "fullSuites": "skipped"
+  },
+  "logs": {
+    "allworld-homeward-focused-final.log": {
+      "path": "/tmp/allworld-homeward-focused-final.log",
+      "sha256": "aa870326cc18c3f352cddae3e5200830a510338810823978c482289679fdebc6"
+    },
+    "allworld-homeward-liability-repair.log": {
+      "path": "/tmp/allworld-homeward-liability-repair.log",
+      "sha256": "887d06328c62408ae99c4f953d71d039d286e55bd61d1e5a4a2c16452bf684f4"
+    },
+    "joinallworld-be4142f8-fast.log": {
+      "path": "/tmp/joinallworld-be4142f8-fast.log",
+      "sha256": "a967cc58007e85515ae1108e2a64849c71500bf8f886e3178974a1d086856a79"
+    }
+  },
+  "next": "Review awaited browser planner/reader, measure unchanged budgets and run full exact-source gates, then native/staging/release/live-save verification."
+}

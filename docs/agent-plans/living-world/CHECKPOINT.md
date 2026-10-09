@@ -1,5 +1,9 @@
 # Living-world implementation checkpoint
 
+## User status and latest repair - 2026-10-09T16:31:06.326019+00:00
+
+Published Integration39d94b117a6ab4b0e8e063b835889517c9d70dca supersedes be414. Owner37/37 malformed-debt repair checks pass; independently reviewed narrow trusted-marker guard precedes cleanup and permits valid paid/reduced debt. Previous frozen106/106 focused homeward checks pass. Exact be414 fast CI37958381221 fails unchanged startup caps and skips full suites. No acceptance/release transfers to39d94. Production independently remains a446 health-only. [User report](STATUS-2026-10-09.md), [exact scoped receipt](status-2026-10-09-evidence.json). Next: owner awaited browser planner/reader and actual store-failure proof, exact compiler/caps/full source gates, native/staging/save recovery, WORLD deployment and live observations. Full journey and later phases remain required; Goalmatic target question is pending. Native goal ACTIVE; no execution is implied while stopped. Existing dirty primary/other-agent work preserved.
+
 ## Recovery review and reproduced reward defect - 2026-10-09T16:10:00Z
 
 Previous user status turn was no progress. This continuation revalidated current source and completed independent Sol/two verified Luna reviews. Base published Integration remains a2730cac with unpublished edits. Actual changed engine checks41/41 pass; broader recovery is terminal58/57pass/1fixturefail, zero skips,277.966seconds. All45 city samples, normal samples and non-vacuous negative controls pass; this does not prove every state or server authority. Failed old help-card expectation retained. Root's suggestion of ReliefAction.type/payload was incorrect; the real contract is journey. Owner corrected that fixture, retest pending. [Exact scoped receipt](homeward-review-a273-dirty.json).

@@ -11,6 +11,11 @@ on:
         required: true
         type: boolean
         default: false
+      ui_checks:
+        description: Run focused app UI model and component regressions
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -57,6 +62,37 @@ jobs:
       - run: npm run build
       - run: npm run size:download
       - run: npm run test:smoke
+
+  ui-regressions:
+    if: github.event_name == 'workflow_dispatch' && inputs.ui_checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NODE_OPTIONS: --max-old-space-size=3072
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Existing app UI model and component checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          src/app/features/models.test.ts
+          src/app/features/support/supportPanel.test.ts
+          src/app/features/money/statementHistory.test.ts
+          src/app/features/business/business.test.ts
+          src/app/features/business/businessComponents.test.ts
+          src/app/features/visit/visit.test.ts
+          src/app/features/growth/growth.test.ts
+          src/app/features/growth/components.test.ts
+          src/app/features/politics/politicsModel.test.ts
+          src/app/features/politics/politicsComponents.test.ts
+          src/app/features/messages/notifyModel.test.ts
+          src/app/features/messages/messagesComponents.test.ts
+          src/app/features/sim/soundSettingsModel.test.ts
 
   full:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks

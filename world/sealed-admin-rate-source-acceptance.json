@@ -1,0 +1,64 @@
+{
+  "format": "sealed-admin-rate-source-acceptance-v1",
+  "checkedAt": "2026-10-09T20:37:32.650230+00:00",
+  "gameSourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+  "diagnosticRunId": 37987303569,
+  "diagnosticToolingSha": "d4eb7249f24aaef93ddd63e0eceafed348d2dc39",
+  "diagnosticArtifactBytes": 7676,
+  "diagnosticArtifactSha256": "cc1f34322e658bfec2fbd5e083be2b9f4de88312a6c55c727c80a02d57a7ad80",
+  "diagnosticElapsedMs": 37207,
+  "diagnosticFailure": "admin credit response {\"status\":429,\"code\":null,\"error\":\"rate_limited\"} 429 !== 200 ",
+  "sourcePins": [
+    {
+      "path": "world/tooling/verify-sealed-africa.mjs",
+      "bytes": 26477,
+      "sha256": "8541318eb30535785df8ad5a9e81407feb6390a6c0083845f709c37a00bc72a5"
+    },
+    {
+      "path": "world/tooling/sealed-admin-rate-policy.mjs",
+      "bytes": 2628,
+      "sha256": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b"
+    },
+    {
+      "path": "world/tooling/sealed-admin-rate-policy.test.mjs",
+      "bytes": 2523,
+      "sha256": "714f4a2cb34b7243f14a74a27959cdf6f2deba196f2a8be6bd2641d6451766a7"
+    },
+    {
+      "path": ".github/workflows/africa-rollout-audit-ci.yml",
+      "bytes": 4458,
+      "sha256": "f93c5a79d7ea19bf4a6f732ac7ae9d296f01a7c2a30d9057b28fe65b7ce3f892"
+    }
+  ],
+  "localChecks": {
+    "command": "node --test --test-timeout=10000 --test-concurrency=1 world/tooling/stage-checkpoint-policy.test.mjs world/tooling/stage-control-file.test.mjs world/tooling/sealed-africa-coverage.test.mjs world/tooling/sealed-admin-rate-policy.test.mjs",
+    "tests": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "heapMiB": 128,
+    "logSha256": "23fffd50abb3fe6a73737c1c5960ec78ee89cb9638ccde713a449a2beee0c34e"
+  },
+  "workflowPolicyChecks": 3,
+  "canonicalCause": "Authenticated admin account write limiter applies before receipt replay and persists through SQLite restart. Diagnostic HTTP429/error rate_limited proves a limiter refusal, not a missing receipt or duplicate wallet effect.",
+  "waitBoundary": {
+    "actualWallTime": true,
+    "readOnlySql": true,
+    "canonicalWriteLimit": 30,
+    "windowMs": 60000,
+    "maxWaits": 2,
+    "maxDelayMs": 60050,
+    "requiredDeadlineHeadroomMs": 5000,
+    "verifierTotalMs": 168000,
+    "outerTimeoutSeconds": 175,
+    "sameSerializedIntent": true,
+    "duplicateAndBalanceOraclePreserved": true
+  },
+  "runtimeVerified": false,
+  "originalRetainedCheckpointMutated": false,
+  "productionMutation": false,
+  "releaseReady": false,
+  "nextAction": "Freeze and independently review these source pins; execute a fresh all-ten sealed Worker run on exact game c1f. No prior failure or source test is a sealed runtime pass."
+}

@@ -9,6 +9,7 @@ import { tmpdir } from 'node:os';
 import { isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { selectAfricaBatches, selectedAssets } from './sealed-africa-coverage.mjs';
+import { sealedAdminRateWaitPolicy } from './sealed-admin-rate-policy.mjs';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/verify-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR
 
@@ -119,7 +120,7 @@ async function disposeWithin(worker, limitMs = LIMITS.disposeMs) {
   } finally { if (timer) clearTimeout(timer); }
 }
 
-async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker, setWorker, within, responseBodies, remainingMs }) {
+async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker, setWorker, within, responseBodies, remainingMs, adminRate, evidence }) {
   const { makeKey, claimsFor, signToken } = await currentWorker.testTokens;
   const { TOKEN_KEYS_URL } = currentWorker.tokenModule;
   const key = await within('synthetic test signing key', makeKey('africa-sealed-package-fixture'), LIMITS.startMs);
@@ -179,11 +180,27 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
   const founderMe = object(await (await send('/api/admin/me', undefined, founderCookie)).json());
   assert.equal(founderMe.level, 'root', 'funding uses the authenticated founder boundary');
 
-  const adminReply = async (response, phase) => {
-    const answer = object(await response.json());
+  const adminAction = async (path, intent, phase) => {
+    const encodedIntent = JSON.stringify(intent);
+    const fixedIntent = Object.freeze(JSON.parse(encodedIntent));
     const safeCode = value => typeof value === 'string' && /^[a-z0-9_]{1,64}$/.test(value) ? value : null;
-    assert.equal(response.status, 200, `admin ${phase} response ${JSON.stringify({ status: response.status, code: safeCode(answer.code), error: safeCode(answer.error) })}`);
-    return answer;
+    while (true) {
+      const response = await send(path, fixedIntent, founderCookie);
+      const answer = object(await response.json());
+      if (response.status === 429 && (answer.code === 'rate_limited' || answer.error === 'rate_limited')) {
+        const db = await storage();
+        const bucketRows = await db.exec("SELECT count,started_at,expires_at FROM rate_limits_protected WHERE key LIKE 'admin-w:%' LIMIT 2");
+        const decision = sealedAdminRateWaitPolicy({ response: { status: response.status, code: answer.code, error: answer.error },
+          bucketRows, rate: adminRate, nowMs: Date.now(), remainingMs: remainingMs(), waitsAlready: evidence.adminRateWaits.length });
+        assert.equal(decision.ok, true, `admin ${phase} rate wait refused: ${decision.reason ?? 'invalid evidence'}`);
+        evidence.adminRateWaits.push({ ...decision.evidence, phase, delayMs: decision.delayMs,
+          intentSha256: sha256(encodedIntent), sameIntentRetried: true });
+        await within('actual admin write-window expiry', new Promise(resolveWait => setTimeout(resolveWait, decision.delayMs)), decision.delayMs + 1000);
+        continue;
+      }
+      assert.equal(response.status, 200, `admin ${phase} response ${JSON.stringify({ status: response.status, code: safeCode(answer.code), error: safeCode(answer.error) })}`);
+      return answer;
+    }
   };
 
   const keyOf = device => {
@@ -280,24 +297,22 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
     },
     credit: async (device, amount, reason) => {
       const intent = { clientId: `${Date.now()}:${randomUUID()}`, action: 'credit', amount, reason };
-      const answer = await adminReply(await send(`/api/admin/players/${device.id}/act`, intent, founderCookie), 'credit');
+      const answer = await adminAction(`/api/admin/players/${device.id}/act`, intent, 'credit');
       assert.equal(answer.code, 'credited', 'synthetic funding is authorized and applied');
-      const replay = await adminReply(await send(`/api/admin/players/${device.id}/act`, intent, founderCookie), 'receipt-replay');
+      const replay = await adminAction(`/api/admin/players/${device.id}/act`, intent, 'receipt-replay');
       assert.equal(replay.duplicate, true, 'funding receipt replays without a second effect');
       assert.equal(replay.after, answer.after);
     },
     debit: async (device, amount, reason) => {
       const intent = { clientId: `${Date.now()}:${randomUUID()}`, action: 'debit', amount, reason };
-      let response = await send(`/api/admin/players/${device.id}/act`, intent, founderCookie);
-      let answer = await adminReply(response, 'debit');
+      let answer = await adminAction(`/api/admin/players/${device.id}/act`, intent, 'debit');
       if (answer.code === 'confirmation_required') {
         assert.equal(typeof answer.token, 'string');
         intent.confirm = answer.token;
-        response = await send(`/api/admin/players/${device.id}/act`, intent, founderCookie);
-        answer = await adminReply(response, 'debit-confirmation');
+        answer = await adminAction(`/api/admin/players/${device.id}/act`, intent, 'debit-confirmation');
       }
       assert.equal(answer.code, 'debited', 'synthetic spending uses the authenticated admin route');
-      const replay = await adminReply(await send(`/api/admin/players/${device.id}/act`, intent, founderCookie), 'receipt-replay');
+      const replay = await adminAction(`/api/admin/players/${device.id}/act`, intent, 'receipt-replay');
       assert.equal(replay.duplicate, true, 'spending receipt replays without a second effect');
       assert.equal(replay.after, answer.after);
     },
@@ -307,7 +322,7 @@ async function makeHost({ options, Miniflare, convertV4MiniflareOptions, storage
 
 async function main(args) {
   const startedAt = Date.now(), deadlineAt = startedAt + LIMITS.totalMs, within = withinFactory(deadlineAt);
-  const evidence = { schemaVersion: 1, sourceSha: args.sha, packagePath: args.packageRoot, packageDigest: null, packageManifestSourceSha: null, releaseReady: false, outcomes: [], assets: [], scope: 'local synthetic sealed-package verification only; not production continuity, ordinary guest funding, physical-device verification, deployment, or approval' };
+  const evidence = { schemaVersion: 1, sourceSha: args.sha, packagePath: args.packageRoot, packageDigest: null, packageManifestSourceSha: null, releaseReady: false, outcomes: [], assets: [], adminRateWaits: [], scope: 'local synthetic sealed-package verification only; not production continuity, ordinary guest funding, physical-device verification, deployment, or approval' };
   let folder;
   let fixture;
   let workerGetter = () => null;
@@ -340,11 +355,12 @@ async function main(args) {
       handleStructuredLogs: () => {},
     };
     const sourceUrl = directory => pathToFileURL(join(args.source, directory)).href;
-    const [journeys, testTokens, tokenModule, hostContext] = await within('canonical fixture imports', Promise.all([
+    const [journeys, testTokens, tokenModule, hostContext, adminGate] = await within('canonical fixture imports', Promise.all([
       import(sourceUrl('server/testing/africaJourney.ts')),
       import(sourceUrl('server/accounts/test-tokens.ts')),
       import(sourceUrl('server/accounts/token.ts')),
       import(sourceUrl('server/host-context.ts')),
+      import(sourceUrl('server/admin/gate.ts')),
     ]), LIMITS.startMs);
     const batches = selectAfricaBatches(journeys.AFRICA_DESTINATION_BATCHES, args.sha, journeys.AFRICA_CAPITALS);
     const allCities = batches.flatMap(batch => batch.cities);
@@ -353,7 +369,7 @@ async function main(args) {
     evidence.coveredCities = [...allCities];
     const control = { testTokens, tokenModule, getWorker: () => workerGetter(), setWorker: null };
     control.setWorker = getter => { workerGetter = getter; };
-    fixture = await makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker: control, setWorker: control.setWorker, within, responseBodies, remainingMs });
+    fixture = await makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker: control, setWorker: control.setWorker, within, responseBodies, remainingMs, adminRate: adminGate.RATE, evidence });
     evidence.outcomes.push({ check: 'sealed-worker-start-and-sqlite', status: 'passed' });
     currentCheck = 'packaged-assets';
     assert.equal(typeof hostContext.absolutePreviewImage, 'function', 'canonical HTML preview transform is unavailable');

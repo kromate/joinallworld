@@ -79,8 +79,8 @@ Cotonou, Abidjan, Dakar, Cape Town and Addis Ababa. Integration has frozen the
 combined eleven-country candidate at
 `c1f7c1f7369139ce559292318ba9842c23a28267`, with exact
 [full CI](https://github.com/kromate/joinallworld/actions/runs/37984507814).
-At 20:10 UTC, release policy, UI regressions and host acceptance passed; remaining
-required jobs were running or queued. Earlier 801 CI failed a stale South Africa
+At 20:33 UTC, exact full CI completed successfully with all 14 required jobs
+passing and the two expected fast-mode jobs skipped. Earlier 801 CI failed a stale South Africa
 Later expectation. The corrected fixtures pass 38 atlas and three politics checks
 locally. No prior candidate's pass is transferred to c1f. Production remains six
 countries until the exact candidate passes its release gates and is deployed.
@@ -119,14 +119,28 @@ failed after49.316s with tooling52611 and exact game sourcec1f. All21 served ass
 first-five paid/recovery and second-four paid journeys passed; second-four recovery
 failed on its funding receipt replay. Addis journeys were not reached. The
 HTTP status/code was absent from that assertion; a narrow diagnostic correction
-now validates these before the unchanged duplicate/effect oracle. The canonical
-founder write budget is30/min, but the actual failure response must establish
-the cause. See [sealed-africa-c1-first-failure.json](sealed-africa-c1-first-failure.json). Original retained-store
-upgrade remains pending final full CI, package and native readiness. All ten admitted destinations must appear once
+now validates these before the unchanged duplicate/effect oracle. The subsequent diagnostic run37987303569 on toolingd4eb7249 failed in37.207s
+with actual HTTP429/error rate_limited. This proves the canonical founder account
+write limiter refused the request; it does not prove a missing receipt or
+duplicate wallet effect. See [sealed-africa-c1-first-failure.json](sealed-africa-c1-first-failure.json). Original retained-store
+upgrade remains pending accepted package and native readiness; exact full CI is now passed. All ten admitted destinations must appear once
 across the three source-exported journey batches and each must have both map and
 geometry assets. The original actor, store, port, key and funding intent remain
 unchanged; no new stage or upload has started. Exact sealed Worker, native map
 and guide behavior, save continuity and final release gates remain required.
+
+The verifier correction waits for the actual protected account bucket to expire,
+then retries the exact serialized request with the same founder and clientId.
+It reads one live stored bucket with count31 and the canonical60000ms window,
+requires the frozen30-write limit, permits at most two waits and preserves the
+original168s/175s bounds. Unknown or malformed evidence is refused. No SQL,
+clock, account, limiter, funding intent or original retained store is reset.
+All21 local retained-stage/coverage/rate-policy tests pass with zero skips under
+one shared heavy slot and128MiB heap; three workflow policy checks also pass.
+See [sealed-admin-rate-source-acceptance.json](sealed-admin-rate-source-acceptance.json).
+This is source acceptance; a fresh actual all-ten Worker seal is still required.
+Previous status-only turn made no goal progress; this continuation completes the
+caller correction and meaningful validation rather than repeating status.
 
 The same bounded runner acquired and compiled Conakry, Guinea, on source52611.
 One 8 MiB reservation covers 925,069 actual OpenStreetMap source bytes. The city
@@ -135,7 +149,7 @@ window completed in 2.810 seconds; exact-contract resume completed in 0.665 seco
 and reused the same source and request ledger without another download. All 15
 older cached-source and ledger files still match their accepted bytes. A Luna
 source review confirms every asset/source pin, country containment and explicit
-location/height caveats. The earlier operator attempt supplied report.json instead
+location/height caveats. Exact60f source audit37986347532 is now terminal SUCCESS. The earlier operator attempt supplied report.json instead
 of contract.json; it was refused before mutation and remains recorded. See
 [starter-operations-new-source-acceptance.json](starter-operations-new-source-acceptance.json)
 and [sixth-one.json](playable-africa-rollout/batches/sixth-one.json). This is one

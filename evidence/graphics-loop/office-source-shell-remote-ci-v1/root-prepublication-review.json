@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-09T04:46:15.826830+00:00",
+  "status": "ROOT_SOURCE_REVIEWED_LOCAL_SNAPSHOT16_VERIFIED",
+  "files": {
+    "snapshot-files.json": "a95437d03ed433521f8a0b4d2c625f43ed6c249ca40459169064153705d412df",
+    "run-bounded-linux.py": "b26e322da8b2b05967b942d2317ecab141ede62ff8501abd194a734f615bacd9",
+    "verify-snapshot.mjs": "8898a76161a02397388ff628c64ea0c02091432ffd49e187d216cbe616f42079",
+    "office-source-shell-diagnostic.workflow-reviewed.yml": "1918985c593dc07d9d5161bc4953f29af25e7480572f41cd814d4f651f11de9b"
+  },
+  "corrections": [
+    "Use full Linux ps PID/PGID/RSS enumeration and exact owned PGID filter; do not rely on unsupported --pgroup.",
+    "Linux-only runner refuses Mac execution;128heap/220MiB Node processgroup/20sec/25ms sample.",
+    "All16snapshotfiles exactbefore/after with changedsource nonzeroexit; ASTsyntaxpasses.",
+    "Workflow5minute bound; serialfamilies; no releases or existing CI modification."
+  ],
+  "scope": "No CPU probe executed locally. Root will publish only isolated diagnostic branch."
+}

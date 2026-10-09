@@ -1,0 +1,59 @@
+name: Office source-shell diagnostic
+
+on:
+  push:
+    branches:
+      - codex/graphics-office-source-shell-diagnostic
+
+permissions:
+  contents: read
+
+concurrency:
+  group: office-source-shell-diagnostic-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    name: Actual shipped body / ${{ matrix.body }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        body: [man, woman]
+    steps:
+      - name: Checkout immutable branch commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Verify exact diagnostic source snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: a95437d03ed433521f8a0b4d2c625f43ed6c249ca40459169064153705d412df
+        run: >-
+          node evidence/graphics-loop/office-source-shell-remote-ci-v1/verify-snapshot.mjs
+          "$EXPECTED_SNAPSHOT_SHA256"
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Run 128 MiB heap probe under 220 MiB / 20 second process-group guard
+        run: >-
+          python3 evidence/graphics-loop/office-source-shell-remote-ci-v1/run-bounded-linux.py
+          "${{ matrix.body }}"
+          "evidence/graphics-loop/office-source-shell-remote-ci-v1/remote-results/${{ matrix.body }}.json"
+
+      - name: Upload diagnostics and guard receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: office-source-shell-${{ matrix.body }}-${{ github.run_id }}
+          path: evidence/graphics-loop/office-source-shell-remote-ci-v1/remote-results/${{ matrix.body }}*
+          if-no-files-found: warn
+          retention-days: 14

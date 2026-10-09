@@ -1,0 +1,278 @@
+{
+  "observedAt": "2026-10-09T18:03:28.544860+00:00",
+  "baseSha": "5e12d3a5d6301faec394abd81dc0d95e086edd48",
+  "scope": "Independent review of Integration-owned published four-file runtime/fixture repair; local scoped owner logs retained, source bytes verified against committed blobs",
+  "sourceHashes": {
+    "src/app/features/relief/reliefComponents.test.ts": "a16c3595fabdde6fbfdd23dd1fcc74316dd0e47b71ea1344cdcfd971bafe9af2",
+    "src/app/features/relief/reliefHelp.ts": "18ea0e507047642ddcc2a52f44d69ec33829522b965b09a57c820cb195984f7f",
+    "src/game/relief.test.ts": "7a23034bcc4370c6975644980d86c16a6fcddb7095b7c4eb6b2bb0315d3ee043",
+    "src/game/systems/estate.ts": "e4bfc0fd555c67b7389bef0901ead7a8eb81cfde9bff9ba54e79650ad0a41873"
+  },
+  "verdict": "Independent published-source review clear for finite affordable-route repair; fresh exact build/full/native/staged acceptance still required",
+  "before": {
+    "fixture": {
+      "tests": 10,
+      "pass": 5,
+      "fail": 5,
+      "skip": 0,
+      "durationMs": 2406.016667
+    },
+    "actualEngineProbe": {
+      "cash": 252000,
+      "cheapestWholeRoute": 252000,
+      "legs": [
+        "algiers to birnin-kebbi air236000",
+        "birnin-kebbi to lagos road16000"
+      ],
+      "oldDirectLoanOffered": 290000,
+      "oldHelpFalseCheapest": 290000
+    }
+  },
+  "after": {
+    "fixture": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 2685.251208,
+      "log": "allworld-affordable-homeward-ssr-final.log"
+    },
+    "focused": {
+      "tests": 40,
+      "pass": 40,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 12818.867791
+    },
+    "actualEngineProbe": {
+      "cash": 252000,
+      "cheapestWholeRoute": 252000,
+      "directCredit": null,
+      "relief": null
+    },
+    "historicalFixtureBeforeRuntimeRepair": {
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 2587.867459
+    }
+  },
+  "sourceChecks": [
+    "Quote calculated before affordability filtering; visible amount and server credit eligibility share complete-route cost",
+    "Direct relocation credit refuses cash covering cheapest whole route, preserves cash/debt/action/ledger/estate",
+    "Five below/equal/above fare cases retain exact actual sparse route and252000/86seconds",
+    "Busy/debt/unsettled checks precede planner; no new action authority or saved schema",
+    "Existing issued ticket serialization, repayment/frozen terms/receipt readers unchanged",
+    "Scoped Vue attribute tolerance and real route readiness preserve fare/repayment/control assertions"
+  ],
+  "qualifications": [
+    "Local owner logs independently read/hashes archived; reviewed source bytes match published3af; full build/regression/native/staged acceptance remains unverified",
+    "10fixture and40focused results are separate, not summed as full corpus",
+    "No Root browser/build/server/upload or remote procurement",
+    "No source-only size prediction; new build required",
+    "Physical/laterprogramme/liveGoalmatic and all release/native/stage/save gates remain open"
+  ],
+  "logs": [
+    {
+      "name": "allworld-relief-5e-before.log",
+      "sha256": "4577922864b4d2beaf1984d945cd02a603b5c1a6bf49108f2b78af716b6e8e59",
+      "bytes": 13673,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/allworld-relief-5e-before.log"
+    },
+    {
+      "name": "allworld-relief-fixture-final.log",
+      "sha256": "efaf38224bf9a442880bc8c42dcfd785397dcf9a027274fa935ba5c4922f225f",
+      "bytes": 2932,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/allworld-relief-fixture-final.log"
+    },
+    {
+      "name": "allworld-homeward-affordability-real-before.log",
+      "sha256": "403e845ed37d40ddb5df350158fe14ad3f6e4b840cc2b5aa03a9e97236b59c9c",
+      "bytes": 3912,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/allworld-homeward-affordability-real-before.log"
+    },
+    {
+      "name": "allworld-homeward-affordability-after.log",
+      "sha256": "6d53825c51538137e16b3cecbc16cd9dc6f9b3f170b4479464de7508915514a7",
+      "bytes": 670,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/allworld-homeward-affordability-after.log"
+    },
+    {
+      "name": "allworld-affordable-homeward-focused.log",
+      "sha256": "cfacee22060910254c585e5993600c51e4f584a30e841d1cb3b7b3834d780e9b",
+      "bytes": 14407,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/allworld-affordable-homeward-focused.log"
+    },
+    {
+      "name": "allworld-affordable-homeward-ssr-final.log",
+      "sha256": "395cfeacb1a129d9117ecd298c9eb4baaf5480c1b6c37db8e219cac49b0a4169",
+      "bytes": 2933,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/allworld-affordable-homeward-ssr-final.log"
+    },
+    {
+      "name": "joinallworld-3af-ui-regressions.log",
+      "sha256": "754edb4338fc57c5782d5bfee8aef01aa3beba43616423acd52bd89801e67370",
+      "bytes": 257358,
+      "archive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/joinallworld-3af-ui-regressions.log"
+    }
+  ],
+  "next": "Observe same live exactCI37970635606, repair concrete new failures if any, verifiedAstra native/exact isolatedstage/save acceptance then WORLDrelease/live before usercutoff.",
+  "publishedCandidate": {
+    "sha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+    "branch": "codex/allworld-consolidated-delivery",
+    "localHeadEqualsRemote": true,
+    "workingTreeClean": true,
+    "reviewedSourceHashesMatchCommittedBlobs": "4/4",
+    "commitScope": {
+      "files": 5,
+      "insertions": 65,
+      "deletions": 14
+    },
+    "verifiedAt": "2026-10-09T18:04:46.259205+00:00"
+  },
+  "ci": {
+    "id": 37970635606,
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37970635606",
+    "conclusion": "",
+    "jobs": [
+      {
+        "conclusion": "",
+        "id": 113956050776,
+        "name": "host-acceptance",
+        "status": "in_progress"
+      },
+      {
+        "conclusion": "",
+        "id": 113956050954,
+        "name": "full-worker (24)",
+        "status": "in_progress"
+      },
+      {
+        "conclusion": "",
+        "id": 113956050957,
+        "name": "full (24)",
+        "status": "in_progress"
+      },
+      {
+        "conclusion": "success",
+        "id": 113956051000,
+        "name": "ui-regressions",
+        "status": "completed"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051021,
+        "name": "full-worker (22)",
+        "status": "in_progress"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051025,
+        "name": "full-node (24, tooling)",
+        "status": "queued"
+      },
+      {
+        "conclusion": "success",
+        "id": 113956051040,
+        "name": "release-policy",
+        "status": "completed"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051041,
+        "name": "full (22)",
+        "status": "in_progress"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051087,
+        "name": "integration-repairs",
+        "status": "in_progress"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051120,
+        "name": "full-node (22, game)",
+        "status": "in_progress"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051121,
+        "name": "full-node (24, host)",
+        "status": "queued"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051209,
+        "name": "full-node (22, host)",
+        "status": "in_progress"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051248,
+        "name": "full-node (24, game)",
+        "status": "queued"
+      },
+      {
+        "conclusion": "",
+        "id": 113956051404,
+        "name": "full-node (22, tooling)",
+        "status": "queued"
+      },
+      {
+        "conclusion": "skipped",
+        "id": 113956052296,
+        "name": "build-and-smoke-fast",
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "id": 113956052774,
+        "name": "typecheck-fast",
+        "status": "completed"
+      }
+    ],
+    "sha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+    "status": "queued",
+    "observedAt": "2026-10-09T18:07:42.365161+00:00",
+    "uiGroups": [
+      {
+        "tests": 436,
+        "pass": 436,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 36990.856689
+      },
+      {
+        "tests": 43,
+        "pass": 43,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 6041.660053
+      },
+      {
+        "tests": 90,
+        "pass": 90,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 21319.060557
+      },
+      {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 8876.648439
+      },
+      {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "skip": 0,
+        "durationMs": 2752.792683
+      }
+    ],
+    "qualification": "Distinct scoped CI groups retained separately, no aggregate full/native/UI gameplay acceptance. Fullrun incomplete; fast-mode skipped jobs expected."
+  }
+}

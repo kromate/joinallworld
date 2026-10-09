@@ -1,3 +1,5 @@
+Current finite batch: accept exact3af17a01 affordable-route credit repair through fresh compiler/startup/full/native/isolated-staging/save gates, then WORLD deploy/live verify. Scoped10/10fixture and40/40focused pass, four committed sourcehashes match independent review; no historical5e test transfer. Full physical/careers/business/liveGoalmatic remain unfinished.
+
 User-verified delivery cutoff:10October2026 around06:00Africa/Lagos,05:00UTC. Finish accepted consolidation first, preserve exact unfinished work/evidence at cutoff, no new spending/provisioning in this lane. Full programme scope remains required; unfinished phases are not accepted by deadline. Details: [delivery cutoff](delivery-cutoff-2026-10-10.json).
 
 # Living-world ranked backlog

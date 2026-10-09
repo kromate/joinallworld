@@ -1,11 +1,11 @@
-name: Native shared player scene hosts
+name: Native graphics exact production size comparison
 on:
   push:
-    branches: [codex/graphics-native-shared-hosts-v2]
+    branches: [codex/graphics-native-shared-hosts-v3]
 permissions:
   contents: read
 jobs:
-  hosts:
+  size:
     runs-on: ubuntu-24.04
     timeout-minutes: 8
     steps:
@@ -16,8 +16,27 @@ jobs:
         with:
           node-version: 24
       - run: npm ci --no-audit --no-fund
-      - name: Typecheck actual player creator venue home graph
-        run: npm run typecheck
-      - name: Existing creator stand-in home queue and scene lifecycle regressions
+      - name: Build exact staged native source
+        run: npm run build -- --outDir /tmp/graphics-native-dist
+      - name: Record existing candidate size gates without changing limits
         if: always()
-        run: node --max-old-space-size=512 --experimental-strip-types --test --test-concurrency=1 src/scene/avatar-preview.test.ts src/scene/body/body-lifecycle.test.ts src/scene/body/gate.test.ts src/scene/body/stand-in.test.ts src/scene/home-crowd.test.ts src/scene/crowd.test.ts src/scene/crowd-native-appearance.test.ts src/scene/body/canonical-crowd.test.ts src/scene/kit-late-close.test.ts src/scene/body/native/native-expression-controller.test.ts src/venue-world.test.ts
+        continue-on-error: true
+        run: node --experimental-strip-types scripts/download-budget.ts --dist /tmp/graphics-native-dist --json > /tmp/graphics-native-budget.json
+      - name: Build exact production baseline separately
+        run: |
+          git fetch --depth=1 origin 3af17a01b8bd406bfb830ca0d2ee66d2d0093d28
+          git worktree add --detach /tmp/graphics-baseline 3af17a01b8bd406bfb830ca0d2ee66d2d0093d28
+          ln -s "$GITHUB_WORKSPACE/node_modules" /tmp/graphics-baseline/node_modules
+          cd /tmp/graphics-baseline
+          npm run build -- --outDir /tmp/graphics-baseline-dist
+          node --experimental-strip-types scripts/download-budget.ts --dist /tmp/graphics-baseline-dist --json > /tmp/graphics-baseline-budget.json
+      - name: Measure whole distribution and graphics assets
+        run: node --max-old-space-size=128 evidence/graphics-loop/native-game-adoption-v1/measure-native-distribution.mjs > /tmp/graphics-distribution-comparison.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: graphics-distribution-${{ github.run_id }}
+          path: |
+            /tmp/graphics-native-budget.json
+            /tmp/graphics-baseline-budget.json
+            /tmp/graphics-distribution-comparison.json

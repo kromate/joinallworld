@@ -296,12 +296,12 @@ try {
       const workContacts = directionActor.sampleFootContacts();
       assert.ok(workContacts.length === 2 && workContacts.every(({ y }) => Number.isFinite(y) && y >= -0.004),
         `${family}: floor-supported interact/work poses retain finite supported shoes`);
-      assert.throws(() => directionActor.stride(0.4, false, 0.2), /only supports flat-floor/,
-        `${family}: stairs remain an explicit hard refusal in direction mode`);
-      assert.throws(() => directionActor.show('sit', false), /requires verified furniture\/body support/,
-        `${family}: seated pose remains an explicit hard refusal in direction mode`);
+      assert.throws(() => directionActor.stride(0.4, false, 0.2), /actual host stair-surface|stair.*contact|does not support diagnostic/,
+        `${family}: stairs refuse without an actual host surface query`);
+      assert.throws(() => directionActor.show('sit', false), /actual seat support/,
+        `${family}: sit refuses without an actual host seat callback`);
       directionCoverage.push({ family, mode: directionActor.preparedMetrics.retargetMode, walkPhases: phases, contactSolves,
-        floorPoseCoverage: ['idle', 'walk', 'interact', 'cook', 'eat', 'drink'], unsupported: ['stairs', 'sit', 'lie', 'soak', 'wash'] });
+        floorPoseCoverage: ['idle', 'walk', 'interact', 'cook', 'eat', 'drink'], unsupportedWithoutContactCallbacks: ['stairs', 'sit'], unsupportedPoses: ['lie', 'soak', 'wash'] });
     } finally {
       directionActor.dispose();
       const index = actors.indexOf(directionActor);

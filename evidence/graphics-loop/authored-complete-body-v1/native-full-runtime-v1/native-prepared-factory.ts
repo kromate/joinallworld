@@ -22,6 +22,8 @@ import { createAuthoredLookBridge } from '../authored-look-bridge.ts';
 import { createNativeSourceLandmarkSampler, type NativeSourceLandmarkSampler, type NativeWristSourceFrame } from '../native-source-sampler.ts';
 import { createNativeClipSolver, type NativeClipSolver, type NativeClipSupport } from '../native-clip-solver.ts';
 import { createNativeDirectionRetargeter, type NativeDirectionRetargeter } from '../native-direction-retarget.ts';
+import { createNativeSeatSurfaceProbe } from '../native-seat-surface.ts';
+import { solveNativeSeatPose } from '../native-seat-pose-adapter.ts';
 import { DOOR, INTO, OUT, SEATED, STAIRS, STILL, WORK_INTO, WORK_OUT } from '../../../../src/scene/body/poses.ts';
 
 export interface NativePreparedFactoryOptions {
@@ -34,6 +36,8 @@ export interface NativePreparedFactoryOptions {
   readonly retargetMode?: 'landmarks' | 'directions';
   /** Seat callback receives parent-local host coordinates and must return support in world coordinates. */
   readonly seatSupport?: (seat: NativeSeat, actor: THREE.Group) => NativePoseSupport;
+  /** Query the actual host stair surface at a deformed sole contact in actor-parent coordinates; null means unsupported. */
+  readonly stairContactHeightAt?: (contact: FootContact, actor: THREE.Group) => number | null;
   /** Object-use callback receives parent-local host coordinates and must return support in world coordinates. */
   readonly workSupport?: (placement: NativePlacement, actor: THREE.Group) => NativePoseSupport;
 }
@@ -327,7 +331,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     return Math.abs(reach - requested) > 0.001;
   }
 
-  function solve(heightAt: (contact: FootContact) => number): FootSolveResult {
+  function solve(heightAt: (contact: FootContact) => number, mode: 'motion' | 'grounded' = 'motion'): FootSolveResult {
     if (disposed) throw new Error('Authored foot contacts are disposed');
     let limited = false;
     const desiredSoleY = new Map<'left' | 'right', number>();
@@ -339,22 +343,22 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     for (let pass = 0; pass < 4; pass++) {
       let passError = 0;
       for (const contact of after) {
-        let targetY = contact.y;
+        let targetY = mode === 'grounded' ? -Infinity : contact.y;
         for (const point of contact.points ?? [contact]) targetY = Math.max(targetY, heightAt(point));
         if (!Number.isFinite(targetY)) { limited = true; continue; }
         const amount = targetY - contact.y;
-        if (amount < -0.024) continue; // Preserve a deliberate swing foot.
+        if (mode === 'motion' && amount < -0.024) continue; // Preserve a deliberate swing foot.
         desiredSoleY.set(contact.side, targetY);
         passError = Math.max(passError, Math.abs(amount));
-        if (amount <= 0.0002) continue;
-        const bounded = Math.min(amount, 0.12);
-        if (amount - bounded > 0.001) limited = true;
+        if (Math.abs(amount) <= 0.0002) continue;
+        const bounded = THREE.MathUtils.clamp(amount, mode === 'grounded' ? -0.12 : 0, 0.12);
+        if (Math.abs(amount - bounded) > 0.001) limited = true;
         // IK targets the ankle, not the sole. Preserve the current ankle-to-sole
         // vector and translate it by the support delta in actor space.
         const sole = pointInActor(contact.x, contact.y, contact.z);
-        const raisedSole = pointInActor(contact.x, contact.y + bounded, contact.z);
+        const correctedSole = pointInActor(contact.x, contact.y + bounded, contact.z);
         const leg = legs.find((candidate) => candidate.side === contact.side)!;
-        const targetAnkle = boneActorPoint(leg.foot).add(raisedSole.sub(sole));
+        const targetAnkle = boneActorPoint(leg.foot).add(correctedSole.sub(sole));
         fitLeg(leg, targetAnkle);
         correctedSides.add(contact.side);
       }
@@ -374,7 +378,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
   return { sample, solve, dispose() { disposed = true; contacts.length = 0; } };
 }
 
-function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, contacts: ReturnType<typeof createAuthoredFootContacts>, hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
+function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
   const contactBones = ['mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigRightUpLeg', 'mixamorigRightLeg']
@@ -405,37 +409,72 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
   return {
     apply(frame: NativeWristSourceFrame, context: Readonly<{ clip: string; seconds: number; pose: BodyPose; support: NativePoseSupport }>): boolean {
       if (frame.clipName !== resolveClip(context.clip)) return false;
-      if (['sit', 'lie', 'soak', 'wash'].includes(context.pose)) {
-        throw new Error(`Native ${context.pose} requires verified furniture/body support; this prepared factory has no accepted support for that pose`);
+      if (['lie', 'soak', 'wash'].includes(context.pose)) {
+        throw new Error(`Native ${context.pose} remains unsupported; no validated body-surface support is installed`);
       }
-      if (directionRetargeter) {
-        if (context.support.kind !== 'flat-feet') {
-          throw new Error(`Native direction retargeting only supports flat-floor poses; ${context.support.kind} remains unsupported`);
-        }
+      if (context.support.kind === 'stair-feet') {
+        if (!stairContactHeightAt) throw new Error('Native stairs require an actual host stair-surface query');
+        const seed = solver.applyFrame(frame, worldSupport(root, context.support));
+        if (seed.supportStatus !== 'feet-supported') throw new Error(`Native stair source frame is unsupported (${seed.supportStatus})`);
+      }
+      if (directionRetargeter && context.support.kind === 'flat-feet') {
         const mappedSupport = worldSupport(root, context.support);
         if (mappedSupport.kind !== 'flat-feet') throw new Error(`Native direction retargeting rejected transformed floor support for ${context.pose}`);
         // Captured after family rest correction and before any pose. This keeps native bone
         // translations/lengths; actual shoe contacts, not the retargeter's body-sole estimate,
         // own the host floor correction below.
         directionRetargeter.apply(frame, mappedSupport.floorY);
-      } else {
+      } else if (context.support.kind === 'seat-anchor') {
+        if (!seatSurface) throw new Error('Native sit requires a cached visible posterior body-and-clothing surface');
+        if (context.pose === 'sit' && context.clip === 'sit') {
+          solveNativeSeatPose({
+            frame,
+            seatTopWorld: [context.support.hipWorld[0], context.support.seatTopY, context.support.hipWorld[2]],
+            floorY: context.support.floorY,
+            solver,
+            surface: seatSurface,
+          });
+        } else {
+          const applied = solver.applyFrame(frame, solverSupport(context.support));
+          if (applied.supportStatus !== 'seat-anchored-contact-unverified' || applied.seatFeetStatus !== 'supported') {
+            throw new Error(`Native seated transition lacks seat/foot support (${applied.supportStatus}; feet=${applied.seatFeetStatus ?? 'missing'})`);
+          }
+        }
+      } else if (context.support.kind !== 'stair-feet') {
+        if (directionRetargeter) throw new Error(`Native direction retargeting does not support ${context.support.kind}`);
         const applied = solver.applyFrame(frame, worldSupport(root, context.support));
         if (applied.supportStatus !== 'feet-supported') {
           throw new Error(`Native ${context.pose} pose is not contact-supported (${applied.supportStatus}; clip ${frame.clipName})`);
         }
       }
       const support = context.support;
-      const heightAt = support.kind === 'flat-feet'
+      let heightAt = support.kind === 'flat-feet'
         ? () => worldFloorToParent(root, support.floorY)
         : support.kind === 'stair-feet'
           ? (contact: FootContact) => worldFloorToParent(root, contact.side === 'left' ? support.leftFloorY : support.rightFloorY)
-          : null;
+          : support.kind === 'seat-anchor' ? () => worldFloorToParent(root, support.floorY) : null;
       const solveAuthoredContacts = () => {
         if (!heightAt) return null;
-        let result = contacts.solve(heightAt);
-        for (let pass = 0; pass < 2 && result.limited && result.maxError > 0.002; pass++) result = contacts.solve(heightAt);
+        const mode = context.pose === 'walk' || context.pose === 'jog' || context.pose === 'dance' ? 'motion' : 'grounded';
+        let result = contacts.solve(heightAt, mode);
+        for (let pass = 0; pass < 2 && result.limited && result.maxError > 0.002; pass++) result = contacts.solve(heightAt, mode);
         if (directionRetargeter && (result.limited || result.maxError > 0.004)) {
           throw new Error(`Native direction ${context.pose} shoe contact failed (${result.maxError} m, limited=${result.limited})`);
+        }
+        if (mode === 'grounded' && (result.limited || result.maxError > 0.004)) {
+          throw new Error(`Native ${context.pose} static sole support failed (${result.maxError} m, limited=${result.limited})`);
+        }
+        if (support.kind === 'stair-feet') {
+          if (result.limited || result.maxError > 0.004) throw new Error(`Native stair sole correction failed (${result.maxError} m, limited=${result.limited})`);
+          const finalContacts = contacts.sample();
+          let grounded = false;
+          for (const contact of finalContacts) for (const point of contact.points ?? [contact]) {
+            const ground = heightAt!(point);
+            const gap = point.y - ground;
+            if (gap < -0.004) throw new Error(`Native stair shoe penetrates host surface by ${(-gap).toFixed(4)} m`);
+            if (Math.abs(gap) <= 0.004) grounded = true;
+          }
+          if (!grounded) throw new Error('Native stair pose has no sole point supported by the host surface');
         }
         if (directionRetargeter) onDirectionContactSolve(result);
         return result;
@@ -449,6 +488,25 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
           bone.scale.lerpVectors(source.s, bone.scale.clone(), amount);
         }
         updateActorWorld(root);
+      }
+      if (support.kind === 'stair-feet') {
+        if (!stairContactHeightAt) throw new Error('Native stairs require an actual host stair-surface query');
+        // Query every actual sole point after source pose and transition crossfade. Reapplying the
+        // source frame here would erase the crossfade before terrain correction.
+        const sampled = contacts.sample();
+        for (const side of ['left', 'right'] as const) {
+          const points = sampled.flatMap((contact) => contact.side === side ? (contact.points ?? [contact]) : []);
+          if (!points.length) throw new Error(`Native stair contact has no ${side} shoe samples`);
+          const heights = points.map((contact) => stairContactHeightAt(contact, root));
+          const valid = heights.filter((value): value is number => value !== null && Number.isFinite(value));
+          if (!valid.length) throw new Error(`Native stair surface is unavailable beneath the ${side} shoe`);
+          if (valid.length !== points.length) throw new Error(`Native stair surface is incomplete beneath the ${side} shoe`);
+        }
+        heightAt = (contact: FootContact) => {
+          const y = stairContactHeightAt(contact, root);
+          if (y === null || !Number.isFinite(y)) throw new Error(`Native stair surface disappeared under ${contact.side} foot`);
+          return y;
+        };
       }
       // Keep an immutable pre-contact leg pose for host calls to solveFeet().
       // Each solve must start from the sampled/crossfaded animation pose, not
@@ -495,6 +553,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
   let sampler: NativeSourceLandmarkSampler | undefined;
   let solver: NativeClipSolver | undefined;
   let contacts: ReturnType<typeof createAuthoredFootContacts> | undefined;
+  let seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined;
   let hands: ReturnType<typeof createNativeHandPoseController> | undefined;
   let wrists: ReturnType<typeof createNativeWristOrientationController> | undefined;
   let directionRetargeter: NativeDirectionRetargeter | undefined;
@@ -559,6 +618,12 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
 
     const body = character.object.getObjectByName('Body') as THREE.SkinnedMesh | null;
     if (!body?.isSkinnedMesh) throw new Error('Prepared authored actor has no Body SkinnedMesh');
+    if (options.seatSupport) {
+      const clothingName = initialLook.outfit === 'office' ? 'Authored office suit' : 'Authored casual suit';
+      const clothing = character.object.getObjectByName(clothingName) as THREE.SkinnedMesh | null;
+      if (!clothing?.isSkinnedMesh || !clothing.visible) throw new Error(`Native sit requires visible ${clothingName} geometry`);
+      seatSurface = createNativeSeatSurfaceProbe(character.object, [body, clothing]);
+    }
     const motion = await characterKit.authoredCharacterAssets.loadMotionRig();
     checkKit();
     sampler = createNativeSourceLandmarkSampler(motion.root.clone(true), motion.clips);
@@ -620,7 +685,8 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       },
     };
     let lastDirectionContactSolve: FootSolveResult | null = null;
-    const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, contacts, hands, wrists, resolveClip, (result) => { lastDirectionContactSolve = result; });
+    const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, contacts, seatSurface,
+      options.stairContactHeightAt, hands, wrists, resolveClip, (result) => { lastDirectionContactSolve = result; });
     const native = createNativeFullRuntime({
       actor: {
         object: character.object,
@@ -654,8 +720,19 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       },
       contacts,
       toWorldFloor: (parentY) => parentFloorToWorld(character!.object, parentY),
-      seatContact: (seat) => options.seatSupport?.(seat, character!.object)
-        ?? { kind: 'diagnostic', floorY: parentFloorToWorld(character!.object, seat.top) },
+      seatContact: (seat) => {
+        const support = options.seatSupport?.(seat, character!.object);
+        if (!support || support.kind !== 'seat-anchor' || ![...support.hipWorld, support.seatTopY, support.floorY].every(Number.isFinite)) {
+          return { kind: 'diagnostic', floorY: seat.floorY };
+        }
+        if (Math.abs(support.seatTopY - seat.topWorldY) > 0.01) {
+          return { kind: 'diagnostic', floorY: support.floorY };
+        }
+        return support;
+      },
+      stairContact: options.stairContactHeightAt
+        ? ({ floorY }) => ({ kind: 'stair-feet', leftFloorY: floorY, rightFloorY: floorY })
+        : undefined,
       workContact: (placement) => options.workSupport?.(placement, character!.object)
         ?? { kind: 'flat-feet', floorY: parentFloorToWorld(character!.object, placement.y) },
       initialLook,
@@ -680,9 +757,9 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       wardrobeWarnings: footwear.metrics.warnings,
       contactSource: 'authored-footwear-sole',
       contactLimitations: Object.freeze([
-        'Seat anchors are positional and the native clip solver reports seat contact as unverified.',
-        'Prone/lying poses require body-surface contact and are rejected while the solver reports diagnostic-only.',
-        'The two-level stair solver may report unresolved foot residuals; such samples are rejected.',
+        'Sitting is available only when the host supplies a measured chair top and floor; the cached posterior body-and-clothing surface must converge within 1 mm and both feet must be supported.',
+        'Lie, soak, and wash remain unsupported because no tested bed, tub, or wash-station surface adapter is installed.',
+        'Stairs require a host query of the actual terrain beneath the deformed authored shoe soles; unknown or unreachable surfaces reject the pose.',
         'Host must call solveFeet after pose sampling; this factory does not own a frame loop.',
       ]),
     });
@@ -701,8 +778,9 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       sampleFootContacts() { return native.sampleFootContacts(); },
       solveFeet(heightAt) {
         posePort.restoreContactBaseline();
-        let solved = native.solveFeet(heightAt);
-        for (let pass = 0; pass < 2 && solved.limited && solved.maxError > 0.002; pass++) solved = native.solveFeet(heightAt);
+        const mode = ['walk', 'jog', 'dance'].includes(native.pose) ? 'motion' : 'grounded';
+        let solved = native.solveFeet(heightAt, mode);
+        for (let pass = 0; pass < 2 && solved.limited && solved.maxError > 0.002; pass++) solved = native.solveFeet(heightAt, mode);
         if (directionRetargeter) lastDirectionContactSolve = solved;
         return solved;
       },
@@ -737,7 +815,12 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
   }
 }
 
-export const NATIVE_PREPARED_POSE_COVERAGE: readonly BodyPose[] = Object.freeze(Object.keys(STILL) as BodyPose[]);
+export const NATIVE_PREPARED_POSE_COVERAGE: readonly BodyPose[] = Object.freeze(['idle', 'walk', 'interact', 'cook', 'eat', 'drink']);
 export const NATIVE_PREPARED_TRANSITION_COVERAGE: readonly string[] = Object.freeze([
-  ...Object.values(INTO), ...Object.values(OUT), ...Object.values(WORK_INTO), ...Object.values(WORK_OUT), DOOR, STAIRS.up, STAIRS.down,
+  WORK_INTO.bucket!, WORK_INTO.cook!, WORK_INTO.cookLow!, WORK_INTO.eat!, WORK_INTO.drink!, WORK_INTO.homeDoor!,
+  WORK_OUT.bucket!, WORK_OUT.cook!, WORK_OUT.cookLow!, WORK_OUT.eat!, WORK_OUT.drink!, DOOR,
 ]);
+/** Conditional capabilities require a host callback which samples the actual visible furniture/terrain. */
+export const NATIVE_PREPARED_CONDITIONAL_CONTACT_COVERAGE = Object.freeze({
+  poses: Object.freeze(['sit']), transitions: Object.freeze([INTO.sit!, OUT.sit!, STAIRS.up, STAIRS.down]),
+});

@@ -5,8 +5,22 @@ import type { FootContact, FootSolveResult } from '../../../../src/scene/body/fo
 import type { WardrobeMetrics, WardrobePresentation } from '../../../../src/scene/wardrobe/renderer.ts';
 
 export interface NativePlacement { readonly x: number; readonly y: number; readonly z: number; readonly ry: number }
-export interface NativeSeat { readonly x: number; readonly top: number; readonly z: number; readonly ry: number; readonly lying: boolean }
+export interface NativeSeat {
+  readonly x: number;
+  readonly top: number;
+  readonly topWorldY: number;
+  readonly floorY: number;
+  readonly z: number;
+  readonly ry: number;
+  readonly lying: boolean;
+}
 export interface NativeAppearanceScale { readonly height: number; readonly width: number; readonly depth: number }
+export interface NativeStairContactInput {
+  readonly phase: number;
+  readonly climb: number;
+  readonly standing: NativePlacement;
+  readonly floorY: number;
+}
 
 /** A source sampler is already prepared by the host. `duration` must be finite and positive. */
 export interface NativeSourceSampler<Frame = unknown> {
@@ -29,7 +43,7 @@ export interface NativePosePort<Frame = unknown> {
 export type NativePoseSupport =
   | Readonly<{ kind: 'flat-feet'; floorY: number }>
   | Readonly<{ kind: 'stair-feet'; leftFloorY: number; rightFloorY: number }>
-  | Readonly<{ kind: 'seat-anchor'; hipWorld: readonly [number, number, number]; floorY: number }>
+  | Readonly<{ kind: 'seat-anchor'; hipWorld: readonly [number, number, number]; seatTopY: number; floorY: number }>
   | Readonly<{ kind: 'diagnostic'; floorY: number }>;
 
 export interface NativePreparedActor {
@@ -63,7 +77,7 @@ export interface NativePresentationPort<Candidate = unknown> {
 }
 export interface NativeContactPort {
   sample(): readonly FootContact[];
-  solve(heightAt: (contact: FootContact) => number): FootSolveResult;
+  solve(heightAt: (contact: FootContact) => number, mode?: 'motion' | 'grounded'): FootSolveResult;
 }
 export interface NativeFullRuntimeOptions<Candidate = unknown, Frame = unknown> {
   readonly actor: NativePreparedActor;
@@ -73,6 +87,8 @@ export interface NativeFullRuntimeOptions<Candidate = unknown, Frame = unknown> 
   readonly presentation: NativePresentationPort<Candidate>;
   readonly contacts: NativeContactPort;
   readonly seatContact?: (seat: NativeSeat) => NativePoseSupport;
+  /** Per-foot world-space stair levels; absent contact data deliberately rejects stair samples. */
+  readonly stairContact?: (input: NativeStairContactInput) => NativePoseSupport;
   readonly workContact?: (placement: NativePlacement) => NativePoseSupport;
   /** Convert host parent-local floor coordinates to world Y for built-in support. */
   readonly toWorldFloor?: (parentLocalY: number) => number;
@@ -99,7 +115,7 @@ export interface NativeFullRuntime {
   readonly seated: boolean;
   setPresentation(presentation: WardrobePresentation): boolean;
   sampleFootContacts(): readonly FootContact[];
-  solveFeet(heightAt: (contact: FootContact) => number): FootSolveResult;
+  solveFeet(heightAt: (contact: FootContact) => number, mode?: 'motion' | 'grounded'): FootSolveResult;
   show(pose: BodyPose, animate?: boolean): void;
   sampleUse(pose: BodyPose, seconds: number): void;
   enter(animate: boolean): void;
@@ -114,7 +130,7 @@ export interface NativeFullRuntime {
   dispose(): void;
 }
 
-type Transition = { clip: string; time: number; length: number; then: BodyPose; from: NativePlacement; support: NativePoseSupport };
+type Transition = { clip: string; time: number; length: number; then: BodyPose; previous: BodyPose; from: NativePlacement };
 // Native source feet need explicit calibration; never reuse the old body's measured lift by default.
 const DEFAULT_LIFT = 0;
 const DEFAULT_SIT_CONTACT = 0.47;
@@ -176,6 +192,7 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
   let currentPose: BodyPose = 'idle';
   let transition: Transition | null = null;
   let strideClimb = 0;
+  let stridePhase = 0;
   let standing: NativePlacement = { x: 0, y: 0, z: 0, ry: 0 };
   let working: NativePlacement | null = null;
   let seat: NativeSeat | null = null;
@@ -196,10 +213,10 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
     if (seat && SEATED.has(poseName)) return options.seatContact?.(seat) ?? { kind: 'diagnostic', floorY: options.toWorldFloor?.(standing.y) ?? standing.y };
     if (WORK_INTO[poseName] && working) return options.workContact?.(working) ?? defaultFloor(working.y);
     if (strideClimb) {
-      const leftFloorY = options.toWorldFloor?.(standing.y + strideClimb) ?? standing.y + strideClimb;
-      const rightFloorY = options.toWorldFloor?.(standing.y) ?? standing.y;
-      return Number.isFinite(leftFloorY) && Number.isFinite(rightFloorY)
-        ? { kind: 'stair-feet', leftFloorY, rightFloorY } : { kind: 'diagnostic', floorY: 0 };
+      const floorY = options.toWorldFloor?.(standing.y) ?? standing.y;
+      if (!Number.isFinite(floorY)) return { kind: 'diagnostic', floorY: 0 };
+      return options.stairContact?.({ phase: stridePhase, climb: strideClimb, standing: Object.freeze({ ...standing }), floorY })
+        ?? { kind: 'diagnostic', floorY };
     }
     return defaultFloor(standing.y);
   }
@@ -214,11 +231,16 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
     }
     return supportFor(currentPose);
   }
-  function sample(clip: string, time: number, poseName = currentPose, support = supportFor(poseName)): void {
+  function sample(clip: string, time: number, poseName = currentPose, suppliedSupport?: NativePoseSupport): void {
     ensureOpen();
     // Placement is host state, so apply it before sampling and contact solving.
     // Otherwise the solver can use the previous root transform for this frame.
     put();
+    const support = suppliedSupport ?? (transition?.clip === clip ? supportForTransition(clip) : supportFor(poseName));
+    if ((poseName === 'sit' || transition?.clip === clip && (clip === INTO.sit || clip === OUT.sit))
+      && support.kind !== 'seat-anchor') {
+      throw new Error(`Native sit requires an actual seat support callback; got ${support.kind}`);
+    }
     const duration = requireClip(clip);
     const t = Math.min(Math.max(finite(time, 'sample time'), 0), duration);
     const frame = source.sample(clip, t);
@@ -253,29 +275,47 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
   }
   function finish(): void {
     if (!transition) return;
-    const then = transition.then;
+    const { then, previous } = transition;
     transition = null;
     posePort.endTransition(then);
-    sampleStill(then);
-    put();
+    try {
+      sampleStill(then);
+      put();
+    } catch (error) {
+      currentPose = previous;
+      transition = null;
+      posePort.endTransition(previous);
+      try { sampleStill(previous); put(); } catch { /* retain the truthful previous state on rollback failure */ }
+      throw error;
+    }
   }
-  function play(clip: string | undefined): void {
+  function play(clip: string | undefined, previous: BodyPose = currentPose): void {
     if (!clip) { transition = null; posePort.endTransition(currentPose); sampleStill(currentPose); return; }
     const length = requireClip(clip);
     const from = { x: object.position.x, y: object.position.y, z: object.position.z, ry: object.rotation.y };
-    const support = supportForTransition(clip);
     posePort.beginTransition(clip, from, crossfade);
-    transition = { clip, time: 0, length, then: currentPose, from, support };
-    sample(clip, 0, currentPose, support);
+    transition = { clip, time: 0, length, then: currentPose, previous, from };
+    sample(clip, 0, currentPose);
   }
   function changePose(next: BodyPose, animate: boolean): void {
     ensureOpen();
+    if (next === 'sit' && supportFor('sit').kind !== 'seat-anchor') {
+      throw new Error('Native sit requires an actual seat support callback');
+    }
     if (next === currentPose && transition && animate) return;
     if (next === currentPose && !transition) { sampleStill(next); return; }
-    const into = next !== currentPose ? INTO[next] ?? WORK_INTO[next] : undefined;
-    const out = next !== currentPose && next !== 'walk' && next !== 'jog' ? OUT[currentPose] ?? WORK_OUT[currentPose] : undefined;
+    const previous = currentPose;
+    const previousClimb = strideClimb;
+    const into = next !== previous ? INTO[next] ?? WORK_INTO[next] : undefined;
+    const out = next !== previous && next !== 'walk' && next !== 'jog' ? OUT[previous] ?? WORK_OUT[previous] : undefined;
+    if (next !== 'walk' && next !== 'jog') strideClimb = 0;
     currentPose = next;
-    play(animate ? into ?? out : undefined);
+    try { play(animate ? into ?? out : undefined, previous); }
+    catch (error) {
+      currentPose = previous; strideClimb = previousClimb; transition = null; posePort.endTransition(previous);
+      try { sampleStill(previous); put(); } catch { /* preserve previous public state if source recovery also fails */ }
+      throw error;
+    }
   }
 
   let unregisterKitDispose: (() => void) | void;
@@ -296,39 +336,65 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
       return presentation.set(next);
     },
     sampleFootContacts() { ensureOpen(); object.updateWorldMatrix(true, true); return contacts.sample(); },
-    solveFeet(heightAt) {
+    solveFeet(heightAt, mode = 'motion') {
       ensureOpen(); object.updateWorldMatrix(true, true);
-      let result = contacts.solve(heightAt);
+      let result = contacts.solve(heightAt, mode);
       if (strideClimb) for (let pass = 0; pass < 3 && result.limited && result.maxError > 0.002; pass++) result = contacts.solve(heightAt);
       return result;
     },
     show(next, animate = false) { changePose(next, animate); },
     sampleUse(next, seconds) {
       ensureOpen(); if (transition) return;
-      currentPose = next;
+      if (next === 'sit' && supportFor('sit').kind !== 'seat-anchor') throw new Error('Native sit requires an actual seat support callback');
+      const previous = currentPose;
+      const previousClimb = strideClimb;
       const { clip } = STILL[next], length = requireClip(clip);
       const wrapped = ((Math.max(0, finite(seconds, 'use time')) % length) + length) % length;
-      sample(clip, wrapped, next); put();
+      strideClimb = 0;
+      currentPose = next;
+      try { sample(clip, wrapped, next); put(); }
+      catch (error) {
+        currentPose = previous; strideClimb = previousClimb; transition = null; posePort.endTransition(previous);
+        try { sampleStill(previous); put(); } catch { /* preserve previous public state if source recovery also fails */ }
+        throw error;
+      }
     },
-    enter(animate) { ensureOpen(); currentPose = 'idle'; play(animate ? DOOR : undefined); },
+    enter(animate) { ensureOpen(); strideClimb = 0; currentPose = 'idle'; play(animate ? DOOR : undefined); },
     stride(phase, jog, climb = 0) {
       ensureOpen(); finite(phase, 'stride phase'); finite(climb, 'climb');
-      strideClimb = climb; transition = null; posePort.endTransition(jog ? 'jog' : 'walk');
+      const previousPose = currentPose, previousClimb = strideClimb, previousPhase = stridePhase;
+      strideClimb = climb; stridePhase = phase; transition = null; posePort.endTransition(jog ? 'jog' : 'walk');
       currentPose = jog ? 'jog' : 'walk';
       const name = !climb ? currentPose : climb > 0 ? STAIRS.up : STAIRS.down, length = requireClip(name);
       const turn = phase / (2 * Math.PI), time = (turn - Math.floor(turn)) * length;
-      sample(name, time, currentPose, supportFor(currentPose));
+      try { sample(name, time, currentPose); }
+      catch (error) {
+        strideClimb = previousClimb; stridePhase = previousPhase; currentPose = previousPose; posePort.endTransition(previousPose);
+        try { sampleStill(previousPose); put(); } catch { /* keep public pose truthful if recovery is unavailable */ }
+        throw error;
+      }
     },
     step(dt) {
       ensureOpen(); if (!transition) return false;
       transition.time += Math.max(finite(dt, 'step delta'), 0);
       if (transition.time >= transition.length) { finish(); return false; }
-      sample(transition.clip, transition.time, currentPose, transition.support); put(); return true;
+      try { sample(transition.clip, transition.time, currentPose); put(); return true; }
+      catch (error) {
+        const previous = transition.previous;
+        transition = null; currentPose = previous; posePort.endTransition(previous);
+        try { sampleStill(previous); put(); } catch { /* keep public pose truthful if recovery is unavailable */ }
+        throw error;
+      }
     },
     settle() { ensureOpen(); finish(); },
     place(x, y, z, ry) { ensureOpen(); standing = { x: finite(x, 'x'), y: finite(y, 'y'), z: finite(z, 'z'), ry: finite(ry, 'rotation') }; put(); },
     sitOn(x, top, z, ry) {
-      ensureOpen(); seat = { x: finite(x, 'seat x'), top: finite(top, 'seat top'), z: finite(z, 'seat z'), ry: finite(ry, 'seat rotation'), lying: (transition?.clip ?? currentPose) === 'get-up' || currentPose === 'lie' };
+      ensureOpen();
+      const seatTop = finite(top, 'seat top');
+      const floorY = finite(options.toWorldFloor?.(standing.y) ?? standing.y, 'seat floor');
+      const topWorldY = finite(options.toWorldFloor?.(seatTop) ?? seatTop, 'seat top world height');
+      seat = { x: finite(x, 'seat x'), top: seatTop, topWorldY, floorY, z: finite(z, 'seat z'),
+        ry: finite(ry, 'seat rotation'), lying: (transition?.clip ?? currentPose) === 'get-up' || currentPose === 'lie' };
       put();
     },
     workOn(x, floor, z, ry) { ensureOpen(); working = { x: finite(x, 'work x'), y: finite(floor, 'work floor'), z: finite(z, 'work z'), ry: finite(ry, 'work rotation') }; put(); },

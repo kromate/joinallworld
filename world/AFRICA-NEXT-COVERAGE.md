@@ -1,3 +1,26 @@
+# Country rollout checkpoint, 9 October 2026 at 22:38 UTC
+
+São Tomé (ST), Praia (CV) and Juba (SS) now have verified real starter sources.
+The new frozen contract completed in 8.934 seconds; exact-contract resume took
+1.591 seconds. All nine source/request files remained byte-identical. Independent
+asset hashes, isolated engine checks, and retained/land vertex containment passed.
+The packet pins 27 source inputs including the explicit Juba selection and point;
+three-letter source mismatch remains disclosed, timezone is Africa/Juba.
+See `playable-africa-rollout/batches/twelfth-three.json`.
+
+Generated foreign starter count is now 52, with 42 unadmitted. Nigeria retains
+its existing implementation. Moroni/KM is the one missing source-inventory starter;
+its original empty sample and charged request remain preserved. Production still
+has 11 green/open countries. Source completion is not runtime admission.
+
+Integration has assigned WORLD an isolated explicit-admission generator and
+country metadata shard seam. Its initial manifest must preserve all 40 Nigeria
+rows and the ten currently admitted foreign IDs. Shared registry/bootstrap/save
+and server authority migration remain Integration-owned. More green countries
+require that runtime seam and the unchanged startup/release checks.
+
+Earlier checkpoints below retain their original dates and evidence scopes.
+
 # Latest source coverage, 9 October2026 at22:16UTC
 
 The eleventh selected-five run is **partial**, not complete. Gambia/Banjul,

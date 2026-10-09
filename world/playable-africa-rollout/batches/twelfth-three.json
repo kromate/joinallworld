@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "base": "0c3bb49b884d44fa7ded8bd2114dfd9eb3ba9f2b",
+  "scope": "Twelfth source-only batch: three bounded starters, S\u00e3o Tom\u00e9/Praia/Juba. Actual acquisition and exact-contract resume source/isolated-engine passed. Not runtime/native/production admission.",
+  "destinationIds": [
+    "sao-tome",
+    "praia",
+    "juba"
+  ],
+  "registeredInProduction": false,
+  "geometry": {
+    "buildings": 1050,
+    "roads": 312,
+    "sourceBytes": 5534518,
+    "extent": "Bounded real central OSM samples plus selected airport dataset points; not complete cities or countries."
+  },
+  "sourceSummaries": [
+    {
+      "city": "sao-tome",
+      "country": "ST",
+      "buildings": 350,
+      "roads": 108,
+      "sourceBytes": 988965,
+      "retainedVertices": 2737,
+      "landVertices": 7,
+      "outsideBounds": 0,
+      "bounds": [
+        6.70015,
+        0.3217966,
+        6.74465,
+        0.390175
+      ]
+    },
+    {
+      "city": "praia",
+      "country": "CV",
+      "buildings": 350,
+      "roads": 160,
+      "sourceBytes": 2079997,
+      "retainedVertices": 4426,
+      "landVertices": 9,
+      "outsideBounds": 0,
+      "bounds": [
+        -23.531689,
+        14.901698,
+        -23.472728,
+        14.953126
+      ]
+    },
+    {
+      "city": "juba",
+      "country": "SS",
+      "buildings": 350,
+      "roads": 44,
+      "sourceBytes": 2465556,
+      "retainedVertices": 2631,
+      "landVertices": 5,
+      "outsideBounds": 0,
+      "bounds": [
+        31.565026,
+        4.814975,
+        31.613101,
+        4.88401
+      ]
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/game/cities/sao-tome/facts.ts",
+      "bytes": 1613,
+      "sha256": "2838da64fd3e3f289cdd5c662f45d6671f1a0c83fded0a67796ae3357c546f75"
+    },
+    {
+      "path": "src/game/cities/sao-tome/geometry.ts",
+      "bytes": 93543,
+      "sha256": "a30f208e80f271a2cc37b4c0924402b8d5471101783ea60a65d31648a19c615e"
+    },
+    {
+      "path": "src/game/cities/sao-tome/index.ts",
+      "bytes": 259,
+      "sha256": "43ad09e64a85c0c96fa48b2350a338a669ba1732fde4bd3601e07909b44efac1"
+    },
+    {
+      "path": "src/game/cities/sao-tome/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/sao-tome/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/sao-tome.json",
+      "bytes": 3488,
+      "sha256": "c4e4b16e0ff5c4e0aa6dd34751c353a545c9b0655f8ee8382dd545eccad24d21"
+    },
+    {
+      "path": "src/game/cities/praia/facts.ts",
+      "bytes": 1480,
+      "sha256": "f3d46fc103557db4b5d07a922d4f65b27bbcd22b0d51c9f6810b7785b6d734b1"
+    },
+    {
+      "path": "src/game/cities/praia/geometry.ts",
+      "bytes": 147010,
+      "sha256": "92af0d953497fa9e0df74b18f993a29bb79a9cc2acc0e7064f9928a0488311cd"
+    },
+    {
+      "path": "src/game/cities/praia/index.ts",
+      "bytes": 256,
+      "sha256": "070389c82ed438db076dd94d5b49d9519c5e53c8f1885b24f9d5122a28610178"
+    },
+    {
+      "path": "src/game/cities/praia/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/praia/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/praia.json",
+      "bytes": 3516,
+      "sha256": "969aa1f336c5075a85e6763164f963f18655025d0f2cebf6e913b637989bc83d"
+    },
+    {
+      "path": "src/game/cities/juba/facts.ts",
+      "bytes": 1446,
+      "sha256": "af469e2f5b1301df927ad36e555f38181b814df10d344fc667a0adec561d06f2"
+    },
+    {
+      "path": "src/game/cities/juba/geometry.ts",
+      "bytes": 89032,
+      "sha256": "ab6e147ab0d8ec221b999fa5470fcb0be9814fca5b76e677133a0c88fa6483c0"
+    },
+    {
+      "path": "src/game/cities/juba/index.ts",
+      "bytes": 255,
+      "sha256": "cd8ffc1b636a5a85f3afcc2843ef969dc0c08e762298fb752abc9f5ca7c389c0"
+    },
+    {
+      "path": "src/game/cities/juba/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/juba/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/juba.json",
+      "bytes": 5748,
+      "sha256": "cbefe689c50a437f42e011594998283fc035444a24c0888792abfd61e8e8785a"
+    },
+    {
+      "path": "scripts/agent-slot.ts",
+      "bytes": 14218,
+      "sha256": "873fcf993506655018cffff78fc37b9dce92410ffba184bd92360aa9a77bb566"
+    },
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 39500,
+      "sha256": "1c4fffb0d08b45d719b0e0900ad69e006b4e4148e50804481cc705fef4db9273"
+    },
+    {
+      "path": "scripts/world/build-playable-africa.py",
+      "bytes": 13380,
+      "sha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+    },
+    {
+      "path": "scripts/world/verify-playable-destination.ts",
+      "bytes": 13771,
+      "sha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae"
+    },
+    {
+      "path": "world/playable-africa-rollout/inventory.json",
+      "bytes": 173999,
+      "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+    },
+    {
+      "path": "world/tooling/atomic_starter_publication.py",
+      "bytes": 22078,
+      "sha256": "4f3b998e1b878585bdbe461bceb99447d8c1c23b84b83ab4b4e7655395b54bac"
+    },
+    {
+      "path": "world/tooling/run_africa_starters.py",
+      "bytes": 43475,
+      "sha256": "a88f5cd998220f025d3dc962488a1d3a64fbb1940732e1ef45c114976cf1e7c1"
+    },
+    {
+      "path": "world/playable-africa-rollout/south-sudan/selection.json",
+      "bytes": 5518,
+      "sha256": "a7aa7eeda7d9e84c842e76831e1c4f3b3d8cacb29f4ae5a7505b1312d533b592"
+    },
+    {
+      "path": "world/playable-africa-rollout/south-sudan/point.geojson",
+      "bytes": 1635,
+      "sha256": "874e4f78070182ec8cad24f3b75989d96a3d30808bca38fd2fbabd699ffd8345"
+    }
+  ],
+  "validation": {
+    "status": "complete",
+    "contractSha256": "23faee6779694a60ad05920f3530a8b2083e9553fc0dd2d2f1680691c9062fa6",
+    "windows": [
+      {
+        "budgetSeconds": 60,
+        "elapsedSeconds": 8.934,
+        "finishedAt": "2026-10-09T22:34:55Z",
+        "startedAt": "2026-10-09T22:34:46Z"
+      },
+      {
+        "budgetSeconds": 60,
+        "elapsedSeconds": 1.591,
+        "finishedAt": "2026-10-09T22:35:29Z",
+        "startedAt": "2026-10-09T22:35:27Z"
+      }
+    ],
+    "actualSerialRun": true,
+    "actualExactContractResume": true,
+    "allThreeSourceAndIsolatedEngineVerified": true,
+    "nineSourceAndRequestFilesUnchanged": true,
+    "allRetainedAndLandCoordinatesWithinBounds": true,
+    "budgets": {
+      "maxCountries": 3,
+      "maxReservedBytes": 25165824,
+      "perCityReservationBytes": 8388608,
+      "reservedPotentialBytes": 25165824,
+      "seconds": 60
+    },
+    "contract": {
+      "path": ".cache/world-build/playable-africa-runs/23faee6779694a60ad05920f3530a8b2083e9553fc0dd2d2f1680691c9062fa6/contract.json",
+      "bytes": 5567,
+      "sha256": "9deb5cbf6cde393a6ad0c77f770ede509f42636c34fd22316acb2d70c36ac2b6"
+    },
+    "report": {
+      "path": ".cache/world-build/playable-africa-runs/23faee6779694a60ad05920f3530a8b2083e9553fc0dd2d2f1680691c9062fa6/report.json",
+      "bytes": 2151,
+      "sha256": "06a9ba18cc590dadda7ae2d7b21750bdca2c1a2af6670459f5ce4639f090d87b"
+    },
+    "audit": {
+      "path": ".cache/world-build/evidence/africa-twelfth-resume-audit.json",
+      "bytes": 3439,
+      "sha256": "672e0a6f81bc08300aed6d5b274c3db90f0a1b236effabe6e54459d0005b3772"
+    }
+  },
+  "jubaSelection": {
+    "packet": {
+      "path": "world/playable-africa-rollout/south-sudan/selection.json",
+      "bytes": 5518,
+      "sha256": "a7aa7eeda7d9e84c842e76831e1c4f3b3d8cacb29f4ae5a7505b1312d533b592"
+    },
+    "point": {
+      "path": "world/playable-africa-rollout/south-sudan/point.geojson",
+      "bytes": 1635,
+      "sha256": "874e4f78070182ec8cad24f3b75989d96a3d30808bca38fd2fbabd699ffd8345"
+    },
+    "threeLetterMismatchPreserved": true,
+    "explicitIso2SS": true,
+    "ianaTimezone": "Africa/Juba"
+  },
+  "limitations": [
+    "Natural Earth capital labels may be stale; OurAirports dataset is not official/current flight operation proof.",
+    "Unmeasured heights estimated; visitor venues fictional.",
+    "Shared runtime remains C1; these sources do not turn countries green."
+  ]
+}

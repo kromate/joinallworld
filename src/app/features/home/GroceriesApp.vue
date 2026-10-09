@@ -12,7 +12,7 @@
 // exactly what leaves the wallet. If the server refuses a line (the kitchen is full, the money ran
 // out) ordering stops there, the refusal is shown, and what was not bought stays in the basket.
 // Prices and pack sizes are original beta values (content/food.js).
-import { computed, nextTick, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { INGREDIENTS, INGREDIENT_ORDER, RECIPES } from '../../../game/content/food.ts'
 import { formatHour, lagosTime } from '../../../game/clock.ts'
@@ -22,7 +22,7 @@ import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import { MAX_PACKS, groceriesRules, items, lineTotal, orderReason, orderedLine, quickBuy, quoteOf } from './groceriesModel.ts'
-import { basket } from './groceriesState.ts'
+import { basket, bindBasket, grocerySession } from './groceriesState.ts'
 
 defineProps<{ params?: unknown }>()
 
@@ -34,9 +34,18 @@ const recipes = RECIPES
 const order = INGREDIENT_ORDER
 const usedBy = Object.fromEntries(order.map((id) => [id, Object.values(recipes).filter((recipe) => id in recipe.ingredients).map((recipe) => recipe.label)]))
 
-const ordering = ref(false)
-/** The ingredient whose one-tap purchase is on its way to the server, or null. */
-const buying = ref<string | null>(null)
+const ordering = computed(() => grocerySession.ordering)
+const buying = computed(() => grocerySession.buying)
+const fuelling = computed(() => grocerySession.fuelling)
+const working = computed(() => ordering.value || buying.value !== null || fuelling.value)
+let gone = false, cityRevision = 0
+onBeforeUnmount(() => { gone = true })
+watch(() => game.session.value?.id ?? null, bindBasket, { immediate: true, flush: 'sync' })
+watch(() => game.cityId.value, () => { cityRevision += 1 }, { flush: 'sync' })
+function purchaseScope(): () => boolean {
+  const owner = game.session.value?.id, version = grocerySession.version
+  return () => Boolean(owner) && owner === game.session.value?.id && version === grocerySession.version
+}
 const offline = computed(() => (view.value.connected ? '' : `${linkWords(view.value)?.short ?? ''} — ordering needs the server`))
 
 const cards = computed(() => order.map((id) => {
@@ -45,18 +54,19 @@ const cards = computed(() => order.map((id) => {
   const have = state.value.inventory?.[id] ?? 0
   const packs = Math.min(MAX_PACKS, basket[id] || 0)
   const one = quoteOf(view.value.home?.groceries, item, 1)
-  const quick = quickBuy({ quote: one, cash: state.value.cash, connected: view.value.connected, busy: ordering.value || buying.value !== null, label: item.label })
+  const quick = quickBuy({ quote: one, cash: state.value.cash, connected: view.value.connected, busy: working.value, label: item.label })
   const uses = usedBy[id]?.length ? `For ${usedBy[id]?.join(', ')}` : 'Kitchen staple'
   return { id, item, have, packs, one, quick, short1: view.value.connected && one.price > state.value.cash, uses, total: lineTotal(view.value.home?.groceries, item, packs) }
 }).filter((card): card is NonNullable<typeof card> => card !== null))
 const total = computed(() => cards.value.reduce((sum, card) => sum + card.total, 0))
 const units = computed(() => cards.value.reduce((sum, card) => sum + card.packs * card.item.pack, 0))
 const short = computed(() => (total.value > state.value.cash ? `Need ${money(total.value - state.value.cash)} more` : ''))
-const why = computed(() => orderReason({ units: units.value, offline: offline.value, short: short.value, ordering: ordering.value, buying: buying.value !== null }))
+const why = computed(() => orderReason({ units: units.value, offline: offline.value, short: short.value, ordering: ordering.value, buying: buying.value !== null || fuelling.value }))
 
 /** The grid keeps the keyboard where it was: a button that was disabled while its answer was on the way gets it back, unless the player moved on. */
 function keepFocus(selector: string): void {
   void nextTick(() => {
+    if (gone) return
     const active = document.activeElement
     if (!active || active === document.body || active.tagName === 'DIALOG') document.querySelector<HTMLElement>(`${selector}:not(:disabled)`)?.focus({ preventScroll: true })
   })
@@ -70,45 +80,56 @@ const fuelLine = computed(() => {
   const light = info.grid ? '' : ` Light is off in ${info.district} until ${formatHour(lagosTime(info.until ?? 0).minuteOfDay / 60)}.`
   return `Generator: ${info.fuel} of ${TANK_LITRES} litres in the tank · ${money(LITRE_PRICE)} a litre.${light}`
 })
-const fuelling = ref(false)
 const fuelRoom = computed(() => Math.max(0, Math.floor(TANK_LITRES - (power.value?.fuel ?? 0))))
 async function refuel(litres: number): Promise<void> {
-  if (fuelling.value || litres < 1) return
-  fuelling.value = true
-  try { if ((await command('home.refuel', { litres })).ok) game.toast(state.value.message, 'good') } finally { fuelling.value = false }
+  const current = purchaseScope(), version = grocerySession.version
+  if (working.value || litres < 1 || !current()) return
+  grocerySession.fuelling = true
+  try {
+    const result = await command('home.refuel', { litres })
+    if (result.ok && current() && !gone) game.toast(state.value.message, 'good')
+  } finally { if (version === grocerySession.version) grocerySession.fuelling = false }
 }
 
 async function buyOne(id: string): Promise<void> {
-  const item = catalogue[id]
-  if (!item || buying.value || ordering.value) return
-  buying.value = id
+  const item = catalogue[id], current = purchaseScope(), version = grocerySession.version
+  if (!item || working.value || !current()) return
+  grocerySession.buying = id
   let ok = false
-  try { ok = (await command('home.grocery-buy', { id, packs: 1 })).ok } finally { buying.value = null }
-  // A refusal was already shown with the server's reason; a purchase confirms itself.
+  try { ok = (await command('home.grocery-buy', { id, packs: 1 })).ok } finally { if (version === grocerySession.version) grocerySession.buying = null }
+  if (!current() || gone) return
   if (ok) game.toast(state.value.message || `${item.pack} × ${item.label} delivered to your kitchen.`, 'good')
   keepFocus(`[data-groceries-buy="${CSS.escape(id)}"]`)
 }
-function step(id: string, by: number): void { basket[id] = Math.max(0, Math.min(MAX_PACKS, (basket[id] || 0) + by)) }
-function clear(): void { for (const id of Object.keys(basket)) delete basket[id] }
+function step(id: string, by: number): void { if (!working.value) basket[id] = Math.max(0, Math.min(MAX_PACKS, (basket[id] || 0) + by)) }
+function clear(): void { if (!working.value) for (const id of Object.keys(basket)) delete basket[id] }
 async function orderAll(): Promise<void> {
-  if (ordering.value || buying.value) return
-  ordering.value = true
+  const current = purchaseScope(), revision = cityRevision, version = grocerySession.version
+  if (working.value || !current()) return
+  const remaining = { ...basket }
+  const canContinue = (): boolean => current() && !gone && revision === cityRevision
+  grocerySession.ordering = true
   let bought = 0, refused = false
   try {
     for (const id of order) {
       const item = catalogue[id]
-      while ((basket[id] || 0) > 0 && !refused && item) {
-        const packs = (basket[id] ?? 0) >= 3 ? 3 : 1
+      while ((remaining[id] || 0) > 0 && !refused && item && canContinue()) {
+        const packs = (remaining[id] ?? 0) >= 3 ? 3 : 1
         const result = await command('home.grocery-buy', { id, packs })
-        if (result.ok) { basket[id] = (basket[id] ?? 0) - packs; bought += packs * item.pack } else refused = true
+        if (!current()) return
+        if (result.ok) {
+          basket[id] = Math.max(0, (basket[id] ?? 0) - packs)
+          remaining[id] = (remaining[id] ?? 0) - packs
+          bought += packs * item.pack
+        } else refused = true
       }
-      if (refused) break
+      if (refused || !canContinue()) break
     }
-  } finally { ordering.value = false }
-  // A refusal was already shown with the server's reason; say what did go through.
+  } finally { if (version === grocerySession.version) grocerySession.ordering = false }
   const line = orderedLine(bought, refused)
-  if (line) game.toast(line, 'good')
+  if (line && canContinue()) game.toast(line, 'good')
 }
+
 </script>
 
 <template>
@@ -116,7 +137,7 @@ async function orderAll(): Promise<void> {
     <p class="groceries-intro">Balance <b>{{ money(state.cash) }}</b> · delivered to your kitchen at once.</p>
     <p v-if="offline" class="ui-why groceries-offline">{{ offline }}</p>
     <p v-if="fuelLine" class="groceries-intro groceries-fuel" :data-groceries-fuel="power?.source">{{ fuelLine }}
-      <button type="button" class="ui-button is-small" :disabled="!view.connected || fuelling || fuelRoom < 1 || state.cash < LITRE_PRICE" @click="refuel(Math.min(5, fuelRoom))">{{ fuelling ? 'Buying…' : fuelRoom < 1 ? 'Tank full' : `Buy ${Math.min(5, fuelRoom)} ${Math.min(5, fuelRoom) === 1 ? 'litre' : 'litres'} · ${money(Math.min(5, fuelRoom) * LITRE_PRICE)}` }}</button>
+      <button type="button" class="ui-button is-small" :disabled="!view.connected || working || fuelRoom < 1 || state.cash < LITRE_PRICE" @click="refuel(Math.min(5, fuelRoom))">{{ fuelling ? 'Buying…' : fuelRoom < 1 ? 'Tank full' : `Buy ${Math.min(5, fuelRoom)} ${Math.min(5, fuelRoom) === 1 ? 'litre' : 'litres'} · ${money(Math.min(5, fuelRoom) * LITRE_PRICE)}` }}</button>
     </p>
     <HowItWorks id="groceries-rules" page label="How ordering works" :rules="groceriesRules" />
     <ul class="groceries-grid">
@@ -128,9 +149,9 @@ async function orderAll(): Promise<void> {
         <button type="button" class="groceries-buy" :data-groceries-buy="card.id" :aria-label="`Buy one pack of ${card.item.label} (${card.item.pack}) now for ${money(card.quick.price)}`" :disabled="Boolean(card.quick.blocked)" :title="card.quick.blocked || undefined" @click="buyOne(card.id)">{{ buying === card.id ? 'Buying…' : `Buy 1 pack · ${money(card.quick.price)}` }}</button>
         <span v-if="card.short1" class="groceries-why">{{ card.quick.blocked }}</span>
         <div class="groceries-step" role="group" :aria-label="`${card.item.label}: packs in the basket`">
-          <button type="button" :aria-label="`One pack less of ${card.item.label}`" :disabled="!card.packs" @click="step(card.id, -1)">−</button>
+          <button type="button" :aria-label="`One pack less of ${card.item.label}`" :disabled="working || !card.packs" @click="step(card.id, -1)">−</button>
           <output aria-live="polite">{{ card.packs * card.item.pack }}</output>
-          <button type="button" :aria-label="`One pack more of ${card.item.label}`" :disabled="card.packs >= MAX_PACKS" @click="step(card.id, 1)">+</button>
+          <button type="button" :aria-label="`One pack more of ${card.item.label}`" :disabled="working || card.packs >= MAX_PACKS" @click="step(card.id, 1)">+</button>
         </div>
       </li>
     </ul>
@@ -140,7 +161,7 @@ async function orderAll(): Promise<void> {
         <b>{{ money(total) }}</b>
         <span v-if="units && (offline || short)" class="ui-why">{{ offline || short }}</span>
       </div>
-      <button v-if="units" type="button" class="ui-button is-small" @click="clear()">Clear</button>
+      <button v-if="units" type="button" class="ui-button is-small" :disabled="working" @click="clear()">Clear</button>
       <button type="button" class="ui-button is-primary" :disabled="Boolean(why)" :title="why" @click="orderAll()">{{ ordering ? 'Ordering…' : 'Order' }}</button>
     </div>
   </div>

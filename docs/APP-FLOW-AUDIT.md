@@ -211,3 +211,9 @@ Events expose an offline explanation and disable travel/share/spray while preser
 ### Runnable remote UI regression gate
 
 CI now has an opt-in `ui_checks` workflow-dispatch input. It builds the selected ref and runs existing UI model/component suites serially on the remote runner; default CI behavior and permissions remain unchanged. This gives the integration agent executable evidence while local resource ownership is elsewhere. It adds no new test expectations and does not replace real browser acceptance. Invoke with `gh workflow run ci.yml --repo kromate/joinallworld --ref codex/allworld-integrated-preview -f full_checks=false -f ui_checks=true`.
+
+### Groceries batch and Health layout handoff
+
+Groceries previously read its mutable basket throughout an asynchronous order, while quantity/Clear controls remained editable; it could also issue another batch action after leaving the screen. The batch now uses a quantity snapshot, locks controls during purchases, stops starting new actions after unmount/city/character changes, and subtracts only confirmed quantities. A character-bound shared pending state prevents reopening the app from launching a concurrent purchase; generation checks keep old completions from unlocking another character's operation. Closing the screen does not undo an already accepted purchase. Existing command/receipt and inventory/wallet rules are unchanged.
+
+Groceries price labels and uses wrap, cards have a larger minimum width, and the basket toolbar wraps. Health status and cure-price rows wrap and redundant card shadows are removed; the game's health rules are unchanged. Required acceptance: delayed/partial/refused orders, Clear/stepper during pending, close/reopen, city changes, A→B→A transitions, lost replies/recovery receipt, refuel versus grocery concurrency, and 320/390px long prices. Use disposable characters and check both inventory and ledger. Baseline CI does not prove these new race scenarios.

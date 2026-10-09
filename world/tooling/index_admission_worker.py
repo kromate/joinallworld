@@ -3,6 +3,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import signal
 import stat
 import sys
 
@@ -84,9 +85,25 @@ def _plan_witness():
     return 0
 
 
+def _crash_witness(boundary_name):
+    """SIGKILL only at one exact durable admission boundary."""
+    root, budget, lease = _runtime_environment()
+
+    def boundary(name):
+        if name == boundary_name:
+            os.kill(os.getpid(), signal.SIGKILL)
+
+    run_admission(root, budget, lease, boundary)
+    raise RuntimeError("admission witness did not reach its fixed boundary")
+
+
 def main():
     if sys.argv == [sys.argv[0], "--plan"]:
         return _plan_witness()
+    if sys.argv[1:2] == ["--crash"]:
+        if len(sys.argv) != 3 or sys.argv[2] not in {"reserved", "binding-published"}:
+            raise ValueError("admission witness requires one fixed boundary")
+        return _crash_witness(sys.argv[2])
     if len(sys.argv) != 1: raise ValueError("admission worker accepts no arguments")
     root, budget, lease = _runtime_environment()
     print(run_admission(root, budget, lease), flush=True)

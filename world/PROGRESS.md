@@ -1,5 +1,37 @@
 # Implementation checkpoint — 9 October 2026
 
+Exact **2597acb7892042cc0d2a3f32ad9fe48912679991**, run **37903828130**, is
+terminal **SUCCESS**: **457 tests +3 policy =460 distinct checks**, plus World
+TypeScript. Python301=19audit/11session/78affected/193remaining;
+Node156=27protocol/58contracts/11actual SDK-source/39campaign-Ledger/16planner/5release.
+All22 artifact hashes and ten source/workflow blobs are recorded in
+[index-shard-source-plan-acceptance.json](index-shard-source-plan-acceptance.json).
+See [INDEX-SHARD-SOURCE-OPERATIONS.md](INDEX-SHARD-SOURCE-OPERATIONS.md).
+
+Accepted scope is read-only planning from every verified captured source leaf,
+exact request/context/descriptor/wire/envelope constraints and final source-row
+stability checks. Explicit synthetic zero-row tests prove positive/missing/corrupt
+cases; they do not establish real whole-country coverage. Legacy admission crash
+witness consolidation passes actual recovery and reduces the source closure to45
+files, source884736B/control1040384B under unchanged1MiB ceiling. Negativev23/v24
+artifacts remain retained; no passing subset was promoted.
+
+Latest main remains **134dc94d** after fresh fetch (no incoming changes); its
+mainCI37902237441 passed fastbuild/smoke/typecheck/policy, fullSKIPPED. This source
+milestone is being committed separately from the unaccepted actual V3 batch
+worker/controller/resource/startup draft. That draft charges a complete plan
+before allocating roots; actual SIGKILL and exact-prefix recovery tests are next.
+No runtime/map upload; production remains APPUIa446/version64ed. Living programme
+9b65 includes134 and fullCI37903856807 is pending, without release.
+
+Finite global budgets across namespaces, complete geometry/streaming, Nigeria
+adapter/rendering integration, rights, connected journeys and physical-phone
+acceptance remain OPEN. Latest08:17UTC memoryWARNING2 with resumedswapouts/~10.34GB
+swap: WORLD has no local heavy/browser/build/test/server/upload. Validation remains
+serial remote. Full goalACTIVE. Earlier checkpoints below are historical.
+
+# Implementation checkpoint — 9 October 2026
+
 Exact **87dff05f7f6f0babc0c65aa15ab5662889b107ad**, run **37901132435**, is
 terminal **SUCCESS**: **448 tests +3 policy =451 distinct checks**, plus World
 TypeScript. Python300=19audit/11session/77affected/193remaining; Node148 unchanged.

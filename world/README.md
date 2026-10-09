@@ -1,5 +1,13 @@
 # Independent world-data builder
 
+Latest source-plan milestone passes **457 tests, three policy checks and World
+TypeScript**, exact2597acb7/run37903828130. It derives bounded plans from every
+verified captured campaign leaf and refuses missing/corrupt source state. See
+[INDEX-SHARD-SOURCE-OPERATIONS.md](INDEX-SHARD-SOURCE-OPERATIONS.md). Actual V3 batch
+dispatch/recovery, finite global accounting and country geometry remain next;
+this source phase adds no production map detail. Earlier checkpoints follow.
+
+
 Latest planned namespace/root/publication checkpoint passes **448 tests, three
 policy checks and World TypeScript**, exact87dff05f/run37901132435. Explicit V2
 storage primitives require the complete frozen batch charge before allocating

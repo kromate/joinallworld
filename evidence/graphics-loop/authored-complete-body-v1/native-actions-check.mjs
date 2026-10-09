@@ -8,6 +8,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { clone as cloneSkinnedHierarchy } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import { createNativeActionController } from './native-actions.ts';
+import { applyNativeFamilyRigCorrection } from './native-family-rig-correction.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../../..');
@@ -151,6 +152,7 @@ for (const family of ['man', 'woman']) {
   assert(Number.isInteger(familyMorph), `${family} body shape morph exists`);
   body.morphTargetInfluences[familyMorph] = 1;
   body.skeleton.pose(); root.updateMatrixWorld(true);
+  const familyRig = applyNativeFamilyRigCorrection(root);
   const presentation = await applyCharacterPresentation(root, {
     body: family, outfit: 'casual', outfitColor: '#3f72c4', bottomsColor: '#243a66', fabric: 'plain',
     hair: 'lowcut',
@@ -159,7 +161,7 @@ for (const family of ['man', 'woman']) {
   const meshes = skinnedMeshes(root);
   assert(meshes.some(mesh => mesh.name === 'Authored casual suit'), `${family}: actual authored suit is mounted`);
   for (const mesh of meshes) finiteWeights(mesh);
-  actors.push({ family, root, body, presentation, meshes, controller: createNativeActionController(root) });
+  actors.push({ family, familyRig, root, body, presentation, meshes, controller: createNativeActionController(root) });
 }
 
 const output = [];
@@ -231,7 +233,7 @@ for (const actor of actors) {
     actor.controller = createNativeActionController(actor.root);
   }
   actor.controller.restore();
-  actor.presentation.dispose();
+  actor.presentation.dispose(); actor.familyRig.dispose();
   assert.equal(actor.body.geometry, sourceGeometry, `${actor.family}: presentation restored owned body geometry`);
   output.push({ family: actor.family, states, gait, femaleArmClearanceSweep, presentation: actor.presentation.metrics, rejectedNoSeat, rejectedMissingFloor, rejectedUnsupportedPose });
 }

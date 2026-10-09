@@ -6,12 +6,17 @@ import { prepareNativeSkinnedBody, NATIVE_PREPARED_POSE_COVERAGE } from './nativ
 type PreparedActor = Awaited<ReturnType<typeof prepareNativeSkinnedBody>>;
 type ReviewActor = 'player' | 'npc';
 
-const canvas = document.querySelector<HTMLCanvasElement>('#stage');
-const statusNode = document.querySelector<HTMLElement>('#status');
-const resultNode = document.querySelector<HTMLElement>('#metrics');
-const eventsNode = document.querySelector<HTMLElement>('#events');
-const limitationsNode = document.querySelector<HTMLElement>('#limitations');
-if (!canvas || !statusNode || !resultNode || !eventsNode || !limitationsNode) throw new Error('Prepared viewer HTML is missing a required stage or status element');
+function requiredElement<T extends Element>(selector: string): T {
+  const element = document.querySelector<T>(selector);
+  if (!element) throw new Error(`Prepared viewer HTML is missing ${selector}`);
+  return element;
+}
+
+const canvas = requiredElement<HTMLCanvasElement>('#stage');
+const statusNode = requiredElement<HTMLElement>('#status');
+const resultNode = requiredElement<HTMLElement>('#metrics');
+const eventsNode = requiredElement<HTMLElement>('#events');
+const limitationsNode = requiredElement<HTMLElement>('#limitations');
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#d7e2e6');
@@ -217,7 +222,7 @@ function sample() {
       preparedMetrics: actor.preparedMetrics,
       wardrobe: actor.wardrobe,
       wardrobeError: actor.wardrobeError,
-      footContacts: contacts.map(({ side, x, y, z, confidence, points }) => ({ side, x, y, z, confidence, pointCount: points?.length ?? 0 })),
+      footContacts: contacts.map(({ side, x, y, z, points }) => ({ side, x, y, z, pointCount: points?.length ?? 0 })),
       contactDiagnostics: { ...contactDiagnostics[key] },
       worldBounds: { min: bounds.min.toArray(), max: bounds.max.toArray() },
       bodyMorphs: body?.morphTargetDictionary ? Object.fromEntries(Object.entries(body.morphTargetDictionary).map(([name, index]) => [name, body.morphTargetInfluences?.[index] ?? 0]).filter(([name]) => String(name).startsWith('nativeFacial'))) : {},
@@ -326,7 +331,7 @@ function frame(now: number) {
         if (now > interactUntil && expressionCycling && now >= expressionAt) {
           expressionAt = now + 2800;
           const cycle = ['neutral', 'smile', 'grin'] as const;
-          const expression = cycle[expressionIndex++ % cycle.length];
+          const expression = cycle[expressionIndex++ % cycle.length]!;
           const next = { ...currentNpcLook, expression };
           const accepted = npc.wear(next, seeds.npc);
           if (!accepted) throw new Error(`Expression cycle rejected NPC ${expression} update`);

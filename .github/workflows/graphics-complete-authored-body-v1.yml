@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v24]
+    branches: [codex/graphics-complete-authored-body-v25]
 permissions:
   contents: read
 jobs:
@@ -71,6 +71,11 @@ jobs:
         if: always()
         continue-on-error: true
         run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-body-surface-check.mjs
+      - name: Audit seat surface and alternate source direction retarget
+        if: always()
+        run: |
+          node --max-old-space-size=160 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-seat-surface-check.mjs
+          node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-direction-retarget-check.mjs
       - name: Audit exact source wrist articulation
         if: always()
         run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/native-wrist-orientation-check.mjs
@@ -78,7 +83,9 @@ jobs:
         if: always()
         run: |
           node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-prepared-viewer.typecheck.json
-          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/bundle-prepared-viewer.mjs
+      - name: Build prepared actor playground independently of diagnostic failures
+        if: always()
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/bundle-prepared-viewer.mjs
       - name: Render actual shared Kit player NPC factory
         if: always()
         env:
@@ -113,4 +120,6 @@ jobs:
             evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/*result.json
             evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/
             evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/*result.json
+            evidence/graphics-loop/authored-complete-body-v1/native-seat-surface-check-result.json
+            evidence/graphics-loop/authored-complete-body-v1/native-direction-retarget-check-result.json
           if-no-files-found: error

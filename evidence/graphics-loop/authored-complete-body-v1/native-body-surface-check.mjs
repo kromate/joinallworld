@@ -27,6 +27,10 @@ const pins = {
   shoes: '8f4060a275356489205f298bed9874da83920c166aeacffd36746e760a465557',
   casual: '1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f',
   officeFemale: 'fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053',
+  femaleCasual: '7063492e52bb8817981349df45e141e0bc70dbe3e339d4d2dac8df3bdc3342bd',
+  femaleCasualHide: '4efb1cbdb673673f93fc4af657f12ffd59e837c04cebd3a51d2270c361e3d753',
+  femaleCasual: '7063492e52bb8817981349df45e141e0bc70dbe3e339d4d2dac8df3bdc3342bd',
+  femaleCasualHide: '4efb1cbdb673673f93fc4af657f12ffd59e837c04cebd3a51d2270c361e3d753',
 };
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
@@ -135,6 +139,10 @@ function prepareProductionAdapters() {
     ["import officeFemaleUrl from './authored-clothing/office-export/out/office-female.glb?url';", "const officeFemaleUrl = new URL('./authored-clothing/office-export/out/office-female.glb', import.meta.url).href;"],
     ["import officeMaleHideUrl from './authored-clothing/office-export/out/office-male-body-hide-map.json?url';", "const officeMaleHideUrl = new URL('./authored-clothing/office-export/out/office-male-body-hide-map.json', import.meta.url).href;"],
     ["import officeFemaleHideUrl from './authored-clothing/office-export/out/office-female-body-hide-map.json?url';", "const officeFemaleHideUrl = new URL('./authored-clothing/office-export/out/office-female-body-hide-map.json', import.meta.url).href;"],
+    ["import femaleCasualUrl from './authored-clothing/casual-female-export/out/casual-female.glb?url';", "const femaleCasualUrl = new URL('./authored-clothing/casual-female-export/out/casual-female.glb', import.meta.url).href;"],
+    ["import femaleCasualHideUrl from './authored-clothing/casual-female-export/out/casual-female-body-hide-map.json?url';", "const femaleCasualHideUrl = new URL('./authored-clothing/casual-female-export/out/casual-female-body-hide-map.json', import.meta.url).href;"],
+    ["import femaleCasualUrl from './authored-clothing/casual-female-export/out/casual-female.glb?url';", "const femaleCasualUrl = new URL('./authored-clothing/casual-female-export/out/casual-female.glb', import.meta.url).href;"],
+    ["import femaleCasualHideUrl from './authored-clothing/casual-female-export/out/casual-female-body-hide-map.json?url';", "const femaleCasualHideUrl = new URL('./authored-clothing/casual-female-export/out/casual-female-body-hide-map.json', import.meta.url).href;"],
   ];
   for (const [from, to] of presentationImports) { assert(presentationSource.includes(from), `presentation import ${from}`); presentationSource = presentationSource.replace(from, to); }
   writeFileSync(tempPresentation, presentationSource);

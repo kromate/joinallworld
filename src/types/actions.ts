@@ -179,6 +179,11 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
   'career.auto': { payload: { on: boolean }; ok: 'auto_set'; fail: 'invalid_setting' }
   /** Answer the work dilemma waiting after a shift (src/game/dilemmas.ts). Refused with 'dilemmas_off' while the dilemma kit is not installed. */
   'career.dilemma': { payload: { choice: string }; ok: 'resolved' | 'went_badly'; fail: 'dilemmas_off' | 'no_dilemma' | 'invalid_choice' }
+  'career.teach': {
+    payload: { generation: number; revision: number; stage: import('../game/living-world/teaching-state.ts').TeachingPracticeStage; choice: string }
+    ok: 'answered' | 'retry' | 'shift_completed'
+    fail: import('../game/living-world/teaching-practice.ts').TeachingPracticeCode | 'no_teaching_shift' | 'generation_conflict'
+  }
 
   // -- activities --
   /** Start an activity offered at the current spot. `choice` is required when the activity has `choices`. */
@@ -375,6 +380,14 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
     fail: BusinessBlockCode
     serverOnly: true
   }
+
+  /** SERVER ONLY: fixed fictional practice rewards or owned clipper upgrade, checked atomically by their services. */
+  'living-world.server': {
+    payload: { op: 'barber-reward'; lessonId: 'basic' | 'advanced' } | { op: 'barber-tool' } | { op: 'clerk-reward' } | { op: 'npc-restock-wage' }
+    ok: 'barber_rewarded' | 'barber_tool_upgraded' | 'clerk_rewarded' | 'npc_restock_wage_paid'
+    fail: 'invalid_barber_action' | 'invalid_clerk_action' | 'invalid_npc_restock_action' | 'balance_limit' | 'insufficient_funds'
+    serverOnly: true
+  }
 }
 
 /** The operations 'business.server' accepts (systems/business.ts). */
@@ -458,7 +471,7 @@ export type ActionBody<T extends ActionType = ActionType> = {
 /** Every registered action type, in registration order. Equals `actionTypes()` from src/life.ts. */
 export const ACTION_TYPES = [
   'cancel', 'wallet.admin', 'wallet.bonus', 'needs.admin',
-  'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma',
+  'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma', 'career.teach',
   'activity', 'spot', 'activity.admin',
   'travel', 'world.roadside', 'travel.skip', 'travel.repay-ride',
   'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit',
@@ -479,6 +492,7 @@ export const ACTION_TYPES = [
   'events.spray',
   'growth.table-result', 'growth.referral',
   'business.server',
+  'living-world.server',
   // the campus: unilagStudent, unilagCommunity, unilagShuttle (campus.ts)
   ...CAMPUS_ACTION_TYPES,
 ] as const satisfies readonly ActionType[]
@@ -487,7 +501,7 @@ export const ACTION_TYPES = [
 export const SERVER_ONLY_ACTIONS = [
   'estate.land-pay', 'street.place',
   'wallet.admin', 'wallet.bonus', 'needs.admin', 'activity.admin', 'estate.assign', 'estate.released', 'onboarding.arrive', 'social.server', 'civic.news', 'civic.run', 'civic.vote', 'civic.rent-ad',
-  'civic.treasury', 'civic.justice', 'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'unilag.election.nominate', 'unilag.election.vote',
+  'civic.treasury', 'civic.justice', 'civic.shoutout', 'growth.table-result', 'growth.referral', 'business.server', 'living-world.server', 'unilag.election.nominate', 'unilag.election.vote',
 ] as const satisfies readonly ServerOnlyActionType[]
 
 /** The server-only deliveries that pass a held life's veto (onboarding.js INBOUND). */

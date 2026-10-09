@@ -10,34 +10,40 @@
 //
 // The dialog keeps the id `life-dialog`: existing panels and the phone's stylesheet are written
 // against it. It goes when the last of them is converted.
-import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, shallowRef, watch } from 'vue'
+import type { Component } from 'vue'
 import '../../../ui/controls.css' // the fields, selects and buttons every sheet's panel uses (a panel that does not import it itself would be unstyled until one that does has loaded)
 import { useApp } from '../../state/app.ts'
-import AppBar from '../../ui/AppBar.vue'
 import BaseSheet from '../../ui/BaseSheet.vue'
-import PanelHost from './PanelHost.vue'
-import type PhoneDeviceType from './PhoneDevice.vue'
-
-// Fetched the first time they are shown, like the existing shell's phone: the entry stays small.
-const PhoneDevice = defineAsyncComponent(() => import('./PhoneDevice.vue'))
-const SimSheet = defineAsyncComponent(() => import('../sim/SimSheet.vue'))
-const HelpBody = defineAsyncComponent(() => import('../help/HelpBody.vue'))
 
 const { game, shell } = useApp()
 const sheet = shell.sheet
 const inPhone = shell.inPhone
 const panel = computed(() => (sheet.value?.kind === 'panel' ? shell.byId.get(sheet.value.id) ?? null : null))
 const lock = computed(() => { void game.view.value; return sheet.value ? shell.lockOf() : null })
-const phone = ref<InstanceType<typeof PhoneDeviceType> | null>(null)
-const content = ref<HTMLElement | null>(null)
+const body = ref<{ back(): boolean } | null>(null)
+const renderer = shallowRef<Component | null>(null)
+const failed = ref(false)
+let loading: Promise<void> | null = null
+let gone = false
+const scope = computed(() => JSON.stringify([game.session.value?.id ?? null, game.cityId.value]))
+function loadBody(): void {
+  if (renderer.value || loading || !sheet.value) return
+  failed.value = false
+  loading = import('./SheetBody.vue').then(module => {
+    if (!gone) renderer.value = module.default
+  }, () => { if (!gone) failed.value = true }).finally(() => { loading = null })
+}
+watch(() => Boolean(sheet.value), open => { if (open) loadBody() }, { immediate: true })
 /** A panel that takes the whole screen (the character creator): no app bar, no lock note, no corner button. */
 const fullscreen = computed(() => !inPhone.value && panel.value?.fullscreen === true)
 
 function onClose(by: 'escape' | 'backdrop' | 'button'): void {
+  if (lock.value) { refused(); return }
   if (by === 'escape') {
     // The panel in front gets Esc first; if it handled it, nothing is closed.
     if (shell.panelKeys('cancel')) return
-    if (inPhone.value && phone.value) { phone.value.back(); return }
+    if (inPhone.value && body.value?.back()) return
   }
   shell.close()
 }
@@ -45,27 +51,18 @@ function onClose(by: 'escape' | 'backdrop' | 'button'): void {
 // a browser lets only one Esc in a row be refused, and going back level by level needs several.
 // The dialog's `cancel` event still arrives for the back gesture, and lands in the same function.
 shell.escape.run = () => { if (lock.value) refused(); else onClose('escape') }
-onBeforeUnmount(() => { shell.escape.run = null })
+onBeforeUnmount(() => { gone = true; shell.escape.run = null })
 function refused(): void { const reason = lock.value?.reason; if (reason) game.toast(reason) }
-// A different screen starts at its top.
-watch(() => (sheet.value ? `${sheet.value.kind}:${sheet.value.kind === 'panel' ? sheet.value.id : sheet.value.kind === 'sim' ? sheet.value.tab : ''}` : ''), () => { void nextTick(() => { if (content.value) content.value.scrollTop = 0 }) })
 </script>
 
 <template>
   <BaseSheet id="life-dialog" :open="Boolean(sheet)" :locked="Boolean(lock)" :data-phone="inPhone ? '' : undefined" :label="inPhone ? 'Phone' : fullscreen ? panel?.title : undefined" :class="{ 'is-phone': inPhone, 'is-fullscreen': fullscreen }" @close="onClose" @refused="refused">
-    <div v-if="sheet" id="life-dialog-content" ref="content">
-      <PhoneDevice v-if="inPhone" ref="phone" />
-      <template v-else-if="sheet.kind === 'help'">
-        <AppBar title="How to play" />
-        <div class="sheet-body"><HelpBody /></div>
-      </template>
-      <SimSheet v-else-if="sheet.kind === 'sim'" :tab="sheet.tab" :params="sheet.params" />
-      <PanelHost v-else-if="panel && fullscreen" :key="panel.id" class="sheet-fullscreen" :panel="panel" :params="sheet.kind === 'panel' ? sheet.params : null" />
-      <template v-else-if="panel">
-        <AppBar :title="panel.title" :back="sheet.kind === 'panel' && sheet.from === 'phone' ? 'Back to phone' : null" @back="shell.open('phone')" />
-        <p v-if="lock" class="sheet-lock" role="note">🔒 {{ lock.reason }}</p>
-        <PanelHost :key="panel.id" class="sheet-body" :panel="panel" :params="sheet.kind === 'panel' ? sheet.params : null" />
-      </template>
+    <component :is="renderer" v-if="sheet && renderer" :key="scope" ref="body" :fullscreen="fullscreen" :lock-reason="lock?.reason" />
+    <div v-else-if="sheet" id="life-dialog-content" class="sheet-body" :aria-busy="!failed">
+      <p :role="failed ? 'alert' : 'status'">{{ failed ? 'This screen could not load. Try again when your connection is ready.' : 'Loading screen…' }}</p>
+      <button v-if="failed" type="button" class="ui-button" @click="loadBody">Try loading screen again</button>
+      <p v-if="lock" class="sheet-lock" role="note">🔒 {{ lock.reason }}</p>
+      <button v-else type="button" class="ui-button" @click="onClose('button')">Close</button>
     </div>
   </BaseSheet>
 </template>

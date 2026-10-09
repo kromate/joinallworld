@@ -1,0 +1,296 @@
+{
+  "sha": "13c55a7435b2dfcc77077324104a8cd0023da292",
+  "run": 37880140284,
+  "job": 113657708333,
+  "node": 24,
+  "tests": 3376,
+  "pass": 3354,
+  "fail": 18,
+  "skip": 4,
+  "failures": [
+    {
+      "source": "src/app/features/locate/locate.test.ts:165:1",
+      "detail": [
+        "\u2716 only the on-device check reads a position, and those files hold no way to send, log or store it (61.170205ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:",
+        "  + actual - expected",
+        "  ",
+        "    [",
+        "      'src/app/features/locate/locateModel.ts',",
+        "      'src/app/features/start/findCity.ts',",
+        "      'src/app/features/world/lgaCardModel.ts',",
+        "  +   'src/street/generate.ts'",
+        "    ]",
+        "  "
+      ]
+    },
+    {
+      "source": "src/app/features/panelsA.test.ts:356:1",
+      "detail": [
+        "\u2716 Boutique: the wallet, a section per kind and a Try on button on what is not worn (46.863528ms)",
+        "  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /class=\"ui-button boutique-try\"[^>]*aria-pressed=\"false\"/. Input:",
+        "  ",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/app/features/panelsA.test.ts:361:10)",
+        "      at async Test.run (node:internal/test_runner/test:1409:7)",
+        "      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {",
+        "    generatedMessage: true,",
+        "    code: 'ERR_ASSERTION',"
+      ]
+    },
+    {
+      "source": "src/app/features/travel/travelComponents.test.ts:292:1",
+      "detail": [
+        "\u2716 your own house: a life without a place is sent to choose; a life with one sees its look and the bigger houses (102.498464ms)",
+        "  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:",
+        "  ",
+        "    assert.ok(words.includes(estate.tier.label) && words.includes('Look') && words.includes('Bigger houses'))",
+        "  ",
+        "      at file:///home/runner/work/joinallworld/joinallworld/src/app/features/travel/travelComponents.test.ts:306:12",
+        "      at async withState (file:///home/runner/work/joinallworld/joinallworld/src/app/features/travel/travelComponents.test.ts:44:9)",
+        "      at async TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/app/features/travel/travelComponents.test.ts:300:3)",
+        "      at async Test.run (node:internal/test_runner/test:1409:7)",
+        "      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {",
+        "    generatedMessage: true,"
+      ]
+    },
+    {
+      "source": "src/app/features/travel/travelLevels.test.ts:20:1",
+      "detail": [
+        "\u2716 the bar is on the city map itself, the world is one key away, and arriving opens no sheet (11.621275ms)",
+        "  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /wallet: \\(\\) => game\\.state\\.value\\.cash/. Input:",
+        "  ",
+        "  '<script setup lang=\"ts\">\\n' +",
+        "    '// Map rendering is a feature download. The closed venue keeps only its event intent buffer.\\n' +",
+        "    \"import { onBeforeUnmount, shallowRef, ref, watch } from 'vue'\\n\" +",
+        "    \"import type { Component, ShallowRef } from 'vue'\\n\" +",
+        "    \"import { useApp } from '../state/app.ts'\\n\" +",
+        "    \"import { createMapIntent, mapWanted } from './mapIntent.ts'\\n\" +",
+        "    '\\n' +",
+        "    'const { game, scene } = useApp()\\n' +"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/content.test.ts:9:1",
+      "detail": [
+        "\u2716 UNILAG content covers every finalized layout anchor (2.092963ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:",
+        "  + actual - expected",
+        "  ... Skipped lines",
+        "  ",
+        "    [",
+        "      'access-bank',",
+        "      'amphitheatre',",
+        "      'arts',",
+        "      'auditorium',",
+        "      'biobaku-hall',"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/integration.test.ts:28:1",
+      "detail": [
+        "\u2716 actual campus content and all three systems survive a shuttle, enrolment, job and reload (719.722868ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+        "  ",
+        "  6 !== 8",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/integration.test.ts:52:9)",
+        "      at Test.runInAsyncScope (node:async_hooks:227:14)",
+        "      at Test.run (node:internal/test_runner/test:1402:25)",
+        "      at Test.start (node:internal/test_runner/test:1262:17)",
+        "      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {",
+        "    generatedMessage: true,"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/scene.test.ts:8:1",
+      "detail": [
+        "\u2716 every resident zone combination, full crowd and all landmarks stay within budget (2112.05914ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+        "  ",
+        "  49 !== 81",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/scene.test.ts:23:9)",
+        "      at Test.runInAsyncScope (node:async_hooks:227:14)",
+        "      at Test.run (node:internal/test_runner/test:1402:25)",
+        "      at Test.start (node:internal/test_runner/test:1262:17)",
+        "      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {",
+        "    generatedMessage: true,"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/scene.test.ts:27:1",
+      "detail": [
+        "\u2716 zone movement reuses resident geometry; disposal frees observed resources exactly once (782.014086ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+        "  ",
+        "  3 !== 2",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/scene.test.ts:31:52)",
+        "      at Test.runInAsyncScope (node:async_hooks:227:14)",
+        "      at Test.run (node:internal/test_runner/test:1402:25)",
+        "      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)",
+        "      at Test.postRun (node:internal/test_runner/test:1542:19)",
+        "      at Test.run (node:internal/test_runner/test:1467:12)"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/scene.test.ts:38:1",
+      "detail": [
+        "\u2716 resident renderings keep movement floors consistent and reject water (774.768995ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+        "  ",
+        "  true !== false",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/scene.test.ts:40:9)",
+        "      at Test.runInAsyncScope (node:async_hooks:227:14)",
+        "      at Test.run (node:internal/test_runner/test:1402:25)",
+        "      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)",
+        "      at Test.postRun (node:internal/test_runner/test:1542:19)",
+        "      at Test.run (node:internal/test_runner/test:1467:12)"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/shuttle.test.ts:49:1",
+      "detail": [
+        "\u2716 the road graph is continuous and every stop pair gets a safe road-led route (1879.191775ms)",
+        "  AssertionError [ERR_ASSERTION]: osm-way-216470248 crosses central-mosque",
+        "  ",
+        "  true !== false",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/shuttle.test.ts:79:14)",
+        "      at Test.runInAsyncScope (node:async_hooks:227:14)",
+        "      at Test.run (node:internal/test_runner/test:1402:25)",
+        "      at Test.start (node:internal/test_runner/test:1262:17)",
+        "      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {",
+        "    generatedMessage: false,"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/shuttle.test.ts:145:1",
+      "detail": [
+        "\u2716 pose is deterministic at the beginning, midpoint and exact endpoint (0.682806ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:",
+        "  + actual - expected",
+        "  ",
+        "    {",
+        "      x: 1672.49,",
+        "  +   z: -168.28999999999996",
+        "  -   z: -168.29",
+        "    }",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/shuttle.test.ts:152:10)"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/walk.test.ts:11:1",
+      "detail": [
+        "\u2716 all building anchors are exact, free destinations in their declared zones (2.914157ms)",
+        "  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:",
+        "  ",
+        "    assert.ok(people && union)",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/walk.test.ts:15:10)",
+        "      at Test.runInAsyncScope (node:async_hooks:227:14)",
+        "      at Test.run (node:internal/test_runner/test:1402:25)",
+        "      at Test.start (node:internal/test_runner/test:1262:17)",
+        "      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {",
+        "    generatedMessage: true,"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/walk.test.ts:23:1",
+      "detail": [
+        "\u2716 interior walls keep the full south facade open and exterior footprints stay solid (0.351709ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+        "  ",
+        "  0 !== 6",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/walk.test.ts:28:10)",
+        "      at Test.runInAsyncScope (node:async_hooks:227:14)",
+        "      at Test.run (node:internal/test_runner/test:1402:25)",
+        "      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)",
+        "      at Test.postRun (node:internal/test_runner/test:1542:19)",
+        "      at Test.run (node:internal/test_runner/test:1467:12)"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/walk.test.ts:38:1",
+      "detail": [
+        "\u2716 main gate can reach every building anchor and preserves each exact endpoint (0.586431ms)",
+        "  AssertionError [ERR_ASSERTION]: main-gate-anchor",
+        "  + actual - expected",
+        "  ",
+        "  + undefined",
+        "  - {",
+        "  -   x: 5,",
+        "  -   z: 8",
+        "  - }",
+        "  ",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/walk.test.ts:42:12)"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/walk.test.ts:46:1",
+      "detail": [
+        "\u2716 every pair of walkable zones is connected through free exact endpoints (118.36834ms)",
+        "  AssertionError [ERR_ASSERTION]: tile-0-0 -> tile-4-0",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/campus/unilag/walk.test.ts:57:14)",
+        "      at Test.runInAsyncScope (node:async_hooks:227:14)",
+        "      at Test.run (node:internal/test_runner/test:1402:25)",
+        "      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)",
+        "      at Test.postRun (node:internal/test_runner/test:1542:19)",
+        "      at Test.run (node:internal/test_runner/test:1467:12)",
+        "      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {",
+        "    generatedMessage: false,",
+        "    code: 'ERR_ASSERTION',"
+      ]
+    },
+    {
+      "source": "src/campus/unilag/walk.test.ts:67:1",
+      "detail": [
+        "\u2716 shore water, outside bounds and blocked exact endpoints are rejected (1.233943ms)",
+        "  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+        "  + actual - expected",
+        "  ",
+        "  + [",
+        "  +   {",
+        "  +     x: 346.34000000000003,",
+        "  +     z: 3.1000000000000227",
+        "  +   },",
+        "  +   {",
+        "  +     x: 350,"
+      ]
+    },
+    {
+      "source": "src/ui/phone/phone.test.ts:192:1",
+      "detail": [
+        "\u2716 the zoomed interface sizes itself with --ui-vh: every rule that sets the interface zoom sets the unit, and no sheet or panel uses dvh (4.894852ms)",
+        "  AssertionError [ERR_ASSERTION]: ../../map3d/geo/atlas.css sizes with --ui-vh, not with a viewport height unit",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/ui/phone/phone.test.ts:208:12)",
+        "      at async Test.run (node:internal/test_runner/test:1409:7)",
+        "      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {",
+        "    generatedMessage: false,",
+        "    code: 'ERR_ASSERTION',",
+        "    expected: /\\d(dvh|svh|lvh|vh)\\b/,",
+        "    operator: 'doesNotMatch',",
+        "    diff: 'simple'"
+      ]
+    },
+    {
+      "source": "src/ui/phone/phone.test.ts:246:1",
+      "detail": [
+        "\u2716 the venue card on a phone is four short rows: title with its status, one row of mode chips, Go, About; every target stays 44px (0.78562ms)",
+        "  AssertionError [ERR_ASSERTION]: the title and the status share a row",
+        "      at TestContext.<anonymous> (file:///home/runner/work/joinallworld/joinallworld/src/ui/phone/phone.test.ts:248:10)",
+        "      at async Test.run (node:internal/test_runner/test:1409:7)",
+        "      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {",
+        "    generatedMessage: false,",
+        "    code: 'ERR_ASSERTION',",
+        "    expected: /\\.map-card-head\\{display:contents\\}/,",
+        "    operator: 'match',",
+        "    diff: 'simple'"
+      ]
+    }
+  ]
+}

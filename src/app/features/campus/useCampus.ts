@@ -11,6 +11,7 @@ import type { Game } from '../../state/game.ts'
 import type { SharedData, TabId } from './campusModel.ts'
 import { activeReason, normalizeShared, sharedKey } from './campusModel.ts'
 import { HOSTEL_HALLS, HOSTEL_STORAGE_ITEMS, SHUTTLE_STOPS } from './campusContent.ts'
+import { campusWalkReason } from './campusWalkability.ts'
 
 export interface Choices {
   tab: TabId
@@ -119,7 +120,11 @@ export function useCampus() {
   function act<T extends PlayerActionType & (CampusActionType | 'activity')>(type: T, ...args: CommandArgs<T>): Promise<CommandResult<T>> {
     return game.command(type, ...args)
   }
-  /** Leave the Phone and walk to a landmark of the campus (going to the campus first when elsewhere). */
-  function go(spot: string): void { shell.close(); void goTo('unilag', spot) }
-  return { game, state, view, connected, student, community, blocked, act, go }
+  /** Leave the Phone and walk only when the authored campus layout has an anchor for the destination. */
+  function go(spot: string): void {
+    const reason = campusWalkReason(spot)
+    if (reason) { game.toast(reason, 'error'); return }
+    shell.close(); void goTo('unilag', spot)
+  }
+  return { game, state, view, connected, student, community, blocked, act, go, walkReason: campusWalkReason }
 }

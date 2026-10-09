@@ -199,7 +199,7 @@ export async function businessJourney(host: BusinessHost): Promise<BusinessResul
   await host.age(4 * HOUR)
   const after = object(await mine(ada))
   assert.ok(number(after.till) > number(before.till) && number(after.units) < number(before.units), `passers-by bought while nobody looked (${String(before.till)} → ${String(after.till)})`)
-  assert.equal(number(after.till) % 10, 0)
+  assert.equal(number(after.till) - number(before.till), number(object(after.total).takings) - number(object(before.total).takings), 'the cash box reflects the exact settled takings')
   const cash = number((await life(ada, 'lagos')).cash)
   // Two of the owner's devices press Collect at the same moment: the box is paid out once.
   const both = await Promise.all([id(), id()].map((requestId) => post('/api/business/collect', { cityId: 'lagos', requestId }, ada)))

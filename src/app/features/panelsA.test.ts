@@ -106,9 +106,10 @@ test('statement: day labels in Nigerian time, whether the two statements agree, 
   assert.equal(changes(1), '1 change'); assert.equal(changes(3), '3 changes')
   const totals = { in: 10, out: 4, changes: 2, net: 6 }
   const server = { reconciled: true, closing: 106, opening: { balance: 100, day: 1 }, totals }
-  assert.equal(sameStatement(server, { opening: { balance: 100, day: 1 }, totals }, 106), true)
-  assert.equal(sameStatement(server, { opening: { balance: 100, day: 1 }, totals }, 105), false, 'the balance differs')
-  assert.equal(sameStatement({ ...server, reconciled: false }, { opening: { balance: 100, day: 1 }, totals }, 106), false)
+  const mine = { reconciled: true, opening: { balance: 100, day: 1 }, totals }
+  assert.equal(sameStatement(server, mine, 106), true)
+  assert.equal(sameStatement(server, mine, 105), false, 'the balance differs')
+  assert.equal(sameStatement({ ...server, reconciled: false }, mine, 106), false)
   assert.ok(verdictOf('lagos', server, true).text.startsWith('The server’s own statement agrees: closing balance ₦106, 2 changes'))
   assert.ok(verdictOf('lagos', server, false).text.includes('closes at ₦106'))
   assert.equal(failedVerdict('lagos', 429).text, 'You have checked several times this minute. Try again shortly.')
@@ -357,7 +358,11 @@ test('Boutique: the wallet, a section per kind and a Try on button on what is no
   const words = text(html)
   assert.ok(words.includes('Hairstyles') && words.includes('Outfits') && words.includes('Fabrics') && words.includes('Accessories'))
   assert.ok(words.includes(`Wallet ${money(app.game.state.value.cash)}`))
-  assert.match(html, /class="ui-button boutique-try"[^>]*aria-pressed="false"/)
+  const tryButton = [...html.matchAll(/<button\b[^>]*>/g)].map(([tag]) => tag).find((tag) => tag.includes('boutique-try'))
+  assert.ok(tryButton, 'an unworn item has a Try on button')
+  const classes = /\bclass="([^"]*)"/.exec(tryButton)?.[1]?.split(/\s+/) ?? []
+  assert.ok(classes.includes('base-button') && classes.includes('boutique-try'), 'the shared button keeps the boutique hook regardless of class order')
+  assert.match(tryButton, /\baria-pressed="false"/)
 })
 
 test('HUD chips: the goal chip carries the step and its reward; nothing is drawn for a healthy life', async () => {

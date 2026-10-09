@@ -6,7 +6,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
@@ -45,6 +45,112 @@ function fresh(script: string): Record<string, number> {
   return JSON.parse(run.stdout.trim().split('\n').pop() ?? '{}') as Record<string, number>;
 }
 
+interface CpuProfileFrame {
+  functionName: string
+  url: string
+  lineNumber: number | null
+}
+interface CpuProfileNode {
+  id: number
+  hitCount: number
+  frame: CpuProfileFrame
+}
+
+const recordOf = (value: unknown): Record<string, unknown> | null =>
+  value !== null && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : null;
+
+/** Compact V8 CPU-profile evidence; source paths outside the bundle are deliberately redacted. */
+function summarizeCpuProfile(value: unknown, bundleName: string): Record<string, unknown> {
+  const profile = recordOf(value);
+  if (!profile || !Array.isArray(profile['nodes']) || !Array.isArray(profile['samples']) || !Array.isArray(profile['timeDeltas'])
+    || profile['nodes'].length > 100_000 || profile['samples'].length > 1_000_000) {
+    return { profile: 'invalid-or-over-bounds' };
+  }
+  const nodes = new Map<number, CpuProfileNode>();
+  for (const raw of profile['nodes']) {
+    const node = recordOf(raw), frame = recordOf(node?.['callFrame']);
+    const id = node?.['id'], functionName = frame?.['functionName'], url = frame?.['url'], lineNumber = frame?.['lineNumber'], hitCount = node?.['hitCount'];
+    if (!Number.isSafeInteger(id) || typeof functionName !== 'string' || typeof url !== 'string') continue;
+    nodes.set(id as number, {
+      id: id as number,
+      hitCount: Number.isSafeInteger(hitCount) && (hitCount as number) >= 0 ? hitCount as number : 0,
+      frame: {
+        functionName: functionName.slice(0, 100),
+        url,
+        lineNumber: Number.isSafeInteger(lineNumber) && (lineNumber as number) >= 0 ? (lineNumber as number) + 1 : null,
+      },
+    });
+  }
+  const sampled = new Map<number, { samples: number; deltaMicros: number }>();
+  const count = Math.min(profile['samples'].length, profile['timeDeltas'].length);
+  for (let index = 0; index < count; index += 1) {
+    const id = profile['samples'][index], delta = profile['timeDeltas'][index];
+    if (!Number.isSafeInteger(id) || !nodes.has(id as number) || typeof delta !== 'number' || !Number.isFinite(delta) || delta < 0) continue;
+    const previous = sampled.get(id as number) ?? { samples: 0, deltaMicros: 0 };
+    previous.samples += 1;
+    previous.deltaMicros += delta;
+    sampled.set(id as number, previous);
+  }
+  const compilePattern = /compile|parse|modulewrap|source.?text|runinthiscontext/i;
+  const topLevelPattern = /^(?:|\(program\)|<program>|\(module\)|<module>|module)$/i;
+  const phases = new Map<string, number>();
+  const topSelfTime = [...sampled].flatMap(([id, metrics]) => {
+    const node = nodes.get(id);
+    if (!node) return [];
+    const url = node.frame.url.replace(/\\/g, '/');
+    const isBundle = url === bundleName || url.endsWith(`/${bundleName}`);
+    const isNode = url.startsWith('node:');
+    const phase = compilePattern.test(node.frame.functionName) || compilePattern.test(url)
+      ? 'parse-or-compile'
+      : isBundle && topLevelPattern.test(node.frame.functionName)
+        ? 'bundle-top-level'
+        : isBundle ? 'bundle-function' : isNode ? 'node-runtime' : 'other-runtime';
+    phases.set(phase, (phases.get(phase) ?? 0) + metrics.deltaMicros);
+    return [{ functionName: node.frame.functionName || '(anonymous)', source: isBundle ? bundleName : isNode ? url.slice(0, 80) : '<external>',
+      line: isBundle ? node.frame.lineNumber : null, hitCount: node.hitCount, sampledHits: metrics.samples, deltaMicros: Math.round(metrics.deltaMicros), phase }];
+  }).sort((a, b) => b.deltaMicros - a.deltaMicros).slice(0, 10);
+  return {
+    profile: 'ok',
+    sampleCount: count,
+    sampledCpuMicros: Math.round([...sampled.values()].reduce((sum, item) => sum + item.deltaMicros, 0)),
+    phases: Object.fromEntries([...phases.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([name, micros]) => [name, Math.round(micros)])),
+    topSelfTime,
+  };
+}
+
+/** One opt-in diagnostic import. It never changes the separate 400 ms acceptance assertion. */
+async function profileWorkerImport(file: string, folder: string): Promise<Record<string, unknown>> {
+  const profileDir = join(folder, 'worker-cpu-profile');
+  const profileName = 'worker-startup.cpuprofile';
+  const profilePath = join(profileDir, profileName);
+  try {
+    await mkdir(profileDir);
+    const script = `const cpu = process.cpuUsage(), start = performance.now(); await import(${JSON.stringify(file)}); const wallMs = performance.now() - start; const used = process.cpuUsage(cpu); console.log(JSON.stringify({ wallMs, userMicros: used.user, systemMicros: used.system, node: process.version }))`;
+    const parentStart = performance.now();
+    const child = spawnSync(process.execPath, [
+      '--cpu-prof', `--cpu-prof-dir=${profileDir}`, `--cpu-prof-name=${profileName}`,
+      '--input-type=module', '-e', script,
+    ], { encoding: 'utf8', timeout: 15_000, maxBuffer: 1024 * 1024 });
+    const subprocessMs = Math.round(performance.now() - parentStart);
+    const common = { node: process.version, bundle: 'worker.mjs', subprocessMs, status: child.status, signal: child.signal,
+      profileWindow: 'whole fresh child, including Node bootstrap; import wall and CPU are reported separately' };
+    if (child.error || child.status !== 0) return { ...common, result: recordOf(child.error)?.['code'] === 'ETIMEDOUT' ? 'timed-out' : 'child-failed' };
+    let importTiming: Record<string, unknown> | null = null;
+    try { importTiming = recordOf(JSON.parse(child.stdout.trim().split('\n').at(-1) ?? '')) }
+    catch { /* profile summary remains useful if the child did not emit its small timing record */ }
+    const fileInfo = await stat(profilePath).catch(() => null);
+    if (!fileInfo) return { ...common, import: importTiming, profile: 'not-written' };
+    if (fileInfo.size > 8 * 1024 * 1024) return { ...common, import: importTiming, profile: 'over-8MiB-not-parsed', profileBytes: fileInfo.size };
+    let summary: Record<string, unknown>;
+    try { summary = summarizeCpuProfile(JSON.parse(await readFile(profilePath, 'utf8')) as unknown, 'worker.mjs') }
+    catch { summary = { profile: 'unreadable' } }
+    return { ...common, import: importTiming, profileBytes: fileInfo.size, ...summary };
+  } catch (error) {
+    const code = recordOf(error)?.['code'];
+    return { node: process.version, bundle: 'worker.mjs', result: typeof code === 'string' ? code.slice(0, 40) : 'diagnostic-failed' };
+  }
+}
+
 /** Every file under a folder, with its size. */
 async function filesUnder(folder: string): Promise<Array<{ path: string; bytes: number }>> {
   const found: Array<{ path: string; bytes: number }> = [];
@@ -81,6 +187,9 @@ test('evaluating the Worker script does not inflate, parse, split or index the l
   console.log(`import: the list ${dictionary['ms']?.toFixed(1)} ms, the whole Worker ${worker['ms']?.toFixed(1)} ms`);
   assert.ok((dictionary['ms'] ?? Infinity) < LIMITS.dictionaryImportMs, `the list takes ${dictionary['ms']} ms to evaluate`);
   assert.ok((dictionary['heap'] ?? Infinity) < LIMITS.dictionaryHeapBytes, `the list holds ${dictionary['heap']} bytes of heap after evaluation: something inflated it`);
+  if ((worker['ms'] ?? Infinity) >= LIMITS.workerImportMs && process.env['STUCK_DIAGNOSTICS'] === '1') {
+    console.error(`Worker startup CPU diagnostic (not acceptance): ${JSON.stringify(await profileWorkerImport(files.worker, folder))}`);
+  }
   assert.ok((worker['ms'] ?? Infinity) < LIMITS.workerImportMs, `the Worker script takes ${worker['ms']} ms to evaluate (the platform allows about 400)`);
 });
 

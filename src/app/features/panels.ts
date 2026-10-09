@@ -1,8 +1,7 @@
 // The Vue panels. Each takes the place of the existing panel with the same id (state/panels.ts);
 // its component is fetched the first time it is opened, so the entry chunk carries only this
 // metadata — the same split the existing lazy panel groups make.
-import { defineAsyncComponent } from 'vue'
-import { definePanel } from '../state/panels.ts'
+import { lazyPanel, phonePanel } from '../state/panelFactories.ts'
 import type { VuePanel } from '../types/panel.ts'
 import { reportReplies } from '../../ui/phone/reports.ts'
 import { social } from './social/useSocial.ts'
@@ -24,154 +23,76 @@ import { COMMERCE_PANELS } from './commerce/register.ts'
 import { BUSINESS_PANELS } from './business/register.ts'
 import { POLITICS_PANELS } from './politics/register.ts'
 import { ADMIN_PANELS } from './admin/register.ts'
+import { LIVING_WORLD_PANELS } from './living-world/register.ts'
 
-export const bank = definePanel({
-  id: 'bank', title: 'Bank', icon: '🏦', placement: 'phone', order: 14, group: 'money',
-  badge: billsDue,
-  component: defineAsyncComponent(() => import('./bank/BankApp.vue')),
+export const bank = phonePanel('bank', 'Bank', () => import('./bank/BankApp.vue'), {
+  icon: '🏦', order: 14, group: 'money', badge: billsDue,
 })
 
-export const messages = definePanel({
-  id: 'messages', title: 'Messages', icon: '✉️', placement: 'phone', order: 12, group: 'people',
+export const messages = phonePanel('messages', 'Messages', () => import('./messages/MessagesApp.vue'), {
+  icon: '✉️', order: 12, group: 'people',
   badge: (_state, view) => messagesBadge(social.me, view.connected, noticeMarks.fresh(view.cityId, view.social?.notices)),
   notifications: (_state, view) => notificationLines(social.me, { connected: view.connected, now: view.now, notices: view.social?.notices, seen: noticeMarks.seen(view.cityId) }),
-  component: defineAsyncComponent(() => import('./messages/MessagesApp.vue')),
 })
 
-export const support = definePanel({
-  id: 'support', title: 'Report a problem', short: 'Report', icon: '🛟', placement: 'phone', order: 96, group: 'city',
-  badge: () => reportReplies(),
-  component: defineAsyncComponent(() => import('./support/ReportApp.vue')),
-})
+export const support = phonePanel('support', 'Report a problem', () => import('./support/ReportApp.vue'), { short: 'Report', icon: '🛟', order: 96, group: 'city', badge: () => reportReplies() })
 
-export const jobs = definePanel({
-  id: 'jobs', title: 'Jobs', placement: 'phone', order: 10, group: 'money',
-  component: defineAsyncComponent(() => import('./jobs/JobsApp.vue')),
-})
+export const jobs = phonePanel('jobs', 'Jobs', () => import('./jobs/JobsApp.vue'), { order: 10, group: 'money' })
 
-export const career = definePanel({
-  id: 'career', title: 'Career', placement: 'sim-tab', order: 60, phone: true, group: 'money',
-  component: defineAsyncComponent(() => import('./jobs/CareerTab.vue')),
-})
+export const career = lazyPanel('career', 'Career', 'sim-tab', () => import('./jobs/CareerTab.vue'), { order: 60, phone: true, group: 'money' })
 
-export const statement = definePanel({
-  id: 'statement', title: 'Statement', placement: 'phone', order: 15, group: 'money',
-  component: defineAsyncComponent(() => import('./money/StatementApp.vue')),
-})
+export const statement = phonePanel('statement', 'Statement', () => import('./money/StatementApp.vue'), { order: 15, group: 'money' })
 
-export const invest = definePanel({
-  id: 'invest', title: 'Invest', placement: 'phone', order: 50, group: 'money',
-  component: defineAsyncComponent(() => import('./money/InvestApp.vue')),
-})
+export const invest = phonePanel('invest', 'Invest', () => import('./money/InvestApp.vue'), { order: 50, group: 'money' })
 
-export const houses = definePanel({
-  id: 'houses', title: 'Houses', placement: 'phone', order: 30, group: 'life',
-  component: defineAsyncComponent(() => import('./home/HousesApp.vue')),
-})
+export const houses = phonePanel('houses', 'Houses', () => import('./home/HousesApp.vue'), { order: 30, group: 'life' })
 
-export const landPanel = definePanel({
-  id: 'land', title: 'My land', icon: 'home', placement: 'phone', order: 30.5, group: 'life',
-  component: defineAsyncComponent(() => import('./neighbourhood/LandPanel.vue')),
-})
+export const landPanel = phonePanel('land', 'My land', () => import('./neighbourhood/LandPanel.vue'), { icon: 'home', order: 30.5, group: 'life' })
 
-export const neighbourhoodPanel = definePanel({
-  id: 'neighbourhood', title: 'My street', icon: 'home', placement: 'phone', order: 31, group: 'life',
-  component: defineAsyncComponent(() => import('./neighbourhood/NeighbourhoodPanel.vue')),
-})
+export const neighbourhoodPanel = phonePanel('neighbourhood', 'My street', () => import('./neighbourhood/NeighbourhoodPanel.vue'), { icon: 'home', order: 31, group: 'life' })
 
-export const stories = definePanel({
-  id: 'stories', title: 'Story scenes', icon: 'sparkles', placement: 'phone', order: 53, group: 'life',
-  component: defineAsyncComponent(() => import('./stories/StoriesApp.vue')),
-})
-export const storyChip = definePanel({
-  id: 'story-chip', title: 'Story scene', placement: 'hud', order: 22,
-  component: defineAsyncComponent(() => import('./stories/StoryChip.vue')),
-})
+export const stories = phonePanel('stories', 'Story scenes', () => import('./stories/StoriesApp.vue'), { icon: 'sparkles', order: 53, group: 'life' })
+export const storyChip = lazyPanel('story-chip', 'Story scene', 'hud', () => import('./stories/StoryChip.vue'), { order: 22 })
 
-export const captureChip = definePanel({
-  id: 'capture-chip', title: 'Recording', placement: 'hud', slot: 'alert', order: 3,
-  component: defineAsyncComponent(() => import('./capture/CaptureChip.vue')),
-})
+export const captureChip = lazyPanel('capture-chip', 'Recording', 'hud', () => import('./capture/CaptureChip.vue'), { slot: 'alert', order: 3 })
 
-export const capture = definePanel({
-  id: 'capture', title: 'Capture', icon: 'camera', placement: 'phone', order: 54, group: 'life',
-  component: defineAsyncComponent(() => import('./capture/CaptureApp.vue')),
-})
+export const capture = phonePanel('capture', 'Capture', () => import('./capture/CaptureApp.vue'), { icon: 'camera', order: 54, group: 'life' })
 
-export const cars = definePanel({
-  id: 'cars', title: 'Cars', placement: 'phone', order: 34, group: 'life',
-  component: defineAsyncComponent(() => import('./home/CarsApp.vue')),
-})
+export const cars = phonePanel('cars', 'Cars', () => import('./home/CarsApp.vue'), { order: 34, group: 'life' })
 
-export const groceries = definePanel({
-  id: 'groceries', title: 'Groceries', placement: 'phone', order: 16, group: 'life',
-  component: defineAsyncComponent(() => import('./home/GroceriesApp.vue')),
-})
+export const groceries = phonePanel('groceries', 'Groceries', () => import('./home/GroceriesApp.vue'), { order: 16, group: 'life' })
 
-export const health = definePanel({
-  id: 'health', title: 'Health', placement: 'phone', order: 22, group: 'life',
+export const health = phonePanel('health', 'Health', () => import('./life/HealthApp.vue'), { order: 22, group: 'life',
   /** Sick or run down: something to act on. */
   badge: (_state, view) => (view.health?.sick || view.health?.rundown ? 1 : 0),
-  component: defineAsyncComponent(() => import('./life/HealthApp.vue')),
 })
 
-export const goals = definePanel({
-  id: 'goals', title: 'Goals', placement: 'sim-tab', order: 30, phone: true, group: 'life',
-  component: defineAsyncComponent(() => import('./life/GoalsTab.vue')),
-})
+export const goals = lazyPanel('goals', 'Goals', 'sim-tab', () => import('./life/GoalsTab.vue'), { order: 30, phone: true, group: 'life' })
 
-export const profile = definePanel({
-  id: 'profile', title: 'Profile', placement: 'sim-tab', order: 10, live: false,
-  component: defineAsyncComponent(() => import('./sim/ProfileTab.vue')),
-})
+export const profile = lazyPanel('profile', 'Profile', 'sim-tab', () => import('./sim/ProfileTab.vue'), { order: 10, live: false })
 
-export const needs = definePanel({
-  id: 'needs', title: 'Needs', placement: 'sim-tab', order: 20,
-  component: defineAsyncComponent(() => import('./sim/NeedsTab.vue')),
-})
+export const needs = lazyPanel('needs', 'Needs', 'sim-tab', () => import('./sim/NeedsTab.vue'), { order: 20 })
 
-export const skills = definePanel({
-  id: 'skills', title: 'Skills', placement: 'sim-tab', order: 40,
-  component: defineAsyncComponent(() => import('./sim/SkillsTab.vue')),
-})
+export const skills = lazyPanel('skills', 'Skills', 'sim-tab', () => import('./sim/SkillsTab.vue'), { order: 40 })
 
-export const settings = definePanel({
-  id: 'settings', title: 'Settings', placement: 'sim-tab', order: 70, phone: true, group: 'life',
-  component: defineAsyncComponent(() => import('./sim/SettingsTab.vue')),
-})
+export const settings = lazyPanel('settings', 'Settings', 'sim-tab', () => import('./sim/SettingsTab.vue'), { order: 70, phone: true, group: 'life' })
 
-export const boutique = definePanel({
-  id: 'boutique', title: 'Boutique', placement: 'phone', order: 32, group: 'life',
-  component: defineAsyncComponent(() => import('./life/BoutiqueApp.vue')),
-})
+export const boutique = phonePanel('boutique', 'Boutique', () => import('./life/BoutiqueApp.vue'), { order: 32, group: 'life' })
 
-export const healthChip = definePanel({
-  id: 'health-chip', title: 'Health', placement: 'hud', slot: 'alert', order: 6,
-  component: defineAsyncComponent(() => import('./life/HealthChip.vue')),
-})
+export const healthChip = lazyPanel('health-chip', 'Health', 'hud', () => import('./life/HealthChip.vue'), { slot: 'alert', order: 6 })
 
-export const weatherChip = definePanel({
-  id: 'weather-chip', title: 'Weather', placement: 'hud', order: 6,
-  component: defineAsyncComponent(() => import('./life/WeatherChip.vue')),
-})
+export const weatherChip = lazyPanel('weather-chip', 'Weather', 'hud', () => import('./life/WeatherChip.vue'), { order: 6 })
 
-export const goalChip = definePanel({
-  id: 'goal-chip', title: 'Current goal', icon: 'goals', placement: 'hud', slot: 'goal', order: 10,
-  component: defineAsyncComponent(() => import('./life/GoalChip.vue')),
-})
+export const goalChip = lazyPanel('goal-chip', 'Current goal', 'hud', () => import('./life/GoalChip.vue'), { icon: 'goals', slot: 'goal', order: 10 })
 
-export const homeChip = definePanel({
-  id: 'home-chip', title: 'Home', icon: 'home', placement: 'hud', order: 20,
+export const homeChip = lazyPanel('home-chip', 'Home', 'hud', () => import('./home/HomeChip.vue'), { icon: 'home', order: 20,
   /** A room that could not be drawn is something to act on (Try again); otherwise the chip is information for the tray. */
   slot: () => (homeScene.status === 'error' ? 'alert' : 'hud'),
-  component: defineAsyncComponent(() => import('./home/HomeChip.vue')),
 })
 
-export const buy = definePanel({
-  id: 'buy', title: 'Buy', placement: 'nav',
+export const buy = lazyPanel('buy', 'Buy', 'nav', () => import('./home/BuyMode.vue'), {
   /** Buy is only available at home; elsewhere the nav button is disabled with this reason. */
   enabled: (state) => social.me?.visiting ? 'Leave the visit before rearranging your furniture' : state.stories?.running ? 'End your scene before rearranging furniture' : state.location === 'home' || 'Go home to buy furniture',
-  component: defineAsyncComponent(() => import('./home/BuyMode.vue')),
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [captureChip, landPanel, stories, storyChip, neighbourhoodPanel, capture, bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...GAMES_PANELS, ...CAMPUS_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS, ...ACCOUNT_PANELS, ...BUSINESS_PANELS, ...COMMERCE_PANELS, ...POLITICS_PANELS, ...ADMIN_PANELS]
+export const NATIVE_PANELS: readonly VuePanel[] = [captureChip, landPanel, stories, storyChip, neighbourhoodPanel, capture, bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...GAMES_PANELS, ...CAMPUS_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS, ...ACCOUNT_PANELS, ...BUSINESS_PANELS, ...COMMERCE_PANELS, ...POLITICS_PANELS, ...ADMIN_PANELS, ...LIVING_WORLD_PANELS]

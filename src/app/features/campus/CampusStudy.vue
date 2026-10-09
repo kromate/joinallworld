@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Study: the academic record, applying and matriculating, registering a semester, the timetable
 // with its lectures, assignments and tests, campus jobs and the programme options.
-import { computed } from 'vue'
+import { computed, defineAsyncComponent, ref, watch } from 'vue'
 import { lagosTime } from '../../../game/clock.ts'
 import { money } from '../../ui/format.ts'
 import CampusCard from './CampusCard.vue'
@@ -16,6 +16,15 @@ import type { StudentLike } from './campusModel.ts'
 import { choices, useCampus } from './useCampus.ts'
 
 const { state, view, blocked, connected, student: viewed, act } = useCampus()
+const CampusAssignment = defineAsyncComponent(() => import('./CampusAssignment.vue'))
+const assignmentOpen = ref(false)
+const assignmentContext = computed(() => JSON.stringify([view.value.session?.id, view.value.cityId,
+  state.value.unilagStudent.programme, state.value.unilagStudent.term?.semester, state.value.unilagStudent.term?.startDay]))
+watch(assignmentContext, () => { assignmentOpen.value = false }, { flush: 'sync' })
+function openAssignment(courseId: string): void {
+  if (courseId === 'cpe-101') assignmentOpen.value = true
+  else void act('unilag.assignment', { course: courseId })
+}
 const student = computed<StudentLike>(() => viewed.value ?? BLANK_STUDENT)
 const time = computed(() => lagosTime(view.value.now))
 const senate = computed(() => at(state.value, 'senate'))
@@ -103,9 +112,10 @@ const dropProgramme = async (): Promise<void> => { if ((await act('unilag.drop')
       </div>
       <div class="campus-actions">
         <CampusControl :primary="courseControls(course, classBase, time.minuteOfDay).attend.primary" :label="courseControls(course, classBase, time.minuteOfDay).attend.label" :reason="courseControls(course, classBase, time.minuteOfDay).attend.reason" @press="act('unilag.lecture', { course: course.id })" />
-        <CampusControl label="Assignment" :reason="courseControls(course, classBase, time.minuteOfDay).assignment.reason" @press="act('unilag.assignment', { course: course.id })" />
+        <CampusControl :label="course.id === 'cpe-101' ? 'Open logic lab' : 'Assignment'" :reason="course.id === 'cpe-101' ? (connected ? '' : 'Reconnect to read the saved lab.') : courseControls(course, classBase, time.minuteOfDay).assignment.reason" @press="openAssignment(course.id)" />
         <CampusControl label="Test" :reason="courseControls(course, classBase, time.minuteOfDay).test.reason" @press="act('unilag.test', { course: course.id })" />
       </div>
+      <CampusAssignment v-if="course.id === 'cpe-101' && assignmentOpen" @close="assignmentOpen = false" />
     </article>
     <div class="campus-actions">
       <CampusControl v-if="term.status === 'deferred'" primary label="Resume semester" :reason="blocked" @press="act('unilag.resume')" />

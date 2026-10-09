@@ -1,7 +1,8 @@
 /** Retryable, render-driven gate for importing the venue's optional stand-in module. */
 export interface RetryableStartup {
   readonly pending: boolean;
-  start<T>(eligible: boolean, load: () => Promise<T>, ready: (value: T) => void, failed?: (error: unknown) => void): boolean;
+  start<T>(eligible: boolean, load: () => Promise<T>, ready: (value: T) => void, failed?: (error: unknown) => void,
+    disposeLate?: (value: T) => void): boolean;
   dispose(): void;
 }
 
@@ -11,13 +12,13 @@ export function createRetryableStartup(options: { cooldownMs?: number; now?: () 
   let disposed = false, pending = false, retryAt = 0;
   return {
     get pending() { return pending; },
-    start<T>(eligible, load, ready, failed) {
+    start<T>(eligible: boolean, load: () => Promise<T>, ready: (value: T) => void, failed?: (error: unknown) => void,
+      disposeLate?: (value: T) => void) {
       if (disposed || pending || !eligible || now() < retryAt) return false;
       pending = true;
       void Promise.resolve().then(load).then(value => {
         if (disposed) {
-          const disposable = value as { dispose?: () => void } | null;
-          disposable?.dispose?.();
+          disposeLate?.(value);
           return;
         }
         ready(value);

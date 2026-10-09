@@ -63,6 +63,8 @@ type ServerTelemetry = ReturnType<typeof createServerTelemetry>;
 export type Connection = WebSocket & WsConnection;
 /** The options of createServer; every one has a default. */
 export interface ServerOptions {
+  /** Trusted host activation only; player requests cannot opt in. */
+  interactiveTeachingStarts?: boolean
   commerceGateway?: CommerceGateway
   streetAssets?: RouteContext['streetAssets']
   dataDir?: string
@@ -154,7 +156,7 @@ async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<stri
 }
 
 export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), commerceGateway, streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
-  lazyFlushMs, shardIo,
+  lazyFlushMs, shardIo, interactiveTeachingStarts = false,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
   trustProxy = process.env.TRUST_PROXY === '1',
@@ -247,7 +249,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   // ctx.settle, ctx.act (server authority, always under a receipt) and what POST /api/action runs: host-context.js, shared with the Worker.
   // One character on several devices: a change a player would see is announced to every socket of that character (host-context.ts lifeAnnouncer).
   const lifeSync = lifeAnnouncer((publicId, frame) => ctx.push(publicId, frame));
-  const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note });
+  const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note, interactiveTeachingStarts });
   /** True from a failed write of the data file until the next successful one. Reads still work then; saving does not. */
   const storageFailing = () => { try { return store.stats?.().failing === true; } catch { return false; } };
   function cookieHeader(req: IncomingMessage, secret: string | undefined): string | string[] {

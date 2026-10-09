@@ -1,0 +1,31 @@
+# Fixed NPC delivery settlement and saved ownership
+
+Finite batch selected 9 October 2026 from actual source/review gaps: the NPC stock helper lacked an authenticated transaction boundary and real simulated wallet action, and existing account lifecycle/privacy did not cover its proposed parcel envelopes. This is one dependency of the complete school-to-driving-to-restocking-to-barber journey. Route activation, mapped delivery and programme acceptance remain separate requirements.
+
+## Current evidence — 9 October 2026, 07:48 UTC
+
+Exacteebe8989 CI37900259396 is TERMINAL FAILURE solely on Worker startup814.248921ms>400ms. Compiler/policy PASS; Node337tests335pass/0fail/2original missing-dist skips, including both actual account binding/replay/erase cases, all six restock-service and two wage HTTP cases. Worker20tests19pass/1startupfail; calibrated shop physical-write probe and all nine SQLite layout/backfill/parity checks PASS. No production restock registration, trusted mapped producer, stock consumption, device gameplay/save/staging or full phase acceptance. [Exact evidence](candidate-eebe8989-evidence.json), [checkpoint](CHECKPOINT.md).
+
+## Acceptance criteria
+
+1. Read the current strictly validated actor/account-bound delivered parcel from storage; refuse browser actor, amount, pose or terminal state. Recheck current ownership before any cached success. Preserve same-actor retry identity across legitimate adoption/restore/keep-as-guest transitions.
+2. Commit fixed water×3, 120 simulated-life-cash wage, canonical ledger/audit, bounded earned-work increment, existing earnings-based ride-debt repayment, watermark and ctx.once receipt in the same durable transaction. Wallet refusal or disk failure must throw/rollback; concurrent and fresh-ID retries must never pay twice. Preserve other actors and real-value commerce.
+3. Strict response projection must quarantine malformed/future stock. Inventory v1 remains readable and unchanged on no-op/read; successful mutations migrate to v2 with an anonymous erased-settlement count. Retained settlements plus erased count must equal stock revision; stock remains three units per revision until a separately accepted consumption policy exists.
+4. Existing account authority rebinds only the same proven actor's strict parcel envelope during adoption, parking, archive restoration and guest retention. Export only bounded owner-matching delivery summary. Explicit requested erasure must preflight every known privacy map, require the proven account owner, remove parcel and watermark together, preserve shared stock and unrelated identities, and refuse contradictory/future/frozen state unchanged.
+5. Actual HTTP tests must prove fixed wage/ledger/audit and barber tool funding from zero cash, fresh stale CAS refusal, concurrent retry, balance-limit and ENOSPC recovery, real account proof/CSRF lifecycle, parked/retained distinction, and old-cookie refusal. Fixtures explicitly seed pure delivered-parcel state; they do not prove mapped driving. Worker/SQLite restart/races and full exact-SHA/device/staging/live gates remain required before activation.
+
+## Ownership and current evidence
+
+Verified existing gpt-6-luna/high workers implemented non-overlapping inventory, fixed wage and account-test files; Sol owns shared privacy/account integration, service repairs, review, commits and release. No new workers or credentials. The public production restock route remains unregistered. The simulated wallet action is server-only and carries no request-supplied amount; no real NGN/payment rail is involved.
+
+Sol independently repaired inventory privacy fixtures (missing initial settlement and invalid rejection of legitimate newer unpaid generation), typed dynamic database/receipt accesses, normalized the balance-recovery baseline, extracted one explicit fixture factory, and repaired owner preflight and same-actor receipt continuity. Independent Luna reviews covered service/wage flow, inventory aggregate/privacy/account hooks, and actual sedan contact sampling. Checks below are narrow evidence, not whole-game acceptance.
+
+Actual bounded Node24 CPU checks: initial inventory/privacy17 cases had15pass/2fixture failures; repaired combined state/privacy/geometry20/20pass. After owner repair, inventory/privacy18/18pass, zero skips,127.042125ms; owned process0.511157292s, peak sampled192102400B. Caps:128MiB heap, sampled owned group220MiB,15s wall; no guard stop. Sampled supervisor is not OS hard RSS enforcement. HTTP/wallet/account fixtures and whole compiler remain pending remote execution for this source.
+
+Separate actual sedan contact diagnostic exports bounded rendered static/hinged triangles, not invented floor/seat/cabin geometry. Three CPU checks pass after strengthening each hinge sample's coordinate-change assertion (89.42325ms;0.412509625s/165724160B same caps). It is not imported into live DrivingScene. Seat anchors are not seats, floor unauthored, continuous actor/door sweep unknown; no boarding or route authority is granted.
+
+Retain full CI37893825921 at exact old candidateaaea9fd8 through terminal; do not cancel it by dispatching this new source on the same ref. New scoped evidence may use a separate codex branch under existing CI limits; it does not replace full gates. Latest local WARNING2 defers optional heavy/compiler/browser starts. WORLD remains sole shared uploader.
+
+## Remaining gameplay and release work
+
+Create actual server-derived fleet/custody/stopped-pose authority from pinned safe mapped endpoints and continuous vehicle/actor/contact checks, then commit terminal custody with settlement in one transaction. The current handler consumes a retained terminal row rather than owning the full delivery transition; no production writer supplies it. Add outlet consumption before repeated deliveries beyond twenty. Preserve save compatibility, privacy and once-only effects while extending active desktop/mobile gameplay. Independently review the exact integrated candidate, complete full Node22/24/Worker, device/multiplayer/interruption/save and staging gates, deploy through existing protected release controls, verify live version/saves and observe. All phase exits/A1–A10 remain OPEN; native goal ACTIVE. This document does not execute while runtime is stopped.

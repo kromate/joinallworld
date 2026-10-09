@@ -1,0 +1,70 @@
+{
+  "candidateSha": "a9c313856169e0e709cb84206c9c369c0a4bf904",
+  "branch": "codex/living-world",
+  "goal": "active; full programme scope unchanged",
+  "standardCI": {
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37868632180",
+    "terminal": "success",
+    "compiler": "pass",
+    "build": "pass",
+    "policyChecks": 17,
+    "smokeChecks": 15,
+    "startup": {
+      "raw": 614584,
+      "rawCap": 615000,
+      "gzip": 222952,
+      "gzipCap": 223000,
+      "brotli": 195499,
+      "brotliCap": 195600
+    },
+    "fullChecks": "not run in this workflow"
+  },
+  "fullCI": {
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37869052320",
+    "observedStatus": "in_progress",
+    "sourceSha": "a9c313856169e0e709cb84206c9c369c0a4bf904",
+    "acceptance": "unproven until terminal result"
+  },
+  "focusedPriorEvidence": {
+    "sourceSha": "92f4cbdde52f32e3643a40d67a4b64fadcd39a3d",
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37867076744",
+    "nodePass": 42,
+    "workerSQLitePass": 4,
+    "scope": "qualification/control-derived nonallocating permission and account/restart; no fleet allocation or mapped driving"
+  },
+  "localRepairedChecks": {
+    "pass": 23,
+    "durationMs": 299.413959,
+    "scope": "fleet, static clearance and observer; source files included in candidate",
+    "log": "/tmp/joinallworld-living-world-fleet-type-repair-tests.log"
+  },
+  "review": {
+    "reviewer": "existing Luna driving, previously audited gpt-6-luna/high",
+    "outcome": "scoped approval of fleet typing repairs and sole passes2-to3 compression line",
+    "limits": "not full-suite, browser, mapped fleet or release acceptance"
+  },
+  "artifact": {
+    "githubArtifactId": 11589860305,
+    "path": "startup-attribution-a9c31385.json.gz",
+    "jsonSha256": "0a5a58ea800585758ec934df6b3da8c3d86656d7a760b434ca6ff142e21c6e66",
+    "gzipSha256": "b422b060bde974020041dd9bbbcae3d43cca205651fd99151bebf212f81bac4b",
+    "compressedBytes": 26305,
+    "sourceClean": true
+  },
+  "production": {
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "lastPublishedProviderVersion": "64ed8462-6c2b-4c42-8d19-266bc93708e5",
+    "healthServerTime": 1791508578970,
+    "programmeDeployed": false,
+    "healthIsGameplayProof": false
+  },
+  "unresolved": [
+    "full exact-SHA suite",
+    "current desktop/mobile/two-player/interruption gameplay and physical device",
+    "staging and sealed release",
+    "safe boarding apron and authoritative actor clearance",
+    "mapped movement/fleet persistence/parcel/NPC stock/wages",
+    "live Goalmatic workspace/installation/Goals field/consent/probe contract",
+    "A1-A10 and later programme phases"
+  ]
+}

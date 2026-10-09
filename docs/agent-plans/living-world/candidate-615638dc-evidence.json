@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "615638dcb98c7dd5746bc7a5bc44d6a31a8ea4fd",
+  "runId": 37883876050,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37883876050",
+  "observedAt": "2026-10-09T04:33:04Z",
+  "status": "completed",
+  "conclusion": "failure",
+  "compiler": {
+    "status": "failure",
+    "diagnostics": 4,
+    "file": "server/founder.test.ts",
+    "reason": "optional store.stats method not narrowed",
+    "sourceRepair": "511e1cf6"
+  },
+  "buildUnchangedBudgetsSmokePolicy": "pass",
+  "groups": {
+    "appUI": {
+      "tests": 419,
+      "pass": 419,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 95362.239334
+    },
+    "commerceCareer": {
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skip": 0
+    },
+    "cityPagination": {
+      "tests": 29,
+      "pass": 29,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 70575.348342
+    },
+    "actualWorker": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 5807.65472
+    },
+    "smoke": {
+      "tests": 15,
+      "pass": 15
+    }
+  },
+  "allShuttleStopPairsMappedCorridorAndConnectorClearance": "pass",
+  "download": {
+    "startupRaw": 612819,
+    "startupGzip": 222326,
+    "startupBrotli": 194861,
+    "firstPaintBrotli": 35705,
+    "capsUnchanged": true
+  },
+  "cityBatchValidationMs": 5561.308272,
+  "founder5000": {
+    "seed": {
+      "elapsedMs": 60.309083999999984,
+      "transactions": 1,
+      "writes": 1,
+      "bytes": 1885942
+    },
+    "overview": {
+      "elapsedMs": 85.16095600000017,
+      "transactions": 1,
+      "lazy": 1,
+      "writes": 0,
+      "bytes": 0
+    },
+    "remaining100Pages": {
+      "elapsedMs": 9846.900989,
+      "transactions": 100,
+      "lazy": 100,
+      "writes": 6,
+      "bytes": 11315652,
+      "aborted": 0,
+      "writeFailures": 0,
+      "undone": 0
+    }
+  },
+  "logHashes": {
+    "ui": "cc758a6efae591ae4491df8cdf03156ad98ae40dee1e2d46669d1f6fc86e8dae",
+    "compiler": "f12da525b4f8fc5d8b6807ee9deb4aaaaadf05c9221e5c5ef158301a41799ab8",
+    "build": "8c2b3548772dc12e54cc9ceb30b96e65e4b1daddaf94f2e02383deb9e1502763"
+  },
+  "full": "omitted and remains required",
+  "stagingGameplaySaveContinuity": "not established",
+  "routeAuthorized": false,
+  "programmeDeployments": 0,
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564"
+}

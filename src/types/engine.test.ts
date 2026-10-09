@@ -306,7 +306,7 @@ const readers = {
 } satisfies { [S in SystemId]?: (state: LifeState) => SliceBySystem[S] }
 
 const inner = {
-  career: ({ career: c }: LifeState) => ({ city: c.city, level: c.level, performance: c.performance, shifts: c.shifts, auto: c.auto, lastShiftDay: c.lastShiftDay, shiftStartDay: c.shiftStartDay, autoDay: c.autoDay, transferDay: c.transferDay, oriented: c.oriented }),
+  career: ({ career: c }: LifeState) => ({ city: c.city, teachingGeneration: c.teachingGeneration, level: c.level, performance: c.performance, shifts: c.shifts, auto: c.auto, lastShiftDay: c.lastShiftDay, shiftStartDay: c.shiftStartDay, autoDay: c.autoDay, transferDay: c.transferDay, oriented: c.oriented }),
   travel: ({ travel: t }: LifeState) => ({ home: t.home, event: t.event, lastTrip: t.lastTrip, visited: t.visited, trips: t.trips, cooldowns: t.cooldowns, funded: t.funded, gigs: t.gigs, eventDays: t.eventDays, skipped: t.skipped }),
   economy: ({ economy: e }: LifeState) => ({ billedWeek: e.billedWeek, started: e.started, rent: e.rent, loan: e.loan, deposits: e.deposits, seq: e.seq, reminded: e.reminded, headsUp: e.headsUp }),
   onboarding: ({ onboarding: o }: LifeState) => ({

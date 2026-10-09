@@ -1,0 +1,31 @@
+{
+  "observedAtUtc": "2026-10-09T07:02:08Z",
+  "candidateSha": "309e031f6d22e8a85db7be8c991dc6d8972d45e0",
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37896189763",
+  "status": "completed",
+  "conclusion": "failure",
+  "compilerDiagnostics": [
+    {
+      "file": "server/living-world/npc-inventory.ts",
+      "line": 147,
+      "code": "TS2322",
+      "count": 1
+    },
+    {
+      "file": "server/living-world/privacy.ts",
+      "line": 207,
+      "code": "TS2339",
+      "count": 2
+    },
+    {
+      "file": "server/living-world/privacy.ts",
+      "line": 208,
+      "code": "TS2339",
+      "count": 1
+    }
+  ],
+  "httpTests": "skipped",
+  "workerTests": "skipped",
+  "releaseAccepted": false,
+  "nextAction": "Repair compiler diagnostics preserving strict validation, review, publish changed SHA and retest."
+}

@@ -1,8 +1,8 @@
 /**
  * OWNER: foundation — feature owners never edit this file.
- * The systems every host runs, registered in their fixed order. Order matters twice: sanitize() runs in this
+ * Systems common to every host, registered in their fixed order. Order matters twice: sanitize() runs in this
  * order (later systems may read what earlier ones wrote) and events/modifiers are delivered in this order.
- * index.ts adds the UNILAG campus after them; the browser build (browser.ts) adds stand-ins for it instead.
+ * index.ts adds server-only systems and the UNILAG campus; the browser build (browser.ts) adds campus stand-ins.
  */
 import { registerSystem } from '../registry.ts';
 import core from './core.ts';

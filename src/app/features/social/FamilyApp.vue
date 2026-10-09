@@ -5,6 +5,7 @@ import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, ref, watch }
 import type { FamilyId } from '../../../types/life.ts'
 import type { PlayerRef } from '../../../types/protocol.ts'
 import BaseButton from '../../ui/BaseButton.vue'
+import NpcBadge from '../../ui/NpcBadge.vue'
 import TextField from '../../ui/TextField.vue'
 import CallButton from './CallButton.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
@@ -73,7 +74,7 @@ const role = (slot: FamilyId): string => view.value.social.family.find(member =>
     <section aria-label="Your family" class="family-section">
       <h3>Your family</h3>
       <article v-for="member in members" :key="member.id" class="family-card">
-        <div class="family-person"><PlayerAvatar :name="member.link?.state === 'accepted' ? member.link.other.name : member.name" :seed="member.link?.state === 'accepted' ? member.link.player : member.id" /><div><small>{{ member.relation }}</small><h4>{{ member.link?.state === 'accepted' ? member.link.other.name : member.name }}</h4><p>{{ member.link?.state === 'accepted' ? 'Real player · accepted' : `Game character${member.calledToday ? ' · checked in today' : ''}` }}</p></div></div>
+        <div class="family-person"><PlayerAvatar :name="member.link?.state === 'accepted' ? member.link.other.name : member.name" :seed="member.link?.state === 'accepted' ? member.link.player : member.id" /><div><small>{{ member.relation }}</small><h4>{{ member.link?.state === 'accepted' ? member.link.other.name : member.name }}</h4><p v-if="member.link?.state === 'accepted'">Real player · accepted</p><p v-else><NpcBadge lead />Game character{{ member.calledToday ? ' · checked in today' : '' }}</p></div></div>
         <div v-if="member.link?.state === 'accepted'" class="family-actions">
           <BaseButton :reason="cannot('message')" @click="shell.open('messages', { to: member.link.player, name: member.link.other.name })">Message</BaseButton>
           <PersonCallButton :id="member.link.player" :name="member.link.other.name" :status="presence(member.link.player)" compact />
@@ -81,7 +82,7 @@ const role = (slot: FamilyId): string => view.value.social.family.find(member =>
         </div>
         <template v-else>
           <p>{{ member.line }}</p>
-          <div class="family-actions"><CallButton :member="member" :disabled="!data || pending" /><BaseButton v-if="!member.link" :disabled="pending" :reason="reason" @click="choose(member.id)">Invite a friend</BaseButton></div>
+          <div class="family-actions"><CallButton :member="member" :disabled="!data || pending" :disabled-reason="!data ? (error ? 'Family contacts could not be verified. Try again.' : 'Load your family first.') : pending ? 'A family change is being saved.' : null" /><BaseButton v-if="!member.link" :disabled="pending" :reason="reason" @click="choose(member.id)">Invite a friend</BaseButton></div>
           <div v-if="member.link" class="family-invitation"><p>Waiting for {{ member.link.other.name }} to accept. {{ member.name }} stays until then.</p><BaseButton :disabled="pending" :reason="reason" @click="send({ op: 'remove', id: member.link.id })">Cancel invitation</BaseButton></div>
         </template>
       </article>

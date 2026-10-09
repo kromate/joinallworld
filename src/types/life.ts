@@ -161,6 +161,9 @@ export interface ActivityAction extends ActiveActionBase {
   choice?: string
   /** Present only for `chargeOn: 'start'` with a price above zero: the naira debited at the start (the adjusted price). */
   paid?: number
+  /** Server-authored teaching session; absent on legacy timed shifts. */
+  teaching?: import('../game/living-world/teaching-state.ts').TeachingPractice
+  teachingGeneration?: number
 }
 
 /** A trip between venues (systems/travel.js). The player is still recorded at the venue they left. */
@@ -304,6 +307,8 @@ export interface SkillsSlice {
 
 export interface CareerState {
   city: WorldCityId | null
+  /** Monotonic across cancellation, job changes and city transfers. */
+  teachingGeneration: number
   /** 1-based ladder level in the current track (1 when unemployed or in the starter job). */
   level: number
   /** 0–100 in the current role (may be fractional). */
@@ -1010,6 +1015,7 @@ export type SystemId =
   | 'core' | 'wallet' | 'inventory' | 'needs' | 'skills' | 'career' | 'activities' | 'travel' | 'health'
   | 'economy' | 'property' | 'estate' | 'home' | 'stories' | 'land' | 'street' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
   | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle'
+  | 'livingWorld'
 
 /** The top-level keys each system owns. */
 export interface SliceBySystem {
@@ -1037,6 +1043,7 @@ export interface SliceBySystem {
   events: EventsSlice
   growth: GrowthSlice
   business: BusinessSlice
+  livingWorld: Record<never, never>
   unilagStudent: UnilagStudentSlice
   unilagCommunity: UnilagCommunitySlice
   unilagShuttle: UnilagShuttleSlice
@@ -1076,6 +1083,8 @@ export interface LifeContext {
   internal?: boolean
   /** createLife only: the input is the server's own stored copy, so an invalid saved action may be settled (refunded or charged). */
   trustedSave?: boolean
+  /** Trusted host opt-in for creating new interactive teaching markers; absent/false keeps legacy timed shifts. */
+  interactiveTeachingStarts?: boolean
   /** Server-only collector for exact player-wallet mutations. */
   money?: (effect: MoneyEffect) => void
 }
@@ -1161,6 +1170,7 @@ export const SYSTEM_STATE_KEYS = {
   events: ['events'],
   growth: ['growth'],
   business: ['business'],
+  livingWorld: [],
   unilagStudent: ['unilagStudent'],
   unilagCommunity: ['unilagCommunity'],
   unilagShuttle: ['unilagShuttle'],
@@ -1171,7 +1181,7 @@ export const SYSTEM_STATE_KEYS = {
  * (`inventory`) is not listed; `needs`/`decay` are keyed by NeedId and `skills` by SkillId.
  */
 export const SLICE_FIELD_KEYS = {
-  career: ['city', 'auto', 'autoDay', 'dilemmas', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'transferDay'],
+  career: ['city', 'auto', 'autoDay', 'dilemmas', 'lastShiftDay', 'level', 'oriented', 'performance', 'shiftStartDay', 'shifts', 'teachingGeneration', 'transferDay'],
   travel: ['cooldowns', 'event', 'eventDays', 'funded', 'gigs', 'home', 'lastTrip', 'rideDebt', 'skipped', 'trips', 'visited'],
   health: ['cause', 'immuneUntil', 'sick', 'since', 'strain'],
   economy: ['billedWeek', 'deposits', 'headsUp', 'loan', 'reminded', 'rent', 'seq', 'started'],

@@ -491,6 +491,29 @@ test('a cached cityId that is not a string is ignored, and switchCity refuses a 
   assert.deepEqual(result, { ok: false, code: 'invalid_city' });
 });
 
+for (const phase of ['fetch', 'json'] as const) test(`a superseded ${phase} failure stays stale instead of being reported as a current connection failure`, async () => {
+  let current = true;
+  let entered: () => void = () => {};
+  const started = new Promise<void>(resolve => { entered = resolve; });
+  let fail: (error: Error) => void = () => {};
+  const blocked = new Promise<never>((_, reject) => { fail = reject; });
+  const client = createClient({
+    fetch: async () => {
+      if (phase === 'fetch') { entered(); return blocked; }
+      return { ok: true, status: 200, json: async () => { entered(); return blocked; } };
+    },
+    storage: { getItem: () => null, setItem() {} }, setTimeout: () => 0, clearTimeout: () => {},
+  });
+  const before = JSON.stringify(client.state), offset = client.serverTimeOffset;
+  const pending = client.api('/api/anything', {}, () => current);
+  await started;
+  current = false;
+  fail(new Error('Delayed transport failure'));
+  await assert.rejects(pending, (error: ApiError) => error.code === 'stale_identity_response');
+  assert.equal(JSON.stringify(client.state), before);
+  assert.equal(client.serverTimeOffset, offset);
+});
+
 test('a JSON null response body is the unreadable-response error, not a TypeError', async () => {
   const client = createClient({ fetch: async () => json(200, null), setTimeout: () => 0, clearTimeout: () => {} });
   await assert.rejects(() => client.api('/api/anything'), (error: Error) => error.message === 'Server returned an unreadable response' && !(error instanceof TypeError));

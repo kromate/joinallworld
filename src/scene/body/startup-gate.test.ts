@@ -45,7 +45,7 @@ test('pending startup deduplicates repeated render calls', async () => {
 test('disposing while a chunk is pending prevents mount and disposes a late value', async () => {
   let resolveLoad!: (value: { dispose(): void }) => void, mounts = 0, disposals = 0;
   const gate = createRetryableStartup();
-  assert.equal(gate.start(true, () => new Promise(resolve => { resolveLoad = resolve; }), () => { mounts++; }), true);
+  assert.equal(gate.start(true, () => new Promise<{ dispose(): void }>(resolve => { resolveLoad = resolve; }), () => { mounts++; }, undefined, value => value.dispose()), true);
   await tick();
   gate.dispose();
   resolveLoad({ dispose() { disposals++; } });

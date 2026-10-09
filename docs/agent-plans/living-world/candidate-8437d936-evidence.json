@@ -1,0 +1,92 @@
+{
+  "sourceSha": "8437d936b171cf8e56c2fcd9e54f82e8e51abd40",
+  "observedAtUtc": "2026-10-09T09:04:00Z",
+  "runId": 37908380231,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37908380231",
+  "ref": "codex/living-world-teaching-8437d936",
+  "status": "completed",
+  "conclusion": "failure",
+  "accepted": false,
+  "sourceCommits": {
+    "implementation": "6e4cc72bde9ca6465dfc88781e6838045af29082",
+    "sliceFieldMetadata": "149f7a14bd7208e449d529360ab27175b38dbe22",
+    "lazyStrictRestore": "6dbdec31b01943c85dc40d65aea5e96dff286b6b",
+    "readOnlyClientFixtures": "8437d936b171cf8e56c2fcd9e54f82e8e51abd40"
+  },
+  "jobs": {
+    "release-policy": "success",
+    "typecheck-fast": "failure",
+    "build-and-smoke-fast": "failure",
+    "ui-regressions": "failure",
+    "full": "skipped; separately required"
+  },
+  "checksRequested": "canonical fast compiler/build/download/smoke; exact startup observer; all ordered UI/learning/HTTP/browser-profile/career/city/Worker-host groups",
+  "review": "Sol reviewed integrated source; independent Luna reviewed fixed gate/client and read-only fixture paths without remaining source blockers. Source review is not device acceptance.",
+  "localEvidence": "teaching-repair-local-evidence.json",
+  "sourceOnlySyntaxCheck": "Node24 experimental-strip-types --check browser-profile.test.ts passes; does not execute fixtures",
+  "baselineFull": {
+    "sourceSha": "9b65d165c75cc4c3d1b181db330ff83381bcdf1e",
+    "runId": 37903856807,
+    "conclusion": "success",
+    "qualification": "excludes new teaching and repairs; no full result at8437 yet"
+  },
+  "production": {
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "programmeDeployment": false,
+    "observedAtUtc": "2026-10-09T09:00:03Z",
+    "healthOk": true,
+    "serverTime": 1791536403792
+  },
+  "remaining": [
+    "exact terminal fast/UI/startup evidence",
+    "full22/24 source/server/Worker on repaired teaching source",
+    "actual desktop/mobile/solo/multiplayer/interrupted save journeys",
+    "complete mapped rental/driving/restocking producers and stock consumption",
+    "exact-SHA staging/deployment/live save observation",
+    "Goalmatic consented target/typed contract"
+  ],
+  "compilerDiagnostics": [
+    {
+      "file": "server/economy/effects.test.ts",
+      "line": 65,
+      "code": "TS2322",
+      "reason": "optional generation passed to required number"
+    },
+    {
+      "file": "src/game/browser-profile.test.ts",
+      "line": 249,
+      "code": "TS2322",
+      "reason": "optional generation passed to required number"
+    }
+  ],
+  "ui": {
+    "tests": 429,
+    "pass": 428,
+    "fail": 1,
+    "skipped": 0,
+    "durationMs": 110428.372401,
+    "failure": "server/economy/effects.test.ts:50 real start at MAX_SAFE wallet refuses projected reward preflight; start at valid5000 then fill already-running wallet fixture repair pending"
+  },
+  "orderedLaterUiSteps": "active learning/HTTP/browser-profile, shopping/career, city and Worker-host groups skipped after first UI group failure",
+  "build": "success",
+  "download": {
+    "result": "failure",
+    "startupRaw": 616125,
+    "startupRawCap": 615000,
+    "startupGzip": 223410,
+    "startupGzipCap": 223000,
+    "startupBrotli": 195548,
+    "startupBrotliCap": 195600
+  },
+  "smoke": "skipped after download failure",
+  "startupObserver": {
+    "cleanSource": true,
+    "file": "startup-attribution-8437d936.json.gz",
+    "strictTeachingParser": "absent from automatic startup; dynamic engine edge only",
+    "lessonWords": "absent from automatic startup",
+    "teachingGatePreminifierRenderedBytes": 1975,
+    "qualification": "new gate and client glue offset most parser savings; raw/gzip gates remain failed, no cap increase"
+  },
+  "repair": "Positive issued-generation assertions, valid-start then mid-shift filled-wallet fixture, compact fail-closed own-data marker gate; further measured conditional-cost repair required before another candidate"
+}

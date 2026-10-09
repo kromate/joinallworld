@@ -89,10 +89,12 @@ test('the walker moves relative to the camera, normalises diagonals, jogs, turns
   walker.input(0, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
   assert.ok(near(walker.x, 0) && near(walker.z, -WALK_SPEED * 0.5, 1e-3), 'W walks away from the camera');
   assert.ok(Math.abs(turnTowards(walker.ry, Math.PI)) < 0.05, 'the avatar faces where it walks');
-  walker.place(0, 0, 0); walker.input(-1, 0); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
+  // At WALK_SPEED 1.82, a 30-frame (0.5 s) hold can cover only 0.91 m;
+  // hold for 75 frames (1.25 s, at most 2.275 m) for the existing >2 m assertion.
+  walker.place(0, 0, 0); walker.input(-1, 0); for (let i = 0; i < 75; i++) walker.step(1 / 60, 0);
   assert.ok(walker.x < -2 && near(walker.z, 0), 'A walks to the camera’s left');
   // Camera turned a quarter (it now looks along −x): the same keys follow it.
-  walker.place(0, 0, 0); walker.input(0, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, Math.PI / 2);
+  walker.place(0, 0, 0); walker.input(0, 1); for (let i = 0; i < 75; i++) walker.step(1 / 60, Math.PI / 2);
   assert.ok(walker.x < -2 && near(walker.z, 0, 1e-6), 'forward is always away from the camera');
   // Diagonals are no faster than straight lines; jogging is.
   walker.place(0, 0, 0); walker.input(-1, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
@@ -103,7 +105,9 @@ test('the walker moves relative to the camera, normalises diagonals, jogs, turns
   walker.place(0, 0, 0); walker.input(1, 0); for (let i = 0; i < 120; i++) walker.step(1 / 60, 0);
   assert.ok(walker.x < 2 && walker.x > 1.2 && walker.blocked, `stopped at the wall (${walker.x.toFixed(2)})`);
   const stuck = walker.x;
-  walker.input(1, 1); for (let i = 0; i < 30; i++) walker.step(1 / 60, 0);
+  // Normalized diagonal travel along the wall is 1.82/√2 m/s: 30 frames
+  // cover at most 0.644 m, while 60 frames cover 1.287 m for the existing >1 m check.
+  walker.input(1, 1); for (let i = 0; i < 60; i++) walker.step(1 / 60, 0);
   assert.ok(near(walker.x, stuck, 0.2) && walker.z < -1, 'slides along the wall');
   // The edge of the floor is a wall too.
   walker.place(0, 9, 0); walker.input(0, -1); for (let i = 0; i < 120; i++) walker.step(1 / 60, 0);

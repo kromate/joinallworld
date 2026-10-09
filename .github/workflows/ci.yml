@@ -137,6 +137,10 @@ jobs:
           src/map3d/map3d.test.ts src/map3d/context-water.test.ts
           src/map3d/context.test.ts src/map3d/lagos-geo.test.ts src/map3d/water.test.ts
           src/scene/body/startup-gate.test.ts
+          src/scene/body/stand-in.test.ts src/scene/body/animation-pose.test.ts
+          src/scene/home-lighting.test.ts src/scene/venue-contact.test.ts
+          src/venue-world-lights.test.ts src/venue-world.test.ts
+          src/models/vehicles/vehicles.test.ts
 
       - name: Existing directory and public discovery components
         run: >-
@@ -151,6 +155,20 @@ jobs:
           --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:|sim tabs:|Profile:|Goals:'
           src/app/features/panelsA.test.ts
 
+  host-acceptance:
+    if: github.event_name == 'workflow_dispatch' && inputs.ui_checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NODE_OPTIONS: --max-old-space-size=1536
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - id: root-install
+        run: npm ci --no-audit --no-fund
       - name: Business quote and identity-safe retry acceptance
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
@@ -160,10 +178,21 @@ jobs:
           src/client.test.ts
 
       - name: Private voice Node acceptance
+        if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
         run: node --experimental-strip-types --test --test-concurrency=1 server/social/voice-notes.test.ts
 
-      - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
+      - name: Teaching start policy and actual Node rollback receipts
+        if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          src/game/teaching-start-policy.test.ts src/game/teaching-career.test.ts
+          server/teaching-career.test.ts
+
+      - id: worker-install
+        if: ${{ !cancelled() && steps.root-install.outcome == 'success' }}
+        run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
       - name: Existing Worker host and timed-action checks
+        if: ${{ !cancelled() && steps.worker-install.outcome == 'success' }}
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts
@@ -171,9 +200,19 @@ jobs:
           deploy/visit.edge.test.ts
 
       - name: Business quote and private voice Worker acceptance
+        if: ${{ !cancelled() && steps.worker-install.outcome == 'success' }}
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           deploy/business.edge.test.ts deploy/voice-notes.edge.test.ts
+
+      - name: Living-world Worker persistence and teaching gate-off recovery
+        if: ${{ !cancelled() && steps.worker-install.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          deploy/living-world.edge.test.ts deploy/living-world-learning.edge.test.ts
+          deploy/living-world-restart.edge.test.ts deploy/living-world-account.edge.test.ts
+          deploy/living-world-barber.edge.test.ts deploy/living-world-clerk.edge.test.ts
+          deploy/living-world-rental.edge.test.ts deploy/living-world-teaching.edge.test.ts
 
   full:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks

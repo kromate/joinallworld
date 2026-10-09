@@ -49,18 +49,38 @@ test('entries layout: a change to one player writes one row, and a read writes n
 test('entries layout: an existing legacy collection is moved when the layout asks for it, read back equal, and the legacy row stays', async () => {
   const t = testStorage();
   const legacy = open(t.storage);
-  await legacy.transact((db) => { const s = (db['social'] = emptySocial()) as Social; for (let i = 0; i < 30; i += 1) { s.players[`p${i}`] = player(`Player ${i} \u{1F600}`); s.convs[`c${i}`] = { id: `c${i}`, messages: [{ seq: 1, text: `line ${i}` }] }; } s.seq = 5; db['growth'] = { salt: 'x'.repeat(16), players: { a: { seen: 1 } }, shares: {}, metrics: {}, tables: {}, sweptAt: 0 }; });
+  const livingWorld = {
+    driving: { actor1: { revision: 4, state: { status: 'paused', position: { x: 12, y: 34 } } } },
+    qualifications: { actor1: { version: 1, qualification: 'district-driving', status: 'active' } },
+    barber: { actor1: { version: 1, account: null, starterTool: false } },
+    parcels: { actor1: { v: 1, publicId: 'actor1', account: null, state: { status: 'delivered' } } },
+  };
+  await legacy.transact((db) => {
+    const s = (db['social'] = emptySocial()) as Social;
+    for (let i = 0; i < 30; i += 1) { s.players[`p${i}`] = player(`Player ${i} \u{1F600}`); s.convs[`c${i}`] = { id: `c${i}`, messages: [{ seq: 1, text: `line ${i}` }] }; }
+    s.seq = 5;
+    db['growth'] = { salt: 'x'.repeat(16), players: { a: { seen: 1 } }, shares: {}, metrics: {}, tables: {}, sweptAt: 0 };
+    db['livingWorld'] = livingWorld;
+  });
   const stored = (t.db.prepare("SELECT value FROM collections WHERE name='social'").get() as { value: string }).value;
+  const storedLivingWorld = (t.db.prepare("SELECT value FROM collections WHERE name='livingWorld'").get() as { value: string }).value;
   const before = await legacy.layout.logical();
   const store = open(t.storage, { layout: 'entries' });
   assert.deepEqual(await store.read((db) => (db['social'] as Social).players['p3']?.name), 'Player 3 \u{1F600}');
-  assert.deepEqual(Object.entries((await store.layout.status())['collections'] as Record<string, { synced: boolean }>).filter(([, c]) => c.synced).map(([name]) => name), ['social', 'growth', 'civic', 'business', 'commerce', 'records', 'realValue', 'trustChecks', 'street']);
+  assert.deepEqual(Object.entries((await store.layout.status())['collections'] as Record<string, { synced: boolean }>).filter(([, c]) => c.synced).map(([name]) => name), ['social', 'growth', 'civic', 'business', 'commerce', 'records', 'realValue', 'trustChecks', 'street', 'livingWorld']);
+  assert.deepEqual(await store.read((db) => db['livingWorld']), livingWorld, 'the saved livingWorld keyed maps and unkeyed parcel map read back after legacy backfill');
+  assert.equal(count(t, "SELECT COUNT(*) AS n FROM entries WHERE coll='livingWorld'"), 3, 'driving, qualifications and barber use their registered entry maps');
+  for (const map of ['driving', 'qualifications', 'barber'])
+    assert.equal(count(t, `SELECT COUNT(*) AS n FROM entries WHERE coll='livingWorld' AND map='${map}'`), 1, `${map} actor row is stored as an entry`);
   assert.deepEqual(await store.layout.logical(), before);
   assert.equal((t.db.prepare("SELECT value FROM collections WHERE name='social'").get() as { value: string }).value, stored, 'the legacy value is untouched');
+  assert.equal((t.db.prepare("SELECT value FROM collections WHERE name='livingWorld'").get() as { value: string }).value, storedLivingWorld,
+    'the livingWorld legacy row stays untouched while entries are read');
   assert.equal(count(t, "SELECT COUNT(*) AS n FROM entries WHERE coll='social'"), 60);
   // Start again in the legacy layout: it reads the legacy value, as it was.
   const back = open(t.storage);
   assert.deepEqual(await back.read((db) => (db['social'] as Social).seq), 5);
+  assert.deepEqual(await back.read((db) => db['livingWorld']), livingWorld, 'legacy layout still reads its preserved livingWorld collection');
 });
 
 test('entries layout: a lazy change is held, seen by the next read, and written by a flush or by a durable change that read it', async () => {

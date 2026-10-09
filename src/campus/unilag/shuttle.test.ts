@@ -7,8 +7,10 @@ import { VENUES } from '../../game/cities/lagos/venues.ts';
 
 import { rebuildCatalogue } from '../../game/systems/activities.ts';
 import { makeContext } from '../../game/util.ts';
-import { BUILDINGS, ROADS } from './layout.ts';
-import { createCampusWalk, footprintOf } from './walk.ts';
+import { ROADS } from './layout.ts';
+import { CAMPUS_MAP } from './map.generated.ts';
+import { pointInRing } from './geo.ts';
+import { createCampusWalk } from './walk.ts';
 import unilagShuttle, { SHUTTLE_FEE, SHUTTLE_STOPS, shuttlePose, shuttleRoute } from './shuttle.ts';
 import { buildShuttle } from './shuttle-scene.ts';
 import { buildUnilagLandmark, MAP_PLACEMENT } from './landmark.ts';
@@ -30,20 +32,54 @@ const lifeAt = (spot = 'main-gate', cash = 500): LifeState => asLife({
   message: '', unilagShuttle: { rides: 0 },
 });
 
-const intersects = (a: Point, b: Point, rectangle: readonly [number, number, number, number], clearance = 0): boolean => {
-  let [x0, z0, x1, z1] = rectangle;
-  x0 -= clearance; z0 -= clearance; x1 += clearance; z1 += clearance;
+const pointSegmentDistance = (p: Point, a: Point, b: Point): number => {
   const dx = b.x - a.x, dz = b.z - a.z;
-  let low = 0, high = 1;
-  const axes: [number, number, number, number][] = [[a.x, dx, x0, x1], [a.z, dz, z0, z1]];
-  for (const [at, delta, min, max] of axes) {
-    if (!delta) { if (at < min || at > max) return false; continue; }
-    let first = (min - at) / delta, last = (max - at) / delta;
-    if (first > last) [first, last] = [last, first];
-    low = Math.max(low, first); high = Math.min(high, last);
-    if (low > high) return false;
+  const t = Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.z - a.z) * dz) / (dx * dx + dz * dz || 1)));
+  return Math.hypot(p.x - a.x - dx * t, p.z - a.z - dz * t);
+};
+
+const segmentsIntersect = (a: Point, b: Point, c: Point, d: Point): boolean => {
+  const orient = (p: Point, q: Point, r: Point): number => (q.x - p.x) * (r.z - p.z) - (q.z - p.z) * (r.x - p.x);
+  const abC = orient(a, b, c), abD = orient(a, b, d), cdA = orient(c, d, a), cdB = orient(c, d, b);
+  if (((abC > 0 && abD < 0) || (abC < 0 && abD > 0)) && ((cdA > 0 && cdB < 0) || (cdA < 0 && cdB > 0))) return true;
+  const on = (p: Point, q: Point, r: Point): boolean => Math.abs(orient(p, q, r)) < 1e-9
+    && r.x >= Math.min(p.x, q.x) - 1e-9 && r.x <= Math.max(p.x, q.x) + 1e-9
+    && r.z >= Math.min(p.z, q.z) - 1e-9 && r.z <= Math.max(p.z, q.z) + 1e-9;
+  return on(a, b, c) || on(a, b, d) || on(c, d, a) || on(c, d, b);
+};
+
+const segmentDistance = (a: Point, b: Point, c: Point, d: Point): number => segmentsIntersect(a, b, c, d) ? 0 : Math.min(
+  pointSegmentDistance(a, c, d), pointSegmentDistance(b, c, d),
+  pointSegmentDistance(c, a, b), pointSegmentDistance(d, a, b),
+);
+
+const roadSegment = (a: Point, b: Point) => {
+  const tolerance = 1e-7;
+  for (const road of CAMPUS_MAP.roads) for (let index = 1; index < road.points.length; index += 1) {
+    const first = road.points[index - 1], second = road.points[index];
+    if (!first || !second) continue;
+    const start = { x: first[0], z: first[1] }, end = { x: second[0], z: second[1] };
+    const midpoint = { x: (a.x + b.x) / 2, z: (a.z + b.z) / 2 };
+    if ([a, midpoint, b].every((point) => pointSegmentDistance(point, start, end) <= tolerance)) return road;
   }
-  return true;
+  return null;
+};
+
+const segmentToBuilding = (a: Point, b: Point, ring: readonly (readonly [number, number])[]): number => {
+  if (pointInRing([a.x, a.z], ring) || pointInRing([b.x, b.z], ring)
+    || pointInRing([(a.x + b.x) / 2, (a.z + b.z) / 2], ring)) return 0;
+  let nearest = Infinity;
+  for (let index = 0; index < ring.length; index += 1) {
+    const from = ring[index], to = ring[(index + 1) % ring.length];
+    if (!from || !to) continue;
+    nearest = Math.min(nearest, segmentDistance(a, b, { x: from[0], z: from[1] }, { x: to[0], z: to[1] }));
+  }
+  return nearest;
+};
+
+const assertNearPoint = (actual: Point, expected: Point): void => {
+  assert.ok(Math.hypot(actual.x - expected.x, actual.z - expected.z) <= 1e-9,
+    `expected (${expected.x}, ${expected.z}), got (${actual.x}, ${actual.z})`);
 };
 
 test('the road graph is continuous and every stop pair gets a safe road-led route', () => {
@@ -56,29 +92,34 @@ test('the road graph is continuous and every stop pair gets a safe road-led rout
     assert.deepEqual(route.points.at(-1), { x: to.anchor.x, z: to.anchor.z });
     assert.ok(route.duration >= 1 && route.duration <= 120);
     assert.ok(route.road.some((point) => roadPoints.has(`${point.x},${point.z}`)), 'route uses road topology');
+    for (let index = 1; index < route.road.length; index += 1) {
+      const a = route.road[index - 1], b = route.road[index];
+      assert.ok(a && b);
+      const source = roadSegment(a, b);
+      assert.ok(source, `${from.id} -> ${to.id} contains a segment outside the pinned OSM road edges`);
+      for (const building of CAMPUS_MAP.buildings) {
+        const clearance = segmentToBuilding(a, b, building.ring), halfWidth = source.width / 2;
+        assert.ok(clearance + 1e-9 >= halfWidth,
+          `${from.id} -> ${to.id} road ${source.id} segment (${a.x},${a.z})->(${b.x},${b.z}) corridor overlaps OSM building ${building.id} (way ${building.osm.id}); clearance ${clearance}m < half-width ${halfWidth}m`);
+      }
+    }
     for (const connector of [route.connectors.start, route.connectors.end]) {
       for (let index = 1; index < connector.length; index += 1) {
         const a = connector[index - 1], b = connector[index];
         assert.ok(a && b);
         const aZone = walk.zoneAt(a.x, a.z), bZone = walk.zoneAt(b.x, b.z);
-        if (aZone?.id === bZone?.id) {
-          assert.ok(aZone);
-          assert.equal(walk.grids.get(aZone.id)?.clearLine(a.x, a.z, b.x, b.z), true,
-            `${from.id} -> ${to.id} connector crosses an obstacle`);
-        } else assert.ok(Math.hypot(a.x - b.x, a.z - b.z) <= 1.01, 'a connector changes zones only through a paired portal');
+        assert.ok(aZone && bZone, `${from.id} -> ${to.id} connector remains inside the mapped campus`);
+        const grid = walk.grids.get(aZone.id);
+        assert.ok(grid);
+        // Streaming tiles share one geographic grid; crossings require full line
+        // clearance on that grid, rather than the removed synthetic portal pairs.
+        assert.equal(walk.grids.get(bZone.id), grid);
+        assert.equal(grid.clearLine(a.x, a.z, b.x, b.z), true,
+          `${from.id} -> ${to.id} connector (${a.x},${a.z})->(${b.x},${b.z}) crosses an obstacle`);
       }
     }
   }
 
-  for (const road of ROADS) for (let index = 1; index < road.points.length; index += 1) {
-    const pointA = road.points[index - 1], pointB = road.points[index];
-    assert.ok(pointA && pointB);
-    const a = { x: pointA[0], z: pointA[1] };
-    const b = { x: pointB[0], z: pointB[1] };
-    for (const building of BUILDINGS) for (const footprint of footprintOf(building)) {
-      assert.equal(intersects(a, b, footprint, road.width / 2), false, `${road.id} crosses ${building.id}`);
-    }
-  }
 });
 
 test('boarding is server-authoritative, charges once and cannot teleport or forge timing', () => {
@@ -148,8 +189,8 @@ test('pose is deterministic at the beginning, midpoint and exact endpoint', () =
   const active = { origin: 'main-gate', dest: 'lagoon-front', duration: route.duration, remaining: route.duration, start: NOW };
   const beginning = shuttlePose(active, 0), midpoint = shuttlePose(active, 0.5), endpoint = shuttlePose(active, 1);
   assert.ok(beginning && midpoint && endpoint);
-  assert.deepEqual({ x: beginning.x, z: beginning.z }, route.road[0]);
-  assert.deepEqual({ x: endpoint.x, z: endpoint.z }, route.road.at(-1));
+  assertNearPoint({ x: beginning.x, z: beginning.z }, route.road[0]!);
+  assertNearPoint({ x: endpoint.x, z: endpoint.z }, route.road.at(-1)!);
   assert.equal(midpoint.progress, 0.5);
   assert.notDeepEqual({ x: midpoint.x, z: midpoint.z }, { x: beginning.x, z: beginning.z });
   assert.deepEqual(shuttlePose({ ...active, remaining: active.duration / 2 }), midpoint);

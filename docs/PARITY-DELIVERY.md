@@ -1,5 +1,16 @@
 # Combined reliability and feature-parity delivery
 
+## Consolidated assembly repair gate — 9 October 2026
+
+Exact `49c6afc93acd55c24cf3567698ca9526b4795e23` failed [CI37927617823](https://github.com/kromate/joinallworld/actions/runs/37927617823). Release policy and affected UI/map checks passed, but startup typing, raw startup `615427 > 615000`, and one Business fixture failed. Gzip `222818` and Brotli `195397` passed their unchanged limits. Full checks were skipped. The Business failure was a denomination assertion after the journey deliberately changed its menu price to ₦701; its repair verifies exact till/takings reconciliation. Compiler repair uses explicit generic types and a late cleanup callback.
+
+The newer working assembly includes the complete path-scoped LIVING inventory from `8f39fa52` and gate/fixture follow-up `34a898df`; ten actual shared-source conflicts were resolved preserving reviewed UI, actor fences, quotes, foot contact and vehicle exit behavior. This source has not passed combined runtime acceptance. Dedicated host acceptance now covers quoted purchases, private voice and trusted teaching policy independently of the UI build job; full Node22/24 and Worker checks remain required on the frozen candidate.
+
+New interactive teaching starts default OFF. Existing marked lessons remain readable and answerable. Node opt-in is a trusted server option; Worker opt-in requires `INTERACTIVE_TEACHING_STARTS === '1'`. No player payload opts in and no production flag is added. WORLD must confirm actual retained provider settings stay OFF. After issued teaching markers are written, old `a446` is unsafe as an assumed recovery build because it can strip lesson markers and pay an unfinished timed shift. Later activation waits for a verified compatible recovery baseline and a separate server-owned display capability.
+
+Production remains `joinallworld-a44629b38be751a9ad446051564`. No upload, provider acceptance or post-release continuity proof has occurred in this assembly. Local heavy work remains stopped under Mac WARNING2; remote CI supplies actual compiler/runtime evidence. Physical device, private media browser, native zoom and research coverage gaps remain explicit.
+
+
 This is the current tracker for the combined work from the research chat and “Review thread for remaining work” (01a115e4-c2fc-7300-a97c-d9d0dedf9e91). Updated 9 October 2026.
 
 ## Current consolidated delivery, 9 October 2026

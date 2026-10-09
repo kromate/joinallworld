@@ -193,6 +193,9 @@ export interface DilemmaView {
 }
 
 export interface CareerView {
+  /** Whether the trusted host will create new interactive teaching markers for this view’s actions. */
+  interactiveTeachingStarts: boolean
+  teaching: { generation: number; practice: import('../game/living-world/teaching-state.ts').TeachingPractice } | null
   /** Legacy field: the raw catalogue entry of the job held. */
   job: JobDefinition | null
   /** The dilemma waiting after a shift, or null. The key is absent until a life has had one (nothing writes it until a dilemma comes up). */
@@ -1169,9 +1172,9 @@ export const VIEW_FIELD_KEYS = {
   inventory: ['items'],
   needs: ['feelings', 'low', 'mood', 'order'],
   career: [
-    'auto', 'busy', 'chips', 'completedShifts', 'dilemma', 'employed', 'hours', 'icon', 'id', 'isTrack', 'job', 'jobs', 'label', 'level',
+    'auto', 'busy', 'chips', 'completedShifts', 'dilemma', 'employed', 'hours', 'icon', 'id', 'interactiveTeachingStarts', 'isTrack', 'job', 'jobs', 'label', 'level',
     'levels', 'next', 'nextShift', 'pay', 'performance', 'role', 'rules', 'schedule', 'shift', 'shifts', 'step', 'today',
-    'topOfLadder', 'weeklyPay', 'workplace',
+    'teaching', 'topOfLadder', 'weeklyPay', 'workplace',
   ],
   activities: ['active', 'cards', 'spot', 'spots'],
   travel: ['active', 'cooldowns', 'defaultMode', 'destinations', 'duration', 'event', 'gigs', 'gigsHere', 'home', 'modes', 'skip', 'trips', 'visited'],

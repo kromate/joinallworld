@@ -303,7 +303,7 @@ test('your own house: a life without a place is sent to choose; a life with one 
     const html = await render(path)
     const words = text(html)
     assert.match(html, /<section class="world-card" data-my-house/)
-    assert.ok(words.includes(estate.tier.label) && words.includes('Look') && words.includes('Bigger houses'))
+    assert.ok(words.includes(estate.tier.label) && words.includes('Look') && words.includes('Upgrade your house') && words.includes('Choose a bigger home.'))
     for (const field of ['Roof shape', 'Walls', 'Roof colour', 'Door', 'Windows', 'Fence', 'Yard', 'Name sign']) assert.ok(words.includes(field), field)
     assert.match(html, /role="img" aria-label="[^"]+"/)
     assert.match(html, /<button[^>]*class="[^"]*is-chosen[^"]*"[^>]*aria-pressed="true"[^>]*disabled/, 'the look you have is not pressable')

@@ -22,12 +22,11 @@ import { useSocialScreen } from './useSocialScreen.ts'
 
 defineProps<{ params?: unknown }>()
 const { game, shell, client, state, view, gate, action, runAction, retryLoad, cannot } = useSocialScreen()
-const { data: familyData } = useFamily(client)
+const { data: familyData, error: familyError, loading: familyLoading, load: loadFamily } = useFamily(client)
 const PersonCallButton = defineAsyncComponent(() => import('../calls/PersonCallButton.vue'))
 const linkedMummy = computed(() => familyData.value?.slots.find(link => link.slot === 'mummy' && link.state === 'accepted'))
 const social = computed(() => view.value.social)
-// The earlier panel read `mummy.name` unchecked, so a life whose family list had no contact threw and showed its
-// error line. Here the card is left out instead (tested in socialComponents.test.ts).
+// Never offer the NPC call until the server confirms whether that family role belongs to a real player.
 const mummy = computed(() => social.value.family.find((member) => member.contact) ?? null)
 const met = computed(() => social.value.relationships.filter((rel) => rel.npc))
 const note = computed(() => callNote({ connected: view.value.connected, cannot: cannot('call'), busy: Boolean(game.state.value.activeAction) }))
@@ -49,6 +48,11 @@ async function find(): Promise<void> {
 
 <template>
   <div class="contacts">
+    <p v-if="familyLoading && !familyData" class="social-note" role="status">Loading family contacts…</p>
+    <div v-if="familyError" class="contacts-family-error" role="alert">
+      <p>Could not load family contacts: {{ familyError }}</p>
+      <BaseButton small @click="loadFamily">Try again</BaseButton>
+    </div>
     <div v-if="linkedMummy" class="social-list contacts-fav">
       <div class="social-row"><PlayerAvatar :name="linkedMummy.other.name" :seed="linkedMummy.player" /><div><strong>{{ linkedMummy.other.name }}</strong><small>Mother · Real player</small></div></div>
       <div class="social-actions"><BaseButton @click="shell.open('messages', { to: linkedMummy.player, name: linkedMummy.other.name })">Message</BaseButton><PersonCallButton :id="linkedMummy.player" :name="linkedMummy.other.name" :status="state.me?.friends.find(friend => friend.id === linkedMummy?.player)?.status" compact /></div>
@@ -103,3 +107,8 @@ async function find(): Promise<void> {
     <p class="preview-note">Names are not unique: check the short code after # when two players share a name.</p>
   </div>
 </template>
+
+<style scoped>
+.contacts-family-error{display:grid;justify-items:start;gap:6px;margin:0 0 var(--s-2);padding:10px 12px;border-radius:var(--r-sm);background:var(--c-red-soft,#fff0ef);color:var(--c-red-dark,#8f2b25)}
+.contacts-family-error p{margin:0;font-size:13px;line-height:1.4;overflow-wrap:anywhere}
+</style>

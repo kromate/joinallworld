@@ -27,14 +27,14 @@ function start(card: ActivityCard, choice?: string): void { emit('start', card, 
         <template v-for="{ card, face, tags } in cards" :key="card.id">
           <div v-if="card.choices && face.state !== 'unavailable'" class="life-action has-choices" :class="face.state === 'ready' ? undefined : `is-${face.state}`" role="group" :aria-label="face.label">
             <span class="life-action-head"><span class="life-action-emoji" aria-hidden="true"><GameIcon inline kind="activity" :id="card.id" :emoji="card.icon" /></span><span class="life-action-title">{{ card.label }}</span></span>
-            <span class="life-action-meta"><span><GameIcon inline name="clock" /> {{ card.duration }}s</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
+            <span class="life-action-meta"><span><GameIcon inline name="clock" /> {{ card.careerTrack === 'teaching' ? 'Teach a learner' : `${card.duration}s` }}</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
             <span v-if="face.why" class="life-lock"><GameIcon inline name="lock" /> {{ face.why }}</span>
             <span v-else class="life-tags"><span v-for="tag in tags" :key="tag.text" :class="{ 'is-cost': tag.cost, 'is-beta': tag.beta }">{{ tag.text }}</span></span>
             <span class="life-choices"><button v-for="choice in card.choices" :key="choice.id" type="button" :disabled="face.disabled || props.pending !== null" :title="face.full || undefined" @click="start(card, choice.id)">{{ choice.label }}</button></span>
           </div>
           <button v-else class="life-action" :class="face.state === 'ready' ? undefined : `is-${face.state}`" type="button" :disabled="face.disabled || props.pending !== null" :title="face.full || undefined" :aria-label="face.label" :aria-busy="props.pending === `start:${card.id}`" @click="start(card)">
             <span class="life-action-head"><span class="life-action-emoji" aria-hidden="true"><GameIcon inline kind="activity" :id="card.id" :emoji="card.icon" /></span><span class="life-action-title">{{ card.label }}</span></span>
-            <span class="life-action-meta"><span><GameIcon inline name="clock" /> {{ card.duration }}s</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
+            <span class="life-action-meta"><span><GameIcon inline name="clock" /> {{ card.careerTrack === 'teaching' ? 'Teach a learner' : `${card.duration}s` }}</span><strong :class="face.priceTone === 'free' ? undefined : `is-${face.priceTone}`">{{ face.price }}</strong></span>
             <span v-if="face.why" class="life-lock"><GameIcon inline name="lock" /> {{ face.why }}</span>
             <span v-else class="life-tags"><span v-for="tag in tags" :key="tag.text" :class="{ 'is-cost': tag.cost, 'is-beta': tag.beta }">{{ tag.text }}</span></span>
           </button>

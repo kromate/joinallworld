@@ -1,0 +1,56 @@
+{
+  "sourceSha": "4596cb25890e227647644c0208fc2d0e09258733",
+  "ref": "codex/living-world-browser-qa-4596cb25",
+  "runId": 37923423180,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37923423180",
+  "status": "completed",
+  "conclusion": "failure",
+  "accepted": false,
+  "scope": "actual Chrome against disposable Node HTTP fixture; not sealed Worker staging",
+  "buildAndDownload": {
+    "result": "success",
+    "startupRaw": 614297,
+    "rawCap": 615000,
+    "startupGzip": 222778,
+    "gzipCap": 223000,
+    "startupBrotli": 195040,
+    "brotliCap": 195600
+  },
+  "legacySaveComparisons": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 1187.439206
+  },
+  "browser": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "skipped": 0,
+    "durationMs": 21848.078759,
+    "version": "Chrome/154.0.8037.97",
+    "node": "v24.19.0",
+    "platform": "linux",
+    "fixtureBuildId": "joinallworld-4596cb25890e227647644c0208f",
+    "failureCode": "desktop-wrong-choice",
+    "viewportObservations": {},
+    "screenshots": ["teaching-desktop-before.png"],
+    "failureObservation": null,
+    "qualification": "lesson DOM/hydration assertions passed but full-screen character creator covers the game; no accepted native inputs"
+  },
+  "independentArtifactReview": {
+    "reviewer": "Sol",
+    "method": "view_image of actual downloaded screenshot",
+    "finding": "character creator Look step covers the game before the attempted wrong choice; scene/avatar renders",
+    "sourceEvidence": "server/test-fixture.ts device() creates a session only; QA setupTeacher() omits completed onboarding; rect/waitRendered checked existence and dimensions but not unobscured visibility",
+    "nextRepair": "normal onboarding action setup plus actual visible/unobscured native-input assertions; do not bypass onboarding or mutate raw saves",
+    "priorDesktopRenderCause": "not proven by this later screenshot"
+  },
+  "allLogSha256": "a926edde4810da05a6536b80408d9588f52045b06867e49128ad78667fb5021d",
+  "browserReceiptSha256": "4bc6e08d13b294974eca5ad906b1b9547a0f714cc793bfc3709d43eb6aaa8273",
+  "screenshotSha256": "234b4264afed2102e2c8f1b70911f76c47f317ca616355ee625bfbcb0da17e13",
+  "localArtifactDirectory": "/tmp/joinallworld-browser-4596cb25",
+  "programmeDeployment": false,
+  "remaining": ["changed-source browser native-input/reload/once-only reward checks", "full Node22/24 source/server/Worker", "complete mapped journey, staging, production, save and observation gates"]
+}

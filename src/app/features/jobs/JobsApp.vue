@@ -111,7 +111,7 @@ const startShift = (id: ActivityId): Promise<boolean> => act('shift', () => comm
           <li :class="openNow(job) === null ? '' : openNow(job) ? 'is-open' : 'is-closed'"><span aria-hidden="true"><GameIcon inline name="clock" /></span>{{ job.hours }}</li>
           <li v-if="openNow(job) !== null" :class="openNow(job) ? 'is-open' : 'is-closed'"><span aria-hidden="true"><GameIcon inline :name="openNow(job) ? 'good' : 'moon'" /></span>{{ openNow(job) ? 'Open now' : 'Closed now' }}</li>
           <li v-if="job.track && job.skill"><span aria-hidden="true"><GameIcon inline name="book" /></span>Skill: {{ cap(job.skill) }}</li>
-          <li><span aria-hidden="true"><GameIcon inline name="clock" /></span>{{ job.duration }}s shift</li>
+          <li><span aria-hidden="true"><GameIcon inline name="clock" /></span>{{ job.id === 'teaching' && career.interactiveTeachingStarts ? 'Interactive teaching shift' : `${job.duration}s shift` }}</li>
         </ul>
         <p class="jobs-summary">{{ job.summary }}<template v-if="job.track"> Top role: {{ job.topRole }}.</template></p>
         <template v-for="control in [jobControl(job, career, offline, ask)]" :key="control.kind">

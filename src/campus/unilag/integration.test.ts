@@ -7,7 +7,7 @@ import { VENUES } from '../../game/cities/lagos/venues.ts';
 
 import { NPCS } from '../../game/cities/lagos/regulars.ts';
 
-import {ANCHORS} from './layout.ts';
+import {ANCHORS,UNMAPPED_LANDMARKS} from './layout.ts';
 import {spotsOf} from '../../game/api.ts';
 import type {ActionBody} from '../../types/actions.ts';
 import type {ActionOutcome,LifeContext,LifeState} from '../../types/life.ts';
@@ -15,7 +15,7 @@ import {rebuildCatalogue} from '../../game/systems/activities.ts';
 import {UNILAG_VENUE,CAMPUS_NPCS} from './content.ts';
 import student from './student.ts';
 import community from './games.ts';
-import shuttle from './shuttle.ts';
+import shuttle,{SHUTTLE_STOPS} from './shuttle.ts';
 import {PROGRAMMES} from './curriculum.ts';
 
 // This is the integration a host must perform in the real registry.
@@ -49,8 +49,14 @@ test('actual campus content and all three systems survive a shuttle, enrolment, 
  assert.equal(act('unilag.election.vote',{candidate:'another-life'}).code,'server_only');
  const view=viewLife(state,context());assert.equal(view.unilagStudent.programme?.id,'computer');
  assert.ok(view.social.here.some(n=>n.id==='lecturer-ada'));
- assert.equal(view.unilagShuttle.stops.length,8);
- for(const spot of spotsOf('unilag', 'lagos'))assert.ok(ANCHORS[spot.id],`Missing anchor for system-attached spot ${spot.id}`);
+ const shuttleStops=new Set<string>(SHUTTLE_STOPS.map(stop=>stop.id));
+ assert.deepEqual(view.unilagShuttle.stops.map(stop=>stop.id),SHUTTLE_STOPS.map(stop=>stop.id),'the public shuttle view exposes exactly the stops with mapped safe anchors');
+ for(const stop of SHUTTLE_STOPS){assert.ok(ANCHORS[stop.id],`Missing map anchor for shuttle stop ${stop.id}`);assert.ok(UNILAG_VENUE.spots[stop.id],`Missing venue content for shuttle stop ${stop.id}`);}
+ for(const id of UNMAPPED_LANDMARKS)assert.ok(!shuttleStops.has(id),`${id} has no invented shuttle coordinate`);
+ const actualSpots=spotsOf('unilag','lagos');
+ assert.deepEqual(actualSpots.map(spot=>spot.id).sort(),Object.keys(UNILAG_VENUE.spots).sort(),'all authored campus content spots remain available to the systems');
+ for(const id of UNMAPPED_LANDMARKS)assert.ok(actualSpots.some(spot=>spot.id===id),`${id} remains system content despite lacking a mapped coordinate`);
+ assert.ok(actualSpots.some(spot=>spot.id==='people'),'the generic people spot remains nonspatial system content');
  const copy=createLife(structuredClone(state),context());
  assert.deepEqual(copy.unilagStudent,state.unilagStudent);assert.deepEqual(copy.unilagCommunity,state.unilagCommunity);assert.deepEqual(copy.unilagShuttle,state.unilagShuttle);
  assert.equal(copy.cash,state.cash);

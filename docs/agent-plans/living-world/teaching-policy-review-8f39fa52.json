@@ -1,0 +1,78 @@
+{
+  "reviewedAt": "2026-10-09T12:10:32.734426+00:00",
+  "sourceBase": "8f39fa52f54ef79530ff88f2cc181e6b1bdd6d5f",
+  "scope": "Teaching new-start policy/private fixture source review. Integration sole shared-host assembly writer.",
+  "previousGoalTurn": "progress:8f39 full intended source/compatibility packet published and submitted",
+  "thisTurn": "progress: client display gap discovered; chosen host contract received; same-SQLite gate-off source repaired/reviewed; engine and fixture migration proposals source checked; changed consolidated CI failures inspected",
+  "trustedPolicy": {
+    "node": "ServerOptions.interactiveTeachingStarts === true",
+    "worker": "INTERACTIVE_TEACHING_STARTS === '1'",
+    "production": "Default absent/off. Never request payload/header/save opted-in.",
+    "reader": "Marked parser, answers and time guard always active"
+  },
+  "materialFindings": [
+    {
+      "file": "src/app/state/game.ts",
+      "line": 176,
+      "finding": "Local viewLife computes with now/city only; proposed gate field is not transported. Later positive label needs server-owned display capability. OFFbaseline caption safe."
+    },
+    {
+      "file": "deploy/living-world-teaching.edge.test.ts",
+      "finding": "Independent review caught second restart accidentally implicitON. Repaired: firststartON, bothrestartsOFF, sameSQLite; freshOFF actor markerless/counter0."
+    },
+    {
+      "file": "teaching-start-gate-tests.patch",
+      "finding": "Missing explicit authored city content import/await caught and repaired. Genuineissuedmarker OFFrestoration/completion and timedlegacy wage assertions included."
+    }
+  ],
+  "sourceChecks": [
+    "git diff --cached --check source/Markdown PASS. Full artifact check reports blank unified-diff context-line spaces; patch apply checks PASS.",
+    "git apply --check teaching-start-gate-tests.patch PASS",
+    "git apply --check teaching-fixture-optin.patch PASS"
+  ],
+  "execution": "NONE. Proposed patches unapplied; Worker fixture UNRUN. No compiler/build/browser/host/production acceptance.",
+  "packetFiles": {
+    "deploy/living-world-teaching.edge.test.ts": {
+      "bytes": 10548,
+      "sha256": "872b74d9a12d1bd85a10e7b334dced6dabdd003c803266fba4cff550fadd1b8f"
+    },
+    "docs/agent-plans/living-world/teaching-start-gate-tests.patch": {
+      "bytes": 5633,
+      "sha256": "748d9ce463d124b193f235ed7a4be849a7b3f1fd1290a650b498698cf51f7276"
+    },
+    "docs/agent-plans/living-world/teaching-fixture-optin.patch": {
+      "bytes": 3457,
+      "sha256": "2744914f3471da204a41d103c419303b33204714f8061d093dbde26bc3c6465a"
+    }
+  },
+  "latestCombinedCi": {
+    "sha": "49c6afc93acd55c24cf3567698ca9526b4795e23",
+    "runId": "37927617823",
+    "url": "https://github.com/kromate/joinallworld/actions/runs/37927617823",
+    "status": "completed",
+    "conclusion": "failure",
+    "failures": {
+      "startupRaw": {
+        "actual": 615427,
+        "cap": 615000,
+        "over": 427
+      },
+      "typecheck": "startup-gate.ts14 four TS7006 untypedparams;19 TS2352 void-to-disposable conversion",
+      "business": "businessJourney.ts202 expected0 actual4"
+    },
+    "startupGzip": {
+      "actual": 222818,
+      "cap": 223000,
+      "status": "pass"
+    },
+    "startupBrotli": {
+      "actual": 195397,
+      "cap": 195600,
+      "status": "pass"
+    },
+    "releasePolicy": "pass",
+    "full": "skipped",
+    "logSha256": "1b78b7ebf1e9a25ae3207295fd3e9bbf17183b4cd04131bd71338aa74553cc44"
+  },
+  "next": "Apply reviewed policy/fixtures on combined source; repair actual failures; exact full/native desktop/mobile/Worker/recovery checks before release."
+}

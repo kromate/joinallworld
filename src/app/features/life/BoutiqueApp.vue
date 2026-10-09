@@ -17,7 +17,7 @@ import { money } from '../../ui/format.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import BaseButton from '../../ui/BaseButton.vue'
 import { useAct } from '../kit/act.ts'
-import { SECTIONS, itemLabel, itemControl, itemNote, nextTrying, triedItem, wearing, wearableCards, removeAvatarWearable } from './boutiqueModel.ts'
+import { SECTIONS, itemLabel, itemControl, itemNote, nextTrying, triedItem, wearing, withWearableBoutique, removeAvatarWearable } from './boutiqueModel.ts'
 import { trying } from './boutiqueState.ts'
 import type { BoutiqueChoice } from './boutiqueModel.ts'
 
@@ -26,7 +26,7 @@ defineProps<{ params?: unknown }>()
 const { game, command } = useApp()
 const { act, pending } = useAct()
 const view = game.view
-const onboarding = computed(() => { const base = view.value.onboarding; return { ...base, boutique: [...base.boutique.filter(item => item.kind !== 'wearables'), ...wearableCards(game.state.value.onboarding, game.state.value.cash, base.guest ? 'Settle in first.' : 'Finish creating your character first.')] } })
+const onboarding = computed(() => withWearableBoutique(view.value.onboarding, game.state.value))
 const offline = computed(() => { const words = view.value.connected ? null : linkWords(view.value); return words ? `${words.short} — you cannot shop right now` : '' })
 const tried = computed(() => triedItem(onboarding.value.boutique, trying.value))
 const shown = computed<Look>(() => (tried.value ? wearing(onboarding.value.look, tried.value, withAccessory) : onboarding.value.look))

@@ -1,0 +1,52 @@
+{
+  "sourceSha": "5c5a4b5dd289e86e252e000fc4226699ba9b2597",
+  "ref": "codex/living-world-browser-qa-5c5a4b5d",
+  "runId": 37921288188,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37921288188",
+  "status": "completed",
+  "conclusion": "failure",
+  "accepted": false,
+  "scope": "disposable Node HTTP fixture with built app and actual headless Chrome; not sealed Worker staging",
+  "buildAndDownload": {
+    "result": "success",
+    "startupRaw": 614297,
+    "rawCap": 615000,
+    "startupGzip": 222778,
+    "gzipCap": 223000,
+    "startupBrotli": 195040,
+    "brotliCap": 195600
+  },
+  "legacySaveComparisons": {
+    "command": "node --experimental-strip-types --test --test-concurrency=1 src/game/cities/legacyLife.test.ts src/game/cities/liveBuildLife.test.ts",
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 1169.812055,
+    "qualification": "actual complete comparison tests on this SHA; not full save/rollback/release acceptance"
+  },
+  "browser": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "durationMs": 16146.901897,
+    "version": "Chrome/154.0.8037.97",
+    "node": "v24.19.0",
+    "platform": "linux",
+    "fixtureBuildId": "joinallworld-5c5a4b5dd289e86e252e000fc42",
+    "failureCode": "desktop-render",
+    "viewportObservations": {},
+    "screenshots": [],
+    "qualification": "lesson did not render; no native-input, desktop, mobile, physical-device or gameplay acceptance"
+  },
+  "allLogSha256": "858938500c65cffd40301a6b350a1ee9a86205f73b519c4f207338ea8b857f4d",
+  "browserReceiptSha256": "0b359b1058405fef5ab8ccb1b9430bdb209f67fe451c651cda6c734e1b5b2184",
+  "localReceipt": "/tmp/joinallworld-browser-5c5a4b5d/receipt.json",
+  "programmeDeployment": false,
+  "remaining": [
+    "bounded failure screenshot and safe bootstrap diagnostics, then changed-source browser rerun",
+    "full exact-source Node22/24 source/server/Worker checks",
+    "desktop/mobile, solo/multiplayer and interrupted connected journey",
+    "sealed Worker staging, compatible save recovery, production and observation gates"
+  ]
+}

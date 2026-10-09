@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "dbf455c5174bc524b334c3e98f948d9e119a1df9",
+  "runId": 37892266977,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37892266977",
+  "status": "completed",
+  "conclusion": "failure",
+  "observedAt": "2026-10-09T06:17:34.375283+00:00",
+  "jobs": [
+    {
+      "name": "release-policy",
+      "id": 113695609427,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "full-source (22)",
+      "id": 113695609647,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "name": "full-source (24)",
+      "id": 113695609711,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "name": "full-worker",
+      "id": 113696277605,
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "full-server",
+      "id": 113696277622,
+      "status": "completed",
+      "conclusion": "skipped"
+    }
+  ],
+  "logs": {
+    "node22": {
+      "path": "/tmp/joinallworld-dbf455c5-node22.log",
+      "bytes": 14093,
+      "sha256": "589a742ba0ee7c0baedc5fe0c8b9fbcad1f1bf414a1ae9848c7c75af132594cb"
+    },
+    "node24": {
+      "path": "/tmp/joinallworld-dbf455c5-node24.log",
+      "bytes": 14730,
+      "sha256": "7ef9bd54896ad3eee0f8baf631f221699e137f7683c9c5386e40a9e34117cefb"
+    },
+    "policy": {
+      "path": "/tmp/joinallworld-dbf455c5-policy.log",
+      "bytes": 14793,
+      "sha256": "df30e3d4aafd52471ccdc269ac0f4869cebae5e036f376dc95f1483cd37e2704"
+    }
+  },
+  "releasePolicy": {
+    "tests": 25,
+    "pass": 25,
+    "fail": 0,
+    "skipped": 0
+  },
+  "compilerFailure": "Both Node22/24 client and test compilers did not complete (SIGABRT). No completed compiler result proves clean source. Existing logger did not expose fatal heap diagnostics.",
+  "diagnosis": "New job-wide NODE_OPTIONS1536 was applied to compiler too, unlike previously passing3e remote settings. Likely memory-limit regression; restore existing remote compiler settings only, retain build/test1536 and unchanged local resource controls, then verify exact fresh source. Do not claim a proven fatal-heap message.",
+  "preparedRepair": [
+    "compiler step override NODE_OPTIONS empty",
+    "explicit test-project include for scripts/run-node-suite.test.ts",
+    "regression verifies compiler override and new test inclusion"
+  ],
+  "nodeTests": "not run",
+  "serverWorkerWaves": "skipped after failed prerequisite",
+  "fullAcceptance": false,
+  "stagingGameplaySaveContinuity": "not accepted",
+  "programmeDeployments": 0,
+  "goalmaticDeployments": 0,
+  "localChecks": {
+    "dbfSource": {
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "log": "/tmp/joinallworld-partition-boarding-ts-final.log"
+    },
+    "preparedRepair": {
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "log": "/tmp/joinallworld-partition-compiler-repair.log",
+      "elapsedSeconds": 0.469976125,
+      "sampledOwnedGroupPeakBytes": 172998656,
+      "heapMiB": 128,
+      "sampledGroupLimitMiB": 220,
+      "wallSeconds": 15
+    }
+  },
+  "newLiveRun": null,
+  "nextAction": "Publish reviewed compiler-settings/test-root repair and run the mandatory full22/24 source/server/Worker waves at its exact SHA."
+}

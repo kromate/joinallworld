@@ -1,0 +1,162 @@
+{
+  "candidateSource": "78eb78934a5b58d8dcdc0f7a3b4ed9ca52836c18",
+  "nativeGoal": "active",
+  "assignments": {
+    "orchestrator": "gpt-6.1-sol/high",
+    "existingThreeWorkers": "gpt-6-luna/high",
+    "verification": "actual session metadata audited previously; names were not used as evidence"
+  },
+  "changes": {
+    "restart": "ff403583dd319807a35d72cc45b69f9af3d65de1",
+    "parcelFoundation": "d650da681ba47210c814cce613844352177ae2b2",
+    "analogWheel": "9d393a572772e618cd4d78fc3e6f68d7b4898fac",
+    "portableParcelBoundRepair": "a70dfdee",
+    "rejectedFactoryRevert": "78eb78934a5b58d8dcdc0f7a3b4ed9ca52836c18"
+  },
+  "tests": [
+    {
+      "scope": "actual Node HTTP driving/restart",
+      "source": "ff403583dd319807a35d72cc45b69f9af3d65de1",
+      "executionHead": "e5a464ba",
+      "passed": 12,
+      "total": 12,
+      "elapsedMs": 1216.227916,
+      "exit": 0,
+      "log": "/tmp/joinallworld-living-world-restart-ff403583-node.log"
+    },
+    {
+      "scope": "pure parcel transitions/quarantine/frozen effect",
+      "source": "9d393a572772e618cd4d78fc3e6f68d7b4898fac",
+      "passed": 7,
+      "total": 7,
+      "elapsedMs": 92.742459,
+      "exit": 0,
+      "log": "/tmp/joinallworld-living-world-parcel-9d393a57.log",
+      "limitation": "Does not prove DB races, settlement or registered gameplay; post-ASCII-bound repair retest unrun"
+    },
+    {
+      "scope": "real Worker SQLite driving restart",
+      "source": "9d393a572772e618cd4d78fc3e6f68d7b4898fac",
+      "passed": 1,
+      "total": 1,
+      "elapsedMs": 2016.316917,
+      "exit": 0,
+      "log": "/tmp/joinallworld-living-world-restart-9d393a57-worker.log",
+      "coverage": [
+        "real input before restart",
+        "different-ID CAS race",
+        "actor isolation",
+        "stale input",
+        "receipt replay",
+        "SQLite legacy/shadow/entries",
+        "host restart",
+        "unchanged wallet and no qualification"
+      ],
+      "limitation": "Not full connected journey or full Worker suite"
+    },
+    {
+      "scope": "rental and district foundations",
+      "source": "28b7860c56c1fa42a927e1d6dae083498970801a",
+      "passed": 11,
+      "total": 11,
+      "filesUnchangedThroughCandidate": true,
+      "limitation": "Unregistered pure rental and disabled corridor proposal"
+    }
+  ],
+  "ci": [
+    {
+      "run": 37862971195,
+      "source": "9d393a572772e618cd4d78fc3e6f68d7b4898fac",
+      "status": "failure",
+      "policy": "pass",
+      "compiler": "fail: parcel.ts TS2304 TextEncoder",
+      "build": "pass",
+      "startup": {
+        "raw": 614758,
+        "gzip": 223155,
+        "brotli": 195410
+      },
+      "smoke": "skipped",
+      "full": "skipped"
+    },
+    {
+      "run": 37863311183,
+      "source": "c1dbb8edd306f810f339961d4893afc6f1819997",
+      "status": "failure",
+      "policy": "pass",
+      "compiler": "pass",
+      "build": "pass",
+      "startup": {
+        "raw": 614930,
+        "gzip": 223160,
+        "brotli": 195396
+      },
+      "smoke": "skipped",
+      "full": "skipped",
+      "limitation": "Factory trial rejected; this is not current reverted-source evidence"
+    }
+  ],
+  "factoryExperiment": {
+    "source": "d75c5010",
+    "retainedSecondLazyHop": true,
+    "rawDelta": 172,
+    "gzipDelta": 5,
+    "brotliDelta": -14,
+    "accepted": false,
+    "revertedBy": "78eb78934a5b58d8dcdc0f7a3b4ed9ca52836c18",
+    "budgetsChanged": false
+  },
+  "review": {
+    "Sol": "wheel, parcel, compiler repair, metadata semantics and measurements independently reviewed",
+    "LunaGoalmatic": "read-only wheel and parcel source review; found slider semantics; pure CAS is not DB race proof",
+    "repairs": [
+      "focused slider keyboard",
+      "keyup across focus changes",
+      "primary finite pointer",
+      "neutral focusout",
+      "reduced motion",
+      "impossible saved parcel times/anchors",
+      "frozen effects",
+      "ASCII byte bound without unavailable game runtime global"
+    ]
+  },
+  "browser": {
+    "lastPlayedSource": "ba1cbde8c554146c48b82578c2cb8d8634e8afb3",
+    "environment": "disposable guest; native Chrome input, viewport emulation",
+    "barber": "landscape width fit; front comb completion advances step; paused/reloaded step retained; portrait clipper92percent",
+    "driving": "320px animated entry, native throttle and braking to zero",
+    "newWheelAndRestart": "UNRUN",
+    "physicalPhone": "UNRUN"
+  },
+  "integration": {
+    "parcel": "unregistered; no stock/cash effects applied",
+    "rental": "unregistered; no global allocation",
+    "district": "proposalOnly; clearance unverified; four generated entry crossings",
+    "Goalmatic": "disabled; private contracts inspected but target installation/schema/consent mapping missing"
+  },
+  "production": {
+    "source": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "lastPublishedProviderVersion": "64ed8462-6c2b-4c42-8d19-266bc93708e5",
+    "freshHealthBuild": "joinallworld-a44629b38be751a9ad446051564",
+    "serverTime": 1791504801836,
+    "programmeDeployed": false,
+    "healthIsGameplayProof": false
+  },
+  "resources": {
+    "heavy": 0,
+    "ownedServer": 0,
+    "ownedBrowser": 0,
+    "ownedViewport": false,
+    "ownedUpload": false,
+    "livePressureMask": 2,
+    "newExpensiveChecks": "deferred on warning; no unknown process terminated"
+  },
+  "acceptance": "A1-A10 incomplete; no staging, release, full journey or live integration acceptance",
+  "next": [
+    "focused parcel retest after portable-bound fix when pressure normal",
+    "build/play current wheel and restart in disposable desktop/mobile interrupted journeys",
+    "use measured startup graph for an owner-coordinated architectural fix; do not repeat failed factory/direct-view trials",
+    "connect qualification, bounded NPC rental/allocation, verified mapped movement, atomic NPC stock/wage settlement",
+    "full checks, exact-SHA staging and production/live continuity gates before rollout"
+  ]
+}

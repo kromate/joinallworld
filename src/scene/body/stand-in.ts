@@ -73,6 +73,10 @@ export interface StandIn {
   start(renderer: { getContext?: () => unknown } | null | undefined): void;
   wear(look: unknown, seed: unknown): void;
   move(x: number, y: number, z: number, ry: number): void;
+  /** Set the floor destination used when a seated body gets up; its current seat remains unchanged. */
+  standingAt(x: number, y: number, z: number, ry: number): void;
+  /** Discard a pending seated exit destination without repositioning the resting body. */
+  clearStandingDestination(): void;
   pose(name: string, seat: number | undefined, animate: boolean): void;
   /** One walking frame at the stride phase; `y` the floor height under the walker (the stairs clips on a slope). */
   gait(phase: number, jog: boolean, y?: number): void;
@@ -81,14 +85,17 @@ export interface StandIn {
   dispose(): void;
 }
 
+type BodyLoader = (kit: Kit, look: unknown, seed: unknown, sceneScale: number) => Promise<SkinnedBody>;
+
 /**
  * onReady: the body came in (or went) on its own, between frames — draw one. allowed: the device check (tests pass
  * false or a fake device; the default reads navigator).
  */
-export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = bodyAllowed()): StandIn {
+export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = bodyAllowed(), load?: BodyLoader): StandIn {
   const headAt = new kit.THREE.Vector3();
   let body: SkinnedBody | null = null, loading = false, failed = !allowed, gone = false, scene: StandInScene | null = null;
   let look: unknown = null, seed: unknown = null, posed: BodyPose = 'idle', seat = SEAT, at = { x: 0, y: 0, z: 0, ry: 0 };
+  let standingDestination: typeof at | null = null;
   // Came into a scene and not yet posed there; the last walking frame (floor height, position) and the slope since.
   let arrived = false, was: { x: number; y: number; z: number } | null = null, climb = 0;
   let standingIntent = true;
@@ -101,9 +108,13 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
   /** Put the body where the figure is, in its pose. */
   function put() {
     if (!body) return;
-    if (posed === 'sit' || body.seated) body.sitOn(at.x, at.y + seat * (scene?.scale ?? 1), at.z, at.ry);
+    if (posed === 'sit' || body.seated) {
+      if (standingDestination) body.place(standingDestination.x, standingDestination.y, standingDestination.z, standingDestination.ry);
+      body.sitOn(at.x, at.y + seat * (scene?.scale ?? 1), at.z, at.ry);
+    }
     else body.place(at.x, at.y, at.z, at.ry);
   }
+  function clearStandingDestination() { standingDestination = null; }
   /** Show the body in the scene in place of the figure, or (no scene, no body) give the figure back. */
   function mount() {
     if (!body || !scene) { body?.object.removeFromParent(); if (scene) scene.avatar.visible = true; return; }
@@ -134,6 +145,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (scene) scene.avatar.visible = true;
       body?.object.removeFromParent();
       scene = next;
+      clearStandingDestination();
       arrived = Boolean(next);
       was = null; climb = 0;
       mount();
@@ -143,7 +155,8 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (!drawsWebGL2(renderer)) { failed = true; return; }
       loading = true;
       setTimeout(() => {
-        importBody().then((module) => module.loadBody(kit, look, seed, scene?.scale ?? 1)).then((loaded) => {
+        const request = load ? load(kit, look, seed, scene?.scale ?? 1) : importBody().then((module) => module.loadBody(kit, look, seed, scene?.scale ?? 1));
+        request.then((loaded) => {
           loading = false;
           if (gone) { loaded.dispose(); return; }
           // The look changed while it loaded: recolour, or (the other body file) fetch again after the next frame.
@@ -162,6 +175,8 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       if (body && !body.wear(look, seed)) { drop(); onReady(); }
     },
     move(x, y, z, ry) { at = { x, y, z, ry }; put(); },
+    standingAt(x, y, z, ry) { standingDestination = { x, y, z, ry }; put(); },
+    clearStandingDestination,
     pose(name, nextSeat, animate) {
       posed = BODY_POSE[name] ?? 'idle';
       standingIntent = name === 'stand' || name === 'relax';
@@ -175,6 +190,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       solveContacts();
     },
     gait(phase, jog, y = at.y) {
+      clearStandingDestination();
       const run = was ? Math.hypot(at.x - was.x, at.z - was.z) : 0;
       climb = was && run > 1e-3 ? (y - was.y) / run : 0;
       was = { x: at.x, y, z: at.z };
@@ -184,6 +200,6 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
     },
     step(dt) { const more = body?.step(dt) ?? false; put(); if (!more) solveContacts(); return more && Boolean(scene); },
     settle() { body?.settle(); put(); solveContacts(); },
-    dispose() { gone = true; drop(); scene = null; },
+    dispose() { gone = true; clearStandingDestination(); drop(); scene = null; },
   };
 }

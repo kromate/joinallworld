@@ -22,7 +22,7 @@ import { captureLink, cleanAddress, forgetCampusEntry, forgetDraft, forgetGo, fo
 import { deviceToken } from '../features/growth/boundary.ts'
 import { GO_TARGETS } from '../../game/go-links.ts'
 import type { GoTarget } from '../../game/go-links.ts'
-import { createLanding } from '../features/landing/landingStore.ts'
+import { createLandingLoader } from '../features/landing/landingLoader.ts'
 import { pingUi } from '../features/ping/pingLoader.ts'
 import { liveNow, loadPeople, onLifeFrame, onLive, onPeople, onSocketClose, onSocketOpen, resetSocial, social, socketWanted, takeLinkHost } from '../features/social/useSocial.ts'
 import { CONTINUED_TEXT, SESSION_CHANGED, continuedElsewhere } from './devices.ts'
@@ -312,8 +312,8 @@ function createApp(game: Game, native: readonly VuePanel[]) {
   game.on('needName', (problem) => { const gate = shell.sessionGate('new'); if (gate) shell.open(gate.id, { reason: 'new', problem }) })
 
   /** The landing of an invite, share or table link (features/landing): handled once, after the quick start. */
-  const landing = createLanding({
-    fetchJson: game.fetchJson,
+  const landing = createLandingLoader({
+    fetchJson: game.client.api,
     online: () => game.connected.value,
     cityId: () => game.cityId.value,
     sessionId: () => game.session.value?.id ?? null,
@@ -332,7 +332,13 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     panelFor: (go) => (Object.hasOwn(GO_TARGETS, go) ? GO_TARGETS[go as GoTarget] : null),
     setTimeout: (run, ms) => globalThis.setTimeout(run, ms),
     clearTimeout: (handle) => globalThis.clearTimeout(handle as number),
+    identity: () => game.session.value?.id ?? null,
+    importFailed: (error) => { telemetry.chunkFailed('landing', error); void noteChunkFailure() },
+    load: () => import('../features/landing/landingStore.ts'),
   })
+  // A deferred landing continuation belongs to the identity/city at the moment it began. Sync
+  // invalidation also catches an A→B→A transition that a later equality check alone would miss.
+  watch([() => game.session.value?.id ?? null, () => game.cityId.value], () => landing.invalidate(), { flush: 'sync' })
 
   /** Open the landing screen again with one sentence about what went wrong; the name and character are still on the device. */
   function reopenLanding(reason: string, name?: string | null, calm = false): void {
@@ -360,8 +366,10 @@ function createApp(game: Game, native: readonly VuePanel[]) {
     const actionId = kept.actionId ?? game.newId()
     if (!kept.actionId) keepPlay({ ...kept, actionId })
     play.sending = true
+    const operationScope = landing.captureScope()
     const campusEntry = pendingCampusEntry() && game.cityId.value === 'lagos'
     const result = await game.resend(actionId, 'onboarding.quick-start', { look: kept.look, ...(kept.joining ? { joining: true } : {}), ...(campusEntry ? { entry: 'unilag' as const } : {}) })
+    if (!landing.isScopeCurrent(operationScope)) { play.sending = false; return }
     play.sending = false
     if (result.ok && kept.joining) landing.owe()
     if (result.ok) {

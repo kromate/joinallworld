@@ -356,6 +356,9 @@ function studyCourse(state: LifeState, payload: Record<string, unknown>, ctx: Li
   if (must(term.assessments[course.id], 'assessments')[task] !== null) {
     return fail(state, 'already_completed', `You already completed this course ${task}.`);
   }
+  if (task === 'assignment' && course.id === 'cpe-101') {
+    return fail(state, 'interactive_required', 'Open the logic lab in your campus timetable to probe, repair and submit this assignment.');
+  }
   state.activeAction = { kind: CAMPUS_STUDY_KIND, id: course.id, duration, remaining: duration, task,
     semester: term.semester, startedDay: time.day, startedMinute: time.minuteOfDay };
   state.message = `${course.title} ${task} started.`;

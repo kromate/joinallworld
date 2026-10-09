@@ -1,0 +1,124 @@
+{
+  "sourceSha": "aaea9fd8fc715df70d9577dda59cebf33a6a867f",
+  "observedAtUtc": "2026-10-09T07:35:00Z",
+  "runId": 37893825921,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37893825921",
+  "status": "completed",
+  "accepted": false,
+  "jobs": {
+    "release-policy": "success",
+    "full-source (22)": {
+      "status": "completed",
+      "conclusion": "success",
+      "typecheck": "success",
+      "build": "success",
+      "size:download": "success",
+      "partition": {
+        "tests": 2481,
+        "pass": 2480,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 1,
+        "durationMs": 697579.483155
+      },
+      "logPath": "/tmp/joinallworld-aaea9fd8-source22.log",
+      "logSha256": "58df8e8b46d4e2355e7624ef4fbd32f6826e5a397b7d8112ae03960053169c0b"
+    },
+    "full-source (24)": {
+      "status": "completed",
+      "conclusion": "success",
+      "typecheck": "success",
+      "build": "success",
+      "size:download": "success",
+      "partition": {
+        "tests": 2481,
+        "pass": 2480,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 1,
+        "durationMs": 920106.32809
+      },
+      "logPath": "/tmp/joinallworld-aaea9fd8-source24.log",
+      "logSha256": "cf8fa97ae898eee9d1046d8ab9cd580d45c90db2a3efd0075b0b1b57352afad0"
+    },
+    "full-server (22)": {
+      "status": "completed",
+      "conclusion": "success",
+      "tests": 973,
+      "pass": 970,
+      "fail": 0,
+      "skipped": 3,
+      "durationMs": 346852.443595
+    },
+    "full-worker (22)": {
+      "status": "completed",
+      "conclusion": "failure",
+      "tests": 151,
+      "pass": 148,
+      "fail": 3,
+      "skipped": 0,
+      "workerImportMs": 834.1,
+      "workerImportCapMs": 400,
+      "failures": [
+        "business physical-write counter assertion",
+        "SQLite collection list missing LivingWorld",
+        "Worker startup import exceeds400ms"
+      ]
+    },
+    "full-server (24)": {
+      "status": "completed",
+      "conclusion": "success",
+      "tests": 973,
+      "pass": 970,
+      "fail": 0,
+      "skipped": 3,
+      "durationMs": 348033.937873
+    },
+    "full-worker (24)": {
+      "status": "completed",
+      "conclusion": "failure",
+      "tests": 151,
+      "pass": 148,
+      "fail": 3,
+      "skipped": 0,
+      "workerImportMs": 814.342,
+      "workerImportCapMs": 400,
+      "failures": [
+        "business physical-write counter assertion",
+        "SQLite collection list missing LivingWorld",
+        "Worker startup import exceeds400ms"
+      ]
+    }
+  },
+  "mandatoryAcceptance": "Policy and all six exhaustive Node22/24 source/server/Worker jobs must succeed; device/save/staging gates separately required.",
+  "exactCandidateLocalCheck": {
+    "suite": "server/release.test.ts",
+    "tests": 5,
+    "pass": 5,
+    "fail": 0,
+    "skip": 0,
+    "heapLimitMiB": 128,
+    "sampledOwnedGroupRssLimitMiB": 220,
+    "wallLimitSeconds": 15,
+    "elapsedSeconds": 0.489111,
+    "peakSampledRssBytes": 166264832,
+    "log": "/tmp/joinallworld-aaea9fd8-release-boundary.log",
+    "resourceReceipt": "/tmp/joinallworld-aaea9fd8-release-boundary-resource.json",
+    "qualification": "sampled supervisor, not OS hard RSS enforcement"
+  },
+  "excludedUntrackedSource": [
+    "server/living-world/restock-service.ts",
+    "server/living-world/restock-service.test.ts"
+  ],
+  "production": {
+    "checkedAtUtc": "2026-10-09T06:33:23Z",
+    "healthOk": true,
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "programmeDeployment": false,
+    "gameplayOrSaveAcceptance": false
+  },
+  "sourceSkip": "One original design-conflict skip: paid gradual gains test assumes nonrefundable start charge rather than the existing metered pricing policy. No new skips introduced.",
+  "conclusion": "failure",
+  "excludedUntrackedSourceQualification": "Historical aaea exclusion only; service is integrated from e69f29e9, scoped actual HTTP tests later pass. No retroactive aaea acceptance."
+}

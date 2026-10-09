@@ -1,0 +1,78 @@
+{
+  "sourceSha": "7c203d256e417ac0f8b23f3ff9698a17418a6edd",
+  "observedAtUtc": "2026-10-09T07:43:00Z",
+  "runId": 37899822721,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37899822721",
+  "status": "completed",
+  "accepted": false,
+  "localSteering": {
+    "tests": 18,
+    "pass": 18,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 164.415041,
+    "resource": {
+      "exitCode": 0,
+      "elapsedSeconds": 0.5217233330000001,
+      "sampledOwnedGroupPeakBytes": 190840832,
+      "heapMiB": 128,
+      "sampledGroupLimitMiB": 220,
+      "wallSeconds": 15,
+      "stopped": null,
+      "command": [
+        "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--max-old-space-size=128",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--wait-ms",
+        "0",
+        "--",
+        "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--max-old-space-size=128",
+        "--experimental-strip-types",
+        "--test",
+        "--test-isolation=none",
+        "--test-concurrency=1",
+        "--test-timeout=5000",
+        "src/models/vehicles/sedan-interior.test.ts",
+        "src/game/living-world/vehicle-boarding.test.ts",
+        "src/game/living-world/vehicle-clearance.test.ts"
+      ]
+    },
+    "logSha256": "c9ce74f90e6e665555450fd625b10c8a16cd9fc39ca71f26b1e7276cb7f2f7cc",
+    "scope": "CPU geometry, animation, ownership, content pins; no GPU, mobile, boarding, save or route acceptance"
+  },
+  "activeCar": {
+    "detail": "street",
+    "triangles": 990,
+    "drawCalls": 8,
+    "triangleCap": 1500,
+    "canBoard": false,
+    "routeAuthorized": false
+  },
+  "production": {
+    "healthOk": true,
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "programmeDeployment": false,
+    "gameplayOrSaveAcceptance": false
+  },
+  "remaining": [
+    "scoped remote compiler/HTTP lifecycle/Worker",
+    "full Node22/24 and build/download",
+    "trusted mapped custody and consumption",
+    "actor/door/continuous boarding",
+    "desktop/mobile/solo/multiplayer/interruption/save",
+    "exact-SHA staging and live observation",
+    "consented Goalmatic target and stable projection contract"
+  ],
+  "conclusion": "failure",
+  "compiler": {
+    "conclusion": "failure",
+    "diagnostics": 14,
+    "code": "TS2345",
+    "cause": "vertices fixture accepts BufferAttribute only; getAttribute returns BufferAttribute|InterleavedBufferAttribute",
+    "repairCommit": "3400ce46"
+  },
+  "httpAndWorker": "skipped"
+}

@@ -1,13 +1,22 @@
 // What the Boutique decides: which look the preview shows, and what each item offers. Pure, so it
 // is tested without a browser. Rules and prices are the engine's (systems/onboarding.js,
 // content/traits.js BOUTIQUE_PRICES — original beta prices).
-import type { AccessoryId, Look } from '../../../types/life.ts'
-import type { BoutiqueItem } from '../../../types/view.ts'
+import type { AccessoryId, LifeState, Look } from '../../../types/life.ts'
+import type { BoutiqueItem, OnboardingView } from '../../../types/view.ts'
 import { chooseAvatarWearable, keepAvatarAccessoryChoice } from '../../../game/wardrobe/look.ts'
 import type { AvatarLook } from '../../../game/wardrobe/look.ts'
 import { isAvatarWearableId } from '../../../game/wardrobe/rules.ts'
-export { wearableCards } from '../../../game/wardrobe/view.ts'
+import { wearableCards } from '../../../game/wardrobe/view.ts'
+export { wearableCards }
 export { removeAvatarWearable } from '../../../game/wardrobe/look.ts'
+
+/** Complete the startup projection when Boutique opens; catalogue rules stay in this lazy module. */
+export function withWearableBoutique(base: OnboardingView, state: Pick<LifeState, 'onboarding' | 'cash'>): OnboardingView {
+  return { ...base, boutique: [
+    ...base.boutique.filter(item => item.kind !== 'wearables'),
+    ...wearableCards(state.onboarding, state.cash, base.guest ? 'Settle in first.' : 'Finish creating your character first.'),
+  ] }
+}
 
 export type BoutiqueChoice = Omit<BoutiqueItem, 'kind'> & { kind: BoutiqueItem['kind'] | 'wearables' }
 export const SECTIONS: readonly (readonly [BoutiqueChoice['kind'], string])[] = [['hair', 'Hairstyles'], ['outfit', 'Outfits'], ['wearables', 'Layered clothing'], ['fabric', 'Fabrics'], ['accessories', 'Accessories']]

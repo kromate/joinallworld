@@ -240,6 +240,7 @@ async function adminShell(request: Request, env: WorkerEnv, url: URL): Promise<R
 /** Declared here, not in host-seam.ts: it names Workers runtime globals the Node test projects do not have. */
 /** The bindings and variables of the Worker (wrangler.jsonc, plus secrets and the outreach/voice settings the host may read). */
 export interface WorkerEnv {
+  INTERACTIVE_TEACHING_STARTS?: string
   JOINALLWORLD: DurableObjectNamespace
   ASSETS: Fetcher
   BUILD_ID?: string
@@ -362,7 +363,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const receipts = createOnce({ now, windowMs: ACTION_WINDOW_MS });
     // One character on several devices: a change a player would see is announced to every socket of that character (host-context.ts lifeAnnouncer).
     const lifeSync = lifeAnnouncer((publicId, frame) => context.push(publicId, frame));
-    const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note });
+    const { settle, act, playerAct } = lifeAuthority({ now, receipts, changed: lifeSync.note, interactiveTeachingStarts: env.INTERACTIVE_TEACHING_STARTS === '1' });
     const keys = new Map<string, Promise<object>>();
     const unresponsive = (ws: HostSocket): boolean => ws.pingedAt > 0 && !ws.alive && now() - ws.pingedAt >= HEARTBEAT_MS / 2;
     const open = (): HostSocket[] => [...this.held.all].filter(ws => ws.readyState === 1);

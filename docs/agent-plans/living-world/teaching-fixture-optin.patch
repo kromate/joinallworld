@@ -1,0 +1,45 @@
+diff --git a/src/game/teaching-career.test.ts b/src/game/teaching-career.test.ts
+--- a/src/game/teaching-career.test.ts
++++ b/src/game/teaching-career.test.ts
+@@ -8,7 +8,7 @@ import type { LifeState, ActivityAction } from '../types/life.ts'
+ 
+ await loadCityContent('lagos')
+ const NOW = Date.UTC(2026, 0, 5, 8)
+-const at = (now = NOW, trustedSave = false) => makeContext({ now, cityId: 'lagos', seed: 'teaching-career', trustedSave })
++const at = (now = NOW, trustedSave = false) => makeContext({ now, cityId: 'lagos', seed: 'teaching-career', trustedSave, interactiveTeachingStarts: true })
+ const act = (state: LifeState, type: string, payload: Record<string, unknown> = {}) => dispatch(state, { type, payload } as ActionBody, at(state.t))
+ function start(): LifeState {
+   const state = createLife({ t: NOW, cash: 0, job: 'teaching', location: 'park', spot: 'work', career: { auto: false }, needs: { energy: 100, hunger: 100 } }, at())
+diff --git a/server/teaching-career.test.ts b/server/teaching-career.test.ts
+--- a/server/teaching-career.test.ts
++++ b/server/teaching-career.test.ts
+@@ -24,7 +24,7 @@ async function read(f: World, cookie: string): Promise<LifeState> {
+ }
+ 
+ test('real action receipts fence concurrent teaching answers, changed payloads and terminal wage retries', async t => {
+-  const f = await fixture(t), { player, state } = await start(f)
++  const f = await fixture(t, { interactiveTeachingStarts: true }), { player, state } = await start(f)
+   f.advance(120_000)
+   assert.equal((await read(f, player.cookie)).cash, state.cash, 'server time alone cannot complete teaching')
+   const first = { type: 'career.teach', actionId: f.id(), payload: payload(state, 'denominator-count') }
+@@ -46,7 +46,7 @@ test('real action receipts fence concurrent teaching answers, changed payloads
+ })
+ 
+ test('a failed final teaching save rolls back wage, XP, performance and receipt before a successful retry', async t => {
+-  const disk = flakyDisk(), f = await fixture(t, { disk, lazyFlushMs: 0 }), { player, state } = await start(f)
++  const disk = flakyDisk(), f = await fixture(t, { disk, lazyFlushMs: 0, interactiveTeachingStarts: true }), { player, state } = await start(f)
+   let current = (await f.action(player.cookie, { type: 'career.teach', payload: payload(state, 'denominator-count') })).state
+   current = (await f.action(player.cookie, { type: 'career.teach', payload: payload(current, 'same-whole-pieces') })).state
+   const last = { type: 'career.teach', actionId: f.id(), payload: payload(current, 'one-fifth') }
+diff --git a/scripts/living-world-browser-qa.mjs b/scripts/living-world-browser-qa.mjs
+--- a/scripts/living-world-browser-qa.mjs
++++ b/scripts/living-world-browser-qa.mjs
+@@ -499,7 +499,7 @@ test('rendered teaching practice survives interruption and settles one wage on
+   requireCondition(/^[0-9a-f]{40}$/i.test(expectedSha) && expectedSha === sha, 'checkout SHA did not match required LW_QA_SOURCE_SHA')
+ 
+   phase = 'fixture-startup'
+-  const f = await fixture(t, { distDir: resolve(root, 'dist'), sessionTtlMs: 30 * 60_000, buildId: `joinallworld-${sha}` })
++  const f = await fixture(t, { distDir: resolve(root, 'dist'), sessionTtlMs: 30 * 60_000, buildId: `joinallworld-${sha}`, interactiveTeachingStarts: true })
+   const healthResponse = await fetch(`${f.base}/api/health`)
+   requireCondition(healthResponse.status === 200, 'fixture health endpoint failed')
+   const health = await healthResponse.json()

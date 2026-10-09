@@ -1,0 +1,70 @@
+{
+  "sourceSha": "cae89d3c046315e89f03429f7a83e500de69cf94",
+  "observedAtUtc": "2026-10-09T09:36:15Z",
+  "runId": 37911917701,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37911917701",
+  "ref": "codex/living-world-teaching-repair-next",
+  "status": "completed",
+  "conclusion": "failure",
+  "accepted": false,
+  "jobs": {
+    "release-policy": "success",
+    "compiler": "success",
+    "build-download-smoke": "success",
+    "ui": "success",
+    "activeLearning": "failure",
+    "laterOrderedGroups": "skipped",
+    "full": "separately required"
+  },
+  "review": "Sol plus independent existing Luna reviewed two test-only city/cue/generation/command repairs; no runtime authority or caps changed",
+  "precedingPartialEvidence": "candidate-3d37d643-evidence.json",
+  "productionSourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+  "programmeDeployment": false,
+  "remaining": [
+    "terminal exact changed-source fast/UI",
+    "full22/24 at exact acceptedsource",
+    "candidate device/solo/multiplayer/interruption/save",
+    "mappedjourneyproducers",
+    "staging/release/live",
+    "Goalmatictypedconsentedtarget"
+  ],
+  "activeLearning": {
+    "tests": 106,
+    "pass": 105,
+    "fail": 1,
+    "skipped": 0,
+    "failure": "read-only teaching browser fixture: import barrier timed out after 20327.066198ms; precise source cause under Luna diagnosis, no runtime failure inferred",
+    "durationMs": 48215.521387
+  },
+  "productionHealth": {
+    "observedAtUtc": "2026-10-09T09:36:15Z",
+    "ok": true,
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "serverTime": 1791538575675
+  },
+  "failureLogSha256": "f60e31a883f3ee5e7ae9e13e79a5e41fe109e03d5d84a0dfa6e252d9252b92a7",
+  "ui": {
+    "tests": 432,
+    "pass": 432,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 90252.691538
+  },
+  "smoke": {
+    "tests": 15,
+    "pass": 15,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 1496.296517
+  },
+  "download": {
+    "result": "success",
+    "startupRaw": 614297,
+    "rawCap": 615000,
+    "startupGzip": 222778,
+    "gzipCap": 223000,
+    "startupBrotli": 195040,
+    "brotliCap": 195600
+  },
+  "allLogSha256": "5cbbbf28845c2c0eab787159868870d4cde1226a6f4bc45fea1189aeb0152c28"
+}

@@ -1,0 +1,104 @@
+{
+  "sourceSha": "9b65d165c75cc4c3d1b181db330ff83381bcdf1e",
+  "observedAtUtc": "2026-10-09T09:00:03Z",
+  "runId": 37903856807,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37903856807",
+  "ref": "codex/living-world-full-9b65d165",
+  "status": "completed",
+  "conclusion": "success",
+  "accepted": false,
+  "jobs": {
+    "release-policy": "success",
+    "full-source (22)": "success",
+    "full-source (24)": "success",
+    "full-server (22)": "success",
+    "full-server (24)": "success",
+    "full-worker (22)": "success",
+    "full-worker (24)": "success"
+  },
+  "source22": {
+    "tests": 2490,
+    "pass": 2489,
+    "fail": 0,
+    "skipped": 1,
+    "durationMs": 998385.641271
+  },
+  "source24": {
+    "tests": 2490,
+    "pass": 2489,
+    "fail": 0,
+    "skipped": 1,
+    "durationMs": 984419.858428
+  },
+  "server22": {
+    "tests": 992,
+    "pass": 989,
+    "fail": 0,
+    "skipped": 3,
+    "durationMs": 286329.46442
+  },
+  "server24": {
+    "tests": 992,
+    "pass": 989,
+    "fail": 0,
+    "skipped": 3,
+    "durationMs": 290747.171929
+  },
+  "buildTypecheckDownload": "Both source waves passed compiler/build/download; both server waves passed build/download",
+  "download": {
+    "startupRaw": 612875,
+    "startupRawCap": 615000,
+    "startupGzip": 222353,
+    "startupGzipCap": 223000,
+    "startupBrotli": 194819,
+    "startupBrotliCap": 195600
+  },
+  "scope": "Frozen reviewed WORLD134 and earlier programme source; excludes active Teaching6e4cc72b and later repairs. Terminal success; do not transfer acceptance to later source.",
+  "production": {
+    "sourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+    "programmeDeployment": false
+  },
+  "remaining": [
+    "teaching replacement exact-SHA gates",
+    "actual gameplay/device/interruption/multiplayer/save checks",
+    "complete mapped rental/driving/restock journey",
+    "exact-SHA staging/live observation",
+    "Goalmatic target/typed contract"
+  ],
+  "fullRegressionAccepted": true,
+  "worker22": {
+    "tests": 151,
+    "pass": 151,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 480606.579504,
+    "importMs": 303.4,
+    "importCapMs": 400,
+    "rawBytes": 4745478,
+    "gzipBytes": 1791379
+  },
+  "worker24": {
+    "tests": 151,
+    "pass": 151,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 468126.46189,
+    "importMs": 261.8,
+    "importCapMs": 400,
+    "rawBytes": 4745478,
+    "gzipBytes": 1791379
+  },
+  "skipQualification": [
+    "source: existing priced gradual-gain design conflict, branch meters these activities",
+    "server: three existing timed-receipt/shared-table/lazy-undo design conflicts; zero new skipped cases"
+  ],
+  "evidenceQualification": "All six canonical source/server/Worker waves passed at exact9b; accepted remains false for programme/staging/production. New Teaching6e and later repairs excluded.",
+  "logSha256": {
+    "source22": "db853c27aa5b4eaee1f163c577bbab33b17b00d6b71adab28a85353c3e05078d",
+    "source24": "9a9de37db654fe29af481df350fc836e7778492347132d121e3e16731e7b5d4e",
+    "server22": "0996b2028bfb6f5bd08e945bbcc039bbbb3064c9c7c60472c7045ec478fca148",
+    "server24": "e560b93d01b154080edfb0818375346290c5f3e939e1a1b3ee114fba41fd93b0",
+    "worker22": "532e28c44acb6420b640cd5007f9e16691a07b0dfe594812b48409b67cba34f0",
+    "worker24": "10b61ba397c18e1b54738aad44eea2e83600990ea301edfe443b1ff564ecb078"
+  }
+}

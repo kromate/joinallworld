@@ -1,23 +1,18 @@
-"""Private builder writer lease primitive, not a durable index opener.
-
-Never unlink the lock inode. A supervisor must pass the descriptor to its fixed
-worker and close only after that worker is terminal. Advisory, local POSIX only.
-"""
+"""Private builder POSIX lease, not a durable opener. Never unlink its lock; supervisors close only after the fixed worker is terminal."""
 from contextlib import contextmanager
 from dataclasses import dataclass
+import hashlib
 import fcntl
+import json
 import os
 from pathlib import Path
+import resource
 import stat
-import weakref
+import sys
 
 
 def verify_index_lease_report(child, value):
-    """Check reported root/lock identity after the owned worker has been reaped.
-
-    This validates named private inodes; it does not acquire or prove a flock.
-    The caller must separately validate the report's exact fields and integers.
-    """
+    """Check named inodes after reap, not flock ownership. Caller validates schema."""
     info = child.lstat(); lock = (child/"writer.lock").lstat()
     if (child.resolve(strict=True) != child or not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
             or stat.S_IMODE(info.st_mode) != 0o700
@@ -56,40 +51,9 @@ class IndexShardHandoff:
     _seal: object
 
 
-_SHARD_HANDOFFS = weakref.WeakSet()
-
-
-def _register_shard_handoff(value):
-    _SHARD_HANDOFFS.add(value)
-    return value
-
-
 def _verify_shard_handoff(handoff, lease, authority):
-    from index_root import _lease
-    if (type(handoff) is not IndexShardHandoff or handoff not in _SHARD_HANDOFFS
-            or handoff._seal is not _SHARD_HANDOFF_SEAL
-            or authority is not handoff.authority or type(lease) is not IndexWriterLease
-            or lease is not handoff.namespace_lease or lease.root != handoff.root):
-        raise TypeError("shard access requires its exact sealed handoff, authority and caller lease")
-    root, info = _lease(lease); lock = (root/"writer.lock").lstat()
-    lock_id = handoff.identity[2:]
-    if ((info.st_dev, info.st_ino) != handoff.identity[:2]
-            or (lease.device, lease.inode) != lock_id or (lock.st_dev, lock.st_ino) != lock_id):
-        raise ValueError("caller namespace lease/root identity changed")
-    probe = os.open(root/"writer.lock", os.O_RDWR | os.O_NOFOLLOW | os.O_NONBLOCK)
-    try:
-        held = os.fstat(probe)
-        if (held.st_dev, held.st_ino) != handoff.identity[2:]:
-            raise ValueError("namespace lock inode changed")
-        try: fcntl.flock(probe, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError: pass
-        else:
-            fcntl.flock(probe, fcntl.LOCK_UN)
-            raise ValueError("caller namespace lease is no longer held")
-    finally: os.close(probe)
     from index_controller_state import verify_shard_handoff
-    verify_shard_handoff(handoff, lease, authority)
-    return root
+    return verify_shard_handoff(handoff, lease, authority)
 
 
 def _private_directory(info):
@@ -156,3 +120,61 @@ def index_writer_lease(root):
         if descriptor is not None:
             os.close(descriptor)
         os.close(directory)
+
+
+def _campaign_inherited_lease(argv):
+    if len(argv) != 7 or argv[1] != "--campaign-inherited-lease":
+        raise ValueError("invalid helper arguments")
+    root = Path(argv[2]); values = argv[3:]
+    if not root.is_absolute() or root.resolve(strict=True) != root or any(
+            len(v) > 20 or not v.isascii() or not v.isdecimal() or str(int(v)) != v for v in values):
+        raise ValueError("invalid root/IDs")
+    expected = tuple(int(v) for v in values)
+    if any(v > 2**63-1 for v in expected): raise ValueError("identity too large")
+    before = root.lstat(); _private_directory(before)
+    if (before.st_dev, before.st_ino) != expected[:2]: raise ValueError("root changed")
+    lock = root/"writer.lock"; named = lock.lstat(); _lock_file(named); held = os.fstat(6); _lock_file(held)
+    flags = fcntl.fcntl(6, fcntl.F_GETFL)
+    if ((flags & os.O_ACCMODE) != os.O_RDWR
+            or (held.st_dev, held.st_ino) != expected[2:]
+            or (named.st_dev, named.st_ino) != expected[2:]):
+        raise ValueError("campaign fd mismatch")
+    # Node22's macOS spawn clears O_NONBLOCK on this shared description.
+    fcntl.fcntl(6, fcntl.F_SETFL, flags | os.O_NONBLOCK)
+    digest = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    for kind, cap in ((resource.RLIMIT_CPU, 1), (resource.RLIMIT_FSIZE, 65536)):
+        soft, hard = resource.getrlimit(kind)
+        value = cap
+        for limit in (soft, hard):
+            if limit != resource.RLIM_INFINITY: value = min(value, limit)
+        resource.setrlimit(kind, (value, value))
+    try: fcntl.flock(6, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError as error: raise IndexWriterBusy("campaign lease busy") from error
+    after = root.lstat(); current = lock.lstat(); held = os.fstat(6)
+    _private_directory(after); _lock_file(current); _lock_file(held)
+    flags = fcntl.fcntl(6, fcntl.F_GETFL)
+    if (root.resolve(strict=True) != root or (after.st_dev, after.st_ino) != expected[:2]
+            or (current.st_dev, current.st_ino) != expected[2:] or (held.st_dev, held.st_ino) != expected[2:]
+            or (flags & os.O_ACCMODE) != os.O_RDWR or not flags & os.O_NONBLOCK):
+        raise ValueError("lock changed after flock")
+    report = {"format":"world-campaign-lease-ready-v1", "rootDevice":expected[0], "rootInode":expected[1],
+        "lockDevice":expected[2], "lockInode":expected[3], "helperSha256":digest}
+    return (json.dumps(report, sort_keys=True, separators=(",", ":"))+"\n").encode("ascii")
+
+
+def main(argv=None):
+    try:
+        report = _campaign_inherited_lease(sys.argv if argv is None else argv)
+        view = memoryview(report)
+        while view:
+            count = os.write(1, view)
+            if count < 1: raise OSError("ready report write made no progress")
+            view = view[count:]
+        return 0
+    except Exception as error:
+        os.write(2, ((str(error) or type(error).__name__)[:1024]+"\n").encode("utf-8", "replace"))
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

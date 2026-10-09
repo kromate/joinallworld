@@ -1,5 +1,44 @@
 # Implementation checkpoint — 9 October 2026
 
+Exact **3880c17f25509ab13175784d5b1a794923bafa78**, run
+[37915503802](https://github.com/kromate/joinallworld/actions/runs/37915503802),
+is terminal **SUCCESS** on Linux and macOS: **495 distinct tests +3 policy**,
+plus World TypeScript. Python322=19audit/11session/99affected/193remaining;
+Node173=27protocol/58contracts/12SDK-source/39campaign-Ledger/20planner/12lease-windows/5release.
+Mac repeats5 Python and6 Node actual lease tests; these11 executions are not
+additional distinct tests. All32 artifacts, eight changed source/workflow pins
+and45 fixed inputs are verified against exact final source. See
+[campaign-lease-window-acceptance.json](campaign-lease-window-acceptance.json)
+and [CAMPAIGN-LEASE-WINDOW-OPERATIONS.md](CAMPAIGN-LEASE-WINDOW-OPERATIONS.md).
+
+Actual helper/OFD inheritance, surviving-worker ownership, coordinator SIGKILL,
+unsafe locks/pins, helper deadlines and complete deterministic capture/audit
+windows pass. Strict checks refused GitHub's root-owned0775 Python; an owned0755
+standard `venv --copies --without-pip` copy has identical executable bytes and
+satisfies the original checks. Node22.19 macOS/libuv clears O_NONBLOCK during
+spawn; the fixed helper restores only that flag after exact private regular
+RDWR inode validation and retains post-flock checks. The added actual regression
+restores the flag without releasing the original lock. Source8064/8192 and
+state14500/16384 fit original buckets; source allowance892928/control1048576
+and all worker/output/wall/attempt limits remain unchanged. Retained v30–v34
+failures/provisional receipts are ignored local diagnostics, not acceptance.
+
+Previous main/world-foundation e294f974 passes mainCI37910151391 fast typecheck,
+build/download/smoke and policy (full skipped). This source milestone adds no
+runtime/map upload. Paired FD6/FD7 transport/lifecycle fixture source remains
+untested and excluded. Next replace actual campaign/acquisition ownership and
+propagate it through all mutating children, then finite same-campaign accounting
+and no-attempt terminal V3 reopen/V2 windows. Snapshot relocation4887B fits5606B
+existing headroom; it is a reviewed implementation seam, not code acceptance.
+A coordinator-PID legacy marker cannot fence old code after coordinator death;
+a proved migration barrier or quiescent check is required before mutation.
+
+Memory monitor10:09 remains WARNING2/10.8GB swap. WORLD starts no local heavy
+tests/compiler/build/server/browser/acquisition/upload. Remote checks run serially;
+only bounded file/Git/hash review occurs locally. Full source union, country
+geometry/streaming, Nigeria adaptation/rendering, rights and physical-phone proof
+remain OPEN. Full goal active. Earlier accepted checkpoints are historical.
+
 Exact **cfb5c3b1a12d80d1bb94aa7b3bf3e0c75c63d323**, run **37908535625**, is
 terminal **SUCCESS**: **478 tests +3 policy =481 distinct checks**, plus World
 TypeScript. Python317=19audit/11session/94affected/193remaining;

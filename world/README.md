@@ -1,5 +1,15 @@
 # Independent world-data builder
 
+The shared-OFD campaign lease bridge and complete bounded windows pass **495
+distinct tests, three policy checks and World TypeScript** on exact3880c17f,
+run37915503802; macOS repeats11 actual lease tests successfully. See
+[CAMPAIGN-LEASE-WINDOW-OPERATIONS.md](CAMPAIGN-LEASE-WINDOW-OPERATIONS.md) and
+[campaign-lease-window-acceptance.json](campaign-lease-window-acceptance.json).
+Original45-source/1MiB control and worker limits remain unchanged. Actual
+campaign/acquisition ownership, global accounting, V2 window execution, country
+geometry and gameplay/phone integration remain next. This builder phase adds no
+production map detail. Earlier checkpoints below are historical.
+
 Latest admitted-child handoff and source-capacity milestone passes **478 tests,
 three policy checks and World TypeScript**, exact cfb5c3b1/run37908535625. Real
 admitted children open sequentially under the original held namespace lease

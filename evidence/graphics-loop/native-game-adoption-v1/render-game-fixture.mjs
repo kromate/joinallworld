@@ -84,12 +84,14 @@ async function evaluate(expression) {
 
 async function capture(name, settleMs = 500) {
   await delay(settleMs);
+  const renderEvidence = await evaluate('window.nativeGameFixture?.renderForCapture?.() ?? null');
+  await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
   const snapshot = await evaluate('window.nativeGameFixture?.sample?.() ?? null');
   const screenshot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, fromSurface: true });
   const bytes = Buffer.from(screenshot.data, 'base64');
   const filename = `office-${name}.png`;
   await writeFile(path.join(resultDir, filename), bytes);
-  return { name, snapshot, screenshot: { path: filename, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') } };
+  return { name, snapshot, renderEvidence, screenshot: { path: filename, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') } };
 }
 
 let report;
@@ -204,6 +206,9 @@ try {
       && walkPhaseEvidence.imageHashesDiffer,
     closeupsFrameWholeActor: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
       .every((sample) => sample.snapshot?.cameraActorFrame?.wholeActorVisible === true),
+    closeupsRenderActorPixels: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
+      .every((sample) => sample.renderEvidence?.drawCalls > 0 && sample.renderEvidence?.triangles > 0
+        && sample.renderEvidence?.actorPixelContrast >= 24),
     interactionSample: interact.snapshot.player?.pose === 'interact',
     realNpcActivityCompleted: npcInteraction?.started?.code === 'started' && npcInteraction?.completed === true
       && npcInteraction?.responseNamesNpc === true && npcInteraction?.familiarityChanged === true
@@ -239,8 +244,11 @@ try {
     afterUnsupported,
     disposal,
     consoleErrors: pageErrors,
-    screenshots: [idle, front, profileView, playerCloseIdle, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted, mobile].map(({ name, screenshot, snapshot }) => ({
-      name, screenshot, camera: snapshot.currentCamera, playerPose: snapshot.player?.pose, cameraActorFrame: snapshot.cameraActorFrame,
+    screenshots: [idle, front, profileView, playerCloseIdle, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted, mobile].map(({ name, screenshot, snapshot, renderEvidence }) => ({
+      name, screenshot, camera: snapshot.currentCamera, playerPose: snapshot.player?.pose,
+      cameraActorFrame: snapshot.cameraActorFrame, renderEvidence: { drawCalls: renderEvidence?.drawCalls,
+        triangles: renderEvidence?.triangles, actorPixel: renderEvidence?.actorPixel,
+        backgroundPixel: renderEvidence?.backgroundPixel, actorPixelContrast: renderEvidence?.actorPixelContrast },
       nativeCrowd: snapshot.crowd?.canonical, proceduralCrowd: snapshot.crowd?.procedural,
     })),
     finalSnapshot: afterUnsupported,

@@ -41,6 +41,9 @@ interface CameraActorFrame {
   ndc: { minX: number; maxX: number; minY: number; maxY: number };
   allCornersInFrustum: boolean;
   wholeActorVisible: boolean;
+  frontFacingDot: number;
+  visibilityRay: { clearLine: boolean; firstActorHit: { name: string; distance: number } | null;
+    nearestOccluder: { name: string; distance: number } | null };
 }
 
 declare global {
@@ -68,7 +71,7 @@ function text(node: Element, value: unknown): void {
 }
 
 function makeRenderer(canvas: HTMLCanvasElement): THREE.WebGLRenderer {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -116,12 +119,14 @@ function createFixture() {
   let stage = 'Loading Lagos office game slice';
   let currentCamera = 'scene';
   let closeCameraActor: THREE.Object3D | null = null;
+  let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null };
   let unsupportedProbe: Record<string, unknown> | null = null;
   let interaction: Record<string, unknown> | null = null;
   let lastContact: ReturnType<SkinnedBody['solveFeet']> | null = null;
   let frame = 0;
   let walkPhase = 0;
   let walkFrames = 0;
+  let walkPhaseFrozen = false;
   let startedAt = 0;
   let mode: 'idle' | 'walk' | 'interact' = 'idle';
   let animationHandle = 0;
@@ -175,6 +180,7 @@ function createFixture() {
     if (closeCameraActor && currentCamera.endsWith('-close')) placeCloseCamera(closeCameraActor);
     entry.look(camera.position.x, camera.position.z);
     renderer.render(world, camera);
+    if (closeCameraActor && currentCamera.endsWith('-close')) closeCameraRay = measureCloseCameraRay(closeCameraActor);
   }
 
   function placeCloseCamera(actor: THREE.Object3D) {
@@ -208,12 +214,39 @@ function createFixture() {
     const minX = Math.min(...corners.map((point) => point.x)), maxX = Math.max(...corners.map((point) => point.x));
     const minY = Math.min(...corners.map((point) => point.y)), maxY = Math.max(...corners.map((point) => point.y));
     const allCornersInFrustum = corners.every((point) => point.z > -1 && point.z < 1);
+    const front = actor.getWorldDirection(new THREE.Vector3()).setY(0).negate().normalize();
+    const toCamera = camera.position.clone().sub(actor.getWorldPosition(new THREE.Vector3())).setY(0).normalize();
     return { actorOrigin: actor.getWorldPosition(new THREE.Vector3()).toArray() as [number, number, number],
       headPosition: headPosition ?? null,
       bounds: { min: bounds.min.toArray() as [number, number, number], max: bounds.max.toArray() as [number, number, number] },
       cameraPosition: camera.position.toArray() as [number, number, number],
       ndc: { minX, maxX, minY, maxY }, allCornersInFrustum,
-      wholeActorVisible: allCornersInFrustum && minX > -0.96 && maxX < 0.96 && minY > -0.96 && maxY < 0.96 };
+      wholeActorVisible: allCornersInFrustum && minX > -0.96 && maxX < 0.96 && minY > -0.96 && maxY < 0.96
+        && closeCameraRay.clearLine,
+      frontFacingDot: front.dot(toCamera), visibilityRay: closeCameraRay };
+  }
+
+  function measureCloseCameraRay(actor: THREE.Object3D): CameraActorFrame['visibilityRay'] {
+    world.updateMatrixWorld(true);
+    actor.updateWorldMatrix(true, true);
+    camera.updateMatrixWorld(true);
+    const bounds = new THREE.Box3().setFromObject(actor);
+    const target = bounds.getCenter(new THREE.Vector3());
+    const direction = target.clone().sub(camera.position);
+    const length = direction.length();
+    if (length <= 0) return { clearLine: false, firstActorHit: null, nearestOccluder: null };
+    const raycaster = new THREE.Raycaster(camera.position, direction.normalize(), 0, length + 0.05);
+    const hits = raycaster.intersectObject(world, true);
+    const belongsToActor = (object: THREE.Object3D) => {
+      for (let current: THREE.Object3D | null = object; current; current = current.parent) if (current === actor) return true;
+      return false;
+    };
+    const actorHit = hits.find((hit) => belongsToActor(hit.object));
+    const obstruction = hits.find((hit) => !belongsToActor(hit.object));
+    const firstActorHit = actorHit ? { name: actorHit.object.name || '(unnamed actor mesh)', distance: actorHit.distance } : null;
+    const nearestOccluder = obstruction ? { name: obstruction.object.name || '(unnamed scene mesh)', distance: obstruction.distance } : null;
+    return { firstActorHit, nearestOccluder,
+      clearLine: Boolean(actorHit && (!obstruction || obstruction.distance >= actorHit.distance - 0.02)) };
   }
 
   const playerLoader = async (owner: Kit, look: unknown, seed: unknown, scale: number): Promise<SkinnedBody> => {
@@ -392,6 +425,7 @@ function createFixture() {
 
   function setMode(next: 'idle' | 'walk' | 'interact') {
     mode = next;
+    walkPhaseFrozen = false;
     if (!standIn || !entry) return;
     if (next === 'idle') {
       const start = entry.walk.entrance ?? { x: 0, y: 0, z: 7.8, ry: Math.PI };
@@ -414,6 +448,7 @@ function createFixture() {
   function setWalkPhase(phase: number) {
     if (!standIn || !entry || !Number.isFinite(phase)) throw new Error('Cannot sample requested walk phase');
     mode = 'walk';
+    walkPhaseFrozen = true;
     walkPhase = phase;
     const start = entry.walk.entrance ?? { x: 0, y: 0, z: 7.8, ry: Math.PI };
     const x = start.x + Math.sin(phase) * 0.62;
@@ -427,6 +462,31 @@ function createFixture() {
       root: actors.get('player')?.body.object.position.toArray() ?? null };
   }
 
+  function renderForCapture() {
+    draw();
+    const actor = closeCameraActor;
+    let actorPixel: number[] | null = null;
+    let backgroundPixel: number[] | null = null;
+    let actorPixelContrast = 0;
+    if (actor) {
+      const bounds = new THREE.Box3().setFromObject(actor);
+      const point = bounds.getCenter(new THREE.Vector3()).project(camera);
+      const gl = renderer.getContext();
+      const readPixel = (ndcX: number, ndcY: number) => {
+        const x = Math.max(0, Math.min(renderer.domElement.width - 1, Math.round((ndcX + 1) * 0.5 * renderer.domElement.width)));
+        const y = Math.max(0, Math.min(renderer.domElement.height - 1, Math.round((ndcY + 1) * 0.5 * renderer.domElement.height)));
+        const pixel = new Uint8Array(4);
+        gl.readPixels(x, y, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
+        return [...pixel];
+      };
+      actorPixel = readPixel(point.x, point.y);
+      backgroundPixel = readPixel(0.94, 0.94);
+      actorPixelContrast = Math.max(...actorPixel.slice(0, 3).map((channel, index) => Math.abs(channel - backgroundPixel![index]!)));
+    }
+    return { drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles,
+      actorPixel, backgroundPixel, actorPixelContrast, actorFrame: actorFrame(actor) };
+  }
+
   function poll() {
     if (disposed) return;
     if (readyState === 'loading' && startedAt > 0 && performance.now() - startedAt > 100_000) {
@@ -434,7 +494,7 @@ function createFixture() {
       errors.push(`Readiness timeout: player prepared=${Boolean(actors.get('player') && 'preparedMetrics' in actors.get('player')!.body)}, crowd=${JSON.stringify(crowdCounts())}`);
       stage = errors.at(-1)!;
     }
-    if (mode === 'walk' && standIn && entry) {
+    if (mode === 'walk' && !walkPhaseFrozen && standIn && entry) {
       frame += 1;
       const start = entry.walk.entrance ?? { x: 0, y: 0, z: 7.8, ry: Math.PI };
       const phase = ++walkPhase;
@@ -442,7 +502,7 @@ function createFixture() {
       const z = start.z - (1 - Math.cos(phase)) * 0.62;
       standIn.move(x, entry.walk.heightAt(x, z), z, Math.atan2(Math.cos(phase), Math.sin(phase)));
       standIn.gait(phase, false, entry.walk.heightAt(x, z));
-      if (frame % 6 === 0) draw();
+      if (frame % 6 === 0 || currentCamera.endsWith('-close')) draw();
     }
     updateDom();
     animationHandle = requestAnimationFrame(poll);
@@ -578,6 +638,7 @@ function createFixture() {
     setMode,
     setCamera,
     setWalkPhase,
+    renderForCapture,
     probeUnsupportedPose,
     performNpcAction,
     scenePoses: NATIVE_GAME_BODY_CAPABILITIES,

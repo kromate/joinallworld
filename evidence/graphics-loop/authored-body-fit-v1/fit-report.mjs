@@ -271,7 +271,7 @@ const report = {
   method: {
     candidatePredicate: `Head joint weight >= ${HEAD_WEIGHT_MIN}; remove skin vertices (region red >= ${SKIN_REGION_MIN}, alpha <= ${HAIR_REGION_MAX}) OR scalp vertices (region alpha >= ${HAIR_REGION_MIN}), with rest Y >= neck Y - ${NECK_CLEARANCE} m. Fit bounds use skin vertices only.`,
     removalRule: `Remove only triangles whose three vertices satisfy the head-weight, skin-or-scalp, and neck-Y conditions. Mixed head/neck and shoulder triangles stay on the original body; scalp removal does not expand head-fit bounds.`,
-    neckClosure: 'The runtime adapter additionally stitches the lowest closed VitSkin boundary to the largest retained-body cut loop with a 4-ring skinned connector. It interpolates toward each resampled lower boundary vertex’s original four joint influences and adds a 1.5 mm overlap into the authored head. Runtime metrics report selected loop sizes and connector triangle count; this report does not claim rendered seam acceptance.',
+    neckClosure: 'The runtime adapter additionally stitches the lowest closed VitSkin boundary to the largest retained-body cut loop with a 4-ring skinned connector. It welds body seam endpoints by transformed position at 1e-6 m tolerance while retaining source UV/joint samples, interpolates toward each resampled lower boundary vertex’s original four joint influences, and adds a 1.5 mm overlap into authored skin. Runtime metrics report selected loop sizes and connector triangle count; this report does not claim rendered seam acceptance.',
     important: 'These are source-rest bounds and index counts, not rendered head/neck seam proof. Lower-boundary filtering may leave overlap; the root full-body GPU test must check seams during motion.'
   },
   authored: {

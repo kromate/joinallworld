@@ -1,0 +1,178 @@
+{
+  "status": "pass",
+  "scope": "bounded CPU adapter and neck-bridge ownership test; not rendered seam or animation acceptance",
+  "inputHashes": {
+    "male": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "female": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "head": "ba62be0114e4656e2cf8ba636d3f85a5aadbdcc723dd7ebe96e77299917d1a81"
+  },
+  "results": {
+    "male": {
+      "pass": true,
+      "bridge": {
+        "vertices": 160,
+        "triangles": 240,
+        "geometryIndexType": "Uint16Array"
+      },
+      "fit": {
+        "bodyKey": "male",
+        "sourceMeshes": 10,
+        "sourceExpressionMeshes": 2,
+        "sourceMorphNames": [
+          "Happy",
+          "Smile_Lips_Closed",
+          "Jaw_Lower",
+          "Eyes_Closed_Max",
+          "Eyebrows_Raised_Left",
+          "Eyebrows_Raised_Right"
+        ],
+        "sourceBounds": {
+          "min": [
+            -0.0979931578040123,
+            1.4583238363265991,
+            -0.13642708584666252
+          ],
+          "max": [
+            0.0979931578040123,
+            1.757686972618103,
+            0.10583589598536491
+          ],
+          "size": [
+            0.1959863156080246,
+            0.2993631362915039,
+            0.24226298183202744
+          ]
+        },
+        "bodyHeadBounds": {
+          "min": [
+            -0.09065810279999997,
+            1.57160235918,
+            -0.10618056000000001
+          ],
+          "max": [
+            0.0906787308,
+            1.81009601838,
+            0.11450829439999999
+          ],
+          "size": [
+            0.18133683359999997,
+            0.23849365919999999,
+            0.2206888544
+          ]
+        },
+        "uniformScale": 0.7966700982440521,
+        "sourceToBodyTranslation": [
+          0.000010314000000011259,
+          0.4097993652220453,
+          0.0163494103161012
+        ],
+        "bodyTrianglesBefore": 9002,
+        "bodyTrianglesRemoved": 1722,
+        "bodyTrianglesAfter": 7280,
+        "mixedRegionTriangles": 61,
+        "neckBridgeTriangles": 240,
+        "bodyCutBoundaryVertices": 30,
+        "authoredNeckBoundaryVertices": 40,
+        "neckBridgeHeadOverlapMetres": 0.0015,
+        "neckBridgeBottomWeightMaxError": 1.1102230246251565e-16,
+        "authoredTriangles": 18196,
+        "ownedMaterialClones": 10,
+        "sourceGeometryBytesReferenced": 2278416,
+        "expressionMorphNames": [
+          "Happy",
+          "Smile_Lips_Closed",
+          "Jaw_Lower",
+          "Eyes_Closed_Max",
+          "Eyebrows_Raised_Left",
+          "Eyebrows_Raised_Right"
+        ]
+      },
+      "restoredGeometry": true
+    },
+    "female": {
+      "pass": true,
+      "bridge": {
+        "vertices": 160,
+        "triangles": 240,
+        "geometryIndexType": "Uint16Array"
+      },
+      "fit": {
+        "bodyKey": "female",
+        "sourceMeshes": 10,
+        "sourceExpressionMeshes": 2,
+        "sourceMorphNames": [
+          "Happy",
+          "Smile_Lips_Closed",
+          "Jaw_Lower",
+          "Eyes_Closed_Max",
+          "Eyebrows_Raised_Left",
+          "Eyebrows_Raised_Right"
+        ],
+        "sourceBounds": {
+          "min": [
+            -0.0979931578040123,
+            1.4583238363265991,
+            -0.13642708584666252
+          ],
+          "max": [
+            0.0979931578040123,
+            1.757686972618103,
+            0.10583589598536491
+          ],
+          "size": [
+            0.1959863156080246,
+            0.2993631362915039,
+            0.24226298183202744
+          ]
+        },
+        "bodyHeadBounds": {
+          "min": [
+            -0.08883608804999998,
+            1.5373080002200001,
+            -0.11294409191999999
+          ],
+          "max": [
+            0.08884730343000002,
+            1.7664717875200002,
+            0.11187535818000002
+          ],
+          "size": [
+            0.17768339148,
+            0.2291637873000001,
+            0.2248194501
+          ]
+        },
+        "uniformScale": 0.7655043641607648,
+        "sourceToBodyTranslation": [
+          0.000005607690000020149,
+          0.4209547391523196,
+          0.011174477801846947
+        ],
+        "bodyTrianglesBefore": 9002,
+        "bodyTrianglesRemoved": 1849,
+        "bodyTrianglesAfter": 7153,
+        "mixedRegionTriangles": 46,
+        "neckBridgeTriangles": 240,
+        "bodyCutBoundaryVertices": 23,
+        "authoredNeckBoundaryVertices": 40,
+        "neckBridgeHeadOverlapMetres": 0.0015,
+        "neckBridgeBottomWeightMaxError": 1.1102230246251565e-16,
+        "authoredTriangles": 18196,
+        "ownedMaterialClones": 10,
+        "sourceGeometryBytesReferenced": 2278416,
+        "expressionMorphNames": [
+          "Happy",
+          "Smile_Lips_Closed",
+          "Jaw_Lower",
+          "Eyes_Closed_Max",
+          "Eyebrows_Raised_Left",
+          "Eyebrows_Raised_Right"
+        ]
+      },
+      "restoredGeometry": true
+    }
+  },
+  "elapsedMs": 71.1,
+  "heapUsedBytes": 22126528,
+  "rssBytes": 140705792
+}

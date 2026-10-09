@@ -20,6 +20,7 @@ export interface AuthoredHeadMetrics {
   readonly bodyCutBoundaryVertices: number;
   readonly authoredNeckBoundaryVertices: number;
   readonly neckBridgeHeadOverlapMetres: number;
+  readonly neckBridgeBottomWeightMaxError: number;
   readonly authoredTriangles: number;
   readonly ownedMaterialClones: number;
   readonly sourceGeometryBytesReferenced: number;
@@ -223,26 +224,45 @@ function bodyCutLoop(bodyMesh: THREE.SkinnedMesh, selected: Uint8Array): Boundar
   assert(index && uv?.itemSize >= 2 && skinIndex?.itemSize >= 4 && skinWeight?.itemSize >= 4,
     'body neck cut needs indexed UV and skin-weight geometry');
   const edges = new Set<string>();
+  const geometricIds = new Map<string, number>();
+  const representativeVertices = new Map<number, number>();
+  let nextGeometricId = 0;
+  const geometricId = (vertex: number): number => {
+    const point = new THREE.Vector3(position.getX(vertex), position.getY(vertex), position.getZ(vertex)).applyMatrix4(bodyMesh.matrix);
+    const key = `${Math.round(point.x * 1e6)}:${Math.round(point.y * 1e6)}:${Math.round(point.z * 1e6)}`;
+    let id = geometricIds.get(key);
+    if (id === undefined) {
+      id = nextGeometricId++;
+      geometricIds.set(key, id);
+      representativeVertices.set(id, vertex);
+    }
+    return id;
+  };
   for (let offset = 0; offset < index.count; offset += 3) {
     const triangle = [index.getX(offset), index.getX(offset + 1), index.getX(offset + 2)];
     const anySelected = triangle.some((vertex) => selected[vertex] === 1);
     const allSelected = triangle.every((vertex) => selected[vertex] === 1);
     if (!anySelected || allSelected) continue;
     for (let side = 0; side < 3; side++) {
-      const a = triangle[side]!;
-      const b = triangle[(side + 1) % 3]!;
-      if (selected[a] !== 1 || selected[b] !== 1) continue;
+      const sourceA = triangle[side]!;
+      const sourceB = triangle[(side + 1) % 3]!;
+      if (selected[sourceA] !== 1 || selected[sourceB] !== 1) continue;
+      const a = geometricId(sourceA);
+      const b = geometricId(sourceB);
+      if (a === b) continue;
       edges.add(a < b ? `${a}:${b}` : `${b}:${a}`);
     }
   }
-  const loops = closedLoops([...edges].map((key) => key.split(':').map(Number) as [number, number]), (vertex) => {
+  const loops = closedLoops([...edges].map((key) => key.split(':').map(Number) as [number, number]), (geometricVertex) => {
+    const vertex = representativeVertices.get(geometricVertex);
+    assert(vertex !== undefined, 'neck boundary lost its source vertex provenance');
     const influences: Array<readonly [number, number]> = [];
     for (let channel = 0; channel < 4; channel++) {
       const weight = skinWeight.getComponent(vertex, channel);
       if (weight > 0) influences.push([skinIndex.getComponent(vertex, channel), weight]);
     }
     return {
-      index: vertex,
+      index: geometricVertex,
       position: new THREE.Vector3(position.getX(vertex), position.getY(vertex), position.getZ(vertex)).applyMatrix4(bodyMesh.matrix),
       uv: new THREE.Vector2(uv.getX(vertex), uv.getY(vertex)),
       jointWeights: influences,
@@ -338,7 +358,7 @@ function makeNeckBridge(
   bodyMesh: THREE.SkinnedMesh,
   bodyLoop: BoundaryVertex[],
   authoredLoop: BoundaryVertex[],
-): { mesh: THREE.SkinnedMesh; triangles: number; headOverlap: number } {
+): { mesh: THREE.SkinnedMesh; triangles: number; headOverlap: number; bottomWeightMaxError: number } {
   const bodyGeometry = bodyMesh.geometry;
   const skinIndex = bodyGeometry.getAttribute('skinIndex');
   const skinWeight = bodyGeometry.getAttribute('skinWeight');
@@ -364,6 +384,7 @@ function makeNeckBridge(
   const weights: number[] = [];
   const indices: number[] = [];
   const headOverlap = 0.0015;
+  let bottomWeightMaxError = 0;
   for (let row = 0; row < ringCount; row++) {
     const t = row / (ringCount - 1);
     for (let sample = 0; sample < samples; sample++) {
@@ -383,6 +404,13 @@ function makeNeckBridge(
       const strongest = [...blended.entries()].filter(([, weight]) => weight > 0).sort((a, b) => b[1] - a[1]).slice(0, 4);
       const totalWeight = strongest.reduce((sum, [, weight]) => sum + weight, 0);
       assert(totalWeight > 0, 'neck bridge generated a vertex with no skin weights');
+      if (row === ringCount - 1) {
+        const expected = new Map(bottom.jointWeights ?? []);
+        const actual = new Map(strongest.map(([joint, weight]) => [joint, weight / totalWeight] as const));
+        const jointsToCompare = new Set([...expected.keys(), ...actual.keys()]);
+        for (const joint of jointsToCompare) bottomWeightMaxError = Math.max(bottomWeightMaxError,
+          Math.abs((expected.get(joint) ?? 0) - (actual.get(joint) ?? 0)));
+      }
       for (let channel = 0; channel < 4; channel++) {
         const influence = strongest[channel];
         joints.push(influence?.[0] ?? 0);
@@ -415,7 +443,7 @@ function makeNeckBridge(
   bridge.matrix.copy(bodyMesh.matrix);
   bridge.bindMode = bodyMesh.bindMode;
   bridge.bind(bodyMesh.skeleton, bodyMesh.bindMatrix);
-  return { mesh: bridge, triangles: indices.length / 3, headOverlap };
+  return { mesh: bridge, triangles: indices.length / 3, headOverlap, bottomWeightMaxError };
 }
 
 function replacementIndex(bodyMesh: THREE.SkinnedMesh, selected: Uint8Array): {
@@ -648,6 +676,7 @@ export function attachAuthoredHead(body: Pick<SkinnedBody, 'object' | 'key'>, te
     bodyCutBoundaryVertices: bodyBoundary.length,
     authoredNeckBoundaryVertices: authoredBoundary.length,
     neckBridgeHeadOverlapMetres: neckBridge.headOverlap,
+    neckBridgeBottomWeightMaxError: neckBridge.bottomWeightMaxError,
     authoredTriangles: faceBounds.triangles,
     ownedMaterialClones: cloned.ownedMaterials.length,
     sourceGeometryBytesReferenced: geometryArrayBytes(cloned.root),

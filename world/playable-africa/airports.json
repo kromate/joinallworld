@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "coordinateConvention": "WGS84 decimal degrees, [longitude, latitude]; airport reference point (ARP), not city center or runway threshold",
+  "sourceDataset": {
+    "name": "OurAirports airports.csv",
+    "repository": "https://github.com/davidmegginson/ourairports-data",
+    "pinnedCommit": "56abe495bb3afcf8b5d8f01feec0f46ba4fd753f",
+    "commitDateUtc": "2026-10-09T01:53:12Z",
+    "filePath": "airports.csv",
+    "sourceUrl": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/56abe495bb3afcf8b5d8f01feec0f46ba4fd753f/airports.csv",
+    "fileBytes": 12743186,
+    "gitBlobSha1": "6bcd9664541c67c40477750a9617940865c506a0",
+    "license": "Public domain (OurAirports data terms); repository license file is Unlicense",
+    "licenseUrl": "https://ourairports.com/data/",
+    "notes": "Pinned through GitHub commit and Git blob metadata; the 12.7 MB CSV was not downloaded. OurAirports individual airport records were checked for identifiers and comparison coordinates."
+  },
+  "airports": [
+    {
+      "city": "Yaoundé",
+      "countryIso2": "CM",
+      "requestedName": "Yaoundé Nsimalen International Airport",
+      "officialName": "Yaoundé / Nsimalen",
+      "aliases": [
+        "Nsimalen Airport"
+      ],
+      "iata": "NSI",
+      "icao": "FKYS",
+      "wgs84LonLat": [
+        11.553356528,
+        3.722563583
+      ],
+      "sourceCoordinateDms": "03°43′21.2289″N, 011°33′12.0835″E",
+      "coordinatePrecision": "ASECNA instrument chart gives 0.0001 arc-second; eAIP ARP rounds to 1 arc-second",
+      "coordinateSource": {
+        "publisher": "ASECNA Aeronautical Information Service / Cameroon Civil Aviation Authority data",
+        "sourceUrl": "https://aim.asecna.aero/html/eAIP/FR-_03AD-2.FKYS-fr-FR.html",
+        "sourceLabel": "AIP ASECNA, FKYS AD 2.2, effective 2026-10-01",
+        "evidence": "ARP: 03°43′21″N 011°33′12″E; runway 01/19 midpoint.",
+        "precisionCrosscheckUrl": "https://aim.asecna.aero/amdt/amdt2201.pdf",
+        "precisionCrosscheckLabel": "ASECNA instrument chart gives 03°43′21.2289″N 011°33′12.0835″E."
+      },
+      "ourAirportsCrosscheck": {
+        "recordUrl": "https://ourairports.com/airports/FKYS/",
+        "name": "Yaoundé Nsimalen International Airport",
+        "iata": "NSI",
+        "icao": "FKYS",
+        "latitudeLongitude": [
+          3.72256,
+          11.5533
+        ],
+        "coordinateOrder": "[latitude, longitude] as displayed by OurAirports",
+        "comparison": "Airport identity/codes agree; OurAirports point differs by a few metres from the higher-precision ASECNA chart ARP."
+      }
+    },
+    {
+      "city": "Lomé",
+      "countryIso2": "TG",
+      "requestedName": "Gnassingbé Eyadéma International Airport (Lomé–Tokoin)",
+      "officialName": "Aéroport International Gnassingbé Eyadema (AIGE)",
+      "aliases": [
+        "Lomé–Tokoin International Airport",
+        "Lomé Airport"
+      ],
+      "iata": "LFW",
+      "icao": "DXXX",
+      "wgs84LonLat": [
+        1.254166667,
+        6.165833333
+      ],
+      "sourceCoordinateDms": "06°09′57″N, 001°15′15″E",
+      "coordinatePrecision": "1 arc-second, as published in the current ASECNA eAIP",
+      "coordinateSource": {
+        "publisher": "ASECNA Aeronautical Information Service / Société Aéroportuaire de Lomé-Tokoin (SALT)",
+        "sourceUrl": "https://aim.asecna.aero/html/eAIP/FR-_15AD-2.DXXX-fr-FR.html",
+        "sourceLabel": "AIP ASECNA, DXXX AD 2.1–2.2, effective 2026-10-01",
+        "evidence": "DXXX AIGE; ARP: 06°09′57″N 001°15′15″E."
+      },
+      "ourAirportsCrosscheck": {
+        "recordUrl": "https://ourairports.com/airports/DXXX/",
+        "name": "Lomé–Tokoin International Airport",
+        "iata": "LFW",
+        "icao": "DXXX",
+        "latitudeLongitude": [
+          6.16561,
+          1.25451
+        ],
+        "coordinateOrder": "[latitude, longitude] as displayed by OurAirports",
+        "comparison": "Airport identity/codes agree; OurAirports point differs about 50 metres from the current ASECNA ARP."
+      }
+    },
+    {
+      "city": "Accra",
+      "countryIso2": "GH",
+      "requestedName": "Kotoka International Airport",
+      "officialName": "Accra International Airport",
+      "aliases": [
+        "Kotoka International Airport",
+        "Kotoka International Airport (legacy name)"
+      ],
+      "iata": "ACC",
+      "icao": "DGAA",
+      "wgs84LonLat": [
+        -0.17,
+        5.596388889
+      ],
+      "sourceCoordinateDms": "05°35′47″N, 000°10′12″W",
+      "coordinatePrecision": "1 arc-second, as published by Ghana Airports Company Limited",
+      "coordinateSource": {
+        "publisher": "Ghana Airports Company Limited (GACL)",
+        "sourceUrl": "https://www.gacl.com.gh/accra-international-airport/",
+        "sourceLabel": "GACL airport profile",
+        "evidence": "Airport reference point: 05°35′47″N 000°10′12″W."
+      },
+      "nameStatusSource": {
+        "publisher": "Ghana Ministry of Transport",
+        "sourceUrl": "https://mot.gov.gh/10/16/1/328/government-reverts-kotoka-international-airport-to-accra-international-airport",
+        "sourceLabel": "Government announcement, 2026-02-23",
+        "evidence": "Name reverted from Kotoka International Airport to Accra International Airport; the ministry says ICAO/IATA airport codes remain unchanged."
+      },
+      "ourAirportsCrosscheck": {
+        "recordUrl": "https://ourairports.com/airports/DGAA/",
+        "name": "Kotoka International Airport",
+        "iata": "ACC",
+        "icao": "DGAA",
+        "latitudeLongitude": [
+          5.60519,
+          -0.166786
+        ],
+        "coordinateOrder": "[latitude, longitude] as displayed by OurAirports",
+        "comparison": "Airport identity/codes agree, but OurAirports' coordinate is about 1.1 km from GACL's ARP; the official GACL ARP is used."
+      }
+    },
+    {
+      "city": "Nairobi",
+      "countryIso2": "KE",
+      "requestedName": "Jomo Kenyatta International Airport",
+      "officialName": "Nairobi Jomo Kenyatta Intl",
+      "aliases": [
+        "JKIA",
+        "Jomo Kenyatta International Airport"
+      ],
+      "iata": "NBO",
+      "icao": "HKJK",
+      "wgs84LonLat": [
+        36.927775,
+        -1.319241667
+      ],
+      "sourceCoordinateDms": "01°19′09.27″S, 036°55′39.99″E",
+      "coordinatePrecision": "0.01 arc-second, as published by KCAA eAIP",
+      "coordinateSource": {
+        "publisher": "Kenya Civil Aviation Authority Aeronautical Information Management (KCAA AIM)",
+        "sourceUrl": "https://eaip.kcaa.or.ke/eAIP_03102024/03-10-2024/eAIP/HK-AD%202%20HKJK-en-GB.html",
+        "sourceLabel": "AIP Kenya, HKJK AD 2.1–2.2, 2024-10-03 edition",
+        "evidence": "HKJK — Nairobi Jomo Kenyatta Intl; ARP: 011909.27S 0365539.99E."
+      },
+      "ourAirportsCrosscheck": {
+        "recordUrl": "https://ourairports.com/airports/HKJK/",
+        "name": "Jomo Kenyatta International Airport",
+        "iata": "NBO",
+        "icao": "HKJK",
+        "latitudeLongitude": [
+          -1.318886,
+          36.928233
+        ],
+        "coordinateOrder": "[latitude, longitude] as displayed by OurAirports",
+        "comparison": "Airport identity/codes agree; OurAirports point differs about 60 metres from the KCAA ARP."
+      }
+    },
+    {
+      "city": "Algiers",
+      "countryIso2": "DZ",
+      "requestedName": "Houari Boumediene Airport",
+      "officialName": "ALGER / Houari Boumediene",
+      "aliases": [
+        "Algiers International Airport",
+        "DAAG"
+      ],
+      "iata": "ALG",
+      "icao": "DAAG",
+      "wgs84LonLat": [
+        3.216944444,
+        36.694444444
+      ],
+      "sourceCoordinateDms": "36°41′40″N, 003°13′01″E",
+      "coordinatePrecision": "1 arc-second, as published in the SIA Algeria AIP AD 2.2",
+      "coordinateSource": {
+        "publisher": "Service de l'information aéronautique (SIA) Algérie / ENNA",
+        "sourceUrl": "https://di.univ-blida.dz/jspui/bitstream/123456789/10975/1/M%C3%A9moire%20fin%20d%27%C3%A9tude%202020%20copie%20finale%20%20conversion.pdf",
+        "sourceLabel": "AIP Algérie, DAAG AD 2.1–2.2, edition dated 2018-12-06 (archival mirror of the aviation authority publication)",
+        "officialAisPortal": "https://enna.dz/en/services-and-activities/air-navigation-services/service-dinformation-aeronautique/",
+        "evidence": "DAAG — Alger / Houari Boumediene; ARP: 364140N 0031301E. The ENNA AIS portal identifies AIP as an official aeronautical-information product; its primary download host was unavailable during this check."
+      },
+      "ourAirportsCrosscheck": {
+        "recordUrl": "https://ourairports.com/airports/DAAG/",
+        "name": "Houari Boumediene Airport",
+        "iata": "ALG",
+        "icao": "DAAG",
+        "latitudeLongitude": [
+          36.693886,
+          3.214531
+        ],
+        "coordinateOrder": "[latitude, longitude] as displayed by OurAirports",
+        "comparison": "Airport identity/codes agree; OurAirports point differs about 220 metres from the AIP ARP."
+      }
+    }
+  ],
+  "notes": [
+    "IATA codes are cross-checked against OurAirports' airport records; ICAO location indicators and ARP coordinates come from official AIP or airport operator sources.",
+    "Use wgs84LonLat for map/game placement. The ARP is an airport reference point and may not coincide with a terminal, runway threshold, or airport polygon centroid.",
+    "OurAirports is a crowdsourced reference dataset and explicitly disclaims accuracy guarantees; where its point differs, the cited official ARP is preferred.",
+    "Airport identifiers and reference points do not establish scheduled routes between these airports."
+  ]
+}

@@ -1,0 +1,42 @@
+name: African starter destination audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/world-foundation]
+    paths:
+      - 'src/game/cities/africa/**'
+      - 'src/game/cities/yaounde/**'
+      - 'src/game/cities/lome/**'
+      - 'src/game/cities/accra/**'
+      - 'src/game/cities/nairobi/**'
+      - 'src/game/cities/algiers/**'
+      - 'world/playable-africa/**'
+      - 'scripts/world/**'
+      - '.github/workflows/africa-starter-audit-ci.yml'
+permissions:
+  contents: read
+jobs:
+  source-and-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22.19.0', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: Pinned geographic asset receipts
+        run: python3 scripts/world/build-playable-africa.py --check
+      - name: Starter map, content and normal flight lifecycle
+        env:
+          NODE_OPTIONS: --max-old-space-size=512
+        run: node --experimental-strip-types --test --test-concurrency=1 src/game/cities/africa/*.test.ts
+      - name: Strict starter types
+        env:
+          NODE_OPTIONS: --max-old-space-size=1536
+        run: node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck src/game/cities/africa/*.ts src/game/cities/yaounde/*.ts src/game/cities/lome/*.ts src/game/cities/accra/*.ts src/game/cities/nairobi/*.ts src/game/cities/algiers/*.ts

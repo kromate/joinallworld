@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Reusable inventory for playable African city implementation; records existing data only.",
+  "sourceFiles": [
+    {
+      "label": "Natural Earth 10m populated places",
+      "path": ".cache/world-build/settlement-source-cache/42132340ed32bed7cf7be4b52f15d451eb81f235ceea042871e3b10f0117fc99.geojson",
+      "sha256": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b",
+      "bytes": 19359003,
+      "release": "ca96624a56bd078437bca8184e78163e5039ad19",
+      "license": "Public-domain",
+      "sourceId": "natural-earth-places-10m-ca96624a56bd078437bca8184e78163e5039ad19"
+    },
+    {
+      "label": "Natural Earth 10m admin0 countries",
+      "path": ".cache/world-build/country-source-cache/e51c4d047ed2867b34faea4e17c102ead4f3fee558a84a942619ee2cb1abdceb.geojson",
+      "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
+      "bytes": 13287234,
+      "release": "ca96624a56bd078437bca8184e78163e5039ad19",
+      "license": "Public-domain",
+      "sourceId": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19"
+    }
+  ],
+  "coverageExtent": "Country outline bounds are geographic envelopes for the five whole countries; only Ghana/Accra and Kenya/Nairobi have existing city-cell Overture building/road packs. Those packs are narrow bounded samples and do not imply complete city or country coverage.",
+  "countries": [
+    {
+      "country": "Cameroon",
+      "iso2": "CM",
+      "countryId": "country:natural-earth:NE_ID%3A1159320509",
+      "countryBoundsWgs84": [
+        8.505056,
+        1.654551,
+        16.207723,
+        13.081141
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320509",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/113802f3183c55ef546abc7e21ebf441a22a07ec4263e4782b285e54174b057b.json",
+        "outlineIndexSha256": "113802f3183c55ef546abc7e21ebf441a22a07ec4263e4782b285e54174b057b",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1456,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/91c2ed3e12bc2bb4c7bde77c7951f51bcbc041f718db8c1544a11410d0e8f8d3.json",
+            "sha256": "91c2ed3e12bc2bb4c7bde77c7951f51bcbc041f718db8c1544a11410d0e8f8d3",
+            "bytes": 30219,
+            "polygonCount": 1,
+            "coordinatePositions": 1456
+          }
+        ]
+      },
+      "capital": {
+        "name": "Yaoundé",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151115",
+        "coordinatesWgs84": [
+          11.514705,
+          3.868647
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/b72c386026bb2e6b2aa87a227157cd8ce83227464e26282f9e9890ad1bbb9e3b.json",
+        "pointAssetSha256": "b72c386026bb2e6b2aa87a227157cd8ce83227464e26282f9e9890ad1bbb9e3b",
+        "countryEmittedPlaceCount": 31
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/87e31c15d1e8c16a79b7a06bbd14bca3df688e07975b6290044a78748ddd5343.json",
+        "sha256": "87e31c15d1e8c16a79b7a06bbd14bca3df688e07975b6290044a78748ddd5343",
+        "emittedUnits": 10,
+        "linkedRows": 10,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": null
+    },
+    {
+      "country": "Togo",
+      "iso2": "TG",
+      "countryId": "country:natural-earth:NE_ID%3A1159321303",
+      "countryBoundsWgs84": [
+        -0.166109,
+        6.100491,
+        1.782351,
+        11.13498
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321303",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/b51b9cc585ec12b01916ea2c31e430dbece70f32443cb48e32945c6206deeb5f.json",
+        "outlineIndexSha256": "b51b9cc585ec12b01916ea2c31e430dbece70f32443cb48e32945c6206deeb5f",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 486,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/bd8309892708fc97be7abeeb8a1e224486e58a660453b724810fef84b9e7455e.json",
+            "sha256": "bd8309892708fc97be7abeeb8a1e224486e58a660453b724810fef84b9e7455e",
+            "bytes": 9805,
+            "polygonCount": 1,
+            "coordinatePositions": 486
+          }
+        ]
+      },
+      "capital": {
+        "name": "Lomé",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159150535",
+        "coordinatesWgs84": [
+          1.220811,
+          6.133883
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/56fb1d0d720327485598179a7f8ec15a89178720690f4e46e4d691961a062b5a.json",
+        "pointAssetSha256": "56fb1d0d720327485598179a7f8ec15a89178720690f4e46e4d691961a062b5a",
+        "countryEmittedPlaceCount": 7
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/b7cc427cdf43a26a35029e2185c505a03154c6b7cbe22d0cd344a24e4c91fbb7.json",
+        "sha256": "b7cc427cdf43a26a35029e2185c505a03154c6b7cbe22d0cd344a24e4c91fbb7",
+        "emittedUnits": 5,
+        "linkedRows": 5,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": null
+    },
+    {
+      "country": "Ghana",
+      "iso2": "GH",
+      "countryId": "country:natural-earth:NE_ID%3A1159320793",
+      "countryBoundsWgs84": [
+        -3.262509,
+        4.737128,
+        1.187968,
+        11.162937
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320793",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/3446a2e5bbb7de9bcc1df7322a4f6a1aecd05fda081eb330ac36e7c7d26a741c.json",
+        "outlineIndexSha256": "3446a2e5bbb7de9bcc1df7322a4f6a1aecd05fda081eb330ac36e7c7d26a741c",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 828,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/7747a46b2c6747c8eb7dd207a50419e5d2a470e11af1e407969c36826604a66b.json",
+            "sha256": "7747a46b2c6747c8eb7dd207a50419e5d2a470e11af1e407969c36826604a66b",
+            "bytes": 17153,
+            "polygonCount": 1,
+            "coordinatePositions": 828
+          }
+        ]
+      },
+      "capital": {
+        "name": "Accra",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151403",
+        "coordinatesWgs84": [
+          -0.218662,
+          5.55198
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 2,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/4892a103eb4bd5458c0a9a1c28bd55baf0214de62eaa6c101354865bf386d838.json",
+        "pointAssetSha256": "4892a103eb4bd5458c0a9a1c28bd55baf0214de62eaa6c101354865bf386d838",
+        "countryEmittedPlaceCount": 17
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/038580350fbad5c0c7b794d8eb6a674f93b3c12a158c03851f778b42202829dd.json",
+        "sha256": "038580350fbad5c0c7b794d8eb6a674f93b3c12a158c03851f778b42202829dd",
+        "emittedUnits": 10,
+        "linkedRows": 10,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": {
+        "campaign": "representative-real-v2",
+        "manifestPath": ".cache/world-build/campaigns/representative-real-v2/output/manifests/34442dbc40ed2db8d987370141f4e88fb3b1e58336347dbab5b5a72af067a847.json",
+        "manifestSha256": "34442dbc40ed2db8d987370141f4e88fb3b1e58336347dbab5b5a72af067a847",
+        "region": {
+          "bounds": [
+            -0.207,
+            5.552,
+            -0.203,
+            5.556
+          ],
+          "countryCode": "GH",
+          "id": "gh-accra-overture-pilot",
+          "kind": "cell",
+          "name": "Accra bounded Overture pilot",
+          "parentId": "country:natural-earth:NE_ID%3A1159320793",
+          "timezone": "Africa/Accra"
+        },
+        "source": {
+          "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/",
+          "bytes": 113357,
+          "id": "overture-2026-09-23.1-buildings-roads",
+          "license": "ODbL-1.0",
+          "release": "2026-09-23.1",
+          "sha256": "16fa23b6761af554a7cb11c9fa979bef5ddaed46cf2216b006e92094923fe26d",
+          "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json"
+        },
+        "coverage": "foundation",
+        "tileCount": 12,
+        "tileBoundsWgs84": [
+          -0.2081724,
+          5.5495193,
+          -0.200825,
+          5.559296
+        ],
+        "tileBytes": 110758,
+        "brotliBytes": 23891,
+        "triangles": 14460,
+        "drawCalls": 314,
+        "exceptions": 63
+      }
+    },
+    {
+      "country": "Kenya",
+      "iso2": "KE",
+      "countryId": "country:natural-earth:NE_ID%3A1159320971",
+      "countryBoundsWgs84": [
+        33.890468,
+        -4.677504,
+        41.885019,
+        5.030376
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320971",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/fc4bce04ce934f4ce504bd781f5a02c580f5ae0f00f0e4677884e9260c94e56d.json",
+        "outlineIndexSha256": "fc4bce04ce934f4ce504bd781f5a02c580f5ae0f00f0e4677884e9260c94e56d",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 2,
+        "coordinatePositions": 876,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/507a7b6d7458853402389b7f50437b1e2769e83a302c0cba59c431f3df1e7481.json",
+            "sha256": "507a7b6d7458853402389b7f50437b1e2769e83a302c0cba59c431f3df1e7481",
+            "bytes": 18690,
+            "polygonCount": 2,
+            "coordinatePositions": 876
+          }
+        ]
+      },
+      "capital": {
+        "name": "Nairobi",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151597",
+        "coordinatesWgs84": [
+          36.814711,
+          -1.281401
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 0,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/f4e0da4803cdf465fb0511aec146f4d7ceb8e293d6a9a8458cc24bdd8fcd875b.json",
+        "pointAssetSha256": "f4e0da4803cdf465fb0511aec146f4d7ceb8e293d6a9a8458cc24bdd8fcd875b",
+        "countryEmittedPlaceCount": 36
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/b623177542b9fdbd364559640825be27e318e1ebd185dbaec5c9d080e3dc8df2.json",
+        "sha256": "b623177542b9fdbd364559640825be27e318e1ebd185dbaec5c9d080e3dc8df2",
+        "emittedUnits": 8,
+        "linkedRows": 8,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": {
+        "campaign": "representative-real-v2",
+        "manifestPath": ".cache/world-build/campaigns/representative-real-v2/output/manifests/cb20b544be34c3762b04ba4f135d4b2ae0854f7403c54f8106a79bd11c102180.json",
+        "manifestSha256": "cb20b544be34c3762b04ba4f135d4b2ae0854f7403c54f8106a79bd11c102180",
+        "region": {
+          "bounds": [
+            36.82074,
+            -1.29092,
+            36.82474,
+            -1.28692
+          ],
+          "countryCode": "KE",
+          "id": "ke-nairobi-kicc-cell",
+          "kind": "cell",
+          "name": "Nairobi Kenyatta International Convention Centre cell",
+          "parentId": "country:natural-earth:NE_ID%3A1159320971",
+          "timezone": "Africa/Nairobi"
+        },
+        "source": {
+          "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/",
+          "bytes": 87044,
+          "id": "overture-2026-09-23.1-buildings-roads",
+          "license": "ODbL-1.0",
+          "release": "2026-09-23.1",
+          "sha256": "af588b032a08985cd1c08d7dc2c207cbeeae3d2b27fec62a4fb0503432a206a6",
+          "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json"
+        },
+        "coverage": "foundation",
+        "tileCount": 9,
+        "tileBoundsWgs84": [
+          36.8196836,
+          -1.2926576,
+          36.8273119,
+          -1.2861351
+        ],
+        "tileBytes": 83993,
+        "brotliBytes": 17843,
+        "triangles": 12684,
+        "drawCalls": 246,
+        "exceptions": 80
+      }
+    },
+    {
+      "country": "Algeria",
+      "iso2": "DZ",
+      "countryId": "country:natural-earth:NE_ID%3A1159320565",
+      "countryBoundsWgs84": [
+        -8.682385,
+        18.975561,
+        11.968861,
+        37.09394
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320565",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/c36fb8a87baca17a1c5ecc02f860a48fa5f8295daa426ebded04420422e41cbb.json",
+        "outlineIndexSha256": "c36fb8a87baca17a1c5ecc02f860a48fa5f8295daa426ebded04420422e41cbb",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1249,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/c1c103e2c4c4df04b9f964d6b38b0270efb619559ec066e75dda2aebde9b3b80.json",
+            "sha256": "c1c103e2c4c4df04b9f964d6b38b0270efb619559ec066e75dda2aebde9b3b80",
+            "bytes": 26497,
+            "polygonCount": 1,
+            "coordinatePositions": 1249
+          }
+        ]
+      },
+      "capital": {
+        "name": "Algiers",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151471",
+        "coordinatesWgs84": [
+          3.048607,
+          36.765011
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 2,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/33f8faf2a25d014e2c7021b9c9962b74ad94758c5db37b53063f42781748b962.json",
+        "pointAssetSha256": "33f8faf2a25d014e2c7021b9c9962b74ad94758c5db37b53063f42781748b962",
+        "countryEmittedPlaceCount": 51
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/6b0b94dcd883b5e005dd75a7aa0a06f58b004a3db8d8ce26bf8842232f2bebc8.json",
+        "sha256": "6b0b94dcd883b5e005dd75a7aa0a06f58b004a3db8d8ce26bf8842232f2bebc8",
+        "emittedUnits": 48,
+        "linkedRows": 48,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": null
+    }
+  ],
+  "gaps": [
+    "Cameroon/Yaoundé, Togo/Lomé, and Algeria/Algiers have no cached city-scale building/road pack in the inspected world-build campaign outputs.",
+    "Accra and Nairobi Overture output covers only the listed bounded pilot cells; it is not comprehensive city coverage.",
+    "The Natural Earth country outlines and admin1 partitions are coarse contextual geometry, not street-level or playable building geometry.",
+    "No airport coordinates were needed: all five capital points are present in the pinned Natural Earth populated-places source."
+  ]
+}

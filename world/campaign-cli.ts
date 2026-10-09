@@ -8,7 +8,7 @@ import { readBoundedLocalFile } from './inventory-reader.ts';
 import type { FeatureIndexSessionConfiguration } from './feature-index-session.ts';
 
 const root=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-function usage():never{console.error('Usage:\n  node --experimental-strip-types world/campaign-cli.ts run|resume <campaign.json> [--inventory-manifest /absolute/manifests/<sha>.json] [--country-grid-plan /absolute/plans/<sha>.json] [--max-jobs N] [--max-index-jobs 0..256] [--feature-index-config /absolute/config.json] [--python /absolute/python3]\n  node --experimental-strip-types world/campaign-cli.ts status <campaign-id>');process.exit(2);}
+function usage():never{console.error('Usage:\n  node --experimental-strip-types world/campaign-cli.ts run|resume <campaign.json> [--inventory-manifest /absolute/manifests/<sha>.json] [--country-grid-plan /absolute/plans/<sha>.json] [--max-jobs N] [--max-index-jobs 0..256] [--max-audit-jobs 0|1] [--feature-index-config /absolute/config.json] [--python /absolute/python3]\n  node --experimental-strip-types world/campaign-cli.ts status <campaign-id>');process.exit(2);}
 async function options(args:string[]):Promise<CampaignOptions>{
   const out:CampaignOptions={},seen=new Set<string>();
   for(let i=0;i<args.length;i+=2){
@@ -16,7 +16,8 @@ async function options(args:string[]):Promise<CampaignOptions>{
     if(flag==='--max-jobs'||flag==='--max-index-jobs'){
       const n=Number(value);if(!/^(0|[1-9][0-9]*)$/.test(value)||!Number.isSafeInteger(n)||n<0||(flag==='--max-index-jobs'&&n>256))usage();
       if(flag==='--max-jobs')out.maxJobs=n;else out.maxIndexJobs=n;
-    }else if(flag==='--python'&&path.isAbsolute(value))out.pythonExecutable=value;
+    }else if(flag==='--max-audit-jobs'&&(value==='0'||value==='1'))out.maxAuditJobs=Number(value) as 0|1;
+    else if(flag==='--python'&&path.isAbsolute(value))out.pythonExecutable=value;
     else if(flag==='--country-grid-plan'&&path.isAbsolute(value))out.countryGridPlanPath=value;
     else if(flag==='--inventory-manifest'&&path.isAbsolute(value))out.inventoryManifestPath=value;
     else if(flag==='--feature-index-config'&&path.isAbsolute(value))out.featureIndex=await readIndexConfiguration(value);

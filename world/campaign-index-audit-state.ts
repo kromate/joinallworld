@@ -341,9 +341,9 @@ function qualifiedCompletion(inputValue: CampaignIndexAuditFrozenInput, proofVal
     'keys', 'conflicts', 'crossOwnerConflictKeys', 'observations', 'requiredObservations'], 'Qualified worker counts');
   const countValues = Object.fromEntries(Object.entries(counts).map(([key, value]) =>
     [key, integer(value, 0, Number.MAX_SAFE_INTEGER, `Qualified worker ${key}`)]));
-  if (countValues.captures > 256 || countValues.admitted + countValues.exceptions > Number.MAX_SAFE_INTEGER
-      || countValues.admitted + countValues.exceptions !== countValues.rawFeatures
-      || countValues.requiredObservations > countValues.observations) {
+  if (countValues.captures! > 256 || countValues.admitted! + countValues.exceptions! > Number.MAX_SAFE_INTEGER
+      || countValues.admitted! + countValues.exceptions! !== countValues.rawFeatures
+      || countValues.requiredObservations! > countValues.observations!) {
     throw new Error('Qualified worker counts exceed fixed bounds or fail conservation.');
   }
   const completion: QualifiedCampaignIndexAuditCompletion = {

@@ -17,8 +17,13 @@ import { loadVerifiedGridQueryPlan, makeGridQueryUnit } from './grid-query-bindi
 import type { CountryGridPlan } from './country-grid-types.ts';
 import type { GridQueryCampaign, GridQueryUnit, GridQueryCoverage, GridQueryJobView, GridQueryResult } from './grid-query-types.ts';
 import type { AcquisitionOptions, AcquisitionRequest, AcquisitionResult, CampaignUnit, WorldCampaign } from './production-types.ts';
-import { openFeatureIndexSession, prepareFeatureIndexSessionConfiguration, FeatureIndexSessionUnreaped, FeatureIndexSessionTerminated, type FeatureIndexSession, type FeatureIndexSessionConfiguration } from './feature-index-session.ts';
+import { openFeatureIndexSession, prepareFeatureIndexSessionConfiguration, FeatureIndexSessionUnreaped, FeatureIndexSessionTerminated,
+  readFeatureIndexSessionAuditEvidence, type FeatureIndexSessionAuditInput,
+  type FeatureIndexSession, type FeatureIndexSessionConfiguration } from './feature-index-session.ts';
 import { bindCampaignIndex, readCampaignIndexBinding, campaignIndexInput, campaignIndexJob, campaignIndexCompletion, verifyCampaignIndexCompletion, verifyCampaignIndexFiles, type CampaignIndexBinding, type CampaignIndexCoverage } from './campaign-index-state.ts';
+import { runCampaignIndexAuditPhase } from './campaign-index-audit.ts';
+import { CAMPAIGN_INDEX_AUDIT_KIND, CAMPAIGN_INDEX_AUDIT_JOB_FORMAT, FEATURE_INDEX_AUDIT_FORMAT,
+  campaignIndexAuditJob, validateQualifiedCampaignIndexAuditCompletion, type CampaignIndexAuditFrozenInput } from './campaign-index-audit-state.ts';
 
 const MAX_CAMPAIGN_MS = 48 * 60 * 60 * 1000;
 // Source input is a campaign-wide unique-pin budget, hard capped at 64 GB.
@@ -31,7 +36,14 @@ export type AnyWorldCampaign = WorldCampaign | GridQueryCampaign;
 type AnyCampaignUnit = CampaignUnit | GridQueryUnit;
 type AcquisitionBuildLock = <T>(root:string,operation:(acquire:Acquire)=>Promise<T>,options?:{signal?:AbortSignal;timeoutMs?:number})=>Promise<T>;
 type AcquireModule = { acquireRegion?:Acquire; withAcquisitionBuildLock?:AcquisitionBuildLock };
-export interface CampaignOptions { allowedRoot?: string; acquire?: Acquire; signal?: AbortSignal; maxJobs?: number; maxIndexJobs?: number; featureIndex?: FeatureIndexSessionConfiguration; pythonExecutable?: string; inventoryManifestPath?: string; countryGridPlanPath?: string }
+export interface CampaignOptions { allowedRoot?: string; acquire?: Acquire; signal?: AbortSignal; maxJobs?: number; maxIndexJobs?: number; maxAuditJobs?: 0 | 1; featureIndex?: FeatureIndexSessionConfiguration; pythonExecutable?: string; inventoryManifestPath?: string; countryGridPlanPath?: string }
+export interface CampaignIndexAuditCoverage {
+  scope: 'raw-index-and-campaign-observations'; geometryCoverage: 'not-compiled';
+  enabled: boolean; status: 'disabled'|'incomplete'|'pending'|'leased'|'failed'|'exhausted'|'complete';
+  jobId: string|null; attempts: number;
+  qualifications: { rawIndexConservation: 'complete'|'incomplete'; readOnlyStatePreserved: 'complete'|'incomplete'; campaignObservationCompleteness: 'complete'|'incomplete' };
+  reasons: string[];
+}
 export interface CampaignReport {
   id: string; status: 'complete'|'exception'|'running'|'stopped';
   counts: { requested:number; sourceUnits:number; compiled:number; exception:number; protected:number; unknown:number };
@@ -39,6 +51,7 @@ export interface CampaignReport {
   jobs: Array<Record<string, unknown>>; failures:string[]; stopped:string|null;
   queryCoverage?: GridQueryCoverage;
   indexCoverage?: CampaignIndexCoverage;
+  auditCoverage?: CampaignIndexAuditCoverage;
 }
 function canonical(value: unknown): string {
   if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
@@ -288,7 +301,8 @@ async function verifyQueryCapture(result:Record<string,unknown>,unit:GridQueryUn
 }
 type IndexDescriptor = ReturnType<typeof campaignIndexJob>;
 async function campaignIndexProjection(campaign:GridQueryCampaign,plan:CountryGridPlan,jobs:Array<Record<string,unknown>>,hash:string,
-                                       cacheRoot:string,binding:CampaignIndexBinding|null,enqueue?:Ledger):Promise<CampaignIndexCoverage>{
+                                       cacheRoot:string,binding:CampaignIndexBinding|null,enqueue?:Ledger,
+                                       auditInputs?:FeatureIndexSessionAuditInput[]):Promise<CampaignIndexCoverage>{
   const coverage:CampaignIndexCoverage={scope:'recorded-source-feature-index',geometryCoverage:'not-compiled',integrity:'independent-raw-index-audit-required',enabled:binding!==null,jobLimit:256,capacityBlocked:false,captured:0,indexed:0,pending:0,leased:0,failed:0,untracked:0};
   const existingRows=jobs.filter(job=>job.kind==='campaign-index-capture'),existingIds=new Set(existingRows.map(job=>String(job.id)));
   if(existingRows.length>256)throw new Error('campaign feature index scheduler exceeds the admitted shard job capacity');
@@ -312,7 +326,20 @@ async function campaignIndexProjection(campaign:GridQueryCampaign,plan:CountryGr
     if(!binding||!entry)throw new Error('feature index scheduler row has no eligible frozen source query');
     const {descriptor,input,features}=entry;
     if(row.inputHash!==descriptor.inputHash||canonical(row.payload)!==canonical(descriptor.payload)||row.priority!==descriptor.priority||row.maxAttempts!==descriptor.maxAttempts)throw new Error('feature index scheduler row binding differs from its frozen source');
-    if(row.status==='completed'){verifyCampaignIndexCompletion(row.result,input,binding.indexHash,features);coverage.indexed++;}
+    if(row.status==='completed'){
+      verifyCampaignIndexCompletion(row.result,input,binding.indexHash,features);coverage.indexed++;
+      if(auditInputs){
+        const prior=auditInputs.find(item=>item.expected.requestHash===input.expected.requestHash);
+        if(prior){
+          if(prior.extractPath!==input.extractPath||prior.receiptPath!==input.receiptPath||canonical(prior.expected)!==canonical(input.expected))throw new Error('Shared audit request has inconsistent frozen raw input membership');
+          const context=input.observation!;
+          if(!prior.requiredObservations.some(item=>canonical(item)===canonical(context))){
+            if(prior.requiredObservations.length>=8)throw new Error('Campaign audit required contexts exceed the fixed per-request history bound');
+            prior.requiredObservations=[...prior.requiredObservations,context];
+          }
+        }else auditInputs.push({extractPath:input.extractPath,receiptPath:input.receiptPath,expected:input.expected,requiredObservations:[input.observation!]});
+      }
+    }
     else if(row.status==='queued')coverage.pending++;
     else if(row.status==='leased')coverage.leased++;
     else if(row.status==='failed')coverage.failed++;
@@ -322,7 +349,59 @@ async function campaignIndexProjection(campaign:GridQueryCampaign,plan:CountryGr
   coverage.untracked+=expected.size;
   coverage.capacityBlocked=coverage.enabled&&coverage.untracked>0&&indexRows.length===256;
   if(coverage.indexed&&binding)await verifyCampaignIndexFiles(binding);
+  auditInputs?.sort((a,b)=>a.expected.requestHash<b.expected.requestHash?-1:a.expected.requestHash>b.expected.requestHash?1:0);
   return coverage;
+}
+
+function campaignAuditEligible(query:GridQueryCoverage,index:CampaignIndexCoverage,inputs:readonly FeatureIndexSessionAuditInput[]):boolean{
+  return index.enabled&&query.roots.requested>0&&query.roots.captured===query.roots.requested
+    &&query.roots.exception===0&&query.roots.pending===0&&query.jobs.failed===0&&query.jobs.queued===0&&query.jobs.leased===0
+    &&index.captured>0&&index.indexed===index.captured&&index.pending+index.leased+index.failed+index.untracked===0
+    &&!index.capacityBlocked&&inputs.length>0;
+}
+
+/** Status only reads saved control/file evidence. It never opens admission/SQL,
+ * enqueues an audit child, repairs a namespace, or treats query/index progress as
+ * compiled geometry. Inputs come from the fully revalidated source projection.
+ */
+async function campaignAuditProjection(campaign:GridQueryCampaign,hash:string,jobs:Array<Record<string,unknown>>,
+    binding:CampaignIndexBinding|null,inputs:readonly FeatureIndexSessionAuditInput[],eligible:boolean):Promise<CampaignIndexAuditCoverage>{
+  const result:CampaignIndexAuditCoverage={scope:'raw-index-and-campaign-observations',geometryCoverage:'not-compiled',
+    enabled:binding!==null,status:binding?'incomplete':'disabled',jobId:null,attempts:0,
+    qualifications:{rawIndexConservation:'incomplete',readOnlyStatePreserved:'incomplete',campaignObservationCompleteness:'incomplete'},reasons:[]};
+  const rows=jobs.filter(row=>row.kind===CAMPAIGN_INDEX_AUDIT_KIND||String(row.id).startsWith(`${campaign.id}:feature-index-audit:`));
+  if(!binding){if(rows.length)throw new Error('Campaign audit row has no frozen index binding');result.reasons=['feature indexing is disabled'];return result;}
+  if(rows.length>1)throw new Error('Campaign audit exceeds its fixed single-job identity');
+  const row=rows[0];
+  if(!row){result.reasons=[eligible?'final campaign index audit has not run':'complete captured/indexed leaf membership is required before the final audit'];return result;}
+  const payload=object(row.payload,'campaign audit payload');
+  if(payload.format!==CAMPAIGN_INDEX_AUDIT_JOB_FORMAT)throw new Error('Campaign audit payload format differs');
+  const frozen:CampaignIndexAuditFrozenInput={campaignId:campaign.id,campaignHash:hash,inventoryHash:campaign.inventoryHash,
+    planHash:campaign.gridQuery.planHash,indexHash:binding.indexHash,configurationHash:sha256(canonical(binding.configuration)),
+    captureControllerRecord:payload.captureControllerRecord as CampaignIndexAuditFrozenInput['captureControllerRecord'],
+    completeCaptureSetSha256:payload.completeCaptureSetSha256 as string,requiredObservationSetSha256:payload.requiredObservationSetSha256 as string,
+    auditInputSha256:payload.auditInputSha256 as string,auditFormat:FEATURE_INDEX_AUDIT_FORMAT};
+  const descriptor=campaignIndexAuditJob(frozen,campaign.limits.maxAttempts);
+  if(row.id!==descriptor.id||row.kind!==descriptor.kind||row.inputHash!==descriptor.inputHash||row.maxAttempts!==descriptor.maxAttempts
+      ||row.priority!==descriptor.priority||canonical(payload)!==canonical(descriptor.payload))throw new Error('Campaign audit row differs from the frozen source/index job');
+  if(!Number.isSafeInteger(row.attempt)||(row.attempt as number)<0||(row.attempt as number)>descriptor.maxAttempts)throw new Error('Campaign audit scheduler attempt count differs');
+  result.jobId=descriptor.id;result.attempts=row.attempt as number;
+  if(!eligible){result.reasons=['complete captured/indexed leaf membership is required; previous audit cannot qualify this projection'];return result;}
+  if(row.status!=='completed'){
+    result.status=row.status==='queued'?'pending':row.status==='leased'?'leased':row.status==='failed'?(result.attempts>=descriptor.maxAttempts?'exhausted':'failed'):(()=>{throw new Error('Unknown campaign audit scheduler status');})();
+    result.reasons=['audit is not completed by a live scheduler claim'];return result;
+  }
+  try{
+    const evidence=await readFeatureIndexSessionAuditEvidence({namespaceRoot:binding.configuration.namespaceRoot,indexHash:binding.indexHash,binding:binding.configuration.binding},inputs,descriptor.maxAttempts);
+    const actual:CampaignIndexAuditFrozenInput={...frozen,captureControllerRecord:evidence.snapshot.captureControllerRecord,
+      completeCaptureSetSha256:evidence.snapshot.captureSetSha256,requiredObservationSetSha256:evidence.snapshot.requiredObservationsSha256,auditInputSha256:evidence.snapshot.auditInputSha256};
+    if(canonical(actual)!==canonical(frozen))throw new Error('Current complete capture/context evidence differs from the frozen campaign audit job');
+    const receipt=validateQualifiedCampaignIndexAuditCompletion(row.result,actual,evidence.proof,evidence.workerReport,evidence.attempts,descriptor.maxAttempts);
+    result.status='complete';result.qualifications=receipt.qualifications;result.reasons=[];
+  }catch(error){
+    result.status='incomplete';result.reasons=[(error instanceof Error?error.message:String(error)).slice(0,1024)];
+  }
+  return result;
 }
 
 async function runCampaignIndexPhase(campaign:GridQueryCampaign,plan:CountryGridPlan,ledger:Ledger,hash:string,cacheRoot:string,
@@ -401,6 +480,7 @@ async function acquisitionCacheBytes(root:string,realAdapter:boolean):Promise<nu
 export async function runCampaign(value:unknown,options:CampaignOptions={}):Promise<CampaignReport>{
   if(options.maxJobs!==undefined&&(!Number.isSafeInteger(options.maxJobs)||options.maxJobs<0))throw new RangeError('maxJobs must be a non-negative safe integer');
   if(options.maxIndexJobs!==undefined&&(!Number.isSafeInteger(options.maxIndexJobs)||options.maxIndexJobs<0||options.maxIndexJobs>256))throw new RangeError('maxIndexJobs must be a safe integer from 0 through 256');
+  if(options.maxAuditJobs!==undefined&&options.maxAuditJobs!==0&&options.maxAuditJobs!==1)throw new RangeError('maxAuditJobs must be zero or one');
   const featureIndex=options.featureIndex===undefined?undefined:prepareFeatureIndexSessionConfiguration(options.featureIndex);
   if(featureIndex&&object(value,'campaign').schemaVersion!==2)throw new Error('feature indexing requires the frozen schema2 grid-query campaign');
   const campaign=validateCampaign(value),root=await validateCampaignRoot(path.resolve(options.allowedRoot??DEFAULT_ROOT));const paths=await ensureCampaign(campaign,root),hash=campaignHash(campaign),releaseLock=await acquireCampaignLock(root);
@@ -559,14 +639,26 @@ export async function runCampaign(value:unknown,options:CampaignOptions={}):Prom
       await campaignIndexProjection(campaign,gridPlan!,ledger.list(),hash,cacheRoot,indexBinding,ledger);
       const indexStopped=await runCampaignIndexPhase(campaign,gridPlan!,ledger,hash,cacheRoot,indexBinding,featureIndex,options,deadline,failures);
       stopped=stopped??indexStopped;
+      if((options.maxAuditJobs??1)>0){
+        const inputs:FeatureIndexSessionAuditInput[]=[],current=ledger.list();
+        const query=queryCoverageForJobs(campaign,gridPlan!,current,hash);
+        const indexed=await campaignIndexProjection(campaign,gridPlan!,current,hash,cacheRoot,indexBinding,undefined,inputs);
+        const auditStopped=await runCampaignIndexAuditPhase({campaign,campaignHash:hash,binding:indexBinding,config:featureIndex,
+          inputs,eligible:campaignAuditEligible(query,indexed,inputs),deadline,signal:options.signal},ledger,failures);
+        stopped=stopped??auditStopped;
+      }
     }
     const jobs=ledger.list();if(!stopped&&jobs.some(j=>j.status==='queued'||j.status==='leased'))stopped='campaign work remains queued or leased';
     const queryCoverage=campaign.schemaVersion===2?queryCoverageForJobs(campaign,gridPlan!,jobs,hash):undefined;
-    const indexCoverage=campaign.schemaVersion===2?await campaignIndexProjection(campaign,gridPlan!,jobs,hash,cacheRoot,indexBinding):undefined;
+    const auditInputs:FeatureIndexSessionAuditInput[]=[];
+    const indexCoverage=campaign.schemaVersion===2?await campaignIndexProjection(campaign,gridPlan!,jobs,hash,cacheRoot,indexBinding,undefined,auditInputs):undefined;
+    const auditCoverage=campaign.schemaVersion===2?await campaignAuditProjection(campaign,hash,jobs,indexBinding,auditInputs,
+      campaignAuditEligible(queryCoverage!,indexCoverage!,auditInputs)):undefined;
     if(!stopped&&indexCoverage?.enabled&&(indexCoverage.pending+indexCoverage.leased+indexCoverage.untracked)>0)stopped=indexCoverage.capacityBlocked?'feature index shard capacity reached; remaining captures are untracked and require bounded deterministic sharding':'feature index work remains queued, leased or untracked';
+    if(!stopped&&auditCoverage?.enabled&&auditCoverage.status!=='complete')stopped=auditCoverage.reasons[0]??'campaign index audit is incomplete';
     const counts=coverageCounts(campaign,jobs);if(queryCoverage)counts.unknown=queryCoverage.roots.pending>0?1:0;
     if(!stopped&&counts.sourceUnits===0)throw new Error('campaign has no source-unit denominator; protected-only work is not world coverage');
-    return{id:campaign.id,status:stopped?'stopped':counts.exception||indexCoverage?.failed||queryCoverage&&queryCoverage.roots.exception>0?'exception':queryCoverage&&queryCoverage.roots.pending>0?'stopped':'complete',counts,stages:await stageCounts(paths.dir),jobs,failures,stopped,...(queryCoverage?{queryCoverage}:{}),...(indexCoverage?{indexCoverage}:{})};
+    return{id:campaign.id,status:stopped?'stopped':counts.exception||indexCoverage?.failed||queryCoverage&&queryCoverage.roots.exception>0?'exception':queryCoverage&&queryCoverage.roots.pending>0?'stopped':'complete',counts,stages:await stageCounts(paths.dir),jobs,failures,stopped,...(queryCoverage?{queryCoverage}:{}),...(indexCoverage?{indexCoverage}:{}),...(auditCoverage?{auditCoverage}:{})};
   }finally{ledger?.close();await releaseLock();}
 }
 export async function campaignStatus(id:string,options:Pick<CampaignOptions,'allowedRoot'>={}):Promise<CampaignReport>{
@@ -581,15 +673,19 @@ export async function campaignStatus(id:string,options:Pick<CampaignOptions,'all
   const gridPlan=campaign.schemaVersion===2?await bindGridQueryPlan(campaign,p.dir,binding,undefined,undefined,true):null;
   await usageEntries(p.dir,campaign.schemaVersion!==2);
   const jobs=Ledger.readOnlyList(p.ledger),counts=coverageCounts(campaign,jobs),done=counts.compiled+counts.exception+counts.protected;
-  let indexCoverage:CampaignIndexCoverage|undefined;
+  let indexCoverage:CampaignIndexCoverage|undefined,auditCoverage:CampaignIndexAuditCoverage|undefined;
+  const auditInputs:FeatureIndexSessionAuditInput[]=[];
     if(campaign.schemaVersion===2){
       const stored=JSON.parse(await readBoundedLocalFile(path.join(p.dir,'grid-query-binding.json'),16_000).then(bytes=>new TextDecoder('utf-8',{fatal:true}).decode(bytes))) as {cacheRoot:string},resolver=createGridQueryResolver(gridPlan!,campaign.gridQuery),templates=new Map(campaign.units.map(unit=>[unit.query.rootCellId,unit]));
       for(const job of jobs.filter(job=>job.kind==='campaign-grid-query'&&job.status==='completed'&&(job.result as {status?:string}|null)?.status==='query-captured'))await verifyQueryCapture(object(job.result,'completed query capture'),validateClaimedQueryUnit(campaign,gridPlan!,job,hash,resolver,templates),stored.cacheRoot);
       const indexBinding=await readCampaignIndexBinding(p.dir,campaign,hash);
-      indexCoverage=await campaignIndexProjection(campaign,gridPlan!,jobs,hash,stored.cacheRoot,indexBinding);
+      indexCoverage=await campaignIndexProjection(campaign,gridPlan!,jobs,hash,stored.cacheRoot,indexBinding,undefined,auditInputs);
+      auditCoverage=await campaignAuditProjection(campaign,hash,jobs,indexBinding,auditInputs,
+        campaignAuditEligible(queryCoverageForJobs(campaign,gridPlan!,jobs,hash),indexCoverage,auditInputs));
     }
     const queryCoverage=campaign.schemaVersion===2?queryCoverageForJobs(campaign,gridPlan!,jobs,hash):undefined;
     if(queryCoverage)counts.unknown=queryCoverage.roots.pending>0?1:0;
     const indexingPending=indexCoverage?.enabled&&indexCoverage.pending+indexCoverage.leased+indexCoverage.untracked>0;
-    return{id,status:jobs.some(j=>j.status==='queued'||j.status==='leased')||queryCoverage&&queryCoverage.roots.pending>0||indexingPending?'running':counts.exception||indexCoverage?.failed||queryCoverage&&queryCoverage.roots.exception>0?'exception':queryCoverage?queryCoverage.roots.captured===queryCoverage.roots.requested?'complete':'stopped':done>0?'complete':'stopped',counts,stages:await stageCounts(p.dir,campaign.schemaVersion!==2),jobs,failures:jobs.filter(j=>j.status==='failed').map(j=>`${j.id}: ${String(j.error)}`),stopped:null,...(queryCoverage?{queryCoverage}:{}),...(indexCoverage?{indexCoverage}:{})};
+    const auditPending=auditCoverage?.enabled&&auditCoverage.status!=='complete';
+    return{id,status:jobs.some(j=>j.status==='queued'||j.status==='leased')||queryCoverage&&queryCoverage.roots.pending>0||indexingPending?'running':counts.exception||indexCoverage?.failed||queryCoverage&&queryCoverage.roots.exception>0?'exception':auditPending?'stopped':queryCoverage?queryCoverage.roots.captured===queryCoverage.roots.requested?'complete':'stopped':done>0?'complete':'stopped',counts,stages:await stageCounts(p.dir,campaign.schemaVersion!==2),jobs,failures:jobs.filter(j=>j.status==='failed').map(j=>`${j.id}: ${String(j.error)}`),stopped:auditPending?auditCoverage!.reasons[0]??'campaign index audit is incomplete':null,...(queryCoverage?{queryCoverage}:{}),...(indexCoverage?{indexCoverage}:{}),...(auditCoverage?{auditCoverage}:{})};
 }

@@ -86,13 +86,13 @@ export async function prepareCampaignWorkerLeases(campaignLease: CampaignLease,
   const base = plainSix(existingStdio);
   const campaignStd = await campaignLeaseWorkerStdio(campaignLease, base);
   const campaignMapped = campaignStd as StdioEntry[];
-  if (!Array.isArray(campaignMapped) || campaignMapped.length !== 7 || !Number.isSafeInteger(campaignMapped[6])
+  if (!Array.isArray(campaignMapped) || campaignMapped.length !== 7 || typeof campaignMapped[6] !== 'number' || !Number.isSafeInteger(campaignMapped[6])
       || campaignMapped[6] <= 2) throw new Error('campaign lease did not map to dedicated child descriptor 6');
   let acquisitionMapped: number | undefined;
   if (acquisitionLease) {
     const result = await campaignLeaseWorkerStdio(acquisitionLease, base);
     const mapped = result as StdioEntry[];
-    if (!Array.isArray(mapped) || mapped.length !== 7 || !Number.isSafeInteger(mapped[6]) || mapped[6] <= 2) {
+    if (!Array.isArray(mapped) || mapped.length !== 7 || typeof mapped[6] !== 'number' || !Number.isSafeInteger(mapped[6]) || mapped[6] <= 2) {
       throw new Error('acquisition lease did not map to a dedicated descriptor');
     }
     acquisitionMapped = mapped[6] as number;

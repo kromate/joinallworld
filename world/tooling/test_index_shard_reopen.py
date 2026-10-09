@@ -24,6 +24,7 @@ class IndexShardReopenTests(unittest.TestCase):
     def setUpClass(cls):
         admission_fixture.IndexAdmissionTests.setUpClass.__func__(cls)
 
+    bound = admission_fixture.IndexAdmissionTests.bound
     prepared = admission_fixture.IndexAdmissionTests.prepared
 
     def arguments(self, namespace, source):

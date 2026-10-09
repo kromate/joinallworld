@@ -230,7 +230,7 @@ def read_admission_base_input(root, namespace_descriptor, plan_pin):
             or (snapshot.st_dev, snapshot.st_ino) !=
                 (attempt["snapshotDevice"], attempt["snapshotInode"])):
         raise ValueError("prepared execution snapshot identity differs from durable state")
-    config_path = Path(__file__).resolve().parent.parent / CONFIGURATION
+    config_path = Path(__file__).resolve().parent.parent.parent / CONFIGURATION
     config = read_private(config_path, 64000, (0o400,))
     source_pin = {"sha256": hashlib.sha256(config).hexdigest(), "bytes": len(config)}
     if source_pin != record["sourceConfiguration"]:

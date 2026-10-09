@@ -118,7 +118,7 @@ def verify_shard_registry(root, budget, namespace_lease, plan_raw, plan_pin, bas
     pin = dict(plan_pin); base_pin = binding_pin(base_raw)
     operation = {"kind":"admit-plan","plan":pin,"baseBinding":base_pin}
     record_raw = read_private(root/RECORD)
-    source_path = Path(__file__).resolve().parent.parent/CONFIGURATION
+    source_path = Path(__file__).resolve().parent.parent.parent/CONFIGURATION
     source = read_private(source_path,64000,(0o400,))
     source_pin = {"sha256":hashlib.sha256(source).hexdigest(),"bytes":len(source)}
     root_info = _private_root(root); lock_info = os.fstat(namespace_lease.descriptor)

@@ -203,7 +203,8 @@ def _capture(root, name, expected):
 
 def _source_pin(root, name, expected):
     # Only FILES entries reach this helper, through the validated manifest.
-    _capture(root, name, expected)
+    try: _capture(root, name, expected)
+    except ValueError as error: raise ValueError(f"tooling verification failed: {error}") from error
 
 
 def verify_index_tooling(root, raw, pin):

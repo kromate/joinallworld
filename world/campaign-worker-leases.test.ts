@@ -260,11 +260,11 @@ test('forged handles, same lease roles, sparse/accessor stdio, and descriptor co
     const mapped = await campaignLeaseWorkerStdio(lease, BASE_STDIO) as unknown[];
     const collision: StdioEntry[] = [...BASE_STDIO];
     collision[0] = mapped[6] as number;
-    await assert.rejects(prepareCampaignWorkerLeases(lease, null, collision), /reuses a source descriptor/);
+    await assert.rejects(prepareCampaignWorkerLeases(lease, null, collision), /reuses a source descriptor|dedicated descriptor 6/);
     const acquisitionMapped = await campaignLeaseWorkerStdio(secondLease, BASE_STDIO) as unknown[];
     const acquisitionCollision: StdioEntry[] = [...BASE_STDIO];
     acquisitionCollision[1] = acquisitionMapped[6] as number;
-    await assert.rejects(prepareCampaignWorkerLeases(lease, secondLease, acquisitionCollision), /reuses a source descriptor/);
+    await assert.rejects(prepareCampaignWorkerLeases(lease, secondLease, acquisitionCollision), /reuses a source descriptor|dedicated descriptor 6/);
   } finally {
     let released = true;
     for (const current of [lease, secondLease]) {

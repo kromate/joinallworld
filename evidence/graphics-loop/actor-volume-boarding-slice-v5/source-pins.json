@@ -1,0 +1,34 @@
+{
+  "status": "source-only-proposal-unrun-after-v4-helper-failure",
+  "scope": "isolated v5 sampler and actual production-adapter test; fixes triangle-aligned active-bound indexing; no runtime integration",
+  "sampler": {
+    "path": "evidence/graphics-loop/actor-volume-boarding-slice-v5/sample-actor-geometry.ts",
+    "sha256": "6b52a4935f2e191651bf74c6ccf08610ef07f3b9832fd4ef15dd30d078a05580",
+    "bytes": 17373
+  },
+  "test": {
+    "path": "evidence/graphics-loop/actor-volume-boarding-slice-v5/sample-actor-geometry.test.ts",
+    "sha256": "143775eddde584fcdfb965f4308365feda28aa30ff893e4a406ec284a474b674",
+    "bytes": 17394
+  },
+  "productionAdapters": {
+    "src/scene/body/skinned.ts": "4fa64261e15a7e104f527ad4782aff2bb80c53d559dc7a448d95d797d92c6bdb",
+    "src/scene/wardrobe/renderer.ts": "4b053592fdc8efdad0e9cd5071cb853594c2db53829cd74116bf578f439f82da",
+    "src/scene/body/foot-contact.ts": "6f98bb61fde23e51016148d06136fcb0b46b0b9d5c03cefc73c7ad47745df8c6",
+    "src/scene/body/appearance.ts": "8aa5fcbaeb04f8609f8921659444d80aa64295c76c77b9cf813fb947548d8b91",
+    "src/scene/body/shared-resource-cache.ts": "c6b8828689b11d5c228665be2a84e9cfae37f64ae71de0da37358bf1060967b4",
+    "package-lock.json": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9"
+  },
+  "actualFixtures": {
+    "src/scene/body/assets/base-body-male.glb": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "src/scene/body/assets/base-body-female.glb": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "src/scene/body/assets/clip-pack.glb": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "claimsNotMade": [
+    "No v5 test, typecheck, build, browser, or server execution has occurred.",
+    "This proposal is not integrated into loadBody or any live gameplay path.",
+    "The geometry sample is not occlusion, a swept envelope, collision clearance, seat fit, or a boarding decision.",
+    "Host-attested appearance/phase identity is not an independent shader or look certificate."
+  ],
+  "remoteRecipe": "Node 24 strip-types focused test; remote CI pins exact source closure and lockfile, 96 MiB heap / 220 MiB process-group RSS / 25 sec."
+}

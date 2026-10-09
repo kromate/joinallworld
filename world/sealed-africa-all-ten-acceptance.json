@@ -1,0 +1,135 @@
+{
+  "format": "sealed-africa-all-ten-acceptance-v1",
+  "checkedAt": "2026-10-09T20:56:58.289214+00:00",
+  "runId": 37989411458,
+  "jobId": 114019463268,
+  "toolingSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+  "gameSourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+  "status": "passed",
+  "elapsedMs": 76001,
+  "outcomes": [
+    {
+      "check": "source-and-package-identity",
+      "status": "passed"
+    },
+    {
+      "check": "sealed-worker-start-and-sqlite",
+      "status": "passed"
+    },
+    {
+      "check": "packaged-assets-all-destinations",
+      "status": "passed",
+      "count": 21,
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers",
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town",
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "sqlite-restart",
+      "status": "passed"
+    }
+  ],
+  "adminRateWaits": [
+    {
+      "status": 429,
+      "code": "rate_limited",
+      "bucketCount": 31,
+      "windowMs": 60000,
+      "waitNumber": 1,
+      "remainingMs": 134980,
+      "phase": "receipt-replay",
+      "delayMs": 28686,
+      "intentSha256": "be88824829a2e2125190a0b12dbb1131574f22d742baec0fc19e5b06b5b8f93a",
+      "sameIntentRetried": true,
+      "sameAdminAddress": true,
+      "authenticatedFounderBucket": true
+    }
+  ],
+  "observations": {
+    "bytes": 8201,
+    "sha256": "9a105497b269251bfb0acd79354bce1241c646a94cf31cf16c77e7c00afdefd0"
+  },
+  "archiveSha256": "925c338c70d34cc843a9b674669009c27135d4d9d3f3bd844c5f76e8da872a56",
+  "localPackage": {
+    "guardMatches": true,
+    "files": 6202,
+    "bytes": 101835728,
+    "workerSha256": "d3534699faebfbe1d75e7a3eeead5c0efb347d4ad82019a334e9f65cbcb727bb",
+    "manifestSha256": "0e4a5654ab50dda892bd88e1b1686e5d0d7aecd34adf18af469b1a25b228e495"
+  },
+  "priorFailuresRetained": [
+    37986247546,
+    37987303569
+  ],
+  "originalNativeStoreUpgraded": false,
+  "nativeVerified": false,
+  "productionMutation": false,
+  "releaseReady": false,
+  "scope": "All ten synthetic sealed Worker journeys and local unchanged archive guard, not native browser, original-save upgrade, production or physical-device acceptance."
+}

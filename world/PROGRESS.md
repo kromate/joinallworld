@@ -2325,3 +2325,30 @@ from retained geometry before clipping country land and refuses expansion beyond
 All13 focused Python fixtures pass in0.036s under one shared heavy slot. Existing
 outputs/publication intents and frozen contracts are preserved; these tests do
 not claim the three actual source revisions have been regenerated or accepted.
+
+All-ten release checkpoint,21:01UTC: fresh seal37989411458 on exactfa8 tools
+and c1 game is terminal SUCCESS. Actual artifact8201B SHA9a105497... records
+all ten paid and homeward/recovery journeys,21 served assets and SQLite restart
+passing in76.001s, with one real28.686s canonical wait. The unchanged archive
+SHA925c338c... safely extracts to6202 files/101835728 bytes and local guard matches
+d1ddc9e4...; see [sealed-africa-all-ten-acceptance.json](sealed-africa-all-ten-acceptance.json).
+After Integration's active test window released heavy/server, WORLD started one
+880s owned original-store upgrade under heavy1/server1,384MiB and900s watchdog.
+Session73098/child53386 is live on original127.0.0.1:59773 until21:11:55.793Z.
+Seven original control fields, including store/marker/JWK/founder/port, remain
+identical. Credential-free127/localhost health and HTML pass same build/no
+redirect/self/request-host websocket CSP; no origin policy or listener changed.
+The local preflight checker initially hand-truncated the build ID incorrectly;
+canonical40-character normalization resolves that checker error without a runtime
+change. Read-only originalA proof retains596000, nine stable save fields, all12
+wallet effects, all28 action receipts and the original founder grant receipt.
+Normal browser reads have changed session needs/timestamps, so raw-byte identity
+is explicitly not claimed. Integration's explicit Astra owns browser39714 for
+actual UI/maps/guide/new trips and the approved normalB partition. No new grant
+or production upload has been performed by WORLD. Production still has six open.
+
+[AFRICA-STARTUP-SCALING.md](AFRICA-STARTUP-SCALING.md) reviews exactc1's50-row
+registry and the remaining1986raw/619gzip/323Brotli headroom. It proposes selected
+country directories and sparse route neighborhoods while preserving Nigeria.
+Raw source-file sizes and pair-space formulas are not measured bundle savings or
+real flight-service evidence; no runtime prototype is claimed by that document.

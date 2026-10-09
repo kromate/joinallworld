@@ -506,8 +506,8 @@ export async function runTwoPlayers({ log = console.log, saltPrefix = SALT_PREFI
     const everything = JSON.stringify(heard);
     for (const who of [ada, bola]) assert.ok(!everything.includes(who.cookie.slice(4)), `${who.name}’s cookie secret never left the server`);
     const stored = JSON.parse(await readFile(join(dataDir, 'devices.json'), 'utf8'));
-    for (const who of [ada, bola]) for (const key of ['social', 'civic']) assert.ok(!JSON.stringify(stored[key]).includes(who.cookie.slice(4)), `${key} never stores a secret`);
-    assert.deepEqual(Object.keys(stored).sort(), ['civic', 'politics', 'sessions', 'social', 'version']);
+    for (const who of [ada, bola]) for (const key of ['social', 'civic', 'walletEffects']) assert.ok(!JSON.stringify(stored[key]).includes(who.cookie.slice(4)), `${key} never stores a secret`);
+    assert.deepEqual(Object.keys(stored).sort(), ['civic', 'politics', 'sessions', 'social', 'version', 'walletEffects']);
 
     log(`Two players complete: ${step} steps. Ada ${naira((await life(ada)).cash)}, Bola ${naira((await life(bola)).cash)}.`);
     return { steps: step };

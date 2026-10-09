@@ -193,7 +193,8 @@ test('test-only accepted resolver exercises server controls, duplicate packets, 
   f.advance(100)
   const packet = { cityId: 'lagos', tripId: trip.tripId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }
   const moved = await post(f, 'input', packet, player)
-  assert.deepEqual([moved.ok, moved.code, moved.trip?.state.speed, moved.trip?.revision, moved.trip?.nextSequence], [true, 'controls_accepted', 0.302, 2, 2])
+  assert.deepEqual([moved.ok, moved.code, moved.trip?.revision, moved.trip?.nextSequence], [true, 'controls_accepted', 2, 2])
+  assert.ok(Math.abs((moved.trip?.state.speed ?? Infinity) - 0.302) < 1e-12, '100ms of canonical acceleration produces 0.302m/s within floating-point precision')
   assert.deepEqual(await post(f, 'input', packet, player), { ...moved, duplicate: true }, 'same sequence and payload is acknowledged without stepping twice')
   const changed = await post(f, 'input', { ...packet, frames: [{ throttle: 0, brake: 1, steer: 0 }] }, player)
   assert.equal(changed.code, 'packet_conflict', 'same sequence with changed controls cannot replay')

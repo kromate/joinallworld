@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-10-09T13:01:28.951120+00:00",
+  "updatedAt": "2026-10-09T13:20:12.747221+00:00",
   "branch": "codex/allworld-consolidated-delivery",
   "assemblyOwner": "Integration",
   "uploadOwner": "WORLD",
   "baseMain": "4c0899d240ace4818bca6b45f437c1ac9a4bca62",
-  "assemblyCheckpoint": "9152bbbf5852b131d7ecd127b80196d8497de5fc",
+  "assemblyCheckpoint": "26dbc3e1f604c3cc5442204583daf670d8ec201b",
   "status": "repairing",
   "instructions": "One consolidated delivery; repair and verify existing implemented work together. No new feature expansion until consolidation closes. Preserve rejected source and unrelated dirty work. Status accepted means source accepted, not production delivery. Exact combined runtime gates still pending.",
   "manifest": [
@@ -1308,5 +1308,35 @@
       "browserQaSyntax": "passed"
     },
     "acceptance": "Prepared source only; exact remote compiler/build/budget/full/Worker/browser gates pending"
+  },
+  "currentCombinedGate": {
+    "source": "26dbc3e1f604c3cc5442204583daf670d8ec201b",
+    "run": 37934158511,
+    "compiler": "failed: QA unknown onboarding response; working boundary guard repairs",
+    "build": "passed Node22/24",
+    "canonicalBudgets": {
+      "LOADING_RAW": 91174,
+      "STARTUP_RAW": 614707,
+      "STARTUP_GZIP": 222946,
+      "STARTUP_BROTLI": 195370,
+      "FIRST_PAINT_BROTLI": 35691
+    },
+    "capsUnchanged": true,
+    "hostUiPolicy": "passed scoped; overlaps not added",
+    "focused": {
+      "tests": 133,
+      "pass": 131,
+      "fail": 2,
+      "skip": 0
+    },
+    "workerEach22And24": {
+      "tests": 153,
+      "pass": 148,
+      "fail": 5,
+      "skip": 0
+    },
+    "node22And24": "live; retain actual handles until terminal",
+    "preparedFiveFileRepair": "QA response narrowing; floating precision; exact walletEffects schema/secret checks; private media no-store; full Worker build prerequisite",
+    "production": "unchanged a446; no new upload or post-release proof"
   }
 }

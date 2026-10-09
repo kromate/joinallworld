@@ -517,7 +517,11 @@ async function setupTeacher(f, name) {
   requireCondition(created.status === 200, 'fixture could not create an ordinary onboarding session')
   const cookie = created.headers.get('set-cookie')
   if (typeof cookie !== 'string') throw new Error('onboarding session did not issue its fixture cookie')
-  const device = { ...(await created.json()).session, cookie: cookie.split(';')[0] }
+  const sessionAnswer = await created.json()
+  if (!isRecord(sessionAnswer) || !isRecord(sessionAnswer.session) || typeof sessionAnswer.session.id !== 'string') {
+    throw new Error('onboarding response did not identify the fixture session')
+  }
+  const device = { id: sessionAnswer.session.id, cookie: cookie.split(';')[0] }
   const before = await life(f, device.cookie)
   requireCondition(before.state?.onboarding?.required === true && before.state?.onboarding?.done === false,
     'fixture teacher did not begin in the authored character-creation flow')

@@ -4,6 +4,10 @@
 
 The named Loading timeline indicator was in Trending during scoped rechecks; separate unnamed conversation indicators were recorded. Preserve actual filtered/unavailable/comment-continuation evidence. The city129 queue and58 image-status queue remain separate. Known long-text queue is empty.
 
+## Bounded access recheck — 9 October 2026, 13:17 UTC
+
+A fresh anonymous in-app browser could read the [original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) and the author’s [four-neighbour reply](https://x.com/Shalom_HeyEliy/status/2105553826543493397). The conversation’s all-replies control required login; Recent was not available in that state. Navigating to the reply’s observed photo link produced an ambiguous parent-post preview rather than a verified attachment belonging to that reply. Its image remains unread. No branch, residual or image queue item was removed, and the historical counters above were not updated. The owned tab and bounded browser lease were closed. No account or social actions were performed; raw account/contact details and captures are not published.
+
 ## Known untraversed branch pages
 
 1. [Reply branch](https://x.com/Zodiac_ya/status/2105998306551664879)

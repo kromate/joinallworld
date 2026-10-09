@@ -119,7 +119,7 @@ test('Cloudflare pictures: stored in the object\'s own table without metadata, s
   const id = String(sent.message?.image?.id);
   const seen = await f.image(`/api/social/images/${id}`, bola);
   assert.deepEqual([seen.status, seen.headers.get('content-type'), seen.headers.get('x-content-type-options'), seen.headers.get('content-disposition')], [200, 'image/jpeg', 'nosniff', 'inline']);
-  assert.match(String(seen.headers.get('cache-control')), /^private/);
+  assert.equal(seen.headers.get('cache-control'), 'no-store', 'private media must not persist in a browser or shared cache');
   const bytes = Buffer.from(await seen.arrayBuffer());
   assert.equal(bytes.includes(Buffer.from('Exif')), false, 'the EXIF segment was left out');
   assert.equal(bytes.includes(Buffer.from('GPS')), false);

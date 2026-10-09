@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authored character component isolation</title>
+  <style>
+    :root { color-scheme: light; font: 14px/1.4 system-ui, sans-serif; background: #edf0f2; color: #18232b; }
+    body { margin: 0; padding: 16px; }
+    main { display: grid; grid-template-columns: minmax(340px, 1fr) 310px; gap: 14px; max-width: 1160px; margin: auto; }
+    canvas { width: 100%; height: min(78vh, 760px); min-height: 520px; display: block; background: #d7e2e6; border-radius: 8px; }
+    aside { padding: 14px; background: white; border-radius: 8px; }
+    fieldset { margin: 0 0 12px; border: 1px solid #c5cdd2; border-radius: 6px; }
+    label { display: block; margin: 8px 0; }
+    button { margin: 3px; padding: 7px 10px; }
+    #status[data-state="error"] { color: #a21b1b; }
+    pre { overflow: auto; max-height: 35vh; font-size: 11px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <main>
+    <canvas id="stage"></canvas>
+    <aside>
+      <h1>Actual component isolation</h1>
+      <p>Same prepared actor and camera. Toggle body, authored casual garment, and authored shoes independently to identify which mesh owns pale calf pixels.</p>
+      <fieldset><legend>Body family</legend>
+        <button id="load-man">Load male casual</button>
+        <button id="load-woman">Load female casual</button>
+        <button id="load-woman-office">Load female office</button>
+      </fieldset>
+      <fieldset><legend>Visible components</legend>
+        <label><input id="show-body" type="checkbox" checked> Body</label>
+        <label><input id="show-clothes" type="checkbox" checked> Casual clothes</label>
+        <label><input id="show-shoes" type="checkbox" checked> Shoes</label>
+        <button id="body-only">Body only</button><button id="clothes-only">Clothes only</button>
+        <button id="shoes-only">Shoes only</button><button id="show-all">All components</button>
+      </fieldset>
+      <fieldset><legend>Pose and view</legend>
+        <button id="pose-idle">Idle</button><button id="pose-walk-a">Walk π/2</button><button id="pose-walk-b">Walk 3π/2</button>
+        <button id="view-front">Front</button><button id="view-side">Side</button><button id="view-back">Back</button>
+      </fieldset>
+      <div id="status" data-state="loading">Loading viewer module…</div>
+      <pre id="status-json">{}</pre>
+    </aside>
+  </main>
+  <script type="module" src="./calf-component-toggle-v1/calf-component-toggle-v1.js"></script>
+</body>
+</html>

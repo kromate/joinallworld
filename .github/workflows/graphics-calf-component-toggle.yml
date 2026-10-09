@@ -1,0 +1,44 @@
+name: Authored body-clothes-shoes component isolation
+on:
+  push:
+    branches: [codex/graphics-calf-component-toggle-v1]
+permissions:
+  contents: read
+jobs:
+  component-isolation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare the body GLB used by the pinned V29 factory
+        run: |
+          python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
+          python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
+      - name: Typecheck the isolated component fixture
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/calf-component-toggle-v1.typecheck.json
+      - name: Bundle the fixture against the byte-pinned V29 factory snapshot
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/calf-component-toggle-v1/bundle-calf-component-toggle.mjs
+      - name: Capture matched actual body, clothing, and shoe visibility states
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
+          python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/calf-component-toggle-resources.log /tmp/calf-component-toggle-resources.json node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/render-calf-component-toggle-v1.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: calf-component-toggle-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/calf-component-toggle-${{ github.run_id }}/
+            /tmp/calf-component-toggle-resources.log
+            /tmp/calf-component-toggle-resources.json
+          if-no-files-found: error

@@ -12,7 +12,8 @@
     main { max-width: 1500px; margin: auto; padding: 18px; }
     h1 { font-size: clamp(1.25rem, 2vw, 1.8rem); margin: 0 0 4px; }
     .lede, .note { color: #52616a; margin: 0 0 14px; }
-    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(290px, 350px); gap: 14px; align-items: start; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 350px); gap: 14px; align-items: start; }
+    .layout > *, .stage-card, aside, .npc-card, .npc-card header > *, #npc-cards, .action-list { min-width: 0; }
     .stage-card, .panel { background: #fff; border: 1px solid #d4dbd9; border-radius: 12px; box-shadow: 0 4px 18px #16262d10; }
     .stage-card { overflow: hidden; position: relative; }
     #game-stage { display: block; width: 100%; height: min(74vh, 740px); min-height: 480px; background: #d6e9ef; }
@@ -31,13 +32,13 @@
     .npc-card { border: 1px solid #e0e5e2; border-radius: 8px; padding: 9px; }
     .npc-card header { display: flex; justify-content: space-between; gap: 8px; }
     .npc-card header span { color: #56656d; font-size: 12px; text-align: right; }
-    .npc-card p { margin: 3px 0 7px; color: #56656d; font-size: 12px; }
+    .npc-card p { margin: 3px 0 7px; color: #56656d; font-size: 12px; overflow-wrap: anywhere; }
     .action-list { display: flex; flex-wrap: wrap; gap: 5px; }
     .action-list button { font-size: 12px; padding: 4px 7px; }
     .badge { display: inline-block; margin: 2px; padding: 1px 6px; border-radius: 9px; background: #edf3ef; font-size: 11px; }
     @media (max-width: 800px) {
       main { padding: 10px; }
-      .layout { grid-template-columns: 1fr; }
+      .layout { grid-template-columns: minmax(0, 1fr); }
       #game-stage { height: min(62svh, 600px); min-height: 350px; }
       #audit { max-height: 22vh; }
       aside { grid-template-columns: 1fr; }

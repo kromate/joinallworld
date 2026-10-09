@@ -24,8 +24,8 @@ const NPC_PLACES: Record<string, string> = {
 };
 // These two regulars have recorded, stable outfits across every visit and view.
 const OFFICE_LOOKS: Partial<Record<NpcId, NpcDefinition['look']>> = {
-  'mrs-okafor': { body: 'woman', hair: 'afro', outfit: 'office', fabric: 'plain', skin: '#96603c', hairColor: '#2b1b13', outfitColor: '#417bac', bottomsColor: '#243347', accessories: [], face: 'oval', expression: 'neutral', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
-  dapo: { body: 'man', hair: 'lowcut', outfit: 'office', fabric: 'plain', skin: '#7a4a2c', hairColor: '#241710', outfitColor: '#f0e8d8', bottomsColor: '#243347', accessories: [], face: 'round', expression: 'neutral', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
+  'mrs-okafor': { body: 'woman', hair: 'afro', outfit: 'office', fabric: 'plain', skin: 'skin-4', hairColor: 'dark-brown', outfitColor: 'blue', bottomsColor: 'navy', accessories: [], face: 'round', expression: 'neutral', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
+  dapo: { body: 'man', hair: 'low-cut', outfit: 'office', fabric: 'plain', skin: 'skin-5', hairColor: 'black', outfitColor: 'cream', bottomsColor: 'navy', accessories: [], face: 'round', expression: 'neutral', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
 };
 const npc = (id: NpcId, venue: string, name: string, role: string, emoji: string, quotes: string[], extra: Pick<NpcDefinition, 'beta' | 'note' | 'look'> = { beta: true }): Omit<NpcDefinition, 'at'> => ({ id, venue, name, role, emoji, quotes, ...(OFFICE_LOOKS[id] ? { look: OFFICE_LOOKS[id] } : {}), ...extra });
 export const NPCS: Record<NpcId, NpcDefinition> = Object.fromEntries([

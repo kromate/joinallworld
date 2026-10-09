@@ -30,7 +30,7 @@ interface FixtureSnapshot {
   unsupportedProbe: Record<string, unknown> | null;
   interaction: Record<string, unknown> | null;
   currentCamera: string;
-  viewport: { width: number; height: number; layoutColumns: number };
+  viewport: { width: number; height: number; scrollWidth: number; layoutColumns: number; mobileBreakpoint: boolean };
 }
 
 declare global {
@@ -278,10 +278,15 @@ function createFixture() {
       updateDom(); draw();
       return interaction;
     }
+    entry?.update(lifeState);
+    const npcPoseDuringInteraction = inspectNpc(npcId).gamePose;
+    draw();
     const completed = advanceLife(lifeState, offered.duration, {
       cityId: 'lagos', now: lifeState.t + offered.duration * 1000,
       seed: `office-fixture-complete:${npcId}:${activityId}:${now}`,
     });
+    entry?.update(lifeState);
+    const npcPoseAfterCompletion = inspectNpc(npcId).gamePose;
     const afterView = viewLife(lifeState, { cityId: 'lagos', now: lifeState.t, seed: `office-fixture-view:${npcId}:${now}` }).social;
     regulars = afterView.here;
     const afterNpc = afterView.here.find((person) => person.id === npcId);
@@ -300,6 +305,9 @@ function createFixture() {
       afterRelationship: afterRelationship ? { points: afterRelationship.points, left: afterRelationship.left } : null,
       familiarityChanged,
       viewUpdated: Boolean(afterNpc),
+      npcPoseDuringInteraction,
+      npcPoseAfterCompletion,
+      npcPoseLifecyclePass: npcPoseDuringInteraction === 'interact' && npcPoseAfterCompletion === 'idle',
     };
     stage = `${offered.label} completed with ${npc.name}`;
     renderNpcCards(afterView.here.filter((person) => person.id === 'mrs-okafor' || person.id === 'dapo'));
@@ -354,7 +362,7 @@ function createFixture() {
   function inspectNpc(npcId: string) {
     const canonicalName = `canonical-crowd:npc:${npcId}`;
     const root = entry?.group.getObjectByName(canonicalName) ?? null;
-    return { ...nativeMeshEvidence(root), mounted: Boolean(root) };
+    return { ...nativeMeshEvidence(root), mounted: Boolean(root), gamePose: root?.userData.nativeGameNpcPose ?? null };
   }
 
   function snapshot(): FixtureSnapshot {
@@ -400,9 +408,13 @@ function createFixture() {
       interaction,
       currentCamera,
       viewport: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-        layoutColumns: getComputedStyle(required<HTMLElement>('.layout')).gridTemplateColumns.trim().split(/\s+/).length,
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
+        scrollWidth: document.documentElement.scrollWidth,
+        layoutColumns: new Set(Array.from(required<HTMLElement>('.layout').children,
+          (child) => Math.round(child.getBoundingClientRect().top))).size === 1
+          ? required<HTMLElement>('.layout').children.length : 1,
+        mobileBreakpoint: window.matchMedia('(max-width: 430px)').matches,
       },
     };
   }

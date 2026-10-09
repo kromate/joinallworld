@@ -425,6 +425,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   // Other players who report where they stand: one figure each, eased to every new position.
   const peers = new Map<string, Peer>();
   let peopleList: ScenePerson[] = [], mergedTags: SceneTag[] = [], batchKey: string | null = null, easing = false;
+  let activeNpcActivity: string | null = null;
+  function nativeNpcPose(id: string): 'idle' | 'interact' {
+    return id.startsWith('npc:') && activeNpcActivity?.startsWith(`npc-${id.slice(4)}-`) ? 'interact' : 'idle';
+  }
   let placedCrowd: CrowdPerson[] = [], notifyCrowdChanged: (() => void) | null = null, crowdGateRejected = false;
   const canonicalCrowd = createCanonicalCrowd<CanonicalVenueActor>({
     async load(spec) {
@@ -435,8 +439,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     },
     place(actor, spec) {
       actor.body.fit(spec.scale);
-      actor.body.show('idle', false);
+      const pose = nativeNpcPose(spec.id);
+      actor.body.show(pose, false);
       actor.body.place(spec.x, spec.y, spec.z, spec.ry);
+      actor.body.object.userData.nativeGameNpcPose = pose;
     },
     mount(actor, id) {
       actor.body.object.name = `canonical-crowd:${id}`;
@@ -810,7 +816,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     for (const peer of peers.values()) if (peer.t >= 1 && watch(peer.gaze, peer, peer.ry, avatar.position)) { easing = true; return; }
   }
   function supportsCanonicalStaticPose(person: CrowdPerson): boolean {
-    return person.pose === undefined || person.pose === null || person.pose === 'stand' || person.pose === 'idle';
+    return person.pose === undefined || person.pose === null || person.pose === 'stand';
   }
   function canonicalSpec(person: CrowdPerson, index: number): CanonicalCrowdSpec {
     const id = String(person.id ?? `person-${index}`), seed = String(person.seed ?? person.id ?? person.name ?? id);
@@ -1141,8 +1147,23 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
         const pose = !active ? 'stand' : active.kind === 'travel' || active.kind === 'commute' ? 'walk' : 'busy';
         if (pose !== view.pose) { view.pose = pose; actors = true; }
       }
-      if (live) { if (dressed) redress(); if (actors) settle(); if (changed) applyLighting(); }
-      return changed || actors;
+      const nextNpcActivity = here && state.activeAction?.kind === 'activity' && typeof state.activeAction.id === 'string'
+        ? state.activeAction.id : null;
+      const npcPoseChanged = activeNpcActivity !== nextNpcActivity;
+      activeNpcActivity = nextNpcActivity;
+      if (live) {
+        if (dressed) redress();
+        if (actors) settle();
+        if (changed) applyLighting();
+        if (npcPoseChanged) for (const person of placedCrowd) {
+          const id = String(person.id ?? ''), actor = canonicalCrowd.get(id);
+          if (!actor) continue;
+          const pose = nativeNpcPose(id);
+          actor.body.show(pose, false);
+          actor.body.object.userData.nativeGameNpcPose = pose;
+        }
+      }
+      return changed || actors || npcPoseChanged;
     },
     dispose() {
       if (disposed) return;

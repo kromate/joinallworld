@@ -166,10 +166,13 @@ try {
     realNpcActivityCompleted: npcInteraction?.started?.code === 'started' && npcInteraction?.completed === true
       && npcInteraction?.responseNamesNpc === true && npcInteraction?.familiarityChanged === true
       && npcInteraction?.viewUpdated === true && npcInteraction?.npcId === 'mrs-okafor',
+    realNpcPoseFollowsLifeAction: npcInteraction?.npcPoseDuringInteraction === 'interact'
+      && npcInteraction?.npcPoseAfterCompletion === 'idle' && npcInteraction?.npcPoseLifecyclePass === true,
     playerContact: contactPass,
     unsupportedSitUsesLegacyAndDisposes: unsupportedPass,
     afterUnsupportedStillReady: afterUnsupported.readyState === 'ready',
-    mobileLayoutSingleColumn: mobile.snapshot?.viewport?.width === 390 && mobile.snapshot?.viewport?.layoutColumns === 1,
+    mobileLayoutSingleColumn: mobile.snapshot?.viewport?.width <= 430 && mobile.snapshot?.viewport?.mobileBreakpoint === true
+      && mobile.snapshot?.viewport?.layoutColumns === 1 && mobile.snapshot?.viewport?.scrollWidth <= mobile.snapshot?.viewport?.width,
     snapshotsHaveNoRuntimeErrors: [idle, front, profileView, walk, interact, npcAction, mobile].every((sample) => sample.snapshot?.errors?.length === 0)
       && afterUnsupported.errors?.length === 0,
     teardownReleasesActorsAndContext: disposal?.playerUnmounted === true && disposal?.noCanonicalActorsRemain === true

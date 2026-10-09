@@ -58,7 +58,10 @@ const failedRequests = [];
 const consoleErrors = [];
 const pendingNetwork = new Map();
 const networkIdleWaits = [];
+const clipRequestTrace = [];
+const clipRequestsById = new Map();
 let lastNetworkEventAt = Date.now();
+let currentActorLabel = 'initial-page-load';
 const pending = new Map();
 let socket;
 let nextId = 0;
@@ -123,6 +126,7 @@ async function capture(label) {
   return { state, image: { file, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') } };
 }
 async function setActor(body, outfit) {
+  currentActorLabel = `${body}-${outfit}`;
   await evaluate(`window.clothingBodyShoeAB.load(${JSON.stringify(body)}, ${JSON.stringify(outfit)})`);
   assert.equal(await ready(), 'ready', `actor failed to load: ${await evaluate('document.querySelector("#status")?.textContent')}`);
   await waitForNetworkIdle(`actor-ready-${body}-${outfit}`);
@@ -184,21 +188,49 @@ try {
       lastNetworkEventAt = Date.now();
       requestedUrls.set(message.params.requestId, message.params.request.url);
       pendingNetwork.set(message.params.requestId, { url: message.params.request.url, type: message.params.type ?? null, initiator: message.params.initiator?.type ?? null });
+      if (message.params.request.url.includes('/clip-pack.glb')) {
+        const item = {
+          requestId: message.params.requestId, actorLabel: currentActorLabel,
+          url: message.params.request.url, method: message.params.request.method,
+          cdpTimestamp: message.params.timestamp, wallTime: message.params.wallTime,
+          initiatorType: message.params.initiator?.type ?? null,
+          initiatorStack: message.params.initiator?.stack?.callFrames?.map((frame) => ({ functionName: frame.functionName, url: frame.url, lineNumber: frame.lineNumber, columnNumber: frame.columnNumber })) ?? [],
+          redirectResponse: message.params.redirectResponse ? { status: message.params.redirectResponse.status, mimeType: message.params.redirectResponse.mimeType, encodedDataLength: message.params.redirectResponse.encodedDataLength } : null,
+          response: null, dataEvents: 0, dataLength: 0, encodedDataLength: 0, terminal: null,
+        };
+        clipRequestsById.set(message.params.requestId, item);
+        clipRequestTrace.push(item);
+      }
+    }
+    if (message.method === 'Network.responseReceived') {
+      const item = clipRequestsById.get(message.params.requestId);
+      if (item) item.response = { timestamp: message.params.timestamp, status: message.params.response.status, mimeType: message.params.response.mimeType,
+        fromDiskCache: message.params.response.fromDiskCache ?? false, fromServiceWorker: message.params.response.fromServiceWorker ?? false,
+        encodedDataLength: message.params.response.encodedDataLength ?? null, contentLength: message.params.response.headers?.['content-length'] ?? message.params.response.headers?.['Content-Length'] ?? null };
+    }
+    if (message.method === 'Network.dataReceived') {
+      const item = clipRequestsById.get(message.params.requestId);
+      if (item) { item.dataEvents++; item.dataLength += message.params.dataLength; item.encodedDataLength += message.params.encodedDataLength; }
     }
     if (message.method === 'Network.loadingFinished') {
       lastNetworkEventAt = Date.now();
       pendingNetwork.delete(message.params.requestId);
+      const item = clipRequestsById.get(message.params.requestId);
+      if (item) item.terminal = { kind: 'finished', timestamp: message.params.timestamp, encodedDataLength: message.params.encodedDataLength };
     }
     if (message.method === 'Network.loadingFailed') {
       lastNetworkEventAt = Date.now();
       const pendingRequest = pendingNetwork.get(message.params.requestId);
       failedRequests.push({ requestId: message.params.requestId, url: requestedUrls.get(message.params.requestId) ?? pendingRequest?.url ?? null, type: pendingRequest?.type ?? null, initiator: pendingRequest?.initiator ?? null, errorText: message.params.errorText, canceled: message.params.canceled ?? false });
       pendingNetwork.delete(message.params.requestId);
+      const item = clipRequestsById.get(message.params.requestId);
+      if (item) item.terminal = { kind: 'failed', timestamp: message.params.timestamp, errorText: message.params.errorText, canceled: message.params.canceled ?? false, blockedReason: message.params.blockedReason ?? null };
     }
   });
   await cdp('Page.enable'); await cdp('Runtime.enable'); await cdp('Network.enable');
   await cdp('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1120, deviceScaleFactor: 1, mobile: false });
   const pageUrl = `http://127.0.0.1:${port}/${relativeHtml}`;
+  currentActorLabel = 'initial-male-casual';
   await cdp('Page.navigate', { url: pageUrl });
   assert.equal(await ready(), 'ready', `initial actor failed: ${await evaluate('document.querySelector("#status")?.textContent').catch(String)}`);
   await waitForNetworkIdle('initial-actor-ready');
@@ -231,6 +263,7 @@ try {
     }
   }
   await waitForNetworkIdle('completed-comparison-matrix');
+  const clipResourceTiming = await evaluate(`performance.getEntriesByType('resource').filter((entry) => entry.name.includes('/clip-pack.glb')).map((entry) => ({ name: entry.name, startTime: entry.startTime, duration: entry.duration, transferSize: entry.transferSize, encodedBodySize: entry.encodedBodySize, decodedBodySize: entry.decodedBodySize, responseStatus: entry.responseStatus ?? null }))`);
   const office = comparisons.filter((item) => item.body === 'female' && item.outfit === 'office');
   const pants = comparisons.filter((item) => item.body === 'male' && item.outfit === 'office');
   const casual = comparisons.filter((item) => item.outfit === 'casual');
@@ -252,7 +285,7 @@ try {
   result = {
     status: passed ? 'PASS' : 'FAIL', diagnosticOnly: true, pageUrl,
     fixture: 'same prepared actor/look/seed/pose/camera; source versus connected office-blouse Body coverage and trouser-hem sock candidate',
-    comparisons, visibleChangeGroups, failedRequests, networkIdleWaits, pendingNetwork: [...pendingNetwork.values()], consoleErrors, chromeVersion: spawnSync(chromeBin, ['--version'], { encoding: 'utf8' }).stdout.trim(),
+    comparisons, visibleChangeGroups, failedRequests, clipRequestTrace, clipResourceTiming, networkIdleWaits, pendingNetwork: [...pendingNetwork.values()], consoleErrors, chromeVersion: spawnSync(chromeBin, ['--version'], { encoding: 'utf8' }).stdout.trim(),
     limitations: ['The blouse patch is a bounded source-index candidate; pixels still require independent visual acceptance.', 'Four outfits and sampled poses only; no mobile or fullgame claim.', 'Female office skirt deliberately leaves shoe geometry unchanged.'],
   };
   await writeFile(path.join(resultDir, 'clothing-body-shoe-ab-report.json'), `${JSON.stringify(result, null, 2)}\n`);
@@ -260,7 +293,7 @@ try {
   console.log(JSON.stringify({ status: result.status, resultDir, comparisons: comparisons.length }));
 } catch (error) {
   const message = error instanceof Error ? error.stack ?? error.message : String(error);
-  result = { ...(result ?? {}), status: 'FAIL', error: message, failedRequests, networkIdleWaits, pendingNetwork: [...pendingNetwork.values()], consoleErrors, chromeStderr };
+  result = { ...(result ?? {}), status: 'FAIL', error: message, failedRequests, clipRequestTrace, networkIdleWaits, pendingNetwork: [...pendingNetwork.values()], consoleErrors, chromeStderr };
   await writeFile(path.join(resultDir, 'clothing-body-shoe-ab-report.json'), `${JSON.stringify(result, null, 2)}\n`);
   console.error(message);
   process.exitCode = 1;

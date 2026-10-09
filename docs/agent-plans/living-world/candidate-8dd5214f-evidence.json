@@ -4,18 +4,27 @@
   "fastUIRun": {
     "runId": 37882632059,
     "url": "https://github.com/kromate/joinallworld/actions/runs/37882632059",
-    "observedAt": "2026-10-09T04:11:07Z",
-    "status": "in_progress",
+    "observedAt": "2026-10-09T04:19:00Z",
+    "status": "completed",
     "releasePolicy": "pass",
-    "canonicalCompiler": "in_progress",
-    "buildSmokeBudgets": "in_progress",
-    "expandedUI": "in_progress",
+    "canonicalCompiler": "failure: three fixture type diagnostics, repaired and compiler verified at298e5337",
+    "buildSmokeBudgets": "pass",
+    "expandedUI": {
+      "tests": 411,
+      "pass": 410,
+      "fail": 1,
+      "skip": 0,
+      "actualSfcLifecyclePass": 4,
+      "remainingFailure": "mapped shuttle corridor overlaps building707240019"
+    },
     "jobs": {
       "compiler": 113665546648,
       "ui": 113665546820,
       "policy": 113665546896,
       "build": 113665546998
-    }
+    },
+    "conclusion": "failure",
+    "laterCommerceAndWorker": "skipped after UI failure"
   },
   "scope": "practice response fences, canonical deferred-close recovery, actual Vue lifecycle fixtures and specification-backed campus/mobile/privacy fixture repairs",
   "priorLocalLifecycleCheck": {
@@ -29,12 +38,22 @@
     "heapMiB": 512,
     "terminalExit": 1,
     "logSha256": "268102a35283daa992b666ca06125833886af076352361ec4bea1d3134941c31",
-    "failure": "fixture published session differed from underlying client session; legitimate storage onChange republished the original guest. Source fixture repaired, rerun pending."
+    "failure": "Historical local fixture failure repaired; all four actual SFC checks subsequently pass at exact8dd remote CI."
   },
   "requiredFullRegression": "not accepted; prior13c55 has18 Node24 failures and Node22 provider timeout",
   "browserMobileMultiplayerInterruptedStaging": "not established",
   "routeAuthorized": false,
   "programmeDeployments": 0,
   "goalmaticDeployments": 0,
-  "productionBuild": "joinallworld-a44629b38be751a9ad446051564"
+  "productionBuild": "joinallworld-a44629b38be751a9ad446051564",
+  "startupObserver": {
+    "sourceSha": "8dd5214f5649060c84e0e35da8c618a1812c52da",
+    "workingTreeDirty": false,
+    "path": "startup-attribution-8dd5214f.json.gz",
+    "sha256": "ee9ee1e2412faed07def1318be36069f82baa781ef63c0882a150ecd89eb3a50",
+    "raw": 612819,
+    "gzip": 222346,
+    "brotli": 194846,
+    "depotDrivingBarberAbsentFromAutomaticStartup": true
+  }
 }

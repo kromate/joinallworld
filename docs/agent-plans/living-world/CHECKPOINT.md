@@ -1,5 +1,18 @@
 # Living-world implementation checkpoint
 
+## Latest verified status — 9 October 2026, 04:19 UTC
+
+This receipt supersedes older current/live statements below. Native goal remains ACTIVE. Latest pushed source is `298e5337e636e562bbf7453ff7058ec90e857be3` on `codex/living-world`; no programme or Goalmatic deployment occurred.
+
+- Exact [CI37883026758](https://github.com/kromate/joinallworld/actions/runs/37883026758) is TERMINAL FAILURE: canonical compiler, build, unchanged download budgets, smoke and release policy PASS; expanded UI has411 tests/410pass/1fail. All four actual Driving/Barber SFC lifecycle checks pass. Shopping/career and Worker stages skipped after the single UI failure; full mode omitted and still required.
+- Sole expanded-UI failure is actual geometry: main-gate to dli-building uses road osm-way-217949998, segment(49.47,15.47) to(47.97,53.96), whose centerline is0.9721770753m from building osm-way-707240019 against a3m half-width. Luna driving returned an UNTESTED, UNCOMMITTED corridor-screening proposal limited to shuttle.ts and new shuttle-clearance helper/test. Root must review it and retain every stop-pair assertion; a disconnected safe graph is an unresolved map-path gap, not permission to invent a route.
+- Exact8dd5214f CI37882632059 is terminal:411 UI/410pass/1fail, all4 actual SFC lifecycle tests pass; build/budgets/15smoke/policy pass; compiler has3 fixture type errors repaired in298, whose compiler now passes. Clean exact8dd startup observer confirms depot/Driving/Barber implementations absent from automatic startup;612819raw/222346gzip/194846Brotli, unchanged caps. Source observer retained in startup-attribution-8dd5214f.json.gz.
+- Prior exact13c55 full remains Node24 3376tests/3354pass/18fail/4skip and Node22 actual25-minute timeout. Current scoped passes do not establish those full regressions are all repaired. Preserve coverage/resource/provider limits while diagnosing measured slow paths.
+- GRAPHICS supplied a scene.test.ts-only proposal; Root has not reviewed, applied or tested it. Other agents' primary checkout/source/assets/saves remain preserved. Root has no intensive local job/server/browser/upload; latest memory warning defers optional local heavy work.
+- Fresh production health: ok true, build `joinallworld-a44629b38be751a9ad446051564`, serverTime1791519569299. Published full source a44629b38be751a9ad446051564704f6c3c6ae1b. Health is not gameplay/save-continuity acceptance.
+- All whole phase exits and A1–A10 remain OPEN. Actual mapped driving/fleet/restocking/barber earnings and reload, desktop/mobile/interruption/multiplayer/staging gates and later education/civic/profession/real-business work remain required. Goalmatic private dev/contracts were inspected; live integration is disabled pending target workspace/installation and exact Goals schema/consent mapping.
+- Next bounded action: independently review the returned corridor patch and GRAPHICS scene proposal, then run changed-source checks with admitted resources or exact remote CI. Complete integrated full/Worker and real staging/gameplay/save gates before the authorized production phase. This checkpoint does not execute while the runtime is stopped.
+
 ## Latest status receipt: 9 October 2026, 04:11 UTC
 
 This receipt supersedes older current/live statements below. Previous goal turn made progress by publishing checkpoint594536af and verifying production/CI; this turn makes progress through source8dd5214f, terminal baseline diagnosis and actual lifecycle execution. Native goal remains ACTIVE; no programme or Goalmatic deployment occurred.

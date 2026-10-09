@@ -215,7 +215,7 @@ export function createAvatarPreview(host: HTMLElement | null | undefined, option
     pending(true);
     Promise.resolve().then(() => options.bodyLoader
       ? options.bodyLoader(bodyLook, bodySeed, 1)
-      : importBody().then(() => import('./body/provider.ts')).then((provider) => provider.loadGameBody(kit, bodyLook, bodySeed, 1, { scene: 'creator', role: 'player', poses: provider.PLAYER_BODY_POSES }))).then((loaded) => {
+      : importBody().then((provider) => provider.loadGameBody(kit, bodyLook, bodySeed, 1, { scene: 'creator', role: 'player', poses: provider.PLAYER_BODY_POSES }))).then((loaded) => {
       bodyLoading = false;
       if (disposed) { loaded.dispose(); return; }
       if (!loaded.wear(bodyLook, bodySeed)) {

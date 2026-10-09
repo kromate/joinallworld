@@ -80,7 +80,6 @@ import { createUseProps } from './smart-objects/props.ts';
 import { createHingedHomeDoor } from './smart-objects/door.ts';
 import type { ObjectAction } from './smart-objects/sequence.ts';
 import type { BodyPose, SkinnedBody } from './body/skinned.ts';
-import { createStandInNativeSupport, hostSurfaceYAt } from './body/native-scene-support.ts';
 import type { NativePropRestSupport, NativeRestPose } from './body/native/native-rest-contact-v1/rest-pose-adapter.ts';
 import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
 import { housesFor } from '../game/cities/housingRuntime.ts';
@@ -349,6 +348,10 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   let body: SkinnedBody | null = null, bodyLoading = false, bodyFailed = false, gone = false, seatAt: Rest | null = null, sat: Spot | undefined;
   const floorAt = { x: 0, y: 0.03, z: 0, ry: 0 }, headAt = new THREE.Vector3();
   let nativeRestAt: Rest | null = null;
+  let nativeBodyModule: Awaited<ReturnType<typeof importBody>> | null = null;
+  function hostSurfaceYAt(...args: Parameters<NonNullable<typeof nativeBodyModule>['hostSurfaceYAt']>): number | null {
+    return nativeBodyModule?.hostSurfaceYAt(...args) ?? null;
+  }
   let hinge: ReturnType<typeof createHingedHomeDoor> | null = null, doorDone: (() => void) | null = null, doorVisual = false;
   const doorGrip = new THREE.Vector3(), doorRelease = { x: 0, z: 0 };
   const lastGait = { x: NaN, y: 0, z: 0 };
@@ -524,10 +527,12 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     bodyLoading = true;
     const look = who.look ?? lastState?.onboarding?.look ?? null, seed = who.seed;
     setTimeout(() => {
-      importBody().then(() => import('./body/provider.ts')).then((module) => module.loadGameBody(kit, look, seed, tile * AVATAR_SCALE, {
+      importBody().then((module) => {
+        nativeBodyModule = module;
+        return module.loadGameBody(kit, look, seed, tile * AVATAR_SCALE, {
         scene: 'home', role: 'player', poses: module.PLAYER_BODY_POSES,
-        nativeSupport: { ...createStandInNativeSupport(() => ({ group: people, avatar, scale: tile * AVATAR_SCALE, contactHeightAt }), () => group), restSupport: nativeRestSupport },
-      })).then((loaded) => {
+        nativeSupport: { ...module.createStandInNativeSupport(() => ({ group: people, avatar, scale: tile * AVATAR_SCALE, contactHeightAt }), () => group), restSupport: nativeRestSupport },
+      }); }).then((loaded) => {
         bodyLoading = false;
         if (gone) { loaded.dispose(); return; }
         // The look changed while it loaded: recolour, or (the other body) start again on the next frame.

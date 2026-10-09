@@ -4,6 +4,8 @@ import type { SkinnedBody } from './skinned.ts';
 import type { NativeSceneBodySupport } from './native-scene-support.ts';
 import { normalizeLook } from '../characters.ts';
 import { loadBody } from './skinned.ts';
+export { loadBody } from './skinned.ts';
+export { createStandInNativeSupport, hostSurfaceYAt } from './native-scene-support.ts';
 
 import { requestedBodyLifecycle } from './body-lifecycle.ts';
 export { requestedBodyLifecycle, PLAYER_BODY_POSES } from './body-lifecycle.ts';

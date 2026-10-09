@@ -95,6 +95,29 @@ test('accepts only a declared, source-pinned extension after the unchanged C1 pr
   assert.equal(built.directories.every((entry) => entry.content.toString('utf8').includes('containsGeometry":false')), true)
 })
 
+test('accepts multiple source-packet-pinned cities in one foreign country shard', () => {
+  const packet = { path: 'world/playable-africa-rollout/batches/approved.json', sha256: 'b'.repeat(64) }
+  const first: CatalogueRow = ['example-city-one', 'Example One', 'xx-starter', 'Starter', 1, 2, 1, 'xx', 'Exampleland']
+  const second: CatalogueRow = ['example-city-two', 'Example Two', 'xx-starter', 'Starter', 2, 3, 0, 'xx', 'Exampleland']
+  const rows = [...baselineRows, first, second]
+  const manifest = manifestFor(rows)
+  for (const row of manifest.rows.slice(baselineRows.length)) row.sourcePacket = { ...packet }
+  manifest.admissionSha256 = sha256(stableJson(manifest.foreignCities))
+
+  const validated = validateRuntimeAdmission(manifest, baselineRows)
+  assert.deepEqual(validated.manifest.rows.slice(-2).map((row) => row.sourcePacket), [packet, packet])
+  assert.deepEqual(validated.foreignCities.slice(-2), [
+    { id: first[0], countryISO: 'xx' },
+    { id: second[0], countryISO: 'xx' },
+  ])
+
+  const built = buildCountryDirectory({ cities: catalogueCities(rows), admissionSha256: validated.admissionSha256 })
+  const shard = built.directories.find((entry) => entry.iso2 === 'XX')
+  assert.equal(shard?.cityCount, 2)
+  const shardContent = JSON.parse(shard?.content.toString('utf8') ?? 'null') as { cities: { id: string }[] }
+  assert.deepEqual(shardContent.cities.map((city) => city.id), [first[0], second[0]])
+})
+
 test('country shards reject non-catalogue metadata and preserve all 40 Nigeria rows', () => {
   const cities = catalogueCities()
   const built = buildCountryDirectory({ cities, admissionSha256: manifestFor().admissionSha256 })

@@ -16,6 +16,7 @@ import { applyAuthoredPresentation, type AuthoredPresentation } from '../../auth
 import { applyAuthoredEyeMaterial } from '../../eye-material.ts';
 import { createNativeHandPoseController } from '../../native-hand-pose.ts';
 import { createNativeWristOrientationController } from '../../native-wrist-orientation/native-wrist-controller.ts';
+import { createNativeHeadOrientationController } from '../../native-head-orientation.ts';
 import { applyAuthoredFootwear, type AuthoredFootwear } from '../../authored-footwear/presentation.ts';
 import { applyAuthoredClothingPacket, authoredBodyCoverageHideSet, type AuthoredClothingPacketLease } from '../../native-full-runtime-v1/apply-authored-clothing-packet-v1.ts';
 import shoeHideMap from '../../authored-footwear/out/shoes01-body-hide-map.json';
@@ -583,7 +584,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
   return { sample, solve, captureBaseline, dispose() { disposed = true; contacts.length = 0; } };
 }
 
-function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, neutralPose: NativeNeutralPose, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
+function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, neutralPose: NativeNeutralPose, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, headOrientation: ReturnType<typeof createNativeHeadOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
   // Grounded IK may translate the pelvis when the source legs are already at
@@ -769,6 +770,9 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
         const applied = solver.applyFrame(frame, worldSupport(root, context.support));
         if (applied.supportStatus !== 'feet-supported') throw new Error(`Native ${context.pose} pose is not contact-supported (${applied.supportStatus})`);
       }
+      // Normal direction motion uses the measured source head quaternion. Furniture
+      // and stairs keep their existing pose/contact witnesses unchanged.
+      if (directionRetargeter && context.support.kind === 'flat-feet') headOrientation.apply(frame);
       const support = context.support;
       let heightAt = support.kind === 'flat-feet'
         ? () => worldFloorToParent(root, support.floorY)
@@ -881,7 +885,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
     },
     endTransition(): void { blend = null; },
     restoreContactBaseline,
-    restore(): void { directionRetargeter?.restore(); solver.restore(); neutralPose.restore(); blend = null; },
+    restore(): void { directionRetargeter?.restore(); solver.restore(); neutralPose.restore(); headOrientation.restore(); blend = null; },
   };
 }
 
@@ -915,6 +919,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
   let restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined;
   let hands: ReturnType<typeof createNativeHandPoseController> | undefined;
   let wrists: ReturnType<typeof createNativeWristOrientationController> | undefined;
+  let headOrientation: ReturnType<typeof createNativeHeadOrientationController> | undefined;
   let directionRetargeter: NativeDirectionRetargeter | undefined;
   let neutralPose: NativeNeutralPose | undefined;
   let actorDisposed = false;
@@ -928,6 +933,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       () => sampler?.dispose(),
       () => hands?.dispose(),
       () => wrists?.dispose(),
+      () => headOrientation?.dispose(),
       () => solver?.dispose(),
       () => directionRetargeter?.dispose(),
       () => neutralPose?.dispose(),
@@ -1004,6 +1010,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     neutralPose = createNativeNeutralPose(character.object);
     hands = createNativeHandPoseController(character.object);
     wrists = createNativeWristOrientationController(character.object, sampler.restWristRotations);
+    headOrientation = createNativeHeadOrientationController(character.object, sampler.restHeadRotation);
     solver = createNativeClipSolver(character.object, { sourceRest: sampler.restLandmarks, footSurface: footwear.object });
     const bounds = solver.measureBodyBounds();
     const standingHeight = bounds.bodyMaxY - bounds.bodyMinY;
@@ -1067,7 +1074,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     };
     let lastDirectionContactSolve: FootSolveResult | null = null;
     const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, neutralPose, contacts, seatSurface, restAdapter,
-      options.stairContactHeightAt, hands, wrists, resolveClip, (result) => { lastDirectionContactSolve = result; });
+      options.stairContactHeightAt, hands, wrists, headOrientation, resolveClip, (result) => { lastDirectionContactSolve = result; });
     const native = createNativeFullRuntime({
       actor: {
         object: character.object,

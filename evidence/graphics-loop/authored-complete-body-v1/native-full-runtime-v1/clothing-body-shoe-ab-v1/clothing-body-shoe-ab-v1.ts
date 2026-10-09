@@ -189,6 +189,7 @@ async function load(next: BodyKey, nextOutfit: Outfit): Promise<void> {
     const oldIndex = ownedActors.findIndex((entry) => entry.actor === oldActor);
     if (oldIndex >= 0) {
       const [oldEntry] = ownedActors.splice(oldIndex, 1);
+      if (!oldEntry) throw new Error('Actor ownership entry disappeared during replacement');
       oldEntry.trimLease?.dispose();
       oldEntry.actor.object.parent?.remove(oldEntry.actor.object);
       oldEntry.actor.dispose();

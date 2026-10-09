@@ -56,6 +56,9 @@ chrome.stderr.on('data', (chunk) => { chromeStderr = (chromeStderr + chunk.toStr
 const requestedUrls = new Map();
 const failedRequests = [];
 const consoleErrors = [];
+const pendingNetwork = new Map();
+const networkIdleWaits = [];
+let lastNetworkEventAt = Date.now();
 const pending = new Map();
 let socket;
 let nextId = 0;
@@ -92,6 +95,22 @@ async function ready() {
   }
   return state;
 }
+async function waitForNetworkIdle(label, quietMs = 600, timeoutMs = 30000) {
+  const startedAt = Date.now();
+  const deadline = startedAt + timeoutMs;
+  while (Date.now() < deadline) {
+    const quietForMs = Date.now() - lastNetworkEventAt;
+    if (pendingNetwork.size === 0 && quietForMs >= quietMs) {
+      const receipt = { label, status: 'idle', elapsedMs: Date.now() - startedAt, quietForMs, pending: 0 };
+      networkIdleWaits.push(receipt);
+      return receipt;
+    }
+    await delay(100);
+  }
+  const receipt = { label, status: 'timeout', elapsedMs: Date.now() - startedAt, pending: [...pendingNetwork.values()] };
+  networkIdleWaits.push(receipt);
+  throw new Error(`Network did not become idle at ${label}: ${JSON.stringify(receipt)}`);
+}
 async function capture(label) {
   await delay(120);
   const state = await evaluate('window.clothingBodyShoeAB.sample()');
@@ -106,6 +125,7 @@ async function capture(label) {
 async function setActor(body, outfit) {
   await evaluate(`window.clothingBodyShoeAB.load(${JSON.stringify(body)}, ${JSON.stringify(outfit)})`);
   assert.equal(await ready(), 'ready', `actor failed to load: ${await evaluate('document.querySelector("#status")?.textContent')}`);
+  await waitForNetworkIdle(`actor-ready-${body}-${outfit}`);
 }
 async function capturePair(body, outfit, poseName, pose, phase, view) {
   await evaluate(`window.clothingBodyShoeAB.setPose(${JSON.stringify(pose)}, ${phase ?? 0})`);
@@ -160,14 +180,28 @@ try {
     }
     if (message.method === 'Runtime.exceptionThrown') consoleErrors.push(message.params.exceptionDetails?.text ?? 'browser exception');
     if (message.method === 'Runtime.consoleAPICalled' && message.params.type === 'error') consoleErrors.push(message.params.args.map((arg) => arg.value ?? arg.description ?? '').join(' '));
-    if (message.method === 'Network.requestWillBeSent') requestedUrls.set(message.params.requestId, message.params.request.url);
-    if (message.method === 'Network.loadingFailed') failedRequests.push({ url: requestedUrls.get(message.params.requestId) ?? null, errorText: message.params.errorText, canceled: message.params.canceled ?? false });
+    if (message.method === 'Network.requestWillBeSent') {
+      lastNetworkEventAt = Date.now();
+      requestedUrls.set(message.params.requestId, message.params.request.url);
+      pendingNetwork.set(message.params.requestId, { url: message.params.request.url, type: message.params.type ?? null, initiator: message.params.initiator?.type ?? null });
+    }
+    if (message.method === 'Network.loadingFinished') {
+      lastNetworkEventAt = Date.now();
+      pendingNetwork.delete(message.params.requestId);
+    }
+    if (message.method === 'Network.loadingFailed') {
+      lastNetworkEventAt = Date.now();
+      const pendingRequest = pendingNetwork.get(message.params.requestId);
+      failedRequests.push({ requestId: message.params.requestId, url: requestedUrls.get(message.params.requestId) ?? pendingRequest?.url ?? null, type: pendingRequest?.type ?? null, initiator: pendingRequest?.initiator ?? null, errorText: message.params.errorText, canceled: message.params.canceled ?? false });
+      pendingNetwork.delete(message.params.requestId);
+    }
   });
   await cdp('Page.enable'); await cdp('Runtime.enable'); await cdp('Network.enable');
   await cdp('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1120, deviceScaleFactor: 1, mobile: false });
   const pageUrl = `http://127.0.0.1:${port}/${relativeHtml}`;
   await cdp('Page.navigate', { url: pageUrl });
   assert.equal(await ready(), 'ready', `initial actor failed: ${await evaluate('document.querySelector("#status")?.textContent').catch(String)}`);
+  await waitForNetworkIdle('initial-actor-ready');
 
   const matrix = [
     { body: 'female', outfit: 'office', states: [
@@ -196,6 +230,7 @@ try {
       comparisons.push(await capturePair(entry.body, entry.outfit, poseName, pose, phase, view));
     }
   }
+  await waitForNetworkIdle('completed-comparison-matrix');
   const office = comparisons.filter((item) => item.body === 'female' && item.outfit === 'office');
   const pants = comparisons.filter((item) => item.body === 'male' && item.outfit === 'office');
   const casual = comparisons.filter((item) => item.outfit === 'casual');
@@ -217,7 +252,7 @@ try {
   result = {
     status: passed ? 'PASS' : 'FAIL', diagnosticOnly: true, pageUrl,
     fixture: 'same prepared actor/look/seed/pose/camera; source versus connected office-blouse Body coverage and trouser-hem sock candidate',
-    comparisons, visibleChangeGroups, failedRequests, consoleErrors, chromeVersion: spawnSync(chromeBin, ['--version'], { encoding: 'utf8' }).stdout.trim(),
+    comparisons, visibleChangeGroups, failedRequests, networkIdleWaits, pendingNetwork: [...pendingNetwork.values()], consoleErrors, chromeVersion: spawnSync(chromeBin, ['--version'], { encoding: 'utf8' }).stdout.trim(),
     limitations: ['The blouse patch is a bounded source-index candidate; pixels still require independent visual acceptance.', 'Four outfits and sampled poses only; no mobile or fullgame claim.', 'Female office skirt deliberately leaves shoe geometry unchanged.'],
   };
   await writeFile(path.join(resultDir, 'clothing-body-shoe-ab-report.json'), `${JSON.stringify(result, null, 2)}\n`);

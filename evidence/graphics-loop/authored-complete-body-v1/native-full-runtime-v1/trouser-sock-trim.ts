@@ -23,6 +23,8 @@ export interface TrouserSockTrimLease {
     additionalRemovedTriangleIds: number;
     removedSourceTriangleIds: readonly number[];
     protectedSoleSourceTriangleIds: readonly number[];
+    removedSockComponents: readonly Readonly<{ side: 'left' | 'right'; triangleCount: number; legWeight: number; footToeWeight: number; boundsY: readonly [number, number] }>[];
+    preservedBootComponents: readonly Readonly<{ side: 'left' | 'right'; triangleCount: number; footToeWeight: number; boundsY: readonly [number, number] }>[];
     hemOverlapMetres: number;
     sides: Readonly<Record<'left' | 'right', Readonly<{
       trouserHemY: number;
@@ -76,9 +78,10 @@ function createPrivateIndexGeometry(source: THREE.BufferGeometry, index: Uint16A
 }
 
 /**
- * Privately removes only the shoe mesh's calf sock triangles that rise above the
- * actual trouser hem. It leaves the body, garment, shoe sole, source templates,
- * and skirt outfits untouched. No vertex welding or UV/material edits occur.
+ * Privately removes only the disconnected, shin-weighted sock islands from the
+ * authored footwear mesh. The boot uppers share the foot/toe weighted islands
+ * and are retained whole; a trouser-height cut through the combined mesh can
+ * erase the boot upper as well as the sock.
  */
 export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions): TrouserSockTrimLease {
   const { actorRoot, garment, shoes } = options;
@@ -103,7 +106,7 @@ export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions)
   const sourceTriangles = sourceIndex.count / 3;
   if (!options.trouserOutfit) {
     return Object.freeze({
-      metrics: Object.freeze({ status: 'skipped-skirt' as const, sourceTriangles, retainedTriangles: sourceTriangles, removedTriangles: 0, additionalRemovedTriangleIds: 0, removedSourceTriangleIds: Object.freeze([]), protectedSoleSourceTriangleIds: Object.freeze([]), hemOverlapMetres: overlap,
+        metrics: Object.freeze({ status: 'skipped-skirt' as const, sourceTriangles, retainedTriangles: sourceTriangles, removedTriangles: 0, additionalRemovedTriangleIds: 0, removedSourceTriangleIds: Object.freeze([]), protectedSoleSourceTriangleIds: Object.freeze([]), removedSockComponents: Object.freeze([]), preservedBootComponents: Object.freeze([]), hemOverlapMetres: overlap,
         sides: Object.freeze({
           left: Object.freeze({ trouserHemY: 0, cutY: 0, soleY: 0, removedTriangles: 0, protectedSoleTriangles: 0 }),
           right: Object.freeze({ trouserHemY: 0, cutY: 0, soleY: 0, removedTriangles: 0, protectedSoleTriangles: 0 }),
@@ -126,6 +129,7 @@ export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions)
     left: { all: new Set([sides.left.leg, sides.left.foot, sides.left.toe]), sole: new Set([sides.left.foot, sides.left.toe]) },
     right: { all: new Set([sides.right.leg, sides.right.foot, sides.right.toe]), sole: new Set([sides.right.foot, sides.right.toe]) },
   };
+  const shinSets = { left: new Set([sides.left.leg]), right: new Set([sides.right.leg]) };
   const hem = { left: Infinity, right: Infinity };
   const scratch = new THREE.Vector3();
   for (let vertex = 0; vertex < garmentPosition.count; vertex++) {
@@ -164,26 +168,88 @@ export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions)
   }
   const trimmed = { left: 0, right: 0 };
   const protectedSoleTriangles = { left: 0, right: 0 };
+  // Build connected indexed components first. The pinned footwear export has
+  // separate sock and boot islands per foot. Never infer a sock from height
+  // alone: boot uppers rise above the trouser hem but must remain intact.
+  const parent = new Int32Array(sourcePosition.count);
+  for (let i = 0; i < parent.length; i++) parent[i] = i;
+  const find = (value: number): number => {
+    let root = value;
+    while (parent[root]! !== root) root = parent[root]!;
+    while (parent[value] !== value) { const next = parent[value]!; parent[value] = root; value = next; }
+    return root;
+  };
+  const union = (left: number, right: number) => { const a = find(left), b = find(right); if (a !== b) parent[b] = a; };
+  const coincident = new Map<string, number>();
+  for (let vertex = 0; vertex < sourcePosition.count; vertex++) {
+    const point = worldInActor(shoes, vertex, actorInverse, new THREE.Vector3());
+    const key = `${Math.round(point.x * 100000)}:${Math.round(point.y * 100000)}:${Math.round(point.z * 100000)}`;
+    const previousVertex = coincident.get(key);
+    if (previousVertex === undefined) coincident.set(key, vertex);
+    else union(vertex, previousVertex);
+  }
+  const triangleVertices: number[][] = new Array(sourceTriangles);
   for (let triangle = 0; triangle < sourceTriangles; triangle++) {
     const offset = triangle * 3;
     const ids = [sourceIndex.getX(offset), sourceIndex.getX(offset + 1), sourceIndex.getX(offset + 2)];
-    const leftWeights = ids.map((vertex) => weightsForSide(shoeSkinIndex, shoeSkinWeight, vertex, sideSets.left.all));
-    const rightWeights = ids.map((vertex) => weightsForSide(shoeSkinIndex, shoeSkinWeight, vertex, sideSets.right.all));
-    const leftScore = leftWeights.reduce((sum, weight) => sum + weight, 0);
-    const rightScore = rightWeights.reduce((sum, weight) => sum + weight, 0);
-    const side = leftScore >= rightScore ? 'left' : 'right';
-    const sideValues = side === 'left' ? leftWeights : rightWeights;
-    if (sideValues.some((weight) => weight < 0.35) || Math.abs(leftScore - rightScore) < 0.30) {
-      kept.push(...ids);
-      continue;
-    }
-    const points = ids.map((vertex) => worldInActor(shoes, vertex, actorInverse, new THREE.Vector3()));
-    const isSoleContact = ids.some((vertex, index) =>
-      weightsForSide(shoeSkinIndex, shoeSkinWeight, vertex, sideSets[side].sole) >= 0.60 && points[index]!.y <= sole[side] + 0.025);
-    const crossesHem = points.some((point) => point.y > cut[side]);
-    if (isSoleContact) { protectedSoleTriangles[side]++; protectedSoleSourceTriangleIds.add(triangle); }
-    if (crossesHem && !isSoleContact) { trimmed[side]++; removedSourceTriangleIds.add(triangle); }
+    triangleVertices[triangle] = ids;
+    union(ids[0]!, ids[1]!);
+    union(ids[1]!, ids[2]!);
   }
+  const components = new Map<number, Set<number>>();
+  for (let triangle = 0; triangle < sourceTriangles; triangle++) {
+    const ids = triangleVertices[triangle]!;
+    const key = find(ids[0]!);
+    let vertices = components.get(key);
+    if (!vertices) { vertices = new Set<number>(); components.set(key, vertices); }
+    for (const id of ids) vertices.add(id);
+  }
+  const componentTriangles = new Map<number, number[]>();
+  for (let triangle = 0; triangle < sourceTriangles; triangle++) {
+    const key = find(triangleVertices[triangle]![0]!);
+    const list = componentTriangles.get(key);
+    if (list) list.push(triangle); else componentTriangles.set(key, [triangle]);
+  }
+  const removedSockComponents: Array<{ side: 'left' | 'right'; triangleCount: number; legWeight: number; footToeWeight: number; boundsY: readonly [number, number] }> = [];
+  const preservedBootComponents: Array<{ side: 'left' | 'right'; triangleCount: number; footToeWeight: number; boundsY: readonly [number, number] }> = [];
+  for (const [component, vertices] of components) {
+    let leftLeg = 0, rightLeg = 0, leftFootToe = 0, rightFootToe = 0, lowY = Infinity, highY = -Infinity;
+    for (const vertex of vertices) {
+      leftLeg += weightsForSide(shoeSkinIndex, shoeSkinWeight, vertex, shinSets.left);
+      rightLeg += weightsForSide(shoeSkinIndex, shoeSkinWeight, vertex, shinSets.right);
+      leftFootToe += weightsForSide(shoeSkinIndex, shoeSkinWeight, vertex, sideSets.left.sole);
+      rightFootToe += weightsForSide(shoeSkinIndex, shoeSkinWeight, vertex, sideSets.right.sole);
+      const y = worldInActor(shoes, vertex, actorInverse, new THREE.Vector3()).y;
+      lowY = Math.min(lowY, y); highY = Math.max(highY, y);
+    }
+    const count = vertices.size;
+    const side = leftLeg + leftFootToe >= rightLeg + rightFootToe ? 'left' : 'right';
+    const legWeight = (side === 'left' ? leftLeg : rightLeg) / count;
+    const footToeWeight = (side === 'left' ? leftFootToe : rightFootToe) / count;
+    const sockTriangles = componentTriangles.get(component) ?? [];
+    const crossesTrouserHem = highY > hem[side] - 0.01;
+    if (legWeight >= 0.52 && footToeWeight <= 0.28 && crossesTrouserHem) {
+      for (const triangle of sockTriangles) removedSourceTriangleIds.add(triangle);
+      trimmed[side] += sockTriangles.length;
+      removedSockComponents.push({ side, triangleCount: sockTriangles.length, legWeight, footToeWeight, boundsY: Object.freeze([lowY, highY] as [number, number]) });
+    } else if (footToeWeight >= 0.40) {
+      preservedBootComponents.push({ side, triangleCount: sockTriangles.length, footToeWeight, boundsY: Object.freeze([lowY, highY] as [number, number]) });
+    }
+    for (const triangle of sockTriangles) {
+      const ids = triangleVertices[triangle]!;
+      if (ids.some((vertex) => weightsForSide(shoeSkinIndex, shoeSkinWeight, vertex, sideSets[side].sole) >= 0.60
+        && worldInActor(shoes, vertex, actorInverse, new THREE.Vector3()).y <= sole[side] + 0.025)) {
+        protectedSoleTriangles[side]++;
+        protectedSoleSourceTriangleIds.add(triangle);
+      }
+    }
+  }
+  invariant(removedSockComponents.filter((component) => component.side === 'left').length === 1
+    && removedSockComponents.filter((component) => component.side === 'right').length === 1,
+  `expected one disconnected shin-weighted sock island per foot, found ${JSON.stringify(removedSockComponents)}`);
+  invariant(preservedBootComponents.some((component) => component.side === 'left')
+    && preservedBootComponents.some((component) => component.side === 'right'),
+  `sock classifier did not prove a retained boot island per foot: ${JSON.stringify(preservedBootComponents)}`);
   for (const triangle of protectedSoleSourceTriangleIds) removedSourceTriangleIds.delete(triangle);
   // Emit the stable source-order index stream from the union across sampled poses.
   kept.length = 0;
@@ -216,6 +282,8 @@ export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions)
     additionalRemovedTriangleIds: Math.max(0, removedSourceTriangleIds.size - trimmed.left - trimmed.right),
     removedSourceTriangleIds: Object.freeze([...removedSourceTriangleIds].sort((a, b) => a - b)),
     protectedSoleSourceTriangleIds: Object.freeze([...protectedSoleSourceTriangleIds].sort((a, b) => a - b)),
+    removedSockComponents: Object.freeze(removedSockComponents.map((component) => Object.freeze(component))),
+    preservedBootComponents: Object.freeze(preservedBootComponents.map((component) => Object.freeze(component))),
     hemOverlapMetres: overlap,
     sides: Object.freeze({
       left: Object.freeze({ trouserHemY: hem.left, cutY: cut.left, soleY: sole.left, removedTriangles: trimmed.left, protectedSoleTriangles: protectedSoleTriangles.left }),

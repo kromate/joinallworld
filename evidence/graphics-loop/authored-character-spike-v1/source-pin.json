@@ -1,0 +1,25 @@
+{
+  "upstreamRepository": "https://github.com/nirholas/three.ws",
+  "upstreamCommit": "ec8d1d270b93b8e2e87e8a6160bb908665fe1fcd",
+  "upstreamPath": "public/avatars/parametric-base.glb",
+  "upstreamGitBlobSha1": "652ee3882097d41e7920c7de0454e1c73a94a507",
+  "sourceBytes": 6806984,
+  "sourceSha256": "6627588660aa6c754aaa2edb181bc01a8ca60c3b4c534efa3e87f636ce5cda18",
+  "provenancePath": "avatar-sources/anny/README.md",
+  "provenanceSha256": "d423a0715e10fcc81f689ccd73b3d146fabd1b5ee8f3db982b2b11cec1907422",
+  "licensePath": "avatar-sources/anny/LICENSE.md",
+  "licenseSha256": "f6089cba01cb570a24712b41ab8a586ccd3cc5ef53dc266ca50b95c288956d2c",
+  "repacker": "retain-morphs.py",
+  "repackerSha256": "261c5f1a4d7c8402d21f523bcb8ac1661a1f3fd186d61ced08c33d39be7f8385",
+  "outputPath": "parametric-base-expressive.glb",
+  "outputBytes": 2692984,
+  "outputSha256": "0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077",
+  "outputReport": "parametric-base-expressive.report.json",
+  "outputReportSha256": "a1429619139d6593810733583fe218b2affb68de9d250082ae901b6f33e61883",
+  "execution": {
+    "command": "/usr/bin/time -l python3 retain-morphs.py parametric-base.glb parametric-base-expressive.glb",
+    "wallSeconds": 0.08,
+    "maxResidentBytes": 41893888,
+    "noBrowserOrBuild": true
+  }
+}

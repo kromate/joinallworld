@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Allworld authored character motion experiment</title>
+<style>
+body{margin:0;background:#ebe2d4;color:#302d29;font:14px system-ui;display:flex;flex-direction:column;height:100svh}
+header{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px;align-items:center}
+button,select{font:inherit;padding:9px;border:1px solid #b5a88f;border-radius:9px;background:#fff}
+canvas{width:100%;flex:1;min-height:180px;display:block;touch-action:none}
+.labels{display:flex;justify-content:space-around;font-weight:700;padding:8px}
+#metrics{padding:8px 16px;font-size:12px}
+</style>
+<header><strong>Allworld character motion experiment</strong>
+<select id="body" aria-label="Body"><option>woman</option><option>man</option></select>
+<select id="expression" aria-label="Expression"><option>neutral</option><option>smile</option><option>grin</option><option>talk</option><option>blink</option></select>
+<select id="pose" aria-label="Animation"><option>idle</option><option>walk</option><option>dance</option></select>
+<select id="focus" aria-label="Camera"><option value="body">Full body</option><option value="head">Face</option></select>
+<button id="play">Play 6 seconds</button><button id="turn">Turn around</button></header>
+<div class="labels"><span>Existing character</span><span>Complete authored human</span></div>
+<canvas id="canvas"></canvas><div id="metrics">Loading character…</div>
+<script type="module" src="./viewer.ts"></script></html>

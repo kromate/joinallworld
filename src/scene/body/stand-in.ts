@@ -36,18 +36,26 @@ export function solveSupportedFeet(body: Pick<SkinnedBody, 'sampleFootContacts' 
   contactHeightAt: StandInScene['contactHeightAt']): boolean {
   if (!contactHeightAt || body.easing || body.seated) return false;
   const contacts = body.sampleFootContacts();
-  const samples = contacts.flatMap(contact => contact.points ?? [contact]);
-  if (!samples.length) return false;
-  let supportHeight: number | null = null;
-  for (const point of samples) {
-    const height = contactHeightAt(point.x, point.z, point.y);
-    if (height === null || !Number.isFinite(height)) return false;
-    if (supportHeight === null) supportHeight = height;
-    // A flat-support-only target remains stable if the production solver resamples after a leg correction.
-    else if (Math.abs(height - supportHeight) > 0.0005) return false;
+  if (!contacts.length) return false;
+  const targets = new Map<string, number>();
+  for (const contact of contacts) {
+    const points = contact.points ?? [contact];
+    if (!points.length) return false;
+    let highest: number | null = null;
+    for (const point of points) {
+      const height = contactHeightAt(point.x, point.z, point.y);
+      if (height === null || !Number.isFinite(height)) return false;
+      highest = highest === null ? height : Math.max(highest, height);
+    }
+    if (highest === null) return false;
+    // The solver resamples points after each leg fit. A per-side fixed target remains stable,
+    // while selecting the highest supported point keeps the sole from clipping through paving.
+    const previous = targets.get(contact.side);
+    if (previous !== undefined && Math.abs(previous - highest) > 0.0005) return false;
+    targets.set(contact.side, highest);
   }
-  if (supportHeight === null) return false;
-  body.solveFeet(() => supportHeight!);
+  if (targets.size !== 2) return false;
+  body.solveFeet((point) => targets.get(point.side) ?? Number.NaN);
   return true;
 }
 

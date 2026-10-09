@@ -19,11 +19,10 @@ test('every procedural pose has a body pose', () => {
   for (const pose of POSES) assert.ok(BODY_POSE[pose], pose);
 });
 
-test('support preflight resolves the full footprint and reuses targets across a fresh solver sample', () => {
+test('support preflight keeps the highest supported target per foot across fresh solver samples', () => {
   const left = { side: 'left' as const, x: -0.1, y: -0.016, z: 0, points: [{ side: 'left' as const, x: -0.12, y: -0.016, z: 0 }, { side: 'left' as const, x: -0.08, y: -0.015, z: 0 }] };
   const right = { side: 'right' as const, x: 0.1, y: -0.016, z: 0, points: [{ side: 'right' as const, x: 0.08, y: -0.016, z: 0 }, { side: 'right' as const, x: 0.12, y: -0.015, z: 0 }] };
   const samples = [left, right];
-  const targets = new Map(samples.flatMap(contact => contact.points.map(point => [`${point.x}|${point.y}|${point.z}`, 0.016] as const)));
   let solveCalls = 0, preflightCalls = 0;
   let passedTargets: number[] = [];
   const body = {
@@ -31,16 +30,16 @@ test('support preflight resolves the full footprint and reuses targets across a 
     sampleFootContacts: () => samples,
     solveFeet: (heightAt: Parameters<SkinnedBody['solveFeet']>[0]) => {
       solveCalls++;
-      // The real solver samples again, producing distinct point objects at the same coordinates.
-      passedTargets = samples.flatMap(contact => contact.points.map(point => heightAt({ ...point })));
+      // The real solver samples again, producing distinct point objects at the same sides.
+      passedTargets = [heightAt({ ...left, x: -0.12 }), heightAt({ ...right, x: 0.08 })];
       return { corrected: 2, maxError: 0, limited: false };
     },
   };
-  const resolver = (x: number, z: number, y: number) => { preflightCalls++; return targets.get(`${x}|${y}|${z}`) ?? null; };
+  const resolver = (x: number, z: number) => { preflightCalls++; return x > 0.1 ? 0.076 : 0.046; };
   assert.equal(solveSupportedFeet(body, resolver), true);
-  assert.equal(preflightCalls, 4, 'both feet and all sole samples are checked before mutation');
+  assert.equal(preflightCalls, 4, 'both complete sole footprints are checked before mutation');
   assert.equal(solveCalls, 1);
-  assert.deepEqual(passedTargets, [0.016, 0.016, 0.016, 0.016]);
+  assert.deepEqual(passedTargets, [0.046, 0.076], 'feet may settle to different supported planes');
 });
 
 test('one unsupported sole sample skips the entire solve; seated/easing bodies are never sampled', () => {
@@ -58,9 +57,56 @@ test('one unsupported sole sample skips the entire solve; seated/easing bodies a
   assert.equal(sampleCalls, 1, 'transitions and seated poses are rejected before sampling');
   assert.equal(solveSupportedFeet(body, () => Number.NaN), false);
   assert.equal(solveCalls, 0);
-  assert.equal(solveSupportedFeet(body, (x) => x < 0 ? 0.016 : 0.02), false,
-    'non-coplanar targets are outside this flat-contact slice');
-  assert.equal(solveCalls, 0);
+  assert.equal(solveSupportedFeet(body, (x) => x < 0 ? 0.016 : 0.02), true,
+    'fully supported feet may stand on separate planes');
+  assert.equal(solveCalls, 1);
+});
+
+test('real solver uses the highest supported sample per foot across a paving seam', () => {
+  const root = new THREE.Group();
+  const bones: THREE.Bone[] = [];
+  const feet: THREE.Bone[] = [];
+  for (const side of ['l', 'r'] as const) {
+    const thigh = new THREE.Bone(); thigh.name = `thigh_${side}`; thigh.position.set(side === 'l' ? -0.2 : 0.2, 1, 0);
+    const calf = new THREE.Bone(); calf.name = `calf_${side}`; calf.position.y = -0.5; thigh.add(calf);
+    const foot = new THREE.Bone(); foot.name = `foot_${side}`; foot.position.y = -0.5; calf.add(foot);
+    const ball = new THREE.Bone(); ball.name = `ball_${side}`; ball.position.z = 0.08; foot.add(ball);
+    root.add(thigh); bones.push(thigh, calf, foot, ball); feet.push(foot);
+  }
+  const positions: number[] = [], skinIndices: number[] = [], skinWeights: number[] = [];
+  for (const side of ['l', 'r'] as const) {
+    const centerX = side === 'l' ? -0.2 : 0.2, footIndex = bones.findIndex(bone => bone.name === `foot_${side}`);
+    for (const [dx, dz] of [[-0.04, -0.04], [0.04, -0.04], [-0.04, 0.04], [0.04, 0.04]] as const) {
+      positions.push(centerX + dx, 0, dz);
+      skinIndices.push(footIndex, 0, 0, 0); skinWeights.push(1, 0, 0, 0);
+    }
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(skinIndices, 4));
+  geometry.setAttribute('skinWeight', new THREE.Float32BufferAttribute(skinWeights, 4));
+  const material = new THREE.MeshBasicMaterial();
+  const base = new THREE.SkinnedMesh(geometry, material); root.add(base); root.updateMatrixWorld(true); base.bind(new THREE.Skeleton(bones));
+  const clothingGeometry = new THREE.BufferGeometry(), clothingMaterial = new THREE.MeshBasicMaterial();
+  const clothing = new THREE.SkinnedMesh(clothingGeometry, clothingMaterial); clothing.visible = false; root.add(clothing);
+  const controller = createFootContactController(root, base, clothing);
+  feet[0]!.position.y -= 0.04; feet[1]!.position.y -= 0.04; root.updateMatrixWorld(true);
+  const body = { easing: false, seated: false, sampleFootContacts: () => controller.sample(), solveFeet: (heightAt: Parameters<typeof controller.solve>[0]) => controller.solve(heightAt) };
+  const rootBefore = root.position.toArray();
+  const before = controller.sample();
+  const target = (x: number, _z: number, _y: number) => x >= 0.2 ? 0.076 : 0.046;
+  // Right sole spans x=.16..24: its rear half sits on the lower court floor and its front half on raised tile.
+  const preflight = solveSupportedFeet(body, target);
+  assert.equal(preflight, true, 'all points have support even though right sole crosses the paving seam');
+  const after = controller.sample();
+  const leftBefore = before.find(contact => contact.side === 'left')!, rightBefore = before.find(contact => contact.side === 'right')!;
+  const leftAfter = after.find(contact => contact.side === 'left')!, rightAfter = after.find(contact => contact.side === 'right')!;
+  assert.ok(Math.abs(leftAfter.y - 0.046) < 0.004, `left foot stays on base floor (${leftAfter.y})`);
+  assert.ok(Math.abs(rightAfter.y - 0.076) < 0.004, `right foot reaches the higher tile target (${rightAfter.y})`);
+  assert.ok(Math.abs(leftAfter.y - 0.046) < Math.abs(leftBefore.y - 0.046));
+  assert.ok(Math.abs(rightAfter.y - 0.076) < Math.abs(rightBefore.y - 0.076));
+  assert.deepEqual(root.position.toArray(), rootBefore, 'per-foot fitting does not translate the actor');
+  geometry.dispose(); material.dispose(); clothingGeometry.dispose(); clothingMaterial.dispose();
 });
 
 test('real foot-contact solver corrects one planted foot and preserves a 0.14m swing foot', () => {

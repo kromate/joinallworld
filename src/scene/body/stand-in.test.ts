@@ -8,6 +8,7 @@ import { createKit } from '../kit.ts';
 import { bodyImports } from './gate.ts';
 import { BODY_POSE, createStandIn, solveSupportedFeet } from './stand-in.ts';
 import { createFootContactController } from './foot-contact.ts';
+import type { SkinnedBody } from './skinned.ts';
 import { POSES } from '../characters.ts';
 
 const fakeScene = () => ({ group: new THREE.Group(), avatar: new THREE.Group(), scale: 1 });
@@ -28,7 +29,7 @@ test('support preflight resolves the full footprint and reuses targets across a 
   const body = {
     easing: false, seated: false,
     sampleFootContacts: () => samples,
-    solveFeet: (heightAt: (point: { x: number; y: number; z: number }) => number) => {
+    solveFeet: (heightAt: Parameters<SkinnedBody['solveFeet']>[0]) => {
       solveCalls++;
       // The real solver samples again, producing distinct point objects at the same coordinates.
       passedTargets = samples.flatMap(contact => contact.points.map(point => heightAt({ ...point })));
@@ -78,7 +79,7 @@ test('real foot-contact solver corrects one planted foot and preserves a 0.14m s
   for (const side of ['l', 'r'] as const) {
     const centerX = side === 'l' ? -0.2 : 0.2, footIndex = bones.findIndex(bone => bone.name === `foot_${side}`);
     const start = positions.length / 3;
-    for (const [dx, dz] of [[-0.04, -0.04], [0.04, -0.04], [-0.04, 0.04], [0.04, 0.04]]) {
+    for (const [dx, dz] of [[-0.04, -0.04], [0.04, -0.04], [-0.04, 0.04], [0.04, 0.04]] as const) {
       positions.push(centerX + dx, 0, dz);
       skinIndices.push(footIndex, 0, 0, 0); skinWeights.push(1, 0, 0, 0);
     }

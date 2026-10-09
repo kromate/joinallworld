@@ -343,7 +343,7 @@ function contactSurfaceIndex(meshes: readonly THREE.Mesh[], deckHeights: readonl
       insert({ ax, az, bx, bz, cx, cz, y });
     }
   }
-  const query: ContactSurfaceQuery = (x, z, minY, maxY, exactY) => {
+  const query = (x: number, z: number, minY: number, maxY: number, exactY?: number) => {
     const candidates = cells.get(key(x, z));
     let highest = -Infinity;
     const test = (triangle: ContactTriangle) => {
@@ -358,12 +358,7 @@ function contactSurfaceIndex(meshes: readonly THREE.Mesh[], deckHeights: readonl
     for (const triangle of broad) test(triangle);
     return Number.isFinite(highest) ? highest : null;
   };
-  Object.defineProperties(query, {
-    retainedTriangles: { value: retainedTriangles },
-    cellEntries: { value: cellEntries },
-    broadTriangles: { value: broad.length },
-  });
-  return query;
+  return Object.assign(query, { retainedTriangles, cellEntries, broadTriangles: broad.length });
 }
 
 function raisedContactTop(shapes: readonly RaisedShape[] | undefined, x: number, z: number): number | null | undefined {

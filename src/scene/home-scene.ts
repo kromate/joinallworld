@@ -65,15 +65,21 @@
  *   get-up play where it lay). It asks for its first frame with 'jaw:home-frame'; those clips run through `easing` /
  *   stepCrowd / settleCrowd. Without WebGL2 (and in
  *   Node tests) `body` stays null and the body module is never imported.
+ *   After the canonical player is drawn, guests use that same body/appearance/wardrobe loader and kit cache.
+ *   Guest clones load one at a time, retain their public tags and positions, and replace only their own fallback.
+ *   Stale results are disposed on a look change, removal or scene disposal; failures wait for an explicit retry.
  */
 import { FURNITURE as CATALOGUE, KINDS as KIND_TABLE, HOME_ACTIVITIES, PORTED_ACTIVITY_KIND } from '../game/content/furniture.ts';
 import { RECIPES } from '../game/content/food.ts';
 import { createBatch, sceneMaterials, releaseObjects } from './build.ts';
+import { plant } from './props.ts';
 import { drawAvatar, buildAvatar, POSES } from './characters.ts';
 import type { Pose } from './characters.ts';
 import { playerOptions, rigOf } from './avatar-rig.ts';
 import { createWalkGrid } from './movement.ts';
 import { bodyAllowed, drawsWebGL2, importBody } from './body/gate.ts';
+import { createCanonicalCrowd } from './body/canonical-crowd.ts';
+import { lightingFor, timeOfDay } from './lighting.ts';
 import { createObjectSequence } from './smart-objects/sequence.ts';
 import { createUseProps } from './smart-objects/props.ts';
 import { createHingedHomeDoor } from './smart-objects/door.ts';
@@ -90,7 +96,7 @@ import { planOf, wallsOf, bumpsOf, railsOf, flightAt, stairwellOf, routeOf, slab
 import type { HousePlan, PlanStairs, PlanWall } from '../game/home-plan.ts';
 import type * as THREE from 'three';
 import type { Kit } from './kit.ts';
-import type { Batch, Colour, SceneCamera, Vec3 } from './types.ts';
+import type { Batch, Colour, SceneCamera, TimeOfDay, Vec3 } from './types.ts';
 import type { WalkGrid, WalkPoint, WalkRect } from './movement.ts';
 import type { FurnitureDefinition } from '../types/content.ts';
 import type { HouseStyle, LifeState, PlacedItem } from '../types/life.ts';
@@ -102,8 +108,7 @@ export interface VisitHomeScene { grid: number; style: HouseStyle; items: readon
 export interface Tools {
   box(x: number, y: number, z: number, w: number, h: number, d: number, c: Colour, lit?: boolean): unknown;
   round(x: number, y: number, z: number, r: number, h: number, c: Colour, lit?: boolean): unknown;
-  ball(x: number, y: number, z: number, r: number, c: Colour): unknown;
-  crown(x: number, y: number, z: number, sx: number, sy: number, sz: number, c: Colour): unknown;
+  ball(x: number, y: number, z: number, r: number, c: Colour, ry?: number, rz?: number, seg?: number): unknown;
 }
 /** Draws one catalogue shape: W × D tiles, colour, and the catalogue entry. */
 type Shape = (b: Tools, W: number, D: number, c: Colour, def: FurnitureDefinition) => void;
@@ -124,6 +129,7 @@ type Solid = [number, number, number, number, number, number];
 type Figure = ReturnType<typeof buildAvatar>;
 /** A guest the host let in, as setCrowd keeps it. */
 interface Guest { id: unknown; name: unknown; kind: unknown; look: unknown; seed: unknown }
+interface PlacedGuest extends Guest { actorId: string; x: number; y: number; z: number; ry: number; scale: number }
 const FURNITURE = CATALOGUE as unknown as Readonly<Record<string, FurnitureDefinition | undefined>>;
 const KINDS = KIND_TABLE as unknown as Readonly<Record<string, { spot: string | null } | undefined>>;
 const ROOM = 10;         // world units along each wall, whatever the grid size
@@ -166,15 +172,18 @@ export const MAX_GUESTS_SHOWN = 5;
 const TALL: Record<string, number | undefined> = { bed: 1.3, fridge: 1.9, shower: SHOWER_HEAD + 0.02, speaker: 1.25, tv: 1.4, shelf: 1.5, wardrobe: 1.7, tripod: 1.25, mic: 1.3, floorlamp: 1.7, cage: 1.5, aquarium: 1.15, plant: 1.1, drum: 1, cooker: 1.1, desk: 1, bench: 1, inverter: 0.95, chair: 0.95, sofa: 0.85 };
 
 const legs = (b: Tools, w: number, d: number, h: number, c: Colour = WOOD) => { for (const x of [-w / 2, w / 2]) for (const z of [-d / 2, d / 2]) b.box(x, h / 2, z, 0.06, h, 0.06, c); };
+/** A low-profile ellipsoid used for padded upholstery; segment count stays bounded in the furniture batch. */
+const pad = (b: Tools, x: number, y: number, z: number, rx: number, ry: number, rz: number, c: Colour) => b.ball(x, y, z, rx, c, ry, rz, 6);
 
 /** One low-poly model per catalogue `shape`. Units are tiles; origin is the footprint centre on the floor; W × D is the footprint. */
 const SHAPES: { fallback: Shape; [shape: string]: Shape | undefined } = {
   mat(b, W, D, c) { b.box(0, 0.04, 0, W * 0.84, 0.06, D * 0.9, c); b.box(0, 0.1, -D * 0.36, W * 0.5, 0.07, D * 0.12, WHITE); },
   bed(b, W, D, c, def) {
+    legs(b, W * 0.82, D * 0.78, 0.08, WOOD);
     b.box(0, 0.2, 0, W * 0.92, 0.26, D * 0.94, WOOD);
     b.box(0, 0.42, 0, W * 0.86, 0.2, D * 0.9, WHITE);
     b.box(0, 0.54, D * 0.14, W * 0.88, 0.07, D * 0.58, c);
-    for (let i = 0; i < W; i++) b.box((i - (W - 1) / 2) * 0.8, 0.58, -D * 0.38, 0.55, 0.1, D * 0.12 + 0.08, '#ffffff');
+    for (let i = 0; i < W; i++) pad(b, (i - (W - 1) / 2) * 0.8, 0.55, -D * 0.38, 0.27, 0.08, D * 0.08 + 0.04, '#ffffff');
     b.box(0, 0.5 + def.stars * 0.08, -D * 0.47, W * 0.92, 0.7 + def.stars * 0.16, 0.07, def.stars >= 4 ? '#c9a227' : WOOD);
   },
   stove(b, W, D, c) {
@@ -182,16 +191,47 @@ const SHAPES: { fallback: Shape; [shape: string]: Shape | undefined } = {
     b.round(0, 0.63, 0, 0.2, 0.2, c);
   },
   cooker(b, W, D, c) {
-    b.box(0, 0.43, 0, W * 0.84, 0.86, D * 0.8, c); b.box(0, 0.88, 0, W * 0.86, 0.04, D * 0.82, DARK);
-    for (let i = 0; i < W * 2; i++) b.round((i + 0.5) * 0.42 - W * 0.42, 0.92, 0, 0.13, 0.04, '#6c7278');
-    b.box(0, 1.0, -D * 0.37, W * 0.84, 0.2, 0.05, c); b.box(0, 0.45, D * 0.41, W * 0.6, 0.4, 0.02, DARK);
+    b.box(0, 0.43, 0, W * 0.84, 0.86, D * 0.8, c);
+    // Keep the cooking surface at y=.94 (the host's existing cooking-use anchor).
+    b.box(0, 0.88, 0, W * 0.86, 0.04, D * 0.82, '#303438');
+    for (let i = 0; i < W * 2; i++) {
+      const x = (i + 0.5) * 0.42 - W * 0.42;
+      b.round(x, 0.91, 0, 0.14, 0.025, '#555b60');
+      b.round(x, 0.927, 0, 0.07, 0.012, '#25292d');
+    }
+    // A raised rear splash/control rail and a glazed oven door make the appliance read as a range.
+    b.box(0, 1.0, -D * 0.37, W * 0.84, 0.2, 0.05, c);
+    b.box(0, 0.76, D * 0.405, W * 0.78, 0.12, 0.03, '#72797c');
+    for (let i = 0; i < W * 2; i++) b.box((i + 0.5) * 0.42 - W * 0.42, 0.76, D * 0.43, 0.055, 0.055, 0.035, DARK);
+    b.box(0, 0.39, D * 0.408, W * 0.62, 0.42, 0.026, '#282d31');
+    b.box(0, 0.39, D * 0.425, W * 0.48, 0.28, 0.012, '#40474b');
+    b.box(0, 0.68, D * 0.44, W * 0.48, 0.035, 0.04, STEEL);
+    b.box(0, 0.12, D * 0.405, W * 0.7, 0.035, 0.03, DARK);
   },
   cooler(b, W, D, c) { b.box(0, 0.24, 0, 0.62, 0.44, 0.44, c); b.box(0, 0.5, 0, 0.66, 0.09, 0.48, WHITE); b.box(0, 0.58, 0, 0.3, 0.05, 0.06, c); },
   fridge(b, W, D, c, def) {
     const h = 1.3 + def.stars * 0.12;
-    b.box(0, h / 2, 0, 0.74, h, 0.7, c); b.box(0, h * 0.68, 0.36, 0.7, 0.02, 0.02, DARK); b.box(0.28, h * 0.5, 0.37, 0.04, 0.3, 0.03, STEEL);
+    b.box(0, h / 2, 0, 0.74, h, 0.7, c);
+    b.box(0, h / 2, 0.357, 0.68, h * 0.95, 0.018, c);
+    b.box(0, 0.07, 0.371, 0.64, 0.1, 0.035, '#aeb7ba');
+    if (def.stars >= 3) {
+      b.box(0, h * 0.5, 0.371, 0.018, h * 0.9, 0.02, '#aeb7ba');
+      for (const side of [-1, 1]) b.box(side * 0.065, h * 0.54, 0.394, 0.035, h * 0.28, 0.025, STEEL);
+    } else {
+      b.box(0, h * 0.72, 0.371, 0.66, 0.018, 0.02, '#aeb7ba');
+      b.box(0.27, h * 0.5, 0.394, 0.035, h * 0.3, 0.025, STEEL);
+    }
   },
-  drum(b, W, D, c) { b.round(0, 0.48, 0, 0.36, 0.96, c); b.round(0, 0.98, 0, 0.38, 0.05, '#2c4f76'); b.round(0, 0.3, 0, 0.375, 0.04, '#2c4f76'); b.round(0, 0.66, 0, 0.375, 0.04, '#2c4f76'); },
+  drum(b, W, D, c) {
+    // A ribbed polyethylene drum with a domed shoulder, threaded fill cap and front tap.
+    b.round(0, 0.44, 0, 0.34, 0.82, c);
+    b.ball(0, 0.83, 0, 0.34, c, 0.12, 0.34, 9);
+    for (const y of [0.2, 0.52]) b.round(0, y, 0, 0.35, 0.018, '#315d86');
+    b.round(0, 0.94, 0, 0.15, 0.06, '#315d86');
+    b.round(0, 0.98, 0, 0.105, 0.025, '#244866');
+    b.box(0, 0.28, 0.345, 0.12, 0.06, 0.11, '#344b58');
+    b.box(0, 0.22, 0.405, 0.055, 0.1, 0.09, '#9bbbc1');
+  },
   bucket(b, W, D, c) { b.round(-0.12, 0.2, -0.08, 0.22, 0.4, c); b.round(-0.12, 0.41, -0.08, 0.24, 0.03, '#8fc6d8'); b.round(0.24, 0.07, 0.2, 0.16, 0.12, '#d9574f'); },
   shower(b, W, D, c) {
     b.box(0, 0.04, 0, 0.9, 0.08, 0.9, WHITE);
@@ -205,11 +245,31 @@ const SHAPES: { fallback: Shape; [shape: string]: Shape | undefined } = {
   },
   toilet(b, W, D, c) { b.round(0, 0.19, 0.08, 0.19, 0.38, c); b.round(0, 0.41, 0.1, 0.25, 0.07, c); b.box(0, 0.55, -0.27, 0.46, 0.5, 0.18, c); b.box(0, 0.82, -0.27, 0.5, 0.05, 0.22, WHITE); },
   basin(b, W, D, c) { b.round(0, 0.1, 0, 0.36, 0.2, c); b.round(0, 0.2, 0, 0.3, 0.02, '#8fc6d8'); },
-  chair(b, W, D, c) { b.box(0, 0.38, 0, 0.5, 0.06, 0.5, c); b.box(0, 0.66, -0.23, 0.5, 0.5, 0.05, c); legs(b, 0.42, 0.42, 0.36, c); },
+  chair(b, W, D, c) {
+    // A molded stack chair: seat shell, long rear standards and an open slatted back.
+    b.box(0, 0.38, 0, 0.5, 0.06, 0.5, c);
+    for (const x of [-0.21, 0.21]) {
+      b.box(x, 0.18, 0.21, 0.05, 0.36, 0.05, c);
+      b.box(x, 0.45, -0.21, 0.05, 0.9, 0.05, c);
+    }
+    b.box(0, 0.48, -0.23, 0.46, 0.06, 0.05, c);
+    for (const x of [-0.1, 0.1]) b.box(x, 0.68, -0.23, 0.07, 0.36, 0.05, c);
+    b.box(0, 0.88, -0.23, 0.46, 0.06, 0.05, c);
+  },
   sofa(b, W, D, c) {
-    b.box(0, 0.24, 0, W * 0.94, 0.34, D * 0.84, c); b.box(0, 0.58, -D * 0.34, W * 0.94, 0.5, D * 0.18, c);
+    legs(b, W * 0.78, D * 0.66, 0.14, WOOD);
+    b.box(0, 0.23, 0, W * 0.94, 0.24, D * 0.84, c);
+    b.box(0, 0.46, -D * 0.35, W * 0.94, 0.42, D * 0.16, c);
     for (const side of [-1, 1]) b.box(side * (W * 0.47 - 0.07), 0.46, 0, 0.14, 0.32, D * 0.84, c);
-    for (let i = 0; i < W; i++) b.box((i - (W - 1) / 2) * 0.82, 0.45, D * 0.06, 0.66, 0.1, D * 0.5, '#f0e6d6');
+    // Paired shallow slabs create a short, readable cushion bevel without the
+    // angular diamond ends of low-segment ellipsoids.
+    for (let i = 0; i < W; i++) {
+      const x = (i - (W - 1) / 2) * 0.82;
+      b.box(x, 0.44, D * 0.06, 0.78, 0.1, D * 0.48, '#f0e6d6');
+      b.box(x, 0.48, D * 0.045, 0.7, 0.04, D * 0.42, '#f0e6d6');
+      b.box(x, 0.57, -D * 0.30, 0.78, 0.30, D * 0.10, '#f0e6d6');
+      b.box(x, 0.74, -D * 0.30, 0.7, 0.06, D * 0.08, '#f0e6d6');
+    }
   },
   beanbag(b, W, D, c) { b.ball(0, 0.26, 0, 0.38, c); b.ball(0, 0.5, -0.08, 0.24, c); },
   rug(b, W, D, c) { b.box(0, 0.02, 0, W * 0.94, 0.03, D * 0.94, c); b.box(0, 0.04, 0, W * 0.7, 0.02, D * 0.7, '#e8d9b5'); b.box(0, 0.055, 0, W * 0.4, 0.02, D * 0.4, c); },
@@ -259,7 +319,6 @@ const SHAPES: { fallback: Shape; [shape: string]: Shape | undefined } = {
   },
   inverter(b, W, D, c) { b.box(0, 0.62, -0.18, 0.5, 0.6, 0.18, c); b.box(0, 0.74, -0.08, 0.2, 0.1, 0.01, '#35d07f', true); for (const x of [-0.2, 0.2]) b.box(x, 0.16, 0.08, 0.34, 0.32, 0.5, DARK); },
   jerrycans(b, W, D, c) { b.box(-0.18, 0.24, -0.06, 0.26, 0.48, 0.34, c); b.box(0.16, 0.24, 0.08, 0.26, 0.48, 0.34, c); b.box(-0.18, 0.52, -0.06, 0.08, 0.08, 0.08, DARK); b.box(0.16, 0.52, 0.08, 0.08, 0.08, 0.08, DARK); },
-  plant(b, W, D, c) { b.round(0, 0.17, 0, 0.2, 0.34, '#b9744f'); b.crown(0, 0.72, 0, 0.36, 0.5, 0.36, c); b.crown(0.14, 0.92, -0.06, 0.22, 0.3, 0.22, '#63a56e'); },
   wardrobe(b, W, D, c) { b.box(0, 0.85, 0, W * 0.92, 1.7, 0.56, c); b.box(0, 0.85, 0.285, 0.02, 1.6, 0.01, DARK); for (const x of [-0.07, 0.07]) b.box(x, 0.9, 0.3, 0.03, 0.2, 0.03, STEEL); },
   aquarium(b, W, D, c) { b.box(0, 0.3, 0, 0.8, 0.6, 0.44, WOOD); b.box(0, 0.86, 0, 0.78, 0.5, 0.4, c); b.box(0, 1.13, 0, 0.8, 0.05, 0.42, DARK); b.box(-0.15, 0.9, 0.205, 0.12, 0.06, 0.01, '#ffb347', true); b.box(0.18, 0.78, 0.205, 0.1, 0.05, 0.01, '#ff6f61', true); },
   petbed(b, W, D, c) {
@@ -291,8 +350,7 @@ const partOf = (floor: number, wall?: Wall) => (wall ? `f${floor}-${wall}` : `f$
 const batchTools = (batch: Batch, part: string): Tools => ({
   box: (x, y, z, w, h, d, c, lit) => batch.box(x, y, z, w, h, d, c, { part, ...(lit ? { layer: 'glow' as const } : {}) }),
   round: (x, y, z, r, h, c, lit) => batch.cyl(x, y, z, r, h, c, { part, seg: 9, ...(lit ? { layer: 'glow' as const } : {}) }),
-  ball: (x, y, z, r, c) => batch.ball(x, y, z, r, r, r, c, { part, seg: 9 }),
-  crown: (x, y, z, sx, sy, sz, c) => batch.ico(x, y, z, sx, sy, sz, c, { part }),
+  ball: (x, y, z, r, c, ry = r, rz = r, seg = 9) => batch.ball(x, y, z, r, ry, rz, c, { part, seg }),
 });
 
 /**
@@ -326,6 +384,8 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   group.add(glow);
 
   let palette: HomePalette = ROOM_PALETTE, grid = 0, owned = false, tile = 1, drawn = '', lastState: LifeState | null = null, camera: THREE.Camera | null = null, canvas: HTMLElement | null = null, status = '', undrawn = false;
+  let homeTime: TimeOfDay = 'day';
+  glow.intensity = 26 * lightingFor('indoor', homeTime).lamps;
   let plot: Plot = plotOf(1), plan: HousePlan = planOf(plot);
   // The floor the avatar stands on, and the floors drawn (0 … shownFloor): the ones above are lifted off.
   let level = 0, shownFloor = 0, restFloor = 0, lastAt = { x: NaN, z: NaN };
@@ -342,6 +402,26 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   // The skinned body (see the header): asked for on an allowed device; null until it loads, and for good without one.
   const wantsBody = bodyAllowed();
   let body: SkinnedBody | null = null, bodyLoading = false, bodyFailed = false, gone = false, seatAt: Rest | null = null, sat: Spot | undefined;
+  let placedGuests: PlacedGuest[] = [];
+  let guestChanged: (() => void) | null = null;
+  const guestHead = new THREE.Vector3();
+  const guestBodies = createCanonicalCrowd<SkinnedBody>({
+    yieldBetweenActors: () => new Promise(resolve => setTimeout(resolve, 0)),
+    load: spec => importBody().then(module => module.loadBody(kit, spec.look, spec.seed, spec.scale)).then(loaded => {
+      const error = loaded.wardrobeError;
+      if (error) { loaded.dispose(); throw new Error(error); }
+      loaded.show('idle', false); return loaded;
+    }),
+    place(loaded, spec) { loaded.fit(spec.scale); loaded.place(spec.x, spec.y, spec.z, spec.ry); },
+    mount(loaded, id) { loaded.object.name = `home-guest:${id}`; people.add(loaded.object); },
+    changed() {
+      if (gone) return;
+      buildGuestFigures();
+      if (guestChanged) guestChanged();
+      else globalThis.window?.dispatchEvent?.(new CustomEvent('jaw:home-frame'));
+    },
+    failed(id, error) { if (!gone) console.warn(`Canonical home guest ${id} unavailable; keeping its current fallback:`, error); },
+  });
   const floorAt = { x: 0, y: 0.03, z: 0, ry: 0 }, headAt = new THREE.Vector3();
   let hinge: ReturnType<typeof createHingedHomeDoor> | null = null, doorDone: (() => void) | null = null, doorVisual = false;
   const doorGrip = new THREE.Vector3(), doorRelease = { x: 0, z: 0 };
@@ -391,11 +471,29 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     for (const parent of [room, furniture, overlay]) for (const child of parent.children) if (child.userData.part) child.visible = partShown(child.userData.part);
   }
 
-  /** A window on an outer wall: frame and glass. */
+  /** Four wall panels leave a real window opening; their inner edges provide its full depth. */
+  function backWallWithWindow(b: Batch, x0: number, width: number, y: number, height: number, z0: number, colour: Colour, part: string, x: number, tileWidth: number) {
+    const wallLeft = x0 - 0.25, wallRight = x0 + width, wallDepth = 0.25, wallZ = z0 - 0.125;
+    const openingWidth = Math.min(tileWidth * 0.86, 1.5), openingHeight = 1.2;
+    const left = x - openingWidth / 2, right = x + openingWidth / 2, bottom = y + 1.4, top = bottom + openingHeight;
+    const panel = (cx: number, cy: number, w: number, h: number) => { if (w > 0.001 && h > 0.001) b.box(cx, cy, wallZ, w, h, wallDepth, colour, { part }); };
+    panel((wallLeft + left) / 2, y + height / 2, left - wallLeft, height);
+    panel((right + wallRight) / 2, y + height / 2, wallRight - right, height);
+    panel(x, (y + bottom) / 2, openingWidth, bottom - y);
+    panel(x, (top + y + height) / 2, openingWidth, y + height - top);
+  }
+  /** Window pane sits within the opening; frame rails sit on both wall faces. */
   function windowAt(b: Batch, x: number, y: number, part: string) {
-    const wide = Math.min(tile * 0.86, 1.5), z = -ROOM / 2;
-    b.box(x, y + 2.0, z + 0.03, wide, 1.2, 0.07, '#5f4a36', { part });
-    b.box(x, y + 2.0, z + 0.07, wide - 0.16, 1.04, 0.02, '#a9d3ea', { part, layer: 'glow' });
+    const wide = Math.min(tile * 0.86, 1.5), z = -ROOM / 2, cy = y + 2.0, h = 1.2, rail = 0.07;
+    const railQuad = (qx: number, qy: number, qw: number, qh: number, qz: number, ry = 0) => b.quad(qx, qy, qz, qw, qh, '#5f4a36', { part, ry });
+    for (const [qz, ry] of [[z + 0.025, 0], [z - 0.275, Math.PI]] as const) {
+      railQuad(x, cy, rail, h, qz, ry);
+      railQuad(x - wide / 2 + rail / 2, cy, rail, h, qz, ry);
+      railQuad(x + wide / 2 - rail / 2, cy, rail, h, qz, ry);
+      railQuad(x, cy - h / 2 + rail / 2, wide - 2 * rail, rail, qz, ry);
+      railQuad(x, cy + h / 2 - rail / 2, wide - 2 * rail, rail, qz, ry);
+    }
+    b.box(x, cy, z - 0.115, wide - 2 * rail, h - 2 * rail, 0.02, '#a9d3ea', { part, layer: 'glass' });
   }
   /** A flight of stairs: treads stacked from the floor, a sloping rail each side. */
   const stairSteps = (flight: PlanStairs) => Math.max(flight.w * 2, Math.ceil(WALL_HEIGHT / (0.18 * tile * AVATAR_SCALE * 2.45 / 1.81)));
@@ -422,7 +520,7 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     const W = plot.w * tile, D = plot.d * tile, x0 = -ROOM / 2, z0 = -ROOM / 2;
     // The plinth is drawn whatever floor is in view: it reports the camera and canvas the host draws with, so taps can be resolved.
     const plinth = kit.box(x0 + W / 2, -0.21, z0 + D / 2, W + 0.5, 0.4, D + 0.5, '#6f6253', room);
-    plinth.onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); if (wantsBody) startBody(renderer); };
+    plinth.onBeforeRender = (renderer, scene, cam) => { camera = cam; undrawn = false; attach(renderer.domElement); if (wantsBody) { startBody(renderer); if (body && drawsWebGL2(renderer)) guestBodies.start(); } };
     const b = createBatch(THREE);
     for (let floor = 0; floor < plot.floors; floor++) {
       const y = lift(floor), part = partOf(floor), rooms = plan.floors[floor] ?? [], hole = stairwellOf(plan, floor);
@@ -443,7 +541,8 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
       }
       for (const flight of plan.stairs) if (flight.floor === floor) stairsOf(b, flight);
       const back = partOf(floor, 'back'), left = partOf(floor, 'left');
-      b.box(x0 + W / 2 - 0.125, y + high / 2, z0 - 0.125, W + 0.25, high, 0.25, palette.back, { part: back });
+      if (!open) backWallWithWindow(b, x0, W, y, high, z0, palette.back, back, along(windowSlot(grid)), tile);
+      else b.box(x0 + W / 2 - 0.125, y + high / 2, z0 - 0.125, W + 0.25, high, 0.25, palette.back, { part: back });
       const doorWidth = Math.min(tile * 0.86, 1.5), doorZ = along(doorSlot(grid));
       const unit = tile * AVATAR_SCALE * 2.45 / 1.81;
       const vertical = body?.scale ?? unit, lateral = body?.scaleX ?? unit;
@@ -483,9 +582,9 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     if (body || bodyLoading || bodyFailed || gone) return;
     if (!drawsWebGL2(renderer)) { bodyFailed = true; return; }
     bodyLoading = true;
-    const look = who.look ?? lastState?.onboarding?.look ?? null, seed = who.seed;
     setTimeout(() => {
-      importBody().then((module) => module.loadBody(kit, look, seed, tile * AVATAR_SCALE)).then((loaded) => {
+      if (gone) { bodyLoading = false; return; }
+      importBody().then((module) => module.loadBody(kit, who.look ?? lastState?.onboarding?.look ?? null, who.seed, tile * AVATAR_SCALE)).then((loaded) => {
         bodyLoading = false;
         if (gone) { loaded.dispose(); return; }
         // The look changed while it loaded: recolour, or (the other body) start again on the next frame.
@@ -613,7 +712,10 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   /** Draw an object into a batch, at its place, in its floor's (or wall's) part. */
   function model(b: Batch, def: FurnitureDefinition, x: number, y: number, rot: number, floor: number) {
     const at = mountOf(def, x, y, rot, floor);
-    b.at(at.x, at.y, at.z, at.ry, () => (SHAPES[def.shape] || SHAPES.fallback)(batchTools(b, at.part), def.wall ? 1 : def.w, def.wall ? 1 : def.h, def.color, def), 0, 0, at.scale);
+    b.at(at.x, at.y, at.z, at.ry, () => {
+      if (def.shape === 'plant') plant(b, 0, 0, { s: 0.58, pot: '#b9744f', leaf: def.color, part: at.part });
+      else (SHAPES[def.shape] || SHAPES.fallback)(batchTools(b, at.part), def.wall ? 1 : def.w, def.wall ? 1 : def.h, def.color, def);
+    }, 0, 0, at.scale);
   }
   /** Build a batch into meshes of `parent` (released with the furniture). */
   function keep(b: Batch, parent: THREE.Object3D) {
@@ -865,26 +967,93 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
       if (selfTag) { selfTag.name = who.name; selfTag.text = who.name; }
     }
     if (changed && !driven) { level = restFloor; show(pose); moveAvatar(restAt.x, restAt.y, restAt.z, restAt.ry); poseBody(pose, false); }
-    const guestsNow = JSON.stringify([grid, plot.w, mine, guests]);
+    const guestsNow = JSON.stringify([grid, plot.w, plot.d, mine, guests, [...taken].sort()]);
     if (guestsNow === guestKey) return changed;
     guestKey = guestsNow;
-    releaseObjects(actorMeshes);
     if (mine.floor === 0) taken.add(`0:${mine.x},${mine.y}`);
     const scale = tile * AVATAR_SCALE;
+    // Keep the entrance usable and spread guests across reachable social floor space.
+    // Canonical and fallback figures consume the same deterministic slots.
+    const spare = guestPlaces(taken, guests.length, mine);
+    placedGuests = guests.slice(0, Math.min(MAX_GUESTS_SHOWN, spare.length)).map((guest, index) => ({ ...guest,
+      actorId: String(guest.id ?? `guest-${index}`), x: along(spare[index]!.x), y: 0.03, z: along(spare[index]!.y), ry: Math.PI / 2, scale,
+    })).filter((guest, index, all) => all.findIndex(other => other.actorId === guest.actorId) === index);
+    guestBodies.sync(placedGuests.map(guest => ({ id: guest.actorId, seed: String(guest.seed ?? guest.actorId), look: guest.look,
+      x: guest.x, y: guest.y, z: guest.z, ry: guest.ry, scale: guest.scale })));
+    buildGuestFigures();
+    return true;
+  }
+
+  function guestPlaces(taken: Set<string>, count: number, self: { x: number; y: number; floor: number }) {
+    const floor = grids[0], doorY = doorSlot(grid), centre = (grid - 1) / 2;
+    if (!floor || !count) return [];
+    const entrance = floor.nearest(along(0), along(doorY));
+    if (!entrance) return [];
+    // One component traversal per placement refresh, rather than a path search for every tile.
+    // Four-way connectivity is equivalent to this grid's diagonal rule (no corner cutting).
+    const reachable = new Uint8Array(floor.cells.length), queue = new Int32Array(floor.cells.length);
+    const cellOf = (x: number, z: number) => Math.floor((z - floor.bounds[1]) / floor.cell) * floor.cols + Math.floor((x - floor.bounds[0]) / floor.cell);
+    const start = cellOf(entrance.x, entrance.z);
+    let read = 0, length = 1;
+    queue[0] = start; reachable[start] = 1;
+    const enqueue = (index: number) => {
+      if (reachable[index] || floor.cells[index]) return;
+      reachable[index] = 1; queue[length++] = index;
+    };
+    while (read < length) {
+      const index = queue[read++]!, column = index % floor.cols, row = Math.floor(index / floor.cols);
+      if (column > 0) enqueue(index - 1);
+      if (column + 1 < floor.cols) enqueue(index + 1);
+      if (row > 0) enqueue(index - floor.cols);
+      if (row + 1 < floor.rows) enqueue(index + floor.cols);
+    }
+    const margin = tile * 0.25;
+    const spare = nearestFree(plan, 0, centre, centre, taken).filter(point => {
+      if (point.x <= 1 && Math.abs(point.y - doorY) <= 1) return false;
+      const x = along(point.x), z = along(point.y);
+      return floor.free(x, z) && reachable[cellOf(x, z)] === 1
+        && floor.free(x - margin, z - margin) && floor.free(x + margin, z - margin)
+        && floor.free(x - margin, z + margin) && floor.free(x + margin, z + margin);
+    });
+    const selected: { x: number; y: number }[] = [];
+    while (selected.length < Math.min(count, MAX_GUESTS_SHOWN) && spare.length) {
+      let best = 0, bestScore = -Infinity;
+      for (let index = 0; index < spare.length; index++) {
+        const point = spare[index]!;
+        let gap = Math.min(3, Math.hypot(point.x, point.y - doorY));
+        if (self.floor === 0) gap = Math.min(gap, Math.hypot(point.x - self.x, point.y - self.y));
+        for (const other of selected) gap = Math.min(gap, Math.hypot(point.x - other.x, point.y - other.y));
+        const inSocialRoom = point.x < grid && point.y < grid;
+        const score = (inSocialRoom ? 100 : 0) + gap - 0.08 * Math.hypot(point.x - centre, point.y - centre);
+        if (score > bestScore) { best = index; bestScore = score; }
+      }
+      selected.push(spare.splice(best, 1)[0]!);
+    }
+    return selected;
+  }
+
+  /** Keep a fallback only for guests whose canonical body has not committed. No idle animation loop. */
+  function buildGuestFigures() {
+    releaseObjects(actorMeshes);
     const batch = createBatch(THREE);
     guestTags = [];
-    // Guests wait on the free tiles nearest the door.
-    const spare = nearestFree(plan, 0, 0, doorSlot(grid), taken);
-    const placed = guests.slice(0, Math.min(MAX_GUESTS_SHOWN, spare.length)).map((guest, index) => ({ ...guest, x: along(spare[index]!.x), y: 0.03, z: along(spare[index]!.y), ry: Math.PI / 2, scale }));
-    for (const [index, person] of placed.entries()) {
-      const drawn = drawAvatar(batch, person.look ?? null, { x: person.x, y: person.y, z: person.z, ry: person.ry, pose: 'stand', seed: person.seed ?? person.id, scale, marker: person.kind === 'npc' ? 'npc' : 'player' });
+    for (const person of placedGuests) {
+      const loaded = guestBodies.get(person.actorId);
+      let top: number;
+      if (loaded) {
+        loaded.object.updateWorldMatrix(true, true);
+        const head = loaded.object.getObjectByName('Head');
+        if (head) { head.getWorldPosition(guestHead); group.worldToLocal(guestHead); top = guestHead.y + 0.32 * loaded.scale; }
+        else top = person.y + 2.45 * person.scale;
+      } else {
+        top = drawAvatar(batch, person.look ?? null, { x: person.x, y: person.y, z: person.z, ry: person.ry, pose: 'stand',
+          seed: person.seed ?? person.id, scale: person.scale, marker: person.kind === 'npc' ? 'npc' : 'player' }).top;
+      }
       const name = String(person.name ?? '');
-      guestTags.push({ id: String(person.id ?? `guest-${index}`), name, kind: person.kind === 'npc' ? 'npc' : 'player', text: person.kind === 'npc' ? name : `@${name}`, marker: person.kind === 'npc' ? 'dot' : 'tag',
-        colour: person.kind === 'npc' ? '#58d68a' : '#6fb4ff', position: { x: person.x, y: drawn.top, z: person.z } });
+      guestTags.push({ id: person.actorId, name, kind: person.kind === 'npc' ? 'npc' : 'player', text: person.kind === 'npc' ? name : `@${name}`,
+        marker: person.kind === 'npc' ? 'dot' : 'tag', colour: person.kind === 'npc' ? '#58d68a' : '#6fb4ff', position: { x: person.x, y: top, z: person.z } });
     }
-    const builtBatch = batch.build(sceneMaterials(kit));
-    for (const mesh of builtBatch.meshes) { mesh.name = `home-people-${mesh.name}`; people.add(mesh); actorMeshes.push(mesh); }
-    return true;
+    for (const mesh of batch.build(sceneMaterials(kit)).meshes) { mesh.name = `home-people-${mesh.name}`; people.add(mesh); actorMeshes.push(mesh); }
   }
 
   /** Rebuild if anything visible changed. Returns true when it did. */
@@ -960,7 +1129,7 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     const detail = (event as CustomEvent<{ selected?: unknown; buy?: unknown; floor?: unknown; ghost?: HomeGhost | null; retry?: unknown } | null>).detail || {};
     ui = { selected: typeof detail.selected === 'string' ? detail.selected : null, buy: detail.buy === true, ghost: detail.ghost && FURNITURE[detail.ghost.itemId] ? { ...detail.ghost } : null, ...(Number.isInteger(detail.floor) ? { floor: detail.floor as number } : {}) };
     syncFloor();
-    if (detail.retry) { drawn = ''; status = ''; }
+    if (detail.retry) { drawn = ''; status = ''; guestBodies.retry(); }
     // Rebuild now so the frame the sender asks the host for shows it; drawing stays the host's job.
     // `undrawn` makes the next update() report a change unless a frame has been drawn meanwhile.
     if (lastState && refresh(lastState)) undrawn = true;
@@ -979,9 +1148,9 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   return {
     group,
     get homeDoor() { const x = along(0), z = along(doorSlot(grid)); return { x, y: 0.03, z, ry: -Math.PI / 2, direction: 'outside' as const, ...route(0, x, z) }; },
-    background: '#c9d6cf',
-    // [horizon, zenith]: a soft morning haze rather than a flat fill; the host grades between them.
-    sky: ['#c9d6cf', '#8fb0b4'] as [Colour, Colour],
+    get background() { return lightingFor('indoor', homeTime).sky[0]; },
+    get sky() { return lightingFor('indoor', homeTime).sky; },
+    lighting() { return lightingFor('indoor', homeTime); },
     ground: '#7f8f7c',
     /** The whole house in view: a bigger plot steps the camera back in proportion. */
     get camera(): SceneCamera {
@@ -991,9 +1160,13 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     update(state: LifeState) {
       if (state.activeAction || (doorVisual && !doorDone)) cancelDoor();
       const first = lastState === null;
+      const nextTime = Number.isFinite(state.t) ? timeOfDay(state.t) : homeTime;
+      const timeChanged = nextTime !== homeTime;
+      homeTime = nextTime;
+      if (timeChanged) glow.intensity = 26 * lightingFor('indoor', homeTime).lamps;
       lastState = state;
       const room = refresh(state);
-      const changed = refreshPeople(state) || room || first || undrawn;
+      const changed = refreshPeople(state) || room || first || undrawn || timeChanged;
       undrawn = false;
       return changed;
     },
@@ -1003,7 +1176,7 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
       who = { look, seed: seed ?? 'you', name: String(name ?? 'You'), pose: (pose as Pose | null | undefined) || null };
       return refreshPeople(lastState);
     },
-    /** Guests the host let in, standing by the door: [{ id, name, look?, seed? }]. */
+    /** Guests the host let in, on reachable social floor space: [{ id, name, look?, seed? }]. */
     setCrowd(list: unknown) {
       guests = (Array.isArray(list) ? list as Record<string, unknown>[] : []).filter((person) => person && typeof person === 'object').slice(0, MAX_GUESTS_SHOWN)
         .map((person) => ({ id: person.id, name: person.name, kind: person.kind, look: person.look ?? null, seed: person.seed ?? person.id }));
@@ -1025,6 +1198,12 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     },
     get objectPhase() { return sequence.phase; },
     get bodyShown() { return body !== null; },
+    startCrowd(renderer: { getContext?: () => unknown }, changed: () => void) {
+      if (gone || !body || !drawsWebGL2(renderer)) return;
+      guestChanged = changed;
+      guestBodies.start();
+    },
+    get crowdRendering() { return guestBodies.counts; },
     stepCrowd(dt: number) {
       const more = Boolean(body?.step(dt)), using = sequence.step(dt), door = hinge?.step(dt) ?? false;
       if (doorDone && body) body.sampleUse('homeDoor', Math.min(2.399, (hinge?.progress ?? 0) * 2.4));
@@ -1128,6 +1307,7 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     },
     /** Free the house, the furniture and the avatars, and stop listening. */
     dispose() {
+      gone = true; guestChanged = null; guestBodies.dispose();
       doorDone = null; hinge?.dispose(); hinge = null;
       useProps.dispose();
       sequence.dispose();
@@ -1137,7 +1317,6 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
       releaseObjects(furnitureMeshes);
       goalMark = null;
       clearFigures();
-      gone = true;
       dropBody();
       globalThis.window?.removeEventListener?.('jaw:home-ui', onUi);
       globalThis.window?.removeEventListener?.('jaw:mode', onMode);

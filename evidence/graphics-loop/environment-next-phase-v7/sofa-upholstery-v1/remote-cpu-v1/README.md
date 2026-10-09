@@ -1,0 +1,5 @@
+# Diagnostic sofa-v1 CPU and renderer candidate
+
+This package recipe follows the successful serial split compiler design. It seals the complete production `src/`, `public/`, Three addon, sofa-v1 viewer and renderer-control closure; compiles the shared Three core/module pair, addon graph, and real full-host/city graph in fresh Node processes; then validates output closure and copies public assets once. Limits remain 384 MiB / 25 seconds for CPU packaging and Node 96 MiB. The same workflow then downloads its own sealed candidate plus the exact successful v7 baseline and runs one 2 GiB / 60 second Linux Chrome/SwiftShader job with eight matched Home screenshots.
+
+The sofa change replaces two box-only seat pads with a shallow chamfered cushion profile using the existing merged furniture batch. Local isolated geometry tests passed, but the browser review remains unrun and is the acceptance gate. Chunk and geometry figures are diagnostic; this is not a production download certificate or phone-performance claim. Root must review the sealed source closure and active workflow before publication.

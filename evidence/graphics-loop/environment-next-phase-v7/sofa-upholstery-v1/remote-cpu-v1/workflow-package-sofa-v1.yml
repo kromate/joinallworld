@@ -1,0 +1,127 @@
+name: Environment whole-slice sofa-v1 diagnostic package (split compiler recipe v3)
+
+on:
+  push:
+    branches:
+      - codex/graphics-sofa-upholstery-v1-package-v1
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: environment-whole-slice-sofa-cpu-v1-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Pinned full-host diagnostic package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact review-branch commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Seal the deterministic sofa render controls
+        run: node evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/seal-review-sources-sofa-v1.mjs
+
+      - name: Run reviewed serial split compilation and one-copy finalization
+        run: python3 evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-cpu-v1/run-bounded-linux-package-sofa-v1.py
+
+      - name: Upload sofa-v1 source pins, phase receipts, static routes, and bounded result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-sofa-upholstery-cpu-v1-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/source-pins-sofa-v1.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/source-precompile-sofa-v1.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/source-postcompile-sofa-v1.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/vendor-sofa-v1-record.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/addons-sofa-v1-record.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/app-sofa-v1-record.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/compile-sofa-v1-record.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/static-sofa-v1/**
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/static-fixture-sofa-v1/build-manifest.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/finalizer-pins-sofa-v1.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/finalization-sofa-v1-observed.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/review-host-sofa-v1-staged.json
+            evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-cpu-v1/remote-results/**
+          if-no-files-found: warn
+          retention-days: 14
+
+  render:
+    name: Matched sofa home visual review
+    needs: package
+    if: needs.package.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Download candidate package from this workflow run
+        uses: actions/download-artifact@v4
+        with:
+          name: environment-sofa-upholstery-cpu-v1-${{ github.run_id }}
+          path: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/candidate-input
+
+      - name: Download exact successful v7 baseline package
+        uses: actions/download-artifact@v4
+        with:
+          name: environment-whole-slice-v7-package-v3-37902739360
+          run-id: 37902739360
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/baseline-v7-input
+
+      - name: Record runner Chrome identity
+        shell: bash
+        run: |
+          CHROME_PATH="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_PATH"
+          CHROME_REAL="$(readlink -f "$CHROME_PATH")"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+
+      - name: Verify source recipe and run the bounded eight-capture comparison
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF: ${{ github.ref }}
+          PACKAGE_ROOT: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/candidate-input
+          BASELINE_PACKAGE_ROOT: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/baseline-v7-input
+        run: >-
+          python3 evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/run-bounded-linux-render-sofa-v1.py
+          browser $(sha256sum evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/review-sources-sofa-v1.json | cut -d' ' -f1)
+          ${{ github.run_id }} ${{ github.sha }} sofa-home
+
+      - name: Upload matched sofa screenshots and receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-sofa-upholstery-render-v1-${{ github.run_id }}
+          path: evidence/graphics-loop/environment-next-phase-v7/sofa-upholstery-v1/remote-render-v1/remote-results/${{ github.run_id }}-sofa-home/
+          if-no-files-found: warn
+          retention-days: 14

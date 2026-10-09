@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home sofa upholstery comparison · isolated diagnostic</title>
+  <style>
+    :root { --font: system-ui, sans-serif; color-scheme: dark; font: 14px/1.4 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #111a20; }
+    #host { position: absolute; inset: 0; overflow: hidden; }
+    #host canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+    .fixture { position: absolute; z-index: 20; top: max(10px, env(safe-area-inset-top)); left: max(10px, env(safe-area-inset-left)); width: min(460px, calc(100vw - 20px)); max-height: calc(100vh - 20px); overflow: auto; padding: 12px; border: 1px solid #ffffff32; border-radius: 12px; background: #101820e8; color: #f4f7f8; box-shadow: 0 6px 24px #0008; }
+    h1 { margin: 0 0 8px; font-size: 16px; }
+    .row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 7px 0; }
+    label { display: inline-flex; align-items: center; gap: 5px; }
+    select, button { min-height: 34px; border: 1px solid #ffffff30; border-radius: 7px; padding: 5px 9px; background: #24333e; color: inherit; font: inherit; }
+    button { cursor: pointer; }
+    button:hover { background: #344957; }
+    #status { margin: 7px 0; color: #b8d5df; }
+    #diagnostics { max-height: 180px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; margin: 6px 0 0; padding: 8px; border-radius: 6px; background: #071016; color: #c6e3c3; font: 11px/1.35 ui-monospace, monospace; }
+    .hint { color: #bac8ce; font-size: 12px; }
+    details { margin: 7px 0; padding: 6px 0; border-top: 1px solid #ffffff24; border-bottom: 1px solid #ffffff24; }
+    summary { cursor: pointer; color: #c6d9e2; }
+    @media (max-width: 600px) { .fixture { width: min(360px, calc(100vw - 20px)); padding: 9px; } .row { gap: 4px; } select, button { min-height: 32px; padding: 4px 7px; } }
+.scene-tags{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.scene-tag{position:absolute;transform:translate(-50%,-100%);padding:2px 7px;border:0;border-radius:999px;font:700 11px/1.3 var(--font);white-space:nowrap;max-width:140px;overflow:hidden;text-overflow:ellipsis;pointer-events:auto;cursor:pointer;background:rgba(18,32,48,.82);color:#d6ebff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.scene-tag.is-npc{background:transparent;box-shadow:none;color:#58d68a;font-size:15px;padding:6px 8px;text-shadow:0 0 3px rgba(0,0,0,.7)}
+.scene-tag.is-self{background:transparent;box-shadow:none;color:#ffd34d;font-size:17px;pointer-events:none;cursor:default;text-shadow:0 0 3px rgba(0,0,0,.7)}
+.scene-tag.is-table{background:rgba(24,59,42,.9);color:#fff3c4;max-width:190px}
+.scene-tag.is-table.is-hover{outline:2px solid #fff3c4;outline-offset:1px}
+.scene-tag:focus-visible{outline:2px solid #fff;outline-offset:1px}
+  </style>
+</head>
+<body>
+  <main id="host" aria-label="Playable Lagos scene"></main>
+  <section class="fixture" aria-label="Fixture controls">
+    <details id="fixture-panel" open>
+    <summary>Graphics review · expand controls</summary>
+    <h1>Playable Lagos slice · actual host · readiness v7</h1>
+    <details id="review-controls" open>
+      <summary>Review controls · place, time, crowd</summary>
+      <div class="row">
+      <label>Variant <select id="variant"><option value="baseline" selected>Production sofa slabs</option><option value="candidate">Chamfered sofa upholstery</option></select></label>
+        <label>Place <select id="place"><option value="home" selected>Home</option><option value="neighbourhood">Neighbourhood</option><option value="office">Office</option><option value="market">Market</option><option value="beach">Beach</option></select></label>
+        <label>Time <select id="time"><option value="day" selected>Day</option><option value="dusk">Dusk</option><option value="night">Night</option></select></label>
+        <label>Furniture pose <select id="pose"><option value="stand" selected>Standing</option><option value="sit">Sit on sofa</option></select></label>
+        <label>Camera <select id="camera"><option value="normal" selected>Gameplay</option><option value="close">Close</option></select></label>
+        <label>Fixture crowd request <select id="crowd"><option value="0" selected>0</option><option value="2">2</option><option value="5">5</option><option value="12">12</option></select></label>
+      </div>
+    </details>
+    <div class="row" aria-label="Walk by actual scene coordinates">
+      <button data-walk="0,-0.7">Walk forward</button><button data-walk="0,0.7">Back</button><button data-walk="-0.7,0">Left</button><button data-walk="0.7,0">Right</button>
+    </div>
+    <div class="row"><button id="wait-ready">Wait up to 15s for readiness</button><button id="snapshot">Capture snapshot</button><button id="motion-sample">Measure host rAF · 8s</button><button id="cancel-motion" disabled>Cancel sample</button><button id="hide-panel">Hide panel for capture</button></div>
+    <div class="row"><button id="rebuild">Dispose and rebuild</button><button id="dispose">Dispose permanently</button></div>
+    <div id="status" role="status" aria-live="polite">Loading Lagos content and scene parts…</div>
+    <p class="hint">Host joystick, keyboard, tap-to-walk and orbit stay enabled. Drag to orbit; W/A/S/D and arrows walk. Buttons make public <code>walkBy</code> path requests.</p>
+    <p class="hint">Snapshots distinguish stable scene review from canonical appearance review. Renderer fallback is reported as fallback; unavailable per-actor counters lower confidence and are never inferred. The 8-second rAF sampler is callback timing, not GPU, presented-frame, or phone timing.</p>
+    <p class="hint">Snapshot scope: Lagos venue scenes only. The city-map renderer and Atlantic/open-water map scene are outside this fixture.</p>
+    <pre id="diagnostics">No readiness snapshot yet.</pre>
+    <pre id="telemetry">Network inventory and bounded rAF sample not captured.</pre>
+    </details>
+  </section>
+  <button id="show-panel" hidden style="position:absolute;z-index:21;top:10px;left:10px">Show review controls</button>
+  <script type="module" src="./viewer-sofa-compare.ts"></script>
+</body>
+</html>

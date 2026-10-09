@@ -1,0 +1,8 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client"]
+  },
+  "include": ["trouser-sock-trim-ab-v3/trouser-sock-trim-ab-v3.ts", "trouser-sock-trim.ts"]
+}

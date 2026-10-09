@@ -89,10 +89,11 @@ async function loadPractice(): Promise<void> {
     target = words.answerAt(Math.floor(Math.random() * words.ANSWER_COUNT))
     rows.value = []; draft.value = ''; answer.value = ''; status.value = 'playing'; no.value = 0; message.value = ''
   } catch {
-    failure.value = 'Practice words could not be loaded. Check your connection and try again.'
+    failure.value = 'Practice words could not be loaded. Reload the game to try again.'
     status.value = 'error'
   }
 }
+function reloadPractice(): void { window.location.reload() }
 
 async function submit(): Promise<void> {
   if (busy.value || done.value) return
@@ -174,7 +175,8 @@ defineExpose({ press })
     <p v-if="status === 'loading'" class="oro-note" role="status">{{ mode === 'daily' ? 'Fetching today’s puzzle…' : 'Loading a practice word…' }}</p>
     <template v-else-if="status === 'error'">
       <p class="oro-note" role="alert">{{ failure || 'The puzzle could not be loaded.' }}</p>
-      <BaseButton @click="mode === 'daily' ? loadDaily() : loadPractice()">Try again</BaseButton>
+      <BaseButton v-if="mode === 'daily'" @click="loadDaily">Try again</BaseButton>
+      <BaseButton v-else variant="primary" @click="reloadPractice">Reload game</BaseButton>
     </template>
     <template v-else>
       <header class="oro-head">

@@ -195,7 +195,7 @@ preserving earlier main report and adding exact asset-scope erratum/executed blo
 no ignored primary graphics runtime was copied or accepted by this adoption.
 
 
-### GRAPHICS authored NPC review — 9 October 2026, 00:12 UTC
+### GRAPHICS authored NPC review — 9 October 2026
 
 Local primary candidate integrates source-authored NPCs into the existing canonical body queue with stable seed identities, local pose/seat/scale and full parent transforms. Exact per-Batch part scope preserves other scene batches; original fallback remains until commit and low-tier/unsupported devices retain merged original geometry. WORLD was notified before props/build and additive VenueDiagnostics changes. Candidate remains unpublished runtime and unreleased.
 

@@ -1,0 +1,47 @@
+{
+  "observedAt": "2026-10-09T19:39:34.646802+00:00",
+  "sourceSha": "d598c35481dbcf4c42e4b5275999016db88499b6",
+  "runtimeBaseSha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+  "status": "Source-only currentgap reconfirmation; noactualONnative/test/activation acceptance",
+  "workerVerification": {
+    "sessionId": "01a11c38-5fc5-7172-9351-f264122ea2aa",
+    "parentId": "01a11c35-ad88-7aa3-ac5b-6b7d910724ad",
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "actualTurnContextAt": "2026-10-09T19:36:03.128Z"
+  },
+  "sourceBlobs": {
+    "src/app/state/game.ts": "3e910a17fdbcf94cd38484620bccdc3ed1cae0be",
+    "src/types/protocol.ts": "147d478c26f270017e525fe6238fd2f6fb51fafe",
+    "src/game/systems/career.ts": "ccd62f2c7af7a98428754ae298fb38628bc9fcb9",
+    "src/app/features/jobs/JobsApp.vue": "f15c353715a17f00387528332ca918da7b8d977e",
+    "src/client.ts": "1e88e7d2b74eb415cf3772d48f258a8a7d70c8f0",
+    "deploy/living-world-teaching.edge.test.ts": "7fb08c38293ca1411455c945333044f4741881e4"
+  },
+  "gap": {
+    "rootIndependentSources": [
+      "src/app/state/game.ts:170-177 recomputesviewLife(life,{now,cityId}),nottrustedON capability",
+      "src/types/protocol.ts:149-154,173-181 responsesstate/rev,nocapability",
+      "src/game/systems/career.ts:330-331 branchesprestartwording onctx.interactiveTeachingStarts",
+      "src/app/features/jobs/JobsApp.vue:114 branchesinteractive label oncareer.interactiveTeachingStarts"
+    ],
+    "effect": "ONserver canstartmarkedactive lesson, but prestartbrowser career/jobs promises duration-basedshift; markedcontrolsafterstart canrender. Do notlabelallshiftsinteractivewhileOFF."
+  },
+  "existingContractsReportedByWorker": {
+    "authority": "server/server.ts:65-67,158-173 trustedoptiondefaultOFF; deploy/cloudflare-worker.ts:243,366 literalbinding1",
+    "marker": "career.ts:433-436 createsmarker onlyundertrustedON",
+    "reader": "src/client.ts:261-268 strictreader; CareerTab.vue:69 andRunningActionProgress.vue:114 marker-basedcontrols",
+    "compatibleReload": "activities.ts:314-321; deploy/living-world-teaching.edge.test.ts:119-134 markedlessonreadableafterrestartOFF",
+    "rules": "server/teaching-career.test.ts:26-65 andWorker:126-178 authorwronganswer/retry/timeonlynoncompletion/reload/once-onlywages assertions; notexecutedbythisaudit"
+  },
+  "nextBoundedRequirements": [
+    "Server-ownedread-only displaycaptransport into clientview, without clientauthorizinghost actions or savedflag",
+    "Clear/update displaycap onactor generation replacement andhost reconnect/flagOFF; preventstaleONlabel",
+    "ONprestartlabel and activechoices match actualserver contract; OFFlabel remains honest",
+    "Existingmarked lessoncanreload/finishoncewhennewstartsOFF; wronganswers/timeralonedonotcomplete/pay",
+    "Actualfresh exactSHA desktop/mobile ONnormalteacher setup, visiblechoices/retry/reload andoncewage; historicalb598 cannottransfer"
+  ],
+  "ownership": "Integration sharedruntime/contracts/testwriter; RootLuna readonlyaudit. Queueaftercurrentfiniteobservedmapfix; notnewmapreleasegate.",
+  "rootActions": "Readfrozen source, verifyparentboundactualmodel, document/notifyowner; no sharedruntimeedit/test/compiler/build/browser/GPU/server/credential.",
+  "evidenceWriterCorrection": "Initialincorrect client.ts path aborted beforewrites; discovered actualsrc/client.ts and reranmetadatawriter. No falsecommit/testclaim; historicaluntrackedrecords preserved."
+}

@@ -1,11 +1,21 @@
 # World delivery checkpoint, 9 October 2026
 
-Production still has one travel-enabled country, Nigeria, on
-`joinallworld-a44629b38be751a9ad446051564`. Source files and passing source audits
-do not open countries in production. The immediate target is Cameroon, Togo,
-Ghana, Kenya and Algeria, with actual visits, reloads and return to the original
-home. Integration owns the combined branch; WORLD remains the sole uploader of
-the exact accepted package.
+At 19:21 UTC, the actual production Africa map displays **56 countries · 6 open**:
+Nigeria, Cameroon, Togo, Ghana, Kenya and Algeria. The five new starter destinations
+are Yaoundé, Lomé, Accra, Nairobi and Algiers. Integration's explicit Astra browser
+operator observed the green countries and Open entries on the live site. This is
+starter-city coverage, not complete national geometry. Integration owns the
+combined branch; WORLD remains the sole uploader of the exact accepted package.
+
+Main was promoted to exact `3af17a01b8bd406bfb830ca0d2ee66d2d0093d28`.
+One unchanged sealed-package upload completed successfully as provider version
+`90ba4ff2-4204-4261-ab10-519787ab51f2` at 100%. The original Durable Object namespace
+and all 11 secrets were retained. Public health initially reported the old build;
+the mismatch was retained as a failed post-check before any receipt replay.
+Public health adopted `joinallworld-3af17a01b8bd406bfb830ca0d2e` by 19:20 UTC,
+without another upload, reset or rollback. At 19:20:47 UTC the original production
+synthetic player, nine stable save fields and original same-ID duplicate receipt
+passed. This is one retained actor's continuity, not a game-wide export or restore.
 
 The frozen Integration candidate is
 `3af17a01b8bd406bfb830ca0d2ee66d2d0093d28`.
@@ -22,8 +32,8 @@ first-five travel/save/reload/meal/return, homeward recovery and SQLite restart 
 package guard digest is
 `f776481de86aab4779496116ac95a57b302f20a11b219168f5f7127c4b4df8dc`.
 The same archive was downloaded, safely extracted and verified locally without
-rebuilding. These synthetic checks do not establish rendered journeys or
-production save continuity.
+rebuilding. Separate local native and production continuity witnesses now cover
+the rendered journeys and retained production actor described here.
 
 The finite native stage started on the same package at 18:36 UTC, with one shared
 heavy slot, one server slot, a 384 MB Node heap and a 900-second owned process-group
@@ -31,10 +41,25 @@ watchdog. Integration's explicit Astra operator owns the single browser slot.
 The initial startup failed because the fixture founder name exceeded the existing
 24-character limit; helper `2947dbd3` uses the passing verifier's valid name and
 checks the response status. The second startup passed actual founder authentication,
-HTTP health and all 11 served asset hashes. Browser journeys remain in progress.
+HTTP health and all 11 served asset hashes. The local native operator completed
+ten paid flights across all five destinations, visitor meals/walks, return to the
+original Apapa home and final storage/save checks. All 22 fare/receipt comparisons
+and 30 same-city cold-restart fields passed. The actor used a disclosed restricted
+fixture grant; this does not prove ordinary earned progression or physical phones.
 The private store/checkpoint retain the same origin, player, public fixture key
 and funding intent across interruption. Resume refuses mismatched or unsafe
-checkpoints and failed cleanup. No new production country is claimed.
+checkpoints and failed cleanup. The initial HUP restart ended with exit 129 because
+of the pinned Miniflare exit hook; that failure remains recorded. Guarded recovery
+and the subsequent SIGWINCH restart passed on the same store/identity/port. The final
+owned stage stopped cleanly with exit 0 at 19:09 UTC; all WORLD local resource slots
+are released. Live production cards/quotes are being inspected read-only because
+the browser contains an existing player's session. No real-player money is spent.
+
+Next release phase: admit the next five already sourced African starters through
+Integration on synchronized main. Fifteen later starters have source packets, but
+are not yet playable in production. Remaining African geometry, deeper cities,
+regional conditions, unattended global execution and physical-device performance
+remain in the full active world objective.
 
 Earlier candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130 focused
 checks and 12 overlapping checks. Its

@@ -1,0 +1,52 @@
+{
+  "reviewedAt": "2026-10-09T16:37:15.560062+00:00",
+  "sourceSha": "39d94b117a6ab4b0e8e063b835889517c9d70dca",
+  "qualification": "Independent Sol source review plus two verified Luna read-only reviews. No new runtime tests, compiler/build/browser/server/upload. Prepared patch is unapplied/unrun.",
+  "sourceHashes": {
+    "src/game/systems/travel.ts": "8d500dd6c4c73277ce4360cd3448b8975adf6eda6c645e37b0ed750905728d25",
+    "src/game/homeward.test.ts": "2de25839920b030ebaa2cd8f020f7f934c30ac70007499091c4a8dc24bce8492",
+    "src/client.ts": "d4e41f0ad6fb65056db13f74f7f45d19217f34fb95229e8b4a1c21d8eb8cca38",
+    "src/game/cities/lifeCities.ts": "6627dcb54e3af13e073be8b237dc4828e33717ac30ef5423d11c8471bb892703",
+    "src/game/systems/homeward.ts": "431699b127be00194ce7e2d91e6ed0d74bea3acff6d4a94e00b748ccc9dfb05d",
+    "deploy/sqlite-store.ts": "a54149ccc1f4f1a4db69379a041b0fcd7c90f5830fbcbe7393d261c690f58b5d"
+  },
+  "proposal": {
+    "path": "/tmp/allworld-homeward-store-faults.patch",
+    "sha256": "e2d8e72dec0f5f434ee59a4cfabae1ff676db046bf24a91c1dc803e963d4c097",
+    "applied": false,
+    "tested": false
+  },
+  "findings": [
+    {
+      "status": "source-aligned",
+      "description": "Raw liability guard precedes cleanup only for trusted active homeward saves; valid absent/zero/reduced debt remains compatible. Frozen V1 limits must not drift with new booking policy."
+    },
+    {
+      "status": "missing-evidence",
+      "description": "Prepared host fault patch covers Node ENOSPC and SQLite wallet/receipt SQL ABORT and corrupt ticket key, but not new malformed debt in actual stored rows."
+    },
+    {
+      "status": "required-assertion",
+      "description": "Take fresh full stored-session baseline immediately before each injected commit fault; compare immediate failed-commit session before GET/restart clock settlement, then retain protected-state/effects/receipt restart checks."
+    },
+    {
+      "status": "implementation-pending",
+      "description": "39d94 current client still imports synchronous planner; no new conditional readiness bridge. Existing cached savedWaiting rejection is swallowed. New cached/API loader must expose unavailable/retry and preserve bytes/revision/identity generation."
+    },
+    {
+      "status": "contract-required",
+      "description": "Await strict retained reader for every raw homeward marker even malformed/missing ticket, independently of fresh planner readiness; keep PLAYS server synchronous and original issued terms."
+    }
+  ],
+  "acceptance": "homeward-readiness-acceptance.md",
+  "external": {
+    "pr23": {
+      "state": "CLOSED",
+      "merged": false,
+      "head": "0595b599371f4b93663a00754af2ae1e25d2a116",
+      "url": "https://github.com/kromate/joinallworld/pull/23"
+    },
+    "programmeRelease": false
+  },
+  "next": "Integration implements and tests missing readiness/actual raw-row failure cases; Root reviews exact new source before full/native/staging/release gates."
+}

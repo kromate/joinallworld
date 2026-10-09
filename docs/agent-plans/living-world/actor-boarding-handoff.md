@@ -18,7 +18,7 @@ Adapter gaps: immutable identity binds only root matrix and may be reused after 
 
 ## Exclusive work and acceptance
 
-GRAPHICS confirmed no published envelope/boarding/contact contract. Its open draft PR23 at0595b599371f4b93663a00754af2ae1e25d2a116 is standing-foot support only, unintegrated; dirty primary contact work is not a reusable published contract. Primary dirty body/assets/scene work is preserved. Root alone integrates shared driving/route authority.
+GRAPHICS confirmed no published envelope/boarding/contact contract. As of 2026-10-09T16:34Z, verified PR23 is CLOSED/unmerged at0595b599371f4b93663a00754af2ae1e25d2a116, standing-foot support only; dirty primary contact work is not a reusable published contract. Primary dirty body/assets/scene work is preserved. Integration alone assembles shared runtime; LIVING owns queued physical journey authority and independent review, WORLD uploads.
 
 1. Pin actor/vehicle/clip/appearance sources and derive conservative volume bounds covering both render paths and transitions; distinguish analytic proof from samples and visualization.
 2. Check continuous boarding/exit paths against door motion, shell, authored doorway/cabin allowance and static map obstacles. Intended ingress needs an explicit allowance, not global collision disabling.

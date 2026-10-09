@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, rm, readFile, symlink, mkdir, writeFile } from 'node:fs/promises';
+import { mkdtemp, rm, readFile, symlink, mkdir, writeFile, truncate, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
@@ -16,6 +16,79 @@ test('ledger deduplicates exact enqueue and rejects mismatched payloads', async 
     assert.throws(() => ledger.enqueue({ id: 'a', kind: 'compile', inputHash: 'abc', payload: { a: 3 }, maxAttempts: 2 }), /different payload/);
     const claimed = ledger.claim('worker-1', 10, 100);
     assert.deepEqual(claimed, { id: 'a', kind: 'compile', inputHash: 'abc', payload: { a: 1, z: 2 }, attempt: 1, token: '1:worker-1', leaseUntil: 110 });
+  } finally { ledger.close(); await rm(dir, { recursive: true, force: true }); }
+});
+
+test('kind-filtered claims pause other kinds, preserve priority and retry fencing, and keep unfiltered claims global', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'world-ledger-kinds-'));
+  const ledger = new Ledger(path.join(dir, 'queue.sqlite'));
+  try {
+    ledger.enqueue({ id: 'query-first', kind: 'campaign-grid-query', inputHash: 'q1', payload: null, maxAttempts: 2, priority: 0 });
+    ledger.enqueue({ id: 'index-later', kind: 'campaign-index-capture', inputHash: 'i1', payload: null, maxAttempts: 2, priority: 5 });
+    ledger.enqueue({ id: 'index-first', kind: 'campaign-index-capture', inputHash: 'i2', payload: null, maxAttempts: 2, priority: 1 });
+
+    const first = ledger.claim('index-worker', 0, 5, { kind: 'campaign-index-capture' })!;
+    assert.equal(first.id, 'index-first');
+    assert.equal(ledger.list().find((job) => job.id === 'query-first')?.attempt, 0);
+    assert.equal(ledger.list().find((job) => job.id === 'index-later')?.attempt, 0);
+    assert.equal(ledger.fail(first.id, first.token, 1, new Error('retry'), 6), true);
+
+    // The index phase can continue while the query phase remains paused.
+    const next = ledger.claim('index-worker', 2, 5, { kind: 'campaign-index-capture' })!;
+    assert.equal(next.id, 'index-later');
+    assert.equal(ledger.complete(first.id, first.token, 2, { stale: true }), false);
+    assert.equal(ledger.complete(next.id, next.token, 3, { indexed: true }), true);
+    assert.equal(ledger.list().find((job) => job.id === 'query-first')?.attempt, 0);
+
+    const retry = ledger.claim('index-worker', 7, 5, { kind: 'campaign-index-capture' })!;
+    assert.equal(retry.id, 'index-first');
+    assert.equal(retry.attempt, 2);
+    assert.notEqual(retry.token, first.token);
+    assert.equal(ledger.complete(retry.id, retry.token, 8, { indexed: true }), true);
+
+    // Existing callers without a filter still claim across every kind, in priority order.
+    const unfiltered = ledger.claim('legacy-worker', 9, 5)!;
+    assert.equal(unfiltered.id, 'query-first');
+    assert.equal(unfiltered.kind, 'campaign-grid-query');
+  } finally { ledger.close(); await rm(dir, { recursive: true, force: true }); }
+});
+
+test('invalid claim filters fail before lease expiration or attempt spending', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'world-ledger-invalid-filter-'));
+  const ledger = new Ledger(path.join(dir, 'queue.sqlite'));
+  try {
+    ledger.enqueue({ id: 'leased-index', kind: 'campaign-index-capture', inputHash: 'i', payload: null, maxAttempts: 2 });
+    ledger.enqueue({ id: 'queued-query', kind: 'campaign-grid-query', inputHash: 'q', payload: null, maxAttempts: 2 });
+    const leased = ledger.claim('owner', 0, 5, { kind: 'campaign-index-capture' })!;
+    let getterCalled = false;
+    const accessor = Object.defineProperty({}, 'kind', { enumerable: true, get() { getterCalled = true; throw new Error('getter invoked'); } });
+    const hidden = Object.defineProperty({ kind: 'campaign-index-capture' }, 'extra', { value: 1, enumerable: false });
+    const nonEnumerableKind = Object.defineProperty({}, 'kind', { value: 'campaign-index-capture', enumerable: false });
+    const symbolKey = { kind: 'campaign-index-capture', [Symbol('extra')]: 1 };
+    const tooLong = 'x'.repeat(129);
+    const invalid: unknown[] = [
+      null, [], Object.create(null), { kind: 'campaign-index-capture', extra: true }, accessor, hidden, nonEnumerableKind, symbolKey,
+      { kind: '' }, { kind: '   ' }, { kind: tooLong }, { kind: 'campaign\u0000index' }, { kind: 'campaign\u0085index' },
+    ];
+
+    for (const filter of invalid) {
+      assert.throws(() => ledger.claim('other', 5, 5, filter as never), TypeError);
+      const jobs = ledger.list();
+      const stillLeased = jobs.find((job) => job.id === 'leased-index');
+      assert.equal(stillLeased?.status, 'leased');
+      assert.equal(stillLeased?.attempt, 1);
+      assert.equal(stillLeased?.leaseUntil, 5);
+      assert.equal(jobs.find((job) => job.id === 'queued-query')?.attempt, 0);
+    }
+    assert.equal(getterCalled, false);
+    assert.equal(ledger.complete(leased.id, leased.token, 5, {}), false);
+
+    // A valid filtered claim performs normal global expiry while only selecting the requested kind.
+    const query = ledger.claim('query-worker', 5, 5, { kind: 'campaign-grid-query' })!;
+    assert.equal(query.id, 'queued-query');
+    const expired = ledger.list().find((job) => job.id === 'leased-index');
+    assert.equal(expired?.status, 'queued');
+    assert.equal(expired?.attempt, 1);
   } finally { ledger.close(); await rm(dir, { recursive: true, force: true }); }
 });
 
@@ -113,4 +186,41 @@ test('immutable publication tolerates an abandoned partial staging file and conc
     await assert.rejects(store.writeImmutable('tiles/stable.json', new Uint8Array([5, 4, 3])), /collision/);
     assert.deepEqual(await readFile(path.join(root, 'tiles/stable.json')), Buffer.from(contents));
   } finally { await rm(dir, { recursive: true, force: true }); }
+});
+
+
+test('read-only ledger status includes live WAL rows without source sidecar or lease changes', async () => {
+  const dir=await mkdtemp(path.join(tmpdir(),'world-ledger-readonly-'));
+  const file=path.join(dir,'queue.sqlite'),ledger=new Ledger(file);
+  try{
+    ledger.enqueue({id:'wal-only',kind:'campaign-grid-query',inputHash:'raw',payload:{query:'retained'},maxAttempts:2});
+    const claim=ledger.claim('owner',0,5)!;
+    const names=(await readdir(dir)).sort();
+    assert.ok(names.includes('queue.sqlite-wal'));
+    const before=await Promise.all(names.map(name=>readFile(path.join(dir,name))));
+    const wal=before[names.indexOf('queue.sqlite-wal')]!;assert.ok(wal.length>0);
+    const snapshot=Ledger.readOnlyList(file);
+    assert.equal(snapshot.length,1);assert.equal(snapshot[0]!.status,'leased');
+    assert.equal(snapshot[0]!.attempt,1);assert.equal(snapshot[0]!.leaseUntil,5);
+    assert.deepEqual(snapshot[0]!.payload,{query:'retained'});
+    assert.deepEqual((await readdir(dir)).sort(),names);
+    assert.deepEqual(await Promise.all(names.map(name=>readFile(path.join(dir,name)))),before);
+    assert.equal(ledger.complete(claim.id,claim.token,1,{done:true}),true);
+  }finally{ledger.close();await rm(dir,{recursive:true,force:true});}
+});
+
+test('read-only ledger snapshot refuses oversized database or WAL and symlinked state before SQL',async()=>{
+  const dir=await mkdtemp(path.join(tmpdir(),'world-ledger-readonly-bounds-'));
+  const file=path.join(dir,'queue.sqlite');
+  try{
+    await writeFile(file,Buffer.alloc(0));await truncate(file,64*1024*1024+1);
+    assert.throws(()=>Ledger.readOnlyList(file),/unsafe or oversized/);
+    await truncate(file,0);await writeFile(`${file}-wal`,Buffer.alloc(0));await truncate(`${file}-wal`,64*1024*1024+1);
+    assert.throws(()=>Ledger.readOnlyList(file),/unsafe or oversized/);
+    await rm(`${file}-wal`);await symlink(file,`${file}-wal`);
+    assert.throws(()=>Ledger.readOnlyList(file),/unsafe or oversized/);
+    await rm(`${file}-wal`);await symlink(file,path.join(dir,'link.sqlite'));
+    assert.throws(()=>Ledger.readOnlyList(path.join(dir,'link.sqlite')),/unsafe or oversized/);
+    assert.deepEqual((await readdir(dir)).sort(),['link.sqlite','queue.sqlite']);
+  }finally{await rm(dir,{recursive:true,force:true});}
 });

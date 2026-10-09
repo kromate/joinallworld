@@ -101,10 +101,13 @@ export function bootstrapFeatureIndex(onBoundary: (name: string) => void = () =>
   const config = parseCaptureJson(source, { bytes: 64000, nodes: 1000, depth: 8 }) as { provider: string; release: string };
   assert.equal(config.provider, binding.source.provider); assert.equal(config.release, binding.source.release);
   const final = path.join(root, 'features.sqlite'), staged = path.join(root, 'bootstrap.sqlite');
+  for (const name of ['audit.json', 'audit.pending', 'audit.anchor.json', 'audit.anchor.pending', 'audit.result.json', 'audit.execution', 'audit.reclaim']) {
+    assert.ok(!present(path.join(root, name)), 'Index is frozen for audit; write-capable bootstrap is refused.');
+  }
   const replayed = present(final);
   const allowed = new Set(['writer.lock', 'binding.json', 'features.sqlite', 'features.sqlite-wal', 'features.sqlite-shm',
     'features.sqlite-journal', 'bootstrap.sqlite', 'bootstrap.sqlite-wal', 'bootstrap.sqlite-shm',
-    'bootstrap.sqlite-journal', 'audit.json', 'capture.json', 'capture.anchor.json', 'capture.execution']);
+    'bootstrap.sqlite-journal', 'audit.json', 'audit.pending', 'audit.anchor.json', 'audit.anchor.pending', 'audit.result.json', 'audit.execution', 'audit.reclaim', 'capture.json', 'capture.anchor.json', 'capture.execution']);
   for (const name of readdirSync(root)) assert.ok(allowed.has(name), 'Unknown bootstrap state is preserved.');
   for (const [name, maximum] of [['capture.json', 512000], ['capture.anchor.json', 4096]] as const) {
     if (present(path.join(root, name))) boundedRead(path.join(root, name), maximum, 0o600);

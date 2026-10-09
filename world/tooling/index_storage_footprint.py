@@ -16,7 +16,9 @@ DATABASE_FILES = frozenset({"features.sqlite", "features.sqlite-wal", "features.
 METADATA_FILES = frozenset({"binding.json", "binding.pending", "reservation.json", "bootstrap.json"})
 CAPTURE_FILES = frozenset({"capture.json", "capture.pending", "capture.anchor.json", "capture.anchor.pending"})
 CAPTURE_DIRECTORIES = frozenset({"capture.execution", "capture.reclaim"})
-KNOWN_FILES = DATABASE_FILES | METADATA_FILES | CAPTURE_FILES | CAPTURE_DIRECTORIES | {"writer.lock", "audit.json"}
+AUDIT_FILES = frozenset({"audit.json", "audit.pending", "audit.anchor.json", "audit.anchor.pending", "audit.result.json"})
+AUDIT_DIRECTORIES = frozenset({"audit.execution", "audit.reclaim"})
+KNOWN_FILES = DATABASE_FILES | METADATA_FILES | CAPTURE_FILES | CAPTURE_DIRECTORIES | AUDIT_FILES | AUDIT_DIRECTORIES | {"writer.lock"}
 
 
 def _bound(value, minimum, maximum, label):
@@ -66,7 +68,7 @@ def index_storage_footprint(lease, *, file_bytes, aggregate_bytes):
             if database not in names and any(database + ending in names for ending in ["-wal", "-shm", "-journal"]):
                 raise ValueError("orphan index sidecar is preserved; explicit recovery is required")
         for name in sorted(names):
-            if name in CAPTURE_DIRECTORIES:
+            if name in CAPTURE_DIRECTORIES | AUDIT_DIRECTORIES:
                 continue  # Inventory both fixed slots together below, including partial copies.
             descriptor = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=directory)
             try:
@@ -75,7 +77,9 @@ def index_storage_footprint(lease, *, file_bytes, aggregate_bytes):
                         or stat.S_IMODE(info.st_mode) != 0o600 or info.st_size < 0 or info.st_blocks < 0):
                     raise ValueError("index inventory refuses symlink/nonregular/nonprivate/linked files")
                 maximum = (0 if name == "writer.lock" else 4096 if name in METADATA_FILES or name in {"capture.anchor.json", "capture.anchor.pending"}
-                           else 512_000 if name in CAPTURE_FILES else MIB if name == "audit.json" else file_bytes)
+                           else 512_000 if name in CAPTURE_FILES else 64000 if name == "audit.json"
+                           else 64000 if name == "audit.pending" else 8192 if name == "audit.result.json"
+                           else 4096 if name in {"audit.anchor.json", "audit.anchor.pending"} else file_bytes)
                 if info.st_size > maximum:
                     raise ValueError("index file exceeds its explicit byte bound")
                 named = os.stat(name, dir_fd=directory, follow_symlinks=False)
@@ -90,6 +94,13 @@ def index_storage_footprint(lease, *, file_bytes, aggregate_bytes):
                     raise ValueError("index files exceed their terminal aggregate bound; preserve all files")
             finally:
                 os.close(descriptor)
+        if any(name in names for name in AUDIT_DIRECTORIES):
+            audit = audit_execution_footprint(root, file_bytes=file_bytes, aggregate_bytes=aggregate_bytes)
+            files["auditExecution"] = {"logicalBytes": audit["logicalBytes"], "allocatedBytes": audit["chargedBytes"]}
+            logical += audit["logicalBytes"]
+            charged += audit["chargedBytes"]
+            if charged > aggregate_bytes:
+                raise ValueError("audit snapshot exceeds its admitted aggregate allowance; preserve state")
         if any(name in names for name in CAPTURE_DIRECTORIES):
             from index_capture_snapshot import capture_execution_footprint
             snapshot = capture_execution_footprint(root)
@@ -108,3 +119,63 @@ def index_storage_footprint(lease, *, file_bytes, aggregate_bytes):
             "files": files, "logicalBytes": logical, "chargedBytes": charged,
             "directoryAllocatedBytes": directory_info.st_blocks * 512,
             "aggregateLimitBytes": aggregate_bytes}
+
+
+def audit_execution_footprint(root, *, file_bytes, aggregate_bytes):
+    """Bounded exact audit-slot inventory, including partially copied owned files.
+
+    Lease ownership/record identity and cleanup authorization remain controller
+    responsibilities. This helper never opens SQLite, repairs or removes state.
+    """
+    from index_capture_snapshot import capture_execution_footprint
+    _bound(file_bytes, 65536, 64*MIB, "audit file bytes")
+    _bound(aggregate_bytes, 65536, 512*MIB, "audit aggregate bytes")
+    root = Path(root)
+    if not root.is_absolute() or root.resolve(strict=True) != root:
+        raise ValueError("audit inventory root must remain canonical")
+    logical = 0; charged = 0
+    allowed = {"features.sqlite", "features.sqlite-wal", "features.sqlite-shm", "features.sqlite-journal", "capture.execution", "capture.reclaim"}
+    for slot_name in sorted(AUDIT_DIRECTORIES):
+        slot = root/slot_name
+        try: info = slot.lstat()
+        except FileNotFoundError: continue
+        if (not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
+                or stat.S_IMODE(info.st_mode) != 0o700 or slot.resolve(strict=True) != slot):
+            raise ValueError("unsafe audit slot is preserved")
+        charged += info.st_blocks*512
+        directory = os.open(slot, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+        signature = lambda value: (value.st_dev, value.st_ino, value.st_size,
+            value.st_mtime_ns, value.st_ctime_ns, value.st_uid, value.st_mode, value.st_nlink)
+        try:
+            if signature(os.fstat(directory)) != signature(info):
+                raise ValueError("audit snapshot directory changed during open")
+            names = os.listdir(directory)
+            if len(names) > len(allowed) or any(name not in allowed for name in names):
+                raise ValueError("unknown audit snapshot state is preserved")
+            for name in names:
+                if name in {"capture.execution", "capture.reclaim"}:
+                    continue
+                descriptor = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK,
+                                     dir_fd=directory)
+                try:
+                    observed = os.fstat(descriptor)
+                    if (not stat.S_ISREG(observed.st_mode) or observed.st_uid != os.getuid()
+                            or observed.st_nlink != 1 or stat.S_IMODE(observed.st_mode) != 0o600
+                            or not 0 <= observed.st_size <= file_bytes or observed.st_blocks < 0):
+                        raise ValueError("audit snapshot file exceeds its fixed bound or identity")
+                    named = os.stat(name, dir_fd=directory, follow_symlinks=False)
+                    if signature(named) != signature(observed):
+                        raise ValueError("audit snapshot file changed during inventory")
+                    logical += observed.st_size
+                    charged += max(observed.st_size, observed.st_blocks*512)
+                finally:
+                    os.close(descriptor)
+            source = capture_execution_footprint(slot)
+            logical += source["logicalBytes"]; charged += source["chargedBytes"]
+            if charged > aggregate_bytes:
+                raise ValueError("audit slots exceed their admitted storage allowance")
+            if signature(os.fstat(directory)) != signature(info) or signature(slot.lstat()) != signature(info):
+                raise ValueError("audit snapshot directory changed during inventory")
+        finally:
+            os.close(directory)
+    return {"logicalBytes":logical, "chargedBytes":charged}

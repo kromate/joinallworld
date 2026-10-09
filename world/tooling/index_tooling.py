@@ -16,7 +16,7 @@ MAX_MANIFEST_BYTES = 64000
 MAX_SOURCE_BYTES = 1024*1024
 MAX_TOTAL_BYTES = 16*1024*1024
 FILES = tuple(sorted([
-    "world/feature-index.ts", "world/feature-identity.ts", "world/capture-binding.ts",
+    "world/feature-index.ts", "world/feature-index-audit.ts", "world/feature-identity.ts", "world/capture-binding.ts",
     "world/capture-request.ts", "world/capture-json.ts", "world/acquire.ts",
     "world/acquisition-errors.ts", "world/pack.ts", "world/validate.ts", "world/types.ts",
     "world/production-types.ts", "world/country-grid.ts", "world/country-grid-types.ts",
@@ -36,6 +36,7 @@ FILES = tuple(sorted([
     "world/tooling/index_bootstrap.py",
     "world/tooling/index_bootstrap.ts",
     "world/tooling/index_bootstrap_crash.ts",
+    "world/tooling/index_audit.ts", "world/tooling/index_audit_controller.py",
     "world/tooling/index_ingest.py",
     "world/tooling/index_ingest.ts",
     "world/tooling/index_ingest_crash.ts",
@@ -82,6 +83,19 @@ def encode_tooling_manifest(value):
     if len(raw) > MAX_MANIFEST_BYTES:
         raise ValueError("tooling manifest exceeds its byte bound")
     return raw
+
+
+def source_snapshot_allowance(manifest, configuration_bytes):
+    """8KiB file rounding plus fixed directory/metadata margin, before copying.
+
+    Snapshot inventories independently enforce actual allocation and their1MiB
+    cap; a filesystem allocating more than this estimate is refused before use.
+    """
+    _validate(manifest)
+    if type(configuration_bytes) is not int or not 1 <= configuration_bytes <= 64000:
+        raise ValueError("source configuration bytes exceed their fixed bound")
+    sizes = [pin["bytes"] for pin in manifest["files"].values()] + [configuration_bytes]
+    return sum((size+8191)//8192*8192 for size in sizes) + 4*8192 + 65536
 
 
 def decode_tooling_manifest(raw, pin):

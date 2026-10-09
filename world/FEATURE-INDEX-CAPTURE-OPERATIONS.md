@@ -2,9 +2,10 @@
 
 `tooling/index_capture_controller.py:ingest_capture_job` runs within a held
 `supervised_charged_index` session. The existing campaign Ledger remains the
-scheduler. This endpoint owns one immutable request's ingestion attempts; it
-does not download data, register a campaign observation or complete a campaign
-claim. Namespace startup/admission's existing 16 lifetime attempts stay unchanged.
+scheduler. This endpoint owns one immutable request's ingestion attempts and
+can atomically register a supplied campaign observation during actual raw replay.
+It does not download data or complete a campaign claim. Namespace startup/
+admission's existing 16 lifetime attempts stay unchanged.
 
 Before allocating execution files or launching SQL, the controller verifies
 the actual paired leases, source/tooling/runtime pins and readonly retained
@@ -32,6 +33,29 @@ is reused. The terminal digest is deterministic attempt settlement; it is
 previous terminal request, performs a fresh fixed-worker raw replay through the
 actual feature index and validates ordinal conservation, report and physical
 state. This verification consumes another bounded attempt.
+
+The optional `observation` context contains exact campaign/plan hashes, source
+job identity, root query cell and descendant query path. The controller validates
+and freezes this compact context before allocation. Each V2 attempt pins its
+canonical UTF8 JSON SHA/length, at most4,096bytes, separately from the immutable
+raw capture input. The readonly anonymous V2 worker envelope carries the actual
+context; the fixed worker validates it before opening SQL and records it in the
+same transaction as all raw ordinals/features. Its verified report must return
+the exact observation hash. Same campaign/job with a different query/plan/capture
+refuses atomically. One capture may associate with multiple jobs or campaigns
+through separate charged attempts; observation replay inserts no duplicate row.
+
+Default plain ingestion retains the V1 envelope and record byte contract. The
+first observed attempt initializes V2; subsequent plain attempts on that V2 root
+pin null. Existing V1 quota records cannot silently migrate or reset. An
+unlaunched prepared attempt must retain its exact observation pin; a launched
+interrupted attempt is settled after a real writer gap before a fresh attempt.
+Settlement never proves observation success; the fresh worker must raw-replay.
+
+Compact context validation proves its structure and transaction association.
+The campaign caller must still prove membership against the frozen campaign,
+inventory and query plan. A caller-supplied hash alone is not that proof. The
+current endpoint does not mark any campaign job, country or destination complete.
 
 The permanent quota anchor binds the exact root/lock/index identity and limits.
 A missing initialized record or a missing post-launch anchor refuses recovery;
@@ -72,8 +96,7 @@ retained Dakar captures; actual acquisition/campaign/output/Nigeria/game state
 is untouched. No runtime build/upload or additional explorable city is implied.
 
 Next validate exact claimed query membership against the frozen campaign/grid
-plan, pass the bound observation into the engine's existing atomic transaction,
-and complete the campaign Ledger only with its current live lease token after
+plan and complete the campaign Ledger only with its current live lease token after
 actual index verification. Indexed-but-pending claims must replay safely, and
 legacy completed capture jobs need explicit reconciliation. Then independently
 reconstruct all raw ordinals/index membership before publishing owned country

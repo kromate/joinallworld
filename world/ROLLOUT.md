@@ -1,5 +1,46 @@
 # Decisions and repeatable rollout after the first compiler
 
+Latest campaign-audit checkpoint —9 October2026: exact4c0b96cb/run37890936198
+is terminal SUCCESS:384 tests+3 workflow-policy checks and World TypeScript,
+with unchanged raw/storage preflight. Actual held-session frozen evidence,
+same-Ledger job admission/heartbeat/current-token completion, bounded replay and
+read-only status are connected and tested in portable campaign fixtures. Protected
+original Senegal campaign materials are not supplied by CI and are not accepted.
+Next globally admit bounded shards/operator materials, preserve cross-shard
+ownership, and compile/stream actual country geometry. Full audit interruption/
+corruption acceptance and physical-phone proof remain open. This builder milestone
+has no production runtime upload or new map detail. Read latest PROGRESS.md and
+CAMPAIGN-INDEX-AUDIT-OPERATIONS.md; older paragraphs below remain historical.
+
+Audit diagnostic update — 9 October2026: isolated drafta63871d1 is published
+on `codex/world-index-audit-diagnostic`; actual serial GitHub run37886772443
+is in progress, not accepted. It uses six exact pinned raw copies and fixed
+Node22.19.0/Python3.12.14 runtime selection. The current small suite passes32;
+these checks do not replace actual worker/session/SDK/compiler acceptance.
+No main/runtime publication or new map detail accompanies this diagnostic.
+Keep the same-Ledger campaign gate, global shards, compiled country streaming,
+Nigeria renderer integration and phone proof open. See latest PROGRESS.md.
+
+Current campaign-index checkpoint — 9 October 2026: actual held-session ingestion,
+frozen query membership and live-token completion are implemented.228 Python +43
+Node tests and full World TypeScript pass. Implementationa75c59af also passes
+five exact source-policy checks:276 distinct checks plus compiler. Source and acceptance94d95a88 are published on main; runtime upload is not
+part of this phase. FEATURE-INDEX-AUDIT-SPEC.md defines the next gate, now in
+local implementation and not yet accepted: raw/SQL kernel, fixed worker,
+charged WAL-aware copies and durable controller recovery. File-only inventory
+checks pass11; current small no-worker suite passes30 including14 capture-record,
+7 codec/file,2 capacity and7 tooling checks. Registry/capture/audit use shared8KiB-rounding
+preflight with unchanged storage caps. Earlier logical kernel7 and World
+TypeScript pass. Final-source kernel/compiler, real audit execution,
+the drafted terminal session/SDK bridge, campaign integration and the
+independent acceptance fixtures remain open. Read the first PROGRESS.md section
+and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
+Next independent raw/index audit, deterministic globally admitted shards/operator
+materials and compiled streamed country geometry. Geographic foundation remains
+distinct from explorable/playable coverage; no runtime upload/map detail thisphase.
+Older checkpoint paragraphs below are historical where superseded. Existing memory
+caps and serialized intensive-work handoffs remain in force while pressure warns.
+
 Current builder checkpoint — 9 October 2026: canonical namespace recovery and paired
 worker leases pass126 Python/23 engine checks plus World TypeScript; see PROGRESS.md.
 Global outlines/places and regional pilots remain distinct from national3D coverage.

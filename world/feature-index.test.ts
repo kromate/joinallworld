@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import test from 'node:test';
-import { FeatureIndex, type FeatureIndexLimits, type FeatureIndexCaptureInput, type FeatureIndexObservation } from './feature-index.ts';
+import { FeatureIndex, featureIndexObservationPin, type FeatureIndexLimits, type FeatureIndexCaptureInput, type FeatureIndexObservation } from './feature-index.ts';
 import { canonicalJson } from './pack.ts';
 import type { AcquisitionRequest } from './production-types.ts';
 
@@ -51,6 +51,21 @@ function fixture(fn: (db: DatabaseSync, file: string) => void): void {
   const file = path.join(root, 'features.sqlite'); const db = new DatabaseSync(file);
   try { fn(db, file); } finally { try { db.close(); } finally { rmSync(root, { recursive: true, force: true }); } }
 }
+
+test('pre-opener observation pins use the engine context validation and exact UTF8 bytes', () => {
+  const value = context('synthetic-é-😀');
+  const text = canonicalJson(value);
+  assert.deepEqual(featureIndexObservationPin(value), { sha256: sha(text), bytes: Buffer.byteLength(text) });
+  for (const bad of [{ ...value, rootCellId: 'geo-grid-v1:l1:x720:y0' },
+    { ...value, queryPath: '4' }, { ...value, jobId: '\u0000' }, { ...value, jobId: '\ud800' },
+    { ...value, jobId: '\udc00' }, { ...value, jobId: '\ud800x' },
+    { ...value, extra: true }, { ...value, campaignHash: 'A'.repeat(64) }]) {
+    assert.throws(() => featureIndexObservationPin(bad));
+  }
+  const accessor = { ...value };
+  Object.defineProperty(accessor, 'jobId', { enumerable: true, get() { throw new Error('must not run'); } });
+  assert.throws(() => featureIndexObservationPin(accessor), /accessors/);
+});
 
 test('recognizes its exact schema and refuses another database without changing its settings/data', () => fixture(db => {
   db.exec("CREATE TABLE saves(id TEXT PRIMARY KEY); INSERT INTO saves VALUES('preserved');");

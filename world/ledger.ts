@@ -1,4 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
+import { closeSync, constants, fstatSync, lstatSync, mkdtempSync, openSync, readSync, rmSync, writeSync, type Stats } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 
 export interface EnqueueInput {
   id: string; kind: string; inputHash: string; payload: unknown; maxAttempts: number; priority?: number;
@@ -7,6 +10,7 @@ export interface ClaimedJob {
   id: string; kind: string; inputHash: string; payload: unknown;
   attempt: number; token: string; leaseUntil: number;
 }
+export interface ClaimFilter { kind: string }
 type JobRow = {
   id: string; kind: string; input_hash: string; payload: string; max_attempts: number;
   attempt: number; token_seq: number; status: string; available_at: number;
@@ -31,6 +35,20 @@ function requiredText(value: string, name: string): void {
 function finiteTime(value: number, name: string): void {
   if (!Number.isFinite(value)) throw new TypeError(`${name} must be finite`);
 }
+function claimKind(filter: ClaimFilter | undefined): string | undefined {
+  if (filter === undefined) return undefined;
+  if (!filter || typeof filter !== 'object' || Array.isArray(filter) || Object.getPrototypeOf(filter) !== Object.prototype
+      || Reflect.ownKeys(filter).length !== 1) throw new TypeError('claim filter must be a plain object with only kind');
+  const descriptor = Object.getOwnPropertyDescriptor(filter, 'kind');
+  if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) {
+    throw new TypeError('claim filter kind must be an enumerable data property');
+  }
+  const value: unknown = descriptor.value;
+  if (typeof value !== 'string' || !value.trim() || value.length > 128 || /[\u0000-\u001f\u007f-\u009f]/.test(value)) {
+    throw new TypeError('claim filter kind must be bounded control-free text');
+  }
+  return value;
+}
 function assertJsonValue(value: unknown, stack = new Set<object>()): void {
   if (value === null || typeof value === 'string' || typeof value === 'boolean') return;
   if (typeof value === 'number') { if (!Number.isFinite(value)) throw new TypeError('payload numbers must be finite'); return; }
@@ -51,6 +69,54 @@ function assertJsonValue(value: unknown, stack = new Set<object>()): void {
 
 /** A local, crash-resumable job ledger. All mutations use short IMMEDIATE transactions. */
 export class Ledger {
+  /** Inspection opens an existing ledger without schema, journal or lease writes. */
+  static readOnlyList(filename: string): Array<Record<string, unknown>> {
+    requiredText(filename,'path');
+    // SQLite may create WAL/SHM sidecars even with readOnly:true. Query a private
+    // stable copy instead; never mark a live source immutable or ignore its WAL.
+    const before=new Map<string,string|null>(),limit=64*1024*1024;
+    const signature=(info:Stats)=>[info.dev,info.ino,info.size,info.mtimeMs,info.ctimeMs].join(':');
+    const inspect=(file:string,optional:boolean)=>{
+      try{const info=lstatSync(file);if(!info.isFile()||info.isSymbolicLink()||info.nlink!==1||info.size>limit)throw new Error('read-only ledger snapshot refuses unsafe or oversized state');return signature(info);}
+      catch(error){if(optional&&(error as NodeJS.ErrnoException).code==='ENOENT')return null;throw error;}
+    };
+    const sources=[filename,`${filename}-wal`];
+    for(const file of sources)before.set(file,inspect(file,file!==filename));
+    const scratch=mkdtempSync(path.join(tmpdir(),'world-ledger-status-')),copy=path.join(scratch,'ledger.sqlite');
+    let db:DatabaseSync|undefined;
+    try {
+      for(const file of sources){
+        if(before.get(file)===null)continue;
+        const descriptor=openSync(file,constants.O_RDONLY|constants.O_NOFOLLOW);
+        try{
+          if(signature(fstatSync(descriptor))!==before.get(file))throw new Error('ledger changed during read-only snapshot');
+          const size=fstatSync(descriptor).size;
+          const output=openSync(file===filename?copy:`${copy}-wal`,constants.O_WRONLY|constants.O_CREAT|constants.O_EXCL|constants.O_NOFOLLOW,0o600);
+          try{
+            // Copy only the prechecked length, with fixed memory, even if a
+            // concurrent writer keeps appending. Changed files refuse below.
+            const buffer=Buffer.allocUnsafe(65536);
+            for(let offset=0;offset<size;){
+              const count=readSync(descriptor,buffer,0,Math.min(buffer.length,size-offset),offset);
+              if(count===0)throw new Error('ledger changed during read-only snapshot');
+              for(let written=0;written<count;){
+                const countWritten=writeSync(output,buffer,written,count-written,offset+written);
+                if(countWritten===0)throw new Error('ledger snapshot write did not advance');
+                written+=countWritten;
+              }
+              offset+=count;
+            }
+            if(signature(fstatSync(descriptor))!==before.get(file))throw new Error('ledger changed during read-only snapshot');
+          }finally{closeSync(output);}
+        }finally{closeSync(descriptor);}
+      }
+      for(const file of sources)if(inspect(file,file!==filename)!==before.get(file))throw new Error('ledger changed during read-only snapshot; retry status');
+      db=new DatabaseSync(copy,{readOnly:true});
+      return (db.prepare(`SELECT id,kind,input_hash AS inputHash,payload,max_attempts AS maxAttempts,priority,attempt,status,
+        available_at AS availableAt,lease_until AS leaseUntil,result,error FROM jobs ORDER BY id`).all() as Array<Record<string,unknown>>)
+        .map(row=>({...row,payload:JSON.parse(String(row.payload)),result:row.result===null?null:JSON.parse(String(row.result))}));
+    } finally { try{db?.close();}finally{rmSync(scratch,{recursive:true});} }
+  }
   #db: DatabaseSync;
   #bounded = false;
   constructor(path: string, storageLimits?: { databaseBytes: number }) {
@@ -131,13 +197,18 @@ export class Ledger {
         .run(input.id, input.kind, input.inputHash, payload, input.maxAttempts, priority);
     });
   }
-  claim(worker: string, now: number, leaseMs: number): ClaimedJob | null {
+  claim(worker: string, now: number, leaseMs: number, filter?: ClaimFilter): ClaimedJob | null {
     requiredText(worker, 'worker'); finiteTime(now, 'now');
     if (!Number.isFinite(leaseMs) || leaseMs <= 0) throw new RangeError('leaseMs must be positive and finite');
+    // Validate before opening a transaction: malformed filters cannot expire
+    // leases or otherwise mutate jobs as a side effect of a failed claim.
+    const kind = claimKind(filter);
     return this.#transaction(() => {
       this.#db.prepare(`UPDATE jobs SET status=CASE WHEN attempt>=max_attempts THEN 'failed' ELSE 'queued' END,
         lease_until=NULL, lease_token=NULL, available_at=? WHERE status='leased' AND lease_until<=?`).run(now, now);
-      const row = this.#db.prepare(`SELECT * FROM jobs WHERE status='queued' AND available_at<=? AND attempt<max_attempts ORDER BY priority,available_at,id LIMIT 1`).get(now) as JobRow | undefined;
+      const row = (kind === undefined
+        ? this.#db.prepare(`SELECT * FROM jobs WHERE status='queued' AND available_at<=? AND attempt<max_attempts ORDER BY priority,available_at,id LIMIT 1`).get(now)
+        : this.#db.prepare(`SELECT * FROM jobs WHERE status='queued' AND available_at<=? AND attempt<max_attempts AND kind=? ORDER BY priority,available_at,id LIMIT 1`).get(now, kind)) as JobRow | undefined;
       if (!row) return null;
       const attempt = row.attempt + 1, seq = row.token_seq + 1;
       const token = `${seq}:${worker}`;

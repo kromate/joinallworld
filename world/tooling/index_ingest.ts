@@ -1,5 +1,5 @@
 // Fixed, pinned-input capture ingestion for an already charged feature index.
-// This is not acquisition, observation ingestion, campaign completion or coverage.
+// Optional compact observation context does not complete a campaign or prove coverage.
 import assert from 'node:assert/strict';
 import { constants, closeSync, fstatSync, lstatSync, openSync, readSync, realpathSync } from 'node:fs';
 import path from 'node:path';
@@ -8,7 +8,8 @@ import { DatabaseSync } from 'node:sqlite';
 import { bindConfiguredCapture, type CaptureExpectation } from '../capture-binding.ts';
 import { parseCaptureJson } from '../capture-json.ts';
 import { sha256 } from '../pack.ts';
-import { FeatureIndex, type FeatureIndexLimits, type FeatureIndexCaptureResult } from '../feature-index.ts';
+import { FeatureIndex, featureIndexObservationPin, type FeatureIndexLimits,
+  type FeatureIndexCaptureResult, type FeatureIndexObservation } from '../feature-index.ts';
 import { bootstrapFeatureIndex } from './index_bootstrap.ts';
 
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -20,10 +21,11 @@ interface BigIdentity {
 }
 interface Pin { sha256: string; bytes: number }
 interface CaptureEnvelope {
-  format: 'feature-index-ingest-input-v1';
+  format: 'feature-index-ingest-input-v1' | 'feature-index-ingest-input-v2';
   expected: CaptureExpectation;
   extractDescriptor: number;
   receiptDescriptor: number;
+  observation?: FeatureIndexObservation;
 }
 interface FeatureBinding {
   source: { provider: string; release: string; layers: string[]; configuration: Pin };
@@ -59,7 +61,7 @@ function stable(info: BigIdentity): string {
     info.uid, info.mode, info.nlink].join(':');
 }
 
-function privateDescriptor(fd: number, maximum: number, label: string): Buffer {
+export function privateDescriptor(fd: number, maximum: number, label: string): Buffer {
   const before = fstatSync(fd, { bigint: true }) as BigIdentity;
   assert.ok(before.isFile() && before.uid === BigInt(process.getuid!())
     && (before.mode & 0o777n) === 0o600n && before.nlink === 0n
@@ -79,7 +81,7 @@ function privateDescriptor(fd: number, maximum: number, label: string): Buffer {
   return bytes.subarray(0, count);
 }
 
-function privatePath(file: string, maximum: number, mode: number, label: string): Buffer {
+export function privatePath(file: string, maximum: number, mode: number, label: string): Buffer {
   const fd = openSync(file, constants.O_RDONLY | nofollow);
   try {
     const before = fstatSync(fd, { bigint: true }) as BigIdentity;
@@ -106,25 +108,46 @@ function privatePath(file: string, maximum: number, mode: number, label: string)
 
 function parseEnvelope(bytes: Buffer): CaptureEnvelope {
   const value = parseCaptureJson(bytes, { bytes: 64000, nodes: 20_000, depth: 32 });
+  assert.ok(value !== null && typeof value === 'object' && !Array.isArray(value), 'Capture envelope must be an object.');
+  const format = (value as Record<string, unknown>).format;
+  assert.ok(format === 'feature-index-ingest-input-v1' || format === 'feature-index-ingest-input-v2',
+    'Unsupported capture envelope format.');
   const envelope = exactObject(value,
-    ['format', 'expected', 'extractDescriptor', 'receiptDescriptor'], 'Capture envelope');
-  assert.equal(envelope.format, 'feature-index-ingest-input-v1');
+    format === 'feature-index-ingest-input-v1'
+      ? ['format', 'expected', 'extractDescriptor', 'receiptDescriptor']
+      : ['format', 'expected', 'extractDescriptor', 'receiptDescriptor', 'observation'],
+    'Capture envelope');
   const expected = exactObject(envelope.expected,
     ['requestHash', 'request', 'extract', 'receipt'], 'Capture expectations');
   assert.ok(typeof expected.requestHash === 'string' && SHA256.test(expected.requestHash),
     'Expected request hash is invalid.');
   const extract = pin(expected.extract, 20_000_000, 'Extract');
   const receipt = pin(expected.receipt, 1_000_000, 'Receipt');
+  let observation: FeatureIndexObservation | undefined;
+  if (format === 'feature-index-ingest-input-v2') {
+    const rawObservation = exactObject(envelope.observation,
+      ['campaignHash', 'planHash', 'jobId', 'rootCellId', 'queryPath'], 'Capture observation');
+    observation = {
+      campaignHash: rawObservation.campaignHash as string,
+      planHash: rawObservation.planHash as string,
+      jobId: rawObservation.jobId as string,
+      rootCellId: rawObservation.rootCellId as string,
+      queryPath: rawObservation.queryPath as string,
+    };
+    // Reuse the engine's validator/canonicalizer before bootstrap can open SQLite.
+    featureIndexObservationPin(observation);
+  }
   return {
-    format: 'feature-index-ingest-input-v1',
+    format,
     expected: { requestHash: expected.requestHash, request: expected.request as CaptureExpectation['request'],
       extract, receipt },
     extractDescriptor: integer(envelope.extractDescriptor, 3, 2147483647, 'Extract descriptor'),
     receiptDescriptor: integer(envelope.receiptDescriptor, 3, 2147483647, 'Receipt descriptor'),
+    ...(observation === undefined ? {} : { observation }),
   };
 }
 
-function captureBytes(fd: number, expected: Pin, maximum: number, label: string): Buffer {
+export function captureBytes(fd: number, expected: Pin, maximum: number, label: string): Buffer {
   const before = fstatSync(fd, { bigint: true }) as BigIdentity;
   assert.ok(before.isFile() && before.uid === BigInt(process.getuid!()) && before.nlink === 1n
     && (before.mode & 0o022n) === 0n && before.size === BigInt(expected.bytes)
@@ -158,7 +181,7 @@ function readBinding(raw: Buffer): FeatureBinding {
     engineLimits: top.engineLimits as FeatureIndexLimits };
 }
 
-function validateRootAndLeases(root: string, leaseFd: number, namespaceFd: number): {
+export function validateRootAndLeases(root: string, leaseFd: number, namespaceFd: number): {
   rootInfo: BigIdentity; databasePath: string;
 } {
   assert.ok(path.isAbsolute(root) && realpathSync(root) === root, 'Index root must be canonical and absolute.');
@@ -255,7 +278,7 @@ export function ingestFeatureIndex(onBoundary: (name: string) => void = () => {}
     }});
     onBoundary('before-transaction');
     result = index.ingest({ extractBytes, receiptBytes, expected: envelope.expected,
-      sourceConfiguration: { bytes: sourceConfigurationBytes, pin: binding.source.configuration } });
+      sourceConfiguration: { bytes: sourceConfigurationBytes, pin: binding.source.configuration } }, envelope.observation);
     onBoundary('after-checkpoint');
     stats = index.stats();
     assert.equal(db.prepare('PRAGMA integrity_check').get()!.integrity_check, 'ok');

@@ -1,5 +1,31 @@
 # Copy-and-paste continuation prompt
 
+Current campaign-index checkpoint — 9 October 2026: actual held-session ingestion,
+frozen query membership and live-token completion are implemented.228 Python +43
+Node tests and full World TypeScript pass. Implementationa75c59af also passes
+five exact source-policy checks:276 distinct checks plus compiler. Source and acceptance94d95a88 are published on main; runtime upload is not
+part of this phase. FEATURE-INDEX-AUDIT-SPEC.md defines the next unimplemented
+gate, including failed-attempt observation handling and charged WAL-aware copies. Read the first PROGRESS.md section and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
+Next independent raw/index audit, deterministic globally admitted shards/operator
+materials and compiled streamed country geometry. Geographic foundation remains
+distinct from explorable/playable coverage; no runtime upload/map detail thisphase.
+Older checkpoint paragraphs below are historical where superseded. Existing memory
+caps and serialized intensive-work handoffs remain in force while pressure warns.
+
+Latest observation checkpoint: optional pinned campaign/query context now travels
+through the real durable capture worker and atomic feature transaction.221 Python,
+32 engine/Ledger checks and full World TypeScript pass; actual raw replay retains
+two synthetic associations across fresh held sessions and unchanged877 historical
+pins. Exact-kind Ledger.claim is additive; current campaign orchestration still
+needs integration. Read first PROGRESS.md section, FEATURE-INDEX-CAPTURE-OPERATIONS.md
+and CAMPAIGN-FEATURE-INDEX-SPEC.md. Preserve V1 bytes/quotas; V2 pins each attempt's
+observation separately from immutable raw capture inputs and never resets charges.
+Next implement real persistent JSONL held-session bridge plus same-Ledger indexing
+phase with frozen query membership and current live-token completion. Backfill
+legacy captures without changing source rows/results/usage. Synthetic contexts
+do not prove actual campaign membership. Then independently audit raw/index and
+compile/publish owned country shards; no new runtime upload/map detail thisphase.
+
 Latest capture checkpoint: durable per-request raw-input/attempt ownership now feeds
 real fixed-worker replay inside a held supervised index session.209 Python/23 guarded
 engine checks and fresh full World TypeScript pass. Actual controller SIGKILL before

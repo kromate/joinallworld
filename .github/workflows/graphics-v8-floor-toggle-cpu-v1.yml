@@ -1,0 +1,44 @@
+name: Market floor-reference diagnostic CPU package v1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-v8-floor-toggle-cpu-v1
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-floor-reference-cpu-v1
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify pose-preserving floor toggle contract
+        run: node --test evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/floor-free-diagnostic-v1/floor-visibility-contract.test.mjs
+      - name: Install exact package dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Package under the pinned 220 MiB / 25 second process-group guard
+        env:
+          EXPECTED_BRANCH: codex/graphics-v8-floor-toggle-cpu-v1
+          EXPECTED_SNAPSHOT_SHA256: 98829069194ad1bc9f1d783617b290a210b4a0b210279851ac371a75a142da81
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v3/run-bounded-linux.py
+      - name: Preserve package and bounded-process receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-floor-toggle-cpu-package-v1-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v3/static-fixture-market-gpu-v8-floor-toggle-v1/**
+            evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v3/remote-results/**
+          if-no-files-found: warn

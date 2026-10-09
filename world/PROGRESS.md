@@ -74,6 +74,17 @@ bounded streamed shards. Deterministic sharding/global admission, Nigeria combin
 rendering, terrain/regional conditions, throughput and physical phone acceptance
 remain required; the whole-world objective stays active.
 
+Exact committed source **c1ad64486aabd28b9ac76ccee0d47bbbd29b1ec0** also passes
+allfive release-policy checks, terminal54630 exit0. Its bounded clean archive is
+140,656,640B/134,110,571logical bytes/8,586members, below256MiB/10,000 limits;
+only owned temporary archive/checkout was removed. Receipt:
+`feature-index-observation-clean-policy-v1.{tap,stderr,json}`. Final total
+**258 distinct focused checks**, plus full World TypeScript. GRAPHICS explicitly
+yielded this short source-policy turn and receives the next local turn afterward.
+Memory monitor02:26:29 reportsNORMAL with paging still active; existing caps stay
+unchanged. Final main synchronization/source publication follows this acceptance;
+it does not imply a runtime upload or more playable map detail.
+
 ## Durable capture attempts and actual controller-loss recovery
 
 Previous goal turn was a status restatement (no build progress). This continuation

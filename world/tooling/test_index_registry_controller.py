@@ -111,7 +111,7 @@ raise RuntimeError("fixture controller unexpectedly completed")
             self.assertTrue(type(worker_pid) is int and worker_pid > 2)
             self.assertTrue(execution.is_absolute() and execution.resolve(strict=True) == execution)
             self.assertTrue(execution.name.startswith("allworld-index-execution-"))
-            worker_script = execution/"world/tooling/index_registry_lease_witness.py"
+            worker_script = execution/"world/tooling/index_registry_worker.py"
             verify_index_tooling(execution, manifest, pin(manifest))
             self.assertTrue(select.select([controller.stdout], [], [], 5)[0], "worker did not report readiness")
             ready = json.loads(controller.stdout.readline(4096)); self.assertEqual(ready["phase"], "ready")

@@ -90,7 +90,7 @@ jobs:
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_OPTIONS: --max-old-space-size=128
-        run: node --experimental-strip-types --test --test-concurrency=1 world/index-shard-plan.test.ts > diagnostic-evidence/shard-plan.tap 2>&1
+        run: node --experimental-strip-types --test --test-concurrency=1 world/index-shard-plan.test.ts world/index-shard-plan-python.test.ts > diagnostic-evidence/shard-plan.tap 2>&1
       - name: Exact reviewed JavaScript and public-release source boundary
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:

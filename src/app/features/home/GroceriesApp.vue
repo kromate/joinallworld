@@ -81,6 +81,7 @@ const fuelLine = computed(() => {
   return `Generator: ${info.fuel} of ${TANK_LITRES} litres in the tank · ${money(LITRE_PRICE)} a litre.${light}`
 })
 const fuelRoom = computed(() => Math.max(0, Math.floor(TANK_LITRES - (power.value?.fuel ?? 0))))
+const fuelOffer = computed(() => Math.min(5, fuelRoom.value, Math.max(0, Math.floor(state.value.cash / LITRE_PRICE))))
 async function refuel(litres: number): Promise<void> {
   const current = purchaseScope(), version = grocerySession.version
   if (working.value || litres < 1 || !current()) return
@@ -137,7 +138,7 @@ async function orderAll(): Promise<void> {
     <p class="groceries-intro">Balance <b>{{ money(state.cash) }}</b> · delivered to your kitchen at once.</p>
     <p v-if="offline" class="ui-why groceries-offline">{{ offline }}</p>
     <p v-if="fuelLine" class="groceries-intro groceries-fuel" :data-groceries-fuel="power?.source">{{ fuelLine }}
-      <button type="button" class="ui-button is-small" :disabled="!view.connected || working || fuelRoom < 1 || state.cash < LITRE_PRICE" @click="refuel(Math.min(5, fuelRoom))">{{ fuelling ? 'Buying…' : fuelRoom < 1 ? 'Tank full' : `Buy ${Math.min(5, fuelRoom)} ${Math.min(5, fuelRoom) === 1 ? 'litre' : 'litres'} · ${money(Math.min(5, fuelRoom) * LITRE_PRICE)}` }}</button>
+      <button type="button" class="ui-button is-small" :disabled="!view.connected || working || fuelOffer < 1" @click="refuel(fuelOffer)">{{ fuelling ? 'Buying…' : fuelRoom < 1 ? 'Tank full' : fuelOffer < 1 ? `Need ${money(LITRE_PRICE)} for 1 litre` : `Buy ${fuelOffer} ${fuelOffer === 1 ? 'litre' : 'litres'} · ${money(fuelOffer * LITRE_PRICE)}` }}</button>
     </p>
     <HowItWorks id="groceries-rules" page label="How ordering works" :rules="groceriesRules" />
     <ul class="groceries-grid">

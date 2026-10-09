@@ -1,0 +1,120 @@
+{
+  "checkedAt": "2026-10-09T19:58:14.692580+00:00",
+  "sourceSha": "80122bfb1ef8c3638b4e5968ff5073120ddd77a7",
+  "review": "source only; no tests, browser, renderer, host execution or release",
+  "worker": {
+    "thread": "01a11c38-2958-7d33-8e67-3d75ef0f8428",
+    "parent": "01a11c35-ad88-7aa3-ac5b-6b7d910724ad",
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "metadataAt": "2026-10-09T19:53:50.887Z"
+  },
+  "sourcePins": [
+    {
+      "path": "server/routes/living-world.ts",
+      "bytes": 4989,
+      "sha256": "5d2840b17d0d0abba4c5afa208296699b34d35a9e24dc2b65d1236c25fa4bd3d",
+      "blob": "74382eb92d095432a9b902eb4a8b707d6af49169"
+    },
+    {
+      "path": "server/living-world/mapped-trip-service.ts",
+      "bytes": 62909,
+      "sha256": "99ecae078bacb4ecef1a1ad6a40918db86471371f95e9f67e52122fc022ff98f",
+      "blob": "4cdda58215401555d73b333179bb3472cf13ff8d"
+    },
+    {
+      "path": "server/living-world/restock-service.ts",
+      "bytes": 7293,
+      "sha256": "0c63ef1d61a0168903e5cd45d569d880b2942151a4d42d58df5236a18b5ef20f",
+      "blob": "31e3b203f7fb3450fc97579d7bfd48ba15780a57"
+    },
+    {
+      "path": "src/game/living-world/parcel.ts",
+      "bytes": 25857,
+      "sha256": "28e9e57fafde3e7f144af2015b2c07ced3095ee7f61ca00e8cef7f2b1618a7bf",
+      "blob": "99796bb7f821627b0a68ced33773c5c4d7aba97e"
+    },
+    {
+      "path": "src/game/living-world/vehicle-boarding.ts",
+      "bytes": 9210,
+      "sha256": "83385d816602d17b59ae20189e7d28a97d26117bfedb3e2380c253d320bd6572",
+      "blob": "6879526204f2ca7996a349dc5d4e0e80e3a04ecc"
+    },
+    {
+      "path": "src/app/features/living-world/DrivingApp.vue",
+      "bytes": 64661,
+      "sha256": "1575c5cbf2c50d78ac6a9a3ca0a1ba859ffb3695dfc28d39fdc62dd8eefb9ee1",
+      "blob": "0d32da3343fc32c5d2755765e9e3337a1e6bd98e"
+    },
+    {
+      "path": "src/app/features/living-world/drivingScene.ts",
+      "bytes": 21469,
+      "sha256": "3d42051273229265a17fcc5e04b7e5c95ddb72e7fa5fd00520d910cd19cf006c",
+      "blob": "7b775abafc98f9e5aa1f9d6ad96762fd502a2530"
+    }
+  ],
+  "implemented": "Animated car entry, steering and host-validated controls exist for an authored practice course. Simulated qualification and free starter permission are connected to that practice.",
+  "programmeAccepted": false,
+  "gaps": [
+    {
+      "id": "mapped-physical-host",
+      "owner": "GRAPHICS produces physical evidence; Integration alone assembles host/UI",
+      "sources": [
+        "server/routes/living-world.ts:11",
+        "server/routes/living-world.ts:39",
+        "server/living-world/mapped-trip-service.ts:391",
+        "src/app/features/living-world/DrivingApp.vue:285",
+        "src/app/features/living-world/DrivingApp.vue:788",
+        "src/game/living-world/vehicle-boarding.ts:91"
+      ],
+      "gap": "Mapped-trip service has no production physical resolver/motion verifier and is not registered. Current permission allocates no car. The practice presentation is not a mapped delivery trip.",
+      "existingContract": {
+        "resolver": "MappedPhysicalResolver(input) -> AcceptedMappedPhysicalEvidence | null",
+        "motion": "MappedMotionVerifier(input) -> VerifiedMappedMotion | null",
+        "privateAuthority": true,
+        "serverStepMs": 100,
+        "pins": [
+          "manifestCanonicalSha256",
+          "tileSha256",
+          "packSha256",
+          "routeClearanceSha256",
+          "depotSiteSha256",
+          "vehicleDescriptorSha256",
+          "boardingAndExitSha256",
+          "actorEnvelopeSha256",
+          "terrainSupportSha256",
+          "yieldPolicySha256"
+        ]
+      },
+      "acceptance": [
+        "Bind one actual Marina sedan/depot route to current actor, saved look/body generation, qualification and starter permission.",
+        "GRAPHICS demonstrates open, approach, enter, seat, steering, exit and ground support on the actual supplied car/interior. Reject stale/missing geometry rather than setting acceptance flags.",
+        "Private host resolver validates its own pinned assets and depot state; no API-body proof fields or client coordinates confer authority.",
+        "Validate every canonical server-derived movement step before saving checkpoint progress; input time credit, pause, tab/background interruption, reload, revision races and replay remain compatible.",
+        "Integration registers only the accepted route and connects real controls; explicit Astra stage/mobile gameplay and once-only saves must pass before WORLD release."
+      ]
+    },
+    {
+      "id": "trip-parcel-restock-bridge",
+      "owner": "Integration; GRAPHICS does not write financial/parcel authority",
+      "sources": [
+        "server/living-world/mapped-trip-service.ts:705",
+        "src/game/living-world/parcel.ts:166",
+        "src/game/living-world/parcel.ts:221",
+        "server/living-world/restock-service.ts:81",
+        "server/living-world/restock-service.ts:92"
+      ],
+      "gap": "Trip completion saves vehicle/fleet state but produces no parcel custody or stock transition. Restock only accepts an already delivered destination-held parcel and needs a server-only wage callback. No production constructor/route links these.",
+      "dependsOn": "mapped-physical-host",
+      "acceptance": [
+        "Create the fixed fictional parcel offer from authenticated saved trip/fleet/permission and existing shop policy.",
+        "At server-verified stopped supplier/shop checkpoints, transact offer/accept/pickup/delivery custody with the saved trip and generation. Never accept client completion or position claims.",
+        "Settle delivered destination-held parcel through existing fixed-wage callback and inventory watermark in the same durable transaction; failed wage aborts stock and receipt.",
+        "Cover reload, changed actor, lost reply, distinct/identical replay, competing attempts and rollback with no duplicate stock/wages or loss of prior saves.",
+        "Continue to barber active practice, earnings/improvement and reload; this bridge alone does not complete the full first journey."
+      ]
+    }
+  ],
+  "sequence": "Queued after the finite current map/notice/destination release and active teaching acceptance; no competing shared writer or new feature was started.",
+  "fullGoalStillOpen": true
+}

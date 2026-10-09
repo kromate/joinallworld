@@ -1,5 +1,15 @@
 # Living-world implementation checkpoint
 
+## Resume original physical journey and current combined candidate - 2026-10-09T19:58:14.692580+00:00
+
+Previous turn was an accountability/status response with no gameplay implementation. This turn produced a source-pinned two-gap physical handoff after an existing verified gpt-6-luna/high audit: mapped-trip private resolver/motion authority is absent and routes remain unregistered; trip completion does not produce parcel custody/restock. Root independently reviewed actual callbacks, closed boarding flags, production routes and once-only stock/wage transaction. [Bounded next work](physical-journey-next-boundary.json). No runtime writer or fake physical authority introduced.
+
+Integration clean80122 admits five destinations after cd18 map/notice repair. Root checked all36 frozen packet source hashes with zero mismatches; [candidate review](candidate-80122bfb-source-review.json). Prior cd18 CI has10requiredPASS/4live-or-queued and does not transfer. Current3af production unchanged. Fresh exact50city budget, full checks, saved tickets/receipts, Astra stage and WORLD release/live gates remain.
+
+Official officeV1/V2 downloads terminal0; both CI experiments terminalFAIL. Root independently identified V1 lazy-boundary/mobile/heap failures and V2 exact SceneSpot.activities diagnostic with37scopedtestpasses/native-reportpass; [qualified review](graphics-office-scoped-review.json). No Root screenshot/DOM/GPU or broad actor adoption. Existing goalmatic Luna metadata19:47:55 verifies gpt-6-luna/high; unchanged published contracts remain parked.
+
+Accountability checkpoint196c0dd6 push45775 terminal0, published. FullgoalACTIVE; physical/later/business/liveGoal remains required, teaching startsOFF. Zeroextra spend and verified10October05UTC cutoff preserved. Next integrate accepted finite batch, then active teaching and physical journey boundaries under current exclusive owners.
+
 ## Human accountability report - 2026-10-09T19:52:31.348420+00:00
 
 User asked what the main goal is and what was achieved in the last 24 hours. [Plain report](USER-REPORT-2026-10-09.md) distinguishes team release, Root review, funded stage, scoped production continuity and unfinished original active journey. Fresh public health confirms3af; cd18 fullCI still live and newer destination assembly needs fresh exactsource gates. GoalACTIVE; no generic approval or new implementation assignment inferred from this status question.

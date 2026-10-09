@@ -1,3 +1,13 @@
+# Current programme state - 2026-10-09T19:58:14.692580+00:00
+
+Production3af is deployed; the retained synthetic9field/duplicate-receipt check passes. The first five-country milestone is qualified and does not close the programme.
+
+Current finite candidate80122 combines map/guide/actor-notice fixes with Cotonou, Abidjan, Dakar, Cape Town and Addis Ababa. Root verified36source pins; previous cd18 gates cannot transfer. Exact50city budgets/full checks/saved tickets/Astra stage/WORLD release/live acceptance remainOPEN.
+
+Next active requirements: trusted ON teaching capability/choices/retry/reload/once wage, then [mapped physical host and trip-to-parcel/restock connection](physical-journey-next-boundary.json), full barber/earnings/improvement/reload and later careers/civic/business/liveGoalmatic. GRAPHICS supplies body/contact evidence; Integration owns shared host/UI and financial contracts. Phase0 discovery is accepted; phases1-5/A1-A10 remainOPEN at full scope.
+
+Earlier timestamped entries below are historical and may describe superseded pending jobs, releases or push states. Current acceptance is governed by this entry and the linked exact-source evidence, not older open/closed labels.
+
 NextONteaching dependency: trustedserver displaycap isstillmissing fromclient-derived prestartview atd598; currentONcontrols onlyappear aftermarkedstart. RequirehonestON/OFF labels, actor/host-generation clearing andcurrentexactnativechoice/retry/reload/oncewage evidence. [Sourceaudit](teaching-display-capability-current-review.json). Queueaftercurrentmapbatch; fullscope remainsrequired.
 
 Currentnextboundedbatch 2026-10-09T19:31:16.506542+00:00: twoactualAstra live3af bugs. Ghana countrycard staysselected whilemapchanges toNigeria; Lumo interceptsmobilecountry-row tap. Integration ownsfixes; acceptancecard/map/city/quote agreement acrossnavigation/reload, reliable320/390touch andexplicitLumo access, no accidentaltravel/fare/playerchanges, exactchangedsource tests/compiler/budgets/Astra/native/stage/WORLDrelease/livechecks. [Finiteobservedbatch](live-map-next-batch.json). Then separateONactive teaching andfullphysical/laterprogramme.

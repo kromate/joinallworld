@@ -1,3 +1,13 @@
+# Current programme state - 2026-10-09T19:58:14.692580+00:00
+
+Production3af is deployed; the retained synthetic9field/duplicate-receipt check passes. The first five-country milestone is qualified and does not close the programme.
+
+Current finite candidate80122 combines map/guide/actor-notice fixes with Cotonou, Abidjan, Dakar, Cape Town and Addis Ababa. Root verified36source pins; previous cd18 gates cannot transfer. Exact50city budgets/full checks/saved tickets/Astra stage/WORLD release/live acceptance remainOPEN.
+
+Next active requirements: trusted ON teaching capability/choices/retry/reload/once wage, then [mapped physical host and trip-to-parcel/restock connection](physical-journey-next-boundary.json), full barber/earnings/improvement/reload and later careers/civic/business/liveGoalmatic. GRAPHICS supplies body/contact evidence; Integration owns shared host/UI and financial contracts. Phase0 discovery is accepted; phases1-5/A1-A10 remainOPEN at full scope.
+
+Earlier timestamped entries below are historical and may describe superseded pending jobs, releases or push states. Current acceptance is governed by this entry and the linked exact-source evidence, not older open/closed labels.
+
 Latest scoped evidence 2026-10-09T19:11:25.359192+00:00: exact3af fullCI14PASS; real same-store restart plus30-field pairedsave comparison and22-check final fundedfive-country reconciliation07d76433 accepted. Tenfares totalfictional1604000, finalcash596000, originalhome/storage retained. Nativewindow ended/PIDabsent19:09:18. WORLD release/live checks pending. Full programme phases remain OPEN. [Evidence](sealed-africa-3af-review.json).
 
 # Phases, tests and release sessions

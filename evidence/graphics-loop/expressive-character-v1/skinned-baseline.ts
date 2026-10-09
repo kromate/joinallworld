@@ -19,26 +19,25 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import type * as THREE from 'three';
-import type { Kit } from '../kit.ts';
-import { cloneSkinnedBodyScene, createSharedResourceCache, type SharedResourceCache } from './shared-resource-cache.ts';
-import { BODY_FILES } from './files.ts';
-import { BODY_MANIFEST } from './manifest.ts';
-import type { BodyKey } from './manifest.ts';
-import { bodyTint } from './tint.ts';
-import { normalizeLook } from '../avatar-look.ts';
-import { avatarProportions, normalizeAvatarAppearance } from '../../types/avatar.ts';
-import { resolveAvatarWearablesForRenderer } from '../../game/wardrobe/rules.ts';
-import { createWardrobeRenderer } from '../wardrobe/renderer.ts';
-import type { WardrobePresentation, WardrobeMetrics } from '../wardrobe/renderer.ts';
-import { createAvatarAppearanceController } from './appearance.ts';
-import { createFootContactController } from './foot-contact.ts';
-import { createAnimationPoseCheckpoint } from './animation-pose.ts';
-import type { FootContact, FootSolveResult } from './foot-contact.ts';
-import type { BodyTint } from './tint.ts';
-import { EYE_SOCKETS, FACE_ATLAS } from './face-shader.ts';
-import { createFacialDetail } from './facial-detail.ts';
-import { DOOR, INTO, OUT, SEATED, STAIRS, STILL, WORK_INTO, WORK_OUT } from './poses.ts';
-import type { BodyPose } from './poses.ts';
+import type { Kit } from '/src/scene/kit.ts';
+import { cloneSkinnedBodyScene, createSharedResourceCache, type SharedResourceCache } from '/src/scene/body/shared-resource-cache.ts';
+import { BODY_FILES } from '/src/scene/body/files.ts';
+import { BODY_MANIFEST } from '/src/scene/body/manifest.ts';
+import type { BodyKey } from '/src/scene/body/manifest.ts';
+import { bodyTint } from '/src/scene/body/tint.ts';
+import { normalizeLook } from '/src/scene/avatar-look.ts';
+import { avatarProportions, normalizeAvatarAppearance } from '/src/types/avatar.ts';
+import { resolveAvatarWearablesForRenderer } from '/src/game/wardrobe/rules.ts';
+import { createWardrobeRenderer } from './renderer-baseline.ts';
+import type { WardrobePresentation, WardrobeMetrics } from './renderer-baseline.ts';
+import { createAvatarAppearanceController } from '/src/scene/body/appearance.ts';
+import { createFootContactController } from '/src/scene/body/foot-contact.ts';
+import { createAnimationPoseCheckpoint } from '/src/scene/body/animation-pose.ts';
+import type { FootContact, FootSolveResult } from '/src/scene/body/foot-contact.ts';
+import type { BodyTint } from '/src/scene/body/tint.ts';
+import { EYE_SOCKETS, FACE_ATLAS } from '/src/scene/body/face-shader.ts';
+import { DOOR, INTO, OUT, SEATED, STAIRS, STILL, WORK_INTO, WORK_OUT } from '/src/scene/body/poses.ts';
+import type { BodyPose } from '/src/scene/body/poses.ts';
 
 export type { BodyPose };
 
@@ -251,7 +250,6 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
   object.add(clonedScene);
   // Garment rest fitting must see the untouched asset before age-face geometry changes.
   const wardrobe = createWardrobeRenderer(skinned, kit.matte);
-  const facialDetail = createFacialDetail(skinned, key, read);
   const appearanceMade = createAvatarAppearanceController(skinned);
   const footContact = createFootContactController(object, skinned, wardrobe.object);
   let appearance = normalizeAvatarAppearance(read.appearance);
@@ -342,7 +340,7 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
     get strideScale() { return proportions.height * proportions.depth; },
     get wardrobe() { return wardrobe.metrics; },
     get wardrobeError() { return wardrobe.lastError; },
-    setPresentation(next) { uniforms.uSleeping.value = next === 'sleeping' ? 1 : 0; facialDetail.sleep(next === 'sleeping'); return wardrobe.setPresentation(next); },
+    setPresentation(next) { uniforms.uSleeping.value = next === 'sleeping' ? 1 : 0; return wardrobe.setPresentation(next); },
     sampleFootContacts() { object.updateWorldMatrix(true, false); object.updateMatrixWorld(true); return footContact.sample(); },
     solveFeet(heightAt) {
       // SkinnedMesh updates bindMatrixInverse in updateMatrixWorld, not updateWorldMatrix.
@@ -378,7 +376,6 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
       if (!clip) return;
       const turn = phase / (2 * Math.PI);
       sample(name, (turn - Math.floor(turn)) * clip.duration);
-      facialDetail.sample(Math.max(0, phase) / (2 * Math.PI) * clip.duration);
     },
     step(dt) {
       if (!transition) return false;
@@ -408,13 +405,11 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
       if (!wardrobe.wear({ look: nextRead, ids: resolveAvatarWearablesForRenderer(nextRead) })) return true;
       read = nextRead; appearance = normalizeAvatarAppearance(read.appearance); proportions = avatarProportions(appearance);
       if (appearanceMade.ok) appearanceMade.controller.apply(appearance, read.face, read.expression);
-      facialDetail.wear(read);
       body.fit(sceneFit);
       tint = wanted; apply(tint);
       return true;
     },
     dispose() {
-      facialDetail.dispose();
       wardrobe.dispose();
       if (appearanceMade.ok) appearanceMade.controller.dispose();
       mixer.stopAllAction();

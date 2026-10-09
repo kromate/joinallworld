@@ -1,0 +1,29 @@
+name: Expressive character visible prototype
+on:
+  push:
+    branches: [codex/graphics-expressive-character-v1]
+permissions:
+  contents: read
+jobs:
+  character:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Render both character families and expressions
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
+          mkdir -p evidence/graphics-loop/expressive-character-v1/results
+          python3 evidence/graphics-loop/expressive-character-v1/bounded-render.py evidence/graphics-loop/expressive-character-v1/results/render.log evidence/graphics-loop/expressive-character-v1/results/resources.json node evidence/graphics-loop/expressive-character-v1/render.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: expressive-character-${{ github.run_id }}
+          path: evidence/graphics-loop/expressive-character-v1/results/
+          if-no-files-found: error

@@ -111,6 +111,17 @@ jobs:
           server/bonus.test.ts
           server/ride-credit.test.ts
           src/client.test.ts
+          src/app/features/civic/civicModel.test.ts
+          src/app/features/civic/civicCore.test.ts
+          src/app/features/locate/badge.test.ts
+          src/app/features/locate/locateComponents.test.ts
+
+      - name: Existing directory and public discovery components
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          --test-name-pattern='Neighbours:|People:|Contacts: found players'
+          src/app/features/civic/civicComponents.test.ts
+          src/app/features/social/socialComponents.test.ts
 
       - name: Existing shopping, housing and career checks
         run: >-

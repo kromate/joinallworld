@@ -96,6 +96,7 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
     <h3 class="ui-section">Friends</h3>
     <GateNote v-if="gate" :gate="gate" :action="action?.label ?? null" @action="runAction" @retry="retryLoad" />
     <template v-else-if="state.me">
+      <BaseButton @click="shell.open('contacts')">Find a player by name</BaseButton>
       <div v-if="state.me.requests.in.length || state.me.friends.length" class="social-list">
         <div v-for="request in state.me.requests.in" :key="`r${request.id}`" class="social-row is-ask">
           <PlayerAvatar :name="request.name" :seed="request.id" />

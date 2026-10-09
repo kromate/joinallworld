@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue'
 import type { Conversation, Message } from '../../../types/social.ts'
 import { newClientId, openThread, perform, social } from '../social/useSocial.ts'
 import BaseButton from '../../ui/BaseButton.vue'
+import { messageLength } from './messagesText.ts'
 
 const props = defineProps<{ kind: 'edit' | 'delete' | 'forward'; item: Message; conversations: Conversation[]; disabled: boolean; max: number }>()
 const emit = defineEmits<{ close: [] }>()
@@ -10,12 +11,14 @@ const draft = ref(props.item.body)
 const destination = ref('')
 const busy = ref(false)
 const error = ref('')
+const count = computed(() => messageLength(draft.value))
+const invalidEdit = computed(() => props.kind === 'edit' && (count.value === 0 || count.value > props.max))
 let clientId = newClientId()
 watch([draft, destination], () => { clientId = newClientId(); error.value = '' })
 const choices = computed(() => props.conversations.filter((conv) => conv.id !== props.item.conv))
 const title = computed(() => props.kind === 'edit' ? 'Edit message' : props.kind === 'delete' ? 'Delete for everyone?' : 'Forward message')
 async function submit(): Promise<void> {
-  if (busy.value || props.disabled) return
+  if (busy.value || props.disabled || invalidEdit.value) return
   busy.value = true
   error.value = ''
   const result = props.kind === 'forward'
@@ -34,7 +37,8 @@ async function submit(): Promise<void> {
     <strong>{{ title }}</strong>
     <template v-if="kind === 'edit'">
       <label for="message-edit">Message</label>
-      <textarea id="message-edit" v-model="draft" :maxlength="max" :disabled="busy || disabled" rows="3" />
+      <textarea id="message-edit" v-model="draft" :maxlength="max * 2" :aria-invalid="count > max || undefined" aria-describedby="message-edit-count" :disabled="busy || disabled" rows="3" />
+      <small id="message-edit-count">{{ count > max ? `Remove ${count - max} characters to save.` : `${count} / ${max} characters` }}</small>
       <small>Text messages can be edited for 15 minutes.</small>
     </template>
     <template v-else-if="kind === 'forward'">
@@ -50,7 +54,7 @@ async function submit(): Promise<void> {
     <p v-else>This removes the message from this conversation for everyone. Copies or screenshots others already saved remain theirs.</p>
     <p v-if="error" role="alert">{{ error }}</p>
     <div>
-      <BaseButton small type="submit" :disabled="busy || disabled || (kind === 'edit' && !draft.trim()) || (kind === 'forward' && !destination)">{{ busy ? 'Saving…' : kind === 'delete' ? 'Delete for everyone' : kind === 'forward' ? 'Forward' : 'Save edit' }}</BaseButton>
+      <BaseButton small type="submit" :disabled="busy || disabled || invalidEdit || (kind === 'forward' && !destination)">{{ busy ? 'Saving…' : kind === 'delete' ? 'Delete for everyone' : kind === 'forward' ? 'Forward' : 'Save edit' }}</BaseButton>
       <BaseButton small :disabled="busy" @click="emit('close')">Cancel</BaseButton>
     </div>
   </form>

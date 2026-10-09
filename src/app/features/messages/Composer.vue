@@ -4,7 +4,7 @@
 import { computed, nextTick, ref, watch } from 'vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import EmojiPicker from './EmojiPicker.vue'
-import { composerLines, createDrafts, insertMention, liveMentions, mentionChoices, mentionQuery, shortcodes } from './messagesText.ts'
+import { composerLines, createDrafts, insertMention, liveMentions, messageLength, mentionChoices, mentionQuery, shortcodes } from './messagesText.ts'
 import type { Picked } from './messagesText.ts'
 import type { Message, SendMessageResult } from '../../../types/social.ts'
 import { preparePicture, uploadBody } from './pictureModel.ts'
@@ -37,6 +37,9 @@ const field = ref<HTMLTextAreaElement | null>(null)
 const picked = ref<Picked[]>([])
 const emoji = ref(false)
 const active = ref(0)
+const count = computed(() => messageLength(text.value))
+const tooLong = computed(() => count.value > props.max)
+const limitId = computed(() => `message-limit-${props.conv}`)
 // ---- a picture: choose, see it, send it (with progress), try again
 const fileInput = ref<HTMLInputElement | null>(null)
 const photo = ref<{ ready: Ready; caption: string; clientId: string; busy: boolean; progress: number; error: string | null } | null>(null)
@@ -113,7 +116,7 @@ function insertEmoji(char: string): void {
 }
 function submit(): void {
   const body = text.value.trim()
-  if (!body || props.disabled) return
+  if (!body || props.disabled || tooLong.value) return
   // Only the mentions still written in the text go along; the server checks each against the group.
   const mentions = props.members.length ? liveMentions(text.value.trimStart(), picked.value) : []
   emit('send', body, { ...(mentions.length ? { mentions } : {}), ...(props.reply ? { replyTo: props.reply.seq } : {}) })
@@ -161,9 +164,10 @@ const lines = computed(() => composerLines(text.value))
       <input v-if="pictures" ref="fileInput" type="file" accept="image/*" class="composer-file" aria-label="Choose a picture" tabindex="-1" @change="chosen">
       <button v-if="pictures" type="button" class="composer-side" aria-label="Send a picture" title="Send a picture" :disabled="disabled" @click="fileInput?.click()">📷</button>
       <button type="button" class="composer-side" :aria-pressed="emoji" aria-label="Emoji" :disabled="disabled" @click="emoji = !emoji">☺</button>
-      <textarea ref="field" v-model="text" name="body" :rows="lines" :maxlength="max * 2" autocomplete="off" enterkeyhint="send" placeholder="Message" aria-label="Message" :disabled="disabled" @input="onInput" @keydown="onKey" @keyup="track" @click="track" @focus="emoji = false" />
-      <button type="submit" class="composer-send" aria-label="Send" title="Send" :disabled="disabled || !text.trim()"><GameIcon name="earn" :size="22" /></button>
+      <textarea ref="field" v-model="text" name="body" :rows="lines" :maxlength="max * 2" autocomplete="off" enterkeyhint="send" placeholder="Message" aria-label="Message" :aria-describedby="limitId" :aria-invalid="tooLong || undefined" :disabled="disabled" @input="onInput" @keydown="onKey" @keyup="track" @click="track" @focus="emoji = false" />
+      <button type="submit" class="composer-send" aria-label="Send" :title="tooLong ? `Shorten your message to ${max} characters.` : 'Send'" :disabled="disabled || !count || tooLong"><GameIcon name="earn" :size="22" /></button>
     </form>
+    <p :id="limitId" class="composer-count" :class="{ 'is-over': tooLong }" :role="tooLong ? 'alert' : undefined">{{ tooLong ? `Remove ${count - max} characters to send.` : `${count} / ${max} characters` }}</p>
   </div>
 </template>
 
@@ -171,7 +175,9 @@ const lines = computed(() => composerLines(text.value))
 .composer { position: relative; display: grid; gap: 6px; }
 .composer-form { display: flex; align-items: flex-end; gap: 8px; margin: 0; }
 /* The id selectors beat the panel-wide textarea rule (controls.css), which makes every textarea 96px tall. */
-.composer-form textarea, #life-dialog .composer-form textarea, .life-ui .composer-form textarea { flex: 1; width: auto; min-width: 0; box-sizing: border-box; min-height: var(--tap); max-height: 108px; resize: none; padding: 11px 16px; border: 1px solid var(--c-line); border-radius: 12px; background: var(--c-fill); font: 400 15px/22px var(--font); overflow-y: auto; }
+.composer-form textarea, #life-dialog .composer-form textarea, .life-ui .composer-form textarea { flex: 1; width: auto; min-width: 0; box-sizing: border-box; min-height: var(--tap); max-height: 108px; resize: none; padding: 11px 16px; border: 1px solid var(--c-line); border-radius: 12px; background: var(--c-fill); font: 400 16px/22px var(--font); overflow-y: auto; }
+.composer-count { margin: 0; font-size: 12px; line-height: 1.4; color: var(--c-muted); text-align: right; }
+.composer-count.is-over { color: var(--c-red-dark); }
 .composer-send, .composer-side { flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); border: 0; border-radius: 10px; cursor: pointer; }
 .composer-send { background: #176347; color: #fff; }
 .composer-side { background: var(--c-fill); font-size: 22px; }

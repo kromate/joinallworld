@@ -6,6 +6,7 @@ import type { PlayerRef } from '../../../types/protocol.ts'
 import { SHORTCODES } from './emojiData.ts'
 
 const DAY = 86400000
+export const messageLength = (text: string): number => Array.from(text.trim()).length
 const isOutbox = (item: ThreadItem): item is OutboxEntry => 'status' in item
 const itemTime = (item: ThreadItem): number => item.at
 const itemSender = (item: ThreadItem): string => (isOutbox(item) ? 'me' : item.sys ? 'sys' : item.from?.id ?? 'sys')

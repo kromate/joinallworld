@@ -94,10 +94,10 @@ jobs:
           src/app/features/messages/messagesComponents.test.ts
           src/app/features/sim/soundSettingsModel.test.ts
 
-      - name: Existing Groceries and Health component checks
+      - name: Existing shopping, housing and career checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
-          --test-name-pattern='groceries|Groceries:|Health:'
+          --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:'
           src/app/features/panelsA.test.ts
 
   full:

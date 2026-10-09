@@ -1,0 +1,24 @@
+{
+  "status": "prepared-for-root-review-not-published",
+  "purpose": "V4 retains v3 geometry and source checks, and adds lossless structured CDP exception reporting so the next actual fixture failure has a causal payload.",
+  "frozenV3": {
+    "snapshotManifestSha256": "8cd008050c264250db752f03b700b0211092c2840c2cb6055497fcc36a83080f",
+    "runId": 37906239390,
+    "result": "build and synthetic tests passed; browser failed during initial fixture load before WebGL or screenshots",
+    "failure": "Runtime.evaluate threw but v3 serialized only exceptionDetails.text=Uncaught; the nested exceptionDetails payload was discarded",
+    "failedRequest": "clip-pack GLB ERR_ABORTED during controller cleanup; not treated as cause",
+    "preservedArtifact": "../integration-probe-v3/remote-ci-v3/downloaded-37906239390/browser-artifacts/review-results.json"
+  },
+  "diagnosticChange": {
+    "module": "remote-ci-v4/cdp-exception.mjs",
+    "test": "remote-ci-v4/cdp-exception.test.mjs",
+    "capturedFields": ["text", "exception.description", "exception.value", "className", "subtype", "lineNumber", "columnNumber", "url", "stackTrace", "raw"]
+  },
+  "geometryCandidateSha256": "2b8531fbc97c87f351fa2085ec1a15b9ac193ba35571d08eb6a7a498c85dcb76",
+  "bodyAssetSha256": {
+    "male": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "female": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "clips": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "execution": "No v4 build, browser, body/clip parse, or geometry check has run. Root owns publication and remote execution."
+}

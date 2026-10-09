@@ -107,6 +107,10 @@ jobs:
       - name: Existing app UI model and component checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
+          src/app/components.test.ts
+          src/app/features/civic/civicComponents.test.ts
+          src/app/features/companion/companion.test.ts
+          src/app/features/companion/registry.test.ts
           src/app/features/models.test.ts
           src/app/features/support/supportPanel.test.ts
           src/app/features/money/statementHistory.test.ts

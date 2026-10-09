@@ -18,7 +18,9 @@ import type { Civic } from './civicClient.ts'
 import { createFakeServer } from '../../testing/fakeServer.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))
-const server = createFakeServer()
+// Exercise civic refresh as a real quick-start guest; the server still enforces the normal
+// onboarding action before the first player action.
+const server = createFakeServer({ onboarded: false })
 let vite: ViteDevServer
 let app: App
 let civic: Civic
@@ -48,7 +50,11 @@ before(async () => {
   const core = await load<{ sharedStore: { pending: Set<string> } }>('/src/app/features/civic/civicCore.ts')
   pending = core.sharedStore.pending
   civic = (await load<{ useCivic: () => Civic }>('/src/app/features/civic/useCivic.ts')).useCivic()
-  assert.equal(await app.game.connect(), true)
+  assert.equal(await app.game.connect(true), true)
+  const quickStart = await app.game.resend(app.game.newId(), 'onboarding.quick-start', {
+    look: { body: 'woman', hair: 'braids', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'green', bottomsColor: 'navy' },
+  })
+  assert.deepEqual([quickStart.ok, quickStart.code], [true, 'playing'], 'the ordinary quick-start action confirms this guest before civic actions')
   app.game.stop()
 })
 after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = realFetch })
@@ -190,7 +196,7 @@ test('Neighbours: counts from the server, presence, a way to say hi, and the hid
   try { assert.ok(buttons(await render('NeighboursApp')).includes('Working…')) } finally { pending.delete('prefs') }
 })
 
-test('Rich List: the podium, the rank and the toggle', async () => {
+test('Rich List: ordered ranks, the player marker and the visibility toggle', async () => {
   const cityId = app.game.view.value.cityId
   const row = (rank: number, name: string, amount: number, you = false) => ({ rank, id: `p${rank}`, name, amount, you })
   const data: RichListResponse = { city: 'lagos', week: 1, size: 10, balances: [row(1, 'Ada', 9000), row(2, 'Bisi', 5000, true), row(3, 'Chi', 4000), row(4, 'Dayo', 3000)], earners: [],
@@ -200,9 +206,15 @@ test('Rich List: the podium, the rank and the toggle', async () => {
   const words = text(html)
   assert.ok(words.includes('You · rank 2 ₦5,000 Earned ₦1,200 this week'))
   assert.ok(words.includes('40 players in') && words.includes('5 online now') && words.includes('90 daily visits'))
-  assert.match(html, /<ol class="richlist-podium"[^>]*>/)
-  assert.ok(words.includes('Bisi (you)'))
-  assert.match(html, /<ol[^>]*class="ui-rows"[^>]*start="4"/)
+  assert.match(html, /<ol class="ranking" aria-label="Top balances"[^>]*>/)
+  assert.match(html, /<li[^>]*class="ranking-row is-you"/)
+  assert.equal([...html.matchAll(/class="ranking-row(?:\s|\")/g)].length, 4, 'the accessible ordered list contains the four rows returned')
+  const board = html.match(/<ol class="ranking" aria-label="Top balances"[^>]*>([\s\S]*?)<\/ol>/)?.[1] ?? ''
+  assert.deepEqual([...board.matchAll(/aria-label="Rank (\d+)"/g)].map(match => Number(match[1])), [1, 2, 3, 4])
+  assert.deepEqual([...board.matchAll(/<strong[^>]*>([^<]+)<\/strong>/g)].map(match => match[1]), ['Ada', 'Bisi', 'Chi', 'Dayo'])
+  assert.match(board, /Bisi<\/strong><small[^>]*>You<\/small>/)
+  assert.ok(words.includes('Top earners this week'))
+  assert.ok(!buttons(html).includes('Show more'), 'four rows do not trigger a continuation when the server page size is ten')
   assert.ok(words.includes('Nobody has earned anything this week yet.'))
   assert.ok(buttons(html).includes('Hide me from the Rich List'))
   civic.put(`rich:${cityId}`, { ...data, you: { ...data.you!, listed: false } })

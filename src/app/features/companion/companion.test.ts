@@ -141,7 +141,11 @@ test('the changelog and the explainers name labels that exist in the interface',
 })
 
 // ---- the buttons -------------------------------------------------------------------------------------------------------------
-const panelIds = (): Set<string> => new Set([...SOURCE.matchAll(/(?:definePanel|id)\(?\{?\s*id:\s*'([a-z-]+)'/g)].map((m) => m[1] as string).concat(['phone', 'help', 'sim', 'map', 'account-sign-in']))
+const panelIds = (): Set<string> => new Set([
+  ...[...SOURCE.matchAll(/(?:definePanel|id)\(?\{?\s*id:\s*'([a-z-]+)'/g)].map((m) => m[1] as string),
+  ...[...SOURCE.matchAll(/(?:phonePanel|lazyPanel)\(\s*'([a-z-]+)'/g)].map((m) => m[1] as string),
+  'phone', 'help', 'sim', 'map', 'account-sign-in',
+])
 function recorder(): { env: ActionEnv; calls: string[] } {
   const calls: string[] = []
   const rec = (name: string) => (...args: unknown[]): void => { calls.push(`${name}:${args.map(String).join(',')}`) }
@@ -273,6 +277,8 @@ test('every tour step has a real anchor, a short line, and the tours are short, 
   const direct = new Set([...SOURCE.matchAll(/data-tour="([a-z-]+)"/g)].map((m) => m[1] as string))
   const navTabs = new Set([...SOURCE.matchAll(/id: '([a-z]+)'[^\n]*placement: 'nav'/g)].map((m) => `nav-${m[1]}`).concat(['nav-map', 'nav-phone', 'nav-buy']))
   const appIds = panelIds()
+  assert.ok(SOURCE.includes(':data-tour="`app-${entry.id}`"'), 'PhoneDevice exposes registered panels through their dynamic app-id tour anchor')
+  assert.ok(appIds.has('bank') && appIds.has('career'), 'phonePanel and lazyPanel metadata both contribute real app anchors')
   const known = (id: string): boolean => direct.has(id) || navTabs.has(id) || (id.startsWith('app-') && appIds.has(id.slice(4)))
   assert.deepEqual(TOUR_IDS, ['basics', 'travel', 'money', 'friends', 'business'])
   for (const id of TOUR_IDS) {

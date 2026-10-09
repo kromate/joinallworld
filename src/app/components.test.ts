@@ -96,7 +96,8 @@ test('Bank: balance, rent, and the ledger with every change explained', async ()
   const html = await render('/src/app/features/bank/BankApp.vue')
   const state = app.game.state.value, view = app.game.view.value
   const words = text(html)
-  assert.ok(words.startsWith(`Balance ₦${state.cash.toLocaleString('en-NG')}`), words.slice(0, 80))
+  assert.match(html, /<section[^>]*aria-label="Your game wallet"/)
+  assert.ok(words.startsWith(`Your game wallet ₦${state.cash.toLocaleString('en-NG')}`), words.slice(0, 80))
   assert.ok(words.includes('Statement') && words.includes('Invest') && words.includes('Find a job'), 'no job yet: the way to one is offered')
   const rent = view.economy.rent
   assert.ok(rent, 'a life that moved in has rent')
@@ -173,7 +174,7 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
   server.route('POST /api/social/messages', (request) => { posted = request.body; return new Promise((resolve) => { answer = resolve }) })
   server.route('GET /api/social/me', () => ({ status: 200, body: social.me }))
   const { send } = await load<{ send: (key: string, target: { conv: string }, body: string) => void }>('/src/app/features/social/useSocial.ts')
-  const { ui } = await load<{ ui: { open: string | null; openName: string | null } }>('/src/app/features/messages/messagesState.ts')
+  const { ui } = await load<{ ui: { open: string | null; openName: string | null; manage: boolean } }>('/src/app/features/messages/messagesState.ts')
   // Under Node there is no page and no WebSocket: the social client is given the api and nothing more.
   const { attach } = await load<{ attach: (api: unknown) => void }>('/src/app/features/social/useSocial.ts')
   attach(app.api)
@@ -197,17 +198,24 @@ test('Messages: a sent message shows at once as Sending…, then Not sent with t
     assert.match(html, /class="is-failed bubble is-mine"[^>]*><span[^>]*>On my way<\/span><small[^>]*>Not sent · That wording is not allowed here\./, 'the server\'s own sentence')
     assert.ok(text(html).includes('Retry Delete'))
     assert.ok(!html.includes('is-pending'))
-    // A chat with a friend before its first message: the name opens the profile, and Send money and Ping (the friend is away) are there already.
+    // A chat with a friend before its first message: Send money is in the actual Chat options panel; Ping replaces Call while the friend is away.
     const bola = player('b01a', 'Bola')
     social.me = { ...overview(), friends: [{ ...bola, status: 'offline', since: 1 }] } as SocialOverview
     ui.open = 'to:b01a'; ui.openName = 'Bola'
+    ui.manage = false
+    app.shell.bump()
+    html = await render(messages)
+    assert.ok(!html.includes('data-chat="send-money"'), 'sending money stays inside the explicit chat options menu')
+    assert.match(html, /aria-label="Chat options"[^>]*aria-expanded="false"/)
+    ui.manage = true
     app.shell.bump()
     html = await render(messages)
     assert.match(html, /<h3[^>]*><button[^>]*aria-label="Bola: open profile"[^>]*>Bola<\/button>/)
+    assert.match(html, /<section[^>]*aria-label="Chat options"/)
     assert.match(html, /data-chat="send-money"/)
     assert.match(html, /data-ping="send"/)
     assert.ok(text(html).includes('No messages yet. Say something.'))
-  } finally { ui.open = null; ui.openName = null; social.threads.clear(); social.me = null }
+  } finally { ui.open = null; ui.openName = null; ui.manage = false; social.threads.clear(); social.me = null }
 })
 
 test('Report a problem: the form, what is sent with it, and the empty list', async () => {

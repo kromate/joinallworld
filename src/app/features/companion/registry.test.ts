@@ -16,7 +16,11 @@ const root = resolve(fileURLToPath(new URL('../../../..', import.meta.url)))
 const walk = (dir: string): string[] => readdirSync(dir).flatMap((name) => { const path = join(dir, name); return statSync(path).isDirectory() ? walk(path) : [path] })
 const FILES = walk(join(root, 'src/app/features')).filter((path) => /\.(vue|ts)$/.test(path) && !/\.test\./.test(path))
 const SOURCE = FILES.map((path) => readFileSync(path, 'utf8')).join('\n')
-const PANELS = new Set([...SOURCE.matchAll(/id: '([a-z-]+)'/g)].map((match) => match[1] as string).concat(['phone', 'account-sign-in']))
+const PANELS = new Set([
+  ...[...SOURCE.matchAll(/id: '([a-z-]+)'/g)].map((match) => match[1] as string),
+  ...[...SOURCE.matchAll(/(?:phonePanel|lazyPanel)\(\s*'([a-z-]+)'/g)].map((match) => match[1] as string),
+  'phone', 'account-sign-in',
+])
 
 const market = { id: 'market', label: 'Market', district: 'Lagos Island', category: 'work', open: true, status: 'Open now', here: false, activities: [], description: '', market: true }
 const base = (over: Partial<CompanionContext> = {}): CompanionContext => ctx({ places: [...ctx().places.filter((place) => place.id !== 'market'), market], friends: [{ id: 'f1', name: 'Bola', online: true }], ...over })

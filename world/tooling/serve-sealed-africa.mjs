@@ -360,8 +360,9 @@ async function main(args) {
     if (resumed) {
       founderCookie = resumed.checkpoint.founderCookieForAdminCredit;
     } else {
-      const guest = await send('/api/session', { name: 'Africa native staging founder' });
+      const guest = await send('/api/session', { name: 'Africa fixture founder' });
       ensureStarting();
+      assert.equal(guest.status, 200, 'synthetic founder guest creation succeeds');
       const guestCookie = guest.headers.get('set-cookie')?.split(';')[0];
       assert.ok(guestCookie, 'synthetic founder guest cookie');
       await guest.body?.cancel().catch(() => {});

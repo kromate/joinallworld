@@ -44,6 +44,28 @@ type Outcome = { ok: boolean; code: string; state: LifeState; reason?: string };
 const send = (state: LifeState, type: string, payload: Record<string, unknown>, context: LifeContext): Outcome => dispatch(state, { type, payload } as ActionBody, context);
 /** The kind of timed action a life is running, read through a function so earlier assertions do not narrow it. */
 const activeKind = (state: LifeState) => state.activeAction?.kind;
+const TEACHING_ANSWERS = [
+  ['diagnose', 'denominator-count'],
+  ['explain', 'same-whole-pieces'],
+  ['check', 'one-fifth'],
+] as const;
+/** Finish the three authored teaching choices after the shift's intended elapsed time. */
+function completeTeachingShift(player: { state: LifeState; act(type: string, payload?: Record<string, unknown>): Outcome }): void {
+  for (const [stage, choice] of TEACHING_ANSWERS) {
+    const active = player.state.activeAction;
+    assert.ok(active?.kind === 'activity' && active.id === 'teaching-shift', 'the teaching activity is still active');
+    assert.ok(active.teaching, 'the server-authored teaching marker is present');
+    assert.equal(active.teaching.stage, stage);
+    const answer = player.act('career.teach', {
+      generation: active.teachingGeneration,
+      revision: active.teaching.revision,
+      stage,
+      choice,
+    });
+    assert.equal(answer.ok, true, `${stage} choice is accepted`);
+  }
+  assert.equal(player.state.activeAction, null, 'the final authored answer completes the activity');
+}
 /** Emit an event with deliberately partial or off-contract data (listeners must tolerate it, and these tests prove they do). */
 const emitLoose = <E extends EngineEvent>(state: LifeState, event: E, data: object, context: LifeContext) => emit(state, event, data as unknown as EngineEventMap[E], context);
 /** Narrow a value a test has just made sure exists. */
@@ -85,7 +107,10 @@ function life(saved: Record<string, unknown> = {}, start = MONDAY_9AM) {
       state.location = job.workplace.venue; state.spot = job.workplace.spot; state.activeAction = null;
       this.rest();
       const started = this.act('activity', { id: job.shift.id });
-      if (started.ok) this.step(job.shift.duration);
+      if (started.ok) {
+        this.step(job.shift.duration);
+        if (job.id === 'teaching' && state.activeAction) completeTeachingShift(this);
+      }
       return started;
     },
   };
@@ -207,6 +232,7 @@ test('apply hires at once; a shift pays once on completion, costs needs, trains 
   player.step(SHIFT_SECONDS - 1);
   assert.equal(player.state.cash, 5000, 'nothing is paid before completion');
   player.step(1);
+  completeTeachingShift(player);
   assert.equal(player.state.cash, 8000); assert.equal(player.state.activeAction, null);
   assert.deepEqual([player.state.needs.energy, player.state.needs.hunger], [30, 38]);
   assert.equal(player.state.skills.charisma, 25); assert.equal(player.state.career.performance, 60);
@@ -231,6 +257,7 @@ test('apply hires at once; a shift pays once on completion, costs needs, trains 
   assert.equal(lagosTime(player.now).weekday, 2);
   assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'started');
   player.step(SHIFT_SECONDS);
+  completeTeachingShift(player);
   assert.equal(player.state.cash, 11000); assert.equal(player.state.career.performance, 70);
 });
 
@@ -244,6 +271,7 @@ test('cancelling a shift earns nothing, costs nothing and does not use up the da
   assert.equal(player.state.needs.energy, 50); assert.equal(player.state.career.lastShiftDay, null); assert.equal(player.state.career.shiftStartDay, null);
   assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'started');
   player.step(SHIFT_SECONDS);
+  completeTeachingShift(player);
   assert.equal(player.state.cash, 8000);
 });
 
@@ -277,14 +305,35 @@ test('a shift counts for the day it started, so running past midnight keeps the 
   const monday = lagosTime(lateMonday).day;
   assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'started');
   player.step(SHIFT_SECONDS);
+  completeTeachingShift(player);
   assert.equal(lagosTime(player.now).day, monday + 1);
   assert.equal(player.state.career.lastShiftDay, monday);
   player.rest();
   assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'started', 'Tuesday still has its shift');
   player.step(SHIFT_SECONDS);
+  completeTeachingShift(player);
   assert.equal(player.state.cash, 11000);
   player.rest();
   assert.equal(player.act('activity', { id: 'teaching-shift' }).code, 'shift_done');
+});
+
+test('trusted legacy teaching shifts remain timed, while untrusted imported shifts cannot complete', () => {
+  const saved = {
+    t: MONDAY_9AM, cash: 5000, job: 'teaching', location: 'park', spot: 'work',
+    career: { performance: 50, oriented: true, shiftStartDay: lagosTime(MONDAY_9AM).day },
+    activeAction: { kind: 'activity', id: 'teaching-shift', duration: SHIFT_SECONDS, remaining: SHIFT_SECONDS },
+  };
+  const trustedContext = makeContext({ now: MONDAY_9AM, cityId: 'lagos', seed: 'trusted-legacy-teaching', trustedSave: true });
+  const legacy = createLife(saved, trustedContext);
+  assert.equal(legacy.activeAction?.kind, 'activity', 'a trusted pre-marker server save keeps its legacy timer');
+  advanceLife(legacy, SHIFT_SECONDS, makeContext({ now: MONDAY_9AM + SHIFT_SECONDS * 1000, cityId: 'lagos', seed: 'legacy-finish' }));
+  assert.deepEqual([legacy.cash, legacy.completedShifts, legacy.career.performance, legacy.skills.charisma, legacy.activeAction],
+    [8000, 1, 60, 25, null]);
+
+  const imported = createLife(saved, makeContext({ now: MONDAY_9AM, cityId: 'lagos', seed: 'untrusted-legacy-teaching' }));
+  assert.equal(imported.activeAction, null, 'an untrusted import cannot fall back to the old timer reward');
+  advanceLife(imported, SHIFT_SECONDS, makeContext({ now: MONDAY_9AM + SHIFT_SECONDS * 1000, cityId: 'lagos', seed: 'untrusted-finish' }));
+  assert.deepEqual([imported.cash, imported.completedShifts, imported.career.performance, imported.skills.charisma], [5000, 0, 50, 0]);
 });
 
 test('promotion needs 100% performance and the track skill; pay follows the level worked', () => {
@@ -784,7 +833,23 @@ test('server: apply, shift, deposit and replayed requests settle exactly once on
   assert.equal((await f.action(device.cookie, shift)).code, 'started');
   f.advance(20000); assert.equal((await read()).cash, 5000);
   f.advance(21000);
-  const done = await read();
+  let waiting = await read();
+  for (const [stage, choice] of TEACHING_ANSWERS) {
+    const active = waiting.activeAction;
+    assert.ok(active?.kind === 'activity' && active.id === 'teaching-shift' && active.teaching);
+    const answerRequest = { actionId: `${f.now()}:${randomUUID()}`, type: 'career.teach', payload: {
+      generation: active.teachingGeneration, revision: active.teaching.revision, stage, choice,
+    } };
+    const answer = await f.action(device.cookie, answerRequest);
+    assert.equal(answer.ok, true, `${stage} answer completes through the real action receipt`);
+    if (stage === 'check') {
+      const replayAnswer = await f.action(device.cookie, answerRequest);
+      assert.equal(replayAnswer.duplicate, true);
+      assert.equal(replayAnswer.state.cash, 8000, 'a replayed terminal teaching answer cannot pay twice');
+    }
+    waiting = answer.state;
+  }
+  const done = waiting;
   assert.deepEqual([done.cash, done.completedShifts, done.career.performance, done.activeAction], [8000, 1, 60, null]);
   const replay = await f.action(device.cookie, shift);
   assert.equal(replay.duplicate, true); assert.equal(replay.state.cash, 8000);

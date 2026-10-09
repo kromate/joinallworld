@@ -47,3 +47,14 @@ test('a local trip can still be cancelled', async () => {
   assert.match(out, /<button[^>]*>Cancel<\/button>/)
   assert.ok(!/cannot be cancelled/.test(out))
 })
+
+test('an interactive teaching shift shows choices and no countdown or timed progress bar', async () => {
+  run({ kind: 'activity', id: 'teaching-shift', duration: 40, remaining: 40, teachingGeneration: 3,
+    teaching: { version: 1, lessonId: 'fractions-v1', revision: 1, stage: 'diagnose', feedback: null } })
+  const out = await html()
+  assert.match(out, /Fictional NPC teaching practice/)
+  assert.match(out, /What misunderstanding should you address/)
+  assert.match(out, /Cancel practice/)
+  assert.ok(!/40s left|<progress/.test(out), 'player decisions replace the countdown')
+  assert.equal((out.match(/class="teaching-shift__choice"/g) ?? []).length, 3)
+})

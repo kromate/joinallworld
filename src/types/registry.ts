@@ -352,6 +352,8 @@ export interface ActiveKindHandler<A extends ActiveAction = ActiveAction> {
   sanitize(value: SavedActiveAction, state: LifeState, ctx: LifeContext): Omit<A, 'kind' | 'id' | 'duration' | 'remaining'> | null
   /** Called at load (server's own save only) when sanitize returned null, so a kind that took something at the start can give it back. */
   invalidated?(state: LifeState, value: SavedActiveAction, ctx: LifeContext): void
+  /** An authored interactive action waits for input instead of consuming its legacy timer. */
+  waitsForInput?(state: LifeState, active: A, ctx: LifeContext): boolean
   /** Called on every settlement while running, with the seconds just elapsed (never more than what remained). */
   tick?(state: LifeState, active: A, elapsedSeconds: number, ctx: LifeContext): void
   /** The action ran to its end. `state.activeAction` is already null. */

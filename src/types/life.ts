@@ -161,6 +161,9 @@ export interface ActivityAction extends ActiveActionBase {
   choice?: string
   /** Present only for `chargeOn: 'start'` with a price above zero: the naira debited at the start (the adjusted price). */
   paid?: number
+  /** Server-authored teaching session; absent on legacy timed shifts. */
+  teaching?: import('../game/living-world/teaching-state.ts').TeachingPractice
+  teachingGeneration?: number
 }
 
 /** A trip between venues (systems/travel.js). The player is still recorded at the venue they left. */
@@ -304,6 +307,8 @@ export interface SkillsSlice {
 
 export interface CareerState {
   city: WorldCityId | null
+  /** Monotonic across cancellation, job changes and city transfers. */
+  teachingGeneration: number
   /** 1-based ladder level in the current track (1 when unemployed or in the starter job). */
   level: number
   /** 0–100 in the current role (may be fractional). */

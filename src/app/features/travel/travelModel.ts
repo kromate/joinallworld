@@ -106,6 +106,7 @@ export function goBlock(state: TravelState, view: TravelPanelView, destination: 
       code: trip ? 'travelling' : 'busy', label: trip ? 'Already travelling' : 'Busy',
       fix: locked ? null : { kind: 'cancel', label: trip ? 'Cancel that trip' : `Cancel ${name || 'it'}` },
       reason: trip ? `You are already on the way${name ? ` to ${name}` : ''}. Arrive first, or cancel that trip (its fare is not refunded) and then travel here.`
+        : active.kind === 'activity' && active.teaching ? 'Finish teaching the learner, or cancel the shift before travelling.'
         : `You are busy${name ? `: ${name}` : ''} (${Math.ceil(active.remaining ?? 0)}s left). ${locked ? 'It cannot be cancelled — wait for it to finish, then travel.' : 'Wait for it to finish, or cancel it and then travel.'}`,
     }
   }

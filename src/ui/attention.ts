@@ -96,6 +96,7 @@ export function nextStep(ctx?: StepContext | null): NextStep | null {
   const bubble = goal.step <= COACH_GOALS, title = `Goal ${goal.step} of ${goal.of} · ${goal.title}`;
   const step = (text: string, target: string | null, more?: { app?: string }): NextStep => ({ id: 'goal', text, target, bubble, title, ...more });
   if (active) {
+    if (active.kind === 'activity' && active.teaching) return step('Choose how to teach the learner to finish this shift.', '.life-progress');
     if (!bubble) return null;
     // Only the goal's own activity (one started at the goal's spot) is cheered on; anything else is named as a detour.
     const [goalVenue, goalSpot] = goal.go || [];

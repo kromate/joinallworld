@@ -48,7 +48,7 @@ export function activityFace(card: ActivityCard, state: Pick<LifeState, 'activeA
     price, priceTone: card.reward > 0 ? 'earn' : card.cost > 0 ? 'cost' : 'free', why, full,
     disabled: Boolean(blocked) || busy || offline,
     state: unavailable ? 'unavailable' : why ? 'blocked' : busy ? 'busy' : 'ready',
-    label: `${card.label}, ${card.duration} seconds, ${price}${full ? `. ${full}` : ''}`,
+    label: `${card.label}, ${card.careerTrack === 'teaching' ? 'interactive teaching' : `${card.duration} seconds`}, ${price}${full ? `. ${full}` : ''}`,
   }
 }
 

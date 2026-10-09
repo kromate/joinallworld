@@ -179,6 +179,11 @@ export interface ActionMap extends CampusActionMap, StoryActionMap {
   'career.auto': { payload: { on: boolean }; ok: 'auto_set'; fail: 'invalid_setting' }
   /** Answer the work dilemma waiting after a shift (src/game/dilemmas.ts). Refused with 'dilemmas_off' while the dilemma kit is not installed. */
   'career.dilemma': { payload: { choice: string }; ok: 'resolved' | 'went_badly'; fail: 'dilemmas_off' | 'no_dilemma' | 'invalid_choice' }
+  'career.teach': {
+    payload: { generation: number; revision: number; stage: import('../game/living-world/teaching-state.ts').TeachingPracticeStage; choice: string }
+    ok: 'answered' | 'retry' | 'shift_completed'
+    fail: import('../game/living-world/teaching-practice.ts').TeachingPracticeCode | 'no_teaching_shift' | 'generation_conflict'
+  }
 
   // -- activities --
   /** Start an activity offered at the current spot. `choice` is required when the activity has `choices`. */
@@ -466,7 +471,7 @@ export type ActionBody<T extends ActionType = ActionType> = {
 /** Every registered action type, in registration order. Equals `actionTypes()` from src/life.ts. */
 export const ACTION_TYPES = [
   'cancel', 'wallet.admin', 'wallet.bonus', 'needs.admin',
-  'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma',
+  'apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma', 'career.teach',
   'activity', 'spot', 'activity.admin',
   'travel', 'world.roadside', 'travel.skip', 'travel.repay-ride',
   'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit',

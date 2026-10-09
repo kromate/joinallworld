@@ -5,7 +5,8 @@
 // Everything shown comes from view.career (systems/career.js), so this file holds no rules.
 // The work-dilemma card is drawn only while the life has one waiting
 // (view.career.dilemma is its id; the words are a lazy chunk fetched here, src/game/content/dilemmas.ts); a choice sends 'career.dilemma' { choice }.
-import { computed, ref, shallowRef, watch } from 'vue'
+import { computed, defineAsyncComponent, ref, shallowRef, watch } from 'vue'
+import type { ActionPayload } from '../../../types/actions.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
 import { cap, money } from '../../ui/format.ts'
@@ -20,6 +21,9 @@ defineProps<{ params?: unknown }>()
 
 const { game, shell, goTo, command } = useApp()
 const { act, pending } = useAct()
+const TeachingShift = defineAsyncComponent(() => import('./TeachingShift.vue'))
+const teach = (payload: ActionPayload<'career.teach'>): Promise<boolean> => act('teach', () => command('career.teach', payload))
+const cancelTeaching = (): Promise<boolean> => act('cancel-teaching', () => command('cancel'))
 const view = game.view
 const career = computed(() => view.value.career)
 const promotion = computed(() => promotionLine(career.value, cap))
@@ -62,6 +66,7 @@ function go(venue: string, spot?: string): void { shell.close(); void goTo(venue
       <button type="button" class="ui-button" @click="shell.open('jobs')">Jobs: switch or quit</button>
     </div>
     <p v-if="!view.connected" class="ui-why">{{ offline }}</p>
+    <TeachingShift v-if="career.teaching" :generation="career.teaching.generation" :practice="career.teaching.practice" :disabled="pending !== null || !view.connected" @answer="teach" @cancel="cancelTeaching" />
 
     <section v-if="waiting && !dilemma" class="ui-card career-card" role="status">
       <p>{{ wordsFailed ? 'The work situation could not be loaded. Try again to see your choices.' : 'Loading your work situation…' }}</p>

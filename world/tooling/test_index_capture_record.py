@@ -3,7 +3,7 @@ import unittest
 
 from index_capture_record import (
     FORMAT, FORMAT_V2, MAX_JOBS, MAX_RECORD_BYTES, begin_capture, capture_snapshot_ready,
-    decode_capture_record, encode_capture_record, finish_capture,
+    decode_capture_record, encode_capture_record, finish_capture, settled_capture_observation_pins,
 )
 
 
@@ -37,6 +37,24 @@ def capture_input():
 
 
 class CaptureRecordTests(unittest.TestCase):
+    def test_audit_pins_deduplicate_settled_attempts_without_claiming_sql_observations(self):
+        for format, observation in ((FORMAT, None), (FORMAT_V2, {"sha256": SHA_C, "bytes": 64})):
+            value = record(format=format)
+            for _ in range(2):
+                value = begin_capture(value, SHA_B, capture_input(), observation)
+                value = capture_snapshot_ready(value, SHA_B, 0, 3)
+                value = finish_capture(value, SHA_B, SHA_A)
+            raw = encode_capture_record(value)
+            self.assertEqual(settled_capture_observation_pins(raw), {SHA_B: [] if observation is None else [observation]})
+            self.assertEqual(encode_capture_record(value), raw)
+
+    def test_audit_pins_refuse_prepared_or_noncanonical_records(self):
+        value = begin_capture(record(format=FORMAT_V2), SHA_B, capture_input(), {"sha256": SHA_C, "bytes": 64})
+        with self.assertRaisesRegex(ValueError, "unsettled"):
+            settled_capture_observation_pins(encode_capture_record(value))
+        with self.assertRaisesRegex(ValueError, "canonical"):
+            settled_capture_observation_pins(encode_capture_record(record()).rstrip(b"\n"))
+
     def test_v1_encoding_and_default_transition_remain_exact(self):
         value = record()
         expected = (b'{"current":null,"format":"feature-index-capture-controller-v1",'

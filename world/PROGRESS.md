@@ -1,9 +1,360 @@
 # Implementation checkpoint — 9 October 2026
 
+Latest exact-source diagnostic **37888128933** at
+**579ba2693e1641627045c867c6c9c1f3e127538d** is terminal **SUCCESS**:
+**334 tests +3 workflow-policy checks =337 distinct checks, plus World TypeScript**.
+Python258 =19 audit/11 held sessions/77 affected/151 remaining boundaries;
+Node76 =19 protocol/kernel/one actual SDK/56 identity/index/job-contract checks.
+The two actual disposable-Ledger fencing/readonly cases pass. Full downloaded
+artifacts, exact sourceSHA, runtime pins and raw/storage preflight were inspected
+at `.cache/world-build/evidence/remote-audit-37888128933`. No earlier passing
+subset is added to this count. Current raw fixtures797,134B and fixed source
+allowance892,928B preserve the1,048,576B registry/control ceiling.
+All WORLD agents and local command handles are terminal, no local full worker,
+server/browser/build/upload, and memory remains WARNING2. Main0b7da1be is reviewed
+and synchronized; primary Nigeria/game/peer work remains untouched.
+
+This is the tested raw-index audit/session path and draft immutable job contract,
+not complete same-Ledger campaign audit execution, all specified interruption/
+corruption acceptance, new country geometry, gameplay or a production release.
+Next implement a held-session frozen evidence projection for complete leaf raw
+membership and known canonical historical contexts; bind the distinct audit job
+before running it; claim/heartbeat/current-token complete on the same Ledger;
+derive additive read-only status with partial/incompatible/exhausted coverage.
+Do not promote the draft incomplete receipt or silently replace an old namespace.
+Then complete bounded global shard admission, country compilation/streaming,
+Nigeria renderer integration and phone proof. Whole-world goal remains active.
+Earlier chronological diagnostic paragraphs below are retained historical evidence.
+
+Run37887812856 at6576a9a5 is terminal failure solely at World TypeScript:
+the new frozen-input helper validated auditFormat but returned a property still
+typed unknown (TS2322). All258 Python tests (19 audit/11 session/77 regression/
+151 remaining boundary),74 Node tests (19 audit/one real SDK/54 contracts) and
+three release-workflow policy checks passed:335 checks, compiler not accepted.
+The helper now returns the validated literal format. Root added two disposable
+actual-Ledger fixtures: exact-kind audit claims, heartbeat/live-token versus stale
+completion, changed final membership at the same ID, finite exhausted attempts
+without reset, and read-only inspection conserving source result and DB/WAL/SHM
+identity/bytes. Their result is explicitly synthetic and audit-incomplete; they
+do not establish actual campaign/source membership or runtime integration.
+These new fixtures and the compiler correction require a fresh diagnostic.
+All previous negative artifacts remain retained. See audit operations for scope.
+
+Run37887462988 at115593ad is terminal **SUCCESS**. Actual artifacts match the
+source revision:19 protocol/kernel,19 controller/recovery,11 held Python session,
+one real Node→Python retained-Dakar audit and77 affected regression tests all
+pass: **127 distinct checks plus World TypeScript**. The real session audit
+reopens without an additional audit attempt and preserves capture/audit/DB bytes;
+the controller proves retained nonempty/zero-feature and WAL-aware comparisons,
+copy/publish recovery and corruption refusal on disposable admitted namespaces.
+This accepts the tested session/controller path, not the full global campaign
+audit requirements (all corruption/physical-interruption fixtures and same-Ledger
+campaign fencing remain open). Artifacts retained under remote-audit-37887462988.
+No local full workers, game/browser/server/upload or production change occurred.
+
+Next diagnostic broadens to previously uncovered process/lease/bootstrap/recovery
+regressions because fixed worker admission/source inventory changed, and exact
+checked-out release policy. One existing Luna prepared a separate pure
+campaign-index-audit-state module/test: immutable single campaign/index job ID,
+membership hashes, finite retries and conservative incomplete receipt parsing.
+Root rejected speculative qualification fields and bulk clone allocation; source
+now accepts current exact reports and bounds cloning incrementally. This module
+is not wired into campaign execution and cannot establish global qualification.
+Its tests and compiler remain pending; no new agents or local worker fanout.
+
+Run37887178336 at58e695cd is terminal failure with complete retained artifacts:
+19 protocol/kernel and19 actual controller/recovery tests pass,77 affected
+registry/capture/ingestion regressions pass, and World TypeScript passes.
+Python held sessions have one error among11 methods and the actual Node SDK
+audit fails with `'str' object has no attribute 'lstat'`: JSON supplies repository
+paths as text but the audit passed that text to `_capture`, which requires Path.
+Source now converts via Path before existing canonical/no-follow verification,
+matching the capture controller. The actual controller fixture explicitly uses
+the string form; session assertion now preserves a bounded audit error rather
+than obscuring it behind KeyError. These changes need a fresh remote run.
+Verified artifact sourceSHA58e695cd, Node22.19.0/SQLite3.50.4 and
+Python3.12.14/SQLite3.45.1; remote Python SQLite differs from local3.53.1 and is
+independently pinned by each fixture. Raw six-copy and storage preflight passed.
+No production publication or campaign-membership qualification is inferred.
+
+Successor37886998309 at1b56590b is terminal failure:19 protocol/kernel tests
+pass again; controller18 methods finish with four publication-subcase errors.
+The actual retained nonempty/zero-feature, committed-WAL, corruption, copy
+recovery and replay cases now pass. The four errors are the fault injector
+indexing `attempts[-1]` while publishing the initial empty audit record, before
+its intended interruption boundary. The injector now delegates empty records;
+nine local no-worker codec/file methods pass (root-controls-v3, terminal25b161
+exit0). This does not accept the actual publication cases until rerun. CI now
+continues independent serial checks after a test failure only when raw/storage
+preflight passed, retaining an overall failed result. Full later tests were
+skipped in both earlier runs and remain open. All negative artifacts retained.
+Fresh main0b7da1be was reviewed and safely fast-forwarded: coordination docs only,
+WORLD implementation preserved. Fixed47-source bytes569,910 still allocate892,928B;
+registry/control with operation remains1,048,576B, no cap increase. Luna source
+review confirms mandatory namespace reservation proof remains in admission.
+
+Diagnostic37886772443 is now terminal **failure**, not release acceptance.
+Its19 protocol/kernel tests passed; actual controller17 tests produced14 errors
+(including publication subcases), all before audit launch because `_original_pins`
+incorrectly required per-index `reservation.json`. Real reservations are in the
+namespace's `reservations.sqlite`; root metadata is optional and still pinned
+when present. Source now requires actual binding/writer controls and preserves
+optional metadata appearance/mutation checks. Eight no-worker codec/file checks
+pass after this correction (root-controls-v2, terminal863144 exit0); the v1
+fixture failure from a noncanonical macOS temporary path is retained. Remote
+artifacts are retained in `.cache/world-build/evidence/remote-audit-37886772443`.
+The worker/session/SDK/regression/compiler steps after the failed controller
+were skipped, not passing. A corrected successor diagnostic is required.
+
+Remote diagnostic validation is now actually running: GitHub run
+**37886772443**, exact draft commit **a63871d16d8e710a452f23d20718679f8dc2fa3b**
+on `codex/world-index-audit-diagnostic`:
+https://github.com/kromate/joinallworld/actions/runs/37886772443.
+The separate candidate contains exactly36 WORLD-owned paths, including six
+byte-identical pinned raw extract/receipt copies (797,134B), their attribution
+and manifest, and a serial non-deploying CI workflow. Candidate blob hashes and
+all six raw pins were verified before publication. The WORLD worktree HEAD and
+index remain unchanged; unknown drafts and the deployment node_modules symlink
+were excluded. This is diagnostic source publication, not main/runtime
+acceptance or a production release. No test pass is inferred from dispatch.
+
+The latest small suite is **32 distinct passing checks**, terminaleee2ab exit0,
+0.462s unittest,55,230,464B maxRSS: the prior30 plus two portable input-path
+checks. An existing raw cache file always takes precedence and corruption fails;
+only an absent original uses the exact verified fixture, without creating cache
+state. Receipt: `feature-index-audit-small-v6`. Packaged pins and Python fixture
+compilation passed preparation-v2; Ruby parsed the workflow. The earlier PyYAML
+preparation failure is retained, with no dependency installed to bypass it.
+The SDK retained-Dakar fixture now explicitly admits both buildings and roads.
+Actual worker/session/SDK/typecheck results remain pending. Earlier small counts
+below are historical subsets. Local pressure remains WARNING2 (~10.2GB swap),
+all WORLD subagents are terminal, and heavy local tests remain deferred.
+The next gate is actual remote validation and repair, then the still-unimplemented
+same-Ledger campaign audit gate and bounded global country compilation/streaming.
+The whole-world goal remains incomplete; Nigeria/game data are unchanged.
+
+Source review corrections now bound the audit SDK caller clone before framing:
+array count is checked before traversal; cloning has100,000-node/512,000-ASCII-byte/
+depth48 ceilings, incremental string/key escaping charges and individual field
+descriptors. Existing ordinary capture preparation is unchanged. Python now
+retains a bounded descriptor refusal, clears accumulated descriptors, drains the
+declared remaining frames in exact order and emits a correlated terminal error
+on run without importing/invoking the controller. This avoids misclassifying a
+normal expanded-historical-pin capacity refusal as an unverified session exit.
+Malformed frame order and premature close remain failures, not successful audits.
+The existing Luna reviewer found no remaining frame-drain/close defect; this is
+source review, not worker/session acceptance.
+
+Current small suite **30** passes (terminal02a2ee exit0,0.61s process/0.432s unittest,
+54,034,432B RSS):14 capture-record,7 codec/file,2 physical capacity and7 tooling.
+The new overflow/drain codec exercises actual collection code with a stubbed
+emitter, proves no audit invocation, and claims no actual worker or session run.
+Receipt `feature-index-audit-small-v5`; v4's29 are a subset. Final fixed-source
+checkv3 passes30 Python compiles at28,295,168B RSS. Fixed47 bytes569,770, admission
+16,192B, source allowance892,928B, registry/control1,040,384B and with-operation
+estimate1,048,576B all preserve existing caps. The v3 receipt explicitly checks
+the optional operation control as well. Added SDK count-before-accessor, depth
+and byte-bound fixtures remain unrun. Final SDK syntax-v4 passes after all clone
+edits (terminalde1166 exit0,0.03s,40,009,728B RSS,32MiB heap). Full compiler/runtime
+acceptance remains pending. Earlier source
+counts and small-check counts below are superseded by this paragraph.
+
+Latest continuation implements the terminal audit session bridge in local source;
+it is **not accepted or published**. Python collects bounded frames while holding
+the existing admission, derives historical pins from the actual settled record,
+and runs one final audit before close/EOF. The SDK copies and bounds descriptors,
+validates fresh/replayed guard reports, then hashes actual private control files
+to correlate complete durable capture membership, three-field input/expectation
+pins, admitted root/lock identities, logical corpus, required contexts and the
+terminal report/guard. Root fixed an incorrect five-field durable-input assumption.
+No original SQL is opened by the SDK verification. Audit calls leave capture
+counters unchanged and refuse subsequent ingestion/second audits.
+
+Luna's source-only handback was17,438B, exceeding its16,384B source allocation
+bucket. Root factored pure descriptor preparation into existing index_ingest.py
+and settled-record pin derivation into existing index_capture_record.py. The
+admission source is now15,799B; no new fixed module or quota was added. Current47
+fixed sources total569,377B plus1,297B configuration. Shared source allowance stays
+892,928B. Registry/control estimate is1,040,384B before its optional8,192B operation
+control, or1,048,576B with it: the existing1MiB remainder, not expanded capacity.
+
+The current small suite passes **29 distinct checks**, terminal5c7fe9 exit0,
+1.03s process/0.60s unittest,53,035,008B maxRSS:14 capture-record checks (including
+two new settled/duplicate/legacy/prepared pin cases), six audit codec/file checks
+(including two new descriptor expansion/no-mutation/refusal cases), two actual
+filesystem capacity refusals and seven existing tooling checks. No Node worker or
+SQLite connection is launched. Receipts: `feature-index-audit-small-v4`; v2's two
+incorrect method selections are retained as negative evidence, v3's15 checks are
+a subset. Source checkv2 compiles30 Python sources/fixtures, exit0,28,295,168B RSS.
+Three Node syntax-only checks pass under32MiB heaps (39,747,584–40,042,496B RSS):
+session-v2, SDK-fixture-v1 and protocol-v1. They do not execute SDK/worker tests or
+establish TypeScript correctness.
+
+Added synthetic SDK framing/report tests and a real Node→Python Dakar fixture:
+two retained captures,2,283 raw ordinals, two synthetic required contexts, no
+ingestion after audit, reopened audit replay with one retained attempt, original
+capture/audit/DB byte conservation. Python's original ingestion-replay fixture
+remains separate from the new final-audit fixture; an audited index is frozen.
+These runtime fixtures are **unrun**. They must pass before bridge acceptance.
+
+Fresh main af273f45 was reviewed and fast-forwarded, only coordination notes;
+all WORLD edits preserved. All WORLD intensive handles are terminal and all shared
+slots were free when inspected. One existing Luna source-only review is active,
+no new fanout. GRAPHICS, LIVING and MEMORY received the checkpoint; APP UI remains
+unavailable from this host. Pressure remains WARNING2 with sustained paging, so
+full controller/session/SDK/kernel/compiler tests, browser/server/build/upload
+are deferred. Next resolve source review, then actual controller-v2 and new
+session/SDK cases at fresh NORMAL plus easing churn; continue the same-Ledger
+campaign audit gate, global shard admission and compiled country geometry.
+No new map detail, production runtime release or whole-goal completion is claimed.
+Earlier paragraphs below are historical where superseded.
+
+Latest bounded continuation is progress: actual no-worker recovery/capacity
+checks and shared source-allocation accounting were implemented and verified.
+`source_snapshot_allowance` now rounds every admitted source/configuration file
+to8KiB with fixed directory/metadata margin. Registry, capture and audit preflight
+share this function;1MiB control/source and17MiB registry caps and actual allocated
+block inventories are unchanged. No capture namespace or source quota was reset.
+Current47-source bytes562,947 plus1,297B configuration yield892,928B source
+allowance and1,048,576B registry/control estimate, exactly its existing remainder.
+The next tooling block increase must refuse admission, not increase that cap.
+
+Four no-worker codec/file tests pass (terminal50e1ce,0.18s,37,339,136B RSS), adding
+a substituted-snapshot recovery test under actual paired kernel leases: both
+pending and committed records remain byte-identical after refusal. Source-only
+Luna review found no concrete capacity undercount; that is review, not acceptance.
+Two actual filesystem capacity checks now pass: enlarged valid-pinned tooling is
+refused before controller publication (terminal880c11,0.37s,56,246,272B RSS;
+only the permanent zero-byte writer lock exists), and measured exhausted snapshot
+headroom is refused before registry worker launch while preserving its fixture
+controls (terminalf2541f,0.37s,55,590,912B RSS). The physical fixture pads sources
+to8KiB boundaries and deliberately consumes owned control slots. It is not an
+accepted operational namespace. Earlier fixture failures are retained: wrong
+anchor filename, zero-byte permanent-lock expectation, and physical capacity
+fixture preparation. Receipts: `feature-index-audit-codec-v4`, `capacity-v2`,
+`physical-capacity-v3` under the audit evidence prefix.
+
+Final current small suite passes13 (terminal5f5b9d,0.57s,55,083,008B RSS):4 codec/
+file checks,2 capacity checks and7 existing tooling checks. Earlier small runs are
+subsets, not added to13. No Node, SQLite connection or registry worker is launched
+by this suite. `feature-index-audit-small-v1.stderr` records acceptance scope.
+Python compile of the changed sources/new fixture passes. A retained real Senegal
+zero-feature query fixture was added, using the two exact immutable source pins in
+`grid-query.json`; the two files verify at3,340B total. It does not fabricate
+campaign observations or establish physically empty geography; its full worker
+execution remains pending with the rest of controller-v2.
+
+Fresh pressure stayed WARNING2, so no full controller-v2, kernel/compiler, browser,
+server or upload began; no live WORLD execution handle exists to resume. Next
+fresh NORMAL/shared-heavy slice runs full controller-v2, then affected registry/
+capture tests, final kernel8/compiler and real conservation/recovery acceptance.
+Session framing, same-Ledger final audit gate, global shard admission and compiled
+streamed country geometry remain open. Full objective remains active; no new map
+detail or production runtime release is claimed. Older local paragraphs below
+are historical where their estimates, counts or ownership differ.
+
+Latest continuation: published main coordination eae1c349 was reviewed and adopted
+by a fast-forward preserving all local edits. Existing Luna source reviews are
+terminal; no new agents or WORLD browser/server/upload were started. This turn
+is progress through concrete recovery fixes, additional fixtures and actual
+small codec evidence; the previous status-only turn was no progress.
+
+The bounded durable result witness (`audit.result.json`,8,192B) and `reporting`
+phase now support interrupted successful-report publication without inventing a
+new worker result. Root fixed witness exclusion from original inventory,
+malformed-witness fault selection, persisted snapshot inode checking before a
+reconstructed update, and required-context normalization. A no-worker check found
+that AST parsing had missed an illegal comprehension assignment expression;
+its failure receipt is retained and the code is corrected. Python actual compile
+of all fixed sources and the new controller fixture now passes.
+
+Three file/codec tests pass (terminal051d59,0.20s,37,273,600B maxRSS), including all
+result-write prefixes, invalid/oversized witnesses and distinct required contexts
+versus allowable historical attempt pins. These synthetic codec checks do not
+prove actual worker success. Receipt: `feature-index-audit-codec-v2.stderr`;
+v1 failure is preserved. File-only inventory v2 passes11 (terminalb7de4f,
+0.13s,27,574,272B RSS). Source closure47 files562,586B plus1,297B configuration
+has conservative allowance1,047,211B under the unchanged1MiB bound,1,365B headroom.
+
+Actual controller fixtures now also cover interrupted DB-copy prefixes,
+corrupted owned prefixes, exhausted immutable retry budgets and missing SQL
+ordinals without repair. First actual controller invocation (terminal83423d)
+exited1 before any audit launch:3 codec tests passed but all14 controller cases
+refused registry admission because the enlarged bundle exceeded its conservative
+preflight. Receipt: `feature-index-audit-controller-v1.stderr` (10 test methods,
+14 subcase errors,0.80s,50,905,088B RSS); preserve this negative evidence.
+Root corrected the estimate to round each source/config/control file to8KiB,
+retaining directory/metadata margin and the unchanged17MiB registry cap. Actual
+snapshot allocation is still independently checked before worker launch. New
+registry-control estimate is1,040,384B under its1MiB remainder. This change needs
+affected registry tests and controller acceptance; it is not a quota increase.
+Final controller execution remains pending after WARNING2 returned; no running
+handle exists to resume. The final
+eight-test kernel and final compiler also remain pending. Next actual safe
+execution slice: run `test_index_audit_controller`, preserve failures, repair
+from evidence, then verify the kernel/compiler and affected ingestion/fence
+checks. Session framing and the same-Ledger final audit gate remain next, followed
+by global shard admission and compiled streamed country geometry. No audit
+acceptance, new country geometry, runtime deployment or full-goal completion is
+claimed. Older local implementation paragraphs immediately below are superseded
+where their source sizes, test counts or ownership differ.
+An actual streaming protection check (terminalbc22f9,0.19s,28,409,856B RSS)
+confirms all nine protected raw/receipt/campaign DB/WAL/SHM files match the prior
+accepted hashes and lengths; it opens no SQLite and performs no network work.
+Python compile and both source/control estimates pass. Evidence:
+`feature-index-audit-local-progress-v1.json`, `feature-index-audit-protection-v1`.
+
+Independent audit milestone is in local implementation, not yet accepted. The
+logical raw/SQL kernel and fixed Node worker are drafted. The worker independently
+checks raw pins, capture membership, actual root/lock identities and a private
+WAL-aware copy; the kernel refuses a non-WAL header. Existing write-capable
+bootstrap and both ingestion entry points now refuse any audit state before SQL
+or allocation, freezing that index's final input. One existing Luna owns the
+new Python controller and actual disposable fixtures; interrupted source/DB copy,
+durable successful-report replay and bounded attempt publication remain in review.
+Another existing Luna completed source-only worker/kernel review. No new agents,
+browser, server, upload or concurrent heavy execution were started.
+
+File-only inventory validation passes **10 tests**, terminal9da4c2 exit0,
+0.060s unittest/0.20s process,27,525,120B maxRSS. The two new cases charge private
+DB/WAL/SHM copies inside the original reservation and preserve unknown, linked
+or oversized survivors. Evidence: `feature-index-audit-footprint-v1.stderr`.
+These checks do not establish worker/controller acceptance, original-state
+preservation during a real audit, campaign observation completeness or country
+geometry. The logical kernel now passes7 tests (terminal6c8d13,0.21s,
+115,638,272B maxRSS) after two fixture syntax closers were corrected. World
+TypeScript passes (terminal3271,3.88s,438,026,240B maxRSS,existing384MiB heap)
+after one fixture SQL-value narrowing correction. Earlier kernel-v1 and
+typecheck-v1 failures are retained. Receipts: `feature-index-audit-kernel-v2`
+and `feature-index-audit-typecheck-v2`. These are17 focused checks plus compiler,
+not full fixed-worker/controller acceptance. Final fixture narrowing is compiled;
+repeat the kernel at the next safe finite execution slice before final acceptance.
+Actual retained captures, interruption and corruption fixtures, session bridge
+and campaign audit gate remain open.
+
+Fresh fetch and reviewed fast-forward adopted coordination-only main eab78f3e,
+preserving all local edits and unrelated drafts. Fixed47-source sizing currently
+549,752B plus1,297B configuration gives a conservative1,034,377B source allowance
+under the unchanged1MiB limit,14,199B remaining. All fixed Python source and the
+three controller fixtures parse without executing them. The controller now
+streams raw file checks through one descriptor at a time, stores actual compact
+terminal guard/report evidence and exact attempt envelope hashes, and resumes
+owned source/DB copy prefixes. Root corrected preflight to charge original files
+and private copies/SHM/envelopes together before publishing audit state. New
+actual fixtures check committed WAL-only rows and frozen ingestion/bootstrap.
+They remain unrun. A partial success-record publication without a reconstructible
+witness remains a conservative preserved-state stop; a source-only Luna review
+is resolving that unattended recovery gap.
+The kernel/compiler slice started after fresh NORMAL; warning returned during
+the finite compiler checks. All checks are terminal and shared slots returned.
+The last pressure check is WARNING2; no actual controller worker, build, browser
+or upload was started. Actual controller checks defer to fresh NORMAL. The
+accepted published milestone below remains tied to its exact committed source.
+
 Implementation **a75c59af** passes five exact committed-source release-policy
 checks (terminal87705,3.81s,96,043,008B maxRSS), for **276 distinct checks plus
 World TypeScript**. Clean archive140,830,720B/8,592members fits256MiB/10,000members;
-owned scratch is removed. All accepted source/test pins remain unchanged. Receipt:
+owned scratch is removed. All accepted source/test pins matched at acceptance. Receipt:
 `campaign-index-final-acceptance-v1.json`. Implementation and acceptance94d95a88 are published on main (push47980
 terminal0; fresh fetch60520,0ahead/0behind). No runtime upload or country geometry
 is inferred. All WORLD heavy/browser/server resources handed back terminal.

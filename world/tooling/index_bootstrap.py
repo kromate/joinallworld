@@ -15,7 +15,7 @@ from index_binding_publish import publish_index_binding
 from index_execution_snapshot import verified_execution_snapshot
 from index_resource_limits import _run_fixed_process
 from index_root import ChargedIndexRoot, _binding, _lease
-from index_storage_footprint import index_storage_footprint
+from index_storage_footprint import AUDIT_FILES, AUDIT_DIRECTORIES, index_storage_footprint
 
 MIB = 1024*1024
 
@@ -67,6 +67,9 @@ def bootstrap_index(admitted, repository_root, manifest_bytes, source_configurat
             or root.name != admitted.index_hash or config["reservedBytes"] != admitted.reserved_bytes):
         raise ValueError("engine bootstrap root/hash/allowance differs")
     _binding(root, admitted.binding_bytes)
+    if any((root/name).exists() or (root/name).is_symlink()
+           for name in AUDIT_FILES | AUDIT_DIRECTORIES):
+        raise ValueError("index is frozen for audit; write-capable bootstrap is refused")
     executable, runtime_before = _node_pin(node, config["runtime"])
     with verified_execution_snapshot(repository_root, manifest_bytes, config["toolingManifest"],
                                      source_configuration, config["source"]["configuration"]) as execution:

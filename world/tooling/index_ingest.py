@@ -6,6 +6,7 @@ namespace admission and durable job/attempt fencing. Raw cache files are readonl
 inputs, not copied into the index allowance. This is not a sandbox.
 """
 from contextlib import contextmanager, nullcontext
+import base64
 import hashlib
 import json
 import os
@@ -21,7 +22,7 @@ from index_execution_snapshot import verified_execution_snapshot, VerifiedIndexE
 from index_tooling import verify_index_tooling
 from index_resource_limits import _run_fixed_process, IndexWorkerUnreaped
 from index_root import ChargedIndexRoot, _binding, _lease
-from index_storage_footprint import index_storage_footprint
+from index_storage_footprint import AUDIT_FILES, AUDIT_DIRECTORIES, index_storage_footprint
 
 MIB = 1024*1024
 EXTRACT_BYTES = 20_000_000
@@ -32,6 +33,31 @@ _OBSERVATION_SHA = re.compile(r"[a-f0-9]{64}", re.ASCII)
 _ROOT_CELL = re.compile(r"^geo-grid-v1:l(0|[1-9]|1[0-6]):x(0|[1-9][0-9]{0,7}):y(0|[1-9][0-9]{0,7})$", re.ASCII)
 _QUERY_PATH = re.compile(r"[0-3]{0,8}", re.ASCII)
 _JS_TRIM = "\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff"
+
+
+def prepare_audit_capture_descriptor(message, jobs):
+    """Bound an audit descriptor using pins derived from settled durable jobs.
+
+    This is pure preparation: it opens no files or SQL and makes no membership
+    qualification. The audit controller separately verifies the complete corpus.
+    """
+    expected = message.get("expected")
+    if type(expected) is not dict or type(expected.get("requestHash")) is not str:
+        raise ValueError("bad audit expectation")
+    allowed = jobs.get(expected["requestHash"])
+    if allowed is None:
+        raise ValueError("audit request absent from durable membership")
+    contexts = message.get("requiredObservations")
+    if type(contexts) is not list or len(contexts) > 8:
+        raise ValueError("audit observation bound exceeded")
+    contexts = sorted(contexts, key=lambda value: (observation_pin(value)["sha256"], observation_pin(value)["bytes"]))
+    path, receipt = message["extractPath"], message["receiptPath"]
+    raw = json.dumps(expected, ensure_ascii=True, sort_keys=True, separators=(",", ":"), allow_nan=False).encode("ascii")
+    item = {"extractPath": path, "receiptPath": receipt, "expectedBase64": base64.b64encode(raw).decode("ascii"),
+            "requiredObservations": contexts, "allowedObservationPins": allowed}
+    size = len(json.dumps(item, ensure_ascii=True, sort_keys=True, separators=(",", ":"), allow_nan=False).encode("ascii"))
+    return dict(extractPath=path, receiptPath=receipt, expected=expected,
+                requiredObservations=contexts, allowedObservationPins=allowed), size
 
 
 def _expected(value):
@@ -209,6 +235,9 @@ def ingest_index(admitted, repository_root, manifest_bytes, source_configuration
             or config["reservedBytes"] != admitted.reserved_bytes):
         raise ValueError("capture ingestion root, paired namespace or allowance differs")
     _binding(root, admitted.binding_bytes)
+    if any((root/name).exists() or (root/name).is_symlink()
+           for name in AUDIT_FILES | AUDIT_DIRECTORIES):
+        raise ValueError("index is frozen for audit; ingestion is refused before SQL or allocation")
     executable, runtime_before = _node_pin(node, config["runtime"])
     if _execution is not None:
         if (type(_execution) is not VerifiedIndexExecution or _execution.root != root/"capture.execution"

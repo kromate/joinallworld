@@ -61,7 +61,7 @@ function stable(info: BigIdentity): string {
     info.uid, info.mode, info.nlink].join(':');
 }
 
-function privateDescriptor(fd: number, maximum: number, label: string): Buffer {
+export function privateDescriptor(fd: number, maximum: number, label: string): Buffer {
   const before = fstatSync(fd, { bigint: true }) as BigIdentity;
   assert.ok(before.isFile() && before.uid === BigInt(process.getuid!())
     && (before.mode & 0o777n) === 0o600n && before.nlink === 0n
@@ -81,7 +81,7 @@ function privateDescriptor(fd: number, maximum: number, label: string): Buffer {
   return bytes.subarray(0, count);
 }
 
-function privatePath(file: string, maximum: number, mode: number, label: string): Buffer {
+export function privatePath(file: string, maximum: number, mode: number, label: string): Buffer {
   const fd = openSync(file, constants.O_RDONLY | nofollow);
   try {
     const before = fstatSync(fd, { bigint: true }) as BigIdentity;
@@ -147,7 +147,7 @@ function parseEnvelope(bytes: Buffer): CaptureEnvelope {
   };
 }
 
-function captureBytes(fd: number, expected: Pin, maximum: number, label: string): Buffer {
+export function captureBytes(fd: number, expected: Pin, maximum: number, label: string): Buffer {
   const before = fstatSync(fd, { bigint: true }) as BigIdentity;
   assert.ok(before.isFile() && before.uid === BigInt(process.getuid!()) && before.nlink === 1n
     && (before.mode & 0o022n) === 0n && before.size === BigInt(expected.bytes)
@@ -181,7 +181,7 @@ function readBinding(raw: Buffer): FeatureBinding {
     engineLimits: top.engineLimits as FeatureIndexLimits };
 }
 
-function validateRootAndLeases(root: string, leaseFd: number, namespaceFd: number): {
+export function validateRootAndLeases(root: string, leaseFd: number, namespaceFd: number): {
   rootInfo: BigIdentity; databasePath: string;
 } {
   assert.ok(path.isAbsolute(root) && realpathSync(root) === root, 'Index root must be canonical and absolute.');

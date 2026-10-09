@@ -1,11 +1,39 @@
 # Decisions and repeatable rollout after the first compiler
 
+Latest audit-path diagnostic —9 October2026: exact579ba269/run37888128933
+is terminal SUCCESS:334 tests+3 workflow-policy checks, full World TypeScript,
+verified raw pins and unchanged storage preflight. Actual controller/session/SDK
+and full fixed-worker boundary regressions pass; two disposable same-Ledger
+token/exhaustion/readonly checks validate the draft job contract. Full campaign
+membership projection and connected audit execution remain unimplemented, as do
+the broader corruption/interruption list, global country geometry and phone proof.
+This source milestone has no production runtime upload or new map detail.
+Read latest PROGRESS.md and FEATURE-INDEX-AUDIT-OPERATIONS.md; older paragraphs
+below remain historical where superseded.
+
+Audit diagnostic update — 9 October2026: isolated drafta63871d1 is published
+on `codex/world-index-audit-diagnostic`; actual serial GitHub run37886772443
+is in progress, not accepted. It uses six exact pinned raw copies and fixed
+Node22.19.0/Python3.12.14 runtime selection. The current small suite passes32;
+these checks do not replace actual worker/session/SDK/compiler acceptance.
+No main/runtime publication or new map detail accompanies this diagnostic.
+Keep the same-Ledger campaign gate, global shards, compiled country streaming,
+Nigeria renderer integration and phone proof open. See latest PROGRESS.md.
+
 Current campaign-index checkpoint — 9 October 2026: actual held-session ingestion,
 frozen query membership and live-token completion are implemented.228 Python +43
 Node tests and full World TypeScript pass. Implementationa75c59af also passes
 five exact source-policy checks:276 distinct checks plus compiler. Source and acceptance94d95a88 are published on main; runtime upload is not
-part of this phase. FEATURE-INDEX-AUDIT-SPEC.md defines the next unimplemented
-gate, including failed-attempt observation handling and charged WAL-aware copies. Read the first PROGRESS.md section and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
+part of this phase. FEATURE-INDEX-AUDIT-SPEC.md defines the next gate, now in
+local implementation and not yet accepted: raw/SQL kernel, fixed worker,
+charged WAL-aware copies and durable controller recovery. File-only inventory
+checks pass11; current small no-worker suite passes30 including14 capture-record,
+7 codec/file,2 capacity and7 tooling checks. Registry/capture/audit use shared8KiB-rounding
+preflight with unchanged storage caps. Earlier logical kernel7 and World
+TypeScript pass. Final-source kernel/compiler, real audit execution,
+the drafted terminal session/SDK bridge, campaign integration and the
+independent acceptance fixtures remain open. Read the first PROGRESS.md section
+and CAMPAIGN-FEATURE-INDEX-OPERATIONS.md.
 Next independent raw/index audit, deterministic globally admitted shards/operator
 materials and compiled streamed country geometry. Geographic foundation remains
 distinct from explorable/playable coverage; no runtime upload/map detail thisphase.

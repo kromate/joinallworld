@@ -1,6 +1,6 @@
 import { execFile, spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';
 import { constants } from 'node:fs';
-import { access, lstat, readFile, realpath } from 'node:fs/promises';
+import { access, lstat, readFile, realpath, open } from 'node:fs/promises';
 import path from 'node:path';
 import { parseCaptureJson } from './capture-json.ts';
 import { CAPTURE_BINDING_VERSION, type CaptureBytePin, type CaptureExpectation } from './capture-binding.ts';
@@ -13,6 +13,7 @@ const CAPTURE_FORMAT = 'feature-index-session-capture-v1';
 const RESULT_FORMAT = 'feature-index-session-result-v1';
 const CLOSE_FORMAT = 'feature-index-session-close-v1';
 const DONE_FORMAT = 'feature-index-session-done-v1';
+const AUDIT_RESULT_FORMAT = 'feature-index-session-audit-result-v1';
 const MAX_INIT_BYTES = 256_000;
 const MAX_LINE_BYTES = 128_000;
 const MAX_STDERR_BYTES = 64_000;
@@ -46,10 +47,15 @@ export interface FeatureIndexCaptureInput {
   observation: FeatureIndexObservation | null;
 }
 export interface FeatureIndexSessionReady { indexHash: string; admission: Record<string, unknown> }
+export interface FeatureIndexSessionAuditInput {
+  extractPath: string; receiptPath: string; expected: CaptureExpectation;
+  requiredObservations: readonly FeatureIndexObservation[];
+}
 export interface FeatureIndexSession {
   readonly indexHash: string;
   readonly ready: FeatureIndexSessionReady;
   ingestCapture(input: FeatureIndexCaptureInput): Promise<Record<string, unknown>>;
+  auditCaptures(inputs: readonly FeatureIndexSessionAuditInput[], attemptLimit?: number): Promise<Record<string, unknown>>;
   close(): Promise<{ indexHash: string; captures: number }>;
 }
 
@@ -88,7 +94,31 @@ function exactObject(value: unknown, keys: readonly string[], label: string): Re
   return value as Record<string, unknown>;
 }
 
-function cloneJson(value: unknown, label: string, seen = new Set<object>()): unknown {
+type JsonCloneBudget = { nodes: number; bytes: number; depth: number };
+function chargeCloneBytes(value: unknown, label: string, budget: JsonCloneBudget): void {
+  const charge = (bytes: number) => {
+    budget.bytes -= bytes;
+    if (budget.bytes < 0) throw new RangeError(`${label} exceeds its bounded cloning byte limit.`);
+  };
+  if (typeof value === 'string') {
+    if (value.length > budget.bytes) throw new RangeError(`${label} exceeds its bounded cloning byte limit.`);
+    charge(2);
+    // Count the canonical ASCII JSON spelling without allocating its escaped text.
+    for (let i = 0; i < value.length; i++) {
+      const code = value.charCodeAt(i);
+      charge(code > 0x7f ? 6 : code === 0x22 || code === 0x5c ? 2
+        : code < 0x20 ? code === 8 || code === 9 || code === 10 || code === 12 || code === 13 ? 2 : 6 : 1);
+    }
+  } else {
+    const text = JSON.stringify(value);
+    if (typeof text !== 'string') throw new TypeError(`${label} must be JSON data.`);
+    charge(text.length);
+  }
+}
+
+function cloneJson(value: unknown, label: string, seen = new Set<object>(), budget?: JsonCloneBudget, depth = 0): unknown {
+  if (budget && (depth > budget.depth || --budget.nodes < 0)) throw new RangeError(`${label} exceeds its bounded cloning depth/node limit.`);
+  if (budget && (value === null || ['string', 'boolean', 'number'].includes(typeof value))) chargeCloneBytes(value, label, budget);
   if (value === null || typeof value === 'string' || typeof value === 'boolean') return value;
   if (typeof value === 'number') {
     if (!Number.isFinite(value)) throw new TypeError(`${label} contains a non-finite number.`);
@@ -98,6 +128,22 @@ function cloneJson(value: unknown, label: string, seen = new Set<object>()): unk
   seen.add(value);
   try {
     if (Array.isArray(value)) {
+      if (budget && value.length > budget.nodes) throw new RangeError(`${label} exceeds its bounded cloning node limit.`);
+      if (budget) {
+        budget.bytes -= value.length + 2;
+        if (budget.bytes < 0) throw new RangeError(`${label} exceeds its bounded cloning byte limit.`);
+        for (const key in value) {
+          if (Object.hasOwn(value, key) && (!/^(0|[1-9][0-9]*)$/.test(key) || Number(key) >= value.length)) throw new TypeError(`${label} array has extra properties.`);
+        }
+        const output: unknown[] = [];
+        for (let index = 0; index < value.length; index++) {
+          const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+          if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) throw new TypeError(`${label} array has a hole or accessor.`);
+          output.push(cloneJson(descriptor.value, label, seen, budget, depth + 1));
+        }
+        if (Reflect.ownKeys(value).length !== value.length + 1) throw new TypeError(`${label} array has extra properties.`);
+        return output;
+      }
       const descriptors = Object.getOwnPropertyDescriptors(value);
       if (Reflect.ownKeys(value).some(key => typeof key === 'symbol')
           || Object.keys(descriptors).some(key => key !== 'length'
@@ -108,7 +154,7 @@ function cloneJson(value: unknown, label: string, seen = new Set<object>()): unk
       for (let index = 0; index < value.length; index++) {
         const descriptor = descriptors[String(index)];
         if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) throw new TypeError(`${label} array has a hole or accessor.`);
-        output.push(cloneJson(descriptor.value, label, seen));
+        output.push(cloneJson(descriptor.value, label, seen, budget, depth + 1));
       }
       return output;
     }
@@ -116,12 +162,29 @@ function cloneJson(value: unknown, label: string, seen = new Set<object>()): unk
       throw new TypeError(`${label} objects must be plain JSON records.`);
     }
     const output: Record<string, unknown> = {};
-    const descriptors = Object.getOwnPropertyDescriptors(value);
-    for (const key of Reflect.ownKeys(value)) {
-      if (typeof key !== 'string') throw new TypeError(`${label} has a symbol key.`);
-      const descriptor = descriptors[key];
-      if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) throw new TypeError(`${label} has an accessor or hidden field.`);
-      Object.defineProperty(output, key, { value: cloneJson(descriptor.value, label, seen), enumerable: true, writable: true, configurable: true });
+    if (budget) { budget.bytes -= 2; if (budget.bytes < 0) throw new RangeError(`${label} exceeds its bounded cloning byte limit.`); }
+    if (budget) {
+      let count = 0;
+      // Stop wide enumerable request records before copying every descriptor.
+      for (const key in value) {
+        if (!Object.hasOwn(value, key)) continue;
+        count++;
+        if (budget.nodes < 1) throw new RangeError(`${label} exceeds its bounded cloning node limit.`);
+        chargeCloneBytes(key, label, budget); budget.bytes -= 2;
+        if (budget.bytes < 0) throw new RangeError(`${label} exceeds its bounded cloning byte limit.`);
+        const descriptor = Object.getOwnPropertyDescriptor(value, key);
+        if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) throw new TypeError(`${label} has an accessor or hidden field.`);
+        Object.defineProperty(output, key, { value: cloneJson(descriptor.value, label, seen, budget, depth + 1), enumerable: true, writable: true, configurable: true });
+      }
+      if (Reflect.ownKeys(value).length !== count) throw new TypeError(`${label} has a symbol key or hidden field.`);
+    } else {
+      const descriptors = Object.getOwnPropertyDescriptors(value);
+      for (const key of Reflect.ownKeys(value)) {
+        if (typeof key !== 'string') throw new TypeError(`${label} has a symbol key.`);
+        const descriptor = descriptors[key];
+        if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) throw new TypeError(`${label} has an accessor or hidden field.`);
+        Object.defineProperty(output, key, { value: cloneJson(descriptor.value, label, seen), enumerable: true, writable: true, configurable: true });
+      }
     }
     return output;
   } finally { seen.delete(value); }
@@ -213,6 +276,45 @@ function validateCaptureInput(value: FeatureIndexCaptureInput): FeatureIndexCapt
     featureIndexObservationPin(observation);
   }
   return { extractPath, receiptPath, expected, observation };
+}
+
+/** Bound and copy all wire inputs before starting the one terminal audit call.
+ * Python derives historical allowable pins; it still checks the final512KB envelope.
+ */
+export function prepareFeatureIndexSessionAudit(inputsValue: readonly FeatureIndexSessionAuditInput[], attemptLimit = 8): {
+  inputs: FeatureIndexSessionAuditInput[]; attemptLimit: number; frames: Buffer[];
+} {
+  integer(attemptLimit, 1, 8, 'Audit attempt limit');
+  if (!Array.isArray(inputsValue) || inputsValue.length < 1 || inputsValue.length > 256) throw new RangeError('Audit requires1..256 captures.');
+  const values = cloneJson(inputsValue, 'Audit captures', new Set(), { nodes: 100_000, bytes: 512_000, depth: 48 });
+  if (!Array.isArray(values) || values.length < 1 || values.length > 256) throw new RangeError('Audit requires1..256 captures.');
+  let previous = ''; let aggregate = 0;
+  const inputs = values.map(value => {
+    const item = exactObject(value, ['extractPath', 'receiptPath', 'expected', 'requiredObservations'], 'Audit capture');
+    const input = validateCaptureInput({ extractPath: item.extractPath, receiptPath: item.receiptPath,
+      expected: item.expected, observation: null } as FeatureIndexCaptureInput);
+    if (input.expected.requestHash <= previous) throw new Error('Audit captures must be sorted and distinct by request hash.');
+    previous = input.expected.requestHash;
+    if (!Array.isArray(item.requiredObservations) || item.requiredObservations.length > 8) throw new RangeError('Audit required contexts exceed8.');
+    const requiredObservations = item.requiredObservations.map(observation => validateCaptureInput({ ...input, observation }).observation!);
+    const pins = requiredObservations.map(featureIndexObservationPin);
+    if (new Set(pins.map(p => p.sha256)).size !== pins.length) throw new Error('Audit required contexts must be distinct.');
+    requiredObservations.sort((a, b) => {
+      const x = featureIndexObservationPin(a), y = featureIndexObservationPin(b);
+      return x.sha256 < y.sha256 ? -1 : x.sha256 > y.sha256 ? 1 : x.bytes - y.bytes;
+    });
+    const expectedBase64 = asciiJsonLine(input.expected, 64_001, 'Audit expectation').subarray(0, -1).toString('base64');
+    aggregate += asciiJsonLine({ extractPath: input.extractPath, receiptPath: input.receiptPath,
+      expectedBase64, requiredObservations }, 512_001, 'Audit descriptor').byteLength;
+    if (aggregate > 512_000) throw new RangeError('Audit descriptors exceed512000 bytes before historical pins/envelope.');
+    return { extractPath: input.extractPath, receiptPath: input.receiptPath, expected: input.expected, requiredObservations };
+  });
+  const frames = [asciiJsonLine({ format: 'feature-index-session-audit-begin-v1', id: 1,
+    count: inputs.length, attemptLimit }, MAX_LINE_BYTES, 'Audit begin')];
+  inputs.forEach((input, ordinal) => frames.push(asciiJsonLine({ format: 'feature-index-session-audit-capture-v1',
+    id: 1, ordinal, ...input }, MAX_LINE_BYTES, 'Audit capture')));
+  frames.push(asciiJsonLine({ format: 'feature-index-session-audit-run-v1', id: 1 }, MAX_LINE_BYTES, 'Audit run'));
+  return { inputs, attemptLimit, frames };
 }
 
 type PythonBinding = {
@@ -409,15 +511,21 @@ function validateCaptureReport(value: unknown, input: FeatureIndexCaptureInput, 
     throw new Error('Capture counts do not conserve original feature dispositions.');
   }
 
-  const guard = exactObject(full.guard,
+  validateFixedWorkerGuard(full.guard, worker, processLimits, 'index-capture-ingest', 1);
+  return value as Record<string, unknown>;
+}
+
+function validateFixedWorkerGuard(value: unknown, worker: Record<string, unknown>,
+                                 processLimits: SessionProcessLimits, workerName: string, minimumRss: number): void {
+  const guard = exactObject(value,
     ['worker', 'case', 'returnCode', 'inheritedLease', 'inheritedNamespaceLease', 'terminationSignal', 'reason', 'elapsedMs',
       'maximumObservedWorkerRssBytes', 'limits', 'scratchFilesBeforeRecovery', 'stdout', 'stderr'], 'Fixed worker guard result');
-  if (guard.worker !== 'index-capture-ingest' || guard.case !== null || guard.returnCode !== 0
+  if (guard.worker !== workerName || guard.case !== null || guard.returnCode !== 0
       || guard.inheritedLease !== true || guard.inheritedNamespaceLease !== true
       || guard.terminationSignal !== null || guard.reason !== 'exit') throw new Error('Fixed worker guard did not confirm successful terminal execution.');
   if (typeof guard.elapsedMs !== 'number' || !Number.isFinite(guard.elapsedMs) || guard.elapsedMs < 0
       || guard.elapsedMs > processLimits.wallSeconds * 1000
-      || integer(guard.maximumObservedWorkerRssBytes, 1, processLimits.rssBytes, 'Guard maximum RSS') > processLimits.rssBytes) {
+      || integer(guard.maximumObservedWorkerRssBytes, minimumRss, processLimits.rssBytes, 'Guard maximum RSS') > processLimits.rssBytes) {
     throw new Error('Fixed worker guard counters exceed their admitted bounds.');
   }
   if (typeof guard.stdout !== 'string' || Buffer.byteLength(guard.stdout) > 1_000_000
@@ -432,7 +540,148 @@ function validateCaptureReport(value: unknown, input: FeatureIndexCaptureInput, 
       || integer(limits.sampledRssBytes, 64 * 1024 * 1024, processLimits.rssBytes, 'Applied sampled RSS limit') > processLimits.rssBytes) {
     throw new Error('Fixed worker applied limits differ from the admitted process bounds.');
   }
-  return value as Record<string, unknown>;
+}
+
+export function validateFeatureIndexSessionAuditResult(value: unknown, indexHash: string,
+    inputs: readonly FeatureIndexSessionAuditInput[], attemptLimit: number,
+    binding: PythonBinding, processLimits: SessionProcessLimits): Record<string, unknown> {
+  integer(attemptLimit, 1, 8, 'Audit attempt limit');
+  const frame = exactObject(value, ['format', 'id', 'indexHash', 'report'], 'Audit result');
+  if (frame.format !== AUDIT_RESULT_FORMAT || frame.id !== 1 || frame.indexHash !== indexHash) throw new Error('Audit result identity/order differs from the terminal call.');
+  if (!frame.report || typeof frame.report !== 'object' || Array.isArray(frame.report)) throw new TypeError('Audit report must be an object.');
+  const raw = frame.report as Record<string, unknown>;
+  const full = exactObject(raw, ['audit', 'guard', 'footprint', 'executionSnapshotChargedBytes',
+    'auditSnapshotChargedBytes', 'auditEnvelopeChargedBytes', 'auditController', ...(raw.guard === null ? ['guardEvidence'] : [])], 'Audit report');
+  const controller = exactObject(full.auditController,
+    ['attempts', 'inputSha256', 'recordSha256', 'replayed', 'scope'], 'Audit controller');
+  integer(controller.attempts, 1, attemptLimit, 'Audit attempts');
+  sha(controller.inputSha256, 'Audit logical input'); sha(controller.recordSha256, 'Audit durable record');
+  if (controller.scope !== 'raw-feature-conservation-and-required-observations; global campaign membership is not established by pins alone'
+      || controller.replayed !== (full.guard === null)) throw new Error('Audit controller replay/scope differs.');
+  validateFootprint(full.footprint, binding.reservedBytes, 'Audit terminal footprint');
+  const sourceCharge = integer(full.executionSnapshotChargedBytes, 0, 1024 * 1024, 'Audit source charge');
+  const snapshotCharge = integer(full.auditSnapshotChargedBytes, 0, binding.reservedBytes, 'Audit snapshot charge');
+  const envelopeCharge = integer(full.auditEnvelopeChargedBytes, 0, 512_000 + 8192, 'Audit envelope charge');
+  if (full.guard === null && (sourceCharge !== 0 || snapshotCharge !== 0 || envelopeCharge !== 0)) throw new Error('Retained audit cannot claim a new allocation.');
+  if (full.guard !== null && (sourceCharge < 1 || snapshotCharge < sourceCharge || envelopeCharge < 1)) throw new Error('Fresh audit snapshot allocation is missing.');
+  const worker = exactObject(full.audit, ['format', 'indexHash', 'inputSha256', 'captureRecordSha256',
+    'nodeVersion', 'sqliteVersion', 'result', 'databaseBytes', 'maximumRssKiB'], 'Audit worker');
+  if (worker.format !== 'feature-index-audit-worker-v1' || worker.indexHash !== indexHash
+      || worker.nodeVersion !== binding.runtime.nodeVersion || worker.sqliteVersion !== binding.runtime.sqliteVersion) throw new Error('Audit worker differs from the admitted runtime/index.');
+  sha(worker.inputSha256, 'Audit physical envelope'); sha(worker.captureRecordSha256, 'Audit capture record');
+  const bytes = integer(worker.databaseBytes, 4096, Math.min(processLimits.fileBytes, processLimits.engineLimits.databaseBytes), 'Audited database bytes');
+  if (bytes % 4096 !== 0) throw new Error('Audited database is not page-aligned.');
+  integer(worker.maximumRssKiB, 1, Math.floor(processLimits.rssBytes / 1024), 'Audit worker RSS');
+  const kernel = exactObject(worker.result, ['format', 'scope', 'qualifications', 'counts', 'dispositionsSha256'], 'Audit kernel');
+  const qualifications = exactObject(kernel.qualifications, ['rawIndexConservation', 'requiredObservations'], 'Audit qualifications');
+  if (kernel.format !== 'feature-index-raw-audit-v1' || kernel.scope !== 'raw-feature-conservation-and-required-observations'
+      || qualifications.rawIndexConservation !== 'complete' || qualifications.requiredObservations !== 'complete') throw new Error('Audit kernel scope/qualifications differ.');
+  sha(kernel.dispositionsSha256, 'Audited dispositions');
+  const counts = exactObject(kernel.counts, ['captures', 'rawFeatures', 'admitted', 'exceptions', 'occurrences',
+    'versions', 'keys', 'conflicts', 'crossOwnerConflictKeys', 'observations', 'requiredObservations'], 'Audit counts');
+  const required = inputs.reduce((sum, input) => sum + input.requiredObservations.length, 0);
+  const engine = processLimits.engineLimits;
+  const bounds: Record<string, number> = { captures: Math.min(inputs.length, engine.captures), rawFeatures: engine.occurrences,
+    admitted: engine.occurrences, exceptions: engine.occurrences, occurrences: engine.occurrences, versions: engine.versions,
+    keys: engine.versions, conflicts: engine.versions, crossOwnerConflictKeys: engine.versions,
+    observations: engine.observations, requiredObservations: required };
+  const n: Record<string, number> = {};
+  for (const [name, maximum] of Object.entries(bounds)) n[name] = integer(counts[name], 0, maximum, `Audit ${name}`);
+  if (n.captures !== inputs.length || n.admitted! + n.exceptions! !== n.rawFeatures || n.occurrences !== n.rawFeatures
+      || n.versions! > n.occurrences! || n.keys! > n.versions! || n.conflicts! > n.keys!
+      || n.crossOwnerConflictKeys! > n.conflicts! || n.requiredObservations !== required
+      || n.requiredObservations! > n.observations!) throw new Error('Audit counts do not conserve input/scope.');
+  if (full.guard !== null) validateFixedWorkerGuard(full.guard, worker, processLimits, 'index-capture-audit', 0);
+  else {
+    const evidence = exactObject(full.guardEvidence, ['format', 'returnCode', 'reason', 'maximumObservedWorkerRssBytes',
+      'inheritedLease', 'inheritedNamespaceLease'], 'Retained audit guard');
+    if (evidence.format !== 'feature-index-audit-retained-guard-v1' || evidence.returnCode !== 0 || evidence.reason !== 'exit'
+        || evidence.inheritedLease !== true || evidence.inheritedNamespaceLease !== true) throw new Error('Retained audit lacks actual saved terminal guard evidence.');
+    integer(evidence.maximumObservedWorkerRssBytes, 0, processLimits.rssBytes, 'Retained audit sampled RSS');
+  }
+  return raw;
+}
+
+async function readPrivateAuditFile(filename: string, maximum: number): Promise<Buffer> {
+  const before = await lstat(filename);
+  if (before.isSymbolicLink() || !before.isFile() || before.uid !== process.getuid?.() || before.nlink !== 1
+      || (before.mode & 0o777) !== 0o600 || before.size < 1 || before.size > maximum) throw new Error('Audit witness file differs from its private bounded shape.');
+  const fd = await open(filename, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+  try {
+    if (identity(await fd.stat()) !== identity(before)) throw new Error('Audit witness inode changed during open.');
+    const buffer = Buffer.alloc(maximum + 1); let length = 0;
+    while (length < buffer.length) {
+      const result = await fd.read(buffer, length, buffer.length - length, length);
+      if (!result.bytesRead) break;
+      length += result.bytesRead;
+    }
+    if (length !== before.size || identity(await fd.stat()) !== identity(before)
+        || identity(await lstat(filename)) !== identity(before)) throw new Error('Audit witness changed during its bounded read.');
+    return buffer.subarray(0, length);
+  } finally { await fd.close(); }
+}
+
+/** Tie the terminal worker reply back to the actual durable input and report.
+ * This opens only bounded control files; original SQLite/sidecars stay unopened.
+ */
+async function verifyAuditReplyInputs(rootPath: string, report: Record<string, unknown>,
+                                    inputs: readonly FeatureIndexSessionAuditInput[], attemptLimit: number,
+                                    admission: Record<string, unknown>): Promise<void> {
+  const worker = report.audit as Record<string, unknown>, controller = report.auditController as Record<string, unknown>;
+  const indexIdentity = { indexHash: worker.indexHash, rootDevice: admission.rootDevice, rootInode: admission.rootInode,
+    lockDevice: admission.lockDevice, lockInode: admission.lockInode };
+  const captureBytes = await readPrivateAuditFile(path.join(rootPath, 'capture.json'), 512_000);
+  if (sha256(captureBytes) !== worker.captureRecordSha256) throw new Error('Actual capture record differs from the audited pin.');
+  const capture = parseCaptureJson(captureBytes, { bytes: 512_000, nodes: 200_000, depth: 48 }) as Record<string, unknown>;
+  if (canonicalJson(capture.index) !== canonicalJson(indexIdentity)) throw new Error('Audit capture record differs from the held admission identity.');
+  const jobs = capture.jobs;
+  if (!Array.isArray(jobs) || jobs.length !== inputs.length) throw new Error('Audit reply does not cover the complete durable capture set.');
+  const descriptors = inputs.map((input, ordinal) => {
+    const job = jobs[ordinal] as Record<string, unknown>;
+    if (job.requestHash !== input.expected.requestHash || !Array.isArray(job.attempts) || job.attempts.length > 8) throw new Error('Audited durable request membership differs.');
+    const owned = exactObject(job.input, ['extractPath', 'receiptPath', 'expected'], 'Durable capture input');
+    const expectedBytes = asciiJsonLine(input.expected, 64_001, 'Audited expectation').subarray(0, -1);
+    if (owned.extractPath !== input.extractPath || owned.receiptPath !== input.receiptPath
+        || canonicalJson(owned.expected) !== canonicalJson({ sha256: sha256(expectedBytes), bytes: expectedBytes.byteLength })) throw new Error('Audit reply raw membership/expectation differs.');
+    const allowed = new Map<string, CaptureBytePin>();
+    for (const item of job.attempts) {
+      const attempt = item as Record<string, unknown>;
+      if (attempt.phase !== 'terminal') throw new Error('Audit reply contains an unsettled capture attempt.');
+      if (attempt.observation !== null && attempt.observation !== undefined) {
+        const p = pin(attempt.observation, 4096, 'Durable attempt observation'); allowed.set(`${p.sha256}:${p.bytes}`, p);
+      }
+    }
+    return { extractPath: input.extractPath, receiptPath: input.receiptPath, expectedBase64: expectedBytes.toString('base64'),
+      requiredObservations: input.requiredObservations, allowedObservationPins: [...allowed.values()].sort((a, b) =>
+        a.sha256 < b.sha256 ? -1 : a.sha256 > b.sha256 ? 1 : a.bytes - b.bytes) };
+  });
+  const logical = { format: 'feature-index-audit-input-v1', indexHash: worker.indexHash,
+    captureRecord: { sha256: worker.captureRecordSha256, bytes: captureBytes.byteLength }, captures: descriptors };
+  const logicalHash = sha256(asciiJsonLine(logical, 512_001, 'Audit logical input').subarray(0, -1));
+  if (controller.inputSha256 !== logicalHash) throw new Error('Audit reply logical input differs from the requested corpus and required contexts.');
+  const recordBytes = await readPrivateAuditFile(path.join(rootPath, 'audit.json'), 64_000);
+  if (sha256(recordBytes) !== controller.recordSha256) throw new Error('Audit reply differs from its durable controller record.');
+  const record = exactObject(parseCaptureJson(recordBytes, { bytes: 64_000, nodes: 20_000, depth: 48 }),
+    ['format', 'index', 'limits', 'input', 'attempts'], 'Durable audit record');
+  if (record.format !== 'feature-index-audit-controller-v1'
+      || canonicalJson(record.index) !== canonicalJson(indexIdentity)
+      || canonicalJson(record.limits) !== canonicalJson({ attempts: attemptLimit })
+      || !Array.isArray(record.attempts) || record.attempts.length !== controller.attempts) throw new Error('Audit reply durable format/quota differs.');
+  const last = record.attempts[record.attempts.length - 1] as Record<string, unknown>;
+  if (last.phase !== 'terminal' || canonicalJson(last.report) !== canonicalJson(worker)
+      || last.inputSha256 !== worker.inputSha256 || last.resultSha256 !== sha256(asciiJsonLine(worker, 64_001, 'Audit report').subarray(0, -1))) throw new Error('Audit reply lacks its exact terminal durable report.');
+  const info = exactObject(record.input, ['captureRecordSha256', 'captureRecordBytes', 'captureSetSha256',
+    'requiredObservationsSha256', 'auditInputSha256', 'originalStateSha256'], 'Durable audit input');
+  const required = inputs.filter(input => input.requiredObservations.length).map(input =>
+    ({ requestHash: input.expected.requestHash, observations: input.requiredObservations }));
+  if (info.auditInputSha256 !== logicalHash || info.captureRecordSha256 !== worker.captureRecordSha256
+      || info.captureRecordBytes !== captureBytes.byteLength
+      || info.captureSetSha256 !== sha256(asciiJsonLine(descriptors, 512_001, 'Audit capture set').subarray(0, -1))
+      || info.requiredObservationsSha256 !== sha256(asciiJsonLine(required, 512_001, 'Audit required contexts').subarray(0, -1))) throw new Error('Audit durable input pins differ.');
+  const evidence = report.guard === null ? report.guardEvidence as Record<string, unknown> : report.guard as Record<string, unknown>;
+  const retainedGuard = Object.fromEntries(['returnCode', 'reason', 'maximumObservedWorkerRssBytes',
+    'inheritedLease', 'inheritedNamespaceLease'].map(key => [key, evidence[key]]));
+  if (canonicalJson(last.guard) !== canonicalJson(retainedGuard)) throw new Error('Audit reply differs from its retained terminal guard evidence.');
 }
 
 /** Validate the actual per-index admission report against its bound root and lock inodes. */
@@ -610,6 +859,8 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
   let readySeen = false;
   let sessionCaptureCount = 0;
   let pendingCaptureId: number | undefined;
+  let pendingAudit = false;
+  let auditStarted = false;
   let pendingResponse: Record<string, unknown> | undefined;
   let terminalDoneFrame: Record<string, unknown> | undefined;
   let rejectControl!: (error: Error) => void;
@@ -703,7 +954,9 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
       let next = 0, expectedCaptures = sessionCaptureCount;
       const possibleResult = pendingResponse ?? (frames[next] ? parseFeatureIndexSessionLine(frames[next]!) as Record<string, unknown> : undefined);
       if (possibleResult && Object.hasOwn(possibleResult, 'id')) {
-        if (pendingCaptureId === undefined || possibleResult.format !== RESULT_FORMAT || possibleResult.id !== pendingCaptureId
+        const expectedFormat = pendingAudit ? AUDIT_RESULT_FORMAT : RESULT_FORMAT;
+        const expectedId = pendingAudit ? 1 : pendingCaptureId;
+        if (expectedId === undefined || possibleResult.format !== expectedFormat || possibleResult.id !== expectedId
             || possibleResult.indexHash !== indexHash
             || (Object.hasOwn(possibleResult, 'report') === Object.hasOwn(possibleResult, 'error'))
             || Object.keys(possibleResult).length !== 4) throw new Error('Interrupted session produced an uncorrelated capture reply.');
@@ -712,7 +965,7 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
           throw new Error('Interrupted session error reply exceeds its protocol bound.');
         }
         if (!pendingResponse) next++;
-        expectedCaptures++;
+        if (!pendingAudit) expectedCaptures++;
       } else if (pendingResponse) throw new Error('Interrupted session lost its pending capture reply identity.');
       if (terminalDoneFrame && frames.length - next !== 0) throw new Error('Interrupted session emitted output after its terminal frame.');
       if (!terminalDoneFrame && frames.length - next !== 1) throw new Error('Interrupted session did not emit exactly one terminal frame.');
@@ -743,13 +996,13 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
       throw new Error('Session admission inode report differs from actual root/lock files.');
     }
     const limitsObj = validateBindingProcess(bindingValue);
-    let state: 'ready' | 'inflight' | 'closing' | 'closed' | 'failed' = 'ready';
+    let state: 'ready' | 'inflight' | 'audited' | 'closing' | 'closed' | 'failed' = 'ready';
     let inFlight: Promise<Record<string, unknown>> | undefined;
     const api: FeatureIndexSession = {
       indexHash,
       ready,
       async ingestCapture(rawInput) {
-        if (state !== 'ready' || inFlight) throw new Error('Feature index session accepts exactly one operation at a time.');
+        if (state !== 'ready' || inFlight || auditStarted) throw new Error('Feature index session accepts exactly one operation at a time and no ingestion after audit begins.');
         if (sessionCaptureCount >= MAX_CAPTURE_JOBS) throw new RangeError('Feature index session reached its fixed 256-capture ceiling.');
         const input = validateCaptureInput(cloneJson(rawInput, 'Capture input') as FeatureIndexCaptureInput);
         asciiJsonLine(input.expected, 64_000, 'Capture expectation');
@@ -785,8 +1038,41 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
         inFlight = operation;
         return operation;
       },
+      async auditCaptures(rawInputs, attemptLimit = 8) {
+        if (state !== 'ready' || inFlight || auditStarted) throw new Error('Feature index session accepts one final audit operation.');
+        const prepared = prepareFeatureIndexSessionAudit(rawInputs, attemptLimit);
+        auditStarted = true; pendingAudit = true; pendingResponse = undefined;
+        state = 'inflight';
+        const operation = (async () => {
+          try {
+            for (const frame of prepared.frames) await send(frame);
+            const frame = await readFrame();
+            pendingResponse = frame;
+            if (terminalError) throw terminalError;
+            if (Object.hasOwn(frame, 'error')) {
+              const result = exactObject(frame, ['format', 'id', 'indexHash', 'error'], 'Audit error');
+              if (result.format !== AUDIT_RESULT_FORMAT || result.id !== 1 || result.indexHash !== indexHash
+                  || typeof result.error !== 'string' || Buffer.byteLength(result.error, 'utf8') > 4096
+                  || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(result.error)) throw new Error('Audit error identity or bounded text differs.');
+              pendingAudit = false; pendingResponse = undefined; state = 'audited';
+              throw new Error(result.error);
+            }
+            const report = validateFeatureIndexSessionAuditResult(frame, indexHash, prepared.inputs,
+              prepared.attemptLimit, binding, limitsObj);
+            await verifyAuditReplyInputs(rootPath, report, prepared.inputs, prepared.attemptLimit, ready.admission);
+            pendingAudit = false; pendingResponse = undefined; state = 'audited';
+            return report;
+          } catch (error) {
+            if (state === 'inflight') state = 'failed';
+            if (state === 'failed') return await abortOwned(error);
+            throw error;
+          } finally { inFlight = undefined; }
+        })();
+        inFlight = operation;
+        return operation;
+      },
       async close() {
-        if (state !== 'ready' || inFlight) throw new Error('Cannot close a session with an in-flight or failed capture.');
+        if ((state !== 'ready' && state !== 'audited') || inFlight) throw new Error('Cannot close a session with an in-flight or failed operation.');
         state = 'closing';
         try {
           await send(asciiJsonLine({ format: CLOSE_FORMAT }, MAX_LINE_BYTES, 'Session close'));

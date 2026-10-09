@@ -20,7 +20,7 @@ from index_controller_state import (RECORD, PENDING, EXECUTION, RECLAIM, REGISTR
                                     footprint, identity, anchor_registry, verify_registry_anchor)
 from index_execution_snapshot import CONFIGURATION, _capture, _inventory, VerifiedIndexExecution
 from index_namespace import _aggregate, _root, _preflight, namespace_binding
-from index_tooling import FILES, decode_tooling_manifest, verify_index_tooling
+from index_tooling import FILES, decode_tooling_manifest, verify_index_tooling, source_snapshot_allowance
 from index_bootstrap import _node_pin
 from index_registry_startup import _runtime, startup_index_namespace
 from index_reservations import DATABASE_BYTES, REGISTRY_ALLOWANCE
@@ -155,7 +155,7 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
     runtime=_runtime(python_runtime)
     bounded_integer(cpu_seconds,1,60,"CPU seconds"); bounded_integer(wall_seconds,1,60,"wall seconds")
     bounded_integer(rss_limit_bytes,64*MIB,512*MIB,"sampled RSS bytes"); bounded_integer(attempt_limit,1,16,"attempt limit")
-    tooling=verify_index_tooling(repository,manifest_bytes,manifest_pin)
+    verify_index_tooling(repository,manifest_bytes,manifest_pin)
     manifest=decode_tooling_manifest(manifest_bytes,manifest_pin)
     if _capture(repository,CONFIGURATION,source_pin)!=source_configuration:
         raise ValueError("persistent source configuration differs")
@@ -165,10 +165,8 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
         operation = {"kind":"admit", "binding":binding_pin(_binding_bytes)}
     executable_pin={"nodeBytes":runtime["pythonBytes"],"nodeSha256":runtime["pythonSha256"]}
     executable,before_runtime=_node_pin(python,executable_pin,label="Python")
-    # Conservative logical+block-padding pre-admission covers both record slots
-    # and one complete execution tree, before any persistent allocation.
-    reserve=tooling["sourceBytes"]+len(source_configuration)+(len(FILES)+4)*8192+2*64000+2*4096+65536
-    if operation is not None: reserve += 4096
+    reserve=source_snapshot_allowance(manifest,len(source_configuration))+2*65536+2*8192
+    if operation is not None: reserve += 8192
     if 4*DATABASE_BYTES+reserve>REGISTRY_ALLOWANCE:
         raise ValueError("persistent execution inputs cannot fit the immutable registry allowance")
     root,_=_root(namespace_root); expected=namespace_binding(aggregate,sqlite_version=runtime["sqliteVersion"])

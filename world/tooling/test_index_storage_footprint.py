@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from index_storage_footprint import index_storage_footprint
+from index_storage_footprint import audit_execution_footprint, index_storage_footprint
 from index_writer_lock import index_writer_lease
 
 
@@ -15,6 +15,51 @@ def put(root, name, body):
 
 
 class IndexStorageFootprintTests(unittest.TestCase):
+    def test_audit_copy_and_private_wal_are_charged_inside_original_reservation(self):
+        with tempfile.TemporaryDirectory(prefix="allworld-audit-footprint-fixture-") as temporary:
+            root = Path(temporary).resolve(strict=True)
+            with index_writer_lease(root) as lease:
+                put(root, "features.sqlite", b"retained fixture")
+                slot = root/"audit.execution"; slot.mkdir(mode=0o700)
+                put(slot, "features.sqlite", b"owned snapshot fixture")
+                put(slot, "features.sqlite-wal", b"")
+                put(slot, "features.sqlite-shm", b"private generated sidecar")
+                snapshot = audit_execution_footprint(root, file_bytes=65536, aggregate_bytes=1024*1024)
+                report = index_storage_footprint(lease, file_bytes=65536, aggregate_bytes=1024*1024)
+                self.assertEqual(report["files"]["auditExecution"]["allocatedBytes"], snapshot["chargedBytes"])
+                self.assertEqual(snapshot["logicalBytes"],
+                                 len(b"owned snapshot fixture") + len(b"private generated sidecar"))
+                self.assertEqual((root/"features.sqlite").read_bytes(), b"retained fixture")
+
+    def test_unknown_linked_or_oversized_audit_survivors_are_preserved(self):
+        for damage in ("unknown", "symlink", "hardlink", "overflow"):
+            with self.subTest(damage=damage), tempfile.TemporaryDirectory(
+                    prefix="allworld-audit-footprint-fixture-") as temporary:
+                root = Path(temporary).resolve(strict=True)
+                target = put(root, "fixture", b"outside preserved")
+                slot = root/"audit.reclaim"; slot.mkdir(mode=0o700)
+                file = slot/("unknown" if damage == "unknown" else "features.sqlite")
+                if damage == "symlink": file.symlink_to(target)
+                elif damage == "hardlink": file.hardlink_to(target)
+                else: put(slot, file.name, b"x"*(65537 if damage == "overflow" else 1))
+                with self.assertRaises((OSError, ValueError)):
+                    audit_execution_footprint(root, file_bytes=65536, aggregate_bytes=1024*1024)
+                self.assertTrue(file.exists())
+                self.assertEqual(target.read_bytes(), b"outside preserved")
+
+    def test_durable_audit_result_witness_has_its_own_small_charge_and_limit(self):
+        with tempfile.TemporaryDirectory(prefix="allworld-audit-result-footprint-") as temporary:
+            root = Path(temporary).resolve(strict=True)
+            with index_writer_lease(root) as lease:
+                put(root, "features.sqlite", b"retained fixture")
+                witness = put(root, "audit.result.json", b"x"*8192)
+                report = index_storage_footprint(lease, file_bytes=65536, aggregate_bytes=1024*1024)
+                self.assertEqual(report["files"]["audit.result.json"]["logicalBytes"], 8192)
+                witness.write_bytes(b"x"*8193)
+                with self.assertRaisesRegex(ValueError, "byte bound"):
+                    index_storage_footprint(lease, file_bytes=65536, aggregate_bytes=1024*1024)
+                self.assertEqual(witness.stat().st_size, 8193)
+
     def test_fixed_files_report_logical_and_real_allocated_bytes(self):
         with tempfile.TemporaryDirectory(prefix="allworld-index-footprint-fixture-") as temporary:
             root = Path(temporary).resolve(strict=True)

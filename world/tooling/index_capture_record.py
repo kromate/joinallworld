@@ -172,6 +172,23 @@ def decode_capture_record(raw):
     return value
 
 
+def settled_capture_observation_pins(raw):
+    """Exact allowable pins from a decoded settled record, never required rows.
+
+    Failed attempts may have pinned an observation absent from SQL. Deriving
+    pins here neither opens SQLite nor establishes any campaign membership.
+    """
+    jobs = {}
+    for job in decode_capture_record(raw)["jobs"]:
+        attempts = job["attempts"]
+        if any(attempt["phase"] != "terminal" for attempt in attempts):
+            raise ValueError("unsettled capture attempt")
+        pins = sorted({(attempt["observation"]["sha256"], attempt["observation"]["bytes"])
+                       for attempt in attempts if attempt.get("observation") is not None})
+        jobs[job["requestHash"]] = [{"sha256": digest, "bytes": size} for digest, size in pins]
+    return jobs
+
+
 def _clone(record):
     return decode_capture_record(encode_capture_record(record))
 

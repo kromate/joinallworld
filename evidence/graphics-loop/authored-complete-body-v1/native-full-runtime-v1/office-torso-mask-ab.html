@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office torso mask A/B</title>
+  <style>
+    :root { color: #1e292b; background: #edf0ed; font: 14px/1.45 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1440px; margin: auto; padding: 16px; }
+    header { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    h1 { font-size: 24px; margin: 0; }
+    #status { border-radius: 20px; padding: 7px 11px; background: #e8e4cb; }
+    #status[data-state="ready"] { background: #d8eadb; }
+    #status[data-state="error"] { background: #f1d5d1; color: #8a3029; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 12px; margin-top: 12px; }
+    section, aside { background: white; border: 1px solid #d8dedb; border-radius: 10px; overflow: hidden; }
+    canvas { display: block; width: 100%; height: min(77vh, 850px); min-height: 560px; }
+    aside { padding: 12px; }
+    .group { display: grid; gap: 6px; margin-bottom: 14px; }
+    button { text-align: left; font: inherit; padding: 8px 10px; border: 1px solid #cad4cf; border-radius: 7px; background: #f8faf8; cursor: pointer; }
+    button:hover { background: #ebf3ed; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 360px; overflow: auto; font: 10px/1.4 ui-monospace, monospace; }
+    p { font-size: 12px; color: #536263; }
+    @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } canvas { min-height: 480px; } }
+  </style>
+</head>
+<body><main>
+  <header><div><h1>Female office torso mask A/B</h1><p>Same prepared actor, pose, material and camera; source Body vs 26 candidate source triangles hidden.</p></div><div id="status" data-state="loading">Preparing actor…</div></header>
+  <div class="layout">
+    <section><canvas id="stage" aria-label="Prepared female office character"></canvas></section>
+    <aside>
+      <div class="group"><strong>Body mask</strong><button id="body-source">A · Existing office + shoe mask</button><button id="body-candidate">B · Add 26 torso candidates</button></div>
+      <div class="group"><strong>Pose</strong><button id="pose-idle">Idle</button><button id="pose-walk">Walk</button><button id="pose-interact">Interact</button></div>
+      <div class="group"><strong>View</strong><button id="view-front">Front</button><button id="view-profile">Profile</button><button id="view-back">Back</button></div>
+      <button id="sample">Record current state</button>
+      <p>Candidate IDs come from the active-pose geometry probe. This fixture checks visible pixels; the ray result alone is not acceptance.</p>
+      <pre id="status-json">Waiting.</pre>
+    </aside>
+  </div>
+  <script type="module" src="./office-torso-mask-ab.bundle.js"></script>
+</main></body></html>

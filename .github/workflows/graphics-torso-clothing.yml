@@ -1,7 +1,7 @@
-name: Active female office torso clothing diagnostic
+name: Matched female office torso clothing mask A B
 on:
   push:
-    branches: [codex/graphics-torso-clothing-v2]
+    branches: [codex/graphics-torso-mask-ab-v1]
 permissions:
   contents: read
 jobs:
@@ -20,11 +20,21 @@ jobs:
           python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
-      - name: Probe actual direction-mode office actor clothing
-        run: node --max-old-space-size=160 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/torso-clothing-mask-check.mjs > evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/torso-clothing-mask-result.json
+      - name: Typecheck mask comparison fixture
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/office-mask-ab.typecheck.json
+      - name: Bundle mask comparison fixture
+        if: always()
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/bundle-office-torso-mask-ab.mjs
+      - name: Render matched existing and candidate clothed actor
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/office-mask-resources.log /tmp/office-mask-resources.json node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/render-office-torso-mask-ab.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: torso-clothing-${{ github.run_id }}
-          path: evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/torso-clothing-mask-result.json
+          name: torso-mask-ab-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/
+            /tmp/office-mask-resources.*
           if-no-files-found: error

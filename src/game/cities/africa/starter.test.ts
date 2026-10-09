@@ -14,6 +14,9 @@ import { buildDestinationRules } from './rules.ts'
 import { validateDestinationFacts } from './types.ts'
 import type { DestinationFacts } from './types.ts'
 import { withBoardGames } from '../../../tables/derive.ts'
+import { BUSINESS } from '../../content/business.ts'
+import { businessVenue, isLocal, productCost, productLabel, productOf } from '../../business-model.ts'
+import { loadCityContent, registerCityForTest } from '../registry.ts'
 
 const facts: DestinationFacts = {
   id: 'accra-starter',
@@ -66,6 +69,16 @@ test('destination factory builds foreign-timed starter rules and playable source
   const homeMeal = content.venues.find(venue => venue.id === 'home')?.definition.spots.kitchen?.activities[0]
   assert.equal(homeMeal?.label, 'Make a simple meal')
   assert.ok(content.venues.filter(venue => venue.id !== 'home').every(venue => venue.id.startsWith('accra-starter-')))
+  const regularNames = content.regulars.map(person => person.definition.name)
+  assert.equal(regularNames.length, 20)
+  assert.equal(new Set(regularNames).size, regularNames.length)
+  assert.ok(regularNames.every(name => /^[A-Z][a-z]+$/u.test(name) && !/^Neighbour\s+\d+$/u.test(name)))
+  assert.ok(content.regulars.every(person => person.definition.note?.includes('not a factual local biography.') === true))
+  assert.deepEqual(content.business, {
+    plate: 'Accra starter plate (game menu)',
+    markets: { 'accra-starter-market-game': { known: [], footfall: 1 } },
+    localProductIds: [],
+  })
 
   let mapLoads = 0
   const module = createDestinationModule(facts, async () => { mapLoads++; return map })
@@ -74,6 +87,30 @@ test('destination factory builds foreign-timed starter rules and playable source
   assert.equal(mapLoads, 0)
   assert.equal((await module.loadMap()).cityId, facts.id)
   assert.equal(mapLoads, 1)
+})
+
+test('starter business metadata uses the shared neutral market and plate rules', async () => {
+  const testId = 'test-africa-starter-business'
+  const testFacts = { ...facts, id: testId }
+  const module = createDestinationModule(testFacts, async () => { throw new Error('business content must not load map data') })
+  const registration = registerCityForTest(module)
+  try {
+    const content = await loadCityContent(testId)
+    const marketId = `${testId}-market-game`
+    const market = businessVenue(testId, marketId)
+    const plate = productOf('food', 'local-plate')
+    assert.ok(market)
+    assert.deepEqual(market.known, [])
+    assert.equal(market.footfall, 1)
+    assert.equal(market.stalls, BUSINESS.stalls)
+    assert.ok(plate)
+    assert.equal(productLabel(plate, testId), 'Accra starter plate (game menu)')
+    assert.equal(isLocal(plate, testId), false)
+    assert.equal(productCost(plate, testId), Math.round(plate.base * BUSINESS.costRate / 10) * 10)
+    assert.equal(content.business?.localProductIds.length, 0)
+  } finally {
+    registration.dispose()
+  }
 })
 
 for (const module of [accra, lome, yaounde, nairobi, algiers]) test(`${module.id}: opened content contract`, async () => {

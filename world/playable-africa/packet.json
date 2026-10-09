@@ -13,8 +13,8 @@
   "sourceFiles": [
     {
       "path": "src/game/cities/africa/contentBuilder.ts",
-      "bytes": 12872,
-      "sha256": "054df7823d07e8b35c4db00ff5bac2d7efc7494fec64727f7dcdaa1cde33cd27"
+      "bytes": 13559,
+      "sha256": "8bce9bcc63af77a94b020c84e3f3820665a8f52e49f7de9fb6196f31bb0b9e68"
     },
     {
       "path": "src/game/cities/africa/flights.test.ts",
@@ -43,8 +43,8 @@
     },
     {
       "path": "src/game/cities/africa/starter.test.ts",
-      "bytes": 5920,
-      "sha256": "5ef843583dffdf1ca8a3e9e238955e7ce1f5af15f6172d6ef222ee5e8bd7d776"
+      "bytes": 7824,
+      "sha256": "3737a58e614d3417431b58417e6c611d08e33540bbc1edbe2e645b51ded0347c"
     },
     {
       "path": "src/game/cities/africa/types.ts",
@@ -261,6 +261,12 @@
       "scope": "One explicitly fictional, stable city-prefixed two-seat chess table at the existing recreation venue; real table registry lookup and derived-table deduplication verified. Preserve existing playable-city table gate. No source geometry, arrival, Nigeria IDs, database, or gameplay prices changed.",
       "localRuntimeCases": 17,
       "localResult": "PASS 17/17 at256MiB",
+      "remoteAudit": "pending exact repair audit"
+    },
+    "marketCastRepair": {
+      "scope": "20 uniquely named fictional game characters, preserving every NPC ID/role/point. Stable fictional market supplier uses shared defaults, city-named game menu plate and no local-product discounts/specialty claims; original prices unchanged.",
+      "localRuntimeCases": 18,
+      "localResult": "PASS18/18 at256MiB including actual registered businessVenue/productLabel/productCost getters",
       "remoteAudit": "pending exact repair audit"
     }
   },

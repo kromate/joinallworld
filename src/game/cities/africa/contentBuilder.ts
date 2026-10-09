@@ -39,11 +39,20 @@ const regularPairs: readonly (readonly [string, string])[] = Object.freeze([
   ['Recreation host', 'Help visitors find a free activity.'],
 ])
 
+// Fictional, neutral game-character names; they do not identify real residents.
+const starterNames: readonly string[] = Object.freeze([
+  'Alex', 'Casey', 'Jordan', 'Morgan', 'Riley', 'Taylor', 'Avery', 'Quinn', 'Jamie', 'Robin',
+  'Jesse', 'Cameron', 'Drew', 'Skyler', 'Sidney', 'Sam', 'Ari', 'Lee', 'Remy', 'Noel',
+])
+
 const peopleFor = (id: string, venues: readonly CityVenueSeed[]): readonly CityPersonSeed[] => Object.freeze(venues.flatMap((venue, index) => {
   const [role, line] = regularPairs[index] ?? ['Visitor host', 'Help visitors find an activity at this game venue.']
+  const firstName = starterNames[index * 2]
+  const secondName = starterNames[index * 2 + 1]
+  if (!firstName || !secondName) throw new RangeError('Starter game character name pool is too small for the authored venues.')
   return [
-    { name: `Neighbour ${index * 2 + 1}`, role, quotes: [line, 'What would you like to do today?'] as const },
-    { name: `Neighbour ${index * 2 + 2}`, role: 'Neighbour', quotes: ['Good to see you here.', 'There is always something to do.'] as const },
+    { name: firstName, role, quotes: [line, 'What would you like to do today?'] as const },
+    { name: secondName, role: 'Neighbour', quotes: ['Good to see you here.', 'There is always something to do.'] as const },
   ].map(person => ({ ...person, note: `${id} starter game character at ${venue.name}; not a factual local biography.` }))
 }))
 
@@ -169,5 +178,12 @@ export function buildDestinationContent(facts: DestinationFacts): CityContent<st
     dreamWording: {}, lotteryWording: {},
     unitLabel: 'starter play zone', wishPrefix: valid.id,
   })
-  return replaceHomeMeal(content, valid.id)
+  return replaceHomeMeal({
+    ...content,
+    business: {
+      plate: `${valid.name} starter plate (game menu)`,
+      markets: { [ids.market]: { known: [], footfall: 1 } },
+      localProductIds: [],
+    },
+  }, valid.id)
 }

@@ -399,6 +399,36 @@ test('source-derived shard plan snapshots caller policy and returns immutable so
   assert.equal(injected.calls(), 1);
 }));
 
+test('source-derived shards must fit original engine row caps before any index state is created', async () => withFixture('source-plan-engine', async state => {
+  const campaign = campaignFor(state, 'feature-index-source-plan-engine', 5, 1);
+  const campaignRoot = path.join(state.campaignTemp, 'campaign-state'), original = await indexConfiguration(state);
+  let first = true;
+  const injected = makeAcquire(() => { if (first) { first = false; return true; } return false; });
+  const captured = await runCampaign(campaign, { allowedRoot: campaignRoot, inventoryManifestPath: state.directoryPath,
+    countryGridPlanPath: state.grid.planPath, acquire: injected.acquire, maxJobs: 5 });
+  assert.equal(captured.queryCoverage?.jobs.captured, 4);
+  assert.equal(captured.queryCoverage?.roots.captured, 1);
+  const campaignDir = path.join(campaignRoot, campaign.id), campaignBefore = await snapshotTree(campaignDir);
+  const namespaceBefore = await snapshotTree(original.namespaceRoot);
+  for (const limit of ['captures', 'observations'] as const) {
+    const binding = JSON.parse(Buffer.from(original.bindingBytes).toString('ascii')) as {
+      engineLimits: { captures: number; observations: number };
+    };
+    binding.engineLimits[limit] = 2;
+    const config = { ...original, aggregateBytes: 128 * 1024 * 1024, bindingBytes: Buffer.from(canonicalJson(binding)) };
+    const policy = shardPolicy(config, campaign.limits.maxAttempts);
+    await assert.rejects(prepareCampaignIndexShardPlan(campaign.id, config, policy, { allowedRoot: campaignRoot }),
+      new RegExp(`requires 4 ${limit}.*base limit 2`));
+    const split = await prepareCampaignIndexShardPlan(campaign.id, config, { ...policy, maxCaptures: 2 }, { allowedRoot: campaignRoot });
+    assert.equal(split.plan.requestCount, 4);
+    assert.equal(split.plan.shards.length, 2);
+    assert.ok(split.plan.shards.every(shard => shard.requestCount === 2 && shard.requiredObservationCount === 2));
+  }
+  assert.deepEqual(await snapshotTree(original.namespaceRoot), namespaceBefore);
+  assert.deepEqual(await snapshotTree(campaignDir), campaignBefore);
+  assert.equal(injected.calls(), 5, 'planning must reuse all four retained child captures without source acquisition');
+}));
+
 test('zero-row source capture indexes through Python once, preserves the query denominator, and resumes without acquisition', async () => withFixture('backlog', async state => {
   const campaign = campaignFor(state, 'feature-index-backlog'), campaignRoot = path.join(state.campaignTemp, 'campaign-state');
   const config = await indexConfiguration(state), injected = makeAcquire();

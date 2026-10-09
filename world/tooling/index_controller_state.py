@@ -175,6 +175,68 @@ def verify_registry_anchor(root):
     if raw!=expected: raise ValueError("initialized registry identity/metadata disappeared or changed; preserve state")
 
 
+def _mint_shard_handoff(root, lease, authority, summary, record, anchor, operation):
+    from index_root import _lease
+    from index_controller_record import FORMAT_V3, decode_controller_record, settlement
+    from index_writer_lock import (IndexShardHandoff, _SHARD_HANDOFF_SEAL,
+        _register_shard_handoff, _verify_shard_handoff)
+    root, info = _lease(lease); lock = (root/"writer.lock").lstat()
+    if (type(record) is not bytes or type(anchor) is not bytes or type(summary) is not dict
+            or type(operation) is not dict):
+        raise TypeError("settled handoff evidence must be exact immutable inputs")
+    decoded = decode_controller_record(record); recorded_operation = decoded.get("operation", {})
+    namespace = decoded["namespace"]
+    last = decoded["attempts"][-1] if decoded["attempts"] else {}
+    prepared = decode_controller_record(record)
+    if prepared["attempts"]:
+        attempt = prepared["attempts"][-1]
+        attempt.update(phase="prepared", workerPid=None, resultSha256=None)
+    if (decoded["format"] != FORMAT_V3 or not decoded["attempts"]
+            or decoded["attempts"][-1]["phase"] != "terminal"
+            or last.get("resultSha256") != settlement(prepared, initialized=True)
+            or operation != recorded_operation or operation.get("kind") != "admit-plan"
+            or operation["plan"]["sha256"] != authority.plan_hash
+            or operation["baseBinding"]["sha256"] != authority.base_hash
+            or last.get("operation") != operation
+            or (namespace["device"], namespace["inode"], namespace["lockDevice"], namespace["lockInode"])
+                != (info.st_dev, info.st_ino, lease.device, lease.inode)
+            or namespace["aggregateBytes"] != authority.aggregate_bytes):
+        raise ValueError("handoff is not bound to the settled exact namespace plan")
+    verify_registry_anchor(root)
+    if any((root/name).exists() or (root/name).is_symlink()
+           for name in (PENDING, RECLAIM, EXECUTION, REGISTRY_PENDING, "namespace.pending")):
+        raise ValueError("controller settlement is not final")
+    if read_private(root/RECORD) != record or read_private(root/REGISTRY, 4096) != anchor:
+        raise ValueError("durable controller record or registry anchor changed before handoff")
+    from index_admission_worker import shard_admission_summary
+    if shard_admission_summary(root, authority) != summary:
+        raise ValueError("complete plan roots differ from the worker report")
+    packed = json.dumps(summary, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii")
+    value = IndexShardHandoff(root, (info.st_dev, info.st_ino, lock.st_dev, lock.st_ino),
+        lease, authority, packed, hashlib.sha256(record).hexdigest(),
+        hashlib.sha256(anchor).hexdigest(), _SHARD_HANDOFF_SEAL)
+    value = _register_shard_handoff(value)
+    _verify_shard_handoff(value, lease, authority)
+    return value
+
+
+def verify_shard_handoff(handoff, lease, authority):
+    if lease is not handoff.namespace_lease or authority is not handoff.authority:
+        raise TypeError("shard handoff lost its caller lease or exact plan authority")
+    raw = read_private(handoff.root/RECORD); anchor = read_private(handoff.root/REGISTRY, 4096)
+    verify_registry_anchor(handoff.root)
+    if (hashlib.sha256(raw).hexdigest() != handoff.record_sha256
+            or hashlib.sha256(anchor).hexdigest() != handoff.anchor_sha256
+            or any((handoff.root/name).exists() or (handoff.root/name).is_symlink()
+                   for name in (PENDING, RECLAIM, EXECUTION, REGISTRY_PENDING, "namespace.pending"))):
+        raise ValueError("settled controller record or registry anchor changed")
+    from index_admission_worker import shard_admission_summary
+    packed = json.dumps(shard_admission_summary(handoff.root, authority), sort_keys=True,
+                        separators=(",", ":"), ensure_ascii=True).encode("ascii")
+    if packed != handoff.summary: raise ValueError("complete shard root/lock identity set changed")
+    return handoff.root
+
+
 def anchor_registry(root):
     """Anchor existing final ledger before adoption or returning startup success."""
     verify_registry_anchor(root)

@@ -25,7 +25,7 @@ import { runCampaignIndexAuditPhase } from './campaign-index-audit.ts';
 import { CAMPAIGN_INDEX_AUDIT_KIND, CAMPAIGN_INDEX_AUDIT_JOB_FORMAT, FEATURE_INDEX_AUDIT_FORMAT,
   campaignIndexAuditJob, validateQualifiedCampaignIndexAuditCompletion, type CampaignIndexAuditFrozenInput } from './campaign-index-audit-state.ts';
 import { FEATURE_INDEX_SHARD_PLAN_INPUT_FORMAT, FEATURE_INDEX_SHARD_PLAN_MAX_REQUESTS, encodeFeatureIndexShardPlan, type FeatureIndexShardPlanInput } from './index-shard-plan.ts';
-import { calculateFeatureIndexShardEnvelopeOverhead, prepareFeatureIndexShardPlanRequest } from './index-shard-evidence.ts';
+import { assertFeatureIndexShardEngineCapacity, calculateFeatureIndexShardEnvelopeOverhead, prepareFeatureIndexShardPlanRequest } from './index-shard-evidence.ts';
 
 const MAX_CAMPAIGN_MS = 48 * 60 * 60 * 1000;
 // Source input is a campaign-wide unique-pin budget, hard capped at 64 GB.
@@ -858,6 +858,7 @@ export async function prepareCampaignIndexShardPlan(
     policy, requests: requests.map(entry => entry.request),
   };
   const encoded = encodeFeatureIndexShardPlan(input);
+  assertFeatureIndexShardEngineCapacity(encoded.plan, base.engineLimits);
   checkTime();
   if (expectedHash !== undefined && expectedHash !== encoded.hash) throw new Error('source-derived shard plan differs from its expected immutable hash');
   if (encoded.plan.shards.some(shard => shard.descriptorBytes + overhead > 512_000)) throw new Error('a source-derived shard envelope exceeds the fixed 512000-byte limit');

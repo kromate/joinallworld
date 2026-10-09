@@ -17,7 +17,7 @@ from contextlib import nullcontext
 from index_controller_record import (FORMAT, FORMAT_V2, FORMAT_V3, encode_controller_record, decode_controller_record,
                                       start_attempt, snapshot_ready, finish_attempt, settlement, _has_initialized_result)
 from index_controller_state import (RECORD, PENDING, EXECUTION, RECLAIM, REGISTRY, REGISTRY_PENDING, read_private, publish,
-                                    footprint, identity, anchor_registry, verify_registry_anchor)
+                                    footprint, identity, anchor_registry, verify_registry_anchor, _mint_shard_handoff)
 from index_execution_snapshot import CONFIGURATION, _capture, _inventory, VerifiedIndexExecution
 from index_namespace import _aggregate, _root, _preflight, namespace_binding
 from index_tooling import FILES, decode_tooling_manifest, verify_index_tooling, source_snapshot_allowance
@@ -234,4 +234,13 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
             "recordSha256":hashlib.sha256(encode_controller_record(record)).hexdigest(),
             "scope":("Fixed registry admission only; no capture/campaign completion." if operation is not None else
                      "Fixed registry startup only; settlement digest is not worker success or country coverage.")}
+        if authority is not None and _inherited_lease is not None:
+            guard=result["guard"]
+            if (guard.get("returnCode") != 0 or guard.get("reason") != "exit"
+                    or guard.get("inheritedLease") is not True or guard.get("inheritedNamespaceLease") is not True
+                    or record["attempts"][-1]["phase"] != "terminal"):
+                raise ValueError("successful reaped batch and caller-held namespace lease are required")
+            anchor=read_private(root/REGISTRY,4096)
+            result["_shardHandoff"]=_mint_shard_handoff(
+                root,lease,authority,result["registry"]["shardAdmission"],encode_controller_record(record),anchor,operation)
         return result

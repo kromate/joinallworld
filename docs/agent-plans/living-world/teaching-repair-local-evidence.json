@@ -1,0 +1,107 @@
+{
+  "observedAtUtc": "2026-10-09T08:48:06Z",
+  "baseSha": "149f7a14bd7208e449d529360ab27175b38dbe22",
+  "workingTreeDirty": true,
+  "accepted": false,
+  "qualification": "Bounded CPU tests on owned dirty source; no SFC/compiler/build, real browser/GPU/viewport, HTTP, staging or production acceptance. Sampled group RSS is not an OS hard limit; 128MiB heap flags apply to supervisor/test commands, not automatically to child probes.",
+  "checks": {
+    "pureAndUiModel": {
+      "resource": {
+        "exitCode": 0,
+        "elapsedSeconds": 0.427255291,
+        "sampledOwnedGroupPeakBytes": 86884352,
+        "heapMiB": 128,
+        "sampledGroupLimitMiB": 220,
+        "wallSeconds": 15,
+        "stopped": null,
+        "command": [
+          "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--max-old-space-size=128",
+          "--experimental-strip-types",
+          "scripts/agent-slot.ts",
+          "heavy",
+          "--wait-ms",
+          "0",
+          "--",
+          "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--max-old-space-size=128",
+          "--experimental-strip-types",
+          "--test",
+          "--test-isolation=none",
+          "--test-concurrency=1",
+          "--test-timeout=5000",
+          "src/game/living-world/teaching-practice.test.ts",
+          "src/app/features/jobs/teachingShiftModel.test.ts"
+        ]
+      },
+      "log": "\u2714 answer model emits only an authored current-step choice with current revision (1.413833ms)\n\u2714 stale displayed revision or stage cannot produce a submission (0.084625ms)\n\u2714 disabled and terminal practice states refuse answer creation (0.071458ms)\n\u2714 missing, invalid, or old-generation context refuses an answer (0.078375ms)\n\u2714 teaching advances only through diagnosis, a same-whole explanation, and a fresh learner check (1.337291ms)\n\u2714 out-of-order, stale, unsupported and extra-field input cannot advance practice (0.3335ms)\n\u2714 strict reader quarantines unsupported keys, accessors, prototypes, impossible feedback and revisions (0.225708ms)\n\u2714 view projection is fresh and terminal state cannot be reopened or earn a repeat effect (0.169875ms)\n\u2714 revision exhaustion refuses without resetting and reader enforces stage/revision coherence (0.125375ms)\n\u2139 tests 9\n\u2139 suites 0\n\u2139 pass 9\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 48.666542\n"
+    },
+    "lazyGate": {
+      "resource": {
+        "exitCode": 0,
+        "elapsedSeconds": 0.617094875,
+        "sampledOwnedGroupPeakBytes": 224968704,
+        "heapMiB": 128,
+        "sampledGroupLimitMiB": 220,
+        "wallSeconds": 15,
+        "stopped": null,
+        "command": [
+          "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--max-old-space-size=128",
+          "--experimental-strip-types",
+          "scripts/agent-slot.ts",
+          "heavy",
+          "--wait-ms",
+          "0",
+          "--",
+          "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--max-old-space-size=128",
+          "--experimental-strip-types",
+          "--test",
+          "--test-isolation=none",
+          "--test-concurrency=1",
+          "--test-timeout=5000",
+          "src/game/teaching-gate.test.ts"
+        ]
+      },
+      "log": "\u2714 ordinary activity snapshots do not request the teaching chunk (0.696625ms)\n\u2714 playing hosts leave strict teaching reads to their direct parser (0.79425ms)\n\u2714 Node loader emulates the supported read-only profile and executes the actual lazy import path (102.421ms)\n\u2139 tests 3\n\u2139 suites 0\n\u2139 pass 3\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 168.037708\n"
+    },
+    "teachingEngine": {
+      "resource": {
+        "exitCode": 0,
+        "elapsedSeconds": 0.516480666,
+        "sampledOwnedGroupPeakBytes": 230457344,
+        "heapMiB": 128,
+        "sampledGroupLimitMiB": 220,
+        "wallSeconds": 15,
+        "stopped": null,
+        "command": [
+          "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--max-old-space-size=128",
+          "--experimental-strip-types",
+          "scripts/agent-slot.ts",
+          "heavy",
+          "--wait-ms",
+          "0",
+          "--",
+          "/Users/anthonyakpan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--max-old-space-size=128",
+          "--experimental-strip-types",
+          "--test",
+          "--test-isolation=none",
+          "--test-concurrency=1",
+          "--test-timeout=5000",
+          "src/game/teaching-career.test.ts"
+        ]
+      },
+      "log": "\u2714 waiting and wrong answers cannot pay; only the three teaching decisions complete existing career effects once (45.24225ms)\n\u2714 cancellation fences old-shift answers and preserves the daily allowance and generation across job changes (11.032ms)\n\u2714 trusted interrupted sessions resume exactly; malformed and imported sessions never become legacy reward timers (11.342583ms)\n\u2714 stale, skipped, extra-field and foreign-context teaching actions leave the practice and wallet unchanged (0.50175ms)\n\u2714 unsupported persisted generation refuses a new teaching session instead of resetting its identity (0.299625ms)\n\u2139 tests 5\n\u2139 suites 0\n\u2139 pass 5\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 354.092542\n"
+    }
+  },
+  "ownedSourceSha256": {
+    "src/game/teaching-gate.ts": "c2fa52cf3021deaa6b822d10a51f6b19d257d30f7fdc8a2935029a53a24aed02",
+    "src/game/teaching-gate.test.ts": "14fa7ebb88b7cd7990d93c40434b88453079579683894ad1fbc51a787a24eec2",
+    "src/game/teaching-career.test.ts": "c7a93e632c18e15f5b76cd2dca7fecc15e08fef537964396d5343836ba7501b9",
+    "src/game/systems/activities.ts": "a22bdbba4ba4a936fa6abd14abfda7f2672d7364e22ab898a438ac6957feb98a",
+    "src/client.ts": "0b161f86d3e1e5c55bbd359d011dd7561dff99adb026b0cb38dcba3bfab569ee"
+  }
+}

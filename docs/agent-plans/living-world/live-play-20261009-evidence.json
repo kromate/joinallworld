@@ -1,0 +1,70 @@
+{
+  "observedAtUtc": "2026-10-09T09:31:39Z",
+  "productionSourceSha": "a44629b38be751a9ad446051564704f6c3c6ae1b",
+  "build": "joinallworld-a44629b38be751a9ad446051564",
+  "healthServerTime": 1791538299325,
+  "browser": "supported Codex in-app browser, one ephemeral owned tab",
+  "scope": "existing guest save; no signup, account replacement, erase, secret access or save fabrication",
+  "actions": [
+    "opened Freedom Park from current map",
+    "went inside current venue",
+    "opened actual activities",
+    "clicked Play Ayo once",
+    "observed three-second countdown, cancel and passive bar",
+    "reloaded actual page",
+    "verified saved goal and wallet",
+    "checked 390x844 viewport",
+    "reset viewport and closed owned test tab"
+  ],
+  "before": {
+    "goal": "Goal 1 of 10: Play a round of Ayo",
+    "walletGameCash": 5000
+  },
+  "during": {
+    "cue": "Nice. It finishes by itself \u2014 watch the bar.",
+    "activity": "Play Ayo",
+    "remainingSecondsObserved": 3,
+    "input": "no board move or decision was requested"
+  },
+  "afterReload": {
+    "goal": "Goal 2/10: Say hello to someone",
+    "walletGameCash": 5500,
+    "connectedProgressSaved": true,
+    "fun": 27,
+    "social": 28
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "document": {
+      "scrollWidth": 390,
+      "scrollHeight": 844
+    },
+    "finding": "saved world, wallet, next goal and navigation rendered; no page overflow",
+    "qualification": "responsive viewport only; not physical-device touch or candidate teaching acceptance"
+  },
+  "friction": [
+    "First guest round is a seven-second passive timer, contrary to active-play programme",
+    "Countdown completion pays the goal without a player move; replace through authoritative interactive round while preserving existing saves/rewards"
+  ],
+  "screenshots": [
+    {
+      "name": "joinallworld-live-ayo-reload-20261009.jpg",
+      "sha256": "926b075723ebfa44e7a53b7cde4cd90f977c05cf7ec4cf7d2ec56cb5bbac76bc",
+      "bytes": 112215,
+      "capturedAtUtc": "2026-10-09T09:27:55.218728+00:00",
+      "storage": "local attachment; not included in public repository"
+    },
+    {
+      "name": "joinallworld-live-ayo-mobile-20261009.jpg",
+      "sha256": "794547a802692e36db2c106e78b5968b169283d4b83f7dd4379ac05be604d043",
+      "bytes": 56118,
+      "capturedAtUtc": "2026-10-09T09:28:20.813579+00:00",
+      "storage": "local attachment; not included in public repository"
+    }
+  ],
+  "candidateAcceptance": false,
+  "qualification": "Current production mission/reload observation only; no multiplayer, staging or living-world mapped journey acceptance"
+}

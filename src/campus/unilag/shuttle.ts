@@ -9,7 +9,7 @@ import { LEFT_OUT, PLAYS } from '../../game/profile.ts';
 import { busy, fail, ok } from '../../game/util.ts';
 import { ANCHORS, ROADS } from './layout.ts';
 import { CAMPUS_MAP } from './map.generated.ts';
-import { roadCorridorClear } from './shuttle-clearance.ts';
+import { indexRoadBuildings, roadCorridorClearIndexed } from './shuttle-clearance.ts';
 import type { CampusAnchor } from './layout.ts';
 import { createCampusWalk } from './walk.ts';
 import type { WalkPoint } from './walk.ts';
@@ -87,9 +87,12 @@ const edgesAt = (graph: Map<string, RoadEdge[]>, key: string): RoadEdge[] => {
   return edges;
 };
 const buildingRings = CAMPUS_MAP.buildings.map((building) => building.ring);
+// Building geometry is stationary for this generated map. Compile and copy
+// its validated bounds once instead of rebuilding every ring bound per road.
+const buildingClearance = indexRoadBuildings(buildingRings);
 const addEdge = (a: Point, b: Point, roadId: string, width: number): void => {
   const ak = pointKey(a), bk = pointKey(b), span = distance(a, b);
-  if (!roadCorridorClear(a, b, width, buildingRings)) return;
+  if (!roadCorridorClearIndexed(a, b, width, buildingClearance)) return;
   edgesAt(roadGraph, ak).push({ to: bk, length: span, points: [a, b] });
   edgesAt(roadGraph, bk).push({ to: ak, length: span, points: [b, a] });
   roadSegments.push({ a, b, ak, bk, roadId, width });

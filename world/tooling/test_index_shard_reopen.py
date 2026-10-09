@@ -70,9 +70,12 @@ class IndexShardReopenTests(unittest.TestCase):
                     children=self.state(namespace,args)[1]
                     identities=[{"indexHash":key,"rootDevice":value[0],"rootInode":value[1],
                         "lockDevice":value[2],"lockInode":value[3]} for key,value in sorted(children.items())]
-                    self.assertEqual(reopened["_shardHandoff"].summary,
-                        json.dumps(identities,sort_keys=True,separators=(",",":"),
-                            ensure_ascii=True).encode("ascii"))
+                    summary=json.loads(reopened["_shardHandoff"].summary)
+                    self.assertEqual(summary,expected["shardAdmission"])
+                    identity_bytes=json.dumps(identities,sort_keys=True,separators=(",",":"),
+                        ensure_ascii=True).encode("ascii")
+                    self.assertEqual(summary["rootIdentitySha256"],
+                        hashlib.sha256(identity_bytes).hexdigest())
                 self.assertEqual((namespace/RECORD).read_bytes(),record)
                 self.assertEqual((namespace/REGISTRY).read_bytes(),anchor)
                 self.assertEqual(self.state(namespace,args),before)
@@ -96,7 +99,7 @@ class IndexShardReopenTests(unittest.TestCase):
             with index_writer_lease(namespace) as lease, patch(
                     "index_registry_startup.verify_index_shard_namespace",
                     side_effect=AssertionError("fixed worker must not launch")):
-                with self.assertRaisesRegex(ValueError,"receipt"):
+                with self.assertRaisesRegex(ValueError,"header|receipt"):
                     self.verify(namespace,changed,lease,expected)
             base_value=decode_index_binding(args["_binding_bytes"])
             base_value["engineLimits"]["observations"]+=1

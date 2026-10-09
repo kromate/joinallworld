@@ -1,0 +1,38 @@
+name: Airport desk live routes audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/world-foundation]
+    paths:
+      - 'src/game/content/venues-transport.ts'
+      - 'src/game/content/venues-transport.test.ts'
+      - '.github/workflows/airport-desk-audit-ci.yml'
+permissions:
+  contents: read
+jobs:
+  live-routes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22.19.0', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: Live registry additions and removals
+        env:
+          NODE_OPTIONS: --max-old-space-size=512
+        run: node --experimental-strip-types --test --test-concurrency=1 src/game/content/venues-transport.test.ts
+      - name: Existing airport and refinery availability contract
+        env:
+          NODE_OPTIONS: --max-old-space-size=512
+        run: node --experimental-strip-types --test --test-name-pattern='the airport and the refinery are venues of the catalogue' src/airport-refinery.test.ts
+      - name: Strict repair types
+        env:
+          NODE_OPTIONS: --max-old-space-size=1536
+        run: node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck --types node src/game/content/venues-transport.ts src/game/content/venues-transport.test.ts

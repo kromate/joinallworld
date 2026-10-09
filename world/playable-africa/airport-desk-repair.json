@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "base": "14ed559ccc1b725297d7aa026d70fa72b079fcce",
+  "scope": "Bounded airport desk caption repair for first-five admission; no route, fare, ticket authority, save or venue identity changes.",
+  "defect": "Module evaluation snapshots Lagos air destinations before lazy authored routes are loaded.",
+  "change": "Read the current registry in the existing desk caption getter.",
+  "sourceFiles": [
+    {
+      "path": "src/game/content/venues-transport.ts",
+      "bytes": 8319,
+      "sha256": "a82734812334f7ca13ca426209227691c26272493a9e69d3dc5b29dc42849ee3"
+    },
+    {
+      "path": "src/game/content/venues-transport.test.ts",
+      "bytes": 1367,
+      "sha256": "0e6cc4b60678e5f78b56c40b731553fc2fa9e1069111f5d91f7499268a4ed124"
+    },
+    {
+      "path": ".github/workflows/airport-desk-audit-ci.yml",
+      "bytes": 1558,
+      "sha256": "96502faa1250c8f1260dcb3f578a1a27c300fa3dcfde373e6927bd62e6f5e6c6"
+    }
+  ],
+  "validation": {
+    "local": "No local Node, compiler, browser or build while Integration owns heavy stage.",
+    "remote": "Pending exact Node 22.19/24 late-registration regression, existing airport/refinery availability guard and strict TypeScript.",
+    "combined": "Integration must run with actual first-five registry and current host; this source check is not release acceptance."
+  },
+  "registeredInProduction": false
+}

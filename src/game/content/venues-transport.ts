@@ -18,10 +18,12 @@ import type { VenueDefinition } from '../../types/content.ts';
 
 const list = (names: string[]): string => (names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0] ?? '');
 /** The desk reflects registered routes and current city status; tickets remain on the country map. */
-const destinations = [...new Set(linksFrom('lagos').filter(link => link.mode === 'air').map(link => link.to))];
-const names = (open: boolean) => destinations.filter(id => isOpenCityId(id) === open).map(id => cityName(id) ?? id);
-const available = names(true), waiting = names(false);
-const flightsLine = [available.length ? `Fly to ${list(available)} from the country map.` : '', waiting.length ? `Coming soon: ${list(waiting)}.` : ''].filter(Boolean).join(' ') || 'Flights leave from the country map';
+function flightsLine(): string {
+  const destinations = [...new Set(linksFrom('lagos').filter(link => link.mode === 'air').map(link => link.to))];
+  const names = (open: boolean) => destinations.filter(id => isOpenCityId(id) === open).map(id => cityName(id) ?? id);
+  const available = names(true), waiting = names(false);
+  return [available.length ? `Fly to ${list(available)} from the country map.` : '', waiting.length ? `Coming soon: ${list(waiting)}.` : ''].filter(Boolean).join(' ') || 'Flights leave from the country map';
+}
 
 export const AIRPORT: VenueDefinition = {
   id: 'airport', label: 'Airport', district: 'Ikeja', icon: '✈️', category: 'fun', beta: true,
@@ -47,7 +49,7 @@ export const AIRPORT: VenueDefinition = {
       { id: 'airport-malt', label: 'Cold Malt', icon: '🥤', duration: 4, cost: 600, effects: { hunger: 6, fun: 5, bladder: -5 }, tags: ['drink'], beta: true },
       { id: 'airport-restroom', label: 'Use the Restroom', icon: '🚻', duration: 4, cost: 0, effects: { bladder: 60 }, tags: ['restroom'], beta: true },
     ] },
-    desk: { id: 'desk', label: 'Travel desk', icon: '🧭', caption: flightsLine, activities: [
+    desk: { id: 'desk', label: 'Travel desk', icon: '🧭', get caption() { return flightsLine(); }, activities: [
       { id: 'airport-flight-board', label: 'Read the Flight Board', icon: '🧭', duration: 5, cost: 0, effects: { fun: 3 }, tags: ['fun'], beta: true,
         note: 'Flavour only: no ticket is sold here. Flights between cities are the country map’s, and are refused there while the other city is not open.' },
       { id: 'airport-agent-gist', label: 'Ask the Agent About Routes', icon: '💬', duration: 7, cost: 0, effects: { social: 6 }, xp: { hustle: 8 }, tags: ['social', 'training'], beta: true },

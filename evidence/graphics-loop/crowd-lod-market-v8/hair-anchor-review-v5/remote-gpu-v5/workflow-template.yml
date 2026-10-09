@@ -1,0 +1,127 @@
+name: Hair anchor v5 exact-hair CPU and rendered review
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-hair-anchor-v5
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: allworld-hair-anchor-v5-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    outputs:
+      artifact_name: ${{ steps.provenance.outputs.artifact_name }}
+      manifest_sha256: ${{ steps.provenance.outputs.manifest_sha256 }}
+      run_id: ${{ steps.provenance.outputs.run_id }}
+      commit: ${{ steps.provenance.outputs.commit }}
+      branch: ${{ steps.provenance.outputs.branch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify frozen source closure and exact hashes
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 7ebfd13b55c03c63e967c7c79d4a1bcf7d92c15b21228c313e6c8389a92f5113
+        run: node --max-old-space-size=32 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-cpu-v5/verify-input-closure.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify hair identity map and existing renderer contracts
+        run: >-
+          node --test
+          evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/exact-hair-item-map.test.mjs
+          evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/hair-anchor-contract.test.mjs
+          evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/compact-wardrobe-ranges.test.mjs
+          evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/scalp-marker-contract.test.mjs
+      - name: Install exact package dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Package the exact production renderer under the CPU process-group guard
+        env:
+          EXPECTED_BRANCH: codex/graphics-hair-anchor-v5
+          EXPECTED_SNAPSHOT_SHA256: 7ebfd13b55c03c63e967c7c79d4a1bcf7d92c15b21228c313e6c8389a92f5113
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-cpu-v5/run-bounded-linux.py
+      - id: provenance
+        name: Bind renderer inputs to this successful package job
+        run: |
+          set -euo pipefail
+          manifest='evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-cpu-v5/static-fixture-market-hair-anchor-v5/build-manifest.json'
+          test -s "$manifest"
+          printf 'artifact_name=market-hair-anchor-cpu-package-v5-%s\n' "$GITHUB_RUN_ID" >> "$GITHUB_OUTPUT"
+          printf 'manifest_sha256=%s\n' "$(sha256sum "$manifest" | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+          printf 'run_id=%s\ncommit=%s\nbranch=%s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" "$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+      - name: Preserve the exact CPU package and receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-hair-anchor-cpu-package-v5-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-cpu-v5/static-fixture-market-hair-anchor-v5/**
+            evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-cpu-v5/remote-results/**
+          if-no-files-found: warn
+
+  render:
+    needs: package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify renderer source recipe
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: 07d483f4715aaffa5be9adce4c6ab12a6422245e81e34ca9b006ea48d0d61888
+        run: node --max-old-space-size=32 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/verify-source-snapshot.mjs "$EXPECTED_SOURCE_MANIFEST_SHA256"
+      - name: Download package from this exact successful workflow run
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.package.outputs.artifact_name }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/downloaded-artifact
+      - name: Install exact pinned controller dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Materialize dynamic CPU provenance and verify exact artifact
+        env:
+          PACKAGE_RUN_ID: ${{ needs.package.outputs.run_id }}
+          PACKAGE_COMMIT: ${{ needs.package.outputs.commit }}
+          PACKAGE_BRANCH: ${{ needs.package.outputs.branch }}
+          PACKAGE_MANIFEST_SHA256: ${{ needs.package.outputs.manifest_sha256 }}
+          HAIR_REVIEW_PIN_PATH: ${{ runner.temp }}/hair-anchor-review-v5-run-pin.json
+        run: |
+          set -euo pipefail
+          node evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/materialize-run-pin.mjs
+          node evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/verify-package.mjs evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/downloaded-artifact
+      - name: Locate preinstalled runner Chrome
+        run: |
+          set -euo pipefail
+          chrome_path="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$chrome_path"
+          printf 'CHROME_BIN=%s\n' "$chrome_path" >> "$GITHUB_ENV"
+          "$chrome_path" --version
+      - name: Capture all source/candidate, source/compact actor views under the bounded renderer guard
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: 07d483f4715aaffa5be9adce4c6ab12a6422245e81e34ca9b006ea48d0d61888
+          PACKAGE_RUN_ID: ${{ needs.package.outputs.run_id }}
+          PACKAGE_COMMIT: ${{ needs.package.outputs.commit }}
+          PACKAGE_BRANCH: ${{ needs.package.outputs.branch }}
+          ARTIFACT_DIR: ${{ github.workspace }}/evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/downloaded-artifact
+          RESULT_DIR: ${{ github.workspace }}/evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/remote-results
+          HAIR_REVIEW_PIN_PATH: ${{ runner.temp }}/hair-anchor-review-v5-run-pin.json
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/run-bounded-linux.py
+      - name: Preserve screenshots, operands, and cleanup receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-hair-anchor-render-v5-${{ github.run_id }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v5/remote-gpu-v5/remote-results/**
+          if-no-files-found: warn

@@ -1,0 +1,65 @@
+{
+  "schema": "allworld-market-lod-v8-hair-anchor-live-pin-v5",
+  "packageRunId": "FROM_CPU_JOB_OUTPUT",
+  "packageCommit": "FROM_CPU_JOB_OUTPUT",
+  "packageBranch": "codex/graphics-hair-anchor-v5",
+  "artifactName": "FROM_CPU_JOB_OUTPUT",
+  "packageManifestSha256": "FROM_CPU_JOB_OUTPUT",
+  "sourceManifestSha256": "7ebfd13b55c03c63e967c7c79d4a1bcf7d92c15b21228c313e6c8389a92f5113",
+  "packageStatus": "hair-anchor-source-candidate-exact-compact-diagnostic-package-only-not-visual-or-runtime-acceptance",
+  "builderSha256": "f8960925b37fb635a3e7b9e68660a0171738263c9e47c50f8f628582e4769c8d",
+  "viewerSha256": "a55ac7fae52e070832c9cf360c27f15b57dc32ed40e87469e1ecefba01373c30",
+  "candidateGeometrySha256": "052186ee6f263ecd12606932773531ee45813488a475084f7d9bad647d747aa5",
+  "inventorySha256": "b80d198dd2d0327258df6dee5fc3e180af887207fd77b88c1ccae63d4988ea4b",
+  "actors": [
+    {
+      "id": "graphics-host-crowd-02",
+      "seed": "graphics-host-crowd-02",
+      "family": "male",
+      "body": "man",
+      "outfit": "hoodie",
+      "hair": "afro"
+    },
+    {
+      "id": "graphics-host-crowd-03",
+      "seed": "graphics-host-crowd-03",
+      "family": "female",
+      "body": "woman",
+      "outfit": "owambe",
+      "hair": "bun"
+    }
+  ],
+  "captureMatrix": {
+    "hairModes": [
+      "source",
+      "candidate"
+    ],
+    "bodyGeometryModes": [
+      "source",
+      "compact"
+    ],
+    "yawsDegrees": [
+      0,
+      90
+    ],
+    "pose": "walk",
+    "fixedPhase": 0.25,
+    "minimumLiveElapsedSeconds": 2.4,
+    "expectedPngCount": 16,
+    "pairContract": "Two saved identities (male afro hoodie and female bun owambe), two hair-anchor modes, two yaws, and source/compact body geometry. Compact preserves exact source hair item triangles and attributes while simplifying body and non-hair wardrobe. Camera/pose are frozen within each actor/yaw pair across all four cells; strict identity, hair geometry, scalp/head, camera, and source/compact geometry guards remain fatal. All PNGs and operands are persisted before any guard failure is reported."
+  },
+  "limits": {
+    "scope": "Remote Linux headless Chrome ANGLE SwiftShader diagnostic only",
+    "groupRssMiB": 2048,
+    "wallSeconds": 60,
+    "nodeHeapMiB": 96,
+    "doesNotProve": [
+      "hardware GPU fidelity",
+      "mobile performance or battery",
+      "all hair styles or identities",
+      "continuous scalp contact from vertex proximity",
+      "pixel-level eye visibility from UV-ray metrics",
+      "production acceptance"
+    ]
+  }
+}

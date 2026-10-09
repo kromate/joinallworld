@@ -216,7 +216,9 @@ test('apply hires at once; a shift pays once on completion, costs needs, trains 
   let view = player.view().career;
   assert.deepEqual([view.level, view.role, view.pay, view.performance, view.auto], [1, 'Lesson Teacher', 3000, START_PERFORMANCE, true]);
   assert.equal(view.today.code, 'available'); assert.equal(view.nextShift, 'Next shift: now');
-  assert.equal(view.step.kind, 'go'); assert.match(view.step.text, /Open the Community desk spot.*40 seconds.*₦3,000/);
+  assert.equal(view.step.kind, 'go');
+  assert.match(view.step.text, /Open the Community desk spot.*Diagnose, explain and check the learner’s answer.*₦3,000/);
+  assert.doesNotMatch(view.step.text, /\b40 seconds\b/, 'interactive lessons do not promise the former timed-shift completion');
   assert.match(need(view.next).text, /Next: Class Teacher \(₦4,500 per shift\) — reach 100% performance with Charisma level 1/);
 
   player.act('spot', { id: 'work' });
@@ -464,7 +466,7 @@ test('the starter Community helper job still works for old saves, one shift per 
 
 test('career sanitize rebuilds every field from hostile input', () => {
   const state = createLife({ job: 'teaching', completedShifts: -4, career: { level: 99, performance: 1e9, shifts: -1, auto: 'no', lastShiftDay: 1.5, shiftStartDay: 'x', autoDay: {}, oriented: 'yes', extra: 1 } }, ctx);
-  assert.deepEqual(state.career, { city: 'lagos', level: 1, performance: 100, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, transferDay: null, oriented: false });
+  assert.deepEqual(state.career, { city: 'lagos', teachingGeneration: 0, level: 1, performance: 100, shifts: 0, auto: true, lastShiftDay: null, shiftStartDay: null, autoDay: null, transferDay: null, oriented: false });
   assert.equal(state.completedShifts, 0);
   assert.deepEqual(createLife({ job: 'president', career: { level: 4, performance: 70 } }, ctx).career.level, 1);
   const valid = createLife({ job: 'teaching', career: { level: 4, performance: 70.5, shifts: 12, auto: false, lastShiftDay: 20458, shiftStartDay: null, autoDay: 20458, oriented: true } }, ctx);
@@ -472,8 +474,10 @@ test('career sanitize rebuilds every field from hostile input', () => {
 });
 
 test('career and money commands are registered action types with an area prefix', () => {
-  for (const type of ['apply-job', 'career.switch', 'career.quit', 'career.auto', 'career.dilemma', 'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit']) assert.ok(actionTypes().includes(type), type);
-  assert.equal(actionTypes().filter((type) => type.startsWith('career.') || type.startsWith('economy.')).length, 8);
+  const expected = ['career.switch', 'career.quit', 'career.auto', 'career.dilemma', 'career.teach', 'economy.pay-loan', 'economy.pay-rent', 'economy.open-deposit', 'economy.close-deposit'];
+  const registered = actionTypes().filter((type) => type.startsWith('career.') || type.startsWith('economy.')).sort();
+  assert.deepEqual(registered, expected.sort(), 'career teaching is registered alongside the exact existing career and economy actions');
+  assert.ok(actionTypes().includes('apply-job'));
 });
 
 test('the starter job cannot be stacked on a career job to beat the one-shift-a-day rule', () => {

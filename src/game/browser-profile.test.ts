@@ -14,6 +14,7 @@ import { lagosTime } from './clock.ts';
 import { CAMPUS_SLICES, isFreshSlice, needsCampusRules } from '../campus/unilag/slices.ts';
 import { DEFAULT_LOOK } from './content/traits.ts';
 import { loadCityContent, registerCityForTest } from './cities/registry.ts';
+import { jobFor } from './cities/runtime.ts';
 import { FICTIONAL_CITY_ID, FICTIONAL_NEIGHBOUR_CITY_ID, fictionalCity, fictionalNeighbourCity } from './cities/testing/fictionalCity.test-fixture.ts';
 import type { ActionBody } from '../types/actions.ts';
 import type { LifeContextInit, LifeState } from '../types/life.ts';
@@ -237,14 +238,16 @@ function player(seed: string, cityId = 'lagos'): { state: LifeState; act(body: A
 }
 
 function authoredTeacher(cityId: string, seed: string): { state: LifeState; ctx: LifeContextInit } {
+  const teachingJob = jobFor(cityId, 'teaching');
+  assert.ok(teachingJob, `${cityId}: teaching is an authored city career`);
   const context = makeContext({ now: START, cityId, seed });
-  const state = createLife({ t: START, job: 'teaching', location: 'park', spot: 'work',
+  const state = createLife({ t: START, job: 'teaching', location: teachingJob.workplace.venue, spot: teachingJob.workplace.spot,
     career: { city: cityId, auto: false, oriented: true, performance: 50 } }, context);
   state.needs.energy = 100; state.needs.hunger = 100;
-  const started = dispatch(state, { type: 'activity', actionId: `${seed}-start`, payload: { id: 'teaching-shift' } }, { ...context, internal: true });
+  const started = dispatch(state, { type: 'activity', actionId: `${seed}-start`, payload: { id: teachingJob.shift.id } }, { ...context, internal: true });
   assert.equal(started.ok, true, `${cityId}: full engine starts teaching at the authored workplace`);
   const active = state.activeAction;
-  assert.ok(active?.kind === 'activity' && active.id === 'teaching-shift' && active.teaching);
+  assert.ok(active?.kind === 'activity' && active.id === teachingJob.shift.id && active.teaching);
   assert.ok(typeof active.teachingGeneration === 'number' && Number.isSafeInteger(active.teachingGeneration) && active.teachingGeneration > 0,
     `${cityId}: the full engine issued a positive safe teaching generation`);
   const answer = dispatch(state, { type: 'career.teach', actionId: `${seed}-first-answer`, payload: {

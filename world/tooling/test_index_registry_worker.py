@@ -172,13 +172,13 @@ class IndexRegistryWorkerTests(unittest.TestCase):
             "requiredObservationSetHash": hashlib.sha256(f"observations-{i}".encode()).hexdigest(),
             "requiredObservationCount": 1, "auditDescriptorBytes": 1} for i in range(4096)]
         raw, pin, _, plan = planner_fixture(base, {"aggregateBytes": 512*MIB, "shardReservedBytes": 24*MIB,
-            "maxCaptures": 256, "descriptorBytes": 512000}, requests)
+            "maxCaptures": 256, "descriptorBytes": 511900}, requests)
         result = worker.validate_shard_plan(raw, pin, base)
         self.assertEqual(result["plan"]["requestCount"], 4096)
         self.assertEqual(len(result["reservations"]), 16)
         too_many = requests[:257]
         raw, pin, _, _ = planner_fixture(base, {"aggregateBytes": 512*MIB, "shardReservedBytes": 24*MIB,
-            "maxCaptures": 1, "maxShards": 256, "descriptorBytes": 512000}, too_many)
+            "maxCaptures": 1, "maxShards": 256, "descriptorBytes": 511900}, too_many)
         with self.assertRaisesRegex(ValueError, "shard count"):
             worker.validate_shard_plan(raw, pin, base)
 

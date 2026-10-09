@@ -1107,7 +1107,7 @@ export function isExactEmptyOwnedPythonRssResult(error: { code?: unknown; signal
   return error.code === 1 && error.signal == null && error.killed !== true;
 }
 
-/** Confirms close/exit and all stdio closure before accepting an empty ps row, within its original 1 s sample window. */
+/** Confirms close/exit and all stdio closure before accepting an empty/zero ps row, within its original 1 s sample window. */
 export async function confirmOwnedPythonCloseAfterEmptyRssSample(child: ChildProcessWithoutNullStreams,
   sampleStartedAtMs: number, closeObservedAt: () => number | undefined = () => undefined): Promise<void> {
   if (!Number.isSafeInteger(sampleStartedAtMs) || sampleStartedAtMs < 0 || sampleStartedAtMs > Date.now()) {
@@ -1115,7 +1115,8 @@ export async function confirmOwnedPythonCloseAfterEmptyRssSample(child: ChildPro
   }
   const deadline = sampleStartedAtMs + 1000;
   const recordedClose = closeObservedAt();
-  if (recordedClose !== undefined && (!Number.isSafeInteger(recordedClose) || recordedClose > deadline)) {
+  if (recordedClose !== undefined && (!Number.isSafeInteger(recordedClose)
+      || recordedClose < sampleStartedAtMs || recordedClose > deadline || recordedClose > Date.now())) {
     throw new Error('Owned Python close was not observed within the RSS sample deadline.');
   }
   const remaining = deadline - Date.now();
@@ -1126,17 +1127,20 @@ export async function confirmOwnedPythonCloseAfterEmptyRssSample(child: ChildPro
   const terminal = remaining <= 0
     ? { code: child.exitCode, signal: child.signalCode }
     : await awaitChildClose(child, remaining);
-  const observedAt = closeObservedAt() ?? Date.now();
-  if (observedAt > deadline || (terminal.code !== 0 && terminal.code !== 1) || terminal.signal !== null
+  const observedAt = closeObservedAt();
+  if (observedAt === undefined || !Number.isSafeInteger(observedAt)
+      || observedAt < sampleStartedAtMs || observedAt > deadline || observedAt > Date.now()
+      || (terminal.code !== 0 && terminal.code !== 1) || terminal.signal !== null
       || !child.stdout.closed || !child.stderr.closed || !child.stdin.destroyed
       || child.exitCode !== terminal.code || child.signalCode !== null) {
-    throw new Error('Owned Python close/exit/pipe state is not a confirmed normal or interrupted terminal.');
+    throw new Error('Owned Python close/exit/pipe/timestamp state is not a confirmed normal or interrupted terminal.');
   }
 }
 
-/** Parse one bounded `ps -o rss= -o stat=` record. Z/0 is a sampled zombie,
- * not reap proof; process close and pipe closure remain independently required. */
-export function parseOwnedPythonRssSample(output: string): number {
+/** Generic name for the close proof used by both vanished and zero RSS rows. */
+export const confirmOwnedPythonCloseAfterRssSample = confirmOwnedPythonCloseAfterEmptyRssSample;
+
+function parseOwnedPythonRssRow(output: string): { kib: number; state: string } {
   if (typeof output !== 'string' || Buffer.byteLength(output, 'utf8') > 256) {
     throw new TypeError('Owned Python RSS sample exceeds its strict output bound.');
   }
@@ -1146,7 +1150,29 @@ export function parseOwnedPythonRssSample(output: string): number {
   if (!match) throw new TypeError('Owned Python RSS sample is malformed.');
   const kib = Number(match[1]);
   if (!Number.isSafeInteger(kib) || kib < 0) throw new RangeError('Owned Python RSS sample is outside its strict integer bound.');
-  if (kib === 0 && match[2]![0] !== 'Z') throw new RangeError('Zero RSS is accepted only for an explicitly zombie process state.');
+  return { kib, state: match[2]! };
+}
+
+/** A zero/non-zombie row is only a candidate for actual owned-child close proof. */
+export function isZeroOwnedPythonRssCandidate(output: string): boolean {
+  try {
+    const row = parseOwnedPythonRssRow(output);
+    return row.kib === 0 && row.state[0] !== 'Z';
+  }
+  catch { return false; }
+}
+
+/** Only a successful, warning-free ps sample may nominate a zero RSS row for close proof. */
+export function isOwnedPythonZeroRssResult(error: { code?: unknown; signal?: unknown; killed?: unknown } | null,
+  stdout: string, stderr: string): boolean {
+  return error === null && stderr === '' && isZeroOwnedPythonRssCandidate(stdout);
+}
+
+/** Parse one bounded `ps -o rss= -o stat=` record. Z/0 is a sampled zombie,
+ * not reap proof; process close and pipe closure remain independently required. */
+export function parseOwnedPythonRssSample(output: string): number {
+  const { kib, state } = parseOwnedPythonRssRow(output);
+  if (kib === 0 && state[0] !== 'Z') throw new RangeError('Zero RSS is accepted only for an explicitly zombie process state.');
   return kib;
 }
 
@@ -1163,9 +1189,11 @@ function sampleOwnedPythonRssKiB(pid: number, child: ChildProcessWithoutNullStre
       windowsHide: true, env: { PATH: '/usr/bin:/bin' },
     }, (error, stdout, stderr) => {
       const output = String(stdout), diagnostic = String(stderr);
-      if (isExactEmptyOwnedPythonRssResult(error, output, diagnostic)) {
-        void confirmOwnedPythonCloseAfterEmptyRssSample(child, sampleStartedAtMs, closeObservedAt)
-          .then(() => resolve(null), cause => reject(new Error(`Owned Python empty RSS row lacked in-window close proof; stdout="${diagnosticSampleText(output)}" stderr="${diagnosticSampleText(diagnostic)}"`, { cause })));
+      const emptyRowCandidate = isExactEmptyOwnedPythonRssResult(error, output, diagnostic);
+      const zeroRowCandidate = isOwnedPythonZeroRssResult(error, output, diagnostic);
+      if (emptyRowCandidate || zeroRowCandidate) {
+        void confirmOwnedPythonCloseAfterRssSample(child, sampleStartedAtMs, closeObservedAt)
+          .then(() => resolve(null), cause => reject(new Error(`Owned Python zero/empty RSS row lacked in-window close proof; stdout="${diagnosticSampleText(output)}" stderr="${diagnosticSampleText(diagnostic)}"`, { cause })));
         return;
       }
       if (error) return reject(new Error(`Could not sample owned Python coordinator RSS; stdout="${diagnosticSampleText(output)}" stderr="${diagnosticSampleText(diagnostic)}"`, { cause: error }));

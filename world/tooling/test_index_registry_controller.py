@@ -25,7 +25,7 @@ def pin(raw): return {"sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(ra
 
 
 def owned_worker_live(pid, script):
-    result = subprocess.run(["/bin/ps", "-o", "args=", "-p", str(pid)], capture_output=True, timeout=1)
+    result = subprocess.run(["/bin/ps", "-ww", "-o", "args=", "-p", str(pid)], capture_output=True, timeout=1)
     if result.returncode == 1 and not result.stdout.strip(): return False
     if result.returncode != 0 or len(result.stdout) > 4096:
         raise RuntimeError("owned fixture process identity unavailable")
@@ -80,8 +80,11 @@ manifest=bytes.fromhex(sys.argv[3]); config=bytes.fromhex(sys.argv[4]); runtime=
 def pin(raw): return {"bytes":len(raw),"sha256":sha256(raw).hexdigest()}
 native_launch=guard.subprocess.Popen
 def launch(*args,**kwargs):
+    if args[0][0]=="/bin/ps": return native_launch(*args,**kwargs)
+    if len(args[0])!=5 or args[0][1:3]!=["-I","-B"] or args[0][4]!="--lease-witness":
+        raise ValueError("wrong fixed fixture worker command")
     process=native_launch(*args,**kwargs)
-    execution=Path(args[0][-1]).parent.parent.parent
+    execution=Path(args[0][3]).parent.parent.parent
     os.write(1,(json.dumps({"phase":"spawned","pid":process.pid,"executionRoot":str(execution)})+"\n").encode())
     ready=process.stdout.readline(4096)
     os.write(1,(json.dumps({"phase":"ready","report":json.loads(ready)})+"\n").encode())

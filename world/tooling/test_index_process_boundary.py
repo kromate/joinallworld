@@ -47,14 +47,18 @@ class IndexProcessBoundaryTests(unittest.TestCase):
         raw = b"P"*65536
         scripts = {
             "early": "import os; os._exit(7)",
-            "wrong": "import os; r=int(os.environ['WORLD_INDEX_PLAN_DESCRIPTOR']); a=int(os.environ['WORLD_INDEX_PLAN_ACK_DESCRIPTOR']); os.read(r,32768); os.write(a,b'\\0'*8)",
-            "short": "import os; r=int(os.environ['WORLD_INDEX_PLAN_DESCRIPTOR']); os.read(r,1); os._exit(0)",
+            "wrong": "import os; r=int(os.environ['WORLD_INDEX_PLAN_DESCRIPTOR']); a=int(os.environ['WORLD_INDEX_PLAN_ACK_DESCRIPTOR']); os.set_blocking(r,True); os.read(r,32768); os.write(a,b'\\0'*8)",
+            "short": "import os; r=int(os.environ['WORLD_INDEX_PLAN_DESCRIPTOR']); os.set_blocking(r,True); os.read(r,1); os._exit(0)",
         }
         native = subprocess.Popen
         for mode, code in scripts.items():
             with self.subTest(mode=mode), tempfile.TemporaryDirectory(prefix="allworld-index-plan-fault-") as temporary:
                 root = Path(temporary).resolve(strict=True); owned = []
                 def launch(_command, **kwargs):
+                    # subprocess.run's RSS sampler shares the subprocess module.
+                    # Replace the fixed worker only, leaving /bin/ps native.
+                    if _command[0] == "/bin/ps":
+                        return native(_command, **kwargs)
                     process = native([sys.executable, "-I", "-B", "-c", code], **kwargs)
                     owned.append(process); return process
                 with index_writer_lease(root) as lease, patch("index_resource_limits.subprocess.Popen", side_effect=launch):
@@ -62,6 +66,8 @@ class IndexProcessBoundaryTests(unittest.TestCase):
                 self.assertEqual(len(owned), 1)
                 self.assertIsNotNone(owned[0].returncode)
                 self.assertNotEqual((result["returnCode"], result["reason"]), (0, "exit"))
+                if mode == "wrong":
+                    self.assertEqual(result["reason"], "ack-invalid")
 
     def test_plan_selector_setup_failure_reaps_and_closes_owned_pipe_transport(self):
         native = subprocess.Popen; owned = []; raw = b"S"*32769

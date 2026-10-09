@@ -58,6 +58,14 @@ Receipts under `.cache/world-build/evidence/`:
 source/test/evidence bytes. A final docstring and unused local-result cleanup after
 test import did not change helper behavior. No new test expectation waives a limit.
 
+Coherent implementation is committed as71738c1f2d6d3e5fe9f2e35088c7a28c0bac7d42.
+That exact clean Git archive passes all5 release-source policy tests, terminal29083
+exit0:133,699,430logical/140,216,320tar bytes and8,553 total members. The256MiB
+archive/logical cap,10,000-member cap, free space and data-filter/regular-directory
+checks pass; owned archive/checkout removed, actual caches preserved. Receipts:
+`feature-index-namespace-clean-policy-v1.{tap,stderr,json}`. This makes **154 focused
+checks plus compiler**, not full runtime/production/world acceptance.
+
 Fresh origin/main8d5d6aef changed only docs/AGENT-COORDINATION.md and was fast-forwarded;
 no foreign runtime source was adopted. Actual builder output, campaign ledger,
 acquisition charges, Nigeria/game data and production remain untouched. All tests

@@ -18,6 +18,8 @@ for (const city of destinations) test(`${city.id}: real starter map preserves ge
   const airport = city.rules.hubs.find(hub => hub.mode === 'air')
   assert.ok(airport?.venueId && scene.sites[airport.venueId])
   assert.ok(content.venues.find(venue => venue.id === airport.venueId))
+  const arrival = scene.sites[airport.venueId]
+  assert.ok(arrival && scene.core && arrival.x >= scene.core.minX && arrival.x <= scene.core.maxX && arrival.z >= scene.core.minZ && arrival.z <= scene.core.maxZ, 'initial core frames the airport arrival as well as the starter venues')
   assert.ok(scene.roads.length > 0 && scene.roads.length <= 160)
   assert.ok(scene.roads.every(road => road.id.startsWith('osm:way:') && road.points.every(point => point.every(Number.isFinite))))
   assert.equal(scene.fabric.length, 0, 'source samples do not add procedural decorative houses')

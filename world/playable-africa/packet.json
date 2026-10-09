@@ -23,13 +23,13 @@
     },
     {
       "path": "src/game/cities/africa/map.ts",
-      "bytes": 3924,
-      "sha256": "dc0710ddd7c1abfbfd08717736c175d89a845c24321ebc9d04a723da66cd7801"
+      "bytes": 3745,
+      "sha256": "8f93f51b4ea01724f7197592e2d084cf0f336cdf9cbec422f5113b4cfbb62846"
     },
     {
       "path": "src/game/cities/africa/maps.test.ts",
-      "bytes": 1780,
-      "sha256": "cc36c03e7b5ae04839aa2d473755e3e9a7232a5b46097421f5575fa524df5427"
+      "bytes": 2063,
+      "sha256": "e57ab2992a2a52dc4e3c7028baca5973db131dc61e09c4a2a3a30b33e2b9af1b"
     },
     {
       "path": "src/game/cities/africa/module.ts",
@@ -158,8 +158,8 @@
     },
     {
       "path": "world/playable-africa/README.md",
-      "bytes": 5319,
-      "sha256": "71aa99bad5f490c0da2f77fc658eeb22e7604a52f6135598b6e97db53bd91c23"
+      "bytes": 5642,
+      "sha256": "b05e7f8672835df47837f28be3fa4183876c46002b04fbaf02dd661e4d5751f6"
     },
     {
       "path": "world/playable-africa/accra-sources.json",
@@ -183,13 +183,13 @@
     },
     {
       "path": "world/playable-africa/integration-notes.md",
-      "bytes": 2300,
-      "sha256": "90a80591d2b2584922e4ecf8aec5fb14adfe50ecac2a754e38140f5e9aab8bf2"
+      "bytes": 2993,
+      "sha256": "5253744739daae37d0d3812cf0f6c1b5f44d86be6190bfb926fd3c64a56f0bfa"
     },
     {
       "path": "world/playable-africa/integration.patch",
-      "bytes": 13901,
-      "sha256": "31af496541a062b59b8fa6ca80bee110779abdd500477f2193aa1ccdc95cc3c8"
+      "bytes": 18276,
+      "sha256": "c548f5286d179d4379580eff451211d2e96b22fa1a25eb1d1c72423f5d5bffc8"
     },
     {
       "path": "world/playable-africa/lome-sources.json",
@@ -208,8 +208,8 @@
     },
     {
       "path": ".github/workflows/africa-starter-audit-ci.yml",
-      "bytes": 1655,
-      "sha256": "b829c5bb49f6bd80d508a7ccd06792668d9b5aede16527a04e196f526a996ae9"
+      "bytes": 1668,
+      "sha256": "84645f4bec75f289444b5ffad0f75773ad85513e7b0dab1941924e95c22cded6"
     }
   ],
   "validation": {
@@ -218,9 +218,15 @@
     "failed": 0,
     "node": "22.19.0",
     "heapMb": 256,
-    "logSha256": "56601e9463341d7ecda2fecdcbc19677a8b642d352112044ba60d7a10c013b2a",
+    "logSha256": "02301c8b07b5e04e053e52e1e72a60393d32bdb514dcd3e3106d454754ec3782",
     "remoteTypecheck": "pending",
-    "scope": "Source map/content contracts and isolated engine admission. Production/shared registry/browser/host-receipt acceptance remains pending."
+    "scope": "Source map/content contracts and isolated engine admission. Production/shared registry/browser/host-receipt acceptance remains pending.",
+    "priorRemoteAudit": {
+      "source": "f2b9c9ab44919c3db34577130e8beaa42fee27c0",
+      "url": "https://github.com/kromate/joinallworld/actions/runs/37938113594",
+      "runtime": "16/16 and pinned assets PASS on Node 22 and 24",
+      "typecheck": "FAIL missing Node ambient types; compiler invocation corrected, fresh audit pending"
+    }
   },
   "preservation": [
     "Original Nigeria city/home IDs unchanged",
@@ -234,5 +240,12 @@
     "footprints": "Actual OSM rings retained; approximate box silhouette rendering",
     "heights": "Sourced where available; otherwise explicit estimates"
   },
-  "integrationPatch": "world/playable-africa/integration.patch"
+  "integrationPatch": "world/playable-africa/integration.patch",
+  "reviewFixes": [
+    "Initial map core contains actual airport",
+    "Foreign atlas selection/reopen uses real country on Africa level",
+    "Nigeria country key normalized to ng for atlas grouping",
+    "Planned route callback binds its country ID",
+    "Strict audit explicitly includes installed Node typings"
+  ]
 }

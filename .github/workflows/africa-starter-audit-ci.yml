@@ -39,4 +39,4 @@ jobs:
       - name: Strict starter types
         env:
           NODE_OPTIONS: --max-old-space-size=1536
-        run: node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck src/game/cities/africa/*.ts src/game/cities/yaounde/*.ts src/game/cities/lome/*.ts src/game/cities/accra/*.ts src/game/cities/nairobi/*.ts src/game/cities/algiers/*.ts
+        run: node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck --types node src/game/cities/africa/*.ts src/game/cities/yaounde/*.ts src/game/cities/lome/*.ts src/game/cities/accra/*.ts src/game/cities/nairobi/*.ts src/game/cities/algiers/*.ts

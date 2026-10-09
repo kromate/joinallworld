@@ -113,7 +113,7 @@
  }
  export const isPlayable = (cityId: string) => cityEntry(cityId)?.status === 'playable';
  /** Does this city have a 3D pack? Without one the city map falls back to the 2D schematic. */
-@@ -240,6 +258,10 @@
+@@ -240,19 +258,26 @@
      const cities = catalogueCitiesInState(id), open = cities.find(city => city.open), city = open ?? cities[0];
      return { ...entry, ...(city ? { city: city.id } : {}), status: open ? 'open' : city ? 'planned' : entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
    }
@@ -124,6 +124,24 @@
    return { ...entry, status: entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
  }
  export const regionStatus = (kind: RegionKind, id: string) => regionEntry(kind, id).status;
+ /** Only an open region can be entered. For a state that means its city; for a country, its states level. */
+ export const canEnter = (kind: RegionKind, id: string) => regionStatus(kind, id) === 'open';
+ /** The state a city lies in, or null. */
+-export const stateOfCity = (cityId: string) => cityCatalogueEntry(cityId)?.state.id ?? null;
++export const stateOfCity = (cityId: string) => {
++  const city = cityCatalogueEntry(cityId);
++  return city && (!city.countryISO || city.countryISO === 'ng') ? city.state.id : null;
++};
+ /** Planned routes between countries: from the open city to the hub of every country marked `planned`. */
+ export interface PlannedRoute { id: string; from: Hub & { id: string }; to: Hub & { id: string }; mode: 'air' }
+ export function plannedRoutes(fromCity = 'lagos'): PlannedRoute[] {
+   const from = cityEntry(fromCity);
+   if (!from) return [];
+-  return Object.entries(WORLD_COUNTRIES).filter(([, entry]) => entry.status === 'planned' && entry.hub).map(([id, entry]) => ({ id: `${fromCity}:${id}`, from: { id: fromCity, name: from.name, lon: from.lon, lat: from.lat }, to: { id, ...entry.hub! }, mode: 'air' as const }));
++  return Object.entries(WORLD_COUNTRIES).filter(([id, entry]) => regionStatus('country', id) === 'planned' && entry.hub).map(([id, entry]) => ({ id: `${fromCity}:${id}`, from: { id: fromCity, name: from.name, lon: from.lon, lat: from.lat }, to: { id, ...entry.hub! }, mode: 'air' as const }));
+ }
+
+ /** Longitude/latitude → flat map units for one country: x east, y south, the country fitted into `width`. */
 --- a/src/map3d/geo/info.ts
 +++ b/src/map3d/geo/info.ts
 @@ -90,6 +90,16 @@
@@ -145,7 +163,24 @@
    if (status === null) return { ...base, type, teaser: entry.teaser || `${name} is on the map for context.`, tag: 'Not planned', tone: 'none' };
 --- a/src/map3d/geo/atlas.ts
 +++ b/src/map3d/geo/atlas.ts
-@@ -756,13 +756,16 @@
+@@ -633,7 +633,15 @@
+   // ---- friends: a badge on each city (or country, further out) they are in, and the list behind it ------------
+   let friendsNow: FriendsModel = EMPTY_FRIENDS, friendsOpen: string | null = null;
+   const friendNodes = new Map<string, HTMLElement>();
+-  const countryOf = (cityId: string): string | null => cityEntry(cityId)?.country ?? null;
++  const countryOf = (cityId: string): string | null => {
++    const country = cityEntry(cityId)?.country;
++    return country === 'nigeria' ? 'ng' : country ?? null;
++  };
++  const cityRegion = (cityId: string): RegionRef | null => {
++    const state = stateOfCity(cityId), country = countryOf(cityId);
++    return state ? { kind: 'state', id: state } : country ? { kind: 'country', id: country } : null;
++  };
++  const cityLevel = (cityId: string) => countryOf(cityId) === 'ng' ? NIGERIA : AFRICA;
+   /** The groups drawn at this level, each with the place it stands at on the screen. */
+   function friendBadges(): { key: string; title: string; friends: FriendHere[]; x: number; y: number }[] {
+     if (!fits) return [];
+@@ -756,13 +764,16 @@
        const sheet = sheets[AFRICA];
        for (const feature of sheet.topology.features) {
          const top = sheet.top(feature), open = statusOf('country', feature.id) === 'open', b = feature.bounds;
@@ -165,14 +200,45 @@
        for (const route of plannedRoutes(current)) push(`hub:${route.to.id}`, at(relLon(route.to.lon), route.to.lat), route.to.name, { priority: 60, size: 10, anchor: 'right', cls: 'is-capital' });
      }
      return out;
---- a/src/map3d/regions.ts
-+++ b/src/map3d/regions.ts
-@@ -252,7 +252,7 @@
- export function plannedRoutes(fromCity = 'lagos'): PlannedRoute[] {
-   const from = cityEntry(fromCity);
-   if (!from) return [];
--  return Object.entries(WORLD_COUNTRIES).filter(([, entry]) => entry.status === 'planned' && entry.hub).map(([id, entry]) => ({ id: `${fromCity}:${id}`, from: { id: fromCity, name: from.name, lon: from.lon, lat: from.lat }, to: { id, ...entry.hub! }, mode: 'air' as const }));
-+  return Object.entries(WORLD_COUNTRIES).filter(([, entry]) => regionStatus('country', id) === 'planned' && entry.hub).map(([id, entry]) => ({ id: `${fromCity}:${id}`, from: { id: fromCity, name: from.name, lon: from.lon, lat: from.lat }, to: { id, ...entry.hub! }, mode: 'air' as const }));
- }
+@@ -1070,8 +1081,8 @@
+   }
+   /** Open a city's card: select its state and, in a state with several cities, choose that one. */
+   function selectCity(id: string): boolean {
+-    const state = stateOfCity(id);
+-    if (!state || !select({ kind: 'state', id: state }, { from: 'map' })) return false;
++    const region = cityRegion(id);
++    if (!region || !select(region, { from: 'map' })) return false;
+     selectedCity = id; confirming = null;
+     if (isOpenCityId(id) && !cachedCityContent(id)) void loadCityContent(id).then(() => { if (selectedCity === id) drawSheet(); }, () => {});
+     drawSheet();
+@@ -1124,7 +1135,13 @@
+     renderer.setPixelRatio?.(Math.min(globalThis.devicePixelRatio || 1, size.width <= 720 ? 1.75 : 2));
+     renderer.setSize?.(size.width, size.height, false);
+     layout(); syncResolution();
+-    if (!opened || (resetView && !wasShown)) { opened = true; resetView = false; rig.jump(levelView(NIGERIA)); selected = stateOfCity(current) ? { kind: 'state', id: stateOfCity(current)! } : null; routeShown = null; drawChrome(); layout(); rig.jump(levelView(NIGERIA)); }
++    if (!opened || (resetView && !wasShown)) {
++      opened = true; resetView = false;
++      const initialLevel = cityLevel(current);
++      void ensure(initialLevel);
++      rig.jump(levelView(initialLevel)); selected = cityRegion(current); routeShown = null;
++      drawChrome(); layout(); rig.jump(levelView(initialLevel));
++    }
+     else if (!rig.moving) rig.jump({ distance: clamp(rig.view.distance, minDistance(), maxDistance()) });
+     wasShown = true;
+     settleLevel(); request();
+@@ -1347,13 +1364,13 @@
+     watcher?.observe(container, { attributes: true, attributeFilter: ['hidden'] });
+   }
 
- /** Longitude/latitude → flat map units for one country: x east, y south, the country fitted into `width`. */
+-  const ready = ensure(NIGERIA).then(() => { void ensure(WORLD); return true; });
++  const ready = ensure(cityLevel(current)).then(() => { void ensure(WORLD); return true; });
+   drawCrumbs?.();
+
+   return {
+     ready,
+     /** The city the player is in: its state is "You are here" and the default selection. */
+-    setCity(id) { if (!cityEntry(id)) return; countryDetailModel?.close(); current = id; selected = stateOfCity(id) ? { kind: 'state', id: stateOfCity(id)! } : null; routeShown = null; resetView = true; drawChrome(); request(); },
++    setCity(id) { if (!cityEntry(id)) return; countryDetailModel?.close(); current = id; selected = cityRegion(id); routeShown = null; resetView = true; drawChrome(); request(); },
+     /** The life's state: a trip between cities is shown where the server's timer says it is. */
+     setState(state) {
+       const next = interCityTripOf(state);

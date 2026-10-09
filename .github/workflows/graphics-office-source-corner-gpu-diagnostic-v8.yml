@@ -1,0 +1,56 @@
+# Template for root-reviewed remote execution. Copy to .github/workflows only after review.
+name: Office source-corner GPU diagnostic (appearance replay, bounded trace)
+on:
+  push:
+    branches:
+      - codex/graphics-office-source-corner-gpu-diagnostic-v8
+permissions:
+  contents: read
+concurrency:
+  group: office-source-corner-gpu-diagnostic-v8-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify immutable closure before dependency install
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 9f443260320276b5949fca50fcff3d07304be62eaf80238debbb80085ee9827c
+        run: node --experimental-strip-types evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v5/remote-ci-v8/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Record preinstalled runner Chrome binary
+        shell: bash
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_BIN"
+          CHROME_REAL="$(readlink -f "$CHROME_BIN")"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+      - name: Bundle fixture under 96 MiB heap, 220 MiB RSS, 25 seconds
+        id: bundle
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v5/remote-ci-v8/run-bounded-linux.py build 9f443260320276b5949fca50fcff3d07304be62eaf80238debbb80085ee9827c
+      - name: Capture traced browser diagnostic under 2048 MiB RSS, 60 seconds
+        if: always() && steps.bundle.outcome == 'success'
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v5/remote-ci-v8/run-bounded-linux.py browser 9f443260320276b5949fca50fcff3d07304be62eaf80238debbb80085ee9827c
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: office-source-corner-gpu-v8-diagnostic-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v5/remote-ci-v8/remote-results/${{ github.run_id }}/
+            evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/gpu-reviewed-v5/remote-ci-v8/dist/
+          if-no-files-found: warn
+          retention-days: 14

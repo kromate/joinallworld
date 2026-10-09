@@ -3,9 +3,9 @@
 export const BODY_MANIFEST = {
   "bodies": {
     "male": {
-      "sha": "a375403639",
-      "bytes": 159916,
-      "brotli": 138098,
+      "sha": "b0078206da",
+      "bytes": 133756,
+      "brotli": 111546,
       "triangles": 9002,
       "bones": 23,
       "height": 1.81,
@@ -27,9 +27,9 @@ export const BODY_MANIFEST = {
       ]
     },
     "female": {
-      "sha": "ee8b9eb6d7",
-      "bytes": 157992,
-      "brotli": 137296,
+      "sha": "977ca5e73b",
+      "bytes": 132296,
+      "brotli": 111331,
       "triangles": 9002,
       "bones": 23,
       "height": 1.767,

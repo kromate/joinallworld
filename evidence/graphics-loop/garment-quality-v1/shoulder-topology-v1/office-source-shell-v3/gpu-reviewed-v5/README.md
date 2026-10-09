@@ -1,0 +1,9 @@
+# GPU source-corner comparison v5 — private full-topology normals (prepared, unexecuted)
+
+This distinct fixture follows the v4 binding witness. v3/v4 source and receipts remain unchanged. No local or remote execution has been run.
+
+The v6 remote load reached chart construction and failed on a clipped source normal of zero length. The production appearance controller recomputes normals after the wardrobe has compacted the body index in place. A current body attribute can therefore contain zero normals at vertices of faces removed from its displayed topology, even though the saved full source triangles still reference those vertices. The garment chart uses the restored full source index and needs normals for those full-source points.
+
+The candidate clones the exact current appearance-shaped position/color/skin attributes, installs the saved full raw source index on that private clone, and recomputes normals there only. It hashes and byte-compares position, skinIndex, skinWeight and all other non-normal attributes before/after, and verifies the full index SHA/bytes stay identical. It counts zero/non-finite normals, full-source degenerate faces, and faces touching zero normals before and after; it also checks the exact generated shell-support vertices had a masked-topology zero normal and have nonzero full-topology normals. The displayed production mesh and its normals are never recomputed or replaced. Both zero-ease and exact charts receive the same private full-source normal field.
+
+The chart positions, weights, indices, counts and source-corner equations are unchanged, so prior position-only CPU proofs remain applicable if the new attribute guards pass. Actual GPU shader compilation/lighting and visual quality still require remote review; this is not phone or mobile acceptance.

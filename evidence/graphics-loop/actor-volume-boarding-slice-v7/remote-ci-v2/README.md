@@ -1,0 +1,9 @@
+# Actor-volume v7 remote test repair v2
+
+This is a separate child recipe based on exact source commit `ea59d50ee89b446b01b403d564710e0432a44964`. The v1 receipt and `ERR_MODULE_NOT_FOUND` log remain in `remote-ci-v1/downloaded-37922928894/`; that run failed before test execution and is not evidence of a test result.
+
+The v2 command prefixes the Node loader with `./`, so Node resolves it as a workspace file rather than as the package `evidence`. The isolated v2 fixture copies the adapter/test inputs and corrects their relative imports, leaving v1 inputs unchanged. Its group validator follows Three's renderer: groups select material slots only when `Mesh.material` is an array. A single material draws the full geometry even if a `BoxGeometry` has six groups with material indices 0–5; arrays still require each referenced slot to exist. A focused regression covers both cases.
+
+The snapshot also pins the original v7 runtime-closure as a source reference, preserving the complete 51-input lineage while the v2 runner/fixture paths are isolated. The workflow is branch-scoped to `codex/actor-volume-boarding-v7-actual-host-review-v2`. It verifies the complete 51+ file snapshot and executable local-import closure before `npm ci`, then runs one Node 24 actual-source test under a 96 MiB V8 heap, 220 MiB process-group RSS limit, and 25 second wall limit. A successful receipt requires a positive live RSS witness, exit code 0, unchanged pre/post snapshot, and verified process-group cleanup. Failure logs and receipts upload even on failure.
+
+The test strips only image references from shipped GLBs and substitutes a 1×1 DataTexture; source meshes, rigs, weights, clips, production load/cache, wardrobe, and fallback remain the real code path. This remains a CPU provenance/lifecycle test. It makes no GPU, continuous swept-clearance, collision, or boarding-authority claim; `canBoard` and `routeAuthorized` remain false. The actual v2 test has not yet run.

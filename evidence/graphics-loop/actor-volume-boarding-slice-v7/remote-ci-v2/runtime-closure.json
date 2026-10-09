@@ -1,0 +1,74 @@
+{
+  "schema": "allworld-actor-volume-v7-node-runtime-closure-v2",
+  "entrypoint": "evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v2/actual-host-adapter.test.ts",
+  "testCommand": "node --max-old-space-size=96 --experimental-strip-types --experimental-loader ./evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v2/asset-url-loader.mjs --test --test-concurrency=1 evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v2/actual-host-adapter.test.ts",
+  "localRuntimeModules": [
+    "evidence/graphics-loop/actor-volume-boarding-slice-v6/evaluated-actor-contract.ts",
+    "evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v2/actual-host-adapter.ts",
+    "evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v2/asset-url-loader.mjs",
+    "evidence/graphics-loop/actor-volume-boarding-slice-v7/remote-ci-v2/source-pins.json",
+    "src/budgets.ts",
+    "src/game/cities/ids.ts",
+    "src/game/wardrobe/catalogue.ts",
+    "src/game/wardrobe/rules.ts",
+    "src/geo/frame.ts",
+    "src/map3d/context.ts",
+    "src/map3d/geo/data/nigeria.ts",
+    "src/map3d/geo/frame.ts",
+    "src/map3d/geo/topo.ts",
+    "src/map3d/types.ts",
+    "src/scene/avatar-look.ts",
+    "src/scene/body/animation-pose.ts",
+    "src/scene/body/appearance.ts",
+    "src/scene/body/face-shader.ts",
+    "src/scene/body/files.ts",
+    "src/scene/body/foot-contact.ts",
+    "src/scene/body/manifest.ts",
+    "src/scene/body/poses.ts",
+    "src/scene/body/shared-resource-cache.ts",
+    "src/scene/body/skinned.ts",
+    "src/scene/body/tint.ts",
+    "src/scene/build.ts",
+    "src/scene/characters.ts",
+    "src/scene/kit.ts",
+    "src/scene/types.ts",
+    "src/scene/wardrobe/geometry.ts",
+    "src/scene/wardrobe/renderer.ts",
+    "src/types/avatar.ts",
+    "src/types/content.ts",
+    "src/types/life.ts"
+  ],
+  "typeOnlyResolutions": [
+    "src/scene/movement.ts",
+    "src/types/business.ts",
+    "src/types/campus.ts",
+    "src/types/stories.ts"
+  ],
+  "dataInputs": [
+    "src/scene/body/assets/base-body-female.glb",
+    "src/scene/body/assets/base-body-male.glb",
+    "src/scene/body/assets/clip-pack.glb"
+  ],
+  "packageInputs": [
+    "package.json",
+    "package-lock.json"
+  ],
+  "externalRuntime": [
+    "three@package-lock.json-pinned",
+    "three/examples/jsm/loaders/GLTFLoader.js",
+    "three/examples/jsm/libs/meshopt_decoder.module.js",
+    "three/examples/jsm/utils/SkeletonUtils.js",
+    "node-builtins:assert/strict,crypto,fs/promises,path,url,test"
+  ],
+  "scope": "One bounded CPU provenance/lifecycle test. The test strips only image references from shipped body GLBs and substitutes a 1px DataTexture; the production Kit, cache, skinned body loader, rig, clips, wardrobe generation, materials and fallback builder remain in the execution path.",
+  "notIncluded": [
+    "GPU rendering",
+    "continuous swept-volume proof",
+    "vehicle clearance",
+    "route authorization",
+    "v1 ERR_MODULE_NOT_FOUND result is preserved separately and is not a v2 test result"
+  ],
+  "sourceReferenceFiles": [
+    "evidence/graphics-loop/actor-volume-boarding-slice-v7/runtime-closure.json"
+  ]
+}

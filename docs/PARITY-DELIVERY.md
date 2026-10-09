@@ -1,3 +1,31 @@
+## 2026-10-09 19:28 UTC — First-five release adopted; map repairs remain open
+
+The delivered runtime is `3af17a01b8bd406bfb830ca0d2ee66d2d0093d28`. Integration promoted that exact commit to `main` with an ordinary fast-forward push. WORLD uploaded the verified package without rebuilding it. Provider version `90ba4ff2-4204-4261-ab10-519787ab51f2` is active at 100%. Public health now reports `joinallworld-3af17a01b8bd406bfb830ca0d2e`.
+
+Evidence is separate at each layer:
+
+| Layer | Accepted evidence | Limits |
+| --- | --- | --- |
+| Exact source and CI | [Full run 37970635606](https://github.com/kromate/joinallworld/actions/runs/37970635606): all 14 required jobs passed. Each Node version has 3,627 tests, 3,623 passes, zero failures and four existing skips. Each Worker version passes 154 tests with no skips. | Existing skips remain. CI does not certify browser or physical-device behavior. |
+| Download budgets | Startup: 611,402 raw bytes, 221,884 gzip bytes and 194,866 Brotli bytes across 45 cities. First paint: 35,705 Brotli bytes. | Existing limits remain unchanged. Bytes do not prove sustained heat or lag. |
+| Sealed package | [Run 37971328269](https://github.com/kromate/joinallworld/actions/runs/37971328269) verifies the exact Worker, real assets, SQLite journeys and restart. Package digest: `f776481de86aab4779496116ac95a57b302f20a11b219168f5f7127c4b4df8dc`. | The remote verifier uses disclosed scripted fixtures. Its `releaseReady: false` result is not browser acceptance. |
+| Local browser | Explicit `gpt-6-astra` completed ten paid flights and five free visitor walks and meals. All timers used real wall time. The guest returned to the original Apapa home with the stored Spring Bed retained. | Disposable SQLite and one canonical restricted QA grant. This is not production travel or physical-phone evidence. |
+| Provider | The original `JOINALLWORLD` namespace, `JoinAllworldState` class and 11 secret bindings remain. Teaching starts remain OFF. | Upload and provider activation alone do not prove public adoption. |
+| Production save | At 19:20:47 UTC, the original synthetic identity, nine stable saved fields and original same-ID duplicate receipt passed after adoption. | This covers the retained synthetic actor, not every production record or an executed export or restore. |
+| Public browser | Exact public health and frontend entry match the release. The Africa screen shows 56 countries and six open entries. All five new capital fare cards show the canonical quotes. | The browser contained an existing player, so the operator kept the session read-only. No production paid flight, new guest, free action or private phone journey was performed. |
+
+The six open countries are Nigeria, Cameroon, Togo, Ghana, Kenya and Algeria. The new each-way fares are Yaoundé 95,000, Lomé 39,000, Accra 53,000, Nairobi 325,000 and Algiers 290,000. The local guest's normal starting cash was 200,000. A single restricted 2,000,000 credit used the real wallet, effect and receipt path. Replaying the same funding ID made no second change. Ten distinct flights cost 1,604,000 and left 596,000. The final witness checks canonical route fares and fingerprints, the full balance and ledger chain, retained receipts, original home and storage, property, inventory and registry ownership.
+
+Private final witness SHA-256: `51ac51bb51052e0602cddafe27b09d64e415eb80dd3575e2ed18a10c82540055`. The independent final comparison passes 22 selected checks, SHA-256 `07d76433bf4a5956589e257d511536057e54f209971b74d2fa68f54f527bbac5`. The browser report SHA-256 is `6722f8fb7ec0445251d533febce8c385ec36ac8527a07709543e77c1dbda7df1`. Private captures, stores and credentials are not committed or transferred through Git.
+
+The controlled same-city SQLite restart and browser reload passed. An earlier SIGHUP attempt failed because Miniflare exited with status 129. That failure remains recorded separately. Owner-led recovery preserved the same store, guest, origin and funding intent. The corrected SIGWINCH restart reused that store. The final stage stopped cleanly with status zero. The operator closed the owned tab, reset its viewport and released the lease.
+
+Public UI verification reproduced two remaining issues. Selecting Ghana retains the Accra card, but the settled map changes to Nigeria's level and displays Nigerian zones and states. Lumo can also intercept a country-row tap at 390px. Source diagnosis is underway. A separate unowned 100x overlay obscured part of a 320px duration checkpoint. No universal unobstructed mobile claim is made.
+
+Other open evidence includes stationary destination reload for every capital, unfinished-flight cold restart, busy-departure refusal and native lost-response action replay. Reload is not same-ID replay proof. Physical iPhone, Safari, PWA, native 200% zoom and sustained heat remain open. Business canonical fixture funding and browser fault journeys, voice microphone and codec journeys, further messaging, households, decorators, transfers, public research queues and the broader parity matrix remain unfinished. The actor-scoped notice-read proposal has source and privacy approval but is not applied or verified.
+
+This is an accepted first-five milestone, not programme completion. WORLD remains the sole uploader. Recovery after new country, quote or media writes requires compatible `3af` or newer source, rather than an automatic return to `a446`.
+
 ## 2026-10-09 18:02 UTC — Whole-route affordability and relief fixture repair
 
 The complete5e12d3a5 CI run37966065099 is terminal failure. Both Node game partitions report2568 tests,2562 passes,5 failures and1 existing skip; the same five failures are in the relief SSR fixture. Both complete Worker partitions and the compiler/build/download, policy, host, UI and integration gates passed. No production promotion or upload was accepted.

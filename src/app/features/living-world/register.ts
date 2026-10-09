@@ -4,13 +4,11 @@ import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import type { PracticePanelId } from './loadPracticePanel.ts'
-
-const practiceView = (id: PracticePanelId): Component => defineAsyncComponent(() =>
-  import('./loadPracticePanel.ts').then(({ loadPracticePanel }) => loadPracticePanel(id)),
-)
+// One lazy gateway keeps both practice apps discoverable without loading either app from startup.
+const practiceGateway: Component = defineAsyncComponent(() => import('./PracticeGateway.vue'))
 const practicePanel = (id: PracticePanelId, title: string, icon: string, order: number) => definePanel({
   id, title, icon, placement: 'phone' as const, order, group: 'life' as const, live: false,
-  component: practiceView(id),
+  component: practiceGateway,
 })
 
 export const drivingPractice = practicePanel('driving-practice', 'Driving school', '🚗', 34.5)

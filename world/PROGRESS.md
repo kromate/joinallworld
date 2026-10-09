@@ -1,5 +1,46 @@
 # Implementation checkpoint — 9 October 2026
 
+Successor diagnostic **efaead4019f4830fc474d453383e14a16dbcc37e** is published
+on the existing diagnostic branch; fresh actual run discovery is pending. It adds
+strict RSS+process-state parsing, zero only for an explicit zombie (never terminal
+proof), bounded original error diagnostics, and real inherited-lock release in
+the controller-death fixture. Original RSS/worker/session/6-second fixture bounds
+remain unchanged. No successful result is inferred from source publication.
+
+Shard/source-boundary diagnostic **37892251302** at exact
+**fbc1b36bdf0a5b7d342ee675bf42ef03c35bd658** is terminal **FAILURE**. The new
+pure planner9/9, exact reviewed release-source boundary5/5, release-policy3/3
+and World TypeScript pass. Actual SDK7/8 fails a legacy session close with
+Unreaped (nested cause not printed), and remaining Python150/151 fails the
+controller-loss fixture reacquiring a still-held namespace lease immediately
+after its ps command-presence check called the worker terminal. All other
+independent steps pass; do not promote the overall run or combine subsets with
+old runs. Downloaded exact artifacts are retained under remote-audit-37892251302.
+
+Root strengthens the actual controller-death fixture's existing6-second terminal
+wait to require both absence of its owned command and actual namespace/index
+kernel-lease release before recovery/deletion. No production cap or lease policy
+changes. Existing Luna prepares bounded RSS/state parsing to distinguish a
+zero-RSS zombie observation from a malformed/live-zero sample; actual child
+close/done/deadline proof stays required, and bounded cause diagnostics will make
+any remaining session refusal visible. Those corrections require fresh remote
+execution. The shard planner remains unadmitted/uncompiled and not yet published.
+
+Accepted campaign milestone committed and published as **a5354405** on the
+isolated branch and main by safe fast-forward from reviewed0a052837. All40 changed
+non-documentation paths (including raw fixtures and the removed TS witness) were
+compared byte-for-byte with the tested4c0b96cb candidate before main publication.
+No game/runtime source changed; no production upload was triggered. Main CI
+**37891597145** is terminal failure: game typecheck/build/download budgets and
+release policy pass; smoke14/15 rejects the new plain-MJS witness absent from the
+exact reviewed JavaScript allowlist. The exact test-only allowlist repair subsequently passes all5 original source
+boundary tests in candidatefbc1b36b; no wildcard is added. This narrow correction
+can be published independently; full builder successor remains pending. No runtime upload. Source-publication receipt is retained
+at `.cache/world-build/evidence/campaign-audit-source-publication.json`.
+A narrow existing Luna now implements the bounded pure namespace shard planner;
+see [INDEX-SHARD-PLAN-SPEC.md](INDEX-SHARD-PLAN-SPEC.md). Actual batched/versioned
+binding admission, finite global aggregate accounting and geometry remain next.
+
 Latest exact-source diagnostic **37890936198** at
 **4c0b96cb186e42215a7bda6b58736f70be3ce6c8** is terminal **SUCCESS**:
 **384 tests +3 workflow-policy checks =387 distinct checks, plus World TypeScript**.

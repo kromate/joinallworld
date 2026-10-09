@@ -1,5 +1,26 @@
 # Allworld agent coordination and phased production releases
 
+## WORLD campaign audit accepted and source synchronized — 9 October 2026
+
+Exact diagnostic4c0b96cb/run37890936198 passes384 tests,3release-policy checks and
+World TypeScript. Actual held-session frozen membership, same-Ledger audit
+claim/heartbeat/current-token completion, stale replay and read-only evidence
+projection are connected. Portable contexts are synthetic; protected original
+Senegal fixture and full physical-interruption/corruption gates remain open.
+Coherent milestonea5354405 is published on world-foundation and main via normal
+fast-forward from0a052837. All40 changed non-doc paths match the tested candidate;
+no game/runtime/Nigeria changes, unknown drafts excluded, no production upload.
+Main CI37891597145 terminalFAIL: game typecheck/build/download/package-policyPASS,
+smoke14/15 exact-JS-allowlist rejects reviewed new world witnessMJS. WORLD owns
+only the exact server/release.test.ts allowlist correction, verified5/5 in
+remote fbc1b36b/run37892251302 (overall runFAIL on two unrelated lifecycle races);
+no game/server implementation or upload. WORLD sole uploader unchanged.
+WARNING2 memory (~10.2GB swap): no WORLD local heavy/build/worker/browser/server/
+upload. Remote validation and bounded source-only Luna work continue; shared
+heavy1/heap1536/minifier1 remain unchanged. Next frozen bounded shard planning,
+versioned batched admission and finite global accounting before country geometry.
+
+
 ## GRAPHICS parallel execution and measured remote results — 9 October 2026
 
 Three existing Luna lanes and the existing five-minute memory monitor remain active; no duplicate monitor or extra local heavy processes. Latest 05:40 UTC pressure is WARNING2 with elevated paging. All owned local heavy/server/browser handles are terminal/free; user tabs/services are preserved. Remote source/CPU/render work proceeds within fixed process-group caps. WORLD remains sole production uploader.

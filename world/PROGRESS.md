@@ -84,12 +84,21 @@ guide lifecycle and actor-switch notice checks remain required before release.
 
 The next admission targets Cotonou, Abidjan, Dakar, Cape Town and Addis Ababa.
 Integration owns their shared catalogue and route registration. WORLD is reviewing
-a bounded serial starter runner and per-city crash-resumable publication. Those
-uncommitted tools are implementation candidates, not accepted unattended execution.
-A separate explicit fixture-source upgrade is in development so the next sealed
+a bounded serial starter runner and per-city crash-resumable publication. The local operations suite now passes 38 Python checks and eight checkpoint-policy
+checks, including actual owned subprocess kills and surviving-grandchild timeout.
+The runner delegates matching-intent partial recovery offline to the publisher;
+unknown or corrupt partials and spent requests remain preserved and refused. See
+[starter-operations-local-acceptance.json](starter-operations-local-acceptance.json).
+Exact remote acceptance and an actual serial source/engine run remain required.
+No unattended whole-world execution is claimed.
+Explicit fixture-source upgrade is committed as `915e66709a91c66c00880ef497e3a974a975120c` so the next sealed
 package can reuse the retained original test player, store and origin without
 another fixture grant. No new stage is running, and no private game state has
-been edited.
+been edited. Integration has frozen the combined eleven-country source at
+`80122bfb1ef8c3638b4e5968ff5073120ddd77a7`; its exact
+[full CI](https://github.com/kromate/joinallworld/actions/runs/37983496643)
+is confirmed pending. This candidate includes the map fixes and next-five
+admission; production remains the six-country `3af17a01` release.
 
 Earlier candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130 focused
 checks and 12 overlapping checks. Its

@@ -1,0 +1,85 @@
+{
+  "format": "africa-starter-operations-local-acceptance-v1",
+  "checkedAt": "2026-10-09T19:56:41.444570+00:00",
+  "sourceFiles": [
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 37095,
+      "sha256": "58b05f46629a8d204a014ce3a737c90f2f02fa46990ad58494af3dc8c3797717"
+    },
+    {
+      "path": "world/tooling/atomic_starter_publication.py",
+      "bytes": 22078,
+      "sha256": "4f3b998e1b878585bdbe461bceb99447d8c1c23b84b83ab4b4e7655395b54bac"
+    },
+    {
+      "path": "world/tooling/test_atomic_starter_publication.py",
+      "bytes": 13226,
+      "sha256": "f7ade1b872da34474b7a9efdf670a7350b97ba89cbc92d4717d95eb5b58c2ede"
+    },
+    {
+      "path": "world/tooling/run_africa_starters.py",
+      "bytes": 43531,
+      "sha256": "c1dd1975f880d1242aaa5e02705562cf650d2d76228c2e37e802c54c23b172b4"
+    },
+    {
+      "path": "world/tooling/test_run_africa_starters.py",
+      "bytes": 18525,
+      "sha256": "2d15810871b74ed06759a32979660fbc7ec9ce3a77f9b69595e65722f31c7721"
+    },
+    {
+      "path": "world/tooling/serve-sealed-africa.mjs",
+      "bytes": 28865,
+      "sha256": "75342a53f9f7d6fc8ec02ae8e6ba98933551843053847a6e4c279c2ecf232159"
+    },
+    {
+      "path": "world/tooling/stage-checkpoint-policy.mjs",
+      "bytes": 5275,
+      "sha256": "c8b40e053206a5e5a0e2980be47dc85de61eee2f46bf550d559da964826c64d3"
+    },
+    {
+      "path": "world/tooling/stage-checkpoint-policy.test.mjs",
+      "bytes": 6980,
+      "sha256": "d6e992f717637d6c229497d715b74d47b7016d83ab0a7ece336d629aa4ffdb5e"
+    },
+    {
+      "path": ".github/workflows/africa-rollout-audit-ci.yml",
+      "bytes": 3956,
+      "sha256": "092472ade1773872e5332d2af101fb598137822458fb4f1f4bd98756d5ad75f5"
+    }
+  ],
+  "local": {
+    "python": {
+      "status": "passed",
+      "tests": 38,
+      "seconds": null,
+      "evidence": {
+        "path": ".cache/world-build/evidence/starter-operations-local-python-owned-final.log",
+        "bytes": 7171,
+        "sha256": "18b4ec5fdfcde8a21c1d3363152a7c7e1dc0f03b4260c546bed18cdbc96ceef4"
+      }
+    },
+    "checkpointPolicy": {
+      "status": "passed",
+      "tests": 8,
+      "node": "24.19.0",
+      "scope": "pure provenance policy; no Worker stage launched"
+    },
+    "workflowPolicy": {
+      "status": "passed",
+      "checks": 3
+    },
+    "helperSyntax": "passed"
+  },
+  "productionCountriesOpen": 6,
+  "sourceAutomationRunStarted": false,
+  "productionMutation": false,
+  "limitations": [
+    "Actual serial cached-source/engine run and exact remote audit pending.",
+    "Checkpoint upgrade Worker/browser compatibility requires the final sealed package.",
+    "Pre-intent interruption leaves an unowned staging directory requiring review.",
+    "This starter wrapper does not replace the broader world campaign queue.",
+    "No entire-country geometry or physical-phone acceptance."
+  ],
+  "originalFailure": "The first repo-root runner unittest import failed; explicit file-based import fixed it. Original command output is retained in this chat; later final suite passed."
+}

@@ -12,6 +12,7 @@ from pathlib import Path
 import re
 import stat
 import unicodedata
+from contextlib import ExitStack
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -31,6 +32,13 @@ _starter = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_starter)
 dump, pinned, clip_ring, acquire, convert = (_starter.dump, _starter.pinned, _starter.clip_ring, _starter.acquire, _starter.convert)
 MAX_DOWNLOAD, MAX_BUILDINGS, MAX_ROADS, MAX_POINTS = (_starter.MAX_DOWNLOAD, _starter.MAX_BUILDINGS, _starter.MAX_ROADS, _starter.MAX_POINTS)
+_publication_spec = importlib.util.spec_from_file_location("atomic_starter_publication", ROOT / "world/tooling/atomic_starter_publication.py")
+if _publication_spec is None or _publication_spec.loader is None:
+    raise RuntimeError("The atomic starter publication helper is missing")
+_publication = importlib.util.module_from_spec(_publication_spec)
+_publication_spec.loader.exec_module(_publication)
+publish_city = _publication.publish_city
+publication_lease = _publication.publication_lease
 MAX_SELECTION_BYTES = 256 * 1024
 MAX_POINT_BYTES = 16 * 1024
 MAX_LEDGER_BYTES = 64 * 1024
@@ -434,102 +442,99 @@ def main():
             except (KeyError, TypeError, ValueError) as error:
                 print(json.dumps({"country": row.get("iso2"), "status": "refused", "reason": str(error)}))
         return
-    validated = [validate_row(row, verify_cached_sources=not args.check_assets and not (row.get("iso2") == "SS" and "jubaSelectionBinding" in row)) for row in rows]
-    identities = [generation_identity(row) for row in rows]
-    identifiers = [identity["cityId"] for identity in identities]
-    if len(set(identifiers)) != len(identifiers):
-        raise ValueError("Selected city names produce colliding city ids")
-    if args.check or args.check_assets:
-        inventory_hash = sha(DATA / "inventory.json")
-        for row, (place, timezone, airport), identity, identifier in zip(rows, validated, identities, identifiers):
-            receipt_path = RECEIPTS / f"{identifier}.json"
-            if not receipt_path.is_file():
-                raise ValueError(f"Missing starter receipt: {receipt_path}")
-            receipt = json.loads(receipt_path.read_text())
-            verify_assets(receipt, row, place, airport, identity, inventory_hash)
-            if args.check_assets:
+    with ExitStack() as lease_stack:
+        publication_leases = {}
+        if not args.check and not args.check_assets:
+            for lock_city in sorted({generation_identity(row)["cityId"] for row in rows}):
+                lock_stage = f".cache/world-build/africa-starter-publication/{lock_city}"
+                publication_leases[lock_city] = lease_stack.enter_context(publication_lease(ROOT, lock_stage))
+        validated = [validate_row(row, verify_cached_sources=not args.check_assets and not (row.get("iso2") == "SS" and "jubaSelectionBinding" in row)) for row in rows]
+        identities = [generation_identity(row) for row in rows]
+        identifiers = [identity["cityId"] for identity in identities]
+        if len(set(identifiers)) != len(identifiers):
+            raise ValueError("Selected city names produce colliding city ids")
+        if args.check or args.check_assets:
+            inventory_hash = sha(DATA / "inventory.json")
+            for row, (place, timezone, airport), identity, identifier in zip(rows, validated, identities, identifiers):
+                receipt_path = RECEIPTS / f"{identifier}.json"
+                if not receipt_path.is_file():
+                    raise ValueError(f"Missing starter receipt: {receipt_path}")
+                receipt = json.loads(receipt_path.read_text())
+                verify_assets(receipt, row, place, airport, identity, inventory_hash)
+                if args.check_assets:
+                    print(json.dumps({"country": row["iso2"], "city": identifier, "status": "pinned-assets-match"}))
+                    continue
+                osm = receipt["sources"]["osm"]
+                cached_osm = ROOT / ".cache/world-build/playable-africa" / identifier / "source.osm"
+                if not cached_osm.is_file() or sha(cached_osm) != osm["sha256"]:
+                    raise ValueError(f"Pinned OSM source missing or changed: {identifier}")
+                for part in receipt["sources"]["naturalEarth"]["outlineParts"]:
+                    pinned(ROOT / part["path"], part["sha256"])
                 print(json.dumps({"country": row["iso2"], "city": identifier, "status": "pinned-assets-match"}))
-                continue
-            osm = receipt["sources"]["osm"]
-            cached_osm = ROOT / ".cache/world-build/playable-africa" / identifier / "source.osm"
-            if not cached_osm.is_file() or sha(cached_osm) != osm["sha256"]:
-                raise ValueError(f"Pinned OSM source missing or changed: {identifier}")
-            for part in receipt["sources"]["naturalEarth"]["outlineParts"]:
-                pinned(ROOT / part["path"], part["sha256"])
-            print(json.dumps({"country": row["iso2"], "city": identifier, "status": "pinned-assets-match"}))
-        return
+            return
 
-    RECEIPTS.mkdir(parents=True, exist_ok=True)
-    inventory_hash = sha(DATA / "inventory.json")
-    for row, (place, timezone, airport_source), identity, identifier in zip(rows, validated, identities, identifiers):
-        code = row["iso2"]
-        out = OUTPUT / identifier
-        receipt_path = RECEIPTS / f"{identifier}.json"
-        if out.exists():
-            if not receipt_path.is_file():
-                raise ValueError(f"Refusing existing city directory without this generator's receipt: {out}")
-            old = json.loads(receipt_path.read_text())
-            if old.get("countryIso2") != code or old.get("cityId") != identifier:
-                raise ValueError(f"Existing receipt belongs to another country: {receipt_path}")
-            if (old.get("inventorySha256") != inventory_hash or old.get("selectedPlace") != place
-                    or old.get("airportCandidate") != airport_source or old.get("sources", {}).get("naturalEarth") != row["admin0Geometry"]
-                    or old.get("jubaSelection") != selection_bindings.get(code)):
-                raise ValueError(f"Refusing to overwrite output with changed source identity: {receipt_path}")
-            if code in COMPACT_IDENTITIES and old.get("generationIdentity") != identity:
-                raise ValueError(f"Refusing legacy or mismatched compact identity receipt: {receipt_path}")
-            for filename, expected in old["assets"].items():
-                target = out / filename
-                if not target.is_file() or target.stat().st_size != expected["bytes"] or sha(target) != expected["sha256"]:
-                    raise ValueError(f"Refusing to overwrite modified prior output: {target}")
-        if catalogue_bytes(identifier, place["name"], code, row["country"], place["coordinatesWgs84"], identity["stateId"], identity["stateName"]) > 150:
-            raise ValueError(f"{identifier} exceeds the 150-byte catalogue row plus loader limit")
-        centre = place["coordinatesWgs84"]
-        alon, alat = airport_source["coordinatesWgs84"]
-        bounds = [round(min(centre[0]-.015, alon-.012), 6), round(min(centre[1]-.015, alat-.012), 6), round(max(centre[0]+.015, alon+.012), 6), round(max(centre[1]+.015, alat+.012), 6)]
-        land = []
-        for part in row["admin0Geometry"]["outlineParts"]:
-            geometry = pinned(ROOT / part["path"], part["sha256"])
-            for polygon in geometry["coordinates"]:
-                outer = clip_ring(polygon[0], bounds)
-                if outer:
-                    land.append([outer] + [clipped for ring in polygon[1:] if (clipped := clip_ring(ring, bounds))])
-        if not land:
-            raise ValueError(f"No clipped land polygons for {code}")
-        raw_path = ROOT / ".cache/world-build/playable-africa" / identifier / "source.osm"
-        if not raw_path.exists() and not args.acquire:
-            raise ValueError(f"Missing bounded OSM sample for {identifier}; pass --acquire")
-        raw, source = acquire(identifier, centre)
-        buildings, roads, counts = convert(raw, centre)
-        if not buildings or not roads:
-            raise ValueError(f"No usable buildings and roads in bounded source sample for {identifier}")
-        facts = {"id": identifier, "name": place["name"], "country": {"idISOlower": code.lower(), "name": row["country"]},
-                 "state": {"idunique": identity["stateId"], "name": identity["stateName"]}, "timezone": timezone,
-                 "centre": {"lon": centre[0], "lat": centre[1]},
-                 "airport": {"id": identifier+"-airport", "name": airport_source["name"], "lon": alon, "lat": alat, "sourceUrl": airport_source["sourceRecordUrl"]},
-                 "sourceLabel": "Natural Earth, OpenStreetMap contributors and OurAirports dataset",
-                 "sourceUrl": source["url"], "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
-                 "bounds": bounds, "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."}
-        out.mkdir(parents=True, exist_ok=True)
-        files = {
-          "facts.ts": "// Generated by scripts/world/build-africa-starters.py\nimport type { DestinationFacts } from '../africa/types.ts'\nexport const FACTS = "+json.dumps(facts, ensure_ascii=False, indent=2)+" satisfies DestinationFacts\n",
-          "geometry.ts": "// Generated bounded geographic data; load only with this city map.\nimport type { DestinationGeometry } from '../africa/map.ts'\nexport const GEOMETRY: DestinationGeometry = "+json.dumps({"land":land,"buildings":buildings,"roads":roads}, ensure_ascii=False, separators=(",",":"))+"\n",
-          "index.ts": "import { createDestinationModule } from '../africa/module.ts'\nimport { FACTS } from './facts.ts'\nexport const city = createDestinationModule(FACTS, async () => (await import('#city-map/"+identifier+"')).CITY_MAP, async () => (await import('./content.ts')).CONTENT)\n",
-          "content.ts": "import { buildDestinationContent } from '../africa/contentBuilder.ts'\nimport { FACTS } from './facts.ts'\nexport const CONTENT = buildDestinationContent(FACTS)\n",
-          "map.ts": "import { createDestinationMap } from '../africa/map.ts'\nimport { FACTS } from './facts.ts'\nimport { GEOMETRY } from './geometry.ts'\nexport const CITY_MAP = createDestinationMap(FACTS, GEOMETRY, async () => (await import('./index.ts')).city)\n",
-        }
-        for name, text in files.items():
-            (out / name).write_text(text)
-        receipt = {"countryIso2": code, "cityId": identifier, "generationIdentity": identity, "inventorySha256": inventory_hash, "selectedPlace": place, "airportCandidate": airport_source,
-                   "airportDatasetCaveat": "Dataset point only; no current operating, schedule, or official ARP claim.", "bounds": bounds,
-                   "sources": {"osm": source, "naturalEarth": row["admin0Geometry"]},
-                   "kept": {"buildings": len(buildings), "roads": len(roads)}, "observed": counts,
-                   "limits": {"downloadBytes": MAX_DOWNLOAD, "seconds": 45, "buildings": MAX_BUILDINGS, "roads": MAX_ROADS, "points": MAX_POINTS},
-                   "assets": {name: {"sha256": sha(out/name), "bytes": (out/name).stat().st_size} for name in files}}
-        if code in selection_bindings:
-            receipt["jubaSelection"] = selection_bindings[code]
-        dump(receipt_path, receipt)
-        print(json.dumps({"country": code, "city": identifier, "status": "generated", "buildings": len(buildings), "roads": len(roads)}), flush=True)
-
+        inventory_hash = sha(DATA / "inventory.json")
+        for row, (place, timezone, airport_source), identity, identifier in zip(rows, validated, identities, identifiers):
+            code = row["iso2"]
+            out = OUTPUT / identifier
+            receipt_path = RECEIPTS / f"{identifier}.json"
+            cache_dir = ROOT / ".cache/world-build/playable-africa" / identifier
+            raw_path = cache_dir / "source.osm"
+            stage_relative = f".cache/world-build/africa-starter-publication/{identifier}"
+            if os.path.lexists(receipt_path) and not os.path.lexists(out):
+                raise ValueError(f"Refusing receipt without its city directory: {receipt_path}")
+            if catalogue_bytes(identifier, place["name"], code, row["country"], place["coordinatesWgs84"], identity["stateId"], identity["stateName"]) > 150:
+                raise ValueError(f"{identifier} exceeds the 150-byte catalogue row plus loader limit")
+            centre = place["coordinatesWgs84"]
+            alon, alat = airport_source["coordinatesWgs84"]
+            bounds = [round(min(centre[0]-.015, alon-.012), 6), round(min(centre[1]-.015, alat-.012), 6), round(max(centre[0]+.015, alon+.012), 6), round(max(centre[1]+.015, alat+.012), 6)]
+            land = []
+            for part in row["admin0Geometry"]["outlineParts"]:
+                geometry = pinned(ROOT / part["path"], part["sha256"])
+                for polygon in geometry["coordinates"]:
+                    outer = clip_ring(polygon[0], bounds)
+                    if outer:
+                        land.append([outer] + [clipped for ring in polygon[1:] if (clipped := clip_ring(ring, bounds))])
+            if not land:
+                raise ValueError(f"No clipped land polygons for {code}")
+            if not raw_path.exists() and not args.acquire:
+                raise ValueError(f"Missing bounded OSM sample for {identifier}; pass --acquire")
+            raw, source = acquire(identifier, centre)
+            buildings, roads, counts = convert(raw, centre)
+            if not buildings or not roads:
+                raise ValueError(f"No usable buildings and roads in bounded source sample for {identifier}")
+            facts = {"id": identifier, "name": place["name"], "country": {"idISOlower": code.lower(), "name": row["country"]},
+                     "state": {"idunique": identity["stateId"], "name": identity["stateName"]}, "timezone": timezone,
+                     "centre": {"lon": centre[0], "lat": centre[1]},
+                     "airport": {"id": identifier+"-airport", "name": airport_source["name"], "lon": alon, "lat": alat, "sourceUrl": airport_source["sourceRecordUrl"]},
+                     "sourceLabel": "Natural Earth, OpenStreetMap contributors and OurAirports dataset",
+                     "sourceUrl": source["url"], "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
+                     "bounds": bounds, "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."}
+            files = {
+              "facts.ts": "// Generated by scripts/world/build-africa-starters.py\nimport type { DestinationFacts } from '../africa/types.ts'\nexport const FACTS = "+json.dumps(facts, ensure_ascii=False, indent=2)+" satisfies DestinationFacts\n",
+              "geometry.ts": "// Generated bounded geographic data; load only with this city map.\nimport type { DestinationGeometry } from '../africa/map.ts'\nexport const GEOMETRY: DestinationGeometry = "+json.dumps({"land":land,"buildings":buildings,"roads":roads}, ensure_ascii=False, separators=(",",":"))+"\n",
+              "index.ts": "import { createDestinationModule } from '../africa/module.ts'\nimport { FACTS } from './facts.ts'\nexport const city = createDestinationModule(FACTS, async () => (await import('#city-map/"+identifier+"')).CITY_MAP, async () => (await import('./content.ts')).CONTENT)\n",
+              "content.ts": "import { buildDestinationContent } from '../africa/contentBuilder.ts'\nimport { FACTS } from './facts.ts'\nexport const CONTENT = buildDestinationContent(FACTS)\n",
+              "map.ts": "import { createDestinationMap } from '../africa/map.ts'\nimport { FACTS } from './facts.ts'\nimport { GEOMETRY } from './geometry.ts'\nexport const CITY_MAP = createDestinationMap(FACTS, GEOMETRY, async () => (await import('./index.ts')).city)\n",
+            }
+            receipt = {"countryIso2": code, "cityId": identifier, "generationIdentity": identity, "inventorySha256": inventory_hash, "selectedPlace": place, "airportCandidate": airport_source,
+                       "airportDatasetCaveat": "Dataset point only; no current operating, schedule, or official ARP claim.", "bounds": bounds,
+                       "sources": {"osm": source, "naturalEarth": row["admin0Geometry"]},
+                       "kept": {"buildings": len(buildings), "roads": len(roads)}, "observed": counts,
+                       "limits": {"downloadBytes": MAX_DOWNLOAD, "seconds": 45, "buildings": MAX_BUILDINGS, "roads": MAX_ROADS, "points": MAX_POINTS},
+                       "assets": {name: {"sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(), "bytes": len(text.encode("utf-8"))} for name, text in files.items()}}
+            if code in selection_bindings:
+                receipt["jubaSelection"] = selection_bindings[code]
+            receipt_bytes = (json.dumps(receipt, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8")
+            source_identity = {"countryIso2": code, "cityId": identifier, "generationIdentity": identity,
+                               "inventorySha256": inventory_hash, "selectedPlace": place, "airportCandidate": airport_source,
+                               "naturalEarth": row["admin0Geometry"], "osm": {"url": source["url"], "bytes": source.get("bytes", len(raw)), "sha256": source["sha256"]},
+                               "jubaSelection": selection_bindings.get(code)}
+            publish_city(ROOT, f"src/game/cities/{identifier}", f"world/playable-africa-rollout/receipts/{identifier}.json",
+                         stage_relative, files, receipt_bytes,
+                         {"countryIso2": code, "cityId": identifier, "generationIdentity": identity}, source_identity,
+                         lease=publication_leases[identifier])
+            print(json.dumps({"country": code, "city": identifier, "status": "generated", "buildings": len(buildings), "roads": len(roads)}), flush=True)
 
 if __name__ == "__main__":
     main()

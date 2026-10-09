@@ -8,6 +8,13 @@ on:
       - 'world/playable-africa-rollout/**'
       - 'scripts/world/build-africa-starters.py'
       - 'world/tooling/test_africa_starter_selection.py'
+      - 'world/tooling/atomic_starter_publication.py'
+      - 'world/tooling/test_atomic_starter_publication.py'
+      - 'world/tooling/run_africa_starters.py'
+      - 'world/tooling/test_run_africa_starters.py'
+      - 'world/tooling/stage-checkpoint-policy.mjs'
+      - 'world/tooling/stage-checkpoint-policy.test.mjs'
+      - 'world/tooling/serve-sealed-africa.mjs'
       - 'scripts/world/build-playable-africa.py'
       - 'scripts/world/verify-playable-destination.ts'
       - '.github/workflows/africa-rollout-audit-ci.yml'
@@ -30,6 +37,12 @@ jobs:
       - run: npm ci
       - name: Pinned settlement selection and compact city generation
         run: python3 -B -m unittest world.tooling.test_africa_starter_selection -v
+      - name: Serial runner and interrupted owned publication
+        run: python3 -B -m unittest world.tooling.test_run_africa_starters world.tooling.test_atomic_starter_publication -v
+      - name: Retained stage source upgrade policy
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --test --test-concurrency=1 world/tooling/stage-checkpoint-policy.test.mjs
       - name: Tracked generated assets and source identities
         run: |
           python3 - <<'PYTHON'

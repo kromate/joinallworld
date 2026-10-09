@@ -120,7 +120,10 @@ export class FeatureIndexSessionUnreaped extends Error {
   readonly child: ChildProcessWithoutNullStreams;
   readonly processGroup: number;
   constructor(child: ChildProcessWithoutNullStreams, cause: unknown) {
-    super('Feature index session process group could not be confirmed terminal; retain its owned handle and all index state.', { cause });
+    let detail = cause instanceof Error ? cause.message.slice(0, 512) : typeof cause === 'string' ? cause.slice(0, 512) : 'unknown failure';
+    detail = detail.replace(/[\u0000-\u001f\u007f]/g, ' ').trim();
+    while (Buffer.byteLength(detail, 'utf8') > 512) detail = detail.slice(0, -1);
+    super(`Feature index session process group could not be confirmed terminal; retain its owned handle and all index state. Cause: ${detail || 'unknown failure'}`, { cause });
     this.name = 'FeatureIndexSessionUnreaped';
     this.child = child;
     this.processGroup = child.pid ?? -1;
@@ -1028,20 +1031,31 @@ function awaitChildClose(child: ChildProcessWithoutNullStreams, timeoutMs: numbe
   });
 }
 
+/** Parse one bounded `ps -o rss= -o stat=` record. Z/0 is a sampled zombie,
+ * not reap proof; process close and pipe closure remain independently required. */
+export function parseOwnedPythonRssSample(output: string): number {
+  if (typeof output !== 'string' || Buffer.byteLength(output, 'utf8') > 256) {
+    throw new TypeError('Owned Python RSS sample exceeds its strict output bound.');
+  }
+  const line = output.endsWith('\n') ? output.slice(0, -1) : output;
+  if (line.includes('\n') || line.includes('\r')) throw new TypeError('Owned Python RSS sample must contain exactly one process row.');
+  const match = /^[ \t]*([0-9]{1,16})[ \t]+([DIRSTtUWXYZ][+<NLslEWV]{0,15})[ \t]*$/.exec(line);
+  if (!match) throw new TypeError('Owned Python RSS sample is malformed.');
+  const kib = Number(match[1]);
+  if (!Number.isSafeInteger(kib) || kib < 0) throw new RangeError('Owned Python RSS sample is outside its strict integer bound.');
+  if (kib === 0 && match[2]![0] !== 'Z') throw new RangeError('Zero RSS is accepted only for an explicitly zombie process state.');
+  return kib;
+}
+
 function sampleOwnedPythonRssKiB(pid: number): Promise<number> {
   return new Promise((resolve, reject) => {
-    execFile('/bin/ps', ['-p', String(pid), '-o', 'rss='], {
-      encoding: 'utf8', timeout: 1000, maxBuffer: 4096, killSignal: 'SIGKILL', shell: false,
+    execFile('/bin/ps', ['-p', String(pid), '-o', 'rss=', '-o', 'stat='], {
+      encoding: 'utf8', timeout: 1000, maxBuffer: 256, killSignal: 'SIGKILL', shell: false,
       windowsHide: true, env: { PATH: '/usr/bin:/bin' },
     }, (error, stdout, stderr) => {
       if (error) return reject(new Error('Could not sample the owned Python coordinator RSS.', { cause: error }));
-      const output = String(stdout);
-      if (Buffer.byteLength(output, 'ascii') > 4096 || !/^\s*[0-9]+\s*$/.test(output)) {
-        return reject(new Error(`Owned Python RSS sample was unavailable or malformed: ${String(stderr).slice(0, 512)}`));
-      }
-      const kib = Number(output.trim());
-      if (!Number.isSafeInteger(kib) || kib < 1) return reject(new Error('Owned Python RSS sample is outside its strict integer bound.'));
-      resolve(kib);
+      try { resolve(parseOwnedPythonRssSample(String(stdout))); }
+      catch (cause) { reject(new Error(`Owned Python RSS sample was unavailable or malformed: ${String(stderr).slice(0, 512)}`, { cause })); }
     });
   });
 }
@@ -1230,7 +1244,10 @@ export async function openFeatureIndexSession(configValue: FeatureIndexSessionCo
       await verifyPinnedFile(verifiedPaths.pythonExecutable, { sha256: runtime.pythonSha256, bytes: runtime.pythonBytes }, 'Python executable', true);
       await verifyPinnedFile(path.join(verifiedPaths.repositoryRoot, 'world/tooling/index_admission.py'), manifest.admission as CaptureBytePin, 'Admission CLI source');
     } catch (error) {
-      throw new FeatureIndexSessionUnreaped(child, error);
+      const original = rssMonitorError ?? terminalError ?? cause;
+      const detail = original instanceof Error ? original.message.slice(0, 256) : 'unknown interruption';
+      const lifecycle = error instanceof Error ? error.message.slice(0, 256) : 'unverified lifecycle';
+      throw new FeatureIndexSessionUnreaped(child, new Error(`${lifecycle}; original failure: ${detail}`, { cause: original }));
     }
     throw new FeatureIndexSessionTerminated(rssMonitorError ?? cause);
   };

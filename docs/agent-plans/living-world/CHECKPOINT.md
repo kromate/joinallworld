@@ -1,5 +1,11 @@
 # Living-world implementation checkpoint
 
+## Queued notice isolation source review - 2026-10-09T19:07:50.216272+00:00
+
+Independently reviewed Integration's private next-unit patch3f9e36d7. All9actual notice read-mark callers are covered across7files; existing synchronous actor watcher resets transient seenBefore. Actor/city-scoped keys retain old marks without attributing them to a new actor; noactor inert and malformed timestamps filtered. No eager UI/media imports or shared runtime edits. [Source-only review](notice-isolation-next-unit-review.json). Proposal remains unapplied/unexecuted/queued after current frozen3af release; actual focused/compiler/budget/two-actor UI acceptance required.
+
+Integration operator reports four round trips/home restorations and no duplicate return charges acrossreload; lastAlgeria journey/finaltenfare and home witness pending. These are owner reports, not yet the final named receipt or production proof. Existing19:09deadline and exclusiveWORLD/Astra window remain; fullprogramme goalACTIVE.
+
 ## Paired restart save comparison retained - 2026-10-09T19:05:05.992909+00:00
 
 Previous turn answered the user's status request and added no implementation. This continuation independently confirmed helper87118/exact3af health live19:04:14UTC and read/hashed the sanitized paired save report c2741a35. It declares30matching source/actor/city/money/ledger/receipt/once/ownership/home/inventory/car/estate fields and links actual lifecycle receipt1974bdfe. Integration's private before/after comparison and verified Astra reload support scoped same-city restart continuity; Root did not read raw snapshots or use browser/store. OriginalHUP129 remains failed. [Exact qualified record](sealed-africa-3af-review.json).

@@ -1,0 +1,24 @@
+{
+  "observedAt": "2026-10-09T19:07:50.216272+00:00",
+  "candidateSha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+  "proposalSha256": "3f9e36d782a2befeeea967e89b8840b57bace0a1e423068f7a92e0ffdbbf658b",
+  "status": "Independent source review only; queued after current release",
+  "scope": "Actor/city-scoped local life-notice read marks. Existing actor A read timestamp must not suppress actor B notices; preserve legacy unscoped storage without assigning it to any actor. No server permission/receipt/media/financial change.",
+  "review": {
+    "files": 7,
+    "actualCallerSitesCovered": 9,
+    "candidateTrackedClean": true,
+    "existingActorWatcher": "MessagesApp.vue resets seenBefore synchronously on game.session identity change",
+    "storage": "Actor key and city Map; finite nonnegative stored timestamps; noactor inert; legacy key not written",
+    "imports": "No added eager UI/media import",
+    "testsAuthored": "A/B/A and reload, independentcities, absentactor, legacy, malformed and failedstorage; unexecuted proposal"
+  },
+  "notPerformed": [
+    "Repository application",
+    "Actual focused tests",
+    "Compiler/build/download caps",
+    "Two-actor native UI acceptance",
+    "Production release"
+  ],
+  "ownership": "Integration prepared and owns future application/tests; Root read-only independent review. Frozen3af unchanged."
+}

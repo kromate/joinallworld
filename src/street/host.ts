@@ -1,4 +1,4 @@
-import type { WebGLRenderer } from 'three'
+import type { Object3D, WebGLRenderer } from 'three'
 import type { HostPerson, HostPlayer, HostState } from '../campus/unilag/host.ts'
 import type { StreetJourney } from './types.ts'
 import { createKit } from '../scene/kit.ts'
@@ -14,9 +14,12 @@ import type { StandIn } from '../scene/body/stand-in.ts'
 import { tileKey, tileOf } from './frame.ts'
 import { createTileWindow } from './window.ts'
 import { createStreetRenderer } from './renderer.ts'
+import { createTileOverlayWindow } from './overlay-window.ts'
+import { MARINA_DEPOT_SOURCE_PINS } from '../game/living-world/depot-site.ts'
+import type { DepotOverlayMarker } from '../app/features/living-world/depotOverlay.ts'
 import { createStreetClient } from './client.ts'
 import type { StreetRequest } from './client.ts'
-import type { MetrePoint, StreetDoor } from './types.ts'
+import type { MetrePoint, StreetDoor, StreetTile, TileCoord } from './types.ts'
 
 export interface StreetHostOptions {
   request?: StreetRequest; journey?: StreetJourney; renderer?: WebGLRenderer; now?: () => number
@@ -44,6 +47,40 @@ export function createStreetHost(container: HTMLElement, options: StreetHostOpti
   const held = new Set<string>(), doorViews = new Map<string, HTMLButtonElement>(), label = document.createElement('div')
   label.setAttribute('aria-label', 'Street entrances'); Object.assign(label.style, { position: 'absolute', inset: '0', pointerEvents: 'none', overflow: 'hidden' }); container.appendChild(label)
   const status = document.createElement('span'); status.setAttribute('role', 'status'); status.textContent = 'Loading city street…'; Object.assign(status.style, { position: 'absolute', bottom: '12px', left: '12px', color: '#152a2b', background: '#fffbe8', padding: '5px 9px', borderRadius: '8px', pointerEvents: 'none', fontSize: '12px' }); container.appendChild(status)
+  const practiceLabels = document.createElement('div')
+  practiceLabels.setAttribute('aria-label', 'Fictional practice sites')
+  Object.assign(practiceLabels.style, { position: 'absolute', inset: '0', pointerEvents: 'none', overflow: 'hidden' })
+  container.appendChild(practiceLabels)
+  const overlayTiles = new Map<string, StreetTile>()
+  const overlayLabels = new Map<string, { marker: DepotOverlayMarker; element: HTMLSpanElement }>()
+  const overlays = createTileOverlayWindow({
+    parent: scenery.group,
+    async create(coord) {
+      const key = tileKey(coord), tile = overlayTiles.get(key)
+      if (!tile) throw Error('Practice tile is no longer resident')
+      const { buildMarinaDepotOverlay } = await import('../app/features/living-world/depotOverlay.ts')
+      const asset = buildMarinaDepotOverlay(tile)
+      if (!asset) throw Error('Practice site geometry is unavailable')
+      const element = document.createElement('span'), marker = asset.marker
+      element.textContent = marker.label
+      element.title = 'Game practice site. Rental driving is not available yet.'
+      Object.assign(element.style, { position: 'absolute', borderRadius: '7px', padding: '5px 8px', background: '#fff1cb', color: '#573b17', fontSize: '12px' })
+      return { view: {
+        attach(parent: Object3D) { asset.view.attach(parent); practiceLabels.appendChild(element); overlayLabels.set(key, { marker, element }); draw(); loop.wake() },
+        rebase(origin: TileCoord) { asset.view.rebase(origin) },
+        dispose() { asset.view.dispose(); element.remove(); if (overlayLabels.get(key)?.element === element) overlayLabels.delete(key) },
+      } }
+    },
+    onError(_tile, error) { options.onError?.(error) },
+  })
+  function addPracticeOverlay(tile: StreetTile) {
+    // This selects a cold cosmetic module. Its inspector must still validate the whole site;
+    // the gate never supplies vehicle, route, inventory or reward authority.
+    const pins = MARINA_DEPOT_SOURCE_PINS
+    if (tile.city !== pins.city || tile.version !== pins.version || tileKey(tile.tile) !== tileKey(pins.tile)) return
+    overlayTiles.set(tileKey(tile.tile), tile)
+    overlays.onTile(tile.tile)
+  }
   const client = createStreetClient({ request: options.request, journey: options.journey, now: options.now })
   const fail = (error: unknown) => { if (closed) return; status.textContent = error instanceof Error ? error.message : 'Street unavailable. Use the map to travel.'; options.onError?.(error) }
   function applyJourney(journey: StreetJourney, restore: boolean) {
@@ -51,7 +88,7 @@ export function createStreetHost(container: HTMLElement, options: StreetHostOpti
     if (journey.kind !== 'walking') { walker.stop(); options.onJourneyChanged?.(journey); return }
     if (restore || !initialized) { walker.stop(); walker.place(journey.point.x, journey.point.z); initialized = true }
     const centre = tileOf(journey.point), key = tileKey(centre)
-    if (key !== centreKey) { centreKey = key; scenery.rebase(centre); liveTiles?.setCentre(centre); rebuildGrid(); const at = scenery.local(walker); orbit.follow(at.x, 1.2, at.z); orbit.snap() }
+    if (key !== centreKey) { centreKey = key; scenery.rebase(centre); overlays.rebase(centre); liveTiles?.setCentre(centre); rebuildGrid(); const at = scenery.local(walker); orbit.follow(at.x, 1.2, at.z); orbit.snap() }
     loop.wake(); draw()
   }
   function rebuildGrid() { if (client.journey) walker.setGrid(scenery.grid(tileOf(client.journey.point))) }
@@ -61,7 +98,7 @@ export function createStreetHost(container: HTMLElement, options: StreetHostOpti
   function useJourney(journey: StreetJourney, restore: boolean) {
     if (closed) return
     if (!liveTiles && journey.kind === 'walking') {
-      liveTiles = createTileWindow({ city: journey.city, version: journey.version, load: async (tile, signal) => { try { return await client.tile(tile, signal) } catch (error) { if (!signal.aborted && initialTile?.key === tileKey(tile)) initialTile.reject(error); else if (!signal.aborted && tileKey(tile) === centreKey) fail(error); throw error } }, onTile(tile) { scenery.add(tile); rebuildGrid(); if (initialTile?.key === tileKey(tile.tile)) { initialTile.resolve(); initialTile = null } status.textContent = 'Tap the road to walk. Choose a doorway to go inside.'; draw(); loop.wake() }, onEvict(tile) { scenery.remove(tile) } })
+      liveTiles = createTileWindow({ city: journey.city, version: journey.version, load: async (tile, signal) => { try { return await client.tile(tile, signal) } catch (error) { if (!signal.aborted && initialTile?.key === tileKey(tile)) initialTile.reject(error); else if (!signal.aborted && tileKey(tile) === centreKey) fail(error); throw error } }, onTile(tile) { scenery.add(tile); addPracticeOverlay(tile); rebuildGrid(); if (initialTile?.key === tileKey(tile.tile)) { initialTile.resolve(); initialTile = null } status.textContent = 'Tap the road to walk. Choose a doorway to go inside.'; draw(); loop.wake() }, onEvict(tile) { overlays.onEvict(tile.tile); overlayTiles.delete(tileKey(tile.tile)); scenery.remove(tile) } })
     }
     applyJourney(journey, restore); if (journey.kind === 'walking') liveTiles?.setCentre(tileOf(journey.point))
   }
@@ -98,7 +135,14 @@ export function createStreetHost(container: HTMLElement, options: StreetHostOpti
       button.style.left = `${(point.x + 1) * w / 2}px`; button.style.top = `${(1 - point.y) * h / 2}px`; button.style.transform = 'translate(-50%,-100%)'
     }
   }
-  function draw() { if (closed) return; const at = scenery.local(walker); avatar.position.set(at.x, 0, at.z); avatar.rotation.y = walker.ry; standIn?.move(at.x, 0, at.z, walker.ry); orbit.follow(at.x, 1.2, at.z); orbit.apply(camera); renderer.render(world, camera); renderCount++; renderDoors() }
+  function renderPracticeLabels() {
+    for (const { marker, element } of overlayLabels.values()) {
+      const at = scenery.local(marker.point), point = new THREE.Vector3(at.x, marker.height, at.z).project(camera)
+      element.hidden = Math.hypot(marker.point.x - walker.x, marker.point.z - walker.z) >= 65 || point.z > 1 || point.z < -1 || Math.abs(point.x) > 0.95 || Math.abs(point.y) > 0.95
+      element.style.left = `${(point.x + 1) * container.clientWidth / 2}px`; element.style.top = `${(1 - point.y) * container.clientHeight / 2}px`; element.style.transform = 'translate(-50%,-100%)'
+    }
+  }
+  function draw() { if (closed) return; const at = scenery.local(walker); avatar.position.set(at.x, 0, at.z); avatar.rotation.y = walker.ry; standIn?.move(at.x, 0, at.z, walker.ry); orbit.follow(at.x, 1.2, at.z); orbit.apply(camera); renderer.render(world, camera); renderCount++; renderDoors(); renderPracticeLabels() }
   const loop = createMotionLoop(dt => {
     if (closed || !initialized) return false
     const accepted = client.journey, before = { x: walker.x, z: walker.z }, ahead = accepted ? Math.hypot(walker.x - accepted.point.x, walker.z - accepted.point.z) : 0
@@ -147,8 +191,8 @@ export function createStreetHost(container: HTMLElement, options: StreetHostOpti
     walkBy(dx: number, dz: number) { return walkGround({ x: walker.x + dx, z: walker.z + dz }) },
     zoom(direction: number) { orbit.zoomBy(direction > 0 ? 0.9 : 1.1); loop.wake() }, recentre() { orbit.reset(); loop.wake() },
     position() { return { x: walker.x, z: walker.z, location } }, captureCanvas() { return renderer.domElement },
-    diagnostics() { const window = liveTiles?.snapshot(); return { location, initialized, busy, entering, renderCount, journey: client.journey, avatar: { x: walker.x, z: walker.z, moving: walker.moving, skinned: standIn?.shown === true, phase: stride }, tiles: window && { resident: window.resident, pending: window.pending, queued: window.queued, errors: window.errors }, scenery: scenery.diagnostics(), drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles, loop: { frames: loop.frames, running: loop.running }, disposed: closed } },
-    dispose() { if (closed) return; closed = true; initialTile?.reject(Error('Street closed')); initialTile = null; walker.stop(); loop.dispose(); client.dispose(); liveTiles?.dispose(); scenery.dispose(); controls?.dispose(); observer?.disconnect(); globalThis.removeEventListener('keydown', key); globalThis.removeEventListener('keyup', key); renderer.domElement.removeEventListener('pointerdown', pointerDown); renderer.domElement.removeEventListener('pointermove', pointerMove); renderer.domElement.removeEventListener('pointerup', pointerUp); renderer.domElement.removeEventListener('pointercancel', pointerUp); label.remove(); status.remove(); standIn?.dispose(); avatar.userData.dispose(); kit.dispose(); world.clear(); renderer.domElement.remove(); if (!options.renderer) renderer.dispose() },
+    diagnostics() { const window = liveTiles?.snapshot(); return { location, initialized, busy, entering, renderCount, journey: client.journey, avatar: { x: walker.x, z: walker.z, moving: walker.moving, skinned: standIn?.shown === true, phase: stride }, tiles: window && { resident: window.resident, pending: window.pending, queued: window.queued, errors: window.errors }, scenery: scenery.diagnostics(), overlays: overlays.diagnostics(), drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles, loop: { frames: loop.frames, running: loop.running }, disposed: closed } },
+    dispose() { if (closed) return; closed = true; initialTile?.reject(Error('Street closed')); initialTile = null; walker.stop(); loop.dispose(); client.dispose(); liveTiles?.dispose(); overlays.dispose(); overlayTiles.clear(); overlayLabels.clear(); scenery.dispose(); controls?.dispose(); observer?.disconnect(); globalThis.removeEventListener('keydown', key); globalThis.removeEventListener('keyup', key); renderer.domElement.removeEventListener('pointerdown', pointerDown); renderer.domElement.removeEventListener('pointermove', pointerMove); renderer.domElement.removeEventListener('pointerup', pointerUp); renderer.domElement.removeEventListener('pointercancel', pointerUp); label.remove(); practiceLabels.remove(); status.remove(); standIn?.dispose(); avatar.userData.dispose(); kit.dispose(); world.clear(); renderer.domElement.remove(); if (!options.renderer) renderer.dispose() },
   }
 }
 export type StreetHost = ReturnType<typeof createStreetHost>

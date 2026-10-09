@@ -1,0 +1,7 @@
+# GPU source-corner comparison v7 — private full-topology normal repair (prepared, unexecuted)
+
+This new recipe uses v5 fixture files; v3–v6 sources and receipts remain immutable. It has not been executed.
+
+The v6 run passed attribute replay and binding witnesses, then failed because a shell support normal had zero length. The current body normals are recomputed after production masks index faces. The private source chart restores the untouched full index; it must therefore derive its own normal field from the full source topology. This candidate clones current appearance-shaped positions and all source attributes, installs the raw full source index on that private clone, calls Three `computeVertexNormals()` there, and proves non-normal bytes plus index bytes/SHA are unchanged. It counts masked-topology zero normals and affected full-source faces, then checks the exact shell support has at least one zero-normal source vertex before and none after. Full-source faces/normals must be finite and nondegenerate. The displayed production normals are untouched.
+
+The source-corner chart positions, skin weights, full-index mapping, and attribute counts are unchanged. Existing resource limits, source pins, fail-fast UI status, and RSS drain remain. A successful remote screenshot set would still only be diagnostic shader/visual evidence; normal lighting and mobile performance are unverified.

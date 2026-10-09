@@ -186,10 +186,11 @@ try {
     assert.equal(actor.pose, 'idle', `${family}: failed seat contact rolls back the public pose`);
     assert.equal(actor.seated, false, `${family}: failed seat contact never reports seated`);
     const stairPhases = [0.18, 0.42, 0.68, 0.91];
+    actor.fit(0.72); // Exact home AVATAR_SCALE; stairs travel along the flight's X axis.
     for (const climb of [1, -1]) for (let index = 0; index < stairPhases.length; index++) {
       const step = climb > 0 ? index * 4 : (stairPhases.length - 1 - index) * 4;
       const x = stairs.xStart + (step + 0.5) * stairs.run;
-      actor.place(x, (step + 1) * stairs.rise, stairs.z, 0);
+      actor.place(x, (step + 1) * stairs.rise, stairs.z, climb * Math.PI / 2);
       const phase = stairPhases[index];
       try { actor.stride(phase * 2 * Math.PI, false, climb * 0.18); } catch (error) {
         throw new Error(`${family}/stairs direction=${climb} step=${step} phase=${phase}: ${error.message}; missing=${JSON.stringify(missingStairSamples)}`, { cause: error });
@@ -199,7 +200,7 @@ try {
     }
     for (const unsupported of ['lie', 'soak', 'wash']) assert.throws(() => actor.show(unsupported, false), /unsupported|unavailable/i, `${family}: ${unsupported} remains refused`);
     familyResults.push({ family, furniture: Object.keys(furniture), stairPhases,
-      stairFixture: { family: '3af17a0 home-scene stairsOf', treads: stairs.count, runPerTread: stairs.run, risePerTread: stairs.rise },
+      stairFixture: { sceneScale: 0.72, travelAxis: 'X', yaw: 'direction * pi/2', family: '3af17a0 home-scene stairsOf', treads: stairs.count, runPerTread: stairs.run, risePerTread: stairs.rise },
       sourceClips: actor.preparedMetrics.sourceClipCount,
       bodyTriangles: actor.preparedMetrics.authoredBodyTriangles, clothingTriangles: actor.preparedMetrics.clothingTriangles,
       shoeTriangles: actor.preparedMetrics.shoeTriangles, seatSurfaceContract: 'posterior body+visible clothing converged <=1mm; both shoes supported',

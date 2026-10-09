@@ -13,6 +13,8 @@ export type Colour = string
 
 /** A [x, y, z] position. */
 export type Vec3 = [number, number, number]
+/** Immutable local-space corner tuple for a flat four-sided batch face. */
+export type Face4 = readonly [readonly [number, number, number], readonly [number, number, number], readonly [number, number, number], readonly [number, number, number]]
 
 /** The three layers of a geometry batch. */
 export type BatchLayer = 'solid' | 'glow' | 'glass'
@@ -30,6 +32,8 @@ export interface BatchOptions {
   open?: boolean
   sx?: number
   sz?: number
+  /** Recorder-only metadata in the current batch's local coordinates: false opts out; bounds replace primitive bounds. */
+  footprint?: false | { bounds: readonly (readonly [number, number, number, number, number, number])[] }
 }
 export interface LightSpec { x: number; y: number; z: number; colour: Colour; intensity: number; distance: number }
 export interface BatchResult { meshes: THREE.Mesh[]; lights: THREE.PointLight[]; triangles: number }
@@ -44,6 +48,7 @@ export interface Batch {
   ball(x: number, y: number, z: number, rx: number, ry: number, rz: number, colour: Colour, o?: BatchOptions): Batch
   ico(x: number, y: number, z: number, rx: number, ry: number, rz: number, colour: Colour, o?: BatchOptions): Batch
   quad(x: number, y: number, z: number, w: number, h: number, colour: Colour, o?: BatchOptions): Batch
+  face4(points: Face4, colour: Colour, o?: BatchOptions): Batch
   disc(x: number, y: number, z: number, r: number, colour: Colour, o?: BatchOptions): Batch
   at(x: number, y: number, z: number, ry: number, draw: (b: Batch) => void, rx?: number, rz?: number, scale?: number): Batch
   light(x: number, y: number, z: number, colour: Colour, intensity?: number, distance?: number): Batch
@@ -242,7 +247,8 @@ export interface SceneWalk {
   pose(name?: string, seat?: number): boolean
   gait(step: unknown, phase?: number, jog?: boolean): boolean
   heightAt(x: number, z: number): number
-  contactHeightAt?(x: number, z: number, expectedY?: number): number
+  /** Drawn support top plus contact allowance, or null for unsupported points (ramps/edges/anchors). */
+  contactHeightAt?(x: number, z: number, expectedY?: number): number | null
   near(spot: { x: number; y: number; z: number } | null | undefined): boolean
   goal(x?: number, z?: number): boolean
 }
@@ -266,6 +272,9 @@ export interface SceneEntry {
   setSpot(id: string): boolean
   setPlayer(options?: PlayerOptions): boolean
   setCrowd(people: unknown): SceneTag[]
+  /** Called by the host after its canonical player has actually drawn. */
+  startCrowd?(renderer: { getContext?: () => unknown }, changed: () => void): void
+  readonly crowdRendering?: { desired: number; canonical: number; procedural: number; loading: number }
   readonly easing: boolean
   stepCrowd(dt: number): boolean
   settleCrowd(): void

@@ -62,6 +62,7 @@ const scroller = ref<HTMLElement | null>(null)
 const heading = ref<HTMLElement | null>(null)
 const wardrobe = starterWardrobe()
 const isNew = props.mode === 'new'
+const embedded = shell.inPhone
 const campusEntry = isNew && pendingCampusEntry()
 
 const o = computed(() => view.value.onboarding)
@@ -342,9 +343,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="cr-host">
+  <div class="cr-host" :class="{ 'is-embedded': embedded, 'panel-fill': embedded }">
   <div ref="root" class="cr-root" :data-step="cr.step" :data-mode="mode" data-cr-root>
-    <div class="cr-stage-col">
+    <div v-if="!embedded || cr.step === 'look'" class="cr-stage-col">
       <p class="cr-brand"><i aria-hidden="true"><GameIcon name="globe" :size="20" /></i><b>Allworld</b><span>A digital world you can live in</span></p>
       <CreatorStage :look="draft.look" :name="draft.name || 'Your character'" :focus="focus" :caption="draft.name" @focus="setFocus" />
     </div>

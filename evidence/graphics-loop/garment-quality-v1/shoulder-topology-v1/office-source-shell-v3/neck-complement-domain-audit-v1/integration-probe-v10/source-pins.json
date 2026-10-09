@@ -1,0 +1,23 @@
+{
+  "status": "prepared-isolated-diagnostic-not-published-or-executed",
+  "purpose": "Causally compare exact shipped GLB bytes across fetch+parse and Three GLTFLoader/FileLoader request paths, including duplicate concurrent loads.",
+  "assetSha256": {
+    "male": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "female": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "clipPack": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "cases": [
+    "fetch-and-parse each asset, checking SHA before parse",
+    "preflight-fetch exact bytes then one GLTFLoader.loadAsync request per asset",
+    "two concurrent male GLTFLoader.loadAsync requests to inspect duplicate-load behavior"
+  ],
+  "strictGate": "Any failed or pending GLB, any failed HTTP request, HTTP error, browser exception, or console error fails the remote diagnostic. AbortController and XMLHttpRequest abort calls, stacks, active case labels, and CDP initiators/redirects/data/terminal events are recorded, never waived.",
+  "limitations": [
+    "Does not reproduce production loadBody template-cache ownership or avatar-disposal lifecycle.",
+    "No renderer pixels or phone performance are measured.",
+    "A pass can compare loader mechanisms but cannot alone explain the production fixture cancellation."
+  ],
+  "workflowBranch": "codex/graphics-glb-loader-cancel-v1",
+  "browserLimits": { "processGroupRssBytes": 2147483648, "wallSeconds": 60, "chrome": "headless SwiftShader isolated single-process diagnostic" },
+  "cpuLimits": { "processGroupRssBytes": 230686720, "wallSeconds": 25, "nodeHeapMiB": 96 }
+}

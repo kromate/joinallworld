@@ -98,6 +98,23 @@ unrelated limits or quota values is forbidden. The next controller milestone nee
 an explicit versioned shard binding that pins the shard membership and plan,
 while retaining legacy v1 validation/resume. Existing tooling/bindings remain
 immutable and incompatible old namespaces must refuse, never migrate silently.
+The separate v2 codecs now pass exact-source run37895287687 atcb562c69
+(413tests+3policy+WorldTypeScript); see
+[index-shard-binding-acceptance.json](index-shard-binding-acceptance.json).
+They retain every original v1 field, change only `format` to
+`feature-index-binding-v2`, and add exactly `shard` with four lowercase SHA pins:
+`planHash`, `shardId`, `membershipHash`, `baseIndexBindingHash`. The last is the
+SHA of the unchanged canonical v1 base bytes. Python exports
+`encode_index_shard_binding`, `decode_index_shard_binding` and
+`index_shard_binding_hash`; the parent SDK exports
+`prepareFeatureIndexShardBinding` and `validateFeatureIndexShardBinding`.
+Both runtimes match the same static933-byte base/1272-byte v2 golden hashes.
+The existing Python v1 codecs and SDK session preparation still reject v2;
+no legacy namespace, root or session opener is unlocked by this pure result.
+The other three pins are not independently reconstructed from live plan or
+source membership by these codecs. Actual held admission must do that before
+allocating roots. New v3 immutable controller-record source is a separate
+unaccepted candidate; pure transitions alone do not launch a batch worker.
 Batch reservation must charge the complete finite plan before creating children,
 with one durable bounded operation identity and interruption recovery. Preserve
 all already charged attempts/bytes and unknown state. Test real reservation and

@@ -1,14 +1,15 @@
 # Independent world-data builder
 
-Current campaign audit/session integration, bounded shard-plan codec and atomic
-opaque reservations pass406 tests, three release-policy checks and World
-TypeScript on exact source19dbfe16/run37893670937. See
+Current campaign audit/session integration, bounded shard-plan codec, atomic
+opaque reservations and separate v2 binding codecs pass413 tests, three
+release-policy checks and World TypeScript on exact sourcecb562c69/run37895287687.
+See [index-shard-binding-acceptance.json](index-shard-binding-acceptance.json) and
 [INDEX-SHARD-RESERVATION-OPERATIONS.md](INDEX-SHARD-RESERVATION-OPERATIONS.md).
 See [INDEX-SHARD-PLAN-SPEC.md](INDEX-SHARD-PLAN-SPEC.md),
 [CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md) and latest
 [PROGRESS.md](PROGRESS.md). The planner remains unadmitted/uncompiled; actual
-plan admission, membership-bound child bindings and finite global accounting are
-next. Country geometry, full interruption/corruption acceptance,
+plan admission, controller/transport integration and finite global accounting
+are next. Legacy openers remain v1-only. Country geometry, full interruption/corruption acceptance,
 rendering integration and phone proof remain open. No gameplay/Nigeria data
 changed. Counts below are historical stages.
 

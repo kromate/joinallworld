@@ -24,6 +24,20 @@ Diagnostic branches only; no graphics runtime main merge or production upload. L
 
 # Allworld agent coordination and phased production releases
 
+## WORLD explicit shard bindings accepted — 9 October 2026
+
+Exactcb562c69/run37895287687 SUCCESS:413tests+3policy+WorldTypeScript. Root
+verified22 artifacts, four source blobs and unchanged797134Braw/892928Bsource/
+1048576Bcontrol. Python+SDK staticwire base/shard hashes match; legacyopeners
+remain v1-only. Atomic source11e4a308 safely merged reviewed860e0e46 and published
+main/world-foundation86c3e715; actual mainCI37894589678 SUCCESS. No runtime/game/
+Nigeria changes or upload. Negativev15 test-syntax run retained, one-character
+successor fully passes. New v3 immutable controller source26e1442b is unaccepted;
+existing Luna owns only boundedpipe plumbing/helpers/process-boundary tests.
+Whole-plan admission/roots, finiteglobalaccounting/geometry/phones remain OPEN.
+Latest06:51WARNING2 renewed paging(~10.3GBswap): nooptionalWORLDlocalheavy/browser/
+server/compiler/worker/upload, sharedcaps and WORLDsoleuploader unchanged.
+
 ## WORLD atomic reservation batch accepted — 9 October 2026
 
 Exact19dbfe16/run37893670937 SUCCESS:406tests+3release-policy+WorldTypeScript;

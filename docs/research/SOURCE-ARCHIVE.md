@@ -24,6 +24,8 @@ The [current-source comparison and implementation order](lagos-life-current-comp
 
 The [city/original-launch follow-up](lagos-life-launch-reply-followup-2026-10-09.md) adds731 observed city-launch replies across100 expanded branches,63 deduplicated findings and20 geographic-request groups. X stopped rendering independent pages; original launch remained unreadable and a direct fallback returned403. [135 remaining branch URLs](lagos-life-pending-replies-2026-10-09.md) are published as the precise continuation queue. These are not135 unread comments, and no complete-tree claim is made.
 
+Subsequent [access recheck](lagos-life-access-recheck-2026-10-09.md) recovered both original launch and the previously blocked branch without reload. Ten prior city branches added12 distinct IDs, giving743 observed city descendants. The [current129-page queue](lagos-life-pending-replies-current.md) supersedes the earlier snapshot. Original launch initially exposed the author plus11 replies and is undergoing its own root/branch traversal. The earlier loading/403 is historical access evidence, not a claim that the post remains inaccessible.
+
 The raw capture remains at `/Users/anthonyakpan/Desktop/JoinAllworld/docs/research/lagos-life-browser-evidence-2026-10-08.txt`; it contains duplicated browser UI and unrelated recommendations and is deliberately not committed here. The public source links needed to continue are retained in these catalogues.
 
 ## Original document fingerprints

@@ -1,5 +1,7 @@
 # Pending public reply branches
 
+Historical snapshot. The [current129-page queue](lagos-life-pending-replies-current.md) reflects recovered access, completed pages and newly discovered descendants.
+
 Captured 9 October 2026 during the city-launch audit. These135 branch URLs remain unvisited as branch pages after X stopped rendering content. This is a continuation queue, not an unread-comment count. Some immediate replies may already appear in prior captures. Refresh live counters and resume this queue after access recovers; do not restart the completed100 branches. Only public status URLs are published, with no reply transcripts or private browsing/session data.
 
 1. [Remaining branch 1](https://x.com/TheoLonglife/status/2107549823456948703)

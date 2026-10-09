@@ -9,7 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 import { AcquisitionBudgetError } from './acquisition-errors.ts';
-import { campaignStatus, runCampaign } from './campaign.ts';
+import { campaignStatus, runCampaign, prepareCampaignIndexShardPlan } from './campaign.ts';
 import { compileCountryDirectory, publishCountryDirectory } from './country-directory.ts';
 import { publishCountryGrid } from './country-grid-publish.ts';
 import { validateCountryGridRequest } from './country-grid.ts';
@@ -25,6 +25,8 @@ import { campaignIndexAuditJob, buildQualifiedCampaignIndexAuditCompletion, vali
   CAMPAIGN_INDEX_AUDIT_KIND, FEATURE_INDEX_AUDIT_FORMAT, type CampaignIndexAuditFrozenInput } from './campaign-index-audit-state.ts';
 import type { GridQueryCampaign } from './grid-query-types.ts';
 import { Ledger } from './ledger.ts';
+import { calculateFeatureIndexShardEnvelopeOverhead } from './index-shard-evidence.ts';
+import type { FeatureIndexShardPlanInput } from './index-shard-plan.ts';
 
 const ROOT = realpathSync(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'));
 const TOOLING = path.join(ROOT, 'world/tooling');
@@ -325,6 +327,75 @@ async function withFixture<T>(id: string, run: (state: Awaited<ReturnType<typeof
   try { return await run(state); }
   finally { await rm(state.tmp, { recursive: true, force: true }); await rm(state.campaignTemp, { recursive: true, force: true }); }
 }
+
+function shardPolicy(config: FeatureIndexSessionConfiguration, maxAttempts = 1): FeatureIndexShardPlanInput['policy'] {
+  const binding = JSON.parse(Buffer.from(config.bindingBytes).toString('ascii')) as {
+    reservedBytes: number; processLimits: { fileBytes: number }; engineLimits: { databaseBytes: number };
+  };
+  const envelopeOverheadBytes = calculateFeatureIndexShardEnvelopeOverhead(config.namespaceRoot,
+    binding.processLimits.fileBytes, binding.engineLimits.databaseBytes);
+  return { aggregateBytes: config.aggregateBytes, registryControlBytes: 1024 * 1024,
+    shardReservedBytes: binding.reservedBytes, maxCaptures: 256, descriptorBytes: 512_000 - envelopeOverheadBytes,
+    envelopeOverheadBytes, maxShards: 256, maxAttempts };
+}
+
+test('source-derived shard plan verifies the full captured leaf denominator without opening index state', async () => withFixture('source-plan', async state => {
+  const campaign = campaignFor(state, 'feature-index-source-plan'), campaignRoot = path.join(state.campaignTemp, 'campaign-state');
+  const config = await indexConfiguration(state), injected = makeAcquire();
+  const run = await runCampaign(campaign, { allowedRoot: campaignRoot, inventoryManifestPath: state.directoryPath,
+    countryGridPlanPath: state.grid.planPath, acquire: injected.acquire, maxJobs: 1 });
+  assert.equal(injected.calls(), 1);
+  assert.equal(run.indexCoverage?.enabled, false, 'source capture is complete before index admission exists');
+  const campaignDir = path.join(campaignRoot, campaign.id), namespaceBefore = await snapshotTree(config.namespaceRoot);
+  const campaignBefore = await snapshotTree(campaignDir), policy = shardPolicy(config, campaign.limits.maxAttempts);
+  const result = await prepareCampaignIndexShardPlan(campaign.id, config, policy, { allowedRoot: campaignRoot });
+  assert.equal(result.plan.requestCount, 1); assert.equal(result.plan.requiredObservationCount, 1);
+  assert.equal(result.plan.admission, 'not-admitted'); assert.equal(result.plan.geometryCoverage, 'not-compiled');
+  assert.equal(result.sourceEvidence.scope, 'source-plan-snapshot'); assert.equal(result.sourceEvidence.status, 'not-admitted');
+  assert.equal(result.sourceEvidence.verifiedLeafCount, 1); assert.match(result.sourceEvidence.sourceMembershipSha256, /^[a-f0-9]{64}$/);
+  assert.equal(result.hash, sha(result.bytes));
+  assert.deepEqual(await snapshotTree(config.namespaceRoot), namespaceBefore, 'planning cannot create an index root');
+  assert.deepEqual(await snapshotTree(campaignDir), campaignBefore, 'planning cannot rewrite campaign files or Ledger rows');
+  await assert.rejects(prepareCampaignIndexShardPlan(campaign.id, config, { ...policy, descriptorBytes: 1 }, { allowedRoot: campaignRoot }), /descriptor/i);
+  await assert.rejects(prepareCampaignIndexShardPlan(campaign.id, config, { ...policy, envelopeOverheadBytes: 1 }, { allowedRoot: campaignRoot }), /overhead/i);
+  await assert.rejects(prepareCampaignIndexShardPlan(campaign.id, config, policy,
+    { allowedRoot: campaignRoot, expectedHash: 'a'.repeat(64) }), /expected immutable hash/);
+}));
+
+test('source-derived shard plan rejects missing denominator rows and corrupt retained bytes without writes', async () => withFixture('source-plan-invalid', async state => {
+  for (const defect of ['missing-row', 'corrupt-extract'] as const) {
+    const campaign = campaignFor(state, `feature-index-source-plan-${defect}`), campaignRoot = path.join(state.campaignTemp, `state-${defect}`);
+    const config = await indexConfiguration(state, `namespace-${defect}`), injected = makeAcquire();
+    await runCampaign(campaign, { allowedRoot: campaignRoot, inventoryManifestPath: state.directoryPath,
+      countryGridPlanPath: state.grid.planPath, acquire: injected.acquire, maxJobs: 1 });
+    const ledgerPath = path.join(campaignRoot, campaign.id, 'ledger.sqlite');
+    if (defect === 'missing-row') deleteJob(ledgerPath, sourceJobId(campaign));
+    else {
+      const capture = row(ledgerPath, sourceJobId(campaign))?.result as { plan: { input: { path: string } } };
+      await appendFile(capture.plan.input.path, 'changed');
+    }
+    const before = await snapshotTree(path.join(campaignRoot, campaign.id));
+    await assert.rejects(prepareCampaignIndexShardPlan(campaign.id, config, shardPolicy(config), { allowedRoot: campaignRoot }),
+      defect === 'missing-row' ? /complete captured grid-root denominator/ : /missing or corrupt/);
+    assert.deepEqual(await snapshotTree(path.join(campaignRoot, campaign.id)), before);
+    assert.equal(injected.calls(), 1);
+  }
+}));
+
+test('source-derived shard plan snapshots caller policy and returns immutable source-derived membership', async () => withFixture('source-plan-immutability', async state => {
+  const campaign = campaignFor(state, 'feature-index-source-plan-immutability'), campaignRoot = path.join(state.campaignTemp, 'campaign-state');
+  const config = await indexConfiguration(state), injected = makeAcquire();
+  await runCampaign(campaign, { allowedRoot: campaignRoot, inventoryManifestPath: state.directoryPath,
+    countryGridPlanPath: state.grid.planPath, acquire: injected.acquire, maxJobs: 1 });
+  const policy = shardPolicy(config), expected = await prepareCampaignIndexShardPlan(campaign.id, config, policy, { allowedRoot: campaignRoot });
+  policy.maxAttempts = 2;
+  assert.ok(Object.isFrozen(expected.plan)); assert.ok(Object.isFrozen(expected.plan.requests));
+  assert.equal(expected.hash, sha(expected.bytes));
+  const replay = await prepareCampaignIndexShardPlan(campaign.id, config, shardPolicy(config),
+    { allowedRoot: campaignRoot, expectedHash: expected.hash });
+  assert.equal(replay.hash, expected.hash); assert.deepEqual(replay.plan.requests, expected.plan.requests);
+  assert.equal(injected.calls(), 1);
+}));
 
 test('zero-row source capture indexes through Python once, preserves the query denominator, and resumes without acquisition', async () => withFixture('backlog', async state => {
   const campaign = campaignFor(state, 'feature-index-backlog'), campaignRoot = path.join(state.campaignTemp, 'campaign-state');

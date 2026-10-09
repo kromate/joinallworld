@@ -1,0 +1,11 @@
+# Reviewed v3 split-compilation recipe
+
+This is a new, unexecuted recipe for the actual Lagos whole-slice diagnostic package, targeting the distinct branch `codex/graphics-environment-next-phase-v5-review-v3`. It preserves the failed v2 run and output tree. The change addresses v2's observed memory peak by moving full source/public verification out of the compiler process and compiling the shared Three pair, actual addons, and application graph in separate fresh Node processes.
+
+The remote-only runner retains the same Node old-space limit (96 MiB), owned process-group RSS limit (220 MiB), and total duration limit (25 seconds). It sets `GOMAXPROCS=1` for each child as a scheduler bound, not a resource-cap increase. It runs these phases serially: seal the full pinned source/public/fixture inventory; fully verify that inventory in a fresh process; compile Three core/module; compile the actual addon entrypoints; compile the full split app/map graph; seal every compiled output and check all consumed hashes/runtime imports; fully verify the source inventory again in a fresh process; seal the finalizer; copy and hash public files once; stage an explicit-route review host. No compiler process reads or retains the whole public inventory.
+
+The app and addon loaders hash every actual input buffer against the full source pin map as esbuild consumes it, then recheck those consumed sources after compilation. The output-seal process rechecks all consumed sources and hashes every output. It also scans JavaScript from app, vendor, and addons: relative imports must resolve to emitted files, and bare imports must resolve through the exact import map. Both `three.core.js` and `three.module.js` are emitted as siblings so the installed Three module's relative core import remains valid. All forty city map modules and their split chunks are required.
+
+All generated artifacts use distinct `*-v3` paths (`source-pins-v3.json`, `compile-v3-record.json`, `static-v3/`, and `static-fixture-v3/`) so the reviewed v2 failure artifacts stay unchanged. The workflow is staged for parent review and is not installed in `.github/workflows` by this preparation. This package remains diagnostic; it carries no production size, visual, GPU, or phone acceptance claim.
+
+No build, test, server, browser, or remote workflow was run for this preparation.

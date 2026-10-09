@@ -923,6 +923,8 @@ export interface NpcSummary {
   beta: boolean
   /** Landmark key of the venue's scene, or null. */
   at: string | null
+  /** Authored appearance; omitted when the regular uses their stable seeded look. */
+  look?: Partial<Look>
   quote: string
   points: number
   tier: TierId

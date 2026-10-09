@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 export const NATIVE_CURL_HAIR_SOURCE_SHA256 = '3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474';
 export const NATIVE_CURL_HAIR_INSTANCE_LIMIT = 600;
-export const NATIVE_CURL_HAIR_TRIANGLE_LIMIT = 7_200;
+export const NATIVE_CURL_HAIR_TRIANGLE_LIMIT = 14_400;
 
 export interface NativeCurlHairOptions {
   /** Mesh loaded from the pinned afro01-mobile.glb, kept invisible by its caller. */
@@ -42,9 +42,9 @@ export interface NativeCurlHairLease {
 }
 
 const FAMILY_MORPHS = ['bodyFeminine', 'bodyMasculine'] as const;
-const CURL_TRIANGLES = 8;
-const MIN_RADIUS = 0.0038;
-const MAX_RADIUS = 0.0072;
+const CURL_TRIANGLES = 20;
+const MIN_RADIUS = 0.0105;
+const MAX_RADIUS = 0.015;
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error('Native curl hair: ' + message);
@@ -125,14 +125,20 @@ function hashUnit(value: number): number {
 
 /** Shares only the tiny unit curl geometry. Each lease gets private color and instance transforms. */
 export class NativeCurlHairFactory {
-  private readonly curlGeometry = new THREE.OctahedronGeometry(1, 0);
+  private readonly curlGeometry = new THREE.IcosahedronGeometry(1, 0);
   private references = 0;
   private destroyed = false;
 
   constructor() {
-    this.curlGeometry.computeVertexNormals();
+    const positions = this.curlGeometry.getAttribute('position');
+    const normals = this.curlGeometry.getAttribute('normal');
+    const normal = new THREE.Vector3();
+    for (let index = 0; index < positions.count; index++) {
+      normal.fromBufferAttribute(positions, index).normalize();
+      normals.setXYZ(index, normal.x, normal.y, normal.z);
+    }
     assert(this.curlGeometry.getAttribute('position').count / 3 === CURL_TRIANGLES,
-      'unit curl geometry must stay at eight triangles');
+      'unit curl geometry must stay at twenty triangles');
   }
 
   create(options: NativeCurlHairOptions): NativeCurlHairLease {
@@ -202,7 +208,7 @@ export class NativeCurlHairFactory {
       for (const name of FAMILY_MORPHS) lastFamilyState.set(name, familyState.get(name) ?? 0);
       for (let i = 0; i < sampled.indices.length; i++) {
         center.copy(positions.points[sampled.indices[i]!]!).applyMatrix4(rootToHeadRest);
-        const radius = THREE.MathUtils.clamp(sampled.nearestDistances[i]! * 0.53, MIN_RADIUS, MAX_RADIUS);
+        const radius = THREE.MathUtils.clamp(sampled.nearestDistances[i]! * 0.90, MIN_RADIUS, MAX_RADIUS);
         const noise = hashUnit(i + 701);
         scale.set(radius * (0.9 + noise * 0.2), radius * (0.92 + hashUnit(i + 1901) * 0.18),
           radius * (0.9 + hashUnit(i + 3701) * 0.2));

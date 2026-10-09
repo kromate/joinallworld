@@ -306,7 +306,14 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
     const mapped = mapPose(sampled);
     const sourceHipDelta = sourcePose.Hips.clone().sub(sourceRest.Hips);
     placeHipsAt(rootHipRest.clone().add(mapVector(sourceHipDelta)));
-    if (support.kind === 'seat-anchor') placeHipsAt(new THREE.Vector3(...support.hipWorld));
+    if (support.kind === 'seat-anchor') {
+      updateWorld();
+      const anchoredHip = new THREE.Vector3(...support.hipWorld).applyMatrix4(rootInverse.copy(root.matrixWorld).invert());
+      const sourceHip = rootHipRest.clone().add(mapVector(sourceHipDelta));
+      const anchorOffset = anchoredHip.clone().sub(sourceHip);
+      for (const point of Object.values(mapped)) point.add(anchorOffset);
+      placeHipsAt(anchoredHip);
+    }
 
     for (const [parent, child] of TORSO_PAIRS) aim(parent, child, mapped[child].clone().sub(mapped[parent]));
     const reach = {} as Record<'leftArm' | 'rightArm' | 'leftLeg' | 'rightLeg', ChainReach>;

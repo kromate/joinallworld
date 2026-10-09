@@ -134,7 +134,9 @@ export function createNativeActionController(root: THREE.Group, options: NativeA
     const envelope = torsoBoundsAt(wrist.y);
     const padding = fixedArmClearance ?? Math.max(0.025, (envelope.max - envelope.min) * 0.30);
     const boundary = side === 'left' ? envelope.min : envelope.max;
-    const desired = side === 'left' ? boundary - padding : boundary + padding;
+    const currentLateral = wrist.dot(profileLateral);
+    const desired = side === 'left' ? Math.min(currentLateral, boundary - padding)
+      : Math.max(currentLateral, boundary + padding);
     wrist.addScaledVector(profileLateral, desired - wrist.dot(profileLateral));
     solveArm(side, wrist, outward);
     return padding;

@@ -116,8 +116,8 @@ try{
   const lease=factory.create({guide,actorRoot,headBone:head,body,guideSha256:pins.hair,hairColor:looks[i].hairColor,maximumCurls:NATIVE_CURL_HAIR_INSTANCE_LIMIT});
   leases.push(lease);
   assert.equal(lease.object.parent,head,'curl instances are direct children of native Head bone');
-  assert.equal(lease.object.count,600);assert.equal(lease.metrics.triangles,4800);assert.equal(lease.metrics.drawCalls,1);
-  assert.equal(lease.object.geometry.getAttribute('position').count/3,8);
+  assert.equal(lease.object.count,600);assert.equal(lease.metrics.triangles,12000);assert.equal(lease.metrics.drawCalls,1);
+  assert.equal(lease.object.geometry.getAttribute('position').count/3,20);
   assert.deepEqual(lease.metrics.familyMorphs,{bodyFeminine:familyValue(body,'bodyFeminine'),bodyMasculine:familyValue(body,'bodyMasculine')});
   assert.equal(guide.visible,false,'module leaves source alpha guide hidden as caller configured');
   assert.equal(body.geometry,originalBodyGeometry,'module leaves body geometry untouched');
@@ -141,6 +141,16 @@ try{
    return nearest;
   }).sort((a,b)=>a-b);
   const p95GuideCoverage=coverageDistances[Math.floor(.95*(coverageDistances.length-1))];
+  const inverseHeadRest=headWorldToRoot.clone().invert();
+  const inverseInstances=[];
+  for(let curl=0;curl<lease.object.count;curl++){const matrix=new THREE.Matrix4();lease.object.getMatrixAt(curl,matrix);inverseInstances.push(matrix.invert());}
+  let coveredGuideCenters=0;
+  for(const point of cloud.centers){
+   const headPoint=point.clone().applyMatrix4(inverseHeadRest);
+   if(inverseInstances.some(matrix=>headPoint.clone().applyMatrix4(matrix).length()<=.79465))coveredGuideCenters++;
+  }
+  const guaranteedSolidCoverage=coveredGuideCenters/cloud.centers.length;
+  assert(guaranteedSolidCoverage>=.95,'at least95% guide centroids lie inside actual curl inspheres rather than visible scalp gaps');
   assert(lease.metrics.curlCenterHeadBounds.min[1]<0.2&&lease.metrics.curlCenterHeadBounds.max[1]>0.02,'head-local alignment retains source hair volume');
 
   const sourceWorld=lease.object.localToWorld(readInstanceCenter(lease.object,0).clone()),headQuaternion=head.quaternion.clone();
@@ -173,7 +183,7 @@ try{
    curlCenterBoundsHead:lease.metrics.curlCenterHeadBounds,
    sourceGuideTriangles:lease.metrics.guideTriangles,curls:lease.metrics.curls,
    curlTriangles:lease.metrics.triangles,drawCalls:lease.metrics.drawCalls,
-   maxCurlAnchorErrorMeters:maxAnchorError,p95GuideCentroidCoverageMeters:p95GuideCoverage,familyMorphCenterMovementMeters:familyMorphMovement,
+   guaranteedSolidCoverage,maxCurlAnchorErrorMeters:maxAnchorError,p95GuideCentroidCoverageMeters:p95GuideCoverage,familyMorphCenterMovementMeters:familyMorphMovement,
    outputInstanceMatrixBytes:lease.object.instanceMatrix.array.byteLength,
   });
  }
@@ -185,7 +195,7 @@ try{
  assert.deepEqual([...leases[1].object.instanceMatrix.array.slice(0,16)],[...secondMatrixBefore],'changing one actor leaves the other instance transforms unchanged');
  assert.equal(factory.activeReferences,2);
  leases[0].dispose();assert.equal(factory.activeReferences,1);
- assert.equal(leases[1].object.geometry.getAttribute('position').count/3,8,'disposing one actor leaves shared geometry');
+ assert.equal(leases[1].object.geometry.getAttribute('position').count/3,20,'disposing one actor leaves shared geometry');
  assert.throws(()=>factory.dispose(),/dispose all actor leases/);
  leases[1].dispose();assert.equal(factory.activeReferences,0);factory.dispose();
  assert.throws(()=>factory.create({}),/factory is disposed/);

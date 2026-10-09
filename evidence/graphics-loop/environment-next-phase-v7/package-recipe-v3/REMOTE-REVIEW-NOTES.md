@@ -1,0 +1,1 @@
+The source seal includes the v7 fixture and v5 renderer source/pins. The package artifact is diagnostic, not production or phone acceptance. Preserve v1/v2 package evidence unchanged; this v3 candidate has not been executed.

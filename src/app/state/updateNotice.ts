@@ -18,7 +18,7 @@ export function decideChunkFailure({ failed, currentBuild, freshBuild }: { faile
 /** Whether an error is a failed dynamic import / module load (the wording differs by browser). */
 export function isChunkLoadError(error: unknown): boolean {
   const message = String((error as { message?: unknown } | null)?.message ?? error ?? '')
-  return /dynamically imported module|importing a module script failed|error loading dynamically imported module|Unable to preload CSS/i.test(message)
+  return /dynamically imported module|importing a module script failed|Unable to preload CSS/i.test(message)
 }
 
 /** The path of the module entry script in an HTML page ("/assets/app-AbC123.js"), or null. */
@@ -56,7 +56,7 @@ async function hostIsNewer(fetcher: typeof fetch, doc: Document | undefined): Pr
   const current = doc ? entryScriptOf(Array.from(doc.querySelectorAll('script[type="module"]')).map((node) => node.outerHTML).join('')) : null
   const response = await fetcher('/', { cache: 'no-store', headers: { accept: 'text/html' } })
   const fresh = response.ok ? entryScriptOf(await response.text()) : null
-  return decideChunkFailure({ failed: true, currentBuild: current, freshBuild: fresh }) === 'reload-banner'
+  return Boolean(current && fresh && current !== fresh)
 }
 
 export function resetUpdateNotice(): void { updateAvailable.value = false; checking = null; lastNegative = -Infinity; lastLook = -Infinity }
@@ -74,7 +74,7 @@ export function watchForUpdates(doc: Document = globalThis.document, fetcher: ty
   const look = (): void => {
     if (updateAvailable.value || doc.visibilityState === 'hidden' || now() - lastLook < every) return
     lastLook = now()
-    if (!checking) checking = hostIsNewer(fetcher, doc).then((newer) => { if (newer) updateAvailable.value = true }, () => undefined).finally(() => { checking = null })
+    void noteChunkFailure(fetcher, doc, now)
   }
   doc.addEventListener('visibilitychange', look)
   const timer = setInterval(look, every)

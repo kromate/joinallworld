@@ -364,7 +364,7 @@ function onPoint(event: CustomEvent<{ active: boolean; target?: Box | null; card
         </div>
       </div>
       <button class="lumo-stage" type="button" :aria-label="`${COMPANION_NAME}, your guide. Open chat`" :title="`${COMPANION_NAME} · AI guide`" @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up" @keydown.enter.prevent="openChat" @keydown.space.prevent="openChat" @keydown="onKey">
-        <canvas v-show="webgl" ref="canvas" :width="size" :height="size" aria-hidden="true" />
+        <canvas v-show="webgl" ref="canvas" aria-hidden="true" />
         <CompanionFace v-if="!webgl" :size="size - 12" :mood="mood" :still="reduced" />
         <span v-if="dot" class="lumo-dot" aria-hidden="true" />
       </button>

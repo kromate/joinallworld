@@ -186,9 +186,10 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     bounded_integer(heap_mib, 64, 1536, "V8 heap MiB")
     bounded_integer(rss_limit_bytes, 64*MIB, 512*MIB, "sampled RSS bytes")
     admission_worker = worker in {"index-registry-admit", "index-registry-admit-crash",
-                                  "index-registry-admit-plan", "index-registry-admit-plan-crash"}
+                                  "index-registry-admit-plan", "index-registry-admit-plan-crash",
+                                  "index-registry-verify-plan"}
     plan_worker = worker in {"index-registry-plan-witness", "index-registry-admit-plan",
-                             "index-registry-admit-plan-crash"}
+                             "index-registry-admit-plan-crash", "index-registry-verify-plan"}
     registry_worker = worker in {"index-registry-startup", "index-registry-lease-witness"} or admission_worker or plan_worker
     if plan_worker != (_plan_input is not None): raise ValueError("plan worker mismatch")
     plan_raw = plan_pin = None
@@ -359,6 +360,7 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
             environment["WORLD_INDEX_BINDING_SHA256"] = registry_configuration["bindingSha256"]
         command = [str(node), "-I", "-B", str(script)]
         if worker == "index-registry-admit-plan": command.append("--shards")
+        elif worker == "index-registry-verify-plan": command.append("--verify-plan")
         elif worker == "index-registry-admit-plan-crash": command.extend(("--shards-crash", case))
         elif plan_worker: command.append("--plan")
         elif worker == "index-registry-lease-witness": command.append("--lease-witness")

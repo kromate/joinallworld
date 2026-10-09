@@ -3,8 +3,8 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import re
 import signal
+import sqlite3
 import stat
 import sys
 
@@ -19,45 +19,14 @@ from index_namespace import open_index_namespace, open_index_shard_namespace, na
 from index_root import (charged_index_root, precharged_index_shard_root, _binding, _lease,
     prepare_index_shard_plan_authority, planned_index_reservations, _verify_plan_reservations)
 from index_reservations import MAX_RESERVATIONS
-from index_controller_record import decode_controller_record, FORMAT_V3
+from index_controller_record import verify_terminal_plan_record
 from index_controller_state import (RECORD, REGISTRY, REGISTRY_PENDING, EXECUTION, RECLAIM,
-    read_private, anchor_registry)
+    read_private, anchor_registry, shard_admission_summary)
 from index_registry_worker import (_runtime_environment, _private_database, _private_root,
                                    _read_exact_private, _rss_kib, _EXPECTED_STATS, read_plan_stream, _witness_limits)
-
-
-def read_admission_base_input(root, namespace_descriptor, plan_pin):
-    plan_pin = dict(plan_pin) if type(plan_pin) is dict else plan_pin
-    if (type(plan_pin) is not dict or set(plan_pin) != {"sha256", "bytes"}
-            or type(plan_pin["sha256"]) is not str or not re.fullmatch(r"[a-f0-9]{64}", plan_pin["sha256"])
-            or type(plan_pin["bytes"]) is not int or not 1 <= plan_pin["bytes"] <= 2*1024*1024):
-        raise ValueError("shard admission requires its exact bounded plan pin")
-    base_raw = _read_binding_descriptor(namespace_descriptor); base_pin = binding_pin(base_raw)
-    values = [os.environ.get("WORLD_INDEX_PLAN_"+name) for name in
-              ("DESCRIPTOR", "ACK_DESCRIPTOR", "BYTES", "SHA256")]
-    plan_fd, ack_fd, length, digest = values
-    if (any(type(value) is not str for value in values) or not plan_fd.isdigit()
-            or not ack_fd.isdigit() or not length.isdigit() or len(plan_fd)>10 or len(ack_fd)>10
-            or len(length)>7 or {"sha256":digest,"bytes":int(length)} != plan_pin):
-        raise ValueError("plan pipes differ from the exact durable pin")
-    record = decode_controller_record(read_private(root/RECORD))
-    operation = {"kind":"admit-plan","plan":plan_pin,"baseBinding":base_pin}
-    attempts = record["attempts"]
-    if (record["format"] != FORMAT_V3 or record.get("operation") != operation or not attempts
-            or attempts[-1]["phase"] != "prepared" or attempts[-1]["operation"] != operation
-            or attempts[-1]["snapshotDevice"] is None):
-        raise ValueError("shard admission lacks its exact prepared V3 operation")
-    snapshot = (root/"controller.execution").lstat(); attempt = attempts[-1]
-    if (not stat.S_ISDIR(snapshot.st_mode) or snapshot.st_uid != os.getuid()
-            or stat.S_IMODE(snapshot.st_mode) != 0o700
-            or (snapshot.st_dev,snapshot.st_ino)!=(attempt["snapshotDevice"],attempt["snapshotInode"])):
-        raise ValueError("prepared execution snapshot identity differs from durable state")
-    config = read_private(Path(__file__).resolve().parent.parent/"acquisition-sources.json",64000,(0o400,))
-    source_pin = {"sha256":hashlib.sha256(config).hexdigest(),"bytes":len(config)}
-    if source_pin != record["sourceConfiguration"]: raise ValueError("source configuration pin differs")
-    validate_admission_binding(base_raw,record["toolingManifest"],source_pin,config)
-    raw, receipt = read_plan_stream(int(plan_fd),int(ack_fd),namespace_descriptor,plan_pin)
-    return raw, base_raw, receipt
+from index_execution_snapshot import (CONFIGURATION, _plan_pipe, _read_plan_transport,
+    read_admission_base_input)
+from index_storage_footprint import verify_terminal_registry
 
 
 def _shard_prefix(root, authority):
@@ -82,29 +51,6 @@ def _shard_prefix(root, authority):
         if position < len(names)-1 and "binding.json" not in contents:
             raise ValueError("only the last planned prefix root may have a staged binding")
     return len(names)
-
-
-def shard_admission_summary(root, authority):
-    entries = planned_index_reservations(authority)
-    identities = []
-    for key, binding, _ in entries:
-        child = root/key
-        _binding(child, binding, authority)
-        names = {entry.name for entry in os.scandir(child)}
-        if "binding.json" not in names or "binding.pending" in names:
-            raise ValueError("every charged shard must have its published immutable binding")
-        info = child.lstat(); lock = (child/"writer.lock").lstat()
-        if (not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
-                or stat.S_IMODE(info.st_mode) != 0o700 or lock.st_uid != os.getuid()
-                or not stat.S_ISREG(lock.st_mode) or lock.st_nlink != 1
-                or stat.S_IMODE(lock.st_mode) != 0o600 or lock.st_size != 0):
-            raise ValueError("published shard root or permanent lock is unsafe")
-        identities.append({"indexHash": key, "rootDevice": info.st_dev, "rootInode": info.st_ino,
-            "lockDevice": lock.st_dev, "lockInode": lock.st_ino})
-    encoded = json.dumps(identities, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("ascii")
-    return {"planHash": authority.plan_hash, "shards": len(entries),
-            "reservedBytes": sum(row[2] for row in entries),
-            "rootIdentitySha256": hashlib.sha256(encoded).hexdigest()}
 
 
 def run_shard_admission(root, budget, namespace_lease, plan_raw, plan_pin,
@@ -161,6 +107,33 @@ def run_shard_admission(root, budget, namespace_lease, plan_raw, plan_pin,
     return encoded
 
 
+def verify_shard_registry(root, budget, namespace_lease, plan_raw, plan_pin, base_raw):
+    """Read-only proof of an already terminal complete batch; no SQL writer APIs."""
+    from index_controller_state import verify_registry_anchor
+    from index_execution_snapshot import CONFIGURATION
+    from index_namespace import namespace_binding
+    authority = prepare_index_shard_plan_authority(plan_raw, plan_pin, base_raw)
+    if authority.aggregate_bytes != budget:
+        raise ValueError("plan aggregate differs from the held namespace budget")
+    pin = dict(plan_pin); base_pin = binding_pin(base_raw)
+    operation = {"kind":"admit-plan","plan":pin,"baseBinding":base_pin}
+    record_raw = read_private(root/RECORD)
+    source_path = Path(__file__).resolve().parent.parent.parent/CONFIGURATION
+    source = read_private(source_path,64000,(0o400,))
+    source_pin = {"sha256":hashlib.sha256(source).hexdigest(),"bytes":len(source)}
+    root_info = _private_root(root); lock_info = os.fstat(namespace_lease.descriptor)
+    namespace = {"device":root_info.st_dev,"inode":root_info.st_ino,
+        "lockDevice":lock_info.st_dev,"lockInode":lock_info.st_ino,"aggregateBytes":budget}
+    record = verify_terminal_plan_record(record_raw,operation,source_pin,namespace,
+        sys.version.split()[0],sqlite3.sqlite_version)
+    manifest_pin = record.get("toolingManifest")
+    validate_admission_binding(base_raw,manifest_pin,source_pin,source)
+    report=verify_terminal_registry(root,budget,namespace_lease,record_raw,authority,base_raw)
+    encoded=json.dumps(report,sort_keys=True,separators=(",",":"),ensure_ascii=True)
+    if len(encoded.encode("ascii"))>4096: raise ValueError("verification report exceeds its fixed byte bound")
+    return encoded
+
+
 def run_admission(root, budget, namespace_lease, on_boundary=lambda name: None):
     # Verify the durable operation and binding before SQL.
     raw = read_admission_input(root, namespace_lease.descriptor)
@@ -212,17 +185,7 @@ def _plan_witness():
     """Fixed bounded transport witness; never opens SQL or allocates children."""
     root, _, lease = _runtime_environment()
     _witness_limits()
-    raw_fd = os.environ.get("WORLD_INDEX_PLAN_DESCRIPTOR")
-    raw_ack = os.environ.get("WORLD_INDEX_PLAN_ACK_DESCRIPTOR")
-    raw_bytes = os.environ.get("WORLD_INDEX_PLAN_BYTES")
-    raw_sha = os.environ.get("WORLD_INDEX_PLAN_SHA256")
-    if (any(type(value) is not str for value in (raw_fd, raw_ack, raw_bytes, raw_sha))
-            or not raw_fd.isdigit() or not raw_ack.isdigit() or not raw_bytes.isdigit()
-            or len(raw_fd) > 10 or len(raw_ack) > 10 or len(raw_bytes) > 7
-            or len(raw_sha) != 64 or any(char not in "0123456789abcdef" for char in raw_sha)):
-        raise ValueError("plan witness requires exact bounded pipe pins")
-    _, report = read_plan_stream(int(raw_fd), int(raw_ack), lease.descriptor,
-                                 {"sha256": raw_sha, "bytes": int(raw_bytes)})
+    _, _, report = _read_plan_transport(lease.descriptor)
     print(json.dumps({"format": "index-registry-plan-witness-v1", **report}, sort_keys=True), flush=True)
     return 0
 
@@ -242,16 +205,7 @@ def _crash_witness(boundary_name):
 def _shards(crash_boundary=None):
     root, budget, lease = _runtime_environment()
     _witness_limits()
-    raw_fd, ack_fd = (os.environ.get("WORLD_INDEX_PLAN_DESCRIPTOR"),
-        os.environ.get("WORLD_INDEX_PLAN_ACK_DESCRIPTOR"))
-    size, digest = (os.environ.get("WORLD_INDEX_PLAN_BYTES"),
-        os.environ.get("WORLD_INDEX_PLAN_SHA256"))
-    if (any(type(value) is not str for value in (raw_fd, ack_fd, size, digest))
-            or any(not value.isascii() or not value.isdigit() for value in (raw_fd, ack_fd, size))
-            or len(raw_fd) > 10 or len(ack_fd) > 10 or len(size) > 7
-            or len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest)):
-        raise ValueError("batch admission requires exact bounded plan transport pins")
-    plan_pin = {"sha256": digest, "bytes": int(size)}
+    _, _, plan_pin = _plan_pipe()
 
     def boundary(name):
         if name == crash_boundary:
@@ -262,9 +216,24 @@ def _shards(crash_boundary=None):
     return 0
 
 
+def _verify_plan():
+    root, budget, lease = _runtime_environment()
+    _witness_limits()
+    raw, pin, _ = _read_plan_transport(lease.descriptor)
+    base=_read_binding_descriptor(lease.descriptor)
+    descriptor=int(os.environ["WORLD_INDEX_BINDING_DESCRIPTOR"])
+    if descriptor in {int(os.environ["WORLD_INDEX_PLAN_DESCRIPTOR"]),
+                      int(os.environ["WORLD_INDEX_PLAN_ACK_DESCRIPTOR"]),lease.descriptor}:
+        raise ValueError("plan, base binding and namespace descriptors must be distinct")
+    print(verify_shard_registry(root,budget,lease,raw,pin,base),flush=True)
+    return 0
+
+
 def main():
     if sys.argv == [sys.argv[0], "--plan"]:
         return _plan_witness()
+    if sys.argv == [sys.argv[0], "--verify-plan"]:
+        return _verify_plan()
     if sys.argv == [sys.argv[0], "--shards"]:
         return _shards()
     if sys.argv[1:2] == ["--shards-crash"]:

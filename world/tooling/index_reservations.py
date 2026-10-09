@@ -250,3 +250,32 @@ class IndexReservations:
             raise
         return [{"indexHash": index_hash, "reservedBytes": amount, "replayed": was_replayed}
                 for (index_hash, _, amount), was_replayed in zip(entries, replayed)]
+
+
+def verify_terminal_plan_rows(db, budget, authority, base_raw, summary):
+    """Check a readonly registry against the complete plan and optional V1 base."""
+    from index_binding import decode_index_binding
+    from index_namespace import _strict_registry
+    from index_root import planned_index_reservations
+    _strict_registry(db)
+    if db.execute("PRAGMA page_count").fetchone()[0] > DATABASE_BYTES//4096:
+        raise ValueError("registry page count exceeds its fixed database bound")
+    registry=object.__new__(IndexReservations); registry._aggregate_bytes=budget; registry.db=db
+    stats=registry.snapshot()
+    actual=[(key,bytes(binding),amount) for key,binding,amount in
+            db.execute("SELECT hash,binding,reserved_bytes FROM reservations ORDER BY hash")]
+    entries=planned_index_reservations(authority); expected={row[0]:(row[1],row[2]) for row in entries}
+    base_hash=hashlib.sha256(base_raw).hexdigest()
+    if base_hash in expected: raise ValueError("legacy base binding collides with a planned child")
+    actual_map={key:(binding,amount) for key,binding,amount in actual}
+    base=actual_map.pop(base_hash,None)
+    if base is not None and base!=(base_raw,decode_index_binding(base_raw)["reservedBytes"]):
+        raise ValueError("optional legacy base differs from its unchanged V1 binding")
+    if actual_map!=expected or len(actual)!=len(entries)+int(base is not None):
+        raise ValueError("reservation rows differ from the complete plan and optional base")
+    held=summary["reservedBytes"]+(base[1] if base else 0)
+    expected_stats={"reservations":len(actual),"heldBytes":held,
+        "registryAllowanceBytes":REGISTRY_ALLOWANCE,"chargedBytes":REGISTRY_ALLOWANCE+held,
+        "aggregateLimitBytes":budget}
+    if stats!=expected_stats: raise ValueError("registry totals differ from the complete plan")
+    return stats

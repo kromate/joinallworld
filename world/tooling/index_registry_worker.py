@@ -18,6 +18,7 @@ sys.path.insert(0, str(HERE))
 from index_namespace import open_index_namespace, namespace_binding
 from index_binding import _nonfinite, _pairs, decode_index_binding, encode_index_shard_binding
 from index_reservations import DATABASE_BYTES, REGISTRY_ALLOWANCE, MIB
+from index_tooling import _private_plan_pipe, _plan_pipe_flags
 from index_writer_lock import IndexWriterLease
 
 MIN_AGGREGATE_BYTES = REGISTRY_ALLOWANCE + 65536
@@ -240,13 +241,12 @@ def read_plan_stream(read_fd, ack_fd, namespace_descriptor, expected_pin):
     if any(type(fd) is not int or not 2 < fd <= 2147483647 for fd in fds) or len(set(fds)) != 3:
         raise ValueError("bad plan FDs")
     def identity(fd):
-        info = os.fstat(fd); flags = fcntl.fcntl(fd, fcntl.F_GETFL)
+        info = os.fstat(fd); flags = _plan_pipe_flags(fcntl.fcntl(fd, fcntl.F_GETFL))
         return info, flags, (info.st_dev, info.st_ino, info.st_uid, info.st_mode, info.st_nlink, flags)
     endpoints = []
     for fd, access in ((read_fd, os.O_RDONLY), (ack_fd, os.O_WRONLY)):
         info, flags, stamp = identity(fd)
-        if (not stat.S_ISFIFO(info.st_mode) or info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) != 0o600
-                or info.st_nlink not in {0, 1} or flags & os.O_ACCMODE != access or not flags & os.O_NONBLOCK):
+        if (not _private_plan_pipe(info) or flags & os.O_ACCMODE != access or not flags & os.O_NONBLOCK):
             raise ValueError("invalid plan pipe")
         endpoints.append(stamp)
     def lease_identity():

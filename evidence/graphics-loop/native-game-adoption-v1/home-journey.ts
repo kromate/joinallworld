@@ -16,6 +16,9 @@ interface JourneySample {
   readonly actorMeshes: readonly string[];
   readonly boneCount: number;
   readonly bodyPoseSignature: string | null;
+  readonly sceneObjectPhase: string;
+  readonly sceneRestPose: string;
+  readonly navigationWaypoints: number;
   readonly bodyPosition: [number, number, number] | null;
   readonly visibleFurniture: readonly { id: string; itemId: string; x: number; y: number; z: number }[];
   readonly render: { calls: number; triangles: number };
@@ -72,6 +75,7 @@ function createJourney() {
   const buys: JourneySnapshot['buys'] = {};
   const actions: JourneySnapshot['actions'] = {};
   const samples: JourneySnapshot['samples'] = {};
+  let lastNavigationWaypoints = 0;
   let state: LifeState | null = null;
   let entry: HomeScene | null = null;
   let disposed = false;
@@ -119,9 +123,12 @@ function createJourney() {
       position = actor.getWorldPosition(new THREE.Vector3()).toArray() as [number, number, number];
     }
     const actionId = state.activeAction?.kind === 'activity' ? state.activeAction.id : null;
+    const rest = entry.walk.rest();
     const snapshot: JourneySample = {
       name, requestedPose, actionId, spot: state.spot, bodyShown: entry.bodyShown,
       actorMeshes: [...names].sort(), boneCount, bodyPoseSignature: signature, bodyPosition: position,
+      sceneObjectPhase: entry.objectPhase, sceneRestPose: rest.pose,
+      navigationWaypoints: lastNavigationWaypoints,
       visibleFurniture: entry.objects(), render: { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles },
     };
     samples[name] = snapshot;
@@ -144,7 +151,8 @@ function createJourney() {
     if (!state) throw new Error('Life is not initialized');
     const outcome = dispatch(state, { type, payload } as ActionBody, ctx());
     state = outcome.state;
-    return { ok: outcome.ok, code: outcome.code, ...(outcome.reason ? { reason: outcome.reason } : {}) };
+    if (outcome.ok) return { ok: true, code: outcome.code };
+    return { ok: false, code: outcome.code, ...(outcome.reason ? { reason: outcome.reason } : {}) };
   }
   function updateScene(): void {
     if (!state || !entry) throw new Error('Home scene is not initialized');
@@ -174,6 +182,58 @@ function createJourney() {
     }
     throw new Error(`Home body did not load: ${JSON.stringify(entry ? sample('standing', 'idle') : null)}`);
   }
+  async function navigateIntoActiveAction(): Promise<void> {
+    if (!entry) throw new Error('Home scene is not initialized');
+    const rest = entry.walk.rest();
+    if (!rest.busy) throw new Error(`Home scene did not expose an active furniture action: ${JSON.stringify(rest)}`);
+    const bodyActor = entry.group.getObjectByName('skinned-body');
+    if (!bodyActor) throw new Error('Native home actor is missing before action navigation');
+    bodyActor.updateWorldMatrix(true, true);
+    const start = entry.group.worldToLocal(bodyActor.getWorldPosition(new THREE.Vector3()));
+    const target = { x: rest.x, z: rest.z };
+    const grid = entry.walk.grid;
+    if (!grid) throw new Error('Home scene did not expose its actual walk grid');
+    const path = grid.path(start.x, start.z, target.x, target.z);
+    if (path === null) throw new Error('Home walk grid could not route to the active furniture approach');
+    const waypoints = path.length ? path : [{ x: target.x, z: target.z }];
+    const endpoint = waypoints[waypoints.length - 1];
+    if (!endpoint || Math.hypot(endpoint.x - target.x, endpoint.z - target.z) > 0.1) {
+      throw new Error(`Home walk grid path did not reach the exact furniture approach: ${JSON.stringify({ endpoint, target })}`);
+    }
+    lastNavigationWaypoints = waypoints.length;
+    let x = start.x, z = start.z, phase = 0;
+    const gaitLength = 1.83 * entry.walk.scale;
+    const speed = 1.82 * entry.walk.scale;
+    for (const waypoint of waypoints) {
+      const dx = waypoint.x - x, dz = waypoint.z - z;
+      const distance = Math.hypot(dx, dz);
+      const steps = Math.max(1, Math.ceil(distance / (speed / 30)));
+      for (let step = 1; step <= steps; step += 1) {
+        const fraction = step / steps;
+        const nextX = x + dx * fraction, nextZ = z + dz * fraction;
+        entry.walk.move(nextX, rest.y, nextZ, rest.ry);
+        phase += (distance / steps) / gaitLength * Math.PI * 2;
+        entry.walk.gait(true, phase, false);
+        entry.stepCrowd(1 / 30);
+        draw();
+        await new Promise<void>((resolve) => setTimeout(resolve, 16));
+      }
+      x = waypoint.x; z = waypoint.z;
+    }
+    // The scene's own arrival hook enters the furniture animation only after the public
+    // walk reaches its action anchor; pose('work') is the same host contract used on arrival.
+    entry.walk.move(rest.x, rest.y, rest.z, rest.ry);
+    entry.walk.gait(false, phase, false);
+    entry.walk.pose('work');
+    const until = performance.now() + 8_000;
+    while (performance.now() < until) {
+      entry.stepCrowd(1 / 30);
+      draw();
+      if (entry.objectPhase === 'use' || entry.objectPhase === 'rest') return;
+      await new Promise<void>((resolve) => setTimeout(resolve, 16));
+    }
+    throw new Error(`Home action did not reach its actual furniture-use pose: ${entry.objectPhase}`);
+  }
   async function captureAction(name: 'bed-sleep' | 'chair-rest' | 'tub-soak' | 'shower-bath', spot: string, actionId: string, seconds: number, requestedPose: string): Promise<void> {
     if (!state || !entry) throw new Error('Home scene is not ready');
     const selected = act('spot', { id: spot });
@@ -182,11 +242,16 @@ function createJourney() {
     if (!started.ok || started.code !== 'started') throw new Error(`Could not start ${actionId}: ${started.reason ?? started.code}`);
     actions[actionId] = { started: started.code, completed: null, requestedPose };
     updateScene();
-    // The scene owns entry/exit animation time; keep this animation stepping bounded and separate from rule time.
-    for (let frame = 0; frame < 18; frame += 1) {
+    await navigateIntoActiveAction();
+    // Capture only after the scene-owned entrance transition reaches use/rest, so the requested
+    // action label corresponds to the rendered body pose rather than the rule state alone.
+    for (let frame = 0; frame < 6; frame += 1) {
       entry.stepCrowd(1 / 30);
       draw();
       await new Promise<void>((resolve) => setTimeout(resolve, 20));
+    }
+    if (entry.objectPhase !== 'use' && entry.objectPhase !== 'rest') {
+      throw new Error(`${actionId} capture is not in the home furniture-use phase (${entry.objectPhase})`);
     }
     sample(name, requestedPose);
     await requestCapture(`${name}-active`);

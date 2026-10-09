@@ -50,6 +50,7 @@ let socket;
 let nextId = 0;
 const pending = new Map();
 const consoleErrors = [];
+let lastJourneySnapshot = null;
 
 async function readDebugPort() {
   const file = path.join(profile, 'DevToolsActivePort');
@@ -117,6 +118,7 @@ try {
   let ready = null;
   while (Date.now() < deadline) {
     ready = await evaluate('window.nativeHomeJourney?.sample?.() ?? null').catch(() => null);
+    lastJourneySnapshot = ready;
     if (ready?.ready || ready?.errors?.length) break;
     await delay(250);
   }
@@ -130,6 +132,7 @@ try {
   const seen = new Set();
   while (Date.now() < deadline) {
     const state = await evaluate('window.nativeHomeJourney.sample()');
+    lastJourneySnapshot = state;
     if (state.errors?.length) break;
     const requested = state.captureRequest;
     if (requested && requestedNames.includes(requested) && !seen.has(requested)) {
@@ -144,7 +147,7 @@ try {
     }
     await delay(100);
   }
-  if (requestedNames.some((name) => !seen.has(name))) throw new Error(`Home journey missed stage captures: ${[...seen].join(',')}`);
+  if (requestedNames.some((name) => !seen.has(name))) throw new Error(`Home journey missed stage captures: ${JSON.stringify({ seen: [...seen], latest: lastJourneySnapshot, consoleErrors })}`);
   const final = await evaluate('window.nativeHomeJourney.sample()');
   if (!final.samples?.['female-office-standing']) throw new Error(`Female office look did not load: ${JSON.stringify(final)}`);
   const completed = await evaluate('window.nativeHomeJourney.sample()');
@@ -172,6 +175,12 @@ try {
       const standing = completed.samples?.['male-casual-standing']?.bodyPoseSignature;
       return typeof active === 'string' && active.length > 0 && active !== standing;
     }),
+    sceneReachedActualFurnitureUsePhase: actionNames.every((id) => {
+      const active = completed.samples?.[id];
+      const ended = completed.samples?.[`${id}-completed`];
+      return (active?.sceneObjectPhase === 'use' || active?.sceneObjectPhase === 'rest')
+        && ended?.sceneObjectPhase === 'idle' && active.navigationWaypoints > 0;
+    }),
     mobileLayoutSingleColumn: mobileLayout.width === 390 && mobileLayout.scrollWidth <= 390
       && mobileLayout.columns.split(' ').length === 1,
     browserConsoleClean: consoleErrors.length === 0,
@@ -185,7 +194,7 @@ try {
   await writeFile(path.join(resultDir, 'home-journey-report.json'), JSON.stringify(report, null, 2));
   if (!Object.values(checks).every(Boolean)) throw new Error(`Home journey diagnostic failed: ${JSON.stringify(checks)}`);
 } catch (error) {
-  report = { status: 'failed', error: error instanceof Error ? error.message : String(error), consoleErrors, chromeStderr };
+  report = { status: 'failed', error: error instanceof Error ? error.message : String(error), consoleErrors, chromeStderr, latest: lastJourneySnapshot };
   await writeFile(path.join(resultDir, 'home-journey-failure.json'), JSON.stringify(report, null, 2)).catch(() => {});
   throw error;
 } finally {

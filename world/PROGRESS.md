@@ -1,3 +1,22 @@
+# Current world checkpoint, 9 October 2026 at 21:58 UTC
+
+Production has **11 green/open African countries**, independently observed on the
+live map and running exact C1. Generated foreign starter source count is **36**;
+26 remain unadmitted and 17 other source-inventory countries lack generated
+starter modules. Nigeria retains its existing implementation. See
+`production-c1-eleven-country-acceptance.json` and `AFRICA-NEXT-COVERAGE.md`.
+
+The offline country metadata prototype now passes 13 fixtures and an actual
+54-country export/reader check. Initial index: 14,060 raw bytes; selected Libya
+adds 2,473 bytes. All 40 original Nigeria catalogue entries and source trees are
+unchanged from C1. Queued sources remain closed. It has no runtime import and no
+measured compressed startup savings. See `COUNTRY-DIRECTORY-PROTOTYPE.md` and
+`country-directory-prototype-acceptance.json`. Next: reviewed portable runtime
+boundary, exact combined budget measurement and staged destination admission by
+Integration, while bounded source generation continues independently.
+
+The earlier checkpoints below retain their original dates and evidence scopes.
+
 # World delivery checkpoint, 9 October 2026
 
 At 19:21 UTC, the actual production Africa map displays **56 countries · 6 open**:

@@ -1,0 +1,181 @@
+{
+  "format": "world-country-directory-prototype-acceptance-v1",
+  "status": "passed-source-prototype-only",
+  "sourceInputCheckpoint": "3e4c024620dae88a00ccb9d5e6fa1623e1b30d3e",
+  "checkedAtUtc": "2026-10-09T21:58:31.573Z",
+  "registeredInProduction": false,
+  "runtimeImported": false,
+  "compilerAndReaderSource": [
+    {
+      "path": "world/tooling/country-directory-prototype.mjs",
+      "bytes": 43843,
+      "sha256": "5bdc49a664c1ea7e4c70517553f50af51e94061d6ab651f2f895f13b3b77af0f"
+    },
+    {
+      "path": "world/tooling/country-directory-prototype.test.mjs",
+      "bytes": 18695,
+      "sha256": "498f11fd43ef6109a9ab9689be35affea14f5c8f20093aeb686cac8160810ea5"
+    },
+    {
+      "path": "world/tooling/check-country-directory-prototype.mjs",
+      "bytes": 6864,
+      "sha256": "dcae82ef2b4fe74ed79b7b37cf879209e3c265a97e42153a7cbca4784a5373a3"
+    }
+  ],
+  "tests": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "log": {
+      "path": ".cache/world-build/evidence/country-directory-draft-v4-source-tests.log",
+      "bytes": 1421,
+      "sha256": "f02ccc2f7c2e629b65c4d5519d75b9fcc2239a97de2e65b741909ba83049f5a5"
+    }
+  },
+  "actualExport": {
+    "status": "compiled-source-metadata-only",
+    "c1SourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "inventorySha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b",
+    "countryCount": 54,
+    "cityCounts": {
+      "AO": 1,
+      "BF": 1,
+      "BI": 1,
+      "BJ": 1,
+      "BW": 1,
+      "CD": 1,
+      "CF": 1,
+      "CG": 1,
+      "CI": 1,
+      "CM": 1,
+      "CV": 1,
+      "DJ": 1,
+      "DZ": 1,
+      "EG": 1,
+      "ER": 1,
+      "ET": 1,
+      "GA": 1,
+      "GH": 1,
+      "GM": 1,
+      "GN": 1,
+      "GQ": 1,
+      "GW": 1,
+      "KE": 1,
+      "KM": 1,
+      "LR": 1,
+      "LS": 1,
+      "LY": 1,
+      "MA": 1,
+      "MG": 1,
+      "ML": 1,
+      "MR": 1,
+      "MU": 1,
+      "MW": 1,
+      "MZ": 1,
+      "NA": 1,
+      "NE": 1,
+      "NG": 40,
+      "RW": 1,
+      "SC": 1,
+      "SD": 1,
+      "SL": 1,
+      "SN": 1,
+      "SO": 1,
+      "SS": 1,
+      "ST": 1,
+      "SZ": 1,
+      "TD": 1,
+      "TG": 1,
+      "TN": 1,
+      "TZ": 1,
+      "UG": 1,
+      "ZA": 1,
+      "ZM": 1,
+      "ZW": 1
+    },
+    "indexPath": "index-16c43260898cc476a414ebf6539a608b3d260fe71a0892315a57d94c4a23b118.json",
+    "indexSha256": "16c43260898cc476a414ebf6539a608b3d260fe71a0892315a57d94c4a23b118",
+    "sizeReport": {
+      "indexRawBytes": 14060,
+      "allCountryDirectoriesRawBytes": 120463,
+      "totalExportRawBytes": 134523,
+      "initialIndexOnlyRawBytes": 14060
+    },
+    "gameBundleSavings": "unmeasured"
+  },
+  "independentActualReaderAudit": {
+    "status": "passed",
+    "checkedAtUtc": "2026-10-09T21:58:31.573Z",
+    "c1SourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "indexSha256": "16c43260898cc476a414ebf6539a608b3d260fe71a0892315a57d94c4a23b118",
+    "countryCount": 54,
+    "openCountryCount": 11,
+    "openCountries": [
+      "BJ",
+      "CI",
+      "CM",
+      "DZ",
+      "ET",
+      "GH",
+      "KE",
+      "NG",
+      "SN",
+      "TG",
+      "ZA"
+    ],
+    "queuedCitiesClosed": 26,
+    "selectedCandidatesClosed": 17,
+    "originalNigeriaRowsPreserved": 40,
+    "protectedNigeriaSourceTreesUnchangedFromC1": true,
+    "historicalToCurrentReceiptTransitionsVerified": [
+      "TZ",
+      "BW"
+    ],
+    "mogadishuCurrentPacketAndCorrectionAuditAgree": true,
+    "rawBytes": {
+      "index": 14060,
+      "allCountryShards": 120463,
+      "total": 134523,
+      "indexPlusSelectedLibya": 16533
+    },
+    "reader": {
+      "initialCountryReads": 0,
+      "selectedCountryReads": 1,
+      "repeatedSelectionUsesCache": true,
+      "unknownCountryRejected": true,
+      "disposedRejectsReads": true
+    },
+    "limitations": [
+      "Offline Node metadata prototype; no runtime admission or measured startup savings.",
+      "Raw JSON accounting is not JavaScript heap or device-memory measurement.",
+      "No production travel or physical-device claim."
+    ]
+  },
+  "actualEvidence": [
+    {
+      "path": ".cache/world-build/evidence/country-directory-c1-actual-export-v4.json",
+      "bytes": 1330,
+      "sha256": "b52ea70af2ecb6822225d43e6c475e8c9f15bbbb3fde43eb1dacf1c8a84ed283"
+    },
+    {
+      "path": ".cache/world-build/evidence/country-directory-actual-reader-audit-rerun.json",
+      "bytes": 1254,
+      "sha256": "dd83902fa5977cae9fdd73372a279659bc335cf22104c04ea77e94ad84980dcd"
+    }
+  ],
+  "failedEvidencePreserved": [
+    "country-directory-c1-actual-export.stderr",
+    "country-directory-c1-actual-export-rerun.stderr",
+    "country-directory-actual-reader-audit.stderr"
+  ],
+  "failureCorrections": [
+    "CLI now passes acceptedRows rather than rows to the compiler.",
+    "Queued timezone checks use inventory.cityTimezone.ianaTimezone, not optional Natural Earth timezone.",
+    "Independent audit distinguishes Mogadishu current corrected packet from Dar/Gaborone historical packet transitions."
+  ],
+  "limits": [
+    "Node filesystem reader only; no browser runtime or compressed startup savings measured.",
+    "Raw JSON residency cap does not measure JavaScript heap allocation.",
+    "No new country admission, production travel or physical-device acceptance."
+  ]
+}

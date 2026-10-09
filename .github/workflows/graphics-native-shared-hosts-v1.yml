@@ -1,13 +1,13 @@
-name: Native shared player scene hosts
+name: Actual creator venue identity and direct canvas comparison
 on:
   push:
-    branches: [codex/graphics-native-shared-hosts-v2]
+    branches: [codex/graphics-native-creator-identity-v1]
 permissions:
   contents: read
 jobs:
-  hosts:
+  identity:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 6
     steps:
       - uses: actions/checkout@v4
         with:
@@ -16,8 +16,19 @@ jobs:
         with:
           node-version: 24
       - run: npm ci --no-audit --no-fund
-      - name: Typecheck actual player creator venue home graph
-        run: npm run typecheck
-      - name: Existing creator stand-in home queue and scene lifecycle regressions
+      - name: Bundle exact game seed through production creator API
+        run: node --max-old-space-size=256 evidence/graphics-loop/native-game-adoption-v1/bundle-creator-identity.mjs
+      - name: Strict creator fixture types
         if: always()
-        run: node --max-old-space-size=512 --experimental-strip-types --test --test-concurrency=1 src/scene/avatar-preview.test.ts src/scene/body/body-lifecycle.test.ts src/scene/body/gate.test.ts src/scene/body/stand-in.test.ts src/scene/home-crowd.test.ts src/scene/crowd.test.ts src/scene/crowd-native-appearance.test.ts src/scene/body/canonical-crowd.test.ts src/scene/kit-late-close.test.ts src/scene/body/native/native-expression-controller.test.ts src/venue-world.test.ts
+        run: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/creator-identity.typecheck.json
+      - name: Render actual same-seed returned bodies and direct preview canvas
+        if: always()
+        run: python3 evidence/graphics-loop/native-game-adoption-v1/bounded-render.py /tmp/creator-identity-render.log /tmp/creator-identity-render-receipt.json node evidence/graphics-loop/native-game-adoption-v1/render-creator-identity.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: creator-identity-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/native-game-adoption-v1/creator-identity-results/
+            /tmp/creator-identity-render.log
+            /tmp/creator-identity-render-receipt.json

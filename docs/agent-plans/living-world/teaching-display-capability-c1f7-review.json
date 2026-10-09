@@ -1,0 +1,93 @@
+{
+  "reviewedAt": "2026-10-09T21:13:33.161467+00:00",
+  "baselineSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "draftPatchSha256": "572cd3cf50d292ba6c24193eb28766001da330e583f8c0f211a108274c32dbf6",
+  "draftBytes": 38310,
+  "decision": "APPROVE isolated source proposal for Integration assembly/testing; not runtime/activation/release acceptance",
+  "worker": {
+    "sessionId": "01a11c38-5fc5-7172-9351-f264122ea2aa",
+    "parentId": "01a11c35-ad88-7aa3-ac5b-6b7d910724ad",
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "actualTurnContextAt": "2026-10-09T21:03:04.617Z",
+    "actualFinalTurnContextAt": "2026-10-09T21:19:32.515Z"
+  },
+  "sol": {
+    "actualTurnContextAt": "2026-10-09T21:01:59.899Z",
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "blockingFindings": [
+    {
+      "id": "city-moving-snapshot",
+      "detail": "New accept() built.estate.city===requestedCity guard rejects a normal server-authoritative city move. runPending ignores accept false and may clear intent/return success while UI holds old-city state.",
+      "repair": "Preserve original authoritative city adoption; bind display to accepted city without adding this equality guard. Add proposed normal cross-city action regression."
+    },
+    {
+      "id": "legacy-city-mutation",
+      "detail": "New unconditional client.cityId=current.state.estate.city as CityId before accept bypasses the normal accepted snapshot boundary.",
+      "repair": "Remove mutation introduced to satisfy the incorrect equality guard."
+    }
+  ],
+  "evidenceWeaknesses": [
+    {
+      "id": "same-revision",
+      "detail": "New client harness life response provides no rev, so same-revision coverage is not established. Add numeric revision and assertions."
+    },
+    {
+      "id": "nonpersistence",
+      "detail": "Assertion checks only top-level saved object, not saved.state. Inspect both."
+    }
+  ],
+  "scope": "Independent source review only; no tests, compiler, build, browser, Worker execution, environment activation or shared runtime changes.",
+  "requiredRemaining": [
+    "Corrected source/manifest/apply review",
+    "Integration owner focused Node and Worker tests",
+    "Exact compiler/build/startup under original limits",
+    "Actual current ON teaching prestart/active choices/wrong-answer/retry/reload/once-wage native acceptance",
+    "Accepted release/live/save observation"
+  ],
+  "startupHeadroom": {
+    "raw": 1986,
+    "gzip": 619,
+    "brotli": 323
+  },
+  "featureEnabledOrDeployed": false,
+  "finalSourceReviewAt": "2026-10-09T21:22:52.644723+00:00",
+  "supersededDrafts": [
+    "572cd3cf50d292ba6c24193eb28766001da330e583f8c0f211a108274c32dbf6",
+    "4ee397c19ecea3d24bb4f7ef7a021cc943f593b3984605e65f5b837930541f90",
+    "aa1e9f4166189a6a570b1f3db7f3bee4e05186f75530058f0b631d2d446ecd7e"
+  ],
+  "finalPatchSha256": "6aee4d5183111c661a728010ad4e609b75c1c67dc06149feb9e8bf96c70e0ff2",
+  "finalManifestSha256": "326d1fe384ea292bed115a74fb36edf7a6f57c5ff76946ff56212ee5a310d819",
+  "independentApplyReview": {
+    "baselineSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "files": 12,
+    "baseHashesMatched": true,
+    "checkExit": 0,
+    "appliedOnlyToDisposableSourceCopy": true,
+    "resultHashesMatched": true,
+    "normalLifeScopeIntentClearPendingDefinitionsPreserved": true,
+    "coreCityRejectionRemoved": true,
+    "prematureLegacyCityMutationRemoved": true,
+    "noNodeTestsCompilerBuildBrowserOrWorkerExecuted": true
+  },
+  "repairedFindings": [
+    "Authoritative city-moving state acceptance restored",
+    "Legacy pre-accept city mutation removed",
+    "Valid estate.relocate envelope proposed in transport regression",
+    "Numeric rev=1 proves intended same-revision test setup",
+    "Saved object and saved.state checked for absence of capability",
+    "Broad action/retry guards unchanged; only capability adoption uses existing connection/snapshot fence",
+    "Game.switchCity immediately publishes cleared display before await, with proposed reactive held-response regression"
+  ],
+  "currentSourceMechanism": {
+    "transport": "Optional literal true on authenticated life/action snapshots only",
+    "trustedHost": "Node boolean true or Worker exact binding1",
+    "client": "Strict literal true adopted with accepted snapshot, owner/city/current connection and snapshot guard; missing field clears, obsolete metadata cannot repopulate",
+    "storageOrAuthorization": "No LifeState/localStorage/action-payload flag or server authorization changes",
+    "markedLessons": "Existing reader/progress remains independent of new-start display field"
+  },
+  "handoff": "Integration remains sole shared runtime assembler/test owner; apply to separate next candidate after frozen c1 release, then fresh tests/compiler/startup/current ON native and accepted release/live."
+}

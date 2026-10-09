@@ -1,0 +1,599 @@
+--- a/server/types.ts
++++ b/server/types.ts
+@@ -1134,6 +1134,8 @@
+ export interface RouteContext {
+   commerceGateway?: CommerceGateway | undefined
+   streetAssets?: import('./street/types.ts').StreetAssetReader
++  /** Trusted host-only display capability. Never read from a request or persisted life. */
++  interactiveTeachingStarts?: boolean
+   store: Store
+   /** Server time in ms — never call Date.now(). */
+   now(): number
+--- a/server/server.ts
++++ b/server/server.ts
+@@ -513,6 +513,7 @@
+   const pages = new Map<string, PageHandler>();
+   const ctx: RouteContext = {
+     store, images: createFileImages(join(dataDir, 'chat-images')), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
++    ...(interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {}),
+     randomId,
+     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
+     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },
+--- a/server/routes/core.ts
++++ b/server/routes/core.ts
+@@ -15,7 +15,7 @@
+  * ctx.act carries, so a server-only action type (src/game/registry.ts) is always refused here.
+  */
+ import type { LifeState } from '../../src/types/life.ts';
+-import type { ActionRequest, CityId, IceServerConfig, PublicSession } from '../../src/types/protocol.ts';
++import type { ActionRequest, CityId, IceServerConfig, LifeResponse, PublicSession } from '../../src/types/protocol.ts';
+ import type { ActionOutcome, CommandOptions, Db, MuteVerdict, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
+ import { hasAction } from '../../src/game/registry.ts';
+ import { validateName, validateActionPayload, publicSession, isSharedAddress, VOICE_RADIUS, STUN_ONLY_CONFIG, validateVoiceConfig } from '../protocol.ts';
+@@ -253,7 +253,8 @@
+       // (or the request was refused) the route host re-checks the rooms against the stored life instead
+       // — core.revalidate(publicId), after every API request (server.js).
+       await core.validateMemberships(request.secret, city, state, publicId);
+-      return { body: { state, rev }, renew: true };
++      const teachingDisplay: Pick<LifeResponse, 'interactiveTeachingStarts'> = ctx.interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {};
++      return { body: { state, rev, ...teachingDisplay }, renew: true };
+     },
+     'POST /api/action': async (request) => {
+       const body = await request.json();
+@@ -263,7 +264,8 @@
+       // saved the rooms are told with the state it produced (a repeat is checked like a first answer).
+       // A rejected or unsaved action changed nothing: the route host then re-checks the rooms against
+       // the stored life (core.revalidate, server.js).
+-      return { body: await executeCommand(ctx, request, body, {}, true, true), renew: true };
++      const outcome = await executeCommand(ctx, request, body, {}, true, true);
++      return { body: ctx.interactiveTeachingStarts === true ? { ...outcome, interactiveTeachingStarts: true } : outcome, renew: true };
+     },
+   };
+ }
+--- a/deploy/cloudflare-worker.ts
++++ b/deploy/cloudflare-worker.ts
+@@ -370,6 +370,7 @@
+     const openOf = (id: string): HostSocket[] => [...this.held.byPlayer.get(id) ?? []].filter(ws => ws.readyState === 1);
+     const context: RouteContext = this.context = {
+       store: this.store, images: this.images, voices: this.voices, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
++      ...(env.INTERACTIVE_TEACHING_STARTS === '1' ? { interactiveTeachingStarts: true } : {}),
+       randomId: () => crypto.randomUUID(),
+       // Relay credentials for calls (server/call-relay.ts): the day's count lives in the object's own storage, so the ceiling holds across restarts.
+       callRelay: createCallRelay({
+--- a/src/types/protocol.ts
++++ b/src/types/protocol.ts
+@@ -147,6 +147,8 @@
+ }
+ 
+ export interface LifeResponse extends ApiEnvelope {
++  /** Present only when the serving trusted host enables interactive starts; never persisted in the life. */
++  interactiveTeachingStarts?: true
+   /** The server-held life, settled to `serverTime`. */
+   state: LifeState
+   /** The character's revision when this answer was made (see LifeChangedFrame). */
+@@ -171,6 +173,8 @@
+  * answers `{ ok, code, state, duplicate: true }` with the CURRENT state and no `reason`.
+  */
+ export interface ActionResponse extends ApiEnvelope {
++  /** Present only when the serving trusted host enables interactive starts; never accepted from the request. */
++  interactiveTeachingStarts?: true
+   ok: boolean
+   code: string
+   state: LifeState
+@@ -815,9 +819,13 @@
+ /** What the Node server sends as its own session. */
+ export const OWN_SESSION_KEYS = ['cities', 'id', 'name'] as const satisfies readonly (keyof OwnSession)[]
+ export const LIFE_RESPONSE_KEYS = ['rev', 'serverTime', 'state'] as const satisfies readonly (keyof LifeResponse)[]
++/** The same answer from a host that advertises interactive teaching starts. The default-off keyset above stays compatible. */
++export const LIFE_RESPONSE_TEACHING_KEYS = ['interactiveTeachingStarts', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof LifeResponse)[]
+ /** A first answer to an accepted action; a refusal with a sentence adds `reason`, a repeat adds `duplicate`. */
+ export const ACTION_RESPONSE_KEYS = ['code', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
++export const ACTION_RESPONSE_TEACHING_KEYS = ['code', 'interactiveTeachingStarts', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
+ export const ACTION_DUPLICATE_RESPONSE_KEYS = ['code', 'duplicate', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
++export const ACTION_DUPLICATE_RESPONSE_TEACHING_KEYS = ['code', 'duplicate', 'interactiveTeachingStarts', 'ok', 'rev', 'serverTime', 'state'] as const satisfies readonly (keyof ActionResponse)[]
+ export const VOICE_CONFIG_RESPONSE_KEYS = ['iceServers', 'mode', 'radius', 'serverTime', 'turnConfigured'] as const satisfies readonly (keyof VoiceConfigResponse)[]
+ export const ERROR_BODY_KEYS = ['error'] as const satisfies readonly (keyof ApiErrorBody)[]
+ export const PRESENCE_MEMBER_KEYS = ['enabled', 'id', 'muted', 'name', 'position'] as const satisfies readonly (keyof PresenceMember)[]
+--- a/src/client.ts
++++ b/src/client.ts
+@@ -120,6 +120,8 @@
+   readonly online: boolean
+   readonly pendingAction: PendingActionIntent | null
+   readonly snapshotPhase: SnapshotPhase
++  /** Server-advertised for this in-memory actor/city/connection snapshot only; never saved. */
++  readonly interactiveTeachingStarts: boolean
+   api: Api
+   fetchJson: Api
+   connect(createNew?: boolean, startCity?: string): Promise<boolean>
+@@ -258,6 +260,7 @@
+   let snapshotOwner = typeof saved?.ownerId === 'string' && saved.ownerId ? saved.ownerId : null
+   let snapshotPhase: SnapshotPhase = saved?.identity ? 'unconfirmed' : 'preview'
+   let snapshotGeneration = 0, connectGeneration = 0
++  let teachingCapability: { owner: string; city: CityId; connection: number; snapshot: number } | null = null
+   const featureRules = (snapshot: unknown) => {
+     const waiting = [loadCampus(snapshot), teachingFor(snapshot), homewardFor(snapshot)].filter(value => value !== null)
+     return waiting.length > 1 ? Promise.all(waiting) : waiting[0] ?? null
+@@ -289,6 +292,11 @@
+     get online() { return client.ready && Boolean(client.session); },
+     get pendingAction() { return pendingAction ? structuredClone(pendingAction) : null; },
+     get snapshotPhase() { return snapshotPhase; },
++    get interactiveTeachingStarts() {
++      const current = teachingCapability
++      return Boolean(current && client.ready && client.session?.id === current.owner && client.cityId === current.city
++        && connectGeneration === current.connection && snapshotGeneration === current.snapshot)
++    },
+     get revision() { return revision; },
+     api, fetchJson: fetchScoped, connect, command, retryPendingAction, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
+   };
+@@ -409,7 +417,11 @@
+    * it as the life. `rev` is the answer's revision and `askedAt` the value of `taken` when it was asked for; an answer
+    * that a newer one overtook is dropped (false).
+    */
+-  async function accept(next: unknown, rev: number | undefined, askedAt: number, cause: ChangeCause, responseCurrent: () => boolean, responseOwner: string | null): Promise<boolean> {
++  const teachingScope = (): (() => boolean) => {
++    const connection = connectGeneration, snapshot = snapshotGeneration
++    return () => connection === connectGeneration && snapshot === snapshotGeneration
++  }
++  async function accept(next: unknown, rev: number | undefined, askedAt: number, cause: ChangeCause, responseCurrent: () => boolean, responseOwner: string | null, teachingStarts: boolean, teachingCurrent: () => boolean): Promise<boolean> {
+     const overtaken = (): boolean => typeof rev === 'number' && rev < revision && askedAt < taken;
+     if (!responseCurrent() || overtaken()) return false;
+     await loadLife(next, [client.cityId]); // every city the life refers to, before it is rebuilt
+@@ -433,6 +445,8 @@
+     // (a running campus shuttle, today's quiz) must not drop what the server has just sent.
+     client.state = built;
+     if (isCityId(client.state.estate.city)) client.cityId = client.state.estate.city as CityId;
++    if (teachingCurrent()) teachingCapability = teachingStarts && responseOwner && responseOwner === client.session?.id
++      ? { owner: responseOwner, city: client.cityId, connection: connectGeneration, snapshot: snapshotGeneration } : null
+     persist();
+     onChange(client.state, previous, why);
+     schedule();
+@@ -441,6 +455,7 @@
+   /** Another session, or none: what was held about revisions belonged to the one before. */
+   function forgetRevisions(): void { revision = -1; announced = -1; announcedElsewhere = -1; sentIds.length = 0; }
+   function expired() {
++    teachingCapability = null;
+     forgetRevisions();
+     client.ready = false; client.session = null; client.link = 'expired'; cancelTimer(pollTimer);
+     status('Device session expired · saved preview preserved', true);
+@@ -449,6 +464,7 @@
+   /** The request did not get an answer worth having: the device is offline, or the server is not reachable. */
+   const down = (): LinkState => (isOnline() ? 'unreachable' : 'offline');
+   function lost(error: ApiError, text?: string): void {
++    teachingCapability = null;
+     client.ready = false; client.link = error.code === 'economy_unavailable' ? 'recovery' : down();
+     status(client.link === 'recovery' ? error.reason || TEXT.paused.recovery : text || error.message, true);
+     onChange(client.state, client.state);
+@@ -490,9 +506,10 @@
+   const lifeScope = () => { const generation = identityGeneration, owner = client.session?.id ?? null; return { owner, current: () => owner !== null && generation === identityGeneration && client.session?.id === owner } }
+   async function refresh(lostText = 'Reconnect to refresh progress', cause: ChangeCause = 'own', suppliedCurrent?: () => boolean, suppliedOwner?: string | null): Promise<boolean> {
+     const scope = lifeScope(), responseCurrent = suppliedCurrent ?? scope.current, responseOwner = suppliedOwner ?? scope.owner
++    const responseTeachingCurrent = teachingScope()
+     if (!client.online || !responseCurrent()) return false;
+     const askedAt = taken;
+-    try { const response = await fetchCurrentLife(client.cityId, responseCurrent); return await accept(response.state, response.rev, askedAt, cause, responseCurrent, responseOwner); }
++    try { const response = await fetchCurrentLife(client.cityId, responseCurrent); return await accept(response.state, response.rev, askedAt, cause, responseCurrent, responseOwner, response.interactiveTeachingStarts === true, responseTeachingCurrent); }
+     catch (e) {
+       const error = e as ApiError;
+       if (!responseCurrent() || error.code === 'stale_identity_response') return false;
+@@ -536,7 +553,7 @@
+ 
+   async function connect(createNew = false, startCity?: string): Promise<boolean> {
+     const attempt = ++connectGeneration, current = (): boolean => attempt === connectGeneration
+-    client.link = 'connecting'; client.refusal = null; client.retryAfter = null;
++    teachingCapability = null; client.ready = false; client.link = 'connecting'; client.refusal = null; client.retryAfter = null;
+     status('Connecting…');
+     try {
+       if (createNew && startCity !== undefined) {
+@@ -577,8 +594,9 @@
+       else onSession(client.session, createNew)
+       if (!ownsSnapshot) persist()
+       const askedAt = taken;
++      const responseTeachingCurrent = teachingScope()
+       const first = await fetchCurrentLife(client.cityId, current);
+-      if (!current() || !(await accept(first.state, first.rev, askedAt, 'own', current, response.session.id))) return false
++      if (!current() || !(await accept(first.state, first.rev, askedAt, 'own', current, response.session.id, first.interactiveTeachingStarts === true, responseTeachingCurrent))) return false
+       client.ready = true; client.link = 'online';
+       // Initial accept() runs before readiness; start visible polling once the connection is usable.
+       schedule();
+@@ -638,6 +656,7 @@
+     if (client.session?.id !== intent.sessionId) return { ok: false, code: 'action_recovery_required', reason: 'Reconnect to the same character before retrying this action.' }
+     const generation = identityGeneration
+     const responseCurrent = (): boolean => isCurrentIntent(intent, generation)
++    const responseTeachingCurrent = teachingScope()
+     client.busy = true;
+     try {
+       const body: Omit<ActionRequest, 'actionId'> & { actionId: string } = { actionId: intent.actionId, cityId: intent.cityId, type: intent.type, ...(intent.payload ? { payload: structuredClone(intent.payload) } : {}) }
+@@ -646,7 +665,7 @@
+       const response = await api<ActionResponse>('/api/action', { method: 'POST', body }, responseCurrent);
+       await loadedSnapshot(response, responseCurrent);
+       if (!responseCurrent()) return { ok: false, code: 'stale_identity_response' }
+-      await accept(response.state, response.rev, askedAt, 'own', responseCurrent, intent.sessionId);
++      await accept(response.state, response.rev, askedAt, 'own', responseCurrent, intent.sessionId, response.interactiveTeachingStarts === true, responseTeachingCurrent);
+       if (!responseCurrent()) return { ok: false, code: 'stale_identity_response' }
+       clearPending(intent, generation)
+       if (!response.ok && client.state.message) status(client.state.message, true);
+@@ -657,7 +676,7 @@
+       if (error.code === 'city_moved' && isCityId(error.city)) {
+         try {
+           const askedAt = taken, moved = await fetchCurrentLife(error.city, responseCurrent);
+-          if (!(await accept(moved.state, moved.rev, askedAt, 'elsewhere', responseCurrent, intent.sessionId))) return { ok: false, code: 'stale_identity_response' };
++          if (!(await accept(moved.state, moved.rev, askedAt, 'elsewhere', responseCurrent, intent.sessionId, moved.interactiveTeachingStarts === true, responseTeachingCurrent))) return { ok: false, code: 'stale_identity_response' };
+         } catch (recoveryError) {
+           if (!responseCurrent() || (recoveryError as ApiError).code === 'stale_identity_response') return { ok: false, code: 'stale_identity_response' };
+           lost(recoveryError as ApiError);
+@@ -705,13 +724,15 @@
+ 
+   async function switchLegacy(id: string, clientId: string): Promise<CommandResult> {
+     if (client.busy || client.state.activeAction) return { ok: false, code: 'busy' };
++    snapshotGeneration += 1; teachingCapability = null
+     const scope = lifeScope(), generation = identityGeneration
++    const responseTeachingCurrent = teachingScope()
+     client.busy = true;
+     try {
+       const result = await api<{ ok: true; city: string }>('/api/characters/switch', { method: 'POST', body: { id, clientId } }, scope.current);
+       const askedAt = taken;
+       const current = await fetchCurrentLife(result.city, scope.current);
+-      if (!(await accept(current.state, current.rev, askedAt, 'own', scope.current, scope.owner))) return { ok: false, code: 'stale_identity_response' };
++      if (!(await accept(current.state, current.rev, askedAt, 'own', scope.current, scope.owner, current.interactiveTeachingStarts === true, responseTeachingCurrent))) return { ok: false, code: 'stale_identity_response' };
+       return { ok: true, code: 'switched' };
+     } catch (error) {
+       if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
+@@ -724,7 +745,9 @@
+     if (typeof id !== 'string' || !isCityId(id)) return { ok: false, code: 'invalid_city' };
+     if (client.state.activeAction) return { ok: false, code: 'busy', reason: 'Complete or cancel your current action before switching cities.' };
+     if (!client.online) { const reason = client.session ? 'Reconnect before switching cities.' : 'Connect before entering a city.'; status(reason, true); return { ok: false, code: 'offline', reason }; }
++    snapshotGeneration += 1; teachingCapability = null
+     const scope = lifeScope()
++    const responseTeachingCurrent = teachingScope()
+     try {
+       await loadCityContent(id);
+       if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
+@@ -733,7 +756,7 @@
+       await loadedSnapshot(data, scope.current);
+       if (!scope.current()) return { ok: false, code: 'stale_identity_response' };
+       client.cityId = id as CityId;
+-      if (!(await accept(data.state, data.rev, askedAt, 'own', scope.current, scope.owner))) { if (scope.current()) client.cityId = client.state.estate.city as CityId; return { ok: false, code: 'stale_identity_response' }; }
++      if (!(await accept(data.state, data.rev, askedAt, 'own', scope.current, scope.owner, data.interactiveTeachingStarts === true, responseTeachingCurrent))) { if (scope.current()) client.cityId = client.state.estate.city as CityId; return { ok: false, code: 'stale_identity_response' }; }
+       holdCity(id as CityId);
+       return { ok: true, code: 'switched' };
+     } catch (e) {
+--- a/src/app/types/client.ts
++++ b/src/app/types/client.ts
+@@ -105,6 +105,7 @@
+   readonly online: boolean
+   readonly pendingAction: PendingActionIntent | null
+   readonly snapshotPhase: SnapshotPhase
++  readonly interactiveTeachingStarts: boolean
+   serverNow(): number
+   /** A retry key for an exactly-once write: `<server ms>:<uuid>`. One per thing the player does; reuse it on a retry. */
+   newId(): string
+--- a/src/app/state/game.ts
++++ b/src/app/state/game.ts
+@@ -133,6 +133,7 @@
+   const session = shallowRef<OwnSession | null>(client.session)
+   const pendingAction = shallowRef<PendingActionIntent | null>(client.pendingAction)
+   const snapshotPhase = ref<SnapshotPhase>(client.snapshotPhase)
++  const interactiveTeachingStarts = ref(client.interactiveTeachingStarts)
+   const cityId = ref<CityId>(client.cityId)
+   const online = ref(client.online)
+   const connected = computed(() => online.value)
+@@ -145,6 +146,7 @@
+     session.value = client.session
+     pendingAction.value = client.pendingAction
+     snapshotPhase.value = client.snapshotPhase
++    interactiveTeachingStarts.value = client.interactiveTeachingStarts
+     cityId.value = client.cityId
+     if (withOnline) online.value = client.online
+   }
+@@ -173,7 +175,7 @@
+     const catalogue = contentFor(city)
+     const now = client.serverNow()
+     return {
+-      ...viewLife(life, { now, cityId: city }),
++      ...viewLife(life, { now, cityId: city, interactiveTeachingStarts: interactiveTeachingStarts.value }),
+       cityId: city, city: clientCity(city), connected: online.value, link: link.value, session: session.value, net: net.value, storage: storage.value,
+       // The life's own name (the server keeps it equal to the session nickname), so a rename shows as soon as the next state arrives.
+       name: life.name || client.identity.name, now,
+@@ -225,7 +227,9 @@
+   }
+ 
+   async function switchCity(id: string): Promise<SwitchCityResult> {
+-    const result = await client.switchCity(id)
++    const pending = client.switchCity(id)
++    publish()
++    const result = await pending
+     publish()
+     if (!result.ok && result.reason) toast(result.reason, 'error')
+     return result
+--- a/src/app/state/game.test.ts
++++ b/src/app/state/game.test.ts
+@@ -1,5 +1,5 @@
+ import { loadCityContent as preloadCityContent } from '../../game/cities/registry.ts';
+-await preloadCityContent('lagos');
++await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
+ // The typed game store over the real client model, against a server that runs the real rules.
+ // Runs in Node without a DOM: the store is Vue reactivity and the client model only.
+ import assert from 'node:assert/strict'
+@@ -37,6 +37,40 @@
+   assert.equal(game.view.value.wallet.cash, game.state.value.cash, 'the view is the engine\'s, for the published state')
+   assert.equal(game.view.value.city.name, 'Lagos')
+   assert.match(game.net.value.text, /Connected/)
++})
++
++test('the store clears teaching display immediately during a held city switch and preserves the accepted life on refusal', async () => {
++  const server = createFakeServer()
++  let release: () => void = () => {}, reached: () => void = () => {}
++  const waiting = new Promise<void>(resolve => { release = resolve })
++  const started = new Promise<void>(resolve => { reached = resolve })
++  const game = createGame({
++    fetch: async (path, init) => {
++      if (path === '/api/life?city=ibadan') {
++        reached()
++        await waiting
++        return { ok: false, status: 503, json: async () => ({ error: 'server_busy', reason: 'Try again shortly.' }) }
++      }
++      const response = await server.fetch(path, init)
++      if (path.startsWith('/api/life') || path === '/api/action') {
++        const body = await response.json() as Record<string, unknown>
++        return { ok: response.ok, status: response.status, json: async () => ({ ...body, interactiveTeachingStarts: true }) }
++      }
++      return response
++    },
++    storage: memoryStorage(), now: () => server.now(), setTimeout: () => 0, clearTimeout: () => {},
++  })
++  assert.equal(await game.connect(), true)
++  assert.equal(game.view.value.career.interactiveTeachingStarts, true)
++  const accepted = game.state.value
++  const switching = game.switchCity('ibadan')
++  assert.equal(game.view.value.career.interactiveTeachingStarts, false, 'publish runs after the client clears its in-memory capability, before the request resolves')
++  assert.equal(game.state.value, accepted, 'a pending city request has not replaced the accepted life')
++  await started
++  release()
++  const result = await switching
++  assert.equal(result.ok, false)
++  assert.deepEqual([game.cityId.value, game.state.value, game.view.value.career.interactiveTeachingStarts], ['lagos', accepted, false])
+ })
+ 
+ test('command: a typed action changes nothing until the server answers, then publishes its state', async () => {
+--- a/src/types/protocol.test.ts
++++ b/src/types/protocol.test.ts
+@@ -18,7 +18,7 @@
+ import { REPORT_REASONS as SERVER_REPORT_REASONS } from '../../server/social/service.ts'
+ import {
+   ACTION_DUPLICATE_RESPONSE_KEYS, ACTION_RESPONSE_KEYS, CHAT_FRAME_KEYS, CLIENT_FRAME_TYPES, ERROR_BODY_KEYS, HEALTH_RESPONSE_KEYS, HTTP_ROUTE_KEYS,
+-  LIFE_RESPONSE_KEYS, PRESENCE_MEMBER_KEYS, OWN_SESSION_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
++  LIFE_RESPONSE_KEYS, LIFE_RESPONSE_TEACHING_KEYS, ACTION_RESPONSE_TEACHING_KEYS, ACTION_DUPLICATE_RESPONSE_TEACHING_KEYS, PRESENCE_MEMBER_KEYS, OWN_SESSION_KEYS, PUBLIC_SESSION_KEYS, SERVER_FRAME_TYPES, SESSION_RESPONSE_KEYS, VOICE_CONFIG_RESPONSE_KEYS,
+   WORKER_CLIENT_FRAME_TYPES, WORKER_HOST_ROUTE_KEYS, WORKER_HTTP_ROUTE_KEYS, WORKER_SERVER_FRAME_TYPES,
+ } from './protocol.ts'
+ import { CONVERSATION_KEYS, HOUSE_VIEW_KEYS, OWN_MESSAGE_KEYS, PEOPLE_LISTING_KEYS, REPORT_REASONS, SOCIAL_LIMITS_KEYS, SOCIAL_OVERVIEW_KEYS } from './social.ts'
+@@ -127,6 +127,27 @@
+   for (const file of ['src/community.ts', 'src/app/features/social/socialClient.ts', 'src/tables/client.ts']) assert.match(await readFile(join(root, file), 'utf8'), /type: 'heartbeat-ack'/, file)
+   // The documented addition to the health answer (WorkerHealthResponse).
+   assert.match(source, /\{ transport: 'cloudflare', buildId: /)
++})
++
++test('only a trusted interactive-teaching host adds the ephemeral display capability to life and action snapshots', async (t) => {
++  const enabled = await fixture(t, { interactiveTeachingStarts: true })
++  const player = await enabled.device('Ada')
++  const lifeResponse = await enabled.request('/api/life?city=lagos', undefined, player.cookie)
++  const life = sameKeys(await body(lifeResponse), LIFE_RESPONSE_TEACHING_KEYS, 'enabled host life snapshot')
++  assert.equal(life.interactiveTeachingStarts, true)
++
++  const action = { actionId: enabled.id(), cityId: 'lagos', type: 'spot', payload: { id: 'trees' } }
++  const accepted = sameKeys(await body(await enabled.request('/api/action', action, player.cookie)), ACTION_RESPONSE_TEACHING_KEYS, 'enabled host action snapshot')
++  assert.equal(accepted.interactiveTeachingStarts, true)
++  const duplicate = sameKeys(await body(await enabled.request('/api/action', action, player.cookie)), ACTION_DUPLICATE_RESPONSE_TEACHING_KEYS, 'enabled host duplicate snapshot')
++  assert.equal(duplicate.interactiveTeachingStarts, true)
++
++  const disabled = await fixture(t)
++  const legacy = await disabled.device('Legacy')
++  const oldLife = await body(await disabled.request('/api/life?city=lagos', undefined, legacy.cookie))
++  assert.deepEqual(Object.keys(oldLife).sort(), [...LIFE_RESPONSE_KEYS].sort(), 'default-off keeps the existing wire keyset')
++  const oldAction = await body(await disabled.request('/api/action', { actionId: disabled.id(), cityId: 'lagos', type: 'spot', payload: { id: 'trees' } }, legacy.cookie))
++  assert.deepEqual(Object.keys(oldAction).sort(), [...ACTION_RESPONSE_KEYS].sort(), 'default-off does not add the capability')
+ })
+ 
+ test('core, social, civic and support answers carry exactly the typed keys', async (t) => {
+--- a/deploy/living-world-teaching.edge.test.ts
++++ b/deploy/living-world-teaching.edge.test.ts
+@@ -23,7 +23,7 @@
+   Miniflare: new (options: Record<string, unknown>) => WorkerHost
+   convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown>
+ }
+-interface TeachingReply { status: number; ok?: boolean; code?: string; duplicate?: boolean; state?: LifeState; error?: string }
++interface TeachingReply { status: number; ok?: boolean; code?: string; duplicate?: boolean; state?: LifeState; interactiveTeachingStarts?: unknown; error?: string }
+ 
+ const require = createRequire(resolve(process.env['JOINALLWORLD_TOOLS'] || 'deploy/tooling', 'package.json'))
+ const { Miniflare, convertV4MiniflareOptions } = require('miniflare') as WorkerTools
+@@ -40,12 +40,12 @@
+   await build({ entryPoints: [new URL('./cloudflare-worker.ts', import.meta.url).pathname], outfile: bundle, bundle: true,
+     format: 'esm', platform: 'neutral', external: ['cloudflare:workers'] })
+   const script = await readFile(bundle, 'utf8')
+-  async function start(startEnabled = true) {
++  async function start(startEnabled = true, malformedTeachingBinding = false) {
+     await worker?.dispose()
+     worker = new Miniflare({ ...convertV4MiniflareOptions({ name: 'joinallworld-teaching', script, modules: true,
+       compatibilityDate: '2026-10-01', durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } },
+       durableObjectsPersist: join(folder, 'storage'), bindings: { BUILD_ID: 'teaching-fixture', FOUNDER_EMAIL_SHA256: '',
+-        ...(startEnabled ? { INTERACTIVE_TEACHING_STARTS: '1' } : {}) },
++        ...(startEnabled ? { INTERACTIVE_TEACHING_STARTS: malformedTeachingBinding ? 'true' : '1' } : {}) },
+       serviceBindings: { ASSETS: () => new Response('asset') } }), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
+     await worker.ready
+   }
+@@ -77,12 +77,13 @@
+     const response = await request('/api/action', cookie, body)
+     return { status: response.status, ...await response.json() as Omit<TeachingReply, 'status'> }
+   }
+-  async function life(cookie: string): Promise<LifeState> {
++  async function lifeReply(cookie: string): Promise<TeachingReply> {
+     const response = await request('/api/life?city=lagos', cookie)
+     assert.equal(response.status, 200)
+-    return (await response.json() as { state: LifeState }).state
+-  }
+-  return { start, player, action, life, storage }
++    return { status: response.status, ...await response.json() as Omit<TeachingReply, 'status'> }
++  }
++  async function life(cookie: string): Promise<LifeState> { return (await lifeReply(cookie)).state as LifeState }
++  return { start, player, action, life, lifeReply, storage }
+ }
+ 
+ function activeTeaching(state: LifeState) {
+@@ -105,6 +106,7 @@
+   const h = await fixture(t)
+   await h.start()
+   const cookie = await h.player('Teacher')
++  assert.equal((await h.lifeReply(cookie)).interactiveTeachingStarts, true, 'the literal Worker binding is reflected in the current authenticated snapshot')
+ 
+   // Normal public setup: turn off automatic travel, take the job, select its actual work spot, start the shift.
+   assert.equal((await h.action(cookie, { actionId: newId(), cityId: 'lagos', type: 'career.auto', payload: { on: false } })).code, 'auto_set')
+@@ -119,6 +121,7 @@
+   // Recreate the Worker against the same SQLite directory with new interactive starts disabled.
+   // The existing marker must remain readable and answerable under the gate-off host policy.
+   await h.start(false)
++  assert.equal(Object.hasOwn(await h.lifeReply(cookie), 'interactiveTeachingStarts'), false, 'gate-off Worker omits the capability while preserving the lesson marker')
+   const restored = await h.life(cookie), restoredAction = activeTeaching(restored)
+   assert.deepEqual([restoredAction.teaching, restoredAction.teachingGeneration, restored.career.teachingGeneration,
+     restoredAction.remaining, restored.cash], [initialAction.teaching, generation, generation, initialRemaining, initialCash])
+@@ -189,4 +192,13 @@
+   assert.equal('teaching' in legacy.activeAction, false)
+   assert.equal('teachingGeneration' in legacy.activeAction, false)
+   assert.equal(legacy.career.teachingGeneration, 0)
++
++  await h.start(true, true)
++  const malformedCookie = await h.player('Malformed binding teacher')
++  assert.equal(Object.hasOwn(await h.lifeReply(malformedCookie), 'interactiveTeachingStarts'), false, 'only the literal Worker binding enables display')
++  assert.equal((await h.action(malformedCookie, { actionId: newId(), cityId: 'lagos', type: 'apply-job', payload: { id: 'teaching' } })).code, 'applied')
++  assert.equal((await h.action(malformedCookie, { actionId: newId(), cityId: 'lagos', type: 'spot', payload: { id: 'work' } })).code, 'selected')
++  const malformedStart = await h.action(malformedCookie, { actionId: newId(), cityId: 'lagos', type: 'activity', payload: { id: 'teaching-shift' } })
++  assert.equal(malformedStart.code, 'started')
++  assert.equal('teaching' in (malformedStart.state?.activeAction ?? {}), false, 'malformed host configuration retains the legacy timed shift')
+ })
+--- a/src/client.test.ts
++++ b/src/client.test.ts
+@@ -25,19 +25,45 @@
+ function harness({ online = true } = {}) {
+   const calls: Call[] = [], statuses: [string, boolean][] = [], changes: LifeState[] = [];
+   let life = createLife({ name: 'Ada' }), up = online, session: OwnSession | null = { id: 'public-1', name: 'Ada' };
++  let revision = 1, actionSnapshot: LifeState | null = null, actionCode = 'started', lifeFailure: { path: string; status: number } | null = null;
++  let teachingField: unknown, teachingFieldPresent = false;
++  let heldLife: { started: () => void; release: () => void; waiting: Promise<void> } | null = null;
+   const memory = new Map();
+   const fetch = async (path: string, options: RequestInit = {}) => {
+     calls.push([options.method || 'GET', path, options.body ? JSON.parse(options.body as string) as SentBody : undefined]);
+     if (!up) throw new TypeError('fetch failed');
+     if (path === '/api/session') return session ? json(200, { session, serverTime: 5000 }) : json(401, { error: 'device_session_required' });
+-    if (path.startsWith('/api/life')) return json(200, { state: life, serverTime: 5000 });
+-    if (path === '/api/action') { life = { ...life, cash: life.cash - 400, message: 'Travelling to The Library.' }; return json(200, { ok: true, code: 'started', state: life, serverTime: 5000 }); }
++    if (path.startsWith('/api/life')) {
++      if (lifeFailure?.path === path) return json(lifeFailure.status, { error: lifeFailure.status === 401 ? 'session_expired' : 'city_moved' });
++      const answer: Record<string, unknown> = { state: life, rev: revision, serverTime: 5000 };
++      if (teachingFieldPresent) answer.interactiveTeachingStarts = teachingField;
++      const held = heldLife; heldLife = null;
++      if (held) { held.started(); await held.waiting; }
++      return json(200, answer);
++    }
++    if (path === '/api/action') { life = actionSnapshot ?? { ...life, cash: life.cash - 400, message: 'Travelling to The Library.' }; actionSnapshot = null; revision += 1; return json(200, { ok: true, code: actionCode, state: life, rev: revision, serverTime: 5000, ...(teachingFieldPresent ? { interactiveTeachingStarts: teachingField } : {}) }); }
+     return json(404, { error: 'not_found' });
+   };
+   const client = createClient({ fetch, now: () => 1000, randomUUID: () => '11111111-1111-4111-8111-111111111111', setTimeout: () => 0, clearTimeout: () => {},
+     storage: { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value) },
+     onStatus: (text, error) => statuses.push([text, error]), onChange: state => changes.push(state) });
+-  return { client, calls, statuses, changes, memory, setUp: (value: boolean) => { up = value; }, dropSession: () => { session = null; } };
++  return {
++    client, calls, statuses, changes, memory,
++    setUp: (value: boolean) => { up = value; },
++    dropSession: () => { session = null; },
++    setTeachingField: (value: unknown, present = true) => { teachingField = value; teachingFieldPresent = present; },
++    setSession: (id: string, name: string) => { session = { id, name }; },
++    setActionSnapshot: (value: LifeState, code = 'started') => { actionSnapshot = value; actionCode = code; },
++    failLife: (path: string, status: number) => { lifeFailure = { path, status }; },
++    get revision() { return revision; },
++    holdNextLife: () => {
++      let release = () => {}, started = () => {};
++      const waiting = new Promise<void>(resolve => { release = resolve; });
++      const began = new Promise<void>(resolve => { started = resolve; });
++      heldLife = { started, release, waiting };
++      return { began, release };
++    },
++  };
+ }
+ 
+ test('offline client is read-only: no request, no local grant, state unchanged', async () => {
+@@ -72,6 +98,77 @@
+   const h=harness();assert.equal(h.client.snapshotPhase,'preview');await h.client.connect();assert.equal(h.client.snapshotPhase,'available')
+   const saved=JSON.parse(h.memory.get(STORAGE_KEY));assert.equal(saved.ownerId,'public-1');assert.equal(saved.state.cash,5000)
+ })
++
++test('teaching display capability is strict, snapshot-bound, nonpersistent and cleared across reconnect races', async () => {
++  const h = harness();
++  h.setTeachingField(true);
++  assert.equal(await h.client.connect(), true);
++  assert.equal(h.client.interactiveTeachingStarts, true);
++  const saved = JSON.parse(String(h.memory.get(STORAGE_KEY)));
++  assert.equal('interactiveTeachingStarts' in saved, false, 'the host capability is not saved at the top level');
++  assert.equal('interactiveTeachingStarts' in saved.state, false, 'the host capability is not saved with LifeState');
++
++  // A same-actor, same-revision accepted snapshot can turn the display capability off.
++  assert.equal(h.revision, 1);
++  h.setTeachingField('true');
++  assert.equal(await h.client.refresh(), true);
++  assert.equal(h.client.revision, 1);
++  assert.equal(h.client.interactiveTeachingStarts, false, 'only literal true is accepted');
++  h.setTeachingField(true);
++  assert.equal(await h.client.refresh(), true);
++  assert.equal(h.client.interactiveTeachingStarts, true);
++  h.setTeachingField(undefined, false);
++  assert.equal(await h.client.refresh(), true);
++  assert.equal(h.client.interactiveTeachingStarts, false, 'an accepted older-host snapshot clears the optional capability');
++
++  h.setTeachingField(true);
++  const delayed = h.holdNextLife();
++  const oldRefresh = h.client.refresh();
++  await delayed.began;
++  h.setTeachingField(undefined, false);
++  const reconnect = h.client.connect();
++  assert.equal(h.client.interactiveTeachingStarts, false, 'reconnect clears capability before its response');
++  assert.equal(await reconnect, true);
++  assert.equal(h.client.interactiveTeachingStarts, false);
++  delayed.release();
++  assert.equal(await oldRefresh, true, 'same-owner life refresh keeps its pre-existing state acceptance semantics');
++  assert.equal(h.client.interactiveTeachingStarts, false);
++
++  h.setTeachingField(true);
++  assert.equal(await h.client.refresh(), true);
++  assert.equal(h.client.interactiveTeachingStarts, true);
++  h.setSession('public-2', 'Bola');
++  h.setTeachingField(undefined, false);
++  const replacement = h.client.connect();
++  assert.equal(h.client.interactiveTeachingStarts, false, 'actor replacement also clears capability immediately');
++  assert.equal(await replacement, true);
++  assert.equal(h.client.interactiveTeachingStarts, false);
++});
++
++test('a valid intercity action snapshot is adopted and capability binds to its authoritative city', async () => {
++  const h = harness();
++  h.setTeachingField(true);
++  assert.equal(await h.client.connect(), true);
++  const ibadan = createLife({ ...h.client.state, estate: { ...h.client.state.estate, city: 'ibadan' }, location: 'agodi-gardens' }, { cityId: 'ibadan' });
++  h.setActionSnapshot(ibadan, 'departed');
++  const result = await h.client.command('estate.relocate', { to: 'ibadan', mode: 'road' });
++  assert.deepEqual([result.ok, result.code], [true, 'departed']);
++  assert.deepEqual([h.client.cityId, h.client.state.estate.city, h.client.state.location, h.client.interactiveTeachingStarts], ['ibadan', 'ibadan', 'agodi-gardens', true]);
++  assert.equal(h.client.pendingAction, null, 'the successful authoritative move settles the original intent once');
++  const saved = JSON.parse(String(h.memory.get(STORAGE_KEY)));
++  assert.deepEqual([saved.cityId, saved.state.estate.city, saved.state.location], ['ibadan', 'ibadan', 'agodi-gardens']);
++});
++
++test('an expired city switch clears display capability and preserves the last accepted life', async () => {
++  const h = harness();
++  h.setTeachingField(true);
++  assert.equal(await h.client.connect(), true);
++  const before = JSON.stringify(h.client.state);
++  h.failLife('/api/life?city=ibadan', 401);
++  const result = await h.client.switchCity('ibadan');
++  assert.equal(result.ok, false);
++  assert.deepEqual([h.client.cityId, JSON.stringify(h.client.state), h.client.interactiveTeachingStarts, h.client.online], ['lagos', before, false, false]);
++});
+ 
+ test('a different confirmed identity cannot inherit a cached name, balance or scene when its wallet is quarantined', async () => {
+   const old=createLife({name:'Ada',cash:4600,location:'library'}),memory=new Map([[STORAGE_KEY,JSON.stringify({version:1,state:old,ownerId:'public-a',identity:{name:'Ada'},cityId:'lagos'})]])

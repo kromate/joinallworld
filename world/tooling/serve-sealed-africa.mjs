@@ -421,6 +421,10 @@ async function main(args) {
     if (retainFolder) {
       try {
         if (stageStarted) await updateOwnedControl(args.control, controlIdentity, { ...controlState, stageStatus: cleanupFailed ? 'cleanup_failed' : 'stopped', stoppedAt: new Date().toISOString(), restartCount });
+        else if (resumed && cleanupFailed) await updateOwnedControl(args.control, controlIdentity, {
+          ...resumed.checkpoint, stageStatus: 'cleanup_failed', ownerChildPid: process.pid,
+          stoppedAt: new Date().toISOString(),
+        });
       } catch { cleanupFailed = true; }
     } else {
       try { await removeOwnedControl(args.control, controlIdentity); } catch { cleanupFailed = true; }

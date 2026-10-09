@@ -74,13 +74,14 @@
       "status": "completed",
       "step": "typecheck",
       "conclusion": "failure",
-      "newErrors": 5,
+      "newErrors": 6,
       "errors": [
         "justice cloneAction correlated kind/choice union",
         "incomplete route-key union proof",
         "justice public reader unknown choice ID",
         "assessment-state cast lacks strict structural guard",
-        "string lookup into TimedId receipt map"
+        "string lookup into TimedId receipt map",
+        "TS18046 evidence-array property narrowing lost inside callback; missed by initial extraction"
       ],
       "logSha256": "fb74f03fd6330879f61bc85d946b43c82f232782527b4da708dc6377456f26c6"
     }
@@ -120,5 +121,6 @@
   "localResourceAdmission": "raw2 WARNING; no local heavy/server/browser/upload",
   "conclusion": "failure",
   "exactCandidateAccepted": false,
-  "sourceRepairReview": "Seven-file repair independently reviewed; no blocker found in assessment transition, actual onboarding fixture, bounded mark-object guard or validated receipt lookup. Repairs unrun until new candidate CI."
+  "sourceRepairReview": "Seven-file repair independently reviewed; no blocker found in assessment transition, actual onboarding fixture, bounded mark-object guard or validated receipt lookup. Repairs unrun until new candidate CI.",
+  "diagnosticCorrection": "Initial extraction matched TS2/TS7 only and omitted TS18046; full diagnostic extraction confirms six original errors. Source45 fixes five, retains one; no compiler pass claimed."
 }

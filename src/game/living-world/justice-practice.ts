@@ -257,7 +257,7 @@ export function readJusticePracticeState(value: unknown): JusticePracticeState |
       || !finiteInt(value.revision) || typeof value.phase !== 'string' || !PHASES.includes(value.phase as JusticePracticePhase)
       || !Array.isArray(value.inspectedEvidenceIds) || value.inspectedEvidenceIds.length > EVIDENCE_IDS.length
       || !value.inspectedEvidenceIds.every(validEvidenceId) || new Set(value.inspectedEvidenceIds).size !== value.inspectedEvidenceIds.length
-      || !value.inspectedEvidenceIds.every((id, i) => EVIDENCE_IDS.indexOf(id) > (i === 0 ? -1 : EVIDENCE_IDS.indexOf(value.inspectedEvidenceIds[i - 1] as JusticeEvidenceId)))
+      || !value.inspectedEvidenceIds.every((id, i, inspected) => EVIDENCE_IDS.indexOf(id) > (i === 0 ? -1 : EVIDENCE_IDS.indexOf(inspected[i - 1] as JusticeEvidenceId)))
       || typeof value.noticeSent !== 'boolean' || !Array.isArray(value.receipts) || value.receipts.length > JUSTICE_PRACTICE_MAX_RECEIPTS) return null
     const readDecision = <C extends string>(input: unknown, choices: readonly C[]): EvidenceLinkedChoice<C> | null | false => {
       if (input === null) return null

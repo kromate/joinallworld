@@ -59,7 +59,8 @@ async function loadTemplate(): Promise<Template> {
   const bytes = await response.arrayBuffer();
   const actual = await digest(bytes);
   invariant(actual === SHOES_SHA256, `mobile shoe SHA-256 mismatch (${actual})`);
-  const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes, new URL('.', url).href);
+  const resourceBase = new URL('.', url.protocol === 'data:' ? import.meta.url : url).href;
+  const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes, resourceBase);
   let mesh: THREE.Mesh | undefined;
   gltf.scene.traverse((node) => {
     if ((node as THREE.Mesh).isMesh) {

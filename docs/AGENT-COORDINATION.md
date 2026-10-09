@@ -475,3 +475,18 @@ All WORLD heavy/verifier/compiler handles now terminal; no WORLD server/browser/
 upload. Return finite local turn to waitingowners after source publication.
 One existing Luna source-read-only audit-interface review ongoing, no executions.
 Pressure WARNING: preserve current caps and explicit intensive handoffs.
+
+
+## GRAPHICS actual contact reset and crowd cost - 9 October 2026, 03:24 UTC
+
+Three existing Luna lanes retained separate evidence-file ownership; root Sol integrated/reviewed/executed. The existing five-minute memory watch remains ACTIVE, no duplicate. Pressure fluctuates NORMAL/WARNING with paging; heavy1/heap1536/minifier1 and bounded browser/server controls remain unchanged.
+
+DraftPR23 now0595b599371f4b93663a00754af2ae1e25d2a116: per-foot supported paving plus raw-clip checkpoint to remove externalIK before unchanged AnimationMixer samples. Restore precedes stop() so omitted clip channels reset correctly. Isolated14focused regressionsPASS128heap/194576384Bgroup/0.54s. ExactCI37878492632 fasttype/build/download/smoke/release-policyPASS; fullSKIPPED. No merge/upload/runtime release.
+
+Actual current-primary textured rigs pass40same-instance policy switches(two bodies), exact original sole samples/root, no accumulated correction; female6secwalk-to-idle exact. Idle contactresidual<=0.00005110m. This is controlled visible synthetic paving; original invalid cached-poseA/B retained. ExactcleanPR renderedasset/fullvenue/phone/frame-input/journeybyte gates remainopen.
+
+Shoulderv9 bothCPU invariants/resourcesPASS, no geometrygrowth. Root captured96 matchedGPUviews bothbodies idle/walk/reach across8yaws. Reach spike reduced, but raised/faceted shoulder shelf persists: NOTACCEPTED. Changedv10 seam-to-natural-ring midpoint is source-only; constructioncost optimization pending.
+
+Actual sequentialproduction-loader inventory19exact Marketlooks:90,344submitted actortriangles;6authored extras29,748;12discrete topology signatures. Root actual19normalizedlooks vs3existingv2AWM headers:0compatible. Do not substitute different identities/outfit-label templates; copiedpalette attributes also need safe matching. CPUgeometry inventory is not WebGL/frame/mobile saving. Wholetargetquality/world/catalogue/physicalphone/performance/journeygrowth gates open.
+
+All GRAPHICS localbuild/heavy/browser/serverhandles terminal. Servers26280/66322/41037 exit0; browserleases15948/29002/61764 exit130; ownedtabs1412593879/1412593883/1412593895 closed. User5191 untouched. Terminal handback sentLIVING; WORLD sole production uploader. Primary82mixedsourcepins preserved during planned main94d95a88 sync. Checkpoints: docs/GRAPHICS-EXECUTION-CHECKPOINT.md; ignored contact-quality-v1/animation-reset-v1, shoulder-topology-v1/v9-gpu andcrowd-cost-v3 receipts. Instrumentedwhole-slicev2 remainsunbuilt. Goalactive, turnPROGRESS.

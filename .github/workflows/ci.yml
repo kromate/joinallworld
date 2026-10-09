@@ -43,7 +43,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - run: node --test scripts/guard-joinallworld-package.test.mjs
+      - run: node --experimental-strip-types --test scripts/guard-joinallworld-package.test.mjs scripts/run-node-suite.test.ts
 
   typecheck-fast:
     name: ${{ inputs.focused_living_world && 'evidence-only - typecheck omitted' || 'typecheck-fast' }}
@@ -198,14 +198,16 @@ jobs:
           deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts deploy/living-world-learning.edge.test.ts
 
   full:
-    name: ${{ inputs.focused_living_world && 'evidence-only - full omitted' || format('full ({0})', matrix.node) }}
+    name: ${{ inputs.focused_living_world && 'evidence-only - full omitted' || format('full-source ({0})', matrix.node) }}
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks && !inputs.focused_living_world
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
       STUCK_DIAGNOSTICS: '1'
+      NODE_OPTIONS: --max-old-space-size=1536
     strategy:
       fail-fast: false
+      max-parallel: 2
       matrix:
         node: [22, 24]
     steps:
@@ -219,7 +221,59 @@ jobs:
       # The build comes first: the tests that read dist/ (bundle budgets, the served files) skip themselves without it.
       - run: npm run build
       - run: npm run size:download
-      - run: npm test
+      - run: npm run -s pretest
+      - name: Complete canonical source and scripts partition
+        run: node --experimental-strip-types scripts/run-node-suite.ts source
+
+  # All waves are mandatory. Separate jobs preserve coverage under the existing 25-minute cap.
+  # Job-level dependencies prevent six simultaneous Node/Worker jobs.
+  full-server:
+    needs: full
+    if: github.event_name == 'workflow_dispatch' && inputs.full_checks && !inputs.focused_living_world
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NODE_OPTIONS: --max-old-space-size=1536
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      # Server bundle/served-file tests need the same exact built dist, never a missing-build skip.
+      - run: npm run build
+      - run: npm run size:download
+      - run: npm run -s pretest
+      - name: Complete canonical server partition
+        run: node --experimental-strip-types scripts/run-node-suite.ts server
+
+  full-worker:
+    needs: full-server
+    if: github.event_name == 'workflow_dispatch' && inputs.full_checks && !inputs.focused_living_world
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NODE_OPTIONS: --max-old-space-size=1536
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - run: npm run size:download
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
       - run: npm run test:edge
 

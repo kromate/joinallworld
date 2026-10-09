@@ -12,8 +12,9 @@ import os
 from pathlib import Path
 import shutil
 import stat
+from contextlib import nullcontext
 
-from index_controller_record import (FORMAT, encode_controller_record, decode_controller_record,
+from index_controller_record import (FORMAT, FORMAT_V2, encode_controller_record, decode_controller_record,
                                       start_attempt, snapshot_ready, finish_attempt)
 from index_controller_state import (RECORD, PENDING, EXECUTION, RECLAIM, REGISTRY, REGISTRY_PENDING, read_private, publish,
                                     footprint, identity, anchor_registry, verify_registry_anchor)
@@ -26,6 +27,7 @@ from index_reservations import DATABASE_BYTES, REGISTRY_ALLOWANCE
 from index_resource_limits import bounded_integer
 from index_writer_lock import index_writer_lease
 from index_root import _lease
+from index_admission_input import binding_pin, validate_admission_binding
 
 MIB = 1024*1024
 
@@ -141,7 +143,8 @@ def _cleanup(root, record, manifest_bytes, manifest_pin, configuration, source_p
 
 def restartable_registry_startup(namespace_root, aggregate_bytes, repository_root, manifest_bytes,
                                  manifest_pin, source_configuration, source_pin, python, python_runtime,
-                                 *, cpu_seconds=10,wall_seconds=15,rss_limit_bytes=96*MIB,attempt_limit=16):
+                                 *, cpu_seconds=10,wall_seconds=15,rss_limit_bytes=96*MIB,attempt_limit=16,
+                                 _binding_bytes=None, _inherited_lease=None):
     """One charged startup attempt with conservative restart/reconciliation.
 
     This returns only a supervised registry report, never a live SQL writer. The
@@ -156,23 +159,31 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
     manifest=decode_tooling_manifest(manifest_bytes,manifest_pin)
     if _capture(repository,CONFIGURATION,source_pin)!=source_configuration:
         raise ValueError("persistent source configuration differs")
+    operation = None
+    if _binding_bytes is not None:
+        validate_admission_binding(_binding_bytes, manifest_pin, source_pin, source_configuration)
+        operation = {"kind":"admit", "binding":binding_pin(_binding_bytes)}
     executable_pin={"nodeBytes":runtime["pythonBytes"],"nodeSha256":runtime["pythonSha256"]}
     executable,before_runtime=_node_pin(python,executable_pin,label="Python")
     # Conservative logical+block-padding pre-admission covers both record slots
     # and one complete execution tree, before any persistent allocation.
     reserve=tooling["sourceBytes"]+len(source_configuration)+(len(FILES)+4)*8192+2*64000+2*4096+65536
+    if operation is not None: reserve += 4096
     if 4*DATABASE_BYTES+reserve>REGISTRY_ALLOWANCE:
         raise ValueError("persistent execution inputs cannot fit the immutable registry allowance")
     root,_=_root(namespace_root); expected=namespace_binding(aggregate,sqlite_version=runtime["sqliteVersion"])
     _preflight(root,expected,aggregate,controller_check=False)
-    with index_writer_lease(root) as lease:
+    if _inherited_lease is not None:
+        _lease(_inherited_lease)
+        if _inherited_lease.root != root: raise ValueError("controller inherited lease differs from its namespace")
+    with (nullcontext(_inherited_lease) if _inherited_lease is not None else index_writer_lease(root)) as lease:
         _lease(lease); _preflight(root,expected,aggregate,controller_check=False)
         verify_registry_anchor(root)
         had_anchor=any((root/name).exists() or (root/name).is_symlink() for name in [REGISTRY,REGISTRY_PENDING])
         if had_anchor and not (root/RECORD).exists():
             raise ValueError("initialized controller attempt record disappeared; preserve quota")
         info=root.lstat()
-        header={"format":FORMAT,"namespace":{"device":info.st_dev,"inode":info.st_ino,
+        header={"format":FORMAT_V2 if operation is not None else FORMAT,"namespace":{"device":info.st_dev,"inode":info.st_ino,
             "lockDevice":lease.device,"lockInode":lease.inode,"aggregateBytes":aggregate},
             "runtime":runtime,"toolingManifest":dict(manifest_pin),"sourceConfiguration":dict(source_pin),
             "limits":{"cpuSeconds":cpu_seconds,"wallSeconds":wall_seconds,"rssBytes":rss_limit_bytes,"attempts":attempt_limit},"attempts":[]}
@@ -190,7 +201,7 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
         recovered=0
         if record is None:
             if (root/EXECUTION).exists() or (root/RECLAIM).exists(): raise ValueError("unbound execution slot; preserve it")
-            record=start_attempt(header); publish(root,record)
+            record=start_attempt(header,operation); publish(root,record)
         elif record["attempts"] and record["attempts"][-1]["snapshotDevice"] is not None:
             # The inherited lock, not stale PID data, proves the fixed lease holder
             # is gone. Preserve interrupted attempt charges, settle, then retry.
@@ -207,9 +218,11 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
                     reconciled=success
                 record=reconciled; publish(root,record); recovered=1
             _cleanup(root,record,manifest_bytes,manifest_pin,source_configuration,source_pin)
-            record=start_attempt(record); publish(root,record)
+            record=start_attempt(record,operation); publish(root,record)
         elif not record["attempts"]:
-            record=start_attempt(record); publish(root,record)
+            record=start_attempt(record,operation); publish(root,record)
+        elif operation is not None and record["attempts"][-1]["operation"] != operation:
+            raise ValueError("unlaunched admission operation differs; preserve its bound input")
         execution=_copy_snapshot(root,repository,manifest,source_configuration,source_pin)
         snapshot=_snapshot(root,manifest_bytes,manifest_pin,source_configuration,source_pin)
         if 4*DATABASE_BYTES+footprint(root)+64000+65536+root.lstat().st_blocks*512>REGISTRY_ALLOWANCE:
@@ -220,7 +233,7 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
         if before_runtime!=after_runtime: raise RuntimeError("Python runtime changed before persistent launch")
         result=startup_index_namespace(root,aggregate,repository,manifest_bytes,manifest_pin,
             source_configuration,source_pin,executable,runtime,cpu_seconds=cpu_seconds,wall_seconds=wall_seconds,
-            rss_limit_bytes=rss_limit_bytes,_inherited_lease=lease,_execution=snapshot)
+            rss_limit_bytes=rss_limit_bytes,_inherited_lease=lease,_execution=snapshot,_binding_bytes=_binding_bytes)
         _lease(lease)
         anchor_registry(root)
         record=finish_attempt(record,settlement(record,initialized=True)); publish(root,record)
@@ -228,5 +241,6 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
         result["controller"]={"attempts":len(record["attempts"]),"attemptLimit":attempt_limit,
             "reservedWallSeconds":len(record["attempts"])*wall_seconds,"reconciledInterruptedAttempts":recovered,
             "recordSha256":hashlib.sha256(encode_controller_record(record)).hexdigest(),
-            "scope":"Fixed registry startup only; settlement digest is not worker success or country coverage."}
+            "scope":("Fixed registry admission only; no capture/campaign completion." if operation is not None else
+                     "Fixed registry startup only; settlement digest is not worker success or country coverage.")}
         return result

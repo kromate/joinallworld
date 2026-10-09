@@ -9,6 +9,7 @@ import re
 from index_binding import _nonfinite, _pairs
 
 FORMAT = "feature-index-controller-v1"
+FORMAT_V2 = "feature-index-controller-v2"
 MAX_RECORD_BYTES = 64000
 MAX_ATTEMPTS = 16
 MIB = 1024 * 1024
@@ -25,6 +26,7 @@ _PIN = {"bytes", "sha256"}
 _LIMITS = {"cpuSeconds", "wallSeconds", "rssBytes", "attempts"}
 _ATTEMPT = {"number", "phase", "workerPid", "snapshotDevice", "snapshotInode",
             "resultSha256"}
+_ATTEMPT_V2 = _ATTEMPT | {"operation"}
 _VERSION = re.compile(r"[0-9]{1,3}(?:\.[0-9]{1,3}){2}", re.ASCII)
 _SHA256 = re.compile(r"[a-f0-9]{64}", re.ASCII)
 
@@ -50,8 +52,27 @@ def _pin(value, label):
     _sha(value["sha256"], label)
 
 
-def _validate_attempt(attempt, expected_number):
-    _object(attempt, _ATTEMPT, "controller attempt")
+def _operation(value):
+    _object(value, {"kind", "binding"}, "controller operation")
+    if type(value["kind"]) is not str:
+        raise ValueError("controller operation kind must be a string")
+    if value["kind"] == "startup":
+        if value["binding"] is not None:
+            raise ValueError("startup operation binding must be null")
+        return {"kind": "startup", "binding": None}
+    if value["kind"] == "admit":
+        binding = value["binding"]
+        _object(binding, _PIN, "admission binding")
+        _integer(binding["bytes"], 1, 4096, "admission binding bytes")
+        _sha(binding["sha256"], "admission binding")
+        return {"kind": "admit", "binding": {"sha256": binding["sha256"], "bytes": binding["bytes"]}}
+    raise ValueError("unsupported controller operation kind")
+
+
+def _validate_attempt(attempt, expected_number, *, v2):
+    _object(attempt, _ATTEMPT_V2 if v2 else _ATTEMPT, "controller attempt")
+    if v2:
+        _operation(attempt["operation"])
     _integer(attempt["number"], 1, MAX_ATTEMPTS, "attempt number")
     if attempt["number"] != expected_number:
         raise ValueError("controller attempt numbers must be contiguous and one-based")
@@ -82,8 +103,9 @@ def _validate_attempt(attempt, expected_number):
 
 def _validate(value):
     _object(value, _TOP, "controller record")
-    if type(value["format"]) is not str or value["format"] != FORMAT:
+    if type(value["format"]) is not str or value["format"] not in {FORMAT, FORMAT_V2}:
         raise ValueError("unsupported controller record format")
+    v2 = value["format"] == FORMAT_V2
 
     namespace = value["namespace"]
     _object(namespace, _NAMESPACE, "controller namespace")
@@ -115,7 +137,7 @@ def _validate(value):
     if type(attempts) is not list or len(attempts) > limits["attempts"]:
         raise ValueError("controller attempts exceed their immutable bound")
     for number, attempt in enumerate(attempts, 1):
-        _validate_attempt(attempt, number)
+        _validate_attempt(attempt, number, v2=v2)
         if number < len(attempts) and attempt["phase"] != "terminal":
             raise ValueError("every nonlast controller attempt must be terminal")
 
@@ -148,22 +170,33 @@ def _clone(record):
     return decode_controller_record(encode_controller_record(record))
 
 
-def start_attempt(record):
-    """Return a defensive copy with the next immutable-budget attempt prepared."""
+def start_attempt(record, operation=None):
+    """Return a defensive copy with the next immutable-budget attempt prepared.
+
+    V1 remains byte-compatible and has no operation field. V2 defaults to a
+    startup operation; admission must be explicitly named and pinned.
+    """
     result = _clone(record)
     attempts = result["attempts"]
     if attempts and attempts[-1]["phase"] != "terminal":
         raise ValueError("the last controller attempt is not terminal")
     if len(attempts) >= result["limits"]["attempts"]:
         raise ValueError("controller attempt budget is exhausted")
-    attempts.append({
+    attempt = {
         "number": len(attempts) + 1,
         "phase": "prepared",
         "workerPid": None,
         "snapshotDevice": None,
         "snapshotInode": None,
         "resultSha256": None,
-    })
+    }
+    if result["format"] == FORMAT:
+        if operation is not None:
+            raise ValueError("v1 controller records do not accept operation fields")
+    else:
+        selected = {"kind": "startup", "binding": None} if operation is None else _operation(operation)
+        attempt["operation"] = selected
+    attempts.append(attempt)
     return result
 
 

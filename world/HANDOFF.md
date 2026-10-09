@@ -1,5 +1,17 @@
 # Copy-and-paste continuation prompt
 
+Latest admission checkpoint: supervised charge-before-create admission now feeds
+verified ingestion without any parent SQLite connection. It passes192 Python/23
+guarded engine checks, including actual controller loss with surviving anonymous
+input/namespace lease and fresh admission→raw ingest/replay. New namespaces use
+pinned v2 admission operations; existing v1 records/data remain unchanged and
+refuse implicit migration. Read the first PROGRESS.md section and
+FEATURE-INDEX-ADMISSION-OPERATIONS.md. Next implement persistent capture job/
+attempt/input ownership and frozen campaign observation/completion fences, then
+independent raw/index conservation and country geometry/sharding/streaming.
+Do not run the bounded admission controller for every building or capture.
+Preserve all source/ledger/witness identities, attempt limits and Nigeria.
+
 Latest ingestion checkpoint: fixed verified-capture ingestion passes178 Python,
 23 guarded engine checks and full World TypeScript. Actual retained Dakar inputs
 give2captures/2,283ordinals/1,810versions; fresh workers replay without duplicate

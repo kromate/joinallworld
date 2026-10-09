@@ -33,11 +33,14 @@ WORKERS = {
     "index-capture-ingest": HERE / "index_ingest.ts",
     "index-ingest-crash": HERE / "index_ingest_crash.ts",
     "index-registry-startup": HERE / "index_registry_worker.py",
+    "index-registry-admit": HERE / "index_admission_worker.py",
+    "index-registry-admit-crash": HERE / "index_admission_crash.py",
     "index-registry-lease-witness": HERE / "index_registry_lease_witness.py",
 }
 CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
 BOOTSTRAP_CASES = {"empty-file", "schema-checkpointed", "before-rename", "after-rename"}
 INGEST_CASES = {"before-transaction", "after-commit", "after-checkpoint"}
+ADMISSION_CASES = {"reserved", "binding-published"}
 MIB = 1024 * 1024
 
 
@@ -151,6 +154,7 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     ownership. This is not a public durable opener or aggregate-budget admission.
     """
     allowed_cases = (CASES if worker == "witness" else BOOTSTRAP_CASES if worker == "index-bootstrap-crash"
+                     else ADMISSION_CASES if worker == "index-registry-admit-crash"
                      else INGEST_CASES if worker == "index-ingest-crash" else {None})
     if worker not in WORKERS or case not in allowed_cases:
         raise ValueError("only a registered worker and its fixed cases are accepted")
@@ -159,11 +163,14 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     bounded_integer(wall_seconds, 1, 60, "wall seconds")
     bounded_integer(heap_mib, 64, 1536, "V8 heap MiB")
     bounded_integer(rss_limit_bytes, 64*MIB, 512*MIB, "sampled RSS bytes")
-    registry_worker = worker in {"index-registry-startup", "index-registry-lease-witness"}
+    admission_worker = worker in {"index-registry-admit", "index-registry-admit-crash"}
+    registry_worker = worker in {"index-registry-startup", "index-registry-lease-witness"} or admission_worker
     if registry_worker:
         from index_namespace import _aggregate
+        registry_fields = {"aggregateBytes", "pythonVersion", "sqliteVersion"}
+        if admission_worker: registry_fields |= {"bindingDescriptor", "bindingSha256"}
         if (type(registry_configuration) is not dict
-                or set(registry_configuration) != {"aggregateBytes", "pythonVersion", "sqliteVersion"}
+                or set(registry_configuration) != registry_fields
                 or lease_descriptor is None or namespace_descriptor is not None or file_bytes > 4*MIB):
             raise ValueError("fixed registry worker requires its exact configuration and namespace lease")
         _aggregate(registry_configuration["aggregateBytes"])
@@ -190,6 +197,18 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
                 or (lease.st_dev, lease.st_ino) != (named.st_dev, named.st_ino)):
             raise ValueError("worker lease descriptor differs from the private permanent inode")
         inherited = (lease_descriptor,)
+    if admission_worker:
+        descriptor = registry_configuration["bindingDescriptor"]
+        bounded_integer(descriptor, 3, 2147483647, "admission binding descriptor")
+        digest = registry_configuration["bindingSha256"]
+        if descriptor in inherited or type(digest) is not str or not re.fullmatch(r"[a-f0-9]{64}", digest):
+            raise ValueError("admission requires a distinct readonly binding descriptor and exact hash")
+        info = os.fstat(descriptor)
+        if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_nlink != 0
+                or stat.S_IMODE(info.st_mode) != 0o600 or not 1 <= info.st_size <= 4096
+                or fcntl.fcntl(descriptor, fcntl.F_GETFL) & os.O_ACCMODE != os.O_RDONLY):
+            raise ValueError("admission binding descriptor must be private anonymous readonly and bounded")
+        inherited += (descriptor,)
     if namespace_descriptor is not None:
         if (lease_descriptor is None or type(namespace_descriptor) is not int
                 or not 2 < namespace_descriptor <= 2147483647 or namespace_descriptor == lease_descriptor):
@@ -276,6 +295,9 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
             "WORLD_INDEX_PYTHON_VERSION": registry_configuration["pythonVersion"],
             "WORLD_INDEX_PYTHON_SQLITE_VERSION": registry_configuration["sqliteVersion"],
             "WORLD_INDEX_NAMESPACE_DESCRIPTOR": str(lease_descriptor)})
+        if admission_worker:
+            environment["WORLD_INDEX_BINDING_DESCRIPTOR"] = str(registry_configuration["bindingDescriptor"])
+            environment["WORLD_INDEX_BINDING_SHA256"] = registry_configuration["bindingSha256"]
         command = [str(node), "-I", "-B", str(script)]
     else:
         command = [str(node), f"--max-old-space-size={heap_mib}", "--experimental-strip-types", str(script)]
@@ -415,7 +437,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--node", required=True)
     parser.add_argument("--worker", choices=WORKERS, required=True)
-    parser.add_argument("--case", choices=sorted(CASES | BOOTSTRAP_CASES | INGEST_CASES))
+    parser.add_argument("--case", choices=sorted(CASES | BOOTSTRAP_CASES | INGEST_CASES | ADMISSION_CASES))
     parser.add_argument("--file-bytes", type=int, default=4*MIB)
     parser.add_argument("--cpu-seconds", type=int, default=10)
     parser.add_argument("--wall-seconds", type=int, default=15)

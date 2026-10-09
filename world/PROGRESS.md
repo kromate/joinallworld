@@ -1,5 +1,65 @@
 # Implementation checkpoint — 9 October 2026
 
+## Supervised admission into actual ingestion — persistent operation acceptance
+
+Previous goal turn made progress: verified-capture ingestion ef4ca355 was accepted
+and published main f1b1411b. This continuation removes its unsupervised parent
+registry prerequisite. `supervised_charged_index` now holds the actual namespace
+lease across a pinned, persistent fixed-worker reservation and verified child-lock
+handoff, then yields the existing ingestion endpoint's charged root. Parent SQL
+is forbidden in the actual end-to-end fixture and independent recorded experiment.
+Luna owned the compatible v2 record codec/pure tests; root owns worker/controller/
+descriptor/context integration and actual fixtures. Read
+[FEATURE-INDEX-ADMISSION-OPERATIONS.md](FEATURE-INDEX-ADMISSION-OPERATIONS.md).
+
+The v2 durable attempt binds its admission operation and exact binding pin before
+launch. Readonly anonymous input is checked in supervisor and worker before SQL;
+reservation commit/checkpoint precedes mkdir. The unchanged17MiB registry allowance
+holds the persistent source snapshot, records/witnesses and actual input allocation.
+No cap increased. Existing v1 records/encoding/data remain unchanged; incompatible
+admission requests refuse rather than silently migrating or resetting attempts.
+
+**192 Python checks pass**, terminal44518 exit0,43.291s unittest/43.45s process,
+186,597,376B maxRSS. Nine focused actual cases pass8.300s/161,497,088B. Actual
+admission→two-Dakar-capture ingestion→fresh admission/replay preserves one charge,
+all registry/index/lock inodes and2captures/2,283ordinals/1,810versions/0conflicts.
+Actual SIGKILL after reservation before mkdir and after binding publication resumes
+with one charge/two attempts. An actual surviving native worker retains its lock
+and anonymous input after controller SIGKILL; fresh admission is busy before any
+allocation, then after confirmed exit replays the same reservation/two attempts/
+30reserved wall seconds and ingests473rows. No remembered PID is given to recovery.
+
+Initial full run191/192 found a malformed expected-JSON literal in a new pure
+test, fixed without changing v1 encoding. Second full run191/192 found an old
+fork-fixture cleanup race: exact known child became a terminal zombie. Its test
+now checks exact PID/status plus actual lock reacquisition; unknown live identity
+is preserved, no old PID signalled, production guard unchanged. Failed receipts
+and small old scratch remain preserved. Final192-case run passes.
+
+Separate actual verifier27466 exit0,5.30s/160,808,960B maxRSS verifies the admitted
+flow/crash reports, nine current capture/ledger files and all877 historical pins
+unchanged, zero network/actual campaign/output/Nigeria/game writes. Guarded23
+engine checks pass: **215 focused checks**, before clean-source policy. Current
+40-input declaration:389,326source bytes/5,070manifest bytes,
+SHA72923fc8a3f8144e45b064cf9b44dc1c315eddf46e25ad9d8ca969dbe879752d.
+Actual persistent snapshot466,944charged bytes/input4,096bytes. Final-v2 source
+receipt binds60 source/test pins; it distinguishes the test-only cleanup correction
+from earlier actual-source evidence. All18 prior TypeScript execution-input pins
+are unchanged; no new compiler/game build or runtime upload is claimed.
+
+All root test/verifier handles are terminal. Local work followed explicit
+LIVING/GRAPHICS handoffs with heavy1,128MiB Node and96MiB registry workers. Pressure
+continues alternating NORMAL/WARNING with paging; no concurrency/cap expansion.
+Source commit, clean-source policy and main synchronization follow this checkpoint.
+
+**Next:** persistent capture job/attempt/input ownership and frozen campaign
+observation/completion fences, then independent raw/index ordinal audit and
+full-country owned geometry/sharding/streaming. Admission's16-attempt lifetime
+bound is not a per-capture/building loop; process multiple captures inside the held
+admitted context. The complete unattended world objective, Nigeria renderer
+integration, regional conditions/terrain and phone-visible global detail remain
+incomplete. Do not replace this next end-to-end work with another initializer.
+
 ## Fixed verified-capture ingestion — actual data and crash acceptance
 
 The previous status turn made no implementation progress. The next available

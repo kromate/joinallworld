@@ -39,6 +39,10 @@ FILES = tuple(sorted([
     "world/tooling/index_ingest.py",
     "world/tooling/index_ingest.ts",
     "world/tooling/index_ingest_crash.ts",
+    "world/tooling/index_admission_input.py",
+    "world/tooling/index_admission_worker.py",
+    "world/tooling/index_admission_crash.py",
+    "world/tooling/index_admission.py",
     "world/tooling/index_lease_witness.ts",
 ]))
 

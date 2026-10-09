@@ -8,7 +8,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
-from contextlib import nullcontext
+from contextlib import nullcontext, ExitStack
 
 from index_binding import _pairs, _nonfinite
 from index_bootstrap import _node_pin
@@ -21,6 +21,7 @@ from index_root import _lease
 from index_tooling import verify_index_tooling
 from index_writer_lock import index_writer_lease
 from index_controller_state import CONTROLS, EXECUTION
+from index_admission_input import binding_descriptor, binding_pin, validate_admission_binding
 
 MIB = 1024 * 1024
 RUNTIME_FIELDS = {"pythonVersion", "sqliteVersion", "pythonBytes", "pythonSha256"}
@@ -43,7 +44,7 @@ def _runtime(value):
 def startup_index_namespace(namespace_root, aggregate_bytes, repository_root, manifest_bytes,
                             manifest_pin, source_configuration, source_pin, python, python_runtime,
                             *, cpu_seconds=10, wall_seconds=15, rss_limit_bytes=96*MIB,
-                            _inherited_lease=None, _execution=None):
+                            _inherited_lease=None, _execution=None, _binding_bytes=None):
     """Initialize/reopen only a pinned registry in a private, caller-owned namespace.
 
     The namespace flock is held before snapshot creation and inherited by the fixed
@@ -71,6 +72,17 @@ def startup_index_namespace(namespace_root, aggregate_bytes, repository_root, ma
     executable, before_runtime = _node_pin(python, executable_pin, label="Python")
     root, _ = _root(namespace_root)
     managed = _inherited_lease is not None or _execution is not None
+    admission = _binding_bytes is not None
+    if admission:
+        if not managed: raise ValueError("admission requires its persistent controller and held lease")
+        validate_admission_binding(_binding_bytes, manifest_pin, source_pin, source_configuration)
+        from index_controller_record import decode_controller_record, FORMAT_V2
+        from index_controller_state import RECORD, read_private
+        record = decode_controller_record(read_private(root/RECORD))
+        if (record["format"] != FORMAT_V2 or not record["attempts"]
+                or record["attempts"][-1]["phase"] != "prepared"
+                or record["attempts"][-1]["operation"] != {"kind":"admit", "binding":binding_pin(_binding_bytes)}):
+            raise ValueError("admission binding differs from its durable prepared operation")
     if managed:
         _lease(_inherited_lease)
         if (type(_execution) is not VerifiedIndexExecution or _inherited_lease.root != root
@@ -87,14 +99,19 @@ def startup_index_namespace(namespace_root, aggregate_bytes, repository_root, ma
     with (nullcontext(_inherited_lease) if managed else index_writer_lease(root)) as lease:
         _lease(lease); _preflight(root, expected, aggregate)
         with (nullcontext(_execution) if managed else verified_execution_snapshot(
-                repository, manifest_bytes, manifest_pin, source_configuration, source_pin)) as execution:
+                repository, manifest_bytes, manifest_pin, source_configuration, source_pin)) as execution, ExitStack() as inputs:
+            registry_configuration = {"aggregateBytes":aggregate, "pythonVersion":runtime["pythonVersion"],
+                                      "sqliteVersion":runtime["sqliteVersion"]}
+            input_charged = 0
+            if admission:
+                descriptor, expected_input, input_charged = inputs.enter_context(binding_descriptor(_binding_bytes))
+                registry_configuration.update({"bindingDescriptor":descriptor, "bindingSha256":expected_input["sha256"]})
             margin = (2*64000 if managed else 0) + 65536 + root.lstat().st_blocks*512
-            if 4*DATABASE_BYTES + execution.charged_bytes + margin > REGISTRY_ALLOWANCE:
+            if 4*DATABASE_BYTES + execution.charged_bytes + margin + input_charged > REGISTRY_ALLOWANCE:
                 raise ValueError("actual registry snapshot cannot fit the immutable allowance")
-            result = _run_fixed_process(executable, "index-registry-startup", root,
+            result = _run_fixed_process(executable, "index-registry-admit" if admission else "index-registry-startup", root,
                 lease_descriptor=lease.descriptor, execution_root=execution.root,
-                registry_configuration={"aggregateBytes": aggregate, "pythonVersion": runtime["pythonVersion"],
-                                        "sqliteVersion": runtime["sqliteVersion"]},
+                registry_configuration=registry_configuration,
                 file_bytes=DATABASE_BYTES, cpu_seconds=cpu_seconds, wall_seconds=wall_seconds,
                 heap_mib=64, rss_limit_bytes=rss_limit_bytes)
             _lease(lease)
@@ -104,8 +121,8 @@ def startup_index_namespace(namespace_root, aggregate_bytes, repository_root, ma
             if result["returnCode"] != 0 or result["reason"] != "exit":
                 raise RuntimeError(f"fixed registry worker failed ({result['reason']}, {result['returnCode']}): {result['stderr'][:4096]}")
             report = json.loads(result["stdout"], object_pairs_hook=_pairs, parse_constant=_nonfinite)
-            if (type(report) is not dict or set(report) != REPORT_FIELDS
-                    or report["format"] != "feature-index-registry-startup-v1"
+            if (type(report) is not dict or set(report) != REPORT_FIELDS | ({"admission"} if admission else set())
+                    or report["format"] != ("feature-index-registry-admit-v1" if admission else "feature-index-registry-startup-v1")
                     or type(report["aggregateBytes"]) is not int or report["aggregateBytes"] != aggregate
                     or type(report["replayed"]) is not bool
                     or report["pythonVersion"] != runtime["pythonVersion"]
@@ -123,6 +140,8 @@ def startup_index_namespace(namespace_root, aggregate_bytes, repository_root, ma
                     or (stats["reservations"] == 0 and stats["heldBytes"] != 0)):
                 raise ValueError("registry report charges differ from its immutable allowance")
             _read_owned(root, "namespace.json", 4096, exact=expected)
+            if admission:
+                _admission_report(report["admission"], root, _binding_bytes, stats)
             sizes = _registry_sizes(root)
             if (type(report["databaseBytes"]) is not int or not 4096 <= report["databaseBytes"] <= DATABASE_BYTES
                     or report["databaseBytes"] % 4096 or report["databaseBytes"] != sizes.get("reservations.sqlite")
@@ -137,8 +156,37 @@ def startup_index_namespace(namespace_root, aggregate_bytes, repository_root, ma
             overhead = root.lstat().st_blocks*512
             for name in sizes:
                 info = (root/name).lstat(); overhead += max(info.st_size, info.st_blocks*512)
-            if overhead + execution.charged_bytes > REGISTRY_ALLOWANCE:
+            if overhead + execution.charged_bytes + input_charged > REGISTRY_ALLOWANCE:
                 raise ValueError("actual registry and snapshot exceed their immutable physical allowance")
-            return {"registry": report, "guard": result,
+            response = {"registry": report, "guard": result,
                     "executionSnapshotChargedBytes": execution.charged_bytes,
                     "toolingManifest": dict(manifest_pin)}
+            if admission: response["bindingInputChargedBytes"] = input_charged
+            return response
+
+
+def _admission_report(value, namespace, binding_bytes, stats):
+    from index_binding import decode_index_binding
+    from index_root import _binding
+    import os
+    import stat
+    config = decode_index_binding(binding_bytes); index_hash = hashlib.sha256(binding_bytes).hexdigest()
+    if (type(value) is not dict or set(value) != {"indexHash", "reservedBytes", "replayed",
+            "rootDevice", "rootInode", "lockDevice", "lockInode"}
+            or value["indexHash"] != index_hash or type(value["reservedBytes"]) is not int
+            or value["reservedBytes"] != config["reservedBytes"] or type(value["replayed"]) is not bool
+            or stats["reservations"] < 1 or stats["heldBytes"] < value["reservedBytes"]):
+        raise ValueError("admission report differs from its charged binding")
+    for key in ["rootDevice", "rootInode", "lockDevice", "lockInode"]:
+        if type(value[key]) is not int or not (1 if key.endswith("Inode") else 0) <= value[key] <= (1<<63)-1:
+            raise ValueError("admission inode report exceeds its strict bound")
+    child = namespace/index_hash; info = child.lstat(); lock = (child/"writer.lock").lstat()
+    if (child.resolve(strict=True) != child or not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid()
+            or stat.S_IMODE(info.st_mode) != 0o700
+            or (info.st_dev, info.st_ino) != (value["rootDevice"], value["rootInode"])
+            or not stat.S_ISREG(lock.st_mode) or lock.st_uid != os.getuid() or lock.st_nlink != 1
+            or stat.S_IMODE(lock.st_mode) != 0o600 or lock.st_size != 0
+            or (lock.st_dev, lock.st_ino) != (value["lockDevice"], value["lockInode"])):
+        raise ValueError("actual admitted root/lease differs from its report")
+    _binding(child, binding_bytes)
+    _read_owned(child, "binding.json", 4096, exact=binding_bytes)

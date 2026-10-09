@@ -49,11 +49,19 @@ class IndexProcessBoundaryTests(unittest.TestCase):
             if child and child[0] > 2:
                 deadline = time.monotonic()+5
                 while time.monotonic() < deadline:
-                    status = subprocess.run(["/bin/ps", "-o", "args=", "-p", str(child[0])], capture_output=True, timeout=1)
+                    status = subprocess.run(["/bin/ps", "-o", "pid=,stat=,args=", "-p", str(child[0])], capture_output=True, timeout=1)
                     if status.returncode == 1 and not status.stdout.strip():
                         confirmed = True; break
-                    if status.returncode != 0 or code.encode() not in status.stdout:
-                        raise RuntimeError(f"fixture descendant identity unavailable; preserve {root}")
+                    fields = status.stdout.strip().split(None, 2)
+                    if (status.returncode != 0 or len(fields) != 3 or fields[0] != str(child[0]).encode()):
+                        raise RuntimeError(f"fixture descendant pid {child[0]} state unavailable; preserve {root}")
+                    if fields[1].startswith(b"Z"):
+                        # The exact known child is terminal, with no executable
+                        # body or open descriptors. Reacquire its actual lease
+                        # below before cleaning up; never signal a remembered PID.
+                        confirmed = True; break
+                    if code.encode() not in fields[2]:
+                        raise RuntimeError(f"fixture descendant pid {child[0]} identity unavailable; preserve {root}")
                     time.sleep(0.02)
             if confirmed:
                 with index_writer_lease(root): pass

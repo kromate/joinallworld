@@ -6,6 +6,7 @@ await Promise.all(playableCityIds().map(loadCityContent));
 // The tests run in order: the first ones need a process in which no city's scenes have been loaded yet.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { registerHooks } from 'node:module';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { dirname, join, resolve } from 'node:path';
@@ -17,9 +18,20 @@ import type { SceneVenue } from './types.ts';
 import { KINDS, buildVenueScene } from './venue-scenes.ts';
 import { CITY_KINDS, citySceneDef, cityScenesReady, loadAllCityScenes, loadCityScenes, sceneCityIds, sceneCityOf } from './city-scenes.ts';
 import { sceneVenue } from '../venue-world.ts';
-import { CAMPUS_VENUE, createWorldAdapter } from '../campus/unilag/world-adapter.ts';
 import type { ScenesState, WorldAdapterOptions } from '../campus/unilag/world-adapter.ts';
 import { cityContent } from '../game/cities/registry.ts';
+
+// Node has no CSS loader. Keep the browser stylesheet intact and stub only its
+// side-effect import while this test imports the adapter's pure host seam.
+const adapterCssUrl = new URL('../campus/unilag/world-adapter.css', import.meta.url).href;
+const cssFixtureHook = registerHooks({
+  load(url, context, nextLoad) {
+    if (url === adapterCssUrl) return { format: 'module', source: '', shortCircuit: true };
+    return nextLoad(url, context);
+  },
+});
+const { CAMPUS_VENUE, createWorldAdapter } = await import('../campus/unilag/world-adapter.ts')
+  .finally(() => cssFixtureHook.deregister());
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const ALIASES: Record<string, [string, string]> = { library: ['club', 'speakeasy'], church: ['worship', 'church'], mosque: ['worship', 'mosque'] };

@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url'
 import { createServer } from 'vite'
 import type { ViteDevServer } from 'vite'
 import { createSSRApp, h } from 'vue'
-import type { Component } from 'vue'
+import type { Component, SetupContext } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import type { App } from '../../state/app.ts'
 import { createFakeServer } from '../../testing/fakeServer.ts'
@@ -18,6 +18,8 @@ import type { SocialClient } from './socialClient.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))
 const server = createFakeServer()
+const emptyFamily = { status: 200, body: { ok: true, code: 'ok', slots: [], incoming: [] } }
+let familyReply: typeof emptyFamily | { status: number; body: unknown } | Promise<{ status: number; body: unknown }> = emptyFamily
 let vite: ViteDevServer
 let app: App
 let client: SocialClient
@@ -28,6 +30,24 @@ const text = (html: string): string => html.replace(/<span class="ui-avatar"[\s\
 async function render(path: string, props: Record<string, unknown> = {}): Promise<string> {
   const component = (await load(path)).default
   return renderToString(createSSRApp({ render: () => h(component, props) }))
+}
+async function renderWithFamily(path: string): Promise<string> {
+  const component = (await load(path)).default as Component
+  const source = component as unknown as {
+    [key: string]: unknown
+    setup?: (props: Record<string, unknown>, context: SetupContext) => unknown
+  }
+  const settledComponent = {
+    ...source,
+    setup(props: Record<string, unknown>, context: SetupContext) {
+      const bindings = source.setup?.(props, context)
+      return Promise.resolve(bindings).then(async (result) => {
+        await settle()
+        return result
+      })
+    },
+  } as Component
+  return renderToString(createSSRApp({ render: () => h(settledComponent) }))
 }
 const ref = (id: string, name: string) => ({ id, name })
 function overview(extra: Partial<SocialOverview> = {}): SocialOverview {
@@ -45,6 +65,9 @@ const disabledButton = (html: string, label: string): boolean => new RegExp(`<bu
 
 before(async () => {
   globalThis.fetch = server.fetch
+  // Family ownership is resolved by the server. Even the ordinary no-links case is an explicit,
+  // authoritative empty response; tests never make the screen infer an NPC while the read is pending.
+  server.route('GET /api/social/family', () => familyReply)
   vite = await createServer({ root, configFile: `${root}vite.config.ts`, logLevel: 'error', appType: 'custom', server: { middlewareMode: true, hmr: false, ws: false, watch: null }, optimizeDeps: { noDiscovery: true, include: [] } })
   const cityLoader = await vite.ssrLoadModule('/src/game/cities/registry.ts') as typeof import('../../../game/cities/registry.ts')
   await cityLoader.loadCityContent('lagos')
@@ -67,16 +90,18 @@ test('the gate: a screen with no overview says so, with Retry on a failed read; 
   client.state.error = null
 })
 
-test('Family: the household, the streak, a Call button for each and the beta labels', async () => {
-  const html = await render('/src/app/features/social/FamilyApp.vue')
+test('Family: the household, shared NPC labels, and a Call button for each game character', async () => {
+  const html = await renderWithFamily('/src/app/features/social/FamilyApp.vue')
   const social = app.game.view.value.social
   const words = text(html)
-  assert.ok(words.includes(`Your people back home Beta ${social.family.filter((member) => member.calledToday).length} of ${social.family.length} checked in today`))
-  assert.ok(words.includes(`Streak: ${social.streak} day${social.streak === 1 ? '' : 's'} · each first call of the day gives +${social.familyCall.social} Social and +${social.familyCall.mood} mood for a few hours`))
+  assert.ok(words.includes('Your family'))
+  assert.ok(words.includes(`${social.family.filter((member) => member.calledToday).length} of ${social.family.length} game characters checked in today`))
+  assert.ok(words.includes(`Game-family streak: ${social.streak} days`))
   assert.equal((html.match(/aria-label="Call /g) ?? []).length, social.family.length)
+  assert.equal((html.match(/data-npc-badge/g) ?? []).length, social.family.length)
   for (const member of social.family) assert.ok(words.includes(member.name) && words.includes(`${member.relation} · ${member.line}`))
-  assert.ok(words.includes(`A call takes ${social.familyCall.duration} seconds and works anywhere.`))
-  assert.ok(words.endsWith('Original beta feature and values. The family here is the same for every player for now.'))
+  assert.ok(words.includes(`A game-character call takes ${social.familyCall.duration} seconds.`))
+  assert.ok(words.includes('Invitations and unanswered calls earn no check-in rewards.'))
   assert.match(html, /<button[^>]*class="social-btn is-primary"[^>]*>(?:<!--.*?-->)*Call<\/button>/)
 })
 
@@ -84,15 +109,15 @@ test('Family: every Call button says why it is off while an action is running', 
   const before = app.game.state.value
   app.game.state.value = { ...before, activeAction: { id: 'x', type: 'rest' } as never }
   try {
-    const html = await render('/src/app/features/social/FamilyApp.vue')
+    const html = await renderWithFamily('/src/app/features/social/FamilyApp.vue')
     assert.match(html, /disabled[^>]*title="Finish or cancel your current action first\."[^>]*aria-label="Call [^"]*\. Finish or cancel your current action first\."/)
-    assert.ok(text(html).includes('Finish or cancel your current action to call.'))
+    assert.equal((html.match(/class="[^"]*\bfamily-call-reason\b[^"]*"[^>]*role="status"[^>]*>Finish or cancel your current action first\./g) ?? []).length, app.game.view.value.social.family.length)
   } finally { app.game.state.value = before }
 })
 
 test('Contacts: Mummy first with a Call, the search, friends with their presence and Chat, and the empty state', async () => {
   client.state.me = overview()
-  let html = await render('/src/app/features/social/ContactsApp.vue')
+  let html = await renderWithFamily('/src/app/features/social/ContactsApp.vue')
   let words = text(html)
   const mummy = app.game.view.value.social.family.find((member) => member.contact)
   assert.ok(mummy && words.startsWith(mummy.name), words.slice(0, 120))
@@ -102,13 +127,53 @@ test('Contacts: Mummy first with a Call, the search, friends with their presence
   assert.ok(words.endsWith('Names are not unique: check the short code after # when two players share a name.'))
 
   client.state.me = overview({ friends: [{ id: 'f1', name: 'Femi <i>x</i>', since: 1, bae: false, status: 'online', venue: 'market', cityId: 'lagos' }] })
-  html = await render('/src/app/features/social/ContactsApp.vue')
+  html = await renderWithFamily('/src/app/features/social/ContactsApp.vue')
   words = text(html)
   assert.ok(words.includes('Femi <i>x</i> Friend · Online'), words)
   assert.ok(!html.includes('<i>x</i>'), 'a name is text')
   assert.match(html, /<i class="is-on social-dot"/)
   assert.ok(words.includes('Chat') && !words.includes('No saved contacts yet'))
   client.state.me = null
+})
+
+test('Contacts waits for server family ownership, reports read failure with retry, and never labels an unknown role as the NPC', async () => {
+  client.state.me = overview()
+  let finish: (response: { status: number; body: unknown }) => void = () => {}
+  familyReply = new Promise<{ status: number; body: unknown }>(resolve => { finish = resolve })
+  try {
+    const pending = await render('/src/app/features/social/ContactsApp.vue')
+    assert.ok(text(pending).includes('Loading family contacts…'))
+    assert.ok(!text(pending).includes('Mummy'))
+
+    finish({ status: 503, body: { error: 'family_unavailable', reason: 'Family contacts could not be loaded.' } })
+    await settle()
+    familyReply = { status: 503, body: { error: 'family_unavailable', reason: 'Family contacts could not be loaded.' } }
+    const failed = await renderWithFamily('/src/app/features/social/ContactsApp.vue')
+    assert.ok(text(failed).includes('Could not load family contacts: Family contacts could not be loaded.'))
+    assert.match(failed, /<button[^>]*>Try again<\/button>/)
+    assert.ok(!text(failed).includes('Mummy'), 'an unresolved accepted human role cannot fall back to the NPC')
+  } finally {
+    client.state.me = null
+    familyReply = emptyFamily
+  }
+})
+
+test('Contacts renders an accepted Mummy role as a real player and does not offer the NPC call', async () => {
+  client.state.me = overview()
+  try {
+    const owner = client.state.me.me.id
+    familyReply = { status: 200, body: { ok: true, code: 'ok', slots: [
+      { id: 'family-link-1', owner, slot: 'mummy', player: 'real-mummy', at: 1, state: 'accepted', other: { id: 'real-mummy', name: 'Amina' } },
+    ], incoming: [] } }
+    const html = await renderWithFamily('/src/app/features/social/ContactsApp.vue')
+    const words = text(html)
+    assert.ok(words.startsWith('Amina Mother · Real player'), words.slice(0, 100))
+    assert.equal((html.match(/data-npc-badge/g) ?? []).length, 0)
+    assert.ok(!html.includes('Call Mummy'), 'accepted player role is not presented as an NPC contact')
+  } finally {
+    client.state.me = null
+    familyReply = emptyFamily
+  }
 })
 
 test('Contacts: a life whose family list has no contact leaves the family card out instead of failing', async () => {
@@ -119,7 +184,7 @@ test('Contacts: a life whose family list has no contact leaves the family card o
     delete FAMILY.mummy!.contact
     app.game.state.value = { ...before } // the view is recomputed from the state
     assert.equal(app.game.view.value.social.family.some((member) => member.contact), false)
-    const html = await render('/src/app/features/social/ContactsApp.vue')
+    const html = await renderWithFamily('/src/app/features/social/ContactsApp.vue')
     const words = text(html)
     assert.ok(words.startsWith('Find a player'), words.slice(0, 80))
     assert.ok(!words.includes('Mummy') && !words.includes('checked in today'), words.slice(0, 200))
@@ -132,12 +197,12 @@ test('Contacts: found players are listed with their short code and a View button
   client.state.me = overview()
   contactsUi.results = [{ id: 'abcdef123456', name: 'Ada', friend: true }]
   try {
-    const words = text(await render('/src/app/features/social/ContactsApp.vue'))
+    const words = text(await renderWithFamily('/src/app/features/social/ContactsApp.vue'))
     assert.ok(words.includes('Ada Real player · Friend · #abcdef View'), words)
     contactsUi.results = { error: 'Type at least two letters of their name.' }
-    assert.ok(text(await render('/src/app/features/social/ContactsApp.vue')).includes('Type at least two letters of their name.'))
+    assert.ok(text(await renderWithFamily('/src/app/features/social/ContactsApp.vue')).includes('Type at least two letters of their name.'))
     contactsUi.results = []
-    assert.ok(text(await render('/src/app/features/social/ContactsApp.vue')).includes('Nobody found with that name.'))
+    assert.ok(text(await renderWithFamily('/src/app/features/social/ContactsApp.vue')).includes('Nobody found with that name.'))
   } finally { contactsUi.results = null; client.state.me = null }
 })
 
@@ -387,16 +452,17 @@ test('NPC mark: the NPC card, Contacts (Mummy and saved NPCs) and Family carry t
   assert.ok(text(card).includes(SPOKEN) && text(card).includes(npc.name))
   assert.ok(!text(card).includes('· NPC'), 'the word is the badge, not text in the role line')
 
-  const family = await render('/src/app/features/social/FamilyApp.vue')
+  const family = await renderWithFamily('/src/app/features/social/FamilyApp.vue')
   assert.equal(badges(family), view.social.family.length, 'every family member')
 
   client.state.me = overview()
   const { contactsUi } = await load<{ contactsUi: { results: unknown } }>('/src/app/features/social/socialState.ts')
   try {
-    const contacts = await render('/src/app/features/social/ContactsApp.vue')
+    familyReply = emptyFamily
+    const contacts = await renderWithFamily('/src/app/features/social/ContactsApp.vue')
     assert.equal(badges(contacts), view.social.family.filter((member) => member.contact).length + view.social.relationships.filter((rel) => rel.npc).length, 'Mummy and each saved NPC')
     contactsUi.results = [{ id: 'abcdef123456', name: 'Ada', friend: true }]
-    const found = await render('/src/app/features/social/ContactsApp.vue')
+    const found = await renderWithFamily('/src/app/features/social/ContactsApp.vue')
     assert.ok(text(found).includes('Ada Real player'))
     assert.equal(badges(found), badges(contacts), 'the found player adds no badge')
   } finally { contactsUi.results = null; client.state.me = null }

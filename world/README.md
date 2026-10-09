@@ -1,13 +1,14 @@
 # Independent world-data builder
 
-Current retained-index audit/session path passes337 distinct checks plus World
-TypeScript on exact remote source579ba269. See
+Current same-Ledger campaign and retained-index audit integration passes384 tests,
+three release-policy checks and World TypeScript on exact remote source4c0b96cb.
+See [CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md),
 [FEATURE-INDEX-AUDIT-OPERATIONS.md](FEATURE-INDEX-AUDIT-OPERATIONS.md) and latest
-[PROGRESS.md](PROGRESS.md). Wider boundary regressions and the draft single-ID
-campaign audit contract pass, including disposable-Ledger token/exhaustion checks.
-Full same-Ledger audit execution/fencing,
-global shards/country geometry, rendering integration and phone proof remain
-open; no gameplay or Nigeria data changed. Counts below are historical stages.
+[PROGRESS.md](PROGRESS.md). Actual portable fixtures verify complete membership,
+live-token completion, stale-token replay and read-only saved evidence. Global
+shards/country geometry, the full interruption/corruption list, rendering
+integration and phone proof remain open; no gameplay or Nigeria data changed.
+Counts below are historical stages.
 
 Frozen execution and atomic engine startup now pass **103 Python checks,23 engine
 checks and World TypeScript**. Actual SIGKILL startup recovery at four boundaries

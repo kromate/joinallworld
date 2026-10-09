@@ -1,6 +1,15 @@
 # Feature index raw and observation audit
 
-**Status: local implementation; not accepted.** The kernel, fixed worker and Python controller exist. File-only and earlier kernel checks pass; actual controller recovery, session integration and the campaign fence remain unverified or unimplemented. This document defines a bounded, independent audit of a retained feature index against the exact raw captures that produced it. It does not authorize repairing, migrating, rebuilding, or silently replacing an index.
+**Status: tested campaign/session integration; broader acceptance remains open.**
+Exact source4c0b96cb/run37890936198 passes384 tests, three release-policy checks and
+World TypeScript. The fixed worker/controller, held session, actual portable
+same-Ledger campaign fence and read-only evidence projection are connected.
+See [CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md) and the
+machine-readable acceptance receipt for tested scope and exclusions. This is not
+proof of every corruption/physical-interruption requirement below, the protected
+original Senegal campaign, country geometry, global shards or physical devices.
+This specification defines a bounded independent audit and never authorizes
+repairing, migrating, rebuilding or silently replacing an index.
 
 ## Purpose and qualification
 
@@ -38,7 +47,7 @@ Run the global audit only when the declared capture set is complete and all its 
 
 Audit work must itself be durably bounded. Allow one audit job for a frozen final input tuple, with a finite retry count no greater than the campaign's existing retry limit. Each retry is a ledger attempt and consumes the configured audit work budget. No hidden retries, uncharged reruns, or new work on read-only status inspection. If the capture set or observation set changes, it is a different explicitly bounded audit input; never mutate an existing audit payload. The first implementation admits at most one final audit job per campaign/index binding, with at most eight attempts and no more than the frozen campaign attempt limit. Changing final membership must refuse that immutable job; an unlimited sequence of new audit IDs is not a recovery mechanism. Cross-shard/global audit admission is separate required scaling work. Preserve all existing limits: 256 session capture calls, 16 admission attempts, 8 attempts per capture, and the current CPU, wall-time, heap/RSS, storage, and output caps. A later design may allocate explicit audit budget under those same worker ceilings; it must not increase a cap implicitly.
 
-## Held-session bridge — local source, not accepted
+## Held-session bridge — tested integration
 
 The SDK now exposes one final `auditCaptures(inputs, attemptLimit)` operation.
 Prepare all inputs before sending: check the 1–256 array count before traversal,
@@ -76,10 +85,12 @@ receiptPath and the expectation pin; raw-file pins belong inside that expectatio
 Ordinary audit refusal permits a safe session close. Interrupted or malformed
 lifecycle output cannot become a successful audit qualification.
 
-The real Dakar SDK fixture and the Python session/replay fixtures are implemented
-but unrun. Small codec/source checks and syntax-only parsing do not accept this
-bridge. Campaign audit claims and full campaign observation qualification remain
-separate unimplemented gates below.
+The real Dakar SDK and Python session/replay fixtures passed actual remote
+execution. The optional held-session callback binds frozen complete evidence
+before any worker frame; SDK-registered proof and current Ledger tokens qualify
+portable campaign completion. Read-only status revalidates saved bytes/identities
+without opening original SQLite. See campaign operations for exact scope; the full
+physical-interruption and corruption list below remains required.
 
 ## Raw-to-index conservation
 

@@ -13,19 +13,19 @@ assert.match(path.basename(root), /^allworld-index-guard-/);
 assert.ok(lstatSync(root).isDirectory() && !lstatSync(root).isSymbolicLink());
 const db = new DatabaseSync(path.join(root, 'witness.sqlite'));
 const nativeHeapBytes = 8 * 1024 * 1024;
-const actualNativeHeapBytes = Number(db.prepare(`PRAGMA hard_heap_limit=${nativeHeapBytes}`).get()!.hard_heap_limit);
+const actualNativeHeapBytes = Number(db.prepare(`PRAGMA hard_heap_limit=${nativeHeapBytes}`).get().hard_heap_limit);
 assert.ok(actualNativeHeapBytes > 0 && actualNativeHeapBytes <= nativeHeapBytes);
-assert.equal(db.prepare('PRAGMA journal_mode=WAL').get()!.journal_mode, 'wal');
+assert.equal(db.prepare('PRAGMA journal_mode=WAL').get().journal_mode, 'wal');
 db.exec('PRAGMA synchronous=FULL; PRAGMA foreign_keys=ON; PRAGMA wal_autocheckpoint=0;');
-assert.equal(db.prepare('PRAGMA synchronous').get()!.synchronous, 2);
-assert.equal(db.prepare('PRAGMA foreign_keys').get()!.foreign_keys, 1);
+assert.equal(db.prepare('PRAGMA synchronous').get().synchronous, 2);
+assert.equal(db.prepare('PRAGMA foreign_keys').get().foreign_keys, 1);
 db.exec('CREATE TABLE durable(id INTEGER PRIMARY KEY, payload BLOB NOT NULL); INSERT INTO durable VALUES(0,x\'01\');');
-assert.equal(db.prepare('PRAGMA wal_checkpoint(TRUNCATE)').get()!.busy, 0);
+assert.equal(db.prepare('PRAGMA wal_checkpoint(TRUNCATE)').get().busy, 0);
 
-function sqliteError(value: unknown): Error & { errcode: number; code: string } {
+function sqliteError(value) {
   assert.ok(value instanceof Error && 'errcode' in value && typeof value.errcode === 'number'
     && 'code' in value && value.code === 'ERR_SQLITE_ERROR', 'unexpected non-SQLite failure');
-  return value as Error & { errcode: number; code: string };
+  return value;
 }
 
 if (caseName === 'crash') {
@@ -45,29 +45,30 @@ if (caseName === 'crash') {
   await new Promise(resolve => setTimeout(resolve, 10_000));
 } else if (caseName === 'rss-limit') {
   // Touch a bounded 96 MiB native allocation; the sampled 64 MiB test guard must stop it.
+  console.log(JSON.stringify({ caseName, stage: 'native-allocation', allocationRequestedBytes: 96 * 1024 * 1024 }));
   const resident = Buffer.alloc(96 * 1024 * 1024, 0x11);
   await new Promise(resolve => setTimeout(resolve, 10_000));
   assert.equal(resident[resident.length - 1], 0x11);
 } else if (caseName === 'heap-capability') {
   const compileOptions = db.prepare('PRAGMA compile_options').all().map(row => row.compile_options);
-  let failure: ReturnType<typeof sqliteError> | undefined;
-  let result: string | undefined;
+  let failure;
+  let result;
   try {
-    const row = db.prepare('SELECT hex(zeroblob(4194304)) AS result').get()!;
+    const row = db.prepare('SELECT hex(zeroblob(4194304)) AS result').get();
     assert.ok(typeof row.result === 'string'); result = row.result;
   } catch (error) { failure = sqliteError(error); }
   // PRAGMA readback alone is not proof: DEFAULT_MEMSTATUS=0 disables enforcement.
   if (failure) assert.equal(failure.errcode, 7, 'unexpected SQLite allocation error');
-  else assert.equal(result!.length, 8 * 1024 * 1024);
-  assert.equal(db.prepare('SELECT COUNT(*) AS n FROM durable').get()!.n, 1);
+  else assert.equal(result.length, 8 * 1024 * 1024);
+  assert.equal(db.prepare('SELECT COUNT(*) AS n FROM durable').get().n, 1);
   console.log(JSON.stringify({ caseName, nativeHeapBytes, actualNativeHeapBytes,
     nativeHeapEnforcedByWitness: failure?.errcode === 7,
     defaultMemoryAccountingDisabled: compileOptions.includes('DEFAULT_MEMSTATUS=0'),
-    sqliteErrorCode: failure?.errcode ?? null, sqliteVersion: db.prepare('SELECT sqlite_version() AS v').get()!.v,
+    sqliteErrorCode: failure?.errcode ?? null, sqliteVersion: db.prepare('SELECT sqlite_version() AS v').get().v,
     returnedTextBytes: result?.length ?? 0 }));
 } else {
   if (caseName === 'page-limit') {
-    assert.equal(db.prepare('PRAGMA max_page_count=16').get()!.max_page_count, 16);
+    assert.equal(db.prepare('PRAGMA max_page_count=16').get().max_page_count, 16);
   }
   db.exec('BEGIN IMMEDIATE');
   try {
@@ -86,7 +87,7 @@ if (caseName === 'crash') {
     }
     if (caseName === 'page-limit') {
       assert.equal(error.errcode, 13, 'page limit must produce SQLITE_FULL');
-      assert.equal(db.prepare('SELECT COUNT(*) AS n FROM durable').get()!.n, 1);
+      assert.equal(db.prepare('SELECT COUNT(*) AS n FROM durable').get().n, 1);
       console.log(JSON.stringify({ caseName, sqliteErrorCode: error.errcode, nativeHeapBytes }));
     } else {
       if (caseName === 'file-limit') {

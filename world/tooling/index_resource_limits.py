@@ -22,7 +22,7 @@ import time
 HERE = Path(__file__).resolve().parent
 WORKERS = {
     "capacity": HERE / "profile_feature_identity.ts",
-    "witness": HERE / "index_resource_witness.ts",
+    "witness": HERE / "index_resource_witness.mjs",
     "identity-stress": HERE / "index_identity_stress.ts",
     # Direct node:test module entry (no --test subprocess): sampled RSS covers the writer.
     "index-engine-tests": HERE.parent / "feature-index.test.ts",
@@ -327,7 +327,13 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
             environment["WORLD_INDEX_BINDING_SHA256"] = registry_configuration["bindingSha256"]
         command = [str(node), "-I", "-B", str(script)]
     else:
-        command = [str(node), f"--max-old-space-size={heap_mib}", "--experimental-strip-types", str(script)]
+        # The disposable witness is fixed plain JS. Loading the TS transpiler can
+        # exceed its 64MiB RSS guard before the baseline SQL table even exists.
+        # Actual index workers still need the unchanged TS-import runtime flag.
+        command = [str(node), f"--max-old-space-size={heap_mib}"]
+        if worker != "witness":
+            command.append("--experimental-strip-types")
+        command.append(str(script))
     if case is not None:
         command.append(case)
     started = time.monotonic()

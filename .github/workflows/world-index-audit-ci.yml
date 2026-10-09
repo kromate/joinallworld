@@ -59,11 +59,11 @@ jobs:
           PYTHONPATH: world/tooling
           PYTHONDONTWRITEBYTECODE: '1'
         run: /usr/bin/time -v python -B -m unittest test_index_capture_session > diagnostic-evidence/python-session.stdout 2> diagnostic-evidence/python-session.stderr
-      - name: Actual Node to Python retained-capture audit
+      - name: Actual Node to Python retained-capture audit and portable campaign fencing
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_OPTIONS: --max-old-space-size=128
-        run: node --experimental-strip-types --test --test-concurrency=1 --test-name-pattern='actual Node to Python final audit' world/campaign-feature-index.test.ts > diagnostic-evidence/sdk-audit.tap 2>&1
+        run: node --experimental-strip-types --test --test-concurrency=1 --test-name-pattern='actual Node to Python final audit|zero-row source capture indexes|stale campaign audit completion|a stale index completion|legacy source captures|subdivision excludes|changed capture bytes|status reports pending' world/campaign-feature-index.test.ts > diagnostic-evidence/sdk-audit.tap 2>&1
       - name: Affected registry, capture and ingestion regression checks
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
@@ -81,6 +81,11 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=128
         run: node --experimental-strip-types --test --test-concurrency=1 world/capture-binding.test.ts world/feature-identity.test.ts world/feature-index.test.ts world/campaign-index-audit-state.test.ts > diagnostic-evidence/node-contracts.tap 2>&1
+      - name: Affected campaign and Ledger regression checks
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
+        env:
+          NODE_OPTIONS: --max-old-space-size=128
+        run: node --experimental-strip-types --test --test-concurrency=1 world/campaign.test.ts world/grid-query-campaign.test.ts world/ledger.test.ts world/ledger-subdivision.test.ts world/ledger-permanent.test.ts world/ledger-quota.test.ts > diagnostic-evidence/campaign-regression.tap 2>&1
       - name: Exact checked-out release workflow policy
         if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:

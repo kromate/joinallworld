@@ -2,15 +2,17 @@
 
 ## Verified scope
 
-Latest [run37888128933](https://github.com/kromate/joinallworld/actions/runs/37888128933)
-at `579ba2693e1641627045c867c6c9c1f3e127538d` passes334 tests, three protected
-workflow-policy checks and World TypeScript. Python258 includes all audit/session
-and fixed-worker boundary modules; Node76 includes the actual retained-Dakar SDK
-audit and two disposable-Ledger token, membership-conflict, retry-exhaustion and
-read-only inspection cases. It supersedes the127-check subset below. These
-Ledger contexts/results are synthetic and explicitly audit-incomplete, not a
-completed real campaign or connected runner. Remote artifacts and exact source,
-runtime, raw pins and storage preflight are retained in PROGRESS.md.
+Latest [run37890936198](https://github.com/kromate/joinallworld/actions/runs/37890936198)
+at `4c0b96cb186e42215a7bda6b58736f70be3ce6c8` passes384 tests, three release-policy
+checks and World TypeScript. Python258 covers audit/session and fixed-worker
+boundaries; Node126 covers protocol/kernel, contracts, actual retained-Dakar SDK,
+portable actual campaign fencing and legacy campaign/Ledger regressions. Complete
+frozen capture/context evidence, qualified same-Ledger completion and read-only
+status are connected; see [CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md).
+Campaign contexts are synthetic and the protected original Senegal fixture is
+excluded, not passed. Exact-source artifact hashes/runtime/preflight are recorded
+in [acceptance.json](campaign-fixtures/index-audit/acceptance.json). Broader specified
+physical-interruption/corruption acceptance remains open.
 
 [Run37887462988](https://github.com/kromate/joinallworld/actions/runs/37887462988)
 at exact source `115593ad97d4bc9dd9971204c21e83f466db1278` passes127 distinct
@@ -74,15 +76,11 @@ fallback. Only a missing original selects its verified copy. Nothing creates or
 repairs actual cache state. This portability does not supply the separate
 protected legacy campaign ledger fixture.
 
-## Next required milestone
+## Next required milestones
 
-Connect a distinct immutable `campaign-index-audit` claim to the same Ledger,
-derive complete leaf capture/observation membership from frozen validated query
-and fenced completed indexing rows, and supervise heartbeat/current-token result
-commit. Status must inspect private read-only state without enqueueing work.
-The draft pure job helper fixes one campaign/index ID and finite retries; its
-current completion parser remains incomplete because the raw report alone has
-no full campaign/read-only qualification projection. That draft is not connected
-execution or global acceptance. Complete the remaining corruption and actual
-audit interruption fixtures, bounded global shard admission, country compilation,
-streaming, Nigeria renderer integration and physical-phone proof separately.
+The tested same-Ledger campaign gate is implemented. Complete remaining corruption
+and actual audit interruption fixtures, then globally admitted bounded shards and
+operator materials, cross-shard ownership, country compilation, streaming, Nigeria
+renderer integration and physical-phone proof. Individual successful audit shards
+are not a whole-country or whole-world qualification. Do not reset an existing
+namespace or create unlimited replacements to bypass its durable ceilings.

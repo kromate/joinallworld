@@ -6,9 +6,24 @@ import type { FeatureIndexCaptureInput, FeatureIndexSessionAuditInput } from './
 import { parseFeatureIndexSessionLine, validateFeatureIndexSessionDone, validateFeatureIndexSessionReady,
   validateFeatureIndexSessionResult, prepareFeatureIndexSessionConfiguration, prepareFeatureIndexSessionAudit,
   validateFeatureIndexSessionAuditResult } from './feature-index-session.ts';
+import { assertValidatedFeatureIndexAuditProof, featureIndexAuditWorkerDigest } from './feature-index-session.ts';
 
 const hash = 'a'.repeat(64);
 const indexHash = 'b'.repeat(64);
+
+test('pure report parsing and matching hash-shaped JSON cannot create an actual audit proof', () => {
+  assert.throws(() => assertValidatedFeatureIndexAuditProof({ format: 'feature-index-session-audit-proof-v1' }), /not been validated/i);
+  let read = false;
+  const accessor = Object.defineProperty({}, 'format', { get() { read = true; throw new Error('must not read'); } });
+  assert.throws(() => assertValidatedFeatureIndexAuditProof(accessor), /not been validated/i);
+  assert.equal(read, false);
+});
+
+test('worker report digest uses bounded canonical Python ASCII JSON without a newline', () => {
+  const report = { z: 'Lagos 🏠', a: 'é' };
+  assert.equal(featureIndexAuditWorkerDigest(report), sha256('{"a":"\\u00e9","z":"Lagos \\ud83c\\udfe0"}'));
+  assert.throws(() => featureIndexAuditWorkerDigest({ text: 'x'.repeat(64_001) }), /bounded cloning byte limit/i);
+});
 
 function auditInput(requestHash: string, jobId: string, padding = ''): FeatureIndexSessionAuditInput {
   const request = { schemaVersion: 1, id: `fixture-${jobId}`, inventoryUnitId: `country:${jobId}`,

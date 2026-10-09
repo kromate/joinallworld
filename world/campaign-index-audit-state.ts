@@ -1,5 +1,7 @@
 import type { EnqueueInput } from './ledger.ts';
 import { canonicalJson, sha256 } from './pack.ts';
+import { assertValidatedFeatureIndexAuditProof, featureIndexAuditWorkerDigest,
+  type FeatureIndexSessionAuditProof } from './feature-index-session.ts';
 
 export const CAMPAIGN_INDEX_AUDIT_KIND = 'campaign-index-audit';
 export const CAMPAIGN_INDEX_AUDIT_JOB_FORMAT = 'campaign-index-audit-job-v1';
@@ -177,6 +179,18 @@ export interface CampaignIndexAuditCompletion {
   qualifications: QualificationSet; reasons: string[];
 }
 
+export interface QualifiedCampaignIndexAuditCompletion extends CampaignIndexAuditCompletion {
+  status: 'audit-complete';
+  proof: FeatureIndexSessionAuditProof;
+  workerReportSha256: string;
+  qualifications: {
+    rawIndexConservation: 'complete';
+    readOnlyStatePreserved: 'complete';
+    campaignObservationCompleteness: 'complete';
+  };
+  reasons: [];
+}
+
 function qualification(value: unknown): AuditQualification {
   return value === 'complete' || value === 'failed' || value === 'incomplete' ? value : 'incomplete';
 }
@@ -187,10 +201,10 @@ function reportEvidence(value: unknown, input: CampaignIndexAuditFrozenInput, at
   const full = report as Record<string, unknown>;
   const worker = exact(full.audit, ['format', 'indexHash', 'inputSha256', 'captureRecordSha256', 'nodeVersion', 'sqliteVersion',
     'result', 'databaseBytes', 'maximumRssKiB'], 'Raw audit worker report');
-  if (worker.indexHash !== input.indexHash || worker.captureRecordSha256 !== input.captureControllerRecord.sha256
-      || worker.inputSha256 !== input.auditInputSha256) {
-    throw new Error('Audit worker index, logical input, or durable capture record differs from the frozen input.');
+  if (worker.indexHash !== input.indexHash || worker.captureRecordSha256 !== input.captureControllerRecord.sha256) {
+    throw new Error('Audit worker index or durable capture record differs from the frozen input.');
   }
+  hash(worker.inputSha256, 'Audit physical worker input');
   const result = exact(worker.result, ['format', 'scope', 'qualifications', 'counts', 'dispositionsSha256'], 'Raw audit result');
   if (worker.format !== 'feature-index-audit-worker-v1' || result.format !== input.auditFormat
       || result.scope !== 'raw-feature-conservation-and-required-observations') throw new Error('Audit report format or scope differs.');
@@ -271,5 +285,97 @@ export function validateCampaignIndexAuditCompletion(value: unknown, input: Camp
     'controllerInputSha256', 'controllerRecordSha256', 'reportSha256', 'attempts', 'qualifications', 'reasons'];
   exact(actual, fields, 'Campaign audit completion');
   if (canonicalJson(actual) !== canonicalJson(expected)) throw new Error('Campaign audit completion differs from its frozen input and bounded report.');
+  return expected;
+}
+
+function qualifiedCompletion(inputValue: CampaignIndexAuditFrozenInput, proofValue: unknown, workerReportValue: unknown,
+    attemptsValue: number, attemptLimitValue: number): QualifiedCampaignIndexAuditCompletion {
+  // The SDK's private WeakSet brand proves this object came from its actual held-control verifier.
+  assertValidatedFeatureIndexAuditProof(proofValue);
+  const input = freezeInput(inputValue);
+  const attempts = integer(attemptsValue, 1, integer(attemptLimitValue, 1, 8, 'Audit attempt limit'), 'Audit attempts');
+  const proof = cloneJson(proofValue, 'Validated audit proof', { nodes: 1000, bytes: MAX_RECORD_BYTES }) as Record<string, unknown>;
+  exact(proof, ['format', 'indexHash', 'captureControllerRecord', 'captureSetSha256', 'requiredObservationsSha256',
+    'auditInputSha256', 'knownCanonicalObservationSetSha256', 'originalStateSha256', 'workerReportSha256',
+    'controllerRecordSha256', 'qualifications'], 'Validated audit proof');
+  const pin = exact(proof.captureControllerRecord, ['sha256', 'bytes'], 'Proof capture controller record pin');
+  const proofQualifications = exact(proof.qualifications,
+    ['rawIndexConservation', 'readOnlyStatePreserved', 'campaignObservationCompleteness'], 'Proof qualifications');
+  if (proof.format !== 'feature-index-session-audit-proof-v1' || proof.indexHash !== input.indexHash
+      || pin.sha256 !== input.captureControllerRecord.sha256 || pin.bytes !== input.captureControllerRecord.bytes
+      || proof.captureSetSha256 !== input.completeCaptureSetSha256
+      || proof.requiredObservationsSha256 !== input.requiredObservationSetSha256
+      || proof.knownCanonicalObservationSetSha256 !== input.requiredObservationSetSha256
+      || proof.auditInputSha256 !== input.auditInputSha256) {
+    throw new Error('Validated audit proof differs from the frozen campaign/index membership.');
+  }
+  hash(proof.originalStateSha256, 'Proof original-state hash');
+  const proofReportHash = hash(proof.workerReportSha256, 'Proof worker report hash');
+  const controllerRecordHash = hash(proof.controllerRecordSha256, 'Proof audit controller record hash');
+  for (const key of ['rawIndexConservation', 'readOnlyStatePreserved', 'campaignObservationCompleteness']) {
+    if (proofQualifications[key] !== 'complete') throw new Error('Validated audit proof lacks all three qualified states.');
+  }
+  const worker = cloneJson(workerReportValue, 'Qualified raw audit worker report', { nodes: 20_000, bytes: 64_000 });
+  const workerRecord = exact(worker, ['format', 'indexHash', 'inputSha256', 'captureRecordSha256', 'nodeVersion',
+    'sqliteVersion', 'result', 'databaseBytes', 'maximumRssKiB'], 'Qualified raw audit worker report');
+  if (featureIndexAuditWorkerDigest(worker) !== proofReportHash || workerRecord.format !== 'feature-index-audit-worker-v1'
+      || workerRecord.indexHash !== input.indexHash
+      || workerRecord.captureRecordSha256 !== input.captureControllerRecord.sha256) {
+    throw new Error('Qualified worker report digest or frozen identity differs from its proof.');
+  }
+  hash(workerRecord.inputSha256, 'Qualified physical worker input hash');
+  const result = exact(workerRecord.result, ['format', 'scope', 'qualifications', 'counts', 'dispositionsSha256'], 'Qualified raw audit result');
+  if (result.format !== input.auditFormat || result.scope !== 'raw-feature-conservation-and-required-observations') {
+    throw new Error('Qualified worker report scope differs from the fixed audit contract.');
+  }
+  const rawQualifications = exact(result.qualifications, ['rawIndexConservation', 'requiredObservations'], 'Qualified worker qualifications');
+  if (rawQualifications.rawIndexConservation !== 'complete' || rawQualifications.requiredObservations !== 'complete') {
+    throw new Error('Qualified worker report does not establish raw conservation and required contexts.');
+  }
+  boundedText(workerRecord.nodeVersion, 'Qualified worker Node version');
+  boundedText(workerRecord.sqliteVersion, 'Qualified worker SQLite version');
+  integer(workerRecord.databaseBytes, 1, Number.MAX_SAFE_INTEGER, 'Qualified worker database bytes');
+  integer(workerRecord.maximumRssKiB, 0, Number.MAX_SAFE_INTEGER, 'Qualified worker maximum RSS');
+  hash(result.dispositionsSha256, 'Qualified disposition digest');
+  const counts = exact(result.counts, ['captures', 'rawFeatures', 'admitted', 'exceptions', 'occurrences', 'versions',
+    'keys', 'conflicts', 'crossOwnerConflictKeys', 'observations', 'requiredObservations'], 'Qualified worker counts');
+  const countValues = Object.fromEntries(Object.entries(counts).map(([key, value]) =>
+    [key, integer(value, 0, Number.MAX_SAFE_INTEGER, `Qualified worker ${key}`)]));
+  if (countValues.captures! > 256 || countValues.admitted! + countValues.exceptions! > Number.MAX_SAFE_INTEGER
+      || countValues.admitted! + countValues.exceptions! !== countValues.rawFeatures
+      || countValues.requiredObservations! > countValues.observations!) {
+    throw new Error('Qualified worker counts exceed fixed bounds or fail conservation.');
+  }
+  const completion: QualifiedCampaignIndexAuditCompletion = {
+    format: CAMPAIGN_INDEX_AUDIT_COMPLETION_FORMAT, status: 'audit-complete',
+    campaignId: input.campaignId, campaignHash: input.campaignHash, inventoryHash: input.inventoryHash,
+    planHash: input.planHash, indexHash: input.indexHash, configurationHash: input.configurationHash,
+    captureControllerRecord: input.captureControllerRecord, completeCaptureSetSha256: input.completeCaptureSetSha256,
+    requiredObservationSetSha256: input.requiredObservationSetSha256, auditInputSha256: input.auditInputSha256,
+    auditFormat: input.auditFormat, controllerInputSha256: input.auditInputSha256,
+    controllerRecordSha256: controllerRecordHash, reportSha256: proofReportHash, attempts,
+    qualifications: { rawIndexConservation: 'complete', readOnlyStatePreserved: 'complete',
+      campaignObservationCompleteness: 'complete' }, reasons: [], proof: proofValue as FeatureIndexSessionAuditProof,
+    workerReportSha256: proofReportHash,
+  };
+  return deepFreeze(completion);
+}
+
+/** Creates a globally qualified receipt only from an SDK-branded audit proof and its exact worker report. */
+export function buildQualifiedCampaignIndexAuditCompletion(input: CampaignIndexAuditFrozenInput, proof: FeatureIndexSessionAuditProof,
+    workerReport: unknown, attempts: number, attemptLimit: number): QualifiedCampaignIndexAuditCompletion {
+  return qualifiedCompletion(input, proof, workerReport, attempts, attemptLimit);
+}
+
+/** Rejects any receipt that differs from the actual SDK-branded proof, worker report, or frozen tuple. */
+export function validateQualifiedCampaignIndexAuditCompletion(value: unknown, input: CampaignIndexAuditFrozenInput,
+    proof: FeatureIndexSessionAuditProof, workerReport: unknown, attempts: number, attemptLimit: number): QualifiedCampaignIndexAuditCompletion {
+  const expected = qualifiedCompletion(input, proof, workerReport, attempts, attemptLimit);
+  const actual = cloneJson(value, 'Qualified campaign audit completion', { nodes: 2000, bytes: MAX_RECORD_BYTES });
+  exact(actual, ['format', 'status', 'campaignId', 'campaignHash', 'inventoryHash', 'planHash', 'indexHash',
+    'configurationHash', 'captureControllerRecord', 'completeCaptureSetSha256', 'requiredObservationSetSha256',
+    'auditInputSha256', 'auditFormat', 'controllerInputSha256', 'controllerRecordSha256', 'reportSha256', 'attempts',
+    'qualifications', 'reasons', 'proof', 'workerReportSha256'], 'Qualified campaign audit completion');
+  if (canonicalJson(actual) !== canonicalJson(expected)) throw new Error('Qualified campaign audit completion differs from its validated proof and report.');
   return expected;
 }

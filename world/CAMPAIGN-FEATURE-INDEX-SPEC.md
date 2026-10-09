@@ -4,7 +4,9 @@ This contract is implemented by the campaign phase and persistent JSONL session.
 It uses the existing campaign Ledger and fixed supervised ingestion controller.
 Implementationa75c59af passes228 Python +43 Node +five exact source-policy checks
 and full World TypeScript. Read CAMPAIGN-FEATURE-INDEX-OPERATIONS.md and PROGRESS.md.
-Independent raw/index audit, global shard admission and country geometry remain open.
+The tested independent same-Ledger raw/index audit is connected; see
+[CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md). The full
+interruption/corruption list, global shard admission and country geometry remain open.
 
 ## Scheduler and identities
 

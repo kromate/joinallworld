@@ -1,15 +1,16 @@
 # Decisions and repeatable rollout after the first compiler
 
-Latest audit-path diagnostic —9 October2026: exact579ba269/run37888128933
-is terminal SUCCESS:334 tests+3 workflow-policy checks, full World TypeScript,
-verified raw pins and unchanged storage preflight. Actual controller/session/SDK
-and full fixed-worker boundary regressions pass; two disposable same-Ledger
-token/exhaustion/readonly checks validate the draft job contract. Full campaign
-membership projection and connected audit execution remain unimplemented, as do
-the broader corruption/interruption list, global country geometry and phone proof.
-This source milestone has no production runtime upload or new map detail.
-Read latest PROGRESS.md and FEATURE-INDEX-AUDIT-OPERATIONS.md; older paragraphs
-below remain historical where superseded.
+Latest campaign-audit checkpoint —9 October2026: exact4c0b96cb/run37890936198
+is terminal SUCCESS:384 tests+3 workflow-policy checks and World TypeScript,
+with unchanged raw/storage preflight. Actual held-session frozen evidence,
+same-Ledger job admission/heartbeat/current-token completion, bounded replay and
+read-only status are connected and tested in portable campaign fixtures. Protected
+original Senegal campaign materials are not supplied by CI and are not accepted.
+Next globally admit bounded shards/operator materials, preserve cross-shard
+ownership, and compile/stream actual country geometry. Full audit interruption/
+corruption acceptance and physical-phone proof remain open. This builder milestone
+has no production runtime upload or new map detail. Read latest PROGRESS.md and
+CAMPAIGN-INDEX-AUDIT-OPERATIONS.md; older paragraphs below remain historical.
 
 Audit diagnostic update — 9 October2026: isolated drafta63871d1 is published
 on `codex/world-index-audit-diagnostic`; actual serial GitHub run37886772443

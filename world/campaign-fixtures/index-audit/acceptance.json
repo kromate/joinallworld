@@ -1,0 +1,205 @@
+{
+  "format": "campaign-index-audit-acceptance-v1",
+  "verifiedAt": "2026-10-09",
+  "testedSourceSha": "4c0b96cb186e42215a7bda6b58736f70be3ce6c8",
+  "runId": 37890936198,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37890936198",
+  "conclusion": "success",
+  "scope": "portable actual campaign and retained raw-index audit integration",
+  "pythonTests": {
+    "python-audit.stderr": 19,
+    "python-session.stderr": 11,
+    "python-regression.stderr": 77,
+    "python-boundary.stderr": 151
+  },
+  "nodeTests": {
+    "node-audit.tap": 21,
+    "node-contracts.tap": 58,
+    "sdk-audit.tap": 8,
+    "campaign-regression.tap": 39
+  },
+  "distinctTests": 384,
+  "releasePolicyChecks": 3,
+  "worldTypeScript": "pass",
+  "storagePreflight": {
+    "files": 6,
+    "bytes": 797134,
+    "sourceAllowance": 892928,
+    "registryControlWithOperation": 1048576
+  },
+  "nodeRuntime": {
+    "node": "22.19.0",
+    "acorn": "8.15.0",
+    "ada": "2.9.2",
+    "amaro": "1.1.0",
+    "ares": "1.34.5",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.1.0",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.3.0",
+    "modules": "127",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.64.0",
+    "openssl": "3.0.17",
+    "simdjson": "3.13.0",
+    "simdutf": "6.4.2",
+    "sqlite": "3.50.4",
+    "tz": "2025b",
+    "undici": "6.21.2",
+    "unicode": "16.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.21",
+    "v8": "12.4.254.21-node.29",
+    "zlib": "1.3.1-470d3a2",
+    "zstd": "1.5.7"
+  },
+  "pythonRuntime": {
+    "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+    "sqlite": "3.45.1"
+  },
+  "sourceFiles": {
+    ".github/workflows/world-index-audit-ci.yml": {
+      "sha256": "4042457d23e7185a9daad86cd52cb6f5af77ba90ff8cb924572f4a40cb988cab",
+      "bytes": 7445
+    },
+    "world/campaign-cli.ts": {
+      "sha256": "85b8f243930c3ee37ca5ca9f94e8cf7bc880a49f99021fe01660201d80a89901",
+      "bytes": 4440
+    },
+    "world/campaign-feature-index.test.ts": {
+      "sha256": "20f0507cee1f4e17cf41a851eaeaf01a322c3543fdb7d14086f037364c8a6b01",
+      "bytes": 51947
+    },
+    "world/campaign-index-audit-state.test.ts": {
+      "sha256": "94a22dbc863b431b9c2fa7279c1da1753a57ae0185dcc41ec24417cde5cf1fd1",
+      "bytes": 14727
+    },
+    "world/campaign-index-audit-state.ts": {
+      "sha256": "a198e49d79a834addb512961ce0d4afa309889088204784403177006e01a51d5",
+      "bytes": 25629
+    },
+    "world/campaign.ts": {
+      "sha256": "f953ce70147190b08cf9e33ddf400d76301450bb2cc8f5fea994151238c2a5aa",
+      "bytes": 85032
+    },
+    "world/feature-index-session.test.ts": {
+      "sha256": "faf4e5b663335a46af709c4b3588c9cc25a00474376ca8b7c1efe1ade8b5c4f0",
+      "bytes": 19956
+    },
+    "world/feature-index-session.ts": {
+      "sha256": "7d1bed9513b3e3d27e3a04c649bd3923f78b341d641e765a7f1657afa7be2693",
+      "bytes": 100433
+    },
+    "world/tooling/index_resource_limits.py": {
+      "sha256": "581a1ac2042c3457c6f498cbc0251e3bbb4c4d8849a88ca6c25b8ebb3995a800",
+      "bytes": 27059
+    },
+    "world/tooling/test_index_resource_limits.py": {
+      "sha256": "dc59377efdbcf73ec76e1c73132b4cfdb569641624877bdd4869e76fca22cc81",
+      "bytes": 7504
+    },
+    "world/campaign-index-audit.ts": {
+      "sha256": "95109afdbcb9e443cfa3db191d4469e42e9ef79ec18e31aac83b63c908bcbccd",
+      "bytes": 13097
+    },
+    "world/tooling/index_resource_witness.mjs": {
+      "sha256": "0ef5fd414a07519ac528fe1a8ed6815525f830337e4448b5db90ccb3486a4290",
+      "bytes": 5489
+    }
+  },
+  "deletedSourceFiles": [
+    "world/tooling/index_resource_witness.ts"
+  ],
+  "artifacts": {
+    "campaign-regression.tap": {
+      "sha256": "3f85457d5110ce9a0cf76aaeea333b973fd569ec6b4e047b1df3c83231d4a6ee",
+      "bytes": 10428
+    },
+    "node-audit.tap": {
+      "sha256": "5b4c5c17d5a922a2d6b9452c6cfbeeac61f4d63ae1e10be98bba572671fddd3c",
+      "bytes": 5575
+    },
+    "node-contracts.tap": {
+      "sha256": "0028961aa9365b24d0e84b3692934adf7b3c8fa40668ac65ced586c6d7398ca4",
+      "bytes": 14349
+    },
+    "node-runtime.json": {
+      "sha256": "2931df3302362ff6c1d8c300d931582f65b90f6ec7771441bef9658ec5162810",
+      "bytes": 472
+    },
+    "preflight.json": {
+      "sha256": "2e7f0b7bdbde4b30bc6ac11e91db2c1a00c0fa95979f7ad2c2bc2d882ee30cc4",
+      "bytes": 98
+    },
+    "python-audit.stderr": {
+      "sha256": "f120aaa1010efe77a7b81f92e74c6e7d5374b571a6bf5878aa2c219be6201d2b",
+      "bytes": 901
+    },
+    "python-audit.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-boundary.stderr": {
+      "sha256": "9e760fc607cf6a5b592a5c226a56dfa273d6434522e8bbdf15474a05d9f66977",
+      "bytes": 1411
+    },
+    "python-boundary.stdout": {
+      "sha256": "cd369274c049fae48fc897e405f71357e1eb422d02b227cf0d8e55b7291ccc16",
+      "bytes": 6828
+    },
+    "python-regression.stderr": {
+      "sha256": "cdb1ae55e6aca0dd1eabdb22ebc52ba5f71ccf7f321deac845792a7e1b88b077",
+      "bytes": 1133
+    },
+    "python-regression.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-runtime.json": {
+      "sha256": "c7add24d36b0d589f034f53ad2e3c7f71ab102dc1fd944cb43114fdba8da0529",
+      "bytes": 85
+    },
+    "python-session.stderr": {
+      "sha256": "d837f5adbd8fe2a2ccef90853a866b3dc8bbfecfa10f3f2fe700deb62566df78",
+      "bytes": 888
+    },
+    "python-session.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stdout": {
+      "sha256": "bc911f618d86653ec56effa5788909148e4ae588ee42e31d1ec0a25c1fd1ed9f",
+      "bytes": 157
+    },
+    "sdk-audit.tap": {
+      "sha256": "78f98914721b0dbca786ca417b585cb70a01a384697ce58946b1f05cc784b719",
+      "bytes": 2499
+    },
+    "source-sha.txt": {
+      "sha256": "2b856017ddcbfb7f0dae65b62bfc53662ac1ffffea99f2665db606425d15ba2e",
+      "bytes": 41
+    },
+    "world-typecheck.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "world-typecheck.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "limitations": [
+    "Portable campaign observations are synthetic; retained Dakar extracts are real.",
+    "Protected original Senegal ledger/inventory/cache fixture is excluded, not passed.",
+    "Full specified corruption/physical-interruption acceptance remains incomplete.",
+    "Global shard admission, country geometry compilation/streaming and physical-device proof remain incomplete.",
+    "Builder-only changes; no production runtime deployment or new playable destination."
+  ]
+}

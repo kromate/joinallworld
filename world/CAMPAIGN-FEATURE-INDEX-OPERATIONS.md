@@ -2,13 +2,14 @@
 
 This phase connects captured schema2 grid queries to the existing feature index.
 It does not compile country geometry, publish map packs, change Nigeria or make
-new destinations playable. Independent raw/index reconstruction and deterministic
-bounded multi-shard ownership remain the next scaling gates.
+new destinations playable. A separate final independent raw/index audit now
+runs on the same Ledger; see [CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md).
+Deterministic bounded multi-shard ownership remains the next scaling gate.
 
 ## Inputs and resume
 
 `runCampaign` accepts `featureIndex: FeatureIndexSessionConfiguration`,
-`maxJobs` (source-query claims) and `maxIndexJobs` (index claims,0..256).
+`maxJobs` (source-query claims) and `maxIndexJobs` (index claims,0..256), plus `maxAuditJobs` (final audit,0 or1).
 Setting `maxJobs:0` indexes retained captures without acquisition. Setting
 `maxIndexJobs:0` records the eligible indexing backlog without opening admission.
 Schema1 behavior remains unchanged; indexing requires schema2 and its complete
@@ -89,7 +90,7 @@ private stable copy of the database and WAL,each capped at64MiB. Source inode/
 size/timestamp changes refuse the snapshot; the original is never declared
 immutable and its WAL is not ignored. Owned scratch is removed after closing.
 Missing/corrupt retained source,bindings or index files refuse. Recorded receipts
-and file checks do not replace the upcoming independent raw/SQL audit.
+and file checks alone do not replace the separate qualified independent raw/SQL audit.
 
 ## Limits and interruption
 

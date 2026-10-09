@@ -1,30 +1,48 @@
 # Implementation checkpoint — 9 October 2026
 
-Latest exact-source diagnostic **37888128933** at
-**579ba2693e1641627045c867c6c9c1f3e127538d** is terminal **SUCCESS**:
-**334 tests +3 workflow-policy checks =337 distinct checks, plus World TypeScript**.
+Latest exact-source diagnostic **37890936198** at
+**4c0b96cb186e42215a7bda6b58736f70be3ce6c8** is terminal **SUCCESS**:
+**384 tests +3 workflow-policy checks =387 distinct checks, plus World TypeScript**.
 Python258 =19 audit/11 held sessions/77 affected/151 remaining boundaries;
-Node76 =19 protocol/kernel/one actual SDK/56 identity/index/job-contract checks.
-The two actual disposable-Ledger fencing/readonly cases pass. Full downloaded
-artifacts, exact sourceSHA, runtime pins and raw/storage preflight were inspected
-at `.cache/world-build/evidence/remote-audit-37888128933`. No earlier passing
-subset is added to this count. Current raw fixtures797,134B and fixed source
-allowance892,928B preserve the1,048,576B registry/control ceiling.
-All WORLD agents and local command handles are terminal, no local full worker,
-server/browser/build/upload, and memory remains WARNING2. Main0b7da1be is reviewed
-and synchronized; primary Nigeria/game/peer work remains untouched.
+Node126 =21 protocol/kernel/58 contracts/8 actual SDK and portable campaign/
+39 campaign and Ledger regressions. All Node suites report zero skips/failures.
+Downloaded artifacts, runtime pins, raw/storage preflight and every accepted
+source blob match this exact candidate. The machine-readable receipt is
+[campaign-fixtures/index-audit/acceptance.json](campaign-fixtures/index-audit/acceptance.json).
+Raw fixtures797,134B, source allowance892,928B and registry/control1,048,576B
+remain unchanged; no production limit was enlarged.
 
-This is the tested raw-index audit/session path and draft immutable job contract,
-not complete same-Ledger campaign audit execution, all specified interruption/
-corruption acceptance, new country geometry, gameplay or a production release.
-Next implement a held-session frozen evidence projection for complete leaf raw
-membership and known canonical historical contexts; bind the distinct audit job
-before running it; claim/heartbeat/current-token complete on the same Ledger;
-derive additive read-only status with partial/incompatible/exhausted coverage.
-Do not promote the draft incomplete receipt or silently replace an old namespace.
-Then complete bounded global shard admission, country compilation/streaming,
-Nigeria renderer integration and phone proof. Whole-world goal remains active.
-Earlier chronological diagnostic paragraphs below are retained historical evidence.
+The same-Ledger campaign audit is now connected: actual held-session complete
+capture/context evidence binds one immutable exact-kind job before worker launch;
+heartbeat and current-token completion fence the qualified receipt. Read-only
+status revalidates saved original-state bytes, identities, controls and campaign
+membership without opening original SQLite, launching workers or repairing state.
+Actual portable fixtures cover qualified zero-row completion, subdivision leaf
+membership, stale completion/replay, changed bytes/configuration, incomplete
+coverage, callback refusal, unbranded proof rejection and read-only corruption
+refusal. Retained Dakar raw ordinals are real; campaign observation contexts are
+synthetic. The protected original Senegal ledger/inventory/cache fixture is
+excluded from portable CI and remains unverified by this run.
+
+Diagnostic failures are preserved:37889434110 exposed TypeScript narrowing;
+37890030222 exposed a test filter accidentally selecting the missing protected
+Senegal fixture;37890327299 and37890563557 exposed a64MiB resource-witness startup
+race. The witness now uses plain MJS, requires an actual native-allocation marker,
+and still proves SIGKILL/RSS/recovered SQL under the original limit. Production
+TypeScript workers keep their original loader and caps. Earlier negative receipts
+and checkpoint paragraphs below remain historical evidence, not extra checks.
+
+Accepted scope is this tested campaign/session integration. Full specified audit
+corruption and physical-interruption acceptance remains open, as do globally
+admitted bounded shards/operator materials, cross-shard ownership, compiled
+country geometry/streaming, Nigeria renderer integration and physical-phone proof.
+This builder milestone adds no new map detail, gameplay or production runtime.
+Main0a052837 was reviewed and synchronized; Nigeria/game/peer work remains untouched.
+Local heavy workers, builds, browsers, servers and uploads remain deferred on
+WARNING2 memory pressure. Whole-world goal remains active. Next implement bounded
+global shard admission with explicit ownership and preserved lifetime accounting,
+then compile and publish actual country geometry under the existing reader budgets.
+See [CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md).
 
 Run37887812856 at6576a9a5 is terminal failure solely at World TypeScript:
 the new frozen-input helper validated auditFormat but returned a property still

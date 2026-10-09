@@ -1,5 +1,82 @@
 # Implementation checkpoint — 9 October 2026
 
+## Persistent fixed-registry recovery — focused acceptance
+
+Previous goal turn was **progress**: implementationd1a3ab12,174 focused checks and
+authorized main publication21a4e381. This continuation adds persistent ownership
+to the actual fixed registry startup path, with a narrow Luna record-codec task
+and root integration/review. The complete world objective remains active.
+
+`restartable_registry_startup` stores canonical source/runtime/namespace/lock and
+immutable limit bindings before launch. Its single fixed execution slot and two
+record-write slots share the existing17MiB registry allowance; no cap increased.
+At most16 lifetime attempts retain their full wall reservation. A prepared record
+with snapshot identity may already have launched: controller loss never refunds
+that attempt. The fixed worker inherits the permanent namespace flock. A fresh
+controller must reacquire that actual lock before reconciliation/allocation; it
+never signals a remembered PID or scavenges arbitrary temporary paths.
+
+Deterministic pending JSON prefixes and source-file prefixes resume under the
+lease. Complete snapshots are source-hash verified. Terminal cleanup atomically
+renames the owned snapshot into a fixed reclaim slot; an interruption resumes by
+verifying every surviving pinned byte, without requiring deleted files to reappear.
+Unknown, changed or unsafe entries remain preserved. Successful and unconfirmed
+settlement use distinct deterministic tags; their digests bind attempt settlement,
+not country coverage or complete captured-source conservation.
+
+A permanent initialized-registry witness anchors the original database device/
+inode and namespace metadata hash. Prior real reservations survive normal restart;
+missing/replaced database or metadata, a lost attempt record and a lost successful
+witness refuse initialization/reallocation. Short pending witness prefixes which
+do not establish the original inode are deliberately ambiguous and preserved. An
+anchor without an attempt record likewise requires explicit reconciliation, not
+a fresh quota. Initial adoption interrupted between those publications is such
+a fail-closed case. This is not power-loss, malicious same-user rollback or every
+filesystem-corruption recovery acceptance.
+
+**167 Python checks pass**, terminal61752 exit0:22.612s unittest/22.79s process,
+186,499,072B maxRSS. The final suite includes actual controller SIGKILL, a surviving
+native Python worker and a fresh API invocation using only the durable record and
+lease. The live worker prevents replacement before snapshot allocation. After it
+exits, restart retains the same lock/database inodes, replays the registry and
+holds both attempt charges. No old Popen/PID is supplied to recovery. The separate
+corrected restart fixture passes1/1 in2.393s/50,577,408B RSS. Its first failure came
+from the test wrapper retaining an extra argv; production argument checks stayed
+strict. Earlier small-suite failure exposed a missing controller inventory in the
+post-yield namespace check and was repaired. Initial164-case run found a test's
+device bound confused with a byte budget; the original specified63-bit device
+bound remains. All earlier failed receipts are preserved.
+
+Luna review found real missing-ledger/attempt-reset and short-witness gaps; root
+fixed them and added regression coverage. Final cases include an actual64KiB
+reservation with no child directory yet, initialize/reopen with parent SQL blocked,
+all three controller publication prefixes, partial source copying/reclaim,
+immutable-limit changes, exhaustion and corrupted retained source preservation.
+
+Current33-input manifest:335,030source bytes/4,171manifest bytes,
+SHA1b11972082e2cb5f7f18da3d82fc035ae9a98bb5fa6532b2e2153b0e5b24d651;
+actual frozen slot401,408charged bytes. The actual disposable first/reopen receipts
+have1/2 lifetime attempts and15/30 reserved wall seconds. Guarded23 engine checks
+and cached Dakar replay pass with unchanged2captures/2,283ordinals/1,810versions/
+473duplicates/0conflicts/0network. Exact measurements and source/test/evidence pins
+are in `.cache/world-build/evidence/feature-index-persistent-{tooling-manifest,
+startup-actual,engine,capacity,source-acceptance}-v1.json`; final Python receipt is
+`feature-index-persistent-all-v3.{stdout,stderr}`. No TypeScript source changed;
+the previous compiler receipt remains previous evidence.
+
+All work uses disposable namespaces and retained cached inputs; actual acquisition,
+campaign/output/Nigeria/game data and runtime production are untouched. Heavy1 and
+128MiB wrappers/Node workers remain; pressure briefly returned NORMAL then WARNING,
+without broader compiler/build/browser/server or heavy concurrency expansion.
+
+**Next:** implement the fixed verified-capture ingestion worker using these durable
+ownership rules and both namespace/index leases, then fence existing campaign
+completion, independently conserve raw/index ordinals and measure full-country
+geometry/sharding/streaming. This API initializes/reopens the registry only; it is
+not an unattended acquisition/campaign scheduler. Global playable detail, conditions/
+terrain upgrades, Nigeria rendering integration and phone-visible production detail
+remain incomplete. Exact committed-source policy/main sync follows this checkpoint.
+
 ## Supervised registry startup and controller-death witness — focused acceptance
 
 The preceding status-only turn was **no progress**. This continuation inspected

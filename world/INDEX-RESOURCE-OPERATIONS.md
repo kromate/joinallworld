@@ -1,5 +1,34 @@
 # Isolated index resource and recovery witnesses — 8 October 2026
 
+## Persistent fixed-registry controller — 9 October 2026
+
+Use `tooling/index_registry_controller.py:restartable_registry_startup` with the
+same explicit pins and runtime as `startup_index_namespace`. The additional
+`attempt_limit` defaults16; CPU10s/wall15s/RSS96MiB limits and source/budget/runtime
+bindings are immutable for this namespace. Each admitted attempt retains its full
+wall reservation, even after controller death. No actual source capture or campaign
+job is dispatched by this API. Source/version changes need explicit migration,
+not quota reset or overwriting the existing record with new pins.
+
+Records, execution and reclaim have fixed namespace-relative names. The parent
+holds the permanent namespace flock before copying and the fixed native worker
+inherits it. Busy means preserve and wait; no remembered-PID signalling. After
+reacquiring the lease, incomplete record/source prefixes resume only against the
+same pinned bytes. A complete owned execution slot is verified before reclamation;
+partial deletion verifies its surviving subset. The initialized-registry witness
+prevents missing/replaced ledger files from becoming an empty successful registry.
+Lost attempt/witness files and identity-free witness prefixes fail closed; never
+delete them to regain an attempt budget. Initial legacy adoption interrupted after
+the ledger witness but before its attempt record is deliberately preserved for
+explicit reconciliation. No arbitrary snapshot directory is removed.
+
+Current acceptance is167 Python/23 engine checks and the actual controller-loss/
+fresh-controller fixture; exact source pins, measurements and failed historical
+receipts are in PROGRESS.md. This is cooperative local POSIX ownership, not an OS
+sandbox or proof against manual valid-record rollback. It does not establish
+power-loss durability, native capture transaction/campaign recovery, global
+throughput, physical-phone performance or a background service while the app sleeps.
+
 ## Fixed registry startup — 9 October 2026
 
 The latest phase passes146 Python and23 engine checks. See PROGRESS.md for exact

@@ -96,9 +96,15 @@ def _registry_sizes(root):
     from index_namespace import FIXED_FILES, META_BYTES
     from index_reservations import DATABASE_BYTES, MAX_RESERVATIONS, REGISTRY_ALLOWANCE
     from index_root import _names
+    from index_controller_state import CONTROLS, EXECUTION, RECLAIM, footprint, verify_registry_anchor
     sizes = {}; overhead = root.lstat().st_blocks * 512
+    overhead += footprint(root)
+    verify_registry_anchor(root)
     for name in _names(root, MAX_RESERVATIONS + len(FIXED_FILES)):
         info = (root/name).lstat()
+        if name in CONTROLS:
+            if name not in {EXECUTION, RECLAIM}: sizes[name] = info.st_size
+            continue
         if name not in FIXED_FILES:
             if (not re.fullmatch(r"[a-f0-9]{64}", name) or not stat.S_ISDIR(info.st_mode)
                     or info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) != 0o700):

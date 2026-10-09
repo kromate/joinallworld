@@ -8,10 +8,11 @@ import hashlib
 import json
 from pathlib import Path
 import re
+from contextlib import nullcontext
 
 from index_binding import _pairs, _nonfinite
 from index_bootstrap import _node_pin
-from index_execution_snapshot import (CONFIGURATION, _capture, _pin,
+from index_execution_snapshot import (CONFIGURATION, _capture, _pin, _inventory, VerifiedIndexExecution,
                                       verified_execution_snapshot)
 from index_namespace import namespace_binding, _aggregate, _root, _preflight, _read_owned
 from index_reservations import DATABASE_BYTES, REGISTRY_ALLOWANCE, MAX_RESERVATIONS
@@ -19,6 +20,7 @@ from index_resource_limits import _run_fixed_process, _registry_sizes, bounded_i
 from index_root import _lease
 from index_tooling import verify_index_tooling
 from index_writer_lock import index_writer_lease
+from index_controller_state import CONTROLS, EXECUTION
 
 MIB = 1024 * 1024
 RUNTIME_FIELDS = {"pythonVersion", "sqliteVersion", "pythonBytes", "pythonSha256"}
@@ -40,7 +42,8 @@ def _runtime(value):
 
 def startup_index_namespace(namespace_root, aggregate_bytes, repository_root, manifest_bytes,
                             manifest_pin, source_configuration, source_pin, python, python_runtime,
-                            *, cpu_seconds=10, wall_seconds=15, rss_limit_bytes=96*MIB):
+                            *, cpu_seconds=10, wall_seconds=15, rss_limit_bytes=96*MIB,
+                            _inherited_lease=None, _execution=None):
     """Initialize/reopen only a pinned registry in a private, caller-owned namespace.
 
     The namespace flock is held before snapshot creation and inherited by the fixed
@@ -67,12 +70,25 @@ def startup_index_namespace(namespace_root, aggregate_bytes, repository_root, ma
     executable_pin = {"nodeBytes": runtime["pythonBytes"], "nodeSha256": runtime["pythonSha256"]}
     executable, before_runtime = _node_pin(python, executable_pin, label="Python")
     root, _ = _root(namespace_root)
+    managed = _inherited_lease is not None or _execution is not None
+    if managed:
+        _lease(_inherited_lease)
+        if (type(_execution) is not VerifiedIndexExecution or _inherited_lease.root != root
+                or _execution.root != root/EXECUTION or _execution.manifest_bytes != manifest_bytes
+                or _execution.manifest_pin != manifest_pin or _execution.source_configuration != source_configuration
+                or _execution.source_pin != source_pin or _inventory(_execution.root) != _execution.charged_bytes):
+            raise ValueError("managed registry startup requires its actual bound snapshot and namespace lease")
+        verify_index_tooling(_execution.root, manifest_bytes, manifest_pin)
+        if _capture(_execution.root, CONFIGURATION, source_pin) != source_configuration:
+            raise ValueError("managed source configuration differs")
+    elif any((root/name).exists() or (root/name).is_symlink() for name in CONTROLS):
+        raise ValueError("managed namespace requires persistent controller startup; preserve state")
     _preflight(root, expected, aggregate)  # Files/header only; no parent SQLite.
-    with index_writer_lease(root) as lease:
+    with (nullcontext(_inherited_lease) if managed else index_writer_lease(root)) as lease:
         _lease(lease); _preflight(root, expected, aggregate)
-        with verified_execution_snapshot(repository, manifest_bytes, manifest_pin,
-                                         source_configuration, source_pin) as execution:
-            margin = 65536 + root.lstat().st_blocks*512
+        with (nullcontext(_execution) if managed else verified_execution_snapshot(
+                repository, manifest_bytes, manifest_pin, source_configuration, source_pin)) as execution:
+            margin = (2*64000 if managed else 0) + 65536 + root.lstat().st_blocks*512
             if 4*DATABASE_BYTES + execution.charged_bytes + margin > REGISTRY_ALLOWANCE:
                 raise ValueError("actual registry snapshot cannot fit the immutable allowance")
             result = _run_fixed_process(executable, "index-registry-startup", root,

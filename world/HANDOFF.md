@@ -1,5 +1,14 @@
 # Copy-and-paste continuation prompt
 
+Latest recovery checkpoint: persistent fixed-registry startup passes167 Python and
+23 engine checks, including actual controller loss and a fresh recovery API using
+the inherited namespace lock. Read the first PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md
+sections. Next implement supervised verified-capture ingestion and fenced campaign
+completion using these durable records, not another registry initializer. Preserve
+all attempts, initialized-ledger witnesses and frozen source/runtime pins; ambiguous
+record loss remains fail-closed. Country geometry, streaming and actual production
+map-detail improvements remain the full next programme, not completed by this phase.
+
 Latest builder checkpoint,9 October: fixed Python registry startup is implemented
 and passes146 Python/23 engine checks, including actual controller SIGKILL lease
 survival and bounded live-descendant pipe retention. Read the first section of

@@ -77,6 +77,39 @@ class OpenIndexNamespace:
     replayed: bool
 
 
+@contextmanager
+def open_admitted_shard(handoff, namespace_lease, authority, index_hash):
+    """Lease one exact admitted child without opening registry SQL or creating roots."""
+    from index_writer_lock import _verify_shard_handoff
+    root = _verify_shard_handoff(handoff, namespace_lease, authority)
+    rows = index_root.planned_index_reservations(authority)
+    entry = next((row for row in rows if row[0] == index_hash), None)
+    if entry is None: raise ValueError("requested child is not in the settled immutable plan")
+    _, binding, amount = entry
+    config = index_root.decode_planned_index_binding(binding, authority)
+    child = root/index_hash
+    before = child.lstat(); lock_path = child/"writer.lock"
+    lock_before = lock_path.lstat()
+    if (not stat.S_ISDIR(before.st_mode) or before.st_uid != os.getuid()
+            or stat.S_IMODE(before.st_mode) != 0o700 or not stat.S_ISREG(lock_before.st_mode)
+            or lock_before.st_uid != os.getuid() or lock_before.st_nlink != 1
+            or stat.S_IMODE(lock_before.st_mode) != 0o600 or lock_before.st_size != 0):
+        raise ValueError("settled child root or lock is unsafe")
+    with index_writer_lease(child) as child_lease:
+        index_root._binding(child, binding, authority)
+        index_storage_footprint(child_lease, file_bytes=config["processLimits"]["fileBytes"],
+                                aggregate_bytes=amount)
+        actual = index_root.ChargedIndexRoot(child_lease, index_hash, binding, amount, True, namespace_lease)
+        yield actual
+        _verify_shard_handoff(handoff, namespace_lease, authority)
+        index_storage_footprint(child_lease, file_bytes=config["processLimits"]["fileBytes"],
+                                aggregate_bytes=amount)
+        after = child.lstat(); lock_after = lock_path.lstat()
+        if ((after.st_dev, after.st_ino) != (before.st_dev, before.st_ino)
+                or (lock_after.st_dev, lock_after.st_ino) != (lock_before.st_dev, lock_before.st_ino)):
+            raise ValueError("settled child root/lock changed during handoff")
+
+
 def _identity(info):
     return (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
 

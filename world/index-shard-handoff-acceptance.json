@@ -1,0 +1,178 @@
+{
+  "format": "index-shard-handoff-acceptance-v1",
+  "verifiedAt": "2026-10-09",
+  "testedSourceSha": "cfb5c3b1a12d80d1bb94aa7b3bf3e0c75c63d323",
+  "runId": 37908535625,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/37908535625",
+  "conclusion": "success",
+  "pythonTests": {
+    "python-audit.stderr": 19,
+    "python-boundary.stderr": 193,
+    "python-regression.stderr": 94,
+    "python-session.stderr": 11
+  },
+  "nodeTests": {
+    "campaign-regression.tap": 39,
+    "node-audit.tap": 27,
+    "node-contracts.tap": 58,
+    "release-source.tap": 5,
+    "sdk-audit.tap": 12,
+    "shard-plan.tap": 20
+  },
+  "distinctTests": 478,
+  "releasePolicyChecks": 3,
+  "worldTypeScript": "pass",
+  "storagePreflight": {
+    "files": 6,
+    "bytes": 797134,
+    "sourceAllowance": 892928,
+    "registryControlWithOperation": 1048576
+  },
+  "fixedSourceInputs": 45,
+  "sourceFiles": {
+    ".github/workflows/world-index-audit-ci.yml": {
+      "sha256": "6473c935947fb74031f2a88178e272e4fb0ee7af7504d329f37449a608b2a860",
+      "bytes": 8357
+    },
+    "world/campaign-feature-index.test.ts": {
+      "sha256": "27b8de3b3dc763e3c570f6abf039489fe6a30bfc0dc79473b2be54ca225987b7",
+      "bytes": 60317
+    },
+    "world/campaign.ts": {
+      "sha256": "00328c7e0055f3912d23df14bf5c59122741282e8e0f3958fb47ebae5b6285c9",
+      "bytes": 102265
+    },
+    "world/index-shard-evidence.test.ts": {
+      "sha256": "47c46b77dc63d8fa579fadf19614b5dd65ec0ab27b8f738eb3d79d521d0f0b6a",
+      "bytes": 13047
+    },
+    "world/index-shard-evidence.ts": {
+      "sha256": "2942310933794a24577d2f09670e70940828c761828dc424b2cfa02a7d6bd587",
+      "bytes": 9466
+    },
+    "world/tooling/index_controller_state.py": {
+      "sha256": "9add655fa9e6d64c015377fd1abe443ae177a9b46121d08cbb528e60fb1b6e83",
+      "bytes": 13394
+    },
+    "world/tooling/index_namespace.py": {
+      "sha256": "13789c3fdd9a7fbe86e34f5c7d3cf794865d3f30fb8b6e7ceff796fef570f670",
+      "bytes": 31749
+    },
+    "world/tooling/index_registry_controller.py": {
+      "sha256": "0776084a577c4516917b9f509b59b0911cd598ccbdafc15e96fc3c086a1715fe",
+      "bytes": 16126
+    },
+    "world/tooling/index_writer_lock.py": {
+      "sha256": "bf4461a6ac4373179f5ac6117a9dc5fa0c5acb393a18069e2ffefa67810642a1",
+      "bytes": 6664
+    },
+    "world/tooling/test_index_shard_handoff.py": {
+      "sha256": "7e4dbb4891c8d1b5367828cede2c365b93896b1a3408820d8e96f7480ad9fc97",
+      "bytes": 9972
+    }
+  },
+  "artifacts": {
+    "campaign-regression.tap": {
+      "sha256": "40bfd9c026fbcf48e74dc173195a007e0aa7609eb916893a3109632ec77ac1b5",
+      "bytes": 10426
+    },
+    "node-audit.tap": {
+      "sha256": "7f5f19f2f450b16fc4d9193ff269e335f9e330ff130d5c369e7de110fdb3b469",
+      "bytes": 7193
+    },
+    "node-contracts.tap": {
+      "sha256": "d52bbe20f573266e8506797505f9b48ff602bce91f5a4f44cc982c92392cafe9",
+      "bytes": 14350
+    },
+    "node-runtime.json": {
+      "sha256": "2931df3302362ff6c1d8c300d931582f65b90f6ec7771441bef9658ec5162810",
+      "bytes": 472
+    },
+    "preflight.json": {
+      "sha256": "2e7f0b7bdbde4b30bc6ac11e91db2c1a00c0fa95979f7ad2c2bc2d882ee30cc4",
+      "bytes": 98
+    },
+    "python-audit.stderr": {
+      "sha256": "9506848a5ea908038048e1f32416053f85511f38d275c6c009c33b4d81efc505",
+      "bytes": 902
+    },
+    "python-audit.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-boundary.stderr": {
+      "sha256": "cfc1b4666d63c868c2ceb2bf97cc39aad7d2ea053a5d071eb224e3200832c4fb",
+      "bytes": 1453
+    },
+    "python-boundary.stdout": {
+      "sha256": "e63d6760e1931c7b0c83b9559a6078b03b5b406c4873f23b1e2f9c59a115b7ac",
+      "bytes": 6831
+    },
+    "python-regression.stderr": {
+      "sha256": "815e90c2b9417a459b6b805a9b245822d0e977c0bf89725b81c078cf2ed88eae",
+      "bytes": 1262
+    },
+    "python-regression.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "python-runtime.json": {
+      "sha256": "c7add24d36b0d589f034f53ad2e3c7f71ab102dc1fd944cb43114fdba8da0529",
+      "bytes": 85
+    },
+    "python-session.stderr": {
+      "sha256": "24a5ac7657fa6c442cbea9a3f5264ba7c17880b4bebb981029dc5d713db676f3",
+      "bytes": 890
+    },
+    "python-session.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "release-policy.stdout": {
+      "sha256": "bc911f618d86653ec56effa5788909148e4ae588ee42e31d1ec0a25c1fd1ed9f",
+      "bytes": 157
+    },
+    "release-source.tap": {
+      "sha256": "f698255e44315682b314f61460cdea3d2c6fb5129db1bad95eb006722ba0b906",
+      "bytes": 1362
+    },
+    "sdk-audit.tap": {
+      "sha256": "91187cb21e990c967390e9f50adedbb4b960aceab269aea7a38497e3ec804069",
+      "bytes": 3566
+    },
+    "shard-plan.tap": {
+      "sha256": "b6fcf9f0fce47d9495ee47e75a610524719407ada70e78c2a868603ed6d03e68",
+      "bytes": 5557
+    },
+    "source-sha.txt": {
+      "sha256": "11357361e0925068b46aaeb8b38f4e97cd9356799a8123b7ef7fb145fba218f1",
+      "bytes": 41
+    },
+    "world-typecheck.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "world-typecheck.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "acceptedScope": [
+    "Identity-branded in-process batch handoff only after actual reaped worker success and durable controller settlement, with exact inherited namespace lease.",
+    "Sequential actual V2 child leases without parent registry SQL or extra namespace attempts/charges.",
+    "Actual changed controller/metadata/database/binding/root/lock refusal, default-closed and fabricated handoff refusal, and busy child refusal.",
+    "Exception-handle propagation is tested with an explicit sentinel; it is not an actual unreaped-worker acceptance.",
+    "Actual campaign four synthetic captured leaves refuse oversized capture/observation shard row limits and accept a fitting deterministic split without source/namespace writes."
+  ],
+  "limitations": [
+    "Ephemeral structural handoff is not campaign provenance, actual V2 capture/bootstrap/ingest/audit, geometry or completion.",
+    "Restartable bounded multi-session windows and guarded read-only original-charge verification are still required for4096 requests.",
+    "Global namespace budgeting and actual campaign/acquisition kernel lease integration are not implemented.",
+    "Occurrence/version/history/physical capacity require actual runtime audits, not metadata inference.",
+    "No production runtime/map upload, Nigeria data change or phone acceptance."
+  ]
+}

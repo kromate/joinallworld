@@ -67,6 +67,22 @@ def binding_descriptor(raw):
 
 
 def read_admission_input(root, namespace_descriptor):
+    raw = _read_binding_descriptor(namespace_descriptor); pin = binding_pin(raw)
+    record = decode_controller_record(read_private(root/RECORD))
+    operation = {"kind": "admit", "binding": pin}
+    attempt = record["attempts"][-1] if record["attempts"] else {}
+    if (record["format"] != FORMAT_V2 or not record["attempts"]
+            or attempt.get("phase") != "prepared" or attempt.get("snapshotDevice") is None
+            or attempt.get("operation") != operation):
+        raise ValueError("admission input lacks its exact prepared durable operation")
+    configuration = read_private(Path(__file__).resolve().parent.parent/"acquisition-sources.json", 64000, (0o400,))
+    source_pin = {"sha256": hashlib.sha256(configuration).hexdigest(), "bytes": len(configuration)}
+    if source_pin != record["sourceConfiguration"]: raise ValueError("admission execution source differs from its durable record")
+    validate_admission_binding(raw, record["toolingManifest"], source_pin, configuration)
+    return raw
+
+
+def _read_binding_descriptor(namespace_descriptor):
     raw_fd = os.environ.get("WORLD_INDEX_BINDING_DESCRIPTOR")
     raw_sha = os.environ.get("WORLD_INDEX_BINDING_SHA256")
     if (type(raw_fd) is not str or not re.fullmatch(r"[0-9]{1,10}", raw_fd)
@@ -90,19 +106,7 @@ def read_admission_input(root, namespace_descriptor):
     if (len(raw) != before.st_size or hashlib.sha256(raw).hexdigest() != raw_sha
             or identity(os.fstat(descriptor)) != identity(before)):
         raise ValueError("admission binding changed or differs from its retained pin")
-    raw = bytes(raw); expected = binding_pin(raw)
-    record = decode_controller_record(read_private(root/RECORD))
-    if (record["format"] != FORMAT_V2 or not record["attempts"]
-            or record["attempts"][-1]["phase"] != "prepared"
-            or record["attempts"][-1]["snapshotDevice"] is None
-            or record["attempts"][-1]["operation"] != {"kind": "admit", "binding": expected}):
-        raise ValueError("admission input lacks its exact prepared durable operation")
-    configuration = read_private(Path(__file__).resolve().parent.parent/"acquisition-sources.json", 64000, (0o400,))
-    source_pin = {"sha256": hashlib.sha256(configuration).hexdigest(), "bytes": len(configuration)}
-    if source_pin != record["sourceConfiguration"]:
-        raise ValueError("admission execution source differs from its durable record")
-    validate_admission_binding(raw, record["toolingManifest"], source_pin, configuration)
-    return raw
+    return bytes(raw)
 
 
 def create_plan_pipe(namespace_descriptor):

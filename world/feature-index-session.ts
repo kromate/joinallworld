@@ -250,7 +250,7 @@ function cloneJson(value: unknown, label: string, seen = new Set<object>(), budg
   } finally { seen.delete(value); }
 }
 
-function asciiJsonLine(value: unknown, maximum: number, label: string): Buffer {
+export function asciiJsonLine(value: unknown, maximum: number, label: string): Buffer {
   const text = canonicalJson(value);
   let ascii = '';
   for (let index = 0; index < text.length; index++) {

@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { Ledger } from './ledger.ts';
 import { ALLOWED_ROOT, compileCampaignPlan, jobIdentity, OUTPUT_ROOT, REPOSITORY_ROOT, type WorldPlan } from './pipeline.ts';
 import { validateManifest, validateTile } from './validate.ts';
-import { sha256 } from './pack.ts';
+import { canonicalJson, sha256 } from './pack.ts';
 import { validateAcquisitionRequest } from './acquire.ts';
 import { AcquisitionBudgetError } from './acquisition-errors.ts';
 import { readBoundedLocalFile } from './inventory-reader.ts';
@@ -20,10 +20,12 @@ import type { AcquisitionOptions, AcquisitionRequest, AcquisitionResult, Campaig
 import { openFeatureIndexSession, prepareFeatureIndexSessionConfiguration, FeatureIndexSessionUnreaped, FeatureIndexSessionTerminated,
   readFeatureIndexSessionAuditEvidence, type FeatureIndexSessionAuditInput,
   type FeatureIndexSession, type FeatureIndexSessionConfiguration } from './feature-index-session.ts';
-import { bindCampaignIndex, readCampaignIndexBinding, campaignIndexInput, campaignIndexJob, campaignIndexCompletion, verifyCampaignIndexCompletion, verifyCampaignIndexFiles, type CampaignIndexBinding, type CampaignIndexCoverage } from './campaign-index-state.ts';
+import { bindCampaignIndex, readCampaignIndexBinding, campaignIndexInput, campaignIndexJob, campaignIndexCompletion, verifyCampaignIndexCompletion, verifyCampaignIndexFiles, freezeCampaignIndexConfiguration, type CampaignIndexBinding, type CampaignIndexCoverage } from './campaign-index-state.ts';
 import { runCampaignIndexAuditPhase } from './campaign-index-audit.ts';
 import { CAMPAIGN_INDEX_AUDIT_KIND, CAMPAIGN_INDEX_AUDIT_JOB_FORMAT, FEATURE_INDEX_AUDIT_FORMAT,
   campaignIndexAuditJob, validateQualifiedCampaignIndexAuditCompletion, type CampaignIndexAuditFrozenInput } from './campaign-index-audit-state.ts';
+import { FEATURE_INDEX_SHARD_PLAN_INPUT_FORMAT, FEATURE_INDEX_SHARD_PLAN_MAX_REQUESTS, encodeFeatureIndexShardPlan, type FeatureIndexShardPlanInput } from './index-shard-plan.ts';
+import { assertFeatureIndexShardEngineCapacity, calculateFeatureIndexShardEnvelopeOverhead, prepareFeatureIndexShardPlanRequest } from './index-shard-evidence.ts';
 
 const MAX_CAMPAIGN_MS = 48 * 60 * 60 * 1000;
 // Source input is a campaign-wide unique-pin budget, hard capped at 64 GB.
@@ -688,4 +690,200 @@ export async function campaignStatus(id:string,options:Pick<CampaignOptions,'all
     const indexingPending=indexCoverage?.enabled&&indexCoverage.pending+indexCoverage.leased+indexCoverage.untracked>0;
     const auditPending=auditCoverage?.enabled&&auditCoverage.status!=='complete';
     return{id,status:jobs.some(j=>j.status==='queued'||j.status==='leased')||queryCoverage&&queryCoverage.roots.pending>0||indexingPending?'running':counts.exception||indexCoverage?.failed||queryCoverage&&queryCoverage.roots.exception>0?'exception':auditPending?'stopped':queryCoverage?queryCoverage.roots.captured===queryCoverage.roots.requested?'complete':'stopped':done>0?'complete':'stopped',counts,stages:await stageCounts(p.dir,campaign.schemaVersion!==2),jobs,failures:jobs.filter(j=>j.status==='failed').map(j=>`${j.id}: ${String(j.error)}`),stopped:auditPending?auditCoverage!.reasons[0]??'campaign index audit is incomplete':null,...(queryCoverage?{queryCoverage}:{}),...(indexCoverage?{indexCoverage}:{}),...(auditCoverage?{auditCoverage}:{})};
+}
+
+/**
+ * Reconstruct a bounded shard plan from the exact currently retained source
+ * leaves. This is a point-in-time, read-only receipt: it does not bind the
+ * configuration, enqueue jobs, admit a namespace, or establish country-wide
+ * index/geometry coverage. A later dispatcher must repeat this verification
+ * while holding its campaign and namespace leases.
+ */
+export async function prepareCampaignIndexShardPlan(
+  id: string,
+  configuration: FeatureIndexSessionConfiguration,
+  policyValue: FeatureIndexShardPlanInput['policy'],
+  options: { allowedRoot?: string; expectedHash?: string } = {},
+): Promise<{ plan: ReturnType<typeof encodeFeatureIndexShardPlan>['plan']; hash: string; bytes: Uint8Array;
+  sourceEvidence: { format: 'campaign-feature-index-source-evidence-v1'; scope: 'source-plan-snapshot';
+    status: 'not-admitted'; geometryCoverage: 'not-compiled'; campaignHash: string; inventoryHash: string;
+    countryGridPlanHash: string; verifiedLeafCount: number; requestCount: number; requiredObservationCount: number;
+    sourceMembershipSha256: string } }> {
+  if (!ID_RE.test(id)) throw new TypeError('campaign id is invalid');
+  const rawOptions = object(options, 'source-plan options');
+  if (Reflect.ownKeys(rawOptions).some(key => typeof key !== 'string')) throw new TypeError('source-plan options reject symbol fields');
+  keys(rawOptions, ['allowedRoot','expectedHash'], 'source-plan options');
+  const optionValue = (key: 'allowedRoot' | 'expectedHash'): unknown => {
+    const descriptor = Object.getOwnPropertyDescriptor(rawOptions, key);
+    if (!descriptor) return undefined;
+    if (!descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) throw new TypeError('source-plan options require data properties');
+    return descriptor.value;
+  };
+  const allowedRootValue = optionValue('allowedRoot'), expectedHash = optionValue('expectedHash');
+  if (allowedRootValue !== undefined && typeof allowedRootValue !== 'string') throw new TypeError('allowedRoot must be a string');
+  if (expectedHash !== undefined && (typeof expectedHash !== 'string' || !/^[a-f0-9]{64}$/.test(expectedHash))) throw new TypeError('expectedHash must be a lowercase SHA-256');
+  // Snapshot flat policy primitives and the session buffers before the first
+  // await, so caller mutation cannot change the plan midway through source IO.
+  const policyKeys = ['aggregateBytes','registryControlBytes','shardReservedBytes','maxCaptures','descriptorBytes',
+    'envelopeOverheadBytes','maxShards','maxAttempts'] as const;
+  const rawPolicy = object(policyValue, 'shard policy');
+  if (Reflect.ownKeys(rawPolicy).length !== policyKeys.length) throw new TypeError('shard policy has missing or unknown fields');
+  const policy = {} as FeatureIndexShardPlanInput['policy'];
+  for (const key of policyKeys) {
+    const descriptor = Object.getOwnPropertyDescriptor(rawPolicy, key);
+    if (!descriptor || !descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) throw new TypeError('shard policy requires exact data properties');
+    Object.defineProperty(policy, key, { value: descriptor.value, enumerable: true, writable: false });
+  }
+  const preparedConfig = prepareFeatureIndexSessionConfiguration(configuration);
+  const config = freezeCampaignIndexConfiguration({
+    pythonExecutable: preparedConfig.pythonExecutable, pythonRuntime: preparedConfig.pythonRuntime,
+    nodeExecutable: preparedConfig.nodeExecutable, namespaceRoot: preparedConfig.namespaceRoot,
+    aggregateBytes: preparedConfig.aggregateBytes, repositoryRoot: preparedConfig.repositoryRoot,
+    manifestBytes: preparedConfig.manifestBytes, sourceConfiguration: preparedConfig.sourceConfiguration,
+    bindingBytes: preparedConfig.bindingBytes,
+  });
+  const manifestBytes = Buffer.from(config.manifestBytes), sourceConfigBytes = Buffer.from(config.sourceConfiguration),
+    baseBytes = Buffer.from(config.bindingBytes);
+  const deadline = Date.now() + 60_000;
+  const checkTime = () => { if (Date.now() >= deadline) throw new Error('source-derived shard planning exceeded its 60-second bound'); };
+  const root = await validateCampaignRoot(path.resolve((allowedRootValue as string | undefined) ?? DEFAULT_ROOT), true);
+  const paths = campaignPaths(id, root), dirInfo = await lstat(paths.dir);
+  if (!dirInfo.isDirectory() || dirInfo.isSymbolicLink() || await realpath(paths.dir) !== paths.dir) throw new Error('campaign plan requires existing canonical state');
+  await verifyRegularStateFile(paths.config); await verifyRegularStateFile(paths.ledger);
+  const campaignConfigBytes = await readBoundedLocalFile(paths.config, 64_000_000);
+  const campaign = validateCampaign(JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(campaignConfigBytes)) as unknown);
+  if (campaign.schemaVersion !== 2 || campaign.id !== id) throw new Error('source-derived sharding requires the exact schema2 grid-query campaign');
+  const campaignHashValue = campaignHash(campaign);
+  if (campaign.limits.maxAttempts > 8 || policy.maxAttempts !== campaign.limits.maxAttempts) throw new Error('shard policy must preserve the original campaign retry limit of at most eight');
+  if (policy.aggregateBytes !== config.aggregateBytes) throw new Error('shard aggregate policy differs from the actual immutable namespace configuration');
+
+  const bindingPath = path.join(paths.dir, 'inventory-binding.json'); await verifyRegularStateFile(bindingPath);
+  let inventoryBinding: { path: string; hash: string } | null = null;
+  let inventoryBindingBytes: Buffer | undefined;
+  try {
+    const bytes = await readBoundedLocalFile(bindingPath, 16_000), text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    inventoryBindingBytes = Buffer.from(bytes);
+    const value = JSON.parse(text) as unknown, raw = object(value, 'inventory binding');
+    keys(raw, ['path','hash'], 'inventory binding');
+    if (canonical(raw) !== text || typeof raw.path !== 'string' || typeof raw.hash !== 'string') throw new Error('inventory binding is not canonical');
+    inventoryBinding = raw as { path: string; hash: string };
+  }
+  catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
+  if (!inventoryBinding || inventoryBinding.hash !== campaign.inventoryHash) throw new Error('campaign lacks its exact pinned inventory binding');
+  const inventoryUnits = campaignInventoryUnits(campaign);
+  await verifyInventorySnapshot(inventoryBinding.path, campaign.inventoryHash, inventoryUnits.source, inventoryUnits.protected, 'country-directory');
+  const gridPlan = await bindGridQueryPlan(campaign, paths.dir, inventoryBinding, undefined, undefined, true);
+  await usageEntries(paths.dir, false);
+  const gridBindingBytes = await readBoundedLocalFile(path.join(paths.dir, 'grid-query-binding.json'), 16_000);
+  const gridBindingText = new TextDecoder('utf-8', { fatal: true }).decode(gridBindingBytes), gridBindingRaw = object(JSON.parse(gridBindingText), 'grid-query binding');
+  keys(gridBindingRaw, ['path','hash','cacheRoot'], 'grid-query binding');
+  if (canonical(gridBindingRaw) !== gridBindingText || gridBindingRaw.hash !== campaign.gridQuery.planHash
+      || typeof gridBindingRaw.path !== 'string' || typeof gridBindingRaw.cacheRoot !== 'string') throw new Error('stored grid-query binding is invalid');
+  const gridBinding = gridBindingRaw as { path: string; hash: string; cacheRoot: string };
+  const jobs = Ledger.readOnlyList(paths.ledger) as Array<Record<string, unknown>>;
+  const sourceJobs = jobs.filter(job => job.kind === 'campaign-grid-query');
+  const initialSourceProjection = canonical(sourceJobs);
+  const queryCoverage = queryCoverageForJobs(campaign, gridPlan, jobs, campaignHashValue);
+  checkTime();
+  if (queryCoverage.roots.requested !== campaign.units.length
+      || queryCoverage.roots.captured !== queryCoverage.roots.requested || queryCoverage.roots.exception !== 0 || queryCoverage.roots.pending !== 0
+      || queryCoverage.jobs.failed !== 0 || queryCoverage.jobs.queued !== 0 || queryCoverage.jobs.leased !== 0) {
+    throw new Error('source-derived shard plan requires the exact complete captured grid-root denominator');
+  }
+  const currentSource = await readFile(path.join(MODULE_DIR, 'acquisition-sources.json'));
+  if (sha256(sourceConfigBytes) !== sha256(currentSource)) throw new Error('feature index source configuration differs from the current source verifier configuration');
+  const resolver = createGridQueryResolver(gridPlan, campaign.gridQuery), templates = new Map(campaign.units.map(unit => [unit.query.rootCellId, unit]));
+  const prepared = new Map<string, ReturnType<typeof prepareFeatureIndexShardPlanRequest>>();
+  const members: Array<{ jobId: string; requestHash: string; observation: NonNullable<ReturnType<typeof campaignIndexInput>['observation']> }> = [];
+  let totalContexts = 0;
+  for (const source of sourceJobs) {
+    checkTime();
+    if (source.status === 'completed' && (source.result as { status?: string } | null)?.status === 'query-subdivided') continue;
+    if (source.status !== 'completed' || (source.result as { status?: string } | null)?.status !== 'query-captured') {
+      throw new Error('source-derived shard plan found a nonterminal or noncapture source row');
+    }
+    const unit = validateClaimedQueryUnit(campaign, gridPlan, source, campaignHashValue, resolver, templates);
+    const capture = object(source.result, 'captured source result');
+    await verifyQueryCapture(capture, unit, gridBinding.cacheRoot);
+    const input = campaignIndexInput(campaign, campaignHashValue, unit, source);
+    const next = prepareFeatureIndexShardPlanRequest({ extractPath: input.extractPath, receiptPath: input.receiptPath,
+      expected: input.expected, requiredObservations: [input.observation!] }, campaign.limits.maxAttempts);
+    const prior = prepared.get(input.expected.requestHash);
+    if (prior) {
+      if (prior.input.extractPath !== next.input.extractPath || prior.input.receiptPath !== next.input.receiptPath
+          || canonical(prior.input.expected) !== canonical(next.input.expected)) throw new Error('identical request hashes name conflicting retained raw inputs');
+      const contexts = new Map(prior.input.requiredObservations.map(context => [canonical(context), context]));
+      contexts.set(canonical(input.observation), input.observation!);
+      if (contexts.size > 8 || contexts.size > campaign.limits.maxAttempts) throw new Error('one request exceeds the fixed unique observation-attempt bound');
+      if (contexts.size !== prior.input.requiredObservations.length) {
+        const grouped = prepareFeatureIndexShardPlanRequest({ ...prior.input, requiredObservations: [...contexts.values()] }, campaign.limits.maxAttempts);
+        prepared.set(input.expected.requestHash, grouped);
+      }
+    } else {
+      if (prepared.size >= FEATURE_INDEX_SHARD_PLAN_MAX_REQUESTS) throw new Error('source-derived shard plan exceeds 4096 unique request hashes');
+      prepared.set(input.expected.requestHash, next);
+    }
+    if (++totalContexts > 32_768) throw new Error('source-derived shard plan exceeds the fixed 32768-context bound');
+    members.push({ jobId: String(source.id), requestHash: input.expected.requestHash, observation: input.observation! });
+  }
+  checkTime();
+  if (members.length !== queryCoverage.jobs.captured || !members.length) throw new Error('verified source leaves do not equal the complete captured query denominator');
+
+  const baseText = new TextDecoder('ascii', { fatal: true }).decode(baseBytes);
+  const base = JSON.parse(baseText) as Record<string, unknown>;
+  if (canonicalJson(base) !== baseText || base.format !== 'feature-index-binding-v1' || base.reservedBytes !== policy.shardReservedBytes
+      || canonicalJson(base.toolingManifest) !== canonicalJson({ sha256: sha256(manifestBytes), bytes: manifestBytes.byteLength })
+      || canonicalJson((base.source as Record<string, unknown> | undefined)?.configuration)
+        !== canonicalJson({ sha256: sha256(sourceConfigBytes), bytes: sourceConfigBytes.byteLength })) {
+    throw new Error('feature index base binding does not match the exact pinned manifest/source/reservation');
+  }
+  const baseSource = base.source as { provider?: unknown; release?: unknown; layers?: unknown; configuration?: unknown };
+  if (baseSource.provider !== 'overture' || !Array.isArray(baseSource.layers)
+      || campaign.units.some(unit => unit.request.release !== baseSource.release || canonical(unit.request.layers) !== canonical(baseSource.layers))) {
+    throw new Error('feature index base binding source release/layers differ from the frozen campaign');
+  }
+  const fileBytes = (base.processLimits as { fileBytes?: unknown } | undefined)?.fileBytes;
+  const databaseBytes = (base.engineLimits as { databaseBytes?: unknown } | undefined)?.databaseBytes;
+  if (!Number.isSafeInteger(fileBytes) || !Number.isSafeInteger(databaseBytes)) throw new Error('feature index base binding omits actual process/database limits');
+  const physicalMinimum = 4 * (fileBytes as number) + 2 * 512_000 + 3 * 1024 * 1024 + 65_536;
+  if (!Number.isSafeInteger(physicalMinimum) || physicalMinimum > (base.reservedBytes as number)) throw new Error('base shard reservation does not satisfy the fixed physical preflight minimum');
+  const overhead = calculateFeatureIndexShardEnvelopeOverhead(config.namespaceRoot, fileBytes as number, databaseBytes as number);
+  if (policy.envelopeOverheadBytes < overhead) throw new Error('shard envelope overhead policy is below the conservative actual wrapper bound');
+
+  const requests = [...prepared.values()].sort((a, b) => a.request.requestHash < b.request.requestHash ? -1 : a.request.requestHash > b.request.requestHash ? 1 : 0);
+  const input: FeatureIndexShardPlanInput = {
+    format: FEATURE_INDEX_SHARD_PLAN_INPUT_FORMAT,
+    bindings: { campaignHash: campaignHashValue, countryGridPlanHash: campaign.gridQuery.planHash,
+      sourceConfigurationHash: sha256(sourceConfigBytes), toolingManifestHash: sha256(manifestBytes), baseIndexBindingHash: sha256(baseBytes) },
+    policy, requests: requests.map(entry => entry.request),
+  };
+  const encoded = encodeFeatureIndexShardPlan(input);
+  assertFeatureIndexShardEngineCapacity(encoded.plan, base.engineLimits);
+  checkTime();
+  if (expectedHash !== undefined && expectedHash !== encoded.hash) throw new Error('source-derived shard plan differs from its expected immutable hash');
+  if (encoded.plan.shards.some(shard => shard.descriptorBytes + overhead > 512_000)) throw new Error('a source-derived shard envelope exceeds the fixed 512000-byte limit');
+  const requestsByHash = new Map(requests.map(entry => [entry.request.requestHash, entry.request]));
+  const sourceMembershipSha256 = sha256(canonicalJson(members.map(member => ({ jobId: member.jobId, requestHash: member.requestHash,
+    captureInputHash: requestsByHash.get(member.requestHash)!.captureInputHash, observation: member.observation }))
+    .sort((a, b) => a.jobId < b.jobId ? -1 : a.jobId > b.jobId ? 1 : 0)));
+  checkTime();
+  const campaignBytesAfter = await readBoundedLocalFile(paths.config, 64_000_000);
+  const inventoryBytesAfter = await readBoundedLocalFile(bindingPath, 16_000);
+  const gridBindingBytesAfter = await readBoundedLocalFile(path.join(paths.dir, 'grid-query-binding.json'), 16_000);
+  const sourceJobsAfter = (Ledger.readOnlyList(paths.ledger) as Array<Record<string, unknown>>).filter(job => job.kind === 'campaign-grid-query');
+  if (!campaignBytesAfter.equals(campaignConfigBytes) || canonical(sourceJobsAfter) !== initialSourceProjection
+      || !inventoryBindingBytes?.equals(inventoryBytesAfter) || !gridBindingBytes.equals(gridBindingBytesAfter)) {
+    throw new Error('campaign source bindings or source-job projection changed during plan preparation');
+  }
+  if (sha256(await readFile(path.join(MODULE_DIR, 'acquisition-sources.json'))) !== sha256(currentSource)) {
+    throw new Error('source verification configuration changed during plan preparation');
+  }
+  await verifyInventorySnapshot(inventoryBinding.path, campaign.inventoryHash, inventoryUnits.source, inventoryUnits.protected, 'country-directory');
+  await bindGridQueryPlan(campaign, paths.dir, inventoryBinding, undefined, undefined, true);
+  const sourceEvidence = Object.freeze({ format: 'campaign-feature-index-source-evidence-v1' as const, scope: 'source-plan-snapshot' as const,
+    status: 'not-admitted' as const, geometryCoverage: 'not-compiled' as const, campaignHash: campaignHashValue, inventoryHash: campaign.inventoryHash,
+    countryGridPlanHash: campaign.gridQuery.planHash, verifiedLeafCount: members.length, requestCount: requests.length,
+    requiredObservationCount: requests.reduce((sum, entry) => sum + entry.request.requiredObservationCount, 0), sourceMembershipSha256 });
+  checkTime();
+  return { ...encoded, sourceEvidence };
 }

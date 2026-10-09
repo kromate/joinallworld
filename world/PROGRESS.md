@@ -1,5 +1,151 @@
 # Implementation checkpoint — 9 October 2026
 
+Exact **3880c17f25509ab13175784d5b1a794923bafa78**, run
+[37915503802](https://github.com/kromate/joinallworld/actions/runs/37915503802),
+is terminal **SUCCESS** on Linux and macOS: **495 distinct tests +3 policy**,
+plus World TypeScript. Python322=19audit/11session/99affected/193remaining;
+Node173=27protocol/58contracts/12SDK-source/39campaign-Ledger/20planner/12lease-windows/5release.
+Mac repeats5 Python and6 Node actual lease tests; these11 executions are not
+additional distinct tests. All32 artifacts, eight changed source/workflow pins
+and45 fixed inputs are verified against exact final source. See
+[campaign-lease-window-acceptance.json](campaign-lease-window-acceptance.json)
+and [CAMPAIGN-LEASE-WINDOW-OPERATIONS.md](CAMPAIGN-LEASE-WINDOW-OPERATIONS.md).
+
+Actual helper/OFD inheritance, surviving-worker ownership, coordinator SIGKILL,
+unsafe locks/pins, helper deadlines and complete deterministic capture/audit
+windows pass. Strict checks refused GitHub's root-owned0775 Python; an owned0755
+standard `venv --copies --without-pip` copy has identical executable bytes and
+satisfies the original checks. Node22.19 macOS/libuv clears O_NONBLOCK during
+spawn; the fixed helper restores only that flag after exact private regular
+RDWR inode validation and retains post-flock checks. The added actual regression
+restores the flag without releasing the original lock. Source8064/8192 and
+state14500/16384 fit original buckets; source allowance892928/control1048576
+and all worker/output/wall/attempt limits remain unchanged. Retained v30–v34
+failures/provisional receipts are ignored local diagnostics, not acceptance.
+
+Previous main/world-foundation e294f974 passes mainCI37910151391 fast typecheck,
+build/download/smoke and policy (full skipped). This source milestone adds no
+runtime/map upload. Paired FD6/FD7 transport/lifecycle fixture source remains
+untested and excluded. Next replace actual campaign/acquisition ownership and
+propagate it through all mutating children, then finite same-campaign accounting
+and no-attempt terminal V3 reopen/V2 windows. Snapshot relocation4887B fits5606B
+existing headroom; it is a reviewed implementation seam, not code acceptance.
+A coordinator-PID legacy marker cannot fence old code after coordinator death;
+a proved migration barrier or quiescent check is required before mutation.
+
+Memory monitor10:09 remains WARNING2/10.8GB swap. WORLD starts no local heavy
+tests/compiler/build/server/browser/acquisition/upload. Remote checks run serially;
+only bounded file/Git/hash review occurs locally. Full source union, country
+geometry/streaming, Nigeria adaptation/rendering, rights and physical-phone proof
+remain OPEN. Full goal active. Earlier accepted checkpoints are historical.
+
+Exact **cfb5c3b1a12d80d1bb94aa7b3bf3e0c75c63d323**, run **37908535625**, is
+terminal **SUCCESS**: **478 tests +3 policy =481 distinct checks**, plus World
+TypeScript. Python317=19audit/11session/94affected/193remaining;
+Node161=27protocol/58contracts/12actualSDK-source/39campaign-Ledger/20planner/5release.
+All22 artifacts,10 changed source/workflow blobs and45 fixed inputs match the
+exact final source. See [index-shard-handoff-acceptance.json](index-shard-handoff-acceptance.json)
+and [INDEX-SHARD-HANDOFF-OPERATIONS.md](INDEX-SHARD-HANDOFF-OPERATIONS.md).
+The earlier v28 passed the same478 tests; its retained provisional receipt is
+superseded by the exact final serialized-summary comparison. Caps remain unchanged.
+
+The actual reaped V3 worker/controller now supplies an identity-branded local
+handoff only while the caller's inherited namespace lease remains held. Both
+children open sequentially with parent SQL forbidden and unchanged namespace
+attempt/record bytes. Clones, closed/default leases, busy children, changed durable
+records and metadata/database/binding/root/lock mutations refuse. Handle-preserving
+exception behavior uses a sentinel, not an actual unreaped-worker settlement.
+Source-derived four-leaf synthetic campaigns now refuse oversized child row caps
+and accept an explicit fitting split without source/namespace writes. This is
+structural/source-plan acceptance, not actual V2 ingestion or country coverage.
+
+Batch source **eb879b64** is published on main **1b0617b0**; fresh main
+**6ce21467** differs only in reviewed coordination docs, now synced into this
+worktree. MainCI37906987727 passes fasttypecheck/build/download/smoke/policy;
+fullSKIPPED. Earlier1b run37906941313 auto-cancelled on that successor. No runtime
+or map upload: production remains APPUIa446/version64ed.
+
+Next implement actual inherited campaign/acquisition locks, finite same-campaign
+namespace charges, explicit V2 child workers and durable bounded multi-session
+windows without spending a registry attempt per window. Current PID/path stale
+lock removal has a recovery race; inherited-FD design needs actual Mac/Linux
+process tests. Read the unaccepted [session design](INDEX-SHARD-SESSION-INTEGRATION-DRAFT.md)
+and [lease/global-accounting design](CAMPAIGN-LEASE-GLOBAL-ACCOUNTING-DRAFT.md).
+Complete source union, geometry/streaming, Nigeria adapter/rendering, rights,
+connected journeys and physical-phone acceptance remain OPEN. Latest09:07UTC
+memoryNORMAL1 is transient with worsening474MiBpageouts/164MiBswapouts and~10.48GB
+swap; optional local heavy work remains deferred. WORLD has no local heavy/browser/
+build/test/server/upload. Full goalACTIVE. Earlier checkpoints are historical.
+
+# Implementation checkpoint — 9 October 2026
+
+Exact **ab0589e67db3d8dfc8f79733f180753204b67c5b**, run **37905609552**, is
+terminal **SUCCESS**: **467 tests +3 policy =470 distinct checks**, plus World
+TypeScript. Python311=19audit/11session/88affected/193remaining; Node156 unchanged.
+All22 retained artifacts,12 changed source/workflow blobs and45 fixed runtime
+source inputs were verified against that exact source. See
+[index-shard-batch-admission-acceptance.json](index-shard-batch-admission-acceptance.json)
+and [INDEX-SHARD-BATCH-OPERATIONS.md](INDEX-SHARD-BATCH-OPERATIONS.md).
+
+Accepted scope now includes actual full-plan supervised V3 dispatch, one atomic
+reservation before child allocation, deterministic root-prefix publication,
+reaped-worker receipts, three actual SIGKILL boundaries and same-plan recovery.
+The actual maximum-request test admits4096 structural requests into16 shards
+with parent SQL forbidden and original96MiB worker RSS limit. These are disposable
+structural plans, not4096 real captures or country coverage. Source allowance is
+892928B and registry control1048576B; original caps remain unchanged.
+
+Previous source milestone is on main **8592ddf3**, whose CI37904886890 passed
+fastbuild/smoke/typecheck/policy with fullSKIPPED. Fresh main **0f422973** adds
+only reviewed coordination documentation. This checkpoint accompanies the
+verified batch source integration; no runtime/map upload accompanies it.
+Production remains APPUIa446/version64ed.
+
+Next implement a privately verified no-parent-SQL batch-to-child lease handoff,
+then explicit V2 bootstrap/capture/ingest/audit sessions and full campaign source
+membership. Keep256capture/600s session limits and16batch-controller attempts;
+a4096-request plan requires a separately bounded multi-session lifecycle.
+Finite global charges in the original campaign must precede another namespace.
+Geometry/streaming, Nigeria adapter/rendering, rights, connected journeys and
+physical-phone acceptance remain OPEN. Current08:42UTC memoryNORMAL1 is initial
+recovery after WARNING2; optional local heavy starts remain deferred until stable.
+WORLD has no local heavy/browser/build/test/server/upload. Full goalACTIVE.
+Earlier checkpoints below are historical where superseded.
+
+# Implementation checkpoint — 9 October 2026
+
+Exact **2597acb7892042cc0d2a3f32ad9fe48912679991**, run **37903828130**, is
+terminal **SUCCESS**: **457 tests +3 policy =460 distinct checks**, plus World
+TypeScript. Python301=19audit/11session/78affected/193remaining;
+Node156=27protocol/58contracts/11actual SDK-source/39campaign-Ledger/16planner/5release.
+All22 artifact hashes and ten source/workflow blobs are recorded in
+[index-shard-source-plan-acceptance.json](index-shard-source-plan-acceptance.json).
+See [INDEX-SHARD-SOURCE-OPERATIONS.md](INDEX-SHARD-SOURCE-OPERATIONS.md).
+
+Accepted scope is read-only planning from every verified captured source leaf,
+exact request/context/descriptor/wire/envelope constraints and final source-row
+stability checks. Explicit synthetic zero-row tests prove positive/missing/corrupt
+cases; they do not establish real whole-country coverage. Legacy admission crash
+witness consolidation passes actual recovery and reduces the source closure to45
+files, source884736B/control1040384B under unchanged1MiB ceiling. Negativev23/v24
+artifacts remain retained; no passing subset was promoted.
+
+Latest main remains **134dc94d** after fresh fetch (no incoming changes); its
+mainCI37902237441 passed fastbuild/smoke/typecheck/policy, fullSKIPPED. This source
+milestone is being committed separately from the unaccepted actual V3 batch
+worker/controller/resource/startup draft. That draft charges a complete plan
+before allocating roots; actual SIGKILL and exact-prefix recovery tests are next.
+No runtime/map upload; production remains APPUIa446/version64ed. Living programme
+9b65 includes134 and fullCI37903856807 is pending, without release.
+
+Finite global budgets across namespaces, complete geometry/streaming, Nigeria
+adapter/rendering integration, rights, connected journeys and physical-phone
+acceptance remain OPEN. Latest08:17UTC memoryWARNING2 with resumedswapouts/~10.34GB
+swap: WORLD has no local heavy/browser/build/test/server/upload. Validation remains
+serial remote. Full goalACTIVE. Earlier checkpoints below are historical.
+
+# Implementation checkpoint — 9 October 2026
+
 Exact **87dff05f7f6f0babc0c65aa15ab5662889b107ad**, run **37901132435**, is
 terminal **SUCCESS**: **448 tests +3 policy =451 distinct checks**, plus World
 TypeScript. Python300=19audit/11session/77affected/193remaining; Node148 unchanged.

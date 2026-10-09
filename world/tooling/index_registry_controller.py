@@ -14,10 +14,10 @@ import shutil
 import stat
 from contextlib import nullcontext
 
-from index_controller_record import (FORMAT, FORMAT_V2, encode_controller_record, decode_controller_record,
-                                      start_attempt, snapshot_ready, finish_attempt)
+from index_controller_record import (FORMAT, FORMAT_V2, FORMAT_V3, encode_controller_record, decode_controller_record,
+                                      start_attempt, snapshot_ready, finish_attempt, settlement, _has_initialized_result)
 from index_controller_state import (RECORD, PENDING, EXECUTION, RECLAIM, REGISTRY, REGISTRY_PENDING, read_private, publish,
-                                    footprint, identity, anchor_registry, verify_registry_anchor)
+                                    footprint, identity, anchor_registry, verify_registry_anchor, _mint_shard_handoff)
 from index_execution_snapshot import CONFIGURATION, _capture, _inventory, VerifiedIndexExecution
 from index_namespace import _aggregate, _root, _preflight, namespace_binding
 from index_tooling import FILES, decode_tooling_manifest, verify_index_tooling, source_snapshot_allowance
@@ -26,27 +26,10 @@ from index_registry_startup import _runtime, startup_index_namespace
 from index_reservations import DATABASE_BYTES, REGISTRY_ALLOWANCE
 from index_resource_limits import bounded_integer
 from index_writer_lock import index_writer_lease
-from index_root import _lease
+from index_root import _lease, prepare_index_shard_plan_authority
 from index_admission_input import binding_pin, validate_admission_binding
 
 MIB = 1024*1024
-
-
-def settlement(record, *, initialized=False):
-    # Deterministic so even a partially written terminal record can resume. This
-    # digest proves only the immutable attempt binding, never worker success.
-    tag=b"supervised-initialized-registry-v1" if initialized else b"namespace-lease-settlement-v1"
-    return hashlib.sha256(encode_controller_record(record)+tag).hexdigest()
-
-
-def _has_initialized_result(record):
-    for index,attempt in enumerate(record["attempts"]):
-        if attempt["phase"]!="terminal": continue
-        previous=decode_controller_record(encode_controller_record(record))
-        previous["attempts"]=previous["attempts"][:index+1]
-        last=previous["attempts"][-1]; last["phase"]="prepared"; last["workerPid"]=None; last["resultSha256"]=None
-        if settlement(previous,initialized=True)==attempt["resultSha256"]: return True
-    return False
 
 
 def _copy_snapshot(root, repository, manifest, configuration, source_pin):
@@ -144,7 +127,7 @@ def _cleanup(root, record, manifest_bytes, manifest_pin, configuration, source_p
 def restartable_registry_startup(namespace_root, aggregate_bytes, repository_root, manifest_bytes,
                                  manifest_pin, source_configuration, source_pin, python, python_runtime,
                                  *, cpu_seconds=10,wall_seconds=15,rss_limit_bytes=96*MIB,attempt_limit=16,
-                                 _binding_bytes=None, _inherited_lease=None):
+                                 _binding_bytes=None, _inherited_lease=None, _plan_input=None):
     """One charged startup attempt with conservative restart/reconciliation.
 
     This returns only a supervised registry report, never a live SQL writer. The
@@ -163,6 +146,15 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
     if _binding_bytes is not None:
         validate_admission_binding(_binding_bytes, manifest_pin, source_pin, source_configuration)
         operation = {"kind":"admit", "binding":binding_pin(_binding_bytes)}
+    authority = None
+    if _plan_input is not None:
+        if type(_plan_input) is not dict or set(_plan_input) != {"raw", "pin"} or _binding_bytes is None:
+            raise ValueError("planned admission requires exact input and unchanged V1 base")
+        raw, pin = _plan_input["raw"], _plan_input["pin"]
+        authority = prepare_index_shard_plan_authority(raw, pin, _binding_bytes)
+        if authority.aggregate_bytes != aggregate: raise ValueError("plan aggregate differs")
+        _plan_input = {"raw": raw, "pin": dict(pin)}
+        operation = {"kind": "admit-plan", "plan": dict(pin), "baseBinding": binding_pin(_binding_bytes)}
     executable_pin={"nodeBytes":runtime["pythonBytes"],"nodeSha256":runtime["pythonSha256"]}
     executable,before_runtime=_node_pin(python,executable_pin,label="Python")
     reserve=source_snapshot_allowance(manifest,len(source_configuration))+2*65536+2*8192
@@ -170,21 +162,22 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
     if 4*DATABASE_BYTES+reserve>REGISTRY_ALLOWANCE:
         raise ValueError("persistent execution inputs cannot fit the immutable registry allowance")
     root,_=_root(namespace_root); expected=namespace_binding(aggregate,sqlite_version=runtime["sqliteVersion"])
-    _preflight(root,expected,aggregate,controller_check=False)
+    _preflight(root,expected,aggregate,controller_check=False,plan_authority=authority)
     if _inherited_lease is not None:
         _lease(_inherited_lease)
         if _inherited_lease.root != root: raise ValueError("controller inherited lease differs from its namespace")
     with (nullcontext(_inherited_lease) if _inherited_lease is not None else index_writer_lease(root)) as lease:
-        _lease(lease); _preflight(root,expected,aggregate,controller_check=False)
+        _lease(lease); _preflight(root,expected,aggregate,controller_check=False,plan_authority=authority)
         verify_registry_anchor(root)
         had_anchor=any((root/name).exists() or (root/name).is_symlink() for name in [REGISTRY,REGISTRY_PENDING])
         if had_anchor and not (root/RECORD).exists():
             raise ValueError("initialized controller attempt record disappeared; preserve quota")
         info=root.lstat()
-        header={"format":FORMAT_V2 if operation is not None else FORMAT,"namespace":{"device":info.st_dev,"inode":info.st_ino,
+        header={"format":FORMAT_V3 if authority is not None else FORMAT_V2 if operation is not None else FORMAT,"namespace":{"device":info.st_dev,"inode":info.st_ino,
             "lockDevice":lease.device,"lockInode":lease.inode,"aggregateBytes":aggregate},
             "runtime":runtime,"toolingManifest":dict(manifest_pin),"sourceConfiguration":dict(source_pin),
             "limits":{"cpuSeconds":cpu_seconds,"wallSeconds":wall_seconds,"rssBytes":rss_limit_bytes,"attempts":attempt_limit},"attempts":[]}
+        if authority is not None: header["operation"] = operation
         encode_controller_record(header)
         try: record=decode_controller_record(read_private(root/RECORD))
         except FileNotFoundError: record=None
@@ -231,7 +224,7 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
         if before_runtime!=after_runtime: raise RuntimeError("Python runtime changed before persistent launch")
         result=startup_index_namespace(root,aggregate,repository,manifest_bytes,manifest_pin,
             source_configuration,source_pin,executable,runtime,cpu_seconds=cpu_seconds,wall_seconds=wall_seconds,
-            rss_limit_bytes=rss_limit_bytes,_inherited_lease=lease,_execution=snapshot,_binding_bytes=_binding_bytes)
+            rss_limit_bytes=rss_limit_bytes,_inherited_lease=lease,_execution=snapshot,_binding_bytes=_binding_bytes,_plan_input=_plan_input)
         _lease(lease)
         anchor_registry(root)
         record=finish_attempt(record,settlement(record,initialized=True)); publish(root,record)
@@ -241,4 +234,13 @@ def restartable_registry_startup(namespace_root, aggregate_bytes, repository_roo
             "recordSha256":hashlib.sha256(encode_controller_record(record)).hexdigest(),
             "scope":("Fixed registry admission only; no capture/campaign completion." if operation is not None else
                      "Fixed registry startup only; settlement digest is not worker success or country coverage.")}
+        if authority is not None and _inherited_lease is not None:
+            guard=result["guard"]
+            if (guard.get("returnCode") != 0 or guard.get("reason") != "exit"
+                    or guard.get("inheritedLease") is not True or guard.get("inheritedNamespaceLease") is not True
+                    or record["attempts"][-1]["phase"] != "terminal"):
+                raise ValueError("successful reaped batch and caller-held namespace lease are required")
+            anchor=read_private(root/REGISTRY,4096)
+            result["_shardHandoff"]=_mint_shard_handoff(
+                root,lease,authority,result["registry"]["shardAdmission"],encode_controller_record(record),anchor,operation)
         return result

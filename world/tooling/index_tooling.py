@@ -15,6 +15,33 @@ FORMAT = "feature-index-tooling-inputs-v1"
 MAX_MANIFEST_BYTES = 64000
 MAX_SOURCE_BYTES = 1024*1024
 MAX_TOTAL_BYTES = 16*1024*1024
+HERE = Path(__file__).resolve().parent
+WORKERS = {
+    "capacity": HERE / "profile_feature_identity.ts",
+    "witness": HERE / "index_resource_witness.mjs",
+    "identity-stress": HERE / "index_identity_stress.ts",
+    # Direct node:test module entry (no --test subprocess): sampled RSS covers the writer.
+    "index-engine-tests": HERE.parent / "feature-index.test.ts",
+    "index-engine-capacity": HERE / "profile_feature_index.ts",
+    "lease-witness": HERE / "index_lease_witness.ts",
+    "index-engine-bootstrap": HERE / "index_bootstrap.ts",
+    "index-bootstrap-crash": HERE / "index_bootstrap_crash.ts",
+    "index-capture-ingest": HERE / "index_ingest.ts",
+    "index-capture-audit": HERE / "index_audit.ts",
+    "index-ingest-crash": HERE / "index_ingest_crash.ts",
+    "index-registry-startup": HERE / "index_registry_worker.py",
+    "index-registry-admit": HERE / "index_admission_worker.py",
+    "index-registry-admit-crash": HERE / "index_admission_worker.py",
+    "index-registry-admit-plan": HERE / "index_admission_worker.py",
+    "index-registry-admit-plan-crash": HERE / "index_admission_worker.py",
+    "index-registry-lease-witness": HERE / "index_registry_worker.py",
+    "index-registry-plan-witness": HERE / "index_admission_worker.py",
+}
+CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
+BOOTSTRAP_CASES = {"empty-file", "schema-checkpointed", "before-rename", "after-rename"}
+INGEST_CASES = {"before-transaction", "after-commit", "after-checkpoint"}
+ADMISSION_CASES = {"reserved", "binding-published"}
+PLAN_ADMISSION_CASES = {"before-charge", "charged", "root-published"}
 FILES = tuple(sorted([
     "world/feature-index.ts", "world/feature-index-audit.ts", "world/feature-identity.ts", "world/capture-binding.ts",
     "world/capture-request.ts", "world/capture-json.ts", "world/acquire.ts",
@@ -45,7 +72,6 @@ FILES = tuple(sorted([
     "world/tooling/index_capture_controller.py",
     "world/tooling/index_admission_input.py",
     "world/tooling/index_admission_worker.py",
-    "world/tooling/index_admission_crash.py",
     "world/tooling/index_admission.py",
     "world/tooling/index_lease_witness.ts",
 ]))

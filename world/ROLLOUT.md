@@ -1,5 +1,34 @@
 # Decisions and repeatable rollout after the first compiler
 
+9 October2026: exact3880c17f/run37915503802 accepts the actual Linux/macOS
+shared-OFD campaign lease bridge and complete bounded processing windows:
+495 distinct tests, three policy checks and World TypeScript, with11 repeated
+actual macOS lease tests. Read CAMPAIGN-LEASE-WINDOW-OPERATIONS.md and its receipt.
+The original45-source/1MiB control limits are unchanged. Next replace actual
+campaign/acquisition ownership and forward it through every surviving mutating
+worker, add finite cumulative accounting, verify terminal V3 admission without
+another attempt, then execute/audit every V2 window against the full source union.
+Temporary legacy PID markers alone do not establish mixed-version crash safety.
+Country geometry, Nigeria rendering/adapter and physical-phone proof remain open;
+this source phase releases no new map detail.
+
+9 October2026: exact cfb5c3b1/run37908535625 accepts an in-process sealed batch
+handoff and actual source-to-plan engine-capacity gate:478 tests, three policy
+checks and World TypeScript, unchanged45-source/1MiB control limits. Read
+INDEX-SHARD-HANDOFF-OPERATIONS.md. Next explicitly integrate V2 child workers,
+restartable256-capture/600s windows after one admission, a real inherited campaign
+lease and finite cumulative namespace accounting. Source membership/union audit,
+geometry, Nigeria integration and physical phones remain required; no map release.
+The session and global-accounting documents are unimplemented designs, not proof.
+
+9 October 2026: supervised full-plan admission is accepted on exact ab0589e67,
+run37905609552:467 tests, three policy checks and World TypeScript. Actual
+SIGKILL/recovery and 4096-request/16-shard admission retain the original limits.
+See INDEX-SHARD-BATCH-OPERATIONS.md. Next integrate bounded authority-gated child
+capture/audit sessions and same-campaign global namespace charges, then compile
+and stream real country geometry. No runtime release or phone acceptance is
+claimed. Earlier checkpoints below are historical where superseded.
+
 Latest builder checkpoint — 9 October2026: exact019f9179/run37898985723 is terminal
 SUCCESS with432 tests, three policy checks and World TypeScript. Complete plan
 validation, anonymous bounded transport, immutable controller records and actual

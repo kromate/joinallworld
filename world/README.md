@@ -1,5 +1,40 @@
 # Independent world-data builder
 
+The shared-OFD campaign lease bridge and complete bounded windows pass **495
+distinct tests, three policy checks and World TypeScript** on exact3880c17f,
+run37915503802; macOS repeats11 actual lease tests successfully. See
+[CAMPAIGN-LEASE-WINDOW-OPERATIONS.md](CAMPAIGN-LEASE-WINDOW-OPERATIONS.md) and
+[campaign-lease-window-acceptance.json](campaign-lease-window-acceptance.json).
+Original45-source/1MiB control and worker limits remain unchanged. Actual
+campaign/acquisition ownership, global accounting, V2 window execution, country
+geometry and gameplay/phone integration remain next. This builder phase adds no
+production map detail. Earlier checkpoints below are historical.
+
+Latest admitted-child handoff and source-capacity milestone passes **478 tests,
+three policy checks and World TypeScript**, exact cfb5c3b1/run37908535625. Real
+admitted children open sequentially under the original held namespace lease
+without registry SQL or extra attempts. Source-derived plans must fit each
+child's original capture/observation row caps. See
+[INDEX-SHARD-HANDOFF-OPERATIONS.md](INDEX-SHARD-HANDOFF-OPERATIONS.md).
+Durable multi-session windows, V2 ingest/audit, global accounting and country
+geometry remain next. This source phase adds no production map detail.
+
+Latest supervised batch milestone passes **467 tests, three policy checks and
+World TypeScript**, exact ab0589e67/run37905609552. It atomically charges complete
+plans, publishes their roots and recovers actual interrupted workers, including
+an actual 4,096-request/16-shard admission. See
+[INDEX-SHARD-BATCH-OPERATIONS.md](INDEX-SHARD-BATCH-OPERATIONS.md). Shard capture/audit
+integration, finite global budgets and country geometry remain next. This phase
+adds no production map detail. Earlier checkpoints are historical.
+
+Latest source-plan milestone passes **457 tests, three policy checks and World
+TypeScript**, exact2597acb7/run37903828130. It derives bounded plans from every
+verified captured campaign leaf and refuses missing/corrupt source state. See
+[INDEX-SHARD-SOURCE-OPERATIONS.md](INDEX-SHARD-SOURCE-OPERATIONS.md). Actual V3 batch
+dispatch/recovery, finite global accounting and country geometry remain next;
+this source phase adds no production map detail. Earlier checkpoints follow.
+
+
 Latest planned namespace/root/publication checkpoint passes **448 tests, three
 policy checks and World TypeScript**, exact87dff05f/run37901132435. Explicit V2
 storage primitives require the complete frozen batch charge before allocating

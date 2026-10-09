@@ -21,29 +21,8 @@ import tempfile
 import time
 
 HERE = Path(__file__).resolve().parent
-WORKERS = {
-    "capacity": HERE / "profile_feature_identity.ts",
-    "witness": HERE / "index_resource_witness.mjs",
-    "identity-stress": HERE / "index_identity_stress.ts",
-    # Direct node:test module entry (no --test subprocess): sampled RSS covers the writer.
-    "index-engine-tests": HERE.parent / "feature-index.test.ts",
-    "index-engine-capacity": HERE / "profile_feature_index.ts",
-    "lease-witness": HERE / "index_lease_witness.ts",
-    "index-engine-bootstrap": HERE / "index_bootstrap.ts",
-    "index-bootstrap-crash": HERE / "index_bootstrap_crash.ts",
-    "index-capture-ingest": HERE / "index_ingest.ts",
-    "index-capture-audit": HERE / "index_audit.ts",
-    "index-ingest-crash": HERE / "index_ingest_crash.ts",
-    "index-registry-startup": HERE / "index_registry_worker.py",
-    "index-registry-admit": HERE / "index_admission_worker.py",
-    "index-registry-admit-crash": HERE / "index_admission_crash.py",
-    "index-registry-lease-witness": HERE / "index_registry_worker.py",
-    "index-registry-plan-witness": HERE / "index_admission_worker.py",
-}
-CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
-BOOTSTRAP_CASES = {"empty-file", "schema-checkpointed", "before-rename", "after-rename"}
-INGEST_CASES = {"before-transaction", "after-commit", "after-checkpoint"}
-ADMISSION_CASES = {"reserved", "binding-published"}
+from index_tooling import (WORKERS, CASES, BOOTSTRAP_CASES, INGEST_CASES,
+                           ADMISSION_CASES, PLAN_ADMISSION_CASES)
 MIB = 1024 * 1024
 SESSION_INTERRUPTION = None
 
@@ -195,9 +174,10 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     Caller supplies the actual held kernel lease; inode checks cannot prove flock
     ownership. This is not a public durable opener or aggregate-budget admission.
     """
-    allowed_cases = (CASES if worker == "witness" else BOOTSTRAP_CASES if worker == "index-bootstrap-crash"
-                     else ADMISSION_CASES if worker == "index-registry-admit-crash"
-                     else INGEST_CASES if worker == "index-ingest-crash" else {None})
+    allowed_cases = {"witness":CASES, "index-bootstrap-crash":BOOTSTRAP_CASES,
+                     "index-registry-admit-crash":ADMISSION_CASES,
+                     "index-registry-admit-plan-crash":PLAN_ADMISSION_CASES,
+                     "index-ingest-crash":INGEST_CASES}.get(worker,{None})
     if worker not in WORKERS or case not in allowed_cases:
         raise ValueError("only a registered worker and its fixed cases are accepted")
     bounded_integer(file_bytes, 65536, 64*MIB, "file bytes")
@@ -205,8 +185,10 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     bounded_integer(wall_seconds, 1, 60, "wall seconds")
     bounded_integer(heap_mib, 64, 1536, "V8 heap MiB")
     bounded_integer(rss_limit_bytes, 64*MIB, 512*MIB, "sampled RSS bytes")
-    admission_worker = worker in {"index-registry-admit", "index-registry-admit-crash"}
-    plan_worker = worker == "index-registry-plan-witness"
+    admission_worker = worker in {"index-registry-admit", "index-registry-admit-crash",
+                                  "index-registry-admit-plan", "index-registry-admit-plan-crash"}
+    plan_worker = worker in {"index-registry-plan-witness", "index-registry-admit-plan",
+                             "index-registry-admit-plan-crash"}
     registry_worker = worker in {"index-registry-startup", "index-registry-lease-witness"} or admission_worker or plan_worker
     if plan_worker != (_plan_input is not None): raise ValueError("plan worker mismatch")
     plan_raw = plan_pin = None
@@ -376,7 +358,9 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
             environment["WORLD_INDEX_BINDING_DESCRIPTOR"] = str(registry_configuration["bindingDescriptor"])
             environment["WORLD_INDEX_BINDING_SHA256"] = registry_configuration["bindingSha256"]
         command = [str(node), "-I", "-B", str(script)]
-        if plan_worker: command.append("--plan")
+        if worker == "index-registry-admit-plan": command.append("--shards")
+        elif worker == "index-registry-admit-plan-crash": command.extend(("--shards-crash", case))
+        elif plan_worker: command.append("--plan")
         elif worker == "index-registry-lease-witness": command.append("--lease-witness")
     else:
         # The disposable witness is fixed plain JS. Loading the TS transpiler can
@@ -386,8 +370,8 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
         if worker != "witness":
             command.append("--experimental-strip-types")
         command.append(str(script))
-    if case is not None:
-        command.append(case)
+    if worker == "index-registry-admit-crash": command.extend(("--crash", case))
+    elif case and worker != "index-registry-admit-plan-crash": command.append(case)
     plan_pipe = None
     plan_size = plan_pin["bytes"] if plan_pin else 0
     if plan_worker:
@@ -575,7 +559,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--node", required=True)
     parser.add_argument("--worker", choices=WORKERS, required=True)
-    parser.add_argument("--case", choices=sorted(CASES | BOOTSTRAP_CASES | INGEST_CASES | ADMISSION_CASES))
+    parser.add_argument("--case", choices=sorted(CASES | BOOTSTRAP_CASES | INGEST_CASES |
+                                                   ADMISSION_CASES | PLAN_ADMISSION_CASES))
     parser.add_argument("--file-bytes", type=int, default=4*MIB)
     parser.add_argument("--cpu-seconds", type=int, default=10)
     parser.add_argument("--wall-seconds", type=int, default=15)

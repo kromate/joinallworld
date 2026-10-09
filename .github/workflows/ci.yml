@@ -11,6 +11,11 @@ on:
         required: true
         type: boolean
         default: false
+      focused_living_world:
+        description: Synthetic living-world HTTP and Worker evidence only; does not satisfy release CI
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -31,7 +36,7 @@ jobs:
       - run: node --test scripts/guard-joinallworld-package.test.mjs
 
   typecheck-fast:
-    if: github.event_name != 'workflow_dispatch' || !inputs.full_checks
+    if: github.event_name != 'workflow_dispatch' || (!inputs.full_checks && !inputs.focused_living_world)
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -44,7 +49,7 @@ jobs:
       - run: npm run typecheck
 
   build-and-smoke-fast:
-    if: github.event_name != 'workflow_dispatch' || !inputs.full_checks
+    if: github.event_name != 'workflow_dispatch' || (!inputs.full_checks && !inputs.focused_living_world)
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -59,7 +64,7 @@ jobs:
       - run: npm run test:smoke
 
   full:
-    if: github.event_name == 'workflow_dispatch' && inputs.full_checks
+    if: github.event_name == 'workflow_dispatch' && inputs.full_checks && !inputs.focused_living_world
     runs-on: ubuntu-latest
     timeout-minutes: 25
     strategy:
@@ -80,3 +85,36 @@ jobs:
       - run: npm test
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
       - run: npm run test:edge
+
+  # Focused evidence cannot replace budget/full/staging/release acceptance.
+  focused-living-world:
+    if: github.event_name == 'workflow_dispatch' && inputs.focused_living_world
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      NODE_OPTIONS: --max-old-space-size=1536
+    steps:
+      - name: Refuse ambiguous evidence mode
+        if: inputs.full_checks
+        run: exit 1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: HTTP authority, account continuity, privacy and reply checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          server/living-world/rental-service.test.ts
+          server/living-world/privacy.test.ts
+          server/living-world/account-lifecycle.test.ts
+          src/app/features/living-world/rentalReply.test.ts
+          src/game/living-world/parcel.test.ts
+      - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
+      - name: Actual Worker SQLite permission, account and restart checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          deploy/living-world-rental.edge.test.ts
+          deploy/living-world-account.edge.test.ts
+          deploy/living-world-restart.edge.test.ts

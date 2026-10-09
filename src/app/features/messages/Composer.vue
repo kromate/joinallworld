@@ -172,8 +172,8 @@ const lines = computed(() => composerLines(text.value))
 </template>
 
 <style scoped>
-.composer { position: relative; display: grid; gap: 6px; }
-.composer-form { display: flex; align-items: flex-end; gap: 8px; margin: 0; }
+.composer { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; max-width: 100%; gap: 6px; }
+.composer-form { display: flex; min-width: 0; width: 100%; align-items: flex-end; gap: 8px; margin: 0; }
 /* The id selectors beat the panel-wide textarea rule (controls.css), which makes every textarea 96px tall. */
 .composer-form textarea, #life-dialog .composer-form textarea, .life-ui .composer-form textarea { flex: 1; width: auto; min-width: 0; box-sizing: border-box; min-height: var(--tap); max-height: 108px; resize: none; padding: 11px 16px; border: 1px solid var(--c-line); border-radius: 12px; background: var(--c-fill); font: 400 16px/22px var(--font); overflow-y: auto; }
 .composer-count { margin: 0; font-size: 12px; line-height: 1.4; color: var(--c-muted); text-align: right; }

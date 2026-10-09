@@ -47,8 +47,14 @@ const settled = computed(() => game.connected.value && game.view.value.onboardin
 const callUp = computed(() => callStore.view.phase !== 'idle' || callStore.confirm !== null)
 const effective = computed<CompanionMode>(() => (prefs.mode === 'off' ? 'off' : coachHints.value ? prefs.mode : 'quiet'))
 const shown = computed(() => settled.value && prefs.mode !== 'off' && !callUp.value)
-// Map controls own the map's tap area. Messages and the tour remain available without the floating stage.
-const floating = computed(() => shown.value && game.mode.value !== 'map')
+const interactiveLesson = computed(() => {
+  const action = game.state.value.activeAction
+  return action?.kind === 'activity' && action.teaching !== undefined
+})
+// Foreground shell screens and interactive lessons own the touch area. Chat remains available
+// through its existing entry, while the floating stage is disposed until the foreground clears.
+const foregrounded = computed(() => shell.sheet.value !== null || shell.inPhone.value || game.mode.value !== 'venue' || interactiveLesson.value)
+const floating = computed(() => shown.value && !foregrounded.value)
 const size = ref(window.innerWidth <= 480 ? 92 : 124)
 const pos = reactive({ x: 8, y: 400 })
 const override = ref<{ x: number; y: number } | null>(null)

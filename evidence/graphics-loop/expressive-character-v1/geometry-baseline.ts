@@ -525,155 +525,31 @@ function headCover(b: ClothBuilder, id: string, fabric: THREE.Color): void {
     for (let j = 0; j < 4; j++) b.ring(new THREE.Vector3(0.063, top + 0.022 + j * 0.016, 0.033), 0.086 - j * 0.018, 0.076 - j * 0.015, 0, 0.021, fabric.clone().multiplyScalar(0.9 + j * 0.045), weights, 12);
   }
 }
-interface ScalpProfile {
-  readonly centreX: number;
-  readonly centreZ: number;
-  readonly lowY: number;
-  readonly height: number;
-  readonly rx: number;
-  readonly rz: number;
-  section(fraction: number): { y: number; rx: number; rz: number };
-  point(angle: number, fraction: number): THREE.Vector3;
-}
-
-/** A smooth, fitted under-cap that follows the shipped hair-region bounds instead of a floating ellipsoid. */
-function scalpCap(b: ClothBuilder, tint: THREE.Color, weights: Weights): ScalpProfile {
-  const source = b.rest.bounds.get('hair') ?? b.rest.bounds.get('Head');
-  if (!source || source.isEmpty()) throw new Error('Hair geometry needs source scalp bounds');
-  const centreX = (source.min.x + source.max.x) * 0.5;
-  const centreZ = (source.min.z + source.max.z) * 0.5;
-  const lowY = source.min.y - 0.002;
-  const topY = source.max.y + 0.003;
-  const rx = Math.max(0.045, (source.max.x - source.min.x) * 0.5 + 0.002);
-  const rz = Math.max(0.05, (source.max.z - source.min.z) * 0.5 + 0.002);
-  const height = Math.max(0.08, topY - lowY);
-  const profile = [
-    { y: 0, x: 1, z: 1 }, { y: 0.2, x: 1.02, z: 1.02 },
-    { y: 0.43, x: 0.98, z: 0.98 }, { y: 0.67, x: 0.82, z: 0.83 },
-    { y: 0.87, x: 0.55, z: 0.56 }, { y: 0.98, x: 0.24, z: 0.25 },
-    { y: 1, x: 0.035, z: 0.035 },
-  ];
-  const section = (fraction: number) => {
-    const f = THREE.MathUtils.clamp(fraction, 0, 1);
-    let index = 0;
-    while (index < profile.length - 2 && f > profile[index + 1]!.y) index++;
-    const a = profile[index]!, next = profile[index + 1]!;
-    const t = (f - a.y) / (next.y - a.y);
-    return {
-      y: lowY + height * f,
-      rx: rx * THREE.MathUtils.lerp(a.x, next.x, t),
-      rz: rz * THREE.MathUtils.lerp(a.z, next.z, t),
-    };
-  };
-  const point = (angle: number, fraction: number) => {
-    const row = section(fraction);
-    return new THREE.Vector3(centreX + Math.cos(angle) * row.rx, row.y, centreZ + Math.sin(angle) * row.rz);
-  };
-  const surfaceRows = profile.map(row => Array.from({ length: 20 }, (_, i) => point(TAU * i / 20, row.y)));
-  b.surface(surfaceRows, tint, () => weights);
-  // Seal the small crown opening left by the last loft ring; the head stays underneath as a safe fit fallback.
-  b.ball(new THREE.Vector3(centreX, topY, centreZ), [rx * 0.045, height * 0.012, rz * 0.045], tint, weights, 10, 3);
-  return { centreX, centreZ, lowY, height, rx, rz, section, point };
-}
-
-function quadraticHairPath(start: THREE.Vector3, control: THREE.Vector3, end: THREE.Vector3, steps = 7): THREE.Vector3[] {
-  return Array.from({ length: steps }, (_, i) => {
-    const t = i / (steps - 1), a = (1 - t) * (1 - t), m = 2 * (1 - t) * t, z = t * t;
-    return start.clone().multiplyScalar(a).addScaledVector(control, m).addScaledVector(end, z);
-  });
-}
-
 function hairStyle(b: ClothBuilder, style: string, tint: THREE.Color): void {
   if (style === 'bald') { b.hides.add('hair'); return; }
   if (style === 'lowcut' || style === 'fade') return;
   if (style === 'gele') { headCover(b, 'gele-fan', tint); return; }
   b.hides.add('hair');
-  const head = b.anchor('Head'), weights = b.rigid('Head'), scalp = scalpCap(b, tint, weights);
-  const strand = (start: THREE.Vector3, control: THREE.Vector3, end: THREE.Vector3, radius: number, colour = tint) => {
-    const points = quadraticHairPath(start, control, end, 7);
-    const radii = points.map((_, i) => radius * (i === 0 ? 0.82 : i === points.length - 1 ? 0.62 : 1));
-    b.tube(points, radii, colour, () => weights, 8);
-  };
-  const addCurls = (count: number, radius: number) => {
-    const lowerCount = Math.ceil(count * 0.58), upperCount = count - lowerCount;
-    for (let i = 0; i < lowerCount; i++) {
-      const angle = TAU * i / lowerCount + 0.11, normal = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)).normalize();
-      if (Math.sin(angle) > 0.86 && Math.abs(Math.cos(angle)) < 0.5) continue; // Keep the forehead and eye line clear.
-      const centre = scalp.point(angle, 0.61).addScaledVector(normal, radius * 0.32);
-      b.ball(centre, [radius, radius * 0.88, radius], tint, weights, 10, 3);
-    }
-    for (let i = 0; i < upperCount; i++) {
-      const angle = TAU * i / upperCount + Math.PI / upperCount, normal = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle)).normalize();
-      const centre = scalp.point(angle, 0.84).addScaledVector(normal, radius * 0.3);
-      b.ball(centre, [radius * 0.94, radius * 0.86, radius * 0.94], tint, weights, 10, 3);
-    }
-  };
+  const head = b.anchor('Head'), top = b.rest.bounds.get('hair')?.max.y ?? head.y + 0.22, weights = b.rigid('Head');
+  b.ball(new THREE.Vector3(0, top - 0.064, -0.024), [0.102, 0.082, 0.103], tint, weights, 10, 3);
   switch (style) {
-    case 'curls': addCurls(18, 0.012); break;
-    case 'afro': addCurls(24, 0.015); break;
-    case 'bun': {
-      const centre = new THREE.Vector3(scalp.centreX + scalp.rx * 0.08, scalp.lowY + scalp.height + 0.025, scalp.centreZ - scalp.rz * 0.48);
-      const base = scalp.point(4.72, 0.76);
-      strand(base, base.clone().lerp(centre, 0.55).add(new THREE.Vector3(0, 0.025, -0.018)), centre.clone().add(new THREE.Vector3(0, -0.035, 0)), 0.018);
-      b.ball(centre, [0.056, 0.053, 0.055], tint, weights, 12, 6);
-      const coil = Array.from({ length: 16 }, (_, i) => {
-        const t = i / 15, angle = TAU * 1.7 * t;
-        return new THREE.Vector3(centre.x + Math.cos(angle) * 0.044, centre.y - 0.04 + t * 0.08, centre.z + Math.sin(angle) * 0.043);
-      });
-      b.tube(coil, coil.map(() => 0.0065), tint.clone().multiplyScalar(1.035), () => weights, 7);
-      break;
-    }
-    case 'ponytail': {
-      const start = scalp.point(4.72, 0.62), control = start.clone().add(new THREE.Vector3(0, -0.025, -0.07));
-      strand(start, control, new THREE.Vector3(start.x + 0.012, head.y - 0.2, start.z - 0.15), 0.035);
-      break;
-    }
-    case 'long': {
-      const top = scalp.lowY + scalp.height;
-      b.loft([
-        { y: top - 0.006, rx: scalp.rx * 0.96, rz: scalp.rz * 0.96, x: scalp.centreX, z: scalp.centreZ },
-        { y: head.y - 0.1, rx: scalp.rx * 1.05, rz: scalp.rz * 1.08, x: scalp.centreX, z: scalp.centreZ - 0.018 },
-        { y: head.y - 0.21, rx: scalp.rx * 1.18, rz: scalp.rz * 1.15, x: scalp.centreX, z: scalp.centreZ - 0.025 },
-        { y: head.y - 0.3, rx: scalp.rx * 1.2, rz: scalp.rz * 1.12, x: scalp.centreX, z: scalp.centreZ - 0.025 },
-      ], tint, () => weights, 16, 2.25, TAU + 0.59);
-      break;
-    }
+    case 'curls': b.ball(new THREE.Vector3(0, top - 0.056, -0.025), [0.123, 0.1, 0.12], tint, weights, 12, 4); break;
+    case 'afro': b.ball(new THREE.Vector3(0, top - 0.05, -0.025), [0.162, 0.157, 0.155], tint, weights, 12, 5); break;
+    case 'bun': b.ball(new THREE.Vector3(0, top + 0.07, -0.058), [0.086, 0.09, 0.084], tint, weights); break;
+    case 'ponytail':
+      b.tube([new THREE.Vector3(0, top - 0.03, -0.1), new THREE.Vector3(0, head.y + 0.035, -0.18), new THREE.Vector3(0, head.y - 0.15, -0.2)], [0.045, 0.053, 0.032], tint, () => weights, 8); break;
+    case 'long':
+      b.loft([{ y: top - 0.01, rx: 0.097, rz: 0.1, z: -0.02 }, { y: head.y - 0.12, rx: 0.12, rz: 0.13, z: -0.05 }, { y: head.y - 0.29, rx: 0.15, rz: 0.13, z: -0.05 }], tint, () => weights, 12, 2.55, TAU + 0.59); break;
     case 'bantuknots':
-      for (let i = 0; i < 7; i++) {
-        const angle = TAU * i / 7, centre = scalp.point(angle, 0.88).add(new THREE.Vector3(0, 0.012, 0));
-        b.ball(centre, [0.028, 0.031, 0.028], tint, weights, 8, 4);
-      }
-      break;
-    case 'cornrows': {
-      for (let lane = -2; lane <= 2; lane++) {
-        const across = lane * 0.24;
-        const points = Array.from({ length: 9 }, (_, i) => {
-          const t = i / 8, fraction = 0.55 + Math.sin(Math.PI * t) * 0.42, section = scalp.section(fraction);
-          const xOffset = across * section.rx, zScale = Math.sqrt(Math.max(0.12, 1 - across * across));
-          const point = new THREE.Vector3(scalp.centreX + xOffset, section.y, scalp.centreZ + Math.cos(Math.PI * t) * section.rz * zScale);
-          const outward = new THREE.Vector3(across / scalp.rx, 0.36, Math.cos(Math.PI * t) / scalp.rz).normalize();
-          return point.addScaledVector(outward, 0.005);
-        });
-        b.tube(points, points.map((_, i) => i === 0 || i === points.length - 1 ? 0.006 : 0.008), tint, () => weights, 6);
-      }
-      break;
-    }
-    case 'classic': {
-      for (let lane = -1; lane <= 1; lane++) {
-        const start = scalp.point(0.8 + lane * 0.17, 0.72), end = scalp.point(5.25 + lane * 0.17, 0.72);
-        strand(start, new THREE.Vector3(scalp.centreX + lane * 0.028, scalp.lowY + scalp.height + 0.012, scalp.centreZ), end, 0.009, tint.clone().multiplyScalar(lane === 0 ? 1.035 : 0.98));
-      }
-      break;
-    }
+      for (let i = 0; i < 7; i++) { const angle = TAU * i / 7; b.ball(new THREE.Vector3(Math.cos(angle) * 0.093, top + (i % 2 ? 0.01 : 0.035), -0.025 + Math.sin(angle) * 0.072), [0.037, 0.043, 0.037], tint, weights, 6, 3); } break;
+    case 'cornrows':
+      for (let i = -2; i <= 2; i++) b.tube([new THREE.Vector3(i * 0.031, top - 0.033, 0.067), new THREE.Vector3(i * 0.031, top + 0.01, -0.025), new THREE.Vector3(i * 0.031, head.y + 0.06, -0.105)], [0.014, 0.015, 0.013], tint, () => weights, 5); break;
+    case 'classic': b.ball(new THREE.Vector3(0.028, top - 0.015, -0.005), [0.105, 0.067, 0.095], tint, weights, 10, 3); break;
     default: {
-      const count = style === 'braids' ? 10 : 8, radius = style === 'twists' ? 0.014 : style === 'braids' ? 0.017 : 0.019;
+      const count = style === 'braids' ? 10 : 8, radius = style === 'twists' ? 0.018 : 0.024;
       for (let i = 0; i < count; i++) {
-        let angle = TAU * i / count + 0.2;
-        if (Math.sin(angle) > 0.88 && Math.abs(Math.cos(angle)) < 0.45) angle += Math.cos(angle) < 0 ? 0.48 : -0.48;
-        const start = scalp.point(angle, 0.64), side = Math.sign(Math.cos(angle)) || 1;
-        const control = start.clone().add(new THREE.Vector3(side * 0.025, -0.018, -0.045));
-        const end = start.clone().add(new THREE.Vector3(side * 0.045, -0.22, -0.09));
-        strand(start, control, end, radius, tint.clone().multiplyScalar(i % 3 === 0 ? 1.025 : 1));
+        const a = 2.5 + i * 4.3 / (count - 1), x = Math.cos(a) * 0.103, z = -0.025 + Math.sin(a) * 0.102;
+        b.tube([new THREE.Vector3(x, top - 0.035, z), new THREE.Vector3(x * 1.08, head.y + 0.025, z), new THREE.Vector3(x * 1.28, head.y - (style === 'braids' ? 0.23 : 0.18), z - 0.015)], [radius, radius, radius * 0.75], tint, () => weights, 5);
       }
     }
   }

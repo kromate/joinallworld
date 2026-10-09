@@ -62,7 +62,8 @@ export function createFacialDetail(base: THREE.SkinnedMesh, key: BodyKey, look: 
   const head = base.skeleton.bones.findIndex(bone => bone.name === 'Head');
   if (head < 0) throw new Error('Facial detail requires the Head joint');
   const eyes = [atlasPoint(base, new THREE.Vector2(...EYE_SOCKETS[key].left)), atlasPoint(base, new THREE.Vector2(...EYE_SOCKETS[key].right))];
-  const mouth = atlasPoint(base, new THREE.Vector2(0.175, 0.266));
+  const mouth = atlasPoint(base, new THREE.Vector2(0.175, 0.253));
+  mouth.x = (eyes[0]!.x + eyes[1]!.x) * 0.5;
   const surfaces: Surface[] = [], indices: number[] = [];
   let buildingShape: Shape = 'neutral';
   let vertices: number[] = [];
@@ -103,8 +104,8 @@ export function createFacialDetail(base: THREE.SkinnedMesh, key: BodyKey, look: 
     const smile = shape === 'smile' ? 0.65 : shape === 'grin' ? 1 : 0;
     for (const eye of eyes) {
       const closed = shape === 'blink', ry = closed ? 0.0005 : 0.0095 - smile * 0.0015;
-      disc(eye.clone().add(new THREE.Vector3(0, 0, 0.002)), 0.019, ry, closed ? 0.001 : 0.007, closed ? 'skin' : 'white');
-      const front = eye.clone().add(new THREE.Vector3(0, 0, closed ? 0.0022 : 0.0092));
+      disc(eye.clone().add(new THREE.Vector3(0, 0, 0.003)), 0.019, ry, closed ? 0.001 : 0.011, closed ? 'skin' : 'white');
+      const front = eye.clone().add(new THREE.Vector3(0, 0, closed ? 0.0032 : 0.0142));
       disc(front, 0.0072, closed ? 0.0001 : ry * 0.88, 0.0012, closed ? 'skin' : 'iris', 2);
       disc(front.clone().add(new THREE.Vector3(0, 0, 0.0015)), 0.0031, closed ? 0.00005 : 0.0047, 0.0004, closed ? 'skin' : 'pupil', 1);
       disc(front.clone().add(new THREE.Vector3(-0.0025, 0.0029, 0.0021)), 0.0013, closed ? 0.00005 : 0.0016, 0.0002, closed ? 'skin' : 'glint', 1);
@@ -116,16 +117,17 @@ export function createFacialDetail(base: THREE.SkinnedMesh, key: BodyKey, look: 
       }
       ribbon(lid, 0.0018, 'brow'); ribbon(brow, 0.0038, 'brow');
     }
-    const opening = shape === 'grin' ? 0.008 : shape === 'smile' ? 0.0035 : 0.001;
-    const width = 0.022 + smile * 0.005;
-    disc(mouth.clone().add(new THREE.Vector3(0, smile * 0.001, 0.002)), width, opening, 0.0008, 'mouth', 2);
-    disc(mouth.clone().add(new THREE.Vector3(0, opening * 0.35 + smile * 0.001, 0.003)), width * 0.85, shape === 'grin' ? 0.003 : shape === 'smile' ? 0.001 : 0.00001, 0.0002, 'white', 1);
+    const opening = shape === 'grin' ? 0.0045 : shape === 'smile' ? 0.002 : 0.0003;
+    const width = 0.020 + smile * 0.004;
+    disc(mouth.clone().add(new THREE.Vector3(0, smile * 0.001, 0.0006)), width, opening, 0.0003, 'mouth', 2);
+    disc(mouth.clone().add(new THREE.Vector3(0, opening * 0.3 + smile * 0.001, smile ? 0.0011 : -0.008)), width * 0.8, shape === 'grin' ? 0.0018 : shape === 'smile' ? 0.0007 : 0.00001, 0.0001, 'white', 1);
     const upper: THREE.Vector3[] = [], lower: THREE.Vector3[] = [];
     for (let i = 0; i <= 16; i++) {
       const x = (i / 16 * 2 - 1) * width, side = Math.abs(x / width), arch = Math.sqrt(Math.max(0, 1 - side * side));
       const corner = smile * 0.006 * side * side;
-      upper.push(mouth.clone().add(new THREE.Vector3(x, corner + opening * arch, 0.0038 + 0.001 * arch)));
-      lower.push(mouth.clone().add(new THREE.Vector3(x, corner - opening * arch, 0.0038 + 0.001 * arch)));
+      const wrap = 0.0015 - 0.006 * side * side;
+      upper.push(mouth.clone().add(new THREE.Vector3(x, corner + opening * arch, wrap)));
+      lower.push(mouth.clone().add(new THREE.Vector3(x, corner - opening * arch, wrap)));
     }
     ribbon(upper, 0.0028, 'lip'); ribbon(lower, 0.0035, 'lip');
     return new Float32Array(vertices);
@@ -141,6 +143,7 @@ export function createFacialDetail(base: THREE.SkinnedMesh, key: BodyKey, look: 
   const material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.48, metalness: 0, side: THREE.DoubleSide });
   const object = new THREE.SkinnedMesh(geometry, material);
   object.name = 'avatar-facial-detail';
+  object.userData.anchors = { eyes: eyes.map(point => point.toArray()), mouth: mouth.toArray() };
   object.position.copy(base.position); object.quaternion.copy(base.quaternion); object.scale.copy(base.scale);
   object.matrix.copy(base.matrix); object.matrixAutoUpdate = base.matrixAutoUpdate;
   object.bindMode = base.bindMode; object.bind(base.skeleton, base.bindMatrix); object.frustumCulled = false;

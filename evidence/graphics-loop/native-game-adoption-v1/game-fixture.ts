@@ -483,8 +483,14 @@ function createFixture() {
       backgroundPixel = readPixel(0.94, 0.94);
       actorPixelContrast = Math.max(...actorPixel.slice(0, 3).map((channel, index) => Math.abs(channel - backgroundPixel![index]!)));
     }
+    let canvasPng = '';
+    let canvasPngError = '';
+    if (actor && currentCamera.endsWith('-close')) {
+      try { canvasPng = renderer.domElement.toDataURL('image/png').split(',')[1] ?? ''; }
+      catch (error) { canvasPngError = error instanceof Error ? error.message : String(error); }
+    }
     return { drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles,
-      actorPixel, backgroundPixel, actorPixelContrast, actorFrame: actorFrame(actor) };
+      actorPixel, backgroundPixel, actorPixelContrast, canvasPng, canvasPngError, actorFrame: actorFrame(actor) };
   }
 
   function poll() {

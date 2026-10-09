@@ -84,14 +84,25 @@ async function evaluate(expression) {
 
 async function capture(name, settleMs = 500) {
   await delay(settleMs);
-  const renderEvidence = await evaluate('window.nativeGameFixture?.renderForCapture?.() ?? null');
+  const rawRenderEvidence = await evaluate('window.nativeGameFixture?.renderForCapture?.() ?? null');
+  let canvasScreenshot = null;
+  if (typeof rawRenderEvidence?.canvasPng === 'string' && rawRenderEvidence.canvasPng.length > 0) {
+    const canvasBytes = Buffer.from(rawRenderEvidence.canvasPng, 'base64');
+    const canvasFilename = `office-${name}-canvas.png`;
+    await writeFile(path.join(resultDir, canvasFilename), canvasBytes);
+    canvasScreenshot = { path: canvasFilename, bytes: canvasBytes.length,
+      sha256: createHash('sha256').update(canvasBytes).digest('hex') };
+  }
+  const { canvasPng: _canvasPng, canvasPngError, ...renderEvidence } = rawRenderEvidence ?? {};
+  if (canvasPngError) renderEvidence.canvasPngError = canvasPngError;
   await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
   const snapshot = await evaluate('window.nativeGameFixture?.sample?.() ?? null');
   const screenshot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, fromSurface: true });
   const bytes = Buffer.from(screenshot.data, 'base64');
   const filename = `office-${name}.png`;
   await writeFile(path.join(resultDir, filename), bytes);
-  return { name, snapshot, renderEvidence, screenshot: { path: filename, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') } };
+  return { name, snapshot, renderEvidence, canvasScreenshot,
+    screenshot: { path: filename, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') } };
 }
 
 let report;
@@ -141,7 +152,8 @@ try {
   const walkPhaseEvidence = {
     phaseA: { pose: phaseA.player?.pose, root: phaseA.player?.rootPosition, frames: phaseA.player?.walkFrames },
     phaseB: { pose: phaseBState.player?.pose, root: phaseBState.player?.rootPosition, frames: phaseBState.player?.walkFrames },
-    imageHashesDiffer: walkA.screenshot.sha256 !== walkB.screenshot.sha256,
+    canvasImageHashesDiffer: walkA.canvasScreenshot?.sha256 !== walkB.canvasScreenshot?.sha256,
+    pageImageHashesDiffer: walkA.screenshot.sha256 !== walkB.screenshot.sha256,
   };
   await evaluate("window.nativeGameFixture.setCamera('scene'); window.nativeGameFixture.setMode('walk')");
   const walk = await capture('walk-cycle', 1400);
@@ -203,12 +215,14 @@ try {
     deterministicWalkPhases: walkPhaseEvidence.phaseA.pose === 'walk' && walkPhaseEvidence.phaseB.pose === 'walk'
       && walkPhaseEvidence.phaseA.frames < walkPhaseEvidence.phaseB.frames
       && JSON.stringify(walkPhaseEvidence.phaseA.root) !== JSON.stringify(walkPhaseEvidence.phaseB.root)
-      && walkPhaseEvidence.imageHashesDiffer,
+      && walkPhaseEvidence.canvasImageHashesDiffer,
     closeupsFrameWholeActor: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
       .every((sample) => sample.snapshot?.cameraActorFrame?.wholeActorVisible === true),
     closeupsRenderActorPixels: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
       .every((sample) => sample.renderEvidence?.drawCalls > 0 && sample.renderEvidence?.triangles > 0
         && sample.renderEvidence?.actorPixelContrast >= 24),
+    closeupsSavedDirectCanvasPixels: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
+      .every((sample) => sample.canvasScreenshot?.bytes > 0),
     interactionSample: interact.snapshot.player?.pose === 'interact',
     realNpcActivityCompleted: npcInteraction?.started?.code === 'started' && npcInteraction?.completed === true
       && npcInteraction?.responseNamesNpc === true && npcInteraction?.familiarityChanged === true
@@ -234,6 +248,8 @@ try {
     status: Object.values(checks).every(Boolean) ? 'pass' : 'fail',
     project: repo,
     source: 'final 3af + native game adoption overlay',
+    captureProtocol: { explicitDrawImmediatelyBeforeCapture: true, twoAnimationFramesBeforeCapture: true,
+      directCanvasPngForCloseups: true, preserveDrawingBuffer: true, diagnosticOnly: true },
     scene: { city: 'lagos', location: 'office', time: 'day', regularIds: namedNpcIds },
     checks,
     unsupported,
@@ -244,11 +260,12 @@ try {
     afterUnsupported,
     disposal,
     consoleErrors: pageErrors,
-    screenshots: [idle, front, profileView, playerCloseIdle, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted, mobile].map(({ name, screenshot, snapshot, renderEvidence }) => ({
+    screenshots: [idle, front, profileView, playerCloseIdle, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted, mobile].map(({ name, screenshot, snapshot, renderEvidence, canvasScreenshot }) => ({
       name, screenshot, camera: snapshot.currentCamera, playerPose: snapshot.player?.pose,
       cameraActorFrame: snapshot.cameraActorFrame, renderEvidence: { drawCalls: renderEvidence?.drawCalls,
         triangles: renderEvidence?.triangles, actorPixel: renderEvidence?.actorPixel,
         backgroundPixel: renderEvidence?.backgroundPixel, actorPixelContrast: renderEvidence?.actorPixelContrast },
+      canvasScreenshot,
       nativeCrowd: snapshot.crowd?.canonical, proceduralCrowd: snapshot.crowd?.procedural,
     })),
     finalSnapshot: afterUnsupported,

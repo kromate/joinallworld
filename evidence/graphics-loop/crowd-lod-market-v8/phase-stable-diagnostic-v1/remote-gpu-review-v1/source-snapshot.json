@@ -1,0 +1,65 @@
+{
+  "schema": "allworld-market-lod-v8-phase-stable-live-motion-source-snapshot-v1",
+  "scope": "Separate phase-stable remote live-motion recipe. Workflow template and this manifest excluded to avoid self-reference. Exact CPU run, artifact, commit and builder pins included.",
+  "files": [
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/README.md",
+      "bytes": 1888,
+      "sha256": "014fe44c5f897cc103e925def6eee3797a3e014009ad2b09905df6a216936157"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/market-gpu-v8-phase-stable.html",
+      "bytes": 3788,
+      "sha256": "88536743d7b8a5248209505947c08669d1c409feab744a6c82012620a0cdb41d"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+      "bytes": 45302,
+      "sha256": "0c4f84d1fbda4efbda1ae1eb5608b41505e3706c21c1f5d740e9a30b7533952c"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-ci-reviewed-v1/snapshot-files.json",
+      "bytes": 6955,
+      "sha256": "9cc2ac71dc709efe4063368371198fcfd3b32232251ddeea0f4dfda5083bae44"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-ci-reviewed-v1/workflow-template.yml",
+      "bytes": 2035,
+      "sha256": "9cfa93292b1af2cd3c865679c5639b638640f27d263fdb7388307d57d816cc29"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-gpu-review-v1/README.md",
+      "bytes": 1387,
+      "sha256": "e6fc6b984d7a88547e6baa3e8461a0dbe35786ff35ab967d0992fcfa855cbafe"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-gpu-review-v1/artifact-pin.json",
+      "bytes": 2044,
+      "sha256": "48773247590a3c2191bfbd6214761f671c995654028bba8f0333dd7b6e61d74d"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-gpu-review-v1/review-cdp.mjs",
+      "bytes": 25696,
+      "sha256": "d44c86a7b5ad7ab0f05b30272daa6463d0c1ccaf733335a427e1f2a9ee117cb1"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-gpu-review-v1/verify-package.mjs",
+      "bytes": 5592,
+      "sha256": "fa7336fc7b653680ce12a013deabc933cdeb80ac2c87715b8d89a2614ed50950"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-gpu-review-v1/run-bounded-linux.py",
+      "bytes": 13605,
+      "sha256": "e763139f7afe118e1276bd7f1e8e88b6c4e02ac35ff7bd0465cf90f92ac11d51"
+    },
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-gpu-review-v1/verify-source-snapshot.mjs",
+      "bytes": 2120,
+      "sha256": "fb3472b4cf1670568e56fcd1c812beb17042951c46f54b616ed99dd4e4f6176a"
+    }
+  ],
+  "excludedSelfReferentialFiles": [
+    "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-gpu-review-v1/source-snapshot.json",
+    "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/remote-gpu-review-v1/workflow-template.yml"
+  ]
+}

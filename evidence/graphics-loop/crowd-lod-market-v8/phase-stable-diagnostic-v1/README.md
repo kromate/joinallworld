@@ -1,0 +1,9 @@
+# Phase-stable live-walk fixture candidate
+
+This is a distinct, unbuilt copy of the frozen v8 GPU viewer. It addresses the observed run-37896394467 failure without relaxing the exact pose guard or rewriting the expected pose.
+
+The failure cause is a mismatch between the exact RAF phase passed to `SkinnedBody.stride()` and the range input’s 0.025 step. During playback, the fixture wrote four decimals to the `<input type="range">`, whose `.value` snaps to its configured step, while the body continued at the unsnapped phase. The CDP state read that snapped control as the live phase. After pausing at 2.4087 seconds, the range displayed `1.0`; the harness then dispatched the yaw change, which shared `setPose()` with the pose selector and reapplied `stride(1 * 2π)`. That changed the actual bones before the source capture. The old snapshot correctly rejected the mismatch.
+
+This copy tracks `appliedWalkPhase` separately and reports the slider as `phaseControl`. The walk tick updates the exact applied value before sampling the body; pause keeps the sampled bones; a yaw change now only changes the camera and renders. Geometry A/B continues to assert that toggling does not change bone transforms. Manual slider changes still intentionally choose a coarse phase and call `setPose()`.
+
+No runtime, source assets, CPU package, build, browser, or tests were run. This is only a source candidate. The next bounded package should capture and retain an immediate paused live-walk PNG and state record before any yaw/geometry control changes; then capture source/compact pairs at a fixed phase/checkpoint. Required proof: phase in `(0,1)` at pause, live elapsed at least 2.4 seconds, multiple changing bone witnesses, exact equality through yaw and both geometry toggles, and one retained image before the first toggle. This does not establish visual quality or production acceptance.

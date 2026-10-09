@@ -2,13 +2,13 @@
 
 ## Current exact-source acceptance - 9 October 2026
 
-Published Integration5e12d3a5d6301faec394abd81dc0d95e086edd48 remains unaccepted. [Exact current CI/source evidence](candidate-5e12d3a5-review.json); historical [panel-loader review](panel-loader-source-review.json). Compiler/build/download22/24 and policy/host/UI/integration-repairs jobs PASS. Remaining corpus/Worker/native/staging gates remain open.
+Published Integration5e12d3a5d6301faec394abd81dc0d95e086edd48 remains unaccepted. [Exact current CI/source evidence](candidate-5e12d3a5-review.json); historical [panel-loader review](panel-loader-source-review.json). Compiler/build/download22/24 and policy/host/UI/integration-repairs jobs PASS. Workers22/24 each154/154PASS; Node22host1020PASS/3existingSKIP and tooling36/36PASS. Remaining game/Node24 corpus and rendered travel/lesson/staging gates remain open.
 
 | Unit | Evidence | Release state | Remaining acceptance |
 | --- | --- | --- | --- |
 | Active teaching/compatible reader | Historical engine/host/native functional receipts; scoped latest readiness130/130 | New starts OFF; unreleased | Exact full gates, readable desktop/mobile, staged/live save continuity, activation |
 | Five capitals/cashless return | Scoped actual Node/SQLite corruption, atomic failure, concurrent once-only and restart passes within130; overlapping profile12/12 | Unreleased | Unadjusted downtime, changed-route original terms, exact full/native/staging/live proofs |
-| Download/provider limits | Exact5e12 official Node22/24 compiler/build/download PASS611290/221851/194883 across45closures; local15smokePASS; original failures retained | Exact compiler/size gates pass; release unaccepted | Complete corpus/Workers and actual native retry/reload, gameplay and staging/save continuity |
+| Download/provider limits | Exact5e12 official Node22/24 compiler/build/download PASS611290/221851/194883 across45closures; local15smokePASS; original failures retained | Exact compiler/size gates pass; release unaccepted | Remaining game/Node24 corpus and rendered gameplay/staging/save continuity; scoped Astra503/reload/320/390px proof accepted with explicit browser-cache and no-paid-action limits |
 | Physical journey/later careers/business | Bounded foundations; sampled actor geometry lacks continuous boarding authority | Disabled/queued | Complete school/licence/rental/animated entry/driving/restock/barber/earnings/improvement/reload and later programme |
 | Goalmatic | Private published contracts inspected | Disabled/mock | Selected consented workspace/install/Goals schema, events/reconciliation/revocation and live verification |
 

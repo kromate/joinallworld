@@ -1,5 +1,11 @@
 # Living-world implementation checkpoint
 
+## Scoped native recovery and Worker parity - 2026-10-09T17:42:18.388970+00:00
+
+Exact5e12CI37966065099 Worker22/24 each154/154PASS0skip; Node22host1020PASS/3existingdesign-conflictSKIP and tooling36/36PASS. Game22/24 still confirmed live, Node24host/tooling queued. No whole-suite acceptance or job restart. [Updated exact receipt](candidate-5e12d3a5-review.json).
+
+Verified actualAstra/high source report24cf5c85 and HTTP decisions show both catalogue/body503 visible friendly controls, and explicit userReload real requests restore both. Chrome cachesfailed imports, so Tryagain/close-reopen do not recoverin-document; no false retry success. HeldFamily→Bank remains stable;320/390px4app readability, loadedMap params, nativekeys/focus work. All18 manifest files verified/copied private durable archive, screenshots reviewedbyAstra only. No heldMap-param, pendingpaidaction, first5rendered travel, active lesson or sealedWorker-stage proof. Ownedserver stopped17:35:59/PID53108absent. Next same liveCI then remaining exact gameplay/staging/save/observation gates and WORLD acceptedrelease. Full programme ACTIVE; currentprodlasthealtha446/no programmeupload. Root sharedwriter/browser/build/upload exclusions preserved.
+
 ## Published recovery candidate and exact CI gates - 2026-10-09T17:33:31.989935+00:00
 
 Previous goal turn made progress with55-loader review and measured local startup pass. This continuation independently reviewed branded PanelHost recovery and actual manifest/body blank reproductions, diagnosed and reproduced faulty coordinate normalization, and verified the corrected source preserves coordinates. Published clean Integration5e12d3a5d6301faec394abd81dc0d95e086edd48. ExactCI37966065099 official Node22/24 compiler/build/download jobs now PASS with611290raw/221851gzip/194883Brotli against unchanged caps; policy, host-acceptance, UI-regressions and integration-repairs PASS. Latter134/134; host/UI subruns separately retained, not summed. All remaining corpus/Worker jobs and actual browser/staging acceptance remain unproven. [Exact review and archived qualified receipts](candidate-5e12d3a5-review.json).

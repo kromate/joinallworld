@@ -102,7 +102,7 @@
   .life-ui .life-spots{min-height:46px;gap:6px}
   .life-ui .life-spots button{min-height:36px;position:relative;padding:0 14px}
   body .life-spots button::after{content:'';position:absolute;inset:-5px -2px}
-  .life-ui .life-spots .life-expand{width:36px;padding:0}
+  .life-ui .life-spots .life-expand{position:sticky;width:36px;padding:0}
   .life-ui .life-spots .life-expand::after{inset:-5px -4px}
 
   /* ---- the venue: controls over the scene ---------------------------------------------------------------------------------- */

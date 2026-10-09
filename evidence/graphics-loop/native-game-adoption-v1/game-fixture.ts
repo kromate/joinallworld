@@ -30,7 +30,17 @@ interface FixtureSnapshot {
   unsupportedProbe: Record<string, unknown> | null;
   interaction: Record<string, unknown> | null;
   currentCamera: string;
+  cameraActorFrame: CameraActorFrame | null;
   viewport: { width: number; height: number; scrollWidth: number; layoutColumns: number; mobileBreakpoint: boolean };
+}
+interface CameraActorFrame {
+  actorOrigin: [number, number, number];
+  headPosition: [number, number, number] | null;
+  bounds: { min: [number, number, number]; max: [number, number, number] };
+  cameraPosition: [number, number, number];
+  ndc: { minX: number; maxX: number; minY: number; maxY: number };
+  allCornersInFrustum: boolean;
+  wholeActorVisible: boolean;
 }
 
 declare global {
@@ -170,18 +180,25 @@ function createFixture() {
   function placeCloseCamera(actor: THREE.Object3D) {
     actor.updateWorldMatrix(true, true);
     const origin = actor.getWorldPosition(new THREE.Vector3());
-    const forward = actor.getWorldDirection(new THREE.Vector3()).normalize();
-    camera.fov = 45;
+    // The authored character's face points along local -Z; getWorldDirection() follows +Z.
+    const front = actor.getWorldDirection(new THREE.Vector3()).setY(0).negate().normalize();
+    const bounds = new THREE.Box3().setFromObject(actor);
+    const target = bounds.getCenter(new THREE.Vector3());
+    target.y = bounds.min.y + Math.min(1.2, bounds.getSize(new THREE.Vector3()).y * 0.5);
+    camera.fov = 48;
     camera.updateProjectionMatrix();
-    camera.position.copy(origin).addScaledVector(forward, 3.8).add(new THREE.Vector3(0, 1.4, 0));
-    camera.lookAt(origin.clone().add(new THREE.Vector3(0, 1.2, 0)));
+    camera.position.copy(origin).addScaledVector(front, 3.8);
+    camera.position.y = bounds.min.y + 1.4;
+    camera.lookAt(target);
   }
 
-  function actorFrame(actor: THREE.Object3D | null) {
+  function actorFrame(actor: THREE.Object3D | null): CameraActorFrame | null {
     if (!actor) return null;
     actor.updateWorldMatrix(true, true);
     camera.updateMatrixWorld(true);
     const bounds = new THREE.Box3().setFromObject(actor);
+    const head = actor.getObjectByName('Head');
+    const headPosition = head?.getWorldPosition(new THREE.Vector3()).toArray() as [number, number, number] | undefined;
     const corners = [
       new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.max.z),
       new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.max.z),
@@ -191,7 +208,11 @@ function createFixture() {
     const minX = Math.min(...corners.map((point) => point.x)), maxX = Math.max(...corners.map((point) => point.x));
     const minY = Math.min(...corners.map((point) => point.y)), maxY = Math.max(...corners.map((point) => point.y));
     const allCornersInFrustum = corners.every((point) => point.z > -1 && point.z < 1);
-    return { ndc: { minX, maxX, minY, maxY }, allCornersInFrustum,
+    return { actorOrigin: actor.getWorldPosition(new THREE.Vector3()).toArray() as [number, number, number],
+      headPosition: headPosition ?? null,
+      bounds: { min: bounds.min.toArray() as [number, number, number], max: bounds.max.toArray() as [number, number, number] },
+      cameraPosition: camera.position.toArray() as [number, number, number],
+      ndc: { minX, maxX, minY, maxY }, allCornersInFrustum,
       wholeActorVisible: allCornersInFrustum && minX > -0.96 && maxX < 0.96 && minY > -0.96 && maxY < 0.96 };
   }
 

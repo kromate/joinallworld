@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-09T16:42:45.046883+00:00",
+  "observedAt": "2026-10-09T16:46:18.430681+00:00",
   "baseSha": "39d94b117a6ab4b0e8e063b835889517c9d70dca",
   "workingTreeDirty": true,
   "accepted": false,
@@ -45,27 +45,55 @@
       "skipped": 0,
       "durationMs": 22212.845917,
       "qualification": "Actual terminal owner log independently read. Runs overlap; do not sum. Working tree execution, not accepted frozen candidate."
+    },
+    "allworld-homeward-client-profile-first.log": {
+      "path": "/tmp/allworld-homeward-client-profile-first.log",
+      "sha256": "b9bac1783e18cc18ad668067c87d54688b736b92e14aa9f260a67e3c0b76b475",
+      "tests": 42,
+      "passed": 39,
+      "failed": 3,
+      "skipped": 0,
+      "durationMs": 1008.38675,
+      "qualification": "Actual terminal owner log independently read. Overlapping runs, not new frozen-source acceptance."
+    },
+    "allworld-homeward-client-profile-repair.log": {
+      "path": "/tmp/allworld-homeward-client-profile-repair.log",
+      "sha256": "ad221e9335bdc251da03478850430d7a6a877204297812c972337b2e477849c4",
+      "tests": 42,
+      "passed": 41,
+      "failed": 1,
+      "skipped": 0,
+      "durationMs": 3466.123917,
+      "qualification": "Actual terminal owner log independently read. Overlapping runs, not new frozen-source acceptance."
     }
   },
   "latestTerminalFailure": {
-    "test": "same-owner deferred campus cache stays masked until hydration after life recovery fails",
-    "actual": [
-      "unconfirmed",
-      5000
-    ],
-    "expected": [
-      "available",
-      4600
-    ],
-    "diagnosis": "Single feature promise now wrapped in Promise.all adds scheduling; owner restored single-promise path in current dirty source. Repair untested at observation."
+    "run": "allworld-homeward-client-profile-repair.log",
+    "tests": 42,
+    "passed": 41,
+    "failed": 1,
+    "cause": "Special homeward-visitor fixture omits requestMarker/release/evaluation fields consumed by awaitRequestMarker, causing dirname(undefined). Owner correction handed off; no next pass claimed."
   },
   "newMaterialFinding": {
-    "status": "source-confirmed, reproduction pending",
-    "description": "Browser awaits reader but readHomewardTicket returnsnull for invalid untrusted markers. Cached/API createLife can remove unsupported ticket then mark snapshot ready/persist it. Owner new regression118 exists; no test pass claimed. Specific client acceptance must refuse lost raw marker without globally changing trustedSave."
+    "status": "Specific unsupported-ticket client regression PASS in profile run; valid ticket plus malformed raw browser debt still source-risk, additional test pending",
+    "description": "Browser awaits reader but readHomewardTicket returnsnull for invalid untrusted markers. Cached/API createLife can remove unsupported ticket then mark snapshot ready/persist it. Owner new regression118 exists; no test pass claimed. Specific client acceptance must refuse lost raw marker without globally changing trustedSave.",
+    "repair": "Owner rebuildClientLife refuses a raw homeward marker disappearing in browser projection; no global trustedSave change. Current focused unsupported cached/API marker and deferred same-owner hydrate cases pass."
   },
   "implementedSource": {
     "readiness": "Planner+frozen reader private install; server index static install; bootstrap and client cached/API await paths; cached import failure status/raw-cache persistence guard. Source reviewed, size/profile tests unproven.",
     "faultProof": "Actual rows test six malformed liability variants; immediate full-session abort comparison; concurrent identical homeward booking. These host cases pass inside the59 scoped run; full candidate remains failed."
   },
-  "next": "Owner reproduce/repair unsupported cached/API marker boundary, add real read-only profile failure/retry/no-import/identity tests and measure startup, freeze exact new SHA; full/native/isolated staging/release/live checks remain."
+  "next": "Owner fixes visitor fixture, proves profile failure/retry/no-import/identity and raw browser liability boundary, measures unchanged startup, freezes exact source and runs full gates; native/staging/WORLD release/live remain.",
+  "newReadinessFindings": [
+    "Server static install order and cached/API gates source-reviewed. Unsupported-ticket marker disappearance guard is present; raw valid ticket coupled with malformed browser debt may retain marker but lose loan disclosure, pending regression.",
+    "Rules hint loads at explicit same-city home with away residence; unnecessary import unless actual legacy inference demonstrates relevance.",
+    "Actual corrected profile42/41 run now passes old campus equivalence and teaching hydration/retry fences; new homeward visitor probe fixture fails before completing its full scenario group."
+  ],
+  "production": {
+    "checkedAt": "2026-10-09T16:46:18.430681+00:00",
+    "health": "ok",
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "serverTime": 1791564276965,
+    "qualification": "Independent HTTP health only; programme not deployed, gameplay/save continuity unverified."
+  }
 }

@@ -1,5 +1,9 @@
 # Living-world implementation checkpoint
 
+## Browser boundary repair and profile retest - 2026-10-09T16:46:18.430681+00:00
+
+Actual firstclient/profile42/39pass/3fail0skip1.008s retains generated-probe syntax failure. Owner corrected escaping and narrow rebuildClientLife guard; actual next42/41pass/1fail0skip3.466s passes unsupported cached/API marker preservation and earlier deferred same-owner hydration. Sole remaining homeward visitor probe failsdirname(undefined): special fixture omits request/evaluation/release fields. Root diagnosed and handed correction to sole Integration writer; no failing assertion removed. [Updated exact scoped receipt](homeward-readiness-dirty-review.json). Current valid-ticket/malformed browser liability and own-home/away lazy-load edge still require proof. No current live process inferred from stale intent; this run is terminal. Production freshly healthoka446 at16:44UTC, serverTime1791564276965; no programme release/native/live-save acceptance. Full goal remains ACTIVE, next visitor/profile retest and measured startup then exact full/staging/native/WORLD gates.
+
 ## Actual readiness/fault iteration - 2026-10-09T16:42:45.046883+00:00
 
 Owner now applied private planner/reader and storage-fault source. Actual first fault run2/0pass/2fail retained; corrected2/2pass0skip17.049s. Expanded readiness/fault run is TERMINAL59/58pass/1fail0skip22.213s, not live: sole deferred same-owner campus hydration failure; owner restored single waiting promise in current dirty source, retest pending. Actual Node/SQLite six malformed debt-row, full immediate rollback and concurrent unchanged-ID host cases pass within this run. [Exact qualified receipt](homeward-readiness-dirty-review.json). Earlier baseline39d review remains historical.

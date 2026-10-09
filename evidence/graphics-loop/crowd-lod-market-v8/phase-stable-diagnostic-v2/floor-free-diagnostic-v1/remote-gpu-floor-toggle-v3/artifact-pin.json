@@ -1,0 +1,58 @@
+{
+  "schema": "allworld-market-lod-v8-floor-toggle-live-pin-v3",
+  "packageRunId": 37904211885,
+  "packageCommit": "c305ea05940114c9d0bc4aa9fffae3b1a4cf9265",
+  "packageBranch": "codex/graphics-v8-floor-toggle-cpu-v2",
+  "artifactName": "market-floor-toggle-cpu-package-v2-37904211885",
+  "packageManifestSha256": "acc1ce99e345be8d0b862d3d28e2b78d37e55db5b86e008b1344e5f97d9c4b65",
+  "sourceManifestSha256": "aa67dd415abf31dbcddf794543e7d954635ceb6792a8ac424f28fe4f5ac9abd8",
+  "packageStatus": "floor-reference-visibility-causal-diagnostic-v2-package-only-not-visual-or-runtime-acceptance",
+  "builderSha256": "df7c7be07e040ee561a7727fe8f7f25adcb383357739a155c34f5d4de5206ba3",
+  "viewerSha256": "95a7b11f062d553ecf056b8990d69d78119d038f9119a0fdf075f96fa0d3e42d",
+  "inventorySha256": "b80d198dd2d0327258df6dee5fc3e180af887207fd77b88c1ccae63d4988ea4b",
+  "actors": [
+    {
+      "id": "graphics-host-crowd-02",
+      "seed": "graphics-host-crowd-02",
+      "family": "male",
+      "body": "man",
+      "outfit": "hoodie"
+    },
+    {
+      "id": "graphics-host-crowd-03",
+      "seed": "graphics-host-crowd-03",
+      "family": "female",
+      "body": "woman",
+      "outfit": "owambe"
+    }
+  ],
+  "captureMatrix": {
+    "modes": [
+      "source",
+      "compact"
+    ],
+    "floorStates": [
+      "hidden",
+      "visible"
+    ],
+    "yawDegrees": 0,
+    "pose": "walk",
+    "minimumLiveElapsedSeconds": 2.4,
+    "capturesPerActor": 4,
+    "expectedPngCount": 8,
+    "pairContract": "At one fixed full-body camera and one identical paused production-stride phase, capture source-hidden, source-visible, compact-visible, compact-hidden; assert exact bone checkpoint across every state."
+  },
+  "limits": {
+    "scope": "diagnostic remote headless Linux Chrome/ANGLE SwiftShader only",
+    "groupRssMiB": 2048,
+    "wallSeconds": 60,
+    "nodeHeapMiB": 96,
+    "doesNotProve": [
+      "hardware GPU fidelity",
+      "mobile performance or battery",
+      "all Market identities or outfits",
+      "production acceptance"
+    ]
+  },
+  "sourcePinsSha256": "65efc03305ce13ef352954c22ab175cbee5a281a0235e7f78691986ee9080112"
+}

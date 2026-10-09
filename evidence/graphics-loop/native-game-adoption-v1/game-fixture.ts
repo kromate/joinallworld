@@ -216,9 +216,18 @@ function createFixture() {
     target.y = bounds.min.y + Math.min(1.2, bounds.getSize(new THREE.Vector3()).y * 0.5);
     camera.fov = 48;
     camera.updateProjectionMatrix();
-    camera.position.copy(origin).addScaledVector(viewAxis, 3.8);
-    camera.position.y = bounds.min.y + 1.4;
-    camera.lookAt(target);
+    const offsets = side === 'face-candidate' ? [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6,
+      Math.PI / 4, -Math.PI / 4, Math.PI / 3, -Math.PI / 3, Math.PI / 2, -Math.PI / 2] : [0];
+    // The office has real foreground furniture. Pick a close-up angle only after its
+    // face and torso rays are clear; retain the original candidate if every view is blocked.
+    for (const offset of offsets) {
+      const candidate = viewAxis.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), offset);
+      camera.position.copy(origin).addScaledVector(candidate, 3.8);
+      camera.position.y = bounds.min.y + 1.4;
+      camera.lookAt(target);
+      const visibility = measureCloseCameraRay(actor);
+      if (side !== 'face-candidate' || (visibility.clearLine && visibility.bodyCenterLineClear)) break;
+    }
   }
 
   function actorFrame(actor: THREE.Object3D | null): CameraActorFrame | null {
@@ -538,12 +547,13 @@ function createFixture() {
       const headPoint = head?.getWorldPosition(new THREE.Vector3()) ?? bounds.getCenter(new THREE.Vector3()).setY(bounds.min.y + bounds.getSize(new THREE.Vector3()).y * 0.88);
       const torsoPoint = bounds.getCenter(new THREE.Vector3());
       const footPoint = bounds.getCenter(new THREE.Vector3()).setY(bounds.min.y + Math.min(0.12, bounds.getSize(new THREE.Vector3()).y * 0.06));
-      actorRegionPixels = { head: readWorld(headPoint), torso: readWorld(torsoPoint), feet: readWorld(footPoint) };
-      actorPixel = actorRegionPixels.torso;
-      const contrast = (pixel: number[] | null) => pixel && backgroundPixel
+      const regions = { head: readWorld(headPoint), torso: readWorld(torsoPoint), feet: readWorld(footPoint) };
+      actorRegionPixels = regions;
+      actorPixel = regions.torso;
+      const contrast = (pixel: number[] | null | undefined) => pixel && backgroundPixel
         ? Math.max(...pixel.slice(0, 3).map((channel, index) => Math.abs(channel - backgroundPixel![index]!))) : 0;
-      actorRegionContrast = { head: contrast(actorRegionPixels.head), torso: contrast(actorRegionPixels.torso), feet: contrast(actorRegionPixels.feet) };
-      actorPixelContrast = Math.max(...actorPixel.slice(0, 3).map((channel, index) => Math.abs(channel - backgroundPixel![index]!)));
+      actorRegionContrast = { head: contrast(regions.head), torso: contrast(regions.torso), feet: contrast(regions.feet) };
+      actorPixelContrast = contrast(actorPixel);
     }
     let canvasPng = '';
     let canvasPngError = '';

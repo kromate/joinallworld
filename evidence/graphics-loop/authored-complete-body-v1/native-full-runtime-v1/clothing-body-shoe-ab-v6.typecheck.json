@@ -1,0 +1,18 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client"]
+  },
+  "include": [
+    "clothing-body-shoe-ab-v6/clothing-body-shoe-ab-v6.ts",
+    "clothing-body-shoe-ab-v6/body-coverage-patch.ts",
+    "trouser-sock-trim.ts",
+    "native-prepared-factory-v30.ts",
+    "../assets-fetch-v6.ts",
+    "native-actions.ts",
+    "native-pose.ts",
+    "native-rigid-footwear.ts",
+    "../../body-mask-union.ts"
+  ]
+}

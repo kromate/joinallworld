@@ -1,0 +1,45 @@
+name: Combined actual clothing body and shoe comparison
+on:
+  push:
+    branches: [codex/graphics-clothing-body-shoe-ab-v6]
+permissions:
+  contents: read
+jobs:
+  sock-trim-ab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare the body GLB used by the pinned V29 factory
+        run: |
+          python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
+          python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
+      - name: Verify exact body mask and shoe comparison inputs
+        run: node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/clothing-body-shoe-ab-v6/verify-source-pins-v6.mjs
+      - name: Typecheck real mesh comparison
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/clothing-body-shoe-ab-v6.typecheck.json
+      - name: Bundle matched real actor comparison
+        if: always()
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/clothing-body-shoe-ab-v6/bundle-clothing-body-shoe-ab-v6.mjs
+      - name: Render explicit source versus candidate clothes on actual actor
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
+          python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/clothing-ab-resources.log /tmp/clothing-ab-resources.json node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/clothing-body-shoe-ab-v6/render-clothing-body-shoe-ab-v6.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: clothing-body-shoe-ab-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/clothing-body-shoe-ab-v6/remote-results/
+            /tmp/clothing-ab-resources.*

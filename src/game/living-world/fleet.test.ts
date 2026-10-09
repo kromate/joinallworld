@@ -37,6 +37,7 @@ test('separate catalogue permission allocates one unique custodial unit with sta
   const before = snapshot(initial)
   const request = { cityId: 'lagos', requestId: 'start-ada-0', expectedRevision: 0 }
   const started = allocateFleetUnit(initial, request, evidence('ada', 100))
+  assert.ok(started.ok)
   assert.deepEqual([started.ok, started.code, started.unitId], [true, 'unit_allocated', 'marina-sedan-01'])
   assert.deepEqual(initial, before, 'allocation copies the state instead of mutating the stored source')
   assert.deepEqual(readValidatedFleetState(started.state), started.state)
@@ -45,6 +46,7 @@ test('separate catalogue permission allocates one unique custodial unit with sta
   assert.equal('owner' in lease, false, 'custody does not transfer ownership')
 
   const duplicate = allocateFleetUnit(started.state, request, evidence('ada', 101))
+  assert.ok(duplicate.ok)
   assert.deepEqual([duplicate.ok, duplicate.code, duplicate.unitId, duplicate.state], [true, 'duplicate', started.unitId, started.state])
   const changed = allocateFleetUnit(started.state, { ...request, expectedRevision: 1 }, evidence('ada', 101))
   assert.deepEqual([changed.ok, changed.code, changed.state], [false, 'request_conflict', started.state])
@@ -52,6 +54,7 @@ test('separate catalogue permission allocates one unique custodial unit with sta
   assert.deepEqual([secondForAda.ok, secondForAda.code, secondForAda.state], [false, 'custody_retained', started.state])
 
   const bob = allocation(started.state, 'bob', 103)
+  assert.ok(bob.ok)
   assert.deepEqual([bob.ok, bob.unitId, bob.state.units[1]!.lease?.actor], [true, 'marina-sedan-02', 'bob'])
   const clockReversedReplay = allocateFleetUnit(bob.state, request, evidence('ada', 102))
   assert.deepEqual([clockReversedReplay.ok, clockReversedReplay.code, clockReversedReplay.state], [false, 'request_conflict', bob.state])
@@ -79,6 +82,7 @@ test('a stale competing actor loses CAS; only one winner can retain a unit from 
   const ada = committed
   assert.equal(ada.units.filter(unit => unit.lease && unit.lease.status !== 'returned').length, 1)
   const nextActor = allocation(ada, 'bob', 102)
+  assert.ok(nextActor.ok)
   assert.deepEqual([nextActor.ok, nextActor.unitId], [true, 'marina-sedan-02'])
 })
 
@@ -145,6 +149,7 @@ test('expiry and revocation retain custody until verified stopped depot return; 
     assert.deepEqual([refusedReplay.ok, refusedReplay.state], [false, returned.state])
   }
   const next = allocation(returned.state, 'ada', lease.expiresAt + 5)
+  assert.ok(next.ok)
   assert.deepEqual([next.ok, next.unitId, next.state.generation, next.state.units[0]!.lease?.tripId], [true, unitId, 2, 'fleet-lease-2'])
   const staleStart = allocateFleetUnit(next.state, { cityId: 'lagos', requestId: 'start-ada-0', expectedRevision: 0 }, evidence('ada', lease.expiresAt + 6))
   assert.deepEqual([staleStart.ok, staleStart.code, staleStart.state], [false, 'revision_conflict', next.state])

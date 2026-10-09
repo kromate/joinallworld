@@ -95,8 +95,8 @@ export function readValidatedFleetState(value: unknown): FleetState | null {
           || !id(l.actor) || !id(l.cityId) || l.cityId !== 'lagos' || l.resourceId !== RESOURCE || l.depotId !== DEPOT
           || !id(l.routeId) || !id(l.routeVersion) || l.qualificationId !== QUALIFICATION || l.qualificationVersion !== 1
           || l.tripId !== `fleet-lease-${generation}` || tripIds.has(l.tripId as string) || startRequestIds.has(l.startRequestId as string)
-          || !time(l.permissionIssuedAt) || l.permissionIssuedAt > l.startedAt
-          || !time(l.startedAt) || !time(l.expiresAt) || l.expiresAt - l.startedAt !== STARTER_TRIP_LEASE_MS) return null
+          || !time(l.startedAt) || !time(l.permissionIssuedAt) || l.permissionIssuedAt > l.startedAt
+          || !time(l.expiresAt) || l.expiresAt - l.startedAt !== STARTER_TRIP_LEASE_MS) return null
         const status = l.status as FleetLease['status']
         if ((status === 'active' && (l.recoveryReason !== undefined || l.returnedAt !== undefined))
           || (status === 'recovery' && (typeof l.recoveryReason !== 'string' || !['lease_expired', 'qualification_revoked', 'permission_revoked', 'qualification_changed', 'permission_changed', 'route_changed', 'depot_unavailable'].includes(l.recoveryReason) || l.returnedAt !== undefined))
@@ -253,6 +253,7 @@ function returnFingerprint(input: { cityId: string; tripId: string; expectedRevi
 export function returnFleetUnit(state: FleetState, input: unknown, pose: TrustedFleetReturnPose): FleetResult {
   if (!obj(input) || !exact(input, ['cityId', 'requestId', 'tripId', 'expectedRevision']) || !id(input.cityId)
     || !id(input.requestId) || !id(input.tripId) || !whole(input.expectedRevision)) return fail(state, 'invalid_request')
+  const fingerprint = returnFingerprint({ cityId: input.cityId, tripId: input.tripId, expectedRevision: input.expectedRevision })
   if (!obj(pose) || !exact(pose, ['actor', 'tripId', 'unitId', 'cityId', 'depotId', 'verified', 'stopped', 'at'])
     || !id(pose.actor) || !id(pose.tripId) || !id(pose.unitId) || !id(pose.cityId) || !id(pose.depotId)
     || typeof pose.verified !== 'boolean' || typeof pose.stopped !== 'boolean' || !time(pose.at)) return fail(state, 'return_evidence_required')
@@ -262,7 +263,7 @@ export function returnFleetUnit(state: FleetState, input: unknown, pose: Trusted
   if (pose.actor !== lease.actor) return fail(state, 'wrong_actor')
   if (lease.status === 'returned' && lease.returnRequestId === input.requestId) {
     // A receipt replay acknowledges only the already-terminal return; it cannot authorize a new release.
-    return lease.returnFingerprint === returnFingerprint(input) && input.cityId === lease.cityId
+    return lease.returnFingerprint === fingerprint && input.cityId === lease.cityId
       && pose.tripId === lease.tripId && pose.unitId === unit.id && pose.cityId === lease.cityId
       && pose.depotId === lease.depotId && pose.verified && pose.stopped
       && pose.at >= lease.returnedAt! && pose.at >= state.lastAt
@@ -278,7 +279,7 @@ export function returnFleetUnit(state: FleetState, input: unknown, pose: Trusted
   const returned = next.units.find(row => row.id === unit.id)!.lease!
   returned.status = 'returned'; delete returned.recoveryReason
   returned.returnedAt = pose.at; returned.returnRequestId = input.requestId; returned.returnRevision = input.expectedRevision
-  returned.returnFingerprint = returnFingerprint(input)
+  returned.returnFingerprint = fingerprint
   if (!withinRecordCap(next)) return fail(state, 'record_too_large')
   return { ok: true, code: 'unit_returned', state: next, unitId: unit.id }
 }

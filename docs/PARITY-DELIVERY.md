@@ -1,3 +1,11 @@
+## 2026-10-09 14:42 UTC — Strict source boundary repairs
+
+The engine fact validator keeps the standard host URL parser through an unknown, checked runtime boundary, avoiding a DOM/Node global type in the engine project. Seven focused starter/content/source-URL checks passed with no skips (`/tmp/allworld-africa-url-boundary.log`,407.580083ms). Both source URL fields reject relative URLs, HTTP, file URLs and embedded credentials; valid uppercase HTTPS remains accepted without rewriting the pinned public source.
+
+The first-five generator and geometry exports now use the explicit existing `DestinationGeometry` type. All five original JSON literal payload byte strings and parsed geometries were independently compared before/after and remain identical; retained proof is `/tmp/allworld-geometry-type-boundary-proof.json`. Coordinates, building/road values, renderer and facts did not change. Only generated source syntax and the corresponding source asset byte lengths/digests were updated in existing receipts and packet pins; acquisition evidence was not replaced or invented. The offline pinned-assets check passed for all five. This bounds exported inference while retaining strict structural validation; whether it resolves incomplete compiler processes is not established until the corrected serial run.
+
+The next candidate requires final compiler/build/download/fullCI and rendered acceptance. No caps, projects, baselines, production bindings or player data were altered. The next country wave and rejected graphics remain outside this release.
+
 ## 2026-10-09 14:34 UTC — Combined compiler stopped; source corrections
 
 Clean pushed `9a369dc1cbca1c934a43014aedda9b4b9a9e58c0` passed local Node24 preflight and catalogue gates. The serial five-project compiler failed after81.141s: engine source had two missing-URL-global diagnostics; the new journey fixture had two unknown numeric accumulator diagnostics; client and test compilers terminated with SIGABRT. The retained summary does not establish the signal cause. Build and download gates never started. Limits remain1536MiB heap, one heavy stage and one minifier worker. Captured child output is now preserved on incomplete compiler results to make the next failure diagnosable; no project, compiler setting or baseline was waived.

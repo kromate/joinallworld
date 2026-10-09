@@ -66,9 +66,15 @@ export function validateDestinationFacts(facts: DestinationFacts): ValidatedDest
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(facts.id)) throw new TypeError('destination id must be a lowercase hyphenated id')
   if (!/^[a-z]{2}$/u.test(facts.country.idISOlower)) throw new TypeError('country ISO id must be two lowercase letters')
   const sourceUrl = (value: string, label: string): void => {
-    let url: URL
-    try { url = new URL(value) } catch { throw new TypeError(`${label} must be an absolute HTTPS URL`) }
-    if (url.protocol !== 'https:' || url.username || url.password) throw new TypeError(`${label} must be an HTTPS URL without credentials`)
+    // Keep the standard parser at the host boundary without importing DOM/Node types into the engine.
+    const parser: unknown = Reflect.get(globalThis, 'URL')
+    if (typeof parser !== 'function') throw new TypeError(`${label} needs the host URL parser`)
+    let url: unknown
+    try { url = Reflect.construct(parser, [value]) } catch { throw new TypeError(`${label} must be an absolute HTTPS URL`) }
+    if (typeof url !== 'object' || url === null || Reflect.get(url, 'protocol') !== 'https:'
+      || Reflect.get(url, 'username') !== '' || Reflect.get(url, 'password') !== '') {
+      throw new TypeError(`${label} must be an HTTPS URL without credentials`)
+    }
   }
   sourceUrl(facts.sourceUrl, 'source URL')
   sourceUrl(facts.airport.sourceUrl, 'airport source URL')

@@ -11,6 +11,7 @@ import { city as yaounde } from '../yaounde/index.ts'
 import { buildDestinationContent } from './contentBuilder.ts'
 import { createDestinationModule } from './module.ts'
 import { buildDestinationRules } from './rules.ts'
+import { validateDestinationFacts } from './types.ts'
 import type { DestinationFacts } from './types.ts'
 
 const facts: DestinationFacts = {
@@ -76,4 +77,14 @@ test('destination factory builds foreign-timed starter rules and playable source
 
 for (const module of [accra, lome, yaounde, nairobi, algiers]) test(`${module.id}: opened content contract`, async () => {
   assertCityContentContract(module, await module.loadContent(), { profile: 'opened' })
+})
+
+
+test('destination source URLs retain standard HTTPS and credential refusal semantics', () => {
+  const accepted = validateDestinationFacts({ ...facts, sourceUrl: 'HTTPS://example.com/source?x=1' })
+  assert.equal(accepted.sourceUrl, 'HTTPS://example.com/source?x=1', 'the parser validates without rewriting the pinned public source')
+  for (const sourceUrl of ['/relative', 'http://example.com/', 'file:///source', 'https://user@example.com/', 'https://user:secret@example.com/', 'https://user%40name@example.com/']) {
+    assert.throws(() => validateDestinationFacts({ ...facts, sourceUrl }), TypeError, sourceUrl)
+    assert.throws(() => validateDestinationFacts({ ...facts, airport: { ...facts.airport, sourceUrl } }), TypeError, `airport: ${sourceUrl}`)
+  }
 })

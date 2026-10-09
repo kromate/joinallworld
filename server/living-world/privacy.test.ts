@@ -68,6 +68,23 @@ function qualificationRecord(publicId: string): Record<string, unknown> {
     courseId: 'district-practice', courseVersion: '1', cityId: 'lagos',
   }
 }
+function rentalRecord(publicId: string, actor = publicId): Record<string, unknown> {
+  return {
+    version: 1,
+    revision: 1,
+    generation: 0,
+    entitlement: {
+      actor,
+      resourceId: 'marina-starter-sedan',
+      scope: 'district-driving',
+      qualificationId: 'district-driving',
+      qualificationVersion: 1,
+      issuedAt: 21,
+      status: 'active',
+    },
+    trip: null,
+  }
+}
 function withoutAccount(value: Record<string, unknown>): Record<string, unknown> {
   const copy = structuredClone(value)
   delete copy.account
@@ -117,6 +134,7 @@ test('progress export point-reads owned active and parked IDs and emits only whi
     driving: { [actors.active]: drivingRecord(actors.active), [actors.parked]: drivingRecord(actors.parked), [actors.unrelated]: { privateToken: 'unread' } },
     qualifications: { [actors.active]: qualificationRecord(actors.active), [actors.parked]: qualificationRecord(actors.parked), [actors.unrelated]: { future: true } },
     barber,
+    rentals: { [actors.active]: rentalRecord(actors.active), [actors.parked]: rentalRecord(actors.parked), [actors.unrelated]: rentalRecord(actors.unrelated) },
   })
   const before = structuredClone(db.livingWorld)
   const exported = exportLivingWorldProgress(db, 'private-account-id', [actors.active, actors.parked])
@@ -134,8 +152,15 @@ test('progress export point-reads owned active and parked IDs and emits only whi
       },
     },
   })
+  assert.deepEqual(exported.actors[0]?.starterRental, {
+    status: 'present',
+    progress: {
+      resourceId: 'marina-starter-sedan', scope: 'district-driving', qualificationId: 'district-driving',
+      version: 1, status: 'active', issuedAt: 21, revision: 1,
+    },
+  })
   const json = JSON.stringify(exported)
-  for (const privateValue of ['private-account-id', 'private-basic-', 'private-advanced-', 'lastPacket', 'frames', 'unrelated-hostile-record', 'privateToken', 'unexpected']) {
+  for (const privateValue of ['private-account-id', 'private-basic-', 'private-advanced-', 'lastPacket', 'frames', 'trip', 'tripId', 'startFingerprint', 'custodyPointId', 'unrelated-hostile-record', 'privateToken', 'unexpected']) {
     assert.equal(json.includes(privateValue), false, `export omits ${privateValue}`)
   }
   assert.deepEqual(db.livingWorld, before, 'export does not initialize or mutate stored rows')
@@ -144,6 +169,7 @@ test('progress export point-reads owned active and parked IDs and emits only whi
   assert.equal(wrongOwner.actors[0]?.driving.status, 'present')
   assert.equal(wrongOwner.actors[0]?.qualification.status, 'present')
   assert.deepEqual(wrongOwner.actors[0]?.barber, { status: 'quarantined' }, 'strict barber data for another account is not exported')
+  assert.deepEqual(wrongOwner.actors[0]?.starterRental.status, 'present', 'rental ownership follows the unchanged character publicId')
   assert.deepEqual(db.livingWorld, before, 'wrong-owner export is also read-only')
 })
 
@@ -153,7 +179,7 @@ test('empty legacy and malformed future data are represented without bootstrap o
   const empty = exportLivingWorldProgress(legacy, 'account-verified', [actors.active])
   assert.deepEqual(empty.actors[0], {
     publicId: actors.active,
-    driving: { status: 'empty' }, qualification: { status: 'empty' }, barber: { status: 'empty' },
+    driving: { status: 'empty' }, qualification: { status: 'empty' }, barber: { status: 'empty' }, starterRental: { status: 'empty' },
   })
   assert.deepEqual(legacy, legacyBefore, 'missing legacy collection remains absent')
   eraseLivingWorldProgress(dbWith(null), [])
@@ -162,15 +188,22 @@ test('empty legacy and malformed future data are represented without bootstrap o
     driving: [],
     qualifications: 'future-layout',
     barber: { [actors.active]: { v: 2, opaqueFuture: 'never disclose' } },
+    rentals: {
+      [actors.active]: rentalRecord(actors.active, actors.unrelated),
+      [actors.parked]: { ...rentalRecord(actors.parked), trip: { opaqueFuture: 'rental-trip' } },
+      [actors.unrelated]: { version: 2, opaqueFuture: 'rental-future' },
+    },
     futureSlice: { [actors.active]: { data: 'preserve' } },
   })
   const before = structuredClone(malformed)
   const exported = exportLivingWorldProgress(malformed, 'account-verified', [actors.active])
   assert.deepEqual(exported.actors[0], {
     publicId: actors.active,
-    driving: { status: 'quarantined' }, qualification: { status: 'quarantined' }, barber: { status: 'quarantined' },
+    driving: { status: 'quarantined' }, qualification: { status: 'quarantined' }, barber: { status: 'quarantined' }, starterRental: { status: 'quarantined' },
   })
   assert.equal(JSON.stringify(exported).includes('never disclose'), false)
+  assert.equal(JSON.stringify(exported).includes('rental-future'), false)
+  assert.deepEqual(exportLivingWorldProgress(malformed, 'account-verified', [actors.parked]).actors[0]?.starterRental, { status: 'quarantined' }, 'future trip state stays quarantined')
   assert.deepEqual(malformed, before, 'malformed roots and future slices are read-only')
   assert.equal(rebindBarberAccount(malformed, actors.active, null, 'account-verified'), false, 'a future barber row cannot be rebound')
   assert.deepEqual(malformed, before, 'refusing a future row leaves it unchanged')
@@ -181,7 +214,7 @@ test('empty legacy and malformed future data are represented without bootstrap o
   const rootBefore = structuredClone(malformedRoot)
   assert.deepEqual(exportLivingWorldProgress(malformedRoot, 'account-verified', [actors.active]).actors[0], {
     publicId: actors.active,
-    driving: { status: 'quarantined' }, qualification: { status: 'quarantined' }, barber: { status: 'quarantined' },
+    driving: { status: 'quarantined' }, qualification: { status: 'quarantined' }, barber: { status: 'quarantined' }, starterRental: { status: 'quarantined' },
   })
   assert.throws(() => eraseLivingWorldProgress(malformedRoot, [actors.active]), /privacy-erasure-unavailable/)
   assert.deepEqual(malformedRoot, rootBefore)
@@ -191,12 +224,13 @@ test('erasure preflights every known map before deleting from earlier valid maps
   const db = dbWith({
     driving: { [actors.active]: drivingRecord(actors.active) },
     qualifications: { [actors.active]: qualificationRecord(actors.active) },
-    barber: 'malformed-map',
+    barber: { [actors.active]: completedBarberRecord(actors.active, null) },
+    rentals: 'malformed-map',
     futureSlice: { preserve: true },
   })
   const before = structuredClone(db)
   assert.throws(() => eraseLivingWorldProgress(db, [actors.active]), /privacy-erasure-unavailable/)
-  assert.deepEqual(db, before, 'malformed later barber map leaves valid driving and qualification rows unchanged')
+  assert.deepEqual(db, before, 'malformed rental map leaves all earlier known rows unchanged')
 })
 
 test('explicit erasure deletes only supplied IDs, including malformed owned rows', () => {
@@ -206,6 +240,7 @@ test('explicit erasure deletes only supplied IDs, including malformed owned rows
     driving: { [actors.active]: drivingRecord(actors.active), [actors.parked]: { malformed: true }, [actors.unrelated]: drivingRecord(actors.unrelated) },
     qualifications: { [actors.active]: qualificationRecord(actors.active), [actors.parked]: { malformed: true }, [actors.unrelated]: qualificationRecord(actors.unrelated) },
     barber: { [actors.active]: activeBarber, [actors.parked]: { v: 99 }, [actors.unrelated]: unrelatedBarber },
+    rentals: { [actors.active]: rentalRecord(actors.active), [actors.parked]: { version: 99 }, [actors.unrelated]: rentalRecord(actors.unrelated) },
     futureSlice: { [actors.parked]: { preserve: true } },
   })
   const root = db.livingWorld as Record<string, unknown>
@@ -214,14 +249,16 @@ test('explicit erasure deletes only supplied IDs, including malformed owned rows
     driving: structuredClone((root.driving as Record<string, unknown>)[actors.active]),
     qualifications: structuredClone((root.qualifications as Record<string, unknown>)[actors.active]),
     barber: structuredClone((root.barber as Record<string, unknown>)[actors.active]),
+    rentals: structuredClone((root.rentals as Record<string, unknown>)[actors.active]),
   }
   const unrelatedBefore = {
     driving: structuredClone((root.driving as Record<string, unknown>)[actors.unrelated]),
     qualifications: structuredClone((root.qualifications as Record<string, unknown>)[actors.unrelated]),
     barber: structuredClone((root.barber as Record<string, unknown>)[actors.unrelated]),
+    rentals: structuredClone((root.rentals as Record<string, unknown>)[actors.unrelated]),
   }
   eraseLivingWorldProgress(db, [actors.parked])
-  for (const slice of ['driving', 'qualifications', 'barber']) {
+  for (const slice of ['driving', 'qualifications', 'barber', 'rentals']) {
     const rows = root[slice] as Record<string, unknown>
     assert.equal(Object.hasOwn(rows, actors.parked), false)
     assert.deepEqual(rows[actors.active], activeBefore[slice as keyof typeof activeBefore])

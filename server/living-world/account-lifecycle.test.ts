@@ -191,7 +191,7 @@ test('account export proves ownership and emits strict active and parked living-
   assert.deepEqual(exported.livingWorld.actors.map(actor => actor.publicId), [active.id, parked.id])
   assert.equal(exported.livingWorld.actors.some(actor => actor.publicId === unrelated.id), false)
   for (const actor of exported.livingWorld.actors) {
-    assert.deepEqual(Object.keys(actor).sort(), ['barber', 'driving', 'publicId', 'qualification'])
+    assert.deepEqual(Object.keys(actor).sort(), ['barber', 'driving', 'publicId', 'qualification', 'starterRental'])
     const barber = actor.barber as Record<string, unknown>
     assert.deepEqual(Object.keys(barber).sort(), ['progress', 'status'])
     const progress = barber.progress as Record<string, unknown>
@@ -242,6 +242,7 @@ test('delete with erase true removes only the account’s proven IDs across know
     const ids = [active.id, parked.id, unrelated.id]
     livingWorld.driving = Object.fromEntries(ids.map(id => [id, { fixtureOnly: 'driving continuity; no course result claimed' }]))
     livingWorld.qualifications = Object.fromEntries(ids.map(id => [id, { fixtureOnly: 'qualification continuity; no qualification earned' }]))
+    livingWorld.rentals = Object.fromEntries(ids.map(id => [id, { fixtureOnly: 'rental erasure; no permission earned or vehicle allocated' }]))
     livingWorld.futureSlice = { [unrelated.id]: { preserve: true } }
   })
   const before = await a.f.server.store.read(db => snapshot((db as unknown as { livingWorld: Record<string, unknown> }).livingWorld))
@@ -249,7 +250,7 @@ test('delete with erase true removes only the account’s proven IDs across know
   const deleted = await a.proved('/api/account/delete', { confirm: 'delete', erase: true }, signedWithParked.cookie, 'UidErase')
   assert.deepEqual([deleted.status, (await deleted.json() as { kept: boolean }).kept], [200, false])
   const after = await a.f.server.store.read(db => snapshot((db as unknown as { livingWorld: Record<string, unknown> }).livingWorld))
-  for (const slice of ['driving', 'qualifications', 'barber']) {
+  for (const slice of ['driving', 'qualifications', 'barber', 'rentals']) {
     const beforeRows = before[slice] as Record<string, unknown>
     const afterRows = after[slice] as Record<string, unknown>
     assert.equal(Object.hasOwn(afterRows, active.id), false, `${slice} active data is erased`)
@@ -464,4 +465,45 @@ test('proven parked-character switch refuses a foreign barber row and preserves 
       parkedBarber: (db.livingWorld as { barber: Record<string, unknown> }).barber[parked.id],
     })
   }), before, 'failed switch leaves account, active character, parked archive, and both programme rows unchanged')
+})
+
+
+test('character-bound starter permission survives adoption and parking; account deletion removes only discarded IDs', async t => {
+  const a = await accountHarness(t)
+  const ada = await a.guest('PermissionAda'), bola = await a.guest('PermissionBola'), other = await a.guest('PermissionOther')
+  // Retained permission fixtures test account continuity only. No course pass, earned permission or car allocation is claimed.
+  const grant = (publicId: string) => ({ version: 1, revision: 1, generation: 0, trip: null, entitlement: {
+    actor: publicId, resourceId: 'marina-starter-sedan', scope: 'district-driving', qualificationId: 'district-driving',
+    qualificationVersion: 1, issuedAt: a.f.now(), status: 'active',
+  } })
+  const before = Object.fromEntries([ada, bola, other].map(player => [player.id, grant(player.id)]))
+  await a.f.server.store.transact(db => {
+    const root = (db as unknown as { livingWorld?: Record<string, unknown> }).livingWorld ?? {}
+    root.rentals = snapshot(before)
+    ;(db as unknown as { livingWorld: Record<string, unknown> }).livingWorld = root
+  })
+  const rows = () => a.f.server.store.read(db => snapshot((db as unknown as { livingWorld: { rentals: Record<string, unknown> } }).livingWorld.rentals))
+  const linked = await a.signIn('UidPermission', ada.cookie)
+  assert.deepEqual([linked.status, linked.body.outcome, linked.body.character?.id], [200, 'linked', ada.id])
+  assert.deepEqual(await rows(), before, 'same public character permission needs no account-owner rewrite')
+  const parked = await a.signIn('UidPermission', bola.cookie)
+  assert.deepEqual([parked.status, parked.body.outcome, parked.body.parked?.id], [200, 'parked', bola.id])
+  assert.deepEqual(await rows(), before)
+  const selected = await a.proved('/api/account/character', { use: bola.id }, parked.cookie, 'UidPermission')
+  assert.equal(selected.status, 200)
+  assert.deepEqual(await rows(), before)
+  const exported = await a.proved('/api/account/export', {}, parked.cookie, 'UidPermission')
+  assert.equal(exported.status, 200)
+  const view = await exported.json() as { livingWorld: { actors: Array<{ publicId: string; starterRental: { status: string; progress?: Record<string, unknown> } }> } }
+  assert.deepEqual(view.livingWorld.actors.map(actor => actor.publicId).sort(), [ada.id, bola.id].sort())
+  for (const actor of view.livingWorld.actors) {
+    assert.equal(actor.starterRental.status, 'present')
+    assert.deepEqual(Object.keys(actor.starterRental.progress ?? {}).sort(), ['issuedAt', 'qualificationId', 'resourceId', 'revision', 'scope', 'status', 'version'])
+    assert.ok(!JSON.stringify(actor.starterRental).match(/trip|actor|account|fingerprint|receipt|custody/i))
+  }
+  assert.deepEqual(await rows(), before, 'export is point-read and leaves all retained rows intact')
+  const deleted = await a.proved('/api/account/delete', { confirm: 'delete', erase: false }, parked.cookie, 'UidPermission')
+  assert.deepEqual([deleted.status, (await deleted.json() as { kept: boolean }).kept], [200, true])
+  assert.deepEqual(await rows(), { [bola.id]: before[bola.id], [other.id]: before[other.id] },
+    'discarded parked character is erased; retained guest and unrelated actor preserve their exact permissions')
 })

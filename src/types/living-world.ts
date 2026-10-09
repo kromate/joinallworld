@@ -2,6 +2,27 @@
 import type { CityId, CityGateErrorCode, HostErrorCode, JsonBodyErrorCode, Ok, OnceErrorCode, SessionErrorCode, StorageErrorCode } from './protocol.ts'
 import type { DrivingInput, DrivingRoute, DrivingState } from '../game/living-world/driving.ts'
 import type { Qualification } from '../game/living-world/journey.ts'
+import type { StarterEntitlement } from '../game/living-world/rental.ts'
+
+/** Saved borrowing permission only. No vehicle is allocated and mapped trips remain disabled. */
+export interface StarterRentalResponse {
+  ok: boolean
+  code: string
+  reason?: string
+  duplicate?: true
+  permission: StarterEntitlement | null
+  revision: number | null
+  eligible: boolean
+  valid: boolean
+  tripAvailable: false
+  allocation: 'none'
+}
+export interface StarterRentalClaimRequest {
+  cityId: CityId
+  requestId: string
+  qualificationJourneyId: string
+  qualificationVersion: number
+}
 
 export interface QualificationResponse {
   ok: boolean
@@ -52,6 +73,8 @@ type DrivingHttpError = HostErrorCode | SessionErrorCode | StorageErrorCode | Ci
   | 'invalid_city' | 'rate_limited' | 'busy' | 'onboarding_required'
   | 'driving_location_unavailable' | 'driving_storage_unavailable' | 'driving_record_too_large'
 export interface LivingWorldHttpRoutes {
+  'GET /api/living-world/rental': { query: { city: CityId }; response: Ok<StarterRentalResponse>; errors: DrivingHttpError | 'rental_storage_unavailable' | 'starter_city_unavailable' }
+  'POST /api/living-world/rental/claim': { body: StarterRentalClaimRequest; response: Ok<StarterRentalResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'rental_storage_unavailable' | 'invalid_rental_request' | 'starter_city_unavailable' }
   'GET /api/living-world/qualification': { query: { city: CityId }; response: Ok<QualificationResponse>; errors: DrivingHttpError | 'qualification_storage_unavailable' }
   'POST /api/living-world/qualification/claim': { body: QualificationClaimRequest; response: Ok<QualificationResponse>; errors: DrivingHttpError | JsonBodyErrorCode | OnceErrorCode | 'qualification_storage_unavailable' | 'invalid_qualification_request' }
   'GET /api/living-world/driving': { query: { city: CityId }; response: Ok<DrivingResponse>; errors: DrivingHttpError }

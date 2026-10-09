@@ -209,7 +209,7 @@ test('Worker account lifecycle preserves selected barber progress across SQLite 
   assert.deepEqual(exported.livingWorld.actors.map(actor => actor.publicId).sort(), [ada.id, bola.id].sort())
   assert.ok(!JSON.stringify(exported).includes('UidAda') && !JSON.stringify(exported).includes(accountCookie.slice(11)))
   for (const actor of exported.livingWorld.actors) {
-    assert.deepEqual(Object.keys(actor).sort(), ['barber', 'driving', 'publicId', 'qualification'])
+    assert.deepEqual(Object.keys(actor).sort(), ['barber', 'driving', 'publicId', 'qualification', 'starterRental'])
     assert.ok(!JSON.stringify(actor).match(/sessionId|nextSequence|packet|accountId|email|cookie/i))
   }
   const bolaOwned = await h.barberRow(bola.id), adaOwned = await h.barberRow(ada.id)

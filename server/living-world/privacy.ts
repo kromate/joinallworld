@@ -2,9 +2,10 @@
 import { readValidatedBarberRecord } from './barber-service.ts'
 import { readValidatedDrivingRecord } from './driving-service.ts'
 import { readValidatedQualificationRecord } from './qualification-service.ts'
+import { readValidatedStarterRentalRecord } from './rental-service.ts'
 import type { Db } from '../types.ts'
 
-const SLICES = ['driving', 'qualifications', 'barber'] as const
+const SLICES = ['driving', 'qualifications', 'barber', 'rentals'] as const
 const MAX_OWNED_ACTORS = 6
 const identifier = (value: unknown): value is string => typeof value === 'string' && value.length > 0 && value.length <= 100 && /^[\w:-]+$/.test(value)
 const record = (value: unknown): value is Record<string, unknown> => {
@@ -52,6 +53,15 @@ export interface LivingWorldPrivacyExport {
         advanced: BarberLessonSummary
       }
     }>
+    starterRental: Slice<{
+      resourceId: string
+      scope: 'district-driving'
+      qualificationId: string
+      version: number
+      status: 'active' | 'revoked'
+      issuedAt: number
+      revision: number
+    }>
   }[]
 }
 
@@ -71,12 +81,25 @@ export function exportLivingWorldProgress(db: Db, expectedAccount: string | null
   const drivingRows = sliceRows(root, 'driving')
   const qualificationRows = sliceRows(root, 'qualifications')
   const barberRows = sliceRows(root, 'barber')
+  const rentalRows = sliceRows(root, 'rentals')
   return {
     version: 1,
     actors: ids.map((publicId) => {
       const drivingRow = lookup(drivingRows, publicId, readValidatedDrivingRecord)
       const qualificationRow = lookup(qualificationRows, publicId, readValidatedQualificationRecord)
       const foundBarberRow = lookup(barberRows, publicId, readValidatedBarberRecord)
+      const rentalRow = lookup(rentalRows, publicId, readValidatedStarterRentalRecord)
+      const rental = rentalRow.status !== 'present' ? rentalRow : rentalRow.row.entitlement === null
+        ? { status: 'quarantined' as const }
+        : { status: 'present' as const, progress: {
+          resourceId: rentalRow.row.entitlement.resourceId,
+          scope: rentalRow.row.entitlement.scope,
+          qualificationId: rentalRow.row.entitlement.qualificationId,
+          version: rentalRow.row.entitlement.qualificationVersion,
+          status: rentalRow.row.entitlement.status,
+          issuedAt: rentalRow.row.entitlement.issuedAt,
+          revision: rentalRow.row.revision,
+        } }
       const barberRow = foundBarberRow.status === 'present' && foundBarberRow.row.account !== expectedAccount
         ? { status: 'quarantined' as const }
         : foundBarberRow
@@ -103,6 +126,7 @@ export function exportLivingWorldProgress(db: Db, expectedAccount: string | null
           earnedAt: qualificationRow.row.qualification.earnedAt,
         } },
         barber: barberRow.status !== 'present' ? barberRow : { status: 'present', progress: barberSummary(barberRow.row) },
+        starterRental: rental,
       }
     }),
   }

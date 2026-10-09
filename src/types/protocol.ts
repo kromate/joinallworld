@@ -501,6 +501,7 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/living-world/barber/pause', 'POST /api/living-world/barber/resume',
   'POST /api/living-world/barber/claim', 'POST /api/living-world/barber/upgrade',
   'GET /api/living-world/qualification', 'POST /api/living-world/qualification/claim',
+  'GET /api/living-world/rental', 'POST /api/living-world/rental/claim',
   'GET /api/living-world/driving',
   'POST /api/living-world/driving/start', 'POST /api/living-world/driving/input',
   'POST /api/living-world/driving/resume', 'POST /api/living-world/driving/pause', 'POST /api/living-world/driving/restart',

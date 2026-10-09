@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
-import type { DrivingControlPacket, DrivingLifecycleRequest, DrivingResponse, DrivingSessionView, QualificationClaimRequest, QualificationResponse } from '../../../types/living-world.ts'
+import type { DrivingControlPacket, DrivingLifecycleRequest, DrivingResponse, DrivingSessionView, QualificationClaimRequest, QualificationResponse, StarterRentalClaimRequest, StarterRentalResponse } from '../../../types/living-world.ts'
 import type { DrivingInput, DrivingRoute, DrivingState } from '../../../game/living-world/driving.ts'
 import { createDriving, stepDriving } from '../../../game/living-world/driving.ts'
 import type { Look } from '../../../types/life.ts'
 import type { DrivingScene } from './drivingScene.ts'
 import { validQualificationReply } from './qualificationReply.ts'
+import { validStarterRentalReply } from './rentalReply.ts'
 
 defineProps<{ params?: unknown }>()
 const { game, shell } = useApp()
@@ -24,6 +25,10 @@ const qualificationReply = ref<QualificationResponse | null>(null)
 const qualificationJourney = ref<string | null>(null)
 const qualificationMessage = ref('Checking simulated qualification status…')
 const qualificationBusy = ref(false)
+const rentalReply = ref<StarterRentalResponse | null>(null)
+const rentalMessage = ref('Sign in to check starter permission status.')
+const rentalBusy = ref(false)
+const rentalSnapshot = ref('')
 const busy = ref(false), active = ref(false), boarding = ref(false), online = ref(true), needsRefresh = ref(false), webglUnavailable = ref(false)
 const retainedPass = ref(false)
 const restartConfirmation = ref(false)
@@ -41,6 +46,7 @@ let wheelGesture: { pointerId: number; startX: number; initialSteer: number; tar
 let sampleTimer = 0, flushTimer = 0, visualState: DrivingState | null = null
 let pendingFrames: DrivingInput[] = [], observer: ResizeObserver | null = null
 let qualificationRequest = 0
+let rentalRequest = 0
 type ResponseOrigin = { kind: 'load' | 'start' | 'control' | 'lifecycle' | 'restart'; expectedJourney?: string }
 
 const canStart = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(game.view.value.session?.id) && Boolean(route.value) && (!session.value || complete.value) && assessment.value !== 'passed' && !retainedPass.value)
@@ -118,6 +124,20 @@ const qualificationClaimAvailable = computed(() => {
     && current.state.status === 'complete' && current.state.assessment === 'passed'
 })
 const canClaimQualification = computed(() => qualificationClaimAvailable.value && !qualificationBusy.value)
+const rentalEvidenceKey = computed(() => {
+  const current = session.value, q = qualificationReply.value?.qualification
+  if (!validQualification.value || !current || current.state.status !== 'complete' || current.state.assessment !== 'passed'
+    || qualificationJourney.value !== current.journeyId || q?.evidenceJourneyId !== current.journeyId || q.version !== 1) return ''
+  return JSON.stringify([game.view.value.session?.id ?? '', current.cityId, current.journeyId, q.id, q.version])
+})
+const canClaimStarterPermission = computed(() => {
+  const current = session.value, reply = rentalReply.value, actor = game.view.value.session?.id
+  return cityId.value === 'lagos' && Boolean(actor) && online.value && !needsRefresh.value && !active.value && !boarding.value
+    && !busy.value && !controlInFlight && !pendingControls.value && lifecyclePending.value === 0 && !qualificationBusy.value && !rentalBusy.value
+    && Boolean(rentalEvidenceKey.value) && Boolean(current) && current!.cityId === cityId.value
+    && rentalSnapshot.value === rentalEvidenceKey.value && reply?.ok === true && reply.code === 'eligible'
+    && reply.eligible === true && reply.valid === false && reply.permission === null
+  })
 const practiceLabel = 'Authored simulated practice course · not a mapped public road or real licence test.'
 function responseCurrent(token: number, key: string): boolean { return !disposed && token === generation && key === contextKey.value }
 function clearHeld(): void {
@@ -265,7 +285,7 @@ async function load(): Promise<void> {
       if (answer.session?.state.status === 'running') await lifecycle('pause', answer.session)
       if (session.value?.state.status === 'paused') needsRefresh.value = false
       await nextTick(); await createScene(token, key)
-      void lookupQualification(session.value?.journeyId ?? null)
+      void refreshPracticeCredentials(session.value?.journeyId ?? null)
     }
   } catch (error) {
     if (responseCurrent(token, key)) {
@@ -310,6 +330,88 @@ async function lookupQualification(expectedJourney: string | null = session.valu
     }
   }
 }
+function rentalEvidenceSnapshot(): string {
+  const current = session.value, q = qualificationReply.value?.qualification, actor = game.view.value.session?.id
+  if (!current || !actor || current.cityId !== cityId.value || !validQualification.value || current.state.status !== 'complete'
+    || current.state.assessment !== 'passed' || qualificationJourney.value !== current.journeyId || q?.evidenceJourneyId !== current.journeyId || q.version !== 1) return ''
+  return JSON.stringify([actor, current.cityId, current.journeyId, q.id, q.version])
+}
+function rentalReadSnapshot(expectedJourney: string | null, city: string, actor: string): string {
+  const q = qualificationReply.value?.qualification
+  return JSON.stringify([actor, city, expectedJourney, qualificationJourney.value, q?.id ?? null, q?.version ?? null, q?.evidenceJourneyId ?? null])
+}
+function rentalCurrent(token: number, key: string, snapshot: string, request: number): boolean {
+  return responseCurrent(token, key) && request === rentalRequest && snapshot === rentalReadSnapshot(session.value?.journeyId ?? null, cityId.value, game.view.value.session?.id ?? '')
+}
+async function lookupStarterPermission(expectedJourney: string | null = session.value?.journeyId ?? null): Promise<void> {
+  const token = generation, key = contextKey.value, request = ++rentalRequest, city = cityId.value
+  const actor = game.view.value.session?.id ?? '', snapshot = rentalReadSnapshot(expectedJourney, city, actor)
+  rentalBusy.value = true; rentalReply.value = null; rentalSnapshot.value = ''; rentalMessage.value = 'Checking saved starter permission…'
+  if (city !== 'lagos') {
+    rentalMessage.value = 'Starter permission is currently unavailable in this city.'
+    rentalBusy.value = false
+    return
+  }
+  if (!actor) {
+    rentalMessage.value = 'Sign in to check starter permission status.'
+    rentalBusy.value = false
+    return
+  }
+  try {
+    const answer = await game.client.api<StarterRentalResponse>(`/api/living-world/rental?city=${encodeURIComponent(city)}`)
+    if ((session.value?.journeyId ?? null) !== expectedJourney || !rentalCurrent(token, key, snapshot, request) || actor !== game.view.value.session?.id) return
+    if (!validStarterRentalReply(answer, actor)) {
+      rentalMessage.value = 'Starter permission status could not be verified. Reconnect to check it.'
+      return
+    }
+    rentalReply.value = answer; rentalSnapshot.value = rentalEvidenceSnapshot()
+    rentalMessage.value = answer.code === 'invalid_saved_rental' || answer.code === 'invalid_server_clock'
+      ? 'Starter permission status could not be verified. Reconnect to check it.'
+      : answer.permission?.status === 'active' && answer.valid
+      ? 'Free in-game permission saved. No car is allocated; mapped-road trips remain unavailable.'
+      : answer.permission?.status === 'active'
+        ? 'A saved permission is not currently valid. No car is allocated; mapped-road trips remain unavailable.'
+      : answer.permission?.status === 'revoked'
+        ? 'The saved starter permission is inactive. No car is allocated; mapped-road trips remain unavailable.'
+        : answer.eligible
+          ? 'A passed simulated qualification may claim the free in-game permission. No car is allocated; mapped-road trips remain unavailable.'
+          : 'A passed simulated qualification is required. No car is allocated; mapped-road trips remain unavailable.'
+  } catch {
+    if ((session.value?.journeyId ?? null) === expectedJourney && rentalCurrent(token, key, snapshot, request) && actor === game.view.value.session?.id) {
+      rentalReply.value = null; rentalSnapshot.value = ''; rentalMessage.value = 'Starter permission status is unavailable. Reconnect to check it.'
+    }
+  } finally {
+    if (request === rentalRequest && responseCurrent(token, key)) rentalBusy.value = false
+  }
+}
+async function refreshPracticeCredentials(expectedJourney: string | null): Promise<void> {
+  const token = generation, key = contextKey.value
+  await lookupQualification(expectedJourney)
+  if (responseCurrent(token, key) && (session.value?.journeyId ?? null) === expectedJourney) await lookupStarterPermission(expectedJourney)
+}
+async function claimStarterPermission(): Promise<void> {
+  const current = session.value, evidenceSnapshot = rentalEvidenceSnapshot(), actor = game.view.value.session?.id
+  if (!canClaimStarterPermission.value || !current || !evidenceSnapshot || !actor) return
+  const token = generation, key = contextKey.value, request = ++rentalRequest
+  const snapshot = rentalReadSnapshot(current.journeyId, current.cityId, actor)
+  const body: StarterRentalClaimRequest = { cityId: current.cityId, requestId: game.newId(), qualificationJourneyId: current.journeyId, qualificationVersion: 1 }
+  rentalBusy.value = true; rentalMessage.value = 'Submitting the free in-game permission claim…'
+  try {
+    const answer = await game.client.api<StarterRentalResponse>('/api/living-world/rental/claim', { method: 'POST', body })
+    if (!rentalCurrent(token, key, snapshot, request) || session.value?.journeyId !== current.journeyId || rentalEvidenceSnapshot() !== evidenceSnapshot || actor !== game.view.value.session?.id) return
+    rentalMessage.value = validStarterRentalReply(answer, actor) && answer.ok
+      ? 'Claim checked. Reading the saved permission status…'
+      : 'Claim reply was unclear. Reading the saved permission status…'
+  } catch {
+    if (!rentalCurrent(token, key, snapshot, request) || session.value?.journeyId !== current.journeyId || rentalEvidenceSnapshot() !== evidenceSnapshot || actor !== game.view.value.session?.id) return
+    rentalMessage.value = 'Claim delivery was uncertain. Reading the saved permission status…'
+  } finally {
+    if (request === rentalRequest && responseCurrent(token, key)) rentalBusy.value = false
+  }
+  if (responseCurrent(token, key) && request === rentalRequest && session.value?.journeyId === current.journeyId
+    && rentalReadSnapshot(current.journeyId, current.cityId, actor) === snapshot && rentalEvidenceSnapshot() === evidenceSnapshot
+    && actor === game.view.value.session?.id) await lookupStarterPermission(current.journeyId)
+}
 async function claimQualification(): Promise<void> {
   const current = session.value
   if (!canClaimQualification.value || !current || qualificationBusy.value) return
@@ -320,11 +422,11 @@ async function claimQualification(): Promise<void> {
     const answer = await game.client.api<QualificationResponse>('/api/living-world/qualification/claim', { method: 'POST', body })
     if (!qualificationCurrent(token, key, expectedJourney, request)) return
     qualificationMessage.value = validQualificationReply(answer) ? 'Claim checked. Reading the saved qualification status…' : 'Claim reply was unclear. Reading the saved qualification status…'
-    await lookupQualification(expectedJourney)
+    await refreshPracticeCredentials(expectedJourney)
   } catch (error) {
     if (!qualificationCurrent(token, key, expectedJourney, request)) return
     qualificationMessage.value = message(error, 'Claim delivery was uncertain. Reading the saved qualification status…')
-    await lookupQualification(expectedJourney)
+    await refreshPracticeCredentials(expectedJourney)
   } finally {
     if (request === qualificationRequest && responseCurrent(token, key)) qualificationBusy.value = false
   }
@@ -486,7 +588,7 @@ async function sendFrames(): Promise<void> {
     if (responseCurrent(token, key) && answer.ok && answer.session && answer.session.journeyId === current.journeyId
       && session.value?.journeyId === current.journeyId && answer.session.revision >= session.value.revision) {
       applyResponse(answer, token, key, { kind: 'control', expectedJourney: current.journeyId })
-      if (answer.session.state.status === 'complete') { clearHeld(); active.value = false; scene.value?.exit(); feedback.value = answer.session.state.feedback; void lookupQualification(answer.session.journeyId) }
+      if (answer.session.state.status === 'complete') { clearHeld(); active.value = false; scene.value?.exit(); feedback.value = answer.session.state.feedback; void refreshPracticeCredentials(answer.session.journeyId) }
       else if (answer.session.state.status !== 'running') { clearHeld(); active.value = false; boarding.value = false; feedback.value = answer.session.state.feedback || 'The server paused this lesson. Review its state before resuming.' }
     } else if (responseCurrent(token, key) && !answer.ok) {
       applyResponse(answer, token, key, { kind: 'control', expectedJourney: current.journeyId }); clearHeld(); active.value = false; boarding.value = false
@@ -559,6 +661,9 @@ watch(contextKey, async () => {
   const old = session.value
   restartConfirmation.value = false; clearHeld(); active.value = false; boarding.value = false; generation++
   qualificationRequest++; qualificationReply.value = null; qualificationJourney.value = null; qualificationBusy.value = false; qualificationMessage.value = 'Checking simulated qualification status…'
+  rentalRequest++; rentalReply.value = null; rentalSnapshot.value = ''; rentalBusy.value = false
+  rentalMessage.value = !game.view.value.session?.id ? 'Sign in to check starter permission status.'
+    : cityId.value === 'lagos' ? 'Checking starter permission status…' : 'Starter permission is currently unavailable in this city.'
   retainedPass.value = false; webglUnavailable.value = false; assessment.value = 'pending'; online.value = true
   scene.value?.dispose(); scene.value = null; route.value = null; session.value = null; serverState.value = null; visualState = null
   if (old && old.state.status === 'running') {
@@ -587,7 +692,7 @@ onBeforeUnmount(() => {
     if (controlInFlight) pauseAfterControl = { prior }
     else void lifecycle('pause', prior, true, false)
   }
-  disposed = true; mounted = false; generation++; qualificationRequest++
+  disposed = true; mounted = false; generation++; qualificationRequest++; rentalRequest++
   clearHeld(); observer?.disconnect(); observer = null
   window.removeEventListener('keydown', keyDown, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('blur', windowBlur)
   document.removeEventListener('visibilitychange', visibility); reduced?.removeEventListener?.('change', reducedChanged)
@@ -647,6 +752,14 @@ onBeforeUnmount(() => {
       <button v-if="qualificationClaimAvailable" type="button" :disabled="!canClaimQualification" @click="claimQualification">{{ qualificationBusy ? 'Checking…' : 'Claim simulated qualification' }}</button>
       <small>Starter vehicle permissions and delivery are being connected.</small>
     </section>
+    <section v-if="!active && !boarding" class="starter-permission" aria-labelledby="starter-permission-title">
+      <strong id="starter-permission-title">Starter vehicle permission</strong>
+      <p>Free in-game permission only. No car is allocated, and mapped-road trips remain unavailable.</p>
+      <p>{{ rentalMessage }}</p>
+      <button v-if="rentalReply?.eligible && rentalReply.permission === null" type="button" :disabled="!canClaimStarterPermission" @click="claimStarterPermission">
+        {{ rentalBusy ? 'Checking…' : 'Claim free starter permission' }}
+      </button>
+    </section>
     <div class="lesson-actions">
       <button v-if="(!session && !retainedPass) || (complete && assessment !== 'passed')" type="button" :disabled="!canStart" @click="startLesson">{{ busy ? 'Loading…' : complete ? 'Practise again' : 'Start practice' }}</button>
       <button v-else-if="canResume" type="button" :disabled="busy" @click="resumeLesson">{{ busy ? 'Resuming…' : 'Resume saved lesson' }}</button>
@@ -686,6 +799,10 @@ onBeforeUnmount(() => {
 .qualification-status p { margin: 0; font-size: 12px; line-height: 1.45; }
 .qualification-status small { color: var(--c-muted, #5d6870); font-size: 11px; line-height: 1.45; overflow-wrap: anywhere; }
 .qualification-status button { justify-self: start; min-height: 44px; padding: 9px 13px; border: 0; border-radius: 10px; background: #216d84; color: white; font: inherit; font-weight: 700; }
+.starter-permission { display: grid; gap: 6px; padding: 12px; border: 1px solid color-mix(in srgb, var(--app-tint, #3783a4) 22%, #d9e1e5); border-radius: 12px; background: #fff; }
+.starter-permission strong { font-size: 14px; }
+.starter-permission p { margin: 0; font-size: 12px; line-height: 1.45; }
+.starter-permission button { justify-self: start; min-height: 44px; padding: 9px 13px; border: 0; border-radius: 10px; background: #216d84; color: white; font: inherit; font-weight: 700; }
 .lesson-status strong { display: block; font-size: 15px; }
 .lesson-status p { margin: 5px 0; line-height: 1.4; font-size: 13px; }
 .lesson-status small { display: block; font-size: 11px; line-height: 1.45; color: var(--c-muted, #5d6870); }

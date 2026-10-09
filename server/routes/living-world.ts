@@ -2,13 +2,17 @@
 import { createDrivingService, readDrivingQualificationEvidence } from '../living-world/driving-service.ts'
 import { createQualificationService } from '../living-world/qualification-service.ts'
 import { createBarberService } from '../living-world/barber-service.ts'
+import { createStarterRentalService } from '../living-world/rental-service.ts'
 import type { RouteContext, RouteHandler, RouteKey } from '../types.ts'
 
 export default function livingWorldRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const driving = createDrivingService(ctx)
   const qualification = createQualificationService(ctx, readDrivingQualificationEvidence)
   const barber = createBarberService(ctx)
+  const rental = createStarterRentalService(ctx)
   return {
+    'GET /api/living-world/rental': async request => ({ body: await rental.current(request, request.query.get('city')), renew: true }),
+    'POST /api/living-world/rental/claim': async request => ({ body: await rental.claim(request, await request.json()), renew: true }),
     'GET /api/living-world/barber': async request => ({ body: await barber.current(request, request.query.get('city')), renew: true }),
     'POST /api/living-world/barber/start': async request => ({ body: await barber.start(request, await request.json()), renew: true }),
     'POST /api/living-world/barber/input': async request => ({ body: await barber.input(request, await request.json()), renew: true }),

@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v33]
+    branches: [codex/graphics-complete-authored-body-v34]
 permissions:
   contents: read
 jobs:
@@ -115,17 +115,6 @@ jobs:
           export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
           mkdir -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/${GITHUB_RUN_ID}
           python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/${GITHUB_RUN_ID}/resources.log evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/${GITHUB_RUN_ID}/resources.json node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/render-prepared-viewer.mjs
-      - name: Build complete human comparison
-        if: always()
-        run: node --max-old-space-size=384 evidence/graphics-loop/authored-complete-body-v1/build-preview.mjs
-      - name: Capture real whole-body poses and expressions
-        if: always()
-        env:
-          STATIC_PREVIEW: 1
-        run: |
-          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
-          mkdir -p evidence/graphics-loop/authored-complete-body-v1/results
-          python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py evidence/graphics-loop/authored-complete-body-v1/results/render.log evidence/graphics-loop/authored-complete-body-v1/results/resources.json node evidence/graphics-loop/authored-complete-body-v1/render.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

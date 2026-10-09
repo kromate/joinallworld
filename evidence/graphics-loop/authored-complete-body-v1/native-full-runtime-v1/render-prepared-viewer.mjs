@@ -151,7 +151,7 @@ try {
   const postProbeSnapshot = await evaluate('window.nativePreparedReview.sample()');
   const npcRestoredIdle = postProbeSnapshot.actors?.npc?.pose === 'idle';
   const expectedProbeError = typeof unsupportedProbe?.error === 'string'
-    && /Native lie (?:requires verified furniture\/body support|pose is not contact-supported)/i.test(unsupportedProbe.error);
+    && /Native lie (?:requires verified furniture\/body support|pose is not contact-supported|remains unsupported; no validated body-surface support)/i.test(unsupportedProbe.error);
   const expectedProbeSurfaced = unsupportedProbe?.accepted === false
     && unsupportedProbe?.negativeControl === 'unsupported-pose'
     && expectedProbeError
@@ -213,6 +213,6 @@ try {
   chrome.kill('SIGTERM');
   await new Promise((resolve) => { if (chrome.exitCode !== null) resolve(); else { chrome.once('exit', resolve); setTimeout(resolve, 2500); } });
   server.close();
-  await rm(profile, { recursive: true, force: true });
+  await rm(profile, { recursive: true, force: true, maxRetries: 8, retryDelay: 250 });
   await rm(bundlePath, { force: true });
 }

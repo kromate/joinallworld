@@ -79,6 +79,7 @@ function makeSourceHomeStairs(parent) {
   return { meshes, count, run, rise, xStart: edge(flight.x), z };
 }
 function rayHeight(meshes, worldPoint) {
+  for (const mesh of meshes) { mesh.updateWorldMatrix(true, false); mesh.updateMatrixWorld(true); }
   const ray = new THREE.Raycaster(new THREE.Vector3(worldPoint.x, worldPoint.y + 8, worldPoint.z), new THREE.Vector3(0, -1, 0), 0, 16);
   const hits = ray.intersectObjects(meshes, false);
   return hits[0]?.point.y ?? null;

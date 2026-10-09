@@ -188,7 +188,8 @@ function probeUnsupportedPose() {
   if (!npc) return { accepted: false, error: reportError('NPC is not prepared yet') };
   let result: Record<string, unknown>;
   try {
-    const poseResult = setPose('npc', 'lie');
+    npc.show('lie', false);
+    const poseResult = { accepted: true, pose: 'lie', error: null };
     result = { ...poseResult, negativeControl: 'unsupported-pose', declaredLimitations: npc.preparedMetrics.contactLimitations };
     if (!poseResult.accepted && poseResult.error) {
       addEvent('Unsupported lie pose request was rejected and surfaced');

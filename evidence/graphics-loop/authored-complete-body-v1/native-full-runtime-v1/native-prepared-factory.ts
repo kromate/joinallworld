@@ -283,8 +283,11 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     if (!thigh || !calf || !foot) throw new Error(`Native foot solve lacks ${side} leg bones`);
     return { side, thigh, calf, foot };
   });
-  const hips = skeleton.bones.find((bone) => bone.name === 'mixamorigHips');
-  if (!hips?.parent) throw new Error('Authored foot solve lacks a movable pelvis bone');
+  const { bone: hips, parent: hipsParent } = (() => {
+    const bone = skeleton.bones.find((candidate) => candidate.name === 'mixamorigHips');
+    if (!bone?.parent) throw new Error('Authored foot solve lacks a movable pelvis bone');
+    return { bone, parent: bone.parent };
+  })();
 
   function pointInActor(x: number, y: number, z: number): THREE.Vector3 {
     const point = new THREE.Vector3(x, y, z);
@@ -355,7 +358,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     }
     const worldHip = hips.getWorldPosition(new THREE.Vector3());
     worldHip.y += worldDeltaY;
-    hips.parent!.worldToLocal(worldHip);
+    hipsParent.worldToLocal(worldHip);
     hips.position.copy(worldHip);
     updateActorWorld(actor);
   }

@@ -1,0 +1,127 @@
+{
+  "recordedAt": "2026-10-09T15:52:16.744056+00:00",
+  "publishedSourceSha": "a2730cacb05c494baf6d443467efee8d78d4b8c5",
+  "scope": "source milestone and scoped checks only; no full compiler/build/download/native/staging/release acceptance",
+  "focused": {
+    "initial": {
+      "tests": 49,
+      "pass": 48,
+      "fail": 1,
+      "skipped": 0,
+      "durationMs": 18393.87175,
+      "log": "/tmp/allworld-focused-repairs-20261009.log",
+      "sha256": "3f4f468e4ae4f526d5847181206ecbfc62cbd7913156c9645adac4d2c4214166",
+      "failure": "malformed cap fixture provided two parallel edges, not the intended overflowing two-leg path"
+    },
+    "repair": {
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 344.168125,
+      "log": "/tmp/allworld-homeward-planner-repair.log",
+      "sha256": "2373e5c58c63f71c83aa5966d90cf72a33ba00d530cb72bc877cff77df42d561"
+    },
+    "note": "Overlapping counts are never summed; original failed log retained. Original capital planner case label corrected: Ibadan has airport, Maiduguri does not."
+  },
+  "releaseGuard": {
+    "adoptedSourceSha256": "26d021b1ac35608d3a2abebf8c9da220de1ff9c7e60a96e1fe840ed8443f0275",
+    "packageGuardTests": 18,
+    "pass": 18,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 3044.55725,
+    "log": "/tmp/allworld-package-guard-repair.log",
+    "logSha256": "5c5ed368dcbb8de4b6ccae8cb5309f649e77c6d92619603c3beac6da7da11796",
+    "rootIndependentNode24Review": {
+      "runtime": "24.19.0",
+      "actualMetadataPolicyRows": 3,
+      "comparatorCases": 17,
+      "actualWorkflowNegativeCases": 4,
+      "result": "pass",
+      "fixture": "/var/folders/83/sytk_jdd25b94cxjxr570gpm0000gn/T/sol-node-pin-review-zoc2dez_/review.mjs"
+    },
+    "preserved": "exact release pins, package minimum, protected commands, Wrangler pin/integrity and archive/source gates",
+    "initialProposalRejected": "all ordinary steps contributed undefined; repaired extraction inspects actual setup-node steps only"
+  },
+  "partitioning": {
+    "metadataFiles": 506,
+    "game": 355,
+    "host": 147,
+    "tooling": 4,
+    "nodeVersions": [
+      22,
+      24
+    ],
+    "maxParallel": 2,
+    "jobLimitMinutes": 25,
+    "execution": "six frozen-source full partitions still pending"
+  },
+  "startupProposal": {
+    "baseCommit": "3c2fb2c5c1c3c5f3fc288d5dbc3ba0fa00cde0d6",
+    "baseFile": "src/app/App.vue",
+    "baseFileSha256": "1e4d0b2013bf5eb18ca43c9e009579fb054048ceadd71fe67f31266c271bbe8b",
+    "proposedFile": "/tmp/living-world-deferred-hosts-3c2-1791560500/src/app/App.vue",
+    "proposedFileSha256": "61519c05ead03805a17c96c462000d15c7cf8e66cc467b4825ec847a59fc9522",
+    "patch": "/tmp/living-world-deferred-hosts-3c2-1791560500/deferred-hosts.patch",
+    "patchSha256": "7a100eee5ea727898703f42af79dfc01bc0018ca8a227014d956e89e54ddf65c",
+    "changedFiles": [
+      "src/app/App.vue"
+    ],
+    "sourceBytes": {
+      "base": 13023,
+      "proposed": 17293,
+      "delta": 4270
+    },
+    "checks": [
+      "git apply --check passed against the Integration checkout",
+      "Vue retry assertion script: vue-retry-assertion.mjs; result: vue-retry-assertion.result.json; Node version: vue-retry-node-version.txt",
+      "Assertion confirmed actual repository Vue async loader kept initial promise pending and resolved it after the user retry callback (2 attempts)."
+    ],
+    "notRun": [
+      "typecheck",
+      "build",
+      "full tests",
+      "browser",
+      "server"
+    ],
+    "measurement": "No startup-byte savings claimed until an integrated build. The prior immutable graph attributed CommunityHost and LinkBanner scripts at 2567 and 1434 pre-minifier rendered bytes in the 70905-byte startApp chunk.",
+    "runtimeAssertion": {
+      "scriptSha256": "08f9f0cbf5102533ec34a9e43dadd5f042433d753b3669dc589920d81aa90586",
+      "resultSha256": "bc22ee97d93299e7003ce4154b426ceb03fcc4e379fe442456aa13d801df1d9e",
+      "nodeVersionFileSha256": "c2c2fa5216720772107a091a7bdc2b12a2ea492d41f94568aa56074f981625c5",
+      "node": "v22.19.0"
+    },
+    "durablePatch": "startup-deferred-hosts.patch",
+    "delivery": "sent to Integration sole source assembler for adoption and measured acceptance",
+    "status": "source-reviewed; unapplied at Root",
+    "rootIndependentRuntime": "actual repository Vue __asyncLoader assertion also passed Node24.19.0",
+    "withdrawn": "initial fail-then-retry callback and reset-on-banner logic rejected; transparent unwrapped fallback repaired",
+    "acceptance": "exact whole-candidate compiler/budgets and native mobile/readable loading/failure/retry still required"
+  },
+  "recoveryReview": {
+    "currentState": "unpublished authority/UI/readers under Integration ownership",
+    "provenFinding": "pending request quotationA with current offerB must replayA and not displayB as accepted terms; owner hides new terms during reconciliation",
+    "required": "atomic advance/debit/debt/ticket/receipt; same and changed intent replay; restart every connection; corrupt/missing content fail before saved record replacement; received repayment may reduce debt; original home restoration; room/voice movement boundary",
+    "legacy": "retain original direct-trip readers and do not apply direct invalidation cash-refund hook to borrowed tickets"
+  },
+  "airportOwnerCI": {
+    "run": 37954085657,
+    "sourceSha": "be3067cb28847702769ed3f266b3103e03cb12dd",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      "live-routes (24)",
+      "live-routes (22.19.0)"
+    ],
+    "scope": "separate owner source; not combined a273 or next candidate full acceptance"
+  },
+  "production": {
+    "lastIndependentHealthAt": "2026-10-09T15:29:57Z",
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "newProgrammeDeployment": false,
+    "newGoalmaticDeployment": false
+  },
+  "goalStatus": "active",
+  "remaining": "full connected physical journey, solo/multiplayer/mobile/interruption/save continuity, later education/civic/professions/real-business phases and live consented Goalmatic contracts remain open"
+}

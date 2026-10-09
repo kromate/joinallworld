@@ -1,0 +1,124 @@
+--- a/src/app/App.vue
++++ b/src/app/App.vue
+@@ -10,13 +10,13 @@
+ import '../ui/shell.css'
+ // The compact layout of a phone (and a phone on its side), after the page layout it adjusts.
+ import '../ui/compact.css'
+-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
++import { computed, defineAsyncComponent, defineComponent, h, onBeforeUnmount, onMounted, ref, Teleport, watch } from 'vue'
+ import { useApp } from './state/app.ts'
++import { noteChunkFailure } from './state/updateNotice.ts'
+ import { heldActionFor, shortcutFor } from '../ui/keys.ts'
+ import { start as startSocial, wakeSocket } from './features/social/useSocial.ts'
+ import GameIcon from './ui/GameIcon.vue'
+ import ToastStack from './ui/ToastStack.vue'
+-import LinkBanner from './features/landing/LinkBanner.vue'
+ import UpdateBanner from './ui/UpdateBanner.vue'
+ import NoticeHost from './features/notice/NoticeHost.vue'
+ import { useGrowth } from './features/growth/useGrowth.ts'
+@@ -33,7 +33,6 @@
+ import SheetHost from './features/phone/SheetHost.vue'
+ import { startLandingHold } from './state/landingHold.ts'
+ import { createPageLifecycle } from './state/pageLifecycle.ts'
+-import CommunityHost from './features/community/CommunityHost.vue'
+ import CallsHost from './features/calls/CallsHost.vue'
+ import PingHost from './features/ping/PingHost.vue'
+ import ScenePane from './scene/ScenePane.vue'
+@@ -45,6 +44,84 @@
+ const snapshotAvailable = computed(() => game.snapshotPhase.value === 'available')
+ const navPanel = computed(() => (mode.value !== 'venue' ? shell.byId.get(mode.value) ?? null : null))
+ const sheetOpen = computed(() => Boolean(shell.sheet.value))
++
++// Keep controller state eager; renderer modules are requested only while their surface is visible.
++const rendererState = () => ({ retry: ref<(() => unknown) | null>(null), failed: ref(false), retrying: ref(false) })
++const communityRenderer = rendererState()
++const linkRenderer = rendererState()
++
++type RendererState = ReturnType<typeof rendererState>
++function rendererRecovery(label: string, retryData: string | null, reloadData: string | null, retry: () => void, reload: () => void, disabled: boolean) {
++  return h('p', { role: 'group', 'aria-label': `${label} recovery` }, [
++    h('button', { type: 'button', class: 'ui-button is-primary', disabled, ...(retryData ? { [retryData]: '' } : {}), onClick: retry }, 'Try again'),
++    h('button', { type: 'button', class: 'ui-button', ...(reloadData ? { [reloadData]: '' } : {}), onClick: reload }, 'Reload'),
++  ])
++}
++function retryRenderer(state: RendererState): void {
++  if (state.retrying.value) return
++  state.failed.value = false
++  state.retrying.value = true
++  void state.retry.value?.()
++}
++function rendererLoaded(state: RendererState) {
++  state.failed.value = false
++  state.retrying.value = false
++}
++function rendererFailed(state: RendererState, retry: () => void): void {
++  state.failed.value = true
++  state.retrying.value = false
++  state.retry.value = retry
++  void noteChunkFailure()
++}
++
++const CommunityRendererFallback = defineComponent({
++  inheritAttrs: false,
++  setup: () => () => h('aside', { id: 'community-panel', 'aria-label': 'Community' }, [
++    h('button', { id: 'community-close', type: 'button', 'aria-label': 'Close community', onClick: () => community.close() }, '×'),
++    h('div', { id: 'community-content' }, [
++      h('p', { role: 'status', 'aria-live': 'polite' }, communityRenderer.failed.value ? 'Community could not load.' : 'Community is loading…'),
++      communityRenderer.failed.value ? rendererRecovery('Community', 'data-community-retry', 'data-community-reload', () => retryRenderer(communityRenderer), () => community.reload(), communityRenderer.retrying.value) : null,
++    ]),
++  ]),
++})
++const CommunityRenderer = defineAsyncComponent({
++  loader: () => import('./features/community/CommunityHost.vue').then((module) => {
++    rendererLoaded(communityRenderer)
++    return module
++  }),
++  loadingComponent: CommunityRendererFallback,
++  suspensible: false,
++  delay: 0,
++  // Leave Vue's loader pending: `fail()` would reject its cached promise and break user retry.
++  onError(_error, retry) { rendererFailed(communityRenderer, retry) },
++})
++
++const LinkRendererFallback = defineComponent({
++  inheritAttrs: false,
++  setup: () => () => {
++    const banner = landing.banner.value
++    if (!banner) return null
++    return h(Teleport, { to: sheetOpen.value ? '#life-dialog' : 'body' }, [
++      h('aside', { key: banner.id, class: 'life-toast', role: 'status', style: { boxSizing: 'border-box', position: 'fixed', left: '50%', top: 'calc(env(safe-area-inset-top) + 8px)', transform: 'translateX(-50%)', zIndex: 70, width: 'min(440px, calc(100% - 16px))', flexWrap: 'wrap' } }, [
++        h('div', { style: { flex: '1 1 100%', minWidth: 0, overflowWrap: 'anywhere' } }, [h('strong', { style: { display: 'block' } }, banner.title), h('small', { style: { display: 'block' } }, banner.text)]),
++        banner.knock && banner.knockHost ? h('button', { type: 'button', class: 'ui-button is-primary is-small', onClick: () => landing.knock() }, 'Knock') : null,
++        h('button', { type: 'button', class: 'ui-button is-small', 'aria-label': 'Dismiss', onClick: () => landing.dismiss() }, '×'),
++        linkRenderer.failed.value ? h('small', { role: 'status' }, 'The invitation banner could not load.') : null,
++        linkRenderer.failed.value ? rendererRecovery('Invitation banner', null, null, () => retryRenderer(linkRenderer), () => globalThis.location.reload(), linkRenderer.retrying.value) : null,
++      ]),
++    ])
++  },
++})
++const LinkBannerRenderer = defineAsyncComponent({
++  loader: () => import('./features/landing/LinkBanner.vue').then((module) => {
++    rendererLoaded(linkRenderer)
++    return module
++  }),
++  loadingComponent: LinkRendererFallback,
++  suspensible: false,
++  delay: 0,
++  onError(_error, retry) { rendererFailed(linkRenderer, retry) },
++})
+ const root = ref<HTMLElement | null>(null)
+ const bottom = ref<HTMLElement | null>(null)
+ const nav = ref<InstanceType<typeof BottomNav> | null>(null)
+@@ -177,10 +254,10 @@
+   </div>
+   <SheetHost />
+   <TourTrigger v-if="snapshotAvailable" />
+-  <CommunityHost v-if="snapshotAvailable" />
++  <CommunityRenderer v-if="snapshotAvailable && community.open.value" />
+   <CallsHost v-if="snapshotAvailable" :host="sheetOpen ? '#life-dialog' : 'body'" />
+   <PingHost v-if="snapshotAvailable" :host="sheetOpen ? '#life-dialog' : 'body'" />
+-  <LinkBanner :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
++  <LinkBannerRenderer v-if="landing.banner.value" :banner="landing.banner.value" :host="sheetOpen ? '#life-dialog' : 'body'" @knock="landing.knock" @close="landing.dismiss" />
+   <UpdateBanner />
+   <ToastStack :host="sheetOpen ? '#life-dialog' : 'body'" />
+ </template>

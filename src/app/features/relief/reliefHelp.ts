@@ -11,7 +11,7 @@ import { venueFor, venuesFor } from '../../../game/cities/runtime.ts';
 import { ODD_JOBS } from '../../../game/content/relief.ts';
 import { LODGING } from '../../../game/content/world.ts';
 import { naira } from '../../../game/util.ts';
-import { creditLink, unsettled, visitingHere } from '../../../game/systems/estate.ts';
+import { creditLink, homewardOffer, unsettled, visitingHere } from '../../../game/systems/estate.ts';
 import { reliefActivities } from '../../../game/relief.ts';
 import type { ActivityDefinition } from '../../../types/content.ts';
 import type { LifeContext, LifeState } from '../../../types/life.ts';
@@ -30,7 +30,9 @@ export function helpOf(state: LifeState, ctx: LifeContext): ReliefHelp | null {
   const away = visitingHere(state), homeName = cityRules(e.home)?.name ?? 'home';
   const fares = e.home ? linksFrom(e.city).filter((item) => item.to === e.home && !routeUnavailable(item)).map((item) => item.fare) : [];
   const cheapest = fares.length ? Math.min(...fares) : null;
-  const farHome = away && cheapest !== null && state.cash < cheapest;
+  const journey = homewardOffer(state, ctx);
+  const homePrice = journey?.totalFare ?? cheapest;
+  const farHome = away && homePrice !== null && state.cash < homePrice;
   const hungry = state.needs.hunger < HELP_NEEDS.hunger && state.cash < MEAL_CASH;
   const tired = !e.lga && state.needs.energy < HELP_NEEDS.energy && state.cash < LODGING.fee;
   const cure = state.health?.sick === true ? cureNear(state, e.city) : null;
@@ -38,7 +40,7 @@ export function helpOf(state: LifeState, ctx: LifeContext): ReliefHelp | null {
   if (!farHome && !hungry && !tired && !sick) return null;
   const key = `${[farHome ? 'home' : '', hungry ? 'hunger' : '', tired ? 'rest' : '', sick ? 'sick' : ''].filter(Boolean).join('+')}@${e.city}`;
   const chip = `${sick ? 'Sick and short of money' : hungry ? 'Hungry and short of money' : tired ? 'Worn out and short of money' : 'Short of money'} — see what you can do`;
-  const line = sick ? `You are very sick and have ${naira(state.cash)}. The free clinic costs nothing. There is a way through.` : farHome ? `You have ${naira(state.cash)} in ${name} and the cheapest way home to ${homeName} is ${naira(cheapest ?? 0)}. There is a way through.`
+  const line = sick ? `You are very sick and have ${naira(state.cash)}. The free clinic costs nothing. There is a way through.` : farHome ? `You have ${naira(state.cash)} in ${name} and the cheapest way home to ${homeName} is ${naira(homePrice ?? 0)}. There is a way through.`
     : hungry ? `You are hungry and have ${naira(state.cash)}. There is a way through.` : `You are worn out and have ${naira(state.cash)}. There is a way through.`;
   const defs = reliefActivities(e.city), arrival = defs[0]?.where.venue ?? null;
   const at = (id: string, kind: 'odd-job' | 'bench' | 'tap', detail: string): ReliefAction | null => {
@@ -59,7 +61,8 @@ export function helpOf(state: LifeState, ctx: LifeContext): ReliefHelp | null {
   if (hungry && tap) actions.push(tap);
   if ((tired || !hungry) && bench) actions.push(bench);
   const offer = state.activeAction ? null : creditLink(state, ctx);
-  if (offer) actions.push({ ...NOTHING, id: 'credit-ride', label: `Ride home on credit to ${cityRules(offer.to)?.name ?? offer.to}`, detail: `${naira(offer.fare)} is advanced for the ticket; half of each earning repays it.`, to: offer.to, mode: offer.mode });
+  if (journey) actions.push({ ...NOTHING, id: 'credit-ride', label: `Ride home on credit to ${homeName}`, detail: `${naira(journey.totalFare)} is advanced for the whole ticket; half of each earning repays it.`, journey });
+  else if (offer) actions.push({ ...NOTHING, id: 'credit-ride', label: `Ride home on credit to ${cityRules(offer.to)?.name ?? offer.to}`, detail: `${naira(offer.fare)} is advanced for the ticket; half of each earning repays it.`, to: offer.to, mode: offer.mode });
   if (state.business.opened > 0) actions.push({ ...NOTHING, id: 'cash-box', label: 'Collect your cash box', detail: 'Whatever your stall has taken is yours.' });
   actions.push({ ...NOTHING, id: 'friend', label: 'Ask a friend', detail: 'A message is ready for you to send.' });
   return { key, title: 'What you can do now', chip, line, actions };

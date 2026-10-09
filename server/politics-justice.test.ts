@@ -94,6 +94,7 @@ test('police: only the officeholder enrols, only for their term and seat, and an
   assert.equal(trip.error, 'jailed');
   assert.match(String((trip as { reason?: string }).reason), /in jail for 5 minutes/);
   assert.equal((await f.action(ada.cookie, { type: 'activity', payload: { id: 'walk' } })).error, 'jailed');
+  assert.equal((await f.action(ada.cookie, { type: 'homeward.accept', payload: { quote: 'unaccepted' } })).error, 'jailed');
   assert.notEqual((await f.action(ada.cookie, { type: 'civic.refresh', payload: {} })).error, 'jailed');
   assert.equal((await fight(ada, chi)).code, 'jailed');
   assert.equal((await fight(chi, ada)).code, 'target_jailed');

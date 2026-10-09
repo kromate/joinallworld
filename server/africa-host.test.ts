@@ -8,7 +8,7 @@ import { once } from 'node:events'
 import { createServer } from './server.ts'
 import type { AllworldServer } from './server.ts'
 import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts'
-import { africaJourney } from './testing/africaJourney.ts'
+import { africaJourney, homewardJourney } from './testing/africaJourney.ts'
 import type { AfricaJourneyHost } from './testing/africaJourney.ts'
 import type { JourneyDevice } from './testing/cityJourney.ts'
 import { object } from './testing/cityJourney.ts'
@@ -24,7 +24,7 @@ const ENV = {
   NEW_SESSIONS_PER_ADDRESS: '1000',
 }
 
-test('Node HTTP host: all five African capital flight journeys preserve a Lagos home across restart', { timeout: 60000 }, async t => {
+test('Node HTTP host: all five capital trips and cashless homeward journeys preserve original homes across restart', { timeout: 60000 }, async t => {
   const folder = await mkdtemp(join(tmpdir(), 'africa-capitals-node-'))
   let time = Date.now()
   let server: AllworldServer | undefined
@@ -87,6 +87,25 @@ test('Node HTTP host: all five African capital flight journeys preserve a Lagos 
       assert.equal(replay.duplicate, true, 'fixture funding reuses its original admin receipt')
       assert.equal(replay.after, answer.after)
     },
+    debit: async (device, amount, reason) => {
+      const intent: Record<string, unknown> = { clientId: `${time}:${randomUUID()}`, action: 'debit', amount, reason }
+      let response = await request(`/api/admin/players/${device.id}/act`, intent, founderCookie)
+      let answer = object(await response.json())
+      if (answer.code === 'confirmation_required') {
+        assert.equal(typeof answer.token, 'string')
+        intent.confirm = answer.token
+        response = await request(`/api/admin/players/${device.id}/act`, intent, founderCookie)
+        answer = object(await response.json())
+      }
+      assert.equal(response.status, 200, JSON.stringify(answer))
+      assert.equal(answer.code, 'debited', JSON.stringify(answer))
+      const repeated = await request(`/api/admin/players/${device.id}/act`, intent, founderCookie)
+      assert.equal(repeated.status, 200)
+      const replay = object(await repeated.json())
+      assert.equal(replay.duplicate, true, 'fixture spending reuses its original admin receipt')
+      assert.equal(replay.after, answer.after)
+    },
   }
   await africaJourney(host)
+  await homewardJourney(host)
 })

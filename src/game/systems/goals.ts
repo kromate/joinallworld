@@ -270,7 +270,7 @@ function countBest(state: LifeState, data: Data | undefined): void {
   g.stats.best = count(g.stats.best + 1, 999);
 }
 
-const EARNING_EXCLUDED = /^(Refund|Start cash)/;
+const EARNING_EXCLUDED = /^(Refund|Start cash|Ride home on credit:)/;
 
 function arrived(state: LifeState, venue: unknown, ctx: LifeContext): void {
   if (typeof venue !== 'string') return;
@@ -342,6 +342,9 @@ function handle(event: string, state: LifeState, data: Data, ctx: LifeContext): 
   HANDLERS[event]?.(state, data, ctx);
   markSeen(state, (done) => Array.isArray(done.events) && done.events.includes(event));
   bumpWishes(state, ctx, (wish) => wish.on === 'event' && wish.event === event);
+  // A ride advance goes straight to its ticket. Evaluate cash rewards on the paired debit,
+  // after that temporary principal is gone, including rewards that emit nested wallet events.
+  if (event === 'wallet.changed' && safeCount(data.amount) && data.amount > 0 && /^Ride home on credit:/.test(String(data.reason ?? ''))) return;
   progressChain(state, ctx);
   checkDream(state, ctx);
 }

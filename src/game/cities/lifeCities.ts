@@ -1,5 +1,5 @@
 /** Discover every city reference in a saved life and load its full rules before reconstruction. */
-import { isCityId, loadCityContent, loadCityLinks, loadCityRules, registeredCityIds } from './registry.ts'
+import { isCityId, isKnownCityId, loadCityContent, loadCityLinks, loadCityRules, registeredCityIds } from './registry.ts'
 
 const record = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value)
 const MAX_RELATIONSHIPS = 200
@@ -12,6 +12,7 @@ const MAX_EVENT_ATTENDANCE = 24
 export function lifeCities(raw: unknown, extra: readonly unknown[] = []): string[] {
   const found = new Set<string>()
   const add = (value: unknown): void => { if (typeof value === 'string' && isCityId(value)) found.add(value) }
+  const addKnown = (value: unknown): void => { if (typeof value === 'string' && isKnownCityId(value)) found.add(value) }
   const addQualified = (value: unknown): void => {
     if (typeof value !== 'string') return
     add(value)
@@ -23,6 +24,14 @@ export function lifeCities(raw: unknown, extra: readonly unknown[] = []): string
   const estate = record(state.estate) ? state.estate : {}
   add(estate.city)
   add(estate.home)
+  if (record(state.activeAction) && state.activeAction.kind === 'homeward' && record(state.activeAction.ticket)) {
+    const ticket = state.activeAction.ticket
+    addKnown(ticket.from)
+    addKnown(ticket.to)
+    if (Array.isArray(ticket.legs)) for (const leg of ticket.legs.slice(0, 4)) {
+      if (record(leg)) { addKnown(leg.from); addKnown(leg.to) }
+    }
+  }
   for (const value of extra) add(value)
   if (record(estate.away)) for (const id of registeredCityIds()) if (Object.hasOwn(estate.away, id)) add(id)
   if (record(state.career)) add(state.career.city)
@@ -57,5 +66,8 @@ export async function loadLifeCities(raw: unknown, extra: readonly unknown[] = [
     ? estate.city
     : extra.find((value): value is string => typeof value === 'string' && isCityId(value))
   if (current) await loadCityContent(current)
+  const active = record(state.activeAction) ? state.activeAction : {}
+  const ticket = record(active.ticket) ? active.ticket : {}
+  if (active.kind === 'homeward' && typeof ticket.to === 'string' && isKnownCityId(ticket.to)) await loadCityContent(ticket.to)
   return []
 }

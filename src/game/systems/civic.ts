@@ -398,7 +398,7 @@ const play = PLAYS ? {
       const week = lagosTime(nowOf(state, ctx)).week;
       if (state.civic.week.week !== week) state.civic.week = { week, earned: 0 };
       const amount = data?.amount;
-      if (!Number.isSafeInteger(amount) || amount <= 0 || String(data.reason ?? '').startsWith('Refund')) return;
+      if (!Number.isSafeInteger(amount) || amount <= 0 || /^(Refund|Ride home on credit:)/.test(String(data.reason ?? ''))) return;
       state.civic.week.earned = Math.min(Number.MAX_SAFE_INTEGER, state.civic.week.earned + amount);
     },
   },

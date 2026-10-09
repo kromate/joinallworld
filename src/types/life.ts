@@ -205,8 +205,37 @@ export interface IntercityAction extends ActiveActionBase {
   from: WorldCityId
 }
 
+/** One already-accepted city connection; saved tickets keep their original terms if routes change later. */
+export interface HomewardLeg {
+  from: WorldCityId
+  to: WorldCityId
+  mode: CityLinkMode
+  fare: number
+  seconds: number
+}
+
+/** Versioned, accepted itinerary. This is durable ticket data, not a live route quote. */
+export interface HomewardTicket {
+  version: 1
+  from: WorldCityId
+  to: WorldCityId
+  legs: readonly HomewardLeg[]
+  totalFare: number
+  totalSeconds: number
+  key: string
+}
+
+/** One continuous borrowed journey; intermediate cities never become playable stops. */
+export interface HomewardJourneyAction extends ActiveActionBase {
+  kind: 'homeward'
+  id: WorldCityId
+  ticket: HomewardTicket
+  /** Zero-based current leg, derived from elapsed time when a saved ticket is resumed. */
+  legIndex: number
+}
+
 /** The single timed-action slot. Only one runs at a time. The campus kinds ('campus-study', 'campus-game', 'campus-shuttle') are in campus.ts. */
-export type ActiveAction = ActivityAction | TravelAction | CommuteAction | CallAction | IntercityAction | CampusActiveAction
+export type ActiveAction = ActivityAction | TravelAction | CommuteAction | CallAction | IntercityAction | HomewardJourneyAction | CampusActiveAction
 
 /** Every registered timed-action kind. */
 export type ActiveKind = ActiveAction['kind']
@@ -1013,7 +1042,7 @@ export interface LifeState extends CoreSlice, WalletSlice, InventorySlice, Needs
 /** System ids in registration order (systems/index.js). Sanitize, events and modifiers all run in this order. */
 export type SystemId =
   | 'core' | 'wallet' | 'inventory' | 'needs' | 'skills' | 'career' | 'activities' | 'travel' | 'health'
-  | 'economy' | 'property' | 'estate' | 'home' | 'stories' | 'land' | 'street' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
+  | 'economy' | 'property' | 'estate' | 'homeward' | 'home' | 'stories' | 'land' | 'street' | 'onboarding' | 'goals' | 'social' | 'civic' | 'missions' | 'events' | 'growth' | 'business'
   | 'unilagStudent' | 'unilagCommunity' | 'unilagShuttle'
   | 'livingWorld'
 
@@ -1043,6 +1072,7 @@ export interface SliceBySystem {
   events: EventsSlice
   growth: GrowthSlice
   business: BusinessSlice
+  homeward: Record<never, never>
   livingWorld: Record<never, never>
   unilagStudent: UnilagStudentSlice
   unilagCommunity: UnilagCommunitySlice
@@ -1158,6 +1188,7 @@ export const SYSTEM_STATE_KEYS = {
   economy: ['economy'],
   property: ['homeOwned', 'property'],
   estate: ['estate'],
+  homeward: [],
   home: ['home'],
   stories: ['stories'],
   land: [],
@@ -1218,4 +1249,4 @@ export const LGA_IDS = [
 export const SKILL_IDS = ['cooking', 'charisma', 'fitness', 'coding', 'music', 'hustle', 'dance', 'comedy', 'photography'] as const satisfies readonly SkillId[]
 
 /** Every registered timed-action kind, sorted. */
-export const ACTIVE_KINDS = ['activity', 'call', 'campus-game', 'campus-shuttle', 'campus-study', 'commute', 'intercity', 'travel'] as const satisfies readonly ActiveKind[]
+export const ACTIVE_KINDS = ['activity', 'call', 'campus-game', 'campus-shuttle', 'campus-study', 'commute', 'homeward', 'intercity', 'travel'] as const satisfies readonly ActiveKind[]

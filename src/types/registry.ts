@@ -334,6 +334,8 @@ export interface SavedActiveAction {
   id: string
   duration: number
   remaining: number
+  /** The versioned, accepted multi-leg ticket of the homeward active kind. */
+  ticket?: unknown
   [field: string]: unknown
 }
 

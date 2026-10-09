@@ -168,6 +168,17 @@ export function tripInfo(state: TravelState, view: Pick<TravelPanelView, 'travel
       rule: `You are on the way to ${cityName(active.id)}. The trip has left, so it cannot be cancelled.`,
     }
   }
+  if (active?.kind === 'homeward') {
+    const leg = active.ticket.legs[active.legIndex]
+    if (!leg) return null
+    const duration = active.duration || 1, remaining = Math.max(0, active.remaining)
+    return {
+      from: { id: leg.from, label: cityName(leg.from) }, to: { id: leg.to, label: cityName(leg.to) },
+      mode: INTERCITY_MODES[leg.mode] ?? { id: 'unknown', label: 'On the way' }, fare: leg.fare, commute: false, remaining, duration,
+      fraction: Math.max(0, Math.min(1, 1 - remaining / duration)), locked: true,
+      rule: `Connection ${active.legIndex + 1} of ${active.ticket.legs.length} to your original home in ${cityName(active.ticket.to)}. The whole ${money(active.ticket.totalFare)} ticket is borrowed. No cancelling, skipping or intermediate stops.`,
+    }
+  }
   if (!active || (active.kind !== 'travel' && active.kind !== 'commute')) return null
   const commute = active.kind === 'commute'
   const trip = commute ? null : view.travel?.active

@@ -74,13 +74,20 @@ const placeOf = (id: string): string => { const venue = view.value.venues.find((
 const name = computed(() => {
   const now = active.value
   if (!now) return ''
+  if (now.kind === 'homeward') return `Returning to your home in ${cityName(now.ticket.to)}`
   if (now.kind === 'intercity') return `Travelling to ${cityName(now.id)}`
   if (activity.value?.label) return activity.value.label
   return now.kind === 'travel' ? `Travelling to ${placeOf(now.id)}` : now.kind === 'commute' ? `Commuting to work · ${placeOf(now.id)}` : 'Action in progress'
 })
 const paid = computed(() => (activity.value?.reward ?? 0) > 0)
 const sleeping = computed(() => Boolean(activity.value?.tags?.includes('sleep')))
-const fixed = computed(() => active.value?.kind === 'intercity' || (Boolean(activity.value) && !activity.value?.cancellable))
+const fixed = computed(() => active.value?.kind === 'intercity' || active.value?.kind === 'homeward' || (Boolean(activity.value) && !activity.value?.cancellable))
+const connection = computed(() => {
+  const now = active.value
+  if (now?.kind !== 'homeward') return ''
+  const leg = now.ticket.legs[now.legIndex]
+  return leg ? `Connection ${now.legIndex + 1} of ${now.ticket.legs.length}: ${cityName(leg.from)} → ${cityName(leg.to)} · ${{ air: 'Flight', road: 'Road', rail: 'Train' }[leg.mode]}` : ''
+})
 const progress = computed(() => { const now = active.value; return now ? Math.max(0, Math.min(1, 1 - now.remaining / (now.duration || 1))) : 0 })
 const cancelLabel = computed(() => (fixed.value ? 'This cannot be cancelled once started' : paid.value ? 'Cancel shift. Cancelling earns nothing' : sleeping.value ? 'Wake up. The rest you got is kept' : 'Cancel current activity'))
 
@@ -99,9 +106,9 @@ async function cancel(): Promise<void> {
 </script>
 
 <template>
-  <section v-if="active" ref="card" class="life-progress" aria-label="Current activity">
+  <section v-if="active" ref="card" class="life-progress" :class="{ 'is-homeward': active.kind === 'homeward' }" aria-label="Current activity">
     <span class="life-progress-icon" aria-hidden="true"><GameIcon inline kind="activity" :id="activity?.id" :emoji="activity?.icon || (isTrip(active) ? '🧭' : '⏳')" /></span>
-    <div><strong>{{ name }}</strong><small v-if="teaching">Your teaching choices complete the shift</small><small v-else>{{ Math.ceil(active.remaining) }}s left</small></div>
+    <div><strong>{{ name }}</strong><small v-if="connection">{{ connection }}</small><small v-if="teaching">Your teaching choices complete the shift</small><small v-else>{{ Math.ceil(active.remaining) }}s left</small></div>
     <button v-if="!fixed && !teaching" type="button" :disabled="cancelling" :aria-label="cancelLabel" @click="cancel">{{ cancelling ? 'Cancelling…' : sleeping ? 'Wake up' : 'Cancel' }}</button>
     <progress v-if="!teaching" max="1" :value="progress" aria-label="Activity progress" />
     <TeachingShift v-if="teaching" class="life-progress-lesson" :generation="teaching.generation" :practice="teaching.practice" :disabled="answering || cancelling || !view.connected" @answer="answer" @cancel="cancel" />
@@ -112,5 +119,7 @@ async function cancel(): Promise<void> {
 </template>
 
 <style scoped>
+.life-progress.is-homeward>div>strong,.life-progress.is-homeward>div>small{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.45}
+.life-progress.is-homeward>div>small{font-size:12px}
 .life-progress-lesson{grid-column:1/-1;width:100%;min-width:0}
 </style>

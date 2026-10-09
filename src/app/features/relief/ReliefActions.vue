@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // The actions of the "What you can do now" card, one tap each. Used by the card in the HUD and by the sheet opened from the wallet.
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import type { ReliefAction, ReliefHelp } from '../../../types/view.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -8,6 +8,7 @@ import { useAct } from '../kit/act.ts'
 import { ui as messages } from '../messages/messagesState.ts'
 import { trekTo } from './trek.ts'
 import { actionVerb, askFriendText, orderedActions, shortReason } from './reliefModel.ts'
+import HomewardOffer from '../travel/HomewardOffer.vue'
 
 const props = defineProps<{ help: ReliefHelp }>()
 const emit = defineEmits<{ done: [] }>()
@@ -15,6 +16,7 @@ const { game, shell, command } = useApp()
 const { act, pending } = useAct()
 /** The ride on credit asks once more: it is a debt. */
 const confirming = ref(false)
+watch(() => JSON.stringify([game.session.value?.id, game.state.value.estate.city, props.help.actions.find(action => action.id === 'credit-ride')]), () => { confirming.value = false }, { flush: 'sync' })
 
 const glyph = (action: ReliefAction): string => (action.id === 'odd-job' ? 'jobs' : action.id === 'bench' ? 'bed' : action.id === 'tap' ? 'drink' : action.id === 'credit-ride' ? 'bus' : action.id === 'clinic' ? 'health' : action.id === 'friend' ? 'social' : 'coin')
 
@@ -53,7 +55,12 @@ async function run(action: ReliefAction): Promise<void> {
         <small v-else>{{ action.blocked ? shortReason(action.blocked) : action.detail }}</small>
       </span>
       <span v-if="action.blocked" class="relief-off">Not now</span>
+      <HomewardOffer v-else-if="action.journey" class="relief-homeward" :quote="action.journey" @done="emit('done')" />
       <button v-else type="button" class="relief-go" :disabled="pending !== null" @click="run(action)">{{ action.id === 'credit-ride' && confirming ? 'Yes, ride' : actionVerb(action) }}</button>
     </li>
   </ul>
 </template>
+
+<style scoped>
+.relief-homeward{grid-column:1/-1;width:100%;min-width:0}
+</style>

@@ -90,9 +90,9 @@ export async function executeCommand(ctx: RouteContext, request: RouteRequest, b
       if (isFamilySlot(familySlot) && db.social?.players[session.publicId]?.familyLinks?.slots[familySlot]?.state === 'accepted') return { ok: false, code: 'invalid_contact', state, reason: 'This family role belongs to a real player. Open Family to message or ring them.' };
       residenceGate(ctx, session, body);
       jailGate(ctx, db, session, body);
-      if (['estate.set-lga', 'estate.relocate', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type)) landOf(ctx).assertMovable(db, session.publicId);
+      if (['estate.set-lga', 'estate.relocate', 'homeward.accept', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type)) landOf(ctx).assertMovable(db, session.publicId);
       const done = internal === true ? ctx.act(state, body) : core.playerAct(state, body);
-      if (done.ok && ['home.door', 'travel', 'estate.set-lga', 'estate.relocate', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type) && db.street?.journeys) delete db.street.journeys[session.publicId];
+      if (done.ok && ['home.door', 'travel', 'estate.set-lga', 'estate.relocate', 'homeward.accept', 'estate.make-home', 'estate.move-in', 'property.house-move'].includes(body.type) && db.street?.journeys) delete db.street.journeys[session.publicId];
       if (done.ok && afterAction) {
         const pending: unknown = afterAction({ db, session, result: done });
         if (isThenable(pending)) throw new Error('A command callback must be synchronous');

@@ -16,7 +16,8 @@ import travel from './travel.ts';
 import health from './health.ts';
 import economy from './economy.ts';
 import property from './property.ts';
-import estate from './estate.ts';
+import estate, { homewardOffer, arriveInCity } from './estate.ts';
+import createHomewardSystem from './homeward.ts';
 import home from './home.ts';
 import stories from './stories.ts';
 import land from './land.ts';
@@ -30,5 +31,7 @@ import events from './events.ts';
 import growth from './growth.ts';
 import business from './business.ts';
 
-export const BASE_SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, home, stories, land, street, onboarding, goals, social, civic, missions, events, growth, business];
+const homeward = createHomewardSystem(homewardOffer, arriveInCity);
+
+export const BASE_SYSTEMS = [core, wallet, inventory, needs, skills, career, activities, travel, health, economy, property, estate, homeward, home, stories, land, street, onboarding, goals, social, civic, missions, events, growth, business];
 for (const system of BASE_SYSTEMS) registerSystem(system);

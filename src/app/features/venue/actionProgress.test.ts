@@ -67,3 +67,16 @@ test('an interactive teaching shift shows choices and no countdown or timed prog
   assert.ok(!/40s left|<progress/.test(out), 'player decisions replace the countdown')
   assert.equal((out.match(/class="teaching-shift__choice"/g) ?? []).length, 3)
 })
+
+test('a homeward connection shows its actual route and offers neither cancelling nor skipping', async () => {
+  run({ kind: 'homeward', id: 'maiduguri', duration: 95, remaining: 45, legIndex: 1,
+    ticket: { version: 1, from: 'nairobi', to: 'maiduguri', totalFare: 90000, totalSeconds: 95, key: 'display-fixture',
+      legs: [{ from: 'nairobi', to: 'lagos', mode: 'air', fare: 80000, seconds: 20 },
+        { from: 'lagos', to: 'maiduguri', mode: 'road', fare: 10000, seconds: 75 }] } })
+  const out = await html()
+  assert.match(out, /Returning to your home in Maiduguri/)
+  assert.match(out, /Connection 2 of 2: Lagos → Maiduguri · Road/)
+  assert.match(out, /45s left/)
+  assert.match(out, /This cannot be cancelled once started/)
+  assert.doesNotMatch(out, /Cancel<\/button>|Skip the trip/)
+})

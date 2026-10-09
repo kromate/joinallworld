@@ -682,12 +682,15 @@ export interface EstateView {
 }
 
 export interface RideCreditView {
+  /** A fully quoted continuous ticket; direct legacy offers retain their original shape. */
+  journey?: import('../game/cities/homewardRoute.ts').HomewardQuote | null
   /** Naira still owed for a ride home taken on credit (0 when nothing is). */
   debt: number
   offer: { to: WorldCityId; mode: CityLinkMode; fare: number } | null
 }
 /** One thing a stuck player can do right now. `venue` is where it is done (null: anywhere); `here` says they are already there. */
 export interface ReliefAction {
+  journey?: import('../game/cities/homewardRoute.ts').HomewardQuote
   id: 'odd-job' | 'bench' | 'tap' | 'clinic' | 'credit-ride' | 'friend' | 'cash-box' | 'repay'
   label: string
   detail: string

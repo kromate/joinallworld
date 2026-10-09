@@ -30,10 +30,11 @@ const VERSION = 1 as const
 const validAmount = (value: number): boolean => Number.isSafeInteger(value) && value > 0
 const validMode = (value: unknown): value is CityLinkFrom['mode'] => value === 'road' || value === 'air' || value === 'rail'
 const modeMaxSeconds = { road: intercitySeconds('road', Number.MAX_VALUE), rail: intercitySeconds('rail', Number.MAX_VALUE), air: intercitySeconds('air', Number.MAX_VALUE) }
-const MAX_TOTAL_SECONDS = MAX_HOMEWARD_LEGS * Math.max(...Object.values(modeMaxSeconds))
+export const MAX_HOMEWARD_LEG_SECONDS = Object.freeze(modeMaxSeconds)
+export const MAX_HOMEWARD_SECONDS = MAX_HOMEWARD_LEGS * Math.max(...Object.values(modeMaxSeconds))
 const legKey = (leg: HomewardLeg): string => JSON.stringify([leg.from, leg.to, leg.mode, leg.fare, leg.seconds])
 
-function quoteKey(from: string, to: string, legs: readonly HomewardLeg[]): string {
+export function homewardQuoteKey(from: string, to: string, legs: readonly HomewardLeg[]): string {
   return JSON.stringify([VERSION, from, to, legs.map(legKey)])
 }
 
@@ -53,7 +54,7 @@ interface SearchState {
 }
 
 function stateKey(state: SearchState, from: string, to: string): string {
-  return quoteKey(from, to, state.legs)
+  return homewardQuoteKey(from, to, state.legs)
 }
 
 function betterState(candidate: SearchState, current: SearchState | undefined, from: string, to: string): boolean {
@@ -96,7 +97,7 @@ export function planHomewardRoute(
         if (!validMode(link.mode) || !validAmount(link.fare) || !validAmount(link.seconds) || link.seconds > modeMaxSeconds[link.mode]) continue
         const totalFare = state.totalFare + link.fare
         const totalSeconds = state.totalSeconds + link.seconds
-        if (!Number.isSafeInteger(totalFare) || totalFare > RIDE_CREDIT.max || !Number.isSafeInteger(totalSeconds) || totalSeconds > MAX_TOTAL_SECONDS) continue
+        if (!Number.isSafeInteger(totalFare) || totalFare > RIDE_CREDIT.max || !Number.isSafeInteger(totalSeconds) || totalSeconds > MAX_HOMEWARD_SECONDS) continue
 
         const leg: HomewardLeg = { from: state.city, to: next, mode: link.mode, fare: link.fare, seconds: link.seconds }
         const candidate: SearchState = {
@@ -108,7 +109,7 @@ export function planHomewardRoute(
         }
         if (next === to) {
           const path = Object.freeze(candidate.legs.map(item => Object.freeze({ ...item })))
-          const quote: HomewardQuote = Object.freeze({ version: VERSION, from, to, legs: path, totalFare, totalSeconds, key: quoteKey(from, to, path) })
+          const quote: HomewardQuote = Object.freeze({ version: VERSION, from, to, legs: path, totalFare, totalSeconds, key: homewardQuoteKey(from, to, path) })
           if (better(quote, best)) best = quote
           continue
         }

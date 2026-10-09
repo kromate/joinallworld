@@ -233,3 +233,18 @@ test('a house style is announced only after the server accepted it', async () =>
   afterStyle(true, () => { told += 1 })
   assert.equal(told, 1)
 })
+
+test('the trip bar tracks the actual current homeward connection and the whole borrowed ticket', () => {
+  const active: LifeState['activeAction'] = { kind: 'homeward', id: 'maiduguri', duration: 95, remaining: 45, legIndex: 1,
+    ticket: { version: 1, from: 'nairobi', to: 'maiduguri', totalFare: 90000, totalSeconds: 95, key: 'display-fixture',
+      legs: [{ from: 'nairobi', to: 'lagos', mode: 'air', fare: 80000, seconds: 20 },
+        { from: 'lagos', to: 'maiduguri', mode: 'road', fare: 10000, seconds: 75 }] } }
+  const trip = tripInfo({ ...state, activeAction: active }, view(), id => id)
+  assert.ok(trip)
+  assert.deepEqual([trip.from.id, trip.to.id, trip.mode.label, trip.fare, trip.locked], ['lagos', 'maiduguri', 'Bus', 10000, true])
+  assert.equal(trip.fraction, 1 - 45 / 95)
+  assert.match(trip.rule, /Connection 2 of 2/)
+  assert.match(trip.rule, /original home in maiduguri/)
+  assert.match(trip.rule, /90,000.*borrowed/)
+  assert.match(trip.rule, /No cancelling, skipping or intermediate stops/)
+})

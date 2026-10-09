@@ -85,7 +85,7 @@ import { normalizeLook } from './characters.ts';
 import { bodyAllowed, drawsWebGL2 } from './body/gate.ts';
 import type { SkinnedBody } from './body/skinned.ts';
 import { createCanonicalCrowd, type CanonicalCrowdSpec } from './body/canonical-crowd.ts';
-import { createNativeExpressionController, type NativeExpressionController } from './body/native/native-expression-controller.ts';
+import type { NativeExpressionController } from './body/native/native-expression-controller.ts';
 import { playerOptions, rigOf, lookAvatar } from './avatar-rig.ts';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
 import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './space.ts';
@@ -440,9 +440,13 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     async load(spec) {
       // Keep the provider and its model/clip dependencies behind the first-frame capability gate.
       const { loadGameBody } = await import('./body/provider.ts');
-      const body = await loadGameBody(kit, spec.look, spec.seed, spec.scale, { scene: 'venue', poses: ['idle', 'walk', 'interact'] });
+      const body = await loadGameBody(kit, spec.look, spec.seed, spec.scale, { scene: 'venue', role: 'npc', poses: ['idle', 'walk', 'interact'] });
       let talk: NativeExpressionController;
-      try { talk = createNativeExpressionController(body.object); }
+      try {
+        // Expression code stays behind the same renderer-gated, demand-loaded NPC path as its body.
+        const { createNativeExpressionController } = await import('./body/native/native-expression-controller.ts');
+        talk = createNativeExpressionController(body.object);
+      }
       catch (error) { body.object.removeFromParent(); body.dispose(); throw error; }
       return { body, talk, dispose() { talk.dispose(); body.object.removeFromParent(); body.dispose(); } };
     },

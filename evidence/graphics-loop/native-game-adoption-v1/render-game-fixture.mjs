@@ -234,11 +234,13 @@ try {
       .every((sample) => sample.snapshot?.cameraActorFrame?.wholeActorVisible === true),
     closeupsRenderActorPixels: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
       .every((sample) => sample.renderEvidence?.drawCalls > 0 && sample.renderEvidence?.triangles > 0
-        && sample.renderEvidence?.actorPixelContrast >= 24),
+        && sample.renderEvidence?.actorPixelContrast >= 24
+        && ['head', 'torso', 'feet'].every((region) => sample.renderEvidence?.actorRegionContrast?.[region] >= 24)),
     closeupsSavedDirectCanvasPixels: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
       .every((sample) => sample.canvasScreenshot?.bytes > 0),
     cameraSideControlsSaved: [playerBackControl, playerProfileControl, mrsBackControl, dapoBackControl]
-      .every((sample) => sample.canvasScreenshot?.bytes > 0 && sample.snapshot?.cameraActorFrame?.wholeActorVisible === true),
+      .every((sample) => sample.canvasScreenshot?.bytes > 0 && sample.snapshot?.cameraActorFrame?.wholeActorVisible === true
+        && ['head', 'torso', 'feet'].every((region) => sample.renderEvidence?.actorRegionContrast?.[region] >= 24)),
     interactionSample: interact.snapshot.player?.pose === 'interact',
     realNpcActivityCompleted: npcInteraction?.started?.code === 'started' && npcInteraction?.completed === true
       && npcInteraction?.responseNamesNpc === true && npcInteraction?.familiarityChanged === true
@@ -281,7 +283,8 @@ try {
       requestedMode: snapshot.player?.requestedMode,
       cameraActorFrame: snapshot.cameraActorFrame, renderEvidence: { drawCalls: renderEvidence?.drawCalls,
         triangles: renderEvidence?.triangles, actorPixel: renderEvidence?.actorPixel,
-        backgroundPixel: renderEvidence?.backgroundPixel, actorPixelContrast: renderEvidence?.actorPixelContrast },
+        backgroundPixel: renderEvidence?.backgroundPixel, actorPixelContrast: renderEvidence?.actorPixelContrast,
+        actorRegionPixels: renderEvidence?.actorRegionPixels, actorRegionContrast: renderEvidence?.actorRegionContrast },
       canvasScreenshot,
       nativeCrowd: snapshot.crowd?.canonical, proceduralCrowd: snapshot.crowd?.procedural,
     })),

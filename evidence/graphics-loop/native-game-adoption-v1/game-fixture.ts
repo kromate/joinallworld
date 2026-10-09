@@ -14,7 +14,7 @@ import { loadCityScenes } from '../../../src/scene/city-scenes.ts';
 interface ActorAudit {
   readonly requestedLook: unknown;
   readonly seed: string;
-  readonly context: { readonly scene: 'venue'; readonly poses: readonly BodyPose[] };
+  readonly context: { readonly scene: 'venue'; readonly role: 'player'; readonly poses: readonly BodyPose[] };
   body: SkinnedBody;
   lastSolve: ReturnType<SkinnedBody['solveFeet']> | null;
   contacts: number;
@@ -44,7 +44,7 @@ interface CameraActorFrame {
   cameraAxisDot: number;
   selectedCameraSide: 'face-candidate' | 'back-control' | 'profile-control';
   visibilityRay: { clearLine: boolean; firstActorHit: { name: string; distance: number } | null;
-    nearestOccluder: { name: string; distance: number } | null };
+    nearestOccluder: { name: string; distance: number } | null; bodyCenterLineClear: boolean };
 }
 
 declare global {
@@ -136,7 +136,7 @@ function createFixture() {
   let currentCamera = 'scene';
   function isCloseCamera(name = currentCamera) { return /-(?:close)(?:-(?:back|profile))?$/.test(name); }
   let closeCameraActor: THREE.Object3D | null = null;
-  let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null };
+  let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null, bodyCenterLineClear: false };
   let unsupportedProbe: Record<string, unknown> | null = null;
   let interaction: Record<string, unknown> | null = null;
   let lastContact: ReturnType<SkinnedBody['solveFeet']> | null = null;
@@ -197,7 +197,7 @@ function createFixture() {
     if (closeCameraActor && isCloseCamera()) placeCloseCamera(closeCameraActor);
     entry.look(camera.position.x, camera.position.z);
     renderer.render(world, camera);
-    if (closeCameraActor && currentCamera.endsWith('-close')) closeCameraRay = measureCloseCameraRay(closeCameraActor);
+    if (closeCameraActor && isCloseCamera()) closeCameraRay = measureCloseCameraRay(closeCameraActor);
   }
 
   function placeCloseCamera(actor: THREE.Object3D) {
@@ -256,28 +256,35 @@ function createFixture() {
     actor.updateWorldMatrix(true, true);
     camera.updateMatrixWorld(true);
     const bounds = new THREE.Box3().setFromObject(actor);
-    const target = bounds.getCenter(new THREE.Vector3());
-    const direction = target.clone().sub(camera.position);
-    const length = direction.length();
-    if (length <= 0) return { clearLine: false, firstActorHit: null, nearestOccluder: null };
-    const raycaster = new THREE.Raycaster(camera.position, direction.normalize(), 0, length + 0.05);
-    const hits = raycaster.intersectObject(world, true);
+    const bodyCenter = bounds.getCenter(new THREE.Vector3());
+    const head = actor.getObjectByName('Head');
+    const faceTarget = head?.getWorldPosition(new THREE.Vector3()) ?? bodyCenter.clone().setY(bounds.min.y + bounds.getSize(new THREE.Vector3()).y * 0.88);
     const belongsToActor = (object: THREE.Object3D) => {
       for (let current: THREE.Object3D | null = object; current; current = current.parent) if (current === actor) return true;
       return false;
     };
-    const actorHit = hits.find((hit) => belongsToActor(hit.object));
-    const obstruction = hits.find((hit) => !belongsToActor(hit.object));
-    const firstActorHit = actorHit ? { name: actorHit.object.name || '(unnamed actor mesh)', distance: actorHit.distance } : null;
-    const nearestOccluder = obstruction ? { name: obstruction.object.name || '(unnamed scene mesh)', distance: obstruction.distance } : null;
-    return { firstActorHit, nearestOccluder,
-      clearLine: Boolean(actorHit && (!obstruction || obstruction.distance >= actorHit.distance - 0.02)) };
+    const trace = (target: THREE.Vector3) => {
+      const direction = target.clone().sub(camera.position);
+      const length = direction.length();
+      if (length <= 0) return { clearLine: false, firstActorHit: null, nearestOccluder: null };
+      const raycaster = new THREE.Raycaster(camera.position, direction.normalize(), 0, length + 0.05);
+      const hits = raycaster.intersectObject(world, true);
+      const actorHit = hits.find((hit) => belongsToActor(hit.object));
+      const obstruction = hits.find((hit) => !belongsToActor(hit.object));
+      const firstActorHit = actorHit ? { name: actorHit.object.name || '(unnamed actor mesh)', distance: actorHit.distance } : null;
+      const nearestOccluder = obstruction ? { name: obstruction.object.name || '(unnamed scene mesh)', distance: obstruction.distance } : null;
+      return { firstActorHit, nearestOccluder,
+        clearLine: Boolean(actorHit && (!obstruction || obstruction.distance >= actorHit.distance - 0.02)) };
+    };
+    const faceRay = trace(faceTarget), bodyRay = trace(bodyCenter);
+    return { ...faceRay, bodyCenterLineClear: bodyRay.clearLine };
   }
 
   const playerLoader = async (owner: Kit, look: unknown, seed: unknown, scale: number): Promise<SkinnedBody> => {
     const identitySeed = String(seed ?? PLAYER_SEED);
-    const body = await loadGameBody(owner, look, identitySeed, scale, { scene: 'venue', poses: PLAYER_POSES });
-    const audit: ActorAudit = { requestedLook: look, seed: identitySeed, context: { scene: 'venue', poses: PLAYER_POSES }, body, lastSolve: null, contacts: 0 };
+    const context = { scene: 'venue' as const, role: 'player' as const, poses: PLAYER_POSES };
+    const body = await loadGameBody(owner, look, identitySeed, scale, context);
+    const audit: ActorAudit = { requestedLook: look, seed: identitySeed, context, body, lastSolve: null, contacts: 0 };
     const solve = body.solveFeet.bind(body), sample = body.sampleFootContacts.bind(body);
     body.solveFeet = (heightAt) => { const result = solve(heightAt); audit.lastSolve = result; lastContact = result; return result; };
     body.sampleFootContacts = () => { const points = sample(); audit.contacts = points.reduce((count, item) => count + (item.points?.length ?? 1), 0); return points; };
@@ -402,7 +409,7 @@ function createFixture() {
     for (let frame = 0; frame < 34 && entry?.easing; frame += 1) {
       if (!entry) break;
       entry.stepCrowd(1 / 30);
-      const weights = nativeJawWeights(entry.group.getObjectByName(`canonical-crowd:npc:${npcId}`));
+      const weights = nativeJawWeights(entry.group.getObjectByName(`canonical-crowd:npc:${npcId}`) ?? null);
       talkLoopSynchronized &&= jawSynchronized(weights);
       for (const name of ['Body', 'Teeth', 'Tongue'] as const) jawPeak[name] = Math.max(jawPeak[name], weights[name] ?? 0);
       talkLoopFrames += 1;
@@ -510,9 +517,10 @@ function createFixture() {
     let actorPixel: number[] | null = null;
     let backgroundPixel: number[] | null = null;
     let actorPixelContrast = 0;
+    let actorRegionPixels: Record<string, number[] | null> | null = null;
+    let actorRegionContrast: Record<string, number> | null = null;
     if (actor) {
       const bounds = new THREE.Box3().setFromObject(actor);
-      const point = bounds.getCenter(new THREE.Vector3()).project(camera);
       const gl = renderer.getContext();
       const readPixel = (ndcX: number, ndcY: number) => {
         const x = Math.max(0, Math.min(renderer.domElement.width - 1, Math.round((ndcX + 1) * 0.5 * renderer.domElement.width)));
@@ -521,8 +529,20 @@ function createFixture() {
         gl.readPixels(x, y, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
         return [...pixel];
       };
-      actorPixel = readPixel(point.x, point.y);
+      const readWorld = (worldPoint: THREE.Vector3) => {
+        const point = worldPoint.clone().project(camera);
+        return readPixel(point.x, point.y);
+      };
       backgroundPixel = readPixel(0.94, 0.94);
+      const head = actor.getObjectByName('Head');
+      const headPoint = head?.getWorldPosition(new THREE.Vector3()) ?? bounds.getCenter(new THREE.Vector3()).setY(bounds.min.y + bounds.getSize(new THREE.Vector3()).y * 0.88);
+      const torsoPoint = bounds.getCenter(new THREE.Vector3());
+      const footPoint = bounds.getCenter(new THREE.Vector3()).setY(bounds.min.y + Math.min(0.12, bounds.getSize(new THREE.Vector3()).y * 0.06));
+      actorRegionPixels = { head: readWorld(headPoint), torso: readWorld(torsoPoint), feet: readWorld(footPoint) };
+      actorPixel = actorRegionPixels.torso;
+      const contrast = (pixel: number[] | null) => pixel && backgroundPixel
+        ? Math.max(...pixel.slice(0, 3).map((channel, index) => Math.abs(channel - backgroundPixel![index]!))) : 0;
+      actorRegionContrast = { head: contrast(actorRegionPixels.head), torso: contrast(actorRegionPixels.torso), feet: contrast(actorRegionPixels.feet) };
       actorPixelContrast = Math.max(...actorPixel.slice(0, 3).map((channel, index) => Math.abs(channel - backgroundPixel![index]!)));
     }
     let canvasPng = '';
@@ -532,7 +552,8 @@ function createFixture() {
       catch (error) { canvasPngError = error instanceof Error ? error.message : String(error); }
     }
     return { drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles,
-      actorPixel, backgroundPixel, actorPixelContrast, canvasPng, canvasPngError, actorFrame: actorFrame(actor) };
+      actorPixel, backgroundPixel, actorPixelContrast, actorRegionPixels, actorRegionContrast,
+      canvasPng, canvasPngError, actorFrame: actorFrame(actor) };
   }
 
   function poll() {

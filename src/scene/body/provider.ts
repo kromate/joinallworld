@@ -15,6 +15,7 @@ export const NATIVE_GAME_BODY_CAPABILITIES = Object.freeze({
 export interface GameBodyLoadContext {
   /** Existing scene category; actor ownership and scene attachment remain with the caller. */
   readonly scene: 'venue' | 'creator' | 'home';
+  readonly role?: 'player' | 'npc';
   /** Poses this actor may be asked to perform in its current lifecycle. */
   readonly poses: readonly BodyPose[];
 }

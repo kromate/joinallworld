@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "base": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+  "scope": "Seventh Africa source packet for five bounded starter-city samples, retaining the original f125 runner contract/report as historical evidence. The Mogadishu files and receipt are the corrected extent version; the original f125 Mogadishu engine result predates that correction. Current isolated engine verification passed for all five cities after the extent correction. No production, hosted/browser, phone, whole-city, whole-country, or release acceptance is claimed.",
+  "destinationIds": [
+    "mogadishu",
+    "tripoli",
+    "tunis",
+    "freetown",
+    "monrovia"
+  ],
+  "registeredInProduction": false,
+  "geometry": {
+    "buildings": 1465,
+    "roads": 462,
+    "sourceBytes": 7922555,
+    "extent": "Five bounded central OpenStreetMap samples with pinned Natural Earth country outlines and OurAirports dataset points; not complete cities or countries."
+  },
+  "sourceSummaries": [
+    {
+      "city": "mogadishu",
+      "countryIso2": "SO",
+      "settlement": "Mogadishu",
+      "airportDatasetName": "Aden Adde International Airport",
+      "osmSha256": "1d9d0f75f735fb9a6f722cf0a74aa51e9444f88672d2c40cd10ecd2d3b7c5e56",
+      "sourceBytes": 1886484,
+      "retained": {
+        "buildings": 350,
+        "roads": 53
+      },
+      "revisionId": "88ecfb4aa49ef51be84c671404e506d3bfb2f07966ec48455d3f01f8dcdc19e1"
+    },
+    {
+      "city": "tripoli",
+      "countryIso2": "LY",
+      "settlement": "Tripoli",
+      "airportDatasetName": "Mitiga International Airport",
+      "osmSha256": "cc4f1fbae3524f1e4da35d059336fb0a472a3187df058f194827d8f71fff2c92",
+      "sourceBytes": 1333089,
+      "retained": {
+        "buildings": 350,
+        "roads": 146
+      }
+    },
+    {
+      "city": "tunis",
+      "countryIso2": "TN",
+      "settlement": "Tunis",
+      "airportDatasetName": "Tunis Carthage International Airport",
+      "osmSha256": "ae49bb8188c1b880f6d298dc7aa43089d2ef9f7dd8f87935f5dabc28e78178a8",
+      "sourceBytes": 609671,
+      "retained": {
+        "buildings": 65,
+        "roads": 148
+      }
+    },
+    {
+      "city": "freetown",
+      "countryIso2": "SL",
+      "settlement": "Freetown",
+      "airportDatasetName": "Lungi International Airport",
+      "osmSha256": "0176dfff08bf88c0c088cb3fc2294c9922955d9eb54a0908f936c77171abcb67",
+      "sourceBytes": 2823115,
+      "retained": {
+        "buildings": 350,
+        "roads": 85
+      }
+    },
+    {
+      "city": "monrovia",
+      "countryIso2": "LR",
+      "settlement": "Monrovia",
+      "airportDatasetName": "Spriggs Payne Airport",
+      "osmSha256": "86b113aab884268e0cb190ea747a14602ec0dc21d273eb1d28ff94369b41bf0f",
+      "sourceBytes": 1270196,
+      "retained": {
+        "buildings": 350,
+        "roads": 30
+      }
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/game/cities/mogadishu/facts.ts",
+      "bytes": 1616,
+      "sha256": "a4fd1b7c3957d2900a0ba3994fb6514b81ccc6a32e325cda353005e02df27b13"
+    },
+    {
+      "path": "src/game/cities/mogadishu/geometry.ts",
+      "bytes": 102752,
+      "sha256": "c388a64a88a667d40c8305fab108a906a70153d9fe2c8453543d6dfaa5253adf"
+    },
+    {
+      "path": "src/game/cities/mogadishu/index.ts",
+      "bytes": 260,
+      "sha256": "cbac699db6c5b657252c56e77bc35e54744a936231abe5c22a093180bb841396"
+    },
+    {
+      "path": "src/game/cities/mogadishu/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/mogadishu/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/mogadishu.json",
+      "bytes": 3495,
+      "sha256": "585625f37eb1657935bf6c8097cac7470c726c913c9d6e52125f1a2590722da7"
+    },
+    {
+      "path": "src/game/cities/tripoli/facts.ts",
+      "bytes": 1451,
+      "sha256": "93895b59e98d7b6b683b07cff54861296667f16e3995caaf7db7941a9ac4cc03"
+    },
+    {
+      "path": "src/game/cities/tripoli/geometry.ts",
+      "bytes": 113763,
+      "sha256": "83d155b54f6157faae288719517c067c739bc4543e0197bf7f186ec20a849c36"
+    },
+    {
+      "path": "src/game/cities/tripoli/index.ts",
+      "bytes": 258,
+      "sha256": "e5c2c3a775a8c5b54dd5f7aa76012539991cc30140029ddd888e10384485c84e"
+    },
+    {
+      "path": "src/game/cities/tripoli/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/tripoli/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/tripoli.json",
+      "bytes": 3466,
+      "sha256": "8cabdd19163805fc5b9080f1ee88967d25690f1565a82a510c6a13addcba3959"
+    },
+    {
+      "path": "src/game/cities/tunis/facts.ts",
+      "bytes": 1460,
+      "sha256": "11038cab79a8e9a3db64e21f61df4fc4fa9d67427c111e9384168ee9d14c5204"
+    },
+    {
+      "path": "src/game/cities/tunis/geometry.ts",
+      "bytes": 50155,
+      "sha256": "2b8b434730764d4e01799c50c692bf6bbf6253a9797e69de2c4e3acba938185c"
+    },
+    {
+      "path": "src/game/cities/tunis/index.ts",
+      "bytes": 256,
+      "sha256": "d9d95add331676cba390b448ef3c1f29640d9bcc47f29886ea06c36dc4291939"
+    },
+    {
+      "path": "src/game/cities/tunis/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/tunis/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/tunis.json",
+      "bytes": 3491,
+      "sha256": "5d1cf8480fa48a2a3082b9999211cc79443e0c051e147d07471b345d2ee9baf2"
+    },
+    {
+      "path": "src/game/cities/freetown/facts.ts",
+      "bytes": 1466,
+      "sha256": "dfc725cc6d072b79174aaec13c8b68e4dc21f961cada78bb3fc96893219f6abb"
+    },
+    {
+      "path": "src/game/cities/freetown/geometry.ts",
+      "bytes": 109520,
+      "sha256": "af941170f418ce120e4f7c9898ffa312aa899bbee0631c63e0fbfb6ddae6324a"
+    },
+    {
+      "path": "src/game/cities/freetown/index.ts",
+      "bytes": 259,
+      "sha256": "44c3cf12520ff95028e796407ee1dbde46a8bbc0f184b7f44948a184b74e1473"
+    },
+    {
+      "path": "src/game/cities/freetown/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/freetown/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/freetown.json",
+      "bytes": 3498,
+      "sha256": "54306e03517d38fac90ed43b88fd0c8733dc89174334a7ce693a305aa7d0c205"
+    },
+    {
+      "path": "src/game/cities/monrovia/facts.ts",
+      "bytes": 1451,
+      "sha256": "e620caaaf3b05dd8df19ae5f4dbfc0f839507395d21f60ef6e7b218aaa072bdf"
+    },
+    {
+      "path": "src/game/cities/monrovia/geometry.ts",
+      "bytes": 80918,
+      "sha256": "29fbf0e3b6d09639e35139b6ff95a5a440ee5c7f804575285836f12ee034f8ee"
+    },
+    {
+      "path": "src/game/cities/monrovia/index.ts",
+      "bytes": 259,
+      "sha256": "dec1d901db5c20eced12fc58bca648e1cd4202e7e7e15bde3348526a851aff7e"
+    },
+    {
+      "path": "src/game/cities/monrovia/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/monrovia/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/monrovia.json",
+      "bytes": 3476,
+      "sha256": "2326fcdf0556158627ac9274c9cf5274d316a820e8a4be0c25060cefa079c8a5"
+    },
+    {
+      "path": "world/playable-africa-rollout/inventory.json",
+      "bytes": 173999,
+      "sha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b"
+    },
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 39500,
+      "sha256": "1c4fffb0d08b45d719b0e0900ad69e006b4e4148e50804481cc705fef4db9273"
+    },
+    {
+      "path": "scripts/world/build-playable-africa.py",
+      "bytes": 13380,
+      "sha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+    },
+    {
+      "path": "scripts/world/verify-playable-destination.ts",
+      "bytes": 13771,
+      "sha256": "629a8dc7e1b2a513803e5b319bf6ca23b9683382bfa243438466ace55c59e0ae"
+    },
+    {
+      "path": "world/starter-extent-revisions-acceptance.json",
+      "bytes": 5727,
+      "sha256": "f6a6be7bd255420dc5cb665af4abc29e2602108b10e26c784f8f527797920c2d"
+    }
+  ],
+  "validation": {
+    "historicalOriginalRun": {
+      "status": "complete",
+      "contractSha256": "f125b7a8eb7b3cbfa104fb5cb095e51c5f441fa6ce29bf098ea1cc5c0dcea566",
+      "reportStatus": "complete",
+      "reportGitHead": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+      "cities": [
+        "mogadishu",
+        "tripoli",
+        "tunis",
+        "freetown",
+        "monrovia"
+      ],
+      "sourceAndEngineChecks": "passed all five under the original frozen run; Mogadishu engine result is pre-correction historical evidence only."
+    },
+    "extentRevisionAudit": {
+      "status": "passed",
+      "checkedAt": "2026-10-09T21:39:45.892588+00:00",
+      "path": ".cache/world-build/evidence/starter-extent-independent-audit.json",
+      "sha256": "f77f8e944da75987bdca99743c041e95d2ba479478ca218586bbd6ab5d67bf7c",
+      "cities": [
+        {
+          "country": "SO",
+          "city": "mogadishu",
+          "revisionId": "88ecfb4aa49ef51be84c671404e506d3bfb2f07966ec48455d3f01f8dcdc19e1",
+          "beforeBounds": [
+            45.292699,
+            2.00244,
+            45.379732,
+            2.083627
+          ],
+          "afterBounds": [
+            45.292699,
+            2.00244,
+            45.379732,
+            2.0867873
+          ],
+          "beforeOutsideVertices": 37,
+          "afterOutsideVertices": 0,
+          "buildings": 350,
+          "roads": 53,
+          "retainedVertices": 3199,
+          "completeRoadAndBuildingCoordinatesUnchanged": true,
+          "sourceAndRequestLedgerUnchanged": true,
+          "planSha256": "bfca2eeecdfca4d1af47e89e0021f586a71c64e6d9c4ceb4d09147e8066af52a",
+          "beforeReceiptSha256": "da9a559ac7048b8b3a155eb986d224643e00bbc818f81e63867d2475920fef6b",
+          "afterReceiptSha256": "585625f37eb1657935bf6c8097cac7470c726c913c9d6e52125f1a2590722da7",
+          "resumePassed": true
+        },
+        {
+          "country": "TZ",
+          "city": "dar",
+          "revisionId": "3dc07d449f9cd84903aaf17ce69521f24abe38d3467a7e5aeee94b7428d3e668",
+          "beforeBounds": [
+            39.195288,
+            -6.885499,
+            39.281396,
+            -6.783067
+          ],
+          "afterBounds": [
+            39.195288,
+            -6.885499,
+            39.281396,
+            -6.7772828
+          ],
+          "beforeOutsideVertices": 64,
+          "afterOutsideVertices": 0,
+          "buildings": 350,
+          "roads": 154,
+          "retainedVertices": 4997,
+          "completeRoadAndBuildingCoordinatesUnchanged": true,
+          "sourceAndRequestLedgerUnchanged": true,
+          "planSha256": "1adc220b697c71e2eb781b17915320aa428700ecc17716f91e9d249d6a1e0907",
+          "beforeReceiptSha256": "580d24acc89453ae2971f8de5b2a6d6c40229a3d5d6f3b3e1061b3a2cefc57f6",
+          "afterReceiptSha256": "3ec5b56473e9020470e83937320a56e3b5f7f06db76079b9ca291958aaf4a469",
+          "resumePassed": true
+        },
+        {
+          "country": "BW",
+          "city": "gaborone",
+          "revisionId": "bc7f95881b073b32b39e63c77a68cf1a448e1b70acbb100441b8d2190e968513",
+          "beforeBounds": [
+            25.896948,
+            -24.661314,
+            25.9302,
+            -24.543201
+          ],
+          "afterBounds": [
+            25.896948,
+            -24.6634568,
+            25.9302,
+            -24.543201
+          ],
+          "beforeOutsideVertices": 11,
+          "afterOutsideVertices": 0,
+          "buildings": 248,
+          "roads": 32,
+          "retainedVertices": 2130,
+          "completeRoadAndBuildingCoordinatesUnchanged": true,
+          "sourceAndRequestLedgerUnchanged": true,
+          "planSha256": "0b7f56a3b7dbb18c4cd3eda005097b3236cc8676e9a27d22a3d75540311a2f28",
+          "beforeReceiptSha256": "6ec590ce942ca4716ec99a110626d31e16b0d435b6c979492f29e2e7fc4ea135",
+          "afterReceiptSha256": "3710fc6fb91a7aa112b2ed40ed8368b57b02674bdf667621b283edb4b401685a",
+          "resumePassed": true
+        }
+      ],
+      "limitations": [
+        "Clipped land checked for coordinate containment, not an independent GIS/topology equivalence proof.",
+        "No runtime registration, rendering, flight or production acceptance is inferred."
+      ]
+    },
+    "currentCorrectedMogadishuEngine": {
+      "status": "passed",
+      "accepted": true,
+      "checkedAt": "2026-10-09T21:40:44.728193+00:00",
+      "scope": "isolated in-process city map/content and flight/save lifecycle; not hosted/native/production",
+      "city": "mogadishu",
+      "roads": 53,
+      "buildingBoxes": 700,
+      "evidencePath": ".cache/world-build/evidence/starter-current-engine-verification.json",
+      "evidenceSha256": "88d5d79a822db84eaeb6c046d34e4aebfa6a4afb85a85159bb85bc10a2a14733"
+    },
+    "scope": "Pinned source assets, original frozen source/engine report, independent extent audit and current isolated engine verification. No hosted/native/browser/phone/whole-city/whole-country/production acceptance is inferred.",
+    "currentBatchEngine": {
+      "status": "passed",
+      "checkedAt": "2026-10-09T21:40:44.728193+00:00",
+      "cities": [
+        {
+          "city": "mogadishu",
+          "status": "verified",
+          "roads": 53,
+          "buildingBoxes": 700,
+          "logSha256": "fb92920ba8d32d579b4ae0416364bc71d756e2f8326de8506982f08cbfb54d39"
+        },
+        {
+          "city": "tripoli",
+          "status": "verified",
+          "roads": 146,
+          "buildingBoxes": 700,
+          "logSha256": "a539b7b3af439fb86a83fc464967e236d75bab3ab611921b5570cfa0f897e619"
+        },
+        {
+          "city": "tunis",
+          "status": "verified",
+          "roads": 148,
+          "buildingBoxes": 130,
+          "logSha256": "c541d97727e8c780e3b021c6ac2d0f21ab626f68e8ca620a17f471afee389223"
+        },
+        {
+          "city": "freetown",
+          "status": "verified",
+          "roads": 85,
+          "buildingBoxes": 700,
+          "logSha256": "12bcd780b506450345b339a95b846c399b7c2ee65dbdd43290001d1655f088ac"
+        },
+        {
+          "city": "monrovia",
+          "status": "verified",
+          "roads": 30,
+          "buildingBoxes": 700,
+          "logSha256": "5958d8d96869acc5f4aebb013bc8e11ed9792444f0ff25cc05214f0046a674a7"
+        }
+      ],
+      "scope": "isolated in-process city map/content and flight/save lifecycle; not hosted/native/production",
+      "evidencePath": ".cache/world-build/evidence/starter-current-engine-verification.json",
+      "evidenceSha256": "88d5d79a822db84eaeb6c046d34e4aebfa6a4afb85a85159bb85bc10a2a14733"
+    }
+  },
+  "evidenceReferences": {
+    "originalFrozenContract": {
+      "path": ".cache/world-build/playable-africa-runs/f125b7a8eb7b3cbfa104fb5cb095e51c5f441fa6ce29bf098ea1cc5c0dcea566/contract.json",
+      "bytes": 4303,
+      "sha256": "8ed46c4b1714d9982030b605487e87c1950d5ba5a527354158a8cc0e054ddd57"
+    },
+    "originalFrozenReport": {
+      "path": ".cache/world-build/playable-africa-runs/f125b7a8eb7b3cbfa104fb5cb095e51c5f441fa6ce29bf098ea1cc5c0dcea566/report.json",
+      "bytes": 2555,
+      "sha256": "2d26011a6dfdd693c49d20f8ea74a3a7882f3faeafd684ba79d6ddc73b1cc8cc"
+    },
+    "correctionAcceptancePacket": {
+      "path": "world/starter-extent-revisions-acceptance.json",
+      "bytes": 5727,
+      "sha256": "f6a6be7bd255420dc5cb665af4abc29e2602108b10e26c784f8f527797920c2d",
+      "status": "passed; independent geometry audit and current isolated engine verification; production remains false"
+    },
+    "mogadishuRevisionId": "88ecfb4aa49ef51be84c671404e506d3bfb2f07966ec48455d3f01f8dcdc19e1",
+    "currentEngineReport": {
+      "path": ".cache/world-build/evidence/starter-current-engine-verification.json",
+      "bytes": 1771,
+      "sha256": "88d5d79a822db84eaeb6c046d34e4aebfa6a4afb85a85159bb85bc10a2a14733"
+    }
+  },
+  "dependencyNotes": [
+    "The f125 run contract and report remain historical frozen evidence; they are not rewritten to include the corrected Mogadishu payload.",
+    "The corrected Mogadishu receipt and five assets are pinned separately in this packet. Its old f125 engine verification predates the extent correction; current isolated engine verification passed for the corrected payload.",
+    "The independent extent audit reports retained building and road coordinate arrays unchanged and all previously outside feature vertices now inside published bounds; it does not establish independent GIS topology equivalence.",
+    "Natural Earth settlement/capital labels may be stale and do not assert current official capital status. OurAirports values are dataset points, not official ARPs or confirmation of current operations or schedules.",
+    "Fictional visitor content and bounded geometry do not establish real services or whole-city/whole-country coverage.",
+    "The independent acceptance record notes that revision tool v1 omitted the transitive build-playable-africa.py hash from its revision identity. This packet pins that compiler file separately; the independent source-geometry audit remains the evidence for unchanged retained coordinates and corrected bounds."
+  ]
+}

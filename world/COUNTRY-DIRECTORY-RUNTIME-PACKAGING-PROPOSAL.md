@@ -35,6 +35,17 @@ must be prepared again. `dispose` aborts owned work and clears resident caches.
 The initial admission is 40 Nigeria rows and ten foreign rows. Explicit reviewed
 extensions can add countries and cities without changing the protected prefix.
 
+`trusted-city-facts.generated.ts` also projects ordered admitted routing facts as
+`[id, name, source, countryId, lon, lat, airport]`. Its source discriminator is
+`nigeria` or `foreign`, and Nigeria's country ID is `ng`. Nigeria facts reuse the
+existing static tuples, so names and coordinates are not duplicated in another
+literal table. Foreign routing facts come from validated admitted modules, never
+HTTP metadata. Parent registry wiring can retain synchronous route authority
+while preparing foreign display/state/preview metadata lazily. Actual comparison
+against the unchanged C1 catalogue passed for all 50 rows and all 1,087 route
+terms: 34 authored and 1,053 generated. The new projection itself still requires
+combined compiler and startup acceptance.
+
 The four baseline `.txt` files are exact C1 source snapshots with fixed hashes.
 They allow generation from a shallow checkout without consulting Git history.
 No CI checkout settings were changed.
@@ -85,6 +96,14 @@ the other lists older WORLD tooling absent from the shared release allowlist.
 That historical whole-branch issue reinforces the requirement to integrate only
 the reviewed country diff. A new compiler run is required for the corrections;
 the failed run is retained and does not count as a pass.
+
+Correction: exact `03b9f36a` run 38003489740 subsequently passed all five compiler
+projects with zero TypeScript/Vue errors and zero JavaScript baseline errors.
+Build, unchanged download budgets and public asset smoke also passed. The one
+remaining smoke failure concerns the older WHOLE WORLD branch tooling allowlist;
+it does not authorize a full branch merge. The later trusted facts projection
+was added after this run and cannot inherit its compiler acceptance. Combined
+caller migration, startup budget and native release gates remain open.
 
 Before release, Integration must migrate the callers, complete exact combined
 TypeScript/build/startup gates, verify native Nigeria/save/travel continuity and

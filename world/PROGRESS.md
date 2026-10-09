@@ -1,3 +1,24 @@
+# Country runtime compiler checkpoint, 9 October 2026 at 23:26 UTC
+
+Exact03b9f36a CI38003489740 passes all five strict compiler projects with zero
+TypeScript/Vue errors and zero JavaScript baseline errors. Build, download caps
+and permitted public assets pass. The historical whole-branch tooling allowlist
+smoke still fails; integrate the selected country diff, not WORLD's full history.
+
+The requested trusted routing projection now derives 50 admitted rows from
+validated modules and reuses static Nigeria tuples. Actual comparison preserves
+all 40 Nigeria and ten foreign facts and 1,087 authored/generated route terms.
+This later projection needs combined compiler/startup acceptance. It adds no
+country and makes no HTTP data authoritative.
+
+Heavy compiler/build verification and further implementation workers move to
+the existing online lane with zero additional spend. The confirmed experiment
+cutoff is 10 October at 09:00 Lagos, 08:00 UTC. WORLD remains sole uploader.
+Actual native eec original-store stage13438/child16414 has teaching ON, fixed
+23:30:49 UTC deadline, all seven original control/store fields retained. The
+ready receipt qualifies shortened health ID and normal HTML metadata transform;
+three initial assertion failures were preserved. No production upload yet.
+
 # Country runtime correction checkpoint, 9 October 2026 at 23:14 UTC
 
 Actual source CI38002712142 built successfully within unchanged download budgets,

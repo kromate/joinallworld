@@ -16,6 +16,7 @@ const generatedNigeriaPath = join(citiesDir, 'nigeria-catalogue.generated.ts')
 const generatedForeignAdmissionPath = join(citiesDir, 'foreign-admission.generated.ts')
 const generatedForeignLoadersPath = join(citiesDir, 'foreign-loaders.generated.ts')
 const generatedDirectoryDescriptorPath = join(citiesDir, 'country-directory.generated.ts')
+const generatedTrustedFactsPath = join(citiesDir, 'trusted-city-facts.generated.ts')
 const publicDirectory = join(root, 'public/world-country-directory')
 const check = process.argv.includes('--check')
 
@@ -246,6 +247,8 @@ const catalogueCityEntries: DirectoryCity[] = cities.map(({ id, rules }) => {
 })
 const nigeriaCities = catalogueCityEntries.filter((city) => city.countryISO === undefined)
 const foreignCities = catalogueCityEntries.filter((city) => city.countryISO !== undefined)
+const foreignTrustedFactsLines = foreignCities.map((city) => `  ${JSON.stringify([city.id, city.name, 'foreign', city.countryISO, city.lon, city.lat, city.airport ? 1 : 0])},`).join('\n')
+const trustedCityFacts = `// Generated from validated admitted city modules. No HTTP data supplies routing authority.\nimport { NIGERIA_CITY_CATALOGUE_ROWS } from './nigeria-catalogue.generated.ts'\n\nexport type TrustedCityFactsRow = readonly [id: string, name: string, source: 'nigeria' | 'foreign', countryId: string, lon: number, lat: number, airport: 0 | 1]\n\nconst FOREIGN_TRUSTED_CITY_FACTS = [\n${foreignTrustedFactsLines}\n] satisfies readonly TrustedCityFactsRow[]\n\nexport const TRUSTED_CITY_FACTS_ROWS: readonly TrustedCityFactsRow[] = Object.freeze([\n  ...NIGERIA_CITY_CATALOGUE_ROWS.map(([id, name, , , lon, lat, airport]) => Object.freeze([id, name, 'nigeria', 'ng', lon, lat, airport] as const)),\n  ...FOREIGN_TRUSTED_CITY_FACTS.map((row) => Object.freeze(row)),\n])\n`
 const nigeriaCityLines = nigeriaCities.map((city) => {
   const row = rowById.get(city.id)
   if (!row || row.length !== 7) throw new Error(`Nigeria city ${city.id} must retain its original seven-field C1 row`)
@@ -289,6 +292,7 @@ const outputs: Array<readonly [string, string]> = [
   [cataloguePath, catalogue], [loadersPath, loaders], [routesPath, routes],
   [generatedNigeriaPath, nigeriaCatalogue], [generatedForeignAdmissionPath, foreignAdmission],
   [generatedForeignLoadersPath, foreignLoaders], [generatedDirectoryDescriptorPath, directoryDescriptor],
+  [generatedTrustedFactsPath, trustedCityFacts],
   [join(publicDirectory, directory.indexPath), directory.indexContent.toString('utf8')],
   ...directory.directories.map((entry) => [join(publicDirectory, entry.path), entry.content.toString('utf8')] as const),
 ]

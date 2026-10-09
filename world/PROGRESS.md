@@ -55,6 +55,14 @@ Exact pins and receipts are `.cache/world-build/evidence/feature-index-ingest-*`
 Compiler accepts this source, not the earlier registry-only source. Committed-source
 policy and latest main synchronization follow this checkpoint.
 
+Implementation ef4ca35504cd2ceaa4e77e1686b7e6c605eff423 passes all5 actual
+release-source policy tests from its exact clean Git archive, terminal78066 exit0.
+Archive140,441,600bytes/133,908,368logical bytes/8,570members stays below
+256MiB/10,000members; free space, regular-file/directory inventory and extraction
+data filter are checked. Owned archive/checkout are removed; actual caches are
+preserved. Receipt `feature-index-ingest-clean-policy-v1.{json,tap,stderr}`.
+This is **206 focused checks plus compiler**, not a full runtime release.
+
 **Next:** implement actual supervised namespace admission and persistent per-index
 capture attempt/input ownership using the fixed registry recovery records, then
 validate/fence frozen campaign observations and completion. Independently conserve

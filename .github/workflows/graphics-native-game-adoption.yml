@@ -1,0 +1,42 @@
+name: Actual office native player NPC adoption
+on:
+  push:
+    branches: [codex/graphics-native-game-adoption-v1]
+permissions:
+  contents: read
+jobs:
+  office:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Typecheck game source including new native body provider
+        run: npm run typecheck
+      - name: Strict actual office fixture graph
+        if: always()
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/fixture.typecheck.json
+      - name: Actual NPC appearance queue and lifecycle regressions
+        if: always()
+        run: node --max-old-space-size=256 --experimental-strip-types --test --test-concurrency=1 src/scene/body/canonical-crowd.test.ts src/scene/crowd-native-appearance.test.ts src/scene/crowd.test.ts src/scene/kit-late-close.test.ts src/scene/venue-contact.test.ts src/scene/body/stand-in.test.ts
+      - name: Bundle actual game office geometry and actions
+        if: always()
+        run: node --max-old-space-size=256 evidence/graphics-loop/native-game-adoption-v1/bundle-game-fixture.mjs
+      - name: Render actual office player and real social NPC interaction
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/native-game-adoption-v1/bounded-render.py evidence/graphics-loop/native-game-adoption-v1/render-resource.log evidence/graphics-loop/native-game-adoption-v1/render-resource.json node evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-office-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/native-game-adoption-v1/remote-results/
+            evidence/graphics-loop/native-game-adoption-v1/render-resource.*
+          if-no-files-found: warn

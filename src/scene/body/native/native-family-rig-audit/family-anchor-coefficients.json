@@ -1,0 +1,1132 @@
+{
+  "schema": "threews-native-family-anchor-coefficients-v1",
+  "upstreamCommit": "ec8d1d270b93b8e2e87e8a6160bb908665fe1fcd",
+  "sourceGlbSha256": "6627588660aa6c754aaa2edb181bc01a8ca60c3b4c534efa3e87f636ce5cda18",
+  "expressiveGlbSha256": "0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077",
+  "sourceFiles": {
+    "base.obj": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+    "basemesh_vertex_groups.json": "8cb1417bc55ae5ec8aa99f90734e81ed5fbb556511ff6a2c00e0534b70911444",
+    "rig.mixamo.json": "b4e491bacdcae797e53b7692169cf6a160c50fcc1eda5f0982e92fac1561ae56",
+    "weights.mixamo.json": "4561be4d7c0093d70e3dba4fbacbbbb6d66781573779fb12a0509cefa181b8ae",
+    "african-female-young.target.gz": "1147ae55ecb0f66bade3f45176b3af187e265878322db172ad1090e9f3108e84",
+    "asian-female-young.target.gz": "ee17da733288434e5b6fa120497f1fa6e72bf7faad5d694b0431d7275139170d",
+    "caucasian-female-young.target.gz": "e9d6212373ac5f1e2c596fa145e363385f4d169c3c6c88ede3bab93b681af041",
+    "african-male-young.target.gz": "05ed84d6df36e788cdfa8da0be15376850524b960cf2f17f3e592b9cf7d21c85",
+    "asian-male-young.target.gz": "0928ed8b9f08f60afb9884cf9e9f33a939ed3a85d7f136de9ccc88a76981d6d7",
+    "caucasian-male-young.target.gz": "ffe69537e53148edff2776204ba48cf3bf1f3cbc72966592c8a562ab80b07333"
+  },
+  "space": "GLB root-local, Y-up, meters; same xform and joint-ground floor offset as pinned builder",
+  "morphRecipe": "bodyFeminine/bodyMasculine are the 1/3 average of african/asian/caucasian female-young/male-young sparse target files",
+  "anchors": {
+    "mixamorigHead": {
+      "sourceRigName": "mixamorig:Head",
+      "parent": "mixamorigNeck",
+      "strategy": "MEAN",
+      "anchor": [
+        823,
+        7530
+      ],
+      "neutral": [
+        -0.0018900000000000002,
+        1.46612,
+        0.029054999999999997
+      ],
+      "male": [
+        0.0025600000000000015,
+        1.52512,
+        0.017955
+      ],
+      "female": [
+        0.0004266666666666669,
+        1.4040533333333336,
+        0.02413833333333333
+      ]
+    },
+    "mixamorigHips": {
+      "sourceRigName": "mixamorig:Hips",
+      "parent": null,
+      "strategy": "MEAN",
+      "anchor": [
+        4059,
+        10997
+      ],
+      "neutral": [
+        0.0010950000000000003,
+        0.9119250000000001,
+        0.026105000000000003
+      ],
+      "male": [
+        -0.0016383333333333334,
+        0.9682750000000001,
+        0.008555000000000002
+      ],
+      "female": [
+        0.004195,
+        0.8603083333333336,
+        0.025038333333333336
+      ]
+    },
+    "mixamorigLeftArm": {
+      "sourceRigName": "mixamorig:LeftArm",
+      "parent": "mixamorigLeftShoulder",
+      "strategy": "CUBE",
+      "anchor": "joint-l-shoulder",
+      "neutral": [
+        0.16771250000000004,
+        1.3428850000000003,
+        0.014605
+      ],
+      "male": [
+        0.1864916666666667,
+        1.37906,
+        0.01783416666666667
+      ],
+      "female": [
+        0.15358750000000002,
+        1.2618183333333337,
+        0.020788333333333336
+      ]
+    },
+    "mixamorigLeftFoot": {
+      "sourceRigName": "mixamorig:LeftFoot",
+      "parent": "mixamorigLeftLeg",
+      "strategy": "CUBE",
+      "anchor": "joint-l-ankle",
+      "neutral": [
+        0.21961999999999998,
+        0.07352000000000003,
+        -0.0009100000000000001
+      ],
+      "male": [
+        0.19776166666666667,
+        0.07114500000000001,
+        0.015210833333333335
+      ],
+      "female": [
+        0.16340333333333334,
+        0.06824083333333342,
+        0.03014833333333334
+      ]
+    },
+    "mixamorigLeftForeArm": {
+      "sourceRigName": "mixamorig:LeftForeArm",
+      "parent": "mixamorigLeftArm",
+      "strategy": "CUBE",
+      "anchor": "joint-l-elbow",
+      "neutral": [
+        0.31293625,
+        1.1676237500000002,
+        0.013201250000000001
+      ],
+      "male": [
+        0.35220708333333334,
+        1.1892154166666669,
+        0.015638750000000003
+      ],
+      "female": [
+        0.3104945833333333,
+        1.0904737500000001,
+        0.024613750000000004
+      ]
+    },
+    "mixamorigLeftHand": {
+      "sourceRigName": "mixamorig:LeftHand",
+      "parent": "mixamorigLeftForeArm",
+      "strategy": "CUBE",
+      "anchor": "joint-l-hand",
+      "neutral": [
+        0.431185,
+        1.06348625,
+        0.175655
+      ],
+      "male": [
+        0.48684750000000004,
+        1.0605362500000002,
+        0.20762166666666665
+      ],
+      "female": [
+        0.4197850000000001,
+        0.9706945833333336,
+        0.15898833333333334
+      ]
+    },
+    "mixamorigLeftHandIndex1": {
+      "sourceRigName": "mixamorig:LeftHandIndex1",
+      "parent": "mixamorigLeftHand",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-2-1",
+      "neutral": [
+        0.44955375000000003,
+        1.0213337500000002,
+        0.26441625
+      ],
+      "male": [
+        0.5170120833333334,
+        1.01985875,
+        0.3129079166666667
+      ],
+      "female": [
+        0.44516208333333335,
+        0.9302004166666669,
+        0.24243708333333336
+      ]
+    },
+    "mixamorigLeftHandIndex2": {
+      "sourceRigName": "mixamorig:LeftHandIndex2",
+      "parent": "mixamorigLeftHandIndex1",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-2-2",
+      "neutral": [
+        0.45315250000000007,
+        1.00781875,
+        0.28537875
+      ],
+      "male": [
+        0.5206400000000001,
+        1.00416875,
+        0.33626625
+      ],
+      "female": [
+        0.44822750000000006,
+        0.9157437500000002,
+        0.2604954166666667
+      ]
+    },
+    "mixamorigLeftHandIndex3": {
+      "sourceRigName": "mixamorig:LeftHandIndex3",
+      "parent": "mixamorigLeftHandIndex2",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-2-3",
+      "neutral": [
+        0.4533825,
+        0.9928450000000001,
+        0.30235375
+      ],
+      "male": [
+        0.5200699999999999,
+        0.9869700000000001,
+        0.35497875
+      ],
+      "female": [
+        0.44767,
+        0.9003575000000001,
+        0.27446208333333333
+      ]
+    },
+    "mixamorigLeftHandMiddle1": {
+      "sourceRigName": "mixamorig:LeftHandMiddle1",
+      "parent": "mixamorigLeftHand",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-3-1",
+      "neutral": [
+        0.4608300000000001,
+        1.00692,
+        0.24789750000000002
+      ],
+      "male": [
+        0.5349966666666667,
+        1.0070575000000002,
+        0.2941391666666667
+      ],
+      "female": [
+        0.45970500000000003,
+        0.9212200000000001,
+        0.22555166666666665
+      ]
+    },
+    "mixamorigLeftHandMiddle2": {
+      "sourceRigName": "mixamorig:LeftHandMiddle2",
+      "parent": "mixamorigLeftHandMiddle1",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-3-2",
+      "neutral": [
+        0.47124499999999997,
+        0.9855450000000001,
+        0.26907875
+      ],
+      "male": [
+        0.5429158333333333,
+        0.9795408333333334,
+        0.3175204166666667
+      ],
+      "female": [
+        0.4661991666666667,
+        0.8968116666666668,
+        0.24307458333333334
+      ]
+    },
+    "mixamorigLeftHandMiddle3": {
+      "sourceRigName": "mixamorig:LeftHandMiddle3",
+      "parent": "mixamorigLeftHandMiddle2",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-3-3",
+      "neutral": [
+        0.47467375,
+        0.9671225000000001,
+        0.28558875
+      ],
+      "male": [
+        0.5458654166666667,
+        0.9568475000000001,
+        0.33705541666666666
+      ],
+      "female": [
+        0.4685695833333333,
+        0.8764808333333335,
+        0.2577679166666666
+      ]
+    },
+    "mixamorigLeftHandPinky1": {
+      "sourceRigName": "mixamorig:LeftHandPinky1",
+      "parent": "mixamorigLeftHand",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-5-1",
+      "neutral": [
+        0.47454,
+        0.9946775000000001,
+        0.21238500000000002
+      ],
+      "male": [
+        0.5449066666666668,
+        0.9877650000000001,
+        0.25447250000000005
+      ],
+      "female": [
+        0.46784833333333326,
+        0.9078941666666669,
+        0.19231833333333337
+      ]
+    },
+    "mixamorigLeftHandPinky2": {
+      "sourceRigName": "mixamorig:LeftHandPinky2",
+      "parent": "mixamorigLeftHandPinky1",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-5-2",
+      "neutral": [
+        0.48070375,
+        0.9765037500000001,
+        0.22212125000000002
+      ],
+      "male": [
+        0.55140375,
+        0.9672579166666667,
+        0.26354625000000004
+      ],
+      "female": [
+        0.47314125000000007,
+        0.8902704166666668,
+        0.19812958333333333
+      ]
+    },
+    "mixamorigLeftHandPinky3": {
+      "sourceRigName": "mixamorig:LeftHandPinky3",
+      "parent": "mixamorigLeftHandPinky2",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-5-3",
+      "neutral": [
+        0.4829912500000001,
+        0.96384,
+        0.2281325
+      ],
+      "male": [
+        0.55329125,
+        0.9516941666666667,
+        0.27034916666666664
+      ],
+      "female": [
+        0.47470375,
+        0.8769650000000002,
+        0.20270333333333335
+      ]
+    },
+    "mixamorigLeftHandRing1": {
+      "sourceRigName": "mixamorig:LeftHandRing1",
+      "parent": "mixamorigLeftHand",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-4-1",
+      "neutral": [
+        0.46963625,
+        1.00080375,
+        0.23094625000000002
+      ],
+      "male": [
+        0.5433779166666667,
+        0.9981495833333334,
+        0.2755379166666667
+      ],
+      "female": [
+        0.4663904166666666,
+        0.9148245833333335,
+        0.20997125
+      ]
+    },
+    "mixamorigLeftHandRing2": {
+      "sourceRigName": "mixamorig:LeftHandRing2",
+      "parent": "mixamorigLeftHandRing1",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-4-2",
+      "neutral": [
+        0.48113500000000003,
+        0.980045,
+        0.2461175
+      ],
+      "male": [
+        0.5535683333333333,
+        0.9719158333333334,
+        0.2919175
+      ],
+      "female": [
+        0.47476416666666676,
+        0.8921158333333336,
+        0.22172583333333337
+      ]
+    },
+    "mixamorigLeftHandRing3": {
+      "sourceRigName": "mixamorig:LeftHandRing3",
+      "parent": "mixamorigLeftHandRing2",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-4-3",
+      "neutral": [
+        0.48591,
+        0.9608737500000001,
+        0.25919
+      ],
+      "male": [
+        0.5583266666666667,
+        0.9495529166666667,
+        0.3066691666666667
+      ],
+      "female": [
+        0.4784975,
+        0.8725195833333335,
+        0.23201916666666667
+      ]
+    },
+    "mixamorigLeftHandThumb1": {
+      "sourceRigName": "mixamorig:LeftHandThumb1",
+      "parent": "mixamorigLeftHand",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-1-1",
+      "neutral": [
+        0.41950750000000003,
+        1.04889,
+        0.21343875
+      ],
+      "male": [
+        0.487995,
+        1.0538816666666668,
+        0.25633458333333337
+      ],
+      "female": [
+        0.42083249999999994,
+        0.9622816666666669,
+        0.19800541666666668
+      ]
+    },
+    "mixamorigLeftHandThumb2": {
+      "sourceRigName": "mixamorig:LeftHandThumb2",
+      "parent": "mixamorigLeftHandThumb1",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-1-2",
+      "neutral": [
+        0.40948249999999997,
+        1.0438737500000002,
+        0.2373325
+      ],
+      "male": [
+        0.4652033333333334,
+        1.0453320833333335,
+        0.27965333333333336
+      ],
+      "female": [
+        0.40182000000000007,
+        0.9534695833333335,
+        0.2166366666666667
+      ]
+    },
+    "mixamorigLeftHandThumb3": {
+      "sourceRigName": "mixamorig:LeftHandThumb3",
+      "parent": "mixamorigLeftHandThumb2",
+      "strategy": "CUBE",
+      "anchor": "joint-l-finger-1-3",
+      "neutral": [
+        0.39838375000000004,
+        1.0292700000000001,
+        0.26822125
+      ],
+      "male": [
+        0.45157125000000004,
+        1.0313825,
+        0.3144879166666667
+      ],
+      "female": [
+        0.39067958333333336,
+        0.9395200000000001,
+        0.2438754166666667
+      ]
+    },
+    "mixamorigLeftLeg": {
+      "sourceRigName": "mixamorig:LeftLeg",
+      "parent": "mixamorigLeftUpLeg",
+      "strategy": "CUBE",
+      "anchor": "joint-l-knee",
+      "neutral": [
+        0.158115,
+        0.44882250000000007,
+        0.032025
+      ],
+      "male": [
+        0.15131083333333334,
+        0.50471,
+        0.026883333333333332
+      ],
+      "female": [
+        0.13365666666666667,
+        0.44578083333333357,
+        0.047875
+      ]
+    },
+    "mixamorigLeftShoulder": {
+      "sourceRigName": "mixamorig:LeftShoulder",
+      "parent": "mixamorigSpine2",
+      "strategy": "MEAN",
+      "anchor": [
+        14055,
+        18825
+      ],
+      "neutral": [
+        0.066505,
+        1.379445,
+        0.043355000000000005
+      ],
+      "male": [
+        0.06337166666666666,
+        1.448795,
+        0.010838333333333335
+      ],
+      "female": [
+        0.06063833333333333,
+        1.322261666666667,
+        0.016838333333333334
+      ]
+    },
+    "mixamorigLeftToeBase": {
+      "sourceRigName": "mixamorig:LeftToeBase",
+      "parent": "mixamorigLeftFoot",
+      "strategy": "CUBE",
+      "anchor": "joint-l-toe-2-1",
+      "neutral": [
+        0.21339750000000002,
+        0.01799000000000006,
+        0.138445
+      ],
+      "male": [
+        0.1950391666666667,
+        0.029173333333333384,
+        0.15844500000000003
+      ],
+      "female": [
+        0.162585,
+        0.024210833333333515,
+        0.15349083333333335
+      ]
+    },
+    "mixamorigLeftUpLeg": {
+      "sourceRigName": "mixamorig:LeftUpLeg",
+      "parent": "mixamorigHips",
+      "strategy": "CUBE",
+      "anchor": "joint-l-upper-leg",
+      "neutral": [
+        0.110365,
+        0.86692,
+        0.012294999999999999
+      ],
+      "male": [
+        0.10849833333333332,
+        0.9186533333333334,
+        -0.007630000000000001
+      ],
+      "female": [
+        0.094265,
+        0.8137366666666669,
+        0.017490833333333334
+      ]
+    },
+    "mixamorigNeck": {
+      "sourceRigName": "mixamorig:Neck",
+      "parent": "mixamorigSpine2",
+      "strategy": "CUBE",
+      "anchor": "joint-neck",
+      "neutral": [
+        0.0,
+        1.4073300000000002,
+        0.006805
+      ],
+      "male": [
+        0.0,
+        1.48368,
+        0.011546666666666669
+      ],
+      "female": [
+        -8.673617379884036e-20,
+        1.3448466666666667,
+        -0.00132
+      ]
+    },
+    "mixamorigRightArm": {
+      "sourceRigName": "mixamorig:RightArm",
+      "parent": "mixamorigRightShoulder",
+      "strategy": "CUBE",
+      "anchor": "joint-r-shoulder",
+      "neutral": [
+        -0.16771250000000004,
+        1.3428850000000003,
+        0.014605
+      ],
+      "male": [
+        -0.1864916666666667,
+        1.37906,
+        0.01783416666666667
+      ],
+      "female": [
+        -0.15358750000000002,
+        1.2618183333333337,
+        0.020788333333333336
+      ]
+    },
+    "mixamorigRightFoot": {
+      "sourceRigName": "mixamorig:RightFoot",
+      "parent": "mixamorigRightLeg",
+      "strategy": "CUBE",
+      "anchor": "joint-r-ankle",
+      "neutral": [
+        -0.21961999999999998,
+        0.07352000000000003,
+        -0.0009100000000000001
+      ],
+      "male": [
+        -0.19776166666666667,
+        0.07114500000000001,
+        0.015210833333333335
+      ],
+      "female": [
+        -0.16340333333333334,
+        0.06824083333333342,
+        0.03014833333333334
+      ]
+    },
+    "mixamorigRightForeArm": {
+      "sourceRigName": "mixamorig:RightForeArm",
+      "parent": "mixamorigRightArm",
+      "strategy": "CUBE",
+      "anchor": "joint-r-elbow",
+      "neutral": [
+        -0.31293625,
+        1.1676237500000002,
+        0.013201250000000001
+      ],
+      "male": [
+        -0.35220708333333334,
+        1.1892154166666669,
+        0.015638750000000003
+      ],
+      "female": [
+        -0.3104945833333333,
+        1.0904737500000001,
+        0.024613750000000004
+      ]
+    },
+    "mixamorigRightHand": {
+      "sourceRigName": "mixamorig:RightHand",
+      "parent": "mixamorigRightForeArm",
+      "strategy": "CUBE",
+      "anchor": "joint-r-hand",
+      "neutral": [
+        -0.431185,
+        1.06348625,
+        0.175655
+      ],
+      "male": [
+        -0.48684750000000004,
+        1.0605362500000002,
+        0.20762166666666665
+      ],
+      "female": [
+        -0.4197850000000001,
+        0.9706945833333336,
+        0.15898833333333334
+      ]
+    },
+    "mixamorigRightHandIndex1": {
+      "sourceRigName": "mixamorig:RightHandIndex1",
+      "parent": "mixamorigRightHand",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-2-1",
+      "neutral": [
+        -0.44955375000000003,
+        1.0213337500000002,
+        0.26441625
+      ],
+      "male": [
+        -0.5170120833333334,
+        1.01985875,
+        0.3129079166666667
+      ],
+      "female": [
+        -0.44516208333333335,
+        0.9302004166666669,
+        0.24243708333333336
+      ]
+    },
+    "mixamorigRightHandIndex2": {
+      "sourceRigName": "mixamorig:RightHandIndex2",
+      "parent": "mixamorigRightHandIndex1",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-2-2",
+      "neutral": [
+        -0.45315250000000007,
+        1.00781875,
+        0.28537875
+      ],
+      "male": [
+        -0.5206400000000001,
+        1.00416875,
+        0.33626625
+      ],
+      "female": [
+        -0.44822750000000006,
+        0.9157437500000002,
+        0.2604954166666667
+      ]
+    },
+    "mixamorigRightHandIndex3": {
+      "sourceRigName": "mixamorig:RightHandIndex3",
+      "parent": "mixamorigRightHandIndex2",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-2-3",
+      "neutral": [
+        -0.4533825,
+        0.9928450000000001,
+        0.30235375
+      ],
+      "male": [
+        -0.5200699999999999,
+        0.9869700000000001,
+        0.35497875
+      ],
+      "female": [
+        -0.44767,
+        0.9003575000000001,
+        0.27446208333333333
+      ]
+    },
+    "mixamorigRightHandMiddle1": {
+      "sourceRigName": "mixamorig:RightHandMiddle1",
+      "parent": "mixamorigRightHand",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-3-1",
+      "neutral": [
+        -0.4608300000000001,
+        1.00692,
+        0.24789750000000002
+      ],
+      "male": [
+        -0.5349966666666667,
+        1.0070575000000002,
+        0.2941391666666667
+      ],
+      "female": [
+        -0.45970500000000003,
+        0.9212200000000001,
+        0.22555166666666665
+      ]
+    },
+    "mixamorigRightHandMiddle2": {
+      "sourceRigName": "mixamorig:RightHandMiddle2",
+      "parent": "mixamorigRightHandMiddle1",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-3-2",
+      "neutral": [
+        -0.47124499999999997,
+        0.9855450000000001,
+        0.26907875
+      ],
+      "male": [
+        -0.5429158333333333,
+        0.9795408333333334,
+        0.3175204166666667
+      ],
+      "female": [
+        -0.4661991666666667,
+        0.8968116666666668,
+        0.24307458333333334
+      ]
+    },
+    "mixamorigRightHandMiddle3": {
+      "sourceRigName": "mixamorig:RightHandMiddle3",
+      "parent": "mixamorigRightHandMiddle2",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-3-3",
+      "neutral": [
+        -0.47467375,
+        0.9671225000000001,
+        0.28558875
+      ],
+      "male": [
+        -0.5458654166666667,
+        0.9568475000000001,
+        0.33705541666666666
+      ],
+      "female": [
+        -0.4685695833333333,
+        0.8764808333333335,
+        0.2577679166666666
+      ]
+    },
+    "mixamorigRightHandPinky1": {
+      "sourceRigName": "mixamorig:RightHandPinky1",
+      "parent": "mixamorigRightHand",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-5-1",
+      "neutral": [
+        -0.47454,
+        0.9946775000000001,
+        0.21238500000000002
+      ],
+      "male": [
+        -0.5449066666666668,
+        0.9877650000000001,
+        0.25447250000000005
+      ],
+      "female": [
+        -0.46784833333333326,
+        0.9078941666666669,
+        0.19231833333333337
+      ]
+    },
+    "mixamorigRightHandPinky2": {
+      "sourceRigName": "mixamorig:RightHandPinky2",
+      "parent": "mixamorigRightHandPinky1",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-5-2",
+      "neutral": [
+        -0.48070375,
+        0.9765037500000001,
+        0.22212125000000002
+      ],
+      "male": [
+        -0.55140375,
+        0.9672579166666667,
+        0.26354625000000004
+      ],
+      "female": [
+        -0.47314125000000007,
+        0.8902704166666668,
+        0.19812958333333333
+      ]
+    },
+    "mixamorigRightHandPinky3": {
+      "sourceRigName": "mixamorig:RightHandPinky3",
+      "parent": "mixamorigRightHandPinky2",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-5-3",
+      "neutral": [
+        -0.4829912500000001,
+        0.96384,
+        0.2281325
+      ],
+      "male": [
+        -0.55329125,
+        0.9516941666666667,
+        0.27034916666666664
+      ],
+      "female": [
+        -0.47470375,
+        0.8769650000000002,
+        0.20270333333333335
+      ]
+    },
+    "mixamorigRightHandRing1": {
+      "sourceRigName": "mixamorig:RightHandRing1",
+      "parent": "mixamorigRightHand",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-4-1",
+      "neutral": [
+        -0.46963625,
+        1.00080375,
+        0.23094625000000002
+      ],
+      "male": [
+        -0.5433779166666667,
+        0.9981495833333334,
+        0.2755379166666667
+      ],
+      "female": [
+        -0.4663904166666666,
+        0.9148245833333335,
+        0.20997125
+      ]
+    },
+    "mixamorigRightHandRing2": {
+      "sourceRigName": "mixamorig:RightHandRing2",
+      "parent": "mixamorigRightHandRing1",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-4-2",
+      "neutral": [
+        -0.48113500000000003,
+        0.980045,
+        0.2461175
+      ],
+      "male": [
+        -0.5535683333333333,
+        0.9719158333333334,
+        0.2919175
+      ],
+      "female": [
+        -0.47476416666666676,
+        0.8921158333333336,
+        0.22172583333333337
+      ]
+    },
+    "mixamorigRightHandRing3": {
+      "sourceRigName": "mixamorig:RightHandRing3",
+      "parent": "mixamorigRightHandRing2",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-4-3",
+      "neutral": [
+        -0.48591,
+        0.9608737500000001,
+        0.25919
+      ],
+      "male": [
+        -0.5583266666666667,
+        0.9495529166666667,
+        0.3066691666666667
+      ],
+      "female": [
+        -0.4784975,
+        0.8725195833333335,
+        0.23201916666666667
+      ]
+    },
+    "mixamorigRightHandThumb1": {
+      "sourceRigName": "mixamorig:RightHandThumb1",
+      "parent": "mixamorigRightHand",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-1-1",
+      "neutral": [
+        -0.41950750000000003,
+        1.04889,
+        0.21343875
+      ],
+      "male": [
+        -0.487995,
+        1.0538816666666668,
+        0.25633458333333337
+      ],
+      "female": [
+        -0.42083249999999994,
+        0.9622816666666669,
+        0.19800541666666668
+      ]
+    },
+    "mixamorigRightHandThumb2": {
+      "sourceRigName": "mixamorig:RightHandThumb2",
+      "parent": "mixamorigRightHandThumb1",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-1-2",
+      "neutral": [
+        -0.40948249999999997,
+        1.0438737500000002,
+        0.2373325
+      ],
+      "male": [
+        -0.4652033333333334,
+        1.0453320833333335,
+        0.27965333333333336
+      ],
+      "female": [
+        -0.40182000000000007,
+        0.9534695833333335,
+        0.2166366666666667
+      ]
+    },
+    "mixamorigRightHandThumb3": {
+      "sourceRigName": "mixamorig:RightHandThumb3",
+      "parent": "mixamorigRightHandThumb2",
+      "strategy": "CUBE",
+      "anchor": "joint-r-finger-1-3",
+      "neutral": [
+        -0.39838375000000004,
+        1.0292700000000001,
+        0.26822125
+      ],
+      "male": [
+        -0.45157125000000004,
+        1.0313825,
+        0.3144879166666667
+      ],
+      "female": [
+        -0.39067958333333336,
+        0.9395200000000001,
+        0.2438754166666667
+      ]
+    },
+    "mixamorigRightLeg": {
+      "sourceRigName": "mixamorig:RightLeg",
+      "parent": "mixamorigRightUpLeg",
+      "strategy": "CUBE",
+      "anchor": "joint-r-knee",
+      "neutral": [
+        -0.158115,
+        0.44882250000000007,
+        0.032025
+      ],
+      "male": [
+        -0.15131083333333334,
+        0.50471,
+        0.026883333333333332
+      ],
+      "female": [
+        -0.13365666666666667,
+        0.44578083333333357,
+        0.047875
+      ]
+    },
+    "mixamorigRightShoulder": {
+      "sourceRigName": "mixamorig:RightShoulder",
+      "parent": "mixamorigSpine2",
+      "strategy": "MEAN",
+      "anchor": [
+        1493,
+        15876
+      ],
+      "neutral": [
+        -0.057545000000000006,
+        1.37993,
+        0.022660000000000003
+      ],
+      "male": [
+        -0.06299500000000001,
+        1.43808,
+        0.015393333333333337
+      ],
+      "female": [
+        -0.051095,
+        1.32153,
+        0.014193333333333336
+      ]
+    },
+    "mixamorigRightToeBase": {
+      "sourceRigName": "mixamorig:RightToeBase",
+      "parent": "mixamorigRightFoot",
+      "strategy": "CUBE",
+      "anchor": "joint-r-toe-2-1",
+      "neutral": [
+        -0.21339750000000002,
+        0.01799000000000006,
+        0.138445
+      ],
+      "male": [
+        -0.1950391666666667,
+        0.029173333333333384,
+        0.15844500000000003
+      ],
+      "female": [
+        -0.162585,
+        0.024210833333333515,
+        0.15349083333333335
+      ]
+    },
+    "mixamorigRightUpLeg": {
+      "sourceRigName": "mixamorig:RightUpLeg",
+      "parent": "mixamorigHips",
+      "strategy": "CUBE",
+      "anchor": "joint-r-upper-leg",
+      "neutral": [
+        -0.110365,
+        0.86692,
+        0.012294999999999999
+      ],
+      "male": [
+        -0.10849833333333332,
+        0.9186533333333334,
+        -0.007630000000000001
+      ],
+      "female": [
+        -0.094265,
+        0.8137366666666669,
+        0.017490833333333334
+      ]
+    },
+    "mixamorigSpine": {
+      "sourceRigName": "mixamorig:Spine",
+      "parent": "mixamorigHips",
+      "strategy": "MEAN",
+      "anchor": [
+        16022,
+        17349
+      ],
+      "neutral": [
+        0.0,
+        1.021225,
+        0.03016
+      ],
+      "male": [
+        0.0,
+        1.054125,
+        0.023293333333333333
+      ],
+      "female": [
+        0.0,
+        0.9821250000000001,
+        0.02079333333333333
+      ]
+    },
+    "mixamorigSpine1": {
+      "sourceRigName": "mixamorig:Spine1",
+      "parent": "mixamorigSpine",
+      "strategy": "MEAN",
+      "anchor": [
+        3991,
+        10651
+      ],
+      "neutral": [
+        0.0,
+        1.125585,
+        0.03663
+      ],
+      "male": [
+        0.0,
+        1.1546850000000002,
+        0.0026966666666666697
+      ],
+      "female": [
+        0.0,
+        1.0838516666666669,
+        0.014630000000000002
+      ]
+    },
+    "mixamorigSpine2": {
+      "sourceRigName": "mixamorig:Spine2",
+      "parent": "mixamorigSpine1",
+      "strategy": "CUBE",
+      "anchor": "joint-spine-1",
+      "neutral": [
+        0.0,
+        1.25116,
+        -0.007125000000000001
+      ],
+      "male": [
+        0.0,
+        1.2763266666666668,
+        -0.05015
+      ],
+      "female": [
+        0.0,
+        1.2022433333333336,
+        0.012750000000000001
+      ]
+    }
+  }
+}

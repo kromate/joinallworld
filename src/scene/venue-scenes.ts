@@ -80,6 +80,11 @@ import type {
   SceneLayout, SceneMaterials, ScenePerson, SceneRest, SceneSpot, SceneState, SceneTag, SceneThing, SceneVenue, SceneWalk, PlayerOptions, ThreeModule, TimeOfDay, Vec3, WalkSpot,
 } from './types.ts';
 import { buildAvatar, drawCrowd } from './characters.ts';
+import { avatarProportions } from '../types/avatar.ts';
+import { normalizeLook } from './characters.ts';
+import { bodyAllowed, drawsWebGL2 } from './body/gate.ts';
+import type { SkinnedBody } from './body/skinned.ts';
+import { createCanonicalCrowd, type CanonicalCrowdSpec } from './body/canonical-crowd.ts';
 import { playerOptions, rigOf, lookAvatar } from './avatar-rig.ts';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
 import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './space.ts';
@@ -101,6 +106,8 @@ export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: 
 const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
 export { TIMES, LIGHTING, timeOfDay, lightingFor } from './lighting.ts';
 export const MAX_CROWD = 12;
+/** Initial authored NPC allowance; public crowd population remains unchanged. */
+export const MAX_NATIVE_NPCS = 2;
 
 /** The kinds every city draws with. A kind a city added (CITY_KINDS) arrives with that city's scenes. */
 const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
@@ -364,6 +371,7 @@ interface Tied { spot?: string | null; friend?: boolean }
 type Placed = Point & Tied
 /** A crowd person with a reported position. */
 type LivePerson = CrowdPerson & { x: number; z: number };
+interface CanonicalVenueActor { readonly body: SkinnedBody; dispose(): void }
 interface View {
   time: TimeOfDay; fixedTime: boolean; spot: string | null; look: unknown; lookKey: string; seed: unknown; name: string;
   pose: string; poseFixed: boolean; crowd: CrowdPerson[];
@@ -417,6 +425,30 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   // Other players who report where they stand: one figure each, eased to every new position.
   const peers = new Map<string, Peer>();
   let peopleList: ScenePerson[] = [], mergedTags: SceneTag[] = [], batchKey: string | null = null, easing = false;
+  let placedCrowd: CrowdPerson[] = [], notifyCrowdChanged: (() => void) | null = null, crowdGateRejected = false;
+  const canonicalCrowd = createCanonicalCrowd<CanonicalVenueActor>({
+    async load(spec) {
+      // Keep the provider and its model/clip dependencies behind the first-frame capability gate.
+      const { loadGameBody } = await import('./body/provider.ts');
+      const body = await loadGameBody(kit, spec.look, spec.seed, spec.scale, { scene: 'venue', poses: ['idle', 'walk', 'interact'] });
+      return { body, dispose() { body.object.removeFromParent(); body.dispose(); } };
+    },
+    place(actor, spec) {
+      actor.body.fit(spec.scale);
+      actor.body.show('idle', false);
+      actor.body.place(spec.x, spec.y, spec.z, spec.ry);
+    },
+    mount(actor, id) {
+      actor.body.object.name = `canonical-crowd:${id}`;
+      group.add(actor.body.object);
+    },
+    changed() {
+      rebuildActorBatch();
+      notifyCrowdChanged?.();
+    },
+    failed(id, error) { console.warn(`Canonical crowd actor ${id} unavailable; keeping its procedural figure:`, error); },
+    yieldBetweenActors: () => new Promise<void>((resolve) => setTimeout(resolve, 0)),
+  });
   const wallParts: Record<'wallBack' | 'wallLeft', THREE.Object3D[]> = { wallBack: [], wallLeft: [] };
   const sceneCamera = def.camera || SCENE_CAMERA;
   // The ground direction from the scene's centre towards its own camera: "in front of" a marker.
@@ -777,20 +809,53 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     if (easing || !driven || !peers.size) return;
     for (const peer of peers.values()) if (peer.t >= 1 && watch(peer.gaze, peer, peer.ry, avatar.position)) { easing = true; return; }
   }
-  function buildActors() {
-    const placed = placeCrowd(view.crowd);
+  function supportsCanonicalStaticPose(person: CrowdPerson): boolean {
+    return person.pose === undefined || person.pose === null || person.pose === 'stand' || person.pose === 'idle';
+  }
+  function canonicalSpec(person: CrowdPerson, index: number): CanonicalCrowdSpec {
+    const id = String(person.id ?? `person-${index}`), seed = String(person.seed ?? person.id ?? person.name ?? id);
+    return { id, look: person.look ?? null, seed, x: person.x ?? 0, y: person.y ?? 0, z: person.z ?? 0, ry: person.ry ?? 0, scale: 1 };
+  }
+  function canonicalTag(person: CrowdPerson, index: number, useCanonicalHead = true): SceneTag {
+    const kind = person.kind === 'npc' || person.kind === 'self' ? person.kind : 'player';
+    const name = String(person.name ?? person.id ?? ''), id = String(person.id ?? `person-${index}`);
+    const look = normalizeLook(person.look, person.seed ?? id);
+    const top = (person.y ?? 0) + 2.95 * avatarProportions(look.appearance).height;
+    const body = useCanonicalHead ? canonicalCrowd.get(id)?.body : undefined;
+    const head = body?.object.getObjectByName('Head');
+    if (body && head) {
+      body.object.updateWorldMatrix(true, false);
+      body.object.updateMatrixWorld(true);
+      const point = new THREE.Vector3();
+      head.getWorldPosition(point);
+      point.y += body.scale * 0.32;
+      return { id, name, kind, text: kind === 'player' ? `@${name}` : name,
+        marker: kind === 'npc' ? 'dot' : kind === 'self' ? 'crown' : 'tag',
+        colour: kind === 'npc' ? '#58d68a' : kind === 'self' ? '#ffd34d' : '#6fb4ff',
+        position: { x: person.x ?? 0, y: point.y, z: person.z ?? 0 } };
+    }
+    return { id, name, kind, text: kind === 'player' ? `@${name}` : name,
+      marker: kind === 'npc' ? 'dot' : kind === 'self' ? 'crown' : 'tag',
+      colour: kind === 'npc' ? '#58d68a' : kind === 'self' ? '#ffd34d' : '#6fb4ff',
+      position: { x: person.x ?? 0, y: top, z: person.z ?? 0 } };
+  }
+  function rebuildActorBatch() {
+    const placed = placedCrowd;
     const merged = placed.filter((person) => !person.live);
-    // The merged batch holds NPCs and players without a reported position: rebuilt only when THEY change.
-    const key = JSON.stringify(merged);
+    const fallback = merged.filter((person, index) => !supportsCanonicalStaticPose(person) || !canonicalCrowd.get(String(person.id ?? `person-${index}`)));
+    // Keep the procedural member visible until its own canonical body is committed; do not hide a whole merged crowd batch.
+    const key = JSON.stringify(fallback);
     if (key !== batchKey) {
       batchKey = key;
-      releaseObjects(actorObjects);
       const batch = createBatch(THREE);
-      mergedTags = drawCrowd(batch, merged);
+      drawCrowd(batch, fallback);
       const built = batch.build(shared.materials);
+      releaseObjects(actorObjects);
       actorTriangles = built.triangles;
       for (const mesh of built.meshes) { mesh.name = `actors-${mesh.name}`; group.add(mesh); actorObjects.push(mesh); }
     }
+    mergedTags = merged.map((person, index) => canonicalCrowd.get(String(person.id ?? `person-${index}`))
+      ? canonicalTag(person, index) : canonicalTag(person, index, false));
     const kept = new Set();
     for (const person of placed) if (person.live) kept.add(syncPeer(person as LivePerson).id);
     for (const peer of [...peers.values()]) if (!kept.has(peer.id)) dropPeer(peer);
@@ -798,6 +863,20 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     let next = 0;
     crowdTags = placed.map((person) => (person.live ? peers.get(String(person.id))!.tag : mergedTags[next++])).filter((tag): tag is SceneTag => Boolean(tag));
     peopleList = crowdTags.map((tag) => peers.get(tag.id)?.tag === tag ? peers.get(tag.id)!.at : { id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y });
+  }
+  function buildActors() {
+    placedCrowd = placeCrowd(view.crowd);
+    canonicalCrowd.sync(placedCrowd.flatMap((person, index) => {
+      if (person.live || person.kind !== 'npc' || !person.look || !supportsCanonicalStaticPose(person)) return [];
+      return [canonicalSpec(person, index)];
+    }).slice(0, MAX_NATIVE_NPCS));
+    rebuildActorBatch();
+  }
+  function startCrowd(renderer: { getContext?: () => unknown }, changed: () => void) {
+    notifyCrowdChanged = changed;
+    if (crowdGateRejected) return;
+    if (!bodyAllowed() || !drawsWebGL2(renderer)) { crowdGateRejected = true; return; }
+    canonicalCrowd.start();
   }
   function applyLighting() {
     const preset = lit();
@@ -829,6 +908,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
   function release() {
     renderedContactTop = null;
+    canonicalCrowd.dispose();
     for (const peer of [...peers.values()]) dropPeer(peer);
     easing = false; batchKey = null; peopleList = []; mergedTags = [];
     wallParts.wallBack.length = 0; wallParts.wallLeft.length = 0;
@@ -1071,6 +1151,13 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       shared.disposers.delete(entry.dispose);
       group.parent?.remove(group);
     },
+  };
+  // HostScene already calls this optional seam after its first rendered, capability-gated frame.
+  // Keep the extra diagnostics off SceneEntry's stable public type in this source-only packet.
+  Object.assign(entry, { startCrowd });
+  group.userData.canonicalCrowdCounts = () => {
+    const counts = canonicalCrowd.counts, staticCount = placedCrowd.filter((person) => !person.live).length;
+    return { ...counts, static: staticCount, procedural: staticCount - counts.canonical };
   };
   shared.disposers.add(entry.dispose);
   realise();

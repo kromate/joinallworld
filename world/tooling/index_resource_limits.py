@@ -4,6 +4,7 @@ Not a sandbox or durable campaign runner. No arbitrary command/script is accepte
 FSIZE is per file; RSS is sampled, not a kernel hard total-memory guarantee.
 """
 import argparse
+import fcntl
 import json
 import os
 from pathlib import Path
@@ -29,11 +30,17 @@ WORKERS = {
     "lease-witness": HERE / "index_lease_witness.ts",
     "index-engine-bootstrap": HERE / "index_bootstrap.ts",
     "index-bootstrap-crash": HERE / "index_bootstrap_crash.ts",
+    "index-capture-ingest": HERE / "index_ingest.ts",
+    "index-ingest-crash": HERE / "index_ingest_crash.ts",
     "index-registry-startup": HERE / "index_registry_worker.py",
+    "index-registry-admit": HERE / "index_admission_worker.py",
+    "index-registry-admit-crash": HERE / "index_admission_crash.py",
     "index-registry-lease-witness": HERE / "index_registry_lease_witness.py",
 }
 CASES = {"commit", "file-limit", "heap-capability", "page-limit", "crash", "wall-limit", "cpu-limit", "rss-limit", "output-limit"}
 BOOTSTRAP_CASES = {"empty-file", "schema-checkpointed", "before-rename", "after-rename"}
+INGEST_CASES = {"before-transaction", "after-commit", "after-checkpoint"}
+ADMISSION_CASES = {"reserved", "binding-published"}
 MIB = 1024 * 1024
 
 
@@ -96,9 +103,15 @@ def _registry_sizes(root):
     from index_namespace import FIXED_FILES, META_BYTES
     from index_reservations import DATABASE_BYTES, MAX_RESERVATIONS, REGISTRY_ALLOWANCE
     from index_root import _names
+    from index_controller_state import CONTROLS, EXECUTION, RECLAIM, footprint, verify_registry_anchor
     sizes = {}; overhead = root.lstat().st_blocks * 512
+    overhead += footprint(root)
+    verify_registry_anchor(root)
     for name in _names(root, MAX_RESERVATIONS + len(FIXED_FILES)):
         info = (root/name).lstat()
+        if name in CONTROLS:
+            if name not in {EXECUTION, RECLAIM}: sizes[name] = info.st_size
+            continue
         if name not in FIXED_FILES:
             if (not re.fullmatch(r"[a-f0-9]{64}", name) or not stat.S_ISDIR(info.st_mode)
                     or info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) != 0o700):
@@ -133,13 +146,16 @@ def recovered_witness(root):
 
 def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_seconds=10,
                        wall_seconds=15, heap_mib=256, rss_limit_bytes=384*MIB, lease_descriptor=None,
-                       execution_root=None, namespace_descriptor=None, registry_configuration=None):
+                       execution_root=None, namespace_descriptor=None, registry_configuration=None,
+                       capture_configuration=None):
     """Private fixed-worker boundary. Never dispose caller-owned database/WAL.
 
     Caller supplies the actual held kernel lease; inode checks cannot prove flock
     ownership. This is not a public durable opener or aggregate-budget admission.
     """
-    allowed_cases = CASES if worker == "witness" else BOOTSTRAP_CASES if worker == "index-bootstrap-crash" else {None}
+    allowed_cases = (CASES if worker == "witness" else BOOTSTRAP_CASES if worker == "index-bootstrap-crash"
+                     else ADMISSION_CASES if worker == "index-registry-admit-crash"
+                     else INGEST_CASES if worker == "index-ingest-crash" else {None})
     if worker not in WORKERS or case not in allowed_cases:
         raise ValueError("only a registered worker and its fixed cases are accepted")
     bounded_integer(file_bytes, 65536, 64*MIB, "file bytes")
@@ -147,11 +163,14 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
     bounded_integer(wall_seconds, 1, 60, "wall seconds")
     bounded_integer(heap_mib, 64, 1536, "V8 heap MiB")
     bounded_integer(rss_limit_bytes, 64*MIB, 512*MIB, "sampled RSS bytes")
-    registry_worker = worker in {"index-registry-startup", "index-registry-lease-witness"}
+    admission_worker = worker in {"index-registry-admit", "index-registry-admit-crash"}
+    registry_worker = worker in {"index-registry-startup", "index-registry-lease-witness"} or admission_worker
     if registry_worker:
         from index_namespace import _aggregate
+        registry_fields = {"aggregateBytes", "pythonVersion", "sqliteVersion"}
+        if admission_worker: registry_fields |= {"bindingDescriptor", "bindingSha256"}
         if (type(registry_configuration) is not dict
-                or set(registry_configuration) != {"aggregateBytes", "pythonVersion", "sqliteVersion"}
+                or set(registry_configuration) != registry_fields
                 or lease_descriptor is None or namespace_descriptor is not None or file_bytes > 4*MIB):
             raise ValueError("fixed registry worker requires its exact configuration and namespace lease")
         _aggregate(registry_configuration["aggregateBytes"])
@@ -178,6 +197,18 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
                 or (lease.st_dev, lease.st_ino) != (named.st_dev, named.st_ino)):
             raise ValueError("worker lease descriptor differs from the private permanent inode")
         inherited = (lease_descriptor,)
+    if admission_worker:
+        descriptor = registry_configuration["bindingDescriptor"]
+        bounded_integer(descriptor, 3, 2147483647, "admission binding descriptor")
+        digest = registry_configuration["bindingSha256"]
+        if descriptor in inherited or type(digest) is not str or not re.fullmatch(r"[a-f0-9]{64}", digest):
+            raise ValueError("admission requires a distinct readonly binding descriptor and exact hash")
+        info = os.fstat(descriptor)
+        if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_nlink != 0
+                or stat.S_IMODE(info.st_mode) != 0o600 or not 1 <= info.st_size <= 4096
+                or fcntl.fcntl(descriptor, fcntl.F_GETFL) & os.O_ACCMODE != os.O_RDONLY):
+            raise ValueError("admission binding descriptor must be private anonymous readonly and bounded")
+        inherited += (descriptor,)
     if namespace_descriptor is not None:
         if (lease_descriptor is None or type(namespace_descriptor) is not int
                 or not 2 < namespace_descriptor <= 2147483647 or namespace_descriptor == lease_descriptor):
@@ -193,6 +224,31 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
                 or (held.st_dev, held.st_ino) != (named.st_dev, named.st_ino)):
             raise ValueError("worker namespace lease descriptor differs from its permanent inode")
         inherited += (namespace_descriptor,)
+    capture_worker = worker in {"index-capture-ingest", "index-ingest-crash"}
+    if capture_worker:
+        if (type(capture_configuration) is not dict or set(capture_configuration) != {
+                "metadataDescriptor", "metadataSha256", "extractDescriptor", "receiptDescriptor"}
+                or lease_descriptor is None or namespace_descriptor is None or execution_root is None):
+            raise ValueError("fixed ingestion requires exact descriptors, both leases and frozen execution")
+        digest = capture_configuration["metadataSha256"]
+        if type(digest) is not str or not re.fullmatch(r"[a-f0-9]{64}", digest):
+            raise ValueError("capture envelope requires an exact SHA-256")
+        for key, maximum, links in [("metadataDescriptor", 64000, 0),
+                                     ("extractDescriptor", 20_000_000, 1),
+                                     ("receiptDescriptor", 1_000_000, 1)]:
+            descriptor = capture_configuration[key]
+            bounded_integer(descriptor, 3, 2147483647, "capture descriptor")
+            if descriptor in inherited:
+                raise ValueError("capture descriptors must be distinct from each other and the leases")
+            info = os.fstat(descriptor)
+            if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_nlink != links
+                    or stat.S_IMODE(info.st_mode) & 0o022 or not 1 <= info.st_size <= maximum
+                    or (key == "metadataDescriptor" and stat.S_IMODE(info.st_mode) != 0o600)
+                    or fcntl.fcntl(descriptor, fcntl.F_GETFL) & os.O_ACCMODE != os.O_RDONLY):
+                raise ValueError("capture descriptors must be readonly, owned, regular and bounded")
+            inherited += (descriptor,)
+    elif capture_configuration is not None:
+        raise ValueError("capture descriptors are accepted only by the fixed ingestion worker")
     node = Path(node)
     if not node.is_absolute():
         raise ValueError("Node executable must be absolute")
@@ -231,11 +287,17 @@ def _run_fixed_process(node, worker, root, *, case=None, file_bytes=4*MIB, cpu_s
         environment["WORLD_INDEX_LEASE_DESCRIPTOR"] = str(lease_descriptor)
     if namespace_descriptor is not None:
         environment["WORLD_INDEX_NAMESPACE_DESCRIPTOR"] = str(namespace_descriptor)
+    if capture_worker:
+        environment["WORLD_INDEX_CAPTURE_DESCRIPTOR"] = str(capture_configuration["metadataDescriptor"])
+        environment["WORLD_INDEX_CAPTURE_SHA256"] = capture_configuration["metadataSha256"]
     if registry_worker:
         environment.update({"WORLD_INDEX_NAMESPACE_BUDGET": str(registry_configuration["aggregateBytes"]),
             "WORLD_INDEX_PYTHON_VERSION": registry_configuration["pythonVersion"],
             "WORLD_INDEX_PYTHON_SQLITE_VERSION": registry_configuration["sqliteVersion"],
             "WORLD_INDEX_NAMESPACE_DESCRIPTOR": str(lease_descriptor)})
+        if admission_worker:
+            environment["WORLD_INDEX_BINDING_DESCRIPTOR"] = str(registry_configuration["bindingDescriptor"])
+            environment["WORLD_INDEX_BINDING_SHA256"] = registry_configuration["bindingSha256"]
         command = [str(node), "-I", "-B", str(script)]
     else:
         command = [str(node), f"--max-old-space-size={heap_mib}", "--experimental-strip-types", str(script)]
@@ -375,7 +437,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--node", required=True)
     parser.add_argument("--worker", choices=WORKERS, required=True)
-    parser.add_argument("--case", choices=sorted(CASES | BOOTSTRAP_CASES))
+    parser.add_argument("--case", choices=sorted(CASES | BOOTSTRAP_CASES | INGEST_CASES | ADMISSION_CASES))
     parser.add_argument("--file-bytes", type=int, default=4*MIB)
     parser.add_argument("--cpu-seconds", type=int, default=10)
     parser.add_argument("--wall-seconds", type=int, default=15)

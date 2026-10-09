@@ -1,5 +1,53 @@
 # Copy-and-paste continuation prompt
 
+Latest capture checkpoint: durable per-request raw-input/attempt ownership now feeds
+real fixed-worker replay inside a held supervised index session.209 Python/23 guarded
+engine checks and fresh full World TypeScript pass. Actual controller SIGKILL before
+input processing and after COMMIT/nonempty WAL blocks fresh acquisition while the
+worker lives, then replays exactly under new kernel leases with two charges. Read
+first PROGRESS.md section and FEATURE-INDEX-CAPTURE-OPERATIONS.md. Separate capture
+ceilings256 requests/eight attempts/512000-byte record and one1MiB source slot fit
+original index reservation; namespace16 lifetime admissions remain unchanged.
+Do not reset quotas or call namespace admission per capture/building. Every successful
+capture call raw-replays actual index state; settlement alone is not completion.
+Next wire frozen campaign/grid membership, atomic observations and live-token-fenced
+completion, then independent raw/index audit and full-country streamed geometry.
+No actual campaign/acquisition/output/Nigeria/game writes or runtime release thisphase.
+
+
+Previous admission checkpoint: supervised charge-before-create admission now feeds
+verified ingestion without any parent SQLite connection. It passes192 Python/23
+guarded engine checks, including actual controller loss with surviving anonymous
+input/namespace lease and fresh admission→raw ingest/replay. New namespaces use
+pinned v2 admission operations; existing v1 records/data remain unchanged and
+refuse implicit migration. Read the first PROGRESS.md section and
+FEATURE-INDEX-ADMISSION-OPERATIONS.md. Next implement persistent capture job/
+attempt/input ownership and frozen campaign observation/completion fences, then
+independent raw/index conservation and country geometry/sharding/streaming.
+Do not run the bounded admission controller for every building or capture.
+Preserve all source/ledger/witness identities, attempt limits and Nigeria.
+
+Previous ingestion checkpoint: fixed verified-capture ingestion passes178 Python,
+23 guarded engine checks and full World TypeScript. Actual retained Dakar inputs
+give2captures/2,283ordinals/1,810versions; fresh workers replay without duplicate
+versions. Actual SIGKILL after COMMIT leaves WAL which a fresh worker recovers and
+verifies against every raw ordinal. All877 historical pins remain unchanged.
+Read the first PROGRESS.md section and FEATURE-INDEX-INGEST-OPERATIONS.md.
+Next implement supervised admission and persistent capture attempt/input ownership,
+then fenced campaign observation/completion and independent raw/index audit before
+country geometry/sharding/streaming. This endpoint still consumes external charged
+admission; it does not complete the unattended country pipeline or deploy new
+playable detail. Preserve raw inputs, attempts, namespace witnesses and Nigeria.
+
+Latest recovery checkpoint: persistent fixed-registry startup passes167 Python and
+23 engine checks, including actual controller loss and a fresh recovery API using
+the inherited namespace lock. Read the first PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md
+sections. Next implement supervised verified-capture ingestion and fenced campaign
+completion using these durable records, not another registry initializer. Preserve
+all attempts, initialized-ledger witnesses and frozen source/runtime pins; ambiguous
+record loss remains fail-closed. Country geometry, streaming and actual production
+map-detail improvements remain the full next programme, not completed by this phase.
+
 Latest builder checkpoint,9 October: fixed Python registry startup is implemented
 and passes146 Python/23 engine checks, including actual controller SIGKILL lease
 survival and bounded live-descendant pipe retention. Read the first section of

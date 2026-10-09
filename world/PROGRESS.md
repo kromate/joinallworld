@@ -1,5 +1,319 @@
 # Implementation checkpoint — 9 October 2026
 
+## Durable capture attempts and actual controller-loss recovery
+
+Previous goal turn was a status restatement (no build progress). This continuation
+publishes supervised admission main **ca71ae09** after its exact-source policy
+acceptance, then implements real per-request ingestion ownership. The existing
+campaign Ledger remains the scheduler; no parallel scheduler or AI per feature.
+Read [FEATURE-INDEX-CAPTURE-OPERATIONS.md](FEATURE-INDEX-CAPTURE-OPERATIONS.md).
+
+`ingest_capture_job` binds immutable canonical capture-expectation SHA/length and
+both retained raw paths before snapshot allocation/launch. Each bounded index shard
+has at most256 requests/eight lifetime ingestion attempts per request, plus a
+512,000-byte record ceiling. Limits/root identities have a permanent quota seal;
+lost initialized record/anchor or changed input/limits refuse without resetting.
+Namespace admission's original16 lifetime attempts remain separate and unchanged.
+One readonly persistent execution slot and deterministic pending/reclaim prefixes
+are accounted inside the original reservation; no cap increased. The explicit
+current owner avoids ambiguity after legitimate directory inode reuse. A terminal
+digest settles the attempt only; every successful call actually raw-replays the
+index in a fresh fixed worker, including previously terminal requests.
+
+**209 Python checks pass**, terminal9474 exit0,63.152s unittest/63.32s process,
+186,531,840B maxRSS. **17 unique new checks** pass, terminal92948 exit0,
+21.567s/162,054,144B maxRSS. Actual ingestion SIGKILL before transaction, after
+COMMIT/nonempty WAL and after checkpoint preserves one index reservation, same
+SQLite inode and charged attempt; fresh raw replay becomes attempt2. Two native
+controller SIGKILL fixtures confirm surviving actual Node workers retain both
+locks, anonymous input and frozen execution: a fresh controller is busy before
+allocation; after known terminal exit/new real leases it settles the old charge,
+replays473 rows and retains two attempts. The after-COMMIT controller-loss case
+actually observes live nonempty WAL and subsequently zero inserted versions.
+No remembered PID is supplied to recovery. Unconfirmed-guard fixture verifies
+same-lease poisoning, retained descriptors/record/snapshot and fresh-lease recovery.
+
+Initial focused command used a wrong relative wrapper path and exited1 before
+any tests. Corrected61638 ran34 discovered cases (18 duplicated historical
+admission cases); one new test incorrectly assumed sorted record order equalled
+input order. Changed only its assertion to compare by request hash and changed
+test imports to avoid duplicate discovery. Its33/34 receipt remains retained;
+final17 unique focused and209 combined cases pass. Source review also corrected
+missing pure-fixture import, post-transition byte-bound validation and the durable
+current-owner contract before final acceptance. No failure is relabelled success.
+
+Separate actual verifier **84451 exit0**,4.93s/161,431,552B maxRSS proves two
+held sessions with two cached Dakar captures, persistent independent attempts1→2,
+2captures/2,283ordinals/1,810versions/0conflicted keys, one reservation and the
+same registry/index inodes. Parent SQLite is forbidden. Nine actual capture/ledger
+files and **877 historical pins** remain byte-identical before/after; zero network
+or actual acquisition/campaign/output/Nigeria/game writes. Guarded **23 engine
+checks** pass:232 focused before clean-source policy. Current44-input source
+closure is431,085bytes;5,602-byte manifest SHA
+`f04f61233ac0dae6f85b1471fec5abee071debd71ff60a575b22290d24043511`.
+Actual capture execution charges512,000bytes/envelope4,096bytes. Source acceptance
+receipt binds44 execution files and23 test files (67pins), completed209-case
+receipt, actual evidence and limitations; all finalized before committing.
+
+Fresh **full World TypeScript passes**, terminal85656 exit0,3.67s,
+384MiB heap/461,783,040B process maxRSS. This is a compiler check, not a new game
+build, phone test or runtime upload. GRAPHICS explicitly handed off all server/
+browser groups before actual WORLD checks; LIVING remains source/hosted CI.
+Heavy1, existing Node/registry/test/compiler limits stay unchanged. Pressure
+briefly NORMAL with paging still active; no concurrency expansion.
+
+Evidence: `feature-index-capture-focused-v{2,3}.{stdout,stderr}`,
+`feature-index-capture-all-v1.{stdout,stderr}`, `feature-index-capture-{actual,
+engine,source-acceptance,tooling-manifest}-v1.json`,
+`feature-index-capture-acceptance-v1.{stdout,stderr}` and
+`feature-index-capture-typecheck-v1.{stdout,stderr}`. Source commit **a35bec9ed820220a2861e1c2fd57dcb6b1dfa366** passes allfive exact
+committed-source release-policy checks, terminal82844 exit0:140,605,440archive
+bytes/134,060,985logical bytes/8,584members, below unchanged256MiB/10,000bounds.
+Owned temporary source archive/checkout is removed. Receipt:
+`feature-index-capture-clean-policy-v1.{tap,stderr,json}`. Total **237 focused
+checks** (209Python+23engine+fivepolicy), plus fresh full World TypeScript.
+Main synchronization follows this accepted source milestone.
+
+**Next:** validate frozen campaign/grid query membership, bind atomic index
+observations and fence campaign completion with the current claim token after
+actual raw replay. Reconcile indexed-but-pending and legacy captured jobs without
+refunding acquisition charges. Then independently audit raw/index conservation,
+compile owned full-country geometry and publish streamed shards. Whole-world
+unattended building, Nigeria combined rendering, terrain/regional conditions and
+phone-visible global detail remain incomplete; geography is not playability.
+
+## Supervised admission into actual ingestion — persistent operation acceptance
+
+Previous goal turn made progress: verified-capture ingestion ef4ca355 was accepted
+and published main f1b1411b. This continuation removes its unsupervised parent
+registry prerequisite. `supervised_charged_index` now holds the actual namespace
+lease across a pinned, persistent fixed-worker reservation and verified child-lock
+handoff, then yields the existing ingestion endpoint's charged root. Parent SQL
+is forbidden in the actual end-to-end fixture and independent recorded experiment.
+Luna owned the compatible v2 record codec/pure tests; root owns worker/controller/
+descriptor/context integration and actual fixtures. Read
+[FEATURE-INDEX-ADMISSION-OPERATIONS.md](FEATURE-INDEX-ADMISSION-OPERATIONS.md).
+
+The v2 durable attempt binds its admission operation and exact binding pin before
+launch. Readonly anonymous input is checked in supervisor and worker before SQL;
+reservation commit/checkpoint precedes mkdir. The unchanged17MiB registry allowance
+holds the persistent source snapshot, records/witnesses and actual input allocation.
+No cap increased. Existing v1 records/encoding/data remain unchanged; incompatible
+admission requests refuse rather than silently migrating or resetting attempts.
+
+**192 Python checks pass**, terminal44518 exit0,43.291s unittest/43.45s process,
+186,597,376B maxRSS. Nine focused actual cases pass8.300s/161,497,088B. Actual
+admission→two-Dakar-capture ingestion→fresh admission/replay preserves one charge,
+all registry/index/lock inodes and2captures/2,283ordinals/1,810versions/0conflicts.
+Actual SIGKILL after reservation before mkdir and after binding publication resumes
+with one charge/two attempts. An actual surviving native worker retains its lock
+and anonymous input after controller SIGKILL; fresh admission is busy before any
+allocation, then after confirmed exit replays the same reservation/two attempts/
+30reserved wall seconds and ingests473rows. No remembered PID is given to recovery.
+
+Initial full run191/192 found a malformed expected-JSON literal in a new pure
+test, fixed without changing v1 encoding. Second full run191/192 found an old
+fork-fixture cleanup race: exact known child became a terminal zombie. Its test
+now checks exact PID/status plus actual lock reacquisition; unknown live identity
+is preserved, no old PID signalled, production guard unchanged. Failed receipts
+and small old scratch remain preserved. Final192-case run passes.
+
+Separate actual verifier27466 exit0,5.30s/160,808,960B maxRSS verifies the admitted
+flow/crash reports, nine current capture/ledger files and all877 historical pins
+unchanged, zero network/actual campaign/output/Nigeria/game writes. Guarded23
+engine checks pass: **215 focused checks**, before clean-source policy. Current
+40-input declaration:389,326source bytes/5,070manifest bytes,
+SHA72923fc8a3f8144e45b064cf9b44dc1c315eddf46e25ad9d8ca969dbe879752d.
+Actual persistent snapshot466,944charged bytes/input4,096bytes. Final-v2 source
+receipt binds60 source/test pins; it distinguishes the test-only cleanup correction
+from earlier actual-source evidence. All18 prior TypeScript execution-input pins
+are unchanged; no new compiler/game build or runtime upload is claimed.
+
+All root test/verifier handles are terminal. Local work followed explicit
+LIVING/GRAPHICS handoffs with heavy1,128MiB Node and96MiB registry workers. Pressure
+continues alternating NORMAL/WARNING with paging; no concurrency/cap expansion.
+Source commit **2f82acb6e7b3ef3a3be9244850015e217af4d202** passes all **five exact
+clean-source release-policy tests**, terminal56073 exit0. Owned Git archive is
+140,503,040 bytes / 133,972,062 logical bytes / 8,576 members, below unchanged
+256MiB / 10,000-member bounds; owned temporary archive/checkout is removed.
+Receipt: `feature-index-admission-clean-policy-v1.{tap,stderr,json}`. Total
+**220 focused checks** (192 Python + 23 guarded engine + five source policy).
+This is committed-source policy, not a new compiler/build or runtime upload.
+Main synchronization follows this acceptance checkpoint.
+
+**Next:** persistent capture job/attempt/input ownership and frozen campaign
+observation/completion fences, then independent raw/index ordinal audit and
+full-country owned geometry/sharding/streaming. Admission's16-attempt lifetime
+bound is not a per-capture/building loop; process multiple captures inside the held
+admitted context. The complete unattended world objective, Nigeria renderer
+integration, regional conditions/terrain and phone-visible global detail remain
+incomplete. Do not replace this next end-to-end work with another initializer.
+
+## Fixed verified-capture ingestion — actual data and crash acceptance
+
+The previous status turn made no implementation progress. The next available
+implementation now connects retained raw captures to the guarded transactional
+index. Luna owned only the two fixed Node worker files; root implemented the
+Python descriptor boundary, guard registration, complete source closure and actual
+integration/recovery checks. Read [FEATURE-INDEX-INGEST-OPERATIONS.md](FEATURE-INDEX-INGEST-OPERATIONS.md).
+
+The endpoint consumes an actual externally charged root and both inherited
+namespace/index leases. Raw files are opened readonly without copying them;
+the anonymous64,000-byte-bounded envelope and readonly execution snapshot count
+against live index storage. Guard `F_GETFL` verifies all three descriptor access
+modes; descriptors cannot alias leases or another input role. Worker hashes and
+stable bigint filesystem checks, source/request/receipt reconstruction and
+binding-layer membership run before any SQL. The existing atomic bootstrap and
+capture transaction then conserve each original ordinal. Integrity/FK checks,
+closed physical state and unchanged root/database/lease inodes precede reporting.
+Reported peak RSS must fit the admitted cap, in addition to sampled RSS checks.
+Unconfirmed exit retains the actual input handles and owned source snapshot.
+
+**178 Python tests pass**, terminal29436 exit0,32.612s unittest/32.77s process,
+186,351,616B maxRSS. The11 new ingestion tests separately pass in9.480s with
+161,103,872B maxRSS. First launch failed before any test because the relative
+shared-wrapper path used the wrong cwd; its receipt remains. No cap was raised.
+Actual worker failures before SQL cover wrong pins/source request, out-of-binding
+layers, changed raw input and duplicate receipt keys. Quota failure preserves
+the previous capture; raw replay after fresh reopen passes. The original guard,
+snapshot, namespace and persistent controller checks remain in the combined run.
+
+The separate actual evidence verifier, terminal63623 exit0,6.43s/
+159,793,152B maxRSS, indexes473 and1,810 cached Dakar source rows. Result:
+2captures/2,283ordinals/1,810versions/473overlapping duplicates/0conflicted keys.
+Fresh workers raw-replay both with0 inserted versions and identical disposition
+hashes after reacquiring the same charged root; one reservation and database inode
+remain. Actual SIGKILL atbefore-transaction/after-commit/after-checkpoint produces
+no success report. The after-commit witness retains a nonempty WAL; a fresh worker
+recovers it and verifies all473 ordinals without inserting another version.
+All three boundaries preserve the same database inode and reservation. Nine
+current capture/ledger files and all877 historical pins are unchanged; no network,
+actual acquisition/campaign/output/Nigeria/game or runtime production write occurs.
+The separately guarded23 engine tests pass, for **201 focused checks**.
+
+Full World TypeScript passes, terminal19845 exit0,5.13s/442,171,392B maxRSS,
+384MiB heap, after explicit GRAPHICS/LIVING terminal resource handoffs. All root
+test/compiler/acceptance handles are terminal; no WORLD browser/server/upload.
+Memory returned NORMAL but paging continued, so heavy1 and existing limits remain.
+No full game build, physical-device or production map-detail acceptance is claimed.
+
+Current36-input manifest:367,210source bytes/4,547manifest bytes,
+SHA b2e6bc0de4de3a0ac3829dcc52803a3d4785d7f8f27c970bd7c75bbaf07faf6d;
+actual source snapshot438,272charged bytes, anonymous envelope4,096bytes.
+Exact pins and receipts are `.cache/world-build/evidence/feature-index-ingest-*`.
+Compiler accepts this source, not the earlier registry-only source. Committed-source
+policy and latest main synchronization follow this checkpoint.
+
+Implementation ef4ca35504cd2ceaa4e77e1686b7e6c605eff423 passes all5 actual
+release-source policy tests from its exact clean Git archive, terminal78066 exit0.
+Archive140,441,600bytes/133,908,368logical bytes/8,570members stays below
+256MiB/10,000members; free space, regular-file/directory inventory and extraction
+data filter are checked. Owned archive/checkout are removed; actual caches are
+preserved. Receipt `feature-index-ingest-clean-policy-v1.{json,tap,stderr}`.
+This is **206 focused checks plus compiler**, not a full runtime release.
+
+Acceptance71326ac4 merges latest fetched docs-only main317de413 (including
+GRAPHICS86519377) as eeaea9c3 without conflicts. Incoming changes touch only
+docs/AGENT-COORDINATION.md; the complete accepted source/test pins are rechecked
+before publication, so no redundant compiler/fixture rerun is claimed. Primary
+dirty graphics and all owner services are preserved. Source publication is a
+coordinated main checkpoint; no runtime upload or new country-detail coverage.
+
+**Next:** implement actual supervised namespace admission and persistent per-index
+capture attempt/input ownership using the fixed registry recovery records, then
+validate/fence frozen campaign observations and completion. Independently conserve
+raw/index ordinals before full-country owned geometry/sharding/streaming publication.
+This endpoint requires external admission; it is not the full unattended scheduler.
+The complete world objective, Nigeria renderer integration, conditions/terrain
+upgrades and phone-visible global detail remain incomplete. Do not substitute more
+initializer fixtures for the remaining end-to-end country pipeline.
+
+## Persistent fixed-registry recovery — focused acceptance
+
+Previous goal turn was **progress**: implementationd1a3ab12,174 focused checks and
+authorized main publication21a4e381. This continuation adds persistent ownership
+to the actual fixed registry startup path, with a narrow Luna record-codec task
+and root integration/review. The complete world objective remains active.
+
+`restartable_registry_startup` stores canonical source/runtime/namespace/lock and
+immutable limit bindings before launch. Its single fixed execution slot and two
+record-write slots share the existing17MiB registry allowance; no cap increased.
+At most16 lifetime attempts retain their full wall reservation. A prepared record
+with snapshot identity may already have launched: controller loss never refunds
+that attempt. The fixed worker inherits the permanent namespace flock. A fresh
+controller must reacquire that actual lock before reconciliation/allocation; it
+never signals a remembered PID or scavenges arbitrary temporary paths.
+
+Deterministic pending JSON prefixes and source-file prefixes resume under the
+lease. Complete snapshots are source-hash verified. Terminal cleanup atomically
+renames the owned snapshot into a fixed reclaim slot; an interruption resumes by
+verifying every surviving pinned byte, without requiring deleted files to reappear.
+Unknown, changed or unsafe entries remain preserved. Successful and unconfirmed
+settlement use distinct deterministic tags; their digests bind attempt settlement,
+not country coverage or complete captured-source conservation.
+
+A permanent initialized-registry witness anchors the original database device/
+inode and namespace metadata hash. Prior real reservations survive normal restart;
+missing/replaced database or metadata, a lost attempt record and a lost successful
+witness refuse initialization/reallocation. Short pending witness prefixes which
+do not establish the original inode are deliberately ambiguous and preserved. An
+anchor without an attempt record likewise requires explicit reconciliation, not
+a fresh quota. Initial adoption interrupted between those publications is such
+a fail-closed case. This is not power-loss, malicious same-user rollback or every
+filesystem-corruption recovery acceptance.
+
+**167 Python checks pass**, terminal61752 exit0:22.612s unittest/22.79s process,
+186,499,072B maxRSS. The final suite includes actual controller SIGKILL, a surviving
+native Python worker and a fresh API invocation using only the durable record and
+lease. The live worker prevents replacement before snapshot allocation. After it
+exits, restart retains the same lock/database inodes, replays the registry and
+holds both attempt charges. No old Popen/PID is supplied to recovery. The separate
+corrected restart fixture passes1/1 in2.393s/50,577,408B RSS. Its first failure came
+from the test wrapper retaining an extra argv; production argument checks stayed
+strict. Earlier small-suite failure exposed a missing controller inventory in the
+post-yield namespace check and was repaired. Initial164-case run found a test's
+device bound confused with a byte budget; the original specified63-bit device
+bound remains. All earlier failed receipts are preserved.
+
+Luna review found real missing-ledger/attempt-reset and short-witness gaps; root
+fixed them and added regression coverage. Final cases include an actual64KiB
+reservation with no child directory yet, initialize/reopen with parent SQL blocked,
+all three controller publication prefixes, partial source copying/reclaim,
+immutable-limit changes, exhaustion and corrupted retained source preservation.
+
+Current33-input manifest:335,030source bytes/4,171manifest bytes,
+SHA1b11972082e2cb5f7f18da3d82fc035ae9a98bb5fa6532b2e2153b0e5b24d651;
+actual frozen slot401,408charged bytes. The actual disposable first/reopen receipts
+have1/2 lifetime attempts and15/30 reserved wall seconds. Guarded23 engine checks
+and cached Dakar replay pass with unchanged2captures/2,283ordinals/1,810versions/
+473duplicates/0conflicts/0network. Exact measurements and source/test/evidence pins
+are in `.cache/world-build/evidence/feature-index-persistent-{tooling-manifest,
+startup-actual,engine,capacity,source-acceptance}-v1.json`; final Python receipt is
+`feature-index-persistent-all-v3.{stdout,stderr}`. No TypeScript source changed;
+the previous compiler receipt remains previous evidence.
+
+All work uses disposable namespaces and retained cached inputs; actual acquisition,
+campaign/output/Nigeria/game data and runtime production are untouched. Heavy1 and
+128MiB wrappers/Node workers remain; pressure briefly returned NORMAL then WARNING,
+without broader compiler/build/browser/server or heavy concurrency expansion.
+
+**Next:** implement the fixed verified-capture ingestion worker using these durable
+ownership rules and both namespace/index leases, then fence existing campaign
+completion, independently conserve raw/index ordinals and measure full-country
+geometry/sharding/streaming. This API initializes/reopens the registry only; it is
+not an unattended acquisition/campaign scheduler. Global playable detail, conditions/
+terrain upgrades, Nigeria rendering integration and phone-visible production detail
+remain incomplete. Exact committed-source policy/main sync follows this checkpoint.
+
+Implementationc38bac6193452a13b3c7a537bdddabfa5d63e7c0 passes5 exact-clean-source
+release policy checks, terminal87754 exit0:133,843,934logical bytes,
+140,369,920archive bytes/8,565members, below256MiB/10,000member caps. Free-space,
+regular-file/directory and data-filter checks pass; owned archive/checkout removed,
+actual caches preserved. Receipt `feature-index-persistent-clean-policy-v1.*`.
+This is **195 focused checks**, not a game build, country coverage or production
+artifact release. Fresh fetched716da1de changes only coordination docs relative
+to21a4e381; no foreign runtime changes are adopted by this synchronization.
+
 ## Supervised registry startup and controller-death witness — focused acceptance
 
 The preceding status-only turn was **no progress**. This continuation inspected

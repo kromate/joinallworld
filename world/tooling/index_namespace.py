@@ -21,6 +21,7 @@ from index_reservations import (
 )
 from index_writer_lock import IndexWriterLease, index_writer_lease
 import index_root
+from index_controller_state import CONTROLS, inspect_controller
 from index_binding import decode_index_binding
 from index_storage_footprint import index_storage_footprint
 
@@ -34,6 +35,7 @@ FIXED_FILES = frozenset({
     "reservations.bootstrap.sqlite-shm", "reservations.bootstrap.sqlite-journal",
     "reservations.sqlite", "reservations.sqlite-wal", "reservations.sqlite-shm",
     "reservations.sqlite-journal",
+    *CONTROLS,
 })
 _DB_FILES = {
     "bootstrap": ("reservations.bootstrap.sqlite", "reservations.bootstrap.sqlite-wal",
@@ -196,7 +198,7 @@ def _readonly_registry(path, aggregate, *, final):
         db.close()
 
 
-def _preflight(root, expected, aggregate, *, leased=False):
+def _preflight(root, expected, aggregate, *, leased=False, controller_check=True):
     """Classify bounded entries before index_writer_lease can create writer.lock."""
     names = index_root._names(root, MAX_RESERVATIONS + len(FIXED_FILES))
     name_set = set(names)
@@ -205,10 +207,13 @@ def _preflight(root, expected, aggregate, *, leased=False):
     unknown = name_set - FIXED_FILES
     dirs = []
     overhead = root.lstat().st_blocks * 512
+    overhead += inspect_controller(root, aggregate, strict=controller_check)
     for name in names:
         path = root / name
         info = path.lstat()
         if name in FIXED_FILES:
+            if name in CONTROLS:
+                continue
             overhead += max(info.st_size, info.st_blocks * 512)
             if name == "writer.lock":
                 if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_nlink != 1

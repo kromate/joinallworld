@@ -84,10 +84,13 @@ def _namespace(lease, registry):
         if config["reservedBytes"] != amount:
             raise ValueError("namespace binding differs from its immutable charged allowance")
         held[key] = (binding, config)
-    overhead = info.st_blocks*512
+    from index_controller_state import CONTROLS, inspect_controller
+    overhead = info.st_blocks*512 + inspect_controller(root, registry.aggregate_bytes)
     roots = []
-    for name in _names(root, MAX_RESERVATIONS+len(REGISTRY_FILES)):
+    for name in _names(root, MAX_RESERVATIONS+len(REGISTRY_FILES)+len(CONTROLS)):
         file = root/name; entry = file.lstat()
+        if name in CONTROLS:
+            continue
         if name in REGISTRY_FILES:
             maximum = 0 if name == "writer.lock" else 4096 if name == "namespace.json" else DATABASE_BYTES
             if (not stat.S_ISREG(entry.st_mode) or entry.st_uid != os.getuid()

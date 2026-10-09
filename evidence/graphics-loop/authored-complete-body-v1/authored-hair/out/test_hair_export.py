@@ -48,6 +48,14 @@ class HairExportTest(unittest.TestCase):
                 self.assertEqual(metadata["weights"]["unweightedAnchorCount"], 0)
                 for attr in ("JOINTS_0", "WEIGHTS_0", "_MH_SOURCE_VERTEX", "_MH_ANCHOR_VERTICES", "_MH_ANCHOR_BARYCENTRICS"):
                     self.assertIn(attr, attrs)
+                weight_accessor = doc["accessors"][attrs["WEIGHTS_0"]]
+                weight_view = doc["bufferViews"][weight_accessor["bufferView"]]
+                start = weight_view["byteOffset"] + weight_accessor.get("byteOffset", 0)
+                weights = struct.unpack_from("<" + "f" * (weight_accessor["count"] * 4), binary, start)
+                self.assertGreaterEqual(min(weights), 0.0)
+                self.assertLessEqual(max(weights), 1.0)
+                for vertex in range(weight_accessor["count"]):
+                    self.assertAlmostEqual(sum(weights[vertex * 4:vertex * 4 + 4]), 1.0, places=6)
                 self.assertEqual(doc["meshes"][0]["extras"]["targetNames"], ["bodyFeminine", "bodyMasculine"])
                 self.assertEqual(doc["materials"][0]["alphaMode"], "BLEND")
                 self.assertTrue(doc["materials"][0]["doubleSided"])

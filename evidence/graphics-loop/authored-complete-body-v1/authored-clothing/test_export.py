@@ -75,8 +75,12 @@ class ClothingBakeTest(unittest.TestCase):
         weight_view = self.document["bufferViews"][weight_acc["bufferView"]]
         start = weight_view["byteOffset"] + weight_acc.get("byteOffset", 0)
         values = struct.unpack_from("<" + "f" * (weight_acc["count"] * 4), self.binary, start)
+        self.assertGreaterEqual(min(values), 0.0)
+        self.assertLessEqual(max(values), 1.0)
         for i in range(weight_acc["count"]):
             self.assertAlmostEqual(sum(values[i * 4:i * 4 + 4]), 1.0, places=6)
+        self.assertGreater(self.metadata["weights"]["negativeBarycentricBlendLanesClampedToZero"], 0)
+        self.assertIn("highest barycentric coefficient", self.metadata["weights"]["fallbackRule"])
 
 
 if __name__ == "__main__":

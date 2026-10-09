@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "source": {
+    "bodyPath": {
+      "sha256": "0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077",
+      "bytes": 2692984
+    },
+    "clipPath": {
+      "sha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
+      "bytes": 338060
+    },
+    "suitPath": {
+      "sha256": "1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f",
+      "bytes": 1120612
+    },
+    "hidePath": {
+      "sha256": "dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099",
+      "bytes": 301657
+    },
+    "shortPath": {
+      "sha256": "9e2f77d23b6bcf34b5e4fef12c672d73496f5d43ed6a88b7dbf48748dc680a8c",
+      "bytes": 504432
+    },
+    "afroPath": {
+      "sha256": "3ce7a4c9c42268f3d7333fe1cb1cca9a8529a244ddd98870009b2c6b44a97ce9",
+      "bytes": 659460
+    }
+  },
+  "adapterSourceSha256": "8c551bd8e797fcf4f8eda3cac64960edf09fbc6ced35d2de1a46596685df1cab",
+  "rigSourceSha256": "d2b03ca536c7507a15c211bf5ed41d764a838f2091e5fedeb6f7e11340c92002",
+  "mode": "Actual hash-pinned GLB geometry/material/skeleton data, image-free decoding after raw pin verification; placeholder 1×1 texture used only to satisfy hair material-map structure. No pixel or rendering claim.",
+  "actors": [
+    {
+      "body": "man",
+      "hairstyle": "lowcut"
+    },
+    {
+      "body": "woman",
+      "hairstyle": "afro"
+    }
+  ],
+  "weightDiagnostics": {
+    "min": 0,
+    "max": 1,
+    "minSum": 0.9999999551801011,
+    "maxSum": 1.0000000428408384,
+    "negativeByActor": [
+      0,
+      0
+    ],
+    "negativeByMesh": {},
+    "invalidCount": 0,
+    "samples": []
+  },
+  "checks": {
+    "nonnegativeWeights": true,
+    "exactBodyIndexMask": true,
+    "suitAndHairJointIndicesValid": true,
+    "fourNormalizedInfluencesPerVertex": true,
+    "independentActorSkeletonsAndPoses": true,
+    "bodyMaskRestoredOnPresentationDispose": true,
+    "perActorOverlayMaterialsDisposedOnce": true,
+    "outfitAndHairGeometryDisposedOnce": true,
+    "kitOwnedBodyGeometrySharedUntilKitTeardown": true
+  },
+  "limitations": [
+    "The suit and hair rasters are intentionally omitted in this Node CPU check; material color, alpha silhouette and visual fit require the separate rendered review.",
+    "Morph copying is checked at actor construction; this check does not execute renderer onBeforeRender synchronization.",
+    "No age/fabric/accessory or mobile performance claim."
+  ],
+  "elapsedMs": 383
+}

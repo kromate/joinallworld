@@ -70,6 +70,9 @@
     "bones": 52,
     "unweightedAnchorCount": 0,
     "maxInfluences": 4,
+    "negativeBarycentricBlendLanesClampedToZero": 0,
+    "zeroSumDeterministicAnchorFallbackCount": 0,
+    "fallbackRule": "If all clamped barycentric bone lanes sum to zero, choose the MHCLO anchor with highest barycentric coefficient (tie by lowest hm08 source vertex ID), then use its positive source weights; error if that source has no positive weights.",
     "allNormalized": true,
     "jointNamesOrder": [
       "mixamorig:Head",

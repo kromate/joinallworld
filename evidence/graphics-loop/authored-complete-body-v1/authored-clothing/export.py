@@ -348,6 +348,8 @@ def main():
     positions, uvs, morph_f, morph_m = [], [], [], []
     joint_rows, weight_rows = [], []
     source_vertex_ids, anchor_vertex_ids, anchor_barycentrics = [], [], []
+    clamped_blend_lane_count = 0
+    zero_sum_fallback_count = 0
     for source_vertex, uv_index in split_from:
         source_vertex_ids.append(source_vertex)
         anchor_vertex_ids.extend(rows[source_vertex][0])
@@ -361,10 +363,21 @@ def main():
         for source_i, factor in zip(indices, bary):
             for bone, weight in per_source[source_i]:
                 blended[bone] = blended.get(bone, 0.0) + factor * weight
-        strongest = sorted(blended.items(), key=lambda pair: (-pair[1], pair[0]))[:4]
+        clamped_blend_lane_count += sum(1 for weight in blended.values() if weight < 0.0)
+        nonnegative = {bone: max(0.0, weight) for bone, weight in blended.items()}
+        strongest = sorted(((bone, weight) for bone, weight in nonnegative.items() if weight > 0.0), key=lambda pair: (-pair[1], pair[0]))[:4]
         total = sum(value for _, value in strongest)
         if total <= 0:
-            raise ValueError(f"zero transfer weight at authored garment vertex {source_vertex}")
+            # Deterministic fallback for fully canceled extrapolative blends:
+            # choose the anchor with greatest barycentric coefficient (tie by
+            # lowest source vertex ID), then transfer its positive source lanes.
+            fallback_source = sorted(zip(indices, bary), key=lambda pair: (-pair[1], pair[0]))[0][0]
+            fallback = sorted(((bone, max(0.0, weight)) for bone, weight in per_source[fallback_source] if weight > 0.0), key=lambda pair: (-pair[1], pair[0]))[:4]
+            total = sum(value for _, value in fallback)
+            if total <= 0:
+                raise ValueError(f"no positive deterministic source fallback at authored vertex {source_vertex}")
+            strongest = fallback
+            zero_sum_fallback_count += 1
         joint_rows.append([item[0] for item in strongest] + [0] * (4 - len(strongest)))
         weight_rows.append([item[1] / total for item in strongest] + [0.0] * (4 - len(strongest)))
 
@@ -468,7 +481,7 @@ def main():
         "garmentSplitVertexCount": count,
         "garmentTriangleCount": len(triangles),
         "anchors": {"rows": len(rows), "uniqueSourceIds": len(anchor_source_ids), "sourceIndexMin": min(anchor_source_ids), "sourceIndexMax": max(anchor_source_ids), "sourceGroup": group_name, "sourceGroupRanges": anchor_ranges, "allRowsInExpectedGroup": True, "helperTightsOnly": group_name == "helper-tights", "nearestNeighborFallback": False, "mappingTriplesMatchingBodyQuadTriangleSupport": len(supported_anchor_rows), "mappingTriplesTotal": len(rows), "nonmatchingBodyTriangleSupportRowIds": unsupported_anchor_rows, "glbAttributes": {"_MH_SOURCE_VERTEX": f"original {asset_name}.obj v index, repeated only for OBJ UV seams", "_MH_ANCHOR_VERTICES": "MHCLO's three original hm08 source vertex indices", "_MH_ANCHOR_BARYCENTRICS": "the exact three MHCLO barycentric weights"}},
-        "weights": {"source": "pinned weights.mixamo.json", "bones": len(bone_names), "unweightedAnchorCount": 0, "maxInfluences": 4, "allNormalized": True, "jointNamesOrder": bone_names},
+        "weights": {"source": "pinned weights.mixamo.json", "bones": len(bone_names), "unweightedAnchorCount": 0, "maxInfluences": 4, "negativeBarycentricBlendLanesClampedToZero": clamped_blend_lane_count, "zeroSumDeterministicAnchorFallbackCount": zero_sum_fallback_count, "fallbackRule": "If all clamped barycentric bone lanes sum to zero, choose the MHCLO anchor with highest barycentric coefficient (tie by lowest hm08 source vertex ID), then use its positive source weights; error if that source has no positive weights.", "allNormalized": True, "jointNamesOrder": bone_names},
         "morphs": ["bodyFeminine", "bodyMasculine"],
         "morphRecipe": "The exact upstream builder's 1/3 African + 1/3 Asian + 1/3 Caucasian young target for each sex; garment deltas are mapped target shape minus mapped neutral shape, including MHCLO axis-reference scaling per shape.",
         "coordinates": {"source": "MakeHuman Y-up, +Z-facing", "output": "metres, Y-up, +Z-facing; x/y/z * 0.1 and joint-ground centroid subtracted from Y"},
@@ -480,7 +493,7 @@ def main():
     }
     args.output_dir.mkdir(parents=True, exist_ok=True)
     (args.output_dir / metadata_name).write_text(json.dumps(metadata, indent=2) + "\n")
-    print(json.dumps({"glb": str(output), "bytes": output.stat().st_size, "metadata": str(args.output_dir / metadata_name), "garmentVertices": len(garment_pos), "splitVertices": count, "triangles": len(triangles), "hiddenBodyTriangles": len(hidden_triangles), "maleFitMean": mean_error, "maleFitP95": p95_error, "maleFitMax": max_error}, indent=2))
+    print(json.dumps({"glb": str(output), "bytes": output.stat().st_size, "metadata": str(args.output_dir / metadata_name), "garmentVertices": len(garment_pos), "splitVertices": count, "triangles": len(triangles), "hiddenBodyTriangles": len(hidden_triangles), "negativeBlendLanesClamped": clamped_blend_lane_count, "zeroSumFallbacks": zero_sum_fallback_count, "maleFitMean": mean_error, "maleFitP95": p95_error, "maleFitMax": max_error}, indent=2))
 
 
 if __name__ == "__main__":

@@ -69,8 +69,8 @@ interface OutfitGeometryEntry {
 }
 
 const BODY_SOURCE_INDEX_SHA256 = '4c29f318e20b87a2c0ddce3689fa0ab285ee390fc02e5f3a017736df772a3661';
-const OUTFIT_SHA256 = '571e3b3a866bd6092665d77eaa34ce8b216dd54b403a40fef4c18bf35146a0b7';
-const BODY_HIDE_MAP_SHA256 = 'ef5c6c11cf08510ecefcf922cbab8801fc93fb367a7b90db19c5c8fc21e4c210';
+const OUTFIT_SHA256 = '1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f';
+const BODY_HIDE_MAP_SHA256 = 'dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099';
 const SHORT_HAIR_SHA256 = '9e2f77d23b6bcf34b5e4fef12c672d73496f5d43ed6a88b7dbf48748dc680a8c';
 const AFRO_HAIR_SHA256 = '3ce7a4c9c42268f3d7333fe1cb1cca9a8529a244ddd98870009b2c6b44a97ce9';
 const BODY_SOURCE_REVISION = 'ec8d1d270b93b8e2e87e8a6160bb908665fe1fcd';
@@ -101,7 +101,7 @@ function fail(message: string): never {
 }
 
 function normalizeBoneName(name: string): string {
-  return name.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return name.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/^mixamorig/, '');
 }
 
 function check(condition: unknown, message: string): asserts condition {
@@ -190,7 +190,7 @@ async function loadTemplate(): Promise<{ outfit: OutfitTemplate; hideMap: BodyHi
     }
   });
   check(mesh, 'casual suit GLB has no mesh');
-  check(!mesh.isSkinnedMesh, 'outfit asset must not contain a second skeleton');
+  check(!(mesh instanceof THREE.SkinnedMesh), 'outfit asset must not contain a second skeleton');
   check(!Array.isArray(mesh.material) && mesh.material instanceof THREE.MeshStandardMaterial,
     'outfit GLB must have one standard material');
   const geometry = mesh.geometry;
@@ -241,7 +241,7 @@ async function loadHairTemplate(url: string, expectedHash: string, assetName: 's
     }
   });
   check(mesh, 'hair GLB has no mesh');
-  check(!mesh.isSkinnedMesh, 'hair asset must not contain a second skeleton');
+  check(!(mesh instanceof THREE.SkinnedMesh), 'hair asset must not contain a second skeleton');
   check(!Array.isArray(mesh.material) && mesh.material instanceof THREE.MeshStandardMaterial, 'hair GLB must have one standard material');
   const geometry = mesh.geometry;
   const index = geometry.getIndex(), position = geometry.getAttribute('position');
@@ -567,6 +567,7 @@ function createSkinnedSibling(
   geometry: THREE.BufferGeometry,
   material: THREE.Material | THREE.Material[],
   name: string,
+  targetNames: readonly string[],
 ): THREE.SkinnedMesh {
   check(body.parent, 'Body must be attached to the character root before presentation');
   const outfit = new THREE.SkinnedMesh(geometry, material);
@@ -583,6 +584,8 @@ function createSkinnedSibling(
   outfit.receiveShadow = true;
   outfit.renderOrder = body.renderOrder + 1;
   outfit.updateMorphTargets();
+  check(outfit.morphTargetInfluences?.length === targetNames.length, 'authored morph names do not match target count');
+  outfit.morphTargetDictionary = Object.fromEntries(targetNames.map((target, index) => [target, index]));
   body.parent.add(outfit);
   return outfit;
 }
@@ -644,7 +647,7 @@ export async function applyAuthoredPresentation(
     trouserMaterial.color.copy(paletteColor(look.bottomsColor, 'bottomsColor'));
     shirtMaterial.roughness = Math.max(0.68, shirtMaterial.roughness);
     trouserMaterial.roughness = Math.max(0.72, trouserMaterial.roughness);
-    clothing = createSkinnedSibling(sourceBody, entry.geometry, [shirtMaterial, trouserMaterial], 'Authored casual suit');
+    clothing = createSkinnedSibling(sourceBody, entry.geometry, [shirtMaterial, trouserMaterial], 'Authored casual suit', template.targetNames);
     const copiedMorphs = copyMorphValues(sourceBody, clothing, template.targetNames);
     const previousOnBeforeRender = clothing.onBeforeRender;
     clothing.onBeforeRender = (renderer, scene, camera, geometry, material, group) => {
@@ -654,7 +657,7 @@ export async function applyAuthoredPresentation(
     const copiedHairMorphs: string[] = [];
     if (hairTemplate && hairEntry) {
       hairMaterial = hairTemplate.material.clone();
-      hair = createSkinnedSibling(sourceBody, hairEntry.geometry, hairMaterial, `Authored hair ${hairName}`);
+      hair = createSkinnedSibling(sourceBody, hairEntry.geometry, hairMaterial, `Authored hair ${hairName}`, hairTemplate.targetNames);
       copiedHairMorphs.push(...copyMorphValues(sourceBody, hair, hairTemplate.targetNames));
       const previousHairOnBeforeRender = hair.onBeforeRender;
       hair.onBeforeRender = (renderer, scene, camera, geometry, material, group) => {

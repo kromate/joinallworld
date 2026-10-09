@@ -1,3 +1,5 @@
+User-verified delivery cutoff:10October2026 around06:00Africa/Lagos,05:00UTC. Finish accepted consolidation first, preserve exact unfinished work/evidence at cutoff, no new spending/provisioning in this lane. Full programme scope remains required; unfinished phases are not accepted by deadline. Details: [delivery cutoff](delivery-cutoff-2026-10-10.json).
+
 # Living-world ranked backlog
 
 ## Current finite acceptance batch - 9 October 2026

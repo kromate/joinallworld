@@ -2,7 +2,7 @@
 
 ## Current exact-source acceptance - 9 October 2026
 
-Published Integration5e12d3a5d6301faec394abd81dc0d95e086edd48 remains unaccepted. [Exact current CI/source evidence](candidate-5e12d3a5-review.json); historical [panel-loader review](panel-loader-source-review.json). Compiler/build/download22/24 and policy/host/UI/integration-repairs jobs PASS. Workers22/24 each154/154PASS; Node22host1020PASS/3existingSKIP and tooling36/36PASS. Node22 game is terminal FAIL:2562pass/5fail/1existing skip; relief fixture/readiness and rendered whole-ticket assertions require repair. Node24 corpus and rendered travel/lesson/staging gates remain open.
+Published Integration5e12d3a5d6301faec394abd81dc0d95e086edd48 remains unaccepted. [Exact current CI/source evidence](candidate-5e12d3a5-review.json); historical [panel-loader review](panel-loader-source-review.json). Compiler/build/download22/24 and policy/host/UI/integration-repairs jobs PASS. Workers22/24 each154/154PASS; Node22host1020PASS/3existingSKIP and tooling36/36PASS. Node22 game is terminal FAIL:2562pass/5fail/1existing skip; relief fixture/readiness and rendered whole-ticket assertions require repair. Node24 game also terminal FAIL2562pass/5fail/1existing skip; Node24host1020pass/3existing skip and tooling36/36PASS. Entire37966065099 is terminalFAIL; changed-source repairs and rendered travel/lesson/staging gates remain open.
 
 | Unit | Evidence | Release state | Remaining acceptance |
 | --- | --- | --- | --- |

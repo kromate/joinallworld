@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-09T17:42:18.388970+00:00",
+  "observedAt": "2026-10-09T17:57:59.828973+00:00",
   "candidate": "5e12d3a5d6301faec394abd81dc0d95e086edd48",
   "accepted": false,
   "programmeReleased": false,
@@ -8,200 +8,156 @@
     "id": 37966065099,
     "url": "https://github.com/kromate/joinallworld/actions/runs/37966065099",
     "headSha": "5e12d3a5d6301faec394abd81dc0d95e086edd48",
-    "status": "queued",
-    "conclusion": "",
+    "status": "completed",
+    "conclusion": "failure",
     "jobs": [
       {
+        "conclusion": "success",
         "id": 113940600899,
         "name": "release-policy",
-        "status": "completed",
-        "conclusion": "success",
-        "steps": []
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601191,
         "name": "full-worker (24)",
-        "status": "in_progress",
-        "conclusion": "",
-        "steps": [
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601198,
         "name": "integration-repairs",
-        "status": "completed",
-        "conclusion": "success",
-        "steps": [
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601208,
         "name": "host-acceptance",
-        "status": "completed",
-        "conclusion": "success",
-        "steps": []
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601335,
         "name": "full (22)",
-        "status": "completed",
-        "conclusion": "success",
-        "steps": [
-          {
-            "name": "Run npm run typecheck",
-            "status": "completed",
-            "conclusion": "success"
-          },
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          },
-          {
-            "name": "Run npm run size:download",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601344,
         "name": "full (24)",
-        "status": "completed",
-        "conclusion": "success",
-        "steps": [
-          {
-            "name": "Run npm run typecheck",
-            "status": "completed",
-            "conclusion": "success"
-          },
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          },
-          {
-            "name": "Run npm run size:download",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601397,
         "name": "full-worker (22)",
-        "status": "in_progress",
-        "conclusion": "",
-        "steps": [
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "failure",
         "id": 113940601404,
         "name": "full-node (24, game)",
-        "status": "in_progress",
-        "conclusion": "",
-        "steps": [
-          {
-            "name": "Run npm run build",
-            "status": "pending",
-            "conclusion": ""
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "failure",
         "id": 113940601415,
         "name": "full-node (22, game)",
-        "status": "in_progress",
-        "conclusion": "",
-        "steps": [
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601439,
         "name": "ui-regressions",
-        "status": "completed",
-        "conclusion": "success",
-        "steps": [
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601443,
         "name": "full-node (22, tooling)",
-        "status": "completed",
-        "conclusion": "success",
-        "steps": [
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601450,
         "name": "full-node (22, host)",
-        "status": "completed",
-        "conclusion": "success",
-        "steps": [
-          {
-            "name": "Run npm run build",
-            "status": "completed",
-            "conclusion": "success"
-          }
-        ]
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601481,
         "name": "full-node (24, tooling)",
-        "status": "queued",
-        "conclusion": "",
-        "steps": []
+        "status": "completed"
       },
       {
+        "conclusion": "success",
         "id": 113940601675,
         "name": "full-node (24, host)",
-        "status": "queued",
-        "conclusion": "",
-        "steps": []
+        "status": "completed"
       },
       {
+        "conclusion": "skipped",
         "id": 113940602905,
         "name": "build-and-smoke-fast",
-        "status": "completed",
-        "conclusion": "skipped",
-        "steps": []
+        "status": "completed"
       },
       {
+        "conclusion": "skipped",
         "id": 113940603365,
         "name": "typecheck-fast",
-        "status": "completed",
-        "conclusion": "skipped",
-        "steps": []
+        "status": "completed"
+      }
+    ],
+    "nodeGameResults": {
+      "22": {
+        "tests": 2568,
+        "pass": 2562,
+        "fail": 5,
+        "existingSkips": 1,
+        "durationMs": 1226257.336205
+      },
+      "24": {
+        "tests": 2568,
+        "pass": 2562,
+        "fail": 5,
+        "existingSkips": 1,
+        "durationMs": 1197793.627061
+      }
+    },
+    "node24HostResult": {
+      "tests": 1023,
+      "pass": 1020,
+      "fail": 0,
+      "existingSkips": 3,
+      "durationMs": 253080.438784
+    },
+    "node24ToolingResult": {
+      "tests": 36,
+      "pass": 36,
+      "fail": 0,
+      "skips": 0,
+      "durationMs": 6491.827323
+    },
+    "failedCases": [
+      {
+        "location": "src/app/features/relief/reliefComponents.test.ts:53",
+        "failure": "Unloaded homeward route rules in card"
+      },
+      {
+        "location": "src/app/features/relief/reliefComponents.test.ts:75",
+        "failure": "Unloaded homeward route rules in clinic card"
+      },
+      {
+        "location": "src/app/features/relief/reliefComponents.test.ts:107",
+        "failure": "Exact scoped-attribute markup assertion"
+      },
+      {
+        "location": "src/app/features/relief/reliefComponents.test.ts:123",
+        "failure": "Unloaded homeward route rules in wallet"
+      },
+      {
+        "location": "src/app/features/relief/reliefComponents.test.ts:147",
+        "failure": "Blank visitor credit SSR"
       }
     ]
   },
@@ -247,12 +203,11 @@
     "qualification": "Last health evidence only; Root current Python public read returned403. Owner health JSON with serverTime1791566566236 archived; no deployment/live gameplay/save acceptance."
   },
   "remaining": [
-    "Complete still-live exact Node22/24 game and queued Node24 host/tooling corpus jobs",
-    "First-five rendered travel and active lesson readable mobile/desktop journeys",
-    "Exact isolated Worker/assets staging, unadjusted downtime and changed-route issued-term continuity",
-    "Native interrupted paid-action/save/receipt proof and held-body latest params where required",
-    "WORLD accepted release/live build/journey/save/observation",
-    "Full physical journey/later programme and live consented Goalmatic"
+    "Runtime affordable-route credit eligibility/display repair, preserving issued debt/terms; focused fixture10/10 owner-reported, not full candidate acceptance.",
+    "Focused changed-source retest then exact frozen full-source gates; terminal5e failure is not transferable acceptance",
+    "Rendered five-country travel/active teaching, pending paid-action reload, unadjusted downtime/original-ticket terms and isolated sealed Worker staging",
+    "WORLD sole release then live version/gameplay/save observations",
+    "Complete physical driving and later careers/business/consented live Goalmatic remain full programme requirements"
   ],
   "logs": {
     "allworld-panel-loader-fault-before.log": {
@@ -456,6 +411,30 @@
         "skipped": 0,
         "duration_ms": 5225.3843
       }
+    },
+    "joinallworld-5e12-node22-game.log": {
+      "sha256": "225d332c578e24f35a69fe099b2c37d860a47ce5104e788efef38539c8fddfdc",
+      "bytes": 1261562,
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/ci-5e12-terminal/joinallworld-5e12-node22-game.log",
+      "source": "Official completed GitHub job log"
+    },
+    "joinallworld-5e12-node24-game.log": {
+      "sha256": "9da29199c7673c7c3a219f69fec6e206e71caffd6d9d49feb4082437cd2e7965",
+      "bytes": 531423,
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/ci-5e12-terminal/joinallworld-5e12-node24-game.log",
+      "source": "Official completed GitHub job log"
+    },
+    "joinallworld-5e12-node24-host.log": {
+      "sha256": "62a0bb1b4f9a2db567b4be7b4c3f9ddb95707fc5d7e12974fd029947e633aa6a",
+      "bytes": 323608,
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/ci-5e12-terminal/joinallworld-5e12-node24-host.log",
+      "source": "Official completed GitHub job log"
+    },
+    "joinallworld-5e12-node24-tooling.log": {
+      "sha256": "4cb98a84c5b5b52d24812631114a598b14c4aa863096fa87422c2512ab37f6f4",
+      "bytes": 171904,
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/ci-5e12-terminal/joinallworld-5e12-node24-tooling.log",
+      "source": "Official completed GitHub job log"
     }
   },
   "browserAcceptance": {
@@ -485,5 +464,42 @@
     ],
     "rootReview": "Sol read source report, verified actual model metadata and correlated HTTP503/pass/hold/release timestamps. Screenshots inspected by Astra only; private copies retained locally, not published.",
     "cleanup": "Astra tab/lease released; owner server stopped17:35:59 and PID53108 absent. No other process/asset/session modified."
+  },
+  "fixturePatchReview": {
+    "candidateBase": "5e12d3a5d6301faec394abd81dc0d95e086edd48",
+    "workingFile": "src/app/features/relief/reliefComponents.test.ts",
+    "scope": "Independent source review only; owner patch not yet tested/committed",
+    "findings": [
+      "Actual same-Vite homewardFor awaited before publishing foreign visitor state",
+      "Scoped-attribute tolerance retains unavailable text, row ordering and no-button checks",
+      "Both ordinary button rows and actual credit row asserted",
+      "12000 fare, half-earning repayment and original home retained"
+    ],
+    "runtimeAccepted": false
+  },
+  "affordableHomewardReview": {
+    "observedAt": "2026-10-09T17:59:49.812236+00:00",
+    "sourceCandidate": "5e12d3a5d6301faec394abd81dc0d95e086edd48",
+    "finding": "homewardOffer returns null when cash covers the whole itinerary; helpOf then falls back to higher direct fare, while creditLink separately permits borrowing against that direct fare.",
+    "ownerReportedProbe": {
+      "cash": 252000,
+      "directFare": 290000,
+      "canAffordSupportedTwoLegRoute": true,
+      "rootExecutedProbe": false
+    },
+    "rootVerification": "Independent actual source read of estate.creditLink/homewardOffer/creditBlock and reliefHelp.helpOf; no runtime executed in this lane.",
+    "requiredRepair": [
+      "Use cheapest supported whole itinerary for credit eligibility and visible fare",
+      "Server creditBlock/relocate must reject needless credit, not only hide UI",
+      "Preserve prior issued debts, frozen terms, once-only actions and lazy readiness/startup limits"
+    ],
+    "acceptance": [
+      "Below/equal/above whole fare while below direct fare",
+      "Rejected direct credit leaves cash/debt/ledger/action unchanged",
+      "Closed hub/no route/busy/debt refusals preserved",
+      "12000 direct fixture and issued-ticket continuation remain compatible"
+    ],
+    "owner": "Integration sole runtime writer/test owner",
+    "status": "Repair and changed-source proof pending"
   }
 }

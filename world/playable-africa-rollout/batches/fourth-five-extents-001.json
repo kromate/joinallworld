@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "base": "be3067cb28847702769ed3f266b3103e03cb12dd",
+  "scope": "Versioned source packet after accepted starter-extent correction. Exact current city asset and receipt pins only; runtime/host/native/budget admission is not implied. Original packet and source/request history preserved.",
+  "destinationIds": [
+    "gaborone",
+    "windhoek",
+    "harare",
+    "maputo",
+    "luanda"
+  ],
+  "registeredInProduction": false,
+  "supersedesSourcePacket": {
+    "path": "world/playable-africa-rollout/batches/fourth-five.json",
+    "sha256": "aa3300aedc285038631ee40bad9982cd6f495d21e0a0e06c91e3a4a8fc4ae0bf"
+  },
+  "extentRevisionAcceptance": {
+    "path": "world/starter-extent-revisions-acceptance.json",
+    "sha256": "f6a6be7bd255420dc5cb665af4abc29e2602108b10e26c784f8f527797920c2d"
+  },
+  "correctedCity": "gaborone",
+  "sourceFiles": [
+    {
+      "path": "world/playable-africa-rollout/receipts/gaborone.json",
+      "bytes": 3511,
+      "sha256": "3710fc6fb91a7aa112b2ed40ed8368b57b02674bdf667621b283edb4b401685a"
+    },
+    {
+      "path": "src/game/cities/gaborone/facts.ts",
+      "bytes": 1631,
+      "sha256": "ecced83b695d5ceaf7d5e8fca46945bad2f7059e7b72f9652afc0c1961a00ed5"
+    },
+    {
+      "path": "src/game/cities/gaborone/geometry.ts",
+      "bytes": 73515,
+      "sha256": "50e3544d952d290ca71142c5339a17f0edee97a23a511e990773e06fbca7c785"
+    },
+    {
+      "path": "src/game/cities/gaborone/index.ts",
+      "bytes": 259,
+      "sha256": "df7421684f87635352de64a4705d30a608db21ae3aabd093b65c3a8e9441116c"
+    },
+    {
+      "path": "src/game/cities/gaborone/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/gaborone/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/windhoek.json",
+      "bytes": 3490,
+      "sha256": "c400d0d68fc824d7ac38cfd3c1a813ad18196b4b569de23a5b0ee84e08786ae2"
+    },
+    {
+      "path": "src/game/cities/windhoek/facts.ts",
+      "bytes": 1456,
+      "sha256": "76f9e4ce8f643c77a348a21a58682c6a3d76ef91ed16abf3ee57b5c6bcb0999d"
+    },
+    {
+      "path": "src/game/cities/windhoek/geometry.ts",
+      "bytes": 87422,
+      "sha256": "8318d43789a2ea70d513e0b67f06eb36ca320f2f3fb61061757753cf2369eabf"
+    },
+    {
+      "path": "src/game/cities/windhoek/index.ts",
+      "bytes": 259,
+      "sha256": "f76156c2336fd53c5c4b1ae98cfdac79c8d83fab9f38a50fe1d3fc0e838f56a8"
+    },
+    {
+      "path": "src/game/cities/windhoek/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/windhoek/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/harare.json",
+      "bytes": 3507,
+      "sha256": "766fc25216bfc8dfa53392a5c9d7235838f728bbefecbe4c7f94ae6ec4d0ea81"
+    },
+    {
+      "path": "src/game/cities/harare/facts.ts",
+      "bytes": 1478,
+      "sha256": "019d0681d9062dec0263289ee80fe9fb71da04be97c5b2717ba835aab2ef357b"
+    },
+    {
+      "path": "src/game/cities/harare/geometry.ts",
+      "bytes": 50650,
+      "sha256": "4031b43211a0d87fe50815e8efb37d29b60b59d8fc31747adfe25dace51c0183"
+    },
+    {
+      "path": "src/game/cities/harare/index.ts",
+      "bytes": 257,
+      "sha256": "43759bd4d14393fb31bb3628ca492e9c22a3875af0262f2975aeaf151f446267"
+    },
+    {
+      "path": "src/game/cities/harare/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/harare/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/maputo.json",
+      "bytes": 3493,
+      "sha256": "3dd7f7f185c1b91ab40dcaf3346478d544d1a35f73482b8c76b1579af763c554"
+    },
+    {
+      "path": "src/game/cities/maputo/facts.ts",
+      "bytes": 1455,
+      "sha256": "f3efb1e750302a81b3db5511e47b177384339e8d88fb5989e5196b421814f03c"
+    },
+    {
+      "path": "src/game/cities/maputo/geometry.ts",
+      "bytes": 96246,
+      "sha256": "a52b872d6dbd3bf949cd57448693d9755379e719fc27688367eea17b42f5310f"
+    },
+    {
+      "path": "src/game/cities/maputo/index.ts",
+      "bytes": 257,
+      "sha256": "1f9d89c57bd1787023d9acad7648226b4c8a07d162c665b88b9bd92ea017ef7c"
+    },
+    {
+      "path": "src/game/cities/maputo/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/maputo/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/luanda.json",
+      "bytes": 3496,
+      "sha256": "1bbf2537fc6aa2d7857f9246523db077e5544f1c2cf2c8442f4578e6b3242295"
+    },
+    {
+      "path": "src/game/cities/luanda/facts.ts",
+      "bytes": 1464,
+      "sha256": "e5182c5d73682762c6759bd5f2deb36a44ed6bd18ea111bd577dfec6705adfdf"
+    },
+    {
+      "path": "src/game/cities/luanda/geometry.ts",
+      "bytes": 52536,
+      "sha256": "34e8dd58bbb904941f0c1699f9fbadab6236c241fdb89616b2af832497724f24"
+    },
+    {
+      "path": "src/game/cities/luanda/index.ts",
+      "bytes": 257,
+      "sha256": "37807867556642cf8426ac803eab2f177c569dea93ff0746d7577453d51c2c1e"
+    },
+    {
+      "path": "src/game/cities/luanda/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/luanda/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    }
+  ],
+  "geometry": {
+    "buildings": 992,
+    "roads": 474,
+    "extent": "Five bounded central OSM samples, estimated building silhouettes, country land and pinned airport dataset points; not complete cities or countries."
+  },
+  "sourceSummaries": [
+    {
+      "city": "gaborone",
+      "countryIso2": "BW",
+      "osmSha256": "35d780e43dbc41db7a75f66b79bb81bb0cadf7460ecfd9fa45788734b58e16af",
+      "sourceBytes": 462774,
+      "retained": {
+        "buildings": 248,
+        "roads": 32
+      }
+    },
+    {
+      "city": "windhoek",
+      "countryIso2": "NA",
+      "osmSha256": "6fde5bf742ef22d79a340bc9af3b2b8dae0790c00828f372a68718693d2d0c88",
+      "sourceBytes": 1027024,
+      "retained": {
+        "buildings": 188,
+        "roads": 147
+      }
+    },
+    {
+      "city": "harare",
+      "countryIso2": "ZW",
+      "osmSha256": "6335164adc25cf2a73e91fbc05010ea1125b93c2c5d2981224b99f976f07cbbb",
+      "sourceBytes": 377972,
+      "retained": {
+        "buildings": 144,
+        "roads": 37
+      }
+    },
+    {
+      "city": "maputo",
+      "countryIso2": "MZ",
+      "osmSha256": "5e24dd8f3c64c37b648726cfbf17de4f7fcd9324900e7d63ea541684afae206b",
+      "sourceBytes": 1478903,
+      "retained": {
+        "buildings": 350,
+        "roads": 98
+      }
+    },
+    {
+      "city": "luanda",
+      "countryIso2": "AO",
+      "osmSha256": "53584560807d687473133db8dbb69bc99cfe3193d12dfb1d9f52f30fd3e95163",
+      "sourceBytes": 474121,
+      "retained": {
+        "buildings": 62,
+        "roads": 160
+      }
+    }
+  ],
+  "dependencyNotes": [
+    "Shared destination factory14ed559c supplies beta flight, meals, market, tables, NPCs and lazy content/maps.",
+    "OurAirports names/points are pinned dataset references, not current official operations, aviation ARPs or commercial schedules. Windhoek uses Eros and Luanda Quatro de Fevereiro from that inventory.",
+    "Original acquisition budgets, immutable source hashes and request ledgers preserved. Later registry admission requires an independent tested adapter."
+  ],
+  "sourceRepackagingBase": "abf87b0ed3c72528379fbf3b23b3fa7e7f896c4d",
+  "verifiedExtentCorrection": {
+    "revisionId": "bc7f95881b073b32b39e63c77a68cf1a448e1b70acbb100441b8d2190e968513",
+    "completeRoadAndBuildingCoordinatesUnchanged": true,
+    "sourceAndRequestLedgerUnchanged": true,
+    "afterOutsideVertices": 0
+  }
+}

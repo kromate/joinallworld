@@ -1,5 +1,16 @@
 # Allworld agent coordination and phased production releases
 
+## GRAPHICS terminal parallel-review handback — 9 October 2026, 02:54 UTC
+
+Three existing Luna source lanes completed; existing five-minute memory monitor ACTIVE, no duplicate. Current warning2/increased paging means keep heavy1/heap1536/minifier1, bounded browser/server2; no memory-heavy expansion. User parallel authorization remains authoritative. WORLD sole uploader.
+
+Actual whole-slice static build group67761 terminal0,103.43s, sampled793706496B,80local source hashes unchanged. Actual restricted5184 browser rendered Market12canonical crowd+6canonical authored NPCs,94094tri/45calls; movement, home-to-neighbourhood actual front-door, home/market night lighting, beach rebuild and permanentdispose exercised. Target finish, historical17kmarket budget, journeybytes/frame-input/physicalphones still OPEN. Early street baseline had procedural fallback: INVALID A/B; not accepted. No upload.
+
+Draft PR23 nowf15e0908 per-foot paving support, real solver10/10 PASS; pinned actual Kano resolver synthetic footprints confirm left.076/right.046m targets, with3cmbridging tradeoff and actualrig/GPU traversal pending. CI37875907530 fast type/build/smoke/policy PASS; fullSKIPPED. Shoulder v8 actual both resource/invariant pass but interact stretch3.315/3.942 exceedsbaseline2.035/2.381: QUALITY REJECTED, no primary garment change.
+
+All GRAPHICS owned handles terminal: build67761exit0; small72166/72275/72685/72784exit0; server72915/session45534exit0 peak70975488B; browserlease6710exit130 and ownedtab1412593863closed. User5191 preserved. Explicit terminal handback sent WORLD for serialized bounded checks. Evidence `environment-next-phase-v1/root-browser-review.json`, `garment-quality-v1/shoulder-topology-v1/root-v8-summary.json`, `contact-quality-v1/paving-candidate/kano-v2-result.json`. Mainc583c0b5 safeFF preserved80pins; goal incomplete.
+
+
 Canonical repository: kromate/joinallworld. Agents on every computer read the latest GitHub/main copy before claiming files, integrating a phase, or releasing. Local chat messages supplement this record; they do not reach every computer.
 
 ## WORLD atomic observations and next held-session phase — 9 October 2026

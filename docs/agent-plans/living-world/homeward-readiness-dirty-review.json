@@ -1,0 +1,71 @@
+{
+  "observedAt": "2026-10-09T16:42:45.046883+00:00",
+  "baseSha": "39d94b117a6ab4b0e8e063b835889517c9d70dca",
+  "workingTreeDirty": true,
+  "accepted": false,
+  "sourceHashesAtObservation": {
+    "src/game/homeward-gate.ts": "4afd41e72f163e9d94a12b6e3d658e361e56bba4cbe2fb81042e099a93edc8c2",
+    "src/game/homeward-rules.ts": "05200304b0db2197cff29648dd28a6598dba5b96e349e110581331d800596040",
+    "src/client.ts": "34ca38acc4868a0eac99a86e1efa30a6ccf8a2c47d9aab2b69d946b24052ab86",
+    "src/client.test.ts": "750c31b9ee86521f3c6a7f7bafacd920fc3594a89e5e76a7fa9a28b13de10e57",
+    "src/app/bootstrap.ts": "154218ebbf2d665b8ce98c400a61859ae9cbc569778edf1e0748343bb5b99c9b",
+    "src/game/systems/index.ts": "a39e7f167f57b8244606a9bd9dcfba42cb89ea0d2f3630ee732c12d365ecb86d",
+    "server/testing/africaJourney.ts": "410ffdc03584d0c741cabb896d64c0a0aec66d57baca33439853d246b4d9ea98",
+    "server/africa-host.test.ts": "0938a62134f391c1ed070f74e78edf1beb077a7e02604bbc8cdbede80d9e8344",
+    "deploy/africa-host.test.ts": "7f03b6394520f073a8ab6151d6315f0198842619d5c1608e8097494082e44550"
+  },
+  "qualification": "Source changes while owner iterates; hashes bind observation only, not exact source used for earlier executions. Root only source/log review; no new tests/build/browser/server/upload.",
+  "logs": {
+    "allworld-homeward-store-faults-first.log": {
+      "path": "/tmp/allworld-homeward-store-faults-first.log",
+      "sha256": "cddc006e27c83bf1f1480b99cdb63ff8e9a6da7d6f31b3e1e8094890be4d971a",
+      "tests": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "durationMs": 13866.222667,
+      "qualification": "Actual terminal owner log independently read. Runs overlap; do not sum. Working tree execution, not accepted frozen candidate."
+    },
+    "allworld-homeward-store-faults-repair.log": {
+      "path": "/tmp/allworld-homeward-store-faults-repair.log",
+      "sha256": "7ed831bb878861b301c014d0eadb09e55c2f231366355652c82d77360900dc87",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 17048.917042,
+      "qualification": "Actual terminal owner log independently read. Runs overlap; do not sum. Working tree execution, not accepted frozen candidate."
+    },
+    "allworld-homeward-readiness-and-faults-first.log": {
+      "path": "/tmp/allworld-homeward-readiness-and-faults-first.log",
+      "sha256": "497fe101ed4a592b935b5acc4992390a79f2c73adcf90639f4860492298aa8b6",
+      "tests": 59,
+      "passed": 58,
+      "failed": 1,
+      "skipped": 0,
+      "durationMs": 22212.845917,
+      "qualification": "Actual terminal owner log independently read. Runs overlap; do not sum. Working tree execution, not accepted frozen candidate."
+    }
+  },
+  "latestTerminalFailure": {
+    "test": "same-owner deferred campus cache stays masked until hydration after life recovery fails",
+    "actual": [
+      "unconfirmed",
+      5000
+    ],
+    "expected": [
+      "available",
+      4600
+    ],
+    "diagnosis": "Single feature promise now wrapped in Promise.all adds scheduling; owner restored single-promise path in current dirty source. Repair untested at observation."
+  },
+  "newMaterialFinding": {
+    "status": "source-confirmed, reproduction pending",
+    "description": "Browser awaits reader but readHomewardTicket returnsnull for invalid untrusted markers. Cached/API createLife can remove unsupported ticket then mark snapshot ready/persist it. Owner new regression118 exists; no test pass claimed. Specific client acceptance must refuse lost raw marker without globally changing trustedSave."
+  },
+  "implementedSource": {
+    "readiness": "Planner+frozen reader private install; server index static install; bootstrap and client cached/API await paths; cached import failure status/raw-cache persistence guard. Source reviewed, size/profile tests unproven.",
+    "faultProof": "Actual rows test six malformed liability variants; immediate full-session abort comparison; concurrent identical homeward booking. These host cases pass inside the59 scoped run; full candidate remains failed."
+  },
+  "next": "Owner reproduce/repair unsupported cached/API marker boundary, add real read-only profile failure/retry/no-import/identity tests and measure startup, freeze exact new SHA; full/native/isolated staging/release/live checks remain."
+}

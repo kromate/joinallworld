@@ -167,6 +167,13 @@ jobs:
           --test-name-pattern='groceries|Groceries:|Health:|jobs:|Jobs:|career:|Career:|Houses and Cars:'
           src/app/features/panelsA.test.ts
 
+      - name: City validation and actual pagination cost evidence
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          scripts/city/build-city.test.ts
+          src/game/cities/allCities.test.ts
+          server/founder.test.ts
+
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
       - name: Existing Worker host and timed-action checks
         run: >-

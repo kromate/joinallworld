@@ -121,12 +121,15 @@ function inventoryStorage(value: InventoryState): Record<string, unknown> {
 /** Strictly parse without repairing malformed/future state. */
 function readInventory(value: unknown): InventoryState | null {
   try {
-    if (!isPlain(value) || (value.version === 1 ? !exact(value, ['version', 'outlet', 'delivered'])
-      : value.version === 2 ? !exact(value, ['version', 'outlet', 'erasedSettlements', 'delivered']) : true)
+    if (!isPlain(value)) return null
+    const version = value.version
+    if (version !== 1 && version !== 2) return null
+    if ((version === 1 ? !exact(value, ['version', 'outlet', 'delivered'])
+      : !exact(value, ['version', 'outlet', 'erasedSettlements', 'delivered']))
       || !isPlain(value.outlet) || !exact(value.outlet, ['id', 'cityId', 'product', 'capacity', 'stock', 'revision'])
       || value.outlet.id !== NPC_RESTOCK_POLICY.outletId || value.outlet.cityId !== NPC_RESTOCK_POLICY.cityId
       || value.outlet.product !== NPC_RESTOCK_POLICY.product || value.outlet.capacity !== MAX_STOCK
-      || value.version === 2 && !count(value.erasedSettlements)
+      || version === 2 && !count(value.erasedSettlements)
       || !count(value.outlet.stock) || value.outlet.stock > MAX_STOCK || !count(value.outlet.revision)
       || value.outlet.revision > MAX_STOCK / NPC_RESTOCK_POLICY.quantity
       || value.outlet.stock !== value.outlet.revision * NPC_RESTOCK_POLICY.quantity
@@ -143,8 +146,8 @@ function readInventory(value: unknown): InventoryState | null {
       if (settlements > value.outlet.revision) return null
       delivered[actor] = { settlements: raw.settlements, generation: raw.generation, parcelId: raw.parcelId, deliveredAt: raw.deliveredAt, parcelFingerprint: raw.parcelFingerprint }
     }
-    const erasedSettlements = value.version === 2 ? value.erasedSettlements as number : 0
-    const parsed: InventoryState = { version: value.version, outlet: { id: NPC_RESTOCK_POLICY.outletId,
+    const erasedSettlements = version === 2 ? value.erasedSettlements as number : 0
+    const parsed: InventoryState = { version, outlet: { id: NPC_RESTOCK_POLICY.outletId,
       cityId: NPC_RESTOCK_POLICY.cityId, product: NPC_RESTOCK_POLICY.product, capacity: MAX_STOCK,
       stock: value.outlet.stock, revision: value.outlet.revision }, erasedSettlements, delivered }
     const bytes = encodedBytes(inventoryStorage(parsed))

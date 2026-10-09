@@ -202,7 +202,7 @@ function deliverySummary(db: Db, rows: Rows, publicId: string, owner: string | n
   const found = lookup(rows, publicId, (value, actor) => readValidatedNpcParcelEnvelope(value, actor, owner))
   const restock = readNpcRestockActorSummary(db, publicId)
   if (found.status === 'quarantined' || restock === false) return { status: 'quarantined' }
-  if (found.status === 'empty') return restock === null ? { status: 'empty' } : { status: 'quarantined' }
+  if (found.status !== 'present') return restock === null ? { status: 'empty' } : { status: 'quarantined' }
   return { status: 'present', progress: {
     revision: found.row.revision, generation: found.row.generation,
     status: found.row.parcel?.status ?? 'empty', restock,

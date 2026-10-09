@@ -95,6 +95,7 @@ class BrowserPage {
     this.sessionId = sessionId
     this.origin = origin
     this.unlisten = null
+    this.exceptionCount = 0
   }
 
   async initialize(cookie, mobile, noteExternalRequest) {
@@ -102,6 +103,9 @@ class BrowserPage {
     const send = (method, params = {}) => this.devtools.send(method, params, sessionId)
     await send('Page.enable')
     await send('Runtime.enable')
+    this.unlistenException = this.devtools.on('Runtime.exceptionThrown', (_event, eventSession) => {
+      if (eventSession === sessionId) this.exceptionCount = Math.min(20, this.exceptionCount + 1)
+    })
     await send('Network.enable')
     await send('Fetch.enable', { patterns: [{ urlPattern: '*' }] })
     this.unlisten = this.devtools.on('Fetch.requestPaused', (event, eventSession) => {
@@ -221,6 +225,39 @@ class BrowserPage {
     await writeFile(resolve(OUTPUT, name), bytes)
   }
 
+  async failureObservation() {
+    const dom = await this.evaluate(`(() => {
+      const visible = (selector) => [...document.querySelectorAll(selector)].some((node) => {
+        const rect = node.getBoundingClientRect();
+        const style = getComputedStyle(node);
+        return rect.width > 0 && rect.height > 0 && style.visibility !== 'hidden' && style.display !== 'none';
+      });
+      const text = document.body?.innerText ?? '';
+      return {
+        readyState: ['loading','interactive','complete'].includes(document.readyState) ? document.readyState : 'unknown',
+        localRoot: location.origin === ${JSON.stringify(this.origin)} && location.pathname === '/',
+        appRoot: visible('#life-overlay'),
+        lesson: visible('.teaching-shift'),
+        progressStatus: visible('[role="status"]'),
+        activityLoadFailure: visible('.life-progress-load-error'),
+        balance: visible('.hud-cash'),
+        quickStart: visible('[data-key="play-now"], [data-qs="play"]'),
+        sessionStart: visible('[data-session-new]'),
+        connectionAlert: visible('[role="alert"]'),
+        scene: visible('canvas'),
+        knownText: {
+          playNow: text.includes('Play now'),
+          chooseLook: text.includes('Choose your look and tap Play to start.'),
+          connectionUnavailable: text.includes('Connection unavailable'),
+          activityLoading: text.includes('Loading current activity…'),
+          activityLoadFailure: text.includes('Activity controls could not load.'),
+          teaching: text.includes('Notice the learner’s idea') || text.includes('Notice the learner\\u2019s idea'),
+        },
+      };
+    })()`)
+    return { ...dom, runtimeExceptions: this.exceptionCount }
+  }
+
   async rect(label) {
     const encoded = JSON.stringify(label)
     const value = await this.evaluate(`(() => {
@@ -280,6 +317,7 @@ class BrowserPage {
     this.unlisten?.()
     this.unlistenNetwork?.()
     this.unlistenSocket?.()
+    this.unlistenException?.()
     this.unlisten = null
   }
 }
@@ -342,15 +380,19 @@ async function startBrowser(t, chromePath) {
         return {
           browser,
           version: String(version.product || 'unknown').slice(0, 80),
-          async page(origin, cookie, mobile) {
+          async page(origin, cookie, mobile, onInitialFailure) {
             const context = await browser.send('Target.createBrowserContext', { disposeOnDetach: true })
             active.add(context.browserContextId)
             const target = await browser.send('Target.createTarget', { url: 'about:blank', browserContextId: context.browserContextId })
             const attached = await browser.send('Target.attachToTarget', { targetId: target.targetId, flatten: true })
             const page = new BrowserPage(browser, attached.sessionId, origin)
-            await page.initialize(cookie, mobile, () => { externalRequests += 1 })
-            await page.navigate(`${origin}/`)
-            await page.wait("document.querySelector('.teaching-shift') !== null", 'the rendered Teaching controls did not appear')
+            try {
+              await page.initialize(cookie, mobile, () => { externalRequests += 1 })
+              await page.navigate(`${origin}/`)
+            } catch (error) {
+              await onInitialFailure?.(page)
+              throw error
+            }
             return { page, contextId: context.browserContextId, targetId: target.targetId }
           },
           async closePage(page) {
@@ -386,6 +428,7 @@ test('rendered teaching practice survives interruption and settles one wage on d
   let phase = 'preflight'
   const measurements = {}
   const screenshots = []
+  let failureObservation = null
   try {
   requireCondition(Boolean(process.env.LW_QA_OUTPUT_DIR), 'set LW_QA_OUTPUT_DIR to a disposable artifact directory')
   const relativeOutput = resolve(OUTPUT).startsWith(`${root}/`) || resolve(OUTPUT) === root
@@ -419,8 +462,16 @@ test('rendered teaching practice survives interruption and settles one wage on d
   const browser = await startBrowser(t, CHROME)
   browserVersion = browser.version
   phase = 'desktop-render'
-  const appPage = await browser.page(f.base, desktopTeacher.device.cookie, false)
+  const captureDesktopFailure = async (page) => {
+    failureObservation = await page.failureObservation().catch(() => ({ runtimeExceptions: page.exceptionCount }))
+    try {
+      await page.screenshot('failure-desktop-render.png')
+      if (!screenshots.includes('failure-desktop-render.png')) screenshots.push('failure-desktop-render.png')
+    } catch { /* a bounded static diagnostic remains useful if the surface cannot be captured */ }
+  }
+  const appPage = await browser.page(f.base, desktopTeacher.device.cookie, false, captureDesktopFailure)
   try {
+    await appPage.page.wait("document.querySelector('.teaching-shift') !== null", 'the rendered Teaching controls did not appear')
     await appPage.page.waitRendered({ cash: desktopCash, stage: '1 · Notice the learner’s idea' }, 'desktop app hydration did not show the active lesson and server balance')
     await appPage.page.screenshot('teaching-desktop-before.png')
     screenshots.push('teaching-desktop-before.png')
@@ -475,6 +526,9 @@ test('rendered teaching practice survives interruption and settles one wage on d
       && reloadedDesktop.ledger.filter(row => row.amount === 3000).length === 1,
     'completed desktop reload duplicated or lost the terminal wage')
     measurements.desktop = desktopView
+  } catch (error) {
+    if (phase === 'desktop-render') await captureDesktopFailure(appPage.page)
+    throw error
   } finally {
     await browser.closePage(appPage)
   }
@@ -552,7 +606,7 @@ test('rendered teaching practice survives interruption and settles one wage on d
       result: 'failed', scope: 'disposable local Node HTTP fixture; rendered teaching practice only',
       sourceSha: sha, expectedSha, health: healthReceipt, browser: browserVersion,
       node: process.version, platform: process.platform, viewportObservations: measurements,
-      screenshots, failureCode: phase,
+      screenshots, failureCode: phase, failureObservation,
       qualification: 'no acceptance claim; inspect the test failure and bounded artifacts',
     }).catch(() => {})
     throw new Error(`Teaching browser QA failed during ${phase}; see receipt.json`)

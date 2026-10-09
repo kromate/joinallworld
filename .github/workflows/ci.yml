@@ -114,6 +114,8 @@ jobs:
           server/living-world/account-lifecycle.test.ts
           src/app/features/living-world/rentalReply.test.ts
           src/game/living-world/parcel.test.ts
+          src/game/living-world/fleet.test.ts
+          src/game/living-world/vehicle-clearance.test.ts
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
       - name: Actual Worker SQLite permission, account and restart checks
         run: >-

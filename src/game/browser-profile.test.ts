@@ -20,42 +20,20 @@ import type { ActionBody } from '../types/actions.ts';
 import type { LifeContextInit, LifeState } from '../types/life.ts';
 
 const HOOKS = `
-import { existsSync, watch, writeFileSync, writeSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { writeFileSync, writeSync } from 'node:fs';
 let failedTeachingImport = false;
 let teachingResolveCount = 0;
 let hookTraceCount = 0;
 function hookTrace(event, data) {
   if (process.env.TEACHING_GATE_DIAGNOSTICS === '1' && hookTraceCount < 24) {
     hookTraceCount++;
-    writeSync(2, '[teaching-hook] ' + event + ' ' + JSON.stringify(data) + '\\n');
+    writeSync(2, '[teaching-hook] ' + event + ' ' + JSON.stringify({ ...data, atMs: Date.now() }) + '\\n');
   }
 }
-async function teachingBarrier(url) {
-  const target = process.env.TEACHING_GATE_BARRIER;
-  if (!target || !/\\/living-world\\/teaching-state\\.ts(?:$|\\?)/.test(url) || existsSync(target)) return;
-  await new Promise((resolve, reject) => {
-    let watcher, eventCount = 0, namedEvents = 0;
-    const finish = (error) => { clearTimeout(timer); watcher?.close(); error ? reject(error) : resolve(); };
-    const timer = setTimeout(() => {
-      hookTrace('barrier-timeout', { eventCount, namedEvents, targetExists: existsSync(target) });
-      finish(new Error('teaching gate barrier timed out'));
-    }, 20000);
-    // The filename is optional in fs.watch notifications. The exact-target existence check below
-    // keeps unrelated directory events harmless without depending on that optional value.
-    watcher = watch(dirname(target), (_event, name) => {
-      eventCount++;
-      if (name != null) namedEvents++;
-      const targetExists = existsSync(target);
-      if (eventCount <= 4) hookTrace('barrier-event', { eventCount, filenamePresent: name != null, targetExists });
-      if (targetExists) finish();
-    });
-    hookTrace('barrier-watch-installed', { targetExists: existsSync(target) });
-    if (existsSync(target)) finish();
-  });
-}
 export async function resolve(specifier, context, next) {
+  let teachingState = false;
   if (specifier.endsWith('living-world/teaching-state.ts') && context.parentURL?.endsWith('/src/game/teaching-gate.ts')) {
+    teachingState = true;
     teachingResolveCount++;
     const requestMarker = process.env.TEACHING_GATE_REQUEST_MARKER;
     if (requestMarker) writeFileSync(requestMarker, String(teachingResolveCount));
@@ -66,13 +44,35 @@ export async function resolve(specifier, context, next) {
       if (marker) writeFileSync(marker, 'failed once');
       throw new Error('injected first teaching-state resolution failure');
     }
-    await teachingBarrier(specifier);
   }
   const resolved = await next(specifier, context);
+  if (teachingState) return { ...resolved, url: resolved.url + '?teaching-gate-fixture=' + teachingResolveCount, shortCircuit: true };
   return /\\/src\\/game\\/systems\\/index\\.ts$/.test(resolved.url) ? { ...resolved, url: resolved.url.replace(/index\\.ts$/, 'browser.ts'), shortCircuit: true } : resolved;
 }
 export async function load(url, context, next) {
   if (/\\/src\\/game\\/profile\\.ts$/.test(url)) return { format: 'module', source: 'export const PLAYS = false;\\nexport const LEFT_OUT = {};\\n', shortCircuit: true };
+  if (url.includes('?teaching-gate-fixture=')) {
+    const sourceUrl = url.slice(0, url.indexOf('?'));
+    const loaded = await next(sourceUrl, context);
+    const source = typeof loaded.source === 'string' ? loaded.source : Buffer.from(loaded.source).toString('utf8');
+    const barrier = [
+      "import { existsSync as __teachingExists, watch as __teachingWatch, writeFileSync as __teachingMark, writeSync as __teachingWrite } from 'node:fs';",
+      "import { dirname as __teachingDirname } from 'node:path';",
+      "const __teachingTrace = (event, data) => { if (process.env.TEACHING_GATE_DIAGNOSTICS === '1') __teachingWrite(2, '[teaching-eval] ' + event + ' ' + JSON.stringify(data) + '\\\\n'); };",
+      "const __teachingTarget = process.env.TEACHING_GATE_BARRIER;",
+      "if (__teachingTarget && !__teachingExists(__teachingTarget)) await new Promise((resolve, reject) => {",
+      "  let watcher, eventCount = 0, namedEvents = 0;",
+      "  const finish = (error) => { clearTimeout(timer); watcher?.close(); error ? reject(error) : resolve(); };",
+      "  const timer = setTimeout(() => { __teachingTrace('barrier-timeout', { eventCount, namedEvents, targetExists: __teachingExists(__teachingTarget) }); finish(new Error('teaching gate barrier timed out')); }, 20000);",
+      "  watcher = __teachingWatch(__teachingDirname(__teachingTarget), (_event, name) => { eventCount++; if (name != null) namedEvents++; const targetExists = __teachingExists(__teachingTarget); if (eventCount <= 4) __teachingTrace('barrier-event', { eventCount, filenamePresent: name != null, targetExists }); if (targetExists) finish(); });",
+      "  __teachingTrace('barrier-watch-installed', { targetExists: __teachingExists(__teachingTarget) });",
+      "  const evaluationMarker = process.env.TEACHING_GATE_EVAL_MARKER; if (evaluationMarker) { __teachingMark(evaluationMarker, 'evaluation pending'); __teachingTrace('evaluation-marker-created', { targetExists: __teachingExists(__teachingTarget) }); }",
+      "  if (__teachingExists(__teachingTarget)) finish();",
+      "});",
+    ].join('\\n') + '\\n';
+    hookTrace('parser-source-returned', {});
+    return { ...loaded, source: barrier + source };
+  }
   return next(url, context);
 }`;
 const REGISTER = `import { register } from 'node:module'; register('data:text/javascript,' + encodeURIComponent(${JSON.stringify(HOOKS)}));`;
@@ -80,7 +80,7 @@ const REGISTER = `import { register } from 'node:module'; register('data:text/ja
 /** Rebuilds and views the lives of the file named in argv[1] with the engine this process loads; prints what it saw. */
 const url = (path: string): string => pathToFileURL(new URL(path, import.meta.url).pathname).href;
 const PROBE = `
-import { existsSync, readFileSync, watch, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, watch, writeFileSync, writeSync } from 'node:fs';
 import { dirname } from 'node:path';
 import assert from 'node:assert/strict';
 import { createLife, dispatch, viewLife } from '${url('../life.ts')}';
@@ -98,7 +98,7 @@ let probeTraceCount = 0;
 const probeTrace = (event, data) => {
   if (process.env.TEACHING_GATE_DIAGNOSTICS === '1' && probeTraceCount < 24) {
     probeTraceCount++;
-    process.stderr.write('[teaching-probe] ' + event + ' ' + JSON.stringify(data) + '\\n');
+    writeSync(2, '[teaching-probe] ' + event + ' ' + JSON.stringify({ ...data, atMs: Date.now() }) + '\\n');
   }
 };
 probeTrace('probe-start', { mode: input.mode, city: 'lagos', targetCity: input.mode === 'teaching-switch' ? 'ibadan' : null });
@@ -123,6 +123,7 @@ const waitForFile = (target, markerKind) => new Promise((resolve, reject) => {
   if (existsSync(target)) finish();
 });
 const awaitRequestMarker = async () => { await waitForFile(input.requestMarker, 'request'); probeTrace('request-seen', { mode: input.mode }); };
+const awaitEvaluationMarker = async () => { await waitForFile(input.evaluationMarker, 'evaluation'); probeTrace('evaluation-waiting', { mode: input.mode }); };
 const releaseGate = () => { writeFileSync(input.release, 'release'); probeTrace('release-created', { mode: input.mode }); };
 if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.mode === 'teaching-retry-connect' || input.mode === 'teaching-switch') {
   const gate = await import('${url('./teaching-gate.ts')}');
@@ -156,6 +157,7 @@ if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.
     assert.ok(waiting instanceof Promise);
     await awaitRequestMarker();
     assert.equal(readFileSync(input.requestMarker, 'utf8'), '1');
+    await awaitEvaluationMarker();
     assert.equal(gate.readTeachingSnapshot(input.snapshot.activeAction.teaching), null, 'the strict reader is not installed while the gate import is pending');
     releaseGate();
     await waiting;
@@ -185,6 +187,7 @@ if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.
     assert.ok(waiting instanceof Promise);
     await awaitRequestMarker();
     assert.equal(readFileSync(input.requestMarker, 'utf8'), '1');
+    await awaitEvaluationMarker();
     assert.equal(gate.readTeachingSnapshot(input.snapshot.activeAction.teaching), null);
     releaseGate();
     await waiting; await Promise.resolve();
@@ -201,6 +204,7 @@ if (input.mode === 'teaching-cache' || input.mode === 'teaching-newer' || input.
     probeTrace('city-switch-start', { mode: input.mode, from: 'lagos', to: 'ibadan' });
     await awaitRequestMarker();
     assert.equal(readFileSync(input.requestMarker, 'utf8'), '1');
+    await awaitEvaluationMarker();
     assert.equal(gate.readTeachingSnapshot(input.switchSnapshot.activeAction.teaching), null, 'switchCity waits while the parser is unavailable');
     assert.equal(client.cityId, 'ibadan');
     assert.equal(client.state.activeAction, null, 'the marked response is not exposed before validation');
@@ -448,13 +452,15 @@ test('the read-only browser hydrates, retries and fences a saved authored teachi
     };
     const cacheRelease = join(directory, 'cache.release');
     const cacheRequest = join(directory, 'cache.requested');
-    assert.equal(probe(fixture('teaching-cache', { release: cacheRelease, requestMarker: cacheRequest }), {
-      TEACHING_GATE_BARRIER: cacheRelease, TEACHING_GATE_REQUEST_MARKER: cacheRequest,
+    const cacheEvaluation = join(directory, 'cache.evaluation');
+    assert.equal(probe(fixture('teaching-cache', { release: cacheRelease, requestMarker: cacheRequest, evaluationMarker: cacheEvaluation }), {
+      TEACHING_GATE_BARRIER: cacheRelease, TEACHING_GATE_REQUEST_MARKER: cacheRequest, TEACHING_GATE_EVAL_MARKER: cacheEvaluation,
     }), 'teaching-cache-ok\n');
     const newerRelease = join(directory, 'newer.release');
     const newerRequest = join(directory, 'newer.requested');
-    assert.equal(probe(fixture('teaching-newer', { release: newerRelease, requestMarker: newerRequest }), {
-      TEACHING_GATE_BARRIER: newerRelease, TEACHING_GATE_REQUEST_MARKER: newerRequest,
+    const newerEvaluation = join(directory, 'newer.evaluation');
+    assert.equal(probe(fixture('teaching-newer', { release: newerRelease, requestMarker: newerRequest, evaluationMarker: newerEvaluation }), {
+      TEACHING_GATE_BARRIER: newerRelease, TEACHING_GATE_REQUEST_MARKER: newerRequest, TEACHING_GATE_EVAL_MARKER: newerEvaluation,
     }), 'teaching-newer-ok\n');
     const failureMarker = join(directory, 'first-import-failed');
     const retryRequest = join(directory, 'retry.requested');
@@ -463,8 +469,9 @@ test('the read-only browser hydrates, retries and fences a saved authored teachi
     }), 'teaching-retry-connect-ok\n');
     const switchRelease = join(directory, 'switch.release');
     const switchRequest = join(directory, 'switch.requested');
-    assert.equal(probe(fixture('teaching-switch', { release: switchRelease, requestMarker: switchRequest }), {
-      TEACHING_GATE_BARRIER: switchRelease, TEACHING_GATE_REQUEST_MARKER: switchRequest,
+    const switchEvaluation = join(directory, 'switch.evaluation');
+    assert.equal(probe(fixture('teaching-switch', { release: switchRelease, requestMarker: switchRequest, evaluationMarker: switchEvaluation }), {
+      TEACHING_GATE_BARRIER: switchRelease, TEACHING_GATE_REQUEST_MARKER: switchRequest, TEACHING_GATE_EVAL_MARKER: switchEvaluation,
     }), 'teaching-switch-ok\n');
   } finally { rmSync(directory, { recursive: true, force: true }); }
 });

@@ -50,11 +50,15 @@ function exactRecord(value: unknown, keys: readonly string[]): Rec | null {
 function exactArray(value: unknown, min: number, max: number): unknown[] | null {
   if (!Array.isArray(value)) return null
   try {
-    if (Object.getPrototypeOf(value) !== Array.prototype || value.length < min || value.length > max) return null
+    if (Object.getPrototypeOf(value) !== Array.prototype) return null
+    const lengthDescriptor = Object.getOwnPropertyDescriptor(value, 'length')
+    if (!lengthDescriptor || !Object.hasOwn(lengthDescriptor, 'value')) return null
+    const length: unknown = lengthDescriptor.value
+    if (typeof length !== 'number' || !Number.isSafeInteger(length) || length < min || length > max) return null
     const keys = Reflect.ownKeys(value)
-    if (keys.length !== value.length + 1 || !keys.includes('length')) return null
+    if (keys.length !== length + 1 || !keys.includes('length')) return null
     const out: unknown[] = []
-    for (let i = 0; i < value.length; i++) {
+    for (let i = 0; i < length; i++) {
       if (!keys.includes(String(i))) return null
       const descriptor = Object.getOwnPropertyDescriptor(value, String(i))
       if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) return null

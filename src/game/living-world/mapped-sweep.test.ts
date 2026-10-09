@@ -77,6 +77,19 @@ test('future descriptor, malformed polygons, nonfinite poses, sparse arrays and 
   const center = new Proxy({ x: 0, z: 0 }, { get(_target, key) { gets++; if (key === 'x' || key === 'z') throw new Error('unexpected property read'); return undefined } })
   assert.equal(verifyMappedSweep({ ...base, from: { center, headingRadians: 0 } }).reason, 'clear')
   assert.equal(gets, 0, 'point validation and use rely on own data descriptors rather than proxy get traps')
+  const points = new Proxy(rect(8, 8), { get() { gets++; throw new Error('unexpected array property read') } })
+  const buildings = new Proxy([], { get() { gets++; throw new Error('unexpected array property read') } })
+  assert.equal(verifyMappedSweep({ ...base, supportPolygon: points, buildings }).reason, 'clear')
+  assert.equal(gets, 0, 'array lengths and elements are captured once from data descriptors')
+  let lengthReads = 0
+  const disguisedOversize = new Proxy(Array.from({ length: 65 }, () => concaveAway), {
+    get(target, key) {
+      if (key === 'length') return ++lengthReads <= 2 ? 64 : 65
+      return Reflect.get(target, key)
+    },
+  })
+  assert.equal(verifyMappedSweep({ ...base, buildings: disguisedOversize }).reason, 'invalid_buildings')
+  assert.equal(lengthReads, 0, 'a changing length trap cannot bypass the fixed work cap')
   const hostile = new Proxy(base, { ownKeys() { throw new Error('hostile') } })
   assert.equal(verifyMappedSweep(hostile).reason, 'invalid_input')
 })

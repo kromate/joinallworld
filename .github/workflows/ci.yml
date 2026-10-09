@@ -174,6 +174,7 @@ jobs:
           src/game/teaching-career.test.ts
           src/game/career.test.ts
           server/teaching-career.test.ts
+          server/living-world/district-sweep.test.ts
           src/game/living-world/justice-practice.test.ts
           server/living-world/justice-practice-service.test.ts
           server/living-world/justice-privacy.test.ts
@@ -318,6 +319,7 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           server/living-world/rental-service.test.ts
+          server/living-world/district-sweep.test.ts
           server/living-world/npc-inventory.test.ts
           server/living-world/restock-service.test.ts
           server/living-world/restock-wage.test.ts

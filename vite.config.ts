@@ -182,6 +182,8 @@ export default defineConfig({
     if (/\/src\/game\/wardrobe\//.test(id)) return undefined
     // Practice rules are loaded by their screens; leave shared readers to their actual import graph.
     if (/\/src\/game\/living-world\//.test(id)) return undefined
+    // The general game chunk must not pull the conditional recovery planner and ticket reader into startup.
+    if (/\/src\/game\/(homeward-rules|cities\/homewardRoute)\.ts$/.test(id)) return 'homeward-rules'
     if (/\/src\/types\/avatar\.ts$/.test(id)) return 'engine'
     const city = id.match(/\/src\/game\/cities\/([^/]+)\/(content|map)\.ts$/)
     if (city) return `city-${city[1]}-${city[2]}`

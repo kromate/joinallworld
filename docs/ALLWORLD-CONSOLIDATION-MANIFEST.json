@@ -1536,6 +1536,31 @@
         "logSHA256": "a16b2f51634196207c9ad769113005600be003ce230306e3a6bd343dd5625575"
       },
       "proof": "Actual isolated Node ENOSPC and SQLite wallet/receipt ABORT; immediate full-session/effect/receipt rollback; six raw debt corruptions plus ticket key preserved exactly through restart/refusal; concurrent same ID; all5return journeys. Actual PLAYS=false loader/profile cache and API preservation, retry and A-to-B-to-A; no native browser claim."
+    },
+    "startupAttribution": {
+      "source": "f54d5f79 plus explicit manual chunk and compiled guard",
+      "baselineCi": 37962397132,
+      "baselineCanonical": {
+        "raw": 627208,
+        "gzip": 226993,
+        "brotli": 198637,
+        "status": "failed"
+      },
+      "changedConfigDiagnostic": {
+        "raw": 623535,
+        "gzip": 225784,
+        "brotli": 197564,
+        "status": "failed",
+        "buildSeconds": 35.39,
+        "conditionalChunkRaw": 3910
+      },
+      "remainingOverCap": {
+        "raw": 8535,
+        "gzip": 2784,
+        "brotli": 1964
+      },
+      "limitsUnchanged": true,
+      "note": "Source async import alone was defeated by catch-all game manual chunk. Explicit reader/planner chunk now excluded from emitted startup closures; this is not final source/compiler/full/native/provider acceptance."
     }
   }
 }

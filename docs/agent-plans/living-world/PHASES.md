@@ -1,20 +1,18 @@
 # Phases, tests and release sessions
 
-## Current exact-source acceptance - 2026-10-09T16:37:15.560062+00:00
+## Current exact-source acceptance - 9 October 2026
 
-Latest scoped milestone: actual current dirty readiness run130/130PASS0skip33.958s supersedes earlier hydration/visitor/metadata fixture failures. Shared client/trusted-engine raw debt and protocol metadata retry repairs have actual red→green evidence. [Updated proof](homeward-readiness-dirty-review.json). No final exact-size/full/native/staging/deployment acceptance; full programme scope unchanged.
+Published Integration2a34897c4ba781fda70cdab6d4496dbd591b3117 remains unaccepted. [Measured candidate evidence](candidate-2a34897-review.json), [current dirty panel-loader source review](panel-loader-source-review.json). Source review is not execution or release evidence.
 
-Published Integration39d94b117a6ab4b0e8e063b835889517c9d70dca preserves raw trusted homeward debt before cleanup. Owner37/37 targeted repair checks pass; priorbe414106/106 focused checks include actual five-capital Node/SQLite Worker return/restarts. [Scoped evidence](status-2026-10-09-evidence.json), [independent39d review](candidate-39d94b11-review.json). Exactbe414CI37958381221 passes fast compiler/policy but fails unchanged startup621661raw/225224gzip/197355Brotli versus615000/223000/195600; full suites skipped. No exact full-source acceptance transfers to39d. [Awaited readiness/storage acceptance](homeward-readiness-acceptance.md) is implementation/testing handoff only. Superseding dirty owner iteration: private readiness and actual fault extension are now applied; terminal59/58pass/1fail retains host row/atomic/concurrent passes but deferred cache hydration fails. Unsupported browser ticket projection is a new source-confirmed acceptance risk with reproduction/repair pending. [Latest qualified evidence](homeward-readiness-dirty-review.json).
-
-| Unit | Evidence at named source | Release state | Remaining acceptance |
+| Unit | Evidence | Release state | Remaining acceptance |
 | --- | --- | --- | --- |
-| Active teaching and compatible reader | Historical named engine/host/native functional passes; visual failures retained | New starts OFF; unreleased | Exact full gates, readable desktop/mobile, compatible staged/live saves and activation |
-| Five capitals and cashless return | be414106 focused passes including Node/SQLite Worker all-five-capital return/restart;39d37 liability repair passes | Unreleased | Actual failed commits/corrupt raw rows/concurrent same-ID/unadjusted downtime; exact native/staging/live continuity |
-| Mobile downloads/provider limits | be414 fast compiler/policy passes; allthree startup caps fail; full suites skipped | Unaccepted | Awaited browser planner/reader, measured unchanged caps, exhaustive exact source Node22/24/Worker completion |
-| Physical journey and later careers/business | Bounded foundations; sampled actor geometry is not complete boarding authority | Disabled/queued | Full school/licence/rental/animated entry/driving/restocking/barber/earnings/improvement/reload and later programme |
-| Goalmatic | Private published contracts inspected; target information question pending | Disabled/mock, no live integration | Consented workspace/install/Goals schema, event/reconciliation/revocation contracts and live verification |
+| Active teaching/compatible reader | Historical engine/host/native functional receipts; scoped latest readiness130/130 | New starts OFF; unreleased | Exact full gates, readable desktop/mobile, staged/live save continuity, activation |
+| Five capitals/cashless return | Scoped actual Node/SQLite corruption, atomic failure, concurrent once-only and restart passes within130; overlapping profile12/12 | Unreleased | Unadjusted downtime, changed-route original terms, exact full/native/staging/live proofs |
+| Download/provider limits | Historicalf54/2a cap failure retained; current dirty loader local artifact610476/221594/194663 within unchangedcaps across45 closures, focused57/57pass | Local diagnostic pass; unaccepted release | Visible catalogue/body-failure recovery; freeze changed source and recheck exact compiler/caps/full suites plus native/staging |
+| Physical journey/later careers/business | Bounded foundations; sampled actor geometry lacks continuous boarding authority | Disabled/queued | Complete school/licence/rental/animated entry/driving/restock/barber/earnings/improvement/reload and later programme |
+| Goalmatic | Private published contracts inspected | Disabled/mock | Selected consented workspace/install/Goals schema, events/reconciliation/revocation and live verification |
 
-Phase0 accepted only at named discovery baseline. All phases1–5 and A1–A10 remain OPEN at full scope. Integration alone assembles; WORLD alone uploads. No limit waiver, test removal, privacy/auth change or destructive save repair. Production independently remainsa446 health-only. Records do not execute while stopped.
+Phase0 accepted only at discovery baseline. Phases1-5/A1-A10 remain OPEN at full scope. Integration alone assembles; WORLD alone uploads. Productiona446 health-only; no programme release. No limit waiver, removed behavioral check or incompatible save repair. Native goal ACTIVE; records do not execute while stopped.
 
 ## Current verified evidence and next batch - 2026-10-09T14:37:39Z
 

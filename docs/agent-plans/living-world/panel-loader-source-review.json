@@ -1,0 +1,377 @@
+{
+  "observedAt": "2026-10-09T17:16:33.737187+00:00",
+  "publishedBase": "2a34897c4ba781fda70cdab6d4496dbd591b3117",
+  "sourceFrozen": false,
+  "capturedFilesStableDuringReview": true,
+  "qualification": "Independent source inspection and mapping comparison only. No tests, build, UI, stage or release executed by Root.",
+  "sourceHashes": {
+    "src/app/entry.test.ts": "b1436252e3a7fc7bfc741e9e671aab3495fecb9aba8e1f4d5b952a56feb4741d",
+    "src/app/features/account/register.ts": "229ec842f0b6302580a6dae3a37508d985aac8ee4cbfe267a5a82ca65e181463",
+    "src/app/features/admin/register.ts": "fb7aec8ff6dd07ff1682f09949c020b61b244a5ba570ee1410d88604b694a97d",
+    "src/app/features/business/business.test.ts": "feea4b548543318cce01781172551a066aacf6c05ee0097ed891d05734e486cf",
+    "src/app/features/business/businessComponents.test.ts": "afff641de508707a5109bb7c45aa089a9b48e7ab140b6481cb0d577829ced9c1",
+    "src/app/features/business/register.ts": "3a8a7a1f70ff303d495e931c745f4fd5eb3a17ad26a4188da7d3698b81c46fb4",
+    "src/app/features/campus/register.ts": "12962b90ec8292c5a78f0a965a9feac5e062ebd1dfd41a4976d4e02cac66e74c",
+    "src/app/features/civic/register.ts": "a056935c233e3e725cbbcad5d741df1802dc5d7a335a458f26e0821540b3a381",
+    "src/app/features/commerce/register.ts": "0b7d799c7ecc41919bc32f8588af14021eb913e79395c7c8c1e01432db0966fc",
+    "src/app/features/games/register.ts": "f9f9f4df29203cfda3c69e184acdf10110874ee53c6946f5874b134a0caa50a5",
+    "src/app/features/growth/register.ts": "95b11ec9f9667bba3049e2a48bf9e28bf42b644b0ab6ac8f0524189f7e3dccb6",
+    "src/app/features/living-world/register.ts": "2a1ad929e9fbd77f10f88da088c687f6cd52ed6fb52ab213c716630330ce1168",
+    "src/app/features/panels.ts": "2b4ceb0e3870ed5cd4433d02622fe0bc002e21710b8ae0db9467fb651f859c6f",
+    "src/app/features/politics/register.ts": "3c1c8a6273c461db315c5554ba2aa7e1b65737df5d8a23d43e93b9934284528f",
+    "src/app/features/social/register.ts": "0ebbe8f7f4e81c9c4166798f01f966e0e3e45f75ba73dcd6b486dde1aea95846",
+    "src/app/features/tables/register.ts": "dae6f3dcfd2443f6d8ffe2ece5ec2e4839b8562e1b8252c5e30ee364349f4af1",
+    "src/app/features/travel/register.ts": "a8818183829f3807dc657ce14649068263ac8cc95122b669a8f4163c30c4c570",
+    "src/app/features/world/register.ts": "0390df0d476eedefd770244dacb6a5f6b12450db2a6ad42b1b6857a451f41609",
+    "src/app/state/panelBody.ts": "dbe23f95eabeaa61db576d0fab0e492d6836daf1df6318924abe54e744b15192",
+    "src/app/state/panelBodies.ts": "9c85d7baa447e64dc9ea652f41f5ac62745fa909d31e2b577457a480de3fe9b1",
+    "src/app/features/phone/PanelHost.vue": "e6ee3cae69e63b86260bfee0b017ea55323295b514fcf4af4757fbeb1b414089",
+    "src/app/features/hud/HudSidebar.vue": "3b97c9eb0d48d5c92b9a6733bcd23075733c56f95e0f0c1f2ab793914613a443",
+    "src/app/features/hud/HudChip.vue": "f59f17322a2674a3f52a5bffacc95c9d7172b2e6a1b5e1e5cc996d7277054396",
+    "src/app/features/start/register.ts": "080f4d89fc1c72df721764ad245f26fe3c2bbfa2eb2a352c58900db3867871e5"
+  },
+  "catalogueKeys": 55,
+  "exactOriginalBodyReplacements": [
+    {
+      "registration": "src/app/features/account/register.ts",
+      "key": "account/AccountSignIn",
+      "target": "src/app/features/account/AccountSignIn.vue"
+    },
+    {
+      "registration": "src/app/features/admin/register.ts",
+      "key": "admin/AdminApp",
+      "target": "src/app/features/admin/AdminApp.vue"
+    },
+    {
+      "registration": "src/app/features/business/register.ts",
+      "key": "business/BusinessApp",
+      "target": "src/app/features/business/BusinessApp.vue"
+    },
+    {
+      "registration": "src/app/features/campus/register.ts",
+      "key": "campus/CampusApp",
+      "target": "src/app/features/campus/CampusApp.vue"
+    },
+    {
+      "registration": "src/app/features/civic/register.ts",
+      "key": "civic/GovernorApp",
+      "target": "src/app/features/civic/GovernorApp.vue"
+    },
+    {
+      "registration": "src/app/features/civic/register.ts",
+      "key": "civic/StateHouseSheet",
+      "target": "src/app/features/civic/StateHouseSheet.vue"
+    },
+    {
+      "registration": "src/app/features/civic/register.ts",
+      "key": "civic/NeighboursApp",
+      "target": "src/app/features/civic/NeighboursApp.vue"
+    },
+    {
+      "registration": "src/app/features/civic/register.ts",
+      "key": "civic/AdsApp",
+      "target": "src/app/features/civic/AdsApp.vue"
+    },
+    {
+      "registration": "src/app/features/civic/register.ts",
+      "key": "civic/HuntSheet",
+      "target": "src/app/features/civic/HuntSheet.vue"
+    },
+    {
+      "registration": "src/app/features/civic/register.ts",
+      "key": "civic/RadioApp",
+      "target": "src/app/features/civic/RadioApp.vue"
+    },
+    {
+      "registration": "src/app/features/civic/register.ts",
+      "key": "civic/RichListApp",
+      "target": "src/app/features/civic/RichListApp.vue"
+    },
+    {
+      "registration": "src/app/features/commerce/register.ts",
+      "key": "commerce/CommerceApp",
+      "target": "src/app/features/commerce/CommerceApp.vue"
+    },
+    {
+      "registration": "src/app/features/games/register.ts",
+      "key": "games/GamesApp",
+      "target": "src/app/features/games/GamesApp.vue"
+    },
+    {
+      "registration": "src/app/features/growth/register.ts",
+      "key": "growth/MissionsApp",
+      "target": "src/app/features/growth/MissionsApp.vue"
+    },
+    {
+      "registration": "src/app/features/growth/register.ts",
+      "key": "growth/EventsApp",
+      "target": "src/app/features/growth/EventsApp.vue"
+    },
+    {
+      "registration": "src/app/features/growth/register.ts",
+      "key": "growth/ReferApp",
+      "target": "src/app/features/growth/ReferApp.vue"
+    },
+    {
+      "registration": "src/app/features/growth/register.ts",
+      "key": "growth/TouchApp",
+      "target": "src/app/features/growth/TouchApp.vue"
+    },
+    {
+      "registration": "src/app/features/growth/register.ts",
+      "key": "growth/ShareSheet",
+      "target": "src/app/features/growth/ShareSheet.vue"
+    },
+    {
+      "registration": "src/app/features/living-world/register.ts",
+      "key": "living-world/PracticeGateway",
+      "target": "src/app/features/living-world/PracticeGateway.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "bank/BankApp",
+      "target": "src/app/features/bank/BankApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "messages/MessagesApp",
+      "target": "src/app/features/messages/MessagesApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "support/ReportApp",
+      "target": "src/app/features/support/ReportApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "jobs/JobsApp",
+      "target": "src/app/features/jobs/JobsApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "jobs/CareerTab",
+      "target": "src/app/features/jobs/CareerTab.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "money/StatementApp",
+      "target": "src/app/features/money/StatementApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "money/InvestApp",
+      "target": "src/app/features/money/InvestApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "home/HousesApp",
+      "target": "src/app/features/home/HousesApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "neighbourhood/LandPanel",
+      "target": "src/app/features/neighbourhood/LandPanel.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "neighbourhood/NeighbourhoodPanel",
+      "target": "src/app/features/neighbourhood/NeighbourhoodPanel.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "stories/StoriesApp",
+      "target": "src/app/features/stories/StoriesApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "capture/CaptureApp",
+      "target": "src/app/features/capture/CaptureApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "home/CarsApp",
+      "target": "src/app/features/home/CarsApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "home/GroceriesApp",
+      "target": "src/app/features/home/GroceriesApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "life/HealthApp",
+      "target": "src/app/features/life/HealthApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "life/GoalsTab",
+      "target": "src/app/features/life/GoalsTab.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "sim/ProfileTab",
+      "target": "src/app/features/sim/ProfileTab.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "sim/NeedsTab",
+      "target": "src/app/features/sim/NeedsTab.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "sim/SkillsTab",
+      "target": "src/app/features/sim/SkillsTab.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "sim/SettingsTab",
+      "target": "src/app/features/sim/SettingsTab.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "life/BoutiqueApp",
+      "target": "src/app/features/life/BoutiqueApp.vue"
+    },
+    {
+      "registration": "src/app/features/panels.ts",
+      "key": "home/BuyMode",
+      "target": "src/app/features/home/BuyMode.vue"
+    },
+    {
+      "registration": "src/app/features/politics/register.ts",
+      "key": "politics/PoliticsApp",
+      "target": "src/app/features/politics/PoliticsApp.vue"
+    },
+    {
+      "registration": "src/app/features/social/register.ts",
+      "key": "social/PeopleApp",
+      "target": "src/app/features/social/PeopleApp.vue"
+    },
+    {
+      "registration": "src/app/features/social/register.ts",
+      "key": "social/PersonApp",
+      "target": "src/app/features/social/PersonApp.vue"
+    },
+    {
+      "registration": "src/app/features/social/register.ts",
+      "key": "social/ContactsApp",
+      "target": "src/app/features/social/ContactsApp.vue"
+    },
+    {
+      "registration": "src/app/features/social/register.ts",
+      "key": "social/FamilyApp",
+      "target": "src/app/features/social/FamilyApp.vue"
+    },
+    {
+      "registration": "src/app/features/social/register.ts",
+      "key": "social/InviteApp",
+      "target": "src/app/features/social/InviteApp.vue"
+    },
+    {
+      "registration": "src/app/features/tables/register.ts",
+      "key": "tables/TablesApp",
+      "target": "src/app/features/tables/TablesApp.vue"
+    },
+    {
+      "registration": "src/app/features/travel/register.ts",
+      "key": "travel/MapApp",
+      "target": "src/app/features/travel/MapApp.vue"
+    },
+    {
+      "registration": "src/app/features/travel/register.ts",
+      "key": "travel/RoadsideModal",
+      "target": "src/app/features/travel/RoadsideModal.vue"
+    },
+    {
+      "registration": "src/app/features/travel/register.ts",
+      "key": "travel/RideApp",
+      "target": "src/app/features/travel/RideApp.vue"
+    },
+    {
+      "registration": "src/app/features/travel/register.ts",
+      "key": "travel/CityPanel",
+      "target": "src/app/features/travel/CityPanel.vue"
+    },
+    {
+      "registration": "src/app/features/travel/register.ts",
+      "key": "travel/VisitorHome",
+      "target": "src/app/features/travel/VisitorHome.vue"
+    },
+    {
+      "registration": "src/app/features/world/register.ts",
+      "key": "world/WorldLgaPanel",
+      "target": "src/app/features/world/WorldLgaPanel.vue"
+    },
+    {
+      "registration": "src/app/features/world/register.ts",
+      "key": "world/HouseCard",
+      "target": "src/app/features/world/HouseCard.vue"
+    }
+  ],
+  "unexplainedMetadataChanges": [],
+  "hudAndStartLoaders": "Direct original loaders retained; actual initial request behavior remains to verify.",
+  "testMigration": "Business now renders the actual registered panel via PanelHost and checks unopened catalogue/body ssrModule; emitted entry test checks catalogue absent from45 closures. Source reviewed, execution pending.",
+  "openFinding": {
+    "id": "PANEL-LOAD-RECOVERY",
+    "priority": "required before acceptance",
+    "evidence": "New shared catalogue rejection reaches bare defineAsyncComponent under PanelHost Suspense. Installed Vue catches and resets pendingRequest, then renders null because no errorComponent. PanelHost supplies no error/retry control.",
+    "scope": "Source confirms missing visible recovery. Browser failed-module cache/reopen/retry behavior not executed.",
+    "acceptance": "Visible recoverable failure without losing selected panel/params; actual catalogue and selected-body failure then user retry or reload, key hooks and ordinary HUD/start behavior retained."
+  },
+  "remaining": [
+    "Exact changed-source compiler and all unchanged caps",
+    "Actual registry/body/props/keys and failure-recovery checks",
+    "Full Node22/24 and Worker/host/UI suites",
+    "Verified native desktop/mobile and exact isolated staging/save continuity",
+    "WORLD release and live observation"
+  ],
+  "latestArtifactObservation": {
+    "observedAt": "2026-10-09T17:18:22.074134+00:00",
+    "publishedBase": "2a34897c4ba781fda70cdab6d4496dbd591b3117",
+    "sourceDirty": true,
+    "sourceFrozen": false,
+    "buildSeconds": 39.23,
+    "startupBytes": [
+      610476,
+      221594,
+      194663
+    ],
+    "unchangedCaps": [
+      615000,
+      223000,
+      195600
+    ],
+    "headroomBytes": [
+      4524,
+      1406,
+      937
+    ],
+    "cities": 45,
+    "eagerCatalogueCities": [],
+    "focusedChecks": {
+      "pass": 57,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 13793.785791
+    },
+    "qualification": "Actual owner local artifact/logs independently read. Not official CI or exact committed-source/full/native/staging/release acceptance. No count aggregation with earlier overlapping runs."
+  },
+  "artifactLogs": {
+    "allworld-panel-loader-build.log": {
+      "sha256": "adb4a855cb6e7b01f0e1080c3cd25de6b7d9fe9eecb4d8aca618186d6234a068",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/adb4a855cb6e-allworld-panel-loader-build.log"
+    },
+    "allworld-panel-loader-budget.json": {
+      "sha256": "bc6216148b217ed150f815955dbfba3dbef8e25bd0f8d6e8ebe8ca032efcff6d",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/bc6216148b21-allworld-panel-loader-budget.json"
+    },
+    "allworld-panel-loader-budget.log": {
+      "sha256": "f645a4a92b3d1b295303d119a209bebd5a392c9da9a8585ca65a35f76c9831bb",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/f645a4a92b3d-allworld-panel-loader-budget.log"
+    },
+    "allworld-panel-loader-focused.log": {
+      "sha256": "c88fae72d0ee41d145aee5fce88ec6072576f2be76bd370cab7d120f0be2c32a",
+      "localArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/c88fae72d0ee-allworld-panel-loader-focused.log"
+    }
+  }
+}

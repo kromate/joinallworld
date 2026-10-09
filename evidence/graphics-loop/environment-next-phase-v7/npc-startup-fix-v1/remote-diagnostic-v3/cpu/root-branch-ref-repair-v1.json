@@ -1,0 +1,14 @@
+{
+  "branch": "codex/graphics-environment-npc-startup-fix-v3-package-v3",
+  "parent": "b038b79489fdc926b495d2d11649878e53bfd557",
+  "title": "Match NPC package runner branch guard to reviewed v3 workflow",
+  "failureRunId": "37921267629",
+  "failure": "Before tests/build, runner correctly refused mismatched v2 expected ref. Additive fix changes only expected ref to active workflow exactbranch; limits/gates unchanged.",
+  "files": [
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v7/npc-startup-fix-v1/remote-diagnostic-v3/cpu/run-bounded-linux-package-v2.py",
+      "bytes": 14543,
+      "sha256": "1d3df3ed9b889fd72d1a853868c1a54deb548f44f9f682cddd0b99fee8a28513"
+    }
+  ]
+}

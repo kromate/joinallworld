@@ -14,7 +14,7 @@ REVIEWED = HERE / 'remote-diagnostic-v3/cpu'
 RESULTS = REVIEWED / 'remote-results'
 MAX_RSS_BYTES = 384 * 1024 * 1024
 TIMEOUT_SECONDS = 25
-EXPECTED_REF = 'refs/heads/codex/graphics-environment-npc-startup-fix-v2-package-v2'
+EXPECTED_REF = 'refs/heads/codex/graphics-environment-npc-startup-fix-v3-package-v3'
 NODE = ['node', '--max-old-space-size=96']
 PHASES = [
     ('html-entry-contract-tests', ['node', '--max-old-space-size=32', '--test', str(REVIEWED / 'html-entry-contract-npc-v2.test.mjs')]),

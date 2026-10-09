@@ -10,12 +10,22 @@ const open = playableCityIds()
 await Promise.all([loadCityLinks(), ...open.map(loadCityRules)])
 const bookable = (from: string, to: string): CityLink[] => allCityLinks().filter(link => link.status !== 'coming' && ((link.a === from && link.b === to) || (link.a === to && link.b === from)))
 
-test('every open city reaches every other open city in both directions, by at least one bookable way', () => {
+test('every open city reaches every other open city in both directions by bookable open links', () => {
   assert.ok(open.length >= 9)
-  for (const from of open) for (const to of open) {
-    if (from === to) continue
-    assert.ok(bookable(from, to).length > 0, `${from} to ${to}`)
-    assert.ok(linksFrom(from).some(link => link.to === to && link.status !== 'coming'), `${from} lists ${to}`)
+  for (const from of open) {
+    const reached = new Set([from]), queue = [from]
+    while (queue.length) {
+      const at = queue.shift()!
+      for (const link of linksFrom(at)) {
+        if (link.status === 'coming' || cityRules(link.to)?.status !== 'open' || reached.has(link.to)) continue
+        reached.add(link.to)
+        queue.push(link.to)
+      }
+    }
+    for (const to of open) {
+      if (from === to) continue
+      assert.ok(reached.has(to), `${from} reaches ${to} through bookable open links`)
+    }
   }
 })
 

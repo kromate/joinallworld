@@ -34,6 +34,8 @@ jobs:
         with:
           node-version: 24
       - run: node --test scripts/guard-joinallworld-package.test.mjs
+      - name: Verify complete Node test partition inventory
+        run: node --experimental-strip-types scripts/node-test-plan.ts --plan
 
   typecheck-fast:
     if: github.event_name != 'workflow_dispatch' || !inputs.full_checks
@@ -259,8 +261,10 @@ jobs:
     timeout-minutes: 25
     strategy:
       fail-fast: false
+      max-parallel: 2
       matrix:
         node: [22, 24]
+        suite: [game, host, tooling]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -271,7 +275,8 @@ jobs:
       - id: build
         run: npm run build
       - if: ${{ !cancelled() && steps.build.outcome == 'success' }}
-        run: npm test
+        name: Complete existing ${{ matrix.suite }} Node corpus
+        run: npm run -s preflight && node --experimental-strip-types scripts/node-test-plan.ts ${{ matrix.suite }}
 
   full-worker:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks

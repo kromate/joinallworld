@@ -197,6 +197,44 @@ export function checkWorkflow(file, document) {
   return bad
 }
 
+/** Parse only exact, non-prerelease numeric Node versions. */
+const NODE_VERSION = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/
+
+/** @param {unknown} value @returns {[number, number, number] | null} */
+function parseNodeVersion(value) {
+  if (typeof value !== 'string') return null
+  const match = NODE_VERSION.exec(value)
+  if (!match) return null
+  const major = Number(match[1]), minor = Number(match[2]), patch = Number(match[3])
+  return [major, minor, patch].every(Number.isSafeInteger) ? [major, minor, patch] : null
+}
+
+/** @param {unknown} enginesNode @param {unknown[]} pins @returns {string[]} */
+export function nodePinProblems(enginesNode, pins) {
+  const problems = []
+  const minimumText = typeof enginesNode === 'string' && enginesNode.startsWith('>=')
+    ? enginesNode.slice(2)
+    : null
+  const minimum = parseNodeVersion(minimumText)
+  if (!minimum) {
+    problems.push('package.json engines.node must use the supported >=X.Y.Z minimum syntax')
+    return problems
+  }
+  if (!pins.length) problems.push('release workflow has no exact Node version pin')
+  for (const [index, pin] of pins.entries()) {
+    const version = parseNodeVersion(pin)
+    if (!version) {
+      problems.push(`release workflow Node pin ${index + 1} must be an exact X.Y.Z version`)
+      continue
+    }
+    const belowMinimum = version[0] < minimum[0]
+      || (version[0] === minimum[0] && version[1] < minimum[1])
+      || (version[0] === minimum[0] && version[1] === minimum[1] && version[2] < minimum[2])
+    if (belowMinimum) problems.push(`workflow Node ${pin} is below package.json minimum ${enginesNode}`)
+  }
+  return problems
+}
+
 // ── Release pins and private-path exclusion ──
 
 /** @param {string} root */
@@ -223,8 +261,8 @@ export function checkRepository(root) {
   rule('workflows-keep-policy', `${files.length} workflows`, problems)
 
   const engines = JSON.parse(read('package.json')).engines?.node
-  const nodes = new Set(Object.values(parsed['joinallworld-release.yml']?.jobs ?? {}).flatMap(job => (job.steps ?? []).map((/** @type {any} */ step) => step.with?.['node-version']).filter(Boolean)))
-  rule('node-pin-meets-engines', `${[...nodes].join(', ')} against ${engines}`, [...nodes].filter(version => `>=${version}` !== engines).map(version => `workflow Node ${version} is not the package.json minimum ${engines}`))
+  const nodes = [...new Set(Object.values(parsed['joinallworld-release.yml']?.jobs ?? {}).flatMap(job => (job.steps ?? []).flatMap((/** @type {any} */ step) => typeof step?.uses === 'string' && step.uses.startsWith('actions/setup-node@') ? [step.with?.['node-version']] : [])))]
+  rule('node-pin-meets-engines', `${nodes.map(value => typeof value === 'string' ? value : '<invalid>').join(', ')} against ${typeof engines === 'string' ? engines : '<invalid>'}`, nodePinProblems(engines, nodes))
 
   const tool = JSON.parse(read('.github/wrangler/package.json')), lock = JSON.parse(read('.github/wrangler/package-lock.json'))
   const pins = []

@@ -171,11 +171,15 @@ const canStay = computed(() => !isNew && last.value && o.value.guest && state.va
 
 watch(choices, (on) => { if (on) signupShown('creator') }, { immediate: true })
 
+function focusStep(): void {
+  if (scroller.value) scroller.value.scrollTop = 0
+  heading.value?.focus({ preventScroll: true })
+}
 function go(step: StepId): void {
   cr.error = ''
   if (step === 'home') homeReady.value = false
   cr.step = step
-  void nextTick(() => { if (scroller.value) scroller.value.scrollTop = 0; heading.value?.focus({ preventScroll: true }) })
+  void nextTick(focusStep)
 }
 watch(() => cr.step, (step) => {
   if (step === 'look') focus.value = focusForTab(lookUi.section)
@@ -372,7 +376,7 @@ onBeforeUnmount(() => {
         <p v-if="showNote && words" class="cr-banner is-warn" role="status"><span aria-hidden="true"><GameIcon name="cloud-off" inline /></span><span><strong>{{ words.short }}.</strong> {{ words.why }} Your character is kept on this device.</span><LinkAction class-name="cr-btn is-small" /></p>
         <p v-if="shown" :class="['cr-banner', calm ? 'is-info' : 'is-error']" :role="calm ? 'status' : 'alert'" data-cr-error>{{ shown }}</p>
 
-        <Transition name="cr-step" mode="out-in">
+        <Transition name="cr-step" mode="out-in" @after-enter="focusStep">
           <div v-if="finished" key="done" class="cr-body cr-done">
             <h1 id="cr-title" ref="heading" tabindex="-1">{{ view.name }} is ready</h1>
             <p class="cr-lead">{{ o.legacy ? 'This life started before character creation existed, so nothing was changed.' : 'Your character has moved in.' }} You can change your look any time in your Profile.</p>

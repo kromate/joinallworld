@@ -1,0 +1,26 @@
+{
+  "status": "prepared-for-root-review-not-published",
+  "purpose": "Isolated v6 follow-up to v5: retain proven float32 complement weights and correct the snapshot-vs-renderState domain proof contract.",
+  "v5Run": {
+    "runId": 37909341740,
+    "commit": "28a8a6bc7a2f84cad98492cb1beab3af70ddf758",
+    "manifestSha256": "260a5dc672ac54b7227e3682790c7ba826537fb125cbf1f607d33a6bbff426ac",
+    "result": "Build and 23 synthetic tests passed. All 8 male pose witnesses passed: 516 complement vertices, max source-corner position mismatch 7.458e-8 m, max bind inverse delta 0. First screenshot capture failed because renderState omits independentNeckDomain detail while validateSnapshot required it.",
+    "geometry": "The fractional-weight storage bug is fixed; candidate record showed 172 complement triangles, 52,632 bytes, 138 eligible faces, 136 excluded residual faces, and domainMatchesActualCandidate=true."
+  },
+  "v6Change": "The full independent-domain payload remains mandatory in each pose-witness snapshot. Screenshot renderState validates its compact summary; helper tests reject missing full pose details and any summary/detail excluded-face count mismatch.",
+  "candidatePath": "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v6/neck-complement-v6.ts",
+  "candidateSha256": "f70c8d7d224c1d5715956df5c63ba0c8ab3f585ced2596759e2441ec7d7da7cd",
+  "fixturePath": "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v6/fixture.ts",
+  "fixtureSha256": "4df0aa4dc9fbe9390aab8a9d1398c67a1ba3928eafac6b935c736af716009b73",
+  "contractPath": "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v6/remote-ci-v6/domain-witness-contract.mjs",
+  "contractSha256": "cc9ac1e179f976dade742470d06e2ebf6ef0df56b6561eb1413a425a619b6a43",
+  "contractTestPath": "evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v6/remote-ci-v6/domain-witness-contract.test.mjs",
+  "contractTestSha256": "4cc933624b1458d4c41ea1751d432c74f1f34470d38857dcebbd12114924b559",
+  "bodyAssetSha256": {
+    "male": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "female": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "clips": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "execution": "Source prepared only. No v6 tests, build, GLB parse, or browser run has occurred; root owns review/publication."
+}

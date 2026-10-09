@@ -1,0 +1,17 @@
+{
+  "status": "parallel-domain-audit-prepared-unrun",
+  "candidate": {
+    "copiedFrom": "../neck-complement-v1/neck-complement.ts",
+    "sha256": "2b8531fbc97c87f351fa2085ec1a15b9ac193ba35571d08eb6a7a498c85dcb76",
+    "productionSourceModified": false
+  },
+  "previousFailure": {
+    "runId": 37902648415,
+    "snapshotSha256": "0137f721ad68862f12c21bba61de14fd577fd7d0521c1a1c3ebbe90246d0594a",
+    "expectedLegacyCutFacesMale": 274,
+    "candidateOutputFacesMale": 138,
+    "result": "Failed closed before pose checks or screenshots; the two face domains were not equivalent."
+  },
+  "review": "integration-probe-v2 computes expected domain from the untouched source, independently of generated complement output. The historical full neck-cut report and all excluded-face region/plane records remain visible. A domain match does not prove visual aperture closure.",
+  "execution": "No GLB processing, local test, browser, build, remote run, or production edit has occurred for this variant. Root owns publication and execution."
+}

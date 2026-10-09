@@ -24,6 +24,7 @@ export interface WardrobeRestFrame {
   readonly bones: ReadonlyMap<string, { readonly index: number; readonly point: THREE.Vector3 }>;
   readonly bounds: ReadonlyMap<string, THREE.Box3>;
   readonly points: readonly THREE.Vector3[];
+  readonly sourceWeightsAt: (point: THREE.Vector3) => readonly (readonly [number, number])[];
 }
 const TAU = Math.PI * 2;
 const CLOTH_ITEMS = new Set(Object.entries(AVATAR_WEARABLE_CATALOGUE).filter(([id, definition]) =>
@@ -33,6 +34,7 @@ const SIDES = ['l', 'r'] as const;
 type Weight = readonly [number, number];
 type Weights = readonly Weight[];
 type Point = readonly [number, number, number];
+type ArmholeLoop = { readonly points: readonly THREE.Vector3[]; readonly indices: readonly number[] };
 
 export function captureWardrobeRestFrame(base: THREE.SkinnedMesh): WardrobeRestFrame {
   // The body's mesh-node matrix decodes its quantized GLB positions. Parent placement is deliberately excluded.
@@ -65,7 +67,28 @@ export function captureWardrobeRestFrame(base: THREE.SkinnedMesh): WardrobeRestF
       box.expandByPoint(point);
     }
   }
-  return { meshFromMetres, metresFromMesh, bones, bounds, points };
+  const sourceWeightsAt = (target: THREE.Vector3): readonly (readonly [number, number])[] => {
+    const nearest: { index: number; distance: number }[] = [];
+    for (let i = 0; i < points.length; i++) {
+      const distance = points[i]!.distanceToSquared(target);
+      if (nearest.length < 4 || distance < nearest[nearest.length - 1]!.distance) {
+        nearest.push({ index: i, distance }); nearest.sort((a, b) => a.distance - b.distance);
+        if (nearest.length > 4) nearest.pop();
+      }
+    }
+    const combined = new Map<number, number>();
+    for (const candidate of nearest) {
+      const spatial = 1 / Math.max(0.004, Math.sqrt(candidate.distance));
+      for (let channel = 0; channel < 4; channel++) {
+        const weight = skinWeights.getComponent(candidate.index, channel) * spatial;
+        const bone = skinIndices.getComponent(candidate.index, channel);
+        if (weight > 0) combined.set(bone, (combined.get(bone) ?? 0) + weight);
+      }
+    }
+    const sorted = [...combined].sort((a, b) => b[1] - a[1]).slice(0, 4), total = sorted.reduce((sum, entry) => sum + entry[1], 0);
+    return sorted.map(([bone, weight]) => [bone, weight / total] as const);
+  };
+  return { meshFromMetres, metresFromMesh, bones, bounds, points, sourceWeightsAt };
 }
 
 class ClothBuilder {
@@ -77,10 +100,17 @@ class ClothBuilder {
   private readonly fabricUvs: number[] = [];
   private readonly fabricMasks: number[] = [];
   private cloth = false;
+  private agbadaTorsoPattern = false;
+  private agbadaHipY = 0;
   private readonly counts: Record<string, number> = {};
   readonly hides = new Set<AvatarBodyRegion>();
   readonly coverage: { region: AvatarBodyRegion; minY: number; maxY: number }[] = [];
   readonly clothProfiles: (readonly { y: number; rx: number; rz: number; z?: number }[])[] = [];
+  withAgbadaTorsoPattern<T>(hipY: number, build: () => T): T {
+    const previous = this.agbadaTorsoPattern, previousHip = this.agbadaHipY;
+    this.agbadaTorsoPattern = true; this.agbadaHipY = hipY;
+    try { return build(); } finally { this.agbadaTorsoPattern = previous; this.agbadaHipY = previousHip; }
+  }
   clothFront(y: number, x: number): number {
     let front = -Infinity;
     for (const profile of this.clothProfiles) {
@@ -140,19 +170,23 @@ class ClothBuilder {
     const local = point.clone().applyMatrix4(this.rest.meshFromMetres);
     this.positions.push(local.x, local.y, local.z);
     this.colours.push(colour.r, colour.g, colour.b);
-    this.fabricUvs.push(point.x + point.z * 0.35, point.y);
-    this.fabricMasks.push(this.cloth ? 1 : 0);
+    const agbadaTorso = this.cloth && this.agbadaTorsoPattern;
+    this.fabricUvs.push(agbadaTorso ? point.x : point.x + point.z * 0.35, agbadaTorso ? point.y - this.agbadaHipY : point.y);
+    this.fabricMasks.push(this.cloth ? agbadaTorso && point.z > 0.025 ? 2 : 1 : 0);
     for (let j = 0; j < 4; j++) { this.skinIndices.push(weights[j]?.[0] ?? 0); this.skinWeights.push(weights[j]?.[1] ?? 0); }
     return index;
   }
   triangle(a: number, b: number, c: number): void { this.indices.push(a, b, c); }
-  surface(rows: readonly (readonly THREE.Vector3[])[], colour: THREE.Color, weights: (p: THREE.Vector3) => Weights, closed = true): void {
-    const grid = rows.map(row => row.map(p => this.vertex(p, colour, weights(p))));
+  surface(rows: readonly (readonly THREE.Vector3[])[], colour: THREE.Color, weights: (p: THREE.Vector3, station: number) => Weights, closed = true, firstIndices?: readonly number[], reverse = false): void {
+    const grid = rows.map((row, station) => station === 0 && firstIndices
+      ? [...firstIndices]
+      : row.map(p => this.vertex(p, colour, weights(p, station - (firstIndices ? 1 : 0)))));
     for (let y = 0; y < grid.length - 1; y++) {
       const row = grid[y]!, next = grid[y + 1]!;
       for (let x = 0; x < row.length - (closed ? 0 : 1); x++) {
         const n = (x + 1) % row.length;
-        this.triangle(row[x]!, next[x]!, next[n]!); this.triangle(row[x]!, next[n]!, row[n]!);
+        if (reverse) { this.triangle(row[x]!, next[n]!, next[x]!); this.triangle(row[x]!, row[n]!, next[n]!); }
+        else { this.triangle(row[x]!, next[x]!, next[n]!); this.triangle(row[x]!, next[n]!, row[n]!); }
       }
     }
   }
@@ -164,15 +198,64 @@ class ClothBuilder {
     }));
     this.surface(rows, colour, weights, closed);
   }
-  tube(points: readonly THREE.Vector3[], radii: readonly number[], colour: THREE.Color, weights: (p: THREE.Vector3) => Weights, segments = 6, aspect = 1): void {
+  loftWithArmholes(levels: readonly { y: number; rx: number; rz: number; z?: number; x?: number }[], colour: THREE.Color, weights: (p: THREE.Vector3) => Weights, segments = 14, holeRow = 3, holeCells = 4): ReadonlyMap<typeof SIDES[number], ArmholeLoop> {
+    const rows = levels.map(level => Array.from({ length: segments }, (_, i) => {
+      const angle = TAU * i / segments;
+      return new THREE.Vector3((level.x ?? 0) + Math.cos(angle) * level.rx, level.y, (level.z ?? 0) + Math.sin(angle) * level.rz);
+    }));
+    // Carry actual shoulder/neck skin weights all the way over the roof. Returning to
+    // synthetic spine-only weights on the next row makes the roof shear when the arm raises.
+    const grid = rows.map((row, station) => row.map(p => this.vertex(p, colour, station >= holeRow ? this.rest.sourceWeightsAt(p) : weights(p))));
+    const starts = new Map<typeof SIDES[number], number>();
+    for (const side of SIDES) starts.set(side, (side === 'l' ? 0 : segments / 2) - Math.floor(holeCells / 2));
+    for (let y = 0; y < grid.length - 1; y++) for (let x = 0; x < segments; x++) {
+      const inHole = y === holeRow && [...starts.values()].some(start => Array.from({ length: holeCells }, (_, i) => (start + i + segments) % segments).includes(x));
+      if (inHole) continue;
+      const next = grid[y + 1]!, row = grid[y]!, n = (x + 1) % segments;
+      if (y >= holeRow + 1) {
+        const a = rows[y]![x]!, b = rows[y + 1]![x]!, c = rows[y + 1]![n]!, d = rows[y]![n]!;
+        const faceDot = (p: THREE.Vector3, q: THREE.Vector3, r: THREE.Vector3) => q.clone().sub(p).cross(r.clone().sub(p)).normalize();
+        const fixed = faceDot(a, b, c).dot(faceDot(a, c, d));
+        const alternate = faceDot(a, b, d).dot(faceDot(b, c, d));
+        if (alternate > fixed) { this.triangle(row[x]!, next[x]!, row[n]!); this.triangle(next[x]!, next[n]!, row[n]!); continue; }
+      }
+      this.triangle(row[x]!, next[x]!, next[n]!); this.triangle(row[x]!, next[n]!, row[n]!);
+    }
+    const loops = new Map<typeof SIDES[number], ArmholeLoop>();
+    for (const side of SIDES) {
+      const start = starts.get(side)!;
+      const columns = Array.from({ length: holeCells + 1 }, (_, i) => (start + i + segments) % segments);
+      const indices = [...columns.map(x => grid[holeRow]![x]!), ...columns.slice().reverse().map(x => grid[holeRow + 1]![x]!)];
+      const points = [...columns.map(x => rows[holeRow]![x]!), ...columns.slice().reverse().map(x => rows[holeRow + 1]![x]!)];
+      // Keep the grid perimeter's cyclic order. Re-sorting in a projected plane can swap
+      // front/back corners when the torso section is asymmetric.
+      loops.set(side, { points, indices });
+    }
+    return loops;
+  }
+  tube(points: readonly THREE.Vector3[], radii: readonly number[], colour: THREE.Color, weights: (p: THREE.Vector3, station: number) => Weights, segments = 6, aspect = 1, root?: ArmholeLoop): void {
+    const firstAxis = root ? points[Math.min(1, points.length - 1)]!.clone().sub(points[0]!).normalize() : null;
+    const reference = firstAxis && Math.abs(firstAxis.y) > 0.9 ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(0, 1, 0);
+    const rootA = firstAxis ? new THREE.Vector3().crossVectors(firstAxis, reference).normalize() : null;
+    const rootB = firstAxis && rootA ? new THREE.Vector3().crossVectors(firstAxis, rootA).normalize() : null;
+    const rootCentre = root ? root.points.reduce((sum, p) => sum.add(p), new THREE.Vector3()).multiplyScalar(1 / root.points.length) : null;
+    // Keep every sleeve column aligned to the corresponding vertex in the torso's
+    // cyclic armhole boundary. That loop is intentionally nonuniform; resampling it
+    // as an even circle twists the bridge when the arm is raised.
+    const rootAngles = root && rootA && rootB && rootCentre
+      ? root.points.map(point => Math.atan2(point.clone().sub(rootCentre).dot(rootB), point.clone().sub(rootCentre).dot(rootA)))
+      : [];
     const rows = points.map((p, i) => {
       const next = points[Math.min(i + 1, points.length - 1)]!, prior = points[Math.max(0, i - 1)]!;
       const axis = next.clone().sub(prior).normalize();
       const reference = Math.abs(axis.y) > 0.9 ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(0, 1, 0);
       const a = new THREE.Vector3().crossVectors(axis, reference).normalize(), b = new THREE.Vector3().crossVectors(axis, a).normalize();
-      return Array.from({ length: segments }, (_, j) => p.clone().addScaledVector(a, Math.cos(j * TAU / segments) * radii[i]!).addScaledVector(b, Math.sin(j * TAU / segments) * radii[i]! * aspect));
+      return Array.from({ length: segments }, (_, j) => {
+        const angle = root ? rootAngles[j]! : j * TAU / segments;
+        return p.clone().addScaledVector(a, Math.cos(angle) * radii[i]!).addScaledVector(b, Math.sin(angle) * radii[i]! * aspect);
+      });
     });
-    this.surface(rows, colour, weights);
+    this.surface(root ? [root.points, ...rows] : rows, colour, weights, true, root?.indices);
   }
   ball(centre: THREE.Vector3, radius: Point, colour: THREE.Color, weights: Weights, segments = 8, bands = 4): void {
     const rows = Array.from({ length: bands + 1 }, (_, j) => Array.from({ length: segments }, (_, i) => {
@@ -222,12 +305,12 @@ function fitTorso(b: ClothBuilder, y: number, padding = 0.018): { rx: number; rz
   if (box.isEmpty()) return { rx: shoulder + padding, rz: 0.14 + padding, z: 0 };
   return { rx: Math.max(Math.abs(box.min.x), Math.abs(box.max.x)) + padding, rz: (box.max.z - box.min.z) / 2 + padding, z: (box.max.z + box.min.z) / 2 };
 }
-function torso(b: ClothBuilder, fabric: THREE.Color, hem: number, bulk = 0.018): void {
+function torso(b: ClothBuilder, fabric: THREE.Color, hem: number, bulk = 0.018, armholes = false): ReadonlyMap<typeof SIDES[number], ArmholeLoop> | null {
   const hip = b.anchor('pelvis'), neck = b.anchor('neck_01'), shoulder = b.anchor('upperarm_l');
   const headBox = b.rest.bounds.get('Head');
   const neckRadius = Math.min(0.058, (headBox ? headBox.max.x - headBox.min.x : 0.18) * 0.29);
   const levels = [
-    { y: hem, ...fitTorso(b, hip.y, bulk) },
+    { y: hem, ...fitTorso(b, hem, bulk) },
     { y: hip.y + 0.1, ...fitTorso(b, hip.y + 0.1, bulk) },
     { y: b.anchor('spine_02').y, ...fitTorso(b, b.anchor('spine_02').y, bulk) },
     { y: b.anchor('spine_03').y + 0.065, ...fitTorso(b, b.anchor('spine_03').y + 0.065, bulk) },
@@ -237,40 +320,95 @@ function torso(b: ClothBuilder, fabric: THREE.Color, hem: number, bulk = 0.018):
   ];
   b.clothProfiles.push(levels);
   const shortHem = hem >= hip.y - 0.2;
-  b.loft(levels, fabric, p => shortHem && p.y < hip.y ? b.rigid('pelvis') : b.bodyWeights(p), 16);
+  const weights = (p: THREE.Vector3) => shortHem && p.y < hip.y ? b.rigid('pelvis') : b.bodyWeights(p);
+  const holes = armholes ? b.loftWithArmholes(levels, fabric, weights, 14, 3, 4) : (b.loft(levels, fabric, weights, 16), null);
   b.cover('torso', hem, neck.y + 0.013); b.cover('hips', hem, neck.y + 0.013);
+  return holes;
 }
-function sleeves(b: ClothBuilder, fabric: THREE.Color, length: 'short' | 'long' | 'wide', bulk = 0): void {
+function sleeves(b: ClothBuilder, fabric: THREE.Color, length: 'short' | 'long' | 'wide', bulk = 0, armholes?: ReadonlyMap<typeof SIDES[number], ArmholeLoop> | null): void {
   for (const side of SIDES) {
     const shoulder = b.anchor(`upperarm_${side}`), elbow = b.anchor(`lowerarm_${side}`), wrist = b.anchor(`hand_${side}`);
     const upperBox = b.rest.bounds.get(`upperarm_${side}`), lowerBox = b.rest.bounds.get(`lowerarm_${side}`);
-    const radius = upperBox ? (upperBox.max.y - upperBox.min.y) / 2 + 0.025 + bulk : 0.095;
+    const radius = upperBox
+      ? length === 'wide'
+        // Size a wide sleeve from the arm's cross-section; the old additive/fixed
+        // profile grew beyond this scale and made Agbada inflate into a hollow ring.
+        ? Math.max(upperBox.max.y - upperBox.min.y, upperBox.max.z - upperBox.min.z) / 2 + 0.015 + bulk * 0.5
+        : (upperBox.max.y - upperBox.min.y) / 2 + 0.025 + bulk
+      : 0.095;
     const end = length === 'short' ? shoulder.clone().lerp(elbow, 0.84) : wrist.clone().lerp(elbow, 0.04);
     const lower = (lowerBox ? (lowerBox.max.y - lowerBox.min.y) / 2 : 0.055) + 0.016 + bulk;
-    const first = shoulder.clone().add(new THREE.Vector3(side === 'l' ? -0.025 : 0.025, 0, 0));
-    const points = length === 'short'
+    const armDirection = elbow.clone().sub(shoulder).normalize();
+    const first = shoulder.clone().addScaledVector(armDirection, 0.025);
+    const armStations = length === 'short'
       ? [first, shoulder.clone().lerp(end, 0.3), shoulder.clone().lerp(end, 0.7), end]
       : [first, shoulder.clone().lerp(elbow, 0.45), elbow, elbow.clone().lerp(end, 0.55), end];
-    const radii = length === 'wide' ? [radius + 0.035, radius + 0.055, 0.15, 0.165, 0.155]
+    const radii = length === 'wide' ? [radius * 1.02, radius * 1.1, radius * 1.18, radius * 1.25, radius * 1.2]
       : length === 'short' ? [radius * 1.015, radius, radius * 0.94, radius * 0.9]
       : [radius * 1.015, radius, radius * 0.92, lower * 1.07, lower];
-    b.tube(points, radii, fabric, p => {
-      const signedX = Math.abs(p.x), a = Math.abs(shoulder.x), e = Math.abs(elbow.x), w = Math.abs(wrist.x);
-      return signedX < e ? b.blend(`upperarm_${side}`, `lowerarm_${side}`, Math.max(0, (signedX - a) / (e - a))) : b.blend(`lowerarm_${side}`, `hand_${side}`, Math.max(0, (signedX - e) / (w - e)));
-    }, 12, length === 'wide' ? 1.16 : 1);
+    // Join the sleeve to an armhole cut from the torso grid so both surfaces share the same
+    // seam vertices. The old independent tube left a free boundary at the shoulder joint.
+    const root = armholes?.get(side);
+    const stations = armStations;
+    const stationRadii = radii;
+    const arm = elbow.clone().sub(shoulder), forearm = wrist.clone().sub(elbow);
+    const armLengthSq = arm.lengthSq(), forearmLengthSq = forearm.lengthSq();
+    b.tube(stations, stationRadii, fabric, (_p, station) => {
+      // At the torso seam, carry the body's local shoulder field into the first two
+      // sleeve rings. A single rigid arm-station weight there twists the welded loop
+      // when the clavicle and upper arm swing in opposite directions.
+      if (root && station <= 1) return b.rest.sourceWeightsAt(_p);
+      // Use each tube station's center so all vertices around its circumference get the same
+      // weights; world X varies around the circumference and is not a useful joint coordinate.
+      const centre = stations[station]!;
+      const alongArm = THREE.MathUtils.clamp(centre.clone().sub(shoulder).dot(arm) / armLengthSq, 0, 1);
+      if (alongArm < 1) return b.blend(`upperarm_${side}`, `lowerarm_${side}`, alongArm);
+      const alongForearm = THREE.MathUtils.clamp(centre.clone().sub(elbow).dot(forearm) / forearmLengthSq, 0, 1);
+      return b.blend(`lowerarm_${side}`, `hand_${side}`, alongForearm);
+    }, root ? 10 : 12, length === 'wide' ? 1.16 : 1, root);
   }
   // Short sleeves keep all underlying arm triangles. Their exposed cuffs remain clothed by the original base.
   if (length !== 'short') { b.hides.add('upperarms'); b.hides.add('forearms'); }
 }
-function trousers(b: ClothBuilder, fabric: THREE.Color, shorts = false): void {
+function trousers(b: ClothBuilder, fabric: THREE.Color, shorts = false, shirtHem?: number): void {
+  const pelvis = b.anchor('pelvis');
   for (const side of SIDES) {
     const thigh = b.anchor(`thigh_${side}`), knee = b.anchor(`calf_${side}`), foot = b.anchor(`foot_${side}`);
     const box = b.rest.bounds.get(`thigh_${side}`), width = box ? (box.max.x - box.min.x) / 2 + 0.018 : 0.12;
+    const waist = fitTorso(b, thigh.y + 0.075, 0);
+    // The 8-point trouser ring is coarser than the 14-point office torso. Insetting
+    // the hidden waistband by a little extra keeps its chord faces under the shirt shell.
+    const waistRx = Math.max(0.028, Math.min(width * 0.48, waist.rx - Math.abs(thigh.x) - 0.02));
+    const waistRz = Math.max(0.035, Math.min(0.07, waist.rz - Math.abs(thigh.z - waist.z) - 0.016));
+    // The trouser taper can leave the shirt silhouette well above its waistband. Add a
+    // tucked hip station at the shirt hem so the first exposed trouser ring stays inside
+    // the shirt in the rest pose; the next station resumes the normal thigh width.
+    const hemProfile = shirtHem === undefined ? null : fitTorso(b, shirtHem, 0.018);
+    const hemRx = hemProfile ? Math.max(0.035, Math.min(width * 0.62, hemProfile.rx - Math.abs(thigh.x) - 0.018)) : 0;
+    const hemRz = hemProfile ? Math.max(0.04, Math.min(0.09, hemProfile.rz * Math.sqrt(Math.max(0, 1 - (thigh.x / hemProfile.rx) ** 2)) - Math.abs(thigh.z - hemProfile.z) - 0.012)) : 0;
     b.loft([
-      { y: thigh.y + 0.075, x: thigh.x, z: thigh.z, rx: width, rz: 0.12 },
+      // Keep the trouser opening inside the shirt at the waist; the larger thigh section starts below it.
+      { y: thigh.y + 0.075, x: thigh.x, z: thigh.z, rx: waistRx, rz: waistRz },
+      ...(hemProfile ? [{ y: shirtHem! - 0.005, x: thigh.x, z: thigh.z, rx: hemRx, rz: hemRz }] : []),
       { y: knee.y + (shorts ? 0.08 : 0), x: knee.x, z: knee.z, rx: width * 0.86, rz: 0.108 },
       ...(shorts ? [] : [{ y: foot.y + 0.04, x: foot.x, z: foot.z, rx: 0.079, rz: 0.09 }]),
-    ], fabric, p => p.y > knee.y ? b.blend(`thigh_${side}`, `calf_${side}`, (thigh.y - p.y) / (thigh.y - knee.y)) : b.rigid(`calf_${side}`), 8);
+    ], fabric, p => {
+      // Match the shirt's tucked hem to its rigid pelvis weights. Below the hem, ease
+      // from pelvis to thigh as the trouser leaves the shirt instead of letting the
+      // generic leg weights pull the shared silhouette away during a hip pose.
+      // Above the pelvis, the shirt follows the torso's normal spine weights. Match
+      // those exactly; only the tucked section below the pelvis is rigidly pelvis-bound.
+      if (p.y >= pelvis.y) return b.bodyWeights(p);
+      if (shirtHem !== undefined && p.y >= shirtHem - 0.006) return b.rigid('pelvis');
+      if (p.y > knee.y) {
+        const t = shirtHem === undefined
+          ? (thigh.y - p.y) / Math.max(0.1, thigh.y - knee.y)
+          : (shirtHem - p.y) / Math.max(0.1, shirtHem - knee.y);
+        return b.blend('pelvis', `thigh_${side}`, t);
+      }
+      if (shirtHem === undefined) return b.rigid(`calf_${side}`);
+      return b.blend(`thigh_${side}`, `calf_${side}`, (knee.y - p.y) / Math.max(0.12, knee.y - foot.y));
+    }, 8);
   }
   if (!shorts) b.cover('legs', b.anchor('foot_l').y + 0.04, b.anchor('thigh_l').y + 0.075);
 }
@@ -301,9 +439,7 @@ function garment(b: ClothBuilder, id: string, read: ResolvedWardrobeLook['look']
   const top = colour(read.outfitColor), bottom = colour(read.bottomsColor), hip = b.anchor('pelvis'), knee = b.anchor('calf_l'), ankle = b.anchor('foot_l');
   switch (id) {
     case 'agbada':
-      trousers(b, bottom); torso(b, top, knee.y + 0.13, 0.07); sleeves(b, top, 'wide', 0.025);
-      // Two floating front embroidery strips give the wide outer robe its open-panel silhouette.
-      for (const x of [-0.05, 0.05]) b.box(new THREE.Vector3(x, hip.y + 0.21, 0.186), [0.025, 0.47, 0.015], GOLD, b.rigid('spine_01'));
+      trousers(b, bottom); b.withAgbadaTorsoPattern(hip.y, () => torso(b, top, knee.y + 0.13, 0.07)); sleeves(b, top, 'wide', 0.025);
       break;
     case 'kaftan':
       trousers(b, bottom); torso(b, top, knee.y + 0.025, 0.027); sleeves(b, top, 'long'); collar(b, top);
@@ -332,7 +468,11 @@ function garment(b: ClothBuilder, id: string, read: ResolvedWardrobeLook['look']
       b.loft([{ y: neck.y - 0.06, rx: 0.145, rz: 0.13, z: -0.04 }, { y: neck.y + 0.045, rx: 0.125, rz: 0.1, z: -0.06 }], top, () => b.rigid('spine_03'), 12, 2.65, TAU + 0.49);
       b.box(new THREE.Vector3(0, hip.y + 0.12, 0.19), [0.18, 0.09, 0.012], top.clone().multiplyScalar(0.86), b.rigid('spine_01')); break;
     }
-    case 'office': trousers(b, bottom); torso(b, top, hip.y - 0.085); sleeves(b, top, 'long'); collar(b, WHITE, true); break;
+    case 'office': {
+      trousers(b, bottom, false, hip.y - 0.085);
+      const armholes = torso(b, top, hip.y - 0.085, 0.018, true);
+      sleeves(b, top, 'long', 0, armholes); collar(b, WHITE, true); break;
+    }
     case 'sitework':
       trousers(b, bottom); torso(b, top, hip.y - 0.1); sleeves(b, top, 'short');
       for (const x of [-0.09, 0.09]) b.box(new THREE.Vector3(x, hip.y + 0.3, 0.175), [0.035, 0.34, 0.014], colour('#e6cd51'), b.rigid('spine_02'));

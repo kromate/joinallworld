@@ -1,0 +1,1142 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Reusable source-only inventory for the next African city rollout; records existing cached data and bounded pilot packs only. It does not claim green status or whole-country playable coverage.",
+  "sourceFiles": [
+    {
+      "label": "Natural Earth 10m populated places",
+      "path": ".cache/world-build/settlement-source-cache/42132340ed32bed7cf7be4b52f15d451eb81f235ceea042871e3b10f0117fc99.geojson",
+      "sha256": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b",
+      "bytes": 19359003,
+      "release": "ca96624a56bd078437bca8184e78163e5039ad19",
+      "license": "Public-domain",
+      "sourceId": "natural-earth-places-10m-ca96624a56bd078437bca8184e78163e5039ad19"
+    },
+    {
+      "label": "Natural Earth 10m admin0 countries",
+      "path": ".cache/world-build/country-source-cache/e51c4d047ed2867b34faea4e17c102ead4f3fee558a84a942619ee2cb1abdceb.geojson",
+      "sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
+      "bytes": 13287234,
+      "release": "ca96624a56bd078437bca8184e78163e5039ad19",
+      "license": "Public-domain",
+      "sourceId": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19"
+    }
+  ],
+  "coverageExtent": {
+    "countryOutlineExtentWgs84ByCountry": {
+      "BJ": [
+        0.759881,
+        6.213894,
+        3.837419,
+        12.399244
+      ],
+      "CI": [
+        -8.61872,
+        4.344062,
+        -2.506328,
+        10.726478
+      ],
+      "SN": [
+        -17.536041,
+        12.305607,
+        -11.377776,
+        16.691385
+      ],
+      "ZA": [
+        16.469981,
+        -46.965753,
+        37.977794,
+        -22.126452
+      ],
+      "ET": [
+        32.9898,
+        3.403333,
+        47.979169,
+        14.879532
+      ]
+    },
+    "existingUrbanPilotExtentWgs84AcrossWave2": [
+      -17.479076000000003,
+      -33.9298355,
+      38.700863,
+      14.725172
+    ],
+    "scope": "Natural Earth outlines/admin1 are contextual national geometry. Overture manifests are small bounded city-cell samples. Neither is nationwide or citywide coverage."
+  },
+  "countries": [
+    {
+      "country": "Benin",
+      "iso2": "BJ",
+      "countryId": "country:natural-earth:NE_ID%3A1159320399",
+      "countryBoundsWgs84": [
+        0.759881,
+        6.213894,
+        3.837419,
+        12.399244
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320399",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/e23c6160f91937bfd56ee0681ea48c49d5899160be2d47433353ce4453b95a11.json",
+        "outlineIndexSha256": "e23c6160f91937bfd56ee0681ea48c49d5899160be2d47433353ce4453b95a11",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 616,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/b7165f3f0ddfd03878977f179e557f3002480735507c3baa49bf85b3a9018be9.json",
+            "sha256": "b7165f3f0ddfd03878977f179e557f3002480735507c3baa49bf85b3a9018be9",
+            "bytes": 12569,
+            "polygonCount": 1,
+            "coordinatePositions": 616
+          }
+        ]
+      },
+      "selectedPlace": {
+        "name": "Cotonou",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151141",
+        "coordinatesWgs84": [
+          2.404355,
+          6.36298
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 3,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/bfadd09c465ae0e0b79cc74d52c82caf6f40cc6c20e97a6aa4d61591d0bbcd49.json",
+        "pointAssetSha256": "bfadd09c465ae0e0b79cc74d52c82caf6f40cc6c20e97a6aa4d61591d0bbcd49",
+        "countryEmittedPlaceCount": 9,
+        "ianaTimezone": "Africa/Porto-Novo",
+        "placeRole": "commercial city; Porto-Novo is constitutional capital"
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/c1330095f92dacec1b000afcf59cf3b7f755bf366fa919ff7434861946ceedbd.json",
+        "sha256": "c1330095f92dacec1b000afcf59cf3b7f755bf366fa919ff7434861946ceedbd",
+        "emittedUnits": 12,
+        "linkedRows": 12,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": null
+    },
+    {
+      "country": "Côte d’Ivoire",
+      "iso2": "CI",
+      "countryId": "country:natural-earth:NE_ID%3A1159320507",
+      "countryBoundsWgs84": [
+        -8.61872,
+        4.344062,
+        -2.506328,
+        10.726478
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320507",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/6e5fe0de44e252bceaa27b183212f831b6dbd78c248d699d5d7b79c911844e05.json",
+        "outlineIndexSha256": "6e5fe0de44e252bceaa27b183212f831b6dbd78c248d699d5d7b79c911844e05",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 2,
+        "coordinatePositions": 1599,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/1a4968ce03b974f53d9b90d0345631fec10b566c6b98e9e988ca7c9d4f18cb9a.json",
+            "sha256": "1a4968ce03b974f53d9b90d0345631fec10b566c6b98e9e988ca7c9d4f18cb9a",
+            "bytes": 33601,
+            "polygonCount": 2,
+            "coordinatePositions": 1599
+          }
+        ]
+      },
+      "selectedPlace": {
+        "name": "Abidjan",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151439",
+        "coordinatesWgs84": [
+          -4.020207,
+          5.323126
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 2,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/9066b85b49d843c563ae552d3b56bfc8a55b3406ae36bf9518d4f72bd563e291.json",
+        "pointAssetSha256": "9066b85b49d843c563ae552d3b56bfc8a55b3406ae36bf9518d4f72bd563e291",
+        "countryEmittedPlaceCount": 25,
+        "ianaTimezone": "Africa/Abidjan",
+        "placeRole": "commercial city; Yamoussoukro is the political capital"
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/8ac25dc025a67269b83bf12dcf3b3d1bc9645323d64c8fefedf44052ecd91bbc.json",
+        "sha256": "8ac25dc025a67269b83bf12dcf3b3d1bc9645323d64c8fefedf44052ecd91bbc",
+        "emittedUnits": 19,
+        "linkedRows": 19,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": null
+    },
+    {
+      "country": "Senegal",
+      "iso2": "SN",
+      "countryId": "country:natural-earth:NE_ID%3A1159321243",
+      "countryBoundsWgs84": [
+        -17.536041,
+        12.305607,
+        -11.377776,
+        16.691385
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321243",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/33d05815728869aeb7b72edc8c8b0e223db5f262c155c680450f043110aad0ce.json",
+        "outlineIndexSha256": "33d05815728869aeb7b72edc8c8b0e223db5f262c155c680450f043110aad0ce",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1378,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/9afa34866c3702ef7bc7cfbf825c1179c50fc7834a2b4903493f165864b29f5c.json",
+            "sha256": "9afa34866c3702ef7bc7cfbf825c1179c50fc7834a2b4903493f165864b29f5c",
+            "bytes": 31414,
+            "polygonCount": 1,
+            "coordinatePositions": 1378
+          }
+        ]
+      },
+      "selectedPlace": {
+        "name": "Dakar",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151513",
+        "coordinatesWgs84": [
+          -17.475076,
+          14.717778
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 1,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/25141b43ac8a24b1af3e033720ababbd20b1f6b9eba4632896554e42d063c41d.json",
+        "pointAssetSha256": "25141b43ac8a24b1af3e033720ababbd20b1f6b9eba4632896554e42d063c41d",
+        "countryEmittedPlaceCount": 11,
+        "ianaTimezone": "Africa/Dakar",
+        "placeRole": "national capital"
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/618a6eed0219139eeb6b2a285956769834b5e1607df81a4754bc90bbd1988d01.json",
+        "sha256": "618a6eed0219139eeb6b2a285956769834b5e1607df81a4754bc90bbd1988d01",
+        "emittedUnits": 14,
+        "linkedRows": 14,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": [
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/d14ba0d13a37797dc8ef0cb4ffe6838e6aa758aca4ed25be6d11b74a108b29ca.json",
+          "manifestSha256": "d14ba0d13a37797dc8ef0cb4ffe6838e6aa758aca4ed25be6d11b74a108b29ca",
+          "region": {
+            "bounds": [
+              -17.479076000000003,
+              14.7176714,
+              -17.4768711,
+              14.7199939
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-0-2",
+            "kind": "cell",
+            "name": "Dakar regional child cell 0,2",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "0fdb813a23a76242d78c2cbad07d2dbe0c5870bafff6d77d98be0fa81edbef6d",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 8,
+          "tileBytes": 64263,
+          "tileBoundsWgs84": [
+            -17.479076000000003,
+            14.7176714,
+            -17.4768711,
+            14.7199939
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/182aa37b718f473e545dc948c26b0e686f8b2bbf87294dc1b9f59b06fb23919a.json",
+          "manifestSha256": "182aa37b718f473e545dc948c26b0e686f8b2bbf87294dc1b9f59b06fb23919a",
+          "region": {
+            "bounds": [
+              -17.477076000000004,
+              14.7197101,
+              -17.475076,
+              14.7218156
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-1-3",
+            "kind": "cell",
+            "name": "Dakar regional child cell 1,3",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "b94c78ff1beeb92bf3d9bbeb57410a672e539803b715b320cf68a79a61de14d8",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 1,
+          "tileBytes": 4481,
+          "tileBoundsWgs84": [
+            -17.477076000000004,
+            14.7197101,
+            -17.475076,
+            14.7218156
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/56db6c2e473f11b039e8d44e47051f9f3c2ce902a9c00f6c8cce8af0e9536a54.json",
+          "manifestSha256": "56db6c2e473f11b039e8d44e47051f9f3c2ce902a9c00f6c8cce8af0e9536a54",
+          "region": {
+            "bounds": [
+              -17.477076000000004,
+              14.7134311,
+              -17.4737815,
+              14.7160342
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-1-0",
+            "kind": "cell",
+            "name": "Dakar regional child cell 1,0",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "f4c882648fb4c15c196ec4e97aa0693ca52c0c31736f1a7aaf016de426cc2ddd",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 5,
+          "tileBytes": 40816,
+          "tileBoundsWgs84": [
+            -17.477076000000004,
+            14.7134311,
+            -17.4737815,
+            14.7160342
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/837e1ce6fedbfe8843f7ad67e0861e1e67fcb7130564459290fb2d8d1b5c89aa.json",
+          "manifestSha256": "837e1ce6fedbfe8843f7ad67e0861e1e67fcb7130564459290fb2d8d1b5c89aa",
+          "region": {
+            "bounds": [
+              -17.475076,
+              14.713663,
+              -17.472275,
+              14.715963
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-2-0",
+            "kind": "cell",
+            "name": "Dakar regional child cell 2,0",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "ffe8a8caba9788b195f2a6773841253bc59527117ff5366e30562741a5d3cfe3",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 6,
+          "tileBytes": 53012,
+          "tileBoundsWgs84": [
+            -17.475076,
+            14.713663,
+            -17.472275,
+            14.715963
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/428cf4622adb99b3bf525941761f747fe2bec164c83e8ba05436eb64e8ae5be4.json",
+          "manifestSha256": "428cf4622adb99b3bf525941761f747fe2bec164c83e8ba05436eb64e8ae5be4",
+          "region": {
+            "bounds": [
+              -17.477076000000004,
+              14.714745,
+              -17.4749509,
+              14.7180615
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-1-1",
+            "kind": "cell",
+            "name": "Dakar regional child cell 1,1",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "65b36210e62bd5a3d89712a4c487aac2ec044f29418ed291de3775ed0ff952f0",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 4,
+          "tileBytes": 25083,
+          "tileBoundsWgs84": [
+            -17.477076000000004,
+            14.714745,
+            -17.4749509,
+            14.7180615
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/248543def79a0f8bb33ff5a6c8274f83fc9fd1c20199a7c6d10182d4195fa20d.json",
+          "manifestSha256": "248543def79a0f8bb33ff5a6c8274f83fc9fd1c20199a7c6d10182d4195fa20d",
+          "region": {
+            "bounds": [
+              -17.473076,
+              14.7115085,
+              -17.4665556,
+              14.7178554
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-3-0",
+            "kind": "cell",
+            "name": "Dakar regional child cell 3,0",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "48d629ce79028dbd9d7fa46ee269bed5c2c124f2a4e7cab119b486c09df89c06",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 4,
+          "tileBytes": 31592,
+          "tileBoundsWgs84": [
+            -17.473076,
+            14.7115085,
+            -17.4665556,
+            14.7178554
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/a77426545a869259ff534c0999db2ba868e7db9d79ced47d7e0795e795ea5355.json",
+          "manifestSha256": "a77426545a869259ff534c0999db2ba868e7db9d79ced47d7e0795e795ea5355",
+          "region": {
+            "bounds": [
+              -17.479076000000003,
+              14.7126278,
+              -17.4764653,
+              14.7159485
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-0-0",
+            "kind": "cell",
+            "name": "Dakar regional child cell 0,0",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "a587b34d73891a02389a8ec0a25e38740fa467e0907268ab92abdc9439f0dce0",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 1,
+          "tileBytes": 7965,
+          "tileBoundsWgs84": [
+            -17.479076000000003,
+            14.7126278,
+            -17.4764653,
+            14.7159485
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/3f0be3689fd419964c3d35db28eb059e658a724351bba64b3ff5449f6a456b8f.json",
+          "manifestSha256": "3f0be3689fd419964c3d35db28eb059e658a724351bba64b3ff5449f6a456b8f",
+          "region": {
+            "bounds": [
+              -17.475076,
+              14.7196434,
+              -17.4721067,
+              14.7218003
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-2-3",
+            "kind": "cell",
+            "name": "Dakar regional child cell 2,3",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "e15b68ee4e3f15232e39d8376839175f187b79d77c528bc45c5677f60c448f5c",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 2,
+          "tileBytes": 19908,
+          "tileBoundsWgs84": [
+            -17.475076,
+            14.7196434,
+            -17.4721067,
+            14.7218003
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/133c910498eae7a085e6f208dfb5dda58cd1dfbb777b61ca32172f154ee8034b.json",
+          "manifestSha256": "133c910498eae7a085e6f208dfb5dda58cd1dfbb777b61ca32172f154ee8034b",
+          "region": {
+            "bounds": [
+              -17.473076,
+              14.7174553,
+              -17.4707682,
+              14.7231657
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-3-2",
+            "kind": "cell",
+            "name": "Dakar regional child cell 3,2",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "1b543399006eb15a3b0aeb747f90221f98e3dd40a3f026dbe717219655ce642a",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 6,
+          "tileBytes": 37411,
+          "tileBoundsWgs84": [
+            -17.473076,
+            14.7174553,
+            -17.4707682,
+            14.7231657
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/619f09312e96da57babfc7c5dd8fd6b861a12ee3c69ec5e0033689fbf912bf14.json",
+          "manifestSha256": "619f09312e96da57babfc7c5dd8fd6b861a12ee3c69ec5e0033689fbf912bf14",
+          "region": {
+            "bounds": [
+              -17.473076,
+              14.7154131,
+              -17.4709052,
+              14.7192335
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-3-1",
+            "kind": "cell",
+            "name": "Dakar regional child cell 3,1",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "059d37f0f02bf7586732eb210d6c6e87047face158967810405d5862c6de1c07",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 4,
+          "tileBytes": 39152,
+          "tileBoundsWgs84": [
+            -17.473076,
+            14.7154131,
+            -17.4709052,
+            14.7192335
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/cb7911d44d0d87b18a1b713e0e089fc06f1234659efa1b9c753dcb41870afddb.json",
+          "manifestSha256": "cb7911d44d0d87b18a1b713e0e089fc06f1234659efa1b9c753dcb41870afddb",
+          "region": {
+            "bounds": [
+              -17.473076,
+              14.7188981,
+              -17.470765,
+              14.7221074
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-3-3",
+            "kind": "cell",
+            "name": "Dakar regional child cell 3,3",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "95a781b399a54d8b8ce7032b0c21cb8ed51c4b7fe81c4b24072397d15c87d7cd",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 4,
+          "tileBytes": 38684,
+          "tileBoundsWgs84": [
+            -17.473076,
+            14.7188981,
+            -17.470765,
+            14.7221074
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/819fc7845709c93c2463763fcfe4e65f0713751e4d7e6d1f265c9f3f2733a771.json",
+          "manifestSha256": "819fc7845709c93c2463763fcfe4e65f0713751e4d7e6d1f265c9f3f2733a771",
+          "region": {
+            "bounds": [
+              -17.475076,
+              14.7158962,
+              -17.4722111,
+              14.7198668
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-2-2",
+            "kind": "cell",
+            "name": "Dakar regional child cell 2,2",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "ff1ba03dc6e35369a5059375e6d78a2bcd3f15e7a6c8f67c7e9c40ad2f8a9663",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 4,
+          "tileBytes": 24376,
+          "tileBoundsWgs84": [
+            -17.475076,
+            14.7158962,
+            -17.4722111,
+            14.7198668
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/428937e15869d84b98a8d966e475147581c785e636a760851932f7632b002e13.json",
+          "manifestSha256": "428937e15869d84b98a8d966e475147581c785e636a760851932f7632b002e13",
+          "region": {
+            "bounds": [
+              -17.479076000000003,
+              14.7155602,
+              -17.4765057,
+              14.7180261
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-0-1",
+            "kind": "cell",
+            "name": "Dakar regional child cell 0,1",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "4d3665d8d69fc777fecfd15f4582ceb8e7a5a2b95033a2e0368a0bc59fa62572",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 5,
+          "tileBytes": 39896,
+          "tileBoundsWgs84": [
+            -17.479076000000003,
+            14.7155602,
+            -17.4765057,
+            14.7180261
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/6acbceb6b6a12ee40bd28c84444d7c9131511063ed2b802a129564b8e5cf661c.json",
+          "manifestSha256": "6acbceb6b6a12ee40bd28c84444d7c9131511063ed2b802a129564b8e5cf661c",
+          "region": {
+            "bounds": [
+              -17.475076,
+              14.7150246,
+              -17.4722111,
+              14.7179299
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-2-1",
+            "kind": "cell",
+            "name": "Dakar regional child cell 2,1",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "8a49a168e051089326f64786d560b6ecdb7f3a9a20e176c36298518affb4c66b",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 9,
+          "tileBytes": 74827,
+          "tileBoundsWgs84": [
+            -17.475076,
+            14.7150246,
+            -17.4722111,
+            14.7179299
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/416552d3b71c6dd33bf6f5f9754c8d998688e8bc18c0d5c11d14d953cfc73754.json",
+          "manifestSha256": "416552d3b71c6dd33bf6f5f9754c8d998688e8bc18c0d5c11d14d953cfc73754",
+          "region": {
+            "bounds": [
+              -17.477076000000004,
+              14.7173992,
+              -17.475076,
+              14.719777999999998
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-1-2",
+            "kind": "cell",
+            "name": "Dakar regional child cell 1,2",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "990ed428750557bc75d766a17940fe89754e9dc0569c98ff7ed38940e1d65dfe",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 2,
+          "tileBytes": 19171,
+          "tileBoundsWgs84": [
+            -17.477076000000004,
+            14.7173992,
+            -17.475076,
+            14.719777999999998
+          ]
+        },
+        {
+          "campaign": "dakar-larger-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-larger-fanout-v1-local/output/manifests/cbed82f8bf4b7f4d7ff038374b3bad4530e292f29dd6b7b40e57dbb58df9f80b.json",
+          "manifestSha256": "cbed82f8bf4b7f4d7ff038374b3bad4530e292f29dd6b7b40e57dbb58df9f80b",
+          "region": {
+            "bounds": [
+              -17.479076000000003,
+              14.7188692,
+              -17.476599,
+              14.7219722
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-larger-cell-0-3",
+            "kind": "cell",
+            "name": "Dakar regional child cell 0,3",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "873b2f56285c2085da125544f13968e845b227b78d467f2c6e220fc139f8d165",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 7,
+          "tileBytes": 70973,
+          "tileBoundsWgs84": [
+            -17.479076000000003,
+            14.7188692,
+            -17.476599,
+            14.7219722
+          ]
+        },
+        {
+          "campaign": "dakar-cached-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-cached-fanout-v1-local/output/manifests/f22d2dbe0da3155cb7ba65b61c1c3f87906982b8a0b1f2a43e1375f6c5dcdbd7.json",
+          "manifestSha256": "f22d2dbe0da3155cb7ba65b61c1c3f87906982b8a0b1f2a43e1375f6c5dcdbd7",
+          "region": {
+            "bounds": [
+              -17.477076,
+              14.714745,
+              -17.4749509,
+              14.7180615
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-cached-cell-0-0",
+            "kind": "cell",
+            "name": "Dakar cached child cell 0,0",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "b78450218a608eafcec017223ade35c4e4dd72386e91c19a08d5513f583fb0a6",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 4,
+          "tileBytes": 25010,
+          "tileBoundsWgs84": [
+            -17.477076,
+            14.714745,
+            -17.4749509,
+            14.7180615
+          ]
+        },
+        {
+          "campaign": "dakar-cached-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-cached-fanout-v1-local/output/manifests/3f95cd9c3b39529fa7931b5f2423e02bdc8ed7a8f3534a3e84289e06a7749d80.json",
+          "manifestSha256": "3f95cd9c3b39529fa7931b5f2423e02bdc8ed7a8f3534a3e84289e06a7749d80",
+          "region": {
+            "bounds": [
+              -17.475076,
+              14.7158962,
+              -17.4722111,
+              14.7198668
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-cached-cell-1-1",
+            "kind": "cell",
+            "name": "Dakar cached child cell 1,1",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "7e92c28ef519e65b96ccef50dd59b5e62ce3abbbd95ce6ae77213a5e0b4c2cd3",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 4,
+          "tileBytes": 24376,
+          "tileBoundsWgs84": [
+            -17.475076,
+            14.7158962,
+            -17.4722111,
+            14.7198668
+          ]
+        },
+        {
+          "campaign": "dakar-cached-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-cached-fanout-v1-local/output/manifests/3f603bdc76920c6d2b1e7e648745e01c78b9d3a1435938a28c759317d8a87503.json",
+          "manifestSha256": "3f603bdc76920c6d2b1e7e648745e01c78b9d3a1435938a28c759317d8a87503",
+          "region": {
+            "bounds": [
+              -17.475076,
+              14.7150246,
+              -17.4722111,
+              14.7179299
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-cached-cell-1-0",
+            "kind": "cell",
+            "name": "Dakar cached child cell 1,0",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "2313243c3c6af9b7ca077fd52d5b0d0f9c7e6fecb1ab1dfc6632b19420bc467f",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 9,
+          "tileBytes": 74827,
+          "tileBoundsWgs84": [
+            -17.475076,
+            14.7150246,
+            -17.4722111,
+            14.7179299
+          ]
+        },
+        {
+          "campaign": "dakar-cached-fanout-v1-local",
+          "manifestPath": ".cache/world-build/campaigns/dakar-cached-fanout-v1-local/output/manifests/e4b7e6c6c27892f077b9a54477830c7d87ab5c0a534f753cb4fe5869a2c80fdd.json",
+          "manifestSha256": "e4b7e6c6c27892f077b9a54477830c7d87ab5c0a534f753cb4fe5869a2c80fdd",
+          "region": {
+            "bounds": [
+              -17.477076,
+              14.7173992,
+              -17.475076,
+              14.719778
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-cached-cell-0-1",
+            "kind": "cell",
+            "name": "Dakar cached child cell 0,1",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "f6bf9022abe337c32da6930e8c08df62e49e434620386d8f1580c3e4bc67e289",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 2,
+          "tileBytes": 19118,
+          "tileBoundsWgs84": [
+            -17.477076,
+            14.7173992,
+            -17.475076,
+            14.719778
+          ]
+        },
+        {
+          "campaign": "africa-urban-samples-v1",
+          "manifestPath": ".cache/world-build/campaigns/africa-urban-samples-v1/output/manifests/7c885b4c127b29047d91bbde14ed8866169232f7b8753e77e772f41821e817f0.json",
+          "manifestSha256": "7c885b4c127b29047d91bbde14ed8866169232f7b8753e77e772f41821e817f0",
+          "region": {
+            "bounds": [
+              -17.477076,
+              14.715777999999998,
+              -17.473076000000002,
+              14.719778
+            ],
+            "countryCode": "SN",
+            "id": "sn-dakar-urban-sample",
+            "kind": "cell",
+            "name": "Dakar Natural Earth populated-place sample cell",
+            "parentId": "country:natural-earth:NE_ID%3A1159321243",
+            "timezone": "Africa/Dakar"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "b2c22ea576fe173192dbf56dfb606e99fe345215c4c8da7e8531c39fbd87d613",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 19,
+          "tileBytes": 162359,
+          "tileBoundsWgs84": [
+            -17.4775711,
+            14.714745,
+            -17.4722111,
+            14.725172
+          ]
+        }
+      ]
+    },
+    {
+      "country": "South Africa",
+      "iso2": "ZA",
+      "countryId": "country:natural-earth:NE_ID%3A1159321431",
+      "countryBoundsWgs84": [
+        16.469981,
+        -46.965753,
+        37.977794,
+        -22.126452
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159321431",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/e797517b83a267f14eb42aeb9388b0a7e976ce4cbbc8479d4e3b943dff3c7720.json",
+        "outlineIndexSha256": "e797517b83a267f14eb42aeb9388b0a7e976ce4cbbc8479d4e3b943dff3c7720",
+        "geometryType": "MultiPolygon",
+        "polygonCount": 3,
+        "coordinatePositions": 2207,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/7fdd40a5297433250c9cc9d139147e49f1d0138fb734b2b0816d38f03133148c.json",
+            "sha256": "7fdd40a5297433250c9cc9d139147e49f1d0138fb734b2b0816d38f03133148c",
+            "bytes": 50355,
+            "polygonCount": 3,
+            "coordinatePositions": 2207
+          }
+        ]
+      },
+      "selectedPlace": {
+        "name": "Cape Town",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151583",
+        "coordinatesWgs84": [
+          18.433042,
+          -33.918065
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 0,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/6665ae9cdde75d122caa13e298c6dc02b95acbf7b98b2cb059d435430ce4b139.json",
+        "pointAssetSha256": "6665ae9cdde75d122caa13e298c6dc02b95acbf7b98b2cb059d435430ce4b139",
+        "countryEmittedPlaceCount": 72,
+        "ianaTimezone": "Africa/Johannesburg",
+        "placeRole": "legislative capital; Pretoria is executive and Bloemfontein judicial capital"
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/ee905dc4203a2244fbbb5651381198bd254d50f176eabc3ffc0bfd75b70e1f08.json",
+        "sha256": "ee905dc4203a2244fbbb5651381198bd254d50f176eabc3ffc0bfd75b70e1f08",
+        "emittedUnits": 9,
+        "linkedRows": 9,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": [
+        {
+          "campaign": "representative-real-v2",
+          "manifestPath": ".cache/world-build/campaigns/representative-real-v2/output/manifests/9d991555b3ed7b2806d39b6c0329dd3826837a359c161a57b02fb12f1ae6c098.json",
+          "manifestSha256": "9d991555b3ed7b2806d39b6c0329dd3826837a359c161a57b02fb12f1ae6c098",
+          "region": {
+            "bounds": [
+              18.42122,
+              -33.92784,
+              18.42522,
+              -33.92384
+            ],
+            "countryCode": "ZA",
+            "id": "za-cape-town-city-centre-cell",
+            "kind": "cell",
+            "name": "Cape Town city-centre cell",
+            "parentId": "country:natural-earth:NE_ID%3A1159321431",
+            "timezone": "Africa/Johannesburg"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "63694face98f9bd733eb7efbabbeb160090acf9243c5f45054081419fbeec0c9",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 7,
+          "tileBytes": 72521,
+          "tileBoundsWgs84": [
+            18.417538,
+            -33.9298355,
+            18.4259678,
+            -33.9221266
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Ethiopia",
+      "iso2": "ET",
+      "countryId": "country:natural-earth:NE_ID%3A1159320617",
+      "countryBoundsWgs84": [
+        32.9898,
+        3.403333,
+        47.979169,
+        14.879532
+      ],
+      "admin0Geometry": {
+        "source": "Natural Earth admin0 10m, public domain, release ca96624a56bd078437bca8184e78163e5039ad19",
+        "sourceFeatureRef": "natural-earth-admin0-10m-ca96624a56bd078437bca8184e78163e5039ad19:NE_ID:1159320617",
+        "outlineIndexPath": ".cache/world-build/output/country-inventory/outline-index/c959fd5a61cba9f0a1adfa69831d9c8236fde018ea5f5736389bb415aac1e8f5.json",
+        "outlineIndexSha256": "c959fd5a61cba9f0a1adfa69831d9c8236fde018ea5f5736389bb415aac1e8f5",
+        "geometryType": "Polygon",
+        "polygonCount": 1,
+        "coordinatePositions": 1074,
+        "outlineParts": [
+          {
+            "path": ".cache/world-build/output/country-inventory/outlines/8cf3342aeb83f646f6487b32f95fc4157d2c5556eeb801516d7e54ea61128179.json",
+            "sha256": "8cf3342aeb83f646f6487b32f95fc4157d2c5556eeb801516d7e54ea61128179",
+            "bytes": 22828,
+            "polygonCount": 1,
+            "coordinatePositions": 1074
+          }
+        ]
+      },
+      "selectedPlace": {
+        "name": "Addis Ababa",
+        "naturalEarthPlaceId": "place:natural-earth:NE_ID%3A1159151549",
+        "coordinatesWgs84": [
+          38.698059,
+          9.035256
+        ],
+        "sourceClass": "Admin-0 capital",
+        "scaleRank": 1,
+        "pointAssetPath": ".cache/world-build/output/selected-places/points/01b2eea4b45a5683c5e2ed9126f5cc70d2effbe9df33183841c4a2f469358ee3.json",
+        "pointAssetSha256": "01b2eea4b45a5683c5e2ed9126f5cc70d2effbe9df33183841c4a2f469358ee3",
+        "countryEmittedPlaceCount": 34,
+        "ianaTimezone": "Africa/Addis_Ababa",
+        "placeRole": "national capital"
+      },
+      "admin1": {
+        "path": ".cache/world-build/output/admin1-foundation/countries/4c30425874e2c3e274c6d56d4a5f4a336f6be070ad3860f2f561f0de83949e71.json",
+        "sha256": "4c30425874e2c3e274c6d56d4a5f4a336f6be070ad3860f2f561f0de83949e71",
+        "emittedUnits": 11,
+        "linkedRows": 11,
+        "coverage": "Natural Earth admin1 partition footprints"
+      },
+      "cityScaleRealData": [
+        {
+          "campaign": "africa-urban-samples-v1",
+          "manifestPath": ".cache/world-build/campaigns/africa-urban-samples-v1/output/manifests/b427bd5514021f266419072f9c2c0899460ac7c1c31eeaafccbcedf7108ca688.json",
+          "manifestSha256": "b427bd5514021f266419072f9c2c0899460ac7c1c31eeaafccbcedf7108ca688",
+          "region": {
+            "bounds": [
+              38.696059,
+              9.033256,
+              38.700059,
+              9.037256000000001
+            ],
+            "countryCode": "ET",
+            "id": "et-addis-ababa-urban-sample",
+            "kind": "cell",
+            "name": "Addis Ababa Natural Earth populated-place sample cell",
+            "parentId": "country:natural-earth:NE_ID%3A1159320617",
+            "timezone": "Africa/Addis_Ababa"
+          },
+          "source": {
+            "id": "overture-2026-09-23.1-buildings-roads",
+            "release": "2026-09-23.1",
+            "sha256": "cc6df583e7aa819be011721363d99c9969141e3cb905f39ada86d49c92cb9112",
+            "license": "ODbL-1.0",
+            "url": "https://stac.overturemaps.org/2026-09-23.1/catalog.json",
+            "attribution": "© Overture Maps Foundation. Buildings data: OpenStreetMap, Esri Community Maps, Microsoft Global ML Building Footprints, Google Open Buildings, USGS 3DEP, Qian Shi 2023, IGN BTN 2024. https://docs.overturemaps.org/attribution/; © Overture Maps Foundation. Transportation data: OpenStreetMap and TomTom. https://docs.overturemaps.org/attribution/"
+          },
+          "tileCount": 35,
+          "tileBytes": 297720,
+          "tileBoundsWgs84": [
+            38.6952796,
+            9.0328414,
+            38.700863,
+            9.0377578
+          ]
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    "Natural Earth country/admin1/city-point layers provide no street-scale transport, buildings, airport footprints or terrain.",
+    "Benin/Cotonou and Côte d’Ivoire/Abidjan have no matching city-cell Overture building/road pilot in inspected cached campaign outputs.",
+    "Dakar, Cape Town and Addis Ababa have only the enumerated bounded Overture cell samples; no citywide or countrywide completeness is established.",
+    "Climate data was unavailable in existing city pilot manifests.",
+    "No urban source-cell set was found for Cotonou or Abidjan; later map acquisition must produce and validate it before these regions can be presented as full playable cities."
+  ]
+}

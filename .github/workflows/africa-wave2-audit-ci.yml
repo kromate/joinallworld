@@ -1,0 +1,46 @@
+name: African starter second wave audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/world-foundation]
+    paths:
+      - 'src/game/cities/cotonou/**'
+      - 'src/game/cities/abidjan/**'
+      - 'src/game/cities/dakar/**'
+      - 'src/game/cities/cape-town/**'
+      - 'src/game/cities/addis-ababa/**'
+      - 'world/playable-africa-wave2/**'
+      - 'scripts/world/build-playable-africa-wave2.py'
+      - 'scripts/world/verify-playable-destination.ts'
+      - '.github/workflows/africa-wave2-audit-ci.yml'
+permissions:
+  contents: read
+jobs:
+  source-and-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22.19.0', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: Pinned five generated city assets
+        run: python3 scripts/world/build-playable-africa-wave2.py --check
+      - name: Verify each city before the next
+        env:
+          NODE_OPTIONS: --max-old-space-size=512
+        run: |
+          for city in cotonou abidjan dakar cape-town addis-ababa
+          do
+            node --experimental-strip-types scripts/world/verify-playable-destination.ts "$city"
+          done
+      - name: Strict city and verifier types
+        env:
+          NODE_OPTIONS: --max-old-space-size=1536
+        run: node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck --types node scripts/world/verify-playable-destination.ts src/game/cities/cotonou/*.ts src/game/cities/abidjan/*.ts src/game/cities/dakar/*.ts src/game/cities/cape-town/*.ts src/game/cities/addis-ababa/*.ts

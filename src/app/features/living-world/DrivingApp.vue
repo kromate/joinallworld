@@ -2,7 +2,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { DrivingControlPacket, DrivingLifecycleRequest, DrivingResponse, DrivingSessionView, QualificationClaimRequest, QualificationResponse, StarterRentalClaimRequest, StarterRentalResponse } from '../../../types/living-world.ts'
-import type { DrivingInput, DrivingRoute, DrivingState } from '../../../game/living-world/driving.ts'
+import type { DrivingGear, DrivingInput, DrivingRoute, DrivingState } from '../../../game/living-world/driving.ts'
 import { createDriving, stepDriving } from '../../../game/living-world/driving.ts'
 import type { Look } from '../../../types/life.ts'
 import type { DrivingScene } from './drivingScene.ts'
@@ -37,10 +37,14 @@ type TouchControl = keyof DrivingInput | 'left' | 'right'
 const touch = new Map<number, TouchControl>()
 const keys = new Set<string>()
 const held = ref<DrivingInput>({ throttle: 0, brake: 0, steer: 0 })
+// null preserves the legacy three-field control frame until a player explicitly picks a direction.
+const requestedGear = ref<DrivingGear | null>(null)
+const reverseGearControls = ref(false)
 const wheelSteer = ref(0)
 const scene = ref<DrivingScene | null>(null)
 const reduced = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')
 let generation = 0, mounted = false, disposed = false, controlInFlight = false, loadRequest = 0
+let capabilityEpoch = 0
 let controlActor: string | null = null
 let sessionActor: string | null = game.view.value.session?.id ?? null
 let pauseAfterControl: { prior: DrivingSessionView; actor: string | null; leaving: boolean; latest?: DrivingSessionView } | null = null
@@ -49,7 +53,7 @@ let sampleTimer = 0, flushTimer = 0, visualState: DrivingState | null = null
 let pendingFrames: DrivingInput[] = [], observer: ResizeObserver | null = null
 let qualificationRequest = 0
 let rentalRequest = 0
-type ResponseOrigin = { kind: 'load' | 'start' | 'control' | 'lifecycle' | 'restart'; expectedJourney?: string }
+type ResponseOrigin = { kind: 'load' | 'start' | 'control' | 'lifecycle' | 'restart'; expectedJourney?: string; capabilityEpoch: number }
 
 const canStart = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(game.view.value.session?.id) && Boolean(route.value) && (!session.value || complete.value) && assessment.value !== 'passed' && !retainedPass.value)
 const canResume = computed(() => !busy.value && online.value && !needsRefresh.value && Boolean(scene.value) && !webglUnavailable.value && Boolean(session.value) && !active.value && !boarding.value && session.value?.state.status === 'paused')
@@ -141,9 +145,22 @@ const canClaimStarterPermission = computed(() => {
     && reply.eligible === true && reply.valid === false && reply.permission === null
   })
 const practiceLabel = 'Authored simulated practice course · not a mapped public road or real licence test.'
+const canonicalGear = computed<DrivingGear>(() => serverState.value?.gear === 'reverse' ? 'reverse' : 'forward')
+const transmissionStatus = computed(() => {
+  const saved = serverState.value
+  if (!saved) return 'Server-confirmed direction is not available.'
+  const confirmed = canonicalGear.value === 'reverse' ? 'Reverse' : 'Drive'
+  const requested = requestedGear.value
+  if (!requested) return `Server-confirmed direction: ${confirmed}.`
+  const selected = requested === 'reverse' ? 'Reverse' : 'Drive'
+  if (requested === canonicalGear.value) return `Requested ${selected}; server confirms ${confirmed} is engaged.`
+  const shift = saved.status === 'running' && saved.speed > 0
+    ? `Braking in ${confirmed} before the shift.` : `Waiting for the server to confirm the shift from ${confirmed}.`
+  return `Requested ${selected}; ${shift} Server-confirmed direction: ${confirmed}.`
+})
 function responseCurrent(token: number, key: string): boolean { return !disposed && token === generation && key === contextKey.value }
 function clearHeld(): void {
-  keys.clear(); touch.clear(); held.value = { throttle: 0, brake: 0, steer: 0 }
+  keys.clear(); touch.clear(); requestedGear.value = null; held.value = { throttle: 0, brake: 0, steer: 0 }
   const gesture = wheelGesture; wheelGesture = null; wheelSteer.value = 0
   if (gesture?.target.hasPointerCapture(gesture.pointerId)) gesture.target.releasePointerCapture(gesture.pointerId)
   scene.value?.setInput(held.value)
@@ -159,8 +176,16 @@ function updateHeld(): void {
   const brake = keys.has('ArrowDown') || keys.has('s') || values.includes('brake')
   const buttonSteering = Number(right) - Number(left)
   const manualSteering = keys.has('ArrowLeft') || keys.has('a') || keys.has('ArrowRight') || keys.has('d') || values.includes('left') || values.includes('right')
-  held.value = { throttle: throttle ? 1 : 0, brake: brake ? 1 : 0, steer: manualSteering ? buttonSteering : wheelSteer.value }
+  const next: DrivingInput = { throttle: throttle ? 1 : 0, brake: brake ? 1 : 0, steer: manualSteering ? buttonSteering : wheelSteer.value }
+  if (reverseGearControls.value && requestedGear.value !== null) next.gear = requestedGear.value
+  held.value = next
   scene.value?.setInput(held.value)
+}
+function selectGear(gear: DrivingGear): void {
+  if (!reverseGearControls.value || !active.value || !online.value || needsRefresh.value) return
+  if (requestedGear.value !== gear) pendingFrames = []
+  requestedGear.value = gear
+  updateHeld()
 }
 function steeringDown(event: PointerEvent): void {
   if (!active.value || wheelGesture || event.button !== 0 || !Number.isFinite(event.clientX)) return
@@ -189,7 +214,19 @@ function steeringFocusOut(): void {
   if (gesture?.target.hasPointerCapture(gesture.pointerId)) gesture.target.releasePointerCapture(gesture.pointerId)
   updateHeld()
 }
-function applyResponse(answer: DrivingResponse, token: number, key: string, origin: ResponseOrigin = { kind: 'load' }): boolean {
+function applyCapability(answer: DrivingResponse, requestEpoch: number): void {
+  if (requestEpoch !== capabilityEpoch) return
+  if (answer.reverseGearControls === true) { reverseGearControls.value = true; return }
+  capabilityEpoch++
+  const hadGearIntent = requestedGear.value !== null || Object.hasOwn(held.value, 'gear') || pendingFrames.some(frame => Object.hasOwn(frame, 'gear'))
+  reverseGearControls.value = false
+  if (hadGearIntent) {
+    clearHeld(); active.value = false; boarding.value = false
+    if (serverState.value) { visualState = serverState.value; scene.value?.present(serverState.value) }
+    feedback.value = 'Reverse controls were withdrawn. Held controls were released; the saved lesson is being checked before driving continues.'
+  }
+}
+function applyResponse(answer: DrivingResponse, token: number, key: string, origin: ResponseOrigin): boolean {
   if (!responseCurrent(token, key)) return false
   if (!answer || typeof answer.ok !== 'boolean' || !answer.course || typeof answer.course.id !== 'string') throw new Error('The practice lesson reply was incomplete.')
   if (!answer.ok) {
@@ -208,6 +245,8 @@ function applyResponse(answer: DrivingResponse, token: number, key: string, orig
     const startRefusal = origin.kind === 'start' && ['journey_active', 'journey_exists', 'superseded_journey', 'assessment_retained'].includes(answer.code)
     const adoptCanonicalStart = Boolean(startRefusal && expectedStillCurrent && contextMatches && current
       && (!previous || current.journeyId !== previous.journeyId || current.revision >= previous.revision))
+    const freshSession = !current || contextMatches && (!previous || current.journeyId !== previous.journeyId || current.revision >= previous.revision)
+    if (expectedStillCurrent && freshSession) applyCapability(answer, origin.capabilityEpoch)
     if (current && contextMatches && (freshLoad || sameJourneyFresh && expectedStillCurrent || adoptCanonicalStart)) {
       session.value = current; sessionActor = game.view.value.session?.id ?? null; serverState.value = current.state; assessment.value = current.state.assessment
       retainedPass.value = current.state.assessment === 'passed'
@@ -244,6 +283,7 @@ function applyResponse(answer: DrivingResponse, token: number, key: string, orig
       feedback.value = 'The saved lesson changed while this request was in flight. Reconnect and check it before continuing.'
       return false
     }
+    applyCapability(answer, origin.capabilityEpoch)
     retainedPass.value = answer.session.state.assessment === 'passed'
     session.value = answer.session; sessionActor = game.view.value.session?.id ?? null; serverState.value = answer.session.state; assessment.value = answer.session.state.assessment
     if (!visualState || previous?.journeyId !== answer.session.journeyId || answer.session.revision >= (previous?.revision ?? -1)) visualState = answer.session.state
@@ -252,6 +292,7 @@ function applyResponse(answer: DrivingResponse, token: number, key: string, orig
     const previous = session.value
     const expectedStillCurrent = origin.expectedJourney ? previous?.journeyId === origin.expectedJourney : !previous
     if (!expectedStillCurrent) { needsRefresh.value = true; feedback.value = 'The saved lesson changed while this request was in flight. Reconnect and check it before continuing.'; return false }
+    applyCapability(answer, origin.capabilityEpoch)
     retainedPass.value = false; session.value = null; sessionActor = null; serverState.value = null; visualState = null; assessment.value = 'pending'
   }
   feedback.value = answer.reason || answer.session?.state.feedback || 'Course ready. Start a lesson or explicitly resume your saved lesson.'
@@ -275,7 +316,8 @@ async function createScene(token: number, key: string): Promise<void> {
 }
 async function load(): Promise<void> {
   restartConfirmation.value = false
-  const token = generation, key = contextKey.value, request = ++loadRequest
+  clearHeld()
+  const token = generation, key = contextKey.value, request = ++loadRequest, requestCapabilityEpoch = capabilityEpoch
   const expectedJourney = session.value?.journeyId, actor = game.view.value.session?.id ?? null, city = cityId.value
   const requestCurrent = (): boolean => responseCurrent(token, key) && request === loadRequest && actor === (game.view.value.session?.id ?? null)
   const responseIsCurrent = (): boolean => requestCurrent() && (session.value?.journeyId ?? undefined) === expectedJourney
@@ -284,7 +326,7 @@ async function load(): Promise<void> {
   try {
     const answer = await game.client.api<DrivingResponse>(`/api/living-world/driving?city=${encodeURIComponent(city)}`, {}, responseIsCurrent)
     if (!responseIsCurrent()) return
-    if (applyResponse(answer, token, key, { kind: 'load', expectedJourney })) {
+    if (applyResponse(answer, token, key, { kind: 'load', expectedJourney, capabilityEpoch: requestCapabilityEpoch })) {
       needsRefresh.value = false
       // A server record found running after reload/uncertain delivery is stopped first;
       // only an explicit user action can resume it in this view.
@@ -478,12 +520,12 @@ function beginPresentation(): void {
 async function startLesson(): Promise<void> {
   restartConfirmation.value = false
   if (!canStart.value) return
-  const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId
+  const token = generation, key = contextKey.value, expectedJourney = session.value?.journeyId, requestCapabilityEpoch = capabilityEpoch
   const city = cityId.value, requestId = game.newId(); busy.value = true
   try {
     const answer = await game.client.api<DrivingResponse>('/api/living-world/driving/start', { method: 'POST', body: { cityId: city, requestId } },
       () => responseCurrent(token, key) && cityId.value === city && (session.value?.journeyId ?? undefined) === expectedJourney)
-    if (applyResponse(answer, token, key, { kind: 'start', expectedJourney }) && answer.session) beginPresentation()
+    if (applyResponse(answer, token, key, { kind: 'start', expectedJourney, capabilityEpoch: requestCapabilityEpoch }) && answer.session) beginPresentation()
   } catch (error) { if (responseCurrent(token, key)) { online.value = false; feedback.value = message(error, 'Offline: the lesson did not start. No result was recorded.') } }
   finally { if (responseCurrent(token, key)) busy.value = false }
 }
@@ -503,7 +545,7 @@ function isNeutralRestart(answer: DrivingResponse, previous: DrivingSessionView)
 }
 async function restartLesson(): Promise<void> {
   if (!canRestart.value || !session.value) return
-  const prior = session.value, token = generation, key = contextKey.value
+  const prior = session.value, token = generation, key = contextKey.value, requestCapabilityEpoch = capabilityEpoch
   restartConfirmation.value = false
   clearHeld(); active.value = false; boarding.value = false
   busy.value = true; lifecyclePending.value++
@@ -520,7 +562,7 @@ async function restartLesson(): Promise<void> {
       return
     }
     if (!answer.ok) {
-      applyResponse(answer, token, key, { kind: 'restart', expectedJourney: prior.journeyId })
+      applyResponse(answer, token, key, { kind: 'restart', expectedJourney: prior.journeyId, capabilityEpoch: requestCapabilityEpoch })
       clearHeld(); active.value = false; boarding.value = false
       return
     }
@@ -529,6 +571,7 @@ async function restartLesson(): Promise<void> {
       feedback.value = 'The restart reply could not be confirmed. Controls remain stopped; reconnect to check the saved lesson.'
       return
     }
+    applyCapability(answer, requestCapabilityEpoch)
     const next = answer.session!
     session.value = next; sessionActor = game.view.value.session?.id ?? null; serverState.value = next.state; assessment.value = next.state.assessment
     retainedPass.value = false; route.value = answer.course; visualState = next.state; scene.value?.present(next.state)
@@ -548,7 +591,8 @@ async function restartLesson(): Promise<void> {
 }
 async function lifecycle(action: 'resume' | 'pause', prior = session.value, allowLeaving = false, applyResult = true): Promise<void> {
   if (!prior) return
-  const token = generation, key = contextKey.value
+  clearHeld()
+  const token = generation, key = contextKey.value, requestCapabilityEpoch = capabilityEpoch
   const body: DrivingLifecycleRequest = { cityId: prior.cityId, journeyId: prior.journeyId, revision: prior.revision, requestId: game.newId() }
   lifecyclePending.value++
   try {
@@ -558,12 +602,13 @@ async function lifecycle(action: 'resume' | 'pause', prior = session.value, allo
     if (applyResult && (allowLeaving || responseCurrent(token, key))) {
       if (answer.ok && answer.session && answer.session.journeyId === prior.journeyId && latest?.journeyId === prior.journeyId
         && answer.session.revision >= prior.revision && answer.session.revision >= latest.revision) {
+        if (!allowLeaving) applyCapability(answer, requestCapabilityEpoch)
         session.value = answer.session; sessionActor = game.view.value.session?.id ?? null; serverState.value = answer.session.state; assessment.value = answer.session.state.assessment
         visualState = answer.session.state; scene.value?.present(answer.session.state)
         if (action === 'resume') beginPresentation()
         else { active.value = false; needsRefresh.value = false; feedback.value = answer.reason || 'Lesson paused safely. Resume when ready.' }
       } else if (!answer.ok && !allowLeaving) {
-        applyResponse(answer, token, key, { kind: 'lifecycle', expectedJourney: prior.journeyId }); clearHeld(); active.value = false; boarding.value = false
+        applyResponse(answer, token, key, { kind: 'lifecycle', expectedJourney: prior.journeyId, capabilityEpoch: requestCapabilityEpoch }); clearHeld(); active.value = false; boarding.value = false
         if (action === 'resume' && answer.session?.journeyId === prior.journeyId && answer.session.state.status === 'running') void lifecycle('pause', answer.session)
         if (action === 'pause') needsRefresh.value = true
         feedback.value = answer.reason || `Could not ${action} the lesson; the server's current state is shown.`
@@ -603,8 +648,12 @@ async function sendFrames(): Promise<void> {
   const current = session.value
   if ((!active.value && !boarding.value) || !current || !pendingFrames.length || controlInFlight || !online.value) return
   const frames = pendingFrames.slice(-5); pendingFrames = []
+  if (!reverseGearControls.value && frames.some(frame => Object.hasOwn(frame, 'gear'))) {
+    clearHeld(); active.value = false; boarding.value = false
+    return
+  }
   const packet: DrivingControlPacket = { cityId: current.cityId, journeyId: current.journeyId, sequence: current.nextSequence, frames }
-  const token = generation, key = contextKey.value
+  const token = generation, key = contextKey.value, requestCapabilityEpoch = capabilityEpoch
   const actor = game.view.value.session?.id ?? null
   controlActor = actor
   controlInFlight = true; pendingControls.value = true
@@ -615,11 +664,13 @@ async function sendFrames(): Promise<void> {
     if (pauseAfterControl?.prior.journeyId === current.journeyId && answer.session?.journeyId === current.journeyId && answer.session.revision >= pauseAfterControl.prior.revision) pauseAfterControl.latest = answer.session
     if (responseCurrent(token, key) && answer.ok && answer.session && answer.session.journeyId === current.journeyId
       && session.value?.journeyId === current.journeyId && answer.session.revision >= session.value.revision) {
-      applyResponse(answer, token, key, { kind: 'control', expectedJourney: current.journeyId })
+      const hadGearCapability = reverseGearControls.value
+      applyResponse(answer, token, key, { kind: 'control', expectedJourney: current.journeyId, capabilityEpoch: requestCapabilityEpoch })
+      if (hadGearCapability && !reverseGearControls.value && answer.session.state.status === 'running') void lifecycle('pause', answer.session)
       if (answer.session.state.status === 'complete') { clearHeld(); active.value = false; scene.value?.exit(); feedback.value = answer.session.state.feedback; void refreshPracticeCredentials(answer.session.journeyId) }
       else if (answer.session.state.status !== 'running') { clearHeld(); active.value = false; boarding.value = false; feedback.value = answer.session.state.feedback || 'The server paused this lesson. Review its state before resuming.' }
     } else if (responseCurrent(token, key) && !answer.ok) {
-      applyResponse(answer, token, key, { kind: 'control', expectedJourney: current.journeyId }); clearHeld(); active.value = false; boarding.value = false
+      applyResponse(answer, token, key, { kind: 'control', expectedJourney: current.journeyId, capabilityEpoch: requestCapabilityEpoch }); clearHeld(); active.value = false; boarding.value = false
       if (session.value?.journeyId === current.journeyId && answer.session?.journeyId === current.journeyId && answer.session.state.status === 'running') void lifecycle('pause', answer.session)
       if (answer.code === 'assessment_retained') feedback.value = 'Your passed assessment is retained by the server; this course will not replace it with another attempt.'
     } else if (responseCurrent(token, key) && answer.ok && answer.session
@@ -691,7 +742,7 @@ function resize(): void { if (!canvas.value || !scene.value) return; const box =
 function reducedChanged(): void { scene.value?.setReducedMotion(reduced?.matches === true) }
 watch(contextKey, async () => {
   const old = session.value
-  restartConfirmation.value = false; clearHeld(); active.value = false; boarding.value = false; generation++
+  restartConfirmation.value = false; clearHeld(); active.value = false; boarding.value = false; capabilityEpoch++; reverseGearControls.value = false; generation++
   qualificationRequest++; qualificationReply.value = null; qualificationJourney.value = null; qualificationBusy.value = false; qualificationMessage.value = 'Checking simulated qualification status…'
   rentalRequest++; rentalReply.value = null; rentalSnapshot.value = ''; rentalBusy.value = false
   rentalMessage.value = !game.view.value.session?.id ? 'Sign in to check starter permission status.'
@@ -720,6 +771,7 @@ onBeforeUnmount(() => {
   const priorActor = sessionActor
   restartConfirmation.value = false
   disposed = true; mounted = false; generation++; qualificationRequest++; rentalRequest++; loadRequest++
+  capabilityEpoch++; reverseGearControls.value = false
   if ((active.value || boarding.value) && prior) {
     clearHeld(); active.value = false; boarding.value = false
     // A closing panel only asks for a server-side reconcile; it never applies a stale response.
@@ -754,6 +806,11 @@ onBeforeUnmount(() => {
       <small>{{ dashboard.state }} · Zone distance is straight-line to its edge, not distance along the road.</small>
     </section>
     <section class="controls" aria-label="Driving controls" :aria-disabled="!active">
+      <div v-if="reverseGearControls" class="gear-selector" role="group" aria-label="Select requested direction">
+        <button type="button" :disabled="!active || !online || needsRefresh" :aria-pressed="requestedGear === 'forward'" @click="selectGear('forward')">Drive</button>
+        <button type="button" :disabled="!active || !online || needsRefresh" :aria-pressed="requestedGear === 'reverse'" @click="selectGear('reverse')">Reverse</button>
+      </div>
+      <p v-if="reverseGearControls" class="transmission-status" role="status">{{ transmissionStatus }}</p>
       <div class="wheel-controls" aria-label="Steering">
         <button type="button" aria-label="Steer left" :disabled="!active" @pointerdown.prevent="touchDown('left', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">←</button>
         <div class="steering-control">
@@ -849,6 +906,10 @@ onBeforeUnmount(() => {
 .restart-actions button.secondary { background: #e7edf0; color: #25323a; }
 button:disabled { opacity: .48; }
 .controls { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 10px; }
+ .gear-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; grid-column: 1 / -1; }
+.gear-selector button { min-height: 48px; }
+.gear-selector button[aria-pressed="true"] { outline: 3px solid #f1b83a; outline-offset: 1px; }
+.transmission-status { grid-column: 1 / -1; margin: 0; padding: 7px 9px; border-radius: 8px; background: #f1f5f6; color: #29373e; font-size: 12px; line-height: 1.35; }
 .wheel-controls { display: grid; grid-template-columns: 44px 88px 44px; justify-content: center; align-items: center; gap: 8px; grid-column: 1 / -1; }
 .wheel-controls button { font-size: 21px; }
 .wheel-controls > button { width: 44px; min-width: 44px; padding: 0; }

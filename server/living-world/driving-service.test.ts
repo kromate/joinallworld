@@ -3,15 +3,47 @@ import assert from 'node:assert/strict'
 import { fixture, flakyDisk, snapshot } from '../test-fixture.ts'
 import { ROUTE_MODULES } from '../routes/index.ts'
 import livingWorldRoutes from '../routes/living-world.ts'
+import { createDrivingService } from './driving-service.ts'
 import { PRACTICE_COURSE } from '../../src/game/living-world/course.ts'
 import type { DrivingResponse } from '../../src/types/living-world.ts'
 import type { Look } from '../../src/types/life.ts'
+import type { RouteModule } from '../types.ts'
 
 const LOOK: Look = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' }
 const drivingPath = '/api/living-world/driving'
 async function livingFixture(t: Parameters<typeof fixture>[0], extra: Parameters<typeof fixture>[1] = {}) {
   assert.ok(ROUTE_MODULES.includes(livingWorldRoutes), 'the production route registry includes living-world routes')
   return fixture(t, extra)
+}
+function configuredDrivingRoutes(option: unknown): RouteModule[] {
+  const configured: RouteModule = ctx => {
+    const driving = createDrivingService(ctx, { reverseGearIssuance: option as boolean })
+    return {
+      'GET /api/living-world/driving': async request => ({ body: await driving.current(request, request.query.get('city')), renew: true }),
+      'POST /api/living-world/driving/start': async request => ({ body: await driving.start(request, await request.json()), renew: true }),
+      'POST /api/living-world/driving/restart': async request => ({ body: await driving.restart(request, await request.json()), renew: true }),
+      'POST /api/living-world/driving/input': async request => ({ body: await driving.input(request, await request.json()), renew: true }),
+      'POST /api/living-world/driving/resume': async request => ({ body: await driving.resume(request, await request.json()), renew: true }),
+      'POST /api/living-world/driving/pause': async request => ({ body: await driving.pause(request, await request.json()), renew: true }),
+    }
+  }
+  return [...ROUTE_MODULES.filter(module => module !== livingWorldRoutes), configured]
+}
+function drivingOptionModes(options: unknown[]) {
+  let selected = 0
+  const module: RouteModule = ctx => {
+    const services = options.map(option => createDrivingService(ctx, { reverseGearIssuance: option as boolean }))
+    const driving = () => services[selected]!
+    return {
+      'GET /api/living-world/driving': async request => ({ body: await driving().current(request, request.query.get('city')), renew: true }),
+      'POST /api/living-world/driving/start': async request => ({ body: await driving().start(request, await request.json()), renew: true }),
+      'POST /api/living-world/driving/restart': async request => ({ body: await driving().restart(request, await request.json()), renew: true }),
+      'POST /api/living-world/driving/input': async request => ({ body: await driving().input(request, await request.json()), renew: true }),
+      'POST /api/living-world/driving/resume': async request => ({ body: await driving().resume(request, await request.json()), renew: true }),
+      'POST /api/living-world/driving/pause': async request => ({ body: await driving().pause(request, await request.json()), renew: true }),
+    }
+  }
+  return { routes: [...ROUTE_MODULES.filter(route => route !== livingWorldRoutes), module], select(index: number) { selected = index } }
 }
 
 type Reply = DrivingResponse & { error?: string }
@@ -71,6 +103,152 @@ test('driving packets are server-stepped, sequenced, retryable and bootstrap alw
   const resumed = await post(f, `${drivingPath}/resume`, { cityId: 'lagos', requestId: id(f), journeyId: session.journeyId, revision: boot.session!.revision }, player.cookie)
   assert.deepEqual([resumed.ok, resumed.code, resumed.session?.state.status, resumed.session?.revision], [true, 'resumed', 'running', 4])
   assert.deepEqual([await cash(f, player.cookie), await ledger(f, player.id)], [0, beforeLedger])
+})
+
+test('reverse issuance is literal trusted true; OFF refuses atomically and retains v1/v2 journeys', async t => {
+  const modes = drivingOptionModes([true, undefined, false, 'true'])
+  const f = await fixture(t, { routes: modes.routes })
+  const player = await onboard(f)
+  const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  assert.equal(started.reverseGearControls, true, 'only the literal trusted true option advertises the ephemeral capability')
+  assert.ok(started.session)
+  const journey = started.session
+  const row = () => f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+
+  const reversePacket = { cityId: 'lagos', journeyId: journey.journeyId, sequence: 1,
+    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'reverse' }] }
+  modes.select(1)
+  f.advance(100)
+  const beforeOmitted = await row()
+  const omittedRefusal = await post(f, `${drivingPath}/input`, reversePacket, player.cookie)
+  assert.deepEqual([omittedRefusal.ok, omittedRefusal.code, Object.hasOwn(omittedRefusal, 'reverseGearControls')], [false, 'reverse_gear_disabled', false])
+  assert.deepEqual(await row(), beforeOmitted, 'omitted issuance cannot mutate or upgrade a v1 row')
+
+  for (const [index, frames] of [[2, [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }]],
+    [3, [{ throttle: 1, brake: 0, steer: 0 }, { throttle: 0, brake: 1, steer: 0, gear: 'reverse' }]]] as const) {
+    modes.select(index)
+    const before = await row()
+    const refused = await post(f, `${drivingPath}/input`, { ...reversePacket, frames }, player.cookie)
+    assert.deepEqual([refused.ok, refused.code, Object.hasOwn(refused, 'reverseGearControls')], [false, 'reverse_gear_disabled', false])
+    assert.deepEqual(await row(), before, 'false and string options cannot enable or partially apply explicit gear input')
+  }
+
+  modes.select(0)
+  f.advance(100)
+  const accepted = await post(f, `${drivingPath}/input`, reversePacket, player.cookie)
+  assert.deepEqual([accepted.ok, accepted.session?.state.gear, accepted.reverseGearControls], [true, 'reverse', true])
+  const committed = await row() as Record<string, unknown> & { v: number; revision: number; state: unknown; creditMs: number; updatedAt: number }
+  assert.equal(committed.v, 2)
+
+  modes.select(1)
+  f.advance(1600)
+  const exactRetry = await post(f, `${drivingPath}/input`, reversePacket, player.cookie)
+  assert.deepEqual([exactRetry.ok, exactRetry.duplicate, exactRetry.code, Object.hasOwn(exactRetry, 'reverseGearControls')], [true, true, 'controls_accepted', false])
+  assert.deepEqual(await row(), committed, 'a successful exact retry after timeout does not pause, spend credit or rewrite the driving row')
+  const conflict = await post(f, `${drivingPath}/input`, { ...reversePacket, frames: [{ throttle: 0.5, brake: 0, steer: 0, gear: 'reverse' }] }, player.cookie)
+  assert.deepEqual([conflict.ok, conflict.code], [false, 'packet_conflict'])
+  assert.deepEqual(await row(), committed, 'a conflicting retry does not mutate the saved row')
+  const newGear = await post(f, `${drivingPath}/input`, { ...reversePacket, sequence: 2, frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }] }, player.cookie)
+  assert.deepEqual([newGear.ok, newGear.code], [false, 'reverse_gear_disabled'])
+  assert.deepEqual(await row(), committed, 'OFF refuses new explicit forward gear without upgrading or mutating v2')
+
+  const loaded = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
+  assert.deepEqual([loaded.ok, loaded.session?.state.status, loaded.session?.state.speed, loaded.session?.state.gear,
+    Object.hasOwn(loaded, 'reverseGearControls')], [true, 'paused', 0, 'forward', false])
+  const pausedRow = await row() as { v: number; state: { status: string }; revision: number }
+  assert.deepEqual([pausedRow.v, pausedRow.state.status], [2, 'paused'], 'OFF current reads and safely pauses the issued v2 record without downgrading it')
+  const resumed = await post(f, `${drivingPath}/resume`, { cityId: 'lagos', requestId: id(f), journeyId: journey.journeyId,
+    revision: loaded.session!.revision }, player.cookie)
+  assert.deepEqual([resumed.ok, resumed.code, Object.hasOwn(resumed, 'reverseGearControls')], [true, 'resumed', false])
+  f.advance(100)
+  const legacyForward = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: journey.journeyId, sequence: 2,
+    frames: [{ throttle: 1, brake: 0, steer: 0 }] }, player.cookie)
+  assert.deepEqual([legacyForward.ok, legacyForward.session?.state.gear, (await row() as { v: number }).v], [true, 'forward', 2],
+    'OFF accepts an old three-field forward frame on v2 and keeps the v2 writer shape')
+
+  modes.select(1)
+  const second = await onboard(f)
+  const offStart = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, second.cookie)
+  assert.deepEqual([offStart.ok, Object.hasOwn(offStart, 'reverseGearControls')], [true, false])
+  const offRow = () => f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[second.id]))
+  const offBefore = await offRow()
+  f.advance(100)
+  const explicitOff = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: offStart.session!.journeyId, sequence: 1,
+    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }] }, second.cookie)
+  assert.deepEqual([explicitOff.ok, explicitOff.code], [false, 'reverse_gear_disabled'])
+  assert.deepEqual(await offRow(), offBefore)
+  assert.equal((offBefore as { v: number }).v, 1, 'normal OFF journeys remain v1')
+})
+
+test('legacy forward packets remain valid and reverse requests brake before a saved backward step', async t => {
+  const f = await livingFixture(t, { routes: configuredDrivingRoutes(true) })
+  const player = await onboard(f)
+  const start = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  assert.ok(start.ok && start.session, 'the ordinary start returns a saved driving session')
+  const journey = start.session
+  f.advance(100)
+  const legacy = { cityId: 'lagos', journeyId: journey.journeyId, sequence: 1,
+    frames: [{ throttle: 1, brake: 0, steer: 0 }] }
+  const forward = await post(f, `${drivingPath}/input`, legacy, player.cookie)
+  assert.ok(forward.ok && forward.session, 'accepted legacy controls return canonical motion')
+  assert.deepEqual([forward.ok, forward.session?.state.speed > 0, forward.session?.state.position.z > journey.state.position.z], [true, true, true])
+  const legacyRow = await f.server.store.read(db => (db.livingWorld as { driving: Record<string, { v: number }> }).driving[player.id])
+  assert.equal(legacyRow.v, 1, 'old three-field controls retain the strict v1 save format')
+  const replay = await post(f, `${drivingPath}/input`, legacy, player.cookie)
+  assert.deepEqual([replay.ok, replay.duplicate, replay.session?.revision], [true, true, forward.session?.revision])
+
+  const reverse = { cityId: 'lagos', journeyId: journey.journeyId, sequence: 2,
+    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'reverse' }] }
+  f.advance(100)
+  const stopped = await post(f, `${drivingPath}/input`, reverse, player.cookie)
+  assert.ok(stopped.ok && stopped.session, 'accepted reverse selection returns canonical stopped motion')
+  assert.deepEqual([stopped.ok, stopped.session?.state.speed, stopped.session?.state.position], [true, 0, forward.session?.state.position],
+    'requesting the opposite direction brakes to zero without flipping velocity')
+  const reverseReplay = await post(f, `${drivingPath}/input`, reverse, player.cookie)
+  assert.deepEqual([reverseReplay.ok, reverseReplay.duplicate, reverseReplay.session?.revision], [true, true, stopped.session.revision])
+  const changedGearRetry = await post(f, `${drivingPath}/input`, { ...reverse,
+    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }] }, player.cookie)
+  assert.deepEqual([changedGearRetry.ok, changedGearRetry.code, changedGearRetry.session?.revision], [false, 'packet_conflict', stopped.session.revision])
+  f.advance(100)
+  const backing = await post(f, `${drivingPath}/input`, { ...reverse, sequence: 3 }, player.cookie)
+  assert.ok(backing.ok && backing.session)
+  assert.ok(backing.session.state.speed > 0 && backing.session.state.speed <= 3)
+  assert.equal(backing.session.state.gear, 'reverse')
+  assert.ok(backing.session.state.position.z < stopped.session.state.position.z, 'the server computes backward movement from accepted controls')
+  const reverseRow = await f.server.store.read(db => (db.livingWorld as { driving: Record<string, { v: number; state: { speed: number; gear?: string } }> }).driving[player.id])
+  assert.deepEqual([reverseRow.v, reverseRow.state.speed > 0, reverseRow.state.gear], [2, true, 'reverse'], 'reverse motion upgrades only the driving row to its explicit v2 contract')
+
+  const loaded = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
+  assert.deepEqual([loaded.ok, loaded.session?.state.status, loaded.session?.state.speed, loaded.session?.state.gear, loaded.session?.state.position],
+    [true, 'paused', 0, 'forward', backing.session.state.position], 'v2 reload pauses at the accepted position with a forward default and no carried motion')
+
+  const before = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const malformed = await f.request(`${drivingPath}/input`, { cityId: 'lagos', journeyId: journey.journeyId, sequence: 4,
+    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'park' }] }, player.cookie)
+  assert.deepEqual([malformed.status, (await malformed.json() as { error: string }).error], [400, 'invalid_driving_packet'])
+  const after = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  assert.deepEqual(after, before, 'unknown gear values do not mutate the saved journey')
+
+  await f.server.store.transact(db => {
+    const row = (db.livingWorld as { driving: Record<string, { v: number }> }).driving[player.id]!
+    row.v = 1
+  })
+  const mismatchedV1 = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const v1Refusal = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
+  assert.deepEqual([v1Refusal.ok, v1Refusal.code], [false, 'invalid_saved_journey'], 'v1 never accepts a v2 state shape')
+  assert.deepEqual(await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id])), mismatchedV1,
+    'strict version refusal preserves the source row')
+
+  await f.server.store.transact(db => {
+    const row = (db.livingWorld as { driving: Record<string, { v: number; state: Record<string, unknown> }> }).driving[player.id]!
+    row.v = 2
+    delete row.state.gear
+  })
+  const incompleteV2 = await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const v2Refusal = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
+  assert.deepEqual([v2Refusal.ok, v2Refusal.code], [false, 'invalid_saved_journey'], 'v2 requires its explicit gear field')
+  assert.deepEqual(await f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id])), incompleteV2,
+    'strict v2 refusal quarantines without rewriting the original row')
 })
 
 test('only a held quick-start is blocked; confirmed guests and legacy lives remain eligible', async t => {

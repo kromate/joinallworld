@@ -26,12 +26,35 @@
  */
 
 import type * as THREE from 'three';
-import type { Batch, BatchLayer, BatchOptions, BatchResult, Colour, LightSpec, SceneMaterials, ThreeModule } from './types.ts';
+import type { Batch, BatchLayer, BatchOptions, BatchResult, Colour, Face4, LightSpec, SceneMaterials, ThreeModule } from './types.ts';
 import type { Kit } from './kit.ts';
 
 interface Template { pos: Float32Array; nor: Float32Array; idx: number[] }
 interface LayerData { pos: number[]; nor: number[]; col: number[]; idx: number[] }
 const templates = new Map<string, Template>();
+const faceTemplates = new WeakMap<object, Template>();
+const scopedParts = new WeakMap<object, string>();
+
+/**
+ * Draw into a named geometry part without changing BatchOptions or the scene's footprint recorder.
+ * The override is read only at geometry-store selection, after wrappers such as footprintRecorder
+ * have synchronously classified the original primitive. Pass the actual inner Batch, not its
+ * recorder wrapper: other batches drawn during this callback retain their own part selection.
+ */
+export function withBatchPart<T>(innerBatch: Batch, partName: string, draw: () => T): T {
+  const part = partName.trim();
+  if (!part) throw new TypeError('batch part needs a non-empty name');
+  const key = innerBatch as object;
+  const previous = scopedParts.get(key);
+  scopedParts.set(key, part);
+  try {
+    return draw();
+  } finally {
+    if (previous) scopedParts.set(key, previous);
+    else scopedParts.delete(key);
+  }
+}
+
 function template(key: string, make: () => THREE.BufferGeometry): Template {
   let entry = templates.get(key);
   if (!entry) {
@@ -45,6 +68,32 @@ function template(key: string, make: () => THREE.BufferGeometry): Template {
   }
   return entry;
 }
+function faceTemplate(points: Face4): Template {
+  let entry = faceTemplates.get(points as object);
+  if (entry) return entry;
+  if (points.length !== 4 || !Object.isFrozen(points) || points.some(point => !Object.isFrozen(point))) throw new TypeError('face4 requires an immutable tuple of four immutable 3D points');
+  if (points.some(point => point.length !== 3 || point.some(value => !Number.isFinite(value)))) throw new RangeError('face4 corners must each contain three finite coordinates');
+  const [a, b, c, d] = points;
+  const abx = b[0] - a[0], aby = b[1] - a[1], abz = b[2] - a[2];
+  const acx = c[0] - a[0], acy = c[1] - a[1], acz = c[2] - a[2];
+  let nx = aby * acz - abz * acy, ny = abz * acx - abx * acz, nz = abx * acy - aby * acx;
+  const length = Math.hypot(nx, ny, nz);
+  if (length < 1e-8) throw new RangeError('face4 requires a non-degenerate surface');
+  nx /= length; ny /= length; nz /= length;
+  const planeError = Math.abs((d[0] - a[0]) * nx + (d[1] - a[1]) * ny + (d[2] - a[2]) * nz);
+  if (planeError > 1e-5) throw new RangeError('face4 corners must be coplanar (error ' + planeError + ')');
+  const corners = [a, b, c, d];
+  for (let i = 0; i < 4; i++) {
+    const p = corners[i]!, q = corners[(i + 1) % 4]!, r = corners[(i + 2) % 4]!;
+    const ux = q[0] - p[0], uy = q[1] - p[1], uz = q[2] - p[2];
+    const vx = r[0] - q[0], vy = r[1] - q[1], vz = r[2] - q[2];
+    const turn = (uy * vz - uz * vy) * nx + (uz * vx - ux * vz) * ny + (ux * vy - uy * vx) * nz;
+    if (turn <= 1e-8) throw new RangeError('face4 corners must form a strictly convex ordered quad');
+  }
+  entry = { pos: Float32Array.from(points.flatMap(point => point)), nor: Float32Array.from(points.flatMap(() => [nx, ny, nz])), idx: [0, 1, 2, 0, 2, 3] };
+  faceTemplates.set(points as object, entry);
+  return entry;
+}
 
 export const GLOW: Readonly<{ layer: 'glow' }> = Object.freeze({ layer: 'glow' as const });
 export const GLASS: Readonly<{ layer: 'glass' }> = Object.freeze({ layer: 'glass' as const });
@@ -54,7 +103,12 @@ export function createBatch(THREE: ThreeModule): Batch {
   const layers: Record<string, LayerData> = { solid: layer(), glow: layer(), glass: layer() };
   const BASE: string[] = ['solid', 'glow', 'glass'];
   /** The vertex store for a layer, or for one named part of it (made the first time the part is drawn). */
-  const store = (name: string, part: string | undefined): LayerData => { if (!part) return layers[name]!; const key = `${name}@${part}`; return (layers[key] ||= layer()); };
+  const store = (name: string, part: string | undefined): LayerData => {
+    const selectedPart = scopedParts.get(batch as object) ?? part;
+    if (!selectedPart) return layers[name]!;
+    const key = `${name}@${selectedPart}`;
+    return (layers[key] ||= layer());
+  };
   const stack = [new THREE.Matrix4()];
   const lights: LightSpec[] = [];
   const colours = new Map<Colour, [number, number, number]>();
@@ -70,11 +124,12 @@ export function createBatch(THREE: ThreeModule): Batch {
     }
     return value;
   }
-  function add(shape: Template, x: number, y: number, z: number, sx: number, sy: number, sz: number, colour: Colour, o?: BatchOptions) {
+  function add(shape: Template, x: number, y: number, z: number, sx: number, sy: number, sz: number, colour: Colour, o?: BatchOptions, box = false) {
     e.set(o?.rx || 0, o?.ry || 0, o?.rz || 0, 'YXZ');
     m.compose(p.set(x, y, z), q.setFromEuler(e), s.set(sx, sy, sz)).premultiply(stack[stack.length - 1]!);
     n3.getNormalMatrix(m);
-    const target = store(Object.hasOwn(layers, o?.layer as string) && BASE.includes(o?.layer as string) ? o!.layer! : 'solid', o?.part);
+    const name = Object.hasOwn(layers, o?.layer as string) && BASE.includes(o?.layer as string) ? o!.layer! : 'solid';
+    const target = store(name, o?.part), shadeBox = box && name === 'solid';
     const base = target.pos.length / 3;
     const [r, g, bl] = rgb(colour);
     const { pos, nor, idx } = shape;
@@ -83,7 +138,8 @@ export function createBatch(THREE: ThreeModule): Batch {
       target.pos.push(v.x, v.y, v.z);
       v.set(nor[i]!, nor[i + 1]!, nor[i + 2]!).applyMatrix3(n3).normalize();
       target.nor.push(v.x, v.y, v.z);
-      target.col.push(r, g, bl);
+      const shade = shadeBox ? (1 - Math.max(0, -v.y) * 0.07) * (Math.abs(nor[i + 1]!) < 0.5 && pos[i + 1]! < -0.49 ? 0.96 : 1) : 1;
+      target.col.push(r * shade, g * shade, bl * shade);
     }
     for (let i = 0; i < idx.length; i++) target.idx.push(base + idx[i]!);
   }
@@ -93,7 +149,7 @@ export function createBatch(THREE: ThreeModule): Batch {
   const batch: Batch = {
     isBatch: true,
     /** box(x, y, z, width, height, depth, colour, options?) — centred on x, y, z */
-    box(x, y, z, w, h, d, colour, o) { add(boxShape(), x, y, z, w, h, d, colour, o); return batch; },
+    box(x, y, z, w, h, d, colour, o) { add(boxShape(), x, y, z, w, h, d, colour, o, true); return batch; },
     /** cyl(x, y, z, radius, height, colour, { top = 1 (top radius ÷ bottom radius), seg = 8, open, sx, sz }) — upright, centred */
     cyl(x, y, z, r, h, colour, o) {
       add(cylShape(o?.top ?? 1, o?.seg || 8, !!o?.open), x, y, z, r * (o?.sx || 1), h, r * (o?.sz || 1), colour, o);
@@ -111,6 +167,8 @@ export function createBatch(THREE: ThreeModule): Batch {
     ico(x, y, z, rx, ry, rz, colour, o) { add(template('ico', () => new THREE.IcosahedronGeometry(1, 0)), x, y, z, rx, ry, rz, colour, o); return batch; },
     /** quad(x, y, z, width, height, colour, options?) — a flat panel facing +z (two triangles) */
     quad(x, y, z, w, h, colour, o) { add(template('quad', () => new THREE.PlaneGeometry(1, 1)), x, y, z, w, h, 1, colour, o); return batch; },
+    /** Four immutable coplanar local-space corners; follows the same transform/layer/part path as other shapes. */
+    face4(points, colour, o) { add(faceTemplate(points), 0, 0, 0, 1, 1, 1, colour, o); return batch; },
     /** disc(x, y, z, radius, colour, { seg = 12 }) — a flat circle facing up */
     disc(x, y, z, r, colour, o) {
       const seg = o?.seg || 12;

@@ -7,9 +7,34 @@ import { ROOM_GROUP_MAX } from '../game/roomGroups.ts';
 import { crowdList, playersHere, CROWD_LIMIT } from './crowd.ts';
 import { MAX_CROWD } from './venue-scenes.ts';
 import { createLife, viewLife } from '../life.ts';
+import { normalizeLook } from './characters.ts';
 
 const ME = '11111111-2222-4333-8444-555555555555';
 const player = (n: number, more: Record<string, unknown> = {}) => ({ id: `0000000${n}-2222-4333-8444-555555555555`, name: `Player ${n}`, friend: false, ...more });
+
+test('an authored regular appearance survives the social view and crowd boundary', () => {
+  const state = createLife({ location: 'park' }, { now: Date.UTC(2026, 0, 5, 12), cityId: 'lagos' });
+  const here = viewLife(state, { now: state.t, cityId: 'lagos' }).social.here;
+  const ronke = here.find((npc) => npc.id === 'mama-ronke');
+  assert.ok(ronke, 'the weekday zobo seller is at the park');
+  assert.deepEqual(ronke.look, { body: 'woman' });
+  const list = crowdList({ npcs: JSON.parse(JSON.stringify(here)) });
+  const drawn = list.find((npc) => npc.id === 'npc:mama-ronke');
+  assert.ok(drawn);
+  assert.equal(drawn.seed, 'mama-ronke');
+  assert.equal(drawn.spot, 'drinks');
+  assert.equal(normalizeLook(drawn.look, drawn.seed).body, 'woman', 'an authored body overrides the unrelated seeded default');
+  const kunle = list.find((npc) => npc.id === 'npc:kunle');
+  assert.ok(kunle);
+  assert.ok(!('look' in kunle), 'unassigned regulars retain their stable seeded appearance');
+});
+
+test('NPC looks preserve authored fields and ignore malformed look values', () => {
+  const look = { body: 'woman', hair: 'braids', outfit: 'casual', accessories: ['glasses'], appearance: { height: 'tall' } };
+  const list = crowdList({ npcs: [{ id: 'authored', look }, ...[null, 'woman', [], 1].map((look, i) => ({ id: `bad-${i}`, look }))] });
+  assert.deepEqual(list[0]?.look, look);
+  for (const npc of list.slice(1)) assert.ok(!('look' in npc));
+});
 
 test('real players come first with their public id as seed and their look; regulars stand at their places', () => {
   assert.equal(CROWD_LIMIT, MAX_CROWD);

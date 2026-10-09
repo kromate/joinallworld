@@ -1,0 +1,13 @@
+# Render review v4 for the fixed v4 package
+
+This remote-only recipe is isolated on `codex/graphics-environment-next-phase-v5-render-review-v4`. It checks out the render-recipe commit (`github.sha`), then downloads and validates the exact package artifact from run `37892370818`, produced by package commit `6ad217d26d02c268af70ccb69758bca75b19d6f4`. The package commit is not the render-recipe checkout: the controller requires the downloaded `source-pins-v4.json` to name the fixed package commit and separately verifies that its own checkout matches the render workflow commit.
+
+The preceding v3 remote attempt exited before starting the child process because its argument-count guard expected one fewer positional argument than the workflow supplied. V4 aligns that guard with the actual invocation contract (`browser`, recipe pin, package run ID, package commit) while preserving the package pins and review safeguards.
+
+Before Chrome starts, the controller validates the complete package chain: source pins, full pre/post source-verification receipts, vendor/addon/app records, compile record, finalizer pins and receipt, static manifest, runtime import/CSS closure, copied public-file mapping, and hashes/sizes for every downloaded static output. It streams hashes rather than loading public assets into memory. The package artifact is fixed to `environment-whole-slice-v5-reviewed-v4-37892370818` and must match commit `6ad217d26d02c268af70ccb69758bca75b19d6f4`.
+
+The runner caps the controller/loopback-server/Chrome process group at 1280 MiB RSS and 60 seconds, with a 96 MiB Node old-space limit. A zero/absent-RSS sample receives a bounded 1.25-second reap grace; the receipt records process states before and after grace and requires a positive sample. Cleanup requires a final process-group scan with no remaining member.
+
+The controller records the resolved Chrome launcher and ELF binary paths, versions, and streamed SHA-256 hashes (only a four-byte header is read for ELF identification). It launches ANGLE SwiftShader with `--single-process`, `--in-process-gpu`, `--no-zygote`, and `--renderer-process-limit=1`, then captures Home, Street, Market, and Beach at day/night plus walk and lifecycle checks. These screenshots and counters are diagnostic only; they do not establish normal multiprocess-browser performance, real GPU timings, phone performance, battery cost, or visual acceptance.
+
+The staged `workflow.yml` is inactive here. Root should publish it only after reviewing the fixed package artifact and recipe; install it at `.github/workflows/graphics-environment-next-phase-v5-render-review-v4.yml`. No browser, server, build, push, or remote workflow ran during preparation.

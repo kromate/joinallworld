@@ -302,8 +302,8 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
     container.appendChild(root);
     for (const name of ['labels', 'friends', 'fpanel', 'reticle', 'marker', 'crumbs', 'rail', 'stage', 'wait', 'controls', 'legend', 'sheet', 'country-panel'] as const) ui[name] = root.querySelector(`.atlas-${name}`);
     ui.controls!.innerHTML = `<div class="atlas-zoom"><button type="button" data-atlas-zoom="in" aria-label="Zoom in" title="Zoom in">${ICON('<path d="M12 5v14M5 12h14"/>')}</button><button type="button" data-atlas-zoom="out" aria-label="Zoom out" title="Zoom out">${ICON('<path d="M5 12h14"/>')}</button></div>
-      <button type="button" class="atlas-pill" data-atlas-zoom="fit">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span data-atlas-fit></span></button>
-      <button type="button" class="atlas-pill" data-atlas-layer aria-pressed="false">${ICON('<path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5"/>')}<span data-atlas-layer-name></span></button>`;
+      <button type="button" class="atlas-pill" data-atlas-zoom="fit" aria-label="Fit map to the current area">${ICON('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')}<span data-atlas-fit></span></button>
+      <button type="button" class="atlas-pill" data-atlas-layer aria-label="Geographic regions" aria-pressed="false">${ICON('<path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5"/>')}<span data-atlas-layer-name></span></button>`;
   }
 
   // ---- data: one module per level, fetched when first wanted ---------------------------------------
@@ -913,10 +913,11 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
           <li><button type="button" class="atlas-back-item" data-atlas-city="${esc(current)}">${esc(city?.name)} · back to the city</button></li></ol></div>
       <button type="button" class="atlas-back" data-atlas-city="${esc(current)}" aria-label="Back to ${esc(city?.name)}: open the city map">${esc(city?.name)}<span aria-hidden="true">Back to the city</span></button>
       <button type="button" class="atlas-countries" data-atlas-countries aria-expanded="${Boolean(countryDetailModel?.snapshot().open)}" aria-controls="atlas-country-panel">Countries</button>
-      <button type="button" class="atlas-list-toggle" data-atlas-list aria-expanded="${listOpen}">${ICON('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>')}<span>Find a place</span></button>`;
+      <button type="button" class="atlas-list-toggle" data-atlas-list aria-label="Find a place" aria-expanded="${listOpen}">${ICON('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>')}<span>Find a place</span></button>`;
     const fit = ui.controls!.querySelector<HTMLElement>('[data-atlas-fit]')!, layer = ui.controls!.querySelector<HTMLElement>('[data-atlas-layer]')!;
     fit.textContent = `Whole of ${level === WORLD ? 'the world' : ATLAS_LEVELS[level]!.name}`;
     layer.hidden = level === WORLD; layer.setAttribute('aria-pressed', String(tintOn));
+    layer.setAttribute('aria-label', level === NIGERIA ? 'Geographic zones' : 'Geographic regions');
     layer.querySelector('[data-atlas-layer-name]')!.textContent = level === NIGERIA ? 'Zones' : 'Regions';
     const groups = level === NIGERIA ? ZONES : level === AFRICA ? AFRICA_GROUPS : null;
     ui.legend!.hidden = !tintOn || !groups;

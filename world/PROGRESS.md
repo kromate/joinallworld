@@ -1,5 +1,70 @@
 # Implementation checkpoint — 9 October 2026
 
+## Supervised registry startup and controller-death witness — focused acceptance
+
+The preceding status-only turn was **no progress**. This continuation inspected
+current source/results, repaired actual cleanup edges, ran final bounded checks
+and prepared the coherent supervisor phase. The full world objective stays active.
+
+`startup_index_namespace` verifies fixed tooling/source bytes and the actual Python
+executable before acquiring the permanent namespace lease. It holds that lease
+before allocating the frozen execution snapshot, and passes the descriptor to a
+fixed Python worker using `-I -B`. Only the worker opens SQLite; parent-side SQL can
+be disabled and actual startup/reopen still succeed. Python/SQLite version binding,
+exact reports, immutable charges and fixed physical inventory are checked. The
+worker closes its SQL connection before reporting. This API returns terminal
+evidence, not an unsupervised registry writer.
+
+The worker receives finite CPU/file limits, zero core allowance, wall/output limits
+and sampled RSS supervision; its reported peak RSS must also fit the admitted cap.
+Python has no V8 heap limit. Runtime executable/version pins are not a hermetic pin
+of all standard-library/native-extension bytes, and RSS sampling is not a kernel
+hard total-memory bound. No existing allowance or reservation was increased.
+
+**146 Python checks and23 engine checks pass**. Final Python terminal55096 exit0:
+17.351s unittest/17.52s process/186,466,304B maxRSS. Earlier145-case success is retained;
+the final addition uses an actual fork/lease to prove inherited pipes cannot hang
+the guard after leader exit. It preserves state and reports unconfirmed descendant
+exit; only its known fixture descendant's actual exit permits fixture cleanup.
+Selector setup failure now kills/reaps the owned worker, and selector cleanup
+failure cannot mask the retention exception or prevent closing the other pipes.
+Luna's narrow read-only review found the pipe edge and the earlier peak-RSS gap.
+
+The actual controller SIGKILL fixture proves a surviving Python worker retains the
+namespace lock and frozen snapshot; replacement startup refuses before snapshot
+allocation. After its private acknowledgement and confirmed process exit, the
+fixture reopens the same permanent lock inode with zero fabricated charges. Cleanup
+preserves the fixture if launch identity, measurement or exit is uncertain. This
+is **not a durable attempt record, orphan-discovery API or persistent recovery
+service**. It is not proof of campaign crash recovery or power-loss durability.
+
+Current30-input manifest:299,992source bytes/3,766manifest bytes,
+SHAe04914971b34be3f623bc76d95d152c7739fd569fa35d1c2a2bf78d46df592bf.
+Actual snapshot charges356,352B; disposable actual initialize/reopen take56.60/45.87ms
+with reported peak26,080/25,952KiB. Guarded engine23/23 completes575.91ms,
+sampled116,195,328B RSS. Cached Dakar replay completes429.50ms,
+sampled138,346,496B RSS: unchanged2captures/2,283ordinals/1,810versions/
+473duplicates/0conflicts/0network. No country throughput is inferred.
+
+Receipts: `.cache/world-build/evidence/feature-index-registry-final-python-v2.*`,
+`feature-index-registry-{tooling-manifest,startup-actual,engine,capacity,source-acceptance}-v1.json`
+and `feature-index-registry-actual-verification-v1.*`. The source acceptance hashes
+actual inputs, tests and existing receipts. All TypeScript source is unchanged
+from3ff26b6c; the previous compiler receipt remains previous evidence, not a compiler
+run in this phase. Clean committed-source policy and main publication are recorded
+below after their actual terminal results.
+
+No acquisition, actual namespace/campaign ledger, output product, Nigeria/game data
+or runtime deployment was changed. WARNING memory pressure retained heavy1 and128MiB
+wrapper/Node heaps; no browser/server/large runtime build or overlapping heavy job.
+
+**Next implementation:** persist bounded attempt/worker/snapshot ownership before
+launch, reconcile after controller loss without guessing PID identity or deleting
+unknown state, then connect supervised verified-capture ingestion to fenced campaign
+completion. Preserve the actual Senegal denominator and lifetime acquisition
+charges. Whole-country geometry, independent source/index conservation, streaming,
+Nigeria rendering integration and production map-detail phases remain incomplete.
+
 ## Canonical registry recovery and paired worker leases — focused acceptance
 
 The preceding status-report turn was **no progress**: it inspected existing state

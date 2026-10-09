@@ -4,7 +4,7 @@ Requires an existing private root and inherited kernel per-file limit. CPU/wall/
 supervision and persistent controller/worker recovery remain external prerequisites;
 this context manager alone is not an unattended campaign or process supervisor.
 """
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from dataclasses import dataclass
 import json
 import os
@@ -49,9 +49,12 @@ def _aggregate(value):
     return value
 
 
-def namespace_binding(aggregate_bytes):
+def namespace_binding(aggregate_bytes, *, sqlite_version=None):
     """Return the one canonical durable binding for this registry format/runtime."""
     aggregate = _aggregate(aggregate_bytes)
+    version = sqlite3.sqlite_version if sqlite_version is None else sqlite_version
+    if type(version) is not str or not re.fullmatch(r"[0-9]{1,3}(?:\.[0-9]{1,3}){2}", version):
+        raise ValueError("namespace metadata requires its exact SQLite version")
     data = {
         "format": "feature-index-namespace-v1",
         "reservationFormat": FORMAT,
@@ -59,7 +62,7 @@ def namespace_binding(aggregate_bytes):
         "aggregateBytes": aggregate,
         "applicationId": APPLICATION_ID,
         "pageBytes": PAGE_BYTES,
-        "sqliteVersion": sqlite3.sqlite_version,
+        "sqliteVersion": version,
     }
     return (json.dumps(data, sort_keys=True, separators=(",", ":"), ensure_ascii=True) + "\n").encode("ascii")
 
@@ -445,7 +448,7 @@ def _create_or_resume_bootstrap(root, aggregate):
 
 
 @contextmanager
-def open_index_namespace(root, aggregate_bytes):
+def open_index_namespace(root, aggregate_bytes, *, inherited_lease=None):
     """Open the exact durable registry, preserving contradictory or foreign state."""
     aggregate = _aggregate(aggregate_bytes)
     raw = namespace_binding(aggregate)
@@ -454,7 +457,10 @@ def open_index_namespace(root, aggregate_bytes):
     if soft == resource.RLIM_INFINITY or soft > DATABASE_BYTES:
         raise RuntimeError("namespace registry writes require an already enforced per-file kernel limit")
     _preflight(root, raw, aggregate)  # Must happen before writer.lock can be created.
-    with index_writer_lease(root) as lease:
+    # An inherited actual kernel lease is caller-owned and must never be unlocked
+    # or closed here. Its identity is checked below; the fixed supervisor supplies it.
+    context = index_writer_lease(root) if inherited_lease is None else nullcontext(inherited_lease)
+    with context as lease:
         lease_root, leased_info = index_root._lease(lease)
         if (lease_root != root or (leased_info.st_dev, leased_info.st_ino) != (before.st_dev, before.st_ino)):
             raise ValueError("namespace root changed during lease acquisition")

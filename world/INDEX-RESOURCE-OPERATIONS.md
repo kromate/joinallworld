@@ -1,5 +1,37 @@
 # Isolated index resource and recovery witnesses — 8 October 2026
 
+## Fixed registry startup — 9 October 2026
+
+The latest phase passes146 Python and23 engine checks. See PROGRESS.md for exact
+source pins, receipts and measurements; older counts below describe prior phases.
+
+Use `tooling/index_registry_startup.py:startup_index_namespace` for a supervised
+initialize/reopen report. Supply the existing canonical owned0700 namespace,
+immutable aggregate allowance, repository root, canonical complete tooling manifest
+and exact bytes/SHA pins, retained source configuration and its pin, absolute Python
+executable, and exact Python/SQLite versions/executable bytes/SHA. CPU and wall
+limits default10/15seconds; sampled RSS defaults96MiB, per-file ceiling4MiB. The API
+acquires the actual namespace lease before frozen snapshot creation and delegates
+SQL to the fixed Python worker. It returns only after the worker exits; it does
+not yield a live writer for later campaign operations. Do not wrap an unsupervised
+long-lived `open_index_namespace` around production work and call that this API.
+
+An actual controller-death fixture verifies inherited lease/snapshot survival and
+replacement refusal. The fixed lease witness is test-only, not an acquisition/job
+endpoint. Selector setup/cleanup failures preserve reaping/retention semantics;
+leader exit with open inherited pipes is bounded and fails with
+`IndexWorkerUnreaped`. That exception retains its actual process handle and frozen
+snapshot while this controller lives. A terminal leader alone does not establish
+descendant exit. Never delete a preserved namespace, snapshot or lock based only
+on that leader's return code or a vanished controller.
+
+Persistent pre/post-spawn records and orphan reconciliation remain unimplemented.
+Do not claim unattended recovery until that durable mechanism and real controller
+loss are exercised together. CPU/file/core limits are kernel enforced; RSS remains
+sampled plus worker-reported peak, not a kernel hard group-memory bound. The Python
+binary/version pin does not hermetically bind every imported runtime file. No paid
+jobs, new country captures or production runtime artifacts are involved.
+
 ## Current namespace opener and worker integration — 9 October 2026
 
 Latest focused implementation adds `tooling/index_namespace.py` and paired namespace

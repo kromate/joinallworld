@@ -4,8 +4,11 @@ import os
 from pathlib import Path
 import shutil
 import select
+import selectors
 import subprocess
+import sys
 import tempfile
+import time
 import unittest
 from unittest.mock import patch
 
@@ -15,6 +18,63 @@ from index_writer_lock import index_writer_lease, IndexWriterBusy
 
 class IndexProcessBoundaryTests(unittest.TestCase):
     node = os.environ.get("WORLD_TEST_NODE") or shutil.which("node") or "/missing-node-runtime"
+
+    def test_reaped_leader_with_live_inherited_pipe_is_bounded_and_preserved(self):
+        # Inject a real fork into the test launch only. Production fixed workers
+        # never select arbitrary scripts and currently do not spawn descendants.
+        root = Path(tempfile.mkdtemp(prefix="allworld-index-pipe-fixture-")).resolve(strict=True)
+        native_launch = subprocess.Popen; child = []
+        code = "import os,time; p=os.fork(); os.write(1,(str(p)+'\\n').encode()) if p else None; time.sleep(2) if not p else None; os._exit(0)"
+        def launch(command, **kwargs):
+            process = native_launch([sys.executable, "-I", "-B", "-c", code], **kwargs)
+            if not select.select([process.stdout], [], [], 3)[0]:
+                raise RuntimeError("fork fixture did not report its descendant")
+            child.append(int(process.stdout.readline(64)))
+            return process
+        confirmed = False
+        try:
+            with index_writer_lease(root) as lease, patch("index_resource_limits.subprocess.Popen", side_effect=launch), patch(
+                    "index_resource_limits.rss_bytes", return_value=1024*1024):
+                with self.assertRaises(IndexWorkerUnreaped) as caught:
+                    _run_fixed_process(self.node, "lease-witness", root, lease_descriptor=lease.descriptor,
+                                       wall_seconds=1, heap_mib=64)
+                self.assertEqual(caught.exception.reason, "inherited-pipe-exit-unconfirmed")
+                self.assertEqual(caught.exception.process.returncode, 0)
+                self.assertTrue(caught.exception.process.stdout.closed and caught.exception.process.stderr.closed)
+            with self.assertRaises(IndexWriterBusy), index_writer_lease(root):
+                self.fail("the actual descendant lost its inherited lease")
+        finally:
+            # The fixture descendant exits itself after two seconds. No generic
+            # process-group kill or state deletion while its identity is unknown.
+            if child and child[0] > 2:
+                deadline = time.monotonic()+5
+                while time.monotonic() < deadline:
+                    status = subprocess.run(["/bin/ps", "-o", "args=", "-p", str(child[0])], capture_output=True, timeout=1)
+                    if status.returncode == 1 and not status.stdout.strip():
+                        confirmed = True; break
+                    if status.returncode != 0 or code.encode() not in status.stdout:
+                        raise RuntimeError(f"fixture descendant identity unavailable; preserve {root}")
+                    time.sleep(0.02)
+            if confirmed:
+                with index_writer_lease(root): pass
+                shutil.rmtree(root)
+            else:
+                raise RuntimeError(f"fixture descendant exit unconfirmed; preserve {root}")
+
+    def test_selector_setup_failure_reaps_actual_spawned_worker_and_closes_pipes(self):
+        native_launch = subprocess.Popen; owned = []
+        def launch(*args, **kwargs):
+            process = native_launch(*args, **kwargs); owned.append(process); return process
+        with tempfile.TemporaryDirectory(prefix="allworld-index-guard-setup-fixture-") as temporary:
+            root = Path(temporary).resolve(strict=True)
+            with patch("index_resource_limits.subprocess.Popen", side_effect=launch), patch(
+                    "index_resource_limits.selectors.DefaultSelector", side_effect=OSError("injected selector setup failure")):
+                with self.assertRaisesRegex(OSError, "selector setup"):
+                    _run_fixed_process(self.node, "witness", root, case="wall-limit", heap_mib=64)
+            self.assertEqual(len(owned), 1)
+            self.assertIsNotNone(owned[0].returncode)
+            self.assertTrue(owned[0].stdout.closed and owned[0].stderr.closed)
+            self.assertTrue(root.exists())
 
     def test_fixed_guard_inherits_both_namespace_and_child_leases(self):
         with tempfile.TemporaryDirectory(prefix="allworld-index-boundary-fixture-") as temporary:
@@ -124,7 +184,16 @@ class IndexProcessBoundaryTests(unittest.TestCase):
         # Reap the actual owned worker before injecting the unconfirmed status;
         # this exercises preservation without leaving an actual orphan behind.
         native_launch = subprocess.Popen
+        native_selector = selectors.DefaultSelector
         owned = []
+
+        def faulty_selector():
+            selector = native_selector(); native_close = selector.close
+            def close():
+                native_close()
+                raise OSError("injected selector cleanup failure")
+            selector.close = close
+            return selector
 
         def launch(*args, **kwargs):
             process = native_launch(*args, **kwargs); owned.append(process)
@@ -139,7 +208,8 @@ class IndexProcessBoundaryTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory(prefix="allworld-index-guard-reap-fixture-") as temporary:
             root = Path(temporary).resolve(strict=True)
-            with patch("index_resource_limits.subprocess.Popen", side_effect=launch):
+            with patch("index_resource_limits.subprocess.Popen", side_effect=launch), patch(
+                    "index_resource_limits.selectors.DefaultSelector", side_effect=faulty_selector):
                 # Avoid patching the ps subprocess used for RSS measurement.
                 with patch("index_resource_limits.rss_bytes", return_value=1024*1024):
                     with self.assertRaises(IndexWorkerUnreaped) as caught:

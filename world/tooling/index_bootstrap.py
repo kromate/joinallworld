@@ -20,10 +20,10 @@ from index_storage_footprint import index_storage_footprint
 MIB = 1024*1024
 
 
-def _node_pin(node, expected):
+def _node_pin(node, expected, *, label="Node"):
     node = Path(node)
     if not node.is_absolute():
-        raise ValueError("bootstrap Node executable must be absolute")
+        raise ValueError(f"{label} executable must be absolute")
     node = node.resolve(strict=True)
     descriptor = os.open(node, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
     try:
@@ -31,7 +31,7 @@ def _node_pin(node, expected):
         if (not stat.S_ISREG(info.st_mode) or info.st_uid not in {0, os.getuid()}
                 or info.st_nlink != 1 or stat.S_IMODE(info.st_mode) & 0o022
                 or not os.access(node, os.X_OK) or info.st_size != expected["nodeBytes"]):
-            raise ValueError("Node executable is unsafe or differs from its pinned size")
+            raise ValueError(f"{label} executable is unsafe or differs from its pinned size")
         digest = hashlib.sha256(); total = 0
         while total <= expected["nodeBytes"]:
             chunk = os.read(descriptor, min(65536, expected["nodeBytes"]-total+1))
@@ -42,7 +42,7 @@ def _node_pin(node, expected):
         if (total != expected["nodeBytes"] or digest.hexdigest() != expected["nodeSha256"]
                 or identity(os.fstat(descriptor)) != identity(info)
                 or identity(node.lstat()) != identity(info)):
-            raise ValueError("Node executable bytes/inode differ from the retained runtime pin")
+            raise ValueError(f"{label} executable bytes/inode differ from the retained runtime pin")
         return node, identity(info)
     finally:
         os.close(descriptor)

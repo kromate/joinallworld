@@ -1,0 +1,36 @@
+{
+  "format": "world-juba-operation-scope-fix-v1",
+  "observedAt": "2026-10-09T22:34:33.661069+00:00",
+  "status": "source-tests-passed",
+  "originalFailureContract": ".cache/world-build/playable-africa-runs/2ca79733f9ba3b99467467233c4588a99c3b9275ce9c24f5334cebd90d5772b5/contract.json",
+  "cause": "Mixed-batch selection was passed to each single-country generator/check, whose explicit SS guard correctly refused ST before acquisition.",
+  "change": "Pass selection only to SS operations; combined plan still binds full selection. Offline generation reuses same command construction.",
+  "tests": {
+    "passed": 13,
+    "failed": 0,
+    "log": ".cache/world-build/evidence/africa-runner-juba-scope-tests.log"
+  },
+  "noSourceRequestsOnFailedWindow": true,
+  "noCacheOrLedgerExists": [
+    "sao-tome",
+    "praia",
+    "juba"
+  ],
+  "limitsUnchanged": true,
+  "pins": [
+    {
+      "path": "world/tooling/run_africa_starters.py",
+      "bytes": 43475,
+      "sha256": "a88f5cd998220f025d3dc962488a1d3a64fbb1940732e1ef45c114976cf1e7c1"
+    },
+    {
+      "path": "world/tooling/test_run_africa_starters.py",
+      "bytes": 19224,
+      "sha256": "bf5fcca4cee5d90d39daf1060f5e29f75a14799fdc4c6d01aa9e9e92215be8c7"
+    }
+  ],
+  "limitations": [
+    "This is source orchestration regression acceptance, not actual three-city acquisition or runtime admission.",
+    "Original failed contract and report remain preserved; no in-place resume after source pins change."
+  ]
+}

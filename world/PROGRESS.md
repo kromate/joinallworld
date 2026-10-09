@@ -1,3 +1,25 @@
+# Runtime rollout checkpoint, 9 October 2026 at 22:35 UTC
+
+Production remains 11 green/open African countries on C1; source count remains
+49 foreign starters, 39 unadmitted, four missing. Integration now assigned WORLD
+an isolated explicit-admission catalogue/shard packaging seam; shared runtime
+registry, bootstrap, saves and server authority remain Integration-owned.
+
+A mixed ST/CV/SS acquisition window refused ST before any source request because
+Juba selection was passed to a single-country non-SS operation. The runner now
+scopes selection to SS for acquire, offline generation and source checking; its
+13 isolated regression tests pass. The original failed contract/report and all
+request budgets are preserved. A new frozen contract is required after this fix.
+See `juba-operation-scope-acceptance.json`.
+
+The original C1 local school continuation reproduced off-road recovery/steering
+symptoms and did not earn qualification. Pause/reload retained checkpoint 3.
+The owned stage stopped with exit 0 at its deadline, same seven store/identity
+fields, original store retained, all resource slots released. LIVING owns the
+source diagnosis. See `native-c1-school-continuation-acceptance.json`.
+
+Earlier checkpoints below retain their original dates and evidence scopes.
+
 # Current world checkpoint, 9 October 2026 at 22:16 UTC
 
 Production has **11 green/open African countries**, independently observed on the

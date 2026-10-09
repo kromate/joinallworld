@@ -74,6 +74,16 @@ class FixtureCampaign:
 
 
 class RunAfricaStartersTests(unittest.TestCase):
+    def test_mixed_batch_passes_selection_only_to_south_sudan_operations(self):
+        selection = ("selection.json", "a" * 64)
+        for mode in ("--acquire", "--check", None):
+            for country in ("ST", "CV", "SS"):
+                command = runner.builder_command(sys.executable, Path("/fixture"), country, mode, selection)
+                self.assertEqual("--juba-selection" in command, country == "SS")
+                self.assertEqual("--juba-selection-sha256" in command, country == "SS")
+                if country == "SS":
+                    self.assertEqual(command[-4:], ["--juba-selection", selection[0], "--juba-selection-sha256", selection[1]])
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)

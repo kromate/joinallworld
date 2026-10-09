@@ -348,8 +348,10 @@ def remaining(deadline):
 
 
 def builder_command(python, root, country, mode, juba):
-    command = [python, "-I", "-B", str(root / BUILDER), "--country", country, mode]
-    if juba:
+    command = [python, "-I", "-B", str(root / BUILDER), "--country", country]
+    if mode is not None:
+        command.append(mode)
+    if juba and country == "SS":
         command.extend(["--juba-selection", juba[0], "--juba-selection-sha256", juba[1]])
     return command
 
@@ -606,9 +608,7 @@ def execute_campaign(root, config, *, execute=run_command, now=time.monotonic):
                 if acquire:
                     command = builder_command(python, root, country, "--acquire", juba)
                 else:
-                    command = [python, "-I", "-B", str(root / BUILDER), "--country", country]
-                    if juba:
-                        command.extend(["--juba-selection", juba[0], "--juba-selection-sha256", juba[1]])
+                    command = builder_command(python, root, country, None, juba)
                 result = execute(command, cwd=root, timeout=remaining(deadline))
                 generated = parse_json_lines(result.stdout, f"generation {city}")
                 if len(generated) != 1 or generated[0].get("status") != "generated" or generated[0].get("country") != country or generated[0].get("city") != city:

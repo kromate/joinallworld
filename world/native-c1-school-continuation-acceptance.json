@@ -1,0 +1,52 @@
+{
+  "format": "world-native-c1-school-continuation-v1",
+  "observedAt": "2026-10-09T22:32:32.790775+00:00",
+  "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "packageDigest": "d1ddc9e4ec5aa6ede1aa658bf364e78e9f71eccb6d73046ca0b8ef289728b01b",
+  "sessionId": 62906,
+  "exitCode": 0,
+  "ownerChildPid": 92460,
+  "ownerGone": true,
+  "stageStatus": "stopped",
+  "sameOriginalSevenFields": true,
+  "storeRetained": true,
+  "readyReceipt": ".cache/world-build/evidence/native-c1-school-ready.json",
+  "operatorWitness": "/tmp/allworld-c1-school-final-native.json",
+  "operatorWitnessSha256": "5a46c86f95c7edad1d8c21fed1c45e5d4dfc5a3395e31e1d5f6b300e124219ce",
+  "decision": "CHECKPOINT_PRESERVED_NOT_PASSED",
+  "initial": {
+    "checkpoint": "3 of 3",
+    "assessment": "pending",
+    "paused": true,
+    "speedKmh": 0,
+    "zoneDistanceM": 27.5
+  },
+  "final": {
+    "checkpoint": "3 of 3",
+    "assessment": "pending",
+    "paused": true,
+    "speedKmh": 0,
+    "zoneDistanceM": 28.3,
+    "qualification": "not earned",
+    "starterPermission": "still requires passed qualification; not claimed"
+  },
+  "operatorCleanup": {
+    "ownedTab": "1412594363",
+    "tabClosed": true,
+    "viewportOverride": "none set",
+    "browserLeaseSession": 6706,
+    "leaseExitCode": 130,
+    "completedByUTC": "2026-10-09T22:29:51Z"
+  },
+  "limitations": [
+    "The observed recovery attempt did not regain the road; this is a reproducible symptom, not a confirmed root-cause diagnosis.",
+    "No pass, parking dwell, starter once receipt, physical touch or real-device claim.",
+    "No fresh money/home canonical DB proof in this window; visible balance/home matched prior screen."
+  ],
+  "startupFailuresRetained": [
+    "native-c1-school-stage.stderr",
+    "native-c1-school-stage-rerun.stderr",
+    "native-c1-school-stage-third.stderr"
+  ],
+  "startupRepair": "Removed only empty uploader-created .wrangler/tmp dirs after exact manifest verification; corrected --tools dependency root, no package files, source rebuild or original store rewrite."
+}

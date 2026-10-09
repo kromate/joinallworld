@@ -460,3 +460,18 @@ terminal handback for one bounded clean-source policy check. No WORLD server,
 browser or upload. Latest03:12:26 memory sample WARNING2 with paging: retain
 heavy1 and original worker/build caps; no memory-heavy concurrency expansion.
 Upstreamfbd24b5d adopted safely; GRAPHICS's coordination append preserved.
+
+
+WORLD campaign-index exact-source acceptance: implementationa75c59af passes
+five clean committed-source policy checks (87705terminal0,3.81s/96,043,008B),
+**276 distinct checks plus World TypeScript**. Final bounded status copy uses
+64KiB memory, keeps activeWAL rows and refuses oversize/symlinks; rerun55992
+43/43 and compiler57195terminal0. All877 historical pins/nine protectedfiles
+match; fixed44-source447,668B/manifest5,603B SHA87de97bfc4859224f48b1fcd988f27232b7efd0d892a003729bff49aa311b9ef.
+No runtime/game build/upload, actual campaign update or newly playable geometry.
+
+GRAPHICS currentreview resources handed back terminal before finite checks.
+All WORLD heavy/verifier/compiler handles now terminal; no WORLD server/browser/
+upload. Return finite local turn to waitingowners after source publication.
+One existing Luna source-read-only audit-interface review ongoing, no executions.
+Pressure WARNING: preserve current caps and explicit intensive handoffs.

@@ -1,5 +1,12 @@
 # Implementation checkpoint — 9 October 2026
 
+Implementation **a75c59af** passes five exact committed-source release-policy
+checks (terminal87705,3.81s,96,043,008B maxRSS), for **276 distinct checks plus
+World TypeScript**. Clean archive140,830,720B/8,592members fits256MiB/10,000members;
+owned scratch is removed. All accepted source/test pins remain unchanged. Receipt:
+`campaign-index-final-acceptance-v1.json`. Source publication is next; no runtime
+upload or country geometry is inferred.
+
 ## Campaign source indexing implemented — 9 October 2026
 
 The held Node→Python JSONL session and same-Ledger schema2 indexing phase are
@@ -14,8 +21,7 @@ Final affected validation passes **271 distinct tests**:228 Python (terminal2223
 85.965s unittest/86.13s process,186,482,688B maxRSS) and43 Node (terminal55992,
 23.782s TAP/23.94s process,381,632,512B maxRSS). Full World TypeScript passes
 (terminal57195,3.86s,452,902,912B maxRSS,existing384MiB heap). Focused earlier runs
-are included, not added to this total. Exact committed-source release policy is
-pending; no runtime build or production upload follows from these checks.
+are included, not added to this total. Exact committed-source release policy now passes; no runtime build or production upload follows from these checks.
 
 Acceptance includes an actual retained Senegal frozen-query capture copied into
 isolated state with zero reacquisition; actual stale-token replay; split-child

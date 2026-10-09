@@ -212,7 +212,7 @@ test('open and coming-soon cities share the live registry and canonical links', 
   for (const item of soon) { const city = cityCatalogueEntry(item.id); assert.ok(city, 'registered city'); assert.equal(city.open, false); }
   const kaduna = cityCatalogueEntry('kaduna');
   if (kaduna && !kaduna.open) { assert.equal(cityEntry('kaduna')?.preview?.length, 3); assert.ok(allCityLinks().some((link) => link.a === 'kaduna' || link.b === 'kaduna')); }
-  const foreign = [['cm', 'yaounde'], ['tg', 'lome'], ['gh', 'accra'], ['ke', 'nairobi'], ['dz', 'algiers']] as const;
+  const foreign = [['cm', 'yaounde'], ['tg', 'lome'], ['gh', 'accra'], ['ke', 'nairobi'], ['dz', 'algiers'], ['bj', 'cotonou'], ['ci', 'abidjan'], ['sn', 'dakar'], ['za', 'cape-town'], ['et', 'addis-ababa']] as const;
   assert.deepEqual(countryList().map(country => country.id).sort(), ['nigeria', ...foreign.map(([iso]) => iso)].sort());
   for (const [iso, capital] of foreign) {
     assert.equal(cityCatalogueEntry(capital)?.countryISO, iso, `${capital}: catalogue country`);

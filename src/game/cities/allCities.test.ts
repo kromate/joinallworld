@@ -62,11 +62,13 @@ test('every generated city passes its offline source and output check', () => {
   })
   if (foreign.length) {
     const python = realpathSync(process.env.WORLD_TEST_PYTHON ?? (existsSync('/usr/bin/python3') ? '/usr/bin/python3' : execFileSync('which', ['python3'], { encoding: 'utf8' }).trim()))
-    const output = execFileSync(python, [join(root, 'scripts/world/build-playable-africa.py'), '--check'], { cwd: root, encoding: 'utf8', timeout: 60_000 })
-    const checked = output.trim().split('\n').map(line => {
-      const row: unknown = JSON.parse(line)
-      assert.ok(row && typeof row === 'object' && 'city' in row && typeof row.city === 'string' && 'status' in row && row.status === 'pinned-assets-match', 'foreign source checker confirms each pinned city')
-      return row.city
+    const checked = ['build-playable-africa.py', 'build-playable-africa-wave2.py'].flatMap(script => {
+      const output = execFileSync(python, [join(root, 'scripts/world', script), '--check'], { cwd: root, encoding: 'utf8', timeout: 60_000 })
+      return output.trim().split('\n').map(line => {
+        const row: unknown = JSON.parse(line)
+        assert.ok(row && typeof row === 'object' && 'city' in row && typeof row.city === 'string' && 'status' in row && row.status === 'pinned-assets-match', 'foreign source checker confirms each pinned city')
+        return row.city
+      })
     })
     assert.deepEqual(checked.sort(), foreign.sort(), 'the source checker covers exactly every registered foreign city')
   }

@@ -10,7 +10,7 @@ import { createStore } from './store.ts'
 import { flakyDisk } from './test-fixture.ts'
 import type { AllworldServer } from './server.ts'
 import { claimsFor, fakeProvider, makeKey, signToken } from './accounts/test-tokens.ts'
-import { africaJourney, homewardJourney } from './testing/africaJourney.ts'
+import { AFRICA_DESTINATION_BATCHES, africaJourney, homewardJourney } from './testing/africaJourney.ts'
 import type { AfricaJourneyHost } from './testing/africaJourney.ts'
 import type { JourneyDevice } from './testing/cityJourney.ts'
 import { object } from './testing/cityJourney.ts'
@@ -26,8 +26,8 @@ const ENV = {
   NEW_SESSIONS_PER_ADDRESS: '1000',
 }
 
-test('Node HTTP host: all five capital trips and cashless homeward journeys preserve original homes across restart', { timeout: 60000 }, async t => {
-  const folder = await mkdtemp(join(tmpdir(), 'africa-capitals-node-'))
+for (const destinations of AFRICA_DESTINATION_BATCHES) test(`Node HTTP host: ${destinations.join(', ')} destination trips and cashless homeward journeys preserve original homes across restart`, { timeout: 60000 }, async t => {
+  const folder = await mkdtemp(join(tmpdir(), 'africa-destinations-node-'))
   const disk = flakyDisk()
   let time = Date.now()
   let server: AllworldServer | undefined
@@ -158,6 +158,6 @@ test('Node HTTP host: all five capital trips and cashless homeward journeys pres
       assert.equal(replay.after, answer.after)
     },
   }
-  await africaJourney(host)
-  await homewardJourney(host)
+  await africaJourney(host, destinations)
+  await homewardJourney(host, destinations)
 })

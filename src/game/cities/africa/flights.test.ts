@@ -8,10 +8,15 @@ import { FACTS as lome } from '../lome/facts.ts'
 import { FACTS as accra } from '../accra/facts.ts'
 import { FACTS as nairobi } from '../nairobi/facts.ts'
 import { FACTS as algiers } from '../algiers/facts.ts'
+import { FACTS as cotonou } from '../cotonou/facts.ts'
+import { FACTS as abidjan } from '../abidjan/facts.ts'
+import { FACTS as dakar } from '../dakar/facts.ts'
+import { FACTS as capeTown } from '../cape-town/facts.ts'
+import { FACTS as addisAbaba } from '../addis-ababa/facts.ts'
 
 await loadCityContent('lagos')
 
-for (const original of [yaounde, lome, accra, nairobi, algiers]) test(`${original.id}: normal flight, visitor activity, saved reload and original Nigeria home return`, async () => {
+for (const original of [yaounde, lome, accra, nairobi, algiers, cotonou, abidjan, dakar, capeTown, addisAbaba]) test(`${original.id}: normal flight, visitor activity, saved reload and original Nigeria home return`, async () => {
   // Registry admission is isolated until Integration applies the production catalogue patch.
   const facts = { ...original, id: `test-${original.id}` }
   const destination = createDestinationModule(facts, async () => { throw new Error('The server lifecycle must never load map geometry') })

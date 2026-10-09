@@ -13,8 +13,8 @@
   "sourceFiles": [
     {
       "path": "src/game/cities/africa/contentBuilder.ts",
-      "bytes": 12742,
-      "sha256": "5c171e62c306cb7778ec90c8a5f2b2921a5a1d8dbb91b66bed76d5e32f03dbba"
+      "bytes": 12872,
+      "sha256": "054df7823d07e8b35c4db00ff5bac2d7efc7494fec64727f7dcdaa1cde33cd27"
     },
     {
       "path": "src/game/cities/africa/flights.test.ts",
@@ -43,8 +43,8 @@
     },
     {
       "path": "src/game/cities/africa/starter.test.ts",
-      "bytes": 5177,
-      "sha256": "23503f6126060e1e32e2c7d77fedf5c13dd6dbcc0d8f06ec75f3df457325a4e6"
+      "bytes": 5920,
+      "sha256": "5ef843583dffdf1ca8a3e9e238955e7ce1f5af15f6172d6ef222ee5e8bd7d776"
     },
     {
       "path": "src/game/cities/africa/types.ts",
@@ -297,5 +297,12 @@
       "world/playable-africa/nairobi-sources.json",
       "world/playable-africa/yaounde-sources.json"
     ]
+  },
+  "integrationTableRepair": {
+    "source": "7e386204bed5cdd57c4fb7f3a2ac9f8b5e7f48c1",
+    "scope": "One explicitly fictional stable city-prefixed two-seat chess table at each existing starter recreation venue. Retains the all-playable-city table gate and derived-table deduplication. No geometry, arrivals, Nigerian IDs, saves or prices changed.",
+    "ownerLocalRuntimeCases": 17,
+    "ownerLocalResult": "Owner-reported PASS 17/17 at256MiB; combined source needs exact verification.",
+    "combinedAcceptance": "Pending exact combined source CI and permitted browser table journeys."
   }
 }

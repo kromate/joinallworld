@@ -41,11 +41,12 @@ test('Node HTTP host: all five African capital flight journeys preserve a Lagos 
     base = `http://127.0.0.1:${address.port}`
   }
   async function stop(): Promise<void> {
-    if (!server) return
-    for (const socket of server.wss.clients) socket.terminate()
-    server.closeAllConnections()
-    if (server.listening) await new Promise<void>((resolve, reject) => { server.close(error => error ? reject(error) : resolve()) })
-    await server.store.close?.()
+    const current = server
+    if (!current) return
+    for (const socket of current.wss.clients) socket.terminate()
+    current.closeAllConnections()
+    if (current.listening) await new Promise<void>((resolve, reject) => { current.close(error => error ? reject(error) : resolve()) })
+    await current.store.close?.()
   }
   await start()
   const request = (path: string, body?: object, cookie?: string): Promise<Response> => fetch(base + path, {

@@ -1,5 +1,13 @@
 # Living-world implementation checkpoint
 
+## Remote inode fixture correction and finite native budget - 2026-10-09T20:18:48.258647+00:00
+
+Previousturn madeprogress: frozen54af sixpins/17localpasses andactual50citycaps published13e0735e (push4147exit0). Currentturn actualremote54af audit37985320742 TERMINALFAIL bothNode versions atstale initialinode rejection after2replacements; Root read/hash combinedlog4c333a0d andretainsfailure distinctfromlocal17PASS. WORLDtest-only52611 checks eachimmediatelydisplacedidentity, preservesactualcaller/force retention andruntime54unchanged. Root6pins verified; correctedremote37985609841 actual2jobs live, no pass transfer. [Review](sealed-tooling-52611-review.json). ReadexplicitAstra54 finalsourceAPPROVE; changedtest stillneedsactualremote/finalsource handoff beforestoreuse.
+
+Root identified affordable nativecoverage within2advertised contexts: actualc1 authoredCotonou29k/Abidjan86k eachway costold596k actor230k roundtrips (remaining366k, noregrant). FreshnormalIAB actor withONE separatelyaccepted canonical2m fixture grant cancoverDakar217k/CapeTown401k/Addis332k eachway,roundtrip1.9m,min18kstart leaves118k. [Finiteconditionalproposal](native-wave2-two-context-plan.json) sentowners, unapproved/unexecuted. DoesnotproveA-to-B-to-A; normalprovider gap parked, no thirdprofile/cookie workaround/newaccess. Fullprimaryschool/physical/parcel-restock/laterprogramme stillrequired.
+
+Exactc1 gameCI37984507814 actual8requiredPASS/6live-or-queued atlastRootread; no fullacceptance. Originalproduction3af unchanged, startsOFF/mappedunregistered. Nextsamehandles/526remote thenexactseal/ownedAstra gameplay/WORLDrelease/live. GoalACTIVE, zeroextra spend andverified05UTCcutoff unchanged.
+
 ## Frozen checkpoint repair verified - 2026-10-09T20:13:32.021361+00:00
 
 Root69a7fe43 push13257 exit0/published. WORLD nowfrozen54af4a2a0366081d7e4e10eca1d49f5586e7b803. Rootchecked6immutablefilepins andactual17/17/0skip/198.294667ms log5117ddaf (Node24.19/heap128 ownerterminal0); source/callerwrapper matches reviewed draft and fixesidentified9f afterrenameinode/provenance loss. [Qualifiedsourceacceptance](sealed-tooling-54af-review.json). No originalprivatecheckpoint/store/credentials/Worker/browser readoroperation; finalAstra source review/currentc1f fullCI+sealedactualten/native/live remain beforeoriginalstageacceptance.

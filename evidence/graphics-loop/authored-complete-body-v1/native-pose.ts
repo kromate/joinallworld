@@ -34,6 +34,7 @@ const BONES = [
   'mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigLeftFoot', 'mixamorigLeftToeBase',
   'mixamorigRightUpLeg', 'mixamorigRightLeg', 'mixamorigRightFoot', 'mixamorigRightToeBase',
 ] as const;
+type BoneName = typeof BONES[number];
 
 type LocalPose = { position: THREE.Vector3; quaternion: THREE.Quaternion; scale: THREE.Vector3 };
 type Side = 'left' | 'right';
@@ -89,11 +90,11 @@ export function createNativePoseController(root: THREE.Group): NativePoseControl
     root.updateMatrixWorld(true);
   }
 
-  function point(name: string, target = new THREE.Vector3()): THREE.Vector3 {
+  function point(name: BoneName, target = new THREE.Vector3()): THREE.Vector3 {
     return bones.get(name)!.getWorldPosition(target);
   }
 
-  function directionFromParent(boneName: string, childName: string, target: THREE.Vector3): THREE.Vector3 {
+  function directionFromParent(boneName: BoneName, childName: BoneName, target: THREE.Vector3): THREE.Vector3 {
     const bone = bones.get(boneName)!;
     const parent = bone.parent;
     if (!parent) throw new Error(`Native pose bone ${boneName} has no parent`);
@@ -168,7 +169,7 @@ export function createNativePoseController(root: THREE.Group): NativePoseControl
 
   function snapshot(pose: NativePose, seconds: number): NativePoseSnapshot {
     root.updateMatrixWorld(true);
-    const get = (name: string) => point(name).toArray() as [number, number, number];
+    const get = (name: BoneName) => point(name).toArray() as [number, number, number];
     const leftShoulder = point('mixamorigLeftShoulder');
     const rightShoulder = point('mixamorigRightShoulder');
     const leftHand = point('mixamorigLeftHand');

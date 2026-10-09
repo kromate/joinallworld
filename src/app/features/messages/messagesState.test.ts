@@ -2,7 +2,7 @@
 // so what was typed for one person is never sent to another (coverage of the old panel's draft tests).
 import assert from 'node:assert/strict'
 import { afterEach, test } from 'node:test'
-import { showConversation, takeDraft, ui } from './messagesState.ts'
+import { resetMessageUi, showConversation, takeDraft, ui } from './messagesState.ts'
 
 afterEach(() => { showConversation(null); ui.prefill = '' })
 
@@ -47,4 +47,10 @@ test('the badge counts the unread chats that are not loaded yet, so a page of ch
   assert.equal(unreadChats({ conversations: [chat(2), chat(1, { muted: true, mentions: 1 })] }), 3)
   assert.equal(unreadChats({ conversations: [chat(2)], conversationsMore: { total: 90, next: 'x', unreadOlder: 5 } }), 7)
   assert.equal(unreadChats(null), 0)
+})
+
+test('replacing the actor clears held thread, prefill and member management state', () => {
+  Object.assign(ui, { tab: 'groups', open: 'g.ada', openName: 'Ada group', draft: 'Private draft', prefill: 'Private prefill', manage: true })
+  resetMessageUi()
+  assert.deepEqual({ ...ui }, { tab: 'chats', open: null, openName: null, draft: '', prefill: '', manage: false })
 })

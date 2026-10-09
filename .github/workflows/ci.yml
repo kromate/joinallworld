@@ -93,6 +93,8 @@ jobs:
           src/app/features/messages/notifyModel.test.ts
           src/app/features/messages/messagesComponents.test.ts
           src/app/features/messages/messagesText.test.ts
+          src/app/features/messages/messagesState.test.ts
+          src/app/features/messages/pictureModel.test.ts
           src/app/features/sim/soundSettingsModel.test.ts
           src/app/features/start/creatorModel.test.ts
           src/app/features/start/startModels.test.ts
@@ -127,6 +129,14 @@ jobs:
           node --experimental-strip-types --import ./scripts/node-scene-css.ts
           --test --test-concurrency=1
           src/scene/city-scenes.test.ts src/map3d/geo/atlas.test.ts
+
+      - name: Existing map renderer, water and startup checks
+        run: >-
+          node --experimental-strip-types --import ./scripts/node-scene-css.ts
+          --test --test-concurrency=1
+          src/map3d/map3d.test.ts src/map3d/context-water.test.ts
+          src/map3d/context.test.ts src/map3d/lagos-geo.test.ts src/map3d/water.test.ts
+          src/scene/body/startup-gate.test.ts
 
       - name: Existing directory and public discovery components
         run: >-

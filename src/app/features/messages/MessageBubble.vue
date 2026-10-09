@@ -62,7 +62,7 @@ onBeforeUnmount(cancel)
       <button v-if="item.replyTo" type="button" class="bubble-quote" :aria-label="`Show the message from ${item.replyTo.from?.name ?? 'someone'}`" @click="emit('jump', item.replyTo.seq)">
         <b>{{ item.replyTo.from?.name ?? 'Message' }}</b><span>{{ item.replyTo.text || 'Picture' }}</span>
       </button>
-      <PictureView v-if="item.image" class="bubble-pic" :image="item.image" @open="emit('picture', item)" />
+      <PictureView v-if="item.image" class="bubble-pic" :image="item.image" :me-id="meId" @open="emit('picture', item)" />
       <span v-if="item.body || !item.image" class="bubble-text" :class="{ 'is-big': big > 0 }" :style="big ? { fontSize: `${big === 1 ? 44 : big === 2 ? 36 : 30}px` } : undefined"><template v-for="(piece, index) in parts" :key="index"><button v-if="piece.mention && piece.mention.id !== 'everyone'" type="button" class="chip" :aria-label="`Open ${piece.text.slice(1)}'s card`" @click.stop="emit('player', piece.mention.id)">{{ piece.text }}</button><span v-else-if="piece.mention" class="chip is-all">{{ piece.text }}</span><template v-else>{{ piece.text }}</template></template></span>
       <VoiceNote v-if="item.voice" :voice="item.voice" :me-id="meId" :off="!mine && voiceEnabled === false" />
       <small v-if="tail">{{ time }}<template v-if="item.editedAt && !item.deleted"> · Edited</template><template v-if="mine && !item.deleted"> · Sent</template></small>

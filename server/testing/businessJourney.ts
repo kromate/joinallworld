@@ -18,6 +18,12 @@ export interface BusinessHost extends Pick<JourneyHost, 'now' | 'request' | 'ela
   edit(device: JourneyDevice, city: string, change: (state: Record<string, unknown>) => void): Promise<void>
   /** Let `ms` pass for every shop: the host's clock moves, or the stored shops are moved back in time. */
   age(ms: number): Promise<void>
+  /** Force one durable receipt write to abort before it is stored. */
+  failPersistence(requestId: string): Promise<void>
+  recoverPersistence(): Promise<void>
+  /** Reopen the real host over its existing durable store. */
+  restart(): Promise<void>
+  hasReceipt(device: JourneyDevice, requestId: string): Promise<boolean>
 }
 export interface BusinessResult { setup: number; bought: number; collected: number; raced: string[]; closed: boolean }
 
@@ -43,22 +49,21 @@ export async function businessJourney(host: BusinessHost): Promise<BusinessResul
     assert.ok(found, `${product} × ${units} quote`)
     return found
   }
-  const quotes = new Map<string, { expectedPrice: number; expectedTotal: number }>()
+  const buyBodies = new Map<string, Record<string, unknown>>()
   async function buy(shopId: string, product: string, units: number, requestId: string, device: JourneyDevice): Promise<Record<string, unknown>> {
-    const body: Record<string, unknown> = { cityId: 'lagos', shop: shopId, product, units, requestId }
-    if (typeof shopId === 'string' && product && Number.isSafeInteger(units) && units >= 1 && units <= 3) {
-      let quoted = quotes.get(requestId)
-      if (!quoted) {
+    let body = buyBodies.get(requestId)
+    if (!body) {
+      body = { cityId: 'lagos', shop: shopId, product, units, requestId }
+      if (typeof shopId === 'string' && product && Number.isSafeInteger(units) && units >= 1 && units <= 3) {
         const view = await market(device)
         const shop = list(view.shops).find((entry) => entry.id === shopId || object(entry.owner).id === shopId)
         const found = shop && list(shop.items).find((entry) => entry.id === product)
         const quote = found && list(found.quotes).find((entry) => entry.units === units)
         if (found && quote) {
-          quoted = { expectedPrice: number(found.price), expectedTotal: number(quote.total) }
-          quotes.set(requestId, quoted)
+          Object.assign(body, { expectedPrice: number(found.price), expectedTotal: number(quote.total) })
         }
       }
-      if (quoted) Object.assign(body, quoted)
+      buyBodies.set(requestId, body)
     }
     return post('/api/business/buy', body, device)
   }
@@ -139,6 +144,14 @@ export async function businessJourney(host: BusinessHost): Promise<BusinessResul
   const buying = id(), stockBefore = number(item(list((await market(bola)).shops)[0] ?? {}, 'jollof').stock)
   const buyerCashBefore = number((await life(bola, 'lagos')).cash)
   const sellerTillBefore = number(object(await mine(ada)).till)
+  await host.failPersistence(buying)
+  const failedBuy = await buy(shop, 'jollof', 2, buying, bola)
+  const failedBody = { ...(buyBodies.get(buying) ?? {}) }
+  assert.ok(failedBody.expectedPrice && failedBody.expectedTotal, 'the failed purchase retains its exact quote payload')
+  assert.deepEqual([failedBuy.status, failedBuy.error], [503, 'storage_unavailable'], 'an aborted durable receipt write is reported as unavailable')
+  assert.deepEqual([number(object(await life(bola, 'lagos')).cash), number(object(await mine(ada)).till), number(item(list((await market(bola)).shops)[0] ?? {}, 'jollof').stock)], [buyerCashBefore, sellerTillBefore, stockBefore], 'a failed commit leaves buyer, seller and stock unchanged')
+  assert.equal(await host.hasReceipt(bola, buying), false, 'a failed buy leaves no receipt')
+  await host.recoverPersistence()
   const bought = await buy(shop, 'jollof', 2, buying, bola)
   assert.deepEqual([bought.ok, bought.code, bought.amount, object(bought.state).cash], [true, 'bought', 1400, 98600])
   assert.equal(buyerCashBefore - number(object(bought.state).cash), 1400, 'the buyer pays the exact tax-inclusive quote')
@@ -150,6 +163,13 @@ export async function businessJourney(host: BusinessHost): Promise<BusinessResul
   const replay = await buy(shop, 'jollof', 2, buying, bola)
   assert.deepEqual([replay.duplicate, object(replay.state).cash], [true, 98600])
   assert.equal(number(object(await mine(ada)).till) - sellerTillBefore, 1400, 'the old successful quote replays once after the menu price changes')
+  const stockAfterPurchase = number(item(list((await market(bola)).shops)[0] ?? {}, 'jollof').stock)
+  await host.restart()
+  assert.equal(await host.hasReceipt(bola, buying), true, 'the successful quote receipt is still stored after restart')
+  const restartedReplay = await post('/api/business/buy', failedBody, bola)
+  assert.deepEqual([restartedReplay.duplicate, object(restartedReplay.state).cash], [true, 98600], 'the exact successful quote receipt survives a host restart')
+  assert.equal(number(object(await mine(ada)).till) - sellerTillBefore, 1400, 'restart replay does not credit the seller again')
+  assert.equal(item(list((await market(bola)).shops)[0] ?? {}, 'jollof').stock, stockAfterPurchase, 'restart replay does not alter stock')
   assert.ok(number(item(list(object(replay.market).shops)[0] ?? {}, 'jollof').stock) >= stockBefore - 2 - 3, 'two left the shelf for the player, whatever passers-by took meanwhile')
   assert.equal(list(object(bought.market).shops)[0]?.canRate, true)
   // The owner is told, in Messages → Updates, whether or not they are looking.

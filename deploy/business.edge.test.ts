@@ -60,11 +60,15 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
     name: 'business', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
     durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { ...layoutBindings(), BUILD_ID: 'local-business' },
   }
-  const worker = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
+  const create = () => new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs: () => {} })
+  let worker = create()
   const responses: WorkerResponse[] = []
-  t.after(async () => {
+  const stop = async (): Promise<void> => {
     for (const response of responses.splice(0)) if (!response.bodyUsed && response.body && !response.body.locked) await response.body.cancel().catch(() => {})
     await deadline(worker.dispose(), 'Worker disposal')
+  }
+  t.after(async () => {
+    await stop()
     await rm(folder, { recursive: true, force: true })
   })
   await deadline(worker.ready, 'Worker startup')
@@ -100,6 +104,15 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
         shop.day = lagosTime(Number(shop.at)).day
       }
       await writeStoredCollection(execOf(await storage()), 'business', JSON.stringify(business))
+    },
+    failPersistence: async (requestId) => {
+      await (await storage()).exec(`CREATE TRIGGER fail_business_receipt BEFORE INSERT ON once_receipts WHEN NEW.id = '${requestId}' BEGIN SELECT RAISE(ABORT, 'injected business receipt failure'); END`)
+    },
+    recoverPersistence: async () => { await (await storage()).exec('DROP TRIGGER fail_business_receipt') },
+    restart: async () => { await stop(); worker = create(); await deadline(worker.ready, 'Worker restart') },
+    hasReceipt: async (device, requestId) => {
+      const rows = await (await storage()).exec('SELECT COUNT(*) AS n FROM once_receipts WHERE sender = (SELECT public_id FROM sessions WHERE secret = ?) AND id = ?', keyOf(device), requestId)
+      return Number(object(rows[0]).n) > 0
     },
   }
   const result = await businessJourney(host)

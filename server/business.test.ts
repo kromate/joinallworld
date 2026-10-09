@@ -5,12 +5,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { fixture } from './test-fixture.ts';
+import { fixture, flakyDisk } from './test-fixture.ts';
+import { createServer } from './server.ts';
 import { createOnce } from './routes/once.ts';
 import { businessJourney } from './testing/businessJourney.ts';
 import { JOURNEY_TIME } from './testing/cityJourney.ts';
 import { loadCityContent } from '../src/game/cities/registry.ts';
 import { BUSINESS } from '../src/game/content/business.ts';
+import type { TimedId } from '../src/types/protocol.ts';
 import type { LifeState } from '../src/types/life.ts';
 import type { Database } from './types.ts';
 
@@ -72,17 +74,42 @@ async function harness(t: Parameters<typeof fixture>[0], options: Parameters<typ
 }
 
 test('a shop from opening to winding up, on the Node host', { timeout: 60000 }, async (t) => {
-  const f = await fixture(t);
+  const disk = flakyDisk();
+  const f = await fixture(t, { disk });
   f.advance(JOURNEY_TIME - f.now());
-  const result = await businessJourney({
-    now: f.now,
-    request: (path, body, cookie) => f.request(path, body, cookie),
-    elapse: async (_device, _city, ms) => { f.advance(ms); },
-    edit: async (device, city, change) => { await f.server.store.transact((db) => { const state = db.sessions[device.cookie.slice(device.cookie.indexOf('=') + 1)]?.cities[city as 'lagos']?.state; assert.ok(state); change(state as unknown as Record<string, unknown>); }); },
-    age: async (ms) => { f.advance(ms); },
-  });
-  assert.deepEqual([result.setup, result.bought, result.raced, result.closed], [15000, 1400, ['bought', 'sold_out'], true]);
-  assert.ok(result.collected > 1400);
+  let server = f.server, base = f.base;
+  try {
+    const result = await businessJourney({
+      now: f.now,
+      request: async (path, body, cookie) => fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) }),
+      elapse: async (_device, _city, ms) => { f.advance(ms); },
+      edit: async (device, city, change) => { await server.store.transact((db) => { const state = db.sessions[device.cookie.slice(device.cookie.indexOf('=') + 1)]?.cities[city as 'lagos']?.state; assert.ok(state); change(state as unknown as Record<string, unknown>); }); },
+      age: async (ms) => { f.advance(ms); },
+      failPersistence: async () => { disk.fail = 'ENOSPC'; },
+      recoverPersistence: async () => { disk.fail = null; },
+      restart: async () => {
+        await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+        await server.store.close?.();
+        server = await createServer({ dataDir: f.dir, now: f.now, sessionTtlMs: 2592000000 });
+        server.listen(0, '127.0.0.1');
+        await new Promise<void>((resolve, reject) => { server.once('listening', resolve); server.once('error', reject); });
+        const address = server.address();
+        if (!address || typeof address === 'string') throw new Error('Restarted server has no TCP address');
+        base = `http://127.0.0.1:${address.port}`;
+      },
+      hasReceipt: async (device, requestId) => server.store.read((db) => {
+        const session = db.sessions[device.cookie.slice(device.cookie.indexOf('=') + 1)];
+        return Object.hasOwn(session?.once ?? {}, requestId);
+      }),
+    });
+    assert.deepEqual([result.setup, result.bought, result.raced, result.closed], [15000, 1400, ['bought', 'sold_out'], true]);
+    assert.ok(result.collected > 1400);
+  } finally {
+    if (server.listening) {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      await server.store.close?.().catch(() => {});
+    }
+  }
 });
 
 test('routes: under /api/business, guarded by the host, strict about input, and nothing personal without a session', async (t) => {
@@ -109,7 +136,7 @@ test('routes: under /api/business, guarded by the host, strict about input, and 
 });
 
 test('the owner must stand at the market to open, stock, price and upgrade; a buyer must stand there to buy', async (t) => {
-  const { f, post, edit, trader, open, stock, buy } = await harness(t);
+  const { f, post, get, edit, trader, open, stock, buy } = await harness(t);
   const ada = await trader('Ada'), bola = await trader('Bola');
   await edit(ada, (state) => { state.location = 'home'; });
   assert.deepEqual([(await open(ada)).code, (await open(ada)).reason], ['cannot_open', 'Go to Market to rent a stall there.']);
@@ -136,18 +163,22 @@ test('the owner must stand at the market to open, stock, price and upgrade; a bu
   assert.equal(buyerBefore - Number(first.state?.cash), 600);
   assert.equal(Number(object((await get('/api/business/mine?city=lagos', ada)).mine).till) - sellerBefore, 600);
   // Rebuild this real purchase's receipt through the historical four-field createOnce contract.
-  const oldReceipt = await f.server.store.transact((db) => {
+  const legacyRequestId = await f.server.store.transact((db) => {
     const session = db.sessions[bola.cookie.slice(4)];
     assert.ok(session);
-    const saved = session.once?.[requestId];
+    const savedId = Object.keys(session.once ?? {}).find((id): id is TimedId => id === requestId);
+    assert.ok(savedId);
+    const saved = session.once?.[savedId];
     assert.ok(saved);
-    delete session.once![requestId];
-    return createOnce({ now: f.now, windowMs: DAY }).once(db, session, {
-      id: requestId, kind: 'business.buy', fingerprint: ['lagos', ada.id, 'jollof', '1'],
-    }, () => saved.result as { ok?: boolean });
+    assert.equal(saved.result.ok, true);
+    delete session.once![savedId];
+    const result = { ...saved.result, ok: true };
+    createOnce({ now: f.now, windowMs: DAY }).once(db, session, {
+      id: savedId, kind: 'business.buy', fingerprint: ['lagos', ada.id, 'jollof', '1'],
+    }, () => result);
+    return savedId;
   });
-  assert.equal(oldReceipt.ok, true);
-  const replay = await post('/api/business/buy', { cityId: 'lagos', shop: ada.id, product: 'jollof', units: 1, requestId }, bola);
+  const replay = await post('/api/business/buy', { cityId: 'lagos', shop: ada.id, product: 'jollof', units: 1, requestId: legacyRequestId }, bola);
   assert.deepEqual([replay.code, replay.duplicate, replay.state?.cash], ['bought', true, first.state?.cash]);
   assert.equal(Number(object((await get('/api/business/mine?city=lagos', ada)).mine).till) - sellerBefore, 600, 'the historical replay does not credit the seller twice');
 });

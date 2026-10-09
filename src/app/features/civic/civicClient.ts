@@ -35,7 +35,7 @@ export function createCivic(deps: CivicDeps, store: CivicStore = sharedStore) {
   }
   const dataOwners = new WeakMap<object, () => boolean>()
   const requestIds = new WeakMap<object, unknown>()
-  const requestActors = new Map<string, { actor: string | null; generation: number }>()
+  const requestActors = new Map<string, string>()
   const loads = new WeakMap<CivicEntry, symbol>()
   const stale = { ok: false, code: 'stale_identity_response' }
   function objects(value: unknown, visit: (item: object) => boolean, seen = new Set<object>()): boolean {
@@ -103,12 +103,12 @@ export function createCivic(deps: CivicDeps, store: CivicStore = sharedStore) {
     if (!deps.connected() || actor.actor === null) { deps.toast(`${deps.linkWhy()} Nothing was sent.`, 'error'); return { ok: false, code: 'offline' } }
     if (typeof body.requestId === 'string') {
       const owner = requestActors.get(body.requestId)
-      if (owner && (owner.actor !== actor.actor || owner.generation !== actor.generation)) {
+      if (owner !== undefined && owner !== actor.actor) {
         const reason = 'This request belongs to a previous character. Reload this screen before trying again.'
         deps.toast(reason, 'error')
         return { ok: false, code: 'actor_changed', reason }
       }
-      requestActors.set(body.requestId, { actor: actor.actor, generation: actor.generation })
+      requestActors.set(body.requestId, actor.actor)
     }
     store.pending.add(pending)
     let result: SendResult
@@ -142,7 +142,7 @@ export function createCivic(deps: CivicDeps, store: CivicStore = sharedStore) {
    */
   function requestId(slot: RequestSlot, contents: unknown): string {
     const actor = scope()
-    const what = JSON.stringify([actor.actor, actor.generation, actor.city, contents])
+    const what = JSON.stringify([actor.actor, actor.city, contents])
     if (slot.what !== what || !slot.id) { slot.what = what; slot.id = deps.newId() }
     return slot.id
   }

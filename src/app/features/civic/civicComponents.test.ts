@@ -119,14 +119,14 @@ test('Governor: a vote on its way says "Working…" and cannot be pressed again;
   const cityId = app.game.view.value.cityId
   const open = governor({ you: { ...governor().you!, vote: { ok: true, checks: [] } } })
   civic.put(`gov:${cityId}`, open)
-  pending.add('vote:c1')
+  pending.add(JSON.stringify([app.game.cityId.value, 'vote:c1']))
   try {
     const html = await render('GovernorApp')
     const pressed = buttonTag(html, 'Working…')
     assert.match(pressed, /disabled/)
     assert.match(pressed, /aria-busy="true"/)
     assert.match(buttonTag(html, 'Vote for Tolu'), /^<button(?![^>]*disabled)/, 'another candidate can still be chosen')
-  } finally { pending.delete('vote:c1') }
+  } finally { pending.delete(JSON.stringify([app.game.cityId.value, 'vote:c1'])) }
   const { govRefusal } = await load<{ govRefusal: { value: { key: string; code: string; reason: string } | null } }>('/src/app/features/civic/civicDrafts.ts')
   govRefusal.value = { key: `gov:${cityId}`, code: 'address_vote_limit', reason: 'Too many votes from this network.' }
   try {
@@ -186,8 +186,8 @@ test('Neighbours: counts from the server, presence, a way to say hi, and the hid
   assert.ok(buttons(html).includes('Hide my home from the directory'))
   civic.put(`hood:${cityId}`, { ...data, hidden: true })
   assert.ok(buttons(await render('NeighboursApp')).includes('List my home in the directory'))
-  pending.add('prefs')
-  try { assert.ok(buttons(await render('NeighboursApp')).includes('Working…')) } finally { pending.delete('prefs') }
+  pending.add(JSON.stringify([app.game.cityId.value, 'prefs']))
+  try { assert.ok(buttons(await render('NeighboursApp')).includes('Working…')) } finally { pending.delete(JSON.stringify([app.game.cityId.value, 'prefs'])) }
 })
 
 test('Rich List: the podium, the rank and the toggle', async () => {

@@ -56,14 +56,28 @@ test(':shortcodes: are replaced, unknown ones are not', () => { assert.equal(sho
 test('drafts are kept per conversation on this device and cleared when empty', () => {
   const store = new Map<string, string>()
   const storage = { getItem: (k: string) => store.get(k) ?? null, setItem: (k: string, v: string) => { store.set(k, v) } }
-  const drafts = createDrafts(storage)
+  const drafts = createDrafts(storage, 'actor-a')
   drafts.set('g.1', 'half a thought'); drafts.set('dm.x', 'another')
-  assert.equal(createDrafts(storage).get('g.1'), 'half a thought')
+  assert.equal(createDrafts(storage, 'actor-a').get('g.1'), 'half a thought')
   drafts.set('g.1', '')
-  assert.equal(createDrafts(storage).get('g.1'), ''); assert.equal(createDrafts(storage).get('dm.x'), 'another')
+  assert.equal(createDrafts(storage, 'actor-a').get('g.1'), ''); assert.equal(createDrafts(storage, 'actor-a').get('dm.x'), 'another')
   for (let i = 0; i < 40; i += 1) drafts.set(`c${i}`, 'x')
-  assert.equal(Object.keys(JSON.parse(store.get('joinallworld-chat-drafts') ?? '{}')).length, 30)
-  assert.equal(createDrafts(null).get('x'), '')
+  assert.equal(Object.keys(JSON.parse(store.get('joinallworld-chat-drafts:actor-a') ?? '{}')).length, 30)
+  assert.equal(createDrafts(null, 'actor-a').get('x'), '')
+})
+
+test('shared group and provisional drafts belong to their actor; legacy drafts have no provable owner', () => {
+  const store = new Map<string, string>([['joinallworld-chat-drafts', JSON.stringify({ 'g.shared': 'Unknown owner' })]])
+  const storage = { getItem: (key: string) => store.get(key) ?? null, setItem: (key: string, value: string) => { store.set(key, value) } }
+  const first = createDrafts(storage, 'actor-a'), second = createDrafts(storage, 'actor-b')
+  assert.equal(first.get('g.shared'), '', 'the unscoped legacy record is not assigned to a character')
+  first.set('g.shared', 'Ada group draft'); first.set('to:friend', 'Ada direct draft')
+  assert.equal(second.get('g.shared'), '')
+  assert.equal(second.get('to:friend'), '')
+  second.set('g.shared', 'Bola group draft')
+  assert.equal(createDrafts(storage, 'actor-a').get('g.shared'), 'Ada group draft')
+  assert.equal(createDrafts(storage, 'actor-a').get('to:friend'), 'Ada direct draft')
+  assert.equal(createDrafts(storage, 'actor-b').get('g.shared'), 'Bola group draft')
 })
 
 test('chats: pinned first then newest; search by the chat\'s or a member\'s name; the composer grows to four lines', () => {

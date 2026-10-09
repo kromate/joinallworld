@@ -4,7 +4,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import BaseButton from '../../ui/BaseButton.vue'
 import { pictureUrl } from './pictureModel.ts'
 
-defineProps<{ id: string; caption: string; from: string; mine: boolean }>()
+defineProps<{ id: string; caption: string; from: string; mine: boolean; meId?: string }>()
 const emit = defineEmits<{ close: []; report: [] }>()
 const scale = ref(1)
 const pointers = new Map<number, { x: number; y: number }>()
@@ -26,7 +26,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', key, true))
     <div class="lightbox-bar"><span>{{ mine ? 'You' : from }}<template v-if="caption"> · {{ caption }}</template></span>
       <BaseButton v-if="!mine" small @click="emit('report')">Report</BaseButton><BaseButton small variant="primary" @click="emit('close')">Close</BaseButton></div>
     <div class="lightbox-stage" @click.self="emit('close')" @wheel.prevent="wheel">
-      <img :src="pictureUrl(id)" alt="Picture" :style="{ transform: `scale(${scale})` }" @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up" @dblclick="toggle">
+      <img :src="pictureUrl(id, meId)" alt="Picture" :style="{ transform: `scale(${scale})` }" @pointerdown="down" @pointermove="move" @pointerup="up" @pointercancel="up" @dblclick="toggle">
     </div>
   </div>
 </template>

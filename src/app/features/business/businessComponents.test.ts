@@ -46,8 +46,9 @@ after(async () => { app?.game.stop(); await vite?.close(); globalThis.fetch = re
 
 const limits = { perShop: 5000, itemsPerShop: 6, perDay: 8000, countPerDay: 8, qtyMax: 3, bag: 24, bandMin: 0.7, bandMax: 1.4, name: { min: 3, max: 24 } }
 const jollof = { id: 'jollof', label: 'Jollof rice & chicken', icon: '🍛', base: 600, cost: 360, local: false, min: 420, max: 840, does: '+45 hunger · +6 fun', trade: false }
+const quotes = (price: number) => [1, 2, 3].map((units) => ({ units, total: price * units, tax: 0 }))
 const card = (patch: Partial<ShopCard> = {}): ShopCard => ({ id: 'owner-1', name: 'Mama <b>Put</b>', type: 'food', typeLabel: 'Food stall', colour: 'gold', icon: '🍲', owner: { id: 'owner-1', name: 'Ada' }, status: 'open', stars: 4.2, ratings: 3,
-  items: [{ id: 'jollof', label: 'Jollof rice & chicken', icon: '🍛', price: 650, stock: 4, does: '+45 hunger · +6 fun' }, { id: 'puff-puff', label: 'Puff-puff', icon: '🍩', price: 200, stock: 0, does: '+15 hunger' }], mine: false, blocked: false, canRate: true, ...patch })
+  items: [{ id: 'jollof', label: 'Jollof rice & chicken', icon: '🍛', price: 650, stock: 4, does: '+45 hunger · +6 fun', quotes: quotes(650) }, { id: 'puff-puff', label: 'Puff-puff', icon: '🍩', price: 200, stock: 0, does: '+15 hunger', quotes: quotes(200) }], mine: false, blocked: false, canRate: true, ...patch })
 const mine = (patch: Partial<MyShop> = {}): MyShop => ({ ...card({ mine: true, canRate: false, name: 'Mama Put' }), city: 'lagos', cityName: 'Lagos', venue: 'market', venueName: 'Market', here: false, till: 4200, tillCap: 50000, sold: 9, capacity: 30, units: 12,
   rent: 7000, paidUntil: server.now() + 5 * 86400000, owed: 0, closesAt: null, customers: 34, today: { takings: 4200, sold: 9, came: 11 }, total: { sold: 9, takings: 4200, rent: 0 },
   upgrades: [{ id: 'display', label: 'Better display', cost: 15000, effect: 'Draws 10% more customers.', owned: false }], products: [{ ...jollof, price: 650, stock: 12 }], closeRefund: 11700, alert: '', ...patch })

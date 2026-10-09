@@ -16,9 +16,10 @@ export interface VoiceAnswer {
 }
 export interface VoiceJourneyHost {
   actor(name: string): Promise<VoiceActor>
-  json(path: string, body: unknown | null, who?: VoiceActor): Promise<VoiceAnswer>
-  media(path: string, who?: VoiceActor): Promise<{ status: number; bytes: Uint8Array; cache: string | null }>
+  json(path: string, body: unknown | null, who?: VoiceActor, expectedActor?: string): Promise<VoiceAnswer>
+  media(path: string, who?: VoiceActor, expectedActor?: string): Promise<{ status: number; bytes: Uint8Array; cache: string | null }>
   hasVoice(id: string): Promise<boolean>
+  voiceCount(): Promise<number>
   id(): string
   restart?(): Promise<void>
 }
@@ -94,12 +95,35 @@ export async function runVoiceJourney(host: VoiceJourneyHost): Promise<void> {
   const bytes = syntheticWebmOpus(), inspected = inspectVoiceNote(bytes)
   if (!inspected.ok) throw new Error(`Synthetic WebM/Opus fixture was rejected: ${inspected.reason}`)
   const encoded = Buffer.from(bytes).toString('base64'), clientId = host.id()
+  const beforeRefusedSends = await host.voiceCount()
+  const strangerSend = await host.json('/api/social/voice', { to: eve.id, clientId: host.id(), data: encoded }, ada)
+  assert.equal(strangerSend.code, 'voice_refused', 'a nonfriend cannot receive a voice note')
+  assert.equal(await host.voiceCount(), beforeRefusedSends, 'a refused nonfriend send leaves no stored bytes')
+  assert.equal((await host.json('/api/social/prefs', { voiceNotes: 'nobody' }, bola)).code, 'saved')
+  const optedOutSend = await host.json('/api/social/voice', { to: bola.id, clientId: host.id(), data: encoded }, ada)
+  assert.equal(optedOutSend.code, 'voice_refused', 'a recipient who opted out cannot receive a voice note')
+  assert.equal(await host.voiceCount(), beforeRefusedSends, 'a refused opted-out send leaves no stored bytes')
+  assert.equal((await host.json('/api/social/prefs', { voiceNotes: 'friends' }, bola)).code, 'saved')
   const rejected = await host.json('/api/social/voice', { to: bola.id, clientId: host.id(), data: Buffer.from('not webm').toString('base64') }, ada)
   assert.equal(rejected.code, 'voice_rejected', 'unsupported codecs and malformed containers are rejected explicitly')
   const sent = await host.json('/api/social/voice', { to: bola.id, clientId, data: encoded }, ada)
   assert.equal(sent.code, 'sent')
   const directId = voiceId(sent), directConv = sent.conv?.id
   assert.equal(typeof directConv, 'string')
+
+  const historyPath = `/api/social/conversations/${directConv}`
+  const messagesWithVoice = async () => (await host.json(historyPath, null, ada)).messages?.filter(message => message?.voice).map(message => message?.id) ?? []
+  const beforeActorMismatch = await messagesWithVoice()
+  const blobsBeforeActorMismatch = await host.voiceCount()
+  const rejectedActorWrite = await host.json('/api/social/voice', { to: bola.id, clientId: host.id(), data: encoded }, ada, eve.id)
+  assert.equal(rejectedActorWrite.status, 409)
+  assert.equal(rejectedActorWrite.error, 'actor_changed')
+  assert.equal(await host.voiceCount(), blobsBeforeActorMismatch, 'an actor-mismatched write stores no voice bytes')
+  assert.deepEqual(await messagesWithVoice(), beforeActorMismatch, 'an actor-mismatched write creates no message')
+  assert.equal((await host.media(`/api/social/voice/${directId}`, bola, eve.id)).status, 409, 'a mismatched actor header blocks voice reads')
+  assert.equal((await host.media(`/api/social/voice/${directId}`, bola, bola.id)).status, 200, 'the recipient actor can read with its captured identity')
+  assert.equal((await host.media(`/api/social/voice/${directId}?actor=${encodeURIComponent(eve.id)}`, bola)).status, 409, 'audio query actor mismatch is rejected')
+  assert.equal((await host.media(`/api/social/voice/${directId}?actor=${encodeURIComponent(bola.id)}`, bola)).status, 200, 'audio query bound to the recipient still plays')
 
   const unauthenticated = await host.media(`/api/social/voice/${directId}`)
   assert.equal(unauthenticated.status, 401, 'voice bytes require a signed-in device')

@@ -4,7 +4,7 @@
 // stall). Every rule and number is the server's (docs/BUSINESS.md): this screen shows what /api/business/ answers and
 // sends the player's choices back. A paid request keeps its id until it is applied, so pressing again after a lost
 // answer repeats the SAME request.
-import { computed, reactive, ref, watch } from 'vue'
+import { computed, reactive, ref, toRef, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { BusinessTypeId, BusinessUpgradeId, MyBusinessResponse, MyShop, ShopCard, ShopItem, VenueShopsResponse } from '../../../types/business.ts'
 import { money, plural } from '../../ui/format.ts'
@@ -21,6 +21,7 @@ import { useSection } from '../kit/section.ts'
 import LazyList from '../../ui/LazyList.vue'
 import { chunkedView } from '../../ui/lazyList.ts'
 import { requestSlot } from '../civic/civicCore.ts'
+import { actorDraft } from '../civic/civicDrafts.ts'
 import type { SendResult } from '../civic/civicCore.ts'
 import { useCivic, useLoaded, useOffline } from '../civic/useCivic.ts'
 import { buyWhy, changedPrices, collectWhy, mineKey, minePath, openWhy, orderOf, orderWhy, priceWords, pricesWhy, starMarks, starsLabel, untilWords, venueKey, venuePath } from './businessModel.ts'
@@ -49,18 +50,18 @@ let seen: unknown = null
 watch(() => props.params, (params) => { if (params && params !== seen) { seen = params; if ((params as { venue?: unknown }).venue) tab.value = 'market' } }, { immediate: true })
 
 // What is being chosen, kept while the app is open: an order from the supplier, prices, a new stall.
-const order = reactive<Record<string, number>>({})
-const prices = reactive<Record<string, number>>({})
-const draft = reactive<{ type: BusinessTypeId; name: string; colour: string; icon: string }>({ type: 'food', name: '', colour: 'gold', icon: '' })
-const closing = ref(false)
-const slots = { open: requestSlot(), stock: requestSlot(), collect: requestSlot(), rent: requestSlot(), upgrade: requestSlot(), close: requestSlot(), bag: requestSlot(), buy: requestSlot() }
-let formShopId: string | null = null
+const order = actorDraft(() => reactive<Record<string, number>>({}))
+const prices = actorDraft(() => reactive<Record<string, number>>({}))
+const draft = actorDraft(() => reactive<{ type: BusinessTypeId; name: string; colour: string; icon: string }>({ type: 'food', name: '', colour: 'gold', icon: '' }))
+const flow = actorDraft<{ closing: boolean; shopId: string | null }>(() => ({ closing: false, shopId: null }))
+const closing = toRef(flow, 'closing')
+const slots = actorDraft(() => ({ open: requestSlot(), stock: requestSlot(), collect: requestSlot(), rent: requestSlot(), upgrade: requestSlot(), close: requestSlot(), bag: requestSlot(), buy: requestSlot() }))
 watch(mine, (shop) => {
   if (!shop) return
-  if (shop.id !== formShopId) {
+  if (shop.id !== flow.shopId) {
     for (const id of Object.keys(prices)) delete prices[id]
     for (const id of Object.keys(order)) delete order[id]
-    closing.value = false; formShopId = shop.id
+    closing.value = false; flow.shopId = shop.id
   }
   for (const product of shop.products) if (prices[product.id] === undefined) prices[product.id] = product.price
 }, { immediate: true })

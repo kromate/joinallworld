@@ -23,4 +23,5 @@ test('the upload is JSON with base64 bytes, the caption and the reply only when 
   const more = JSON.parse(await uploadBody({ target: { to: 'p' }, clientId: 'c-1234567', ready: { blob, type: 'image/jpeg', width: 1, height: 1, url: 'blob:x' }, caption: 'The view', replyTo: 4 })) as Record<string, unknown>
   assert.deepEqual([more['body'], more['replyTo'], more['to']], ['The view', 4, 'p'])
   assert.equal(pictureUrl('a b'), '/api/social/images/a%20b')
+  assert.equal(pictureUrl('a b', 'actor a'), '/api/social/images/a%20b?actor=actor%20a')
 })

@@ -142,15 +142,22 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     if (!images || !PICTURE_LIMITS.idPattern.test(id)) throw ctx.fail(404, 'unknown_picture');
     // Who may see it is decided from the stored conversation on every request. The picture's own row says which conversation it
     // belongs to (so no conversation is searched for it); its bytes are sent only when that conversation lets this player see it.
-    await ctx.store.read((db) => {
+    const actor = await ctx.store.read((db) => {
       const session = request.requireSession(db);
+      const expected = request.query.get('actor');
+      if (expected !== null && expected !== session.publicId) throw ctx.fail(409, 'actor_changed');
       if (!ctx.allow(`social:img:${session.publicId}`, 240)) throw ctx.fail(429, 'rate_limited');
+      return session.publicId;
     });
     const stored = await images.get(id);
-    const allowed = stored ? await ctx.store.read((db) => service.pictureAllowed(db, request.requireSession(db), stored.image.conv, id)) : false;
+    const allowed = stored ? await ctx.store.read((db) => {
+      const session = request.requireSession(db);
+      if (session.publicId !== actor) throw ctx.fail(409, 'actor_changed');
+      return service.pictureAllowed(db, session, stored.image.conv, id);
+    }) : false;
     const found = allowed ? stored : null;
     if (!found) throw ctx.fail(404, 'unknown_picture');
-    return { file: { bytes: found.bytes, type: CONTENT_TYPES[found.image.type] } };
+    return { file: { bytes: found.bytes, type: CONTENT_TYPES[found.image.type], cache: 'no-store' } };
   };
   const uploadVoice: RouteHandler = async request => {
     const me = await ctx.store.read(db => request.requireSession(db).publicId);
@@ -180,9 +187,11 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
   const readVoice: RouteHandler = async request => {
     const id = request.params.id ?? '', voices = ctx.voices;
     const expectedActor = request.query.get('actor');
+    let owner: string | undefined;
     const actor = (db: Db) => {
       const session = request.requireSession(db);
-      if (expectedActor !== null && expectedActor !== session.publicId) throw ctx.fail(409, 'actor_changed');
+      if ((expectedActor !== null && expectedActor !== session.publicId) || (owner !== undefined && owner !== session.publicId)) throw ctx.fail(409, 'actor_changed');
+      owner = session.publicId;
       return session;
     };
     await ctx.store.read(db => { const me = actor(db).publicId; if (!ctx.allow(`social:voice-read:${me}`, 120)) throw ctx.fail(429, 'rate_limited'); });

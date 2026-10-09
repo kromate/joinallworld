@@ -4,9 +4,11 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { FetchJson } from '../../types/client.ts'
 import type { CivicNotice } from '../../../types/civic.ts'
-import { civicActor, civicNews, createStore, requestSlot } from './civicCore.ts'
+import { civicActor, civicNews, createStore, requestSlot, sharedStore } from './civicCore.ts'
 import { createCivic } from './civicClient.ts'
 import type { CivicDeps } from './civicClient.ts'
+import { actorDraft, adsUi, govDraft, govRefusal, govRunRequest, radioDraft } from './civicDrafts.ts'
+import { politicsUi, runRequest } from '../politics/politicsDrafts.ts'
 
 function setup(options: { connected?: boolean; answer?: (path: string, body: unknown) => unknown | Promise<unknown> } = {}) {
   const calls: { path: string; method: string; body: unknown; headers?: Record<string, string> }[] = []
@@ -255,4 +257,67 @@ test('late errors and sign-out cannot restore private data or leave the old cont
   reject(new Error('Lost old answer'))
   assert.equal((await sending).code, 'stale_identity_response')
   assert.deepEqual(toasts, [])
+})
+
+test('civic and politics forms restore only their actor, including unfinished paid request ids', () => {
+  const before = sharedStore.actor.id
+  try {
+    civicActor(sharedStore, 'draft-actor-a')
+    govDraft.slogan = 'Ada slogan'; govDraft.announcement = 'Ada announcement'
+    govRunRequest.id = 'ada-request'; govRunRequest.what = 'ada-intent'
+    govRefusal.value = { key: 'gov:lagos', code: 'held', reason: 'Ada refusal' }
+    adsUi.text = 'Ada advert'; radioDraft.title = 'Ada song'; radioDraft.requestId = 'ada-radio'
+    politicsUi.court.statement = 'Ada statement'; politicsUi.grant.purpose = 'Ada purpose'
+    runRequest.id = 'ada-politics'; runRequest.what = 'ada-politics-intent'
+    civicActor(sharedStore, 'draft-actor-b')
+    assert.equal(govDraft.slogan, ''); assert.equal(govDraft.announcement, '')
+    assert.equal(govRunRequest.id, null); assert.equal(govRefusal.value, null)
+    assert.equal(adsUi.text, ''); assert.equal(radioDraft.title, ''); assert.equal(radioDraft.requestId, null)
+    assert.equal(politicsUi.court.statement, ''); assert.equal(politicsUi.grant.purpose, ''); assert.equal(runRequest.id, null)
+    govDraft.slogan = 'Bola slogan'; politicsUi.court.statement = 'Bola statement'
+    civicActor(sharedStore, null)
+    assert.equal(govDraft.slogan, ''); assert.equal(politicsUi.court.statement, '')
+    civicActor(sharedStore, 'draft-actor-a')
+    assert.equal(govDraft.slogan, 'Ada slogan'); assert.equal(govRunRequest.id, 'ada-request')
+    assert.deepEqual(govRefusal.value, { key: 'gov:lagos', code: 'held', reason: 'Ada refusal' }); assert.equal(radioDraft.requestId, 'ada-radio')
+    assert.equal(politicsUi.court.statement, 'Ada statement'); assert.equal(runRequest.id, 'ada-politics')
+    civicActor(sharedStore, 'draft-actor-a')
+    assert.equal(govRunRequest.id, 'ada-request', 'reconnecting the same actor leaves its intent untouched')
+    civicActor(sharedStore, 'draft-actor-b')
+    assert.equal(govDraft.slogan, 'Bola slogan'); assert.equal(politicsUi.court.statement, 'Bola statement')
+  } finally { civicActor(sharedStore, before) }
+})
+
+test('actor draft records remove keys belonging only to the previous actor', () => {
+  const before = sharedStore.actor.id
+  const order = actorDraft<Record<string, number>>(() => ({}))
+  try {
+    civicActor(sharedStore, 'order-actor-a')
+    order.rice = 3
+    civicActor(sharedStore, 'order-actor-b')
+    assert.deepEqual(order, {})
+    order.water = 1
+    civicActor(sharedStore, 'order-actor-a')
+    assert.deepEqual(order, { rice: 3 })
+    civicActor(sharedStore, 'order-actor-b')
+    assert.deepEqual(order, { water: 1 })
+  } finally { civicActor(sharedStore, before) }
+})
+
+test('an ambiguous paid request retains its id when its actor returns, while old responses remain stale', async () => {
+  let requests = 0
+  const { civic, switchActor, calls } = setup({ answer: () => ++requests === 1 ? new Error('Lost answer') : { ok: true, code: 'bought', duplicate: true } })
+  const slot = requestSlot(), id = civic.requestId(slot, ['buy'])
+  const saved = { ...slot }
+  const lost = await civic.send('buy', '/buy', { requestId: id })
+  assert.equal(lost.code, 'network')
+  switchActor('player-b')
+  civic.requestId(slot, ['buy'])
+  switchActor('player-a')
+  Object.assign(slot, saved)
+  assert.equal(civic.requestId(slot, ['buy']), id)
+  assert.equal(lost.code, 'stale_identity_response')
+  const retried = await civic.send('buy', '/buy', { requestId: id })
+  assert.equal(retried.ok, true); assert.equal(retried.duplicate, true)
+  assert.deepEqual(calls.map((call) => call.body), [{ cityId: 'lagos', requestId: id }, { cityId: 'lagos', requestId: id }])
 })

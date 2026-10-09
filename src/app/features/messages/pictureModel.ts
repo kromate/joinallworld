@@ -61,4 +61,4 @@ export async function uploadBody(upload: Upload): Promise<string> {
   return JSON.stringify({ ...upload.target, clientId: upload.clientId, type: upload.ready.type, data: await toBase64(upload.ready.blob), ...(upload.caption ? { body: upload.caption } : {}), ...(upload.replyTo ? { replyTo: upload.replyTo } : {}) })
 }
 /** The address a picture is shown from. Same origin, so the session cookie goes with it. */
-export const pictureUrl = (id: string): string => `/api/social/images/${encodeURIComponent(id)}`
+export const pictureUrl = (id: string, actor?: string): string => `/api/social/images/${encodeURIComponent(id)}${actor ? `?actor=${encodeURIComponent(actor)}` : ''}`

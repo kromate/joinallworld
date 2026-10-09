@@ -9,23 +9,31 @@ import { runVoiceJourney, syntheticWebmOpus, type VoiceAnswer, type VoiceJourney
 
 test('Node voice-note HTTP journey enforces private playback, retry identity, revocation, reports, and deletion cleanup', async t => {
   const f = await fixture(t)
+  const request = (path: string, body: unknown | null, who?: { cookie: string }, expectedActor?: string): Promise<Response> => expectedActor === undefined
+    ? f.request(path, body ?? undefined, who?.cookie)
+    : fetch(f.base + path, {
+      method: body ? 'POST' : 'GET',
+      headers: { ...(body ? { 'content-type': 'application/json' } : {}), ...(who ? { cookie: who.cookie } : {}), 'X-Allworld-Actor': expectedActor },
+      body: body ? JSON.stringify(body) : undefined,
+    })
   const host: VoiceJourneyHost = {
     async actor(name) {
       const actor = await f.device(name)
       assert.equal((await f.request('/api/social/me', undefined, actor.cookie)).status, 200)
       return actor
     },
-    async json(path, body, who) {
-      const response = await f.request(path, body ?? undefined, who?.cookie)
-      return { status: response.status, ...await response.json() as VoiceAnswer }
+    async json(path, body, who, expectedActor) {
+      const response = await request(path, body, who, expectedActor)
+      return { ...await response.json() as Omit<VoiceAnswer, 'status'>, status: response.status }
     },
-    async media(path, who) {
-      const response = await f.request(path, undefined, who?.cookie)
+    async media(path, who, expectedActor) {
+      const response = await request(path, null, who, expectedActor)
       return { status: response.status, bytes: new Uint8Array(await response.arrayBuffer()), cache: response.headers.get('cache-control') }
     },
     async hasVoice(id) {
       try { await access(join(f.dir, 'chat-voice-notes', `${id}.voice`)); return true } catch { return false }
     },
+    async voiceCount() { return (await createFileVoices(join(f.dir, 'chat-voice-notes')).stats()).count },
     id: f.id,
   }
   await runVoiceJourney(host)

@@ -2,7 +2,7 @@
 import VoiceComposer from './VoiceComposer.vue'
 // The message box: grows to four lines, keeps a draft per conversation on this device, offers an @ picker in groups, an emoji
 // picker, :shortcodes:, and the quoted message being answered.
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import EmojiPicker from './EmojiPicker.vue'
 import { composerLines, createDrafts, insertMention, liveMentions, messageLength, mentionChoices, mentionQuery, shortcodes } from './messagesText.ts'
@@ -32,7 +32,14 @@ const props = defineProps<{
 }>()
 const emit = defineEmits<{ send: [body: string, extra: { mentions?: { id: string; start: number }[]; replyTo?: number }]; cancelReply: []; sentVoice: [result: { conv: { id: string } }]; sentPicture: [result: Extract<SendMessageResult, { ok: true }>] }>()
 
-const drafts = createDrafts((() => { try { return globalThis.localStorage ?? null } catch { return null } })())
+const storage = (() => { try { return globalThis.localStorage ?? null } catch { return null } })()
+const actorDrafts = new Map<string, ReturnType<typeof createDrafts>>()
+function draftsFor(actor: string): ReturnType<typeof createDrafts> {
+  let found = actorDrafts.get(actor)
+  if (!found) { found = createDrafts(storage, actor); actorDrafts.set(actor, found) }
+  return found
+}
+let draftActor = props.meId, draftConversation = props.conv, drafts = draftsFor(draftActor)
 const text = ref('')
 const caret = ref(0)
 const field = ref<HTMLTextAreaElement | null>(null)
@@ -45,43 +52,71 @@ const limitId = computed(() => `message-limit-${props.conv}`)
 // ---- a picture: choose, see it, send it (with progress), try again
 const fileInput = ref<HTMLInputElement | null>(null)
 const photo = ref<{ ready: Ready; caption: string; clientId: string; busy: boolean; progress: number; error: string | null } | null>(null)
+let photoGeneration = 0, uploading: XMLHttpRequest | null = null
+function photoScope() {
+  const generation = photoGeneration, actor = props.meId, conv = props.conv
+  return { actor, current: () => generation === photoGeneration && actor === props.meId && conv === props.conv }
+}
 async function chosen(): Promise<void> {
   const file = fileInput.value?.files?.[0]
   if (fileInput.value) fileInput.value.value = ''
-  if (!file) return
-  photo.value = null
+  if (!file || props.disabled) return
+  dismissPhoto()
+  const scope = photoScope()
   const made = await preparePicture(file)
+  if (!scope.current()) { if (made.ok) URL.revokeObjectURL(made.ready.url); return }
   photo.value = made.ok ? { ready: made.ready, caption: '', clientId: props.newId(), busy: false, progress: 0, error: null } : { ready: { blob: file, type: 'image/jpeg', width: 1, height: 1, url: '' }, caption: '', clientId: '', busy: false, progress: 0, error: made.reason }
 }
-function dismissPhoto(): void { if (photo.value?.ready.url) URL.revokeObjectURL(photo.value.ready.url); photo.value = null }
+function dismissPhoto(): void {
+  photoGeneration++
+  uploading?.abort(); uploading = null
+  if (photo.value?.ready.url) URL.revokeObjectURL(photo.value.ready.url)
+  photo.value = null
+}
+onBeforeUnmount(dismissPhoto)
 async function sendPhoto(): Promise<void> {
   const current = photo.value
-  if (!current || current.busy || !current.clientId) return
+  if (!current || current.busy || !current.clientId || props.disabled || !props.meId) return
+  const scope = photoScope(), target = { ...props.target }, replyTo = props.reply?.seq
   current.busy = true; current.error = null; current.progress = 0
-  const body = await uploadBody({ target: props.target, clientId: current.clientId, ready: current.ready, caption: current.caption.trim(), ...(props.reply ? { replyTo: props.reply.seq } : {}) })
-  // XMLHttpRequest, because a fetch cannot say how much of the upload has gone.
-  const outcome = await new Promise<{ ok: true; result: Extract<SendMessageResult, { ok: true }> } | { ok: false; reason: string }>((done) => {
-    const request = new XMLHttpRequest()
-    request.open('POST', '/api/social/images')
-    request.setRequestHeader('Content-Type', 'application/json')
-    request.upload.onprogress = (event) => { if (event.lengthComputable) current.progress = Math.round(100 * event.loaded / event.total) }
-    request.onerror = () => done({ ok: false, reason: 'Connection lost. Nothing was sent; try again.' })
-    request.ontimeout = request.onerror
-    request.timeout = 60000
-    request.onload = () => {
-      let answer: { ok?: boolean; reason?: string; error?: string } = {}
-      try { answer = JSON.parse(request.responseText) as typeof answer } catch { /* a page that is not ours */ }
-      if (request.status === 200 && answer.ok === true) done({ ok: true, result: answer as Extract<SendMessageResult, { ok: true }> })
-      else done({ ok: false, reason: answer.reason ?? (request.status === 413 ? 'That picture is too big to send.' : request.status === 429 ? 'Too many requests. Wait a minute and try again.' : 'The picture was not sent. Try again.') })
-    }
-    request.send(body)
-  })
-  current.busy = false
-  if (outcome.ok) { emit('sentPicture', outcome.result); emit('cancelReply'); dismissPhoto() } else current.error = outcome.reason
+  try {
+    const body = await uploadBody({ target, clientId: current.clientId, ready: current.ready, caption: current.caption.trim(), ...(replyTo ? { replyTo } : {}) })
+    if (!scope.current()) return
+    // XMLHttpRequest reports upload progress; the actor header binds the write to this draft's character.
+    const outcome = await new Promise<{ ok: true; result: Extract<SendMessageResult, { ok: true }> } | { ok: false; reason: string }>((done) => {
+      const request = new XMLHttpRequest()
+      uploading = request
+      request.open('POST', '/api/social/images')
+      request.setRequestHeader('Content-Type', 'application/json')
+      request.setRequestHeader('X-Allworld-Actor', scope.actor)
+      request.upload.onprogress = (event) => { if (scope.current() && event.lengthComputable) current.progress = Math.round(100 * event.loaded / event.total) }
+      request.onerror = () => done({ ok: false, reason: 'Delivery is not confirmed. Retry this picture to avoid sending it twice.' })
+      request.ontimeout = request.onerror
+      request.onabort = () => done({ ok: false, reason: 'Picture upload cancelled.' })
+      request.timeout = 60000
+      request.onload = () => {
+        let answer: { ok?: boolean; reason?: string; error?: string } = {}
+        try { answer = JSON.parse(request.responseText) as typeof answer } catch { /* a page that is not ours */ }
+        if (request.status === 200 && answer.ok === true) done({ ok: true, result: answer as Extract<SendMessageResult, { ok: true }> })
+        else done({ ok: false, reason: answer.reason ?? (request.status === 413 ? 'That picture is too big to send.' : request.status === 429 ? 'Too many requests. Wait a minute and try again.' : 'The picture was not sent. Try again.') })
+      }
+      request.send(body)
+    })
+    if (!scope.current()) return
+    if (outcome.ok) { emit('sentPicture', outcome.result); emit('cancelReply'); dismissPhoto() } else current.error = outcome.reason
+  } catch { if (scope.current()) current.error = 'Delivery is not confirmed. Retry this picture to avoid sending it twice.' }
+  finally { if (scope.current()) { current.busy = false; uploading = null } }
 }
 
-watch(() => props.conv, () => { text.value = props.prefill || drafts.get(props.conv); picked.value = []; emoji.value = false; void nextTick(grow) }, { immediate: true })
-watch(text, (value) => drafts.set(props.conv, value))
+watch([() => props.meId, () => props.conv], ([actor, conv], previous) => {
+  const changedActor = previous?.[0] !== undefined && previous[0] !== actor
+  dismissPhoto()
+  draftActor = actor; draftConversation = conv; drafts = draftsFor(actor)
+  text.value = (!changedActor && props.prefill) || drafts.get(conv)
+  picked.value = []; emoji.value = false; caret.value = 0
+  void nextTick(grow)
+}, { immediate: true, flush: 'sync' })
+watch(text, (value) => drafts.set(draftConversation, value), { flush: 'sync' })
 
 const query = computed(() => (props.members.length ? mentionQuery(text.value, caret.value) : null))
 const choices = computed(() => (query.value ? mentionChoices(props.members, props.meId, query.value.query, props.admin).slice(0, 8) : []))

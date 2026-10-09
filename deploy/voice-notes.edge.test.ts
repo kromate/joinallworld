@@ -47,9 +47,9 @@ async function fixture(t: TestContext) {
   t.after(async () => { await stop(); await rm(folder, { recursive: true, force: true }) })
   await mf.ready
 
-  const request = (path: string, body: unknown | null, who?: Actor): Promise<Response> => send(path, {
+  const request = (path: string, body: unknown | null, who?: Pick<Actor, 'cookie'>, expectedActor?: string): Promise<Response> => send(path, {
     method: body ? 'POST' : 'GET',
-    headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(who ? { cookie: who.cookie } : {}) },
+    headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(who ? { cookie: who.cookie } : {}), ...(expectedActor !== undefined ? { 'X-Allworld-Actor': expectedActor } : {}) },
     body: body ? JSON.stringify(body) : undefined,
   })
   const host: VoiceJourneyHost = {
@@ -62,17 +62,21 @@ async function fixture(t: TestContext) {
       for (const path of ['/api/life?city=lagos', '/api/social/me']) assert.equal((await request(path, null, actor)).status, 200)
       return actor
     },
-    async json(path, body, who) {
-      const response = await request(path, body, who)
-      return { status: response.status, ...await response.json() as VoiceAnswer }
+    async json(path, body, who, expectedActor) {
+      const response = await request(path, body, who, expectedActor)
+      return { ...await response.json() as Omit<VoiceAnswer, 'status'>, status: response.status }
     },
-    async media(path, who) {
-      const response = await send(path, { headers: { origin, ...(who ? { cookie: who.cookie } : {}) } })
+    async media(path, who, expectedActor) {
+      const response = await send(path, { headers: { origin, ...(who ? { cookie: who.cookie } : {}), ...(expectedActor !== undefined ? { 'X-Allworld-Actor': expectedActor } : {}) } })
       return { status: response.status, bytes: new Uint8Array(await response.arrayBuffer()), cache: response.headers.get('cache-control') }
     },
     async hasVoice(id) {
       const store = await mf.unsafeGetDurableObjectStorage('joinallworld-voice-notes', 'JoinAllworldState', { name: 'joinallworld-v1' })
       return (await store.exec('SELECT id FROM chat_voice_notes WHERE id = ?', id)).length > 0
+    },
+    async voiceCount() {
+      const store = await mf.unsafeGetDurableObjectStorage('joinallworld-voice-notes', 'JoinAllworldState', { name: 'joinallworld-v1' })
+      return (await store.exec('SELECT id FROM chat_voice_notes')).length
     },
     id: () => `${Date.now()}:${randomUUID()}`,
     async restart() {

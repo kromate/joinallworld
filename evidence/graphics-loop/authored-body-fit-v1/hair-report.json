@@ -10,11 +10,11 @@
     },
     "measurement": "Image-stripped GLTFLoader/MeshoptDecoder parse; scene.updateMatrixWorld(true); Box3.setFromObject on the main skin mesh."
   },
-  "api": "createAuthoredHair(style: 'short' | 'bun', color: string, seed: string) -> { object, triangles, drawCalls, dispose() }",
-  "coordinateContract": "The returned group uses the authored GLB native scene coordinates. Attach it under an identity native-space group; do not attach under a translated bone-local frame without converting coordinates.",
+  "api": "createAuthoredHair(style: 'short' | 'bun', color: string, seed: string, sourceHead?: THREE.Mesh, nativeRoot?: THREE.Object3D) -> { object, triangles, drawCalls, dispose() }",
+  "coordinateContract": "Pass the real main skin mesh and its native root to sample horizontal scalp contours from shipped source vertices. The returned group uses the nativeRoot frame. Bounds-only fallback remains for adapter wiring tests and is not the fitted path.",
   "geometry": {
-    "short": {"vertices": 3469, "triangles": 5760, "drawCalls": 1, "composition": "1,440 cap + 90 curls × 48 triangles"},
-    "bun": {"vertices": 2689, "triangles": 4640, "drawCalls": 1, "composition": "1,440 cap + 896 bun base + 48 curls × 48 triangles"},
+    "short": {"vertices": 3373, "triangles": 5568, "drawCalls": 1, "composition": "1,248 source-contour cap + 90 curls × 48 triangles"},
+    "bun": {"vertices": 2593, "triangles": 4448, "drawCalls": 1, "composition": "1,248 source-contour cap + 896 bun base + 48 curls × 48 triangles"},
     "limitTrianglesPerHair": 7000,
     "sharedSurface": "One connected sampled scalp/curl surface with shared vertices and computed normals; bun adds one ellipsoid and 48 curled locks into the same merged geometry/material."
   },
@@ -30,7 +30,7 @@
   },
   "limitations": [
     "The module fits the exact authored LOD asset above; it does not claim the same bounds for other heads or future LODs.",
-    "The current revision adds deterministic short spiral/ringlet tubes on a connected scalp shell; it has not been locally geometry-checked or visually reviewed.",
+    "The current revision samples actual mesh vertices in 96 angular sectors at six head-height bands, fits a connected shell and places deterministic curl tubes on its contour. It has not been locally geometry-checked or visually reviewed.",
     "Hairline, side profile, bun placement and highlights require remote visual review with the production head material and motion."
   ]
 }

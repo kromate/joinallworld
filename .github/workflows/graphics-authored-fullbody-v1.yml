@@ -1,7 +1,7 @@
 name: Authored full body and motion experiment
 on:
   push:
-    branches: [codex/graphics-authored-fullbody-v1]
+    branches: [codex/graphics-authored-fullbody-v2]
 permissions:
   contents: read
 jobs:
@@ -23,6 +23,7 @@ jobs:
           python3 evidence/graphics-loop/authored-head-spike-v1/retain-head.py
           node --max-old-space-size=128 evidence/graphics-loop/authored-head-spike-v1/simplify-head.mjs
           node --max-old-space-size=128 evidence/graphics-loop/authored-head-spike-v1/compress-head.mjs evidence/graphics-loop/authored-head-spike-v1/generated/expressive-head-lod.glb
+          python3 evidence/graphics-loop/authored-body-fit-v1/calibrate-skin.py
       - name: Build full body comparison
         run: node --max-old-space-size=192 evidence/graphics-loop/authored-body-fit-v1/build-preview.mjs
       - name: Capture actual full body poses and expressions

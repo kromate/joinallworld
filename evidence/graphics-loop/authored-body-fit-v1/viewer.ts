@@ -8,6 +8,7 @@ import { loadBody as loadFittedBody } from './skinned-fit.ts';
 import type { SkinnedBody } from '../../../src/scene/body/skinned.ts';
 import { attachAuthoredHead } from './fit-authored-head.ts';
 import { createAuthoredHair } from './authored-hair.ts';
+import skinReference from '../authored-head-spike-v1/generated/skin-reference.json';
 
 const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
@@ -29,12 +30,12 @@ const scenes = kits.map(() => {
 });
 const camera = new THREE.PerspectiveCamera(28, 1, .05, 40);
 const template = (await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync(new URL('../authored-head-spike-v1/generated/expressive-head-compressed.glb', import.meta.url).href)).scene;
+const sourceSkinMeshes: THREE.Mesh[] = [];
 template.traverse(node => {
   if (!(node instanceof THREE.Mesh)) return;
-  for (const material of Array.isArray(node.material) ? node.material : [node.material]) {
-    if (material instanceof THREE.MeshStandardMaterial && material.name === 'VitSkin') material.color.set('#c99c7c');
-  }
+  if ((Array.isArray(node.material) ? node.material : [node.material]).some(material => material.name === 'VitSkin')) sourceSkinMeshes.push(node);
 });
+if (sourceSkinMeshes.length !== 1) throw new Error('Authored hair requires the exact skin surface');
 let bodies: SkinnedBody[] = [];
 let head: ReturnType<typeof attachAuthoredHead> | null = null;
 let hair: ReturnType<typeof createAuthoredHair> | null = null;
@@ -71,7 +72,7 @@ async function set(next: Partial<typeof state>) {
   const previous = state; state = { ...state, ...next };
   for (const key of ['body', 'expression', 'pose', 'focus'] as const) (document.querySelector(`#${key}`) as HTMLSelectElement).value = state[key];
   const seed = 'authored-character-fit';
-  const look = (candidate: boolean) => normalizeLook({ body: state.body, hair: candidate ? 'lowcut' : state.body === 'woman' ? 'bun' : 'afro', outfit: 'casual', skin: '#9a6341', hairColor: '#241b18', outfitColor: '#cb674d', bottomsColor: '#36594a', expression: state.expression === 'grin' ? 'grin' : state.expression === 'smile' ? 'smile' : 'neutral', accessories: [] }, seed);
+  const look = (candidate: boolean) => normalizeLook({ body: state.body, hair: candidate ? 'lowcut' : state.body === 'woman' ? 'bun' : 'afro', outfit: 'casual', fabric: 'plain', skin: '#9a6341', hairColor: '#241b18', outfitColor: '#cb674d', bottomsColor: '#36594a', expression: state.expression === 'grin' ? 'grin' : state.expression === 'smile' ? 'smile' : 'neutral', accessories: [] }, seed);
   if (!bodies.length || previous.body !== state.body) {
     const ticket = ++generation;
     hair?.dispose(); head = null; hair = null;
@@ -79,13 +80,22 @@ async function set(next: Partial<typeof state>) {
     const prepared: { head?: ReturnType<typeof attachAuthoredHead> } = {};
     const loaded = await Promise.all([loadBody(kits[0]!, look(false), seed, 1), loadFittedBody(kits[1]!, look(true), seed, 1, actor => {
       prepared.head = attachAuthoredHead(actor, template);
+      const skin = new THREE.Color(look(true).skin);
+      prepared.head.object.traverse(node => {
+        if (!(node instanceof THREE.Mesh)) return;
+        for (const material of Array.isArray(node.material) ? node.material : [node.material]) {
+          if (material instanceof THREE.MeshStandardMaterial && material.name === 'VitSkin') {
+            material.color.setRGB(skin.r / skinReference.linearRgb[0]!, skin.g / skinReference.linearRgb[1]!, skin.b / skinReference.linearRgb[2]!);
+          }
+        }
+      });
       return prepared.head.dispose;
     })]);
     if (ticket !== generation) { loaded.forEach(body => body.dispose()); return; }
     if (!prepared.head) throw new Error('Authored head was not attached before wardrobe fitting');
     head = prepared.head;
     bodies = loaded; bodies.forEach((body, index) => scenes[index]!.add(body.object));
-    hair = createAuthoredHair(state.body === 'woman' ? 'bun' : 'short', '#241b18', seed);
+    hair = createAuthoredHair(state.body === 'woman' ? 'bun' : 'short', '#241b18', seed, sourceSkinMeshes[0]!, template);
     head.object.add(hair.object);
   } else bodies[0]!.wear(look(false), seed);
   seconds = 0; draw();

@@ -81,7 +81,7 @@ No other file is worker-owned. In particular, `src/client.ts`, `src/game/cities/
 
 Stop if exact route parity, server full-catalogue behavior, or the no-HTTP Lagos path requires a file outside the whitelist. Return the concrete dependency to Root instead of widening scope.
 
-## Root revalidation and execution order — 10 October, 00:00 UTC
+## Root revalidation and execution order — 9 October, 23:57 UTC
 
 Root fetched WORLD `bb6b779dc648c5d492d6b6db22361962153eb2c5` and independently matched all seven trusted projection/packet source hashes above. This migration stays pinned to the existing 50-city authority. WORLD’s separate third-five proposal adds Cairo, Rabat, Kigali, Kampala and Lusaka; its 55-row candidate needs its own route, save, budget and actual journey acceptance. Do not mix the two parity baselines or silently admit the five cities during the provider migration.
 

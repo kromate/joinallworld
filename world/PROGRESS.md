@@ -1,3 +1,17 @@
+# Country runtime proposal checkpoint, 9 October 2026 at 23:03 UTC
+
+The explicit-admission generator and portable browser country reader now pass
+16 focused tests and an actual loopback HTTP check against all 50 C1 rows.
+Nigeria remains static with zero shard requests; the index plus ten foreign
+shards transferred 6,851 bytes. Generation also passed with Git unavailable.
+All four baseline snapshots and old generated outputs match C1 independently.
+Strict TypeScript remains unaccepted after one bounded whole-tree stop and two
+30-second scoped timeouts. Integration owns caller migration and exact combined
+release acceptance. See `COUNTRY-DIRECTORY-RUNTIME-PACKAGING-PROPOSAL.md`.
+
+Fresh public health at 23:01 UTC still identifies C1. The last accepted live map
+has 11 open countries. The 42 queued starters are not travelable yet.
+
 # Country rollout checkpoint, 9 October 2026 at 22:38 UTC
 
 São Tomé (ST), Praia (CV) and Juba (SS) now have verified real starter sources.

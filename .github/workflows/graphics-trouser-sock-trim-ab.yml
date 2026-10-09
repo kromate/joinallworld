@@ -1,102 +1,52 @@
-{
-  "status": "source-prepared-not-executed",
-  "reason": "V2 CPU checker scope failure and runner bundle path mismatch; V3 corrects both without changing trim helper or visual criteria.",
-  "files": [
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-prepared-factory-v29.ts",
-      "sha256": "ecf30896371cdf65317894e5f2add34eb7679f0f8b9c5f72210457159f38f5e2",
-      "bytes": 40738
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim.ts",
-      "sha256": "b4cf4586b55a6b2324dc08b6d5969e754e3166a97f66ef81794371aede9106d7",
-      "bytes": 13300
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3/trouser-sock-trim-ab-v3.ts",
-      "sha256": "ad3720704862ac5acfac07165b23677d321f3c595b39309265c78b3f02801de5",
-      "bytes": 14918
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3.html",
-      "sha256": "6687b9b3df48acada6aeebd1df130c308a95a19cc1b5c324c4fc5146d948b4e5",
-      "bytes": 2308
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3/bundle-trouser-sock-trim-ab.mjs",
-      "sha256": "01c9b408fc81da34e9d4b66ee6a2f2d6b93e06842532ea688f3af000dea7f0ee",
-      "bytes": 2382
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3/render-trouser-sock-trim-ab.mjs",
-      "sha256": "bd505752dc07552b0905fba07def9a51d97bc9c5998597f7e4867ae3dfa3f4aa",
-      "bytes": 12947
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3.typecheck.json",
-      "sha256": "c87c60cddb652e5575ae55f662bea0489b27455e524650234c5847c28ab9ac15",
-      "bytes": 254
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/workflow-trouser-sock-trim-ab-v3.yml",
-      "sha256": "92fcd1492cc9342ed5db34ef292feceb5126e4e0cb3a4e51e362466fa3cedfe4",
-      "bytes": 3307
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-check-v3.mjs",
-      "sha256": "dabf5049ba412f636d4164849f588853cca38a8102860b3963f276a4a62b9512",
-      "bytes": 12074
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/outcompressed/parametric-base-facial-meshopt.glb",
-      "sha256": "dfa53941f0fb77d69e59f59fa017f72efa45eddd7e6e8b8414b4a4dba332d552",
-      "bytes": 1600800
-    },
-    {
-      "path": "src/scene/body/assets/clip-pack.glb",
-      "sha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
-      "bytes": 338060
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/authored-footwear/out/shoes01-mobile.glb",
-      "sha256": "8f4060a275356489205f298bed9874da83920c166aeacffd36746e760a465557",
-      "bytes": 467864
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/out/male_casualsuit01.glb",
-      "sha256": "1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f",
-      "bytes": 1120612
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/casual-female-export/out/casual-female.glb",
-      "sha256": "7063492e52bb8817981349df45e141e0bc70dbe3e339d4d2dac8df3bdc3342bd",
-      "bytes": 557900
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/authored-clothing/office-export/out/office-female.glb",
-      "sha256": "fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053",
-      "bytes": 547732
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/authored-hair/out/afro01-mobile.glb",
-      "sha256": "3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474",
-      "bytes": 659456
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/authored-hair/out/short02-mobile.glb",
-      "sha256": "a2637b4d14055cbd537b9b0f6e46c695b4a5bdc99e7d779956d58218ffc626a0",
-      "bytes": 504432
-    },
-    {
-      "path": "evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3/verify-pins.mjs",
-      "sha256": "4b0e6695ea43298f97c45ad226f76b3fdea46261b700e8c678c1db2aff03814f",
-      "bytes": 1479
-    }
-  ],
-  "limits": {
-    "productionChanged": false,
-    "localTypecheck": false,
-    "localRender": false,
-    "pixelReview": "pending remote"
-  }
-}
+name: Authored trouser sock trim A-B diagnostic
+on:
+  push:
+    branches: [codex/graphics-trouser-sock-trim-ab-v4]
+permissions:
+  contents: read
+jobs:
+  sock-trim-ab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare the body GLB used by the pinned V29 factory
+        run: |
+          python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
+          python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
+      - name: Verify sock V3 source pins
+        run: node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3/verify-pins.mjs
+      - name: Typecheck the isolated sock-trim fixture
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3.typecheck.json
+      - name: Bundle the fixture against the byte-pinned V29 factory snapshot
+        if: always()
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3/bundle-trouser-sock-trim-ab.mjs
+      - name: Check real actor shoe geometry and ownership on bounded CPU
+        if: always()
+        run: python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/trouser-sock-trim-cpu-resources.log /tmp/trouser-sock-trim-cpu-resources.json node --max-old-space-size=160 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-check-v3.mjs
+      - name: Capture actual source and privately trimmed shoes on matched actors
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
+          python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/trouser-sock-trim-resources.log /tmp/trouser-sock-trim-resources.json node evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/trouser-sock-trim-ab-v3/render-trouser-sock-trim-ab.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trouser-sock-trim-ab-v3-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/trouser-sock-trim-ab-v3-${{ github.run_id }}/
+            /tmp/trouser-sock-trim-resources.log
+            /tmp/trouser-sock-trim-resources.json
+            /tmp/trouser-sock-trim-cpu-resources.log
+            /tmp/trouser-sock-trim-cpu-resources.json
+          if-no-files-found: error

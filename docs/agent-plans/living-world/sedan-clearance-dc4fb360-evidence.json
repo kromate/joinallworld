@@ -1,0 +1,120 @@
+{
+  "model": "sedan",
+  "detail": "map",
+  "method": "Every emitted Mesh vertex through matrixWorld; each InstancedMesh vertex through instance matrix then matrixWorld. No cached object/geometry bounds used.",
+  "snapshots": [
+    {
+      "door": 0,
+      "min": [
+        -1.0319999977946281,
+        0.019999980926513672,
+        -2.237500037997961
+      ],
+      "max": [
+        1.0319999977946281,
+        1.5889793634414673,
+        2.2449999993294476
+      ]
+    },
+    {
+      "door": 1,
+      "min": [
+        -1.8899913854914319,
+        0.019999980926513672,
+        -2.237500037997961
+      ],
+      "max": [
+        1.0319999977946281,
+        1.5889793634414673,
+        2.2449999993294476
+      ]
+    }
+  ],
+  "sampledDoorSweep": {
+    "samples": 101,
+    "min": [
+      -1.900021494667222,
+      0.019999980926513672,
+      -2.237500037997961
+    ],
+    "max": [
+      1.0319999977946281,
+      1.5889793634414673,
+      2.2449999993294476
+    ],
+    "certified": false
+  },
+  "steering": [
+    {
+      "angle": -0.62,
+      "min": [
+        -1.224648419014113,
+        0.019999980926513672,
+        -2.237500037997961
+      ],
+      "max": [
+        1.224648419014113,
+        1.5889793634414673,
+        2.2449999993294476
+      ]
+    },
+    {
+      "angle": 0,
+      "min": [
+        -1.0319999977946281,
+        0.019999980926513672,
+        -2.237500037997961
+      ],
+      "max": [
+        1.0319999977946281,
+        1.5889793634414673,
+        2.2449999993294476
+      ]
+    },
+    {
+      "angle": 0.62,
+      "min": [
+        -1.224648419014113,
+        0.019999980926513672,
+        -2.237500037997961
+      ],
+      "max": [
+        1.224648419014113,
+        1.5889793634414673,
+        2.2449999993294476
+      ]
+    }
+  ],
+  "closedDoorAnchor": [
+    -0.96,
+    0.6132000000000001,
+    0.41999999999999993
+  ],
+  "boardingApproachGroundPoint": [
+    -2.46,
+    0,
+    0.41999999999999993
+  ],
+  "note": "Discrete pose measurements only; continuous door/heading/wheel-spin sweeps, avatar volume, terrain, traffic and pedestrian clearance remain unverified.",
+  "sourceSha": "dc4fb360c5bfadf2093f3f6c932be82ef7e84cdf",
+  "sourceHashes": {
+    "src/models/vehicles/index.ts": "7db039a0b25373a86354639fd703a96aab3a3de48a3088c14c555cc0fa6afc19",
+    "src/models/vehicles/geometry.ts": "4bf847bd17a735050daa4686ed0be495c64a7936ed3c65c6e306e740edc94885",
+    "src/app/features/living-world/drivingScene.ts": "2ee6430db04f74e5ed7f4bde50f97939db6705bb19cf563df58381ecba7f85da"
+  },
+  "runtime": "Node24.19; shared heavy1; heap128MiB; command terminal0 in284ms; no WebGL/browser/server/provider access",
+  "proposalWitness": {
+    "roadWidthMetres": 8,
+    "laneLeftOffsetMetres": 2,
+    "edgeMarginMetres": 0.4,
+    "assumedVehicleHalfWidthMetres": 1.2,
+    "closedVehicleVertexHalfWidthMetres": 1.0319999977946281,
+    "maxSteerMeasuredVertexHalfWidthMetres": 1.224648419014113,
+    "sampledDoorLeftExtentFromLaneCentreMetres": 3.900021494667222,
+    "boardingPointLeftExtentFromRoadCentreMetres": 4.46,
+    "roadEdgeLeftExtentMetres": 4,
+    "requiredOpenDoorMarginNotMet": true,
+    "boardingPointOutsideRoad": true,
+    "result": "Proposal rejected for boarding at the current lane offset. Off-road depot apron/terrain/actor clearance is not established; do not enable trips."
+  }
+}

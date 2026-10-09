@@ -39,18 +39,17 @@
 import type * as THREE from 'three';
 import { createBatch, sceneMaterials, kitResources, releaseObjects, hash, GLOW } from './build.ts';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { avatarProportions, normalizeAvatarAppearance } from '../types/avatar.ts';
-import type { AvatarLookExtensions } from '../types/avatar.ts';
-import { normalizeAvatarWearables, resolveAvatarWearablesForRenderer } from '../game/wardrobe/rules.ts';
+import { avatarProportions } from '../types/avatar.ts';
+import { ACCESSORY_SLOTS, LOOK_OPTIONS, normalizeLook } from './avatar-look.ts';
+import type { Body, Fabric, Face, Expression, Swatch, LookOptions, Look } from './avatar-look.ts';
+export { ACCESSORY_SLOTS, LOOK_OPTIONS, normalizeLook };
+export type { Body, Fabric, Face, Expression, Swatch, LookOptions, Look };
+import { resolveAvatarWearablesForRenderer } from '../game/wardrobe/rules.ts';
 import { AVATAR_WEARABLE_CATALOGUE } from '../game/wardrobe/catalogue.ts';
 import { AVATAR_LOW_TRIANGLES } from '../budgets.ts';
 import type { Kit } from './kit.ts';
 import type { Batch, BatchOptions, Colour, ThreeModule, Vec3 } from './types.ts';
 
-export type Body = 'woman' | 'man';
-export type Fabric = 'plain' | 'ankara' | 'adire' | 'asooke';
-export type Face = 'oval' | 'round' | 'long';
-export type Expression = 'smile' | 'neutral' | 'grin';
 export type Pose = 'stand' | 'sit' | 'walk' | 'wave' | 'work' | 'dance' | 'relax' | 'jog';
 export type DetailLevel = 'low' | 'medium' | 'high';
 /** The floating mark over a head: 'crown' = you, 'npc' = green dot, 'player' = blue dot. */
@@ -58,35 +57,11 @@ export type Marker = 'crown' | 'npc' | 'player';
 export type CrowdKind = 'player' | 'npc' | 'self';
 /** The limbs and body sections of a rigged avatar. */
 export type PartName = 'torso' | 'head' | 'armL' | 'armR' | 'legL' | 'legR';
+export const POSES: readonly Pose[] = Object.freeze(['stand', 'sit', 'walk', 'wave', 'work', 'dance', 'relax', 'jog']);
+/** The limbs and body sections of a rigged avatar (buildAvatar with `rig: true`). */
+export const PARTS: readonly PartName[] = Object.freeze(['torso', 'head', 'armL', 'armR', 'legL', 'legR']);
+export const DETAILS: readonly DetailLevel[] = Object.freeze(['low', 'medium', 'high']);
 
-export interface Swatch { id: string; hex: Colour }
-/** The option ids a look can take (colours are swatches). */
-export interface LookOptions {
-  body: readonly Body[];
-  hair: Record<Body, readonly string[]>;
-  outfit: Record<Body, readonly string[]>;
-  fabric: readonly Fabric[];
-  accessories: readonly string[];
-  face: readonly Face[];
-  expression: readonly Expression[];
-  skin: readonly Swatch[];
-  hairColor: readonly Swatch[];
-  outfitColor: readonly Swatch[];
-}
-/** A complete look: every field set, colours as '#rrggbb'. */
-export interface Look extends AvatarLookExtensions {
-  body: Body;
-  hair: string;
-  outfit: string;
-  fabric: Fabric;
-  skin: Colour;
-  hairColor: Colour;
-  outfitColor: Colour;
-  bottomsColor: Colour;
-  accessories: string[];
-  face: Face;
-  expression: Expression;
-}
 /** The part of a batch the drawing functions use: a rig batch has no build(), and draws `part()`s into batches of their own. */
 export interface Drawing {
   isBatch: true;
@@ -151,92 +126,6 @@ export interface CrowdTag {
 }
 export interface Crowd { group: THREE.Group; tags: CrowdTag[]; triangles: number; dispose: () => void }
 export interface LookColours { shirt: Colour; pants: Colour; skin: Colour; hair: Colour }
-
-const swatches = (entries: [string, Colour][]): Swatch[] => entries.map(([id, hex]) => ({ id, hex }));
-export const LOOK_OPTIONS: Readonly<LookOptions> = Object.freeze<LookOptions>({
-  body: ['woman', 'man'],
-  hair: {
-    woman: ['braids', 'afro', 'bun', 'ponytail', 'long', 'locs', 'lowcut', 'gele', 'classic', 'cornrows', 'twists', 'bantuknots'],
-    man: ['lowcut', 'bald', 'curls', 'afro', 'locs', 'braids', 'classic', 'fade', 'cornrows', 'twists'],
-  },
-  outfit: {
-    woman: ['casual', 'office', 'owambe', 'sitework', 'jersey', 'kaftan', 'gown'],
-    man: ['casual', 'hoodie', 'office', 'chill', 'sitework', 'jersey', 'kaftan', 'agbada'],
-  },
-  fabric: ['plain', 'ankara', 'adire', 'asooke'],
-  accessories: ['glasses', 'sunglasses', 'cap', 'headwrap', 'fila', 'earrings', 'chain', 'watch', 'beads', 'backpack', 'handbag'],
-  face: ['oval', 'round', 'long'],
-  expression: ['smile', 'neutral', 'grin'],
-  skin: swatches([['sand', '#c68a5e'], ['honey', '#b0764d'], ['bronze', '#9a6341'], ['chestnut', '#845236'], ['cocoa', '#6e422c'], ['umber', '#573323'], ['ebony', '#40261b']]),
-  hairColor: swatches([['black', '#1c1917'], ['softblack', '#2b2320'], ['darkbrown', '#3d2a1f'], ['brown', '#5a3a26'], ['auburn', '#8a3b22'], ['blonde', '#d2a857'], ['purple', '#7a4bb0']]),
-  outfitColor: swatches([['blue', '#3f72c4'], ['green', '#3f9a5a'], ['red', '#c9423a'], ['orange', '#e0822f'], ['violet', '#8055c2'], ['pink', '#dd6fa0'], ['teal', '#2f9d98'], ['navy', '#243a66'], ['cream', '#ece2c6'], ['gold', '#d6a83a']]),
-});
-/** Accessories that share a slot replace each other: only the first of a slot is drawn. */
-export const ACCESSORY_SLOTS: Readonly<Record<string, string>> = Object.freeze({ glasses: 'eyes', sunglasses: 'eyes', cap: 'head', headwrap: 'head', fila: 'head', earrings: 'ears', chain: 'neck', watch: 'wrist', beads: 'hand', backpack: 'carry', handbag: 'carry' });
-export const POSES: readonly Pose[] = Object.freeze(['stand', 'sit', 'walk', 'wave', 'work', 'dance', 'relax', 'jog']);
-/** The limbs and body sections of a rigged avatar (buildAvatar with `rig: true`). */
-export const PARTS: readonly PartName[] = Object.freeze(['torso', 'head', 'armL', 'armR', 'legL', 'legR']);
-export const DETAILS: readonly DetailLevel[] = Object.freeze(['low', 'medium', 'high']);
-// The game's skin swatches (APPEARANCE.skin in content/traits.js), so a saved look keeps its tone in a scene.
-const GAME_SKIN: Record<string, Colour> = { skin1: '#e0ac7e', skin2: '#c98e62', skin3: '#b0764c', skin4: '#96603c', skin5: '#7a4a2c', skin6: '#5e3620', skin7: '#3f2416' };
-
-const key = (value: unknown): string => String(value ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
-const ALIASES: Record<string, string> = { female: 'woman', f: 'woman', girl: 'woman', male: 'man', m: 'man', boy: 'man', asoke: 'asooke', lowcut: 'lowcut', site: 'sitework', work: 'sitework', smart: 'office' };
-
-function pickOption<T extends string>(value: unknown, list: readonly T[], seed: number): T {
-  const wanted = ALIASES[key(value)] || key(value);
-  return list.includes(wanted as T) ? wanted as T : list[seed % list.length]!;
-}
-function pickColour(value: unknown, palette: readonly Swatch[], seed: number): Colour {
-  if (typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value.trim())) return value.trim().toLowerCase();
-  if (typeof value === 'number' && Number.isInteger(value) && value >= 0 && value < palette.length) return palette[value]!.hex;
-  const named = palette.find((swatch) => swatch.id === key(value));
-  if (!named && palette === LOOK_OPTIONS.skin && GAME_SKIN[key(value)]) return GAME_SKIN[key(value)]!;
-  return (named || palette[seed % palette.length]!).hex;
-}
-/** Known accessories, one per slot, in the order given. */
-function pickAccessories(value: unknown): string[] {
-  const slots = new Set<string>(), out: string[] = [];
-  for (const item of Array.isArray(value) ? value : []) {
-    const id = key(item), slot = ACCESSORY_SLOTS[id];
-    if (!slot || slots.has(slot)) continue;
-    slots.add(slot); out.push(id);
-  }
-  return out;
-}
-// What a passer-by with no recorded look may carry (most carry nothing).
-const SEEDED_ACCESSORIES: string[][] = [[], [], [], ['glasses'], ['cap'], [], ['backpack'], ['watch'], [], ['sunglasses'], ['handbag'], []];
-
-/** Fill in a look. The same input and seed always give the same result. */
-export function normalizeLook(look?: unknown, seed?: unknown): Look {
-  const source: Record<string, unknown> = look && typeof look === 'object' ? look as Record<string, unknown> : {};
-  const recorded = Object.keys(source).length > 0;
-  const base = seed ?? source.seed ?? source.id ?? 'joinallworld';
-  const pick = (part: string) => hash(`${base}:${part}`);
-  const body = pickOption(source.body ?? source.gender, LOOK_OPTIONS.body, pick('body'));
-  const outfitColor = pickColour(source.outfitColor, LOOK_OPTIONS.outfitColor, pick('outfitColor'));
-  let bottomsSeed = pick('bottomsColor');
-  if (LOOK_OPTIONS.outfitColor[bottomsSeed % 10]!.hex === outfitColor) bottomsSeed += 7;
-  // Seeded fallbacks rarely pick site work, so a crowd is not a sea of hard hats.
-  const outfits = LOOK_OPTIONS.outfit[body], everyday = outfits.filter((id) => id !== 'sitework');
-  const outfitSeed = outfits.indexOf(pick('outfit') % 9 === 0 ? 'sitework' : everyday[pick('outfit') % everyday.length]!);
-  return {
-    body,
-    hair: pickOption(source.hair ?? source.hairstyle, LOOK_OPTIONS.hair[body], pick('hair')),
-    outfit: pickOption(source.outfit, outfits, outfitSeed),
-    fabric: pickOption(source.fabric, LOOK_OPTIONS.fabric, source.fabric == null && pick('fabric') % 2 ? 0 : pick('fabric')),
-    skin: pickColour(source.skin ?? source.skinTone, LOOK_OPTIONS.skin, pick('skin')),
-    hairColor: pickColour(source.hairColor, LOOK_OPTIONS.hairColor, pick('hairColor') % 4),
-    outfitColor,
-    bottomsColor: pickColour(source.bottomsColor, LOOK_OPTIONS.outfitColor, bottomsSeed),
-    // A recorded look wears exactly what it lists (nothing, if it lists nothing).
-    accessories: pickAccessories(recorded ? source.accessories : SEEDED_ACCESSORIES[pick('accessories') % SEEDED_ACCESSORIES.length]),
-    face: pickOption(source.face, LOOK_OPTIONS.face, recorded ? 0 : pick('face')),
-    expression: pickOption(source.expression, LOOK_OPTIONS.expression, 0),
-    ...(source.wearables != null ? { wearables: normalizeAvatarWearables(source.wearables) } : {}),
-    ...(source.appearance != null ? { appearance: normalizeAvatarAppearance(source.appearance) } : {}),
-  };
-}
 
 // Joint angles per pose. arm/leg: [pitch, roll] at the shoulder/hip (negative pitch = forward);
 // fore/calf: bend at the elbow/knee. Index 0 is the avatar's right side (−x), 1 its left (+x).
@@ -1609,7 +1498,7 @@ export function buildAvatar(kit: Kit, look?: unknown, options: AvatarOptions = {
 }
 
 /** Name-tag record for the DOM layer. `position` is in the scene's own coordinates. */
-function tagFor(person: CrowdPerson, index: number, top: number): CrowdTag {
+export function tagFor(person: CrowdPerson, index: number, top: number): CrowdTag {
   const kind = person.kind === 'npc' || person.kind === 'self' ? person.kind : 'player';
   const name = String(person.name ?? person.id ?? '');
   return {

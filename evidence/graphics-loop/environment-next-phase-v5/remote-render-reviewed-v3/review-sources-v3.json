@@ -1,0 +1,38 @@
+{
+  "schema": "environment-next-phase-v5-remote-render-source-pins/3",
+  "status": "REVIEW_RECIPE_SEALED_NOT_EXECUTED",
+  "packageRunId": "37892370818",
+  "packageCommit": "6ad217d26d02c268af70ccb69758bca75b19d6f4",
+  "packageArtifact": "environment-whole-slice-v5-reviewed-v4-37892370818",
+  "packageSchema": "v4 split compiler package; source-pins/3, diagnostic-manifest/3, compiled-record/2, finalizer-pins/3",
+  "checkoutPolicy": "Checkout github.sha from the render-review branch; compare it with the runner-provided GITHUB_SHA. The downloaded package commit is independently verified from source-pins-v4.json.",
+  "limits": {
+    "ownedProcessGroupRssBytes": 1342177280,
+    "timeoutSeconds": 60,
+    "nodeOldSpaceMiB": 96,
+    "zeroRssGraceSeconds": 1.25,
+    "chromeTopology": [
+      "--single-process",
+      "--in-process-gpu",
+      "--no-zygote",
+      "--renderer-process-limit=1"
+    ]
+  },
+  "files": [
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v5/remote-render-reviewed-v3/README.md",
+      "sha256": "c08bfb54a00b39bcea43a6c376881fdaadcb92c76145eb0a4bf9beca894fd949",
+      "bytes": 2531
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v5/remote-render-reviewed-v3/review-render-cdp-v3.mjs",
+      "sha256": "20df9aab878fa4cdf8624c53fcd0e15e0ac6555f8d3b543dfe61ee1326f4bfba",
+      "bytes": 34928
+    },
+    {
+      "path": "evidence/graphics-loop/environment-next-phase-v5/remote-render-reviewed-v3/run-bounded-linux-render-v3.py",
+      "sha256": "84ef1758f444f2d266ec15e0068ec3d12aab60f665061aaaa9b8f32dd0eb351f",
+      "bytes": 14686
+    }
+  ]
+}

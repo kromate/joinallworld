@@ -1,0 +1,64 @@
+# Inactive template; root publishes this workflow on the separate review branch.
+name: Environment v5 remote actual-host review v3
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-environment-next-phase-v5-render-review-v3
+permissions:
+  actions: read
+  contents: read
+concurrency:
+  group: environment-v5-render-review-v3-37892370818
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact render-recipe branch commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Verify staged workflow and recipe pins
+        env:
+          EXPECTED_RECIPE_SHA256: 9548503d85bbc6a48f2ee526d0e64fca82dc362abaa12beaf224a13039e1af63
+        run: |
+          cmp evidence/graphics-loop/environment-next-phase-v5/remote-render-reviewed-v3/workflow.yml .github/workflows/graphics-environment-next-phase-v5-render-review-v3.yml
+          python3 -c 'import hashlib,os,pathlib; p=pathlib.Path("evidence/graphics-loop/environment-next-phase-v5/remote-render-reviewed-v3/review-sources-v3.json"); assert hashlib.sha256(p.read_bytes()).hexdigest()==os.environ["EXPECTED_RECIPE_SHA256"]'
+      - name: Set up Node 22 for CDP and locked ws dependency
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install exact render-branch dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Download the fixed successful v4 package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: environment-whole-slice-v5-reviewed-v4-37892370818
+          run-id: 37892370818
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/environment-next-phase-v5/remote-render-reviewed-v3/package-input
+      - name: Record runner Chrome launcher identity
+        shell: bash
+        run: |
+          CHROME_PATH="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_PATH"
+          CHROME_REAL="$(readlink -f "$CHROME_PATH")"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+      - name: Review actual scenes under 1280 MiB / 60 seconds
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/environment-next-phase-v5/remote-render-reviewed-v3/run-bounded-linux-render-v3.py browser 9548503d85bbc6a48f2ee526d0e64fca82dc362abaa12beaf224a13039e1af63 37892370818 6ad217d26d02c268af70ccb69758bca75b19d6f4
+      - name: Upload screenshots, browser events, and bounded receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-v5-render-review-v3-${{ github.run_id }}
+          path: evidence/graphics-loop/environment-next-phase-v5/remote-render-reviewed-v3/remote-results/${{ github.run_id }}/
+          if-no-files-found: warn
+          retention-days: 14

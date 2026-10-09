@@ -8,6 +8,8 @@ them and exposes the process handle. Cached real-source replay
 still conserves2,283ordinals/1,810versions with0 network. This is startup acceptance;
 registry supervision, capture/controller crash recovery, measured quotas, campaign
 fencing, independent raw audit and country rollout remain required.
+Exact committed source21a68dd5 also passes5 clean-archive release policy checks:
+**131 focused checks plus compiler**. This phase changes no production gameplay.
 
 Charged directory/binding publication now passes **71 isolated Python checks**,
 including three actual abrupt binding-worker exits and recovery without a second

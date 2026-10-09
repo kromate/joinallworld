@@ -6,6 +6,8 @@ This supersedes pending startup statements below, while the complete supervised
 registry opener, capture/controller crash, measured quotas, campaign hook and raw
 audit remain open. Current tooling declaration has26 files; older22/20 receipts
 remain tied to their original source. See PROGRESS.md for final source/evidence pins.
+Committed source21a68dd5 passes5 release-source policy checks in its bounded clean
+archive, for131 focused checks plus compiler. No runtime deployment is certified.
 
 Charged-directory/binding publication passes **71 focused Python checks**, including
 11 root/9 publication cases and actual abrupt binding-worker exits at three boundaries.

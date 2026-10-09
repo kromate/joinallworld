@@ -68,6 +68,16 @@ Final receipts under `.cache/world-build/evidence/`:
 `feature-index-bootstrap-source-acceptance-v2.json`. The acceptance records exact
 source/test/evidence pins and asserts the actual counts and cached source hash.
 
+Coherent implementation is committed as21a68dd5ac95e0e4f15d21e51bb8421757b41afb.
+Its exact clean Git archive passes all5 release-source policy checks, terminal27839
+exit0:133,634,769logical/140,154,880tar bytes,8,551 total members,256MiB cap and
+free-space/member/type checks. Only the owned archive/checkout were removed;
+the real cache and primary checkout were preserved. Receipts:
+`feature-index-bootstrap-clean-policy-v1.{tap,stderr,json}`. This makes **131 focused
+checks plus compiler**, not full runtime/production acceptance. Incoming19a3d071
+changed only docs/AGENT-COORDINATION.md and was merged as34ca4420; runtime source
+from21 is preserved. No forced Git update or primary-checkout edit was used.
+
 All fixtures use only disposable sources/namespaces/databases. No actual source
 reservation, builder namespace, campaign, Nigeria/game data or production changed.
 All owned check processes and Luna review are terminal. Memory fluctuated between

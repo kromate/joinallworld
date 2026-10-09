@@ -1,5 +1,14 @@
 # Copy-and-paste continuation prompt
 
+Latest builder checkpoint,9 October: fixed Python registry startup is implemented
+and passes146 Python/23 engine checks, including actual controller SIGKILL lease
+survival and bounded live-descendant pipe retention. Read the first section of
+PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md. Next implement persistent bounded
+attempt/worker/snapshot ownership and reconciliation, then supervised capture
+ingestion/fenced campaign completion; the controller fixture alone is not that
+service. Do not restart finished source acquisition or refund existing charges.
+No new map-detail runtime deployment accompanies this builder phase.
+
 Deployment policy — latest human instruction,8 October2026: preview deployments are cancelled. Completed verified phases may go directly to production, coordinated with the other agents on this computer. Preserve Nigeria/game data, affected checks, startup/resource limits and sealed-release identity. One coordinator announces the exact synchronized main revision and owns each upload; no concurrent dirty-checkout deployments. WORLD must first implement and verify the production map adapter before builder output can be user-visible. The human authorizes necessary integration/release work; no purchase or provider-plan upgrade is authorized. Older no-deployment/preview paragraphs below describe earlier instructions and are superseded by this policy.
 
 

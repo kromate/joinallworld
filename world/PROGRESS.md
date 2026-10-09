@@ -1,4 +1,394 @@
-# Implementation checkpoint — 8 October 2026
+# Implementation checkpoint — 9 October 2026
+
+## Supervised registry startup and controller-death witness — focused acceptance
+
+The preceding status-only turn was **no progress**. This continuation inspected
+current source/results, repaired actual cleanup edges, ran final bounded checks
+and prepared the coherent supervisor phase. The full world objective stays active.
+
+`startup_index_namespace` verifies fixed tooling/source bytes and the actual Python
+executable before acquiring the permanent namespace lease. It holds that lease
+before allocating the frozen execution snapshot, and passes the descriptor to a
+fixed Python worker using `-I -B`. Only the worker opens SQLite; parent-side SQL can
+be disabled and actual startup/reopen still succeed. Python/SQLite version binding,
+exact reports, immutable charges and fixed physical inventory are checked. The
+worker closes its SQL connection before reporting. This API returns terminal
+evidence, not an unsupervised registry writer.
+
+The worker receives finite CPU/file limits, zero core allowance, wall/output limits
+and sampled RSS supervision; its reported peak RSS must also fit the admitted cap.
+Python has no V8 heap limit. Runtime executable/version pins are not a hermetic pin
+of all standard-library/native-extension bytes, and RSS sampling is not a kernel
+hard total-memory bound. No existing allowance or reservation was increased.
+
+**146 Python checks and23 engine checks pass**. Final Python terminal55096 exit0:
+17.351s unittest/17.52s process/186,466,304B maxRSS. Earlier145-case success is retained;
+the final addition uses an actual fork/lease to prove inherited pipes cannot hang
+the guard after leader exit. It preserves state and reports unconfirmed descendant
+exit; only its known fixture descendant's actual exit permits fixture cleanup.
+Selector setup failure now kills/reaps the owned worker, and selector cleanup
+failure cannot mask the retention exception or prevent closing the other pipes.
+Luna's narrow read-only review found the pipe edge and the earlier peak-RSS gap.
+
+The actual controller SIGKILL fixture proves a surviving Python worker retains the
+namespace lock and frozen snapshot; replacement startup refuses before snapshot
+allocation. After its private acknowledgement and confirmed process exit, the
+fixture reopens the same permanent lock inode with zero fabricated charges. Cleanup
+preserves the fixture if launch identity, measurement or exit is uncertain. This
+is **not a durable attempt record, orphan-discovery API or persistent recovery
+service**. It is not proof of campaign crash recovery or power-loss durability.
+
+Current30-input manifest:299,992source bytes/3,766manifest bytes,
+SHAe04914971b34be3f623bc76d95d152c7739fd569fa35d1c2a2bf78d46df592bf.
+Actual snapshot charges356,352B; disposable actual initialize/reopen take56.60/45.87ms
+with reported peak26,080/25,952KiB. Guarded engine23/23 completes575.91ms,
+sampled116,195,328B RSS. Cached Dakar replay completes429.50ms,
+sampled138,346,496B RSS: unchanged2captures/2,283ordinals/1,810versions/
+473duplicates/0conflicts/0network. No country throughput is inferred.
+
+Receipts: `.cache/world-build/evidence/feature-index-registry-final-python-v2.*`,
+`feature-index-registry-{tooling-manifest,startup-actual,engine,capacity,source-acceptance}-v1.json`
+and `feature-index-registry-actual-verification-v1.*`. The source acceptance hashes
+actual inputs, tests and existing receipts. All TypeScript source is unchanged
+from3ff26b6c; the previous compiler receipt remains previous evidence, not a compiler
+run in this phase.
+
+Implementation commitd1a3ab12548b9f69afb4b1aca9f79ddbe959f5f3 passes all5 clean
+release-source policy tests: terminal36764 exit0,133,767,421logical bytes,
+140,288,000archive bytes/8,559members, under256MiB and10,000member caps. Free space
+and data-filter/regular-directory checks pass; only the owned archive/checkout was
+removed. Receipts: `feature-index-registry-clean-policy-v1.{tap,stderr,json}`.
+This yields **174 focused checks**, not runtime/production/global-world acceptance.
+Fetched maind92bbc6f changes only coordination documentation relative to3ff26b6c;
+no foreign runtime source is adopted. Main synchronization/publication follows this
+verified source checkpoint; no runtime artifact upload accompanies it.
+
+No acquisition, actual namespace/campaign ledger, output product, Nigeria/game data
+or runtime deployment was changed. WARNING memory pressure retained heavy1 and128MiB
+wrapper/Node heaps; no browser/server/large runtime build or overlapping heavy job.
+
+**Next implementation:** persist bounded attempt/worker/snapshot ownership before
+launch, reconcile after controller loss without guessing PID identity or deleting
+unknown state, then connect supervised verified-capture ingestion to fenced campaign
+completion. Preserve the actual Senegal denominator and lifetime acquisition
+charges. Whole-country geometry, independent source/index conservation, streaming,
+Nigeria rendering integration and production map-detail phases remain incomplete.
+
+## Canonical registry recovery and paired worker leases — focused acceptance
+
+The preceding status-report turn was **no progress**: it inspected existing state
+and requested repairs, without accepting new implementation. This continuation
+revalidated the isolated worktree and memory WARNING, reviewed one narrow Luna
+source assignment and implemented the next registry/worker integration phase.
+
+`open_index_namespace` now opens only an existing canonical owned0700 namespace,
+under its permanent private lock and an already enforced4MiB-or-stricter per-file
+kernel limit. Canonical metadata binds registry format/schema, immutable budget,
+page size and actual Python SQLite version. Exact pending prefixes resume in place;
+metadata and registry are fsynced, renamed and directory-fsynced. An initialized
+empty final registry reopens; a missing/empty final is not silently initialized.
+Bootstrap initialization/recovery retains its inode and never refunds reservations.
+
+Before lock creation, bounded file/header inspection refuses foreign, unbound,
+mixed and orphan state. SQLite connections occur only after the actual namespace
+lease: even mode=ro can update shared memory. Read-only admission reuses the exact
+reservation schema/row/stamp/totals verifier; charged child bindings and footprints
+are checked before the registry writer is initialized. Corrupt empty staging is
+integrity-checked before initialization. Fixed-file physical overhead is checked
+before new registry writes. Unknown/contradictory files and all charges remain held.
+
+Actual fixed Node bootstrap now inherits **both namespace and index leases**.
+Bootstrap requires the real charged parent relationship before publication/launch;
+the guard and worker verify both permanent inode descriptors. Actual live Node
+keeps both flock locks after the original coordinator references close, and both
+can be reacquired after that owned worker exits. This is reference-lifetime evidence,
+not a complete killed-controller/persistent-worker recovery experiment.
+
+**126 Python checks and23 engine checks pass; World TypeScript passes**. Python
+terminal16366 exit0:13.361s unittest/13.49s process,186,433,536B maxRSS. Compiler
+terminal14623 exit0 at384MiB heap:6.02s/422,871,040B maxRSS; empty stdout. Initial
+123-case run refused mixed state but failed its expected classification; corrected
+125-case run passed, then Luna review found the empty-stage integrity gap. Final
+126 includes that correction/regression. Earlier failed receiptv1 stays preserved.
+Seven actual abrupt registry-worker exits cover metadata prefix/before/after rename,
+empty staging, schema checkpoint and registry before/after rename. All resume exact
+metadata/database inodes with zero fabricated charges. The previously accepted four
+Node bootstrap SIGKILL recovery cases also pass in this final suite.
+
+Current27-input manifest:273,842source bytes/3,362manifest bytes,
+SHAc5b527362785c2390396035684e834f693896d7849d801a1d297e50c189483f6.
+Actual frozen snapshot charges319,488B and is removed on confirmed return. Current
+guarded engine tests complete in533.60ms, sampled112,427,008B RSS. Cached Dakar
+replay completes in446.96ms guard/289.56ms worker, sampled137,773,056B RSS: unchanged
+2captures/2,283ordinals/1,810versions/473duplicates/0conflicts/0network,
+2,908,160DB/0WAL/32,768SHM bytes. Neither measurement establishes country throughput.
+
+Receipts under `.cache/world-build/evidence/`:
+`feature-index-namespace-python-v3.{stdout,stderr}`,
+`feature-index-namespace-typecheck-v1.{stdout,stderr}`,
+`feature-index-namespace-{engine,capacity}-v1.json`,
+`feature-index-namespace-tooling-manifest-v1.json`, and
+`feature-index-namespace-source-acceptance-v1.json`. The acceptance binds actual
+source/test/evidence bytes. A final docstring and unused local-result cleanup after
+test import did not change helper behavior. No new test expectation waives a limit.
+
+Coherent implementation is committed as71738c1f2d6d3e5fe9f2e35088c7a28c0bac7d42.
+That exact clean Git archive passes all5 release-source policy tests, terminal29083
+exit0:133,699,430logical/140,216,320tar bytes and8,553 total members. The256MiB
+archive/logical cap,10,000-member cap, free space and data-filter/regular-directory
+checks pass; owned archive/checkout removed, actual caches preserved. Receipts:
+`feature-index-namespace-clean-policy-v1.{tap,stderr,json}`. This makes **154 focused
+checks plus compiler**, not full runtime/production/world acceptance.
+
+Fresh origin/main8d5d6aef changed only docs/AGENT-COORDINATION.md and was fast-forwarded;
+no foreign runtime source was adopted. Actual builder output, campaign ledger,
+acquisition charges, Nigeria/game data and production remain untouched. All tests
+use disposable sources/namespaces/databases. No new server/tab/runtime build/upload.
+Memory remained raw2 WARNING; heavy1 checks were serial and no caps increased.
+
+Next required gate: fixed registry/controller CPU/wall/RSS supervision, persistent
+unconfirmed-worker/snapshot ownership and actual controller SIGKILL recovery;
+then supervised verified-capture ingestion + fenced existing campaign completion,
+independent raw/index conservation and measured whole-country geometry/streaming.
+This context manager is not an unattended process/campaign runner. Global detail,
+photorealism, gameplay integration and verified production map phases remain open.
+
+
+## Frozen execution and atomic engine startup — focused acceptance
+
+Previous goal turn was **progress**:67da9429 implemented/reviewed/published charged
+roots and binding publication, with71 pinned Python checks. This continuation adds
+the next functional startup layer, using one narrow source-only Luna assignment
+for the execution snapshot and root integration/review for the fixed Node worker.
+
+**103 Python checks,23 engine checks and World TypeScript pass** on the current
+source. Python terminal27120 exit0:11.782s unittest/11.89s process,186,384,384B maxRSS.
+Compiler terminal80214 exit0 at384MiB heap:3.33s/456,261,632B maxRSS, empty stdout.
+Fixed engine guard terminal0:23/23, own scratch removed. Earlier11/99/100-case and
+first compiler receipts precede final additions and are retained as historical.
+The first103-case run failed one injected wait test because its fixture prefix
+violated the fixed witness's root contract; corrected prefix passes targeted1/1
+and final103/103. Failed receiptv3 is retained, not relabeled successful.
+
+The snapshot copies only26 pinned tooling files plus the fixed source configuration
+into a private disposable tree (dirs0700/files0400), using bounded no-follow reads,
+hash/size/inode checks and final re-verification. Mutation of the original fixture
+after copying cannot change the actual executed worker. The supervisor verifies the
+actual Node binary before/after its fixed process and source/tool pins before launch.
+It charges live snapshot blocks alongside index files and checks a conservative
+four-file-plus2MiB candidate allowance, not a measured worldwide quota.
+
+The Node worker requires the inherited permanent root lease, exact SHA-named binding,
+actual engine/identity/capture/compiler constants, Node/SQLite versions and pinned
+configuration bytes/release before opening SQL. It initializes only bootstrap.sqlite,
+verifies schema/counts/integrity, checkpoints/closes SQLite, fsyncs the file, renames
+to features.sqlite under its cooperative lease and fsyncs the directory. Final replay
+requires an initialized application/version; it cannot initialize an empty final path.
+Foreign data, mixed staging/final files and orphan sidecars remain preserved/refused.
+Engine admission now also refuses empty databases carrying a foreign user_version.
+
+Actual Node22.19.0/SQLite3.50.4 startup workers are SIGKILLed at four fixed boundaries:
+empty staged file, schema checkpoint with connection still open, before rename and
+after rename before directory fsync. The guard confirms terminal -9/SIGKILL before
+snapshot cleanup/root reopen. All four recover through the ordinary fixed worker,
+keeping the original database inode and one immutable charge, with zero fabricated
+rows. Fixed rollback-journal names are now bounded/inventoried beside WAL/SHM and
+must have their main file; no manual sidecar deletion is performed. These checks
+do not certify power loss, interrupted capture transactions or controller death.
+
+Luna final review found a reap-timeout lifecycle edge. Guard now raises
+IndexWorkerUnreaped with actual process/root/execution handles when its bounded
+wait cannot confirm exit; snapshot and public experiment runner preserve their
+owned temporary trees. Pipes/selectors still close, and caller-owned database/root
+is never disposed. Three added fixtures cover snapshot/runner preservation and
+guard handle/pipe lifetime. The injected wait fixture first reaps its actual owned
+child then reports timeout, so it leaves no real orphan and does not claim to
+reproduce an OS worker stuck in uninterruptible I/O. Actual timeout recovery and
+persistent handle supervision remain a required controller gate.
+
+Final26-input verification:244,662source bytes, manifest3,233bytes,
+SHAd10d78490e0da65fea16d2307a0af438fd60544c999caea26b218cde500dcc48.
+The actual copied tree charges294,912bytes and is removed on confirmed return;
+earlier243,375byte/7c44260b manifest predates the reap fix. Cached Dakar
+replay remains2 captures/2,283ordinals/1,810versions/473duplicates/0conflicts/network,
+2,908,160DB/0WAL/32,768SHM bytes, with0 network. Final engine/capacity receiptsv2
+cover the updated guard; previous timingsv1 remain historical.
+
+Final receipts under `.cache/world-build/evidence/`:
+`feature-index-bootstrap-python-v4.{stdout,stderr}`,
+`feature-index-bootstrap-typecheck-v2.{stdout,stderr}`,
+`feature-index-bootstrap-{engine,capacity}-v2.{json,stderr}`,
+`feature-index-bootstrap-tooling-manifest-v2.json`, and
+`feature-index-bootstrap-source-acceptance-v2.json`. The acceptance records exact
+source/test/evidence pins and asserts the actual counts and cached source hash.
+
+Coherent implementation is committed as21a68dd5ac95e0e4f15d21e51bb8421757b41afb.
+Its exact clean Git archive passes all5 release-source policy checks, terminal27839
+exit0:133,634,769logical/140,154,880tar bytes,8,551 total members,256MiB cap and
+free-space/member/type checks. Only the owned archive/checkout were removed;
+the real cache and primary checkout were preserved. Receipts:
+`feature-index-bootstrap-clean-policy-v1.{tap,stderr,json}`. This makes **131 focused
+checks plus compiler**, not full runtime/production acceptance. Incoming19a3d071
+changed only docs/AGENT-COORDINATION.md and was merged as34ca4420; runtime source
+from21 is preserved. No forced Git update or primary-checkout edit was used.
+
+All fixtures use only disposable sources/namespaces/databases. No actual source
+reservation, builder namespace, campaign, Nigeria/game data or production changed.
+All owned check processes and Luna review are terminal. Memory fluctuated between
+WARNING/NORMAL; WORLD started no browser/server/acquisition/runtime build or cap increase.
+Next: canonical registry/process supervision, measured pressure/ingestion crash and
+controller recovery, fenced existing campaign integration, independent raw/index
+conservation, then country compilation/streaming and verified production detail.
+
+## Charged root and binding publication — focused acceptance
+
+The previous status-report turn was **no progress**: it inspected state but made
+no implementation change. This continuation revalidated memory WARNING and took
+the next safe action: small serial isolated checks through the shared heavy slot,
+with Node wrapper heap128MiB and no build, acquisition, new browser or server.
+
+**71 Python checks pass**, terminal session85295 exit0, 0.923s unittest/1.14s process,
+maximum Python RSS34,570,240bytes. They comprise11 root,9 publication,7 tooling,
+9 binding,17 reservation,10 lease and8 footprint cases. The initial system-Python
+run failed two older hardlink fixtures because its pathlib lacks hardlink_to;
+the canonical pinned Python3.12.14/SQLite3.53.1 passes all71. This is not a compiler,
+engine crash, full release policy or runtime deployment check.
+
+Publication now ties the descriptor being written/flushed to the actual named
+inode, including exact replay. A fixture replaces the open replay inode and
+requires refusal while preserving the new named file. An actual fixed Python
+worker inherits the root lease and abruptly exits at three boundaries: after17
+prefix bytes, after complete file fsync before rename, and immediately after rename
+before directory fsync. Each worker is confirmed terminal (77/78/79), then exact
+root reopen/publication keeps one reservation, original file inode and complete
+expected bytes. These are process-exit binding recovery checks, not power-loss or
+Node SQLite engine/controller recovery acceptance.
+
+Actual read-only22-file tooling verification passes:215,212source bytes, manifest
+2,714bytes/SHA3204b9e9998c52ace75a89e0cffcd9e3fd47803b928f2837ab2b9bab470a3c91.
+Receipts under `.cache/world-build/evidence/`:
+`feature-index-root-tooling-manifest-v1.json` and
+`feature-index-root-source-acceptance-v1.json`. The latter records actual tooling
+pins, runtime versions, new fixture hashes and observed terminal test results.
+No real binding/registry/reservation/source/campaign output was created.
+
+Fetched main and fast-forwarded0e9fb859→29b53558; all three incoming commits changed
+only docs/AGENT-COORDINATION.md, preserving these local sources and primary checkout.
+Heavy compiler/build work remains deferred while pressure is WARNING. The small
+fixture process was measured, terminal and released its slot; no expensive handle
+remains owned by WORLD. Next: canonical registry initialization/supervision, actual
+source/runtime admission and atomic engine bootstrap, then fenced campaign hookup.
+
+### Retained preparation notes (superseded by focused acceptance above)
+
+Previous goal turn was implementation progress: charged directory admission and11
+fixtures were prepared and documented. Published source73e090c9/94 focused checks
+remain the last accepted phase; newer local source has not run.
+
+New `tooling/index_root.py` couples canonical binding/amount to an already initialized,
+caller-supervised private registry and actual namespace lease. It requires the kernel
+per-file cap already applied, recognizes the registry connection/path/settings,
+checks bounded namespace entries/registry overhead, refuses unknown/unreserved state,
+and inventories existing charged roots under nonblocking child leases. A live inherited
+writer blocks another allocation before its charge. Reservation commit/checkpoint
+precedes mkdir/fsync; failed allocation retains its charge for exact replay. Child
+roots are SHA-named/private and unbound data or changed binding bytes remain preserved.
+Only a permanent writer lock is created inside a new root; no database/binding/source
+file or worker is created. Normal scope exit checks the child footprint again.
+
+New `index_binding_publish.py` adds a first binding barrier under the actual charged
+root lease: bounded exact-prefix binding.pending may resume before any data/final
+file exists; complete bytes are fsynced then renamed to binding.json and the directory
+fsynced. Final exact replay flushes without rewriting. Unknown/contradictory staging,
+final bytes, links or root mismatches are preserved and refused. Atomic rename assumes
+cooperating writers respect the private lease. No database/worker is initialized.
+Root admission now recognizes this staging state and rechecks binding on normal exit;
+footprint adds the fixed4KiB staging name without parsing/admitting its content.
+
+The initial18 fixtures=11 root+7 publication were prepared without execution. They use synthetic
+namespaces and explicitly restore only their own process's temporary soft file limit;
+they never touch the real builder. The tooling input list is extended20→22 for these
+helpers and is locally unaccepted; measured20-file receipts below apply to73.
+No source manifest, binding, registry or reservation was regenerated. This is not
+the complete opener: registry initialization/process supervision, actual source/tool
+verification, stable execution snapshot, atomic binding/database bootstrap, measured
+space pressure and same-version crash/ledger/raw conservation remain required.
+
+Latest direct human instruction in GRAPHICS userMessage01a11ddb-9005-7490-bedc-0a99d46302f8
+authorizes concurrent browser tabs and bounded agents with memory monitoring, replacing
+the older all-browser serial rule. Root independently read that actual message. Keep
+heavy1/heap1536/minifier1, file ownership and sole WORLD upload; browser/server caps2
+are the current bounded practice. Luna monitor01a11ddc-3607-7ba1-b778-9878f6a9646b has
+the five-minute heartbeat. Latest23:35:12UTC snapshot is pressure mask2 WARNING,
+33% reported free and swap9,820.5MB used; memory percentages/swap alone are not pressure
+proof. WORLD has no expensive handle and defers new ones while WARNING persists.
+
+These pending fixture checks have now passed as expanded71-case acceptance above;
+next implement bootstrap/worker integration. Existing engine/guard code did not change, so its94
+accepted focused receipts remain historical evidence for73, not acceptance of these
+new sources. Nigeria/game/source/campaign state and production remain unchanged.
+
+## Index source primitives — focused acceptance
+
+Previous goal turn was implementation progress: bounded fixed tool-file verification
+and seven fixtures were added; Lagos immutable manifest76cd9b6.../versionc0dd6f...
+was read and confirmed unchanged for LIVING. This continuation received GRAPHICS's
+explicit terminal cleanup (owned tabs closed/reset, four server/browser handles
+terminal130 and slots0/1) and took the sole local intensive turn, with LIVING next.
+No new fanout, server, browser, acquisition or upload was started.
+
+Actual World TypeScript passed0 at1536MiB. All **67 Python fixtures** passed in3.668s:
+45 new tooling/binding/reservation/boundary/footprint checks plus12 existing resource
+and10 lease cases. The refactored guard then passed all **22 engine cases** (429.09ms
+inside /575.13ms guarded, sampled worker RSS115,572,736bytes, owned scratch removed).
+Thus **89 focused checks plus compiler** pass on this actual source; no full game or
+worldwide acceptance is inferred. Initial source-only sections below are historical.
+
+Cached real-engine replay also passed0: unchanged2,283 ordinals/1,810 keys+versions/
+473 duplicates/0 conflicts,2,908,160 database bytes/0 WAL/32,768 shared-memory bytes,
+0 network and identical same-version reopen digests. Worker276.33ms/guard416.61ms,
+Node peak153,360KiB. This is two captures, not maximum-row/world throughput or
+abrupt-engine-crash proof. Guarded workers and fixtures removed only owned scratch.
+
+An actual read-only tooling verification passed0 for20 fixed files/200,768 source
+bytes. Retained manifest is2,461bytes/SHA000d7ccb509724a2bcef5d818dff2c495d6c6695e3d7200d76287343031648f3.
+Actual configuration pin matches the cached capture profile; resolved Node binary
+was bounded, hashed and checked unchanged. Canonical declared binding is932bytes/
+SHAd4bd05b8745c24d7c8e897fce62c3c95b3fcf8ac32d095409c95d4d8b361b31a.
+It declares32MiB for demonstration but **does not charge/create a real reservation**.
+Python3.12.14/SQLite3.53.1 fixture results do not prove Node3.50.4 engine crash recovery.
+
+Evidence under owned `.cache/world-build/evidence/`:
+`feature-index-opener-source-typecheck-v1.{stdout,stderr}`,
+`feature-index-opener-python-v1.{stdout,stderr}`,
+`feature-index-opener-{engine,capacity}-v1.{json,stderr}`,
+`feature-index-opener-{tooling-manifest,binding}-v1.json`, and
+`feature-index-opener-source-acceptance-v1.json`. The last file verifies exact test/
+tool/profile/source hashes and evidence pins, TAP/Python counts, raw configuration,
+ordinary replay counts/digests and physical sizes.
+
+Coherent source is committed as73e090c97f09b8a31dbb96e6f1b65ac3ff77b2f8. Its exact
+clean archive passes all5 release-source policy tests (129.86ms, terminal0):
+133,523,450logical/140,032,000tar bytes,8,262 tracked files, owned scratch removed.
+Receipts `feature-index-opener-clean-policy-v1.{tap,stderr,json}` retain the exact
+source/command. Total **94 focused checks plus compiler**; no full game build or
+deployment. Fresh mainb6908997 was inspected and merged with only coordination-doc
+changes incoming; tested builder code and source pins remain unchanged. Normal main
+publication succeeded b6908997→f7425943 without force. Compiler/tests/cached profile/
+source-pin/archive handles are terminal0; all three local slots0/1 and no owned
+server/browser/child/upload remains. WORLD explicitly hands the next intensive
+turn to LIVING, then GRAPHICS, then WORLD. This is builder source publication only,
+not a production map/runtime upload. Older prepared-only notes were consolidated
+into this measured checkpoint and the specification.
+
+Full objective remains active. Before unattended country rollout: stable pinned
+execution snapshot/complete worker closure, guarded canonical namespace opener and
+actual allocation, atomic database bootstrap, measured registry/index physical
+pressure, Node binding/runtime checks, same-version abrupt engine/parent-worker
+recovery, fenced campaign hook and independent raw/index conservation. Then compile
+and stream country geometry, integrate Nigeria renderer and deploy verified playable
+phases. Current primitives remain unwired; actual source/campaign reservations,
+captures, game/Nigeria/account data and production were not modified.
 
 ## Compact engine and lease acceptance — 8 October 2026
 

@@ -1,5 +1,35 @@
 # Independent world-data builder
 
+Frozen execution and atomic engine startup now pass **103 Python checks,23 engine
+checks and World TypeScript**. Actual SIGKILL startup recovery at four boundaries
+preserves one charge and the database inode. Fixed26-input snapshots are verified,
+private, readonly and removed after the worker is reaped; an unconfirmed reap preserves
+them and exposes the process handle. Cached real-source replay
+still conserves2,283ordinals/1,810versions with0 network. This is startup acceptance;
+registry supervision, capture/controller crash recovery, measured quotas, campaign
+fencing, independent raw audit and country rollout remain required.
+Exact committed source21a68dd5 also passes5 clean-archive release policy checks:
+**131 focused checks plus compiler**. This phase changes no production gameplay.
+
+Charged directory/binding publication now passes **71 isolated Python checks**,
+including three actual abrupt binding-worker exits and recovery without a second
+storage charge. It reserves before allocation and refuses foreign/unreserved state;
+actual registry opening/process supervision remains next. The22-input verification
+below is retained historical evidence; the current declaration has26 inputs.
+New browser/agent concurrency is authorized with memory monitoring; heavy checks
+remain capped and defer while the monitor reports warning/critical pressure.
+
+Tooling pins, immutable binding, worker boundary, footprint and charge primitives
+now pass **94 focused checks plus World TypeScript**, including exact committed
+source73e090c9 release-policy checks. Cached Dakar replay preserves
+2,283 ordinals/1,810 versions with0 network and2,908,160 database bytes. Actual20-file
+tooling and Node-binary pin verification are recorded in PROGRESS.md.
+The charge ledger detects deleted reservations using transactionally stored totals
+and a digest; it does not yet open or allocate a real namespace. Stable execution
+snapshot, full worker closure, guarded atomic bootstrap, pressure/crash acceptance,
+fenced campaign completion and independent raw audit remain required. These source
+primitives change no gameplay, actual source reservations, Nigeria data or production.
+
 The compact feature-index engine now passes 22 guarded fixtures, ten writer-lock
 checks, World TypeScript and cached Dakar replay. It retains every original ordinal
 and conflicting body version. The same-data layout measurement reduced database
@@ -18,7 +48,7 @@ Strict capture/source reconstruction now passes53 focused checks and World TypeS
 
 [The pure source-feature identity contract](FEATURE-IDENTITY-CONTRACT.md) separates source keys/body versions from queries and game identities, with exact global owners and bounded encoding. Its capture composition and cached positive profiling are accepted above; durable index/campaign-hook/audit are the next gates. No country building coverage is claimed.
 
-Latest production owner receipt: APP UI sourcea44629b3/version64ed8462 is accepted with save continuity, Family consent/unlink/retry, health adoption and post-adoption smoke9/9; see [PARITY-DELIVERY.md](../docs/PARITY-DELIVERY.md). This supersedes the retained WORLD country release73549b8a/versiond872e923. WORLD has not rerun or reuploaded that APP UI release. Worldwide3D and foreign gameplay remain open; local intensive work stays serialized through explicit terminal handoffs in [AGENT-COORDINATION.md](../docs/AGENT-COORDINATION.md). Older pending-forward paragraphs below are historical.
+Latest production owner receipt: APP UI sourcea44629b3/version64ed8462 is accepted with save continuity, Family consent/unlink/retry, health adoption and post-adoption smoke9/9; see [PARITY-DELIVERY.md](../docs/PARITY-DELIVERY.md). This supersedes the retained WORLD country release73549b8a/versiond872e923. WORLD has not rerun or reuploaded that APP UI release. Worldwide3D and foreign gameplay remain open; heavy work uses one shared slot, with monitored bounded browser/agent concurrency in [AGENT-COORDINATION.md](../docs/AGENT-COORDINATION.md). Older pending-forward paragraphs below are historical.
 
 The builder creates immutable geographic packs and a lazy world inventory under this worktree's `.cache/world-build/`. It runs separately from the game, its saves and its database. Current evidence covers a coarse global inventory and small real-source pilots; see [PROGRESS.md](PROGRESS.md) and [M2-VALIDATION.md](M2-VALIDATION.md) for current results and remaining gates.
 

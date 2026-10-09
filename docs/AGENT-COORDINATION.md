@@ -2,6 +2,33 @@
 
 Canonical repository: kromate/joinallworld. Agents on every computer read the latest GitHub/main copy before claiming files, integrating a phase, or releasing. Local chat messages supplement this record; they do not reach every computer.
 
+## Current human concurrency amendment — 9 October 2026
+
+The user's latest direct instruction authorizes **multiple concurrent browser tabs and multiple agents**, with memory monitoring, to accelerate work. This supersedes the historical one-local-intensive-owner/no-fanout restriction below. Use bounded agents with explicit file ownership; simultaneous reviews use distinct owned tabs and ports. Do not change shared browser viewport/window/session state while another review depends on it. Keep one writer per file, preserve existing services/user tabs, and retain sole WORLD production-upload ownership.
+
+Initial resource policy: keep heavy jobs1, Node heap1536MiB and Vite minifier1; browser/server wrappers may use explicit `AGENT_SLOT_BROWSER=2` and `AGENT_SLOT_SERVER=2` for concurrent bounded review. These are cautious initial limits, not a permanent ban on further concurrency; expand only from actual measured headroom. Free per-kind slots are admission limits. The previous cross-kind handoff is no longer required for a narrow heavy check while another agent reviews in a browser.
+
+A separate GPT-6 Luna chat **Monitor Allworld development memory** (`01a11ddc-3607-7ba1-b778-9878f6a9646b`) now has the active **Allworld memory pressure watch** heartbeat every five minutes. It writes local snapshots/capped history under `/Users/anthonyakpan/.codex/allworld-memory-monitor/`, alerts the user and authorized GRAPHICS/WORLD/LIVING chats on material pressure changes or recovery, and stays quiet when healthy/unchanged. Its snapshots apply to this Mac, not other computers. Check live kernel memory pressure before starting optional expensive work; defer new work on warning/critical pressure and resume cautiously on normal. Cumulative swap alone is not current-pressure proof. Do not kill unknown processes or close user tabs automatically. Scheduled monitoring has observation gaps and does not guarantee admission safety.
+
+## WORLD index primitives and terminal local handoff — 9 October 2026
+
+Builder source73e090c9 and acceptancef7425943 are published to main after inspecting
+and merging coordination-only upstreamb6908997. Actual World compiler0 at1536MiB,
+67 Python/22 engine/5 clean-archive release-policy checks pass:94 focused checks.
+Cached Dakar replay retains2,283 ordinals/1,810 versions/473 duplicates,2,908,160DB
+bytes and0 network. Twenty actual tool-file pins and Node binary pin are retained;
+no real index reservation/opener/campaign hook or new world geometry was produced.
+Actual source/campaign/game/Nigeria state and productiona446/version64ed are preserved.
+
+WORLD compiler/test/profile/archive processes are terminal0, own scratch removed,
+shared heavy/server/browser slots0/1, no owned QA server/tab/child/acquisition/upload.
+**WORLD explicitly hands the next sole LOCAL intensive turn to LIVING**, then
+GRAPHICS, then WORLD. Keep caps1/heap1536/minifier1 and no new fanout. GRAPHICS's
+dense canonical crowds still fail original17k triangle budget and placement gates;
+source-only fixes can continue. This is builder-source publication, not a production
+runtime upload or full-world/playability claim. Exact gates/next opener/crash/raw
+audit tasks are in world/PROGRESS.md; no cap waiver or source quota reset.
+
 ## Production release ownership
 
 - Checkpoint: 2026-10-08 20:36 UTC.
@@ -67,8 +94,8 @@ not transfer the current GRAPHICS intensive lease or WORLD release coordination.
 | --- | --- | --- | --- |
 | WORLD | Geography, ingestion and additive lazy country outlines. Preserve Nigeria and concurrent graphics/living-world work. | Current accepted production baseline APP UI **a44629b38be751a9ad446051564704f6c3c6ae1b**; accepted capture milestone **aa66f736**, resource phase in INDEX-RESOURCE-OPERATIONS.md. | Strict capture53/53 and prior World TypeScript0 remain accepted. New resource12/12, guarded cached overlap2,283ordinals/1,810versions/473duplicates/0network,19MB Feature at about236MiB peakRSS. Real uncommitted WAL crash/page/file/CPU/wall/RSS/output failures conserve disposable baseline. Actual Node native heap PRAGMA is unenforced with DEFAULT_MEMSTATUS=0; no native hard-memory/final index quota claim. Current WORLD intensive checks terminal, no server/tab/upload; next explicit LOCAL handoff LIVING → GRAPHICS → WORLD after publication cleanup. Durable store/ledger replay/country geometry remain next. Production release coordination remains WORLD. |
 | GRAPHICS — Research character graphics and, chat 01a11908-b662-79f1-8bab-888716f77717 | Characters/NPCs, clothing/motion, scene buildings/interiors/props/materials/light and graphics measurements. Preserve WORLD geography and other feature work. | Published main phases: test helpers deb72936; Node campus03e520c3; **manifest-only5dad4476474d317f29f9dcf707ed7fd0475b36c4**. Isolated branch codex/graphics-phase-one clean. | Manifest phase preserves immutable tiles/doors/retained versions; no client renderer or world schema change. Node24/24, Worker52/52, type5projects, build/download pass; complete package saves6,840,045raw/687,087gzip/410,945Brotli bytes vs original. Nodecampus6/6. Public evidence: GRAPHICS-MANIFEST-PHASE.md. WORLD reviews/merges exact phase and reruns integrated checks/sealed package/continuity before its sole upload. New [graphics execution checkpoint](GRAPHICS-EXECUTION-CHECKPOINT.md) records actual lifecycle/probe/home-walk evidence, collar visual rejection and the newer warm expressive human-proportion/mobile-budget direction. Connected collar/material/medium-LOD controls remain local and unexecuted; no renderer release or numerical cap change. Whole-game/physical-phone acceptance incomplete. |
-| APP UI — current chat 01a11ae0-eea5-79e1-ae16-bc36056fbf4e | Released phone/UI/Family preserved. Review slices cover Store/Invest, Business stock controls and Home visitor controls; no schemas/balances/save migrations changed. | Integration branch **codex/allworld-integrated-preview**: **c5f4c4cb** Store/Invest, **8129ed4f** Business, **800ebd3b** Home visitor controls. | Human requested pushed slices for the other-system agent to integrate, resolve conflicts and fix follow-up bugs. Exact CI37850351246 and37851320078 passed type/build/download/smoke/policy; Home CI37852589101 running. Browser/state acceptance scenarios are in APP-FLOW-AUDIT.md on the branch. No local intensive jobs or upload. Production a446 preserved; broader audit/voice work remains open. |
-| LIVING-WORLD — current chat 01a11c35-ad88-7aa3-ac5b-6b7d910724ad | Programme gameplay and allocated account lifecycle source; verified Sol gpt-6.1-sol/high and three Luna gpt-6-luna/high, parked. | codex/living-world current236a5fa0; reviewed main d860; account1e097504; played6eb34097; CSSrepair7120c89a untested. | Actual NodeHTTP8/8+existing82/82; WorkerSQLite2/2 layouts/restart pass. Exact CI37854248963/37854863611 compiler/policy/build pass, startupgzip+141/+151; smoke/full skipped. Registry experiment rejected/reverted. Actual mobile barber42percent input/reload and portrait reveal pass; landscape phone370/570 overflow found, CSS source fix pending. Driving gauges/native movement/pause/reload pass partially; no full journey/physical-phone/zero-money/multiplayer acceptance. Owned tab closed/reset; preview70999exit0/browser3183exit130; all local slots0/1. Explicit ROOT→GRAPHICS→WORLD handoff; source-only until next terminal return. Upload coordination WORLD; productiona446 unchanged; no programme/Goalmatic deploy. [Checkpoint](https://github.com/kromate/joinallworld/blob/codex/living-world/docs/agent-plans/living-world/CHECKPOINT.md). |
+| APP UI — current chat 01a11ae0-eea5-79e1-ae16-bc36056fbf4e | Released a446 UI/Family preserved. Ten review slices now include bounded grocery batches/shared pending state, affordable quick refuel and Grocery/Health layouts. | UI branch **codex/allworld-integrated-preview**, checked runtime **d03eb8c9**, receipt **3dd0e5bb**. Voice **b193bd77** remains a separate older-base checkpoint. | Human requested other-system integration/conflict/bug handling. Exact CI37864614906 PASS: type/build/download/smoke/policy and103/103 existing UI checks. Purchase race, lost-reply, identity/close/reopen and browser acceptance remain required in APP-FLOW-AUDIT.md. Existing wallet/receipt rules unchanged. No local intensive work/upload; full parity not complete. |
+| LIVING-WORLD — current chat 01a11c35-ad88-7aa3-ac5b-6b7d910724ad | Programme driving/qualification/permission/barber, account lifecycle and bounded mapped-rental foundations. Runtime-audited Sol gpt-6.1-sol/high and three Luna gpt-6-luna/high; one writer per scoped file. | codex/living-world; foundation92f4cbdde52f32e3643a40d67a4b64fadcd39a3d, observer01b488aa52babd4361cfc46d6e52a379bc206fb2; reviewed main21a4. | Exact focusedCI37867076744 Node42/42 and actual WorkerSQLite4/4 PASS. Fleet/clearance are pure fixtures, not live allocation. Exactf4 standardCI37866364733 compiler/build/policy PASS, startupgzip223165 exceeds223000 by165, smoke/full SKIP. Revised fleet/clearance and output/closure tests23/23 PASS at128MiB/heavy1; observer remote execution pending. No current owned server/tab/upload or long heavy job. Source/current dependency diagnosis continues; full mobile/desktop mapped journey, atomic stock/wage and release/save gates OPEN. Goalmatic dev unchanged, no open PR; live installation/schema/consent binding missing, adapter disabled. Productiona446/version64ed remains last accepted release; WORLD retains shared upload coordination. [Checkpoint](https://github.com/kromate/joinallworld/blob/codex/living-world/docs/agent-plans/living-world/CHECKPOINT.md). |
 
 Each agent updates its own row with branch, exact SHA, touched files, phase scope, dependencies, checks/evidence, blockers, and next action. Record shared-file overlaps before edits. A local path is not evidence available on another computer: publish a safe report or link CI/PR evidence. Never commit tokens, cookies, secrets or private continuity fixtures.
 
@@ -165,3 +192,80 @@ the user's5191 preview and unknown processes. WORLD keeps release coordination.
 Owner GRAPHICS source report27c50d0f was adopted as qualified documentation only,
 preserving earlier main report and adding exact asset-scope erratum/executed block;
 no ignored primary graphics runtime was copied or accepted by this adoption.
+
+
+### GRAPHICS authored NPC review — 9 October 2026
+
+Local primary candidate integrates source-authored NPCs into the existing canonical body queue with stable seed identities, local pose/seat/scale and full parent transforms. Exact per-Batch part scope preserves other scene batches; original fallback remains until commit and low-tier/unsupported devices retain merged original geometry. WORLD was notified before props/build and additive VenueDiagnostics changes. Candidate remains unpublished runtime and unreleased.
+
+Actual matched synthetic application-host Market/day has12public and6authored canonical entries, loading0. Original67504tri/33draws vs candidate94334tri/45draws: existing17k scene capFAIL, no raised budget or actor-omission waiver. Actual walk11.4→10.7; idle86renders/61frames unchanged, reentry18canonical, consolewarn/error[], finalgeom/tex/scenes0. Desktop390×844 night94286tri/44draws; physical-phone performance, package bytes, all-venue poses and persisted journeys remain unverified. Affected86/86 tests passed at recorded hashes; corrected compiler0 followed two retained failures. Compiler-only repairs and later host diagnostics mean latest-source/fixture retest still pending. Evidence local venue-authored-people-v1 and venue-authored-people-browser-v1.
+
+OwnedChrome1412593798closed, viewportreset,5184server67843/browser39184terminal130; no root heavy/upload. Existing Luna source-only LOD review completed: install validated source-index detail baseline before wardrobe renderer captures mask/restore state; no generated assets or LOD acceptance. Five-minute memory monitor remains active, latest raw2warning; defer new optional heavy work until measured recovery while current bounded/source work continues. Human concurrency amendment at top remains authoritative. Main d07c467e synchronized with78dirty/untracked source/asset hashes preserved. WORLD remains sole production upload owner.
+
+
+### GRAPHICS thin-cloth and body-detail source acceptance — 9 October 2026
+
+Runtime candidate owns only the props.stall stripe loop and newstall-awning tests: paired12mmcloth faces retain the exactold camera/walk envelope. Root actual fullstaticMarketbuilder1/1:6178→5938tri,404520→385800geometryB,2batches, unchangedlayout/allcolliderrecords. No publiccrowd orGPU/shadow/canonicalframe in this count; previous94334tri failure remains. Currentauthorcapture/low-tier venue11/11 pass afterthesechanges. Rootindependentlyreviewed existingLuna body-detail installer/signature prototypes: initial7tests4pass3fail exposed actualinterleavedsource; corrected8/8 includesbothshippedbody realwardrobe mask/restore, exactattribute/rigsignature andclothchecks. Laterstricterasset-bound installer3/3 passes separately. Allthese narrowchecks used128MiBheap/maxRSS124–149MB, no broadcompile/build/browser. LargerfeatureLODgenerator admission53116terminal75 after120sraw2warning; generatorneverstarted/nooutputs. Newmatchedclothactualhostfixture prepared/UNRUN, latestcompiler/fullGFXbytes/allpose/physicalphone gatesopen. Optionalphysicalphone models/OS questionpending; independentimplementationcontinues. No rootQAserver/tab/heavy/upload, no capchange, no runtimepublication ornewproductiongraphics. WORLDretainssoleupload.
+
+
+## WORLD canonical namespace and paired lease acceptance — 9 October 2026
+
+Implementation71738c1f opens/resumes a canonical private reservation namespace,
+keeps immutable charges and propagates namespace+index leases into fixed native
+bootstrap.126 Python/23 engine/5 exact-clean-archive policy checks and World compiler
+pass:154 focused checks; no full-game or new country coverage claim. Seven actual
+registry process-exit boundaries resume exact inodes; actual Node retains both
+leases after coordinator reference closure. Persistent controller/SIGKILL recovery,
+registry CPU/wall/RSS supervision and capture/campaign integration remain open.
+
+Fresh main8d5d6aef was inspected (coordination-only) and fast-forwarded; no other
+owner runtime adopted. Actual source ledgers, unknown Fiji charge, world output,
+Nigeria/game data and productiona446/version64ed are untouched. All owned test,
+compiler, engine/profile and clean-policy handles are terminal0, scratch removed,
+heavy/server/browser0/1; WORLD has no owned server/tab/acquisition/upload. Latest
+live pressure is raw2 WARNING; current bounded source work continues, no heavy
+concurrency/cap expansion. GRAPHICS/LIVING preserve their explicit ownership;
+WORLD remains sole production uploader for the next verified runtime/data phase.
+Exact source/evidence pins and next gates: world/PROGRESS.md.
+
+## GRAPHICS single-case reduction result and parallel review — 9 October 2026
+
+The active five-minute memory heartbeat and human concurrency amendment above remain in effect. Three existing GPT-6 Luna agents completed concurrent narrow source audits with separate evidence-file ownership: body reduction constraints, installer/wardrobe order, and actual-host awning comparison isolation. Root independently checked the fixture import substitutions: current canonical people, host, lighting, seeds and assets remain equal; the sole comparison delta is the stall awnings. Browser review is still unrun. No owned graphics server or browser remains open.
+
+A changed **single-case** offline male body generation completed with exit 0 in 0.373 seconds under a 128 MiB Node heap: maximum process RSS 100,794,368 B, sampled owned-process-tree peak 167,526,400 B, and an independent 220 MiB/20-second stop guard (no abort). Output is **REJECTED: 7,178 body triangles versus target 2,000**, with 3,254 vertices locked. Source/output/remap checks and retained locks pass; these do not waive the target or certify pixels. The earlier 120-second normal-pressure admission (session 53116, exit 75) remains an unstarted attempt, separate from this smaller run. No rejected output was installed or published as a runtime asset.
+
+A separate offline diagnostic now prepares two controlled policies: first remove only exact skin-support hard locks with the same original attributes, then compare canonical per-bone weight channels. Face, UV, wrist, silhouette, border, target and error policies remain fixed. Syntax and three invalid-argument refusal checks pass (four checks; 64 MiB heap, largest child RSS 61,456,384 B); both valid diagnostic generations remain **UNRUN**. The simplifier error includes attribute and positional terms; it is not direct posed-pixel evidence. Root retains every original failure and source/packet hash locally.
+
+Latest direct pressure mask remains 2 (WARNING), with the monitor reporting increased paging. Larger compiler and GPU/browser work remain deferred while small source work continues. Heavy cap 1, Node heap ceiling 1,536 MiB and minifier 1 are unchanged. Source sync through main 27b7d104 preserves all 79 dirty source/asset files. Existing dense Market 94,334 triangles/45 calls remains over its original 17,000-triangle budget. Physical-phone, complete gameplay-journey, graphics-package bytes, latest compiler and visual gates remain open. This is a **coordination-only** phase; no new graphics runtime deployment. WORLD remains sole production-upload owner.
+
+## WORLD supervised registry checkpoint — 9 October 2026
+
+WORLD implementationd1a3ab12 and acceptance1660a236 merge fetched maind92bbc6f
+through1fa15bba without conflicts; incoming changes are coordination docs only.
+Actual146 Python/23 engine/5 exact-clean-source policy checks pass. Fixed Python
+registry startup holds the namespace lease before frozen snapshot allocation,
+supervises SQL in the worker, verifies executable/version/source pins and checks
+reported peak RSS. Actual killed-controller fixture preserves inherited lock and
+snapshot, refusing replacement before allocation. A real inherited-pipe descendant
+case is bounded and preserves state when exit is unconfirmed; this is not persistent
+attempt-record/orphan-discovery acceptance. Current30-input manifest and exact
+receipts/limits are in world/PROGRESS.md and INDEX-RESOURCE-OPERATIONS.md.
+
+Actual cached Dakar replay remains2,283ordinals/1,810versions/473duplicates/
+0conflicts/0network. No acquisition/campaign/output/Nigeria/game data changed.
+All WORLD checks are terminal; no WORLD browser/server/upload is live. Direct
+kernel pressure remains2 WARNING; checks used heavy1/128MiB wrappers and no larger
+compiler/runtime build. This builder-only source phase has no production artifact
+upload. Persistent ownership/reconciliation, supervised ingestion/fenced campaign
+completion, country geometry and eventual verified phone-visible detail remain next.
+
+## Superseded owner rows preserved during 9 October integration
+
+These historical snapshots are retained for continuity; use the current ownership table and newer receipts for status.
+
+| Owner | Historical scope | Historical source | Historical evidence |
+| --- | --- | --- | --- |
+| APP UI — current chat 01a11ae0-eea5-79e1-ae16-bc36056fbf4e | Released phone/UI/Family preserved. Review slices cover Store/Invest, Business stock controls and Home visitor controls; no schemas/balances/save migrations changed. | Integration branch **codex/allworld-integrated-preview**: **c5f4c4cb** Store/Invest, **8129ed4f** Business, **800ebd3b** Home visitor controls. | Human requested pushed slices for the other-system agent to integrate, resolve conflicts and fix follow-up bugs. Exact CI37850351246 and37851320078 passed type/build/download/smoke/policy; Home CI37852589101 running. Browser/state acceptance scenarios are in APP-FLOW-AUDIT.md on the branch. No local intensive jobs or upload. Production a446 preserved; broader audit/voice work remains open. |
+| LIVING-WORLD — current chat 01a11c35-ad88-7aa3-ac5b-6b7d910724ad | Programme gameplay and allocated account lifecycle source; verified Sol gpt-6.1-sol/high and three Luna gpt-6-luna/high, parked. | codex/living-world current236a5fa0; reviewed main d860; account1e097504; played6eb34097; CSSrepair7120c89a untested. | Actual NodeHTTP8/8+existing82/82; WorkerSQLite2/2 layouts/restart pass. Exact CI37854248963/37854863611 compiler/policy/build pass, startupgzip+141/+151; smoke/full skipped. Registry experiment rejected/reverted. Actual mobile barber42percent input/reload and portrait reveal pass; landscape phone370/570 overflow found, CSS source fix pending. Driving gauges/native movement/pause/reload pass partially; no full journey/physical-phone/zero-money/multiplayer acceptance. Owned tab closed/reset; preview70999exit0/browser3183exit130; all local slots0/1. Explicit ROOT→GRAPHICS→WORLD handoff; source-only until next terminal return. Upload coordination WORLD; productiona446 unchanged; no programme/Goalmatic deploy. [Checkpoint](https://github.com/kromate/joinallworld/blob/codex/living-world/docs/agent-plans/living-world/CHECKPOINT.md). |
+| LIVING-WORLD — current chat 01a11c35-ad88-7aa3-ac5b-6b7d910724ad | Active driving/qualification/NPC barber modules, lazy phone panels, isolated keyed paths. Verified Sol gpt-6.1-sol/high; three verified Luna gpt-6-luna/high workers. Preserve other owners and saves. | codex/living-world; integrated82c6af1594e79f0cc0594239fe5509dee2ae02bb adopts main6dc7f516 and published GRAPHICSdb85161b, pending fresh checks. | Earlier exact8f Node67/67, Worker barber pass; exact8ef Worker driving/qualification pass. Exact8f remote compiler/build pass22/24 but startup raw/gzip+792/+153, full suites skipped. Published aperture model/test byte hashes verified; boarding/contact remains open. All ROOT local sessions terminal, no owned server/tab/upload. APP UI599 ownership respected; next attribution build queued until explicit APP UI terminal handoff, caps1/heap1536 unchanged. Private Goalmatic generic create/conflict/atomic retry contract audited; target installation schema/binding still missing, adapter disabled. Public live735 health previously independently confirmed; no programme gameplay/Goalmatic release. [Durable goal/checkpoint](https://github.com/kromate/joinallworld/blob/codex/living-world/docs/agent-plans/living-world/CHECKPOINT.md). |
+| LIVING-WORLD — current chat 01a11c35-ad88-7aa3-ac5b-6b7d910724ad | Active driving/qualification/NPC barber modules, lazy phone panels, isolated keyed paths; allocated additive StandIn API/tests. Verified Sol gpt-6.1-sol/high; three verified Luna gpt-6-luna/high workers, no new fanout. Preserve other owners and saves. | codex/living-world; checked **1f808cf176ae58e4f1d271a0b58efea0df1d33da**, reviewed APP UI a44629b3/aperture db85161b/egress50502578; observer types repaired1f. | Exact full [CI37839455622](https://github.com/kromate/joinallworld/actions/runs/37839455622) terminal failure: compiler/build PASS22/24, release policy PASS; startup raw615756/gzip223159 over756/159, Brotli195421 passes. Exhaustive Node/Worker skipped. Earlier exact8f Node67/67/Worker barber and8ef Worker driving remain distinct evidence. New505 regression compiled/unrun;0.6m egress provisional. ROOT/children no local intensive/server/browser/upload; APP UI retains ownership. Next narrow StandIn test/observational build await explicit terminal handoff, caps1/heap1536/minifier1 unchanged. Source audit confirms programme erasure/export gap and barber guest↔account binding discontinuity. Narrow programme-only privacy/rebind helper preparation assigned to one existing Luna; account service untouched. Request APP UI allocation for proven adopt/park/restore/delete hooks after helper review; no ordinary request may reset ownership. Goalmatic target schema/binding missing, adapter disabled. Live735 previously confirmed, no programme release. [Checkpoint](https://github.com/kromate/joinallworld/blob/codex/living-world/docs/agent-plans/living-world/CHECKPOINT.md). |

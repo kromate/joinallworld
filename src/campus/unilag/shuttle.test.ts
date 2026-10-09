@@ -108,11 +108,14 @@ test('the road graph is continuous and every stop pair gets a safe road-led rout
         const a = connector[index - 1], b = connector[index];
         assert.ok(a && b);
         const aZone = walk.zoneAt(a.x, a.z), bZone = walk.zoneAt(b.x, b.z);
-        if (aZone?.id === bZone?.id) {
-          assert.ok(aZone);
-          assert.equal(walk.grids.get(aZone.id)?.clearLine(a.x, a.z, b.x, b.z), true,
-            `${from.id} -> ${to.id} connector crosses an obstacle`);
-        } else assert.ok(Math.hypot(a.x - b.x, a.z - b.z) <= 1.01, 'a connector changes zones only through a paired portal');
+        assert.ok(aZone && bZone, `${from.id} -> ${to.id} connector remains inside the mapped campus`);
+        const grid = walk.grids.get(aZone.id);
+        assert.ok(grid);
+        // Streaming tiles share one geographic grid; crossings require full line
+        // clearance on that grid, rather than the removed synthetic portal pairs.
+        assert.equal(walk.grids.get(bZone.id), grid);
+        assert.equal(grid.clearLine(a.x, a.z, b.x, b.z), true,
+          `${from.id} -> ${to.id} connector (${a.x},${a.z})->(${b.x},${b.z}) crosses an obstacle`);
       }
     }
   }

@@ -42,6 +42,7 @@ publication_lease = _publication.publication_lease
 MAX_SELECTION_BYTES = 256 * 1024
 MAX_POINT_BYTES = 16 * 1024
 MAX_LEDGER_BYTES = 64 * 1024
+MAX_SAMPLE_EXTENT_EXPANSION_DEGREES = 0.02
 SELECTION_GAP_ASSET = "no selected-place output asset for this city point"
 SELECTION_GAP_A3 = "chosen place ADM0_A3 differs from country ADM0_A3 despite exact ISO_A2 match; verify join before contract"
 
@@ -368,6 +369,39 @@ def valid_point(value):
     return isinstance(value, list) and len(value) == 2 and all(isinstance(n, (int, float)) and not isinstance(n, bool) and math.isfinite(n) for n in value) and -180 <= value[0] <= 180 and -90 <= value[1] <= 90
 
 
+def retained_sample_bounds(initial_bounds, buildings, roads):
+    """Include complete retained OSM features without letting a long way widen the starter indefinitely."""
+    if (not isinstance(initial_bounds, list) or len(initial_bounds) != 4
+            or not all(isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value) for value in initial_bounds)
+            or not isinstance(buildings, list) or not isinstance(roads, list)):
+        raise ValueError("Initial starter bounds are invalid")
+    west, south, east, north = initial_bounds
+    if west < -180 or east > 180 or south < -90 or north > 90 or west >= east or south >= north:
+        raise ValueError("Initial starter bounds are not ordered")
+    extents = [west, south, east, north]
+    point_count = 0
+    for features, field in ((buildings, "ring"), (roads, "points")):
+        for feature in features:
+            points = feature.get(field) if isinstance(feature, dict) else None
+            if not isinstance(points, list) or not points:
+                raise ValueError("Retained OSM feature has no coordinates")
+            for point in points:
+                if not valid_point(point):
+                    raise ValueError("Retained OSM feature has invalid WGS84 coordinates")
+                lon, lat = point
+                if (lon < west - MAX_SAMPLE_EXTENT_EXPANSION_DEGREES or lon > east + MAX_SAMPLE_EXTENT_EXPANSION_DEGREES
+                        or lat < south - MAX_SAMPLE_EXTENT_EXPANSION_DEGREES or lat > north + MAX_SAMPLE_EXTENT_EXPANSION_DEGREES):
+                    raise ValueError("Retained OSM feature exceeds the bounded starter extent")
+                extents[0] = min(extents[0], lon)
+                extents[1] = min(extents[1], lat)
+                extents[2] = max(extents[2], lon)
+                extents[3] = max(extents[3], lat)
+                point_count += 1
+    if point_count == 0:
+        raise ValueError("Retained OSM sample has no coordinates")
+    return extents
+
+
 def verify_assets(receipt, row, place, airport, identity, inventory_hash, output_root=OUTPUT):
     identifier = identity["cityId"]
     if receipt.get("countryIso2") != row["iso2"] or receipt.get("cityId") != identifier:
@@ -487,7 +521,14 @@ def main():
                 raise ValueError(f"{identifier} exceeds the 150-byte catalogue row plus loader limit")
             centre = place["coordinatesWgs84"]
             alon, alat = airport_source["coordinatesWgs84"]
-            bounds = [round(min(centre[0]-.015, alon-.012), 6), round(min(centre[1]-.015, alat-.012), 6), round(max(centre[0]+.015, alon+.012), 6), round(max(centre[1]+.015, alat+.012), 6)]
+            initial_bounds = [round(min(centre[0]-.015, alon-.012), 6), round(min(centre[1]-.015, alat-.012), 6), round(max(centre[0]+.015, alon+.012), 6), round(max(centre[1]+.015, alat+.012), 6)]
+            if not raw_path.exists() and not args.acquire:
+                raise ValueError(f"Missing bounded OSM sample for {identifier}; pass --acquire")
+            raw, source = acquire(identifier, centre)
+            buildings, roads, counts = convert(raw, centre)
+            if not buildings or not roads:
+                raise ValueError(f"No usable buildings and roads in bounded source sample for {identifier}")
+            bounds = retained_sample_bounds(initial_bounds, buildings, roads)
             land = []
             for part in row["admin0Geometry"]["outlineParts"]:
                 geometry = pinned(ROOT / part["path"], part["sha256"])
@@ -497,19 +538,16 @@ def main():
                         land.append([outer] + [clipped for ring in polygon[1:] if (clipped := clip_ring(ring, bounds))])
             if not land:
                 raise ValueError(f"No clipped land polygons for {code}")
-            if not raw_path.exists() and not args.acquire:
-                raise ValueError(f"Missing bounded OSM sample for {identifier}; pass --acquire")
-            raw, source = acquire(identifier, centre)
-            buildings, roads, counts = convert(raw, centre)
-            if not buildings or not roads:
-                raise ValueError(f"No usable buildings and roads in bounded source sample for {identifier}")
+            coverage_note = "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."
+            if bounds != initial_bounds:
+                coverage_note += " Published bounds include complete retained OSM feature coordinates and expand by at most 0.02 degrees beyond the initial settlement/airport bounds."
             facts = {"id": identifier, "name": place["name"], "country": {"idISOlower": code.lower(), "name": row["country"]},
                      "state": {"idunique": identity["stateId"], "name": identity["stateName"]}, "timezone": timezone,
                      "centre": {"lon": centre[0], "lat": centre[1]},
                      "airport": {"id": identifier+"-airport", "name": airport_source["name"], "lon": alon, "lat": alat, "sourceUrl": airport_source["sourceRecordUrl"]},
                      "sourceLabel": "Natural Earth, OpenStreetMap contributors and OurAirports dataset",
                      "sourceUrl": source["url"], "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
-                     "bounds": bounds, "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."}
+                     "bounds": bounds, "coverageNote": coverage_note}
             files = {
               "facts.ts": "// Generated by scripts/world/build-africa-starters.py\nimport type { DestinationFacts } from '../africa/types.ts'\nexport const FACTS = "+json.dumps(facts, ensure_ascii=False, indent=2)+" satisfies DestinationFacts\n",
               "geometry.ts": "// Generated bounded geographic data; load only with this city map.\nimport type { DestinationGeometry } from '../africa/map.ts'\nexport const GEOMETRY: DestinationGeometry = "+json.dumps({"land":land,"buildings":buildings,"roads":roads}, ensure_ascii=False, separators=(",",":"))+"\n",

@@ -1,0 +1,95 @@
+{
+  "format": "africa-starter-extent-source-acceptance-v1",
+  "checkedAt": "2026-10-09T20:50:11.526166+00:00",
+  "sourcePins": [
+    {
+      "path": "scripts/world/build-africa-starters.py",
+      "bytes": 39500,
+      "sha256": "1c4fffb0d08b45d719b0e0900ad69e006b4e4148e50804481cc705fef4db9273"
+    },
+    {
+      "path": "world/tooling/test_africa_starter_selection.py",
+      "bytes": 21355,
+      "sha256": "709cffb52de924e20268323f893a0127ca2242098442bc4972e57b863124a5a4"
+    }
+  ],
+  "focusedTests": {
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "elapsedSeconds": 0.036,
+    "exitCode": 0,
+    "logSha256": "763b7e7bfa13fc451258b27e5433af0f3c47903fb3f2a2168b7e8cf8a56be3be"
+  },
+  "actualQueuedReceiptGeometryInspection": {
+    "citiesInspected": 21,
+    "violations": [
+      {
+        "cityId": "dar",
+        "outOfBoundsVertices": 64,
+        "currentBounds": [
+          39.195288,
+          -6.885499,
+          39.281396,
+          -6.783067
+        ],
+        "geometryDerivedBounds": [
+          39.195288,
+          -6.885499,
+          39.281396,
+          -6.7772828
+        ],
+        "factsSha256": "d48ef43c020a58351fffeb1a7ce7ff8ef574340f696f198a55cff417701a4f53",
+        "geometrySha256": "67476f16797ea609e1fb770c877b25bc73e4642b5531726aa2e8f81d0eacd313"
+      },
+      {
+        "cityId": "gaborone",
+        "outOfBoundsVertices": 11,
+        "currentBounds": [
+          25.896948,
+          -24.661314,
+          25.9302,
+          -24.543201
+        ],
+        "geometryDerivedBounds": [
+          25.896948,
+          -24.6634568,
+          25.9302,
+          -24.543201
+        ],
+        "factsSha256": "f3a51b86194f82f27bd37ecc0dbdc9ad482cae7ef60e784926e90ce7b3cb61dc",
+        "geometrySha256": "f258630567ee343f9d4c856516d9af844b6821f14e9b8a2c08c05d12227474ea"
+      },
+      {
+        "cityId": "mogadishu",
+        "outOfBoundsVertices": 37,
+        "currentBounds": [
+          45.292699,
+          2.00244,
+          45.379732,
+          2.083627
+        ],
+        "geometryDerivedBounds": [
+          45.292699,
+          2.00244,
+          45.379732,
+          2.0867873
+        ],
+        "factsSha256": "eca66c2f56a886722bba8d9e0f46d3d61e1dab725a540c5dbeb05fd0b1caa9f7",
+        "geometrySha256": "e1340894394eb2dad0bd7c3790bb174786ab5fd29ddff107ef8551df1c08ec10"
+      }
+    ]
+  },
+  "policy": {
+    "preserveCompleteRetainedFeatures": true,
+    "maxExpansionDegreesPerEdge": 0.02,
+    "deriveBoundsBeforeCountryLandClipping": true,
+    "downloadUrlsBudgetsAndFeatureCapsUnchanged": true
+  },
+  "existingOutputsRewritten": false,
+  "requestsOrLedgersReset": false,
+  "actualRevisionsGenerated": false,
+  "productionMutation": false,
+  "releaseReady": false,
+  "nextAction": "Preserve existing owned intent/assets/receipt, publish a separately pinned corrected source revision from the unchanged cached OSM bytes, then validate exact source/engine/bounds before admission. Do not resume old frozen contracts with changed builder pins."
+}

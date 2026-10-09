@@ -144,7 +144,10 @@ clock, account, limiter, funding intent or original retained store is reset.
 All21 local retained-stage/coverage/rate-policy tests pass with zero skips under
 one shared heavy slot and128MiB heap; three workflow policy checks also pass.
 See [sealed-admin-rate-source-acceptance.json](sealed-admin-rate-source-acceptance.json).
-This is source acceptance; a fresh actual all-ten Worker seal is still required.
+Exactfa8 source audit37988762213 is terminal SUCCESS onNode22/24, and explicit
+Astra approved the corrected caller source. The one fresh actual all-ten seal
+37989411458 is confirmed in progress on exactfa8 tooling/c1 game, not yet accepted.
+No native stage, retained store mutation or upload has begun.
 Previous status-only turn made no goal progress; this continuation completes the
 caller correction and meaningful validation rather than repeating status.
 [AFRICA-NEXT-COVERAGE.md](AFRICA-NEXT-COVERAGE.md) identifies the next five
@@ -2309,3 +2312,16 @@ City campaign `representative-real-v2` retains four compiled pilots (Accra, Cape
 Latest graphics-owner update (reported, not independently measured here): q60 embedded body-atlas JPEG changes aim to fund the +3,260-byte unique-route regression, preserving mesh/rig binary tails. Reported raw savings: female 13,536 / male 13,868 bytes; only body GLBs, manifest pins and offline quality setting change. Fresh production and cold-route checks are still pending in that owner’s work. Nigeria combined-build integration is still open; preserve primary graphics services and edits.
 
 The same seven wrapper regressions were also run against the frozen original2cf checker in an isolated temporary copy: four completion-failure cases fail as intended and three existing diagnostic/clean behaviors pass (terminal1,3pass/4fail). Current wrapper/transport tests pass17/17. This negative witness proves the correction distinguishes previously false clean outcomes; it is not a failed acceptance run of the corrected source. Evidence: `game-map-typecheck-original-negative-witness.tap`.
+
+Source extent correction checkpoint: the next five acquired starters completed
+their initial window in14.088s and exact-contract resume in2.816s; all15 new
+source/request files remained byte-identical. Independent source review found
+Mogadishu roads outside declared bounds, and a broader queued-source inspection
+found the same issue in Dar es Salaam and Gaborone. Those three are held from
+new admission until versioned correction; other inspected queued candidates fit.
+The generic compiler correction preserves complete ways, derives published bounds
+from retained geometry before clipping country land and refuses expansion beyond
+0.02 degrees. Original download URLs, requests, limits and feature caps remain.
+All13 focused Python fixtures pass in0.036s under one shared heavy slot. Existing
+outputs/publication intents and frozen contracts are preserved; these tests do
+not claim the three actual source revisions have been regenerated or accepted.

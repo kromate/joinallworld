@@ -75,8 +75,8 @@
     "previousSourcePins": [
       {
         "path": "world/tooling/verify-sealed-africa.mjs",
-        "bytes": 28276,
-        "sha256": "41209efdf36d1e345370356ba889a84344b4fc0ae6bbb32582c1a94e9488a573"
+        "bytes": 26477,
+        "sha256": "8541318eb30535785df8ad5a9e81407feb6390a6c0083845f709c37a00bc72a5"
       },
       {
         "path": "world/tooling/sealed-admin-rate-policy.mjs",
@@ -95,5 +95,30 @@
       }
     ],
     "sealedRunDispatched": false
+  },
+  "independentSourceReview": {
+    "toolingSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+    "decision": "approve",
+    "model": "gpt-6-astra",
+    "reportSha256": "2f9699b7b255b0ab53e02a38a89da57be38a78ad4fa1472b6b6299ec67ab5e16",
+    "scope": "Source-only caller/schema/policy review. No Worker, store or browser execution."
+  },
+  "remoteSourceAudit": {
+    "runId": 37988762213,
+    "headSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+    "status": "completed",
+    "conclusion": "success",
+    "nodeVersions": [
+      "22.19.0",
+      "24"
+    ],
+    "logSha256": "2878da513460405d7cd64e92ca0d552d2c4e4710aba4738a521de9312521bf5b"
+  },
+  "freshSeal": {
+    "runId": 37989411458,
+    "toolingSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+    "gameSourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "lastObservedStatus": "in_progress",
+    "runtimeAcceptance": false
   }
 }

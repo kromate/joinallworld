@@ -270,7 +270,8 @@ class JubaSelectionTests(unittest.TestCase):
         (data / "inventory.json").write_text(json.dumps({"sourceFiles": [], "countries": [row]}))
         pinned = lambda path, expected: json.loads(Path(path).read_text()) if digest(Path(path).read_bytes()) == expected else (_ for _ in ()).throw(ValueError("pin mismatch"))
         acquire = lambda identifier, centre: (b"<osm/>", {"url": "fixture", "sha256": digest(b"<osm/>")})
-        convert = lambda raw, centre: ([{"id": "osm:way:1", "ring": [[0, 0], [1, 0], [1, 1], [0, 0]], "heightM": 5, "heightKind": "estimated"}], [{"id": "osm:way:2", "name": "Road", "major": False, "points": [[0, 0], [1, 1]]}], {"buildings": 1, "roads": 1})
+        road_points = [[39.2, -6.8], [39.2, -6.77]]
+        convert = lambda raw, centre: ([{"id": "osm:way:1", "ring": [[39.19, -6.81], [39.21, -6.81], [39.21, -6.79], [39.19, -6.81]], "heightM": 5, "heightKind": "estimated"}], [{"id": "osm:way:2", "name": "Road", "major": False, "points": road_points}], {"buildings": 1, "roads": 1})
         arguments = ["build-africa-starters.py", "--country", "TZ", "--acquire"]
         with patch.multiple(GEN, ROOT=root, DATA=data, OUTPUT=output, RECEIPTS=data / "receipts", pinned=pinned, acquire=acquire, convert=convert):
             with patch.object(sys, "argv", arguments), redirect_stdout(io.StringIO()):
@@ -278,9 +279,30 @@ class JubaSelectionTests(unittest.TestCase):
             receipt_path = data / "receipts/dar.json"
             first = json.loads(receipt_path.read_text())
             self.assertEqual(first["generationIdentity"], {"cityId": "dar", "stateId": "tz-zone", "stateName": "Starter"})
+            facts_source = (output / "dar/facts.ts").read_text()
+            facts_raw = facts_source.split("export const FACTS = ", 1)[1].split(" satisfies DestinationFacts", 1)[0]
+            facts = json.loads(facts_raw)
+            self.assertEqual(facts["bounds"][3], -6.77)
+            geometry_source = (output / "dar/geometry.ts").read_text()
+            geometry_raw = geometry_source.split("export const GEOMETRY: DestinationGeometry = ", 1)[1].rstrip()
+            geometry = json.loads(geometry_raw)
+            self.assertEqual(geometry["roads"][0]["points"], road_points, "the source way remains complete, not clipped")
+            self.assertEqual(max(point[1] for polygon in geometry["land"] for ring in polygon for point in ring), facts["bounds"][3],
+                             "country land is clipped to the final geometry-derived bounds")
             with patch.object(sys, "argv", arguments), redirect_stdout(io.StringIO()):
                 GEN.main()
             self.assertEqual(json.loads(receipt_path.read_text()), first)
+
+    def test_retained_sample_extent_includes_complete_features_and_refuses_outliers(self):
+        initial = [10.0, 20.0, 10.1, 20.1]
+        building = {"ring": [[10.02, 20.02], [10.03, 20.02], [10.03, 20.03], [10.02, 20.02]]}
+        road = {"points": [[10.05, 20.05], [10.05, 20.115]]}
+        self.assertEqual(GEN.retained_sample_bounds(initial, [building], [road]), [10.0, 20.0, 10.1, 20.115])
+        self.assertEqual(initial, [10.0, 20.0, 10.1, 20.1], "the input box is not mutated")
+        with self.assertRaisesRegex(ValueError, "bounded starter extent"):
+            GEN.retained_sample_bounds(initial, [], [{"points": [[10.05, 20.121]]}])
+        with self.assertRaisesRegex(ValueError, "invalid WGS84"):
+            GEN.retained_sample_bounds(initial, [], [{"points": [[10.05, float("nan")]]}])
 
 
 if __name__ == "__main__":

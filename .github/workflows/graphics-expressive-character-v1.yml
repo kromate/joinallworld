@@ -1,7 +1,7 @@
 name: Expressive character visible prototype
 on:
   push:
-    branches: [codex/graphics-expressive-character-v6]
+    branches: [codex/graphics-expressive-character-v7]
 permissions:
   contents: read
 jobs:
@@ -16,7 +16,11 @@ jobs:
         with:
           node-version: 24
       - run: npm ci --no-audit --no-fund
+      - name: Build standalone playable comparison
+        run: node --max-old-space-size=192 evidence/graphics-loop/expressive-character-v1/build-preview.mjs
       - name: Render both character families and expressions
+        env:
+          STATIC_PREVIEW: 1
         run: |
           export CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable)"
           mkdir -p evidence/graphics-loop/expressive-character-v1/results

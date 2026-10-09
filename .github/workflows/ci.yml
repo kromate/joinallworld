@@ -94,6 +94,12 @@ jobs:
           src/app/features/messages/messagesComponents.test.ts
           src/app/features/sim/soundSettingsModel.test.ts
 
+      - name: Existing Groceries and Health component checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          --test-name-pattern='groceries|Groceries:|Health:'
+          src/app/features/panelsA.test.ts
+
   full:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks
     runs-on: ubuntu-latest

@@ -20,7 +20,7 @@ import type { ActionBody } from '../types/actions.ts';
 import type { LifeContextInit, LifeState } from '../types/life.ts';
 
 const HOOKS = `
-import { existsSync, watch, writeFileSync } from 'node:fs';
+import { existsSync, watch, writeFileSync, writeSync } from 'node:fs';
 import { dirname } from 'node:path';
 let failedTeachingImport = false;
 let teachingResolveCount = 0;
@@ -28,7 +28,7 @@ let hookTraceCount = 0;
 function hookTrace(event, data) {
   if (process.env.TEACHING_GATE_DIAGNOSTICS === '1' && hookTraceCount < 24) {
     hookTraceCount++;
-    process.stderr.write('[teaching-hook] ' + event + ' ' + JSON.stringify(data) + '\\n');
+    writeSync(2, '[teaching-hook] ' + event + ' ' + JSON.stringify(data) + '\\n');
   }
 }
 async function teachingBarrier(url) {

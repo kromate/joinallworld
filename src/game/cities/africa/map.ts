@@ -34,7 +34,6 @@ export function createDestinationMap(facts: DestinationFacts, geometry: Destinat
       const [{ createModulePack }, module] = await Promise.all([import('../../../map3d/cities/module.ts'), loadModule()])
       const pack = await createModulePack(module, { spread: true, character: { extent: 'city' } })
       const origin = valid.mapOrigin
-      const centre = toLocal(origin, valid.centre.lon, valid.centre.lat)
       const buildings = geometry.buildings.map(building => {
         const points = building.ring.map(([lon, lat]) => toLocal(origin, lon, lat))
         const xs = points.map(point => point[0]), zs = points.map(point => point[1])
@@ -43,7 +42,6 @@ export function createDestinationMap(facts: DestinationFacts, geometry: Destinat
       })
       return {
         ...pack,
-        core: { minX: centre[0] - 18, maxX: centre[0] + 18, minZ: centre[1] - 18, maxZ: centre[1] + 18 },
         roads: geometry.roads.map(road => ({ id: road.id, name: road.name, major: road.major, points: road.points.map(([lon, lat]) => toLocal(origin, lon, lat)) })),
         // Source buildings replace procedural decorative housing in the sampled area.
         // Their retained rings support later extrusion; this first pass uses box silhouettes.

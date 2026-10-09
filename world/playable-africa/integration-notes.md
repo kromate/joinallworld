@@ -9,6 +9,10 @@ The country atlas info sheet now uses that city entry to produce the same travel
 Integration follow-ups after applying the patch:
 
 - Regenerate `catalogue.generated.ts`, `loaders.generated.ts`, and `routes.generated.ts` with the existing catalogue generator. The generated catalogue is deliberately not included here.
-- Update the fixed-country expectation in `src/map3d/map3d.test.ts`: `citiesOf('nigeria')` should equal the catalogue rows whose `countryISO` is absent or `ng`, rather than all generated rows.
+- Update the fixed-country expectations in `src/map3d/map3d.test.ts` and `src/map3d/world.test.ts`: `citiesOf('nigeria')` should equal the catalogue rows whose `countryISO` is absent or `ng`, rather than all generated rows.
 - `src/game/cities/allCities.test.ts` currently recognizes new authored city sources only as `spec.ts` or `recipe.ts`, then runs the Nigeria `build-city.ts` formula check. Foreign modules instead use `facts.ts` and map-source data. Add a foreign-source checker for those facts/maps and branch the offline source check by module kind; do not feed foreign cities into the Nigeria formula checker. Keep the shared CityModule and content contract checks.
 - Recheck the startup gzip budget with the compact foreign metadata included and offset any growth through the existing optimization budget. Do not raise configured caps.
+
+The final patch keeps foreign internal starter units out of Nigeria atlas states. Foreign capital selection and map reopen use the real country on the Africa level. Nigeria remains at its existing state level. The source map core includes the real airport as well as the central sample, so the arrival point is inside the initial city camera frame. `plannedRoutes` uses derived country status and binds its country ID.
+
+No regional climate is authored in this starter slice. Existing fallback game weather is provisional; it must not be presented as real local weather or uniform African humidity. Source-backed monthly conditions can be integrated separately.

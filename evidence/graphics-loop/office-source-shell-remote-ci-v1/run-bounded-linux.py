@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path.cwd()
 HERE = Path("evidence/graphics-loop/office-source-shell-remote-ci-v1")
-PROBE = Path("evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v1/probe-office-source-shell-diagnostic-reviewed.mjs")
+PROBE = Path("evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v1/probe-office-source-shell-diagnostic-reviewed-v2.mjs")
 MAX_RSS_BYTES = 220 * 1024 * 1024
 TIMEOUT_SECONDS = 20
 

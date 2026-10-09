@@ -35,7 +35,7 @@ jobs:
 
       - name: Verify exact diagnostic source snapshot
         env:
-          EXPECTED_SNAPSHOT_SHA256: a95437d03ed433521f8a0b4d2c625f43ed6c249ca40459169064153705d412df
+          EXPECTED_SNAPSHOT_SHA256: 855b8fc99138b651ec11b2cb7901a9c59d8ec2be9d4f63d3e4c9ea285e32cd92
         run: >-
           node evidence/graphics-loop/office-source-shell-remote-ci-v1/verify-snapshot.mjs
           "$EXPECTED_SNAPSHOT_SHA256"

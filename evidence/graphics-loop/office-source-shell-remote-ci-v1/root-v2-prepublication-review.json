@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-09T04:50:35.999443+00:00",
+  "previousRun": 37885557017,
+  "previousStatus": "actual terminal failure before preflight: allowedBones undefined; no geometry cause evidence",
+  "oldProbeSha256": "ccd7255077e3cc2eadbe05ad03bf9fa349f72939eb0af3b6b185e1b18f5d3b0b",
+  "newProbeSha256": "37719754736c47d0436364bcc24969106f0de85ffdfadb7355f1f6c188a3ceb2",
+  "newSnapshotSha256": "855b8fc99138b651ec11b2cb7901a9c59d8ec2be9d4f63d3e4c9ea285e32cd92",
+  "hypothesis": "Diagnostic boundary helper cannot reference private candidate variable; explicit exact pinned bone set fixes only classifier scope. Candidate geometry/source/masks unchanged.",
+  "allowedBonesLiteral": "['pelvis','spine_01','spine_02','spine_03','neck_01','clavicle_l','clavicle_r','upperarm_l','upperarm_r','lowerarm_l','lowerarm_r','hand_l','hand_r']",
+  "localProbeExecuted": false,
+  "workflow": "branch-only secondpush afterrunterminal; no cancel/restart"
+}

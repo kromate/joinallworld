@@ -1,0 +1,22 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "vite/client"
+    ]
+  },
+  "files": [
+    "../../../env.d.ts",
+    "../../../src/scene/body/facial-detail.ts",
+    "../../../src/scene/body/skinned.ts",
+    "../../../src/scene/body/appearance.ts",
+    "../../../src/scene/wardrobe/geometry.ts",
+    "./viewer.ts"
+  ],
+  "include": []
+}

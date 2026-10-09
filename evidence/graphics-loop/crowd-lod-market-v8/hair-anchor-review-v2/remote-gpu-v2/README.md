@@ -1,0 +1,7 @@
+# Hair-anchor GPU diagnostic, v2
+
+This branch-bound remote recipe consumes only CPU package run `37913403202` from commit `2b9eb5ae80e9f75181ba6647b32a8625b62fe416`. The package manifest SHA is `6a4caa733deab878668b2df4ee797475993c9c2985f65ac736d6a1209f873d8b`; builder SHA is `8b164f3273b441029f1ee836c8c7e623d022d53a206e37d8beb492c0e0d7d0a0`. Source manifest SHA is `0c6be366ea664b3f32a4f7c0d3f093f3255e02bca6ff99ec3b69a2be1f096973`.
+
+Before Chrome launches, `verify-package.mjs` validates the exact package manifest and every output file, the source receipt’s before/after hashes against the pinned CPU source snapshot, the receipt’s artifact-file inventory/digest, and the CPU run limits (220 MiB RSS, 25 seconds, Node heap 96 MiB, with positive monitor samples and cleanup). Workflow API checks independently require the exact run ID, branch, commit, completion, and successful conclusion. The artifact upload root is expected to contain `static-fixture-market-hair-anchor-v2/` and `remote-results/`.
+
+The capture remains the 16-frame two-actor matrix: source/candidate hair placement × source/compact body geometry × front/profile. Each mode advances real production stride for at least 2.4 seconds, then returns to the same paused phase, actor look, and source-fitted camera. Every request failure remains fatal. The remote Chrome process group is limited to 2 GiB for 60 seconds. This is SwiftShader diagnostic evidence only; it does not establish hardware or mobile quality/performance. No GPU run has been started from this folder.

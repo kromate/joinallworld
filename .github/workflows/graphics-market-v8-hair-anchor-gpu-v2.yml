@@ -1,0 +1,76 @@
+name: Market hair-anchor same-pose GPU diagnostic v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-v8-hair-anchor-gpu-v2
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: market-hair-anchor-gpu-v2
+  cancel-in-progress: false
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify exact hair review source and all current files
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: 7b24bd7bfbd0a62b8b0e6e151ac61b20f48eb7c88201fde52a5ce6709fd4f1f9
+        run: node --max-old-space-size=32 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v2/remote-gpu-v2/verify-source-snapshot.mjs "$EXPECTED_SOURCE_MANIFEST_SHA256"
+      - name: Verify the CPU package run is the pinned successful build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_PACKAGE_RUN_ID: '37913403202'
+          EXPECTED_PACKAGE_BRANCH: codex/graphics-market-v8-hair-anchor-cpu-v1
+          EXPECTED_PACKAGE_COMMIT: 2b9eb5ae80e9f75181ba6647b32a8625b62fe416
+        run: |
+          set -euo pipefail
+          run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${EXPECTED_PACKAGE_RUN_ID}")"
+          test "$(jq -r .id <<<"$run_json")" = "$EXPECTED_PACKAGE_RUN_ID"
+          test "$(jq -r .head_branch <<<"$run_json")" = "$EXPECTED_PACKAGE_BRANCH"
+          test "$(jq -r .head_sha <<<"$run_json")" = "$EXPECTED_PACKAGE_COMMIT"
+          test "$(jq -r .status <<<"$run_json")" = completed
+          test "$(jq -r .conclusion <<<"$run_json")" = success
+      - name: Download only the pinned hair-anchor CPU package
+        uses: actions/download-artifact@v4
+        with:
+          name: market-hair-anchor-cpu-package-v1-37913403202
+          run-id: 37913403202
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v2/remote-gpu-v2/downloaded-artifact
+      - name: Install exact lockfile dependencies for CDP
+        run: npm ci --no-audit --no-fund
+      - name: Locate preinstalled runner Google Chrome
+        run: |
+          set -euo pipefail
+          chrome_path="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$chrome_path"
+          printf 'CHROME_BIN=%s\n' "$chrome_path" >> "$GITHUB_ENV"
+          "$chrome_path" --version
+      - name: Capture same-actor hair and body geometry A/B
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: 7b24bd7bfbd0a62b8b0e6e151ac61b20f48eb7c88201fde52a5ce6709fd4f1f9
+          PACKAGE_RUN_ID: '37913403202'
+          PACKAGE_BRANCH: codex/graphics-market-v8-hair-anchor-cpu-v1
+          PACKAGE_COMMIT: 2b9eb5ae80e9f75181ba6647b32a8625b62fe416
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v2/remote-gpu-v2/run-bounded-linux.py
+      - name: Preserve screenshots, diagnostics, and cleanup receipts even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-hair-anchor-live-review-v2-${{ github.run_id }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v2/remote-gpu-v2/remote-results/**
+          if-no-files-found: warn

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Market hair-anchor same-pose A/B</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 16px; font: 14px/1.4 system-ui, sans-serif; color: #202124; background: #eef1ee; }
+      main { display: grid; grid-template-columns: minmax(520px, 1fr) minmax(340px, 520px); gap: 16px; max-width: 1500px; margin: auto; }
+      section { min-width: 0; background: #fff; border: 1px solid #d6d9d5; border-radius: 8px; padding: 12px; }
+      canvas { display: block; width: 100%; height: min(76vh, 760px); background: #dfe7e8; }
+      label { display: inline-flex; flex-direction: column; gap: 3px; margin: 4px 8px 8px 0; font-size: 12px; }
+      select, input, button { min-height: 34px; padding: 4px 8px; font: inherit; }
+      button { cursor: pointer; }
+      pre { max-height: 72vh; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; background: #f5f6f5; padding: 10px; font-size: 11px; }
+      h1 { margin: 0 0 8px; font-size: 18px; }
+      p { margin: 4px 0 10px; }
+      @media(max-width: 900px) { main { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Same-look source / candidate hair-anchor A/B</h1>
+        <p>Loads the same saved Market identity through production <code>loadBody</code> for each hair-anchor mode. Only the generated Afro/bun vertical center changes; size, color, saved hair style, Head weighting, body, wardrobe, and pose stay fixed. Source/compact body comparison and the floor diagnostic remain available. The candidate uses measured Head bounds as a provisional anchor; rendered pixels, face visibility, and scalp contact still require review.</p>
+        <label>Saved identity<select id="actor"></select></label>
+        <button id="load">Load identity / build maps</button>
+        <label>Hair anchor<select id="hair-anchor"><option value="source">Current source placement</option><option value="candidate">Head-bounds candidate</option></select></label>
+        <label>Geometry<select id="mode"><option value="source">Original source</option><option value="compact">Compact candidate</option></select></label>
+        <label>Pose<select id="pose"><option value="idle">Idle</option><option value="walk">Walk phase</option><option value="interact">Interact / reach pose</option><option value="sit">Sit</option></select></label>
+        <label>Camera yaw<select id="yaw"><option>0</option><option>45</option><option>90</option><option>135</option><option>180</option><option>225</option><option>270</option><option>315</option></select></label>
+        <label>Framing<select id="framing"><option value="detail">Original detail camera</option><option value="full-body">Full-body fitted camera</option></select></label>
+        <label>Manual walk phase<input id="phase" type="range" min="0" max="1" step="0.025" value="0.25" /></label>
+        <button id="play-walk" type="button">Play walk</button>
+        <button id="ground-reference" type="button" aria-pressed="false">Show y=0 reference</button>
+        <button id="render">Render / verify pose checkpoint</button>
+        <button id="capture">Save current PNG</button>
+        <canvas id="view" width="960" height="760" aria-label="Production skinned actor A/B render"></canvas>
+      </section>
+      <section>
+        <h1>Measured actor state</h1>
+        <pre id="status">Unrun. Keep the same actor, saved look and phase while switching hair-anchor mode; changing that mode reloads the identical seed with the isolated candidate module. Actual geometry telemetry records deformed Head/scalp/generated-hair vertex bounds, nearest hair-to-head vertex distances, hairstyle item index range and eye-UV triangle ray tests. Distance is a vertex-proximity diagnostic, not a continuous surface-intersection proof; eye visibility also requires pixel review. This diagnostic does not modify production code.</pre>
+      </section>
+    </main>
+    <script type="module" src="./viewer-hair-anchor-v2.ts"></script>
+  </body>
+</html>

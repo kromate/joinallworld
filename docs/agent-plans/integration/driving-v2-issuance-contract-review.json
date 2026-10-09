@@ -1,0 +1,86 @@
+{
+  "decision": "MODIFY",
+  "scope": "Source-only review of issuance/rollback contract; no cloud implementation, binding, stage, activation or release acceptance",
+  "date": "2026-10-10",
+  "sourceRoot": "public codex/living-world source checkout",
+  "pins": {
+    "handoff": "f80ab931247c6ada992cde49462b86e62753d7ad9e09f40ea96b27e7d254bc7f",
+    "manifest": "f34dcaff8e648ab98a8afc64121ccb21d29d9b094f6ef1e3b2aa30e3dd813a8c",
+    "implementationPatch": "9482e2cdff947f726298040ee32c6102623277ee67ca1d05c84955999901f1d7",
+    "uiPatch": "abc7d746bb47b5b23094b1baca1def5847feee737f30ba3728326133a803046e",
+    "baselineCommit": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "baselineService": "a761b610ec85ffc79528a4883ebaa764f04d620a8bd9273c5cd5802c95631594"
+  },
+  "execution": {
+    "sourceReadsOnly": true,
+    "runtime": false,
+    "tests": false,
+    "compiler": false,
+    "build": false,
+    "browser": false,
+    "sourceEdits": false,
+    "delegation": false
+  },
+  "suppliedEvidence": {
+    "pureBaseline": 15,
+    "expectedRed": 1,
+    "pureCandidate": 22,
+    "skips": 0,
+    "independentlyExecutedHere": false,
+    "scope": "Reported in handoff; no service/client release acceptance"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "priority": "P1",
+      "kind": "contract ordering conflict in unchanged baseline service",
+      "reference": "handoff:44; driving-service.ts:293-309",
+      "reproducer": "Accept explicit-gear packet P ON; preserve current actor/city/location/journey; switch service OFF; set now > lastInputAt+1500; resend exact P.",
+      "prediction": "Existing timeout branch pauses and writes before returning duplicate success.",
+      "required": "Recognize the exact retained successful receipt before driving-row mutations after authority/context/strict-row checks; define mutation scope; retain lastPacket-only replay and conflicts."
+    },
+    {
+      "id": "F2",
+      "priority": "P1",
+      "kind": "contract acceptance gap, not an asserted unreceived implementation bug",
+      "reference": "handoff:45; DrivingApp.vue:531-537,559-564; UI patch:49-59,82-86",
+      "reproducer": "After ON selection and buffering, deliver current successful OFF lifecycle response, then delayed older ON response at same saved revision.",
+      "prediction": "A handler-only or row-revision-only capability design may retain or restore stale gear permission.",
+      "required": "All applicable response paths revoke on absence; request freshness prevents stale ON restoration; clear unsent intent and held controls; fence immutable in-flight packet and reconcile before further driving."
+    },
+    {
+      "id": "F3",
+      "priority": "P1",
+      "kind": "contract terminology and deployment prerequisite",
+      "reference": "handoff:44-48",
+      "reproducer": "Open existing running v2 row with OFF rollback that either omits gear on write or prohibits all v2 writes; request pause/resume/legacy controls.",
+      "prediction": "Reader-only compatibility strands or corrupts valid v2 journeys.",
+      "required": "OFF prohibits new creation/upgrade to v2, permits valid writes of existing v2; pin compatible reader/writer/service image before issuance; never C1/eec v1-only rollback after v2."
+    }
+  ],
+  "acceptanceCriteria": [
+    "Exact received candidate commit/diff/hashes reviewed; trusted literal true only; production option unwired; v1/v2 readers independent of gate.",
+    "Actual Node24 authority, atomic OFF refusal, retained exact replay after timeout/clock/lifecycle/reopen, conflict/foreign-context, terminal/corrupt preservation checks.",
+    "Actual component all-response capability adoption, stale same-revision ON reply rejection, held/buffered/in-flight loss and existing identity/lifecycle fences.",
+    "Separate reviewed Node/Worker bindings default OFF; no truthy environment strings or inherited activation; no mixed v1-only reader deployment.",
+    "Pinned compatible OFF rollback reader/writer before any issuance; actual durable v2 reopen and rollback operation plus v1/corrupt controls and terminal/receipt checks.",
+    "Actual desktop/mobile original-store driving continuity, reverse without checkpoint grants, braking before direction change, release/disconnect/reopen; physical-phone evidence distinguished.",
+    "Final remote logs and exact artifacts for focused tests, all five compiler projects, build, download caps and smoke; full CI/exact-SHA staging/release observation separately required."
+  ],
+  "preserved": [
+    "original score 0",
+    "school",
+    "home",
+    "wallet",
+    "receipt uniqueness",
+    "corrupt-row refusal",
+    "terminal evidence",
+    "no score/licence/qualification/payment grants"
+  ],
+  "cloudSourceReceived": false,
+  "implementationApproved": false,
+  "activationApproved": false,
+  "paidResourcesAuthorized": false,
+  "cutoff": "2026-10-10T08:00:00Z",
+  "report": "docs/agent-plans/integration/driving-v2-issuance-contract-review.md"
+}

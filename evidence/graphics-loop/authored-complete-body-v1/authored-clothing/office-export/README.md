@@ -14,10 +14,10 @@ The body base, Mixamo-compatible 52-bone rig, source weights, and macro targets 
 
 | Output | Authored triangles | UV-split vertices | Native family morph | Family fit max (hm08 units) | Source body triangles hidden |
 |---|---:|---:|---|---:|---:|
-| office-male.glb | 14,956 | 8,522 | bodyMasculine | 0.302930 | 6,748 |
-| office-female.glb | 4,192 | 2,446 | bodyFeminine | 0.347889 | 5,010 |
+| office-male.glb | 14,956 | 8,522 | bodyMale | 0.302930 | 6,748 |
+| office-female.glb | 4,192 | 2,446 | bodyFemale | 0.347889 | 5,010 |
 
-Each suit's MHCLO mapping uses exact original hm08 anchor IDs, barycentrics, and axis-scaled offsets. Every anchor is within source helper-tights vertex range 15328–18001. The source OBJ's vertex/UV corner pairs are preserved, including authored UV seams. Family morph positions are recalculated from the exact one-third African + one-third Asian + one-third Caucasian young macro target recipe for the corresponding sex. The fit metric is the distance from the source garment OBJ position to its family-shaped mapped position in hm08 units; it does not imply visual or pose acceptance.
+Each suit's MHCLO mapping uses exact original hm08 anchor IDs, barycentrics, and axis-scaled offsets. Every anchor is within source helper-tights vertex range 15328–18001. The source OBJ's vertex/UV corner pairs are preserved, including authored UV seams. The asset morph target names are `bodyMale` and `bodyFemale`; the actor adapter maps each exact source name to the corresponding native family morph (`bodyMasculine` / `bodyFeminine`) after checking the source name. Family morph positions are recalculated from the exact one-third African + one-third Asian + one-third Caucasian young macro target recipe for the corresponding sex. The fit metric is the distance from the source garment OBJ position to its family-shaped mapped position in hm08 units; it does not imply visual or pose acceptance.
 
 Each *-body-hide-map.json records the original MHCLO delete_verts IDs and conservatively hides a body quad only when all its four source vertex IDs are listed. The triangle IDs refer to the source body OBJ face order with each quad emitted as two fan triangles. This preserves partial boundary faces, so source-space verification does not guarantee no visible skin intersections. The female asset's MHCLO Y-offset range includes a minimum of −2.17955; inspect its waist/hem in the later native render.
 

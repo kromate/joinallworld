@@ -116,6 +116,9 @@ jobs:
           src/app/features/locate/badge.test.ts
           src/app/features/locate/locateComponents.test.ts
           src/app/features/travel/travelModel.test.ts
+          server/character.test.ts
+          server/social.test.ts
+          server/visit.test.ts
 
       - name: Existing directory and public discovery components
         run: >-
@@ -136,6 +139,7 @@ jobs:
           node --experimental-strip-types --test --test-concurrency=1
           deploy/trip-skip.edge.test.ts deploy/live.edge.test.ts
           deploy/admin.edge.test.ts deploy/ride-credit.edge.test.ts
+          deploy/visit.edge.test.ts
 
   full:
     if: github.event_name == 'workflow_dispatch' && inputs.full_checks

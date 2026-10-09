@@ -81,6 +81,7 @@ import { clip, glyphs } from './clip.ts';
 import { DIRECTORY_SCAN, PAGE_MAX, byNameOrder, cursorOf, directoryCache, firstAfter, newestFirst, pageLimit, readCursor } from './pages.ts';
 import type { Directory, DirectoryRow } from './pages.ts';
 import { playerIsAdmin } from '../admin/gate.ts';
+import { characterCity } from '../character.ts';
 import { forEachValue, scanKeys } from '../keyed.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, welcomeNote, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
@@ -693,7 +694,12 @@ function buildService(ctx: RouteContext) {
     const cityId = house?.guests[viewer]?.cityId ?? Object.values(house?.guests || {})[0]?.cityId ?? null;
     const role = viewer === hostId ? 'host' : house?.guests[viewer] ? 'guest' : 'none';
     const host = presence.status(hostId);
-    const hostStatus = host.state !== 'online' ? host.state : host.rooms.some((room) => describeRoom(room).hostId === hostId) ? 'home' : 'out';
+    const db = dbOf.get(s);
+    const hostSession = host.state === 'online' && db ? ctx.core.sessionByPublicId(db, hostId) : undefined;
+    const activeCity = hostSession ? characterCity(hostSession) : null;
+    const hostStatus = host.state !== 'online' ? host.state
+      : activeCity && visits.every(({ visit }) => visit.cityId === activeCity) && hostAtHome(s, hostId, activeCity)
+        ? 'home' : 'out';
     const capture = role === 'host' ? captureProjection(house?.captureRevision, visits, hostStatus === 'home', now()) : undefined;
     const ownVisit = house?.guests[viewer];
     return { host: pub(s, hostId), capacity: LIMITS.guests, guests, role, cityId, conv: guests.length && role !== 'none' ? `h.${hostId}` : null,

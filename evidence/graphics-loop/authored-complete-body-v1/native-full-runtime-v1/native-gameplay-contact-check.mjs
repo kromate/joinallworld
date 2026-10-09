@@ -128,7 +128,7 @@ try {
   const { prepareNativeSkinnedBody, NATIVE_PREPARED_POSE_COVERAGE, NATIVE_PREPARED_CONDITIONAL_CONTACT_COVERAGE } = await import(factoryUrl);
   assert.deepEqual(NATIVE_PREPARED_POSE_COVERAGE, ['idle', 'walk', 'interact', 'cook', 'eat', 'drink']);
   assert.deepEqual(NATIVE_PREPARED_CONDITIONAL_CONTACT_COVERAGE, {
-    poses: ['sit'], transitions: ['sit-enter', 'sit-exit', 'stairs-up', 'stairs-down'],
+    poses: ['sit', 'lie', 'soak', 'wash'], transitions: ['sit-enter', 'sit-exit', 'lie-down', 'get-up', 'soak-wash-enter', 'soak-wash-exit', 'shower-wash-enter', 'shower-wash-exit', 'stairs-up', 'stairs-down'],
   });
   const familyResults = [];
   for (const family of ['man', 'woman']) {

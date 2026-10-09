@@ -1,7 +1,7 @@
 name: Actual saved home interaction journey
 on:
   push:
-    branches: [codex/graphics-native-home-journey-v1]
+    branches: [codex/graphics-native-home-journey-v2]
 permissions:
   contents: read
 jobs:
@@ -17,7 +17,7 @@ jobs:
           node-version: 24
       - run: npm ci --no-audit --no-fund
       - name: Strict actual home scene journey graph
-        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json
+        run: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json
       - name: Actual saved home activity rules
         if: always()
         run: node --max-old-space-size=256 --experimental-strip-types --test --test-concurrency=1 src/game/home.test.ts

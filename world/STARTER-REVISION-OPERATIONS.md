@@ -26,3 +26,23 @@ If interrupted, resume with the same country and revision ID:
 Use `TZ` or `BW` in place of `SO` for the other reviewed corrections. Run one country at a time. Do not run the regular generator for that city while a revision is staged. Keep the version archive and original publication evidence. A completed source correction does not establish runtime, browser, production, or release admission; those checks remain with the release owner.
 
 Focused fixture coverage is in `world/tooling/test_revise_africa_starter.py`. It exercises CLI-level recovery at city and receipt publication boundaries, refuses a newer receipt before renaming the city, tests source-race and cache-only acquisition boundaries, and checks corrupt archive refusal. The release owner should run it after the native build/server slot is free; this task intentionally does not execute tests or real corrections.
+
+
+## Source pin version 2
+
+The current tool binds the starter generator, its imported geography compiler
+`build-playable-africa.py`, the publication helper and the revision tool itself.
+Loaded geography/publication bytes are checked at startup, during source
+validation and before/after compilation. A changed dependency refuses the
+operation before publication. Revision IDs include `sourcePinVersion: 2`.
+
+The three completed version-1 archives remain unchanged. Their original
+plan/apply/resume results and the independent coordinate/cache audit are
+historical evidence in `starter-extent-revisions-acceptance.json`; that record
+explicitly preserves version 1's missing transitive-compiler hash limitation.
+The current tool refuses version-1 archive resume rather than inventing missing
+pins. No completed city was regenerated to conceal that history. Fourteen
+isolated recovery/provenance fixtures pass, including dependency changes, exact
+revision-ID differences and legacy refusal. The first source-check admission
+returned75 while another owner held heavy1, so no test ran in that attempt.
+See `starter-revision-v2-acceptance.json` for the successful later window.

@@ -17,10 +17,76 @@ exec(compile(SCRIPT.read_bytes(), str(SCRIPT), "exec"), REV.__dict__)
 
 
 class RevisionPublicationTests(unittest.TestCase):
+    def test_transitive_compiler_sources_are_pinned_and_changes_refused(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve()
+            geography = root / "scripts/build-playable-africa.py"
+            publication = root / "world/atomic_starter_publication.py"
+            geography.parent.mkdir(parents=True)
+            publication.parent.mkdir(parents=True)
+            geography_bytes, publication_bytes = b"geography", b"publication"
+            geography.write_bytes(geography_bytes)
+            publication.write_bytes(publication_bytes)
+            overrides = {
+                "ROOT": root,
+                "GEOGRAPHY_COMPILER": geography,
+                "PUBLICATION_HELPER": publication,
+                "GEOGRAPHY_COMPILER_SOURCE_SHA256": hashlib.sha256(geography_bytes).hexdigest(),
+                "PUBLICATION_HELPER_SOURCE_SHA256": hashlib.sha256(publication_bytes).hexdigest(),
+            }
+            with patch.multiple(REV, **overrides):
+                self.assertEqual(REV.verify_loaded_compiler_sources(), {
+                    "geographyCompilerSha256": hashlib.sha256(geography_bytes).hexdigest(),
+                    "publicationHelperSha256": hashlib.sha256(publication_bytes).hexdigest(),
+                })
+                geography.write_bytes(b"changed geography")
+                with self.assertRaisesRegex(ValueError, "geographyCompilerSha256 changed"):
+                    REV.verify_loaded_compiler_sources()
+
+    def test_transitive_pins_change_revision_identity_and_reject_legacy_identity(self):
+        files = {name: name.encode() for name in REV.ASSET_NAMES}
+        after = {"files": {name: ("new-" + name).encode() for name in REV.ASSET_NAMES},
+                 "receipt": b"new receipt"}
+        pins = {"inventorySha256": "a" * 64}
+        legacy_id, _ = REV.revision_identity("TZ", "dar", files, b"old receipt", after, pins)
+        current_id, current_intent = REV.revision_identity("TZ", "dar", files, b"old receipt", after,
+                                                            {**pins, "geographyCompilerSha256": "b" * 64,
+                                                             "publicationHelperSha256": "c" * 64})
+        changed_id, _ = REV.revision_identity("TZ", "dar", files, b"old receipt", after,
+                                               {**pins, "geographyCompilerSha256": "d" * 64,
+                                                "publicationHelperSha256": "c" * 64})
+        self.assertEqual(current_intent["sourcePinVersion"], REV.REVISION_SOURCE_PIN_VERSION)
+        self.assertNotEqual(legacy_id, current_id)
+        self.assertNotEqual(current_id, changed_id)
+
+    def test_legacy_archive_without_transitive_pins_cannot_resume(self):
+        self.make_do_country_fixture()
+        revision = "a" * 64
+        stage = REV.REVISION_ROOT / "dar" / revision
+        REV.check_path_chain(stage, private=True, create=True)
+        (stage / "intent.json").write_text(json.dumps({"schemaVersion": 1, "revisionId": revision}))
+        with self.assertRaisesRegex(ValueError, "Legacy revision archive lacks transitive compiler pins"):
+            REV.do_country("TZ", "resume", revision)
+
     def fixture(self):
         temporary = tempfile.TemporaryDirectory()
         root = Path(temporary.name).resolve()
         REV.ROOT = root
+        geography_source = root / "scripts/world/build-playable-africa.py"
+        publication_source = root / "world/tooling/atomic_starter_publication.py"
+        geography_source.parent.mkdir(parents=True)
+        publication_source.parent.mkdir(parents=True)
+        geography_bytes, publication_bytes = b"geography fixture", b"publication fixture"
+        geography_source.write_bytes(geography_bytes)
+        publication_source.write_bytes(publication_bytes)
+        compiler_paths = {"GEOGRAPHY_COMPILER": geography_source,
+                          "PUBLICATION_HELPER": publication_source,
+                          "GEOGRAPHY_COMPILER_SOURCE_SHA256": hashlib.sha256(geography_bytes).hexdigest(),
+                          "PUBLICATION_HELPER_SOURCE_SHA256": hashlib.sha256(publication_bytes).hexdigest()}
+        for name, value in compiler_paths.items():
+            setter = patch.object(REV, name, value)
+            setter.start()
+            self.addCleanup(setter.stop)
         city = root / "src/game/cities/dar"
         receipt = root / "world/playable-africa-rollout/receipts/dar.json"
         city.parent.mkdir(parents=True)
@@ -111,6 +177,15 @@ class RevisionPublicationTests(unittest.TestCase):
         root = Path(temporary.name).resolve()
         REV.ROOT = root
         REV.REVISION_ROOT = root / ".cache/world-build/africa-starter-revisions"
+        geography_path = root / "scripts/world/build-playable-africa.py"
+        publication_path = root / "world/tooling/atomic_starter_publication.py"
+        geography_path.parent.mkdir(parents=True)
+        publication_path.parent.mkdir(parents=True)
+        geography_bytes, publication_bytes = b"fixture geography compiler", b"fixture publication helper"
+        geography_path.write_bytes(geography_bytes)
+        publication_path.write_bytes(publication_bytes)
+        geography_hash = REV.sha(geography_bytes)
+        publication_hash = REV.sha(publication_bytes)
         city = root / "src/game/cities/dar"
         receipt_path = root / "world/playable-africa-rollout/receipts/dar.json"
         city.mkdir(parents=True)
@@ -142,7 +217,9 @@ class RevisionPublicationTests(unittest.TestCase):
         new_receipt = {**old_receipt, "assets": REV.pin_map(after), "bounds": [1, 2, 3, 4]}
         new_receipt_raw = (json.dumps(new_receipt, separators=(",", ":")) + "\n").encode()
         source_pins = {"inventorySha256": inventory_hash, "osm": {"sourceOsm": "d" * 64,
-                       "sourceReceipt": "e" * 64, "requestLedger": "f" * 64}}
+                       "sourceReceipt": "e" * 64, "requestLedger": "f" * 64},
+                       "geographyCompilerSha256": geography_hash,
+                       "publicationHelperSha256": publication_hash}
         row = {"iso2": "TZ", "country": "Tanzania", "admin0Geometry": geometry}
         source_info = osm
         def fake_verify(_country, _old_receipt):
@@ -154,7 +231,11 @@ class RevisionPublicationTests(unittest.TestCase):
                                        "airportCandidate": airport, "naturalEarth": geometry,
                                        "osm": {"url": osm["url"], "bytes": osm["bytes"], "sha256": osm["sha256"]},
                                        "jubaSelection": None}}
-        patches = [patch.object(REV, "verify_source_inputs", side_effect=fake_verify),
+        patches = [patch.object(REV, "GEOGRAPHY_COMPILER", geography_path),
+                   patch.object(REV, "PUBLICATION_HELPER", publication_path),
+                   patch.object(REV, "GEOGRAPHY_COMPILER_SOURCE_SHA256", geography_hash),
+                   patch.object(REV, "PUBLICATION_HELPER_SOURCE_SHA256", publication_hash),
+                   patch.object(REV, "verify_source_inputs", side_effect=fake_verify),
                    patch.object(REV, "capture_compile", return_value=compiled),
                    patch.object(REV.GEN, "verify_assets", return_value=None),
                    patch.object(REV.PUB, "publication_lease", side_effect=lambda *_a, **_kw: nullcontext())]
@@ -263,6 +344,21 @@ class RevisionPublicationTests(unittest.TestCase):
             self.assertEqual(result["sourceIdentity"], {"source": info})
         finally:
             REV.GEN.main = original_main
+
+    def test_transitive_compiler_change_after_compile_refuses_publication(self):
+        city, _receipt, _old_receipt, _new_receipt, before, _after, fixture_patches = self.make_do_country_fixture()
+        try:
+            compile_once = REV.capture_compile
+            def mutate_after_compile(*args):
+                result = compile_once(*args)
+                REV.GEOGRAPHY_COMPILER.write_bytes(b"changed after compile")
+                return result
+            with patch.object(REV, "capture_compile", side_effect=mutate_after_compile):
+                with self.assertRaisesRegex(ValueError, "geographyCompilerSha256 changed"):
+                    REV.do_country("TZ", "plan")
+            self.assertEqual({name: (city / name).read_bytes() for name in REV.ASSET_NAMES}, before)
+        finally:
+            for item in reversed(fixture_patches): item.stop()
 
     def test_corrupt_archive_marker_refuses_resume(self):
         city, _receipt, _old_receipt, _new_receipt, before, _after, _fixture_patches = self.make_do_country_fixture()

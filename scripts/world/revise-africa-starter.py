@@ -19,6 +19,8 @@ import io
 
 ROOT = Path(__file__).resolve().parents[2]
 GENERATOR = ROOT / "scripts/world/build-africa-starters.py"
+GEOGRAPHY_COMPILER = ROOT / "scripts/world/build-playable-africa.py"
+PUBLICATION_HELPER = ROOT / "world/tooling/atomic_starter_publication.py"
 REVISION_ROOT = ROOT / ".cache/world-build/africa-starter-revisions"
 ALLOWED = {"TZ": "dar", "BW": "gaborone", "SO": "mogadishu"}
 ASSET_NAMES = ("facts.ts", "geometry.ts", "index.ts", "content.ts", "map.ts")
@@ -32,8 +34,13 @@ MAX_TOTAL_ASSET_BYTES = 24 * 1024 * 1024
 MAX_OUTLINE_PARTS = 4
 MAX_TOTAL_OUTLINE_BYTES = 8 * 1024 * 1024
 MAX_ARCHIVE_BYTES = 3 * MAX_TOTAL_ASSET_BYTES + 3 * MAX_RECEIPT_BYTES + MAX_INTENT_BYTES + 16 * 1024
+REVISION_SOURCE_PIN_VERSION = 2
 GENERATOR_SOURCE_BYTES = GENERATOR.read_bytes()
 GENERATOR_SOURCE_SHA256 = hashlib.sha256(GENERATOR_SOURCE_BYTES).hexdigest()
+GEOGRAPHY_COMPILER_SOURCE_BYTES = GEOGRAPHY_COMPILER.read_bytes()
+GEOGRAPHY_COMPILER_SOURCE_SHA256 = hashlib.sha256(GEOGRAPHY_COMPILER_SOURCE_BYTES).hexdigest()
+PUBLICATION_HELPER_SOURCE_BYTES = PUBLICATION_HELPER.read_bytes()
+PUBLICATION_HELPER_SOURCE_SHA256 = hashlib.sha256(PUBLICATION_HELPER_SOURCE_BYTES).hexdigest()
 
 
 def load_generator():
@@ -45,8 +52,8 @@ def load_generator():
 
 GEN = load_generator()
 PUB = ModuleType("africa_starter_revision_publication")
-PUB.__file__ = str(ROOT / "world/tooling/atomic_starter_publication.py")
-exec(compile(Path(PUB.__file__).read_bytes(), PUB.__file__, "exec"), PUB.__dict__)
+PUB.__file__ = str(PUBLICATION_HELPER)
+exec(compile(PUBLICATION_HELPER_SOURCE_BYTES, PUB.__file__, "exec"), PUB.__dict__)
 
 
 def canonical(value):
@@ -55,6 +62,20 @@ def canonical(value):
 
 def sha(raw):
     return hashlib.sha256(raw).hexdigest()
+
+
+def verify_loaded_compiler_sources():
+    pins = {
+        "geographyCompilerSha256": (GEOGRAPHY_COMPILER, GEOGRAPHY_COMPILER_SOURCE_SHA256),
+        "publicationHelperSha256": (PUBLICATION_HELPER, PUBLICATION_HELPER_SOURCE_SHA256),
+    }
+    verified = {}
+    for name, (path, expected) in pins.items():
+        current = sha(safe_read(path, 2 * 1024 * 1024, name))
+        if current != expected:
+            raise ValueError(f"{name} changed after the compiler source was loaded")
+        verified[name] = current
+    return verified
 
 
 def safe_read(path, limit, label):
@@ -108,6 +129,10 @@ def check_path_chain(path, *, private=False, create=False):
         if private and owned_private and (info.st_uid != os.geteuid() or stat.S_IMODE(info.st_mode) & 0o077):
             raise ValueError(f"Revision staging directory must be current-user-owned and private: {current}")
     return path
+
+
+# Fail at startup if either transitive dependency changed while the generator loaded it.
+verify_loaded_compiler_sources()
 
 
 def write_prefix(path, expected, limit, *, mode=0o644):
@@ -274,7 +299,8 @@ def revision_identity(country, city, before_files, before_receipt, after, source
     identity = {"countryIso2": country, "cityId": city}
     before = {"assets": pin_map(before_files), "receipt": {"bytes": len(before_receipt), "sha256": sha(before_receipt)}}
     after_pins = {"assets": pin_map(after["files"]), "receipt": {"bytes": len(after["receipt"]), "sha256": sha(after["receipt"])} }
-    core = {"schemaVersion": 1, "identity": identity, "before": before, "after": after_pins, "sourcePins": source_pins}
+    core = {"schemaVersion": 1, "sourcePinVersion": REVISION_SOURCE_PIN_VERSION,
+            "identity": identity, "before": before, "after": after_pins, "sourcePins": source_pins}
     revision_id = sha(canonical(core))
     return revision_id, {**core, "revisionId": revision_id}
 
@@ -502,9 +528,11 @@ def verify_source_inputs(country, old_receipt):
     current_generator_hash = sha(safe_read(GENERATOR, 2 * 1024 * 1024, "generator source"))
     if current_generator_hash != GENERATOR_SOURCE_SHA256:
         raise ValueError("Generator source changed after this revision process loaded it")
+    compiler_pins = verify_loaded_compiler_sources()
     source_pins = {"inventorySha256": sha(inventory_raw), "osm": cache_pins,
                    "pointSha256": sha(point_raw), "outlines": outline_pins,
                    "generatorSha256": current_generator_hash,
+                   **compiler_pins,
                    "revisionToolSha256": sha(safe_read(Path(__file__), 2 * 1024 * 1024, "revision tool source"))}
     return row, place, timezone, airport, identity, osm_raw, source_info, source_pins
 
@@ -526,6 +554,8 @@ def _do_country(country, mode, revision_id=None):
             check_path_chain(stage, private=True)
             intent_raw = safe_read(stage / "intent.json", MAX_INTENT_BYTES, "revision intent")
             intent = json.loads(intent_raw)
+            if intent.get("sourcePinVersion") != REVISION_SOURCE_PIN_VERSION:
+                raise ValueError("Legacy revision archive lacks transitive compiler pins and cannot be resumed")
             if intent.get("schemaVersion") != 1 or intent.get("revisionId") != revision_id:
                 raise ValueError("Revision archive identity does not match the requested revision ID")
             before_files, before_receipt = read_snapshot(stage, "before", "receipt.json")
@@ -543,7 +573,9 @@ def _do_country(country, mode, revision_id=None):
             verify_receipt_asset_pins(old_receipt_obj, before_files)
         else:
             GEN.verify_assets(old_receipt_obj, row, place, airport, identity, sha(safe_read(GEN.DATA / "inventory.json", GEN.MAX_SELECTION_BYTES, "pinned inventory")), output_root=city_path.parent)
+        verify_loaded_compiler_sources()
         compiled = capture_compile(country, raw, source_info)
+        verify_loaded_compiler_sources()
         if compiled["identity"] != {"countryIso2": country, "cityId": city, "generationIdentity": identity}:
             raise ValueError("Revised compiler receipt identity changed unexpectedly")
         new_receipt = json.loads(compiled["receipt"])

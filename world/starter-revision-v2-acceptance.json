@@ -1,0 +1,36 @@
+{
+  "format": "world-starter-revision-v2-source-acceptance",
+  "checkedAt": "2026-10-09T21:46:54.227349+00:00",
+  "status": "passed",
+  "tests": 14,
+  "elapsedSeconds": 0.34,
+  "logSha256": "7badb6910fcfc46910edcf1df8d5fc79e6c3a96fcd0cc7f28f1ce8590c81946b",
+  "sourceFiles": [
+    {
+      "path": "scripts/world/revise-africa-starter.py",
+      "sha256": "7f85de8969c4965d290b50b4030678d2582e8ce6dab6e661e08b92bb9bb0441b",
+      "bytes": 37578
+    },
+    {
+      "path": "world/tooling/test_revise_africa_starter.py",
+      "sha256": "e00be91a4de0cdb994a6aa5891ca4e49d43e1eb0e41b39fb34fe2f3982659978",
+      "bytes": 22933
+    }
+  ],
+  "sourcePinVersion": 2,
+  "loadedDependencies": [
+    "scripts/world/build-playable-africa.py",
+    "world/tooling/atomic_starter_publication.py"
+  ],
+  "previousAdmission": {
+    "exit": 75,
+    "testsExecuted": false,
+    "reason": "actual Integration heavy1 typecheck holder"
+  },
+  "actualCityOrLedgerWrites": false,
+  "completedV1ArchivesPreserved": true,
+  "limitations": [
+    "V2 source/recovery fixtures only; existing three actual corrections used recordedV1.",
+    "No runtime or production registration."
+  ]
+}

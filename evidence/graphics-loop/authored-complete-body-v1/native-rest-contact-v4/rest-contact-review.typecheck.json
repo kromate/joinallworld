@@ -1,0 +1,15 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client"]
+  },
+  "include": [
+    "rest-contact-review.ts",
+    "home-rest-props.ts",
+    "native-rest-contact.ts",
+    "rest-pose-adapter.ts",
+    "native-full-runtime-v4/native-full-runtime.ts",
+    "native-full-runtime-v4/native-prepared-factory.ts"
+  ]
+}

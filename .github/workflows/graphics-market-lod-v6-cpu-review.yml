@@ -1,0 +1,56 @@
+name: Market LOD v6 CPU package diagnostic
+
+on:
+  push:
+    branches:
+      - codex/graphics-market-lod-v6-cpu-review
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-lod-v6-cpu-package-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    name: Pinned v6 static browser fixture package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact diagnostic branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Verify immutable input snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 948055e5944817a264bbcd2ae2339e222183c92bf896c008b6f8df1438374c04
+        run: >-
+          node evidence/graphics-loop/crowd-lod-market-v6/remote-ci-reviewed-v1/verify-snapshot.mjs
+          "$EXPECTED_SNAPSHOT_SHA256"
+
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Package browser fixture under 96 MiB heap and 220 MiB process-group guard
+        env:
+          EXPECTED_SNAPSHOT_SHA256: 948055e5944817a264bbcd2ae2339e222183c92bf896c008b6f8df1438374c04
+        run: python3 evidence/graphics-loop/crowd-lod-market-v6/remote-ci-reviewed-v1/run-bounded-linux.py
+
+      - name: Upload package, input manifest, log, and guard receipt even after failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crowd-lod-market-v6-cpu-package-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v6/remote-ci-reviewed-v1/snapshot-files.json
+            evidence/graphics-loop/crowd-lod-market-v6/remote-ci-reviewed-v1/remote-results/*
+            evidence/graphics-loop/crowd-lod-market-v6/static-fixture-market-gpu-v6/**
+          if-no-files-found: warn
+          retention-days: 14

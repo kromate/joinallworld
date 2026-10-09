@@ -268,6 +268,30 @@ compiler/runtime build. This builder-only source phase has no production artifac
 upload. Persistent ownership/reconciliation, supervised ingestion/fenced campaign
 completion, country geometry and eventual verified phone-visible detail remain next.
 
+## WORLD verified-capture ingestion — 9 October 2026
+
+Implementation ef4ca355 and acceptance71326ac4 merge docs-only main317de413
+through eeaea9c3 without conflicts. Actual178 Python/23 guarded engine/5 clean
+committed-source policy checks and full World TypeScript pass. Fixed raw-input
+descriptors are readonly, bounded and hashed before any SQL; both permanent leases
+survive exec. Two cached Dakar captures conserve2,283 ordinals/1,810 versions;
+fresh workers raw-replay without duplicate versions. Actual SIGKILL after COMMIT
+retains nonempty WAL, recovered by exact raw replay in a fresh worker. All three
+crash boundaries preserve one reservation and the same database inode. Nine
+protected current capture/ledger files and all877 historical pins remain unchanged.
+
+All WORLD handles are terminal; no owned browser/server/upload. The compiler's
+384MiB heap turn used442,171,392B maxRSS and followed GRAPHICS/LIVING terminal
+handoffs. Heavy1 and existing caps remain; no concurrent memory expansion. LIVING
+may take the next serial canonical typecheck turn at existing limits after checking
+pressure. WORLD does not edit shared Vite configuration or adopt its candidate.
+
+This phase is builder code, not production map detail. Actual acquisition,
+campaign/output/Nigeria/game data remain unchanged; no World runtime upload.
+Supervised admission and persistent per-index capture attempt/input ownership,
+fenced campaign completion, independent raw/index audit and full-country owned
+geometry/sharding/streaming remain next. The full objective is not complete.
+
 ## WORLD persistent fixed-registry recovery — 9 October 2026
 
 Implementationc38bac61 and acceptance d77cacf6 merge coordination-only main716da1de

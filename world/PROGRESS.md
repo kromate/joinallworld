@@ -63,6 +63,13 @@ data filter are checked. Owned archive/checkout are removed; actual caches are
 preserved. Receipt `feature-index-ingest-clean-policy-v1.{json,tap,stderr}`.
 This is **206 focused checks plus compiler**, not a full runtime release.
 
+Acceptance71326ac4 merges latest fetched docs-only main317de413 (including
+GRAPHICS86519377) as eeaea9c3 without conflicts. Incoming changes touch only
+docs/AGENT-COORDINATION.md; the complete accepted source/test pins are rechecked
+before publication, so no redundant compiler/fixture rerun is claimed. Primary
+dirty graphics and all owner services are preserved. Source publication is a
+coordinated main checkpoint; no runtime upload or new country-detail coverage.
+
 **Next:** implement actual supervised namespace admission and persistent per-index
 capture attempt/input ownership using the fixed registry recovery records, then
 validate/fence frozen campaign observations and completion. Independently conserve

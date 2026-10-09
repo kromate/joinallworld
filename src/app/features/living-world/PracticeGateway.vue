@@ -10,6 +10,7 @@ const child = ref<PanelExposed | null>(null)
 const driving = defineAsyncComponent(() => import('./DrivingApp.vue'))
 const barber = defineAsyncComponent(() => import('./BarberApp.vue'))
 const clerk = defineAsyncComponent(() => import('./ClerkApp.vue'))
+const justice = defineAsyncComponent(() => import('./JusticeApp.vue'))
 const unavailable: Component = defineComponent({
   name: 'PracticeGatewayUnavailable',
   setup: () => () => null,
@@ -20,6 +21,7 @@ const practiceView = computed<Component>(() => {
     case 'driving-practice': return driving
     case 'barber-practice': return barber
     case 'clerk-practice': return clerk
+    case 'justice-practice': return justice
     default: return unavailable
   }
 })

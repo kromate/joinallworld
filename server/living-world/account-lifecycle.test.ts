@@ -120,6 +120,36 @@ function accountIdFromStored(db: Json): string {
   assert.ok(account?.id)
   return account.id
 }
+test('justice training receipts survive guest adoption and keep-as-guest deletion without leaking answers', async t => {
+  const a = await accountHarness(t), guest = await a.guest('Justice trainee')
+  const path = '/api/living-world/justice-practice'
+  const begun = await (await a.f.request(path + '/start', { cityId: 'lagos', requestId: a.f.id() }, guest.cookie)).json() as { ok: boolean; revision: number }
+  assert.equal(begun.ok, true)
+  const input = await (await a.f.request(path + '/step', { cityId: 'lagos', requestId: a.f.id(), expectedRevision: begun.revision,
+    action: { kind: 'inspect', evidenceId: 'dispatch-copy' } }, guest.cookie)).json() as { ok: boolean; revision: number }
+  assert.equal(input.ok, true)
+  const readRow = () => a.f.server.store.read(db => snapshot((db.livingWorld as { justicePractice: Record<string, Record<string, unknown>> }).justicePractice[guest.id]!))
+  const before = await readRow()
+  const linked = await a.signIn('UidJustice', guest.cookie)
+  assert.deepEqual([linked.status, linked.body.outcome, linked.body.character?.id], [200, 'linked', guest.id])
+  const adopted = await readRow()
+  assert.equal(adopted.account, accountIdFromStored(await a.stored()))
+  assert.deepEqual(omitAccount(adopted), omitAccount(before))
+  const exported = await a.proved('/api/account/export', {}, linked.cookie, 'UidJustice')
+  assert.equal(exported.status, 200)
+  const summary = await exported.json() as { livingWorld: { actors: { justicePractice: unknown }[] } }
+  assert.deepEqual(summary.livingWorld.actors[0]?.justicePractice, { status: 'present', progress: { scenarioVersion: 1,
+    phase: 'inspect-initial', revision: 1, trainingComplete: false, updatedAt: before.updatedAt } })
+  assert.doesNotMatch(JSON.stringify(summary.livingWorld), /dispatch-copy|reasonEvidenceIds|requestId|receipts/)
+  const deleted = await a.proved('/api/account/delete', { confirm: 'delete', erase: false }, linked.cookie, 'UidJustice')
+  assert.equal(deleted.status, 200)
+  const guestCookie = deleted.headers.get('set-cookie')?.split(';')[0] ?? ''
+  assert.ok(guestCookie)
+  assert.deepEqual(await readRow(), before)
+  const current = await (await a.f.request(path + '?city=lagos', null, guestCookie)).json() as { ok: boolean; revision: number }
+  assert.deepEqual([current.ok, current.revision], [true, 1])
+})
+
 test('guest adoption, parked-character switch, and keep-as-guest deletion retain only the chosen character progress', async t => {
   const a = await accountHarness(t)
   const ada = await a.guest('Ada')

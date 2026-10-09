@@ -161,6 +161,17 @@ jobs:
           src/campus/unilag/scene.test.ts
           src/campus/unilag/walk.test.ts
 
+      - name: Active learning HTTP, privacy and lifecycle checks
+        run: >-
+          node --experimental-strip-types --test --test-concurrency=1
+          src/game/living-world/justice-practice.test.ts
+          server/living-world/justice-practice-service.test.ts
+          server/living-world/justice-privacy.test.ts
+          server/living-world/account-lifecycle.test.ts
+          src/app/features/living-world/justiceReply.test.ts
+          src/app/features/living-world/justiceIdentity.test.ts
+          src/campus/unilag/assessment-practice.test.ts
+
       - name: Existing shopping, housing and career checks
         run: >-
           node --experimental-strip-types --test --test-concurrency=1

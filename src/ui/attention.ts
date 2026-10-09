@@ -47,7 +47,7 @@ export interface ViewSize { width: number; height: number }
 export interface CoachChip { kind: string; step: number; of: number; title: string; hint: string; go?: readonly string[] | null; activity?: string; open?: string }
 /** What nextStep reads of the player's state, the view and the screen. Every part is optional: a missing one means "nothing to say". */
 export interface StepContext {
-  state?: { location?: string; spot?: string | null; activeAction?: { kind?: string } | null } | null;
+  state?: { location?: string; spot?: string | null; activeAction?: { kind?: string; teaching?: unknown } | null } | null;
   view?: {
     connected?: boolean;
     onboarding?: { required?: boolean } | null;

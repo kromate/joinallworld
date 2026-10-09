@@ -12,6 +12,7 @@ import { STORAGE_KEY } from './storage-key.ts';
 import { createLife, hasAction, isDeparting } from './life.ts';
 import { lifeCities, loadLifeCities } from './game/cities/lifeCities.ts';
 import { campusFor } from './game/campus-gate.ts';
+import { teachingFor } from './game/teaching-gate.ts';
 import type { LifeState } from './types/life.ts';
 import type { ActionRequest, ActionResponse, ApiEnvelope, CityId, LifeResponse, OwnSession, SessionRequest, SessionResponse, TimedId } from './types/protocol.ts';
 
@@ -243,10 +244,14 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   let snapshotOwner = typeof saved?.ownerId === 'string' && saved.ownerId ? saved.ownerId : null
   let snapshotPhase: SnapshotPhase = saved?.identity ? 'unconfirmed' : 'preview'
   let snapshotGeneration = 0, connectGeneration = 0
-  const savedSnapshotGeneration = snapshotGeneration, savedWaiting = loadCampus(saved?.state)
+  const featureRules = (snapshot: unknown) => {
+    const campus = loadCampus(snapshot), teaching = teachingFor(snapshot)
+    return campus && teaching ? Promise.all([campus, teaching]) : campus || teaching
+  }
+  const savedSnapshotGeneration = snapshotGeneration, savedWaiting = featureRules(saved?.state)
   let cachedStateReady = !savedWaiting
   const client: Client = {
-    // A saved life that uses the campus waits for the campus rules (below); until then the device shows a new one.
+    // A saved life waits for any campus or teaching rules it uses; until then the device shows a new one.
     state: createLife(savedWaiting ? null : saved?.state, { cityId }),
     cityId,
     identity: { name: saved?.identity?.name || cityDefaultName(cityId) },
@@ -270,7 +275,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   let identityGeneration = 0;
   const routeCooldowns = new Map<string, { until: number; attempts: number }>()
   let coreCooldown = { until: 0, attempts: 0 }
-  // A saved life that uses the campus is rebuilt as soon as the campus rules have arrived, unless the server has answered first.
+  // Rebuild a saved life after its feature rules arrive, unless the server has answered first.
   if (savedWaiting) void savedWaiting.then(() => {
     if (accepted || snapshotGeneration !== savedSnapshotGeneration || snapshotOwner === null || snapshotOwner !== saved?.ownerId || snapshotPhase === 'unavailable') return
     try {
@@ -363,7 +368,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   let waking: Promise<boolean> | null = null;
   let catching: Promise<void> | null = null;
   /**
-   * Rebuild `next` (it waits first for the campus rules when the life uses the campus and they are not loaded yet) and take
+   * Rebuild `next` after any campus or teaching rules it uses have loaded, and take
    * it as the life. `rev` is the answer's revision and `askedAt` the value of `taken` when it was asked for; an answer
    * that a newer one overtook is dropped (false).
    */
@@ -372,7 +377,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (!responseCurrent() || overtaken()) return false;
     await loadLife(next, [client.cityId]); // every city the life refers to, before it is rebuilt
     if (!responseCurrent()) return false;
-    const waiting = loadCampus(next);
+    const waiting = featureRules(next);
     if (waiting) await waiting;
     if (!responseCurrent() || overtaken()) return false;
     const stamp = (next as { t?: unknown } | null | undefined)?.t;

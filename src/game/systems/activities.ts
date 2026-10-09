@@ -1,5 +1,6 @@
 import { contentFor, jobFor, publicArrivalVenue, venuesFor, venueFor } from '../cities/runtime.ts';
 import { readTeachingPractice } from '../living-world/teaching-state.ts';
+import { readTeachingSnapshot } from '../teaching-gate.ts';
 /**
  * OWNER: foundation (core — do not edit from a feature branch)
  * Generic data-driven activity engine. Venue spots, job shifts and home furniture all run
@@ -313,7 +314,7 @@ const shown = {
     const marked = Object.hasOwn(value, 'teaching') || Object.hasOwn(value, 'teachingGeneration');
     let teaching: ReturnType<typeof readTeachingPractice> = null;
     if (marked) {
-      teaching = readTeachingPractice(value.teaching);
+      teaching = PLAYS ? readTeachingPractice(value.teaching) : readTeachingSnapshot(value.teaching);
       // A read-only browser can show its cached server session; only playing hosts import reward authority.
       if (PLAYS && ctx.trustedSave !== true || def.careerTrack !== 'teaching' || !teaching || teaching.stage === 'complete'
         || !safeCount(value.teachingGeneration) || value.teachingGeneration < 1

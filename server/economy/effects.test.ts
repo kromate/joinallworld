@@ -6,7 +6,7 @@ import { join } from 'node:path'
 import { loadCityContent } from '../../src/game/cities/registry.ts'
 import { JOBS } from '../../src/game/content/jobs.ts'
 import { makeContext } from '../../src/game/util.ts'
-import { advanceLife, createLife } from '../../src/life.ts'
+import { advanceLife, createLife, dispatch } from '../../src/life.ts'
 import { applyLifeAction, settleCity } from '../life-service.ts'
 import { createStore } from '../store.ts'
 import type { SessionRecord } from '../types.ts'
@@ -43,16 +43,39 @@ test('Node abort drops cash and effects; retry commits exactly one effect and fo
 test('a real completed shift counts and displays only cash the wallet actually credited', async () => {
   await loadCityContent('lagos')
   const job = JOBS.teaching, shift = job.shift, now = Date.UTC(2026, 0, 5, 8)
-  const running = (cash: number) => createLife({ t: now, cash, job: job.id, location: job.workplace.venue, spot: job.workplace.spot,
-    activeAction: { kind: 'activity', id: shift.id, duration: shift.duration, remaining: 1 } }, makeContext({ now, cityId: 'lagos', seed: `shift-${cash}` }))
+  const running = (cash: number) => {
+    const context = makeContext({ now, cityId: 'lagos', seed: `shift-${cash}` })
+    const state = createLife({ t: now, cash, job: job.id, location: job.workplace.venue, spot: job.workplace.spot }, context)
+    const started = dispatch(state, { type: 'activity', payload: { id: shift.id } }, context)
+    assert.equal(started.ok, true)
+    return state
+  }
+  const complete = (state: ReturnType<typeof running>, seed: string) => {
+    const finishedAt = now + shift.duration * 1000
+    advanceLife(state, shift.duration, makeContext({ now: finishedAt, cityId: 'lagos', seed: `${seed}-timer` }))
+    const answers = [
+      ['diagnose', 'denominator-count'],
+      ['explain', 'same-whole-pieces'],
+      ['check', 'one-fifth'],
+    ] as const
+    for (const [stage, choice] of answers) {
+      const active = state.activeAction
+      assert.ok(active?.kind === 'activity' && active.id === shift.id && active.teaching)
+      const result = dispatch(state, { type: 'career.teach', payload: {
+        generation: active.teachingGeneration, revision: active.teaching.revision, stage, choice,
+      } }, makeContext({ now: finishedAt, cityId: 'lagos', seed: `${seed}-${stage}` }))
+      assert.equal(result.ok, true, `${stage} answer completes the authored lesson`)
+    }
+    assert.equal(state.activeAction, null)
+  }
   const full = running(Number.MAX_SAFE_INTEGER)
-  advanceLife(full, 1, makeContext({ now: now + 1000, cityId: 'lagos', seed: 'full-shift' }))
+  complete(full, 'full-shift')
   assert.equal(full.cash, Number.MAX_SAFE_INTEGER)
   assert.equal(full.social.earned, 0)
   assert.equal(full.ledger.some(line => line.reason === shift.label), false)
   assert.doesNotMatch(full.message, /earned ₦3,000/)
   const ordinary = running(5000)
-  advanceLife(ordinary, 1, makeContext({ now: now + 1000, cityId: 'lagos', seed: 'ordinary-shift' }))
+  complete(ordinary, 'ordinary-shift')
   assert.equal(ordinary.cash, 8000)
   assert.equal(ordinary.social.earned, 3000)
   assert.equal(ordinary.ledger.at(-1)?.amount, 3000)

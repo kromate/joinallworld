@@ -167,6 +167,8 @@ jobs:
         run: >-
           node --experimental-strip-types --test --test-concurrency=1
           src/game/living-world/teaching-practice.test.ts
+          src/game/teaching-gate.test.ts
+          src/game/browser-profile.test.ts
           src/game/teaching-career.test.ts
           src/game/career.test.ts
           server/teaching-career.test.ts

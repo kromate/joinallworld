@@ -1,0 +1,47 @@
+name: Market LOD v8 phase-stable diagnostic CPU package v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-lod-v8-phase-stable-cpu-review-v2
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-lod-v8-phase-stable-cpu-package-v2-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify exact phase-stable v2 recipe snapshot
+        env:
+          EXPECTED_SNAPSHOT_SHA256: b9741c79c205c688db84f38ebebd32d46db3c529bcf274ca1df3b273ac162d84
+        run: node evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v2/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify complete runtime and direct type import closure
+        run: node evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v2/verify-import-closure.mjs
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Build phase-stable package under bounded process group
+        env:
+          EXPECTED_SNAPSHOT_SHA256: b9741c79c205c688db84f38ebebd32d46db3c529bcf274ca1df3b273ac162d84
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v2/run-bounded-linux.py
+      - name: Preserve package and receipt on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-lod-v8-phase-stable-cpu-package-v2-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v2/static-fixture-market-gpu-v8-phase-stable-v2/**
+            evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v2/remote-ci-reviewed-v2/remote-results/**
+          if-no-files-found: warn

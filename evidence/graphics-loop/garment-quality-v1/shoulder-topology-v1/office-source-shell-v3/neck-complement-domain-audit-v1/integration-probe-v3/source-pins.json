@@ -1,0 +1,23 @@
+{
+  "status": "prepared-for-root-review-not-published",
+  "purpose": "Distinct v3 recipe fixes the v2 browser child environment contract; geometry/domain candidate is unchanged and remains unaccepted.",
+  "frozenV2": {
+    "snapshotManifestSha256": "0c18fa49cf95bc10699ed93e364254ade2eae004d9069626b2f45bb8f6cb56a6",
+    "runId": 37905711660,
+    "result": "build and synthetic tests passed; browser child failed before Chrome startup",
+    "failure": "review-cdp.mjs rejected missing RESULT_DIR; run-bounded-linux.mjs created resultDir but omitted it from child environment",
+    "preservedArtifact": "../integration-probe-v2/remote-ci-v2/downloaded-37905711660/browser.log"
+  },
+  "contractFix": {
+    "helper": "remote-ci-v3/browser-result-contract.mjs",
+    "test": "remote-ci-v3/browser-result-contract.test.mjs",
+    "behavior": "runner passes an explicit absolute per-run RESULT_DIR only for browser mode; controller uses browser-artifacts/ for images and browser-stages.jsonl beside run receipts"
+  },
+  "geometryCandidateSha256": "2b8531fbc97c87f351fa2085ec1a15b9ac193ba35571d08eb6a7a498c85dcb76",
+  "originalProductionGeometrySha256": "1b2dbfc4dd9557b6216eceb01ddd5f9bcf4119e48788a220589444902d5458ec",
+  "originalProductionRendererSha256": "4b053592fdc8efdad0e9cd5071cb853594c2db53829cd74116bf578f439f82da",
+  "maleBodyGlbSha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+  "femaleBodyGlbSha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+  "clipPackSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
+  "execution": "No v3 browser/build/synthetic run has occurred. This file records pins and the v2 failure cause only; it does not claim geometry or visual acceptance."
+}

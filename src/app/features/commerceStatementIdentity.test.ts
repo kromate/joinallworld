@@ -3,7 +3,7 @@ import { after, before, test } from 'node:test'
 import { fileURLToPath } from 'node:url'
 import { createServer } from 'vite'
 import type { ViteDevServer } from 'vite'
-import { createRenderer, nextTick } from 'vue'
+import { createRenderer, nextTick, ssrContextKey } from 'vue'
 import type { Component } from 'vue'
 import type { ApiOptions } from '../../client.ts'
 import type { ApiEnvelope, OwnSession } from '../../types/protocol.ts'
@@ -79,7 +79,11 @@ function fakeApi(handler: (path: string, options: ApiOptions | undefined, curren
 
 function mount(component: Component, props: Record<string, unknown> = {}) {
   const target = root()
-  const instance = renderer.createApp(component, props)
+  // Vite's SSR-loaded SFC setup calls useSSRContext() to register its module. This harness runs
+  // the real setup/lifecycle/watchers without claiming to render the SSR-only template output.
+  const setupOnly = Object.assign({}, component, { render: () => null }) as Component
+  const instance = renderer.createApp(setupOnly, props)
+  instance.provide(ssrContextKey, { modules: new Set<string>() })
   instance.mount(target)
   const internals = (instance as unknown as { _instance: { setupState: Record<string, unknown> } })._instance
   assert.ok(internals?.setupState, 'the actual component setup state is mounted')

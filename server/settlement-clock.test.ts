@@ -46,6 +46,25 @@ function settledUpgradeProbe(clock: { now: number }): RouteModule {
   })
 }
 
+async function settledDevice(f: Awaited<ReturnType<typeof fixture>>, name: string): Promise<{ cookie: string }> {
+  const opened = await f.request('/api/session', { name, onboarding: true })
+  assert.equal(opened.status, 200)
+  const cookie = opened.headers.get('set-cookie')?.split(';')[0]
+  assert.ok(cookie, 'the normal onboarding session receives its server cookie')
+  await f.request('/api/life?city=lagos', null, cookie)
+  const act = (type: string, payload: Record<string, unknown>) => f.action(cookie, { type, payload })
+  const look = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', skin: 'skin-4', hairColor: 'black', outfitColor: 'blue', bottomsColor: 'navy' }
+  assert.equal((await act('onboarding.quick-start', { look })).code, 'playing')
+  assert.equal((await act('onboarding.traits', { traits: ['musical', 'clean-pikin'] })).code, 'traits_saved')
+  assert.equal((await act('onboarding.dream', { dream: 'afrobeats-star' })).code, 'dream_saved')
+  const lottery = await act('onboarding.lottery', {})
+  assert.equal(lottery.code, 'rolled')
+  const house = lottery.state.onboarding.lottery?.id === 'ajebutter' ? 'lekki' : 'yaba'
+  const completed = await act('onboarding.home', { house })
+  assert.deepEqual([completed.code, completed.state.onboarding.done, completed.state.onboarding.stage], ['life_started', true, 'settled'])
+  return { cookie }
+}
+
 test('settled action timestamps, pending upgrades and action receipts survive a Node host restart', async t => {
   await loadCityContent('lagos')
   const clock = { now: 100_000, tickOnRead: false }
@@ -56,8 +75,7 @@ test('settled action timestamps, pending upgrades and action receipts survive a 
   }
   const feature = settledUpgradeProbe(clock)
   const f = await fixture(t, { now: serverNow, routes: [...ROUTE_MODULES, feature], log: () => {} })
-  const ada = await f.device('Settlement Ada')
-  await f.request('/api/life?city=lagos', null, ada.cookie)
+  const ada = await settledDevice(f, 'Settlement Ada')
   await f.server.store.transact(db => {
     const state = db.sessions[ada.cookie.slice(4)]?.cities.lagos?.state
     assert.ok(state, 'life was settled before preparing the paid action')
@@ -68,8 +86,7 @@ test('settled action timestamps, pending upgrades and action receipts survive a 
     state.activeAction = null
   })
 
-  const bola = await f.device('Settlement Bola')
-  await f.request('/api/life?city=lagos', null, bola.cookie)
+  const bola = await settledDevice(f, 'Settlement Bola')
   await f.server.store.transact(db => {
     const state = db.sessions[bola.cookie.slice(4)]?.cities.lagos?.state
     assert.ok(state, 'second life was settled before the public action')

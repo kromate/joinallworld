@@ -456,7 +456,7 @@ export function relocateBlock(state: LifeState, to: unknown, mode: unknown, ctx?
  * The ride a visitor could take on credit: the cheapest open link from here to the MAIN home, when cash does not cover it. Null for
  * anyone else (a resident, a guest, someone with no home, someone who can pay), and while a ride debt stands.
  */
-export function creditLink(state: LifeState, ctx?: LifeContext): CityLinkFrom | null {
+function directCreditLink(state: LifeState, ctx?: LifeContext): CityLinkFrom | null {
   const e = state.estate, home = e.home;
   if (!visitingHere(state) || !home || rideDebtOf(state) > 0) return null;
   if (!isOpen(home, ctx)) return null;
@@ -464,11 +464,21 @@ export function creditLink(state: LifeState, ctx?: LifeContext): CityLinkFrom | 
   const cheapest = links[0];
   return cheapest && state.cash < cheapest.fare ? cheapest : null;
 }
-/** A current full itinerary for explicit acceptance; it grants no loan or travel authority. */
-export function homewardOffer(state: LifeState, ctx?: LifeContext): HomewardQuote | null {
+export function creditLink(state: LifeState, ctx?: LifeContext): CityLinkFrom | null {
+  const link = directCreditLink(state, ctx);
+  if (!link) return null;
+  const quote = homewardQuote(state, ctx);
+  return quote && state.cash >= quote.totalFare ? null : link;
+}
+/** A current full itinerary before loan eligibility; it grants no money or travel authority. */
+export function homewardQuote(state: LifeState, ctx?: LifeContext): HomewardQuote | null {
   const e = state.estate;
   if (unsettled(state) || state.activeAction || !visitingHere(state) || !e.home || rideDebtOf(state) > 0) return null;
-  const quote = planHomeward(e.city, e.home, linksFrom, id => isOpen(id, ctx));
+  return planHomeward(e.city, e.home, linksFrom, id => isOpen(id, ctx));
+}
+/** A quoted recovery loan only when the cheapest whole itinerary cannot be paid. */
+export function homewardOffer(state: LifeState, ctx?: LifeContext): HomewardQuote | null {
+  const quote = homewardQuote(state, ctx);
   return quote && state.cash < quote.totalFare ? quote : null;
 }
 /** Why a ride on credit cannot start now, or null. */
@@ -616,8 +626,9 @@ function residenceView(state: LifeState, now: number): ResidenceView | null {
 }
 
 function rideView(state: LifeState, ctx: LifeContext): RideCreditView {
-  const link = state.activeAction ? null : creditLink(state, ctx);
-  return { debt: rideDebtOf(state), offer: link ? { to: link.to, mode: link.mode, fare: link.fare } : null, journey: homewardOffer(state, ctx) };
+  const quote = homewardQuote(state, ctx);
+  const link = state.activeAction || (quote && state.cash >= quote.totalFare) ? null : directCreditLink(state, ctx);
+  return { debt: rideDebtOf(state), offer: link ? { to: link.to, mode: link.mode, fare: link.fare } : null, journey: quote && state.cash < quote.totalFare ? quote : null };
 }
 
 /**

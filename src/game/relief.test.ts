@@ -115,6 +115,24 @@ test('limits of the ride on credit: main home only, only when cash is short, one
   assert.match(String(refused.reason), /You owe ₦12,000 for your ride home/)
   assert.ok(l.view().estate.links.filter((link) => link.open && link.status !== 'coming').every((link) => /You owe/.test(link.blocked ?? '')), 'every open link says why')
   assert.equal(l.run('estate.relocate', { to: 'ibadan', mode: 'road', credit: true }).code, 'ride_debt')
+  for (const cash of [251999, 252000, 265000, 289999, 290000]) {
+    const foreign = life()
+    foreign.visit('algiers', cash)
+    const quote = planHomewardRoute('algiers', 'lagos', linksFrom, isOpenCityId)
+    assert.ok(quote)
+    assert.deepEqual([quote.totalFare, quote.totalSeconds, quote.legs.map(leg => [leg.from, leg.to, leg.fare])], [252000, 86, [['algiers', 'birnin-kebbi', 236000], ['birnin-kebbi', 'lagos', 16000]]])
+    if (cash < quote.totalFare) {
+      assert.equal(foreign.view().estate.ride.journey?.totalFare, quote.totalFare)
+      assert.ok(help(foreign)?.line.includes('₦252,000'))
+    } else {
+      assert.equal(help(foreign), null, 'a complete affordable route is not a short-of-money situation')
+      assert.equal(foreign.view().estate.ride.offer, null)
+      assert.equal(foreign.view().estate.ride.journey, null)
+      const before = structuredClone(foreign.state)
+      assert.equal(foreign.run('estate.relocate', { to: 'lagos', mode: 'air', credit: true }).code, 'credit_not_offered')
+      assert.deepEqual([foreign.state.cash, foreign.state.travel, foreign.state.activeAction, foreign.state.ledger, foreign.state.estate], [before.cash, before.travel, before.activeAction, before.ledger, before.estate], 'refusal writes no loan, debit, movement or home change')
+    }
+  }
 })
 
 test('a guest who has not settled in cannot travel between cities, on credit or not', () => {

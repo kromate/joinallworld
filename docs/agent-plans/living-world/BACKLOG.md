@@ -2,6 +2,8 @@
 
 ## Current finite repair batch - 2026-10-09T16:37:15.560062+00:00
 
+Latest scoped milestone: actual current dirty readiness run130/130PASS0skip33.958s supersedes earlier hydration/visitor/metadata fixture failures. Shared client/trusted-engine raw debt and protocol metadata retry repairs have actual red→green evidence. [Updated proof](homeward-readiness-dirty-review.json). No final exact-size/full/native/staging/deployment acceptance; full programme scope unchanged.
+
 Published Integration39d94 follows be414106 focused passes and adds37 scoped malformed-liability repair passes. be414 exact fast compiler/policy pass, startup caps fail, full suites skipped. [Independent review](candidate-39d94b11-review.json), [scoped receipts](status-2026-10-09-evidence.json). Superseding dirty owner iteration: private readiness and actual fault extension are now applied; terminal59/58pass/1fail retains host row/atomic/concurrent passes but deferred cache hydration fails. Unsupported browser ticket projection is a new source-confirmed acceptance risk with reproduction/repair pending. [Latest qualified evidence](homeward-readiness-dirty-review.json). Integration is sole shared runtime/test writer; WORLD uploader. Sol/two verified Luna lanes completed read-only review, not final acceptance.
 
 1. Implement awaited browser fresh-planner/retained-reader readiness on BOTH cached and API pre-reconstruction gates. Preserve raw homeward markers, original issued terms, bytes/pending intent, failure→retry and identity/revision/A→B→A fences. Accept only actual profile tests and measured unchanged startup caps. [Finite acceptance](homeward-readiness-acceptance.md).

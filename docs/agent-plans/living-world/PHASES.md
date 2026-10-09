@@ -2,6 +2,8 @@
 
 ## Current exact-source acceptance - 2026-10-09T16:37:15.560062+00:00
 
+Latest scoped milestone: actual current dirty readiness run130/130PASS0skip33.958s supersedes earlier hydration/visitor/metadata fixture failures. Shared client/trusted-engine raw debt and protocol metadata retry repairs have actual red→green evidence. [Updated proof](homeward-readiness-dirty-review.json). No final exact-size/full/native/staging/deployment acceptance; full programme scope unchanged.
+
 Published Integration39d94b117a6ab4b0e8e063b835889517c9d70dca preserves raw trusted homeward debt before cleanup. Owner37/37 targeted repair checks pass; priorbe414106/106 focused checks include actual five-capital Node/SQLite Worker return/restarts. [Scoped evidence](status-2026-10-09-evidence.json), [independent39d review](candidate-39d94b11-review.json). Exactbe414CI37958381221 passes fast compiler/policy but fails unchanged startup621661raw/225224gzip/197355Brotli versus615000/223000/195600; full suites skipped. No exact full-source acceptance transfers to39d. [Awaited readiness/storage acceptance](homeward-readiness-acceptance.md) is implementation/testing handoff only. Superseding dirty owner iteration: private readiness and actual fault extension are now applied; terminal59/58pass/1fail retains host row/atomic/concurrent passes but deferred cache hydration fails. Unsupported browser ticket projection is a new source-confirmed acceptance risk with reproduction/repair pending. [Latest qualified evidence](homeward-readiness-dirty-review.json).
 
 | Unit | Evidence at named source | Release state | Remaining acceptance |

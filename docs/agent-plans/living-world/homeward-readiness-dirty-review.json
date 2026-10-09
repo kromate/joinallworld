@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-09T16:46:18.430681+00:00",
+  "observedAt": "2026-10-09T16:53:22.736452+00:00",
   "baseSha": "39d94b117a6ab4b0e8e063b835889517c9d70dca",
   "workingTreeDirty": true,
   "accepted": false,
@@ -65,6 +65,50 @@
       "skipped": 0,
       "durationMs": 3466.123917,
       "qualification": "Actual terminal owner log independently read. Overlapping runs, not new frozen-source acceptance."
+    },
+    "allworld-homeward-cache-marker-reproduction.log": {
+      "path": "/tmp/allworld-homeward-cache-marker-reproduction.log",
+      "durableLocalCopy": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/3f78a0d9d6ea-allworld-homeward-cache-marker-reproduction.log",
+      "sha256": "3f78a0d9d6ea644e2d7666730f33cc3254bf1921eac735b4eda2735bbf47a773",
+      "tests": 39,
+      "passed": 38,
+      "failed": 1,
+      "skipped": 0,
+      "durationMs": 554.069,
+      "qualification": "Actual terminal owner log independently read. Overlapping runs never summed; working-source proof, not a frozen full candidate."
+    },
+    "allworld-homeward-browser-liability-reproduction.log": {
+      "path": "/tmp/allworld-homeward-browser-liability-reproduction.log",
+      "durableLocalCopy": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/32e997df51c8-allworld-homeward-browser-liability-reproduction.log",
+      "sha256": "32e997df51c89fc503f9fc05705b87b4e97ebc44160c80627d978fd09b24ed58",
+      "tests": 3,
+      "passed": 2,
+      "failed": 1,
+      "skipped": 0,
+      "durationMs": 2923.66525,
+      "qualification": "Actual terminal owner log independently read. Overlapping runs never summed; working-source proof, not a frozen full candidate."
+    },
+    "allworld-homeward-client-liability-repair.log": {
+      "path": "/tmp/allworld-homeward-client-liability-repair.log",
+      "durableLocalCopy": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/81f4275e72cf-allworld-homeward-client-liability-repair.log",
+      "sha256": "81f4275e72cfd1ab04be39de5a728a95f18e2927b7903e9d77e3c21c23b65583",
+      "tests": 51,
+      "passed": 50,
+      "failed": 1,
+      "skipped": 0,
+      "durationMs": 5670.909458,
+      "qualification": "Actual terminal owner log independently read. Overlapping runs never summed; working-source proof, not a frozen full candidate."
+    },
+    "allworld-homeward-readiness-final.log": {
+      "path": "/tmp/allworld-homeward-readiness-final.log",
+      "durableLocalCopy": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/07ddd2267487-allworld-homeward-readiness-final.log",
+      "sha256": "07ddd226748716494d9a8643e914ce567a7d6e39d1bb9a4df0c073ac38204591",
+      "tests": 130,
+      "passed": 130,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 33958.150625,
+      "qualification": "Actual terminal owner log independently read. Overlapping runs never summed; working-source proof, not a frozen full candidate."
     }
   },
   "latestTerminalFailure": {
@@ -72,18 +116,20 @@
     "tests": 42,
     "passed": 41,
     "failed": 1,
-    "cause": "Special homeward-visitor fixture omits requestMarker/release/evaluation fields consumed by awaitRequestMarker, causing dirname(undefined). Owner correction handed off; no next pass claimed."
+    "cause": "Special homeward-visitor fixture omits requestMarker/release/evaluation fields consumed by awaitRequestMarker, causing dirname(undefined). Owner correction handed off; no next pass claimed.",
+    "qualification": "Historical predecessor failure; superseded within same focused scope by130/130. Remains retained."
   },
   "newMaterialFinding": {
-    "status": "Specific unsupported-ticket client regression PASS in profile run; valid ticket plus malformed raw browser debt still source-risk, additional test pending",
-    "description": "Browser awaits reader but readHomewardTicket returnsnull for invalid untrusted markers. Cached/API createLife can remove unsupported ticket then mark snapshot ready/persist it. Owner new regression118 exists; no test pass claimed. Specific client acceptance must refuse lost raw marker without globally changing trustedSave.",
-    "repair": "Owner rebuildClientLife refuses a raw homeward marker disappearing in browser projection; no global trustedSave change. Current focused unsupported cached/API marker and deferred same-owner hydrate cases pass."
+    "status": "ACTUAL red reproduced then repaired and scoped retested",
+    "unsupportedMarker": "39/38pass1fail retained; narrow client rebuild guard prevents marker removal, preserving raw cache/pending intent. No global trustedSave change.",
+    "rawBrowserLiability": "Actual3/2pass1fail retained for valid issued ticket with invalid negative raw debt. Shared frozenV1 liability guard now runs before client reconstruction and trusted-engine cleanup; absent/0/reduced debt remains compatible.",
+    "pendingIntent": "PLAYS=false omitted handler registry discarded valid saved retries. Existing authoritative ACTION_TYPES now recognizes protocol names; server still uses full registered handler validation and playerAct without internal authority. Actual corrected profile passes inside130run."
   },
   "implementedSource": {
     "readiness": "Planner+frozen reader private install; server index static install; bootstrap and client cached/API await paths; cached import failure status/raw-cache persistence guard. Source reviewed, size/profile tests unproven.",
     "faultProof": "Actual rows test six malformed liability variants; immediate full-session abort comparison; concurrent identical homeward booking. These host cases pass inside the59 scoped run; full candidate remains failed."
   },
-  "next": "Owner fixes visitor fixture, proves profile failure/retry/no-import/identity and raw browser liability boundary, measures unchanged startup, freezes exact source and runs full gates; native/staging/WORLD release/live remain.",
+  "next": "Review exact frozen new source and real startup measurement; repair any failure without dropping coverage/limits, then full/native/staging/release/live gates.",
   "newReadinessFindings": [
     "Server static install order and cached/API gates source-reviewed. Unsupported-ticket marker disappearance guard is present; raw valid ticket coupled with malformed browser debt may retain marker but lose loan disclosure, pending regression.",
     "Rules hint loads at explicit same-city home with away residence; unnecessary import unless actual legacy inference demonstrates relevance.",
@@ -95,5 +141,34 @@
     "build": "joinallworld-a44629b38be751a9ad446051564",
     "serverTime": 1791564276965,
     "qualification": "Independent HTTP health only; programme not deployed, gameplay/save continuity unverified."
+  },
+  "latestTerminalResult": {
+    "run": "allworld-homeward-readiness-final.log",
+    "tests": 130,
+    "passed": 130,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 33958.150625,
+    "process": "Root independently observed Node24heap256PID37919 live, then terminal log and PID absent. No restart or larger heap."
+  },
+  "remainingAcceptance": [
+    "Current-source measured unchanged startup raw/gzip/Brotli and asset/scene budgets",
+    "Freeze/publish exact candidate and complete canonical compiler/exhaustive Node22+24/Worker/host/UI checks",
+    "Ordinary resident with explicit same-city home+away residence no-import edge and another known/unknown pending-type profile checks remain scoped review considerations",
+    "Separate genuine elapsed-downtime/changed-booking-policy original ticket proof",
+    "Actual native desktop/mobile readable lessons/travel and isolated staged compatible saves",
+    "WORLD sealed deployment, exact live version/gameplay/save continuity",
+    "Full physical connected journey and later programme, actual consented Goalmatic"
+  ],
+  "latestSourceObservationHashes": {
+    "src/game/homeward-gate.ts": "42081a367bb28c07b77620dd848aaffab73b2785afa6d4cdf4b834f1021afc98",
+    "src/game/homeward-rules.ts": "0324e4486a89c1f484deecf1922f48f1f00d179fd6f0001171848c7beb543d27",
+    "src/client.ts": "d0f2da50b4f9df4525d08cb89e971601a82d0528383d5039ce70aacceb544b32",
+    "src/client.test.ts": "750c31b9ee86521f3c6a7f7bafacd920fc3594a89e5e76a7fa9a28b13de10e57",
+    "src/game/browser-profile.test.ts": "81856cdbdb7df1a4e90b040fd0b125f8099ff8b24176205c374c4cef16600611",
+    "src/game/systems/travel.ts": "4a6fc79eed2fb00e28c3a3e7d5e669fb59ae3be30ce397b8e36c492ede4e7fad",
+    "src/types/actions.ts": "5c83288b12505dcdc7f7cb3ae21d6b8f3a91d3e0fdca810dd957d44a4514e84e",
+    "server/protocol.ts": "27742061f222dc021d6882a9f2a2372a3eb30c3b40ebdde7b5b909462a59dbf5",
+    "server/routes/core.ts": "322c1409c63dfaffb3da34ad74923622770e3bfebfa429afeacb661dff6ff5be"
   }
 }

@@ -2,13 +2,6 @@
   "sourceSha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
   "packageDigest": "f776481de86aab4779496116ac95a57b302f20a11b219168f5f7127c4b4df8dc",
   "uploadOwner": "WORLD",
-  "ownerReportedUpload": {
-    "execSession": 39946,
-    "terminalExit": 0,
-    "providerVersionPrefix": "90ba4ff2",
-    "assetUploads": 536,
-    "fullProviderReceipt": "Requested; prefixnotexactversionproof"
-  },
   "initialFollowup": {
     "execSession": 48983,
     "exit": 2,
@@ -61,5 +54,96 @@
   },
   "privateReceiptSha256": "5afceadbb3f46c87acfd1320e6443b3fe8885c7140ce1f717b260709cf6b4263",
   "qualification": "Uploadsuccess and independentlyverifiedpublic3afhealth/3smallasset hashes. Existingproduction savedidentity/financial/once receipts, actualAstra livejourney andobservationchecks stillpending; notfullphase/programmeacceptance.",
-  "releaseAccepted": false
+  "releaseAccepted": false,
+  "providerAndContinuityReview": {
+    "native-stage-3af-final-stop.json": {
+      "sha256": "1853448d305e4ae37dab3956f8b712b7fcd42d45b1cdbc0074cfd055f4477055",
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/native-stage-3af-final-stop.json",
+      "sanitizedReceipt": {
+        "checkedAt": "2026-10-09T19:09:59.265111+00:00",
+        "terminalExit": 0,
+        "checkpointStatus": "stopped",
+        "stoppedAt": "2026-10-09T19:09:00.576Z",
+        "restartCount": 1,
+        "ownerDead": true,
+        "storeRetained": true,
+        "finalNativeWitnessSha256": "51ac51bb51052e0602cddafe27b09d64e415eb80dd3575e2ed18a10c82540055",
+        "finalCity": "lagos",
+        "finalCash": 596000,
+        "activeAction": null,
+        "sourceSha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+        "packageDigest": "f776481de86aab4779496116ac95a57b302f20a11b219168f5f7127c4b4df8dc"
+      }
+    },
+    "production-3af-after-provider-preflight.json": {
+      "sha256": "191ee2b85bb6009eb37898e3030ac212f75a7314c54507e356024b16cdf8c174",
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/production-3af-after-provider-preflight.json",
+      "sanitizedReceipt": {
+        "format": "world-production-provider-read-v1",
+        "checkedAt": "2026-10-09T19:17:03.054597+00:00",
+        "worker": "joinallworld-next",
+        "authenticatedProviderRead": true,
+        "providerMutation": false,
+        "deploymentId": "d1b044f1-0969-48c8-8033-e2092b68f7e5",
+        "versions": [
+          {
+            "version_id": "90ba4ff2-4204-4261-ab10-519787ab51f2",
+            "percentage": 100
+          }
+        ],
+        "namespaceIdSha256": "90d37132012f19aafbea7ecea829df0423cae5b255afc4439afe2546990b851a",
+        "namespaceUnchanged": true,
+        "className": "JoinAllworldState",
+        "configuredBuild": "joinallworld-3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+        "teachingBindingNames": [],
+        "retainedPlainVariableCount": 1,
+        "secretBindingCount": 11,
+        "preserveVarsAtUpload": true
+      }
+    },
+    "continuity-after-release-3af-1921.json": {
+      "sha256": "187ee35afc23d6b39a13970f4f335d300a5ea001c47d2ed4d0b228bc84e2b475",
+      "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-09/affordable-homeward/continuity-after-release-3af-1921.json",
+      "sanitizedReceipt": {
+        "format": "world-consolidated-continuity-check-v1",
+        "checkedAt": "2026-10-09T19:20:47.579201+00:00",
+        "sourceSha": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+        "expectedPublicBuild": "joinallworld-3af17a01b8bd406bfb830ca0d2e",
+        "scope": "retained synthetic actor and original same-spot receipt only",
+        "status": "passed",
+        "newActorCreated": false,
+        "sameOriginalIdentity": true,
+        "sameIdReceiptDuplicate": true,
+        "stableFields": [
+          "cash",
+          "home",
+          "homeOwned",
+          "property",
+          "estate",
+          "inventory",
+          "business",
+          "location",
+          "spot"
+        ],
+        "privateWitnessSha256": "e64720ae8af21e9f30cc7ed74564a7bd3e80bc7d27a616922837c48575097c87",
+        "limitations": [
+          "not a game-wide export or restore",
+          "not provider full-source identity proof",
+          "not bundle, browser, reconnect or physical-phone acceptance"
+        ]
+      }
+    }
+  },
+  "providerVersion": "90ba4ff2-4204-4261-ab10-519787ab51f2",
+  "providerDeployment": "d1b044f1-0969-48c8-8033-e2092b68f7e5",
+  "remaining": "ActualAstra live6country map/gameplay and agreedobservationchecks. Retainedsyntheticactor9stablefields/sameintentduplicate passes atscopedreceiptlevel, notallusers/gamewide/export/reconnect/phone proof.",
+  "rootReview": "Independently read/hashed sanitized3receipts and publichealth/assets; no privateprovider response/rawactor snapshot/credentials/cookies/config access.",
+  "uploadOwnerReportedUpload": {
+    "execSession": 39946,
+    "terminalExit": 0,
+    "providerVersionPrefix": "90ba4ff2",
+    "assetUploads": 536,
+    "fullProviderReceipt": "Sanitizedprovider191ee2b8 independentlyread/hashed",
+    "providerVersion": "90ba4ff2-4204-4261-ab10-519787ab51f2"
+  }
 }

@@ -1,5 +1,11 @@
 # Living-world implementation checkpoint
 
+## Provider and original production-save receipt verified - 2026-10-09T19:23:31.494910+00:00
+
+Root independentlyread/hashed sanitizedprovider191ee2b8: version90ba4ff2-4204-4261-ab10-519787ab51f2 at100%, deploymentd1b044f1-0969-48c8-8033-e2092b68f7e5, sameoriginalnamespacehash,11secretbindings, configured3af andteachingbindingabsent. Continuity187ee35a passes originalretainedsyntheticidentity, sameintentduplicate and9namedstablefields cash/home/homeOwned/property/estate/inventory/business/location/spot, no newactor. This is notgamewide/export/browser/reconnect/physicalphone acceptance. Actualstop1853448d confirms terminal0/stopped19:09:00.576/store retained/finalnative51ac. [Provider/continuity qualifiedevidence](production-3af-public-adoption.json). No privateAPI responses/rawsnapshots/credentials/cookies read. ActualcurrentAstra parentboundsession latest19:21:05 gpt-6-astra/medium reverified; owns livepublic6country map/gameplay witness.
+
+Productionexact3af isdeployedandpublicadoptionverified; remaining liveAstra/observation evidence pending beforeclosingthisscoped release. Full14CI/funded5native/save/receipts retained, originaloldhealth followup/HUP failures preserved. Nextfinishlivewitness, then separateenabledONactive-teaching andfullphysical/later/business/liveGoal programme. GoalACTIVE, zeroextraspend andhuman05UTCcutoff unchanged.
+
 ## Exact candidate uploaded; public adoption verified - 2026-10-09T19:19:59.047327+00:00
 
 WORLD reports originalupload39946 terminal0/provider90ba4ff2prefix/536assetuploads. Followup48983 exited2 atoldpublicbuild assertion, thenmissingprovider-after script whosecreationdidnotrun; thiswasnotuploadfailure. Root suppliedprecisediagnosis andno automaticretry/rollback/newactor advice. Sourcehealthmetadatacomesfromenv/contextBUILD_ID; do notsubstituteitforcompiledfingerprint. ActualRootpublicread19:19:59 nowexact3af/relay/AItrue and3Accra JSasset bytes/hashes matchsealedmanifest. [Independent readback](production-3af-public-adoption.json). SystemPythonurllib403 retained; existingcurl worked withnoUA/authoverride. NoRootprovidercredentials/config/upload/UI operation.

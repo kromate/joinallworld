@@ -5,7 +5,7 @@ Current finite batch: WORLD accepted exact3af/f776 production release and live g
 ## Next finite acceptance batch - 9 October, 19:12 UTC
 
 1. Retain offline named Astra country/operator table and actualWORLD terminalcleanup; existing capturedfinalevidence suffices, no newstage solelyforreview.
-2. WORLD alone performs existing productionbaseline/version/save/providercontrols, exactsealedupload, then verifies actualliveversion/gameplay/continuity/observationchecks.
+2. WORLD uploadterminal0/providerversion100%/same namespace+11bindings and Rootpublic3af/assets pass; retainedproduction synthetic9field/sameintent continuity passes. Finish actualAstra live6country map/gameplay/observationchecks, then close scopedrelease.
 3. Separately activate and accept ON active-choice teaching with readable desktop/mobile wrong-answer/retry/reload and once-only wage; current OFFconsolidation is not that acceptance.
 4. Continue fullschool/licence/rental/animatedentry/steering/driving/restock/barber/earnings/improvement/reload, latercareers/business and consentedliveGoalmatic. CurrentGRAPHICS geometry handoff and actor-scopednotice proposal remain queued, with onewriter and no change to frozenrelease.
 

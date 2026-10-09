@@ -71,7 +71,7 @@ export function deriveBodyCoveragePatch(options: BodyCoveragePatchOptions): Body
   for (let triangle = 0; triangle < sourceTriangleCount; triangle++) {
     const offset = triangle * 3;
     const ids = [index.getX(offset), index.getX(offset + 1), index.getX(offset + 2)];
-    for (const [x, y] of [[ids[0], ids[1]], [ids[1], ids[2]], [ids[2], ids[0]]) {
+    for (const [x, y] of [[ids[0], ids[1]], [ids[1], ids[2]], [ids[2], ids[0]]]) {
       const key = edgeKey(x, y);
       const faces = edgeFaces.get(key);
       if (faces) faces.push(triangle); else edgeFaces.set(key, [triangle]);

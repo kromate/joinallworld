@@ -1,0 +1,62 @@
+name: Native actual home rest contacts
+on:
+  push:
+    branches: [codex/graphics-rest-contact-v8]
+permissions:
+  contents: read
+jobs:
+  rest:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: git fetch --depth=1 origin 3af17a01b8bd406bfb830ca0d2ee66d2d0093d28
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare pinned complete body
+        run: |
+          python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
+          python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
+          node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/authored-body-compression/compress-native-body.mjs
+      - name: Strict actual factory types
+        if: always()
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/native-full-runtime-v8/native-full-runtime.typecheck.json
+      - name: Strict actual rest fixture types
+        if: always()
+        run: node --max-old-space-size=768 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/rest-contact-review.typecheck.json
+      - name: Bundle actual prepared actor
+        if: always()
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/native-full-runtime-v8/bundle-prepared-factory.mjs
+      - name: Verify posterior contact kernel and bounded adapter
+        if: always()
+        run: |
+          node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/native-rest-contact-check.mjs
+          node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/rest-pose-adapter-check.mjs
+      - name: Execute all15 poses on actual prepared GLBs and real prop meshes
+        if: always()
+        run: node --max-old-space-size=256 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/native-rest-15-pose-check.mjs > evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/actual-15-pose-result.json
+      - name: Verify actual production chair and stair geometry
+        if: always()
+        run: node --max-old-space-size=160 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/native-gameplay-contact-check.mjs
+      - name: Bundle rest contact review
+        if: always()
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/bundle-rest-contact-review.mjs
+      - name: Render measured actual rest contacts
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/authored-complete-body-v1/bounded-render.py /tmp/rest-render-resources.log /tmp/rest-render-resources.json node evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/render-rest-contact-review.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-rest-${{ github.run_id }}
+          path: |
+            evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/remote-results/
+            evidence/graphics-loop/authored-complete-body-v1/native-rest-contact-v8/actual-15-pose-result.json
+            /tmp/rest-render-resources.*
+          if-no-files-found: warn

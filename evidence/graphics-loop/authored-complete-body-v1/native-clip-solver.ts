@@ -129,8 +129,8 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
   const supportSlotByVertex = new Int32Array(skinIndices.count).fill(-1);
   supportVertices.forEach((vertexIndex, slot) => { supportSlotByVertex[vertexIndex] = slot; });
   const footSlots: Record<Side, number[]> = {
-    left: footCandidates.left.map((vertexIndex) => supportSlotByVertex[vertexIndex]),
-    right: footCandidates.right.map((vertexIndex) => supportSlotByVertex[vertexIndex]),
+    left: footCandidates.left.map((vertexIndex) => supportSlotByVertex[vertexIndex]!),
+    right: footCandidates.right.map((vertexIndex) => supportSlotByVertex[vertexIndex]!),
   };
   const supportBefore = new Float64Array(supportVertices.length);
   const supportAfter = new Float64Array(supportVertices.length);

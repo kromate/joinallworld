@@ -49,7 +49,9 @@ function check(condition: unknown, message: string): asserts condition {
 
 async function hashIndex(index: THREE.BufferAttribute): Promise<string> {
   const view = new Uint8Array(index.array.buffer, index.array.byteOffset, index.array.byteLength);
-  const digest = await crypto.subtle.digest('SHA-256', view);
+  const copy = new Uint8Array(view.byteLength);
+  copy.set(view);
+  const digest = await crypto.subtle.digest('SHA-256', copy.buffer);
   return [...new Uint8Array(digest)].map((value) => value.toString(16).padStart(2, '0')).join('');
 }
 
@@ -175,7 +177,7 @@ export async function applyBodyMaskUnion(
           entry!.disposed = true;
           entry!.geometry.dispose();
           const current = masksBySource.get(source);
-          if (current?.get(key) === entry) current.delete(key);
+          if (current && current.get(key) === entry) current.delete(key);
         }
       },
     };

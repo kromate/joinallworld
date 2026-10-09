@@ -25,7 +25,8 @@ export interface NativeSourcePoseSnapshot {
   readonly bodyMinY?: number;
   readonly bodyMaxY?: number;
   readonly contactMinY: number;
-  readonly footSoleMinY: Readonly<Record<'left' | 'right', number>>;
+  // Offline body-contact diagnostics do not sample feet.
+  readonly footSoleMinY?: Readonly<Record<'left' | 'right', number>>;
   readonly reach: Readonly<Record<'leftArm' | 'rightArm' | 'leftLeg' | 'rightLeg', {
     requested: number; clamped: number; maximum: number; wasClamped: boolean;
   }>>;
@@ -133,8 +134,8 @@ export function createNativeSourcePoseController(root: THREE.Group, options: Nat
   const supportSlotByVertex = new Int32Array(skinIndices.count).fill(-1);
   supportVertices.forEach((vertexIndex, slot) => { supportSlotByVertex[vertexIndex] = slot; });
   const footSlots: Record<Side, number[]> = {
-    left: footCandidates.left.map((vertexIndex) => supportSlotByVertex[vertexIndex]),
-    right: footCandidates.right.map((vertexIndex) => supportSlotByVertex[vertexIndex]),
+    left: footCandidates.left.map((vertexIndex) => supportSlotByVertex[vertexIndex]!),
+    right: footCandidates.right.map((vertexIndex) => supportSlotByVertex[vertexIndex]!),
   };
   const supportBefore = new Float64Array(supportVertices.length);
   const supportProbe = new Float64Array(supportVertices.length);
@@ -293,7 +294,7 @@ export function createNativeSourcePoseController(root: THREE.Group, options: Nat
     return { contactMinY, footSoleMinY: soles };
   }
 
-  function requiredWorldShift(before: Float64Array, probe: Float64Array, indices: readonly number[], floorY: number): number {
+  function requiredWorldShift(before: Float64Array, probe: Float64Array, indices: Iterable<number>, floorY: number): number {
     let minimumShift = -Infinity, maximumShift = Infinity;
     for (const index of indices) {
       const y = before[index]!, response = (probe[index]! - y) / supportProbeDistance;

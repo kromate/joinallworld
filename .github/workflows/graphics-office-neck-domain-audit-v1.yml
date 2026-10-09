@@ -1,0 +1,61 @@
+name: Office neck-complement domain audit (bounded, diagnostic)
+on:
+  push:
+    branches:
+      - codex/graphics-office-neck-domain-audit-v1
+permissions:
+  contents: read
+concurrency:
+  group: office-neck-domain-audit-v1-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      EXPECTED_SNAPSHOT_SHA256: f5d42e911ed7d0336bea554effbf47fec9c2bfac41c743620e6b68b43a1affdf
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify immutable snapshot before dependency install
+        run: node --experimental-strip-types evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v2/remote-ci-v1/verify-snapshot.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Verify every local relative import, asset URL, and HTML entrypoint resolves to a pinned file
+        run: node --experimental-strip-types evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v2/remote-ci-v1/verify-import-closure.mjs "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Install exact locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Record preinstalled Chrome binary
+        shell: bash
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$CHROME_BIN"
+          CHROME_REAL="$(readlink -f "$CHROME_BIN")"
+          "$CHROME_REAL" --version
+          sha256sum "$CHROME_REAL"
+          echo "CHROME_BIN=$CHROME_REAL" >> "$GITHUB_ENV"
+      - name: Bundle under 96 MiB heap, 220 MiB RSS, 25 seconds
+        id: bundle
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v2/remote-ci-v1/run-bounded-linux.py build "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Run bounded fragment and independent-domain tests under 96 MiB heap, 220 MiB RSS, 25 seconds
+        id: synthetic
+        if: always() && steps.bundle.outcome == 'success'
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v2/remote-ci-v1/run-bounded-linux.py synthetic "$EXPECTED_SNAPSHOT_SHA256"
+      - name: Capture matched body-material neck A/B for both families under 2 GiB, 60 seconds
+        if: always() && steps.bundle.outcome == 'success' && steps.synthetic.outcome == 'success'
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: python3 evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v2/remote-ci-v1/run-bounded-linux.py browser "$EXPECTED_SNAPSHOT_SHA256"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: office-neck-domain-audit-v1-${{ github.run_id }}
+          path: evidence/graphics-loop/garment-quality-v1/shoulder-topology-v1/office-source-shell-v3/neck-complement-domain-audit-v1/integration-probe-v2/remote-ci-v1/remote-results/${{ github.run_id }}/
+          if-no-files-found: warn
+          retention-days: 14

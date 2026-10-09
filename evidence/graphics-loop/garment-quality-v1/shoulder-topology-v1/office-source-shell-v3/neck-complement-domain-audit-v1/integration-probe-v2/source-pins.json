@@ -1,0 +1,20 @@
+{
+  "status": "prepared-unrun-domain-audit",
+  "purpose": "Independent source-side reconstruction of the neck-complement declared domain after frozen run 37902648415 failed because its expected face set used a different cut domain.",
+  "frozenV1": {
+    "snapshotManifestSha256": "0137f721ad68862f12c21bba61de14fd577fd7d0521c1a1c3ebbe90246d0594a",
+    "runId": 37902648415,
+    "result": "build and synthetic tests passed; browser failed closed before pose checks or screenshots",
+    "failure": "old broad neck-cut expected 274 faces, candidate emitted 138 faces",
+    "preservedArtifact": "../../neck-complement-v1/integration-probe-v1/remote-ci-v1/downloaded-37902648415/browser-artifacts/review-results.json"
+  },
+  "candidateSourceSha256": "2b8531fbc97c87f351fa2085ec1a15b9ac193ba35571d08eb6a7a498c85dcb76",
+  "originalProductionGeometrySha256": "1b2dbfc4dd9557b6216eceb01ddd5f9bcf4119e48788a220589444902d5458ec",
+  "originalProductionRendererSha256": "4b053592fdc8efdad0e9cd5071cb853594c2db53829cd74116bf578f439f82da",
+  "maleBodyGlbSha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+  "femaleBodyGlbSha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+  "clipPackSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
+  "domainDefinition": "masked full-source face; every strongest-bone corner region is torso or neck; independently clipped to neck-positive, hem-positive, and both cuff-negative halfspaces; positive remaining area",
+  "legacyDefinition": "masked source face area outside the neck plane after hem clip, before either cuff plane and without candidate region filtering",
+  "execution": "No local source GLB processing, browser, or remote run has occurred for this variant. Root owns publication and remote execution."
+}

@@ -345,6 +345,10 @@ jobs:
           src/game/living-world/fleet.test.ts
           src/game/living-world/vehicle-clearance.test.ts
           scripts/living-world-startup-report.test.ts
+          src/game/living-world/vehicle-boarding.test.ts
+          src/game/living-world/sedan-contact.test.ts
+          src/models/vehicles/sedan-interior.test.ts
+          src/models/vehicles/vehicles.test.ts
       - run: npm ci --ignore-scripts --no-audit --no-fund --prefix deploy/tooling
       - name: Actual Worker SQLite permission, account and restart checks
         run: >-

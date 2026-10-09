@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 import * as THREE from 'three'
 import test from 'node:test'
 import { buildVehicle, poseVehicle } from '../../models/vehicles/index.ts'
+import { attachSedanInterior } from '../../models/vehicles/sedan-interior.ts'
 import { readSedanBoardingDescriptor, SEDAN_BOARDING_DESCRIPTOR, vehicleLocalToWorld } from './vehicle-boarding.ts'
 
 const repo = fileURLToPath(new URL('../../../', import.meta.url))
@@ -16,12 +17,19 @@ test('descriptor pins every source used for its sedan geometry and scene root-mo
     const bytes = await readFile(resolve(repo, path))
     assert.equal(createHash('sha256').update(bytes).digest('hex'), expected, path)
   }
-  assert.equal(SEDAN_BOARDING_DESCRIPTOR.source.revision, '75ad421adc6d1eb455c9f7a258bc63e315ce5955')
+  assert.equal(SEDAN_BOARDING_DESCRIPTOR.source.revision, 'sedan-interior-content-pins-v2')
+  assert.equal(SEDAN_BOARDING_DESCRIPTOR.source.baselineRevision, '75ad421adc6d1eb455c9f7a258bc63e315ce5955')
 })
 
-test('published map sedan anchors and open-door hinge agree with the pinned driver-frame descriptor', () => {
-  const car = buildVehicle('sedan', { detail: 'map' })
+test('active street sedan interior, anchors and open-door hinge agree with the pinned driver-frame descriptor', () => {
+  const car = buildVehicle('sedan', { detail: SEDAN_BOARDING_DESCRIPTOR.sedan.detail })
   try {
+    const interior = attachSedanInterior(car)
+    assert.equal(interior.group.parent, car.userData.parts.body)
+    assert.equal(car.userData.triangles, SEDAN_BOARDING_DESCRIPTOR.sedan.geometryBudget.triangles)
+    assert.equal(car.userData.drawCalls, SEDAN_BOARDING_DESCRIPTOR.sedan.geometryBudget.drawCalls)
+    assert.equal(interior.solids.length, 9)
+    assert.equal(interior.supportSurfaces.length, 5)
     car.object3D.updateWorldMatrix(true, true)
     const driver = car.userData.anchors.driver.position
     near(driver.x, SEDAN_BOARDING_DESCRIPTOR.sedan.driverAnchor.x)

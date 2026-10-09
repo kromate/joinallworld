@@ -1,19 +1,21 @@
 /**
  * Source-pinned sedan boarding presentation geometry. This describes authored anchors and the
  * current scene's placement-anchor recipe; internal skinned-clip motion is unverified. It is
- * deliberately NOT collision, actor-volume, or trip proof. The cabin is an exterior shell, so its
- * actual traversable aperture remains unknown.
+ * deliberately NOT collision, actor-volume, or trip proof. The active practice sedan now includes
+ * authored floor and seat solids; its actual traversable aperture and actor fit remain unknown.
  */
 export const SEDAN_BOARDING_DESCRIPTOR = Object.freeze({
   schemaVersion: 1,
-  id: 'sedan-driver-boarding-v1',
+  id: 'sedan-driver-boarding-v2',
   source: Object.freeze({
-    revision: '75ad421adc6d1eb455c9f7a258bc63e315ce5955',
+    revision: 'sedan-interior-content-pins-v2',
+    baselineRevision: '75ad421adc6d1eb455c9f7a258bc63e315ce5955',
     sha256: Object.freeze({
+      'src/models/vehicles/sedan-interior.ts': 'fee4c0f203868acd4bc99a47a05918c66163ffddc40451cd39bb012bd4b14059',
       'src/models/vehicles/index.ts': '7db039a0b25373a86354639fd703a96aab3a3de48a3088c14c555cc0fa6afc19',
       'src/models/vehicles/geometry.ts': '4bf847bd17a735050daa4686ed0be495c64a7936ed3c65c6e306e740edc94885',
       'src/game/living-world/vehicle-clearance.ts': '61753ce829d9a202772ed6e3f1644828da33450255fbe26c4da11a2effc33d5f',
-      'src/app/features/living-world/drivingScene.ts': '2ee6430db04f74e5ed7f4bde50f97939db6705bb19cf563df58381ecba7f85da',
+      'src/app/features/living-world/drivingScene.ts': '41381b92f248655081eab1ac9215dec97ffaa442206e45122dc37f5a63d25156',
       'src/scene/body/stand-in.ts': '55c39f33f08d43a0ac7f7ab1766522e1ef48ddfb4c7aced20cd762fd57156098',
       'src/scene/body/skinned.ts': 'ee2ec68e2a707c5b8976aa1e28f085129f84142e466fd622d09b51633bbf197a',
       'src/scene/body/poses.ts': '7f328e67ec33d1c94516d76746635e45d8f90a01416176534fa0448d4e797d5e',
@@ -29,7 +31,8 @@ export const SEDAN_BOARDING_DESCRIPTOR = Object.freeze({
     localToWorld: 'x=center.x+local.x*cos(heading)+local.z*sin(heading); z=center.z-local.x*sin(heading)+local.z*cos(heading)',
   }),
   sedan: Object.freeze({
-    detail: 'map',
+    detail: 'street',
+    geometryBudget: Object.freeze({ triangles: 814, triangleLimit: 1500, drawCalls: 8 }),
     bodyShell: Object.freeze({ width: 1.9, length: 4.35, height: 1.58 }),
     conservativeStaticEnvelope: Object.freeze({ halfWidth: 1.302, halfLength: 2.246 }),
     driverAnchor: Object.freeze({ x: -0.437, y: 0.74, z: 0.42 }),
@@ -38,7 +41,7 @@ export const SEDAN_BOARDING_DESCRIPTOR = Object.freeze({
       sideProfileZ: Object.freeze([-2.175, 2.175]),
       sideGlassZ: Object.freeze([-1.214, 0.854]),
       roofY: 1.53,
-      floorOrSeatSolids: 'unknown; model authors exterior panels and anchor points, not a certified interior collider',
+      floorOrSeatSolids: 'sedan-interior.ts authors a body-local floor and four cushion/backrest seats; actor fit and interior collision are unverified',
       clearDoorway: 'unknown',
     }),
     driverDoor: Object.freeze({

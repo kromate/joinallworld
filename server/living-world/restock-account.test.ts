@@ -12,7 +12,8 @@ import { createNpcRestockService } from './restock-service.ts'
 import { createNpcRestockWageAdapter } from './restock-wage.ts'
 import { deliveredNpcParcel } from './restock-fixture.ts'
 
-const PROJECT = 'restock-account-fixture-project'
+// accountsConfig requires a lowercase project ID of at most 30 characters.
+const PROJECT = 'restock-account-fixture'
 const ENV = {
   ACCOUNTS_FIREBASE_PROJECT_ID: PROJECT,
   ACCOUNTS_FIREBASE_API_KEY: 'restock-account-test-api-key-0000000000000000000000',

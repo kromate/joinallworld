@@ -28,9 +28,9 @@ type ActorPose = 'idle' | 'stand' | 'walk' | 'sit'
 /** The feature is lazy: Three, scene builders and the shared skinned body stay outside startup. */
 export async function createDrivingScene(canvas: HTMLCanvasElement, route: DrivingRoute, look: Look, reducedMotion: boolean, seed = ''): Promise<DrivingScene> {
   const THREE = await import('three')
-  const [{ createKit }, { buildAvatar, poseAvatar }, { buildVehicle, poseVehicle }, { sceneLook }, { createStandIn }] = await Promise.all([
+  const [{ createKit }, { buildAvatar, poseAvatar }, { buildVehicle, poseVehicle }, { sceneLook }, { createStandIn }, { attachSedanInterior }] = await Promise.all([
     import('../../../scene/kit.ts'), import('../../../scene/characters.ts'), import('../../../models/vehicles/index.ts'),
-    import('../start/lookModel.ts'), import('../../../scene/body/stand-in.ts'),
+    import('../start/lookModel.ts'), import('../../../scene/body/stand-in.ts'), import('../../../models/vehicles/sedan-interior.ts'),
   ])
   const kit = createKit()
   let renderer: WebGLRenderer
@@ -61,7 +61,9 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
   let partialCar: VehicleModel | null = null
   let partialAvatar: import('../../../scene/characters.ts').RiggedAvatar | null = null
   try {
-    partialCar = buildVehicle('sedan', { colour: '#277f9b', detail: 'map' })
+    // One close-view practice car uses the existing street LOD budget; ambient map cars stay unchanged.
+    partialCar = buildVehicle('sedan', { colour: '#277f9b', detail: 'street' })
+    attachSedanInterior(partialCar)
     partialAvatar = buildAvatar(kit, sceneLook(look), { rig: true, detail: 'low', scale: FALLBACK_SCALE })
     scene.add(partialCar.object3D, partialAvatar)
   } catch (error) {

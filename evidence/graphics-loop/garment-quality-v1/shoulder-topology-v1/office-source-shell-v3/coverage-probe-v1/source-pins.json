@@ -1,0 +1,34 @@
+{
+  "status": "prepared-unrun-source-pins",
+  "sourceOfExpectedHashes": "v5 GPU v8 review-results.json, from run 37894942277; copied production source is hash-pinned in remote-ci-v1/snapshot-files.json",
+  "bodyAssets": {
+    "maleGlbSha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "femaleGlbSha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "clipPackSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "v8ReplayedAppearanceGeometry": {
+    "male": {
+      "fullSourceTriangles": 9002,
+      "displayedMaskTriangles": 3472,
+      "sourceIndexSha256": "79b4e3472be5c05dd2efa25489c1afe2123c18cceef200503286980283ddba47",
+      "replayedCurrentAppearanceAttributesDigestSha256": "bda2d3a659178815b2f6aa8a30d08d1770df2ca960f2ff6a379cc594dd94170a",
+      "positionSha256": "af9c5b717e01c08b2b11bc9812ad918cd038c839c152d29c47a351c30a727a49",
+      "skinIndexSha256": "5c4f35ed48e303b1c4c9174b3a3adc6c4754fc9e26d05ab7df3f9b9dddec71c1",
+      "skinWeightSha256": "cfaaa1e6f7b7adb3cc34fe1564c2ccb7276dda3dfe6abbdfd5aa8dc2f66e3542"
+    },
+    "female": {
+      "fullSourceTriangles": 9002,
+      "sourceIndexSha256": "e0408556d154313ecf88ef19ec5b4007e2e0fa7cf4334a75fc06ec3847e6b04a",
+      "replayedCurrentAppearanceAttributesDigestSha256": "ee2a47a6bad9eadfda31bd8b4c825ab965758aa9f02198826243320d64e1d70a",
+      "positionSha256": "ea97278a37ec084b50971decd8c15e5a300d9dab2de6f486a1930b012767ccff",
+      "skinIndexSha256": "929da4f8d5e0dd7b106baf606b6caa78e071ebc6271ea7d2cc1de6a4225346b0",
+      "skinWeightSha256": "fefa99a7e5a3c5c1126c7c02df02a4f976f946e050bb195858b588bb7858dd76"
+    }
+  },
+  "knownV8ScreenshotNetworkEvent": "One canceled net::ERR_ABORTED request was recorded; the current data-only recipe records canceled events but fails on uncanceled network errors.",
+  "limitations": [
+    "The v8 attribute digest hashes sorted attribute-name/attribute-bytes pairs; it is not a full geometry or rig signature.",
+    "The coverage probe must re-verify exact hashes against both newly loaded production bodies before reporting any measurement.",
+    "These pins do not imply the source shell or candidate collar is visually accepted."
+  ]
+}

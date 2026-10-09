@@ -110,12 +110,32 @@ inode. See [sealed-stage-postrename-acceptance.json](sealed-stage-postrename-acc
 The first remote post-rename test failed because it compared an initial inode
 after two replacements and Linux had reused the freed inode. The corrected test
 checks each immediately displaced identity, preserving the runtime implementation.
-That failed run37985320742 remains recorded. Final exact-source remote acceptance
-and source review remain before using the retained private checkpoint. All ten admitted destinations must appear once
+That failed run37985320742 remains recorded. Corrected exact52611 audit37985609841
+is terminal SUCCESS on Node22.19 and24 with17 retained-stage checks each, all
+source/engine checks and strict types. Explicit Astra accepted the unchanged
+runtime/caller source at54af; only tests/receipts/progress changed at52611.
+The all-ten seal is now running as [run37986247546](https://github.com/kromate/joinallworld/actions/runs/37986247546),
+with immutable tooling52611 and exact game sourcec1f. Original retained-store
+upgrade remains pending final full CI, package and native readiness. All ten admitted destinations must appear once
 across the three source-exported journey batches and each must have both map and
 geometry assets. The original actor, store, port, key and funding intent remain
 unchanged; no new stage or upload has started. Exact sealed Worker, native map
 and guide behavior, save continuity and final release gates remain required.
+
+The same bounded runner acquired and compiled Conakry, Guinea, on source52611.
+One 8 MiB reservation covers 925,069 actual OpenStreetMap source bytes. The city
+retains 350 building footprints and 56 roads within the existing caps. Its first
+window completed in 2.810 seconds; exact-contract resume completed in 0.665 seconds
+and reused the same source and request ledger without another download. All 15
+older cached-source and ledger files still match their accepted bytes. A Luna
+source review confirms every asset/source pin, country containment and explicit
+location/height caveats. The earlier operator attempt supplied report.json instead
+of contract.json; it was refused before mutation and remains recorded. See
+[starter-operations-new-source-acceptance.json](starter-operations-new-source-acceptance.json)
+and [sixth-one.json](playable-africa-rollout/batches/sixth-one.json). This is one
+bounded central-city starter, not national coverage or production admission.
+Twenty-six foreign starter cities are now sourced; production still exposes five
+plus Nigeria. Runtime registration remains Integration's separate next phase.
 
 Earlier candidate `f54d5f79df0c0672036bba900be1ac6d6dee7d0e` passed 130 focused
 checks and 12 overlapping checks. Its

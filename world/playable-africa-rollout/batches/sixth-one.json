@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "base": "52611b45318ee0f33dc0c6a38e01f32eecb62d85",
+  "scope": "Sixth source batch: Conakry, Guinea. Separate runtime admission and hosted/native/budget/production acceptance required.",
+  "destinationIds": [
+    "conakry"
+  ],
+  "registeredInProduction": false,
+  "geometry": {
+    "buildings": 350,
+    "roads": 56,
+    "extent": "Bounded central OpenStreetMap sample; country-clipped land includes a pinned airport dataset point; not all Conakry or Guinea."
+  },
+  "sourceSummaries": [
+    {
+      "city": "conakry",
+      "countryIso2": "GN",
+      "osmSha256": "a0851ab3a3a9e65b766962e8b70e8070dac11425e6a083a0b69914960231c060",
+      "sourceBytes": 925069,
+      "retained": {
+        "buildings": 350,
+        "roads": 56
+      }
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "world/playable-africa-rollout/receipts/conakry.json",
+      "bytes": 3493,
+      "sha256": "a9289c71ffb0d2f5977c02050017fd9a4e28197e99c98bf16ac705b7a718672e"
+    },
+    {
+      "path": "src/game/cities/conakry/facts.ts",
+      "bytes": 1466,
+      "sha256": "6b8bec06aec28f4bece3ea7f51c036a76317c343eb8de19b0ea033d27ed1e50f"
+    },
+    {
+      "path": "src/game/cities/conakry/geometry.ts",
+      "bytes": 91262,
+      "sha256": "83d91303a72ae7af8481bbcbbd7c5892851ce77dcf3946a65cb193a55e798967"
+    },
+    {
+      "path": "src/game/cities/conakry/index.ts",
+      "bytes": 258,
+      "sha256": "4be5cc7e584e3f0b185e70dd8169563e312ba6cde1826cd2c38e841a360b92b6"
+    },
+    {
+      "path": "src/game/cities/conakry/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/conakry/map.ts",
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    }
+  ],
+  "validation": {
+    "actualSerialRun": true,
+    "actualNetworkAcquisition": true,
+    "actualExactContractResume": true,
+    "sourceAndEngine": "passed both windows",
+    "original15CacheAndLedgerFilesUnchanged": true,
+    "newRequestLedgerUnchangedAcrossResume": true,
+    "productionReady": false
+  },
+  "dependencyNotes": [
+    "Use existing Africa factory and starter content provider; no shared catalogue or route registration is included.",
+    "Original Nigeria maps, IDs, saves and travel rules were not modified.",
+    "Natural Earth city role may be stale; pinned OurAirports point is not current airport operational certification.",
+    "Building heights are estimates when OSM heights are absent; 21 OSM relations omitted and 350 of 576 observed footprints retained within existing caps."
+  ]
+}

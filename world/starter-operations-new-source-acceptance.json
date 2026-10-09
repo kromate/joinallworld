@@ -1,0 +1,76 @@
+{
+  "format": "africa-starter-new-source-execution-acceptance-v1",
+  "checkedAt": "2026-10-09T20:17:18.984622+00:00",
+  "sourceSha": "52611b45318ee0f33dc0c6a38e01f32eecb62d85",
+  "contractSha256": "ebe4f60c5b80f7be66396176364cd37cf19aac3f7d985b14528294ea16022a54",
+  "countryIso2": "GN",
+  "cityId": "conakry",
+  "runBudgets": {
+    "maxCountries": 1,
+    "maxReservedBytes": 8388608,
+    "perCityReservationBytes": 8388608,
+    "reservedPotentialBytes": 8388608,
+    "seconds": 180
+  },
+  "windows": [
+    {
+      "budgetSeconds": 180,
+      "elapsedSeconds": 2.81,
+      "finishedAt": "2026-10-09T20:15:44Z",
+      "startedAt": "2026-10-09T20:15:41Z"
+    },
+    {
+      "budgetSeconds": 180,
+      "elapsedSeconds": 0.665,
+      "finishedAt": "2026-10-09T20:16:24Z",
+      "startedAt": "2026-10-09T20:16:23Z"
+    }
+  ],
+  "sourceBytes": 925069,
+  "sourceSha256": "a0851ab3a3a9e65b766962e8b70e8070dac11425e6a083a0b69914960231c060",
+  "buildingsRetained": 350,
+  "roadsRetained": 56,
+  "sourceAndEngineChecks": "passed on initial acquisition and exact-contract resume",
+  "sourceAndRequestLedgerUnchangedAcrossResume": true,
+  "original15CacheAndLedgerFilesUnchanged": true,
+  "sourceFiles": {
+    "world/playable-africa-rollout/receipts/conakry.json": {
+      "bytes": 3493,
+      "sha256": "a9289c71ffb0d2f5977c02050017fd9a4e28197e99c98bf16ac705b7a718672e"
+    },
+    "src/game/cities/conakry/facts.ts": {
+      "bytes": 1466,
+      "sha256": "6b8bec06aec28f4bece3ea7f51c036a76317c343eb8de19b0ea033d27ed1e50f"
+    },
+    "src/game/cities/conakry/geometry.ts": {
+      "bytes": 91262,
+      "sha256": "83d91303a72ae7af8481bbcbbd7c5892851ce77dcf3946a65cb193a55e798967"
+    },
+    "src/game/cities/conakry/index.ts": {
+      "bytes": 258,
+      "sha256": "4be5cc7e584e3f0b185e70dd8169563e312ba6cde1826cd2c38e841a360b92b6"
+    },
+    "src/game/cities/conakry/content.ts": {
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    "src/game/cities/conakry/map.ts": {
+      "bytes": 241,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    }
+  },
+  "logPins": {
+    ".cache/world-build/evidence/starter-runner-conakry-first.log": "f27be8411cd5ba704881e5b920cfb141328161fabb0615e9e63262367b5f692f",
+    ".cache/world-build/evidence/starter-runner-conakry-contract-resume.log": "f27be8411cd5ba704881e5b920cfb141328161fabb0615e9e63262367b5f692f"
+  },
+  "earlierResumeRefusal": "Operator supplied report.json instead of immutable contract.json; refused before mutation. Original refusal retained separately.",
+  "productionCountryCount": 6,
+  "registeredInProduction": false,
+  "releaseReady": false,
+  "limitations": [
+    "One bounded central-city sample, not all Conakry or Guinea.",
+    "Heights are estimates where source measurements are absent; climate and exact facades remain unavailable.",
+    "Pinned dataset city role and airport point are not current government or airport operational certification.",
+    "No shared runtime admission, browser or physical-phone acceptance."
+  ]
+}

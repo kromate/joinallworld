@@ -1,0 +1,11 @@
+# Home journey fixture source review
+
+The home fixture is built against frozen 3af commit `c1f7c1f7369139ce559292318ba9842c23a28267` and the staged overlay at `owned-src/src/scene/home-scene.ts`. It uses `buildHomeScene`, the actual `src/life.ts` rule engine, the saved Yaba starter room, and the provider already called by the home scene. It does not create a second actor or substitute a test-only pose implementation.
+
+The starter room contains the real `spring-bed` and `plastic-chair`. The fixture purchases the actual `bathtub` and `shower-cubicle` with `home.furniture-buy`, then uses `home-sleep` from `bedroom`, `home-sit-down` from `living`, `home-long-soak` from `bathroom`, and the ported `bath` action from `bathroom`. Each activity is started and completed through `dispatch` and `advanceLife`; the home scene receives those actual life states and is stepped through its own `stepCrowd`/`settleCrowd` lifecycle.
+
+The staged scene's `nativeRestSupport` queries the rendered furniture meshes for bed, tub, and shower surfaces, and the scene support callbacks also expose the rendered chair and floor to the prepared-body solver. Those callbacks are necessary inputs to a native candidate; their existence alone does not prove contact. The fixture records requested action, active/completed rule state, visible meshes, skeleton motion signatures, draw counts, and stage images. It deliberately reports `nativePoseContactAccepted: false`; a successful browser run is diagnostic evidence, not approval to route production home actors through the candidate provider.
+
+The two identity records are the already-used male casual creator fixture look and the real female office look from Lagos regular `mrs-okafor`. They are passed through the existing `HomeScene.setPlayer` identity boundary in one scene instance. This demonstrates family/look replacement handling; it does not claim these are private user-save records.
+
+The source-only workflow template is `home-journey-workflow.yml`. It stages the owned overlay on the exact frozen base, then typechecks, runs the upstream home rules test, bundles, and renders in bounded remote CI. No `.github` workflow or production source is changed by this fixture.

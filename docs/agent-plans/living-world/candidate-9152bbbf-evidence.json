@@ -1,0 +1,62 @@
+{
+  "candidateSha": "9152bbbf5852b131d7ecd127b80196d8497de5fc",
+  "observedAt": "2026-10-09T12:46:26.727673+00:00",
+  "runId": 37930419206,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/37930419206",
+  "overallStatus": "in_progress",
+  "accepted": false,
+  "jobs": {
+    "release-policy": "success",
+    "host-acceptance": "success",
+    "ui-regressions": "success",
+    "full (22)": {
+      "status": "in_progress",
+      "typecheck": "failure",
+      "build": "success",
+      "size:download": "failure",
+      "npm test": "in_progress"
+    },
+    "full (24)": {
+      "status": "in_progress",
+      "typecheck": "failure",
+      "build": "success",
+      "size:download": "failure",
+      "npm test": "in_progress"
+    }
+  },
+  "hostEvidence": {
+    "jobId": 113819493036,
+    "localLog": "/tmp/joinallworld-consolidated-host-9152bbbf.log",
+    "sha256": "b4d6325f93c8caf39a64c378e94c2f5eb5e9cfc36dc9582f4bc74f3c1204414f",
+    "teachingNode": {
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0
+    },
+    "livingWorker": {
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    },
+    "teachingWorkerCaseMs": 3297.182625,
+    "scope": "Actual failed final wage SQL insert, unchanged session/reward state and no success receipt, original concurrent intent retry with one wage, two same-SQLite gate-off restarts. This is host fixture evidence, not browser or production acceptance."
+  },
+  "remaining": [
+    "Compiler repair must pass on the next exact SHA",
+    "Diagnose and repair download budget failures without raising caps",
+    "Complete Node 22/24 and Worker suites",
+    "Native desktop and mobile gameplay completion",
+    "Exact staging and compatible recovery gates",
+    "WORLD-controlled release and live gameplay/save observations",
+    "Live Goalmatic contracts and consent integration"
+  ],
+  "production": {
+    "checkedAt": "2026-10-09T12:46:26.727673+00:00",
+    "health": "ok",
+    "build": "joinallworld-a44629b38be751a9ad446051564",
+    "changedByThisProgramme": false
+  },
+  "ownership": "Integration exclusively assembles shared source; WORLD uploads. Root reviews and records evidence."
+}

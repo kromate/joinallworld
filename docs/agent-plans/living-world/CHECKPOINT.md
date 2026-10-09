@@ -1,5 +1,15 @@
 # Living-world implementation checkpoint
 
+## Status checkpoint — 2026-10-09T12:46:26.727673+00:00
+
+Combined candidate `9152bbbf5852b131d7ecd127b80196d8497de5fc`, [CI37930419206](https://github.com/kromate/joinallworld/actions/runs/37930419206), remains in progress. Release policy, host acceptance and UI regression jobs pass. Teaching engine/Node passes 12/12 and Living Worker passes 10/10 with zero skips. The applied SQL final-wage failure case now passes, including rollback, no success receipt, original concurrent retry and gate-off SQLite restarts. [Exact scoped receipt](candidate-9152bbbf-evidence.json).
+
+Both full Node 22/24 jobs pass build but fail compiler and download budgets; their npm suites are still running. Failure causes and complete suite results remain pending. No acceptance waiver, cap increase, duplicate source writer or unchanged restart. Integration owns the next repaired source and the one bounded local gameplay QA window. Root has no runtime edits or local heavy process.
+
+Production health remains `joinallworld-a44629b38be751a9ad446051564`. No programme or Goalmatic release. Native desktop completion last failed; mobile was not reached. Staging, compatible recovery, live journey observations and full programme requirements remain open. Private Goalmatic dev remains `0533aac3000c038143064b82403db9701140110c`; a newly open unrelated PR was observed, with no live integration contract acceptance. Adapter remains disabled.
+
+Root published source/evidence base is `08d030c2bf2babada2df5f24aa4685908a9864b8`. Native goal remains active. Next bounded action: collect terminal full-job failures, review measured size attribution and the repaired combined SHA, then verify native desktop/mobile gameplay before WORLD release. This durable record does not execute while the runtime is stopped.
+
 ## Latest checkpoint — 9 October 2026, 12:02 UTC
 
 Exact consolidated `c199ac0db0a34d976d097b176e41b7e78cb7c07b`, [CI37929205877](https://github.com/kromate/joinallworld/actions/runs/37929205877), is TERMINALFAIL. Scoped teaching engine/Node12/12PASS0skip1393.922257ms and8LivingWorkerfiles10/10PASS0skip89521.860853ms; actual ON→OFF SQLite lesson restart case2370.076731ms now verified. Full22/24 compiler, UI433/432pass/1fail and voice Node/Worker fail; full build/budgets/source/server/Worker waves not reached after compiler. [Exact receipt](candidate-c199ac0d-evidence.json). Root inspected repaired null/false guards, validated callback IDs, typed fixtures, positive economy opt-in and SheetHost shallow ref; runtime/compiler retests remain required.

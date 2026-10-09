@@ -1,0 +1,89 @@
+diff --git a/src/types/life.ts b/src/types/life.ts
+--- a/src/types/life.ts
++++ b/src/types/life.ts
+@@ -1083,6 +1083,8 @@
+   internal?: boolean
+   /** createLife only: the input is the server's own stored copy, so an invalid saved action may be settled (refunded or charged). */
+   trustedSave?: boolean
++  /** Trusted host opt-in for creating new interactive teaching markers; absent/false keeps legacy timed shifts. */
++  interactiveTeachingStarts?: boolean
+   /** Server-only collector for exact player-wallet mutations. */
+   money?: (effect: MoneyEffect) => void
+ }
+diff --git a/src/game/util.ts b/src/game/util.ts
+--- a/src/game/util.ts
++++ b/src/game/util.ts
+@@ -136,8 +136,9 @@
+  */
+ export function makeContext(input: LifeContextInit & { cityId: string }): LifeContext {
+   if (!input || typeof input.cityId !== 'string') throw new TypeError('A registered city context is required');
+-  const { now = 0, cityId, seed = '', salt, ...rest } = input;
++  const { now = 0, cityId, seed = '', salt, interactiveTeachingStarts, ...rest } = input;
+   if (!isCityId(cityId)) throw new TypeError(`Unknown city context: ${cityId}`);
+   const text = `${cityId}|${seed}`;
+-  return { now, cityId, rng: makeRng(typeof salt === 'string' && salt ? keyedSeed(salt, text) : text), ...rest };
++  return { now, cityId, rng: makeRng(typeof salt === 'string' && salt ? keyedSeed(salt, text) : text), ...rest,
++    ...(interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {}) };
+ }
+diff --git a/src/game/systems/career.ts b/src/game/systems/career.ts
+--- a/src/game/systems/career.ts
++++ b/src/game/systems/career.ts
+@@ -327,7 +327,7 @@
+   if (short.length) {
+     return { kind: 'home', venue: 'home', text: `Before your shift you need ${short.map(([need, minimum]) => `${cap(need)} ${minimum}+ (you have ${Math.floor(state.needs[need])})`).join(' and ')}. Eat and rest at Home first.` };
+   }
+-  const facts = job.id === 'teaching' ? `Diagnose, explain and check the learner’s answer to earn ${naira(pay)}.`
++  const facts = job.id === 'teaching' && ctx.interactiveTeachingStarts === true ? `Diagnose, explain and check the learner’s answer to earn ${naira(pay)}.`
+     : `It takes ${shift.duration} seconds and pays ${naira(pay)}.`;
+   if (state.activeAction) return { kind: 'wait', text: `Finish what you are doing, then go to ${place} for today’s shift. ${facts}` };
+   const opening = workplaceOpening(job, state, ctx);
+@@ -430,7 +430,7 @@
+   on: {
+     'activity.started'(state, { def }, ctx) {
+       if (def?.careerTrack) state.career.shiftStartDay = lagosTime(nowOf(state, ctx)).day;
+-      if (def?.careerTrack === 'teaching' && state.activeAction?.kind === 'activity') {
++      if (def?.careerTrack === 'teaching' && ctx.interactiveTeachingStarts === true && state.activeAction?.kind === 'activity') {
+         state.career.teachingGeneration += 1;
+         state.activeAction.teachingGeneration = state.career.teachingGeneration;
+         state.activeAction.teaching = newTeachingPractice();
+@@ -542,6 +542,7 @@
+     const pay = job ? payOf(state, job) : 0;
+     return {
+       job, // legacy field: the raw catalogue entry
++      interactiveTeachingStarts: ctx.interactiveTeachingStarts === true,
+       teaching: state.activeAction?.kind === 'activity' && state.activeAction.teaching && state.activeAction.teachingGeneration
+         ? { generation: state.activeAction.teachingGeneration, practice: { ...state.activeAction.teaching } } : null,
+       ...(state.career.dilemmas ? { dilemma: dilemmaView(state) } : {}),
+diff --git a/src/types/view.ts b/src/types/view.ts
+--- a/src/types/view.ts
++++ b/src/types/view.ts
+@@ -193,6 +193,8 @@
+ }
+ 
+ export interface CareerView {
++  /** Whether the trusted host will create new interactive teaching markers for this view’s actions. */
++  interactiveTeachingStarts: boolean
+   teaching: { generation: number; practice: import('../game/living-world/teaching-state.ts').TeachingPractice } | null
+   /** Legacy field: the raw catalogue entry of the job held. */
+   job: JobDefinition | null
+@@ -1170,7 +1172,7 @@
+   inventory: ['items'],
+   needs: ['feelings', 'low', 'mood', 'order'],
+   career: [
+-    'auto', 'busy', 'chips', 'completedShifts', 'dilemma', 'employed', 'hours', 'icon', 'id', 'isTrack', 'job', 'jobs', 'label', 'level',
++    'auto', 'busy', 'chips', 'completedShifts', 'dilemma', 'employed', 'hours', 'icon', 'id', 'interactiveTeachingStarts', 'isTrack', 'job', 'jobs', 'label', 'level',
+     'levels', 'next', 'nextShift', 'pay', 'performance', 'role', 'rules', 'schedule', 'shift', 'shifts', 'step', 'today',
+     'teaching', 'topOfLadder', 'weeklyPay', 'workplace',
+   ],
+diff --git a/src/app/features/jobs/JobsApp.vue b/src/app/features/jobs/JobsApp.vue
+--- a/src/app/features/jobs/JobsApp.vue
++++ b/src/app/features/jobs/JobsApp.vue
+@@ -111,7 +111,7 @@
+           <li :class="openNow(job) === null ? '' : openNow(job) ? 'is-open' : 'is-closed'"><span aria-hidden="true"><GameIcon inline name="clock" /></span>{{ job.hours }}</li>
+           <li v-if="openNow(job) !== null" :class="openNow(job) ? 'is-open' : 'is-closed'"><span aria-hidden="true"><GameIcon inline :name="openNow(job) ? 'good' : 'moon'" /></span>{{ openNow(job) ? 'Open now' : 'Closed now' }}</li>
+           <li v-if="job.track && job.skill"><span aria-hidden="true"><GameIcon inline name="book" /></span>Skill: {{ cap(job.skill) }}</li>
+-          <li><span aria-hidden="true"><GameIcon inline name="clock" /></span>{{ job.id === 'teaching' ? 'Interactive teaching shift' : `${job.duration}s shift` }}</li>
++          <li><span aria-hidden="true"><GameIcon inline name="clock" /></span>{{ job.id === 'teaching' && career.interactiveTeachingStarts ? 'Interactive teaching shift' : `${job.duration}s shift` }}</li>
+         </ul>
+         <p class="jobs-summary">{{ job.summary }}<template v-if="job.track"> Top role: {{ job.topRole }}.</template></p>
+         <template v-for="control in [jobControl(job, career, offline, ask)]" :key="control.kind">

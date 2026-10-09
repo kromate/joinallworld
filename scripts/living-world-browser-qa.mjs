@@ -328,6 +328,7 @@ class BrowserPage {
     }
     requireCondition(focused, 'keyboard could not reach the requested lesson control')
     await send('keyDown', 'Enter', 'Enter', 13)
+    await send('char', 'Enter', 'Enter', 13)
     await send('keyUp', 'Enter', 'Enter', 13)
   }
 

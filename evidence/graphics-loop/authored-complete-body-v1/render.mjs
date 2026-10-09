@@ -95,6 +95,20 @@ try {
       await evaluate(`window.characterReview.sample(${sourceClip==='lie-down'?2.0:.5},1.5707963267948966)`);
       await capture(body+'-source-'+sourceClip+'-profile');
     }
+    await evaluate("window.characterReview.set({motionMode:'sourceclip',sourceClip:'sit',seatMode:'uncorrected',outfit:'casual',expression:'neutral',focus:'body'})");
+    await evaluate('window.characterReview.sample(.5,1.5707963267948966)');
+    await capture(body+'-source-sit-negative-control-profile');
+    await evaluate("window.characterReview.set({seatMode:'surface-corrected'})");
+    await evaluate('window.characterReview.sample(.5,1.5707963267948966)');
+    await capture(body+'-source-sit-surface-corrected-diagnostic-profile');
+    for(const motionMode of ['sourceclip','direction']){
+      await evaluate(`window.characterReview.set(${JSON.stringify({outfit:'casual',motionMode,pose:'idle',focus:'body',expression:'neutral',wristMode:'source'})})`);
+      for(const sourceClip of ['idle','interact','cook','eat','drink']){
+        await evaluate(`window.characterReview.set(${JSON.stringify({sourceClip})})`);
+        await evaluate('window.characterReview.sample(.5,1.5707963267948966)');
+        await capture(body+'-matched-'+motionMode+'-'+sourceClip+'-profile');
+      }
+    }
     for(const wristMode of ['rest','source']){
       await evaluate(`window.characterReview.set(${JSON.stringify({wristMode,outfit:'casual',motionMode:'sourceclip',focus:'body',expression:'neutral'})})`);
       for(const sourceClip of ['cook','eat','drink']){

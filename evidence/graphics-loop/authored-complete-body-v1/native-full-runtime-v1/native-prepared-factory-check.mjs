@@ -169,15 +169,10 @@ try {
   assert.deepEqual(sourceBones.map((bone) => [bone.name, ...bone.position.toArray(), ...bone.quaternion.toArray()]), restSignature, 'placing and reposing the player leaves the NPC skeleton unchanged');
   parent.remove(player.object);
 
-  outcome = {
-    status: 'pass',
-    actors: actors.length,
-    kits: kits.length,
-    sharedKitPlayerNpc: true,
-    bodyKeys: actors.map((actor) => actor.preparedMetrics.bodyKey),
+  const landmarkBaseline = { bodyKeys: actors.map((actor) => actor.preparedMetrics.bodyKey),
+    modes: actors.map((actor) => actor.preparedMetrics.retargetMode), actorCount: actors.length,
     sourceClips: player.preparedMetrics.sourceClipCount,
     sampleContacts: actors.map((actor) => actor.sampleFootContacts().map((contact) => contact.side)),
-    raisedSupport: { targetMetres: 0.04, toleranceMetres: 0.004, families: actors.map((actor) => actor.preparedMetrics.bodyKey) },
     authoredMetrics: actors.map((actor) => ({
       heightMetres: actor.preparedMetrics.standingHeightMetres,
       bodyTriangles: actor.preparedMetrics.authoredBodyTriangles,
@@ -186,7 +181,83 @@ try {
       shoeTriangles: actor.preparedMetrics.shoeTriangles,
       wardrobeDraws: actor.wardrobe.addedDrawCalls,
       warnings: actor.preparedMetrics.wardrobeWarnings,
-    })),
+    })) };
+  assert.deepEqual(landmarkBaseline.modes, ['landmarks', 'landmarks'], 'omitted mode keeps both existing actors on landmark retargeting');
+  // Release the landmark pair before loading candidate actors so this bounded CPU check does not
+  // hold four fully dressed skeletons at once. The shared Kit retains only its intended templates.
+  for (const actor of actors.splice(0)) actor.dispose();
+  const directionCoverage = [];
+  for (const [family, look, seed] of [
+    ['male', savedLook('man', 'casual', 'lowcut'), 'direction-male'],
+    ['female', savedLook('woman', 'office', 'afro'), 'direction-female'],
+  ]) {
+    const directionActor = await prepareNativeSkinnedBody({ kit: sharedKit, seed, look, sceneScale: 1, retargetMode: 'directions' });
+    actors.push(directionActor);
+    try {
+      assert.equal(directionActor.preparedMetrics.bodyKey, family);
+      assert.equal(directionActor.preparedMetrics.retargetMode, 'directions');
+      directionActor.place(0, 0, 0, 0);
+      directionActor.show('idle', false);
+      let contacts = directionActor.sampleFootContacts();
+      assert.deepEqual(contacts.map(({ side }) => side).sort(), ['left', 'right']);
+      assert.ok(contacts.every(({ y }) => Number.isFinite(y) && y >= -0.004), `${family}: direction idle has no sole below floor`);
+      const unreachableFloor = directionActor.solveFeet(() => 0.5);
+      assert.equal(unreachableFloor.limited, true, `${family}: direction mode retains the unreachable-shoe-floor negative control`);
+      directionActor.show('idle', false);
+      directionActor.show('walk', true);
+      directionActor.step(0.08);
+      contacts = directionActor.sampleFootContacts();
+      assert.ok(contacts.every(({ y }) => Number.isFinite(y) && y >= -0.004), `${family}: crossfade is followed by actual-shoe floor solving`);
+      directionActor.settle();
+      const phases = [0, Math.PI / 2, Math.PI, Math.PI * 1.5];
+      for (const phase of phases) {
+        directionActor.stride(phase, false, 0);
+        contacts = directionActor.sampleFootContacts();
+        assert.ok(contacts.every(({ y }) => Number.isFinite(y) && y >= -0.004), `${family}: direction walk phase ${phase} has no sole below floor`);
+        const planted = directionActor.solveFeet(() => 0);
+        assert.equal(planted.limited, false, `${family}: actual shoe contacts reach the flat floor at phase ${phase}`);
+        assert.ok(planted.maxError <= 0.004, `${family}: planted shoe residual at phase ${phase} is <=4 mm`);
+      }
+      parent.position.set(0.31, 0.12, -0.21); parent.rotation.set(0, 0.42, 0); parent.scale.setScalar(1.04);
+      parent.add(directionActor.object);
+      directionActor.place(0.2, 0.04, -0.3, 0.37);
+      directionActor.show('idle', false);
+      const raised = directionActor.sampleFootContacts();
+      assert.ok(Math.abs(Math.min(...raised.map(({ y }) => y)) - 0.04) <= 0.004,
+        `${family}: direction floor is host-derived under translated/scaled/yaw parent`);
+      parent.remove(directionActor.object);
+      directionActor.place(0, 0, 0, 0); directionActor.show('idle', false);
+      directionActor.show('interact', false);
+      directionActor.workOn(0, 0, 0, 0);
+      for (const pose of ['cook', 'eat', 'drink']) directionActor.show(pose, false);
+      const workContacts = directionActor.sampleFootContacts();
+      assert.ok(workContacts.length === 2 && workContacts.every(({ y }) => Number.isFinite(y) && y >= -0.004),
+        `${family}: floor-supported interact/work poses retain finite supported shoes`);
+      assert.throws(() => directionActor.stride(0.4, false, 0.2), /only supports flat-floor/,
+        `${family}: stairs remain an explicit hard refusal in direction mode`);
+      assert.throws(() => directionActor.show('sit', false), /requires verified furniture\/body support/,
+        `${family}: seated pose remains an explicit hard refusal in direction mode`);
+      directionCoverage.push({ family, mode: directionActor.preparedMetrics.retargetMode, walkPhases: phases,
+        floorPoseCoverage: ['idle', 'walk', 'interact', 'cook', 'eat', 'drink'], unsupported: ['stairs', 'sit', 'lie', 'soak', 'wash'] });
+    } finally {
+      directionActor.dispose();
+      const index = actors.indexOf(directionActor);
+      if (index >= 0) actors.splice(index, 1);
+    }
+  }
+
+  outcome = {
+    status: 'pass',
+    actors: landmarkBaseline.actorCount,
+    kits: kits.length,
+    sharedKitPlayerNpc: true,
+    bodyKeys: landmarkBaseline.bodyKeys,
+    defaultRetargetModes: landmarkBaseline.modes,
+    directionCoverage,
+    sourceClips: landmarkBaseline.sourceClips,
+    sampleContacts: landmarkBaseline.sampleContacts,
+    raisedSupport: { targetMetres: 0.04, toleranceMetres: 0.004, families: landmarkBaseline.bodyKeys },
+    authoredMetrics: landmarkBaseline.authoredMetrics,
     inputSkinAliases: ['skin4', 'skin1'],
     sourceAssetPinsVerified: assetPins.length,
     source: sourceStats,

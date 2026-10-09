@@ -248,7 +248,8 @@ try {
         includedMeshes: includedMeshes.map((mesh) => ({ name: mesh.name, vertices: mesh.geometry.getAttribute('position').count,
           indexCount: mesh.geometry.index.count, visible: mesh.visible })),
         excludedHair: skinned(root).filter((mesh) => !includedMeshes.includes(mesh)).map((mesh) => mesh.name),
-        surfaceProbe: { candidateVerticesPerActor: solver.metrics.supportCandidateVertices,
+        surfaceProbe: { candidateVerticesPerActor: solver.metrics.bodySurfaceCandidateVertices,
+          footSupportVertices: solver.metrics.supportCandidateVertices,
           fullIndexedVerticesPerFrame: clipRows[0].phases[0].fullIndexOracle.verticesVisited },
         clips: clipRows, transition, presentationMetrics: presentation.metrics, footwearMetrics: footwear.metrics });
     } finally {
@@ -267,7 +268,7 @@ try {
   });
 }
 assert.deepEqual(geometrySnapshot(bodyTemplate), bodyTemplateSnapshot, 'shared source Body geometry remains byte-identical');
-const result = { status: violations.length ? 'REJECTED_FULL_INDEX_ORACLE' : 'PASS_DIAGNOSTIC_ONLY', method: 'Actual image-stripped production Body/clip GLBs, native family correction, authored casual/office presentation and mobile footwear adapters. Compared cached sparse body-surface support against an independent full indexed-vertex scan over the selected visible Body, outfit, and shoe meshes.',
+const result = { status: violations.length ? 'REJECTED_FULL_INDEX_ORACLE' : 'PASS_DIAGNOSTIC_ONLY', method: 'Actual image-stripped production Body/clip GLBs, native family correction, authored casual/office presentation and mobile footwear adapters. Compared current body-surface bounds against an independent full indexed-vertex scan over the selected visible Body, outfit, and shoe meshes.',
   inputs: { body: { path: path.relative(repo, bodyPath), bytes: bodyBytes.length, sha256: pins.body }, clipPack: { path: path.relative(repo, clipPath), bytes: clipBytes.length, sha256: pins.clip }, shoes: { path: 'evidence/graphics-loop/authored-complete-body-v1/authored-footwear/out/shoes01-mobile.glb', bytes: shoeBytes.length, sha256: pins.shoes },
     outfits: Object.fromEntries(Object.entries(outfitInputs).map(([name, input]) => [name, { path: path.relative(repo, input.path), bytes: readFileSync(input.path).length, sha256: input.sha256 }])),
     familyCorrectionSha256: sha(readFileSync(path.join(here, 'native-family-rig-correction.ts'))), bodySurfaceSha256: sha(readFileSync(path.join(here, 'native-body-surface.ts'))), clipSolverSha256: sha(readFileSync(path.join(here, 'native-clip-solver.ts'))), presentationSha256: sha(readFileSync(presentationPath)), footwearAdapterSha256: sha(readFileSync(footwearPath)) },

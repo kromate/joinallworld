@@ -117,6 +117,12 @@ for(const family of ['man','woman']){
       const applied=actor.variant==='position'
         ? actor.controller.applyFrame(frame,{kind:'flat-feet',floorY:0})
         : actor.controller.apply(frame);
+      if (actor.variant === 'direction') {
+        const sourceDelta = frame.landmarks.Hips.map((value, index) => value - sampler.restLandmarks.Hips[index]);
+        const expectedLength = Math.hypot(...sourceDelta) * actor.controller.metrics.statureRatio;
+        assert.ok(Math.abs(Math.hypot(...applied.sourceHipTranslation) - expectedLength) < 1e-8,
+          `${family}/${clipName}: hip translation preserves measured distance instead of normalizing it`);
+      }
       actor.parent.updateWorldMatrix(true,false);actor.parent.updateMatrixWorld(true);
       const errors=[];
       for(const [sourceParent,sourceChild] of pairs){

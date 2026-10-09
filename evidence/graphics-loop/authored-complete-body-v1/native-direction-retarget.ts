@@ -18,7 +18,7 @@ export interface DirectionRetargetResult {
 }
 
 export interface NativeDirectionRetargeter {
-  apply(frame: NativeSourceFrame): DirectionRetargetResult;
+  apply(frame: NativeSourceFrame, floorY?: number): DirectionRetargetResult;
   restore(): void;
   dispose(): void;
   readonly metrics: Readonly<{ sourceTorsoLength: number; targetTorsoLength: number; statureRatio: number; footCandidates: Readonly<{ left: number; right: number }> }>;
@@ -166,10 +166,13 @@ export function createNativeDirectionRetargeter(root: THREE.Group, options: Dire
     updateWorld();
   }
 
+  function mappedVector(sourceVector: THREE.Vector3): THREE.Vector3 {
+    return targetBasis.right.clone().multiplyScalar(sourceVector.dot(sourceBasis.right))
+      .addScaledVector(targetBasis.up, sourceVector.dot(sourceBasis.up))
+      .addScaledVector(targetBasis.forward, sourceVector.dot(sourceBasis.forward));
+  }
   function mappedDirection(sourceDirection: THREE.Vector3): THREE.Vector3 {
-    return targetBasis.right.clone().multiplyScalar(sourceDirection.dot(sourceBasis.right))
-      .addScaledVector(targetBasis.up, sourceDirection.dot(sourceBasis.up))
-      .addScaledVector(targetBasis.forward, sourceDirection.dot(sourceBasis.forward)).normalize();
+    return mappedVector(sourceDirection).normalize();
   }
 
   function setRootLocalBonePoint(bone: THREE.Bone, desiredRootPoint: THREE.Vector3): void {
@@ -206,11 +209,12 @@ export function createNativeDirectionRetargeter(root: THREE.Group, options: Dire
     return result;
   }
 
-  function apply(frame: NativeSourceFrame): DirectionRetargetResult {
+  function apply(frame: NativeSourceFrame, floorY = options.floorY): DirectionRetargetResult {
+    if (!Number.isFinite(floorY)) throw new Error('Direction retarget floor must be finite');
     if (disposed) throw new Error('Direction retargeter is disposed');
     restore();
     const sourcePose = pointsFromLandmarks(frame.landmarks);
-    const hipDelta = mappedDirection(sourcePose.Hips.clone().sub(sourceRest.Hips)).multiplyScalar(statureRatio);
+    const hipDelta = mappedVector(sourcePose.Hips.clone().sub(sourceRest.Hips)).multiplyScalar(statureRatio);
     const restHip = targetRest.Hips;
     setRootLocalBonePoint(rootHip, restHip.clone().add(hipDelta));
     for (const [sourceParent, sourceChild, targetParent, targetChild] of PAIRS) {
@@ -219,7 +223,7 @@ export function createNativeDirectionRetargeter(root: THREE.Group, options: Dire
       aim(bones.get(targetParent)!, bones.get(targetChild)!, mappedDirection(sourceVector));
     }
     const solesBefore = measureSoles();
-    const shiftY = options.floorY - Math.min(solesBefore.left, solesBefore.right);
+    const shiftY = floorY - Math.min(solesBefore.left, solesBefore.right);
     const hipWorld = rootHip.getWorldPosition(new THREE.Vector3()); hipWorld.y += shiftY;
     rootHip.parent!.worldToLocal(hipWorld); rootHip.position.copy(hipWorld); updateWorld();
     const soles = measureSoles();

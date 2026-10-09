@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v27]
+    branches: [codex/graphics-complete-authored-body-v28]
 permissions:
   contents: read
 jobs:
@@ -74,9 +74,15 @@ jobs:
         run: |
           node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/bundle-prepared-factory.mjs
           node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/native-prepared-factory-check.mjs
-      - name: Compare sparse contact against full indexed geometry
+      - name: Compare complete bounds against independent indexed geometry
         if: always()
         run: node --max-old-space-size=128 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-body-surface-check.mjs
+      - name: Verify batched exact skinning kernel and remote CPU cost
+        if: always()
+        run: node --max-old-space-size=160 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/exactkernel-check.mjs
+      - name: Check bounded seat pose adapter refusals
+        if: always()
+        run: node --max-old-space-size=32 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-seat-pose-adapter-check.mjs
       - name: Audit posterior pelvis seat surface
         if: always()
         run: node --max-old-space-size=160 --experimental-strip-types evidence/graphics-loop/authored-complete-body-v1/native-seat-surface-check.mjs
@@ -127,6 +133,7 @@ jobs:
             evidence/graphics-loop/authored-complete-body-v1/authored-presentation-check-result.json
             evidence/graphics-loop/authored-complete-body-v1/native-rigid-footwear-check-result.json
             evidence/graphics-loop/authored-complete-body-v1/native-body-surface-check-result.json
+            evidence/graphics-loop/authored-complete-body-v1/exactkernel-check-result.json
             evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/*result.json
             evidence/graphics-loop/authored-complete-body-v1/native-full-runtime-v1/remote-results/
             evidence/graphics-loop/authored-complete-body-v1/native-wrist-orientation/*result.json

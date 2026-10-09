@@ -40,7 +40,7 @@ export interface NativeClipSolver {
   measureBodyBounds(): Readonly<{ bodyMinY: number; bodyMaxY: number }>;
   restore(): void;
   dispose(): void;
-  readonly metrics: Readonly<{ sourceTorsoLength: number; targetTorsoLength: number; statureRatio: number; footCandidateVertices: Readonly<Record<Side, number>>; supportCandidateVertices: number }>;
+  readonly metrics: Readonly<{ sourceTorsoLength: number; targetTorsoLength: number; statureRatio: number; footCandidateVertices: Readonly<Record<Side, number>>; supportCandidateVertices: number; bodySurfaceCandidateVertices: number; bodySurfaceSourceVertices: number }>;
 }
 export interface NativeClipSolverOptions {
   readonly sourceRest: SourceLandmarks;
@@ -401,6 +401,6 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
   return { applyFrame, measureBodyBounds, restore,
     metrics: Object.freeze({ sourceTorsoLength, targetTorsoLength, statureRatio,
       footCandidateVertices: Object.freeze({ left: footCandidates.left.length, right: footCandidates.right.length }),
-      supportCandidateVertices: supportVertices.length }),
+      supportCandidateVertices: supportVertices.length, bodySurfaceCandidateVertices: bodySurface.candidateCount, bodySurfaceSourceVertices: bodySurface.sourceVertexCount }),
     dispose() { if (!disposed) { resetBones(); disposed = true; } } };
 }

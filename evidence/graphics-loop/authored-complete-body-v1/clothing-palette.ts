@@ -12,7 +12,7 @@ export interface AuthoredClothingPaletteColors {
 }
 
 export interface AuthoredClothingPalette {
-  /** Private material clone. It uses the source material's standard lighting and roughness. */
+  /** Private solid-color PBR clone. It keeps source roughness/normal settings, not its painted map. */
   readonly material: THREE.MeshStandardMaterial;
   /** Update this actor's palette, including already compiled WebGL programs. */
   setColors(colors: AuthoredClothingPaletteColors): void;
@@ -42,10 +42,13 @@ function asLinearColor(value: THREE.ColorRepresentation): THREE.Color {
 }
 
 /**
- * Create an actor-private palette material for the connected authored casual suit.
+ * Create an actor-private solid-color palette material for the connected authored casual suit.
  * The source garment has no shirt/pants material seam: this blends palette color
- * over a 2 mm band centered at authored rest-local Y=0.91 m. It does not alter
- * vertices, indices, skinning, morphs, or the underlying body mask.
+ * over a 2 mm band centered at authored rest-local Y=0.91 m. The neutral asset's
+ * baked color map is intentionally removed on this plain-fabric path, since
+ * multiplying that map by the palette reintroduces unrelated orange/black patches.
+ * Roughness and normal settings remain sourced from the authored PBR material.
+ * No vertices, indices, skinning, morphs, or body masks are changed.
  */
 export function createAuthoredClothingPalette(
   source: THREE.MeshStandardMaterial,
@@ -57,8 +60,12 @@ export function createAuthoredClothingPalette(
   const shaders = new Set<PaletteShader>();
   let disposed = false;
 
-  // The authored GLB material is a neutral palette placeholder. Make the shader
-  // palette the base color while keeping the source's map, normals and lighting.
+  // The authored GLB material is a neutral palette placeholder with painted color
+  // pixels. Plain fabric uses the actor's selected uniform palette, so detach only
+  // the private clone from that base-color map and any vertex-color channel; never
+  // dispose/mutate the shared map or geometry attribute.
+  material.map = null;
+  material.vertexColors = false;
   material.color.setRGB(1, 1, 1);
   const previousOnBeforeCompile = material.onBeforeCompile;
   material.onBeforeCompile = (shader, renderer) => {

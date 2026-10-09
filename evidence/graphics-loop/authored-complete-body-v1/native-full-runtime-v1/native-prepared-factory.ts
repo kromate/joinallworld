@@ -21,6 +21,7 @@ import shoeHideMap from '../authored-footwear/out/shoes01-body-hide-map.json';
 import { createAuthoredLookBridge } from '../authored-look-bridge.ts';
 import { createNativeSourceLandmarkSampler, type NativeSourceLandmarkSampler, type NativeWristSourceFrame } from '../native-source-sampler.ts';
 import { createNativeClipSolver, type NativeClipSolver, type NativeClipSupport } from '../native-clip-solver.ts';
+import { createNativeDirectionRetargeter, type NativeDirectionRetargeter } from '../native-direction-retarget.ts';
 import { DOOR, INTO, OUT, SEATED, STAIRS, STILL, WORK_INTO, WORK_OUT } from '../../../../src/scene/body/poses.ts';
 
 export interface NativePreparedFactoryOptions {
@@ -29,6 +30,8 @@ export interface NativePreparedFactoryOptions {
   readonly look: unknown;
   readonly seed: string;
   readonly sceneScale: number;
+  /** Experimental retarget choice. `landmarks` remains the default until direction-mode pixels pass review. */
+  readonly retargetMode?: 'landmarks' | 'directions';
   /** Seat callback receives parent-local host coordinates and must return support in world coordinates. */
   readonly seatSupport?: (seat: NativeSeat, actor: THREE.Group) => NativePoseSupport;
   /** Object-use callback receives parent-local host coordinates and must return support in world coordinates. */
@@ -44,6 +47,7 @@ export interface NativePreparedMetrics {
   readonly hairTriangles: number;
   readonly shoeTriangles: number;
   readonly sourceClipCount: number;
+  readonly retargetMode: 'landmarks' | 'directions';
   readonly wardrobeWarnings: readonly string[];
   readonly contactSource: 'authored-footwear-sole';
   readonly contactLimitations: readonly string[];
@@ -368,7 +372,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
   return { sample, solve, dispose() { disposed = true; contacts.length = 0; } };
 }
 
-function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, contacts: ReturnType<typeof createAuthoredFootContacts>, hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string) {
+function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, contacts: ReturnType<typeof createAuthoredFootContacts>, hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, resolveClip: (name: string) => string) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
   let blend: { clip: string; fade: number; from: Map<THREE.Bone, { p: THREE.Vector3; q: THREE.Quaternion; s: THREE.Vector3 }> } | null = null;
@@ -378,11 +382,40 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
       if (['sit', 'lie', 'soak', 'wash'].includes(context.pose)) {
         throw new Error(`Native ${context.pose} requires verified furniture/body support; this prepared factory has no accepted support for that pose`);
       }
-      const applied = solver.applyFrame(frame, worldSupport(root, context.support));
-      if (applied.supportStatus !== 'feet-supported') {
-        throw new Error(`Native ${context.pose} pose is not contact-supported (${applied.supportStatus}; clip ${frame.clipName})`);
+      if (directionRetargeter) {
+        if (context.support.kind !== 'flat-feet') {
+          throw new Error(`Native direction retargeting only supports flat-floor poses; ${context.support.kind} remains unsupported`);
+        }
+        const mappedSupport = worldSupport(root, context.support);
+        if (mappedSupport.kind !== 'flat-feet') throw new Error(`Native direction retargeting rejected transformed floor support for ${context.pose}`);
+        // Captured after family rest correction and before any pose. This keeps native bone
+        // translations/lengths; actual shoe contacts, not the retargeter's body-sole estimate,
+        // own the host floor correction below.
+        directionRetargeter.apply(frame, mappedSupport.floorY);
+      } else {
+        const applied = solver.applyFrame(frame, worldSupport(root, context.support));
+        if (applied.supportStatus !== 'feet-supported') {
+          throw new Error(`Native ${context.pose} pose is not contact-supported (${applied.supportStatus}; clip ${frame.clipName})`);
+        }
       }
-      if (blend && blend.clip === context.clip) {
+      const support = context.support;
+      const heightAt = support.kind === 'flat-feet'
+        ? () => worldFloorToParent(root, support.floorY)
+        : support.kind === 'stair-feet'
+          ? (contact: FootContact) => worldFloorToParent(root, contact.side === 'left' ? support.leftFloorY : support.rightFloorY)
+          : null;
+      const solveAuthoredContacts = () => {
+        if (!heightAt) return null;
+        let result = contacts.solve(heightAt);
+        for (let pass = 0; pass < 2 && result.limited && result.maxError > 0.002; pass++) result = contacts.solve(heightAt);
+        if (directionRetargeter && (result.limited || result.maxError > 0.004)) {
+          throw new Error(`Native direction ${context.pose} shoe contact failed (${result.maxError} m, limited=${result.limited})`);
+        }
+        return result;
+      };
+      if (directionRetargeter) solveAuthoredContacts();
+      const crossfading = Boolean(blend && blend.clip === context.clip);
+      if (crossfading && blend) {
         const amount = THREE.MathUtils.smoothstep(context.seconds, 0, blend.fade);
         for (const [bone, source] of blend.from) {
           bone.position.lerpVectors(source.p, bone.position.clone(), amount);
@@ -394,18 +427,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
       // Crossfade changes leg transforms after the source solver has applied
       // its contact correction. Re-solve against the same host support so the
       // final blended pose, rather than the pre-blend pose, owns floor contact.
-      const support = context.support;
-      const heightAt = support.kind === 'flat-feet'
-        ? () => worldFloorToParent(root, support.floorY)
-        : support.kind === 'stair-feet'
-          ? (contact: FootContact) => worldFloorToParent(root, contact.side === 'left' ? support.leftFloorY : support.rightFloorY)
-          : null;
-      if (heightAt) {
-        let contactResult = contacts.solve(heightAt);
-        for (let pass = 0; pass < 2 && contactResult.limited && contactResult.maxError > 0.002; pass++) {
-          contactResult = contacts.solve(heightAt);
-        }
-      }
+      if (!directionRetargeter || crossfading) solveAuthoredContacts();
       wrists.apply(frame);
       hands.apply(context.pose === 'walk' || context.pose === 'jog' ? 'walk' : ['cook','cookLow','eat','drink'].includes(context.pose) ? 'grip' : 'relaxed', context.seconds);
       return true;
@@ -416,7 +438,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
       blend = { clip, fade: Math.max(0.001, crossfadeSeconds), from };
     },
     endTransition(): void { blend = null; },
-    restore(): void { solver.restore(); blend = null; },
+    restore(): void { directionRetargeter?.restore(); solver.restore(); blend = null; },
   };
 }
 
@@ -431,6 +453,8 @@ function mapWardrobe(presentation: AuthoredPresentation): WardrobeMetrics {
 export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOptions): Promise<NativePreparedSkinnedBody> {
   const { kit, seed } = options;
   if (!Number.isFinite(options.sceneScale) || options.sceneScale <= 0) throw new Error('Scene scale must be positive and finite');
+  const retargetMode = options.retargetMode ?? 'landmarks';
+  if (retargetMode !== 'landmarks' && retargetMode !== 'directions') throw new Error(`Unsupported native retarget mode ${String(retargetMode)}`);
   const initialLook = requireCompleteLook(options.look, seed);
   let kitClosed = false;
   let runtime: NativeFullRuntime | undefined;
@@ -445,6 +469,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
   let contacts: ReturnType<typeof createAuthoredFootContacts> | undefined;
   let hands: ReturnType<typeof createNativeHandPoseController> | undefined;
   let wrists: ReturnType<typeof createNativeWristOrientationController> | undefined;
+  let directionRetargeter: NativeDirectionRetargeter | undefined;
   let actorDisposed = false;
   let unregisterFactoryClose: (() => boolean) | undefined;
   const clean = (errors: unknown[] = []): void => {
@@ -456,6 +481,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       () => hands?.dispose(),
       () => wrists?.dispose(),
       () => solver?.dispose(),
+      () => directionRetargeter?.dispose(),
       () => footwear?.dispose(),
       () => presentation?.dispose(),
       () => eyes?.dispose(),
@@ -508,6 +534,10 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     const motion = await characterKit.authoredCharacterAssets.loadMotionRig();
     checkKit();
     sampler = createNativeSourceLandmarkSampler(motion.root.clone(true), motion.clips);
+    // Capture the corrected family rest basis before any pose application or actor-specific look mutation.
+    if (retargetMode === 'directions') {
+      directionRetargeter = createNativeDirectionRetargeter(character.object, { sourceRest: sampler.restLandmarks, floorY: 0 });
+    }
     hands = createNativeHandPoseController(character.object);
     wrists = createNativeWristOrientationController(character.object, sampler.restWristRotations);
     solver = createNativeClipSolver(character.object, { sourceRest: sampler.restLandmarks, footSurface: footwear.object });
@@ -561,7 +591,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
         return sampler!.sampleClip(actual, seconds, 'clamp');
       },
     };
-    const posePort = createPosePort(character.object, sampler, solver, contacts, hands, wrists, resolveClip);
+    const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, contacts, hands, wrists, resolveClip);
     const native = createNativeFullRuntime({
       actor: {
         object: character.object,
@@ -617,6 +647,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       hairTriangles: presentation.metrics.hairTriangles,
       shoeTriangles: footwear.metrics.triangles,
       sourceClipCount: sampler.durations.size,
+      retargetMode,
       wardrobeWarnings: footwear.metrics.warnings,
       contactSource: 'authored-footwear-sole',
       contactLimitations: Object.freeze([

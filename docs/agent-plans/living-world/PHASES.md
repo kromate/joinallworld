@@ -1,5 +1,13 @@
 # Phases, tests and release sessions
 
+## Current acceptance evidence — 9 October 2026, 06:33 UTC
+
+All phase exits and A1–A10 remain OPEN. First connected journey incomplete; no programme/Goalmatic release or exact-SHA staging acceptance. Source **aaea9fd8fc715df70d9577dda59cebf33a6a867f** includes reviewed public main1b2c1d2e and programme repairs. [Full CI37893825921](https://github.com/kromate/joinallworld/actions/runs/37893825921) IN PROGRESS: policy, Node22/24 compiler/build PASS; mandatory complete source/server/Worker waves pending. [Exact tracker](candidate-aaea9fd8-evidence.json).
+
+Scoped CPU/source checks: 19/19 runner/boarding/release; 8/8 compiler-repair runner; 9/9 NPC inventory; exact merged aaea release boundary5/5, all zero skips. dbf/51aa full runs failed; compiler configuration and fixture repairs are published, not retroactive acceptance. No mapped vehicle/animated clearance, production restocking/wallet, device/multiplayer/save or live Goalmatic proof follows. New restock handler is excluded/unrun pending strict projection repair and actual wallet/custody/lifecycle gates. Existing unchanged download budgets remain enforced.
+
+Production health06:33UTC: ok=true, buildjoinallworld-a44629b38be751a9ad446051564; sourcea44629b38be751a9ad446051564704f6c3c6ae1b. Health is not gameplay/save continuity. [Current checkpoint and next bounded action](CHECKPOINT.md).
+
 ## Current evidence — 9 October 2026, 06:02 UTC
 
 Native goal remains ACTIVE. The preceding status turn was a verified wait on the exact live CI handle. This turn made progress through reviewed implementation `75ad421adc6d1eb455c9f7a258bc63e315ce5955`, actual NPC helper failure/repair/retests, bounded independent integration review and fresh full-run evidence. Sol remains verified `gpt-6.1-sol/high`; the three existing workers remain verified `gpt-6-luna/high`, with exclusive scopes and terminal handoffs. Sol integrates/releases; WORLD retains the shared uploader.

@@ -1,5 +1,17 @@
 # Living-world ranked backlog
 
+## Current priority — 9 October 2026, 06:33 UTC
+
+Supersedes older current/live entries. Source aaea9fd8fc715df70d9577dda59cebf33a6a867f published; [full run 37893825921](https://github.com/kromate/joinallworld/actions/runs/37893825921) IN PROGRESS. Both Node22/24 compiler/build and release policy PASS; full source/server/Worker results pending. No programme deployment; production remains a44629b38be751a9ad446051564704f6c3c6ae1b.
+
+1. Retain exact full CI handle through terminal; accept only all six mandatory source/server/Worker jobs plus policy. Preserve canonical cases, provider limits and size caps; diagnose measured failures without unchanged retries.
+2. Repair untracked restock service's shallow corrupt/future inventory projection, then bounded transaction tests. Register real fixed wallet callback and trusted parcel custody only after once-only rollback, keyed privacy/account lifecycle/restart and consumption contracts pass. Current spy/test route is not gameplay acceptance.
+3. Resolve continuous actor/door/interior/support geometry for mapped boarding and vehicle movement. Published descriptor and six CPU checks do not authorize entry or routes.
+4. Complete actual desktop/mobile, solo/multiplayer, interrupted-save and exact-SHA staging gates before existing release process; coordinate sole WORLD uploader and verify production saves/observation.
+5. Preserve Goalmatic lane: private published contracts inspected; consented workspace/installation/schema/create-upsert/revocation binding still needed. Disabled/mock adapter remains accurately labelled. Continue education, professions, civic and real-business connections from observed gameplay after accepted slices.
+
+All phase exits/A1–A10 OPEN. Latest memory WARNING2 defers optional heavy local starts. Preserve primary changes and saves. [Current checkpoint](CHECKPOINT.md), [exact tracker](candidate-aaea9fd8-evidence.json).
+
 ## Current evidence — 9 October 2026, 06:02 UTC
 
 Native goal remains ACTIVE. The preceding status turn was a verified wait on the exact live CI handle. This turn made progress through reviewed implementation `75ad421adc6d1eb455c9f7a258bc63e315ce5955`, actual NPC helper failure/repair/retests, bounded independent integration review and fresh full-run evidence. Sol remains verified `gpt-6.1-sol/high`; the three existing workers remain verified `gpt-6-luna/high`, with exclusive scopes and terminal handoffs. Sol integrates/releases; WORLD retains the shared uploader.

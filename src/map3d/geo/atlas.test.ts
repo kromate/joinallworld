@@ -218,8 +218,8 @@ test('open versus coming soon is derived from the additive city catalogue', () =
   assert.equal(ghana.planned, null, 'the opened Ghana route is no longer advertised as planned');
   assert.equal(ghana.city?.id, 'accra');
   assert.equal(ghana.tag, 'Open');
-  assert.equal(ghana.routes.length, 1, 'the country card offers its real capital flight');
-  assert.equal(ghana.routes[0]?.live, false, 'the host must still authorize departure');
+  assert.deepEqual(ghana.routes.filter(route => route.mode === 'air').map(route => [route.to, route.live]), [['accra', false]], 'the country card offers its capital flight under host departure authority');
+  assert.ok(ghana.routes.every(route => !route.live), 'other generated connections also require host authorization');
   const rows = nigeria.features.map((feature) => regionInfo({ kind: 'state', id: feature.id }, { ...context, feature })).sort(listOrder);
   assert.deepEqual(rows.slice(0, 5).map((row) => row.id), ['abia', 'adamawa', 'akwa-ibom', 'anambra', 'bauchi']);
 });

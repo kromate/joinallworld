@@ -145,6 +145,7 @@ jobs:
           printf 'WORLD_TEST_PYTHON=%s\n' "$(python -c 'import os,sys; print(os.path.realpath(sys.executable))')" >> "$GITHUB_ENV"
           node -p 'JSON.stringify(process.versions)' > diagnostic-evidence/node-runtime.json
           python -c 'import json,platform,sys; print(json.dumps({"python":sys.version,"platform":platform.platform()}))' > diagnostic-evidence/python-runtime.json
+          python -c 'import json,os,pathlib,stat,sys; p=pathlib.Path(sys.executable).resolve(strict=True); s=p.lstat(); print(json.dumps({"path":str(p),"uid":s.st_uid,"gid":s.st_gid,"runnerUid":os.getuid(),"mode":oct(stat.S_IMODE(s.st_mode)),"links":s.st_nlink,"bytes":s.st_size,"device":s.st_dev,"inode":s.st_ino}))' > diagnostic-evidence/python-file-identity.json
       - name: Actual macOS inherited flock helper
         env:
           PYTHONPATH: world/tooling

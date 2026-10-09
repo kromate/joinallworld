@@ -42,7 +42,7 @@ def run_helper(root, descriptor, expected=None, arguments=None):
 
 class CampaignInheritedLeaseTests(unittest.TestCase):
     def root(self, parent, name):
-        path = Path(parent)/name; path.mkdir(mode=0o700); return path
+        path = Path(parent).resolve(strict=True)/name; path.mkdir(mode=0o700); return path
 
     def test_same_open_description_stays_locked_until_parent_closes_final_reference(self):
         with tempfile.TemporaryDirectory(prefix="world-campaign-lease-") as temp:

@@ -1,0 +1,473 @@
+{
+  "schema": "allworld-v8-phase-stable-import-closure-v1",
+  "entry": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+  "method": "Recursive local value-import closure plus direct type-only imports from every runtime-reachable module. Bare package imports are covered by package-lock.json. Type-only dependency internals are not traversed because they are erased from emitted runtime.",
+  "runtimeFiles": [
+    {
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+      "bytes": 45302,
+      "sha256": "0c4f84d1fbda4efbda1ae1eb5608b41505e3706c21c1f5d740e9a30b7533952c"
+    },
+    {
+      "path": "src/game/wardrobe/catalogue.ts",
+      "bytes": 4655,
+      "sha256": "d353e15e8817a9d6ee6990a003e553cdce957badcba98942ce6a23e4e4539d84"
+    },
+    {
+      "path": "src/game/wardrobe/rules.ts",
+      "bytes": 4867,
+      "sha256": "1f8bcbd76da268032f0f33dccf8318d218086679cb4aaf384581ec1f7854780d"
+    },
+    {
+      "path": "src/scene/avatar-look.ts",
+      "bytes": 7467,
+      "sha256": "cf65f259386708d80be763e0a068e1e767433a73978fd30a2fbf7b2bbd80c257"
+    },
+    {
+      "path": "src/scene/body/animation-pose.ts",
+      "bytes": 1255,
+      "sha256": "24498791f072471bfc81bd1f01b41d8807c411fbc54b17e91a70d9fccd6dfb6b"
+    },
+    {
+      "path": "src/scene/body/appearance.ts",
+      "bytes": 16963,
+      "sha256": "8aa5fcbaeb04f8609f8921659444d80aa64295c76c77b9cf813fb947548d8b91"
+    },
+    {
+      "path": "src/scene/body/assets/base-body-female.glb",
+      "bytes": 132296,
+      "sha256": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c"
+    },
+    {
+      "path": "src/scene/body/assets/base-body-male.glb",
+      "bytes": 133756,
+      "sha256": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686"
+    },
+    {
+      "path": "src/scene/body/assets/clip-pack.glb",
+      "bytes": 338060,
+      "sha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+    },
+    {
+      "path": "src/scene/body/face-shader.ts",
+      "bytes": 1735,
+      "sha256": "344ede555027388dad22ef30680c620ffccf4b407a12373ad8a88807d09bd368"
+    },
+    {
+      "path": "src/scene/body/files.ts",
+      "bytes": 537,
+      "sha256": "8bb40d928867aedd689db2c855cb8c666761b89313de649354902f8bdffb1d5c"
+    },
+    {
+      "path": "src/scene/body/foot-contact.ts",
+      "bytes": 9374,
+      "sha256": "6f98bb61fde23e51016148d06136fcb0b46b0b9d5c03cefc73c7ad47745df8c6"
+    },
+    {
+      "path": "src/scene/body/manifest.ts",
+      "bytes": 3053,
+      "sha256": "8f53bf4cffe93e45bbea62c9b728e32ed2ebbb676e060a1e6fb2776673a75af3"
+    },
+    {
+      "path": "src/scene/body/poses.ts",
+      "bytes": 2415,
+      "sha256": "7f328e67ec33d1c94516d76746635e45d8f90a01416176534fa0448d4e797d5e"
+    },
+    {
+      "path": "src/scene/body/shared-resource-cache.ts",
+      "bytes": 2748,
+      "sha256": "c6b8828689b11d5c228665be2a84e9cfae37f64ae71de0da37358bf1060967b4"
+    },
+    {
+      "path": "src/scene/body/skinned.ts",
+      "bytes": 24451,
+      "sha256": "4fa64261e15a7e104f527ad4782aff2bb80c53d559dc7a448d95d797d92c6bdb"
+    },
+    {
+      "path": "src/scene/body/tint.ts",
+      "bytes": 3157,
+      "sha256": "7f00fffa5d35c878ff9d26c988d0d0542ae5f24ca14e3b1caf045fed1d67960f"
+    },
+    {
+      "path": "src/scene/build.ts",
+      "bytes": 15211,
+      "sha256": "02249a6dde42e9c2b0ecff24fac440dd055b91645b3b5b9ca3b314965e5da84d"
+    },
+    {
+      "path": "src/scene/kit.ts",
+      "bytes": 5238,
+      "sha256": "c1d88627e7c4c7a9418c28f3e716215465e6c9fced1c4b85c5e44a4c751b064a"
+    },
+    {
+      "path": "src/scene/wardrobe/geometry.ts",
+      "bytes": 49067,
+      "sha256": "1b2dbfc4dd9557b6216eceb01ddd5f9bcf4119e48788a220589444902d5458ec"
+    },
+    {
+      "path": "src/scene/wardrobe/renderer.ts",
+      "bytes": 11138,
+      "sha256": "4b053592fdc8efdad0e9cd5071cb853594c2db53829cd74116bf578f439f82da"
+    },
+    {
+      "path": "src/types/avatar.ts",
+      "bytes": 5182,
+      "sha256": "612d9ccf82dbd32a06926ca79dc837bbc3179ffa11ddb8ec45a9f312ec76eb6d"
+    }
+  ],
+  "typeOnlyFiles": [
+    {
+      "path": "src/scene/characters.ts",
+      "bytes": 111334,
+      "sha256": "abf273d014427e7b0e805af97dfe6d6a1db456be5f14a66d9f55c8c98ed44b7e"
+    },
+    {
+      "path": "src/scene/types.ts",
+      "bytes": 12611,
+      "sha256": "0efcf5e2a08aec59c4301a0eed5f20fc0fc4e62f4b96116ad9a53b3b0f000aa6"
+    }
+  ],
+  "edges": [
+    {
+      "from": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+      "specifier": "/src/game/wardrobe/rules.ts",
+      "to": "src/game/wardrobe/rules.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+      "specifier": "/src/scene/avatar-look.ts",
+      "to": "src/scene/avatar-look.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+      "specifier": "/src/scene/body/skinned.ts",
+      "to": "src/scene/body/skinned.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+      "specifier": "/src/scene/kit.ts",
+      "to": "src/scene/kit.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+      "specifier": "/src/scene/wardrobe/geometry.ts?raw",
+      "to": "src/scene/wardrobe/geometry.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "evidence/graphics-loop/crowd-lod-market-v8/phase-stable-diagnostic-v1/viewer-market-gpu-v8-phase-stable.ts",
+      "specifier": "/src/scene/wardrobe/renderer.ts?raw",
+      "to": "src/scene/wardrobe/renderer.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/game/wardrobe/catalogue.ts",
+      "specifier": "../../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/game/wardrobe/rules.ts",
+      "specifier": "../../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/game/wardrobe/rules.ts",
+      "specifier": "../../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/game/wardrobe/rules.ts",
+      "specifier": "../../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/game/wardrobe/rules.ts",
+      "specifier": "./catalogue.ts",
+      "to": "src/game/wardrobe/catalogue.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/game/wardrobe/rules.ts",
+      "specifier": "./catalogue.ts",
+      "to": "src/game/wardrobe/catalogue.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/avatar-look.ts",
+      "specifier": "../game/wardrobe/rules.ts",
+      "to": "src/game/wardrobe/rules.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/avatar-look.ts",
+      "specifier": "../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/avatar-look.ts",
+      "specifier": "../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/avatar-look.ts",
+      "specifier": "./build.ts",
+      "to": "src/scene/build.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/avatar-look.ts",
+      "specifier": "./types.ts",
+      "to": "src/scene/types.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/appearance.ts",
+      "specifier": "../../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/appearance.ts",
+      "specifier": "../../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/appearance.ts",
+      "specifier": "../avatar-look.ts",
+      "to": "src/scene/avatar-look.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/face-shader.ts",
+      "specifier": "./manifest.ts",
+      "to": "src/scene/body/manifest.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/files.ts",
+      "specifier": "./assets/base-body-female.glb?url",
+      "to": "src/scene/body/assets/base-body-female.glb",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/files.ts",
+      "specifier": "./assets/base-body-male.glb?url",
+      "to": "src/scene/body/assets/base-body-male.glb",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/files.ts",
+      "specifier": "./assets/clip-pack.glb?url",
+      "to": "src/scene/body/assets/clip-pack.glb",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "../../game/wardrobe/rules.ts",
+      "to": "src/game/wardrobe/rules.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "../../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "../avatar-look.ts",
+      "to": "src/scene/avatar-look.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "../kit.ts",
+      "to": "src/scene/kit.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "../wardrobe/renderer.ts",
+      "to": "src/scene/wardrobe/renderer.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "../wardrobe/renderer.ts",
+      "to": "src/scene/wardrobe/renderer.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./animation-pose.ts",
+      "to": "src/scene/body/animation-pose.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./appearance.ts",
+      "to": "src/scene/body/appearance.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./face-shader.ts",
+      "to": "src/scene/body/face-shader.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./files.ts",
+      "to": "src/scene/body/files.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./foot-contact.ts",
+      "to": "src/scene/body/foot-contact.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./foot-contact.ts",
+      "to": "src/scene/body/foot-contact.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./manifest.ts",
+      "to": "src/scene/body/manifest.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./manifest.ts",
+      "to": "src/scene/body/manifest.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./poses.ts",
+      "to": "src/scene/body/poses.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./poses.ts",
+      "to": "src/scene/body/poses.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./shared-resource-cache.ts",
+      "to": "src/scene/body/shared-resource-cache.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./tint.ts",
+      "to": "src/scene/body/tint.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/skinned.ts",
+      "specifier": "./tint.ts",
+      "to": "src/scene/body/tint.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/body/tint.ts",
+      "specifier": "../avatar-look.ts",
+      "to": "src/scene/avatar-look.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/tint.ts",
+      "specifier": "./manifest.ts",
+      "to": "src/scene/body/manifest.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/body/tint.ts",
+      "specifier": "./manifest.ts",
+      "to": "src/scene/body/manifest.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/build.ts",
+      "specifier": "./kit.ts",
+      "to": "src/scene/kit.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/build.ts",
+      "specifier": "./types.ts",
+      "to": "src/scene/types.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/kit.ts",
+      "specifier": "./types.ts",
+      "to": "src/scene/types.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/wardrobe/geometry.ts",
+      "specifier": "../../game/wardrobe/catalogue.ts",
+      "to": "src/game/wardrobe/catalogue.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/wardrobe/geometry.ts",
+      "specifier": "../../game/wardrobe/catalogue.ts",
+      "to": "src/game/wardrobe/catalogue.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/wardrobe/geometry.ts",
+      "specifier": "../../types/avatar.ts",
+      "to": "src/types/avatar.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/wardrobe/geometry.ts",
+      "specifier": "../characters.ts",
+      "to": "src/scene/characters.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/wardrobe/renderer.ts",
+      "specifier": "../../game/wardrobe/catalogue.ts",
+      "to": "src/game/wardrobe/catalogue.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/wardrobe/renderer.ts",
+      "specifier": "./geometry.ts",
+      "to": "src/scene/wardrobe/geometry.ts",
+      "kind": "runtime"
+    },
+    {
+      "from": "src/scene/wardrobe/renderer.ts",
+      "specifier": "./geometry.ts",
+      "to": "src/scene/wardrobe/geometry.ts",
+      "kind": "type-only"
+    },
+    {
+      "from": "src/scene/wardrobe/renderer.ts",
+      "specifier": "./geometry.ts",
+      "to": "src/scene/wardrobe/geometry.ts",
+      "kind": "type-only"
+    }
+  ]
+}

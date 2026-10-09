@@ -1,14 +1,16 @@
 # Independent world-data builder
 
-Current same-Ledger campaign and retained-index audit integration passes384 tests,
-three release-policy checks and World TypeScript on exact remote source4c0b96cb.
-See [CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md),
-[FEATURE-INDEX-AUDIT-OPERATIONS.md](FEATURE-INDEX-AUDIT-OPERATIONS.md) and latest
-[PROGRESS.md](PROGRESS.md). Actual portable fixtures verify complete membership,
-live-token completion, stale-token replay and read-only saved evidence. Global
-shards/country geometry, the full interruption/corruption list, rendering
-integration and phone proof remain open; no gameplay or Nigeria data changed.
-Counts below are historical stages.
+Current campaign audit/session integration, bounded shard-plan codec and atomic
+opaque reservations pass406 tests, three release-policy checks and World
+TypeScript on exact source19dbfe16/run37893670937. See
+[INDEX-SHARD-RESERVATION-OPERATIONS.md](INDEX-SHARD-RESERVATION-OPERATIONS.md).
+See [INDEX-SHARD-PLAN-SPEC.md](INDEX-SHARD-PLAN-SPEC.md),
+[CAMPAIGN-INDEX-AUDIT-OPERATIONS.md](CAMPAIGN-INDEX-AUDIT-OPERATIONS.md) and latest
+[PROGRESS.md](PROGRESS.md). The planner remains unadmitted/uncompiled; actual
+plan admission, membership-bound child bindings and finite global accounting are
+next. Country geometry, full interruption/corruption acceptance,
+rendering integration and phone proof remain open. No gameplay/Nigeria data
+changed. Counts below are historical stages.
 
 Frozen execution and atomic engine startup now pass **103 Python checks,23 engine
 checks and World TypeScript**. Actual SIGKILL startup recovery at four boundaries

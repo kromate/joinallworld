@@ -5,11 +5,25 @@ import { featureIndexObservationPin } from './feature-index.ts';
 import type { FeatureIndexCaptureInput, FeatureIndexSessionAuditInput } from './feature-index-session.ts';
 import { parseFeatureIndexSessionLine, validateFeatureIndexSessionDone, validateFeatureIndexSessionReady,
   validateFeatureIndexSessionResult, prepareFeatureIndexSessionConfiguration, prepareFeatureIndexSessionAudit,
-  validateFeatureIndexSessionAuditResult } from './feature-index-session.ts';
+  validateFeatureIndexSessionAuditResult, parseOwnedPythonRssSample } from './feature-index-session.ts';
 import { assertValidatedFeatureIndexAuditProof, featureIndexAuditWorkerDigest } from './feature-index-session.ts';
 
 const hash = 'a'.repeat(64);
 const indexHash = 'b'.repeat(64);
+
+test('owned Python RSS parser accepts only a bounded one-row sample and permits zero only for zombie state', () => {
+  assert.equal(parseOwnedPythonRssSample('1234 S\n'), 1234);
+  assert.equal(parseOwnedPythonRssSample('0 Z+'), 0);
+  assert.equal(parseOwnedPythonRssSample('0 Zs+\n'), 0);
+  assert.throws(() => parseOwnedPythonRssSample('0 S'), /zombie/i);
+  assert.throws(() => parseOwnedPythonRssSample('-1 Z'), /malformed/i);
+  assert.throws(() => parseOwnedPythonRssSample('9007199254740992 R'), /integer bound/i);
+  assert.throws(() => parseOwnedPythonRssSample('12 R\n13 S\n'), /one process row/i);
+  assert.throws(() => parseOwnedPythonRssSample('12 ?'), /malformed/i);
+  assert.throws(() => parseOwnedPythonRssSample('0 Zgarbage'), /malformed/i);
+  assert.throws(() => parseOwnedPythonRssSample('12 R0'), /malformed/i);
+  assert.throws(() => parseOwnedPythonRssSample(`${'9'.repeat(257)} Z`), /output bound/i);
+});
 
 test('pure report parsing and matching hash-shaped JSON cannot create an actual audit proof', () => {
   assert.throws(() => assertValidatedFeatureIndexAuditProof({ format: 'feature-index-session-audit-proof-v1' }), /not been validated/i);

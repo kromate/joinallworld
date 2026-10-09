@@ -1,5 +1,75 @@
 # Implementation checkpoint — 9 October 2026
 
+Latest exact-source diagnostic **37893670937** at
+**19dbfe1664c533c1f667badd12eb8934fc02c2f7** is terminal **SUCCESS**:
+**406 tests +3 release-policy checks =409 distinct checks, plus World TypeScript**.
+Downloaded22 artifacts verified against exact source, suite counts and unchanged
+raw/storage preflight; see [index-shard-reservation-acceptance.json](index-shard-reservation-acceptance.json).
+Python265 =19audit/11session/77affected/158remaining; Node141 remains
+22protocol/kernel/58contracts/8actual SDK-campaign/39legacy campaign-Ledger/
+9planner/5release-source. Zero Node failures/skips; all Python modules OK.
+
+`reserve_many` atomically charges1..256 opaque immutable bindings under the
+existing fixed17MiB registry base, occupied256-slot and immutable512MiB aggregate
+ceilings. All new rows are checked before insertion. Reordered/mixed replay does
+not double-charge. Actual own-child SIGKILL before commit recovers no new rows;
+after commit it retains all rows and charges. Injected rollback/checkpoint and
+caller-transaction fixtures pass. Failed writers reopen unchanged state; no
+refund, resize, schema migration, replacement namespace or cap increase.
+See [INDEX-SHARD-RESERVATION-OPERATIONS.md](INDEX-SHARD-RESERVATION-OPERATIONS.md).
+
+Current accepted builder source99638456 is synchronized to main; actual main
+CI37893548860 is terminal SUCCESS. New atomic batch source is verified and being
+committed separately. No new production runtime/map detail accompanies either.
+Existing Luna now prepares separate explicit version2 child-binding codecs while
+legacy openers remain v1-only, before held batch controller admission and actual
+root creation. Next reconstruct exact physical descriptor/capture/context pins,
+reserve whole frozen batch and recover one immutable operation. Finite global
+disk/network/retry admission, complete cross-shard references/ownership, country
+geometry/streaming, Nigeria integration and physical phones remain OPEN.
+Latest06:30UTC WARNING2/paging: no new optional local worker/compiler/build/server/
+browser/upload; remote validation and bounded source-only work continue. GoalACTIVE.
+
+Earlier checkpoint paragraphs below are historical where superseded.
+
+Latest exact-source diagnostic **37893015341** at
+**efaead4019f4830fc474d453383e14a16dbcc37e** is terminal **SUCCESS**:
+**399 tests +3 release-policy checks =402 distinct checks, plus World TypeScript**.
+Python258 =19audit/11session/77affected/151remaining; Node141 =22protocol/kernel/
+58contracts/8actual SDK-campaign/39legacy campaign-Ledger/9shard planner/5release
+source-boundary. All Node suites report zero skips/failures; all Python modules OK.
+Exact accepted source blobs, downloaded artifact hashes and unchanged raw/storage
+preflight are recorded in [index-shard-plan-acceptance.json](index-shard-plan-acceptance.json).
+This is one run; earlier passing subsets are not added to its count.
+
+The pure namespace batch planner deterministically partitions complete request
+units under count and prepared descriptor allowances, includes the fixed17 MiB
+registry charge plus additional margin, and pins full membership. Quota-only
+changes cannot mint new shard IDs; persisted plan validation also checks an
+externally retained immutable hash. It remains not-admitted/not-compiled and does
+not know current namespace occupancy. Runtime must reconstruct exact actual
+capture/context/physical-envelope/storage charges before reserving any child.
+
+The source-boundary witness allowlist repair is verified, without wildcards.
+Session RSS now samples explicit process state: zero is allowed only for a zombie,
+never as reap proof; positive96 MiB RSS enforcement and actual close/done/deadline
+proof remain unchanged. Unreaped diagnostics retain bounded original causes and
+owned handles. The real controller-death fixture requires actual inherited kernel
+lease release within its original6-second wait before recovering or deleting
+scratch. Both earlier failing actual paths pass this successor; full lifecycle
+soak/corruption acceptance is still open. Negative37892251302 artifacts retained.
+
+Next Luna task is actual atomic opaque reservation batches in the existing
+registry, before versioned membership-bound admission/controller integration.
+Finite global aggregate accounting, cross-shard references/owner compilation,
+country geometry/streaming, Nigeria rendering and physical-device proof remain
+open. No new production runtime/map detail accompanies this builder milestone.
+Main coordination-only1b2c1d2e has been fetched for review; prior f716 main CI was
+cancelled by a newer main push, not accepted or manually restarted. Local optional
+heavy work remains deferred under renewed WARNING2/paging. Whole-world goal ACTIVE.
+Older chronological paragraphs below retain the superseded diagnostics.
+
+
 Successor diagnostic **efaead4019f4830fc474d453383e14a16dbcc37e** is published
 on the existing diagnostic branch; fresh actual run discovery is pending. It adds
 strict RSS+process-state parsing, zero only for an explicit zombie (never terminal

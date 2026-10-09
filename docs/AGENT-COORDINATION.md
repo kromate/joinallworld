@@ -1,3 +1,5 @@
+GRAPHICS update — 2026-10-09 06:34 UTC: Three isolated diagnostic runs are active concurrently: crowd live-walk CPU package 37894406977 (440e5f6005341a007ac5207da04262177ee26f24), environment renderer 37894413114 (0bed7cdb0258d97140e4f8f95a263f740a01620a), garment normal-provenance GPU 37894417820 (852cab331a0e353a8a54a11927a9aac0e2b136af). Current local primary518ae92f/index and mixed drafts preserved. Five-minute monitor ACTIVE; local WARNING2 means no optional new local heavy work. Environment previous run verified7550 source/5626 output files then hit Chrome startup cap; next uses remote-only2GiB/Node96/60sec, no game/mobile/production budget amendment. Garment appearance+bind checks passed then zero normals from masked topology failed; next uses private full-topology normal reconstruction preserving displayed mask and position/skin/index bytes. Crowd static evidence is not live-motion acceptance. Whole-game/mobile/bytes gates remain open. No runtime main merge/upload; WORLD sole production uploader.
+
 ## GRAPHICS measured parallel results — 9 October 2026, 06:22 UTC
 
 Crowd remote v3 run37892165759 exact991a30e1 SUCCESS: root verified24PNG hashes/controlsets and7stable source pins,21.992s1287577600B<1280MiB remote cap,cleanuptrue. Root representative source/compact views preserve recognizable identity but shoulder cutouts/coarse hair remain. Render triangles male3794→3744/female4862→4546,3draws unchanged. Byte figures are typed-geometry payloads, not proven net residency savings. Static diagnostic only. Separatev8 real RAF walk/full-body framing sourceprepared; no actualplay or framing acceptance yet.
@@ -21,6 +23,38 @@ Environment reviewed-v3 run37890579453 fails missing assertPinned import after s
 Diagnostic branches only; no graphics runtime main merge or production upload. Local checkpoint docs/GRAPHICS-EXECUTION-CHECKPOINT.md. Root actual reviews retained beside exact downloaded run artifacts. Goal ACTIVE and incomplete.
 
 # Allworld agent coordination and phased production releases
+
+## WORLD atomic reservation batch accepted — 9 October 2026
+
+Exact19dbfe16/run37893670937 SUCCESS:406tests+3release-policy+WorldTypeScript;
+root verified22 downloaded artifact hashes, suite counts and exact two reservation
+source blobs. Raw797134B/source892928B/control1048576B remain unchanged. Actual
+before/after-COMMIT own-child SIGKILL, all-or-none capacity, rollback and charged
+replay pass. This is opaque reservation only; frozen plan admission/child roots,
+versioned membership binding, finite global accounting and geometry remain open.
+Accepted predecessor99638456 is synchronized main and its actual mainCI37893548860
+SUCCESS. Atomic batch is being committed separately; no game/runtime/Nigeria edits
+or upload. Existing Luna owns only index_binding.py/test_index_binding.py for
+separate v2 codec, legacy openers remain v1-only pending held controller integration.
+Latest06:30UTC WARNING2 renewed paging: no WORLD optional localheavy/compiler/
+worker/browser/server/upload. Shared heavy1/heap1536/minifier1 and WORLD sole
+production uploader unchanged. Other owners retain their source/runtime lanes.
+
+## WORLD bounded shard codec and lifecycle checks accepted — 9 October 2026
+
+Exact efaead40/run37893015341 SUCCESS:399tests+3release-policy+WorldTypeScript,
+zeroNodefails/skips, unchanged raw797134B/source892928B/control1048576B preflight.
+Actual SDK/campaigns and strengthened inherited-lock recovery pass; pure shard
+planner9 and release-source-boundary5 pass. Planner charges fixed17MiB base,
+preserves quota-independent shard IDs and externally pinned plan identity, and
+remains not-admitted/not-compiled/occupancy-not-checked. Full global admission,
+geometry, audit physical-interruption/corruption list and phones remain open.
+Priorfbc/run37892251302 failure retained; f716mainCI cancelled by newer docs push,
+not counted passing. New atomic opaque reservation batch is source-prepared by
+existing Luna in only index_reservations.py/test, unaccepted until remote checks.
+No game/runtime/Nigeria edits or production upload; WORLD sole uploader. Renewed
+WARNING2 paging means no optional localheavy/compiler/worker/browser/server/upload.
+
 
 ## WORLD campaign audit accepted and source synchronized — 9 October 2026
 

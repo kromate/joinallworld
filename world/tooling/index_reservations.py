@@ -166,21 +166,51 @@ class IndexReservations:
         if self.db.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone() != (0, 0, 0):
             raise RuntimeError("reservation checkpoint incomplete; preserve registry and WAL together")
 
+    @staticmethod
+    def _normalize_many(items):
+        if type(items) is not list or not 1 <= len(items) <= MAX_RESERVATIONS:
+            raise ValueError("batch reservation requires a finite list of 1..256 entries")
+        normalized = []
+        seen = set()
+        expected = {"indexHash", "bindingBytes", "reservedBytes"}
+        for item in items:
+            if (type(item) is not dict or len(item) != 3
+                    or any(type(key) is not str for key in item) or set(item) != expected):
+                raise ValueError("batch reservation entries require exact fields")
+            index_hash = _hash(item["indexHash"])
+            binding = item["bindingBytes"]
+            if type(binding) is not bytes or not 1 <= len(binding) <= 4096:
+                raise ValueError("reservation requires bounded immutable binding bytes")
+            if hashlib.sha256(binding).hexdigest() != index_hash:
+                raise ValueError("reservation binding SHA-256 differs")
+            amount = _integer(item["reservedBytes"], 65536, 512*MIB, "declared reservation")
+            if index_hash in seen:
+                raise ValueError("batch contains duplicate reservation bindings")
+            seen.add(index_hash)
+            normalized.append((index_hash, binding, amount))
+        normalized.sort(key=lambda item: item[0])
+        return normalized
+
     def snapshot(self):
         self._verify_schema()
         return self._verify_rows()
 
     def reserve(self, index_hash, binding_bytes, reserved_bytes):
+        result = self.reserve_many([{"indexHash": index_hash, "bindingBytes": binding_bytes,
+                                     "reservedBytes": reserved_bytes}])
+        return result[0]
+
+    def reserve_many(self, items):
+        """Atomically charge a finite batch of opaque, immutable binding bytes.
+
+        Entries are validated and sorted by hash before SQLite is touched. A
+        replay returns one receipt per entry in canonical hash order.
+        """
         if self.failed:
             raise RuntimeError("failed reservation writer must reopen before retry")
         if self.db.in_transaction:
             raise RuntimeError("reservation writer requires an idle connection; caller transaction is preserved")
-        _hash(index_hash)
-        if type(binding_bytes) is not bytes or not 1 <= len(binding_bytes) <= 4096:
-            raise ValueError("reservation requires bounded immutable binding bytes")
-        if hashlib.sha256(binding_bytes).hexdigest() != index_hash:
-            raise ValueError("reservation binding SHA-256 differs")
-        _integer(reserved_bytes, 65536, 512*MIB, "declared reservation")
+        entries = self._normalize_many(items)
         began = False
         try:
             self._verify_schema()
@@ -189,15 +219,23 @@ class IndexReservations:
             began = True
             self._verify_schema()
             before = self._verify_rows()
-            old = self.db.execute("SELECT binding,reserved_bytes FROM reservations WHERE hash=?", (index_hash,)).fetchone()
-            if old:
-                if old != (binding_bytes, reserved_bytes):
-                    raise ValueError("existing reservation differs; resizing/refunds are forbidden")
-            else:
-                _integer(before["reservations"]+1, 0, MAX_RESERVATIONS, "reservation rows")
-                if before["chargedBytes"]+reserved_bytes > self.aggregate_bytes:
-                    raise ValueError("new index allowance exceeds the immutable namespace budget")
-                self.db.execute("INSERT INTO reservations VALUES(?,?,?,?)", (index_hash, binding_bytes, reserved_bytes, _record_hash(binding_bytes, reserved_bytes)))
+            additions = []
+            replayed = []
+            for index_hash, binding, amount in entries:
+                old = self.db.execute("SELECT binding,reserved_bytes FROM reservations WHERE hash=?", (index_hash,)).fetchone()
+                if old is not None:
+                    if old != (binding, amount):
+                        raise ValueError("existing reservation differs; resizing/refunds are forbidden")
+                    replayed.append(True)
+                else:
+                    additions.append((index_hash, binding, amount))
+                    replayed.append(False)
+            _integer(before["reservations"]+len(additions), 0, MAX_RESERVATIONS, "reservation rows")
+            if before["chargedBytes"]+sum(amount for _, _, amount in additions) > self.aggregate_bytes:
+                raise ValueError("new index allowance exceeds the immutable namespace budget")
+            for index_hash, binding, amount in additions:
+                self.db.execute("INSERT INTO reservations VALUES(?,?,?,?)", (index_hash, binding, amount, _record_hash(binding, amount)))
+            if additions:
                 self._write_totals()
             self.db.execute("COMMIT")
         except BaseException:
@@ -210,4 +248,5 @@ class IndexReservations:
         except BaseException:
             self.failed = True
             raise
-        return {"indexHash": index_hash, "reservedBytes": reserved_bytes, "replayed": old is not None}
+        return [{"indexHash": index_hash, "reservedBytes": amount, "replayed": was_replayed}
+                for (index_hash, _, amount), was_replayed in zip(entries, replayed)]

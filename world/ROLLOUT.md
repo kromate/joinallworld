@@ -1,16 +1,17 @@
 # Decisions and repeatable rollout after the first compiler
 
-Latest campaign-audit checkpoint —9 October2026: exact4c0b96cb/run37890936198
-is terminal SUCCESS:384 tests+3 workflow-policy checks and World TypeScript,
-with unchanged raw/storage preflight. Actual held-session frozen evidence,
-same-Ledger job admission/heartbeat/current-token completion, bounded replay and
-read-only status are connected and tested in portable campaign fixtures. Protected
-original Senegal campaign materials are not supplied by CI and are not accepted.
-Next globally admit bounded shards/operator materials, preserve cross-shard
-ownership, and compile/stream actual country geometry. Full audit interruption/
-corruption acceptance and physical-phone proof remain open. This builder milestone
-has no production runtime upload or new map detail. Read latest PROGRESS.md and
-CAMPAIGN-INDEX-AUDIT-OPERATIONS.md; older paragraphs below remain historical.
+Latest builder scaling checkpoint —9 October2026: exact19dbfe16/run37893670937
+is terminal SUCCESS:406 tests+3 release-policy checks and World TypeScript.
+Connected campaign audit, read-only evidence and bounded namespace shard planning
+pass, as does opaque atomic batch reservation with actual before/after-commit
+SIGKILL recovery; raw/storage caps are unchanged. Connected plan admission,
+membership-bound child bindings/controller execution and finite global aggregate
+admission are next. Planner status is explicitly not-admitted/not-compiled;
+country geometry, all specified interruption/corruption fixtures and physical
+phones remain open. Source witness allowlist repaired without wildcard expansion;
+no production runtime or map detail is released by this builder phase. Read
+PROGRESS.md, INDEX-SHARD-RESERVATION-OPERATIONS.md and INDEX-SHARD-PLAN-SPEC.md;
+older paragraphs below are historical.
 
 Audit diagnostic update — 9 October2026: isolated drafta63871d1 is published
 on `codex/world-index-audit-diagnostic`; actual serial GitHub run37886772443

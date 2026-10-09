@@ -8,6 +8,7 @@ import shutil
 import signal
 import subprocess
 import tempfile
+import time
 import unittest
 from unittest.mock import patch
 
@@ -19,10 +20,28 @@ from index_capture_snapshot import CAPTURE_EXECUTION
 from index_writer_lock import IndexWriterBusy, index_writer_lease
 import test_index_admission as admission_fixture
 from test_index_ingest import inputs
-from test_index_registry_controller import owned_worker_live, wait_terminal
+from test_index_registry_controller import owned_worker_live
 import test_index_bootstrap as bootstrap_fixture
 
 MIB = 1024*1024
+
+
+def wait_capture_terminal(pid, script, namespace, root, seconds=6):
+    """Require both owned-command exit and actual inherited kernel-lease release.
+
+    ps losing the script string can precede final inherited-FD close. That weaker
+    observation must not admit a writer or delete owned execution scratch.
+    """
+    deadline = time.monotonic() + seconds
+    while time.monotonic() < deadline:
+        if not owned_worker_live(pid, script):
+            try:
+                with index_writer_lease(namespace), index_writer_lease(root):
+                    return True
+            except IndexWriterBusy:
+                pass
+        time.sleep(0.02)
+    return False
 
 
 class CaptureControllerLossTests(unittest.TestCase):
@@ -40,7 +59,7 @@ class CaptureControllerLossTests(unittest.TestCase):
     def _controller_loss(self, boundary):
         base = Path(tempfile.mkdtemp(prefix="allworld-capture-controller-loss-")).resolve(strict=True)
         namespace = base/"namespace"; namespace.mkdir(mode=0o700)
-        coordinator = None; worker_pid = None; worker_script = None; terminal = False
+        coordinator = None; worker_pid = None; worker_script = None; root = None; terminal = False
         code = r'''
 import json,os,sys,select
 from pathlib import Path
@@ -107,7 +126,7 @@ with supervised_charged_index(Path(sys.argv[2]),64*1024*1024,Path(sys.argv[1]),m
                         with supervised_charged_index(**arguments): self.fail("lost inherited namespace lease")
                     allocate.assert_not_called()
                 self.assertEqual((root/CAPTURE_EXECUTION).stat().st_ino,snapshot_inode)
-                terminal = wait_terminal(worker_pid,worker_script,seconds=6)
+                terminal = wait_capture_terminal(worker_pid,worker_script,namespace,root,seconds=6)
                 if not terminal: raise RuntimeError(f"capture worker exit unconfirmed; preserve {base}")
                 with patch("sqlite3.connect",side_effect=AssertionError("parent SQL forbidden")):
                     with supervised_charged_index(**arguments) as (admitted, admission):
@@ -134,7 +153,7 @@ with supervised_charged_index(Path(sys.argv[2]),64*1024*1024,Path(sys.argv[1]),m
                 # Unknown possibly launched worker has no ownership proof.
                 terminal = not any(namespace.glob("*/capture.execution"))
             elif not terminal:
-                terminal = wait_terminal(worker_pid,worker_script,seconds=6)
+                terminal = wait_capture_terminal(worker_pid,worker_script,namespace,root,seconds=6)
             if terminal:
                 with index_writer_lease(namespace): pass
                 shutil.rmtree(base)

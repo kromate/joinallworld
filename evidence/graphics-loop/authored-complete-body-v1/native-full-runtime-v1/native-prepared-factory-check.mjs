@@ -37,6 +37,20 @@ function savedLook(body, outfit, hair, expression = 'neutral', skin = 'skin4') {
   };
 }
 
+function close(a, b, tolerance = 1e-6) { return Math.abs(a - b) <= tolerance; }
+function assertContactsStable(before, after, label) {
+  assert.equal(after.length, before.length, `${label}: contact count is stable`);
+  for (let index = 0; index < before.length; index++) {
+    const a = before[index], b = after[index];
+    assert.equal(b.side, a.side, `${label}: contact side is stable`);
+    for (const key of ['x', 'y', 'z']) assert.ok(close(b[key], a[key]), `${label}: ${a.side} ${key} is stable`);
+    assert.equal(b.points?.length, a.points?.length, `${label}: ${a.side} sampled shoe points are stable`);
+    for (let point = 0; point < (a.points?.length ?? 0); point++) {
+      for (const key of ['x', 'y', 'z']) assert.ok(close(b.points[point][key], a.points[point][key]), `${label}: ${a.side} sole point ${point} ${key} is stable`);
+    }
+  }
+}
+
 function captureBones(root) {
   const values = [];
   root.traverse((node) => {
@@ -201,8 +215,21 @@ try {
       let contacts = directionActor.sampleFootContacts();
       assert.deepEqual(contacts.map(({ side }) => side).sort(), ['left', 'right']);
       assert.ok(contacts.every(({ y }) => Number.isFinite(y) && y >= -0.004), `${family}: direction idle has no sole below floor`);
-      const unreachableFloor = directionActor.solveFeet(() => 0.5);
-      assert.equal(unreachableFloor.limited, true, `${family}: direction mode retains the unreachable-shoe-floor negative control`);
+      directionActor.object.updateWorldMatrix(true, true);
+      const leftHip = directionActor.object.getObjectByName('mixamorigLeftUpLeg');
+      const leftKnee = directionActor.object.getObjectByName('mixamorigLeftLeg');
+      const leftAnkle = directionActor.object.getObjectByName('mixamorigLeftFoot');
+      assert.ok(leftHip && leftKnee && leftAnkle, `${family}: negative control has actual leg-chain bones`);
+      const hipWorld = leftHip.getWorldPosition(new THREE.Vector3());
+      const kneeWorld = leftKnee.getWorldPosition(new THREE.Vector3());
+      const ankleWorld = leftAnkle.getWorldPosition(new THREE.Vector3());
+      const maximumReach = hipWorld.distanceTo(kneeWorld) + kneeWorld.distanceTo(ankleWorld);
+      const unreachableTarget = 4;
+      assert.ok(unreachableTarget - Math.min(...contacts.map(({ y }) => y)) > maximumReach + 1,
+        `${family}: negative-control floor exceeds measured leg-chain reach`);
+      const unreachableFloor = directionActor.solveFeet(() => unreachableTarget);
+      assert.equal(unreachableFloor.limited, true, `${family}: direction mode retains the above-reach shoe-floor negative control`);
+      assert.ok(unreachableFloor.maxError > 0.004, `${family}: above-reach negative control reports a nonzero shoe residual`);
       directionActor.show('idle', false);
       directionActor.show('walk', true);
       directionActor.step(0.08);
@@ -229,6 +256,7 @@ try {
         assert.ok(Math.abs(repeated.maxError - planted.maxError) <= 1e-6 && repeated.corrected === planted.corrected,
           `${family}: repeated host solve result is stable at phase ${phase}`);
         assert.ok(repeatedContacts.every(({ y }) => Number.isFinite(y) && y >= -0.004), `${family}: repeated host solve leaves no shoe below floor at phase ${phase}`);
+        assertContactsStable(contacts, repeatedContacts, `${family}: phase ${phase} repeated host solve`);
         contactSolves.push({ phase, initial: { ...planted }, repeated: { ...repeated } });
       }
       parent.position.set(0.31, 0.12, -0.21); parent.rotation.set(0, 0.42, 0); parent.scale.setScalar(1.04);
@@ -238,13 +266,20 @@ try {
       const raised = directionActor.sampleFootContacts();
       assert.ok(Math.abs(Math.min(...raised.map(({ y }) => y)) - 0.04) <= 0.004,
         `${family}: direction floor is host-derived under translated/scaled/yaw parent`);
-      const parentFloor = (0.04 - parent.position.y) / parent.scale.y;
+      // Contact samples and solveFeet(heightAt) use parent-local coordinates;
+      // place() receives the same local floor even under a transformed parent.
+      const parentFloor = 0.04;
       const raisedFirst = directionActor.solveFeet(() => parentFloor);
+      const afterRaisedFirst = directionActor.sampleFootContacts();
       const raisedSecond = directionActor.solveFeet(() => parentFloor);
+      const afterRaisedSecond = directionActor.sampleFootContacts();
       assert.equal(raisedFirst.limited, false, `${family}: transformed-parent first host solve is supported`);
       assert.equal(raisedSecond.limited, false, `${family}: transformed-parent repeated host solve is supported`);
       assert.ok(raisedSecond.maxError <= 0.004 && Math.abs(raisedSecond.maxError - raisedFirst.maxError) <= 1e-6,
         `${family}: transformed-parent repeated solve is stable within 4 mm`);
+      assert.ok(Math.abs(Math.min(...afterRaisedSecond.map(({ y }) => y)) - parentFloor) <= 0.004,
+        `${family}: transformed-parent repeated solve reaches parent-local floor`);
+      assertContactsStable(afterRaisedFirst, afterRaisedSecond, `${family}: transformed-parent repeated host solve`);
       parent.remove(directionActor.object);
       directionActor.place(0, 0, 0, 0); directionActor.show('idle', false);
       directionActor.show('interact', false);

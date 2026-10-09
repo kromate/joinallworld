@@ -78,7 +78,24 @@ try {
       await evaluate(`window.characterReview.set(${JSON.stringify({hairMode,expression:'neutral',focus:'head'})})`);
       await evaluate('window.characterReview.sample(.4,-.2)');await capture('woman-hair-'+hairMode);
     }
-    await evaluate("window.characterReview.set({hairMode:'source',expression:'talk',pose:'walk',focus:'body'})");
+    if(body==='woman'){
+      await evaluate("window.characterReview.set({hairMode:'solidcurl',expression:'neutral',focus:'head'})");
+      await evaluate('window.characterReview.sample(.4,-.2)');await capture('woman-solid-curls-front');
+      await evaluate('window.characterReview.sample(.4,1.5707963267948966)');await capture('woman-solid-curls-profile');
+    }
+    await evaluate("window.characterReview.set({outfit:'office',motionMode:'actions',pose:'idle',focus:'body',expression:'neutral'})");
+    for(const [label,angle]of [['front',-.2],['profile',Math.PI/2]]){
+      await evaluate(`window.characterReview.sample(.4,${angle})`);await capture(body+'-office-idle-'+label);
+    }
+    await evaluate("window.characterReview.set({pose:'sit'})");
+    await evaluate('window.characterReview.sample(.4,1.5707963267948966)');await capture(body+'-office-sit-profile');
+    await evaluate("window.characterReview.set({outfit:'casual',motionMode:'sourceclip',focus:'body',expression:'neutral'})");
+    for(const sourceClip of ['jog','dance','cook','eat','drink','sit','lie-down']){
+      await evaluate(`window.characterReview.set(${JSON.stringify({sourceClip})})`);
+      await evaluate(`window.characterReview.sample(${sourceClip==='lie-down'?2.0:.5},1.5707963267948966)`);
+      await capture(body+'-source-'+sourceClip+'-profile');
+    }
+    await evaluate("window.characterReview.set({outfit:'casual',motionMode:'actions',hairMode:'source',expression:'talk',pose:'walk',focus:'body'})");
     await evaluate('window.characterReview.sample(0,-.2)');
     await evaluate(`(() => {
       const stream=document.querySelector('#canvas').captureStream(24);

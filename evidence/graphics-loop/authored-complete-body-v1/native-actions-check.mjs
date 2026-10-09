@@ -105,7 +105,11 @@ const presentationSource = readFileSync(presentationPath, 'utf8')
   .replace("import casualSuitUrl from './authored-clothing/out/male_casualsuit01.glb?url';", "const casualSuitUrl = new URL('./authored-clothing/out/male_casualsuit01.glb', import.meta.url).href;")
   .replace("import bodyHideMapUrl from './authored-clothing/out/body-hide-map.json?url';", "const bodyHideMapUrl = new URL('./authored-clothing/out/body-hide-map.json', import.meta.url).href;")
   .replace("import shortHairUrl from './authored-hair/out/short02-mobile.glb?url';", "const shortHairUrl = new URL('./authored-hair/out/short02-mobile.glb', import.meta.url).href;")
-  .replace("import afroHairUrl from './authored-hair/out/afro01-mobile.glb?url';", "const afroHairUrl = new URL('./authored-hair/out/afro01-mobile.glb', import.meta.url).href;");
+  .replace("import afroHairUrl from './authored-hair/out/afro01-mobile.glb?url';", "const afroHairUrl = new URL('./authored-hair/out/afro01-mobile.glb', import.meta.url).href;")
+  .replace("import officeMaleUrl from './authored-clothing/office-export/out/office-male.glb?url';", "const officeMaleUrl = new URL('./authored-clothing/office-export/out/office-male.glb', import.meta.url).href;")
+  .replace("import officeFemaleUrl from './authored-clothing/office-export/out/office-female.glb?url';", "const officeFemaleUrl = new URL('./authored-clothing/office-export/out/office-female.glb', import.meta.url).href;")
+  .replace("import officeMaleHideUrl from './authored-clothing/office-export/out/office-male-body-hide-map.json?url';", "const officeMaleHideUrl = new URL('./authored-clothing/office-export/out/office-male-body-hide-map.json', import.meta.url).href;")
+  .replace("import officeFemaleHideUrl from './authored-clothing/office-export/out/office-female-body-hide-map.json?url';", "const officeFemaleHideUrl = new URL('./authored-clothing/office-export/out/office-female-body-hide-map.json', import.meta.url).href;");
 assert.notEqual(presentationSource, readFileSync(presentationPath, 'utf8'), 'temporary Vite URL import shim applied');
 writeFileSync(tempPresentation, presentationSource);
 globalThis.fetch = async (input, init) => {

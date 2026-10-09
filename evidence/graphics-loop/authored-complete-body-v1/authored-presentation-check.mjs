@@ -18,8 +18,17 @@ const suitPath = path.join(here, 'authored-clothing/out/male_casualsuit01.glb');
 const hidePath = path.join(here, 'authored-clothing/out/body-hide-map.json');
 const shortPath = path.join(here, 'authored-hair/out/short02-mobile.glb');
 const afroPath = path.join(here, 'authored-hair/out/afro01-mobile.glb');
-const paths = { bodyPath, clipPath, suitPath, hidePath, shortPath, afroPath };
+const officeCheck=process.env.OFFICE_CHECK==='1';
+const officeMalePath=path.join(here,'authored-clothing/office-export/out/office-male.glb');
+const officeFemalePath=path.join(here,'authored-clothing/office-export/out/office-female.glb');
+const officeMaleHidePath=path.join(here,'authored-clothing/office-export/out/office-male-body-hide-map.json');
+const officeFemaleHidePath=path.join(here,'authored-clothing/office-export/out/office-female-body-hide-map.json');
+const paths = { bodyPath, clipPath, suitPath, hidePath, shortPath, afroPath, ...(officeCheck?{officeMalePath,officeFemalePath,officeMaleHidePath,officeFemaleHidePath}:{}) };
 const pins = {
+  officeMalePath:'74354b1293815f8753fe5b0cb618cb00da1fd19e7bb7f99fbff1817d243e73db',
+  officeFemalePath:'fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053',
+  officeMaleHidePath:'337127fe061c4563faf8a5272135c4311b1893fc5c04c06ac7311e3c922136a3',
+  officeFemaleHidePath:'47c3999dd2facb11511965925d2adfa160519a72f4cbb4834ccfd636be7cfa66',
   bodyPath: '9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd',
   clipPath: '89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47',
   suitPath: '1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f',
@@ -101,6 +110,10 @@ const suitDiagnosticGltf = await parsePinnedImageFree(assetBytes.suitPath);
 let suitSourceGeometry;
 suitDiagnosticGltf.scene.traverse((node) => { if (node.isMesh) suitSourceGeometry = node.geometry; });
 assert(suitSourceGeometry, 'pinned suit GLB has source geometry');
+const suitSourceGeometries=[suitSourceGeometry,suitSourceGeometry];
+if(officeCheck)for(const [i,name]of ['officeMalePath','officeFemalePath'].entries()){
+ const gltf=await parsePinnedImageFree(assetBytes[name]);gltf.scene.traverse(node=>{if(node.isMesh)suitSourceGeometries[i]=node.geometry;});
+}
 let authoredMorphs; bodyGltf.scene.traverse((node) => { if (node.isMesh) authoredMorphs ??= {name: node.name, morphTargets: node.morphTargetDictionary ? Object.keys(node.morphTargetDictionary) : [], positionMorphCount: node.geometry.morphAttributes.position?.length ?? 0}; }); console.log('AUTHORED_BODY_MORPHS', JSON.stringify(authoredMorphs));
 const jointNames = ['pelvis', 'spine_01', 'spine_02', 'spine_03', 'neck_01', 'Head', 'clavicle_l', 'upperarm_l', 'lowerarm_l', 'hand_l', 'clavicle_r', 'upperarm_r', 'lowerarm_r', 'hand_r', 'thigh_l', 'calf_l', 'foot_l', 'ball_l', 'thigh_r', 'calf_r', 'foot_r', 'ball_r'];
 bodyGltf.scene.updateMatrixWorld(true);
@@ -137,6 +150,10 @@ const urlImports = [
   ["import bodyHideMapUrl from './authored-clothing/out/body-hide-map.json?url';", "const bodyHideMapUrl = new URL('./authored-clothing/out/body-hide-map.json', import.meta.url).href;"],
   ["import shortHairUrl from './authored-hair/out/short02-mobile.glb?url';", "const shortHairUrl = new URL('./authored-hair/out/short02-mobile.glb', import.meta.url).href;"],
   ["import afroHairUrl from './authored-hair/out/afro01-mobile.glb?url';", "const afroHairUrl = new URL('./authored-hair/out/afro01-mobile.glb', import.meta.url).href;"],
+  ["import officeMaleUrl from './authored-clothing/office-export/out/office-male.glb?url';", "const officeMaleUrl = new URL('./authored-clothing/office-export/out/office-male.glb', import.meta.url).href;"],
+  ["import officeFemaleUrl from './authored-clothing/office-export/out/office-female.glb?url';", "const officeFemaleUrl = new URL('./authored-clothing/office-export/out/office-female.glb', import.meta.url).href;"],
+  ["import officeMaleHideUrl from './authored-clothing/office-export/out/office-male-body-hide-map.json?url';", "const officeMaleHideUrl = new URL('./authored-clothing/office-export/out/office-male-body-hide-map.json', import.meta.url).href;"],
+  ["import officeFemaleHideUrl from './authored-clothing/office-export/out/office-female-body-hide-map.json?url';", "const officeFemaleHideUrl = new URL('./authored-clothing/office-export/out/office-female-body-hide-map.json', import.meta.url).href;"],
 ];
 let runtimeSource = presentationSource;
 // Only ?url imports are rewritten for this Node-only check; adapter semantics stay unmodified.
@@ -151,8 +168,8 @@ try {
   const presentationModule = await import(`${pathToFileURL(temporaryModule).href}?check=${Date.now()}`);
   const { applyAuthoredPresentation } = presentationModule;
   const actorLooks = [
-    { body: 'man', skin: '#7a4a2c', face: 'oval', expression: 'neutral', outfit: 'casual', outfitColor: '#3f72c4', bottomsColor: '#243a66', fabric: 'plain', hair: 'lowcut', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
-    { body: 'woman', skin: '#c98e62', face: 'round', expression: 'smile', outfit: 'casual', outfitColor: '#c9423a', bottomsColor: '#3f9a5a', fabric: 'plain', hair: 'afro', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
+    { body: 'man', skin: '#7a4a2c', face: 'oval', expression: 'neutral', outfit: officeCheck?'office':'casual', outfitColor: '#3f72c4', bottomsColor: '#243a66', fabric: 'plain', hair: 'lowcut', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
+    { body: 'woman', skin: '#c98e62', face: 'round', expression: 'smile', outfit: officeCheck?'office':'casual', outfitColor: '#c9423a', bottomsColor: '#3f9a5a', fabric: 'plain', hair: 'afro', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
   ];
   const options = [
     { hairAssetUrl: pathToFileURL(shortPath).href, hairSha256: pins.shortPath, hairAssetName: 'short02' },
@@ -167,13 +184,13 @@ try {
   }
   assert.deepEqual(presentations.map((entry) => entry.metrics.bodySourceIndexSha256), [expectedBodyIndex, expectedBodyIndex]);
   assert.deepEqual(presentations.map((entry) => [entry.metrics.bodySourceTriangles, entry.metrics.bodyVisibleTriangles, entry.metrics.hiddenBodyTriangles, entry.metrics.outfitTriangles]), [
-    [26756, 20028, 6728, 16672], [26756, 20028, 6728, 16672],
+    ...(officeCheck?[[26756,20008,6748,14956],[26756,21746,5010,4192]]:[[26756,20028,6728,16672],[26756,20028,6728,16672]]),
   ]);
   const invalidWeights = [];
   const weightStats = { min: Infinity, max: -Infinity, minSum: Infinity, maxSum: -Infinity, negativeByActor: [0, 0], negativeByMesh: {} };
   const overlays = actors.map((actor, index) => {
     const found = { body: bodyMesh(actor), clothing: undefined, hair: undefined };
-    actor.object.traverse((node) => { if (node.isSkinnedMesh && node.name === 'Authored casual suit') found.clothing = node; if (node.isSkinnedMesh && node.name.startsWith('Authored hair ')) found.hair = node; });
+    actor.object.traverse((node) => { if (node.isSkinnedMesh && node.name === (officeCheck?'Authored office suit':'Authored casual suit')) found.clothing = node; if (node.isSkinnedMesh && node.name.startsWith('Authored hair ')) found.hair = node; });
     assert(found.body && found.clothing && found.hair, 'actor has body, suit, and selected hair mesh');
     assert.equal(found.body.geometry, found.body.parent.getObjectByName('Body').geometry, 'body uses presentation mask');
     for (const overlay of [found.clothing, found.hair]) {
@@ -195,17 +212,18 @@ try {
     return found;
   });
   const sharedSourceGeometry = overlays[0].body.geometry === overlays[1].body.geometry;
-  assert(sharedSourceGeometry, 'same pinned Body source/mask is shared between actors');
+  assert.equal(sharedSourceGeometry,!officeCheck,'identical hide sets share wrappers; family-specific office masks remain distinct');
   assert.notEqual(overlays[0].body.skeleton, overlays[1].body.skeleton, 'body skeleton wrappers are actor-private');
   const sourceTemplateGeometry = new Set(); bodyGltf.scene.traverse((node) => { if (node.isMesh) sourceTemplateGeometry.add(node.geometry); });
   const sharedTemplateGeometry = new Set();
-  for (const actor of actors) actor.object.traverse((node) => { if (node.isSkinnedMesh && !['Authored casual suit', 'Authored hair short02', 'Authored hair afro01'].includes(node.name)) sharedTemplateGeometry.add(node.geometry); });
-  const nonSharedTemplateMeshNames = []; for (const actor of actors) actor.object.traverse((node) => { if (node.isSkinnedMesh && !['Authored casual suit', 'Authored hair short02', 'Authored hair afro01'].includes(node.name) && !sourceTemplateGeometry.has(node.geometry)) nonSharedTemplateMeshNames.push(node.name); });
+  for (const actor of actors) actor.object.traverse((node) => { if (node.isSkinnedMesh && !['Authored casual suit','Authored office suit', 'Authored hair short02', 'Authored hair afro01'].includes(node.name)) sharedTemplateGeometry.add(node.geometry); });
+  const nonSharedTemplateMeshNames = []; for (const actor of actors) actor.object.traverse((node) => { if (node.isSkinnedMesh && !['Authored casual suit','Authored office suit', 'Authored hair short02', 'Authored hair afro01'].includes(node.name) && !sourceTemplateGeometry.has(node.geometry)) nonSharedTemplateMeshNames.push(node.name); });
   assert(sourceTemplateGeometry.has(originalGeometry[0]) && sourceTemplateGeometry.has(originalGeometry[1]), 'Body source geometry remains Kit-owned/shared');
 
   const materialRefs = [];
   for (let index = 0; index < overlays.length; index++) {
     const actor = actors[index], current = overlays[index];
+    const suitSourceGeometry=suitSourceGeometries[index];
   const clothingMaterials = Array.isArray(current.clothing.material) ? current.clothing.material : [current.clothing.material];
     const hairMaterial = current.hair.material;
     assert.equal(clothingMaterials.length, 1, 'connected suit uses one palette material and one outfit draw');
@@ -288,7 +306,7 @@ try {
     limitations: ['The suit and hair rasters are intentionally omitted in this Node CPU check; material color, alpha silhouette and visual fit require the separate rendered review.', 'Morph copying is checked at actor construction; this check does not execute renderer onBeforeRender synchronization.', 'No age/fabric/accessory or mobile performance claim.'],
     elapsedMs: Math.round(performance.now()),
   };
-  writeFileSync(path.join(here, 'authored-presentation-check-result.json'), `${JSON.stringify(report, null, 2)}\n`);
+  writeFileSync(path.join(here, officeCheck?'office-presentation-check-result.json':'authored-presentation-check-result.json'), `${JSON.stringify(report, null, 2)}\n`);
   console.log(JSON.stringify(report, null, 2));
   if (invalidWeights.length) process.exitCode = 1;
 } finally {

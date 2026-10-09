@@ -1,0 +1,9 @@
+# Authored Body mask union
+
+`body-mask-union.ts` exposes `applyBodyMaskUnion(body, options)`. The caller supplies hide sets in original Body triangle-ID space and the expected SHA-256 of the exact source index. The helper hashes the loaded index before changing the mesh, checks the source triangle length and each hide set, rejects duplicate IDs within a set and a second active owner for the same Body, then installs a private index-only geometry wrapper. Vertex, morph, and source-index buffers remain untouched. Identical unions over actors sharing the same source geometry reuse a reference-counted wrapper; the final lease restores the original geometry and disposes the wrapper.
+
+The CPU check parses the pinned authored Body GLB with image references stripped in memory and validates the real clothing and shoe maps. The suit removes 6,728 triangles and shoes remove 4,528; the sets do not overlap. Their exact union removes 11,256 of 26,756 source triangles and retains 15,500. The check verifies the retained index values and order, unchanged source attributes/morphs/index bytes, shared-wrapper refcount/restore, duplicate-owner rejection, and hash/length/malformed-map rejection. It passed with exit 0 in 0.234 s at 114,245,632 bytes peak process-group RSS (128 MiB cap; Node heap 32 MiB). No GPU or visual claim.
+
+Asset pins: Body GLB `9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd`; Body index `4c29f318e20b87a2c0ddce3689fa0ab285ee390fc02e5f3a017736df772a3661`; clothing map `dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099`; shoe map `ba75d7ab36418434c40ad7c8c41d3723740782714e45890c3183d582b507ad71`.
+
+Helper SHA-256: `311dd957ee16837cbb0b7789907fe2232301357c00b49328d6431ed8f34bcf92`. Check SHA-256: `022451a8283bb9f88b147405c357996f2ec858f0caa3b1aa13a3ebbe7459f476`.

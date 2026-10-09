@@ -4,16 +4,22 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 import type { Look } from '../../../src/scene/avatar-look.ts';
 import { createAuthoredClothingPalette } from './clothing-palette.ts';
 import { createAuthoredHairPalette } from './hair-palette.ts';
+import { applyBodyMaskUnion, type BodyMaskLease, type BodyTriangleHideSet } from './body-mask-union.ts';
 import casualSuitUrl from './authored-clothing/out/male_casualsuit01.glb?url';
 import bodyHideMapUrl from './authored-clothing/out/body-hide-map.json?url';
 import shortHairUrl from './authored-hair/out/short02-mobile.glb?url';
 import afroHairUrl from './authored-hair/out/afro01-mobile.glb?url';
+import officeMaleUrl from './authored-clothing/office-export/out/office-male.glb?url';
+import officeFemaleUrl from './authored-clothing/office-export/out/office-female.glb?url';
+import officeMaleHideUrl from './authored-clothing/office-export/out/office-male-body-hide-map.json?url';
+import officeFemaleHideUrl from './authored-clothing/office-export/out/office-female-body-hide-map.json?url';
 
 /** This first authored outfit is deliberately limited to the casual suit bake. */
 export type AuthoredPresentationLook = Pick<Look, 'body' | 'outfit' | 'outfitColor' | 'bottomsColor' | 'fabric'>
   & Partial<Pick<Look, 'hair' | 'hairColor' | 'appearance' | 'accessories' | 'wearables'>>;
 
 export interface AuthoredPresentationOptions {
+  readonly additionalBodyHideSets?: readonly BodyTriangleHideSet[];
   /** Viewer-selected, same-origin mobile hair GLB. Geometry and alpha texture remain source-authored. */
   readonly hairAssetUrl?: string;
   readonly hairSha256?: string;
@@ -44,8 +50,8 @@ export interface AuthoredPresentation {
 
 interface BodyHideMap {
   schema: 'joinallworld.authored-clothing-body-hide.v1';
-  asset: 'male_casualsuit01';
-  sourcePins: { body: string; asset: string };
+  asset: string;
+  sourcePins: { body?: string; asset: string; bodyCommit?: string; commit?: string };
   bodySourceTriangleCount: number;
   removedBodyTriangles: number;
   bodyHideSourceTriangleIds: number[];
@@ -88,7 +94,13 @@ const CLOTHING_SHAPE_MORPHS = new Set([
   'chestVShape', 'bustBigger', 'bustSmaller', 'shouldersWider', 'shouldersNarrower', 'hipsWider', 'hipsNarrower',
 ]);
 
-let templatePromise: Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }> | undefined;
+interface OutfitSpec { readonly url: string; readonly sha: string; readonly hideUrl: string; readonly hideSha: string; readonly asset: string; readonly triangles: number; readonly vertices: number; readonly hidden: number; readonly morphs: readonly string[]; readonly sourceMorphs?: readonly string[]; }
+const OFFICE_SPECS: Readonly<Record<'man' | 'woman', OutfitSpec>> = Object.freeze({
+  man: { url: officeMaleUrl, sha: '74354b1293815f8753fe5b0cb618cb00da1fd19e7bb7f99fbff1817d243e73db', hideUrl: officeMaleHideUrl, hideSha: '337127fe061c4563faf8a5272135c4311b1893fc5c04c06ac7311e3c922136a3', asset: 'male_elegantsuit01', triangles: 14956, vertices: 8522, hidden: 6748, morphs: ['bodyMasculine'], sourceMorphs: ['bodyMale'] },
+  woman: { url: officeFemaleUrl, sha: 'fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053', hideUrl: officeFemaleHideUrl, hideSha: '47c3999dd2facb11511965925d2adfa160519a72f4cbb4834ccfd636be7cfa66', asset: 'female_elegantsuit01', triangles: 4192, vertices: 2446, hidden: 5010, morphs: ['bodyFeminine'], sourceMorphs: ['bodyFemale'] },
+});
+const CASUAL_SPEC: OutfitSpec = { url: casualSuitUrl, sha: OUTFIT_SHA256, hideUrl: bodyHideMapUrl, hideSha: BODY_HIDE_MAP_SHA256, asset: 'male_casualsuit01', triangles: OUTFIT_TRIANGLES, vertices: 8984, hidden: HIDDEN_BODY_TRIANGLES, morphs: ['bodyFeminine','bodyMasculine'] };
+const templatePromises = new Map<string, Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }>>();
 const hairTemplatePromises = new Map<string, Promise<OutfitTemplate>>();
 const bodyMaskCache = new WeakMap<THREE.BufferGeometry, THREE.BufferGeometry>();
 const outfitGeometryCache = new WeakMap<THREE.BufferGeometry, Map<string, OutfitGeometryEntry>>();
@@ -151,16 +163,17 @@ async function fetchPinnedBytes(url: string, expectedHash: string, label: string
   return bytes;
 }
 
-function validateHideMap(value: unknown): BodyHideMap {
+function validateHideMap(value: unknown, spec: OutfitSpec): BodyHideMap {
   check(typeof value === 'object' && value !== null, 'body hide map is not an object');
   const map = value as Partial<BodyHideMap>;
   check(map.schema === 'joinallworld.authored-clothing-body-hide.v1', 'unsupported body hide map schema');
-  check(map.asset === 'male_casualsuit01', 'body hide map belongs to a different outfit');
-  check(map.sourcePins?.body === BODY_SOURCE_REVISION && map.sourcePins.asset === OUTFIT_SOURCE_REVISION,
+  check(map.asset === spec.asset, 'body hide map belongs to a different outfit');
+  check((map.sourcePins?.body ?? map.sourcePins?.bodyCommit) === BODY_SOURCE_REVISION
+    && (map.sourcePins?.commit ?? map.sourcePins?.asset) === OUTFIT_SOURCE_REVISION,
     'body hide map source revisions do not match the pinned bake');
   check(map.bodySourceTriangleCount === BODY_SOURCE_TRIANGLES, 'body source triangle count changed');
-  check(map.removedBodyTriangles === HIDDEN_BODY_TRIANGLES, 'body deletion count changed');
-  check(Array.isArray(map.bodyHideSourceTriangleIds) && map.bodyHideSourceTriangleIds.length === HIDDEN_BODY_TRIANGLES,
+  check(map.removedBodyTriangles === spec.hidden, 'body deletion count changed');
+  check(Array.isArray(map.bodyHideSourceTriangleIds) && map.bodyHideSourceTriangleIds.length === spec.hidden,
     'body hide triangle list has the wrong length');
   const ids = new Set<number>();
   for (const id of map.bodyHideSourceTriangleIds) {
@@ -171,15 +184,15 @@ function validateHideMap(value: unknown): BodyHideMap {
   return map as BodyHideMap;
 }
 
-async function loadTemplate(): Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }> {
+async function loadTemplate(spec: OutfitSpec): Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }> {
   await MeshoptDecoder.ready;
   const [outfitBytes, hideBytes] = await Promise.all([
-    fetchPinnedBytes(casualSuitUrl, OUTFIT_SHA256, 'casual suit'),
-    fetchPinnedBytes(bodyHideMapUrl, BODY_HIDE_MAP_SHA256, 'body hide map'),
+    fetchPinnedBytes(spec.url, spec.sha, spec.asset),
+    fetchPinnedBytes(spec.hideUrl, spec.hideSha, 'body hide map'),
   ]);
-  const hideMap = validateHideMap(JSON.parse(new TextDecoder().decode(hideBytes)) as unknown);
+  const hideMap = validateHideMap(JSON.parse(new TextDecoder().decode(hideBytes)) as unknown, spec);
   const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
-  const suitAssetUrl = new URL(casualSuitUrl, import.meta.url);
+  const suitAssetUrl = new URL(spec.url, import.meta.url);
   const baseUrl = new URL('.', suitAssetUrl.protocol === 'data:' ? import.meta.url : suitAssetUrl).href;
   const gltf = await loader.parseAsync(outfitBytes, baseUrl);
   let mesh: THREE.Mesh | undefined;
@@ -199,17 +212,17 @@ async function loadTemplate(): Promise<{ outfit: OutfitTemplate; hideMap: BodyHi
   const skinIndex = geometry.getAttribute('skinIndex');
   const skinWeight = geometry.getAttribute('skinWeight');
   check(position && index && skinIndex && skinWeight, 'outfit GLB is missing indexed skin attributes');
-  check(index.count / 3 === OUTFIT_TRIANGLES && index.count % 3 === 0, 'outfit triangle count changed');
-  check(position.count === 8_984, `outfit vertex count changed (${position.count})`);
+  check(index.count / 3 === spec.triangles && index.count % 3 === 0, 'outfit triangle count changed');
+  check(position.count === spec.vertices, `outfit vertex count changed (${position.count})`);
   check(geometry.groups.length === 0, 'outfit source unexpectedly contains material groups');
   check(skinIndex.itemSize === 4 && skinWeight.itemSize === 4 && skinIndex.count === position.count && skinWeight.count === position.count,
     'outfit skin attribute layout changed');
   const userData = mesh.userData as { jointNames?: unknown; targetNames?: unknown };
   check(Array.isArray(userData.jointNames) && userData.jointNames.length === 52 && userData.jointNames.every((name) => typeof name === 'string'),
     'outfit GLB joint-name contract changed');
-  check(JSON.stringify(userData.targetNames) === JSON.stringify(['bodyFeminine', 'bodyMasculine']), 'outfit morph target order changed');
-  check((geometry.morphAttributes.position?.length ?? 0) === 2, 'outfit morph attribute count changed');
-  const targetNames = userData.targetNames as string[];
+  check(JSON.stringify(userData.targetNames) === JSON.stringify(spec.sourceMorphs ?? spec.morphs), 'outfit morph target order changed');
+  check((geometry.morphAttributes.position?.length ?? 0) === spec.morphs.length, 'outfit morph attribute count changed');
+  const targetNames = [...spec.morphs];
   const jointNames = userData.jointNames as string[];
   const canonicalJointNames = jointNames.map(normalizeBoneName);
   check(new Set(canonicalJointNames).size === canonicalJointNames.length, 'outfit joint names are ambiguous');
@@ -281,12 +294,13 @@ function getHairTemplate(url: string, expectedHash: string, assetName: 'short02'
   return pending;
 }
 
-function getTemplate(): Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }> {
-  templatePromise ??= loadTemplate().catch((error: unknown) => {
-    templatePromise = undefined;
-    throw error;
-  });
-  return templatePromise;
+function getTemplate(spec: OutfitSpec): Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }> {
+  let pending = templatePromises.get(spec.sha);
+  if (!pending) {
+    pending = loadTemplate(spec).catch((error: unknown) => { templatePromises.delete(spec.sha); throw error; });
+    templatePromises.set(spec.sha, pending);
+  }
+  return pending;
 }
 
 function bodyMaskGeometry(source: THREE.BufferGeometry, hideMap: BodyHideMap): THREE.BufferGeometry {
@@ -526,6 +540,7 @@ function createSkinnedSibling(
   check(body.parent, 'Body must be attached to the character root before presentation');
   const outfit = new THREE.SkinnedMesh(geometry, material);
   outfit.name = name;
+  outfit.userData.targetNames = [...targetNames];
   outfit.position.copy(body.position);
   outfit.quaternion.copy(body.quaternion);
   outfit.scale.copy(body.scale);
@@ -554,8 +569,9 @@ export async function applyAuthoredPresentation(
   look: AuthoredPresentationLook,
   options: AuthoredPresentationOptions = {},
 ): Promise<AuthoredPresentation> {
-  check(look.outfit === 'casual', `only the authored casual suit is available (requested ${look.outfit})`);
+  check(look.outfit === 'casual' || look.outfit === 'office', `no authored outfit for ${look.outfit}`);
   check(look.body === 'man' || look.body === 'woman', `unsupported body family ${look.body}`);
+  const spec = look.outfit === 'office' ? OFFICE_SPECS[look.body] : CASUAL_SPEC;
   const requestedHair = look.hair === 'afro' || look.hair === 'curls' ? 'afro01'
     : look.hair === 'lowcut' || look.hair === 'low-cut' || look.hair === 'fade' || look.hair === 'classic' ? 'short02' : undefined;
   check(Boolean(options.hairAssetUrl) === Boolean(options.hairSha256), 'custom hair URL and SHA-256 must be supplied together');
@@ -584,7 +600,7 @@ export async function applyAuthoredPresentation(
   const actualBodyIndexHash = await bodyIndexHash(sourceGeometry);
   check(actualBodyIndexHash === BODY_SOURCE_INDEX_SHA256, `Body source index hash changed (${actualBodyIndexHash})`);
   const [{ outfit: template, hideMap }, hairTemplate] = await Promise.all([
-    getTemplate(),
+    getTemplate(spec),
     hairUrl && hairHash && hairName ? getHairTemplate(hairUrl, hairHash, hairName) : Promise.resolve(undefined),
   ]);
   let entry: OutfitGeometryEntry | undefined;
@@ -595,6 +611,7 @@ export async function applyAuthoredPresentation(
   let clothing: THREE.SkinnedMesh | undefined;
   let hair: THREE.SkinnedMesh | undefined;
   let mask: THREE.BufferGeometry | undefined;
+  let maskLease: BodyMaskLease | undefined;
   let disposed = false;
   try {
     entry = acquireOutfitGeometry(template, sourceBody);
@@ -603,7 +620,7 @@ export async function applyAuthoredPresentation(
       shirt: paletteColor(look.outfitColor, 'outfitColor'),
       trousers: paletteColor(look.bottomsColor, 'bottomsColor'),
     });
-    clothing = createSkinnedSibling(sourceBody, entry.geometry, clothingPalette.material, 'Authored casual suit', template.targetNames);
+    clothing = createSkinnedSibling(sourceBody, entry.geometry, clothingPalette.material, look.outfit === 'office' ? 'Authored office suit' : 'Authored casual suit', template.targetNames);
     const copiedMorphs = copyMorphValues(sourceBody, clothing, template.targetNames);
     const previousOnBeforeRender = clothing.onBeforeRender;
     clothing.onBeforeRender = (renderer, scene, camera, geometry, material, group) => {
@@ -622,15 +639,25 @@ export async function applyAuthoredPresentation(
         previousHairOnBeforeRender.call(hair!, renderer, scene, camera, geometry, material, group);
       };
     }
-    mask = bodyMaskGeometry(sourceGeometry, hideMap);
-    sourceBody.geometry = mask;
+    if (look.outfit === 'office' || options.additionalBodyHideSets?.length) {
+      maskLease = await applyBodyMaskUnion(sourceBody, {
+        expectedSourceIndexSha256: BODY_SOURCE_INDEX_SHA256,
+        expectedSourceTriangleCount: BODY_SOURCE_TRIANGLES,
+        hideSets: [{ asset: hideMap.asset, bodySourceTriangleCount: hideMap.bodySourceTriangleCount,
+          triangleIds: hideMap.bodyHideSourceTriangleIds }, ...(options.additionalBodyHideSets ?? [])],
+      });
+      mask = maskLease.geometry;
+    } else {
+      mask = bodyMaskGeometry(sourceGeometry, hideMap);
+      sourceBody.geometry = mask;
+    }
     return {
       metrics: {
         bodySourceIndexSha256: actualBodyIndexHash,
-        outfitSha256: OUTFIT_SHA256,
+        outfitSha256: spec.sha,
         bodySourceTriangles: BODY_SOURCE_TRIANGLES,
-        bodyVisibleTriangles: BODY_SOURCE_TRIANGLES - HIDDEN_BODY_TRIANGLES,
-        hiddenBodyTriangles: HIDDEN_BODY_TRIANGLES,
+        bodyVisibleTriangles: maskLease?.metrics.visibleTriangles ?? BODY_SOURCE_TRIANGLES - HIDDEN_BODY_TRIANGLES,
+        hiddenBodyTriangles: maskLease?.metrics.hiddenTriangles ?? HIDDEN_BODY_TRIANGLES,
         outfitTriangles: entry.outfitTriangles,
         hairTriangles: hairEntry?.hairTriangles ?? 0,
         overlayDrawCalls: 1 + (hairEntry ? 1 : 0),
@@ -651,7 +678,8 @@ export async function applyAuthoredPresentation(
         disposed = true;
         if (clothing) clothing.parent?.remove(clothing);
         if (hair) hair.parent?.remove(hair);
-        if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
+        if (maskLease) maskLease.dispose();
+        else if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
         clothingPalette?.dispose();
         hairPalette?.dispose();
         if (entry) releaseOutfitGeometry(template, entry);
@@ -661,7 +689,8 @@ export async function applyAuthoredPresentation(
   } catch (error) {
     if (clothing) clothing.parent?.remove(clothing);
     if (hair) hair.parent?.remove(hair);
-    if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
+    if (maskLease) maskLease.dispose();
+    else if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
     clothingPalette?.dispose();
     hairPalette?.dispose();
     if (entry) releaseOutfitGeometry(template, entry);

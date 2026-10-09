@@ -9,7 +9,11 @@ import { completeCharacterKit } from './assets.ts';
 import { applyAuthoredEyeMaterial } from './eye-material.ts';
 import { applySkinMaterial } from './skin-material.ts';
 import { applyAuthoredFootwear } from './authored-footwear/presentation.ts';
+import shoeHideMap from './authored-footwear/out/shoes01-body-hide-map.json';
 import { createNativeHandPoseController } from './native-hand-pose.ts';
+import { NativeCurlHairFactory, type NativeCurlHairLease, NATIVE_CURL_HAIR_SOURCE_SHA256 } from './native-curl-hair.ts';
+import { createNativeSourceLandmarkSampler } from './native-source-sampler.ts';
+import { createNativeClipSolver, type NativeClipApplyResult } from './native-clip-solver.ts';
 import { createNativeActionController, type NativeActionPose, type NativeActionSnapshot } from './native-actions.ts';
 
 const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
@@ -54,7 +58,12 @@ const seatLegs=Array.from({length:4},()=>new THREE.Mesh(new THREE.BoxGeometry(.0
 seatLegs.forEach(leg=>seatFixture.add(leg));scenes[1]!.add(seatFixture);
 let footwear:Awaited<ReturnType<typeof applyAuthoredFootwear>>|null=null;
 let hands:ReturnType<typeof createNativeHandPoseController>|null=null;
-let state={body:'woman',expression:'grin',pose:'idle',focus:'body',hairMode:'source'};
+const curlFactory=new NativeCurlHairFactory();
+let curls:NativeCurlHairLease|null=null;
+let sampler:ReturnType<typeof createNativeSourceLandmarkSampler>|null=null;
+let clipSolver:ReturnType<typeof createNativeClipSolver>|null=null;
+let clipSnapshot:NativeClipApplyResult|null=null;
+let state={outfit:'casual',motionMode:'actions',sourceClip:'jog',body:'woman',expression:'grin',pose:'idle',focus:'body',hairMode:'source'};
 let yaw=-.2,seconds=0,running=false,generation=0;
 let frames:number[]=[];
 function fitAuthoredHeight(object:THREE.Group){
@@ -81,11 +90,14 @@ function draw(){
   else baseline?.show('idle');
   if(candidate){
     candidate.object.rotation.y=yaw;
-    if(state.pose==='rest'){
+    if(state.motionMode==='sourceclip'&&sampler&&clipSolver){
+      const frame=sampler.sampleClip(state.sourceClip,seconds,['lie-down','get-up','sit-enter','sit-exit','door','home-door'].includes(state.sourceClip)?'clamp':'loop');
+      clipSnapshot=clipSolver.applyFrame(frame,state.sourceClip==='lie-down'?{kind:'body-contact-diagnostic',floorY:0,diagnosticOnly:true}:{kind:'flat-feet',floorY:0});
+    }else if(state.pose==='rest'){
       const body=candidate.object.getObjectByName('Body') as THREE.SkinnedMesh;
       body.skeleton.pose();candidate.object.updateMatrixWorld(true);
     }else actionSnapshot=nativePose?.apply(seconds,state.pose as NativeActionPose,state.pose==='sit'?{kind:'seat',top:.55,floorY:-candidate.object.position.y/candidate.object.scale.y}:{kind:'floor'})??null;
-    seatFixture.visible=state.pose==='sit';
+    seatFixture.visible=state.motionMode==='actions'&&state.pose==='sit';
     if(seatFixture.visible){
       const scale=candidate.object.scale.y,top=candidate.object.position.y+.55*scale;
       seatFixture.scale.setScalar(scale);seatFixture.rotation.y=yaw;
@@ -94,6 +106,8 @@ function draw(){
       seatLegs.forEach((leg,i)=>{leg.scale.y=(top-.06*scale)/scale;leg.position.set(i%2?.23:-.23,(top-.06*scale)/2/scale,i<2?.14:-.30);});
     }
     const hairMesh=candidate.object.getObjectByName(`Authored hair ${state.body==='woman'?'afro01':'short02'}`) as THREE.SkinnedMesh|undefined;
+    if(curls)curls.object.visible=state.hairMode==='solidcurl';
+    if(hairMesh)hairMesh.visible=state.hairMode!=='solidcurl'||!curls;
     if(hairMesh&&!Array.isArray(hairMesh.material)){
       const material=hairMesh.material as THREE.MeshStandardMaterial,cutout=state.hairMode==='cutout';
       const alphaTest=cutout?.5:0;
@@ -120,16 +134,19 @@ function draw(){
 }
 async function set(next:Partial<typeof state>){
   const previous=state;state={...state,...next};
-  for(const key of['body','expression','pose','focus','hairMode']as const)(document.querySelector(`#${key}`)as HTMLSelectElement).value=state[key];
+  for(const key of['body','expression','pose','focus','hairMode','outfit','motionMode','sourceClip']as const)(document.querySelector(`#${key}`)as HTMLSelectElement).value=state[key];
   const seed='complete-authored-human';
-  const look=normalizeLook({body:state.body,hair:state.body==='woman'?'afro':'lowcut',outfit:'casual',fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
-  if(!candidate||previous.body!==state.body){
-    const ticket=++generation;hands?.dispose();footwear?.dispose();hands=null;footwear=null;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
+  const look=normalizeLook({body:state.body,hair:state.body==='woman'?'afro':'lowcut',outfit:state.outfit,fabric:'plain',skin:'#9a6341',hairColor:'#241b18',outfitColor:'#cb674d',bottomsColor:'#36594a',expression:state.expression,accessories:[]},seed);
+  if(!candidate||previous.body!==state.body||previous.outfit!==state.outfit){
+    const ticket=++generation;curls?.dispose();curls=null;clipSolver?.dispose();clipSolver=null;sampler?.dispose();sampler=null;hands?.dispose();footwear?.dispose();hands=null;footwear=null;nativePose?.dispose();skin?.dispose();eyes?.dispose();presentation?.dispose();baseline?.dispose();candidate?.dispose();nativePose=null;skin=null;eyes=null;presentation=null;baseline=null;candidate=null;
     const loaded=await Promise.all([loadBody(kits[0]!,look,seed,1),loadCompleteCharacter(authoredKit,look,seed)]);
     if(ticket!==generation){loaded.forEach(body=>body.dispose());return;}
     const loadedSkin=await applySkinMaterial(loaded[1].object,look.body,look.skin,kits[1]!);
     if(ticket!==generation){loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
-    const loadedPresentation=await applyAuthoredPresentation(loaded[1].object,look);
+    const loadedPresentation=await applyAuthoredPresentation(loaded[1].object,look,{additionalBodyHideSets:[{
+      asset:shoeHideMap.asset,bodySourceTriangleCount:shoeHideMap.bodySourceTriangleCount,
+      triangleIds:shoeHideMap.sourceBodyTriangleIds,
+    }]});
     if(ticket!==generation){loadedPresentation.dispose();loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
     const loadedShoes=await applyAuthoredFootwear(loaded[1].object);
     if(ticket!==generation){loadedShoes.dispose();loadedPresentation.dispose();loadedSkin.dispose();loaded.forEach(body=>body.dispose());return;}
@@ -138,6 +155,12 @@ async function set(next:Partial<typeof state>){
     eyes=applyAuthoredEyeMaterial(candidate.object);
     const nativeBody=candidate.object.getObjectByName('Body') as THREE.SkinnedMesh;
     nativeBody.skeleton.pose();candidate.object.updateMatrixWorld(true);
+    const motionSource=await authoredKit.authoredCharacterAssets.loadMotionRig();
+    if(ticket!==generation)return;
+    sampler=createNativeSourceLandmarkSampler(motionSource.root.clone(true),motionSource.clips);
+    clipSolver=createNativeClipSolver(candidate.object,{sourceRest:sampler.restLandmarks});
+    const guide=candidate.object.getObjectByName('Authored hair afro01') as THREE.SkinnedMesh|undefined;
+    if(guide)curls=curlFactory.create({guide,actorRoot:candidate.object,headBone:candidate.object.getObjectByName('mixamorigHead') as THREE.Bone,body:nativeBody,guideSha256:NATIVE_CURL_HAIR_SOURCE_SHA256,hairColor:look.hairColor});
     nativePose=createNativeActionController(candidate.object);nativePose.apply(0,'idle',{kind:'floor'});
     hands=createNativeHandPoseController(candidate.object);
     fitAuthoredHeight(candidate.object);
@@ -145,7 +168,7 @@ async function set(next:Partial<typeof state>){
   }else baseline!.wear(look,seed);
   seconds=0;draw();
 }
-for(const key of['body','expression','pose','focus','hairMode']as const)document.querySelector(`#${key}`)!.addEventListener('change',event=>void set({[key]:(event.target as HTMLSelectElement).value}));
+for(const key of['body','expression','pose','focus','hairMode','outfit','motionMode','sourceClip']as const)document.querySelector(`#${key}`)!.addEventListener('change',event=>void set({[key]:(event.target as HTMLSelectElement).value}));
 document.querySelector('#turn')!.addEventListener('click',()=>{yaw+=Math.PI/2;draw();});
 document.querySelector('#play')!.addEventListener('click',()=>{
   if(running)return;running=true;frames=[];const start=performance.now();
@@ -155,5 +178,5 @@ let drag:number|null=null;
 canvas.addEventListener('pointerdown',event=>{drag=event.clientX;canvas.setPointerCapture(event.pointerId);});
 canvas.addEventListener('pointermove',event=>{if(drag===null)return;yaw+=(event.clientX-drag)*.012;drag=event.clientX;draw();});
 for(const type of['pointerup','pointercancel'])canvas.addEventListener(type,()=>{drag=null;});window.addEventListener('resize',draw);
-Object.assign(window,{characterReview:{set,sample(time:number,angle=yaw){seconds=time;yaw=angle;draw();},snapshot(){return{state,yaw,seconds,frames,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,fit:candidate?.metrics,hair:presentation?.metrics,eyes:eyes?.metrics,skin:skin?.metrics,footwear:footwear?.metrics,animation:'native-rig deterministic action prototype, no transferred rotations',action:actionSnapshot};}}});
+Object.assign(window,{characterReview:{set,sample(time:number,angle=yaw){seconds=time;yaw=angle;draw();},snapshot(){return{state,yaw,seconds,frames,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,fit:candidate?.metrics,hair:presentation?.metrics,eyes:eyes?.metrics,skin:skin?.metrics,footwear:footwear?.metrics,curls:curls?.metrics,clip:clipSnapshot,animation:'native-rig deterministic action prototype, no transferred rotations',action:actionSnapshot};}}});
 await set({});Object.assign(window,{characterReady:true});

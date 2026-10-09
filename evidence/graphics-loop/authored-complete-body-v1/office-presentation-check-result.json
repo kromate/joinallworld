@@ -24,9 +24,25 @@
     "afroPath": {
       "sha256": "3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474",
       "bytes": 659456
+    },
+    "officeMalePath": {
+      "sha256": "74354b1293815f8753fe5b0cb618cb00da1fd19e7bb7f99fbff1817d243e73db",
+      "bytes": 1155968
+    },
+    "officeFemalePath": {
+      "sha256": "fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053",
+      "bytes": 547732
+    },
+    "officeMaleHidePath": {
+      "sha256": "337127fe061c4563faf8a5272135c4311b1893fc5c04c06ac7311e3c922136a3",
+      "bytes": 180703
+    },
+    "officeFemaleHidePath": {
+      "sha256": "47c3999dd2facb11511965925d2adfa160519a72f4cbb4834ccfd636be7cfa66",
+      "bytes": 128704
     }
   },
-  "adapterSourceSha256": "6e4c359258dd2566f9974e783d07e338e07f0e8eb6291672d0f2920d1f082a8c",
+  "adapterSourceSha256": "ea3f0cce830c26af874de6d508f85ce989ae69de2b4b502a4e86886a6ad81b12",
   "rigSourceSha256": "ee6962088ae2fd3d9e7a6b08f187c18dce483637fc46dc940890dcde1b5f25e4",
   "mode": "Actual hash-pinned GLB geometry/material/skeleton data, image-free decoding after raw pin verification; placeholder 1×1 texture used only to satisfy hair material-map structure. No pixel or rendering claim.",
   "actors": [
@@ -42,8 +58,8 @@
   "weightDiagnostics": {
     "min": 0,
     "max": 1,
-    "minSum": 0.9999999551801011,
-    "maxSum": 1.0000000428408384,
+    "minSum": 0.9999999552965164,
+    "maxSum": 1.0000000451691449,
     "negativeByActor": [
       0,
       0
@@ -68,5 +84,5 @@
     "Morph copying is checked at actor construction; this check does not execute renderer onBeforeRender synchronization.",
     "No age/fabric/accessory or mobile performance claim."
   ],
-  "elapsedMs": 276
+  "elapsedMs": 284
 }

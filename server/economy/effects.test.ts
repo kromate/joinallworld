@@ -45,9 +45,12 @@ test('a real completed shift counts and displays only cash the wallet actually c
   const job = JOBS.teaching, shift = job.shift, now = Date.UTC(2026, 0, 5, 8)
   const running = (cash: number) => {
     const context = makeContext({ now, cityId: 'lagos', seed: `shift-${cash}` })
-    const state = createLife({ t: now, cash, job: job.id, location: job.workplace.venue, spot: job.workplace.spot }, context)
+    const state = createLife({ t: now, cash: 5000, job: job.id, location: job.workplace.venue, spot: job.workplace.spot }, context)
     const started = dispatch(state, { type: 'activity', payload: { id: shift.id } }, context)
     assert.equal(started.ok, true)
+    // The wallet may fill while an already-running shift is in progress. Keep the
+    // start-time projected-reward guard intact and exercise settlement at that cap.
+    state.cash = cash
     return state
   }
   const complete = (state: ReturnType<typeof running>, seed: string) => {
@@ -61,6 +64,8 @@ test('a real completed shift counts and displays only cash the wallet actually c
     for (const [stage, choice] of answers) {
       const active = state.activeAction
       assert.ok(active?.kind === 'activity' && active.id === shift.id && active.teaching)
+      assert.ok(typeof active.teachingGeneration === 'number' && Number.isSafeInteger(active.teachingGeneration) && active.teachingGeneration > 0,
+        'the full engine issued a positive safe teaching generation')
       const result = dispatch(state, { type: 'career.teach', payload: {
         generation: active.teachingGeneration, revision: active.teaching.revision, stage, choice,
       } }, makeContext({ now: finishedAt, cityId: 'lagos', seed: `${seed}-${stage}` }))

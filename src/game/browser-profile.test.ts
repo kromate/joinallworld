@@ -245,6 +245,8 @@ function authoredTeacher(cityId: string, seed: string): { state: LifeState; ctx:
   assert.equal(started.ok, true, `${cityId}: full engine starts teaching at the authored workplace`);
   const active = state.activeAction;
   assert.ok(active?.kind === 'activity' && active.id === 'teaching-shift' && active.teaching);
+  assert.ok(typeof active.teachingGeneration === 'number' && Number.isSafeInteger(active.teachingGeneration) && active.teachingGeneration > 0,
+    `${cityId}: the full engine issued a positive safe teaching generation`);
   const answer = dispatch(state, { type: 'career.teach', actionId: `${seed}-first-answer`, payload: {
     generation: active.teachingGeneration, revision: active.teaching.revision, stage: 'diagnose', choice: 'denominator-count',
   } }, { ...context, internal: true });

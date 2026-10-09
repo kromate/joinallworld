@@ -150,7 +150,7 @@ function onSaved(): void {
 .hud-status, .hud-status-body { display: contents; }
 .hud-status-toggle { display: none; }
 @media (max-width: 480px), (max-height: 430px) and (max-width: 900px) {
-  .hud-bar { top: max(6px, env(safe-area-inset-top)); left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right)); height: 40px; gap: 4px; padding: 0 3px 0 8px; justify-content: flex-start; }
+  .hud-bar { top: max(6px, env(safe-area-inset-top)); left: max(8px, env(safe-area-inset-left)); right: max(8px, env(safe-area-inset-right)); transform: none; max-width: none; height: 40px; gap: 4px; padding: 0 3px 0 8px; justify-content: flex-start; }
   .hud-status { display: block; flex: 1 1 0; min-width: 0; }
   .hud-status-toggle { position: relative; display: inline-flex; align-items: center; gap: 6px; max-width: 100%; height: 32px; padding: 0 10px; border-radius: var(--r-pill); background: var(--c-fill); color: var(--c-ink-2); font-size: var(--t-small); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .hud-status-toggle::after { content: ''; position: absolute; inset: -6px -2px; }

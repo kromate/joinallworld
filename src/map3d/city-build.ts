@@ -244,7 +244,7 @@ const WATER_TILE = 30;
 /** The brightness (0…1) of the water's shimmer at (u, v) of its tile. Every frequency is a whole number, so the tile repeats without a seam. */
 export function shimmer(u: number, v: number) {
   const a = u * Math.PI * 2, c = v * Math.PI * 2;
-  const swell = Math.sin(c * 3 + Math.sin(a * 2) * 1.3) * 0.55 + Math.sin(c * 7 + a + Math.sin(a * 3 + c) * 0.9) * 0.45;
+  const swell = Math.sin(c * 3 + Math.sin(a * 2) * 0.8) * 0.55 + Math.sin(a * 2 - c * 4 + Math.sin(a * 2 + c) * 0.5) * 0.45;
   const glint = Math.pow(Math.max(0, Math.sin(c * 10 + Math.sin(a * 2 + c) * 2.4 + Math.sin(a * 5) * 0.7)), 10) * (0.5 + 0.5 * Math.sin(a * 3 + c * 2));
   return Math.min(1, 0.91 + swell * 0.03 + glint * 0.07);
 }

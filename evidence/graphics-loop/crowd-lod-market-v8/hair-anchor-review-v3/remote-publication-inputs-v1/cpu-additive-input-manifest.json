@@ -1,0 +1,114 @@
+{
+  "schema": "allworld-hair-anchor-v3-cpu-additive-publication-input-manifest-v1",
+  "baseCommit": "7067969b6648396e12fcbc404555fdddfeec7ba1",
+  "purpose": "Record the complete workflow input closure without changing the frozen 38-file runtime/source snapshot or any candidate runtime source.",
+  "frozenRuntimeSnapshot": {
+    "path": "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/snapshot-files.json",
+    "sha256": "96252c819f977cf7c6e0594f26438372253e4cd241b62b56640c7901dcd8a63f",
+    "fileCount": 38,
+    "allEntriesTrackedAndHashMatched": true,
+    "missingPaths": [],
+    "mismatchedPaths": []
+  },
+  "workflow": {
+    "path": ".github/workflows/graphics-market-v8-hair-anchor-cpu-v3.yml",
+    "status": "tracked-at-base",
+    "bytes": 2348,
+    "sha256": "792553c043117ca57606cd7648278769450404d111aa87d35da3321ff4885414"
+  },
+  "workflowInputs": [
+    {
+      "step": "node --max-old-space-size=32 .../verify-input-closure.mjs",
+      "role": "direct workflow invocation",
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/verify-input-closure.mjs",
+      "status": "present-worktree-only-missing-from-base-git-tree",
+      "bytes": 4596,
+      "sha256": "98cca1950b7abd185e2e74c880660299906a6d4da4c9f2f5c7626f650f6742b9"
+    },
+    {
+      "step": "node --test .../hair-v3-numeric.test.mjs",
+      "role": "direct workflow test invocation",
+      "path": "evidence/graphics-loop/parallel-execution-2026-10-09/remote-publication-0945/hair-v3-numeric.test.mjs",
+      "status": "tracked-at-base",
+      "bytes": 1011,
+      "sha256": "34bf35c0ab8286a573e52c210df73006eb3299fe5e54ccc7f4955d9f6985894c"
+    },
+    {
+      "step": "node --test ... compact/scalp marker contracts",
+      "role": "direct workflow test invocation",
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/compact-wardrobe-ranges.test.mjs",
+      "status": "tracked-at-base",
+      "bytes": 1198,
+      "sha256": "e1a2d17c127ee950dd04ff3ed0582706f8f8ea4cdf6439a9d206a334786da86e"
+    },
+    {
+      "step": "node --test ... compact/scalp marker contracts",
+      "role": "direct workflow test invocation",
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/scalp-marker-contract.test.mjs",
+      "status": "tracked-at-base",
+      "bytes": 723,
+      "sha256": "0b2906d199a1a4bfb44ebea59f71865875e8384b3dec16538c790c7bccdb1eeb"
+    },
+    {
+      "step": "npm ci --no-audit --no-fund",
+      "role": "dependency metadata",
+      "path": "package.json",
+      "status": "tracked-at-base",
+      "bytes": 4579,
+      "sha256": "ff2e40d7cefe461e9f08588b288d6063b9cf8c6db1838effe3b326ca9e7145d9"
+    },
+    {
+      "step": "npm ci --no-audit --no-fund",
+      "role": "locked dependency metadata",
+      "path": "package-lock.json",
+      "status": "tracked-at-base",
+      "bytes": 65844,
+      "sha256": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9"
+    },
+    {
+      "step": "python3 .../run-bounded-linux.py",
+      "role": "direct workflow invocation",
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/run-bounded-linux.py",
+      "status": "present-worktree-only-missing-from-base-git-tree",
+      "bytes": 14247,
+      "sha256": "3c91f952c5add6e56b787e6624f378940c90e08dbf088e681b9e70c2508de155"
+    },
+    {
+      "step": "run-bounded-linux.py -> node prepare-hair-anchor.mjs",
+      "role": "runner child command",
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/prepare-hair-anchor.mjs",
+      "status": "tracked-at-base",
+      "bytes": 12800,
+      "sha256": "051a04f1b2cd4fd83051e46a963cebd87c934c3581322a378f3c5e222f3fb5de"
+    }
+  ],
+  "missingFromBaseCommit": [
+    {
+      "step": "node --max-old-space-size=32 .../verify-input-closure.mjs",
+      "role": "direct workflow invocation",
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/verify-input-closure.mjs",
+      "status": "present-worktree-only-missing-from-base-git-tree",
+      "bytes": 4596,
+      "sha256": "98cca1950b7abd185e2e74c880660299906a6d4da4c9f2f5c7626f650f6742b9"
+    },
+    {
+      "step": "python3 .../run-bounded-linux.py",
+      "role": "direct workflow invocation",
+      "path": "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/run-bounded-linux.py",
+      "status": "present-worktree-only-missing-from-base-git-tree",
+      "bytes": 14247,
+      "sha256": "3c91f952c5add6e56b787e6624f378940c90e08dbf088e681b9e70c2508de155"
+    }
+  ],
+  "newChildCommitClosure": [
+    "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-publication-inputs-v1/cpu-additive-input-manifest.json",
+    "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/verify-input-closure.mjs",
+    "evidence/graphics-loop/crowd-lod-market-v8/hair-anchor-review-v3/remote-ci-reviewed-v1/run-bounded-linux.py"
+  ],
+  "nonMissingInputNotes": [
+    "The two added controller files import only Python/Node built-ins; the Node verifier reads the committed production-import-closure, source-pins, and snapshot JSON.",
+    "The runner launches the committed prepare-hair-anchor.mjs; its esbuild/Three/Meshopt dependencies are in the frozen package.json/package-lock.json and its complete input closure is the existing 38-file snapshot.",
+    "The workflow-only numeric hair contract test and two new range/scalp helper tests are checked separately from the 38-file runtime snapshot; no snapshot hash was changed.",
+    "The remote workflow template is not itself executed; the committed .github workflow is the entry point."
+  ]
+}

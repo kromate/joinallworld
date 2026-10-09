@@ -1,0 +1,65 @@
+{
+  "schema": "allworld-market-lod-v8-hair-anchor-live-pin-v3",
+  "packageRunId": "37916846692",
+  "packageCommit": "a6674737d1b35e9d217c86d79c8efbf39041ad3d",
+  "packageBranch": "codex/graphics-market-v8-hair-anchor-cpu-v3",
+  "artifactName": "market-hair-anchor-cpu-package-v3-37916846692",
+  "packageManifestSha256": "adbdfacb98674d40665cfd8c7aa686266175b3697cef405c6ad1007b35609720",
+  "sourceManifestSha256": "96252c819f977cf7c6e0594f26438372253e4cd241b62b56640c7901dcd8a63f",
+  "packageStatus": "hair-anchor-same-actor-source-candidate-diagnostic-package-only-not-visual-or-runtime-acceptance",
+  "builderSha256": "051a04f1b2cd4fd83051e46a963cebd87c934c3581322a378f3c5e222f3fb5de",
+  "viewerSha256": "2251aaf4ccc254c72a641e5c0a8d551b0bc96e8be03aa7d561180d1905357495",
+  "candidateGeometrySha256": "052186ee6f263ecd12606932773531ee45813488a475084f7d9bad647d747aa5",
+  "inventorySha256": "b80d198dd2d0327258df6dee5fc3e180af887207fd77b88c1ccae63d4988ea4b",
+  "actors": [
+    {
+      "id": "graphics-host-crowd-02",
+      "seed": "graphics-host-crowd-02",
+      "family": "male",
+      "body": "man",
+      "outfit": "hoodie",
+      "hair": "afro"
+    },
+    {
+      "id": "graphics-host-crowd-03",
+      "seed": "graphics-host-crowd-03",
+      "family": "female",
+      "body": "woman",
+      "outfit": "owambe",
+      "hair": "bun"
+    }
+  ],
+  "captureMatrix": {
+    "hairModes": [
+      "source",
+      "candidate"
+    ],
+    "bodyGeometryModes": [
+      "source",
+      "compact"
+    ],
+    "yawsDegrees": [
+      0,
+      90
+    ],
+    "pose": "walk",
+    "fixedPhase": 0.25,
+    "minimumLiveElapsedSeconds": 2.4,
+    "expectedPngCount": 16,
+    "pairContract": "Same actor/look/skeleton and exact camera/phase pairs; source and compact must each pass scalp marker retention, exact remapped generated hairstyle range, attribute hashes and both UV-eye reports before any image is accepted."
+  },
+  "limits": {
+    "scope": "Remote Linux headless Chrome ANGLE SwiftShader diagnostic only",
+    "groupRssMiB": 2048,
+    "wallSeconds": 60,
+    "nodeHeapMiB": 96,
+    "doesNotProve": [
+      "hardware GPU fidelity",
+      "mobile performance or battery",
+      "all hair styles or identities",
+      "continuous scalp contact from vertex proximity",
+      "pixel-level eye visibility from UV-ray metrics",
+      "production acceptance"
+    ]
+  }
+}

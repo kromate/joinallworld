@@ -20,19 +20,22 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import type * as THREE from 'three';
 import type { Kit } from '../kit.ts';
+import { cloneSkinnedBodyScene, createSharedResourceCache, type SharedResourceCache } from './shared-resource-cache.ts';
 import { BODY_FILES } from './files.ts';
 import { BODY_MANIFEST } from './manifest.ts';
 import type { BodyKey } from './manifest.ts';
 import { bodyTint } from './tint.ts';
-import { normalizeLook } from '../characters.ts';
+import { normalizeLook } from '../avatar-look.ts';
 import { avatarProportions, normalizeAvatarAppearance } from '../../types/avatar.ts';
 import { resolveAvatarWearablesForRenderer } from '../../game/wardrobe/rules.ts';
 import { createWardrobeRenderer } from '../wardrobe/renderer.ts';
 import type { WardrobePresentation, WardrobeMetrics } from '../wardrobe/renderer.ts';
 import { createAvatarAppearanceController } from './appearance.ts';
 import { createFootContactController } from './foot-contact.ts';
+import { createAnimationPoseCheckpoint } from './animation-pose.ts';
 import type { FootContact, FootSolveResult } from './foot-contact.ts';
 import type { BodyTint } from './tint.ts';
+import { EYE_SOCKETS, FACE_ATLAS } from './face-shader.ts';
 import { DOOR, INTO, OUT, SEATED, STAIRS, STILL, WORK_INTO, WORK_OUT } from './poses.ts';
 import type { BodyPose } from './poses.ts';
 
@@ -107,7 +110,8 @@ const FRAGMENT = /* glsl */ `
 varying vec4 vRegion;
 uniform vec3 uSkin, uTop, uBottoms, uHair, uShoes;
 uniform float uSkinLum, uClothLum, uSleeping;
-uniform vec2 uEyeU;`;
+uniform vec2 uEyeU;
+uniform vec2 uEyeLeft, uEyeRight, uEyeRadius, uEyeDrop;`;
 // After the base-colour texel is in: keep the painted face, recolour skin by tone, dress the regions.
 const DRESS = /* glsl */ `
 #include <map_fragment>
@@ -130,12 +134,71 @@ const DRESS = /* glsl */ `
   vec3 skin = mix(texel, texel * uSkin, skinness);
   diffuseColor.rgb = skin * vRegion.r + (uTop * vRegion.g + uBottoms * vRegion.b + uHair * vRegion.a + uShoes * shoes) * shade;
 }`;
+// The shipped atlases contain skin-coloured sockets, not eye art. Add restrained eye colour on those measured socket
+// texels after DRESS has applied skin/clothing tint, while leaving lighting and all authored geometry untouched.
+const AWAKE_EYES = /* glsl */ `
+#ifdef USE_MAP
+if (uSleeping < 0.5 && vRegion.r > 0.5) {
+  vec2 deltaLeft = vMapUv - uEyeLeft;
+  vec2 deltaRight = vMapUv - uEyeRight;
+  bool leftSocket = abs(deltaLeft.x) <= uEyeRadius.x && abs(deltaLeft.y) <= uEyeRadius.y;
+  bool rightSocket = abs(deltaRight.x) <= uEyeRadius.x && abs(deltaRight.y) <= uEyeRadius.y;
+  if (leftSocket || rightSocket) {
+    vec2 p = leftSocket ? deltaLeft / uEyeRadius : deltaRight / uEyeRadius;
+    p.y -= leftSocket ? uEyeDrop.x : uEyeDrop.y;
+    float aa = max(fwidth(p.x), fwidth(p.y));
+    float eye = 1.0 - smoothstep(0.78 - aa, 0.9 + aa, length(vec2(p.x / 0.94, p.y / 0.78)));
+    // Keep the iris centered on the measured socket centroid. The outer threshold approaches the sclera edge;
+    // a narrow inner threshold here would collapse the filled iris to a tiny pupil-sized spot.
+    float iris = 1.0 - smoothstep(0.84 - aa, 0.98 + aa, length(vec2(p.x / 0.62, p.y / 0.68)));
+    float pupil = 1.0 - smoothstep(0.68 - aa, 0.85 + aa, length(vec2(p.x / 0.18, p.y / 0.28)));
+    float glint = 1.0 - smoothstep(0.65 - aa, 0.82 + aa, length(vec2((p.x + 0.10) / 0.055, (p.y + 0.10) / 0.085)));
+    vec3 eyeColor = mix(diffuseColor.rgb, vec3(0.78, 0.70, 0.59), eye);
+    eyeColor = mix(eyeColor, vec3(0.22, 0.105, 0.05), iris * eye);
+    eyeColor = mix(eyeColor, vec3(0.025, 0.015, 0.01), pupil * eye);
+    eyeColor = mix(eyeColor, vec3(0.94, 0.88, 0.77), glint * eye);
+    diffuseColor.rgb = eyeColor;
+  }
+}
+#endif`;
 
 let loader: GLTFLoader | null = null;
 let clipsOnce: Promise<THREE.AnimationClip[]> | null = null;
+interface BodyTemplate {
+  scene: THREE.Group;
+  mesh: THREE.SkinnedMesh;
+  map: THREE.Texture;
+}
+const bodyTemplateCaches = new WeakMap<Kit, SharedResourceCache<BodyTemplate>>();
 function gltfLoader(): GLTFLoader {
   if (!loader) loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   return loader;
+}
+function bodyTemplateCache(kit: Kit): SharedResourceCache<BodyTemplate> {
+  let cache = bodyTemplateCaches.get(kit);
+  if (!cache) {
+    cache = createSharedResourceCache<BodyTemplate>((dispose) => kit.onDispose(dispose), (template) => {
+      template.scene.traverse((node) => {
+        const mesh = node as THREE.Mesh;
+        mesh.geometry?.dispose();
+        if ((node as THREE.SkinnedMesh).isSkinnedMesh) (node as THREE.SkinnedMesh).skeleton.dispose();
+      });
+      template.mesh.material && (Array.isArray(template.mesh.material) ? template.mesh.material : [template.mesh.material]).forEach((material) => material.dispose());
+      template.map.dispose();
+    });
+    bodyTemplateCaches.set(kit, cache);
+  }
+  return cache;
+}
+async function loadBodyTemplate(key: BodyKey): Promise<BodyTemplate> {
+  const gltf = await gltfLoader().loadAsync(BODY_FILES[key]);
+  let mesh: THREE.SkinnedMesh | null = null;
+  gltf.scene.traverse((node) => { if ((node as THREE.SkinnedMesh).isSkinnedMesh && !mesh) mesh = node as THREE.SkinnedMesh; });
+  if (!mesh) throw new Error(`no skinned mesh in ${BODY_FILES[key]}`);
+  const skinned: THREE.SkinnedMesh = mesh;
+  const loaded = skinned.material as THREE.MeshStandardMaterial;
+  if (Array.isArray(loaded) || !loaded.map) throw new Error(`no base colour in ${BODY_FILES[key]}`);
+  return { scene: gltf.scene, mesh: skinned, map: loaded.map };
 }
 /** The clip pack, fetched once a session (the two bodies share it). A failed fetch can be tried again. */
 function loadClips(): Promise<THREE.AnimationClip[]> {
@@ -146,34 +209,37 @@ function loadClips(): Promise<THREE.AnimationClip[]> {
 /** Load the body a look wears, dressed in it, scaled for a scene whose avatar scale is `sceneScale`. */
 export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScale: number): Promise<SkinnedBody> {
   const { THREE: T } = kit;
+  let read = normalizeLook(look, seed);
   let tint = bodyTint(look, seed);
   const key = tint.key, facts = BODY_MANIFEST.bodies[key];
+  const templates = bodyTemplateCache(kit);
   await MeshoptDecoder.ready;
-  const [gltf, clips] = await Promise.all([gltfLoader().loadAsync(BODY_FILES[key]), loadClips()]);
-  let mesh: THREE.SkinnedMesh | null = null;
-  gltf.scene.traverse((node) => { if ((node as THREE.SkinnedMesh).isSkinnedMesh && !mesh) mesh = node as THREE.SkinnedMesh; });
-  if (!mesh) throw new Error(`no skinned mesh in ${BODY_FILES[key]}`);
-  const skinned: THREE.SkinnedMesh = mesh;
-  const loaded = skinned.material as THREE.MeshStandardMaterial;
-  const map = loaded.map;
-  if (!map) throw new Error(`no base colour in ${BODY_FILES[key]}`);
+  // Decoder readiness can outlive the kit; reject before starting either body or clip requests.
+  templates.assertOpen();
+  const [template, clips] = await Promise.all([templates.load(key, () => loadBodyTemplate(key)), loadClips()]);
+  // The model may finish before the clips. Kit teardown can release it during that gap, so recheck before cloning.
+  templates.assertOpen();
+  const { scene: clonedScene, mesh: skinned } = cloneSkinnedBodyScene(template.scene);
+  const map = template.map;
   // The scene's own material family (Lambert when scenery is matte), with the look as uniforms.
   const material = kit.matte ? new T.MeshLambertMaterial({ map }) : new T.MeshStandardMaterial({ map, roughness: 0.82, metalness: 0 });
   const uniforms = {
     uSkin: { value: new T.Vector3() }, uTop: { value: new T.Vector3() }, uBottoms: { value: new T.Vector3() },
     uHair: { value: new T.Vector3() }, uShoes: { value: new T.Vector3() },
     uSkinLum: { value: facts.skinLum }, uClothLum: { value: facts.clothLum },
-    uSleeping: { value: 0 }, uEyeU: { value: new T.Vector2(key === 'male' ? 141 / 1024 : 134 / 1024, key === 'male' ? 240 / 1024 : 239 / 1024) },
+    uSleeping: { value: 0 }, uEyeU: { value: new T.Vector2(...FACE_ATLAS[key].eyes) },
+    uEyeLeft: { value: new T.Vector2(...EYE_SOCKETS[key].left) }, uEyeRight: { value: new T.Vector2(...EYE_SOCKETS[key].right) },
+    uEyeRadius: { value: new T.Vector2(...EYE_SOCKETS[key].radius) },
+    uEyeDrop: { value: new T.Vector2(...EYE_SOCKETS[key].irisDropPixels.map((pixels) => pixels / (EYE_SOCKETS[key].radius[1] * 1024)) as [number, number]) },
   };
   const apply = (next: BodyTint) => { for (const part of ['skin', 'top', 'bottoms', 'hair', 'shoes'] as const) uniforms[`u${part[0]!.toUpperCase()}${part.slice(1)}` as 'uSkin'].value.fromArray(next[part]); };
   apply(tint);
   material.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, uniforms);
     shader.vertexShader = shader.vertexShader.replace('#include <common>', `#include <common>${VERTEX}`).replace('#include <begin_vertex>', '#include <begin_vertex>\n  vRegion = color;');
-    shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `#include <common>${FRAGMENT}`).replace('#include <map_fragment>', DRESS);
+    shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `#include <common>${FRAGMENT}`).replace('#include <map_fragment>', `${DRESS}${AWAKE_EYES}`);
   };
-  material.customProgramCacheKey = () => 'allworld-body-sleep-1';
-  loaded.dispose();
+  material.customProgramCacheKey = () => 'allworld-body-sleep-socket-eyes-2';
   skinned.material = material;
   // A posed body leaves its bind-pose bounds; one small mesh is cheaper to draw than to cull wrongly.
   skinned.frustumCulled = false;
@@ -181,18 +247,20 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
 
   const object = new T.Group();
   object.name = 'skinned-body';
-  object.add(gltf.scene);
+  object.add(clonedScene);
   // Garment rest fitting must see the untouched asset before age-face geometry changes.
   const wardrobe = createWardrobeRenderer(skinned, kit.matte);
   const appearanceMade = createAvatarAppearanceController(skinned);
   const footContact = createFootContactController(object, skinned, wardrobe.object);
-  let read = normalizeLook(look, seed), appearance = normalizeAvatarAppearance(read.appearance);
+  let appearance = normalizeAvatarAppearance(read.appearance);
   let proportions = avatarProportions(appearance), sceneFit = sceneScale;
   wardrobe.wear({ look: read, ids: resolveAvatarWearablesForRenderer(read) });
-  if (appearanceMade.ok) appearanceMade.controller.apply(appearance);
-  const mixer = new T.AnimationMixer(gltf.scene);
+  if (appearanceMade.ok) appearanceMade.controller.apply(appearance, read.face, read.expression);
+  const mixer = new T.AnimationMixer(clonedScene);
   const actions = new Map(clips.map((clip) => [clip.name, mixer.clipAction(clip)]));
   let active: THREE.AnimationAction | null = null, scale = 1, pose: BodyPose = 'idle';
+  // Restore the raw clip pose before sampling; cached mixer writes cannot undo external IK.
+  const mixerPose = createAnimationPoseCheckpoint(skinned.skeleton.bones);
   let strideClimb = 0;
   // A running transition: the clip, how far in, and the pose it ends in.
   type Placement = { x: number; y: number; z: number; ry: number };
@@ -224,9 +292,11 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
   function sample(name: string, time: number) {
     const action = actions.get(clipFor(name));
     if (!action) return;
+    mixerPose.restore();
     if (action !== active) { active?.stop(); action.play(); active = action; }
     action.time = Math.min(Math.max(time, 0), action.getClip().duration);
     mixer.update(0);
+    mixerPose.capture(); // before transition blending and external foot correction
     if (blendFrom && transition) {
       const t = Math.min(1, transition.time / CROSSFADE), eased = t * t * (3 - 2 * t);
       skinned.skeleton.bones.forEach((bone, index) => {
@@ -260,6 +330,8 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
     transition = { clip, time: 0, length, then: pose, from: { x: object.position.x, y: object.position.y, z: object.position.z, ry: object.rotation.y } };
     sample(clip, 0);
   }
+  let disposed = false;
+  let unregisterKitDispose: (() => boolean) | null = null;
   const body: SkinnedBody = {
     object, key,
     get scale() { return scale; },
@@ -332,7 +404,7 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
       const nextRead = normalizeLook(next, nextSeed);
       if (!wardrobe.wear({ look: nextRead, ids: resolveAvatarWearablesForRenderer(nextRead) })) return true;
       read = nextRead; appearance = normalizeAvatarAppearance(read.appearance); proportions = avatarProportions(appearance);
-      if (appearanceMade.ok) appearanceMade.controller.apply(appearance);
+      if (appearanceMade.ok) appearanceMade.controller.apply(appearance, read.face, read.expression);
       body.fit(sceneFit);
       tint = wanted; apply(tint);
       return true;
@@ -341,14 +413,21 @@ export async function loadBody(kit: Kit, look: unknown, seed: unknown, sceneScal
       wardrobe.dispose();
       if (appearanceMade.ok) appearanceMade.controller.dispose();
       mixer.stopAllAction();
-      mixer.uncacheRoot(gltf.scene);
+      mixer.uncacheRoot(clonedScene);
       skinned.geometry.dispose();
       material.dispose();
-      map.dispose();
       skinned.skeleton.dispose();
       object.removeFromParent();
+      if (unregisterKitDispose) { unregisterKitDispose(); unregisterKitDispose = null; }
     },
   };
+  const disposeBody = body.dispose;
+  body.dispose = () => {
+    if (disposed) return;
+    disposed = true;
+    disposeBody();
+  };
+  unregisterKitDispose = kit.onDispose(() => body.dispose());
   body.fit(sceneScale);
   still('idle');
   return body;

@@ -1,0 +1,49 @@
+{
+  "status": "isolated-source-candidate-unrun",
+  "evidence": {
+    "coverageRun": 37898547753,
+    "coverageCommit": "48207de333e7e4842e2b898f7be74c1605d8439f",
+    "coverageReportSha256": "17429f4b0c7fd665913f02faaa804e8622a1e073c0e50b605a5bb564d1a8b084",
+    "maleMaskedNeckResidualFaces": 274,
+    "maleMaskedNeckResidualAreaSquareMetres": 0.06173905623010608,
+    "femaleMaskedNeckResidualFaces": 770,
+    "femaleMaskedNeckResidualAreaSquareMetres": 0.0867532890470227,
+    "sourceShellTriangles": {
+      "male": 3266,
+      "female": 3541
+    },
+    "maximumFragmentPairwiseOverlapRatio": 5.551115123125783e-17,
+    "warning": "The measurements establish a clipped-source coverage mismatch, not GPU pixels, normals, or appearance quality."
+  },
+  "sourceSha256": {
+    "candidate": "2b8531fbc97c87f351fa2085ec1a15b9ac193ba35571d08eb6a7a498c85dcb76",
+    "sourceCornerShaderAdapter": "bdd57daee82013d0df1f435c947e2b8edd582d4550bc9365b1651dc247c26b02",
+    "sourceCornerChartBuilder": "75c04c98071a2df4d90a223e7b0065464a50847370e6d3beeea2e24804f7a04c",
+    "coverageAudit": "c4adaa391834f7d2214fbe70e1952c9a929376047557f3f27da122cb5e3cb784",
+    "wardrobeGeometry": "1b2dbfc4dd9557b6216eceb01ddd5f9bcf4119e48788a220589444902d5458ec",
+    "wardrobeRenderer": "4b053592fdc8efdad0e9cd5071cb853594c2db53829cd74116bf578f439f82da",
+    "bodyLoader": "4fa64261e15a7e104f527ad4782aff2bb80c53d559dc7a448d95d797d92c6bdb",
+    "maleBodyGlb": "b0078206da9f7de0bf346be8133522cf514009f03f262f716613dd196d180686",
+    "femaleBodyGlb": "977ca5e73ba7b19af2627dab1ba0f0ef3e3d8548bf7b4d54f45faf22cd56001c",
+    "clipPack": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47"
+  },
+  "claimsNotMade": [
+    "No source or browser test was run for the complement candidate.",
+    "No pixel, motion, normal continuity, draw-time, or mobile performance result is established.",
+    "No production or gameplay source was modified."
+  ],
+  "candidateBytes": 17285,
+  "integrationProbe": {
+    "status": "remote-recipe-prepared-unrun",
+    "fixture": "0baadb44e19c10e712dfa1a7507fa9628138dfdb44d833b76d2bebf718e94fc6",
+    "viewer": "02593e51fcb4f23b2c219d2aeac99b427a647a25f4f440d69a74a700f80331ad",
+    "coverageAudit": "967fd5f0d399df14e06881fc122a0fa6ff9e33c8cc55e34ff2d8d07b9baf42ac",
+    "closure": "91708604c4fb6585926a5ae73ca4b96815b22d91376ce451c8ec80a8978679c3",
+    "closureTest": "61db5d26ca19c7453036c3f3e3a25f2630ab97809dca80afd757e04bc0495156",
+    "html": "56c7314bbdd53497a3a0ab43c4a1175f8ecb7eac4de487c0c9b9587b2fc7f191",
+    "remoteReview": "4595848e43599f54ac5e128bc9837fd86ed4889af40eb3c605e090c8bdb56fea",
+    "workflowBranch": "codex/graphics-office-neck-complement-v1",
+    "note": "Frozen manifest SHA is recorded in remote-ci-v1/workflow.yml; no build/test/browser result exists.",
+    "readme": "df110453dc1743224e6d4b51d29af4fc0b1efeae001ac96cd5541091f5256ebd"
+  }
+}

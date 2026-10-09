@@ -1,0 +1,9 @@
+# Neck-complement integration probe (remote-only, source-prepared)
+
+This fixture compares two copies of the same actual production office look, body mask, exact source-corner chart, skeleton, shader adapter, and camera. The baseline is the exact source-corner chart alone. The candidate adds only a separate body-material mesh for the measured masked-neck residual. Neither copy alters the production body mask or retained wardrobe geometry.
+
+At load, the fixture reconstructs each shipped full-index body source, replays the pinned appearance, validates the currently displayed mask, builds both charts, and requires the complement source-face set and per-face/aggregate areas to close the measured neck residual. It excludes trouser/hem residuals from this neck-only claim. The candidate records its triangle/vertex/attribute-byte costs and additional draw. Pure closure tests reject a missing face, overdraw, malformed face maps, invalid IDs, and nonfinite areas.
+
+The browser controller checks custom complement positions against barycentric interpolation of the actual skinned source-face corners at eight named sampled poses for both body families. It captures matched source/candidate images at eight idle yaws and selected reach, walk, and sit yaws, using the same production material and loaded body assets. Shader errors, failed loads, source drift, or invalid capture counts fail the run. Test, build, and browser jobs run only on the isolated GitHub workflow under separate fixed memory/time limits; do not run this recipe locally.
+
+The workflow is an artifact-generation/diagnostic route, not acceptance. Remote headless Chrome uses ANGLE SwiftShader in a forced single-process topology and is not representative of ordinary browser or phone cost. Pixel review remains necessary. Exact source pins, closure inputs, and execution instructions are in `source-pins.json` and `remote-ci-v1/README.md`.

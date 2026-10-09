@@ -132,6 +132,10 @@ jobs:
           server/living-world/rental-service.test.ts
           server/living-world/privacy.test.ts
           server/living-world/account-lifecycle.test.ts
+          src/game/living-world/clerk.test.ts
+          server/living-world/clerk-service.test.ts
+          server/living-world/clerk-privacy.test.ts
+          src/app/features/living-world/clerkReply.test.ts
           src/app/features/living-world/rentalReply.test.ts
           src/game/living-world/parcel.test.ts
           src/game/living-world/fleet.test.ts
@@ -144,3 +148,4 @@ jobs:
           deploy/living-world-rental.edge.test.ts
           deploy/living-world-account.edge.test.ts
           deploy/living-world-restart.edge.test.ts
+          deploy/living-world-clerk.edge.test.ts

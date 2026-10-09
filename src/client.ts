@@ -123,8 +123,9 @@ export interface Client {
   schedule(): void
   stop(): void
 }
-/** JSON request to the same origin. The type argument is the success body the route answers with (the envelope is added). */
-export type Api = <T extends object = Record<string, unknown>>(path: string, options?: ApiOptions) => Promise<T & ApiEnvelope>
+/** JSON request to the same origin. The type argument is the success body the route answers with (the envelope is added).
+ * A false responseCurrent predicate rejects a late reply before applying its envelope to the client. */
+export type Api = <T extends object = Record<string, unknown>>(path: string, options?: ApiOptions, responseCurrent?: () => boolean) => Promise<T & ApiEnvelope>
 
 /** What any answer body may carry, success or error. */
 interface Payload extends Partial<ApiEnvelope> { error?: string; code?: string; message?: string; reason?: unknown; retryAfter?: unknown }

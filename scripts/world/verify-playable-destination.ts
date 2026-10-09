@@ -9,6 +9,7 @@ import { advanceLife, createLife, dispatch } from '../../src/life.ts'
 import type { CityModule } from '../../src/types/content.ts'
 import type { LifeState } from '../../src/types/life.ts'
 import type { DestinationFacts } from '../../src/game/cities/africa/types.ts'
+import { tableById } from '../../src/tables/city-places.ts'
 
 const CITY_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u
 const SCRIPT_DIRECTORY = fileURLToPath(new URL('.', import.meta.url))
@@ -111,6 +112,10 @@ async function verifyFlightLifecycle(cityId: string, facts: DestinationFacts): P
     const homeBefore = structuredClone({ lga: state.estate.lga, plot: state.estate.plot, style: state.estate.style, home: state.estate.home, living: state.estate.living })
     assert.equal(state.estate.home, 'lagos', 'verification begins with a Lagos home')
     assert.ok(content.housing.some(home => home.definition.id === `${module.id}-centre-home`), 'destination rental has its stable city-prefixed id')
+    const table = content.tablePlaces.find(place => place.game === 'chess')
+    assert.ok(table, 'a playable starter authors a shared game table')
+    assert.deepEqual(tableById(module.id, table.id), { id: table.id, venue: table.venueId, game: 'chess', label: table.label, seats: 2 }, 'the registered city exposes its chess table through the real table lookup')
+    assert.ok(content.venues.some(venue => venue.id === table.venueId && venue.kind === 'park'), 'the table belongs to a playable public recreation venue')
 
     const cashBeforeDeparture = state.cash
     assert.equal(dispatch(state, { type: 'estate.relocate', payload: { to: module.id, mode: 'air' } }, context()).code, 'departed')

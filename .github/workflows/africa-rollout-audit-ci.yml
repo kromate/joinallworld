@@ -1,0 +1,46 @@
+name: African rollout starter audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/world-foundation]
+    paths:
+      - 'src/game/cities/cairo/**'
+      - 'src/game/cities/rabat/**'
+      - 'src/game/cities/kigali/**'
+      - 'src/game/cities/kampala/**'
+      - 'src/game/cities/lusaka/**'
+      - 'world/playable-africa-rollout/**'
+      - 'scripts/world/build-africa-starters.py'
+      - 'scripts/world/verify-playable-destination.ts'
+      - '.github/workflows/africa-rollout-audit-ci.yml'
+permissions:
+  contents: read
+jobs:
+  source-and-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22.19.0', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: Tracked generated assets and source identities
+        run: python3 scripts/world/build-africa-starters.py --country EG --country MA --country RW --country UG --country ZM --check-assets
+      - name: Verify each city before the next
+        env:
+          NODE_OPTIONS: --max-old-space-size=512
+        run: |
+          for city in cairo rabat kigali kampala lusaka
+          do
+            node --experimental-strip-types scripts/world/verify-playable-destination.ts "$city"
+          done
+      - name: Strict city and verifier types
+        env:
+          NODE_OPTIONS: --max-old-space-size=1536
+        run: node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --allowImportingTsExtensions --module nodenext --moduleResolution nodenext --target es2023 --strict --noUncheckedIndexedAccess --skipLibCheck --types node scripts/world/verify-playable-destination.ts src/game/cities/cairo/*.ts src/game/cities/rabat/*.ts src/game/cities/kigali/*.ts src/game/cities/kampala/*.ts src/game/cities/lusaka/*.ts

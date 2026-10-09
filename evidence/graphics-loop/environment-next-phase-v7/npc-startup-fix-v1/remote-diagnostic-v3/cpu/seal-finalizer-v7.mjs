@@ -8,7 +8,7 @@ const pins = JSON.parse(pinsBytes)
 const compiledBytes = await readFile(path.join(here, 'compile-v7-record.json'))
 const compiled = JSON.parse(compiledBytes)
 if (pins.schema !== 'environment-next-phase-v7-npc-startup-source-pins/2' || pins.status !== 'PREBUILD_SEALED') throw new Error('v7 source pins are not sealed')
-if (compiled.schema !== 'environment-next-phase-v7-compiled-record/2' || compiled.status !== 'COMPILED_DIAGNOSTIC_AWAITING_SINGLE_PUBLIC_COPY') throw new Error('v7 compile record missing or invalid')
+if (compiled.schema !== 'environment-next-phase-v7-compiled-record/3' || compiled.status !== 'COMPILED_DIAGNOSTIC_AWAITING_SINGLE_PUBLIC_COPY') throw new Error('v7 compile record missing or invalid')
 if (compiled.sourcePinsSha256 !== sha(pinsBytes) || compiled.importClosureVerified !== true) throw new Error('Compile/source pin or runtime closure receipt mismatch')
 const files = []
 for (const relative of [

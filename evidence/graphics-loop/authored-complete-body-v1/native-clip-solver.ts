@@ -1,9 +1,11 @@
 import * as THREE from 'three';
+import { createNativeBodySurfaceProbe } from './native-body-surface.ts';
 
 export type NativeClipSupport =
   | { readonly kind: 'flat-feet'; readonly floorY: number }
   | { readonly kind: 'stair-feet'; readonly leftFloorY: number; readonly rightFloorY: number }
   | { readonly kind: 'seat-anchor'; readonly hipWorld: Landmark; readonly floorY: number }
+  | { readonly kind: 'body-surface'; readonly surfaceY: number }
   | { readonly kind: 'body-contact-diagnostic'; readonly floorY: number; readonly diagnosticOnly: true };
 export type NativeSourceJoint =
   | 'Hips' | 'Spine' | 'Spine1' | 'Spine2' | 'Neck' | 'Head'
@@ -21,7 +23,8 @@ export interface NativeSourceFrame {
 export interface NativeClipApplyResult {
   readonly clipName: string;
   readonly support: NativeClipSupport;
-  readonly supportStatus: 'feet-supported' | 'feet-residual-unresolved' | 'seat-anchored-contact-unverified' | 'body-contact-diagnostic-only';
+  readonly supportStatus: 'feet-supported' | 'feet-residual-unresolved' | 'seat-anchored-contact-unverified' | 'body-contact-diagnostic-only' | 'body-surface-supported';
+  readonly seatFeetStatus?: 'supported' | 'unreachable';
   readonly bodyMinY?: number;
   readonly bodyMaxY?: number;
   readonly contactMinY: number;
@@ -41,6 +44,9 @@ export interface NativeClipSolver {
 }
 export interface NativeClipSolverOptions {
   readonly sourceRest: SourceLandmarks;
+  /** Actual visible footwear surface, sharing the actor skeleton; defaults to Body. */
+  readonly footSurface?: THREE.SkinnedMesh;
+  readonly bodySurfaceMeshes?: readonly THREE.SkinnedMesh[];
 }
 
 const JOINT_MAP: Readonly<Record<NativeSourceJoint, string>> = Object.freeze({
@@ -103,14 +109,21 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
     if (meshes.length !== 1) throw new Error(`Native source pose expects one Body mesh; got ${meshes.length}`);
     return meshes[0]!;
   })();
-  const skinIndices = body.geometry.getAttribute('skinIndex');
-  const skinWeights = body.geometry.getAttribute('skinWeight');
+  const footSurface = options.footSurface ?? body;
+  if (root.getObjectById(footSurface.id) !== footSurface
+    || footSurface.skeleton.bones.length !== body.skeleton.bones.length
+    || !footSurface.skeleton.bones.every((bone, index) => bone === body.skeleton.bones[index])) {
+    throw new Error('Native foot surface must belong to the actor and share its exact skeleton');
+  }
+  const bodySurface = createNativeBodySurfaceProbe(root, options.bodySurfaceMeshes ?? [body]);
+  const skinIndices = footSurface.geometry.getAttribute('skinIndex');
+  const skinWeights = footSurface.geometry.getAttribute('skinWeight');
   if (!skinIndices || !skinWeights || skinIndices.count !== skinWeights.count) {
     throw new Error('Native source pose body is missing aligned skin indices/weights');
   }
   const footCandidates: Record<Side, number[]> = { left: [], right: [] };
   const footBoneIds: Record<Side, Set<number>> = { left: new Set(), right: new Set() };
-  body.skeleton.bones.forEach((bone, index) => {
+  footSurface.skeleton.bones.forEach((bone, index) => {
     if (bone.name === 'mixamorigLeftFoot' || bone.name === 'mixamorigLeftToeBase') footBoneIds.left.add(index);
     if (bone.name === 'mixamorigRightFoot' || bone.name === 'mixamorigRightToeBase') footBoneIds.right.add(index);
   });
@@ -134,7 +147,7 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
   };
   const supportBefore = new Float64Array(supportVertices.length);
   const supportAfter = new Float64Array(supportVertices.length);
-  const bodyAfter = new Float64Array(skinIndices.count);
+  const bodyAfter = new Float64Array(body.geometry.getAttribute('position').count);
   const sourceRest = pointsFromLandmarks(options.sourceRest);
   const sourceFrame = frameFrom(sourceRest);
   const rootInverse = new THREE.Matrix4();
@@ -148,7 +161,10 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
   const restPoints = {} as Record<NativeSourceJoint, THREE.Vector3>;
   let disposed = false;
 
-  function updateWorld(): void { root.updateWorldMatrix(true, true); }
+  function updateWorld(): void {
+    root.updateWorldMatrix(true, false);
+    root.updateMatrixWorld(true);
+  }
   function localBonePoint(name: NativeSourceJoint, target = new THREE.Vector3()): THREE.Vector3 {
     updateWorld();
     return bones.get(JOINT_MAP[name])!.getWorldPosition(target).applyMatrix4(rootInverse.copy(root.matrixWorld).invert());
@@ -268,7 +284,7 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
     updateWorld();
     body.skeleton.update();
     for (let slot = 0; slot < supportVertices.length; slot++) {
-      body.getVertexPosition(supportVertices[slot]!, vertex); body.localToWorld(vertex); out[slot] = vertex.y;
+      footSurface.getVertexPosition(supportVertices[slot]!, vertex); footSurface.localToWorld(vertex); out[slot] = vertex.y;
     }
     const soles: Record<Side, number> = { left: Infinity, right: Infinity };
     for (const side of ['left', 'right'] as const) {
@@ -299,6 +315,7 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
     if (support.kind === 'flat-feet' && !Number.isFinite(support.floorY)) throw new Error('Flat floor must be finite');
     if (support.kind === 'stair-feet' && ![support.leftFloorY, support.rightFloorY].every(Number.isFinite)) throw new Error('Stair support must be finite');
     if (support.kind === 'seat-anchor' && (![...support.hipWorld, support.floorY].every(Number.isFinite))) throw new Error('Seat anchor must be finite');
+    if (support.kind === 'body-surface' && !Number.isFinite(support.surfaceY)) throw new Error('Body support plane must be finite');
     if (support.kind === 'body-contact-diagnostic' && (!support.diagnosticOnly || !Number.isFinite(support.floorY))) throw new Error('Body contact is diagnostic-only');
     resetBones();
     const sampled = frame;
@@ -327,6 +344,31 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
     aim('LeftFoot', 'LeftToeBase', mapped.LeftToeBase.clone().sub(mapped.LeftFoot));
     aim('RightFoot', 'RightToeBase', mapped.RightToeBase.clone().sub(mapped.RightFoot));
 
+    if (support.kind === 'body-surface') {
+      const before = bodySurface.sample();
+      shiftHipsWorldY(support.surfaceY - before.minY);
+      const after = bodySurface.sample(), feet = sampleFeetY(supportAfter);
+      return Object.freeze({clipName:sampled.clipName,support:Object.freeze({...support}),supportStatus:'body-surface-supported' as const,
+        bodyMinY:after.minY,bodyMaxY:after.maxY,contactMinY:after.minY,footSoleMinY:Object.freeze(feet.footSoleMinY),reach:Object.freeze(reach)});
+    }
+    let seatFeetStatus: 'supported' | 'unreachable' | undefined;
+    if (support.kind === 'seat-anchor') {
+      // Preserve the caller's pelvis anchor while fitting each ankle to its actual deformed sole.
+      // A bounded correction reports reach failure instead of shifting the whole seated body.
+      for (let pass = 0; pass < 3; pass++) {
+        for (const side of ['left', 'right'] as const) {
+          const soles = sampleFeetY(supportBefore);
+          const ankleWorld = bones.get(side === 'left' ? JOINT_MAP.LeftFoot : JOINT_MAP.RightFoot)!.getWorldPosition(new THREE.Vector3());
+          ankleWorld.y += support.floorY - soles.footSoleMinY[side];
+          const ankleTarget = ankleWorld.applyMatrix4(rootInverse.copy(root.matrixWorld).invert());
+          const knee = localBonePoint(side === 'left' ? 'LeftLeg' : 'RightLeg');
+          reach[side === 'left' ? 'leftLeg' : 'rightLeg'] = solveChain(side, 'leg', ankleTarget, knee);
+          aim(side === 'left' ? 'LeftFoot' : 'RightFoot', side === 'left' ? 'LeftToeBase' : 'RightToeBase', targetFrame.forward);
+        }
+      }
+      const seatFeet = sampleFeetY(supportAfter);
+      seatFeetStatus = Math.max(Math.abs(seatFeet.footSoleMinY.left - support.floorY), Math.abs(seatFeet.footSoleMinY.right - support.floorY)) <= .004 ? 'supported' : 'unreachable';
+    }
     const diagnostic = support.kind === 'body-contact-diagnostic';
     const supported = support.kind === 'flat-feet' || support.kind === 'stair-feet';
     if (!supported) {
@@ -334,6 +376,7 @@ export function createNativeClipSolver(root: THREE.Group, options: NativeClipSol
       const feet = sampleFeetY(supportAfter);
       return Object.freeze({ clipName: sampled.clipName, support: Object.freeze({ ...support }),
         supportStatus: diagnostic ? 'body-contact-diagnostic-only' as const : 'seat-anchored-contact-unverified' as const,
+        ...(seatFeetStatus ? {seatFeetStatus} : {}),
         ...(bounds ? { bodyMinY: bounds.bodyMinY, bodyMaxY: bounds.bodyMaxY } : {}),
         contactMinY: feet.contactMinY, footSoleMinY: Object.freeze(feet.footSoleMinY), reach: Object.freeze(reach) });
     }

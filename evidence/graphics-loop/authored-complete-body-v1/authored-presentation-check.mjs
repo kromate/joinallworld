@@ -23,7 +23,9 @@ const officeMalePath=path.join(here,'authored-clothing/office-export/out/office-
 const officeFemalePath=path.join(here,'authored-clothing/office-export/out/office-female.glb');
 const officeMaleHidePath=path.join(here,'authored-clothing/office-export/out/office-male-body-hide-map.json');
 const officeFemaleHidePath=path.join(here,'authored-clothing/office-export/out/office-female-body-hide-map.json');
-const paths = { bodyPath, clipPath, suitPath, hidePath, shortPath, afroPath, ...(officeCheck?{officeMalePath,officeFemalePath,officeMaleHidePath,officeFemaleHidePath}:{}) };
+const femaleCasualPath=path.join(here,'authored-clothing/casual-female-export/out/casual-female.glb');
+const femaleCasualHidePath=path.join(here,'authored-clothing/casual-female-export/out/casual-female-body-hide-map.json');
+const paths = { bodyPath, clipPath, suitPath, hidePath, femaleCasualPath, femaleCasualHidePath, shortPath, afroPath, ...(officeCheck?{officeMalePath,officeFemalePath,officeMaleHidePath,officeFemaleHidePath}:{}) };
 const pins = {
   officeMalePath:'74354b1293815f8753fe5b0cb618cb00da1fd19e7bb7f99fbff1817d243e73db',
   officeFemalePath:'fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053',
@@ -33,6 +35,8 @@ const pins = {
   clipPath: '89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47',
   suitPath: '1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f',
   hidePath: 'dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099',
+  femaleCasualPath: '7063492e52bb8817981349df45e141e0bc70dbe3e339d4d2dac8df3bdc3342bd',
+  femaleCasualHidePath: '4efb1cbdb673673f93fc4af657f12ffd59e837c04cebd3a51d2270c361e3d753',
   shortPath: 'a2637b4d14055cbd537b9b0f6e46c695b4a5bdc99e7d779956d58218ffc626a0',
   afroPath: '3d37f4a379c19b4d64a9c21bb08418858ede79317a477b34b3fdfb965fd11474',
 };
@@ -79,10 +83,28 @@ function imageFreeGlb(input) {
 
 // Match the adapter's source-pin checks while serving file:// inputs in Node.
 const nativeFetch = globalThis.fetch;
+const requestCounts = new Map();
+const failOnceUrls = new Set();
+let deferredFetches;
+const pendingDeferredResponses = new Map();
+let deferredStarted;
+let resolveDeferredStarted;
+const placeholderTextures = new Set();
 globalThis.fetch = async (input, init) => {
   const rawUrl = input instanceof Request ? input.url : String(input);
   const url = new URL(rawUrl);
-  if (url.protocol === 'file:') return new Response(readFileSync(fileURLToPath(url)), { status: 200 });
+  if (url.protocol === 'file:') {
+    requestCounts.set(url.href, (requestCounts.get(url.href) ?? 0) + 1);
+    if (failOnceUrls.delete(url.href)) return new Response('controlled fetch failure', { status: 503 });
+    if (deferredFetches?.has(url.href)) {
+      const wait = deferredFetches.get(url.href);
+      deferredFetches.delete(url.href);
+      pendingDeferredResponses.set(url.href, { ...wait, url });
+      if (deferredFetches.size === 0) resolveDeferredStarted?.();
+      return wait.promise;
+    }
+    return new Response(readFileSync(fileURLToPath(url)), { status: 200 });
+  }
   return nativeFetch(input, init);
 };
 // No raster rendering is tested here. Parse only hash-pinned image-free GLB buffers and attach
@@ -91,14 +113,40 @@ const nativeParseAsync = GLTFLoader.prototype.parseAsync;
 const placeholder = new THREE.DataTexture(new Uint8Array([255, 255, 255, 255]), 1, 1, THREE.RGBAFormat);
 placeholder.colorSpace = THREE.SRGBColorSpace;
 placeholder.needsUpdate = true;
+const trackedTemplateResources = [];
+let ownerParseCount = 0;
+let parseInflight = 0;
 GLTFLoader.prototype.parseAsync = async function (data, pathPrefix) {
+  parseInflight++;
   const parsed = await nativeParseAsync.call(this, imageFreeGlb(data), pathPrefix);
+  parseInflight--;
   parsed.scene.traverse((node) => {
     const mesh = node;
     if (!mesh.isMesh) return;
     const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-    for (const material of materials) if (!material.map && material.transparent) material.map = placeholder.clone();
+    for (const material of materials) if (!material.map && material.transparent) {
+      const map = new THREE.DataTexture(new Uint8Array([255, 255, 255, 255]), 1, 1, THREE.RGBAFormat);
+      map.colorSpace = THREE.SRGBColorSpace; map.needsUpdate = true; material.map = map; placeholderTextures.add(map);
+    }
   });
+  ownerParseCount++;
+  const resources = { geometry: 0, material: 0, texture: 0, imageClose: 0 };
+  const imageSources = new Set();
+  parsed.scene.traverse((node) => {
+    if (!node.isMesh) return;
+    node.geometry.addEventListener('dispose', () => resources.geometry++);
+    for (const material of Array.isArray(node.material) ? node.material : [node.material]) {
+      material.addEventListener('dispose', () => resources.material++);
+      for (const value of Object.values(material)) if (value instanceof THREE.Texture) {
+        value.addEventListener('dispose', () => resources.texture++);
+        const image = value.source?.data ?? value.image;
+        if (image && typeof image === 'object' && Object.isExtensible(image) && !imageSources.has(image)) {
+          imageSources.add(image); Object.defineProperty(image, 'close', { configurable: true, value: () => resources.imageClose++ });
+        }
+      }
+    }
+  });
+  trackedTemplateResources.push(resources);
   return parsed;
 };
 
@@ -110,7 +158,21 @@ const suitDiagnosticGltf = await parsePinnedImageFree(assetBytes.suitPath);
 let suitSourceGeometry;
 suitDiagnosticGltf.scene.traverse((node) => { if (node.isMesh) suitSourceGeometry = node.geometry; });
 assert(suitSourceGeometry, 'pinned suit GLB has source geometry');
-const suitSourceGeometries=[suitSourceGeometry,suitSourceGeometry];
+const femaleCasualDiagnosticGltf = await parsePinnedImageFree(assetBytes.femaleCasualPath);
+let femaleCasualSourceMesh;
+femaleCasualDiagnosticGltf.scene.traverse((node) => { if (node.isMesh) femaleCasualSourceMesh = node; });
+assert(femaleCasualSourceMesh, 'pinned female casual GLB has source geometry');
+const femaleCasualSourceGeometry = femaleCasualSourceMesh.geometry;
+assert.equal(femaleCasualSourceGeometry.getAttribute('position').count, 2406, 'female casual exact source vertex count');
+assert.equal(femaleCasualSourceGeometry.getIndex().count / 3, 4236, 'female casual exact source triangle count');
+assert.deepEqual(femaleCasualSourceMesh.userData.targetNames, ['bodyFemale'], 'female casual retains only its authored family morph target');
+assert.equal(femaleCasualSourceGeometry.morphAttributes.position.length, 1, 'female casual has one matching family morph delta');
+const femaleCasualHide = JSON.parse(readFileSync(femaleCasualHidePath, 'utf8'));
+assert.equal(femaleCasualHide.asset, 'female_casualsuit01', 'female hide map is pinned to the female outfit asset');
+assert.equal(femaleCasualHide.bodyHideSourceTriangleIds.length, 5376, 'female hide map exact source triangle count');
+assert.equal(new Set(femaleCasualHide.bodyHideSourceTriangleIds).size, 5376, 'female hide map has unique source triangle IDs');
+assert(femaleCasualHide.bodyHideSourceTriangleIds.every((id) => Number.isInteger(id) && id >= 0 && id < 26756), 'female hide map IDs address the pinned Body index');
+const suitSourceGeometries=[suitSourceGeometry,femaleCasualSourceGeometry];
 if(officeCheck)for(const [i,name]of ['officeMalePath','officeFemalePath'].entries()){
  const gltf=await parsePinnedImageFree(assetBytes[name]);gltf.scene.traverse(node=>{if(node.isMesh)suitSourceGeometries[i]=node.geometry;});
 }
@@ -154,6 +216,8 @@ const urlImports = [
   ["import officeFemaleUrl from './authored-clothing/office-export/out/office-female.glb?url';", "const officeFemaleUrl = new URL('./authored-clothing/office-export/out/office-female.glb', import.meta.url).href;"],
   ["import officeMaleHideUrl from './authored-clothing/office-export/out/office-male-body-hide-map.json?url';", "const officeMaleHideUrl = new URL('./authored-clothing/office-export/out/office-male-body-hide-map.json', import.meta.url).href;"],
   ["import officeFemaleHideUrl from './authored-clothing/office-export/out/office-female-body-hide-map.json?url';", "const officeFemaleHideUrl = new URL('./authored-clothing/office-export/out/office-female-body-hide-map.json', import.meta.url).href;"],
+  ["import femaleCasualUrl from './authored-clothing/casual-female-export/out/casual-female.glb?url';", "const femaleCasualUrl = new URL('./authored-clothing/casual-female-export/out/casual-female.glb', import.meta.url).href;"],
+  ["import femaleCasualHideUrl from './authored-clothing/casual-female-export/out/casual-female-body-hide-map.json?url';", "const femaleCasualHideUrl = new URL('./authored-clothing/casual-female-export/out/casual-female-body-hide-map.json', import.meta.url).href;"],
 ];
 let runtimeSource = presentationSource;
 // Only ?url imports are rewritten for this Node-only check; adapter semantics stay unmodified.
@@ -172,19 +236,65 @@ try {
     { body: 'woman', skin: '#c98e62', face: 'round', expression: 'smile', outfit: officeCheck?'office':'casual', outfitColor: '#c9423a', bottomsColor: '#3f9a5a', fabric: 'plain', hair: 'afro', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } },
   ];
   const options = [
-    { hairAssetUrl: pathToFileURL(shortPath).href, hairSha256: pins.shortPath, hairAssetName: 'short02' },
-    { hairAssetUrl: pathToFileURL(afroPath).href, hairSha256: pins.afroPath, hairAssetName: 'afro01' },
+    { hairAssetUrl: pathToFileURL(shortPath).href, hairSha256: pins.shortPath, hairAssetName: 'short02', kitOwner: kit },
+    { hairAssetUrl: pathToFileURL(afroPath).href, hairSha256: pins.afroPath, hairAssetName: 'afro01', kitOwner: kit },
   ];
   for (let i = 0; i < actorLooks.length; i++) actors.push(await loadCompleteCharacter(kit, actorLooks[i], `presentation-check-${i}`));
   assert.notEqual(actors[0].object, actors[1].object, 'per-actor root objects are independent');
+  function makeOwner() {
+    const callbacks = new Set(); let closed = false;
+    return { onDispose(callback) { if (closed) { callback(); return () => false; } callbacks.add(callback); return () => callbacks.delete(callback); }, dispose() { if (closed) return; closed = true; for (const callback of [...callbacks]) { callbacks.delete(callback); callback(); } } };
+  }
+  const ownerResourcePath = (key) => pathToFileURL(paths[key]).href;
+  const retryOwner = makeOwner();
+  const suitRequest = ownerResourcePath(officeCheck ? 'officeMalePath' : 'suitPath');
+  const hideRequest = ownerResourcePath(officeCheck ? 'officeMaleHidePath' : 'hidePath');
+  failOnceUrls.add(suitRequest);
+  await assert.rejects(applyAuthoredPresentation(actors[0].object, actorLooks[0], { ...options[0], kitOwner: retryOwner }), /fetch failed \(503\)/,
+    'a failed template request rejects and clears only that owner cache entry');
+  const retryPresentation = await applyAuthoredPresentation(actors[0].object, actorLooks[0], { ...options[0], kitOwner: retryOwner });
+  assert.equal(requestCounts.get(suitRequest), 2, 'failed outfit fetch is retried within the same Kit');
+  assert.equal(requestCounts.get(hideRequest), 2, 'parallel hide-map load is retried with the failed outfit transaction');
+  retryPresentation.dispose(); retryOwner.dispose();
+  const lateOwner = makeOwner();
+  const lateSuitRequest = ownerResourcePath(officeCheck ? 'officeFemalePath' : 'femaleCasualPath');
+  const lateHideRequest = ownerResourcePath(officeCheck ? 'officeFemaleHidePath' : 'femaleCasualHidePath');
+  const latePaths = [lateSuitRequest, lateHideRequest, ownerResourcePath('afroPath')];
+  deferredFetches = new Map();
+  for (const url of latePaths) deferredFetches.set(url, {});
+  for (const item of deferredFetches.values()) item.promise = new Promise((resolve) => { item.resolve = resolve; });
+  deferredStarted = new Promise((resolve) => { resolveDeferredStarted = resolve; });
+  const lateLoad = applyAuthoredPresentation(actors[1].object, actorLooks[1], { ...options[1], kitOwner: lateOwner });
+  await deferredStarted;
+  lateOwner.dispose();
+  // All three requests were removed from the pending map as they started; finish them now.
+  for (const url of latePaths) {
+    const item = pendingDeferredResponses.get(url);
+    if (item) { item.resolve(new Response(readFileSync(fileURLToPath(url)), { status: 200 })); pendingDeferredResponses.delete(url); }
+  }
+  await assert.rejects(lateLoad, /Kit was disposed while (hair|clothing) was loading/,
+    'late successful parses are disposed and rejected after Kit close');
+  assert.equal(deferredFetches.size, 0, 'all late source fetches started before close');
+  await new Promise((resolve) => setTimeout(resolve, 30));
+  assert.equal(parseInflight, 0, 'all concurrent GLTF parses settle before checking the main owner cache');
+  deferredFetches = undefined; resolveDeferredStarted = undefined;
   const bodyMesh = (actor) => { let found; actor.object.traverse((node) => { if (node.name === 'Body' && node.isSkinnedMesh) found = node; }); return found; };
   const originalGeometry = actors.map((actor) => bodyMesh(actor).geometry);
+  const mainFetchStart = new Map(requestCounts);
+  const mainParseStart = ownerParseCount;
   for (let index = 0; index < actors.length; index++) {
     presentations[index] = await applyAuthoredPresentation(actors[index].object, actorLooks[index], options[index]);
   }
   assert.deepEqual(presentations.map((entry) => entry.metrics.bodySourceIndexSha256), [expectedBodyIndex, expectedBodyIndex]);
+  const expectedMainParses = officeCheck ? 4 : 4;
+  for (const key of officeCheck
+    ? ['officeMalePath','officeFemalePath','officeMaleHidePath','officeFemaleHidePath','shortPath','afroPath']
+    : ['suitPath','hidePath','femaleCasualPath','femaleCasualHidePath','shortPath','afroPath']) {
+    const url = ownerResourcePath(key); assert.equal(requestCounts.get(url) - (mainFetchStart.get(url) ?? 0), 1, `main Kit fetches ${key} once`);
+  }
+  assert.equal(ownerParseCount - mainParseStart, expectedMainParses, 'same Kit shares each resolved outfit/hair template and distinct hair URLs remain separate');
   assert.deepEqual(presentations.map((entry) => [entry.metrics.bodySourceTriangles, entry.metrics.bodyVisibleTriangles, entry.metrics.hiddenBodyTriangles, entry.metrics.outfitTriangles]), [
-    ...(officeCheck?[[26756,20008,6748,14956],[26756,21746,5010,4192]]:[[26756,20028,6728,16672],[26756,20028,6728,16672]]),
+    ...(officeCheck?[[26756,20008,6748,14956],[26756,21746,5010,4192]]:[[26756,20028,6728,16672],[26756,21380,5376,4236]]),
   ]);
   const invalidWeights = [];
   const weightStats = { min: Infinity, max: -Infinity, minSum: Infinity, maxSum: -Infinity, negativeByActor: [0, 0], negativeByMesh: {} };
@@ -192,6 +302,13 @@ try {
     const found = { body: bodyMesh(actor), clothing: undefined, hair: undefined };
     actor.object.traverse((node) => { if (node.isSkinnedMesh && node.name === (officeCheck?'Authored office suit':'Authored casual suit')) found.clothing = node; if (node.isSkinnedMesh && node.name.startsWith('Authored hair ')) found.hair = node; });
     assert(found.body && found.clothing && found.hair, 'actor has body, suit, and selected hair mesh');
+    if (!officeCheck && index === 1) {
+      assert.deepEqual(Object.keys(found.clothing.morphTargetDictionary), ['bodyFeminine'], 'female casual canonical morph name maps from source bodyFemale');
+      assert(!('bodyFemale' in found.clothing.morphTargetDictionary), 'source target label is not leaked into actor morph dictionary');
+      assert.equal(found.clothing.morphTargetInfluences[0], found.body.morphTargetInfluences[found.body.morphTargetDictionary.bodyFeminine], 'female body-family morph is copied to its authored outfit');
+      assert.equal(presentations[index].metrics.outfitTriangles, 4236, 'female casual actor reports its own source geometry count');
+      assert.equal(presentations[index].metrics.hiddenBodyTriangles, 5376, 'female casual actor reports its own source hide count');
+    }
     assert.equal(found.body.geometry, found.body.parent.getObjectByName('Body').geometry, 'body uses presentation mask');
     for (const overlay of [found.clothing, found.hair]) {
       assert.equal(overlay.skeleton.bones.length, found.body.skeleton.bones.length, `${overlay.name} skeleton size`);
@@ -212,7 +329,7 @@ try {
     return found;
   });
   const sharedSourceGeometry = overlays[0].body.geometry === overlays[1].body.geometry;
-  assert.equal(sharedSourceGeometry,!officeCheck,'identical hide sets share wrappers; family-specific office masks remain distinct');
+  assert.equal(sharedSourceGeometry,false,'different family outfit hide sets own different body masks');
   assert.notEqual(overlays[0].body.skeleton, overlays[1].body.skeleton, 'body skeleton wrappers are actor-private');
   const sourceTemplateGeometry = new Set(); bodyGltf.scene.traverse((node) => { if (node.isMesh) sourceTemplateGeometry.add(node.geometry); });
   const sharedTemplateGeometry = new Set();
@@ -289,6 +406,9 @@ try {
   assert(geometryDisposals.every((counts) => counts.clothing === 1 && counts.hair === 1), 'presentation releases private outfit/hair geometry exactly once');
   actors[1].dispose();
   kit.dispose();
+  assert(trackedTemplateResources.length >= expectedMainParses, 'captured loaded template resources');
+  assert(trackedTemplateResources.every((resources) => resources.geometry === 1 && resources.material === 1 && resources.texture <= 1 && resources.imageClose <= 1), 'Kit disposal releases every loaded template resource at most once');
+  assert(trackedTemplateResources.filter((resources) => resources.texture === 1).every((resources) => resources.imageClose === 1), 'Kit disposal closes each closable image source exactly once');
   const report = {
     status: invalidWeights.length ? 'FAIL_SOURCE_SKIN_WEIGHT_VALIDATION' : 'PASS',
     source: sourceHashes,
@@ -302,8 +422,10 @@ try {
       exactBodyIndexMask: true, suitAndHairJointIndicesValid: true, fourNormalizedInfluencesPerVertex: true,
       independentActorSkeletonsAndPoses: true, bodyMaskRestoredOnPresentationDispose: true,
       perActorPaletteAndHairMaterialsDisposedOnce: true, outfitAndHairGeometryDisposedOnce: true, kitOwnedBodyGeometrySharedUntilKitTeardown: true,
+      ownerScopedTemplateCacheAndFailureRetry: requestCounts.get(suitRequest) >= 3, lateLoadIsRejectedAndCleaned: true, kitTemplateResourceDisposalOnce: true,
     },
     limitations: ['The suit and hair rasters are intentionally omitted in this Node CPU check; material color, alpha silhouette and visual fit require the separate rendered review.', 'Morph copying is checked at actor construction; this check does not execute renderer onBeforeRender synchronization.', 'No age/fabric/accessory or mobile performance claim.'],
+    templateLifecycle: { parseCount: ownerParseCount, resourcesDisposed: trackedTemplateResources.length, closeableImageClosures: trackedTemplateResources.reduce((sum, entry) => sum + entry.imageClose, 0) },
     elapsedMs: Math.round(performance.now()),
   };
   writeFileSync(path.join(here, officeCheck?'office-presentation-check-result.json':'authored-presentation-check-result.json'), `${JSON.stringify(report, null, 2)}\n`);
@@ -313,6 +435,6 @@ try {
   for (const presentation of presentations) presentation?.dispose();
   for (const actor of actors) actor.dispose();
   kit.dispose();
-  placeholder.dispose();
+  placeholder.dispose(); for (const texture of placeholderTextures) texture.dispose();
   await unlink(temporaryModule).catch(() => {});
 }

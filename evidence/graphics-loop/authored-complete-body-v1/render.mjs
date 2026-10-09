@@ -95,7 +95,18 @@ try {
       await evaluate(`window.characterReview.sample(${sourceClip==='lie-down'?2.0:.5},1.5707963267948966)`);
       await capture(body+'-source-'+sourceClip+'-profile');
     }
-    await evaluate("window.characterReview.set({outfit:'casual',motionMode:'actions',hairMode:'source',expression:'talk',pose:'walk',focus:'body'})");
+    for(const footMode of ['source','rigid']){
+      await evaluate(`window.characterReview.set(${JSON.stringify({footMode,outfit:'casual',motionMode:'actions',expression:'neutral',focus:'body'})})`);
+      for(const pose of ['idle','walk','sit']){
+        await evaluate(`window.characterReview.set(${JSON.stringify({pose})})`);
+        await evaluate('window.characterReview.sample(.4,1.5707963267948966)');
+        await capture(body+'-footwear-'+footMode+'-'+pose+'-profile');
+      }
+      await evaluate("window.characterReview.set({motionMode:'sourceclip',sourceClip:'sit'})");
+      await evaluate('window.characterReview.sample(.5,1.5707963267948966)');
+      await capture(body+'-footwear-'+footMode+'-source-sit-profile');
+    }
+    await evaluate("window.characterReview.set({footMode:'source',outfit:'casual',motionMode:'actions',hairMode:'source',expression:'talk',pose:'walk',focus:'body'})");
     await evaluate('window.characterReview.sample(0,-.2)');
     await evaluate(`(() => {
       const stream=document.querySelector('#canvas').captureStream(24);

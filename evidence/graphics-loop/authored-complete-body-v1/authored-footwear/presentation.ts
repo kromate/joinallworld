@@ -9,6 +9,15 @@ const TARGET_NAMES = ['bodyFeminine', 'bodyMasculine'] as const;
 const FEMININE_MAX_FIT_METRES = 0.04727106156356638;
 const MASCULINE_MAX_FIT_METRES = 0.007975778640520927;
 
+export interface AuthoredFootwearOptions {
+  /** Optional Kit lifecycle owner; source templates are shared only within this owner. */
+  readonly kitOwner?: AuthoredFootwearKitOwner;
+}
+
+export interface AuthoredFootwearKitOwner {
+  onDispose(callback: () => void): () => boolean;
+}
+
 export interface AuthoredFootwearMetrics {
   readonly sourceSha256: string;
   readonly vertices: number;
@@ -28,6 +37,7 @@ export interface AuthoredFootwear {
 }
 
 interface Template {
+  root: THREE.Group;
   geometry: THREE.BufferGeometry;
   material: THREE.MeshStandardMaterial;
   jointNames: readonly string[];
@@ -36,10 +46,68 @@ interface Template {
   triangles: number;
 }
 
-let templatePromise: Promise<Template> | undefined;
+interface FootwearTemplateCache { closed: boolean; promise?: Promise<Template>; root?: THREE.Group; }
+const templateCaches = new WeakMap<AuthoredFootwearKitOwner, FootwearTemplateCache>();
+const disposedRoots = new WeakSet<THREE.Object3D>();
 
 function invariant(value: unknown, message: string): asserts value {
   if (!value) throw new Error(`Authored footwear: ${message}`);
+}
+
+function disposeTemplateRoot(root: THREE.Object3D): void {
+  if (disposedRoots.has(root)) return;
+  disposedRoots.add(root);
+  const geometries = new Set<THREE.BufferGeometry>();
+  const materials = new Set<THREE.Material>();
+  const textures = new Set<THREE.Texture>();
+  const images = new Set<{ close?: () => void }>();
+  root.traverse((node) => {
+    const mesh = node as THREE.Mesh;
+    if (!mesh.isMesh) return;
+    geometries.add(mesh.geometry);
+    for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) {
+      materials.add(material);
+      for (const value of Object.values(material)) if (value instanceof THREE.Texture) textures.add(value);
+    }
+  });
+  for (const texture of textures) {
+    const source = texture.source?.data ?? texture.image;
+    if (source && typeof source === 'object' && 'close' in source && typeof source.close === 'function') images.add(source as { close: () => void });
+    texture.dispose();
+  }
+  for (const material of materials) material.dispose();
+  for (const geometry of geometries) geometry.dispose();
+  for (const image of images) image.close?.();
+}
+
+function createStandaloneOwner(): { owner: AuthoredFootwearKitOwner; dispose(): void } {
+  const callbacks = new Set<() => void>();
+  let closed = false;
+  return {
+    owner: {
+      onDispose(callback) { if (closed) { callback(); return () => false; } callbacks.add(callback); return () => callbacks.delete(callback); },
+    },
+    dispose() { if (closed) return; closed = true; for (const callback of [...callbacks]) { callbacks.delete(callback); callback(); } },
+  };
+}
+
+function cacheFor(owner: AuthoredFootwearKitOwner): FootwearTemplateCache {
+  const current = templateCaches.get(owner);
+  if (current) return current;
+  const cache: FootwearTemplateCache = { closed: false };
+  templateCaches.set(owner, cache);
+  owner.onDispose(() => {
+    if (cache.closed) return;
+    cache.closed = true;
+    if (cache.root) disposeTemplateRoot(cache.root);
+    cache.root = undefined;
+    cache.promise = undefined;
+  });
+  return cache;
+}
+
+function assertCacheOpen(cache: FootwearTemplateCache): void {
+  invariant(!cache.closed, 'Kit was disposed while mobile shoe assets were loading');
 }
 
 function canonicalJoint(name: string): string {
@@ -61,6 +129,7 @@ async function loadTemplate(): Promise<Template> {
   invariant(actual === SHOES_SHA256, `mobile shoe SHA-256 mismatch (${actual})`);
   const resourceBase = new URL('.', url.protocol === 'data:' ? import.meta.url : url).href;
   const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes, resourceBase);
+  try {
   let mesh: THREE.Mesh | undefined;
   gltf.scene.traverse((node) => {
     if ((node as THREE.Mesh).isMesh) {
@@ -100,6 +169,7 @@ async function loadTemplate(): Promise<Template> {
     invariant(Math.abs(sum - 1) < 2e-4, `source skin weights are not normalized at vertex ${v}`);
   }
   return {
+    root: gltf.scene,
     geometry,
     material,
     jointNames: extras.jointNames as string[],
@@ -107,14 +177,23 @@ async function loadTemplate(): Promise<Template> {
     vertices: position.count,
     triangles: index.count / 3,
   };
+  } catch (error) {
+    disposeTemplateRoot(gltf.scene);
+    throw error;
+  }
 }
 
-function getTemplate(): Promise<Template> {
-  templatePromise ??= loadTemplate().catch((error: unknown) => {
-    templatePromise = undefined;
+function getTemplate(cache: FootwearTemplateCache): Promise<Template> {
+  assertCacheOpen(cache);
+  cache.promise ??= loadTemplate().then((template) => {
+    if (cache.closed) { disposeTemplateRoot(template.root); invariant(false, 'Kit was disposed while mobile shoes were loading'); }
+    cache.root = template.root;
+    return template;
+  }).catch((error: unknown) => {
+    cache.promise = undefined;
     throw error;
   });
-  return templatePromise;
+  return cache.promise;
 }
 
 function remapJointIndices(source: Template, body: THREE.SkinnedMesh, geometry: THREE.BufferGeometry): void {
@@ -158,7 +237,7 @@ function copyFamilyMorphs(body: THREE.SkinnedMesh, shoes: THREE.SkinnedMesh): vo
 }
 
 /** Attach the pinned, source-authored mobile shoes to an actor's existing Mixamo rig. */
-export async function applyAuthoredFootwear(root: THREE.Group): Promise<AuthoredFootwear> {
+export async function applyAuthoredFootwear(root: THREE.Group, options: AuthoredFootwearOptions = {}): Promise<AuthoredFootwear> {
   let body: THREE.SkinnedMesh | undefined;
   root.traverse((node) => {
     if (node.name === 'Body' && (node as THREE.SkinnedMesh).isSkinnedMesh) {
@@ -167,12 +246,20 @@ export async function applyAuthoredFootwear(root: THREE.Group): Promise<Authored
     }
   });
   invariant(body, 'actor is missing the Body skinned mesh');
+  const standalone = options.kitOwner ? undefined : createStandaloneOwner();
+  const owner = options.kitOwner ?? standalone!.owner;
+  const cache = cacheFor(owner);
+  assertCacheOpen(cache);
   const sourceBody = body;
-  const template = await getTemplate();
+  let template: Template;
+  try { template = await getTemplate(cache); } catch (error) { standalone?.dispose(); throw error; }
+  assertCacheOpen(cache);
   const geometry = template.geometry.clone();
   const material = template.material.clone();
   let shoes: THREE.SkinnedMesh | undefined;
   let disposed = false;
+  let unregisterOwner: (() => boolean) | undefined;
+  let footwear: AuthoredFootwear | undefined;
   try {
     remapJointIndices(template, sourceBody, geometry);
     shoes = new THREE.SkinnedMesh(geometry, material);
@@ -210,7 +297,7 @@ export async function applyAuthoredFootwear(root: THREE.Group): Promise<Authored
       masculineFitMaximumMetres: MASCULINE_MAX_FIT_METRES,
       warnings: Object.freeze(['The source footwear remains male-authored; maximum mapped feminine fit discrepancy is 4.73 cm and requires rendered review.']),
     });
-    return {
+    footwear = {
       object: shoes,
       metrics,
       dispose() {
@@ -219,12 +306,22 @@ export async function applyAuthoredFootwear(root: THREE.Group): Promise<Authored
         shoes!.parent?.remove(shoes!);
         geometry.dispose();
         material.dispose();
+        unregisterOwner?.();
+        standalone?.dispose();
       },
     };
+    invariant(footwear, 'shoe instance was not created');
+    if (options.kitOwner) unregisterOwner = options.kitOwner.onDispose(() => footwear!.dispose());
+    assertCacheOpen(cache);
+    return footwear!;
   } catch (error) {
-    shoes?.parent?.remove(shoes);
-    geometry.dispose();
-    material.dispose();
+    if (footwear) footwear.dispose();
+    else {
+      shoes?.parent?.remove(shoes);
+      geometry.dispose();
+      material.dispose();
+      standalone?.dispose();
+    }
     throw error;
   }
 }

@@ -1,0 +1,52 @@
+import * as THREE from 'three';
+
+export interface NativeBodySurfaceProbe {
+  readonly candidateCount: number;
+  readonly sourceVertexCount: number;
+  sample(): Readonly<{ minY: number; maxY: number }>;
+}
+const DIRECTIONS = [
+  [1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1],
+  ...[-1,1].flatMap(x => [-1,1].flatMap(y => [-1,1].map(z => [x,y,z]))),
+].map(value => new THREE.Vector3(value[0]!,value[1]!,value[2]!).normalize());
+
+/** Cache anatomical surface extremes once; sample only those vertices during a bounded pose. */
+export function createNativeBodySurfaceProbe(root: THREE.Group, meshes: readonly THREE.SkinnedMesh[]): NativeBodySurfaceProbe {
+  if (!meshes.length || meshes.length > 8) throw new Error('Native body surface needs one to eight owned meshes');
+  root.updateWorldMatrix(true,false);root.updateMatrixWorld(true);
+  const rootInverse=root.matrixWorld.clone().invert(),point=new THREE.Vector3();
+  const samples: {mesh:THREE.SkinnedMesh; vertices:Uint32Array}[]=[];
+  let sourceVertexCount=0,candidateCount=0;
+  for(const mesh of meshes){
+    if(root.getObjectById(mesh.id)!==mesh)throw new Error('Native body surface mesh must belong to the actor');
+    const position=mesh.geometry.getAttribute('position'),indices=mesh.geometry.getAttribute('skinIndex'),weights=mesh.geometry.getAttribute('skinWeight');
+    if(!position||!indices||!weights||position.count!==indices.count||position.count!==weights.count)throw new Error('Native body surface needs aligned skin attributes');
+    const used=mesh.geometry.index?new Set(Array.from(mesh.geometry.index.array)):new Set(Array.from({length:position.count},(_,i)=>i));
+    const buckets=new Map<string,{scores:Float64Array;vertices:Int32Array}>();
+    mesh.skeleton.update();
+    for(const vertex of used){
+      let bone=-1,maximum=0;
+      for(let channel=0;channel<4;channel++){const weight=weights.getComponent(vertex,channel);if(weight>maximum){maximum=weight;bone=indices.getComponent(vertex,channel);}}
+      if(bone<0||!mesh.skeleton.bones[bone])throw new Error('Native body surface vertex lacks positive valid support');
+      const supports=[0,1,2,3].map(channel=>({bone:indices.getComponent(vertex,channel),weight:weights.getComponent(vertex,channel)})).filter(item=>item.weight>1e-5).sort((a,b)=>b.weight-a.weight);
+      const secondary=supports[1];
+      const key=`${bone}:${secondary?.bone ?? -1}:${Math.floor((secondary?.weight ?? 0)*4)}`;
+      let bucket=buckets.get(key);if(!bucket){bucket={scores:new Float64Array(DIRECTIONS.length).fill(-Infinity),vertices:new Int32Array(DIRECTIONS.length).fill(-1)};buckets.set(key,bucket);}
+      mesh.getVertexPosition(vertex,point);point.applyMatrix4(mesh.matrixWorld).applyMatrix4(rootInverse);
+      for(let direction=0;direction<DIRECTIONS.length;direction++){const score=point.dot(DIRECTIONS[direction]!);if(score>bucket.scores[direction]!){bucket.scores[direction]=score;bucket.vertices[direction]=vertex;}}
+    }
+    const chosen=new Set<number>();for(const bucket of buckets.values())for(const vertex of bucket.vertices)if(vertex>=0)chosen.add(vertex);
+    const vertices=Uint32Array.from(chosen);sourceVertexCount+=used.size;candidateCount+=vertices.length;samples.push({mesh,vertices});
+  }
+  if(!candidateCount||candidateCount>4096)throw new Error(`Native body surface exceeds bounded candidate allowance: ${candidateCount}`);
+  return {
+    candidateCount,sourceVertexCount,
+    sample(){
+      root.updateWorldMatrix(true,false);root.updateMatrixWorld(true);
+      let minY=Infinity,maxY=-Infinity;
+      for(const {mesh,vertices}of samples){if(!mesh.visible)continue;mesh.skeleton.update();for(const index of vertices){mesh.getVertexPosition(index,point);point.applyMatrix4(mesh.matrixWorld);minY=Math.min(minY,point.y);maxY=Math.max(maxY,point.y);}}
+      if(!Number.isFinite(minY)||!Number.isFinite(maxY))throw new Error('Native body surface has no finite visible samples');
+      return Object.freeze({minY,maxY});
+    },
+  };
+}

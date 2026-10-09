@@ -13,17 +13,25 @@ import officeMaleUrl from './authored-clothing/office-export/out/office-male.glb
 import officeFemaleUrl from './authored-clothing/office-export/out/office-female.glb?url';
 import officeMaleHideUrl from './authored-clothing/office-export/out/office-male-body-hide-map.json?url';
 import officeFemaleHideUrl from './authored-clothing/office-export/out/office-female-body-hide-map.json?url';
+import femaleCasualUrl from './authored-clothing/casual-female-export/out/casual-female.glb?url';
+import femaleCasualHideUrl from './authored-clothing/casual-female-export/out/casual-female-body-hide-map.json?url';
 
 /** This first authored outfit is deliberately limited to the casual suit bake. */
 export type AuthoredPresentationLook = Pick<Look, 'body' | 'outfit' | 'outfitColor' | 'bottomsColor' | 'fabric'>
   & Partial<Pick<Look, 'hair' | 'hairColor' | 'appearance' | 'accessories' | 'wearables'>>;
 
 export interface AuthoredPresentationOptions {
+  /** Optional Kit lifecycle owner; templates are cached and disposed only within this owner. */
+  readonly kitOwner?: AuthoredPresentationKitOwner;
   readonly additionalBodyHideSets?: readonly BodyTriangleHideSet[];
   /** Viewer-selected, same-origin mobile hair GLB. Geometry and alpha texture remain source-authored. */
   readonly hairAssetUrl?: string;
   readonly hairSha256?: string;
   readonly hairAssetName?: 'short02' | 'afro01';
+}
+
+export interface AuthoredPresentationKitOwner {
+  onDispose(callback: () => void): () => boolean;
 }
 
 export interface AuthoredPresentationMetrics {
@@ -68,6 +76,7 @@ interface OutfitTemplate {
 
 interface OutfitGeometryEntry {
   geometry: THREE.BufferGeometry;
+  disposed: boolean;
   references: number;
   outfitTriangles: number;
   hairTriangles: number;
@@ -99,16 +108,92 @@ const OFFICE_SPECS: Readonly<Record<'man' | 'woman', OutfitSpec>> = Object.freez
   man: { url: officeMaleUrl, sha: '74354b1293815f8753fe5b0cb618cb00da1fd19e7bb7f99fbff1817d243e73db', hideUrl: officeMaleHideUrl, hideSha: '337127fe061c4563faf8a5272135c4311b1893fc5c04c06ac7311e3c922136a3', asset: 'male_elegantsuit01', triangles: 14956, vertices: 8522, hidden: 6748, morphs: ['bodyMasculine'], sourceMorphs: ['bodyMale'] },
   woman: { url: officeFemaleUrl, sha: 'fd3f4ac0985dae3d6f46469fc8f22ea22d84628c83829c77802a79b1f8f3c053', hideUrl: officeFemaleHideUrl, hideSha: '47c3999dd2facb11511965925d2adfa160519a72f4cbb4834ccfd636be7cfa66', asset: 'female_elegantsuit01', triangles: 4192, vertices: 2446, hidden: 5010, morphs: ['bodyFeminine'], sourceMorphs: ['bodyFemale'] },
 });
-const CASUAL_SPEC: OutfitSpec = { url: casualSuitUrl, sha: OUTFIT_SHA256, hideUrl: bodyHideMapUrl, hideSha: BODY_HIDE_MAP_SHA256, asset: 'male_casualsuit01', triangles: OUTFIT_TRIANGLES, vertices: 8984, hidden: HIDDEN_BODY_TRIANGLES, morphs: ['bodyFeminine','bodyMasculine'] };
-const templatePromises = new Map<string, Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }>>();
-const hairTemplatePromises = new Map<string, Promise<OutfitTemplate>>();
-const bodyMaskCache = new WeakMap<THREE.BufferGeometry, THREE.BufferGeometry>();
+const CASUAL_SPECS: Readonly<Record<'man' | 'woman', OutfitSpec>> = Object.freeze({
+  man: { url: casualSuitUrl, sha: OUTFIT_SHA256, hideUrl: bodyHideMapUrl, hideSha: BODY_HIDE_MAP_SHA256, asset: 'male_casualsuit01', triangles: OUTFIT_TRIANGLES, vertices: 8984, hidden: HIDDEN_BODY_TRIANGLES, morphs: ['bodyFeminine','bodyMasculine'] },
+  woman: { url: femaleCasualUrl, sha: '7063492e52bb8817981349df45e141e0bc70dbe3e339d4d2dac8df3bdc3342bd', hideUrl: femaleCasualHideUrl, hideSha: '4efb1cbdb673673f93fc4af657f12ffd59e837c04cebd3a51d2270c361e3d753', asset: 'female_casualsuit01', triangles: 4236, vertices: 2406, hidden: 5376, morphs: ['bodyFeminine'], sourceMorphs: ['bodyFemale'] },
+});
+interface PresentationTemplateCache {
+  closed: boolean;
+  outfits: Map<string, Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }>>;
+  hairs: Map<string, Promise<OutfitTemplate>>;
+  roots: Set<THREE.Group>;
+}
+const presentationTemplateCaches = new WeakMap<AuthoredPresentationKitOwner, PresentationTemplateCache>();
+const disposedTemplateRoots = new WeakSet<THREE.Object3D>();
+const bodyMaskCache = new WeakMap<THREE.BufferGeometry, Map<string, THREE.BufferGeometry>>();
 const outfitGeometryCache = new WeakMap<THREE.BufferGeometry, Map<string, OutfitGeometryEntry>>();
 const bodyIndexHashCache = new WeakMap<THREE.BufferGeometry, Promise<string>>();
 const sourceDisposeHooks = new WeakSet<THREE.BufferGeometry>();
 
 function fail(message: string): never {
   throw new Error(`Authored presentation: ${message}`);
+}
+
+function disposeTemplateRoot(root: THREE.Object3D): void {
+  if (disposedTemplateRoots.has(root)) return;
+  disposedTemplateRoots.add(root);
+  const geometries = new Set<THREE.BufferGeometry>();
+  const materials = new Set<THREE.Material>();
+  const textures = new Set<THREE.Texture>();
+  const images = new Set<{ close?: () => void }>();
+  root.traverse((node) => {
+    const mesh = node as THREE.Mesh;
+    if (!mesh.isMesh) return;
+    geometries.add(mesh.geometry);
+    for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) {
+      materials.add(material);
+      for (const value of Object.values(material)) if (value instanceof THREE.Texture) textures.add(value);
+    }
+  });
+  for (const texture of textures) {
+    const source = texture.source?.data ?? texture.image;
+    if (source && typeof source === 'object' && 'close' in source && typeof source.close === 'function') images.add(source as { close: () => void });
+    texture.dispose();
+  }
+  for (const material of materials) material.dispose();
+  for (const geometry of geometries) geometry.dispose();
+  for (const image of images) image.close?.();
+}
+
+function closeTemplateCache(cache: PresentationTemplateCache): void {
+  if (cache.closed) return;
+  cache.closed = true;
+  cache.outfits.clear();
+  cache.hairs.clear();
+  for (const root of cache.roots) disposeTemplateRoot(root);
+  cache.roots.clear();
+}
+
+function templateCacheFor(owner: AuthoredPresentationKitOwner): PresentationTemplateCache {
+  const cached = presentationTemplateCaches.get(owner);
+  if (cached) return cached;
+  const cache: PresentationTemplateCache = { closed: false, outfits: new Map(), hairs: new Map(), roots: new Set() };
+  presentationTemplateCaches.set(owner, cache);
+  owner.onDispose(() => closeTemplateCache(cache));
+  return cache;
+}
+
+function createStandaloneOwner(): { owner: AuthoredPresentationKitOwner; dispose(): void } {
+  const callbacks = new Set<() => void>();
+  let closed = false;
+  return {
+    owner: {
+      onDispose(callback) {
+        if (closed) { callback(); return () => false; }
+        callbacks.add(callback);
+        return () => callbacks.delete(callback);
+      },
+    },
+    dispose() {
+      if (closed) return;
+      closed = true;
+      for (const callback of [...callbacks]) { callbacks.delete(callback); callback(); }
+    },
+  };
+}
+
+function assertTemplateCacheOpen(cache: PresentationTemplateCache): void {
+  check(!cache.closed, 'Kit was disposed while authored presentation assets were loading');
 }
 
 function normalizeBoneName(name: string): string {
@@ -195,6 +280,7 @@ async function loadTemplate(spec: OutfitSpec): Promise<{ outfit: OutfitTemplate;
   const suitAssetUrl = new URL(spec.url, import.meta.url);
   const baseUrl = new URL('.', suitAssetUrl.protocol === 'data:' ? import.meta.url : suitAssetUrl).href;
   const gltf = await loader.parseAsync(outfitBytes, baseUrl);
+  try {
   let mesh: THREE.Mesh | undefined;
   gltf.scene.traverse((node) => {
     if ((node as THREE.Mesh).isMesh) {
@@ -237,6 +323,10 @@ async function loadTemplate(spec: OutfitSpec): Promise<{ outfit: OutfitTemplate;
     },
     hideMap,
   };
+  } catch (error) {
+    disposeTemplateRoot(gltf.scene);
+    throw error;
+  }
 }
 
 async function loadHairTemplate(url: string, expectedHash: string, assetName: 'short02' | 'afro01'): Promise<OutfitTemplate> {
@@ -245,6 +335,7 @@ async function loadHairTemplate(url: string, expectedHash: string, assetName: 's
   const bytes = await fetchPinnedBytes(assetUrl.href, expectedHash.toLowerCase(), 'authored hair');
   const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   const gltf = await loader.parseAsync(bytes, new URL('.', assetUrl.protocol === 'data:' ? import.meta.url : assetUrl).href);
+  try {
   let mesh: THREE.Mesh | undefined;
   gltf.scene.traverse((node) => {
     if ((node as THREE.Mesh).isMesh) {
@@ -279,32 +370,54 @@ async function loadHairTemplate(url: string, expectedHash: string, assetName: 's
     jointNames: userData.jointNames as string[],
     targetNames: userData.targetNames as string[],
   };
+  } catch (error) {
+    disposeTemplateRoot(gltf.scene);
+    throw error;
+  }
 }
 
-function getHairTemplate(url: string, expectedHash: string, assetName: 'short02' | 'afro01'): Promise<OutfitTemplate> {
+function getHairTemplate(cache: PresentationTemplateCache, url: string, expectedHash: string, assetName: 'short02' | 'afro01'): Promise<OutfitTemplate> {
+  assertTemplateCacheOpen(cache);
   const key = `${new URL(url, import.meta.url).href}:${expectedHash.toLowerCase()}:${assetName}`;
-  let pending = hairTemplatePromises.get(key);
+  let pending = cache.hairs.get(key);
   if (!pending) {
-    pending = loadHairTemplate(url, expectedHash, assetName).catch((error: unknown) => {
-      hairTemplatePromises.delete(key);
+    const created = loadHairTemplate(url, expectedHash, assetName).then((template) => {
+      if (cache.closed) { disposeTemplateRoot(template.root); fail('Kit was disposed while hair was loading'); }
+      cache.roots.add(template.root);
+      return template;
+    }).catch((error: unknown) => {
+      if (cache.hairs.get(key) === created) cache.hairs.delete(key);
       throw error;
     });
-    hairTemplatePromises.set(key, pending);
+    pending = created;
+    cache.hairs.set(key, pending);
   }
   return pending;
 }
 
-function getTemplate(spec: OutfitSpec): Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }> {
-  let pending = templatePromises.get(spec.sha);
+function getTemplate(cache: PresentationTemplateCache, spec: OutfitSpec): Promise<{ outfit: OutfitTemplate; hideMap: BodyHideMap }> {
+  assertTemplateCacheOpen(cache);
+  let pending = cache.outfits.get(spec.sha);
   if (!pending) {
-    pending = loadTemplate(spec).catch((error: unknown) => { templatePromises.delete(spec.sha); throw error; });
-    templatePromises.set(spec.sha, pending);
+    const created = loadTemplate(spec).then((result) => {
+      if (cache.closed) { disposeTemplateRoot(result.outfit.root); fail('Kit was disposed while clothing was loading'); }
+      cache.roots.add(result.outfit.root);
+      return result;
+    }).catch((error: unknown) => {
+      if (cache.outfits.get(spec.sha) === created) cache.outfits.delete(spec.sha);
+      throw error;
+    });
+    pending = created;
+    cache.outfits.set(spec.sha, pending);
   }
   return pending;
 }
 
 function bodyMaskGeometry(source: THREE.BufferGeometry, hideMap: BodyHideMap): THREE.BufferGeometry {
-  const cached = bodyMaskCache.get(source);
+  const key = hideMap.bodyHideSourceTriangleIds.join(',');
+  let sourceMasks = bodyMaskCache.get(source);
+  if (!sourceMasks) { sourceMasks = new Map(); bodyMaskCache.set(source, sourceMasks); }
+  const cached = sourceMasks.get(key);
   if (cached) return cached;
   const index = source.getIndex();
   const position = source.getAttribute('position');
@@ -322,10 +435,10 @@ function bodyMaskGeometry(source: THREE.BufferGeometry, hideMap: BodyHideMap): T
     if (hidden.has(triangle)) continue;
     retained.push(index.getX(offset), index.getX(offset + 1), index.getX(offset + 2));
   }
-  check(retained.length / 3 === BODY_SOURCE_TRIANGLES - HIDDEN_BODY_TRIANGLES, 'filtered Body index count is inconsistent');
+  check(retained.length / 3 === BODY_SOURCE_TRIANGLES - hideMap.bodyHideSourceTriangleIds.length, 'filtered Body index count is inconsistent');
   const filtered = index.array instanceof Uint32Array ? new Uint32Array(retained) : new Uint16Array(retained);
   const wrapper = new THREE.BufferGeometry();
-  wrapper.name = 'authored-casual-suit-body-mask';
+  wrapper.name = `authored-casual-suit-body-mask-${hideMap.asset}`;
   for (const [name, attribute] of Object.entries(source.attributes)) wrapper.setAttribute(name, attribute);
   wrapper.morphAttributes = { ...source.morphAttributes };
   wrapper.morphTargetsRelative = source.morphTargetsRelative;
@@ -333,10 +446,13 @@ function bodyMaskGeometry(source: THREE.BufferGeometry, hideMap: BodyHideMap): T
   wrapper.setDrawRange(0, filtered.length);
   wrapper.boundingBox = source.boundingBox?.clone() ?? null;
   wrapper.boundingSphere = source.boundingSphere?.clone() ?? null;
-  bodyMaskCache.set(source, wrapper);
+  sourceMasks.set(key, wrapper);
   if (!sourceDisposeHooks.has(source)) {
     sourceDisposeHooks.add(source);
-    source.addEventListener('dispose', () => wrapper.dispose());
+    source.addEventListener('dispose', () => {
+      for (const mask of bodyMaskCache.get(source)?.values() ?? []) mask.dispose();
+      bodyMaskCache.delete(source);
+    });
   }
   return wrapper;
 }
@@ -398,6 +514,7 @@ function acquireOutfitGeometry(outfit: OutfitTemplate, body: THREE.SkinnedMesh):
   geometry.setAttribute('skinIndex', new THREE.BufferAttribute(remappedJoints, 4, sourceSkinIndex.normalized));
   const entry: OutfitGeometryEntry = {
     geometry,
+    disposed: false,
     references: 1,
     outfitTriangles: sourceIndex.count / 3,
     hairTriangles: 0,
@@ -407,7 +524,7 @@ function acquireOutfitGeometry(outfit: OutfitTemplate, body: THREE.SkinnedMesh):
   if (!sourceDisposeHooks.has(outfit.geometry)) {
     sourceDisposeHooks.add(outfit.geometry);
     outfit.geometry.addEventListener('dispose', () => {
-      for (const item of entries!.values()) item.geometry.dispose();
+      for (const item of entries!.values()) { if (!item.disposed) { item.disposed = true; item.geometry.dispose(); } }
       entries!.clear();
     });
   }
@@ -445,6 +562,7 @@ function acquireHairGeometry(hair: OutfitTemplate, body: THREE.SkinnedMesh): Out
   geometry.setAttribute('skinIndex', new THREE.BufferAttribute(remappedJoints, 4, sourceSkinIndex.normalized));
   const entry: OutfitGeometryEntry = {
     geometry,
+    disposed: false,
     references: 1,
     outfitTriangles: 0,
     hairTriangles: sourceIndex.count / 3,
@@ -454,7 +572,7 @@ function acquireHairGeometry(hair: OutfitTemplate, body: THREE.SkinnedMesh): Out
   if (!sourceDisposeHooks.has(hair.geometry)) {
     sourceDisposeHooks.add(hair.geometry);
     hair.geometry.addEventListener('dispose', () => {
-      for (const item of entries!.values()) item.geometry.dispose();
+      for (const item of entries!.values()) { if (!item.disposed) { item.disposed = true; item.geometry.dispose(); } }
       entries!.clear();
     });
   }
@@ -465,7 +583,7 @@ function releaseOutfitGeometry(outfit: OutfitTemplate, entry: OutfitGeometryEntr
   entry.references--;
   if (entry.references < 0) fail('outfit geometry reference count underflow');
   if (entry.references === 0) {
-    entry.geometry.dispose();
+    if (!entry.disposed) { entry.disposed = true; entry.geometry.dispose(); }
     outfitGeometryCache.get(outfit.geometry)?.forEach((value, key) => {
       if (value === entry) outfitGeometryCache.get(outfit.geometry)?.delete(key);
     });
@@ -571,7 +689,7 @@ export async function applyAuthoredPresentation(
 ): Promise<AuthoredPresentation> {
   check(look.outfit === 'casual' || look.outfit === 'office', `no authored outfit for ${look.outfit}`);
   check(look.body === 'man' || look.body === 'woman', `unsupported body family ${look.body}`);
-  const spec = look.outfit === 'office' ? OFFICE_SPECS[look.body] : CASUAL_SPEC;
+  const spec = look.outfit === 'office' ? OFFICE_SPECS[look.body] : CASUAL_SPECS[look.body];
   const requestedHair = look.hair === 'afro' || look.hair === 'curls' ? 'afro01'
     : look.hair === 'lowcut' || look.hair === 'low-cut' || look.hair === 'fade' || look.hair === 'classic' ? 'short02' : undefined;
   check(Boolean(options.hairAssetUrl) === Boolean(options.hairSha256), 'custom hair URL and SHA-256 must be supplied together');
@@ -599,10 +717,22 @@ export async function applyAuthoredPresentation(
   const sourceGeometry = sourceBody.geometry;
   const actualBodyIndexHash = await bodyIndexHash(sourceGeometry);
   check(actualBodyIndexHash === BODY_SOURCE_INDEX_SHA256, `Body source index hash changed (${actualBodyIndexHash})`);
-  const [{ outfit: template, hideMap }, hairTemplate] = await Promise.all([
-    getTemplate(spec),
-    hairUrl && hairHash && hairName ? getHairTemplate(hairUrl, hairHash, hairName) : Promise.resolve(undefined),
-  ]);
+  const standalone = options.kitOwner ? undefined : createStandaloneOwner();
+  const owner = options.kitOwner ?? standalone!.owner;
+  const templateCache = templateCacheFor(owner);
+  assertTemplateCacheOpen(templateCache);
+  let loadedTemplates: [{ outfit: OutfitTemplate; hideMap: BodyHideMap }, OutfitTemplate | undefined];
+  try {
+    loadedTemplates = await Promise.all([
+      getTemplate(templateCache, spec),
+      hairUrl && hairHash && hairName ? getHairTemplate(templateCache, hairUrl, hairHash, hairName) : Promise.resolve(undefined),
+    ]);
+  } catch (error) {
+    standalone?.dispose();
+    throw error;
+  }
+  const [{ outfit: template, hideMap }, hairTemplate] = loadedTemplates;
+  assertTemplateCacheOpen(templateCache);
   let entry: OutfitGeometryEntry | undefined;
   let hairEntry: OutfitGeometryEntry | undefined;
   let clothingPalette: ReturnType<typeof createAuthoredClothingPalette> | undefined;
@@ -613,6 +743,21 @@ export async function applyAuthoredPresentation(
   let mask: THREE.BufferGeometry | undefined;
   let maskLease: BodyMaskLease | undefined;
   let disposed = false;
+  let ownerDisposer: (() => boolean) | undefined;
+  const cleanupPresentation = () => {
+    if (disposed) return;
+    disposed = true;
+    if (clothing) clothing.parent?.remove(clothing);
+    if (hair) hair.parent?.remove(hair);
+    if (maskLease) maskLease.dispose();
+    else if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
+    clothingPalette?.dispose();
+    hairPalette?.dispose();
+    if (entry) releaseOutfitGeometry(template, entry);
+    if (hairEntry && hairTemplate) releaseOutfitGeometry(hairTemplate, hairEntry);
+    ownerDisposer?.();
+    standalone?.dispose();
+  };
   try {
     entry = acquireOutfitGeometry(template, sourceBody);
     if (hairTemplate) hairEntry = acquireHairGeometry(hairTemplate, sourceBody);
@@ -651,13 +796,13 @@ export async function applyAuthoredPresentation(
       mask = bodyMaskGeometry(sourceGeometry, hideMap);
       sourceBody.geometry = mask;
     }
-    return {
+    const presentation: AuthoredPresentation = {
       metrics: {
         bodySourceIndexSha256: actualBodyIndexHash,
         outfitSha256: spec.sha,
         bodySourceTriangles: BODY_SOURCE_TRIANGLES,
-        bodyVisibleTriangles: maskLease?.metrics.visibleTriangles ?? BODY_SOURCE_TRIANGLES - HIDDEN_BODY_TRIANGLES,
-        hiddenBodyTriangles: maskLease?.metrics.hiddenTriangles ?? HIDDEN_BODY_TRIANGLES,
+        bodyVisibleTriangles: maskLease?.metrics.visibleTriangles ?? BODY_SOURCE_TRIANGLES - spec.hidden,
+        hiddenBodyTriangles: maskLease?.metrics.hiddenTriangles ?? spec.hidden,
         outfitTriangles: entry.outfitTriangles,
         hairTriangles: hairEntry?.hairTriangles ?? 0,
         overlayDrawCalls: 1 + (hairEntry ? 1 : 0),
@@ -673,28 +818,13 @@ export async function applyAuthoredPresentation(
         clothingPalette!.setColors({shirt:top,trousers:bottom});
         hairPalette?.setColor(hair);
       },
-      dispose() {
-        if (disposed) return;
-        disposed = true;
-        if (clothing) clothing.parent?.remove(clothing);
-        if (hair) hair.parent?.remove(hair);
-        if (maskLease) maskLease.dispose();
-        else if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
-        clothingPalette?.dispose();
-        hairPalette?.dispose();
-        if (entry) releaseOutfitGeometry(template, entry);
-        if (hairEntry && hairTemplate) releaseOutfitGeometry(hairTemplate, hairEntry);
-      },
+      dispose() { cleanupPresentation(); },
     };
+    if (options.kitOwner) ownerDisposer = options.kitOwner.onDispose(() => presentation.dispose());
+    assertTemplateCacheOpen(templateCache);
+    return presentation;
   } catch (error) {
-    if (clothing) clothing.parent?.remove(clothing);
-    if (hair) hair.parent?.remove(hair);
-    if (maskLease) maskLease.dispose();
-    else if (sourceBody.geometry === mask) sourceBody.geometry = sourceGeometry;
-    clothingPalette?.dispose();
-    hairPalette?.dispose();
-    if (entry) releaseOutfitGeometry(template, entry);
-    if (hairEntry && hairTemplate) releaseOutfitGeometry(hairTemplate, hairEntry);
+    cleanupPresentation();
     throw error;
   }
 }

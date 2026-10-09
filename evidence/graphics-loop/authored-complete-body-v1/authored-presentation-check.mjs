@@ -12,7 +12,7 @@ import { loadCompleteCharacter } from './rig.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../../..');
-const bodyPath = path.join(repo, 'evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb');
+const bodyPath = path.join(repo, 'evidence/graphics-loop/authored-complete-body-v1/parametric-base-facial.glb');
 const clipPath = path.join(repo, 'src/scene/body/assets/clip-pack.glb');
 const suitPath = path.join(here, 'authored-clothing/out/male_casualsuit01.glb');
 const hidePath = path.join(here, 'authored-clothing/out/body-hide-map.json');
@@ -20,7 +20,7 @@ const shortPath = path.join(here, 'authored-hair/out/short02-mobile.glb');
 const afroPath = path.join(here, 'authored-hair/out/afro01-mobile.glb');
 const paths = { bodyPath, clipPath, suitPath, hidePath, shortPath, afroPath };
 const pins = {
-  bodyPath: '0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077',
+  bodyPath: '9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd',
   clipPath: '89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47',
   suitPath: '1f8d4fd4b867785226a9c057562289381ae071cf5acbcca248133a3216ae476f',
   hidePath: 'dbe0c82a3e31da4e6ce37f4f1d9dc8611143c7c9e6dbef72ffea8d281aebe099',

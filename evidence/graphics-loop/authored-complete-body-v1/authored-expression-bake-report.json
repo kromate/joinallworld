@@ -1,0 +1,290 @@
+{
+  "schema": "joinallworld.authored-expression-bake.v1",
+  "source": {
+    "path": "../authored-character-spike-v1/parametric-base-expressive.glb",
+    "sha256": "0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077",
+    "bytes": 2692984,
+    "hm08BaseObjSha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+    "groupMetadataSha256": "8cb1417bc55ae5ec8aa99f90734e81ed5fbb556511ff6a2c00e0534b70911444"
+  },
+  "output": {
+    "path": "parametric-base-facial.glb",
+    "sha256": "9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd",
+    "bytes": 2802528
+  },
+  "license": {
+    "repository": "makehumancommunity/extra-targets",
+    "commit": "7eaba3453134385bb5ea9811ef0b33b85b4b556d",
+    "license": "CC0 1.0 Universal",
+    "licenseSha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "packPath": "assets/faceunits01/packs/faceunits01.json",
+    "packSha256": "fd647a088691ddd9193ce9600df3377bb9ccf69c2904f0a7773a3c246d234c18"
+  },
+  "targets": [
+    {
+      "file": "eyeBlinkLeft.target",
+      "name": "nativeFacialBlinkLeft",
+      "bytes": 16277,
+      "sha256": "53d35e0a8357140d4e37277a674f211bdaf97be011b61cfcdff618f0bfea0ec8",
+      "license": "CC0"
+    },
+    {
+      "file": "eyeBlinkRight.target",
+      "name": "nativeFacialBlinkRight",
+      "bytes": 16075,
+      "sha256": "00d159a70fad650b336eb6f739a1a6a47f916da4331ef9848fb0eef989ca5cc5",
+      "license": "CC0"
+    },
+    {
+      "file": "jawOpen.target",
+      "name": "nativeFacialJawOpen",
+      "bytes": 51426,
+      "sha256": "2439e703e434f999b58a1d26cffdb6b2fd5f30941b8ff19cac70b75392d4de6f",
+      "license": "CC0"
+    },
+    {
+      "file": "mouthSmileLeft.target",
+      "name": "nativeFacialSmileLeft",
+      "bytes": 32657,
+      "sha256": "11cabf2fa6f9664c4d0b9f8f0cadaf4b2a1a9625b72c7593262465ce8d4cb9a2",
+      "license": "CC0"
+    },
+    {
+      "file": "mouthSmileRight.target",
+      "name": "nativeFacialSmileRight",
+      "bytes": 33258,
+      "sha256": "70578981892db13c02512455583c2f9743683d5c571c1e2624b09638cf37bedd",
+      "license": "CC0"
+    }
+  ],
+  "meshTargetRouting": {
+    "Body": [
+      "nativeFacialBlinkLeft",
+      "nativeFacialBlinkRight",
+      "nativeFacialJawOpen",
+      "nativeFacialSmileLeft",
+      "nativeFacialSmileRight"
+    ],
+    "Eyes": [],
+    "Teeth": [
+      "nativeFacialJawOpen"
+    ],
+    "Tongue": [
+      "nativeFacialJawOpen"
+    ]
+  },
+  "mapping": {
+    "nativeFacialBlinkLeft": {
+      "Body": {
+        "matchedRows": 718,
+        "affectedVertices": 747,
+        "skippedRows": 65,
+        "accessorIndex": 72
+      }
+    },
+    "nativeFacialBlinkRight": {
+      "Body": {
+        "matchedRows": 718,
+        "affectedVertices": 747,
+        "skippedRows": 65,
+        "accessorIndex": 73
+      }
+    },
+    "nativeFacialJawOpen": {
+      "Body": {
+        "matchedRows": 2249,
+        "affectedVertices": 2339,
+        "skippedRows": 294,
+        "accessorIndex": 74
+      },
+      "Teeth": {
+        "matchedRows": 68,
+        "affectedVertices": 68,
+        "skippedRows": 2475,
+        "accessorIndex": 75
+      },
+      "Tongue": {
+        "matchedRows": 226,
+        "affectedVertices": 253,
+        "skippedRows": 2317,
+        "accessorIndex": 76
+      }
+    },
+    "nativeFacialSmileLeft": {
+      "Body": {
+        "matchedRows": 1640,
+        "affectedVertices": 1697,
+        "skippedRows": 58,
+        "accessorIndex": 77
+      }
+    },
+    "nativeFacialSmileRight": {
+      "Body": {
+        "matchedRows": 1641,
+        "affectedVertices": 1698,
+        "skippedRows": 58,
+        "accessorIndex": 78
+      }
+    }
+  },
+  "sparseEncoding": {
+    "format": "glTF sparse FLOAT VEC3 accessors with UNSIGNED_SHORT vertex indices",
+    "densePayloadBytes": 875688,
+    "sparsePayloadBytes": 105686,
+    "payloadSavingsBytes": 770002,
+    "perTarget": [
+      {
+        "mesh": "Body",
+        "name": "nativeFacialBlinkLeft",
+        "denseBytes": 174204,
+        "sparseBytes": 10458,
+        "sparseCount": 747
+      },
+      {
+        "mesh": "Body",
+        "name": "nativeFacialBlinkRight",
+        "denseBytes": 174204,
+        "sparseBytes": 10458,
+        "sparseCount": 747
+      },
+      {
+        "mesh": "Body",
+        "name": "nativeFacialJawOpen",
+        "denseBytes": 174204,
+        "sparseBytes": 32746,
+        "sparseCount": 2339
+      },
+      {
+        "mesh": "Teeth",
+        "name": "nativeFacialJawOpen",
+        "denseBytes": 1632,
+        "sparseBytes": 952,
+        "sparseCount": 68
+      },
+      {
+        "mesh": "Tongue",
+        "name": "nativeFacialJawOpen",
+        "denseBytes": 3036,
+        "sparseBytes": 3542,
+        "sparseCount": 253
+      },
+      {
+        "mesh": "Body",
+        "name": "nativeFacialSmileLeft",
+        "denseBytes": 174204,
+        "sparseBytes": 23758,
+        "sparseCount": 1697
+      },
+      {
+        "mesh": "Body",
+        "name": "nativeFacialSmileRight",
+        "denseBytes": 174204,
+        "sparseBytes": 23772,
+        "sparseCount": 1698
+      }
+    ]
+  },
+  "blinkApertureMeters": {
+    "neutral": {
+      "left": 0.004746,
+      "right": 0.004746
+    },
+    "bilateral": {
+      "left": -0.000161,
+      "right": -0.000161
+    }
+  },
+  "jawOpen": {
+    "Body": {
+      "vertices": 14517,
+      "affectedVertices": 2339,
+      "maxDisplacementMeters": 0.038738
+    },
+    "Teeth": {
+      "vertices": 136,
+      "affectedVertices": 68,
+      "maxDisplacementMeters": 0.031408
+    },
+    "Tongue": {
+      "vertices": 253,
+      "affectedVertices": 253,
+      "maxDisplacementMeters": 0.028144
+    }
+  },
+  "preserved": {
+    "sourceMeshes": 4,
+    "sourceMeshNames": [
+      "Body",
+      "Eyes",
+      "Teeth",
+      "Tongue"
+    ],
+    "sourceMorphNames": {
+      "Body": [
+        "noseWider",
+        "noseNarrower",
+        "mouthCornersUp",
+        "mouthCornersDown",
+        "mouthDimples",
+        "browsUp",
+        "browsDown",
+        "cheekFullerLeft",
+        "cheekFullerRight",
+        "jawWider",
+        "jawNarrower",
+        "headRound",
+        "headOval",
+        "bodyFeminine",
+        "bodyMasculine",
+        "bodyMuscular",
+        "bodySofter",
+        "bodyHeavier",
+        "bodyThinner",
+        "heightTaller",
+        "heightShorter",
+        "chestVShape",
+        "bustBigger",
+        "bustSmaller",
+        "shouldersWider",
+        "shouldersNarrower",
+        "hipsWider",
+        "hipsNarrower",
+        "mouthLowerLipMiddleDown",
+        "eyeUpperLidDownLeft",
+        "eyeUpperLidDownRight",
+        "eyeLowerLidUpLeft",
+        "eyeLowerLidUpRight",
+        "jawDrop"
+      ],
+      "Eyes": [
+        "bodyFeminine",
+        "bodyMasculine",
+        "heightTaller",
+        "heightShorter"
+      ],
+      "Teeth": [
+        "bodyFeminine",
+        "bodyMasculine",
+        "heightTaller",
+        "heightShorter"
+      ],
+      "Tongue": [
+        "bodyFeminine",
+        "bodyMasculine",
+        "bodyThinner",
+        "heightTaller",
+        "heightShorter"
+      ]
+    },
+    "sourceAccessorCount": 72,
+    "outputAccessorCount": 79,
+    "sourceBufferPrefixByteIdentical": true,
+    "sourceAccessorDefinitionsRetained": true,
+    "sourceBufferViewsRetained": true,
+    "decodedSourceAttributesAndMorphsByteIdentical": true,
+    "decodedNewSparseMorphsExactlyEqualDenseCandidates": true,
+    "outputHasTargetNormals": false,
+    "normalLimitation": "New facial targets provide POSITION deltas only, matching source target convention; no per-target NORMAL morphs are supplied."
+  },
+  "elapsedMs": 165
+}

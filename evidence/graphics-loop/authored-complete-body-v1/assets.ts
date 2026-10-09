@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import type { Kit } from '../../../src/scene/kit.ts';
 import { BODY_FILES } from '../../../src/scene/body/files.ts';
-import authoredUrl from '../authored-character-spike-v1/parametric-base-expressive.glb?url';
+import authoredUrl from './parametric-base-facial.glb?url';
 import type { CompleteCharacterKit } from './rig.ts';
 
 const sourceJointNames = ['pelvis', 'spine_01', 'spine_02', 'spine_03', 'neck_01', 'Head', 'clavicle_l', 'upperarm_l', 'lowerarm_l', 'hand_l', 'clavicle_r', 'upperarm_r', 'lowerarm_r', 'hand_r', 'thigh_l', 'calf_l', 'foot_l', 'ball_l', 'thigh_r', 'calf_r', 'foot_r', 'ball_r'];

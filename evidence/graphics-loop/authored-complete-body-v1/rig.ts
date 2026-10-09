@@ -367,19 +367,18 @@ export async function loadCompleteCharacter(kit: CompleteCharacterKit, look: unk
       }
       const time = Number.isFinite(seconds) ? Math.max(0, seconds) : 0;
       if (name === 'smile') {
-        setMorph(bodyMesh, 'mouthCornersUp', 0.62);
-        setMorph(bodyMesh, 'mouthDimples', 0.25);
+        setMorph(bodyMesh, 'nativeFacialSmileLeft', 0.62);
+        setMorph(bodyMesh, 'nativeFacialSmileRight', 0.62);
       } else if (name === 'grin') {
-        setMorph(bodyMesh, 'mouthCornersUp', 0.9);
-        setMorph(bodyMesh, 'mouthDimples', 0.35);
-        setMorph(bodyMesh, 'jawDrop', 0.12);
+        setMorph(bodyMesh, 'nativeFacialSmileLeft', 0.9);
+        setMorph(bodyMesh, 'nativeFacialSmileRight', 0.9);
+        for (const mesh of meshes) setMorph(mesh, 'nativeFacialJawOpen', 0.18);
       } else if (name === 'talk') {
-        setMorph(bodyMesh, 'jawDrop', 0.12 + 0.22 * (0.5 + 0.5 * Math.sin(time * Math.PI * 4)));
+        const jaw = 0.12 + 0.28 * (0.5 + 0.5 * Math.sin(time * Math.PI * 4));
+        for (const mesh of meshes) setMorph(mesh, 'nativeFacialJawOpen', jaw);
       } else if (name === 'blink') {
-        setMorph(bodyMesh, 'eyeUpperLidDownLeft', 1);
-        setMorph(bodyMesh, 'eyeUpperLidDownRight', 1);
-        setMorph(bodyMesh, 'eyeLowerLidUpLeft', 0.25);
-        setMorph(bodyMesh, 'eyeLowerLidUpRight', 0.25);
+        setMorph(bodyMesh, 'nativeFacialBlinkLeft', 1);
+        setMorph(bodyMesh, 'nativeFacialBlinkRight', 1);
       }
     };
     const sample = (seconds: number, pose: CompleteCharacterPose) => {

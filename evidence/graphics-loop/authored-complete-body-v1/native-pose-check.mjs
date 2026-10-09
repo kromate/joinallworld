@@ -11,8 +11,8 @@ import { createNativePoseController } from './native-pose.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../../..');
-const sourcePath = path.join(repo, 'evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb');
-const expectedSha = '0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077';
+const sourcePath = path.join(repo, 'evidence/graphics-loop/authored-complete-body-v1/parametric-base-facial.glb');
+const expectedSha = '9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd';
 const bytes = readFileSync(sourcePath);
 const sha256 = createHash('sha256').update(bytes).digest('hex');
 assert.equal(sha256, expectedSha, 'authored source GLB pin');

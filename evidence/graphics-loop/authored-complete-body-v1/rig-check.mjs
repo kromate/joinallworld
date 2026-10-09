@@ -10,10 +10,10 @@ import { loadCompleteCharacter } from './rig.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../../..');
-const authoredPath = path.join(repo, 'evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb');
+const authoredPath = path.join(repo, 'evidence/graphics-loop/authored-complete-body-v1/parametric-base-facial.glb');
 const clipPath = path.join(repo, 'src/scene/body/assets/clip-pack.glb');
 const expected = {
-  authored: '0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077',
+  authored: '9a2ff742bff609ad16219cfc7f2bbca03ac834305c595def364add6ee57c01cd',
   clip: '89a2c636d3',
 };
 const sha = (data) => createHash('sha256').update(data).digest('hex');

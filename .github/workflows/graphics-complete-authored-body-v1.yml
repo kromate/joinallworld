@@ -1,7 +1,7 @@
 name: Complete authored human visible experiment
 on:
   push:
-    branches: [codex/graphics-complete-authored-body-v9]
+    branches: [codex/graphics-complete-authored-body-v10]
 permissions:
   contents: read
 jobs:
@@ -20,6 +20,8 @@ jobs:
         run: |
           python3 evidence/graphics-loop/authored-complete-body-v1/download-source.py
           python3 evidence/graphics-loop/authored-character-spike-v1/retain-morphs.py evidence/graphics-loop/authored-character-spike-v1/parametric-base.glb evidence/graphics-loop/authored-character-spike-v1/parametric-base-expressive.glb
+      - name: Bake pinned authored facial units
+        run: node --max-old-space-size=128 evidence/graphics-loop/authored-complete-body-v1/bake-authored-expressions.mjs
       - name: Build complete human comparison
         run: node --max-old-space-size=192 evidence/graphics-loop/authored-complete-body-v1/build-preview.mjs
       - name: Check complete character TypeScript

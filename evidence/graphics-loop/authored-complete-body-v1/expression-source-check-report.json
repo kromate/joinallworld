@@ -1,0 +1,392 @@
+{
+  "schema": "joinallworld.expression-source-mapping-check.v1",
+  "sourcePins": {
+    "currentBodyGlb": {
+      "path": "../authored-character-spike-v1/parametric-base-expressive.glb",
+      "sha256": "0152129ce2c6022911747f9d7a6df3fdb72a9e6e1bea73db414da1cb8f483077",
+      "bytes": 2692984
+    },
+    "hm08": {
+      "repository": "nirholas/three.ws",
+      "commit": "ec8d1d270b93b8e2e87e8a6160bb908665fe1fcd",
+      "upstreamBaseObjPath": "avatar-sources/anny/3dobjs/base.obj",
+      "baseObjSha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+      "groupMetadataPath": "avatar-sources/anny/mesh_metadata/basemesh_vertex_groups.json",
+      "groupMetadataSha256": "8cb1417bc55ae5ec8aa99f90734e81ed5fbb556511ff6a2c00e0534b70911444",
+      "scale": 0.1,
+      "floorYMeters": -0.818305
+    },
+    "facialUnits": {
+      "repository": "makehumancommunity/extra-targets",
+      "commit": "7eaba3453134385bb5ea9811ef0b33b85b4b556d",
+      "packPath": "assets/faceunits01/packs/faceunits01.json",
+      "targetDirectory": "assets/faceunits01/targets/faceunits/",
+      "repositoryLicense": "CC0 1.0 Universal",
+      "targetMetadataAuthor": "Mika Suominen",
+      "targetMetadataLicense": "CC0"
+    },
+    "mpfb": {
+      "repository": "makehumancommunity/mpfb2",
+      "commit": "d0a32e57a7f915cb2f2b95410e2117648c7bbb7e",
+      "faceServicePath": "src/mpfb/services/faceservice.py",
+      "exportCopyPath": "src/mpfb/ui/operations/exportops/operators/createexportcopy.py",
+      "exportDocsPath": "docs/ui/operations/exportops.md",
+      "faceunitsProperty": "Load faceunits01 (ARKit face units, 52 shapes) shapekeys onto the base mesh with zero weight"
+    }
+  },
+  "method": {
+    "sourceGeometry": "Rebuild exact output split order from the pinned hm08 OBJ using upstream Anny body/eye/teeth/tongue face groups, unique (source vertex ID, OBJ UV ID) pairs, glTF V=1-v, scale 0.1, and joint-ground Y floor; compare every output position and UV against actual GLB accessors.",
+    "targetTransfer": "Apply sparse target rows by their original hm08 source vertex IDs to every corresponding UV-split output vertex; multiply target offsets by the exact upstream 0.1 scale. No nearest-neighbor or geometric fit is used.",
+    "blinkMetric": "Mean Y distance between upper/lower halves of source indexed Body eye boundary loops after bodyFeminine=1/headRound=0.72, averaged across two UV-seam copies per eye.",
+    "targetValues": "ARKit target weight 1; target deltas are evaluated as source geometry only, without rendering."
+  },
+  "exactMeshMapping": [
+    {
+      "mesh": "Body",
+      "sourceGroups": [
+        "body"
+      ],
+      "vertices": 14517,
+      "triangles": 26756,
+      "uniqueSourceVertexIds": 13380,
+      "uvSeamDuplicateCount": 1137,
+      "maxPositionErrorMeters": 5.958557136587217e-8,
+      "maxUvError": 2.9800415024539006e-8,
+      "exactOrderedMapping": true
+    },
+    {
+      "mesh": "Eyes",
+      "sourceGroups": [
+        "helper-l-eye",
+        "helper-r-eye"
+      ],
+      "vertices": 160,
+      "triangles": 280,
+      "uniqueSourceVertexIds": 144,
+      "uvSeamDuplicateCount": 16,
+      "maxPositionErrorMeters": 5.6877136112021276e-8,
+      "maxUvError": 2.9712676985482744e-8,
+      "exactOrderedMapping": true
+    },
+    {
+      "mesh": "Teeth",
+      "sourceGroups": [
+        "helper-upper-teeth",
+        "helper-lower-teeth"
+      ],
+      "vertices": 136,
+      "triangles": 192,
+      "uniqueSourceVertexIds": 136,
+      "uvSeamDuplicateCount": 0,
+      "maxPositionErrorMeters": 5.828857396750209e-8,
+      "maxUvError": 2.89611816750579e-8,
+      "exactOrderedMapping": true
+    },
+    {
+      "mesh": "Tongue",
+      "sourceGroups": [
+        "helper-tongue"
+      ],
+      "vertices": 253,
+      "triangles": 448,
+      "uniqueSourceVertexIds": 226,
+      "uvSeamDuplicateCount": 27,
+      "maxPositionErrorMeters": 5.9127807761072404e-8,
+      "maxUvError": 2.9769897436082715e-8,
+      "exactOrderedMapping": true
+    }
+  ],
+  "targetMappings": {
+    "eyeBlinkLeft": {
+      "sourceRows": 783,
+      "sourceVertexIndexMin": 616,
+      "sourceVertexIndexMax": 14854,
+      "mappedByOriginalVertexId": true,
+      "byMesh": {
+        "Body": {
+          "matchedRows": 718,
+          "affectedSplitVertices": 747,
+          "maxDisplacementMeters": 0.012613,
+          "meanDisplacementMeters": 0.002894
+        },
+        "Eyes": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        },
+        "Teeth": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        },
+        "Tongue": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        }
+      },
+      "sourceRowsOutsideImportedFourMeshes": 65,
+      "outsideSourceVertexIds": [
+        14742,
+        14743,
+        14744,
+        14745,
+        14746,
+        14747,
+        14748,
+        14749,
+        14750,
+        14760,
+        14761,
+        14762,
+        14763,
+        14764,
+        14766,
+        14769,
+        14771,
+        14772,
+        14773,
+        14774,
+        14775,
+        14785,
+        14786,
+        14787,
+        14788,
+        14789,
+        14790,
+        14791,
+        14794,
+        14795,
+        14796,
+        14797,
+        14798,
+        14799,
+        14800,
+        14801,
+        14802,
+        14803,
+        14804,
+        14805,
+        14806,
+        14807,
+        14808,
+        14809,
+        14810,
+        14811,
+        14812,
+        14813,
+        14814,
+        14815,
+        14816,
+        14817,
+        14842,
+        14843,
+        14844,
+        14845,
+        14846,
+        14847,
+        14848,
+        14849,
+        14850,
+        14851,
+        14852,
+        14853,
+        14854
+      ]
+    },
+    "eyeBlinkRight": {
+      "sourceRows": 783,
+      "sourceVertexIndexMin": 0,
+      "sourceVertexIndexMax": 14979,
+      "mappedByOriginalVertexId": true,
+      "byMesh": {
+        "Body": {
+          "matchedRows": 718,
+          "affectedSplitVertices": 747,
+          "maxDisplacementMeters": 0.012613,
+          "meanDisplacementMeters": 0.002894
+        },
+        "Eyes": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        },
+        "Teeth": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        },
+        "Tongue": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        }
+      },
+      "sourceRowsOutsideImportedFourMeshes": 65,
+      "outsideSourceVertexIds": [
+        14867,
+        14868,
+        14869,
+        14870,
+        14871,
+        14872,
+        14873,
+        14874,
+        14875,
+        14885,
+        14886,
+        14887,
+        14888,
+        14889,
+        14891,
+        14894,
+        14896,
+        14897,
+        14898,
+        14899,
+        14900,
+        14910,
+        14911,
+        14912,
+        14913,
+        14914,
+        14915,
+        14916,
+        14919,
+        14920,
+        14921,
+        14922,
+        14923,
+        14924,
+        14925,
+        14926,
+        14927,
+        14928,
+        14929,
+        14930,
+        14931,
+        14932,
+        14933,
+        14934,
+        14935,
+        14936,
+        14937,
+        14938,
+        14939,
+        14940,
+        14941,
+        14942,
+        14967,
+        14968,
+        14969,
+        14970,
+        14971,
+        14972,
+        14973,
+        14974,
+        14975,
+        14976,
+        14977,
+        14978,
+        14979
+      ]
+    },
+    "jawOpen": {
+      "sourceRows": 2543,
+      "sourceVertexIndexMin": 35,
+      "sourceVertexIndexMax": 15059,
+      "mappedByOriginalVertexId": true,
+      "byMesh": {
+        "Body": {
+          "matchedRows": 2249,
+          "affectedSplitVertices": 2339,
+          "maxDisplacementMeters": 0.038738,
+          "meanDisplacementMeters": 0.006867
+        },
+        "Eyes": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        },
+        "Teeth": {
+          "matchedRows": 68,
+          "affectedSplitVertices": 68,
+          "maxDisplacementMeters": 0.031408,
+          "meanDisplacementMeters": 0.022249
+        },
+        "Tongue": {
+          "matchedRows": 226,
+          "affectedSplitVertices": 253,
+          "maxDisplacementMeters": 0.028144,
+          "meanDisplacementMeters": 0.020266
+        }
+      },
+      "sourceRowsOutsideImportedFourMeshes": 0,
+      "outsideSourceVertexIds": []
+    },
+    "mouthClose": {
+      "sourceRows": 1972,
+      "sourceVertexIndexMin": 119,
+      "sourceVertexIndexMax": 12360,
+      "mappedByOriginalVertexId": true,
+      "byMesh": {
+        "Body": {
+          "matchedRows": 1972,
+          "affectedSplitVertices": 2058,
+          "maxDisplacementMeters": 0.035928,
+          "meanDisplacementMeters": 0.003853
+        },
+        "Eyes": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        },
+        "Teeth": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        },
+        "Tongue": {
+          "matchedRows": 0,
+          "affectedSplitVertices": 0,
+          "maxDisplacementMeters": 0,
+          "meanDisplacementMeters": 0
+        }
+      },
+      "sourceRowsOutsideImportedFourMeshes": 0,
+      "outsideSourceVertexIds": []
+    }
+  },
+  "blinkApertureMeters": {
+    "neutral": {
+      "left": 0.004746,
+      "right": 0.004746
+    },
+    "eyeBlinkLeft": {
+      "left": -0.000161,
+      "right": 0.004746
+    },
+    "eyeBlinkRight": {
+      "left": 0.004746,
+      "right": -0.000161
+    },
+    "bilateral": {
+      "left": -0.000161,
+      "right": -0.000161
+    }
+  },
+  "sourceExpressionCoverage": {
+    "eyeBlinkTargetsDoNotMoveSeparateEyeMesh": true,
+    "jawOpenMovesBodyLowerTeethAndTongue": true
+  },
+  "elapsedMs": 7143
+}

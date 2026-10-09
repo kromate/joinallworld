@@ -1,5 +1,7 @@
 # User accountability report
 
+Latest correction 2026-10-09T22:05:26.341508+00:00: current live build is c1f7c1f7369139ce559292318ba9842c23a28267, independently health-checked22:02UTC. Teaching capability was privately assembled and focused Node134/Worker5+1 logs checked, but official combined71dc compilation failed with18 diagnostics. Integration repairs the complete scope and reports focused36PASS/2existingSKIP pending Root log review. Teaching remains OFF, full gameplay programme unfinished. The standalone revised Luna test proposal is superseded by Integration's repair. Earlier timestamped statuses below are historical.
+
 Checked at 2026-10-09T21:30:54.078468+00:00. This covers verified work in approximately the preceding 24 hours. Team delivery and Sol's personal contribution are distinguished below.
 
 The main goal is the connected, actively playable living world: driving school, simulated qualification, rental, animated car entry and driving, delivery and shop restocking, barber work, earnings, improvements and compatible reloads, followed by education, other careers, civic activities, real-business experiences and consented Goalmatic integration. Mobile play, active decisions, once-only rewards, save compatibility and real/fictional boundaries remain requirements. The native persistent goal is ACTIVE; the full programme is unfinished.

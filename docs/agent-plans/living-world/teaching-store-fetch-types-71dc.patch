@@ -1,0 +1,60 @@
+--- a/src/app/state/game.test.ts
++++ b/src/app/state/game.test.ts
+@@ -47,12 +47,16 @@
+   const waiting = new Promise<void>(resolve => { release = resolve })
+   const started = new Promise<void>(resolve => { reached = resolve })
+   const game = createGame({
+-    fetch: async (path, init) => {
++    fetch: async (input, init) => {
++      const rawInput = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url
++      const requestUrl = new URL(rawInput, 'http://game.test')
++      const path = requestUrl.pathname + requestUrl.search
++      const jsonResponse = (status: number, body: unknown) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } })
+       if (path === '/api/life?city=ibadan' && holdSwitch) {
+         holdSwitch = false
+         reached()
+         await waiting
+-        return { ok: false, status: 503, json: async () => ({ error: 'server_busy', reason: 'Try again shortly.' }) }
++        return jsonResponse(503, { error: 'server_busy', reason: 'Try again shortly.' })
+       }
+       const response = await server.fetch(path, init)
+       if (path.startsWith('/api/life') || path === '/api/action') {
+@@ -61,7 +65,7 @@
+           const life = body.state as LifeState
+           body.state = { ...life, estate: { ...life.estate, city: 'ibadan' }, location: 'agodi-gardens' }
+         }
+-        return { ok: response.ok, status: response.status, json: async () => ({ ...body, interactiveTeachingStarts: true }) }
++        return jsonResponse(response.status, { ...body, interactiveTeachingStarts: true })
+       }
+       return response
+     },
+@@ -100,21 +104,25 @@
+   const successfulSwitchWait = new Promise<void>(resolve => { releaseSuccessfulSwitch = resolve })
+   const successfulSwitchStarted = new Promise<void>(resolve => { successfulSwitchReached = resolve })
+   const game = createGame({
+-    fetch: async (path, init) => {
++    fetch: async (input, init) => {
++      const rawInput = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url
++      const requestUrl = new URL(rawInput, 'http://game.test')
++      const path = requestUrl.pathname + requestUrl.search
++      const jsonResponse = (status: number, body: unknown) => new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } })
+       if (path === '/api/characters/switch') {
+         if (!refused) {
+           reached()
+           await waiting
+           refused = true
+-          return { ok: false, status: 503, json: async () => ({ error: 'server_busy', reason: 'Try again shortly.' }) }
++          return jsonResponse(503, { error: 'server_busy', reason: 'Try again shortly.' })
+         }
+         if (holdSuccessfulSwitch) { holdSuccessfulSwitch = false; successfulSwitchReached(); await successfulSwitchWait }
+-        return { ok: true, status: 200, json: async () => ({ ok: true, city: 'lagos' }) }
++        return jsonResponse(200, { ok: true, city: 'lagos' })
+       }
+       const response = await server.fetch(path, init)
+       if (path.startsWith('/api/life')) {
+         const body = await response.json() as Record<string, unknown>
+-        return { ok: response.ok, status: response.status, json: async () => ({ ...body, interactiveTeachingStarts: true }) }
++        return jsonResponse(response.status, { ...body, interactiveTeachingStarts: true })
+       }
+       return response
+     },

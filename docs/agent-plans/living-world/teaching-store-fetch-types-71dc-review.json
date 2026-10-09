@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-09T22:04:33.250506+00:00",
+  "baseline": "71dc696f1f37d0b59dac7dba64d1299634c20aef",
+  "scope": [
+    "src/app/state/game.test.ts"
+  ],
+  "patch_sha256": "6d6fe6c37c3d278d5f957fbc78bf888e3af3943bb709a149999a55c8bace0ccd",
+  "manifest_sha256": "3b6a63f7185a59bf0327d6efbb5bb6d2beeee9650339e4cb61f5be98b8719c07",
+  "base_sha256": "794d678cfa5935d49e8a4f3488f522435c3d35c7327831de32a23e8c1476ed4c",
+  "result_sha256": "60b2d7e4f4d799dddb48bc1b61d85c5b9af3cefc15519740d7d73f6c2a6a3c4f",
+  "independent_source_checks": {
+    "apply_check": 0,
+    "apply": 0,
+    "all_assertion_and_clock_lines_preserved": true,
+    "two_URL_Request_path_query_normalizations": true,
+    "synthetic_responses": "real application/json Response; 503 and 200 preserved"
+  },
+  "superseded_patch": "a53ddef2a47df81f592863cf22eb58c11a25187063c17e6a8428763cadff7005 bypassed route intercepts for absolute URL/Request inputs; fixed after Root review",
+  "review_tool_correction": "First Root check falsely expected different variable spelling after successful base/result/apply/assertion checks. Rechecked actual requestUrl implementation; all source checks pass. No runtime pass inferred.",
+  "runtime_checks": "UNEXECUTED for this proposal; Integration independently repaired wrappers and reports focused36PASS/2existingSKIP/0FAIL, not independently accepted here",
+  "production": "c1f7c1f7369139ce559292318ba9842c23a28267; teaching starts OFF",
+  "decision": "valid isolated source proposal retained as superseded by Integration parent implementation; DO NOT apply over parent repair or transfer test acceptance"
+}

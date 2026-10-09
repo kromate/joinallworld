@@ -242,7 +242,8 @@ export interface SceneWalk {
   pose(name?: string, seat?: number): boolean
   gait(step: unknown, phase?: number, jog?: boolean): boolean
   heightAt(x: number, z: number): number
-  contactHeightAt?(x: number, z: number, expectedY?: number): number
+  /** Drawn support top plus contact allowance, or null for unsupported points (ramps/edges/anchors). */
+  contactHeightAt?(x: number, z: number, expectedY?: number): number | null
   near(spot: { x: number; y: number; z: number } | null | undefined): boolean
   goal(x?: number, z?: number): boolean
 }

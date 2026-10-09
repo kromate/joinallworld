@@ -1,5 +1,13 @@
 # Allworld agent coordination and phased production releases
 
+## GRAPHICS faster parallel execution and actual v3 deformation — 9 October 2026, 05:19 UTC
+
+Three existing Luna source lanes plus five-minute memory monitor ACTIVE; no duplicate. Currentwarning2 means remoteCPU/source work continues with fixedcaps, no localheavy expansion. Actual v6 GPU attempt displayed sourcewoman03 idle only; body4028→4028 because remainingtarget1600 clamped to1392source. Compact never displayed/motion never played. Added aggregateChromeRSS766836736B exceeded268435456cap; only own tab1412593945 closed, server37527/40808 terminal0/35.736s/21037056B, browser99825/40840 terminal143. Allownedlocal slotsfree; shareduser resources preserved. V7 target1200/Uint16 source lane underway, no quality acceptance.
+
+Actual pose diagnostic37887312581 exact8e9d64b8 fails reach as recorded; root independently recomputed16cross/dot witnesses. Changedapproach exact source-corner deformation v3 isolatedcommit2a119e60 branchcodex/graphics-office-source-corner-chart-v3, ACTUAL remote37887914692 SUCCESS. Eighteen sourcepins matchbefore/after; rootindependently recomputes8face+dots/8barycentricvertexerrors. Both4poses0degenerate/nonfinite, maxerror1.631e-7m, allmindots>.9999845. Man3266tris/232956B(+85344), woman3541tris/248406B(+90864); actual0.851/0.741s and140529664/151171072B below220MiB. CPUpositiondeformationgate PASS only. Actualshadercompilation/normalaccuracy/material/coverage/visual/mobile/worldintegration remainopen. Isolated GPUfixture sourceprep next; no productiongarment integration orcap waiver.
+
+Root catches environmentv5 prep syncopendir/duplicatepubliccopy regression beforepublication; distinctcompile/finalizer review underway. PrimaryHEAD0912754b/indexaa4ed080 preserved; experimentalbranch sourcepush only. WORLD retains soleproductionuploader. Whole-game quality/journeybytes/regression/physicalphones remainOPEN, goalACTIVE/incomplete. Latestmonitor05:14:59 pressure2WARNING,0swapouts/5min but4886pageouts.
+
 ## GRAPHICS v10 visual rejection and terminal parallel review — 9 October 2026, 03:42 UTC
 
 Existing three Luna source lanes and five-minute memory monitor remain active; no duplicate. Latest pressureWARNING2 with rapid paging means no optional memory-heavy build/cap expansion. User concurrent-browser/agent authorization remains authoritative; heavy1/heap1536/minifier1, bounded browser/server2. WORLD remains sole production uploader.

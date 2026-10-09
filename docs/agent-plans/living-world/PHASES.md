@@ -1,4 +1,4 @@
-Latest scoped evidence 2026-10-09T19:05:05.992909+00:00: exact3af fullCI14PASS; actual same-store WINCH restart plus sanitized30-field paired save comparison c2741a35 accepted. Operator reports Cameroon/Togo return and arrival Accra; remaining country/finalfare/home native acceptance and production release still open. TeachingOFF current consolidation does not satisfy later ON active-choice teaching. Full programme phases remain OPEN. [Evidence](sealed-africa-3af-review.json).
+Latest scoped evidence 2026-10-09T19:11:25.359192+00:00: exact3af fullCI14PASS; real same-store restart plus30-field pairedsave comparison and22-check final fundedfive-country reconciliation07d76433 accepted. Tenfares totalfictional1604000, finalcash596000, originalhome/storage retained. Nativewindow ended/PIDabsent19:09:18. WORLD release/live checks pending. Full programme phases remain OPEN. [Evidence](sealed-africa-3af-review.json).
 
 # Phases, tests and release sessions
 
@@ -14,9 +14,9 @@ Published Integration5e12d3a5d6301faec394abd81dc0d95e086edd48 remains unaccepted
 
 | Unit | Evidence | Release state | Remaining acceptance |
 | --- | --- | --- | --- |
-| Active teaching/compatible reader | Historical engine/host/native functional receipts; scoped latest readiness130/130 | New starts OFF; unreleased | Exact full gates, readable desktop/mobile, staged/live save continuity, activation |
-| Five capitals/cashless return | Scoped actual Node/SQLite corruption, atomic failure, concurrent once-only and restart passes within130; overlapping profile12/12 | Unreleased | Unadjusted downtime, changed-route original terms, exact full/native/staging/live proofs |
-| Download/provider limits | Exact3af official Node22/24 compiler/build/download PASS611402/221884/194866 across45 closures; original failures retained | Exact compiler/size gates pass; release unaccepted | Remaining Node24 game and rendered gameplay/staging/save continuity; historical Astra503/reload/320/390px proof retains explicit browser-cache and no-paid-action limits |
+| Active teaching/compatible reader | Exact3af fullCI14PASS; historical ON functional receipts; current consolidation starts OFF | Compatible consolidation release pending; ON inactive | Current release/live compatibility; separate readable ON desktop/mobile retry/reload/once-only wage activation acceptance |
+| Five capitals/return journeys | Exact3af funded5roundtrip native operator report;30-field restart and22-check final ledger/home comparisons pass; scoped Node/SQLite safety tests | Five-country funded stage milestone accepted; release pending | Named offline operator table; production gameplay/save continuity; cashless/changed-route original-terms native acceptance remains separate |
+| Download/provider limits | Exact3af14required CIjobs PASS; compiler/build/download611402raw/221884gzip/194866Brotli across45closures | Exact compiler/size/fullCI gates pass | WORLD existing-provider controls, exact sealed upload and live version/save observations; no cap waiver |
 | Physical journey/later careers/business | Bounded foundations; published v7 actual-host2/1pass/1fail; actor geometry lacks continuous boarding authority | Disabled/queued | Complete school/licence/rental/animated entry/driving/restock/barber/earnings/improvement/reload and later programme |
 | Goalmatic | Private published contracts inspected | Disabled/mock | Selected consented workspace/install/Goals schema, events/reconciliation/revocation and live verification |
 

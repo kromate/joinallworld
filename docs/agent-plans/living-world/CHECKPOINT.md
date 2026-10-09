@@ -1,5 +1,11 @@
 # Living-world implementation checkpoint
 
+## Funded five-country native milestone accepted - 2026-10-09T19:11:25.359192+00:00
+
+Read/hashed sanitized finalcomparison07d76433 and verified22declared checks alltrue, exact3af/f776 and aggregatefictionalbalance200000+2000000-1604000=596000. Integration independently reconciled private snapshots; actualverifiedAstra finalcapture19:08:16.723/source51ac51bb afterfive roundtrips/localwalks/meals/reloads/returns and finalApapa/SpringBed UI. Root didnotreadrawsnapshot/browser/store. All10distinct paidactions/receipts/matchingledgers, walletchain, originalhome/inventory/cars/estate/ownership/oldreceipts/founder audit retained in qualifiedreport. [Exact review](sealed-africa-3af-review.json). QAgrant is explicit; this doesnotprove ordinary-earnedprogression, ONteaching, physicalphone or fullphysicaljourney. Offline namedoperator table requested; no repeatstage justforreview.
+
+Actualhelper87118 absent19:09:18 afterfixeddeadline; ownerterminalcleanupreceipt pending, no Rootrestart. WORLD accepted samepackagefirstfive milestone and proceeding through originalproduction-save/provider/releasecontrols. Production remainslastverifieda446, upload/liveacceptance open. Matrix/backlognowremove staleNode24/native pending gates and preservefullprogramme requirements. NextWORLD exactsealedrelease/livecontinuity, then separateONteaching/fullphysical/later/business/liveGoalmatic. NativegoalACTIVE, zeroextra spend, human05UTCcutoff preserved.
+
 ## Queued notice isolation source review - 2026-10-09T19:07:50.216272+00:00
 
 Independently reviewed Integration's private next-unit patch3f9e36d7. All9actual notice read-mark callers are covered across7files; existing synchronous actor watcher resets transient seenBefore. Actor/city-scoped keys retain old marks without attributing them to a new actor; noactor inert and malformed timestamps filtered. No eager UI/media imports or shared runtime edits. [Source-only review](notice-isolation-next-unit-review.json). Proposal remains unapplied/unexecuted/queued after current frozen3af release; actual focused/compiler/budget/two-actor UI acceptance required.

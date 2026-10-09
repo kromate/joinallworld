@@ -1,14 +1,13 @@
-Latest scoped evidence 2026-10-09T19:05:05.992909+00:00: exact3af fullCI14PASS; actual same-store WINCH restart plus sanitized30-field paired save comparison c2741a35 accepted. Operator reports Cameroon/Togo return and arrival Accra; remaining country/finalfare/home native acceptance and production release still open. TeachingOFF current consolidation does not satisfy later ON active-choice teaching. Full programme phases remain OPEN. [Evidence](sealed-africa-3af-review.json).
+Latest scoped evidence 2026-10-09T19:11:25.359192+00:00: fundedfive-country stage accepted, exact22-check finalreceipt07d76433 and30-field restart saves retained. Fullprogramme stillunfinished.
 
-Current finite batch: accept exact3af17a01 affordable-route credit repair through fresh compiler/startup/full/native/isolated-staging/save gates, then WORLD deploy/live verify. Scoped10/10fixture and40/40focused pass, four committed sourcehashes match independent review; no historical5e test transfer. Full physical/careers/business/liveGoalmatic remain unfinished.
+Current finite batch: WORLD accepted exact3af/f776 production release and live gameplay/save verification. FullCI14PASS and scopedfunded five-country native/save/receipt acceptance passed. Preserve existingproduction namespace/bindings and compatibleforward recovery; no previoussource test transfer.
 
-## Next finite acceptance batch - 9 October, 18:32 UTC
+## Next finite acceptance batch - 9 October, 19:12 UTC
 
-1. Exact3af fullCI37970635606 is terminal SUCCESS; preserve official suite counts and existing skips, without transferring evidence to changed source.
-2. WORLD cleanup repair245e2875 is independently source-reviewed. Prove actual exact-package restart/resume with private store/identity and bounded deadlines. [Concrete review](sealed-africa-3af-review.json).
-3. Integration's verified Astra performs one coordinated exact-package native window: active teaching, five-city rendered travel, responsive controls, same identity and once-only paid/funding receipts across reload/restart/resume; independently prove unadjusted downtime and original terms. Synthetic admin-funded/accelerated fixtures remain qualified.
-4. WORLD releases only after exact gates pass, then verifies live version, saved progress and observations. Physical driving/full connected journey, later careers/business and live Goalmatic remain required after consolidation.
-
+1. Retain offline named Astra country/operator table and actualWORLD terminalcleanup; existing capturedfinalevidence suffices, no newstage solelyforreview.
+2. WORLD alone performs existing productionbaseline/version/save/providercontrols, exactsealedupload, then verifies actualliveversion/gameplay/continuity/observationchecks.
+3. Separately activate and accept ON active-choice teaching with readable desktop/mobile wrong-answer/retry/reload and once-only wage; current OFFconsolidation is not that acceptance.
+4. Continue fullschool/licence/rental/animatedentry/steering/driving/restock/barber/earnings/improvement/reload, latercareers/business and consentedliveGoalmatic. CurrentGRAPHICS geometry handoff and actor-scopednotice proposal remain queued, with onewriter and no change to frozenrelease.
 
 User-verified delivery cutoff:10October2026 around06:00Africa/Lagos,05:00UTC. Finish accepted consolidation first, preserve exact unfinished work/evidence at cutoff, no new spending/provisioning in this lane. Full programme scope remains required; unfinished phases are not accepted by deadline. Details: [delivery cutoff](delivery-cutoff-2026-10-10.json).
 

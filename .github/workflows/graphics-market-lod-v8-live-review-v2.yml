@@ -1,0 +1,76 @@
+name: Market LOD v8 bounded live-walk review v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/graphics-market-lod-v8-live-review-v2
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: market-lod-v8-live-walk-review-v2
+  cancel-in-progress: false
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verify exact live-motion recipe
+        env:
+          EXPECTED_REVIEW_MANIFEST_SHA256: e98b47264568639243c151e64b66cba2e0c5ef294928379e44ad32ba8c73f166
+        run: node evidence/graphics-loop/crowd-lod-market-v8/remote-gpu-review-v2/verify-source-snapshot.mjs "$EXPECTED_REVIEW_MANIFEST_SHA256"
+      - name: Verify package source run branch and commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_PACKAGE_RUN_ID: '37895386433'
+          EXPECTED_PACKAGE_BRANCH: codex/graphics-market-lod-v8-cpu-review-v2
+          EXPECTED_PACKAGE_COMMIT: adfca7f69c8fddee260624f4e6c54455304f5f2c
+        run: |
+          set -euo pipefail
+          run_json="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${EXPECTED_PACKAGE_RUN_ID}")"
+          test "$(jq -r .id <<<"$run_json")" = "$EXPECTED_PACKAGE_RUN_ID"
+          test "$(jq -r .head_branch <<<"$run_json")" = "$EXPECTED_PACKAGE_BRANCH"
+          test "$(jq -r .head_sha <<<"$run_json")" = "$EXPECTED_PACKAGE_COMMIT"
+          test "$(jq -r .status <<<"$run_json")" = completed
+          test "$(jq -r .conclusion <<<"$run_json")" = success
+      - name: Download only the pinned v8 CPU package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: market-lod-v8-cpu-package-v2-37895386433
+          run-id: 37895386433
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/remote-gpu-review-v2/downloaded-artifact
+      - name: Install exact lockfile dependencies for CDP
+        run: npm ci --no-audit --no-fund
+      - name: Locate preinstalled runner Google Chrome
+        run: |
+          set -euo pipefail
+          chrome_path="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          test -n "$chrome_path"
+          printf 'CHROME_BIN=%s\n' "$chrome_path" >> "$GITHUB_ENV"
+          "$chrome_path" --version
+      - name: Run bounded real-walk source/compact review
+        env:
+          EXPECTED_SOURCE_MANIFEST_SHA256: e98b47264568639243c151e64b66cba2e0c5ef294928379e44ad32ba8c73f166
+          PACKAGE_RUN_ID: '37895386433'
+          PACKAGE_BRANCH: codex/graphics-market-lod-v8-cpu-review-v2
+          PACKAGE_COMMIT: adfca7f69c8fddee260624f4e6c54455304f5f2c
+        run: python3 evidence/graphics-loop/crowd-lod-market-v8/remote-gpu-review-v2/run-bounded-linux.py
+      - name: Preserve review images and receipts even when the diagnostic fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-lod-v8-live-walk-review-v2-${{ github.run_id }}
+          path: evidence/graphics-loop/crowd-lod-market-v8/remote-gpu-review-v2/remote-results/**
+          if-no-files-found: warn

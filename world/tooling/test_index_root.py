@@ -10,9 +10,12 @@ import unittest
 from unittest.mock import patch
 
 from index_binding import VERSIONS, encode_index_binding
-from index_reservations import IndexReservations, DATABASE_BYTES, MIB
-from index_root import charged_index_root
+from index_reservations import IndexReservations, DATABASE_BYTES, MIB, _record_hash
+from index_root import (charged_index_root, prepare_index_shard_plan_authority,
+                        planned_index_reservations, decode_planned_index_binding,
+                        precharged_index_shard_root)
 from index_writer_lock import index_writer_lease, IndexWriterBusy
+from test_index_registry_worker import planner_fixture
 
 
 def binding(tag="a"):
@@ -29,7 +32,7 @@ def binding(tag="a"):
 
 
 @contextmanager
-def fixture():
+def fixture(aggregate=64*MIB):
     saved = resource.getrlimit(resource.RLIMIT_FSIZE)
     soft = min([DATABASE_BYTES]+[x for x in saved if x != resource.RLIM_INFINITY])
     resource.setrlimit(resource.RLIMIT_FSIZE, (soft, saved[1]))
@@ -42,7 +45,7 @@ def fixture():
             db = sqlite3.connect(root/"reservations.sqlite", isolation_level=None)
             try:
                 with index_writer_lease(root) as lease:
-                    registry = IndexReservations(db, 64*MIB)
+                    registry = IndexReservations(db, aggregate)
                     yield parent, lease, registry
             finally:
                 db.close()
@@ -51,6 +54,10 @@ def fixture():
 
 
 class IndexRootTests(unittest.TestCase):
+    def _plan_authority(self, *, aggregate=128*MIB):
+        raw, pin, base, _ = planner_fixture(policy_changes={"aggregateBytes": aggregate, "maxCaptures": 1})
+        return prepare_index_shard_plan_authority(raw, pin, base), base
+
     def test_charge_precedes_private_root_and_exact_replay_retains_one_inode(self):
         with fixture() as (_, namespace, registry):
             raw = binding(); key = hashlib.sha256(raw).hexdigest()
@@ -175,6 +182,93 @@ class IndexRootTests(unittest.TestCase):
             self.assertEqual(registry.snapshot()["reservations"], 1)
             self.assertFalse((namespace.root/other_key).exists())
             self.assertEqual(audit.stat().st_size, 2*MIB)
+
+    def test_validated_authority_is_immutable_and_limits_bindings_to_its_plan(self):
+        raw, pin, base, _ = planner_fixture()
+        authority = prepare_index_shard_plan_authority(raw, pin, base)
+        pin["sha256"] = "f"*64
+        entries = planned_index_reservations(authority)
+        self.assertEqual(entries, tuple(sorted(entries)))
+        self.assertEqual(decode_planned_index_binding(base, authority)["format"], VERSIONS["format"])
+        self.assertEqual(decode_planned_index_binding(entries[0][1], authority)["format"], "feature-index-binding-v2")
+        with self.assertRaisesRegex(ValueError, "exact member"):
+            decode_planned_index_binding(binding("f"), authority)
+        with self.assertRaises(TypeError):
+            planned_index_reservations(object())
+
+    def test_exact_precharged_v2_child_opens_without_a_reserve_call(self):
+        authority, _ = self._plan_authority(aggregate=128*MIB)
+        entries = planned_index_reservations(authority); entry = entries[0]
+        with fixture(128*MIB) as (_, namespace, registry):
+            registry.reserve_many([{"indexHash": h, "bindingBytes": raw, "reservedBytes": amount}
+                                  for h, raw, amount in entries])
+            with patch.object(registry, "reserve", side_effect=AssertionError("must not reserve")), \
+                 patch.object(registry, "reserve_many", side_effect=AssertionError("must not reserve")):
+                with precharged_index_shard_root(namespace, registry, authority, entry[0]) as admitted:
+                    self.assertEqual(admitted.lease.root, namespace.root/entry[0])
+                    self.assertEqual(admitted.binding_bytes, entry[1])
+                    self.assertTrue(admitted.replayed_reservation)
+                    first_inode = admitted.lease.inode
+            with precharged_index_shard_root(namespace, registry, authority, entries[1][0]): pass
+            with precharged_index_shard_root(namespace, registry, authority, entry[0]) as replay:
+                self.assertEqual(replay.lease.inode, first_inode)
+            with self.assertRaises(ValueError):
+                with charged_index_root(namespace, registry, entry[1]):
+                    pass
+
+    def test_post_yield_rechecks_each_frozen_reservation_amount(self):
+        authority, _ = self._plan_authority()
+        entries = planned_index_reservations(authority)
+        with fixture(128*MIB) as (_, namespace, registry):
+            registry.reserve_many([{"indexHash": h, "bindingBytes": raw, "reservedBytes": amount}
+                                  for h, raw, amount in entries])
+            with self.assertRaisesRegex(ValueError, "reservation differs"):
+                with precharged_index_shard_root(namespace, registry, authority, entries[0][0]):
+                    rows = list(registry.db.execute("SELECT hash,binding,reserved_bytes FROM reservations ORDER BY hash"))
+                    (hash_a, binding_a, amount_a), (hash_b, binding_b, amount_b) = rows
+                    registry.db.execute("BEGIN IMMEDIATE")
+                    registry.db.execute("UPDATE reservations SET reserved_bytes=?,record_hash=? WHERE hash=?",
+                                        (amount_a+4096, _record_hash(binding_a, amount_a+4096), hash_a))
+                    registry.db.execute("UPDATE reservations SET reserved_bytes=?,record_hash=? WHERE hash=?",
+                                        (amount_b-4096, _record_hash(binding_b, amount_b-4096), hash_b))
+                    registry._write_totals(); registry.db.execute("COMMIT")
+
+    def test_incomplete_foreign_or_wrong_amount_plan_refuses_before_mkdir(self):
+        authority, _ = self._plan_authority(aggregate=128*MIB)
+        entries = planned_index_reservations(authority)
+        for mode in ("missing", "partial", "foreign", "amount", "aggregate"):
+            with fixture(129*MIB if mode == "aggregate" else 128*MIB) as (_, namespace, registry):
+                selected = list(entries)
+                if mode == "missing":
+                    selected = []
+                elif mode == "partial":
+                    selected = selected[:-1]
+                elif mode == "foreign":
+                    foreign = binding("f")
+                    registry.reserve(hashlib.sha256(foreign).hexdigest(), foreign, 32*MIB)
+                elif mode == "amount":
+                    key, raw, amount = selected[0]
+                    selected[0] = (key, raw, amount+1)
+                if selected:
+                    registry.reserve_many([{"indexHash": key, "bindingBytes": raw, "reservedBytes": amount}
+                                           for key, raw, amount in selected])
+                target = entries[0][0]
+                with self.subTest(mode=mode), self.assertRaises(ValueError):
+                    with precharged_index_shard_root(namespace, registry, authority, target):
+                        pass
+                self.assertFalse((namespace.root/target).exists())
+
+    def test_precharged_plan_preserves_existing_nonprivate_child(self):
+        authority, _ = self._plan_authority()
+        target = planned_index_reservations(authority)[0][0]
+        with fixture(128*MIB) as (_, namespace, registry):
+            registry.reserve_many([{"indexHash": h, "bindingBytes": raw, "reservedBytes": amount}
+                                  for h, raw, amount in planned_index_reservations(authority)])
+            child = namespace.root/target; child.mkdir(mode=0o755); child.chmod(0o755)
+            with self.assertRaises(ValueError):
+                with precharged_index_shard_root(namespace, registry, authority, target): pass
+            self.assertEqual(child.stat().st_mode & 0o777, 0o755)
+            self.assertFalse((child/"writer.lock").exists())
 
 
 if __name__ == "__main__":

@@ -153,7 +153,7 @@ def _db_file(root, name):
         os.close(descriptor)
 
 
-def _readonly_registry(path, aggregate, *, final):
+def _readonly_registry(path, aggregate, *, final, plan_authority=None):
     """Inspect bounded schema/charge stamps under the actual namespace lease.
 
     mode=ro can update SQLite's shared-memory sidecar; never call before leasing.
@@ -189,16 +189,70 @@ def _readonly_registry(path, aggregate, *, final):
             raise ValueError("namespace SQLite foreign-key check failed; preserve it")
         held = {}
         for key, binding, amount in db.execute("SELECT hash,binding,reserved_bytes FROM reservations"):
-            config = decode_index_binding(binding)
+            config = (index_root.decode_planned_index_binding(binding, plan_authority)
+                      if plan_authority is not None else decode_index_binding(binding))
             if config["reservedBytes"] != amount:
                 raise ValueError("namespace binding differs from its immutable charged allowance")
             held[key] = (binding, config)
+        if plan_authority is not None:
+            _verify_plan_registry_rows(held, plan_authority)
         return held
     finally:
         db.close()
 
 
-def _preflight(root, expected, aggregate, *, leased=False, controller_check=True):
+def _verify_plan_authority(authority):
+    plan = index_root._authority(authority)
+    aggregate = _aggregate(plan.aggregate_bytes)
+    if type(plan.base_binding) is not bytes or not 1 <= len(plan.base_binding) <= 4096:
+        raise ValueError("shard plan base binding is not bounded immutable bytes")
+    base = decode_index_binding(plan.base_binding)
+    from hashlib import sha256
+    if sha256(plan.base_binding).hexdigest() != plan.base_hash:
+        raise ValueError("shard plan base binding hash differs")
+    if not plan.plan_hash or type(plan.plan_hash) is not str or not re.fullmatch(r"[a-f0-9]{64}", plan.plan_hash):
+        raise ValueError("shard plan hash is invalid")
+    entries = index_root.planned_index_reservations(plan)
+    if type(entries) is not tuple or not 1 <= len(entries) <= MAX_RESERVATIONS:
+        raise ValueError("shard plan reservations exceed the fixed entry bound")
+    prior = ""
+    for entry in entries:
+        if type(entry) is not tuple or len(entry) != 3:
+            raise ValueError("shard plan reservation has an invalid shape")
+        index_hash, binding, amount = entry
+        if (type(index_hash) is not str or not re.fullmatch(r"[a-f0-9]{64}", index_hash)
+                or index_hash <= prior or type(binding) is not bytes
+                or not 1 <= len(binding) <= 4096
+                or type(amount) is not int or not 65536 <= amount <= MAX_AGGREGATE_BYTES):
+            raise ValueError("shard plan reservation has invalid bounded fields")
+        config = index_root.decode_planned_index_binding(binding, plan)
+        if (index_hash != sha256(binding).hexdigest() or amount != config["reservedBytes"]
+                or config["format"] != "feature-index-binding-v2"
+                or config["shard"]["baseIndexBindingHash"] != plan.base_hash
+                or config["shard"]["planHash"] != plan.plan_hash):
+            raise ValueError("shard plan reservation differs from its exact V2 binding")
+        prior = index_hash
+    return plan, aggregate, base
+
+
+def _verify_plan_registry_rows(held, authority):
+    plan = index_root._authority(authority)
+    expected = {key: (binding, amount)
+                for key, binding, amount in index_root.planned_index_reservations(plan)}
+    base = decode_index_binding(plan.base_binding)
+    base_row = (plan.base_binding, base["reservedBytes"])
+    rows = {key: (binding, config["reservedBytes"])
+            for key, (binding, config) in held.items()}
+    base_only = {plan.base_hash: base_row}
+    full = dict(expected)
+    full_with_base = dict(full)
+    full_with_base[plan.base_hash] = base_row
+    if rows not in ({}, base_only, full, full_with_base):
+        raise ValueError("registry is neither empty, exact base-only, nor the complete frozen plan")
+
+
+def _preflight(root, expected, aggregate, *, leased=False, controller_check=True,
+               plan_authority=None):
     """Classify bounded entries before index_writer_lease can create writer.lock."""
     names = index_root._names(root, MAX_RESERVATIONS + len(FIXED_FILES))
     name_set = set(names)
@@ -264,19 +318,21 @@ def _preflight(root, expected, aggregate, *, leased=False, controller_check=True
     if final:
         if "reservations.sqlite" not in name_set:
             raise ValueError("final namespace sidecars lack their database")
-        held = _readonly_registry(root / "reservations.sqlite", aggregate, final=True)
+        held = _readonly_registry(root / "reservations.sqlite", aggregate, final=True,
+                                  plan_authority=plan_authority)
     if bootstrap:
         if "reservations.bootstrap.sqlite" not in name_set:
             raise ValueError("bootstrap namespace sidecars lack their database")
-        _readonly_registry(root / "reservations.bootstrap.sqlite", aggregate, final=False)
+        _readonly_registry(root / "reservations.bootstrap.sqlite", aggregate, final=False,
+                           plan_authority=plan_authority)
     if any(not re.fullmatch(r"[a-f0-9]{64}", name) or name not in held for name in dirs):
         raise ValueError("unknown or uncharged namespace child directory is preserved")
     for name in dirs:
         binding, config = held[name]
         child = root / name
-        index_root._binding(child, binding)
+        index_root._binding(child, binding, plan_authority)
         with index_writer_lease(child) as lease:
-            index_root._binding(child, binding)
+            index_root._binding(child, binding, plan_authority)
             index_storage_footprint(lease, file_bytes=config["processLimits"]["fileBytes"],
                                     aggregate_bytes=config["reservedBytes"])
     return name_set
@@ -453,15 +509,19 @@ def _create_or_resume_bootstrap(root, aggregate):
 
 
 @contextmanager
-def open_index_namespace(root, aggregate_bytes, *, inherited_lease=None):
+def _open_index_namespace(root, aggregate_bytes, *, inherited_lease=None, plan_authority=None):
     """Open the exact durable registry, preserving contradictory or foreign state."""
     aggregate = _aggregate(aggregate_bytes)
+    if plan_authority is not None:
+        plan_authority, planned_aggregate, _ = _verify_plan_authority(plan_authority)
+        if aggregate != planned_aggregate:
+            raise ValueError("namespace aggregate differs from the frozen plan authority")
     raw = namespace_binding(aggregate)
     root, before = _root(root)
     soft, _ = resource.getrlimit(resource.RLIMIT_FSIZE)
     if soft == resource.RLIM_INFINITY or soft > DATABASE_BYTES:
         raise RuntimeError("namespace registry writes require an already enforced per-file kernel limit")
-    _preflight(root, raw, aggregate)  # Must happen before writer.lock can be created.
+    _preflight(root, raw, aggregate, plan_authority=plan_authority)  # Before writer.lock creation.
     # An inherited actual kernel lease is caller-owned and must never be unlocked
     # or closed here. Its identity is checked below; the fixed supervisor supplies it.
     context = index_writer_lease(root) if inherited_lease is None else nullcontext(inherited_lease)
@@ -469,7 +529,7 @@ def open_index_namespace(root, aggregate_bytes, *, inherited_lease=None):
         lease_root, leased_info = index_root._lease(lease)
         if (lease_root != root or (leased_info.st_dev, leased_info.st_ino) != (before.st_dev, before.st_ino)):
             raise ValueError("namespace root changed during lease acquisition")
-        _preflight(root, raw, aggregate, leased=True)
+        _preflight(root, raw, aggregate, leased=True, plan_authority=plan_authority)
         replayed_metadata = _publish_metadata(root, raw)
         names = set(index_root._names(root, MAX_RESERVATIONS + len(FIXED_FILES)))
         bootstrap = "reservations.bootstrap.sqlite" in names
@@ -479,14 +539,14 @@ def open_index_namespace(root, aggregate_bytes, *, inherited_lease=None):
         if bootstrap:
             _create_or_resume_bootstrap(root, aggregate)
             replayed_registry = False
-            _preflight(root, raw, aggregate, leased=True)
+            _preflight(root, raw, aggregate, leased=True, plan_authority=plan_authority)
         elif not final:
             _create_or_resume_bootstrap(root, aggregate)
             replayed_registry = False
-            _preflight(root, raw, aggregate, leased=True)
+            _preflight(root, raw, aggregate, leased=True, plan_authority=plan_authority)
         else:
             replayed_registry = True
-            _preflight(root, raw, aggregate, leased=True)
+            _preflight(root, raw, aggregate, leased=True, plan_authority=plan_authority)
         db = _open_connection(root, "reservations.sqlite")
         registry = None
         try:
@@ -502,7 +562,23 @@ def open_index_namespace(root, aggregate_bytes, *, inherited_lease=None):
             _strict_registry(db)
             registry.snapshot()
             # Refuse surviving legacy child writers before the next checkpoint mutation.
-            index_root._namespace(lease, registry)
+            index_root._namespace(lease, registry, plan_authority)
             registry._checkpoint()
         finally:
             db.close()
+
+
+@contextmanager
+def open_index_namespace(root, aggregate_bytes, *, inherited_lease=None):
+    """Open the legacy V1 registry; V2 bindings remain refused."""
+    with _open_index_namespace(root, aggregate_bytes, inherited_lease=inherited_lease) as opened:
+        yield opened
+
+
+@contextmanager
+def open_index_shard_namespace(root, authority, *, inherited_lease=None):
+    """Open a planned V2 namespace, allowing reservation only before full-set exit."""
+    plan, aggregate, _ = _verify_plan_authority(authority)
+    with _open_index_namespace(root, aggregate, inherited_lease=inherited_lease,
+                               plan_authority=plan) as opened:
+        yield opened

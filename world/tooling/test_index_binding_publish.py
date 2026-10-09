@@ -7,12 +7,20 @@ import sys
 import unittest
 from unittest.mock import patch
 
-from index_binding_publish import publish_index_binding
-from index_root import charged_index_root
+import index_binding_publish as binding_publish
+from index_binding_publish import publish_index_binding, publish_index_shard_binding
+from index_root import (charged_index_root, precharged_index_shard_root,
+                        prepare_index_shard_plan_authority, planned_index_reservations)
+from index_writer_lock import index_writer_lease
 from test_index_root import fixture, binding
+from test_index_registry_worker import planner_fixture
 
 
 class IndexBindingPublicationTests(unittest.TestCase):
+    def _authority(self, *, requests=None):
+        raw, pin, base, _ = planner_fixture(requests=requests)
+        return prepare_index_shard_plan_authority(raw, pin, base), base
+
     def test_atomic_publication_and_exact_replay_keep_bytes_and_inode(self):
         with fixture() as (_, namespace, registry):
             raw = binding()
@@ -179,6 +187,122 @@ raise RuntimeError("fixture did not reach its abrupt-exit boundary")
                     self.assertEqual((root/"binding.json").stat().st_ino, inode)
                     self.assertFalse((root/"binding.pending").exists())
                 self.assertEqual(registry.snapshot()["reservations"], 1)
+
+    def test_exact_v2_plan_binding_publication_and_replay(self):
+        authority, _ = self._authority()
+        entries = planned_index_reservations(authority)
+        self.assertEqual(len(entries), 1)
+        with fixture() as (_, namespace, registry):
+            registry.reserve_many([{"indexHash": key, "bindingBytes": raw, "reservedBytes": amount}
+                                   for key, raw, amount in entries])
+            key, raw, _ = entries[0]
+            with precharged_index_shard_root(namespace, registry, authority, key) as admitted:
+                report = publish_index_shard_binding(admitted, authority)
+                self.assertFalse(report["replayed"])
+                target = admitted.lease.root/"binding.json"
+                first = target.stat()
+                self.assertEqual(target.read_bytes(), raw)
+                replay = publish_index_shard_binding(admitted, authority)
+                self.assertTrue(replay["replayed"])
+                second = target.stat()
+                self.assertEqual((first.st_ino, first.st_mtime_ns, first.st_ctime_ns),
+                                 (second.st_ino, second.st_mtime_ns, second.st_ctime_ns))
+                with self.assertRaises((ValueError, TypeError)):
+                    publish_index_binding(admitted)
+            self.assertEqual(registry.snapshot()["reservations"], len(entries))
+
+    def test_exact_v2_pending_prefix_resumes_without_changing_inode_or_charge(self):
+        authority, _ = self._authority()
+        entries = planned_index_reservations(authority)
+        key, raw, _ = entries[0]
+        with fixture() as (_, namespace, registry):
+            registry.reserve_many([{"indexHash": h, "bindingBytes": value, "reservedBytes": amount}
+                                   for h, value, amount in entries])
+            with precharged_index_shard_root(namespace, registry, authority, key) as admitted:
+                pending = admitted.lease.root/"binding.pending"
+                pending.write_bytes(raw[:19]); pending.chmod(0o600)
+                inode = pending.stat().st_ino
+            with precharged_index_shard_root(namespace, registry, authority, key) as admitted:
+                report = publish_index_shard_binding(admitted, authority)
+                self.assertTrue(report["resumedPending"])
+                self.assertEqual(report["resumedBytes"], 19)
+                final = admitted.lease.root/"binding.json"
+                self.assertEqual(final.read_bytes(), raw)
+                self.assertEqual(final.stat().st_ino, inode)
+                self.assertFalse(pending.exists())
+            self.assertEqual(registry.snapshot()["reservations"], len(entries))
+
+    def test_wrong_or_foreign_authority_and_missing_or_wrong_parent_lease_preserve_stage(self):
+        authority, _ = self._authority()
+        other_authority, _ = self._authority(requests=[
+            {"requestHash": "7"*64, "captureInputHash": "8"*64,
+             "requiredObservationSetHash": "9"*64, "requiredObservationCount": 1,
+             "auditDescriptorBytes": 100},
+        ])
+        entries = planned_index_reservations(authority)
+        key, raw, _ = entries[0]
+        with fixture() as (parent, namespace, registry):
+            registry.reserve_many([{"indexHash": h, "bindingBytes": value, "reservedBytes": amount}
+                                   for h, value, amount in entries])
+            with precharged_index_shard_root(namespace, registry, authority, key) as admitted:
+                root = admitted.lease.root
+                for wrong in (other_authority, object()):
+                    with self.assertRaises((ValueError, TypeError)):
+                        publish_index_shard_binding(admitted, wrong)
+                    self.assertFalse((root/"binding.pending").exists())
+                for changed in (replace(admitted, index_hash="f"*64),
+                                replace(admitted, reserved_bytes=admitted.reserved_bytes-1)):
+                    with self.assertRaisesRegex(ValueError, "frozen shard plan"):
+                        publish_index_shard_binding(changed, authority)
+                    self.assertFalse((root/"binding.pending").exists())
+                with self.assertRaisesRegex(ValueError, "namespace lease"):
+                    publish_index_shard_binding(replace(admitted, namespace_lease=None), authority)
+                self.assertFalse((root/"binding.pending").exists())
+
+                unrelated = parent/"unrelated-namespace"
+                unrelated.mkdir(mode=0o700)
+                with index_writer_lease(unrelated) as wrong_lease:
+                    with self.assertRaisesRegex(ValueError, "parent namespace lease"):
+                        publish_index_shard_binding(replace(admitted, namespace_lease=wrong_lease), authority)
+                self.assertFalse((root/"binding.pending").exists())
+                self.assertFalse((root/"binding.json").exists())
+                self.assertEqual(registry.snapshot()["reservations"], len(entries))
+
+    def test_v1_base_is_not_a_shard_publication_member(self):
+        authority, base = self._authority()
+        with fixture() as (_, namespace, registry):
+            with charged_index_root(namespace, registry, base) as admitted:
+                root = admitted.lease.root
+                with self.assertRaisesRegex(ValueError, "frozen shard plan"):
+                    publish_index_shard_binding(admitted, authority)
+                self.assertFalse((root/"binding.pending").exists())
+                self.assertFalse((root/"binding.json").exists())
+
+    def test_namespace_lease_replacement_after_publish_prevents_success_report(self):
+        authority, _ = self._authority()
+        entries = planned_index_reservations(authority)
+        key, raw, _ = entries[0]
+        with fixture() as (_, namespace, registry):
+            registry.reserve_many([{"indexHash": h, "bindingBytes": value, "reservedBytes": amount}
+                                   for h, value, amount in entries])
+            root = namespace.root/key
+            with self.assertRaisesRegex(ValueError, "namespace lease inode changed"):
+                with precharged_index_shard_root(namespace, registry, authority, key) as admitted:
+                    original = binding_publish._publish_binding
+
+                    def replace_parent_lock(*args, **kwargs):
+                        report = original(*args, **kwargs)
+                        lock = namespace.root/"writer.lock"
+                        os.rename(lock, namespace.root/"writer.lock.saved")
+                        descriptor = os.open(lock, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+                        os.close(descriptor)
+                        return report
+
+                    with patch("index_binding_publish._publish_binding", side_effect=replace_parent_lock):
+                        publish_index_shard_binding(admitted, authority)
+            self.assertEqual((root/"binding.json").read_bytes(), raw)
+            self.assertTrue((namespace.root/"writer.lock.saved").is_file())
+            self.assertEqual(registry.snapshot()["reservations"], len(entries))
 
 
 if __name__ == "__main__":

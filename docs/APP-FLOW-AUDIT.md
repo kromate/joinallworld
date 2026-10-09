@@ -4,7 +4,7 @@
 
 ## Current integration queue
 
-Exact cumulative source `19e3e77f` passed remote CI [37869331514](https://github.com/kromate/joinallworld/actions/runs/37869331514): typecheck, build/download/smoke, release policy, **147 existing UI/start model/component checks and 9 existing shopping/housing/career checks (156 passed, 0 failed)**. These cover existing regressions, not every newly listed delayed-response/browser scenario. No new test expectations were added or changed.
+Exact cumulative source `42d26271` passed remote CI [37871730141](https://github.com/kromate/joinallworld/actions/runs/37871730141): typecheck, build/download/smoke, release policy, **201 existing UI/start/table model/component checks and 9 existing shopping/housing/career checks (210 passed, 0 failed)**. These cover existing regressions, not every newly listed delayed-response/browser scenario. No new test expectations were added or changed.
 
 The human requested pushed slices for the agent on the other system to integrate, resolve conflicts and fix follow-up bugs. The UI branch is `codex/allworld-integrated-preview`. Merge its cumulative changes onto fresh main; individual correction commits are not standalone features. Fast CI proves type/build/download/smoke/policy gates, not complete browser behavior. The historical checkpoints below preserve the remaining acceptance details.
 
@@ -22,6 +22,7 @@ The human requested pushed slices for the agent on the other system to integrate
 | Groceries batch / Health layout | d03eb8c9 | 37864614906 passed, including 103 existing UI checks | Partial orders, identity/close/reopen/lost-reply races, fuel offers and narrow layouts |
 | Career choices / catalogue wrapping / Bank records | 3b394f4b | 37867392052 passed, including 109 existing UI checks | Navigation and Jobs apply/switch/quit/reload accepted locally; delayed dilemma/retry, enlarged text and funded property actions remain |
 | Embedded settling / focus scrolling / guest rental labels | 19e3e77f | 37869331514 passed, including 156 existing UI/start checks | Home320, Ready/Look390 and desktop, Face zoom and new landing accepted locally; physical-device and production acceptance remain |
+| Game controls / contrast / failed-module recovery / chess copy | 42d26271 | 37871730141 passed, including 210 existing UI/start/table checks | Oro practice/play/result/reload recovery, chess AI/move/leave, Weave recall and Penalties turns accepted locally; pending-guess fault and full multiplayer/production remain |
 | Voice-note checkpoint | b193bd77 on `codex/voice-notes-checkpoint` | Historical only; older base | Fresh-main integration, current compiler, private media lifecycle, Worker restart, capture/playback and compatibility |
 
 Production acceptance in this thread is still the separately recorded a44629b3 phase. None of the newer review slices is claimed deployed here. Source inspection has not replaced the requested full screen-by-screen browser audit.
@@ -248,3 +249,17 @@ Reviewable synthetic screenshots: [Home320](qa-screens/app-ui-2026-10-09/home-se
 Exact final CI37869331514 passed type/build/download/smoke/release policy and156 existing UI/start checks. Startup remains614846raw/222895gzip, within unchanged615000/223000 caps. New onboarding/model/component invocation was added to the opt-in UI job; no test expectations were changed. Public health independently returned a44629b3 via curl after this source-only phase; there was no production upload.
 
 Open acceptance remains funded car buy/use/sell, rental move/receipt/reload, offline Boutique, delayed promotion dilemmas, ordinary player-chat viewport, enlarged text, physical-device performance and fresh-main integration/production checks. This closes the named local spacing/guest-label milestone; it does not close all apps or the full parity roadmap.
+
+### Home move and game action acceptance, 9 October
+
+The isolated settled actor moved to Face-me-I-face-you, Mushin for the displayed7200. Cash72500→65300, Bank debit7200 and rent2400/week agreed; totalweekly14400 includes the existing12000 loan instalment. Safe before/after backend snapshots retained the exact owned-home object, all13 placed pieces and empty storage. Owned Plot1/Street1/Estate1 in LagosIsland and free return-home option remained. Reload retained65300. No production data or real provider was used.
+
+At320/390, Oro practice accepted on-screen and physical guesses, showed short-word refusal, solved result and Another word. Chess Easy AI started, e2 exposed legal e3/e4, e4 received Nc6; Weave AI allowed placement, refused an undersized first word, and Recall restored rack7. Penalties shot/keeper turns produced1-1 with another turn. Attempts to sit at a second table while seated were refused correctly. Native Chrome handled leave confirmations; the CUA tab-dialog timeout/stale tracking was a tool issue.
+
+Runtime42d26271 includes f462c9d8 and122bae7d. Oro amber uses dark ink and green uses a darker fill; actual computed pairs give about5.70/5.73 contrast. Header/hard-mode target and result/link wrapping are improved, card shadows removed. Keyboard/hard mode freeze while checking a guess. Practice module failure now has a clear error and explicit Reload game. Fault blocking the dictionary proved the original same-module Try again remained stuck after unblocking; the explicit reload cleared that failure, reopened Practice and accepted/scored a guess while retaining actor65300 and owned home. Daily fetch errors retain normal Try again.
+
+Chess normalizes an existing server bot suffix before rendering one marker. It preserves a marker for bot names that have none, satisfying the existing component check without changing its expectation. Called-off status follows the server result; generic forfeit wording does not blame the opponent. Deferred bot-start intent clears on Back. No scoring, payout, rating or wallet rule changed.
+
+CI37871093988 and37871486790 passed type/build/download/smoke/policy but failed the existing suffix check for an unsuffixed bot name. Corrected exact CI37871730141 passed all gates and210 existing UI/start/table checks. Startup614846raw/222924gzip stays within unchanged615000/223000 caps. No new test expectations. Evidence: /tmp/allworld-app-ui-evidence/game-actions-notes.md and /tmp/allworld-games-final-ci.log. Reviewed [recovered Oro](qa-screens/app-ui-2026-10-09/oro-recovered-122bae-320.jpg), [marked key colors](qa-screens/app-ui-2026-10-09/oro-marked-final-320.jpg), [single bot marker](qa-screens/app-ui-2026-10-09/chess-header-42d262-320.jpg).
+
+All owned network blocks, tabs, server and leases were cleaned up; shared slots free. Open: pending-guess delay fault, full multiplayer/match endings, free return-home action, paid car transitions, physical devices and integrated production acceptance. Source/automated/local browser proofs remain distinct from deployment.

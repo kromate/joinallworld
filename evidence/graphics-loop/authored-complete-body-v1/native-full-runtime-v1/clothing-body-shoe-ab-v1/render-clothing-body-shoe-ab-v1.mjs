@@ -260,7 +260,7 @@ try {
   console.log(JSON.stringify({ status: result.status, resultDir, comparisons: comparisons.length }));
 } catch (error) {
   const message = error instanceof Error ? error.stack ?? error.message : String(error);
-  result = { ...(result ?? {}), status: 'FAIL', error: message, failedRequests, consoleErrors, chromeStderr };
+  result = { ...(result ?? {}), status: 'FAIL', error: message, failedRequests, networkIdleWaits, pendingNetwork: [...pendingNetwork.values()], consoleErrors, chromeStderr };
   await writeFile(path.join(resultDir, 'clothing-body-shoe-ab-report.json'), `${JSON.stringify(result, null, 2)}\n`);
   console.error(message);
   process.exitCode = 1;

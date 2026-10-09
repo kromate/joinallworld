@@ -39,7 +39,7 @@ const outputBytes = (await stat(output)).size;
 const helper = path.join(here, '../trouser-sock-trim.ts');
 const patchHelper = path.join(here, 'body-coverage-patch.ts');
 const helperHash = createHash('sha256').update(await readFile(helper)).digest('hex');
-const helperPin = '7b94b03438ef1fbba5ef26c585da711c02c574faa868d93115cf442a3c6e5136';
+const helperPin = '2b24f3c2cea5298c67ac2e55d2fa10301f05e8fcb4a7eb60e4157cb9bd837ca2';
 if (helperHash !== helperPin) throw new Error(`Sock trim helper snapshot mismatch: ${helperHash}`);
 const patchHash = createHash('sha256').update(await readFile(patchHelper)).digest('hex');
 if (patchHash !== '39fbbbda4461cb1b282c2de5e906367cccd0e1b1e6f3970b89ab20ebc79b43ca') throw new Error(`Body coverage helper snapshot mismatch: ${patchHash}`);

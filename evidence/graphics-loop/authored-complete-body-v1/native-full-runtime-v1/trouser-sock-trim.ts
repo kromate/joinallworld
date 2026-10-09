@@ -25,6 +25,7 @@ export interface TrouserSockTrimLease {
     protectedSoleSourceTriangleIds: readonly number[];
     removedSockComponents: readonly Readonly<{ side: 'left' | 'right'; triangleCount: number; legWeight: number; footToeWeight: number; boundsY: readonly [number, number] }>[];
     preservedBootComponents: readonly Readonly<{ side: 'left' | 'right'; triangleCount: number; footToeWeight: number; boundsY: readonly [number, number] }>[];
+    classifiedComponents: readonly Readonly<{ side: 'left' | 'right'; triangleCount: number; legWeight: number; footToeWeight: number; boundsY: readonly [number, number]; classification: 'sock' | 'boot' | 'other' }>[];
     hemOverlapMetres: number;
     sides: Readonly<Record<'left' | 'right', Readonly<{
       trouserHemY: number;
@@ -78,10 +79,12 @@ function createPrivateIndexGeometry(source: THREE.BufferGeometry, index: Uint16A
 }
 
 /**
- * Privately removes only the disconnected, shin-weighted sock islands from the
- * authored footwear mesh. The boot uppers share the foot/toe weighted islands
- * and are retained whole; a trouser-height cut through the combined mesh can
- * erase the boot upper as well as the sock.
+ * Privately removes only the disconnected sock islands from the authored
+ * footwear mesh. The pinned export has one small 252-triangle sock island per
+ * foot (mean shin weight 0.689/0.690, mean foot/toe weight 0.311/0.310) and a
+ * separate 1,408-triangle boot island per foot (shin 0.490/0.543, foot/toe
+ * 0.510/0.457). This margin-based classifier keeps the complete boot island;
+ * a trouser-height cut through the combined shoe mesh erased visible uppers.
  */
 export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions): TrouserSockTrimLease {
   const { actorRoot, garment, shoes } = options;
@@ -106,7 +109,7 @@ export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions)
   const sourceTriangles = sourceIndex.count / 3;
   if (!options.trouserOutfit) {
     return Object.freeze({
-        metrics: Object.freeze({ status: 'skipped-skirt' as const, sourceTriangles, retainedTriangles: sourceTriangles, removedTriangles: 0, additionalRemovedTriangleIds: 0, removedSourceTriangleIds: Object.freeze([]), protectedSoleSourceTriangleIds: Object.freeze([]), removedSockComponents: Object.freeze([]), preservedBootComponents: Object.freeze([]), hemOverlapMetres: overlap,
+        metrics: Object.freeze({ status: 'skipped-skirt' as const, sourceTriangles, retainedTriangles: sourceTriangles, removedTriangles: 0, additionalRemovedTriangleIds: 0, removedSourceTriangleIds: Object.freeze([]), protectedSoleSourceTriangleIds: Object.freeze([]), removedSockComponents: Object.freeze([]), preservedBootComponents: Object.freeze([]), classifiedComponents: Object.freeze([]), hemOverlapMetres: overlap,
         sides: Object.freeze({
           left: Object.freeze({ trouserHemY: 0, cutY: 0, soleY: 0, removedTriangles: 0, protectedSoleTriangles: 0 }),
           right: Object.freeze({ trouserHemY: 0, cutY: 0, soleY: 0, removedTriangles: 0, protectedSoleTriangles: 0 }),
@@ -212,6 +215,7 @@ export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions)
   }
   const removedSockComponents: Array<{ side: 'left' | 'right'; triangleCount: number; legWeight: number; footToeWeight: number; boundsY: readonly [number, number] }> = [];
   const preservedBootComponents: Array<{ side: 'left' | 'right'; triangleCount: number; footToeWeight: number; boundsY: readonly [number, number] }> = [];
+  const classifiedComponents: Array<{ side: 'left' | 'right'; triangleCount: number; legWeight: number; footToeWeight: number; boundsY: readonly [number, number]; classification: 'sock' | 'boot' | 'other' }> = [];
   for (const [component, vertices] of components) {
     let leftLeg = 0, rightLeg = 0, leftFootToe = 0, rightFootToe = 0, lowY = Infinity, highY = -Infinity;
     for (const vertex of vertices) {
@@ -228,11 +232,14 @@ export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions)
     const footToeWeight = (side === 'left' ? leftFootToe : rightFootToe) / count;
     const sockTriangles = componentTriangles.get(component) ?? [];
     const crossesTrouserHem = highY > hem[side] - 0.01;
-    if (legWeight >= 0.52 && footToeWeight <= 0.28 && crossesTrouserHem) {
+    const isSock = legWeight >= 0.65 && footToeWeight <= 0.35 && crossesTrouserHem;
+    const isBoot = footToeWeight >= 0.40;
+    classifiedComponents.push({ side, triangleCount: sockTriangles.length, legWeight, footToeWeight, boundsY: Object.freeze([lowY, highY] as [number, number]), classification: isSock ? 'sock' : isBoot ? 'boot' : 'other' });
+    if (isSock) {
       for (const triangle of sockTriangles) removedSourceTriangleIds.add(triangle);
       trimmed[side] += sockTriangles.length;
       removedSockComponents.push({ side, triangleCount: sockTriangles.length, legWeight, footToeWeight, boundsY: Object.freeze([lowY, highY] as [number, number]) });
-    } else if (footToeWeight >= 0.40) {
+    } else if (isBoot) {
       preservedBootComponents.push({ side, triangleCount: sockTriangles.length, footToeWeight, boundsY: Object.freeze([lowY, highY] as [number, number]) });
     }
     for (const triangle of sockTriangles) {
@@ -284,6 +291,7 @@ export function trimAuthoredSockAboveTrouserHem(options: TrouserSockTrimOptions)
     protectedSoleSourceTriangleIds: Object.freeze([...protectedSoleSourceTriangleIds].sort((a, b) => a - b)),
     removedSockComponents: Object.freeze(removedSockComponents.map((component) => Object.freeze(component))),
     preservedBootComponents: Object.freeze(preservedBootComponents.map((component) => Object.freeze(component))),
+    classifiedComponents: Object.freeze(classifiedComponents.map((component) => Object.freeze(component))),
     hemOverlapMetres: overlap,
     sides: Object.freeze({
       left: Object.freeze({ trouserHemY: hem.left, cutY: cut.left, soleY: sole.left, removedTriangles: trimmed.left, protectedSoleTriangles: protectedSoleTriangles.left }),

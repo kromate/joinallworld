@@ -32,7 +32,11 @@ const estate = computed(() => game.view.value.estate)
 const start = firstOpen()
 const first = (props.choosable ? cr.city : null) ?? (stateOfCity(estate.value.city) ? estate.value.city : start?.city.id ?? '')
 const stateId = ref(stateOfCity(first)?.id ?? start?.state.id ?? '')
-const city = useHomeCity(first, (ready) => emit('ready', ready), (id) => { cr.city = id; validateArea() })
+let countrySelection = 0
+let countrySelectionPending = false
+let directoryRequest = 0
+let unmounted = false
+const city = useHomeCity(first, (ready) => emit('ready', ready && !countrySelectionPending), (id) => { cr.city = id; validateArea() })
 const { cityId, readyCityId, loading, error: loadError } = city
 const countryId = ref('ng')
 const countryNames = ref<readonly {iso2:string; name:string; status:string}[]>([])
@@ -41,8 +45,56 @@ const unsubscribeCatalogue = onCatalogueChanged(() => { catalogueVersion.value++
 const country = computed(() => { catalogueVersion.value; return placesForCountry(countryId.value)[0] })
 const states = computed(() => { catalogueVersion.value; return country.value?.states ?? [] })
 const countryPickerOpen = ref(false)
-async function showCountries(): Promise<void> { countryPickerOpen.value = true; countryNames.value = await availableCountryDirectory() }
-async function chooseCountry(iso2: string): Promise<void> { const countryInfo = countryNames.value.find(item => item.iso2 === iso2); if (!countryInfo || iso2 === 'ng' || countryInfo.status !== 'accepted') return; countryId.value = iso2; await prepareCountryPlaces(iso2); catalogueVersion.value++; stateId.value = states.value[0]?.id ?? ''; const next = states.value.flatMap(state => state.cities).find(city => cityOpen(city.id)); if (next) await pickCity(next.id) }
+const countryError = ref('')
+const failedCountry = ref('')
+const countryBusy = ref(false)
+async function showCountries(): Promise<void> {
+  countryPickerOpen.value = true
+  countryError.value = ''
+  countryNames.value = []
+  const request = ++directoryRequest
+  try {
+    const countries = await availableCountryDirectory()
+    if (unmounted || request !== directoryRequest) return
+    countryNames.value = countries
+  } catch {
+    if (unmounted || request !== directoryRequest) return
+    countryError.value = 'We could not load the country list. Check your connection and try again.'
+  }
+}
+async function chooseCountry(iso2: string): Promise<void> {
+  const countryInfo = countryNames.value.find(item => item.iso2 === iso2)
+  const selectable = countryInfo?.status === 'accepted' || (iso2 === 'ng' && countryInfo?.status === 'legacy')
+  if (!countryInfo || !selectable) return
+  const request = ++countrySelection
+  countryBusy.value = true
+  countrySelectionPending = true
+  countryError.value = ''
+  failedCountry.value = ''
+  emit('ready', false)
+  try {
+    await prepareCountryPlaces(iso2)
+    if (unmounted || request !== countrySelection) return
+    countryId.value = iso2
+    catalogueVersion.value++
+    stateId.value = states.value[0]?.id ?? ''
+    const next = states.value.flatMap(state => state.cities).find(city => cityOpen(city.id))
+    if (!next) throw new Error(`No open city is available for ${countryInfo.name}`)
+    await pickCity(next.id)
+    if (unmounted || request !== countrySelection) return
+    countrySelectionPending = false
+    emit('ready', readyCityId.value === cityId.value && !loading.value && !loadError.value)
+    countryPickerOpen.value = false
+  } catch {
+    if (unmounted || request !== countrySelection) return
+    countrySelectionPending = false
+    failedCountry.value = iso2
+    countryError.value = `We could not prepare ${countryInfo.name}. Check your connection and try again.`
+    emit('ready', readyCityId.value === cityId.value && !loading.value && !loadError.value)
+  } finally {
+    if (!unmounted && request === countrySelection) countryBusy.value = false
+  }
+}
 const openStates = computed(() => states.value.filter(stateOpen))
 const stateNow = computed(() => states.value.find((item) => item.id === stateId.value) ?? null)
 const openCities = computed(() => (stateNow.value?.cities ?? []).filter((item) => cityOpen(item.id)))
@@ -104,7 +156,7 @@ onMounted(() => {
   if (!props.choosable || readyCityId.value === cityId.value) { validateArea(); emit('ready', true) }
   else void city.select(cityId.value)
 })
-onBeforeUnmount(() => { city.cancel(); unsubscribeCatalogue() })
+onBeforeUnmount(() => { unmounted = true; countrySelection++; directoryRequest++; city.cancel(); unsubscribeCatalogue() })
 </script>
 
 <template>
@@ -116,7 +168,11 @@ onBeforeUnmount(() => { city.cancel(); unsubscribeCatalogue() })
         <li v-if="openStates.length <= 1 || !choosable">{{ cityNow?.name }}</li>
       </ol>
       <button v-if="choosable" type="button" class="cr-chip" data-key="country:choose" @click="showCountries">Choose another country</button>
-      <div v-if="countryPickerOpen" class="cr-chips" role="group" aria-label="Country"><button v-for="item in countryNames.filter(item => item.status === 'accepted')" :key="item.iso2" type="button" class="cr-chip" :aria-pressed="item.iso2 === countryId" @click="chooseCountry(item.iso2)">{{ item.name }}</button></div>
+      <div v-if="countryPickerOpen" class="cr-chips" role="group" aria-label="Country" :aria-busy="countryBusy">
+        <button v-for="item in countryNames.filter(item => item.status === 'accepted' || (item.iso2 === 'ng' && item.status === 'legacy'))" :key="item.iso2" type="button" class="cr-chip" :aria-pressed="item.iso2 === countryId" @click="chooseCountry(item.iso2)">{{ item.name }}</button>
+        <p v-if="countryError" class="cr-note is-warn" role="alert">{{ countryError }}</p>
+        <button v-if="countryError" type="button" class="cr-btn" data-key="country:retry" @click="failedCountry ? chooseCountry(failedCountry) : showCountries()">Try again</button>
+      </div>
       <div v-if="openStates.length > 1 && choosable" class="cr-chips" role="group" aria-label="State">
         <button v-for="item in openStates" :key="item.id" type="button" class="cr-chip" :aria-pressed="item.id === stateId" @click="pickState(item.id)">{{ item.name }}</button>
       </div>

@@ -13,14 +13,21 @@ const failures = new Set<string>(), pending = new Set<string>(), listeners = new
 const changed=()=>listeners.forEach(fn=>fn())
 let directory: Promise<import('../../browser/countryDirectory.ts').RuntimeCountryDirectory>|null=null
 let runtimeRef: import('../../browser/countryDirectory.ts').RuntimeCountryDirectory|null=null
-const openDirectory=()=>directory??=(async()=>{const {openRuntimeCountryDirectory}=await import('../../browser/countryDirectory.ts');runtimeRef=await openRuntimeCountryDirectory({descriptor:COUNTRY_DIRECTORY_DESCRIPTOR,admittedForeignCities:FOREIGN_ADMITTED_CITIES,nigeriaCatalogue:nigeria});return runtimeRef})()
+const countryRequests = new Map<string, Promise<readonly CityCatalogueEntry[]>>()
+const openDirectory=()=>{
+  if(directory)return directory
+  const opening=(async()=>{const {openRuntimeCountryDirectory}=await import('../../browser/countryDirectory.ts');runtimeRef=await openRuntimeCountryDirectory({descriptor:COUNTRY_DIRECTORY_DESCRIPTOR,admittedForeignCities:FOREIGN_ADMITTED_CITIES,nigeriaCatalogue:nigeria});return runtimeRef})()
+  directory=opening
+  void opening.catch(()=>{if(directory===opening)directory=null})
+  return opening
+}
 export const TRUSTED_CITY_FACTS=Object.freeze(Object.fromEntries(facts))
 export const trustedCityFacts=(id:string)=>facts.get(id)??null
 export const trustedCountryIds=()=>Object.freeze([...new Set(TRUSTED_CITY_FACTS_ROWS.map(row=>row[3]))])
 export const catalogueEntries=()=>{for(const id of ready.keys())if(!runtimeRef?.getCatalogue(id))ready.delete(id);return Object.freeze([...nigeria,...(nigeria.some(row=>row.id===reserved.id)?[]:[reserved]),...ready.values()])}
 export const catalogueEntry=(id:string)=>{const row=nigeria.find(row=>row.id===id)??(id===reserved.id&&!nigeria.some(row=>row.id===id)?reserved:ready.get(id)??null);if(row&&foreignIds.has(id)&&runtimeRef?.getCatalogue(id)==null){ready.delete(id);return null}return row}
-export const catalogueState=(id:string)=>{if(id===reserved.id&&!facts.has(id))return 'closed';if(!facts.has(id))return 'unknown';if(!foreignIds.has(id))return 'ready';catalogueEntry(id);return ready.has(id)?'ready':pending.has(id)?'pending':failures.has(id)?'failed':'unprepared'}
-export async function prepareCountryCatalogue(id:string):Promise<readonly CityCatalogueEntry[]>{const iso=id==='nigeria'?'ng':id;if(iso==='ng')return nigeria;const work=[...facts.values()].filter(row=>row.countryId===iso);if(!work.length)throw new RangeError(`country is not admitted: ${iso}`);pending.add(iso);changed();try{const dir=await openDirectory(),rows=await dir.prepareCountry(iso);for(const row of rows)ready.set(row.id,row);failures.delete(iso);return rows} catch(error){failures.add(iso);throw error}finally{pending.delete(iso);changed()}}
+export const catalogueState=(id:string)=>{if(id===reserved.id&&!facts.has(id))return 'closed';const fact=facts.get(id);if(!fact)return 'unknown';if(!foreignIds.has(id))return 'ready';catalogueEntry(id);return ready.has(id)?'ready':pending.has(fact.countryId)?'pending':failures.has(fact.countryId)?'failed':'unprepared'}
+export async function prepareCountryCatalogue(id:string):Promise<readonly CityCatalogueEntry[]>{const iso=id==='nigeria'?'ng':id;if(iso==='ng')return nigeria;const work=[...facts.values()].filter(row=>row.countryId===iso);if(!work.length)throw new RangeError(`country is not admitted: ${iso}`);const existing=countryRequests.get(iso);if(existing)return existing;pending.add(iso);const request=(async()=>{try{const dir=await openDirectory(),rows=await dir.prepareCountry(iso);for(const row of rows)ready.set(row.id,row);failures.delete(iso);return rows}catch(error){failures.add(iso);throw error}finally{pending.delete(iso);countryRequests.delete(iso);changed()}})();countryRequests.set(iso,request);changed();return request}
 export async function prepareCityCatalogue(id:string):Promise<CityCatalogueEntry|null>{const fact=facts.get(id);if(!fact)return catalogueEntry(id);if(fact.countryId==='ng')return catalogueEntry(id);await prepareCountryCatalogue(fact.countryId);return catalogueEntry(id)}
 export function cityLoader(id:string):CityModuleLoader|undefined{if(!facts.has(id))return undefined;const fact=facts.get(id)!;if(fact.countryId==='ng')return NIGERIA_CITY_LOADERS[id];return async()=>{await prepareCityCatalogue(id);const {FOREIGN_CITY_LOADERS}=await import('./foreign-loaders.generated.ts');const loader=FOREIGN_CITY_LOADERS[id];if(!loader)throw new RangeError(`City rules are not available: ${id}`);return loader()}}
 export async function countryDirectory(){return (await openDirectory()).countries()}

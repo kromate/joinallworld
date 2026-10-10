@@ -180,6 +180,51 @@ test('reverse issuance is literal trusted true; OFF refuses atomically and retai
   assert.equal((offBefore as { v: number }).v, 1, 'normal OFF journeys remain v1')
 })
 
+test('every exact retained input retry precedes timeout and clock pausing; stale retries refuse without writes', async t => {
+  const f = await fixture(t, { routes: configuredDrivingRoutes(true) })
+  const cases = [
+    { name: 'ON explicit timeout', explicit: true, clockReversed: false },
+    { name: 'ON legacy timeout', explicit: false, clockReversed: false },
+    { name: 'ON explicit reversed clock', explicit: true, clockReversed: true },
+    { name: 'ON legacy reversed clock', explicit: false, clockReversed: true },
+  ] as const
+  for (const scenario of cases) {
+    const player = await onboard(f)
+    const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+    assert.ok(started.session, scenario.name)
+    f.advance(100)
+    const frames = [scenario.explicit
+      ? { throttle: 1, brake: 0, steer: 0, gear: 'forward' }
+      : { throttle: 1, brake: 0, steer: 0 }]
+    const packet = { cityId: 'lagos', journeyId: started.session.journeyId, sequence: 1, frames }
+    const accepted = await post(f, `${drivingPath}/input`, packet, player.cookie)
+    assert.deepEqual([accepted.ok, accepted.code, accepted.session?.revision], [true, 'controls_accepted', 2], scenario.name)
+    const readRow = () => f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+    let expected = await readRow()
+
+    const altered = { ...packet, frames: [{ throttle: 0, brake: 1, steer: 0, ...(scenario.explicit ? { gear: 'forward' } : {}) }] }
+    const conflict = await post(f, `${drivingPath}/input`, altered, player.cookie)
+    assert.deepEqual([conflict.ok, conflict.code], [false, 'packet_conflict'], scenario.name)
+    assert.deepEqual(await readRow(), expected, 'a conflicting same-sequence retry cannot pause or rewrite the row')
+    const stale = await post(f, `${drivingPath}/input`, { ...packet, sequence: 9 }, player.cookie)
+    assert.deepEqual([stale.ok, stale.code], [false, 'sequence_conflict'], scenario.name)
+    assert.deepEqual(await readRow(), expected, 'a stale or future sequence refusal cannot pause or rewrite the row')
+
+    if (scenario.clockReversed) {
+      await f.server.store.transact(db => {
+        const row = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving[player.id]
+        assert.ok(row, 'the scenario has a saved driving row')
+        row.updatedAt = f.now() + 5000
+        row.lastInputAt = f.now() + 5000
+      })
+      expected = await readRow()
+    } else f.advance(1600)
+    const retry = await post(f, `${drivingPath}/input`, packet, player.cookie)
+    assert.deepEqual([retry.ok, retry.duplicate, retry.code, retry.session?.revision], [true, true, 'controls_accepted', 2], scenario.name)
+    assert.deepEqual(await readRow(), expected, 'an exact successful receipt retry leaves the full row untouched')
+  }
+})
+
 test('legacy forward packets remain valid and reverse requests brake before a saved backward step', async t => {
   const f = await livingFixture(t, { routes: configuredDrivingRoutes(true) })
   const player = await onboard(f)
@@ -193,6 +238,7 @@ test('legacy forward packets remain valid and reverse requests brake before a sa
   assert.ok(forward.ok && forward.session, 'accepted legacy controls return canonical motion')
   assert.deepEqual([forward.ok, forward.session?.state.speed > 0, forward.session?.state.position.z > journey.state.position.z], [true, true, true])
   const legacyRow = await f.server.store.read(db => (db.livingWorld as { driving: Record<string, { v: number }> }).driving[player.id])
+  assert.ok(legacyRow, 'the accepted legacy packet has a saved row')
   assert.equal(legacyRow.v, 1, 'old three-field controls retain the strict v1 save format')
   const replay = await post(f, `${drivingPath}/input`, legacy, player.cookie)
   assert.deepEqual([replay.ok, replay.duplicate, replay.session?.revision], [true, true, forward.session?.revision])
@@ -216,6 +262,7 @@ test('legacy forward packets remain valid and reverse requests brake before a sa
   assert.equal(backing.session.state.gear, 'reverse')
   assert.ok(backing.session.state.position.z < stopped.session.state.position.z, 'the server computes backward movement from accepted controls')
   const reverseRow = await f.server.store.read(db => (db.livingWorld as { driving: Record<string, { v: number; state: { speed: number; gear?: string } }> }).driving[player.id])
+  assert.ok(reverseRow, 'the accepted reverse packet has a saved row')
   assert.deepEqual([reverseRow.v, reverseRow.state.speed > 0, reverseRow.state.gear], [2, true, 'reverse'], 'reverse motion upgrades only the driving row to its explicit v2 contract')
 
   const loaded = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply

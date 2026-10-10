@@ -218,12 +218,15 @@ function applyCapability(answer: DrivingResponse, requestEpoch: number): void {
   if (requestEpoch !== capabilityEpoch) return
   if (answer.reverseGearControls === true) { reverseGearControls.value = true; return }
   capabilityEpoch++
+  const hadCapability = reverseGearControls.value
   const hadGearIntent = requestedGear.value !== null || Object.hasOwn(held.value, 'gear') || pendingFrames.some(frame => Object.hasOwn(frame, 'gear'))
   reverseGearControls.value = false
-  if (hadGearIntent) {
+  if (hadCapability || hadGearIntent) {
     clearHeld(); active.value = false; boarding.value = false
     if (serverState.value) { visualState = serverState.value; scene.value?.present(serverState.value) }
-    feedback.value = 'Reverse controls were withdrawn. Held controls were released; the saved lesson is being checked before driving continues.'
+    feedback.value = hadCapability
+      ? 'Driving controls were withdrawn. Held controls were released; the saved lesson is being checked before driving continues.'
+      : 'Reverse controls were withdrawn. Held controls were released; the saved lesson is being checked before driving continues.'
   }
 }
 function applyResponse(answer: DrivingResponse, token: number, key: string, origin: ResponseOrigin): boolean {

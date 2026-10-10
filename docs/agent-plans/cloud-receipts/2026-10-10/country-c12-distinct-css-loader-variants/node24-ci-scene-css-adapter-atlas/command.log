@@ -1,0 +1,56 @@
+Actual lease-start allowance guard: {"rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.", "minimum_remaining_percent_exclusive": 4, "latest_remaining_percent": 5, "sample_source": "GRAPHICS direct actual account95%used5%remaining around04:35UTC, fresh delegated owner receipt received in current root turn", "recorded_at_utc": "2026-10-10T04:37:40.295894+00:00", "allow_new_heavy": true, "heavy_slots": 1, "additional_spend": 0}
+✔ Nigeria marker scale keeps state dots at country scale and makes a 40+ city atlas tappable after one phone zoom (2.068624ms)
+✔ the data: 37 first-level units of Nigeria by name, every African country, and every feature with a name, an id and bounds (49.911389ms)
+✔ simplification kept the shapes sound: no ring crosses itself among the most detailed, and neighbours share their borders exactly (70.849499ms)
+✔ the data modules are small, say where they came from, and decode from their compact form (8.245955ms)
+✔ the projection is Equal Earth about 11°E: it round-trips, keeps Africa near the middle and the sheet twice as wide as tall (0.437304ms)
+✔ pick() finds the right region at known places, at every level, through the grid (4.959088ms)
+✔ open versus coming soon is derived from the additive city catalogue (28.765449ms)
+✔ levels: thresholds half-way between the fits, hysteresis at each, and a closer level only over its own frame (0.512407ms)
+✔ labels never overlap, are capped, abbreviate when the region is narrow, and the open place is always named (1.950157ms)
+✔ routes: the roads pass real towns in Nigeria, every link has a line, and a traveller is where the progress says (25.964518ms)
+✔ a capital marker does not claim the character is there merely because its state is current (335.338215ms)
+✔ battery rule: nothing renders while idle, a level change is a bounded burst of frames, and the loop stops itself (337.022915ms)
+✔ country list fly-to remains on Africa after settling over Ghana, Togo and Cameroon, with Nigeria still explicit (611.830958ms)
+✔ Nigeria surroundings keep a foreign selection coherent while the Africa sheet is delayed (144.325572ms)
+✔ country containment permits the Nigeria state map only on the Nigerian side of the Benin border (1.515186ms)
+✔ country detail is explicit, isolated from map selection and idle rendering, and keeps Nigeria protected (98.687775ms)
+✔ changing the map selection aborts an outstanding country catalogue read (98.875142ms)
+✔ each level fetches its data the first time it is wanted, with the map already on screen kept meanwhile (587.161545ms)
+✔ reduced motion: levels and views cut instead of flying, and a trip is a marker without a frame loop (147.986513ms)
+✔ a cross-border route preview moves to Africa and draws the route there (106.383012ms)
+✔ travel between cities: the preview plays and ends by itself, and a real trip follows the server's timer (218.623564ms)
+✔ cross-border trips use a visible Africa route in both directions while Nigerian domestic trips stay at Nigeria (162.396939ms)
+✔ picking through the view, and entering: only the open city is entered, after the fly-in (191.784318ms)
+✔ the atlas stays out of the first download, and its one frame loop lives in atlas.ts (3.244053ms)
+✔ every catalogue state with several open cities names all of them on its state view (99.97075ms)
+✔ a label that gives way to another is marked displaced and remembers the point it names (0.736913ms)
+✔ open cities that crowd on a phone keep every name, none on another city’s dot, with a leader to the dot when a name is moved (0.827287ms)
+✔ the original nine stay open and every catalogue state names each open city on a phone state view (1.647695ms)
+✔ phone state views: every open city is selectable by its dot and its name (1.510859ms)
+✔ the map is dragged by the ground it was grabbed on, at every tilt the atlas uses, and pulls back to the middle of the world (1.142099ms)
+✔ the leash is the whole world up close, narrows steadily with distance, and is harmless with odd fits (0.144997ms)
+✔ a flick on the atlas glides a short way and stops; a press that moved little and was quick is a tap, a long or travelled one is not (0.522552ms)
+✔ the atlas shows its level as the shared chip and dropdown, with the way back to the city as the last item and a button beside it (1.158523ms)
+✔ a city marker is one line with a status dot: the status stays in the tooltip data, not in a second line (0.310384ms)
+✔ the density table: phones get smaller type and fewer names, a larger text setting fewer still (0.156604ms)
+✔ venue names on the city map: long names are cut, few are written at the opening view, more as the camera comes closer, the places that matter always (0.589282ms)
+✔ forty cities on a phone stay readable: names up to the cap, the rest dots, no two names overlap, the player's city always named (0.533638ms)
+✔ a state that lost three or more names to dots gets a count chip (0.495752ms)
+✔ with no city loaded, the default city builds and every other city with scenes of its own is refused (273.921872ms)
+✔ the adapter draws nothing for a city whose scenes are on their way, says so, and builds the venue host when they arrive (50.232619ms)
+✔ a failed download is retried by itself with growing waits, then stops until the player asks again (21.302996ms)
+✔ an automatic retry that succeeds builds the scene without the player doing anything (23.41183ms)
+✔ arriving in another city: the old city leaves the screen, the new one is built when its scenes arrive, and a place change meanwhile is kept (28.397208ms)
+✔ leaving for a city that is ready while another was awaited builds at once, and the late arrival changes nothing (23.510047ms)
+✔ every venue of every city is drawn from its own city's download alone (4472.719346ms)
+✔ the shared scene chunk holds no city's own scenes: each is a chunk of its own, fetched on demand (18.09013ms)
+ℹ world-adapter-fa646902.js 177152 raw 66031 gzip; city-abuja-scenes-b56f9dcd.js 71373 raw 24058 gzip; city-ibadan-scenes-1f244d35.js 44055 raw 16660 gzip; city-kano-scenes-1bba02a0.js 67182 raw 23733 gzip; city-ogun-scenes-a-8a96d3cd.js 34489 raw 12723 gzip; city-ogun-scenes-b-8d5cba72.js 60830 raw 19841 gzip; city-port-harcourt-scenes-519246bf.js 74363 raw 26153 gzip
+ℹ tests 46
+ℹ suites 0
+ℹ pass 46
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9300.564422

@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-10T02:14:43.379962+00:00",
+  "observedAt": "2026-10-10T02:16:32.603987+00:00",
   "candidate": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
   "base": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
   "branch": "codex/cloud-driving-host-reopen-h1h2h3-20261010",
@@ -26,19 +26,55 @@
     "H3": "Node omitted option and truthy string remain OFF with env=1; literal true issues v2. Representative runtime negative, not exhaustive malformed option matrix."
   },
   "compiler": {
-    "status": "Failure reported; original raw receipt not yet received by Sol",
-    "diagnostic": "TS2722 optional server.store.close called directly",
+    "status": "CONFIRMED FAIL from entire original raw log and hash-matched receipt",
+    "diagnostic": "server/living-world/driving-host-reopen.test.ts:34:9 TS2722 Cannot invoke an object which is possibly undefined",
     "introducedByThisDelta": false,
     "inheritedFrom": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
     "shutdownContract": "Production close(callback) already awaits world/store/telemetry flush; Store.close is optional",
     "correction": "0f882bbabfe924cb4f8da1a18067683353b4b674",
-    "correctionEvidence": "Actual child commit terminal0, one Node test line changed; ahead1. Corrected blob not yet published/read, no execution acceptance."
+    "correctionEvidence": "Actual child commit terminal0, one Node test line changed; ahead1. Corrected blob not yet published/read, no execution acceptance.",
+    "receipt": {
+      "receiptSha256": "07299de9c003de2ce08c7a8c0b2e23e309c84320ec947f6bca343a154a88b894",
+      "logSha256": "e3c368c7775b8bf41e2b868f831c724d0100487966fccdd520f8cd960a93ab5e",
+      "receiptBytes": 2537,
+      "logBytes": 570,
+      "exit": 1,
+      "headAfter": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+      "gitStatusAfter": "",
+      "wrapperSeconds": 134.377405,
+      "startedAt": "2026-10-10T02:00:52.049084+00:00",
+      "endedAt": "2026-10-10T02:03:06.426489+00:00",
+      "node": "v24.19.0",
+      "heap": "--max-old-space-size=4096",
+      "sourcePinMapsEmpty": true
+    }
   },
   "focusedExecution": {
     "reportedPass": 2,
-    "rawLogAccepted": false,
+    "rawLogAccepted": true,
     "inspectedReceiptRef": "583c86cad7f0d1ac0dd88dbbebd6f1492f44af30",
-    "note": "No living-a646 receipt files at inspected ref; no inheritance of f4/a646 results onto corrected SHA."
+    "note": "No living-a646 receipt files at inspected ref; no inheritance of f4/a646 results onto corrected SHA.",
+    "pass": 2,
+    "fail": 0,
+    "skip": 0,
+    "testDurationMs": 8054.372846,
+    "publishedReceiptRef": "2a0dd73bb289f57fb691911d5ce8dee689f4e7e0",
+    "receipt": {
+      "receiptSha256": "d73e2b2cf0d008334feb232e8d05e0613dde6f21667fbe8c617ded25b2fa6baf",
+      "logSha256": "2392b8089d6b781f18689175e8fcc7583bf0bd091d86f389730a43696b36ff6e",
+      "receiptBytes": 2655,
+      "logBytes": 5577,
+      "exit": 0,
+      "headAfter": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+      "gitStatusAfter": "",
+      "wrapperSeconds": 42.298803,
+      "startedAt": "2026-10-10T01:58:32.965827+00:00",
+      "endedAt": "2026-10-10T01:59:15.264630+00:00",
+      "node": "v24.19.0",
+      "heap": "--max-old-space-size=1536",
+      "sourcePinMapsEmpty": true
+    },
+    "scope": "Actual Node file and Worker persistent SQLite graceful reopens, requested H1/H2/H3 assertions only. Not native/rollback/sealed artifact."
   },
   "worker": {
     "existingThread": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
@@ -48,7 +84,7 @@
     "liveProcessVerified": false,
     "note": "Asked coordinator for current actual handle; turn/lock state is insufficient."
   },
-  "decision": "Requested H1-H3 source cases covered; corrected source, exact terminal execution and independent final-source review still pending",
+  "decision": "H1-H3 scoped source and exact a646 focused execution accepted; integration held for compiler failure and unpublished corrected SHA. No acceptance transfers to 0f882.",
   "notAccepted": [
     "Corrected compiler/focused tests",
     "Compatible OFF sealed package",
@@ -64,5 +100,19 @@
   },
   "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "nativeHold": "Monitor verified local memory WARNING/churn hold despite prior stage terminal and browser lease free. No new original-save stage launched.",
-  "previousGoalTurnClassification": "No progress: status answer only. Current turn progresses through new published H1-H3 whole-source review."
+  "previousGoalTurnClassification": "No progress: status answer only. Current turn progresses through new published H1-H3 whole-source review.",
+  "independentReview": {
+    "decision": "APPROVE_H1_H2_H3_TEST_SOURCE_CLOSURE_ONLY",
+    "actualModel": "gpt-6-astra",
+    "effort": "high",
+    "turn": "01a12394-d1e1-7a32-af64-4628167e0591",
+    "turnContextAt": "2026-10-10T02:11:58.163Z",
+    "reportsFullyRead": true,
+    "all8PinsMatch": true,
+    "reportsSha256": {
+      "allworld-a646-host-gap-review.md": "e58dd441e86af4bc9a764ed9c5230696f654b8fbb5e36bca42e3d2257abb2b73",
+      "allworld-a646-host-gap-review.json": "511babdc76be417d694f3734eeb76c6210d640c32d6d1daf1b95487a16cc78a0"
+    },
+    "privateArchive": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-10/driving-cold-replay-independent-review"
+  }
 }

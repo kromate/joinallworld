@@ -25,6 +25,7 @@ import { afterEngaged, afterIgnored, afterShown, decide, detectEvents } from './
 import type { GameEvent, Nudge } from './director.ts'
 import { TOUR_LABELS, TOUR_IDS } from './tours.ts'
 import { companionUi } from './companionState.ts'
+import { yieldsToLesson } from './lessonYield.ts'
 import { signal } from './signal.ts'
 import { heard, takeLine } from './say.ts'
 import type { Say } from './say.ts'
@@ -48,7 +49,10 @@ const callUp = computed(() => callStore.view.phase !== 'idle' || callStore.confi
 const effective = computed<CompanionMode>(() => (prefs.mode === 'off' ? 'off' : coachHints.value ? prefs.mode : 'quiet'))
 const shown = computed(() => settled.value && prefs.mode !== 'off' && !callUp.value)
 // Map controls own the map's tap area. Messages and the tour remain available without the floating stage.
-const floating = computed(() => shown.value && game.mode.value !== 'map')
+// A teaching lesson (venue progress or the Jobs tab) puts its right/wrong feedback where the guide floats on phones: the guide steps aside.
+const lesson = computed(() => game.view.value.career.teaching !== null)
+const viewport = ref(window.innerWidth)
+const floating = computed(() => shown.value && game.mode.value !== 'map' && !yieldsToLesson(lesson.value, viewport.value))
 const size = ref(window.innerWidth <= 480 ? 92 : 124)
 const pos = reactive({ x: 8, y: 400 })
 const override = ref<{ x: number; y: number } | null>(null)
@@ -348,7 +352,7 @@ function speak(line: Say): void {
 }
 function onSay(event: CustomEvent<Say>): void { if (event.detail?.text) speak(event.detail) }
 function onReduced(): void { reduced.value = reducedQuery?.matches === true }
-function onResize(): void { size.value = window.innerWidth <= 480 ? 92 : 124; activeStage()?.resize(size.value); place() }
+function onResize(): void { viewport.value = window.innerWidth; size.value = window.innerWidth <= 480 ? 92 : 124; activeStage()?.resize(size.value); place() }
 watch(() => [game.mode.value, shell.sheet.value], () => { void nextTick(place) })
 watch(who, () => { memory = createMemory(ls, who.value); introDone = false; previous = null; sync() })
 

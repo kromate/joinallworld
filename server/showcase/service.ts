@@ -259,7 +259,7 @@ export function showcaseService(ctx: RouteContext) {
       return { ok: true, code: 'photo_removed', id: shop.id, revision: shop.revision, status: shop.status };
     },
     /** The caller wants the chat or pay destination of a shop. One contact event is kept; the link is not stored anywhere new. */
-    go(db: Db, session: SessionRecord, id: string, kind: unknown): { ok: true } & ShowcaseGo {
+    go(db: Db, session: SessionRecord, id: string, kind: unknown): { ok: true; code: 'link' } & ShowcaseGo {
       if (kind !== 'chat' && kind !== 'pay') throw ctx.fail(400, 'invalid_shop');
       const shop = get(db, id, session.publicId);
       buyerGate(db, session);
@@ -272,7 +272,7 @@ export function showcaseService(ctx: RouteContext) {
       if (!link || !badge || badge.held) throw ctx.fail(404, 'shop_unavailable');
       const event = `SG-${++collection.seq}`;
       collection.contacts[event] = { id: event, shop: shop.id, buyer: session.publicId, kind, at };
-      return { ok: true, link, badge, warning: SAFETY_LINE, requiresWarning: true, kind };
+      return { ok: true, code: 'link', link, badge, warning: SAFETY_LINE, requiresWarning: true, kind };
     },
     /** A complaint about the seller; with a photo id, also a vote to hide that one photo until an operator decides. */
     report(db: Db, session: SessionRecord, id: string, body: Record<string, unknown>) {

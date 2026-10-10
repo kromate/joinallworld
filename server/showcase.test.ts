@@ -294,6 +294,8 @@ test('no link is in the directory, a card or a shop page; go gives it to a signe
   assert.equal((await s.call('/api/showcase/directory?q=by%20ada')).shops.length, 1);
   assert.equal((await s.call('/api/showcase/directory?category=tailor')).shops.length, 0);
   assert.equal((await s.call('/api/showcase/directory?city=ibadan')).shops.length, 0);
+  assert.equal((await s.call('/api/showcase/directory?city=lagos&venue=market')).shops.length, 1);
+  assert.equal((await s.call('/api/showcase/directory?venue=elsewhere')).shops.length, 0);
   assert.equal((await s.call('/api/showcase/directory?after=nope')).error, 'invalid_cursor');
   // go: who may.
   assert.equal((await s.post(guest, `/api/showcase/${id}/go`, { kind: 'chat' })).error, 'account_required');

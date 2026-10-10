@@ -1,12 +1,12 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T03:28:52.110405+00:00
+Updated: 2026-10-10T03:35:28.322448+00:00
 
 The previous goal turn made progress: package comparison, fourteen source phases
 and the independent cloud seal were accepted. This turn verified the complete
-seven-module stage import closure and its non-starting CLI diagnostic, and
-recorded the actual cloud Astra controller assignment. Browser visits remain
-incomplete.
+seven-module stage import closure, recorded the actual cloud Astra assignment,
+and mapped release-test files to the existing full partitions. The original
+Node 24 game suite is now executing; browser visits remain incomplete.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -31,7 +31,7 @@ They are **not deployed**.
 | Delivered sealed package and 31 served assets | Accepted; package digest `3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331` |
 | Normal browser onboarding and controlled credit replay | Passed for two fresh synthetic players |
 | Five new browser city journeys and same-store restart | All five unvisited; still required |
-| Full host/tooling and Worker suites on Node 22 and 24 | Accepted; full game/UI/release remain separate |
+| Full host/tooling and Worker suites on Node 22 and 24 | Accepted; original Node 24 game suite running; other release checks pending |
 | Production upload and live 16-country check | Not started |
 
 Evidence: [source](third-five-c1-successor-source-acceptance.json),
@@ -64,9 +64,10 @@ was independently produced from already owned c12 source and compiled output.
 The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) was approved
 in design. The actual cloud operator is `/root/country_browser_astra`, requested
 as `gpt-6-astra`; backend model identity is not exposed. Launch still requires
-the immutable controller, enforced resources and actual process bindings,
+the finished immutable controller, enforced resources and actual process bindings,
 with reviewed package. [Complete tooling pins](c12-browser-toolchain-review.json)
-include the restored verifier dependency. The full phase now includes bounded
+include the restored verifier dependency. [Release file inventory](c12-release-corpus-inventory.json)
+accounts for UI and integration checks without claiming they passed. The full phase includes bounded
 bootstrap, 720-second stage duration, cleanup and aggregate RSS limits. Two actors
 are required because all five round trips exceed one controlled 2,000,000 test credit.
 No private local players, cookies or database are transferred.

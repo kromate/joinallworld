@@ -134,6 +134,9 @@ test('valid rigid body transforms are applied and non-rigid or malformed transfo
   for (const bodyTransform of [
     { position: [0, 0, 0], quaternion: [0, 0, 0, 2] },
     { position: [0, 0, 0], quaternion: [0, 0, 0, 1], scale: [1, 1, 1] },
+    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], shear: [0, 0, 0] },
+    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], determinant: -1 },
+    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], velocity: [0, 0, 0] },
     { position: [0, 0, 0], quaternion: [0, 0, Number.NaN, 1] },
   ]) assert.equal(analyzeSedanAperture(input([], { bodyTransform } as Partial<SedanApertureInput>)).code, 'invalid_descriptor')
 })
@@ -152,6 +155,7 @@ test('source pins, descriptor accessors, capsule bounds, radii, and capsule coun
   assert.equal(analyzeSedanAperture(input([capsule('duplicate', 0, 0, 0), capsule('duplicate', 1, 0, 0)])).code, 'invalid_descriptor')
   const capsuleGetter = Object.defineProperty({ ...capsule('accessor', 0, 0, 0) }, 'radius', { get() { throw new Error('no getter') } })
   assert.equal(analyzeSedanAperture(input([capsuleGetter])).code, 'invalid_descriptor')
+  assert.equal(analyzeSedanAperture(input([{ ...capsule('moving', 0, 0, 0), velocity: [1, 0, 0] } as SedanCapsule])).code, 'invalid_descriptor')
 })
 
 test('Float32 and explicit margins shrink the opening and grow modeled obstacles', () => {

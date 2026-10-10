@@ -1,3 +1,16 @@
+# Africa coverage identity audit, 10 October 2026 at 00:34 UTC
+
+The current atlas has56 geographic features. The final proposed53-country
+starter chain leaves exactly Comoros/km, Western Sahara/eh and Somaliland/sol
+without an admitted starter. Comoros remains the missing sovereign source;
+Western Sahara and Somaliland require explicit feature/settlement contracts.
+They are not silently aliased to neighbors. Bir Tawil is separately recorded
+as sparse unresolved inventory geography and is absent from this56-feature
+atlas. See africa-rollout-coverage-exceptions.json. The full world objective
+remains active;53startercountry identities do not prove allAfrica complete.
+Integration has authorized existing cloud coordination to prepare the separate
+C1+33 candidate for16countries; source/check execution evidence is still pending.
+
 # Next-five compiler/build accepted checkpoint, 10 October 2026 at 00:27 UTC
 
 Corrected public receipts72375198 independently match exact391ccfe9 source,

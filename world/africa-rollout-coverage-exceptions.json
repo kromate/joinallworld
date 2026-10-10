@@ -1,0 +1,57 @@
+{
+  "observedAtUtc": "2026-10-10T00:32:59.513140+00:00",
+  "sourceAtlas": {
+    "path": "src/map3d/geo/data/africa.ts",
+    "sha256": "a9138793fc57b1b7d90428dea09b6ff6d21909f7e7993e1020e71a9f0b51d37b",
+    "features": 56
+  },
+  "rolloutChain": {
+    "path": "world/playable-africa-rollout/proposals/africa-runtime-rollout-chain.json",
+    "sha256": "22e6d7b907323a925a6dd4ca036adc673fc9b1c6f7db14f90d0897fe689d2965"
+  },
+  "finalCandidateCountryIdentitiesIncludingNigeria": 53,
+  "finalCandidateAtlasFeaturesCovered": 53,
+  "finalCandidateAtlasFeaturesUncovered": [
+    {
+      "id": "eh",
+      "name": "Western Sahara",
+      "k": "territory",
+      "cap": null
+    },
+    {
+      "id": "km",
+      "name": "Comoros",
+      "k": "country",
+      "cap": [
+        "Moroni",
+        43.24,
+        -11.7
+      ]
+    },
+    {
+      "id": "sol",
+      "name": "Somaliland",
+      "k": "country",
+      "cap": [
+        "Hargeisa",
+        44.07,
+        9.56
+      ]
+    }
+  ],
+  "missingSovereignSource": "KM/Moroni",
+  "inventoryUnresolvedSeparateGeography": [
+    "Somaliland",
+    "Western Sahara",
+    "Bir Tawil"
+  ],
+  "policy": "Preserve all published feature identities and geography; never silently alias special features to neighboring countries. Do not claim the53-country starter chain means all56 atlas features are open or allAfrica complete. Global foundation, explorable areas and playable destinations remain separate.",
+  "productionOpenCountries": 11,
+  "candidateRuntimeAccepted": false,
+  "nextTasks": [
+    "Prioritize first five-country verified release, then remaining explicit stages",
+    "Repair and prove durable acquisition reservation before remaining Moroni request",
+    "Add a separately reviewed geographic-feature destination contract for nonstandard identities and actual mapped settlements before opening Somaliland/Western Sahara; no fabricated airport or inferred political status",
+    "Keep Bir Tawil explicit in global sparse/uninhabited geography coverage rather than fabricate a town/airport"
+  ]
+}

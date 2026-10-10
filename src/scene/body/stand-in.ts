@@ -87,12 +87,18 @@ export interface StandIn {
 
 type BodyLoader = (kit: Kit, look: unknown, seed: unknown, sceneScale: number) => Promise<SkinnedBody>;
 
+/** The body before the native character rig: the loader a caller passes to keep that body (the sedan driver). */
+export const PREVIOUS_BODY_LOADER: BodyLoader = (kit, look, seed, sceneScale) => importBody().then((module) => module.loadBody(kit, look, seed, sceneScale));
+
 /**
  * onReady: the body came in (or went) on its own, between frames — draw one. allowed: the device check (tests pass
  * false or a fake device; the default reads navigator).
  */
 export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = bodyAllowed(), load?: BodyLoader): StandIn {
   const headAt = new kit.THREE.Vector3();
+  // The default body is the native rig, which samples contact poses and so needs the live seat registered before a pose is
+  // shown. A caller that passes its own loader keeps the placement order the previous body was verified with.
+  const registerSeatFirst = !load;
   let body: SkinnedBody | null = null, loading = false, failed = !allowed, gone = false, scene: StandInScene | null = null;
   let look: unknown = null, seed: unknown = null, posed: BodyPose = 'idle', seat = SEAT, at = { x: 0, y: 0, z: 0, ry: 0 };
   let standingDestination: typeof at | null = null;
@@ -121,7 +127,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
     body.fit(scene.scale);
     if (body.object.parent !== scene.group) scene.group.add(body.object);
     scene.avatar.visible = false;
-    put();
+    if (registerSeatFirst) put();
     body.show(posed, false);
     put();
     solveContacts();
@@ -187,7 +193,7 @@ export function createStandIn(kit: Kit, onReady: () => void, allowed: boolean = 
       const door = arrived && posed === 'idle';
       arrived = false;
       if (!body) return;
-      put(); // Register the live seat before sampling a contact-supported pose.
+      if (registerSeatFirst) put(); // Register the live seat before sampling a contact-supported pose.
       if (door) body.enter(animate);
       else body.show(posed, animate && (body.pose === 'walk' || body.pose === 'jog' || body.seated || posed === 'sit'));
       put();

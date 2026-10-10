@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 import * as THREE from 'three';
 import { createKit } from '../kit.ts';
 import { bodyImports } from './gate.ts';
-import { BODY_POSE, createStandIn, solveSupportedFeet } from './stand-in.ts';
+import { BODY_POSE, PREVIOUS_BODY_LOADER, createStandIn, solveSupportedFeet } from './stand-in.ts';
 import { createFootContactController } from './foot-contact.ts';
 import type { SkinnedBody } from './skinned.ts';
 import { POSES } from '../characters.ts';
@@ -334,4 +334,15 @@ test('the venue host owns the player stand-in and native NPC assets stay demand 
   const standIn = strip(readFileSync(new URL('./stand-in.ts', import.meta.url), 'utf8'));
   assert.doesNotMatch(standIn, /import\(/, 'the body module is reached through importBody() only');
   assert.doesNotMatch(standIn, /^import (?!type)[^;]*'\.\/skinned\.ts'/m, 'skinned.ts is a type import only');
+});
+
+test('the sedan driving scene keeps the previous body; the venue and street hosts take the default', () => {
+  const strip = (code: string) => code.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  const read = (path: string) => strip(readFileSync(new URL(path, import.meta.url), 'utf8'));
+  assert.match(read('../../app/features/living-world/drivingScene.ts'), /createStandIn\(kit, syncLoadedBody, undefined, PREVIOUS_BODY_LOADER\)/);
+  for (const host of ['../../venue-world.ts', '../../street/host.ts']) {
+    assert.match(read(host), /createStandIn\(kit, \(\) =>/);
+    assert.doesNotMatch(read(host), /PREVIOUS_BODY_LOADER/);
+  }
+  assert.equal(typeof PREVIOUS_BODY_LOADER, 'function');
 });

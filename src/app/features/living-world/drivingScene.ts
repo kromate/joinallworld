@@ -29,7 +29,7 @@ type ActorPose = 'idle' | 'stand' | 'walk' | 'sit'
 /** The feature is lazy: Three, scene builders and the shared skinned body stay outside startup. */
 export async function createDrivingScene(canvas: HTMLCanvasElement, route: DrivingRoute, look: Look, reducedMotion: boolean, seed = ''): Promise<DrivingScene> {
   const THREE = await import('three')
-  const [{ createKit }, { buildAvatar, poseAvatar }, { buildVehicle, poseVehicle }, { sceneLook }, { createStandIn }, { attachSedanInterior }] = await Promise.all([
+  const [{ createKit }, { buildAvatar, poseAvatar }, { buildVehicle, poseVehicle }, { sceneLook }, { createStandIn, PREVIOUS_BODY_LOADER }, { attachSedanInterior }] = await Promise.all([
     import('../../../scene/kit.ts'), import('../../../scene/characters.ts'), import('../../../models/vehicles/index.ts'),
     import('../start/lookModel.ts'), import('../../../scene/body/stand-in.ts'), import('../../../models/vehicles/sedan-interior.ts'),
   ])
@@ -168,7 +168,7 @@ export async function createDrivingScene(canvas: HTMLCanvasElement, route: Drivi
   }
   let partialStandIn: StandIn | null = null
   try {
-    partialStandIn = createStandIn(kit, syncLoadedBody)
+    partialStandIn = createStandIn(kit, syncLoadedBody, undefined, PREVIOUS_BODY_LOADER)
     partialStandIn.wear(sceneLook(look), seed)
     partialStandIn.attach({ group: scene, avatar, scale: BODY_SCALE })
   } catch (error) {

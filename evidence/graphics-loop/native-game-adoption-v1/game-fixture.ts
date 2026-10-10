@@ -30,6 +30,7 @@ interface FixtureSnapshot {
   nativeCoverage: { player: boolean; npcs: Record<string, boolean>; allRequestedActorsPrepared: boolean };
   unsupportedProbe: Record<string, unknown> | null;
   interaction: Record<string, unknown> | null;
+  nativeNpcRefreshWitness: Record<string, unknown> | null;
   currentCamera: string;
   cameraActorFrame: CameraActorFrame | null;
   viewport: { width: number; height: number; scrollWidth: number; layoutColumns: number; mobileBreakpoint: boolean };
@@ -258,6 +259,8 @@ function createFixture() {
   let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null, bodyCenterLineClear: false };
   let unsupportedProbe: Record<string, unknown> | null = null;
   let interaction: Record<string, unknown> | null = null;
+  let nativeNpcRefreshWitness: Record<string, unknown> | null = null;
+  let nativeNpcRefreshAttempted = false;
   let lastContact: ReturnType<SkinnedBody['solveFeet']> | null = null;
   let frame = 0;
   let walkPhase = 0;
@@ -734,6 +737,17 @@ function createFixture() {
       if (frame % 6 === 0 || currentCamera.endsWith('-close')) draw();
     }
     updateDom();
+    if (readyState === 'ready' && !nativeNpcRefreshAttempted) {
+      nativeNpcRefreshAttempted = true;
+      try {
+        nativeNpcRefreshWitness = refreshNativeNpcCrowd();
+        draw(); updateDom();
+      } catch (error) {
+        errors.push(`Native NPC same-identity refresh failed: ${error instanceof Error ? error.message : String(error)}`);
+        stage = errors.at(-1)!;
+        updateDom();
+      }
+    }
     animationHandle = requestAnimationFrame(poll);
   }
 
@@ -745,6 +759,49 @@ function createFixture() {
       representation: provider?.representation ?? 'provider-evidence-missing', requestedLifecyclePoses: provider?.requestedLifecyclePoses ?? null,
       gamePose: root?.userData.nativeGameNpcPose ?? null,
       jaw: nativeJawWeights(root) };
+  }
+
+  function refreshNativeNpcCrowd(): Record<string, unknown> {
+    if (!entry || npcCrowd.length !== 2) throw new Error('Office NPC crowd is unavailable for refresh witness');
+    const before = npcCrowd.map((person, index) => {
+      const id = String(person.id ?? '');
+      const root = entry!.group.getObjectByName(`canonical-crowd:${id}`);
+      if (!root) throw new Error(`Canonical NPC ${id} is not mounted for refresh witness`);
+      const solve = root.userData.nativeVenueFootContactSolve as { attempts?: unknown } | undefined;
+      return { person, id, npcId: id.replace(/^npc:/, ''), index, position: root.position.clone(), attempts: solve?.attempts ?? null };
+    });
+    const refreshed = before.map(({ person, index, position }) => ({ ...person,
+      x: position.x + (index === 0 ? 0.12 : -0.12),
+      z: position.z + (index === 0 ? -0.08 : 0.08),
+    }));
+    const identityPreserved = before.every((entryBefore, index) => {
+      const after = refreshed[index]!;
+      return after.id === entryBefore.person.id && after.seed === entryBefore.person.seed;
+    });
+    if (!identityPreserved) throw new Error('Refresh changed canonical NPC identity or seed');
+    entry.setCrowd(refreshed);
+    npcCrowd = refreshed;
+    const actors = before.map(({ id, npcId, person, position, attempts }) => {
+      const root = entry!.group.getObjectByName(`canonical-crowd:${id}`);
+      if (!root) throw new Error(`Canonical NPC ${id} was unmounted during refresh`);
+      const afterPosition = root.position.clone();
+      const solve = root.userData.nativeVenueFootContactSolve as { attempts?: unknown; status?: unknown } | undefined;
+      const soles = sampleNativeNpcSoles(root, entry!, 'same-identity-refresh-idle');
+      const postSolveContactPass = soles.sides.length === 2 && soles.sides.every((side) =>
+        side.callbackSupportCoverageComplete && side.nonFiniteSampleCount === 0 && side.callbackNonFiniteSampleCount === 0
+        && side.nearestAbsoluteGapToSceneFloor !== null && side.nearestAbsoluteGapToSceneFloor <= 0.004
+        && side.minimumSignedGapToSceneFloor !== null && side.minimumSignedGapToSceneFloor >= -0.004
+        && side.nativeLegReach.withinReach);
+      const repositionMeters = afterPosition.distanceTo(position);
+      const repeatedSolve = typeof attempts === 'number' && typeof solve?.attempts === 'number' && solve.attempts > attempts;
+      return { id: npcId, seedBefore: person.seed, seedAfter: refreshed.find((candidate) => candidate.id === person.id)?.seed ?? null,
+        identityPreserved: true, positionBefore: position.toArray(), positionAfter: afterPosition.toArray(), repositionMeters,
+        solveAttemptsBefore: attempts, solveAttemptsAfter: solve?.attempts ?? null, repeatedSolve,
+        solverStatus: solve?.status ?? null, postSolveContactPass, soleEvidence: soles };
+    });
+    return { status: identityPreserved && actors.length === 2 && actors.every((actor) => actor.repositionMeters > 0.05
+      && actor.repeatedSolve && actor.solverStatus === 'pass' && actor.postSolveContactPass) ? 'pass' : 'fail',
+      identityPreserved, actors };
   }
 
   function snapshot(): FixtureSnapshot {
@@ -799,6 +856,7 @@ function createFixture() {
         allRequestedActorsPrepared: playerPrepared && Object.values(npcNativeCoverage).every(Boolean) },
       unsupportedProbe: unsupported,
       interaction,
+      nativeNpcRefreshWitness,
       currentCamera,
       cameraActorFrame: actorFrame(closeCameraActor),
       viewport: {

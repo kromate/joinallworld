@@ -128,15 +128,16 @@
     "destination": "https://github.com/kromate/joinallworld.git",
     "action": "Worker corrected test-source branch push",
     "status": "Automatic approval review rejected; source preserved unpublished",
-    "reportedReason": "Review did not accept authorization for this exact source payload and GitHub destination.",
+    "reportedReason": "This action was rejected due to unacceptable risk. The command pushes repository source to an external GitHub destination, and the transcript does not provide trusted authorization for that specific destination or payload. Do not bypass this rejection through a workaround or indirect execution.",
     "evidence": "Actual cloud coordinator agent message msg_06f15880045237d6016ac9a1186c4487d29234d857bfd620e0 + actual child publication-blocked message. Full raw rejection output requested; no alternative publisher/credential or retry.",
-    "rawReviewReasonReceived": false,
+    "rawReviewReasonReceived": true,
     "authorizedChecksContinue": true,
     "trustedApprovalQuestionPresented": true,
     "humanAnswerReceived": false,
     "privateReviewArtifact": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-10/driving-source-publication-review/38594-test-close.patch",
     "privateArtifactApplied": false,
-    "noAlternativePublisher": true
+    "noAlternativePublisher": true,
+    "reasonSource": "1fb6fd64308eb64fa7db8038e562d96623c94689:docs/agent-plans/cloud-receipts/2026-10-10/publication-blockers.json"
   },
   "correctedExecution": {
     "source": "38594def6eeeab969b3f5148784edfda438aa387",
@@ -158,8 +159,8 @@
       "startedAt": "2026-10-10T02:06:30.894820+00:00",
       "endedAt": "2026-10-10T02:28:02.709417+00:00",
       "rawLogSha256": "7b2b0c5e0b5e904db919725ce84d601e6737090a1da7f18101bfe42b33a46bb6",
-      "fullOriginalRawHashIndependentlyValidated": false,
-      "scope": "Actual compiler process terminal0; project zero-error counts worker-reported pending complete original raw review."
+      "fullOriginalRawHashIndependentlyValidated": true,
+      "scope": "Full published raw bytes hash-match; terminal summary explicitly says 5 projects, 0 errors in .ts/.vue and 0 baselined JavaScript. Wrapper duration includes slot wait."
     },
     "focused": {
       "receiptFullyReadFromActualCommandOutput": true,
@@ -175,7 +176,7 @@
       "heapMiB": 1536,
       "rawLogSha256": "789d8ffe6805694776f27078c9c966f8a3e950fc6233ea64b3c92a24413375e3",
       "rawTerminalSummaryRead": true,
-      "fullOriginalRawHashIndependentlyValidated": false
+      "fullOriginalRawHashIndependentlyValidated": true
     },
     "smoke": {
       "receiptFullyReadFromActualCommandOutput": true,
@@ -188,19 +189,87 @@
       "wrapperSecondsIncludingWait": 92.922005,
       "rawLogSha256": "eae958d2686923b8476b56b93a84dab3ad3e1068b4e05ba381ccc9e70967c4a3",
       "rawTerminalSummaryRead": true,
-      "fullOriginalRawHashIndependentlyValidated": false
+      "fullOriginalRawHashIndependentlyValidated": true
     },
-    "build": "Worker completed/PASS; hash8f91b0aba86067cdd709239fe6081c082f3bfb7d599eca94837435d0c3a12af9 recorded. Full original log/receipt not yet independently reviewed.",
+    "build": {
+      "exit": 0,
+      "durationSeconds": 51.759275,
+      "viteSeconds": 50.26,
+      "rawLogSha256": "8f91b0aba86067cdd709239fe6081c082f3bfb7d599eca94837435d0c3a12af9",
+      "fullPublishedRawBytesHashValidated": true,
+      "receiptFullyRead": true
+    },
     "budget": {
       "workerReportedBrotli": 195610,
       "cap": 195600,
       "overBy": 10,
-      "status": "FAIL retained; no cap change or accepted rollback package",
-      "rawLogSha256": "6f7466533ea8daf4ab003edc24063b29bdc9536a63eab1d3fc37c48a7badf34c"
+      "status": "Actual original raw FAIL retained; only STARTUP_BROTLI over by10. No cap change or accepted rollback package.",
+      "rawLogSha256": "6f7466533ea8daf4ab003edc24063b29bdc9536a63eab1d3fc37c48a7badf34c",
+      "actualRaw": 614094,
+      "actualGzip": 222695,
+      "actualBrotli": 195610,
+      "fullOriginalRawHashIndependentlyValidated": true
     },
     "sourcePinMapsEmpty": true,
     "workerTurn": "01a1238a-5b87-7063-b96e-425f86117dc7",
     "workerTurnStatus": "completed",
-    "releaseAccepted": false
+    "releaseAccepted": false,
+    "publishedRawReview": {
+      "reviewedAt": "2026-10-10T02:50:23.383471+00:00",
+      "evidenceCommit": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+      "files": [
+        {
+          "label": "all5-compiler-serial-4096-frozen-final",
+          "receiptBytes": 2517,
+          "receiptSHA256": "6b7793d69438bfbec125bf2157ee4c05c9d64565b359cbc0f3f80f513a1d2f11",
+          "rawBytes": 20351,
+          "rawSHA256": "7b2b0c5e0b5e904db919725ce84d601e6737090a1da7f18101bfe42b33a46bb6",
+          "rawHashMatchesReceipt": true,
+          "exit": 0,
+          "sourcePinMapsEmpty": true
+        },
+        {
+          "label": "driving-host-reopen-h1h2h3-corrected-final",
+          "receiptBytes": 2622,
+          "receiptSHA256": "c47f0c93d9eb1dd708b88674d01f43e27698c015f7268b87b2decb0109f3c40d",
+          "rawBytes": 375,
+          "rawSHA256": "789d8ffe6805694776f27078c9c966f8a3e950fc6233ea64b3c92a24413375e3",
+          "rawHashMatchesReceipt": true,
+          "exit": 0,
+          "sourcePinMapsEmpty": true
+        },
+        {
+          "label": "build-final-1536",
+          "receiptBytes": 2438,
+          "receiptSHA256": "ed8bac7511579a013d68d7a37f16aa59a96d593076f2d1e8a34000af3970b8c9",
+          "rawBytes": 86362,
+          "rawSHA256": "8f91b0aba86067cdd709239fe6081c082f3bfb7d599eca94837435d0c3a12af9",
+          "rawHashMatchesReceipt": true,
+          "exit": 0,
+          "sourcePinMapsEmpty": true
+        },
+        {
+          "label": "download-budget-unchanged-cap-final",
+          "receiptBytes": 2466,
+          "receiptSHA256": "6ec8fc9ee44206492ab0b1ae42873f8a3d47589f86a8356b4a4e6b5e19149c06",
+          "rawBytes": 9428,
+          "rawSHA256": "6f7466533ea8daf4ab003edc24063b29bdc9536a63eab1d3fc37c48a7badf34c",
+          "rawHashMatchesReceipt": true,
+          "exit": 1,
+          "sourcePinMapsEmpty": true
+        },
+        {
+          "label": "smoke-final",
+          "receiptBytes": 2438,
+          "receiptSHA256": "10b1d91a4860b5cd46f952a3dca16b12fc1ae8c9f18d8c23827c83c311d85f9a",
+          "rawBytes": 5474,
+          "rawSHA256": "eae958d2686923b8476b56b93a84dab3ad3e1068b4e05ba381ccc9e70967c4a3",
+          "rawHashMatchesReceipt": true,
+          "exit": 0,
+          "sourcePinMapsEmpty": true
+        }
+      ],
+      "acceptance": "Bounded compiler/build/host-reopen/smoke execution and unchanged cap failure. No public corrected source Git blob, full-byte source freeze, sealed rollback package or native gameplay accepted."
+    }
   }
 }

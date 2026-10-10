@@ -1,0 +1,20 @@
+{
+  "sha": "8a48405963ca526bfe059b413be250d834d50b90",
+  "branch": "codex/cloud-companion-yield-20261010",
+  "parent": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "checkout": "/workspace/remote-verification/repositories/worker-companion-yield",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": ["node", "--experimental-strip-types", "scripts/agent-slot.ts", "heavy", "--", "npm", "run", "size:download"],
+  "check_environment": {"NODE_OPTIONS": "--max-old-space-size=1536", "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots", "AGENT_SLOT_HEAVY": "1"},
+  "exit_status": 0,
+  "result": {"startup_raw": 614094, "startup_gzip": 222674, "startup_brotli": 195574, "companion_host_brotli_kb": 24.4, "all_applicable_budgets_passed": true, "wardrobe_and_street_tile_budgets": "n/a: no matching artifacts"},
+  "log": "/workspace/remote-verification/receipts/8a48405963ca526bfe059b413be250d834d50b90/rebuild-20261010/size-download/command.log",
+  "log_sha256": "37faf0ed5c97d9a1b946f9bedbb299c41dc390d74983703067d7f94651a1aeae",
+  "source_pins": {"src/app/features/companion/CompanionHost.vue": "c444b94c82a4920ecebe2b0d9db22c726e9e0b876aaf36c4087d1926c0cd94c2", "package-lock.json": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9"},
+  "spending": "existing included capacity only; no paid resources or workflows dispatched"
+}

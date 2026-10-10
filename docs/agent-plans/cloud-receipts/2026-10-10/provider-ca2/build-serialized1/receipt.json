@@ -1,0 +1,60 @@
+{
+  "sha": "ca2f41a5b49bc9b786ab86b355b3e591633d784f",
+  "branch": "codex/cloud-country-provider50-budget-fix-20261010",
+  "parent": "28f9626b65f00f696b45e0852d72096a6f949f0e",
+  "checkout": "/workspace/remote-verification/repositories/worker-world-country-provider50",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "14742081536",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "npm",
+    "run",
+    "build"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 89613,
+  "started_at_utc": "2026-10-10T01:35:36.925664+00:00",
+  "ended_at_utc": "2026-10-10T01:39:37.313194+00:00",
+  "duration_seconds": 240.38753,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 19,
+    "sample_source": "Monitor latest user handoff: main shared allowance19% remaining",
+    "recorded_at_utc": "2026-10-10T01:27:45.795355+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/ca2f41a5b49bc9b786ab86b355b3e591633d784f/build-serialized1/command.log",
+  "log_sha256": "943e0ae00a4d9bbe409e37ef6dd3921bd4466b65be8d9e5b60915169f6ed9d37",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "ca2f41a5b49bc9b786ab86b355b3e591633d784f",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

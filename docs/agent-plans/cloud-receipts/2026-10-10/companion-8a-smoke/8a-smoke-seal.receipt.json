@@ -1,0 +1,41 @@
+{
+  "recordedAtUtc": "2026-10-10 01:44:47 UTC",
+  "source": {
+    "repository": "/workspace/remote-verification/repositories/worker-companion-yield",
+    "branch": "codex/cloud-companion-yield-20261010",
+    "commit": "8a48405963ca526bfe059b413be250d834d50b90",
+    "worktreeClean": true,
+    "ownedFile": "src/app/features/companion/CompanionHost.vue",
+    "ownedFileSha256": "c444b94c82a4920ecebe2b0d9db22c726e9e0b876aaf36c4087d1926c0cd94c2"
+  },
+  "sealedPackage": {
+    "directory": "/workspace/remote-verification/artifacts/companion-yield-8a484059",
+    "archive": "/workspace/remote-verification/artifacts/companion-yield-8a484059.tar.gz",
+    "archiveSha256": "990eb62b8f47be6fbcbb68a78f7fa9cb11bfa669cf2ed65ef5dac8b7fab21b7c",
+    "sourceSha": "8a48405963ca526bfe059b413be250d834d50b90",
+    "publish": false,
+    "guardDigest": "88c193147084502f7ce7b5b4a8e71e83e625900418908fbbc2f036416975c0b3",
+    "guardCommand": "node scripts/guard-joinallworld-package.mjs check /workspace/remote-verification/artifacts/companion-yield-8a484059 8a48405963ca526bfe059b413be250d834d50b90 false 88c193147084502f7ce7b5b4a8e71e83e625900418908fbbc2f036416975c0b3",
+    "guardExit": 0,
+    "guardRawLog": "/workspace/remote-verification/worker-results/companion-yield/8a-package-guard.raw.log",
+    "guardRawLogSha256": "f68cf745606c6646c42d7a4cd3a5804237d0782346c9caca4f4d748d68e5d87c"
+  },
+  "localSmoke": {
+    "command": "AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 NODE_OPTIONS=--max-old-space-size=1536 node --experimental-strip-types scripts/agent-slot.ts heavy -- bash /workspace/remote-verification/worker-results/companion-yield/run-8a-local-smoke.sh",
+    "exit": 0,
+    "serverBuildId": "companion-yield-8a484059",
+    "checks": 9,
+    "requests": 335,
+    "summary": "Health, page/security headers and assets, guest session, life, world pulse, socket, harmless action/replay, and 50-city chunks passed on localhost.",
+    "rawLog": "/workspace/remote-verification/worker-results/companion-yield/8a-local-smoke.raw.log",
+    "rawLogSha256": "ed42045d993bb806c8ab5a8c828cc8735d389e57588cfbaec7daa56c77e46245",
+    "serverLog": "/workspace/remote-verification/worker-results/companion-yield/8a-smoke-server.log",
+    "serverLogSha256": "7bc69edbcd75a57c6e47e0640fc3f44baf67bb8bb49422165e4e2de7e7bef7dc",
+    "dataDirectory": "isolated temporary /tmp directory removed by cleanup"
+  },
+  "scopeLimits": [
+    "Smoke ran the repository Node server against the pre-existing dist; no rebuild was performed.",
+    "The sealed Cloudflare Worker archive was integrity-checked but not executed with workerd and was not uploaded or deployed.",
+    "No browser viewport, 320/390 mobile, help, or stage disposal/restoration recheck was performed."
+  ]
+}

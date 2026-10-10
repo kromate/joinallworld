@@ -1,0 +1,26 @@
+✔ driving packets are server-stepped, sequenced, retryable and bootstrap always pauses (366.911025ms)
+✔ reverse issuance is literal trusted true; OFF refuses atomically and retains v1/v2 journeys (85.34085ms)
+✔ every exact retained input retry precedes timeout and clock pausing; stale retries refuse without writes (117.719852ms)
+✔ legacy forward packets remain valid and reverse requests brake before a saved backward step (47.301712ms)
+✔ only a held quick-start is blocked; confirmed guests and legacy lives remain eligible (33.45378ms)
+✔ stale lifecycle CAS and excessive or early control packets do not move the journey (36.657952ms)
+✔ paused pending attempt can restart once; old journey receipts and packets cannot affect its replacement (78.66169ms)
+✔ distinct concurrent restart IDs against one paused revision have one winner (24.918923ms)
+✔ malformed restart payload and reversed server time leave the paused save unchanged (22.869748ms)
+✔ restart refuses running, moved, failed-terminal, and passed attempts without replacing their record (106.252318ms)
+✔ failed restart transaction leaves the paused attempt intact and permits the same-ID retry (51.360763ms)
+✔ revision and sequence exhaustion refuse writes while the last safe legacy and v2 steps remain readable (115.373599ms)
+✔ the last safe sequence and revision are accepted once; max receipts replay before timeout and clock reversal (99.559138ms)
+✔ an exhausted running row refuses every lifecycle and control route on location mismatch without rewriting it (32.234768ms)
+✔ replaying a start receipt after a failed run is superseded by the canonical fresh journey (18.95273ms)
+✔ server timeout and clock reversal pause without granting hidden simulation time (33.872782ms)
+✔ the public route isolates actors, pins city and location, and rejects altered packets (39.634646ms)
+✔ malformed saved journey is left intact and a failed durable start leaves no record (61.804459ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2143.789966

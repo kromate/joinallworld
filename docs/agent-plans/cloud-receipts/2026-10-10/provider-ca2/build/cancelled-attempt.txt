@@ -1,0 +1,7 @@
+CANCELED UNSERIALIZED ATTEMPT — not a build receipt
+Candidate HEAD at invocation: ca2f41a5b49bc9b786ab86b355b3e591633d784f
+Attempted command passed to run-check: npm run build
+Error: run-check.py applies resource policy and captures output but does not acquire heavy1; I failed to wrap the child with scripts/agent-slot.ts heavy, so this invocation overlapped C1 host work.
+Action: interrupted only my own Vite child (PIDs 88420, 88475, 88476). C1 host process PID 88012 was untouched.
+No numeric build exit status was captured and no successful build claim is made. Partial `command.log` SHA-256: ccf8a489d6dd54eb77f3afcdf33e62b5085cb06bdb4dcc1e3946380889b081b5.
+Next valid command must be run-check.py ... -- node --experimental-strip-types scripts/agent-slot.ts heavy -- npm run build.

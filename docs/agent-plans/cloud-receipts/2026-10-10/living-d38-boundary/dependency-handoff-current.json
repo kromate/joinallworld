@@ -1,0 +1,30 @@
+{
+  "recorded_at_utc": "2026-10-10T01:51:39.774017+00:00",
+  "scope": "Current read-only dependency handoff confirmation; historical worker also reported checking equality before reuse",
+  "pairs": [
+    {
+      "relative_path": "package-lock.json",
+      "candidate_sha256": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9",
+      "installed_source_sha256": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9",
+      "byte_equal": true
+    },
+    {
+      "relative_path": "deploy/tooling/package-lock.json",
+      "candidate_sha256": "9bb2971f2ab2b436415de142b0c37070a127eea6bfd3adf0be0b76c9f030ee98",
+      "installed_source_sha256": "9bb2971f2ab2b436415de142b0c37070a127eea6bfd3adf0be0b76c9f030ee98",
+      "byte_equal": true
+    }
+  ],
+  "links": [
+    {
+      "path": "/workspace/remote-verification/repositories/driving-driving-safe-max-20261010/node_modules",
+      "resolved_target": "/workspace/remote-verification/repositories/driving-host-reopen-tests-20261010/node_modules",
+      "is_symlink": true
+    },
+    {
+      "path": "/workspace/remote-verification/repositories/driving-driving-safe-max-20261010/deploy/tooling/node_modules",
+      "resolved_target": "/workspace/remote-verification/repositories/driving-host-reopen-tests-20261010/deploy/tooling/node_modules",
+      "is_symlink": true
+    }
+  ]
+}

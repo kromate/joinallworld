@@ -1,0 +1,100 @@
+{
+  "task": "Five-project actual compiler only; no build, runtime, deployment or activation.",
+  "expectedCommit": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
+  "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --experimental-strip-types scripts/agent-slot.ts heavy -- node --experimental-strip-types scripts/typecheck.ts --serial",
+  "startedAt": "2026-10-10T01:39:01.026Z",
+  "durationMs": 165467,
+  "resourceNote": "Records wrapper process resourceUsage and host free/total memory before and after; compiler children use the 4096 MiB NODE_OPTIONS cap.",
+  "before": {
+    "at": "2026-10-10T01:39:01.003Z",
+    "commit": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
+    "status": "",
+    "node": "v24.19.0",
+    "platform": "linux/x64",
+    "memory": {
+      "totalBytes": 35743784960,
+      "freeBytes": 32521744384,
+      "process": {
+        "userCPUTime": 33532,
+        "systemCPUTime": 14586,
+        "maxRSS": 47388,
+        "sharedMemorySize": 0,
+        "unsharedDataSize": 0,
+        "unsharedStackSize": 0,
+        "minorPageFault": 12472,
+        "majorPageFault": 0,
+        "swappedOut": 0,
+        "fsRead": 0,
+        "fsWrite": 0,
+        "ipcSent": 0,
+        "ipcReceived": 0,
+        "signalsCount": 0,
+        "voluntaryContextSwitches": 42,
+        "involuntaryContextSwitches": 1
+      }
+    },
+    "sourceSha256": {
+      "server/households/records.ts": "ec8b77b1ba951e5b26f2a17e885b13f22a28c5de404c64d366f21ed7935f146d",
+      "server/households/consent.ts": "c611ebf9ceda2e44902829b34e74fe42b3b190ba9c6a9b93ffa3544b34df59c7",
+      "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d",
+      "server/households/consentView.ts": "78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8",
+      "server/households/durableStorage.ts": "00bb3cebe51ed7796485e64eead4995c369bb8287fa2c391bfa70a2fd0bb83f0",
+      "server/households/durableReads.ts": "7410741e57a49ebd764c0ccb000c172138342bf32f52a987a2731173b9d24cbd",
+      "server/households/durableApply.ts": "e4fb1bfda1fbdbeb2c3029e2f077aba7590643eb54c7ccb2fb4fb3d1446e75ae",
+      "server/households/durableService.ts": "ce2eed20b0ecfdf4b0f7a455e6227a0988e138046d2e4357683b068bd35da9fa",
+      "server/households/durable.test.ts": "0bf8e6c2ba8afd73ab1444f3ec980858be735928f1771100bc47d4d792a56f86",
+      "server/types.ts": "4c21ae4c7b1166c9cd83bd8052a8e63ca6b634335168954b5a3b237c51c91b07",
+      "server/keyed.ts": "fcb0980c057d9e658c64e5e69512c2b60cb7eb39365a9c9d5475872b9e92af68",
+      "server/routes/once.ts": "6072fa044253a38d35b948a33163ea0a2e787ef197bcce3d3760393be94b7046"
+    }
+  },
+  "after": {
+    "at": "2026-10-10T01:41:46.475Z",
+    "commit": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
+    "status": "",
+    "node": "v24.19.0",
+    "platform": "linux/x64",
+    "memory": {
+      "totalBytes": 35743784960,
+      "freeBytes": 34220675072,
+      "process": {
+        "userCPUTime": 38743,
+        "systemCPUTime": 14695,
+        "maxRSS": 47388,
+        "sharedMemorySize": 0,
+        "unsharedDataSize": 0,
+        "unsharedStackSize": 0,
+        "minorPageFault": 13067,
+        "majorPageFault": 0,
+        "swappedOut": 0,
+        "fsRead": 0,
+        "fsWrite": 0,
+        "ipcSent": 0,
+        "ipcReceived": 0,
+        "signalsCount": 0,
+        "voluntaryContextSwitches": 59,
+        "involuntaryContextSwitches": 4
+      }
+    },
+    "sourceSha256": {
+      "server/households/records.ts": "ec8b77b1ba951e5b26f2a17e885b13f22a28c5de404c64d366f21ed7935f146d",
+      "server/households/consent.ts": "c611ebf9ceda2e44902829b34e74fe42b3b190ba9c6a9b93ffa3544b34df59c7",
+      "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d",
+      "server/households/consentView.ts": "78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8",
+      "server/households/durableStorage.ts": "00bb3cebe51ed7796485e64eead4995c369bb8287fa2c391bfa70a2fd0bb83f0",
+      "server/households/durableReads.ts": "7410741e57a49ebd764c0ccb000c172138342bf32f52a987a2731173b9d24cbd",
+      "server/households/durableApply.ts": "e4fb1bfda1fbdbeb2c3029e2f077aba7590643eb54c7ccb2fb4fb3d1446e75ae",
+      "server/households/durableService.ts": "ce2eed20b0ecfdf4b0f7a455e6227a0988e138046d2e4357683b068bd35da9fa",
+      "server/households/durable.test.ts": "0bf8e6c2ba8afd73ab1444f3ec980858be735928f1771100bc47d4d792a56f86",
+      "server/types.ts": "4c21ae4c7b1166c9cd83bd8052a8e63ca6b634335168954b5a3b237c51c91b07",
+      "server/keyed.ts": "fcb0980c057d9e658c64e5e69512c2b60cb7eb39365a9c9d5475872b9e92af68",
+      "server/routes/once.ts": "6072fa044253a38d35b948a33163ea0a2e787ef197bcce3d3760393be94b7046"
+    }
+  },
+  "exitCode": 0,
+  "signal": null,
+  "rawLog": "/workspace/remote-verification/worker-results/household-consent-view/e52cae8-five-project-typecheck.raw.log",
+  "rawLogSha256": "e4c3e1e045dbe86ed8ee4334a6f684586fcce4a28c993cf243d7618fba884cbe",
+  "sourceChanged": [],
+  "outcome": "compiler_pass_source_pins_unchanged"
+}

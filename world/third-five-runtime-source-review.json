@@ -1,6 +1,6 @@
 {
-  "observedAtUtc": "2026-10-10T00:11:56.849847+00:00",
-  "decision": "ACCEPT scoped generated source and preserved C1 prefix; runtime/release acceptance pending",
+  "observedAtUtc": "2026-10-10T00:27:55.742026+00:00",
+  "decision": "ACCEPT scoped generated source, preserved C1 prefix, strict compiler and build; runtime/release acceptance pending",
   "sourceSha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
   "baseSha": "3eb9e7cbaec40784eada66f0a8278cbe0f521f59",
   "sourceBranch": "codex/cloud-third-five-admission-20261010",
@@ -100,14 +100,42 @@
     "path": "docs/agent-plans/cloud-receipts/2026-10-10/world55/compiler.log",
     "sha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7",
     "summary": "five projects clean",
-    "numericExitAndActualTimes": "published receipt uses literal shell placeholders; replacement requested before complete compiler receipt acceptance"
+    "numericExitAndActualTimes": "Corrected numeric receipt inspected and log SHA matched in72375198; historical placeholder receipt preserved remotely."
   },
   "remaining": [
-    "candidate-specific build/download measurements",
-    "shared caller migration",
+    "candidate-specific download measurements/public receipt inspection",
+    "shared caller migration OR independently assembled/verified C1 consumer release",
     "engine/host/native arrival/return and save checks",
     "sealed package and production deployment"
   ],
   "canonicalWorldManifestActivated": false,
-  "productionOpenCountries": 11
+  "productionOpenCountries": 11,
+  "acceptedChecks": {
+    "strictCompiler": {
+      "receiptRevision": "72375198fce51960f556365e9b08c10bf1daa677",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/world55/compiler-receipt.json",
+      "receiptSha256": "77f5bad9871ec1036cebc74e8508ac5611f99bde30014cf4060c68d43b9791d1",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/world55/compiler.log",
+      "logSha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7",
+      "sourceSha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+      "exitCode": 0,
+      "startedAtUtc": "2026-10-10T00:04:44Z",
+      "finishedAtUtc": "2026-10-10T00:06:48Z",
+      "sourceCleanAndUnchanged": true,
+      "heapLimit": "--max-old-space-size=4096"
+    },
+    "build": {
+      "receiptRevision": "72375198fce51960f556365e9b08c10bf1daa677",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/world55/build-receipt.json",
+      "receiptSha256": "2c0aa71166b20fcf55adbbda47d726b8e2a574e07f109a58970dd72a27e2e56b",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/world55/build.log",
+      "logSha256": "78861f3df32767de7c095be60e40e4659fa5a908e7774649592041f3ab8c0380",
+      "sourceSha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+      "exitCode": 0,
+      "startedAtUtc": "2026-10-10T00:07:04.475425+00:00",
+      "finishedAtUtc": "2026-10-10T00:11:35.594520+00:00",
+      "sourceCleanAndUnchanged": true,
+      "heapLimit": "--max-old-space-size=1536"
+    }
+  }
 }

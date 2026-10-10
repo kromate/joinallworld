@@ -1,3 +1,14 @@
+# Next-five compiler/build accepted checkpoint, 10 October 2026 at 00:27 UTC
+
+Corrected public receipts72375198 independently match exact391ccfe9 source,
+actual numeric exit0, timestamps, source-clean state and full log hashes.
+All five strict compiler projects pass with zero errors/baselined errors;
+production build passes. This closes the earlier placeholder-receipt gap.
+Actual candidate-specific size/download and smoke logs still require inspection.
+Whole candidate runtime/native/release acceptance remains open. No new country
+is live yet. Integration has the exact33-file C1-based16-country assembly
+proposal while the larger provider migration continues independently.
+
 # Independent next-five release proposal, 10 October 2026 at 00:25 UTC
 
 The existing C1 catalogue and registry already consume generated city rows.

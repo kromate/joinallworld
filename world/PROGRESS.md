@@ -1,3 +1,18 @@
+# Required foreign checker integration identified, 10 October 2026 at 00:53 UTC
+
+The exact91 full-game log records a failure in the offline generated-city
+source check. Independent source review confirms that allCities.test.ts
+invokes only the two historical ten-city Python checkers, then requires their
+IDs to equal all15 registered foreign cities. Cairo, Rabat, Kigali, Kampala
+and Lusaka lack an invoked checker. Full terminal stderr remains requested;
+see third-five-c1-offline-check-gap.json for exact source pins and scope.
+Integration authorizes the same cloud assembler to add one bounded readonly
+published-receipt checker and extend this caller, preserving the old checks,
+exact union equality, Nigeria checks and all33 accepted runtime bytes.
+No broad generation/cache imports or guard waiver. A corrected sourceSHA and
+appropriate actual checks are required;91 is held from production release.
+The original game execution is not killed or restarted. Production remains11.
+
 # Exact country build/download/smoke accepted, 10 October 2026 at 00:48 UTC
 
 Public51bb30d0 raw receipts independently match exact clean91d0ba33 source and

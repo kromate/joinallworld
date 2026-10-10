@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T00:53:13.943941+00:00",
+  "candidateSha": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
+  "state": "full game release gate failed; runtime deployment held",
+  "observedCloudFailure": {
+    "logPath": "/workspace/remote-verification/receipts/91d0ba3346ecd74c4eb0eaf29db1a585ce246195/node24-game/command.log",
+    "line": 1346,
+    "name": "every generated city passes its offline source and output check",
+    "evidence": "Read returned actual cloud log excerpt; full terminal raw receipt/stderr pending."
+  },
+  "sourceFacts": {
+    "existingCheckers": [
+      "scripts/world/build-playable-africa.py",
+      "scripts/world/build-playable-africa-wave2.py"
+    ],
+    "legacyCheckedCityIds": [
+      "yaounde",
+      "lome",
+      "accra",
+      "nairobi",
+      "algiers",
+      "cotonou",
+      "abidjan",
+      "dakar",
+      "cape-town",
+      "addis-ababa"
+    ],
+    "registeredForeignCityIds": [
+      "accra",
+      "algiers",
+      "lome",
+      "nairobi",
+      "yaounde",
+      "abidjan",
+      "addis-ababa",
+      "cape-town",
+      "cotonou",
+      "dakar",
+      "cairo",
+      "rabat",
+      "kigali",
+      "kampala",
+      "lusaka"
+    ],
+    "newCitiesWithoutAnInvokedOfflineChecker": [
+      "cairo",
+      "rabat",
+      "kigali",
+      "kampala",
+      "lusaka"
+    ],
+    "exactUnionAssertionRetained": true
+  },
+  "sourcePins": {
+    "src/game/cities/allCities.test.ts": {
+      "bytes": 15363,
+      "sha256": "d3b7d04101330b3aa2073900bb8ee6a77023eaac5b9004472ca82bbf95d0e41f"
+    },
+    "scripts/world/build-playable-africa.py": {
+      "bytes": 13380,
+      "sha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f"
+    },
+    "scripts/world/build-playable-africa-wave2.py": {
+      "bytes": 7637,
+      "sha256": "0842dd6a4230a88f06206108854f9ebd9f9d2eaeaea6ec8044c29fbc6c64572f"
+    },
+    "src/game/cities/catalogue.generated.ts": {
+      "bytes": 4125,
+      "sha256": "0969ee3c04a10152d1894706187bd9fd531b83295a4b7cb6bcaad692f1be3046"
+    }
+  },
+  "diagnosis": "The exact coverage assertion expects every registered foreign city, but the caller invokes only the two historical ten-city checkers. Confirm the actual assertion stderr before treating this as the only failure.",
+  "authorizedRepair": {
+    "owner": "Existing cloud country assembler under Integration source agreement",
+    "scope": [
+      "scripts/world/check-playable-africa-rollout.py",
+      "src/game/cities/allCities.test.ts"
+    ],
+    "contract": [
+      "Keep both historical checks and their asset/source pins.",
+      "Read only remaining foreign cities, each bounded receipt and exactfive asset pins; require city/country/facts/generation identity consistency.",
+      "Reject missing/malformed/nonregular/symlink/escaped/duplicate/hash or byte mismatch.",
+      "Retain final exact union equality and existing Nigeria source checks.",
+      "No network or existing source/cache/ledger/game save writes.",
+      "Preserve all33 accepted runtime/receipt inputs byte-for-byte; publish corrected candidate and appropriate exactSHA checks."
+    ]
+  },
+  "noWaiver": true,
+  "productionOpenCountries": 11,
+  "limits": [
+    "Named failure and source mismatch are directly observed; entire suite completion and full raw stderr are not yet inspected.",
+    "No actual runtime regression or geometry defect is inferred from this checker integration gap.",
+    "No new city is deployed by recording this diagnosis."
+  ]
+}

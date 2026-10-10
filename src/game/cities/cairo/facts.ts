@@ -27,8 +27,8 @@ export const FACTS = {
   "sourceUrl": "https://www.openstreetmap.org/copyright",
   "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
   "bounds": [
-    31.12,
-    29.95,
+    31.08,
+    29.93,
     31.42,
     30.14
   ],

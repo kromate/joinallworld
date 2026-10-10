@@ -100,7 +100,7 @@ console.log(`places ${places.length}, labels ${labels.length}`);
 
 // ---- outline, water and roads ---------------------------------------------------------------------------------------------------------
 // A sea or a big lake is asked for as far out as the water is drawn, so that its shore ways run on to the edge of the drawn ground and the shore can be closed there.
-const waterAnswer = await ask(id, 'water', config.water(config.sea ? wide.join(',') : bbox));
+const waterAnswer = await ask(id, 'water', config.water(config.sea || config.wideWater ? wide.join(',') : bbox));
 const isShore = (element: Element): boolean => Boolean(element.geometry) && element.type === 'way' && (element.tags?.natural === 'coastline' || (config.sea?.kind === 'lake' && !element.tags?.natural && !element.tags?.waterway));
 const coast = waterAnswer.elements.filter(isShore).map((element) => element.geometry!.map((g): P => [g.lon, g.lat]));
 const landPoints = [...places.map((place): P => [place.lon, place.lat]), ...labelled.map((label) => label.at)];

@@ -1,43 +1,26 @@
 import type { DetailConfig } from './config.ts';
+import { extrasQuery, landuseQuery, placesQuery, roadsQuery } from './queries.ts';
 
 /** The cairo recipe for scripts/geo/build-destination-detail.ts. Every place is chosen by its OpenStreetMap element; names and points come from the recorded answer. */
-const wikidataNamed = (filters: string[]): string => filters.map((filter) => `nwr${filter};`).join('\n');
-
 export const CONFIG: DetailConfig = {
   name: 'Cairo',
   // Greater Cairo core: the Nile valley from the Giza plateau to the airport, Shubra in the north to Maadi in the south.
-  box: [29.95, 31.12, 30.14, 31.42],
+  box: [29.93, 31.08, 30.14, 31.42],
   core: [30.02, 31.2, 30.08, 31.3],
-  discovery: (bbox) => ({
-    places: `[out:json][timeout:120][bbox:${bbox}];(
-${wikidataNamed([
-    '["amenity"~"^(university|hospital|marketplace)$"]["wikidata"]["name:en"]',
-    '["leisure"="stadium"]["name:en"]',
-    '["tourism"="museum"]["wikidata"]["name:en"]',
-    '["amenity"="place_of_worship"]["wikidata"]["name:en"]',
-    '["railway"="station"]["wikidata"]["name:en"]',
-    '["historic"]["wikidata"]["name:en"]',
-    '["tourism"~"^(attraction|zoo|theme_park)$"]["wikidata"]["name:en"]',
-    '["shop"="mall"]["name:en"]',
-    '["leisure"="park"]["wikidata"]["name:en"]',
-    '["amenity"~"^(restaurant|cafe)$"]["wikidata"]["name:en"]',
-    '["amenity"~"^(townhall|courthouse)$"]["wikidata"]["name:en"]',
-    '["place"~"^(suburb|neighbourhood|quarter)$"]["name:en"]',
-  ])}
-);out center tags;`,
-  }),
-  landuse: (bbox) => `[out:json][timeout:120][bbox:${bbox}];(way["landuse"~"^(residential|commercial|industrial|retail|institutional|education|military|cemetery|religious)$"];relation["landuse"~"^(residential|commercial|industrial|retail)$"];);out center;`,
+  discovery: (bbox) => ({ places: placesQuery(bbox), extras: extrasQuery(bbox) }),
+  landuse: landuseQuery,
   cell: 0.004,
   grow: 2,
   split: 12,
-  shore: 1,
+  shore: 0,
   minHole: 40,
   minRoadKm: 0.7,
   maxRoads: 700,
   roadMarginDegrees: 0.012,
   surround: '#d9cba0',
-  water: (bbox) => `[out:json][timeout:120];(relation["natural"="water"]["water"="river"](${bbox});way["natural"="water"]["water"="river"](${bbox});relation["waterway"="riverbank"](${bbox});way["waterway"="riverbank"](${bbox}););out geom;`,
-  roads: (bbox, core) => `[out:json][timeout:120];way["highway"~"^(motorway|trunk|primary)$"](${bbox});out geom tags;way["highway"="secondary"]["name"](${core});out geom tags;`,
+  water: (bbox) => `[out:json][timeout:180];(relation["natural"="water"]["water"="river"](${bbox});way["natural"="water"]["water"="river"](${bbox});relation["waterway"="riverbank"](${bbox});way["waterway"="riverbank"](${bbox}););out geom;`,
+  wideWater: true,
+  roads: roadsQuery,
   boundaryNote: 'the built-up extent of Greater Cairo, from the mapped land use',
   terrainNote: 'the Nile as water polygons with its islands, and the motorway, trunk and primary roads of the box plus named secondary roads in the core.',
   source: 'OpenStreetMap contributors via the Overpass interpreter',
@@ -57,11 +40,20 @@ ${wikidataNamed([
     { slot: 'government', ref: 'way/24942979', kind: 'statehouse', category: 'civic', icon: 'civic', line: 'A palace; the notice board here is a game activity, not a government office.' },
     { key: 'egyptian-museum', ref: 'way/10873198', kind: 'walk', category: 'fun', icon: 'museum', line: 'A museum: walk the galleries.' },
     { key: 'cairo-stadium', ref: 'way/24959847', kind: 'viewing', category: 'fun', icon: 'ball', line: 'A stadium: watch from the stands.' },
-    { key: 'al-azhar-university', ref: 'way/28831942', kind: 'quad', category: 'fun', icon: 'school', line: 'A university: walk the campus.' },
     { key: 'citadel', ref: 'way/24908286', kind: 'hilltop', category: 'fun', icon: 'view', line: 'A citadel: take in the view.' },
     { key: 'cairo-tower', ref: 'way/767933342', kind: 'viewing', category: 'fun', icon: 'view', line: 'A tower: look around.' },
     { key: 'great-pyramid', ref: 'way/4420397', kind: 'walk', category: 'fun', icon: 'view', line: 'A pyramid: walk around it.' },
     { key: 'city-stars-mall', ref: 'way/284147372', kind: 'mall', category: 'fun', icon: 'market', line: 'A shopping mall: look around the shops.' },
+    { key: 'al-azhar-university', ref: 'way/35574865', kind: 'quad', category: 'fun', icon: 'school', line: 'The university\'s campus in Nasr City: walk the campus.' },
+    { key: 'gayer-anderson-museum', ref: 'node/328965969', kind: 'walk', category: 'fun', icon: 'museum', line: 'A museum in an old house: walk the rooms.' },
+    { key: 'nilometer', ref: 'node/663393691', kind: 'walk', category: 'fun', icon: 'view', line: 'An old river gauge on the island of Roda: walk down to it.' },
+    { key: 'saint-mercurius-church', ref: 'node/328955627', kind: 'worship', category: 'fun', icon: 'worship', line: 'A church in Coptic Cairo; a quiet place to rest.' },
+    { key: 'aquarium-grotto-garden', ref: 'way/24986650', kind: 'walk', category: 'fun', icon: 'park', line: 'A garden with a grotto: walk the paths.' },
+    { key: 'agricultural-museum', ref: 'way/28829955', kind: 'walk', category: 'fun', icon: 'museum', line: 'A museum in a park: walk the galleries.' },
+    { key: 'arab-al-mohammedi-park', ref: 'way/28821197', kind: 'walk', category: 'fun', icon: 'park', line: 'A public park: walk the paths.' },
+    { key: 'child-museum', ref: 'way/1232450754', kind: 'walk', category: 'fun', icon: 'museum', line: 'A children\'s museum and its park: walk around.' },
+    { key: 'bandar-maadi-mall', ref: 'node/2199534862', kind: 'mall', category: 'fun', icon: 'market', line: 'A shopping mall: look around the shops.' },
+    { key: 'wissa-wassef-art-centre', ref: 'node/961793913', kind: 'walk', category: 'fun', icon: 'museum', line: 'An art centre and its workshops: walk around.' },
   ],
   names: [
     { id: 'gezira', ref: 'node/13800619989', kind: 'neighbourhood' },

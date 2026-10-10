@@ -48,6 +48,8 @@ export interface DetailConfig {
   /** The ground colour round the outline in the 3D and simple maps. */
   surround: string
   water: (bbox: string) => string
+  /** Ask for the water as far out as the drawn ground (as a sea or a lake is), so that a river mapped in pieces runs on to its edge instead of ending where the box ends. */
+  wideWater?: true
   /** Set when the water answer holds shore ways of the sea (`coast`: coastline, land on the left) or of a big lake (`lake`: the member ways of its relation): the water is drawn this far out from the shore, in metres. */
   sea?: { kind: 'coast' | 'lake'; bandMetres: number }
   roads: (bbox: string, core: string) => string

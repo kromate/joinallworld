@@ -542,7 +542,7 @@ async function phoneRun(size: { width: number; height: number }): Promise<Record
   const j = new Journey('phone', b, tag);
   const report: Record<string, unknown> = { simulation: 'simulated phone: device metrics, touch, 3x scale, ~150 ms latency, ~1.6 Mbps down, ~750 kbps up, 4x slower CPU', size };
   const reach = async (label: string, selector: string, text?: string): Promise<void> => {
-    const found = await b.eval<any>(`(() => { const wanted = ${JSON.stringify(text ?? null)}; const el = [...document.querySelectorAll(${JSON.stringify(selector)})].find((e) => e.getBoundingClientRect().width > 1 && (wanted === null || (e.textContent || '').toLowerCase().includes(wanted.toLowerCase()))); if (!el) return { present: false }; el.scrollIntoView({ block: 'center' }); const r = el.getBoundingClientRect(); const top = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return { present: true, inView: r.left >= 0 && r.right <= innerWidth && r.top >= 0 && r.bottom <= innerHeight, reachable: !!top && (el === top || el.contains(top)), w: Math.round(r.width), h: Math.round(r.height), clippedText: el.scrollWidth > el.clientWidth + 1 }; })()`);
+    const found = await b.eval<any>(`(() => { const wanted = ${JSON.stringify(text ?? null)}; const el = [...document.querySelectorAll(${JSON.stringify(selector)})].find((e) => e.getBoundingClientRect().width > 1 && (wanted === null || (e.textContent || '').toLowerCase().includes(wanted.toLowerCase()))); if (!el) return { present: false }; const seen = el.getBoundingClientRect(); const wasInView = seen.left >= 0 && seen.right <= innerWidth && seen.top >= 0 && seen.bottom <= innerHeight; el.scrollIntoView({ block: 'nearest', inline: 'nearest' }); const shifted = [...document.querySelectorAll('[data-cr-root], .cr-host, #life-dialog, #life-dialog-content, .cr-panel')].filter((e) => e.scrollTop !== 0 || e.scrollLeft !== 0).map((e) => (e.id || e.className) + ':' + Math.round(e.scrollTop) + ',' + Math.round(e.scrollLeft)).join(' ') || false; const r = el.getBoundingClientRect(); const top = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return { present: true, wasInView, shifted, inView: r.left >= 0 && r.right <= innerWidth && r.top >= 0 && r.bottom <= innerHeight, reachable: !!top && (el === top || el.contains(top)), w: Math.round(r.width), h: Math.round(r.height), clippedText: el.scrollWidth > el.clientWidth + 1 }; })()`);
     (report['controls'] as Record<string, unknown>)[label] = found;
   };
   report['controls'] = {};
@@ -566,34 +566,16 @@ async function phoneRun(size: { width: number; height: number }): Promise<Record
       await reach(`${['look', 'spirit', 'home', 'ready'][at]} primary`, '[data-key="primary"]');
     }
     await j.shot('ready');
+    // Where the creator's content runs past its own box (a hidden-overflow box that can be scrolled by a focus or a scroll-into-view is shifted out of place).
+    report['creatorOverflow'] = await b.eval<unknown>(`(() => { const root = document.querySelector('[data-cr-root]'); if (!root) return null; const box = root.getBoundingClientRect(); const out = [...root.querySelectorAll('*')].map((e) => { const r = e.getBoundingClientRect(); return { n: e.tagName.toLowerCase() + '.' + String(e.className).slice(0, 40), bottom: Math.round(r.bottom - box.bottom), right: Math.round(r.right - box.right), h: Math.round(r.height) }; }).filter((x) => x.bottom > 1 || x.right > 1).sort((a, b) => b.bottom - a.bottom).slice(0, 6); return { rootH: Math.round(box.height), scrollH: root.scrollHeight, clientH: root.clientHeight, top: Math.round(box.top), innerHeight, out }; })()`);
     const t1 = Date.now();
     await b.eval(`window.__creatorMounts = 0; new MutationObserver((records) => { for (const r of records) for (const n of r.addedNodes) if (n.nodeType === 1 && (n.matches('[data-cr-root]') || n.querySelector('[data-cr-root]'))) window.__creatorMounts++; }).observe(document.body, { childList: true, subtree: true }); true`);
     await tapStartYourLife(b);
     const outcome = await b.waitFor<string>(`(() => { const root = document.querySelector('[data-cr-root]'); if (window.__creatorMounts > 0 && root && root.dataset.step === 'who') return 'creator-back-at-start'; if (!root && document.querySelector('.hud-cash')) return 'settled'; return ''; })()`, 180000, 'the creator to finish or return');
     report['startOutcome'] = outcome;
     report['secondsStartYourLife'] = Math.round((Date.now() - t1) / 100) / 10;
-    let settledOnPhone = outcome === 'settled';
-    if (!settledOnPhone) {
-      try {
-        const tapped = Date.now();
-        await b.click('[data-key="play-now"]');
-        await b.waitFor(`!!document.querySelector('.hud-cash') && !document.querySelector('[data-cr-root]')`, 150000, 'the game screen with the wallet');
-        report['secondsPlayNowToGame'] = Math.round((Date.now() - tapped) / 100) / 10;
-        await dismiss(b);
-        report['hudNameVisible'] = await b.eval<boolean>(`[...document.querySelectorAll('.hud-name')].some((e) => e.getBoundingClientRect().width > 1)`);
-        await j.shot('guest-game');
-        await b.click('.hud-name', undefined, 8000); await b.click('.sim-link', 'Make this life yours');
-        await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'spirit'`, 60000, 'the settle screen');
-        await b.click('[data-key="primary"]');
-        await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'home'`, 60000, 'the Home step');
-        await chooseIkeja(b); await b.click('[data-key="primary"]');
-        await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'ready'`, 60000, 'the Ready step');
-        await b.click('[data-key="primary"]', 'Start your life');
-        await until(async () => (await lifeRaw(b, 'lagos')).state?.onboarding?.done === true, 180000, 'the settled life');
-        settledOnPhone = true;
-      } catch (error) { report['settleOnPhoneFailed'] = error instanceof Error ? error.message : String(error); await j.shot('settle-failed').catch(() => undefined); }
-    }
-    if (!settledOnPhone) { report['controls'] = report['controls']; report['clippedOrUnreachable'] = Object.entries(report['controls'] as Record<string, any>).filter(([, v]) => !v.present || !v.inView || !v.reachable || v.clippedText).map(([k]) => k); report['consoleErrors'] = realErrors(b); writeFileSync(join(out, `${tag}.json`), JSON.stringify(report, null, 2)); b.close(); return report; }
+    // No recovery route: a start that does not settle in one pass ends the run.
+    if (outcome !== 'settled') { report['aborted'] = 'Start your life did not settle in one pass'; report['clippedOrUnreachable'] = Object.entries(report['controls'] as Record<string, any>).filter(([, v]) => !v.present || !v.inView || !v.reachable || v.clippedText || v.shifted).map(([k]) => k); report['consoleErrors'] = realErrors(b); writeFileSync(join(out, `${tag}.json`), JSON.stringify(report, null, 2)); b.close(); return report; }
     await gameShown(b); await dismiss(b);
     report['secondsToInteractiveGame'] = Math.round((Date.now() - t0) / 100) / 10;
     await j.shot('home');
@@ -625,7 +607,7 @@ async function phoneRun(size: { width: number; height: number }): Promise<Record
     await b.waitFor(`(document.querySelector('.map-levels-cur')?.textContent || '').includes('Cairo')`, 60000, 'the Cairo map');
     await reach('map level chip', '.map-levels-cur');
     await j.shot('city-map');
-    const clipped = Object.entries(report['controls'] as Record<string, any>).filter(([, v]) => !v.present || !v.inView || !v.reachable || v.clippedText).map(([k]) => k);
+    const clipped = Object.entries(report['controls'] as Record<string, any>).filter(([, v]) => !v.present || !v.inView || !v.reachable || v.clippedText || v.shifted).map(([k]) => k);
     report['clippedOrUnreachable'] = clipped;
     report['consoleErrors'] = realErrors(b);
   } catch (error) { report['aborted'] = error instanceof Error ? error.message : String(error); await j.shot('aborted').catch(() => undefined); }

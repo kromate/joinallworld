@@ -1,0 +1,9 @@
+file:///workspace/remote-verification/worker-results/native-interaction-temporal/temporal-office-runner.mjs:118
+  if (!offered.includes('hello')) throw new Error(`${npcId}: real viewLife no longer offers hello; actions=${JSON.stringify(offered)}`);
+                                        ^
+
+Error: mrs-okafor: real viewLife no longer offers hello; actions=["npc-mrs-okafor-hello","npc-mrs-okafor-gist","npc-mrs-okafor-joke","npc-mrs-okafor-compliment","npc-mrs-okafor-drink"]
+    at runAction (file:///workspace/remote-verification/worker-results/native-interaction-temporal/temporal-office-runner.mjs:118:41)
+    at async file:///workspace/remote-verification/worker-results/native-interaction-temporal/temporal-office-runner.mjs:197:15
+
+Node.js v24.19.0

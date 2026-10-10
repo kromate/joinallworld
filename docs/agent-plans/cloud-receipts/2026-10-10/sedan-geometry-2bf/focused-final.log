@@ -1,0 +1,20 @@
+CMD: AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 node --experimental-strip-types scripts/agent-slot.ts heavy -- node --experimental-strip-types --test server/living-world/sedan-aperture.test.ts
+✔ source partition preserves the tapered profile in actual Float32 coordinates (2.320741ms)
+✔ the tapered front rejects a capsule that fits at the aperture center (2.047022ms)
+✔ the complete hinged-door interval catches intermediate motion missed by endpoint poses (2.80768ms)
+✔ source interior and steering sweeps report known possible intersections (0.414439ms)
+✔ closed, intermediate, and fully open door positions are covered by one full-sweep envelope (0.55514ms)
+✔ valid rigid body transforms are applied and non-rigid or malformed transforms fail closed (0.362542ms)
+✔ source pins, descriptor accessors, capsule bounds, radii, and capsule count are checked (0.331926ms)
+✔ Float32 and explicit margins shrink the opening and grow modeled obstacles (0.502021ms)
+✔ the authority contract stays negative even for empty or apparently clear proposals (0.448641ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 132.029451
+
+EXIT: 0

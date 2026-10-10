@@ -631,6 +631,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
   if (contactBones.length !== 7) throw new Error('Native authored contact checkpoint lacks hips/thigh/calf/foot bones');
   const contactBaseline = contactBones.map((bone) => ({ bone, position: new THREE.Vector3(), quaternion: new THREE.Quaternion(), scale: new THREE.Vector3() }));
   let contactBaselineReady = false;
+  let sampledSupportKind: NativePoseSupport['kind'] | null = null;
   let blend: { clip: string; fade: number; from: Map<THREE.Bone, { p: THREE.Vector3; q: THREE.Quaternion; s: THREE.Vector3 }> } | null = null;
   function captureContactBaseline(resetPelvisBudget = true): void {
     for (const saved of contactBaseline) {
@@ -710,6 +711,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
   }
   return {
     apply(frame: NativeWristSourceFrame, context: Readonly<{ clip: string; seconds: number; pose: BodyPose; support: NativePoseSupport; contactPhase: 'still' | 'transition'; restAnchorBlend: number }>): boolean | Readonly<{ accepted: true; rootWorldCorrection?: number; rootWorldCorrectionXZ?: readonly [number, number] }> {
+      sampledSupportKind = context.support.kind;
       delete root.userData.nativeRestContact;
       if (frame.clipName !== resolveClip(context.clip)) return false;
       let rootWorldCorrection = 0;
@@ -920,6 +922,10 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
     },
     endTransition(): void { blend = null; },
     restoreContactBaseline,
+    hostContactMode(pose: BodyPose): 'motion' | 'grounded' | 'transition' {
+      if (sampledSupportKind === 'stair-feet' && (pose === 'walk' || pose === 'jog')) return 'transition';
+      return pose === 'walk' || pose === 'jog' || pose === 'dance' ? 'motion' : 'grounded';
+    },
     restore(): void { directionRetargeter?.restore(); solver.restore(); neutralPose.restore(); headOrientation.restore(); blend = null; },
   };
 }
@@ -1207,7 +1213,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       sampleFootContacts() { return native.sampleFootContacts(); },
       solveFeet(heightAt) {
         posePort.restoreContactBaseline();
-        const mode = ['walk', 'jog', 'dance'].includes(native.pose) ? 'motion' : 'grounded';
+        const mode = posePort.hostContactMode(native.pose);
         let solved = native.solveFeet(heightAt, mode);
         for (let pass = 0; pass < 2 && solved.limited && solved.maxError > 0.002; pass++) solved = native.solveFeet(heightAt, mode);
         if (directionRetargeter) lastDirectionContactSolve = solved;

@@ -19,7 +19,7 @@ export interface MessagePinsState {
 }
 
 export function canPinMessage(message: Message): boolean {
-  if (!message.from || message.sys || message.auto || message.gift || message.deleted || message.image?.state || message.voice?.state) return false
+  if (!message.from || message.sys || message.auto || message.gift || message.request || message.deleted || message.image?.state || message.voice?.state) return false
   return Boolean(message.body.trim() || message.image || message.voice)
 }
 

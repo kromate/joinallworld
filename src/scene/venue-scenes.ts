@@ -1196,7 +1196,8 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       }
       const pointInParent = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(parentInverse);
       const hipPosition = pointInParent(hip), kneePosition = pointInParent(knee), anklePosition = pointInParent(ankle);
-      const maximumLegReach = hipPosition.distanceTo(kneePosition) + kneePosition.distanceTo(anklePosition);
+      const postSolveActualAnkleReach = hipPosition.distanceTo(anklePosition);
+      const postSolveMaximumLegReach = hipPosition.distanceTo(kneePosition) + kneePosition.distanceTo(anklePosition);
       const requestedReach = requestedReachBySide.get(contact.side);
       const physicalRequestedAnkleReach = requestedReach?.physicalRequestedAnkleReach ?? null;
       const maximumRequestedLegReach = requestedReach?.maximumLegReach ?? null;
@@ -1206,7 +1207,8 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       physicalOraclePass &&= withinPhysicalTolerance && withinReach;
       sideEvidence.push({ side: contact.side, candidateCount: points.length, coverageComplete,
         nearestAbsolutePhysicalGap, minimumSignedPhysicalGap, physicalVerticalCorrection,
-        physicalRequestedAnkleReach, maximumRequestedLegReach, withinReach, withinPhysicalTolerance });
+        physicalRequestedAnkleReach, maximumRequestedLegReach, withinReach, withinPhysicalTolerance,
+        postSolveActualAnkleReach, postSolveMaximumLegReach });
     }
     const solverPass = result.corrected === 2 && Number.isFinite(result.maxError)
       && result.maxError <= 0.004 && result.limited === false;

@@ -423,6 +423,7 @@ async function journey(city: string, phone: { width: number; height: number } | 
       must(scene.text.includes(target.name), `the destination screen never names ${target.name}`);
       // Destination controls: one place action in the scene, then the map opens on the destination.
       await dismiss(b, 1500);
+      await b.waitFor(`[...document.querySelectorAll('.life-action')].some((x) => x.getBoundingClientRect().width > 1 && !x.disabled)`, 20000, 'a place action in the destination scene').catch(() => undefined);
       const action = await b.eval<string>(`(() => { const a = [...document.querySelectorAll('.life-action')].find((x) => x.getBoundingClientRect().width > 1 && !x.disabled); return a ? a.innerText.replace(/\\s+/g, ' ').slice(0, 60) : ''; })()`);
       must(action, 'the destination scene offers no action');
       detail['action'] = action;

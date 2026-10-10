@@ -1,0 +1,47 @@
+{
+  "decision": "APPROVE_SOURCE_INTEGRATION_ONLY",
+  "candidate": "ef92f8f182658703e3a2de5a12395f6681ce93c4",
+  "parent": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "diff": {"files": 2, "additions": 179, "deletions": 5},
+  "pins": {
+    "src/game/living-world/justice-practice.ts": "d1a1c6a47bfaa7ff4c36e413ee912230675121139d469b0e230b126cc6218df1",
+    "src/game/living-world/justice-practice.test.ts": "0b85dc3ea088f0d1f98d0e2091d8b6d07642673ae8bcbce7a9b8cc89ac9ecb46",
+    "server/living-world/justice-practice-service.ts": "6589a3b1442c2ba8158dfa78daf513b9f3f35c5664467d0c92c07c1106188833",
+    "server/living-world/justice-practice-service.test.ts": "1f8b6f9df6dd0bd091173477183ba1c9715a9d91b8308a3c13c119612b8c3511",
+    "src/app/features/living-world/JusticeApp.vue": "589f6e795e26033a29769f2959e3c64a7937c650c340c64f20d76b3794dde558"
+  },
+  "packetMatchesImmutableSource": true,
+  "readScope": "Full two changed files and all three supplied unchanged contextual files",
+  "missingReference": "Requested /tmp preserving report absent; abbreviated 732 fallback unresolved; parent-supplied requirements and immutable source used",
+  "blockingFindings": [],
+  "confirmed": [
+    "New initial and review inspection transitions write canonical authored evidence set",
+    "Legacy order accepted only when equal to first successful inspection chronology reconstructed from validated receipts",
+    "Receipt values/order, decisions, revisions and retained duplicate outcome preserved",
+    "Parser returns detached canonical projection without mutating supplied row",
+    "Current route does not rewrite practice row; existing session renewal/settlement means not globally write-free GET",
+    "Strict schema/phase/ledger/order/cap checks retained",
+    "No new score/money/authority/legal outcome"
+  ],
+  "rollback": "Must retain BOTH compatible reader and canonical transition; original 3e3 Justice logic is not a compatible rollback",
+  "testSourceAssessment": {
+    "newPureTests": 4,
+    "totalPureTests": 9,
+    "serviceTestsUnchanged": 2,
+    "coverage": ["six inspection permutations", "raw transition and JSON roundtrip", "matching legacy chronology", "repeat/conflict/terminal receipt preservation", "unsupported order and forged history refusal", "caps"],
+    "reportedExecution": "LIVING reports 9 pure and 2 service PASS; reviewer neither executed nor inspected raw execution"
+  },
+  "remaining": [
+    "Exact-source raw focused execution",
+    "HTTP legitimate legacy-row GET and duplicate unchanged raw row/receipts/timestamps, followed by canonical successful step",
+    "Actual Node file close/reopen and Worker SQLite dispose/reopen with first-command original replay",
+    "Rendered/native non-authored evidence-order journey and refusal/uncertain retry/actor fencing",
+    "Pinned compatible rollback artifact with both repair halves",
+    "Exact integrated compiler/build/fixed-budget gates"
+  ],
+  "sourceModified": false,
+  "testsExecuted": false,
+  "runtimeAccepted": false,
+  "releaseAccepted": false,
+  "activationApproved": false
+}

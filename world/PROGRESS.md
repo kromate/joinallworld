@@ -1,11 +1,11 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T04:32:18.842464+00:00
+Updated: 2026-10-10T04:36:15.875959+00:00
 
-The previous status-only turn made no goal progress. This turn verified the
-original Node22 full-game output and two distinct policy phases, and found a
-concrete receipt-format bug in the browser verification helper. The same existing
-cloud owner received the correction; no new local heavy worker was launched.
+The previous goal turn made progress: exact original Node22 and policy phases
+were accepted, and the verification helper receipt-format defect was identified.
+This turn removed the obsolete cache-cleanup gate using later clean receipts and
+scoped the two exact CSS-loader CI commands for the same existing cloud owner.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -81,8 +81,13 @@ Root now verified the published original Node22 full-game log: 2,588 pass,
 zero fail, one explicit design-conflict skip; exit0 after 1,320.567 seconds.
 The distinct package guard and test partition inventory also ended with exit0.
 Their exact receipt/log hashes match. Wrapper per-file pin maps are empty, an
-explicit limitation. The scene-loader variant remains separate and unaccepted.
-[Node22 and policy evidence](c12-node22-release-policy-acceptance.json).
+explicit limitation. The scene-loader variant remains separate and unaccepted: two exact Node24 CI
+commands across15files are requested from the existing cloud owner, without a
+new worker/build/full-matrix rerun. Later original clean checkout receipts close
+the older Python-cache cleanup gate while retaining its historical wrapper125.
+[Node22 and policy evidence](c12-node22-release-policy-acceptance.json),
+[clean-status reconciliation](c12-clean-status-reconciliation.json),
+[exact loader scope](c12-scene-loader-variant-scope.json).
 No unchanged broad suite was rerun for this report.
 
 The separate combined source `3e3e0876fc50f3166a0d0968f8616b577da27870`
@@ -108,7 +113,7 @@ This is future scaling work, not a defect deployed to production.
    remaining Africa and the global pipeline. Lazy metadata, Moroni acquisition
    durability, regional conditions and later photorealism remain in scope.
 
-The main allowance is 6% remaining at the latest actual sample. Stop new work
+The main allowance is 5% remaining at the latest actual sample. Stop new work
 at 4% remaining and use that reserve for safe checkpoints and reporting.
 There is no clock cutoff or extra-spend authorization.
 

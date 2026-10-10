@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:36:15.875959+00:00",
+  "decision": "CLOSE_OBSOLETE_CACHE_CLEANUP_GATE_USING_LATER_ORIGINAL_CLEAN_RECEIPTS",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "publicationCommit": "51c5d1db389e2ec647af78c58af5ece912b34fbb",
+  "earlierFocusedWrapper": {
+    "exitStatus": 125,
+    "cause": "owned generated scripts/world/__pycache__",
+    "evidence": "world/third-five-c1-successor-gate-review.json",
+    "status": "historical failure unchanged"
+  },
+  "laterTerminalCleanSnapshots": [
+    {
+      "phase": "node22-game-corrected-full",
+      "endedAtUtc": "2026-10-10T04:23:26.830499+00:00",
+      "receiptSha256": "cb5fa6c0affc78db44132d3c3e6a836dbc6117f6e32c261e29ed4cb1534d811e",
+      "headAfter": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "statusAfter": ""
+    },
+    {
+      "phase": "release-policy-package-guard",
+      "endedAtUtc": "2026-10-10T04:23:28.746480+00:00",
+      "receiptSha256": "337abea775eb8e25ec64ca97f0a91833cd6b6316850ab4c813e690a7bfb8b30d",
+      "headAfter": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "statusAfter": ""
+    },
+    {
+      "phase": "release-policy-plan-inventory",
+      "endedAtUtc": "2026-10-10T04:23:29.157159+00:00",
+      "receiptSha256": "556952882c9d45c4ec72ac0a9ad47d529d5b7904f7b4f6b8777d68c227964df7",
+      "headAfter": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "statusAfter": ""
+    }
+  ],
+  "impact": "Do not queue duplicate cache cleanup or rerun unchanged tests merely to obtain another clean status. Later original wrappers already report clean c12 HEAD.",
+  "limits": [
+    "This verifies the later recorded clean Git status; no inference about how bytecode was removed or environment changed.",
+    "Per-file before/after pin maps in those wrappers remain empty. This does not attest every file byte at every instant.",
+    "Earlier command wrapper125 remains retained as historical evidence, and source/full-game/browser/deployment claims remain scoped."
+  ]
+}

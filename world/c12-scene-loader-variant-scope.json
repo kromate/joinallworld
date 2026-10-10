@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:35:37.707656+00:00",
+  "decision": "DISTINCT_SOURCE_BOUND_LOADER_VARIANTS_REQUIRE_RUNTIME_OUTCOMES",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "pins": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 12856,
+      "sha256": "818886dc618b34aeafd0000428a03211bd646fc12260f72d2880b68e34c2ef27"
+    },
+    {
+      "path": "scripts/node-test-plan.ts",
+      "bytes": 3287,
+      "sha256": "bdc1eaf2a2a38cc4f149a29d2387fe3b4779d3c6dea2e37d9a14cdc37c7f434d"
+    },
+    {
+      "path": "scripts/node-scene-css.ts",
+      "bytes": 318,
+      "sha256": "cdbb76df6e8b738487f861e767a69f5a38f13b9ae0cd5bf92c1194997a47727f"
+    }
+  ],
+  "ciNodeMajor": 24,
+  "existingAcceptedBuildRequired": true,
+  "commands": [
+    [
+      "node",
+      "--experimental-strip-types",
+      "--import",
+      "./scripts/node-scene-css.ts",
+      "--test",
+      "--test-concurrency=1",
+      "src/scene/city-scenes.test.ts",
+      "src/map3d/geo/atlas.test.ts"
+    ],
+    [
+      "node",
+      "--experimental-strip-types",
+      "--import",
+      "./scripts/node-scene-css.ts",
+      "--test",
+      "--test-concurrency=1",
+      "src/map3d/map3d.test.ts",
+      "src/map3d/context-water.test.ts",
+      "src/map3d/context.test.ts",
+      "src/map3d/lagos-geo.test.ts",
+      "src/map3d/water.test.ts",
+      "src/scene/body/startup-gate.test.ts",
+      "src/scene/body/stand-in.test.ts",
+      "src/scene/body/animation-pose.test.ts",
+      "src/scene/home-lighting.test.ts",
+      "src/scene/venue-contact.test.ts",
+      "src/venue-world-lights.test.ts",
+      "src/venue-world.test.ts",
+      "src/models/vehicles/vehicles.test.ts"
+    ]
+  ],
+  "testFileCount": 15,
+  "evidence": [
+    "Exact CI folded command1 is scene/atlas2files; command2 contains13files including body, venue and vehicle checks. An earlier owner message that limited this to7files was corrected before execution acceptance.",
+    "scripts/node-test-plan.ts game child spawn contains strip-types/test/concurrency flags but no --import, so the Node22 full-game pass does not attest this distinct loader invocation.",
+    "node-scene-css.ts registers a CSS-empty-module load hook. No particular runtime failure inferred from this source difference."
+  ],
+  "execution": {
+    "owner": "existing Cloud country execution coordinator",
+    "newWorker": false,
+    "localHeavy": false,
+    "buildRerun": false,
+    "fullMatrixRerun": false,
+    "heavySlots": 1,
+    "heapMiB": 1536,
+    "quotaRequiredRemainingPercentExclusive": 4,
+    "status": "requested exact existing receipt or two distinct commands; not executed by this source review"
+  },
+  "limits": [
+    "Full CI acceptance remains incomplete. Static source mapping and dispatch do not prove either command passed.",
+    "Original Node22 PASS and Node24 FAIL remain separate.",
+    "No gameplay/runtime source edits or new tests."
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:47:03.527816+00:00",
+  "decision": "ACCEPT_TWO_EXACT_C12_NODE24_CSS_LOADER_VARIANTS",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "publicationCommit": "b30001c66e62793edb3eb5f5fac41db843e662f7",
+  "driverStatus": {
+    "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-distinct-css-loader-variants/node24-distinct-scene-css-status.json",
+    "bytes": 9174,
+    "sha256": "e4a8530d87db8495c5c75381247c4eb8ed63cbee20d6cf459e2b6df4d35b4ace",
+    "terminal": true
+  },
+  "records": [
+    {
+      "label": "node24-ci-scene-css-adapter-atlas",
+      "nodeVersion": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--import",
+        "./scripts/node-scene-css.ts",
+        "--test",
+        "--test-concurrency=1",
+        "src/scene/city-scenes.test.ts",
+        "src/map3d/geo/atlas.test.ts"
+      ],
+      "exitStatus": 0,
+      "counts": {
+        "tests": 46,
+        "pass": 46,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "startedAtUtc": "2026-10-10T04:38:20.125253+00:00",
+      "endedAtUtc": "2026-10-10T04:38:29.635308+00:00",
+      "wrapperDurationSeconds": 9.510055,
+      "receipt": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-distinct-css-loader-variants/node24-ci-scene-css-adapter-atlas/receipt.json",
+        "bytes": 2763,
+        "sha256": "798e83c873a695e0e95df926de829080d414af579ace27ff996f99008fe416f8"
+      },
+      "log": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-distinct-css-loader-variants/node24-ci-scene-css-adapter-atlas/command.log",
+        "bytes": 6605,
+        "sha256": "4f77d4bfe6120744f50365795c82181bd5bf9c0db8726b2b15d75ae4795c4f8a"
+      },
+      "independentDriver18FilePins": {
+        ".github/workflows/ci.yml": "818886dc618b34aeafd0000428a03211bd646fc12260f72d2880b68e34c2ef27",
+        "scripts/node-scene-css.ts": "cdbb76df6e8b738487f861e767a69f5a38f13b9ae0cd5bf92c1194997a47727f",
+        "scripts/node-test-plan.ts": "bdc1eaf2a2a38cc4f149a29d2387fe3b4779d3c6dea2e37d9a14cdc37c7f434d",
+        "src/scene/city-scenes.test.ts": "e1e682643c2ba5ab06c289030c2f9f24ea302ef3cdba9dd5d1d9832a039a19d3",
+        "src/map3d/geo/atlas.test.ts": "1ecd4bc513d6d55fcf8b31ec26d0e4920ff00ff682b9ea71e1c1c7be2f929796",
+        "src/map3d/map3d.test.ts": "3f4995e2e5133ed051c553a274ca7c9fb0cdba250202ea74fe1f0e7d9a80d580",
+        "src/map3d/context-water.test.ts": "e29be2dbc056ef3cfae285360d8eb8d0185249c407caca8d98f58aebcb0b780c",
+        "src/map3d/context.test.ts": "45e1337949027173ffeb87d5748124e53f273b209ea1f1d5fd2f2a3e2a246128",
+        "src/map3d/lagos-geo.test.ts": "edf429e80d004b446a450d8291f91fccaee85c4e45bd4d2c6d7ca2ad2fc91ca1",
+        "src/map3d/water.test.ts": "2ae39c82114507ce24ee922b662a5642262d8ec1f6ee5fa3c8574b875f82bec3",
+        "src/scene/body/startup-gate.test.ts": "04b7c4d44338eec6fe7bea96ce451bd7eb906077742d9824f18bf1a69fafd869",
+        "src/scene/body/stand-in.test.ts": "fb2c89f60056d034e3c4c24dfc437a2efdaaa9e37cee73a168385c59125ee1d5",
+        "src/scene/body/animation-pose.test.ts": "9080a1b5e803c36b2b7b9c50761216f917c0bf13cd7c81c93d1c93785f8659b6",
+        "src/scene/home-lighting.test.ts": "12126d8361cedd42ffb2b7540891e8f4931755ec85e8b775502c9e1332701ad5",
+        "src/scene/venue-contact.test.ts": "0aaae4bf49c32e30ab91584b823484c695b97ff14d6d33fa68301c77351c8bb6",
+        "src/venue-world-lights.test.ts": "6391c5aa5dfa68a3569af9014e00d7a5c4e8e0f8ccd8522cc435f04180bdc647",
+        "src/venue-world.test.ts": "9a4c00d97d7f3044853bbe6076534fafde60b040619ff0d67414c0d0ab3b0508",
+        "src/models/vehicles/vehicles.test.ts": "d4e2aa76826794ed96b4d0e1b9b47f0634ac949c5b8751f643db637777c30518"
+      },
+      "pinsBeforeAfterEqual": true,
+      "exactGitPinsMatched": true,
+      "wrapperPinMapsEmpty": true
+    },
+    {
+      "label": "node24-ci-scene-css-map-water-startup",
+      "nodeVersion": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--import",
+        "./scripts/node-scene-css.ts",
+        "--test",
+        "--test-concurrency=1",
+        "src/map3d/map3d.test.ts",
+        "src/map3d/context-water.test.ts",
+        "src/map3d/context.test.ts",
+        "src/map3d/lagos-geo.test.ts",
+        "src/map3d/water.test.ts",
+        "src/scene/body/startup-gate.test.ts",
+        "src/scene/body/stand-in.test.ts",
+        "src/scene/body/animation-pose.test.ts",
+        "src/scene/home-lighting.test.ts",
+        "src/scene/venue-contact.test.ts",
+        "src/venue-world-lights.test.ts",
+        "src/venue-world.test.ts",
+        "src/models/vehicles/vehicles.test.ts"
+      ],
+      "exitStatus": 0,
+      "counts": {
+        "tests": 90,
+        "pass": 90,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "startedAtUtc": "2026-10-10T04:38:29.796443+00:00",
+      "endedAtUtc": "2026-10-10T04:38:57.318855+00:00",
+      "wrapperDurationSeconds": 27.522412,
+      "receipt": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-distinct-css-loader-variants/node24-ci-scene-css-map-water-startup/receipt.json",
+        "bytes": 3183,
+        "sha256": "4b0b4c3505a639e8e9fa165438af10a68035664d88581c720c40c2b9c4b33760"
+      },
+      "log": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-distinct-css-loader-variants/node24-ci-scene-css-map-water-startup/command.log",
+        "bytes": 11034,
+        "sha256": "cf642704790f030ab890b69c4c02e71f319a6af64ea33b0b400868389b34dfaf"
+      },
+      "independentDriver18FilePins": {
+        ".github/workflows/ci.yml": "818886dc618b34aeafd0000428a03211bd646fc12260f72d2880b68e34c2ef27",
+        "scripts/node-scene-css.ts": "cdbb76df6e8b738487f861e767a69f5a38f13b9ae0cd5bf92c1194997a47727f",
+        "scripts/node-test-plan.ts": "bdc1eaf2a2a38cc4f149a29d2387fe3b4779d3c6dea2e37d9a14cdc37c7f434d",
+        "src/scene/city-scenes.test.ts": "e1e682643c2ba5ab06c289030c2f9f24ea302ef3cdba9dd5d1d9832a039a19d3",
+        "src/map3d/geo/atlas.test.ts": "1ecd4bc513d6d55fcf8b31ec26d0e4920ff00ff682b9ea71e1c1c7be2f929796",
+        "src/map3d/map3d.test.ts": "3f4995e2e5133ed051c553a274ca7c9fb0cdba250202ea74fe1f0e7d9a80d580",
+        "src/map3d/context-water.test.ts": "e29be2dbc056ef3cfae285360d8eb8d0185249c407caca8d98f58aebcb0b780c",
+        "src/map3d/context.test.ts": "45e1337949027173ffeb87d5748124e53f273b209ea1f1d5fd2f2a3e2a246128",
+        "src/map3d/lagos-geo.test.ts": "edf429e80d004b446a450d8291f91fccaee85c4e45bd4d2c6d7ca2ad2fc91ca1",
+        "src/map3d/water.test.ts": "2ae39c82114507ce24ee922b662a5642262d8ec1f6ee5fa3c8574b875f82bec3",
+        "src/scene/body/startup-gate.test.ts": "04b7c4d44338eec6fe7bea96ce451bd7eb906077742d9824f18bf1a69fafd869",
+        "src/scene/body/stand-in.test.ts": "fb2c89f60056d034e3c4c24dfc437a2efdaaa9e37cee73a168385c59125ee1d5",
+        "src/scene/body/animation-pose.test.ts": "9080a1b5e803c36b2b7b9c50761216f917c0bf13cd7c81c93d1c93785f8659b6",
+        "src/scene/home-lighting.test.ts": "12126d8361cedd42ffb2b7540891e8f4931755ec85e8b775502c9e1332701ad5",
+        "src/scene/venue-contact.test.ts": "0aaae4bf49c32e30ab91584b823484c695b97ff14d6d33fa68301c77351c8bb6",
+        "src/venue-world-lights.test.ts": "6391c5aa5dfa68a3569af9014e00d7a5c4e8e0f8ccd8522cc435f04180bdc647",
+        "src/venue-world.test.ts": "9a4c00d97d7f3044853bbe6076534fafde60b040619ff0d67414c0d0ab3b0508",
+        "src/models/vehicles/vehicles.test.ts": "d4e2aa76826794ed96b4d0e1b9b47f0634ac949c5b8751f643db637777c30518"
+      },
+      "pinsBeforeAfterEqual": true,
+      "exactGitPinsMatched": true,
+      "wrapperPinMapsEmpty": true
+    }
+  ],
+  "total": {
+    "tests": 136,
+    "pass": 136,
+    "fail": 0,
+    "skip": 0
+  },
+  "limits": [
+    "Exact15-file/two-command loader variant accepted, not a new full-suite or complete browser claim.",
+    "Wrapper pin maps are empty; independent serial driver before/after18-file pin maps match exact Git and are reported separately. Other runtime/dependency files are not attested by these18pins.",
+    "Original Node24 full-game FAIL remains qualified and separate; Node22 original PASS unchanged.",
+    "No source edits, new tests, local heavy worker, browser, funding, SQLite, stage or rebuild executed by this review.",
+    "Production11 remains; the five real browser journeys/Home/restart and final deployment/live16 validation are still pending."
+  ]
+}

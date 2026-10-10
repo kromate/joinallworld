@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAtUtc": "2026-10-10T04:42:56.907329+00:00",
+  "observedAtUtc": "2026-10-10T04:49:38.196654+00:00",
   "owner": "WORLD",
   "goalStatus": "active",
   "productionCountries": 11,
@@ -97,6 +97,13 @@
       "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
       "evidence": "world/c12-clean-status-reconciliation.json",
       "scope": "Recorded clean checkout snapshots only; empty per-file pin maps remain an explicit limitation. No duplicate cleanup or unchanged matrix rerun needed."
+    },
+    {
+      "id": "WORLD-C12-LOADER-VARIANTS",
+      "outcome": "Two exact CI Node24 CSSloadercommands all15files pass46+90=136checks,0fail0skip; original raw hashes and independent18before/after pins match c12Git",
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "evidence": "world/c12-scene-loader-variant-acceptance.json",
+      "scope": "Scoped exact variants; wrapperpinmaps empty but independentdriver supplement accepted. Original Node24FAIL retained, no browser/production acceptance."
     }
   ],
   "remainingOrderedEasiestToHardest": [
@@ -105,9 +112,9 @@
       "kind": "incomplete acceptance",
       "difficulty": 2,
       "owner": "existing cloud country execution, Integration reviews",
-      "repro": "Original Node22 game2588PASS0FAIL1SKIP and two distinct policy phases now independently accepted from51c5d1db raw receipt/logs. Original Node24 game2587PASS1FAIL1SKIP retained; zero-delay harness diagnosis separately accepted. Scene-loader variant remains unaccepted.",
-      "evidence": "world/third-five-c1-cloud-runtime-gate-review.json; world/c12-release-corpus-inventory.json; world/c12-reconnect-zero-delay-diagnosis.json; world/c12-node22-release-policy-acceptance.json; world/c12-scene-loader-variant-scope.json; world/c12-clean-status-reconciliation.json",
-      "impact": "Sixteen-country release not ready",
+      "repro": "Original Node22 game2588PASS0FAIL1SKIP, two policy phases and exact two Node24 CSSloadervariants136PASS0FAIL0SKIP now accepted. Node24 fullgame originalFAIL retained and qualified preexisting zero-delay harness issue, not a new c12 runtime regression. No unchanged rerun needed.",
+      "evidence": "world/third-five-c1-cloud-runtime-gate-review.json; world/c12-release-corpus-inventory.json; world/c12-reconnect-zero-delay-diagnosis.json; world/c12-node22-release-policy-acceptance.json; world/c12-scene-loader-variant-scope.json; world/c12-clean-status-reconciliation.json; world/c12-scene-loader-variant-acceptance.json",
+      "impact": "Remaining country release gate is actual browser/Home/restart validation and final main/deployment acceptance",
       "files": [
         ".github/workflows/ci.yml",
         "scripts/node-test-plan.ts",
@@ -116,7 +123,7 @@
         "deploy/africa-host.test.ts"
       ],
       "dependencies": [],
-      "proposedFix": "Existing owner supplies or executes two exact Node24 CI CSS-loader commands across15files, with fresh>4percent allowance/cloudheavy1/1536MiB and already accepted c12 build. No new worker/build/fullmatrix. Preserve Node24 original FAIL and accept only qualified diagnosis. Continue five browser journeys separately.",
+      "proposedFix": "Keep originalNode24FAIL and scoped non-regression diagnosis in final release record. Do not wait for isolated fixture-only successor or repeat unchanged broad suites. Source/runtime country checks are accepted at stated scopes; continue actual five-city browser phase and final release synchronization.",
       "effort": "Two distinct existing Node24 loader commands remain; runtime duration unmeasured. Already accepted matrix/build phases need no repetition."
     },
     {
@@ -124,8 +131,8 @@
       "kind": "incomplete user-path evidence",
       "difficulty": 3,
       "owner": "existing cloud /root/country_browser_astra (accepted gpt-6-astra/high request); Integration local Astra controller review; WORLD owner funding/restart",
-      "repro": "All5 actual browser journeys remainunvisited. Same CloudAstra repairturn01a12413 is actual terminal completed541721ms with14frozen V4/helperV2files and syntaxpasses. H1-H4/authority/rootreceipt changes reported; exactpublicsourcebytes and reused fullreview pending. No runtime launch approved.",
-      "evidence": "world/c12-cloud-sealed-acceptance.json; world/c12-browser-toolchain-review.json; world/REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md; world/c12-browser-controller-review.json; world/c12-browser-controller-v3-review.json; world/c12-browser-owner-protocol-review.json; world/c12-browser-activity-source-precheck.json; world/c12-browser-v4-terminal-source-checkpoint.json",
+      "repro": "All5 actual browserjourneys unvisited. Actualterminal V4/helperV2 published8bce; all14manifestbytes+59uniqueGit sourcefiles matched. Reused Astra source review ACCEPTS H1-H4/authority/rootreceipt; same finite phase authorized only with exact freshquota>4/liveprivatebinding/runtimepin/lease/ownerpreflight, not launched or passed.",
+      "evidence": "world/c12-cloud-sealed-acceptance.json; world/c12-browser-toolchain-review.json; world/REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md; world/c12-browser-controller-review.json; world/c12-browser-controller-v3-review.json; world/c12-browser-owner-protocol-review.json; world/c12-browser-activity-source-precheck.json; world/c12-browser-v4-terminal-source-checkpoint.json; world/c12-browser-v4-source-pin-acceptance.json; world/c12-browser-controller-v4-review.json",
       "impact": "Cannot yet claim five new destinations render/play and preserve real browser saves",
       "files": [
         "world/tooling/verify-sealed-africa.mjs"

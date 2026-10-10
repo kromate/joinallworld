@@ -1,11 +1,12 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T04:42:56.907329+00:00
+Updated: 2026-10-10T04:49:38.196654+00:00
 
-The previous goal turn made progress: the obsolete cache gate was reconciled
-and the exact remaining scene-loader commands were scoped. This turn confirmed
-the existing Cloud Astra repair is terminal with frozen V4/helperV2 source and
-syntax checks. Its exact source publication and independent review are pending.
+The previous goal turn made progress: the cache gate was closed and exact
+scene commands scoped. This turn accepted both original loader phases (136pass,
+zero failures/skips), authenticated the published V4/helperV2 source packet,
+and read the reused Astra source acceptance. The same existing cloud owner may
+run the unchanged finite browser phase after fresh quota/runtime/lease preflight.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -60,22 +61,22 @@ package passed its actual on-disk guard. Its own sealed run is terminal with
 
 Its artifact read returned Forbidden, retained as a transport gap. The package
 was independently produced from already owned c12 source and compiled output.
-The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) is pinned.
-The existing Cloud Astra operator completed the V3 controller/helper source packet
-at public `b7eea09360e020c30c1ae2cbf22894026c43c7d8`. Integration's reused Astra
-review closed F1–F4 at source-design scope only. The owner helper still needs
-H1 authenticated guest-ID binding, H2 protected-state and cross-actor comparisons,
-and H3 a dispatch-time restart deadline check. Root also found H4: normal browser
-activities put their ID in the payload and concatenate that payload into the
-receipt fingerprint; the helper assumes one JSON array with a top-level ID.
-The same existing operator completed repair turn01a12413 with14 frozen source
-files; actual final syntax/manifest command is terminal. V4/helperV2 hashes are
-recorded pending exact public byte comparison and reused reviewer acceptance.
-[Terminal source checkpoint](c12-browser-v4-terminal-source-checkpoint.json).
-No browser launch is approved.
-[Full V3 review](c12-browser-controller-v3-review.json),
-[receipt protocol finding](c12-browser-owner-protocol-review.json),
-[activity path precheck](c12-browser-activity-source-precheck.json).
+The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) stays pinned.
+Existing Cloud Astra repairturn01a12413 is terminal. Its exact V4/helperV2 packet
+is public at8bceca5f586ca4b619759bb778dd142151b08302. Root independently matched
+all14manifestfiles,59uniqueGitfiles/95pinoccurrences and11packet-copy occurrences.
+36Cloud-only occurrences remain live-preflight responsibilities. The reused
+independent Astra reviewer accepted H1–H4, SQLite authority and root receipt
+source design; F1–F4 and numeric caps stay unchanged.
+[Source binding](c12-browser-v4-source-pin-acceptance.json),
+[full source review](c12-browser-controller-v4-review.json).
+
+WORLD authorizes the SAME existing finite five-city/Home/restart phase only after
+actual fresh allowance>4%, named live bindings, exact runtime/package/binary
+pins, owned serial leases and root/store/control/PID checks pass. This is no
+current launch or user-path pass claim. Final owner protected readback, every
+controller/watchdog/stage terminal outcome and owned process absence are required.
+All five actual new city journeys remain unvisited.
 
 The original Node24 full-game suite remains failed: 2,587 pass, one fail, one skip.
 Its zero-delay reconnect harness failure has a verified scoped diagnosis and
@@ -85,13 +86,13 @@ Root now verified the published original Node22 full-game log: 2,588 pass,
 zero fail, one explicit design-conflict skip; exit0 after 1,320.567 seconds.
 The distinct package guard and test partition inventory also ended with exit0.
 Their exact receipt/log hashes match. Wrapper per-file pin maps are empty, an
-explicit limitation. The scene-loader variant remains separate and unaccepted: two exact Node24 CI
-commands across15files are requested from the existing cloud owner, without a
-new worker/build/full-matrix rerun. Later original clean checkout receipts close
-the older Python-cache cleanup gate while retaining its historical wrapper125.
+explicit limitation. Both exact Node24 CSS-loader CI commands now passed:46+90=136checks,
+zero failures/skips. All15testfiles and18driver before/after source pins bind
+exact c12 Git. Original wrapper pin maps remain empty; the driver supplement
+is recorded separately. The older cache wrapper125 remains historical.
 [Node22 and policy evidence](c12-node22-release-policy-acceptance.json),
 [clean-status reconciliation](c12-clean-status-reconciliation.json),
-[exact loader scope](c12-scene-loader-variant-scope.json).
+[actual loader acceptance](c12-scene-loader-variant-acceptance.json).
 No unchanged broad suite was rerun for this report.
 
 The separate combined source `3e3e0876fc50f3166a0d0968f8616b577da27870`
@@ -108,7 +109,7 @@ This is future scaling work, not a defect deployed to production.
 
 ## Next actions, in order
 
-1. Review the same owner’s corrected helper/controller successor for H1–H4; retain existing bounds.
+1. Materialize actual private runtime bindings and preflight for the accepted V4/helperV2; retain existing bounds.
 2. Complete all five actual browser journeys, phone-width controls, restart and
    saved-state checks; inspect the remaining required source-matrix evidence.
 3. Synchronize with main, deploy the accepted country batch, and verify 16 live

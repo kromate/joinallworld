@@ -1,0 +1,122 @@
+{
+  "observedAtUtc": "2026-10-10T01:20:37.758212+00:00",
+  "candidateSource": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "previousSource": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
+  "productionBase": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "decision": "ACCEPT source correction and independent isolated checker diagnostics only; release remains held for corrected-source full matrix, portable sealed artifact and native journeys",
+  "changedFiles": [
+    "scripts/world/check-playable-africa-rollout.py",
+    "server/testing/africaJourney.ts",
+    "src/game/cities/allCities.test.ts",
+    "src/map3d/geo/atlas.test.ts",
+    "src/map3d/world.test.ts"
+  ],
+  "changedFilePins": {
+    "scripts/world/check-playable-africa-rollout.py": "d82adecbb101ac20386d303a0c7762a82714fb896eaa3bfbdecec1747b5b0ab7",
+    "server/testing/africaJourney.ts": "66202144ded068a55708b7ac4684ea43b7717897c44d8e535033b657413dd880",
+    "src/game/cities/allCities.test.ts": "4059377f9ddd8f51466aca9961f350274567d7037c0c085fe0581010b48ef15f",
+    "src/map3d/geo/atlas.test.ts": "1ecd4bc513d6d55fcf8b31ec26d0e4920ff00ff682b9ea71e1c1c7be2f929796",
+    "src/map3d/world.test.ts": "ed7d2f852b5a51d969ff6b8726868f5333f926fd619883ad66562a215e111e80"
+  },
+  "unchangedApprovedRuntimeFiles": 33,
+  "unchangedSharedDependencyPins": 8,
+  "unchangedCatalogueGenerator": true,
+  "verifiedCities": [
+    {
+      "city": "cairo",
+      "status": "pinned-assets-match"
+    },
+    {
+      "city": "rabat",
+      "status": "pinned-assets-match"
+    },
+    {
+      "city": "kigali",
+      "status": "pinned-assets-match"
+    },
+    {
+      "city": "kampala",
+      "status": "pinned-assets-match"
+    },
+    {
+      "city": "lusaka",
+      "status": "pinned-assets-match"
+    }
+  ],
+  "negativeCasesRefused": [
+    "missing generation identity",
+    "nonobject generation identity",
+    "wrong generation city",
+    "wrong generation state ID",
+    "wrong generation state name",
+    "wrong receipt city",
+    "wrong country",
+    "boolean byte pin",
+    "wrong asset digest",
+    "extra asset",
+    "duplicate receipt key",
+    "oversized receipt",
+    "missing receipt",
+    "missing asset",
+    "symlink asset",
+    "nonregular FIFO asset",
+    "symlink city parent",
+    "empty CLI",
+    "duplicate CLI",
+    "path escape CLI",
+    "oversized CLI",
+    "failure emits no partial success"
+  ],
+  "futureStarterSourceCompatibility": {
+    "worldSource": "211d4442d37b5dfc50e8163e518a4370cfb5bbf5",
+    "verifiedUnadmittedStarterReceipts": 42,
+    "receiptPins": {
+      "antananarivo": "5ff6aa84918b8b1a3d4c99ad20871546a3b3cb2a5c813469639d3a2bae5f116b",
+      "asmara": "885654fb38925574b92e616f560623d12771db908167ded91cde31c75d3b80ad",
+      "bamako": "935424c8c3e2386b72d34ea78c73534d470d1222a947b371fce75172d16e777d",
+      "bangui": "7ab7bc19c26362d6e7939720bc4c7fb169a5fa42d41b7f192e9b3e88d47aefe5",
+      "banjul": "866038fa4168594a38556da0b1af9f8f6b9e6e27ea88a16455e18ab5c3a4717e",
+      "bissau": "263f40f5bcd0c9a6149c1092ee85278b01c25db9e7c2405bddc47ac2a6af47e2",
+      "brazz": "584787f5109165eea4b366a2a6fa19c80febffd5a66e1107bc597ac8202b6a62",
+      "bujumbura": "fd3f46ba5ce5b65fcc1742809944734ee0ffeb13887da32a09d3f5d628e8d6c1",
+      "cairo": "7000fd7934c132ed98ce6bc33a95e42b7b4b92c96dcfda9623d11e9c6d70753a",
+      "conakry": "a9289c71ffb0d2f5977c02050017fd9a4e28197e99c98bf16ac705b7a718672e",
+      "dar": "3ec5b56473e9020470e83937320a56e3b5f7f06db76079b9ca291958aaf4a469",
+      "djibouti": "b94c6c7b09de72ae07ca98ddd24cf532491059e18387a24a9d250a05b2b9bcec",
+      "freetown": "54306e03517d38fac90ed43b88fd0c8733dc89174334a7ce693a305aa7d0c205",
+      "gaborone": "3710fc6fb91a7aa112b2ed40ed8368b57b02674bdf667621b283edb4b401685a",
+      "harare": "766fc25216bfc8dfa53392a5c9d7235838f728bbefecbe4c7f94ae6ec4d0ea81",
+      "juba": "cbefe689c50a437f42e011594998283fc035444a24c0888792abfd61e8e8785a",
+      "kampala": "d28bc90206afd501474fe5ee16478de3d4d2be09408a7f2193481a758800a9a6",
+      "khartoum": "80d1fb73d9b16c3cb8f21d5c1af3fdf672cbf690239c6f9e4b918ca07976cc80",
+      "kigali": "5ae7a1dd3726693f8b60c6421662110888145dd71085e77778f06761cbf6da0b",
+      "kin": "5b8beb4845e3c5e89c4d39d553e3c070e52892455307af7ae12887adc0ce3da9",
+      "libreville": "94341b9bde700e6f2ae2b6c94d94605f2c55b44eadc73c2bc6c7a59d3010f76f",
+      "lilongwe": "81a014310ebda5a635081f169dc6f97a7de7a221c21f4b8b768eafce9d3bb65e",
+      "luanda": "1bbf2537fc6aa2d7857f9246523db077e5544f1c2cf2c8442f4578e6b3242295",
+      "lusaka": "03031475e4d89dfebfd36b59cb90e8068a59a60a92290a9406feca1a32bd7d22",
+      "malabo": "e08b3dfd9f1daa7efbd9bb6cba9cab583e19760194ffb9a28410fc12af701350",
+      "maputo": "3dd7f7f185c1b91ab40dcaf3346478d544d1a35f73482b8c76b1579af763c554",
+      "maseru": "2baf138e5135f3a14984f6654cb9c977207979abf1f70a05785384a54d1fc2f8",
+      "mbabane": "7c5d5502cdd4d937375216a2187234909785b7d13e9f41c87162e9a09c8886e5",
+      "mogadishu": "585625f37eb1657935bf6c8097cac7470c726c913c9d6e52125f1a2590722da7",
+      "monrovia": "2326fcdf0556158627ac9274c9cf5274d316a820e8a4be0c25060cefa079c8a5",
+      "n-djamena": "aa97d94b20dea98bf27aa46ace67cb079f7613c5f8c9d9cc7a01ac7fb6e58229",
+      "niamey": "f2604c321ec8037c49de768c4df9c16be3ea62fb74d9d6a7fe9dffbadde92077",
+      "nouakchott": "8f7f06e62d6a0eca2d5e1e1dd0f94955c03507f3cf1fb5332bbabc6dc07a2fe5",
+      "ouagadougou": "9ce307880e8eb314ec4d7456c39f603de687d4f31e6e5b31babc20f760a119ba",
+      "port-louis": "0481217b90b865ed186ceb39929c57845049f8500280be974e1607b24e9e7daa",
+      "praia": "969aa1f336c5075a85e6763164f963f18655025d0f2cebf6e913b637989bc83d",
+      "rabat": "1a5f01148dcbba735989df1af73c04e439b8e1acef0f9c2aab5a0134c26f2d9d",
+      "sao-tome": "c4e4b16e0ff5c4e0aa6dd34751c353a545c9b0655f8ee8382dd545eccad24d21",
+      "tripoli": "8cabdd19163805fc5b9080f1ee88967d25690f1565a82a510c6a13addcba3959",
+      "tunis": "5d1cf8480fa48a2a3082b9999211cc79443e0c051e147d07471b345d2ee9baf2",
+      "victoria": "53d6940b56c3f5c6ba4a6b686b45c62cd0224179dee3490b153855c969b0be3a",
+      "windhoek": "c400d0d68fc824d7ac38cfd3c1a813ad18196b4b569de23a5b0ee84e08786ae2"
+    },
+    "scope": "All forty-two current unadmitted WORLD starter sources pass the corrected checker, including required generation identity. This is source compatibility only, not runtime admission, city playability or production coverage."
+  },
+  "durationSeconds": 1.7412005,
+  "scope": "Read-only immutable Git blob comparison and disposable five-city file/receipt diagnostics. No game compiler, browser, server, paid workflow, gameplay actor, actual source/cache ledger or production mutation.",
+  "previousGoalTurnClassification": "no progress: user requested status, live health confirmed unchanged C1 and eleven-country count; this turn revalidated and advanced source acceptance"
+}

@@ -1,3 +1,45 @@
+# Corrected country source independently accepted, 10 October 2026 at 01:22 UTC
+
+Actual published c12b8ebd83cd301475fb1d7bf9e143af260d6621 changes exactly five
+checker/test-fixture files against held91. All33 approved runtime file hashes,
+eight C1 shared dependency hashes and the unchanged catalogue generator match.
+The new checker requires generation identity, country and all five asset pins.
+Independent disposable execution validates Cairo/Rabat/Kigali/Kampala/Lusaka
+and refuses22 malformed, missing, symlink, FIFO, path, duplicate and partial
+success cases. All42 current unadmitted WORLD starter receipts and their210
+assets also pass this checker, including generation identity. This is source
+compatibility, not country admission. See
+third-five-c1-successor-source-acceptance.json. The review takes1.741 seconds,
+without a game compiler, browser, server, source query or save/ledger mutation.
+Production health still names C1; the accepted live map remains11 countries.
+The previous status-only turn is no progress. This turn advances authoritative
+source acceptance and records the exact corrected release candidate.
+
+Actual public96452cac raw receipts now bind all16 refusal cases and the three
+corrected fixtures to c12 with command exit0; its wrapper records125
+because a generated Python cache makes the checkout unclean. That flag is
+retained; no clean-source/full-matrix acceptance is inferred. Prior91 full game
+actually ends1 with2585pass/3fail/1design-conflict skip out of2589 tests.
+See third-five-c1-successor-gate-review.json for actual receipt/log bindings.
+Corrected-source remaining Node/Worker checks, source-bound sealed
+artifact and native fifteen-city journeys remain required. Integration alone
+assembled the independently reviewed two external verifier files on the
+existing fa8-based tools branch at2df4569f; both file pins match. No whole WORLD
+merge or production upload.
+Full repo artifact pagination observes327 active artifacts totalling1078218975
+bytes. The account billing API lacks the user scope, so neither account storage
+allowance nor zero extra artifact spending is proven. No scope, budget, payment
+or resource change was made. A same-repository draft release asset transfer of
+the actual cloud-built seal is being reviewed as an alternative to an extra
+Actions artifact run; no release or workflow was created. The later direct
+human monitoring-chat instruction removes the clock cutoff and changes the
+stop threshold to4% remaining. WORLD independently read the actual message
+01a12367-3e20-7150-86f7-a14cacab49bd and acknowledges it. Main19% remains at the
+latest actual read; final4% is reserved for safe checkpoint, owned-branch pushes
+and reporting, with no reserve/model/spend hop. The current completed units and
+remaining bugs/gaps, easiest-to-hardest with dependencies, are recorded in
+remaining-work-inventory.json for Integration's sole combined ledger.
+
 # Full fifteen-city verification contract implemented, 10 October 2026 at 01:10 UTC
 
 WORLD external sealed tooling now accepts only the exact reviewed old3/10

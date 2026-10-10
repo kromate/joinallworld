@@ -1,0 +1,44 @@
+{
+  "receiptPublication": "96452caca0c89dd99ebae0ea187c1f9fa1ce6b11",
+  "decision": "Accept raw receipt/log binding and focused corrected tests only. Prior full suite failed; focused wrapper125 and untracked cache flag retained. No corrected full-suite or sealed/native release claim.",
+  "receipts": {
+    "node24-game": {
+      "source": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
+      "commandExit": 1,
+      "sourceUnchanged": true,
+      "gitStatusAfter": "",
+      "logSha256": "e63c4c8feaa278d8ca305a601098d8ca9e5b03e0b5430f52e6babe5d894c0cf7",
+      "receiptSha256": "a951857057c1621c425b3e5698d6870a8fea6e6f6a82d4deb1a6af277e759fa8",
+      "summary": {
+        "tests": 2589,
+        "pass": 2585,
+        "fail": 3,
+        "skipped": 1
+      },
+      "rawLogPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/node24-game/command.log",
+      "rawReceiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/node24-game/receipt.json",
+      "endedAtUtc": "2026-10-10T01:04:17.759387+00:00"
+    },
+    "c12-focused": {
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "commandExit": 0,
+      "sourceUnchanged": false,
+      "gitStatusAfter": "?? scripts/world/__pycache__/",
+      "logSha256": "fc9875c98b8869dbafde46b5163297c66a6579f3a1b0c62e7b3c589c4c431977",
+      "receiptSha256": "ab4b5785e485279ad9d6705f2c33abf9850ae5e9360fe96c446be42531d9d7d3",
+      "summary": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "skipped": 0
+      },
+      "rawLogPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-focused/command.log",
+      "rawReceiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-focused/receipt.json",
+      "endedAtUtc": "2026-10-10T01:11:49.064476+00:00",
+      "wrapperExit": 125,
+      "supplementSha256": "54103bd63802cb791eed1391efa9dda0f1c8693df0855650be17f98232cdd5d4",
+      "qualifiedObservation": "Tracked source remained unchanged; generated untracked Python bytecode prevented the wrapper clean-source claim. This supplement does not convert that flag to true."
+    }
+  },
+  "requiredNext": "Existing cloud corrected-source remaining checks including all fifteen Node/Worker host journeys; source-bound package/sealed/assets/native journey/save proof; sole WORLD upload after acceptance."
+}

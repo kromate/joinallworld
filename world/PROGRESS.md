@@ -1,12 +1,11 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T03:35:28.322448+00:00
+Updated: 2026-10-10T04:00:31.790771+00:00
 
-The previous goal turn made progress: package comparison, fourteen source phases
-and the independent cloud seal were accepted. This turn verified the complete
-seven-module stage import closure, recorded the actual cloud Astra assignment,
-and mapped release-test files to the existing full partitions. The original
-Node 24 game suite is now executing; browser visits remain incomplete.
+The previous status-only turn confirmed the live build but changed no source.
+This turn identified the exact zero-delay reconnect test edge, matched all three
+files to production C1, and recorded the completed controller review. The cloud
+owner is diagnosing cancellation; the same Astra operator has a new repair turn.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -31,7 +30,7 @@ They are **not deployed**.
 | Delivered sealed package and 31 served assets | Accepted; package digest `3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331` |
 | Normal browser onboarding and controlled credit replay | Passed for two fresh synthetic players |
 | Five new browser city journeys and same-store restart | All five unvisited; still required |
-| Full host/tooling and Worker suites on Node 22 and 24 | Accepted; original Node 24 game suite running; other release checks pending |
+| Full host/tooling and Worker suites on Node 22 and 24 | Accepted; Node 24 game suite failed one reconnect assertion; diagnosis pending |
 | Production upload and live 16-country check | Not started |
 
 Evidence: [source](third-five-c1-successor-source-acceptance.json),
@@ -47,8 +46,8 @@ The local 900-second stage ended naturally with exit 0 at 02:11:17 UTC.
 Its helper/process group are absent and all shared local slots are free.
 The test store retains both funded players and their protected home, inventory,
 ownership and receipt data. Original Nigeria/eec players remain separate.
-Mac pressure recovered in the latest monitor samples. The separate instruction
-to perform implementation/build/render work online remains in force.
+Latest Mac monitor reports WARNING and paging churn. Local heavy phases stay
+held; existing remote implementation/build/render work continues.
 
 The existing cloud host has Chromium 151 and CDP support. Its independent package
 has the same 6,228 physical files as the original. All 6,226 other payload files
@@ -62,15 +61,20 @@ package passed its actual on-disk guard. Its own sealed run is terminal with
 Its artifact read returned Forbidden, retained as a transport gap. The package
 was independently produced from already owned c12 source and compiled output.
 The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) was approved
-in design. The actual cloud operator is `/root/country_browser_astra`, requested
-as `gpt-6-astra`; backend model identity is not exposed. Launch still requires
-the finished immutable controller, enforced resources and actual process bindings,
-with reviewed package. [Complete tooling pins](c12-browser-toolchain-review.json)
-include the restored verifier dependency. [Release file inventory](c12-release-corpus-inventory.json)
-accounts for UI and integration checks without claiming they passed. The full phase includes bounded
-bootstrap, 720-second stage duration, cleanup and aggregate RSS limits. Two actors
-are required because all five round trips exceed one controlled 2,000,000 test credit.
-No private local players, cookies or database are transferred.
+in design. Existing cloud operator `/root/country_browser_astra` has repair turn
+`01a123f6-a36d-73da-9dda-dd51c518812c`; requested Astra identity remains distinct
+from an unexposed backend model ID. Its frozen controller needs four corrections:
+preflight termination, CDP screenshot limits, both browser origins before onboarding,
+and actual owned-home arrival. [Exact review](c12-browser-controller-review.json).
+The concrete owner mailbox helper is also required before launch; schema alone
+cannot fund, audit or restart the stage. No browser launch is approved.
+
+The original Node 24 full-game suite ended with exit 1 after 1,272 seconds.
+The owner reports 2,587 passes, one failure and one skip. A zero jitter delay can
+bypass the test's fake timer Map; all three implicated files match live C1.
+[Source diagnosis](c12-reconnect-zero-delay-diagnosis.json). Actual bounded
+cancellation diagnostics and full original raw-log review are still pending.
+Other already accepted checks will not be repeated without a source change.
 
 The separate combined source `3e3e0876fc50f3166a0d0968f8616b577da27870`
 preserves route values, but its measured startup gzip/Brotli exceed the existing
@@ -88,7 +92,7 @@ the source repair. It has no production acceptance.
    remaining Africa and the global pipeline. Lazy metadata, Moroni acquisition
    durability, regional conditions and later photorealism remain in scope.
 
-The main allowance is 11% remaining at the latest actual sample. Stop new work
+The main allowance is 8% remaining at the latest actual sample. Stop new work
 at 4% remaining and use that reserve for safe checkpoints and reporting.
 There is no clock cutoff or extra-spend authorization.
 

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:00:31.790771+00:00",
+  "decision": "SOURCE_EDGE_IDENTIFIED_RUNTIME_DIAGNOSTIC_PENDING",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "pins": [
+    {
+      "path": "src/community.ts",
+      "bytes": 48659,
+      "sha256": "f5032ab3b12656ad4b85e4be1296827d441165645da8e4ec86a3b17833dd1eb4",
+      "byteIdenticalToLiveC1": true
+    },
+    {
+      "path": "src/community.test.ts",
+      "bytes": 38319,
+      "sha256": "76d5b1e6d68c56c7a3d5e0f1e843f1855837df3d67c578ba7c697c8fe120fa1f",
+      "byteIdenticalToLiveC1": true
+    },
+    {
+      "path": "src/reconnect.ts",
+      "bytes": 291,
+      "sha256": "eee061fc76e853fcdb76ebeec6adc7fab6cac79e2eb8f9d62ab314bfe3e82189",
+      "byteIdenticalToLiveC1": true
+    }
+  ],
+  "staticEvidence": {
+    "delayExpression": "Math.floor(Math.random() * Math.min(capMs, baseMs * 2 ** attempt))",
+    "firstDelayCanBeZero": true,
+    "testTimerStub": "if (!delay) return realSet(callback, delay)",
+    "assertion": "timers.size === 1 after ws.close()",
+    "zeroDelayEffect": "A real zero-delay timer is scheduled and omitted from the fake timer Map; zero entries does not prove destroy failed.",
+    "firstAttemptZeroInterval": [
+      0,
+      0.001
+    ]
+  },
+  "originalFullSuite": {
+    "state": "TERMINAL_FAILED",
+    "cloudHost": "96cc63a2f9d2",
+    "node": "v24.19.0",
+    "startedAtUtc": "2026-10-10T03:26:26.272215+00:00",
+    "endedAtUtc": "2026-10-10T03:47:38.371547+00:00",
+    "durationSeconds": 1272.099332,
+    "exitStatus": 1,
+    "logSha256": "8eb04afa596a9fed3c647947d0e36945104623bf0be9837c98efeedf5b8fa208",
+    "reportedCounts": {
+      "passed": 2587,
+      "failed": 1,
+      "skipped": 1
+    },
+    "receiptEvidence": "Cloud original exec-dab9ab37 output independently read; counts and matched assertion reported by owner, full raw public log still pending",
+    "perFilePinsInReceipt": false,
+    "sourceCleanUnchanged": true
+  },
+  "nextAction": "Existing cloud owner checks original exact failure and runs one bounded temporary diagnostic of real zero-delay cancellation and a nonzero-delay case. No unchanged full rerun for green.",
+  "runtimeEdits": false,
+  "testsEdited": false,
+  "productionChanged": false,
+  "limitations": [
+    "Original failed full suite remains failed.",
+    "A static edge and owner report do not prove the complete release or browser journeys.",
+    "No change to valid reconnect jitter or production runtime is justified by this edge."
+  ]
+}

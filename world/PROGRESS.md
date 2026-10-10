@@ -1,11 +1,11 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T04:36:15.875959+00:00
+Updated: 2026-10-10T04:42:56.907329+00:00
 
-The previous goal turn made progress: exact original Node22 and policy phases
-were accepted, and the verification helper receipt-format defect was identified.
-This turn removed the obsolete cache-cleanup gate using later clean receipts and
-scoped the two exact CSS-loader CI commands for the same existing cloud owner.
+The previous goal turn made progress: the obsolete cache gate was reconciled
+and the exact remaining scene-loader commands were scoped. This turn confirmed
+the existing Cloud Astra repair is terminal with frozen V4/helperV2 source and
+syntax checks. Its exact source publication and independent review are pending.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -68,7 +68,11 @@ H1 authenticated guest-ID binding, H2 protected-state and cross-actor comparison
 and H3 a dispatch-time restart deadline check. Root also found H4: normal browser
 activities put their ID in the payload and concatenate that payload into the
 receipt fingerprint; the helper assumes one JSON array with a top-level ID.
-The same existing operator owns these corrections. No browser launch is approved.
+The same existing operator completed repair turn01a12413 with14 frozen source
+files; actual final syntax/manifest command is terminal. V4/helperV2 hashes are
+recorded pending exact public byte comparison and reused reviewer acceptance.
+[Terminal source checkpoint](c12-browser-v4-terminal-source-checkpoint.json).
+No browser launch is approved.
 [Full V3 review](c12-browser-controller-v3-review.json),
 [receipt protocol finding](c12-browser-owner-protocol-review.json),
 [activity path precheck](c12-browser-activity-source-precheck.json).

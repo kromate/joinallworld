@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:42:56.907329+00:00",
+  "decision": "RECORD_ACTUAL_TERMINAL_SOURCE_REPAIR_NOT_ACCEPTANCE",
+  "operator": "/root/country_browser_astra",
+  "threadId": "01a123d0-cf20-70c1-ad9e-5f824abef065",
+  "turn": {
+    "id": "01a12413-1996-7534-a083-de489e3c5763",
+    "status": "completed",
+    "startedAtUnixSeconds": 1791606594,
+    "completedAtUnixSeconds": 1791607136,
+    "durationMs": 541721,
+    "error": null
+  },
+  "terminalTool": {
+    "id": "exec-1ceef5e6-a8ca-40b4-a660-38958b603f76",
+    "status": "completed",
+    "actualOutput": "PASS: 14 frozen manifest files; actual v4/v2 source aliases and pins; preserved v3/v1; final syntax checks only.",
+    "trackedC12StatusOutput": ""
+  },
+  "frozenOwnerReportedFiles": {
+    "controller": {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/country-controller.v4.mjs",
+      "sha256": "b92773045ea16f20f9e7f92e18aca0901dbb791a6e5e43bcb93f1ca52b759fce"
+    },
+    "ownerHelper": {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-owner-helper/world-owner-mailbox.v2.mjs",
+      "sha256": "1f9b26b4182354e931ec81b81061f0158158007e7c87b5c15e3ca961523126ba"
+    },
+    "manifest": {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/immutable-v4-owner-v2-packet-manifest.json",
+      "sha256": "5d553c9c9da5e32bf95afc5d3b2939a2bf1e30d9375b4b5eff5ec83685103f61",
+      "entries": 14
+    }
+  },
+  "actualObservedSourceEdits": [
+    "Public-ID witness captured from normal browser session response and included in private owner request.",
+    "Owner removes obsolete receiptType parser and includes actual normal UI request in activity fingerprint proof.",
+    "Stored funding intent includes rootCaller binding.",
+    "Dispatch-time quota/deadline/PID guard reordered before SIGWINCH."
+  ],
+  "claimedRepairScope": [
+    "H1 guestpublicID identity",
+    "H2 immediate credit/replay and cross-actor protected checks",
+    "H3 exact restartdispatch deadline",
+    "H4 actualUIpayload full/bounded fingerprint",
+    "SQLiteauthority and requiredcolumns",
+    "rootonce sender/fingerprint binding"
+  ],
+  "approval": {
+    "sourceAccepted": false,
+    "launchAuthorized": false,
+    "browserExecuted": false,
+    "fundingExecuted": false,
+    "restartExecuted": false,
+    "publicationVerified": false
+  },
+  "nextAction": "Existing Cloud parent publishes exact frozen source-only packet. Same existing Integration reviewer checks concrete changes; Root hashes packet/source closure, then authorize existing finite browser phase only if actual allowance remains>4 and required source/runtime bindings are accepted. Do not restart completed source worker or substitute a new one.",
+  "limits": [
+    "Actual terminal tool and source-edit outputs are evidence of preparation; Root has not independently read these remote source files.",
+    "Owner-reported SHA values are recorded for comparison, not treated as independently authenticated file bytes.",
+    "No browser, SQLite, HTTP, stage, funding, restart or build ran in this repair turn.",
+    "Original immutable V3/helperV1 retained; no acceptance from syntax alone. Production remains11; five proposed destinations unvisited."
+  ]
+}

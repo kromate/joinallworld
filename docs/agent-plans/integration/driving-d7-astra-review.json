@@ -1,0 +1,114 @@
+{
+  "decision": "MODIFY",
+  "candidate": "d7ccfa5dfea65dacd541ca1dddc885f7f410df9e",
+  "branch": "codex/cloud-living-reverse-20261010",
+  "baseline": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "scope": "Independent source-only review; no release, activation or deployed rollback acceptance",
+  "repository": "clean integration repository",
+  "contract": {
+    "review": "earlier independent v2 issuance review",
+    "amendmentCommit": "8eddf7ee6319c675c10cece1252692b759846013",
+    "amendmentFile": "docs/agent-plans/living-world/remote-driving-handoff-2026-10-10.md",
+    "sha256": "d652692f9a2923776d88041d1cde76b86132f76f7af0bcf1a53f9db5de889a5b",
+    "lines": [
+      56,
+      60
+    ]
+  },
+  "pins": {
+    "server/living-world/driving-service.ts": "27fddca853b50fe60459b38c2ffd4d8fad34bba8e1c18a59aa3e351982346a25",
+    "server/living-world/driving-service.test.ts": "4d780d422733d6c8a19cbcfce730fed8ca47b18d682ef59feb7359b4a4e06f74",
+    "src/app/features/living-world/DrivingApp.vue": "d869e39821ec80bee80441cf732a12639e56202f712bb66b30a18f4c7cc18c3d",
+    "src/app/features/living-world/practiceIdentity.test.ts": "79cf0892255a139152566921e72fab82a9d46cc61a14a194fd8807d1d66a5691",
+    "src/game/living-world/driving.ts": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+    "src/game/living-world/driving.test.ts": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+    "src/types/living-world.ts": "27757f7089a482d5b046692fdc1d53ed06272788c3633949a2ed6efa64dbc677"
+  },
+  "execution": {
+    "fileReadsOnly": true,
+    "sourceEdits": false,
+    "compiler": false,
+    "tests": false,
+    "build": false,
+    "server": false,
+    "browser": false,
+    "delegation": false
+  },
+  "evidenceStatus": {
+    "reportedServicePass": 14,
+    "reportedComponentPass": 6,
+    "logsInspectedHere": false,
+    "runtimeModelInferred": false,
+    "fullCompiler": "pending as supplied",
+    "build": "pending as supplied",
+    "pureFilesMatchFrozenAcceptedPins": true
+  },
+  "findings": [
+    {
+      "id": "D1",
+      "priority": "P1",
+      "file": "server/living-world/driving-service.ts",
+      "lines": [
+        300,
+        338
+      ],
+      "title": "Nonmutating lastPacket replay is limited to OFF explicit-gear packets",
+      "reproducer": "Accept explicit reverse P with literal true; leave ON; advance 1600ms; resend exact P. Alternatively accept legacy P, use OFF and advance 1600ms; resend P.",
+      "prediction": "Clock/timeout branch pauses and writes row before returning duplicate success; state/revision/time/credit change. Reversed clock has the same ordering defect.",
+      "additionalCase": "After accepting explicit P, switch OFF and strip gear from a retained-sequence retry after timeout. It goes through legacy branch, mutates row and then returns packet_conflict.",
+      "required": "After strict authorization/current context/journey checks, resolve retained exact receipt/conflict once before clock/timeout/issuance/simulation writes for every mode/frame shape. Preserve lastPacket-only retention and independent safety behavior for new input."
+    },
+    {
+      "id": "D2",
+      "priority": "P2",
+      "file": "src/app/features/living-world/DrivingApp.vue",
+      "lines": [
+        217,
+        227,
+        669
+      ],
+      "title": "Actual capability loss does not stop ordinary legacy control production while automatic pause is pending",
+      "reproducer": "Start ON but never select a gear, hold throttle, send a legacy packet; return current success with running session and no capability; hold the automatic pause response unresolved; invoke sample/flush timers.",
+      "prediction": "hadGearIntent=false leaves active=true. lifecycle clears held but does not deactivate. After control finally clears its in-flight flag, sampler/flush can send a second packet, and keyboard/touch can set throttle, racing the pending pause revision.",
+      "required": "On true-to-false capability transition stop active/boarding and clear all held/unsent controls regardless of gear selection, then use fenced reconciliation. Repeated already-OFF replies must keep ordinary legacy driving usable. Preserve immutable in-flight packet."
+    }
+  ],
+  "inheritedLimitation": {
+    "id": "L1",
+    "file": "server/living-world/driving-service.ts",
+    "lines": [
+      109,
+      352,
+      392
+    ],
+    "title": "Revision/sequence exhaustion remains unguarded outside explicit lesson restart",
+    "reproducer": "A strict-reader-valid running row with revision=Number.MAX_SAFE_INTEGER and nextSequence=1,lastPacket=null receives a new legacy input after100ms, or current/pause is invoked.",
+    "prediction": "Revision increments beyond safe integer and row is written; subsequent strict read refuses it. Resume has the same revision risk; nextSequence can overflow on input.",
+    "provenance": "Present in eec; not introduced by reverse diff. Existing MAX_SAFE_INTEGER test covers lesson restart only.",
+    "status": "Separately triage before runtime integrity acceptance; do not call rollover guards comprehensive."
+  },
+  "contractAssessment": {
+    "F1": "partial; D1 remains",
+    "F2": "substantial improvement; epoch fences and all named handlers exist, but D2 remains and required response-path tests incomplete",
+    "F3": "source behavior mostly satisfied; OFF retains valid v2 on pause/resume/legacy, default OFF and captured literal true verified; deployed rollback image/binding/parity evidence absent"
+  },
+  "testGaps": [
+    "ON explicit and ON/OFF legacy exact replay after timeout and reversed clock; retained conflict with omitted gear.",
+    "Exact retained replay after lifecycle revision and durable reopen; terminal v2 replay; old unretained explicit sequence and foreign context.",
+    "Capability loss with only legacy throttle or boarding, repeated OFF legacy replies, successful OFF resume/restart, refusal/duplicate paths, fresh re-enable after reconciliation.",
+    "Actual v2 process/Worker reopen and compatible deployed OFF rollback image; source fixture mode switch is not this evidence.",
+    "Original retained score-zero school/home/wallet continuity and native desktop/mobile controls."
+  ],
+  "nextActualGates": [
+    "Cloud owner makes bounded D1/D2 corrections with meaningful failing regressions, exact final commit and fresh independent source review.",
+    "Actual Node24 focused logs with exits/counts/skips/runtime provenance; complete five-project compiler/build/size/smoke under existing caps and resource limits.",
+    "Independent eventual Node/Worker binding review, then pin deployed compatible OFF reader/writer/service rollback before any v2 issuance.",
+    "Durable Node/Worker reopen, v1/v2/corrupt/terminal/receipt/rollback failure evidence on pinned artifacts without C1/eec rollback after v2.",
+    "Original-store desktop/mobile/native continuation, no score reset or qualification grants, separate physical-phone proof, exact-SHA stage/CI/save continuity/release observation."
+  ],
+  "productionConstructorDefaultOff": true,
+  "releaseApproved": false,
+  "activationApproved": false,
+  "paidResourcesAuthorized": false,
+  "cutoff": "2026-10-10T08:00:00Z"
+}

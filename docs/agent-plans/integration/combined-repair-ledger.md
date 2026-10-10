@@ -1,10 +1,10 @@
 # Combined Allworld repair and remaining-work ledger
 
-Observed checkpoint: 2026-10-10T00:01:39.702184+00:00. Goal remains active and the complete original handoff scope is retained.
+Observed checkpoint: 2026-10-10T00:18:22+00:00. Goal remains active and the complete original handoff scope is retained.
 
 ## Usage and execution rule
 
-The human instruction was read directly in Monitor chat: at roughly 5% remaining main Codex allowance, stop starting parallel implementation/build/render work, safely checkpoint existing owned work, and leave a detailed combined list for sequential one-task/one-worker repair when the user resumes. Independently observed allowance was 71% used / 29% remaining on 9 October. No credits, reset, reserve-model switch or paid capacity is authorized. The existing 09:00 Africa/Lagos, 10 October (08:00 UTC) experiment cutoff also remains. This ledger does not itself pause or complete the full goal.
+The human instruction was read directly in Monitor chat: at roughly 5% remaining main Codex allowance, stop starting parallel implementation/build/render work, safely checkpoint existing owned work, and leave a detailed combined list for sequential one-task/one-worker repair when the user resumes. Independently observed allowance was 72% used / 28% remaining on 10 October. No credits, reset, reserve-model switch or paid capacity is authorized. The existing 09:00 Africa/Lagos, 10 October (08:00 UTC) experiment cutoff also remains. This ledger does not itself pause or complete the full goal.
 
 Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 3 asynchronous/multi-path acceptance; 4 durable or cross-system integration; 5 foundational multi-domain work or external-device dependencies. Difficulty is not severity or a promise of duration. Respect prerequisites and fix P1 integrity bugs before dependent features, even when a cosmetic task is easier. Source-only findings, diagnostic renders, compiler success and actual production are distinct.
 
@@ -24,19 +24,20 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 
 | ID | Difficulty | Severity | Status | Task | Depends on |
 |---|---|---|---|---|---|
-| INT-001 | 1/5 | P1 | Confirmed source defect | Household consent loader omits owner indexes | None |
-| INT-021 | 1/5 | P1 | Confirmed source integrity defect | Household accepted-invitation key/value mismatch | INT-001 |
-| INT-022 | 1/5 | P2 | Confirmed provenance defect | Unqueried household pair facts masquerade as absent | INT-001 |
+| INT-001 | 1/5 | P1 | 619 source corrected; runtime diagnostics pending | Household consent loader omits owner indexes | None |
+| INT-021 | 1/5 | P1 | 619 source corrected; runtime diagnostics pending | Household accepted-invitation key/value mismatch | INT-001 |
+| INT-022 | 1/5 | P2 | 619 source corrected; runtime diagnostics pending | Unqueried household pair facts masquerade as absent | INT-001 |
 | INT-002 | 2/5 | P2 | Reproduced native UI defect | Lumo obscures lesson feedback at 320px | New remote candidate and unchanged download gates |
 | INT-003 | 2/5 | P1 | Compiler/office pass; home fails | Head-controller nullable closure compiler failure | GRAPHICS-owned reviewed source capsule |
-| INT-004 | 2/5 | P2 | Open verification | Complete current original-store teaching lesson under OFF | OFF readiness and one owned browser lease |
+| INT-004 | 2/5 | P2 | Local wage/replay accepted; exact XP measurement open | Complete current original-store teaching lesson under OFF | OFF readiness and one owned browser lease |
+| INT-028 | 2/5 | P2 verification | Diagnostics resolved; d7 compiler fails | Retain actual remote diagnostic and compiler evidence | New repaired SHA/exact checks |
 | INT-024 | 2/5 | P1 release gate | Actual measurement missing | NPC post-placement floor evidence | INT-003 |
 | INT-005 | 3/5 | P1 | Confirmed source defect | Driving duplicate replay occurs after clock/timeout mutation | Independent contract review |
 | INT-006 | 3/5 | P1 | Contract gap | Driving capability freshness on every response | INT-005 |
 | INT-007 | 3/5 | P1 | Open acceptance | Business tax/quote/ambiguous retry and identity browser journeys | Isolated consenting actors and controlled actual transaction funding |
 | INT-008 | 3/5 | P2 | Qualified earlier evidence | Investigate earlier synthetic character hash differences | Historical private artifacts availability |
 | INT-009 | 3/5 | P2 | Open verification | Long labels, offline interactions and native200% zoom | Unlocked native surface; relevant combined artifact |
-| INT-023 | 3/5 | P1 boundary gate | Confirmed boundary gap | Consent loader unknown data can invoke getters or escape abort semantics | INT-001; INT-021 |
+| INT-023 | 3/5 | P1 boundary gate | 619 source corrected; runtime diagnostics pending | Consent loader unknown data can invoke getters or escape abort semantics | INT-001; INT-021 |
 | INT-025 | 3/5 | P1 release gate | Current final coverage pending | Creator/game/other-player saved-look identity on final graphics | INT-014; INT-015; INT-024 |
 | INT-010 | 4/5 | P1 | Implementation pending | Migrate real country catalogue callers and preserve route authority | WORLD scope agreement; current admission checkpoint |
 | INT-011 | 4/5 | P1 | New admission proposal; not live | Accept next five countries as actual playable journeys | INT-010 or independently reviewed compatible registry path |
@@ -48,8 +49,12 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | INT-017 | 4/5 | P1 | Open integrated release acceptance | Final combined source, seals and coordinated production | Accepted candidate units; unchangedbindings/secrets/namespace |
 | INT-018 | 4/5 | P2 | Open research queue/access | Continue exact public-source queues and Recent | Public source access; original private captures unavailable |
 | INT-026 | 4/5 | P1 programme gap | Incomplete broad rollout | Authored wardrobe/hair/footwear look coverage | INT-014; INT-015; INT-025; INT-017 budget gate |
+| INT-029 | 4/5 | P1 feature gate | Pure domain only | Consenting NPC barber appearance and once settlement | GRAPHICS target and Integration accounting |
 | INT-019 | 5/5 | P1 | Implementation pending | Bind durable character/life identity and household home-use lifecycle | INT-012; approved domain and store authority |
 | INT-020 | 5/5 | P2 | External device coverage missing | Physical iPhone/Safari/PWA/background and sustained heat/lag | Physical hardware/access and accepted combined source |
+| INT-030 | 5/5 | P1 journey gap | Native progression unfinished | Legitimate qualification, rental and mapped driving | INT-016; WORLD/GRAPHICS movement contract |
+| INT-031 | 5/5 | P1 feature gap | Actual custody chain incomplete | Mapped delivery/restock/wages/tools | INT-030; custody/stock/accounting authority |
+| INT-032 | 5/5 | P1 programme gap | Later active gameplay incomplete | Education/professions/civic progression | Relevant ANN rows and actual connected journeys |
 | INT-027 | 5/5 | P1 programme gap | Incomplete whole-world quality | Coherent home/street/market and remaining-world graphics | INT-014; INT-015; INT-025; INT-017 budget gate |
 
 ### INT-001 — Household consent loader omits owner indexes
@@ -64,7 +69,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 
 - Owner: Existing free remote UI worker; Astra native acceptance. Exact source/reference: `eec14690544a4646e4cd8a5ad280d61bbe2709ca`.
 - Files/dependency boundary: src/app/features/companion/CompanionHost.vue.
-- Evidence/reproduction: Actual 320px teaching capture has floating Lumo over right-edge lesson text; external100x overlay is separate.
+- Evidence/reproduction: Actual320/390 final choices are intercepted by app-owned button.lumo-stage; coordinate hit at390 showed62 by61.1875px overlap, separate from external hundredx-floating-toggle. Remote8a484059 source uses typed foreground/lesson state and existing disposal/restoration lifecycle. Full five-project compiler log08b1beafe4a953a464abc45c3721c465872139627aa63bcd4ee13cd234aa5cfe independently read/hash-matched; original1536OOM retained. Supplied19/build/budget passes need raw receipt acceptance; corrected-artifact native pass still open.
 - Next repair and acceptance: Yield the app companion stage during foreground phone/modal and active venue teaching interactions; preserve Help/chat, preferences and restoration. Verify actual corrected artifact at320/390 and keyboard focus.
 - Prerequisites: New remote candidate and unchanged download gates. Difficulty basis: Existing map-yield lifecycle provides a bounded pattern; actual browser confirmation required.
 
@@ -80,15 +85,15 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 
 - Owner: WORLD host; existing Astra operator. Exact source/reference: `eec14690544a4646e4cd8a5ad280d61bbe2709ca`.
 - Files/dependency boundary: Teaching service/browser; original isolated retained store.
-- Evidence/reproduction: ON wrong/right diagnose/explain and final CHECK reload passed; A revision5/gen1, no wage yet. Stage50155 exit0; stopped23:54:44.372, child20477 absent.
-- Next repair and acceptance: WORLD starts serial OFF on same seven control fields/store; original A completes final question normally. Compare exact earned wage/XP/performance and actual same-ID retry; preserve old school and both actors.
+- Evidence/reproduction: ON wrong/right diagnose/explain and final CHECK reload passed. SerialOFF normal final wrong/right and reload now completed: cash366500-to369500, one3000wallet effect, shifts1, performance60. Actual same-successful-native-ID HTTP200 duplicate shift_completed changed no cash/receipts or either actor protected facts. Before/after every old row content and identities/home.storage/wholeoldschool independently compared. See teaching-off-native-acceptance.md/json. Exact numericXP delta remains unproved; B browser and production remain outside scope.
+- Next repair and acceptance: Retain accepted original wage/replay scope. Wait unchanged host deadline and inspect real terminal. Measure exactXP on a separately controlled legitimate lesson, plus new-ID stale-final refusal and OFF-issued unmarked shift; never reset or repeat the completed original wage.
 - Prerequisites: OFF readiness and one owned browser lease. Difficulty basis: Finite existing normal gameplay; actual intent replay cannot be replaced by reload.
 
 ### INT-005 — Driving duplicate replay occurs after clock/timeout mutation
 
 - Owner: Cloud driving worker; LIVING review. Exact source/reference: `eec14690544a4646e4cd8a5ad280d61bbe2709ca`.
 - Files/dependency boundary: server driving service; narrow response/client interfaces.
-- Evidence/reproduction: A retained accepted packet retried after1500ms or clock reversal reaches pauseRecord/writeRecord before lastPacket replay. Independent Astra F1 report published4a0973d7.
+- Evidence/reproduction: A retained accepted packet retried after1500ms or clock reversal reaches pauseRecord/writeRecord before lastPacket replay. Independent d7 review confirms remainingONexplicit/alllegacy mutation paths; see driving-d7-astra-review.md/json. Reported repair6769279 is now available on codex/cloud-living-replay-repair-20261010 after initial unavailable-ref timing; independent successor review pending.
 - Next repair and acceptance: Authorize and bind valid current context, then return retained exact success before any driving-row clock/gate/sim write. Same-sequence changed payload conflicts; foreign context cannot bypass safety.
 - Prerequisites: Independent contract review. Difficulty basis: Ordering affects persisted state and must be proven on real Node/Worker stores and reopen.
 
@@ -96,7 +101,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 
 - Owner: Cloud driving worker; LIVING. Exact source/reference: `eec14690544a4646e4cd8a5ad280d61bbe2709ca`.
 - Files/dependency boundary: Driving client/service capability plumbing.
-- Evidence/reproduction: Independent Astra F2: initial/lifecycle/restart/refusal/duplicate responses must revoke absent capability; delayed old ON response cannot restore it.
+- Evidence/reproduction: Independent Astra F2: initial/lifecycle/restart/refusal/duplicate responses must revoke absent capability; delayed old ON response cannot restore it. d7 source leaves ordinary legacy throttle active while automatic pause is pending. Its transmission display is gated by capability and can hide canonical reverse before authoritatively stopping; successor676 source review pending.
 - Next repair and acceptance: Immutable inflight packet; scope responses to generation/revision, clear held/unsent controls on loss and reconcile pause fence. Never strip gear and resend same sequence.
 - Prerequisites: INT-005. Difficulty basis: Several asynchronous response paths and transition fencing.
 
@@ -144,7 +149,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 
 - Owner: Cloud household worker; Astra money/privacy review. Exact source/reference: `Foundation35731140a32da445b8bfd95075f79c0948010694`.
 - Files/dependency boundary: New household store adapter plus explicitly allocated authoritative schema/keyed/lifecycle ports.
-- Evidence/reproduction: Foundation five-project compiler passes; loader8e6757 has INT-001 blocker; no real persistence or residence activated.
+- Evidence/reproduction: Foundation five-project compiler passes; loader8e6757 had four reviewed blockers. Successor619b8fbc source is fetched for independent review. Foundation smoke source scan confuses pure domain events with wire frames; retain actual failure, no guard waiver. No real persistence or residence activated.
 - Next repair and acceptance: Wire actual trusted session/life/home/relationship point reads, transaction expectations and writes, once receipt and atomic liabilities; meaningful Node/Worker rollback/restart/concurrent races. No invented absence, grants or refund completion.
 - Prerequisites: INT-001; completed loader review; explicit shared-file allocation. Difficulty basis: Multiple durable collections and cross-identity/ownership boundary.
 
@@ -168,7 +173,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 
 - Owner: Cloud graphics stairs worker; GRAPHICS. Exact source/reference: `GRAPHICS current owned source capsule`.
 - Files/dependency boundary: Owned staircase/contact files only.
-- Evidence/reproduction: 14.9mm stair failure independently reproduced in diagnostic.
+- Evidence/reproduction: Original descendingstep12/phase.18 failure independently reproduced14.894675661mm. Actual58922dc factory trial JSON22e6369f4f16fbf9e4627aebf2640241a856c6c0d289f6af8ce262c616d424e1 reports0.221984434mm planted sole gap,144 nonpenetrating samples and valid reach. Source/pins and numeric trial independently reviewed; broader stairs/native full-home gates remain unaccepted.
 - Next repair and acceptance: Preserve original failing solve diagnostics before rollback sampleStill overwrites them. Resolve measured clearance with canonical actor envelope and supported movement; preserve path/collision semantics, phone budgets and strict gates.
 - Prerequisites: GRAPHICS capsule and LIVING movement coordination. Difficulty basis: Continuous contact involves pose, geometry and navigation.
 
@@ -268,6 +273,36 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 - Next repair and acceptance: Complete actual playable vertical slice with NPC/furniture/car/vegetation/water/day-night, then all remaining scenes/catalogue. Matched pixels/motion/resources and dense phone journeys required.
 - Prerequisites: INT-014; INT-015; INT-025; INT-017 budget gate. Difficulty basis: Shared visual systems across many environments with identity/contact/render limits.
 
+
+### INT-028 — Remote diagnostics and exact successor compiler evidence
+
+- Owner: Existing cloud driving worker and coordinator. Difficulty2, P2 verification blocker.
+- Evidence: Initial nested service diagnostics were unreadable. Later actual d7 logs report14service/6component passed, resolving that narrow visibility gap. Full4096compiler still failed four TS18048 possibly-undefined test variables; actual logf13d856d284e9012579de403064746a0404a1f89d973444b3ae88551325df5a3 preserved.
+- Next: Inspect real repaired676 receipt and strict compiler without casts/assertion skips/guard waivers. This is not a new gameplay bug or a licence to rerun unchanged broad suites.
+
+### INT-029 — Consenting NPC barber appearance and once settlement
+
+- Owner: Existing LIVING source ownership; GRAPHICS authored appearance; Integration accounting. Difficulty4, P1 feature gate.
+- Evidence: Frozen pure patch6a779aa7 has seven passed domain checks; active mannequin is not consentingNPC service acceptance.
+- Next: Bind authored target, appearance version, consent and reservation; settle visible appearance, fictional80cash and terminal receipt atomically. Verify refusal/rebind/block/erase/restart, no dual mannequin/NPC payment. No real-money commerce authority is implied.
+
+### INT-030 — Legitimate qualification, rental and mapped driving
+
+- Owner: LIVING with WORLD geography and GRAPHICS motion. Difficulty5, P1 journey gap. DependsINT-016.
+- Evidence: Original retained score0/paused third checkpoint is unqualified. Pure reverse proposal or synthetic qualification does not complete it.
+- Next: Earn qualification through normal controls, then actual rental, boarding/door/seat/steering, mapped terrain/building/footprint/yield, interruption and mobile journeys. Preserve the original failed attempt, homes, wallets and safe free recovery.
+
+### INT-031 — Mapped custody, stock, wages and tools
+
+- Owner: Integration accounting/custody; LIVING and WORLD/GRAPHICS scene contracts. Difficulty5, P1 feature gap. DependsINT-030 where vehicles are required.
+- Next: Actual actor/vehicle/parcel/presence/route authority, durable reservation/custody, atomic restock+wage+permanent terminal uniqueness, earned tools, rollback/restart/privacy race proof. Source routes and timers are insufficient acceptance.
+
+### INT-032 — Active education, professions and civic progression
+
+- Owner: LIVING/Integration relevant ANN units. Difficulty5, P1 programme gap.
+- Evidence: One accepted teaching lesson does not close later education/shops/professions/civic activities.
+- Next: Select meaningful decisions/actions from current gameplay, connect earned progression and saved outcomes, then independently stage/release each unit. Preserve fictional-game scope; no real credentials or legal/healthcare service claims.
+
 ## All 58 announcement rows remain in scope
 
 This is a stable, complete index of the handoff matrix, with its exact historical remaining-contract text. Each `ANN-xx` requires current-source verification before implementation: historical “missing” classifications can be stale. These rows are obligations and acceptance gaps, not 58 newly reproduced bugs. Reuse current foundations; do not duplicate Family, elections, business, outages, investments or chat. Monetary rule conflicts require the fictional-game consent/ownership contract, preserving locked terms, starting lives and free recovery.
@@ -353,3 +388,9 @@ At the usage threshold/cutoff, each owner returns exact branch/full SHA, changed
 GRAPHICS inventory observed10October00:00:18.961UTC at exactbcb source and GHA38006548215 is incorporated above; eight owner items map to INT-024,014,015,025,017,026,027,020. Owner supplied source pins and measured failures; Root independently verified exact GitHub run/job conclusions and actual successor source diff. Root read official logs: office9a9505f24798968c5a91565ffe081af37e59d6d7effed8b96503fb511e1de39e (48979B) explicitly shows five clean compiler projects and strict office graph; home22af29a43817a45b4d94ed974eb985e58269db1631796601c66a418ca31bcd65 (55543B) passes strict Home graph but actual furniture/body journey exits1. No full native adoption. INT-014 retains strict384samples/.35mroot/8cmpelvis/4mmpenetration limits and actual bed/tub/shower entry/still/exit, not a looser replacement. Latest exact combined startup is unmeasured; prior native+164B and eec29B headroom cannot be added as proof.
 
 Exact successor graphics compiler acceptance is recorded under completed scope: five projects, zero TS/Vue errors, zero baselined JS on bcb28f57, Node24.21.0; not inherited onto eec or another combination. INT-003 is fixed at source/compiler scope and retained as a traceable closed defect; remaining adoption is covered by INT-014/015/024/025/017.
+
+LIVING inventory26bf1c1d388d0c9ff2345db778eea1ed0290cfa0 was independently read completely and deduplicated: R01→004, R02→002, R03→028, R04→005, R05→006/016, R06→016/030, R07→029, R08→013/020, R09→030, R10→031, R11→032 plus ANN rows. R12 external Goalmatic and R13 real merchant commerce are parked scope/capability questions, not automatically added or activated by an owner inventory. R13's exact-SHA production observation remains INT-017. User explicitly scopes this programme to fictional game and configured commerce separately.
+
+Cloud inventory at72375198fce51960f556365e9b08c10bf1daa677 lists six existing workers: rest014, stairs015, household001/021/022/023, country010/011, driving005/006/016, NPC floor024; companion002 is a completed reused assignment. These are configured model requests, not independent actual-model attestation. Reported handles were historical observations, not proof they remain live now. New compiler/build/source receipts are accepted only for their named exact SHA, never inherited onto a combination. Total stable repair IDs:32; all58 ANN rows remain retained.
+
+Household successor619b8fbc7d1837d6225ce6eb0d0871739eb22d75 closes INT-001/021/022/023 at isolated source level. Root independently read the complete diff and Astra report; loader78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8, three foundation pins unchanged. See household-619-astra-review.md/json. Actual remote strict compiler/all11transitions/negative/storage-abort receipts remain to inspect. protectInviteRead is an unimplemented durable adapter obligation, never a no-op waiver. No residence/payment/runtime activation acceptance.

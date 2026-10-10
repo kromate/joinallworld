@@ -1,0 +1,71 @@
+{
+  "decision": "APPROVE",
+  "scope": "Isolated source correction only; conditional on actual remote compiler and behavioral diagnostics; no durable adapter/runtime/residence approval",
+  "candidate": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
+  "priorCandidate": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
+  "foundation": "35731140a32da445b8bfd95075f79c0948010694",
+  "pins": {
+    "loader": "78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8",
+    "records": "d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4",
+    "consent": "2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a",
+    "lifeIdentity": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d"
+  },
+  "diff": {
+    "changedFiles": [
+      "server/households/consentView.ts"
+    ],
+    "insertions": 99,
+    "deletions": 20,
+    "finalLines": 304,
+    "foundationChanged": false
+  },
+  "findingsResolution": [
+    {
+      "id": "F1",
+      "status": "closed in source",
+      "detail": "All invitation and membership ending paths now load h.owner.character plus target character; reducer owner hosted-index requirement can be satisfied."
+    },
+    {
+      "id": "F2",
+      "status": "closed in source; real read protection deferred to adapter",
+      "detail": "Accepted invitation id must equal member.inviteId before crosslink success; new protectInviteRead(id,revision) is awaited."
+    },
+    {
+      "id": "F3",
+      "status": "closed in source",
+      "detail": "Unused relationship facts are not-loaded; only actual pair point reads may establish absence."
+    },
+    {
+      "id": "F4",
+      "status": "closed for bounded inert snapshot contract",
+      "detail": "Command and every point value pass descriptor-based detached snapshot before foundation validation; getters/inherited data/sparse arrays/cycles/functions are refused; output nested graph frozen; storage read/protection faults reject for transaction abort."
+    }
+  ],
+  "newBlockingFindings": [],
+  "boundaryLimits": [
+    "Reflection can run Proxy traps; this is not a sandbox for hostile JavaScript proxies. Actual transaction ports must return bounded stored row values, not executable application objects.",
+    "Reflect.ownKeys enumerates keys before rejecting >64, so transport/stored row byte bounds still matter; do not describe pre-validation input processing as constant cost.",
+    "snapshotData is per row, not an entire transaction aggregate bound; number of row calls remains operation bounded.",
+    "protectInviteRead has no implementation here. Adapter must protect every supporting read in one actual transaction, not install a no-op hook."
+  ],
+  "requiredRemoteChecks": [
+    "Run old F1 fixtures through loader plus reducer for all seven repaired operations and valid register/invite/accept/close.",
+    "Wrong-key accepted invitation refuses before protection; correct row registers supporting expectation and conflicting revision aborts durable commit.",
+    "Getter counters stay zero for command/point/nested identities; inherited fields, sparse arrays, cyclic/oversize data and reflection failures refuse.",
+    "Storage read and protectInviteRead rejection abort transaction; returned snapshots remain detached/frozen after original object mutation.",
+    "Strict actual compiler and samecharacter repetition/absence/not-loaded/system authority cases."
+  ],
+  "execution": {
+    "tests": false,
+    "compiler": false,
+    "build": false,
+    "browser": false,
+    "server": false,
+    "sourceEdits": false,
+    "delegation": false
+  },
+  "durableAdapterApproved": false,
+  "runtimeApproved": false,
+  "activationApproved": false,
+  "paidResourcesAuthorized": false
+}

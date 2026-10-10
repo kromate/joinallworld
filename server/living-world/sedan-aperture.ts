@@ -27,6 +27,7 @@ export interface SedanCapsule {
   readonly start: Point3
   readonly end: Point3
   readonly radius: number
+  readonly phase: 'enter-walk' | 'enter-seat' | 'exit-slide' | 'exit-seat'
   /** Evidence label for this candidate only; it is not accepted actor-pose authority. */
   readonly provenance: string
 }
@@ -35,22 +36,31 @@ export interface RigidTransform {
   readonly position: Point3
   /** Unit quaternion [x,y,z,w], body-to-world. Scale is not representable. */
   readonly quaternion: readonly [number, number, number, number]
+  readonly motion: 'static'
 }
 export interface SedanApertureInput {
   readonly sourcePins: typeof SEDAN_APERTURE_SOURCE.pins
   readonly bodyTransform: RigidTransform
   readonly capsules: readonly SedanCapsule[]
   readonly contactMargin: number
+  /** Closed interval of possible hinge angles; bounds cover precisely this interval. */
+  readonly doorAngleInterval: readonly [number, number]
+  /** Closed steering input interval; current obstacle uses the documented full [-1,1] envelope. */
+  readonly steeringInterval: readonly [number, number]
 }
 
 export type SedanApertureCode = 'ok' | 'unsupported_source' | 'invalid_descriptor'
 export interface SedanApertureResult {
   readonly code: SedanApertureCode
+  readonly status: 'valid_candidate' | 'blocked_candidate' | 'unknown'
+  readonly reason: 'supplied_geometry_clear' | 'modeled_overlap' | 'aperture_boundary_failure' | 'unsupported_source' | 'invalid_descriptor'
   readonly canBoard: false
   readonly authoritativeClearance: false
   readonly routeAuthorized: false
   /** Capsule contact/penetration with authored interior boxes after the explicit margin. */
   readonly modelIntersections: readonly string[]
+  /** Conservative contact with retained body/glass/trim surfaces, separate from cabin solids. */
+  readonly shellIntersections: readonly string[]
   /** Conservative AABB candidates for the articulated door and steering wheel. */
   readonly sweepOverlapCandidates: readonly string[]
   readonly apertureFailures: readonly string[]
@@ -73,10 +83,10 @@ export interface SedanApertureResult {
     readonly doorSweepBounds: Readonly<{ min: Point3; max: Point3 }>
     readonly interiorObstacleIds: readonly string[]
     readonly steeringSweep: '[-1,1]'
-    readonly doorSweepRadians: readonly [0, number]
+    readonly doorSweepRadians: readonly [number, number]
   } | null
   readonly knownModelIntersection: boolean
-  readonly candidateGeometry: 'clear-for-supplied-capsules' | 'conservative-overlap-candidate' | 'known-model-intersection' | 'unavailable'
+  readonly candidateGeometry: 'clear-for-supplied-capsules' | 'conservative-overlap-candidate' | 'known-model-intersection' | 'aperture-boundary-failure' | 'unavailable'
   readonly missingProof: readonly ['complete_clothed_actor_pose', 'terrain_and_support', 'continuous_entry_motion', 'full_scene_collision', 'route_and_yield_authority']
 }
 
@@ -156,9 +166,9 @@ function exactArray(value: unknown, length: number): value is unknown[] {
   for (let index = 0; index < length; index += 1) if (ownData(value, String(index)) === INVALID) return false
   return Reflect.ownKeys(value).every(key => key === 'length' || (typeof key === 'string' && /^(0|[1-9]\d*)$/.test(key) && Number(key) < length))
 }
-function vec3(value: unknown): value is Point3 {
+function vec3(value: unknown, coordinateLimit = MAX_COORDINATE): value is Point3 {
   if (!exactArray(value, 3)) return false
-  for (let index = 0; index < 3; index += 1) if (!finite(ownData(value, String(index)))) return false
+  for (let index = 0; index < 3; index += 1) if (!finite(ownData(value, String(index)), coordinateLimit)) return false
   return true
 }
 function sourceMatches(value: unknown): boolean {
@@ -180,9 +190,9 @@ function pointInTransform(point: Point3, transform: RigidTransform): Point3 {
     iz * qw + iw * qz + ix * qy - iy * qx]
 }
 function validTransform(value: unknown): value is RigidTransform {
-  if (!dataRecord(value) || !exactKeys(value, ['position', 'quaternion'])) return false
+  if (!dataRecord(value) || !exactKeys(value, ['position', 'quaternion', 'motion']) || ownData(value, 'motion') !== 'static') return false
   const position = ownData(value, 'position'), quaternion = ownData(value, 'quaternion')
-  if (!vec3(position) || !exactArray(quaternion, 4)) return false
+  if (!vec3(position, 1_000_000) || !exactArray(quaternion, 4)) return false
   const values: number[] = []
   for (let index = 0; index < 4; index += 1) {
     const component = ownData(quaternion, String(index))
@@ -193,18 +203,25 @@ function validTransform(value: unknown): value is RigidTransform {
   return Math.abs(norm - 1) <= 1e-6
 }
 function validCapsule(value: unknown): value is SedanCapsule {
-  if (!dataRecord(value) || !exactKeys(value, ['id', 'start', 'end', 'radius', 'provenance'])) return false
+  if (!dataRecord(value) || !exactKeys(value, ['id', 'start', 'end', 'radius', 'phase', 'provenance'])) return false
   const id = ownData(value, 'id'), start = ownData(value, 'start'), end = ownData(value, 'end')
-  const radius = ownData(value, 'radius'), provenance = ownData(value, 'provenance')
-  return typeof id === 'string' && /^[A-Za-z0-9:_-]{1,64}$/.test(id) && vec3(start) && vec3(end)
-    && finite(radius, 2) && radius > 0 && typeof provenance === 'string' && /^[A-Za-z0-9:_./-]{1,120}$/.test(provenance)
+  const radius = ownData(value, 'radius'), provenance = ownData(value, 'provenance'), phase = ownData(value, 'phase')
+  return typeof id === 'string' && /^[A-Za-z0-9:_-]{1,64}$/.test(id) && vec3(start, 1_000_000) && vec3(end, 1_000_000)
+    && finite(radius, 2) && radius > 0 && ['enter-walk', 'enter-seat', 'exit-slide', 'exit-seat'].includes(String(phase))
+    && typeof provenance === 'string' && /^[A-Za-z0-9:_./-]{1,120}$/.test(provenance)
+}
+function validInterval(value: unknown, lower: number, upper: number): value is readonly [number, number] {
+  if (!exactArray(value, 2)) return false
+  const start = ownData(value, '0'), end = ownData(value, '1')
+  return finite(start, upper) && finite(end, upper) && start >= lower && end <= upper && start <= end
 }
 function validInput(value: unknown): value is SedanApertureInput {
-  if (!dataRecord(value) || !exactKeys(value, ['sourcePins', 'bodyTransform', 'capsules', 'contactMargin'])) return false
+  if (!dataRecord(value) || !exactKeys(value, ['sourcePins', 'bodyTransform', 'capsules', 'contactMargin', 'doorAngleInterval', 'steeringInterval'])) return false
   const capsules = ownData(value, 'capsules'), margin = ownData(value, 'contactMargin')
   if (!sourceMatches(ownData(value, 'sourcePins')) || !validTransform(ownData(value, 'bodyTransform'))
-    || !Array.isArray(capsules) || capsules.length > 64 || !exactArray(capsules, capsules.length)
-    || !finite(margin, 0.25) || margin < 0) return false
+    || !Array.isArray(capsules) || capsules.length < 1 || capsules.length > 64 || !exactArray(capsules, capsules.length)
+    || !finite(margin, 0.25) || margin < 0.005 || !validInterval(ownData(value, 'doorAngleInterval'), 0, DOOR.maxAngle)
+    || !validInterval(ownData(value, 'steeringInterval'), -1, 1)) return false
   const ids = new Set<string>()
   for (let index = 0; index < capsules.length; index += 1) {
     const item = ownData(capsules, String(index))
@@ -338,14 +355,14 @@ function trigCandidates(start: number, end: number, base: number): number[] {
   for (let k = first; k <= last; k += 1) values.push(base + k * Math.PI)
   return values
 }
-function doorSweepBounds(): { min: Point3; max: Point3 } {
-  const [hx, hy, hz] = DOOR.hinge, angle = DOOR.maxAngle
+function doorSweepBounds(startAngle: number, endAngle: number): { min: Point3; max: Point3 } {
+  const [hx, hy, hz] = DOOR.hinge
   let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity
   for (const x of [DOOR.min[0], DOOR.max[0]]) for (const z of [DOOR.min[2], DOOR.max[2]]) {
     const dx = x - hx, dz = z - hz
     // x'=dx*cos+dz*sin; z'=-dx*sin+dz*cos. Include all derivative roots, not samples.
-    const xRoots = trigCandidates(0, angle, Math.atan2(dz, dx))
-    const zRoots = trigCandidates(0, angle, Math.atan2(-dx, dz))
+    const xRoots = trigCandidates(startAngle, endAngle, Math.atan2(dz, dx))
+    const zRoots = trigCandidates(startAngle, endAngle, Math.atan2(-dx, dz))
     for (const theta of xRoots) {
       const value = hx + dx * Math.cos(theta) + dz * Math.sin(theta)
       minX = Math.min(minX, value); maxX = Math.max(maxX, value)
@@ -360,27 +377,49 @@ function doorSweepBounds(): { min: Point3; max: Point3 } {
     max: Object.freeze([maxX + FLOAT_MARGIN, DOOR.max[1] + FLOAT_MARGIN, maxZ + FLOAT_MARGIN] as const),
   })
 }
-const DOOR_SWEEP = doorSweepBounds()
-const DOOR_BOX: Box = Object.freeze({ id: 'full-door-angle-sweep', min: DOOR_SWEEP.min, max: DOOR_SWEEP.max })
+const DOOR_SWEEP = doorSweepBounds(0, DOOR.maxAngle)
 const STEERING_BOX: Box = Object.freeze({ id: 'steering-wheel-full-input-sweep',
   min: [-0.64, 0.75, 0.40], max: [-0.23, 1.11, 0.80] })
+function panelBounds(id: string, center: Point3, size: Point3): Box {
+  return Object.freeze({ id,
+    min: [center[0] - size[0] / 2, center[1] - size[1] / 2, center[2] - size[2] / 2] as const,
+    max: [center[0] + size[0] / 2, center[1] + size[1] / 2, center[2] + size[2] / 2] as const })
+}
+const SHELL: readonly Box[] = Object.freeze([
+  Object.freeze({ id: 'opposite-cap', min: [0.92, 0.45, -2.175] as const, max: [0.95, 1.53, 2.175] as const }),
+  Object.freeze({ id: 'driver-cap-lower-sill', min: [-0.95, 0.45, -2.175] as const, max: [-0.92, 0.49, 2.175] as const }),
+  Object.freeze({ id: 'windscreen-lower', min: [-0.95, 0.915, 1.73] as const, max: [0.95, 0.965, 1.78] as const }),
+  Object.freeze({ id: 'windscreen-upper', min: [-0.95, 1.505, 0.67] as const, max: [0.95, 1.555, 0.72] as const }),
+  ...PROFILE.map(([z0, y0], index) => {
+    const [z1, y1] = PROFILE[(index + 1) % PROFILE.length]!
+    return Object.freeze({ id: `retained-profile-edge-${index}`,
+      min: [-0.95, Math.min(y0, y1) - 0.025, Math.min(z0, z1) - 0.025] as const,
+      max: [0.95, Math.max(y0, y1) + 0.025, Math.max(z0, z1) + 0.025] as const })
+  }),
+  ...RETAINED_SHELL.sideGlassAndPillar.map(panel => panelBounds(panel.id, panel.center, panel.size)),
+  ...RETAINED_SHELL.sideTrimPanels.map(panel => panelBounds(panel.id, panel.center, panel.size)),
+])
 
-function frozenResult(code: SedanApertureCode, modelIntersections: string[], sweepOverlapCandidates: string[], apertureFailures: string[], apertureCrossings: string[]): SedanApertureResult {
+function frozenResult(code: SedanApertureCode, modelIntersections: string[], shellIntersections: string[], sweepOverlapCandidates: string[], apertureFailures: string[], apertureCrossings: string[], doorBounds = DOOR_SWEEP, doorInterval: readonly [number, number] = [0, DOOR.maxAngle]): SedanApertureResult {
   const ok = code === 'ok'
-  return Object.freeze({ code, canBoard: false, authoritativeClearance: false, routeAuthorized: false,
-    modelIntersections: Object.freeze(modelIntersections), sweepOverlapCandidates: Object.freeze(sweepOverlapCandidates), apertureFailures: Object.freeze(apertureFailures),
+  const blocked = modelIntersections.length > 0 || shellIntersections.length > 0 || apertureFailures.length > 0 || sweepOverlapCandidates.length > 0
+  const reason = code !== 'ok' ? code : apertureFailures.length ? 'aperture_boundary_failure' : blocked ? 'modeled_overlap' : 'supplied_geometry_clear'
+  return Object.freeze({ code, status: !ok ? 'unknown' : blocked ? 'blocked_candidate' : 'valid_candidate', reason,
+    canBoard: false, authoritativeClearance: false, routeAuthorized: false,
+    modelIntersections: Object.freeze(modelIntersections), shellIntersections: Object.freeze(shellIntersections), sweepOverlapCandidates: Object.freeze(sweepOverlapCandidates), apertureFailures: Object.freeze(apertureFailures),
     apertureCrossings: Object.freeze(apertureCrossings),
     sourceGeometry: ok ? Object.freeze({
       driverSideApertureZY: APERTURE,
       retainedProfileZY: PROFILE,
       retainedShell: RETAINED_SHELL,
-      doorSweepBounds: Object.freeze({ min: DOOR_SWEEP.min, max: DOOR_SWEEP.max }),
+      doorSweepBounds: Object.freeze({ min: doorBounds.min, max: doorBounds.max }),
       interiorObstacleIds: Object.freeze([...INTERIOR.map(box => box.id), STEERING_BOX.id]),
       steeringSweep: '[-1,1]' as const,
-      doorSweepRadians: Object.freeze([0, DOOR.maxAngle] as const),
+      doorSweepRadians: Object.freeze([doorInterval[0], doorInterval[1]] as const),
     }) : null,
-    knownModelIntersection: modelIntersections.length > 0,
-    candidateGeometry: !ok ? 'unavailable' : modelIntersections.length ? 'known-model-intersection'
+    knownModelIntersection: modelIntersections.length > 0 || shellIntersections.length > 0,
+    candidateGeometry: !ok ? 'unavailable' : apertureFailures.length ? 'aperture-boundary-failure'
+      : modelIntersections.length || shellIntersections.length ? 'known-model-intersection'
       : sweepOverlapCandidates.length ? 'conservative-overlap-candidate' : 'clear-for-supplied-capsules',
     missingProof: MISSING,
   })
@@ -393,29 +432,33 @@ function frozenResult(code: SedanApertureCode, modelIntersections: string[], swe
 export function analyzeSedanAperture(input: unknown): SedanApertureResult {
   try {
     if (!dataRecord(input) || ownData(input, 'sourcePins') === INVALID || !sourceMatches(ownData(input, 'sourcePins')))
-      return frozenResult('unsupported_source', [], [], [], [])
-    if (!validInput(input)) return frozenResult('invalid_descriptor', [], [], [], [])
+      return frozenResult('unsupported_source', [], [], [], [], [])
+    if (!validInput(input)) return frozenResult('invalid_descriptor', [], [], [], [], [])
     const transform = ownData(input, 'bodyTransform') as RigidTransform
     const margin = ownData(input, 'contactMargin') as number
-    const modelIntersections = new Set<string>(), sweepOverlapCandidates = new Set<string>()
+    const doorInterval = ownData(input, 'doorAngleInterval') as readonly [number, number]
+    const doorBounds = doorSweepBounds(doorInterval[0], doorInterval[1])
+    const modelIntersections = new Set<string>(), shellIntersections = new Set<string>(), sweepOverlapCandidates = new Set<string>()
     const apertureFailures: string[] = [], apertureCrossings: string[] = []
     const capsules = ownData(input, 'capsules') as readonly SedanCapsule[]
     for (let index = 0; index < capsules.length; index += 1) {
       const capsule = ownData(capsules, String(index)) as SedanCapsule
       const start = pointInTransform(capsule.start, transform), end = pointInTransform(capsule.end, transform)
       if (![...start, ...end].every(value => Number.isFinite(value) && Math.abs(value) <= MAX_COORDINATE))
-        return frozenResult('invalid_descriptor', [], [], [], [])
-      const doorBox: Box = { ...DOOR_BOX, min: DOOR_SWEEP.min, max: DOOR_SWEEP.max }
+        return frozenResult('invalid_descriptor', [], [], [], [], [])
+      const doorBox: Box = { id: 'door-sweep', min: doorBounds.min, max: doorBounds.max }
       if (lineIntersectsExpandedBox(start, end, doorBox, capsule.radius + margin)) sweepOverlapCandidates.add(`${capsule.id}:door-sweep`)
       for (const obstacle of INTERIOR) if (segmentBoxDistanceSquared(start, end, obstacle) <= (capsule.radius + margin) ** 2)
         modelIntersections.add(`${capsule.id}:${obstacle.id}`)
+      for (const obstacle of SHELL) if (segmentBoxDistanceSquared(start, end, obstacle) <= (capsule.radius + margin) ** 2)
+        shellIntersections.add(`${capsule.id}:${obstacle.id}`)
       if (lineIntersectsExpandedBox(start, end, STEERING_BOX, capsule.radius + margin)) sweepOverlapCandidates.add(`${capsule.id}:${STEERING_BOX.id}`)
       const crossing = capsuleCrossesAperture(start, end, capsule.radius, margin)
       if (crossing === 'inside') apertureCrossings.push(capsule.id)
       else if (crossing === 'outside') apertureFailures.push(capsule.id)
     }
-    return frozenResult('ok', [...modelIntersections].sort(), [...sweepOverlapCandidates].sort(), apertureFailures.sort(), apertureCrossings.sort())
+    return frozenResult('ok', [...modelIntersections].sort(), [...shellIntersections].sort(), [...sweepOverlapCandidates].sort(), apertureFailures.sort(), apertureCrossings.sort(), doorBounds, doorInterval)
   } catch {
-    return frozenResult('invalid_descriptor', [], [], [], [])
+    return frozenResult('invalid_descriptor', [], [], [], [], [])
   }
 }

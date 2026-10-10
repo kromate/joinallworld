@@ -1,5 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 import {
   analyzeSedanAperture,
   SEDAN_APERTURE_SOURCE,
@@ -7,19 +9,35 @@ import {
   type SedanCapsule,
 } from './sedan-aperture.ts'
 
-const identity = Object.freeze({ position: Object.freeze([0, 0, 0] as const), quaternion: Object.freeze([0, 0, 0, 1] as const) })
-const capsule = (id: string, x: number, y: number, z: number, radius = 0.02): SedanCapsule => ({
-  id, start: [x, y, z], end: [x, y, z], radius, provenance: 'test-candidate-only',
+const identity = Object.freeze({ position: Object.freeze([0, 0, 0] as const), quaternion: Object.freeze([0, 0, 0, 1] as const), motion: 'static' as const })
+const capsule = (id: string, x: number, y: number, z: number, radius = 0.02, phase: SedanCapsule['phase'] = 'enter-walk'): SedanCapsule => ({
+  id, start: [x, y, z], end: [x, y, z], radius, phase, provenance: 'test-candidate-only',
 })
 const input = (capsules: readonly SedanCapsule[], changes: Partial<SedanApertureInput> = {}): SedanApertureInput => ({
   sourcePins: SEDAN_APERTURE_SOURCE.pins,
   bodyTransform: identity,
-  capsules,
+  capsules: capsules.length ? capsules : [capsule('bounded-fixture', -2.8, 1, 0.4)],
   contactMargin: 0.005,
+  doorAngleInterval: [0, Math.PI * 0.55],
+  steeringInterval: [-1, 1],
   ...changes,
 })
+const world = (point: readonly [number, number, number], position: readonly [number, number, number], quaternion: readonly [number, number, number, number]): readonly [number, number, number] => {
+  const [x, y, z, w] = quaternion, [px, py, pz] = point
+  const ix = w * px + y * pz - z * py, iy = w * py + z * px - x * pz, iz = w * pz + x * py - y * px, iw = -x * px - y * py - z * pz
+  return [ix * w + iw * -x + iy * -z - iz * -y + position[0],
+    iy * w + iw * -y + iz * -x - ix * -z + position[1],
+    iz * w + iw * -z + ix * -y - iy * -x + position[2]]
+}
+const pinnedSource = (path: string): string => readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8')
 
-test('source partition preserves the tapered profile in actual Float32 coordinates', () => {
+test('source-pinned driver cap partition matches Float32 emission coordinates', () => {
+  for (const [path, expected] of Object.entries(SEDAN_APERTURE_SOURCE.pins))
+    assert.equal(createHash('sha256').update(pinnedSource(path)).digest('hex'), expected, path)
+  assert.match(pinnedSource('src/models/vehicles/geometry.ts'), /new THREE\.Float32BufferAttribute\(positions, 3\)/)
+  assert.match(pinnedSource('src/models/vehicles/index.ts'), /x: -width \/ 2 - 0\.01, y: 0\.93, z: 0\.42/)
+  assert.match(pinnedSource('src/models/vehicles/index.ts'), /amount: PI \* 0\.55/)
+  assert.match(pinnedSource('src/models/vehicles/sedan-interior.ts'), /poseSteering/)
   const result = analyzeSedanAperture(input([]))
   assert.equal(result.code, 'ok')
   assert.equal(result.canBoard, false)
@@ -126,19 +144,48 @@ test('closed, intermediate, and fully open door positions are covered by one ful
 
 test('valid rigid body transforms are applied and non-rigid or malformed transforms fail closed', () => {
   const rotated = input([capsule('transformed-floor', 1, 0.49, 0)], {
-    bodyTransform: { position: [1, 0, 0], quaternion: [0, Math.SQRT1_2, 0, Math.SQRT1_2] },
+    bodyTransform: { position: [1, 0, 0], quaternion: [0, Math.SQRT1_2, 0, Math.SQRT1_2], motion: 'static' },
   })
   const transformed = analyzeSedanAperture(rotated)
   assert.equal(transformed.code, 'ok')
   assert.ok(transformed.modelIntersections.includes('transformed-floor:cabin-floor'))
   for (const bodyTransform of [
-    { position: [0, 0, 0], quaternion: [0, 0, 0, 2] },
-    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], scale: [1, 1, 1] },
-    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], shear: [0, 0, 0] },
-    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], determinant: -1 },
-    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], velocity: [0, 0, 0] },
-    { position: [0, 0, 0], quaternion: [0, 0, Number.NaN, 1] },
+    { position: [0, 0, 0], quaternion: [0, 0, 0, 2], motion: 'static' },
+    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], motion: 'static', scale: [1, 1, 1] },
+    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], motion: 'static', shear: [0, 0, 0] },
+    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], motion: 'static', determinant: -1 },
+    { position: [0, 0, 0], quaternion: [0, 0, 0, 1], motion: 'moving' },
+    { position: [0, 0, 0], quaternion: [0, 0, Number.NaN, 1], motion: 'static' },
   ]) assert.equal(analyzeSedanAperture(input([], { bodyTransform } as Partial<SedanApertureInput>)).code, 'invalid_descriptor')
+})
+
+test('translated static yaw, pitch, and roll preserve body-local obstacle checks', () => {
+  for (const [roll, pitch, yaw] of [[0.31, 0, 0], [0, -0.27, 0], [0, 0, 0.68], [0.2, -0.3, 0.4]]) {
+    const sx = Math.sin(roll / 2), cx = Math.cos(roll / 2), sy = Math.sin(pitch / 2), cy = Math.cos(pitch / 2), sz = Math.sin(yaw / 2), cz = Math.cos(yaw / 2)
+    const quaternion = [sx * cy * cz - cx * sy * sz, cx * sy * cz + sx * cy * sz,
+      cx * cy * sz - sx * sy * cz, cx * cy * cz + sx * sy * sz] as const
+    const position = [1.2, -0.4, 0.7] as const
+    const point = world([0, 0.49, 0], position, quaternion)
+    const result = analyzeSedanAperture(input([{
+      id: 'rigid-floor', start: point, end: point, radius: 0.02, phase: 'enter-seat', provenance: 'static-rigid-transform-fixture',
+    }], { bodyTransform: { position, quaternion, motion: 'static' } }))
+    assert.ok(result.modelIntersections.includes('rigid-floor:cabin-floor'), `${roll}/${pitch}/${yaw}`)
+  }
+})
+
+test('relative 10m bounds are invariant to vehicle translation away from world origin', () => {
+  const origin = analyzeSedanAperture(input([capsule('local-floor', 0, 0.49, 0)]))
+  const position = [100, -40, 25] as const
+  const point = world([0, 0.49, 0], position, [0, 0, 0, 1])
+  const translated = analyzeSedanAperture(input([{
+    id: 'translated-floor', start: point, end: point, radius: 0.02, phase: 'enter-seat', provenance: 'translation-invariance',
+  }], { bodyTransform: { position, quaternion: [0, 0, 0, 1], motion: 'static' } }))
+  assert.ok(origin.modelIntersections.includes('local-floor:cabin-floor'))
+  assert.ok(translated.modelIntersections.includes('translated-floor:cabin-floor'))
+  const tooFar = world([10.01, 0.49, 0], position, [0, 0, 0, 1])
+  assert.equal(analyzeSedanAperture(input([{
+    id: 'too-far-relative', start: tooFar, end: tooFar, radius: 0.02, phase: 'enter-seat', provenance: 'range-check',
+  }], { bodyTransform: { position, quaternion: [0, 0, 0, 1], motion: 'static' } })).code, 'invalid_descriptor')
 })
 
 test('source pins, descriptor accessors, capsule bounds, radii, and capsule count are checked', () => {
@@ -159,12 +206,82 @@ test('source pins, descriptor accessors, capsule bounds, radii, and capsule coun
 })
 
 test('Float32 and explicit margins shrink the opening and grow modeled obstacles', () => {
-  const exact = analyzeSedanAperture(input([capsule('near-roof', -0.95, 1.45, 0.3, 0.02)], { contactMargin: 0 }))
+  const exact = analyzeSedanAperture(input([capsule('near-roof', -0.95, 1.45, 0.3, 0.02)], { contactMargin: 0.005 }))
   const margined = analyzeSedanAperture(input([capsule('near-roof', -0.95, 1.45, 0.3, 0.02)], { contactMargin: 0.02 }))
   assert.deepEqual(exact.apertureCrossings, ['near-roof'])
   assert.deepEqual(margined.apertureFailures, ['near-roof'])
   const obstacle = analyzeSedanAperture(input([capsule('near-floor', 0, 0.54, 0)], { contactMargin: 0.03 }))
   assert.ok(obstacle.modelIntersections.includes('near-floor:cabin-floor'))
+})
+
+test('retained opposite cap and shell profile are checked as conservative obstacles', () => {
+  const result = analyzeSedanAperture(input([
+    capsule('opposite-cap-hit', 0.95, 1.35, 0.3),
+    capsule('roof-edge-hit', 0, 1.53, 0.3),
+  ]))
+  assert.ok(result.shellIntersections.includes('opposite-cap-hit:opposite-cap'))
+  assert.ok(result.shellIntersections.some(value => value.startsWith('roof-edge-hit:retained-profile-edge-')))
+  assert.equal(result.canBoard, false)
+  assert.equal(result.authoritativeClearance, false)
+})
+
+test('aperture boundary failure is blocked and never reported clear', () => {
+  const result = analyzeSedanAperture(input([capsule('above-opening', -0.95, 1.55, 0.3)]))
+  assert.deepEqual(result.apertureFailures, ['above-opening'])
+  assert.equal(result.status, 'blocked_candidate')
+  assert.equal(result.reason, 'aperture_boundary_failure')
+  assert.equal(result.candidateGeometry, 'aperture-boundary-failure')
+})
+
+test('explicit intervals, positive numeric margin, phase labels, and static pose fail closed', () => {
+  const base = [capsule('phase', -2.8, 1, 0.4, 0.02, 'enter-seat')]
+  assert.equal(analyzeSedanAperture(input(base, { doorAngleInterval: [0.2, 0.8] })).sourceGeometry!.doorSweepRadians[0], 0.2)
+  for (const changes of [
+    { doorAngleInterval: undefined },
+    { doorAngleInterval: [0.8, 0.2] },
+    { doorAngleInterval: [-0.01, 0.2] },
+    { doorAngleInterval: [0, Math.PI] },
+    { steeringInterval: undefined },
+    { steeringInterval: [0.5, -0.5] },
+    { steeringInterval: [-1.1, 0] },
+    { contactMargin: 0 },
+    { contactMargin: 0.004999 },
+    { contactMargin: 0.251 },
+  ]) assert.equal(analyzeSedanAperture(input(base, changes as Partial<SedanApertureInput>)).code, 'invalid_descriptor')
+  assert.equal(analyzeSedanAperture({ ...input(base), capsules: [] }).code, 'invalid_descriptor')
+  const noPhase = { ...base[0] } as Record<string, unknown>
+  delete noPhase.phase
+  assert.equal(analyzeSedanAperture(input([noPhase as SedanCapsule])).code, 'invalid_descriptor')
+  assert.equal(analyzeSedanAperture(input(base, { bodyTransform: { position: [0, 0, 0], quaternion: [0, 0, 0, 1] } as SedanApertureInput['bodyTransform'] })).code, 'invalid_descriptor')
+})
+
+test('scene phase fixtures preserve normal and reduced motion ordering without actor-fit claims', () => {
+  const source = readFileSync(new URL('../../src/app/features/living-world/drivingScene.ts', import.meta.url), 'utf8')
+  for (const phase of ['enter-walk', 'enter-seat', 'exit-slide', 'exit-seat']) assert.ok(source.includes(`phase === '${phase}'`))
+  assert.ok(source.indexOf("} else if (phase === 'enter-walk')") < source.indexOf("} else if (phase === 'enter-seat')"))
+  assert.ok(source.indexOf("} else if (phase === 'exit-slide')") < source.indexOf("} else if (phase === 'exit-seat')"))
+  const enterSeat = source.slice(source.indexOf("} else if (phase === 'enter-seat')"), source.indexOf("} else if (phase === 'exit-door')"))
+  assert.match(enterSeat, /reduceMotion \? 0\.18 : 0\.38/)
+  assert.match(enterSeat, /reduceMotion \? 0\.1 : 0\.22/)
+  assert.match(enterSeat, /moveActor\(seated, heading, 'sit'/)
+  assert.match(enterSeat, /1 - Math\.max\(0, phaseTime - seatMoveDuration\) \/ doorCloseDuration/)
+  const exitSlide = source.slice(source.indexOf("} else if (phase === 'exit-slide')"), source.indexOf("} else if (phase === 'exit-seat')"))
+  assert.match(exitSlide, /bodySeat\.[xz].*exitSeat\.[xz]/s)
+  assert.match(exitSlide, /moveActor\(seated, current\.heading, 'sit'/)
+  assert.match(exitSlide, /setActorPose\('stand'/)
+  const exitSeat = source.slice(source.indexOf("} else if (phase === 'exit-seat')"), source.indexOf("} else if (phase === 'exit-walk')"))
+  assert.match(exitSeat, /reduceMotion \? 0\.22 : 0\.35/)
+  const candidates = [
+    capsule('normal-enter-walk', -1.12, 0.8, 0.2, 0.18, 'enter-walk'),
+    capsule('reduced-enter-seat', -0.96, 0.9, 0.42, 0.18, 'enter-seat'),
+    capsule('normal-exit-slide', -0.95, 0.75, 0.42, 0.18, 'exit-slide'),
+    capsule('reduced-exit-seat', -1.4, 0.55, 0.42, 0.18, 'exit-seat'),
+  ].map(item => ({ ...item, provenance: 'scene-anchor-trajectory-only-unverified' }))
+  const result = analyzeSedanAperture(input(candidates))
+  assert.equal(result.code, 'ok')
+  assert.equal(result.canBoard, false)
+  assert.equal(result.authoritativeClearance, false)
+  assert.equal(result.routeAuthorized, false)
 })
 
 test('the authority contract stays negative even for empty or apparently clear proposals', () => {

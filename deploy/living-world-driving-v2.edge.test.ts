@@ -115,10 +115,15 @@ test('actual Worker constructor enables only exact 1 and OFF SQLite reopen can r
   const issuedRow = savedRow(await h.collection(), accepted.session!.journeyId)
   assert.equal(issuedRow['v'], 2)
   assert.equal((issuedRow['lastPacket'] as { sequence: number }).sequence, 1)
+  const issuedReceipts = await h.receipts(ada)
 
-  // The first runtime that opens the persisted v2 row uses the production default-OFF constructor.
+  // The first driving request after the actual OFF SQLite reopen is the retained exact packet.
   await delay(1_600)
   await h.start(undefined)
+  const coldReplay = await (await h.post(DRIVE + '/input', packet, ada)).json() as DrivingResponse
+  assert.deepEqual([coldReplay.ok, coldReplay.code, coldReplay.duplicate, coldReplay.reverseGearControls], [true, 'controls_accepted', true, undefined])
+  assert.deepEqual(savedRow(await h.collection(), accepted.session!.journeyId), issuedRow, 'the first POST after OFF reopen replays before timeout writes and preserves the entire SQLite driving row')
+  assert.deepEqual(await h.receipts(ada), issuedReceipts, 'the exact packet replay preserves the original SQLite receipt set')
   const current = await (await h.get(DRIVE + '?city=lagos', ada)).json() as DrivingResponse
   assert.ok(current.ok && current.session)
   assert.equal(current.session!.state.status, 'paused')
@@ -126,10 +131,6 @@ test('actual Worker constructor enables only exact 1 and OFF SQLite reopen can r
   const afterRead = savedRow(await h.collection(), accepted.session!.journeyId)
   assert.equal(afterRead['v'], 2)
   assert.equal((afterRead['state'] as { gear?: string }).gear, 'forward')
-  const replay = await (await h.post(DRIVE + '/input', packet, ada)).json() as DrivingResponse
-  assert.deepEqual([replay.ok, replay.code, replay.duplicate, replay.session?.revision, replay.session?.nextSequence, replay.reverseGearControls],
-    [true, 'controls_accepted', true, current.session!.revision, current.session!.nextSequence, undefined])
-  assert.deepEqual(savedRow(await h.collection(), accepted.session!.journeyId), afterRead, 'retained receipt replay under OFF must precede timeout and make no SQLite row changes')
 
   const resumeRequest = { cityId: 'lagos', journeyId: accepted.session!.journeyId, revision: current.session!.revision, requestId: requestId() }
   const resumed = await (await h.post(DRIVE + '/resume', resumeRequest, ada)).json() as DrivingResponse
@@ -156,10 +157,11 @@ test('actual Worker constructor enables only exact 1 and OFF SQLite reopen can r
     ['reverse_gear_disabled', legacyWrite.session!.revision, 3, undefined])
   assert.deepEqual(savedRow(await h.collection(), legacyWrite.session!.journeyId), refusedBefore, 'OFF explicit gear refusal preserves every persisted driving field')
 
+  const beforeSecondReopen = savedRow(await h.collection(), legacyWrite.session!.journeyId)
+  const receiptsBeforeSecondReopen = await h.receipts(ada)
   await h.start(undefined)
-  const reopenedAgain = await (await h.get(DRIVE + '?city=lagos', ada)).json() as DrivingResponse
-  assert.ok(reopenedAgain.ok && reopenedAgain.session)
-  assert.equal(reopenedAgain.session!.state.status, 'paused')
-  assert.equal(reopenedAgain.reverseGearControls, undefined)
-  assert.equal(savedRow(await h.collection(), legacyWrite.session!.journeyId)['v'], 2, 'a second OFF SQLite reopen still reads and writes v2 without downgrade')
+  const lifecycleReplay = await (await h.post(DRIVE + '/resume', resumeRequest, ada)).json() as DrivingResponse
+  assert.deepEqual([lifecycleReplay.ok, lifecycleReplay.duplicate, lifecycleReplay.reverseGearControls], [true, true, undefined], 'the exact previously accepted resume is the first driving request after the second OFF SQLite reopen')
+  assert.deepEqual(savedRow(await h.collection(), legacyWrite.session!.journeyId), beforeSecondReopen, 'cold OFF lifecycle replay preserves the entire current SQLite driving row')
+  assert.deepEqual(await h.receipts(ada), receiptsBeforeSecondReopen, 'cold OFF lifecycle replay adds or rewrites no SQLite once receipts')
 })

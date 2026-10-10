@@ -14,8 +14,8 @@ const LOOK = { body: 'man', hair: 'low-cut', outfit: 'casual', fabric: 'plain', 
 const PATH = '/api/living-world/driving'
 const id = (now: number) => `${now}:${randomUUID()}`
 
-async function host(dataDir: string, reverseGearIssuance: boolean, env: Readonly<Record<string, unknown>>, clock: { now: number }) {
-  const server = await createServer({ dataDir, now: () => clock.now, reverseGearIssuance, env, log: () => {}, heartbeatMs: 60_000 })
+async function host(dataDir: string, options: Parameters<typeof createServer>[0], clock: { now: number }) {
+  const server = await createServer({ dataDir, now: () => clock.now, log: () => {}, heartbeatMs: 60_000, ...options })
   server.listen(0, '127.0.0.1')
   await once(server, 'listening')
   const address = server.address() as AddressInfo
@@ -74,7 +74,7 @@ test('Node production routes require literal constructor authority and an OFF re
   const clock = { now: 100_000 }
 
   // Node environment values are deliberately not an issuance channel. Only the host constructor option is.
-  let app = await host(dataDir, false, { REVERSE_GEAR_ISSUANCE: '1' }, clock)
+  let app = await host(dataDir, { env: { REVERSE_GEAR_ISSUANCE: '1' } }, clock)
   current = app.server
   const legacyCookie = await player(app.request, 'Node OFF', clock.now)
   const legacyStart = await (await app.request(PATH + '/start', { cityId: 'lagos', requestId: id(clock.now) }, legacyCookie)).json() as DrivingResponse
@@ -89,7 +89,19 @@ test('Node production routes require literal constructor authority and an OFF re
 
   await stop(current); current = null
   clock.now += 100
-  app = await host(dataDir, true, {}, clock)
+  app = await host(dataDir, { reverseGearIssuance: JSON.parse('"true"'), env: { REVERSE_GEAR_ISSUANCE: '1' } }, clock)
+  current = app.server
+  const nonBooleanCookie = await player(app.request, 'Node nonboolean', clock.now)
+  const nonBooleanStart = await (await app.request(PATH + '/start', { cityId: 'lagos', requestId: id(clock.now) }, nonBooleanCookie)).json() as DrivingResponse
+  assert.ok(nonBooleanStart.ok && nonBooleanStart.session)
+  assert.equal(nonBooleanStart.reverseGearControls, undefined)
+  const nonBooleanPacket = { cityId: 'lagos', journeyId: nonBooleanStart.session!.journeyId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'reverse' }] }
+  const nonBooleanRefusal = await (await app.request(PATH + '/input', nonBooleanPacket, nonBooleanCookie)).json() as DrivingResponse
+  assert.deepEqual([nonBooleanRefusal.code, nonBooleanRefusal.session?.revision, nonBooleanRefusal.session?.nextSequence, nonBooleanRefusal.reverseGearControls], ['reverse_gear_disabled', 1, 1, undefined])
+  assert.equal((await record(dataDir, nonBooleanCookie, nonBooleanStart.session!.journeyId))['v'], 1, 'a truthy nonboolean constructor fixture and env value cannot issue v2')
+  await stop(current); current = null
+  clock.now += 100
+  app = await host(dataDir, { reverseGearIssuance: true }, clock)
   current = app.server
   const reverseCookie = await player(app.request, 'Node reverse', clock.now)
   const started = await (await app.request(PATH + '/start', { cityId: 'lagos', requestId: id(clock.now) }, reverseCookie)).json() as DrivingResponse
@@ -104,12 +116,19 @@ test('Node production routes require literal constructor authority and an OFF re
   assert.equal(issued['v'], 2)
   const packetReceipt = issued['lastPacket']
   assert.deepEqual(packetReceipt, { sequence: 1, fingerprint: JSON.stringify({ cityId: packet.cityId, journeyId: packet.journeyId, sequence: packet.sequence, frames: packet.frames }), code: 'controls_accepted' })
+  const issuedReceipts = await receipts(dataDir, reverseCookie)
   await stop(current); current = null
 
   // Reopen the same actual devices.json through the production Node route registry with issuance OFF.
   clock.now += 2_000
-  app = await host(dataDir, false, { REVERSE_GEAR_ISSUANCE: '1' }, clock)
+  app = await host(dataDir, { reverseGearIssuance: false, env: { REVERSE_GEAR_ISSUANCE: '1' } }, clock)
   current = app.server
+  assert.deepEqual(await record(dataDir, reverseCookie, accepted.session!.journeyId), issued, 'cold OFF reopen itself leaves the running v2 row unchanged')
+  assert.deepEqual(await receipts(dataDir, reverseCookie), issuedReceipts, 'cold OFF reopen itself leaves the original packet receipt unchanged')
+  const replay = await (await app.request(PATH + '/input', packet, reverseCookie)).json() as DrivingResponse
+  assert.deepEqual([replay.ok, replay.code, replay.duplicate, replay.reverseGearControls], [true, 'controls_accepted', true, undefined])
+  assert.deepEqual(await record(dataDir, reverseCookie, accepted.session!.journeyId), issued, 'the first cold OFF driving request replays the retained packet before timeout writes')
+  assert.deepEqual(await receipts(dataDir, reverseCookie), issuedReceipts, 'the retained packet replay does not alter the original receipt')
   const offCurrent = await (await app.request(PATH + '?city=lagos', undefined, reverseCookie)).json() as DrivingResponse
   assert.ok(offCurrent.ok && offCurrent.session)
   assert.equal(offCurrent.session!.state.status, 'paused')
@@ -117,9 +136,6 @@ test('Node production routes require literal constructor authority and an OFF re
   const afterRead = await record(dataDir, reverseCookie, accepted.session!.journeyId)
   assert.equal(afterRead['v'], 2)
   assert.equal((afterRead['state'] as { gear?: string }).gear, 'forward')
-  const replay = await (await app.request(PATH + '/input', packet, reverseCookie)).json() as DrivingResponse
-  assert.deepEqual([replay.ok, replay.code, replay.duplicate, replay.session?.revision, replay.session?.nextSequence, replay.reverseGearControls], [true, 'controls_accepted', true, offCurrent.session!.revision, offCurrent.session!.nextSequence, undefined])
-  assert.deepEqual(await record(dataDir, reverseCookie, accepted.session!.journeyId), afterRead, 'a delayed same-authority retained success is replayed before the OFF clock/timeout path can write')
 
   const resumeRequest = { cityId: 'lagos', journeyId: accepted.session!.journeyId, revision: offCurrent.session!.revision, requestId: id(clock.now) }
   const resumed = await (await app.request(PATH + '/resume', resumeRequest, reverseCookie)).json() as DrivingResponse
@@ -144,4 +160,14 @@ test('Node production routes require literal constructor authority and an OFF re
   const refusal = await (await app.request(PATH + '/input', explicitOff, reverseCookie)).json() as DrivingResponse
   assert.deepEqual([refusal.code, refusal.session?.revision, refusal.session?.nextSequence, refusal.reverseGearControls], ['reverse_gear_disabled', legacyWrite.session!.revision, 3, undefined])
   assert.deepEqual(await record(dataDir, reverseCookie, legacyWrite.session!.journeyId), beforeRefusal)
+
+  const beforeSecondReopen = await record(dataDir, reverseCookie, legacyWrite.session!.journeyId)
+  const receiptsBeforeSecondReopen = await receipts(dataDir, reverseCookie)
+  await stop(current); current = null
+  app = await host(dataDir, { env: { REVERSE_GEAR_ISSUANCE: '1' } }, clock)
+  current = app.server
+  const lifecycleReplay = await (await app.request(PATH + '/resume', resumeRequest, reverseCookie)).json() as DrivingResponse
+  assert.deepEqual([lifecycleReplay.ok, lifecycleReplay.duplicate, lifecycleReplay.reverseGearControls], [true, true, undefined], 'the exact previously accepted resume is the first driving request after a second OFF reopen')
+  assert.deepEqual(await record(dataDir, reverseCookie, legacyWrite.session!.journeyId), beforeSecondReopen, 'cold OFF lifecycle replay does not mutate the current row')
+  assert.deepEqual(await receipts(dataDir, reverseCookie), receiptsBeforeSecondReopen, 'cold OFF lifecycle replay does not add or rewrite once receipts')
 })

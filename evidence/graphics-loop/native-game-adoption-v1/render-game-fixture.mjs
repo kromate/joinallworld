@@ -105,6 +105,27 @@ async function capture(name, settleMs = 500) {
     screenshot: { path: filename, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') } };
 }
 
+async function captureNpcInteractionAt(actorId, view) {
+  const viewName = view === 'front' ? '' : `-${view}`;
+  const name = `${actorId}-confirmed${viewName}`;
+  const cameraName = `${actorId}-close${viewName}`;
+  await evaluate(`window.nativeGameFixture.setCamera('${cameraName}'); window.nativeGameFixture.setMode('idle')`);
+  const clickAction = actorId === 'mrs-okafor'
+    ? "document.querySelector('#npc-action-mrs-okafor-hello')?.click()"
+    : "[...document.querySelectorAll('#npc-cards article')].find(card => card.querySelector('strong')?.textContent?.toLowerCase().includes('dapo'))?.querySelector('button')?.click()";
+  await evaluate(clickAction);
+  const interacting = await capture(`${name}-interact`, 80);
+  let action = null;
+  const deadline = Date.now() + 8000;
+  while (Date.now() < deadline) {
+    action = await evaluate('window.nativeGameFixture.sample().interaction');
+    if (action?.completed !== false) break;
+    await delay(100);
+  }
+  const returnedIdle = await capture(`${name}-returned-idle`, 120);
+  return { interacting, returnedIdle, action };
+}
+
 let report;
 try {
   const debugPort = await readDebugPort();
@@ -149,8 +170,17 @@ try {
   await evaluate("window.nativeGameFixture.setCamera('player-close'); window.nativeGameFixture.setMode('idle')");
   await evaluate("window.nativeGameFixture.setMode('interact')");
   const playerCloseInteract = await capture('player-close-interact', 300);
+  await evaluate("window.nativeGameFixture.setCamera('player-close-profile')");
+  const playerInteractProfile = await capture('player-close-interact-profile', 150);
+  await evaluate("window.nativeGameFixture.setCamera('player-close-back')");
+  const playerInteractBack = await capture('player-close-interact-back', 150);
   await evaluate("window.nativeGameFixture.setCamera('player-close'); window.nativeGameFixture.setWalkPhase(Math.PI / 2)");
   const walkA = await capture('player-close-walk-a', 100);
+  await evaluate("window.nativeGameFixture.setCamera('player-close-profile')");
+  const walkAProfile = await capture('player-close-walk-a-profile', 100);
+  await evaluate("window.nativeGameFixture.setCamera('player-close-back')");
+  const walkABack = await capture('player-close-walk-a-back', 100);
+  await evaluate("window.nativeGameFixture.setCamera('player-close')");
   const phaseA = await evaluate('window.nativeGameFixture.sample()');
   const phaseBState = await evaluate("window.nativeGameFixture.setWalkPhase(3 * Math.PI / 2); window.nativeGameFixture.sample()");
   const walkB = await capture('player-close-walk-b', 100);
@@ -168,6 +198,8 @@ try {
   const mrsIdle = await capture('mrs-okafor-close-idle', 250);
   await evaluate("window.nativeGameFixture.setCamera('mrs-okafor-close-back'); window.nativeGameFixture.setMode('idle')");
   const mrsBackControl = await capture('mrs-okafor-close-back-control', 200);
+  await evaluate("window.nativeGameFixture.setCamera('mrs-okafor-close-profile')");
+  const mrsProfileIdle = await capture('mrs-okafor-close-profile-idle', 200);
   await evaluate("window.nativeGameFixture.setCamera('mrs-okafor-close'); window.nativeGameFixture.setMode('idle')");
   await evaluate("document.querySelector('#npc-action-mrs-okafor-hello')?.click()");
   const mrsInteract = await capture('mrs-okafor-close-interact', 100);
@@ -180,10 +212,14 @@ try {
   }
   const interactionState = await evaluate('window.nativeGameFixture.sample()');
   const npcAction = await capture('mrs-okafor-close-completed-idle', 250);
+  const mrsProfileConfirmed = await captureNpcInteractionAt('mrs-okafor', 'profile');
+  const mrsBackConfirmed = await captureNpcInteractionAt('mrs-okafor', 'back');
   await evaluate("window.nativeGameFixture.setCamera('dapo-close')");
   const dapoIdle = await capture('dapo-close-idle', 250);
   await evaluate("window.nativeGameFixture.setCamera('dapo-close-back')");
   const dapoBackControl = await capture('dapo-close-back-control', 200);
+  await evaluate("window.nativeGameFixture.setCamera('dapo-close-profile')");
+  const dapoProfileIdle = await capture('dapo-close-profile-idle', 200);
   await evaluate("window.nativeGameFixture.setCamera('dapo-close')");
   await evaluate("[...document.querySelectorAll('#npc-cards article')].find(card => card.querySelector('strong')?.textContent?.toLowerCase().includes('dapo'))?.querySelector('button')?.click()");
   const dapoInteract = await capture('dapo-close-interact', 100);
@@ -195,6 +231,8 @@ try {
     await delay(100);
   }
   const dapoCompleted = await capture('dapo-close-completed-idle', 250);
+  const dapoProfileConfirmed = await captureNpcInteractionAt('dapo', 'profile');
+  const dapoBackConfirmed = await captureNpcInteractionAt('dapo', 'back');
   const unsupported = await evaluate('window.nativeGameFixture.probeUnsupportedPose()');
   const afterUnsupported = await evaluate('window.nativeGameFixture.sample()');
   await cdp('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
@@ -208,6 +246,40 @@ try {
   const namedNpcIds = Object.keys(ready.npcs ?? {}).sort();
   const npcSourceValid = namedNpcIds.length === 2 && namedNpcIds.every((id) => ready.npcs[id]?.source === 'viewLife(createLife(...)).social.here');
   const npcActorsPrepared = namedNpcIds.every((id) => ready.npcs[id]?.preparedNative === true && ready.npcs[id]?.authoredRig === true && ready.npcs[id]?.mounted === true);
+  const cameraMatrix = [
+    ...[
+      ['front', 'idle', playerCloseIdle], ['back', 'idle', playerBackControl], ['profile', 'idle', playerProfileControl],
+      ['front', 'interact', playerCloseInteract], ['profile', 'interact', playerInteractProfile], ['back', 'interact', playerInteractBack],
+      ['front', 'walk', walkA], ['profile', 'walk', walkAProfile], ['back', 'walk', walkABack],
+    ].map(([view, mode, sample]) => ({ actor: 'player', view, mode, sample })),
+    ...[
+      ['mrs-okafor', 'idle', 'front', mrsIdle], ['mrs-okafor', 'idle', 'back', mrsBackControl], ['mrs-okafor', 'idle', 'profile', mrsProfileIdle],
+      ['mrs-okafor', 'interact', 'front', mrsInteract], ['mrs-okafor', 'interact', 'profile', mrsProfileConfirmed.interacting], ['mrs-okafor', 'interact', 'back', mrsBackConfirmed.interacting],
+      ['mrs-okafor', 'returned-idle', 'front', npcAction], ['mrs-okafor', 'returned-idle', 'profile', mrsProfileConfirmed.returnedIdle], ['mrs-okafor', 'returned-idle', 'back', mrsBackConfirmed.returnedIdle],
+      ['dapo', 'idle', 'front', dapoIdle], ['dapo', 'idle', 'back', dapoBackControl], ['dapo', 'idle', 'profile', dapoProfileIdle],
+      ['dapo', 'interact', 'front', dapoInteract], ['dapo', 'interact', 'profile', dapoProfileConfirmed.interacting], ['dapo', 'interact', 'back', dapoBackConfirmed.interacting],
+      ['dapo', 'returned-idle', 'front', dapoCompleted], ['dapo', 'returned-idle', 'profile', dapoProfileConfirmed.returnedIdle], ['dapo', 'returned-idle', 'back', dapoBackConfirmed.returnedIdle],
+    ].map(([actor, mode, view, sample]) => ({ actor, mode, view, sample })),
+  ];
+  const cameraMatrixRows = cameraMatrix.map(({ actor, mode, view, sample }) => {
+    const actorPose = actor === 'player' ? sample.snapshot?.player?.pose : sample.snapshot?.npcs?.[actor]?.gamePose;
+    const expectedPose = mode === 'returned-idle' ? 'idle' : mode;
+    return { actor, mode, view, actualPose: actorPose, poseMatches: actorPose === expectedPose,
+      wholeActorVisible: sample.snapshot?.cameraActorFrame?.wholeActorVisible === true,
+      directCanvasSaved: sample.canvasScreenshot?.bytes > 0,
+      actorPixelContrast: sample.renderEvidence?.actorPixelContrast ?? null,
+      actorRegionContrast: sample.renderEvidence?.actorRegionContrast ?? null,
+      visibilityRay: sample.snapshot?.cameraActorFrame?.visibilityRay ?? null };
+  });
+  const cameraMatrixPass = cameraMatrixRows.length === 27 && cameraMatrixRows.every((row) => row.poseMatches
+    && row.wholeActorVisible && row.directCanvasSaved && row.actorPixelContrast >= 24
+    && ['head', 'torso', 'feet'].every((region) => row.actorRegionContrast?.[region] >= 24));
+  const allCapturedSamples = [idle, front, profileView, playerCloseIdle, playerBackControl, playerProfileControl,
+    playerCloseInteract, playerInteractProfile, playerInteractBack, walkA, walkAProfile, walkABack, walkB, walk, interact,
+    mrsIdle, mrsBackControl, mrsProfileIdle, mrsInteract, npcAction,
+    mrsProfileConfirmed.interacting, mrsProfileConfirmed.returnedIdle, mrsBackConfirmed.interacting, mrsBackConfirmed.returnedIdle,
+    dapoIdle, dapoBackControl, dapoProfileIdle, dapoInteract, dapoCompleted,
+    dapoProfileConfirmed.interacting, dapoProfileConfirmed.returnedIdle, dapoBackConfirmed.interacting, dapoBackConfirmed.returnedIdle, mobile];
   const contact = idle.snapshot.player?.contact;
   const contactPass = Number.isFinite(contact?.maxError) && contact.maxError <= 0.004 && contact.limited === false;
   const unsupportedPass = unsupported?.expectedNativeRefusal === true && unsupported?.acceptedAsNative === false && unsupported?.fallbackDisposed === true;
@@ -230,17 +302,17 @@ try {
       && walkPhaseEvidence.phaseA.frames < walkPhaseEvidence.phaseB.frames
       && JSON.stringify(walkPhaseEvidence.phaseA.root) !== JSON.stringify(walkPhaseEvidence.phaseB.root)
       && walkPhaseEvidence.canvasImageHashesDiffer,
-    closeupsFrameWholeActor: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
-      .every((sample) => sample.snapshot?.cameraActorFrame?.wholeActorVisible === true),
-    closeupsRenderActorPixels: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
-      .every((sample) => sample.renderEvidence?.drawCalls > 0 && sample.renderEvidence?.triangles > 0
-        && sample.renderEvidence?.actorPixelContrast >= 24
-        && ['head', 'torso', 'feet'].every((region) => sample.renderEvidence?.actorRegionContrast?.[region] >= 24)),
-    closeupsSavedDirectCanvasPixels: [playerCloseIdle, playerCloseInteract, walkA, walkB, mrsIdle, mrsInteract, npcAction, dapoIdle, dapoInteract, dapoCompleted]
-      .every((sample) => sample.canvasScreenshot?.bytes > 0),
-    cameraSideControlsSaved: [playerBackControl, playerProfileControl, mrsBackControl, dapoBackControl]
-      .every((sample) => sample.canvasScreenshot?.bytes > 0 && sample.snapshot?.cameraActorFrame?.wholeActorVisible === true
-        && ['head', 'torso', 'feet'].every((region) => sample.renderEvidence?.actorRegionContrast?.[region] >= 24)),
+    closeupsFrameWholeActor: cameraMatrix
+      .every(({ sample }) => sample.snapshot?.cameraActorFrame?.wholeActorVisible === true),
+    closeupsRenderActorPixels: cameraMatrix.every(({ sample }) => sample.renderEvidence?.drawCalls > 0 && sample.renderEvidence?.triangles > 0
+      && sample.renderEvidence?.actorPixelContrast >= 24
+      && ['head', 'torso', 'feet'].every((region) => sample.renderEvidence?.actorRegionContrast?.[region] >= 24)),
+    closeupsSavedDirectCanvasPixels: cameraMatrix
+      .every(({ sample }) => sample.canvasScreenshot?.bytes > 0),
+    npcPlayerSupportedPoseCameraMatrix: cameraMatrixPass,
+    cameraSideControlsSaved: cameraMatrixRows.filter((row) => row.view !== 'front')
+      .every((row) => row.directCanvasSaved && row.wholeActorVisible && row.actorPixelContrast >= 24
+        && ['head', 'torso', 'feet'].every((region) => row.actorRegionContrast?.[region] >= 24)),
     interactionSample: interact.snapshot.player?.pose === 'interact',
     realNpcActivityCompleted: npcInteraction?.started?.code === 'started' && npcInteraction?.completed === true
       && npcInteraction?.responseNamesNpc === true && npcInteraction?.familiarityChanged === true
@@ -254,7 +326,7 @@ try {
       && mobile.snapshot?.viewport?.layoutColumns === 1 && mobile.snapshot?.viewport?.scrollWidth <= mobile.snapshot?.viewport?.width,
     dapoRealActivityCompleted: dapoInteraction?.npcId === 'dapo' && dapoInteraction?.completed === true
       && dapoInteraction?.npcPoseDuringInteraction === 'interact' && dapoInteraction?.npcPoseAfterCompletion === 'idle',
-    snapshotsHaveNoRuntimeErrors: [idle, front, profileView, playerCloseIdle, playerBackControl, playerProfileControl, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsBackControl, mrsInteract, npcAction, dapoIdle, dapoBackControl, dapoInteract, dapoCompleted, mobile].every((sample) => sample.snapshot?.errors?.length === 0)
+    snapshotsHaveNoRuntimeErrors: allCapturedSamples.every((sample) => sample.snapshot?.errors?.length === 0)
       && afterUnsupported.errors?.length === 0,
     teardownReleasesActorsAndContext: disposal?.playerUnmounted === true && disposal?.noCanonicalActorsRemain === true
       && disposal?.rendererContextLost === true && disposalAgain?.crowdAfter?.canonical === 0
@@ -269,6 +341,8 @@ try {
     captureProtocol: { explicitDrawImmediatelyBeforeCapture: true, twoAnimationFramesBeforeCapture: true,
       directCanvasPngForCloseups: true, preserveDrawingBuffer: true, diagnosticOnly: true },
     scene: { city: 'lagos', location: 'office', time: 'day', regularIds: namedNpcIds },
+    cameraMatrix: cameraMatrixRows,
+    cameraCoverageLimitations: ['NPC native walk gait is not exposed by the real office action/pose interface; no NPC walk pose was fabricated. Player walk is sampled through the existing native gait fixture path.'],
     checks,
     unsupported,
     npcInteraction,
@@ -278,7 +352,7 @@ try {
     afterUnsupported,
     disposal,
     consoleErrors: pageErrors,
-    screenshots: [idle, front, profileView, playerCloseIdle, playerBackControl, playerProfileControl, playerCloseInteract, walkA, walkB, walk, interact, mrsIdle, mrsBackControl, mrsInteract, npcAction, dapoIdle, dapoBackControl, dapoInteract, dapoCompleted, mobile].map(({ name, screenshot, snapshot, renderEvidence, canvasScreenshot }) => ({
+    screenshots: allCapturedSamples.map(({ name, screenshot, snapshot, renderEvidence, canvasScreenshot }) => ({
       name, screenshot, camera: snapshot.currentCamera, playerPose: snapshot.player?.pose,
       requestedMode: snapshot.player?.requestedMode,
       cameraActorFrame: snapshot.cameraActorFrame, renderEvidence: { drawCalls: renderEvidence?.drawCalls,

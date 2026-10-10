@@ -258,6 +258,7 @@ function createFixture() {
   let currentCamera = 'scene';
   function isCloseCamera(name = currentCamera) { return /-(?:close)(?:-(?:back|profile))?$/.test(name); }
   let closeCameraActor: THREE.Object3D | null = null;
+  let closeCameraPlacementSignature = '';
   let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null,
     bodyCenterLineClear: false, lowerBodyLineClear: false, lowerBodyTargets: [] };
   let unsupportedProbe: Record<string, unknown> | null = null;
@@ -339,34 +340,47 @@ function createFixture() {
     const bounds = new THREE.Box3().setFromObject(actor);
     const target = bounds.getCenter(new THREE.Vector3());
     target.y = bounds.min.y + Math.min(1.2, bounds.getSize(new THREE.Vector3()).y * 0.5);
+    const signature = `${actor.uuid}:${currentCamera}:${origin.toArray().map((part) => part.toFixed(3)).join(',')}:${bounds.min.toArray().map((part) => part.toFixed(3)).join(',')}:${bounds.max.toArray().map((part) => part.toFixed(3)).join(',')}`;
+    if (signature === closeCameraPlacementSignature) return;
     camera.fov = 48;
     camera.updateProjectionMatrix();
     const offsets = side === 'face-candidate' ? [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6,
       Math.PI / 4, -Math.PI / 4, Math.PI / 3, -Math.PI / 3, Math.PI / 2, -Math.PI / 2]
-      : [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6];
+      : side === 'back-control' ? [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6,
+        Math.PI / 4, -Math.PI / 4, Math.PI / 3, -Math.PI / 3, Math.PI / 2, -Math.PI / 2]
+        : [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6];
+    const heights = side === 'face-candidate' ? [1.4, 2.1, 2.8] : [1.4, 2.2, 3.0, 3.8];
+    const radii = side === 'face-candidate' ? [3.8] : [3.8, 5.4];
+    const lowerBodyTargets = lowerBodyRayTargets(actor);
     // Keep the complete actor in view and ray-test the head, torso, knees and feet.
     // Candidate order is deterministic; furniture stays in the scene and blocks views
     // truthfully when no camera position can see the lower body.
-    for (const height of [1.4, 2.1, 2.8]) {
+    for (const height of heights) {
       for (const offset of offsets) {
         const candidate = viewAxis.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), offset);
-        camera.position.copy(origin).addScaledVector(candidate, 3.8);
-        camera.position.y = bounds.min.y + height;
-        camera.lookAt(target);
-        const visibility = measureCloseCameraRay(actor);
-        closeCameraRay = visibility;
-        camera.updateMatrixWorld(true);
-        const corners = [
-          new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.max.z),
-          new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.max.z),
-          new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.max.z),
-          new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.max.z),
-        ].map((point) => point.project(camera));
-        const framed = corners.every((point) => point.z > -1 && point.z < 1
-          && point.x > -0.96 && point.x < 0.96 && point.y > -0.96 && point.y < 0.96);
-        if (framed && visibility.clearLine && visibility.bodyCenterLineClear && visibility.lowerBodyLineClear) return;
+        for (const radius of radii) {
+          camera.position.copy(origin).addScaledVector(candidate, radius);
+          camera.position.y = bounds.min.y + height;
+          camera.lookAt(target);
+          const visibility = measureCloseCameraRay(actor, lowerBodyTargets);
+          closeCameraRay = visibility;
+          camera.updateMatrixWorld(true);
+          const corners = [
+            new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.max.z),
+            new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.max.z),
+            new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.max.z),
+            new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.max.z),
+          ].map((point) => point.project(camera));
+          const framed = corners.every((point) => point.z > -1 && point.z < 1
+            && point.x > -0.96 && point.x < 0.96 && point.y > -0.96 && point.y < 0.96);
+          if (framed && visibility.clearLine && visibility.bodyCenterLineClear && visibility.lowerBodyLineClear) {
+            closeCameraPlacementSignature = signature;
+            return;
+          }
+        }
       }
     }
+    closeCameraPlacementSignature = signature;
   }
 
   function actorFrame(actor: THREE.Object3D | null): CameraActorFrame | null {
@@ -399,7 +413,36 @@ function createFixture() {
         : currentCamera.endsWith('-profile') ? 'profile-control' : 'face-candidate', visibilityRay: closeCameraRay };
   }
 
-  function measureCloseCameraRay(actor: THREE.Object3D): CameraActorFrame['visibilityRay'] {
+  function lowerBodyRayTargets(actor: THREE.Object3D): Map<string, THREE.Vector3 | null> {
+    const shoeMesh = actor.getObjectByName('Authored footwear shoes01');
+    const skinnedShoes = shoeMesh instanceof THREE.SkinnedMesh ? shoeMesh : null;
+    const positions = skinnedShoes?.geometry.getAttribute('position');
+    if (skinnedShoes) {
+      skinnedShoes.updateMatrixWorld(true);
+      skinnedShoes.skeleton.update();
+    }
+    const targets = new Map<string, THREE.Vector3 | null>();
+    for (const name of ['mixamorigLeftLeg', 'mixamorigRightLeg', 'mixamorigLeftFoot', 'mixamorigRightFoot']) {
+      const bone = actor.getObjectByName(name);
+      if (!bone) { targets.set(name, null); continue; }
+      const bonePosition = bone.getWorldPosition(new THREE.Vector3());
+      if (!name.endsWith('Foot') || !skinnedShoes || !positions) { targets.set(name, bonePosition); continue; }
+      let nearest: THREE.Vector3 | null = null;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+      const vertex = new THREE.Vector3();
+      for (let index = 0; index < positions.count; index += 1) {
+        vertex.fromBufferAttribute(positions, index);
+        skinnedShoes.applyBoneTransform(index, vertex);
+        skinnedShoes.localToWorld(vertex);
+        const distance = vertex.distanceToSquared(bonePosition);
+        if (distance < nearestDistance) { nearestDistance = distance; nearest = vertex.clone(); }
+      }
+      targets.set(name, nearest ?? bonePosition);
+    }
+    return targets;
+  }
+
+  function measureCloseCameraRay(actor: THREE.Object3D, lowerTargets = lowerBodyRayTargets(actor)): CameraActorFrame['visibilityRay'] {
     world.updateMatrixWorld(true);
     actor.updateWorldMatrix(true, true);
     camera.updateMatrixWorld(true);
@@ -427,9 +470,9 @@ function createFixture() {
     const faceRay = trace(faceTarget), bodyRay = trace(bodyCenter);
     const lowerBodyTargets = ['mixamorigLeftLeg', 'mixamorigRightLeg', 'mixamorigLeftFoot', 'mixamorigRightFoot']
       .map((name) => {
-        const bone = actor.getObjectByName(name);
-        if (!bone) return { name, clearLine: false, firstActorHit: null, nearestOccluder: null };
-        const result = trace(bone.getWorldPosition(new THREE.Vector3()));
+        const target = lowerTargets.get(name);
+        if (!target) return { name, clearLine: false, firstActorHit: null, nearestOccluder: null };
+        const result = trace(target);
         return { name, ...result };
       });
     return { ...faceRay, bodyCenterLineClear: bodyRay.clearLine,
@@ -707,6 +750,7 @@ function createFixture() {
     let actorPixelContrast = 0;
     let actorRegionPixels: Record<string, number[] | null> | null = null;
     let actorRegionContrast: Record<string, number> | null = null;
+    let actorRegionBackgroundPixels: Record<string, number[] | null> | null = null;
     if (actor) {
       const bounds = new THREE.Box3().setFromObject(actor);
       const gl = renderer.getContext();
@@ -721,18 +765,42 @@ function createFixture() {
         const point = worldPoint.clone().project(camera);
         return readPixel(point.x, point.y);
       };
+      const belongsToActor = (object: THREE.Object3D) => {
+        for (let current: THREE.Object3D | null = object; current; current = current.parent) if (current === actor) return true;
+        return false;
+      };
+      const nearbyBackground = (worldPoint: THREE.Vector3) => {
+        const point = worldPoint.clone().project(camera);
+        const offsets = [0.06, 0.1, 0.15, 0.22, 0.3];
+        for (const offset of offsets) {
+          for (const [dx, dy] of [[offset, 0], [-offset, 0], [0, offset], [0, -offset]]) {
+            const x = point.x + dx, y = point.y + dy;
+            if (x <= -0.98 || x >= 0.98 || y <= -0.98 || y >= 0.98) continue;
+            const raycaster = new THREE.Raycaster();
+            raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
+            const firstHit = raycaster.intersectObject(world, true)[0];
+            if (!firstHit || !belongsToActor(firstHit.object)) return readPixel(x, y);
+          }
+        }
+        return backgroundPixel;
+      };
       backgroundPixel = readPixel(0.94, 0.94);
       const head = actor.getObjectByName('Head');
       const headPoint = head?.getWorldPosition(new THREE.Vector3()) ?? bounds.getCenter(new THREE.Vector3()).setY(bounds.min.y + bounds.getSize(new THREE.Vector3()).y * 0.88);
       const torsoPoint = bounds.getCenter(new THREE.Vector3());
       const footPoint = bounds.getCenter(new THREE.Vector3()).setY(bounds.min.y + Math.min(0.12, bounds.getSize(new THREE.Vector3()).y * 0.06));
       const regions = { head: readWorld(headPoint), torso: readWorld(torsoPoint), feet: readWorld(footPoint) };
+      const regionBackgrounds = { head: nearbyBackground(headPoint), torso: nearbyBackground(torsoPoint), feet: nearbyBackground(footPoint) };
       actorRegionPixels = regions;
+      actorRegionBackgroundPixels = regionBackgrounds;
       actorPixel = regions.torso;
-      const contrast = (pixel: number[] | null | undefined) => pixel && backgroundPixel
-        ? Math.max(...pixel.slice(0, 3).map((channel, index) => Math.abs(channel - backgroundPixel![index]!))) : 0;
-      actorRegionContrast = { head: contrast(regions.head), torso: contrast(regions.torso), feet: contrast(regions.feet) };
-      actorPixelContrast = contrast(actorPixel);
+      const contrast = (pixel: number[] | null | undefined, background: number[] | null | undefined) => pixel && background
+        ? Math.max(...pixel.slice(0, 3).map((channel, index) => Math.abs(channel - background[index]!))) : 0;
+      actorRegionContrast = {
+        head: contrast(regions.head, regionBackgrounds.head), torso: contrast(regions.torso, regionBackgrounds.torso),
+        feet: contrast(regions.feet, regionBackgrounds.feet),
+      };
+      actorPixelContrast = contrast(actorPixel, regionBackgrounds.torso);
     }
     let canvasPng = '';
     let canvasPngError = '';
@@ -741,7 +809,7 @@ function createFixture() {
       catch (error) { canvasPngError = error instanceof Error ? error.message : String(error); }
     }
     return { drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles,
-      actorPixel, backgroundPixel, actorPixelContrast, actorRegionPixels, actorRegionContrast,
+      actorPixel, backgroundPixel, actorPixelContrast, actorRegionPixels, actorRegionContrast, actorRegionBackgroundPixels,
       canvasPng, canvasPngError, actorFrame: actorFrame(actor) };
   }
 

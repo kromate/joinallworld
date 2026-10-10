@@ -22,7 +22,9 @@
       "usedPercent": 73,
       "remainingPercent": 27,
       "stopAtRemainingPercent": 5
-    }
+    },
+    "usedPercent": 75,
+    "remainingPercent": 25
   },
   "completedScoped": [
     {
@@ -43,32 +45,44 @@
       "sha": "bcb28f57c45aa87dba5c2725f3be04417df12ce2",
       "proof": "MrsOkafor hello+Dapo talk completed; actual jaw Body/Teeth/Tongue moves then0restored; actorcleanup/contextlost/consoleclean",
       "scope": "Office2NPCfixture; not all venues/alllooks/mobile certification."
+    },
+    {
+      "task": "Actual officeNPCphysicalfloor repair and independent browserpixel review",
+      "sha": "438a24111983a0634c6fa14eae86664222548fce",
+      "proof": "Independent24baseline/candidate rows, exact2NPC x3phases x2feet; fixture strictcompile/bundle/render and physicalcheckerPASS; forwardgaze/clothing actualPNGs viewed",
+      "scope": "Mount/idle/interact/return only; refresh/reposition/finalfactory/wholemodel stillpending."
     }
   ],
   "remainingOrdered": [
     {
       "id": "GFX-NPC-FLOOR",
-      "status": "implementation_online",
+      "status": "scoped_contact_pass_lifecycle_followup_online",
       "severity": "P1 release gate",
       "difficulty": 3,
       "effortBasis": "Actual skinned-sole host-floor checker now fails for both NPCs; requires bounded production placement/pose correction and full witness rerun",
       "files": [
         "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
-        "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs"
+        "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs",
+        "src/scene/venue-scenes.ts"
       ],
       "repro": "Run strict office fixture and check-native-npc-foot-contact.mjs on full report; idle/interact/returned-idle, both sides, every authored sole vertex",
-      "evidence": "Remote NPC strict fixture compile/bundle/render PASS, contact checker exit1 with complete finite actual support coverage; raw numeric report publication pending",
-      "suggestedFix": "Solve actual native host floor after mount/placement and pose changes; preserve native reach/foot swing, retain independent physical floor gap oracle",
+      "evidence": "Actual 2NPC x3phase x2feet contact comparison: baseline69\u201377mm physical penetration; candidate minimum -0.03649mm, full144solepoint coverage and native reach valid. Both real social actions and34speechframes complete; jaw0 restored. Not full native acceptance.",
+      "suggestedFix": "Finish already-mounted canonical place/refresh hook and actual postsolve validity/failure handling, then rerun combined current factory on same real actors.",
       "dependencies": [
-        "current head candidate"
+        "current shared factory source and exact combined office fixture"
       ],
       "hypotheses": [
         "A visibly tilted NPC sole may be valid heel support; do not force all foot vertices onto floor."
       ],
       "worker": "cloud head worker, dedicated fixture checkout",
-      "state": "actual_floor_defect_reproduced_repair_allocated_online",
-      "source": "9122e0c4eb2d6db3fca4ed6e71687c4168923162",
-      "ownerAllocation": "Existing cloud NPC worker: venue-scenes.ts canonical NPC place/mount/pose hooks and private floor helper only. Cloud Sol sole shared factory/wiring assembler."
+      "state": "independent24baseline_candidate_rows_and2PNG_review_complete",
+      "source": "438a24111983a0634c6fa14eae86664222548fce",
+      "ownerAllocation": "Existing cloud NPC worker: venue-scenes.ts canonical NPC place/mount/pose hooks and private floor helper only. Cloud Sol sole shared factory/wiring assembler.",
+      "reviewRemaining": [
+        "refresh/reposition lifecycle",
+        "postsolve validity/failure path",
+        "newfactory rerun"
+      ]
     },
     {
       "id": "GFX-REST-IK",
@@ -82,12 +96,11 @@
       ],
       "repro": "Actual saved spring-bed; home-sleep navigation/entry in render-home-journey.mjs. Current failure upright partial lie.",
       "evidence": {
-        "run": 38006548215,
-        "job": 114076538853,
-        "priorNumeric": "pelvis-back min gap -0.17975778595018288m; casual garment vertex3407 atY.5539922 over blanketY.73375",
-        "diagnostic": "Cloud reports one-shot lift then floorIK leaves~18.4mm trouser penetration; before/afterJSON requested for independent review."
+        "latestSource": "c8f412a2667662b26608be948f25a0eae29c7d25",
+        "rawReceiptSha256": "5f1236cfdc97ede4e4b272e3cea3988fdb542317c454ef0eec4eafc8210924e9",
+        "currentFail": "Uprightbedentry: floorIK after7.26mmlift and80mm cappedpelvislowering leaves147.48mm posterior penetration; bothfeetwithin3.59mm. StillFAIL."
       },
-      "suggestedFix": "Bounded cumulative lift/solve/remeasure on actual region+sole geometry; restore root AND affected bones on rejected trials; keep .35m root/8cm pelvis/4mm penetration and384samples. Full bed/tub/shower entry/still/exit regression.",
+      "suggestedFix": "Existingonlineworker now evaluates coupled placement + floorIK candidates with root/bone rollback; preserve .35mroot/80mmpelvis/4mmcontact/384region bounds; original actual home journey plus tub/shower required.",
       "dependencies": [
         "real FootSolveResult diagnostic bridge ba63c0bc262d4dacdc948a199330fb796d82cc62"
       ],
@@ -114,7 +127,7 @@
     },
     {
       "id": "GFX-STAIRS",
-      "status": "reproduced_diagnosis_in_progress",
+      "status": "independent_final16repeat_matrix_pass_browser_pending",
       "severity": "P0 blocks duplex stairs",
       "difficulty": 4,
       "effortBasis": "Rigid soles, different tread heights, native reach, transformed scene, full gait/support phases.",
@@ -123,8 +136,8 @@
         "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
       ],
       "repro": "Actual boxed duplex grid12 flightx7/y14/w6/h2; transformed parent; down direction-1 step12 phase.18, actorfit(tile*.72), yawdirection*pi/2.",
-      "evidence": "All144 authored samples checked; nearestleft gap .014894675661380141m, no missing host samples. Prior pinned fixture6601baa46090cf1c221c83ca32ce27b845fde146; reproduced on V9 remotely.",
-      "suggestedFix": "Capture original failing stair solve before rollback sampleStill overwrites diagnostics; then repair actual tread-relative seed/IK with nonpenetration/reach preserved and bothfamilies/up/down tests plus actual browserhome stairs.",
+      "evidence": "Exact published102f54fa rawJSON: bothfamilies/up/down4phases4scales .75/.9/1.05/1.2 yaw.41/-.23,144actualsoleverts, allfinite,4mmnonpenetration+planted support; two publicsolves maxpointdrift0; rotationnoise<=4.22e-8rad. Both-belownegative\u2192PASS. Actualhomebrowserpending.",
+      "suggestedFix": "Keep transition contactmode in public host re-solves and Foot transforms in checkpoint; verify repeated public solving with firstvalidnonzero pelvis correction, then actualhomebrowserstairs.",
       "dependencies": [
         "actual host per-point stair query",
         "Sol shared factory ownership"
@@ -144,7 +157,9 @@
         "matrixJSONSha256": "db7851a9dfae0c52bb7799b21370cb56e2cc5b30a6ab3a12ec70603759e85fbc",
         "bothBelowJSONSha256": "a84282c05701b6e8cf7b0a92d0acb4b9ba93c35b806c2b11f451a8f6ae9f994b",
         "remaining": "publish/rawreviewmatrix and actualbrowserhome"
-      }
+      },
+      "source": "d98203c6360011132109893076d7b1f07ea8f328",
+      "sourceReviewRemaining": "Restore precontacthip vs spentworldbudget interaction has targeted runtime hypothesis pending."
     },
     {
       "id": "GFX-IDENTITY-FINAL",
@@ -264,44 +279,13 @@
   "currentProof": "cloud-head-independent-review-v1.json",
   "historicalExperiments": "Graphics dashboard old8fixrecords/olderPNG labelled prototypes; superseded blockers must not be re-added solely from those records.",
   "latestStairTrial": {
-    "at": "2026-10-10T00:14:47.631306+00:00",
-    "implementation": "58922dc609e37f26c0af6ea0ddff71f9ebf76866",
-    "publishedFeedback": "644cbe79b4c315ff672b9ee2bb5f298a787efa18",
-    "receiptSource": "72375198fce51960f556365e9b08c10bf1daa677",
-    "manifestFilesVerified": 99,
-    "manifestHashMismatches": 0,
-    "baseline": {
-      "closestGapM": 0.014894675661380141,
-      "status": "fail"
-    },
-    "originalCaseTrial": {
-      "status": "pass",
-      "closestGapM": 0.00022198443449150673,
-      "actualSolePointCount": 144,
-      "groundedSides": [
-        "left"
-      ],
-      "penetratingPoints": 0,
-      "reportedTargetResidualM": 0,
-      "limited": false,
-      "unresolvedReasons": [],
-      "jsonSha256": "22e6369f4f16fbf9e4627aebf2640241a856c6c0d289f6af8ce262c616d424e1"
-    },
-    "scope": "male descending step12 phase.18 exact transformed boxed host; original stride call, not rollback sampleStill",
-    "independentSourceReview": "target uses worst signed surface gap for actual deformed vertex coordinates, preserves flat-plane target and existing reach/contact caps",
-    "remaining": [
-      "male/female broader ascent/descent/phase coverage",
-      "both-below-surface case",
-      "actual browser home journey",
-      "bed rest repair",
-      "NPC actual floor witnesses",
-      "final creator/identity and bytes/combined checks",
-      "physical phone performance unverified"
-    ],
-    "productionAccepted": false,
-    "deployed": false
+    "commit": "d98203c6360011132109893076d7b1f07ea8f328",
+    "factorySha256": "5f48b927eea73117915d6d837c367977af059b147b2ddf2a026223f81b1ea063",
+    "independentStatus": "16repeatgrid +bothbelow pass",
+    "receipt": "cloud-stair-trial-d98203c/independent-review.json",
+    "actualHomeBrowser": "pending"
   },
-  "updatedAt": "2026-10-10T00:23:10.349006+00:00",
+  "updatedAt": "2026-10-10T00:44:35.951974+00:00",
   "latestRunResult": {
     "run": 38008067182,
     "status": "completed",
@@ -310,5 +294,7 @@
     "office": "success",
     "homeJob": 114081384025,
     "home": "failure"
-  }
+  },
+  "todayPriority": "Properly clothed, rendered, animated and interacting player + NPC phase deployed today, with existing09AMLagos hard cutoff and soleWORLDuploader.",
+  "latestReceiptPublication": "54f92ae63d5aa27609ff9576946d91a675318744"
 }

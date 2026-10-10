@@ -58,7 +58,11 @@ export const ONCE = Object.freeze({
   resultBytes: 2048,   // largest stored result
   fingerprintMax: 96,  // longest stored fingerprint
 });
-/** Kinds where no money moves. They have their own allowance; anything else is counted as money. */
+/**
+ * Kinds where no money moves. They have their own allowance; anything else is counted as money.
+ * 'money.request' (asking a friend) and 'money.answer' (declining or cancelling) only write a request and its chat card. Paying one is 'money.pay',
+ * which is deliberately not here: it moves money, so its receipt is in the money class.
+ */
 export const LIGHT_KINDS = Object.freeze(['interact', 'message.update', 'message.pin', 'family', 'trust.phone', 'trust.id.start', 'real-value.create', 'real-value.edit', 'real-value.close', 'real-value.report', 'real-value.event', 'real-value.contact-request', 'real-value.contact-answer', 'real-value.contact-revoke', 'money.request', 'money.answer']);
 const isLight = (kind: unknown): boolean => LIGHT_KINDS.some((light) => light === kind);
 /** Action receipts kept per session inside the action window; a full history answers 429 until old ones expire. */

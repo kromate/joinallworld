@@ -86,11 +86,13 @@ const holds = (list: Held[], who: Who, id: string) => list.some((item) => item.o
 
 test('the light class contains only the explicitly approved non-money operations', () => {
   // The published Family, message editing and pinning, trust and real-value metadata routes use the
-  // same isolated allowance. Transfers, rewards and unknown kinds remain in the money class.
+  // same isolated allowance, and so do asking for money and declining or cancelling such a request (nothing moves).
+  // Transfers, paying a request ('money.pay'), rewards and unknown kinds remain in the money class.
   assert.deepEqual([...LIGHT_KINDS], [
     'interact', 'message.update', 'message.pin', 'family', 'trust.phone', 'trust.id.start',
     'real-value.create', 'real-value.edit', 'real-value.close', 'real-value.report', 'real-value.event',
     'real-value.contact-request', 'real-value.contact-answer', 'real-value.contact-revoke',
+    'money.request', 'money.answer',
   ]);
 });
 

@@ -41,14 +41,51 @@
     "Tests assert retained input receipt and lifecycle duplicate, v2 read/write preservation under OFF and explicit-gear refusal without row mutation."
   ],
   "execution": {
-    "status": "REPORTED_NOT_INDEPENDENTLY_ACCEPTED",
-    "reportedPass": 2,
-    "reportedFail": 0,
-    "reportedSkip": 0,
-    "reportedDurationSeconds": 8.806,
-    "reportedRawLogSha256": "167d9462c809082ef284bbe4fd33766a1e6db0dad8e7b3429e4c37954074ea40",
-    "actualPublishedLogAndReceiptStillRequired": true,
-    "request": "Existing cloud coordinator asked to publish original sanitized log/receipt without rerun."
+    "status": "ACCEPT_SCOPED_TWO_REAL_HOST_TESTS",
+    "publishedReceiptCommit": "d69d6c2e863550764f7a35b0c69ba78343b58aa3",
+    "wholeRawLogAndReceiptRead": true,
+    "artifacts": {
+      "command.log": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/living-host-f4ba55e/command.log",
+        "sha256": "167d9462c809082ef284bbe4fd33766a1e6db0dad8e7b3429e4c37954074ea40",
+        "bytes": 375
+      },
+      "receipt.json": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/living-host-f4ba55e/receipt.json",
+        "sha256": "72666d73fc9fcec34eba92b27c6b146e69d33564e9e84f1372cce2fba7cc8aee",
+        "bytes": 1915
+      },
+      "host-four-file.patch": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/living-host-f4ba55e/host-four-file.patch",
+        "sha256": "137b7677dfb22bfac94e9a44d78e566ec9b2f200028251547a283ce86776f2cd",
+        "bytes": 5079
+      },
+      "host-source-receipt.json": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/living-host-f4ba55e/host-source-receipt.json",
+        "sha256": "507b43a9406e0b9c9e4a7d504bcdfc87790a54ee432da7e27cc982af8ac3601c",
+        "bytes": 666
+      }
+    },
+    "pass": 2,
+    "fail": 0,
+    "skip": 0,
+    "rawTestDurationMs": 8740.729456,
+    "receiptWrapperDurationSeconds": 8.806209,
+    "exitCode": 0,
+    "nodeVersion": "v24.19.0",
+    "npmVersion": "11.9.0",
+    "heapMiB": 1536,
+    "concurrency": 1,
+    "startedAtUtc": "2026-10-10T01:21:03.484526+00:00",
+    "endedAtUtc": "2026-10-10T01:21:12.290735+00:00",
+    "headAfter": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
+    "statusAfterClean": true,
+    "sourceUnchangedReported": true,
+    "beforeAfterSourcePinMapsEmpty": true,
+    "sourceFullByteCensusNotInferred": true,
+    "executionLocation": "Existing provided cloud /workspace; Root did not run tests.",
+    "normalizedGitDiffMatchesHostPatch": true,
+    "patchComparisonQualification": "Only default Git index abbreviation length differed; explicit --abbrev=7 matches entire published patch."
   },
   "limitations": [
     "Synthetic isolated actors/stores; no original player browser or live save acceptance.",
@@ -62,5 +99,30 @@
   "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "releaseApproved": false,
   "activationApproved": false,
-  "rootLocalExecution": "Git/Python source inspection and docs only; no test/build/compiler/browser/server/upload."
+  "rootLocalExecution": "Git/Python source inspection and docs only; no test/build/compiler/browser/server/upload.",
+  "executionReviewedAtUtc": "2026-10-10T01:32:23.390907+00:00",
+  "assignmentProvenance": {
+    "publishedCoordinatorRecord": "d69d6c2e863550764f7a35b0c69ba78343b58aa3:docs/agent-plans/cloud-receipts/2026-10-10/workers.json",
+    "workerId": "/root/living_driving_cloud",
+    "configuredSpawnModel": "gpt-6-luna",
+    "configuredReasoning": "high",
+    "appThreadId": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
+    "actualBackendModelId": "not independently exposed",
+    "qualification": "Configured spawn record is published; actual backend model assignment is not verified from worker name or coordinator assertion."
+  },
+  "nextFiniteTestBatch": {
+    "soleWriter": "Existing cloud living implementation worker; no new child.",
+    "writeScope": [
+      "server/living-world/driving-service.test.ts"
+    ],
+    "sourceChanges": "Test-only unless a concrete production failure justifies a separately reviewed repair.",
+    "acceptance": [
+      "Valid v1 and retained v2 row revision/nextSequence MAX-1 with lastPacket.sequence MAX-2 accepts packet sequence MAX-1 and reaches both counters MAX without strict-invalid row.",
+      "Retained exact MAX-1 success replays before timeout/clock reversal with entire driving row unchanged; new sequence MAX refuses without overflow.",
+      "Exhausted context paths current/start/input/pause/resume/restart preserve driving row; no whole-db immutability inferred from session settling.",
+      "Publish exact SHA, source and original raw focused log/receipt. Changed-source compiler/build/caps/smoke run under existing serial heavy lease at supported boundary."
+    ],
+    "originalStoreUnmodified": true,
+    "requestedFromExistingCloudCoordinator": true
+  }
 }

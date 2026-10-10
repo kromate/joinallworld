@@ -1,0 +1,98 @@
+{
+  "decision": "ACCEPT scoped retained original-actor OFF completion, reload and same-ID wage replay; stage terminal still pending",
+  "observedAtUtc": "2026-10-10T00:18:50.013156+00:00",
+  "sourceSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "packageDigest": "96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad",
+  "stageHelperSha256": "55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56",
+  "stageCapabilityPolicySha256": "af748ece4eccbb2a9dfc7ad9901a13b3d06d4afc1ef497c53bf140d74a51b5ef",
+  "capability": {
+    "interactiveTeachingStarts": "0",
+    "workerBinding": "omitted",
+    "apiLifeTopLevelFlagPresent": false,
+    "alreadyIssuedLessonFinished": true
+  },
+  "nativeOperatorReceipt": {
+    "path": "/tmp/allworld-eec-native-off-final.json",
+    "sha256": "a0147b6e596fb9234133cfaed0e75b4a01613775e9853dd49fdd9357c31af710"
+  },
+  "readiness": {
+    "sha256": "0f098e09dccce794e4bb94a968f09e4d03c9065d6e56a61b65bdc9f688ba5245",
+    "sameSevenStoreFields": true,
+    "deadline": "2026-10-10T00:21:04.823Z"
+  },
+  "canonicalAfter": {
+    "sha256": "f4f44771e7bad0d7bbf55798535cd56b18dc889ecadf6edc1db60b8e33952a99",
+    "A": {
+      "cash": 369500,
+      "cashDelta": 3000,
+      "completedShifts": 1,
+      "careerShifts": 1,
+      "careerPerformance": 60,
+      "careerGeneration": 1,
+      "charisma": 322.5,
+      "activeActionNone": true,
+      "socialExpectedChanges": {
+        "earned": [
+          0,
+          3000
+        ],
+        "addedShiftRumour": {
+          "k": "shift",
+          "v": "park",
+          "day": 20736
+        },
+        "wholeSocialAfterReversingOnlyExpectedChangesSha256": "6a04f139965fc6daf409959a5125433ab48f6878df3aa3e7e2da5df64c906783",
+        "matchesExactBefore": true
+      },
+      "newWalletEffect": {
+        "amount": 3000,
+        "balance_after": 369500,
+        "reason": "Teaching shift",
+        "rowSha256": "c19b28cc5254c917ed4e7f21b210c82af7e4463ef72791b92f0479401b6a25f4"
+      },
+      "oldReceiptRowsPreserved": true,
+      "oldSchoolPreserved": true
+    },
+    "B": {
+      "cash": 176000,
+      "cashDelta": 0,
+      "oldReceiptRowsPreserved": true,
+      "oldSchoolPreserved": true
+    },
+    "bothIdentitiesAndHomesPreserved": true,
+    "allPreviousRowContentsPreserved": true
+  },
+  "sameIdReplay": {
+    "sourceSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "packageDigest": "96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad",
+    "stageSession": 32810,
+    "originalNativeCompletionActionIdSha256": "8d5a6f67bfe49a3458cb321f2d2ed9ff3ea98ef7abf32c27ce3c02966baf60cd",
+    "storedFingerprintSha256": "71c1768736bb4a80bb0716df3411d9e757716512c4032872b0e8718a72a8f30c",
+    "actualNativeIntentFingerprintMatchedBeforeRequest": true,
+    "httpStatus": 200,
+    "ok": true,
+    "duplicate": true,
+    "code": "shift_completed",
+    "cashUnchangedByReplay": true,
+    "walletRowsUnchangedByReplay": true,
+    "actionAndOnceRowsUnchangedByReplay": true,
+    "originalCompletionRowUnchanged": true,
+    "bothActorsIdentityProtectedHomeAndSchoolUnchangedByReplay": true,
+    "afterNativeReceiptSha256": "f4f44771e7bad0d7bbf55798535cd56b18dc889ecadf6edc1db60b8e33952a99",
+    "newActorsGrantsLessonsResetsOrDirectStoreWrites": false
+  },
+  "sameIdReplayArtifactSha256": "fdbc3be1b58f680d9a8e9c2b68dd6c1a39c44d5e2891f39a682759987e7e11e1",
+  "scopeLimitations": [
+    "Exact numerical charisma delta unproved because original before snapshot did not retain numeric XP. Canonical post charisma322.5 and native displayed level/progress are separate evidence.",
+    "A social hash changed as expected for earned cash3000 and a new shift rumour. Reversing precisely these changes reproduces the entire before hash.",
+    "No production deployment, physical phone/Safari, paired B browser, social or media acceptance.",
+    "Original ON whole-city-state changes beyond preserved named fields remain qualified separately."
+  ],
+  "cleanup": {
+    "nativeOwnedTabClosed": true,
+    "nativeBrowserLeaseReleased": true,
+    "stageSession": 32810,
+    "stageChildPid": 27474,
+    "stageState": "running until original fixed internal deadline; no early signal"
+  }
+}

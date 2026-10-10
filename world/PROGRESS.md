@@ -1,3 +1,30 @@
+# Next-five source and retained-save checkpoint, 10 October 2026 at 00:18 UTC
+
+Remote generated candidate391ccfe9 was independently reviewed: fourteen files,
+55 city rows with the original50 preserved,39 authored routes with the
+original34 preserved, and six content-addressed public asset hashes matched.
+All handwritten caller files remain unchanged. Its strict compiler log reports
+all five projects clean. Actual numeric exit/timestamp/hash receipt correction
+was requested because the published receipt contained literal shell snippets.
+Candidate-specific build/download success is owner-reported, pending inspection
+of the actual public receipts. See third-five-runtime-source-review.json.
+The existing country worker is assigned the isolated caller migration. The
+existing C1 consumers already use generated city rows, so a separately verified
+55-city release may precede the wider lazy metadata migration if its real
+runtime/source/release guards pass. Integration owns that release decision.
+
+Original A completed the already-issued teaching lesson after OFF restart,
+normal reload retained it, and canonical store proof shows exactly one3000 wage,
+one completed shift and career performance60. One actual same-ID HTTP replay
+returned200/duplicate true and added no cash or receipt/effect row. Both actors'
+identities, homes, old school records and every previous receipt row survive.
+A's social earned cash and shift rumour are expected changes whose inverse
+exactly reproduces the prior whole-social hash. Numerical XP delta remains
+unproved; canonical post charisma322.5 is recorded. See
+native-eec-teaching-off-acceptance.json for the scoped acceptance and limits.
+The stage32810/child27474 still has its fixed00:21:04.823UTC deadline; terminal
+cleanup is pending. No new production upload or additional green country.
+
 # African runtime rollout chain checkpoint, 10 October 2026 at 00:05 UTC
 
 Ten cumulative candidate manifests now cover the 42 generated, unadmitted

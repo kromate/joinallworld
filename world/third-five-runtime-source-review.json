@@ -1,0 +1,113 @@
+{
+  "observedAtUtc": "2026-10-10T00:11:56.849847+00:00",
+  "decision": "ACCEPT scoped generated source and preserved C1 prefix; runtime/release acceptance pending",
+  "sourceSha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+  "baseSha": "3eb9e7cbaec40784eada66f0a8278cbe0f521f59",
+  "sourceBranch": "codex/cloud-third-five-admission-20261010",
+  "changedFiles": [
+    {
+      "path": "public/world-country-directory/countries/eg-4dab4e9f405408ac14a9bc13f152aa3becf52af93e827e727cc6a4b4a0a6d867.txt",
+      "sha256": "4dab4e9f405408ac14a9bc13f152aa3becf52af93e827e727cc6a4b4a0a6d867",
+      "bytes": 368
+    },
+    {
+      "path": "public/world-country-directory/countries/ma-db2aeb6f14f64c39f59ee3e56c1f05eff7fa195856a2317760f85ccd51b9f4af.txt",
+      "sha256": "db2aeb6f14f64c39f59ee3e56c1f05eff7fa195856a2317760f85ccd51b9f4af",
+      "bytes": 372
+    },
+    {
+      "path": "public/world-country-directory/countries/rw-f7ee75d974fe2e24dcb3787f881802e53011582bad712ccbf91b0a62db37dd61.txt",
+      "sha256": "f7ee75d974fe2e24dcb3787f881802e53011582bad712ccbf91b0a62db37dd61",
+      "bytes": 372
+    },
+    {
+      "path": "public/world-country-directory/countries/ug-01532dcb6a5202807fb7e880c0679eb0322ffbb5b078486391fef6bf323c5958.txt",
+      "sha256": "01532dcb6a5202807fb7e880c0679eb0322ffbb5b078486391fef6bf323c5958",
+      "bytes": 373
+    },
+    {
+      "path": "public/world-country-directory/countries/zm-27cb60b0b1d4a205adfdef2d016add8fa019fd40f00d61f534d6e01ca0c9c420.txt",
+      "sha256": "27cb60b0b1d4a205adfdef2d016add8fa019fd40f00d61f534d6e01ca0c9c420",
+      "bytes": 373
+    },
+    {
+      "path": "public/world-country-directory/index-361f4694e6c02839130544178474249afe02524bd31b0d004cec4f735036f2c0.txt",
+      "sha256": "361f4694e6c02839130544178474249afe02524bd31b0d004cec4f735036f2c0",
+      "bytes": 4270
+    },
+    {
+      "path": "src/game/cities/catalogue.generated.ts",
+      "sha256": "0969ee3c04a10152d1894706187bd9fd531b83295a4b7cb6bcaad692f1be3046",
+      "bytes": 4125
+    },
+    {
+      "path": "src/game/cities/country-directory.generated.ts",
+      "sha256": "a32b9db2b2b2ae6667c7e1f99ff1d10caa2f9751037adae6f4fae7e0c3deddec",
+      "bytes": 586
+    },
+    {
+      "path": "src/game/cities/foreign-admission.generated.ts",
+      "sha256": "ac6a30bd51b4bec5f1d78392583578a66b98a8ba65bd0fb5dfc4bb035babcd95",
+      "bytes": 927
+    },
+    {
+      "path": "src/game/cities/foreign-loaders.generated.ts",
+      "sha256": "f2636fd08a84df34f33f4c5c9025d1946b17aea6dd33a0d71aafb904385eefd7",
+      "bytes": 1173
+    },
+    {
+      "path": "src/game/cities/loaders.generated.ts",
+      "sha256": "857c3a9cc6acc600db61e6f18259ee27046afe3ef997028909c09a5f37a12dea",
+      "bytes": 3226
+    },
+    {
+      "path": "src/game/cities/routes.generated.ts",
+      "sha256": "1bf2e138c33ea59104666a4ccd3b49f05ba81c5d0e13a7d659075e3863a8dd97",
+      "bytes": 9231
+    },
+    {
+      "path": "src/game/cities/trusted-city-facts.generated.ts",
+      "sha256": "042e6a47389af7b2453b410944556179d0237161cd94d274b5296138b04c766a",
+      "bytes": 1630
+    },
+    {
+      "path": "world/playable-africa-rollout/runtime-admission.json",
+      "sha256": "8a04b60b242abcd54beab912eb39a46cb958c9f8c93bba1cc814a02b3610582f",
+      "bytes": 6782
+    }
+  ],
+  "catalogueRows": 55,
+  "originalCatalogueRowsPreserved": 50,
+  "authoredRoutes": 39,
+  "originalAuthoredRoutesPreserved": 34,
+  "handwrittenCatalogueUnchanged": true,
+  "oldLoaderAdmissionAndTrustedProjectionLinesRetained": true,
+  "newCountries": [
+    "EG",
+    "MA",
+    "RW",
+    "UG",
+    "ZM"
+  ],
+  "publicContentAddressedAssetPinsMatched": 6,
+  "receiptRevision": "43c648d069158970f454ff9405d2c7125aeef73b",
+  "focusedLog": {
+    "path": "docs/agent-plans/cloud-receipts/2026-10-10/world55/focused.log",
+    "sha256": "af6a930701bbcc5e619834818dea5ab8bf1bfec97b4625e6ebafde6a02b3c2a0",
+    "reportedTests": 17
+  },
+  "compilerLog": {
+    "path": "docs/agent-plans/cloud-receipts/2026-10-10/world55/compiler.log",
+    "sha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7",
+    "summary": "five projects clean",
+    "numericExitAndActualTimes": "published receipt uses literal shell placeholders; replacement requested before complete compiler receipt acceptance"
+  },
+  "remaining": [
+    "candidate-specific build/download measurements",
+    "shared caller migration",
+    "engine/host/native arrival/return and save checks",
+    "sealed package and production deployment"
+  ],
+  "canonicalWorldManifestActivated": false,
+  "productionOpenCountries": 11
+}

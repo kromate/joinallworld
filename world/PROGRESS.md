@@ -1,11 +1,12 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T03:06:54.819120+00:00
+Updated: 2026-10-10T03:18:48.537141+00:00
 
 The previous goal turn was a status check. This turn accepted the exact cloud
 package file comparison and Node 22 full Worker/compiler/build/download/smoke
-evidence. One sealed verification of that separate package is queued under the
-existing shared cloud lease. Browser visits remain incomplete.
+evidence. Its one sealed verification ended with exit 0: original cloud output shows 14
+passed checks, 15 cities, 31 assets and 144,672 ms elapsed. Complete public raw
+receipt/log inspection is still pending. Browser visits remain incomplete.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -53,7 +54,8 @@ The existing cloud host has Chromium 151 and CDP support. Its independent packag
 has the same 6,228 physical files as the original. All 6,226 other payload files
 match exactly; only the Worker differs by 353 build-path labels, totaling 4,236
 bytes. The diagnostic Worker hash matches the actual cloud hash. The distinct
-package requires its own on-disk guard and sealed journey proof, now assigned.
+package passed its actual on-disk guard. Its own sealed run is terminal with
+reported 14 passed checks; public full-receipt/hash review remains pending.
 [Actual package comparison](c12-cloud-package-comparison.json).
 
 Its artifact read returned Forbidden, retained as a transport gap. The package
@@ -73,7 +75,7 @@ the source repair. It has no production acceptance.
 
 ## Next actions, in order
 
-1. Complete the independent package sealed proof and reviewed finite browser controller.
+1. Review the terminal independent package sealed receipt and actual finite browser controller.
 2. Complete all five actual browser journeys, phone-width controls, restart and
    saved-state checks; inspect the remaining required source-matrix evidence.
 3. Synchronize with main, deploy the accepted country batch, and verify 16 live

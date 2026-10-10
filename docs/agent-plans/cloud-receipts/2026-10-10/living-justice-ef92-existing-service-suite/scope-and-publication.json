@@ -1,0 +1,33 @@
+{
+  "source": "ef92f8f182658703e3a2de5a12395f6681ce93c4",
+  "sourceBranch": "codex/cloud-justice-evidence-order-20261010",
+  "remoteRefVerifiedFullSha": "ef92f8f182658703e3a2de5a12395f6681ce93c4",
+  "baseline": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "changedFiles": [
+    "src/game/living-world/justice-practice.ts",
+    "src/game/living-world/justice-practice.test.ts"
+  ],
+  "sourcePins": {
+    "src/game/living-world/justice-practice.ts": "d1a1c6a47bfaa7ff4c36e413ee912230675121139d469b0e230b126cc6218df1",
+    "src/game/living-world/justice-practice.test.ts": "0b85dc3ea088f0d1f98d0e2091d8b6d07642673ae8bcbce7a9b8cc89ac9ecb46",
+    "server/living-world/justice-practice-service.ts": "6589a3b1442c2ba8158dfa78daf513b9f3f35c5664467d0c92c07c1106188833",
+    "server/living-world/justice-practice-service.test.ts": "1f8b6f9df6dd0bd091173477183ba1c9715a9d91b8308a3c13c119612b8c3511"
+  },
+  "existingServiceSuite": {
+    "pass": 2,
+    "fail": 0,
+    "skip": 0
+  },
+  "sourceUnchanged": true,
+  "wrapperPerFileMaps": "empty; file hashes recorded separately here",
+  "priorWrapperStops": "Temporary in-checkout dependency symlink caused initial clean-check refusal; next label already existed empty; neither ran tests. Final unique-label terminal preserved.",
+  "rollbackConstraint": "Retain BOTH new reader and canonical transition. Old C1/eec reader cannot read canonical evidence with noncanonical historical receipt chronology.",
+  "remaining": [
+    "exhaustive service route permutations/CAS",
+    "Node and Worker cold reopen",
+    "native/mobile",
+    "compiler/build/caps integration",
+    "compatible rollback/release review"
+  ],
+  "releaseAccepted": false
+}

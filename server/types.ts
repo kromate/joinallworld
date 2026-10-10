@@ -1140,6 +1140,8 @@ export interface RouteContext {
   streetAssets?: import('./street/types.ts').StreetAssetReader
   /** Trusted host-only display capability. Never read from a request or persisted life. */
   interactiveTeachingStarts?: boolean
+  /** Trusted host authority for new reverse-capable sessions; absent means OFF. */
+  reverseGearIssuance?: boolean
   store: Store
   /** Server time in ms — never call Date.now(). */
   now(): number

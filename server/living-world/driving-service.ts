@@ -21,7 +21,7 @@ const utf8Size = (value: string): number => new TextEncoder().encode(value).byte
 
 type PacketReceipt = { sequence: number; fingerprint: string; code: string }
 type DrivingRecord = {
-  v: 1; publicId: string; journeyId: string; cityId: CityId; location: string
+  v: 1 | 2; publicId: string; journeyId: string; cityId: CityId; location: string
   createdAt: number; updatedAt: number; lastInputAt: number; creditMs: number
   revision: number; nextSequence: number; state: DrivingState; lastPacket: PacketReceipt | null
 }
@@ -50,7 +50,7 @@ export function readDrivingQualificationEvidence(db: Db, publicId: string): {
 /** Storage reader is intentionally strict. Invalid rows are refused, never silently reset. */
 function savedRecord(value: unknown, publicId: string): DrivingRecord | null {
   const recordKeys = ['v', 'publicId', 'journeyId', 'cityId', 'location', 'createdAt', 'updatedAt', 'lastInputAt', 'creditMs', 'revision', 'nextSequence', 'state', 'lastPacket']
-  if (!isRecord(value) || !exactKeys(value, recordKeys) || value.v !== 1 || value.publicId !== publicId || !identifier(value.journeyId)
+  if (!isRecord(value) || !exactKeys(value, recordKeys) || (value.v !== 1 && value.v !== 2) || value.publicId !== publicId || !identifier(value.journeyId)
     || typeof value.cityId !== 'string' || !identifier(value.location) || !safeTime(value.createdAt)
     || !safeTime(value.updatedAt) || !safeTime(value.lastInputAt) || !Number.isInteger(value.creditMs)
     || (value.creditMs as number) < 0 || (value.creditMs as number) >= MAX_CREDIT_MS
@@ -64,8 +64,9 @@ function savedRecord(value: unknown, publicId: string): DrivingRecord | null {
     || (value.nextSequence as number) > (value.revision as number)
     || (value.lastPacket === null ? value.nextSequence !== 1 : (value.lastPacket as PacketReceipt).sequence !== (value.nextSequence as number) - 1)) return null
   const stateKeys = ['routeId', 'routeVersion', 'position', 'heading', 'speed', 'checkpointIndex', 'checkpointEntry', 'stopDwellMs', 'score', 'status', 'assessment', 'feedback']
+  if (value.v === 2) stateKeys.push('gear')
   if (!isRecord(value.state) || !exactKeys(value.state, stateKeys)) return null
-  const state = readValidatedDrivingState(value.state, PRACTICE_COURSE)
+  const state = readValidatedDrivingState(value.state, PRACTICE_COURSE, value.v)
   if (!state) return null
   // A completed assessment is recorded only by the accepted packet that completed it.
   // This prevents a corrupt/fabricated terminal save from being treated as a retryable run.
@@ -93,7 +94,7 @@ function boundedCount(records: Record<string, unknown>): number {
   return count
 }
 
-function response(session: DrivingSessionView | null, code: string, ok: boolean, reason?: string, duplicate = false): DrivingResponse {
+function baseResponse(session: DrivingSessionView | null, code: string, ok: boolean, reason?: string, duplicate = false): DrivingResponse {
   return { ok, code, ...(reason ? { reason } : {}), ...(duplicate ? { duplicate: true } : {}), session,
     course: PRACTICE_COURSE, frameMs: FRAME_MS, maxFrames: MAX_FRAMES }
 }
@@ -108,6 +109,9 @@ function pauseRecord(row: DrivingRecord, now: number, feedback: string): void {
   row.creditMs = 0; row.lastInputAt = at; row.updatedAt = at; row.revision++
 }
 function writeRecord(records: Record<string, unknown>, row: DrivingRecord, ctx: RouteContext): void {
+  // v1 keeps its exact historical state shape. Only an explicit gear choice upgrades this
+  // driving record to v2; no global save schema or unrelated world state changes.
+  row.v = Object.hasOwn(row.state, 'gear') ? 2 : 1
   const encoded = JSON.stringify(row)
   if (utf8Size(encoded) > MAX_RECORD_BYTES) throw ctx.fail(507, 'driving_record_too_large')
   records[row.publicId] = row
@@ -120,10 +124,13 @@ function exactKeys(value: Record<string, unknown>, keys: readonly string[]): boo
   return own.length === keys.length && own.every((key) => typeof key === 'string' && keys.includes(key))
 }
 function inputFrame(value: unknown): value is DrivingInput {
-  return isRecord(value) && exactKeys(value, ['throttle', 'brake', 'steer'])
+  const legacyKeys = ['throttle', 'brake', 'steer']
+  const gearedKeys = [...legacyKeys, 'gear']
+  return isRecord(value) && (exactKeys(value, legacyKeys) || exactKeys(value, gearedKeys))
     && typeof value.throttle === 'number' && Number.isFinite(value.throttle) && value.throttle >= 0 && value.throttle <= 1
     && typeof value.brake === 'number' && Number.isFinite(value.brake) && value.brake >= 0 && value.brake <= 1
     && typeof value.steer === 'number' && Number.isFinite(value.steer) && value.steer >= -1 && value.steer <= 1
+    && (!Object.hasOwn(value, 'gear') || value.gear === 'forward' || value.gear === 'reverse')
 }
 function lifecycle(value: unknown, includeJourney: boolean): value is DrivingLifecycleRequest {
   if (!isRecord(value) || !exactKeys(value, includeJourney ? ['cityId', 'requestId', 'journeyId', 'revision'] : ['cityId', 'requestId'])) return false
@@ -137,7 +144,16 @@ function packet(value: unknown): value is DrivingControlPacket {
     && value.frames.length <= MAX_FRAMES && value.frames.every(inputFrame)
 }
 
-export function createDrivingService(ctx: RouteContext) {
+export interface DrivingServiceOptions {
+  /** Trusted server configuration. Request bodies and saved records cannot enable this. */
+  reverseGearIssuance?: boolean
+}
+
+export function createDrivingService(ctx: RouteContext, options: DrivingServiceOptions = {}) {
+  const reverseGearIssuanceEnabled = options.reverseGearIssuance === true
+  function response(session: DrivingSessionView | null, code: string, ok: boolean, reason?: string, duplicate = false): DrivingResponse {
+    return { ...baseResponse(session, code, ok, reason, duplicate), ...(reverseGearIssuanceEnabled ? { reverseGearControls: true as const } : {}) }
+  }
   function access(db: Db, request: RouteRequest, requestedCity: CityId): { session: SessionRecord; location: string } {
     const session = request.requireSession(db, { renew: true })
     if (!ctx.allow(`living-world:driving:${session.publicId}`, 660, 60_000)) throw ctx.fail(429, 'rate_limited')
@@ -168,6 +184,7 @@ export function createDrivingService(ctx: RouteContext) {
       if (found === false) return response(null, 'invalid_saved_journey', false, 'Saved driving data is invalid and has been kept for recovery.')
       if (!found) return response(null, 'no_journey', true)
       if (found.state.status === 'running') {
+        if (found.revision >= MAX_TIME) return response(view(found), 'revision_exhausted', false)
         const now = ctx.now()
         if (!safeTime(now)) return response(view(found), 'invalid_server_clock', false)
         const why = found.cityId !== cityId ? 'Lesson paused because your character changed cities.'
@@ -200,6 +217,7 @@ export function createDrivingService(ctx: RouteContext) {
         if (found && now < watermark(found)) return { ok: false, code: 'clock_reversed', journeyId: found.journeyId, revision: found.revision }
         if (found && found.state.status !== 'complete') {
           if (found.state.status === 'running' && (found.cityId !== cityId || found.location !== location)) {
+            if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
             pauseRecord(found, now, 'Lesson paused because your character left its bound city or location.')
             writeRecord(records, found, ctx)
           }
@@ -275,6 +293,7 @@ export function createDrivingService(ctx: RouteContext) {
     const cityId = cityOf(ctx, body.cityId)
     if (!cityId) throw ctx.fail(400, 'invalid_city')
     const fingerprint = JSON.stringify({ cityId, journeyId: body.journeyId, sequence: body.sequence, frames: body.frames })
+    const explicitGear = body.frames.some((frame) => Object.hasOwn(frame, 'gear'))
     return ctx.store.transact((db) => {
       const { session, location } = access(db, request, cityId)
       const { records } = collection(ctx, db)
@@ -282,6 +301,7 @@ export function createDrivingService(ctx: RouteContext) {
       if (found === null || found === false) return response(null, found === false ? 'invalid_saved_journey' : 'no_journey', false)
       if (found.cityId !== cityId || found.location !== location) {
         if (found.state.status === 'running') {
+          if (found.revision >= MAX_TIME) return response(view(found), 'revision_exhausted', false)
           const now = ctx.now()
           if (!safeTime(now)) return response(view(found), 'invalid_server_clock', false)
           pauseRecord(found, now, 'Lesson paused because your character left its bound city or location.')
@@ -290,9 +310,20 @@ export function createDrivingService(ctx: RouteContext) {
         return response(view(found), found.cityId !== cityId ? 'city_mismatch' : 'location_changed', false)
       }
       if (found.journeyId !== body.journeyId) return response(view(found), 'journey_mismatch', false)
+      // Replay the sole retained successful packet only after actor and journey context, city,
+      // location, and the strict saved-row validation above have succeeded. A delayed exact
+      // retry must not run timeout/clock pausing first, regardless of issuance mode or frame shape.
+      const receipt = found.lastPacket
+      if (receipt?.sequence === body.sequence) {
+        if (receipt.fingerprint !== fingerprint) return response(view(found), 'packet_conflict', false)
+        return response(view(found), receipt.code, true, undefined, true)
+      }
+      if (body.sequence !== found.nextSequence) return response(view(found), 'sequence_conflict', false)
+      if (found.nextSequence >= MAX_TIME) return response(view(found), 'sequence_exhausted', false)
+      if (found.revision >= MAX_TIME) return response(view(found), 'revision_exhausted', false)
+      if (!reverseGearIssuanceEnabled && explicitGear) return response(view(found), 'reverse_gear_disabled', false)
       const now = ctx.now()
       if (!safeTime(now)) return response(view(found), 'invalid_server_clock', false)
-      const receipt = found.lastPacket
       const elapsed = now - found.lastInputAt
       let pauseCode: string | null = null
       if (found.state.status === 'running' && now < watermark(found)) {
@@ -304,11 +335,6 @@ export function createDrivingService(ctx: RouteContext) {
         writeRecord(records, found, ctx)
         pauseCode = 'input_timeout'
       }
-      if (receipt?.sequence === body.sequence) {
-        if (receipt.fingerprint !== fingerprint) return response(view(found), 'packet_conflict', false)
-        return response(view(found), receipt.code, true, undefined, true)
-      }
-      if (body.sequence !== found.nextSequence) return response(view(found), 'sequence_conflict', false)
       if (pauseCode) return response(view(found), pauseCode, false)
       if (found.state.status !== 'running') return response(view(found), found.state.status === 'complete' ? 'journey_complete' : 'journey_paused', false)
       const credit = Math.min(MAX_CREDIT_MS, found.creditMs + elapsed)
@@ -345,6 +371,7 @@ export function createDrivingService(ctx: RouteContext) {
         if (found.revision !== body.revision) return { ok: false, code: 'revision_conflict', journeyId: found.journeyId, revision: found.revision }
         if (found.cityId !== cityId || found.location !== location) {
           if (found.state.status === 'running') {
+            if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
             pauseRecord(found, now, 'Lesson paused because your character left its bound city or location.')
             writeRecord(records, found, ctx)
           }
@@ -352,9 +379,11 @@ export function createDrivingService(ctx: RouteContext) {
         }
         if (target === 'paused') {
           if (found.state.status !== 'running') return { ok: false, code: 'journey_not_running' }
+          if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
           pauseRecord(found, now, 'Lesson paused; the vehicle is safely stopped.')
         } else {
           if (found.state.status !== 'paused') return { ok: false, code: 'journey_not_paused' }
+          if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
           if (now < watermark(found)) return { ok: false, code: 'clock_reversed', journeyId: found.journeyId, revision: found.revision }
           const safe = pauseDriving(found.state)
           found.state = { ...safe, status: 'running', feedback: 'Lesson resumed; controls are accepted in timed packets.' }

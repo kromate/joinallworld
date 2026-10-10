@@ -9,7 +9,11 @@ export interface DrivingInput {
   throttle: number
   brake: number
   steer: number
+  /** Optional for old clients. Omitted means forward; reverse must be requested explicitly. */
+  gear?: DrivingGear
 }
+
+export type DrivingGear = 'forward' | 'reverse'
 
 export interface DrivingPoint { x: number; z: number }
 export interface DrivingCheckpoint {
@@ -35,7 +39,10 @@ export interface DrivingState {
   routeVersion: string
   position: DrivingPoint
   heading: number
+  /** Nonnegative metres per second; gear identifies the direction of travel. */
   speed: number
+  /** Absent only in legacy v1 saves, whose motion is always forward. */
+  gear?: DrivingGear
   checkpointIndex: number
   /** `blocked` requires exit before entry; `entered` applies only to a stop checkpoint. */
   checkpointEntry: CheckpointEntry
@@ -49,6 +56,8 @@ export interface DrivingStep { state: DrivingState; feedback: string }
 
 const STEP_SECONDS = 0.1
 const MAX_SPEED = 16
+const MAX_REVERSE_SPEED = 3
+const MAX_LEGACY_SAVED_SPEED = 20
 const MAX_SCORE = 100
 const ROAD_MARGIN = 0.65
 const STOP_SPEED = 0.35
@@ -59,9 +68,13 @@ const MAX_POINTS = 512
 const MAX_CHECKPOINTS = 64
 const MAX_ROUTE_WIDTH = 40
 const MAX_ROUTE_SPEED = 40
-const MAX_SAVED_SPEED = 20
-const INPUT_KEYS = ['brake', 'steer', 'throttle']
+const INPUT_KEYS = ['brake', 'gear', 'steer', 'throttle']
+const LEGACY_INPUT_KEYS = ['brake', 'steer', 'throttle']
 const record = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value)
+function exactKeys(value: Record<string, unknown>, keys: readonly string[]): boolean {
+  const own = Reflect.ownKeys(value)
+  return own.length === keys.length && own.every((key) => typeof key === 'string' && keys.includes(key))
+}
 const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value)
 const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n))
 const wrapHeading = (heading: number) => ((heading + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI
@@ -171,10 +184,13 @@ export function createDriving(route: DrivingRoute): DrivingState {
 function validInput(value: unknown): value is DrivingInput {
   if (!record(value)) return false
   const keys = Reflect.ownKeys(value)
-  if (keys.length !== 3 || keys.some((key) => typeof key !== 'string' || !INPUT_KEYS.includes(key))) return false
+  const legacy = keys.length === LEGACY_INPUT_KEYS.length && keys.every((key) => typeof key === 'string' && LEGACY_INPUT_KEYS.includes(key))
+  const geared = keys.length === INPUT_KEYS.length && keys.every((key) => typeof key === 'string' && INPUT_KEYS.includes(key))
+  if (!legacy && !geared) return false
   return finite(value.throttle) && value.throttle >= 0 && value.throttle <= 1
     && finite(value.brake) && value.brake >= 0 && value.brake <= 1
     && finite(value.steer) && value.steer >= -1 && value.steer <= 1
+    && (!Object.hasOwn(value, 'gear') || value.gear === 'forward' || value.gear === 'reverse')
 }
 
 /** One fixed 100 ms simulation step. There is deliberately no client duration or position argument. */
@@ -185,7 +201,7 @@ export function stepDriving(state: DrivingState, input: unknown, route: DrivingR
   }
   // State comes from the server-owned save pipeline. Sanitize it before any physics step;
   // the network contract must never accept a client-submitted state or position.
-  const loaded = readDrivingStateChecked(state, route, false)
+  const loaded = readDrivingStateChecked(state, route, false, state.gear === undefined ? 1 : 2)
   if (loaded.status !== 'running') return { state: loaded, feedback: loaded.feedback }
   if (!validInput(input)) {
     const paused = pauseDriving(loaded, 'Controls were invalid; the vehicle is safely stopped.')
@@ -194,21 +210,36 @@ export function stepDriving(state: DrivingState, input: unknown, route: DrivingR
 
   const next = copyState(loaded)
   const oldPosition = next.position
-  const acceleration = input.throttle * 3.2 - input.brake * 8 - 0.18
-  next.speed = clamp(next.speed + acceleration * STEP_SECONDS, 0, MAX_SPEED)
+  const requestedGear: DrivingGear = input.gear ?? 'forward'
+  const currentGear: DrivingGear = loaded.gear ?? 'forward'
+  const stateIsVersioned = loaded.gear !== undefined || input.gear !== undefined
+  // Gear is a selected direction; speed stays nonnegative. A direction change brakes the
+  // current motion to zero first, then stores the requested gear for the following step.
+  const changingDirection = next.speed > 0 && currentGear !== requestedGear
+  if (changingDirection) {
+    next.speed = Math.max(0, next.speed - 8 * STEP_SECONDS)
+    if (next.speed === 0 && stateIsVersioned) next.gear = requestedGear
+  } else {
+    if (stateIsVersioned) next.gear = requestedGear
+    const acceleration = input.throttle * 3.2 - input.brake * 8 - 0.18
+    const speedCap = requestedGear === 'reverse' ? MAX_REVERSE_SPEED : MAX_SPEED
+    next.speed = clamp(next.speed + acceleration * STEP_SECONDS, 0, speedCap)
+  }
+  const direction = (next.gear ?? 'forward') === 'reverse' ? -1 : 1
   const speedFeedback = next.speed > route.speedLimit ? 'Slow down: you exceeded the speed limit.' : ''
   if (speedFeedback && state.speed <= route.speedLimit) next.score = Math.max(0, next.score - 8)
 
   // Bicycle-style steering: the faster the car moves, the wider a turn becomes.
   const wheelAngle = input.steer * 0.62
-  const yawRate = next.speed * Math.tan(wheelAngle) / 2.6
+  const yawRate = direction * next.speed * Math.tan(wheelAngle) / 2.6
   next.heading = wrapHeading(next.heading + yawRate * STEP_SECONDS)
-  const candidate = { x: oldPosition.x + Math.sin(next.heading) * next.speed * STEP_SECONDS, z: oldPosition.z + Math.cos(next.heading) * next.speed * STEP_SECONDS }
-  let feedback = speedFeedback || 'Follow the road and reach each checkpoint in order.'
+  const candidate = { x: oldPosition.x + Math.sin(next.heading) * next.speed * STEP_SECONDS * direction, z: oldPosition.z + Math.cos(next.heading) * next.speed * STEP_SECONDS * direction }
+  let feedback = speedFeedback || (changingDirection ? 'Braking to a stop before changing direction.' : 'Follow the road and reach each checkpoint in order.')
   if (!sweptOnRoad(oldPosition, candidate, route)) {
     // Stop at the last server-known safe point. Snapping to a nearest road could teleport
     // across a gap onto an unrelated/disconnected road polyline.
-    next.position = oldPosition; next.speed = 0; next.score = Math.max(0, next.score - 25); next.stopDwellMs = 0
+    // Keep the last accepted heading too: a rejected turn cannot pivot the vehicle in place.
+    next.position = oldPosition; next.heading = loaded.heading; next.speed = 0; next.score = Math.max(0, next.score - 25); next.stopDwellMs = 0
     feedback = 'You left the road. The car has stopped; steer back along the route.'
   } else next.position = candidate
 
@@ -221,20 +252,29 @@ export function stepDriving(state: DrivingState, input: unknown, route: DrivingR
       // make a fresh approach on a later fixed frame.
       next.stopDwellMs = 0
       if (!isInside) { next.checkpointEntry = 'armed'; feedback = 'Leave this checkpoint zone, then enter it to record it.' }
+    } else if (requestedGear === 'reverse' && next.checkpointEntry === 'entered') {
+      // Choosing reverse cancels dwell immediately, even while the car brakes before the shift.
+      next.checkpointEntry = isInside ? 'blocked' : 'armed'; next.stopDwellMs = 0
     } else if (next.checkpointEntry === 'entered') {
       if (!checkpoint.stopRequired || !isInside) {
         next.checkpointEntry = 'armed'; next.stopDwellMs = 0
-      } else if (next.speed <= STOP_SPEED) next.stopDwellMs = Math.min(STOP_DWELL_MS, next.stopDwellMs + 100)
+      } else if (Math.abs(next.speed) <= STOP_SPEED) next.stopDwellMs = Math.min(STOP_DWELL_MS, next.stopDwellMs + 100)
       else next.stopDwellMs = 0
       if (checkpoint.stopRequired && next.stopDwellMs >= STOP_DWELL_MS) {
         next.checkpointIndex++; next.stopDwellMs = 0; next.checkpointEntry = entryAt(next.position, route, next.checkpointIndex)
         feedback = 'Full stop recorded. Continue to the next checkpoint.'
       }
-    } else if (!wasInside && swept) {
+    } else if (direction < 0 && next.checkpointEntry === 'armed' && !wasInside && swept) {
+      // Reverse motion cannot record progress. If it enters the active zone, require the
+      // driver to leave it before a later forward approach; this also keeps saves valid.
+      if (isInside) next.checkpointEntry = 'blocked'
+      next.stopDwellMs = 0
+      feedback = 'Reverse cannot record a checkpoint; leave the zone and approach forward.'
+    } else if (direction > 0 && !wasInside && swept) {
       if (checkpoint.stopRequired) {
         if (isInside) {
           next.checkpointEntry = 'entered'
-          if (next.speed <= STOP_SPEED) next.stopDwellMs = Math.min(STOP_DWELL_MS, next.stopDwellMs + 100)
+          if (Math.abs(next.speed) <= STOP_SPEED) next.stopDwellMs = Math.min(STOP_DWELL_MS, next.stopDwellMs + 100)
           else feedback = 'Stop inside this checkpoint before continuing.'
         } else feedback = 'Stop inside this checkpoint before continuing.'
       } else {
@@ -258,6 +298,7 @@ export function pauseDriving(state: DrivingState, feedback = 'Lesson paused; the
   if (paused.status === 'running') paused.status = 'paused'
   if (paused.checkpointEntry === 'entered') paused.checkpointEntry = 'blocked'
   paused.speed = 0; paused.stopDwellMs = 0; paused.feedback = feedback
+  if (paused.gear !== undefined) paused.gear = 'forward'
   return paused
 }
 
@@ -266,35 +307,44 @@ export function pauseDriving(state: DrivingState, feedback = 'Lesson paused; the
  * A live save always reloads paused at zero speed with no held controls or partial stop dwell;
  * only a later authenticated server resume action may make it active again.
  */
-export function readDrivingState(value: unknown, route: DrivingRoute): DrivingState {
-  return readDrivingStateChecked(value, route, true)
+export function readDrivingState(value: unknown, route: DrivingRoute, version?: 1 | 2): DrivingState {
+  return readDrivingStateChecked(value, route, true, version ?? 1)
 }
 
 /** Strict, non-stepping validation of a server-owned record. Invalid data is rejected so
  * its caller can quarantine the original save rather than overwrite it with a new lesson.
  * Live state is preserved; this function is never proof of client-submitted progress.
  */
-export function readValidatedDrivingState(value: unknown, route: DrivingRoute): DrivingState | null {
-  return validateDrivingState(value, route, false)
+export function readValidatedDrivingState(value: unknown, route: DrivingRoute, version?: 1 | 2): DrivingState | null {
+  return validateDrivingState(value, route, false, version ?? 1)
 }
 
-function readDrivingStateChecked(value: unknown, route: DrivingRoute, pauseOnLoad: boolean): DrivingState {
-  return validateDrivingState(value, route, pauseOnLoad) ?? safePaused(route,
+function readDrivingStateChecked(value: unknown, route: DrivingRoute, pauseOnLoad: boolean, version?: 1 | 2): DrivingState {
+  return validateDrivingState(value, route, pauseOnLoad, version) ?? safePaused(route,
     validRoute(route) && record(value) && (value.routeId !== route.id || value.routeVersion !== route.version)
       ? 'The route changed; start a new lesson after review.'
       : 'Saved lesson data was invalid; the vehicle is safely stopped.')
 }
 
-function validateDrivingState(value: unknown, route: DrivingRoute, pauseOnLoad: boolean): DrivingState | null {
+function validateDrivingState(value: unknown, route: DrivingRoute, pauseOnLoad: boolean, version?: 1 | 2): DrivingState | null {
   if (!validRoute(route) || !record(value)) return null
+  const stateVersion = version ?? 1
+  const stateKeys = ['routeId', 'routeVersion', 'position', 'heading', 'speed', 'checkpointIndex', 'checkpointEntry', 'stopDwellMs', 'score', 'status', 'assessment', 'feedback']
+  if (stateVersion === 2) stateKeys.push('gear')
+  if (!exactKeys(value, stateKeys)) return null
   if (value.routeId !== route.id || value.routeVersion !== route.version) return null
   const point = value.position
-  if (!validPoint(point) || !finite(value.heading) || Math.abs(value.heading) > Math.PI * 1_000 || !finite(value.speed) || value.speed < 0 || value.speed > MAX_SAVED_SPEED
+  const gearValid = stateVersion === 1 ? !Object.hasOwn(value, 'gear') : value.gear === 'forward' || value.gear === 'reverse'
+  const speedCap = stateVersion === 1 ? MAX_LEGACY_SAVED_SPEED : value.gear === 'reverse' ? MAX_REVERSE_SPEED : MAX_SPEED
+  if (!gearValid || !validPoint(point) || !finite(value.heading) || Math.abs(value.heading) > Math.PI * 1_000 || !finite(value.speed) || value.speed < 0 || value.speed > speedCap
     || !Number.isInteger(value.checkpointIndex) || (value.checkpointIndex as number) < 0 || (value.checkpointIndex as number) > route.checkpoints.length
     || typeof value.checkpointEntry !== 'string' || !['blocked', 'armed', 'entered'].includes(value.checkpointEntry)
     || !finite(value.stopDwellMs) || value.stopDwellMs < 0 || value.stopDwellMs >= STOP_DWELL_MS || !finite(value.score) || value.score < 0 || value.score > MAX_SCORE
     || typeof value.status !== 'string' || !['running', 'paused', 'complete'].includes(value.status)
     || typeof value.assessment !== 'string' || !['pending', 'passed', 'failed'].includes(value.assessment)
+    || (value.checkpointEntry === 'entered' && stateVersion === 2 && value.gear === 'reverse')
+    || (stateVersion === 2 && value.status === 'paused' && value.gear !== 'forward')
+    || (stateVersion === 2 && value.status === 'complete' && value.gear !== 'forward')
     || typeof value.feedback !== 'string' || value.feedback.length > 160) return null
   if (value.status === 'paused' && (value.speed !== 0 || value.stopDwellMs !== 0)) return null
   const position = { x: point.x, z: point.z }
@@ -313,9 +363,11 @@ function validateDrivingState(value: unknown, route: DrivingRoute, pauseOnLoad: 
     return null
   }
   if (savedStatus === 'complete') return { routeId: route.id, routeVersion: route.version, position, heading: wrapHeading(value.heading), speed: 0,
+    ...(stateVersion === 2 ? { gear: value.gear as DrivingGear } : {}),
     checkpointIndex, checkpointEntry: 'blocked', stopDwellMs: 0, score: value.score, status: 'complete', assessment: value.assessment as DrivingAssessment, feedback: value.feedback }
   const reloadEntry = pauseOnLoad ? entryAt(position, route, checkpointIndex) : entry
   return { routeId: route.id, routeVersion: route.version, position, heading: wrapHeading(value.heading), speed: pauseOnLoad || savedStatus === 'paused' ? 0 : value.speed,
+    ...(stateVersion === 2 ? { gear: pauseOnLoad || savedStatus === 'paused' ? 'forward' as const : value.gear as DrivingGear } : {}),
     checkpointIndex, checkpointEntry: reloadEntry, stopDwellMs: pauseOnLoad || savedStatus === 'paused' ? 0 : value.stopDwellMs, score: value.score,
     status: pauseOnLoad ? 'paused' : savedStatus, assessment: 'pending',
     feedback: pauseOnLoad ? 'Lesson paused after reload; resume through the server before driving.' : value.feedback }

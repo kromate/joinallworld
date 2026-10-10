@@ -1,0 +1,187 @@
+{
+  "decision": "MODIFY",
+  "scope": "Source-only bounded consent-view loader review; no durable adapter or runtime authority acceptance",
+  "candidate": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
+  "branch": "codex/cloud-household-consent-view-20261010",
+  "foundation": "35731140a32da445b8bfd95075f79c0948010694",
+  "sourceRepository": "https://github.com/kromate/joinallworld",
+  "pins": {
+    "server/households/consentView.ts": "4f48fe97c498ccf579045b51b921366be9f9828d96637e5a2e5ec55893c2fd0c",
+    "server/households/records.ts": "d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4",
+    "server/households/consent.ts": "2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a",
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d"
+  },
+  "diff": {
+    "newFiles": 1,
+    "newLines": 225,
+    "foundationChanged": false
+  },
+  "execution": {
+    "sourceReadsOnly": true,
+    "compiler": false,
+    "tests": false,
+    "build": false,
+    "server": false,
+    "browser": false,
+    "delegation": false,
+    "sourceEdits": false
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "priority": "P1",
+      "classification": "loader correctness blocker",
+      "lines": [
+        172,
+        186
+      ],
+      "related": "consent.ts:172",
+      "title": "Seven operations omit the mandatory owner character index",
+      "operations": [
+        "decline",
+        "cancel",
+        "expire",
+        "terminate-invitation",
+        "leave",
+        "revoke",
+        "terminate"
+      ],
+      "reproducer": "Valid open household owned by O, owner index hosted=[H], target member R with joined=[M], life index joined=[M], authenticated R; load leave for M with current household/member revisions. Loader returns only R character index.",
+      "prediction": "reduceConsent returns index_mismatch at its universal owner-index check, before the authorized operation.",
+      "required": "Load h.owner.character and target character exactly once for all seven operations; preserve index presence/absence and refusal behavior."
+    },
+    {
+      "id": "F2",
+      "priority": "P1",
+      "classification": "loader integrity blocker",
+      "lines": [
+        34,
+        37
+      ],
+      "title": "Accepted-invitation read does not bind value.id to requested inviteId",
+      "reproducer": "Valid close view with member M pointing to I. tx.invite(I) returns present accepted invite J where J != I but membershipId=M, owner/recipient/home/household/epoch/permissions/answeredAt all match.",
+      "prediction": "linkedMemberInvites accepts the wrong-key row; close view and reducer patch can succeed.",
+      "required": "Require invite.id === member.inviteId in linkedMemberInvites. Preserve snapshot/read-set protection for this supporting read."
+    },
+    {
+      "id": "F3",
+      "priority": "P2",
+      "classification": "loader fact-provenance defect",
+      "lines": [
+        95,
+        123
+      ],
+      "title": "Unused pair reads are fabricated as absent",
+      "reproducer": "Valid register or owner close; canonical pair exists, but no pairFact call occurs.",
+      "prediction": "Returned actor authority contains pair.state=absent despite no authoritative absence lookup.",
+      "required": "Use not-loaded for an intentionally unneeded pair; only an actual point lookup may establish absent."
+    },
+    {
+      "id": "F4",
+      "priority": "P2",
+      "classification": "boundary contract blocker for malformed/accessor-safe acceptance",
+      "lines": [
+        28,
+        43,
+        81,
+        114,
+        223
+      ],
+      "title": "Unknown parser and point validation can invoke accessors or throw",
+      "reproducer": "rawCommand={get householdId(){throw Error('getter executed')}}; alternatively tx.home resolves {state:'present',value:{get id(){throw Error('row getter executed')}}}. A tx.home promise rejection also escapes.",
+      "prediction": "loadConsentView rejects its promise rather than producing a tagged failure; getter code executes. Nonthrowing getters and inherited fields can pass foundation structural guards.",
+      "required": "Define and enforce a bounded inert plain-data snapshot boundary before foundation validators, or make loader validation descriptor-safe. Reject accessors without invocation. Preserve transaction abort on read faults; never map faults/not-loaded to absent.",
+      "distinction": "No direct privilege escalation claimed for already-canonical JSON rows. Foundation guards were approved for canonical trusted views, not arbitrary accessor objects. Storage errors may intentionally throw if abort semantics are explicit."
+    }
+  ],
+  "operationReadReview": [
+    {
+      "ops": [
+        "register"
+      ],
+      "characters": "home owner",
+      "lives": "none",
+      "maxAsyncReads": 5,
+      "status": "structure complete for canonical inputs; F3/F4 apply"
+    },
+    {
+      "ops": [
+        "invite"
+      ],
+      "characters": "owner + recipient",
+      "lives": "none",
+      "maxAsyncReads": 48,
+      "status": "bounded roster/pending, linked invitations and pair; reducer enforces authority/crosslinks; F2/F4 apply"
+    },
+    {
+      "ops": [
+        "accept"
+      ],
+      "characters": "owner + recipient",
+      "lives": "recipient",
+      "maxAsyncReads": 35,
+      "status": "bounded roster plus linked invitations, invitation read twice in actor path, owner fact and pair; F2/F4 apply"
+    },
+    {
+      "ops": [
+        "decline",
+        "cancel",
+        "expire",
+        "terminate-invitation"
+      ],
+      "characters": "recipient only; owner missing",
+      "lives": "none",
+      "maxAsyncReads": 7,
+      "afterF1Max": 8,
+      "status": "F1 blocker"
+    },
+    {
+      "ops": [
+        "leave",
+        "revoke",
+        "terminate"
+      ],
+      "characters": "member only; owner missing",
+      "lives": "member",
+      "maxAsyncReads": 9,
+      "afterF1Max": 10,
+      "status": "F1 blocker; F2 applies"
+    },
+    {
+      "ops": [
+        "close"
+      ],
+      "characters": "owner + all members + all pending recipients, max28",
+      "lives": "all active members, max11",
+      "maxAsyncReads": 82,
+      "status": "all mutable linked indexes requested; atomic persistence/handoffs unimplemented; F2/F4 apply"
+    }
+  ],
+  "authorityLimits": [
+    "Actor is taken only from tx.sessionLife; exact authenticated session/slot/locator/life binding remains a trusted adapter obligation.",
+    "System authority comes only from tx.systemAuthority; typed objects do not mint authority. Internal jobs must prove current cause/subject/evidence in the transaction.",
+    "Final isView and reducer role/evidence checks remain mandatory; the weak kind-only Authority predicate at line114 is not a full authority parser.",
+    "Shared CharacterId/LifeId brands come from records.ts, also used by lifeIdentity.ts; brands validate UUID shape, not semantic authority."
+  ],
+  "nextFiniteAdapterRequirements": [
+    "Correct/review the loader and remotely prove all eleven operations through loader plus reducer, not shape-only assertions.",
+    "One real store.transact binds authenticated exact life and home/epoch, current pair facts and internal system provenance; no body-supplied view or current-life fallback.",
+    "Keyed exact reads with real absence, snapshot/read-set validation including accepted-invitation supporting reads, no global scans, canonical inert row boundary.",
+    "Check every reducer expectation and all relevant supporting reads; commit writes, events/receipt and liability handoffs atomically or abort with no mutation.",
+    "Authorize minimal durable once-replay before new-intent loader, including closed households and ended memberships, with stable kind/fingerprint and actor/life checks.",
+    "Account park/archive/legacy move/erase and home replacement hooks preserve identity and close affected links before authority changes; no GET assignments.",
+    "Actual cloud Node/Worker durable reopen, rollback injection, races, malformed-row and boundedness evidence on pinned candidate; no local heavy checks.",
+    "Residence, room occupancy, original-home travel/egress, member-only sleep/cook and economy/UI integration remain separate unimplemented requirements."
+  ],
+  "noAcceptance": [
+    "durable database authority",
+    "transactional commit",
+    "residence",
+    "runtime",
+    "UI",
+    "payments",
+    "release"
+  ],
+  "cutoff": "2026-10-10T08:00:00Z",
+  "paidResourcesAuthorized": false
+}

@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { selectAfricaBatches, selectedAssets } from './sealed-africa-coverage.mjs';
+import { assertRegisteredAfricaCoverage, selectAfricaBatches, selectedAssets } from './sealed-africa-coverage.mjs';
 import { sealedAdminRateWaitPolicy } from './sealed-admin-rate-policy.mjs';
 
 const HELP = `Usage: node --experimental-strip-types world/tooling/verify-sealed-africa.mjs --source ABSOLUTE_DIR --package ABSOLUTE_DIR --sha 40_HEX --tools ABSOLUTE_DIR
@@ -372,18 +372,27 @@ async function main(args) {
       handleStructuredLogs: () => {},
     };
     const sourceUrl = directory => pathToFileURL(join(args.source, directory)).href;
-    const [journeys, testTokens, tokenModule, hostContext, adminGate] = await within('canonical fixture imports', Promise.all([
+    const [journeys, testTokens, tokenModule, hostContext, adminGate, cityRegistry] = await within('canonical fixture imports', Promise.all([
       import(sourceUrl('server/testing/africaJourney.ts')),
       import(sourceUrl('server/accounts/test-tokens.ts')),
       import(sourceUrl('server/accounts/token.ts')),
       import(sourceUrl('server/host-context.ts')),
       import(sourceUrl('server/admin/gate.ts')),
+      import(sourceUrl('src/game/cities/registry.ts')),
     ]), LIMITS.startMs);
     const batches = selectAfricaBatches(journeys.AFRICA_DESTINATION_BATCHES, args.sha, journeys.AFRICA_CAPITALS);
+    const registeredRules = await within('registered source city rules', cityRegistry.loadAllCityRules(), LIMITS.startMs);
+    const registeredForeignCities = registeredRules.filter(rules => {
+      const country = rules.country?.id;
+      assert.equal(typeof country, 'string', `${rules.id}: registered rules must declare a country`);
+      return country !== 'ng' && country !== 'nigeria';
+    }).map(rules => rules.id);
+    assertRegisteredAfricaCoverage(batches, registeredForeignCities);
     const allCities = batches.flatMap(batch => batch.cities);
     const selected = selectedAssets(checked.files, allCities);
     evidence.destinationBatches = batches.map(batch => ({ name: batch.name, cities: [...batch.cities] }));
     evidence.coveredCities = [...allCities];
+    evidence.registeredForeignCities = [...registeredForeignCities];
     const control = { testTokens, tokenModule, getWorker: () => workerGetter(), setWorker: null };
     control.setWorker = getter => { workerGetter = getter; };
     fixture = await makeHost({ options, Miniflare, convertV4MiniflareOptions, storagePath, currentWorker: control, setWorker: control.setWorker, within, responseBodies, remainingMs, adminGate, evidence });

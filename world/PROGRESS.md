@@ -1,3 +1,43 @@
+# African runtime rollout chain checkpoint, 10 October 2026 at 00:05 UTC
+
+Ten cumulative candidate manifests now cover the 42 generated, unadmitted
+foreign starter cities. All 252 selected city asset/receipt pins match current
+files and each receipt's own asset pins. Each stage preserves the entire 50-row
+C1 prefix and the original Nigeria metadata shape. The final candidate has
+92 cities and 53 country identities including Nigeria. This is proposed
+admission data, not 53 live countries. Canonical runtime admission remains
+unchanged, and production still runs C1 with eleven open countries.
+
+The exact serial inputs and required runtime/release gates are in
+playable-africa-rollout/proposals/africa-runtime-rollout-chain.json. The first
+stage reuses the existing third-five proposal byte for byte; subsequent stages
+append their pinned source packet. Corrected fourth/fifth extent packets replace
+stale pins in future proposals while preserving the historical packet files.
+The existing remote worker remains assigned first to EG/MA/RW/UG/ZM. Shared
+caller migration and complete runtime/compiler/budget/native acceptance remain
+open. No source snapshot is activated by writing these proposal files.
+
+Moroni's remote 33 Python fixtures passed on exact704d592c; the public log and
+four local Git blob pins were independently compared. This accepts source
+fixtures only. Request reservation still uses a non-atomic direct write and
+has no proven crash durability. No remaining request may be consumed before
+that defect is repaired and verified. See moroni-query-revision-source-acceptance.json.
+
+Remote exact5dd compiler diagnostics independently show client/test heap
+exhaustion at1536MiB. The next candidate check uses the demonstrated serial
+4096MiB compiler ceiling within the existing32GiB cloud machine, heavy slot1.
+No game budget, source guard, error baseline or resource subscription changed.
+
+Original native ON900 stage50155 finished at its internal deadline, exit0,
+with child20477 absent and all seven original store/control fields retained.
+A's persisted marker is CHECK revision5/generation1, matching the prior marker
+hash, with zero completed shifts. New OFF900 attempt61944 exited1 during a
+read timeout before readiness or control mutation. Its failed stderr is retained;
+input/module diagnostics precede a bounded retry. This separate teaching
+acceptance does not block the next country worker.
+
+Earlier dated checkpoints below retain their original evidence scope.
+
 # Next five-country candidate checkpoint, 9 October 2026 at 23:51 UTC
 
 A proposed runtime admission now appends Cairo/Egypt, Rabat/Morocco,

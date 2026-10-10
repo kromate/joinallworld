@@ -1,0 +1,492 @@
+{
+  "schemaVersion": 1,
+  "baseline": {
+    "c1Commit": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "files": {
+      "catalogue": {
+        "path": "src/game/cities/catalogue.generated.ts",
+        "bytes": 3692,
+        "sha256": "88a49bd6230cfe7da918ef808e2df5ee087524bb5f725570bda96697f13b531b"
+      },
+      "loaders": {
+        "path": "src/game/cities/loaders.generated.ts",
+        "bytes": 2962,
+        "sha256": "c9a3a7255c8aee9ef2137f0a24d610de0a4c540e3f7298ac8d62370c6e98eb21"
+      },
+      "routes": {
+        "path": "src/game/cities/routes.generated.ts",
+        "bytes": 8088,
+        "sha256": "334b0a83bcc69dc4b347a3ab35b664b1cf2488e54257b4f66856c9278f48cd0c"
+      },
+      "catalogueSource": {
+        "path": "src/game/cities/catalogue.ts",
+        "bytes": 2494,
+        "sha256": "e9307cc3625922a338c7534f96709001555c0b86ff54dad528db306c64260a03"
+      }
+    }
+  },
+  "inventorySha256": "90c931e87b4758544e8de321ecb0bf3b41420cbbf9aeb504b66b93c6938c2e0b",
+  "rows": [
+    {
+      "id": "lagos",
+      "countryISO": null
+    },
+    {
+      "id": "ibadan",
+      "countryISO": null
+    },
+    {
+      "id": "abuja",
+      "countryISO": null
+    },
+    {
+      "id": "port-harcourt",
+      "countryISO": null
+    },
+    {
+      "id": "abeokuta",
+      "countryISO": null
+    },
+    {
+      "id": "ota",
+      "countryISO": null
+    },
+    {
+      "id": "ijebu-ode",
+      "countryISO": null
+    },
+    {
+      "id": "sagamu",
+      "countryISO": null
+    },
+    {
+      "id": "kano",
+      "countryISO": null
+    },
+    {
+      "id": "enugu",
+      "countryISO": null
+    },
+    {
+      "id": "benin-city",
+      "countryISO": null
+    },
+    {
+      "id": "calabar",
+      "countryISO": null
+    },
+    {
+      "id": "uyo",
+      "countryISO": null
+    },
+    {
+      "id": "umuahia",
+      "countryISO": null
+    },
+    {
+      "id": "owerri",
+      "countryISO": null
+    },
+    {
+      "id": "yenagoa",
+      "countryISO": null
+    },
+    {
+      "id": "awka",
+      "countryISO": null
+    },
+    {
+      "id": "kaduna",
+      "countryISO": null
+    },
+    {
+      "id": "maiduguri",
+      "countryISO": null
+    },
+    {
+      "id": "gombe",
+      "countryISO": null
+    },
+    {
+      "id": "yola",
+      "countryISO": null
+    },
+    {
+      "id": "ilorin",
+      "countryISO": null
+    },
+    {
+      "id": "minna",
+      "countryISO": null
+    },
+    {
+      "id": "osogbo",
+      "countryISO": null
+    },
+    {
+      "id": "damaturu",
+      "countryISO": null
+    },
+    {
+      "id": "jalingo",
+      "countryISO": null
+    },
+    {
+      "id": "akure",
+      "countryISO": null
+    },
+    {
+      "id": "ado-ekiti",
+      "countryISO": null
+    },
+    {
+      "id": "asaba",
+      "countryISO": null
+    },
+    {
+      "id": "lokoja",
+      "countryISO": null
+    },
+    {
+      "id": "jos",
+      "countryISO": null
+    },
+    {
+      "id": "lafia",
+      "countryISO": null
+    },
+    {
+      "id": "katsina",
+      "countryISO": null
+    },
+    {
+      "id": "sokoto",
+      "countryISO": null
+    },
+    {
+      "id": "birnin-kebbi",
+      "countryISO": null
+    },
+    {
+      "id": "gusau",
+      "countryISO": null
+    },
+    {
+      "id": "dutse",
+      "countryISO": null
+    },
+    {
+      "id": "bauchi",
+      "countryISO": null
+    },
+    {
+      "id": "makurdi",
+      "countryISO": null
+    },
+    {
+      "id": "abakaliki",
+      "countryISO": null
+    },
+    {
+      "id": "accra",
+      "countryISO": "gh",
+      "countryName": "Ghana"
+    },
+    {
+      "id": "algiers",
+      "countryISO": "dz",
+      "countryName": "Algeria"
+    },
+    {
+      "id": "lome",
+      "countryISO": "tg",
+      "countryName": "Togo"
+    },
+    {
+      "id": "nairobi",
+      "countryISO": "ke",
+      "countryName": "Kenya"
+    },
+    {
+      "id": "yaounde",
+      "countryISO": "cm",
+      "countryName": "Cameroon"
+    },
+    {
+      "id": "abidjan",
+      "countryISO": "ci",
+      "countryName": "Côte d’Ivoire"
+    },
+    {
+      "id": "addis-ababa",
+      "countryISO": "et",
+      "countryName": "Ethiopia"
+    },
+    {
+      "id": "cape-town",
+      "countryISO": "za",
+      "countryName": "South Africa"
+    },
+    {
+      "id": "cotonou",
+      "countryISO": "bj",
+      "countryName": "Benin"
+    },
+    {
+      "id": "dakar",
+      "countryISO": "sn",
+      "countryName": "Senegal"
+    },
+    {
+      "id": "cairo",
+      "countryISO": "eg",
+      "countryName": "Egypt",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/third-five.json",
+        "sha256": "c68c9e47de7ff5f8b2bc64daa7e6891ffec59221005a29ff3d8324d9e38300a5"
+      }
+    },
+    {
+      "id": "rabat",
+      "countryISO": "ma",
+      "countryName": "Morocco",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/third-five.json",
+        "sha256": "c68c9e47de7ff5f8b2bc64daa7e6891ffec59221005a29ff3d8324d9e38300a5"
+      }
+    },
+    {
+      "id": "kigali",
+      "countryISO": "rw",
+      "countryName": "Rwanda",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/third-five.json",
+        "sha256": "c68c9e47de7ff5f8b2bc64daa7e6891ffec59221005a29ff3d8324d9e38300a5"
+      }
+    },
+    {
+      "id": "kampala",
+      "countryISO": "ug",
+      "countryName": "Uganda",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/third-five.json",
+        "sha256": "c68c9e47de7ff5f8b2bc64daa7e6891ffec59221005a29ff3d8324d9e38300a5"
+      }
+    },
+    {
+      "id": "lusaka",
+      "countryISO": "zm",
+      "countryName": "Zambia",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/third-five.json",
+        "sha256": "c68c9e47de7ff5f8b2bc64daa7e6891ffec59221005a29ff3d8324d9e38300a5"
+      }
+    },
+    {
+      "id": "gaborone",
+      "countryISO": "bw",
+      "countryName": "Botswana",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fourth-five-extents-001.json",
+        "sha256": "773d39f59db667dfbbb9d67b0c8f8df9bc4cba9dc324f34c5be91c94f5327543"
+      }
+    },
+    {
+      "id": "windhoek",
+      "countryISO": "na",
+      "countryName": "Namibia",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fourth-five-extents-001.json",
+        "sha256": "773d39f59db667dfbbb9d67b0c8f8df9bc4cba9dc324f34c5be91c94f5327543"
+      }
+    },
+    {
+      "id": "harare",
+      "countryISO": "zw",
+      "countryName": "Zimbabwe",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fourth-five-extents-001.json",
+        "sha256": "773d39f59db667dfbbb9d67b0c8f8df9bc4cba9dc324f34c5be91c94f5327543"
+      }
+    },
+    {
+      "id": "maputo",
+      "countryISO": "mz",
+      "countryName": "Mozambique",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fourth-five-extents-001.json",
+        "sha256": "773d39f59db667dfbbb9d67b0c8f8df9bc4cba9dc324f34c5be91c94f5327543"
+      }
+    },
+    {
+      "id": "luanda",
+      "countryISO": "ao",
+      "countryName": "Angola",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fourth-five-extents-001.json",
+        "sha256": "773d39f59db667dfbbb9d67b0c8f8df9bc4cba9dc324f34c5be91c94f5327543"
+      }
+    },
+    {
+      "id": "dar",
+      "countryISO": "tz",
+      "countryName": "United Republic of Tanzania",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fifth-five-extents-001.json",
+        "sha256": "5deb95ce625e2f46254dcd7a83e72caad4450daf49d44afed59dd0fa9d8b58dd"
+      }
+    },
+    {
+      "id": "brazz",
+      "countryISO": "cg",
+      "countryName": "Republic of the Congo",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fifth-five-extents-001.json",
+        "sha256": "5deb95ce625e2f46254dcd7a83e72caad4450daf49d44afed59dd0fa9d8b58dd"
+      }
+    },
+    {
+      "id": "kin",
+      "countryISO": "cd",
+      "countryName": "Democratic Republic of the Congo",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fifth-five-extents-001.json",
+        "sha256": "5deb95ce625e2f46254dcd7a83e72caad4450daf49d44afed59dd0fa9d8b58dd"
+      }
+    },
+    {
+      "id": "antananarivo",
+      "countryISO": "mg",
+      "countryName": "Madagascar",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fifth-five-extents-001.json",
+        "sha256": "5deb95ce625e2f46254dcd7a83e72caad4450daf49d44afed59dd0fa9d8b58dd"
+      }
+    },
+    {
+      "id": "lilongwe",
+      "countryISO": "mw",
+      "countryName": "Malawi",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fifth-five-extents-001.json",
+        "sha256": "5deb95ce625e2f46254dcd7a83e72caad4450daf49d44afed59dd0fa9d8b58dd"
+      }
+    },
+    {
+      "id": "conakry",
+      "countryISO": "gn",
+      "countryName": "Guinea",
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/sixth-one.json",
+        "sha256": "164a3b062805e9d03aaf09fa0d7244908b2730506cada879a717d2c7ee64710f"
+      }
+    }
+  ],
+  "foreignCities": [
+    {
+      "id": "accra",
+      "countryISO": "gh"
+    },
+    {
+      "id": "algiers",
+      "countryISO": "dz"
+    },
+    {
+      "id": "lome",
+      "countryISO": "tg"
+    },
+    {
+      "id": "nairobi",
+      "countryISO": "ke"
+    },
+    {
+      "id": "yaounde",
+      "countryISO": "cm"
+    },
+    {
+      "id": "abidjan",
+      "countryISO": "ci"
+    },
+    {
+      "id": "addis-ababa",
+      "countryISO": "et"
+    },
+    {
+      "id": "cape-town",
+      "countryISO": "za"
+    },
+    {
+      "id": "cotonou",
+      "countryISO": "bj"
+    },
+    {
+      "id": "dakar",
+      "countryISO": "sn"
+    },
+    {
+      "id": "cairo",
+      "countryISO": "eg"
+    },
+    {
+      "id": "rabat",
+      "countryISO": "ma"
+    },
+    {
+      "id": "kigali",
+      "countryISO": "rw"
+    },
+    {
+      "id": "kampala",
+      "countryISO": "ug"
+    },
+    {
+      "id": "lusaka",
+      "countryISO": "zm"
+    },
+    {
+      "id": "gaborone",
+      "countryISO": "bw"
+    },
+    {
+      "id": "windhoek",
+      "countryISO": "na"
+    },
+    {
+      "id": "harare",
+      "countryISO": "zw"
+    },
+    {
+      "id": "maputo",
+      "countryISO": "mz"
+    },
+    {
+      "id": "luanda",
+      "countryISO": "ao"
+    },
+    {
+      "id": "dar",
+      "countryISO": "tz"
+    },
+    {
+      "id": "brazz",
+      "countryISO": "cg"
+    },
+    {
+      "id": "kin",
+      "countryISO": "cd"
+    },
+    {
+      "id": "antananarivo",
+      "countryISO": "mg"
+    },
+    {
+      "id": "lilongwe",
+      "countryISO": "mw"
+    },
+    {
+      "id": "conakry",
+      "countryISO": "gn"
+    }
+  ],
+  "admissionSha256": "2f7bd91ca24ea817b2936db7ff52507130c8ec64a88aa49a832443d0c0f00f22"
+}

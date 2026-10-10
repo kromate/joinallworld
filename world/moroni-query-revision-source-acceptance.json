@@ -1,0 +1,23 @@
+{
+  "observedAtUtc": "2026-10-10T00:04:29.170843+00:00",
+  "decision": "ACCEPT scoped Python source fixtures only; HOLD remaining source request",
+  "sourceSha": "704d592cc207851e9822d9fc0e0db82fd81a23ca",
+  "publicReceiptRevision": "1eb4b32b2be2e2fc970f50c190710acbeeb2edf4",
+  "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/moroni/review-receipt.txt",
+  "receiptSha256": "e66df518fd3af396d32b61199e2375407865ff3ac6faec0931b8e727362b66d4",
+  "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/moroni/focused-tests.log",
+  "logSha256": "ef631c2be40600f2227311e6fe449f89fc489486d0bcea86cd20f5dd380a3021",
+  "command": "python3 -m unittest world.tooling.test_africa_starter_selection world.tooling.test_run_africa_starters",
+  "tests": 33,
+  "exitCode": 0,
+  "sourceBlobPins": {
+    "scripts/world/build-africa-starters.py": "35d5533dd753b33e717c3913735fb219e2f74ab2",
+    "world/tooling/run_africa_starters.py": "5c7bfd72a6858b17e1231393c87b02737796e57f",
+    "world/tooling/test_africa_starter_selection.py": "ba76b49eaa8bf1f96c22c84a04c0071f7370ca0a",
+    "world/tooling/test_run_africa_starters.py": "be72a7d70b917b5405a36fe29bf46c7d30a6a4fb"
+  },
+  "localSourcePinsMatch": true,
+  "acquisitionPerformed": false,
+  "knownBlockingFinding": "Started-request reservation uses direct Path.write_text without atomic replacement or fsync before urlopen. Crash-safe charge-before-network and partial-output fail-closed behavior remain unproved.",
+  "nextAction": "Existing remote worker implements and verifies durable reservation/partial-output handling before any remaining source request; after higher-priority country runtime rollout."
+}

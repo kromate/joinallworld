@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T00:02:15.116421+00:00",
+  "sourceRevision": "bb6b779dc648c5d492d6b6db22361962153eb2c5",
+  "productionCommit": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "productionOpenCountries": 11,
+  "baselineManifest": {
+    "path": "world/playable-africa-rollout/runtime-admission.json",
+    "sha256": "ee0d3417f0fcbba082ed35e910582c17f6a2b81bf01e8d45fc5169f9e3ba430a",
+    "rows": 50
+  },
+  "purpose": "Cumulative explicit-admission candidate data for serial verified releases. These are proposals; no runtime activation or country completeness is implied.",
+  "requiredPerStage": [
+    "pinned packet/receipt/assets verified",
+    "existing generator and --check",
+    "unchanged C1 legacy outputs and Nigeria facts/routes",
+    "all five strict compiler projects",
+    "build and unchanged startup/download/public-asset guards",
+    "shared caller integration and real destination loading",
+    "outbound and return journeys with retained saves/identity and duplicate receipts",
+    "exact sealed artifact and live verification"
+  ],
+  "missingSourceCountryISO": [
+    "KM"
+  ],
+  "stages": [
+    {
+      "ordinal": 1,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/third-five.json",
+        "sha256": "c68c9e47de7ff5f8b2bc64daa7e6891ffec59221005a29ff3d8324d9e38300a5"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/third-five-runtime-admission.json",
+        "sha256": "8a04b60b242abcd54beab912eb39a46cb958c9f8c93bba1cc814a02b3610582f"
+      },
+      "predecessor": {
+        "rows": 50,
+        "admissionSha256": "764d5c64f075c68361ae6c15fea23a016b6c2b1af9fc15e81cf405ee20ef195b"
+      },
+      "candidateRows": 55,
+      "foreignCities": 15,
+      "candidateOpenCountriesIncludingNigeria": 16,
+      "admissionSha256": "c882a0975ab7ec6d5f538c44ccf2447d50d159068f1daab877d026a81b9fbe91",
+      "addedCities": [
+        {
+          "id": "cairo",
+          "countryISO": "eg",
+          "countryName": "Egypt",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "rabat",
+          "countryISO": "ma",
+          "countryName": "Morocco",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "kigali",
+          "countryISO": "rw",
+          "countryName": "Rwanda",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "kampala",
+          "countryISO": "ug",
+          "countryName": "Uganda",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "lusaka",
+          "countryISO": "zm",
+          "countryName": "Zambia",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 2,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fourth-five-extents-001.json",
+        "sha256": "773d39f59db667dfbbb9d67b0c8f8df9bc4cba9dc324f34c5be91c94f5327543"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/fourth-five-extents-001-runtime-admission.json",
+        "sha256": "92a1fd0087ce8ebb76fcaa00b49a7a5e330acc9018ec52f14f20ebdc5dede6fe"
+      },
+      "predecessor": {
+        "rows": 55,
+        "admissionSha256": "c882a0975ab7ec6d5f538c44ccf2447d50d159068f1daab877d026a81b9fbe91"
+      },
+      "candidateRows": 60,
+      "foreignCities": 20,
+      "candidateOpenCountriesIncludingNigeria": 21,
+      "admissionSha256": "0ceb1600cd07435f02bfa18b37fc2c809907c21736e56fb662b2b52a3907159f",
+      "addedCities": [
+        {
+          "id": "gaborone",
+          "countryISO": "bw",
+          "countryName": "Botswana",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "windhoek",
+          "countryISO": "na",
+          "countryName": "Namibia",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "harare",
+          "countryISO": "zw",
+          "countryName": "Zimbabwe",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "maputo",
+          "countryISO": "mz",
+          "countryName": "Mozambique",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "luanda",
+          "countryISO": "ao",
+          "countryName": "Angola",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 3,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/fifth-five-extents-001.json",
+        "sha256": "5deb95ce625e2f46254dcd7a83e72caad4450daf49d44afed59dd0fa9d8b58dd"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/fifth-five-extents-001-runtime-admission.json",
+        "sha256": "3d5c95dd79762b28c47851a4e9c4810474f92e1c4d6935c2358cf5b35a547cde"
+      },
+      "predecessor": {
+        "rows": 60,
+        "admissionSha256": "0ceb1600cd07435f02bfa18b37fc2c809907c21736e56fb662b2b52a3907159f"
+      },
+      "candidateRows": 65,
+      "foreignCities": 25,
+      "candidateOpenCountriesIncludingNigeria": 26,
+      "admissionSha256": "0f9702da47ed893470432d3aab9cecd735ac810732ad3d88e770261d32682be8",
+      "addedCities": [
+        {
+          "id": "dar",
+          "countryISO": "tz",
+          "countryName": "United Republic of Tanzania",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "brazz",
+          "countryISO": "cg",
+          "countryName": "Republic of the Congo",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "kin",
+          "countryISO": "cd",
+          "countryName": "Democratic Republic of the Congo",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "antananarivo",
+          "countryISO": "mg",
+          "countryName": "Madagascar",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "lilongwe",
+          "countryISO": "mw",
+          "countryName": "Malawi",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 4,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/sixth-one.json",
+        "sha256": "164a3b062805e9d03aaf09fa0d7244908b2730506cada879a717d2c7ee64710f"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/sixth-one-runtime-admission.json",
+        "sha256": "a3277aaba3aea8755c8b1bf086b106db27175a546ff91328d98c774f5e55d681"
+      },
+      "predecessor": {
+        "rows": 65,
+        "admissionSha256": "0f9702da47ed893470432d3aab9cecd735ac810732ad3d88e770261d32682be8"
+      },
+      "candidateRows": 66,
+      "foreignCities": 26,
+      "candidateOpenCountriesIncludingNigeria": 27,
+      "admissionSha256": "2f7bd91ca24ea817b2936db7ff52507130c8ec64a88aa49a832443d0c0f00f22",
+      "addedCities": [
+        {
+          "id": "conakry",
+          "countryISO": "gn",
+          "countryName": "Guinea",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 5,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/seventh-five.json",
+        "sha256": "534f234b1014ebf402d409c028645720ceb359475f8a79176d63467ac30f3306"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/seventh-five-runtime-admission.json",
+        "sha256": "5768c83c32edad53bebc64bb10e2d40d89fbbdde1a8ae6b3ceb71dd41da250ab"
+      },
+      "predecessor": {
+        "rows": 66,
+        "admissionSha256": "2f7bd91ca24ea817b2936db7ff52507130c8ec64a88aa49a832443d0c0f00f22"
+      },
+      "candidateRows": 71,
+      "foreignCities": 31,
+      "candidateOpenCountriesIncludingNigeria": 32,
+      "admissionSha256": "b1ac622e4dd110cd44176deb5268d3026117e7e895a24c0916d8bcf5f53bca23",
+      "addedCities": [
+        {
+          "id": "mogadishu",
+          "countryISO": "so",
+          "countryName": "Somalia",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "tripoli",
+          "countryISO": "ly",
+          "countryName": "Libya",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "tunis",
+          "countryISO": "tn",
+          "countryName": "Tunisia",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "freetown",
+          "countryISO": "sl",
+          "countryName": "Sierra Leone",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "monrovia",
+          "countryISO": "lr",
+          "countryName": "Liberia",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 6,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/eighth-five.json",
+        "sha256": "027f52316c632ccd58819946aa7797f495314bed5fa95dd80e185ed74f61b7b6"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/eighth-five-runtime-admission.json",
+        "sha256": "a25953c33c874301f703278f3601f6acfb27278c5d21e6b9a6686de8f69a122d"
+      },
+      "predecessor": {
+        "rows": 71,
+        "admissionSha256": "b1ac622e4dd110cd44176deb5268d3026117e7e895a24c0916d8bcf5f53bca23"
+      },
+      "candidateRows": 76,
+      "foreignCities": 36,
+      "candidateOpenCountriesIncludingNigeria": 37,
+      "admissionSha256": "6caf67305fd991f8585ad44c6234bcede2108ac1ad0824553a33d190860c5e1c",
+      "addedCities": [
+        {
+          "id": "bangui",
+          "countryISO": "cf",
+          "countryName": "Central African Republic",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "khartoum",
+          "countryISO": "sd",
+          "countryName": "Sudan",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "djibouti",
+          "countryISO": "dj",
+          "countryName": "Djibouti",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "asmara",
+          "countryISO": "er",
+          "countryName": "Eritrea",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "bamako",
+          "countryISO": "ml",
+          "countryName": "Mali",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 7,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/ninth-five.json",
+        "sha256": "513a6585711e88cd2e5483f093558a779271e1246a5119b104c5b7d1367866b5"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/ninth-five-runtime-admission.json",
+        "sha256": "eb68f7e11923dbe70293977f72d6275137e131b07faf392295f000b4e5f0f9f4"
+      },
+      "predecessor": {
+        "rows": 76,
+        "admissionSha256": "6caf67305fd991f8585ad44c6234bcede2108ac1ad0824553a33d190860c5e1c"
+      },
+      "candidateRows": 81,
+      "foreignCities": 41,
+      "candidateOpenCountriesIncludingNigeria": 42,
+      "admissionSha256": "aa5daca0a2e79be947aa0500c5d8187d3c5c15c5080510e9578ee7af485745fb",
+      "addedCities": [
+        {
+          "id": "n-djamena",
+          "countryISO": "td",
+          "countryName": "Chad",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "mbabane",
+          "countryISO": "sz",
+          "countryName": "eSwatini",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "bujumbura",
+          "countryISO": "bi",
+          "countryName": "Burundi",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "maseru",
+          "countryISO": "ls",
+          "countryName": "Lesotho",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "libreville",
+          "countryISO": "ga",
+          "countryName": "Gabon",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 8,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/tenth-five.json",
+        "sha256": "3e4a64439cf820a412815bc5e3408abb2a3fc5513be848bb1cdcf82877060f0f"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/tenth-five-runtime-admission.json",
+        "sha256": "2e9b79d42665e484ddb709853523c0ef827d8295170dd1b188be96848a473c57"
+      },
+      "predecessor": {
+        "rows": 81,
+        "admissionSha256": "aa5daca0a2e79be947aa0500c5d8187d3c5c15c5080510e9578ee7af485745fb"
+      },
+      "candidateRows": 86,
+      "foreignCities": 46,
+      "candidateOpenCountriesIncludingNigeria": 47,
+      "admissionSha256": "001dcb9b52871976baa53eaf88ea973b54eebca9cfb54fba0061f1fa3b337a4b",
+      "addedCities": [
+        {
+          "id": "niamey",
+          "countryISO": "ne",
+          "countryName": "Niger",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "ouagadougou",
+          "countryISO": "bf",
+          "countryName": "Burkina Faso",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "bissau",
+          "countryISO": "gw",
+          "countryName": "Guinea-Bissau",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "nouakchott",
+          "countryISO": "mr",
+          "countryName": "Mauritania",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "malabo",
+          "countryISO": "gq",
+          "countryName": "Equatorial Guinea",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 9,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/eleventh-three-partial.json",
+        "sha256": "af3bd7a2d9b502732550641d22d4d89324d61a7ababa639272d869878d780d94"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/eleventh-three-partial-runtime-admission.json",
+        "sha256": "d4fc741b8f04f9dcacb56a10ac4d97b9ebf06beb8c639b4d86dfc25f911d8e1e"
+      },
+      "predecessor": {
+        "rows": 86,
+        "admissionSha256": "001dcb9b52871976baa53eaf88ea973b54eebca9cfb54fba0061f1fa3b337a4b"
+      },
+      "candidateRows": 89,
+      "foreignCities": 49,
+      "candidateOpenCountriesIncludingNigeria": 50,
+      "admissionSha256": "5ac15681f1a8adb11361b91587d8f96aaecdb1b181ea209d4e58effbc5549309",
+      "addedCities": [
+        {
+          "id": "banjul",
+          "countryISO": "gm",
+          "countryName": "Gambia",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "victoria",
+          "countryISO": "sc",
+          "countryName": "Seychelles",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "port-louis",
+          "countryISO": "mu",
+          "countryName": "Mauritius",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    },
+    {
+      "ordinal": 10,
+      "sourcePacket": {
+        "path": "world/playable-africa-rollout/batches/twelfth-three.json",
+        "sha256": "d12de9577d92e4e17008062f0481bfcc374bc64dcddc20dc55a0e06b5b2803d1"
+      },
+      "candidateManifest": {
+        "path": "world/playable-africa-rollout/proposals/twelfth-three-runtime-admission.json",
+        "sha256": "678f7fa41a6736215f9a662126c9faab87b227eec1e37705ac188ec2223128f9"
+      },
+      "predecessor": {
+        "rows": 89,
+        "admissionSha256": "5ac15681f1a8adb11361b91587d8f96aaecdb1b181ea209d4e58effbc5549309"
+      },
+      "candidateRows": 92,
+      "foreignCities": 52,
+      "candidateOpenCountriesIncludingNigeria": 53,
+      "admissionSha256": "f7fbb8ea21fb4f8d1beba77c9ca0d8e37595340cd403595ecc6bfc8f8f05eb72",
+      "addedCities": [
+        {
+          "id": "sao-tome",
+          "countryISO": "st",
+          "countryName": "São Tomé and Principe",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "praia",
+          "countryISO": "cv",
+          "countryName": "Cabo Verde",
+          "verifiedAssetAndReceiptPins": 6
+        },
+        {
+          "id": "juba",
+          "countryISO": "ss",
+          "countryName": "South Sudan",
+          "verifiedAssetAndReceiptPins": 6
+        }
+      ],
+      "validationState": "selected source/receipt pins verified only; generator, runtime, release and production acceptance pending"
+    }
+  ],
+  "verifiedSelectedSourcePins": 252,
+  "queuedForeignCities": 42,
+  "lastCandidateRows": 92,
+  "lastCandidateOpenCountriesIncludingNigeria": 53,
+  "canonicalManifestUnchanged": true
+}

@@ -1,6 +1,6 @@
 {
-  "observedAtUtc": "2026-10-10T01:58:29.953175+00:00",
-  "decision": "ACCEPT these five exact-source phases; all required broader gates/native/deployment remain separately incomplete",
+  "observedAtUtc": "2026-10-10T02:34:18.942280+00:00",
+  "decision": "ACCEPT nine exact-source phases: both full hosts and tooling, Node24 fullWorker, both all15 Africa host/Worker groups, download and smoke. Remaining Node22Worker/fullgame/UI/release/native/deployment still separate.",
   "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
   "phases": [
     {
@@ -160,12 +160,132 @@
         "\u2139 fail 0",
         "\u2139 skipped 0"
       ]
+    },
+    {
+      "name": "c12-node22-host",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "9d165a7e089c1299a9d90375a951d054ec29248e",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node22-host/",
+      "receiptSha256": "123df8144188fa1b69189bdd47ba79a553878d69402cb39d5dea5f21c8574486",
+      "logSha256": "b63b5529730d23491d8b66983ee5bdfd00d675c71fa214ee9b3d658fd0e32983",
+      "nodeVersion": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "scripts/node-test-plan.ts",
+        "host"
+      ],
+      "durationSeconds": 321.719772,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "# tests 1027",
+        "# pass 1024",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 3"
+      ]
+    },
+    {
+      "name": "c12-node22-tooling",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "9d165a7e089c1299a9d90375a951d054ec29248e",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node22-tooling/",
+      "receiptSha256": "56cd0156639b6a7b3fe82e687d782efdfd09b2f60e026457f3572078e2c6f831",
+      "logSha256": "c1af12c56eace97eb741776656eb9d5b6efc29f82b7fcdc2892d085dc99d33be",
+      "nodeVersion": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "scripts/node-test-plan.ts",
+        "tooling"
+      ],
+      "durationSeconds": 9.893536,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "# tests 36",
+        "# pass 36",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0"
+      ]
+    },
+    {
+      "name": "c12-node24-tooling",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "9d165a7e089c1299a9d90375a951d054ec29248e",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node24-tooling/",
+      "receiptSha256": "4cc79ad62d43327ba6fcf8415dfe3913fa28b42e436473b561156e7a979f360b",
+      "logSha256": "49826320bf60f64cf8f66cc3c79fa9ecfd73d47e5d3cceac50f64428849f54cd",
+      "nodeVersion": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "scripts/node-test-plan.ts",
+        "tooling"
+      ],
+      "durationSeconds": 37.88584,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "\u2139 tests 36",
+        "\u2139 pass 36",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0"
+      ]
+    },
+    {
+      "name": "c12-node24-worker-full",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "9d165a7e089c1299a9d90375a951d054ec29248e",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node24-worker-full/",
+      "receiptSha256": "f72f68d179aacd40190a9666ef87cf0e6315890dd5838ead2f830fa0c896558a",
+      "logSha256": "b6b030af11a507896901d4971506f66d40fde605da5d7971362526e2e2b6c811",
+      "nodeVersion": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "test:edge"
+      ],
+      "durationSeconds": 796.311257,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "\u2139 tests 158",
+        "\u2139 pass 158",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0"
+      ]
     }
   ],
   "limitations": [
-    "Node22 host/tooling/Worker and remaining fullgame/UI/release corpus are not inferred from this scoped evidence",
+    "Remaining correctedsource fullgame/Node22Worker/UI/release corpus not inferred from this evidence",
     "Original focused cache125 receipt retained",
-    "No native browser or production16 claim"
+    "Historical host3skips retained onbothNodeversions",
+    "No completed native cityjourney or production16 claim"
   ],
   "knownHostSkips": [
     {

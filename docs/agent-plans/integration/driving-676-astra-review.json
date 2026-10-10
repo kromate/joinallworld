@@ -1,0 +1,55 @@
+{
+  "candidate": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
+  "base": "d7ccfa5dfea65dacd541ca1dddc885f7f410df9e",
+  "decision": "MODIFY",
+  "scope": "source-only; no release or activation acceptance",
+  "executionPerformed": false,
+  "reportedChecks": {
+    "service": 15,
+    "component": 7,
+    "independentlyObserved": false
+  },
+  "pins": {
+    "server/living-world/driving-service.ts": "7e7abcb72ddfe2dcbde041e6faaf48c51b336ec1e01e5bff07eded5329282b61",
+    "server/living-world/driving-service.test.ts": "0ef67a228afa40a64fd3a93d78d488263bc0fe5d0e852af1c86deae7d801fce9",
+    "src/app/features/living-world/DrivingApp.vue": "b17534eb138d16ebbc1b611e48021974e562a9545361eb4380f0c51fa6aaa875",
+    "src/app/features/living-world/practiceIdentity.test.ts": "5ddf6152b0322c94aad447f2afa05ee2a782ccde3f372ba12fe600753886f6ae",
+    "src/game/living-world/driving.ts": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+    "src/game/living-world/driving.test.ts": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+    "src/types/living-world.ts": "27757f7089a482d5b046692fdc1d53ed06272788c3633949a2ed6efa64dbc677"
+  },
+  "closed": [
+    "D1 common retained-receipt ordering",
+    "D2 ordinary held-throttle capability loss"
+  ],
+  "findings": [
+    {
+      "id": "D3",
+      "priority": 2,
+      "file": "src/app/features/living-world/DrivingApp.vue",
+      "line": 816,
+      "issue": "Canonical transmission status is hidden when issuance capability is absent",
+      "reproducer": "Current OFF reply retains running gear=reverse with positive speed; pause response remains pending. serverState is reverse but v-if hides status.",
+      "required": "Render canonical status independently of capability; retain capability gate on explicit direction controls; verify rendered OFF reverse and authoritative subsequent transition."
+    }
+  ],
+  "inheritedLimit": {
+    "id": "L1",
+    "lines": [
+      109,
+      344,
+      384
+    ],
+    "issue": "Unchecked safe-integer exhaustion on pause/input/resume",
+    "introducedByRepair": false
+  },
+  "openGates": [
+    "final pinned actual Node/component/compiler/build evidence",
+    "delayed conflict and lifecycle-revision replay",
+    "full response capability and rendered status cases",
+    "compatible OFF Node/Worker rollback before issuance",
+    "durable reopen and terminal/receipt parity",
+    "native gameplay and original-store continuity"
+  ],
+  "publicationNote": "Initial reported push targeted a local source clone; corrected GitHub destination and actual fetched alternate branch now contain the candidate."
+}

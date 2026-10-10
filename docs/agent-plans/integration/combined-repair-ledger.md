@@ -31,8 +31,9 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | INT-003 | 2/5 | P1 | Compiler/office pass; home fails | Head-controller nullable closure compiler failure | GRAPHICS-owned reviewed source capsule |
 | INT-004 | 2/5 | P2 | Local wage/replay accepted; exact XP measurement open | Complete current original-store teaching lesson under OFF | OFF readiness and one owned browser lease |
 | INT-028 | 2/5 | P2 verification | Diagnostics resolved; d7 compiler fails | Retain actual remote diagnostic and compiler evidence | New repaired SHA/exact checks |
-| INT-024 | 2/5 | P1 release gate | Actual measurement missing | NPC post-placement floor evidence | INT-003 |
+| INT-024 | 3/5 | P1 release gate | Actual NPC floor checker fails both NPCs | NPC post-placement floor evidence | INT-003 |
 | INT-005 | 3/5 | P1 | Confirmed source defect | Driving duplicate replay occurs after clock/timeout mutation | Independent contract review |
+| INT-033 | 3/5 | P1 save integrity | Source-predicted inherited defect | Driving revision/sequence safe-integer exhaustion | Existing driving service owner; strict reader/writer contract |
 | INT-006 | 3/5 | P1 | Contract gap | Driving capability freshness on every response | INT-005 |
 | INT-007 | 3/5 | P1 | Open acceptance | Business tax/quote/ambiguous retry and identity browser journeys | Isolated consenting actors and controlled actual transaction funding |
 | INT-008 | 3/5 | P2 | Qualified earlier evidence | Investigate earlier synthetic character hash differences | Historical private artifacts availability |
@@ -93,7 +94,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 
 - Owner: Cloud driving worker; LIVING review. Exact source/reference: `eec14690544a4646e4cd8a5ad280d61bbe2709ca`.
 - Files/dependency boundary: server driving service; narrow response/client interfaces.
-- Evidence/reproduction: A retained accepted packet retried after1500ms or clock reversal reaches pauseRecord/writeRecord before lastPacket replay. Independent d7 review confirms remainingONexplicit/alllegacy mutation paths; see driving-d7-astra-review.md/json. Reported repair6769279 is now available on codex/cloud-living-replay-repair-20261010 after initial unavailable-ref timing; independent successor review pending.
+- Evidence/reproduction: A retained accepted packet retried after1500ms or clock reversal reaches pauseRecord/writeRecord before lastPacket replay. Independent d7 review confirms remainingONexplicit/alllegacy mutation paths; see driving-d7-astra-review.md/json. Reported repair6769279 is now available on codex/cloud-living-replay-repair-20261010 after an initial push targeted a local clone and the destination was corrected; independent successor review pending.
 - Next repair and acceptance: Authorize and bind valid current context, then return retained exact success before any driving-row clock/gate/sim write. Same-sequence changed payload conflicts; foreign context cannot bypass safety.
 - Prerequisites: Independent contract review. Difficulty basis: Ordering affects persisted state and must be proven on real Node/Worker stores and reopen.
 
@@ -303,6 +304,12 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 - Evidence: One accepted teaching lesson does not close later education/shops/professions/civic activities.
 - Next: Select meaningful decisions/actions from current gameplay, connect earned progression and saved outcomes, then independently stage/release each unit. Preserve fictional-game scope; no real credentials or legal/healthcare service claims.
 
+### INT-033 — Driving safe-integer revision/sequence exhaustion
+
+- Owner: SAME existing online LIVING driving worker, separately allocated service/test scope after immutable display checks. Difficulty3, P1 save integrity; inherited baseline defect, not native-observed or introduced by676.
+- Evidence: Actual source pauseRecord/acceptedinput/resume increment strict-reader-valid MAX_SAFE_INTEGER fields into unreadable rows; restart alone already has a guard. Independent d7/676 Astra reports identify exact paths.
+- Next: Refuse before increment/write, preserve the complete valid saved row and retained exact replay, exercise current/pause/input/resume exhaustion on actual store and legitimate nonexhausted v1/v2 cases. No casts, lowered strict guards, score reset, qualification grant or uncoordinated type/scene change.
+
 ## All 58 announcement rows remain in scope
 
 This is a stable, complete index of the handoff matrix, with its exact historical remaining-contract text. Each `ANN-xx` requires current-source verification before implementation: historical “missing” classifications can be stale. These rows are obligations and acceptance gaps, not 58 newly reproduced bugs. Reuse current foundations; do not duplicate Family, elections, business, outages, investments or chat. Monetary rule conflicts require the fictional-game consent/ownership contract, preserving locked terms, starting lives and free recovery.
@@ -391,6 +398,16 @@ Exact successor graphics compiler acceptance is recorded under completed scope: 
 
 LIVING inventory26bf1c1d388d0c9ff2345db778eea1ed0290cfa0 was independently read completely and deduplicated: R01→004, R02→002, R03→028, R04→005, R05→006/016, R06→016/030, R07→029, R08→013/020, R09→030, R10→031, R11→032 plus ANN rows. R12 external Goalmatic and R13 real merchant commerce are parked scope/capability questions, not automatically added or activated by an owner inventory. R13's exact-SHA production observation remains INT-017. User explicitly scopes this programme to fictional game and configured commerce separately.
 
-Cloud inventory at72375198fce51960f556365e9b08c10bf1daa677 lists six existing workers: rest014, stairs015, household001/021/022/023, country010/011, driving005/006/016, NPC floor024; companion002 is a completed reused assignment. These are configured model requests, not independent actual-model attestation. Reported handles were historical observations, not proof they remain live now. New compiler/build/source receipts are accepted only for their named exact SHA, never inherited onto a combination. Total stable repair IDs:32; all58 ANN rows remain retained.
+Cloud inventory at72375198fce51960f556365e9b08c10bf1daa677 lists six existing workers: rest014, stairs015, household001/021/022/023, country010/011, driving005/006/016, NPC floor024; companion002 is a completed reused assignment. These are configured model requests, not independent actual-model attestation. Reported handles were historical observations, not proof they remain live now. New compiler/build/source receipts are accepted only for their named exact SHA, never inherited onto a combination. Total stable repair IDs:33; all58 ANN rows remain retained.
 
 Household successor619b8fbc7d1837d6225ce6eb0d0871739eb22d75 closes INT-001/021/022/023 at isolated source level. Root independently read the complete diff and Astra report; loader78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8, three foundation pins unchanged. See household-619-astra-review.md/json. Actual remote strict compiler/all11transitions/negative/storage-abort receipts remain to inspect. protectInviteRead is an unimplemented durable adapter obligation, never a no-op waiver. No residence/payment/runtime activation acceptance.
+
+Original OFF host terminal is now verified: receipt e6ee0ea1a2bc81cc7aa99438241a61f6c58448445cd3aa43eccee7aa716320b3 records32810exit0/stopped00:21:04.848, child27474absent and allseven retainedfields. Root actualps confirms childabsent. ColdA/B cash/charisma/shifts/performance/generation/action state matches immediatelypre-replayafterNative facts; home/identity/oldschool/allrows retained. A wholecityState hash differs after elapsed time; B matches. Do not claim whole-save equality or exact prelessonXP delta.
+
+Requested delivery branch codex/allworld-integrated-preview was fast-forwarded555160fa6d048b68c626104dcd8df53901c3a2d9-to-eec14690544a4646e4cd8a5ad280d61bbe2709ca after freshmainC1 and ancestor/no-divergent-work inspection. Actual push exit0 and fresh remote ref match. No source patch, dirty reset, force push or production change. Final later combinations require their own gates.
+
+Independent successor676 source review closes D1/D2 only; D3canonical direction display remainsMODIFY, F3 actualcompatibleOFF rollback remainsopen. See driving-676-astra-review.md/json. Latest GFX owner46563be8 updates INT-024 from missingmeasurement to reproduced both-NPC allsole floor-check failure9122. Narrow venue-scenes canonical nativeNPCmount/placement/pose-helper ownership is allocated to the existing NPCworker; cloud Sol solefactory/wiring writer. Preserve unrelatedWORLDgeography/lighting/catalogue/player/peer code and publicSceneEntry.16stairmatrix/bothbelow results are owner-reported pending raw independent review; no full native release.
+
+Research actual00:23–00:24UTC bounded public originalroot/iGiftGod branch read published under docs/research/lagos-life-bounded-public-recent-2026-10-10.md/json. Root read complete safe report and queue receipt. Recent/all-replies login-gated; no account changes, no exhaustive coverage. Three visible reader hypotheses, no author promise/diagnosed causality. Every6/28/58URL retained exactly and historical739/254/city129 unchanged. Own tab/lease cleaned00:24:35, no unrelatedtabs/gameplay touched.
+
+Astra actualdurableadapterport contract independently read/published household-durable-adapter-contract.md/json. Root explicitly allocates existingonlinehouseholdworker internal Event.type-to-kind union/sixconstructions foundation correction, preservingwireguard; then actualdurableNode/Workeradapterfiles and sharedtypes/keyed/once patches to solecloudintegrationwriter. Realpersistedconsent/index/receipt/abort/reopen gates; canonicallife/home/pairauthority/lifecycle missingwriters remain nextrequiredunits, no fabricatedconstants/publicrouteactivation/payment/homeuse. Loader-source approval is not householdcompletion.

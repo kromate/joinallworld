@@ -1,0 +1,123 @@
+{
+  "decision": "APPROVE_NEXT_REMOTE_IMPLEMENTATION_SLICE",
+  "scope": "Real internal durable consent adapter; no authority, route, residence, money, or release activation",
+  "baseline": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "foundation": "35731140a32da445b8bfd95075f79c0948010694",
+  "initialLoader": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
+  "correctedLoader": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
+  "executionPerformed": false,
+  "sourceModified": false,
+  "integrationBlocker": {
+    "id": "P1",
+    "reportedEvidence": "foundation smoke failure; not executed by reviewer",
+    "sourceCause": "src/types/protocol.test.ts:74 scans six internal consent event type literals as socket frames",
+    "protocolTestPin": "7b9fea1ddb80ce2a7d04cca5ecf861302862bfe3786e224cc8d7105e9a05b8bf",
+    "eventDefinition": "server/households/records.ts:75-80",
+    "eventConstructionLines": [
+      131,
+      140,
+      165,
+      197,
+      217,
+      247
+    ],
+    "minimumCorrection": "Change internal event discriminator type to kind in records union and six consent constructions, plus diagnostic/new consumer expectations",
+    "mustPreserve": "Wire scanner and SERVER_FRAME_TYPES; no blanket exclusions or regex evasion",
+    "allocation": "Root must explicitly allocate the two foundation files before changes; review made none",
+    "evidenceTransfer": false
+  },
+  "foundationPins": {
+    "records.ts": "d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4",
+    "consent.ts": "2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a",
+    "lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d",
+    "consentView.ts": "78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8"
+  },
+  "baselinePins": {
+    "server/types.ts": "d391f5d9b16a5ae53b2cb67f4d01ffa7078095b224adf9eb214bdb0fe9d85b4b",
+    "server/store.ts": "4c739e503df0423661737c0805162bd887ae06669094acdbb868733a67c93296",
+    "server/keyed.ts": "6a29d1b39e941e1a2cf7ecd53acc8cfca6366d837eec9eeabe23b93d8a7fd97c",
+    "server/records/store.ts": "7155d954a77951770560ed559ddfede1a449bb45450d34175709e1468368e4d9",
+    "deploy/sqlite-store.ts": "a54149ccc1f4f1a4db69379a041b0fcd7c90f5830fbcbe7393d261c690f58b5d",
+    "server/routes/once.ts": "4dcef6f9c8a8e27f0d26e55b573013e3a28e7c48285233f5a3d755a04c4c93b4",
+    "server/protocol.ts": "27742061f222dc021d6882a9f2a2372a3eb30c3b40ebdde7b5b909462a59dbf5",
+    "server/character.ts": "f15bdeb0e6ce3e079c8c7b2480c5767c7b6a29aa05e10583e183dbfadf497b18",
+    "server/accounts/service.ts": "2ed2d63e5bce80c681defd1c29acd2e1d6ec2d2568506eef7ffd82eba2275b1f",
+    "server/host-context.ts": "a17e6d27d37c0e60a91ffb739476a360164439d2ac39d5f17c2479f8785a4ab4",
+    "server/life-service.ts": "f4801b7f35a48a3abebc10837a95f65620bbbfd499478664fffc8d06c7cb3818",
+    "server/routes/core.ts": "d54c1ad916a5e69fc261038c9c2ca3ef2bb1f1b41a8563da6e549c185e91b4a5",
+    "server/social/service.ts": "d8532e16cfd49f5e3fd4df77804cbff3ba518ac3725a65c1800da3232da61e6a",
+    "src/types/life.ts": "a57338328b05b9277ac4b5497acd2d54ae17f3bb303f30f25d1eb19ac9a98a73",
+    "src/game/residence.ts": "b7353aa3466b3b1287568744227ad3a87c6e74e8b653030ca2ea03948a441c87",
+    "server/server.ts": "c551d2a3f1b157b908cbc7ab6dc57d993019d43cf73494bb0f5cf9e49722d5e7",
+    "deploy/cloudflare-worker.ts": "b53d611a9d3cf71c400a186eef8aa8c0495dce7df14c6623ada4ca42d68a6982",
+    "src/game/systems/estate.ts": "e4bfc0fd555c67b7389bef0901ead7a8eb81cfde9bff9ba54e79650ad0a41873",
+    "server/social/founder.ts": "1e967ff1ca950ee7d20bb860a467bfa2a4ce9e7b9bb84773bec31016c6c7f742"
+  },
+  "actualPorts": [
+    "Store.transact async callback",
+    "Store.read",
+    "TransactOptions.committed",
+    "Db keyed property access",
+    "protocol.collection",
+    "ctx.once synchronous callback",
+    "KEYED_SPECS",
+    "scanKeys without limit/cursor"
+  ],
+  "requiredComposition": [
+    "same serialized transaction for authority, receipt, loader, readset, apply",
+    "successful old receipt before current loader",
+    "all supporting reads including linked invite protected",
+    "typed thrown refusal for full rollback",
+    "postcommit notifications only"
+  ],
+  "newSchemaMaps": [
+    "households",
+    "invites",
+    "members",
+    "characterIndexes",
+    "lifeIndexes",
+    "homeIndexes",
+    "homes",
+    "lifeFacts",
+    "pairFacts",
+    "lifeLocations",
+    "byCharacterLife"
+  ],
+  "missingAuthorityWriters": [
+    "life envelope and exact locator lifecycle",
+    "home incarnation and epoch provenance",
+    "versioned pair facts from canonical social mutations",
+    "same-transaction liability disposition"
+  ],
+  "boundednessLimits": [
+    "Worker descriptor checks on unloaded lazy containers can list keys",
+    "legacy collection layout may read whole collection",
+    "Node persists whole existing JSON document",
+    "scanKeys returns all matches",
+    "ctx.once periodically recounts global Node session receipts"
+  ],
+  "ownership": {
+    "existingRemoteHouseholdWorker": "new household durable access/readset/apply/service and real-store fixtures; preserve approved foundation",
+    "singleIntegrationWriter": "types, keyed registration, once kinds, registry/host composition, required SQLite changes",
+    "foundationLifecycleWriter": "character/life/account/archive/estate provenance hooks",
+    "socialWriter": "friend/block/unblock and cleanup pair fact hooks",
+    "parent": "serialize shared integration where roles not separately staffed",
+    "world": "sole stage/upload owner"
+  },
+  "actualGates": [
+    "final pinned Node24 all eleven operations and failure injection",
+    "actual Worker SQLite/DO parity",
+    "durable close/reopen receipt and index continuity",
+    "park/adopt/restore/legacy/travel/archive/erase identity continuity",
+    "original home/wallet/inventory/receipt preservation",
+    "bounded reads with unrelated records and inherited costs reported"
+  ],
+  "unimplemented": [
+    "public route authority",
+    "home scenes and selection",
+    "resident Sleep/Cook and egress",
+    "contribution/payment/refund consumer",
+    "native gameplay",
+    "production release"
+  ]
+}

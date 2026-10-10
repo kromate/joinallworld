@@ -1,0 +1,23 @@
+{
+  "source": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "run": 38016051589,
+  "job": 114106426639,
+  "partition": "Node22 game",
+  "rawLogSha256": "0beaa7a8177972ea0d0525ac85a55e0f7ff1196814eaa9d0e4bf16e272d090fc",
+  "rawLogBytes": 1270580,
+  "counts": {
+    "tests": 2610,
+    "pass": 2608,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 1,
+    "duration_ms": 1357837.288341
+  },
+  "failure": {
+    "name": "automatic game startup, including one selected city, stays within the original first-load budget",
+    "error": "automatic startup for lagos is 223002 gzip bytes (budget 223000)",
+    "location": "src/app/entry.test.ts:203",
+    "rootCause": "Same compressed startup gate, no additional repair ID"
+  },
+  "acceptance": "Exact Node22 game partition failed on compressed startup; one existing skip. Other partition conclusions are recorded in the terminal combined review."
+}

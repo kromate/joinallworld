@@ -1,10 +1,10 @@
 # Combined Allworld repair and remaining-work ledger
 
-Observed checkpoint: 2026-10-10T02:04:19.950046+00:00. Goal remains active and the complete original handoff scope is retained.
+Observed checkpoint: 2026-10-10T02:56:00.793523+00:00. Goal remains active and the complete original handoff scope is retained.
 
 ## Usage and execution rule
 
-Direct human message `01a12367-3e20-7150-86f7-a14cacab49bd` supersedes the old clock cutoff and five-percent threshold. Continue existing online work while applicable main allowance exceeds 4%. At 4% remaining or below stop new implementation/build/render/spawn work, then safely save evidence, preserve processes and user data, publish owned source and this single deduplicated ledger. There is no clock cutoff. The final 4% is reserved for checkpointing, with no automatic implementation restart. Latest actual Root sample is 84% used and 16% remaining. No paid credits, reset, reserve-model switch or model hopping is authorized. The full goal remains active.
+Direct human message `01a12367-3e20-7150-86f7-a14cacab49bd` supersedes the old clock cutoff and five-percent threshold. Continue existing online work while applicable main allowance exceeds 4%. At 4% remaining or below stop new implementation/build/render/spawn work, then safely save evidence, preserve processes and user data, publish owned source and this single deduplicated ledger. There is no clock cutoff. The final 4% is reserved for checkpointing, with no automatic implementation restart. Latest actual Root sample is 87% used and 13% remaining. Local heavy implementation/compiler/build/render remains online under the human instruction; a cleared monitor pressure hold does not authorize a new local heavy stage. No paid credits, reset, reserve-model switch or model hopping is authorized. The full goal remains active.
 
 Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 3 asynchronous/multi-path acceptance; 4 durable or cross-system integration; 5 foundational multi-domain work or external-device dependencies. Difficulty is not severity or a promise of duration. Respect prerequisites and fix P1 integrity bugs before dependent features, even when a cosmetic task is easier. Source-only findings, diagnostic renders, compiler success and actual production are distinct.
 
@@ -38,20 +38,20 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | INT-007 | 3/5 | P1 | Open acceptance | Business tax/quote/ambiguous retry and identity browser journeys | Isolated consenting actors and controlled actual transaction funding |
 | INT-008 | 3/5 | P2 | Qualified earlier evidence | Investigate earlier synthetic character hash differences | Historical private artifacts availability |
 | INT-009 | 3/5 | P2 | Open verification | Long labels, offline interactions and native200% zoom | Unlocked native surface; relevant combined artifact |
-| INT-023 | 3/5 | P1 boundary gate | 619 source corrected; runtime diagnostics pending | Consent loader unknown data can invoke getters or escape abort semantics | INT-001; INT-021 |
+| INT-023 | 3/5 | P1 boundary gate | 619 loader corrected; e52 inherited-root getter repair/proof pending | Consent loader unknown data can invoke getters or escape abort semantics | INT-001; INT-021 |
 | INT-025 | 3/5 | P1 release gate | Current final coverage pending | Creator/game/other-player saved-look identity on final graphics | INT-014; INT-015; INT-024 |
 | INT-010 | 4/5 | P1 | Provider28 source changes required | Migrate real country catalogue callers and preserve route authority | WORLD scope agreement; current admission checkpoint |
 | INT-011 | 4/5 | P1 | c12 seal15PASS; combined/full/native pending | Accept next five countries as actual playable journeys | INT-010 or independently reviewed compatible registry path |
-| INT-012 | 4/5 | P1 | Implementation pending | Durable household transaction adapter and exact once settlement | INT-001; completed loader review; explicit shared-file allocation |
+| INT-012 | 4/5 | P1 | Inactive e52 adapter; A1 replay/A2 inherited-getter fixes assigned; actual corrected proof pending | Durable household transaction adapter and exact once settlement | INT-001; completed loader review; explicit shared-file allocation |
 | INT-013 | 4/5 | P1 | Open private-media acceptance | Voice record/review/send/play/retry/delete with consent and cleanup | Explicit synthetic audio/permission setup; available paired browser actors |
 | INT-014 | 4/5 | P1 | Confirmed diagnostic graphics failure | Home bed contact penetration | Reviewed rest/contact source ownership |
 | INT-015 | 4/5 | P1 | Confirmed diagnostic graphics failure | Stair clearance/contact | GRAPHICS capsule and LIVING movement coordination |
 | INT-016 | 4/5 | P1 | f4 OFF durable2PASS; compatible rollback artifact open | Compatible driving v2 rollback before first issuance | INT-005; INT-006; explicit authority types |
-| INT-017 | 4/5 | P1 | 3e3 source approved/pushed; exact CI live; release open | Final combined source, seals and coordinated production | Accepted candidate units; unchangedbindings/secrets/namespace |
+| INT-017 | 4/5 | P1 | 3e3 CI terminal compressed-budget FAIL; 3a generator modification required; release held | Final combined source, seals and coordinated production | Accepted candidate units; unchangedbindings/secrets/namespace |
 | INT-018 | 4/5 | P2 | Open research queue/access | Continue exact public-source queues and Recent | Public source access; original private captures unavailable |
 | INT-026 | 4/5 | P1 programme gap | Incomplete broad rollout | Authored wardrobe/hair/footwear look coverage | INT-014; INT-015; INT-025; INT-017 budget gate |
 | INT-029 | 4/5 | P1 feature gate | Pure domain only | Consenting NPC barber appearance and once settlement | GRAPHICS target and Integration accounting |
-| INT-019 | 5/5 | P1 | Implementation pending | Bind durable character/life identity and household home-use lifecycle | INT-012; approved domain and store authority |
+| INT-019 | 5/5 | P1 | Six lifecycle mismatches confirmed; first-assignment seam clarification pending | Bind durable character/life identity and household home-use lifecycle | INT-012; approved domain and store authority |
 | INT-020 | 5/5 | P2 | External device coverage missing | Physical iPhone/Safari/PWA/background and sustained heat/lag | Physical hardware/access and accepted combined source |
 | INT-030 | 5/5 | P1 journey gap | Native progression unfinished | Legitimate qualification, rental and mapped driving | INT-016; WORLD/GRAPHICS movement contract |
 | INT-031 | 5/5 | P1 feature gap | Actual custody chain incomplete | Mapped delivery/restock/wages/tools | INT-030; custody/stock/accounting authority |
@@ -543,3 +543,13 @@ WORLD's [8abf inventory](https://github.com/kromate/joinallworld/blob/8abf64c21c
 Current shared allowance is85%used/15%remaining. At or below4% remaining, new implementation stops and final checkpoint/save/push/report work uses the reserved allowance. There is no clock cutoff. Memory WARNING and material paging continue to hold local heavy/browser work; existing authorized online work continues. The full original programme remains active.
 
 [Household A1 compatibility contract](household-a1-legacy-contract.md) approves versioned stable fingerprints for NEW successes and a second exact e52 legacy probe only after canonical fingerprint conflict. Old matching receipts return unchanged; unknown versions/storage errors refuse. Old legacy fingerprints lack original mutable provenance, so unchanged-body replay after those facts changed cannot be safely guaranteed. Such receipts stay intact and fail closed, without migration, deletion or automatic new IDs. The existing household owner receives implementation and real-store proof; this contract alone does not repair A1 or activate a route.
+
+## Current terminal CI and next source gates
+
+[Exact 3e3 terminal CI](3e3-terminal-ci-review.json) fails one compressed startup root defect across both build jobs, both game partitions and integration repairs. Node22/24 game each passes2608/fails1/skips1; Node24 host passes1029/skips3. Earlier independently reviewed Worker22/24 each passes159. UI, host acceptance, host/tooling partitions and release policy pass. No identical retry, budget increase or movement rewrite.
+
+[3a120 source review](3a120-route-review.md) requires modification before integration: live-route-dependent self-check fixtures prevent valid full-object fallback. Removing that requirement must also handle a compact-only output without a leading sparse slot. [Independent static decoding](3a120-route-diagnostic.json) preserves all39 ordered route values/keys and the unchanged55-city catalogue/loaders. No measured size or runtime acceptance is inferred. Existing country ownership receives the fix.
+
+[Canonical household lifecycle review](canonical-household-writer-contract.md) has20 independently matched source pins and six confirmed preservation gaps. [Root review](canonical-household-writer-root-review.json) holds broad shared-file allocation until the first-unidentified assignment/replay seam is concrete. A1/A2 adapter repairs remain with the existing writer. Consent labels and temporary visits confer no durable rights.
+
+Remote country package comparison previously mixed listed payload files with physical archive entries:6227 payload plus manifest equals6228 archive entries. A distinct digest still requires full file/provenance comparison, not a missing-file diagnosis from counts alone. No browser stage launched or old package acceptance inherited. Existing forbidden artifact access remains recorded.

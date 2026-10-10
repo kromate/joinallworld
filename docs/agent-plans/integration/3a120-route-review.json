@@ -1,0 +1,64 @@
+{
+  "decision": "MODIFY_GENERATOR_BEFORE_INTEGRATION",
+  "candidate": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+  "parent": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "literalBaseline": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81",
+  "observedHead": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "workingTree": "clean",
+  "changedPaths": [
+    "scripts/city/build-catalogue.ts",
+    "src/game/cities/routes.generated.ts"
+  ],
+  "pins": {
+    "scripts/city/build-catalogue.ts": "8f3db46aa7351244eb3574514bbc3218a40cef03aff5e43465cb30fc983a3685",
+    "src/game/cities/routes.generated.ts": "eede408a489697e23567dd3ee2c0209aa4bbe931c4df755e557772353dddbcea",
+    "src/game/cities/catalogue.generated.ts": "0969ee3c04a10152d1894706187bd9fd531b83295a4b7cb6bcaad692f1be3046",
+    "src/game/cities/loaders.generated.ts": "857c3a9cc6acc600db61e6f18259ee27046afe3ef997028909c09a5f37a12dea",
+    "src/game/cities/generatedLinks.ts": "3860ff242e16bf482f8a26d6e53a528787f8f0d47404b8207e138f4c0816eb2a",
+    "src/game/content/travel.ts": "5f8f5a5c659d07da0c0ce0a0d50d609c88a74b616acb5312b2adad8b80d82f1f",
+    "src/types/content.ts": "b83c63408552c125a161782b8332c04879f8c56dadea7794998e4438051d21e2",
+    "src/game/cities/registry.ts": "c785929592a90590cfc6a107b7db466dc40515f11770d7a1cbb4d427da1f4efa"
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "P2",
+      "location": "scripts/city/build-catalogue.ts:87-89",
+      "title": "Embedded checks require unrelated live routes before fallback can run",
+      "reproducers": [
+        "Give every canonical foreign flight a legitimate authored custom fare or status. Each must qualify for full-object fallback, but standardFlight is undefined and line89 throws before output.",
+        "Remove or reverse only the Lagos-to-Kano air row in a valid authored configuration, retaining all other rows and foreign flights. nigeriaFlight is undefined and line89 throws. The earlier generator serialized this valid configuration.",
+        "A Nigeria-only or zero-compact fixture also fails before the explicit compactFlights=[] fallback can handle it."
+      ],
+      "impact": "The optimizer changes which valid city configurations the generator accepts. Current 55-city output is unaffected, but the promised custom/unsupported-shape fallback is not total.",
+      "repair": "Do not require a canonical foreign row or a specific live Kano row for self-check setup. Run isolated deterministic checks independent of required production catalogue contents, or conditionally run applicable fixtures when examples exist while always emitting safe full objects otherwise. Keep exact keys and complete canonical equality strict."
+    }
+  ],
+  "repairConstraint": {
+    "location": "scripts/city/build-catalogue.ts:116-117",
+    "issue": "compactSpread unconditionally starts with a comma. Current hard Kano assertion indirectly ensures a full-object prefix exists, so this is not a currently reachable extra-row defect for the exact source catalogue.",
+    "requiredWithR1": "When removing the live-route requirement, support a valid route list consisting of exactly 15 canonical compact flights and no full prefix. Join the nonempty full-row and spread fragments with a delimiter, or prepend a comma only when fullRouteLinks is nonempty. Otherwise output begins Object.freeze([, ...map]) and adds an undefined sparse slot. Test empty prefix and empty catalogue as appropriate."
+  },
+  "equivalence": {
+    "currentRows": 39,
+    "fullRows": 24,
+    "compactRows": 15,
+    "catalogueRows": 55,
+    "loaderRows": 55,
+    "currentGeneratedModule": "Equivalent by complete diff and inspected reconstruction to 3e3 and transitively 7f literals. Fifteen dense tuples preserve exact order, Unicode labels, km, fare and seconds.",
+    "properties": "Map callback destructures only tuple values and ignores index/array arguments; returns fresh ordinary mutable object per tuple in exact a,b,mode,beta,label,icon,km,fare,seconds insertion order.",
+    "freeze": "Outer AUTHORED_CITY_LINKS remains frozen. Row objects remain mutable as before. Private tuple arrays are compile-time readonly only, but are not exported or subsequently mutated.",
+    "direction": "Endpoints and mode unchanged, so unchanged registry linkKey, authored precedence and linksFrom directional IDs remain unchanged.",
+    "suffix": "Exactly 15 canonical rows must form the entire suffix starting at first canonical row. Interleaving or more/fewer qualifying rows falls back to full objects if generator reaches that code. No reorder, selection drop or fare normalization occurs.",
+    "fallback": "Unchanged qualifier rejects domestic/reversed/mode/beta/status/custom field/km/fare/seconds/label/reordered/missing-fare cases. Twelve embedded checks exercise these shapes in source, but are not executed in this review and are not independent fixture coverage.",
+    "unchanged": "55 catalogue rows and loaders plus geography/fare/timetable/types/registry hashes unchanged."
+  },
+  "limits": [
+    "No measured bundle size, memory, latency, runtime or performance claim.",
+    "No generator/check/compiler/build/tests/browser/server executed. Root's independent static decoding and published cloud evidence are separate.",
+    "Source guards operate on trusted authored data, not hostile getter/proxy inputs.",
+    "Current generated module equivalence does not waive R1 generator regression or prove emitted fallback branches at runtime.",
+    "Exact corrected source must keep budgets fixed and receive fresh generator/route/compiler/build/budget checks under existing cloud ownership before release consideration."
+  ],
+  "actions": "Read immutable source and hashes; wrote only requested /tmp reports. No source edits, delegation, execution, provider or publication actions."
+}

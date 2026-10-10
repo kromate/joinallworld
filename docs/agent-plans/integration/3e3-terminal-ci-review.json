@@ -1,0 +1,90 @@
+{
+  "observedAt": "2026-10-10T02:56:00.793523+00:00",
+  "source": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "run": 38016051589,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/38016051589",
+  "status": "completed",
+  "conclusion": "failure",
+  "successfulJobs": [
+    "ui-regressions",
+    "host-acceptance",
+    "release-policy",
+    "full-worker (22)",
+    "full-worker (24)",
+    "full-node (22, host)",
+    "full-node (24, host)",
+    "full-node (22, tooling)",
+    "full-node (24, tooling)"
+  ],
+  "failedJobs": [
+    "full (22)",
+    "full (24)",
+    "integration-repairs",
+    "full-node (22, game)",
+    "full-node (24, game)"
+  ],
+  "expectedSkippedJobs": [
+    "build-and-smoke-fast",
+    "typecheck-fast"
+  ],
+  "startupBytes": {
+    "raw": 614097,
+    "gzip": 223002,
+    "brotli": 195915
+  },
+  "unchangedLimits": {
+    "raw": 615000,
+    "gzip": 223000,
+    "brotli": 195600
+  },
+  "rootCause": "One compressed startup defect, tracked as INT-017, no cap waiver or additional movement defect inferred.",
+  "partitions": [
+    {
+      "name": "Node22 game",
+      "job": 114106426639,
+      "counts": {
+        "tests": 2610,
+        "pass": 2608,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 1,
+        "duration_ms": 1357837.288341
+      },
+      "logSha256": "0beaa7a8177972ea0d0525ac85a55e0f7ff1196814eaa9d0e4bf16e272d090fc",
+      "logBytes": 1270580,
+      "logFormat": "Earlier retained original full job log; raw hash independently matched"
+    },
+    {
+      "name": "game24",
+      "job": 114106426701,
+      "counts": {
+        "tests": 2610,
+        "pass": 2608,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 1,
+        "duration_ms": 1424104.068898
+      },
+      "logSha256": "e14bc6cbfb445ed922ee0c4bd18c01ee4e0fa0f27e0b7175bfc433156a05fc66",
+      "logBytes": 731651,
+      "logFormat": "gh run view --job --log, with job/step prefixes. Hash differs from provider API raw encoding."
+    },
+    {
+      "name": "host24",
+      "job": 114106426693,
+      "counts": {
+        "tests": 1032,
+        "pass": 1029,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 3,
+        "duration_ms": 306838.792904
+      },
+      "logSha256": "c5aec3a30f98667486cf4346c5cdb21717438d46d5a470b83566c477d270feab",
+      "logBytes": 447335,
+      "logFormat": "gh run view --job --log, with job/step prefixes. Hash differs from provider API raw encoding."
+    }
+  ],
+  "productionAccepted": false,
+  "limits": "Exact combined source CI only. Cross-version counts overlap and must not be summed. No browser, physical-device, household activation, package or production acceptance."
+}

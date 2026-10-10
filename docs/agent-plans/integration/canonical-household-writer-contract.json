@@ -1,0 +1,102 @@
+{
+  "decision": "APPROVE_BOUNDED_IMPLEMENTATION_CONTRACT_ONLY",
+  "runtimeAccepted": false,
+  "activationApproved": false,
+  "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "adapterSource": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
+  "sourcePins": {
+    "server/types.ts": "d391f5d9b16a5ae53b2cb67f4d01ffa7078095b224adf9eb214bdb0fe9d85b4b",
+    "server/protocol.ts": "27742061f222dc021d6882a9f2a2372a3eb30c3b40ebdde7b5b909462a59dbf5",
+    "server/character.ts": "f15bdeb0e6ce3e079c8c7b2480c5767c7b6a29aa05e10583e183dbfadf497b18",
+    "server/life-service.ts": "f4801b7f35a48a3abebc10837a95f65620bbbfd499478664fffc8d06c7cb3818",
+    "server/accounts/service.ts": "2ed2d63e5bce80c681defd1c29acd2e1d6ec2d2568506eef7ffd82eba2275b1f",
+    "server/host-context.ts": "a17e6d27d37c0e60a91ffb739476a360164439d2ac39d5f17c2479f8785a4ab4",
+    "server/routes/core.ts": "d54c1ad916a5e69fc261038c9c2ca3ef2bb1f1b41a8563da6e549c185e91b4a5",
+    "server/world/service.ts": "c01a5c6c5f47d074ddfb66f7d2989f823d0bf11542b0655ba26d411e52ca07a1",
+    "server/social/ping.ts": "b3f14e81d3f4b2205b45f4b6242361cf5c0185a74f56e3340eff1704b3411b48",
+    "src/game/systems/estate.ts": "e4bfc0fd555c67b7389bef0901ead7a8eb81cfde9bff9ba54e79650ad0a41873",
+    "src/game/systems/property.ts": "858c6f46e9ce8f8b870c4fabd726bf17054d07748ed1300d23b87a7dbf3fa5f1",
+    "src/types/life.ts": "a57338328b05b9277ac4b5497acd2d54ae17f3bb303f30f25d1eb19ac9a98a73",
+    "src/life.ts": "0ee34f654d4fc1a5ab0829fb67e3c55c5f8ec8aac79f605ebf31a29dfce9bc32",
+    "src/game/residence.ts": "b7353aa3466b3b1287568744227ad3a87c6e74e8b653030ca2ea03948a441c87",
+    "server/store.ts": "4c739e503df0423661737c0805162bd887ae06669094acdbb868733a67c93296",
+    "deploy/sqlite-store.ts": "a54149ccc1f4f1a4db69379a041b0fcd7c90f5830fbcbe7393d261c690f58b5d",
+    "server/server.ts": "c551d2a3f1b157b908cbc7ab6dc57d993019d43cf73494bb0f5cf9e49722d5e7",
+    "deploy/cloudflare-worker.ts": "b53d611a9d3cf71c400a186eef8aa8c0495dce7df14c6623ada4ca42d68a6982",
+    "server/world/land.ts": "26173d432c2623860aa3d32ffc807d4c39c6b5bc4c6b9e0a94d9d0597d5157fc"
+  },
+  "adapterPins": {
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d"
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "source": "lifeIdentity.ts:269-280; character.ts:61-72",
+      "problem": "Cross-city movement of same record conflicts with fixed-city whole-state-preserving move",
+      "required": "Separate canonical travel transition with before/after exact record proof and atomic locator update"
+    },
+    {
+      "id": "C2",
+      "source": "lifeIdentity.ts:211-247; character.ts:75-92",
+      "problem": "Absent singular character index conflicts with distinct legacy lives under same publicId",
+      "required": "Exact character/life association rows; active authority from pinned record; explicit deletion reverse enumeration"
+    },
+    {
+      "id": "C3",
+      "source": "lifeIdentity.ts:274; character.ts:65-68,84-89",
+      "problem": "Empty-destination plan cannot perform occupied-slot exchange",
+      "required": "Atomic multi-record movement plan validates every source/destination before writes"
+    },
+    {
+      "id": "C4",
+      "source": "accounts/service.ts:298-340,512-550; host-context.ts:202-210",
+      "problem": "Container moves and erase have no locator maintenance",
+      "required": "Same-transaction preservation and terminal cleanup/tombstones, no new life fallback"
+    },
+    {
+      "id": "C5",
+      "source": "systems/estate.ts:150-215,517-536",
+      "problem": "Residence metadata stripped and current furniture refitted across travel",
+      "required": "Trusted optional metadata round-trip; capture bounded scene before departure; no sanitizer ID minting"
+    },
+    {
+      "id": "C6",
+      "source": "world/service.ts:151-165",
+      "problem": "Plot shard and life Store commit separately",
+      "required": "Do not assert same-Store shard ownership; exact stored dwelling identity and reconciled address before entry"
+    }
+  ],
+  "nextUnit": {
+    "owner": "Existing Cloud household/integration writer, serialized shared-file allocation by Root",
+    "name": "Canonical life/home assignment plus lifecycle preservation in real Store transactions",
+    "entry": "New-success callback of executeConsentCommand after authentication and stable replay, no nested transaction",
+    "noAssignmentIn": [
+      "GET",
+      "sessionLife getter",
+      "settleCity",
+      "sanitize",
+      "world sync",
+      "account restore",
+      "travel"
+    ],
+    "activationGate": "No household activation before termination/removal and canonical liability handling; no register-only product acceptance"
+  },
+  "requiredEvidence": [
+    "Real Node HTTP/file close-reopen",
+    "Actual Worker HTTP/persistent SQLite dispose-reopen",
+    "First mutation atomic rollback/race and absent identity on refusals",
+    "Original-ID replay before mutable checks",
+    "Real cross-city travel retaining original home and same LifeId",
+    "Legacy A-B-A and account park/restore/unlink/erase lifecycle",
+    "Home replacement retirement vs scene-only update",
+    "Actual accept/use/revoke/egress before member activation"
+  ],
+  "limitations": [
+    "No source edits or execution performed",
+    "No complete rebirth/reset audit claimed",
+    "Existing legacy containers not proven uniformly bounded",
+    "No current production household callers/canonical writers",
+    "No runtime/residency/money/release acceptance",
+    "Full household consumer and rent goal remains outstanding"
+  ]
+}

@@ -1,0 +1,765 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-10T11:34:49.761252+00:00",
+  "purpose": "Preservation and authorized publication only; implementation/runtime/deployment remain stopped",
+  "handoffParent": "a21184704325ab65c7278ca360273853d3a41bc4",
+  "repository": "https://github.com/kromate/joinallworld",
+  "authorization": {
+    "human": "Anthony",
+    "threadId": "01a11ddc-3607-7ba1-b778-9878f6a9646b",
+    "userMessageId": "01a12590-e534-78d2-9cef-4e8068a062e6",
+    "independentlyReadActualHumanMessage": true,
+    "exactText": "**Held graphics source:** commit `cf8b7417` and its descendants are not on GitHub\n\naprroved\n",
+    "scope": "Existing cf8 graphics source and actual descendants only; no driving385, householdcfb, future work or deployment"
+  },
+  "published": [
+    {
+      "sha": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+      "branch": "codex/cloud-npc-camera-final-20261010",
+      "remoteRef": "refs/heads/codex/cloud-npc-camera-final-20261010",
+      "lsRemoteSha": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+      "exactRemoteMatch": true,
+      "pushExitCode": 0,
+      "forcePush": false,
+      "url": "https://github.com/kromate/joinallworld/commit/cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+      "publicBase": "241b29a4a7572b1d19d9c382dfad600726a0064d",
+      "committedChain": [
+        {
+          "sha": "7873cd2fdc3774bd3bb350b4f674da77714265b4",
+          "parents": [
+            "241b29a4a7572b1d19d9c382dfad600726a0064d"
+          ],
+          "changedPaths": [
+            "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts"
+          ]
+        },
+        {
+          "sha": "00abefea746b8263eab0482ebea0e6961481da77",
+          "parents": [
+            "7873cd2fdc3774bd3bb350b4f674da77714265b4"
+          ],
+          "changedPaths": [
+            "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs"
+          ]
+        },
+        {
+          "sha": "da415dc874b8bd1fe6ebab0e45f5167f49b6f053",
+          "parents": [
+            "00abefea746b8263eab0482ebea0e6961481da77"
+          ],
+          "changedPaths": [
+            "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
+            "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs"
+          ]
+        },
+        {
+          "sha": "adb53e06c06b6cdbd2fb004c267eaf207a732f74",
+          "parents": [
+            "da415dc874b8bd1fe6ebab0e45f5167f49b6f053"
+          ],
+          "changedPaths": [
+            "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
+            "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs"
+          ]
+        },
+        {
+          "sha": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+          "parents": [
+            "adb53e06c06b6cdbd2fb004c267eaf207a732f74"
+          ],
+          "changedPaths": [
+            "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts"
+          ]
+        }
+      ],
+      "sourcePins": [
+        {
+          "path": "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
+          "bytes": 60206,
+          "sha256": "cb6a6ffcb2f9dfb2dd0886495d32cfdfcc7acd3be891106104c6327f11d5e1f1",
+          "gitMode": "100644"
+        },
+        {
+          "path": "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs",
+          "bytes": 27124,
+          "sha256": "85cd1226f1f43b52bee1f78d547d81c11760cf128e4fb66d03340f84ecb393eb",
+          "gitMode": "100644"
+        }
+      ],
+      "scope": "Two diagnostic fixture files; retained failing camera evidence, no release acceptance",
+      "historicalAutomaticApprovalRejection": "Exact source/destination authorization was previously insufficient. The independently read later human cf8 approval resolves this publication scope."
+    }
+  ],
+  "descendantSearch": {
+    "ownedGraphicsCheckoutHeadsAndBranchRefsInspected": true,
+    "cameraUnreachableObjectsInspection": "git fsck --no-reflogs --unreachable returned no objects",
+    "result": "Only cf8 itself is an eligible preserved owned branch head; no later cf8 descendant checkpoint found",
+    "ownedCheckoutInventory": [
+      {
+        "checkout": "coordinator-graphics-interaction-241",
+        "head": "2b08d32f74eb454c8d775b51f5f3fbd25657a16e",
+        "branch": "codex/cloud-graphics-grounded-interaction-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "coordinator-graphics-wiring",
+        "head": "b89c759b5791cc6d2f6a0617a36e56b1e62ba2b2",
+        "branch": "codex/cloud-graphics-wiring-v9-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "graphics-v9-7dd84652",
+        "head": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+        "branch": "codex/graphics-native-release-v9",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-head",
+        "head": "0f8abaa76dee15f7287bfe22d42d890e579ab954",
+        "branch": "codex/cloud-graphics-head-v9-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-native-interaction-gesture",
+        "head": "33c7006f5655faf61fe855887a36edca23d15dd7",
+        "branch": "codex/cloud-native-interaction-gesture-v1-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-native-interaction-temporal-29df",
+        "head": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+        "branch": "codex/cloud-native-interaction-temporal-93bc",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-native-interaction-twistfix",
+        "head": "203c141a618795e88e0391e8ccb82ea656fda6d5",
+        "branch": "codex/cloud-native-interaction-twistfix-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-npc-camera-trial",
+        "head": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+        "branch": "codex/cloud-npc-camera-final-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": true,
+        "action": "published exact existing HEAD"
+      },
+      {
+        "checkout": "worker-graphics-npc-contact",
+        "head": "9122e0c4eb2d6db3fca4ed6e71687c4168923162",
+        "branch": "codex/cloud-graphics-npc-contact-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-npc-contact-refreshtrial",
+        "head": "54976a324f6ef4c1db0c0ccc4e3f3be81059bd1d",
+        "branch": "codex/cloud-graphics-npc-contact-refresh-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-npc-contact-trial",
+        "head": "438a24111983a0634c6fa14eae86664222548fce",
+        "branch": "codex/cloud-graphics-npc-contact-trial-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-rest",
+        "head": "4c2dec572f51f04c2f4972be609ed5eb5bbc794f",
+        "branch": "codex/cloud-graphics-rest-v9-20261010",
+        "statusPorcelain": "M src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-rest-egress-first",
+        "head": "b98099cfa0afda8168fcf184d5f541e43861a8c2",
+        "branch": "codex/cloud-graphics-rest-egress-first-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-rest-kinematics-20261010",
+        "head": "fc0045292ad7726b0fea1e03048192c245561ed7",
+        "branch": "codex/cloud-graphics-rest-kinematics-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-rest-pelvis-trial",
+        "head": "9c239a300ea09e349181a4739f2080ae48f0b7fc",
+        "branch": "codex/cloud-graphics-rest-pelvis-trial-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-rest-support-successor",
+        "head": "a01acfc4008e64f3eeea93b3bf1e0f7fcd2bbc2a",
+        "branch": "codex/cloud-graphics-rest-support-transfer-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-rest-trajectory-241",
+        "head": "df0e2d9826f84091189e5fd4553e1a667cbb91d6",
+        "branch": "codex/cloud-graphics-rest-trajectory-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-stairs",
+        "head": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+        "branch": "codex/cloud-graphics-stairs-v9-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      },
+      {
+        "checkout": "worker-graphics-wrist-neutral-candidate",
+        "head": "7aeacb04dc2a523e3b504898aad9f95bf11d5c0a",
+        "branch": "codex/cloud-wrist-neutral-93bc-20261010",
+        "statusPorcelain": "",
+        "cf8Ancestor": false,
+        "action": "not pushed in this approval; no cf8 ancestry"
+      }
+    ]
+  },
+  "omittedRestCheckpoints": [
+    {
+      "sha": "a01acfc4008e64f3eeea93b3bf1e0f7fcd2bbc2a",
+      "branch": "codex/cloud-graphics-rest-support-transfer-20261010",
+      "checkout": "worker-graphics-rest-support-successor",
+      "cf8Ancestor": false,
+      "mergeBaseWithCf8": "241b29a4a7572b1d19d9c382dfad600726a0064d",
+      "status": "preserved privately; separate sibling chain outside exact cf8-descendant approval",
+      "sourcePins": [
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/lie-entry-time-v1.test.ts",
+          "bytes": 1903,
+          "sha256": "13ece09375b2f92e67c07cdbd76872cf6dba24acb9ff6600f57e23259afb2bea",
+          "gitMode": "100644"
+        },
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/lie-entry-time-v1.ts",
+          "bytes": 1142,
+          "sha256": "9c71388191193e542366b4cdf9668f2f88b2d7631172589f4cabcffe7ac7e1a8",
+          "gitMode": "100644"
+        },
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+          "bytes": 41647,
+          "sha256": "9e895cab88f69c93837c9b28cf48fbca0ad53226a3327cffbd7bf3b1b275c773",
+          "gitMode": "100644"
+        },
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+          "bytes": 82657,
+          "sha256": "9da34f4caea2c4e68c68fb266e92507d07051f4f9d9d966453604c037ee7c98c",
+          "gitMode": "100644"
+        },
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts",
+          "bytes": 96816,
+          "sha256": "978cb7a85547e1fdfc7bc0a47d318dfb4e0afaa4273bb21f1bdfce2ad039fa82",
+          "gitMode": "100644"
+        }
+      ],
+      "committedChainFromCommonBase": [
+        {
+          "sha": "ff070ccdcda144affcfaf63e756b953904a8409a",
+          "parents": [
+            "241b29a4a7572b1d19d9c382dfad600726a0064d"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts"
+          ]
+        },
+        {
+          "sha": "648b9db9a07bcc4dc89cbef6cace15d33c81d031",
+          "parents": [
+            "ff070ccdcda144affcfaf63e756b953904a8409a"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
+          ]
+        },
+        {
+          "sha": "9b0954c8333a29fd2fb1c752dafc7899e652b9f3",
+          "parents": [
+            "648b9db9a07bcc4dc89cbef6cace15d33c81d031"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "df0e2d9826f84091189e5fd4553e1a667cbb91d6",
+          "parents": [
+            "9b0954c8333a29fd2fb1c752dafc7899e652b9f3"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "b601882c35dd9096b454a55ab28dc1b550cb1b8e",
+          "parents": [
+            "df0e2d9826f84091189e5fd4553e1a667cbb91d6"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/lie-entry-time-v1.test.ts",
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/lie-entry-time-v1.ts",
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "5ac99cf79109fef62d62d80796e1a8e62763a88c",
+          "parents": [
+            "b601882c35dd9096b454a55ab28dc1b550cb1b8e"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "62e528279c99d864199618816e1a68e1a959946c",
+          "parents": [
+            "5ac99cf79109fef62d62d80796e1a8e62763a88c"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "4b29635b535b5fdc06cfb6d08e4f4085ecf03a6c",
+          "parents": [
+            "62e528279c99d864199618816e1a68e1a959946c"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "208731671985c1065a1833da911b6adbbf08653e",
+          "parents": [
+            "4b29635b535b5fdc06cfb6d08e4f4085ecf03a6c"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "1e265657e13f7adda719b9f33a805bdc54f6564b",
+          "parents": [
+            "208731671985c1065a1833da911b6adbbf08653e"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts"
+          ]
+        },
+        {
+          "sha": "aa4820f935ecb15de0ada1d28e201a7b39cf4687",
+          "parents": [
+            "1e265657e13f7adda719b9f33a805bdc54f6564b"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "0d8d5de0782b5e52a4dee5bdc93782cca4be786e",
+          "parents": [
+            "aa4820f935ecb15de0ada1d28e201a7b39cf4687"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
+          ]
+        },
+        {
+          "sha": "be44c45e099b70e7cf1a8bbb6b55e65075c08aa7",
+          "parents": [
+            "0d8d5de0782b5e52a4dee5bdc93782cca4be786e"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "fd72f02beee2de542e9d6a0efdd518c05fbf47e8",
+          "parents": [
+            "be44c45e099b70e7cf1a8bbb6b55e65075c08aa7"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "1e035395c0a822ada1d533190fe24311b051070a",
+          "parents": [
+            "fd72f02beee2de542e9d6a0efdd518c05fbf47e8"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "b34e39f02d60acac7d0bfb9b1c40d83e759b0b37",
+          "parents": [
+            "1e035395c0a822ada1d533190fe24311b051070a"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "7f4f437bde6ce320ce124c6d2b38eb4f1c434825",
+          "parents": [
+            "b34e39f02d60acac7d0bfb9b1c40d83e759b0b37"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "6ecfc03e93a52173e63831f170f7c4d46b4dfd3b",
+          "parents": [
+            "7f4f437bde6ce320ce124c6d2b38eb4f1c434825"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
+          ]
+        },
+        {
+          "sha": "f463ffd08a8bf9b9236ded0bfd37b61541b8360e",
+          "parents": [
+            "6ecfc03e93a52173e63831f170f7c4d46b4dfd3b"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "a5b13d35e59190515269c9a3852649caac38b470",
+          "parents": [
+            "f463ffd08a8bf9b9236ded0bfd37b61541b8360e"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "1dcc39b9c8bea0155ffdc76e1978d7b87d4bc495",
+          "parents": [
+            "a5b13d35e59190515269c9a3852649caac38b470"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "a01acfc4008e64f3eeea93b3bf1e0f7fcd2bbc2a",
+          "parents": [
+            "1dcc39b9c8bea0155ffdc76e1978d7b87d4bc495"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        }
+      ]
+    },
+    {
+      "sha": "fc0045292ad7726b0fea1e03048192c245561ed7",
+      "branch": "codex/cloud-graphics-rest-kinematics-20261010",
+      "checkout": "worker-graphics-rest-kinematics-20261010",
+      "cf8Ancestor": false,
+      "mergeBaseWithCf8": "241b29a4a7572b1d19d9c382dfad600726a0064d",
+      "status": "preserved privately; separate sibling chain outside exact cf8-descendant approval",
+      "sourcePins": [
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/lie-entry-time-v1.test.ts",
+          "bytes": 1903,
+          "sha256": "13ece09375b2f92e67c07cdbd76872cf6dba24acb9ff6600f57e23259afb2bea",
+          "gitMode": "100644"
+        },
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/lie-entry-time-v1.ts",
+          "bytes": 1142,
+          "sha256": "9c71388191193e542366b4cdf9668f2f88b2d7631172589f4cabcffe7ac7e1a8",
+          "gitMode": "100644"
+        },
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+          "bytes": 41647,
+          "sha256": "9e895cab88f69c93837c9b28cf48fbca0ad53226a3327cffbd7bf3b1b275c773",
+          "gitMode": "100644"
+        },
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+          "bytes": 82657,
+          "sha256": "9da34f4caea2c4e68c68fb266e92507d07051f4f9d9d966453604c037ee7c98c",
+          "gitMode": "100644"
+        },
+        {
+          "path": "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts",
+          "bytes": 90115,
+          "sha256": "461c69a2ff465d7d6c7720a758ae6cd6ddf4e01c179c69164142168eaba457b3",
+          "gitMode": "100644"
+        }
+      ],
+      "committedChainFromCommonBase": [
+        {
+          "sha": "ff070ccdcda144affcfaf63e756b953904a8409a",
+          "parents": [
+            "241b29a4a7572b1d19d9c382dfad600726a0064d"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts"
+          ]
+        },
+        {
+          "sha": "648b9db9a07bcc4dc89cbef6cace15d33c81d031",
+          "parents": [
+            "ff070ccdcda144affcfaf63e756b953904a8409a"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
+          ]
+        },
+        {
+          "sha": "9b0954c8333a29fd2fb1c752dafc7899e652b9f3",
+          "parents": [
+            "648b9db9a07bcc4dc89cbef6cace15d33c81d031"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "df0e2d9826f84091189e5fd4553e1a667cbb91d6",
+          "parents": [
+            "9b0954c8333a29fd2fb1c752dafc7899e652b9f3"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "b601882c35dd9096b454a55ab28dc1b550cb1b8e",
+          "parents": [
+            "df0e2d9826f84091189e5fd4553e1a667cbb91d6"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/lie-entry-time-v1.test.ts",
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/lie-entry-time-v1.ts",
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "5ac99cf79109fef62d62d80796e1a8e62763a88c",
+          "parents": [
+            "b601882c35dd9096b454a55ab28dc1b550cb1b8e"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "62e528279c99d864199618816e1a68e1a959946c",
+          "parents": [
+            "5ac99cf79109fef62d62d80796e1a8e62763a88c"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "4b29635b535b5fdc06cfb6d08e4f4085ecf03a6c",
+          "parents": [
+            "62e528279c99d864199618816e1a68e1a959946c"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "208731671985c1065a1833da911b6adbbf08653e",
+          "parents": [
+            "4b29635b535b5fdc06cfb6d08e4f4085ecf03a6c"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "1e265657e13f7adda719b9f33a805bdc54f6564b",
+          "parents": [
+            "208731671985c1065a1833da911b6adbbf08653e"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts"
+          ]
+        },
+        {
+          "sha": "aa4820f935ecb15de0ada1d28e201a7b39cf4687",
+          "parents": [
+            "1e265657e13f7adda719b9f33a805bdc54f6564b"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "0d8d5de0782b5e52a4dee5bdc93782cca4be786e",
+          "parents": [
+            "aa4820f935ecb15de0ada1d28e201a7b39cf4687"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
+          ]
+        },
+        {
+          "sha": "be44c45e099b70e7cf1a8bbb6b55e65075c08aa7",
+          "parents": [
+            "0d8d5de0782b5e52a4dee5bdc93782cca4be786e"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "fd72f02beee2de542e9d6a0efdd518c05fbf47e8",
+          "parents": [
+            "be44c45e099b70e7cf1a8bbb6b55e65075c08aa7"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "1e035395c0a822ada1d533190fe24311b051070a",
+          "parents": [
+            "fd72f02beee2de542e9d6a0efdd518c05fbf47e8"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "b34e39f02d60acac7d0bfb9b1c40d83e759b0b37",
+          "parents": [
+            "1e035395c0a822ada1d533190fe24311b051070a"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "7f4f437bde6ce320ce124c6d2b38eb4f1c434825",
+          "parents": [
+            "b34e39f02d60acac7d0bfb9b1c40d83e759b0b37"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "6ecfc03e93a52173e63831f170f7c4d46b4dfd3b",
+          "parents": [
+            "7f4f437bde6ce320ce124c6d2b38eb4f1c434825"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
+          ]
+        },
+        {
+          "sha": "f463ffd08a8bf9b9236ded0bfd37b61541b8360e",
+          "parents": [
+            "6ecfc03e93a52173e63831f170f7c4d46b4dfd3b"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "a5b13d35e59190515269c9a3852649caac38b470",
+          "parents": [
+            "f463ffd08a8bf9b9236ded0bfd37b61541b8360e"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        },
+        {
+          "sha": "fc0045292ad7726b0fea1e03048192c245561ed7",
+          "parents": [
+            "a5b13d35e59190515269c9a3852649caac38b470"
+          ],
+          "changedPaths": [
+            "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+          ]
+        }
+      ]
+    }
+  ],
+  "otherOmissions": [
+    {
+      "sha": "38594def6eeeab969b3f5148784edfda438aa387",
+      "reason": "Driving source still under prior automatic-review publication hold; outside graphics approval; no retry"
+    },
+    {
+      "sha": "cfb384f243f7e097839a235f4b234adf2316996e",
+      "reason": "Household source and descendants still held; outside graphics approval; no retry"
+    }
+  ],
+  "safetyReview": {
+    "allNewChainChangedPathsReviewed": true,
+    "onlyTwoRegularProjectDiagnosticSourceFilesInPublishedChain": true,
+    "noSecretsCredentialsSessionRuntimeDatabasesUnrelatedFilesExported": true,
+    "originalHeldSourcesNotRebasedSquashedCherryPickedOrModified": true,
+    "existingWristSource": "7aeacb04dc2a523e3b504898aad9f95bf11d5c0a remains independently public; not a cf8 descendant"
+  },
+  "stopPolicy": {
+    "allowNewImplementation": false,
+    "allowNewCompilerTestsBuildRenderBrowserFundingSpawnDeployment": false,
+    "checkpointOnly": true,
+    "noNewRuntimeProcessesLaunched": true
+  },
+  "acceptance": "Publication/checkpoint only. Existing failed camera gates and unvalidated REST source remain incomplete. No merge or deployment."
+}

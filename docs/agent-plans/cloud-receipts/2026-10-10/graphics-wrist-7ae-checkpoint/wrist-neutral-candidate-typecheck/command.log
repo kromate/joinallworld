@@ -1,0 +1,49 @@
+Actual lease-start allowance guard: {"rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.", "minimum_remaining_percent_exclusive": 4, "latest_remaining_percent": 5, "sample_source": "GRAPHICS direct actual account95%used5%remaining around04:35UTC, fresh delegated owner receipt received in current root turn", "recorded_at_utc": "2026-10-10T04:37:40.295894+00:00", "allow_new_heavy": true, "heavy_slots": 1, "additional_spend": 0}
+
+> joinallworld@0.1.0 pretypecheck
+> npm run -s preflight
+
+
+> joinallworld@0.1.0 typecheck
+> node --experimental-strip-types scripts/typecheck.ts --serial
+
+engine: compiler exited 2 without readable TypeScript diagnostics
+client: compiler did not complete (SIGABRT)
+<--- Last few GCs --->
+
+[179383:0x4181d000]    25754 ms: Scavenge (interleaved) 1528.4 (1538.2) -> 1526.7 (1542.4) MB, pooled: 0 MB, 3.90 / 0.00 ms  (average mu = 0.217, current mu = 0.129) allocation failure; 
+[179383:0x4181d000]    26283 ms: Mark-Compact (reduce) 1530.7 (1542.4) -> 1525.6 (1535.7) MB, pooled: 0 MB, 441.43 / 0.00 ms  (+ 72.0 ms in 14 steps since start of marking, biggest step 6.7 ms, walltime since start of marking 520 ms) (average mu = 0.182, 
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x75356c node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0xc52cd0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 3: 0xc52dbf  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 4: 0xef6695  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 5: 0xef66c2  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 6: 0xef69ba  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 7: 0xf076ba  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 8: 0xf0ba60  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 9: 0x199e0d1  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+server: compiler exited 2 without readable TypeScript diagnostics
+worker: compiler exited 2 without readable TypeScript diagnostics
+test: compiler did not complete (SIGABRT)
+<--- Last few GCs --->
+
+[179570:0x2a76b000]    15103 ms: Mark-Compact 1522.8 (1538.7) -> 1521.2 (1544.2) MB, pooled: 0 MB, 587.16 / 0.00 ms  (average mu = 0.182, current mu = 0.029) allocation failure; scavenge might not succeed
+[179570:0x2a76b000]    15885 ms: Mark-Compact 1525.3 (1544.2) -> 1523.8 (1546.0) MB, pooled: 3 MB, 777.17 / 0.00 ms  (average mu = 0.087, current mu = 0.007) allocation failure; scavenge might not succeed
+
+FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x75356c node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0xc52cd0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 3: 0xc52dbf  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 4: 0xef6695  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 5: 0xf07ffc  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 6: 0xedd4b3  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 7: 0xeb2fc0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 8: 0x13aa8b8  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 9: 0x1ab39b6  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+
+Typecheck failed. New .ts and .vue code must be clean. For existing JavaScript, fix the new errors; if they came in with a merge of untyped code, record them with `node scripts/typecheck.ts --update` and say so in the commit.

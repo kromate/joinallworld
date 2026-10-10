@@ -1,0 +1,16 @@
+Actual lease-start allowance guard: {"rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.", "minimum_remaining_percent_exclusive": 4, "latest_remaining_percent": 5, "sample_source": "GRAPHICS direct actual account95%used5%remaining around04:35UTC, fresh delegated owner receipt received in current root turn", "recorded_at_utc": "2026-10-10T04:37:40.295894+00:00", "allow_new_heavy": true, "heavy_slots": 1, "additional_spend": 0}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: male: the sampler must actually mutate its shared wrist frame for this clone regression: {"left":1.5033984488284537,"right":0.042573877966374005}
+    at file:///workspace/remote-verification/worker-results/native-interaction-temporal/wrist-causal/candidate-v2/wrist-causal-candidate-v2.mjs:137:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

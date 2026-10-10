@@ -1,0 +1,85 @@
+{
+  "schema": "native-wrist-neutral-stage-telemetry-preparation.v1",
+  "candidateHead": "7aeacb04dc2a523e3b504898aad9f95bf11d5c0a",
+  "baseHead": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+  "sourceOnlyPreparation": true,
+  "noCheckoutFilesChanged": true,
+  "pins": {
+    "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts": "b2513e8604b5e118ebbbaf2863fa0dd449cebbb38e8ac516f063ee592ee57bc4",
+    "src/scene/venue-scenes.ts": "249954ca92d180652d9fa3760b502a2cb28fe8502ca9952727cb5c7aa58c553f",
+    "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts": "491d57847f4d08a432d5bd75680ac4aabfe901f34360ca654a81dc9fbdc7fe10"
+  },
+  "target": "same-office-authored-NPC real interaction run, no new camera/render or player action substitution",
+  "sampleStages": [
+    {
+      "id": "corrected-bind",
+      "anchor": "neutralPose.apply();",
+      "capture": "immediately before this call after family rig correction; direction-retarget interaction branch only"
+    },
+    {
+      "id": "post-neutral",
+      "anchor": "neutralPose.apply();",
+      "capture": "immediately after neutralPose.apply()"
+    },
+    {
+      "id": "post-gesture-precontact",
+      "anchor": "interactionGesture.apply(frame);",
+      "capture": "immediately after gesture; before actor world update/contact baseline"
+    },
+    {
+      "id": "pre-native-contact",
+      "anchor": "captureContactBaseline(!restApplied);",
+      "capture": "immediately before baseline capture and authored solve"
+    },
+    {
+      "id": "post-native-contact-pre-wrist",
+      "anchor": "if (!restApplied) solveAuthoredContacts();",
+      "capture": "immediately after contact solve and before selected wrist controller"
+    },
+    {
+      "id": "post-wrist",
+      "anchor": "wristController.apply(frame);",
+      "capture": "immediately after the controller actually selected for this pose; include selected controller identity"
+    },
+    {
+      "id": "post-venue-contact",
+      "anchor": "solveNativeNpcFeetOnVenueFloor(actor);",
+      "capture": "in external venue bundle immediately after native venue contact solve; pair with actual shoe sampler in the same capture"
+    }
+  ],
+  "eachStageRecords": {
+    "actorRoot": {
+      "matrixWorld": "all 16 entries",
+      "positionWorld": "xyz",
+      "quaternionWorld": "xyzw and norm",
+      "scaleWorld": "xyz"
+    },
+    "bones": [
+      "mixamorigHips",
+      "mixamorigLeftUpLeg",
+      "mixamorigLeftLeg",
+      "mixamorigLeftFoot",
+      "mixamorigLeftToeBase",
+      "mixamorigRightUpLeg",
+      "mixamorigRightLeg",
+      "mixamorigRightFoot",
+      "mixamorigRightToeBase"
+    ],
+    "boneFields": [
+      "positionLocal xyz",
+      "quaternionLocal xyzw and norm",
+      "scaleLocal xyz",
+      "matrixWorld all 16 entries"
+    ],
+    "authoredSoles": "all points from current contacts.sample() at internal stages; venue sampler must record every candidate point for each side with callbackTargetY, sceneFloorY, signed/absolute gap and coverage/nonfinite, no lowest-band subset",
+    "legGeometry": "thigh-knee-ankle segment distances in world matrix, per side; compare between adjacent stages to identify earliest contraction",
+    "sourceClock": "frame.clipName, context.seconds, frame.duration, actor interactionSeconds; no requested wall-clock substituted"
+  },
+  "diagnosticRules": [
+    "Only compare within same actor identity and source frame.",
+    "Record raw local and world data; do not infer angles from screenshots.",
+    "Do not modify pose constants, scales, contact thresholds, or gait.",
+    "This is internal diagnostic evidence, not browser/phone acceptance."
+  ],
+  "expectedNextFixtureExposure": "instrumented fixture must serialize root.userData.nativeWristStageTrace on every actual temporal capture and preserve it in catch/failure report; stage probes are absent unless explicit external diagnostic flag is true."
+}

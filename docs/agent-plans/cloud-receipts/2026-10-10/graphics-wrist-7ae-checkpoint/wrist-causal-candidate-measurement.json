@@ -1,0 +1,1365 @@
+{
+  "schema": "native-wrist-neutral-calibration-candidate-diagnostic.v2",
+  "status": "asserted-idle-baseline-cloning-and-interaction-deltas-on-authored-family-targets",
+  "provenance": {
+    "baseHead": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+    "branch": "codex/cloud-wrist-neutral-93bc-20261010",
+    "sourceClean": true,
+    "authoredPath": "src/scene/body/native/authored-body-compression/outcompressed/parametric-base-facial-meshopt.glb",
+    "authoredSha256": "dfa53941f0fb77d69e59f59fa017f72efa45eddd7e6e8b8414b4a4dba332d552",
+    "authoredBoneCount": 52,
+    "clipPath": "src/scene/body/assets/clip-pack.glb",
+    "clipSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
+    "sourceSourceRig": "clip-pack.glb private source skeleton, sampled by production NativeSourceLandmarkSampler",
+    "targetRig": "pinned authored-body GLB node hierarchy reconstructed with actual authored bind transforms and 52 source joint nodes; actual native family correction and NativeNeutralPose applied; no skin/garment claims",
+    "dependencyRealpath": "/workspace/remote-verification/repositories/coordinator-graphics-wiring/node_modules (same-lockfile shared dependency symlink)",
+    "sourceCommitted": true,
+    "sourceHead": "7aeacb04dc2a523e3b504898aad9f95bf11d5c0a"
+  },
+  "clipSampling": {
+    "idle": [
+      0,
+      0.7666666666666667
+    ],
+    "interact": [
+      0.7666666666666667
+    ],
+    "secondsClamped": true
+  },
+  "source": {
+    "restWrist": {
+      "left": {
+        "forearmRoot": {
+          "xyzw": [
+            0.006095217405694721,
+            -0.0060950114435409175,
+            -0.7070805228161029,
+            0.7070804999534263
+          ],
+          "norm": 1
+        },
+        "handRoot": {
+          "xyzw": [
+            -1.1449731345745659e-07,
+            -2.707554020012464e-07,
+            -0.7071067926905195,
+            0.7071067696825145
+          ],
+          "norm": 1.0000000000000002
+        },
+        "handRelativeToForearm": {
+          "xyzw": [
+            -0.0086196829964541,
+            -4.181821573181684e-07,
+            2.2460172484189998e-09,
+            0.9999628498423658
+          ],
+          "norm": 1
+        }
+      },
+      "right": {
+        "forearmRoot": {
+          "xyzw": [
+            0.006095227958637881,
+            0.0060950219709881475,
+            0.7070805212358318,
+            0.7070805013519817
+          ],
+          "norm": 1
+        },
+        "handRoot": {
+          "xyzw": [
+            -1.8824423588442242e-07,
+            3.655835256111684e-07,
+            0.7071067919275528,
+            0.7071067704454227
+          ],
+          "norm": 1
+        },
+        "handRelativeToForearm": {
+          "xyzw": [
+            -0.008619682996433297,
+            5.373870152385399e-07,
+            -2.2460773699718012e-09,
+            0.9999628498423091
+          ],
+          "norm": 1
+        }
+      }
+    },
+    "idle0": {
+      "left": {
+        "forearmRoot": {
+          "xyzw": [
+            -0.218642337472201,
+            0.12960909505054743,
+            0.9596392978006069,
+            -0.12037204352185951
+          ],
+          "norm": 0.9999999999999999
+        },
+        "handRoot": {
+          "xyzw": [
+            -0.23938794454425996,
+            0.22426382414267837,
+            0.9418651575330856,
+            -0.07272670907549636
+          ],
+          "norm": 0.9999999999999999
+        },
+        "handRelativeToForearm": {
+          "xyzw": [
+            0.10605256640521704,
+            0.006225427526925982,
+            -0.02557611384311966,
+            0.994012052045476
+          ],
+          "norm": 1.0000000000000002
+        }
+      },
+      "right": {
+        "forearmRoot": {
+          "xyzw": [
+            -0.00032447511576894387,
+            0.1383147801691083,
+            0.9818421803614772,
+            0.12982622680217976
+          ],
+          "norm": 1
+        },
+        "handRoot": {
+          "xyzw": [
+            0.018319837144521227,
+            0.25224480653168624,
+            0.9638031125718343,
+            0.08438306312071585
+          ],
+          "norm": 1
+        },
+        "handRelativeToForearm": {
+          "xyzw": [
+            0.11676215072453283,
+            0.0027766476645427296,
+            0.044891822215553746,
+            0.9921409248106318
+          ],
+          "norm": 1
+        }
+      }
+    },
+    "idle7667": {
+      "left": {
+        "forearmRoot": {
+          "xyzw": [
+            -0.2050882227218872,
+            0.13368104708548872,
+            0.9626481479057125,
+            -0.11565786564089009
+          ],
+          "norm": 0.9999999999999999
+        },
+        "handRoot": {
+          "xyzw": [
+            -0.2255381097689468,
+            0.22900664512864743,
+            0.9443877666803194,
+            -0.06942811875120326
+          ],
+          "norm": 1.0000000000000002
+        },
+        "handRelativeToForearm": {
+          "xyzw": [
+            0.10605244420159067,
+            0.006225838841149328,
+            -0.025574628333847434,
+            0.9940121007287478
+          ],
+          "norm": 1
+        }
+      },
+      "right": {
+        "forearmRoot": {
+          "xyzw": [
+            -0.010202014170576272,
+            0.15682590915759023,
+            0.981077272079674,
+            0.11308819271906331
+          ],
+          "norm": 1
+        },
+        "handRoot": {
+          "xyzw": [
+            0.007398357739794616,
+            0.2709181910797289,
+            0.9601039831969579,
+            0.06891254961309501
+          ],
+          "norm": 1
+        },
+        "handRelativeToForearm": {
+          "xyzw": [
+            0.11676221352413951,
+            0.002777020287453901,
+            0.044892053498926124,
+            0.9921409059120161
+          ],
+          "norm": 1
+        }
+      }
+    },
+    "interact7667": {
+      "left": {
+        "forearmRoot": {
+          "xyzw": [
+            -0.09850472358585953,
+            0.7076644109538855,
+            0.6996116595781708,
+            -0.007171239979328325
+          ],
+          "norm": 0.9999999999999999
+        },
+        "handRoot": {
+          "xyzw": [
+            -0.47500544234070907,
+            0.6739791037493821,
+            0.47010159139508406,
+            -0.3148435980351137
+          ],
+          "norm": 0.9999999999999999
+        },
+        "handRelativeToForearm": {
+          "xyzw": [
+            0.11124226995331296,
+            0.5039824619590825,
+            -0.05285728043409939,
+            0.8548876787733037
+          ],
+          "norm": 1
+        }
+      },
+      "right": {
+        "forearmRoot": {
+          "xyzw": [
+            -0.001838754904644621,
+            0.12093189627101912,
+            0.9855936474852118,
+            0.11822545191917067
+          ],
+          "norm": 1
+        },
+        "handRoot": {
+          "xyzw": [
+            0.014671811660011153,
+            0.23547250124536998,
+            0.9690297741707138,
+            0.07292966385852727
+          ],
+          "norm": 1
+        },
+        "handRelativeToForearm": {
+          "xyzw": [
+            0.11676227459244018,
+            0.0027770677102421097,
+            0.04489223578461847,
+            0.9921408903443053
+          ],
+          "norm": 1
+        }
+      }
+    }
+  },
+  "families": {
+    "male": {
+      "correctionMetrics": {
+        "familyWeights": {
+          "male": 1,
+          "female": 0
+        },
+        "boneCount": 52,
+        "skeletonWrapperCount": 1,
+        "correctedMeshes": [
+          "Body",
+          "Eyes",
+          "Teeth",
+          "Tongue"
+        ],
+        "maxNeutralAnchorErrorMeters": 3.469446951953614e-18,
+        "maxCorrectedAnchorErrorMeters": 5.204170427930421e-18
+      },
+      "bind": {
+        "Left": {
+          "forearmLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmRoot": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRoot": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRelativeToForearm": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmHandLengthMeters": 0.26747674670154353
+        },
+        "Right": {
+          "forearmLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmRoot": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRoot": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRelativeToForearm": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmHandLengthMeters": 0.26747674670154353
+        }
+      },
+      "correctedNeutral": {
+        "Left": {
+          "forearmLocal": {
+            "xyzw": [
+              0.32355829836333255,
+              0.17156943747560516,
+              -0.11191939491717176,
+              0.9237683717934402
+            ],
+            "norm": 1.0000000000000002
+          },
+          "forearmRoot": {
+            "xyzw": [
+              0.3205578112443625,
+              0.15259262479611596,
+              -0.3457308853485245,
+              0.868578341558308
+            ],
+            "norm": 1
+          },
+          "handLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRoot": {
+            "xyzw": [
+              0.3205578112443625,
+              0.15259262479611596,
+              -0.3457308853485245,
+              0.868578341558308
+            ],
+            "norm": 1
+          },
+          "handRelativeToForearm": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmHandLengthMeters": 0.26747674670154353
+        },
+        "Right": {
+          "forearmLocal": {
+            "xyzw": [
+              0.32386235466408897,
+              -0.17172646400004712,
+              0.11202738486270523,
+              0.9236195438784823
+            ],
+            "norm": 1
+          },
+          "forearmRoot": {
+            "xyzw": [
+              0.31990482154320987,
+              -0.15400231000509718,
+              0.34640345039981646,
+              0.8683022764093177
+            ],
+            "norm": 1
+          },
+          "handLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRoot": {
+            "xyzw": [
+              0.31990482154320987,
+              -0.15400231000509718,
+              0.34640345039981646,
+              0.8683022764093177
+            ],
+            "norm": 1
+          },
+          "handRelativeToForearm": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmHandLengthMeters": 0.26747674670154353
+        }
+      },
+      "familyDelta": {
+        "Left": {
+          "bindToNeutralForearmRootRadians": 1.0369401965278953,
+          "bindToNeutralHandRootRadians": 1.0369401965278953,
+          "bindToNeutralHandLocalRadians": 0,
+          "neutralForearmHandLengthMeters": 0.26747674670154353
+        },
+        "Right": {
+          "bindToNeutralForearmRootRadians": 1.0380538257036342,
+          "bindToNeutralHandRootRadians": 1.0380538257036342,
+          "bindToNeutralHandLocalRadians": 0,
+          "neutralForearmHandLengthMeters": 0.26747674670154353
+        }
+      },
+      "controllerInput": {
+        "idleClip": "idle",
+        "idleBaselineRotations": {
+          "left": {
+            "forearm": {
+              "xyzw": [
+                -0.218642337472201,
+                0.12960909505054743,
+                0.9596392978006069,
+                -0.12037204352185951
+              ],
+              "norm": 0.9999999999999999
+            },
+            "hand": {
+              "xyzw": [
+                -0.23938794454425996,
+                0.22426382414267837,
+                0.9418651575330856,
+                -0.07272670907549636
+              ],
+              "norm": 0.9999999999999999
+            }
+          },
+          "right": {
+            "forearm": {
+              "xyzw": [
+                -0.00032447511576894387,
+                0.1383147801691083,
+                0.9818421803614772,
+                0.12982622680217976
+              ],
+              "norm": 1
+            },
+            "hand": {
+              "xyzw": [
+                0.018319837144521227,
+                0.25224480653168624,
+                0.9638031125718343,
+                0.08438306312071585
+              ],
+              "norm": 1
+            }
+          }
+        },
+        "samplerFrameIdentity": true,
+        "mutatedBaseline": {
+          "left": {
+            "forearm": {
+              "xyzw": [
+                -0.09850472358585953,
+                0.7076644109538855,
+                0.6996116595781708,
+                -0.007171239979328325
+              ],
+              "norm": 0.9999999999999999
+            },
+            "hand": {
+              "xyzw": [
+                -0.47500544234070907,
+                0.6739791037493821,
+                0.47010159139508406,
+                -0.3148435980351137
+              ],
+              "norm": 0.9999999999999999
+            }
+          },
+          "right": {
+            "forearm": {
+              "xyzw": [
+                -0.001838754904644621,
+                0.12093189627101912,
+                0.9855936474852118,
+                0.11822545191917067
+              ],
+              "norm": 1
+            },
+            "hand": {
+              "xyzw": [
+                0.014671811660011153,
+                0.23547250124536998,
+                0.9690297741707138,
+                0.07292966385852727
+              ],
+              "norm": 1
+            }
+          }
+        },
+        "mutationDelta": {
+          "left": 1.5033984488284537,
+          "right": 0.042573877966374005
+        },
+        "idleResult": {
+          "leftSourceDeltaRadians": 0,
+          "rightSourceDeltaRadians": 0,
+          "maxHandOriginErrorMeters": 0
+        },
+        "idleOutput": {
+          "Left": {
+            "forearmLocal": {
+              "xyzw": [
+                0.32355829836333255,
+                0.17156943747560516,
+                -0.11191939491717176,
+                0.9237683717934402
+              ],
+              "norm": 1.0000000000000002
+            },
+            "forearmRoot": {
+              "xyzw": [
+                0.3205578112443625,
+                0.15259262479611596,
+                -0.3457308853485245,
+                0.868578341558308
+              ],
+              "norm": 1
+            },
+            "handLocal": {
+              "xyzw": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "norm": 1
+            },
+            "handRoot": {
+              "xyzw": [
+                0.3205578112443625,
+                0.15259262479611596,
+                -0.3457308853485245,
+                0.868578341558308
+              ],
+              "norm": 1
+            },
+            "handRelativeToForearm": {
+              "xyzw": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "norm": 1
+            },
+            "forearmHandLengthMeters": 0.26747674670154353
+          },
+          "Right": {
+            "forearmLocal": {
+              "xyzw": [
+                0.32386235466408897,
+                -0.17172646400004712,
+                0.11202738486270523,
+                0.9236195438784823
+              ],
+              "norm": 1
+            },
+            "forearmRoot": {
+              "xyzw": [
+                0.31990482154320987,
+                -0.15400231000509718,
+                0.34640345039981646,
+                0.8683022764093177
+              ],
+              "norm": 1
+            },
+            "handLocal": {
+              "xyzw": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "norm": 1
+            },
+            "handRoot": {
+              "xyzw": [
+                0.31990482154320987,
+                -0.15400231000509718,
+                0.34640345039981646,
+                0.8683022764093177
+              ],
+              "norm": 1
+            },
+            "handRelativeToForearm": {
+              "xyzw": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "norm": 1
+            },
+            "forearmHandLengthMeters": 0.26747674670154353
+          }
+        },
+        "idleOutputDeltas": {
+          "left": 0,
+          "right": 0
+        },
+        "interactResult": {
+          "leftSourceDeltaRadians": 1.0470768633043066,
+          "rightSourceDeltaRadians": 1.2065340566633622e-06,
+          "maxHandOriginErrorMeters": 0
+        },
+        "interactOutput": {
+          "Left": {
+            "forearmLocal": {
+              "xyzw": [
+                0.32355829836333255,
+                0.17156943747560516,
+                -0.11191939491717176,
+                0.9237683717934402
+              ],
+              "norm": 1.0000000000000002
+            },
+            "forearmRoot": {
+              "xyzw": [
+                0.3205578112443625,
+                0.15259262479611596,
+                -0.3457308853485245,
+                0.868578341558308
+              ],
+              "norm": 1
+            },
+            "handLocal": {
+              "xyzw": [
+                0.19574110265161787,
+                -0.15761983642625793,
+                0.43219110394382804,
+                0.8660555741807243
+              ],
+              "norm": 1.0000000000000002
+            },
+            "handRoot": {
+              "xyzw": [
+                0.4590924909594693,
+                -0.21096746187462553,
+                -0.004425246530333931,
+                0.8629642124491338
+              ],
+              "norm": 1
+            },
+            "handRelativeToForearm": {
+              "xyzw": [
+                0.19574110265161793,
+                -0.15761983642625796,
+                0.4321911039438281,
+                0.866055574180724
+              ],
+              "norm": 1
+            },
+            "forearmHandLengthMeters": 0.26747674670154353
+          },
+          "Right": {
+            "forearmLocal": {
+              "xyzw": [
+                0.32386235466408897,
+                -0.17172646400004712,
+                0.11202738486270523,
+                0.9236195438784823
+              ],
+              "norm": 1
+            },
+            "forearmRoot": {
+              "xyzw": [
+                0.31990482154320987,
+                -0.15400231000509718,
+                0.34640345039981646,
+                0.8683022764093177
+              ],
+              "norm": 1
+            },
+            "handLocal": {
+              "xyzw": [
+                3.505407381032555e-08,
+                2.6406447949101075e-07,
+                5.41341028920117e-07,
+                0.9999999999998181
+              ],
+              "norm": 1
+            },
+            "handRoot": {
+              "xyzw": [
+                0.31990467714006793,
+                -0.1540022417520336,
+                0.34640401032130963,
+                0.868302118339332
+              ],
+              "norm": 1
+            },
+            "handRelativeToForearm": {
+              "xyzw": [
+                3.505407376175329e-08,
+                2.640644795326441e-07,
+                5.413410288646059e-07,
+                0.9999999999998181
+              ],
+              "norm": 1
+            },
+            "forearmHandLengthMeters": 0.26747674670154353
+          }
+        },
+        "expectedDeltas": {
+          "left": 1.0470768633043057,
+          "right": 1.2061659303217155e-06
+        },
+        "measuredDeltas": {
+          "left": 1.0470768633043066,
+          "right": 1.2065340566633622e-06
+        },
+        "maxHandOriginErrorMeters": 0
+      }
+    },
+    "female": {
+      "correctionMetrics": {
+        "familyWeights": {
+          "male": 0,
+          "female": 1
+        },
+        "boneCount": 52,
+        "skeletonWrapperCount": 1,
+        "correctedMeshes": [
+          "Body",
+          "Eyes",
+          "Teeth",
+          "Tongue"
+        ],
+        "maxNeutralAnchorErrorMeters": 3.469446951953614e-18,
+        "maxCorrectedAnchorErrorMeters": 0
+      },
+      "bind": {
+        "Left": {
+          "forearmLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmRoot": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRoot": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRelativeToForearm": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmHandLengthMeters": 0.21058958328593005
+        },
+        "Right": {
+          "forearmLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmRoot": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRoot": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRelativeToForearm": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmHandLengthMeters": 0.21058958328593005
+        }
+      },
+      "correctedNeutral": {
+        "Left": {
+          "forearmLocal": {
+            "xyzw": [
+              0.24636327774858194,
+              0.13846153274537923,
+              -0.07695159316867878,
+              0.9561443361938498
+            ],
+            "norm": 1
+          },
+          "forearmRoot": {
+            "xyzw": [
+              0.30061927629654356,
+              0.06727555970746055,
+              -0.29866697272682086,
+              0.903271879993608
+            ],
+            "norm": 1
+          },
+          "handLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRoot": {
+            "xyzw": [
+              0.30061927629654356,
+              0.06727555970746055,
+              -0.29866697272682086,
+              0.903271879993608
+            ],
+            "norm": 1
+          },
+          "handRelativeToForearm": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmHandLengthMeters": 0.21058958328593003
+        },
+        "Right": {
+          "forearmLocal": {
+            "xyzw": [
+              0.24619300392474486,
+              -0.13840285167079955,
+              0.0768654122358337,
+              0.9562036205064884
+            ],
+            "norm": 1
+          },
+          "forearmRoot": {
+            "xyzw": [
+              0.30092821964987365,
+              -0.06649742390862719,
+              0.29833188923685006,
+              0.9033373584083887
+            ],
+            "norm": 1
+          },
+          "handLocal": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "handRoot": {
+            "xyzw": [
+              0.30092821964987365,
+              -0.06649742390862719,
+              0.29833188923685006,
+              0.9033373584083887
+            ],
+            "norm": 1
+          },
+          "handRelativeToForearm": {
+            "xyzw": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "norm": 1
+          },
+          "forearmHandLengthMeters": 0.21058958328593003
+        }
+      },
+      "familyDelta": {
+        "Left": {
+          "bindToNeutralForearmRootRadians": 0.8869228898013558,
+          "bindToNeutralHandRootRadians": 0.8869228898013558,
+          "bindToNeutralHandLocalRadians": 0,
+          "neutralForearmHandLengthMeters": 0.21058958328593003
+        },
+        "Right": {
+          "bindToNeutralForearmRootRadians": 0.8866176289272001,
+          "bindToNeutralHandRootRadians": 0.8866176289272001,
+          "bindToNeutralHandLocalRadians": 0,
+          "neutralForearmHandLengthMeters": 0.21058958328593003
+        }
+      },
+      "controllerInput": {
+        "idleClip": "idle",
+        "idleBaselineRotations": {
+          "left": {
+            "forearm": {
+              "xyzw": [
+                -0.218642337472201,
+                0.12960909505054743,
+                0.9596392978006069,
+                -0.12037204352185951
+              ],
+              "norm": 0.9999999999999999
+            },
+            "hand": {
+              "xyzw": [
+                -0.23938794454425996,
+                0.22426382414267837,
+                0.9418651575330856,
+                -0.07272670907549636
+              ],
+              "norm": 0.9999999999999999
+            }
+          },
+          "right": {
+            "forearm": {
+              "xyzw": [
+                -0.00032447511576894387,
+                0.1383147801691083,
+                0.9818421803614772,
+                0.12982622680217976
+              ],
+              "norm": 1
+            },
+            "hand": {
+              "xyzw": [
+                0.018319837144521227,
+                0.25224480653168624,
+                0.9638031125718343,
+                0.08438306312071585
+              ],
+              "norm": 1
+            }
+          }
+        },
+        "samplerFrameIdentity": true,
+        "mutatedBaseline": {
+          "left": {
+            "forearm": {
+              "xyzw": [
+                -0.09850472358585953,
+                0.7076644109538855,
+                0.6996116595781708,
+                -0.007171239979328325
+              ],
+              "norm": 0.9999999999999999
+            },
+            "hand": {
+              "xyzw": [
+                -0.47500544234070907,
+                0.6739791037493821,
+                0.47010159139508406,
+                -0.3148435980351137
+              ],
+              "norm": 0.9999999999999999
+            }
+          },
+          "right": {
+            "forearm": {
+              "xyzw": [
+                -0.001838754904644621,
+                0.12093189627101912,
+                0.9855936474852118,
+                0.11822545191917067
+              ],
+              "norm": 1
+            },
+            "hand": {
+              "xyzw": [
+                0.014671811660011153,
+                0.23547250124536998,
+                0.9690297741707138,
+                0.07292966385852727
+              ],
+              "norm": 1
+            }
+          }
+        },
+        "mutationDelta": {
+          "left": 1.5033984488284537,
+          "right": 0.042573877966374005
+        },
+        "idleResult": {
+          "leftSourceDeltaRadians": 0,
+          "rightSourceDeltaRadians": 0,
+          "maxHandOriginErrorMeters": 0
+        },
+        "idleOutput": {
+          "Left": {
+            "forearmLocal": {
+              "xyzw": [
+                0.24636327774858194,
+                0.13846153274537923,
+                -0.07695159316867878,
+                0.9561443361938498
+              ],
+              "norm": 1
+            },
+            "forearmRoot": {
+              "xyzw": [
+                0.30061927629654356,
+                0.06727555970746055,
+                -0.29866697272682086,
+                0.903271879993608
+              ],
+              "norm": 1
+            },
+            "handLocal": {
+              "xyzw": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "norm": 1
+            },
+            "handRoot": {
+              "xyzw": [
+                0.30061927629654356,
+                0.06727555970746055,
+                -0.29866697272682086,
+                0.903271879993608
+              ],
+              "norm": 1
+            },
+            "handRelativeToForearm": {
+              "xyzw": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "norm": 1
+            },
+            "forearmHandLengthMeters": 0.21058958328593003
+          },
+          "Right": {
+            "forearmLocal": {
+              "xyzw": [
+                0.24619300392474486,
+                -0.13840285167079955,
+                0.0768654122358337,
+                0.9562036205064884
+              ],
+              "norm": 1
+            },
+            "forearmRoot": {
+              "xyzw": [
+                0.30092821964987365,
+                -0.06649742390862719,
+                0.29833188923685006,
+                0.9033373584083887
+              ],
+              "norm": 1
+            },
+            "handLocal": {
+              "xyzw": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "norm": 1
+            },
+            "handRoot": {
+              "xyzw": [
+                0.30092821964987365,
+                -0.06649742390862719,
+                0.29833188923685006,
+                0.9033373584083887
+              ],
+              "norm": 1
+            },
+            "handRelativeToForearm": {
+              "xyzw": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "norm": 1
+            },
+            "forearmHandLengthMeters": 0.21058958328593003
+          }
+        },
+        "idleOutputDeltas": {
+          "left": 0,
+          "right": 0
+        },
+        "interactResult": {
+          "leftSourceDeltaRadians": 1.0470768633043066,
+          "rightSourceDeltaRadians": 1.2065340566633622e-06,
+          "maxHandOriginErrorMeters": 0
+        },
+        "interactOutput": {
+          "Left": {
+            "forearmLocal": {
+              "xyzw": [
+                0.24636327774858194,
+                0.13846153274537923,
+                -0.07695159316867878,
+                0.9561443361938498
+              ],
+              "norm": 1
+            },
+            "forearmRoot": {
+              "xyzw": [
+                0.30061927629654356,
+                0.06727555970746055,
+                -0.29866697272682086,
+                0.903271879993608
+              ],
+              "norm": 1
+            },
+            "handLocal": {
+              "xyzw": [
+                0.2278900830515217,
+                -0.19562113146322346,
+                0.3996826558687717,
+                0.8660555741807243
+              ],
+              "norm": 1.0000000000000002
+            },
+            "handRoot": {
+              "xyzw": [
+                0.43466300693606386,
+                -0.30665024566750065,
+                0.028220991555822146,
+                0.8463080248165954
+              ],
+              "norm": 1
+            },
+            "handRelativeToForearm": {
+              "xyzw": [
+                0.2278900830515218,
+                -0.19562113146322346,
+                0.3996826558687718,
+                0.8660555741807242
+              ],
+              "norm": 1
+            },
+            "forearmHandLengthMeters": 0.21058958328593003
+          },
+          "Right": {
+            "forearmLocal": {
+              "xyzw": [
+                0.24619300392474486,
+                -0.13840285167079955,
+                0.0768654122358337,
+                0.9562036205064884
+              ],
+              "norm": 1
+            },
+            "forearmRoot": {
+              "xyzw": [
+                0.30092821964987365,
+                -0.06649742390862719,
+                0.29833188923685006,
+                0.9033373584083887
+              ],
+              "norm": 1
+            },
+            "handLocal": {
+              "xyzw": [
+                -8.509839038994828e-08,
+                2.548947713940098e-07,
+                5.401813273839263e-07,
+                0.9999999999998181
+              ],
+              "norm": 1
+            },
+            "handRoot": {
+              "xyzw": [
+                0.3009280308133583,
+                -0.06649738159601434,
+                0.29833244824897515,
+                0.9033372398132611
+              ],
+              "norm": 1
+            },
+            "handRelativeToForearm": {
+              "xyzw": [
+                -8.50983904003566e-08,
+                2.5489477140094863e-07,
+                5.401813274533152e-07,
+                0.9999999999998181
+              ],
+              "norm": 1
+            },
+            "forearmHandLengthMeters": 0.21058958328593003
+          }
+        },
+        "expectedDeltas": {
+          "left": 1.0470768633043057,
+          "right": 1.2061659303217155e-06
+        },
+        "measuredDeltas": {
+          "left": 1.0470768633043066,
+          "right": 1.2065340566633622e-06
+        },
+        "maxHandOriginErrorMeters": 0
+      }
+    }
+  },
+  "sourceDeltas": {
+    "left": {
+      "restToIdle0Radians": 0.2357466046507353,
+      "restToIdle7667Radians": 0.23574575882566912,
+      "idle0ToInteract7667Radians": 1.0470768633043057,
+      "bindRestToInteract7667Radians": 1.09473770922696
+    },
+    "right": {
+      "restToIdle0Radians": 0.2670674057915725,
+      "restToIdle7667Radians": 0.26706769780634265,
+      "idle0ToInteract7667Radians": 1.2061659303217155e-06,
+      "bindRestToInteract7667Radians": 0.26706793956402847
+    }
+  }
+}

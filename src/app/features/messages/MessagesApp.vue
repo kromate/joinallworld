@@ -282,7 +282,9 @@ async function sendMoneyTo(player: string, name: string): Promise<void> {
 }
 /** Requests for money: asking from the chat options, and answering a card in the thread. A card is redrawn from the server's answer (and from the live frame both players get). */
 const now = ref(Date.now())
-const clock = setInterval(() => { now.value = Date.now() }, 15000)
+// Started on mount, not in setup: setup also runs when the markup is rendered on a server, which never unmounts and so never clears it.
+let clock: ReturnType<typeof setInterval> | undefined
+onMounted(() => { clock = setInterval(() => { now.value = Date.now() }, 15000) })
 onBeforeUnmount(() => clearInterval(clock))
 const requests = createMoneyRequests({
   call: async (path, body) => { const result = await call<{ request: MoneyRequestView; message?: Message }>(path, body); void sync(); return result },

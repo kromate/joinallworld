@@ -70,6 +70,17 @@ test('every generated city passes its offline source and output check', () => {
         return row.city
       })
     })
+    const remaining = foreign.filter(id => !checked.includes(id))
+    if (remaining.length) {
+      const output = execFileSync(python, [join(root, 'scripts/world/check-playable-africa-rollout.py'), ...remaining], {
+        cwd: root, encoding: 'utf8', timeout: 60_000,
+      })
+      for (const line of output.trim().split('\n')) {
+        const row: unknown = JSON.parse(line)
+        assert.ok(row && typeof row === 'object' && 'city' in row && typeof row.city === 'string' && 'status' in row && row.status === 'pinned-assets-match', 'rollout source checker confirms each pinned city')
+        checked.push(row.city)
+      }
+    }
     assert.deepEqual(checked.sort(), foreign.sort(), 'the source checker covers exactly every registered foreign city')
   }
 })

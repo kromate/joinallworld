@@ -1,0 +1,466 @@
+import * as THREE from 'three';
+import { createKit, type Kit } from '../../../src/scene/kit.ts';
+import { buildHomeScene, type HomeScene } from '../../../src/scene/home-scene.ts';
+import { advanceLife, createLife, dispatch, makeContext } from '../../../src/life.ts';
+import type { ActionBody } from '../../../src/types/actions.ts';
+import { FURNITURE } from '../../../src/game/content/furniture.ts';
+import type { LifeState } from '../../../src/types/life.ts';
+
+type StageName = 'standing' | 'bed-sleep' | 'bed-sleep-completed' | 'chair-rest' | 'chair-rest-completed'
+  | 'tub-soak' | 'tub-soak-completed' | 'shower-bath' | 'shower-bath-completed' | 'male-casual-standing' | 'female-office-standing';
+interface JourneySample {
+  readonly name: StageName;
+  readonly requestedPose: string;
+  readonly actionId: string | null;
+  readonly spot: string | null;
+  readonly bodyShown: boolean;
+  readonly actorMeshes: readonly string[];
+  readonly boneCount: number;
+  readonly preparedNativeRigDetected: boolean;
+  readonly nativeRestProbeDiagnostics: unknown;
+  readonly navigationFrameTiming: Readonly<{ count: number; totalMs: number; maximumMs: number }>;
+  readonly nativeRestContact: Readonly<{
+    pose: string; propId: string; phase: 'still' | 'transition'; transitionValidated: boolean;
+    measurement: Readonly<{ pose: string; propId: string; supported: boolean;
+      footGaps: Readonly<Record<'left' | 'right', Readonly<{ sampled: number; minimumGap: number }>>>;
+      headInZone: boolean | null; reason: string | null }>;
+  }> | null;
+  readonly bodyPoseSignature: string | null;
+  readonly sceneObjectPhase: string;
+  readonly sceneRestPose: string;
+  readonly navigationWaypoints: number;
+  readonly bodyPosition: [number, number, number] | null;
+  readonly visibleFurniture: readonly { id: string; itemId: string; x: number; y: number; z: number }[];
+  readonly render: { calls: number; triangles: number };
+}
+interface JourneySnapshot {
+  ready: boolean;
+  errors: string[];
+  webgl2: boolean;
+  room: { furnitureCount: number; savedFurnitureIds: string[]; renderedFurnitureIds: string[] };
+  life: { location: string; spot: string | null; cash: number; action: string | null };
+  buys: Record<string, { ok: boolean; code: string; reason?: string }>;
+  actions: Record<string, { started: string; completed: string | null; requestedPose: string; completedPose?: string }>;
+  captureRequest: string | null;
+  samples: Partial<Record<StageName, JourneySample>>;
+  limitations: string[];
+}
+
+declare global {
+  interface Window { nativeHomeJourney: ReturnType<typeof createJourney> }
+}
+
+const NOW = Date.UTC(2026, 9, 9, 11, 0);
+const SEED = 'saved-home-journey-player-v1';
+const SAVED_LOOKS = Object.freeze({
+  maleCasual: Object.freeze({ body: 'man', hair: 'lowcut', outfit: 'casual', fabric: 'plain', skin: 'skin5', hairColor: 'darkbrown', outfitColor: 'navy', bottomsColor: 'blue', accessories: [], face: 'oval', expression: 'smile', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } }),
+  femaleOffice: Object.freeze({ body: 'woman', hair: 'afro', outfit: 'office', fabric: 'plain', skin: 'skin4', hairColor: 'darkbrown', outfitColor: 'blue', bottomsColor: 'navy', accessories: [], face: 'round', expression: 'neutral', appearance: { height: 'average', build: 'average', ageAppearance: 'adult' } }),
+});
+
+function required<T extends Element>(selector: string): T {
+  const node = document.querySelector<T>(selector);
+  if (!node) throw new Error(`Missing fixture element ${selector}`);
+  return node;
+}
+
+function createJourney() {
+  const canvas = required<HTMLCanvasElement>('#home-stage');
+  const status = required<HTMLElement>('#status');
+  const audit = required<HTMLElement>('#audit');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+
+  const kit: Kit = createKit();
+  const world = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 120);
+  const errors: string[] = [];
+  const limitations: string[] = [
+    'This is an isolated browser diagnostic, not production adoption or full lifecycle acceptance.',
+    'The complete-look provider preflight and each furniture/contact pose are recorded separately; no unsupported pose is counted as passing.',
+    'The final acceptance of authored body pixels and furniture contacts requires human review of the captured images and solver evidence.',
+  ];
+  const buys: JourneySnapshot['buys'] = {};
+  const actions: JourneySnapshot['actions'] = {};
+  const samples: JourneySnapshot['samples'] = {};
+  let lastNavigationWaypoints = 0;
+  let navigationFrameTiming = { count: 0, totalMs: 0, maximumMs: 0 };
+  let state: LifeState | null = null;
+  let entry: HomeScene | null = null;
+  let disposed = false;
+  let ready = false;
+  let resizeObserver: ResizeObserver | null = null;
+  let canvasSize = { width: 0, height: 0 };
+  let captureRequest: string | null = null;
+  let resolveCaptureRequest: (() => void) | null = null;
+
+  const ctx = (now = state?.t ?? NOW, seed = SEED) => makeContext({ cityId: 'lagos', now, seed });
+  function draw(): void {
+    if (disposed || !entry) return;
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width <= 0 || rect.height <= 0) return;
+    const width = Math.round(rect.width), height = Math.round(rect.height);
+    if (canvasSize.width !== width || canvasSize.height !== height) {
+      renderer.setSize(width, height, false);
+      canvasSize = { width, height };
+    }
+    camera.aspect = rect.width / rect.height;
+    camera.updateProjectionMatrix();
+    entry.look(camera.position.x, camera.position.z);
+    renderer.render(world, camera);
+  }
+  function sample(name: StageName, requestedPose: string): JourneySample {
+    if (!entry || !state) throw new Error('Home scene is not ready');
+    entry.group.updateWorldMatrix(true, false);
+    entry.group.updateMatrixWorld(true);
+    const names = new Set<string>();
+    let boneCount = 0;
+    const skinnedActors: THREE.Object3D[] = [];
+    entry.group.traverse((node) => {
+      const mesh = node as THREE.SkinnedMesh;
+      if (mesh.isMesh) names.add(mesh.name || '(unnamed)');
+      if (mesh.isSkinnedMesh && mesh.skeleton) {
+        boneCount = Math.max(boneCount, mesh.skeleton.bones.length);
+        skinnedActors.push(mesh.parent ?? mesh);
+      }
+    });
+    let signature: string | null = null;
+    let position: [number, number, number] | null = null;
+    const actor = skinnedActors[0];
+    if (actor) {
+      const sampled: number[] = [];
+      actor.traverse((node) => {
+        if (/mixamorig(Hips|Spine|LeftUpLeg|RightUpLeg|LeftFoot|RightFoot|Head)$/.test(node.name)) {
+          sampled.push(node.position.x, node.position.y, node.position.z, node.quaternion.x, node.quaternion.y, node.quaternion.z, node.quaternion.w);
+        }
+      });
+      signature = sampled.map((value) => Number(value.toFixed(5))).join(',');
+      position = actor.getWorldPosition(new THREE.Vector3()).toArray() as [number, number, number];
+    }
+    const actionId = state.activeAction?.kind === 'activity' ? state.activeAction.id : null;
+    const rest = entry.walk.rest();
+    if (!rest) throw new Error('Home scene has no current public rest state');
+    const actorNames = [...names].sort();
+    const preparedNativeRigDetected = boneCount === 52
+      && ['Eyes', 'Teeth', 'Tongue'].every((name) => actorNames.includes(name));
+    let nativeRestContact: JourneySample['nativeRestContact'] = null;
+    entry.group.traverse((node) => {
+      const receipt = node.userData.nativeRestContact as JourneySample['nativeRestContact'] | undefined;
+      if (!nativeRestContact && receipt) nativeRestContact = receipt;
+    });
+    let nativeRestProbeDiagnostics: unknown = null;
+    entry.group.traverse((node) => {
+      if (node.userData.nativeRestProbeDiagnostics) nativeRestProbeDiagnostics = node.userData.nativeRestProbeDiagnostics;
+    });
+    const snapshot: JourneySample = {
+      name, requestedPose, actionId, spot: state.spot, bodyShown: entry.bodyShown,
+      actorMeshes: actorNames, boneCount, preparedNativeRigDetected, bodyPoseSignature: signature, bodyPosition: position,
+      sceneObjectPhase: entry.objectPhase, sceneRestPose: rest.pose, nativeRestContact, nativeRestProbeDiagnostics, navigationFrameTiming: { ...navigationFrameTiming },
+      navigationWaypoints: lastNavigationWaypoints,
+      visibleFurniture: entry.objects(), render: { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles },
+    };
+    samples[name] = snapshot;
+    return snapshot;
+  }
+  function setStatus(message: string): void {
+    status.textContent = message;
+    audit.textContent = JSON.stringify(window.nativeHomeJourney?.sample() ?? snapshot(), null, 2);
+  }
+  function snapshot(): JourneySnapshot {
+    return {
+      ready, errors: [...errors], webgl2: renderer.capabilities.isWebGL2,
+      room: { furnitureCount: entry?.objects().length ?? 0, savedFurnitureIds: state?.home.items.filter((item) => FURNITURE[item.itemId] && !FURNITURE[item.itemId]!.wall).map((item) => item.id).sort() ?? [], renderedFurnitureIds: entry?.objects().map((item) => item.id).sort() ?? [] },
+      life: { location: state?.location ?? 'unknown', spot: state?.spot ?? null, cash: state?.cash ?? 0,
+        action: state?.activeAction?.kind === 'activity' ? state.activeAction.id : null },
+      buys: { ...buys }, actions: { ...actions }, captureRequest, samples: { ...samples }, limitations: [...limitations],
+    };
+  }
+  function act(type: string, payload: unknown = {}): { ok: boolean; code: string; reason?: string } {
+    if (!state) throw new Error('Life is not initialized');
+    const outcome = dispatch(state, { type, payload } as ActionBody, ctx());
+    state = outcome.state;
+    if (outcome.ok) return { ok: true, code: outcome.code };
+    return { ok: false, code: outcome.code, ...(outcome.reason ? { reason: outcome.reason } : {}) };
+  }
+  function updateScene(): void {
+    if (!state || !entry) throw new Error('Home scene is not initialized');
+    entry.update(state);
+    draw();
+  }
+  async function requestCapture(name: string): Promise<void> {
+    captureRequest = name;
+    await new Promise<void>((resolve) => { resolveCaptureRequest = resolve; });
+    captureRequest = null;
+    resolveCaptureRequest = null;
+  }
+  async function awaitBody(timeoutMs = 60_000): Promise<void> {
+    const until = performance.now() + timeoutMs;
+    while (performance.now() < until) {
+      draw();
+      if (entry?.bodyShown) {
+        const probe = sample('standing', 'idle');
+        if (probe.boneCount > 0) return;
+      }
+      await new Promise<void>((resolve) => setTimeout(resolve, 100));
+    }
+    throw new Error(`Home body did not load: ${JSON.stringify(entry ? sample('standing', 'idle') : null)}`);
+  }
+  async function navigateIntoActiveAction(): Promise<void> {
+    if (!entry) throw new Error('Home scene is not initialized');
+    const rest = entry.walk.rest();
+    if (!rest || !rest.busy) throw new Error(`Home scene did not expose an active furniture action: ${JSON.stringify(rest)}`);
+    let bodyActor: THREE.Object3D | undefined = entry.group.getObjectByName('skinned-body');
+    if (!bodyActor) entry.group.traverse((node) => {
+      if (!bodyActor && node instanceof THREE.SkinnedMesh && node.name === 'Body' && node.skeleton.bones.length === 52) bodyActor = node.parent ?? undefined;
+    });
+    if (!bodyActor) throw new Error('Native home actor is missing before action navigation');
+    entry.group.traverse((node) => { if (node instanceof THREE.Group) node.userData.nativeRestDiagnosticsEnabled = true; });
+    navigationFrameTiming = { count: 0, totalMs: 0, maximumMs: 0 };
+    function measuredStep(): void {
+      if (!entry) throw new Error('Home scene disappeared during navigation');
+      const before = performance.now();
+      entry.stepCrowd(1 / 30);
+      const elapsed = performance.now() - before;
+      navigationFrameTiming.count++; navigationFrameTiming.totalMs += elapsed;
+      navigationFrameTiming.maximumMs = Math.max(navigationFrameTiming.maximumMs, elapsed);
+    }
+    bodyActor.updateWorldMatrix(true, false); bodyActor.updateMatrixWorld(true);
+    const start = entry.group.worldToLocal(bodyActor.getWorldPosition(new THREE.Vector3()));
+    const target = { x: rest.x, z: rest.z };
+    const grid = entry.walk.grid;
+    if (!grid) throw new Error('Home scene did not expose its actual walk grid');
+    const path = grid.path(start.x, start.z, target.x, target.z);
+    if (path === null) throw new Error('Home walk grid could not route to the active furniture approach');
+    const waypoints = path.length ? path : [{ x: target.x, z: target.z }];
+    const endpoint = waypoints[waypoints.length - 1];
+    if (!endpoint || Math.hypot(endpoint.x - target.x, endpoint.z - target.z) > 0.1) {
+      throw new Error(`Home walk grid path did not reach the exact furniture approach: ${JSON.stringify({ endpoint, target })}`);
+    }
+    lastNavigationWaypoints = waypoints.length;
+    let x = start.x, z = start.z, phase = 0;
+    const gaitLength = 1.83 * entry.walk.scale;
+    const speed = 1.82 * entry.walk.scale;
+    for (const waypoint of waypoints) {
+      const dx = waypoint.x - x, dz = waypoint.z - z;
+      const distance = Math.hypot(dx, dz);
+      const steps = Math.max(1, Math.ceil(distance / (speed / 30)));
+      for (let step = 1; step <= steps; step += 1) {
+        const fraction = step / steps;
+        const nextX = x + dx * fraction, nextZ = z + dz * fraction;
+        entry.walk.move(nextX, rest.y, nextZ, rest.ry);
+        phase += (distance / steps) / gaitLength * Math.PI * 2;
+        entry.walk.gait(true, phase, false);
+        measuredStep();
+        draw();
+        await new Promise<void>((resolve) => setTimeout(resolve, 16));
+      }
+      x = waypoint.x; z = waypoint.z;
+    }
+    // The scene's own arrival hook enters the furniture animation only after the public
+    // walk reaches its action anchor; pose('work') is the same host contract used on arrival.
+    entry.walk.move(rest.x, rest.y, rest.z, rest.ry);
+    entry.walk.gait(false, phase, false);
+    entry.walk.pose('work');
+    const until = performance.now() + 8_000;
+    while (performance.now() < until) {
+      measuredStep();
+      draw();
+      if (entry.objectPhase === 'use' || entry.objectPhase === 'rest') return;
+      await new Promise<void>((resolve) => setTimeout(resolve, 16));
+    }
+    throw new Error(`Home action did not reach its actual furniture-use pose: ${entry.objectPhase}; timing=${JSON.stringify(navigationFrameTiming)}; latest=${JSON.stringify(sample('standing', 'idle').nativeRestProbeDiagnostics)}`);
+  }
+  async function captureAction(name: 'bed-sleep' | 'chair-rest' | 'tub-soak' | 'shower-bath', spot: string, actionId: string, seconds: number, requestedPose: string): Promise<void> {
+    if (!state || !entry) throw new Error('Home scene is not ready');
+    const selected = act('spot', { id: spot });
+    if (!selected.ok) throw new Error(`Could not select ${spot}: ${selected.reason ?? selected.code}`);
+    const started = act('activity', { id: actionId });
+    if (!started.ok || started.code !== 'started') throw new Error(`Could not start ${actionId}: ${started.reason ?? started.code}`);
+    actions[actionId] = { started: started.code, completed: null, requestedPose };
+    updateScene();
+    await navigateIntoActiveAction();
+    // Capture only after the scene-owned entrance transition reaches use/rest, so the requested
+    // action label corresponds to the rendered body pose rather than the rule state alone.
+    for (let frame = 0; frame < 6; frame += 1) {
+      entry.stepCrowd(1 / 30);
+      draw();
+      await new Promise<void>((resolve) => setTimeout(resolve, 20));
+    }
+    if (entry.objectPhase !== 'use' && entry.objectPhase !== 'rest') {
+      throw new Error(`${actionId} capture is not in the home furniture-use phase (${entry.objectPhase})`);
+    }
+    sample(name, requestedPose);
+    await requestCapture(`${name}-active`);
+    const completed = advanceLife(state, seconds, { cityId: 'lagos', now: state.t + seconds * 1000, seed: `${SEED}:${actionId}:finish` });
+    if (!completed.ok) throw new Error(`Could not finish ${actionId}: ${completed.code}`);
+    state = completed.state;
+    actions[actionId] = { started: started.code, completed: completed.code, requestedPose, completedPose: 'standing' };
+    updateScene();
+    for (let frame = 0; frame < 30 && entry.easing; frame += 1) {
+      entry.stepCrowd(1 / 30); draw();
+      await new Promise<void>((resolve) => setTimeout(resolve, 20));
+    }
+    entry.settleCrowd();
+    draw();
+    sample(`${name}-completed` as StageName, 'idle');
+    await requestCapture(`${name}-completed`);
+  }
+
+  async function initialize(): Promise<void> {
+    try {
+      const load = await import('../../../src/game/cities/registry.ts');
+      await load.loadCityContent('lagos');
+      state = createLife({ location: 'home', spot: 'bedroom', name: 'Home journey', cash: 1_000_000,
+        onboarding: { look: SAVED_LOOKS.maleCasual } }, ctx(NOW));
+      entry = buildHomeScene(kit);
+      entry.update(state);
+      entry.setPlayer({ look: SAVED_LOOKS.maleCasual, seed: SEED, name: 'Player' });
+      world.add(entry.group);
+      const lighting = entry.lighting();
+      world.add(new THREE.HemisphereLight(lighting.hemi[0], lighting.hemi[1], lighting.hemi[2]));
+      const sun = new THREE.DirectionalLight(lighting.sun[0], lighting.sun[1]);
+      sun.position.set(...lighting.sun[2]); world.add(sun);
+      world.background = new THREE.Color(entry.background);
+
+      for (const [item, x, y] of [['bathtub', 0, 4], ['shower-cubicle', 3, 5]] as const) {
+        const result = act('home.furniture-buy', { item, x, y, rot: 0 });
+        buys[item] = result;
+        if (!result.ok || result.code !== 'bought') throw new Error(`Saved home could not buy ${item}: ${result.reason ?? result.code}`);
+      }
+      updateScene();
+      const view = entry.camera.landscape;
+      const centre = entry.walk.centre;
+      camera.position.set(centre[0] + view[0], centre[1] + view[1], centre[2] + view[2]);
+      camera.lookAt(centre[0], centre[1], centre[2]);
+      draw(); // Triggers the scene-owned first-render body-loading gate.
+      if (!renderer.capabilities.isWebGL2) throw new Error('Remote fixture renderer did not provide WebGL2');
+      await awaitBody();
+      // Match the production walk host: actions enter furniture only after arrival.
+      entry.walk.drive(true);
+      ready = true;
+      sample('male-casual-standing', 'idle');
+      await requestCapture('male-casual-standing');
+      setStatus('Saved male casual look loaded in the actual Yaba home scene.');
+    } catch (error) {
+      ready = false;
+      errors.push(error instanceof Error ? error.stack ?? error.message : String(error));
+      setStatus(`Fixture failed: ${errors.at(-1)}`);
+    }
+  }
+
+  async function runJourney(): Promise<JourneySnapshot> {
+    if (!ready || !state || !entry) throw new Error('Journey is unavailable before the prepared home scene is ready');
+    const buttons = [...document.querySelectorAll<HTMLButtonElement>('button')];
+    buttons.forEach((button) => { button.disabled = true; });
+    try {
+      await captureAction('bed-sleep', 'bedroom', 'home-sleep', 36, 'lie');
+      await captureAction('chair-rest', 'living', 'home-sit-down', 8, 'sit');
+      await captureAction('tub-soak', 'bathroom', 'home-long-soak', 12, 'soak');
+      await captureAction('shower-bath', 'bathroom', 'bath', 6, 'wash');
+      await returnStanding();
+      entry.setPlayer({ look: SAVED_LOOKS.femaleOffice, seed: `${SEED}:female`, name: 'Player' });
+      updateScene();
+      await awaitBody();
+      sample('female-office-standing', 'idle');
+      await requestCapture('female-office-standing');
+      setStatus('Finite home journey complete. Review the action samples and limitations.');
+      return snapshot();
+    } catch (error) {
+      errors.push(error instanceof Error ? error.stack ?? error.message : String(error));
+      setStatus(`Journey stopped at a real action/support limit: ${errors.at(-1)}`);
+      return snapshot();
+    } finally { buttons.forEach((button) => { button.disabled = false; }); }
+  }
+  async function returnStanding(): Promise<JourneySnapshot> {
+    if (!state || !entry) throw new Error('Home scene is not initialized');
+    if (state.activeAction) {
+      const seconds = (state.activeAction as { remaining?: number }).remaining ?? 1;
+      const outcome = advanceLife(state, seconds, { cityId: 'lagos', now: state.t + seconds * 1000, seed: `${SEED}:complete` });
+      state = outcome.state;
+    }
+    updateScene();
+    for (let frame = 0; frame < 60 && entry.easing; frame += 1) {
+      entry.stepCrowd(1 / 30); draw();
+      await new Promise<void>((resolve) => setTimeout(resolve, 20));
+    }
+    entry.settleCrowd();
+    entry.walk.pose('stand');
+    draw();
+    sample('standing', 'idle');
+    setStatus('The same home actor returned to standing.');
+    return snapshot();
+  }
+  async function swapLook(): Promise<JourneySnapshot> {
+    if (!ready || !state || !entry) throw new Error('Home actor is not ready');
+    const current = samples['female-office-standing'] ? 'maleCasual' : 'femaleOffice';
+    const next = current === 'maleCasual' ? SAVED_LOOKS.femaleOffice : SAVED_LOOKS.maleCasual;
+    const seed = current === 'maleCasual' ? `${SEED}:female` : SEED;
+    entry.setPlayer({ look: next, seed, name: 'Player' });
+    updateScene();
+    await awaitBody();
+    const label = current === 'maleCasual' ? 'female-office-standing' : 'standing';
+    sample(label, 'idle');
+    setStatus(`Same scene/player slot now uses the saved ${next.body} ${next.outfit} look.`);
+    return snapshot();
+  }
+
+  resizeObserver = new ResizeObserver(draw);
+  resizeObserver.observe(canvas);
+  window.addEventListener('jaw:home-frame', draw);
+  window.addEventListener('error', (event) => errors.push(event.message));
+  void initialize();
+
+  return {
+    sample: snapshot,
+    runJourney,
+    returnStanding,
+    swapLook,
+    acknowledgeCapture(name: string) {
+      if (name !== captureRequest || !resolveCaptureRequest) return false;
+      resolveCaptureRequest();
+      return true;
+    },
+    async renderActorCloseForCapture(angle: 'front' | 'side' = 'front') {
+      if (!entry) throw new Error('Home scene is missing for actual actor close capture');
+      const body = entry.group.getObjectByName('Body');
+      if (!(body instanceof THREE.SkinnedMesh)) throw new Error('Actual native Body is missing for close capture');
+      const points = body.skeleton.bones.map((bone) => bone.getWorldPosition(new THREE.Vector3()));
+      const bounds = new THREE.Box3().setFromPoints(points).expandByScalar(0.18);
+      const centre = bounds.getCenter(new THREE.Vector3());
+      const radius = bounds.getSize(new THREE.Vector3()).length() * 0.5;
+      const distance = Math.max(1.5, radius / Math.sin(THREE.MathUtils.degToRad(camera.fov * 0.5)) * 1.05);
+      const savedPosition = camera.position.clone(), savedQuaternion = camera.quaternion.clone();
+      const direction = angle === 'side' ? new THREE.Vector3(1, 0.35, 0.2) : new THREE.Vector3(0.15, 0.35, 1);
+      direction.normalize().applyQuaternion(body.parent?.getWorldQuaternion(new THREE.Quaternion()) ?? new THREE.Quaternion());
+      try {
+        camera.position.copy(centre).addScaledVector(direction, distance); camera.lookAt(centre); draw();
+        await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+        return { canvasPng: canvas.toDataURL('image/png').split(',')[1] ?? null,
+          angle, cameraPosition: camera.position.toArray(), centre: centre.toArray(),
+          drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles };
+      } finally { camera.position.copy(savedPosition); camera.quaternion.copy(savedQuaternion); draw(); }
+    },
+    async renderForCapture() {
+      draw();
+      await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+      let canvasPng: string | null = null, canvasPngError: string | null = null;
+      try { canvasPng = canvas.toDataURL('image/png').split(',')[1] ?? null; }
+      catch (error) { canvasPngError = error instanceof Error ? error.message : String(error); }
+      return { canvasPng, canvasPngError, drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles };
+    },
+    dispose() {
+      if (disposed) return { disposed: true, repeated: false };
+      disposed = true;
+      resizeObserver?.disconnect(); resizeObserver = null;
+      window.removeEventListener('jaw:home-frame', draw);
+      entry?.dispose(); entry = null;
+      kit.dispose();
+      renderer.dispose();
+      return { disposed: true, repeated: true };
+    },
+  };
+}
+
+window.nativeHomeJourney = createJourney();

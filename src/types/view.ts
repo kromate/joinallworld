@@ -921,6 +921,8 @@ export interface NpcActionCard {
 
 /** A regular at the current venue. */
 export interface NpcSummary {
+  /** Public appearance only; it grants no social or household authority. */
+  look?: Partial<Look>
   id: NpcId
   name: string
   role: string

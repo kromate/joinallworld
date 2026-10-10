@@ -80,6 +80,12 @@ import type {
   SceneLayout, SceneMaterials, ScenePerson, SceneRest, SceneSpot, SceneState, SceneTag, SceneThing, SceneVenue, SceneWalk, PlayerOptions, ThreeModule, TimeOfDay, Vec3, WalkSpot,
 } from './types.ts';
 import { buildAvatar, drawCrowd } from './characters.ts';
+import { avatarProportions } from '../types/avatar.ts';
+import { normalizeLook } from './characters.ts';
+import { bodyAllowed, drawsWebGL2 } from './body/gate.ts';
+import type { SkinnedBody } from './body/skinned.ts';
+import { createCanonicalCrowd, type CanonicalCrowdSpec } from './body/canonical-crowd.ts';
+import type { NativeExpressionController } from './body/native/native-expression-controller.ts';
 import { playerOptions, rigOf, lookAvatar } from './avatar-rig.ts';
 import { createWalkGrid, footprintRecorder, turnTowards } from './movement.ts';
 import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './space.ts';
@@ -101,6 +107,8 @@ export const DEFAULT_CAMERA: SceneCamera = { landscape: [16, 21, 27], portrait: 
 const SCENE_CAMERA: SceneCamera = { landscape: [15, 19.8, 25.4], portrait: [16.5, 29.5, 38.5] };
 export { TIMES, LIGHTING, timeOfDay, lightingFor } from './lighting.ts';
 export const MAX_CROWD = 12;
+/** Initial authored NPC allowance; public crowd population remains unchanged. */
+export const MAX_NATIVE_NPCS = 2;
 
 /** The kinds every city draws with. A kind a city added (CITY_KINDS) arrives with that city's scenes. */
 const DEFS: Record<string, SceneDef> = { ...outdoor.SCENES, ...social.SCENES, ...work.SCENES, ...civic.SCENES, ...transport.SCENES };
@@ -364,6 +372,7 @@ interface Tied { spot?: string | null; friend?: boolean }
 type Placed = Point & Tied
 /** A crowd person with a reported position. */
 type LivePerson = CrowdPerson & { x: number; z: number };
+interface CanonicalVenueActor { readonly body: SkinnedBody; readonly talk: NativeExpressionController; interactionSeconds: number; dispose(): void }
 interface View {
   time: TimeOfDay; fixedTime: boolean; spot: string | null; look: unknown; lookKey: string; seed: unknown; name: string;
   pose: string; poseFixed: boolean; crowd: CrowdPerson[];
@@ -417,6 +426,57 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   // Other players who report where they stand: one figure each, eased to every new position.
   const peers = new Map<string, Peer>();
   let peopleList: ScenePerson[] = [], mergedTags: SceneTag[] = [], batchKey: string | null = null, easing = false;
+  let activeNpcActivity: string | null = null;
+  function nativeNpcPose(id: string): 'idle' | 'interact' {
+    return id.startsWith('npc:') && activeNpcActivity?.startsWith(`npc-${id.slice(4)}-`) ? 'interact' : 'idle';
+  }
+  function syncNativeTalk(actor: CanonicalVenueActor, pose: 'idle' | 'interact') {
+    const active = actor.talk.snapshot().active;
+    if (pose === 'interact' && !active) { actor.interactionSeconds = 0; actor.talk.startTalk(); }
+    else if (pose === 'idle' && active) { actor.talk.stop(); actor.interactionSeconds = 0; }
+  }
+  let placedCrowd: CrowdPerson[] = [], notifyCrowdChanged: (() => void) | null = null, crowdGateRejected = false;
+  const canonicalCrowd = createCanonicalCrowd<CanonicalVenueActor>({
+    async load(spec) {
+      // Keep the provider and its model/clip dependencies behind the first-frame capability gate.
+      const { loadGameBody } = await import('./body/provider.ts');
+      const body = await loadGameBody(kit, spec.look, spec.seed, spec.scale, { scene: 'venue', role: 'npc', poses: ['idle', 'walk', 'interact'] });
+      const preparedNative = 'preparedMetrics' in body;
+      body.object.userData.nativeGameProviderEvidence = {
+        role: 'npc', preparedNative, representation: preparedNative ? 'native-prepared' : 'legacy-fallback',
+        requestedLifecyclePoses: ['idle', 'walk', 'interact'],
+      };
+      let talk: NativeExpressionController;
+      try {
+        // Expression code stays behind the same renderer-gated, demand-loaded NPC path as its body.
+        const { createNativeExpressionController } = await import('./body/native/native-expression-controller.ts');
+        talk = createNativeExpressionController(body.object);
+      }
+      catch (error) { body.object.removeFromParent(); body.dispose(); throw error; }
+      return { body, talk, interactionSeconds: 0, dispose() { talk.dispose(); body.object.removeFromParent(); body.dispose(); } };
+    },
+    place(actor, spec) {
+      actor.body.fit(spec.scale);
+      const pose = nativeNpcPose(spec.id);
+      actor.body.show(pose, false);
+      actor.body.place(spec.x, spec.y, spec.z, spec.ry);
+      actor.body.object.userData.nativeGameNpcPose = pose;
+      syncNativeTalk(actor, pose);
+      if (pose === 'interact') actor.body.sampleUse('interact', actor.interactionSeconds);
+      if (actor.body.object.parent === group) solveNativeNpcFeetOnVenueFloor(actor);
+    },
+    mount(actor, id) {
+      actor.body.object.name = `canonical-crowd:${id}`;
+      group.add(actor.body.object);
+      solveNativeNpcFeetOnVenueFloor(actor);
+    },
+    changed() {
+      rebuildActorBatch();
+      notifyCrowdChanged?.();
+    },
+    failed(id, error) { console.warn(`Canonical crowd actor ${id} unavailable; keeping its procedural figure:`, error); },
+    yieldBetweenActors: () => new Promise<void>((resolve) => setTimeout(resolve, 0)),
+  });
   const wallParts: Record<'wallBack' | 'wallLeft', THREE.Object3D[]> = { wallBack: [], wallLeft: [] };
   const sceneCamera = def.camera || SCENE_CAMERA;
   // The ground direction from the scene's centre towards its own camera: "in front of" a marker.
@@ -733,23 +793,36 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
   /** Advance every figure that is on its way. Returns true while any still is; moves transforms only. */
   function stepCrowd(dt: number) {
-    if (!easing) return false;
     let more = false;
-    for (const peer of peers.values()) {
-      if (peer.t >= 1) { if (stepGlance(peer, dt)) more = true; continue; }
-      resetGlance(peer);
-      peer.t = Math.min(1, peer.t + dt / peer.span);
-      const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
-      peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
-      const turn = turnTowards(peer.ry, Math.atan2(dx, dz));
-      peer.ry += Math.sign(turn) * Math.min(Math.abs(turn), 14 * dt);
-      if (peer.ry > Math.PI) peer.ry -= Math.PI * 2; else if (peer.ry < -Math.PI) peer.ry += Math.PI * 2;
-      peer.stride += dt * 6.5;
-      if (peer.t < 1) { showPeer(peer, Math.floor(peer.stride) % 2 === 0); more = true; } else showPeer(peer, false);
-      placePeer(peer);
+    if (easing) {
+      for (const peer of peers.values()) {
+        if (peer.t >= 1) { if (stepGlance(peer, dt)) more = true; continue; }
+        resetGlance(peer);
+        peer.t = Math.min(1, peer.t + dt / peer.span);
+        const dx = peer.toX - peer.fromX, dz = peer.toZ - peer.fromZ;
+        peer.x = peer.fromX + dx * peer.t; peer.z = peer.fromZ + dz * peer.t;
+        const turn = turnTowards(peer.ry, Math.atan2(dx, dz));
+        peer.ry += Math.sign(turn) * Math.min(Math.abs(turn), 14 * dt);
+        if (peer.ry > Math.PI) peer.ry -= Math.PI * 2; else if (peer.ry < -Math.PI) peer.ry += Math.PI * 2;
+        peer.stride += dt * 6.5;
+        if (peer.t < 1) { showPeer(peer, Math.floor(peer.stride) % 2 === 0); more = true; } else showPeer(peer, false);
+        placePeer(peer);
+      }
+      easing = more;
     }
-    easing = more;
-    return more;
+    // NPC jaw motion shares the host's existing bounded crowd motion loop. It exists only while
+    // an admitted native NPC has an active interaction, so idle venues request no extra frames.
+    for (const person of placedCrowd) {
+      const id = String(person.id ?? ''), actor = canonicalCrowd.get(id);
+      if (!actor || !actor.talk.snapshot().active) continue;
+      const delta = Number.isFinite(dt) ? Math.max(0, Math.min(1 / 30, dt)) : 0;
+      actor.interactionSeconds += delta;
+      actor.body.sampleUse('interact', actor.interactionSeconds);
+      solveNativeNpcFeetOnVenueFloor(actor);
+      actor.talk.step(delta);
+      more = true;
+    }
+    return more || easing;
   }
   /** Put every figure where it is going, at once (reduced motion, or no frame loop). */
   function settleCrowd() {
@@ -759,6 +832,10 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       peer.t = 1; peer.x = peer.toX; peer.z = peer.toZ; showPeer(peer, false); placePeer(peer);
     }
     easing = false;
+    for (const person of placedCrowd) {
+      const actor = canonicalCrowd.get(String(person.id ?? ''));
+      if (actor?.talk.snapshot().active) actor.talk.stop();
+    }
   }
   /** Someone standing still looks at the player when they come close, then looks away (src/scene/space.ts). True while still turning. */
   function stepGlance(peer: Peer, dt: number) {
@@ -777,20 +854,53 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     if (easing || !driven || !peers.size) return;
     for (const peer of peers.values()) if (peer.t >= 1 && watch(peer.gaze, peer, peer.ry, avatar.position)) { easing = true; return; }
   }
-  function buildActors() {
-    const placed = placeCrowd(view.crowd);
+  function supportsCanonicalStaticPose(person: CrowdPerson): boolean {
+    return person.pose === undefined || person.pose === null || person.pose === 'stand';
+  }
+  function canonicalSpec(person: CrowdPerson, index: number): CanonicalCrowdSpec {
+    const id = String(person.id ?? `person-${index}`), seed = String(person.seed ?? person.id ?? person.name ?? id);
+    return { id, look: person.look ?? null, seed, x: person.x ?? 0, y: person.y ?? 0, z: person.z ?? 0, ry: person.ry ?? 0, scale: 1 };
+  }
+  function canonicalTag(person: CrowdPerson, index: number, useCanonicalHead = true): SceneTag {
+    const kind = person.kind === 'npc' || person.kind === 'self' ? person.kind : 'player';
+    const name = String(person.name ?? person.id ?? ''), id = String(person.id ?? `person-${index}`);
+    const look = normalizeLook(person.look, person.seed ?? id);
+    const top = (person.y ?? 0) + 2.95 * avatarProportions(look.appearance).height;
+    const body = useCanonicalHead ? canonicalCrowd.get(id)?.body : undefined;
+    const head = body?.object.getObjectByName('Head');
+    if (body && head) {
+      body.object.updateWorldMatrix(true, false);
+      body.object.updateMatrixWorld(true);
+      const point = new THREE.Vector3();
+      head.getWorldPosition(point);
+      point.y += body.scale * 0.32;
+      return { id, name, kind, text: kind === 'player' ? `@${name}` : name,
+        marker: kind === 'npc' ? 'dot' : kind === 'self' ? 'crown' : 'tag',
+        colour: kind === 'npc' ? '#58d68a' : kind === 'self' ? '#ffd34d' : '#6fb4ff',
+        position: { x: person.x ?? 0, y: point.y, z: person.z ?? 0 } };
+    }
+    return { id, name, kind, text: kind === 'player' ? `@${name}` : name,
+      marker: kind === 'npc' ? 'dot' : kind === 'self' ? 'crown' : 'tag',
+      colour: kind === 'npc' ? '#58d68a' : kind === 'self' ? '#ffd34d' : '#6fb4ff',
+      position: { x: person.x ?? 0, y: top, z: person.z ?? 0 } };
+  }
+  function rebuildActorBatch() {
+    const placed = placedCrowd;
     const merged = placed.filter((person) => !person.live);
-    // The merged batch holds NPCs and players without a reported position: rebuilt only when THEY change.
-    const key = JSON.stringify(merged);
+    const fallback = merged.filter((person, index) => !supportsCanonicalStaticPose(person) || !canonicalCrowd.get(String(person.id ?? `person-${index}`)));
+    // Keep the procedural member visible until its own canonical body is committed; do not hide a whole merged crowd batch.
+    const key = JSON.stringify(fallback);
     if (key !== batchKey) {
       batchKey = key;
-      releaseObjects(actorObjects);
       const batch = createBatch(THREE);
-      mergedTags = drawCrowd(batch, merged);
+      drawCrowd(batch, fallback);
       const built = batch.build(shared.materials);
+      releaseObjects(actorObjects);
       actorTriangles = built.triangles;
       for (const mesh of built.meshes) { mesh.name = `actors-${mesh.name}`; group.add(mesh); actorObjects.push(mesh); }
     }
+    mergedTags = merged.map((person, index) => canonicalCrowd.get(String(person.id ?? `person-${index}`))
+      ? canonicalTag(person, index) : canonicalTag(person, index, false));
     const kept = new Set();
     for (const person of placed) if (person.live) kept.add(syncPeer(person as LivePerson).id);
     for (const peer of [...peers.values()]) if (!kept.has(peer.id)) dropPeer(peer);
@@ -798,6 +908,20 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     let next = 0;
     crowdTags = placed.map((person) => (person.live ? peers.get(String(person.id))!.tag : mergedTags[next++])).filter((tag): tag is SceneTag => Boolean(tag));
     peopleList = crowdTags.map((tag) => peers.get(tag.id)?.tag === tag ? peers.get(tag.id)!.at : { id: tag.id, kind: tag.kind, x: tag.position.x, z: tag.position.z, top: tag.position.y });
+  }
+  function buildActors() {
+    placedCrowd = placeCrowd(view.crowd);
+    canonicalCrowd.sync(placedCrowd.flatMap((person, index) => {
+      if (person.live || person.kind !== 'npc' || !person.look || !supportsCanonicalStaticPose(person)) return [];
+      return [canonicalSpec(person, index)];
+    }).slice(0, MAX_NATIVE_NPCS));
+    rebuildActorBatch();
+  }
+  function startCrowd(renderer: { getContext?: () => unknown }, changed: () => void) {
+    notifyCrowdChanged = changed;
+    if (crowdGateRejected) return;
+    if (!bodyAllowed() || !drawsWebGL2(renderer)) { crowdGateRejected = true; return; }
+    canonicalCrowd.start();
   }
   function applyLighting() {
     const preset = lit();
@@ -829,6 +953,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
   function release() {
     renderedContactTop = null;
+    canonicalCrowd.dispose();
     for (const peer of [...peers.values()]) dropPeer(peer);
     easing = false; batchKey = null; peopleList = []; mergedTags = [];
     wallParts.wallBack.length = 0; wallParts.wallLeft.length = 0;
@@ -930,6 +1055,174 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     near(spot: { x: number; y: number; z: number } | null | undefined) { return spot ? placeMark(marks.near, spot.x, spot.y, spot.z, true) : placeMark(marks.near, 0, 0, 0, false); },
     goal(x?: number, z?: number) { return Number.isFinite(x) ? placeMark(marks.goal, x!, 0, z!, true) : placeMark(marks.goal, 0, 0, 0, false); },
   };
+  /** Fit grounded prepared NPCs to this venue's measured rendered floor after mounting. */
+  function solveNativeNpcFeetOnVenueFloor(actor: CanonicalVenueActor): boolean {
+    if (!('preparedMetrics' in actor.body)
+      || actor.body.object.userData.nativeGameProviderEvidence?.preparedNative !== true) return false;
+    const contactHeightAt = walk.contactHeightAt;
+    if (typeof contactHeightAt !== 'function') return false;
+    // Venue NPCs currently use idle/interact. Never flatten a future locomotion pose's swing foot.
+    if (actor.body.pose !== 'idle' && actor.body.pose !== 'interact') return false;
+    const previous = actor.body.object.userData.nativeVenueFootContactSolve as { attempts?: unknown } | undefined;
+    const previousAttempts = previous?.attempts;
+    const attempts = Number.isSafeInteger(previousAttempts) ? Number(previousAttempts) + 1 : 1;
+    const record = (diagnostic: Record<string, unknown>, passed: boolean) => {
+      actor.body.object.userData.nativeVenueFootContactSolve = { attempts, pose: actor.body.pose, ...diagnostic };
+      return passed;
+    };
+    const shoes = actor.body.object.getObjectByName('Authored footwear shoes01');
+    if (!(shoes instanceof THREE.SkinnedMesh)) return record({ status: 'fail', reason: 'missing authored skinned shoes' }, false);
+    const positions = shoes.geometry.getAttribute('position');
+    const skinIndices = shoes.geometry.getAttribute('skinIndex');
+    const skinWeights = shoes.geometry.getAttribute('skinWeight');
+    if (!positions || !skinIndices || !skinWeights || positions.count !== skinIndices.count || positions.count !== skinWeights.count) {
+      return record({ status: 'fail', reason: 'incomplete authored shoe skin attributes' }, false);
+    }
+    const parent = actor.body.object.parent;
+    const sampleAuthoredSoles = () => {
+      actor.body.object.updateWorldMatrix(true, true);
+      if (parent) parent.updateWorldMatrix(true, false);
+      shoes.updateMatrixWorld(true);
+      shoes.skeleton.update();
+      const parentInverse = parent ? parent.matrixWorld.clone().invert() : new THREE.Matrix4();
+      const vertex = new THREE.Vector3();
+      return (['left', 'right'] as const).map((side) => {
+        const suffix = side === 'left' ? 'Left' : 'Right';
+        const jointIndices = new Set<number>();
+        shoes.skeleton.bones.forEach((bone, index) => {
+          if (bone.name === `mixamorig${suffix}Foot` || bone.name === `mixamorig${suffix}ToeBase`) jointIndices.add(index);
+        });
+        if (jointIndices.size !== 2) return { side, points: [], reason: 'missing authored shoe foot/toe joints' };
+        const candidates: number[] = [];
+        let minimumLocalY = Infinity;
+        for (let index = 0; index < positions.count; index += 1) {
+          let footWeight = 0;
+          for (let lane = 0; lane < 4; lane += 1) {
+            if (jointIndices.has(Math.round(skinIndices.getComponent(index, lane)))) footWeight += skinWeights.getComponent(index, lane);
+          }
+          if (footWeight < 0.55) continue;
+          candidates.push(index);
+          minimumLocalY = Math.min(minimumLocalY, positions.getY(index));
+        }
+        const soleCandidates = candidates.filter((index) => positions.getY(index) <= minimumLocalY + 0.018);
+        const points = soleCandidates.map((index) => {
+          shoes.getVertexPosition(index, vertex);
+          return vertex.clone().applyMatrix4(shoes.matrixWorld).applyMatrix4(parentInverse);
+        });
+        return { side, points, reason: points.length ? null : 'empty authored shoe sole candidates' };
+      });
+    };
+    const contacts = sampleAuthoredSoles();
+    if (contacts.some((contact) => contact.reason || !contact.points.length)) {
+      return record({ status: 'fail', reason: contacts.map((contact) => contact.reason).filter(Boolean).join('; ') || 'missing exact left/right sole samples' }, false);
+    }
+    let sampledPointCount = 0;
+    for (const contact of contacts) {
+      const points = contact.points;
+      sampledPointCount += points.length;
+      for (const point of points) {
+        if (![point.x, point.y, point.z].every(Number.isFinite)) {
+          return record({ status: 'fail', reason: `non-finite ${contact.side} sole sample`, sampledPointCount }, false);
+        }
+        const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+        if (callbackTargetY === null || !Number.isFinite(callbackTargetY)) {
+          return record({ status: 'fail', reason: `unsupported ${contact.side} sole sample`, sampledPointCount }, false);
+        }
+      }
+    }
+    // Measure whether the requested physical ankle target is reachable from the actual
+    // pre-solve pose. Computing this after the solve would hide an unreachable request.
+    actor.body.object.updateWorldMatrix(true, true);
+    if (parent) parent.updateWorldMatrix(true, false);
+    const preSolveParentInverse = parent ? parent.matrixWorld.clone().invert() : new THREE.Matrix4();
+    const requestedReachBySide = new Map<string, { physicalRequestedAnkleReach: number; maximumLegReach: number; withinReach: boolean }>();
+    for (const contact of contacts) {
+      const physicalCorrections: number[] = [];
+      for (const point of contact.points) {
+        const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+        if (callbackTargetY === null || !Number.isFinite(callbackTargetY)) {
+          return record({ status: 'fail', reason: `unsupported pre-solve ${contact.side} shoe surface`, sampledPointCount }, false);
+        }
+        physicalCorrections.push(callbackTargetY - 0.016 - point.y);
+      }
+      const physicalVerticalCorrection = Math.max(...physicalCorrections);
+      const suffix = contact.side === 'left' ? 'Left' : 'Right';
+      const hip = actor.body.object.getObjectByName(`mixamorig${suffix}UpLeg`);
+      const knee = actor.body.object.getObjectByName(`mixamorig${suffix}Leg`);
+      const ankle = actor.body.object.getObjectByName(`mixamorig${suffix}Foot`);
+      if (!(hip instanceof THREE.Bone) || !(knee instanceof THREE.Bone) || !(ankle instanceof THREE.Bone)
+        || !Number.isFinite(physicalVerticalCorrection)) {
+        return record({ status: 'fail', reason: `missing finite pre-solve ${contact.side} ankle reach evidence`, sampledPointCount }, false);
+      }
+      const pointInParent = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(preSolveParentInverse);
+      const hipPosition = pointInParent(hip), kneePosition = pointInParent(knee), anklePosition = pointInParent(ankle);
+      const maximumLegReach = hipPosition.distanceTo(kneePosition) + kneePosition.distanceTo(anklePosition);
+      const targetAnkle = anklePosition.clone().add(new THREE.Vector3(0, physicalVerticalCorrection, 0));
+      const physicalRequestedAnkleReach = hipPosition.distanceTo(targetAnkle);
+      const withinReach = Number.isFinite(physicalRequestedAnkleReach) && Number.isFinite(maximumLegReach)
+        && physicalRequestedAnkleReach <= maximumLegReach + 0.002;
+      requestedReachBySide.set(contact.side, { physicalRequestedAnkleReach, maximumLegReach, withinReach });
+    }
+    // contactHeightAt reports the measured surface plus a 16 mm safety offset. The solver
+    // needs the physical top so its correction does not bake that navigation clearance into soles.
+    const result = actor.body.solveFeet((point) => {
+      const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+      return callbackTargetY === null || !Number.isFinite(callbackTargetY) ? Number.NaN : callbackTargetY - 0.016;
+    });
+    const postContacts = sampleAuthoredSoles();
+    const parentInverse = parent ? parent.matrixWorld.clone().invert() : new THREE.Matrix4();
+    const sideEvidence: Record<string, unknown>[] = [];
+    let physicalOraclePass = postContacts.length === 2
+      && ['left', 'right'].every((side) => postContacts.some((contact) => contact.side === side && !contact.reason && contact.points.length > 0));
+    for (const contact of postContacts) {
+      const points = contact.points;
+      const physicalGaps: number[] = [], corrections: number[] = [];
+      let coverageComplete = points.length > 0 && !contact.reason;
+      for (const point of points) {
+        if (![point.x, point.y, point.z].every(Number.isFinite)) { coverageComplete = false; continue; }
+        const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+        if (callbackTargetY === null || !Number.isFinite(callbackTargetY)) { coverageComplete = false; continue; }
+        const sceneFloorY = callbackTargetY - 0.016;
+        physicalGaps.push(point.y - sceneFloorY);
+        corrections.push(sceneFloorY - point.y);
+      }
+      const nearestAbsolutePhysicalGap = physicalGaps.length ? Math.min(...physicalGaps.map(Math.abs)) : null;
+      const minimumSignedPhysicalGap = physicalGaps.length ? Math.min(...physicalGaps) : null;
+      const physicalVerticalCorrection = corrections.length ? Math.max(...corrections) : null;
+      const suffix = contact.side === 'left' ? 'Left' : 'Right';
+      const hip = actor.body.object.getObjectByName(`mixamorig${suffix}UpLeg`);
+      const knee = actor.body.object.getObjectByName(`mixamorig${suffix}Leg`);
+      const ankle = actor.body.object.getObjectByName(`mixamorig${suffix}Foot`);
+      if (!(hip instanceof THREE.Bone) || !(knee instanceof THREE.Bone) || !(ankle instanceof THREE.Bone)) {
+        coverageComplete = false;
+        physicalOraclePass = false;
+        sideEvidence.push({ side: contact.side, candidateCount: points.length, coverageComplete, reason: 'missing native leg chain' });
+        continue;
+      }
+      const pointInParent = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(parentInverse);
+      const hipPosition = pointInParent(hip), kneePosition = pointInParent(knee), anklePosition = pointInParent(ankle);
+      const postSolveActualAnkleReach = hipPosition.distanceTo(anklePosition);
+      const postSolveMaximumLegReach = hipPosition.distanceTo(kneePosition) + kneePosition.distanceTo(anklePosition);
+      const requestedReach = requestedReachBySide.get(contact.side);
+      const physicalRequestedAnkleReach = requestedReach?.physicalRequestedAnkleReach ?? null;
+      const maximumRequestedLegReach = requestedReach?.maximumLegReach ?? null;
+      const withinReach = requestedReach?.withinReach === true;
+      const withinPhysicalTolerance = coverageComplete && nearestAbsolutePhysicalGap !== null
+        && nearestAbsolutePhysicalGap <= 0.004 && minimumSignedPhysicalGap !== null && minimumSignedPhysicalGap >= -0.004;
+      physicalOraclePass &&= withinPhysicalTolerance && withinReach;
+      sideEvidence.push({ side: contact.side, candidateCount: points.length, coverageComplete,
+        nearestAbsolutePhysicalGap, minimumSignedPhysicalGap, physicalVerticalCorrection,
+        physicalRequestedAnkleReach, maximumRequestedLegReach, withinReach, withinPhysicalTolerance,
+        postSolveActualAnkleReach, postSolveMaximumLegReach });
+    }
+    const solverPass = result.corrected === 2 && Number.isFinite(result.maxError)
+      && result.maxError <= 0.004 && result.limited === false;
+    const passed = solverPass && physicalOraclePass;
+    return record({ status: passed ? 'pass' : 'fail', reason: passed ? null : 'native solve or post-solve shoe oracle failed',
+      contactSides: postContacts.map((contact) => contact.side), sampledPointCount,
+      targetClearanceMeters: 0.016, corrected: result.corrected, maxError: result.maxError, limited: result.limited,
+      physicalOraclePass, sides: sideEvidence }, passed);
+  }
   let raised: { x: number; y: number; z: number }[] = [];
   /**
    * layout.raised: what can be stood on above the ground, so the avatar walks UP it instead of
@@ -1012,7 +1305,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       return crowdTags;
     },
     /** True while another player's figure is on its way to a newly reported position. */
-    get easing() { return easing; },
+    get easing() { return easing || placedCrowd.some((person) => canonicalCrowd.get(String(person.id ?? ''))?.talk.snapshot().active === true); },
     stepCrowd, settleCrowd,
     /** The camera is at (x, z): hide whichever wall it has gone behind, with what hangs on it. */
     look(x: number, z: number) {
@@ -1061,8 +1354,26 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
         const pose = !active ? 'stand' : active.kind === 'travel' || active.kind === 'commute' ? 'walk' : 'busy';
         if (pose !== view.pose) { view.pose = pose; actors = true; }
       }
-      if (live) { if (dressed) redress(); if (actors) settle(); if (changed) applyLighting(); }
-      return changed || actors;
+      const nextNpcActivity = here && state.activeAction?.kind === 'activity' && typeof state.activeAction.id === 'string'
+        ? state.activeAction.id : null;
+      const npcPoseChanged = activeNpcActivity !== nextNpcActivity;
+      activeNpcActivity = nextNpcActivity;
+      if (live) {
+        if (dressed) redress();
+        if (actors) settle();
+        if (changed) applyLighting();
+        if (npcPoseChanged) for (const person of placedCrowd) {
+          const id = String(person.id ?? ''), actor = canonicalCrowd.get(id);
+          if (!actor) continue;
+          const pose = nativeNpcPose(id);
+          actor.body.show(pose, false);
+          actor.body.object.userData.nativeGameNpcPose = pose;
+          syncNativeTalk(actor, pose);
+          if (pose === 'interact') actor.body.sampleUse('interact', actor.interactionSeconds);
+          solveNativeNpcFeetOnVenueFloor(actor);
+        }
+      }
+      return changed || actors || npcPoseChanged;
     },
     dispose() {
       if (disposed) return;
@@ -1071,6 +1382,13 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       shared.disposers.delete(entry.dispose);
       group.parent?.remove(group);
     },
+  };
+  // HostScene already calls this optional seam after its first rendered, capability-gated frame.
+  // Keep the extra diagnostics off SceneEntry's stable public type in this source-only packet.
+  Object.assign(entry, { startCrowd });
+  group.userData.canonicalCrowdCounts = () => {
+    const counts = canonicalCrowd.counts, staticCount = placedCrowd.filter((person) => !person.live).length;
+    return { ...counts, static: staticCount, procedural: staticCount - counts.canonical };
   };
   shared.disposers.add(entry.dispose);
   realise();

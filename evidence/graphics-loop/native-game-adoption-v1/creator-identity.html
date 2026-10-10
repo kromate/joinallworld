@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Creator to venue identity diagnostic</title>
+  <style>
+    :root { color: #17232b; background: #eef1ef; font: 14px/1.45 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1100px; margin: auto; padding: 18px; }
+    h1 { margin: 0 0 5px; font-size: 1.55rem; }
+    p { color: #52616a; margin: 0 0 12px; }
+    .layout { display: grid; grid-template-columns: minmax(300px, 480px) minmax(0, 1fr); gap: 14px; align-items: start; }
+    .stage, aside { min-width: 0; border: 1px solid #d4dbd9; border-radius: 12px; background: #fff; overflow: hidden; }
+    #preview-host { width: 100%; height: min(76vh, 720px); min-height: 470px; background: #f4f1ec; }
+    aside { padding: 14px; }
+    #status { border-left: 3px solid #4c9b72; padding-left: 9px; font-weight: 650; }
+    #audit { max-height: 70vh; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.4 ui-monospace, monospace; }
+    @media (max-width: 720px) {
+      main { padding: 9px; }
+      .layout { grid-template-columns: minmax(0, 1fr); }
+      #preview-host { height: 62svh; min-height: 390px; }
+      #audit { max-height: 34vh; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>One saved identity in creator preview and venue provider</h1>
+    <p>Returned body family, skeleton, geometry, seed and normalized look are compared directly. The native-provider result remains an observed capability.</p>
+    <div class="layout">
+      <section class="stage" aria-label="Production creator avatar preview"><div id="preview-host"></div></section>
+      <aside><div id="status">Loading the game fixture identity…</div><pre id="audit">Waiting for returned bodies.</pre></aside>
+    </div>
+  </main>
+  <script type="module" src="./creator-identity.bundle.js"></script>
+</body>
+</html>

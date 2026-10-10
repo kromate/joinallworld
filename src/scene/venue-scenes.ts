@@ -1125,6 +1125,39 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
         }
       }
     }
+    // Measure whether the requested physical ankle target is reachable from the actual
+    // pre-solve pose. Computing this after the solve would hide an unreachable request.
+    actor.body.object.updateWorldMatrix(true, true);
+    if (parent) parent.updateWorldMatrix(true, false);
+    const preSolveParentInverse = parent ? parent.matrixWorld.clone().invert() : new THREE.Matrix4();
+    const requestedReachBySide = new Map<string, { physicalRequestedAnkleReach: number; maximumLegReach: number; withinReach: boolean }>();
+    for (const contact of contacts) {
+      const physicalCorrections: number[] = [];
+      for (const point of contact.points) {
+        const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+        if (callbackTargetY === null || !Number.isFinite(callbackTargetY)) {
+          return record({ status: 'fail', reason: `unsupported pre-solve ${contact.side} shoe surface`, sampledPointCount }, false);
+        }
+        physicalCorrections.push(callbackTargetY - 0.016 - point.y);
+      }
+      const physicalVerticalCorrection = Math.max(...physicalCorrections);
+      const suffix = contact.side === 'left' ? 'Left' : 'Right';
+      const hip = actor.body.object.getObjectByName(`mixamorig${suffix}UpLeg`);
+      const knee = actor.body.object.getObjectByName(`mixamorig${suffix}Leg`);
+      const ankle = actor.body.object.getObjectByName(`mixamorig${suffix}Foot`);
+      if (!(hip instanceof THREE.Bone) || !(knee instanceof THREE.Bone) || !(ankle instanceof THREE.Bone)
+        || !Number.isFinite(physicalVerticalCorrection)) {
+        return record({ status: 'fail', reason: `missing finite pre-solve ${contact.side} ankle reach evidence`, sampledPointCount }, false);
+      }
+      const pointInParent = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(preSolveParentInverse);
+      const hipPosition = pointInParent(hip), kneePosition = pointInParent(knee), anklePosition = pointInParent(ankle);
+      const maximumLegReach = hipPosition.distanceTo(kneePosition) + kneePosition.distanceTo(anklePosition);
+      const targetAnkle = anklePosition.clone().add(new THREE.Vector3(0, physicalVerticalCorrection, 0));
+      const physicalRequestedAnkleReach = hipPosition.distanceTo(targetAnkle);
+      const withinReach = Number.isFinite(physicalRequestedAnkleReach) && Number.isFinite(maximumLegReach)
+        && physicalRequestedAnkleReach <= maximumLegReach + 0.002;
+      requestedReachBySide.set(contact.side, { physicalRequestedAnkleReach, maximumLegReach, withinReach });
+    }
     // contactHeightAt reports the measured surface plus a 16 mm safety offset. The solver
     // needs the physical top so its correction does not bake that navigation clearance into soles.
     const result = actor.body.solveFeet((point) => {
@@ -1164,17 +1197,16 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       const pointInParent = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(parentInverse);
       const hipPosition = pointInParent(hip), kneePosition = pointInParent(knee), anklePosition = pointInParent(ankle);
       const maximumLegReach = hipPosition.distanceTo(kneePosition) + kneePosition.distanceTo(anklePosition);
-      const targetAnkle = physicalVerticalCorrection === null ? null
-        : anklePosition.clone().add(new THREE.Vector3(0, physicalVerticalCorrection, 0));
-      const physicalRequestedAnkleReach = targetAnkle ? hipPosition.distanceTo(targetAnkle) : null;
-      const withinReach = physicalRequestedAnkleReach !== null && Number.isFinite(physicalRequestedAnkleReach)
-        && Number.isFinite(maximumLegReach) && physicalRequestedAnkleReach <= maximumLegReach + 0.002;
+      const requestedReach = requestedReachBySide.get(contact.side);
+      const physicalRequestedAnkleReach = requestedReach?.physicalRequestedAnkleReach ?? null;
+      const maximumRequestedLegReach = requestedReach?.maximumLegReach ?? null;
+      const withinReach = requestedReach?.withinReach === true;
       const withinPhysicalTolerance = coverageComplete && nearestAbsolutePhysicalGap !== null
         && nearestAbsolutePhysicalGap <= 0.004 && minimumSignedPhysicalGap !== null && minimumSignedPhysicalGap >= -0.004;
       physicalOraclePass &&= withinPhysicalTolerance && withinReach;
       sideEvidence.push({ side: contact.side, candidateCount: points.length, coverageComplete,
         nearestAbsolutePhysicalGap, minimumSignedPhysicalGap, physicalVerticalCorrection,
-        physicalRequestedAnkleReach, maximumLegReach, withinReach, withinPhysicalTolerance });
+        physicalRequestedAnkleReach, maximumRequestedLegReach, withinReach, withinPhysicalTolerance });
     }
     const solverPass = result.corrected === 2 && Number.isFinite(result.maxError)
       && result.maxError <= 0.004 && result.limited === false;

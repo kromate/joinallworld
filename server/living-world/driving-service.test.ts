@@ -679,16 +679,16 @@ test('an exhausted running row refuses every lifecycle and control route on loca
   const readRow = () => f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
   const before = await readRow()
   const body = { cityId: 'lagos', journeyId: started.session!.journeyId, revision: max }
-  const attempts: Array<[string, Promise<Reply>]> = [
-    ['current', f.request(`${drivingPath}?city=lagos`, null, player.cookie).then(response => response.json() as Promise<Reply>)],
-    ['start', post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)],
-    ['input', post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: body.journeyId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }, player.cookie)],
-    ['pause', post(f, `${drivingPath}/pause`, { ...body, requestId: id(f) }, player.cookie)],
-    ['resume', post(f, `${drivingPath}/resume`, { ...body, requestId: id(f) }, player.cookie)],
-    ['restart', post(f, `${drivingPath}/restart`, { ...body, requestId: id(f) }, player.cookie)],
+  const attempts: Array<[string, () => Promise<Reply>]> = [
+    ['current', async () => await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply],
+    ['start', () => post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)],
+    ['input', () => post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: body.journeyId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }, player.cookie)],
+    ['pause', () => post(f, `${drivingPath}/pause`, { ...body, requestId: id(f) }, player.cookie)],
+    ['resume', () => post(f, `${drivingPath}/resume`, { ...body, requestId: id(f) }, player.cookie)],
+    ['restart', () => post(f, `${drivingPath}/restart`, { ...body, requestId: id(f) }, player.cookie)],
   ]
-  for (const [route, pending] of attempts) {
-    const answer = await pending
+  for (const [route, perform] of attempts) {
+    const answer = await perform()
     assert.deepEqual([answer.ok, answer.code], [false, 'revision_exhausted'], `${route} must stop before its context-mismatch pause can overflow`)
     assert.deepEqual(await readRow(), before, `${route} must preserve the entire exhausted driving row; life settling is outside this assertion`)
   }

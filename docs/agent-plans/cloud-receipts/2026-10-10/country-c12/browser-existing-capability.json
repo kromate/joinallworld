@@ -1,0 +1,35 @@
+{
+  "browser_binary": "/usr/bin/chromium",
+  "version": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+  "existing_graphics_browser_proof": "Actual samecloud adb53e0 browser57.849s1.285GB;permittedloopback needed;fixture FAIL atMrs8saction,no capabilityfailure",
+  "native_package_archive_in_cloud": "WORLD-deliveredGHA c12 archive not received in thisworkspace;rootAPIForbidden,noalternativecredentials",
+  "heap_browser_limits": {
+    "shared_heavy": 1,
+    "browser": 1,
+    "bounded_seconds": 120,
+    "group_rss_bytes": 2147483648
+  },
+  "read_only_no_browser_launched": true,
+  "modules": {
+    "playwright": {
+      "available": false,
+      "resolved": null
+    },
+    "@playwright/test": {
+      "available": false,
+      "resolved": null
+    },
+    "puppeteer": {
+      "available": false,
+      "resolved": null
+    },
+    "ws": {
+      "available": true,
+      "resolved": "file:///workspace/joinallworld/node_modules/ws/wrapper.mjs"
+    }
+  },
+  "existing_cdp_helpers": [
+    "scripts/living-world-browser-qa.mjs"
+  ],
+  "graphics_cdp_renderer": "/workspace/remote-verification/repositories/coordinator-graphics-wiring/evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs"
+}

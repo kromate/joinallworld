@@ -1,0 +1,63 @@
+{
+  "sha": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+  "branch": "codex/cloud-driving-host-reopen-h1h2h3-20261010",
+  "parent": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
+  "checkout": "/workspace/remote-verification/repositories/driving-driving-safe-max-20261010",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "16904060928",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "server/living-world/driving-host-reopen.test.ts",
+    "deploy/living-world-driving-v2.edge.test.ts"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 107007,
+  "started_at_utc": "2026-10-10T01:58:32.965827+00:00",
+  "ended_at_utc": "2026-10-10T01:59:15.264630+00:00",
+  "duration_seconds": 42.298803,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 17,
+    "sample_source": "GRAPHICS actual account query2026-10-10 01:50:54 UTC83%used17%remaining, independently relayed LIVING",
+    "recorded_at_utc": "2026-10-10T01:54:04.209877+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/a6461c2208d9621bf79f69fb5409d5bc43cd7746/driving-host-reopen-h1h2h3-final-focused/command.log",
+  "log_sha256": "2392b8089d6b781f18689175e8fcc7583bf0bd091d86f389730a43696b36ff6e",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

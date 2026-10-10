@@ -1,0 +1,247 @@
+(node:103003) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:103011) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:103019) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# (node:103026) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: agent-slot
+    # Subtest: holds a numbered lock while the command runs and removes it afterwards
+    ok 1 - holds a numbered lock while the command runs and removes it afterwards
+      ---
+      duration_ms: 204.48564
+      type: 'test'
+      ...
+    # Subtest: makes a second holder wait when the limit is 1, then lets it in once the first is done
+    ok 2 - makes a second holder wait when the limit is 1, then lets it in once the first is done
+      ---
+      duration_ms: 932.529037
+      type: 'test'
+      ...
+    # Subtest: waits for a live higher-numbered legacy slot before admitting work at the new default limit
+    ok 3 - waits for a live higher-numbered legacy slot before admitting work at the new default limit
+      ---
+      duration_ms: 546.082281
+      type: 'test'
+      ...
+    # Subtest: uses up to the limit at once and no more
+    ok 4 - uses up to the limit at once and no more
+      ---
+      duration_ms: 420.980394
+      type: 'test'
+      ...
+    # Subtest: reclaims a lock whose owner is gone
+    ok 5 - reclaims a lock whose owner is gone
+      ---
+      duration_ms: 258.229268
+      type: 'test'
+      ...
+    # Subtest: reclaims a stale higher-numbered lock before admitting work at limit 1
+    ok 6 - reclaims a stale higher-numbered lock before admitting work at limit 1
+      ---
+      duration_ms: 271.005313
+      type: 'test'
+      ...
+    # Subtest: does not reclaim a lock whose owner is alive
+    ok 7 - does not reclaim a lock whose owner is alive
+      ---
+      duration_ms: 270.202868
+      type: 'test'
+      ...
+    # Subtest: passes the command exit code through, and frees the slot
+    ok 8 - passes the command exit code through, and frees the slot
+      ---
+      duration_ms: 308.97104
+      type: 'test'
+      ...
+    # Subtest: releases the slot and stops the command when it gets SIGTERM
+    ok 9 - releases the slot and stops the command when it gets SIGTERM
+      ---
+      duration_ms: 133.714129
+      type: 'test'
+      ...
+    # Subtest: lets a command that asks for the slot kind it already holds run without waiting
+    ok 10 - lets a command that asks for the slot kind it already holds run without waiting
+      ---
+      duration_ms: 400.456055
+      type: 'test'
+      ...
+    # Subtest: lists holders with status
+    ok 11 - lists holders with status
+      ---
+      duration_ms: 279.46084
+      type: 'test'
+      ...
+    # Subtest: rejects a bad command line
+    ok 12 - rejects a bad command line
+      ---
+      duration_ms: 357.642722
+      type: 'test'
+      ...
+    1..12
+ok 1 - agent-slot
+  ---
+  duration_ms: 4386.712553
+  type: 'suite'
+  ...
+# (node:103345) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: invalid new-city specs fail the minimum real-place and local-government gates
+ok 2 - invalid new-city specs fail the minimum real-place and local-government gates
+  ---
+  duration_ms: 0.96328
+  type: 'test'
+  ...
+# Subtest: Wikidata EntityData P625 coordinates use longitude and latitude fields
+ok 3 - Wikidata EntityData P625 coordinates use longitude and latitude fields
+  ---
+  duration_ms: 1.202378
+  type: 'test'
+  ...
+# Subtest: a valid synthetic CitySpec builds the playable formula skeleton without registration
+ok 4 - a valid synthetic CitySpec builds the playable formula skeleton without registration
+  ---
+  duration_ms: 3.541287
+  type: 'test'
+  ...
+# Subtest: a sparse CitySpec documents unmapped kinds and builds honest fallbacks
+ok 5 - a sparse CitySpec documents unmapped kinds and builds honest fallbacks
+  ---
+  duration_ms: 1.465973
+  type: 'test'
+  ...
+# Subtest: unmapped kinds are rejected when placed, unsupported, or missing a note
+ok 6 - unmapped kinds are rejected when placed, unsupported, or missing a note
+  ---
+  duration_ms: 1.280755
+  type: 'test'
+  ...
+# Subtest: generated eager rules and content cannot statically reach the lazy map or topology data
+ok 7 - generated eager rules and content cannot statically reach the lazy map or topology data
+  ---
+  duration_ms: 0.658815
+  type: 'test'
+  ...
+# Subtest: selected state topology retains the neighbouring owner on a shared national arc
+ok 8 - selected state topology retains the neighbouring owner on a shared national arc
+  ---
+  duration_ms: 1.264662
+  type: 'test'
+  ...
+# Subtest: legacy generation is deterministic and stale text is observable
+ok 9 - legacy generation is deterministic and stale text is observable
+  ---
+  duration_ms: 1.288067
+  type: 'test'
+  ...
+# Subtest: Sagamu generated runtime preserves the exact original baseline
+ok 10 - Sagamu generated runtime preserves the exact original baseline
+  ---
+  duration_ms: 26.525155
+  type: 'test'
+  ...
+# Subtest: Sagamu offline generator check accepts current generated files
+ok 11 - Sagamu offline generator check accepts current generated files
+  ---
+  duration_ms: 479.445695
+  type: 'test'
+  ...
+# Subtest: the generated content file writes the cast as plain data with bare keys, one regular to a line
+ok 12 - the generated content file writes the cast as plain data with bare keys, one regular to a line
+  ---
+  duration_ms: 0.399958
+  type: 'test'
+  ...
+# (node:103369) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: static imports are followed, dynamic imports are not
+ok 13 - static imports are followed, dynamic imports are not
+  ---
+  duration_ms: 2.239009
+  type: 'test'
+  ...
+# Subtest: first paint is index.html, its stylesheet and scripts, and what they import; startup adds the shell and one city
+ok 14 - first paint is index.html, its stylesheet and scripts, and what they import; startup adds the shell and one city
+  ---
+  duration_ms: 1.070361
+  type: 'test'
+  ...
+# Subtest: chunks group by name without the hash, and cities fold into one group per kind
+ok 15 - chunks group by name without the hash, and cities fold into one group per kind
+  ---
+  duration_ms: 5.654197
+  type: 'test'
+  ...
+# Subtest: sizes: brotli is smaller than gzip is smaller than raw for text, and sums add up
+ok 16 - sizes: brotli is smaller than gzip is smaller than raw for text, and sums add up
+  ---
+  duration_ms: 1.218643
+  type: 'test'
+  ...
+# Subtest: a small build is inside every budget it can measure; budgets with no artifact are reported as not measured
+ok 17 - a small build is inside every budget it can measure; budgets with no artifact are reported as not measured
+  ---
+  duration_ms: 5.886855
+  type: 'test'
+  ...
+# Subtest: a budget that is exceeded is reported over
+ok 18 - a budget that is exceeded is reported over
+  ---
+  duration_ms: 395.320467
+  type: 'test'
+  ...
+# (node:103407) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: typecheck wrapper cannot declare a quiet failing compiler clean
+ok 19 - typecheck wrapper cannot declare a quiet failing compiler clean
+  ---
+  duration_ms: 505.658212
+  type: 'test'
+  ...
+# Subtest: typecheck wrapper cannot declare a compiler terminated by signal clean
+ok 20 - typecheck wrapper cannot declare a compiler terminated by signal clean
+  ---
+  duration_ms: 493.602084
+  type: 'test'
+  ...
+# Subtest: typecheck wrapper rejects failure text outside TypeScript diagnostic syntax
+ok 21 - typecheck wrapper rejects failure text outside TypeScript diagnostic syntax
+  ---
+  duration_ms: 553.65867
+  type: 'test'
+  ...
+# Subtest: typecheck wrapper still reconciles imported diagnostics in the owning project
+ok 22 - typecheck wrapper still reconciles imported diagnostics in the owning project
+  ---
+  duration_ms: 524.186956
+  type: 'test'
+  ...
+# Subtest: typecheck wrapper still rejects new owned TypeScript errors
+ok 23 - typecheck wrapper still rejects new owned TypeScript errors
+  ---
+  duration_ms: 503.21295
+  type: 'test'
+  ...
+# Subtest: typecheck wrapper accepts all five terminal clean compiler runs
+ok 24 - typecheck wrapper accepts all five terminal clean compiler runs
+  ---
+  duration_ms: 503.270405
+  type: 'test'
+  ...
+# Subtest: typecheck wrapper rejects abnormal exit even when imported diagnostics look baselined
+ok 25 - typecheck wrapper rejects abnormal exit even when imported diagnostics look baselined
+  ---
+  duration_ms: 496.07591
+  type: 'test'
+  ...
+1..25
+# tests 36
+# suites 1
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9519.803661

@@ -1,0 +1,2472 @@
+{
+  "run": {
+    "branch": "codex/cloud-graphics-rest-trajectory-20261010",
+    "commit": "648b9db9a07bcc4dc89cbef6cace15d33c81d031",
+    "factorySha256": "5fc393e4394e0a54c95e0751a162d4f380abb3525112af24323ce6afe01b3797",
+    "runtimeSha256": "d95f69474c9b8d2f70b82f6b49d6f4d4114b1f80e11a492c25b99860102aa66d",
+    "bundleSha256": "3163648b0d5d5fc311f66bbc5efd2e4ae3ee94d0c73125582fcf2b6ec3a8ada9",
+    "failureSha256": "bdcf3e609e63bf76182a952da49baf4c1ee741e8877e19f0fb52702578f96c33",
+    "logSha256": "9d6a4d3a7f6b7848253e2c7eab8f43fe912a5aaf73720b6253163e55a999c090",
+    "receiptSha256": "562256994fe7fb9db05ce460a9b32bcfe01508b1dbdd51e90828bd68a4433435",
+    "bundleBytes": 9305579
+  },
+  "journey": {
+    "status": "failed",
+    "renderExitCode": 1,
+    "elapsedSeconds": 21.687,
+    "peakGroupRssBytes": 1061400576,
+    "rssLimit": 2147483648,
+    "timeLimitSeconds": 120,
+    "captures": [
+      "evidence/graphics-loop/native-game-adoption-v1/home-journey-results/remote-1791597392403/home-bed-sleep-active.png",
+      "evidence/graphics-loop/native-game-adoption-v1/home-journey-results/remote-1791597392403/home-bed-sleep-active-side-close.png"
+    ],
+    "acceptedStages": [
+      "bed-sleep-active"
+    ],
+    "failedAt": "get-up t=0; 8cm cumulative pelvis lowering exhausted; final foot error=0.007119663617455335m",
+    "errorLimited": "true"
+  },
+  "bedEntry": {
+    "traceSamples": 68,
+    "start": [
+      -6.905,
+      0.03,
+      -4.655
+    ],
+    "end": [
+      -6.875,
+      0.7150000000000001,
+      -6.4
+    ],
+    "endpointRatio": 0.14735088765991033,
+    "contactAtEnd": {
+      "pelvis-back": {
+        "sampled": 384,
+        "minGap": 0.19560220744185342
+      },
+      "torso-back": {
+        "sampled": 384,
+        "minGap": 0.2010010572441363
+      },
+      "head-back": {
+        "sampled": 384,
+        "minGap": 0.2669411777275701
+      }
+    },
+    "allFramesHave384": false,
+    "minimumRegionGaps": {
+      "pelvis-back": -0.003958894924070644,
+      "torso-back": -0.003000003507580562,
+      "head-back": 0.010579919604710941
+    }
+  },
+  "probeMetrics": {
+    "calls": 4,
+    "surfaceQueries": 5184,
+    "searchCandidates": 0
+  },
+  "trajectory": [
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0,
+      "sourceUpright": 0.9884797436088993,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.03333333333333333,
+      "sourceUpright": 0.9869532853624942,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.06666666666666667,
+      "sourceUpright": 0.9838258139649184,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.1,
+      "sourceUpright": 0.9786068132650271,
+      "root": [
+        -6.904946415894809,
+        0.031223503735200563,
+        -4.658116808785293
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.13333333333333333,
+      "sourceUpright": 0.9692265486493442,
+      "root": [
+        -6.904682778208636,
+        0.03724323090279798,
+        -4.673451734197639
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.16666666666666666,
+      "sourceUpright": 0.9566046302967666,
+      "root": [
+        -6.904509558414551,
+        0.0411984162010956,
+        -4.68352735222031
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.19999999999999998,
+      "sourceUpright": 0.9400171112049458,
+      "root": [
+        -6.904301277264474,
+        0.04595416912785989,
+        -4.695642372449804
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.2333333333333333,
+      "sourceUpright": 0.9177887972915634,
+      "root": [
+        -6.904059186949659,
+        0.051481897982804545,
+        -4.709723959094882
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.26666666666666666,
+      "sourceUpright": 0.8914310840836943,
+      "root": [
+        -6.903784539661359,
+        0.057753011065643275,
+        -4.725699276364303
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.3,
+      "sourceUpright": 0.8607679777663574,
+      "root": [
+        -6.903478587590828,
+        0.06473891667608977,
+        -4.743495488466827
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.3333333333333333,
+      "sourceUpright": 0.8266956208319282,
+      "root": [
+        -6.903142582929321,
+        0.07241102311385776,
+        -4.763039759611214
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.36666666666666664,
+      "sourceUpright": 0.7901773997926217,
+      "root": [
+        -6.902777777868088,
+        0.08074073867866091,
+        -4.7842592540062245
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.39999999999999997,
+      "sourceUpright": 0.7515927741234937,
+      "root": [
+        -6.902385424598385,
+        0.08969947167021296,
+        -4.807081135860615
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 127,
+          "minGap": 0.3764450569838578
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.4333333333333333,
+      "sourceUpright": 0.7153880034093069,
+      "root": [
+        -6.901966775311465,
+        0.0992586303882276,
+        -4.83143256938315
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 239,
+          "minGap": 0.14611519927340155
+        },
+        "torso-back": {
+          "sampled": 3,
+          "minGap": 0.7063684673570656
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.4666666666666666,
+      "sourceUpright": 0.680953048131067,
+      "root": [
+        -6.9015230821985805,
+        0.10938962313241854,
+        -4.857240718782585
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 311,
+          "minGap": 0.08004342947409793
+        },
+        "torso-back": {
+          "sampled": 7,
+          "minGap": 0.6593765683578166
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 7,
+          "minimumGap": -0.3318413647173795
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.49999999999999994,
+      "sourceUpright": 0.648905860705362,
+      "root": [
+        -6.901055597450986,
+        0.12006385820249947,
+        -4.884432748267681
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 361,
+          "minGap": 0.018713679403858152
+        },
+        "torso-back": {
+          "sampled": 15,
+          "minGap": 0.4409102073841227
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 30,
+          "minimumGap": -0.3652942545070552
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.5333333333333333,
+      "sourceUpright": 0.6272681800651992,
+      "root": [
+        -6.900565573259934,
+        0.13125274389818412,
+        -4.832935822047199
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 291,
+          "minGap": 0.07625463038083535
+        },
+        "torso-back": {
+          "sampled": 4,
+          "minGap": 0.6478315256698481
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.5666666666666667,
+      "sourceUpright": 0.612258257012631,
+      "root": [
+        -6.9000542618166785,
+        0.1429276885191862,
+        -4.862677104329897
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 351,
+          "minGap": 0.02407759489037542
+        },
+        "torso-back": {
+          "sampled": 10,
+          "minGap": 0.4379639174903597
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 22,
+          "minimumGap": -0.35697387652580803
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.6,
+      "sourceUpright": 0.6042024245689159,
+      "root": [
+        -6.899522915312472,
+        0.1550601003652193,
+        -4.893583759324537
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 372,
+          "minGap": 0.0003998849983893882
+        },
+        "torso-back": {
+          "sampled": 23,
+          "minGap": 0.4150628303852426
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 58,
+          "minimumGap": -0.5605268569897941
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.6333333333333333,
+      "sourceUpright": 0.6133108071409994,
+      "root": [
+        -6.89897278593857,
+        0.16762138773599727,
+        -4.9255829512398766
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 383,
+          "minGap": -0.0038438620111136412
+        },
+        "torso-back": {
+          "sampled": 32,
+          "minGap": 0.38125025507194676
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": -0.5904739642566909
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.6666666666666666,
+      "sourceUpright": 0.63070338698517,
+      "root": [
+        -6.898405125886224,
+        0.1805829589312338,
+        -4.878601844284676
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 353,
+          "minGap": 0.033880535966890335
+        },
+        "torso-back": {
+          "sampled": 12,
+          "minGap": 0.449732656319737
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.7,
+      "sourceUpright": 0.6559300659741403,
+      "root": [
+        -6.897821187346687,
+        0.19391622225064248,
+        -4.9125676026676945
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 368,
+          "minGap": 0.000009253028247280248
+        },
+        "torso-back": {
+          "sampled": 23,
+          "minGap": 0.41204521787477066
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.7333333333333333,
+      "sourceUpright": 0.6912207747690117,
+      "root": [
+        -6.897222222511215,
+        0.24144028688542243,
+        -5.107407390597694
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": -0.0031387735853547483
+        },
+        "torso-back": {
+          "sampled": 96,
+          "minGap": 0.2961313987676306
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": -0.6270527125425396
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.7666666666666666,
+      "sourceUpright": 0.7283676182730899,
+      "root": [
+        -6.8966094835710585,
+        0.2733950046767911,
+        -5.143048372283432
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": -0.0031010501025865445
+        },
+        "torso-back": {
+          "sampled": 112,
+          "minGap": 0.29704214211749136
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 31,
+          "minimumGap": -0.5668010928661118
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.7999999999999999,
+      "sourceUpright": 0.766670288968959,
+      "root": [
+        -6.896795011114191,
+        0.3082072010823499,
+        -5.132256853524573
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": -0.0031624439084896316
+        },
+        "torso-back": {
+          "sampled": 103,
+          "minGap": 0.2977425347859426
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.8333333333333333,
+      "sourceUpright": 0.8052689281929364,
+      "root": [
+        -6.898279574161267,
+        0.33093301248961593,
+        -5.045904769619649
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 382,
+          "minGap": -0.003958894924070644
+        },
+        "torso-back": {
+          "sampled": 51,
+          "minGap": 0.33942004564902906
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.8666666666666666,
+      "sourceUpright": 0.8407046988632861,
+      "root": [
+        -6.899642488417819,
+        0.15232984779313974,
+        -4.8866285903635465
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.8999999999999999,
+      "sourceUpright": 0.8728338099576948,
+      "root": [
+        -6.9008782234599115,
+        0.12411389766535778,
+        -4.894750002081825
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.9333333333333332,
+      "sourceUpright": 0.8993153980484934,
+      "root": [
+        -6.901896746078789,
+        0.1008576312010026,
+        -4.835505936417153
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.9666666666666666,
+      "sourceUpright": 0.92084700483783,
+      "root": [
+        -6.902724884801455,
+        0.08194846370011083,
+        -4.787335867382034
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 0.9999999999999999,
+      "sourceUpright": 0.9381192236518837,
+      "root": [
+        -6.903389200909688,
+        0.06677991256212774,
+        -4.748694813753158
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.0333333333333332,
+      "sourceUpright": 0.9485553882725273,
+      "root": [
+        -6.903790591856636,
+        0.05761481927348565,
+        -4.725347240339026
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.0666666666666667,
+      "sourceUpright": 0.9551160192754754,
+      "root": [
+        -6.904042923818288,
+        0.051853239482435046,
+        -4.710669931236277
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.1,
+      "sourceUpright": 0.9584296627306764,
+      "root": [
+        -6.904170371643488,
+        0.04894318080703415,
+        -4.703256716070474
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.1333333333333335,
+      "sourceUpright": 0.9602003049586852,
+      "root": [
+        -6.904238473267642,
+        0.04738819372218025,
+        -4.699295471598839
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.166666666666667,
+      "sourceUpright": 0.9635056001999835,
+      "root": [
+        -6.904365600007692,
+        0.04448546649104007,
+        -4.691900932885934
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.2000000000000004,
+      "sourceUpright": 0.9681414287285391,
+      "root": [
+        -6.904543901104944,
+        0.040414258103782914,
+        -4.681529752395768
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.2333333333333338,
+      "sourceUpright": 0.9742225068096784,
+      "root": [
+        -6.904777788723449,
+        0.035073824147910646,
+        -4.667925289252707
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.2666666666666673,
+      "sourceUpright": 0.980238510911349,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.3000000000000007,
+      "sourceUpright": 0.985927508295288,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.3333333333333341,
+      "sourceUpright": 0.9909403103094101,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.3666666666666676,
+      "sourceUpright": 0.9948051517801733,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.400000000000001,
+      "sourceUpright": 0.997506019401124,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.4333333333333345,
+      "sourceUpright": 0.9989429589529324,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.466666666666668,
+      "sourceUpright": 0.9993705776765379,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.5000000000000013,
+      "sourceUpright": 0.9990617067095112,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.5333333333333348,
+      "sourceUpright": 0.9984556898520217,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.5666666666666682,
+      "sourceUpright": 0.9978541572805516,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.6000000000000016,
+      "sourceUpright": 0.9974510243462146,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.633333333333335,
+      "sourceUpright": 0.9961882776381891,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.6666666666666685,
+      "sourceUpright": 0.9929651312872242,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.700000000000002,
+      "sourceUpright": 0.9862303311298094,
+      "root": [
+        -6.905,
+        0.03,
+        -4.655
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.7333333333333354,
+      "sourceUpright": 0.9714012866869849,
+      "root": [
+        -6.904669280257192,
+        0.03755143412745556,
+        -4.674236865040015
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.7666666666666688,
+      "sourceUpright": 0.9482549619689211,
+      "root": [
+        -6.903779036998805,
+        0.05787865519396028,
+        -4.726019347902863
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 0,
+          "minGap": null
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.8000000000000023,
+      "sourceUpright": 0.914696133306515,
+      "root": [
+        -6.902488312819481,
+        0.08735019062184257,
+        -4.801096471000168
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "head-back": {
+          "sampled": 32,
+          "minGap": 0.4907793502425446
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.8333333333333357,
+      "sourceUpright": 0.8668875280187942,
+      "root": [
+        -6.9006495203084155,
+        0.1293359529578538,
+        -4.908052902060518
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 0,
+          "minGap": null
+        },
+        "torso-back": {
+          "sampled": 245,
+          "minGap": 0.13728983241727544
+        },
+        "head-back": {
+          "sampled": 381,
+          "minGap": 0.332151927826819
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.8666666666666691,
+      "sourceUpright": 0.8074759524872007,
+      "root": [
+        -6.898364459711046,
+        0.2749290051240775,
+        -5.040967260140814
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 14,
+          "minGap": 0.18164005785946502
+        },
+        "torso-back": {
+          "sampled": 369,
+          "minGap": -0.003000000021750382
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.4291994034236317
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.9000000000000026,
+      "sourceUpright": 0.7363182717299641,
+      "root": [
+        -6.895627625835768,
+        0.5199791130835278,
+        -5.20015976388617
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 158,
+          "minGap": -0.002999993445908178
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": -0.0005224607013520899
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.10174681680912556
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.933333333333336,
+      "sourceUpright": 0.6559313113873524,
+      "root": [
+        -6.892535819668744,
+        0.5361420643509509,
+        -5.379999822601372
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 381,
+          "minGap": 0.002244042974731575
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": -0.003000003507580562
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.010579919604710941
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 1.9666666666666694,
+      "sourceUpright": 0.5697892183740316,
+      "root": [
+        -6.889222662245155,
+        0.5060967205343374,
+        -5.572715146073481
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": -0.003000001726262469
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.014436373827320215
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.2309292341408158
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 2.0000000000000027,
+      "sourceUpright": 0.47953286606745804,
+      "root": [
+        -6.885751264079517,
+        0.5151061720216521,
+        -5.774634806041392
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": -0.003000001210171077
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.0038545924281462307
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.1458666816121349
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 2.033333333333336,
+      "sourceUpright": 0.39591112127308137,
+      "root": [
+        -6.882535043125888,
+        0.5429498486255632,
+        -5.96171165817753
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": 0.015417011290065119
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.015578514079458206
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.12913188224078653
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 0,
+          "minimumGap": null
+        },
+        "right": {
+          "sampled": 0,
+          "minimumGap": null
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 2.066666666666669,
+      "sourceUpright": 0.3176112453757634,
+      "root": [
+        -6.879523509437529,
+        0.6117132011764129,
+        -6.136882534383709
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": 0.07698159236821012
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.07103391937175274
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.150485196688261
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.8018681594854019
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.7994733925691087
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 2.1000000000000023,
+      "sourceUpright": 0.24601294765185786,
+      "root": [
+        -6.876769728755841,
+        0.6745911934083043,
+        -6.2970607773686
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": 0.1633926322075382
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.17910854781440344
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.3138790264595488
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.49097464907387467
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.4971126342878419
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 2.1333333333333355,
+      "sourceUpright": 0.19784083555710755,
+      "root": [
+        -6.87508097515082,
+        0.713151067389603,
+        -6.395289945393952
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": 0.1987212473123272
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.2084312398653807
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.3096316917402109
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.5287924334865015
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.5349150452013505
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 2.1666666666666687,
+      "sourceUpright": 0.16483915387538936,
+      "root": [
+        -6.875020452515804,
+        0.7145330008891566,
+        -6.398810345330771
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": 0.19701360647858313
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.20371479023793904
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.28185676964748496
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.5295983269344227
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.5356727557405181
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 2.200000000000002,
+      "sourceUpright": 0.14735091271325734,
+      "root": [
+        -6.875,
+        0.7149999999999991,
+        -6.399999999999998
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": 0.19560221000991562
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.20100106176071497
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.26694119973089725
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.5297320315332912
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.53564386191895
+        }
+      }
+    },
+    {
+      "clip": "lie-down",
+      "phase": "contact-applied",
+      "t": 2.200000047683716,
+      "sourceUpright": 0.14735088765991033,
+      "root": [
+        -6.875,
+        0.7150000000000001,
+        -6.4
+      ],
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minGap": 0.19560220744185342
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minGap": 0.2010010572441363
+        },
+        "head-back": {
+          "sampled": 384,
+          "minGap": 0.2669411777275701
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.5297315736522307
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.535643861217133
+        }
+      }
+    },
+    {
+      "clip": "get-up",
+      "phase": "root-placed-before-contact-apply",
+      "t": 0,
+      "sourceUpright": 0.14735088765991033,
+      "root": [
+        -6.875,
+        0.7150000000000001,
+        -6.4
+      ]
+    }
+  ],
+  "renderArtifacts": [
+    "home-bed-sleep-active-canvas.png",
+    "home-bed-sleep-active-front-close.png",
+    "home-bed-sleep-active-side-close.png",
+    "home-bed-sleep-active.png",
+    "home-male-casual-standing-canvas.png",
+    "home-male-casual-standing-front-close.png",
+    "home-male-casual-standing-side-close.png",
+    "home-male-casual-standing.png"
+  ]
+}

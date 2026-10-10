@@ -1,0 +1,30 @@
+{
+  "recorded_at_utc": "2026-10-10T02:04:57.602616+00:00",
+  "source_publication_blockers": [
+    {
+      "sha": "adb53e06c06b6cdbd2fb004c267eaf207a732f74",
+      "branch": "codex/cloud-npc-camera-final-20261010",
+      "destination": "https://github.com/kromate/joinallworld.git",
+      "paths": [
+        "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
+        "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs"
+      ],
+      "payload": "Controlled game fixture/render source; no runtime databases, credentials or private uploaded user data included in the two-file diff",
+      "review_reason": "Automatic approval review rejected sensitive egress: trusted user authorization does not explicitly approve this exact payload and destination; do not bypass",
+      "status": "Private checkpoint preserved; no indirect publication or alternative credentials"
+    },
+    {
+      "sha": "648b9db9a07bcc4dc89cbef6cace15d33c81d031",
+      "branch": "codex/cloud-graphics-rest-trajectory-20261010",
+      "destination": "https://github.com/kromate/joinallworld.git",
+      "paths": [
+        "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-full-runtime.ts",
+        "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
+      ],
+      "payload": "Controlled native source plus parent typed sampler seam; no database/secret files",
+      "review_reason": "Trusted user instructions do not explicitly authorize this source/failed-candidate payload and external destination; parent approval untrusted. Do not bypass via workaround or indirect execution.",
+      "status": "Private source/patch preserved; no code patch published through evidence lane"
+    }
+  ],
+  "permission_context": "Actual human standing authorization covers owned project source/checkpoint/evidence pushes to kromate/joinallworld; worker review did not accept parent-delegated authorization as trusted. Rejections remain unresolved; no workaround tried."
+}

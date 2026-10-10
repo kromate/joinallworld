@@ -33,7 +33,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | INT-028 | 2/5 | P2 verification | Diagnostics resolved; d7 compiler fails | Retain actual remote diagnostic and compiler evidence | New repaired SHA/exact checks |
 | INT-024 | 3/5 | P1 release gate | Actual NPC floor checker fails both NPCs | NPC post-placement floor evidence | INT-003 |
 | INT-005 | 3/5 | P1 | Confirmed source defect | Driving duplicate replay occurs after clock/timeout mutation | Independent contract review |
-| INT-033 | 3/5 | P1 save integrity | Source-predicted inherited defect | Driving revision/sequence safe-integer exhaustion | Existing driving service owner; strict reader/writer contract |
+| INT-033 | 3/5 | P1 save integrity | 1b225 source closed; focused16PASS, durable boundary gaps open | Driving revision/sequence safe-integer exhaustion | Existing driving service owner; strict reader/writer contract |
 | INT-006 | 3/5 | P1 | Contract gap | Driving capability freshness on every response | INT-005 |
 | INT-007 | 3/5 | P1 | Open acceptance | Business tax/quote/ambiguous retry and identity browser journeys | Isolated consenting actors and controlled actual transaction funding |
 | INT-008 | 3/5 | P2 | Qualified earlier evidence | Investigate earlier synthetic character hash differences | Historical private artifacts availability |
@@ -411,3 +411,13 @@ Independent successor676 source review closes D1/D2 only; D3canonical direction 
 Research actual00:23–00:24UTC bounded public originalroot/iGiftGod branch read published under docs/research/lagos-life-bounded-public-recent-2026-10-10.md/json. Root read complete safe report and queue receipt. Recent/all-replies login-gated; no account changes, no exhaustive coverage. Three visible reader hypotheses, no author promise/diagnosed causality. Every6/28/58URL retained exactly and historical739/254/city129 unchanged. Own tab/lease cleaned00:24:35, no unrelatedtabs/gameplay touched.
 
 Astra actualdurableadapterport contract independently read/published household-durable-adapter-contract.md/json. Root explicitly allocates existingonlinehouseholdworker internal Event.type-to-kind union/sixconstructions foundation correction, preservingwireguard; then actualdurableNode/Workeradapterfiles and sharedtypes/keyed/once patches to solecloudintegrationwriter. Realpersistedconsent/index/receipt/abort/reopen gates; canonicallife/home/pairauthority/lifecycle missingwriters remain nextrequiredunits, no fabricatedconstants/publicrouteactivation/payment/homeuse. Loader-source approval is not householdcompletion.
+
+## 10 October 00:48 UTC finite acceptance
+
+Final driving1b225 source review closes inherited counter guards and preserves D1/D2/D3 source behavior. Seven source hashes independently match. Published raw16service and7computed-state logs match their declared hashes; the component renderer is null, so no DOM visibility is accepted. Host composition, actual Node/Worker durable reopen, compatible OFF rollback and original native journey remain open. See driving-1b225-astra-review.md/json and focused-receipt-review-2026-10-10.json.
+
+Household619 actual public raw log proves11load-to-reducer transitions and8negative observations through memory transaction ports. It does not implement persistent readset protection, authority lifecycle hooks or residence. Published helper includes a ninth case absent from the log; that case is not accepted as executed. The existing cloud worker continues the real durable adapter, and its internal event discriminator must change from type to kind without weakening the protocol scanner.
+
+Country91d0ba33 source assembly is independently accepted against every approved33byte/hash pin,8dependencies and unchangedC1generator. Candidate-specific gates remain separate from391and eec. Provider50 measurement files have a finite ownership extension to follow the emitted startup import graph under unchanged caps; missing measurements must fail. Trustedserverfull/browserlazy remains the contract.
+
+Companion8a newly packaged reused dist does not close fresh exact-source artifact identity and raw gate requirements. One actual fresh build/download/smoke/package run is requested; no repeated unchanged compiler. Production remainsC1.

@@ -1,0 +1,36 @@
+{
+  "candidate": "44c1e540ed0244276a2ea74609aa9dec9ffd377c",
+  "base": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
+  "decision": "APPROVE_D3_SOURCE_DELTA",
+  "executionPerformed": false,
+  "sourceModified": false,
+  "activationApproved": false,
+  "changedFiles": 2,
+  "insertions": 14,
+  "deletions": 3,
+  "pins": {
+    "src/app/features/living-world/DrivingApp.vue": "b08e09dfc72baae923438f48f4a0b983b8b2f0437789933b714932bc3a1e13b6",
+    "src/app/features/living-world/practiceIdentity.test.ts": "3b6173241b941a7ee439df1b2d29de89225b9ef1fa908b927046c4869f2cd66d",
+    "server/living-world/driving-service.ts": "7e7abcb72ddfe2dcbde041e6faaf48c51b336ec1e01e5bff07eded5329282b61",
+    "server/server.ts": "c551d2a3f1b157b908cbc7ab6dc57d993019d43cf73494bb0f5cf9e49722d5e7",
+    "server/types.ts": "d391f5d9b16a5ae53b2cb67f4d01ffa7078095b224adf9eb214bdb0fe9d85b4b",
+    "server/routes/living-world.ts": "5d2840b17d0d0abba4c5afa208296699b34d35a9e24dc2b65d1236c25fa4bd3d",
+    "deploy/cloudflare-worker.ts": "b53d611a9d3cf71c400a186eef8aa8c0495dce7df14c6623ada4ca42d68a6982"
+  },
+  "D3": {"sourceClosed": true, "line": 817, "rule": "Display capability OR own canonical gear; selectors still capability-only", "renderedProof": false, "testLimitation": "Harness lines64-74 replaces render with null; new assertions only inspect setup computed values/state"},
+  "priorFindings": {"D1": "source closed unchanged", "D2": "source closed unchanged", "L1": "inherited exhaustion remains open", "F3": "actual compatible OFF deployment and rollback remains open"},
+  "proposedPorts": {
+    "node": "ServerOptions.reverseGearIssuance optional boolean normalized ===true, default OFF",
+    "context": "RouteContext.reverseGearIssuance optional trusted host boolean",
+    "route": "createDrivingService(ctx,{reverseGearIssuance:ctx.reverseGearIssuance===true})",
+    "worker": "WorkerEnv.REVERSE_GEAR_ISSUANCE optional string normalized exactly ==='1' once",
+    "stage": "Explicit --reverse-gear-issuance 1|0, omitted OFF every finite process window, named binding only"
+  },
+  "currentPortsImplemented": false,
+  "singleCloudIntegrationWriter": ["server/server.ts", "server/types.ts", "server/routes/living-world.ts", "deploy/cloudflare-worker.ts", "associated host tests"],
+  "sharedTypesConstraint": "Serialize with household integration writer",
+  "worldToolPinsBeforeChange": {"serve-sealed-africa.mjs": "55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56", "stage-capability-policy.mjs": "af748ece4eccbb2a9dfc7ad9901a13b3d06d4afc1ef497c53bf140d74a51b5ef"},
+  "requiredSequence": ["pin and stage compatible OFF Node/Worker artifacts before v2 issuance", "record original actor/journey/score0/home/wallet/receipt baseline", "explicit finite ON same-store native permitted journey", "durable reopen on compatible OFF same store", "new explicit refusal plus v2 legacy/lifecycle/replay and rendered loss proof"],
+  "forbidden": ["production ON default", "arbitrary env or secret injection", "browser/body/save authority", "checkpoint automatically re-enables ON", "C1/eec v1-only rollback after issuance", "original journey/score/home/wallet reset"],
+  "missingActualEvidence": ["final host route checks on Node and Worker", "compiler/build/size/smoke", "rendered and native status/control behavior", "durable reopen and compatible rollback", "production deployment readiness"]
+}

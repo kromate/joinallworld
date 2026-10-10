@@ -1,0 +1,36 @@
+{
+  "observedAtUtc": "2026-10-10T00:48:00Z",
+  "publication": "a8d9c19f8ee9524726e932f71ead0840c107f42c",
+  "driving": {
+    "source": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+    "sevenSourcePinsMatched": true,
+    "service": {
+      "passed": 16,
+      "skipped": 0,
+      "logSha256": "5c41e679f9dccfd97076ce7050d053dc4422b80f883272b0adb741a27e132da6"
+    },
+    "componentState": {
+      "passed": 7,
+      "skipped": 0,
+      "logSha256": "6c296cdac9d2eba24ebf41374a7b962cfdc8646184b67c19dfc7c4fb5c31d96c"
+    },
+    "DOMProved": false,
+    "durableHostReopenProved": false
+  },
+  "household": {
+    "source": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
+    "all11LoadReducerOperationsPassed": true,
+    "eightNegativeObservationsPassed": true,
+    "receiptSha256": "906fcda5a77890a413d45e444f1908a3a34d7be9051418216d518787b196fe83",
+    "logSha256": "00d8dcae11842b1d2b24e8eaefa4e75286496d8f4f5f4f829a8a2c68e79f1c2c",
+    "scope": "Memory transaction ports; no durable adapter, residence or real Node/Worker transaction proof.",
+    "helperLogDiscrepancy": "Published helper contains a ninth supporting-read abort case absent from the executed log. No execution acceptance for that ninth case; exact helper provenance requested."
+  },
+  "companion": {
+    "source": "8a48405963ca526bfe059b413be250d834d50b90",
+    "freshArtifactAcceptance": false,
+    "reason": "New packaging reused older dist and only a validation summary retained for build/download; fresh exact build/runtime ID and raw gates requested, no duplicate compiler."
+  },
+  "resourcePolicy": "Actual logs show serial remote heavy slot and Node24.19, default1536MiB; compiler-only4096 exception separately approved.",
+  "production": "No new upload or activation."
+}

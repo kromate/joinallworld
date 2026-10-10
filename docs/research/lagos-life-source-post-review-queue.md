@@ -6,7 +6,7 @@ This lists all 58 dated author-announcement links in the historical feature cata
 
 | Post | Current evidence | Next work |
 |---|---|---|
-| [Original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) |739 replies/254 scheduled traversals; no exhausted-tree claim. | [6 known branches,58 images,28 scoped residual records](lagos-life-original-pending-current.md),15 residual URLs not revisited. Recent sort available, sweep open. |
+| [Original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) |739 replies/254 scheduled traversals; no exhausted-tree claim. | [6 known branches,57 current images,28 scoped residual records](lagos-life-original-pending-current.md),15 residual URLs not revisited. Recent sort available, sweep open. |
 | [City launch](https://x.com/Shalom_HeyEliy/status/2107244922290012303) |743 descendant-inclusive replies,110 branch visits. | [Current129-page queue](lagos-life-pending-replies-current.md), four truncated posts and image follow-up. |
 
 ## Announcement roots
@@ -73,3 +73,7 @@ This lists all 58 dated author-announcement links in the historical feature cata
 | [Stats dashboard and ad slots, Oct 3](https://x.com/Shalom_HeyEliy/status/2106438233403924742) | Announcement preserved in historical archive; complete reply/branch/image coverage not established. |
 
 The historical feature-request root and its395 captured visible replies are separate from these announcement rows. Source URLs and requests remain in [the historical source audit](lagos-life-source-audit-2026-10-08.md) and [player requests](lagos-life-player-requests-2026-10-08.md). Before a new sweep, deduplicate exact status IDs against existing private captures and completed ledgers. Do not mark a reply tree complete because its counter matches, the bottom is reached, or a Relevant-ranked view stops changing. No follower, promotion, account or payment action is authorized by a research source.
+
+## Newer author supplement — observed 10 October 2026
+
+[Milestone claim](https://x.com/Shalom_HeyEliy/status/2108547340344693188) and [later metric claim](https://x.com/Shalom_HeyEliy/status/2108625054846099491) have fully read text but unverified live statistics. The milestone attachment remains unread. See [bounded evidence](lagos-life-neighbours-current-2026-10-10.md). These two posts supplement the historical statistics row; they do not change the 58-announcement inventory or prove current feature behavior.

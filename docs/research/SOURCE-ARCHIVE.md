@@ -53,3 +53,7 @@ Final user-requested handoff: [739 replies/254 scheduled traversals](lagos-life-
 ## 10 October bounded public observation
 
 [Current pass](lagos-life-bounded-public-recent-2026-10-10.md) and [exact retained queues](lagos-life-bounded-public-recent-2026-10-10.json) record a public original-launch/pending-iGiftGod branch read. Recent and all-replies were login-gated in the current signed-out session. Three visible reader technical hypotheses are not author promises or diagnosed runtime facts. No queue is exhausted or removed; original739/254, sixbranches,28residuals,58images and city129 stay qualified. No login/account/social/payment action was taken.
+
+## 10 October neighbour image reconciliation
+
+[Bounded image/newer-post evidence](lagos-life-neighbours-current-2026-10-10.md) closes only original image2105553826543493397 after verifying its attachment association and full visual content. The authoritative current original queue is now six branches,28residuals and57unreadimages. Historical counts and reports remain intact. Two newer author metric claims are a supplement, unverified against live statistics; the new milestone attachment remains unread.

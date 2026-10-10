@@ -1,0 +1,80 @@
+{
+  "candidate": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+  "base": "44c1e540ed0244276a2ea74609aa9dec9ffd377c",
+  "decision": "APPROVE_L1_SOURCE_DELTA",
+  "newBlockingSourceFindings": [],
+  "executionPerformed": false,
+  "sourceModified": false,
+  "activationApproved": false,
+  "changedFiles": 2,
+  "insertions": 97,
+  "deletions": 0,
+  "pins": {
+    "server/living-world/driving-service.ts": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+    "server/living-world/driving-service.test.ts": "c3297399a1248aaa3cfa7bf35fc332415ca3f59a8feb19d0ef0e1752b4993027",
+    "src/app/features/living-world/DrivingApp.vue": "b08e09dfc72baae923438f48f4a0b983b8b2f0437789933b714932bc3a1e13b6",
+    "src/app/features/living-world/practiceIdentity.test.ts": "3b6173241b941a7ee439df1b2d29de89225b9ef1fa908b927046c4869f2cd66d",
+    "src/game/living-world/driving.ts": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+    "src/game/living-world/driving.test.ts": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+    "src/types/living-world.ts": "27757f7089a482d5b046692fdc1d53ed06272788c3633949a2ed6efa64dbc677"
+  },
+  "L1": {
+    "sourceClosed": true,
+    "guardLines": [
+      187,
+      220,
+      261,
+      272,
+      304,
+      322,
+      323,
+      374,
+      382,
+      386
+    ],
+    "incrementLines": [
+      109,
+      275,
+      349,
+      392
+    ],
+    "nonmutationScope": "driving row; existing session settlement and receipt maintenance remain",
+    "maximumPolicy": "Refuse further affected writes; no wrap/reset/automatic replacement",
+    "strictCorruptReaderChanged": false
+  },
+  "priorFindings": {
+    "D1": "closed; exact retained replay316-320 precedes new guards322-323 and clock325",
+    "D2": "unchanged source closure",
+    "D3": "unchanged source closure",
+    "F3": "actual compatible OFF artifact and rollback evidence still required"
+  },
+  "DOMProof": {
+    "present": false,
+    "reason": "practiceIdentity harness64-74 replaces render with null; computed/setup values do not prove DOM"
+  },
+  "testSourceGaps": [
+    "last-safe nextSequence max-1 to max transition",
+    "actual accepted maximum-sequence receipt replay",
+    "exhausted replay combined with timeout/clock reversal",
+    "exhausted start/input/lifecycle context-mismatch paths",
+    "real durable reopen and Worker parity"
+  ],
+  "hostWiring": {
+    "candidate": "normal route still calls createDrivingService(ctx), OFF",
+    "owner": "existing cloud integration writer; do not duplicate",
+    "stageOwner": "WORLD"
+  },
+  "missingActualGates": [
+    "final-SHA Node24 and Worker host checks",
+    "compiler/build/size/smoke",
+    "durable close/reopen and storage failure",
+    "compatible OFF rollback before any v2 issuance",
+    "rendered/native original journey with preserved score0 home wallet receipts"
+  ],
+  "forbidden": [
+    "C1/eec v1-only rollback after v2 issuance",
+    "original journey reset",
+    "score or qualification grant",
+    "unreviewed activation"
+  ]
+}

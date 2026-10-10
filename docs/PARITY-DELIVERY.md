@@ -1,3 +1,9 @@
+## 2026-10-10 00:50 UTC — Exact country compiler/build/download/smoke verified
+
+Candidate91d0ba33 actual public raw receipts/logs independently match cleanexactHEAD: cataloguecheck, five cleancompilerprojects, build, all unchangeddownloadcaps and15/15smoke. The earlier16smokesummary was inaccurate. Startup614258raw/222677gzip/195402Brotli; firstpaint35693Brotli. FullNode/Worker matrix, exactpackage/seal/native5destination+return/save continuity and WORLD productionacceptance remain pending. See [scoped gate review](agent-plans/integration/c1-third-five-gates-review.json). This country release remains separate from later integrated8a/driving/household/graphics candidates.
+
+[Next-eight research](research/lagos-life-images-next8-2026-10-10.md) reduces currentoriginalimages52to44;6branches/28residuals/city129 unchanged. Historicalscreenshots remain historical, no currentpayment/enforcement/runtime certification.
+
 ## 2026-10-10 00:43 UTC — Five more original image items reviewed
 
 [Actual bounded next-six pass](research/lagos-life-images-next6-2026-10-10.md) completed five items and12supplied images; one app-only item remains unread. Current original queue52images/6branches/28residuals, historical739/254 and city129 unchanged. No newer metric screenshot, Recent sweep, exhaustive tree, payment or current competitor-runtime claim. The operator closed its owned tab/lease; native country acceptance can use the same sole browser slot once exact91artifactready.

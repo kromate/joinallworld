@@ -6,7 +6,7 @@ This lists all 58 dated author-announcement links in the historical feature cata
 
 | Post | Current evidence | Next work |
 |---|---|---|
-| [Original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) |739 replies/254 scheduled traversals; no exhausted-tree claim. | [6 known branches,52 current images,28 scoped residual records](lagos-life-original-pending-current.md),15 residual URLs not revisited. Recent sort available, sweep open. |
+| [Original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) |739 replies/254 scheduled traversals; no exhausted-tree claim. | [6 known branches,44 current images,28 scoped residual records](lagos-life-original-pending-current.md),15 residual URLs not revisited. Recent sort available, sweep open. |
 | [City launch](https://x.com/Shalom_HeyEliy/status/2107244922290012303) |743 descendant-inclusive replies,110 branch visits. | [Current129-page queue](lagos-life-pending-replies-current.md), four truncated posts and image follow-up. |
 
 ## Announcement roots

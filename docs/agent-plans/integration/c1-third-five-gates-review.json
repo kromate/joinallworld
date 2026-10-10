@@ -1,0 +1,73 @@
+{
+  "observedAtUtc": "2026-10-10T00:50:22.262185+00:00",
+  "source": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
+  "publication": "51bb30d059cfba5129c92a2df56e6775c645a40d",
+  "checks": [
+    {
+      "name": "catalogue-check",
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "durationSeconds": 33.442634,
+      "logSha256": "5b637d901cea5aceae446296a502577f0bd74e7db110475dfb15e40515bea43a"
+    },
+    {
+      "name": "typecheck-cloud-4096-readable",
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "durationSeconds": 121.020794,
+      "logSha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7"
+    },
+    {
+      "name": "build",
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "durationSeconds": 206.845585,
+      "logSha256": "af356e00903eea2bb644e13963cfc874d99de8ad9e719b1542c1c53bb96e78d1"
+    },
+    {
+      "name": "size-download",
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "durationSeconds": 95.967398,
+      "logSha256": "42528458f68e638356712ba7c26db7445ac27335bb4b2c23644660b8f3822c50"
+    },
+    {
+      "name": "test-smoke-readable",
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "durationSeconds": 2.974886,
+      "logSha256": "bac37d36bedc983952f3dbe91e098a32ebd76c98a4b172c8b513dafffeaa8490"
+    }
+  ],
+  "scope": "Root actual raw receipt/log hash comparison; no whole-suite, sealed/native/provider/production acceptance.",
+  "compilerProjects": 5,
+  "smoke": {
+    "total": 15,
+    "pass": 15,
+    "fail": 0,
+    "skip": 0,
+    "summaryCorrection": "Earlier cloud16claim superseded by actualraw15."
+  },
+  "startupBytes": {
+    "raw": 614258,
+    "gzip": 222677,
+    "brotli": 195402,
+    "firstPaintBrotli": 35693,
+    "limits": [
+      615000,
+      223000,
+      195600
+    ],
+    "headroom": [
+      742,
+      323,
+      198
+    ]
+  },
+  "pending": [
+    "FullNode22/24 andWorker/release matrix",
+    "Sealed transferable exact source/package identity",
+    "Actual5outbound/map/activity/return journeys and retainedsave/receipt proofs",
+    "WORLD coordinated provider upload and publicadoption/productionacceptance"
+  ]
+}

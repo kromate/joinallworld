@@ -1,3 +1,21 @@
+# Independent cloud package reproduction queued, 10 October 2026
+
+Existing cloud reports same-artifact APIread Forbidden. That failure is retained;
+no alternate credential, scope, route, service or repeated upload is attempted.
+A distinct source-reproducibility task is now authorized: use already-owned
+clean c12 and its recorded retained dist, unchanged pinned package recipe/tools,
+new private output, heavy1/1536heap/120s, publish=false. No fresh game build or
+source edit. Package/manifest/Worker digest equality must be measured before
+claiming identical bytes; a different package gets its own hash and acceptance.
+Actual provenance/package receipt plus finite CDPplan await review before launch.
+
+This advances the next feasible visual-check route without stressing the Mac.
+The inventory now records the exact scoped runtime/onboarding/funding/cleanup
+milestones and keeps allfive journeys, remaining matrix and production16 open.
+Current main allowance16% remains above the human4% checkpoint boundary.
+WholeAfrica/world/deeper geography/lazy streaming/photorealistic upgrade remain
+in the original full goal; no coverage or completion claim is narrowed.
+
 # Native phase safely checkpointed; visual work moves online, 10 October 2026
 
 Stage44993 ends naturally at02:11:17UTC with exit0. Exact helper child and

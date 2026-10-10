@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "packagePath": "/workspace/remote-verification/artifacts/c12-independent-repro-20261010",
+  "packageDigest": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+  "packageManifestSourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "releaseReady": false,
+  "outcomes": [
+    {
+      "check": "source-and-package-identity",
+      "status": "passed"
+    },
+    {
+      "check": "sealed-worker-start-and-sqlite",
+      "status": "passed"
+    },
+    {
+      "check": "packaged-assets-all-destinations",
+      "status": "passed",
+      "count": 31,
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers",
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town",
+        "addis-ababa",
+        "cairo",
+        "rabat",
+        "kigali",
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-third-three",
+      "status": "passed",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-third-three",
+      "status": "passed",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-third-two",
+      "status": "passed",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-third-two",
+      "status": "passed",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "sqlite-restart",
+      "status": "passed"
+    }
+  ],
+  "assets": [
+    {
+      "path": "assets/index.html",
+      "status": "passed",
+      "bytes": 7114,
+      "sha256": "c07da303504be1d88c5d5700391354f6d9542624d7576811fbb22936a2b4dd93",
+      "servedBytes": 7184,
+      "servedSha256": "e4f3f3e0d545b480bd0a76db233fa4a8c936daf9e982d89fa77839e3d55427e2",
+      "transform": "canonical-preview-image-origin"
+    },
+    {
+      "path": "assets/assets/city-yaounde-map-0157ba2a.js",
+      "status": "passed",
+      "bytes": 849,
+      "sha256": "7f01e3e2029d18c58043497ab5631e8b978f57a128ad0b1f8fc2b5a06e9d0cd4",
+      "servedBytes": 849,
+      "servedSha256": "7f01e3e2029d18c58043497ab5631e8b978f57a128ad0b1f8fc2b5a06e9d0cd4",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-yaounde-geometry-4f9eabfd.js",
+      "status": "passed",
+      "bytes": 92654,
+      "sha256": "170de648ad9c394f5d07d0112d13481f772fa50957722bea7db292bf0b3704b0",
+      "servedBytes": 92654,
+      "servedSha256": "170de648ad9c394f5d07d0112d13481f772fa50957722bea7db292bf0b3704b0",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-lome-map-511fad99.js",
+      "status": "passed",
+      "bytes": 834,
+      "sha256": "845be5715f9d8a45f5479f0c0539714c312208813fbdedab4b2e8ae751bef518",
+      "servedBytes": 834,
+      "servedSha256": "845be5715f9d8a45f5479f0c0539714c312208813fbdedab4b2e8ae751bef518",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-lome-geometry-6b6c659f.js",
+      "status": "passed",
+      "bytes": 98234,
+      "sha256": "9c3a11f546e6ee798ef87e3c653de5621b9e894ead53280965109bf13ce01e3b",
+      "servedBytes": 98234,
+      "servedSha256": "9c3a11f546e6ee798ef87e3c653de5621b9e894ead53280965109bf13ce01e3b",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-accra-map-959c5cf1.js",
+      "status": "passed",
+      "bytes": 839,
+      "sha256": "8c50e03011b4d562cd5718d3c5abfa499b866a3d4f64e6a23789298875bb33ca",
+      "servedBytes": 839,
+      "servedSha256": "8c50e03011b4d562cd5718d3c5abfa499b866a3d4f64e6a23789298875bb33ca",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-accra-geometry-fed77be2.js",
+      "status": "passed",
+      "bytes": 95965,
+      "sha256": "dcb123a1f020ee685c1a944c0eddde9c3fc6faac4987e96dc9eacc922b3e353a",
+      "servedBytes": 95965,
+      "servedSha256": "dcb123a1f020ee685c1a944c0eddde9c3fc6faac4987e96dc9eacc922b3e353a",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-nairobi-map-d30cfe54.js",
+      "status": "passed",
+      "bytes": 849,
+      "sha256": "df290a9c8a9e7675395c1ac37f23d6219009bd13bfea08180b39d739a17e8fad",
+      "servedBytes": 849,
+      "servedSha256": "df290a9c8a9e7675395c1ac37f23d6219009bd13bfea08180b39d739a17e8fad",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-nairobi-geometry-db8793db.js",
+      "status": "passed",
+      "bytes": 88838,
+      "sha256": "1334cd0b89f111eb6c55d803a923c93b05c81b922d8719559d3c96a4d6851b46",
+      "servedBytes": 88838,
+      "servedSha256": "1334cd0b89f111eb6c55d803a923c93b05c81b922d8719559d3c96a4d6851b46",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-algiers-map-8534fd90.js",
+      "status": "passed",
+      "bytes": 849,
+      "sha256": "76908cfa60c972cc8543009fe996b1c1fd068d3def61fda4bba8e660a35e8d27",
+      "servedBytes": 849,
+      "servedSha256": "76908cfa60c972cc8543009fe996b1c1fd068d3def61fda4bba8e660a35e8d27",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-algiers-geometry-3b9403c8.js",
+      "status": "passed",
+      "bytes": 112923,
+      "sha256": "37d1b030ac1acd44b6910a2530751a8ac98bdb87b98780af838b5e0baadb1210",
+      "servedBytes": 112923,
+      "servedSha256": "37d1b030ac1acd44b6910a2530751a8ac98bdb87b98780af838b5e0baadb1210",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-cotonou-map-207e5c6a.js",
+      "status": "passed",
+      "bytes": 849,
+      "sha256": "2e80e65bb66fb887bbad78bfc440f6e65c1b01d85b7c5544450e1d1bd38073aa",
+      "servedBytes": 849,
+      "servedSha256": "2e80e65bb66fb887bbad78bfc440f6e65c1b01d85b7c5544450e1d1bd38073aa",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-cotonou-geometry-a83bbff5.js",
+      "status": "passed",
+      "bytes": 70445,
+      "sha256": "1ade6d44ab7618ca0e416e890eb2f723db0493488fbba9c9ed2bc1cf429eebb6",
+      "servedBytes": 70445,
+      "servedSha256": "1ade6d44ab7618ca0e416e890eb2f723db0493488fbba9c9ed2bc1cf429eebb6",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-abidjan-map-500faed6.js",
+      "status": "passed",
+      "bytes": 849,
+      "sha256": "beded8753d99c32560da3824238fa1600a22e8be4729d5f6739d4ffc64797728",
+      "servedBytes": 849,
+      "servedSha256": "beded8753d99c32560da3824238fa1600a22e8be4729d5f6739d4ffc64797728",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-abidjan-geometry-f60043d3.js",
+      "status": "passed",
+      "bytes": 74931,
+      "sha256": "e8f7c23b03190c052b125b891e07442362553877900a34cf863c66a04f09601d",
+      "servedBytes": 74931,
+      "servedSha256": "e8f7c23b03190c052b125b891e07442362553877900a34cf863c66a04f09601d",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-dakar-map-99710f19.js",
+      "status": "passed",
+      "bytes": 839,
+      "sha256": "f0d7b3c62d52ebde36eb9737481a93dad278c5fec1473e71c5f64a0558375bc2",
+      "servedBytes": 839,
+      "servedSha256": "f0d7b3c62d52ebde36eb9737481a93dad278c5fec1473e71c5f64a0558375bc2",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-dakar-geometry-6e7c4109.js",
+      "status": "passed",
+      "bytes": 81398,
+      "sha256": "ac943c6d9e9a24f01bb7090e2d5786d89adcfdecbea8603e828f05b8191bab7a",
+      "servedBytes": 81398,
+      "servedSha256": "ac943c6d9e9a24f01bb7090e2d5786d89adcfdecbea8603e828f05b8191bab7a",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-cape-town-map-d08c3302.js",
+      "status": "passed",
+      "bytes": 859,
+      "sha256": "d34901570d516d17a63ef31f6bdfaf7e7641a47ab8d236ef9d08957fb6585040",
+      "servedBytes": 859,
+      "servedSha256": "d34901570d516d17a63ef31f6bdfaf7e7641a47ab8d236ef9d08957fb6585040",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-cape-town-geometry-6e569c1d.js",
+      "status": "passed",
+      "bytes": 57870,
+      "sha256": "9e83310dc68e86f911dfedf73b759c727c00f8da6c8c2c3da794579c7f0e717c",
+      "servedBytes": 57870,
+      "servedSha256": "9e83310dc68e86f911dfedf73b759c727c00f8da6c8c2c3da794579c7f0e717c",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-addis-ababa-map-c578f665.js",
+      "status": "passed",
+      "bytes": 869,
+      "sha256": "a32e02c1dca1ea405c7ba3dfe249be5dde4ea041387a91f67ff8258b7623754a",
+      "servedBytes": 869,
+      "servedSha256": "a32e02c1dca1ea405c7ba3dfe249be5dde4ea041387a91f67ff8258b7623754a",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-addis-ababa-geometry-ab5343c4.js",
+      "status": "passed",
+      "bytes": 72645,
+      "sha256": "104cd344370c068549a926b5c40475ea345d2b9ec17a1ac61a51f55b0464d8ba",
+      "servedBytes": 72645,
+      "servedSha256": "104cd344370c068549a926b5c40475ea345d2b9ec17a1ac61a51f55b0464d8ba",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-cairo-map-0bc43480.js",
+      "status": "passed",
+      "bytes": 839,
+      "sha256": "6eaa6388c0489c0eb7f3877b2e1207925ce8b7d661d419c084f6a9d9a2177e06",
+      "servedBytes": 839,
+      "servedSha256": "6eaa6388c0489c0eb7f3877b2e1207925ce8b7d661d419c084f6a9d9a2177e06",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-cairo-geometry-8d62b470.js",
+      "status": "passed",
+      "bytes": 82955,
+      "sha256": "82c561153eb1c6938d355268e29775d635359eb9bdccbffdecaa8d30caddfa12",
+      "servedBytes": 82955,
+      "servedSha256": "82c561153eb1c6938d355268e29775d635359eb9bdccbffdecaa8d30caddfa12",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-rabat-map-d1dbac36.js",
+      "status": "passed",
+      "bytes": 839,
+      "sha256": "23554246ccb1ce44683b05eda68e147c32e019220d5a2f73e9f9ecebdff1edd9",
+      "servedBytes": 839,
+      "servedSha256": "23554246ccb1ce44683b05eda68e147c32e019220d5a2f73e9f9ecebdff1edd9",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-rabat-geometry-53ec8686.js",
+      "status": "passed",
+      "bytes": 110460,
+      "sha256": "6ed92ce393bdfadd7216e17e24f8be2e5b92fceba619fb54f46e2c6e2fc96492",
+      "servedBytes": 110460,
+      "servedSha256": "6ed92ce393bdfadd7216e17e24f8be2e5b92fceba619fb54f46e2c6e2fc96492",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-kigali-map-a75bc1c9.js",
+      "status": "passed",
+      "bytes": 844,
+      "sha256": "984cfcd85281477eb6f6583b1ab6eb3158c97c3ddf6270b20fde571954c3c2fb",
+      "servedBytes": 844,
+      "servedSha256": "984cfcd85281477eb6f6583b1ab6eb3158c97c3ddf6270b20fde571954c3c2fb",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-kigali-geometry-c4a4d34d.js",
+      "status": "passed",
+      "bytes": 92931,
+      "sha256": "39e17af2cd4cc9f76936a232fd93dc33ef69e92a705979fc4e6f4021fbe1162d",
+      "servedBytes": 92931,
+      "servedSha256": "39e17af2cd4cc9f76936a232fd93dc33ef69e92a705979fc4e6f4021fbe1162d",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-kampala-map-0991394b.js",
+      "status": "passed",
+      "bytes": 849,
+      "sha256": "d4451a25b5361f664b74a313edbc19ce21072a616d3e5192561a59b5039fdfda",
+      "servedBytes": 849,
+      "servedSha256": "d4451a25b5361f664b74a313edbc19ce21072a616d3e5192561a59b5039fdfda",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-kampala-geometry-c9a61f44.js",
+      "status": "passed",
+      "bytes": 117232,
+      "sha256": "0d0dd6dcc2bac5e136693fe2bc20ef9cd8202631056ed62aa4ff7239a3278237",
+      "servedBytes": 117232,
+      "servedSha256": "0d0dd6dcc2bac5e136693fe2bc20ef9cd8202631056ed62aa4ff7239a3278237",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-lusaka-map-63145beb.js",
+      "status": "passed",
+      "bytes": 844,
+      "sha256": "765369f7bcff86ff7a930c6400fa0871b8c968de37edd855ae1e1a496b8c071b",
+      "servedBytes": 844,
+      "servedSha256": "765369f7bcff86ff7a930c6400fa0871b8c968de37edd855ae1e1a496b8c071b",
+      "transform": "none"
+    },
+    {
+      "path": "assets/assets/city-lusaka-geometry-afb3fcf8.js",
+      "status": "passed",
+      "bytes": 69581,
+      "sha256": "190cd3c6da135dcb361dfa4e8c95698e1408766d97b42cf9d87411015eb36d61",
+      "servedBytes": 69581,
+      "servedSha256": "190cd3c6da135dcb361dfa4e8c95698e1408766d97b42cf9d87411015eb36d61",
+      "transform": "none"
+    }
+  ],
+  "adminRateWaits": [
+    {
+      "status": 429,
+      "code": "rate_limited",
+      "bucketCount": 31,
+      "windowMs": 60000,
+      "waitNumber": 1,
+      "remainingMs": 120828,
+      "phase": "credit",
+      "delayMs": 15339,
+      "intentSha256": "d3ee40c95018095edd23797e771dbf5e61bfb72f34762a822b0d09564d1eac79",
+      "sameIntentRetried": true,
+      "sameAdminAddress": true,
+      "authenticatedFounderBucket": true
+    },
+    {
+      "status": 429,
+      "code": "rate_limited",
+      "bucketCount": 31,
+      "windowMs": 60000,
+      "waitNumber": 2,
+      "remainingMs": 78210,
+      "phase": "receipt-replay",
+      "delayMs": 32778,
+      "intentSha256": "00282e16d942cd5b9e4fa49e35e75c4aaaa66917e22e65705c1eb770f5df6dfa",
+      "sameIntentRetried": true,
+      "sameAdminAddress": true,
+      "authenticatedFounderBucket": true
+    }
+  ],
+  "scope": "local synthetic sealed-package verification only; not production continuity, ordinary guest funding, physical-device verification, deployment, or approval",
+  "destinationBatches": [
+    {
+      "name": "first-five",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "name": "second-four",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "name": "addis-ababa",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "name": "third-three",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "name": "third-two",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    }
+  ],
+  "coveredCities": [
+    "yaounde",
+    "lome",
+    "accra",
+    "nairobi",
+    "algiers",
+    "cotonou",
+    "abidjan",
+    "dakar",
+    "cape-town",
+    "addis-ababa",
+    "cairo",
+    "rabat",
+    "kigali",
+    "kampala",
+    "lusaka"
+  ],
+  "registeredForeignCities": [
+    "accra",
+    "algiers",
+    "lome",
+    "nairobi",
+    "yaounde",
+    "abidjan",
+    "addis-ababa",
+    "cape-town",
+    "cotonou",
+    "dakar",
+    "cairo",
+    "rabat",
+    "kigali",
+    "kampala",
+    "lusaka"
+  ],
+  "elapsedMs": 144672
+}

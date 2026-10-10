@@ -1,0 +1,710 @@
+{
+  "sourceSha": "62e528279c99d864199618816e1a68e1a959946c",
+  "originalArtifactSha256": "e8d6ce27c92f66a842a6ef37809ff9dca03b0680c2015e06066a7e96a9153cd9",
+  "status": "pair-only-diagnostic",
+  "actionError": "Error: Home action did not reach its actual furniture-use pose: enter; timing={\"count\":139,\"totalMs\":6238.899999994785,\"maximumMs\":1447.5}; latest={\"pose\":\"lie\",\"probeCalls\":31,\"probeDurationMs\":297.3999999947846,\"maximumProbeMs\":28.900000002235174,\"surfaceQueries\":40176,\"searchCandidates\":29,\"candidateVertices\":{\"pelvis-back\":384,\"torso-back\":384,\"head-back\":384},\"capPerRegion\":384,\"transitionSamples\":[{\"clip\":\"lie-down\",\"seconds\":0.19999999999999998,\"duration\":2.200000047683716,\"displaySeconds\":0.19999999999999998,\"displayDuration\":3.8500000834465027,\"phase\":\"contact-applied\",\"restAnchorBlen",
+  "frameWindow": [
+    1.9,
+    1.96
+  ],
+  "totalRecordedFrames": 2,
+  "frames": [
+    {
+      "clip": "lie-down",
+      "seconds": 1.9291666934887568,
+      "duration": 2.200000047683716,
+      "displaySeconds": 2.7666666666666666,
+      "displayDuration": 3.8500000834465027,
+      "phase": "contact-applied",
+      "restAnchorBlend": 0.9582660589619998,
+      "rootPlacementBlend": 0.20555878974888295,
+      "sourceHeadHipUprightRatio": 0.6664537677852052,
+      "transitionFrom": {
+        "x": -4.405,
+        "y": 0.03,
+        "z": -2.1550000000000002,
+        "ry": 0
+      },
+      "finalTarget": {
+        "x": -4.375,
+        "y": 0.7150000000000001,
+        "z": -3.9,
+        "ry": 0
+      },
+      "rootWorld": [
+        -6.898833236307533,
+        0.2909653510754864,
+        -5.013700088111801
+      ],
+      "bonesWorld": {
+        "mixamorigHips": [
+          -6.907084774052312,
+          0.6650521416617949,
+          -4.89066338150546
+        ],
+        "mixamorigSpine": [
+          -6.910785429719758,
+          0.7337025707385308,
+          -4.9773336520332006
+        ],
+        "mixamorigSpine1": [
+          -6.911401916546133,
+          0.8011392072689476,
+          -5.088872986941272
+        ],
+        "mixamorigSpine2": [
+          -6.913475130323674,
+          0.8925675776716369,
+          -5.230286548926782
+        ],
+        "mixamorigNeck": [
+          -6.9282021985018645,
+          1.0803654081532053,
+          -5.430232567660348
+        ],
+        "mixamorigHead": [
+          -6.931447821293474,
+          1.1181908392294193,
+          -5.4677081111868775
+        ],
+        "mixamorigLeftFoot": [
+          -6.7583091018158115,
+          0.0038059703264294864,
+          -3.9836463160505255
+        ],
+        "mixamorigRightFoot": [
+          -7.088700161716484,
+          -0.045880692772977794,
+          -4.005838001355139
+        ]
+      },
+      "ankleTargetsWorld": {
+        "mixamorigLeftFoot": [
+          -6.7583091018158115,
+          0.0038059703264294864,
+          -3.9836463160505255
+        ],
+        "mixamorigRightFoot": [
+          -7.088700161716484,
+          -0.045880692772977794,
+          -4.005838001355139
+        ]
+      },
+      "soleWitnesses": {
+        "left": {
+          "count": 80,
+          "minimumWorld": [
+            -6.672888932827821,
+            0.033499791310868554,
+            -3.887325309886082
+          ],
+          "floorY": 0.03,
+          "floorGap": 0.003499791310868555,
+          "propY": null,
+          "propGap": null
+        },
+        "right": {
+          "count": 64,
+          "minimumWorld": [
+            -7.1869731196436835,
+            0.030751597602297676,
+            -3.8885647551296567
+          ],
+          "floorY": 0.03,
+          "floorGap": 0.0007515976022976767,
+          "propY": null,
+          "propGap": null
+        }
+      },
+      "headHipSeparation": 0.734104118880461,
+      "headHipVerticalRatio": 0.6172676135623371,
+      "uprightFloorBranch": false,
+      "contact": {
+        "pose": "lie",
+        "phase": "transition",
+        "regions": {
+          "pelvis-back": {
+            "sampled": 0,
+            "minimumGap": null,
+            "maximumGap": null,
+            "minimumWitness": null
+          },
+          "torso-back": {
+            "sampled": 365,
+            "minimumGap": -0.0029963573003369826,
+            "maximumGap": 0.5399600392118187,
+            "minimumWitness": {
+              "mesh": "Authored casual suit",
+              "vertex": 1795,
+              "world": [
+                -6.7274292146675965,
+                0.7307536283945483,
+                -5.1803009785667005
+              ],
+              "supportY": 0.7337499856948853,
+              "gap": -0.0029963573003369826
+            }
+          },
+          "head-back": {
+            "sampled": 384,
+            "minimumGap": 0.33037146563087494,
+            "maximumGap": 0.6289453116032446,
+            "minimumWitness": {
+              "mesh": "Body",
+              "vertex": 913,
+              "world": [
+                -6.929351891361404,
+                1.0641214513257602,
+                -5.4820337334502565
+              ],
+              "supportY": 0.7337499856948853,
+              "gap": 0.33037146563087494
+            }
+          }
+        },
+        "footGaps": {
+          "left": {
+            "sampled": 0,
+            "minimumGap": null
+          },
+          "right": {
+            "sampled": 0,
+            "minimumGap": null
+          }
+        },
+        "contactBranch": {
+          "runtimeFrame": {
+            "clip": "lie-down",
+            "sourceSeconds": 1.9291666934887568,
+            "displaySeconds": 2.7666666666666666,
+            "sourceDuration": 2.200000047683716,
+            "displayDuration": 3.8500000834465027
+          },
+          "mappedFrame": {
+            "rootLocal": [
+              -4.398833236307533,
+              0.17080777097798483,
+              -2.513700088111801
+            ],
+            "rootWorld": [
+              -6.898833236307533,
+              0.17080777097798483,
+              -5.013700088111801
+            ],
+            "rootQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "hipsLocal": [
+              -0.006498282631664409,
+              0.294602263140607,
+              0.09689433876770881
+            ],
+            "hipsWorld": [
+              -6.907084774052312,
+              0.5448945615642935,
+              -4.89066338150546
+            ],
+            "headHipDirection": {
+              "headToHipsWorld": [
+                -0.02436304724116134,
+                0.45313869756762437,
+                -0.5770447296814174
+              ],
+              "projectedForward": -0.5770447296814174,
+              "vertical": 0.45313869756762437,
+              "rawDegrees": 141.8583450711667,
+              "shortestDegrees": -38.141654928833304
+            },
+            "bones": {
+              "mixamorigHips": {
+                "local": [
+                  -0.006498282631664409,
+                  0.294602263140607,
+                  0.09689433876770881
+                ],
+                "world": [
+                  -6.907084774052312,
+                  0.5448945615642935,
+                  -4.89066338150546
+                ],
+                "quaternion": [
+                  -0.5100289345397708,
+                  0.0052770246997484276,
+                  0.025957129974950043,
+                  0.85974930435913
+                ]
+              },
+              "mixamorigSpine": {
+                "local": [
+                  0.0016383333333333334,
+                  0.08584999999999987,
+                  0.01473833333333333
+                ],
+                "world": [
+                  -6.910785429719758,
+                  0.6135449906410294,
+                  -4.9773336520332006
+                ],
+                "quaternion": [
+                  0.1223753985249903,
+                  -0.004652000931865555,
+                  -0.02271266614541696,
+                  0.9922130595390017
+                ]
+              },
+              "mixamorigSpine1": {
+                "local": [
+                  0,
+                  0.1005600000000002,
+                  -0.020596666666666662
+                ],
+                "world": [
+                  -6.911401916546133,
+                  0.6809816271714462,
+                  -5.088872986941272
+                ],
+                "quaternion": [
+                  0.11877036840959049,
+                  0.0013949834396177394,
+                  0.0032109520102338264,
+                  0.9929155771747372
+                ]
+              },
+              "mixamorigSpine2": {
+                "local": [
+                  0,
+                  0.12164166666666665,
+                  -0.05284666666666667
+                ],
+                "world": [
+                  -6.913475130323674,
+                  0.7724099975741354,
+                  -5.230286548926782
+                ],
+                "quaternion": [
+                  -0.25608214956965364,
+                  -0.005598113682347024,
+                  0.018814428641423263,
+                  0.9664556953476358
+                ]
+              },
+              "mixamorigNeck": {
+                "local": [
+                  0,
+                  0.20735333333333328,
+                  0.06169666666666667
+                ],
+                "world": [
+                  -6.9282021985018645,
+                  0.9602078280557038,
+                  -5.430232567660348
+                ],
+                "quaternion": [
+                  0.08571278317560684,
+                  -0.010260346912418469,
+                  0.032108824622276676,
+                  0.995749500357848
+                ]
+              },
+              "mixamorigHead": {
+                "local": [
+                  0.0025600000000000015,
+                  0.04143999999999992,
+                  0.006408333333333328
+                ],
+                "world": [
+                  -6.931447821293474,
+                  0.9980332591319179,
+                  -5.4677081111868775
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              }
+            }
+          },
+          "regionsBeforeContact": {
+            "pelvis-back": {
+              "sampled": 0,
+              "minimumGap": null
+            },
+            "torso-back": {
+              "sampled": 365,
+              "minimumGap": -0.12315758009750155
+            },
+            "head-back": {
+              "sampled": 384,
+              "minimumGap": 0.2102138855333734
+            }
+          },
+          "upright": false,
+          "uprightThreshold": 0.6983915623359316,
+          "hasPosteriorWitness": false,
+          "floorContactPhase": true,
+          "propContactPhase": false
+        },
+        "lieAlignment": null
+      }
+    },
+    {
+      "clip": "lie-down",
+      "seconds": 1.93750002682209,
+      "duration": 2.200000047683716,
+      "displaySeconds": 2.8,
+      "displayDuration": 3.8500000834465027,
+      "phase": "contact-applied",
+      "restAnchorBlend": 0.9606869351006213,
+      "rootPlacementBlend": 0.22918382589638767,
+      "sourceHeadHipUprightRatio": 0.6452793489910263,
+      "transitionFrom": {
+        "x": -4.405,
+        "y": 0.03,
+        "z": -2.1550000000000002,
+        "ry": 0
+      },
+      "finalTarget": {
+        "x": -4.375,
+        "y": 0.7150000000000001,
+        "z": -3.9,
+        "ry": 0
+      },
+      "rootWorld": [
+        -6.898124485223109,
+        0.35934806648619155,
+        -5.054925776189197
+      ],
+      "bonesWorld": {
+        "mixamorigHips": [
+          -6.90637602296789,
+          0.7334348570725002,
+          -4.931889069582858
+        ],
+        "mixamorigSpine": [
+          -6.91010815263913,
+          0.7996244369703571,
+          -5.020451605562824
+        ],
+        "mixamorigSpine1": [
+          -6.910761385994347,
+          0.8639030749308367,
+          -5.133840023059528
+        ],
+        "mixamorigSpine2": [
+          -6.912882254221097,
+          0.951325059837444,
+          -5.2777640971967
+        ],
+        "mixamorigNeck": [
+          -6.927687220627456,
+          1.1334331029217106,
+          -5.482900139109958
+        ],
+        "mixamorigHead": [
+          -6.930947915834841,
+          1.1701909870276075,
+          -5.521422074274714
+        ],
+        "mixamorigLeftFoot": [
+          -6.758065940192628,
+          0.8599463022447262,
+          -4.027027259525257
+        ],
+        "mixamorigRightFoot": [
+          -7.087249393371344,
+          0.8232872094756907,
+          -4.048102199857384
+        ]
+      },
+      "ankleTargetsWorld": {
+        "mixamorigLeftFoot": [
+          -6.758065940192628,
+          0.8599463022447262,
+          -4.027027259525257
+        ],
+        "mixamorigRightFoot": [
+          -7.087249393371344,
+          0.8232872094756907,
+          -4.048102199857384
+        ]
+      },
+      "soleWitnesses": {
+        "left": {
+          "count": 80,
+          "minimumWorld": [
+            -6.670191366430676,
+            0.9091520837476325,
+            -3.934976649991205
+          ],
+          "floorY": 0.03,
+          "floorGap": 0.8791520837476324,
+          "propY": null,
+          "propGap": null
+        },
+        "right": {
+          "count": 64,
+          "minimumWorld": [
+            -7.185311048488311,
+            0.9230227052586703,
+            -3.9386266577299853
+          ],
+          "floorY": 0.03,
+          "floorGap": 0.8930227052586702,
+          "propY": null,
+          "propGap": null
+        }
+      },
+      "headHipSeparation": 0.7341041197224243,
+      "headHipVerticalRatio": 0.5949512040883945,
+      "uprightFloorBranch": false,
+      "contact": {
+        "pose": "lie",
+        "phase": "transition",
+        "regions": {
+          "pelvis-back": {
+            "sampled": 19,
+            "minimumGap": 0.22381191566505243,
+            "maximumGap": 0.2783015113411178,
+            "minimumWitness": {
+              "mesh": "Authored casual suit",
+              "vertex": 2128,
+              "world": [
+                -6.929516594817533,
+                0.6513119252017956,
+                -5.10126979889605
+              ],
+              "supportY": 0.42750000953674316,
+              "gap": 0.22381191566505243
+            }
+          },
+          "torso-back": {
+            "sampled": 377,
+            "minimumGap": -0.003000002583370298,
+            "maximumGap": 0.4837652235130227,
+            "minimumWitness": {
+              "mesh": "Authored casual suit",
+              "vertex": 2005,
+              "world": [
+                -6.941637580335278,
+                0.730749983111515,
+                -5.194829486575394
+              ],
+              "supportY": 0.7337499856948853,
+              "gap": -0.003000002583370298
+            }
+          },
+          "head-back": {
+            "sampled": 384,
+            "minimumGap": 0.38199201518319015,
+            "maximumGap": 0.6778156739479355,
+            "minimumWitness": {
+              "mesh": "Body",
+              "vertex": 913,
+              "world": [
+                -6.9288256019234815,
+                1.1157420008780754,
+                -5.534225350923195
+              ],
+              "supportY": 0.7337499856948853,
+              "gap": 0.38199201518319015
+            }
+          }
+        },
+        "footGaps": {
+          "left": {
+            "sampled": 0,
+            "minimumGap": null
+          },
+          "right": {
+            "sampled": 0,
+            "minimumGap": null
+          }
+        },
+        "contactBranch": {
+          "runtimeFrame": {
+            "clip": "lie-down",
+            "sourceSeconds": 1.93750002682209,
+            "displaySeconds": 2.8,
+            "sourceDuration": 2.200000047683716,
+            "displayDuration": 3.8500000834465027
+          },
+          "mappedFrame": {
+            "rootLocal": [
+              -4.398124485223109,
+              0.18699092073902557,
+              -2.554925776189197
+            ],
+            "rootWorld": [
+              -6.898124485223109,
+              0.18699092073902557,
+              -5.054925776189197
+            ],
+            "rootQuaternion": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "hipsLocal": [
+              -0.0064982826316652975,
+              0.294602263140607,
+              0.09689433876770837
+            ],
+            "hipsWorld": [
+              -6.90637602296789,
+              0.5610777113253342,
+              -4.931889069582858
+            ],
+            "headHipDirection": {
+              "headToHipsWorld": [
+                -0.02457189286695094,
+                0.43675612995510726,
+                -0.5895330046918561
+              ],
+              "projectedForward": -0.5895330046918561,
+              "vertical": 0.43675612995510726,
+              "rawDegrees": 143.46706481101685,
+              "shortestDegrees": -36.532935188983146
+            },
+            "bones": {
+              "mixamorigHips": {
+                "local": [
+                  -0.0064982826316652975,
+                  0.294602263140607,
+                  0.09689433876770837
+                ],
+                "world": [
+                  -6.90637602296789,
+                  0.5610777113253342,
+                  -4.931889069582858
+                ],
+                "quaternion": [
+                  -0.5220435955157492,
+                  0.0054823155931387575,
+                  0.026096887729201892,
+                  0.852501836389562
+                ]
+              },
+              "mixamorigSpine": {
+                "local": [
+                  0.0016383333333333334,
+                  0.08584999999999987,
+                  0.01473833333333333
+                ],
+                "world": [
+                  -6.91010815263913,
+                  0.6272672912231911,
+                  -5.020451605562824
+                ],
+                "quaternion": [
+                  0.12236964285791951,
+                  -0.004646247137734024,
+                  -0.022684574146489864,
+                  0.992214439015152
+                ]
+              },
+              "mixamorigSpine1": {
+                "local": [
+                  0,
+                  0.1005600000000002,
+                  -0.020596666666666662
+                ],
+                "world": [
+                  -6.910761385994347,
+                  0.6915459291836707,
+                  -5.133840023059528
+                ],
+                "quaternion": [
+                  0.1187718935125472,
+                  0.0013923062669763087,
+                  0.003204789734302387,
+                  0.9929154184105824
+                ]
+              },
+              "mixamorigSpine2": {
+                "local": [
+                  0,
+                  0.12164166666666665,
+                  -0.05284666666666667
+                ],
+                "world": [
+                  -6.912882254221097,
+                  0.778967914090278,
+                  -5.2777640971967
+                ],
+                "quaternion": [
+                  -0.25607478788344334,
+                  -0.005586377611330099,
+                  0.018774985449801416,
+                  0.9664584809069623
+                ]
+              },
+              "mixamorigNeck": {
+                "local": [
+                  0,
+                  0.20735333333333328,
+                  0.06169666666666667
+                ],
+                "world": [
+                  -6.927687220627456,
+                  0.9610759571745445,
+                  -5.482900139109958
+                ],
+                "quaternion": [
+                  0.0857140592935426,
+                  -0.010259278198870991,
+                  0.03210140391725914,
+                  0.9957496407816586
+                ]
+              },
+              "mixamorigHead": {
+                "local": [
+                  0.0025600000000000015,
+                  0.04143999999999992,
+                  0.006408333333333328
+                ],
+                "world": [
+                  -6.930947915834841,
+                  0.9978338412804415,
+                  -5.521422074274714
+                ],
+                "quaternion": [
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              }
+            }
+          },
+          "regionsBeforeContact": {
+            "pelvis-back": {
+              "sampled": 19,
+              "minimumGap": 0.051454773930888986
+            },
+            "torso-back": {
+              "sampled": 377,
+              "minimumGap": -0.175357145747166
+            },
+            "head-back": {
+              "sampled": 384,
+              "minimumGap": 0.20963486943602405
+            }
+          },
+          "upright": false,
+          "uprightThreshold": 0.6983915623359316,
+          "hasPosteriorWitness": true,
+          "floorContactPhase": false,
+          "propContactPhase": true
+        },
+        "lieAlignment": null
+      }
+    }
+  ],
+  "interpretation": "Adjacent saved pre-mapped angle/branch/postcontact pair only. \u00b190anglewrap not observed; source contact ownership transition demonstrated; fulljourney fails. No sourcepatches or new render."
+}

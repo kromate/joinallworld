@@ -1,0 +1,63 @@
+{
+  "sha": "29df315a8fed4b76c252c925d03c65159624773b",
+  "branch": "codex/cloud-graphics-grounded-interaction-20261010",
+  "parent": "c8bcef6a1685080048665fd6e9841b02188f7422",
+  "checkout": "/workspace/remote-verification/repositories/coordinator-graphics-interaction-241",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "17214300160",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "python3",
+    "/workspace/remote-verification/lease-phase-guard.py",
+    "node",
+    "--experimental-strip-types",
+    "scripts/typecheck.ts",
+    "--serial"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 140863,
+  "started_at_utc": "2026-10-10T03:10:48.939203+00:00",
+  "ended_at_utc": "2026-10-10T03:14:36.008117+00:00",
+  "duration_seconds": 227.068914,
+  "exit_status": 1,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 12,
+    "sample_source": "WORLD incoming owner account receipt12%remaining",
+    "recorded_at_utc": "2026-10-10T03:07:00Z",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/29df315a8fed4b76c252c925d03c65159624773b/grounded-interaction-twistfix-all5-compiler4096/command.log",
+  "log_sha256": "81fa18a755ce06a7384a7326c7d3688bec603f1592d7cc5267ba3b4177729446",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "29df315a8fed4b76c252c925d03c65159624773b",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

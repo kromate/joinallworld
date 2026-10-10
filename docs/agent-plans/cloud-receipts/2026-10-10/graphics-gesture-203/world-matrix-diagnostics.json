@@ -1,0 +1,11 @@
+{
+  "captureSequence": "updateWorldMatrix(root=true, children=false); clone matrixWorld; decompose; then getWorldQuaternion refresh",
+  "postSequence": "controller.apply; updateWorldMatrix(root=true, children=false); compare matrixWorld; decompose; then getWorldQuaternion refresh",
+  "maxHandWorldMatrixElementDelta": 3.3306690738754696e-16,
+  "captureDecomposedQuaternionLengthBeforeNormalize": 0.9998958839138196,
+  "postDecomposedQuaternionLengthBeforeNormalize": 0.9998958839138196,
+  "captureAccessorQuaternionLength": 0.9998958839138196,
+  "postAccessorQuaternionLength": 0.9998958839138196,
+  "captureVsPostAccessorAngleRadians": 0.04081456197224012,
+  "captureVsPostNormalizedMatrixQuaternionAngleRadians": 0
+}

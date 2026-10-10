@@ -11,6 +11,7 @@ import {
   type CharacterIndex, type Home, type HomeIndex, type Household, type Invite,
   type LifeFact, type LifeIndex, type Member, type PairFact,
 } from './records.ts'
+import { isKeyedMap } from '../keyed.ts'
 
 export const HOUSEHOLD_SCHEMA_VERSION: 1 = 1
 export type HouseholdMapName =
@@ -58,12 +59,8 @@ const validators: Readonly<Partial<Record<HouseholdMapName, (value: unknown) => 
 
 function dataObject(value: unknown): value is Record<string, unknown> {
   if (value === null || typeof value !== 'object' || Array.isArray(value)) return false
-  try {
-    const prototype = Object.getPrototypeOf(value)
-    return prototype === Object.prototype || prototype === null
-  } catch {
-    return false
-  }
+  const prototype = Object.getPrototypeOf(value)
+  return prototype === Object.prototype || prototype === null
 }
 
 export function isHouseholdCollection(value: unknown): value is HouseholdCollection {
@@ -72,33 +69,27 @@ export function isHouseholdCollection(value: unknown): value is HouseholdCollect
   if (!version.ok || !version.own || version.value !== HOUSEHOLD_SCHEMA_VERSION) return false
   for (const mapName of MAPS) {
     const map = dataValue(value, mapName)
-    if (!map.ok || !map.own || !dataObject(map.value)) return false
+    if (!map.ok || !map.own) return false
+    // Keyed root descriptors intentionally carry an undefined placeholder. Reading this
+    // fixed path materializes the map proxy without enumerating its entries.
+    if (!dataObject(value[mapName])) return false
   }
-  try {
-    const keys = Reflect.ownKeys(value)
-    return keys.length === MAPS.length + 1 && keys.every(key => typeof key === 'string' && (key === 'version' || isMapName(key)))
-  } catch {
-    return false
-  }
+  const keys = Reflect.ownKeys(value)
+  return keys.length === MAPS.length + 1 && keys.every(key => typeof key === 'string' && (key === 'version' || isMapName(key)))
 }
 
 function dataValue(object: object, key: string): { readonly ok: true; readonly value: unknown; readonly own: boolean } | { readonly ok: false } {
-  try {
-    const descriptor = Object.getOwnPropertyDescriptor(object, key)
-    if (!descriptor) return { ok: true, value: undefined, own: false }
-    if (!Object.hasOwn(descriptor, 'value') || descriptor.enumerable !== true) return { ok: false }
-    return { ok: true, value: descriptor.value, own: true }
-  } catch {
-    return { ok: false }
-  }
+  const descriptor = Object.getOwnPropertyDescriptor(object, key)
+  if (!descriptor) return { ok: true, value: undefined, own: false }
+  if (!Object.hasOwn(descriptor, 'value') || descriptor.enumerable !== true) return { ok: false }
+  return { ok: true, value: descriptor.value, own: true }
 }
 
 function rootOf(db: HouseholdDb): HouseholdCollection | null | 'invalid' {
   const entry = dataValue(db, 'households')
   if (!entry.ok) return 'invalid'
-  if (!entry.own) return null
-  if (entry.value === undefined) return 'invalid'
-  const rootValue = entry.value
+  const rootValue = db.households
+  if (rootValue === undefined) return entry.own ? 'invalid' : null
   return isHouseholdCollection(rootValue) ? rootValue : 'invalid'
 }
 
@@ -111,14 +102,21 @@ export function householdPoint<K extends HouseholdMapName>(db: HouseholdDb, mapN
   if (root === 'invalid') return { state: 'invalid' }
   if (root === null) return { state: 'absent' }
   const map = root[mapName]
+  if (isKeyedMap(map)) {
+    // The keyed proxy descriptor is only a presence marker. Its get trap performs the
+    // bounded source.entry lookup and returns the parsed row; never enumerate its keys.
+    const value = map[key]
+    const descriptor = Object.getOwnPropertyDescriptor(map, key)
+    if (!descriptor) return { state: 'absent' }
+    if (!Object.hasOwn(descriptor, 'value') || descriptor.enumerable !== true) return { state: 'invalid' }
+    return value === undefined ? { state: 'invalid' } : { state: 'present', value }
+  }
   const before = dataValue(map, key)
   if (!before.ok) return { state: 'invalid' }
-  const value = map[key]
-  const descriptor = dataValue(map, key)
-  if (!descriptor.ok) return { state: 'invalid' }
-  if (!descriptor.own) return { state: 'absent' }
-  if (descriptor.value === undefined || value === undefined) return { state: 'invalid' }
-  return { state: 'present', value }
+  if (!before.own) return { state: 'absent' }
+  // Ordinary data objects are read through their descriptor, never through a getter or
+  // inherited value. Own undefined is malformed persisted state, not absence.
+  return before.value === undefined ? { state: 'invalid' } : { state: 'present', value: before.value }
 }
 
 /** Use only after a command is known to have a successful durable write in the transaction. */

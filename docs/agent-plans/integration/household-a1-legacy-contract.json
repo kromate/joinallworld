@@ -1,0 +1,63 @@
+{
+  "decision": "APPROVE_VERSIONED_DUAL_PROBE_CONTRACT_WITH_EXPLICIT_LEGACY_LIMIT",
+  "reviewedSource": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
+  "observedHead": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "pins": {
+    "server/households/durableService.ts": "ce2eed20b0ecfdf4b0f7a455e6227a0988e138046d2e4357683b068bd35da9fa",
+    "server/routes/once.ts": "6072fa044253a38d35b948a33163ea0a2e787ef197bcce3d3760393be94b7046",
+    "server/households/records.ts": "ec8b77b1ba951e5b26f2a17e885b13f22a28c5de404c64d366f21ed7935f146d",
+    "deploy/sqlite-store.ts": "a54149ccc1f4f1a4db69379a041b0fcd7c90f5830fbcbe7393d261c690f58b5d"
+  },
+  "status": "Design contract only. Existing A1 is not declared fully repaired; exact implementation and cloud proof still required. A2 is separately owned.",
+  "facts": [
+    "e52 receipt result stores ok, operation, householdId, actorCharacterId and actorLifeId only, at durableService:9-15. It stores neither full original command nor mutable authority provenance.",
+    "e52 fingerprint at durableService:48-55 serializes command plus actor revision, recordUpdatedAt, locationRevision and locator revision.",
+    "once.ts:76 truncates long fingerprints to first 48 characters, length and hash53. This is a comparison token, not recoverable provenance.",
+    "once.ts:134-137 refuses different kind/fingerprint and returns stored result only on match. It must remain unchanged.",
+    "Only durable.test invokes executeConsentCommand in e52. No production endpoint means no evidence of production-issued household receipts, but this does not authorize deleting QA/existing receipts or assuming every possible store is empty."
+  ],
+  "algorithm": [
+    "Validate request id, snapshot/parse command, authenticate session and verify exact immutable actor character/life ownership inside the same transaction, as before. Never select an actor from request body or an unrelated current life.",
+    "For new-format candidate, build a deterministic fixed-field normalized command, including exact target IDs, expected revisions/epoch and op-specific payload. For invite, reconstruct recipient as exactly {character,life}. Encode stable binding as an explicitly tagged string such as household-consent-v2: plus canonical JSON of normalized command and immutable actor character/life. Do not include sampled actor revision, recordUpdatedAt, locationRevision, locator revision, current eligibility or current home state.",
+    "Keep a small stored receipt marker such as receiptVersion:2 with the existing minimal outcome fields. Public response may strip the marker. Strict internal parsing accepts exactly known legacy-no-marker or version2 formats and refuses unknown/malformed markers. No private locator, cookie, session secret, full life or source-state snapshot enters the result.",
+    "Probe ctx.once using the stable candidate and a callback that throws the private absent-receipt sentinel. If it returns, require version2 metadata and validate exact actor/op/household binding; return duplicate with no loader/apply/events.",
+    "If the stable probe throws only the private absent sentinel, no receipt existed: stage the normal loader/reducer, verify current full read set, and call ctx.once with stable fingerprint to atomically apply and store the version2 minimal receipt. Domain failure throws through transaction. Never use legacy fingerprint for new writes.",
+    "If and only if the stable probe throws the canonical client_id_conflict, compute the EXACT old e52 fingerprint from the request parsed with the old parser behavior and the currently verified actor fact, and probe ctx.once with that candidate and an invariant-throwing callback. A legacy return is allowed only if its marker is absent and minimal actor/op/household fields match. Do not use new normalization for this legacy computation because old nested recipient serialization may retain original key order/extra fields.",
+    "If the legacy candidate also conflicts, refuse and abort the transaction. Preserve the existing receipt, patch and events. Do not return old success from just id/op/household/actor, do not substitute old.fp as the submitted fingerprint, and do not treat conflict as absence or issue a fresh request ID automatically.",
+    "Expiry, quota, storage errors, malformed receipt errors and all other exceptions are not reasons for legacy fallback. Propagate or format according to existing strict semantics; do not swallow them. Any impossible absent callback after a prior conflict aborts, never applies a patch.",
+    "On either successful duplicate, validate receipt version and minimal exact-participant binding before returning. Current mutable commit read-set verification remains mandatory for new writes, but it must not become old request fingerprint identity. Same-life eligibility changes may not force fresh loader execution.",
+    "Use existing ctx.once only; no receipt-map scanning or new low-level receipt API is needed. The two probes run synchronously within the same serialized transaction. The explicit stable prefix and stored version marker keep formats distinct."
+  ],
+  "legacyLimit": {
+    "impossibleClaim": "Unconditionally replaying all old e52 successes after mutable authority changes while still refusing changed command bodies is not derivable from e52's stored data.",
+    "reason": "The minimal result identifies op/household/actor but omits command fields such as inviteId, membershipId, recipient, expected revision, epoch or close reason. The bounded old fingerprint also commits omitted mutable values. A new request cannot recover those original values from the truncated hash.",
+    "safeBehavior": "Matching legacy candidate retains unchanged-format replay using the existing once equality rule. A legacy mismatch remains client_id_conflict or a similarly explicit non-success diagnostic. It cannot be safely distinguished into changed-body versus same-body-changed-provenance from this data alone.",
+    "preservation": "No migration, rewrite, deletion, reset, copied replacement receipt or auto-reissued command. Compatibility code preserves existing receipts. Existing once expiration/pruning policy remains unchanged; 'preserve every receipt' here is not an extension of the framework's retention window.",
+    "noBackfill": "Do not populate a new legacy provenance record from current actor facts. A separately supplied authoritative original command/provenance record could support a later exact migration, but none exists in e52 and none is assumed or implemented by this unit.",
+    "newFormatGuarantee": "New version2 successes can replay after legitimate same-life settlement/move while the host can still prove ownership of that exact immutable life and the once window remains live. New-life switching or unimplemented archive/park ownership cannot be bypassed."
+  },
+  "tests": [
+    "Seed or commit using exact e52 algorithm on real Node and Worker stores; retain entire receipt. Corrected service retries same id/body with unchanged authority: duplicate, same minimal outcome, no loader/apply/events and original receipt unchanged through close/reopen.",
+    "Same legacy receipt, change same-life recordUpdatedAt or locator/location revision, retry same id/body: deterministic refusal, no receipt migration or household mutation. State the limitation in test title and report.",
+    "Legacy changed inviteId/membershipId/recipient/epoch/revision/reason or kind with same actor/household must refuse; minimal result similarity must never allow success. Wrong actor and new life also refuse.",
+    "New version2 receipt: perform legitimate same-life authority change, close/reopen, original retry before loader: original duplicate, no household or event change. Current loader may be instrumented to throw to prove bypass.",
+    "New version2 changed command/kind/actor/life refuses; malformed/unknown version or accessor receipt rejects without success. Exact retries survive object-key order changes under the specified new normalization.",
+    "New-format write failure after patch staging rolls back patch and receipt; unknown storage faults propagate. Worker commit vs uncertain barrier failures retain their existing distinct meanings.",
+    "Expired IDs and quotas preserve existing once semantics. No fallback after quota/expiry/storage failures; no successful callback on duplicate or conflict.",
+    "Assert result remains under once.resultBytes and exposes only minimal outcome, with no cookie/locator/full life. Confirm no changes to once.ts, business modules or production registration."
+  ],
+  "scope": {
+    "allowedOwnerChange": "Existing household cloud owner only: durableService private fingerprint/version/probe logic and focused durability tests. A2 stays separate as already assigned.",
+    "notAuthorized": [
+      "general once.ts or business changes",
+      "provenance reconstruction",
+      "bulk migration",
+      "receipt deletion/reset",
+      "production endpoint or host activation",
+      "residence/money authority",
+      "new service/agent/provider action"
+    ],
+    "next": "Implement the bounded versioned contract, retain documented legacy mismatch refusal, publish exact source and raw cloud tests. Then resume actual authority binding after source review. Do not expand to a historical recovery subsystem."
+  },
+  "actions": "Immutable source/line reads only; requested /tmp contract reports written. No repository edits or execution/tests/compiler/browser/delegation."
+}

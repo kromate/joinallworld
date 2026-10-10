@@ -1,0 +1,83 @@
+{
+  "decision": "MODIFY_BEFORE_INACTIVE_SOURCE_INTEGRATION",
+  "candidate": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
+  "tree": "bfd49bce5231d6cbdeedeeb1b33b81379ce19d31",
+  "comparisonRefs": {
+    "view": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
+    "registration": "f28182fe08aaf9efecd412c64340dc609a66883d"
+  },
+  "observedHead": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "workingTree": "clean",
+  "sourceSha256": {
+    "server/households/durableStorage.ts": "00bb3cebe51ed7796485e64eead4995c369bb8287fa2c391bfa70a2fd0bb83f0",
+    "server/households/durableReads.ts": "7410741e57a49ebd764c0ccb000c172138342bf32f52a987a2731173b9d24cbd",
+    "server/households/durableApply.ts": "e4fb1bfda1fbdbeb2c3029e2f077aba7590643eb54c7ccb2fb4fb3d1446e75ae",
+    "server/households/durableService.ts": "ce2eed20b0ecfdf4b0f7a455e6227a0988e138046d2e4357683b068bd35da9fa",
+    "server/households/durable.test.ts": "0bf8e6c2ba8afd73ab1444f3ec980858be735928f1771100bc47d4d792a56f86",
+    "server/households/consentView.ts": "78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8",
+    "server/households/consent.ts": "c611ebf9ceda2e44902829b34e74fe42b3b190ba9c6a9b93ffa3544b34df59c7",
+    "server/households/records.ts": "ec8b77b1ba951e5b26f2a17e885b13f22a28c5de404c64d366f21ed7935f146d",
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d",
+    "server/keyed.ts": "fcb0980c057d9e658c64e5e69512c2b60cb7eb39365a9c9d5475872b9e92af68",
+    "server/routes/once.ts": "6072fa044253a38d35b948a33163ea0a2e787ef197bcce3d3760393be94b7046",
+    "server/types.ts": "4c21ae4c7b1166c9cd83bd8052a8e63ca6b634335168954b5a3b237c51c91b07",
+    "server/store.ts": "4c739e503df0423661737c0805162bd887ae06669094acdbb868733a67c93296",
+    "deploy/sqlite-store.ts": "a54149ccc1f4f1a4db69379a041b0fcd7c90f5830fbcbe7393d261c690f58b5d",
+    "server/records/store.ts": "7155d954a77951770560ed559ddfede1a449bb45450d34175709e1468368e4d9"
+  },
+  "findings": [
+    {
+      "id": "A1",
+      "severity": "P1",
+      "kind": "adapter source bug",
+      "location": "server/households/durableService.ts:48-55,87-101",
+      "title": "Mutable authority revisions invalidate a successful request's replay identity",
+      "reproducer": "Use the existing register fixture to commit descriptor id R and command C for actor character X/life L. In a later legitimate transaction retain X/L and the same locator container but advance recordUpdatedAt by 1, or update life revision/locationRevision/locator.revision after an ordinary move. Supply a current valid TrustedPoint whose verifier succeeds. Retry exact C and R within the once window. receiptFingerprint differs; once.ts:136 throws client_id_conflict before old receipt can return. No home/consent eligibility change is needed.",
+      "impact": "A successful old operation appears conflicting after ordinary settlement/travel, contradicting retained-success replay before current eligibility. Tests hold NOW and authority rows constant and miss it.",
+      "repair": "Separate stable request/participant identity from mutable commit read-set facts. Keep current-source verification for new mutations; do not recompute old receipt identity from current mutable revisions. Bind normalized command and immutable actor character/life, and enforce ownership of that exact life before exposing minimal receipt. If initial revision provenance must be retained, keep it in receipt-bound data and use that recorded provenance for old replay, not newly sampled values. Preserve kind/body conflicts and forbid rebinding to a new life.",
+      "requiredEvidence": "On real Node and Worker stores, commit then advance same-life authority timestamps/revisions/location and retry unchanged id/body before loader; expect original duplicate and no household writes/events. Different body or actor/life must refuse. Include inactive/archived ownership policy explicitly rather than falling back to current life."
+    },
+    {
+      "id": "A2",
+      "severity": "P2",
+      "kind": "storage boundary source bug",
+      "location": "server/households/durableStorage.ts:88-93; server/households/durableApply.ts:80-89",
+      "title": "Missing own root still reads an inherited households getter",
+      "reproducer": "let hits=0; const db=Object.create({get households(){hits++; return createHouseholdCollection()}}); householdPoint(db,'households','00000000-0000-4000-8000-000000000002'). The descriptor is absent but rootOf line91 performs db.households, invoking the getter and accepting its root. A direct apply against a root supplied this way follows the same read at line84.",
+      "impact": "Violates the advertised no-getter and missing-vs-present boundary for malformed ordinary DB objects. Genuine Store proxies are not implicated; this is not a demonstrated remote exploit.",
+      "repair": "When no own root descriptor exists, return absent/create a new root without evaluating db.households. With an own data descriptor, retain the fixed-path get needed for the genuine Store proxy placeholder; keep accessor/nonenumerable/own-undefined refusals. Add inherited-root getter test along with ordinary/keyed present-row cases.",
+      "requiredEvidence": "Missing own root must produce absence without getter invocation; existing Node Store root placeholder and KeyedMap point rows must remain usable; raw own undefined stays invalid."
+    }
+  ],
+  "acceptedSourceProperties": [
+    "f281 KeyedMap entry descriptor defect is fixed by isKeyedMap WeakMap brand at durableStorage:105. Genuine map get performs a point lookup; descriptor is only a presence marker. Ordinary row values come directly from descriptors and reject accessors/own undefined.",
+    "Fixed root access now supports Node Store's own descriptor placeholder. All eleven maps are registered in KEYED_SPECS. No household map enumeration is introduced by the entry lookup.",
+    "Adapter read fingerprints track exact loaded reducer rows/absence plus revision. Linked accepted invitation support reads join this set. Trusted source verifiers are accumulated and checked before application, including actor proof.",
+    "Apply checks all declared expectations and validates every write before applying any, rejects duplicate/unexpected writes, and caps expectations/writes/events. Its Result input is trusted reducer output, not a raw external patch parser.",
+    "Reducer changes versus 619 are domain event type-to-kind rename only, paired in records. consentView/lifeIdentity are unchanged. The event discriminant change avoids widening the WebSocket wire allowlist.",
+    "Once+patch share one Store transaction. Domain refusal throws out of transaction and formats outside; unknown read/write failures propagate. Service awaits transaction durability before returning events and returns events=[] for duplicate.",
+    "Node Store serializes callbacks and awaits file durability by default at store.ts:478-500. Worker stages session receipts and entries in the same transactionSync at sqlite-store.ts:645 onward, then waits barrier at 738-742.",
+    "Liabilities abort in service and apply. There is no no-op settlement or invented money authority."
+  ],
+  "importantLimits": [
+    "Authority homes/lifeFacts/pairFacts are supplied externally but reducer expectations are checked against household mirror maps by durableApply:14-33. Future canonical readers/writers must maintain exact matching projected rows in this same transaction or intentionally revise that mapping; a verified external fact alone cannot satisfy the current apply layer. A missing mirror correctly causes refusal, not inferred authority.",
+    "TrustedPoint.verifyReadSet is a host contract. Current code cannot prove a dishonest/constant-true verifier checks session/device/account ownership, exact locator/container, home incarnation/scene revision and both pair sources. Existing tests use synthetic projections and do not establish canonical source authority.",
+    "Session authentication and system authority remain unimplemented. Service always requires a resolved session and present sessionLife before system loading. It is not directly callable from an already-open lifecycle transaction without deadlock risk from nesting store.transact. Do not fake a session or active life for system cleanup.",
+    "Every endMember produces a liability handoff even if money has never been used, so leave/revoke/terminate and close with active members fail closed. Accept must not be activated without a safe termination path; no residence grant follows from stored membership.",
+    "Events are only returned after commit; there is no durable outbox/dispatcher. A crash after commit before delivery followed by duplicate produces no event. This is not exactly-once or guaranteed eventual notification. Canonical state reads may recover UI; financial/lifecycle obligations cannot rely on this event channel.",
+    "ctx.once may initialize/prune expired receipts on successful replay. No household/event mutation does not imply zero entire-store writes. It retains only its configured live window and performs inherited bounded-player/global Node recount work; Worker uses SQL counts.",
+    "Collection root Reflect.ownKeys and malformed object ownKeys allocate whole key lists before length rejection. Valid schema/loader reads are bounded; arbitrary corrupt-object CPU is not strictly capped. Locator/byCharacterLife maps have no validateStoredRow validator and no production writer, so they remain unusable authority slots.",
+    "Five tests cover synthetic register only. Node uses actual file Store entries mode. Worker-labelled tests use createSqliteStore over node:sqlite testStorage, not actual workerd/DO HTTP. No durable invite/accept/close matrix, canonical lifecycle, event delivery, liability consumer or host endpoint proof.",
+    "No local runtime, compiler, tests or build executed. Exact-candidate compiler/Node/actual Worker durability and failure evidence remains required. Worker barrier failure is uncertain durability, not proof that commit rolled back."
+  ],
+  "nextFiniteUnit": {
+    "name": "Bind authenticated session and exact existing-life authority to a register-only host service boundary after A1/A2 correction",
+    "existingPorts": "Use request.requireSession(db) from the existing RouteRequest, evaluated inside the service's one owning transaction; shared authentication is sessionOfCookie at server/protocol.ts:172-182 with Node server.ts:230-237,370 and Worker cloudflare-worker.ts:623-631 actor-header checks.",
+    "implementationBoundary": "One serialized existing cloud integration writer owns the host/session binding and register-only composition. Household module supplies canonical authority reader; no whole branch merge or separate shared writer. Keep route activation disabled until genuine life/home writer evidence exists.",
+    "life": "Require an explicit current character pin and the exact session.cities slot, immutable identity and matching life locator; use inspectLifeIdentity at lifeIdentity.ts:184. Do not call settleCity or accept characterCity's newestLifeCity fallback as identity authority. Missing identity/locator returns unproven; no getter/newborn assignment.",
+    "home": "Resolve existing original estate.home and the current Residence or estate.away[home] fields from src/types/life.ts:528-566; mainHomeUnit at residence.ts:16-19 only gives city/LGA, not HomeId/incarnation. Require actual canonical binding/provenance with owner life, epoch and source revision. Missing binding refuses; never manufacture it from LGA, location or furniture. Identity/home assignment and lifecycle synchronization are prerequisite writes not supplied by e52.",
+    "acceptance": "Real Node and workerd HTTP: expired cookie, revoked device, direct account session key, mismatched actor header, ambiguous active pin, missing/mismatched identity/locator and missing/stale home binding all refuse without assignment, household, receipt or money changes. A permitted register case may use only actual canonical writer-created identity/home facts once those exist, not seeded mirror facts presented as authority. Before that prerequisite exists, report this as authenticated refusal binding only, not completed register feature.",
+    "excluded": "No invitation/accept/shared-home-use endpoint, system cleanup, Family authority, money, residency, event dispatch or new identity/home creation in this finite binding unit."
+  },
+  "actions": "Read inventory, immutable Git objects and source/hash data only. Wrote requested /tmp reports. No repository edits, merge, tests/compiler/build/runtime/browser, delegation, activation or paid/auth/provider action."
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "source": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "run": 38016051589,
+  "url": "https://github.com/kromate/joinallworld/actions/runs/38016051589",
+  "partitions": [
+    {
+      "name": "worker22",
+      "job": 114106426575,
+      "bytes": 281737,
+      "rawLogSha256": "6857e7e452e7667ddd460ae163320e638cd8985d216058b30cc0dffa2876cc19",
+      "notOk": [],
+      "summary": {
+        "tests": 159,
+        "pass": 159,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "duration_ms": 544829.887369
+      }
+    },
+    {
+      "name": "worker24",
+      "job": 114106426615,
+      "bytes": 226232,
+      "rawLogSha256": "0285575e4d94487469be7921310fb40fa6db83b60cc325c21498c784e0311ab7",
+      "notOk": [],
+      "summary": {
+        "tests": 159,
+        "pass": 159,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "duration_ms": 593453.367591
+      }
+    }
+  ],
+  "acceptance": "Two completed Worker partitions only. Each159pass/no skips; counts overlap across Nodeversions and are not summed. Full run still unfinished and startup gzip/Brotli gates fail. No browser/native/provider/production acceptance."
+}

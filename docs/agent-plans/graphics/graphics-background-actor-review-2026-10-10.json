@@ -1,0 +1,177 @@
+{
+  "at": "2026-10-10T04:23:08.944920+00:00",
+  "runtimeSha": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+  "fetchedMainSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "scope": "Root static source-path and original-pixel review, no implementation/render or runtime population expansion",
+  "pins": [
+    {
+      "path": "src/scene/props.ts",
+      "runtimeBytes": 31735,
+      "runtimeSha256": "d1a379c92b72d994bdb45e740ded30408a90d786c3074c4a42edc1a79aa4c907",
+      "mainBytes": 31735,
+      "mainSha256": "d1a379c92b72d994bdb45e740ded30408a90d786c3074c4a42edc1a79aa4c907",
+      "sameAsFetchedMain": true
+    },
+    {
+      "path": "src/scene/venues-work.ts",
+      "runtimeBytes": 28004,
+      "runtimeSha256": "09ea016ab52930b7ff0fab9b835bb205792e38e96847f381e4086dbb8d1304b4",
+      "mainBytes": 28004,
+      "mainSha256": "09ea016ab52930b7ff0fab9b835bb205792e38e96847f381e4086dbb8d1304b4",
+      "sameAsFetchedMain": true
+    },
+    {
+      "path": "src/scene/venue-scenes.ts",
+      "runtimeBytes": 89961,
+      "runtimeSha256": "249954ca92d180652d9fa3760b502a2cb28fe8502ca9952727cb5c7aa58c553f",
+      "mainBytes": 69597,
+      "mainSha256": "9625309863badfcff68dc1fb5d905702a94b028b7cb1c13cc6760637b9b53ffd",
+      "sameAsFetchedMain": false
+    }
+  ],
+  "rootCauseOfStyleOmission": "Background people built with props.extra directly call drawAvatar into the static scene batch. They never enter the canonicalCrowd hydrated NPC provider.",
+  "officeBackgroundPeople": [
+    {
+      "seed": "office-reception",
+      "pose": "work",
+      "x": 2.6,
+      "z": -7.6,
+      "ry": 0,
+      "sourceLine": 113
+    },
+    {
+      "seed": "office-guard",
+      "pose": "stand",
+      "x": -4.6,
+      "z": -5.2,
+      "ry": 0.5,
+      "sourceLine": 116
+    },
+    {
+      "seed": "office-visitor",
+      "pose": "sit",
+      "x": -9.5,
+      "z": 4.2,
+      "ry": "HALF",
+      "seat": 0.69,
+      "sourceLine": 124
+    },
+    {
+      "seed": "office-worker-1",
+      "pose": "sit",
+      "x": 4.2,
+      "z": 2.55,
+      "ry": "PI",
+      "sourceLine": 132
+    },
+    {
+      "seed": "office-worker-2",
+      "pose": "sit",
+      "x": 7.6,
+      "z": 6.55,
+      "ry": "PI",
+      "sourceLine": 132
+    },
+    {
+      "seed": "office-meeting",
+      "pose": "sit",
+      "x": 9.6,
+      "z": -3.9,
+      "ry": 0,
+      "sourceLine": 137
+    }
+  ],
+  "counterScope": "canonicalCrowdCounts static/procedural values derive only placedCrowd; six baked office extras are excluded. canonical2/procedural0 cannot claim all visible office NPCs rendered natively.",
+  "regionalInventory": {
+    "sourceFileCount": 15,
+    "declarationLineCount": 450,
+    "runtimeCount": "NOT measured; lines can contain multiple calls/loops/conditional scenes",
+    "files": [
+      {
+        "path": "src/scene/venues-civic.ts",
+        "sha256": "df141e17eeb826cb903207db3762177874fe51792057b727bcd317c03dcb39ed",
+        "declarationLines": 18
+      },
+      {
+        "path": "src/scene/venues-fct-b.ts",
+        "sha256": "a9bdea05b509809de35a7a4b7261870ff3bb105dd50e616154acb25b44230352",
+        "declarationLines": 33
+      },
+      {
+        "path": "src/scene/venues-fct.ts",
+        "sha256": "24e18a6e7137763dcfb504bcefbc4f1a3f9d693178a5668cb4fd1f15fa90fd6a",
+        "declarationLines": 33
+      },
+      {
+        "path": "src/scene/venues-ibadan-a.ts",
+        "sha256": "73d58cc30a69bf74a47e7524c19a76bcf8b6a565cc5b059907084b37a90a2b03",
+        "declarationLines": 11
+      },
+      {
+        "path": "src/scene/venues-ibadan-b.ts",
+        "sha256": "e289700e4406408fdb49b3c4dc8dfc0884e26530bae16ab662d713dfb82449d0",
+        "declarationLines": 20
+      },
+      {
+        "path": "src/scene/venues-kano-b.ts",
+        "sha256": "c8caaeaeef38237c89424be9e28807f81d82e42a656c458a94f349ae5ea789ad",
+        "declarationLines": 35
+      },
+      {
+        "path": "src/scene/venues-kano.ts",
+        "sha256": "c6d33fdf10d77eec8920fd95ac68ea11590fde9eb202f972b31d20cb449dd095",
+        "declarationLines": 57
+      },
+      {
+        "path": "src/scene/venues-ogun-a.ts",
+        "sha256": "3c7153b78f9753420aef893deb836b9e4ed77f16aa478f4b689b46ba70883c24",
+        "declarationLines": 27
+      },
+      {
+        "path": "src/scene/venues-ogun-b.ts",
+        "sha256": "3c350856b9936261a9c2a9193f0bad6a6190f421398f11848b5940c38829e26d",
+        "declarationLines": 46
+      },
+      {
+        "path": "src/scene/venues-outdoor.ts",
+        "sha256": "8722a4d49970a494b90379b2f47117d517663c3aa0088a555b86a43e9a336681",
+        "declarationLines": 32
+      },
+      {
+        "path": "src/scene/venues-rivers-b.ts",
+        "sha256": "1896e3dd965bd9c520ff0679aee34ce474819f5944cc2ac55f40f7e2d09d8500",
+        "declarationLines": 29
+      },
+      {
+        "path": "src/scene/venues-rivers.ts",
+        "sha256": "13bfeca773f4e13eb3702e95a124dea8c66f049ba753523018f97b53437b11b3",
+        "declarationLines": 39
+      },
+      {
+        "path": "src/scene/venues-social.ts",
+        "sha256": "a8315ca2211de38ffdb7d33e231bae033b2f65d0ca86e69ea330bda4081f4003",
+        "declarationLines": 32
+      },
+      {
+        "path": "src/scene/venues-transport.ts",
+        "sha256": "9d38e127fca8762f83e31fd9b0bf04f9a96f43e4add0ac24023dd1ac97ea7397",
+        "declarationLines": 10
+      },
+      {
+        "path": "src/scene/venues-work.ts",
+        "sha256": "09ea016ab52930b7ff0fab9b835bb205792e38e96847f381e4086dbb8d1304b4",
+        "declarationLines": 28
+      }
+    ]
+  },
+  "nextImplementationRequirements": [
+    "Collect deterministic seeded background descriptors before static mesh merge, rather than adding duplicate geometry after merge",
+    "Same shared canonical provider identity/pose/contact/material and disposal lifecycle for standing/work/seated backgrounds",
+    "Preserve authored positions, looks, seeds, venue variety and population; require real seat surfaces for sit",
+    "Track complete visible actor population separately from hydrated gameplay crowd; no zero-procedural claim omitting extras",
+    "Measure density/frame/input/resource/startup/journey/package costs and preserve constraints before accepting more visible native actors",
+    "Coordinate shared renderer/batch interfaces with WORLD and Integration; existing graphics cloud worker only"
+  ],
+  "deadline": "Before2026-10-10T23:00:00Z exclusive, not a gate waiver",
+  "status": "Source diagnosis confirmed; migration not implemented or accepted"
+}

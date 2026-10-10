@@ -10,7 +10,7 @@ import {
   NOW, hostKinds, loaderUnderTest, openHost, people, rowIds, worldCollection,
 } from './runtimeFixtures.ts'
 import type { ConsentReadTransaction } from './consentView.ts'
-import type { Household, Point, Result } from './records.ts'
+import type { Authority, Household, Point, Result } from './records.ts'
 import type { Db } from '../types.ts'
 
 const register = { op: 'register', householdId: rowIds.household, homeId: rowIds.home, epoch: 1 }
@@ -25,7 +25,7 @@ function fakeTx(overrides: Partial<ConsentReadTransaction> = {}): ConsentReadTra
   const tx: ConsentReadTransaction = {
     now: () => NOW,
     sessionLife: () => note('sessionLife', present({ id: people.owner.life, revision: 1, who: people.owner, state: 'available' })),
-    systemAuthority: () => note('systemAuthority', absent),
+    systemAuthority: () => note('systemAuthority', absent) as Promise<Point<Authority>>,
     home: () => note('home', present({ id: rowIds.home, revision: 1, owner: people.owner, epoch: 1, state: 'available' })),
     homeIndex: () => note('homeIndex', absent),
     household: () => note('household', absent),
@@ -99,11 +99,11 @@ test('storage rows: getters, inherited getters, proxies and polluted prototypes 
   const throwingProxy = new Proxy(homeRow(), { getOwnPropertyDescriptor() { throw new Error('trap fault') } })
   const getterPoint = Object.defineProperty({ state: 'present' }, 'value', { enumerable: true, get() { hits += 1; return homeRow() } })
   for (const hostile of [getterRow, inheritedRow, nestedGetter, lyingProxy, throwingProxy, present(getterPoint)]) {
-    const out = await load(register, fakeTx({ home: () => Promise.resolve(hostile === getterPoint ? getterPoint : present(hostile)) }))
+    const out = await load(register, fakeTx({ home: () => Promise.resolve((hostile === getterPoint ? getterPoint : present(hostile)) as Point<unknown>) as never }))
     assert.equal(out.ok, false)
     assert.equal('view' in out, false)
   }
-  const out = await load(register, fakeTx({ home: () => Promise.resolve(getterPoint) }))
+  const out = await load(register, fakeTx({ home: (() => Promise.resolve(getterPoint)) as never }))
   assert.equal(out.ok, false)
   assert.equal(hits, 0, 'no getter or get trap ran')
 
@@ -139,7 +139,7 @@ test('a storage fault or an abort during the load rejects the load and is never 
 
 test('storage edge: root descriptors are never evaluated through getters, own or inherited', () => {
   let hits = 0
-  const getterRoot = (): Record<string, unknown> => Object.defineProperty(createHouseholdCollection(), 'version', { enumerable: true, get() { hits += 1; return 1 } })
+  const getterRoot = (): Record<string, unknown> => Object.defineProperty(createHouseholdCollection() as unknown as Record<string, unknown>, 'version', { enumerable: true, get() { hits += 1; return 1 } })
   const inheritedRoot = Object.create({ get households() { hits += 1; return createHouseholdCollection() } })
   const ownAccessorRoot = Object.defineProperty({}, 'households', { enumerable: true, get() { hits += 1; return createHouseholdCollection() } })
   const mapAccessor = Object.defineProperty(createHouseholdCollection(), 'invites', { enumerable: true, get() { hits += 1; return {} } })

@@ -216,7 +216,7 @@ function trackPoint<T>(db: Db, map: 'lifeFacts' | 'homes' | 'pairFacts', key: st
     point,
     verifyReadSet: () => {
       const next = householdPoint(db, map, key)
-      return next.state === first.state && (next.state !== 'present' || text(next.value) === text(first.value))
+      return next.state === first.state && (next.state !== 'present' || (first.state === 'present' && text(next.value) === text(first.value)))
     },
   }
 }

@@ -93,7 +93,7 @@ for (const kind of hostKinds) {
         const before = reads.verifyReadSet()
         const row = db.households?.invites[rowIds.acceptedInvite]
         if (!row || typeof row !== 'object') throw new Error('fixture invite missing')
-        db.households.invites[rowIds.acceptedInvite] = { ...row, revision: 2 }
+        db.households!.invites[rowIds.acceptedInvite] = { ...row, revision: 2 }
         const after = reads.verifyReadSet()
         // Roll the probe write back: nothing from this check may persist.
         throw Object.assign(new Error('probe-rollback'), { loaded: loaded.ok, before, after })

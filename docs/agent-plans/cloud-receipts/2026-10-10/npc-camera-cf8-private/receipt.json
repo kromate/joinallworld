@@ -1,0 +1,59 @@
+{
+  "sha": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+  "branch": "codex/cloud-npc-camera-final-20261010",
+  "parent": "adb53e06c06b6cdbd2fb004c267eaf207a732f74",
+  "checkout": "/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "16821669888",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "bash",
+    "/workspace/remote-verification/worker-results/npc-camera-matrix/run-cf8b741-escalated.sh"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 111333,
+  "started_at_utc": "2026-10-10T02:05:05.962751+00:00",
+  "ended_at_utc": "2026-10-10T02:08:05.017875+00:00",
+  "duration_seconds": 179.055124,
+  "exit_status": 1,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 16,
+    "sample_source": "Monitor latest actual applicable main16% remaining incoming message",
+    "recorded_at_utc": "2026-10-10T02:04:22.275626+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/cf8b7417b5f428dc6cb59f601fbde560cd9a7c71/npc-camera-cf8b741-render/command.log",
+  "log_sha256": "08c3715be24370eef575d96a77336f542a9d7d213f8ee3831fd22cf4d2bb8ad8",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

@@ -1,0 +1,5 @@
+Private source cf8b7417b5f428dc6cb59f601fbde560cd9a7c71, branch codex/cloud-npc-camera-final-20261010. Its ancestor adb source publication was rejected; no retry, alternate publisher or source patch is included here. Original owner-requested controlled fixture observations and captures only.
+
+Strict typing, syntax and bundle passed. Bounded actual render exit1,105.765s,peak1.403GB. Both real NPC actions completed and returned to idle. Four camera gates still fail: whole-actor framing, actor pixels, supported-pose camera matrix and side controls. Physical contact proof remains separately scoped to published241 office, not inherited from these camera captures.
+
+Parent directly inspected Mrs front/back interact and Dapo completed idle. Clothes are visible at these views; Dapo is neutral idle. Mrs gesture retains deep bent knees and forward arm/drooping wrist; counter partially occludes back/right lower leg. Background legacy bodies remain. These images do not certify every look, real NPC gait or phone performance.

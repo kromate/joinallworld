@@ -563,9 +563,11 @@ async function phoneRun(size: { width: number; height: number }): Promise<Record
     await sleep(800);
     await j.shot('start');
     await reach('name field', '[data-qs-name]'); await reach('Play now', '[data-key="play-now"]'); await reach('Next', '[data-key="next"]');
-    await b.type('[data-qs-name]', 'Journey Phone');
+    // On the smallest screen the name field can sit behind the fixed footer; the start screen offers a suggested name, which is kept.
+    if (((report['controls'] as Record<string, any>)['name field'] ?? {}).reachable === false) report['nameFieldCoveredByFooter'] = true;
+    else await b.type('[data-qs-name]', 'Journey Phone');
     for (let at = 0; at < 4; at++) {
-      if (at === 3) { await reach('area Ikeja', '[data-key="area:ikeja"]'); await chooseIkeja(b); }
+      if (at === 3) { await b.waitFor(`!!document.querySelector('[data-key="area:ikeja"]')`, 60000, 'the area list'); await reach('area Ikeja', '[data-key="area:ikeja"]'); await chooseIkeja(b); }
       await b.click('[data-key="primary"], [data-key="next"]', undefined, 60000);
       await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === ${JSON.stringify(['look', 'spirit', 'home', 'ready'][at])}`, 60000, 'the next step');
       await reach(`${['look', 'spirit', 'home', 'ready'][at]} primary`, '[data-key="primary"]');
@@ -577,17 +579,28 @@ async function phoneRun(size: { width: number; height: number }): Promise<Record
     const outcome = await b.waitFor<string>(`(() => { const root = document.querySelector('[data-cr-root]'); if (window.__creatorMounts > 0 && root && root.dataset.step === 'who') return 'creator-back-at-start'; if (!root && document.querySelector('.hud-cash')) return 'settled'; return ''; })()`, 180000, 'the creator to finish or return');
     report['startOutcome'] = outcome;
     report['secondsStartYourLife'] = Math.round((Date.now() - t1) / 100) / 10;
-    if (outcome !== 'settled') {
-      await b.click('[data-key="play-now"]'); await gameShown(b); await dismiss(b);
-      await b.click('.hud-name'); await b.click('.sim-link', 'Make this life yours');
-      await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'spirit'`, 60000, 'the settle screen');
-      await b.click('[data-key="primary"]');
-      await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'home'`, 60000, 'the Home step');
-      await chooseIkeja(b); await b.click('[data-key="primary"]');
-      await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'ready'`, 60000, 'the Ready step');
-      await b.click('[data-key="primary"]', 'Start your life');
-      await until(async () => (await lifeRaw(b, 'lagos')).state?.onboarding?.done === true, 180000, 'the settled life');
+    let settledOnPhone = outcome === 'settled';
+    if (!settledOnPhone) {
+      try {
+        const tapped = Date.now();
+        await b.click('[data-key="play-now"]');
+        await b.waitFor(`!!document.querySelector('.hud-cash') && !document.querySelector('[data-cr-root]')`, 150000, 'the game screen with the wallet');
+        report['secondsPlayNowToGame'] = Math.round((Date.now() - tapped) / 100) / 10;
+        await dismiss(b);
+        report['hudNameVisible'] = await b.eval<boolean>(`[...document.querySelectorAll('.hud-name')].some((e) => e.getBoundingClientRect().width > 1)`);
+        await j.shot('guest-game');
+        await b.click('.hud-name', undefined, 8000); await b.click('.sim-link', 'Make this life yours');
+        await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'spirit'`, 60000, 'the settle screen');
+        await b.click('[data-key="primary"]');
+        await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'home'`, 60000, 'the Home step');
+        await chooseIkeja(b); await b.click('[data-key="primary"]');
+        await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'ready'`, 60000, 'the Ready step');
+        await b.click('[data-key="primary"]', 'Start your life');
+        await until(async () => (await lifeRaw(b, 'lagos')).state?.onboarding?.done === true, 180000, 'the settled life');
+        settledOnPhone = true;
+      } catch (error) { report['settleOnPhoneFailed'] = error instanceof Error ? error.message : String(error); await j.shot('settle-failed').catch(() => undefined); }
     }
+    if (!settledOnPhone) { report['controls'] = report['controls']; report['clippedOrUnreachable'] = Object.entries(report['controls'] as Record<string, any>).filter(([, v]) => !v.present || !v.inView || !v.reachable || v.clippedText).map(([k]) => k); report['consoleErrors'] = realErrors(b); writeFileSync(join(out, `${tag}.json`), JSON.stringify(report, null, 2)); b.close(); return report; }
     await gameShown(b); await dismiss(b);
     report['secondsToInteractiveGame'] = Math.round((Date.now() - t0) / 100) / 10;
     await j.shot('home');
@@ -622,7 +635,7 @@ async function phoneRun(size: { width: number; height: number }): Promise<Record
     const clipped = Object.entries(report['controls'] as Record<string, any>).filter(([, v]) => !v.present || !v.inView || !v.reachable || v.clippedText).map(([k]) => k);
     report['clippedOrUnreachable'] = clipped;
     report['consoleErrors'] = realErrors(b);
-  } catch (error) { report['aborted'] = error instanceof Error ? error.message : String(error); }
+  } catch (error) { report['aborted'] = error instanceof Error ? error.message : String(error); await j.shot('aborted').catch(() => undefined); }
   writeFileSync(join(out, `${tag}.json`), JSON.stringify(report, null, 2));
   b.close();
   return report;

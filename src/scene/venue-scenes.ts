@@ -372,7 +372,7 @@ interface Tied { spot?: string | null; friend?: boolean }
 type Placed = Point & Tied
 /** A crowd person with a reported position. */
 type LivePerson = CrowdPerson & { x: number; z: number };
-interface CanonicalVenueActor { readonly body: SkinnedBody; readonly talk: NativeExpressionController; dispose(): void }
+interface CanonicalVenueActor { readonly body: SkinnedBody; readonly talk: NativeExpressionController; interactionSeconds: number; dispose(): void }
 interface View {
   time: TimeOfDay; fixedTime: boolean; spot: string | null; look: unknown; lookKey: string; seed: unknown; name: string;
   pose: string; poseFixed: boolean; crowd: CrowdPerson[];
@@ -432,8 +432,8 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
   function syncNativeTalk(actor: CanonicalVenueActor, pose: 'idle' | 'interact') {
     const active = actor.talk.snapshot().active;
-    if (pose === 'interact' && !active) actor.talk.startTalk();
-    else if (pose === 'idle' && active) actor.talk.stop();
+    if (pose === 'interact' && !active) { actor.interactionSeconds = 0; actor.talk.startTalk(); }
+    else if (pose === 'idle' && active) { actor.talk.stop(); actor.interactionSeconds = 0; }
   }
   let placedCrowd: CrowdPerson[] = [], notifyCrowdChanged: (() => void) | null = null, crowdGateRejected = false;
   const canonicalCrowd = createCanonicalCrowd<CanonicalVenueActor>({
@@ -453,7 +453,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
         talk = createNativeExpressionController(body.object);
       }
       catch (error) { body.object.removeFromParent(); body.dispose(); throw error; }
-      return { body, talk, dispose() { talk.dispose(); body.object.removeFromParent(); body.dispose(); } };
+      return { body, talk, interactionSeconds: 0, dispose() { talk.dispose(); body.object.removeFromParent(); body.dispose(); } };
     },
     place(actor, spec) {
       actor.body.fit(spec.scale);
@@ -462,6 +462,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       actor.body.place(spec.x, spec.y, spec.z, spec.ry);
       actor.body.object.userData.nativeGameNpcPose = pose;
       syncNativeTalk(actor, pose);
+      if (pose === 'interact') actor.body.sampleUse('interact', actor.interactionSeconds);
       if (actor.body.object.parent === group) solveNativeNpcFeetOnVenueFloor(actor);
     },
     mount(actor, id) {
@@ -814,7 +815,11 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     for (const person of placedCrowd) {
       const id = String(person.id ?? ''), actor = canonicalCrowd.get(id);
       if (!actor || !actor.talk.snapshot().active) continue;
-      actor.talk.step(dt);
+      const delta = Number.isFinite(dt) ? Math.max(0, Math.min(1 / 30, dt)) : 0;
+      actor.interactionSeconds += delta;
+      actor.body.sampleUse('interact', actor.interactionSeconds);
+      solveNativeNpcFeetOnVenueFloor(actor);
+      actor.talk.step(delta);
       more = true;
     }
     return more || easing;
@@ -1364,6 +1369,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
           actor.body.show(pose, false);
           actor.body.object.userData.nativeGameNpcPose = pose;
           syncNativeTalk(actor, pose);
+          if (pose === 'interact') actor.body.sampleUse('interact', actor.interactionSeconds);
           solveNativeNpcFeetOnVenueFloor(actor);
         }
       }

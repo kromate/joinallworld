@@ -17,6 +17,7 @@ import { applyAuthoredEyeMaterial } from '../../eye-material.ts';
 import { createNativeHandPoseController } from '../../native-hand-pose.ts';
 import { createNativeWristOrientationController } from '../../native-wrist-orientation/native-wrist-controller.ts';
 import { createNativeHeadOrientationController } from '../../native-head-orientation.ts';
+import { createNativeInteractionGestureController } from '../../native-interaction-gesture.ts';
 import { applyAuthoredFootwear, type AuthoredFootwear } from '../../authored-footwear/presentation.ts';
 import { applyAuthoredClothingPacket, authoredBodyCoverageHideSet, type AuthoredClothingPacketLease } from '../../native-full-runtime-v1/apply-authored-clothing-packet-v1.ts';
 import shoeHideMap from '../../authored-footwear/out/shoes01-body-hide-map.json';
@@ -618,7 +619,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
   return { sample, solve, captureBaseline, dispose() { disposed = true; contacts.length = 0; } };
 }
 
-function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, neutralPose: NativeNeutralPose, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, headOrientation: ReturnType<typeof createNativeHeadOrientationController>, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
+function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, neutralPose: NativeNeutralPose, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, headOrientation: ReturnType<typeof createNativeHeadOrientationController>, interactionGesture: ReturnType<typeof createNativeInteractionGestureController> | undefined, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
   // Grounded IK may translate the pelvis when the source legs are already at
@@ -745,8 +746,12 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
         // Captured after family rest correction and before any pose. This keeps native bone
         // translations/lengths; actual shoe contacts, not the retargeter's body-sole estimate,
         // own the host floor correction below.
-        if (context.pose === 'idle' && context.clip === 'idle') {
+        if ((context.pose === 'idle' && context.clip === 'idle') || context.pose === 'interact') {
           neutralPose.apply();
+          if (context.pose === 'interact') {
+            if (!interactionGesture) throw new Error('Native interaction requires its measured upper-body gesture controller');
+            interactionGesture.apply(frame);
+          }
           // Translate the complete native rig to its actual authored shoe sole. This
           // preserves limb lengths; the ordinary strict contact/reach solver still runs.
           updateActorWorld(root);
@@ -963,6 +968,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
   let headOrientation: ReturnType<typeof createNativeHeadOrientationController> | undefined;
   let directionRetargeter: NativeDirectionRetargeter | undefined;
   let neutralPose: NativeNeutralPose | undefined;
+  let interactionGesture: ReturnType<typeof createNativeInteractionGestureController> | undefined;
   let actorDisposed = false;
   let unregisterFactoryClose: (() => boolean) | undefined;
   const clean = (errors: unknown[] = []): void => {
@@ -977,6 +983,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       () => headOrientation?.dispose(),
       () => solver?.dispose(),
       () => directionRetargeter?.dispose(),
+      () => interactionGesture?.dispose(),
       () => neutralPose?.dispose(),
       () => clothingPacket?.dispose(),
       () => footwear?.dispose(),
@@ -1049,6 +1056,15 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       directionRetargeter = createNativeDirectionRetargeter(character.object, { sourceRest: sampler.restLandmarks, floorY: 0 });
     }
     neutralPose = createNativeNeutralPose(character.object);
+    if (directionRetargeter) {
+      neutralPose.apply();
+      const idleClip = initialLook.body === 'woman' && sampler.durations.has('idle-female') ? 'idle-female' : 'idle';
+      const neutralSource = sampler.sampleClip(idleClip, 0, 'clamp');
+      interactionGesture = createNativeInteractionGestureController(character.object, {
+        sourceRestLandmarks: sampler.restLandmarks, sourceNeutralLandmarks: neutralSource.landmarks,
+      });
+      neutralPose.restore();
+    }
     hands = createNativeHandPoseController(character.object);
     wrists = createNativeWristOrientationController(character.object, sampler.restWristRotations);
     headOrientation = createNativeHeadOrientationController(character.object, sampler.restHeadRotation);
@@ -1115,7 +1131,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     };
     let lastDirectionContactSolve: FootSolveResult | null = null;
     const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, neutralPose, contacts, seatSurface, restAdapter,
-      options.stairContactHeightAt, hands, wrists, headOrientation, resolveClip, (result) => { lastDirectionContactSolve = result; });
+      options.stairContactHeightAt, hands, wrists, headOrientation, interactionGesture, resolveClip, (result) => { lastDirectionContactSolve = result; });
     const native = createNativeFullRuntime({
       actor: {
         object: character.object,

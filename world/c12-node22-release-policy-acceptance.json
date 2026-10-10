@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:31:48.580441+00:00",
+  "decision": "ACCEPT_SCOPED_ORIGINAL_NODE22_GAME_AND_TWO_DISTINCT_POLICY_PHASES",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "publicationCommit": "51c5d1db389e2ec647af78c58af5ece912b34fbb",
+  "records": [
+    {
+      "label": "node22-game-corrected-full",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "python3",
+        "/workspace/remote-verification/lease-phase-guard.py",
+        "node",
+        "--experimental-strip-types",
+        "scripts/node-test-plan.ts",
+        "game"
+      ],
+      "nodeVersion": "v22.23.3",
+      "exitStatus": 0,
+      "startedAtUtc": "2026-10-10T04:01:26.263917+00:00",
+      "endedAtUtc": "2026-10-10T04:23:26.830499+00:00",
+      "wrapperDurationSeconds": 1320.566582,
+      "receipt": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-final-node22-release-policy/node22-game-corrected-full/receipt.json",
+        "bytes": 2572,
+        "sha256": "cb5fa6c0affc78db44132d3c3e6a836dbc6117f6e32c261e29ed4cb1534d811e"
+      },
+      "log": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-final-node22-release-policy/node22-game-corrected-full/command.log",
+        "bytes": 710929,
+        "sha256": "0a7fbed005a10400ab7a4ade16f93360d4b785afa8d9307e3f1aaf2cc572f22d"
+      },
+      "counts": {
+        "tests": 2589,
+        "pass": 2588,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 1,
+        "todo": 0
+      },
+      "skippedResultLines": [
+        "ok 1738 - paid gradual gains require a nonrefundable start charge, including choices and XP # SKIP design conflict: this branch meters priced per-second activities instead of forbidding them"
+      ],
+      "headAfter": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "statusAfter": "",
+      "sourcePinsBefore": {},
+      "sourcePinsAfter": {}
+    },
+    {
+      "label": "release-policy-package-guard",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "python3",
+        "/workspace/remote-verification/lease-phase-guard.py",
+        "node",
+        "--test",
+        "scripts/guard-joinallworld-package.test.mjs"
+      ],
+      "nodeVersion": "v24.19.0",
+      "exitStatus": 0,
+      "startedAtUtc": "2026-10-10T04:23:27.205071+00:00",
+      "endedAtUtc": "2026-10-10T04:23:28.746480+00:00",
+      "wrapperDurationSeconds": 1.541409,
+      "receipt": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-final-node22-release-policy/release-policy-package-guard/receipt.json",
+        "bytes": 2564,
+        "sha256": "337abea775eb8e25ec64ca97f0a91833cd6b6316850ab4c813e690a7bfb8b30d"
+      },
+      "log": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-final-node22-release-policy/release-policy-package-guard/command.log",
+        "bytes": 712,
+        "sha256": "e89061568944ed828cbd8b5641bd3bb8832a11d3c440f0b8e6e12d4a994c7dc5"
+      },
+      "counts": {},
+      "skippedResultLines": [],
+      "headAfter": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "statusAfter": "",
+      "sourcePinsBefore": {},
+      "sourcePinsAfter": {}
+    },
+    {
+      "label": "release-policy-plan-inventory",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "python3",
+        "/workspace/remote-verification/lease-phase-guard.py",
+        "node",
+        "--experimental-strip-types",
+        "scripts/node-test-plan.ts",
+        "--plan"
+      ],
+      "nodeVersion": "v24.19.0",
+      "exitStatus": 0,
+      "startedAtUtc": "2026-10-10T04:23:28.893538+00:00",
+      "endedAtUtc": "2026-10-10T04:23:29.157159+00:00",
+      "wrapperDurationSeconds": 0.263621,
+      "receipt": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-final-node22-release-policy/release-policy-plan-inventory/receipt.json",
+        "bytes": 2581,
+        "sha256": "556952882c9d45c4ec72ac0a9ad47d529d5b7904f7b4f6b8777d68c227964df7"
+      },
+      "log": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-final-node22-release-policy/release-policy-plan-inventory/command.log",
+        "bytes": 1045,
+        "sha256": "d1b8bd1242ee4bebb85e4d9c0c00b68790a1db436a2cd333d032690a4e8fc786"
+      },
+      "counts": {},
+      "skippedResultLines": [],
+      "headAfter": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "statusAfter": "",
+      "sourcePinsBefore": {},
+      "sourcePinsAfter": {}
+    }
+  ],
+  "originalNode24": {
+    "status": "FAIL_PRESERVED",
+    "counts": {
+      "tests": 2589,
+      "pass": 2587,
+      "fail": 1,
+      "skip": 1
+    },
+    "diagnosis": "world/c12-reconnect-zero-delay-diagnosis.json"
+  },
+  "limits": [
+    "Full Node22 raw output was parsed: exactly2589 result lines, zero not-ok lines, one explicit skip. This proves this Node22 phase only.",
+    "Original wrappers report clean exact c12 HEAD but per-file before/after pin maps are empty; no complete runtime byte attestation inferred.",
+    "Package guard is one reported test-file result; no invented assertion count. --plan is a partition inventory, not execution of those partitions.",
+    "Original Node24 failure is not relabeled or replaced by Node22 success. Scene-loader variant and five actual browser journeys still lack acceptance.",
+    "No new build, tests, browser, SQLite, funding or stage launched during this review."
+  ]
+}

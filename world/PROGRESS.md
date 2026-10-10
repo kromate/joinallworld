@@ -1,11 +1,11 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T04:09:48.910005+00:00
+Updated: 2026-10-10T04:32:18.842464+00:00
 
-The previous goal turn made progress: exact reconnect failure classification
-and cancellation evidence were accepted and pushed. This turn reviewed the latest
-lazy provider source and found its Nigeria-return selector is blocked. Its source
-correction can proceed separately from deploying the current country batch.
+The previous status-only turn made no goal progress. This turn verified the
+original Node22 full-game output and two distinct policy phases, and found a
+concrete receipt-format bug in the browser verification helper. The same existing
+cloud owner received the correction; no new local heavy worker was launched.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -60,22 +60,30 @@ package passed its actual on-disk guard. Its own sealed run is terminal with
 
 Its artifact read returned Forbidden, retained as a transport gap. The package
 was independently produced from already owned c12 source and compiled output.
-The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) was approved
-in design. Existing cloud operator `/root/country_browser_astra` has repair turn
-`01a123f6-a36d-73da-9dda-dd51c518812c`; requested Astra identity remains distinct
-from an unexposed backend model ID. Its frozen controller needs four corrections:
-preflight termination, CDP screenshot limits, both browser origins before onboarding,
-and actual owned-home arrival. [Exact review](c12-browser-controller-review.json).
-The concrete owner mailbox helper is also required before launch; schema alone
-cannot fund, audit or restart the stage. No browser launch is approved.
+The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) is pinned.
+The existing Cloud Astra operator completed the V3 controller/helper source packet
+at public `b7eea09360e020c30c1ae2cbf22894026c43c7d8`. Integration's reused Astra
+review closed F1–F4 at source-design scope only. The owner helper still needs
+H1 authenticated guest-ID binding, H2 protected-state and cross-actor comparisons,
+and H3 a dispatch-time restart deadline check. Root also found H4: normal browser
+activities put their ID in the payload and concatenate that payload into the
+receipt fingerprint; the helper assumes one JSON array with a top-level ID.
+The same existing operator owns these corrections. No browser launch is approved.
+[Full V3 review](c12-browser-controller-v3-review.json),
+[receipt protocol finding](c12-browser-owner-protocol-review.json),
+[activity path precheck](c12-browser-activity-source-precheck.json).
 
-The original Node 24 full-game suite ended with exit 1 after 1,272 seconds.
-Root verified the full raw log: 2,587 passes, one failure and one skip. A zero
-jitter delay bypasses the test's fake timer Map; all three files match live C1.
-[Source diagnosis](c12-reconnect-zero-delay-diagnosis.json). The bounded diagnostic passed for real 0ms and 500ms timers, with exact raw
-hashes verified. The original full suite remains failed; this qualifies its
-cause and does not establish complete release acceptance.
-Other already accepted checks will not be repeated without a source change.
+The original Node24 full-game suite remains failed: 2,587 pass, one fail, one skip.
+Its zero-delay reconnect harness failure has a verified scoped diagnosis and
+cancellation diagnostic, not a relabeled passing suite.
+[Diagnosis](c12-reconnect-zero-delay-diagnosis.json).
+Root now verified the published original Node22 full-game log: 2,588 pass,
+zero fail, one explicit design-conflict skip; exit0 after 1,320.567 seconds.
+The distinct package guard and test partition inventory also ended with exit0.
+Their exact receipt/log hashes match. Wrapper per-file pin maps are empty, an
+explicit limitation. The scene-loader variant remains separate and unaccepted.
+[Node22 and policy evidence](c12-node22-release-policy-acceptance.json).
+No unchanged broad suite was rerun for this report.
 
 The separate combined source `3e3e0876fc50f3166a0d0968f8616b577da27870`
 preserves route values, but its measured startup gzip/Brotli exceed the existing
@@ -91,7 +99,7 @@ This is future scaling work, not a defect deployed to production.
 
 ## Next actions, in order
 
-1. Review the actual immutable browser controller, operator binding and enforced limits.
+1. Review the same owner’s corrected helper/controller successor for H1–H4; retain existing bounds.
 2. Complete all five actual browser journeys, phone-width controls, restart and
    saved-state checks; inspect the remaining required source-matrix evidence.
 3. Synchronize with main, deploy the accepted country batch, and verify 16 live
@@ -100,7 +108,7 @@ This is future scaling work, not a defect deployed to production.
    remaining Africa and the global pipeline. Lazy metadata, Moroni acquisition
    durability, regional conditions and later photorealism remain in scope.
 
-The main allowance is 7% remaining at the latest actual sample. Stop new work
+The main allowance is 6% remaining at the latest actual sample. Stop new work
 at 4% remaining and use that reserve for safe checkpoints and reporting.
 There is no clock cutoff or extra-spend authorization.
 

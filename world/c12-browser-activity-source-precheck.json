@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:22:15.487663+00:00",
+  "decision": "ACCEPT_STATIC_ACTIVITY_PATH_PRECHECK_NOT_RUNTIME_ACCEPTANCE",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "pins": [
+    {
+      "path": "src/game/cities/contentBuilder.ts",
+      "bytes": 15771,
+      "sha256": "12a451def9e37c99c936dc7d8fd510f33e297cdf8c35847f325ff23bfb2d445e"
+    },
+    {
+      "path": "src/game/cities/africa/contentBuilder.ts",
+      "bytes": 13559,
+      "sha256": "8bce9bcc63af77a94b020c84e3f3820665a8f52e49f7de9fb6196f31bb0b9e68"
+    },
+    {
+      "path": "src/game/systems/activities.ts",
+      "bytes": 31060,
+      "sha256": "a22bdbba4ba4a936fa6abd14abfda7f2672d7364e22ab898a438ac6957feb98a"
+    },
+    {
+      "path": "src/app/features/venue/VenueActions.vue",
+      "bytes": 4992,
+      "sha256": "a04a8f202429ae46d64439e52abb1c7e24b5f769e951264e8f29444582172dd4"
+    }
+  ],
+  "cityContentPins": [
+    {
+      "city": "cairo",
+      "path": "src/game/cities/cairo/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae",
+      "usesReviewedSharedBuilder": true
+    },
+    {
+      "city": "rabat",
+      "path": "src/game/cities/rabat/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae",
+      "usesReviewedSharedBuilder": true
+    },
+    {
+      "city": "kigali",
+      "path": "src/game/cities/kigali/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae",
+      "usesReviewedSharedBuilder": true
+    },
+    {
+      "city": "kampala",
+      "path": "src/game/cities/kampala/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae",
+      "usesReviewedSharedBuilder": true
+    },
+    {
+      "city": "lusaka",
+      "path": "src/game/cities/lusaka/content.ts",
+      "bytes": 159,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae",
+      "usesReviewedSharedBuilder": true
+    }
+  ],
+  "sourceSupportedPath": {
+    "arrival": "arrive selects venue first spot unless a valid explicit spot is supplied",
+    "airportSpot": "arrival / Visitor information",
+    "activity": "Read visitor information",
+    "defaultDefinitionCost": 0,
+    "defaultDefinitionSeconds": 8,
+    "visibleControls": "VenueActions renders button.life-action, life-action-title, life-action-meta duration and price; controller must inspect actual rendered enabled unique Free quote"
+  },
+  "nextAction": "Existing corrected controller may retain ordinary arrival activity selection; do not add artificial spot/state/action injection for an absent source defect. Review actual controller/helper before finite stage; actual visible quote and completed action owner witness remain mandatory.",
+  "limits": [
+    "Static shared content defaults do not prove actual activity price/duration or enabled state after server modifiers.",
+    "No browser, stage, SQLite, network, game action, funding or restart executed by this precheck.",
+    "No five-city journey or production acceptance."
+  ]
+}

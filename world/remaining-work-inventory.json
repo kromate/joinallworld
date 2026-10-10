@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAtUtc": "2026-10-10T04:12:29.172088+00:00",
+  "observedAtUtc": "2026-10-10T04:32:18.842464+00:00",
   "owner": "WORLD",
   "goalStatus": "active",
   "productionCountries": 11,
@@ -9,8 +9,8 @@
     "timeCutoff": null,
     "reserve": "final4% for checkpoint/push/inventory/reporting",
     "spend": "zero extra spend; existing authorized included cloud only",
-    "source": "WORLD direct actual account query2026-10-10 after04:09UTC:93 percent used,7 remaining",
-    "latestRemainingPercent": 7
+    "source": "WORLD direct actual account query2026-10-10 after04:28UTC:94 percent used,6 remaining",
+    "latestRemainingPercent": 6
   },
   "completed": [
     {
@@ -83,6 +83,13 @@
       "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
       "evidence": "world/c12-reconnect-zero-delay-diagnosis.json; public7d2fd3fe raw original suite and diagnostic",
       "scope": "Scoped diagnosis only; original2587PASS/1FAIL/1SKIP suite remainsfailed. No browser/network/production acceptance or runtimeedit."
+    },
+    {
+      "id": "WORLD-C12-NODE22-POLICY",
+      "outcome": "Original full Node22 raw output independently verified2588PASS/0FAIL/1design-conflictSKIP; package guard and --plan inventory exit0, exact raw hashes match",
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "evidence": "world/c12-node22-release-policy-acceptance.json",
+      "scope": "These three phases only; empty wrapper per-file pin maps disclosed, original Node24 FAIL unchanged, no browser/scene-loader/deployment acceptance"
     }
   ],
   "remainingOrderedEasiestToHardest": [
@@ -108,8 +115,8 @@
       "kind": "incomplete acceptance",
       "difficulty": 2,
       "owner": "existing cloud country execution, Integration reviews",
-      "repro": "Fourteen exact-source phases accepted. OriginalNode24full-game terminalexit1, actual2589tests/2587PASS/1FAIL/1SKIP. Root fullraw7d2fd3fe review acceptedzero-delayharnessclassification and0.295433s realtimer cancellation diagnostic for0ms/500ms against cleanc12. Originalfullsuite remainsfailed; Node22fullgame/distinct release-policy/scene-loader variant remain separately unverified.",
-      "evidence": "world/third-five-c1-cloud-runtime-gate-review.json; world/c12-release-corpus-inventory.json; world/c12-reconnect-zero-delay-diagnosis.json",
+      "repro": "Original Node22 game2588PASS0FAIL1SKIP and two distinct policy phases now independently accepted from51c5d1db raw receipt/logs. Original Node24 game2587PASS1FAIL1SKIP retained; zero-delay harness diagnosis separately accepted. Scene-loader variant remains unaccepted.",
+      "evidence": "world/third-five-c1-cloud-runtime-gate-review.json; world/c12-release-corpus-inventory.json; world/c12-reconnect-zero-delay-diagnosis.json; world/c12-node22-release-policy-acceptance.json",
       "impact": "Sixteen-country release not ready",
       "files": [
         ".github/workflows/ci.yml",
@@ -129,8 +136,8 @@
       "kind": "incomplete user-path evidence",
       "difficulty": 3,
       "owner": "existing cloud /root/country_browser_astra (accepted gpt-6-astra/high request); Integration local Astra controller review; WORLD owner funding/restart",
-      "repro": "All5browsercityjourneys unvisited. Cloud own-seal accepted14checks/15cities/31assets/restart144672ms. Complete7file helper closure accepted. Frozen controller214e review MODIFY requiresF1preflightwatchdog,F2CDP10s/screenshot15s,F3both origins before onboarding,F4actual rendered owned-home arrival. SAME CloudAstra repair turn01a123f6-a36d-73da-9dda-dd51c518812c inprogress with no runtime launch claim. Concrete owner mailbox helper remains required.",
-      "evidence": "world/c12-cloud-sealed-acceptance.json; world/c12-browser-toolchain-review.json; world/REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md; world/c12-browser-controller-review.json",
+      "repro": "All5 browsercityjourneys unvisited. Exact immutable V3 packet b7ee reviewed by reused Integration Astra; F1\u2013F4 closed at source-design scope only. Owner helper H1 guestID/auth binding, H2 protected/cross-actor checks, H3 restart dispatch guard remain. Root H4 normal activity payload fingerprint comparison is incorrect. Same existing Cloud Astra owns corrections; no runtime launch accepted.",
+      "evidence": "world/c12-cloud-sealed-acceptance.json; world/c12-browser-toolchain-review.json; world/REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md; world/c12-browser-controller-review.json; world/c12-browser-controller-v3-review.json; world/c12-browser-owner-protocol-review.json; world/c12-browser-activity-source-precheck.json",
       "impact": "Cannot yet claim five new destinations render/play and preserve real browser saves",
       "files": [
         "world/tooling/verify-sealed-africa.mjs"

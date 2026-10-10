@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:30:58.059677+00:00",
+  "decision": "MODIFY_HELPER_BEFORE_RUNTIME_LAUNCH",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "publicationCommit": "b7eea09360e020c30c1ae2cbf22894026c43c7d8",
+  "helper": {
+    "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-astra-v3-owner-source-only/astra-owner-helper/world-owner-mailbox.v1.mjs",
+    "bytes": 27428,
+    "sha256": "1968cd84614cf06c89166f605089db611fd91f129a029557ce623c96846e3201"
+  },
+  "findings": [
+    {
+      "id": "H4",
+      "priority": "P1",
+      "title": "Activity verification assumes an obsolete request and fingerprint shape",
+      "evidence": [
+        "VenuePanel.vue:74 sends normal command(activity, {id:card.id}); client.ts:643 places this in payload, with no top-level id. outgoing(activity,payload) retains payload.",
+        "protocol.ts:128-130 concatenates JSON([cityId,type,id,mode]) with canonical JSON payload. Missing top-level id and mode become null in the array.",
+        "core.ts:258-266 uses ordinary action authority, with no prefix. once.ts:170 bounds fingerprints longer than the existing limit.",
+        "Helper receiptType at line41 attempts JSON.parse on the complete concatenated fingerprint. Its verify-local-activity-result branch at line52 repeats the parse and compares array element2 to the observed activity ID. Neither matches the normal browser request.",
+        "types.ts:42 notes Worker receipts omit type, which makes receiptType reject such a fingerprint before the later ID check. A stored type alone would not fix the later parse/ID check."
+      ],
+      "derivedExample": {
+        "activityId": "cairo-arrival-info",
+        "fullFingerprint": "[\"cairo\",\"activity\",null,null]{\"id\":\"cairo-arrival-info\"}",
+        "length": 57,
+        "jsonParseDiagnostic": "Extra data at character 30",
+        "scope": "Derived from exact source; no actual stored receipt or browser completion claimed."
+      },
+      "fix": "Same existing Cloud Astra owner should match exact canonical full or bounded fingerprint of normal UI activity payload {id:witness.id}, with city/type and the successful receipt ID tied to the observed natural action witness. Pin and reuse canonical server fingerprint/bounding logic or a narrowly reviewed exact equivalent. Do not change game request/receipt formats, submit actions outside the normal UI, or weaken the successful completion proof."
+    }
+  ],
+  "limits": [
+    "Source analysis and isolated JSON parsing only; no reviewed executable run, browser, HTTP, SQLite, funding, stage or restart.",
+    "Earlier source supported arrival/activity defaults remain valid; this is a verification helper defect.",
+    "Controller bounds and all gameplay source remain unchanged. Runtime launch remains held until corrected immutable source is reviewed."
+  ],
+  "pins": [
+    {
+      "path": "src/app/features/venue/VenuePanel.vue",
+      "bytes": 8796,
+      "sha256": "ed723edbfbf79144a6a5d08037f39d58970feb17fc5c41dae3d068e651e2968a"
+    },
+    {
+      "path": "src/client.ts",
+      "bytes": 51782,
+      "sha256": "d0f2da50b4f9df4525d08cb89e971601a82d0528383d5039ce70aacceb544b32"
+    },
+    {
+      "path": "server/protocol.ts",
+      "bytes": 20727,
+      "sha256": "27742061f222dc021d6882a9f2a2372a3eb30c3b40ebdde7b5b909462a59dbf5"
+    },
+    {
+      "path": "server/routes/core.ts",
+      "bytes": 21160,
+      "sha256": "322c1409c63dfaffb3da34ad74923622770e3bfebfa429afeacb661dff6ff5be"
+    },
+    {
+      "path": "server/routes/once.ts",
+      "bytes": 14048,
+      "sha256": "197e5499c469b4e28a3aefa4698ec3838b86325a4f1aae88b97756a2c235451f"
+    },
+    {
+      "path": "server/types.ts",
+      "bytes": 72039,
+      "sha256": "59eaee81667763b6d36bf3bf12f4b1611c5ca0ffebed28dc096b060cf9f969c0"
+    },
+    {
+      "path": "src/game/cities/africa/contentBuilder.ts",
+      "bytes": 13559,
+      "sha256": "8bce9bcc63af77a94b020c84e3f3820665a8f52e49f7de9fb6196f31bb0b9e68"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ export const FACTS = {
   },
   "state": {
     "idunique": "ug-starter",
-    "name": "Starter zone"
+    "name": "Kampala"
   },
   "timezone": "Africa/Kampala",
   "centre": {
@@ -24,13 +24,18 @@ export const FACTS = {
     "sourceUrl": "https://ourairports.com/airports/HUEN/"
   },
   "sourceLabel": "Natural Earth, OpenStreetMap contributors and OurAirports dataset",
-  "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=32.578378,0.315605,32.584378,0.321605",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
   "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
   "bounds": [
-    32.431501,
-    0.030386,
-    32.596378,
-    0.333605
+    32.42,
+    0.02,
+    32.66,
+    0.4
   ],
-  "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."
+  "coverageNote": "Kampala and the way south to the airport at Entebbe: a sketch of the built-up extent traced from mapped land use (not an administrative boundary), Lake Victoria as a band along its shore with the other water mapped nearby, main roads and named places mapped in OpenStreetMap. The airport coordinates are an OurAirports dataset point, not an official reference point or evidence of current operations or schedules. Visitor services and homes are fictional game content set at the real named places.",
+  "names": {
+    "area": "Kampala",
+    "unit": "district",
+    "roadHub": "Buganda Bus Park"
+  }
 } satisfies DestinationFacts

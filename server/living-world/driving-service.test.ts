@@ -137,18 +137,25 @@ test('reverse issuance is literal trusted true; OFF refuses atomically and retai
   f.advance(100)
   const accepted = await post(f, `${drivingPath}/input`, reversePacket, player.cookie)
   assert.deepEqual([accepted.ok, accepted.session?.state.gear, accepted.reverseGearControls], [true, 'reverse', true])
+  f.advance(100)
+  const nextPacket = { ...reversePacket, sequence: 2, frames: [{ throttle: 0, brake: 1, steer: 0, gear: 'forward' }] }
+  const secondAccepted = await post(f, `${drivingPath}/input`, nextPacket, player.cookie)
+  assert.deepEqual([secondAccepted.ok, secondAccepted.session?.nextSequence], [true, 3])
   const committed = await row() as Record<string, unknown> & { v: number; revision: number; state: unknown; creditMs: number; updatedAt: number }
   assert.equal(committed.v, 2)
 
   modes.select(1)
   f.advance(1600)
-  const exactRetry = await post(f, `${drivingPath}/input`, reversePacket, player.cookie)
+  const exactRetry = await post(f, `${drivingPath}/input`, nextPacket, player.cookie)
   assert.deepEqual([exactRetry.ok, exactRetry.duplicate, exactRetry.code, Object.hasOwn(exactRetry, 'reverseGearControls')], [true, true, 'controls_accepted', false])
   assert.deepEqual(await row(), committed, 'a successful exact retry after timeout does not pause, spend credit or rewrite the driving row')
-  const conflict = await post(f, `${drivingPath}/input`, { ...reversePacket, frames: [{ throttle: 0.5, brake: 0, steer: 0, gear: 'reverse' }] }, player.cookie)
+  const conflict = await post(f, `${drivingPath}/input`, { ...nextPacket, frames: [{ throttle: 0.5, brake: 0, steer: 0, gear: 'forward' }] }, player.cookie)
   assert.deepEqual([conflict.ok, conflict.code], [false, 'packet_conflict'])
   assert.deepEqual(await row(), committed, 'a conflicting retry does not mutate the saved row')
-  const newGear = await post(f, `${drivingPath}/input`, { ...reversePacket, sequence: 2, frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }] }, player.cookie)
+  const oldUnretained = await post(f, `${drivingPath}/input`, reversePacket, player.cookie)
+  assert.deepEqual([oldUnretained.ok, oldUnretained.code], [false, 'sequence_conflict'], 'an older explicit packet outside the retained receipt is a sequence conflict while OFF')
+  assert.deepEqual(await row(), committed, 'an unretained old packet cannot mutate the saved row')
+  const newGear = await post(f, `${drivingPath}/input`, { ...reversePacket, sequence: 3, frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }] }, player.cookie)
   assert.deepEqual([newGear.ok, newGear.code], [false, 'reverse_gear_disabled'])
   assert.deepEqual(await row(), committed, 'OFF refuses new explicit forward gear without upgrading or mutating v2')
 
@@ -161,7 +168,7 @@ test('reverse issuance is literal trusted true; OFF refuses atomically and retai
     revision: loaded.session!.revision }, player.cookie)
   assert.deepEqual([resumed.ok, resumed.code, Object.hasOwn(resumed, 'reverseGearControls')], [true, 'resumed', false])
   f.advance(100)
-  const legacyForward = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: journey.journeyId, sequence: 2,
+  const legacyForward = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: journey.journeyId, sequence: 3,
     frames: [{ throttle: 1, brake: 0, steer: 0 }] }, player.cookie)
   assert.deepEqual([legacyForward.ok, legacyForward.session?.state.gear, (await row() as { v: number }).v], [true, 'forward', 2],
     'OFF accepts an old three-field forward frame on v2 and keeps the v2 writer shape')

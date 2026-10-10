@@ -9,7 +9,7 @@ export const FACTS = {
   },
   "state": {
     "idunique": "zm-starter",
-    "name": "Starter zone"
+    "name": "Lusaka"
   },
   "timezone": "Africa/Lusaka",
   "centre": {
@@ -24,13 +24,18 @@ export const FACTS = {
     "sourceUrl": "https://ourairports.com/airports/FLLS/"
   },
   "sourceLabel": "Natural Earth, OpenStreetMap contributors and OurAirports dataset",
-  "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=28.278382,-15.417698,28.284382,-15.411698",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
   "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
   "bounds": [
-    28.266382,
-    -15.429698,
-    28.464722,
-    -15.318833
+    28.2,
+    -15.5,
+    28.5,
+    -15.3
   ],
-  "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."
+  "coverageNote": "Lusaka from Chilenje and Makeni to the way out to the airport: a sketch of the built-up extent traced from mapped land use (not an administrative boundary), the small lakes and dams mapped as water, main roads and named places mapped in OpenStreetMap. The airport coordinates are an OurAirports dataset point, not an official reference point or evidence of current operations or schedules. Visitor services and homes are fictional game content set at the real named places.",
+  "names": {
+    "area": "Lusaka",
+    "unit": "district",
+    "roadHub": "Intercity Bus Terminal"
+  }
 } satisfies DestinationFacts

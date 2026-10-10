@@ -25,12 +25,24 @@ for (const [npcId, activity] of activities) {
   for (const sample of samples) {
     if (sample.npcId !== npcId) failures.push(`${npcId}/${sample.phase}: sample identity mismatch`);
     if (sample.contactCallback !== 'SceneEntry.walk.contactHeightAt') failures.push(`${npcId}/${sample.phase}: wrong host surface callback`);
+    const hostSolve = sample.nativeVenueFootContactSolve;
+    const expectedPose = sample.phase === 'during-interaction' ? 'interact' : 'idle';
+    if (!hostSolve || hostSolve.pose !== expectedPose || !finite(hostSolve.sampledPointCount)
+      || hostSolve.sampledPointCount <= 0 || !finite(hostSolve.maxError)
+      || hostSolve.corrected !== 2 || hostSolve.limited !== false
+      || hostSolve.targetClearanceMeters !== 0.016) {
+      failures.push(`${npcId}/${sample.phase}: missing post-mount native host solve evidence`);
+    }
     if (!finite(sample.contactTargetClearanceMeters) || sample.contactTargetClearanceMeters < 0) {
       failures.push(`${npcId}/${sample.phase}: missing callback target clearance`);
     }
     if (!Array.isArray(sample.sides) || sample.sides.length !== 2) {
       failures.push(`${npcId}/${sample.phase}: expected both shoe sides`);
       continue;
+    }
+    const sideIds = sample.sides.map((side) => side.side);
+    if (new Set(sideIds).size !== 2 || !['left', 'right'].every((side) => sideIds.includes(side))) {
+      failures.push(`${npcId}/${sample.phase}: expected exactly left and right shoe IDs`);
     }
     for (const side of sample.sides) {
       const label = `${npcId}/${sample.phase}/${side.side}`;
@@ -69,8 +81,9 @@ for (const [npcId, activity] of activities) {
       const minimumSignedPhysicalGap = physicalGaps.length ? Math.min(...physicalGaps) : null;
       const nearestAbsoluteCallbackResidual = callbackResiduals.length ? Math.min(...callbackResiduals.map(Math.abs)) : null;
       const legReach = side.nativeLegReach;
-      const legReachPass = finite(legReach?.requestedAnkleReach) && finite(legReach?.maximumLegReach)
-        && legReach.requestedAnkleReach <= legReach.maximumLegReach + 0.002;
+      const legReachPass = finite(legReach?.physicalVerticalCorrection) && finite(legReach?.physicalRequestedAnkleReach)
+        && finite(legReach?.maximumLegReach)
+        && legReach.physicalRequestedAnkleReach <= legReach.maximumLegReach + 0.002;
       if (!legReachPass) failures.push(`${label}: floor-corrected ankle exceeds measured native leg reach`);
       if (nearestAbsolutePhysicalGap === null || nearestAbsolutePhysicalGap > 0.004) {
         failures.push(`${label}: no sole candidate lies within 4 mm of the callback-derived scene floor`);
@@ -83,7 +96,11 @@ for (const [npcId, activity] of activities) {
         nearestAbsoluteCallbackResidual, nearestAbsolutePhysicalGap, minimumSignedPhysicalGap,
         withinFourMillimeters: nearestAbsolutePhysicalGap !== null && nearestAbsolutePhysicalGap <= 0.004
           && minimumSignedPhysicalGap !== null && minimumSignedPhysicalGap >= -0.004,
-        requestedAnkleReach: legReach?.requestedAnkleReach, maximumLegReach: legReach?.maximumLegReach,
+        physicalVerticalCorrection: legReach?.physicalVerticalCorrection,
+        physicalRequestedAnkleReach: legReach?.physicalRequestedAnkleReach,
+        callbackVerticalCorrection: legReach?.callbackVerticalCorrection,
+        callbackRequestedAnkleReach: legReach?.callbackRequestedAnkleReach,
+        maximumLegReach: legReach?.maximumLegReach,
         nativeLegReachPass: legReachPass });
     }
   }

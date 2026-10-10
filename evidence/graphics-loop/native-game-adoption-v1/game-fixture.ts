@@ -188,12 +188,20 @@ function sampleNativeNpcSoles(root: THREE.Object3D, entry: SceneEntry, phase: st
     const bonePosition = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(parentInverse);
     const hipPosition = bonePosition(thigh), kneePosition = bonePosition(calf), anklePosition = bonePosition(ankle);
     const upperLength = hipPosition.distanceTo(kneePosition), lowerLength = kneePosition.distanceTo(anklePosition);
-    const lowestSupportedSample = evaluated.reduce<typeof evaluated[number] | null>((lowest, point) =>
-      point.callbackTargetY !== null && (!lowest || point.y < lowest.y) ? point : lowest, null);
-    const targetAnklePosition = !lowestSupportedSample ? null
-      : anklePosition.clone().add(new THREE.Vector3(0,
-        lowestSupportedSample.callbackTargetY! - actualLowestSoleY, 0));
-    const requestedAnkleReach = targetAnklePosition ? hipPosition.distanceTo(targetAnklePosition) : null;
+    const floorCorrections = evaluated.filter((point) => point.sceneFloorY !== null
+      && Number.isFinite(point.sceneFloorY) && Number.isFinite(point.y))
+      .map((point) => point.sceneFloorY! - point.y);
+    const physicalVerticalCorrection = floorCorrections.length ? Math.max(...floorCorrections) : null;
+    const callbackCorrections = evaluated.filter((point) => point.callbackTargetY !== null
+      && Number.isFinite(point.callbackTargetY) && Number.isFinite(point.y))
+      .map((point) => point.callbackTargetY! - point.y);
+    const callbackVerticalCorrection = callbackCorrections.length ? Math.max(...callbackCorrections) : null;
+    const physicalTargetAnklePosition = physicalVerticalCorrection === null ? null
+      : anklePosition.clone().add(new THREE.Vector3(0, physicalVerticalCorrection, 0));
+    const callbackTargetAnklePosition = callbackVerticalCorrection === null ? null
+      : anklePosition.clone().add(new THREE.Vector3(0, callbackVerticalCorrection, 0));
+    const physicalRequestedAnkleReach = physicalTargetAnklePosition ? hipPosition.distanceTo(physicalTargetAnklePosition) : null;
+    const callbackRequestedAnkleReach = callbackTargetAnklePosition ? hipPosition.distanceTo(callbackTargetAnklePosition) : null;
     const maximumLegReach = upperLength + lowerLength;
     return { side, authoredFootVertexMinY, soleCandidateCount: soleVertices.length,
       actualLowestSoleY, supportBandMeters: SOLE_SUPPORT_BAND_METERS,
@@ -213,11 +221,13 @@ function sampleNativeNpcSoles(root: THREE.Object3D, entry: SceneEntry, phase: st
         && nearestAbsoluteGapToSceneFloor !== null && nearestAbsoluteGapToSceneFloor <= 0.004
         && minimumSignedGapToSceneFloor !== null && minimumSignedGapToSceneFloor >= -0.004,
       nativeLegReach: { upperLength, lowerLength, actualAnkleReach: hipPosition.distanceTo(anklePosition),
-        requestedAnkleReach, maximumLegReach,
-        withinReach: requestedAnkleReach !== null && requestedAnkleReach <= maximumLegReach + 0.002 } };
+        physicalVerticalCorrection, physicalRequestedAnkleReach, callbackVerticalCorrection,
+        callbackRequestedAnkleReach, maximumLegReach,
+        withinReach: physicalRequestedAnkleReach !== null && physicalRequestedAnkleReach <= maximumLegReach + 0.002 } };
   });
   return { npcId: root.name.replace(/^canonical-crowd:npc:/, ''), phase,
     sampleFrame: 'post-placement current native skinned-shoe geometry and actor matrices',
+    nativeVenueFootContactSolve: root.userData.nativeVenueFootContactSolve ?? null,
     contactCallback: 'SceneEntry.walk.contactHeightAt', contactTargetClearanceMeters: SOLE_TARGET_CLEARANCE_METERS,
     sides, bothFeetWithinFourMillimetersOfSceneFloor: sides.length === 2
       && sides.every((side) => side.withinFourMillimetersOfSceneFloor) };

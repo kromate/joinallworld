@@ -466,6 +466,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     mount(actor, id) {
       actor.body.object.name = `canonical-crowd:${id}`;
       group.add(actor.body.object);
+      solveNativeNpcFeetOnVenueFloor(actor);
     },
     changed() {
       rebuildActorBatch();
@@ -1048,6 +1049,37 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     near(spot: { x: number; y: number; z: number } | null | undefined) { return spot ? placeMark(marks.near, spot.x, spot.y, spot.z, true) : placeMark(marks.near, 0, 0, 0, false); },
     goal(x?: number, z?: number) { return Number.isFinite(x) ? placeMark(marks.goal, x!, 0, z!, true) : placeMark(marks.goal, 0, 0, 0, false); },
   };
+  /** Fit grounded prepared NPCs to this venue's measured rendered floor after mounting. */
+  function solveNativeNpcFeetOnVenueFloor(actor: CanonicalVenueActor): boolean {
+    if (actor.body.object.userData.nativeGameProviderEvidence?.preparedNative !== true) return false;
+    const contactHeightAt = walk.contactHeightAt;
+    if (typeof contactHeightAt !== 'function') return false;
+    // Venue NPCs currently use idle/interact. Never flatten a future locomotion pose's swing foot.
+    if (actor.body.pose !== 'idle' && actor.body.pose !== 'interact') return false;
+    const contacts = actor.body.sampleFootContacts();
+    if (contacts.length !== 2 || !['left', 'right'].every((side) => contacts.some((contact) => contact.side === side))) return false;
+    for (const contact of contacts) {
+      const points = contact.points?.length ? contact.points : [contact];
+      if (!points.length) return false;
+      for (const point of points) {
+        if (![point.x, point.y, point.z].every(Number.isFinite)) return false;
+        const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+        if (callbackTargetY === null || !Number.isFinite(callbackTargetY)) return false;
+      }
+    }
+    // contactHeightAt reports the measured surface plus a 16 mm safety offset. The solver
+    // needs the physical top so its correction does not bake that navigation clearance into soles.
+    const result = actor.body.solveFeet((point) => {
+      const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+      return callbackTargetY === null || !Number.isFinite(callbackTargetY) ? Number.NaN : callbackTargetY - 0.016;
+    });
+    actor.body.object.userData.nativeVenueFootContactSolve = {
+      pose: actor.body.pose, contactSides: contacts.map((contact) => contact.side),
+      sampledPointCount: contacts.reduce((total, contact) => total + (contact.points?.length ?? 1), 0),
+      targetClearanceMeters: 0.016, corrected: result.corrected, maxError: result.maxError, limited: result.limited,
+    };
+    return true;
+  }
   let raised: { x: number; y: number; z: number }[] = [];
   /**
    * layout.raised: what can be stood on above the ground, so the avatar walks UP it instead of
@@ -1194,6 +1226,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
           actor.body.show(pose, false);
           actor.body.object.userData.nativeGameNpcPose = pose;
           syncNativeTalk(actor, pose);
+          solveNativeNpcFeetOnVenueFloor(actor);
         }
       }
       return changed || actors || npcPoseChanged;

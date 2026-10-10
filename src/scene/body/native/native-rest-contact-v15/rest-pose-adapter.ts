@@ -296,7 +296,8 @@ export function createNativeRestPoseAdapter(
       hipsWorld: positions.get('mixamorigHips')?.toArray() ?? null,
       segmentLengths: Object.freeze({ left: segmentLengths('Left'), right: segmentLengths('Right') }),
       regions: Object.freeze(Object.fromEntries(Object.entries(measure.regions).map(([name, region]) =>
-        [name, Object.freeze({ sampled: region.sampled, minimumGap: region.minimumGap, maximumGap: region.maximumGap })]))),
+        [name, Object.freeze({ sampled: region.sampled, minimumGap: region.minimumGap, maximumGap: region.maximumGap,
+          minimumWitness: region.minimumWitness, maximumWitness: region.maximumWitness })]))),
       feet: Object.freeze(feet), footSolveResult: solve });
   }
 
@@ -728,7 +729,8 @@ export function createNativeRestPoseAdapter(
                 attempts.push(Object.freeze({ requestedLift: targetLift - cumulativeLift, cumulativeLift: targetLift,
                   before, after: failed, solverError: error instanceof Error ? error.message : String(error),
                   bodyRegionsClear: bodyRegionsClear(failedMeasurement), floorFeetClearAndPlanted: floorFeetClearAndPlanted(floorY!, sampleParentLocalContacts) }));
-                lastLiftTrial = Object.freeze({ attempts: Object.freeze(attempts), cumulativeLift: targetLift,
+                lastLiftTrial = Object.freeze({ propId: support.surface.id, pose, phase, anchorBlend,
+                  mappedFrame, attempts: Object.freeze(attempts), cumulativeLift: targetLift,
                   accepted: false, solverError: error instanceof Error ? error.message : String(error) });
                 const diagnostics = root.userData.nativeRestProbeDiagnostics;
                 if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
@@ -762,7 +764,8 @@ export function createNativeRestPoseAdapter(
               solveHostFeet?.(support.surface, floorY!);
               measurement = measure(support.surface, sampleParentLocalContacts);
             }
-            lastLiftTrial = Object.freeze({ attempts: Object.freeze(attempts), cumulativeLift,
+            lastLiftTrial = Object.freeze({ propId: support.surface.id, pose, phase, anchorBlend,
+              mappedFrame, attempts: Object.freeze(attempts), cumulativeLift,
               accepted, bodyRegionsClear: bodyRegionsClear(trialMeasurement), floorFeetClearAndPlanted: trialFeetPlanted });
             const diagnostics = root.userData.nativeRestProbeDiagnostics;
             if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {

@@ -1,0 +1,82 @@
+Actual lease-start allowance guard: {"rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.", "minimum_remaining_percent_exclusive": 4, "latest_remaining_percent": 8, "sample_source": "WORLD and LIVING direct account92%used8%remaining03:57UTC", "recorded_at_utc": "2026-10-10T03:59:58.821654+00:00", "allow_new_heavy": true, "heavy_slots": 1, "additional_spend": 0}
+{
+  "status": "instrumented-bundle-built",
+  "schema": "native-office-temporal-instrumentation.v1",
+  "sourceHead": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+  "sourcePath": "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
+  "expectedSourceSha256": "491d57847f4d08a432d5bd75680ac4aabfe901f34360ca654a81dc9fbdc7fe10",
+  "controllerPath": "src/scene/body/native/native-interaction-gesture.ts",
+  "controllerSha256": "70d28b67deb52af9e0a274ed92d7e2f8d04a309a7129854782adb7994ed24cf3",
+  "factoryPath": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+  "factorySha256": "5af71712de69d4b13beeadb0ac8e4a8722b89dc7601efbe56fe92bb950310d55",
+  "venueScenesPath": "src/scene/venue-scenes.ts",
+  "venueScenesSha256": "249954ca92d180652d9fa3760b502a2cb28fe8502ca9952727cb5c7aa58c553f",
+  "clipPackPath": "src/scene/body/assets/clip-pack.glb",
+  "clipPackSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
+  "instrumentationOnlyExternalBundle": true,
+  "interactClipDurationSeconds": 2,
+  "output": "/workspace/remote-verification/worker-results/native-interaction-temporal/extended110/game-fixture.instrumented.bundle.js",
+  "outputBytes": 10073823,
+  "outputSha256": "b9ae5df75789740a23758d8f3719ed0b2b880db4c18734b2ccfc50416bc9e27f",
+  "transformations": [
+    {
+      "id": "conversation-loop-110",
+      "source": "for (let frame = 0; frame < 34 && entry?.easing; frame += 1) {",
+      "diagnostic": "same action and 1/30s steps; allow 110 active frames (3.667 sample-clock seconds) before normal fixture completion"
+    },
+    {
+      "id": "actual-blink-morph-snapshot",
+      "diagnostic": "read the authored Body blink morph values from the same current NPC mesh"
+    },
+    {
+      "id": "npc-current-jaw-blink-snapshot",
+      "diagnostic": "extend fixture sample with current jaw and both actual blink morph weights"
+    },
+    {
+      "id": "current-actor-local-arm-landmarks",
+      "diagnostic": "read shoulders-independent native arm/forearm/hand world positions in the current actor root frame at each capture"
+    },
+    {
+      "id": "current-native-local-arm-transforms",
+      "diagnostic": "record live actual local rotations/positions at pre-action idle, active samples, and returned idle for comparison with pre/post wrist-controller stages"
+    },
+    {
+      "id": "read-only-current-shoe-geometry-seam",
+      "diagnostic": "call the existing full deformed authored-shoe sampler and floor callback without changing pose/placement"
+    },
+    {
+      "id": "current-foot-toe-matrix-witness",
+      "diagnostic": "record post-update world matrices and local transforms for both feet/toes at every temporal sole capture"
+    },
+    {
+      "id": "step-and-frame-work-timing",
+      "diagnostic": "record 1/30 venue step duration separately from aggregate step/gesture/draw frame work"
+    },
+    {
+      "id": "actual-player-action-handler",
+      "diagnostic": "click the existing offered NPC card action; record its promise and completion after its normal player-mode restoration"
+    },
+    {
+      "id": "npc-look-readout",
+      "diagnostic": "report only the exact two current life-view look values; no admission or coverage expansion"
+    },
+    {
+      "id": "before-after-native-wrist-controller-stages",
+      "diagnostic": "instrument the in-memory public factory only, reading actual six shoulder/arm/forearm/hand local transforms at corrected-neutral, post-gesture, pre/post-wrist-controller stages when the external diagnostic flag is enabled"
+    },
+    {
+      "id": "live-venue-step-timings",
+      "diagnostic": "instrument actual active native source pose, contact solve, and expression clock at the existing venue 1/30 step; per-actor call counts/totals/maxima are collected only after the external diagnostic flag is enabled"
+    }
+  ]
+}
+file:///workspace/remote-verification/worker-results/native-interaction-temporal/extended110/office-interaction-runner-110.mjs:218
+  throw new Error(`${npcId}: timed out waiting for live frame ${targetFrame}`);
+        ^
+
+Error: mrs-okafor: timed out waiting for live frame 66
+    at waitForFrame (file:///workspace/remote-verification/worker-results/native-interaction-temporal/extended110/office-interaction-runner-110.mjs:218:9)
+    at async runNpcAction (file:///workspace/remote-verification/worker-results/native-interaction-temporal/extended110/office-interaction-runner-110.mjs:265:22)
+    at async file:///workspace/remote-verification/worker-results/native-interaction-temporal/extended110/office-interaction-runner-110.mjs:347:15
+
+Node.js v24.19.0

@@ -1,0 +1,32 @@
+Frozen source compile attempts; preserved failures (all outputs returned by tool, no credentials or external service calls).
+
+Attempt A: initial queued focused home-journey typecheck on candidate be44c45; exit 2.
+Errors:
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(942,8): error TS1005: ',' expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(945,15): error TS1005: ',' expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(945,62): error TS1005: ',' expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(945,64): error TS1136: Property assignment expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1145,11): error TS1128: Declaration or statement expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1303,6): error TS1128: Declaration or statement expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1304,15): error TS1005: ';' expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1304,50): error TS1128: Declaration or statement expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1305,3): error TS1128: Declaration or statement expected.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1306,1): error TS1128: Declaration or statement expected.
+
+Attempt B: focused home-journey typecheck on candidate 1e03539; exit 2.
+Errors:
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(987,11): error TS2322: Type 'Readonly<{ left: number; right: number; }>' is not assignable to type 'Readonly<{ left: 1; right: 1; }>'.
+  Types of property 'left' are incompatible.
+    Type 'number' is not assignable to type '1'.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1115,19): error TS2304: Cannot find name 'floorFeetClear'.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1123,71): error TS2304: Cannot find name 'measuredRestSurfaceSupport'.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1157,16): error TS2304: Cannot find name 'measuredRestSurfaceSupport'.
+src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts(1231,59): error TS2304: Cannot find name 'measuredRestSurfaceSupport'.
+
+Attempt C: incorrect syntax-probe invocation (`node node_modules/esbuild/bin/esbuild ...`) on candidate b34e39f; exit 1 before source parse because `bin/esbuild` is native ELF, not a JavaScript module. Raw failure began with `SyntaxError: Invalid or unexpected token` at the ELF header. Correct `node_modules/.bin/esbuild ...` invocation passed (exit 0, 71.1kb transformed in 6ms).
+
+Attempt source/pin context:
+Attempt A candidate source: be44c45e099b70e7cf1a8bbb6b55e65075c08aa7; adapter SHA256 872ea924538b76e188eb3f20ea587d895dfd795cd40fa78f659d4fceb40211af.
+Attempt B candidate source: 1e035395c0a822ada1d533190fe24311b051070a; adapter SHA256 8a23840ef90624b6f3613e0084b8f3f3853808d7b4db416245031679d6b884d1.
+The compile command for A and B was: `AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 AGENT_SLOT_SERVER=1 AGENT_SLOT_BROWSER=1 NODE_OPTIONS=--max-old-space-size=1536 node --experimental-strip-types scripts/agent-slot.ts heavy -- node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json`.
+Current corrected candidate is 7f4f437bde6ce320ce124c6d2b38eb4f1c434825, adapter SHA256 c9973961c5c43c8236db54fdd9938e9a961edd82c83ea708a627cde23deee43f; it has not yet been typechecked.

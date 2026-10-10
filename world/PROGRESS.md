@@ -1,3 +1,21 @@
+# Full fifteen-city verification contract implemented, 10 October 2026 at 01:10 UTC
+
+WORLD external sealed tooling now accepts only the exact reviewed old3/10
+or new5/15 journey groups and requires equality with every registered foreign
+city. The cold registry is explicitly loaded before reading countries. New
+coverage requires31 real HTML/map/geometry assets; missing chunks or omitted,
+unexpected, duplicate and malformed city IDs are refused. All4 existing
+coverage tests pass,10 isolated negative diagnostics reject as expected, and
+readonly cold50-rule loading confirms the old10 foreign set in132ms.
+The new groups Cairo/Rabat/Kigali and Kampala/Lusaka cost1762000/1196000
+roundtrip within unchanged2000000 fixture credit. Existing168-second verifier,
+request/resource/asset/source/package limits stay unchanged. No source query,
+actor/save write, browser/server or heavy local build was started. See
+sealed-fifteen-coverage-source-acceptance.json. Actual full sealed15 execution,
+updated portable artifact, corrected source runtime checks and native journeys
+remain open. Integration has authorized5 required source fixture/checker files;
+original91 suite is terminal with3 oldcoverage fixture failures, not accepted.
+
 # Offline source-check mismatch reproduced, 10 October 2026 at 00:59 UTC
 
 Both exact91 legacy Python checker blobs actually run --check with exit0 and

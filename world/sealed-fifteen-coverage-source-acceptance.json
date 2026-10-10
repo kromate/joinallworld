@@ -1,0 +1,77 @@
+{
+  "observedAtUtc": "2026-10-10T01:08:01.242Z",
+  "sourcePins": {
+    "world/tooling/sealed-africa-coverage.mjs": "c84e5e69225421b5fa58accf963f6456a84c2a797724ba89a4e0d4623a6948bb",
+    "world/tooling/verify-sealed-africa.mjs": "f6b59c1709ab30aaa36c4dc03b4dedbf2f73b5720d164356e208c5dba635b014"
+  },
+  "oldTenAndLegacyFiveAccepted": true,
+  "newFifteenAccepted": true,
+  "selectedPublicAssets": 31,
+  "negativeCasesRefused": [
+    "old10batches cannot certify registered15",
+    "new15batches cannot certify registered10",
+    "missing registered city",
+    "unexpected registered city",
+    "duplicate registered city",
+    "invalid registered city",
+    "missing final batch",
+    "unsupported group order",
+    "one oversized new-five group",
+    "missing new-city geometry chunk"
+  ],
+  "newBatchRoundTripFares": [
+    1762000,
+    1196000
+  ],
+  "fixtureCreditUnchanged": 2000000,
+  "existingTests": {
+    "pass": 4,
+    "fail": 0,
+    "skip": 0
+  },
+  "scope": "Pure isolated in-memory coverage diagnostic and exact91 route read only; no sealed Worker, network, browser, store or production claim.",
+  "verifierLimitsUnchanged": {
+    "totalMs": 168000,
+    "requestMs": 12000,
+    "startMs": 20000,
+    "restartMs": 15000,
+    "disposeMs": 10000
+  },
+  "coldRuleLoading": {
+    "source": "Current WORLD50-city prefix, C1 registry loader source previously inspected",
+    "rulesInitiallyUnloaded": true,
+    "loadedRules": 50,
+    "foreignCities": [
+      "accra",
+      "algiers",
+      "lome",
+      "nairobi",
+      "yaounde",
+      "abidjan",
+      "addis-ababa",
+      "cape-town",
+      "cotonou",
+      "dakar"
+    ],
+    "elapsedMs": 131.725459,
+    "coverageAccepted": true,
+    "scope": "Read-only rule imports, no content/map loading, actor creation, network or store writes. Not exactcorrected55candidate runtime acceptance."
+  },
+  "diagnosticCorrection": "Before verification, the registry must await loadAllCityRules because cityRules is null for unloaded modules. This was caught and corrected before commit, with cold loader execution proof.",
+  "portableWorkflow": {
+    "toolingBaselineSha": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+    "pinnedWorkflowFiles": {
+      ".github/workflows/africa-starter-audit-ci.yml": "5f4b8e5f1c3be490ba04afc18e150802e7d8b4244b89f449a77f098f499e822f",
+      ".github/workflows/world-sealed-africa-ci.yml": "6d7d355a13b727d7e32153a2d5892e5ff585673f79ea6a2d3e6e244f28c6348e"
+    },
+    "priorRun": 38002567221,
+    "priorRunObserved": "completed/success at exactfa8",
+    "repositoryVisibilityObserved": "public",
+    "runningActionsObserved": 0,
+    "dispatchPerformed": false,
+    "artifactDelivered": false,
+    "spendingStatus": "No new run or resources started. Standard runner/public repo confirmed; storage/quota and exactupdatedtool/source approval stillrequired before dispatch."
+  },
+  "acceptance": "Pure validator/legacy compatibility and cold rules accepted; sealed Worker/source package/native production acceptance remainopen.",
+  "scopeOwnership": "WORLD external verification tooling only; not copied into correctedC1 gamecandidate. Integration assembles an agreed tooling branch separately."
+}

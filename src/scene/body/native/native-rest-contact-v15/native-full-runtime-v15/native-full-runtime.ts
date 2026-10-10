@@ -79,7 +79,7 @@ export interface NativePresentationPort<Candidate = unknown> {
 }
 export interface NativeContactPort {
   sample(): readonly FootContact[];
-  solve(heightAt: (contact: FootContact) => number, mode?: 'motion' | 'grounded'): FootSolveResult;
+  solve(heightAt: (contact: FootContact) => number, mode?: 'motion' | 'grounded' | 'transition'): FootSolveResult;
 }
 export interface NativeFullRuntimeOptions<Candidate = unknown, Frame = unknown> {
   readonly actor: NativePreparedActor;
@@ -119,7 +119,7 @@ export interface NativeFullRuntime {
   readonly seated: boolean;
   setPresentation(presentation: WardrobePresentation): boolean;
   sampleFootContacts(): readonly FootContact[];
-  solveFeet(heightAt: (contact: FootContact) => number, mode?: 'motion' | 'grounded'): FootSolveResult;
+  solveFeet(heightAt: (contact: FootContact) => number, mode?: 'motion' | 'grounded' | 'transition'): FootSolveResult;
   show(pose: BodyPose, animate?: boolean): void;
   sampleUse(pose: BodyPose, seconds: number): void;
   enter(animate: boolean): void;
@@ -453,7 +453,7 @@ export function createNativeFullRuntime<Candidate = unknown, Frame = unknown>(op
     solveFeet(heightAt, mode = 'motion') {
       ensureOpen(); object.updateWorldMatrix(true, true);
       let result = contacts.solve(heightAt, mode);
-      if (strideClimb) for (let pass = 0; pass < 3 && result.limited && result.maxError > 0.002; pass++) result = contacts.solve(heightAt);
+      if (strideClimb) for (let pass = 0; pass < 3 && result.limited && result.maxError > 0.002; pass++) result = contacts.solve(heightAt, mode);
       return result;
     },
     show(next, animate = false) { changePose(next, animate); },

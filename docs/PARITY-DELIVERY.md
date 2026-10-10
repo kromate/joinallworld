@@ -1,3 +1,7 @@
+## 2026-10-10 — Country verifier source accepted; actual journeys pending
+
+The [v4 source review](agent-plans/integration/c12-controller-v4-root-astra-review.md) accepts corrected actor/protected-state/restart/fingerprint/store/root-receipt logic. [Independent pins](agent-plans/integration/c12-controller-v4-pins-root-review.json) match14 packet files and59 unique public Git files. Integration has handed the same existing finite five-city normal browser/Home/restart phase to sole coordinator WORLD, subject to remaining scene checks and actual runtime/ownership/quota preflight. No browser, grant, restart, provider or production action has yet been accepted. Original Node24 fixture FAIL and final combined3e budget FAIL remain explicit. Justice owner reports9 pure checks; unpublished source and durable acceptance remain pending, with compatible rollback retaining both repaired reader and transition. The35-item/all58-announcement ledger remains the full scope. Actual current allowance5%; stop new work at<=4%.
+
 ## 2026-10-10 03:55 UTC — Controller corrections and messaging actor prerequisite
 
 ## Country controller v3 review — 10 October 2026, 04:29 UTC

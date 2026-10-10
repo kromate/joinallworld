@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-10T04:31:17.873679+00:00",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "helperSha256": "1968cd84614cf06c89166f605089db611fd91f129a029557ce623c96846e3201",
+  "sourceOnly": true,
+  "finding": "H4: legitimate activity receipt rejected by JSON.parse of complete concatenated fingerprint and top-level id assumption",
+  "pins": [
+    {
+      "path": "server/protocol.ts",
+      "bytes": 20727,
+      "sha256": "27742061f222dc021d6882a9f2a2372a3eb30c3b40ebdde7b5b909462a59dbf5"
+    },
+    {
+      "path": "server/routes/once.ts",
+      "bytes": 14048,
+      "sha256": "197e5499c469b4e28a3aefa4698ec3838b86325a4f1aae88b97756a2c235451f"
+    },
+    {
+      "path": "server/types.ts",
+      "bytes": 72039,
+      "sha256": "59eaee81667763b6d36bf3bf12f4b1611c5ca0ffebed28dc096b060cf9f969c0"
+    },
+    {
+      "path": "src/client.ts",
+      "bytes": 51782,
+      "sha256": "d0f2da50b4f9df4525d08cb89e971601a82d0528383d5039ce70aacceb544b32"
+    },
+    {
+      "path": "src/app/features/venue/VenuePanel.vue",
+      "bytes": 8796,
+      "sha256": "ed723edbfbf79144a6a5d08037f39d58970feb17fc5c41dae3d068e651e2968a"
+    }
+  ],
+  "sourceFlow": [
+    "VenuePanel.vue:74 command(activity,{id:card.id})",
+    "client.ts:643 uses payload; no top-level id",
+    "server/protocol.ts:128-130 JSON.stringify([cityId,type,id,mode])+canonicalJson(payload)",
+    "helper:41 fallback JSON.parse(full fingerprint) returnsnull on concatenation",
+    "helper:52 JSON.parse(full fingerprint) rejects, then assumesfp[2] contains actualpayloadid"
+  ],
+  "example": "[\"cairo\",\"activity\",null,null]{\"id\":\"cairo-visitor-info\"}",
+  "repair": "Reconstruct/compare full canonical fingerprint from exact normal-UI payload+observed witness; preserve stored format and unchanged legacy no-payload compatibility. Bind city/type/payload/action receipt to natural completion; no prefix-only, substring or permissive fallback proof. Pin actual canonical logic/dependencies if imported.",
+  "owner": "Same existing CloudAstra correction with H1-H3; WORLD discovered H4 and Root independently source-confirmed.",
+  "execution": false,
+  "launchApproved": false
+}

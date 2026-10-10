@@ -32,8 +32,10 @@ export function cardButtons(request: Pick<MoneyRequestView, 'state' | 'expiresAt
   return request.mine ? ['cancel'] : request.payable ? ['pay', 'decline'] : ['decline']
 }
 
-/** The line above a card's amount. */
+/** The line above a card's amount: `name` is the other person (the friend asked, or the one asking). */
 export const cardTitle = (mine: boolean, name: string): string => (mine ? `You asked ${name}` : `${name} asked you`)
+/** Who the other person is on a card: the asker's own message is from them, so their card names the friend of the chat; the friend's names the sender. */
+export const otherParty = (mine: boolean, sender: string | null | undefined, partner: string | null | undefined): string => (mine ? partner : sender) || 'your friend'
 
 /** The sentence for a refused request: the server's own wording (the one a gift shows) when it gave one, else a plain one for the code. */
 const REFUSALS: Readonly<Record<string, string>> = {

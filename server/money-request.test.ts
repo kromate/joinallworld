@@ -402,3 +402,16 @@ test('paying keeps a money-class receipt: a flood of light receipts neither bloc
   const rows = await f.server.store.read((db) => db.walletEffects?.filter((row) => row.transferId === transferId).length);
   assert.equal(rows, 2, 'one debit and one credit, ever');
 });
+
+test('the first request between two friends who have never written makes the chat and shows the card to both', async (t) => {
+  const f = await fixture(t);
+  const { ada, bola } = await pair(f);
+  assert.equal((await get(f, '/api/social/conversations', bola)).conversations.some((item) => item.with === ada.id), false, 'no chat yet');
+  const made = await ask(f, bola, ada, { amount: 400, note: 'First' });
+  assert.equal(made.code, 'requested');
+  assert.equal(made.message.conv.includes('#'), false);
+  for (const [who, other, mine] of [[bola, ada, true], [ada, bola, false]] as const) {
+    const lines = await thread(f, who, other);
+    assert.deepEqual([lines.length, lines[0]?.request?.amount, lines[0]?.request?.mine, lines[0]?.conv], [1, 400, mine, made.message.conv]);
+  }
+});

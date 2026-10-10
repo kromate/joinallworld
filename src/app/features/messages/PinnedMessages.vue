@@ -4,12 +4,13 @@ import type { Message, MessagePinsView } from '../../../types/social.ts'
 
 const props = defineProps<{ pins: MessagePinsView; kind: 'dm' | 'group' | 'house'; loading: boolean; pending: boolean; retryable: boolean; disabled: boolean; error: string }>()
 const emit = defineEmits<{ open: [message: Message | null]; clear: []; retry: []; dismiss: [] }>()
-const expanded = ref(true), confirming = ref(false), clearButton = ref<HTMLButtonElement | null>(null)
+// With nothing pinned the panel is only its header (the notes inside would take a phone's screen); it opens on a tap.
+const expanded = ref(props.pins.items.length > 0), confirming = ref(false), clearButton = ref<HTMLButtonElement | null>(null)
 const label = (message: Message): string => message.body.trim() || (message.image ? 'Picture' : message.voice ? 'Voice message' : 'Message')
 const manager = (): string => props.kind === 'group' ? 'Only the group owner can change them.' : props.kind === 'house' ? 'Only the host can change them.' : 'Either person can change them.'
 function cancelClear(): void { confirming.value = false; void nextTick(() => clearButton.value?.focus()) }
 function confirmClear(): void { emit('clear'); confirming.value = false; void nextTick(() => clearButton.value?.focus()) }
-watch(() => props.pins.scope, () => { expanded.value = true; confirming.value = false; emit('open', null) }, { flush: 'sync' })
+watch(() => props.pins.scope, () => { expanded.value = props.pins.items.length > 0; confirming.value = false; emit('open', null) }, { flush: 'sync' })
 </script>
 
 <template>
@@ -20,7 +21,7 @@ watch(() => props.pins.scope, () => { expanded.value = true; confirming.value = 
       </button>
       <button v-if="pins.canManage" ref="clearButton" type="button" class="pinned-clear" :disabled="pending || retryable || disabled" :aria-expanded="confirming" @click="confirming = !confirming">Clear all</button>
     </header>
-    <div v-if="expanded" id="pinned-list">
+    <div v-show="expanded" id="pinned-list">
       <p v-if="!pins.items.length" class="pinned-empty">No shared pins you can see.</p>
       <button v-for="entry in pins.items.slice(0, 3)" :key="entry.message.seq" type="button" class="pinned-row" @click="emit('open', entry.message)">
         <span>{{ entry.message.from?.name ?? 'Message' }}</span><b>{{ label(entry.message) }}</b>

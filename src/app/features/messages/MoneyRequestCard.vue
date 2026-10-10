@@ -5,20 +5,22 @@
 import { computed, ref, watch } from 'vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
-import { cardButtons, cardState, cardTitle, STATE_WORDS } from './moneyRequestModel.ts'
+import { cardButtons, cardState, cardTitle, otherParty, STATE_WORDS } from './moneyRequestModel.ts'
 import type { RequestOp } from './moneyRequestModel.ts'
 import type { Message } from '../../../types/social.ts'
 
-const props = defineProps<{ item: Message; time: string; now: number; busy?: boolean; offline?: boolean }>()
+const props = defineProps<{ item: Message; time: string; now: number; /** The friend of this chat: who an asker asked. */ partner?: string; busy?: boolean; offline?: boolean }>()
 const emit = defineEmits<{ answer: [id: string, op: RequestOp] }>()
 const request = computed(() => props.item.request!)
+// Pay goes to the one who asked, whose name is the sender's; the title names the other person on either side.
 const name = computed(() => props.item.from?.name ?? 'Someone')
+const other = computed(() => otherParty(request.value.mine, props.item.from?.name, props.partner))
 const state = computed(() => cardState(request.value, props.now))
 const buttons = computed(() => cardButtons(request.value, props.now))
 const confirming = ref(false)
 // A card that stops being open (answered here, on another device, or out of time) leaves the confirm step.
 watch(state, (next) => { if (next !== 'open') confirming.value = false })
-const label = computed(() => `${cardTitle(request.value.mine, name.value)} ${money(request.value.amount)}${request.value.note ? `: ${request.value.note}` : ''}. ${STATE_WORDS[state.value]}.`)
+const label = computed(() => `${cardTitle(request.value.mine, other.value)} ${money(request.value.amount)}${request.value.note ? `: ${request.value.note}` : ''}. ${STATE_WORDS[state.value]}.`)
 function pick(op: RequestOp): void {
   if (props.busy || props.offline) return
   if (op === 'pay' && !confirming.value) { confirming.value = true; return }
@@ -29,7 +31,7 @@ function pick(op: RequestOp): void {
 
 <template>
   <div class="bubble is-request" role="group" :aria-label="label" :data-request-state="state">
-    <span class="request-title">{{ cardTitle(request.mine, name) }}</span>
+    <span class="request-title">{{ cardTitle(request.mine, other) }}</span>
     <span class="request-row"><GameIcon name="coin" :size="22" /><b>{{ money(request.amount) }}</b><span class="request-state" :class="`is-${state}`">{{ STATE_WORDS[state] }}</span></span>
     <span v-if="request.note" class="request-note">{{ request.note }}</span>
     <span v-if="confirming" class="request-confirm" role="alert">Pay {{ money(request.amount) }} to {{ name }}? The money leaves your cash now and counts as a gift.</span>

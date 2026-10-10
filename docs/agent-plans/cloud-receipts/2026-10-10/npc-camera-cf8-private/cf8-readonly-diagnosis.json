@@ -1,0 +1,61 @@
+{
+  "source": {
+    "branch": "codex/cloud-npc-camera-final-20261010",
+    "sha": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+    "working_tree": "clean"
+  },
+  "report": {
+    "path": "evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-cf8b741/office-game-fixture-report.json",
+    "sha256": "cb466afbb2f4030520317cca130c2384ea8c6d629d5b3757b8ec892f10856eaa",
+    "status": "fail",
+    "failedChecks": ["closeupsFrameWholeActor", "closeupsRenderActorPixels", "npcPlayerSupportedPoseCameraMatrix", "cameraSideControlsSaved"]
+  },
+  "matrix": {
+    "rows": 27,
+    "directCanvasSaved": 27,
+    "projectedNdcAllInsideViewport": true,
+    "wholeActorVisibleFalse": 5,
+    "feetContrastBelow24": 16,
+    "actorContrastBelow24": 0,
+    "headOrTorsoContrastBelow24": 0,
+    "offSector": [{"actor": "player", "mode": "interact", "view": "profile", "cameraAxisDot": -0.5}]
+  },
+  "failedRows": [
+    {"actor": "player", "mode": "interact", "view": "profile", "axisDot": -0.5, "nonhit": "rightFoot", "blocker": null, "pixel": "office-player-close-interact-profile-canvas.png shows rear/three-quarter view, so profile sector mismatch is real"},
+    {"actor": "mrs-okafor", "mode": "interact", "view": "front", "axisDot": 1, "nonhit": "leftFoot", "blocker": null, "pixel": "office-mrs-okafor-close-interact-canvas.png shows unobstructed full-body actor and both shoes; projected bounds [-.184,.185] x [-.770,.802]"},
+    {"actor": "mrs-okafor", "mode": "interact", "view": "profile", "axisDot": 0, "nonhit": "rightFoot", "blocker": null, "pixel": "office-mrs-okafor-confirmed-profile-interact-canvas.png shows visible legs/shoes; no scene occluder on ray"},
+    {"actor": "mrs-okafor", "mode": "interact", "view": "back", "axisDot": -0.7071, "nonhit": "leftFoot,rightFoot", "reportedBlocker": null, "pixel": "office-mrs-okafor-confirmed-back-interact-canvas.png shows counter overlapping part of back/right lower leg; genuine framing occlusion witnessed in pixel, though target rays stop without blocker"},
+    {"actor": "dapo", "mode": "interact", "view": "profile", "axisDot": 0, "nonhit": "rightFoot", "blocker": null, "pixel": "office-dapo-confirmed-profile-interact-canvas.png shows both shoes unobstructed; no scene occluder on ray"}
+  ],
+  "probeDiagnosis": {
+    "likelyFalseNegatives": 4,
+    "basis": "Each no-hit foot target has no nearer occluder and the corresponding direct canvas shows visible footwear; source computes one nearest authored-shoe vertex to the foot bone and traces only to that exact endpoint. This supports a point/edge-grazing miss, not poor framing; exact vertex/triangle intersection was not recorded, so edge grazing remains likely rather than proven.",
+    "trueVisualOcclusion": 1,
+    "basis": "Mrs back-interact PNG shows counter overlapping the right lower leg/foot area; do not infer floor/contact from image."
+  },
+  "pixelSampler": {
+    "basis": "foot sample is bounds-center x/z at bounds.min.y + 6% body height, not an authored foot/shoe point. Mrs front-interact sampled [233,229,222] against [233,229,221] (contrast 1), i.e. background/floor pixel; screenshot has clear shoes. The 16 low feet-contrast rows therefore do not establish missing actor pixels."
+  },
+  "npcGameplay": {
+    "nativeVenueNpcWalkGait": "No current production gait path. Venue NPCs are static non-live CrowdPerson specs; canonical eligibility accepts only pose undefined/null/'stand'. nativeNpcPose() maps matching state.activeAction activity IDs to idle/interact, and update() calls body.show(pose,false); stepCrowd() advances live player-peer easing and active NPC talk/jaw only. loadGameBody requests idle/walk/interact and native pose support includes walk, but venue NPC code never drives native NPC stride/walk.",
+    "otherActorGait": "Live peer players use separate stand/walk figures; stepCrowd() advances transforms and switches figures as peer.stride changes."
+  },
+  "nativeLookAdmission": {
+    "preparedNativeSubset": "body man/woman; outfit casual/office; fabric plain; hair lowcut/low-cut/fade/classic/afro/curls; no accessories or wearables; adult, average height/build. Face/expression and palette colors must be in LOOK_OPTIONS; skin1-7 are mapped. Venue admits at most two static eligible NPCs after WebGL2/bodyAllowed gate.",
+    "fallback": "Complete native-ineligible or incomplete looks go through loadBody legacy/procedural fallback. This is no claim of complete NPC/look coverage.",
+    "fixtureLooks": {
+      "mrsOkafor": "woman/afro/office/plain/skin-4/dark-brown/blue/navy/no accessories/round/neutral/average adult",
+      "dapo": "man/low-cut/office/plain/skin-5/black/cream/navy/no accessories/round/neutral/average adult"
+    }
+  },
+  "representativePixels": {
+    "mrsFrontInteract": {"path": "evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-cf8b741/office-mrs-okafor-close-interact-canvas.png", "sha256": "75c952d5166ea3f031ef7c3b96ad9f9e0290fac0658c8fca583bd59ca255c44d"},
+    "mrsBackInteract": {"path": "evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-cf8b741/office-mrs-okafor-confirmed-back-interact-canvas.png", "sha256": "c61193c6861183062e9f62161e5945364b2573f7f4eef2218a270f2684a934d8"},
+    "dapoCompletedIdle": {"path": "evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-cf8b741/office-dapo-close-completed-idle-canvas.png", "sha256": "115517fe096099f85fe466c43132a13008519e1884681d2f0c851ef1ecfdd083"}
+  },
+  "rejectedPush": {
+    "rawReviewerText": "Rejected(\"This action was rejected due to unacceptable risk.\\nReason: Pushing the private repository’s source to an external GitHub remote is sensitive egress, and the trusted user authorization does not explicitly approve this exact payload and destination.\\nDo not bypass this rejection through a workaround or indirect execution. Continue with a safer alternative, or carry out checks to prove that the action is authorized or low risk before trying again. Complete unaffected work without asking for confirmation. Report anything that remains blocked, clarify why it was blocked by auto-review, inform the user of the risk and ask for approval.\")",
+    "preservedLocalPatch": "/workspace/remote-verification/worker-results/npc-camera-matrix/adb53e0.patch",
+    "patchSha256": "e4dfc4bd4cd74df3175b9d784acf09b69db59f32d25bcf4ae5672b588e009236"
+  }
+}

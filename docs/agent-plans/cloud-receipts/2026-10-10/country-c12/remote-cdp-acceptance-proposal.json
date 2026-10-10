@@ -1,0 +1,64 @@
+{
+  "recorded_utc": "2026-10-10T02:18:12.330111+00:00",
+  "status": "SOURCE-ONLY PROPOSAL; NO browser/stage launched",
+  "candidate": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "required_artifact": {
+    "run": 38013456110,
+    "artifact_id": 11655337648,
+    "zip_bytes": 19383625,
+    "zip_sha256": "80c574d3db117dbded7df5f47cbf2186c29b140c78c2dcad0fe4616ae50bdca3",
+    "tar_bytes": 113797120,
+    "tar_sha256": "8d07c74cfc0b717d855224928949d2bead1ac6681f7c81ad01ed297c795b50aa",
+    "package_digest": "3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331",
+    "files": 6228,
+    "total_file_bytes": 103755418
+  },
+  "transport": {
+    "operation": "Existing gh api artifact read only",
+    "outcome": "Forbidden",
+    "error_file": "existing-artifact-read-api-response.txt",
+    "no_retry_route_or_credential_change": true,
+    "exact_artifact_present": false
+  },
+  "verification_before_launch": [
+    "Verify exact ZIP bytes/hash before bounded safe extraction",
+    "Reject symlink/hardlink/nonregular/path escape and manifest duplicates; verify all6228files/hash/bytes, package/config/app/Worker source identities",
+    "Use existing pinned WORLD native stage helper55f38... and policyaf748...; full SHA and actual local bytes still need verification; no alternative helper treated equivalent",
+    "Confirm sealed14checks and unchanged caps; source-only branch test failures retained separately"
+  ],
+  "execution_limits": {
+    "overall_seconds": 900,
+    "cleanup_reserve_seconds": 60,
+    "download_seconds": 60,
+    "download_max_bytes": 25165824,
+    "heavy_slots": 1,
+    "browser_slots": 1,
+    "server_slots": 1,
+    "browser_binary": "/usr/bin/chromium",
+    "browser_version": "151.0.7922.173",
+    "library": "Existing ws/CDP; Playwright/Puppeteer absent; no installation",
+    "new_paid_services": false,
+    "quota_guard": "Before launch and each phase require applicable shared remaining>4%; no clock cutoff; no new phase at<=4%"
+  },
+  "actor_store_contract": [
+    "Fresh separate cloud SQLite store and normal guest UI onboarding; no local/eec retained actors or credentials transferred",
+    "No cookie injection, direct save mutation, timewarp or timer acceleration",
+    "Existing sanctioned root-once funding only if exact owner helper/policy validates authority and replay; preserve full receipt, no extra grants",
+    "Same store ordinary SIGWINCH/server restart with safe checkpoint; real lifecycle and receipt reread"
+  ],
+  "ui_sequence": [
+    "Normal onboarding/home in390 viewport; record app+Worker build/source IDs",
+    "Five Cairo/Rabat/Kigali/Kampala/Lusaka outbound journeys via ordinary country card/paid flight UI, natural20second wait, one actual local activity, return; same actor and consistent cash/action receipts",
+    "320 and390 actual PNG/focus/touch checks; selecting country/card focus distinguished from completed travel",
+    "Capture exact action started/completed/once replay and cold reopen; no pass from socket/port/queued intention"
+  ],
+  "prelaunch_reviews": [
+    "WORLD/Integration approve actual exact artifact/helper/browser args/store/actor scope",
+    "Actual existing Astra operator identity/review required before launch"
+  ],
+  "remaining_blockers": [
+    "Exact published package download API Forbidden",
+    "Pinned full helper/policy hashes not independently verified in this cloud checkout",
+    "No actual prelaunch owner/operator approval or cloud native visual execution receipt yet"
+  ]
+}

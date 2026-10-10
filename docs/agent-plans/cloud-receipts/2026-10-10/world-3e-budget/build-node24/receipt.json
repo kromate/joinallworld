@@ -1,0 +1,60 @@
+{
+  "sha": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "branch": "codex/cloud-lagos-flights-startup-budget-20261010",
+  "parent": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81",
+  "checkout": "/workspace/remote-verification/repositories/worker-world-lagos-flights",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "15316480000",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "npm",
+    "run",
+    "build"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 106615,
+  "started_at_utc": "2026-10-10T01:58:08.365164+00:00",
+  "ended_at_utc": "2026-10-10T01:59:07.039304+00:00",
+  "duration_seconds": 58.67414,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 17,
+    "sample_source": "GRAPHICS actual account query2026-10-10 01:50:54 UTC83%used17%remaining, independently relayed LIVING",
+    "recorded_at_utc": "2026-10-10T01:54:04.209877+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/3e3e0876fc50f3166a0d0968f8616b577da27870/build-node24/command.log",
+  "log_sha256": "734c699b4e54a6b0d725d1ad62d6dfe118f963916a79528f5786c814a90d0810",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

@@ -1,6 +1,6 @@
 # Showcase shops (Services)
 
-A place where real people show real skills and services, from markets across the world, and are contacted or paid for real, outside the game. Slice 1: one shop per seller, a directory, a shop page, a no-code editor, review by an operator, and a one-way release of the seller's own chat and payment links.
+A place where real people show real skills and services, from markets across the world, and are contacted or paid for real, outside the game. Slice 1 (and its first polish): one shop per seller, a directory, a shop page, a no-code editor, review by an operator, and a one-way release of the seller's own chat and payment links.
 
 ## The rules
 
@@ -76,6 +76,18 @@ Operator routes (token in `Authorization: Bearer`, 404 unless the server has `MO
 
 There is no screen for this in the admin shell in this slice: the routes are the operator interface.
 
+## What a buyer and a seller see
+
+Files are in `src/app/features/showcase/`. The shop is drawn from one shared set of parts, so the editor's preview and the shop page are the same thing.
+
+- **Shopfront** (`StorefrontCard.vue`): the template's awning, sign, logo, name, kind, market and city, whether the shop is open now (with "opens at ..."), the trust badge, and in the directory the cover photo and the "From" price with its label. `size="header"` is the top of the shop page.
+- **Shop page** (`ShopPage.vue` around `ShopFront.vue`): the shopfront, a photo gallery (the cover large, the others in a row that swipes sideways; a larger view with Previous and Next, arrow keys and a swipe; alt text is the seller's caption, else the shop's name and the photo number), About as prose, the price list (label, a note on its own line, price right-aligned; the "Seller's price, paid outside Allworld" line is shown once), the week with today marked, and a Chat and Pay bar fixed to the bottom of the screen. The bar goes through the same leaving sheet as before; a guest gets the sign-in prompt and an undeclared adult gets the age question, both inside the bar.
+- **Open now** is worked out in the shop's own time zone (its city's, and Nigeria's until a city says otherwise), so a buyer far away reads the shop's day. A day whose closing time is not after its opening time runs past midnight. The server still requires closing after opening, so a shop cannot yet set an overnight day; the display handles it for when it can.
+- **Editor** (`ShopEditor.vue`): six steps (Look, About, Services, Hours, Photos, Contact and payment) with a jump bar; the preview sits beside the form on a wide screen and behind a "Preview my shop" switch on a phone. A refusal shows beside the field it is about (`FieldRow.vue`: `aria-invalid`, `aria-describedby`, `role="alert"`), the first problem gets the focus, and a summary of what to fix sits by the Save button. A refusal of wording does not say which text it was, so the editor looks for the shape that was refused and otherwise puts it on About.
+- **Staying in step**: an approval (or any other change the server makes) moves the shop's revision. The editor refreshes on focus, on opening and before every save, and keeps the seller's unsaved text. Only the same part changed on both sides is a conflict; then a banner offers "Load the latest", which takes the server's version of everything the seller did not touch and keeps what they typed.
+- **Photos** (`PhotoManager.vue`): a styled button (the file input is hidden), a tile per photo on its way (getting it ready, uploading, or why it was refused), the first photo marked Cover, "Make cover", Earlier and Later, a caption of at most 60 letters (screened like all shop text) and Remove. Order and captions are one write, `mine/photos/arrange`.
+- The Services app has its own icon (`showcase` in `src/ui/phone/icons-more.ts`).
+
 ## Operator steps to seed a seller
 
 1. The seller signs in, answers "18 or older" (the My shop screen offers it), and waits 24 hours.
@@ -89,8 +101,10 @@ There is no screen for this in the admin shell in this slice: the routes are the
 
 ## Not in this slice
 
-Reviews (the contact event is kept so a later slice can bind a review to a real contact), follow or save, a share link, seller statistics, a market night, and booking.
+Reviews (the contact event is kept so a later slice can bind a review to a real contact), follow or save, seller statistics, a market night, and booking.
+
+**Share my shop** is not done. A share needs an address that opens one shop. The short addresses (`src/paths.ts`, which is in the first download, and `server/path-meta.ts` for the link preview) have no word for the Services app or a shop, so a shop address means new bytes in the first download and new server path work. Until that is decided there is no Share button; sharing the shop's name as plain text would point nowhere, so it is not offered.
 
 ## Tests
 
-`server/showcase.test.ts` (Node host), `deploy/showcase.edge.test.ts` (Worker host in Miniflare, every store layout), `src/app/features/showcase/showcase.test.ts` (client model and registration), and `server/registry.test.ts` (the two namespaces).
+`server/showcase.test.ts` (Node host), `deploy/showcase.edge.test.ts` (Worker host in Miniflare, every store layout), `src/app/features/showcase/showcase.test.ts` (client model, the clock, conflicts, field problems, photo order and registration), `src/app/features/showcase/showcaseComponents.test.ts` (the shopfront and the shop page parts, rendered), and `server/registry.test.ts` (the two namespaces).

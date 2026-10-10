@@ -6,6 +6,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { ShowcaseCard, ShowcasePage } from '../../../types/showcase.ts'
 import EmptyState from '../../ui/EmptyState.vue'
+import SkeletonRows from '../../ui/SkeletonRows.vue'
 import StorefrontCard from './StorefrontCard.vue'
 import ShopPage from './ShopPage.vue'
 import ShopEditor from './ShopEditor.vue'
@@ -49,6 +50,8 @@ async function load(fresh: boolean): Promise<void> {
 }
 onMounted(() => { void load(true) })
 watch([scope, category], () => { if (scope.value === 'all') venue.value = ''; void load(true) })
+/** A search or a kind is set: an empty list then means "nothing matches", not "no shops at all". */
+const filtered = computed(() => query.value.trim() !== '' || category.value !== '' || venue.value !== '' || scope.value === 'here')
 const heading = computed(() => (venue.value ? 'Services at this market' : scope.value === 'here' ? 'Services in this city' : 'Services from around the world'))
 </script>
 
@@ -74,11 +77,16 @@ const heading = computed(() => (venue.value ? 'Services at this market' : scope.
         <p v-if="failed" class="ui-error" role="alert">{{ failed }} <button type="button" class="ui-button is-quiet" @click="load(true)">Try again</button></p>
         <ul v-if="shops.length" class="sc-list">
           <li v-for="shop in shops" :key="shop.id">
-            <button type="button" class="sc-hit" :aria-label="`Open ${shop.name}`" @click="selected = shop.id"><StorefrontCard :shop="shop" /></button>
+            <button type="button" class="sc-hit" @click="selected = shop.id"><StorefrontCard :shop="shop" /></button>
           </li>
         </ul>
-        <p v-else-if="loading" role="status">Loading…</p>
-        <EmptyState v-else-if="!failed" icon="buy" title="No shops yet" text="No shops match. Try another search, or be the first: open My shop and show what you do." />
+        <SkeletonRows v-else-if="loading" :rows="2" label="Loading shops" />
+        <EmptyState v-else-if="!failed && filtered" icon="buy" title="No shops match" text="Try another search, or look at every kind of shop in the world.">
+          <button type="button" class="ui-button" @click="query = ''; category = ''; scope = 'all'; load(true)">Clear the search</button>
+        </EmptyState>
+        <EmptyState v-else-if="!failed" icon="buy" title="No shops here yet" text="Be the first to open one. Show what you do, with your own prices, and people can find you.">
+          <button type="button" class="ui-button is-primary" @click="tab = 'mine'">Open My shop</button>
+        </EmptyState>
         <button v-if="next" class="ui-button is-block" type="button" :disabled="loading" @click="load(false)">{{ loading ? 'Loading…' : 'Show more' }}</button>
       </template>
     </template>
@@ -96,7 +104,7 @@ const heading = computed(() => (venue.value ? 'Services at this market' : scope.
 .sc-filters label { display: grid; gap: 2px; font-size: 12px; }
 .sc-filters input, .sc-filters select { min-height: 40px; font: inherit; }
 .sc-chip { margin: 0; font-size: 13px; }
-.sc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.sc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
 .sc-hit { display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; font: inherit; cursor: pointer; border-radius: 12px; }
-.sc-hit:focus-visible { outline: 3px solid var(--c-focus, #2a6fdb); outline-offset: 2px; }
+.sc-hit:focus-visible, .sc-tabs button:focus-visible { outline: var(--focus); outline-offset: 2px; }
 </style>

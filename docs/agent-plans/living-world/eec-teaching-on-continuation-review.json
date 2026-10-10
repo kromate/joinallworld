@@ -1,0 +1,158 @@
+{
+  "reviewedAt": "2026-10-09T23:58:11.896739+00:00",
+  "decision": "ACCEPT_ON_DECISIONS_RELOAD_AND_SCOPED_PRESERVATION_OFF_WAGE_PENDING",
+  "sourceSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "packageDigest": "96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad",
+  "actualOperatorModel": "gpt-6-astra",
+  "actualOperatorEffort": "medium",
+  "actualOperatorMetadataAt": "2026-10-09T23:41:32.874Z",
+  "operatorReceiptSha256": "e0e64a6eeda8de96eb9cc88e8618ec0c479714a980bdfde6f21536c963ae1a1d",
+  "operatorReceiptBytes": 7408,
+  "ownerBeforeSha256": "161fb0ef5896d0800e3f1ddaed128dbd5067611d1d46a3c1943d8499d323627c",
+  "ownerAfterSha256": "14f2e22fff6f861118d5a6239b3cfc2af0832fb3c390d07beb09bd654a43107a",
+  "acceptedUI": [
+    "Wrong diagnosis and wrong explanation remained on current step with retry feedback.",
+    "Correct diagnosis and explanation advanced to final check.",
+    "Ordinary reload preserved unanswered final check and visible cash/performance.",
+    "390/320 viewport choices wrapped; keyboard Tab moved focus without activating an answer."
+  ],
+  "persistedMarker": "A check/revision5/actionGeneration1/careerGeneration1, completedShifts0. Four action receipts added; no new once or wallet effect.",
+  "actorChecks": [
+    {
+      "role": "A",
+      "actorHashUnchanged": true,
+      "cashUnchangedIndependentlyCompared": true,
+      "cityStateHashUnchangedIndependentlyCompared": false,
+      "ownerReportsProtectedFieldMatches": {
+        "name": true,
+        "cash": true,
+        "home": true,
+        "homeOwned": true,
+        "property": true,
+        "estate": true,
+        "inventory": true,
+        "business": true,
+        "social": true
+      },
+      "ownerReportsIdentityFieldMatches": {
+        "publicId": true,
+        "name": true,
+        "onboarding": true,
+        "character": true
+      },
+      "ownerReportsHomeStorageUnchanged": true,
+      "completedShifts": 0,
+      "teaching": {
+        "version": 1,
+        "stage": "check",
+        "revision": 5,
+        "careerGeneration": 1,
+        "actionGeneration": 1
+      },
+      "receiptsIndependentlyCompared": [
+        {
+          "kind": "action_receipts",
+          "oldCount": 40,
+          "newCount": 44,
+          "allOldRowContentHashesPresent": true,
+          "sameOrderedRowsDigest": false
+        },
+        {
+          "kind": "once_receipts",
+          "oldCount": 8,
+          "newCount": 8,
+          "allOldRowContentHashesPresent": true,
+          "sameOrderedRowsDigest": true
+        },
+        {
+          "kind": "wallet_effects",
+          "oldCount": 17,
+          "newCount": 17,
+          "allOldRowContentHashesPresent": true,
+          "sameOrderedRowsDigest": true
+        }
+      ],
+      "ownerReportsDrivingUnchanged": true
+    },
+    {
+      "role": "B",
+      "actorHashUnchanged": true,
+      "cashUnchangedIndependentlyCompared": true,
+      "cityStateHashUnchangedIndependentlyCompared": true,
+      "ownerReportsProtectedFieldMatches": {
+        "name": true,
+        "cash": true,
+        "home": true,
+        "homeOwned": true,
+        "property": true,
+        "estate": true,
+        "inventory": true,
+        "business": true,
+        "social": true
+      },
+      "ownerReportsIdentityFieldMatches": {
+        "publicId": true,
+        "name": true,
+        "onboarding": true,
+        "character": true
+      },
+      "ownerReportsHomeStorageUnchanged": true,
+      "completedShifts": 0,
+      "teaching": {
+        "version": null,
+        "stage": null,
+        "revision": null,
+        "careerGeneration": 0,
+        "actionGeneration": null
+      },
+      "receiptsIndependentlyCompared": [
+        {
+          "kind": "action_receipts",
+          "oldCount": 12,
+          "newCount": 12,
+          "allOldRowContentHashesPresent": true,
+          "sameOrderedRowsDigest": true
+        },
+        {
+          "kind": "once_receipts",
+          "oldCount": 0,
+          "newCount": 0,
+          "allOldRowContentHashesPresent": true,
+          "sameOrderedRowsDigest": true
+        },
+        {
+          "kind": "wallet_effects",
+          "oldCount": 8,
+          "newCount": 8,
+          "allOldRowContentHashesPresent": true,
+          "sameOrderedRowsDigest": true
+        }
+      ],
+      "ownerReportsDrivingUnchanged": null
+    }
+  ],
+  "limitations": [
+    "A cityStateSha256 differs, consistent with progression but exact changed-path attribution still requested; no whole-city-state immutability claim.",
+    "Protected/identity/home comparison booleans are owner evidence; Root independently compared actor/cash and all old row-content hashes without reading raw saves.",
+    "Whole-character differences from earlier pre-Apply baseline remain unknown.",
+    "Lumo occludes right-edge text in narrow captures; app-owned guide versus separate external100x overlay needs exact native attribution.",
+    "Physical device/touch/zoom not proved.",
+    "No final answer, wage, XP/performance change, same-ID wage replay or issued ON-to-OFF continuation accepted yet.",
+    "B unavailable; paired social/voice scope remains open."
+  ],
+  "cleanup": {
+    "ownedTabId": "1412594407",
+    "closed": true,
+    "closedEvent": {
+      "event": "close owned tab after checkpoint",
+      "before": "2026-10-09T23:43:13.212Z",
+      "after": "2026-10-09T23:43:13.225Z"
+    },
+    "viewportReset": true,
+    "unrelatedTabsPreserved": true,
+    "beforeHardCutoff": true
+  },
+  "releaseReady": false,
+  "productionSourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "productionTeachingStarts": false
+}

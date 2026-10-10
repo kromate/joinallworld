@@ -372,3 +372,33 @@ test('both players are told live: the card arrives on a socket, and its change a
     assert.equal(changed.type === 'message-changed' ? changed.message.request?.state : null, 'paid');
   }
 });
+
+test('paying keeps a money-class receipt: a flood of light receipts neither blocks nor evicts it, and a replay never pays twice', async (t) => {
+  const LIGHT = 12, limits = { perPlayer: 50, global: 30, lightPerPlayer: LIGHT, lightGlobal: 20 };
+  const f = await fixture(t, { receiptLimits: limits });
+  const { ada, bola } = await pair(f);
+  const clientId = f.id(), transferId = peerTransferId(ada.id, clientId);
+  const first = await ask(f, bola, ada, { amount: 700 });
+  const paid = await settle(f, ada, first.request.id, 'pay', { clientId });
+  assert.equal(paid.code, 'paid');
+  const kinds = async () => (await f.server.store.read((db) => Object.values(db.sessions).flatMap((record) => Object.values(record.once ?? {}).map((receipt) => receipt.kind)))) ?? [];
+  assert.equal((await kinds()).filter((kind) => kind === 'money.pay').length, 1, 'the payment is a money receipt, not a light one');
+  // Fill Ada's light allowance with receipts that are still live: light work is refused, money is not.
+  await f.server.store.transact((db) => {
+    const record = Object.values(db.sessions).find((item) => item.publicId === ada.id)!;
+    const once = (record.once ??= {});
+    for (let i = 0; i < LIGHT; i++) once[`${f.now()}:00000000-0000-4000-8000-${String(i + 1).padStart(12, '0')}`] = { at: f.now(), kind: 'money.answer', fp: 'synthetic', result: { ok: true, code: 'probe' } };
+  });
+  assert.deepEqual([(await settle(f, ada, 'MR-999', 'decline')).status, (await ask(f, ada, bola)).status], [429, 429], 'light work is refused');
+  const replay = await settle(f, ada, first.request.id, 'pay', { clientId });
+  assert.deepEqual([replay.code, replay.duplicate, replay.receipt, replay.balance], ['paid', true, transferId, 7300], 'the receipt was kept and answers again');
+  assert.equal((await kinds()).filter((kind) => kind === 'money.pay').length, 1, 'nothing was evicted');
+  // Past the window the id itself is refused, so a replay is never run again; the request is already paid either way.
+  f.advance(25 * HOUR);
+  const late = await settle(f, ada, first.request.id, 'pay', { clientId });
+  assert.equal(late.ok === true && !late.duplicate, false, 'not paid a second time');
+  await get(f, '/api/social/me', bola);
+  assert.deepEqual([await cash(f, ada), await cash(f, bola)], [7300, 5700]);
+  const rows = await f.server.store.read((db) => db.walletEffects?.filter((row) => row.transferId === transferId).length);
+  assert.equal(rows, 2, 'one debit and one credit, ever');
+});

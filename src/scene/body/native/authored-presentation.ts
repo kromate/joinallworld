@@ -6,15 +6,15 @@ import { createAuthoredClothingPalette } from './clothing-palette.ts';
 import { createAuthoredHairPalette } from './hair-palette.ts';
 import { applyBodyMaskUnion, type BodyMaskLease, type BodyTriangleHideSet } from './body-mask-union.ts';
 import casualSuitUrl from './authored-clothing/out/male_casualsuit01.glb?url';
-import bodyHideMapUrl from './authored-clothing/out/body-hide-map.json?url';
+import bodyHideMapUrl from './authored-clothing/out/body-hide-map.txt?url';
 import shortHairUrl from './authored-hair/out/short02-mobile.glb?url';
 import afroHairUrl from './authored-hair/out/afro01-mobile.glb?url';
 import officeMaleUrl from './authored-clothing/office-export/out/office-male.glb?url';
 import officeFemaleUrl from './authored-clothing/office-export/out/office-female.glb?url';
-import officeMaleHideUrl from './authored-clothing/office-export/out/office-male-body-hide-map.json?url';
-import officeFemaleHideUrl from './authored-clothing/office-export/out/office-female-body-hide-map.json?url';
+import officeMaleHideUrl from './authored-clothing/office-export/out/office-male-body-hide-map.txt?url';
+import officeFemaleHideUrl from './authored-clothing/office-export/out/office-female-body-hide-map.txt?url';
 import femaleCasualUrl from './authored-clothing/casual-female-export/out/casual-female.glb?url';
-import femaleCasualHideUrl from './authored-clothing/casual-female-export/out/casual-female-body-hide-map.json?url';
+import femaleCasualHideUrl from './authored-clothing/casual-female-export/out/casual-female-body-hide-map.txt?url';
 
 /** This first authored outfit is deliberately limited to the casual suit bake. */
 export type AuthoredPresentationLook = Pick<Look, 'body' | 'outfit' | 'outfitColor' | 'bottomsColor' | 'fabric'>

@@ -619,7 +619,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
   return { sample, solve, captureBaseline, dispose() { disposed = true; contacts.length = 0; } };
 }
 
-function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, neutralPose: NativeNeutralPose, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, headOrientation: ReturnType<typeof createNativeHeadOrientationController>, interactionGesture: ReturnType<typeof createNativeInteractionGestureController> | undefined, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
+function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler, solver: NativeClipSolver, directionRetargeter: NativeDirectionRetargeter | undefined, neutralPose: NativeNeutralPose, contacts: ReturnType<typeof createAuthoredFootContacts>, seatSurface: ReturnType<typeof createNativeSeatSurfaceProbe> | undefined, restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined, stairContactHeightAt: NativePreparedFactoryOptions['stairContactHeightAt'], hands: ReturnType<typeof createNativeHandPoseController>, wrists: ReturnType<typeof createNativeWristOrientationController>, neutralInteractionWrists: ReturnType<typeof createNativeWristOrientationController> | undefined, headOrientation: ReturnType<typeof createNativeHeadOrientationController>, interactionGesture: ReturnType<typeof createNativeInteractionGestureController> | undefined, resolveClip: (name: string) => string, onDirectionContactSolve: (result: FootSolveResult) => void) {
   const bones = new Map<string, THREE.Bone>();
   root.traverse((node) => { const bone = node as THREE.Bone; if (bone.isBone) bones.set(bone.name, bone); });
   // Grounded IK may translate the pelvis when the source legs are already at
@@ -915,7 +915,15 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
       // from a prior IK result, so repeated host solving is deterministic.
       captureContactBaseline(!restApplied);
       if (!restApplied) solveAuthoredContacts();
-      if (!(directionRetargeter && context.pose === 'idle' && context.clip === 'idle' && support.kind === 'flat-feet')) wrists.apply(frame);
+      if (!(directionRetargeter && context.pose === 'idle' && context.clip === 'idle' && support.kind === 'flat-feet')) {
+        // Only the measured direction-retargeted flat interaction consumes the source-idle
+        // reference captured against corrected native neutral. Furniture/rest and native
+        // source-clip modes keep the original bind-reference wrist mapping.
+        const wristController = directionRetargeter && context.pose === 'interact'
+          && support.kind === 'flat-feet' && neutralInteractionWrists
+          ? neutralInteractionWrists : wrists;
+        wristController.apply(frame);
+      }
       hands.apply(context.pose === 'walk' || context.pose === 'jog' ? 'walk' : ['cook','cookLow','eat','drink'].includes(context.pose) ? 'grip' : 'relaxed', context.seconds);
       return Object.freeze({ accepted: true as const, rootWorldCorrection,
         ...(rootWorldCorrectionXZ ? { rootWorldCorrectionXZ } : {}) });
@@ -965,6 +973,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
   let restAdapter: ReturnType<typeof createNativeRestPoseAdapter> | undefined;
   let hands: ReturnType<typeof createNativeHandPoseController> | undefined;
   let wrists: ReturnType<typeof createNativeWristOrientationController> | undefined;
+  let neutralInteractionWrists: ReturnType<typeof createNativeWristOrientationController> | undefined;
   let headOrientation: ReturnType<typeof createNativeHeadOrientationController> | undefined;
   let directionRetargeter: NativeDirectionRetargeter | undefined;
   let neutralPose: NativeNeutralPose | undefined;
@@ -980,6 +989,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
       () => sampler?.dispose(),
       () => hands?.dispose(),
       () => wrists?.dispose(),
+      () => neutralInteractionWrists?.dispose(),
       () => headOrientation?.dispose(),
       () => solver?.dispose(),
       () => directionRetargeter?.dispose(),
@@ -1058,14 +1068,21 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     neutralPose = createNativeNeutralPose(character.object);
     if (directionRetargeter) {
       neutralPose.apply();
-      const idleClip = initialLook.body === 'woman' && sampler.durations.has('idle-female') ? 'idle-female' : 'idle';
-      const neutralSource = sampler.sampleClip(idleClip, 0, 'clamp');
-      interactionGesture = createNativeInteractionGestureController(character.object, {
-        sourceRestLandmarks: sampler.restLandmarks, sourceNeutralLandmarks: neutralSource.landmarks,
-      });
-      neutralPose.restore();
+      try {
+        const idleClip = initialLook.body === 'woman' && sampler.durations.has('idle-female') ? 'idle-female' : 'idle';
+        const neutralSource = sampler.sampleClip(idleClip, 0, 'clamp');
+        interactionGesture = createNativeInteractionGestureController(character.object, {
+          sourceRestLandmarks: sampler.restLandmarks, sourceNeutralLandmarks: neutralSource.landmarks,
+        });
+        // Capture both source idle wrist and corrected native neutral bases while the
+        // target is in the pose that will receive the measured interaction articulation.
+        neutralInteractionWrists = createNativeWristOrientationController(character.object, neutralSource.wristRotations);
+      } finally {
+        neutralPose.restore();
+      }
     }
     hands = createNativeHandPoseController(character.object);
+    // Non-direction modes retain the original source-bind wrist reference.
     wrists = createNativeWristOrientationController(character.object, sampler.restWristRotations);
     headOrientation = createNativeHeadOrientationController(character.object, sampler.restHeadRotation);
     solver = createNativeClipSolver(character.object, { sourceRest: sampler.restLandmarks, footSurface: footwear.object });
@@ -1131,7 +1148,7 @@ export async function prepareNativeSkinnedBody(options: NativePreparedFactoryOpt
     };
     let lastDirectionContactSolve: FootSolveResult | null = null;
     const posePort = createPosePort(character.object, sampler, solver, directionRetargeter, neutralPose, contacts, seatSurface, restAdapter,
-      options.stairContactHeightAt, hands, wrists, headOrientation, interactionGesture, resolveClip, (result) => { lastDirectionContactSolve = result; });
+      options.stairContactHeightAt, hands, wrists, neutralInteractionWrists, headOrientation, interactionGesture, resolveClip, (result) => { lastDirectionContactSolve = result; });
     const native = createNativeFullRuntime({
       actor: {
         object: character.object,

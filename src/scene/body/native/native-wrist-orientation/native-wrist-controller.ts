@@ -33,6 +33,13 @@ function validateQuaternion(value: THREE.Quaternion, label: string): void {
   }
 }
 
+function captureSourceQuaternion(value: THREE.Quaternion, label: string): THREE.Quaternion {
+  validateQuaternion(value, label);
+  // The sampler reuses and mutates its frame quaternions on every sample. Keep an owned
+  // baseline so a later source sample cannot silently redefine the controller's rest pose.
+  return value.clone().normalize();
+}
+
 /**
  * Transfers measured source wrist articulation after positional IK. The frame is sampler-owned and
  * ephemeral: consume it synchronously before requesting another clip sample. This controller owns
@@ -43,9 +50,11 @@ export function createNativeWristOrientationController(
   sourceRestWristRotations: NativeSourceWristRotations,
 ): NativeWristOrientationController {
   const sides = {
-    left: { sourceForearm: sourceRestWristRotations.forearm.left, sourceHand: sourceRestWristRotations.hand.left,
+    left: { sourceForearm: captureSourceQuaternion(sourceRestWristRotations.forearm.left, 'left rest forearm'),
+      sourceHand: captureSourceQuaternion(sourceRestWristRotations.hand.left, 'left rest hand'),
       targetForearm: requireBone(root,'mixamorigLeftForeArm'), targetHand: requireBone(root,'mixamorigLeftHand') },
-    right: { sourceForearm: sourceRestWristRotations.forearm.right, sourceHand: sourceRestWristRotations.hand.right,
+    right: { sourceForearm: captureSourceQuaternion(sourceRestWristRotations.forearm.right, 'right rest forearm'),
+      sourceHand: captureSourceQuaternion(sourceRestWristRotations.hand.right, 'right rest hand'),
       targetForearm: requireBone(root,'mixamorigRightForeArm'), targetHand: requireBone(root,'mixamorigRightHand') },
   };
   const rest = {} as Record<'left'|'right', { targetForearmRoot: THREE.Quaternion; targetHandLocal: THREE.Quaternion }>;

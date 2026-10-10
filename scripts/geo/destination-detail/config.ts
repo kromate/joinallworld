@@ -42,6 +42,8 @@ export interface DetailConfig {
   minRoadKm: number
   maxRoads: number
   water: (bbox: string) => string
+  /** Set when the water answer holds shore ways of the sea (`coast`: coastline, land on the left) or of a big lake (`lake`: the member ways of its relation): the water is drawn this far out from the shore, in metres. */
+  sea?: { kind: 'coast' | 'lake'; bandMetres: number }
   roads: (bbox: string, core: string) => string
   boundaryNote: string
   terrainNote: string

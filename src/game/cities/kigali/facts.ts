@@ -9,7 +9,7 @@ export const FACTS = {
   },
   "state": {
     "idunique": "rw-starter",
-    "name": "Starter zone"
+    "name": "Kigali"
   },
   "timezone": "Africa/Kigali",
   "centre": {
@@ -24,13 +24,18 @@ export const FACTS = {
     "sourceUrl": "https://ourairports.com/airports/HRYR/"
   },
   "sourceLabel": "Natural Earth, OpenStreetMap contributors and OurAirports dataset",
-  "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=30.055586,-1.954644,30.061586,-1.948644",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
   "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
   "bounds": [
-    30.043586,
-    -1.98063,
-    30.1515,
-    -1.936644
+    30.02,
+    -2.0,
+    30.16,
+    -1.9
   ],
-  "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."
+  "coverageNote": "Kigali from Nyabugogo to the airport at Kanombe: a sketch of the built-up extent traced from mapped land use (not an administrative boundary), the small lakes and ponds mapped as water, main roads and named places mapped in OpenStreetMap. The airport coordinates are an OurAirports dataset point, not an official reference point or evidence of current operations or schedules. Visitor services and homes are fictional game content set at the real named places.",
+  "names": {
+    "area": "Kigali",
+    "unit": "district",
+    "roadHub": "Nyabugogo Bus Station"
+  }
 } satisfies DestinationFacts

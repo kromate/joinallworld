@@ -49,6 +49,8 @@
  *   POST /api/social/bae/answer          { from, accept, cityId }
  *   POST /api/social/bae/end             { cityId }
  *   POST /api/social/transfers           { to, amount, cityId, clientId }
+ *   POST /api/social/money-requests      { to, amount, note?, clientId }                    ask a friend for money (src/moneyRequest.ts)
+ *   POST /api/social/money-requests/answer { id, op: 'pay' | 'decline' | 'cancel', cityId?, clientId }   'pay' is a gift on the same path
  * The friends list is part of GET /api/social/me; only the founder's can be longer than that answer carries.
  */
 import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts';
@@ -247,5 +249,7 @@ export default function socialRoutes(ctx: RouteContext): Record<RouteKey, RouteH
     'POST /api/social/bae/answer': mine((db, session, body) => service.baeAnswer(db, session, body)),
     'POST /api/social/bae/end': mine((db, session, body) => service.baeEnd(db, session, body)),
     'POST /api/social/transfers': route((db, session, body) => service.transfer(db, session, body)),
+    'POST /api/social/money-requests': route((db, session, body) => service.requestMoney(db, session, body)),
+    'POST /api/social/money-requests/answer': route((db, session, body) => service.answerMoneyRequest(db, session, body)),
   };
 }

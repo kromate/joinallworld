@@ -287,6 +287,8 @@ export interface MessageRecord {
   re?: { seq: number; from: string; text: string }
   /** A gift of money sent from the chat: `n` naira, and `r` of it that went to a ride debt on arrival. Its words are in `body`. */
   gift?: { n: number; r?: number }
+  /** A request for money (MoneyRequestRecord, kept apart in social.moneyRequests): `n` naira, `x` when it lapses, and once it ended `s` how, so the line still reads right after the record is forgotten. */
+  req?: { id: string; n: number; note?: string; x: number; s?: 'paid' | 'declined' | 'cancelled' }
   /** Reactions: player id → the one emoji they reacted with (at most REACTION_KINDS different emoji on a message). */
   rx?: Record<string, string>
   /** A picture: the id of its bytes (kept apart from this collection), its size and what became of it. */
@@ -475,6 +477,24 @@ export interface SocialCollection {
   pings?: Record<string, PingRecord>
   /** Journeys to another city each player made free of charge by joining a friend: server ms, the last 24 hours only. */
   pingJoins?: Record<string, number[]>
+  /** Requests for money by id (src/moneyRequest.ts, server/social/service.ts): kept apart from the chat so trimming a thread never loses one. Absent until the first. */
+  moneyRequests?: Record<string, MoneyRequestRecord>
+}
+/** One request for money. `from` asks `to`; the chat line is `conv` #`seq`, if it is still kept. Never `expired` here: that is read from `expires`. */
+export interface MoneyRequestRecord {
+  id: string
+  from: string
+  to: string
+  n: number
+  note?: string
+  at: number
+  expires: number
+  state: 'open' | 'paid' | 'declined' | 'cancelled'
+  conv: string
+  seq: number
+  closedAt?: number
+  /** Set once paid: the transfer that settled it (the same id the two wallet lines carry) and the payer's request id. */
+  paid?: { transferId: string; cid: string }
 }
 /** One pending ping: who asked whom to come, when, and where the pinger was. `venue` is a venue id or `'home'`; nothing more exact than that is ever kept. */
 export interface PingRecord {

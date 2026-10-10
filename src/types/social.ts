@@ -116,6 +116,8 @@ export interface Message {
   replyTo?: ReplyQuote
   /** A gift of money sent from the chat: the amount, and how much of it paid a ride debt on arrival (shown to the one who received it). */
   gift?: { amount: number; repaid?: number }
+  /** A request for money (src/moneyRequest.ts): the card the chat draws instead of words. Present on both sides' copies. */
+  request?: MoneyRequestView
   /** Reactions, grouped: each emoji, how many reacted with it, and whether the viewer did. */
   reactions?: { emoji: string; count: number; mine?: true }[]
   /** A picture. Its bytes are at GET /api/social/images/<id>, for members of the conversation only. */
@@ -347,6 +349,23 @@ export interface BaeAskBody { id: string; cityId: CityId }
 export interface BaeAnswerBody { from: string; accept: boolean; cityId: CityId }
 export interface BaeEndBody { cityId: CityId }
 export interface TransferBody { to: string; amount: number; cityId: CityId; clientId: TimedId }
+/** `expired` is never stored: an open request past its time reads as expired. */
+export type MoneyRequestState = 'open' | 'paid' | 'declined' | 'cancelled' | 'expired'
+/** One request as a viewer sees it. `mine`: the viewer asked for the money. `payable`: the viewer can pay it right now (open, not blocked either way). */
+export interface MoneyRequestView {
+  id: string
+  amount: number
+  note?: string
+  state: MoneyRequestState
+  mine: boolean
+  expiresAt: number
+  payable: boolean
+  /** The transfer that settled it: set once paid. */
+  receipt?: string
+}
+export interface MoneyRequestBody { to: string; amount: number; note?: string; clientId: TimedId }
+/** `pay` settles it as a gift (`cityId` is the payer's city, as for a gift); `decline` is the payer's; `cancel` is the requester's. */
+export interface MoneyRequestAnswerBody { id: string; op: 'pay' | 'decline' | 'cancel'; cityId?: CityId; clientId: TimedId }
 
 // ---- results -------------------------------------------------------------------------------------
 
@@ -437,6 +456,13 @@ export type BaeEndResult = Done<'ended', Repeat>
 export type TransferResult =
   | Done<'sent', { amount: number; to: PlayerRef; /** false: stored until the recipient's next request */ credited: boolean; creditedCity: CityId; /** the sender's cash afterwards */ balance: number } & Repeat>
   | Refusal<OtherPlayerRefusal | 'rate_limited' | 'friends_only' | 'account_too_new' | 'friendship_too_new' | 'recipient_limit' | 'recipient_unavailable' | 'recipient_no_life' | (string & {})>
+export type MoneyRequestResult =
+  | Done<'requested', { request: MoneyRequestView; message: Message } & Repeat>
+  | Refusal<OtherPlayerRefusal | 'rate_limited' | 'friends_only' | 'amount_too_small' | 'amount_too_large' | 'request_open' | 'request_limit' | 'requests_full' | (string & {})>
+export type MoneyRequestAnswerResult =
+  | Done<'paid', { request: MoneyRequestView; receipt: string; amount: number; /** the payer's cash afterwards */ balance: number } & Repeat>
+  | Done<'declined' | 'cancelled', { request: MoneyRequestView } & Repeat>
+  | Refusal<OtherPlayerRefusal | 'unknown_request' | 'request_paid' | 'request_declined' | 'request_cancelled' | 'request_expired' | 'rate_limited' | 'friends_only' | 'recipient_limit' | 'recipient_unavailable' | 'recipient_no_life' | (string & {})>
 
 // ---- HTTP ----------------------------------------------------------------------------------------
 
@@ -503,6 +529,8 @@ export interface SocialHttpRoutes {
   'POST /api/social/bae/answer': { body: BaeAnswerBody; response: Ok<BaeAnswerResult>; errors: SocialPost | 'invalid_player' | 'invalid_city' | 'invalid_answer' }
   'POST /api/social/bae/end': { body: BaeEndBody; response: Ok<BaeEndResult>; errors: SocialPost | 'invalid_city' }
   'POST /api/social/transfers': { body: TransferBody; response: Ok<TransferResult>; errors: SocialPost | OnceErrorCode | 'invalid_player' | 'invalid_city' | 'invalid_amount' }
+  'POST /api/social/money-requests': { body: MoneyRequestBody; response: Ok<MoneyRequestResult>; errors: SocialPost | OnceErrorCode | 'invalid_player' | 'invalid_amount' | 'invalid_note' }
+  'POST /api/social/money-requests/answer': { body: MoneyRequestAnswerBody; response: Ok<MoneyRequestAnswerResult>; errors: SocialPost | OnceErrorCode | 'invalid_request' | 'invalid_op' | 'invalid_city' }
 }
 
 // ---- socket: client → server (server/ws/social.ts) ----------------------------------------------

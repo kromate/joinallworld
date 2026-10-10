@@ -207,6 +207,8 @@ interface SoleGroup { readonly side: 'left' | 'right'; readonly vertices: readon
 interface ContactSolveDiagnostics {
   readonly limitedReasons: readonly Readonly<Record<string, number | string>>[];
   readonly unresolvedReasons: readonly string[];
+  readonly pelvisLoweringFrame: 'world-metres';
+  readonly cumulativePelvisLoweringWorld: number;
   readonly pelvisPasses: readonly Readonly<{ requestedLowering: number; appliedLowering: number; cumulativeLowering: number }>[];
   readonly finalSolePoints: readonly Readonly<{ side: 'left' | 'right'; index: number; y: number; floorY: number; gap: number }>[];
   readonly finalLegReach: readonly Readonly<{ side: 'left' | 'right'; upperLength: number; lowerLength: number; actualAnkleReach: number; requestedAnkleReach: number; maximumReach: number; extensionRatio: number }>[];
@@ -304,9 +306,18 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     if (!bone?.parent) throw new Error('Authored foot solve lacks a movable pelvis bone');
     return { bone, parent: bone.parent };
   })();
-  let baselineHipWorldY: number | null = null;
+  let baselineHipActorY: number | null = null;
+  let spentPelvisLoweringWorld = 0;
   function captureBaseline(): void {
-    baselineHipWorldY = boneActorPoint(hips).y;
+    baselineHipActorY = boneActorPoint(hips).y;
+    spentPelvisLoweringWorld = 0;
+  }
+  function measuredPelvisLoweringWorld(): number {
+    // Actor coordinates remove placement/parent translation. Convert the intrinsic
+    // displacement using the current world scale so a scale change cannot renew budget.
+    updateActorWorld(actor);
+    return baselineHipActorY === null ? 0
+      : Math.max(0, baselineHipActorY - boneActorPoint(hips).y) * actor.matrixWorld.elements[5];
   }
 
   function pointInActor(x: number, y: number, z: number): THREE.Vector3 {
@@ -394,8 +405,12 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     const desiredSoleY = new Map<'left' | 'right', number>();
     const correctedSides = new Set<'left' | 'right'>();
     updateActorWorld(actor);
-    let pelvisCorrection = baselineHipWorldY === null ? 0
-      : Math.max(0, baselineHipWorldY - hips.getWorldPosition(new THREE.Vector3()).y);
+    const parentWorldYScale = actor.parent?.matrixWorld.elements[5] ?? 1;
+    const actorWorldYScale = actor.matrixWorld.elements[5];
+    if (!Number.isFinite(parentWorldYScale) || parentWorldYScale <= 0
+      || !Number.isFinite(actorWorldYScale) || actorWorldYScale <= 0) throw new Error('Native foot solve has invalid vertical scale');
+    let pelvisCorrection = Math.max(spentPelvisLoweringWorld, measuredPelvisLoweringWorld());
+    spentPelvisLoweringWorld = pelvisCorrection;
     let after = sample();
     // Entry/exit and stair frames intentionally lift one foot. Choose the sole with
     // the closest actual sample to its measured support as the planted side; keep
@@ -459,7 +474,9 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
             const targetAnkle = boneActorPoint(leg.foot).add(correctedSole.sub(sole));
             const hip = boneActorPoint(leg.thigh), knee = boneActorPoint(leg.calf), ankle = boneActorPoint(leg.foot);
             const reachExcess = targetAnkle.distanceTo(hip) - hip.distanceTo(knee) - knee.distanceTo(ankle) + 0.001;
-            requiredLowering = Math.max(requiredLowering, Math.min(contact.y - targetY, Math.max(0.001, reachExcess)));
+            requiredLowering = Math.max(requiredLowering, Math.min(
+              (contact.y - targetY) * parentWorldYScale,
+              Math.max(0.001, reachExcess * actorWorldYScale)));
           }
         }
         if (requiredLowering > 0.0002) {
@@ -468,15 +485,18 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
           if (lowering > 0.0002) {
             // The source frame's ankles are beyond leg extension. Lower only the pelvis bone,
             // preserving actor placement and limb segment lengths, then resample before IK.
-            shiftPelvisParentY(-lowering);
+            shiftPelvisParentY(-lowering / parentWorldYScale);
             pelvisCorrection += lowering;
+            spentPelvisLoweringWorld = pelvisCorrection;
             after = sample();
             if (lowering + 0.001 < requiredLowering) {
               limited = true;
               limitedReasons.push(Object.freeze({ code: 'pelvis-lowering-cap', requestedLowering: requiredLowering, appliedLowering: lowering, remainingBudget: remaining }));
             }
             pelvisPasses.push(Object.freeze({ requestedLowering: requiredLowering, appliedLowering: lowering, cumulativeLowering: pelvisCorrection }));
-            continue;
+            // The final allowed pass must fit the legs; four pelvis-only passes
+            // otherwise return untouched, unsupported feet with a zero target error.
+            if (pass < 3) continue;
           }
           limited = true;
           limitedReasons.push(Object.freeze({ code: 'pelvis-lowering-budget-exhausted', requestedLowering: requiredLowering, cumulativeLowering: pelvisCorrection }));
@@ -575,6 +595,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
       unresolvedReasons.push('missing-or-penetrating-final-sole');
     }
     const groundedSides = new Set(finalSolePoints.filter((point) => Math.abs(point.gap) <= 0.004).map((point) => point.side));
+    if (Math.max(spentPelvisLoweringWorld, measuredPelvisLoweringWorld()) > 0.080001) unresolvedReasons.push('pelvis-world-budget-exceeded');
     if (mode === 'grounded' && (!groundedSides.has('left') || !groundedSides.has('right'))) unresolvedReasons.push('grounded-side-missing');
     if (mode === 'transition' && !groundedSides.size) unresolvedReasons.push('transition-planted-side-missing');
     if (finalLegReach.some((leg) => ![leg.actualAnkleReach, leg.requestedAnkleReach, leg.maximumReach].every(Number.isFinite)
@@ -582,7 +603,9 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
       unresolvedReasons.push('final-leg-reach');
     }
     const finalLimited = unresolvedReasons.length > 0 || limited && !historicalCapsOnly;
-    const diagnostics = Object.freeze({ limitedReasons: Object.freeze(limitedReasons), pelvisPasses: Object.freeze(pelvisPasses),
+    const diagnostics = Object.freeze({ pelvisLoweringFrame: 'world-metres' as const,
+      cumulativePelvisLoweringWorld: Math.max(spentPelvisLoweringWorld, measuredPelvisLoweringWorld()),
+      limitedReasons: Object.freeze(limitedReasons), pelvisPasses: Object.freeze(pelvisPasses),
       unresolvedReasons: Object.freeze(unresolvedReasons), finalSolePoints: Object.freeze(finalSolePoints), finalLegReach: Object.freeze(finalLegReach) });
     return Object.freeze({ corrected: correctedSides.size, maxError, limited: finalLimited, diagnostics });
   }
@@ -603,13 +626,13 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
   const contactBaseline = contactBones.map((bone) => ({ bone, position: new THREE.Vector3(), quaternion: new THREE.Quaternion(), scale: new THREE.Vector3() }));
   let contactBaselineReady = false;
   let blend: { clip: string; fade: number; from: Map<THREE.Bone, { p: THREE.Vector3; q: THREE.Quaternion; s: THREE.Vector3 }> } | null = null;
-  function captureContactBaseline(): void {
+  function captureContactBaseline(resetPelvisBudget = true): void {
     for (const saved of contactBaseline) {
       saved.position.copy(saved.bone.position);
       saved.quaternion.copy(saved.bone.quaternion);
       saved.scale.copy(saved.bone.scale);
     }
-    contacts.captureBaseline();
+    if (resetPelvisBudget) contacts.captureBaseline();
     contactBaselineReady = true;
   }
   function restoreContactBaseline(): boolean {
@@ -877,7 +900,7 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
       // Keep an immutable pre-contact leg pose for host calls to solveFeet().
       // Each solve must start from the sampled/crossfaded animation pose, not
       // from a prior IK result, so repeated host solving is deterministic.
-      captureContactBaseline();
+      captureContactBaseline(!restApplied);
       if (!restApplied) solveAuthoredContacts();
       if (!(directionRetargeter && context.pose === 'idle' && context.clip === 'idle' && support.kind === 'flat-feet')) wrists.apply(frame);
       hands.apply(context.pose === 'walk' || context.pose === 'jog' ? 'walk' : ['cook','cookLow','eat','drink'].includes(context.pose) ? 'grip' : 'relaxed', context.seconds);

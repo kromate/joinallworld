@@ -16,6 +16,9 @@ import type { Point } from './records.ts'
 import { parseLifeIdentity, parseLifeLocator } from './lifeIdentity.ts'
 import { parseCommand } from './records.ts'
 import { createLife } from '../../src/life.ts'
+import { loadCityContent } from '../../src/game/cities/registry.ts'
+
+await loadCityContent('lagos')
 
 const NOW = 1_800_000_000_000
 const ids = Object.freeze({

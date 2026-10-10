@@ -1,0 +1,18 @@
+{
+  "parentRuntime": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "files": {
+    "server/households/records.ts": "d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4",
+    "server/households/consent.ts": "2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a",
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d"
+  },
+  "evidenceLevels": {
+    "consent": "isolated two-file strict compiler and 75 pure observations; review approved at this scope",
+    "identity": "46 pure observations; three-file real-dependency compiler OOM134, unaccepted",
+    "durableHouseholds": "not implemented or enabled"
+  },
+  "evidenceSha256": {
+    "consentProbe": "a193dbd31381633c1f67e40bd8e12acc7ad9b2845f383bdec188d9460fbdbf99",
+    "identityProbe": "101cd903f8becaccbfb66f72efa496079b0d4a7dff6961a8d2278521abf97e3e",
+    "identityCompilerLog": "8681755679734d99bcd6ce205607f0d7ebf1abce0c8d106160ec94213dc3ca25"
+  }
+}

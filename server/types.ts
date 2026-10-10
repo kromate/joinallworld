@@ -58,6 +58,8 @@ export interface OnceReceipt {
 /** One city's life of one session (server/life-service.ts settleCity). */
 export interface CityLifeRecord {
   state: LifeState
+  /** Immutable identity envelope, assigned only by canonical lifecycle writers. */
+  identity?: import('./households/lifeIdentity.ts').LifeIdentity
   /** Server ms this life was last settled to. */
   updatedAt: number
   /**
@@ -742,6 +744,8 @@ export interface GrowthCollection {
 
 export interface Database {
   version: 1
+  /** Internal consent persistence; absent until the first authorized durable mutation. */
+  households?: import('./households/durableStorage.ts').HouseholdCollection
   /** Node's transaction-atomic player-wallet audit log; Worker stores rows separately. */
   walletEffects?: StoredWalletEffect[]
   /** Keyed by cookie secret. */
@@ -776,7 +780,7 @@ export interface Database {
   [collection: string]: unknown
 }
 /** Top-level keys of the document. */
-export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog', 'visits', 'walletEffects'] as const satisfies readonly (keyof Database)[]
+export const DATABASE_KEYS = ['version', 'sessions', 'archivedLives', 'social', 'civic', 'support', 'moderation', 'growth', 'business', 'campus', 'accounts', 'accountDevices', 'accountLog', 'visits', 'walletEffects', 'households'] as const satisfies readonly (keyof Database)[]
 /** The namespaced collections reached through `collection(db, name)`. */
 export const COLLECTION_NAMES = ['social', 'civic', 'support', 'moderation', 'growth'] as const
 export type CollectionName = (typeof COLLECTION_NAMES)[number]

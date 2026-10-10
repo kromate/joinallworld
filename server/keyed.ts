@@ -130,6 +130,12 @@ export const KEYED_SPECS: Readonly<Record<string, readonly KeyedSpec[]>> = Objec
   trustChecks: [{ path: ['checks'] }],
   street: [{ path: ['journeys'] }],
   livingWorld: [{ path: ['driving'] }, { path: ['qualifications'] }, { path: ['barber'] }],
+  households: [
+    { path: ['households'] }, { path: ['invites'] }, { path: ['members'] },
+    { path: ['characterIndexes'] }, { path: ['lifeIndexes'] }, { path: ['homeIndexes'] },
+    { path: ['homes'] }, { path: ['lifeFacts'] }, { path: ['pairFacts'] },
+    { path: ['lifeLocations'] }, { path: ['byCharacterLife'] },
+  ],
 });
 export const isKeyedCollection = (name: string): boolean => Object.hasOwn(KEYED_SPECS, name);
 

@@ -1,5 +1,5 @@
 {
-  "observedAtUtc": "2026-10-10T00:19:03.426641+00:00",
+  "observedAtUtc": "2026-10-10T00:25:09.740009+00:00",
   "sourceSha": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
   "branch": "codex/cloud-living-replay-repair-20261010",
   "decision": "MODIFY_NOT_INTEGRATION_OR_ACTIVATION_ACCEPTANCE",
@@ -30,7 +30,7 @@
     }
   },
   "rootRead": "Entire d7-to-676 four-file diff, selected capability/adoption/transmission source; no execution claimed.",
-  "publicationReconciliation": "Initial SHA fetch not-our-ref; subsequent actual published branch census and branch fetch succeeded. Initial failure preserved; no worker restart.",
+  "publicationReconciliation": "Initial SHA fetch not-our-ref. Coordinator then identified repair clone origin as its local source clone, corrected to authorized GitHub destination and published frozen commit. Root subsequent actual ls-remote and branch fetch matched676. Initial failure preserved; no restart or source defect inferred.",
   "findings": [
     {
       "id": "F1",
@@ -80,5 +80,58 @@
     "jsonSha256": "6bec4fcfab2bcb29ba63d0661adbd58f99235419bf13f2e21192808df5b8c4c6",
     "rootReadEntireBoth": true,
     "decision": "MODIFY d7, not final repair source approval"
+  },
+  "independent676Review": {
+    "mdSha256": "19d272e4f871587f67284eaca61a300fcafb9881c0c34808761351d3a50ea559",
+    "jsonSha256": "56fcdf65af535fd2f30fae96c908acc1359db0f18c24435b7b82b286be559b79",
+    "rootReadEntireBoth": true,
+    "allSevenPinsMatch": true,
+    "decision": "MODIFY",
+    "sourceClosed": [
+      "D1",
+      "D2"
+    ],
+    "sourceOpen": [
+      "D3 canonical display",
+      "L1 separately tracked exhaustion"
+    ],
+    "actualReviewerModel": {
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "runtimeTimestamp": "2026-10-10T00:20:39.528Z",
+      "turnId": "01a1232b-55cd-7253-aded-11d8aa5bb24e",
+      "verifiedFrom": "Existing turn_context metadata"
+    }
+  },
+  "independentlyReadPriorCandidateExecution": {
+    "candidate": "d7ccfa5dfea65dacd541ca1dddc885f7f410df9e",
+    "publishedReceiptCommit": "72375198fce51960f556365e9b08c10bf1daa677",
+    "runtime": "Node24.19.0/npm11.9.0 existing cloud host",
+    "evidenceMdSha256": "23b6c69a88bac7b786e75dc70ee27722595b5a30809bcbebde8be225175a78be",
+    "service": {
+      "pass": 14,
+      "fail": 0,
+      "skip": 0,
+      "logSha256": "012c71c41564355cc15505e82287f085449d3556d1fb86dac4126b140d2f3f08",
+      "milliseconds": 1613.804841
+    },
+    "component": {
+      "pass": 6,
+      "fail": 0,
+      "skip": 0,
+      "includesExistingBarberCase": true,
+      "logSha256": "66584f4222614137ef778ec308744d049d6292b8a1417fa7a8a36a7881d5abaf",
+      "milliseconds": 9321.393672
+    },
+    "compiler": {
+      "heapMiB": 4096,
+      "exitCode": 1,
+      "durationSeconds": 244.035716,
+      "errors": "Four TS18048 nullable accesses in service test; not OOM, not compiler acceptance",
+      "receiptSha256": "73093e3e64f32c40292aa2728588b7a145ef84ed4d3133c0e6e15eab87f00c52",
+      "logSha256": "f13d856d284e9012579de403064746a0404a1f89d973444b3ae88551325df5a3"
+    },
+    "scope": "Actual artifact/log hashes and outputs read. d7 pass/failure does not prove676 execution, durable Worker/native or full build.",
+    "model": "Evidence says requested/configured gpt-6-luna/high but runtime attestation unavailable. Do not label actual cloud model verified."
   }
 }

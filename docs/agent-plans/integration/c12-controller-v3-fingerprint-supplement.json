@@ -29,6 +29,16 @@
       "path": "src/app/features/venue/VenuePanel.vue",
       "bytes": 8796,
       "sha256": "ed723edbfbf79144a6a5d08037f39d58970feb17fc5c41dae3d068e651e2968a"
+    },
+    {
+      "path": "src/game/cities/africa/contentBuilder.ts",
+      "bytes": 13559,
+      "sha256": "8bce9bcc63af77a94b020c84e3f3820665a8f52e49f7de9fb6196f31bb0b9e68"
+    },
+    {
+      "path": "src/game/cities/cairo/facts.ts",
+      "bytes": 1453,
+      "sha256": "29ede7f78b26400bf5e9ca743f084afc4b0edeba09e016d7337bd4696c1e43f7"
     }
   ],
   "sourceFlow": [
@@ -38,9 +48,10 @@
     "helper:41 fallback JSON.parse(full fingerprint) returnsnull on concatenation",
     "helper:52 JSON.parse(full fingerprint) rejects, then assumesfp[2] contains actualpayloadid"
   ],
-  "example": "[\"cairo\",\"activity\",null,null]{\"id\":\"cairo-visitor-info\"}",
+  "example": "[\"cairo\",\"activity\",null,null]{\"id\":\"cairo-arrival-info\"}",
   "repair": "Reconstruct/compare full canonical fingerprint from exact normal-UI payload+observed witness; preserve stored format and unchanged legacy no-payload compatibility. Bind city/type/payload/action receipt to natural completion; no prefix-only, substring or permissive fallback proof. Pin actual canonical logic/dependencies if imported.",
   "owner": "Same existing CloudAstra correction with H1-H3; WORLD discovered H4 and Root independently source-confirmed.",
   "execution": false,
-  "launchApproved": false
+  "launchApproved": false,
+  "exampleProvenance": "Exact FACTS.id cairo and africa/contentBuilder.ts template valid.id-arrival-info; source-only ordinarypayload reconstruction, no observed browserreceipt."
 }

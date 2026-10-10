@@ -4,7 +4,7 @@
 
 The [full source review](agent-plans/integration/c12-controller-v3-root-astra-review.md) closes original F1–F4 at source-design scope on public `b7eea093`. All11 packet files and53 available unique source/tooling pins match; remote runtime artifacts still require actual preflight. The unchanged numeric contract is retained. The concrete owner helper remains MODIFY for identity binding, protected-state/cross-actor comparisons and the restart cutoff, plus exact store/root-receipt authority proof. The [H4 supplement](agent-plans/integration/c12-controller-v3-fingerprint-supplement.md) also requires compatibility with the actual canonical activity fingerprint. Same existing owner is correcting it; no funding, browser or deployment is approved from this review.
 
-Original Node22 game and both policy checks are owner-reported PASS with raw publication pending; original Node24 FAIL remains separate. The combined startup limits and full actual journey/production gates are open. The single ledger retains35 INT IDs/all58 announcements. Latest actual quota6%remaining, with the explicit human<=4%new-work stop and checkpoint reserve unchanged.
+The [original Node22 raw review](agent-plans/integration/c12-node22-policy-root-review.md) independently matches2588PASS/0FAIL/1existingSKIP and the scoped package-guard/plan-inventory exits0; original Node24 FAIL and scene-loader variant acceptance remain separate. The combined startup limits and full actual journey/production gates are open. The single ledger retains35 INT IDs/all58 announcements. Latest actual quota6%remaining, with the explicit human<=4%new-work stop and checkpoint reserve unchanged.
 
 ## Justice save integrity and reconnect diagnosis — 10 October 2026, 04:11 UTC
 

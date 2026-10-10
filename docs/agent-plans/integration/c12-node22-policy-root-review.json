@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-10T04:35:47.847366+00:00",
+  "publicReceiptCommit": "51c5d1db389e2ec647af78c58af5ece912b34fbb",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "decision": "ACCEPT_NODE22_GAME_AND_SCOPED_POLICY_ORIGINALS",
+  "phases": [
+    {
+      "phase": "node22-game-corrected-full",
+      "node": "v22.23.3",
+      "exit": 0,
+      "durationSeconds": 1320.566582,
+      "originalReceiptSha256": "cb5fa6c0affc78db44132d3c3e6a836dbc6117f6e32c261e29ed4cb1534d811e",
+      "rawLogSha256": "0a7fbed005a10400ab7a4ade16f93360d4b785afa8d9307e3f1aaf2cc572f22d",
+      "rawBytes": 710929,
+      "cleanAfter": true,
+      "ownerSourceUnchanged": true,
+      "perFilePinMaps": false
+    },
+    {
+      "phase": "release-policy-package-guard",
+      "node": "v24.19.0",
+      "exit": 0,
+      "durationSeconds": 1.541409,
+      "originalReceiptSha256": "337abea775eb8e25ec64ca97f0a91833cd6b6316850ab4c813e690a7bfb8b30d",
+      "rawLogSha256": "e89061568944ed828cbd8b5641bd3bb8832a11d3c440f0b8e6e12d4a994c7dc5",
+      "rawBytes": 712,
+      "cleanAfter": true,
+      "ownerSourceUnchanged": true,
+      "perFilePinMaps": false
+    },
+    {
+      "phase": "release-policy-plan-inventory",
+      "node": "v24.19.0",
+      "exit": 0,
+      "durationSeconds": 0.263621,
+      "originalReceiptSha256": "556952882c9d45c4ec72ac0a9ad47d529d5b7904f7b4f6b8777d68c227964df7",
+      "rawLogSha256": "d1b8bd1242ee4bebb85e4d9c0c00b68790a1db436a2cd333d032690a4e8fc786",
+      "rawBytes": 1045,
+      "cleanAfter": true,
+      "ownerSourceUnchanged": true,
+      "perFilePinMaps": false
+    }
+  ],
+  "node22Game": {
+    "tests": 2589,
+    "pass": 2588,
+    "fail": 0,
+    "skipped": 1,
+    "all2589ResultLinesParsed": true,
+    "existingSkip": "paid gradual gains require a nonrefundable start charge, including choices and XP # SKIP design conflict: this branch meters priced per-second activities instead of forbidding them",
+    "rawOrdinalQualification": "154 appears for both community case and cityContractTest.test.ts file wrapper;1251 absent. Count/name result rows and terminal totals verified, do not claim globally unique TAP IDs."
+  },
+  "packageGuard": "One test-file wrapper resultPASS; no invented17casecount",
+  "planInventory": "Actual --plan exit0/glob/file inventory only, not execution of listed tests",
+  "limits": "Original c12 Node24 remainsFAIL2587/1/1; unchanged fixture is not repaired by Node22success. No retrygreen/fullmatrix/browser/scene-loader-variant/provider/deployment acceptance. Per-file before/after maps empty; clean-after/sourceunchanged ownerrecorded. Root executed no tests."
+}

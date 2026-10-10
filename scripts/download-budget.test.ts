@@ -24,7 +24,7 @@ function build(extra: Record<string, Uint8Array> = {}): Dist {
     'assets/city-dakar-rules-MMMMMMMM.js': bytes('export const a=3;'),
     'assets/city-dakar-content-NNNNNNNN.js': bytes('export const b=3;'),
     'assets/foreign-loaders-OOOOOOOO.js': bytes('export const f={"dakar":async()=>import("./city-dakar-rules-MMMMMMMM.js")};'),
-    'world-country-directory/index-PPPPPPPP.txt': bytes('{"countries":[{"iso2":"sn","path":"countries/sn-QQQQQQQQ.txt"}]}'),
+    'world-country-directory/index-PPPPPPPP.txt': bytes('{"countries":[{"iso2":"SN","path":"countries/sn-QQQQQQQQ.txt"}]}'),
     'world-country-directory/countries/sn-QQQQQQQQ.txt': bytes('{"cities":[]}'),
     'assets/city-kano-scenes-JJJJJJJJ.js': bytes('export const s=1;'),
     'assets/city-ibadan-scenes-KKKKKKKK.js': bytes('export const s=2;'),
@@ -42,7 +42,7 @@ test('static imports are followed, dynamic imports are not', () => {
 test('first paint is index.html, its stylesheet and scripts, and what they import; startup adds the shell and one city', () => {
   const dist = build()
   assert.deepEqual([...firstPaintFiles(dist)].sort(), ['assets/app-AAAAAAAA.js', 'assets/app-CCCCCCCC.css', 'assets/vue-BBBBBBBB.js', 'index.html'])
-  assert.deepEqual(cityIds(dist), ['kano', 'lagos'])
+  assert.deepEqual(cityIds(dist), ['dakar', 'kano', 'lagos'])
   assert.deepEqual([...startupFiles(dist, 'kano')!].sort(), [...firstPaintFiles(dist), 'assets/startApp-DDDDDDDD.js', 'assets/city-routes-EEEEEEEE.js', 'assets/city-kano-rules-HHHHHHHH.js', 'assets/city-kano-content-IIIIIIII.js'].sort())
   assert.equal(startupFiles(dist, 'ibadan'), null, 'a city without rules and content chunks has no startup')
   assert.deepEqual([...startupFiles(dist, 'dakar')!].sort(), [...firstPaintFiles(dist), 'index.html', 'assets/startApp-DDDDDDDD.js', 'assets/city-routes-EEEEEEEE.js', 'assets/city-dakar-rules-MMMMMMMM.js', 'assets/city-dakar-content-NNNNNNNN.js', 'assets/foreign-loaders-OOOOOOOO.js', 'world-country-directory/index-PPPPPPPP.txt', 'world-country-directory/countries/sn-QQQQQQQQ.txt'].sort(), 'selected foreign startup accounts for its loader map and country bootstrap')
@@ -52,7 +52,7 @@ test('chunks group by name without the hash, and cities fold into one group per 
   assert.deepEqual(['assets/city-kano-scenes-JJJJJJJJ.js', 'assets/city-port-harcourt-scenes-KKKKKKKK.js', 'assets/city-ogun-scenes-a-KKKKKKKK.js', 'assets/city-kano-content-IIIIIIII.js', 'assets/city-routes-EEEEEEEE.js', 'assets/world-adapter-LLLLLLLL.js', 'assets/x-1.png', 'assets/font-a1b2c3d4.woff2'].map(groupOf),
     ['city-*-scenes', 'city-*-scenes', 'city-*-scenes-a', 'city-*-content', 'city-routes', 'world-adapter', '*.png files', '*.woff2 files'])
   const groups = lazyGroups(build(), startupFiles(build(), 'lagos')!)
-  assert.deepEqual(groups.map((group) => [group.group, group.files]).sort(), [['city-*-content', 1], ['city-*-rules', 1], ['city-*-scenes', 2], ['world-adapter', 1]])
+  assert.deepEqual(groups.map((group) => [group.group, group.files]).sort(), [['*.txt files', 2], ['city-*-content', 2], ['city-*-rules', 2], ['city-*-scenes', 2], ['foreign-loaders', 1], ['world-adapter', 1]])
 })
 
 test('sizes: brotli is smaller than gzip is smaller than raw for text, and sums add up', () => {

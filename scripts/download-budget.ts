@@ -75,7 +75,7 @@ function foreignStartupAssets(dist: Dist, city: string): string[] | null {
   if (indexes.length !== 1) return null
   let index: { countries?: readonly { iso2: string; path: string }[] }
   try { index = JSON.parse(text(dist, indexes[0] as string)) as typeof index } catch { return null }
-  const entry = index.countries?.find(item => item.iso2 === country)
+  const entry = index.countries?.find(item => item.iso2.toLowerCase() === country)
   if (!entry) return null
   const shard = `world-country-directory/${entry.path}`
   return dist.has(shard) ? [indexes[0] as string, shard] : null

@@ -10,10 +10,13 @@
 // of its chunk's minified bytes, in proportion to the length Rollup rendered for it before minification, so the module
 // figures are estimates and the chunk figures are exact.
 import { build } from 'vite'
+import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 import { gzipSync } from 'node:zlib'
-import { dirname, relative, resolve } from 'node:path'
+import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { Plugin, Rollup } from 'vite'
+import { COUNTRY_DIRECTORY_DESCRIPTOR } from '../src/game/cities/country-directory.generated.ts'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2)
@@ -32,6 +35,7 @@ for (const item of outputs) if (item.type === 'chunk') chunks.set(item.fileName,
 
 const html = outputs.find((item) => item.type === 'asset' && item.fileName === 'index.html')
 const page = html && html.type === 'asset' ? String(html.source) : ''
+const bootstrapAssets: Array<{ name: string; data: Buffer }> = []
 const queue = [...page.matchAll(/<(?:script|link)\b[^>]*\b(?:src|href)="\/(assets\/[^"]+\.js)"/g)].map((match) => match[1] as string)
 queue.push(...[...chunks.keys()].filter((name) => /^assets\/startApp-[\w-]+\.js$/.test(name)))
 for (const prefix of [`city-${city}-rules`, `city-${city}-content`, 'city-routes']) {
@@ -45,13 +49,21 @@ if (admitted) {
   const loaderChunks = [...chunks].filter(([, chunk]) => Object.keys(chunk.modules).some(id => id.replace(/\\/g, '/').endsWith('/src/game/cities/foreign-loaders.generated.ts')))
   if (loaderChunks.length !== 1) throw new Error(`Expected one foreign loader lookup chunk for ${city}, found ${loaderChunks.length}`)
   queue.push(loaderChunks[0]![0])
-  const indexName = [...outputs].find(item => item.type === 'asset' && /^world-country-directory\/index-[\w-]+\.txt$/.test(item.fileName))
-  if (!indexName || indexName.type !== 'asset') throw new Error('Required emitted country directory index is missing')
-  const directory = JSON.parse(String(indexName.source)) as { countries?: readonly { iso2: string; path: string }[] }
-  const country = directory.countries?.find(item => item.iso2 === admitted.countryISO)
+  // Vite copies publicDir during writeBundle, which `build({ write: false })` intentionally skips.
+  // Read the exact public bytes production copies, verifying their generated index and shard pins.
+  const descriptor = COUNTRY_DIRECTORY_DESCRIPTOR
+  if (!/^index-[a-f0-9]{64}\.txt$/.test(descriptor.indexPath) || !/^[a-f0-9]{64}$/.test(descriptor.indexSha256)) throw new Error('Invalid country directory descriptor')
+  const indexName = `world-country-directory/${descriptor.indexPath}`
+  const indexData = readFileSync(join(root, 'public', indexName))
+  if (createHash('sha256').update(indexData).digest('hex') !== descriptor.indexSha256) throw new Error('Country directory index hash does not match its descriptor')
+  const directory = JSON.parse(indexData.toString('utf8')) as { countries?: readonly { iso2: string; path: string; sha256: string; bytes: number }[] }
+  const country = directory.countries?.find(item => item.iso2.toLowerCase() === admitted.countryISO)
   if (!country) throw new Error(`Required country shard is missing for ${city}`)
+  if (!/^countries\/[a-z]{2}-[a-f0-9]{64}\.txt$/.test(country.path) || !/^[a-f0-9]{64}$/.test(country.sha256) || !Number.isSafeInteger(country.bytes) || country.bytes <= 0) throw new Error(`Invalid directory shard pin for ${city}`)
   const shardName = `world-country-directory/${country.path}`
-  if (!outputs.some(item => item.type === 'asset' && item.fileName === shardName)) throw new Error(`Required emitted country shard is missing: ${shardName}`)
+  const shardData = readFileSync(join(root, 'public', shardName))
+  if (shardData.length !== country.bytes || createHash('sha256').update(shardData).digest('hex') !== country.sha256) throw new Error(`Country shard does not match its directory pin: ${shardName}`)
+  bootstrapAssets.push({ name: indexName, data: indexData }, { name: shardName, data: shardData })
 }
 const startup = new Set<string>()
 while (queue.length) {
@@ -86,6 +98,12 @@ for (const [name, chunk] of [...chunks].filter(([name]) => everything || startup
   console.log(`${kB(bytes)} ${kB(zipped)}  ${name}${everything && startup.has(name) ? '  (startup)' : ''}`)
   const rendered = Object.values(chunk.modules).reduce((sum, item) => sum + item.renderedLength, 0) || 1
   for (const [id, item] of Object.entries(chunk.modules)) if (item.renderedLength) modules.push({ name: label(id), chunk: name.replace(/^assets\//, '').replace(/-[\w-]{8}\.js$/, ''), bytes: bytes * item.renderedLength / rendered, needed: !startup.has(name) || needed.has(id) })
+}
+for (const asset of bootstrapAssets) {
+  const zipped = gzipSync(asset.data).length
+  raw += asset.data.length
+  gzip += zipped
+  console.log(`${kB(asset.data.length)} ${kB(zipped)}  ${asset.name}  (selected-country bootstrap)`)
 }
 console.log(`${kB(raw)} ${kB(gzip)}  startup total (${raw} / ${gzip} bytes)`)
 

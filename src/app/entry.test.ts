@@ -243,7 +243,11 @@ test('automatic startup keeps Nigeria eager and admits foreign bootstrap only fo
   const foreignIds = ['accra', 'algiers', 'lome', 'nairobi', 'yaounde', 'abidjan', 'addis-ababa', 'cape-town', 'cotonou', 'dakar']
   for (const id of foreignIds) {
     rulesFor(id); contentFor(id)
-    assert.ok(!new RegExp(`\\["']${escaped(id)}["']\\s*:\\s*async`).test(commonCode), `${id} has no eager rule loader`)
+    const loaderRow = new RegExp(`(?:^|[,\\{])\\s*["']?${escaped(id)}["']?\\s*:\\s*(?:async)?\\(\\)\\s*=>`)
+    assert.ok(!loaderRow.test(commonCode), `${id} has no eager rule loader`)
+    const rowChunks = all.filter(name => loaderRow.test(readFileSync(join(dist, 'assets', name), 'utf8')))
+    assert.equal(rowChunks.length, 1, `${id} has one emitted lazy loader row`)
+    assert.ok(!common.includes(`assets/${rowChunks[0]}`), `${id}'s loader map is outside the common startup closure`)
   }
   assert.ok(!commonCode.includes('foreign-loaders.generated'), 'the foreign loader map stays outside the eager closure')
   assert.ok(!common.some(name => /country-directory|foreign-loaders/.test(name)), 'foreign directory metadata stays outside the common startup')

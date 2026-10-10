@@ -128,7 +128,7 @@ function endMember(p:Patch,h:Household,m:Member,reason:MemberEnd,now:number): bo
   p.expect('members',m.id,m.revision)
   p.writes.push({collection:'members',value:{...m,state:'ended',revision:m.revision+1,endedAt:now,reason}})
   if (!p.changeCharacter(m.member.character,'joined',m.id,false) || !p.changeLife(m,false)) return false
-  p.events.push({type:'membership-ended',membershipId:m.id,member:m.member,reason,at:now})
+  p.events.push({kind:'membership-ended',membershipId:m.id,member:m.member,reason,at:now})
   p.liabilities.push({membershipId:m.id,householdId:h.id,homeId:h.homeId,epoch:h.epoch,payer:m.member,owner:h.owner,endReason:reason,effectiveAt:now,requirement:'bar-delivery-and-settle-undelivered-atomically'})
   return true
 }
@@ -137,7 +137,7 @@ function endInvite(p:Patch,i:Invite,state:'declined'|'cancelled'|'expired',now:n
   p.expect('invites',i.id,i.revision)
   p.writes.push({collection:'invites',value:{...i,state,revision:i.revision+1,answeredAt:now}})
   if (!p.changeCharacter(i.recipient.character,'incoming',i.id,false)) return false
-  p.events.push({type:'invitation-ended',inviteId:i.id,state,at:now}); return true
+  p.events.push({kind:'invitation-ended',inviteId:i.id,state,at:now}); return true
 }
 
 /** Trusted adapter supplies authenticated canonical facts inside one transaction; client views are never authority. */
@@ -162,7 +162,7 @@ export function reduceConsent(rawCommand:unknown,rawView:unknown): Result {
     const old=v.homeIndex.state==='present'?v.homeIndex.value.revision:null
     if (old===Number.MAX_SAFE_INTEGER) return refuse('revision_exhausted')
     p.writes.push({collection:'homeIndexes',value:{id:home.id,householdId:household.id,revision:old===null?0:old+1}})
-    p.events.push({type:'household-opened',householdId:household.id,at:now}); return p.finish()
+    p.events.push({kind:'household-opened',householdId:household.id,at:now}); return p.finish()
   }
   if (c.op==='register' || v.household.state!=='present') return refuse('household_missing')
   const h=v.household.value
@@ -194,7 +194,7 @@ export function reduceConsent(rawCommand:unknown,rawView:unknown): Result {
     const invite:Invite={id:c.inviteId,householdId:h.id,homeId:h.homeId,epoch:h.epoch,owner:h.owner,recipient:c.recipient,permissions:PERMISSIONS,revision:0,state:'pending',createdAt:now,expiresAt}
     p.writes.push({collection:'invites',value:invite},{collection:'households',value:{...nextBase,pending:[...h.pending,invite.id]}})
     if (!p.changeCharacter(c.recipient.character,'incoming',invite.id,true)) return refuse('index_mismatch')
-    p.events.push({type:'invitation-created',inviteId:invite.id,state:'pending',at:now}); return p.finish()
+    p.events.push({kind:'invitation-created',inviteId:invite.id,state:'pending',at:now}); return p.finish()
   }
   if ((c.op==='accept' || c.op==='decline' || c.op==='cancel' || c.op==='expire' || c.op==='terminate-invitation') && (v.op==='accept' || v.op==='decline' || v.op==='cancel' || v.op==='expire' || v.op==='terminate-invitation')) {
     if (v.invite.state!=='present') return refuse(v.invite.state==='not-loaded'?'incomplete_view':'invitation_missing')
@@ -214,7 +214,7 @@ export function reduceConsent(rawCommand:unknown,rawView:unknown): Result {
       const member:Member={id:c.membershipId,householdId:h.id,homeId:h.homeId,epoch:h.epoch,inviteId:i.id,owner:h.owner,member:i.recipient,permissions:PERMISSIONS,revision:0,acceptedAt:now,state:'active'}
       p.writes.push({collection:'members',value:member},{collection:'invites',value:{...i,state:'accepted',revision:i.revision+1,answeredAt:now,membershipId:member.id}},{collection:'households',value:{...nextBase,pending:h.pending.filter(id=>id!==i.id),active:[...h.active,member.id]}})
       if (!p.changeCharacter(i.recipient.character,'incoming',i.id,false) || !p.changeCharacter(i.recipient.character,'joined',member.id,true) || !p.changeLife(member,true)) return refuse('index_mismatch')
-      p.events.push({type:'membership-accepted',membershipId:member.id,at:now}); return p.finish()
+      p.events.push({kind:'membership-accepted',membershipId:member.id,at:now}); return p.finish()
     }
     let ended:'declined'|'cancelled'|'expired'
     if (c.op==='decline') { if (!actorIs(a,i.recipient)) return refuse('not_authorized'); if (now>=i.expiresAt) return refuse('invitation_expired'); ended='declined' }
@@ -244,7 +244,7 @@ export function reduceConsent(rawCommand:unknown,rawView:unknown): Result {
     p.writes.push({collection:'households',value:{...nextBase,state:'closed',closedAt:now,reason:c.reason,active:[],pending:[]}})
     if (!p.changeCharacter(h.owner.character,'hosted',h.id,false) || v.homeIndex.state!=='present' || v.homeIndex.value.revision===Number.MAX_SAFE_INTEGER) return refuse('index_or_revision_mismatch')
     p.writes.push({collection:'homeIndexes',value:{...v.homeIndex.value,householdId:null,revision:v.homeIndex.value.revision+1}})
-    p.events.push({type:'household-closed',householdId:h.id,reason:c.reason,at:now}); return p.finish()
+    p.events.push({kind:'household-closed',householdId:h.id,reason:c.reason,at:now}); return p.finish()
   }
   return refuse('invalid_view')
 }

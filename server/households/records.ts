@@ -73,11 +73,11 @@ export type Write =
   | { readonly collection: 'lifeIndexes'; readonly value: LifeIndex }
   | { readonly collection: 'homeIndexes'; readonly value: HomeIndex }
 export type Event =
-  | { readonly type: 'household-opened'; readonly householdId: HouseholdId; readonly at: number }
-  | { readonly type: 'invitation-created' | 'invitation-ended'; readonly inviteId: InviteId; readonly state: Invite['state']; readonly at: number }
-  | { readonly type: 'membership-accepted'; readonly membershipId: MembershipId; readonly at: number }
-  | { readonly type: 'membership-ended'; readonly membershipId: MembershipId; readonly member: Identity; readonly reason: MemberEnd; readonly at: number }
-  | { readonly type: 'household-closed'; readonly householdId: HouseholdId; readonly reason: HomeEnd; readonly at: number }
+  | { readonly kind: 'household-opened'; readonly householdId: HouseholdId; readonly at: number }
+  | { readonly kind: 'invitation-created' | 'invitation-ended'; readonly inviteId: InviteId; readonly state: Invite['state']; readonly at: number }
+  | { readonly kind: 'membership-accepted'; readonly membershipId: MembershipId; readonly at: number }
+  | { readonly kind: 'membership-ended'; readonly membershipId: MembershipId; readonly member: Identity; readonly reason: MemberEnd; readonly at: number }
+  | { readonly kind: 'household-closed'; readonly householdId: HouseholdId; readonly reason: HomeEnd; readonly at: number }
 /** Mandatory atomic consumer request; never a claim that escrow was refunded. At most 11 per patch. */
 export interface LiabilityHandoff { readonly membershipId: MembershipId; readonly householdId: HouseholdId; readonly homeId: HomeId; readonly epoch: number; readonly payer: Identity; readonly owner: Identity; readonly endReason: MemberEnd; readonly effectiveAt: number; readonly requirement: 'bar-delivery-and-settle-undelivered-atomically' }
 export type Result = { readonly ok: false; readonly code: string } | { readonly ok: true; readonly expected: readonly Expectation[]; readonly writes: readonly Write[]; readonly events: readonly Event[]; readonly liabilities: readonly LiabilityHandoff[] }

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 
 const JAW_MESHES = ['Body', 'Teeth', 'Tongue'] as const;
 const JAW_MORPH = 'nativeFacialJawOpen';
+const BLINK_MORPHS = ['nativeFacialBlinkLeft', 'nativeFacialBlinkRight'] as const;
 const MAX_STEP_SECONDS = 1 / 30;
 
 type JawMesh = THREE.Mesh & {
@@ -14,6 +15,7 @@ export interface NativeExpressionSnapshot {
   readonly elapsedSeconds: number;
   readonly jaw: Readonly<Record<(typeof JAW_MESHES)[number], number>>;
   readonly synchronized: boolean;
+  readonly blink: readonly [number, number];
 }
 
 export interface NativeExpressionController {
@@ -43,6 +45,17 @@ export function createNativeExpressionController(root: THREE.Object3D): NativeEx
   }
 
   let baseline: Map<(typeof JAW_MESHES)[number], number> | null = null;
+  const body = meshes.get('Body');
+  if (!body) throw new Error('Native talk controller requires Body');
+  const blinkIndices = BLINK_MORPHS.map((name) => {
+    const index = body.mesh.morphTargetDictionary?.[name];
+    if (index === undefined || !Number.isInteger(index) || index < 0
+      || !body.mesh.morphTargetInfluences || index >= body.mesh.morphTargetInfluences.length) {
+      throw new Error(`Body is missing ${name}`);
+    }
+    return index;
+  });
+  let blinkBaseline: number[] | null = null;
   let active = false;
   let elapsedSeconds = 0;
   let disposed = false;
@@ -55,6 +68,18 @@ export function createNativeExpressionController(root: THREE.Object3D): NativeEx
     for (const { mesh, morphIndex } of meshes.values()) mesh.morphTargetInfluences![morphIndex] = value;
   }
 
+  function writeBlink(seconds: number): void {
+    if (!blinkBaseline || !body?.mesh.morphTargetInfluences) return;
+    // A brief closure on the existing active conversation clock, then exact restoration.
+    const phase = (seconds + 2.4) % 3.2;
+    const pulse = Math.max(0, 1 - Math.abs(phase - 3.2 + 0.08) / 0.08);
+    blinkIndices.forEach((index, side) => {
+      const saved = blinkBaseline?.[side];
+      if (saved === undefined || !body.mesh.morphTargetInfluences) throw new Error('Missing captured native blink weight');
+      body.mesh.morphTargetInfluences[index] = saved + (1 - saved) * pulse;
+    });
+  }
+
   function restore(): void {
     if (!baseline) return;
     for (const [name, value] of baseline) {
@@ -62,6 +87,13 @@ export function createNativeExpressionController(root: THREE.Object3D): NativeEx
       entry.mesh.morphTargetInfluences![entry.morphIndex] = value;
     }
     baseline = null;
+    if (blinkBaseline && body?.mesh.morphTargetInfluences) {
+      blinkIndices.forEach((index, side) => {
+        const saved = blinkBaseline?.[side];
+        if (saved !== undefined && body.mesh.morphTargetInfluences) body.mesh.morphTargetInfluences[index] = saved;
+      });
+    }
+    blinkBaseline = null;
   }
 
   function stopTalk(): void {
@@ -79,14 +111,17 @@ export function createNativeExpressionController(root: THREE.Object3D): NativeEx
         return [name, entry.mesh.morphTargetInfluences![entry.morphIndex]!];
       }));
       active = true;
+      if (!blinkBaseline) blinkBaseline = blinkIndices.map((index) => body.mesh.morphTargetInfluences?.[index] ?? 0);
       elapsedSeconds = 0;
       writeJaw(jawAt(elapsedSeconds));
+      writeBlink(elapsedSeconds);
     },
     step(deltaSeconds) {
       if (disposed || !active) return;
       const delta = Number.isFinite(deltaSeconds) ? Math.max(0, Math.min(MAX_STEP_SECONDS, deltaSeconds)) : 0;
       elapsedSeconds += delta;
       writeJaw(jawAt(elapsedSeconds));
+      writeBlink(elapsedSeconds);
     },
     stop: stopTalk,
     snapshot() {
@@ -95,6 +130,8 @@ export function createNativeExpressionController(root: THREE.Object3D): NativeEx
         return [name, entry.mesh.morphTargetInfluences![entry.morphIndex]!];
       })) as Record<(typeof JAW_MESHES)[number], number>;
       return Object.freeze({ active, elapsedSeconds, jaw: Object.freeze(jaw),
+        blink: Object.freeze([body.mesh.morphTargetInfluences?.[blinkIndices[0]!] ?? 0,
+          body.mesh.morphTargetInfluences?.[blinkIndices[1]!] ?? 0] as const),
         synchronized: JAW_MESHES.every((name) => Math.abs(jaw[name] - jaw.Body) < 1e-6) });
     },
     dispose() {

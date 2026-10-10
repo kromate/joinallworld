@@ -13,7 +13,10 @@ function actor(): { root: THREE.Group; meshes: Record<'Body' | 'Teeth' | 'Tongue
     const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial());
     mesh.name = name;
     mesh.updateMorphTargets();
-    mesh.morphTargetDictionary = { nativeFacialJawOpen: 0 };
+    mesh.morphTargetDictionary = name === 'Body'
+      ? { nativeFacialJawOpen: 0, nativeFacialBlinkLeft: 1, nativeFacialBlinkRight: 2 }
+      : { nativeFacialJawOpen: 0 };
+    if (name === 'Body') mesh.morphTargetInfluences = [0, 0.12, 0.23];
     mesh.morphTargetInfluences![0] = name === 'Body' ? 0.18 : name === 'Teeth' ? 0.17 : 0.16;
     meshes[name] = mesh;
     root.add(mesh);
@@ -47,6 +50,28 @@ test('talk jaw opens synchronously across body teeth tongue and restores saved w
   controller.dispose();
   controller.dispose();
   assert.throws(() => controller.startTalk(), /disposed/);
+});
+
+test('active conversation briefly blinks and restores the selected expression without an idle timer', () => {
+  const built = actor();
+  const controller = createNativeExpressionController(built.root);
+  const before = controller.snapshot();
+  controller.startTalk();
+  let maximum = 0;
+  for (let frame = 0; frame < 32; frame++) {
+    controller.step(1 / 30);
+    const sample = controller.snapshot();
+    maximum = Math.max(maximum, sample.blink[0]);
+    assert.equal(sample.synchronized, true);
+  }
+  assert.ok(maximum > 0.8, 'the actual talk clock crosses a brief closure');
+  assert.deepEqual(controller.snapshot().blink, before.blink, 'blink has reopened to selected weights');
+  controller.stop();
+  assert.deepEqual(controller.snapshot().blink, before.blink);
+  assert.deepEqual(controller.snapshot().jaw, before.jaw);
+  controller.step(100);
+  assert.deepEqual(controller.snapshot(), before, 'inactive host steps cannot animate the expression');
+  controller.dispose();
 });
 
 test('controller refuses incomplete facial topology rather than desynchronizing the jaw', () => {

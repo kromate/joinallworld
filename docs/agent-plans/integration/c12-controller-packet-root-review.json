@@ -1,0 +1,513 @@
+{
+  "at": "2026-10-10T03:46:53.620082+00:00",
+  "decision": "SOURCE_PACKET_PINS_VERIFIED_EXECUTION_HELD",
+  "packetCommit": "c41e7d732fab4d24e038cd314bcbfc6b5bed45b0",
+  "controllerSha256": "214e77832e8b8d09cb4ecfa0c2565f52fabc1ec20dd3803a67c96efc2c74decf",
+  "manifestFiles": [
+    {
+      "path": "country-controller.v1.mjs",
+      "bytes": 51913,
+      "sha256": "214e77832e8b8d09cb4ecfa0c2565f52fabc1ec20dd3803a67c96efc2c74decf",
+      "matches": true
+    },
+    {
+      "path": "selected-source-pins.json",
+      "bytes": 15322,
+      "sha256": "88e6552f906c5648eaf5143502c70f6d545fb0aec591260abca75c802dc4210b",
+      "matches": true
+    },
+    {
+      "path": "controller-plan.md",
+      "bytes": 12631,
+      "sha256": "c3ba31f92a46d32a2af06b0d12751c84f29e8e41155a08b40b5189d519566798",
+      "matches": true
+    },
+    {
+      "path": "review-proposal.NOT-APPROVED.json",
+      "bytes": 2898,
+      "sha256": "3621400f4ac2d9f16beba0796dc236821e36d9ed0dc45e5f39e09a8efa3748cd",
+      "matches": true
+    },
+    {
+      "path": "owner-mailbox-schema.json",
+      "bytes": 2968,
+      "sha256": "23cf58aae4fec0deb9bc67bb84464c998e98632565e25b6a0e968d76bb1eb6ac",
+      "matches": true
+    },
+    {
+      "path": "operator-binding.json",
+      "bytes": 912,
+      "sha256": "d4bde1f2be0278b56840ce064f7ba2d3ed68ad670dd5c63794d077e2e77d31bd",
+      "matches": true
+    },
+    {
+      "path": "source-only-receipt.json",
+      "bytes": 2364,
+      "sha256": "a753bdfc7d4a59d4faa186ac8eb72f0e2ff9722e90c872945780f91a2a9eaad3",
+      "matches": true
+    },
+    {
+      "path": "helper-help-receipt.json",
+      "bytes": 677,
+      "sha256": "261b076c0efe4de60583a483e4968e016c2d0be0114fc4a5ffa51efd3d8b3354",
+      "matches": true
+    },
+    {
+      "path": "helper-help.stdout.txt",
+      "bytes": 1948,
+      "sha256": "9d52480410eb46c34cb205f18ed0f295913a0b788b3b04267189b09cee187d0a",
+      "matches": true
+    },
+    {
+      "path": "helper-help.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "world-contract-711aac36.md",
+      "bytes": 7945,
+      "sha256": "f38bdb14436f78a37516d961159519444ea249755ade95edf1cf43dc88ee7460",
+      "matches": true
+    }
+  ],
+  "selectedPublicGitFiles": [
+    {
+      "path": "deploy/tooling/package-lock.json",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 48429,
+      "sha256": "9bb2971f2ab2b436415de142b0c37070a127eea6bfd3adf0be0b76c9f030ee98",
+      "matches": true
+    },
+    {
+      "path": "deploy/tooling/package.json",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 260,
+      "sha256": "caea42b0980584c5ac088f5dc2c66f39e4922e931012ea06f39707c9bd99ce21",
+      "matches": true
+    },
+    {
+      "path": "server/accounts/test-tokens.ts",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 4272,
+      "sha256": "63e90a74d2fc73531c5d3086a6fcdf5c12cc779fc162869002102ec837ac390f",
+      "matches": true
+    },
+    {
+      "path": "server/accounts/token.ts",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 13741,
+      "sha256": "cc4adb6e87d5b3ce9956193d7cc9eca284049957d2d755745499eb3ecd599e97",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/bank/BankApp.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 13007,
+      "sha256": "dccb18ae520052dc55c70f0dbaa864a5f00bd25ae1f258a8eb16e44bd1911322",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/hud/HudBar.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 15312,
+      "sha256": "96447fe7c3536cd1191322a7b7900c641988d28805957bdd2e2d640d9cef69e9",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/CreatorApp.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 28684,
+      "sha256": "968bc8caf5ada262243d0e971ba9982630a88189cccccb10e3f1a017cd3ec786",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/QuickStartApp.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 897,
+      "sha256": "cc8f691d0ec090c7af277d696286374e6d9086bbacd6605130ab2030e92c3b8b",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/StepHome.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 9968,
+      "sha256": "197ca0882631fd25558d5c211693589f8d70658d4b7b78bd045328c565a70e1b",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/StepSpirit.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 2596,
+      "sha256": "454a3df1f643be428894df2f4341ed2f667f01b3f07a8846b5c51458e818afe8",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/StepWho.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 2427,
+      "sha256": "5385d49d7f4523146a291453374e583ba858c764060d7f7c6debde2d8a21e225",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/creatorModel.ts",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 8646,
+      "sha256": "fb28c8974b45ea3a286664ac9e7829437f4519ec8bb9d753adfaa5dcadcbb5c0",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/MapApp.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 7100,
+      "sha256": "91280453ca6cbad64d553c7bf5f0b19d9210b376a0116b6c5b9201ce469e0a1d",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/MapLevels.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 3971,
+      "sha256": "db7de783d9d97b840808c3de5d9abee3a5a468d1179a24745a5b89f9240cc4cc",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/TripBar.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 2011,
+      "sha256": "b8e66e41e718f66f15c472eb531475580b77117bd5b3f5e506a4a68f549e4b55",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/VenueCard.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 6226,
+      "sha256": "8d9475277a43d8cb8aa6ccd48f4b65acb38f98341dd5b5edcb36ceaaa69b017c",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/travelModel.ts",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 23426,
+      "sha256": "bf0b56822c4374c8ab5e4e0f7e25fb8281d15e79969038bac263545c54d42625",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/venue/RunningActionProgress.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 7493,
+      "sha256": "3a7e780e8506e5601821a15852355aadfd2e830dcbaec112500e50fa0d92e1a4",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/venue/VenueActions.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 4992,
+      "sha256": "a04a8f202429ae46d64439e52abb1c7e24b5f769e951264e8f29444582172dd4",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/venue/VenuePanel.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 8796,
+      "sha256": "ed723edbfbf79144a6a5d08037f39d58970feb17fc5c41dae3d068e651e2968a",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/venue/venueModel.ts",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 3470,
+      "sha256": "5350561b896dc37df055d06308a08a5e75c369ff1c04137d2eec003086300a73",
+      "matches": true
+    },
+    {
+      "path": "src/app/scene/MapWorld.vue",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 9976,
+      "sha256": "cb618233c279d720c3e6bc2f3caf5329a5e66a5b0b7df6ab77d5c78e7e687f7a",
+      "matches": true
+    },
+    {
+      "path": "src/map3d/geo/atlas.ts",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 119127,
+      "sha256": "c3a303fd97905e57ae9659955c8d114e879c18536dba1a7017ba7625bd7de35c",
+      "matches": true
+    },
+    {
+      "path": "src/map3d/geo/info.ts",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 10052,
+      "sha256": "d1d9a8546808ea2d3920799d347ec1455e90c05a96b457238f76a9ef126281d4",
+      "matches": true
+    },
+    {
+      "path": "src/map3d/regions.ts",
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 20929,
+      "sha256": "7cf221fa83c2d6f7d7d55223a7dd360f25293cdb69fc258aabcc64c0ad227d15",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/sealed-admin-rate-policy.mjs",
+      "ref": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 2628,
+      "sha256": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/sealed-africa-coverage.mjs",
+      "ref": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 4131,
+      "sha256": "c84e5e69225421b5fa58accf963f6456a84c2a797724ba89a4e0d4623a6948bb",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/serve-sealed-africa.mjs",
+      "ref": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 34121,
+      "sha256": "55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-capability-policy.mjs",
+      "ref": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 1341,
+      "sha256": "af748ece4eccbb2a9dfc7ad9901a13b3d06d4afc1ef497c53bf140d74a51b5ef",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-checkpoint-policy.mjs",
+      "ref": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 5359,
+      "sha256": "2975f3f67c71c01b279d4de3adbd942180dd443b9ca2e5c818cec002866622ff",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-control-file.mjs",
+      "ref": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 5093,
+      "sha256": "bdeecb804a0d2f8c63ec6d1fa2823ba4ca0a91efa37f5d71dd744fb38e5b721a",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/verify-sealed-africa.mjs",
+      "ref": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 28940,
+      "sha256": "f6b59c1709ab30aaa36c4dc03b4dedbf2f73b5720d164356e208c5dba635b014",
+      "matches": true
+    }
+  ],
+  "publicSelectedPinCount": 32,
+  "otherSelectedCloudPins": [
+    {
+      "path": "/usr/bin/chromium",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/usr/lib/chromium/chromium",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/browser.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/index.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/buffer-util.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/constants.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/event-target.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/extension.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/limiter.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/permessage-deflate.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/receiver.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/sender.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/stream.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/subprotocol.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/validation.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/websocket-server.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/lib/websocket.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/package.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/joinallworld/node_modules/ws/wrapper.mjs",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/artifacts/c12-independent-repro-20261010/manifest.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/artifacts/c12-independent-repro-20261010/worker.js",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/artifacts/c12-independent-repro-20261010/wrangler.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/world-contract-711aac36.md",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-operator-assignment.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/browser-existing-capability.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/browser-stage-pins.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/independent-package-full-file-diff.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/independent-seal-observations.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/review-inputs/supplemental-toolchain-review.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/review-inputs/own-seal-acceptance.json",
+      "scope": "Published pin only; actual cloud bytes not inspected by Root here"
+    }
+  ],
+  "numericContractByteIdentical": true,
+  "stickerContractPins": [
+    {
+      "path": "server/social/service.ts",
+      "sha256": "d8532e16cfd49f5e3fd4df77804cbff3ba518ac3725a65c1800da3232da61e6a",
+      "matches": true
+    },
+    {
+      "path": "server/routes/social.ts",
+      "sha256": "d4cf9be06ad354bcb2611203c40597a399d8a758725de507d330cbe952b2df9a",
+      "matches": true
+    },
+    {
+      "path": "server/types.ts",
+      "sha256": "d391f5d9b16a5ae53b2cb67f4d01ffa7078095b224adf9eb214bdb0fe9d85b4b",
+      "matches": true
+    },
+    {
+      "path": "server/routes/once.ts",
+      "sha256": "4dcef6f9c8a8e27f0d26e55b573013e3a28e7c48285233f5a3d755a04c4c93b4",
+      "matches": true
+    },
+    {
+      "path": "src/types/social.ts",
+      "sha256": "333487defca0f0e7f3f916e56ca0f907a7cbfb617a173c01640e0b5f62d3bd7e",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/messages/Composer.vue",
+      "sha256": "8e8bc0164bb8e4c15f0d70f70108266cbfc77d01a1a2b3a2f550a6b6d4845400",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/messages/MessageBubble.vue",
+      "sha256": "c2a36fbbbad1c725f414677680ab052aecf68b8fc78fb3d1f6689f1a88a19503",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/messages/MessageAction.vue",
+      "sha256": "121e7a745fdfa3bd33987eb6228754f3b5d8bfc403a0489140cfb5a28964240b",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/messages/messagePins.ts",
+      "sha256": "6194259c60027837a6db1db6c9311a129594fe9d5cc913087e919cd01a474339",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/messages/messagePinsFrame.ts",
+      "sha256": "5862bdebc543049e4535c2805d2be94ed09ef65472ae662be284b5c9ba024ba5",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/messages/MessagesApp.vue",
+      "sha256": "3917d57bcc88f023edc2d5a4d05ed63d34967b650163ccff3b79697160b7923a",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/social/socialClient.ts",
+      "sha256": "2c7ffae30671f1ad8b520c731d2960df14e120c35a74752d9b3e6122739cb092",
+      "matches": true
+    },
+    {
+      "path": "src/game/social-model.ts",
+      "sha256": "fcd7125d97deea81daa3b8564ffcebbf4a5756e034b9444e05b9dca270b67837",
+      "matches": true
+    },
+    {
+      "path": "server/growth/message-push.ts",
+      "sha256": "7f3082edf0a953f18e800bb718b403a557cd37795aad71d1002fc59a8a861f17",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/messages/messagesText.ts",
+      "sha256": "207dc92cd98fa2e824f9a83ec5fd25007806fe2b48bf826df61862f4c35a22bb",
+      "matches": true
+    },
+    {
+      "path": "package.json",
+      "sha256": "ff2e40d7cefe461e9f08588b288d6063b9cf8c6db1838effe3b326ca9e7145d9",
+      "matches": true
+    }
+  ],
+  "limitations": [
+    "No controller, Chromium, helper or stage execution by Root.",
+    "Cloud installed binaries/ws/private pin bytes require actual operator preflight.",
+    "Source packet, syntax and import closure are not journey or deployment acceptance.",
+    "Independent Astra complete executable review pending.",
+    "No actual owner delegation/reviewer/live leases supplied."
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "decision": "APPROVE_QUEUED_STATIC_STICKER_CONTRACT_ONLY",
+  "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "pins": {
+    "server/social/service.ts": "d8532e16cfd49f5e3fd4df77804cbff3ba518ac3725a65c1800da3232da61e6a",
+    "server/routes/social.ts": "d4cf9be06ad354bcb2611203c40597a399d8a758725de507d330cbe952b2df9a",
+    "server/types.ts": "d391f5d9b16a5ae53b2cb67f4d01ffa7078095b224adf9eb214bdb0fe9d85b4b",
+    "server/routes/once.ts": "4dcef6f9c8a8e27f0d26e55b573013e3a28e7c48285233f5a3d755a04c4c93b4",
+    "src/types/social.ts": "333487defca0f0e7f3f916e56ca0f907a7cbfb617a173c01640e0b5f62d3bd7e",
+    "src/app/features/messages/Composer.vue": "8e8bc0164bb8e4c15f0d70f70108266cbfc77d01a1a2b3a2f550a6b6d4845400",
+    "src/app/features/messages/MessageBubble.vue": "c2a36fbbbad1c725f414677680ab052aecf68b8fc78fb3d1f6689f1a88a19503",
+    "src/app/features/messages/MessageAction.vue": "121e7a745fdfa3bd33987eb6228754f3b5d8bfc403a0489140cfb5a28964240b",
+    "src/app/features/messages/messagePins.ts": "6194259c60027837a6db1db6c9311a129594fe9d5cc913087e919cd01a474339",
+    "src/app/features/messages/messagePinsFrame.ts": "5862bdebc543049e4535c2805d2be94ed09ef65472ae662be284b5c9ba024ba5",
+    "src/app/features/messages/MessagesApp.vue": "3917d57bcc88f023edc2d5a4d05ed63d34967b650163ccff3b79697160b7923a",
+    "src/app/features/social/socialClient.ts": "2c7ffae30671f1ad8b520c731d2960df14e120c35a74752d9b3e6122739cb092",
+    "src/game/social-model.ts": "fcd7125d97deea81daa3b8564ffcebbf4a5756e034b9444e05b9dca270b67837",
+    "server/growth/message-push.ts": "7f3082edf0a953f18e800bb718b403a557cd37795aad71d1002fc59a8a861f17",
+    "src/app/features/messages/messagesText.ts": "207dc92cd98fa2e824f9a83ec5fd25007806fe2b48bf826df61862f4c35a22bb",
+    "package.json": "ff2e40d7cefe461e9f08588b288d6063b9cf8c6db1838effe3b326ca9e7145d9"
+  },
+  "inventory": {
+    "status": "Initially absent on four checks; both files arrived before handback and were fully read; overlapping pins match direct review",
+    "path": "messaging-media-source-inventory.md"
+  },
+  "references": {
+    "notes": "sticker-real-app-reference-notes.md",
+    "telegram": "Root full primary page read",
+    "signal": "Root full primary page read",
+    "whatsapp": "Root search snippet only; open returned zero lines",
+    "reviewerNetwork": false
+  },
+  "catalogue": {
+    "publicFirstParty": true,
+    "initialCount": 6,
+    "maxAssetBytes": 24576,
+    "maxPackBytes": 147456,
+    "maxDimension": 512,
+    "staticOnly": true,
+    "immutableIds": true
+  },
+  "inventoryHashes": {"md":"c3bcb2a3ff0cb6e5aa092ffc3b09b41b327d1f79c0f20d9f19f0360fb39f1202","json":"64a629cace6bdd6b68e0a82bc26a69f4b7f3d68fd54aaa8e345447c862ecd0eb"},
+  "retainedReceiptTransport": "HTTP sent-retained union; existing dm-sent type gets disjoint retained:true minimal receipt variant; explicit server/ws/social.ts + client allocation, no new wire-type whitelist expansion",
+  "messagePrivacy": "Public artwork ID is not private message occurrence authority",
+  "send": {
+    "route": "POST /api/social/messages and shared dm-send service",
+    "variant": "existing conv + timed clientId + empty body + sticker {version:1,id} + optional replyTo",
+    "receiptKind": "message.sticker",
+    "fingerprint": "versioned fixed-array SHA256 binding actor,target,sticker,reply",
+    "legacy": "old text/voice fingerprint unchanged; cross-format cid guards required; no old receipt adoption"
+  },
+  "lifecycle": {
+    "reply": "supported with server safe label and source visibility",
+    "forward": "explicitly text-only; reject sticker forward",
+    "edit": "refused",
+    "delete": "clear visible sticker, retain intent marker/hash, update quotes/remove pins",
+    "pin": "existing permissions/3-pin cap; all projection and tombstone cleanup",
+    "replay": "current authority then minimal receipt; never resurrect trimmed/unsent content"
+  },
+  "ui": {
+    "alternatives": [
+      "Combined emoji/sticker popover + explicit preview send",
+      "Modal bottom sheet with destination",
+      "Inline expandable tray"
+    ],
+    "recommended": "combined popover",
+    "actualPrototypes": false,
+    "minTapPx": 48,
+    "viewports": [
+      320,
+      390
+    ],
+    "actorFence": "Separate shared non-reused actor epoch from local thread/picker generation; thread switches never invalidate legitimate global sync/jobs; immutable intent and delayed A-B-A tests",
+    "offline": "no automatic send or new-ID retry"
+  },
+  "allocation": "Same existing ONLINE writer through WORLD after critical repair; FIRST socialClient.ts + socialClient.test.ts + only brittle reset-start regex/unused source-read removal in src/game/social.test.ts; then reviewed sticker slice. Shared types and LIGHT_KINDS separately serialized later; no Store/Family/money/media-store/phone artwork changes",
+  "actorPrerequisite": {
+    "contract": "social-client-actor-fence-contract.md",
+    "decision": "APPROVE_THREE_FILE_ACTOR_ISOLATION_CONTRACT_ONLY",
+    "finding": "Source-identified late side-effect gap after existing transport stale-identity refusal; no reproduced private-payload leak",
+    "paths": ["sync", "history/read/deliver", "people/friends", "perform/call", "profileVersion", "queued timers", "socket/listener reentrancy", "navigation callbacks"],
+    "evidence": "Source only; future exact-SHA focused remote raw tests required before sticker implementation",
+    "sharedTypesOrReceipts": false
+  },
+  "acceptance": [
+    "Exact source Node HTTP/file reopen",
+    "Actual Worker HTTP/SQLite reopen",
+    "Retained receipt after trim/delete and legacy collision guards",
+    "Membership/block/house expiry/history/push/pin/quote privacy",
+    "Mounted/native actor A-B-A, offline retry, focus/mobile",
+    "Fixed compiler/build/download/smoke gates"
+  ],
+  "futureUnits": [
+    "GIF",
+    "video",
+    "view-once",
+    "gallery"
+  ],
+  "runtimeAccepted": false,
+  "activationApproved": false,
+  "sourceModified": false
+}

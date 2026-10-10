@@ -1,0 +1,110 @@
+{
+  "source": {
+    "repository": "github.com/kromate/joinallworld",
+    "commit": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+    "tree": "b64e0558987c5abcb0d8a9d5ef87c02144dcadef",
+    "clean_when_inspected": true,
+    "execution": ["source-read", "hash-read"],
+    "not_executed": ["compiler", "tests", "build", "server", "browser", "network"]
+  },
+  "current_contract": {
+    "persisted_media": ["single-picture-reference", "single-voice-reference"],
+    "message_send": "POST /api/social/messages and socket dm-send share socialService.send",
+    "replay_key": "sender + conversation + clientId",
+    "delete": "versioned tombstone; image/voice references removed and bytes dropped after commit",
+    "block": "persisted first; in-memory block index updated after commit",
+    "pins": "scoped, revisioned, exactly-once, membership/owner/block checked",
+    "node_adapter": "generic social JSON plus file image/voice stores",
+    "worker_adapter": "generic social JSON plus SQLite image/voice stores",
+    "client_gap": "reset clears state, but in-flight sync/openThread/markRead/deliver responses lack a common actor generation fence"
+  },
+  "missing_at_pin": {
+    "sticker": ["field", "validated-catalogue", "intent", "renderer", "picker", "retry-fingerprint", "projection-label", "tombstone-rule"],
+    "gif": "client rejects image/gif and no GIF provider/catalogue contract exists",
+    "video": "client rejects video/* and no video store/route/player exists",
+    "view_once": ["consume-token", "per-recipient-open-state", "atomic-consume", "consume-replay", "consume-tombstone"],
+    "gallery": ["ordered-media-list", "batch-transaction", "partial-failure-rule", "gallery-viewer"]
+  },
+  "sticker_catalogue": [
+    {"id":"wave","label":"Hello — waving hand"},
+    {"id":"thank-you","label":"Thank you"},
+    {"id":"well-done","label":"Well done"},
+    {"id":"laugh","label":"Laughing"},
+    {"id":"love","label":"Sending love"},
+    {"id":"sorry","label":"Sorry"},
+    {"id":"on-my-way","label":"On my way"},
+    {"id":"good-night","label":"Good night"}
+  ],
+  "proposed_contract": {
+    "stored": {"sticker":"StickerId?", "intentHash":"sha256?"},
+    "public": {"sticker":"{id: StickerId, label: string}?"},
+    "request": {"body":"empty", "sticker":"StickerId", "clientId":"existing retry key", "replyTo":"optional sequence"},
+    "forbidden_combinations": ["nonempty-body", "mentions", "forward", "image", "voice"],
+    "fingerprint": ["message-intent-v1", "sticker", "validated sticker id", "requested reply sequence"],
+    "permissions": "proposed ordinary-message membership/block/new-chat policy; Astra decision required for strangers and active house guests",
+    "delete": "remove sticker, retain intentHash and ordinary tombstone",
+    "edit": "refused",
+    "forward": "refused and hidden",
+    "pin": "allowed while message is otherwise globally pinnable",
+    "projection": "Sticker: <server catalogue label>",
+    "storage_adapter": "none",
+    "lazy_ui": "picker/art loaded on sticker-button activation; received renderer loaded only for a sticker message",
+    "draft": "text draft/prefill and 500-codepoint behavior unchanged"
+  },
+  "new_files": [
+    "src/types/message-sticker.ts",
+    "src/app/features/messages/stickers/StickerArtwork.vue",
+    "src/app/features/messages/stickers/StickerPicker.vue",
+    "src/app/features/messages/stickers/StickerMessage.vue"
+  ],
+  "owned_existing_files": {
+    "contracts_service": ["server/types.ts", "server/social/service.ts", "server/growth/message-push.ts", "src/types/social.ts"],
+    "retry_fencing": ["src/game/social-model.ts", "src/app/features/social/socialClient.ts"],
+    "ui_projections": ["src/app/features/messages/MessagesApp.vue", "src/app/features/messages/Composer.vue", "src/app/features/messages/MessageBubble.vue", "src/app/features/messages/PinnedMessages.vue", "src/app/features/messages/messagePins.ts", "src/app/features/messages/messagePinsFrame.ts", "src/app/features/messages/messagesThread.ts"],
+    "focused_tests": ["server/social.test.ts", "server/chat.test.ts", "server/message-push.test.ts", "src/game/social.test.ts", "src/app/features/social/socialClient.test.ts", "src/app/features/messages/messagesComponents.test.ts"]
+  },
+  "explicit_nonownership": [
+    "server/routes/social.ts", "server/ws/social.ts", "server/server.ts", "server/store.ts",
+    "deploy/cloudflare-worker.ts", "deploy/sqlite-store.ts", "deploy/sqlite-images.ts", "deploy/sqlite-voices.ts",
+    "src/app/state/panelBodies.ts", "src/app/features/panels.ts", "picture/voice modules", "Family", "money", "budgets", "phone 3D artwork"
+  ],
+  "evidence": [
+    {"file":"server/types.ts","lines":"271-343","fact":"message and media persistence shapes"},
+    {"file":"server/social/service.ts","lines":"570-700,1514-1609,1687-1729","fact":"views, pins/summaries, send replay/permissions, tombstones"},
+    {"file":"server/routes/social.ts","lines":"70-87,108-201,220-240","fact":"durable routes and private picture/voice lifecycle"},
+    {"file":"src/types/social.ts","lines":"98-143,315-326,490-495,592-611","fact":"public media, request and outbox shapes"},
+    {"file":"src/app/features/social/socialClient.ts","lines":"262-277,328-375,605-623","fact":"unfenced in-flight responses and reset"},
+    {"file":"src/app/features/messages/Composer.vue","lines":"35-76,111-120,154-161,187-208","fact":"draft, one picture, mobile composer"},
+    {"file":"src/app/features/messages/messagePins.ts","lines":"33-77,79-136,154-161","fact":"existing actor/conversation authority-fence pattern"},
+    {"file":"src/app/state/panelBodies.ts","lines":"5-9","fact":"Messages top-level lazy boundary"}
+  ],
+  "required_proof": [
+    "catalogue validation and accessible labels",
+    "same-intent duplicate and changed-intent conflict",
+    "retry after delete returns tombstone",
+    "membership/block/house behavior",
+    "pin/quote/summary/push projections",
+    "edit/forward refusal",
+    "old-actor late result ignored",
+    "draft remains intact",
+    "lazy module absent before activation",
+    "Node restart persistence",
+    "Worker Durable Object restart persistence",
+    "normal TypeScript, focused messaging, build, startup-budget, and mobile-native accessibility gates"
+  ],
+  "astra_decisions": ["stranger availability", "active-house availability", "notification wording", "catalogue artwork/text suitability", "report/moderation surface"],
+  "hashes": {
+    "server/types.ts":"d391f5d9b16a5ae53b2cb67f4d01ffa7078095b224adf9eb214bdb0fe9d85b4b",
+    "server/social/service.ts":"d8532e16cfd49f5e3fd4df77804cbff3ba518ac3725a65c1800da3232da61e6a",
+    "server/routes/social.ts":"d4cf9be06ad354bcb2611203c40597a399d8a758725de507d330cbe952b2df9a",
+    "server/ws/social.ts":"f24e6bcea7d38ed009920823def55accef0caa86e9fa7df259ec8b3878527e3d",
+    "server/growth/message-push.ts":"7f3082edf0a953f18e800bb718b403a557cd37795aad71d1002fc59a8a861f17",
+    "src/types/social.ts":"333487defca0f0e7f3f916e56ca0f907a7cbfb617a173c01640e0b5f62d3bd7e",
+    "src/game/social-model.ts":"fcd7125d97deea81daa3b8564ffcebbf4a5756e034b9444e05b9dca270b67837",
+    "src/app/features/social/socialClient.ts":"2c7ffae30671f1ad8b520c731d2960df14e120c35a74752d9b3e6122739cb092",
+    "src/app/features/messages/MessagesApp.vue":"3917d57bcc88f023edc2d5a4d05ed63d34967b650163ccff3b79697160b7923a",
+    "src/app/features/messages/Composer.vue":"8e8bc0164bb8e4c15f0d70f70108266cbfc77d01a1a2b3a2f550a6b6d4845400",
+    "src/app/features/messages/MessageBubble.vue":"c2a36fbbbad1c725f414677680ab052aecf68b8fc78fb3d1f6689f1a88a19503",
+    "src/app/features/messages/messagePins.ts":"6194259c60027837a6db1db6c9311a129594fe9d5cc913087e919cd01a474339"
+  }
+}

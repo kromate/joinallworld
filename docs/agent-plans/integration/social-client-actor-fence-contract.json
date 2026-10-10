@@ -1,0 +1,71 @@
+{
+  "decision": "APPROVE_THREE_FILE_ACTOR_ISOLATION_CONTRACT_ONLY",
+  "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "finding": "Source-identified late side-effect gap; actual core fetchScoped already rejects replaced-actor payloads, social call converts rejection to failure consumed by unfenced continuations",
+  "privatePayloadLeakReproduced": false,
+  "pins": {
+    "src/app/features/social/socialClient.ts": "2c7ffae30671f1ad8b520c731d2960df14e120c35a74752d9b3e6122739cb092",
+    "src/app/features/social/socialClient.test.ts": "556d8f33d2c732a65121997f3bd9ca992dc21e1eb40d28ea60674daf62786993",
+    "src/game/social.test.ts": "19eb5ada7c2a2699f21def1260632b3f6238f9c0c073b150adfe8d151a056df4",
+    "src/app/state/app.ts": "e06fcede44a9c96cb9f967314c19797ddc0fff31f73f0edd005b7ddabe510dfd",
+    "src/app/state/game.ts": "2158a603d61a4d0c44ef9d6ddbbf7638b081a3bef64649a7541e0ac6603042e9",
+    "src/client.ts": "f6bff3fb471d7ee49071ccf88af3454d29668a1cf29c93c76bc35e78d384adc4",
+    "src/app/features/social/useSocial.ts": "89b7ea03d9eb270fcb7c6e5396513d0be7bf7610b98807e9ff6dbb1d62c1a15c",
+    "src/app/types/panel.ts": "d17eab7279a30e8a70782e6264a9c33aff1e0c47ca0306e269d14dcd085eaf1a",
+    "src/game/social-model.ts": "fcd7125d97deea81daa3b8564ffcebbf4a5756e034b9444e05b9dca270b67837"
+  },
+  "writer": "Same existing ONLINE writer, allocated through WORLD after current critical source repair",
+  "whitelist": {
+    "src/app/features/social/socialClient.ts": "Actor-epoch, owned completion/timer flags, reset ordering and scoped callbacks only; preserve APIs and request/receipt semantics",
+    "src/app/features/social/socialClient.test.ts": "Deferred sequential A-B-A success/failure/stale-response, timer/socket/reentrant-listener and legitimate-current-work behavioral tests",
+    "src/game/social.test.ts": "Root-authorized removal ONLY of brittle reset-start regex at line388 and unused source-read local; preserve freshSocial/outbox and app session/expired assertions"
+  },
+  "separation": {
+    "actorEpoch": "Non-reused token invalidated first in reset, plus captured host/session identity",
+    "localGeneration": "Thread/picker/component scope; does not invalidate shared global work",
+    "profileVersion": "Retained independently for same-actor friendship invalidation",
+    "sameActorReconnect": "Preserved; socket identity fences obsolete socket callbacks"
+  },
+  "audit": [
+    "call success/catch and perform good callback/toast/sync/result",
+    "sync loading/syncing/error/dirty/house/live followups",
+    "loadMoreFriends loading/cursor append",
+    "loadPeople loading/dirty/peopleAt/watchers",
+    "loadProfile epoch plus profileVersion",
+    "openThread and markRead success/error/noteConv/followup",
+    "send/retry pre-refresh scope, deliver result and outbox expiry",
+    "showLive/dropLive timers and listeners",
+    "all receive branches and call/life/ping/pin/notice forwarding",
+    "presence delayed followup",
+    "retry/watch/probe/reconnect timer and socket ownership",
+    "reset/start/attach and reentrant external callbacks",
+    "actor-neutral online event and current-authorized navigation"
+  ],
+  "notificationLimit": "open-chat has only conversation id, no original actor provenance; allow auto-open only with current loaded overview containing target, otherwise ignore; not an authority grant",
+  "frozenTests": [
+    "A-B-A old overview cannot clear third-A flags or consume its dirty work",
+    "Old history/read cannot repopulate replacement state or trigger followup",
+    "Old deliver/timeout cannot touch replacement outbox even repeated id",
+    "People/friends delayed results cannot clear new loading flags; coalescing preserved",
+    "Old perform cannot toast/call good/sync; call returns stale non-success",
+    "Force canceled old send/presence/live/backoff/watch callbacks",
+    "Saved old socket open/message/close and listener-triggered reset",
+    "Current online callback works; stale deep link and unknown notification do not open",
+    "Reset reentrancy and same-actor starts; thread switch still permits legitimate global completion"
+  ],
+  "remoteCommands": [
+    "node --experimental-strip-types --test --test-concurrency=1 src/app/features/social/socialClient.test.ts",
+    "node --experimental-strip-types --test --test-concurrency=1 src/app/features/calls/callsSocket.test.ts src/game/social.test.ts"
+  ],
+  "limits": [
+    "No execution or reproduced runtime privacy leak",
+    "No shared schema/server/receipt changes",
+    "No proof of external component or host command completion isolation",
+    "No DOM/native or real Node/Worker persistence acceptance",
+    "Exact-source raw tests and required remote fixed-budget gates pending",
+    "Sticker/media programme remains open"
+  ],
+  "sourceModified": false,
+  "runtimeAccepted": false,
+  "activationApproved": false
+}

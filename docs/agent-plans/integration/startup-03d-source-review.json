@@ -1,0 +1,103 @@
+{
+  "review": "source_only_successor",
+  "verdict": "approve_R1_source_only",
+  "successor": {
+    "commit": "03d1d4d9d1b901b367cfd0a4f91455ac1334c9db",
+    "tree": "68ee94158784cb69c71372050997692eb73fea46",
+    "parent": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+    "subject": "Fix optional Lagos flight compaction fixtures"
+  },
+  "parent": {
+    "commit": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+    "tree": "98df07ec74299478eaa6c98997947dbe906fded5",
+    "parent": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+    "subject": "Compact canonical Lagos flight route data"
+  },
+  "diff": {
+    "files": ["scripts/city/build-catalogue.ts"],
+    "file_count": 1,
+    "insertions": 19,
+    "deletions": 18,
+    "successor_bytes": 8992,
+    "parent_bytes": 9004,
+    "successor_sha256": "17852d9efea92237dc07720de310f5a957cca8ebea16dbfea03eac35f10b367c",
+    "parent_sha256": "8f3db46aa7351244eb3574514bbc3218a40cef03aff5e43465cb30fc983a3685"
+  },
+  "source_checks": {
+    "conditional_standard_fixture": {
+      "status": "accepted",
+      "evidence": "scripts/city/build-catalogue.ts@03d:86-107",
+      "effect": "no canonical foreign flight skips fixture checks; normal map/fallback emits all routes full"
+    },
+    "optional_kano_fixture": {
+      "status": "accepted",
+      "evidence": "scripts/city/build-catalogue.ts@03d:88-105",
+      "effect": "Kano is checked only when present; no fallback is manufactured"
+    },
+    "unknown_custom_full": {
+      "status": "accepted",
+      "evidence": "scripts/city/build-catalogue.ts@03d:72-84,108-115",
+      "effect": "unknown, domestic, reordered, incomplete, mutated, or custom-key routes are noncompact; exact suffix guard otherwise falls back to all full objects"
+    },
+    "compact_only_delimiter": {
+      "status": "accepted",
+      "evidence": "scripts/city/build-catalogue.ts@03d:116-118",
+      "effect": "comma only follows nonempty full rows; compact-only output begins with spread and contains no array elision"
+    }
+  },
+  "generated_outputs": {
+    "identical_parent_to_successor": true,
+    "generator_executed_for_review": false,
+    "catalogue": {
+      "path": "src/game/cities/catalogue.generated.ts",
+      "bytes": 4125,
+      "sha256": "0969ee3c04a10152d1894706187bd9fd531b83295a4b7cb6bcaad692f1be3046",
+      "rows": 55
+    },
+    "loaders": {
+      "path": "src/game/cities/loaders.generated.ts",
+      "bytes": 3226,
+      "sha256": "857c3a9cc6acc600db61e6f18259ee27046afe3ef997028909c09a5f37a12dea",
+      "rows": 55
+    },
+    "routes": {
+      "path": "src/game/cities/routes.generated.ts",
+      "bytes": 6827,
+      "sha256": "eede408a489697e23567dd3ee2c0209aa4bbe931c4df755e557772353dddbcea",
+      "full_objects": 24,
+      "compact_rows": 15,
+      "total": 39,
+      "order_and_object_keys_unchanged": true,
+      "compact_destination_order": ["accra", "algiers", "lome", "nairobi", "yaounde", "abidjan", "addis-ababa", "cape-town", "cotonou", "dakar", "cairo", "rabat", "kigali", "kampala", "lusaka"]
+    }
+  },
+  "runtime_consequence": {
+    "runtime_files_changed": 0,
+    "demonstrated_runtime_byte_saving": 0,
+    "reason": "only generator source changed and committed generated outputs are byte-identical"
+  },
+  "latest_original_measurement": {
+    "source_commit": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+    "publication_commit": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+    "publication_tree": "a0d8af7b3f97e075482e4806734b7a5988cebb11",
+    "nodes": ["v22.23.3", "v24.19.0"],
+    "build": "pass_both",
+    "size": "fail_both",
+    "startup_raw": {"measured": 614092, "budget": 615000, "status": "pass"},
+    "startup_gzip": {"measured": 222987, "budget": 223000, "status": "pass"},
+    "startup_brotli": {"measured": 195739, "budget": 195600, "status": "fail", "over": 139}
+  },
+  "successor_measurement": null,
+  "claims_excluded": [
+    "generated freshness",
+    "compiler pass",
+    "build pass at successor",
+    "test pass",
+    "runtime equivalence after regeneration",
+    "startup byte improvement",
+    "budget pass",
+    "full integration acceptance"
+  ],
+  "actions_performed": ["full source read", "pinned diff read", "blob size/hash comparison", "committed generated output identity/count inspection"],
+  "actions_not_performed": ["generator execution", "compiler", "build", "tests", "server", "browser", "network", "source mutation"]
+}

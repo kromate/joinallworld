@@ -1,0 +1,17 @@
+server/households/durableService.ts:141:24 TS2344 Type 'unknown' does not satisfy the constraint '{ ok?: boolean | undefined; }'.
+server/households/durableService.ts:149:31 TS2344 Type 'unknown' does not satisfy the constraint '{ ok?: boolean | undefined; }'.
+server/households/durable.test.ts:78:5 TS2322 Type 'string' is not assignable to type 'Id<"life">'.
+server/households/durable.test.ts:79:12 TS2322 Type 'string' is not assignable to type 'CharacterId'.
+server/households/durable.test.ts:79:43 TS2322 Type 'string' is not assignable to type 'LifeId'.
+server/households/durable.test.ts:131:21 TS7053 Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Record<`${number}:${string}`, OnceReceipt>'.
+server/households/durable.test.ts:144:7 TS2322 Type 'string' is not assignable to type 'Id<"membership"> | Id<"invite"> | Id<"household"> | Id<"home"> | Id<"life"> | Id<"character">'.
+server/households/durable.test.ts:234:65 TS2345 Argument of type 'unknown' is not assignable to parameter of type 'object'.
+server/households/durable.test.ts:317:87 TS2345 Argument of type '"00000000-0000-4000-8000-000000000008"' is not assignable to parameter of type '"00000000-0000-4000-8000-000000000003"'.
+server/households/durable.test.ts:336:19 TS2322 Type 'string' is not assignable to type 'HouseholdId'.
+server/households/durable.test.ts:336:70 TS2322 Type 'string' is not assignable to type 'InviteId'.
+server/households/durable.test.ts:337:18 TS2322 Type 'string' is not assignable to type 'LifeId'.
+server/households/durable.test.ts:337:39 TS2322 Type 'string' is not assignable to type 'CharacterId'.
+server/households/durable.test.ts:402:88 TS2345 Argument of type '"00000000-0000-4000-8000-000000000008"' is not assignable to parameter of type '"00000000-0000-4000-8000-000000000003"'.
+server/households/durable.test.ts:439:65 TS2345 Argument of type 'unknown' is not assignable to parameter of type 'object'.
+
+Typecheck failed. New .ts and .vue code must be clean. For existing JavaScript, fix the new errors; if they came in with a merge of untyped code, record them with `node scripts/typecheck.ts --update` and say so in the commit.

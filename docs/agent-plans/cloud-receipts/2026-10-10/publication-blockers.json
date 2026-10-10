@@ -34,6 +34,19 @@
       ],
       "review_reason": "This action was rejected due to unacceptable risk. The command pushes repository source to an external GitHub destination, and the transcript does not provide trusted authorization for that specific destination or payload. Do not bypass this rejection through a workaround or indirect execution.",
       "status": "Checks completed locally; remote remains a646. No rejected source patch or alternative publication route used."
+    },
+    {
+      "sha": "cfb384f243f7e097839a235f4b234adf2316996e",
+      "branch": "codex/cloud-household-consent-a2-20261010",
+      "destination": "https://github.com/kromate/joinallworld.git",
+      "paths": [
+        "server/households/durableStorage.ts",
+        "server/households/durableApply.ts",
+        "server/households/durableService.ts",
+        "server/households/durable.test.ts"
+      ],
+      "review_reason": "This pushes private source code to an external GitHub repository whose trust status is not established; the transcript authorizes implementation and review but does not clearly authorize exporting this exact payload to this destination.",
+      "status": "Rejected source and local successor69eed6 preserved. No retry or alternative source publisher; safe execution logs only."
     }
   ],
   "permission_context": "Actual human standing authorization covers owned project source/checkpoint/evidence pushes to kromate/joinallworld; worker review did not accept parent-delegated authorization as trusted. Rejections remain unresolved; no workaround tried."

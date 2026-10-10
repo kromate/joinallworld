@@ -1,0 +1,46 @@
+{
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "observedUtc": "2026-10-10T03:06:29.383931+00:00",
+  "method": "Read-only comparison of independently packaged actual files against owner published public metadata; no artifact retrieval or payload changes",
+  "originalIndexSha256": "48e2ad7b6e1dc87a34416ccdd506b2c78fa58fd261b41c287f5e747441aa2e55",
+  "originalPackageDigest": "3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331",
+  "independentPackageDigest": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+  "payloadEntriesOriginal": 6227,
+  "payloadEntriesIndependent": 6227,
+  "physicalFilesEachIncludingManifest": 6228,
+  "missing": [],
+  "added": [],
+  "changed": [
+    {
+      "path": "worker.js",
+      "original": {
+        "path": "worker.js",
+        "bytes": 4851144,
+        "sha256": "fd7fa978cda473d67bdf5c006bcb3289b901180cdfd9123c49bb405fc976fbf4"
+      },
+      "independent": {
+        "path": "worker.js",
+        "bytes": 4846908,
+        "sha256": "443f113d0070ba6d3df6dd52ba8204a479011b10b0592e275893c2ffc021839b"
+      }
+    }
+  ],
+  "identicalPayloadFiles": 6226,
+  "manifestOrderIdentical": true,
+  "originalManifest": {
+    "path": "manifest.json",
+    "bytes": 1416390,
+    "sha256": "d5a3b4e5dd80be8dc57a0296e9af4b7898ff23c7875aeedf342b879b6e94a314"
+  },
+  "independentManifest": {
+    "path": "manifest.json",
+    "bytes": 1416390,
+    "sha256": "86aa7c726f5cb735fa0519e3681c703738daddfcaa3b3a2d239a773949483aa9"
+  },
+  "originalWholeBytes": 103755418,
+  "independentWholeBytes": 103751182,
+  "actualIndependentWorkerSha256": "443f113d0070ba6d3df6dd52ba8204a479011b10b0592e275893c2ffc021839b",
+  "actualIndependentWorkerBytes": 4846908,
+  "matchesOwnerInMemoryModuleLabelOnlyPrediction": true,
+  "limitation": "Root has original file metadata, not original Worker bytes; owner supplied independent in-memory original-Worker prefix analysis. Distinct package requires new sealed verification approval; no inherited14checks/native/deployment."
+}

@@ -1,0 +1,108 @@
+{
+  "candidate": "b601882c35dd9096b454a55ab28dc1b550cb1b8e",
+  "baseline": "df0e2d9826f84091189e5fd4553e1a667cbb91d6",
+  "bundleSha256": "43b26099c951ecc46ed8bef96f92c78061bee997f79d1290817277d1ce1e587d",
+  "render": {
+    "exit": 1,
+    "status": "completed",
+    "elapsedSeconds": 14.368,
+    "peakGroupRssBytes": 1091117056,
+    "capsSeconds": 120,
+    "capsBytes": 2147483648,
+    "reason": "8s action entry wait expired before actual furniture-use pose; no stage capture",
+    "navigationFrames": 149,
+    "navigationTotalMs": 6021.3,
+    "navigationMaxMs": 1288,
+    "sourceSecondsReached": 2.162500026822089,
+    "sourceDuration": 2.200000047683716,
+    "displaySecondsReached": 3.6999999999999966,
+    "displayDuration": 3.8500000834465027
+  },
+  "trajectory": {
+    "rootWorld": {
+      "sampleTotalDisplacementM": 1.7923303189616364,
+      "peakStepSpeedMps": 2.633431516953042,
+      "peakDisplayInterval": [
+        2.833333333333333,
+        2.8666666666666663
+      ],
+      "peakSourceInterval": [
+        1.9458333601554234,
+        1.9541666934887567
+      ]
+    },
+    "mixamorigHips": {
+      "sampleTotalDisplacementM": 1.4065787893768684,
+      "peakStepSpeedMps": 2.633431516953044,
+      "peakDisplayInterval": [
+        2.833333333333333,
+        2.8666666666666663
+      ],
+      "peakSourceInterval": [
+        1.9458333601554234,
+        1.9541666934887567
+      ]
+    },
+    "mixamorigHead": {
+      "sampleTotalDisplacementM": 2.6670723607989224,
+      "peakStepSpeedMps": 6.210952028540161,
+      "peakDisplayInterval": [
+        3.3333333333333313,
+        3.3666666666666645
+      ],
+      "peakSourceInterval": [
+        2.070833360155423,
+        2.079166693488756
+      ]
+    },
+    "mixamorigLeftFoot": {
+      "sampleTotalDisplacementM": 1.4100672920949373,
+      "peakStepSpeedMps": 25.717161779429674,
+      "peakDisplayInterval": [
+        2.7666666666666666,
+        2.8
+      ],
+      "peakSourceInterval": [
+        1.9291666934887568,
+        1.93750002682209
+      ]
+    },
+    "mixamorigRightFoot": {
+      "sampleTotalDisplacementM": 0.8639566031222169,
+      "peakStepSpeedMps": 26.105882259614713,
+      "peakDisplayInterval": [
+        2.7666666666666666,
+        2.8
+      ],
+      "peakSourceInterval": [
+        1.9291666934887568,
+        1.93750002682209
+      ]
+    }
+  },
+  "lastFrame": {
+    "rootWorld": [
+      -6.875399371190722,
+      0.5270715796080697,
+      -6.376769909072974
+    ],
+    "pelvisGap": 0.00979038554771594,
+    "torsoGap": 0.016654222701880217,
+    "headGap": 0.09631817522491959,
+    "leftSoleFloorGap": 1.0459274851493536,
+    "rightSoleFloorGap": 1.052024031085783
+  },
+  "sourceProfile": {
+    "authoredHipDisplacementFinalQuarter": {
+      "30Hz": 0,
+      "60Hz": 0
+    },
+    "actualFootBonePeakSpeedMps": {
+      "left": 25.717161779429674,
+      "right": 26.105882259614713
+    }
+  },
+  "artifact": "evidence/graphics-loop/native-game-adoption-v1/home-journey-results/remote-1791600809319/home-journey-failure.json",
+  "artifactSha256": "c4b27dd64f5e943c65b53917faee04be0cc8e8825c9cc852d5086ac09e6fdc7e",
+  "getupSignedRegionInterval": "unavailable: this run did not reach get-up; preserved earlier rejection also lacks get-up region interval"
+}

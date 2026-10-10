@@ -1,0 +1,174 @@
+(node:137252) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+agent-slot: waiting for heavy slot (1/1 busy: pid 136921 in /workspace/remote-verification/repositories/worker-graphics-native-interaction-twistfix: node --experimental-strip-types --test --test-concurrency=1 src/scene/body/native/native-interaction-gesture.test.ts (2m))
+Actual lease-start allowance guard: {"rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.", "minimum_remaining_percent_exclusive": 4, "latest_remaining_percent": 13, "sample_source": "GRAPHICS fresh direct87%used13%remaining incoming owner receipt", "recorded_at_utc": "2026-10-10T02:53:04.677608+00:00", "allow_new_heavy": true, "heavy_slots": 1, "additional_spend": 0}
+(node:137278) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> joinallworld@0.1.0 test:smoke
+> node --experimental-strip-types --test --test-concurrency=1 src/app/entry.test.ts server/release.test.ts src/types/protocol.test.ts
+
+(node:137291) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# (node:137298) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: JavaScript is limited to the service worker, release shims and exact reviewed tooling
+ok 1 - JavaScript is limited to the service worker, release shims and exact reviewed tooling
+  ---
+  duration_ms: 17.062391
+  type: 'test'
+  ...
+# Subtest: the two release shims only point at the TypeScript they stand for
+ok 2 - the two release shims only point at the TypeScript they stand for
+  ---
+  duration_ms: 0.373409
+  type: 'test'
+  ...
+# Subtest: every file in public/ is an asset the release package admits (no dot-file, no map, no manifest, no xml)
+ok 3 - every file in public/ is an asset the release package admits (no dot-file, no map, no manifest, no xml)
+  ---
+  duration_ms: 10.79109
+  type: 'test'
+  ...
+# Subtest: the Worker config is the one the release package fixes, and the Worker exports its Durable Object
+ok 4 - the Worker config is the one the release package fixes, and the Worker exports its Durable Object
+  ---
+  duration_ms: 0.550994
+  type: 'test'
+  ...
+# Subtest: the default build config emits no source map (maps are opt-in, SOURCEMAPS=1, into dist-maps/)
+ok 5 - the default build config emits no source map (maps are opt-in, SOURCEMAPS=1, into dist-maps/)
+  ---
+  duration_ms: 0.247791
+  type: 'test'
+  ...
+# (node:137306) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the first download paints without the game shell, rules engine or city content; the startup closure reads them through the browser system set
+ok 6 - the first download paints without the game shell, rules engine or city content; the startup closure reads them through the browser system set
+  ---
+  duration_ms: 1.686052
+  type: 'test'
+  ...
+# Subtest: the shared shell does not statically import a city venue or regular catalogue
+ok 7 - the shared shell does not statically import a city venue or regular catalogue
+  ---
+  duration_ms: 0.303384
+  type: 'test'
+  ...
+# Subtest: each generated catalogue row has one checked-in Node and Worker loader
+ok 8 - each generated catalogue row has one checked-in Node and Worker loader
+  ---
+  duration_ms: 0.637704
+  type: 'test'
+  ...
+# Subtest: Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell
+ok 9 - Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell
+  ---
+  duration_ms: 2.090868
+  type: 'test'
+  ...
+# Subtest: the eager JavaScript does not grow and contains only the loading screen and Vue
+ok 10 - the eager JavaScript does not grow and contains only the loading screen and Vue
+  ---
+  duration_ms: 4.39921
+  type: 'test'
+  ...
+# assets/vue-32f50792.js 81170 raw 30886 gzip; assets/preload-helper-86ad5cfe.js 1260 raw 698 gzip; assets/app-f71137d9.js 9039 raw 3984 gzip; total 91469 raw 35568 gzip
+# Subtest: automatic game startup, including one selected city, stays within the original first-load budget
+ok 11 - automatic game startup, including one selected city, stays within the original first-load budget
+  ---
+  duration_ms: 886.411516
+  type: 'test'
+  ...
+# lagos automatic startup: 614258 raw 222677 gzip bytes
+# ibadan automatic startup: 581922 raw 214616 gzip bytes
+# abuja automatic startup: 593581 raw 215534 gzip bytes
+# port-harcourt automatic startup: 583305 raw 215166 gzip bytes
+# abeokuta automatic startup: 571310 raw 211728 gzip bytes
+# ota automatic startup: 569926 raw 211085 gzip bytes
+# ijebu-ode automatic startup: 570601 raw 211353 gzip bytes
+# sagamu automatic startup: 574194 raw 212887 gzip bytes
+# kano automatic startup: 594786 raw 215670 gzip bytes
+# enugu automatic startup: 584409 raw 215560 gzip bytes
+# benin-city automatic startup: 585387 raw 215601 gzip bytes
+# calabar automatic startup: 587497 raw 216536 gzip bytes
+# uyo automatic startup: 582266 raw 214595 gzip bytes
+# umuahia automatic startup: 588827 raw 215686 gzip bytes
+# owerri automatic startup: 590344 raw 215944 gzip bytes
+# yenagoa automatic startup: 590790 raw 215853 gzip bytes
+# awka automatic startup: 587901 raw 215791 gzip bytes
+# kaduna automatic startup: 585044 raw 215127 gzip bytes
+# maiduguri automatic startup: 585385 raw 215010 gzip bytes
+# gombe automatic startup: 584803 raw 215105 gzip bytes
+# yola automatic startup: 584854 raw 215089 gzip bytes
+# ilorin automatic startup: 583773 raw 215048 gzip bytes
+# minna automatic startup: 581103 raw 214609 gzip bytes
+# osogbo automatic startup: 582759 raw 214715 gzip bytes
+# damaturu automatic startup: 580504 raw 214104 gzip bytes
+# jalingo automatic startup: 580785 raw 214063 gzip bytes
+# akure automatic startup: 582778 raw 214664 gzip bytes
+# ado-ekiti automatic startup: 580650 raw 214252 gzip bytes
+# asaba automatic startup: 580821 raw 214605 gzip bytes
+# lokoja automatic startup: 579956 raw 214076 gzip bytes
+# jos automatic startup: 587551 raw 215936 gzip bytes
+# lafia automatic startup: 579952 raw 214026 gzip bytes
+# katsina automatic startup: 588826 raw 215596 gzip bytes
+# sokoto automatic startup: 586926 raw 215525 gzip bytes
+# birnin-kebbi automatic startup: 585595 raw 215286 gzip bytes
+# gusau automatic startup: 583008 raw 214536 gzip bytes
+# dutse automatic startup: 584219 raw 215054 gzip bytes
+# bauchi automatic startup: 589331 raw 215709 gzip bytes
+# makurdi automatic startup: 581791 raw 214399 gzip bytes
+# abakaliki automatic startup: 581473 raw 214576 gzip bytes
+# accra automatic startup: 570632 raw 211655 gzip bytes
+# algiers automatic startup: 570760 raw 211751 gzip bytes
+# lome automatic startup: 570663 raw 211722 gzip bytes
+# nairobi automatic startup: 570705 raw 211723 gzip bytes
+# yaounde automatic startup: 570677 raw 211715 gzip bytes
+# abidjan automatic startup: 570764 raw 211795 gzip bytes
+# addis-ababa automatic startup: 570717 raw 211714 gzip bytes
+# cape-town automatic startup: 570851 raw 211810 gzip bytes
+# cotonou automatic startup: 570726 raw 211749 gzip bytes
+# dakar automatic startup: 570693 raw 211727 gzip bytes
+# cairo automatic startup: 570710 raw 211687 gzip bytes
+# rabat automatic startup: 570707 raw 211694 gzip bytes
+# kigali automatic startup: 570718 raw 211692 gzip bytes
+# kampala automatic startup: 570727 raw 211705 gzip bytes
+# lusaka automatic startup: 570738 raw 211704 gzip bytes
+# (node:137314) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: every registered route is typed, and every typed route is registered
+ok 12 - every registered route is typed, and every typed route is registered
+  ---
+  duration_ms: 11.924786
+  type: 'test'
+  ...
+# Subtest: every frame type the server accepts or sends is typed
+ok 13 - every frame type the server accepts or sends is typed
+  ---
+  duration_ms: 70.744654
+  type: 'test'
+  ...
+# Subtest: the Cloudflare Worker runs the shared registries: the same routes and frames, plus what the types say only it does
+ok 14 - the Cloudflare Worker runs the shared registries: the same routes and frames, plus what the types say only it does
+  ---
+  duration_ms: 3.245043
+  type: 'test'
+  ...
+# Subtest: core, social, civic and support answers carry exactly the typed keys
+ok 15 - core, social, civic and support answers carry exactly the typed keys
+  ---
+  duration_ms: 552.832671
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2675.421914

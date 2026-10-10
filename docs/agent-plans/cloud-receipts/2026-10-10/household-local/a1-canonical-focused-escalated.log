@@ -1,0 +1,16 @@
+✔ an inherited root getter is never evaluated and an absent root is installed as own data (1.970217ms)
+✔ own root accessors, non-enumerable roots, and own undefined roots are invalid without invoking accessors (0.183444ms)
+✔ storage edge rejects accessors without invoking them and propagates point-read faults (0.622892ms)
+✔ Node file Store: version 2 receipt survives same-life authority change and replay avoids current home loading (44.26771ms)
+✔ Node file Store: exact legacy receipt replays only with unchanged command, actor and provenance (8.873342ms)
+✔ Node file Store: a failed durable write rejects without household or once receipt (4.772778ms)
+✔ production SQLite store adapter under Node: version 2 replay survives same-life authority change and reopen (13.114305ms)
+✔ production SQLite store adapter under Node: SQL entry failure rolls back the household row and once receipt (5.45546ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 515.596384

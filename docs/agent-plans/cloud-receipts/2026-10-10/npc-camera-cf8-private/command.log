@@ -1,0 +1,42 @@
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (66s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (67s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (68s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (69s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (70s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (71s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (72s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (73s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (74s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (75s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (76s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (77s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (78s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (79s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (80s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (81s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (82s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (83s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (84s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (85s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (86s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (87s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (88s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (89s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 110710 in /workspace/remote-verification/repositories/driving-driving-safe-max-20261010: node --experimental-strip-types scripts/typecheck.ts --serial (2m))
+source_sha=cf8b7417b5f428dc6cb59f601fbde560cd9a7c71
+node=v24.19.0
+PHASE=node-syntax-check
+PHASE=strict-fixture-typecheck heap=4096MiB
+PHASE=fixture-bundle
+{"status":"bundled","repo":"/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial","entry":"/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts","outfile":"/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/game-fixture.bundle.js","bytes":10061356,"sourceScene":"src/scene/venue-scenes.ts","sourceStandIn":"src/scene/body/stand-in.ts"}
+PHASE=actual-office-browser-render
+{"status": "completed", "exitCode": 1, "peakGroupRssBytes": 1402699776, "elapsedSeconds": 105.764, "limits": {"rssBytes": 2147483648, "seconds": 120}, "command": ["node", "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs"]}
+file:///workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs:361
+  if (report.status !== 'pass') throw new Error(`Game slice failed checks: ${JSON.stringify(checks)}`);
+                                      ^
+
+Error: Game slice failed checks: {"firstFrameThenCrowdStart":true,"webgl2":true,"lifeAtOffice":true,"realNpcList":true,"npcActionCards":true,"nativeCrowdAtLeastTwo":true,"noProceduralCrowdFallback":true,"nativeActorsExactGeometry":true,"nativePlayerThroughStandIn":true,"sameCreatorSeedAndSavedLook":true,"walkSample":true,"closeupReportsActualBodyPose":true,"deterministicWalkPhases":true,"closeupsFrameWholeActor":false,"closeupsRenderActorPixels":false,"closeupsSavedDirectCanvasPixels":true,"npcPlayerSupportedPoseCameraMatrix":false,"cameraSideControlsSaved":false,"interactionSample":true,"realNpcActivityCompleted":true,"realNpcPoseFollowsLifeAction":true,"playerContact":true,"unsupportedAppearanceUsesWholeLifecycleLegacyAndDisposes":true,"afterUnsupportedStillReady":true,"mobileLayoutSingleColumn":true,"dapoRealActivityCompleted":true,"snapshotsHaveNoRuntimeErrors":true,"teardownReleasesActorsAndContext":true,"consoleClean":true}
+    at file:///workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs:361:39
+
+Node.js v24.19.0
+

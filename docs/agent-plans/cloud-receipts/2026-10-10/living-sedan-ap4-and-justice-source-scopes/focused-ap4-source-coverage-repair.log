@@ -1,0 +1,57 @@
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (5s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (6s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (7s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (8s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (9s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (10s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (11s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (12s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (13s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 172452 in /workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010: node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json (14s))
+✔ source-pinned driver cap partition matches Float32 emission coordinates (6.151141ms)
+✔ actual map and street CPU sedan/interior/door partitions emit bounded Float32 meshes (36.585272ms)
+✔ the tapered front rejects a capsule that fits at the aperture center (1.061027ms)
+✔ the complete hinged-door interval catches intermediate motion missed by endpoint poses (2.064338ms)
+✔ source interior and steering sweeps report known possible intersections (0.919856ms)
+✔ closed, intermediate, and fully open door positions are covered by one full-sweep envelope (0.503643ms)
+✔ valid rigid body transforms are applied and non-rigid or malformed transforms fail closed (0.372247ms)
+✔ translated static yaw, pitch, and roll preserve body-local obstacle checks (0.567218ms)
+✔ relative 10m bounds are invariant to vehicle translation away from world origin (0.589161ms)
+✔ source pins, descriptor accessors, capsule bounds, radii, and capsule count are checked (0.804964ms)
+✔ Float32 and explicit margins shrink the opening and grow modeled obstacles (0.617875ms)
+✔ retained opposite cap and shell profile are checked as conservative obstacles (0.228421ms)
+✔ driver-side glass inside the clipped door region is moving, not a static shell collision (0.250645ms)
+✔ retained source-cap and windshield contacts are covered by the shell envelopes (11.685278ms)
+✖ retained side glass, pillar, shoulder trim, and rear glass stay covered after partition (0.981057ms)
+✔ aperture boundary failure is blocked and never reported clear (0.2278ms)
+✔ explicit intervals, positive numeric margin, phase labels, and static pose fail closed (0.515401ms)
+✔ scene phase fixtures preserve normal and reduced motion ordering without actor-fit claims (8.524531ms)
+✔ the authority contract stays negative even for empty or apparently clear proposals (0.294811ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 237.018922
+
+✖ failing tests:
+
+test at server/living-world/sedan-aperture.test.ts:419:1
+✖ retained side glass, pillar, shoulder trim, and rear glass stay covered after partition (0.981057ms)
+  AssertionError [ERR_ASSERTION]: b-pillar-remainder
+      at TestContext.<anonymous> (file:///workspace/remote-verification/repositories/sedan-aperture-20261010/server/living-world/sedan-aperture.test.ts:436:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

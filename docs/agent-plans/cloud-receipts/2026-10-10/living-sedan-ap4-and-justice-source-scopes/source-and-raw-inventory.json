@@ -1,0 +1,99 @@
+{
+  "recordedAtUtc": "2026-10-10T04:33:20.882123+00:00",
+  "rawFiles": [
+    {
+      "file": "focused-ap4-source-coverage-final.log",
+      "bytes": 54016,
+      "sha256": "2f706805133a2d2b882feb1f88f6be70611476a2a1cfb5352d1326b6ef2a370d"
+    },
+    {
+      "file": "focused-ap4-source-coverage-repair.log",
+      "bytes": 6087,
+      "sha256": "6729717def46b4b618bd506c9f1a1c0b535a5a2556e8a8a6e9f546549eedfb4a"
+    },
+    {
+      "file": "focused-ap4-final-expectations.log",
+      "bytes": 1982,
+      "sha256": "361aa4ddb7d0048c167fa4ab8c6c81ef069bd3b9202f2d379738b198e7569bd1"
+    },
+    {
+      "file": "justice-red-seal-dispatch.log",
+      "bytes": 1080,
+      "sha256": "4309daed81841b196f61c016232bae849a26c367231ace5f9a9ebcb8161a1157"
+    },
+    {
+      "file": "justice-focused-green-1.log",
+      "bytes": 3214,
+      "sha256": "d7f79a2d680a619f22ec284345c1c0d457cf2422733b9a8ee9b0882d635c6f6f"
+    },
+    {
+      "file": "justice-focused-green-2.log",
+      "bytes": 1089,
+      "sha256": "6a1d1d31aaeaf45f9f3a7e838d6f4c5ab18530e41faa6c1facfac6a035b236f5"
+    },
+    {
+      "file": "justice-focused-final.log",
+      "bytes": 1090,
+      "sha256": "790e702204df80f41124cdac5be229fac1a50bc30c838c39c8194fea75a1d624"
+    }
+  ],
+  "geometry": {
+    "source": "2ca6d94c39dc06ee0a17626219207859bf5b3cb6",
+    "branch": "codex/cloud-sedan-aperture-cpu-geometry-20261010",
+    "remoteFullRefVerified": true,
+    "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+    "paths": {
+      "server/living-world/sedan-aperture.ts": "be8a436cfae4238f25c0e9dc516135870088dde98d8631a19aa78652bcfbe215",
+      "server/living-world/sedan-aperture.test.ts": "0b496813b3074d191dfa22b9ff2bd32dc83f1311990b36be8276c257097cdaf6"
+    },
+    "finalTests": {
+      "pass": 19,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 216.502861
+    },
+    "failedRunsRetained": [
+      {
+        "tests": 19,
+        "pass": 17,
+        "fail": 2
+      },
+      {
+        "tests": 19,
+        "pass": 18,
+        "fail": 1
+      }
+    ],
+    "allAuthorityFlags": false,
+    "actorBoardingSupportRendererMobileAcceptance": false
+  },
+  "justice": {
+    "worker": "/root/living_driving_cloud",
+    "routingTool": "collaboration.followup_task",
+    "dependentTaskAcceptedAfterCleanAp4Acknowledgement": true,
+    "actualExecutionAndCompletionObserved": true,
+    "nativeTurnUuidExposed": false,
+    "source": "ef92f8f182658703e3a2de5a12395f6681ce93c4",
+    "branch": "codex/cloud-justice-evidence-order-20261010",
+    "checkout": "/workspace/remote-verification/repositories/justice-order-repair-20261010",
+    "parent": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+    "clean": true,
+    "paths": {
+      "src/game/living-world/justice-practice.ts": "d1a1c6a47bfaa7ff4c36e413ee912230675121139d469b0e230b126cc6218df1",
+      "src/game/living-world/justice-practice.test.ts": "0b85dc3ea088f0d1f98d0e2091d8b6d07642673ae8bcbce7a9b8cc89ac9ecb46"
+    },
+    "preservingContractCommit": "732aef3fe0f16b45440f82778344d0e78c703264",
+    "focusedPureTests": {
+      "pass": 9,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 116.315299
+    },
+    "originalExpectedRedReproductionRetained": true,
+    "sourcePubliclyPushed": false,
+    "serviceCompilerNodeWorkerMobileChecksExecuted": false,
+    "semantics": "Canonical reconstructed evidence OR exact successful-inspection chronology from fully validated ledger; arbitrary matching-set permutations refused; chronological receipts unchanged"
+  },
+  "denied385PayloadOrAncestryIncluded": false,
+  "newResourcesOrPaidSpend": false
+}

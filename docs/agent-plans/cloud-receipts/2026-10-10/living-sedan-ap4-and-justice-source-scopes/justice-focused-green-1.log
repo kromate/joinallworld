@@ -1,0 +1,66 @@
+✔ case stays active through evidence comparison, explicit notice, NPC review request, and linked second decision (6.37857ms)
+✔ same request replays its original outcome alongside current state; changed payload and stale revision conflict (0.583743ms)
+✖ seal then dispatch inspections remain readable in the exact successful-inspection chronology (1.163731ms)
+✔ all six inspection orders round-trip after every action and finish the authored sequence (6.414705ms)
+✖ legacy chronology is derived only from successful inspections and preserves replay history (4.194924ms)
+✔ matching evidence membership with unsupported order and altered histories remain refused unchanged (0.678214ms)
+✔ review and completion cannot be fabricated in a saved record or via invented evidence (0.778735ms)
+✔ invalid saved state cannot be silently replaced by a newly advanced practice (0.20732ms)
+✔ ledger cap fails closed and never evicts the original replay key (3.527676ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 7
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 127.842489
+
+✖ failing tests:
+
+test at src/game/living-world/justice-practice.test.ts:134:1
+✖ seal then dispatch inspections remain readable in the exact successful-inspection chronology (1.163731ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'dispatch-copy',
+      'seal-log',
+  -   'dispatch-copy'
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/remote-verification/repositories/justice-order-repair-20261010/src/game/living-world/justice-practice.test.ts:143:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'dispatch-copy', 'seal-log' ],
+    expected: [ 'seal-log', 'dispatch-copy' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at src/game/living-world/justice-practice.test.ts:196:1
+✖ legacy chronology is derived only from successful inspections and preserves replay history (4.194924ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(fullParsed)
+  
+      at TestContext.<anonymous> (file:///workspace/remote-verification/repositories/justice-order-repair-20261010/src/game/living-world/justice-practice.test.ts:241:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

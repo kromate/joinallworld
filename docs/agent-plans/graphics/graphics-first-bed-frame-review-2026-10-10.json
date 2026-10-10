@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-10T04:37:36.044931+00:00",
+  "originalPublishedCommit": "7c9cc0964b9a2c2f1a3059afa01655c2275b436b",
+  "source": "f463ffd08a8bf9b9236ded0bfd37b61541b8360e",
+  "status": "ACTUAL FAILED, successor not certified",
+  "receipt": {
+    "status": "completed",
+    "exitCode": 1,
+    "peakGroupRssBytes": 991576064,
+    "elapsedSeconds": 4.963,
+    "limits": {
+      "rssBytes": 2147483648,
+      "seconds": 120
+    },
+    "command": [
+      "node",
+      "evidence/graphics-loop/native-game-adoption-v1/.pair-home-run.mjs"
+    ]
+  },
+  "runtimeFrame": {
+    "clip": "lie-down",
+    "sourceSeconds": 0.03333333333333333,
+    "displaySeconds": 0.03333333333333333,
+    "sourceDuration": 2.200000047683716,
+    "displayDuration": 3.8500000834465027
+  },
+  "idleBaselineScope": "First native neutral idle frame; existing sole translation only, before subsequent host IK",
+  "idleFloorGapsMeters": [
+    4.85722573273506e-17,
+    0.0030228930070735974
+  ],
+  "mappedFeet": {
+    "left": {
+      "count": 80,
+      "lowestWorld": [
+        -6.717760040904292,
+        0.03776925606699979,
+        -4.407691598788358
+      ],
+      "floorGap": 0.00776925606699979,
+      "floorWeight": 0.9969011160679045,
+      "propY": null,
+      "propGap": null,
+      "propSupported": false
+    },
+    "right": {
+      "count": 64,
+      "lowestWorld": [
+        -7.043388307576853,
+        0.16870775488905693,
+        -4.933200086887569
+      ],
+      "floorGap": 0.13870775488905693,
+      "floorWeight": 0,
+      "propY": null,
+      "propGap": null,
+      "propSupported": false
+    },
+    "floorClear": true,
+    "floorPlanted": false,
+    "floorFullyOwned": false,
+    "floorSolveRequired": true,
+    "solveMode": "transition"
+  },
+  "propRegionSampleCounts": {
+    "pelvis-back": 0,
+    "torso-back": 0,
+    "head-back": 0
+  },
+  "postSolveSoleProof": "MISSING in failed predecessor",
+  "interpretation": "First lie frame pre-solve left sole remains almost fully floor-owned, right airborne. Predecessor rejects before proving whether left side can be planted; actual post-solve side evidence required. Do not reuse old late-handoff 690mm measurements for this first-frame failure."
+}

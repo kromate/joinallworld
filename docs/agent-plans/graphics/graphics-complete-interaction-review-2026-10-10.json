@@ -1,0 +1,134 @@
+{
+  "at": "2026-10-10T04:29:05.248842+00:00",
+  "runtimeSha": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+  "originalReceiptTool": "exec-a0aafd3d-9070-4eb4-9fb1-8fcc0f294c80",
+  "originalNumericEvidenceTools": [
+    "exec-2178ba2d-0b5d-4ebc-8a0a-f2f753845f3c",
+    "exec-943f7d5e-92fe-41ec-b2dc-d6ee31701766",
+    "exec-d7f26952-9b32-45b1-9196-8c65f441e748"
+  ],
+  "actualRun": {
+    "pid": 171636,
+    "startedAt": "2026-10-10T04:23:52.150397Z",
+    "endedAt": "2026-10-10T04:25:08.374497Z",
+    "wrapperSeconds": 76.2241,
+    "exitStatus": 1,
+    "reportElapsedMs": 75273,
+    "failureElapsedMs": 75314,
+    "sourceCleanUnchanged": true,
+    "logSha256": "0d1cd2351ebd9d029f9a0962c18548d72788aa410a76b421780a2b260aa41d3b",
+    "reportSha256": "b47c63257359d475bc59dd13b18e6610c7a8c1af72f0238365bfdf87a63061d3",
+    "failureSha256": "fd54435f5b7e538176985c4c9ce3c3d8734416cc5168eac8ef38d2929c5c7591"
+  },
+  "status": "OVERALL FAIL, not admitted",
+  "bothActorActions": {
+    "activeStepsEach": 110,
+    "sampleClockSecondsEach": 3.6666666666666665,
+    "crossedActualClipDurationSeconds": 2,
+    "completedAndReturnedIdle": true,
+    "sampleUseContactExpressionCallsEach": 110,
+    "soleScope": "18 captured NPC samples total, not every active frame; returned-player-camera sample stillNPCshoequery",
+    "maximumAbsolutePhysicalSoleGapMeters": 0.00018294773277105492,
+    "armLandmarksActuallyMove": true
+  },
+  "failedAssertions": [
+    {
+      "name": "actualBlinkPulseAndBaselineRestore",
+      "cause": "Captured threshold22 at actualframe23/.7666667seconds; measured.4166667 equals expectedsourceformula at23. Requiredpeak>.8 occursframe22; missedpeakdoesnotproveproductionblinkdefect.",
+      "actualActiveReopenedFrames": {
+        "mrs": [
+          31,
+          42
+        ],
+        "dapo": [
+          31,
+          39
+        ]
+      },
+      "baselineAndReturnedWeights": 0,
+      "actualPeakWitness": "missing"
+    },
+    {
+      "name": "measuredVenuePoseContactAndExpressionCalls",
+      "cause": "Actor IDs npc:mrs-okafor/npc:dapo compared with unprefixedactionIDs; counters each110. PreserveoldFAIL and fixchecker explicitly."
+    }
+  ],
+  "wristCausalStageWitness": {
+    "neutralHandDeltaRadians": 0,
+    "gestureHandDeltaRadians": 0,
+    "wristStageLeftRadians": 1.0947377092269608,
+    "wristStageRightRadians": 0.26706793956403013,
+    "wristStageLeftDegrees": 62.723850412524776,
+    "wristStageRightDegrees": 15.301865780273866,
+    "handOriginErrorMeters": 0,
+    "returnedDeltaFromIdleRadians": 0,
+    "interpretation": "Wrist controller introduces this localhand articulation. Correctsource/native anatomical calibration and intentional source gesture remain to diagnose; no clamp/zero accepted."
+  },
+  "sourceBlinkExpected": [
+    {
+      "frame": 21,
+      "seconds": 0.7,
+      "pulse": 0.7499999999999933
+    },
+    {
+      "frame": 22,
+      "seconds": 0.7333333333333333,
+      "pulse": 0.8333333333333359
+    },
+    {
+      "frame": 23,
+      "seconds": 0.7666666666666667,
+      "pulse": 0.41666666666667074
+    },
+    {
+      "frame": 24,
+      "seconds": 0.8,
+      "pulse": 0
+    }
+  ],
+  "softwareRendererMetricsScope": "SwiftShader cloudfixture; frame/draw/stepwork is not physical-phone certification",
+  "mrsMetrics": {
+    "averageStepMs": 8.75363636369055,
+    "maxStepMs": 35.5,
+    "averageFrameWorkMs": 110.69545454565774,
+    "maxFrameWorkMs": 406.3999999985099,
+    "averageDrawMs": 101.88909090919928
+  },
+  "remaining": [
+    "Safeoriginalfullpacketpublication/pixelreview",
+    "Actualblinkpeakframe22",
+    "ExactnewRESTearlypose/idlebaseline",
+    "Wriststance/toeshape repairs",
+    "SixofficebakedbackgroundNPCmigration",
+    "Allwardrobeidentityjourneysworld/mobile/bytes/release"
+  ],
+  "latestAllowance": {
+    "usedPercent": 95,
+    "remainingPercent": 5,
+    "stopNewWorkAtRemainingPercent": 4
+  },
+  "noNewRerun": "Rootrequestedcausereview and permittedoriginalpublication; nounchangedautomaticretry",
+  "reviewUpdatedAt": "2026-10-10T04:37:36.044931+00:00",
+  "publication": {
+    "commit": "51c5d1db389e2ec647af78c58af5ece912b34fbb",
+    "manifestEntriesIndependentlyChecked": 62,
+    "mismatches": 0
+  },
+  "visualReview": {
+    "originalPngCount": 18,
+    "allViewed": true,
+    "angles": [
+      "front",
+      "profile"
+    ],
+    "garments": "Both NPC outfits remain visibly clothed in sampled views; full wardrobe/back/creator not covered",
+    "visibleDefects": [
+      "Pronounced knee crouch in profile",
+      "Upturned shoe tips in profile",
+      "Drooping active left wrist",
+      "Legacy blocky office extras persist"
+    ],
+    "overallAcceptance": "WITHHELD",
+    "actualPlayerScope": "Return to idle visible; captured sole evidence still queries NPC, not player"
+  }
+}

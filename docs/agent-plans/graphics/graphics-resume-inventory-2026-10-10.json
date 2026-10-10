@@ -1,30 +1,28 @@
 {
   "schema": "allworld.graphics.resume-inventory.v1",
-  "at": "2026-10-10T00:00:18.961467+00:00",
+  "at": "2026-10-10T01:25:15.931125+00:00",
   "goal": "Full graphics overhaul unchanged; native firstrelease is a phase, not fullgoal completion",
   "lastVerifiedProduction": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "fetchedMain": "c1f7c1f7369139ce559292318ba9842c23a28267",
-  "latestSource": "644cbe79b4c315ff672b9ee2bb5f298a787efa18",
+  "latestSource": "241b29a4a7572b1d19d9c382dfad600726a0064d",
   "sourceBranch": "codex/cloud-graphics-wiring-v9-20261010",
-  "latestRun": 38008067182,
+  "latestRun": 38012825418,
   "nativeAccepted": false,
   "nativeDeployed": false,
   "usagePolicy": {
-    "mainWindowMinutes": 10080,
-    "observedUsedPercent": 71,
-    "observedRemainingPercent": 29,
-    "stopNewWorkAtRemainingPercent": 5,
-    "reserveLast5ForCheckpoint": true,
-    "hardCutoffUTC": "2026-10-10T08:00:00Z",
+    "observedUsedPercent": 80,
+    "observedRemainingPercent": 20,
+    "stopNewWorkAtRemainingPercent": 4,
+    "reserveLast4ForCheckpoint": true,
+    "hardClockCutoff": null,
+    "humanInstructionProvenance": {
+      "thread": "01a11ddc-3607-7ba1-b778-9878f6a9646b",
+      "userMessage": "01a12367-3e20-7150-86f7-a14cacab49bd",
+      "exactText": "Keep them working online, but stop at 4% remaining, even if 9 a.m reach and we have more then 3% continue. Make sure they save everything and combine the remaining bugs into one list, easiest to hardest. then push the work to github"
+    },
     "paidUsage": "none",
     "modelHopping": "forbidden",
-    "latestSnapshot": {
-      "usedPercent": 73,
-      "remainingPercent": 27,
-      "stopAtRemainingPercent": 5
-    },
-    "usedPercent": 75,
-    "remainingPercent": 25
+    "checkpoint": "At4% or below safely stop new implementation/build/render/spawn; save and push exact owned source/evidence, preserve unresolved failures; Integration alone merges deduplicated remaining ledger easiest-hardest. No automatic implementation restart."
   },
   "completedScoped": [
     {
@@ -51,23 +49,35 @@
       "sha": "438a24111983a0634c6fa14eae86664222548fce",
       "proof": "Independent24baseline/candidate rows, exact2NPC x3phases x2feet; fixture strictcompile/bundle/render and physicalcheckerPASS; forwardgaze/clothing actualPNGs viewed",
       "scope": "Mount/idle/interact/return only; refresh/reposition/finalfactory/wholemodel stillpending."
+    },
+    {
+      "task": "Current canonical NPC floor contact and same-identity refresh",
+      "sha": "5e81e24c45c0d590b726c449f67f6e71b4ee4e84",
+      "proof": "Root independent16contact rows and reach pass, actual144solepoints perNPC, maxpenetration0.183mm;0.144222m refresh preservesseed/identity, solveattempt1to2;28office checks true,34speechframes perNPC.",
+      "scope": "Actualoffice test only. Current241 successor officestillrunning; nativeunaccepted/undeployed."
+    },
+    {
+      "task": "Explicit transition mode compiler contract",
+      "sha": "241b29a4a7572b1d19d9c382dfad600726a0064d",
+      "proof": "All101sourcepins match; GHA38012825418 fullgame typecheck and strict office/home compiler PASS. Requestedmode preserved across stairretry.",
+      "scope": "Compiler fix accepted narrowly; Homebrowser stillfails, Officerenderpending."
     }
   ],
   "remainingOrdered": [
     {
       "id": "GFX-NPC-FLOOR",
-      "status": "scoped_contact_pass_lifecycle_followup_online",
+      "status": "numeric_contact_refresh_pass_clear_garment_angle_pending",
       "severity": "P1 release gate",
-      "difficulty": 3,
-      "effortBasis": "Actual skinned-sole host-floor checker now fails for both NPCs; requires bounded production placement/pose correction and full witness rerun",
+      "difficulty": 1,
+      "effortBasis": "Existing fixture already renders currentactor; back camera blocked bycounter needs deterministic clear angle.",
       "files": [
         "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
         "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs",
         "src/scene/venue-scenes.ts"
       ],
       "repro": "Run strict office fixture and check-native-npc-foot-contact.mjs on full report; idle/interact/returned-idle, both sides, every authored sole vertex",
-      "evidence": "Actual 2NPC x3phase x2feet contact comparison: baseline69\u201377mm physical penetration; candidate minimum -0.03649mm, full144solepoint coverage and native reach valid. Both real social actions and34speechframes complete; jaw0 restored. Not full native acceptance.",
-      "suggestedFix": "Finish already-mounted canonical place/refresh hook and actual postsolve validity/failure handling, then rerun combined current factory on same real actors.",
+      "evidence": "Current5e81 independently16contact/reachrows plusrefresh PASS. Back screenshot counteroccludeslowerbody; cannot claim complete garment review.",
+      "suggestedFix": "Same remoteNPCfixture worker captures clearback/side with originalscene preserved; actualpostsolve fail returns false currentlyignored byhost and needs explicit final failure-path review.",
       "dependencies": [
         "current shared factory source and exact combined office fixture"
       ],
@@ -76,13 +86,75 @@
       ],
       "worker": "cloud head worker, dedicated fixture checkout",
       "state": "independent24baseline_candidate_rows_and2PNG_review_complete",
-      "source": "438a24111983a0634c6fa14eae86664222548fce",
+      "source": "5e81e24c45c0d590b726c449f67f6e71b4ee4e84",
       "ownerAllocation": "Existing cloud NPC worker: venue-scenes.ts canonical NPC place/mount/pose hooks and private floor helper only. Cloud Sol sole shared factory/wiring assembler.",
       "reviewRemaining": [
-        "refresh/reposition lifecycle",
-        "postsolve validity/failure path",
-        "newfactory rerun"
+        "clear front/back/side garment pixels",
+        "host failure handling review",
+        "final current successor and release evidence"
       ]
+    },
+    {
+      "id": "GFX-IDENTITY-FINAL",
+      "status": "required_not_passed_on_latest",
+      "severity": "P1 release gate",
+      "difficulty": 3,
+      "effortBasis": "Existing creator saved-look/coldcache fixture; must run exact final current source.",
+      "files": [
+        "evidence/graphics-loop/native-game-adoption-v1/creator-identity.ts",
+        "src/scene/body/provider.ts"
+      ],
+      "repro": "Creator -> game -> other-player views -> save/reload same seed/look/LOD; bothfamilies.",
+      "evidence": "Older V7 1737f5058e3c5e88e2a19d3b9f319c07536d5983 creatorPASS; cannot inherit onto current head/contact final.",
+      "suggestedFix": "Run exact finalcreator-game-otherplayer-save/reload/LOD views bothfamilies. Legacywhole-look lifecycle is compatibility evidence, not acceptance of promisedrich native rendering for those looks.",
+      "dependencies": [
+        "GFX-REST-IK",
+        "GFX-STAIRS",
+        "GFX-NPC-FLOOR"
+      ],
+      "hypotheses": [
+        "Current source preserves saved identity; latest complete final run pending."
+      ]
+    },
+    {
+      "id": "GFX-BYTES-FINAL",
+      "status": "required_not_passed_on_latest_combination",
+      "severity": "P1 release gate",
+      "difficulty": 3,
+      "effortBasis": "Reproducible full artifacts + bundling/cost savings, not lazy-load arithmetic.",
+      "files": [
+        "evidence/graphics-loop/native-game-adoption-v1/measure-native-distribution.mjs",
+        "scripts/download-budget.ts",
+        "package manifest/source seal"
+      ],
+      "repro": "Build exact final native+Integration combination and compare identical firstpaint/startup/fixedjourney/whole distributed files against C1.",
+      "evidence": "V2 qualified startup195441Br vs C1 195277 (+164), cap195600. Integration eec startup195571 (29headroom), so combined must be rebuilt and may exceed. Whole V2 graphics package +4929051Br. Later user permits moderate measured growth; hardcaps unchanged.",
+      "suggestedFix": "Measure exact assembled candidate, earn startup headroom by measured savings; no cap waiver from partial runs.",
+      "dependencies": [
+        "final accepted contact/head/identity source",
+        "Integration sole assembly"
+      ],
+      "hypotheses": [
+        "Native combined startup cap might fail; NOT measured current combined."
+      ]
+    },
+    {
+      "id": "GFX-PHONE-PERFORMANCE",
+      "status": "unverified_required",
+      "severity": "P1 final acceptance gate",
+      "difficulty": 3,
+      "effortBasis": "Physical supported devices and reproducible fulljourneys/dense scenes; hardware access required for final certification.",
+      "files": [
+        "docs/character-graphics-research-2026-10-08/QA.md",
+        "actual runtime performance/evidence harness"
+      ],
+      "repro": "Cold/warm fulljourneys, touchcontrols, input latency, frame pacing, memory/cleanup over repeat transitions on real supportedphones.",
+      "evidence": "HeadlessSwiftShader anddesktop390px layout only; no physicalphoneFPS certification.",
+      "suggestedFix": "Continue independent emulatedlayout/resource work; measure real supportedphones when available, never mark desktopemulation as phonepass.",
+      "dependencies": [
+        "playable final combinedslice"
+      ],
+      "hypotheses": []
     },
     {
       "id": "GFX-REST-IK",
@@ -95,17 +167,15 @@
         "src/scene/body/native/native-rest-contact-v15/native-rest-contact.ts"
       ],
       "repro": "Actual saved spring-bed; home-sleep navigation/entry in render-home-journey.mjs. Current failure upright partial lie.",
-      "evidence": {
-        "latestSource": "c8f412a2667662b26608be948f25a0eae29c7d25",
-        "rawReceiptSha256": "5f1236cfdc97ede4e4b272e3cea3988fdb542317c454ef0eec4eafc8210924e9",
-        "currentFail": "Uprightbedentry: floorIK after7.26mmlift and80mm cappedpelvislowering leaves147.48mm posterior penetration; bothfeetwithin3.59mm. StillFAIL."
-      },
-      "suggestedFix": "Existingonlineworker now evaluates coupled placement + floorIK candidates with root/bone rollback; preserve .35mroot/80mmpelvis/4mmcontact/384region bounds; original actual home journey plus tub/shower required.",
+      "evidence": "241 actualHome compilerPASS, renderFAIL attransition blend.678256; second151.739mm rootliftclearsbody butfeet7.642mm error limited. f798 differentfactory prelift60offsets noneclear, maxstep995.3ms andmid-entry8sec timeout despite oneframe157.389mmliftpassing.",
+      "suggestedFix": "Same online worker tests fresh geometry snapshot/reused transforms for translation-only candidates and posture-aware measured entry trajectory; remeasure afterIK. Preservecaps; do not extend timeout as performance pass.",
       "dependencies": [
-        "real FootSolveResult diagnostic bridge ba63c0bc262d4dacdc948a199330fb796d82cc62"
+        "Sol sole sharedfactory/runtime writer",
+        "actual host furniture support and unchangedacceptance"
       ],
       "hypotheses": [
-        "Iterative lift will converge within existing caps; unproven until actual full journey passes."
+        "Repeatedskinning/per-point worldmatrix recalculation dominatescandidate search.",
+        "Baseactor anchor interpolatesuprightbodyintomattress beforelying posture."
       ],
       "worker": "cloud rest",
       "newSourceFindings": [
@@ -123,7 +193,8 @@
           "status": "source_defect_verified_runtime_impact_pending",
           "suggestedFix": "Choose consistent correction units/frame, convert deltas explicitly and verify cumulative8cm budget across transformed root/parent and repeated solves"
         }
-      ]
+      ],
+      "source": "241b29a4a7572b1d19d9c382dfad600726a0064d"
     },
     {
       "id": "GFX-STAIRS",
@@ -159,51 +230,7 @@
         "remaining": "publish/rawreviewmatrix and actualbrowserhome"
       },
       "source": "d98203c6360011132109893076d7b1f07ea8f328",
-      "sourceReviewRemaining": "Restore precontacthip vs spentworldbudget interaction has targeted runtime hypothesis pending."
-    },
-    {
-      "id": "GFX-IDENTITY-FINAL",
-      "status": "required_not_passed_on_latest",
-      "severity": "P1 release gate",
-      "difficulty": 3,
-      "effortBasis": "Existing creator saved-look/coldcache fixture; must run exact final current source.",
-      "files": [
-        "evidence/graphics-loop/native-game-adoption-v1/creator-identity.ts",
-        "src/scene/body/provider.ts"
-      ],
-      "repro": "Creator -> game -> other-player views -> save/reload same seed/look/LOD; bothfamilies.",
-      "evidence": "Older V7 1737f5058e3c5e88e2a19d3b9f319c07536d5983 creatorPASS; cannot inherit onto current head/contact final.",
-      "suggestedFix": "Run exact combined candidate and inspect all identity views; keep unsupported complete looks whole-lifecycle legacy until actually supported.",
-      "dependencies": [
-        "GFX-REST-IK",
-        "GFX-STAIRS",
-        "GFX-NPC-FLOOR"
-      ],
-      "hypotheses": [
-        "Current source preserves saved identity; latest complete final run pending."
-      ]
-    },
-    {
-      "id": "GFX-BYTES-FINAL",
-      "status": "required_not_passed_on_latest_combination",
-      "severity": "P1 release gate",
-      "difficulty": 3,
-      "effortBasis": "Reproducible full artifacts + bundling/cost savings, not lazy-load arithmetic.",
-      "files": [
-        "evidence/graphics-loop/native-game-adoption-v1/measure-native-distribution.mjs",
-        "scripts/download-budget.ts",
-        "package manifest/source seal"
-      ],
-      "repro": "Build exact final native+Integration combination and compare identical firstpaint/startup/fixedjourney/whole distributed files against C1.",
-      "evidence": "V2 qualified startup195441Br vs C1 195277 (+164), cap195600. Integration eec startup195571 (29headroom), so combined must be rebuilt and may exceed. Whole V2 graphics package +4929051Br. Later user permits moderate measured growth; hardcaps unchanged.",
-      "suggestedFix": "Measure exact assembled candidate, earn startup headroom by measured savings; no cap waiver from partial runs.",
-      "dependencies": [
-        "final accepted contact/head/identity source",
-        "Integration sole assembly"
-      ],
-      "hypotheses": [
-        "Native combined startup cap might fail; NOT measured current combined."
-      ]
+      "sourceReviewRemaining": "Actual finalbrowser journey; nonzero publicpelvis repeat ownerPASS rawpublication/reviewpending."
     },
     {
       "id": "GFX-WARDROBE-LOOK-COVERAGE",
@@ -249,24 +276,6 @@
         "WORLD geography ownership"
       ],
       "hypotheses": []
-    },
-    {
-      "id": "GFX-PHONE-PERFORMANCE",
-      "status": "unverified_required",
-      "severity": "P1 final acceptance gate",
-      "difficulty": 3,
-      "effortBasis": "Physical supported devices and reproducible fulljourneys/dense scenes; hardware access required for final certification.",
-      "files": [
-        "docs/character-graphics-research-2026-10-08/QA.md",
-        "actual runtime performance/evidence harness"
-      ],
-      "repro": "Cold/warm fulljourneys, touchcontrols, input latency, frame pacing, memory/cleanup over repeat transitions on real supportedphones.",
-      "evidence": "HeadlessSwiftShader anddesktop390px layout only; no physicalphoneFPS certification.",
-      "suggestedFix": "Continue independent emulatedlayout/resource work; measure real supportedphones when available, never mark desktopemulation as phonepass.",
-      "dependencies": [
-        "playable final combinedslice"
-      ],
-      "hypotheses": []
     }
   ],
   "coordination": {
@@ -276,7 +285,7 @@
     "productionUpload": "WORLD"
   },
   "evidenceRoot": "/Users/anthonyakpan/Desktop/joinallworld/evidence/graphics-loop/native-game-adoption-v1",
-  "currentProof": "cloud-head-independent-review-v1.json",
+  "currentProof": "cloud-combined-241b29a/source-independent-review.json",
   "historicalExperiments": "Graphics dashboard old8fixrecords/olderPNG labelled prototypes; superseded blockers must not be re-added solely from those records.",
   "latestStairTrial": {
     "commit": "d98203c6360011132109893076d7b1f07ea8f328",
@@ -285,16 +294,13 @@
     "receipt": "cloud-stair-trial-d98203c/independent-review.json",
     "actualHomeBrowser": "pending"
   },
-  "updatedAt": "2026-10-10T00:44:35.951974+00:00",
+  "updatedAt": "2026-10-10T01:25:15.931125+00:00",
   "latestRunResult": {
-    "run": 38008067182,
-    "status": "completed",
-    "conclusion": "failure",
-    "officeJob": 114081383862,
-    "office": "success",
-    "homeJob": 114081384025,
-    "home": "failure"
+    "run": 38012825418,
+    "status": "in_progress",
+    "office": "renderin_progress;fulltypecheck andstrictcompilerPASS",
+    "home": "compilerPASS;actualrenderFAIL7.642mm"
   },
-  "todayPriority": "Properly clothed, rendered, animated and interacting player + NPC phase deployed today, with existing09AMLagos hard cutoff and soleWORLDuploader.",
-  "latestReceiptPublication": "54f92ae63d5aa27609ff9576946d91a675318744"
+  "todayPriority": "Properly clothed, rendered, animated and interacting player and NPC phase deployed today; no09AM clock cutoff; stop new work at4% remaining and preserve source/evidence/GitHub checkpoints.",
+  "latestReceiptPublication": "51bb30d059cfba5129c92a2df56e6775c645a40d"
 }

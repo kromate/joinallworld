@@ -1,0 +1,55 @@
+{
+  "source": "f798c7fe914990d6f27623c2e144149b8df54a35",
+  "reviewedAt": "2026-10-10T01:20:05.528824+00:00",
+  "pins": {
+    "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts": "542032d3645cbcf9b581e643c4777b64933fe28d0200e7842326c80a3b37246c",
+    "src/scene/body/native/native-rest-contact-v15/native-rest-contact.ts": "2e8e55be0020bb9d8b86e0173bac35fde453b1bcc665f761e75427fc02db575e",
+    "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts": "c918c5e07a107469b2c772268f6ad4816f9a18690bc77e7ff83b6e6cec710df1"
+  },
+  "changedOwnedFiles": 1,
+  "actualRemoteRun": "remote-1791594778761",
+  "rawReceiptPublication": "pending; actual remote command outputs independently read",
+  "compactEvidenceSha256": "7cc27d05af8ad365190748b831a313a3798056d60e2ff0b085c86112ab6a0663",
+  "runExitCode": 1,
+  "journey": "failed; phase enter, no stage captures",
+  "stepTiming": {
+    "count": 73,
+    "totalMs": 7759.1,
+    "maxMs": 995.3
+  },
+  "lastFrameProbe": {
+    "calls": 67,
+    "durationMs": 568,
+    "surfaceQueries": 86832,
+    "capPerRegion": 384
+  },
+  "boundedXZTrials": {
+    "count": 60,
+    "bodyClearBeforeSolve": 0
+  },
+  "singleFrameVerticalTrial": {
+    "accepted": true,
+    "rootLiftM": 0.15738887135255086,
+    "posteriorGapM": -0.0031634307478717316,
+    "leftSoleGapM": 0.00028336520341934457,
+    "rightSoleGapM": 0.0006840729614222829
+  },
+  "hypotheses": [
+    "Repeated CPU skinning and world-matrix updates dominate immutable translation-only trials; snapshot current geometry once and measure equivalent candidate coordinates, fresh post-IK proof.",
+    "Runtime anchor interpolates upright body into mattress before posture is lying; measured posture-aware trajectory may avoid incompatible floor/bed constraints.",
+    "Per-point static-surface acceptance callback recomputes group inverse world matrix; prepare per-frame transform and prove query parity.",
+    "Diagnostic snapshots add cost; compare enabled/disabled instrumentation without removing geometric rejection."
+  ],
+  "acceptance": [
+    "Actual home journey completes all enter/use/exit captures and actions, both body families.",
+    "Unchanged384 samples,0.35m root correction,0.08m pelvis budget,4mm actual contact and full finite coverage.",
+    "Measured frame/input costs meet QA; extending fixture timeout alone is not performance acceptance.",
+    "Same exact combined source passes compiler, identity, bytes/runtime and clear garment angles before release."
+  ],
+  "references": [
+    "https://github.com/mrdoob/three.js/blob/dev/src/core/Object3D.js",
+    "https://github.com/mrdoob/three.js/blob/dev/src/objects/SkinnedMesh.js"
+  ],
+  "status": "diagnostic candidate unaccepted; native undeployed",
+  "nextOwner": "existing cloud Sol shared factory/runtime writer and existing Luna rest worker; no local implementation"
+}

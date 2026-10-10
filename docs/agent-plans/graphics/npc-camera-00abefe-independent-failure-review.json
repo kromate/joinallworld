@@ -1,0 +1,466 @@
+{
+  "source": "00abefea746b8263eab0482ebea0e6961481da77",
+  "checks": {
+    "firstFrameThenCrowdStart": true,
+    "webgl2": true,
+    "lifeAtOffice": true,
+    "realNpcList": true,
+    "npcActionCards": true,
+    "nativeCrowdAtLeastTwo": true,
+    "noProceduralCrowdFallback": true,
+    "nativeActorsExactGeometry": true,
+    "nativePlayerThroughStandIn": true,
+    "sameCreatorSeedAndSavedLook": true,
+    "walkSample": true,
+    "closeupReportsActualBodyPose": true,
+    "deterministicWalkPhases": true,
+    "closeupsFrameWholeActor": false,
+    "closeupsRenderActorPixels": false,
+    "closeupsSavedDirectCanvasPixels": true,
+    "npcPlayerSupportedPoseCameraMatrix": false,
+    "cameraSideControlsSaved": false,
+    "interactionSample": true,
+    "realNpcActivityCompleted": false,
+    "realNpcPoseFollowsLifeAction": false,
+    "playerContact": true,
+    "unsupportedAppearanceUsesWholeLifecycleLegacyAndDisposes": true,
+    "afterUnsupportedStillReady": true,
+    "mobileLayoutSingleColumn": true,
+    "dapoRealActivityCompleted": true,
+    "snapshotsHaveNoRuntimeErrors": true,
+    "teardownReleasesActorsAndContext": true,
+    "consoleClean": true
+  },
+  "failedChecks": [
+    "closeupsFrameWholeActor",
+    "closeupsRenderActorPixels",
+    "npcPlayerSupportedPoseCameraMatrix",
+    "cameraSideControlsSaved",
+    "realNpcActivityCompleted",
+    "realNpcPoseFollowsLifeAction"
+  ],
+  "failedRows": [
+    {
+      "actor": "mrs-okafor",
+      "mode": "idle",
+      "view": "back",
+      "actualPose": "idle",
+      "poseMatches": true,
+      "wholeActorVisible": false,
+      "actorPixelContrast": 122,
+      "actorRegionContrast": {
+        "head": 143,
+        "torso": 122,
+        "feet": 93
+      },
+      "ray": {
+        "clearLine": true,
+        "bodyCenterLineClear": true,
+        "lowerBodyLineClear": false,
+        "targets": [
+          {
+            "name": "mixamorigLeftLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 4.380191827062959
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored office suit",
+              "distance": 4.271871102386692
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigLeftFoot",
+            "clearLine": false,
+            "firstActorHit": {
+              "name": "Authored footwear shoes01",
+              "distance": 4.5266890076274535
+            },
+            "nearestOccluder": {
+              "name": "solid",
+              "distance": 2.668953495970254
+            }
+          },
+          {
+            "name": "mixamorigRightFoot",
+            "clearLine": false,
+            "firstActorHit": {
+              "name": "Authored footwear shoes01",
+              "distance": 4.669973716857332
+            },
+            "nearestOccluder": {
+              "name": "solid",
+              "distance": 2.6341220959697735
+            }
+          }
+        ]
+      }
+    },
+    {
+      "actor": "mrs-okafor",
+      "mode": "interact",
+      "view": "front",
+      "actualPose": "interact",
+      "poseMatches": true,
+      "wholeActorVisible": true,
+      "actorPixelContrast": 16,
+      "actorRegionContrast": {
+        "head": 79,
+        "torso": 16,
+        "feet": 196
+      },
+      "ray": {
+        "clearLine": true,
+        "bodyCenterLineClear": true,
+        "lowerBodyLineClear": true,
+        "targets": [
+          {
+            "name": "mixamorigLeftLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 3.4644828090795774
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 3.938936888124482
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigLeftFoot",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored footwear shoes01",
+              "distance": 3.5225921191372036
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightFoot",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored footwear shoes01",
+              "distance": 4.2212293712072135
+            },
+            "nearestOccluder": null
+          }
+        ]
+      }
+    },
+    {
+      "actor": "mrs-okafor",
+      "mode": "interact",
+      "view": "profile",
+      "actualPose": "interact",
+      "poseMatches": true,
+      "wholeActorVisible": false,
+      "actorPixelContrast": 104,
+      "actorRegionContrast": {
+        "head": 176,
+        "torso": 104,
+        "feet": 191
+      },
+      "ray": {
+        "clearLine": true,
+        "bodyCenterLineClear": true,
+        "lowerBodyLineClear": false,
+        "targets": [
+          {
+            "name": "mixamorigLeftLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored office suit",
+              "distance": 3.9133015396071356
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 4.005408037813798
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigLeftFoot",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 4.049091280659823
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightFoot",
+            "clearLine": false,
+            "firstActorHit": null,
+            "nearestOccluder": null
+          }
+        ]
+      }
+    },
+    {
+      "actor": "mrs-okafor",
+      "mode": "interact",
+      "view": "back",
+      "actualPose": "interact",
+      "poseMatches": true,
+      "wholeActorVisible": false,
+      "actorPixelContrast": 137,
+      "actorRegionContrast": {
+        "head": 137,
+        "torso": 137,
+        "feet": 93
+      },
+      "ray": {
+        "clearLine": true,
+        "bodyCenterLineClear": true,
+        "lowerBodyLineClear": false,
+        "targets": [
+          {
+            "name": "mixamorigLeftLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 4.329804051271193
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored office suit",
+              "distance": 4.273196333814389
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigLeftFoot",
+            "clearLine": false,
+            "firstActorHit": null,
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightFoot",
+            "clearLine": false,
+            "firstActorHit": null,
+            "nearestOccluder": {
+              "name": "solid",
+              "distance": 2.597377567690375
+            }
+          }
+        ]
+      }
+    },
+    {
+      "actor": "mrs-okafor",
+      "mode": "returned-idle",
+      "view": "front",
+      "actualPose": "interact",
+      "poseMatches": false,
+      "wholeActorVisible": true,
+      "actorPixelContrast": 16,
+      "actorRegionContrast": {
+        "head": 78,
+        "torso": 16,
+        "feet": 196
+      },
+      "ray": {
+        "clearLine": true,
+        "bodyCenterLineClear": true,
+        "lowerBodyLineClear": true,
+        "targets": [
+          {
+            "name": "mixamorigLeftLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 3.4644828090795774
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 3.938936888124482
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigLeftFoot",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored footwear shoes01",
+              "distance": 3.5225921191372036
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightFoot",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored footwear shoes01",
+              "distance": 4.2212293712072135
+            },
+            "nearestOccluder": null
+          }
+        ]
+      }
+    },
+    {
+      "actor": "mrs-okafor",
+      "mode": "returned-idle",
+      "view": "back",
+      "actualPose": "interact",
+      "poseMatches": false,
+      "wholeActorVisible": false,
+      "actorPixelContrast": 137,
+      "actorRegionContrast": {
+        "head": 137,
+        "torso": 137,
+        "feet": 93
+      },
+      "ray": {
+        "clearLine": true,
+        "bodyCenterLineClear": true,
+        "lowerBodyLineClear": false,
+        "targets": [
+          {
+            "name": "mixamorigLeftLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Body",
+              "distance": 4.329804051271193
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored office suit",
+              "distance": 4.273196333814389
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigLeftFoot",
+            "clearLine": false,
+            "firstActorHit": null,
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightFoot",
+            "clearLine": false,
+            "firstActorHit": null,
+            "nearestOccluder": {
+              "name": "solid",
+              "distance": 2.597377567690375
+            }
+          }
+        ]
+      }
+    },
+    {
+      "actor": "dapo",
+      "mode": "returned-idle",
+      "view": "profile",
+      "actualPose": "interact",
+      "poseMatches": false,
+      "wholeActorVisible": true,
+      "actorPixelContrast": 165,
+      "actorRegionContrast": {
+        "head": 211,
+        "torso": 165,
+        "feet": 87
+      },
+      "ray": {
+        "clearLine": true,
+        "bodyCenterLineClear": true,
+        "lowerBodyLineClear": true,
+        "targets": [
+          {
+            "name": "mixamorigLeftLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored office suit",
+              "distance": 3.8498095426982917
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightLeg",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored office suit",
+              "distance": 3.4462824151103515
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigLeftFoot",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored office suit",
+              "distance": 4.099740256602598
+            },
+            "nearestOccluder": null
+          },
+          {
+            "name": "mixamorigRightFoot",
+            "clearLine": true,
+            "firstActorHit": {
+              "name": "Authored office suit",
+              "distance": 3.8235901762943727
+            },
+            "nearestOccluder": null
+          }
+        ]
+      }
+    }
+  ],
+  "npc": {
+    "mrs": {
+      "pose": "interact",
+      "after": null,
+      "started": {
+        "ok": true,
+        "code": "started"
+      },
+      "completed": false,
+      "response": null,
+      "responseNames": null
+    },
+    "dapo": {
+      "pose": "interact",
+      "after": "idle",
+      "started": {
+        "ok": true,
+        "code": "started"
+      },
+      "completed": true
+    }
+  },
+  "sourceCommandId": "exec-ab622ed6-e335-4955-b0d1-6ba5c6878c09",
+  "status": "fail",
+  "acceptance": "No whole clothing or interaction coverage acceptance; narrower241 pass retained as historical scoped evidence",
+  "reviewedAt": "2026-10-10T01:53:18Z"
+}

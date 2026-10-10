@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import type { FootContact } from '../../foot-contact.ts';
+import type { FootContact, FootSolveResult } from '../../foot-contact.ts';
 import {
   type NativeRestContactProbe,
   type NativeRestContactMeasure,
@@ -38,7 +38,7 @@ export interface NativeRestPoseAdapter {
     support: NativePropRestSupport,
     applyMappedSourceFrame: () => void,
     sampleParentLocalContacts: () => readonly FootContact[],
-    solveHostFeet?: (surface: NativeRestPropSurface, floorY?: number) => void,
+    solveHostFeet?: (surface: NativeRestPropSurface, floorY?: number) => FootSolveResult | void,
     phase?: 'still' | 'transition',
     anchorBlend?: number,
   ): NativeRestPoseResult;
@@ -51,6 +51,7 @@ const CONTACT_GAP_METRES = 0.018;
 const CONTACT_TARGET_GAP_METRES = 0.0165;
 const MAX_PENETRATION_METRES = 0.004;
 const MAX_REST_ROOT_SHIFT_METRES = 0.35;
+const MAX_UPRIGHT_LIFT_SOLVES = 4;
 const MAX_LIE_SPINE_ALIGNMENT_DEGREES = 12;
 const MAX_LIE_NECK_ALIGNMENT_DEGREES = 25;
 const MAX_LIE_HIPS_TILT_DEGREES = 90;
@@ -70,6 +71,32 @@ function worldContacts(root: THREE.Object3D, contacts: readonly FootContact[]): 
     return Object.freeze({ ...contact, x: point.x, y: point.y, z: point.z,
       ...(points ? { points: Object.freeze(points) } : {}) });
   });
+}
+
+interface BonePoseState {
+  readonly bone: THREE.Bone;
+  readonly position: THREE.Vector3;
+  readonly quaternion: THREE.Quaternion;
+  readonly scale: THREE.Vector3;
+}
+
+function captureBonePose(root: THREE.Object3D): readonly BonePoseState[] {
+  const pose: BonePoseState[] = [];
+  root.traverse((node) => {
+    if (node instanceof THREE.Bone) pose.push({ bone: node, position: node.position.clone(),
+      quaternion: node.quaternion.clone(), scale: node.scale.clone() });
+  });
+  return Object.freeze(pose);
+}
+
+function restoreBonePose(pose: readonly BonePoseState[], root: THREE.Object3D): void {
+  for (const saved of pose) {
+    saved.bone.position.copy(saved.position);
+    saved.bone.quaternion.copy(saved.quaternion);
+    saved.bone.scale.copy(saved.scale);
+  }
+  root.updateWorldMatrix(true, false);
+  root.updateMatrixWorld(true);
 }
 
 function requiredRegions(pose: NativeRestPose, measure: NativeRestContactMeasure): readonly number[] {
@@ -213,6 +240,7 @@ export function createNativeRestPoseAdapter(
   // Rest-bend candidates are cached per registered prop and revalidated against each
   // newly mapped frame before reuse. This keeps repeated rest updates out of the search.
   const lieAlignmentCache = new Map<string, { hips: number; spine: number; neck: number }>();
+  let lastLiftTrial: Readonly<Record<string, unknown>> | null = null;
 
   function mappedFrameWitness(): Readonly<Record<string, unknown>> {
     root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
@@ -231,7 +259,46 @@ export function createNativeRestPoseAdapter(
   }
 
   function evidence(surface: NativeRestPropSurface, measure: NativeRestContactMeasure, mappedFrame: Readonly<Record<string, unknown>>, correction: number) {
-    return JSON.stringify({ propId: surface.id, pose: surface.pose, mappedFrame, rootWorldCorrection: correction, measurement: measure });
+    return JSON.stringify({ propId: surface.id, pose: surface.pose, mappedFrame, rootWorldCorrection: correction, measurement: measure, liftTrial: lastLiftTrial });
+  }
+
+  function liftTrialSnapshot(floorY: number, measure: NativeRestContactMeasure,
+    sampleContacts: () => readonly FootContact[], footSolveResult?: FootSolveResult): Readonly<Record<string, unknown>> {
+    root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    const bones = ['mixamorigHips', 'mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigLeftFoot',
+      'mixamorigRightUpLeg', 'mixamorigRightLeg', 'mixamorigRightFoot'];
+    const positions = new Map<string, THREE.Vector3>();
+    for (const name of bones) {
+      const bone = root.getObjectByName(name);
+      if (bone instanceof THREE.Bone) positions.set(name, bone.getWorldPosition(new THREE.Vector3()));
+    }
+    const segmentLengths = (side: 'Left' | 'Right') => {
+      const hip = positions.get(`mixamorig${side}UpLeg`), knee = positions.get(`mixamorig${side}Leg`), ankle = positions.get(`mixamorig${side}Foot`);
+      return hip && knee && ankle ? Object.freeze({ upper: hip.distanceTo(knee), lower: knee.distanceTo(ankle) }) : null;
+    };
+    const footGaps = new Map<'left' | 'right', number[]>();
+    for (const contact of worldContacts(root, sampleContacts())) {
+      const gaps = footGaps.get(contact.side) ?? [];
+      gaps.push(...(contact.points ?? [contact]).map((point) => point.y - floorY));
+      footGaps.set(contact.side, gaps);
+    }
+    const feet = Object.fromEntries((['left', 'right'] as const).map((side) => {
+      const gaps = footGaps.get(side) ?? [];
+      return [side, Object.freeze({ sampled: gaps.length,
+        minimumGap: gaps.length ? Math.min(...gaps) : null,
+        maximumGap: gaps.length ? Math.max(...gaps) : null,
+        withinFourMillimetres: gaps.filter((gap) => Math.abs(gap) <= MAX_PENETRATION_METRES).length })];
+    }));
+    const solve = footSolveResult ? Object.freeze({ corrected: footSolveResult.corrected,
+      maxError: footSolveResult.maxError, limited: footSolveResult.limited,
+      ...('diagnostics' in footSolveResult ? { diagnostics: footSolveResult.diagnostics } : {}) }) : null;
+    return Object.freeze({ floorY, rootWorld: Object.freeze(root.getWorldPosition(new THREE.Vector3()).toArray()),
+      hipsWorld: positions.get('mixamorigHips')?.toArray() ?? null,
+      segmentLengths: Object.freeze({ left: segmentLengths('Left'), right: segmentLengths('Right') }),
+      regions: Object.freeze(Object.fromEntries(Object.entries(measure.regions).map(([name, region]) =>
+        [name, Object.freeze({ sampled: region.sampled, minimumGap: region.minimumGap, maximumGap: region.maximumGap,
+          minimumWitness: region.minimumWitness, maximumWitness: region.maximumWitness })]))),
+      feet: Object.freeze(feet), footSolveResult: solve });
   }
 
   function shiftRootWorldY(delta: number): void {
@@ -486,14 +553,17 @@ export function createNativeRestPoseAdapter(
     surface: NativeRestPropSurface,
     floorY: number,
     sampleContacts: () => readonly FootContact[],
-    solveHostFeet?: (surface: NativeRestPropSurface, floorY?: number) => void,
+    solveHostFeet: ((surface: NativeRestPropSurface, floorY?: number) => FootSolveResult | void) | undefined,
+    mappedBones: readonly BonePoseState[],
+    mappedRootLocal: THREE.Vector3,
+    mappedRootWorld: THREE.Vector3,
+    mappedFrame: Readonly<Record<string, unknown>>,
+    phase: 'still' | 'transition',
+    anchorBlend: number,
   ): readonly [number, number] {
-    root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
-    const rootStart = root.getWorldPosition(new THREE.Vector3());
-    const localStart = root.position.clone();
     const parent = root.parent;
     function setOffset(dx: number, dz: number): void {
-      const target = rootStart.clone().add(new THREE.Vector3(dx, 0, dz));
+      const target = mappedRootWorld.clone().add(new THREE.Vector3(dx, 0, dz));
       if (parent) { parent.updateWorldMatrix(true, false); parent.worldToLocal(target); }
       root.position.copy(target);
       root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
@@ -510,6 +580,15 @@ export function createNativeRestPoseAdapter(
       return gaps.length > 0 && gaps.every((gap) => Number.isFinite(gap) && gap >= -MAX_PENETRATION_METRES)
         && gaps.some((gap) => Math.abs(gap) <= MAX_PENETRATION_METRES);
     }
+    function restoreMappedPose(): void {
+      restoreBonePose(mappedBones, root);
+      root.position.copy(mappedRootLocal);
+      root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    }
+    function safeTrialSnapshot(measurement: NativeRestContactMeasure): Readonly<Record<string, unknown>> {
+      try { return liftTrialSnapshot(floorY, measurement, sampleContacts); }
+      catch (error) { return Object.freeze({ snapshotError: error instanceof Error ? error.message : String(error) }); }
+    }
     const step = 0.08;
     const cells = Math.floor(MAX_REST_ROOT_SHIFT_METRES / step);
     const candidates: Array<readonly [number, number]> = [];
@@ -518,24 +597,75 @@ export function createNativeRestPoseAdapter(
       if ((dx !== 0 || dz !== 0) && Math.hypot(dx, dz) <= MAX_REST_ROOT_SHIFT_METRES + 1e-9) candidates.push([dx, dz]);
     }
     candidates.sort((a, b) => a[0] ** 2 + a[1] ** 2 - b[0] ** 2 - b[1] ** 2);
+    const attempts: Readonly<Record<string, unknown>>[] = [];
+    let lastSolverError: unknown;
+    let hadSolverError = false;
     for (const [dx, dz] of candidates) {
+      restoreMappedPose();
       setOffset(dx, dz);
       let candidate = measure(surface, sampleContacts);
-      if (!bodyClear(candidate) || !feetPlanted()) continue;
-      // Re-run host IK only for a geometrically clear candidate, then accept only
-      // if the actual sampled prop gaps and floor contacts remain valid afterward.
-      solveHostFeet?.(surface, floorY);
-      candidate = measure(surface, sampleContacts);
-      if (bodyClear(candidate) && feetPlanted()) {
-        const end = root.getWorldPosition(new THREE.Vector3());
-        return Object.freeze([end.x - rootStart.x, end.z - rootStart.z] as const);
+      const bodyClearBeforeSolve = bodyClear(candidate);
+      if (!bodyClearBeforeSolve) {
+        attempts.push(Object.freeze({ dx, dz, bodyClearBeforeSolve,
+          before: liftTrialSnapshot(floorY, candidate, sampleContacts), accepted: false }));
+        continue;
       }
+      const before = liftTrialSnapshot(floorY, candidate, sampleContacts);
+      // Mapped entry frames can have floating soles before IK. For each offset
+      // whose actual posterior samples clear the bed, run the unchanged bounded
+      // host solver and judge the resulting body and sole samples afterward.
+      let footSolveResult: FootSolveResult | void;
+      let planted: boolean;
+      try {
+        footSolveResult = solveHostFeet?.(surface, floorY);
+        candidate = measure(surface, sampleContacts);
+        planted = feetPlanted();
+      } catch (error) {
+        let failedMeasurement = candidate;
+        let measurementError: string | undefined;
+        try { failedMeasurement = measure(surface, sampleContacts); }
+        catch (measureError) { measurementError = measureError instanceof Error ? measureError.message : String(measureError); }
+        attempts.push(Object.freeze({ dx, dz, bodyClearBeforeSolve,
+          before,
+          after: safeTrialSnapshot(failedMeasurement), accepted: false,
+          solverError: error instanceof Error ? error.message : String(error),
+          ...(measurementError ? { measurementError } : {}) }));
+        lastSolverError = error;
+        hadSolverError = true;
+        restoreMappedPose();
+        continue;
+      }
+      const clear = bodyClear(candidate);
+      attempts.push(Object.freeze({ dx, dz, bodyClearBeforeSolve,
+        before,
+        after: liftTrialSnapshot(floorY, candidate, sampleContacts,
+          footSolveResult && typeof footSolveResult === 'object' ? footSolveResult : undefined),
+        bodyRegionsClear: clear, floorFeetClearAndPlanted: planted, accepted: clear && planted }));
+      if (clear && planted) {
+        const end = root.getWorldPosition(new THREE.Vector3());
+        lastLiftTrial = Object.freeze({ propId: surface.id, pose: surface.pose, phase, anchorBlend,
+          mappedFrame, search: 'upright-lie-xz-egress', attempts: Object.freeze(attempts), accepted: true,
+          selectedOffset: Object.freeze([dx, dz]) });
+        const diagnostics = root.userData.nativeRestProbeDiagnostics;
+        if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
+          diagnostics.liftTrial = lastLiftTrial;
+        }
+        return Object.freeze([end.x - mappedRootWorld.x, end.z - mappedRootWorld.z] as const);
+      }
+      restoreMappedPose();
     }
-    root.position.copy(localStart);
-    root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    restoreMappedPose();
+    lastLiftTrial = Object.freeze({ propId: surface.id, pose: surface.pose, phase, anchorBlend,
+      mappedFrame, search: 'upright-lie-xz-egress', attempts: Object.freeze(attempts), accepted: false,
+      ...(hadSolverError ? { solverError: lastSolverError instanceof Error ? lastSolverError.message : String(lastSolverError) } : {}) });
+    const diagnostics = root.userData.nativeRestProbeDiagnostics;
+    if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
+      diagnostics.liftTrial = lastLiftTrial;
+    }
+    if (hadSolverError) throw lastSolverError;
     solveHostFeet?.(surface, floorY);
     const finalMeasurement = measure(surface, sampleContacts);
-    throw new Error(`Native lie cannot clear measured bed geometry during upright entry within ${MAX_REST_ROOT_SHIFT_METRES} m while preserving planted floor contacts; evidence=${evidence(surface, finalMeasurement, mappedFrameWitness(), 0)}`);
+    throw new Error(`Native lie cannot clear measured bed geometry during upright entry within ${MAX_REST_ROOT_SHIFT_METRES} m while preserving planted floor contacts; evidence=${evidence(surface, finalMeasurement, mappedFrame, 0)}`);
   }
 
   function minimumNonpenetratingLift(measurement: NativeRestContactMeasure): number {
@@ -576,6 +706,7 @@ export function createNativeRestPoseAdapter(
       };
     },
     apply(pose, support, applyMappedSourceFrame, sampleParentLocalContacts, solveHostFeet, phase = 'still', anchorBlend = 1) {
+      lastLiftTrial = null;
       if (disposed) throw new Error('Native rest adapter is disposed');
       // Opt-in, bounded last-apply diagnostics for remote performance reports. This
       // replaces one fixed-size object per call and is absent from normal runtime/UI.
@@ -620,36 +751,92 @@ export function createNativeRestPoseAdapter(
           : pose === 'soak' ? !upright && anchorBlend >= 0.75 : anchorBlend >= 0.75;
         // Until the body actually reaches the prop, the floor still owns its planted foot.
         const floorContactPhase = upright || (pose === 'lie' && !propContactPhase);
+        const mappedContactBones = pose === 'lie' && floorContactPhase ? captureBonePose(root) : Object.freeze([]);
+        const mappedContactRootLocal = root.position.clone();
+        root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+        const mappedContactRootWorld = root.getWorldPosition(new THREE.Vector3());
         if (floorContactPhase) {
-          solveHostFeet?.(support.surface, floorY!);
-          measurement = measure(support.surface, sampleParentLocalContacts);
           // The mapped upright/partial-lie frame can place the clothed posterior
           // through the mattress even when its Hips joint is at the bed surface.
-          // Try the minimum translation implied by the measured regional gaps;
-          // retain it only if all sampled back regions clear and actual shoes stay
-          // planted after the host re-solves floor contact. Otherwise restore the
-          // exact frame and use the existing bounded XZ egress/failure path.
-          if (pose === 'lie' && (['pelvis-back', 'torso-back', 'head-back'] as const).some((region) => {
+          // Measure once before solving feet. If a vertical lift is needed, each
+          // bounded candidate starts from this exact mapped bone pose and runs
+          // floor IK once; repeated solves on an already-IK'd pose compound limb
+          // changes and can move the clothed pelvis after the prior measurement.
+          const needsLift = pose === 'lie' && (['pelvis-back', 'torso-back', 'head-back'] as const).some((region) => {
             const sample = measurement.regions[region];
             return sample.sampled > 0 && sample.minimumGap < -MAX_PENETRATION_METRES;
-          })) {
-            const lift = Object.values(measurement.regions).every((sample) =>
-              sample.sampled === 0 || Number.isFinite(sample.minimumGap))
-              ? minimumNonpenetratingLift(measurement) : Number.POSITIVE_INFINITY;
-            if (lift > 0 && lift <= MAX_REST_ROOT_SHIFT_METRES) {
-              const rootLocal = root.position.clone();
-              shiftRootWorldY(lift);
-              solveHostFeet?.(support.surface, floorY!);
-              const liftedMeasurement = measure(support.surface, sampleParentLocalContacts);
-              if (bodyRegionsClear(liftedMeasurement) && floorFeetClearAndPlanted(floorY!, sampleParentLocalContacts)) {
-                appliedRootCorrection = lift;
-                measurement = liftedMeasurement;
-              } else {
+          });
+          if (!needsLift) {
+            solveHostFeet?.(support.surface, floorY!);
+            measurement = measure(support.surface, sampleParentLocalContacts);
+          } else {
+            const rootLocal = mappedContactRootLocal.clone();
+            const mappedBones = mappedContactBones;
+            const attempts: Readonly<Record<string, unknown>>[] = [];
+            let cumulativeLift = 0;
+            let trialMeasurement = measurement;
+            let trialFeetPlanted = false;
+            let accepted = false;
+            for (let pass = 0; pass < MAX_UPRIGHT_LIFT_SOLVES; pass++) {
+              const requiredLift = minimumNonpenetratingLift(trialMeasurement);
+              const targetLift = pass === 0 ? requiredLift : cumulativeLift + requiredLift;
+              if (!(requiredLift > 0) || targetLift > MAX_REST_ROOT_SHIFT_METRES) break;
+              restoreBonePose(mappedBones, root);
+              root.position.copy(rootLocal);
+              root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+              shiftRootWorldY(targetLift);
+              const preSolveMeasurement = measure(support.surface, sampleParentLocalContacts);
+              const before = liftTrialSnapshot(floorY!, preSolveMeasurement, sampleParentLocalContacts);
+              let footSolveResult: FootSolveResult | void;
+              try {
+                footSolveResult = solveHostFeet?.(support.surface, floorY!);
+              } catch (error) {
+                const failedMeasurement = measure(support.surface, sampleParentLocalContacts);
+                const failed = liftTrialSnapshot(floorY!, failedMeasurement, sampleParentLocalContacts);
+                attempts.push(Object.freeze({ requestedLift: targetLift - cumulativeLift, cumulativeLift: targetLift,
+                  before, after: failed, solverError: error instanceof Error ? error.message : String(error),
+                  bodyRegionsClear: bodyRegionsClear(failedMeasurement), floorFeetClearAndPlanted: floorFeetClearAndPlanted(floorY!, sampleParentLocalContacts) }));
+                lastLiftTrial = Object.freeze({ propId: support.surface.id, pose, phase, anchorBlend,
+                  mappedFrame, attempts: Object.freeze(attempts), cumulativeLift: targetLift,
+                  accepted: false, solverError: error instanceof Error ? error.message : String(error) });
+                const diagnostics = root.userData.nativeRestProbeDiagnostics;
+                if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
+                  diagnostics.liftTrial = lastLiftTrial;
+                }
+                restoreBonePose(mappedBones, root);
                 root.position.copy(rootLocal);
                 root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
-                solveHostFeet?.(support.surface, floorY!);
-                measurement = measure(support.surface, sampleParentLocalContacts);
+                throw new Error(`Native lie floor solve rejected bounded lift trial; evidence=${JSON.stringify(lastLiftTrial)}`, { cause: error });
               }
+              const nextMeasurement = measure(support.surface, sampleParentLocalContacts);
+              trialFeetPlanted = floorFeetClearAndPlanted(floorY!, sampleParentLocalContacts);
+              const after = liftTrialSnapshot(floorY!, nextMeasurement, sampleParentLocalContacts,
+                footSolveResult && typeof footSolveResult === 'object' ? footSolveResult : undefined);
+              const clear = bodyRegionsClear(nextMeasurement);
+              attempts.push(Object.freeze({ requestedLift: targetLift - cumulativeLift, cumulativeLift: targetLift,
+                before, after, bodyRegionsClear: clear, floorFeetClearAndPlanted: trialFeetPlanted }));
+              trialMeasurement = nextMeasurement;
+              cumulativeLift = targetLift;
+              if (clear && trialFeetPlanted) {
+                measurement = trialMeasurement;
+                appliedRootCorrection = cumulativeLift;
+                accepted = true;
+                break;
+              }
+            }
+            if (!accepted) {
+              restoreBonePose(mappedBones, root);
+              root.position.copy(rootLocal);
+              root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+              solveHostFeet?.(support.surface, floorY!);
+              measurement = measure(support.surface, sampleParentLocalContacts);
+            }
+            lastLiftTrial = Object.freeze({ propId: support.surface.id, pose, phase, anchorBlend,
+              mappedFrame, attempts: Object.freeze(attempts), cumulativeLift,
+              accepted, bodyRegionsClear: bodyRegionsClear(trialMeasurement), floorFeetClearAndPlanted: trialFeetPlanted });
+            const diagnostics = root.userData.nativeRestProbeDiagnostics;
+            if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
+              diagnostics.liftTrial = lastLiftTrial;
             }
           }
           if (pose === 'lie' && (['pelvis-back', 'torso-back', 'head-back'] as const).some((region) => {
@@ -658,6 +845,8 @@ export function createNativeRestPoseAdapter(
           })) {
             appliedRootCorrectionXZ = egressUprightLieFromProp(
               support.surface, floorY!, sampleParentLocalContacts, solveHostFeet,
+              mappedContactBones, mappedContactRootLocal, mappedContactRootWorld,
+              mappedFrame, phase, anchorBlend,
             );
             measurement = measure(support.surface, sampleParentLocalContacts);
           }

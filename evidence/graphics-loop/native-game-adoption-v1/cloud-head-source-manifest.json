@@ -4,8 +4,13 @@
   "headWorkerCommit": "cae2b9fd1200ce0c22ccf27b0cf2973ef83ace0b",
   "footDiagnosticBridge": "ba63c0bc262d4dacdc948a199330fb796d82cc62",
   "branch": "codex/cloud-graphics-wiring-v9-20261010",
-  "acceptance": "head compiler/office feedback passed at bcb28; signed-gap stair original-case trial passed; full stair/home/NPC/release gates pending",
+  "acceptance": "UNACCEPTED combined feedback snapshot: factory stair matrix scoped PASS; valid nonzero pelvis repeat, latest rest home, NPC refresh, compiler, release and physical phone gates pending. Prior failures retained.",
   "files": [
+    {
+      "path": ".github/workflows/cloud-native-head-feedback.yml",
+      "bytes": 9752,
+      "sha256": "bafe755dd09f5ddc611f15101d5dbd9e8f336270705f4cb63d3e6c00987c93ab"
+    },
     {
       "path": ".github/workflows/native-graphics-release-v9.yml",
       "bytes": 5260,
@@ -37,6 +42,11 @@
       "sha256": "6e41447c5ee599c1f6bc6df361bbadbe64196d26ae0c51ba0ae97ffa6db9013b"
     },
     {
+      "path": "evidence/graphics-loop/native-game-adoption-v1/check-native-npc-foot-contact.mjs",
+      "bytes": 11545,
+      "sha256": "c977edcd27ca2ac9b57848d544865038cbb2638a1bde6b65eb3f2ad3df4b0cdb"
+    },
+    {
       "path": "evidence/graphics-loop/native-game-adoption-v1/creator-identity.html",
       "bytes": 2000,
       "sha256": "316e724842bcd2ad0f63f817116640e4c7f045a075b0a74875b4c0b93407b4a5"
@@ -63,8 +73,8 @@
     },
     {
       "path": "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
-      "bytes": 39545,
-      "sha256": "2d620716e1b1e120260030c055e2f33b0d949fd2217afda4c5a6c897f5ac2f81"
+      "bytes": 52831,
+      "sha256": "491d57847f4d08a432d5bd75680ac4aabfe901f34360ca654a81dc9fbdc7fe10"
     },
     {
       "path": "evidence/graphics-loop/native-game-adoption-v1/home-journey.html",
@@ -378,8 +388,8 @@
     },
     {
       "path": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
-      "bytes": 75812,
-      "sha256": "23d5de7eb5135d92dfecaa3fd0b79f5d45353f0b61a9f7b0b98f1a5cbd1ac757"
+      "bytes": 78184,
+      "sha256": "5f48b927eea73117915d6d837c367977af059b147b2ddf2a026223f81b1ea063"
     },
     {
       "path": "src/scene/body/native/native-rest-contact-v15/native-rest-contact.ts",
@@ -388,8 +398,8 @@
     },
     {
       "path": "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts",
-      "bytes": 44122,
-      "sha256": "2a4117ed1bf3883357a7bda63aa9a4f30a62b51e457fddd9ecf74e0ace08b094"
+      "bytes": 55463,
+      "sha256": "ae32bd1fd924ba016b9ee4cd0247aad144d5f805ef996f8a4a90463e45479b40"
     },
     {
       "path": "src/scene/body/native/native-seat-pose-adapter.ts",
@@ -488,8 +498,8 @@
     },
     {
       "path": "src/scene/venue-scenes.ts",
-      "bytes": 77631,
-      "sha256": "387575df79a96ebccdcb3756415acca0caf1cba9c00cfe7f9f8f5dbf7d20e34a"
+      "bytes": 89420,
+      "sha256": "73017294eb3366396742aabf109f8ea5ac826fd2f8411cef23f319f8c94c1b0e"
     },
     {
       "path": "src/types/view.ts",
@@ -503,5 +513,8 @@
     }
   ],
   "headWorkerStrictNullFix": "0f8abaa76dee15f7287bfe22d42d890e579ab954",
-  "stairSignedGapTrial": "58922dc609e37f26c0af6ea0ddff71f9ebf76866"
+  "stairSignedGapTrial": "58922dc609e37f26c0af6ea0ddff71f9ebf76866",
+  "factoryWorkerCommit": "d98203c6360011132109893076d7b1f07ea8f328",
+  "restWorkerCommit": "9c239a300ea09e349181a4739f2080ae48f0b7fc",
+  "npcWorkerCommit": "54976a324f6ef4c1db0c0ccc4e3f3be81059bd1d"
 }

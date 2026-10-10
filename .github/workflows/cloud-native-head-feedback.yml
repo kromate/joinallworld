@@ -55,6 +55,12 @@ jobs:
         env:
           GITHUB_RUN_ID: ${{ github.run_id }}
         run: python3 evidence/graphics-loop/native-game-adoption-v1/bounded-render.py evidence/graphics-loop/native-game-adoption-v1/render-resource.log evidence/graphics-loop/native-game-adoption-v1/render-resource.json node evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs
+      - name: Require actual NPC physical floor contact after placement, interaction and refresh
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          node evidence/graphics-loop/native-game-adoption-v1/check-native-npc-foot-contact.mjs "evidence/graphics-loop/native-game-adoption-v1/remote-results/${GITHUB_RUN_ID}/office-game-fixture-report.json" > evidence/graphics-loop/native-game-adoption-v1/npc-physical-contact-check.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -64,6 +70,7 @@ jobs:
             evidence/graphics-loop/native-game-adoption-v1/cloud-head-source-manifest.json
             evidence/graphics-loop/native-game-adoption-v1/remote-results/
             evidence/graphics-loop/native-game-adoption-v1/render-resource.*
+            evidence/graphics-loop/native-game-adoption-v1/npc-physical-contact-check.json
           if-no-files-found: warn
   home:
     runs-on: ubuntu-24.04

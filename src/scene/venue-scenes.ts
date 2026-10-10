@@ -462,10 +462,12 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       actor.body.place(spec.x, spec.y, spec.z, spec.ry);
       actor.body.object.userData.nativeGameNpcPose = pose;
       syncNativeTalk(actor, pose);
+      if (actor.body.object.parent === group) solveNativeNpcFeetOnVenueFloor(actor);
     },
     mount(actor, id) {
       actor.body.object.name = `canonical-crowd:${id}`;
       group.add(actor.body.object);
+      solveNativeNpcFeetOnVenueFloor(actor);
     },
     changed() {
       rebuildActorBatch();
@@ -1048,6 +1050,174 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     near(spot: { x: number; y: number; z: number } | null | undefined) { return spot ? placeMark(marks.near, spot.x, spot.y, spot.z, true) : placeMark(marks.near, 0, 0, 0, false); },
     goal(x?: number, z?: number) { return Number.isFinite(x) ? placeMark(marks.goal, x!, 0, z!, true) : placeMark(marks.goal, 0, 0, 0, false); },
   };
+  /** Fit grounded prepared NPCs to this venue's measured rendered floor after mounting. */
+  function solveNativeNpcFeetOnVenueFloor(actor: CanonicalVenueActor): boolean {
+    if (!('preparedMetrics' in actor.body)
+      || actor.body.object.userData.nativeGameProviderEvidence?.preparedNative !== true) return false;
+    const contactHeightAt = walk.contactHeightAt;
+    if (typeof contactHeightAt !== 'function') return false;
+    // Venue NPCs currently use idle/interact. Never flatten a future locomotion pose's swing foot.
+    if (actor.body.pose !== 'idle' && actor.body.pose !== 'interact') return false;
+    const previous = actor.body.object.userData.nativeVenueFootContactSolve as { attempts?: unknown } | undefined;
+    const previousAttempts = previous?.attempts;
+    const attempts = Number.isSafeInteger(previousAttempts) ? Number(previousAttempts) + 1 : 1;
+    const record = (diagnostic: Record<string, unknown>, passed: boolean) => {
+      actor.body.object.userData.nativeVenueFootContactSolve = { attempts, pose: actor.body.pose, ...diagnostic };
+      return passed;
+    };
+    const shoes = actor.body.object.getObjectByName('Authored footwear shoes01');
+    if (!(shoes instanceof THREE.SkinnedMesh)) return record({ status: 'fail', reason: 'missing authored skinned shoes' }, false);
+    const positions = shoes.geometry.getAttribute('position');
+    const skinIndices = shoes.geometry.getAttribute('skinIndex');
+    const skinWeights = shoes.geometry.getAttribute('skinWeight');
+    if (!positions || !skinIndices || !skinWeights || positions.count !== skinIndices.count || positions.count !== skinWeights.count) {
+      return record({ status: 'fail', reason: 'incomplete authored shoe skin attributes' }, false);
+    }
+    const parent = actor.body.object.parent;
+    const sampleAuthoredSoles = () => {
+      actor.body.object.updateWorldMatrix(true, true);
+      if (parent) parent.updateWorldMatrix(true, false);
+      shoes.updateMatrixWorld(true);
+      shoes.skeleton.update();
+      const parentInverse = parent ? parent.matrixWorld.clone().invert() : new THREE.Matrix4();
+      const vertex = new THREE.Vector3();
+      return (['left', 'right'] as const).map((side) => {
+        const suffix = side === 'left' ? 'Left' : 'Right';
+        const jointIndices = new Set<number>();
+        shoes.skeleton.bones.forEach((bone, index) => {
+          if (bone.name === `mixamorig${suffix}Foot` || bone.name === `mixamorig${suffix}ToeBase`) jointIndices.add(index);
+        });
+        if (jointIndices.size !== 2) return { side, points: [], reason: 'missing authored shoe foot/toe joints' };
+        const candidates: number[] = [];
+        let minimumLocalY = Infinity;
+        for (let index = 0; index < positions.count; index += 1) {
+          let footWeight = 0;
+          for (let lane = 0; lane < 4; lane += 1) {
+            if (jointIndices.has(Math.round(skinIndices.getComponent(index, lane)))) footWeight += skinWeights.getComponent(index, lane);
+          }
+          if (footWeight < 0.55) continue;
+          candidates.push(index);
+          minimumLocalY = Math.min(minimumLocalY, positions.getY(index));
+        }
+        const soleCandidates = candidates.filter((index) => positions.getY(index) <= minimumLocalY + 0.018);
+        const points = soleCandidates.map((index) => {
+          shoes.getVertexPosition(index, vertex);
+          return vertex.clone().applyMatrix4(shoes.matrixWorld).applyMatrix4(parentInverse);
+        });
+        return { side, points, reason: points.length ? null : 'empty authored shoe sole candidates' };
+      });
+    };
+    const contacts = sampleAuthoredSoles();
+    if (contacts.some((contact) => contact.reason || !contact.points.length)) {
+      return record({ status: 'fail', reason: contacts.map((contact) => contact.reason).filter(Boolean).join('; ') || 'missing exact left/right sole samples' }, false);
+    }
+    let sampledPointCount = 0;
+    for (const contact of contacts) {
+      const points = contact.points;
+      sampledPointCount += points.length;
+      for (const point of points) {
+        if (![point.x, point.y, point.z].every(Number.isFinite)) {
+          return record({ status: 'fail', reason: `non-finite ${contact.side} sole sample`, sampledPointCount }, false);
+        }
+        const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+        if (callbackTargetY === null || !Number.isFinite(callbackTargetY)) {
+          return record({ status: 'fail', reason: `unsupported ${contact.side} sole sample`, sampledPointCount }, false);
+        }
+      }
+    }
+    // Measure whether the requested physical ankle target is reachable from the actual
+    // pre-solve pose. Computing this after the solve would hide an unreachable request.
+    actor.body.object.updateWorldMatrix(true, true);
+    if (parent) parent.updateWorldMatrix(true, false);
+    const preSolveParentInverse = parent ? parent.matrixWorld.clone().invert() : new THREE.Matrix4();
+    const requestedReachBySide = new Map<string, { physicalRequestedAnkleReach: number; maximumLegReach: number; withinReach: boolean }>();
+    for (const contact of contacts) {
+      const physicalCorrections: number[] = [];
+      for (const point of contact.points) {
+        const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+        if (callbackTargetY === null || !Number.isFinite(callbackTargetY)) {
+          return record({ status: 'fail', reason: `unsupported pre-solve ${contact.side} shoe surface`, sampledPointCount }, false);
+        }
+        physicalCorrections.push(callbackTargetY - 0.016 - point.y);
+      }
+      const physicalVerticalCorrection = Math.max(...physicalCorrections);
+      const suffix = contact.side === 'left' ? 'Left' : 'Right';
+      const hip = actor.body.object.getObjectByName(`mixamorig${suffix}UpLeg`);
+      const knee = actor.body.object.getObjectByName(`mixamorig${suffix}Leg`);
+      const ankle = actor.body.object.getObjectByName(`mixamorig${suffix}Foot`);
+      if (!(hip instanceof THREE.Bone) || !(knee instanceof THREE.Bone) || !(ankle instanceof THREE.Bone)
+        || !Number.isFinite(physicalVerticalCorrection)) {
+        return record({ status: 'fail', reason: `missing finite pre-solve ${contact.side} ankle reach evidence`, sampledPointCount }, false);
+      }
+      const pointInParent = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(preSolveParentInverse);
+      const hipPosition = pointInParent(hip), kneePosition = pointInParent(knee), anklePosition = pointInParent(ankle);
+      const maximumLegReach = hipPosition.distanceTo(kneePosition) + kneePosition.distanceTo(anklePosition);
+      const targetAnkle = anklePosition.clone().add(new THREE.Vector3(0, physicalVerticalCorrection, 0));
+      const physicalRequestedAnkleReach = hipPosition.distanceTo(targetAnkle);
+      const withinReach = Number.isFinite(physicalRequestedAnkleReach) && Number.isFinite(maximumLegReach)
+        && physicalRequestedAnkleReach <= maximumLegReach + 0.002;
+      requestedReachBySide.set(contact.side, { physicalRequestedAnkleReach, maximumLegReach, withinReach });
+    }
+    // contactHeightAt reports the measured surface plus a 16 mm safety offset. The solver
+    // needs the physical top so its correction does not bake that navigation clearance into soles.
+    const result = actor.body.solveFeet((point) => {
+      const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+      return callbackTargetY === null || !Number.isFinite(callbackTargetY) ? Number.NaN : callbackTargetY - 0.016;
+    });
+    const postContacts = sampleAuthoredSoles();
+    const parentInverse = parent ? parent.matrixWorld.clone().invert() : new THREE.Matrix4();
+    const sideEvidence: Record<string, unknown>[] = [];
+    let physicalOraclePass = postContacts.length === 2
+      && ['left', 'right'].every((side) => postContacts.some((contact) => contact.side === side && !contact.reason && contact.points.length > 0));
+    for (const contact of postContacts) {
+      const points = contact.points;
+      const physicalGaps: number[] = [], corrections: number[] = [];
+      let coverageComplete = points.length > 0 && !contact.reason;
+      for (const point of points) {
+        if (![point.x, point.y, point.z].every(Number.isFinite)) { coverageComplete = false; continue; }
+        const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+        if (callbackTargetY === null || !Number.isFinite(callbackTargetY)) { coverageComplete = false; continue; }
+        const sceneFloorY = callbackTargetY - 0.016;
+        physicalGaps.push(point.y - sceneFloorY);
+        corrections.push(sceneFloorY - point.y);
+      }
+      const nearestAbsolutePhysicalGap = physicalGaps.length ? Math.min(...physicalGaps.map(Math.abs)) : null;
+      const minimumSignedPhysicalGap = physicalGaps.length ? Math.min(...physicalGaps) : null;
+      const physicalVerticalCorrection = corrections.length ? Math.max(...corrections) : null;
+      const suffix = contact.side === 'left' ? 'Left' : 'Right';
+      const hip = actor.body.object.getObjectByName(`mixamorig${suffix}UpLeg`);
+      const knee = actor.body.object.getObjectByName(`mixamorig${suffix}Leg`);
+      const ankle = actor.body.object.getObjectByName(`mixamorig${suffix}Foot`);
+      if (!(hip instanceof THREE.Bone) || !(knee instanceof THREE.Bone) || !(ankle instanceof THREE.Bone)) {
+        coverageComplete = false;
+        physicalOraclePass = false;
+        sideEvidence.push({ side: contact.side, candidateCount: points.length, coverageComplete, reason: 'missing native leg chain' });
+        continue;
+      }
+      const pointInParent = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(parentInverse);
+      const hipPosition = pointInParent(hip), kneePosition = pointInParent(knee), anklePosition = pointInParent(ankle);
+      const postSolveActualAnkleReach = hipPosition.distanceTo(anklePosition);
+      const postSolveMaximumLegReach = hipPosition.distanceTo(kneePosition) + kneePosition.distanceTo(anklePosition);
+      const requestedReach = requestedReachBySide.get(contact.side);
+      const physicalRequestedAnkleReach = requestedReach?.physicalRequestedAnkleReach ?? null;
+      const maximumRequestedLegReach = requestedReach?.maximumLegReach ?? null;
+      const withinReach = requestedReach?.withinReach === true;
+      const withinPhysicalTolerance = coverageComplete && nearestAbsolutePhysicalGap !== null
+        && nearestAbsolutePhysicalGap <= 0.004 && minimumSignedPhysicalGap !== null && minimumSignedPhysicalGap >= -0.004;
+      physicalOraclePass &&= withinPhysicalTolerance && withinReach;
+      sideEvidence.push({ side: contact.side, candidateCount: points.length, coverageComplete,
+        nearestAbsolutePhysicalGap, minimumSignedPhysicalGap, physicalVerticalCorrection,
+        physicalRequestedAnkleReach, maximumRequestedLegReach, withinReach, withinPhysicalTolerance,
+        postSolveActualAnkleReach, postSolveMaximumLegReach });
+    }
+    const solverPass = result.corrected === 2 && Number.isFinite(result.maxError)
+      && result.maxError <= 0.004 && result.limited === false;
+    const passed = solverPass && physicalOraclePass;
+    return record({ status: passed ? 'pass' : 'fail', reason: passed ? null : 'native solve or post-solve shoe oracle failed',
+      contactSides: postContacts.map((contact) => contact.side), sampledPointCount,
+      targetClearanceMeters: 0.016, corrected: result.corrected, maxError: result.maxError, limited: result.limited,
+      physicalOraclePass, sides: sideEvidence }, passed);
+  }
   let raised: { x: number; y: number; z: number }[] = [];
   /**
    * layout.raised: what can be stood on above the ground, so the avatar walks UP it instead of
@@ -1194,6 +1364,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
           actor.body.show(pose, false);
           actor.body.object.userData.nativeGameNpcPose = pose;
           syncNativeTalk(actor, pose);
+          solveNativeNpcFeetOnVenueFloor(actor);
         }
       }
       return changed || actors || npcPoseChanged;

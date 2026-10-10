@@ -30,6 +30,7 @@ interface FixtureSnapshot {
   nativeCoverage: { player: boolean; npcs: Record<string, boolean>; allRequestedActorsPrepared: boolean };
   unsupportedProbe: Record<string, unknown> | null;
   interaction: Record<string, unknown> | null;
+  nativeNpcRefreshWitness: Record<string, unknown> | null;
   currentCamera: string;
   cameraActorFrame: CameraActorFrame | null;
   viewport: { width: number; height: number; scrollWidth: number; layoutColumns: number; mobileBreakpoint: boolean };
@@ -113,6 +114,126 @@ function jawSynchronized(weights: Record<string, number | null>): boolean {
     && Math.abs(weights[name]! - (weights.Body ?? 0)) < 1e-6);
 }
 
+const SOLE_TARGET_CLEARANCE_METERS = 0.016;
+const SOLE_SUPPORT_BAND_METERS = 0.0025;
+
+function sampleNativeNpcSoles(root: THREE.Object3D, entry: SceneEntry, phase: string) {
+  const contactHeightAt = entry.walk.contactHeightAt;
+  if (typeof contactHeightAt !== 'function') throw new Error('Venue entry lacks the actual contactHeightAt surface query');
+  const shoes = root.getObjectByName('Authored footwear shoes01');
+  if (!(shoes instanceof THREE.SkinnedMesh)) throw new Error(`NPC ${root.name} lacks the authored skinned shoe mesh`);
+  const geometry = shoes.geometry;
+  const positions = geometry.getAttribute('position'), indices = geometry.getAttribute('skinIndex'), weights = geometry.getAttribute('skinWeight');
+  if (!positions || !indices || !weights || positions.count !== indices.count || positions.count !== weights.count) {
+    throw new Error(`NPC ${root.name} has incomplete authored shoe skin attributes`);
+  }
+  root.updateWorldMatrix(true, true);
+  shoes.updateMatrixWorld(true);
+  shoes.skeleton.update();
+  const parent = root.parent;
+  if (parent) parent.updateWorldMatrix(true, false);
+  const parentInverse = parent ? parent.matrixWorld.clone().invert() : new THREE.Matrix4();
+  const vertexLocal = new THREE.Vector3(), vertexParent = new THREE.Vector3();
+  const sideDefinitions = [
+    { side: 'left' as const, joints: ['mixamorigLeftFoot', 'mixamorigLeftToeBase'] },
+    { side: 'right' as const, joints: ['mixamorigRightFoot', 'mixamorigRightToeBase'] },
+  ];
+  const sides = sideDefinitions.map(({ side, joints }) => {
+    const footJointIndices = new Set<number>();
+    shoes.skeleton.bones.forEach((bone, index) => { if (joints.includes(bone.name)) footJointIndices.add(index); });
+    if (footJointIndices.size !== joints.length) throw new Error(`NPC ${root.name} shoe rig lacks ${side} foot/toe joints`);
+    const candidates: number[] = [];
+    let authoredFootVertexMinY = Infinity;
+    for (let vertex = 0; vertex < positions.count; vertex += 1) {
+      let footWeight = 0;
+      for (let lane = 0; lane < 4; lane += 1) {
+        if (footJointIndices.has(Math.round(indices.getComponent(vertex, lane)))) footWeight += weights.getComponent(vertex, lane);
+      }
+      if (footWeight < 0.55) continue;
+      candidates.push(vertex);
+      authoredFootVertexMinY = Math.min(authoredFootVertexMinY, positions.getY(vertex));
+    }
+    if (!candidates.length || !Number.isFinite(authoredFootVertexMinY)) throw new Error(`NPC ${root.name} has no ${side} footwear vertices weighted to foot joints`);
+    // Match the native factory's authored-footwear selection: rest-geometry foot-weighted
+    // vertices within 18 mm of that shoe-side's minimum are the shoe-sole candidate set.
+    const soleVertices = candidates.filter((vertex) => positions.getY(vertex) <= authoredFootVertexMinY + 0.018);
+    if (!soleVertices.length) throw new Error(`NPC ${root.name} has an empty ${side} authored sole candidate set`);
+    const deformed = soleVertices.map((vertex) => {
+      shoes.getVertexPosition(vertex, vertexLocal);
+      vertexParent.copy(vertexLocal).applyMatrix4(shoes.matrixWorld).applyMatrix4(parentInverse);
+      return { vertex, x: vertexParent.x, y: vertexParent.y, z: vertexParent.z };
+    });
+    const actualLowestSoleY = Math.min(...deformed.map((point) => point.y));
+    const evaluated = deformed.map((point) => {
+      const callbackTargetY = contactHeightAt(point.x, point.z, point.y);
+      const sceneFloorY = callbackTargetY === null ? null : callbackTargetY - SOLE_TARGET_CLEARANCE_METERS;
+      return { ...point, callbackTargetY, sceneFloorY,
+        errorToCallbackTarget: callbackTargetY === null ? null : point.y - callbackTargetY,
+        gapToSceneFloor: sceneFloorY === null ? null : point.y - sceneFloorY };
+    });
+    const supported = evaluated.filter((point) => point.callbackTargetY !== null);
+    const nonFiniteSamples = evaluated.filter((point) => ![point.x, point.y, point.z].every(Number.isFinite));
+    const callbackNonFiniteSamples = evaluated.filter((point) => point.callbackTargetY !== null && !Number.isFinite(point.callbackTargetY));
+    const maxAbsoluteGapToSceneFloor = supported.length
+      ? Math.max(...supported.map((point) => Math.abs(point.gapToSceneFloor!))) : null;
+    const nearestAbsoluteGapToSceneFloor = supported.length
+      ? Math.min(...supported.map((point) => Math.abs(point.gapToSceneFloor!))) : null;
+    const minimumSignedGapToSceneFloor = supported.length
+      ? Math.min(...supported.map((point) => point.gapToSceneFloor!)) : null;
+    const lowSoleSupportBand = evaluated.filter((point) => point.y <= actualLowestSoleY + SOLE_SUPPORT_BAND_METERS);
+    const suffix = side === 'left' ? 'Left' : 'Right';
+    const thigh = shoes.skeleton.bones.find((bone) => bone.name === `mixamorig${suffix}UpLeg`);
+    const calf = shoes.skeleton.bones.find((bone) => bone.name === `mixamorig${suffix}Leg`);
+    const ankle = shoes.skeleton.bones.find((bone) => bone.name === `mixamorig${suffix}Foot`);
+    if (!thigh || !calf || !ankle) throw new Error(`NPC ${root.name} shoe rig lacks ${side} native leg chain`);
+    const bonePosition = (bone: THREE.Bone) => bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(parentInverse);
+    const hipPosition = bonePosition(thigh), kneePosition = bonePosition(calf), anklePosition = bonePosition(ankle);
+    const upperLength = hipPosition.distanceTo(kneePosition), lowerLength = kneePosition.distanceTo(anklePosition);
+    const floorCorrections = evaluated.filter((point) => point.sceneFloorY !== null
+      && Number.isFinite(point.sceneFloorY) && Number.isFinite(point.y))
+      .map((point) => point.sceneFloorY! - point.y);
+    const physicalVerticalCorrection = floorCorrections.length ? Math.max(...floorCorrections) : null;
+    const callbackCorrections = evaluated.filter((point) => point.callbackTargetY !== null
+      && Number.isFinite(point.callbackTargetY) && Number.isFinite(point.y))
+      .map((point) => point.callbackTargetY! - point.y);
+    const callbackVerticalCorrection = callbackCorrections.length ? Math.max(...callbackCorrections) : null;
+    const physicalTargetAnklePosition = physicalVerticalCorrection === null ? null
+      : anklePosition.clone().add(new THREE.Vector3(0, physicalVerticalCorrection, 0));
+    const callbackTargetAnklePosition = callbackVerticalCorrection === null ? null
+      : anklePosition.clone().add(new THREE.Vector3(0, callbackVerticalCorrection, 0));
+    const physicalRequestedAnkleReach = physicalTargetAnklePosition ? hipPosition.distanceTo(physicalTargetAnklePosition) : null;
+    const callbackRequestedAnkleReach = callbackTargetAnklePosition ? hipPosition.distanceTo(callbackTargetAnklePosition) : null;
+    const maximumLegReach = upperLength + lowerLength;
+    return { side, authoredFootVertexMinY, soleCandidateCount: soleVertices.length,
+      actualLowestSoleY, supportBandMeters: SOLE_SUPPORT_BAND_METERS,
+      deformedSoleCandidateCount: evaluated.length,
+      lowSoleSupportBandCount: lowSoleSupportBand.length,
+      lowSoleSupportBand,
+      deformedSoleSamples: evaluated,
+      callbackSupportCoverage: `${supported.length}/${evaluated.length}`,
+      callbackSupportCoverageComplete: supported.length === evaluated.length,
+      nonFiniteSampleCount: nonFiniteSamples.length,
+      callbackNonFiniteSampleCount: callbackNonFiniteSamples.length,
+      maxAbsoluteGapToSceneFloor,
+      nearestAbsoluteGapToSceneFloor,
+      minimumSignedGapToSceneFloor,
+      withinFourMillimetersOfSceneFloor: supported.length === evaluated.length
+        && nonFiniteSamples.length === 0 && callbackNonFiniteSamples.length === 0
+        && nearestAbsoluteGapToSceneFloor !== null && nearestAbsoluteGapToSceneFloor <= 0.004
+        && minimumSignedGapToSceneFloor !== null && minimumSignedGapToSceneFloor >= -0.004,
+      nativeLegReach: { upperLength, lowerLength, actualAnkleReach: hipPosition.distanceTo(anklePosition),
+        physicalVerticalCorrection, physicalRequestedAnkleReach, callbackVerticalCorrection,
+        callbackRequestedAnkleReach, maximumLegReach,
+        withinReach: physicalRequestedAnkleReach !== null && physicalRequestedAnkleReach <= maximumLegReach + 0.002 } };
+  });
+  return { npcId: root.name.replace(/^canonical-crowd:npc:/, ''), phase,
+    sampleFrame: 'post-placement current native skinned-shoe geometry and actor matrices',
+    nativeVenueFootContactSolve: root.userData.nativeVenueFootContactSolve ?? null,
+    contactCallback: 'SceneEntry.walk.contactHeightAt', contactTargetClearanceMeters: SOLE_TARGET_CLEARANCE_METERS,
+    sides, bothFeetWithinFourMillimetersOfSceneFloor: sides.length === 2
+      && sides.every((side) => side.withinFourMillimetersOfSceneFloor) };
+}
+
 function createFixture() {
   const canvas = required<HTMLCanvasElement>('#game-stage');
   const status = required<HTMLElement>('#status');
@@ -138,6 +259,8 @@ function createFixture() {
   let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null, bodyCenterLineClear: false };
   let unsupportedProbe: Record<string, unknown> | null = null;
   let interaction: Record<string, unknown> | null = null;
+  let nativeNpcRefreshWitness: Record<string, unknown> | null = null;
+  let nativeNpcRefreshAttempted = false;
   let lastContact: ReturnType<SkinnedBody['solveFeet']> | null = null;
   let frame = 0;
   let walkPhase = 0;
@@ -415,7 +538,11 @@ function createFixture() {
     const offered = npc?.actions.find((action) => action.activity === activityId);
     if (!npc || !offered) throw new Error(`The current life view does not offer ${activityId} for ${npcId}`);
     const beforeRelationship = beforeView.relationships.find((person) => person.id === npcId);
-    const jawBefore = nativeJawWeights(entry?.group.getObjectByName(`canonical-crowd:npc:${npcId}`) ?? null);
+    if (!entry) throw new Error('Office venue entry is unavailable during NPC contact audit');
+    const npcRoot = entry.group.getObjectByName(`canonical-crowd:npc:${npcId}`);
+    if (!npcRoot) throw new Error(`Canonical NPC ${npcId} is not mounted during contact audit`);
+    const placementIdleSoles = sampleNativeNpcSoles(npcRoot, entry, 'canonical-placement-idle');
+    const jawBefore = nativeJawWeights(npcRoot);
     const started = dispatch(lifeState, { type: 'activity', id: activityId }, ctx);
     if (!started.ok || started.code !== 'started') {
       interaction = { npcId, activityId, started: { ok: started.ok, code: started.code, reason: started.reason ?? null }, completed: false };
@@ -425,6 +552,7 @@ function createFixture() {
     }
     entry?.update(lifeState);
     const npcPoseDuringInteraction = inspectNpc(npcId).gamePose;
+    const interactionSoles = sampleNativeNpcSoles(npcRoot, entry, 'during-interaction');
     const talkLoopStarted = Boolean(entry?.easing);
     interaction = { npcId, activityId, label: offered.label, started: { ok: started.ok, code: started.code }, completed: false,
       npcPoseDuringInteraction, npcPoseAfterCompletion: null, npcPoseLifecyclePass: false, talkLoopStarted };
@@ -449,6 +577,7 @@ function createFixture() {
     });
     entry?.update(lifeState);
     const npcPoseAfterCompletion = inspectNpc(npcId).gamePose;
+    const returnedIdleSoles = sampleNativeNpcSoles(npcRoot, entry, 'returned-idle-after-interaction');
     const jawAfter = nativeJawWeights(entry?.group.getObjectByName(`canonical-crowd:npc:${npcId}`) ?? null);
     const jawRestored = ['Body', 'Teeth', 'Tongue'].every((name) => typeof jawBefore[name] === 'number'
       && Math.abs(jawAfter[name]! - jawBefore[name]!) < 1e-6);
@@ -457,6 +586,7 @@ function createFixture() {
     const afterNpc = afterView.here.find((person) => person.id === npcId);
     const afterRelationship = afterView.relationships.find((person) => person.id === npcId);
     const response = lifeState.message ?? '';
+    const nativeShoeContactEvidence = [placementIdleSoles, interactionSoles, returnedIdleSoles];
     const familiarityChanged = afterRelationship !== undefined
       && (afterRelationship.points > (beforeRelationship?.points ?? -1)
         || afterRelationship.left < (beforeRelationship?.left ?? Number.POSITIVE_INFINITY));
@@ -473,6 +603,9 @@ function createFixture() {
       npcPoseDuringInteraction,
       npcPoseAfterCompletion,
       npcPoseLifecyclePass: npcPoseDuringInteraction === 'interact' && npcPoseAfterCompletion === 'idle',
+      nativeShoeContactEvidence,
+      nativeShoeContactDiagnosticPass: nativeShoeContactEvidence.every((sample) => sample.bothFeetWithinFourMillimetersOfSceneFloor
+        && sample.sides.every((side) => side.nativeLegReach.withinReach)),
       talkLoopStarted, talkLoopFrames, jawBefore, jawPeak, jawAfter, talkLoopSynchronized, jawRestored,
     };
     stage = `${offered.label} completed with ${npc.name}`;
@@ -604,6 +737,17 @@ function createFixture() {
       if (frame % 6 === 0 || currentCamera.endsWith('-close')) draw();
     }
     updateDom();
+    if (readyState === 'ready' && !nativeNpcRefreshAttempted) {
+      nativeNpcRefreshAttempted = true;
+      try {
+        nativeNpcRefreshWitness = refreshNativeNpcCrowd();
+        draw(); updateDom();
+      } catch (error) {
+        errors.push(`Native NPC same-identity refresh failed: ${error instanceof Error ? error.message : String(error)}`);
+        stage = errors.at(-1)!;
+        updateDom();
+      }
+    }
     animationHandle = requestAnimationFrame(poll);
   }
 
@@ -615,6 +759,49 @@ function createFixture() {
       representation: provider?.representation ?? 'provider-evidence-missing', requestedLifecyclePoses: provider?.requestedLifecyclePoses ?? null,
       gamePose: root?.userData.nativeGameNpcPose ?? null,
       jaw: nativeJawWeights(root) };
+  }
+
+  function refreshNativeNpcCrowd(): Record<string, unknown> {
+    if (!entry || npcCrowd.length !== 2) throw new Error('Office NPC crowd is unavailable for refresh witness');
+    const before = npcCrowd.map((person, index) => {
+      const id = String(person.id ?? '');
+      const root = entry!.group.getObjectByName(`canonical-crowd:${id}`);
+      if (!root) throw new Error(`Canonical NPC ${id} is not mounted for refresh witness`);
+      const solve = root.userData.nativeVenueFootContactSolve as { attempts?: unknown } | undefined;
+      return { person, id, npcId: id.replace(/^npc:/, ''), index, position: root.position.clone(), attempts: solve?.attempts ?? null };
+    });
+    const refreshed = before.map(({ person, index, position }) => ({ ...person,
+      x: position.x + (index === 0 ? 0.12 : -0.12),
+      z: position.z + (index === 0 ? -0.08 : 0.08),
+    }));
+    const identityPreserved = before.every((entryBefore, index) => {
+      const after = refreshed[index]!;
+      return after.id === entryBefore.person.id && after.seed === entryBefore.person.seed;
+    });
+    if (!identityPreserved) throw new Error('Refresh changed canonical NPC identity or seed');
+    entry.setCrowd(refreshed);
+    npcCrowd = refreshed;
+    const actors = before.map(({ id, npcId, person, position, attempts }) => {
+      const root = entry!.group.getObjectByName(`canonical-crowd:${id}`);
+      if (!root) throw new Error(`Canonical NPC ${id} was unmounted during refresh`);
+      const afterPosition = root.position.clone();
+      const solve = root.userData.nativeVenueFootContactSolve as { attempts?: unknown; status?: unknown } | undefined;
+      const soles = sampleNativeNpcSoles(root, entry!, 'same-identity-refresh-idle');
+      const postSolveContactPass = soles.sides.length === 2 && soles.sides.every((side) =>
+        side.callbackSupportCoverageComplete && side.nonFiniteSampleCount === 0 && side.callbackNonFiniteSampleCount === 0
+        && side.nearestAbsoluteGapToSceneFloor !== null && side.nearestAbsoluteGapToSceneFloor <= 0.004
+        && side.minimumSignedGapToSceneFloor !== null && side.minimumSignedGapToSceneFloor >= -0.004
+        && side.nativeLegReach.withinReach);
+      const repositionMeters = afterPosition.distanceTo(position);
+      const repeatedSolve = typeof attempts === 'number' && typeof solve?.attempts === 'number' && solve.attempts > attempts;
+      return { id: npcId, seedBefore: person.seed, seedAfter: refreshed.find((candidate) => candidate.id === person.id)?.seed ?? null,
+        identityPreserved: true, positionBefore: position.toArray(), positionAfter: afterPosition.toArray(), repositionMeters,
+        solveAttemptsBefore: attempts, solveAttemptsAfter: solve?.attempts ?? null, repeatedSolve,
+        solverStatus: solve?.status ?? null, postSolveContactPass, soleEvidence: soles };
+    });
+    return { status: identityPreserved && actors.length === 2 && actors.every((actor) => actor.repositionMeters > 0.05
+      && actor.repeatedSolve && actor.solverStatus === 'pass' && actor.postSolveContactPass) ? 'pass' : 'fail',
+      identityPreserved, actors };
   }
 
   function snapshot(): FixtureSnapshot {
@@ -669,6 +856,7 @@ function createFixture() {
         allRequestedActorsPrepared: playerPrepared && Object.values(npcNativeCoverage).every(Boolean) },
       unsupportedProbe: unsupported,
       interaction,
+      nativeNpcRefreshWitness,
       currentCamera,
       cameraActorFrame: actorFrame(closeCameraActor),
       viewport: {

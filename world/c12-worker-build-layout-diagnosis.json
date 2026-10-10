@@ -1,0 +1,30 @@
+{
+  "observedAtUtc": "2026-10-10T02:56:30.939121+00:00",
+  "scope": "Nonexecuting diagnosis of the approved Worker only; no source, package or file payload changed",
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "approvedWorkerBytes": 4851144,
+  "approvedWorkerSha256": "fd7fa978cda473d67bdf5c006bcb3289b901180cdfd9123c49bb405fc976fbf4",
+  "removedPrefix": "game-source/",
+  "prefixOccurrences": 353,
+  "allOccurrencesAreModuleInitializerKeys": true,
+  "moduleInitializerKinds": {
+    "esm": 353
+  },
+  "byteDifference": 4236,
+  "diagnosticNormalizedWorkerBytes": 4846908,
+  "diagnosticNormalizedWorkerSha256": "443f113d0070ba6d3df6dd52ba8204a479011b10b0592e275893c2ffc021839b",
+  "cloudActualNormalizedMatch": {
+    "matched": true,
+    "receiptRef": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+    "workerSha256": "443f113d0070ba6d3df6dd52ba8204a479011b10b0592e275893c2ffc021839b",
+    "unchangedOtherPayloadFiles": 6226
+  },
+  "inference": "Actual cloud Worker matches the diagnostic normalization exactly. All other 6226 payload files and path order match; the package remains distinct and requires its own sealed proof.",
+  "notClaimed": [
+    "byte equality of packages",
+    "new cloud package or seal acceptance",
+    "actual new Worker hash",
+    "native browser journeys",
+    "production deployment"
+  ]
+}

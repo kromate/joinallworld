@@ -1,6 +1,6 @@
 {
-  "observedAtUtc": "2026-10-10T02:34:18.942280+00:00",
-  "decision": "ACCEPT nine exact-source phases: both full hosts and tooling, Node24 fullWorker, both all15 Africa host/Worker groups, download and smoke. Remaining Node22Worker/fullgame/UI/release/native/deployment still separate.",
+  "observedAtUtc": "2026-10-10T03:06:54.819120+00:00",
+  "decision": "ACCEPT ten exact-source phases: both full hosts, tooling and Workers; both all15 Africa host/Worker groups; download and smoke. Full game/UI/release/native/deployment remain separate.",
   "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
   "phases": [
     {
@@ -279,10 +279,41 @@
         "\u2139 cancelled 0",
         "\u2139 skipped 0"
       ]
+    },
+    {
+      "name": "c12-node22-worker-full",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node22-worker-full/",
+      "receiptSha256": "8016b148743e397a1c7cdb045799d1cb573498e1da4f6e1d68be7146948faac6",
+      "logSha256": "a70ba4019fe9840a0b73d0fef7fd5b7850fed9a2b26ac9e7d9d1653568e83490",
+      "nodeVersion": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "test:edge"
+      ],
+      "durationSeconds": 547.904539,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "# tests 158",
+        "# suites 0",
+        "# pass 158",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# todo 0"
+      ]
     }
   ],
   "limitations": [
-    "Remaining correctedsource fullgame/Node22Worker/UI/release corpus not inferred from this evidence",
+    "Remaining corrected-source full game/UI/release corpus is not inferred from these phases",
     "Original focused cache125 receipt retained",
     "Historical host3skips retained onbothNodeversions",
     "No completed native cityjourney or production16 claim"

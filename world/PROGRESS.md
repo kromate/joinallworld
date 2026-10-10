@@ -1,10 +1,10 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T02:30:38.873252+00:00
+Updated: 2026-10-10T03:06:54.819120+00:00
 
-The previous goal turn made progress: exact runtime/package evidence was accepted,
-two fresh browser players completed normal onboarding and controlled funding,
-and the finite local stage ended cleanly with its saved store retained.
+The previous goal turn was a status check. This turn accepted the exact cloud
+package file comparison and Node 22 full Worker evidence, and assigned one
+sealed verification of that separate package. Browser visits remain incomplete.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -29,7 +29,7 @@ They are **not deployed**.
 | Delivered sealed package and 31 served assets | Accepted; package digest `3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331` |
 | Normal browser onboarding and controlled credit replay | Passed for two fresh synthetic players |
 | Five new browser city journeys and same-store restart | All five unvisited; still required |
-| Full host/tooling and Node 24 Worker suites | Accepted; Node 22 Worker/full game/UI/release remain separate |
+| Full host/tooling and Worker suites on Node 22 and 24 | Accepted; full game/UI/release remain separate |
 | Production upload and live 16-country check | Not started |
 
 Evidence: [source](third-five-c1-successor-source-acceptance.json),
@@ -45,27 +45,32 @@ The local 900-second stage ended naturally with exit 0 at 02:11:17 UTC.
 Its helper/process group are absent and all shared local slots are free.
 The test store retains both funded players and their protected home, inventory,
 ownership and receipt data. Original Nigeria/eec players remain separate.
-Material Mac paging keeps additional local browser/build/render work on hold.
+Mac pressure recovered in the latest monitor samples. The separate instruction
+to perform implementation/build/render work online remains in force.
 
 The existing cloud host has Chromium 151 and CDP support. Its independent package
-has a different digest and reported file count, so its manifest comparison and
-provenance remain required before browser launch. Its artifact read
-returned Forbidden, which is retained as a transport gap. The existing country
-owner is assigned a bounded independent package reproduction from its already
-owned c12 source and retained compiled output. Actual package acceptance and the
-[finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) must be reviewed
-before a cloud browser launch. Two actors are required: all five round trips
-cost more than one controlled 2,000,000 test credit.
+has the same 6,228 physical files as the original. All 6,226 other payload files
+match exactly; only the Worker differs by 353 build-path labels, totaling 4,236
+bytes. The diagnostic Worker hash matches the actual cloud hash. The distinct
+package requires its own on-disk guard and sealed journey proof, now assigned.
+[Actual package comparison](c12-cloud-package-comparison.json).
+
+Its artifact read returned Forbidden, retained as a transport gap. The package
+was independently produced from already owned c12 source and compiled output.
+The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) was approved
+in design; launch still requires the immutable controller, actual Astra binding,
+resource enforcement and reviewed package. Two fresh actors are required because
+all five round trips exceed one controlled 2,000,000 test credit.
 No private local players, cookies or database are transferred.
 
 The separate combined source `3e3e0876fc50f3166a0d0968f8616b577da27870`
 preserves route values, but its measured startup gzip/Brotli exceed the existing
-limits. Integration owns its running CI and the existing cloud owner handles
-that repair. It has no production acceptance.
+limits. The CI is terminal. Integration and the existing cloud owner handle
+the source repair. It has no production acceptance.
 
 ## Next actions, in order
 
-1. Inspect the cloud package provenance, measured digest and finite browser plan.
+1. Complete the independent package sealed proof and reviewed finite browser controller.
 2. Complete all five actual browser journeys, phone-width controls, restart and
    saved-state checks; inspect the remaining required source-matrix evidence.
 3. Synchronize with main, deploy the accepted country batch, and verify 16 live
@@ -74,7 +79,7 @@ that repair. It has no production acceptance.
    remaining Africa and the global pipeline. Lazy metadata, Moroni acquisition
    durability, regional conditions and later photorealism remain in scope.
 
-The main allowance is 15% remaining at the latest actual sample. Stop new work
+The main allowance is 12% remaining at the latest actual sample. Stop new work
 at 4% remaining and use that reserve for safe checkpoints and reporting.
 There is no clock cutoff or extra-spend authorization.
 

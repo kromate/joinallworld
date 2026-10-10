@@ -1,0 +1,52 @@
+{
+  "observedAtUtc": "2026-10-10T03:05:35.310888+00:00",
+  "decision": "ACCEPT static file comparison and independent-source provenance; new package still requires its own guard and sealed journeys",
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "receiptsRef": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+  "originalPackageDigest": "3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331",
+  "cloudPackageDigest": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+  "manifestEntriesExcludingManifest": 6227,
+  "totalPackageFilesIncludingManifest": 6228,
+  "samePathSet": true,
+  "sameManifestOrder": true,
+  "unchangedPayloadFiles": 6226,
+  "changedPayloadFiles": [
+    {
+      "path": "worker.js",
+      "original": {
+        "path": "worker.js",
+        "bytes": 4851144,
+        "sha256": "fd7fa978cda473d67bdf5c006bcb3289b901180cdfd9123c49bb405fc976fbf4"
+      },
+      "cloud": {
+        "path": "worker.js",
+        "bytes": 4846908,
+        "sha256": "443f113d0070ba6d3df6dd52ba8204a479011b10b0592e275893c2ffc021839b"
+      }
+    }
+  ],
+  "originalManifest": {
+    "path": "manifest.json",
+    "bytes": 1416390,
+    "sha256": "d5a3b4e5dd80be8dc57a0296e9af4b7898ff23c7875aeedf342b879b6e94a314"
+  },
+  "cloudManifest": {
+    "path": "manifest.json",
+    "bytes": 1416390,
+    "sha256": "86aa7c726f5cb735fa0519e3681c703738daddfcaa3b3a2d239a773949483aa9"
+  },
+  "cloudTotalPackageBytesIncludingManifest": 103751182,
+  "payloadByteDifference": -4236,
+  "diagnosticNormalizedWorkerMatchesActualCloudWorker": true,
+  "workerDifferenceCause": "353 game-source/ prefixes on __esm module initializer keys; original in-memory diagnostic exactly matches actual cloud Worker hash",
+  "provenanceSha256": "20569e31fc21137528165552e7504878d5e5f4fc364768aaa26dc94e022a1b18",
+  "limits": [
+    "Both packages have the same physical file count. Earlier provenance original_files/file_count_difference mixed manifest entries with physical files; corrected here.",
+    "Distinct package digest; original sealed acceptance is not inherited.",
+    "Source pins and retained-output attribution are recorded; original build receipt lacks historical dist census.",
+    "No package payload was rewritten; no alternate artifact download was attempted.",
+    "No browser journeys, deployment or new green country claimed."
+  ],
+  "guardDigestRecomputedFromActualPublishedFileMetadata": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+  "guardLimit": "Full on-disk guard must still confirm payload bytes/path types/config before cloud execution."
+}

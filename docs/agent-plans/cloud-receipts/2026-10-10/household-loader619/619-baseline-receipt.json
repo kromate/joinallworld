@@ -1,0 +1,44 @@
+{
+  "checkout": "/workspace/remote-verification/repositories/worker-household-identity",
+  "branch": "codex/cloud-household-consent-adapter-20261010",
+  "head": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
+  "gitParent": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
+  "origin": "https://github.com/kromate/joinallworld.git",
+  "worktreeTrackedChanges": [],
+  "node": "v24.19.0",
+  "configuredWorkerModel": "gpt-6-luna (delegation metadata; runtime model attestation unavailable)",
+  "hostId": "96cc63a2f9d2 (task packet; shell attestation not independently available)",
+  "npmInstall": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "exit": 0,
+    "output": "added 88 packages in 3s",
+    "effect": "ignored node_modules only; tracked lockfile/source unchanged"
+  },
+  "fullTypecheck": {
+    "command": "AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 NODE_OPTIONS=--max-old-space-size=4096 node --experimental-strip-types scripts/agent-slot.ts heavy -- npm run typecheck",
+    "exit": 0,
+    "result": "Typecheck clean: 5 projects, 0 errors in .ts and .vue, 0 baselined in existing JavaScript.",
+    "rawLog": "/workspace/remote-verification/worker-results/household-consent-view/619-baseline-full-typecheck-4096.log",
+    "rawLogSha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7"
+  },
+  "focusedPureTypecheck": {
+    "command": "AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 NODE_OPTIONS=--max-old-space-size=4096 node --experimental-strip-types scripts/agent-slot.ts heavy -- /workspace/remote-verification/repositories/household-35731140/node_modules/.bin/tsc --ignoreConfig --noEmit --strict --target ES2023 --module NodeNext --moduleResolution NodeNext --allowImportingTsExtensions --skipLibCheck server/households/records.ts server/households/consent.ts server/households/consentView.ts",
+    "exit": 0,
+    "rawLog": "/workspace/remote-verification/worker-results/household-consent-view/619-baseline-focused-tsc-4096.log",
+    "rawLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "allElevenProbe": {
+    "command": "AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 NODE_OPTIONS=--max-old-space-size=1536 node --experimental-strip-types scripts/agent-slot.ts heavy -- node --experimental-strip-types /tmp/household-consent-view-probe.mjs",
+    "exit": 0,
+    "scope": "11 loader-to-reducer operations and negatives: wrong-key invite crosslink, owner-index absence, command/row/pair getters, storage/pair failures, unqueried pair not-loaded, protected invite readset failure propagation",
+    "probeSha256": "07fa1a5831713228bc02f9e1a64da9b319c3c3bc71d6ecc1e9eb1c14583643fc",
+    "rawLog": "/workspace/remote-verification/worker-results/household-consent-view/619-baseline-probe.log",
+    "rawLogSha256": "b67977e4a839758873884f42f05396f7957b6b9b1a9cb0a695a0bc5114a11fe1"
+  },
+  "sourceSha256": {
+    "server/households/consentView.ts": "78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8",
+    "server/households/records.ts": "d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4",
+    "server/households/consent.ts": "2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a",
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d"
+  }
+}

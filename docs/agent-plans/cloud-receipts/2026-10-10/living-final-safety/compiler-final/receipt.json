@@ -1,0 +1,45 @@
+{
+  "sha": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+  "branch": "codex/cloud-living-final-safety-20261010",
+  "parent": "44c1e540ed0244276a2ea74609aa9dec9ffd377c",
+  "checkout": "/workspace/remote-verification/repositories/worker-living-driving-final-safety-20261010",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "12391751680",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/typecheck.ts",
+    "--serial"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 56471,
+  "started_at_utc": "2026-10-10T00:33:22.725179+00:00",
+  "ended_at_utc": "2026-10-10T00:35:21.362677+00:00",
+  "duration_seconds": 118.637498,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "log": "/workspace/remote-verification/receipts/1b225b90faf375b8195058ee17257e7d31cf8a98/compiler-final/command.log",
+  "log_sha256": "dd746544cb303e0051d73dfae02f231d3dd61011f2a35388381a12d0b5bbd961",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

@@ -514,6 +514,95 @@ test('failed restart transaction leaves the paused attempt intact and permits th
   assert.deepEqual(await qualificationSlice(f, player.id), qualificationBefore)
 })
 
+test('revision and sequence exhaustion refuse writes while the last safe legacy and v2 steps remain readable', async t => {
+  const f = await fixture(t, { routes: configuredDrivingRoutes(true) })
+  const max = Number.MAX_SAFE_INTEGER
+  const mutateRow = async (publicId: string, update: (row: Record<string, unknown>) => void): Promise<void> => {
+    await f.server.store.transact(db => {
+      const row = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving[publicId]
+      assert.ok(row, 'the fixture has a saved driving row')
+      update(row)
+    })
+  }
+  const readRow = (publicId: string) => f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[publicId]))
+
+  const exhausted = await onboard(f)
+  const exhaustedStart = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, exhausted.cookie)
+  assert.ok(exhaustedStart.session)
+  await mutateRow(exhausted.id, row => { row.revision = max })
+  const exhaustedBefore = await readRow(exhausted.id)
+  const current = await (await f.request(`${drivingPath}?city=lagos`, null, exhausted.cookie)).json() as Reply
+  assert.deepEqual([current.ok, current.code], [false, 'revision_exhausted'])
+  assert.deepEqual(await readRow(exhausted.id), exhaustedBefore, 'current refuses before its reload pause can overflow revision')
+  const paused = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: exhaustedStart.session.journeyId, revision: max }, exhausted.cookie)
+  assert.deepEqual([paused.ok, paused.code], [false, 'revision_exhausted'])
+  assert.deepEqual(await readRow(exhausted.id), exhaustedBefore, 'pause refuses without changing a max-revision row')
+  const exhaustedInput = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: exhaustedStart.session.journeyId, sequence: 1,
+    frames: [{ throttle: 1, brake: 0, steer: 0 }] }, exhausted.cookie)
+  assert.deepEqual([exhaustedInput.ok, exhaustedInput.code], [false, 'revision_exhausted'])
+  assert.deepEqual(await readRow(exhausted.id), exhaustedBefore, 'input refuses without changing a max-revision row')
+
+  const resumeOwner = await onboard(f)
+  const resumeStart = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, resumeOwner.cookie)
+  assert.ok(resumeStart.session)
+  const ordinaryPause = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: resumeStart.session.journeyId,
+    revision: resumeStart.session.revision }, resumeOwner.cookie)
+  assert.ok(ordinaryPause.session)
+  await mutateRow(resumeOwner.id, row => { row.revision = max })
+  const resumeBefore = await readRow(resumeOwner.id)
+  const exhaustedResume = await post(f, `${drivingPath}/resume`, { cityId: 'lagos', requestId: id(f), journeyId: resumeStart.session.journeyId,
+    revision: max }, resumeOwner.cookie)
+  assert.deepEqual([exhaustedResume.ok, exhaustedResume.code], [false, 'revision_exhausted'])
+  assert.deepEqual(await readRow(resumeOwner.id), resumeBefore, 'resume refuses before changing state or timestamps')
+
+  const sequenceOwner = await onboard(f)
+  const sequenceStart = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, sequenceOwner.cookie)
+  assert.ok(sequenceStart.session)
+  await mutateRow(sequenceOwner.id, row => {
+    row.revision = max
+    row.nextSequence = max
+    row.lastPacket = { sequence: max - 1, fingerprint: 'prior-safe-receipt', code: 'controls_accepted' }
+  })
+  const sequenceBefore = await readRow(sequenceOwner.id)
+  const exhaustedSequence = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: sequenceStart.session.journeyId, sequence: max,
+    frames: [{ throttle: 1, brake: 0, steer: 0 }] }, sequenceOwner.cookie)
+  assert.deepEqual([exhaustedSequence.ok, exhaustedSequence.code], [false, 'sequence_exhausted'])
+  assert.deepEqual(await readRow(sequenceOwner.id), sequenceBefore, 'sequence exhaustion preserves the complete row')
+
+  const legacyOwner = await onboard(f)
+  const legacyStart = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, legacyOwner.cookie)
+  assert.ok(legacyStart.session)
+  await mutateRow(legacyOwner.id, row => { row.revision = max - 1 })
+  f.advance(100)
+  const legacyPacket = { cityId: 'lagos', journeyId: legacyStart.session.journeyId, sequence: 1,
+    frames: [{ throttle: 1, brake: 0, steer: 0 }] }
+  const lastSafeLegacy = await post(f, `${drivingPath}/input`, legacyPacket, legacyOwner.cookie)
+  assert.deepEqual([lastSafeLegacy.ok, lastSafeLegacy.session?.revision], [true, max])
+  const legacyAtMax = await readRow(legacyOwner.id)
+  const legacyReplay = await post(f, `${drivingPath}/input`, legacyPacket, legacyOwner.cookie)
+  assert.deepEqual([legacyReplay.ok, legacyReplay.duplicate, legacyReplay.session?.revision], [true, true, max])
+  assert.deepEqual(await readRow(legacyOwner.id), legacyAtMax, 'a retained legacy receipt remains readable and replayable at max revision')
+
+  const v2Owner = await onboard(f)
+  const v2Start = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, v2Owner.cookie)
+  assert.ok(v2Start.session)
+  f.advance(100)
+  const explicitPacket = { cityId: 'lagos', journeyId: v2Start.session.journeyId, sequence: 1,
+    frames: [{ throttle: 1, brake: 0, steer: 0, gear: 'forward' }] }
+  const firstV2 = await post(f, `${drivingPath}/input`, explicitPacket, v2Owner.cookie)
+  assert.ok(firstV2.ok && firstV2.session)
+  await mutateRow(v2Owner.id, row => { row.revision = max - 1 })
+  f.advance(100)
+  const legacyV2Packet = { cityId: 'lagos', journeyId: v2Start.session.journeyId, sequence: 2,
+    frames: [{ throttle: 0, brake: 1, steer: 0 }] }
+  const lastSafeV2 = await post(f, `${drivingPath}/input`, legacyV2Packet, v2Owner.cookie)
+  assert.deepEqual([lastSafeV2.ok, lastSafeV2.session?.revision, lastSafeV2.session?.state.gear], [true, max, 'forward'])
+  const v2AtMax = await readRow(v2Owner.id)
+  const v2Replay = await post(f, `${drivingPath}/input`, legacyV2Packet, v2Owner.cookie)
+  assert.deepEqual([v2Replay.ok, v2Replay.duplicate, v2Replay.session?.revision], [true, true, max])
+  assert.deepEqual(await readRow(v2Owner.id), v2AtMax, 'the v2 writer shape and retained receipt remain readable at max revision')
+})
+
 test('replaying a start receipt after a failed run is superseded by the canonical fresh journey', async t => {
   const f = await livingFixture(t)
   const player = await onboard(f)

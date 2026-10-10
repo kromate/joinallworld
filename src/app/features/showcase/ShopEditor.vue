@@ -64,7 +64,7 @@ const hide = (hidden: boolean): Promise<boolean> => send('hide', '/api/showcase/
 async function removeShop(): Promise<void> { if (await send('remove', '/api/showcase/mine/remove', {}, 'Your shop is removed and its stall is free.')) { Object.assign(draft, emptyDraft(props.venue ?? '')); confirmRemove.value = false } }
 const removePhoto = (photo: string): Promise<boolean> => send(`photo-remove:${photo}`, '/api/showcase/mine/photos/remove', { photo }, 'Photo removed.')
 async function declareAdult(): Promise<void> {
-  try { await game.fetchJson('/api/growth/consent', { method: 'POST', body: { age: 'adult' } }); note.value = 'Thank you.'; await load() } catch (error) { note.value = error instanceof Error ? error.message : 'That did not work.' }
+  try { await game.fetchJson('/api/growth/consent', { method: 'POST', body: { cityId: props.city, age: 'adult' } }); note.value = 'Thank you.'; await load() } catch (error) { note.value = error instanceof Error ? error.message : 'That did not work.' }
 }
 async function addPhotos(event: Event): Promise<void> {
   const input = event.target as HTMLInputElement

@@ -11,7 +11,7 @@ import { VENUES } from '../src/game/cities/lagos/venues.ts';
 import { isOpen, minutesUntilOpen } from '../src/game/clock.ts';
 import { spotsOf } from '../src/game/api.ts';
 import type { LifeState } from '../src/types/index.ts';
-import type { AdsResponse, GovResponse, HuntResponse, NeighboursResponse, PrefsResponse, PulseResponse, RadioEntry, RadioResponse, RichListResponse } from '../src/types/civic.ts';
+import type { AdsResponse, GovResponse, HuntResponse, NeighboursResponse, PrefsResponse, PulseResponse, RadioEntry, RadioResponse, RichListResponse, BoardsResponse } from '../src/types/civic.ts';
 import type { ApiEnvelope } from '../src/types/protocol.ts';
 import type { Database } from './types.ts';
 
@@ -445,6 +445,46 @@ test('neighbours, rich list and counters: real counts, truthful presence, opt-ou
   assert.deepEqual(civic.prefs, { [chidi.id]: { directory: true } });
   const residents = must(civic.cities.lagos).residents;
   assert.deepEqual(Object.keys(residents).sort(), [ada.id, bola.id, chidi.id].sort());
-  assert.deepEqual(Object.keys(residents[ada.id] ?? {}).sort(), ['cash', 'claims', 'day', 'earned', 'gems', 'house', 'lastSeen', 'name', 'since', 'week']);
+  assert.deepEqual(Object.keys(residents[ada.id] ?? {}).sort(), ['cash', 'claims', 'day', 'earned', 'gems', 'house', 'lastSeen', 'name', 'since', 'te', 'tw', 'week']);
+  assert.deepEqual(Object.keys(must(civic.cities.lagos).pride ?? {}).sort(), ['active', 'earned', 'week']);
   for (const device of [ada, bola, chidi]) assert.ok(!JSON.stringify(db.civic).includes(device.cookie.slice(4)));
+});
+
+test('place boards: ranked from the weekly tallies, small places held back, hidden players counted and never named', async t => {
+  const { f, get, post, life, wait } = await harness(t);
+  const players: Device[] = [];
+  const settle = () => wait(11000); // a built board is reused for ten seconds
+  for (const name of ['Ada', 'Bola', 'Chidi', 'Dayo', 'Efe']) players.push(await f.device(name));
+  const [ada, bola, chidi] = players as [Device, Device, Device];
+  assert.equal((await get<BoardsResponse>('/api/civic/boards?scope=planet')).error, 'invalid_scope');
+  assert.equal((await get<BoardsResponse>('/api/civic/boards?by=luck')).error, 'invalid_measure');
+  assert.equal((await get<BoardsResponse>('/api/civic/boards?after=abc')).error, 'invalid_cursor');
+  // Nobody has checked in: nothing is ranked and nothing is invented.
+  let board = await get<BoardsResponse>('/api/civic/boards?scope=city');
+  assert.deepEqual([board.rows, board.total, board.unranked, board.lastWeek.winner], [[], 0, 0, null]);
+  for (const device of players.slice(0, 4)) await get<PulseResponse>('/api/civic/pulse?city=lagos', device);
+  settle();
+  board = await get<BoardsResponse>('/api/civic/boards?scope=city', ada);
+  assert.deepEqual([board.rows, board.unranked], [[], 1], 'four players are too few to show a city');
+  assert.deepEqual(board.you, { id: 'lagos', name: 'Lagos', rank: null, behind: null });
+  await get<PulseResponse>('/api/civic/pulse?city=lagos', players[4]);
+  settle();
+  for (const scope of ['city', 'state', 'country'] as const) {
+    board = await get<BoardsResponse>(`/api/civic/boards?scope=${scope}`, ada);
+    assert.equal(board.rows.length, 1, scope); assert.deepEqual([board.rows[0]?.rank, board.rows[0]?.residents, board.rows[0]?.active, board.rows[0]?.you], [1, 5, 5, true], scope);
+    assert.deepEqual([board.you?.rank, board.you?.behind], [1, null], scope);
+  }
+  // Hiding from the rich list changes no total and names nobody.
+  const before = await get<BoardsResponse>('/api/civic/boards?scope=city', ada);
+  for (const device of [bola, chidi]) await post('/api/civic/prefs', { richList: false }, device);
+  settle();
+  const after = await get<BoardsResponse>('/api/civic/boards?scope=city', ada);
+  assert.deepEqual(after.rows, before.rows);
+  const text = JSON.stringify(after);
+  for (const device of players) assert.ok(!text.includes(device.id), 'no player id');
+  for (const name of ['Ada', 'Bola', 'Chidi', 'Dayo', 'Efe']) assert.ok(!text.includes(`"${name}"`), name);
+  assert.equal((await life(ada)).cash, 5000);
+  // The answer to a signed-out reader is the same list without a place of their own.
+  const stranger = await get<BoardsResponse>('/api/civic/boards?scope=city');
+  assert.deepEqual([stranger.rows, stranger.you], [before.rows.map((row) => ({ ...row, you: false })), null]);
 });

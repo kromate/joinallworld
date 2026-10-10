@@ -3,7 +3,7 @@
 // rules text. Pure, so `node --test` reaches it (civicModel.test.ts).
 import type { LifeState } from '../../../types/life.ts'
 import type {
-  AdColour, Ad, AdsResponse, CivicNotice, ElectionPhase, GovResponse, GovRules, GovYou, PulseResponse, RadioEntry, RadioView, RichRow,
+  AdColour, Ad, AdsResponse, BoardMeasure, BoardScope, BoardYou, BoardsResponse, CivicNotice, ElectionPhase, GovResponse, GovRules, GovYou, PulseResponse, RadioEntry, RadioView, RichRow,
 } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
 import { ELECTION, RADIO } from './civicContent.ts'
@@ -146,6 +146,46 @@ export const adTooShort = (text: string, min: number): boolean => lengthOf(text)
 export function podium(rows: readonly RichRow[]): { steps: [RichRow | undefined, RichRow | undefined, RichRow | undefined]; rest: RichRow[] } {
   return { steps: [rows[1], rows[0], rows[2]], rest: rows.slice(3) }
 }
+
+// ---- places: cities, states and countries ranked against each other -------------------------
+
+export const BOARD_SEGMENTS: readonly { id: BoardScope; label: string; noun: string }[] = [
+  { id: 'city', label: 'Cities', noun: 'city' }, { id: 'state', label: 'States', noun: 'state' }, { id: 'country', label: 'Countries', noun: 'country' },
+]
+export const BOARD_MEASURES: readonly { id: BoardMeasure; label: string }[] = [
+  { id: 'pride', label: 'Pride (naira per player)' }, { id: 'earned', label: 'Total earned this week' },
+  { id: 'active', label: 'Active this week' }, { id: 'residents', label: 'Players' },
+]
+export const boardsKey = (scope: BoardScope, by: BoardMeasure): string => `boards:${scope}:${by}`
+export const boardsPath = (scope: BoardScope, by: BoardMeasure): string => `/api/civic/boards?scope=${scope}&by=${by}`
+/** "1st", "2nd", "3rd", "11th", "22nd". */
+export function ordinal(n: number): string {
+  const tail = n % 100, suffix = tail >= 11 && tail <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[n % 10] ?? 'th'
+  return `${n}${suffix}`
+}
+/** ₦950, ₦1,200, ₦1.2m, ₦3.5bn: a large total in a few characters. */
+export function compactMoney(value: number): string {
+  const trim = (n: number): string => String(Math.round(n * 10) / 10)
+  return value >= 1e9 ? `₦${trim(value / 1e9)}bn` : value >= 1e6 ? `₦${trim(value / 1e6)}m` : money(value)
+}
+/** A place's figure in the measure it is ranked by. */
+export const boardAmount = (by: BoardMeasure, value: number): string => (by === 'pride' ? money(value) : by === 'earned' ? compactMoney(value) : count(value))
+const gapWords = (by: BoardMeasure, amount: number): string =>
+  by === 'pride' ? `${money(amount)} a player` : by === 'earned' ? compactMoney(amount) : `${count(amount)} ${by === 'active' ? 'active ' : ''}${amount === 1 ? 'player' : 'players'}`
+/** Where the viewer's own place stands, in a sentence: "Ibadan is 2nd, ₦1.2m behind Abuja this week." */
+export function standingLine(you: BoardYou | null, by: BoardMeasure, min: number): string {
+  if (!you) return 'Play in a city to see where it stands.'
+  if (you.rank === null) return `${you.name} needs ${min} players, ${min} of them active this week, to be ranked.`
+  if (you.rank === 1 || !you.behind) return `${you.name} is ${ordinal(you.rank)} this week.`
+  return you.behind.amount === 0 ? `${you.name} is ${ordinal(you.rank)}, level with ${you.behind.name} this week.` : `${you.name} is ${ordinal(you.rank)}, ${gapWords(by, you.behind.amount)} behind ${you.behind.name} this week.`
+}
+/** The line a player can send: plain text, no link. Null while the place is not ranked. */
+export function placeShareLine(you: BoardYou | null, scope: BoardScope): string | null {
+  if (!you || you.rank === null) return null
+  return scope === 'city' ? `${you.name} is #${you.rank} in Allworld this week.` : `${you.name} is the #${you.rank} ${scope} in Allworld this week.`
+}
+/** "Last week: Kano", or null when no place was ranked. */
+export const lastWeekLine = (last: BoardsResponse['lastWeek']): string | null => (last.winner ? `Last week: ${last.winner.name}` : null)
 
 // ---- club radio ----------------------------------------------------------------------------
 

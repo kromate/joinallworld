@@ -9,7 +9,8 @@
 //     seq:       number                       last id issued for announcements and shout-outs
 //     visits:    number                       resident-days: +1 the first time a resident checks in on a Lagos day
 //     prunedAt:  ms
-//     residents: { [publicId]: { name, house, since, lastSeen, day, cash, week, earned, gems, claims } }
+//     residents: { [publicId]: { name, house, since, lastSeen, day, cash, week, earned, gems, claims, tw?, te? } }
+//     pride?:    { week, active, earned, prev?: { week, active, earned, residents } }   weekly totals for the place boards (boards.ts)
 //     gov:       { elections: { [week]: { candidates: { [publicId]: { name, slogan, at } }, votes: { [voterId]: candidateId },
 //                                         addr?: { [addressKey]: votes }, capLogged?: { [addressKey]: true } } },
 //                  (addr and capLogged exist for the current election only; addressKey is a salted hash, never an address)
@@ -62,6 +63,7 @@ export function cityOf(civic: CivicCollection, cityId: CityId): CivicCityRecord 
   if (!whole(city.visits)) city.visits = 0;
   if (!Number.isFinite(city.prunedAt)) city.prunedAt = 0;
   if (!record(city.residents)) city.residents = {};
+  if (city.pride !== undefined && !record(city.pride)) delete city.pride;
   if (!record(city.gov)) city.gov = { elections: {}, announcements: [] };
   if (!record(city.gov.elections)) city.gov.elections = {};
   if (!Array.isArray(city.gov.announcements)) city.gov.announcements = [];

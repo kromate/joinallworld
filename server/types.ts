@@ -526,6 +526,15 @@ export interface ResidentRecord {
   earned: number
   gems: number
   claims: number
+  /** Lagos week this resident was last added to the city's weekly tally, and what they added then (server/civic/boards.ts). */
+  tw?: number
+  te?: number
+}
+/** A city's weekly totals, kept as residents check in so the place boards never read the residents. */
+export interface PrideWeek { week: number; active: number; earned: number }
+export interface PrideTally extends PrideWeek {
+  /** The week before, when this one rolled over from it: with the residents there were then. */
+  prev?: PrideWeek & { residents: number }
 }
 export interface ElectionRecord {
   candidates: Record<string, { name: string; slogan: string; at: number; /** party id, absent for an independent */ party?: string }>
@@ -552,6 +561,8 @@ export interface CivicCityRecord {
   visits: number
   prunedAt: number
   residents: Record<string, ResidentRecord>
+  /** This week's totals and the last week's; absent until a resident checks in. */
+  pride?: PrideTally
   gov: { elections: Record<string, ElectionRecord>; announcements: AnnouncementRecord[] }
   ads: { billboard: Record<string, AdRecord>; sea: Record<string, AdRecord> }
   hunt: { found: number; claims: number; byDay: Record<string, number> }
@@ -784,6 +795,8 @@ export interface Database {
   trustChecks?: import('./trust/dojah.ts').IdChecks
   street?: import('./street/types.ts').StreetCollection
   realValue?: import('../src/types/real-value.ts').RealValueCollection
+  /** server/showcase/data.ts: showcase shops, their owners' upload counts and contact events. Created by the first shop. */
+  showcase?: import('../src/types/showcase.ts').ShowcaseCollection
   /** server/politics/data.ts: parties, decrees, treasuries and the state and national ballots. */
   politics?: PoliticsCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
@@ -1160,6 +1173,8 @@ export interface RouteContext {
   streetAssets?: import('./street/types.ts').StreetAssetReader
   /** Trusted host-only display capability. Never read from a request or persisted life. */
   interactiveTeachingStarts?: boolean
+  /** Trusted host authority for new reverse-capable sessions; absent means OFF. */
+  reverseGearIssuance?: boolean
   store: Store
   /** Server time in ms — never call Date.now(). */
   now(): number
@@ -1172,6 +1187,8 @@ export interface RouteContext {
   retryIn?(key: string): number
   /** The picture bytes (server/social/images.ts); null on a host built without them. */
   images: ImageStore | null
+  /** Showcase shop photos (server/showcase/): a store of their own, never trimmed by age or by the chat ceiling; null on a host built without it. */
+  showcaseImages?: ImageStore | null
   voices?: VoiceStore | null
   /** The module's namespaced top-level collection, created on first use. */
   collection<K extends CollectionName>(db: Db, name: K, initial?: Partial<Collections[K]>): Collections[K]

@@ -196,6 +196,12 @@ function reasonEquals(actual: readonly JusticeEvidenceId[], expected: readonly J
   return actual.length === expected.length && expected.every((id) => actual.includes(id))
 }
 function containsAll(actual: readonly JusticeEvidenceId[], expected: readonly JusticeEvidenceId[]): boolean { return expected.every((id) => actual.includes(id)) }
+function canonicalEvidence(ids: readonly JusticeEvidenceId[]): JusticeEvidenceId[] {
+  return EVIDENCE_IDS.filter((id) => ids.includes(id))
+}
+function sameEvidenceOrder(left: readonly JusticeEvidenceId[], right: readonly JusticeEvidenceId[]): boolean {
+  return left.length === right.length && left.every((id, index) => id === right[index])
+}
 function copyState(state: JusticePracticeState): JusticePracticeState {
   return {
     ...state,
@@ -221,7 +227,7 @@ function transition(state: JusticePracticeState, action: JusticePracticeAction):
   if (action.kind === 'inspect' && phase === 'inspect-initial' && INITIAL_EVIDENCE.includes(action.evidenceId as typeof INITIAL_EVIDENCE[number])) {
     if (inspectedEvidenceIds.includes(action.evidenceId)) feedbackId = 'alreadyInspected'
     else {
-      inspectedEvidenceIds.push(action.evidenceId); feedbackId = 'inspected'
+      inspectedEvidenceIds = canonicalEvidence([...inspectedEvidenceIds, action.evidenceId]); feedbackId = 'inspected'
       if (containsAll(inspectedEvidenceIds, INITIAL_EVIDENCE)) phase = 'initial-decision'
       code = 'advanced'
     }
@@ -234,7 +240,7 @@ function transition(state: JusticePracticeState, action: JusticePracticeAction):
     noticeSent = true; phase = 'inspect-review'; feedbackId = 'noticeSent'; code = 'advanced'
   } else if (action.kind === 'inspect-review' && phase === 'inspect-review' && noticeSent) {
     if (inspectedEvidenceIds.includes('npc-recount')) feedbackId = 'alreadyInspected'
-    else { inspectedEvidenceIds.push('npc-recount'); phase = 'review-decision'; feedbackId = 'reviewEvidence'; code = 'advanced' }
+    else { inspectedEvidenceIds = canonicalEvidence([...inspectedEvidenceIds, 'npc-recount']); phase = 'review-decision'; feedbackId = 'reviewEvidence'; code = 'advanced' }
   } else if (action.kind === 'review-decision' && phase === 'review-decision' && noticeSent) {
     if (!inspectedEvidenceIds.includes('npc-recount') || !containsAll(inspectedEvidenceIds, REVIEW_REASONS)) feedbackId = 'reviewFirst'
     else if (action.choiceId === 'correct-duplicate-entry' && reasonEquals(action.reasonEvidenceIds, REVIEW_REASONS)) {
@@ -257,7 +263,6 @@ export function readJusticePracticeState(value: unknown): JusticePracticeState |
       || !finiteInt(value.revision) || typeof value.phase !== 'string' || !PHASES.includes(value.phase as JusticePracticePhase)
       || !Array.isArray(value.inspectedEvidenceIds) || value.inspectedEvidenceIds.length > EVIDENCE_IDS.length
       || !value.inspectedEvidenceIds.every(validEvidenceId) || new Set(value.inspectedEvidenceIds).size !== value.inspectedEvidenceIds.length
-      || !value.inspectedEvidenceIds.every((id, i, inspected) => EVIDENCE_IDS.indexOf(id) > (i === 0 ? -1 : EVIDENCE_IDS.indexOf(inspected[i - 1] as JusticeEvidenceId)))
       || typeof value.noticeSent !== 'boolean' || !Array.isArray(value.receipts) || value.receipts.length > JUSTICE_PRACTICE_MAX_RECEIPTS) return null
     const readDecision = <C extends string>(input: unknown, choices: readonly C[]): EvidenceLinkedChoice<C> | null | false => {
       if (input === null) return null
@@ -294,6 +299,7 @@ export function readJusticePracticeState(value: unknown): JusticePracticeState |
     // Rebuild progress from the bounded action ledger. A shape-valid but forged saved decision,
     // evidence list, phase, or completion marker is not accepted as persisted server history.
     let replay = createJusticePractice()
+    const firstSuccessfulInspectionOrder: JusticeEvidenceId[] = []
     for (const receipt of receipts) {
       if (receipt.outcome.code === 'conflict') {
         if (replay.phase === 'complete' || receipt.outcome.feedbackId !== 'revisionConflict' || receipt.outcome.revision !== replay.revision
@@ -311,16 +317,23 @@ export function readJusticePracticeState(value: unknown): JusticePracticeState |
         || receipt.expectedRevision !== replay.revision || receipt.outcome.revision !== replay.revision + 1) return null
       const next = transition(replay, receipt.action)
       if (next.code !== receipt.outcome.code || next.feedbackId !== receipt.outcome.feedbackId) return null
+      if (next.code === 'advanced' && receipt.action.kind === 'inspect'
+        && !firstSuccessfulInspectionOrder.includes(receipt.action.evidenceId)) firstSuccessfulInspectionOrder.push(receipt.action.evidenceId)
+      if (next.code === 'advanced' && receipt.action.kind === 'inspect-review'
+        && !firstSuccessfulInspectionOrder.includes('npc-recount')) firstSuccessfulInspectionOrder.push('npc-recount')
       replay = { schemaVersion: JUSTICE_PRACTICE_SCHEMA_VERSION, caseId: JUSTICE_PRACTICE_CASE_ID, revision: replay.revision + 1,
         phase: next.phase, inspectedEvidenceIds: next.inspectedEvidenceIds, initialDecision: next.initialDecision,
         noticeSent: next.noticeSent, reviewDecision: next.reviewDecision, receipts: [...replay.receipts, receipt] }
     }
+    const canonicalInspected = canonicalEvidence(replay.inspectedEvidenceIds)
+    const evidenceMatchesSupportedOrder = sameEvidenceOrder(inspected, canonicalInspected)
+      || sameEvidenceOrder(inspected, firstSuccessfulInspectionOrder)
     if (replay.revision !== state.revision || replay.phase !== state.phase || replay.noticeSent !== state.noticeSent
-      || JSON.stringify(replay.inspectedEvidenceIds) !== JSON.stringify(state.inspectedEvidenceIds)
+      || !evidenceMatchesSupportedOrder
       || JSON.stringify(replay.initialDecision) !== JSON.stringify(state.initialDecision)
       || JSON.stringify(replay.reviewDecision) !== JSON.stringify(state.reviewDecision)) return null
     if (serializedStateBytes(state) > JUSTICE_PRACTICE_MAX_STATE_BYTES) return null
-    return state
+    return { ...state, inspectedEvidenceIds: canonicalInspected }
   } catch { return null }
 }
 

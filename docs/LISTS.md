@@ -18,6 +18,7 @@ One pattern serves every list that can grow. A server route returns a page and a
 | A conversation's lines | `GET /api/social/conversations/:id?before=<seq>&limit=` | 40 on open, 40 older (max 100) | message number; `more` says older lines are kept (200 are kept) | One conversation of at most 200 lines. |
 | Directory of homes (Neighbours) | `GET /api/civic/neighbours?city=&district=&after=&limit=` | 40 (max 100) | name, id | Per-city sorted rows kept 10 s; a binary search and the page. |
 | Rich list below its top | `GET /api/civic/richlist?city=&board=balances\|earners&after=&limit=` | 40 (max 100), to rank 500 | amount, id | The same kept rows. |
+| Place boards (cities, states, countries) | `GET /api/civic/boards?scope=&by=&after=&limit=` | 25 (max 100) | rank (a place's order by the measure, then id) | Each city keeps a weekly tally that a check-in updates; a build reads one tally and the resident count of each city (keys only, no resident record) at most every 10 s, then a page is a slice. Places with fewer than 5 residents or 5 active players are left off. |
 | Founder's old friend page | `GET /api/social/friends?after=` | 50 | friends-since order | The directory index (the old route is kept for old clients). |
 
 Lists that cannot grow (friend requests 30, blocked 200, reports 20, updates 50, search results 10, group picker 20) are not paged by the server; the long ones among them are drawn in chunks (below).

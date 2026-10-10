@@ -47,6 +47,7 @@ import { createSqliteStore } from './sqlite-store.ts';
 import { parseLayout } from '../server/keyed.ts';
 import { createSqliteVoices } from './sqlite-voices.ts';
 import { createSqliteImages } from './sqlite-images.ts';
+import { keepAlways } from '../server/showcase/image-files.ts';
 import { LIMITER_CAPS, createMemoryLimiter, limiterBatch, limiterClass, type LimiterClass } from '../server/limiter.ts';
 import { sqliteShardBackend } from './sqlite-shards.ts';
 import { ALARM_TABLE, createWriteMeter, type WriteMeter } from './write-meter.ts';
@@ -241,6 +242,8 @@ async function adminShell(request: Request, env: WorkerEnv, url: URL): Promise<R
 /** The bindings and variables of the Worker (wrangler.jsonc, plus secrets and the outreach/voice settings the host may read). */
 export interface WorkerEnv {
   INTERACTIVE_TEACHING_STARTS?: string
+  /** New reverse issuance only for the exact host value '1'; unset remains OFF. */
+  REVERSE_GEAR_ISSUANCE?: string
   JOINALLWORLD: DurableObjectNamespace
   ASSETS: Fetcher
   BUILD_ID?: string
@@ -302,6 +305,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
   store: SqliteStore;
   shards: ShardStore;
   images: ImageStore;
+  showcaseImages: ImageStore;
   voices: VoiceStore;
   sweepAt: number;
   expirySweepAt: number;
@@ -331,6 +335,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     this.sleeps = env.SLEEP_BETWEEN_BEATS === '1';
     this.store = createSqliteStore(storage, { barrier, lazyFlushMs: this.sleeps ? 0 : LAZY_FLUSH_MS, layout: parseLayout(env.STORE_LAYOUT) ?? 'legacy', log });
     this.images = createSqliteImages(storage);
+    this.showcaseImages = keepAlways(createSqliteImages(storage, 'showcase_images'));
     this.voices = createSqliteVoices(storage);
     // The world registry: one append-only shard per local government, as rows beside the main tables (sqlite-shards.ts).
     this.shards = createShardStoreOn(sqliteShardBackend(storage, { barrier, beforeWrite: () => this.store.assertWritable() }), { empty: worldRegistry.empty, reduce: worldRegistry.reduce, snapshot: worldRegistry.snapshot, loaded: worldRegistry.loaded, live: worldRegistry.live, log }) as ShardStore;
@@ -369,8 +374,9 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const open = (): HostSocket[] => [...this.held.all].filter(ws => ws.readyState === 1);
     const openOf = (id: string): HostSocket[] => [...this.held.byPlayer.get(id) ?? []].filter(ws => ws.readyState === 1);
     const context: RouteContext = this.context = {
-      store: this.store, images: this.images, voices: this.voices, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
+      store: this.store, images: this.images, showcaseImages: this.showcaseImages, voices: this.voices, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
       ...(env.INTERACTIVE_TEACHING_STARTS === '1' ? { interactiveTeachingStarts: true } : {}),
+      reverseGearIssuance: env.REVERSE_GEAR_ISSUANCE === '1',
       randomId: () => crypto.randomUUID(),
       // Relay credentials for calls (server/call-relay.ts): the day's count lives in the object's own storage, so the ceiling holds across restarts.
       callRelay: createCallRelay({

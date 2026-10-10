@@ -19,6 +19,7 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import { createFileVoices } from './social/voice-files.ts';
 import { createFileImages } from './social/image-files.ts';
+import { keepAlways } from './showcase/image-files.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
 import { createCallRelay } from './call-relay.ts';
@@ -65,6 +66,8 @@ export type Connection = WebSocket & WsConnection;
 export interface ServerOptions {
   /** Trusted host activation only; player requests cannot opt in. */
   interactiveTeachingStarts?: boolean
+  /** Trusted host activation only; v2 readers remain available when omitted. */
+  reverseGearIssuance?: boolean
   commerceGateway?: CommerceGateway
   streetAssets?: RouteContext['streetAssets']
   dataDir?: string
@@ -156,7 +159,7 @@ async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<stri
 }
 
 export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), commerceGateway, streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
-  lazyFlushMs, shardIo, interactiveTeachingStarts = false,
+  lazyFlushMs, shardIo, interactiveTeachingStarts = false, reverseGearIssuance = false,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
   trustProxy = process.env.TRUST_PROXY === '1',
@@ -512,8 +515,9 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   /** Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })). */
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
-    store, images: createFileImages(join(dataDir, 'chat-images')), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
+    store, images: createFileImages(join(dataDir, 'chat-images')), showcaseImages: keepAlways(createFileImages(join(dataDir, 'showcase-images'))), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
     ...(interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {}),
+    reverseGearIssuance: reverseGearIssuance === true,
     randomId,
     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },

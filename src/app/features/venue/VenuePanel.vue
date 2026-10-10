@@ -99,6 +99,7 @@ watch(() => `${state.value.location}:${state.value.spot}`, () => {
     <div ref="rail" class="life-spots">
       <button class="life-expand" :class="{ 'is-expanded': ui.expanded }" type="button" :aria-expanded="ui.expanded" :aria-label="`${ui.expanded ? 'Hide' : 'Show'} activities`" title="Activities (T)" @click="ui.expanded = !ui.expanded"><GameIcon name="chevron-down" /></button>
       <button v-if="market" type="button" data-shops title="Players’ stalls at this market, and renting one" @click="shell.open('business', { venue: venue.id })"><GameIcon inline name="buy" /><span>Shops here</span></button>
+      <button v-if="market" type="button" data-services title="Real people’s skills and services at this market" @click="shell.open('showcase', { venue: venue.id })"><GameIcon inline name="people" /><span>Services here</span></button>
       <button v-for="(item, index) in spots" :key="item.id" type="button" :data-spot="item.id" :class="{ 'is-selected': item.id === state.spot }" :aria-pressed="item.id === state.spot" :aria-busy="pending === `spot:${item.id}`" :title="`Shortcut ${index + 1}`" @click="selectSpot(item.id)"><GameIcon inline kind="spot" :id="item.id" :emoji="item.icon" /><span>{{ item.label }}</span></button>
       <button v-if="streetExit" type="button" :disabled="!view.connected || Boolean(state.activeAction)" @click="leaveStreetVenue">Leave to street</button>
       <button v-if="cityStreet" type="button" @click="shell.open('neighbourhood')">Walking help</button>

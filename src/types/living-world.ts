@@ -53,6 +53,8 @@ export interface DrivingResponse {
   course: DrivingRoute
   frameMs: 100
   maxFrames: 5
+  /** Ephemeral response-only capability from trusted service configuration. Never saved. */
+  reverseGearControls?: true
 }
 export interface DrivingControlPacket {
   cityId: CityId

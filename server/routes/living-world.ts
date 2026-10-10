@@ -9,7 +9,7 @@ import { createAssessmentService } from '../living-world/assessment-service.ts'
 import type { RouteContext, RouteHandler, RouteKey } from '../types.ts'
 
 export default function livingWorldRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
-  const driving = createDrivingService(ctx)
+  const driving = createDrivingService(ctx, { reverseGearIssuance: ctx.reverseGearIssuance === true })
   const qualification = createQualificationService(ctx, readDrivingQualificationEvidence)
   const barber = createBarberService(ctx)
   const rental = createStarterRentalService(ctx)

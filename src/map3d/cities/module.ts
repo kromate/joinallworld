@@ -80,6 +80,8 @@ function roadsOf(rows: RoadRows, origin: CityModule['rules']['mapOrigin'], trunk
 
 /** How far (map units, 100 m each) the ground reaches beyond a city drawn with a surround colour. */
 export const SURROUND_UNITS = 250
+/** ... and at most this far: the ground reaches one and a half times the city's width so that the camera, which stands about a city's width back, never sees the edge of it. Rivers and shores are carried as far (the builders' REACH). */
+export const SURROUND_MAX_UNITS = 600
 /** How far apart (metres) two venues may be authored and still count as standing on one reference point. */
 const SAME_POINT_M = 60
 /**
@@ -114,7 +116,8 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
     const points = part[0]
     return points ? [{ id: `${id}-${i}`, kind: 'mainland' as const, exact: true, points, holes: part.slice(1) }] : []
   }))
-  const fit = extent(local(geometry.playArea).flatMap(part => part[0] ?? []))
+  // A city drawn city-wide is framed on its built-up land and not on the water the play area holds round it (Kampala's lake), so the default view shows the city.
+  const fit = extent(local(surround ? Object.values(geometry.localUnits).flat() : geometry.playArea).flatMap(part => part[0] ?? []))
   const lgas: PackLga[] = module.rules.units.map(unit => {
     const parts = shapes[unit.id]
     if (!parts?.length) throw new TypeError(`Missing geometry for ${unit.id}`)
@@ -161,8 +164,8 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
   const characterFabric: PackFabric[] = areas.map(item => ({ box: [item.x - item.r, item.z - item.r, item.x + item.r, item.z + item.r], circle: [item.x, item.z, item.r], style: item.tone === 'old' ? 'dense' : 'villas', keep: item.tone === 'old' ? 0.25 : 0.05, ...(item.tone === 'old' ? { roofs: RUST } : {}) }))
   // Ground name plates for the landmarks that are not venues: none that would lie across another plate or over a venue.
   const plateRoom = (name: string, size: number) => name.length * size * 0.9
-  // A name plate is as wide as the city is: 1.4 map units over a 4 km town, growing to 4.5 over a metropolis, so it can still be read in the whole view.
-  const plateSize = surround ? Math.min(4.5, Math.max(1.4, Math.max(fit.maxX - fit.minX, fit.maxZ - fit.minZ) / 90)) : 1.4
+  // A name plate is as wide as the city is: 1.4 map units over a 4 km town, growing to 5 over a metropolis, so it can still be read in the whole view.
+  const plateSize = surround ? Math.min(5, Math.max(1.4, Math.max(fit.maxX - fit.minX, fit.maxZ - fit.minZ) / 70)) : 1.4
   const plates: PackDistrict[] = []
   for (const item of landmarks.filter(item => item.kind !== 'route-reference' && !content.venues.some(venue => venue.id === item.id))) {
     const [x, z] = toLocal(origin, item.lon, item.lat), plate = { name: item.name, x, z, size: plateSize, water: item.kind === 'water' }
@@ -172,14 +175,14 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
     if (plate.water || !clash) plates.push(plate)
   }
   // Round a city drawn city-wide the ground goes on for 25 km, so the board's edge and wall are never in view.
-  const ring = surround ? SURROUND_UNITS : 30
+  const ring = surround ? Math.min(SURROUND_MAX_UNITS, Math.max(SURROUND_UNITS, 1.5 * Math.max(fit.maxX - fit.minX, fit.maxZ - fit.minZ))) : 30
   const context = surroundings ? mapContext(origin, fit, surroundings.planned, 2600, surroundings.spec) : undefined
   return {
     id: module.id, name: module.rules.name, inland: module.rules.seaPlots === false,
     frame: { origin, unitsPerKm: 10 }, roadScale: 0.45,
     ...(surround ? { surround } : {}),
     bounds: { ...fit, minX: fit.minX - ring, maxX: fit.maxX + ring, minZ: fit.minZ - ring, maxZ: fit.maxZ + ring, fit,
-      sea: { x0: fit.minX, x1: fit.minX, z0: fit.maxZ, z1: fit.maxZ + 26 } },
+      sea: { x0: fit.minX, x1: fit.minX, z0: fit.maxZ, z1: fit.maxZ + (surround ? ring - 4 : 26) } },
     core: { minX: core.minX - 15, maxX: core.maxX + 15, minZ: core.minZ - 15, maxZ: core.maxZ + 15 },
     land, water: local(reachWater ?? geometry.water).flatMap((part, i) => part[0] ? [{ id: `water-${i}`, points: part[0], holes: part.slice(1) }] : []),
     lgas, sites, homes, roads: roadsOf(roadRows, origin, new Set(character.trunkRoads ?? [])), soon: {}, zones: [],

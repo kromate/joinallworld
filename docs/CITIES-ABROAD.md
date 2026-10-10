@@ -33,6 +33,16 @@ Everything stays inside the existing destination factory (`src/game/cities/afric
 
 The land outline is a sketch at the grid's size (about 40 m after tracing) and says so in its file header. It is not an administrative boundary; where an administrative boundary of the right level exists and covers only the built-up area, prefer it. The ground outside the outline is drawn in the `surround` colour all the way out, so the old square of a starter never shows.
 
+### Rendering rules the shared code now applies (found by a real-browser check of the first five)
+
+- The outline is smooth: the coarse land-use mask is blurred and read back on the fine grid (`blur` in `geometry-tools.ts`), and the outermost ring of cells is left empty, so the built-up ground rounds off before the box edge instead of ending in a straight cut or a staircase of 440 m squares.
+- `surround` is a per-city green or olive close to the 3D ground colour, so the ground reads as one continuous country (`#bcd596` is the shared default); a sandy value renders as orange under the evening light and was dropped. The recipe records no land cover, so no city claims arid ground; pick a drier olive (`#cdd29d`) only where the real country is known to be dry (Cairo, Dakar).
+- The ground reaches one and a half times the city's width beyond the built-up land (250 to 600 units of 100 m; `SURROUND_UNITS`, `SURROUND_MAX_UNITS` in `src/map3d/cities/module.ts`) on every side, including the south, and the builder carries water out as far (`REACH`, 0.3 to 0.55 degrees beyond the box). A river mapped in pieces needs `wideWater: true` (Cairo), so the Nile is asked for as far out as the ground.
+- Roads are cut 0.004 degrees (about 440 m) past the outline (`roadMarginDegrees`).
+- Inland water under `minWaterKm2` (0.4 by default) is dropped: a small pond reads as a black pit at city scale. Kigali (0.02) and Lusaka (0.08) keep theirs because they have nothing larger.
+- The default and whole-city view frame the built-up land, not the water the play area holds (Kampala's lake). The simple map lays no estate lots and no city chip over a city-wide pack (its pale "0 homes" grid and its chip hid the pins); names are on the ground, and a phone opens on the core, not on the arrival airport.
+- Offline check: render the built pack (outline, water, roads, labels, places, ground extent) to a flat PNG and look at it; magenta anywhere means the ground does not reach far enough.
+
 ## Estimates for the remaining cities
 
 Five cities are done (Cairo, Kigali, Kampala, Rabat, Lusaka). Measured on those: about one hour of hands-on work per city once the shared tools exist (reading the candidate lists, choosing places, the tests), plus waiting for the public map server, which answered 504 for 5 to 40 minutes at a time; plan 45 to 90 minutes of wall clock per city for the five requests. The work is mostly choosing places honestly.

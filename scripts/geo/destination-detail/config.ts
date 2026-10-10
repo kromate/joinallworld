@@ -45,6 +45,8 @@ export interface DetailConfig {
   maxRoads: number
   /** How far (degrees) a road may run on past the built-up outline before it is cut. */
   roadMarginDegrees: number
+  /** The smallest inland water body (square kilometres) kept; the default is 0.4. A river is kept when its piece in the box is larger. */
+  minWaterKm2?: number
   /** The ground colour round the outline in the 3D and simple maps. */
   surround: string
   water: (bbox: string) => string

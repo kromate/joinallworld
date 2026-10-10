@@ -17,7 +17,7 @@ import { writeFileSync } from 'node:fs';
 import { ask } from './destination-detail/overpass.ts';
 import type { Element } from './destination-detail/overpass.ts';
 import type { DetailConfig } from './destination-detail/config.ts';
-import { areaRings, builtUp, coverage, inBox, polygonsOf, round, roundRing, shoreWater, simplify, simplifyRing } from './destination-detail/geometry-tools.ts';
+import { areaRings, builtUp, ringArea, coverage, inBox, polygonsOf, round, roundRing, shoreWater, simplify, simplifyRing } from './destination-detail/geometry-tools.ts';
 import type { P } from './destination-detail/geometry-tools.ts';
 
 const id = process.argv[2];
@@ -36,8 +36,8 @@ const centreOf = (element: Element): P => {
 
 /** A place must stand at least this far (about 900 m) inside the play box, so that none sits against the border. */
 const EDGE = 0.008;
-/** Water is kept this far (degrees) beyond the play box, so a river or the sea runs on to the edge of the ground that is drawn. */
-const REACH = 0.25;
+/** Water is kept this far (degrees) beyond the play box, so a river or the sea runs on to the edge of the ground that is drawn (the ground reaches one and a half times the city's width, at most 60 km: see SURROUND_UNITS in src/map3d/cities/module.ts). */
+const REACH = Math.min(0.55, Math.max(0.3, 1.5 * Math.max(north - south, east - west)));
 const wide = [south - REACH, west - REACH, north + REACH, east + REACH] as const;
 
 // ---- places -----------------------------------------------------------------------------------------------------------------------
@@ -107,13 +107,17 @@ const landPoints = [...places.map((place): P => [place.lon, place.lat]), ...labe
 const tidyWater = (polygons: P[][][]): P[][][] => polygons.map((polygon) => polygon.map((ring) => simplifyRing(ring, config.waterTolerance)).filter((ring) => ring.length)).filter((polygon) => polygon.length);
 const shoreSide = coast.length && config.sea ? shoreWater(coast, landPoints, config.box, wide, config.sea.bandMetres, config.cell / config.split) : null;
 const sea = shoreSide ? tidyWater(shoreSide.band) : [];
-const farSea = shoreSide ? tidyWater(shoreSide.far) : [];
+// The sea carried far beyond the play box is drawn at a coarser tolerance (about 130 m): nobody reads a shore that far out to the metre, and the file stays small.
+const farSea = shoreSide ? shoreSide.far.map((polygon) => polygon.map((ring) => simplifyRing(ring, Math.max(config.waterTolerance, 0.0012))).filter((ring) => ring.length)).filter((polygon) => polygon.length) : [];
 // Only what the source tags as water: the answer may also hold wetland, islet and wall ways that are members of the lake's relation.
 const inland = waterAnswer.elements.filter((element) => !isShore(element) && (element.tags?.natural === 'water' || element.tags?.waterway === 'riverbank' || element.type === 'relation'));
 // What the outline is traced round (the shore band and the inland water inside the box: the map's declared water), and what is drawn (the same, carried on to the edge of the ground).
-const wet = [...sea, ...inland.flatMap((element) => polygonsOf(areaRings(element), config.box, config.waterTolerance))];
+// A pond or a pool under minWaterKm2 is left out: at the scale of a city it reads as a black pit on the ground.
+const km2 = (polygon: P[][]): number => { const lat = polygon[0]![0]![1]; return ringArea(polygon[0]!) * 111.32 * Math.cos(lat * Math.PI / 180) * 110.57; };
+const big = (polygons: P[][][]): P[][][] => polygons.filter((polygon) => km2(polygon) >= (config.minWaterKm2 ?? 0.4));
+const wet = [...sea, ...inland.flatMap((element) => big(polygonsOf(areaRings(element), config.box, config.waterTolerance)))];
 const water = wet;
-const reachWater = [...farSea, ...inland.flatMap((element) => polygonsOf(areaRings(element), wide, config.waterTolerance))];
+const reachWater = [...farSea, ...inland.flatMap((element) => big(polygonsOf(areaRings(element), wide, config.waterTolerance)))];
 console.log(`water ${water.length} polygons, ${reachWater.length} carried to the edge of the ground (${sea.length} of shore band from ${coast.length} shore ways)`);
 
 const landuse = await ask(id, 'landuse', config.landuse(bbox));

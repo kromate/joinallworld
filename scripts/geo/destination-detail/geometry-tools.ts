@@ -177,10 +177,21 @@ export function builtUp(points: readonly P[], anchors: readonly P[], water: read
       }
     }
   }
+  // The coarse mask is blurred and read back on the fine grid by bilinear interpolation, then cut at about one half: the outline is a smooth
+  // curve through the coarse cells instead of a staircase of coarse squares.
+  // The outermost ring of coarse cells is left empty and the blur sees nothing beyond the box, so the built-up ground rounds off before the edge of the box instead of ending in a straight cut.
+  const inner = Uint8Array.from(coarse);
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) if (r === 0 || c === 0 || r === rows - 1 || c === cols - 1) inner[r * cols + c] = 0;
+  const field = blur(inner, cols, rows, 1.1);
+  const smooth = (c: number, r: number): number => {
+    const u = Math.min(cols - 1, Math.max(0, (c + 0.5) / split - 0.5)), v = Math.min(rows - 1, Math.max(0, (r + 0.5) / split - 0.5));
+    const c0 = Math.floor(u), r0 = Math.floor(v), c1 = Math.min(cols - 1, c0 + 1), r1 = Math.min(rows - 1, r0 + 1), fu = u - c0, fv = v - r0;
+    return field[r0 * cols + c0]! * (1 - fu) * (1 - fv) + field[r0 * cols + c1]! * fu * (1 - fv) + field[r1 * cols + c0]! * (1 - fu) * fv + field[r1 * cols + c1]! * fu * fv;
+  };
   const play = new Uint8Array(fc * fr), land = new Uint8Array(fc * fr);
   for (let r = 0; r < fr; r++) for (let c = 0; c < fc; c++) {
     const at = r * fc + c;
-    if (coarse[Math.floor(r / split) * cols + Math.floor(c / split)] || wet[at]) play[at] = 1;
+    if (smooth(c, r) >= 0.45 || wet[at]) play[at] = 1;
   }
   for (let r = 0; r < fr; r++) for (let c = 0; c < fc; c++) {
     const at = r * fc + c;
@@ -193,6 +204,25 @@ export function builtUp(points: readonly P[], anchors: readonly P[], water: read
     if (!near) land[at] = 1;
   }
   return { play: traceCells(play, fc, fr, box, fine), land: traceCells(land, fc, fr, box, fine) };
+}
+
+/** A mask of 0 and 1 blurred with a Gaussian of the given standard deviation (in cells); beyond the grid counts as empty. */
+export function blur(mask: Uint8Array, cols: number, rows: number, sigma: number): Float32Array {
+  const radius = Math.ceil(sigma * 3), kernel = Array.from({ length: radius * 2 + 1 }, (_, i) => Math.exp(-((i - radius) ** 2) / (2 * sigma * sigma)));
+  const total = kernel.reduce((a, b) => a + b, 0);
+  const pass = (from: Float32Array, to: Float32Array, horizontal: boolean): void => {
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      let sum = 0;
+      for (let k = -radius; k <= radius; k++) {
+        const cc = horizontal ? c + k : c, rr = horizontal ? r : r + k;
+        if (cc >= 0 && rr >= 0 && cc < cols && rr < rows) sum += from[rr * cols + cc]! * kernel[k + radius]!;
+      }
+      to[r * cols + c] = sum / total;
+    }
+  };
+  const a = Float32Array.from(mask), b = new Float32Array(mask.length);
+  pass(a, b, true); pass(b, a, false);
+  return a;
 }
 
 /** The outer rings (with their holes) of the filled cells of a grid. */

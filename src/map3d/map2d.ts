@@ -273,7 +273,8 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
         paint.fillRect(at.x + 1, at.y + 1, stepX * scale - 2, stepZ * scale - 2);
       }
     }
-    if (layers.homes && pack.lgas?.length) {
+    // A city drawn city-wide (a ground colour round it) has one local unit holding the whole city: no estate lots are laid over it, and its chip would lie across the pins; its neighbourhood names are on the ground instead.
+    if (layers.homes && pack.lgas?.length && !pack.surround) {
       const centre = ground(insets.left + (size.width - insets.left - insets.right) / 2, insets.top + (size.height - insets.top - insets.bottom) / 2), detail = [];
       for (const lga of pack.lgas) {
         const xs = lga.polygon.map((point) => point[0]), zs = lga.polygon.map((point) => point[1]);
@@ -346,7 +347,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
   function near(at: { x: number, z: number }) { scale = Math.max(fitScale(), free().width / 58); centreOn(at.x, at.z); }
   /** A view kept before a reload, applied when the map first opens. */
   let pendingView: { scale: number; x: number; y: number } | null = null;
-  function open() { opened = true; userMoved = false; if (pendingView) { scale = pendingView.scale; ox = pendingView.x; oy = pendingView.y; pendingView = null; userMoved = true; return; } if (size.width > 720) core(); else near(spotOf(state?.location) || homeSpot()); }
+  function open() { opened = true; userMoved = false; if (pendingView) { scale = pendingView.scale; ox = pendingView.x; oy = pendingView.y; pendingView = null; userMoved = true; return; } if (size.width > 720) core(); else if (pack.surround) core(); else near(spotOf(state?.location) || homeSpot()); }
   function apply() {
     if (!scale) return;
     scale = clamp(scale, fitScale() * 0.8, MAX_SCALE);
@@ -388,7 +389,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
       const { node, lga } = plate, at = project(lga.plate[0], lga.plate[1]), distance = wholeView ? 1000 : 0;
       const fit = plateFit(lga.name, (plate.span.maxX - plate.span.minX) * scale, distance);
       const w = plateWidth(lga.name) * fit.scale * 0.6, h = 24 * fit.scale, rect = { l: at.x - w, r: at.x + w, t: at.y - h / 2, b: at.y + h / 2 };
-      const visible = layers.lgas && fit.show && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && scale < 26 && !platesAt.some((other) => rect.l < other.r && rect.r > other.l && rect.t < other.b && rect.b > other.t) && !(!wholeView && hits(rect));
+      const visible = layers.lgas && !pack.surround && fit.show && at.x > -80 && at.x < size.width + 80 && at.y > insets.top - 10 && at.y < size.height + 30 && scale < 26 && !platesAt.some((other) => rect.l < other.r && rect.r > other.l && rect.t < other.b && rect.b > other.t) && !(!wholeView && hits(rect));
       if (node.hidden === visible) node.hidden = !visible;
       if (!visible) continue;
       platesAt.push(rect);

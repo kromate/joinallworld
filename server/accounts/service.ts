@@ -40,6 +40,7 @@ import { UUID_PATTERN, bindingLive, hash53 } from '../protocol.ts';
 import type { AccountAuditRecord, AccountDeviceRecord, AccountEvent, AccountLogCollection, AccountRecord, ArchivedLife, ContextCore, Db, HttpError, ParkedLife, SessionRecord } from '../types.ts';
 import type { VerifiedIdentity } from './token.ts';
 import { eraseRealValue, exportRealValue } from '../real-value/privacy.ts';
+import { eraseShowcase, exportShowcase } from '../showcase/privacy.ts';
 import { eraseLivingWorldProgress, exportLivingWorldProgress, rebindBarberAccount, rebindClerkAccount, rebindJusticePracticeAccount, rebindAssessmentAccount, rebindParcelAccount } from '../living-world/privacy.ts';
 import type { LivingWorldPrivacyExport } from '../living-world/privacy.ts';
 
@@ -84,6 +85,8 @@ export interface AfterChange {
   closeKeys: string[]
   /** Device cookies whose sockets must close (the binding is gone). */
   closeDevices: string[]
+  /** Showcase photos of a removed shop: their bytes are deleted from the image store once the change is saved. */
+  showcasePhotos?: string[]
 }
 export type SignInOutcome = 'linked' | 'restored' | 'parked' | 'signed_in';
 export interface CharacterView { id: string; name: string }
@@ -523,11 +526,12 @@ export function deleteAccount(db: Db, deps: AccountDeps, input: Caller & { ident
     eraseLivingWorldProgress(db, livingWorldIds.filter(id => id !== retainedId), account.id);
   }
   eraseRealValue(db, publicIds);
+  const showcasePhotos = eraseShowcase(db, publicIds);
   if (db.social) for (const id of publicIds) if (input.erase || id !== account.publicId) clearPlayerFamily(db.social.players, id);
   for (const id of publicIds) if (db.street && (input.erase || id !== account.publicId)) delete db.street.journeys[id];
   for (const id of publicIds) if (db.trust?.players) delete db.trust.players[id];
   if (db.trustChecks?.checks) for (const [ref, check] of Object.entries(db.trustChecks.checks)) if (check.account === account.id || publicIds.includes(check.player)) delete db.trustChecks.checks[ref];
-  const devices = devicesOf(db), after: AfterChange = { closeKeys: [], closeDevices: [...account.devices] };
+  const devices = devicesOf(db), after: AfterChange = { closeKeys: [], closeDevices: [...account.devices], ...(showcasePhotos.length ? { showcasePhotos } : {}) };
   const commerce = commerceOf(db, account.id);
   if (commerce?.grant) after.commerceRevocation = { accountId: account.id, secret: commerce.grant.secret };
   if (db.commerce) delete db.commerce.stores[account.id];
@@ -580,6 +584,7 @@ export function exportAccount(db: Db, deps: AccountDeps, caller: Caller, identit
     character: record && record.account === account.id && record.expiresAt > now ? { id: record.publicId, name: record.name, cities: Object.keys(record.cities || {}) } : null,
     setAside: account.parked.map(item => ({ ...item })),
     ...(db.street ? { streetJourneys: [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)].flatMap(player => { const journey = own(db.street?.journeys, player); return journey ? [{ player, ...structuredClone(journey) }] : []; }) } : {}),
+    ...(db.showcase ? { showcase: exportShowcase(db, [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)]) } : {}),
     ...(db.realValue ? { realValue: exportRealValue(db, [...(account.publicId ? [account.publicId] : []), ...account.parked.map(item => item.id)], now) } : {}),
     ...(livingWorld ? { livingWorld } : {}),
     ...(db.trustChecks ? { identityChecks: Object.values(db.trustChecks.checks).filter(check => check.account === account.id).map(check => ({ ref: check.ref, player: check.player, at: check.at, expiresAt: check.expiresAt, status: check.status, environment: check.environment, adultVerified: check.adult === true })) } : {}),

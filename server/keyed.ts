@@ -127,6 +127,7 @@ export const KEYED_SPECS: Readonly<Record<string, readonly KeyedSpec[]>> = Objec
   commerce: [{ path: ['stores'] }],
   records: [{ path: ['entries'] }, { path: ['terms'] }],
   realValue: [{ path: ['listings'] }, { path: ['contacts'] }, { path: ['analytics'] }],
+  showcase: [{ path: ['shops'] }, { path: ['owners'] }, { path: ['contacts'] }],
   trustChecks: [{ path: ['checks'] }],
   street: [{ path: ['journeys'] }],
   livingWorld: [{ path: ['driving'] }, { path: ['qualifications'] }, { path: ['barber'] }],

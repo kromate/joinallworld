@@ -88,6 +88,8 @@ function dataValue(object: object, key: string): { readonly ok: true; readonly v
 function rootOf(db: HouseholdDb): HouseholdCollection | null | 'invalid' {
   const entry = dataValue(db, 'households')
   if (!entry.ok) return 'invalid'
+  // No own root descriptor means the root is absent. Never evaluate an inherited property.
+  if (!entry.own) return null
   const rootValue = db.households
   if (rootValue === undefined) return entry.own ? 'invalid' : null
   return isHouseholdCollection(rootValue) ? rootValue : 'invalid'

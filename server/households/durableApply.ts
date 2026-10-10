@@ -81,11 +81,17 @@ export function applyConsentPatch(db: HouseholdDb, result: Result): ApplyOutcome
   if (rootDescriptor && !Object.hasOwn(rootDescriptor, 'value')) return { ok: false, code: 'invalid_storage' }
   // The Store view's top-level collection descriptor is a deliberate undefined placeholder;
   // read the fixed collection property to materialize its ordinary root value.
-  const rootValue = db.households
   let root: HouseholdCollection
-  if (rootValue === undefined && !rootDescriptor) {
+  if (!rootDescriptor) {
+    // No own root: create a fresh one without evaluating any inherited property. An inherited
+    // accessor (or non-writable property) would intercept the assignment below, so refuse it.
+    for (let proto: object | null = Object.getPrototypeOf(db); proto !== null; proto = Object.getPrototypeOf(proto)) {
+      const inherited = Object.getOwnPropertyDescriptor(proto, 'households')
+      if (inherited && (!Object.hasOwn(inherited, 'value') || inherited.writable !== true)) return { ok: false, code: 'invalid_storage' }
+    }
     root = createHouseholdCollection()
   } else {
+    const rootValue = db.households
     if (!isHouseholdCollection(rootValue)) return { ok: false, code: 'invalid_storage' }
     root = rootValue
   }

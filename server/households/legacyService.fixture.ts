@@ -1,4 +1,8 @@
-/** Internal, unregistered Store/once composition for household consent mutations. */
+/**
+ * Test fixture only: the service exactly as it was before request fingerprints were made stable.
+ * Tests use it to create receipts in the old format with the real old code. Nothing imports it
+ * outside tests, and it must not be changed.
+ */
 import type { Db, OnceDescriptor, RouteContext, SessionRecord } from '../types.ts'
 import { oneOf, parseCommand, point, type Command, type Event } from './records.ts'
 import { loadConsentView } from './consentView.ts'
@@ -33,12 +37,7 @@ class ConsentAbort extends Error {
   constructor(code: string) { super(code); this.code = code }
 }
 
-/** Receipts written before stable fingerprints carry no version marker. */
-const STABLE_VERSION = 2
-const STABLE_PREFIX = 'household-consent-v2:'
-type StoredReceipt = Readonly<{ receipt: ConsentReceipt; version: 'legacy' | typeof STABLE_VERSION | 'unknown' }>
-
-function receiptFields(value: unknown): StoredReceipt | null {
+function receiptFields(value: unknown): ConsentReceipt | null {
   if (value === null || typeof value !== 'object') return null
   const read = (key: string): unknown => {
     const descriptor = Object.getOwnPropertyDescriptor(value, key)
@@ -47,16 +46,10 @@ function receiptFields(value: unknown): StoredReceipt | null {
   const operation = read('operation'), householdId = read('householdId')
   const actorCharacterId = read('actorCharacterId'), actorLifeId = read('actorLifeId')
   if (read('ok') !== true || !oneOf(operation, ['register','invite','accept','decline','cancel','expire','terminate-invitation','leave','revoke','terminate','close']) || typeof householdId !== 'string' || typeof actorCharacterId !== 'string' || typeof actorLifeId !== 'string') return null
-  const marker = read('receiptVersion')
-  const version = marker === undefined ? 'legacy' : marker === STABLE_VERSION ? STABLE_VERSION : 'unknown'
-  return { receipt: { ok: true, operation, householdId, actorCharacterId, actorLifeId }, version }
+  return { ok: true, operation, householdId, actorCharacterId, actorLifeId }
 }
 
-/**
- * Exact serialization used by receipts written before stable fingerprints existed. It includes
- * mutable actor facts, so it can only match while those facts are unchanged. Kept byte for byte.
- */
-function legacyReceiptFingerprint(command: Command, actor: LifeAuthorityFact): string {
+function receiptFingerprint(command: Command, actor: LifeAuthorityFact): string {
   const payload = JSON.stringify([
     command,
     {
@@ -66,27 +59,6 @@ function legacyReceiptFingerprint(command: Command, actor: LifeAuthorityFact): s
   ])
   return payload
 }
-
-/** Fixed-field normalized request identity: no mutable life, settlement, location or locator facts. */
-function stableCommandParts(command: Command): readonly unknown[] {
-  switch (command.op) {
-    case 'register': return [command.op, command.householdId, command.homeId, command.epoch]
-    case 'invite': return [command.op, command.householdId, command.revision, command.epoch, command.inviteId, command.recipient.character, command.recipient.life]
-    case 'accept': return [command.op, command.householdId, command.revision, command.epoch, command.inviteId, command.membershipId]
-    case 'decline': case 'cancel': case 'expire': case 'terminate-invitation':
-      return [command.op, command.householdId, command.revision, command.epoch, command.inviteId]
-    case 'leave': case 'revoke': case 'terminate':
-      return [command.op, command.householdId, command.revision, command.epoch, command.membershipId, command.memberRevision]
-    case 'close': return [command.op, command.householdId, command.revision, command.epoch, command.reason]
-  }
-}
-
-function stableReceiptFingerprint(command: Command, actor: LifeAuthorityFact): string {
-  return STABLE_PREFIX + JSON.stringify([stableCommandParts(command), actor.who.character, actor.who.life])
-}
-
-const isIdConflict = (error: unknown): boolean =>
-  error instanceof Error && Reflect.get(error, 'status') === 409 && Reflect.get(error, 'code') === 'client_id_conflict'
 
 const householdIdOf = (command: Command): string => command.householdId
 
@@ -120,49 +92,18 @@ export async function executeConsentCommand(
       const actorSnapshot = snapshotConsentValue(actorProof.point)
       if (!actorProof.verifyReadSet() || !actorSnapshot.ok || !point(actorSnapshot.value, isTrustedLifeAuthority) || actorSnapshot.value.state !== 'present') throw new ConsentAbort('actor_life_unproven')
       const actor = actorSnapshot.value.value
-      localDescriptor.fingerprint = stableReceiptFingerprint(command, actor)
+      localDescriptor.fingerprint = receiptFingerprint(command, actor)
 
-      const probe = (descriptorToProbe: OnceDescriptor): { readonly found: true; readonly stored: StoredReceipt } | { readonly found: false } => {
-        let old: unknown
-        try {
-          old = ctx.once<ConsentReceipt>(db, session, descriptorToProbe, () => { throw replayProbe })
-        } catch (error) {
-          if (error !== replayProbe) throw error
-        }
-        if (old === undefined) return { found: false }
-        const stored = receiptFields(old)
-        if (!stored || stored.receipt.operation !== command.op || stored.receipt.householdId !== householdIdOf(command) || stored.receipt.actorCharacterId !== actor.who.character || stored.receipt.actorLifeId !== actor.who.life) throw new ConsentAbort('receipt_authority_mismatch')
-        return { found: true, stored }
-      }
-
-      let stable: ReturnType<typeof probe> | undefined
-      let conflict: unknown
+      let old: unknown
       try {
-        stable = probe(localDescriptor)
+        old = ctx.once<ConsentReceipt>(db, session, localDescriptor, () => { throw replayProbe })
       } catch (error) {
-        // Only the canonical conflict of the stable probe may lead to the legacy probe. Storage
-        // faults, expiry, quotas and malformed receipts propagate unchanged.
-        if (!isIdConflict(error)) throw error
-        conflict = error
+        if (error !== replayProbe) throw error
       }
-      if (stable?.found) {
-        if (stable.stored.version !== STABLE_VERSION) throw new ConsentAbort('receipt_version_unsupported')
-        return { ok: true, duplicate: true, receipt: stable.stored.receipt, events: [] }
-      }
-      if (conflict !== undefined) {
-        const legacyDescriptor: OnceDescriptor = { id: descriptor.id, kind: localDescriptor.kind, fingerprint: legacyReceiptFingerprint(command, actor) }
-        let legacy: ReturnType<typeof probe>
-        try {
-          legacy = probe(legacyDescriptor)
-        } catch (error) {
-          // The old receipt does not match what is provable now: refuse with the original conflict.
-          if (isIdConflict(error)) throw conflict
-          throw error
-        }
-        // A receipt stored under the old serialization can never be absent here (an id conflict proves it exists).
-        if (!legacy.found) throw conflict
-        if (legacy.stored.version !== 'legacy') throw new ConsentAbort('receipt_version_unsupported')
-        return { ok: true, duplicate: true, receipt: legacy.stored.receipt, events: [] }
+      if (old !== undefined) {
+        const saved = receiptFields(old)
+        if (!saved || saved.operation !== command.op || saved.householdId !== householdIdOf(command) || saved.actorCharacterId !== actor.who.character || saved.actorLifeId !== actor.who.life) throw new ConsentAbort('receipt_authority_mismatch')
+        return { ok: true, duplicate: true, receipt: saved, events: [] }
       }
 
       const reads = createDurableConsentReads(db, ctx.now(), trusted, actorProof)
@@ -182,11 +123,11 @@ export async function executeConsentCommand(
         if (!actorProof.verifyReadSet() || !reads.verifyReadSet()) throw new ConsentAbort('readset_mismatch')
         const applied = applyConsentPatch(db, result)
         if (!applied.ok) throw new ConsentAbort(applied.code)
-        return { ...receipt, receiptVersion: STABLE_VERSION }
+        return receipt
       })
       const savedReceipt = receiptFields(saved)
-      if (!savedReceipt || savedReceipt.version !== STABLE_VERSION) throw new ConsentAbort('receipt_invalid')
-      return { ok: true, duplicate: false, receipt: savedReceipt.receipt, events: result.events }
+      if (!savedReceipt) throw new ConsentAbort('receipt_invalid')
+      return { ok: true, duplicate: false, receipt: savedReceipt, events: result.events }
     })
   } catch (error) {
     if (error instanceof ConsentAbort) return { ok: false, code: error.code }

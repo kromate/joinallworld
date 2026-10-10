@@ -2,12 +2,18 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { prepareNativeStaticSurfaceQuery } from './native-static-surface.ts';
+import type { NativeStaticSurfaceAccept } from './native-static-surface.ts';
 
-function queryAgainstRaycaster(host, x, z, maximum, minimum, accepts = () => true, excluded) {
+type Point = readonly [number, number, number];
+
+function queryAgainstRaycaster(
+  host: THREE.Object3D, x: number, z: number, maximum: number, minimum: number,
+  accepts: NativeStaticSurfaceAccept = () => true, excluded?: THREE.Object3D,
+): number | null {
   host.updateWorldMatrix(true, true);
-  const meshes = [];
+  const meshes: THREE.Mesh[] = [];
   host.traverseVisible((node) => {
-    if (!node.isMesh || (excluded && isWithin(node, excluded))) return;
+    if (!(node instanceof THREE.Mesh) || (excluded && isWithin(node, excluded))) return;
     meshes.push(node);
   });
   const raycaster = new THREE.Raycaster(
@@ -16,16 +22,16 @@ function queryAgainstRaycaster(host, x, z, maximum, minimum, accepts = () => tru
   return raycaster.intersectObjects(meshes, false).find(accepts)?.point.y ?? null;
 }
 
-function isWithin(object, ancestor) {
-  for (let current = object; current; current = current.parent) if (current === ancestor) return true;
+function isWithin(object: THREE.Object3D, ancestor: THREE.Object3D): boolean {
+  for (let current: THREE.Object3D | null = object; current; current = current.parent) if (current === ancestor) return true;
   return false;
 }
 
-function prepare(host, excluded) {
+function prepare(host: THREE.Object3D, excluded?: THREE.Object3D) {
   return prepareNativeStaticSurfaceQuery(host, () => { throw new Error('static fixture unexpectedly used fallback'); }, excluded);
 }
 
-function triangle(points, material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide })) {
+function triangle(points: readonly Point[], material: THREE.Material | THREE.Material[] = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide })): THREE.Mesh {
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(points.flat(), 3));
   return new THREE.Mesh(geometry, material);
@@ -48,12 +54,15 @@ test('indexed query matches Raycaster on transformed, sloped static triangle', (
   const expected = queryAgainstRaycaster(host, x, z, maximum, minimum);
   assert.equal(indexed.mode, 'indexed');
   assert.ok(expected !== null);
-  assert.ok(Math.abs(indexed(x, z, maximum, minimum, () => true) - expected) < 1e-6);
+  const actual = indexed(x, z, maximum, minimum, () => true);
+  assert.ok(actual !== null);
+  assert.ok(Math.abs(actual - expected) < 1e-6);
 });
 
 test('indexed side culling agrees with a downward Raycaster for all material sides', () => {
-  const clockwise = [[-1, 1, -1], [0, 1, 1], [1, 1, -1]];
-  for (const [side, hit] of [[THREE.FrontSide, true], [THREE.BackSide, false], [THREE.DoubleSide, true]]) {
+  const clockwise: readonly Point[] = [[-1, 1, -1], [0, 1, 1], [1, 1, -1]];
+  const cases: readonly (readonly [THREE.Side, boolean])[] = [[THREE.FrontSide, true], [THREE.BackSide, false], [THREE.DoubleSide, true]];
+  for (const [side, hit] of cases) {
     const host = new THREE.Group();
     host.add(triangle(clockwise, new THREE.MeshBasicMaterial({ side })));
     const indexed = prepare(host);
@@ -97,7 +106,7 @@ test('acceptance filter selects the first supported object and cache invalidates
   const upper = triangle([[-1, 2, -1], [0, 2, 1], [1, 2, -1]]);
   host.add(lower, upper);
   let indexed = prepare(host);
-  const accepts = (hit) => hit.object !== upper;
+  const accepts: NativeStaticSurfaceAccept = (hit) => hit.object !== upper;
   assert.equal(indexed(0, 0, 3, 0, accepts), queryAgainstRaycaster(host, 0, 0, 3, 0, accepts));
   upper.position.y = -1.5;
   indexed = prepare(host);

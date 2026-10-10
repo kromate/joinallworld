@@ -1,0 +1,56 @@
+{
+  "observedAt": "2026-10-10T04:11:48.196627+00:00",
+  "candidate": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "publication": "7d2fd3feb14cd0befcd3246a8f43abc853bc19c3",
+  "decision": "CONFIRM_HARNESS_DEFECT_REQUIRE_SOURCE_REPAIR_AND_NEW_EXACT_GATES",
+  "scope": "Independent selected canonical reconnect/controller/test slices and complete published diagnostic; no Sol execution, browser or network gameplay.",
+  "files": [
+    {
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "path": "src/community.ts",
+      "bytes": 48659,
+      "sha256": "f5032ab3b12656ad4b85e4be1296827d441165645da8e4ec86a3b17833dd1eb4"
+    },
+    {
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "path": "src/community.test.ts",
+      "bytes": 38319,
+      "sha256": "76d5b1e6d68c56c7a3d5e0f1e843f1855837df3d67c578ba7c697c8fe120fa1f"
+    },
+    {
+      "ref": "7d2fd3feb14cd0befcd3246a8f43abc853bc19c3",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-reconnect-zero-delay-diagnostic.mjs",
+      "bytes": 2356,
+      "sha256": "0c4d63c7d55e50f22a0f147e4c881a0d8cfd81434ffd2743f1f9cfc7c7f2e5b1"
+    },
+    {
+      "ref": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "path": "src/reconnect.ts",
+      "bytes": 291,
+      "sha256": "eee061fc76e853fcdb76ebeec6adc7fab6cac79e2eb8f9d62ab314bfe3e82189",
+      "matchesRoot": true
+    }
+  ],
+  "originalFullSuite": {
+    "pass": 2587,
+    "fail": 1,
+    "skip": 1,
+    "rawLogSha256": "8eb04afa596a9fed3c647947d0e36945104623bf0be9837c98efeedf5b8fa208",
+    "accepted": false
+  },
+  "finding": {
+    "test": "destroy cancels a pending reconnect: no socket is opened afterwards",
+    "testLine": 503,
+    "mechanism": "The timer harness routes delay0 to the real timer instead of its Map because it checks !delay. reconnectDelay legitimately floors jitter to0. Map size assertion can therefore fail although the real controller holds and cancels the returned timer.",
+    "controllerEvidence": "connect refuses destroyed state; destroy compares reconnectTimer !== null and clears it, covering zero timer handles.",
+    "publishedDiagnostic": "Deterministic jitter0 and0.5 exercised the real createCommunity with substitute browser globals and real timers, no new socket after destroy. This supports the narrow classification, not full-suite/native acceptance.",
+    "runtimeFailureProved": false
+  },
+  "requiredRepair": [
+    "Existing exclusive writer fixes the harness so0-delay reconnects are tracked and cancellation is actually tested; preserve async setup ticks and restore all changed globals.",
+    "Meaningful deterministic zero/nonzero cases and post-destroy callback/socket refusal; do not alter correct production jitter merely to satisfy the fixture.",
+    "Fresh exact-source focused result and applicable full matrix before staging/release; original failed log retained. No unchanged retry or inferred suite pass."
+  ],
+  "ownership": "Integration/Cloud existing owner; no Root source edits or duplicate worker.",
+  "releaseAccepted": false
+}

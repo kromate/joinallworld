@@ -1,3 +1,7 @@
+## 2026-10-10 — Remaining country CSS-loader checks accepted
+
+[Original-log verification](agent-plans/integration/c12-css-root-review.json) matches136 passing checks across the two remaining Node24 scene-loader commands,15 direct test files and18 separate before/after source pins; original receipt-map qualification remains. WORLD receives scoped acceptance to continue the existing finite browser phase under unchanged runtime/ownership/quota gates. No normal journey or production completion is inferred.
+
 ## 2026-10-10 — Country verifier source accepted; actual journeys pending
 
 The [v4 source review](agent-plans/integration/c12-controller-v4-root-astra-review.md) accepts corrected actor/protected-state/restart/fingerprint/store/root-receipt logic. [Independent pins](agent-plans/integration/c12-controller-v4-pins-root-review.json) match14 packet files and59 unique public Git files. Integration has handed the same existing finite five-city normal browser/Home/restart phase to sole coordinator WORLD, subject to remaining scene checks and actual runtime/ownership/quota preflight. No browser, grant, restart, provider or production action has yet been accepted. Original Node24 fixture FAIL and final combined3e budget FAIL remain explicit. Justice owner reports9 pure checks; unpublished source and durable acceptance remain pending, with compatible rollback retaining both repaired reader and transition. The35-item/all58-announcement ledger remains the full scope. Actual current allowance5%; stop new work at<=4%.

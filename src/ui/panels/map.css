@@ -154,8 +154,3 @@
 @media(max-width:720px){
   .life-ui .map-levels{position:fixed;top:60px;left:8px;max-width:calc(100vw - 16px)}
 }
-
-/* Visible city-map source credit shares the dock and its ordinary mobile flow. */
-.map-data-credit{display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;max-width:100%;margin:0;padding:0 8px;border:1px solid var(--c-line);border-radius:8px;background:var(--c-surface-solid);color:var(--c-ink-2);font-size:12px;pointer-events:auto}
-.map-data-credit a{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-.map-data-credit a:focus-visible{outline:var(--focus);outline-offset:2px}

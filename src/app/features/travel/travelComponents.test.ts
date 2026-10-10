@@ -107,7 +107,8 @@ test('the Map overview: the handle, the filters, the layers and every place with
   assert.match(html, /<button[^>]*data-map-level="city"[^>]*aria-current="true"/, 'the level in view is marked')
   assert.doesNotMatch(html.slice(html.indexOf('id="map-list"')), /World map/, 'no second entry hidden at the end of the list')
   assert.match(html, /<svg class="ui-glyph"/, 'places and layers are drawn with glyphs')
-  assert.doesNotMatch(html.replace('© OpenStreetMap contributors', 'OpenStreetMap contributors'), /\p{Extended_Pictographic}/u, 'places and layers use glyphs; the source copyright mark is attribution')
+  assert.doesNotMatch(html, /map-data-credit|OpenStreetMap/, 'the map credit is no longer a chip in the dock: it is a small link in the map corner (src/map3d/index.ts)')
+  assert.doesNotMatch(html, /\p{Extended_Pictographic}/u, 'places and layers use glyphs')
 })
 
 test('the Map overview: a filter narrows the list to its category, and Home is on every one', async () => {

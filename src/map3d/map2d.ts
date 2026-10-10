@@ -324,6 +324,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     if (dock?.side === 'left') left = Math.max(left, dock.amount); else if (dock?.side === 'bottom') bottom = Math.max(bottom, dock.amount);
     size = { width: page.width, height: page.height }; insets = { left, top, right, bottom };
     container.style?.setProperty('--map-dock', `${Math.round(bottom)}px`);
+    container.style?.setProperty('--map-left', `${Math.round(left)}px`);
     root.style.setProperty('--m3-dock', `${Math.round(bottom)}px`); root.style.setProperty('--m3-left', `${Math.round(left)}px`); root.style.setProperty('--m3-top', `${Math.round(top)}px`);
     return page.width > 0 && page.height > 0 && !container.hidden;
   }

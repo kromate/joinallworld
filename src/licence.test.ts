@@ -28,3 +28,14 @@ test('the game offers its source to the people who use it, as section 13 asks', 
   assert.match(settings, /href="https:\/\/github\.com\/kromate\/joinallworld"/)
   assert.ok(settings.includes('free software under the GNU AGPL'))
 })
+
+test('the map data is credited in the map corner and under About, with the source of the city data', () => {
+  const settings = read('src/app/features/sim/SettingsTab.vue')
+  assert.match(settings, /href="https:\/\/www\.openstreetmap\.org\/copyright"[^>]*>[\s\S]*?<b>Map data<\/b><small>© OpenStreetMap contributors<\/small>/)
+  assert.match(settings, /href="https:\/\/github\.com\/kromate\/joinallworld\/tree\/[0-9a-f]+\/src\/game\/cities"[^>]*>[\s\S]*?<b>Source data<\/b>/)
+  const corner = read('src/map3d/index.ts')
+  assert.match(corner, /credit\.className = 'map-credit'/)
+  assert.match(corner, /credit\.href = 'https:\/\/www\.openstreetmap\.org\/copyright'/)
+  assert.match(corner, /credit\.rel = 'noopener noreferrer'/)
+  assert.match(read('src/city-map.css'), /\.map-credit\{position:absolute;z-index:7;left:var\(--map-left,10px\)/)
+})

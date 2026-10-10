@@ -1,0 +1,77 @@
+{
+  "observedAtUtc": "2026-10-10T02:05:18.960693+00:00",
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "packageDigest": "3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331",
+  "decision": "ACCEPT scoped normal onboarding baseline and actual root funding/replay evidence for two fresh synthetic actors. Five-city browser journeys/native restart/deployment incomplete.",
+  "stageSeconds": 900,
+  "deadline": "2026-10-10T02:11:17.419Z",
+  "teachingStarts": "OFF",
+  "freshStoreSeparateFromOriginal": true,
+  "browserOrigins": "Two unique localhost names; existing Astra confirms actual separate characters and normal home onboarding.",
+  "actors": [
+    {
+      "label": "A",
+      "identitySha256": "99fd8e49cd5cf6fcd231ed3b4a0699328e6add63887df4a572af980b60d48975",
+      "privateProofSha256": "3a39fc74e4ecebd3dafe11fdcb82c4b51726d758b2b7fdd6d7559b13ef8fea2c",
+      "intentSha256": "cae1a328d9326a35ffdbf9b65b750a2d03f20f8898b342ac70be1f8004eef226",
+      "fictionalCreditDelta": 2000000,
+      "fundingPath": "POST /api/admin/players/:id/act; authenticated root; credit action",
+      "sameIdReplayDuplicate": true,
+      "walletEffectCount": 1,
+      "onceReceiptCount": 1,
+      "onceReceiptKind": "admin.credit",
+      "auditAddedOnce": true,
+      "ledgerUnchangedOnReplay": true,
+      "originalLedgerPrefixRetained": true,
+      "identityNameRetained": true,
+      "protectedFieldsUnchanged": [
+        "home",
+        "homeOwned",
+        "property",
+        "estate",
+        "inventory",
+        "business"
+      ]
+    },
+    {
+      "label": "B",
+      "identitySha256": "ce10934c512bb1fc01e61a0ea7f87a3af6d65f25b0f4b541838646618a42390d",
+      "privateProofSha256": "5efc77291f7c1ac2c16710b45835ca9008423fe4a93de7544b31d31326e5057e",
+      "intentSha256": "de2a9bd0e2e06fd70ebd3916b85ac643e22ae42d48eca0c26c9658164b379e6f",
+      "fictionalCreditDelta": 2000000,
+      "fundingPath": "POST /api/admin/players/:id/act; authenticated root; credit action",
+      "sameIdReplayDuplicate": true,
+      "walletEffectCount": 1,
+      "onceReceiptCount": 1,
+      "onceReceiptKind": "admin.credit",
+      "auditAddedOnce": true,
+      "ledgerUnchangedOnReplay": true,
+      "originalLedgerPrefixRetained": true,
+      "identityNameRetained": true,
+      "protectedFieldsUnchanged": [
+        "home",
+        "homeOwned",
+        "property",
+        "estate",
+        "inventory",
+        "business"
+      ]
+    }
+  ],
+  "visitedCities": [],
+  "unvisitedCities": [
+    "cairo",
+    "rabat",
+    "kigali",
+    "kampala",
+    "lusaka"
+  ],
+  "productionCountryCount": 11,
+  "limitations": [
+    "No production actor or original eec actor was modified",
+    "No browser journey, completed return, native same-store restart, physical phone or sustained performance acceptance",
+    "Current monitor hold prevents additional local browser actions; natural deadline and retained store preserved",
+    "Test funding used the real admin transaction/receipt/effect path, not direct database writes or timer manipulation"
+  ],
+  "storeIdentitySha256": "1e09f29b3c7e49bcfb1650ba76fc6cdee940d5fa938ec5e4e7f929eca7080e0f"
+}

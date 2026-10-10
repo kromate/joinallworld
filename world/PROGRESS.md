@@ -1,3 +1,22 @@
+# Normal onboarding and controlled funding accepted, 10 October 2026
+
+Existing Astra confirms both unique browser origins resolve and keep separate
+fresh guest characters, ordinary home onboarding and unfunded fare refusals.
+WORLD reads the actual root-admin boundary and captures a private read-only
+stored baseline. Two authorized fictional credits each apply once through
+POST /api/admin/players/:id/act; unchanged-ID replay returns duplicate:true.
+Each actor has exactlyone wallet effect, one admin.credit receipt and one new
+audit entry. Cash changes by exactly2000000; replay changes no ledger/audit.
+Original ledger prefixes and identity/home/homeOwned/property/estate/inventory/
+business fields remain equal. No raw database writes, gifts or timer mutation.
+
+Read third-five-c1-native-funding-acceptance.json for sanitized allowlist facts
+and private proof hashes. Raw baseline/proofs remain private mode0600 and must
+not be dumped, supplied to other readers or published. Funding does not prove
+travel: allfive new cities remain unvisited under the current memory hold.
+The cached stage keeps its natural02:11:17 deadline, retained fresh store and
+original eec boundary. No local phase renewal or production upload.
+
 # Exact online runtime receipts reviewed, 10 October 2026 at 01:59 UTC
 
 Public583c86cad7f0d1ac0dd88dbbebd6f1492f44af30 independently binds raw

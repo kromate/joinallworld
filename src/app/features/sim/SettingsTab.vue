@@ -172,6 +172,8 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
     <div class="ui-rows">
       <!-- Allworld is free software under the GNU AGPL: people who use it over the network are offered its source (section 13). -->
       <a class="ui-row" href="https://github.com/kromate/joinallworld" target="_blank" rel="noopener noreferrer"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Source code</b><small>Allworld is free software under the GNU AGPL</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></a>
+      <a class="ui-row" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Map data</b><small>© OpenStreetMap contributors</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></a>
+      <a class="ui-row" href="https://github.com/kromate/joinallworld/tree/a4c14a1e225404cd2cfe1d8d74ee5c2a2b516b4e/src/game/cities" target="_blank" rel="noopener noreferrer"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="id" /></span><span class="ui-row-body"><b>Source data</b><small>The city data behind the map</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></a>
     </div>
   </div>
 </template>

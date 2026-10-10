@@ -6,7 +6,7 @@
 #life-dialog.is-fullscreen .base-sheet-close{display:none}
 #life-dialog.is-fullscreen #life-dialog-content{--sheet-pad:0;padding:0;overflow:hidden;height:100%;font-size:14px}
 
-.cr-root{--cr-pad:clamp(14px,2vw,32px);--cr-tools:56px;--cr-lift:22px;--cr-line:#e3e6e4;position:relative;display:grid;height:100%;min-height:0;overflow:hidden;color:var(--c-ink);font-family:var(--font);
+.cr-root{--cr-pad:clamp(14px,2vw,32px);--cr-tools:56px;--cr-lift:22px;--cr-line:#e3e6e4;position:relative;display:grid;height:100%;min-height:0;overflow:hidden;overflow:clip;color:var(--c-ink);font-family:var(--font);
   background:radial-gradient(70% 62% at 32% 44%,#3c8a68 0,#245e46 38%,#143629 72%,#0e2219 100%)}
 .cr-root *{box-sizing:border-box}
 .cr-root h1,.cr-root h3,.cr-root p,.cr-root ol,.cr-root ul,.cr-root dl,.cr-root dd,.cr-root fieldset{margin:0;padding:0}
@@ -94,7 +94,7 @@
   .cr-body>h1{font-size:23px}
 }
 
-.cr-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:8px 22px 20px;scroll-padding-top:60px}
+.cr-scroll{position:relative;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:8px 22px 20px;scroll-padding-top:60px}
 .cr-body{display:grid;gap:16px;align-content:start}
 .cr-body>h1{font-size:26px;line-height:1.15;letter-spacing:-.5px;outline:none}
 .cr-lead{font-size:15px!important;line-height:1.5!important;color:var(--c-muted);margin-top:-8px!important}
@@ -118,7 +118,7 @@
 .cr-foot{flex:none;display:grid;gap:8px;padding:12px 22px max(14px,env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--cr-line);box-shadow:0 -10px 20px -14px #0003}
 .cr-why{font-size:13px!important;line-height:1.35!important;color:var(--c-muted);text-align:center}
 .cr-fine{font-size:12px!important;line-height:1.35!important;color:var(--c-faint);text-align:center}
-.cr-actions{display:flex;gap:10px}
+.cr-actions{display:flex;flex-wrap:wrap;gap:10px}
 .cr-actions .cr-btn{flex:0 0 auto}
 .cr-actions .cr-btn.is-primary{flex:1 1 auto}
 
@@ -269,6 +269,11 @@
 .cr-choices .cr-link{min-height:36px}
 @container cr (max-height:900px){.cr-foot:has(.cr-choices) .cr-fine{display:none}}
 @container cr (max-width:639px){.cr-root:has(.cr-choices){--cr-stage-h:36cqh}}
+/* A short phone (320x568): the stage gives most of its height to the panel, so the fields are not left under the footer and the primary button stays on screen. The Look step keeps more of it. */
+@container cr (max-width:639px) and (max-height:700px){
+  .cr-root,.cr-root:has(.cr-choices){grid-template-rows:minmax(124px,var(--cr-stage-h)) minmax(0,1fr);--cr-stage-h:22cqh}
+  .cr-root[data-step=look]{--cr-stage-h:30cqh}
+}
 
 /* Settling from a phone app uses the app's frame and available height. */
 .cr-host.is-embedded{height:100%;min-width:0;min-height:0}

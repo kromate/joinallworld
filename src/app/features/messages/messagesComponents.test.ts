@@ -122,8 +122,8 @@ test('a request for money is a card: the friend asked gets Pay and Decline, the 
   assert.match(asked, /role="group"[^>]*aria-label="Bola asked you ₦1,500: Lunch\. Open\."/)
   assert.ok(words(asked).includes('Bola asked you') && words(asked).includes('₦1,500') && words(asked).includes('Lunch') && words(asked).includes('Open'))
   assert.match(asked, />Pay<\/button>/); assert.match(asked, />Decline<\/button>/); assert.ok(!asked.includes('Cancel request'))
-  const own = await card({ mine: true, payable: false })
-  assert.ok(words(own).includes('You asked Bola')); assert.match(own, />Cancel request<\/button>/); assert.ok(!own.includes('>Pay<'))
+  const own = await card({ mine: true, payable: false }, { partner: 'Chidi' })
+  assert.ok(words(own).includes('You asked Chidi') && !words(own).includes('You asked Bola')); assert.match(own, />Cancel request<\/button>/); assert.ok(!own.includes('>Pay<'))
   for (const [state, label] of [['paid', 'Paid'], ['declined', 'Declined'], ['cancelled', 'Cancelled']] as const) {
     const done = await card({ state })
     assert.ok(words(done).includes(label), state); assert.ok(!done.includes('request-btn'), `${state} has no buttons`)

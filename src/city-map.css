@@ -108,6 +108,11 @@ button.cmap-house{cursor:pointer}
 .cmap-switch{position:absolute;zoom:var(--ui-zoom);right:14px;bottom:60px;z-index:9;min-height:36px;padding:0 14px;border:1px solid #fff;border-radius:18px;background:#fffffff5;color:#20232c;font:700 12px var(--font,'DM Sans',Arial,sans-serif);box-shadow:0 2px 8px #0003;cursor:pointer;touch-action:manipulation}
 .cmap-switch:focus-visible{outline:3px solid #14532d;outline-offset:2px}
 @media(max-width:720px){.cmap-switch{right:auto;left:8px;bottom:calc(var(--map-dock,150px) + 4px);min-height:44px}}
+/* The source credit: plain text in the bottom-left corner, above the nav and any docked panel (--map-dock, --map-left). It is the only
+   thing here that takes a tap, and only on its own words: a drag anywhere else still moves the map. On a phone it sits beside the map switch. */
+.map-credit{position:absolute;z-index:7;left:var(--map-left,10px);bottom:calc(var(--map-dock,150px) + 4px);padding:2px 4px;font-size:11px;line-height:1.2;color:#3d444d;text-shadow:0 0 3px #fff,0 0 2px #fffc;text-decoration:underline;text-underline-offset:2px;white-space:nowrap;pointer-events:auto}
+.map-credit:focus-visible{outline:3px solid #14532d;outline-offset:2px}
+@media(max-width:720px){.map-credit{left:58px}}
 
 .cmap-pin-icon svg{width:20px;height:20px}.cmap.is-compact .cmap-pin-icon svg{width:15px;height:15px}.cmap-board-icon svg,.cmap-plot-icon svg{width:14px;height:14px;vertical-align:-2px}
 .cmap-house svg{width:15px;height:15px}

@@ -12,7 +12,7 @@ import { emojiOnly, giftDetail, giftLine, pieces } from './messagesText.ts'
 import type { RequestOp } from './moneyRequestModel.ts'
 import type { Message } from '../../../types/social.ts'
 
-const props = defineProps<{ item: Message; meId: string; group: boolean; head: boolean; tail: boolean; time: string; canReact: boolean; canActions: boolean; canPin?: boolean; pinned?: boolean; pinPending?: boolean; pinBlocked?: boolean; pinOffline?: boolean; preview?: boolean; voiceEnabled?: boolean; now?: number; requestBusy?: boolean; requestOffline?: boolean }>()
+const props = defineProps<{ item: Message; meId: string; group: boolean; head: boolean; tail: boolean; time: string; canReact: boolean; canActions: boolean; canPin?: boolean; pinned?: boolean; pinPending?: boolean; pinBlocked?: boolean; pinOffline?: boolean; preview?: boolean; voiceEnabled?: boolean; now?: number; partner?: string; requestBusy?: boolean; requestOffline?: boolean }>()
 const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number]; reportVoice: [item: Message]; picture: [item: Message]; edit: [item: Message]; remove: [item: Message]; forward: [item: Message]; pin: [item: Message, pinned: boolean]; request: [id: string, op: RequestOp] }>()
 const mine = computed(() => props.item.from?.id === props.meId)
 const parts = computed(() => pieces(props.item.body, props.item.mentions))
@@ -61,7 +61,7 @@ onBeforeUnmount(cancel)
       <span v-if="giftDetail(item, meId)" class="gift-detail">{{ giftDetail(item, meId) }}</span>
       <small>{{ time }}</small>
     </div>
-    <MoneyRequestCard v-else-if="item.request" :item="item" :time="time" :now="now ?? 0" :busy="requestBusy" :offline="requestOffline" @answer="(id, op) => emit('request', id, op)" />
+    <MoneyRequestCard v-else-if="item.request" :item="item" :time="time" :now="now ?? 0" :partner="partner" :busy="requestBusy" :offline="requestOffline" @answer="(id, op) => emit('request', id, op)" />
     <div v-else class="bubble" :class="{ 'is-mine': mine, 'is-big': big > 0, 'is-head': head }">
       <small v-if="item.forwarded && !item.deleted">Forwarded</small>
       <b v-if="group && head && !mine && item.from" class="bubble-name">{{ item.from.name }}</b>

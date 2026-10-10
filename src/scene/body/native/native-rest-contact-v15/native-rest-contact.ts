@@ -153,7 +153,7 @@ function posteriorSamples(
   for (const bone of bones) center.add(bone.getWorldPosition(new THREE.Vector3()).applyMatrix4(inverseRoot));
   center.multiplyScalar(1 / bones.length);
   const projected = candidates.map((vertex) => {
-    mesh.getVertexPosition(vertex, point); mesh.localToWorld(point); point.applyMatrix4(inverseRoot);
+    mesh.getVertexPosition(vertex, point); point.applyMatrix4(mesh.matrixWorld); point.applyMatrix4(inverseRoot);
     return { vertex, rearward: -point.sub(center).dot(forward) };
   }).sort((a, b) => b.rearward - a.rearward || a.vertex - b.vertex);
   if (!projected.length || cap <= 0) return [];
@@ -236,7 +236,7 @@ export function createNativeRestContactProbe(
         for (const { mesh, vertices } of regions.get(region)!) {
           if (!visibleInTree(mesh)) continue;
           for (const vertex of vertices) {
-            mesh.getVertexPosition(vertex, point); mesh.localToWorld(point);
+            mesh.getVertexPosition(vertex, point); point.applyMatrix4(mesh.matrixWorld);
             candidateBounds.expandByPoint(point);
             const y = surface.surfaceYAt(point.x, point.z);
             if (y === null) { supportMisses++; continue; }

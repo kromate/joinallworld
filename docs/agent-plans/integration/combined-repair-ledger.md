@@ -738,3 +738,15 @@ New requirements from the owner, checked for overlap with existing rows. Each ke
 | STRAT-15 | 2/5 | Market night: a weekly event so buyers and sellers are online together | ANN-57 |
 | STRAT-16 | 2/5 | Measurement: shop visits, contact clicks, seller-reported sales, first-mission completion, friend joins, return rates (aggregate only) | OBL-7 |
 | STRAT-17 | 5/5 | Phone app (Android/iPhone) sharing the same backend | STRAT-10 |
+
+## 2026-10-10 14:05 UTC — Owner-reported map defect and batch 1 automated gates
+
+New requirement from the owner, observed on the Cairo map view of the release candidate: foreign city maps show an empty rectangle labelled as a starter play zone with generic venue names, and must reach the map detail of a Nigerian city (real outline, districts, roads, water, real named places from recorded sources).
+
+| ID | Estimate | Requirement | Overlaps |
+|---|---|---|---|
+| MAP-01 | 5/5 | Foreign city maps at Nigerian map detail in map view; pilot Cairo, then Kigali, Kampala, Rabat, Lusaka, then the remaining foreign cities | WORLD-GLOBAL-DETAIL, WORLD-AFRICA-REMAINING, INT-011, INT-027 |
+
+MAP-01 does not close with INT-011: a played journey to a city proves travel, not map detail.
+
+Batch 1 candidate `3c01c9151b523248727a6efcf2147b418b1ef6fe` on `codex/cont-batch1-integration-20261010` merges, without conflict, the startup chunk grouping (`63ba19b3`), the Justice repair with durable proof (`26f2158b`), the lesson feedback yield (`d9f2fa21`) and the driving replay line (`01324213`) onto `3e3e0876`. Automated gates on that exact source: five compiler projects 0 errors; build exit 0; download budgets all ok with startup 611,952 raw / 220,911 gzip / 193,906 Brotli and first paint 35,607 Brotli; Node suite 3,709 tests, 3,705 pass, 0 fail, 4 skipped; Worker suite 161 of 161. The commit message of `63ba19b3` says its gates were not yet run; that was true when it was saved and is superseded by these results. Not yet accepted: the five ordinary city journeys in a browser on this source, and production. Driving issuance stays off; rows written with it off are readable by production, rows written with it on are not. No item changes to accepted in this entry.

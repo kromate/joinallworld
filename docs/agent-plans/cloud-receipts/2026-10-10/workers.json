@@ -1,5 +1,5 @@
 {
-  "recorded_at_utc": "2026-10-10T00:11:04.767807+00:00",
+  "recorded_at_utc": "2026-10-10T00:31:31.486863+00:00",
   "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
   "hostname": "96cc63a2f9d2",
   "node": "v24.19.0",
@@ -16,8 +16,8 @@
       "worker_id": "/root/graphics_rest_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
-      "checkout": "/workspace/remote-verification/repositories/worker-graphics-rest",
-      "branch": "codex/cloud-graphics-rest-v9-20261010",
+      "checkout": "/workspace/remote-verification/repositories/worker-graphics-rest-pelvis-trial",
+      "branch": "codex/cloud-graphics-rest-pelvis-trial-20261010",
       "base_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
       "scope": [
         "rest-pose-adapter.ts",
@@ -25,7 +25,7 @@
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
       "runtime_model_id": "not independently exposed; configured spawn request only",
-      "checkout_head_sha": "4c2dec572f51f04c2f4972be609ed5eb5bbc794f",
+      "checkout_head_sha": "c8f412a2667662b26608be948f25a0eae29c7d25",
       "changed_files": [
         "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
       ],
@@ -37,7 +37,8 @@
       "effort_basis": "Coupled geometry/IK state repair; full saved-home stages required.",
       "latest_known_execution_handle": 4794,
       "host": "96cc63a2f9d2",
-      "status": "active source repair"
+      "status": "actual strict/bounded saved-home trial requested; source frozen",
+      "latest_evidence": "graphics-rest/graphics-rest-trial4-evidence.json; failed previous trial retained"
     },
     {
       "worker_id": "/root/graphics_stairs_cloud",
@@ -53,9 +54,7 @@
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
       "runtime_model_id": "not independently exposed; configured spawn request only",
       "checkout_head_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
-      "changed_files": [
-        "src/scene/body/native/native-clip-solver.ts"
-      ],
+      "changed_files": [],
       "task_ids": [
         "INT-015"
       ],
@@ -64,7 +63,8 @@
       "effort_basis": "Real transformed stepped host; both families/directions and signed gap repair.",
       "latest_known_execution_handle": null,
       "host": "96cc63a2f9d2",
-      "status": "active source repair"
+      "status": "16 real stepped-host cases passed; now new shared factory repeat-solve regression",
+      "latest_evidence": "graphics-stairs/evidence.md and pelvis-budget-transform-regression.json"
     },
     {
       "worker_id": "/root/household_consent_view_cloud",
@@ -78,16 +78,13 @@
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
       "runtime_model_id": "not independently exposed; configured spawn request only",
-      "pushed_sha": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
-      "completed_proposal": "household consent view loader; focused strict compiler + two runtime observations passed",
+      "pushed_sha": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
+      "completed_proposal": "619 loader source conditionally approved; no durable household activation",
       "next_assignment": {
-        "scope": "CompanionHost.vue only",
-        "checkout": "/workspace/remote-verification/repositories/worker-companion-yield",
-        "branch": "codex/cloud-companion-yield-20261010",
-        "base_sha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
-        "status": "pins verified, implementation active"
+        "scope": "actual internal durable adapter after exact port contract",
+        "status": "read-only mapping requested"
       },
-      "checkout_head_sha": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
+      "checkout_head_sha": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
       "changed_files": [
         "server/households/consentView.ts"
       ],
@@ -99,25 +96,26 @@
       ],
       "severity": "P1/P2",
       "difficulty": 3,
-      "effort_basis": "Loader-only fixes plus all eleven load\u2192reducer cases; no durable adapter allocated.",
-      "latest_known_execution_handle": null,
+      "effort_basis": "Actual transactional persistence and canonical authority boundaries require separate evidence.",
+      "latest_known_execution_handle": 59259,
       "host": "96cc63a2f9d2",
-      "status": "active source repair"
+      "status": "loader all11 runtime check passed; internal durable adapter ports authorized, exact contract pending",
+      "latest_evidence": "household-loader619/load-reducer-all11/receipt.json"
     },
     {
       "worker_id": "/root/world_country_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
-      "checkout": "/workspace/remote-verification/repositories/worker-world-third-five",
-      "branch": "codex/cloud-third-five-admission-20261010",
-      "base_sha": "5dd7ae415da8e6b58fb3f7a2b0f0cbb8dc5249bf",
+      "checkout": "/workspace/remote-verification/repositories/worker-world-country-provider50",
+      "branch": "codex/cloud-country-provider50-20261010",
+      "base_sha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
       "scope": [
         "country admission owned proposal/test scope"
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
       "runtime_model_id": "not independently exposed; configured spawn request only",
       "pushed_sha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
-      "status": "frozen candidate; parent verification active",
+      "status": "provider50 actual compiler and160 focused assertions passed; browser resolver correction/build pending",
       "latest_test_result": "17 named assertions passed, zero failed/skipped in escalated execution",
       "latest_log": "/workspace/remote-verification/worker-results/world-country/focused-tests-escalated.log",
       "latest_log_sha256": "3e713211e116304ad548825483730d4ddec843a9a123c258bbf6f04f5b3268e8",
@@ -137,15 +135,16 @@
       "difficulty": 4,
       "effort_basis": "55row source preparation complete; shared caller integration and playable acceptance remain.",
       "latest_known_execution_handle": 85545,
-      "host": "96cc63a2f9d2"
+      "host": "96cc63a2f9d2",
+      "latest_evidence": "world55/size-download and test-smoke-readable: exact391 budgets pass, historical tooling guard fails"
     },
     {
       "worker_id": "/root/living_driving_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "high",
-      "checkout": "/workspace/remote-verification/repositories/worker-living-driving",
-      "branch": "codex/cloud-living-reverse-20261010",
-      "base_sha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+      "checkout": "/workspace/remote-verification/repositories/worker-living-driving-final-safety-20261010",
+      "branch": "codex/cloud-living-final-safety-20261010",
+      "base_sha": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
       "scope": [
         "driving service/client/response type hunks"
       ],
@@ -153,7 +152,7 @@
       "runtime_model_id": "not independently exposed; configured spawn request only",
       "app_thread_id": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
       "overlay_hashes": "all seven frozen overlay hashes independently verified by worker",
-      "checkout_head_sha": "d7ccfa5dfea65dacd541ca1dddc885f7f410df9e",
+      "checkout_head_sha": "1b225b90faf375b8195058ee17257e7d31cf8a98",
       "changed_files": [],
       "task_ids": [
         "INT-005",
@@ -164,16 +163,17 @@
       "effort_basis": "Replay and capability multichannel behavior; independent rollback/store review required.",
       "latest_known_execution_handle": 66184,
       "host": "96cc63a2f9d2",
-      "pushed_sha": "d7ccfa5dfea65dacd541ca1dddc885f7f410df9e",
-      "status": "frozen candidate; parent verification active"
+      "pushed_sha": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "status": "final16service/7computedUI tests passed; exact fullcompiler/build/caps pending",
+      "latest_evidence": "living-final-safety/evidence.md; computed UI harness renders null; F3 open"
     },
     {
       "worker_id": "/root/graphics_head_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
-      "checkout": "/workspace/remote-verification/repositories/worker-graphics-npc-contact",
-      "branch": "codex/cloud-graphics-npc-contact-20261010",
-      "base_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+      "checkout": "/workspace/remote-verification/repositories/worker-graphics-npc-contact-trial",
+      "branch": "codex/cloud-graphics-npc-contact-trial-20261010",
+      "base_sha": "9122e0c4eb2d6db3fca4ed6e71687c4168923162",
       "scope": [
         "native-source-sampler.ts",
         "native-direction-retarget.ts",
@@ -181,7 +181,7 @@
       ],
       "checkout_receipt": "worker acknowledged clean exact base",
       "runtime_model_id": "not independently exposed; configured spawn request only",
-      "status": "active source repair",
+      "status": "actual NPC physical-floor failure reproduced; narrowly allocated venue hooks repair active",
       "pushed_sha": "cae2b9fd1200ce0c22ccf27b0cf2973ef83ace0b",
       "checkout_head_sha": "bcb28f57c45aa87dba5c2725f3be04417df12ce2",
       "changed_files": [
@@ -194,7 +194,8 @@
       "difficulty": 3,
       "effort_basis": "Existing fixture instrumentation; actual deformed surfaces and motion verification.",
       "latest_known_execution_handle": null,
-      "host": "96cc63a2f9d2"
+      "host": "96cc63a2f9d2",
+      "latest_evidence": "npc-contact-baseline; all authored144 sole points measured; checker fails"
     }
   ],
   "inventory_kind": "Cloud owner execution receipt; Integration retains sole combined ledger",
@@ -211,21 +212,9 @@
     "log_sha256": "2c9794b27bda1d9835d521b7f2dd23952975ddce2be428d25d0f566d12d44ab3"
   },
   "companion": {
-    "task_id": "INT-002",
-    "branch": "codex/cloud-companion-yield-20261010",
     "sha": "8a48405963ca526bfe059b413be250d834d50b90",
-    "changed_files": [
-      "src/app/features/companion/CompanionHost.vue"
-    ],
-    "focused": "19PASS",
-    "build": "PASS worker receipt",
-    "budget": "PASS worker receipt",
-    "compiler1536": "FAIL OOM preserved",
-    "compiler4096_session": 27918,
-    "browser": "pending actual combined320/390/focus/restore",
-    "push": "PASS following verified same-repository destination and authorization",
-    "compiler4096": "PASS:5projects,0TS/Vue,0baselineJS",
-    "compiler4096_log_sha256": "08b1beafe4a953a464abc45c3721c465872139627aa63bcd4ee13cd234aa5cfe",
-    "compiler4096_exit_status": 0
+    "compiler": "all5 actual4096PASS",
+    "sealed_archive_sha256": "990eb62b8f47be6fbcbb68a78f7fa9cb11bfa669cf2ed65ef5dac8b7fab21b7c",
+    "status": "sealed local package; delivery and actualUI pending; older build summary explicitly qualified"
   }
 }

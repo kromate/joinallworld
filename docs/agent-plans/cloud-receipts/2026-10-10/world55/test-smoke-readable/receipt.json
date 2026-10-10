@@ -1,0 +1,49 @@
+{
+  "sha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+  "branch": "codex/cloud-third-five-admission-20261010",
+  "parent": "3eb9e7cbaec40784eada66f0a8278cbe0f521f59",
+  "checkout": "/workspace/remote-verification/repositories/worker-world-third-five",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "9694892032",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "npm",
+    "run",
+    "test:smoke"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 46030,
+  "started_at_utc": "2026-10-10T00:14:11.849112+00:00",
+  "ended_at_utc": "2026-10-10T00:14:29.959721+00:00",
+  "duration_seconds": 18.110609,
+  "exit_status": 1,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "log": "/workspace/remote-verification/receipts/391ccfe9b9494681bdee0129a3c3fbdd972d74f4/test-smoke-readable/command.log",
+  "log_sha256": "ca7a90494f031fbfaf3483ae1353159beba014348d98b221a34a9dc029ac3d41",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

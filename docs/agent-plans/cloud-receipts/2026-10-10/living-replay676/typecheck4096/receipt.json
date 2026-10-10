@@ -1,0 +1,49 @@
+{
+  "sha": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
+  "branch": "codex/cloud-living-replay-repair-20261010",
+  "parent": "8adca64751d69b1994d42b922bd9f000b3cfe5ab",
+  "checkout": "/workspace/remote-verification/repositories/worker-living-driving-replay-repair-20261010",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "8674910208",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "npm",
+    "run",
+    "typecheck"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 48718,
+  "started_at_utc": "2026-10-10T00:16:41.615709+00:00",
+  "ended_at_utc": "2026-10-10T00:18:35.353023+00:00",
+  "duration_seconds": 113.737314,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "log": "/workspace/remote-verification/receipts/6769279eb4a573e8bec4a8eb94a72ef7f911389e/typecheck-cloud-4096-readable/command.log",
+  "log_sha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

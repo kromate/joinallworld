@@ -1,0 +1,221 @@
+{
+  "run": {
+    "baselineHead": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+    "failurePath": "evidence/graphics-loop/native-game-adoption-v1/home-journey-results/remote-1791589603662/home-journey-failure.json",
+    "failureSha256": "43fe9890aeede3047754273e996ac7607f11730ca29bcd694a24478e35094b05",
+    "historicalExecutionSourcePins": "unknown; do not attribute current source hashes",
+    "extractionCurrentSourcePins": {
+      "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts": "0b8cae21df1bbdde58326cd4a898758dd277d55f8d90f04090ba57256d78ac6b",
+      "src/scene/body/native/native-rest-contact-v15/native-rest-contact.ts": "2e8e55be0020bb9d8b86e0173bac35fde453b1bcc665f761e75427fc02db575e",
+      "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts": "5fc8fdf1745227950cf1768f65425ecc9b1eb6b6fc8c1e0cf67e4faac7ffecbc"
+    }
+  },
+  "mappedFrame": {
+    "rootWorld": [
+      -6.892039820124125,
+      0.3259241071658322,
+      -5.408850462780112
+    ],
+    "hipsWorld": [
+      -6.896574486069842,
+      0.7337540262351336,
+      -5.368176031224571
+    ]
+  },
+  "rootWorldCorrection": 0,
+  "baselineRegions": {
+    "pelvis-back": {
+      "sampled": 384,
+      "minimumGap": -0.17975778595018288,
+      "maximumGap": 0.13785474371292383
+    },
+    "torso-back": {
+      "sampled": 384,
+      "minimumGap": 0.1085994862233357,
+      "maximumGap": 0.9206555661133557
+    },
+    "head-back": {
+      "sampled": 220,
+      "minimumGap": 0.6730167457998166,
+      "maximumGap": 1.2527949105860143
+    }
+  },
+  "trial": {
+    "requestedLift": 0.17673466139811933,
+    "before": {
+      "rootWorld": [
+        -6.892039820124125,
+        0.3259241071658322,
+        -5.408850462780112
+      ],
+      "hipsWorld": [
+        -6.896574486069842,
+        0.7337540262351336,
+        -5.368176031224571
+      ],
+      "segmentLengths": {
+        "left": {
+          "upper": 0.5302444330889774,
+          "lower": 0.5538910504334098
+        },
+        "right": {
+          "upper": 0.5302444330889772,
+          "lower": 0.5538910504334099
+        }
+      },
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minimumGap": -0.17973466139811933,
+          "maximumGap": 0.1378548264248347
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minimumGap": 0.1085979954462083,
+          "maximumGap": 0.9206555661133557
+        },
+        "head-back": {
+          "sampled": 220,
+          "minimumGap": 0.6730167457998166,
+          "maximumGap": 1.2527949105860143
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minGap": 4.3877478886344967e-7,
+          "maxGap": 0.02399223109155521,
+          "within4mm": 26
+        },
+        "right": {
+          "sampled": 64,
+          "minGap": 0.0000025357569004291758,
+          "maxGap": 0.019996410504860868,
+          "within4mm": 21
+        }
+      },
+      "footSolveResult": {
+        "corrected": 2,
+        "maxError": 0,
+        "limited": false,
+        "limitedReasons": [],
+        "unresolvedReasons": [],
+        "finalLegReach": [
+          {
+            "side": "left",
+            "upperLength": 0.4175801282929296,
+            "lowerLength": 0.4362024030179238,
+            "actualAnkleReach": 0.6110889507714803,
+            "requestedAnkleReach": 0.6110891996736809,
+            "maximumReach": 0.8537825313108534,
+            "extensionRatio": 0.715743385772307
+          },
+          {
+            "side": "right",
+            "upperLength": 0.4175801282929293,
+            "lowerLength": 0.4362024030179238,
+            "actualAnkleReach": 0.5555734563447551,
+            "requestedAnkleReach": 0.5555749763157971,
+            "maximumReach": 0.8537825313108531,
+            "extensionRatio": 0.6507218828462048
+          }
+        ]
+      }
+    },
+    "after": {
+      "rootWorld": [
+        -6.892039820124125,
+        0.5026587685639515,
+        -5.408850462780112
+      ],
+      "hipsWorld": [
+        -6.896574486069842,
+        0.910488687633253,
+        -5.368176031224571
+      ],
+      "segmentLengths": {
+        "left": {
+          "upper": 0.5302444330889772,
+          "lower": 0.5538910504334099
+        },
+        "right": {
+          "upper": 0.5302444330889774,
+          "lower": 0.5538910504334099
+        }
+      },
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minimumGap": -0.018371259299224674,
+          "maximumGap": 0.3157221725931846
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minimumGap": 0.2865533627479506,
+          "maximumGap": 1.0973902222443717
+        },
+        "head-back": {
+          "sampled": 220,
+          "minimumGap": 0.8497514093376966,
+          "maximumGap": 1.4295295719841339
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minGap": 0.0014708210060630778,
+          "maxGap": 0.025514992620651572,
+          "within4mm": 22
+        },
+        "right": {
+          "sampled": 64,
+          "minGap": 0.001577206140896542,
+          "maxGap": 0.021115820816290792,
+          "within4mm": 20
+        }
+      },
+      "footSolveResult": {
+        "corrected": 2,
+        "maxError": 0,
+        "limited": false,
+        "limitedReasons": [
+          {
+            "code": "per-pass-foot-correction-cap",
+            "side": "left",
+            "requested": -0.17673509753935654,
+            "applied": -0.12
+          },
+          {
+            "code": "per-pass-foot-correction-cap",
+            "side": "right",
+            "requested": -0.17673719978857147,
+            "applied": -0.12
+          }
+        ],
+        "unresolvedReasons": [],
+        "finalLegReach": [
+          {
+            "side": "left",
+            "upperLength": 0.41758012829292934,
+            "lowerLength": 0.4362024030179239,
+            "actualAnkleReach": 0.7188634396344938,
+            "requestedAnkleReach": 0.7197992786606552,
+            "maximumReach": 0.8537825313108532,
+            "extensionRatio": 0.8430709838435237
+          },
+          {
+            "side": "right",
+            "upperLength": 0.4175801282929296,
+            "lowerLength": 0.43620240301792385,
+            "actualAnkleReach": 0.6683834835111505,
+            "requestedAnkleReach": 0.6694299400927687,
+            "maximumReach": 0.8537825313108535,
+            "extensionRatio": 0.7840754706763099
+          }
+        ]
+      }
+    },
+    "bodyRegionsClear": false,
+    "floorFeetClearAndPlanted": true
+  }
+}

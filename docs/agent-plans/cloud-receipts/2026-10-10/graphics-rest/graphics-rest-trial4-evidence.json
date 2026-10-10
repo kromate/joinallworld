@@ -1,0 +1,185 @@
+{
+  "run": {
+    "head": "4c2dec572f51f04c2f4972be609ed5eb5bbc794f",
+    "baseline": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+    "runId": "remote-1791591251006",
+    "failurePath": "evidence/graphics-loop/native-game-adoption-v1/home-journey-results/remote-1791591251006/home-journey-failure.json",
+    "failureSha256": "ebfb6af27cf3a716231637ac56454ecc7621e48e5064f7536e8078dbc148acac",
+    "bundleSha256": "00e226ea192a83d3f511f5c17aced46ece7b705a9309d4ac0a554d66f10c2200",
+    "sourceExecutionPins": {
+      "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts": "0b8cae21df1bbdde58326cd4a898758dd277d55f8d90f04090ba57256d78ac6b",
+      "src/scene/body/native/native-rest-contact-v15/native-rest-contact.ts": "2e8e55be0020bb9d8b86e0173bac35fde453b1bcc665f761e75427fc02db575e",
+      "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts": "5fc8fdf1745227950cf1768f65425ecc9b1eb6b6fc8c1e0cf67e4faac7ffecbc"
+    },
+    "commandLog": "/tmp/graphics-rest-v9-trial4-20261010.log",
+    "commandLogSha256": "61d0e789e3e895030d95027deda3da081c4e84db2a4f68bc37e30115f74006b9",
+    "receipt": "/tmp/graphics-rest-v9-trial4-20261010-receipt.json",
+    "receiptSha256": "c29f7098ecf68b3a621643d9008b40b4de1293686354d9caf27bef74cc9055d3"
+  },
+  "candidate": {
+    "requestedLift": 0.030668579635959595,
+    "cumulativeLift": 0.030668579635959595,
+    "before": {
+      "rootWorld": [
+        -6.8859541703544345,
+        0.4955483565430323,
+        -5.762832424383711
+      ],
+      "hipsWorld": [
+        -6.894300247741479,
+        0.8672711240657665,
+        -5.674731774522506
+      ],
+      "segmentLengths": {
+        "left": {
+          "upper": 0.5302444330889771,
+          "lower": 0.5538910504334094
+        },
+        "right": {
+          "upper": 0.530244433088977,
+          "lower": 0.5538910504334099
+        }
+      },
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minimumGap": -0.0030000000000001137,
+          "maximumGap": 0.25499568947884177
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minimumGap": 0.23976107466279706,
+          "maximumGap": 0.8636196328337904
+        },
+        "head-back": {
+          "sampled": 384,
+          "minimumGap": 0.8005228725015716,
+          "maximumGap": 1.1177588775123635
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.7435408293193502,
+          "maximumGap": 0.8361652586029822,
+          "withinFourMillimetres": 0
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.8014162269326417,
+          "maximumGap": 0.8678924913917101,
+          "withinFourMillimetres": 0
+        }
+      },
+      "footSolveResult": null
+    },
+    "after": {
+      "rootWorld": [
+        -6.8859541703544345,
+        0.4955483565430323,
+        -5.762832424383711
+      ],
+      "hipsWorld": [
+        -6.894300247741479,
+        0.8672711240657665,
+        -5.674731774522506
+      ],
+      "segmentLengths": {
+        "left": {
+          "upper": 0.5302444330889771,
+          "lower": 0.5538910504334095
+        },
+        "right": {
+          "upper": 0.5302444330889773,
+          "lower": 0.5538910504334098
+        }
+      },
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minimumGap": -0.07388719101302166,
+          "maximumGap": 0.258778618228345
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minimumGap": 0.24547604013319346,
+          "maximumGap": 0.8636196328337904
+        },
+        "head-back": {
+          "sampled": 384,
+          "minimumGap": 0.8005228725015716,
+          "maximumGap": 1.1177588775123635
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.0016495822525176285,
+          "maximumGap": 0.10287766923674949,
+          "withinFourMillimetres": 4
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.0007265362038832157,
+          "maximumGap": 0.08712306455815358,
+          "withinFourMillimetres": 5
+        }
+      },
+      "footSolveResult": {
+        "corrected": 2,
+        "maxError": 0.0007265362038832157,
+        "limited": false,
+        "limitedReasons": [
+          {
+            "code": "per-pass-foot-correction-cap",
+            "side": "left",
+            "requested": -0.24551664524288022,
+            "applied": -0.12
+          },
+          {
+            "code": "per-pass-foot-correction-cap",
+            "side": "right",
+            "requested": -0.2914495154425495,
+            "applied": -0.12
+          },
+          {
+            "code": "per-pass-foot-correction-cap",
+            "side": "left",
+            "requested": -0.1267749624090377,
+            "applied": -0.12
+          },
+          {
+            "code": "per-pass-foot-correction-cap",
+            "side": "right",
+            "requested": -0.1710904977267145,
+            "applied": -0.12
+          }
+        ],
+        "unresolvedReasons": [],
+        "finalLegReach": [
+          {
+            "side": "left",
+            "upperLength": 0.41758012829292895,
+            "lowerLength": 0.4362024030179235,
+            "actualAnkleReach": 0.8388497703124831,
+            "requestedAnkleReach": 0.8397621202498033,
+            "maximumReach": 0.8537825313108525,
+            "extensionRatio": 0.9835784751422322
+          },
+          {
+            "side": "right",
+            "upperLength": 0.41758012829292934,
+            "lowerLength": 0.43620240301792346,
+            "actualAnkleReach": 0.8285657570476147,
+            "requestedAnkleReach": 0.8289812669519235,
+            "maximumReach": 0.8537825313108528,
+            "extensionRatio": 0.9709513096726743
+          }
+        ]
+      }
+    },
+    "bodyRegionsClear": false,
+    "floorFeetClearAndPlanted": true,
+    "solverError": "Native lie foot support failed (0 m, limited=true); diagnostics={\"result\":{\"corrected\":0,\"maxError\":0,\"limited\":true,\"di"
+  }
+}

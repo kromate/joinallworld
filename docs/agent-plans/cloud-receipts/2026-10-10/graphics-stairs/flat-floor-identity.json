@@ -1,0 +1,32 @@
+{
+  "test": "constant-floor supportTargetY identity",
+  "formula": "contact.y + max_i(floorY - point.y)",
+  "sourceSha256": "23d5de7eb5135d92dfecaa3fd0b79f5d45353f0b61a9f7b0b98f1a5cbd1ac757",
+  "results": [
+    {
+      "floor": 0,
+      "contactY": 0,
+      "targetY": 0,
+      "delta": 0,
+      "expectedLegacyDelta": 0,
+      "error": 0
+    },
+    {
+      "floor": 1.25,
+      "contactY": 1.213,
+      "targetY": 1.25,
+      "delta": 0.03699999999999992,
+      "expectedLegacyDelta": 0.03699999999999992,
+      "error": 0
+    },
+    {
+      "floor": -0.37,
+      "contactY": -0.401,
+      "targetY": -0.37,
+      "delta": 0.031000000000000028,
+      "expectedLegacyDelta": 0.031000000000000028,
+      "error": 0
+    }
+  ],
+  "status": "pass"
+}

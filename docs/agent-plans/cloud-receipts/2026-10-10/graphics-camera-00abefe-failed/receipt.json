@@ -1,0 +1,64 @@
+{
+  "source_sha": "00abefea746b8263eab0482ebea0e6961481da77",
+  "status": "FAIL",
+  "checks_total": 29,
+  "failed_checks": [
+    "closeupsFrameWholeActor",
+    "closeupsRenderActorPixels",
+    "npcPlayerSupportedPoseCameraMatrix",
+    "cameraSideControlsSaved",
+    "realNpcActivityCompleted",
+    "realNpcPoseFollowsLifeAction"
+  ],
+  "files": [
+    {
+      "path": "office-game-fixture-report.json",
+      "bytes": 1308270,
+      "sha256": "5c30bf8d4a268775f95f3a1fc0fa2f7eb2f2f20da543c50053c8188d908c548b",
+      "source": "/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-00abefe-escalated/office-game-fixture-report.json"
+    },
+    {
+      "path": "office-game-fixture-failure.json",
+      "bytes": 5849,
+      "sha256": "280fb11449da707d216ac0af35c446a0da09890be3e76a46bdfdf384b89e48fd",
+      "source": "/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-00abefe-escalated/office-game-fixture-failure.json"
+    },
+    {
+      "path": "office-mrs-okafor-close-interact-canvas.png",
+      "bytes": 215736,
+      "sha256": "f2f484279e3fcaeda7136828273bc7cde120fa7c186ddd238862c70b2f1b91fa",
+      "source": "/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-00abefe-escalated/office-mrs-okafor-close-interact-canvas.png"
+    },
+    {
+      "path": "office-mrs-okafor-close-back-control-canvas.png",
+      "bytes": 207243,
+      "sha256": "af4f5eb7fb49f3fd193618cb372e81be7eecd6103a8180c19b66b2ba750cff26",
+      "source": "/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-00abefe-escalated/office-mrs-okafor-close-back-control-canvas.png"
+    },
+    {
+      "path": "office-dapo-confirmed-profile-returned-idle-canvas.png",
+      "bytes": 212688,
+      "sha256": "4c32a589cffc57ad46a90e42ba5659945e767830d66d968e698a988cbfece295",
+      "source": "/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/remote-results/npc-camera-00abefe-escalated/office-dapo-confirmed-profile-returned-idle-canvas.png"
+    },
+    {
+      "path": "run-00abefe.log",
+      "bytes": 1497,
+      "sha256": "b3d141f5e4e491a8494933e5b55da6cc632310d6cec8876a0e67d47e3d3c458e",
+      "source": "/workspace/remote-verification/worker-results/npc-camera-matrix/run-00abefe.log"
+    },
+    {
+      "path": "run-00abefe-escalated.log",
+      "bytes": 2004,
+      "sha256": "e32a9b2b9679897855586ea1dfacf6fcbba367f4b53bb15206fba6f7a74738f6",
+      "source": "/workspace/remote-verification/worker-results/npc-camera-matrix/run-00abefe-escalated.log"
+    }
+  ],
+  "provenance": "Original actual canvas captures and reports copied without rerender; failure deliberately preserved. report.screenshots holds geometry, cameraMatrix rows omit samples. Full page screenshots are not direct WebGL evidence.",
+  "reported_limits": [
+    "7invalidcamera rows;6failedchecks among29",
+    "counter occlusion and actor contrast failures",
+    "Mrs realactivity completion false and returned-idle sequencing contaminated;camera-onlysuccessnotclaimed"
+  ],
+  "copied_at_utc": "2026-10-10T01:55:00.047134+00:00"
+}

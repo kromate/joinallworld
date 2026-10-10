@@ -1,0 +1,16 @@
+STARTED=2026-10-10T01:44:40Z
+SOURCE_SHA=00abefea746b8263eab0482ebea0e6961481da77
+0e15db3b449a22afd165e119398b9adf76592f059d9d61381fe321e9657ac611  evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts
+9482cfff62c6639eb05c78ba90ada77e24379ce0c0a75f61e8057b4d9674c0f9  evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs
+ea3efb2928b215170d3bb6e53ce612c31584a59f4467fce8f8594745888c907e  evidence/graphics-loop/native-game-adoption-v1/game-fixture.bundle.js
+PHASE=office-browser-render-existing-bundle
+file:///workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs:368
+  if (report.status !== 'pass') throw new Error(`Game slice failed checks: ${JSON.stringify(checks)}`);
+                                      ^
+
+Error: Game slice failed checks: {"firstFrameThenCrowdStart":true,"webgl2":true,"lifeAtOffice":true,"realNpcList":true,"npcActionCards":true,"nativeCrowdAtLeastTwo":true,"noProceduralCrowdFallback":true,"nativeActorsExactGeometry":true,"nativePlayerThroughStandIn":true,"sameCreatorSeedAndSavedLook":true,"walkSample":true,"closeupReportsActualBodyPose":true,"deterministicWalkPhases":true,"closeupsFrameWholeActor":false,"closeupsRenderActorPixels":false,"closeupsSavedDirectCanvasPixels":true,"npcPlayerSupportedPoseCameraMatrix":false,"cameraSideControlsSaved":false,"interactionSample":true,"realNpcActivityCompleted":false,"realNpcPoseFollowsLifeAction":false,"playerContact":true,"unsupportedAppearanceUsesWholeLifecycleLegacyAndDisposes":true,"afterUnsupportedStillReady":true,"mobileLayoutSingleColumn":true,"dapoRealActivityCompleted":true,"snapshotsHaveNoRuntimeErrors":true,"teardownReleasesActorsAndContext":true,"consoleClean":true}
+    at file:///workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs:368:39
+
+Node.js v24.19.0
+FINAL_EXIT=1
+ENDED=2026-10-10T01:48:09Z

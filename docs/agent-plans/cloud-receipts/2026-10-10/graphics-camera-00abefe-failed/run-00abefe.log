@@ -1,0 +1,27 @@
+STARTED=2026-10-10T01:43:19Z
+SOURCE_SHA=00abefea746b8263eab0482ebea0e6961481da77
+0e15db3b449a22afd165e119398b9adf76592f059d9d61381fe321e9657ac611  evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts
+9482cfff62c6639eb05c78ba90ada77e24379ce0c0a75f61e8057b4d9674c0f9  evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs
+PHASE=node-syntax-check
+PHASE=strict-fixture-typecheck heap=4096MiB
+PHASE=bundle
+{"status":"bundled","repo":"/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial","entry":"/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts","outfile":"/workspace/remote-verification/repositories/worker-graphics-npc-camera-trial/evidence/graphics-loop/native-game-adoption-v1/game-fixture.bundle.js","bytes":10056137,"sourceScene":"src/scene/venue-scenes.ts","sourceStandIn":"src/scene/body/stand-in.ts"}
+PHASE=office-browser-render
+node:net:2145
+      const error = new UVExceptionWithHostPort(rval, 'listen', address, port);
+                    ^
+
+Error: listen EPERM: operation not permitted 127.0.0.1
+    at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+    at listenInCluster (node:net:2224:12)
+    at node:net:2448:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '127.0.0.1'
+}
+
+Node.js v24.19.0
+FINAL_EXIT=1
+ENDED=2026-10-10T01:43:32Z

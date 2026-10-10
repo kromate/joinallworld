@@ -34,6 +34,8 @@ ${wikidataNamed([
   minHole: 40,
   minRoadKm: 0.7,
   maxRoads: 700,
+  roadMarginDegrees: 0.012,
+  surround: '#d9cba0',
   water: (bbox) => `[out:json][timeout:120];(relation["natural"="water"]["water"="river"](${bbox});way["natural"="water"]["water"="river"](${bbox});relation["waterway"="riverbank"](${bbox});way["waterway"="riverbank"](${bbox}););out geom;`,
   roads: (bbox, core) => `[out:json][timeout:120];way["highway"~"^(motorway|trunk|primary)$"](${bbox});out geom tags;way["highway"="secondary"]["name"](${core});out geom tags;`,
   boundaryNote: 'the built-up extent of Greater Cairo, from the mapped land use',

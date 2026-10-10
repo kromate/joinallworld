@@ -17,7 +17,7 @@ import { writeFileSync } from 'node:fs';
 import { ask } from './destination-detail/overpass.ts';
 import type { Element } from './destination-detail/overpass.ts';
 import type { DetailConfig } from './destination-detail/config.ts';
-import { areaRings, builtUp, inBox, polygonsOf, round, roundRing, seaBand, simplify, simplifyRing } from './destination-detail/geometry-tools.ts';
+import { areaRings, builtUp, coverage, inBox, polygonsOf, round, roundRing, shoreWater, simplify, simplifyRing } from './destination-detail/geometry-tools.ts';
 import type { P } from './destination-detail/geometry-tools.ts';
 
 const id = process.argv[2];
@@ -34,6 +34,12 @@ const centreOf = (element: Element): P => {
   return [element.center.lon, element.center.lat];
 };
 
+/** A place must stand at least this far (about 900 m) inside the play box, so that none sits against the border. */
+const EDGE = 0.008;
+/** Water is kept this far (degrees) beyond the play box, so a river or the sea runs on to the edge of the ground that is drawn. */
+const REACH = 0.25;
+const wide = [south - REACH, west - REACH, north + REACH, east + REACH] as const;
+
 // ---- places -----------------------------------------------------------------------------------------------------------------------
 const discoveries = [];
 for (const [label, query] of Object.entries(config.discovery(bbox))) discoveries.push(await ask(id, label, query));
@@ -47,11 +53,11 @@ const pick = (ref: string): Element => {
 const nameOf = (element: Element): string => (element.tags?.['name:en'] ?? element.tags?.name ?? '').replace(/\s+/g, ' ').trim();
 
 const labelled = config.names.map((choice) => ({ name: choice.label ?? nameOf(pick(choice.ref)), at: centreOf(pick(choice.ref)) }));
-/** The district of a place is the nearest labelled suburb within one kilometre, else the whole area. */
+/** The district of a place is the nearest labelled neighbourhood within two and a half kilometres, else the whole area. */
 const districtOf = ([lon, lat]: P): string => {
   const metres = ([x, y]: P): number => Math.hypot((x - lon) * 111320 * Math.cos(lat * Math.PI / 180), (y - lat) * 110574);
   const nearest = labelled.map((label) => ({ label, d: metres(label.at) })).sort((a, b) => a.d - b.d)[0];
-  return nearest && nearest.d <= 1000 ? nearest.label.name : config.name;
+  return nearest && nearest.d <= 2500 ? nearest.label.name : config.name;
 };
 
 const places = config.places.map((choice) => {
@@ -60,6 +66,7 @@ const places = config.places.map((choice) => {
   const name = choice.label ?? nameOf(element);
   if (!name) throw new Error(`${choice.ref} has no English name`);
   if (!inBox(config.box, [lon, lat])) throw new Error(`${choice.ref} lies outside the play box`);
+  if (!inBox([config.box[0] + EDGE, config.box[1] + EDGE, config.box[2] - EDGE, config.box[3] - EDGE], [lon, lat]) && !choice.atEdge) throw new Error(`${choice.ref} lies within ${EDGE} degrees of the play box edge: widen the box or leave the place out`);
   return {
     ...(choice.slot ? { slot: choice.slot } : { key: choice.key }),
     name, district: districtOf([lon, lat]), kind: choice.kind, category: choice.category, icon: choice.icon,
@@ -90,18 +97,27 @@ export const PLACES: readonly DestinationPlace[] = ${JSON.stringify(places, null
 console.log(`places ${places.length}, labels ${labels.length}`);
 
 // ---- outline, water and roads ---------------------------------------------------------------------------------------------------------
-const waterAnswer = await ask(id, 'water', config.water(bbox));
+// A sea or a big lake is asked for as far out as the water is drawn, so that its shore ways run on to the edge of the drawn ground and the shore can be closed there.
+const waterAnswer = await ask(id, 'water', config.water(config.sea ? wide.join(',') : bbox));
 const isShore = (element: Element): boolean => Boolean(element.geometry) && element.type === 'way' && (element.tags?.natural === 'coastline' || (config.sea?.kind === 'lake' && !element.tags?.natural && !element.tags?.waterway));
 const coast = waterAnswer.elements.filter(isShore).map((element) => element.geometry!.map((g): P => [g.lon, g.lat]));
 const landPoints = [...places.map((place): P => [place.lon, place.lat]), ...labelled.map((label) => label.at)];
-const sea = coast.length && config.sea ? seaBand(coast, config.box, config.sea.bandMetres, config.cell / config.split, config.sea.kind === 'lake' ? landPoints : undefined).map((polygon) => polygon.map((ring) => simplifyRing(ring, config.waterTolerance)).filter((ring) => ring.length)).filter((polygon) => polygon.length) : [];
-const water = [...sea, ...waterAnswer.elements.filter((element) => !isShore(element)).flatMap((element) => polygonsOf(areaRings(element), config.box, config.waterTolerance))];
-console.log(`water ${water.length} polygons (${sea.length} of sea from ${coast.length} coast ways)`);
+const tidyWater = (polygons: P[][][]): P[][][] => polygons.map((polygon) => polygon.map((ring) => simplifyRing(ring, config.waterTolerance)).filter((ring) => ring.length)).filter((polygon) => polygon.length);
+const shoreSide = coast.length && config.sea ? shoreWater(coast, landPoints, config.box, wide, config.sea.bandMetres, config.cell / config.split) : null;
+const sea = shoreSide ? tidyWater(shoreSide.band) : [];
+const farSea = shoreSide ? tidyWater(shoreSide.far) : [];
+// Only what the source tags as water: the answer may also hold wetland, islet and wall ways that are members of the lake's relation.
+const inland = waterAnswer.elements.filter((element) => !isShore(element) && (element.tags?.natural === 'water' || element.tags?.waterway === 'riverbank' || element.type === 'relation'));
+// What the outline is traced round (the shore band and the inland water inside the box: the map's declared water), and what is drawn (the same, carried on to the edge of the ground).
+const wet = [...sea, ...inland.flatMap((element) => polygonsOf(areaRings(element), config.box, config.waterTolerance))];
+const water = wet;
+const reachWater = [...farSea, ...inland.flatMap((element) => polygonsOf(areaRings(element), wide, config.waterTolerance))];
+console.log(`water ${water.length} polygons, ${reachWater.length} carried to the edge of the ground (${sea.length} of shore band from ${coast.length} shore ways)`);
 
 const landuse = await ask(id, 'landuse', config.landuse(bbox));
 const usePoints = landuse.elements.map((element): P => centreOf(element));
 const anchors = [...places.map((place): P => [place.lon, place.lat]), ...labelled.map((label) => label.at)];
-const traced = builtUp(usePoints, anchors, water, config.box, { cell: config.cell, split: config.split, grow: config.grow, minHole: config.minHole, shore: config.shore });
+const traced = builtUp(usePoints, anchors, wet, config.box, { cell: config.cell, split: config.split, grow: config.grow, minHole: config.minHole, shore: config.shore });
 const tidy = (polygons: P[][][]): P[][][] => polygons.map((polygon) => polygon.map((ring) => simplifyRing(ring, config.outlineTolerance)).filter((ring) => ring.length)).filter((polygon) => polygon.length);
 const land = tidy(traced.land), play = tidy(traced.play);
 if (!land.length) throw new Error('The land-use answer left no built-up area in the box');
@@ -122,6 +138,7 @@ export const GEOMETRY: DestinationGeometry = {
 }
 `);
 
+const reach = coverage(play, config.box, config.cell / config.split);
 const roadsAnswer = await ask(id, 'roads', config.roads(bbox, `${config.core.join(',')}`));
 const candidates: { row: string; km: number; points: number; major: boolean }[] = [];
 const lengthKm = (line: P[]): number => line.slice(1).reduce((sum, [lon, lat], i) => sum + Math.hypot((lon - line[i]![0]) * 111.32 * Math.cos(lat * Math.PI / 180), (lat - line[i]![1]) * 110.57), 0);
@@ -132,13 +149,23 @@ for (const way of roadsAnswer.elements) {
   const kept = simplify(way.geometry.map((g): P => [g.lon, g.lat]), near ? config.coreTolerance : config.farTolerance)
     .filter((p, i, all) => i === 0 || p[0] !== all[i - 1]![0] || p[1] !== all[i - 1]![1]);
   if (kept.length < 2 || !kept.some((p) => inBox(config.box, p))) continue;
-  const km = lengthKm(kept);
-  // A short unmajor piece is a junction fragment, not a road a player can read at this scale.
-  if (!isMajor && km < config.minRoadKm) continue;
-  const q = kept.map(([lon, lat]): P => [Math.round(lon * 1e4), Math.round(lat * 1e4)]);
-  const steps = q.slice(1).flatMap(([x, y], i) => [x - q[i]![0], y - q[i]![1]]);
-  const name = (way.tags['name:en'] ?? way.tags.name ?? way.tags.ref ?? '').replace(/\s+/g, ' ').trim() || 'Road';
-  candidates.push({ row: `  [${JSON.stringify(name)}, ${isMajor ? 1 : 0}, ${q[0]![0]}, ${q[0]![1]}, ${steps.join(', ')}],`, km, points: q.length, major: isMajor });
+  // A road is kept where it runs through, or within a short way of, the built-up outline; beyond that it fades out rather than crossing the countryside to the edge.
+  const runs: P[][] = [];
+  let run: P[] = [];
+  for (const p of kept) {
+    if (reach(p, config.roadMarginDegrees)) run.push(p);
+    else { if (run.length > 1) runs.push(run); run = []; }
+  }
+  if (run.length > 1) runs.push(run);
+  for (const piece of runs) {
+    const km = lengthKm(piece);
+    // A short unmajor piece is a junction fragment, not a road a player can read at this scale.
+    if (!isMajor && km < config.minRoadKm) continue;
+    const q = piece.map(([lon, lat]): P => [Math.round(lon * 1e4), Math.round(lat * 1e4)]);
+    const steps = q.slice(1).flatMap(([x, y], i) => [x - q[i]![0], y - q[i]![1]]);
+    const name = (way.tags['name:en'] ?? way.tags.name ?? way.tags.ref ?? '').replace(/\s+/g, ' ').trim() || 'Road';
+    candidates.push({ row: `  [${JSON.stringify(name)}, ${isMajor ? 1 : 0}, ${q[0]![0]}, ${q[0]![1]}, ${steps.join(', ')}],`, km, points: q.length, major: isMajor });
+  }
 }
 const chosen = candidates.sort((a, b) => Number(b.major) - Number(a.major) || b.km - a.km).slice(0, config.maxRoads);
 const rows = chosen.map((road) => road.row);
@@ -152,17 +179,19 @@ writeFileSync(out('terrain.ts'), `/**
  * source sha256 ${terrainSha} (land use ${landuse.sha256}, water ${waterAnswer.sha256}, roads ${roadsAnswer.sha256}, places ${discoverySha.join(', ')}).
  * Roads: Douglas-Peucker ${config.farTolerance} degrees (${config.coreTolerance} in the core ${config.core.join(', ')}), quantised to 0.0001 degrees;
  * ${rows.length} ways of ${candidates.length} candidates (the longest first, none under ${config.minRoadKm} km unless motorway or trunk), ${points} points; each row is name, major (1/0), first longitude and latitude in 0.0001 degrees, then the steps to every
- * next vertex. Water: simplified ${config.waterTolerance} degrees. Loaded only with this city's map.
+ * next vertex. Roads leave the outline by at most ${config.roadMarginDegrees} degrees. Water: simplified ${config.waterTolerance} degrees; "water" lies inside the play area, "reachWater" is the same water carried ${REACH} degrees beyond the play box, to the edge of the ground that is drawn. Loaded only with this city's map.
  */
 import type { DestinationTerrain } from '../africa/map.ts'
 
 export const TERRAIN: DestinationTerrain = {
   water: ${lonLat(water)},
+  reachWater: ${lonLat(reachWater)},
   roads: [
 ${rows.join('\n')}
   ],
   trunkRoads: ${JSON.stringify(trunk)},
   names: ${JSON.stringify(labels)},
+  surround: ${JSON.stringify(config.surround)},
   source: ${JSON.stringify(config.source)},
   licence: 'ODbL-1.0',
 }

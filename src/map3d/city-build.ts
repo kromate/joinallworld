@@ -358,7 +358,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
   count(add(board, 'board'));
   const water = new THREE.Mesh(new THREE.PlaneGeometry(width, depth), materials.water);
   materials.water.map!.repeat.set(width / WATER_TILE, depth / WATER_TILE);
-  if (pack.inland) { materials.water.map = null; materials.water.color.set('#bcd596'); materials.water.roughness = 1; materials.water.metalness = 0; }
+  if (pack.inland) { materials.water.map = null; materials.water.color.set(pack.surround ?? '#bcd596'); materials.water.roughness = 1; materials.water.metalness = 0; }
   water.rotation.x = -Math.PI / 2; water.position.set(midX, WATER_Y, midZ);
   count(add(water, 'water'));
   const waterwayMaterial = pack.water?.length ? keep(new THREE.MeshStandardMaterial({ color: CITY_LIGHT.day.water, roughness: 0.42, metalness: 0.05 })) : null;
@@ -886,7 +886,7 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, { venue
     setTime(next: string) {
       const preset = presets[next] || CITY_LIGHT.day;
       time = presets[next] ? next : 'day';
-      materials.water.color.set(pack.inland ? '#bcd596' : preset.water); materials.windows.color.set(preset.windows);
+      materials.water.color.set(pack.inland ? pack.surround ?? '#bcd596' : preset.water); materials.windows.color.set(preset.windows);
       waterwayMaterial?.color.set(preset.water);
       materials.waves.opacity = preset.waves; materials.shadow.opacity = preset.shadow;
       return preset;

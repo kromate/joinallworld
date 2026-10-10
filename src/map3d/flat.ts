@@ -48,6 +48,8 @@ export interface FlatModel {
   homes: Record<string, { x: number; z: number; district: string }>
   names: FlatName[]
   inland: boolean
+  /** The ground colour round the footprint of an inland city (see CityPack.surround). */
+  surround?: string
   /** What the whole-extent button names (see labels.ts extentWord). */
   extent: 'state' | 'city'
   sea: PackBounds['sea'] | null
@@ -93,6 +95,7 @@ export function flatModel(pack: CityPack, network: Pick<Network, 'roads'>, { ven
     homes: Object.fromEntries(Object.entries(pack.homes).map(([id, spot]) => [id, { x: spot.x, z: spot.z, district: spot.district }])),
     names: (pack.districts || []).map((plate) => ({ name: plate.name, x: plate.x, z: plate.z, size: plate.size || 2, water: Boolean(plate.water) })),
     inland: pack.inland === true,
+    ...(pack.surround ? { surround: pack.surround } : {}),
     extent: extentWord(pack),
     character: {
       areas: (pack.areas ?? []).map((area) => ({ x: area.x, z: area.z, r: area.r, tone: area.tone })),
@@ -115,7 +118,7 @@ export function flatSvg(model: FlatModel): string {
   const stroke = (road: FlatRoad, colour: string, extra: number, more = '') => `<path d="${road.d}" data-road="${esc(road.id)}" fill="none" stroke="${colour}" stroke-width="${fixed(road.width + extra)}" stroke-linecap="round" stroke-linejoin="round" ${more}/>`;
   return `<svg class="m3-flat-art" viewBox="${fixed(box.x)} ${fixed(box.z)} ${fixed(box.width)} ${fixed(box.height)}" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <defs><clipPath id="m3-flat-land-${esc(model.id)}" clip-rule="evenodd">${model.land.map((entry) => `<path d="${entry.d}"/>`).join('')}</clipPath></defs>
-    <rect x="${fixed(box.x)}" y="${fixed(box.z)}" width="${fixed(box.width)}" height="${fixed(box.height)}" fill="${model.inland ? c.mainland : c.water}"/>
+    <rect x="${fixed(box.x)}" y="${fixed(box.z)}" width="${fixed(box.width)}" height="${fixed(box.height)}" fill="${model.inland ? model.surround ?? c.mainland : c.water}"/>
     ${model.water.length ? `<g fill="${c.water}" fill-rule="evenodd">${model.water.map(entry => `<path d="${entry.d}" data-water="${esc(entry.id)}"/>`).join('')}</g>` : ''}
     ${model.context ? `<g class="m3-flat-context" fill-rule="evenodd" aria-hidden="true"><g>${model.context.land.map((piece) => `<path d="${piece.d}" data-context="${esc(piece.id)}" fill="${piece.kind === 'country' ? '#e4dfd0' : '#dde1d3'}"/>`).join('')}</g><g fill="none" stroke="#b7b8ae" stroke-width="${fixed(1.1 * k)}" stroke-linecap="round" stroke-linejoin="round">${model.context.roads.map((road) => `<path d="${road.d}"/>`).join('')}</g><g font-family="DM Sans, Arial, sans-serif" font-weight="700" text-anchor="middle" font-size="46" letter-spacing="7">${model.context.names.map((label) => `<text x="${fixed(label.x)}" y="${fixed(label.z)}" fill="${label.kind === 'sea' ? '#e2f4f8' : '#56684f'}" fill-opacity=".75">${esc(label.text)}</text>`).join('')}</g></g>` : ''}
     <g fill="${model.inland ? c.mainland : c.shallows}" fill-rule="evenodd" stroke="${model.inland ? c.mainland : c.shallows}" stroke-width="${fixed(5.2 * g)}" stroke-linejoin="round">${ground.map((entry) => `<path d="${entry.d}"/>`).join('')}</g>

@@ -232,151 +232,102 @@ export function traceCells(fill: Uint8Array, cols: number, rows: number, box: Bo
   return outers.map((outer) => [outer, ...holes.filter((hole) => inRing(hole[0]!, outer))]);
 }
 
-/** Join coastline ways end to end into longer open or closed chains. A lake's shore ways have no common direction, so they are joined either way round. */
-function chainCoast(pieces: P[][], directed: boolean): P[][] {
-  const rest = pieces.filter((piece) => piece.length >= 2).map((piece) => piece.slice());
-  const same = (a: P, b: P): boolean => a[0] === b[0] && a[1] === b[1];
-  const chains: P[][] = [];
-  while (rest.length) {
-    let line = rest.pop()!;
-    for (let grew = true; grew && !same(line[0]!, line.at(-1)!);) {
-      grew = false;
-      for (let i = 0; i < rest.length; i++) {
-        const piece = rest[i]!;
-        // The coastline keeps one direction (land on the left), so only head-to-tail joins are ever needed.
-        if (same(line.at(-1)!, piece[0]!)) line = [...line, ...piece.slice(1)];
-        else if (same(piece.at(-1)!, line[0]!)) line = [...piece.slice(0, -1), ...line];
-        else if (!directed && same(line.at(-1)!, piece.at(-1)!)) line = [...line, ...piece.slice(0, -1).reverse()];
-        else if (!directed && same(line[0]!, piece[0]!)) line = [...piece.slice(1).reverse(), ...line];
-        else continue;
-        rest.splice(i, 1);
-        grew = true;
-        break;
-      }
-    }
-    chains.push(line);
-  }
-  return chains;
-}
-
 /**
- * The sea as water polygons, from OpenStreetMap coastline ways. The coastline runs with land on its left and water on its right, so the sea
- * is the area to the right of the chains inside the box, closed along the box edge clockwise. Only a band of `bandMetres` along the shore is kept
- * (the open sea is not a place of the game), cut on the grid `cell` degrees wide so it sits on the same grid as the land. Closed coast rings
- * (islands) are ignored. With `landPoints` (places known to be on land) the pieces need no direction: each is turned so the land lies on its left. A chain that begins or ends inside the box is a gap in the data and is dropped, never closed by a guess.
+ * The sea, or a big lake, as water polygons, from the shore ways OpenStreetMap holds (the coastline, or the member ways of the lake's relation).
+ * The ways are drawn as a barrier on a grid `cell` degrees wide over `wide`; the ground between the barriers falls into regions, and a region is land
+ * when a known land point (a place of the game, a neighbourhood label) lies in it and water otherwise. The shore needs no direction, so the same
+ * recipe serves a coastline and a lake. Ways that close on themselves (islets) are not barriers. Returns the water of the whole box `wide`
+ * (`far`) and the part of it within `bandMetres` of the shore and inside `box` (`band`, what the play area keeps).
  */
-export function seaBand(coast: readonly P[][], box: Box, bandMetres: number, cell: number, landPoints?: readonly P[]): Ring[][] {
-  const [south, west, north, east] = box;
-  const width = east - west, height = north - south, perimeter = 2 * (width + height);
-  // Position of a border point along the box edge, clockwise from the south-west corner.
-  const along = ([x, y]: P): number => {
-    const eps = 1e-9;
-    if (Math.abs(x - west) < eps) return y - south;
-    if (Math.abs(y - north) < eps) return height + (x - west);
-    if (Math.abs(x - east) < eps) return height + width + (north - y);
-    return 2 * height + width + (east - x);
-  };
-  const corners: { at: number; point: P }[] = [{ at: 0, point: [west, south] }, { at: height, point: [west, north] }, { at: height + width, point: [east, north] }, { at: 2 * height + width, point: [east, south] }];
-  // Cut each chain into the pieces inside the box (Liang-Barsky on every segment).
-  const pieces: P[][] = [];
-  for (const chain of chainCoast(coast.map((way) => way.slice()), !landPoints)) {
-    let piece: P[] | null = null;
-    for (let i = 1; i < chain.length; i++) {
-      const [ax, ay] = chain[i - 1]!, [bx, by] = chain[i]!;
-      let t0 = 0, t1 = 1;
-      const dx = bx - ax, dy = by - ay;
-      const clip = (p: number, q: number): boolean => {
-        if (p === 0) return q >= 0;
-        const r = q / p;
-        if (p < 0) { if (r > t1) return false; if (r > t0) t0 = r; } else { if (r < t0) return false; if (r < t1) t1 = r; }
-        return true;
-      };
-      const hit = clip(-dx, ax - west) && clip(dx, east - ax) && clip(-dy, ay - south) && clip(dy, north - ay);
-      if (!hit) { piece = null; continue; }
-      const from: P = [t0 === 0 ? ax : ax + dx * t0, t0 === 0 ? ay : ay + dy * t0];
-      const to: P = [t1 === 1 ? bx : ax + dx * t1, t1 === 1 ? by : ay + dy * t1];
-      if (t0 > 0) { piece = [snap(from, box)]; }
-      // A piece that starts at the chain's own first point inside the box has no entry: it is not used.
-      else if (!piece && i === 1) piece = null;
-      if (piece) { piece.push(snap(to, box)); if (t1 < 1) { pieces.push(piece); piece = null; } }
-    }
-  }
-  // Shore ways of a lake carry no side: turn each piece so that none of the known land points lies to its right (between it and the box edge, clockwise).
-  if (landPoints) {
-    const inside = ([x, y]: P, ring: Ring): boolean => {
-      let value = false;
-      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-        const [ax, ay] = ring[i]!, [bx, by] = ring[j]!;
-        if ((ay > y) !== (by > y) && x < ((bx - ax) * (y - ay)) / (by - ay) + ax) value = !value;
+export function shoreWater(shore: readonly P[][], landPoints: readonly P[], box: Box, wide: Box, bandMetres: number, cell: number): { far: Ring[][]; band: Ring[][] } {
+  const cols = Math.ceil((wide[3] - wide[1]) / cell), rows = Math.ceil((wide[2] - wide[0]) / cell);
+  const barrier = new Uint8Array(cols * rows);
+  const colOf = (lon: number): number => Math.floor((lon - wide[1]) / cell), rowOf = (lat: number): number => Math.floor((lat - wide[0]) / cell);
+  for (const way of shore) {
+    if (way.length < 2 || (way[0]![0] === way.at(-1)![0] && way[0]![1] === way.at(-1)![1])) continue;
+    for (let i = 1; i < way.length; i++) {
+      const [ax, ay] = way[i - 1]!, [bx, by] = way[i]!;
+      const steps = Math.max(1, Math.ceil(Math.max(Math.abs(bx - ax), Math.abs(by - ay)) / (cell / 3)));
+      if (steps > 4000) continue;
+      for (let k = 0; k <= steps; k++) {
+        const c = colOf(ax + (bx - ax) * k / steps), r = rowOf(ay + (by - ay) * k / steps);
+        if (c >= 0 && r >= 0 && c < cols && r < rows) barrier[r * cols + c] = 1;
       }
-      return value;
-    };
-    const rightHand = (piece: Ring): Ring => {
-      const out = along(piece.at(-1)!), entry = along(piece[0]!);
-      const gap = (at: number, from: number): number => (at - from + perimeter) % perimeter;
-      const closing = corners.filter((c) => gap(c.at, out) > 0 && gap(c.at, out) < gap(entry, out)).sort((a, b) => gap(a.at, out) - gap(b.at, out)).map((c) => c.point);
-      return [...piece, ...closing, piece[0]!];
-    };
-    for (let i = 0; i < pieces.length; i++) {
-      const forward = landPoints.filter((point) => inside(point, rightHand(pieces[i]!))).length;
-      const backward = landPoints.filter((point) => inside(point, rightHand(pieces[i]!.slice().reverse()))).length;
-      if (backward < forward) pieces[i] = pieces[i]!.slice().reverse();
     }
   }
-  const entries = pieces.map((piece, index) => ({ index, at: along(piece[0]!) }));
-  const used = new Set<number>();
-  const rings: Ring[] = [];
-  for (let start = 0; start < pieces.length; start++) {
-    if (used.has(start)) continue;
-    const ring: Ring = [];
-    let index = start;
-    for (let guard = 0; guard <= pieces.length; guard++) {
-      used.add(index);
-      const piece = pieces[index]!;
-      ring.push(...piece);
-      const out = along(piece.at(-1)!);
-      // The next piece to enter the box clockwise from here, with the box corners passed on the way.
-      const next = entries.map((entry) => ({ ...entry, gap: (entry.at - out + perimeter) % perimeter })).sort((a, b) => a.gap - b.gap)[0]!;
-      for (const corner of corners.map((c) => ({ ...c, gap: (c.at - out + perimeter) % perimeter })).filter((c) => c.gap > 0 && c.gap < next.gap).sort((a, b) => a.gap - b.gap)) ring.push(corner.point);
-      if (next.index === start) { ring.push(ring[0]!); break; }
-      if (used.has(next.index)) break;
-      index = next.index;
+  // Regions of ground between the barriers (4-connected, so a stepped line cannot leak).
+  const region = new Int32Array(cols * rows).fill(-1);
+  const hasLand: boolean[] = [];
+  const marked = new Set<number>();
+  for (const [lon, lat] of landPoints) { const c = colOf(lon), r = rowOf(lat); if (c >= 0 && r >= 0 && c < cols && r < rows) marked.add(r * cols + c); }
+  const queue = new Int32Array(cols * rows);
+  for (let start = 0; start < region.length; start++) {
+    if (barrier[start] || region[start] !== -1) continue;
+    const id = hasLand.length;
+    let head = 0, tail = 0, land = false;
+    queue[tail++] = start; region[start] = id;
+    while (head < tail) {
+      const at = queue[head++]!, c = at % cols, r = (at - c) / cols;
+      if (marked.has(at)) land = true;
+      if (c > 0 && !barrier[at - 1] && region[at - 1] === -1) { region[at - 1] = id; queue[tail++] = at - 1; }
+      if (c < cols - 1 && !barrier[at + 1] && region[at + 1] === -1) { region[at + 1] = id; queue[tail++] = at + 1; }
+      if (r > 0 && !barrier[at - cols] && region[at - cols] === -1) { region[at - cols] = id; queue[tail++] = at - cols; }
+      if (r < rows - 1 && !barrier[at + cols] && region[at + cols] === -1) { region[at + cols] = id; queue[tail++] = at + cols; }
     }
-    if (ring.length >= 4 && ring[0]![0] === ring.at(-1)![0] && ring[0]![1] === ring.at(-1)![1]) rings.push(ring);
+    hasLand.push(land);
   }
-  if (!rings.length) return [];
-  // The sea on a grid, then only the cells within the band of the shore.
-  const cols = Math.ceil(width / cell), rows = Math.ceil(height / cell);
-  const sea = new Uint8Array(cols * rows);
-  for (let r = 0; r < rows; r++) {
-    const lat = south + (r + 0.5) * cell, hits: number[] = [];
-    for (const ring of rings) for (let i = 1; i < ring.length; i++) {
-      const [ax, ay] = ring[i - 1]!, [bx, by] = ring[i]!;
-      if ((ay > lat) !== (by > lat)) hits.push(ax + ((lat - ay) / (by - ay)) * (bx - ax));
-    }
-    hits.sort((a, b) => a - b);
-    for (let h = 0; h + 1 < hits.length; h += 2) {
-      const from = Math.max(0, Math.ceil((hits[h]! - west) / cell - 0.5)), to = Math.min(cols - 1, Math.floor((hits[h + 1]! - west) / cell - 0.5));
-      for (let c = from; c <= to; c++) sea[r * cols + c] = 1;
-    }
+  // A land point sitting on a barrier cell counts for the regions beside it.
+  for (const at of marked) if (barrier[at]) for (const next of [at - 1, at + 1, at - cols, at + cols]) if (next >= 0 && next < region.length && region[next]! >= 0) hasLand[region[next]!] = true;
+  const water = new Uint8Array(cols * rows);
+  for (let at = 0; at < water.length; at++) if (!barrier[at] && !hasLand[region[at]!]) water[at] = 1;
+  // A shore cell belongs to the water when water lies beside it.
+  for (let at = 0; at < water.length; at++) if (barrier[at]) {
+    const c = at % cols;
+    if ((c > 0 && water[at - 1]) || (c < cols - 1 && water[at + 1]) || (at >= cols && water[at - cols]) || (at + cols < water.length && water[at + cols])) water[at] = 2;
   }
+  for (let at = 0; at < water.length; at++) if (water[at] === 2) water[at] = 1;
+  // The band: water within `reach` cells of the ground, inside the play box.
   const reach = Math.max(1, Math.round(bandMetres / (cell * 111_000)));
   const distance = new Int32Array(cols * rows).fill(-1);
-  const queue: number[] = [];
-  for (let at = 0; at < sea.length; at++) if (!sea[at]) { distance[at] = 0; queue.push(at); }
-  for (let i = 0; i < queue.length; i++) {
-    const at = queue[i]!, c = at % cols, r = Math.floor(at / cols);
+  let head = 0, tail = 0;
+  for (let at = 0; at < water.length; at++) if (!water[at]) { distance[at] = 0; queue[tail++] = at; }
+  while (head < tail) {
+    const at = queue[head++]!;
     if (distance[at]! >= reach) continue;
-    for (const [dc, dr] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
-      const nc = c + dc, nr = r + dr;
-      if (nc < 0 || nr < 0 || nc >= cols || nr >= rows) continue;
-      const next = nr * cols + nc;
-      if (sea[next] && distance[next] === -1) { distance[next] = distance[at]! + 1; queue.push(next); }
+    const c = at % cols;
+    for (const next of [c > 0 ? at - 1 : -1, c < cols - 1 ? at + 1 : -1, at - cols, at + cols]) {
+      if (next < 0 || next >= distance.length || !water[next] || distance[next] !== -1) continue;
+      distance[next] = distance[at]! + 1; queue[tail++] = next;
     }
   }
   const band = new Uint8Array(cols * rows);
-  for (let at = 0; at < band.length; at++) if (sea[at] && distance[at]! > 0) band[at] = 1;
-  return traceCells(band, cols, rows, box, cell);
+  const [c0, r0, c1, r1] = [colOf(box[1]), rowOf(box[0]), colOf(box[3]), rowOf(box[2])];
+  for (let r = Math.max(0, r0); r <= Math.min(rows - 1, r1); r++) for (let c = Math.max(0, c0); c <= Math.min(cols - 1, c1); c++) { const at = r * cols + c; if (water[at] && distance[at]! > 0) band[at] = 1; }
+  return { far: traceCells(water, cols, rows, wide, cell), band: traceCells(band, cols, rows, wide, cell) };
 }
 
-const snap = ([x, y]: P, box: Box): P => [Math.min(box[3], Math.max(box[1], x)), Math.min(box[2], Math.max(box[0], y))];
+/** A lookup of where polygons (each an outer ring and holes, even-odd) cover a box, on a grid `cell` degrees wide: `near(point, margin)` asks whether the point, or any of eight points `margin` degrees round it, is covered. */
+export function coverage(polygons: readonly Ring[][], box: Box, cell: number): (point: P, margin: number) => boolean {
+  const cols = Math.ceil((box[3] - box[1]) / cell), rows = Math.ceil((box[2] - box[0]) / cell);
+  const covered = new Uint8Array(cols * rows);
+  for (let r = 0; r < rows; r++) {
+    const lat = box[0] + (r + 0.5) * cell;
+    for (const polygon of polygons) {
+      const hits: number[] = [];
+      for (const ring of polygon) for (let i = 1; i < ring.length; i++) {
+        const [ax, ay] = ring[i - 1]!, [bx, by] = ring[i]!;
+        if ((ay > lat) !== (by > lat)) hits.push(ax + ((lat - ay) / (by - ay)) * (bx - ax));
+      }
+      hits.sort((a, b) => a - b);
+      for (let h = 0; h + 1 < hits.length; h += 2) {
+        const from = Math.max(0, Math.ceil((hits[h]! - box[1]) / cell - 0.5)), to = Math.min(cols - 1, Math.floor((hits[h + 1]! - box[1]) / cell - 0.5));
+        for (let c = from; c <= to; c++) covered[r * cols + c] = 1;
+      }
+    }
+  }
+  const at = ([lon, lat]: P): boolean => {
+    const c = Math.floor((lon - box[1]) / cell), r = Math.floor((lat - box[0]) / cell);
+    return c >= 0 && r >= 0 && c < cols && r < rows && covered[r * cols + c] === 1;
+  };
+  return ([lon, lat], margin) => at([lon, lat]) || [-1, 0, 1].some((dx) => [-1, 0, 1].some((dy) => (dx || dy) && at([lon + dx * margin, lat + dy * margin])));
+}

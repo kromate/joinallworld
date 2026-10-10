@@ -363,7 +363,7 @@ export function createMap2D(container: HTMLElement, { pack, cityId = pack.id, wo
     drawHouses();
   }
   function placeLabels(far: boolean, wholeView: boolean) {
-    const entries = [...labels.values()].map((label) => { const spot = spotOf(label.place.id)!; const at = project(spot.x, spot.z - (label.place.id === 'home' && homeAt!.own ? 0 : 2.2)); return { label, at, visible: at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 && !(wholeView && label.priority < 70) }; });
+    const entries = [...labels.values()].map((label) => { const spot = spotOf(label.place.id)!; const at = project(spot.x, spot.z - (label.place.id === 'home' && homeAt!.own ? 0 : 2.2)); return { label, at, visible: at.x > -60 && at.x < size.width + 60 && at.y > -20 && at.y < size.height + 80 && !(wholeView && model.extent === 'state' && label.priority < 70) }; });
     entries.sort((p, q) => q.label.priority - p.label.priority || q.at.y - p.at.y);
     const taken: { l: number, r: number, t: number, b: number }[] = [], hits = (rect: { l: number, r: number, t: number, b: number }) => taken.some((other) => rect.l < other.r && rect.r > other.l && rect.t < other.b && rect.b > other.t);
     const allowed = venueNamesAt(densityFor(size.width), scale / fitScale());

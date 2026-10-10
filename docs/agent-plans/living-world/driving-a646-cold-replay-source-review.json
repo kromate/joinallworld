@@ -1,0 +1,68 @@
+{
+  "observedAt": "2026-10-10T02:14:43.379962+00:00",
+  "candidate": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+  "base": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
+  "branch": "codex/cloud-driving-host-reopen-h1h2h3-20261010",
+  "remoteFullShaVerified": true,
+  "sourceReview": "Sol read both complete test files and full diff; only two tests changed",
+  "changedFiles": [
+    "deploy/living-world-driving-v2.edge.test.ts",
+    "server/living-world/driving-host-reopen.test.ts"
+  ],
+  "sha256": {
+    "deploy/living-world-driving-v2.edge.test.ts": "6875c0f267fe873be23331c21882a1f8fe95510fd03945b9a098a6874db60b49",
+    "server/living-world/driving-host-reopen.test.ts": "82731568b0c6bce3727d60be7076d5daf9e3a5e401451db6d0345a9e2b362cef"
+  },
+  "unchangedRuntimeCompared": {
+    "server/server.ts": true,
+    "server/types.ts": true,
+    "server/routes/living-world.ts": true,
+    "deploy/cloudflare-worker.ts": true,
+    "server/living-world/driving-service.ts": true
+  },
+  "cases": {
+    "H1": "Retained running v2 packet is first driving POST after real OFF Node file/Worker SQLite reopen, before GET. Full driving row and receipt sets stay equal. Subsequent GET pauses separately. Node supplied clock advances; Worker uses natural elapsed delay.",
+    "H2": "Exact prior resume is first driving POST after second real OFF reopen. Current row and receipt sets stay equal after intervening accepted legacy input.",
+    "H3": "Node omitted option and truthy string remain OFF with env=1; literal true issues v2. Representative runtime negative, not exhaustive malformed option matrix."
+  },
+  "compiler": {
+    "status": "Failure reported; original raw receipt not yet received by Sol",
+    "diagnostic": "TS2722 optional server.store.close called directly",
+    "introducedByThisDelta": false,
+    "inheritedFrom": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
+    "shutdownContract": "Production close(callback) already awaits world/store/telemetry flush; Store.close is optional",
+    "correction": "0f882bbabfe924cb4f8da1a18067683353b4b674",
+    "correctionEvidence": "Actual child commit terminal0, one Node test line changed; ahead1. Corrected blob not yet published/read, no execution acceptance."
+  },
+  "focusedExecution": {
+    "reportedPass": 2,
+    "rawLogAccepted": false,
+    "inspectedReceiptRef": "583c86cad7f0d1ac0dd88dbbebd6f1492f44af30",
+    "note": "No living-a646 receipt files at inspected ref; no inheritance of f4/a646 results onto corrected SHA."
+  },
+  "worker": {
+    "existingThread": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
+    "observedTurn": "01a1238a-5b87-7063-b96e-425f86117dc7",
+    "turnStatus": "inProgress",
+    "threadStatus": "idle",
+    "liveProcessVerified": false,
+    "note": "Asked coordinator for current actual handle; turn/lock state is insufficient."
+  },
+  "decision": "Requested H1-H3 source cases covered; corrected source, exact terminal execution and independent final-source review still pending",
+  "notAccepted": [
+    "Corrected compiler/focused tests",
+    "Compatible OFF sealed package",
+    "Original-save/mobile native gameplay",
+    "Integrated budgets/release or full journey"
+  ],
+  "next": "Same existing writer publishes permitted corrected source and raw terminal receipts. Existing independent reviewer checks final delta; then exact integrated gates and compatible OFF artifact before original v2. Shared startup remains Integration/WORLD country writer.",
+  "allowance": {
+    "usedPercent": 84,
+    "remainingPercent": 16,
+    "stopNewAtRemainingPercent": 4,
+    "clockCutoff": null
+  },
+  "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "nativeHold": "Monitor verified local memory WARNING/churn hold despite prior stage terminal and browser lease free. No new original-save stage launched.",
+  "previousGoalTurnClassification": "No progress: status answer only. Current turn progresses through new published H1-H3 whole-source review."
+}

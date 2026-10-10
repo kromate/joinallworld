@@ -93,7 +93,11 @@
     "No last-safe nextSequence MAX-1 to MAX boundary execution claim.",
     "Compatible OFF staging and rollback package pin still required before v2 issuance.",
     "Changed-source compiler/build/download budgets/smoke/frozen package/native/release/live gates remain open; prior 1b checks do not automatically apply.",
-    "Actual remote Luna model provenance remains unavailable."
+    "Actual remote Luna model provenance remains unavailable.",
+    "H1: f4 GET/current pauses row before retry; no proof retained packet as first driving request on cold running OFF row.",
+    "H2: resume receipt retry is immediate in same reopened host; no later cold lifecycle receipt replay proof.",
+    "H3: Node helper always supplies boolean; omitted/nonboolean runtime authority cases not executed.",
+    "Worker default SQL collection layout and stubbed ASSETS/test-created bundle are not entries-layout or sealed artifact proof."
   ],
   "independentReviewRequested": "Integration asked to use existing Astra reviewer at supported boundary; not yet reported.",
   "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
@@ -113,16 +117,105 @@
   "nextFiniteTestBatch": {
     "soleWriter": "Existing cloud living implementation worker; no new child.",
     "writeScope": [
-      "server/living-world/driving-service.test.ts"
+      "server/living-world/driving-service.test.ts",
+      "server/living-world/driving-host-reopen.test.ts",
+      "deploy/living-world-driving-v2.edge.test.ts"
     ],
     "sourceChanges": "Test-only unless a concrete production failure justifies a separately reviewed repair.",
     "acceptance": [
       "Valid v1 and retained v2 row revision/nextSequence MAX-1 with lastPacket.sequence MAX-2 accepts packet sequence MAX-1 and reaches both counters MAX without strict-invalid row.",
       "Retained exact MAX-1 success replays before timeout/clock reversal with entire driving row unchanged; new sequence MAX refuses without overflow.",
       "Exhausted context paths current/start/input/pause/resume/restart preserve driving row; no whole-db immutability inferred from session settling.",
-      "Publish exact SHA, source and original raw focused log/receipt. Changed-source compiler/build/caps/smoke run under existing serial heavy lease at supported boundary."
+      "Publish exact SHA, source and original raw focused log/receipt. Changed-source compiler/build/caps/smoke run under existing serial heavy lease at supported boundary.",
+      "H1 naturally accepted retained packet is FIRST driving POST after real OFF close/reopen, with full preclose running row/original receipt unchanged; GET pause is separate.",
+      "H2 identical lifecycle request retries as first driving request after a further actual close/reopen, reusing original once receipt with no extra row/effect.",
+      "H3 omitted and representative nonboolean truthy Node constructor values remain OFF, env string1 negative retained; only literaltrue enables."
     ],
     "originalStoreUnmodified": true,
-    "requestedFromExistingCloudCoordinator": true
+    "requestedFromExistingCloudCoordinator": true,
+    "sequencing": "Same existing writer first commits current service boundary/context unit, then consolidates H1/H2/H3 host followup; one writer, no extra child or unchanged f4 rerun."
+  },
+  "independentReview": {
+    "decision": "APPROVE_TRUSTED_HOST_SOURCE_ONLY",
+    "proofDecision": "ACCEPT_TWO_PUBLISHED_PASS_RESULTS_FOR_ASSERTED_PATHS_ONLY; EXTEND_TESTS_BEFORE_COLD_REPLAY_AND_DURABLE_LIFECYCLE_REPLAY_CLAIMS",
+    "thread": "01a122db-a5fe-7211-b9c6-0fc01bec9bd5",
+    "turn": "01a12375-7375-7203-bde7-e147d89e17f0",
+    "actualModel": "gpt-6-astra",
+    "effort": "high",
+    "actualTurnContextAt": "2026-10-10T01:37:42.324Z",
+    "runtimeMetadataSource": "Existing runtime turn_context; only model/effort/time/turn_id read.",
+    "reports": {
+      "allworld-driving-host-source-review.md": {
+        "sha256": "649027d9d463ae40dee0012b4d7b3856142e96ffe2d5d7e5a0f6119390a59e86",
+        "bytes": 7037,
+        "wholeReportRead": true
+      },
+      "allworld-driving-host-source-review.json": {
+        "sha256": "a588d28845776b03eaa78a972edca5b085c8e52b3836c70e108240308c491997",
+        "bytes": 8863,
+        "wholeReportRead": true
+      }
+    },
+    "all13SourcePinsMatched": true,
+    "sourcePins": {
+      "server/server.ts": "c6499252095e1e7548b25fb2566dfb56ec94bc2b8328a957403f90e3a2c31181",
+      "server/types.ts": "a54a8daba84cf6a87e64cad9c6027fd0a4f50b46b5734130102d8bf3842868f9",
+      "server/routes/living-world.ts": "39ecdf13390562eccadbfc3aaa76b082188b4d7045131e3124a94fd5dcc6c8e6",
+      "deploy/cloudflare-worker.ts": "efef66d80ae36134fe95271e0eea0391e7789b9e4b3834aa68ace8f5f09c795b",
+      "server/living-world/driving-host-reopen.test.ts": "62189f28ca37633bf6ae8f3f65707633cc2eada1d3bc96e63295b0429172386b",
+      "deploy/living-world-driving-v2.edge.test.ts": "54a56f003a732e93c4ea786ddf84fe0ba0ddcc05e2f079fe7814ae0be372fb5e",
+      "server/living-world/driving-service.ts": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+      "server/living-world/driving-service.test.ts": "c3297399a1248aaa3cfa7bf35fc332415ca3f59a8feb19d0ef0e1752b4993027",
+      "src/app/features/living-world/DrivingApp.vue": "b08e09dfc72baae923438f48f4a0b983b8b2f0437789933b714932bc3a1e13b6",
+      "src/app/features/living-world/practiceIdentity.test.ts": "3b6173241b941a7ee439df1b2d29de89225b9ef1fa908b927046c4869f2cd66d",
+      "src/game/living-world/driving.ts": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+      "src/game/living-world/driving.test.ts": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+      "src/types/living-world.ts": "27757f7089a482d5b046692fdc1d53ed06272788c3633949a2ed6efa64dbc677"
+    },
+    "sourceBlockers": [],
+    "coverageFindings": [
+      {
+        "id": "H1",
+        "classification": "acceptance-proof gap; no observed host source defect",
+        "severity": "required before claiming cold retained-replay precedence",
+        "locations": [
+          "server/living-world/driving-host-reopen.test.ts:113-122",
+          "deploy/living-world-driving-v2.edge.test.ts:122-132"
+        ],
+        "issue": "Both tests issue GET/current first after OFF reopen, which pauses and rewrites the running v2 row before replay. Their replay assertions compare against this already-paused row.",
+        "reproducer_for_missing_case": "Persist a running v2 row with successful lastPacket; close/dispose; advance beyond timeout; reopen OFF; make the exact old POST/input the first driving request without GET/current. Compare persisted row to the pre-close issued row.",
+        "required_change": "Add this cold-first-replay case on both hosts, assert original receipt, revision, sequence and complete driving row unchanged; then independently test GET/current pausing. Run only in the authorized cloud verification environment."
+      },
+      {
+        "id": "H2",
+        "classification": "durable lifecycle receipt coverage gap",
+        "locations": [
+          "server/living-world/driving-host-reopen.test.ts:124-133",
+          "deploy/living-world-driving-v2.edge.test.ts:134-143"
+        ],
+        "issue": "Resume receipt is created after OFF reopen and immediately retried in the same host instance. This proves immediate idempotence, not preservation of that once receipt through a later close/dispose and reopen.",
+        "required_change": "Capture original lifecycle once receipt and row, close/dispose, reopen OFF, retry identical requestId/body first, then compare original receipt and driving row exactly. Do not claim pre-restart lifecycle replay from existing assertions."
+      },
+      {
+        "id": "H3",
+        "classification": "narrow Node authority matrix gap",
+        "locations": [
+          "server/living-world/driving-host-reopen.test.ts:17-18",
+          "server/living-world/driving-host-reopen.test.ts:77,92,111"
+        ],
+        "issue": "Helper always supplies a boolean option. Source proves default OFF and strict literal true, but test does not exercise omitted or nonboolean constructor input.",
+        "required_change": "Before claiming the complete runtime authority matrix, exercise an omitted Node option and representative runtime nonboolean truthy values; retain env='1' negative case. Worker already tests omitted, '0', 'true', whitespace and exact '1'."
+      }
+    ],
+    "genuineCoverageLimits": [
+      "Worker test covers default collection SQL layout, not an entries-layout matrix.",
+      "Worker ASSETS response is stubbed; bundle is created by test, not a pinned sealed deployment artifact.",
+      "Node final OFF legacy write is read from disk but not followed by another reopen.",
+      "No UI DOM/native, qualification score, original home or wallet regression assertions in these two tests."
+    ],
+    "executionPerformedByReviewer": false,
+    "releaseApproved": false,
+    "activationApproved": false,
+    "adoptedAtUtc": "2026-10-10T01:44:20.565186+00:00"
   }
 }

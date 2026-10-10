@@ -24,12 +24,16 @@ export interface DestinationTerrain {
   readonly state?: readonly LonLatPolygon[]
   /** Rivers, lakes and sea inside the play area, as polygons. */
   readonly water: readonly LonLatPolygon[]
+  /** The same water carried on beyond the play area, to the edge of the ground that is drawn (rivers and the shore of a sea or lake do not stop at the play area). It is drawn only; the declared water stays `water`. */
+  readonly reachWater?: readonly LonLatPolygon[]
   /** Main roads in the compact row format of `RoadRows`. */
   readonly roads: RoadRows
   /** Names of the strongest roads. */
   readonly trunkRoads: readonly string[]
   /** Ground labels that are not venues: neighbourhoods, and water bodies (`kind: 'water'`). */
   readonly names: readonly { readonly id: string; readonly name: string; readonly lon: number; readonly lat: number; readonly kind: 'neighbourhood' | 'water' }[]
+  /** The colour of the ground round the built-up outline (the countryside, desert or savanna the city sits in), so that the play area's old square never shows. */
+  readonly surround?: string
   /** Where each layer came from. */
   readonly source: string
   readonly licence: string
@@ -55,7 +59,7 @@ export function createDestinationMap(facts: DestinationFacts, geometry: Destinat
       if (terrain) {
         // City-wide geography: the shared module renderer draws the outline, water, roads and labels, as for the Nigerian cities.
         const labels = terrain.names.map(name => ({ id: name.id, name: name.name, lon: name.lon, lat: name.lat, kind: name.kind }))
-        return createModulePack(module, { spread: true, landmarks: labels, roads: terrain.roads, character: { extent: 'city', trunkRoads: terrain.trunkRoads } })
+        return createModulePack(module, { spread: true, landmarks: labels, roads: terrain.roads, character: { extent: 'city', trunkRoads: terrain.trunkRoads }, ...(terrain.surround ? { surround: terrain.surround } : {}), ...(terrain.reachWater ? { reachWater: terrain.reachWater } : {}) })
       }
       const pack = await createModulePack(module, { spread: true, character: { extent: 'city' } })
       const origin = valid.mapOrigin

@@ -160,16 +160,21 @@ export function builtUp(points: readonly P[], anchors: readonly P[], water: read
   // The fine grid: the coarse mask, plus the water, scan-filled row by row (even-odd over every ring of every polygon).
   const fine = cell / split, fc = cols * split, fr = rows * split;
   const wet = new Uint8Array(fc * fr);
-  for (let r = 0; r < fr; r++) {
-    const lat = box[0] + (r + 0.5) * fine, hits: number[] = [];
-    for (const polygon of water) for (const ring of polygon) for (let i = 1; i < ring.length; i++) {
-      const [ax, ay] = ring[i - 1]!, [bx, by] = ring[i]!;
-      if ((ay > lat) !== (by > lat)) hits.push(ax + ((lat - ay) / (by - ay)) * (bx - ax));
-    }
-    hits.sort((a, b) => a - b);
-    for (let h = 0; h + 1 < hits.length; h += 2) {
-      const from = Math.max(0, Math.ceil((hits[h]! - box[1]) / fine - 0.5)), to = Math.min(fc - 1, Math.floor((hits[h + 1]! - box[1]) / fine - 0.5));
-      for (let c = from; c <= to; c++) wet[r * fc + c] = 1;
+  // A fine cell is wet when any part of it is under water: three scan lines per row and the cells the span touches, so that a stream narrower than a cell still lies inside the play area.
+  for (let r = 0; r < fr; r++) for (const part of [0.2, 0.5, 0.8]) {
+    const lat = box[0] + (r + part) * fine;
+    // Each polygon is filled on its own (even-odd over its outer ring and holes) and the polygons are joined, so a river that meets the sea does not cancel it.
+    for (const polygon of water) {
+      const hits: number[] = [];
+      for (const ring of polygon) for (let i = 1; i < ring.length; i++) {
+        const [ax, ay] = ring[i - 1]!, [bx, by] = ring[i]!;
+        if ((ay > lat) !== (by > lat)) hits.push(ax + ((lat - ay) / (by - ay)) * (bx - ax));
+      }
+      hits.sort((a, b) => a - b);
+      for (let h = 0; h + 1 < hits.length; h += 2) {
+        const from = Math.max(0, Math.floor((hits[h]! - box[1]) / fine)), to = Math.min(fc - 1, Math.floor((hits[h + 1]! - box[1]) / fine));
+        for (let c = from; c <= to; c++) wet[r * fc + c] = 1;
+      }
     }
   }
   const play = new Uint8Array(fc * fr), land = new Uint8Array(fc * fr);
@@ -191,7 +196,7 @@ export function builtUp(points: readonly P[], anchors: readonly P[], water: read
 }
 
 /** The outer rings (with their holes) of the filled cells of a grid. */
-function traceCells(fill: Uint8Array, cols: number, rows: number, box: Box, cell: number): Ring[][] {
+export function traceCells(fill: Uint8Array, cols: number, rows: number, box: Box, cell: number): Ring[][] {
   const key = (c: number, r: number): number => r * (cols + 1) + c;
   const next = new Map<number, number[]>();
   const edge = (c0: number, r0: number, c1: number, r1: number): void => {
@@ -226,4 +231,104 @@ function traceCells(fill: Uint8Array, cols: number, rows: number, box: Box, cell
   const signed = (ring: Ring): number => ring.slice(1).reduce((sum, [x, y], i) => sum + ring[i]![0] * y - x * ring[i]![1], 0) / 2;
   const outers = rings.filter((ring) => signed(ring) > 0), holes = rings.filter((ring) => signed(ring) < 0);
   return outers.map((outer) => [outer, ...holes.filter((hole) => inRing(hole[0]!, outer))]);
+}
+
+/**
+ * The sea, or a big lake, as water polygons, from the shore ways OpenStreetMap holds (the coastline, or the member ways of the lake's relation).
+ * The ways are drawn as a barrier on a grid `cell` degrees wide over `wide`; the ground between the barriers falls into regions, and a region is land
+ * when a known land point (a place of the game, a neighbourhood label) lies in it and water otherwise. The shore needs no direction, so the same
+ * recipe serves a coastline and a lake. Ways that close on themselves (islets) are not barriers. Returns the water of the whole box `wide`
+ * (`far`) and the part of it within `bandMetres` of the shore and inside `box` (`band`, what the play area keeps).
+ */
+export function shoreWater(shore: readonly P[][], landPoints: readonly P[], box: Box, wide: Box, bandMetres: number, cell: number): { far: Ring[][]; band: Ring[][] } {
+  const cols = Math.ceil((wide[3] - wide[1]) / cell), rows = Math.ceil((wide[2] - wide[0]) / cell);
+  const barrier = new Uint8Array(cols * rows);
+  const colOf = (lon: number): number => Math.floor((lon - wide[1]) / cell), rowOf = (lat: number): number => Math.floor((lat - wide[0]) / cell);
+  for (const way of shore) {
+    if (way.length < 2 || (way[0]![0] === way.at(-1)![0] && way[0]![1] === way.at(-1)![1])) continue;
+    for (let i = 1; i < way.length; i++) {
+      const [ax, ay] = way[i - 1]!, [bx, by] = way[i]!;
+      const steps = Math.max(1, Math.ceil(Math.max(Math.abs(bx - ax), Math.abs(by - ay)) / (cell / 3)));
+      if (steps > 4000) continue;
+      for (let k = 0; k <= steps; k++) {
+        const c = colOf(ax + (bx - ax) * k / steps), r = rowOf(ay + (by - ay) * k / steps);
+        if (c >= 0 && r >= 0 && c < cols && r < rows) barrier[r * cols + c] = 1;
+      }
+    }
+  }
+  // Regions of ground between the barriers (4-connected, so a stepped line cannot leak).
+  const region = new Int32Array(cols * rows).fill(-1);
+  const hasLand: boolean[] = [];
+  const marked = new Set<number>();
+  for (const [lon, lat] of landPoints) { const c = colOf(lon), r = rowOf(lat); if (c >= 0 && r >= 0 && c < cols && r < rows) marked.add(r * cols + c); }
+  const queue = new Int32Array(cols * rows);
+  for (let start = 0; start < region.length; start++) {
+    if (barrier[start] || region[start] !== -1) continue;
+    const id = hasLand.length;
+    let head = 0, tail = 0, land = false;
+    queue[tail++] = start; region[start] = id;
+    while (head < tail) {
+      const at = queue[head++]!, c = at % cols, r = (at - c) / cols;
+      if (marked.has(at)) land = true;
+      if (c > 0 && !barrier[at - 1] && region[at - 1] === -1) { region[at - 1] = id; queue[tail++] = at - 1; }
+      if (c < cols - 1 && !barrier[at + 1] && region[at + 1] === -1) { region[at + 1] = id; queue[tail++] = at + 1; }
+      if (r > 0 && !barrier[at - cols] && region[at - cols] === -1) { region[at - cols] = id; queue[tail++] = at - cols; }
+      if (r < rows - 1 && !barrier[at + cols] && region[at + cols] === -1) { region[at + cols] = id; queue[tail++] = at + cols; }
+    }
+    hasLand.push(land);
+  }
+  // A land point sitting on a barrier cell counts for the regions beside it.
+  for (const at of marked) if (barrier[at]) for (const next of [at - 1, at + 1, at - cols, at + cols]) if (next >= 0 && next < region.length && region[next]! >= 0) hasLand[region[next]!] = true;
+  const water = new Uint8Array(cols * rows);
+  for (let at = 0; at < water.length; at++) if (!barrier[at] && !hasLand[region[at]!]) water[at] = 1;
+  // A shore cell belongs to the water when water lies beside it.
+  for (let at = 0; at < water.length; at++) if (barrier[at]) {
+    const c = at % cols;
+    if ((c > 0 && water[at - 1]) || (c < cols - 1 && water[at + 1]) || (at >= cols && water[at - cols]) || (at + cols < water.length && water[at + cols])) water[at] = 2;
+  }
+  for (let at = 0; at < water.length; at++) if (water[at] === 2) water[at] = 1;
+  // The band: water within `reach` cells of the ground, inside the play box.
+  const reach = Math.max(1, Math.round(bandMetres / (cell * 111_000)));
+  const distance = new Int32Array(cols * rows).fill(-1);
+  let head = 0, tail = 0;
+  for (let at = 0; at < water.length; at++) if (!water[at]) { distance[at] = 0; queue[tail++] = at; }
+  while (head < tail) {
+    const at = queue[head++]!;
+    if (distance[at]! >= reach) continue;
+    const c = at % cols;
+    for (const next of [c > 0 ? at - 1 : -1, c < cols - 1 ? at + 1 : -1, at - cols, at + cols]) {
+      if (next < 0 || next >= distance.length || !water[next] || distance[next] !== -1) continue;
+      distance[next] = distance[at]! + 1; queue[tail++] = next;
+    }
+  }
+  const band = new Uint8Array(cols * rows);
+  const [c0, r0, c1, r1] = [colOf(box[1]), rowOf(box[0]), colOf(box[3]), rowOf(box[2])];
+  for (let r = Math.max(0, r0); r <= Math.min(rows - 1, r1); r++) for (let c = Math.max(0, c0); c <= Math.min(cols - 1, c1); c++) { const at = r * cols + c; if (water[at] && distance[at]! > 0) band[at] = 1; }
+  return { far: traceCells(water, cols, rows, wide, cell), band: traceCells(band, cols, rows, wide, cell) };
+}
+
+/** A lookup of where polygons (each an outer ring and holes, even-odd) cover a box, on a grid `cell` degrees wide: `near(point, margin)` asks whether the point, or any of eight points `margin` degrees round it, is covered. */
+export function coverage(polygons: readonly Ring[][], box: Box, cell: number): (point: P, margin: number) => boolean {
+  const cols = Math.ceil((box[3] - box[1]) / cell), rows = Math.ceil((box[2] - box[0]) / cell);
+  const covered = new Uint8Array(cols * rows);
+  for (let r = 0; r < rows; r++) {
+    const lat = box[0] + (r + 0.5) * cell;
+    for (const polygon of polygons) {
+      const hits: number[] = [];
+      for (const ring of polygon) for (let i = 1; i < ring.length; i++) {
+        const [ax, ay] = ring[i - 1]!, [bx, by] = ring[i]!;
+        if ((ay > lat) !== (by > lat)) hits.push(ax + ((lat - ay) / (by - ay)) * (bx - ax));
+      }
+      hits.sort((a, b) => a - b);
+      for (let h = 0; h + 1 < hits.length; h += 2) {
+        const from = Math.max(0, Math.ceil((hits[h]! - box[1]) / cell - 0.5)), to = Math.min(cols - 1, Math.floor((hits[h + 1]! - box[1]) / cell - 0.5));
+        for (let c = from; c <= to; c++) covered[r * cols + c] = 1;
+      }
+    }
+  }
+  const at = ([lon, lat]: P): boolean => {
+    const c = Math.floor((lon - box[1]) / cell), r = Math.floor((lat - box[0]) / cell);
+    return c >= 0 && r >= 0 && c < cols && r < rows && covered[r * cols + c] === 1;
+  };
+  return ([lon, lat], margin) => at([lon, lat]) || [-1, 0, 1].some((dx) => [-1, 0, 1].some((dy) => (dx || dy) && at([lon + dx * margin, lat + dy * margin])));
 }

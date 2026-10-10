@@ -1,3 +1,4 @@
 import { buildDestinationContent } from '../africa/contentBuilder.ts'
 import { FACTS } from './facts.ts'
-export const CONTENT = buildDestinationContent(FACTS)
+import { PLACES } from './places.ts'
+export const CONTENT = buildDestinationContent(FACTS, PLACES)

@@ -60,6 +60,10 @@ export interface ModuleScene {
   iconOffsets?: Readonly<Record<string, { east: number; north: number }>>
   /** Fan out the icons of venues authored on one reference point (see fanOut); venues named in `iconOffsets` keep their own shift. */
   spread?: boolean
+  /** The colour of the ground round the built-up outline. A city drawn city-wide (not as a state) names it, and its board then reaches far beyond the outline. */
+  surround?: string
+  /** Water drawn instead of the declared water, carried on to the edge of the ground (the declared water stays inside the play area). */
+  reachWater?: readonly LonLatPolygon[]
 }
 
 function roadsOf(rows: RoadRows, origin: CityModule['rules']['mapOrigin'], trunk: ReadonlySet<string>): PackRoad[] {
@@ -74,6 +78,8 @@ function roadsOf(rows: RoadRows, origin: CityModule['rules']['mapOrigin'], trunk
   return out
 }
 
+/** How far (map units, 100 m each) the ground reaches beyond a city drawn with a surround colour. */
+export const SURROUND_UNITS = 250
 /** How far apart (metres) two venues may be authored and still count as standing on one reference point. */
 const SAME_POINT_M = 60
 /**
@@ -99,7 +105,7 @@ export function fanOut(venues: readonly { id: string; lon: number; lat: number }
 
 /** The same shared-frame renderer for authored city modules; no second projection or outline. */
 export async function createModulePack(module: CityModule, scene: ModuleScene['landmarks'] | ModuleScene = {}): Promise<CityPack> {
-  const { landmarks = [], roads: roadRows = [], surroundings, character = {}, iconOffsets = {}, spread = false } = Array.isArray(scene) ? { landmarks: scene } as ModuleScene : scene as ModuleScene
+  const { landmarks = [], roads: roadRows = [], surroundings, character = {}, iconOffsets = {}, spread = false, surround, reachWater } = Array.isArray(scene) ? { landmarks: scene } as ModuleScene : scene as ModuleScene
   const [content, map] = await Promise.all([module.loadContent(), module.loadMap()])
   const geometry = await map.loadGeometry(), origin = map.origin
   const local = (parts: readonly LonLatPolygon[]): Point2[][][] => parts.map(part => part.map(ring => ring.map(([lon, lat]) => toLocal(origin, lon, lat))))
@@ -155,22 +161,27 @@ export async function createModulePack(module: CityModule, scene: ModuleScene['l
   const characterFabric: PackFabric[] = areas.map(item => ({ box: [item.x - item.r, item.z - item.r, item.x + item.r, item.z + item.r], circle: [item.x, item.z, item.r], style: item.tone === 'old' ? 'dense' : 'villas', keep: item.tone === 'old' ? 0.25 : 0.05, ...(item.tone === 'old' ? { roofs: RUST } : {}) }))
   // Ground name plates for the landmarks that are not venues: none that would lie across another plate or over a venue.
   const plateRoom = (name: string, size: number) => name.length * size * 0.9
+  // A name plate is as wide as the city is: 1.4 map units over a 4 km town, growing to 4.5 over a metropolis, so it can still be read in the whole view.
+  const plateSize = surround ? Math.min(4.5, Math.max(1.4, Math.max(fit.maxX - fit.minX, fit.maxZ - fit.minZ) / 90)) : 1.4
   const plates: PackDistrict[] = []
   for (const item of landmarks.filter(item => item.kind !== 'route-reference' && !content.venues.some(venue => venue.id === item.id))) {
-    const [x, z] = toLocal(origin, item.lon, item.lat), plate = { name: item.name, x, z, size: 1.4, water: item.kind === 'water' }
+    const [x, z] = toLocal(origin, item.lon, item.lat), plate = { name: item.name, x, z, size: plateSize, water: item.kind === 'water' }
     const room = plateRoom(plate.name, plate.size) / 2 + 3
-    const clash = plates.some(other => Math.abs(other.x - x) < room + plateRoom(other.name, other.size) / 2 && Math.abs(other.z - z) < 4)
-      || Object.values(sites).some(site => Math.abs(site.x - x) < room + 4 && Math.abs(site.z - z) < 6)
+    const clash = plates.some(other => Math.abs(other.x - x) < room + plateRoom(other.name, other.size) / 2 && Math.abs(other.z - z) < 4 * plateSize / 1.4)
+      || Object.values(sites).some(site => Math.abs(site.x - x) < (surround ? room * 0.5 + 1 : room + 4) && Math.abs(site.z - z) < (surround ? 2.5 * plateSize / 1.4 : 6))
     if (plate.water || !clash) plates.push(plate)
   }
+  // Round a city drawn city-wide the ground goes on for 25 km, so the board's edge and wall are never in view.
+  const ring = surround ? SURROUND_UNITS : 30
   const context = surroundings ? mapContext(origin, fit, surroundings.planned, 2600, surroundings.spec) : undefined
   return {
     id: module.id, name: module.rules.name, inland: module.rules.seaPlots === false,
     frame: { origin, unitsPerKm: 10 }, roadScale: 0.45,
-    bounds: { ...fit, minX: fit.minX - 30, maxX: fit.maxX + 30, minZ: fit.minZ - 30, maxZ: fit.maxZ + 30, fit,
+    ...(surround ? { surround } : {}),
+    bounds: { ...fit, minX: fit.minX - ring, maxX: fit.maxX + ring, minZ: fit.minZ - ring, maxZ: fit.maxZ + ring, fit,
       sea: { x0: fit.minX, x1: fit.minX, z0: fit.maxZ, z1: fit.maxZ + 26 } },
     core: { minX: core.minX - 15, maxX: core.maxX + 15, minZ: core.minZ - 15, maxZ: core.maxZ + 15 },
-    land, water: local(geometry.water).flatMap((part, i) => part[0] ? [{ id: `water-${i}`, points: part[0], holes: part.slice(1) }] : []),
+    land, water: local(reachWater ?? geometry.water).flatMap((part, i) => part[0] ? [{ id: `water-${i}`, points: part[0], holes: part.slice(1) }] : []),
     lgas, sites, homes, roads: roadsOf(roadRows, origin, new Set(character.trunkRoads ?? [])), soon: {}, zones: [],
     ...(areas.length ? { areas } : {}), ...(relief.length ? { relief } : {}), ...(waters.length ? { waters } : {}), ...(rails.length ? { rails } : {}), ...(character.extent ? { extent: character.extent } : {}), ...(character.notable?.length ? { notable: character.notable } : {}),
     ...(context ? { context } : {}),

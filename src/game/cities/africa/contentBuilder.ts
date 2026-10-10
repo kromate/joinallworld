@@ -45,6 +45,8 @@ const starterNames: readonly string[] = Object.freeze([
   'Jesse', 'Cameron', 'Drew', 'Skyler', 'Sidney', 'Sam', 'Ari', 'Lee', 'Remy', 'Noel',
   'Blake', 'Dana', 'Eden', 'Finley', 'Gray', 'Harper', 'Indigo', 'Kai', 'Logan', 'Marlow',
   'Nico', 'Oakley', 'Parker', 'Reese', 'Sage', 'Tatum', 'Uri', 'Vale', 'Wren', 'Yael',
+  'Arden', 'Briar', 'Corin', 'Devon', 'Emery', 'Frankie', 'Greer', 'Hollis', 'Ira', 'Jules',
+  'Kendall', 'Lane', 'Merritt', 'Nova', 'Onyx', 'Penn', 'Rowan', 'Shiloh', 'Teddy', 'Winter',
 ])
 
 const peopleFor = (id: string, venues: readonly CityVenueSeed[]): readonly CityPersonSeed[] => Object.freeze(venues.flatMap((venue, index) => {

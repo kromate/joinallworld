@@ -15,6 +15,8 @@ export interface PlacePick {
   line: string
   /** Only to shorten an English name that is longer than a map label; it must be a part of the recorded name. */
   label?: string
+  /** Only for a place that must stand within a kilometre of the play box edge (it keeps its real point). */
+  atEdge?: true
 }
 
 export interface NamePick { id: string; ref: string; kind: 'neighbourhood' | 'water'; label?: string }
@@ -41,7 +43,13 @@ export interface DetailConfig {
   /** The shortest a non-major road may be, in kilometres, and the most roads kept (longest first). */
   minRoadKm: number
   maxRoads: number
+  /** How far (degrees) a road may run on past the built-up outline before it is cut. */
+  roadMarginDegrees: number
+  /** The ground colour round the outline in the 3D and simple maps. */
+  surround: string
   water: (bbox: string) => string
+  /** Set when the water answer holds shore ways of the sea (`coast`: coastline, land on the left) or of a big lake (`lake`: the member ways of its relation): the water is drawn this far out from the shore, in metres. */
+  sea?: { kind: 'coast' | 'lake'; bandMetres: number }
   roads: (bbox: string, core: string) => string
   boundaryNote: string
   terrainNote: string

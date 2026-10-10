@@ -98,6 +98,8 @@ export interface CityPack {
   localRoutes?: readonly { a: string; b: string; mode: 'boat'; points: readonly Point3[] }[]
   /** Ground continues beyond this inland footprint; uncovered space is not ocean. */
   inland?: boolean
+  /** The colour of the ground round an inland footprint (the countryside or desert the city sits in); the board reaches far beyond the footprint so that no edge or slab shows. */
+  surround?: string
   id: string
   name: string
   bounds: PackBounds

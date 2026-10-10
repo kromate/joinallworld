@@ -9,7 +9,7 @@ export const FACTS = {
   },
   "state": {
     "idunique": "ma-starter",
-    "name": "Starter zone"
+    "name": "Rabat"
   },
   "timezone": "Africa/Casablanca",
   "centre": {
@@ -24,13 +24,18 @@ export const FACTS = {
     "sourceUrl": "https://ourairports.com/airports/GMME/"
   },
   "sourceLabel": "Natural Earth, OpenStreetMap contributors and OurAirports dataset",
-  "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=-6.839408,34.022307,-6.833408,34.028307",
+  "sourceUrl": "https://www.openstreetmap.org/copyright",
   "licence": "Natural Earth public domain; OpenStreetMap ODbL-1.0; OurAirports public-domain dataset",
   "bounds": [
-    -6.851408,
-    34.010307,
-    -6.73952,
-    34.063498
+    -6.95,
+    33.93,
+    -6.72,
+    34.1
   ],
-  "coverageNote": "Starter visitor area. Selected settlement and airport dataset points, clipped country land and a bounded central street/building sample. The settlement point is not asserted to be a current capital. OurAirports coordinates are dataset points, not official ARPs or evidence of current operations or schedules. Visitor services and homes are fictional game content; building silhouettes are approximate and missing heights are estimates."
+  "coverageNote": "Rabat and Salé from Temara to the airport: a sketch of the built-up extent traced from mapped land use (not an administrative boundary), the Atlantic as a band along the coast, the Bou Regreg and the other water mapped nearby, main roads and named places mapped in OpenStreetMap. The airport coordinates are an OurAirports dataset point, not an official reference point or evidence of current operations or schedules. Visitor services and homes are fictional game content set at the real named places.",
+  "names": {
+    "area": "Rabat",
+    "unit": "district",
+    "roadHub": "Rabat City Station"
+  }
 } satisfies DestinationFacts

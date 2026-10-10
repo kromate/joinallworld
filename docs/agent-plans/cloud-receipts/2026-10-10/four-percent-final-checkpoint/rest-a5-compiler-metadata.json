@@ -1,0 +1,28 @@
+{
+  "capture_status": "tool-only transcript metadata; no original raw compiler log file was written by the exec calls, and no raw file is claimed",
+  "base_head": "a5b13d35e59190515269c9a3852649caac38b470",
+  "commands": [
+    "AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 AGENT_SLOT_SERVER=1 AGENT_SLOT_BROWSER=1 NODE_OPTIONS=--max-old-space-size=1536 node --experimental-strip-types scripts/agent-slot.ts heavy -- bash -lc <post-lease execution-policy.json >4 guard && node --max-old-space-size=1536 node_modules/typescript/bin/tsc --noEmit --pretty false -p evidence/graphics-loop/native-game-adoption-v1/home-journey.typecheck.json>"
+  ],
+  "runs": [
+    {
+      "adapter_sha256": "2e1a98c891c896dbee26c197bce54dd40e7990375f62df31104c4befc8b88bf9",
+      "exit_code": 2,
+      "diagnostic_summary": "TS2352: Object.fromEntries output with {[k:string]:...} was directly cast to Record<left|right,...>; TypeScript reported the inferred object was missing left and right keys.",
+      "stdout_stderr_persisted": "no; output appeared in tool transcript"
+    },
+    {
+      "adapter_sha256": "785fcd1471a19687627c0a3bd343a0a49ef645111e494d4c803f9af24fc99e82",
+      "exit_code": 2,
+      "diagnostic_summary": "TS18048/TS2339: left/right entries inferred as possibly undefined and as the union of side strings plus foot summary, so valid/propClear properties were inaccessible.",
+      "stdout_stderr_persisted": "no; output appeared in tool transcript"
+    },
+    {
+      "adapter_sha256": "461c69a2ff465d7d6c7720a758ae6cd6ddf4e01c179c69164142168eaba457b3",
+      "exit_code": 0,
+      "diagnostic_summary": "No TypeScript diagnostics; command printed TSC_EXIT 0.",
+      "stdout_stderr_persisted": "no; output appeared in tool transcript"
+    }
+  ],
+  "notes": "No timestamps are attributed because the command outputs did not contain execution timestamps. Other compiler history files belong to different source hashes and are not represented here."
+}

@@ -1,0 +1,86 @@
+{
+  "quota_policy": {
+    "remaining_percent": 4,
+    "recorded_at_utc": "2026-10-10T04:51:57.133022+00:00",
+    "new_work_allowed": false,
+    "source": "WORLD direct actual account query, 96% used, zero credits; explicit stop-new-work directive"
+  },
+  "original_trial_checkpoint": {
+    "branch": "codex/cloud-graphics-rest-kinematics-20261010",
+    "head": "fc0045292ad7726b0fea1e03048192c245561ed7",
+    "base": "a5b13d35e59190515269c9a3852649caac38b470",
+    "worktree": "clean",
+    "adapter_sha256": "461c69a2ff465d7d6c7720a758ae6cd6ddf4e01c179c69164142168eaba457b3",
+    "commit": "local checkpoint of the five-line type-only fix after the a5 trial"
+  },
+  "repair_successor": {
+    "branch": "codex/cloud-graphics-rest-support-transfer-20261010",
+    "head": "a01acfc4008e64f3eeea93b3bf1e0f7fcd2bbc2a",
+    "parent": "1dcc39b overlay checkpoint; based on a5b13d35e59190515269c9a3852649caac38b470",
+    "worktree": "clean",
+    "adapter_sha256": "978cb7a85547e1fdfc7bc0a47d318dfb4e0afaa4273bb21f1bdfce2ad039fa82",
+    "commits": [
+      "1dcc39b checkpoint: preserve a5 typecheck overlay",
+      "a01acfc checkpoint: retain measured planted foot support"
+    ],
+    "published": false
+  },
+  "patches": [
+    {
+      "path": "/workspace/remote-verification/worker-results/graphics-rest-kinematics-20261010/a5b13d3-typing-overlay.patch",
+      "sha256": "fb5cb4331cffe918c60b782fcc042350081ef4ffcd3eaefae738fdad86a14f40"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/graphics-rest-kinematics-20261010/support-transfer-cause-repair-review.patch",
+      "sha256": "e2818d0de551a0ff8b1e41df8ea0fda3c1dd9af4e71c431e43f93ecdd6d82060"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/graphics-rest-kinematics-20261010/support-transfer-repair-only.patch",
+      "sha256": "cbae56f9155b8b06173a809ebc3567de8d2559e71063cce987be8a0ed9ad78ae"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/graphics-rest-kinematics-20261010/support-transfer-checkpoint.patch",
+      "sha256": "ebbdb6b3f2d5e8846d9abeb3d5e718311de7b047e8c0dcc68b22ede310f7e307"
+    }
+  ],
+  "a5_trial": {
+    "id": "a5b13d3-postsolve-0445",
+    "runner_exit": 1,
+    "elapsed_seconds": 4.585,
+    "peak_rss_bytes": 990109696,
+    "receipt": "/workspace/remote-verification/worker-results/graphics-rest-kinematics-20261010/a5b13d3-postsolve-0445.receipt.json",
+    "receipt_sha256": "1b461259971b381f730257f63852ea8b2352ea69fa816a50a9873931bf0f69d7",
+    "log": "/workspace/remote-verification/worker-results/graphics-rest-kinematics-20261010/a5b13d3-postsolve-0445.log",
+    "log_sha256": "a2a9043d159551f1a20b22fd799a72ed7892720154b2a7008214d437f3be95fb",
+    "failure_json": "/workspace/remote-verification/repositories/worker-graphics-rest-kinematics-20261010/evidence/graphics-loop/native-game-adoption-v1/home-journey-results/a5b13d3-postsolve-0445/home-journey-failure.json",
+    "failure_json_sha256": "3a98829fc801b040c7c81aeb7c3289141cca968ce39c06d439e5ee140aee5605"
+  },
+  "compiler": {
+    "metadata": "/workspace/remote-verification/worker-results/graphics-rest-kinematics-20261010/a5b13d3-focused-compiler-metadata.json",
+    "sha256": "5400074145493f523eaa48eb0a2ffeff7e7468a5a873e822e56ad50e310af82e",
+    "status": "focused typecheck ultimately exit 0 on overlay; earlier failures summarized; no raw stdout file exists"
+  },
+  "live_process_evidence": {
+    "shared_agent_slots": "0/1 heavy, 0/1 server, 0/1 browser at last status query",
+    "render": "terminal, receipt exit 1",
+    "compiler": "all invoked tool sessions terminal; no active session remains"
+  },
+  "remaining_concerns": [
+    {
+      "issue": "Support-transfer repair is uncompiled and unrendered under the 4% stop rule. It must pass focused typecheck and one bounded source-pinned actual trial after quota permits and parent review.",
+      "difficulty_1_to_5": 1,
+      "basis": "No code change needed to resume; verification only."
+    },
+    {
+      "issue": "Retained per-side floor ownership is held in adapter closure state and released on same-side mapped prop-foot support, measured full body support, or leaving lie-entry transition. Verify action-phase lifecycle, prop changes, and root/bone rollback after postblend rejection; a latch set before downstream validation could persist if a caller recovers and retries.",
+      "difficulty_1_to_5": 3,
+      "basis": "Requires reviewing error/rollback and entry-to-still/get-up boundaries; the source change is a small finite state change."
+    },
+    {
+      "issue": "The a5 geometry remains unaccepted: at source 0.066667s, solver candidate left gaps +0.471..+30.839mm, right +107.603..+202.634mm; weighted blend moved actual left gaps to +11.174..+39.059mm; no body/prop-foot support.",
+      "difficulty_1_to_5": 3,
+      "basis": "Cause is measured; repair full IK side retention must satisfy both-leg postblend reach and later actual body/prop transfer without changing caps."
+    }
+  ],
+  "work_stopped_at_quota_boundary": true
+}

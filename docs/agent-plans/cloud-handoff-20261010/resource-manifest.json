@@ -140,15 +140,30 @@
       "commit": "35731140a32da445b8bfd95075f79c0948010694",
       "url": "https://github.com/kromate/joinallworld/commit/35731140a32da445b8bfd95075f79c0948010694",
       "scope": "Read original receipts and review before adoption; source pin does not imply accepted release"
+    },
+    "graphics_camera_checkpoint": {
+      "commit": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+      "branch": "codex/cloud-npc-camera-final-20261010",
+      "url": "https://github.com/kromate/joinallworld/commit/cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
+      "scope": "Human-approved publication only; failing diagnostic source retained, no implementation/release acceptance"
     }
   },
   "privatePublicationHolds": [
-    "GRAPHICS cf8b7417b5f428dc6cb59f601fbde560cd9a7c71 and held REST/household/driving descendants: exact publication/transfer approval required, no bypass"
+    "REST a01acfc4008e64f3eeea93b3bf1e0f7fcd2bbc2a and fc0045292ad7726b0fea1e03048192c245561ed7 are separate sibling chains, not cf8 descendants; preserved privately outside this exact approval.",
+    "Driving385 and householdcfb/descendants remain under prior publication holds; not covered by graphics approval."
   ],
   "cloudEnvironmentHistorical": {
     "environmentId": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
     "settingsPublished": "unconfirmed",
     "availability": "must verify current host/model/checkout/included capacity"
   },
-  "localStatus": "Implementation remains stopped; this prompt authorizes continuation only when submitted by Anthony in Cloud"
+  "localStatus": "Implementation remains stopped; this prompt authorizes continuation only when submitted by Anthony in Cloud",
+  "publicationAddenda": [
+    {
+      "manifest": "graphics-approved-publication-manifest.json",
+      "bytes": 29939,
+      "sha256": "576da0eea90fa326b41486d7f570ae036c66f4ad1a3e98582724c2abf121d60d",
+      "scope": "Resolves historical cf8 hold using later exact human approval; records remaining independent holds."
+    }
+  ]
 }

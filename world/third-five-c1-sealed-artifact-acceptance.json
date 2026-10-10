@@ -1,0 +1,199 @@
+{
+  "observedAtUtc": "2026-10-10T01:43:22.960413+00:00",
+  "decision": "ACCEPT exact downloadable sealed package and scoped all15 Worker/assets/persisted journeys. Full other matrix/native/save/production acceptance remains open.",
+  "runId": 38013456110,
+  "runUrl": "https://github.com/kromate/joinallworld/actions/runs/38013456110",
+  "jobId": 114098462978,
+  "jobResult": "success",
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "toolingSha": "2df4569f5bc0bbabe90238c1482907a87eb75f67",
+  "publish": false,
+  "artifactId": 11655337648,
+  "artifactZipBytes": 19383625,
+  "artifactZipSha256": "80c574d3db117dbded7df5f47cbf2186c29b140c78c2dcad0fe4616ae50bdca3",
+  "archiveBytes": 113797120,
+  "archiveSha256": "8d07c74cfc0b717d855224928949d2bead1ac6681f7c81ad01ed297c795b50aa",
+  "packageDigest": "3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331",
+  "packageManifestSha256": "d5a3b4e5dd80be8dc57a0296e9af4b7898ff23c7875aeedf342b879b6e94a314",
+  "packageFileCount": 6228,
+  "packageBytes": 103755418,
+  "workerSha256": "fd7fa978cda473d67bdf5c006bcb3289b901180cdfd9123c49bb405fc976fbf4",
+  "sanitizedObservationsSha256": "81fb13b0dc7a09c0f99e06572f2540b2719b79a73b6a00a5f1f4e2e5ef75c087",
+  "namedChecks": [
+    {
+      "check": "source-and-package-identity",
+      "status": "passed"
+    },
+    {
+      "check": "sealed-worker-start-and-sqlite",
+      "status": "passed"
+    },
+    {
+      "check": "packaged-assets-all-destinations",
+      "status": "passed",
+      "count": 31,
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers",
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town",
+        "addis-ababa",
+        "cairo",
+        "rabat",
+        "kigali",
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-third-three",
+      "status": "passed",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-third-three",
+      "status": "passed",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-third-two",
+      "status": "passed",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-third-two",
+      "status": "passed",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "sqlite-restart",
+      "status": "passed"
+    }
+  ],
+  "assetsVerified": 31,
+  "coveredCities": [
+    "yaounde",
+    "lome",
+    "accra",
+    "nairobi",
+    "algiers",
+    "cotonou",
+    "abidjan",
+    "dakar",
+    "cape-town",
+    "addis-ababa",
+    "cairo",
+    "rabat",
+    "kigali",
+    "kampala",
+    "lusaka"
+  ],
+  "registeredForeignCities": [
+    "abidjan",
+    "accra",
+    "addis-ababa",
+    "algiers",
+    "cairo",
+    "cape-town",
+    "cotonou",
+    "dakar",
+    "kampala",
+    "kigali",
+    "lome",
+    "lusaka",
+    "nairobi",
+    "rabat",
+    "yaounde"
+  ],
+  "elapsedMs": 147164,
+  "verifierTotalMs": 168000,
+  "verifierHeadroomMs": 20836,
+  "adminRateWaitCount": 2,
+  "localExtraction": "Bounded ZIP24MiB/outer256MiB, exact authenticated manifest-derived TAR inventory, all6228 files hashed, unsafe/link/nonregular/path entries refused; package guard Node24.19 exits0. Initial unmeasured4096-entry diagnostic rejected6228-file inventory and is retained privately; no original source/game cap or fixture waiver.",
+  "builtLocally": false,
+  "localActorStoreTouched": false,
+  "productionUploaded": false,
+  "source7fAccepted": false,
+  "originalStoreInvariant": "Original eec A/B identities/save/teacher unchanged. Any c12 native stage uses fresh distinct compatible actors/store.",
+  "limits": [
+    "Synthetic sealed SQLite fixtures prove their actual stated layer, not normal guest funding or physical phone",
+    "All15 covered plusNigeria imply candidate16 countries, not current live count",
+    "Source-only audit matrix is intentionally skipped in this source-specific seal workflow; no fullNode22+24/CI claim",
+    "Single guarded Actions attempt; unchanged zero-spend budget/Stopusage; no retry or account/payment/scope expansion"
+  ]
+}

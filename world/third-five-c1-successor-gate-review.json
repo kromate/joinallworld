@@ -1,6 +1,6 @@
 {
   "receiptPublication": "96452caca0c89dd99ebae0ea187c1f9fa1ce6b11",
-  "decision": "Accept raw receipt/log binding and focused corrected tests only. Prior full suite failed; focused wrapper125 and untracked cache flag retained. No corrected full-suite or sealed/native release claim.",
+  "decision": "Accept raw receipt/log bindings, corrected focused tests and actual clean exactc12 five-project compiler/build. Original91 full suite failed; focusedwrapper125 flag retained. Corrected-source other matrix, budgets, sealed/native release evidence remain open.",
   "receipts": {
     "node24-game": {
       "source": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
@@ -38,7 +38,40 @@
       "wrapperExit": 125,
       "supplementSha256": "54103bd63802cb791eed1391efa9dda0f1c8693df0855650be17f98232cdd5d4",
       "qualifiedObservation": "Tracked source remained unchanged; generated untracked Python bytecode prevented the wrapper clean-source claim. This supplement does not convert that flag to true."
+    },
+    "c12-typecheck": {
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "commandExit": 0,
+      "sourceUnchanged": true,
+      "gitStatusAfter": "",
+      "logSha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7",
+      "receiptSha256": "9bc4b01486899e29167cc38415df6cd37a539b6529b905164d0db47a3e433232",
+      "rawLogPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-typecheck/command.log",
+      "rawReceiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-typecheck/receipt.json",
+      "startedAtUtc": "2026-10-10T01:21:46.332787+00:00",
+      "endedAtUtc": "2026-10-10T01:23:46.341651+00:00",
+      "durationSeconds": 120.008864,
+      "nodeVersion": "v24.19.0",
+      "heap": "--max-old-space-size=4096",
+      "logBytes": 247
+    },
+    "c12-build": {
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "commandExit": 0,
+      "sourceUnchanged": true,
+      "gitStatusAfter": "",
+      "logSha256": "35602fc7962f5527f4a1a534ea98831b667b32baaafe6bcf93c46bcfcecc114f",
+      "receiptSha256": "a31f173e6c83975f6be84ebb139a32f73511b90c1b5566b194e57fce5aa8458b",
+      "rawLogPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-build/command.log",
+      "rawReceiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-build/receipt.json",
+      "startedAtUtc": "2026-10-10T01:23:46.500388+00:00",
+      "endedAtUtc": "2026-10-10T01:24:41.189154+00:00",
+      "durationSeconds": 54.688766,
+      "nodeVersion": "v24.19.0",
+      "heap": "--max-old-space-size=1536",
+      "logBytes": 89012
     }
   },
-  "requiredNext": "Existing cloud corrected-source remaining checks including all fifteen Node/Worker host journeys; source-bound package/sealed/assets/native journey/save proof; sole WORLD upload after acceptance."
+  "requiredNext": "Existing cloud corrected-source remaining checks including all fifteen Node/Worker host journeys; source-bound package/sealed/assets/native journey/save proof; sole WORLD upload after acceptance.",
+  "freshCorrectedCompilerBuildPublication": "d69d6c2e863550764f7a35b0c69ba78343b58aa3"
 }

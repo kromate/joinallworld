@@ -405,6 +405,11 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     const desiredSoleY = new Map<'left' | 'right', number>();
     const correctedSides = new Set<'left' | 'right'>();
     updateActorWorld(actor);
+    const actorUp = new THREE.Vector3(0, 1, 0).transformDirection(actor.matrixWorld);
+    if ((mode === 'grounded' || mode === 'transition') && (!isVerticalParent(actor)
+      || actorUp.y < 0.99999 || Math.abs(actorUp.x) > 1e-5 || Math.abs(actorUp.z) > 1e-5)) {
+      throw new Error('Grounded native pelvis budget requires aligned vertical coordinate frames');
+    }
     const parentWorldYScale = actor.parent?.matrixWorld.elements[5] ?? 1;
     const actorWorldYScale = actor.matrixWorld.elements[5];
     if (!Number.isFinite(parentWorldYScale) || parentWorldYScale <= 0

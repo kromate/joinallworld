@@ -263,6 +263,7 @@ function createFixture() {
     bodyCenterLineClear: false, lowerBodyLineClear: false, lowerBodyTargets: [] };
   let unsupportedProbe: Record<string, unknown> | null = null;
   let interaction: Record<string, unknown> | null = null;
+  let activeNpcAction: { npcId: string; promise: Promise<Record<string, unknown> | null> } | null = null;
   let nativeNpcRefreshWitness: Record<string, unknown> | null = null;
   let nativeNpcRefreshAttempted = false;
   let lastContact: ReturnType<SkinnedBody['solveFeet']> | null = null;
@@ -341,7 +342,11 @@ function createFixture() {
     const target = bounds.getCenter(new THREE.Vector3());
     target.y = bounds.min.y + Math.min(1.2, bounds.getSize(new THREE.Vector3()).y * 0.5);
     const signature = `${actor.uuid}:${currentCamera}:${origin.toArray().map((part) => part.toFixed(3)).join(',')}:${bounds.min.toArray().map((part) => part.toFixed(3)).join(',')}:${bounds.max.toArray().map((part) => part.toFixed(3)).join(',')}`;
-    if (signature === closeCameraPlacementSignature) return;
+    if (signature === closeCameraPlacementSignature) {
+      camera.updateMatrixWorld(true);
+      closeCameraRay = measureCloseCameraRay(actor);
+      return;
+    }
     camera.fov = 48;
     camera.updateProjectionMatrix();
     const offsets = side === 'face-candidate' ? [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6,
@@ -362,6 +367,9 @@ function createFixture() {
           camera.position.copy(origin).addScaledVector(candidate, radius);
           camera.position.y = bounds.min.y + height;
           camera.lookAt(target);
+          const facingDot = faceCandidate.dot(candidate);
+          if (side === 'back-control' ? facingDot > -0.65
+            : side === 'profile-control' ? Math.abs(facingDot) > 0.45 : facingDot < 0.65) continue;
           const visibility = measureCloseCameraRay(actor, lowerBodyTargets);
           closeCameraRay = visibility;
           camera.updateMatrixWorld(true);
@@ -401,16 +409,19 @@ function createFixture() {
     const allCornersInFrustum = corners.every((point) => point.z > -1 && point.z < 1);
     const actorAxis = actor.getWorldDirection(new THREE.Vector3()).setY(0).normalize();
     const toCamera = camera.position.clone().sub(actor.getWorldPosition(new THREE.Vector3())).setY(0).normalize();
+    const selectedSide = currentCamera.endsWith('-back') ? 'back-control'
+      : currentCamera.endsWith('-profile') ? 'profile-control' : 'face-candidate';
+    const cameraAxisDot = actorAxis.dot(toCamera);
+    const cameraSideMatches = selectedSide === 'back-control' ? cameraAxisDot <= -0.65
+      : selectedSide === 'profile-control' ? Math.abs(cameraAxisDot) <= 0.45 : cameraAxisDot >= 0.65;
     return { actorOrigin: actor.getWorldPosition(new THREE.Vector3()).toArray() as [number, number, number],
       headPosition: headPosition ?? null,
       bounds: { min: bounds.min.toArray() as [number, number, number], max: bounds.max.toArray() as [number, number, number] },
       cameraPosition: camera.position.toArray() as [number, number, number],
       ndc: { minX, maxX, minY, maxY }, allCornersInFrustum,
-      wholeActorVisible: allCornersInFrustum && minX > -0.96 && maxX < 0.96 && minY > -0.96 && maxY < 0.96
+      wholeActorVisible: cameraSideMatches && allCornersInFrustum && minX > -0.96 && maxX < 0.96 && minY > -0.96 && maxY < 0.96
         && closeCameraRay.clearLine && closeCameraRay.bodyCenterLineClear && closeCameraRay.lowerBodyLineClear,
-      cameraAxisDot: actorAxis.dot(toCamera),
-      selectedCameraSide: currentCamera.endsWith('-back') ? 'back-control'
-        : currentCamera.endsWith('-profile') ? 'profile-control' : 'face-candidate', visibilityRay: closeCameraRay };
+      cameraAxisDot, selectedCameraSide: selectedSide, visibilityRay: closeCameraRay };
   }
 
   function lowerBodyRayTargets(actor: THREE.Object3D): Map<string, THREE.Vector3 | null> {
@@ -577,7 +588,9 @@ function createFixture() {
           // was active when the user started the action.
           const resumeMode = mode;
           setMode('interact');
-          void performNpcAction(npc.id, action.activity).catch((error: unknown) => {
+          const actionPromise = performNpcAction(npc.id, action.activity);
+          activeNpcAction = { npcId: npc.id, promise: actionPromise };
+          void actionPromise.catch((error: unknown) => {
             errors.push(error instanceof Error ? error.message : String(error));
             stage = errors.at(-1)!;
             updateDom(); draw();
@@ -683,6 +696,26 @@ function createFixture() {
     return interaction;
   }
 
+  async function awaitNpcAction(npcId: string, timeoutMs = 8000) {
+    const action = activeNpcAction;
+    if (!action || action.npcId !== npcId) throw new Error(`No active NPC action belongs to ${npcId}`);
+    let timeout: number | undefined;
+    let result: Record<string, unknown> | null;
+    try {
+      result = await Promise.race([
+        action.promise,
+        new Promise<null>((resolve) => { timeout = window.setTimeout(() => resolve(null), timeoutMs); }),
+      ]);
+    } finally {
+      if (timeout !== undefined) window.clearTimeout(timeout);
+    }
+    if (activeNpcAction !== action) throw new Error(`NPC action identity changed while waiting for ${npcId}`);
+    if (!result || result.npcId !== npcId || result.completed !== true) {
+      throw new Error(`NPC action for ${npcId} did not complete within ${timeoutMs}ms`);
+    }
+    return result;
+  }
+
   function setCamera(name: string) {
     currentCamera = name;
     closeCameraActor = name.startsWith('player-close') ? actors.get('player')?.body.object ?? null
@@ -773,7 +806,8 @@ function createFixture() {
         const point = worldPoint.clone().project(camera);
         const offsets = [0.06, 0.1, 0.15, 0.22, 0.3];
         for (const offset of offsets) {
-          for (const [dx, dy] of [[offset, 0], [-offset, 0], [0, offset], [0, -offset]]) {
+          const directions: Array<[number, number]> = [[offset, 0], [-offset, 0], [0, offset], [0, -offset]];
+          for (const [dx, dy] of directions) {
             const x = point.x + dx, y = point.y + dy;
             if (x <= -0.98 || x >= 0.98 || y <= -0.98 || y >= 0.98) continue;
             const raycaster = new THREE.Raycaster();
@@ -1035,6 +1069,7 @@ function createFixture() {
     renderForCapture,
     probeUnsupportedPose,
     performNpcAction,
+    awaitNpcAction,
     scenePoses: PLAYER_BODY_POSES,
     dispose,
   };

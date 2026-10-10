@@ -115,13 +115,8 @@ async function captureNpcInteractionAt(actorId, view) {
     : "[...document.querySelectorAll('#npc-cards article')].find(card => card.querySelector('strong')?.textContent?.toLowerCase().includes('dapo'))?.querySelector('button')?.click()";
   await evaluate(clickAction);
   const interacting = await capture(`${name}-interact`, 80);
-  let action = null;
-  const deadline = Date.now() + 8000;
-  while (Date.now() < deadline) {
-    action = await evaluate('window.nativeGameFixture.sample().interaction');
-    if (action?.completed !== false) break;
-    await delay(100);
-  }
+  const action = await evaluate(`window.nativeGameFixture.awaitNpcAction('${actorId}', 8000)`);
+  if (action?.npcId !== actorId || action?.completed !== true) throw new Error(`NPC action identity/completion mismatch for ${actorId}`);
   const returnedIdle = await capture(`${name}-returned-idle`, 120);
   return { interacting, returnedIdle, action };
 }
@@ -203,13 +198,8 @@ try {
   await evaluate("window.nativeGameFixture.setCamera('mrs-okafor-close'); window.nativeGameFixture.setMode('idle')");
   await evaluate("document.querySelector('#npc-action-mrs-okafor-hello')?.click()");
   const mrsInteract = await capture('mrs-okafor-close-interact', 100);
-  let npcInteraction = null;
-  const actionDeadline = Date.now() + 8000;
-  while (Date.now() < actionDeadline) {
-    npcInteraction = await evaluate('window.nativeGameFixture.sample().interaction');
-    if (npcInteraction?.completed !== false) break;
-    await delay(100);
-  }
+  const npcInteraction = await evaluate("window.nativeGameFixture.awaitNpcAction('mrs-okafor', 8000)");
+  if (npcInteraction?.npcId !== 'mrs-okafor' || npcInteraction?.completed !== true) throw new Error('Mrs Okafor action identity/completion mismatch');
   const interactionState = await evaluate('window.nativeGameFixture.sample()');
   const npcAction = await capture('mrs-okafor-close-completed-idle', 250);
   const mrsProfileConfirmed = await captureNpcInteractionAt('mrs-okafor', 'profile');
@@ -223,13 +213,8 @@ try {
   await evaluate("window.nativeGameFixture.setCamera('dapo-close')");
   await evaluate("[...document.querySelectorAll('#npc-cards article')].find(card => card.querySelector('strong')?.textContent?.toLowerCase().includes('dapo'))?.querySelector('button')?.click()");
   const dapoInteract = await capture('dapo-close-interact', 100);
-  let dapoInteraction = null;
-  const dapoDeadline = Date.now() + 15000;
-  while (Date.now() < dapoDeadline) {
-    dapoInteraction = await evaluate('window.nativeGameFixture.sample().interaction');
-    if (dapoInteraction?.completed !== false) break;
-    await delay(100);
-  }
+  const dapoInteraction = await evaluate("window.nativeGameFixture.awaitNpcAction('dapo', 8000)");
+  if (dapoInteraction?.npcId !== 'dapo' || dapoInteraction?.completed !== true) throw new Error('Dapo action identity/completion mismatch');
   const dapoCompleted = await capture('dapo-close-completed-idle', 250);
   const dapoProfileConfirmed = await captureNpcInteractionAt('dapo', 'profile');
   const dapoBackConfirmed = await captureNpcInteractionAt('dapo', 'back');
@@ -267,6 +252,8 @@ try {
     return { actor, mode, view, actualPose: actorPose, poseMatches: actorPose === expectedPose,
       wholeActorVisible: sample.snapshot?.cameraActorFrame?.wholeActorVisible === true,
       cameraPosition: sample.snapshot?.cameraActorFrame?.cameraPosition ?? null,
+      cameraAxisDot: sample.snapshot?.cameraActorFrame?.cameraAxisDot ?? null,
+      selectedCameraSide: sample.snapshot?.cameraActorFrame?.selectedCameraSide ?? null,
       actorBounds: sample.snapshot?.cameraActorFrame?.bounds ?? null,
       projectedBounds: sample.snapshot?.cameraActorFrame?.ndc ?? null,
       directCanvasSaved: sample.canvasScreenshot?.bytes > 0,
@@ -276,6 +263,8 @@ try {
   });
   const cameraMatrixPass = cameraMatrixRows.length === 27 && cameraMatrixRows.every((row) => row.poseMatches
     && row.wholeActorVisible && row.directCanvasSaved && row.actorPixelContrast >= 24
+    && (row.view === 'front' ? row.cameraAxisDot >= 0.65
+      : row.view === 'back' ? row.cameraAxisDot <= -0.65 : Math.abs(row.cameraAxisDot) <= 0.45)
     && ['head', 'torso', 'feet'].every((region) => row.actorRegionContrast?.[region] >= 24));
   const allCapturedSamples = [idle, front, profileView, playerCloseIdle, playerBackControl, playerProfileControl,
     playerCloseInteract, playerInteractProfile, playerInteractBack, walkA, walkAProfile, walkABack, walkB, walk, interact,

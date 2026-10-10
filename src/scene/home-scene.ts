@@ -80,6 +80,7 @@ import { createUseProps } from './smart-objects/props.ts';
 import { createHingedHomeDoor } from './smart-objects/door.ts';
 import type { ObjectAction } from './smart-objects/sequence.ts';
 import type { BodyPose, SkinnedBody } from './body/skinned.ts';
+import { bodySwap, usesPreviousBody } from './body/rest-fallback.ts';
 import type { NativeHomeRestSpec } from './body/native-home-support.ts';
 import type { NativeSceneBodySupport } from './body/native-scene-support.ts';
 type NativeRestPose = Parameters<NonNullable<NativeSceneBodySupport['restSupport']>>[0];
@@ -350,6 +351,8 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   let body: SkinnedBody | null = null, bodyLoading = false, bodyFailed = false, gone = false, seatAt: Rest | null = null, sat: Spot | undefined;
   const floorAt = { x: 0, y: 0.03, z: 0, ry: 0 }, headAt = new THREE.Vector3();
   let nativeRestAt: Rest | null = null;
+  // Which body is in (rest-fallback.ts): the previous one while a lie, soak or wash is shown.
+  let bodyIsPrevious = false, wantsPreviousBody = false;
   let hinge: ReturnType<typeof createHingedHomeDoor> | null = null, doorDone: (() => void) | null = null, doorVisual = false;
   const doorGrip = new THREE.Vector3(), doorRelease = { x: 0, z: 0 };
   const lastGait = { x: NaN, y: 0, z: 0 };
@@ -503,10 +506,15 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   function startBody(renderer: THREE.WebGLRenderer) {
     if (body || bodyLoading || bodyFailed || gone) return;
     if (!drawsWebGL2(renderer)) { bodyFailed = true; return; }
+    loadBodyKind(wantsPreviousBody);
+  }
+  /** Fetch the native body, or the previous one for the rest poses (see rest-fallback.ts); it replaces any body now in. */
+  function loadBodyKind(previous: boolean) {
     bodyLoading = true;
     const look = who.look ?? lastState?.onboarding?.look ?? null, seed = who.seed;
     setTimeout(() => {
       importBody().then((module) => {
+        if (previous) return module.loadBody(kit, look, seed, tile * AVATAR_SCALE);
         return module.loadGameBody(kit, look, seed, tile * AVATAR_SCALE, {
         scene: 'home', role: 'player', poses: module.PLAYER_BODY_POSES,
         nativeSupport: { ...module.createStandInNativeSupport(() => ({ group: people, avatar, scale: tile * AVATAR_SCALE, contactHeightAt }), () => group), restSupport: module.createHomeNativeRestSupport(nativeRestSpec) },
@@ -515,7 +523,8 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
         if (gone) { loaded.dispose(); return; }
         // The look changed while it loaded: recolour, or (the other body) start again on the next frame.
         if (!loaded.wear(who.look ?? lastState?.onboarding?.look ?? null, who.seed)) { loaded.dispose(); globalThis.window?.dispatchEvent?.(new CustomEvent('jaw:home-frame')); return; }
-        body = loaded;
+        if (body) { body.object.removeFromParent(); body.dispose(); }
+        body = loaded; bodyIsPrevious = previous;
         body.fit(tile * AVATAR_SCALE);
         buildRoom();
         people.add(body.object);
@@ -526,9 +535,18 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
         globalThis.window?.dispatchEvent?.(new CustomEvent('jaw:home-frame'));
       }).catch((error: unknown) => {
         bodyLoading = false; bodyFailed = true;
+        if (body && !body.object.visible) dropBody();
         console.warn('Skinned body unavailable; keeping the drawn avatar:', error);
       });
     }, 0);
+  }
+  /** Swap between the native and previous bodies as the pose needs (rest-fallback.ts); the saved look comes along. */
+  function reconcileBody() {
+    if (!body || bodyLoading || bodyFailed || gone) return;
+    const swap = bodySwap(bodyIsPrevious, wantsPreviousBody, !body.seated && !body.easing);
+    if (swap === 'keep') return;
+    if (swap === 'hide-then-load') { body.object.visible = false; avatar.visible = true; }
+    loadBodyKind(wantsPreviousBody);
   }
   /** Back to the procedural figure (a look that needs the other body file loads it again on the next frame). */
   function dropBody() {
@@ -572,9 +590,12 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   }
   /** Pose the body like the procedural figure: on its furniture for a home activity that has some, else where the avatar is. */
   function poseBody(pose: Pose, animate: boolean) {
-    if (!body) return;
     const next = pose === 'work' && seatAt ? seatAt.pose : pose === 'sit' && !seatAt ? 'idle' : BODY_POSE[pose];
+    wantsPreviousBody = usesPreviousBody(next);
+    if (!body) return;
     const restPose = next === 'lie' || next === 'soak' || next === 'wash';
+    // The native rig is never shown in a rest pose: the figure stands in while the previous body loads.
+    if (wantsPreviousBody && !bodyIsPrevious) { body.object.visible = false; avatar.visible = true; reconcileBody(); return; }
     if (restPose && seatAt?.pose === next) nativeRestAt = seatAt;
     else if (!body.seated && !body.easing) nativeRestAt = null;
     // Register the real object and its placement before the first supported pose sample.
@@ -1060,6 +1081,7 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     get objectPhase() { return sequence.phase; },
     get bodyShown() { return body !== null; },
     stepCrowd(dt: number) {
+      reconcileBody();
       const more = Boolean(body?.step(dt)), using = sequence.step(dt), door = hinge?.step(dt) ?? false;
       if (doorDone && body) body.sampleUse('homeDoor', Math.min(2.399, (hinge?.progress ?? 0) * 2.4));
       if (!more) placeBody();

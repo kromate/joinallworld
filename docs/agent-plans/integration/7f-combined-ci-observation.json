@@ -1,9 +1,9 @@
 {
-  "observedAt": "2026-10-10T01:43:20.448488+00:00",
+  "observedAt": "2026-10-10T02:04:19.950046+00:00",
   "url": "https://github.com/kromate/joinallworld/actions/runs/38013621959",
   "headSha": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81",
-  "status": "queued",
-  "conclusion": "",
+  "status": "completed",
+  "conclusion": "failure",
   "run": 38013621959,
   "fullChecks": true,
   "uiChecks": true,
@@ -29,14 +29,14 @@
     {
       "id": 114098981056,
       "name": "full-worker (24)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "id": 114098981065,
       "name": "full-node (24, tooling)",
-      "status": "queued",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "id": 114098981075,
@@ -53,14 +53,14 @@
     {
       "id": 114098981085,
       "name": "full-worker (22)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "id": 114098981105,
       "name": "full-node (22, game)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "cancelled"
     },
     {
       "id": 114098981108,
@@ -83,14 +83,14 @@
     {
       "id": 114098981182,
       "name": "full-node (24, host)",
-      "status": "queued",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "id": 114098981215,
       "name": "full-node (24, game)",
-      "status": "in_progress",
-      "conclusion": ""
+      "status": "completed",
+      "conclusion": "failure"
     },
     {
       "id": 114098981644,
@@ -105,5 +105,5 @@
       "conclusion": "skipped"
     }
   ],
-  "limits": "Exact7f partial outcomes. PredecessorCI not inherited; unfinished jobs remain pending. No new sealed/browser/provider/production acceptance."
+  "limits": "Final exact7f CI fails startup budgets. Node22 game cancelled, not verified. Source-only/country-only predecessor results are not inherited. No new seal, browser completion, provider or production acceptance."
 }

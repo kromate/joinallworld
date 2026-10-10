@@ -1,10 +1,10 @@
 # Combined Allworld repair and remaining-work ledger
 
-Observed checkpoint: 2026-10-10T01:41:34.789351+00:00. Goal remains active and the complete original handoff scope is retained.
+Observed checkpoint: 2026-10-10T02:04:19.950046+00:00. Goal remains active and the complete original handoff scope is retained.
 
 ## Usage and execution rule
 
-Direct human message `01a12367-3e20-7150-86f7-a14cacab49bd` supersedes the old clock cutoff and five-percent threshold. Continue existing online work while applicable main allowance exceeds 4%. At 4% remaining or below stop new implementation/build/render/spawn work, then safely save evidence, preserve processes and user data, publish owned source and this single deduplicated ledger. There is no clock cutoff. The final 4% is reserved for checkpointing, with no automatic implementation restart. Latest actual Root sample is 82% used and 18% remaining. No paid credits, reset, reserve-model switch or model hopping is authorized. The full goal remains active.
+Direct human message `01a12367-3e20-7150-86f7-a14cacab49bd` supersedes the old clock cutoff and five-percent threshold. Continue existing online work while applicable main allowance exceeds 4%. At 4% remaining or below stop new implementation/build/render/spawn work, then safely save evidence, preserve processes and user data, publish owned source and this single deduplicated ledger. There is no clock cutoff. The final 4% is reserved for checkpointing, with no automatic implementation restart. Latest actual Root sample is 84% used and 16% remaining. No paid credits, reset, reserve-model switch or model hopping is authorized. The full goal remains active.
 
 Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 3 asynchronous/multi-path acceptance; 4 durable or cross-system integration; 5 foundational multi-domain work or external-device dependencies. Difficulty is not severity or a promise of duration. Respect prerequisites and fix P1 integrity bugs before dependent features, even when a cosmetic task is easier. Source-only findings, diagnostic renders, compiler success and actual production are distinct.
 
@@ -47,7 +47,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | INT-014 | 4/5 | P1 | Confirmed diagnostic graphics failure | Home bed contact penetration | Reviewed rest/contact source ownership |
 | INT-015 | 4/5 | P1 | Confirmed diagnostic graphics failure | Stair clearance/contact | GRAPHICS capsule and LIVING movement coordination |
 | INT-016 | 4/5 | P1 | f4 OFF durable2PASS; compatible rollback artifact open | Compatible driving v2 rollback before first issuance | INT-005; INT-006; explicit authority types |
-| INT-017 | 4/5 | P1 | 7f pushed; exact CI budget jobs fail; release open | Final combined source, seals and coordinated production | Accepted candidate units; unchangedbindings/secrets/namespace |
+| INT-017 | 4/5 | P1 | 7f pushed; terminal CI fails startup; Node22 game cancelled; release open | Final combined source, seals and coordinated production | Accepted candidate units; unchangedbindings/secrets/namespace |
 | INT-018 | 4/5 | P2 | Open research queue/access | Continue exact public-source queues and Recent | Public source access; original private captures unavailable |
 | INT-026 | 4/5 | P1 programme gap | Incomplete broad rollout | Authored wardrobe/hair/footwear look coverage | INT-014; INT-015; INT-025; INT-017 budget gate |
 | INT-029 | 4/5 | P1 feature gate | Pure domain only | Consenting NPC barber appearance and once settlement | GRAPHICS target and Integration accounting |
@@ -509,3 +509,9 @@ Latest actual main allowance83%used/17%remaining, zero credits/resets. Four-perc
 [Independent counter source review](driving-counter-source-review.md) approves the91-line service-test delta atd38. Comparedwith1b, cumulative scope issevenfiles: six already-reviewed e8/f4 host/test files are hash-identical, plus the new countertest. Root independently matches allthree additional reviewer pins. Actual fourv1/v2 last-safe input/timeout/future-watermark cases and six sequential location-route row refusal assertions are meaningful. They do not prove no clock read, everyv2/invalid-clock context, or last-safe lifecycle transitions.
 
 [Published raw execution](5708-driving-execution-review.json) binds d38's18PASS0FAIL0SKIP log to immutable source. This closes the raw18-test publication gap for INT-033 at focused service level. H1/H2/H3 host-restart cases remain separate. The same publication independently confirms1b smoke16PASS and195610Brotli failing195600 by10bytes, over50cities; combined7f failure is distinct and measures55cities. No compiler/build/budget or native proof is transferred among these candidates. The compatible OFF rollback artifact before original-store or production v2 issuance remains mandatory.
+
+## 2026-10-10 02:04 UTC terminal combined CI and native checkpoint
+
+Exact combined source 7f run 38013621959 completed with failure at 02:01:42 UTC. Both Worker partitions passed 159/159, both host partitions passed 1,029 checks with three skips, and both tooling partitions passed 36/36. Node 24 game had 2,610 tests, 2,608 passes, one failure and one skip. Its only failure is the existing automatic Lagos startup assertion at 615,338 raw bytes. Node 22 game was cancelled and does not establish acceptance. Both download gates retain 615,338 raw, 222,986 gzip and 195,763 Brotli bytes, exceeding unchanged raw/Brotli limits by 338/163 bytes. See [terminal raw-log review](7f-terminal-partition-review.json). The two-file generator repair requires exact published-source review. No unchanged CI rerun or cap waiver.
+
+The c12 native stage has actual entry through distinct aliases and normal onboarding of two new actors, with actual starting cash of 76,000 and 40,000 and owned Ikeja homes. Both insufficient-fare refusals were exercised before funding. Travel has not started. Funding and an owner-controlled restart have no accepted receipt yet. The operator checkpointed both owned tabs and evidence at a safe boundary after the monitor reported material swap churn. Original stores, actors and production are unchanged. Five-city travel, mobile, homeward and save acceptance remain open.

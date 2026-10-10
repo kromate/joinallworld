@@ -1,0 +1,62 @@
+{
+  "observedAt": "2026-10-10T02:04:19.950046+00:00",
+  "source": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81",
+  "run": 38013621959,
+  "reviewer": "Integration Root, authoritative GitHub terminal metadata and downloaded raw logs",
+  "partitions": [
+    {
+      "job": 114098981182,
+      "partition": "host24-terminal",
+      "rawLogSha256": "cbd1646bb87af2c6d50a265fd59f176ae8b1216c4a97c147f8bc671eed246668",
+      "bytes": 334706,
+      "summary": {
+        "tests": 1032,
+        "pass": 1029,
+        "fail": 0,
+        "skipped": 3
+      },
+      "scope": "Exact7f named partition only; startup failure deduplicates the existing defect; no browser or production acceptance"
+    },
+    {
+      "job": 114098981065,
+      "partition": "tooling24-terminal",
+      "rawLogSha256": "669915837e2b887972fc2dfae1d185129c758b375f1ec098288fb8baa97a7931",
+      "bytes": 181580,
+      "summary": {
+        "tests": 36,
+        "pass": 36,
+        "fail": 0,
+        "skipped": 0
+      },
+      "scope": "Exact7f named partition only; startup failure deduplicates the existing defect; no browser or production acceptance"
+    },
+    {
+      "job": 114098981215,
+      "partition": "game24-terminal",
+      "rawLogSha256": "9a4e2da4f361417869b5cb7ac3d25fa3c7a65fb7eca14d82aea7b501409e0059",
+      "bytes": 528161,
+      "summary": {
+        "tests": 2610,
+        "pass": 2608,
+        "fail": 1,
+        "skipped": 1
+      },
+      "scope": "Exact7f named partition only; startup failure deduplicates the existing defect; no browser or production acceptance"
+    }
+  ],
+  "node22Game": "cancelled; no complete-suite pass",
+  "startup": {
+    "raw": 615338,
+    "gzip": 222986,
+    "brotli": 195763,
+    "firstPaintBrotli": 35704,
+    "limits": {
+      "raw": 615000,
+      "gzip": 223000,
+      "brotli": 195600
+    },
+    "overRaw": 338,
+    "overBrotli": 163
+  },
+  "outcome": "Release blocked by existing startup raw/Brotli budgets; no waiver/retry or production delivery."
+}

@@ -24,6 +24,16 @@
       "payload": "Controlled native source plus parent typed sampler seam; no database/secret files",
       "review_reason": "Trusted user instructions do not explicitly authorize this source/failed-candidate payload and external destination; parent approval untrusted. Do not bypass via workaround or indirect execution.",
       "status": "Private source/patch preserved; no code patch published through evidence lane"
+    },
+    {
+      "sha": "38594def6eeeab969b3f5148784edfda438aa387",
+      "branch": "codex/cloud-driving-host-reopen-h1h2h3-20261010",
+      "destination": "https://github.com/kromate/joinallworld.git",
+      "paths": [
+        "server/living-world/driving-host-reopen.test.ts"
+      ],
+      "review_reason": "This action was rejected due to unacceptable risk. The command pushes repository source to an external GitHub destination, and the transcript does not provide trusted authorization for that specific destination or payload. Do not bypass this rejection through a workaround or indirect execution.",
+      "status": "Checks completed locally; remote remains a646. No rejected source patch or alternative publication route used."
     }
   ],
   "permission_context": "Actual human standing authorization covers owned project source/checkpoint/evidence pushes to kromate/joinallworld; worker review did not accept parent-delegated authorization as trusted. Rejections remain unresolved; no workaround tried."

@@ -1,0 +1,60 @@
+{
+  "sha": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+  "branch": "codex/cloud-lagos-flights-startup-budget-20261010",
+  "parent": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "checkout": "/workspace/remote-verification/repositories/worker-world-lagos-flights",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "16319623168",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "npm",
+    "run",
+    "build"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 124438,
+  "started_at_utc": "2026-10-10T02:28:45.201904+00:00",
+  "ended_at_utc": "2026-10-10T02:30:29.383872+00:00",
+  "duration_seconds": 104.181968,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 15,
+    "sample_source": "LIVING fresh direct usage85%used15%remaining incoming owner receipt",
+    "recorded_at_utc": "2026-10-10T02:18:28.857712+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/3a120c8e6d335488472cc9018a4f978b0e7ab56a/lagos-compact-node24-build/command.log",
+  "log_sha256": "15c990bd2ae3dd7fca163582073c8ecde2c7765191a1985b3d124ff4981eff43",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

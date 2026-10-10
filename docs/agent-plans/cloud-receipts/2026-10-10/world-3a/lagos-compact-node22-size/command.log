@@ -1,0 +1,75 @@
+(node:128674) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (69s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (70s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (71s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (72s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (73s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (74s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (75s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (76s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (77s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (78s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (79s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (80s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 126580 in /workspace/remote-verification/repositories/worker-graphics-rest-trajectory-241: node --experimental-strip-types evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (81s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 127641 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types --test --test-concurrency=1 server/households/durable.test.ts (46s))
+(node:129192) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> joinallworld@0.1.0 size:download
+> node --experimental-strip-types scripts/download-budget.ts
+
+(node:129205) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Download budgets (src/budgets.ts)
+ok   LOADING_RAW               91469  budget 92,000 raw bytes (max)  first-paint JavaScript
+ok   LOADING_GZIP              35569  budget 37,000 gzip bytes (max)  first-paint JavaScript
+ok   FIRST_PAINT_BROTLI        35699  budget 36,800 brotli bytes (max) [provisional]  5 files: index.html, stylesheet and JavaScript
+ok   STARTUP_RAW              614092  budget 615,000 raw bytes (max)  largest over 55 cities (lagos)
+ok   STARTUP_GZIP             222987  budget 223,000 gzip bytes (max)  largest over 55 cities (lagos)
+OVER STARTUP_BROTLI           195739  budget 195,600 brotli bytes (max) [provisional]  largest over 55 cities (lagos)
+ok   SCENE_HOST_RAW           177152  budget 192,000 raw bytes (max)  shared scene chunk (world-adapter)
+ok   SCENE_HOST_GZIP           66028  budget 71,000 gzip bytes (max)  shared scene chunk (world-adapter)
+ok   BASE_BODY_BROTLI         138098  budget 300,000 brotli bytes (max) [provisional]  2 file(s) matching /(^|\/)base-body[^/]*\.(glb|gltf|bin)$/
+ok   CLIP_PACK_BROTLI          55111  budget 200,000 brotli bytes (max) [provisional]  1 file(s) matching /(^|\/)clip-pack[^/]*\.(glb|gltf|bin|json)$/
+n/a  WARDROBE_ITEM_BROTLI          -  budget 60,000 brotli bytes (max) [provisional]  no file matches /(^|\/)wardrobe\/[^/]+\.(glb|gltf)$/
+n/a  STREET_TILE_BROTLI            -  budget 60,000 brotli bytes (max) [provisional]  no file matches /(^|\/)(street-)?tiles?\/[^/]+\.(glb|gltf|bin)$/
+
+First paint (5 files) and lagos startup (28 files): kB raw / gzip / brotli
+   102.0     40.1     35.7  first paint
+   624.7    227.5    195.7  lagos startup
+
+Lazy groups, largest brotli first (30 of 483): kB raw / gzip / brotli, files, largest file
+ 84635.1  12709.8   9747.8  *.txt files                      5381  world-country-detail/bee6c7d0392d1db177eb28be5313173ce88ff92fe59e595c03805ebab6069ee7.txt (524.8 kB)
+   849.3    849.5    849.3  *.webp files                       6  assets/house-catalogue-28dfc24f.webp (295.7 kB)
+   459.6    458.6    458.2  *.png files                        6  og/allworld.png (154.3 kB)
+   676.5    469.7    378.1  rivers                             1  assets/rivers-25db21e3.js (378.1 kB)
+   656.0    349.4    330.5  *.glb files                        3  assets/base-body-male-57633378.glb (138.1 kB)
+   157.0    156.7    157.0  *.jpg files                        1  og/allworld.jpg (157.0 kB)
+   713.2    178.3    142.8  three                              1  assets/three-ffe213f4.js (142.8 kB)
+   522.2    143.5    120.1  *.css files                      144  assets/startApp-7187efb9.css (14.0 kB)
+   382.4    123.3    103.5  city-*-content                    56  assets/city-ibadan-content-6f8db0de.js (9.6 kB)
+   181.9    101.4     84.6  kano                               1  assets/kano-c7c7dbfa.js (84.6 kB)
+   257.0     90.6     78.3  city-*-scenes                      4  assets/city-port-harcourt-scenes-dfcd5e89.js (22.6 kB)
+   223.7     84.5     72.4  index                              6  assets/index-0e2b2464.js (47.6 kB)
+   177.2     66.0     57.2  world-adapter                      1  assets/world-adapter-18041fab.js (57.2 kB)
+   313.1     70.7     52.3  navigation                         1  assets/navigation-14faafc6.js (52.3 kB)
+   180.8     57.5     49.4  posthog                            1  assets/posthog-6a7cb059.js (49.4 kB)
+   117.8     55.2     44.3  fct                                1  assets/fct-c3d399f3.js (44.3 kB)
+   125.1     86.0     43.5  lokoja.formula                     1  assets/lokoja.formula-20d189f0.js (43.5 kB)
+   101.9     48.0     43.4  city-*-map                        57  assets/city-ogun-map-d961fd63.js (2.8 kB)
+   137.3     43.3     38.1  sentry-replay                      1  assets/sentry-replay-7edb37af.js (38.1 kB)
+   105.9     36.7     31.5  MessagesApp                        1  assets/MessagesApp-e17815e8.js (31.5 kB)
+    95.6     34.9     30.8  world-map                          1  assets/world-map-aa93677e.js (30.8 kB)
+    94.3     60.7     30.6  yenagoa.formula                    1  assets/yenagoa.formula-988a7952.js (30.6 kB)
+   109.6     34.7     30.6  skinned                            1  assets/skinned-977bf5d2.js (30.6 kB)
+    95.9     34.7     29.8  kaduna.formula                     1  assets/kaduna.formula-7507a056.js (29.8 kB)
+    76.7     31.7     28.9  city-*-rules                      54  assets/city-ibadan-rules-b40ba4a9.js (1.6 kB)
+    60.7     32.4     28.1  world                              1  assets/world-2e58a9f5.js (28.1 kB)
+   107.2     32.3     27.6  AdminShell.vue_vue_type_script_setup_true_lang   1  assets/AdminShell.vue_vue_type_script_setup_true_lang-c723d9d4.js (27.6 kB)
+    91.5     30.8     27.5  sentry                             1  assets/sentry-8efab5ad.js (27.5 kB)
+    73.8     27.5     24.3  CompanionHost                      1  assets/CompanionHost-23ee459d.js (24.3 kB)
+    44.2     27.1     24.1  nigeria                            1  assets/nigeria-643df363.js (24.1 kB)
+
+1 budget(s) exceeded: STARTUP_BROTLI

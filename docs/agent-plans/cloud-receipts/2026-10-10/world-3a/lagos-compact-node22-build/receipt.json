@@ -1,0 +1,60 @@
+{
+  "sha": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+  "branch": "codex/cloud-lagos-flights-startup-budget-20261010",
+  "parent": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "checkout": "/workspace/remote-verification/repositories/worker-world-lagos-flights",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "15676600320",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v22.23.3",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "npm",
+    "run",
+    "build"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 126472,
+  "started_at_utc": "2026-10-10T02:34:03.760646+00:00",
+  "ended_at_utc": "2026-10-10T02:35:06.134027+00:00",
+  "duration_seconds": 62.373381,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 14,
+    "sample_source": "Monitor fresh actual86%used14%remaining incoming receipt",
+    "recorded_at_utc": "2026-10-10T02:33:20.232961+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/3a120c8e6d335488472cc9018a4f978b0e7ab56a/lagos-compact-node22-build/command.log",
+  "log_sha256": "1d450e166fe3cd7e84d77ef5cd04b26174efc8d59e10bcf4dfa3468c66498899",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

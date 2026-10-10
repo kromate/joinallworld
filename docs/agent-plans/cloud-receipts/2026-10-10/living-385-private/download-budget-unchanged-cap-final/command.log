@@ -1,0 +1,83 @@
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (63s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (64s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (65s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (66s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (67s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (68s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (69s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (70s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (71s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (72s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (73s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (74s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (75s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (76s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (77s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (78s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (79s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (80s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (81s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (82s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (83s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (84s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (85s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (86s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (87s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (88s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (89s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 124438 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run build (2m))
+
+> joinallworld@0.1.0 size:download
+> node --experimental-strip-types scripts/download-budget.ts
+
+Download budgets (src/budgets.ts)
+ok   LOADING_RAW               91469  budget 92,000 raw bytes (max)  first-paint JavaScript
+ok   LOADING_GZIP              35576  budget 37,000 gzip bytes (max)  first-paint JavaScript
+ok   FIRST_PAINT_BROTLI        35697  budget 36,800 brotli bytes (max) [provisional]  5 files: index.html, stylesheet and JavaScript
+ok   STARTUP_RAW              614094  budget 615,000 raw bytes (max)  largest over 50 cities (lagos)
+ok   STARTUP_GZIP             222695  budget 223,000 gzip bytes (max)  largest over 50 cities (lagos)
+OVER STARTUP_BROTLI           195610  budget 195,600 brotli bytes (max) [provisional]  largest over 50 cities (lagos)
+ok   SCENE_HOST_RAW           177152  budget 192,000 raw bytes (max)  shared scene chunk (world-adapter)
+ok   SCENE_HOST_GZIP           66030  budget 71,000 gzip bytes (max)  shared scene chunk (world-adapter)
+ok   BASE_BODY_BROTLI         138098  budget 300,000 brotli bytes (max) [provisional]  2 file(s) matching /(^|\/)base-body[^/]*\.(glb|gltf|bin)$/
+ok   CLIP_PACK_BROTLI          55111  budget 200,000 brotli bytes (max) [provisional]  1 file(s) matching /(^|\/)clip-pack[^/]*\.(glb|gltf|bin|json)$/
+n/a  WARDROBE_ITEM_BROTLI          -  budget 60,000 brotli bytes (max) [provisional]  no file matches /(^|\/)wardrobe\/[^/]+\.(glb|gltf)$/
+n/a  STREET_TILE_BROTLI            -  budget 60,000 brotli bytes (max) [provisional]  no file matches /(^|\/)(street-)?tiles?\/[^/]+\.(glb|gltf|bin)$/
+
+First paint (5 files) and lagos startup (28 files): kB raw / gzip / brotli
+   102.0     40.1     35.7  first paint
+   624.7    227.2    195.6  lagos startup
+
+Lazy groups, largest brotli first (30 of 473): kB raw / gzip / brotli, files, largest file
+ 84635.1  12709.8   9747.8  *.txt files                      5381  world-country-detail/bee6c7d0392d1db177eb28be5313173ce88ff92fe59e595c03805ebab6069ee7.txt (524.8 kB)
+   849.3    849.5    849.3  *.webp files                       6  assets/house-catalogue-28dfc24f.webp (295.7 kB)
+   459.6    458.6    458.2  *.png files                        6  og/allworld.png (154.3 kB)
+   676.5    469.7    378.1  rivers                             1  assets/rivers-25db21e3.js (378.1 kB)
+   656.0    349.4    330.5  *.glb files                        3  assets/base-body-male-57633378.glb (138.1 kB)
+   157.0    156.7    157.0  *.jpg files                        1  og/allworld.jpg (157.0 kB)
+   713.2    178.3    142.8  three                              1  assets/three-ffe213f4.js (142.8 kB)
+   522.7    143.6    120.1  *.css files                      144  assets/startApp-7187efb9.css (14.0 kB)
+   380.5    122.2    102.3  city-*-content                    51  assets/city-ibadan-content-d7c801c2.js (9.6 kB)
+   181.9    101.4     84.6  kano                               1  assets/kano-c7c7dbfa.js (84.6 kB)
+   257.0     90.6     78.3  city-*-scenes                      4  assets/city-port-harcourt-scenes-7ea60867.js (22.5 kB)
+   223.7     84.5     72.4  index                              6  assets/index-1b145852.js (47.6 kB)
+   177.2     66.0     57.2  world-adapter                      1  assets/world-adapter-58d33ccc.js (57.2 kB)
+   313.1     70.7     52.3  navigation                         1  assets/navigation-7a881070.js (52.3 kB)
+   180.8     57.5     49.4  posthog                            1  assets/posthog-6a7cb059.js (49.4 kB)
+   117.8     55.2     44.3  fct                                1  assets/fct-c3d399f3.js (44.3 kB)
+   125.1     86.0     43.5  lokoja.formula                     1  assets/lokoja.formula-20d189f0.js (43.5 kB)
+    97.7     46.0     41.4  city-*-map                        52  assets/city-ogun-map-5c2aee98.js (2.8 kB)
+   137.3     43.3     38.1  sentry-replay                      1  assets/sentry-replay-7edb37af.js (38.1 kB)
+   105.9     36.7     31.5  MessagesApp                        1  assets/MessagesApp-e8d798c6.js (31.5 kB)
+    95.6     34.9     30.8  world-map                          1  assets/world-map-20486ef6.js (30.8 kB)
+    94.3     60.7     30.6  yenagoa.formula                    1  assets/yenagoa.formula-988a7952.js (30.6 kB)
+   109.6     34.8     30.5  skinned                            1  assets/skinned-d97ba1e0.js (30.5 kB)
+    95.9     34.7     29.8  kaduna.formula                     1  assets/kaduna.formula-7507a056.js (29.8 kB)
+    60.7     32.4     28.1  world                              1  assets/world-2e58a9f5.js (28.1 kB)
+   107.2     32.3     27.6  AdminShell.vue_vue_type_script_setup_true_lang   1  assets/AdminShell.vue_vue_type_script_setup_true_lang-c723d9d4.js (27.6 kB)
+    91.5     30.8     27.5  sentry                             1  assets/sentry-8efab5ad.js (27.5 kB)
+    70.8     29.3     26.7  city-*-rules                      49  assets/city-ibadan-rules-64422f53.js (1.6 kB)
+    73.8     27.5     24.3  CompanionHost                      1  assets/CompanionHost-c57cf420.js (24.3 kB)
+    44.2     27.1     24.1  nigeria                            1  assets/nigeria-643df363.js (24.1 kB)
+
+1 budget(s) exceeded: STARTUP_BROTLI

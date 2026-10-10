@@ -1,0 +1,81 @@
+agent-slot: waiting for heavy slot (1/1 busy: pid 125391 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run size:download (2m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 125391 in /workspace/remote-verification/repositories/worker-world-lagos-flights: npm run size:download (3m))
+
+> joinallworld@0.1.0 test:smoke
+> node --experimental-strip-types --test --test-concurrency=1 src/app/entry.test.ts server/release.test.ts src/types/protocol.test.ts
+
+✔ JavaScript is limited to the service worker, release shims and exact reviewed tooling (16.706347ms)
+✔ the two release shims only point at the TypeScript they stand for (0.56137ms)
+✔ every file in public/ is an asset the release package admits (no dot-file, no map, no manifest, no xml) (13.539761ms)
+✔ the Worker config is the one the release package fixes, and the Worker exports its Durable Object (0.806967ms)
+✔ the default build config emits no source map (maps are opt-in, SOURCEMAPS=1, into dist-maps/) (0.258997ms)
+✔ the first download paints without the game shell, rules engine or city content; the startup closure reads them through the browser system set (1.157892ms)
+✔ the shared shell does not statically import a city venue or regular catalogue (0.291586ms)
+✔ each generated catalogue row has one checked-in Node and Worker loader (0.676652ms)
+✔ Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell (2.356284ms)
+✔ the eager JavaScript does not grow and contains only the loading screen and Vue (4.797917ms)
+ℹ assets/vue-32f50792.js 81170 raw 30886 gzip; assets/preload-helper-86ad5cfe.js 1260 raw 698 gzip; assets/app-cbd2e02a.js 9039 raw 3992 gzip; total 91469 raw 35576 gzip
+✔ automatic game startup, including one selected city, stays within the original first-load budget (806.705573ms)
+ℹ lagos automatic startup: 614094 raw 222695 gzip bytes
+ℹ ibadan automatic startup: 581758 raw 214638 gzip bytes
+ℹ abuja automatic startup: 593417 raw 215558 gzip bytes
+ℹ port-harcourt automatic startup: 583141 raw 215188 gzip bytes
+ℹ abeokuta automatic startup: 571146 raw 211756 gzip bytes
+ℹ ota automatic startup: 569762 raw 211111 gzip bytes
+ℹ ijebu-ode automatic startup: 570437 raw 211381 gzip bytes
+ℹ sagamu automatic startup: 574030 raw 212910 gzip bytes
+ℹ kano automatic startup: 594622 raw 215697 gzip bytes
+ℹ enugu automatic startup: 584245 raw 215584 gzip bytes
+ℹ benin-city automatic startup: 585223 raw 215627 gzip bytes
+ℹ calabar automatic startup: 587333 raw 216566 gzip bytes
+ℹ uyo automatic startup: 582102 raw 214621 gzip bytes
+ℹ umuahia automatic startup: 588663 raw 215708 gzip bytes
+ℹ owerri automatic startup: 590180 raw 215966 gzip bytes
+ℹ yenagoa automatic startup: 590626 raw 215878 gzip bytes
+ℹ awka automatic startup: 587737 raw 215816 gzip bytes
+ℹ kaduna automatic startup: 584880 raw 215154 gzip bytes
+ℹ maiduguri automatic startup: 585221 raw 215036 gzip bytes
+ℹ gombe automatic startup: 584639 raw 215135 gzip bytes
+ℹ yola automatic startup: 584690 raw 215112 gzip bytes
+ℹ ilorin automatic startup: 583609 raw 215072 gzip bytes
+ℹ minna automatic startup: 580939 raw 214636 gzip bytes
+ℹ osogbo automatic startup: 582595 raw 214738 gzip bytes
+ℹ damaturu automatic startup: 580340 raw 214126 gzip bytes
+ℹ jalingo automatic startup: 580621 raw 214091 gzip bytes
+ℹ akure automatic startup: 582614 raw 214692 gzip bytes
+ℹ ado-ekiti automatic startup: 580486 raw 214282 gzip bytes
+ℹ asaba automatic startup: 580657 raw 214629 gzip bytes
+ℹ lokoja automatic startup: 579792 raw 214104 gzip bytes
+ℹ jos automatic startup: 587387 raw 215963 gzip bytes
+ℹ lafia automatic startup: 579788 raw 214053 gzip bytes
+ℹ katsina automatic startup: 588662 raw 215625 gzip bytes
+ℹ sokoto automatic startup: 586762 raw 215549 gzip bytes
+ℹ birnin-kebbi automatic startup: 585431 raw 215311 gzip bytes
+ℹ gusau automatic startup: 582844 raw 214558 gzip bytes
+ℹ dutse automatic startup: 584055 raw 215080 gzip bytes
+ℹ bauchi automatic startup: 589167 raw 215734 gzip bytes
+ℹ makurdi automatic startup: 581627 raw 214426 gzip bytes
+ℹ abakaliki automatic startup: 581309 raw 214605 gzip bytes
+ℹ accra automatic startup: 570468 raw 211696 gzip bytes
+ℹ algiers automatic startup: 570596 raw 211786 gzip bytes
+ℹ lome automatic startup: 570499 raw 211758 gzip bytes
+ℹ nairobi automatic startup: 570541 raw 211759 gzip bytes
+ℹ yaounde automatic startup: 570513 raw 211753 gzip bytes
+ℹ abidjan automatic startup: 570600 raw 211835 gzip bytes
+ℹ addis-ababa automatic startup: 570553 raw 211749 gzip bytes
+ℹ cape-town automatic startup: 570687 raw 211845 gzip bytes
+ℹ cotonou automatic startup: 570562 raw 211787 gzip bytes
+ℹ dakar automatic startup: 570529 raw 211761 gzip bytes
+✔ every registered route is typed, and every typed route is registered (11.852267ms)
+✔ every frame type the server accepts or sends is typed (55.663224ms)
+✔ the Cloudflare Worker runs the shared registries: the same routes and frames, plus what the types say only it does (2.602803ms)
+✔ only a trusted interactive-teaching host adds the ephemeral display capability to life and action snapshots (310.935509ms)
+✔ core, social, civic and support answers carry exactly the typed keys (299.336264ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2499.380747

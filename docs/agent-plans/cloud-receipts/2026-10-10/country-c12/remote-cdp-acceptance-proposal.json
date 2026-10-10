@@ -1,6 +1,6 @@
 {
-  "recorded_utc": "2026-10-10T02:18:12.330111+00:00",
-  "status": "SOURCE-ONLY PROPOSAL; NO browser/stage launched",
+  "recorded_utc": "2026-10-10T02:36:00Z",
+  "status": "SOURCE-ONLY PROPOSAL; no browser/stage launched; distinct package requires review",
   "candidate": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
   "required_artifact": {
     "run": 38013456110,
@@ -38,17 +38,20 @@
     "browser_version": "151.0.7922.173",
     "library": "Existing ws/CDP; Playwright/Puppeteer absent; no installation",
     "new_paid_services": false,
-    "quota_guard": "Before launch and each phase require applicable shared remaining>4%; no clock cutoff; no new phase at<=4%"
+    "quota_guard": "Before launch and each phase require applicable shared remaining>4%; no clock cutoff; no new phase at<=4%",
+    "group_rss_limit_bytes": 2147483648,
+    "deadline_clock": "monotonic process deadline900s, stop new action at840s to preserve60s cleanup"
   },
   "actor_store_contract": [
     "Fresh separate cloud SQLite store and normal guest UI onboarding; no local/eec retained actors or credentials transferred",
     "No cookie injection, direct save mutation, timewarp or timer acceleration",
     "Existing sanctioned root-once funding only if exact owner helper/policy validates authority and replay; preserve full receipt, no extra grants",
-    "Same store ordinary SIGWINCH/server restart with safe checkpoint; real lifecycle and receipt reread"
+    "Same store ordinary SIGWINCH/server restart with safe checkpoint; real lifecycle and receipt reread",
+    "Exactly one existing-authorized2M root-once credit and same-ID replay EACH actor; measure onboarding cash, no repeated credit/no private actor transfer"
   ],
   "ui_sequence": [
     "Normal onboarding/home in390 viewport; record app+Worker build/source IDs",
-    "Five Cairo/Rabat/Kigali/Kampala/Lusaka outbound journeys via ordinary country card/paid flight UI, natural20second wait, one actual local activity, return; same actor and consistent cash/action receipts",
+    "Actor A completes Cairo/Rabat/Kigali and actor B Kampala/Lusaka via actual normal UI and natural20s outbound/return timers, one real local activity per city; no overlapping action promises",
     "320 and390 actual PNG/focus/touch checks; selecting country/card focus distinguished from completed travel",
     "Capture exact action started/completed/once replay and cold reopen; no pass from socket/port/queued intention"
   ],
@@ -60,5 +63,37 @@
     "Exact published package download API Forbidden",
     "Pinned full helper/policy hashes not independently verified in this cloud checkout",
     "No actual prelaunch owner/operator approval or cloud native visual execution receipt yet"
-  ]
+  ],
+  "actor_groups": [
+    {
+      "actor": "A",
+      "normal_fresh_onboarding": true,
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ],
+      "total_roundtrip_fares": 1762000,
+      "root_once_credit": 2000000,
+      "same_id_replay": true
+    },
+    {
+      "actor": "B",
+      "normal_fresh_onboarding": true,
+      "cities": [
+        "kampala",
+        "lusaka"
+      ],
+      "total_roundtrip_fares": 1196000,
+      "root_once_credit": 2000000,
+      "same_id_replay": true
+    }
+  ],
+  "independent_artifact": {
+    "method": "Existing-source retained-dist packaging, not downloaded original",
+    "package_digest": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+    "manifest_files": 6227,
+    "inherit_original_14checks": false,
+    "browser_launch_authorized": false
+  }
 }

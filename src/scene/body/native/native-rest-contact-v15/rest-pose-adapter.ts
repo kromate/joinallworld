@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import type { FootContact } from '../../foot-contact.ts';
+import type { FootContact, FootSolveResult } from '../../foot-contact.ts';
 import {
   type NativeRestContactProbe,
   type NativeRestContactMeasure,
@@ -38,7 +38,7 @@ export interface NativeRestPoseAdapter {
     support: NativePropRestSupport,
     applyMappedSourceFrame: () => void,
     sampleParentLocalContacts: () => readonly FootContact[],
-    solveHostFeet?: (surface: NativeRestPropSurface, floorY?: number) => void,
+    solveHostFeet?: (surface: NativeRestPropSurface, floorY?: number) => FootSolveResult | void,
     phase?: 'still' | 'transition',
     anchorBlend?: number,
   ): NativeRestPoseResult;
@@ -51,6 +51,7 @@ const CONTACT_GAP_METRES = 0.018;
 const CONTACT_TARGET_GAP_METRES = 0.0165;
 const MAX_PENETRATION_METRES = 0.004;
 const MAX_REST_ROOT_SHIFT_METRES = 0.35;
+const MAX_UPRIGHT_LIFT_SOLVES = 4;
 const MAX_LIE_SPINE_ALIGNMENT_DEGREES = 12;
 const MAX_LIE_NECK_ALIGNMENT_DEGREES = 25;
 const MAX_LIE_HIPS_TILT_DEGREES = 90;
@@ -70,6 +71,32 @@ function worldContacts(root: THREE.Object3D, contacts: readonly FootContact[]): 
     return Object.freeze({ ...contact, x: point.x, y: point.y, z: point.z,
       ...(points ? { points: Object.freeze(points) } : {}) });
   });
+}
+
+interface BonePoseState {
+  readonly bone: THREE.Bone;
+  readonly position: THREE.Vector3;
+  readonly quaternion: THREE.Quaternion;
+  readonly scale: THREE.Vector3;
+}
+
+function captureBonePose(root: THREE.Object3D): readonly BonePoseState[] {
+  const pose: BonePoseState[] = [];
+  root.traverse((node) => {
+    if (node instanceof THREE.Bone) pose.push({ bone: node, position: node.position.clone(),
+      quaternion: node.quaternion.clone(), scale: node.scale.clone() });
+  });
+  return Object.freeze(pose);
+}
+
+function restoreBonePose(pose: readonly BonePoseState[], root: THREE.Object3D): void {
+  for (const saved of pose) {
+    saved.bone.position.copy(saved.position);
+    saved.bone.quaternion.copy(saved.quaternion);
+    saved.bone.scale.copy(saved.scale);
+  }
+  root.updateWorldMatrix(true, false);
+  root.updateMatrixWorld(true);
 }
 
 function requiredRegions(pose: NativeRestPose, measure: NativeRestContactMeasure): readonly number[] {
@@ -213,6 +240,7 @@ export function createNativeRestPoseAdapter(
   // Rest-bend candidates are cached per registered prop and revalidated against each
   // newly mapped frame before reuse. This keeps repeated rest updates out of the search.
   const lieAlignmentCache = new Map<string, { hips: number; spine: number; neck: number }>();
+  let lastLiftTrial: Readonly<Record<string, unknown>> | null = null;
 
   function mappedFrameWitness(): Readonly<Record<string, unknown>> {
     root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
@@ -231,7 +259,45 @@ export function createNativeRestPoseAdapter(
   }
 
   function evidence(surface: NativeRestPropSurface, measure: NativeRestContactMeasure, mappedFrame: Readonly<Record<string, unknown>>, correction: number) {
-    return JSON.stringify({ propId: surface.id, pose: surface.pose, mappedFrame, rootWorldCorrection: correction, measurement: measure });
+    return JSON.stringify({ propId: surface.id, pose: surface.pose, mappedFrame, rootWorldCorrection: correction, measurement: measure, liftTrial: lastLiftTrial });
+  }
+
+  function liftTrialSnapshot(floorY: number, measure: NativeRestContactMeasure,
+    sampleContacts: () => readonly FootContact[], footSolveResult?: FootSolveResult): Readonly<Record<string, unknown>> {
+    root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+    const bones = ['mixamorigHips', 'mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigLeftFoot',
+      'mixamorigRightUpLeg', 'mixamorigRightLeg', 'mixamorigRightFoot'];
+    const positions = new Map<string, THREE.Vector3>();
+    for (const name of bones) {
+      const bone = root.getObjectByName(name);
+      if (bone instanceof THREE.Bone) positions.set(name, bone.getWorldPosition(new THREE.Vector3()));
+    }
+    const segmentLengths = (side: 'Left' | 'Right') => {
+      const hip = positions.get(`mixamorig${side}UpLeg`), knee = positions.get(`mixamorig${side}Leg`), ankle = positions.get(`mixamorig${side}Foot`);
+      return hip && knee && ankle ? Object.freeze({ upper: hip.distanceTo(knee), lower: knee.distanceTo(ankle) }) : null;
+    };
+    const footGaps = new Map<'left' | 'right', number[]>();
+    for (const contact of worldContacts(root, sampleContacts())) {
+      const gaps = footGaps.get(contact.side) ?? [];
+      gaps.push(...(contact.points ?? [contact]).map((point) => point.y - floorY));
+      footGaps.set(contact.side, gaps);
+    }
+    const feet = Object.fromEntries((['left', 'right'] as const).map((side) => {
+      const gaps = footGaps.get(side) ?? [];
+      return [side, Object.freeze({ sampled: gaps.length,
+        minimumGap: gaps.length ? Math.min(...gaps) : null,
+        maximumGap: gaps.length ? Math.max(...gaps) : null,
+        withinFourMillimetres: gaps.filter((gap) => Math.abs(gap) <= MAX_PENETRATION_METRES).length })];
+    }));
+    const solve = footSolveResult ? Object.freeze({ corrected: footSolveResult.corrected,
+      maxError: footSolveResult.maxError, limited: footSolveResult.limited,
+      ...('diagnostics' in footSolveResult ? { diagnostics: footSolveResult.diagnostics } : {}) }) : null;
+    return Object.freeze({ floorY, rootWorld: Object.freeze(root.getWorldPosition(new THREE.Vector3()).toArray()),
+      hipsWorld: positions.get('mixamorigHips')?.toArray() ?? null,
+      segmentLengths: Object.freeze({ left: segmentLengths('Left'), right: segmentLengths('Right') }),
+      regions: Object.freeze(Object.fromEntries(Object.entries(measure.regions).map(([name, region]) =>
+        [name, Object.freeze({ sampled: region.sampled, minimumGap: region.minimumGap, maximumGap: region.maximumGap })]))),
+      feet: Object.freeze(feet), footSolveResult: solve });
   }
 
   function shiftRootWorldY(delta: number): void {
@@ -486,7 +552,7 @@ export function createNativeRestPoseAdapter(
     surface: NativeRestPropSurface,
     floorY: number,
     sampleContacts: () => readonly FootContact[],
-    solveHostFeet?: (surface: NativeRestPropSurface, floorY?: number) => void,
+    solveHostFeet?: (surface: NativeRestPropSurface, floorY?: number) => FootSolveResult | void,
   ): readonly [number, number] {
     root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
     const rootStart = root.getWorldPosition(new THREE.Vector3());
@@ -576,6 +642,7 @@ export function createNativeRestPoseAdapter(
       };
     },
     apply(pose, support, applyMappedSourceFrame, sampleParentLocalContacts, solveHostFeet, phase = 'still', anchorBlend = 1) {
+      lastLiftTrial = null;
       if (disposed) throw new Error('Native rest adapter is disposed');
       // Opt-in, bounded last-apply diagnostics for remote performance reports. This
       // replaces one fixed-size object per call and is absent from normal runtime/UI.
@@ -621,35 +688,85 @@ export function createNativeRestPoseAdapter(
         // Until the body actually reaches the prop, the floor still owns its planted foot.
         const floorContactPhase = upright || (pose === 'lie' && !propContactPhase);
         if (floorContactPhase) {
-          solveHostFeet?.(support.surface, floorY!);
-          measurement = measure(support.surface, sampleParentLocalContacts);
           // The mapped upright/partial-lie frame can place the clothed posterior
           // through the mattress even when its Hips joint is at the bed surface.
-          // Try the minimum translation implied by the measured regional gaps;
-          // retain it only if all sampled back regions clear and actual shoes stay
-          // planted after the host re-solves floor contact. Otherwise restore the
-          // exact frame and use the existing bounded XZ egress/failure path.
-          if (pose === 'lie' && (['pelvis-back', 'torso-back', 'head-back'] as const).some((region) => {
+          // Measure once before solving feet. If a vertical lift is needed, each
+          // bounded candidate starts from this exact mapped bone pose and runs
+          // floor IK once; repeated solves on an already-IK'd pose compound limb
+          // changes and can move the clothed pelvis after the prior measurement.
+          const needsLift = pose === 'lie' && (['pelvis-back', 'torso-back', 'head-back'] as const).some((region) => {
             const sample = measurement.regions[region];
             return sample.sampled > 0 && sample.minimumGap < -MAX_PENETRATION_METRES;
-          })) {
-            const lift = Object.values(measurement.regions).every((sample) =>
-              sample.sampled === 0 || Number.isFinite(sample.minimumGap))
-              ? minimumNonpenetratingLift(measurement) : Number.POSITIVE_INFINITY;
-            if (lift > 0 && lift <= MAX_REST_ROOT_SHIFT_METRES) {
-              const rootLocal = root.position.clone();
-              shiftRootWorldY(lift);
-              solveHostFeet?.(support.surface, floorY!);
-              const liftedMeasurement = measure(support.surface, sampleParentLocalContacts);
-              if (bodyRegionsClear(liftedMeasurement) && floorFeetClearAndPlanted(floorY!, sampleParentLocalContacts)) {
-                appliedRootCorrection = lift;
-                measurement = liftedMeasurement;
-              } else {
+          });
+          if (!needsLift) {
+            solveHostFeet?.(support.surface, floorY!);
+            measurement = measure(support.surface, sampleParentLocalContacts);
+          } else {
+            const rootLocal = root.position.clone();
+            const mappedBones = captureBonePose(root);
+            const attempts: Readonly<Record<string, unknown>>[] = [];
+            let cumulativeLift = 0;
+            let trialMeasurement = measurement;
+            let trialFeetPlanted = false;
+            let accepted = false;
+            for (let pass = 0; pass < MAX_UPRIGHT_LIFT_SOLVES; pass++) {
+              const requiredLift = minimumNonpenetratingLift(trialMeasurement);
+              const targetLift = pass === 0 ? requiredLift : cumulativeLift + requiredLift;
+              if (!(requiredLift > 0) || targetLift > MAX_REST_ROOT_SHIFT_METRES) break;
+              restoreBonePose(mappedBones, root);
+              root.position.copy(rootLocal);
+              root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+              shiftRootWorldY(targetLift);
+              const preSolveMeasurement = measure(support.surface, sampleParentLocalContacts);
+              const before = liftTrialSnapshot(floorY!, preSolveMeasurement, sampleParentLocalContacts);
+              let footSolveResult: FootSolveResult | void;
+              try {
+                footSolveResult = solveHostFeet?.(support.surface, floorY!);
+              } catch (error) {
+                const failedMeasurement = measure(support.surface, sampleParentLocalContacts);
+                const failed = liftTrialSnapshot(floorY!, failedMeasurement, sampleParentLocalContacts);
+                attempts.push(Object.freeze({ requestedLift: targetLift - cumulativeLift, cumulativeLift: targetLift,
+                  before, after: failed, solverError: error instanceof Error ? error.message : String(error),
+                  bodyRegionsClear: bodyRegionsClear(failedMeasurement), floorFeetClearAndPlanted: floorFeetClearAndPlanted(floorY!, sampleParentLocalContacts) }));
+                lastLiftTrial = Object.freeze({ attempts: Object.freeze(attempts), cumulativeLift: targetLift,
+                  accepted: false, solverError: error instanceof Error ? error.message : String(error) });
+                const diagnostics = root.userData.nativeRestProbeDiagnostics;
+                if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
+                  diagnostics.liftTrial = lastLiftTrial;
+                }
+                restoreBonePose(mappedBones, root);
                 root.position.copy(rootLocal);
                 root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
-                solveHostFeet?.(support.surface, floorY!);
-                measurement = measure(support.surface, sampleParentLocalContacts);
+                throw new Error(`Native lie floor solve rejected bounded lift trial; evidence=${JSON.stringify(lastLiftTrial)}`, { cause: error });
               }
+              const nextMeasurement = measure(support.surface, sampleParentLocalContacts);
+              trialFeetPlanted = floorFeetClearAndPlanted(floorY!, sampleParentLocalContacts);
+              const after = liftTrialSnapshot(floorY!, nextMeasurement, sampleParentLocalContacts,
+                footSolveResult && typeof footSolveResult === 'object' ? footSolveResult : undefined);
+              const clear = bodyRegionsClear(nextMeasurement);
+              attempts.push(Object.freeze({ requestedLift: targetLift - cumulativeLift, cumulativeLift: targetLift,
+                before, after, bodyRegionsClear: clear, floorFeetClearAndPlanted: trialFeetPlanted }));
+              trialMeasurement = nextMeasurement;
+              cumulativeLift = targetLift;
+              if (clear && trialFeetPlanted) {
+                measurement = trialMeasurement;
+                appliedRootCorrection = cumulativeLift;
+                accepted = true;
+                break;
+              }
+            }
+            if (!accepted) {
+              restoreBonePose(mappedBones, root);
+              root.position.copy(rootLocal);
+              root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
+              solveHostFeet?.(support.surface, floorY!);
+              measurement = measure(support.surface, sampleParentLocalContacts);
+            }
+            lastLiftTrial = Object.freeze({ attempts: Object.freeze(attempts), cumulativeLift,
+              accepted, bodyRegionsClear: bodyRegionsClear(trialMeasurement), floorFeetClearAndPlanted: trialFeetPlanted });
+            const diagnostics = root.userData.nativeRestProbeDiagnostics;
+            if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
+              diagnostics.liftTrial = lastLiftTrial;
             }
           }
           if (pose === 'lie' && (['pelvis-back', 'torso-back', 'head-back'] as const).some((region) => {

@@ -200,6 +200,7 @@ test('photo order and captions: the first photo is the cover, captions are short
   const [a, b, c] = (await mine()).map((photo) => photo.id as string) as [string, string, string];
   const card = async () => (await s.call(`/api/showcase/directory`)).shops[0].cover as string;
   assert.equal(await card(), a, 'the first photo is the cover');
+  assert.equal(((await s.call('/api/showcase/directory')).shops[0].hours as unknown[]).length, 7, 'a card carries the hours, so it can say open or closed now');
   const arranged = await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [c, a, b], captions: { [c]: ' Knotless  braids, done ', [a]: 'Before' } });
   assert.deepEqual([arranged.ok, arranged.code], [true, 'photos_arranged']);
   assert.deepEqual((await mine()).map((photo) => [photo.id, photo.caption]), [[c, 'Knotless braids, done'], [a, 'Before'], [b, undefined]]);

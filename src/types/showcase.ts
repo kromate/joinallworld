@@ -152,6 +152,8 @@ export interface ShowcaseCard {
   venue: string
   slot: number
   cover: string | null
+  /** Opening hours, Monday first: a card says whether the shop is open now. */
+  hours: (ShowcaseHours | null)[]
   services: number
   /** The least a service costs, the seller's real price in naira, or null. */
   from: number | null
@@ -163,7 +165,6 @@ export interface ShowcaseView extends ShowcaseCard {
   about: string
   photos: { id: string; w: number; h: number; caption?: string }[]
   serviceList: ShowcaseService[]
-  hours: (ShowcaseHours | null)[]
   /** Set for 7 days after the pay link changed. */
   payNotice: string | null
   priceLabel: string

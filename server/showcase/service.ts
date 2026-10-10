@@ -70,12 +70,12 @@ export function showcaseService(ctx: RouteContext) {
     const cover = shop.photos.find((photo) => photo.approved && !photo.hidden);
     const prices = shop.services.map((item) => item.priceNaira).filter((price) => price > 0);
     return { id: shop.id, name: shop.name, category: shop.category, template: shop.template, colours: shop.colours, sign: shop.sign, logo: shop.logo, city: shop.city, venue: shop.venue, slot: shop.slot,
-      cover: cover?.id ?? null, services: shop.services.length, from: prices.length ? Math.min(...prices) : null, pay: shop.pay !== null, badge };
+      cover: cover?.id ?? null, hours: shop.hours, services: shop.services.length, from: prices.length ? Math.min(...prices) : null, pay: shop.pay !== null, badge };
   }
   function view(db: Db, shop: ShowcaseShop): ShowcaseView | null {
     const base = card(db, shop);
     if (!base) return null;
-    return { ...base, about: shop.about, photos: shop.photos.filter((photo) => photo.approved && !photo.hidden).map((photo) => ({ id: photo.id, w: photo.w, h: photo.h, ...(photo.caption ? { caption: photo.caption } : {}) })), serviceList: shop.services, hours: shop.hours,
+    return { ...base, about: shop.about, photos: shop.photos.filter((photo) => photo.approved && !photo.hidden).map((photo) => ({ id: photo.id, w: photo.w, h: photo.h, ...(photo.caption ? { caption: photo.caption } : {}) })), serviceList: shop.services,
       payNotice: shop.pay && shop.payChangedAt !== undefined && shop.payChangedAt + SHOWCASE.payNoticeMs > now() ? PAY_NOTICE : null, priceLabel: PRICE_LABEL };
   }
   function get(db: Db, id: string, viewer?: string): ShowcaseShop {

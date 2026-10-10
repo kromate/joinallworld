@@ -1,0 +1,57 @@
+{
+  "reviewedAtUtc": "2026-10-10T01:52:54.117188+00:00",
+  "candidate": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
+  "base": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
+  "branch": "codex/cloud-driving-safe-max-20261010",
+  "actualRemoteRefVerified": true,
+  "changedPaths": [
+    "server/living-world/driving-service.test.ts"
+  ],
+  "wholeAddedTestDiffRead": true,
+  "diffSha256": "9da5abea0899bd12f2c53dfbe181d5ffc0bb7f4b12dd79af35f96b873b434897",
+  "candidateTestBytes": 64795,
+  "sourcePins": {
+    "server/server.ts": "c6499252095e1e7548b25fb2566dfb56ec94bc2b8328a957403f90e3a2c31181",
+    "server/types.ts": "a54a8daba84cf6a87e64cad9c6027fd0a4f50b46b5734130102d8bf3842868f9",
+    "server/routes/living-world.ts": "39ecdf13390562eccadbfc3aaa76b082188b4d7045131e3124a94fd5dcc6c8e6",
+    "deploy/cloudflare-worker.ts": "efef66d80ae36134fe95271e0eea0391e7789b9e4b3834aa68ace8f5f09c795b",
+    "server/living-world/driving-host-reopen.test.ts": "62189f28ca37633bf6ae8f3f65707633cc2eada1d3bc96e63295b0429172386b",
+    "deploy/living-world-driving-v2.edge.test.ts": "54a56f003a732e93c4ea786ddf84fe0ba0ddcc05e2f079fe7814ae0be372fb5e",
+    "server/living-world/driving-service.ts": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+    "server/living-world/driving-service.test.ts": "5db571a1305c31f854a6378c66c11950be020d3427258e199268ab05d30380c6",
+    "src/app/features/living-world/DrivingApp.vue": "b08e09dfc72baae923438f48f4a0b983b8b2f0437789933b714932bc3a1e13b6",
+    "src/app/features/living-world/practiceIdentity.test.ts": "3b6173241b941a7ee439df1b2d29de89225b9ef1fa908b927046c4869f2cd66d",
+    "src/game/living-world/driving.ts": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+    "src/game/living-world/driving.test.ts": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+    "src/types/living-world.ts": "27757f7089a482d5b046692fdc1d53ed06272788c3633949a2ed6efa64dbc677"
+  },
+  "allOther12PreviouslyReviewedPinsUnchanged": true,
+  "acceptanceSourceCoverage": [
+    "Four v1/retained-v2 timeout/clock-watermark scenarios construct a strictly valid synthetic MAX-1 revision/nextSequence with previous MAX-2 retained receipt.",
+    "Actual HTTP input accepts final MAX-1 packet once and reaches revision/nextSequenceMAX; snapshots version/counters/receipt.",
+    "Delayed >1500ms and controlled future-watermark scenarios replay exact MAX-1 success before clock/timeout/counter mutation, comparing full driving row. This is synthetic service fixture coverage, not original save or Worker cold-host proof.",
+    "New sequenceMAX is refused unchanged rather than overflowing.",
+    "One exhausted running row at location mismatch is sent sequentially through current/start/input/pause/resume/restart; each revision_exhausted response preserves complete driving row. Session/life settling explicitly outside assertion."
+  ],
+  "execution": {
+    "status": "REPORTED_PENDING_PUBLISHED_RAW_LOG_RECEIPT",
+    "reportedPass": 18,
+    "reportedFail": 0,
+    "reportedSkip": 0,
+    "reportedRawLogSha256": "0045d7b7e45b8bd3896ead7310c9c6150e548e69bd8929ed3600de5fdaf0a824",
+    "firstMissingWsFailureRetainedRequested": true,
+    "dependencyHandoffLockfileEquivalenceRequested": true,
+    "rootReran": false
+  },
+  "independentAstraReviewRequested": true,
+  "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "remaining": [
+    "H1/H2/H3 actual cold host tests",
+    "Exact final compiler/build/budget/smoke",
+    "Confirmed1b Brotli budget failure10bytes requires meaningful repair; no waiver or hash lottery",
+    "CompatibleOFFpackage/pin before original v2",
+    "Actual preserved school S0-S8 and entire later programme"
+  ],
+  "releaseApproved": false,
+  "rootScope": "Source/evidence only; no runtime source change or local heavy work."
+}

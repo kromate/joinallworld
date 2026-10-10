@@ -87,6 +87,63 @@
       "buildSeconds": 54.47,
       "receiptAndLogHashAndTerminalSummaryRead": true,
       "downloadBudgetNotProved": true
+    },
+    "budget-final": {
+      "publishedReceiptCommit": "b9a1ac277877cc814da585bede56dcf612f177ba",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/budget-final/receipt.json",
+      "receiptSha256": "aeaa9e4868db2c6ad72006c92180cc3ece7c603ccb8e5ab2c4391871340b2f66",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/budget-final/command.log",
+      "logSha256": "32a47a189dd81da10fdee988cf256c0cfa8498e0346f644c96dfa4f9f12f0e5d",
+      "logBytes": 5145,
+      "wholeLogAndReceiptIndependentlyRead": true,
+      "command": [
+        "npm",
+        "run",
+        "size:download"
+      ],
+      "exitCode": 1,
+      "headAfter": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "statusAfterClean": true,
+      "nodeVersion": "v24.19.0",
+      "heapMiB": 1536,
+      "durationSeconds": 95.182974,
+      "beforeAfterSourcePinMapsEmpty": true,
+      "sourceUnchangedReported": true,
+      "decision": "FAIL_DO_NOT_RELEASE",
+      "startupRaw": 614094,
+      "startupGzip": 222695,
+      "startupBrotli": 195610,
+      "brotliCap": 195600,
+      "brotliOverBy": 10,
+      "failedBudgetCount": 1,
+      "waiverAllowed": false
+    },
+    "smoke-final": {
+      "publishedReceiptCommit": "b9a1ac277877cc814da585bede56dcf612f177ba",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/smoke-final/receipt.json",
+      "receiptSha256": "807fb00481f14c6f91ac43f376dc49549645955ed5959b59989c07c74368fe9c",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/smoke-final/command.log",
+      "logSha256": "b867a906b0895c00c5fdc84b652c75f6b2b253cd3811df41697bea4347f26548",
+      "logBytes": 5155,
+      "wholeLogAndReceiptIndependentlyRead": true,
+      "command": [
+        "npm",
+        "run",
+        "test:smoke"
+      ],
+      "exitCode": 0,
+      "headAfter": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "statusAfterClean": true,
+      "nodeVersion": "v24.19.0",
+      "heapMiB": 1536,
+      "durationSeconds": 3.200696,
+      "beforeAfterSourcePinMapsEmpty": true,
+      "sourceUnchangedReported": true,
+      "decision": "PASS_SMOKE_SCOPE",
+      "pass": 16,
+      "fail": 0,
+      "skip": 0,
+      "smokeNotFullGameOrBudgetAcceptance": true
     }
   },
   "independentSourceReview": {
@@ -137,5 +194,7 @@
   "releaseApproved": false,
   "activationApproved": false,
   "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
-  "extraSpendAllowed": false
+  "extraSpendAllowed": false,
+  "additionalEvidenceReviewedAtUtc": "2026-10-10T01:52:54.117188+00:00",
+  "confirmedReleaseBlocker": "Exact1b startup Brotli195610>195600 by10 bytes, budget commandexit1. Final successors require actual measurement/meaningful repair, no inherited eec sizes."
 }

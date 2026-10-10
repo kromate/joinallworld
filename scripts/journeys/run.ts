@@ -219,26 +219,19 @@ async function start(b: Browser, j: Journey, name: string, detail: Record<string
     return '';
   })()`, 90000, 'the creator to finish or return').catch((error) => { detail['requestsAfterTap'] = b.requests.slice(asked).filter((r) => r.url.includes('/api/')).map((r) => `${r.method} ${r.url.replace(base, '')} ${r.status ?? ''}`); throw error; });
   detail['startOutcome'] = outcome;
-  if (outcome === 'settled') { detail['onePass'] = true; return; }
-  // The creator came back to its first step with the guest already created: the traits, dream, lottery and home were never sent.
-  detail['onePass'] = false;
-  detail['finding'] = 'Start your life created the guest but did not send the traits, dream, lottery and home; the creator returned to step 1.';
-  detail['requests'] = b.requests.filter((request) => request.method === 'POST' && request.url.includes('/api/')).map((request) => `${request.url.replace(base, '')} ${(request.body ?? '').match(/"type":"[^"]+"/)?.[0] ?? ''}`.trim());
-  await j.shot('start-creator-returned');
-  j.notes.push('Start your life did not finish the settling in one pass (guest created, creator returned to step 1); settled through Sim > Profile > Make this life yours.');
-  await b.click('[data-key="play-now"]');
-  await gameShown(b);
-  await dismiss(b);
-  await b.click('.hud-name');
-  await b.click('.sim-link', 'Make this life yours');
-  await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'spirit'`, 20000, 'the Spirit step of the settle screen');
-  await b.click('[data-key="primary"]');
-  await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'home'`, 20000, 'the Home step of the settle screen');
-  await chooseIkeja(b);
-  await b.click('[data-key="primary"]');
-  await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'ready'`, 20000, 'the Ready step');
-  await b.click('[data-key="primary"]', 'Start your life');
-  await b.waitFor(`(async () => { const m = await fetch('/api/life?city=lagos').then((r) => r.json()); return m.state.onboarding.done && !document.querySelector('[data-cr-root]'); })()`, 60000, 'the settled life');
+  const posts = b.requests.slice(asked).filter((request) => request.method === 'POST' && request.url.includes('/api/')).map((request) => `${request.url.replace(base, '')} ${(request.body ?? '').match(/"type":"[^"]+"/)?.[0] ?? ''}`.trim());
+  detail['requestsAfterTap'] = posts;
+  if (outcome !== 'settled') {
+    detail['onePass'] = false;
+    detail['finding'] = 'Start your life created the guest but did not send the traits, dream, lottery and home; the creator returned to step 1.';
+    await j.shot('start-creator-returned');
+    throw new Error('Start your life did not finish in one pass: the creator returned to step 1 (no recovery route is used).');
+  }
+  detail['onePass'] = true;
+  // The rest of the choices must really have been sent by the tap itself.
+  for (const type of ['onboarding.traits', 'onboarding.dream', 'onboarding.lottery', 'onboarding.home']) {
+    if (!posts.some((line) => line.includes(`"type":"${type}"`))) throw new Error(`Start your life did not send ${type} (sent: ${posts.join('; ')})`);
+  }
 }
 
 // ---- the map and the ticket -----------------------------------------------------------------------------------------
@@ -319,7 +312,7 @@ async function journey(city: string, phone: { width: number; height: number } | 
     if (phone) await b.throttle(true);
     const playerName = `Journey ${target.name}`;
 
-    const onboarded = await j.run(1, 'Onboard through the start screens and land at home', async (detail) => {
+    await j.run(1, 'Onboard through the start screens and land at home', async (detail) => {
       const began = Date.now();
       await start(b, j, playerName, detail);
       await gameShown(b);
@@ -332,12 +325,11 @@ async function journey(city: string, phone: { width: number; height: number } | 
       bag['cashAtHome'] = state.cash;
       bag['playerId'] = await sessionId(b);
       Object.assign(detail, { name: state.name, cash: state.cash, home: state.estate.home?.name ?? state.estate.lga });
-      if (detail['onePass'] === false) throw new Error('The player was settled only after the recovery route: Start your life did not complete in one pass (see the finding in this step).');
+      must(state.onboarding.traits.length > 0 && state.onboarding.dream && state.onboarding.lottery, 'the new player has no traits, dream or lottery result');
+      Object.assign(detail, { traits: state.onboarding.traits, dream: state.onboarding.dream, lottery: state.onboarding.lottery });
     });
-    // The recovery route still leaves a settled player: carry on with the journey whatever step 1 said about the one-pass start.
     const settled = bag['playerId'] !== undefined;
     if (!settled) { for (const [n, name] of [[2, 'Destination listed with a fare'], [3, 'Too little money'], [4, 'Fund once, replay'], [5, 'Buy, travel, arrive'], [6, 'Home retained'], [7, 'Fly back'], [8, 'Duplicate purchase'], [9, 'Restart']] as const) j.skip(n, name, 'the player could not be created'); return finish(j, b, city); }
-    if (!onboarded) j.notes.push('Step 1 failed on its one-pass check; the journey continued with the settled player.');
 
     await j.run(2, 'Open the map; the destination is listed with a fare', async (detail) => {
       const line = await openDestination(b, city);
@@ -394,7 +386,7 @@ async function journey(city: string, phone: { width: number; height: number } | 
       const asked = await b.waitFor<string>(`document.querySelector('[data-atlas-sure]') ? 'ask' : (document.querySelector('.trip-bar, [data-trip]') ? 'going' : '')`, 8000, 'the confirmation or the trip').catch(() => 'going');
       if (asked === 'ask') { detail['confirmed'] = true; await j.shot('confirm'); await b.click('[data-atlas-sure]'); }
       const request = travelRequest(b, city);
-      must(request, 'no travel purchase left the page');
+      if (!request) throw new Error('no travel purchase left the page');
       bag['trip'] = request;
       const began = Date.now();
       await j.shot('in-flight');

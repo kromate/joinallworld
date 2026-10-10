@@ -33,7 +33,7 @@ export class Browser {
   static async launch(debugPort: number): Promise<Browser> {
     const profile = mkdtempSync(join(tmpdir(), 'journey-chrome-'));
     const child = spawn(CHROME, [
-      '--headless=new', `--remote-debugging-port=${debugPort}`, `--user-data-dir=${profile}`, '--no-first-run', '--no-default-browser-check',
+      '--headless=new', '--mute-audio', `--remote-debugging-port=${debugPort}`, `--user-data-dir=${profile}`, '--no-first-run', '--no-default-browser-check',
       '--enable-unsafe-swiftshader', '--use-gl=angle', '--use-angle=swiftshader', '--hide-scrollbars', '--disable-background-networking', 'about:blank',
     ], { stdio: 'ignore' });
     return Browser.attach(debugPort, child, profile);

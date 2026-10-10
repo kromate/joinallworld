@@ -183,6 +183,7 @@ export default function accountRoutes(ctx: RouteContext): Record<RouteKey, Route
       const identity = await identityOf(request, body.idToken);
       const result = await store.transact(db => deleteAccount(db, deps, { ...callerOf(request), identity, erase: body.erase === true }));
       closeSockets(result);
+      if (result.showcasePhotos?.length) await ctx.showcaseImages?.remove(result.showcasePhotos).catch(() => core.log('Deleted account showcase photos could not be removed.'));
       if (result.commerceRevocation && ctx.commerceGateway) {
         const { accountId, secret } = result.commerceRevocation, gateway = ctx.commerceGateway;
         const revocation = commerceSecrets(ctx).open(secret, accountId).then(token => gateway.revoke(token)).catch(() => core.log('Deleted account store grant revocation could not be confirmed.'));

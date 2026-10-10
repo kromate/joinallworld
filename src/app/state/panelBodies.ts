@@ -29,6 +29,7 @@ const loaders = {
   'account/AccountSignIn': () => import('../features/account/AccountSignIn.vue'),
   'admin/AdminApp': () => import('../features/admin/AdminApp.vue'),
   'business/BusinessApp': () => import('../features/business/BusinessApp.vue'),
+  'showcase/ShowcaseApp': () => import('../features/showcase/ShowcaseApp.vue'),
   'campus/CampusApp': () => import('../features/campus/CampusApp.vue'),
   'civic/GovernorApp': () => import('../features/civic/GovernorApp.vue'),
   'civic/StateHouseSheet': () => import('../features/civic/StateHouseSheet.vue'),

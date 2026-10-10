@@ -795,6 +795,8 @@ export interface Database {
   trustChecks?: import('./trust/dojah.ts').IdChecks
   street?: import('./street/types.ts').StreetCollection
   realValue?: import('../src/types/real-value.ts').RealValueCollection
+  /** server/showcase/data.ts: showcase shops, their owners' upload counts and contact events. Created by the first shop. */
+  showcase?: import('../src/types/showcase.ts').ShowcaseCollection
   /** server/politics/data.ts: parties, decrees, treasuries and the state and national ballots. */
   politics?: PoliticsCollection
   /** server/routes/campus.ts: this week's Student Union election. Created by the first nomination or vote, so it is not in COLLECTION_NAMES. */
@@ -1185,6 +1187,8 @@ export interface RouteContext {
   retryIn?(key: string): number
   /** The picture bytes (server/social/images.ts); null on a host built without them. */
   images: ImageStore | null
+  /** Showcase shop photos (server/showcase/): a store of their own, never trimmed by age or by the chat ceiling; null on a host built without it. */
+  showcaseImages?: ImageStore | null
   voices?: VoiceStore | null
   /** The module's namespaced top-level collection, created on first use. */
   collection<K extends CollectionName>(db: Db, name: K, initial?: Partial<Collections[K]>): Collections[K]

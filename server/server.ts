@@ -19,6 +19,7 @@ import { createStore } from './store.ts';
 import { createShardStore } from './world/shards.ts';
 import { createFileVoices } from './social/voice-files.ts';
 import { createFileImages } from './social/image-files.ts';
+import { keepAlways } from './showcase/image-files.ts';
 import * as worldRegistry from './world/registry.ts';
 import { worldOf } from './world/service.ts';
 import { createCallRelay } from './call-relay.ts';
@@ -514,7 +515,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   /** Small HTML pages outside /api/, by path prefix: pages.set('/s/', async ({ path, query, origin, ip }) => ({ status, html })). */
   const pages = new Map<string, PageHandler>();
   const ctx: RouteContext = {
-    store, images: createFileImages(join(dataDir, 'chat-images')), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
+    store, images: createFileImages(join(dataDir, 'chat-images')), showcaseImages: keepAlways(createFileImages(join(dataDir, 'showcase-images'))), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
     ...(interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {}),
     reverseGearIssuance: reverseGearIssuance === true,
     randomId,

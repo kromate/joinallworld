@@ -67,7 +67,7 @@ test('entries layout: an existing legacy collection is moved when the layout ask
   const before = await legacy.layout.logical();
   const store = open(t.storage, { layout: 'entries' });
   assert.deepEqual(await store.read((db) => (db['social'] as Social).players['p3']?.name), 'Player 3 \u{1F600}');
-  assert.deepEqual(Object.entries((await store.layout.status())['collections'] as Record<string, { synced: boolean }>).filter(([, c]) => c.synced).map(([name]) => name), ['social', 'growth', 'civic', 'business', 'commerce', 'records', 'realValue', 'trustChecks', 'street', 'livingWorld']);
+  assert.deepEqual(Object.entries((await store.layout.status())['collections'] as Record<string, { synced: boolean }>).filter(([, c]) => c.synced).map(([name]) => name), ['social', 'growth', 'civic', 'business', 'commerce', 'records', 'realValue', 'showcase', 'trustChecks', 'street', 'livingWorld']);
   assert.deepEqual(await store.read((db) => db['livingWorld']), livingWorld, 'the saved livingWorld keyed maps and unkeyed parcel map read back after legacy backfill');
   assert.equal(count(t, "SELECT COUNT(*) AS n FROM entries WHERE coll='livingWorld'"), 3, 'driving, qualifications and barber use their registered entry maps');
   for (const map of ['driving', 'qualifications', 'barber'])

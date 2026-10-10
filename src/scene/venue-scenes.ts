@@ -475,7 +475,12 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       notifyCrowdChanged?.();
     },
     failed(id, error) { console.warn(`Canonical crowd actor ${id} unavailable; keeping its procedural figure:`, error); },
-    yieldBetweenActors: () => new Promise<void>((resolve) => setTimeout(resolve, 0)),
+    // A message-channel hop hands the thread back to the browser between actors, so loading many never holds one frame.
+    yieldBetweenActors: () => new Promise<void>((resolve) => {
+      const channel = new MessageChannel();
+      channel.port1.onmessage = () => { channel.port1.close(); resolve(); };
+      channel.port2.postMessage(null);
+    }),
   });
   const wallParts: Record<'wallBack' | 'wallLeft', THREE.Object3D[]> = { wallBack: [], wallLeft: [] };
   const sceneCamera = def.camera || SCENE_CAMERA;

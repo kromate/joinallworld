@@ -1,0 +1,166 @@
+{
+  "recordedUtc": "2026-10-10T03:54:45.480841+00:00",
+  "runtimeSource": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+  "evidenceCommit": "17bb2023dc2fe504d0e76a4e9ada5d764162cf5f",
+  "status": "Scoped NPC conversations pass; full visual/release acceptance withheld; undeployed",
+  "actualBrowser": {
+    "checksPass": 10,
+    "checksFail": 0,
+    "reportedElapsedSeconds": 42.7,
+    "directCanvases": 14,
+    "receiptSha256": "d4f49090715ba86416b59bd1e3b732a6f2f14853f61a10aad8871f3862cf8e31",
+    "reportSha256": "b1a96b3cc674807a5b08f68c6ae423ffbd2119be4b2bbb6fdf9d8b5a721bfa1d",
+    "boundedReceiptSha256": "0de1398a2239b88f0226e8890ea63f75ac0c51a586a0c63a902adf1b801fd0da",
+    "logSha256": "3c8fc2f99ab2106c7c740a6a942000c34676e29883967011a14de45143138240",
+    "elapsedSeconds": 42.697,
+    "peakGroupRssBytes": 1523187712,
+    "peakGroupRssGiB": 1.4185791015625,
+    "peakGroupRssGB": 1.523187712,
+    "exitCode": 0,
+    "unitCorrection": "Previous 1.52 GiB shorthand was incorrect; original receipt is 1.523 GB / 1.419 GiB."
+  },
+  "phaseFootProof": {
+    "rows": 12,
+    "pointsPerProbe": 144,
+    "leftPointCount": 80,
+    "rightPointCount": 64,
+    "worstSignedGapMeters": -0.00018294773277077736,
+    "scope": "Both NPCs placement/interact/returned idle; intermediate actual full geometry remains unverified."
+  },
+  "coverage": {
+    "realNPCActionPromises": "Both completed serially using actual viewLife offers after preserving first action-ID harnessfailure",
+    "motion": "34 active steps perNPC,1.133333s total; arms and synchronized jaw reportedmoving",
+    "feet": "Placement, entry andreturnedidle probes; intermediate full deformed sole geometry NOT covered",
+    "idle": "Exact returnedidle andjawweights restored reported",
+    "player": "Six direct front/profile pose captures; interact is pose sample, NOT realplayerinteraction",
+    "captureTiming": "t180/t540/t900 are requested wall-delay labels; screenshot/CDP work adds elapsed time. They are not exact animation sample-clock evidence."
+  },
+  "observations": [
+    "Recognizable modeled human face, hair and full clothing in the tested front/profile idle/walk/gesture views.",
+    "No obvious bare-body exposure or detached garments in these 14 captures; no back/all-wardrobe certification.",
+    "Reaching wrists visibly droop in profile.",
+    "Neutral profile knees remain strongly bent, hips back, and shoe toe tips curve upward.",
+    "Legacy blocky clerks remain alongside native humans; room/contact lighting stays visually flat."
+  ],
+  "limits": [
+    "Do not infer physical floating from pixel grounding: phase actual sole geometry passes.",
+    "Captured still poses do not certify smooth continuous motion, full animation loops, other clothes or phone frame pacing."
+  ],
+  "sourceReviewHypotheses": {
+    "neutralCrouch": "Target neutral thigh/calf directions oppose at \u00b10.035 forward (~4 degrees). Compare pre-contact native pose with final venue solve, because final PNG crouch is larger. Actual cause unproven.",
+    "wristDroop": "Gesture source-neutral calibration differs from wrist bind-relative calibration. Compare real source and target hand/finger axes and isolated wrist application before assigning cause or changing articulation.",
+    "toeCurl": "Compare actual authored footwear and toe bone matrices before/after neutral/contact; feet IK preserves current foot world rotation. Do not compensate blindly at actor root."
+  },
+  "unverified": [
+    "Actual clothing continuity allangles/motion and outfitvariants",
+    "Blink closure/reopening selectedbaseline preservation",
+    "Active motion beyond full sourceclip duration andloopseam",
+    "Every active frame actualsole/reach/contact",
+    "Actual NPC walking",
+    "Real player interaction lifecycle",
+    "Physicalphoneperformance, completebytes andresourcejourneys",
+    "Bed entry/getup andother fullgoal environments"
+  ],
+  "researchReferences": [
+    {
+      "url": "https://threejs.org/docs/pages/module-SkeletonUtils.html",
+      "scope": "Primary retarget options reference; no proof that switching retargeters fixes this actor."
+    },
+    {
+      "url": "https://docs.unity3d.com/Packages/com.unity.animation.rigging@1.2/manual/constraints/TwoBoneIKConstraint.html",
+      "scope": "Primary two-bone constraint offset/weight method precedent only; current source and actual poses decide acceptance."
+    }
+  ],
+  "originalCanvases": [
+    {
+      "sha256": "b2c30f319359fa1b405f6956d654be557cedd89977e99bc77eb71f84e8940505",
+      "bytes": 151942,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/dapo-interaction-t180-canvas.png"
+    },
+    {
+      "sha256": "13e0c3c34ed9447d04a900c6693610448dd713aeb65269ed2e18c6d3719fa742",
+      "bytes": 174719,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/dapo-interaction-t540-canvas.png"
+    },
+    {
+      "sha256": "cee2056869bacbb5ff680250e8942445b94a27e4f7900c45966b30783df2b331",
+      "bytes": 174594,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/dapo-interaction-t900-canvas.png"
+    },
+    {
+      "sha256": "115517fe096099f85fe466c43132a13008519e1884681d2f0c851ef1ecfdd083",
+      "bytes": 176524,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/dapo-returned-idle-canvas.png"
+    },
+    {
+      "sha256": "444eda1c33205ed4650bf0ed0045c9cb8ee0787b4efee2beebd18316dd92ea80",
+      "bytes": 189346,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/mrs-okafor-interaction-t180-canvas.png"
+    },
+    {
+      "sha256": "aa56aa48502e5fe8f1b84a4cf8c96ef2e49eb3eb66649671784eb11a2561adea",
+      "bytes": 179429,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/mrs-okafor-interaction-t540-canvas.png"
+    },
+    {
+      "sha256": "3cc1200d2ab5baca175fa82b2240bcb8dfd3a2061cfeaedf4b38f779c55bdc38",
+      "bytes": 181361,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/mrs-okafor-interaction-t900-canvas.png"
+    },
+    {
+      "sha256": "a860500dd393046d1103f55d37c1d3fc3f708a9971958fa21ced8d9eee9554ed",
+      "bytes": 175791,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/mrs-okafor-returned-idle-canvas.png"
+    },
+    {
+      "sha256": "2ba010a225c06016860ec5888d2ba5aa58d7e402833df66f689e07f0277cb1be",
+      "bytes": 132480,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/player-front-idle-canvas.png"
+    },
+    {
+      "sha256": "5281e55f687676f34ae1d7984ce755f61f36c241371c029a8da7f10f96e7ce55",
+      "bytes": 159009,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/player-front-interact-canvas.png"
+    },
+    {
+      "sha256": "1a1273199d494115e067ad0f9d79afae2d41dff4d635e11eb38c20a438e03076",
+      "bytes": 196791,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/player-front-walk-canvas.png"
+    },
+    {
+      "sha256": "3ced49dc4d13555eefa0f3323bb47d112b4cb1cbc9fb9097d406ecc8cdb495d6",
+      "bytes": 136338,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/player-profile-idle-canvas.png"
+    },
+    {
+      "sha256": "770b61ffae28487571c0d1ada440a2c12fa104cfd5a93b14046f76b1f81aa554",
+      "bytes": 186041,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/player-profile-interact-canvas.png"
+    },
+    {
+      "sha256": "62bcf029024f99aab199fc9bb4fd34a4e75ab056eabe37e44fd7e28abd96eb1f",
+      "bytes": 139984,
+      "rootViewed": true,
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/graphics-gesture-93bc/temporal-office/player-profile-walk-canvas.png"
+    }
+  ],
+  "deadlineUtcExclusive": "2026-10-10T23:00:00Z",
+  "fullScope": "Characters/NPCs/wardrobe/identity/animations plus complete cities/houses/interiors/furniture/vehicles/vegetation/terrain/water/materials/lighting; home-street-market and remaining catalogue; mobile performance and download/resource journeys.",
+  "execution": "Online only implementation/heavy jobs; heavy1/browser1/server1; existing workers only. Integration sole assembler; WORLD sole production uploader.",
+  "usagePolicy": "9% remaining at latest direct account observation. Stop NEW work at <=4%; reserve final4% for owned checkpoints/permitted pushes/reporting; no clock cutoff or extra spend.",
+  "pendingSeparatePublication": "Exact cf8b7417b5f428dc6cb59f601fbde560cd9a7c71 two-file diagnostic push remains approval-blocked. These notes contain none of that source; no alternate publication route.",
+  "next": "Existing NPC worker extended110 real action, loop/blink/motion/contact verification; existing REST worker support-release repair/factory wire and full journey. Diagnose wrist/stance/toe baseline causes before overriding poses."
+}

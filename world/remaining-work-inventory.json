@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAtUtc": "2026-10-10T04:49:38.196654+00:00",
+  "observedAtUtc": "2026-10-10T04:54:34.688353+00:00",
   "owner": "WORLD",
   "goalStatus": "active",
   "productionCountries": 11,
@@ -9,8 +9,12 @@
     "timeCutoff": null,
     "reserve": "final4% for checkpoint/push/inventory/reporting",
     "spend": "zero extra spend; existing authorized included cloud only",
-    "source": "WORLD direct actual get_usage_limits at continuation after04:37UTC:95percentused/5remaining; <=4stopunchanged",
-    "latestRemainingPercent": 5
+    "source": "WORLD direct actual query96percentused/4remaining at2026-10-10T04:51:26UTC",
+    "latestRemainingPercent": 4,
+    "thresholdReached": true,
+    "newWorkHeld": true,
+    "automaticRestartAllowed": false,
+    "checkpoint": "world/QUOTA-RESERVE-CHECKPOINT-2026-10-10.json"
   },
   "completed": [
     {
@@ -131,7 +135,7 @@
       "kind": "incomplete user-path evidence",
       "difficulty": 3,
       "owner": "existing cloud /root/country_browser_astra (accepted gpt-6-astra/high request); Integration local Astra controller review; WORLD owner funding/restart",
-      "repro": "All5 actual browserjourneys unvisited. Actualterminal V4/helperV2 published8bce; all14manifestbytes+59uniqueGit sourcefiles matched. Reused Astra source review ACCEPTS H1-H4/authority/rootreceipt; same finite phase authorized only with exact freshquota>4/liveprivatebinding/runtimepin/lease/ownerpreflight, not launched or passed.",
+      "repro": "All5 actual browserjourneys unvisited. Actualterminal V4/helperV2 published8bce; all14manifestbytes+59uniqueGit sourcefiles matched. Reused Astra source review ACCEPTS H1-H4/authority/rootreceipt; same finite phase authorized only with exact freshquota>4/liveprivatebinding/runtimepin/lease/ownerpreflight, not launched or passed. Currentactualreserve4% nowholdsnewphase; Cloudowner reportsnotlaunched, no actuallivePID assumed.",
       "evidence": "world/c12-cloud-sealed-acceptance.json; world/c12-browser-toolchain-review.json; world/REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md; world/c12-browser-controller-review.json; world/c12-browser-controller-v3-review.json; world/c12-browser-owner-protocol-review.json; world/c12-browser-activity-source-precheck.json; world/c12-browser-v4-terminal-source-checkpoint.json; world/c12-browser-v4-source-pin-acceptance.json; world/c12-browser-controller-v4-review.json",
       "impact": "Cannot yet claim five new destinations render/play and preserve real browser saves",
       "files": [

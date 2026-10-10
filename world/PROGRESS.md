@@ -1,13 +1,14 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T04:49:38.196654+00:00
+Updated: 2026-10-10T04:54:34.688353+00:00
 
-The previous goal turn made progress: the cache gate was closed and exact
-scene commands scoped. This turn accepted both original loader phases (136pass,
-zero failures/skips), authenticated the published V4/helperV2 source packet,
-and read the reused Astra source acceptance. The same existing cloud owner may
-run the unchanged finite browser phase after fresh quota/runtime/lease preflight.
+The previous goal turn made progress: corrected V4 source and136scenechecks
+were accepted and pushed. This turn reached the actual4% reserve threshold.
+New implementation/build/render/browser/funding/spawn work is held. The cloud
+owner reports the browser phase did not launch; no five-city pass is claimed.
+Source, evidence and the complete remaining programme are safely preserved.
 The full world-building goal remains active and incomplete.
+[Reserve checkpoint](QUOTA-RESERVE-CHECKPOINT-2026-10-10.json).
 
 ## What the player can use
 
@@ -109,7 +110,7 @@ This is future scaling work, not a defect deployed to production.
 
 ## Next actions, in order
 
-1. Materialize actual private runtime bindings and preflight for the accepted V4/helperV2; retain existing bounds.
+1. On authorized resumption after the reserve condition is resolved, retain accepted V4/helperV2 and obtain fresh main/quota/runtime binding preflight.
 2. Complete all five actual browser journeys, phone-width controls, restart and
    saved-state checks; inspect the remaining required source-matrix evidence.
 3. Synchronize with main, deploy the accepted country batch, and verify 16 live
@@ -118,8 +119,10 @@ This is future scaling work, not a defect deployed to production.
    remaining Africa and the global pipeline. Lazy metadata, Moroni acquisition
    durability, regional conditions and later photorealism remain in scope.
 
-The main allowance is 5% remaining at the latest actual sample. Stop new work
-at 4% remaining and use that reserve for safe checkpoints and reporting.
+The main allowance is now4% remaining (actual96%used). The stopping rule is
+reached: no new implementation/build/render/browser/funding/spawn. Preserve
+already-started jobs; reserve work is safe checkpoint/push/inventory/reporting
+only. No automatic restart after this checkpoint.
 There is no clock cutoff or extra-spend authorization.
 
 Full ordered backlog: [remaining-work-inventory.json](remaining-work-inventory.json).

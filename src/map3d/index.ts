@@ -132,6 +132,14 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
     void mount();
   });
   container.appendChild(toggle);
+  // The map's source credit (the licence asks for it): a plain text link in the bottom-left corner, over either map.
+  const credit = document.createElement('a');
+  credit.className = 'map-credit';
+  credit.href = 'https://www.openstreetmap.org/copyright';
+  credit.target = '_blank'; credit.rel = 'noopener noreferrer';
+  credit.textContent = '© OpenStreetMap';
+  credit.setAttribute('aria-label', 'Map data © OpenStreetMap contributors');
+  container.appendChild(credit);
   function label() {
     const can3d = hasCityPack(cityId) && !brokenGl && kind !== 'unavailable';
     toggle.hidden = !can3d;

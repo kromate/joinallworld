@@ -667,6 +667,7 @@ export function createMap3D(container: HTMLElement, { pack, cityId = pack?.id, t
       rig.setViewport(size.width, size.height, insets);
       wholeFrom = Math.max(WHOLE_FROM, rig.core().distance * 1.5);
       container.style?.setProperty('--map-dock', `${Math.round(insets.bottom)}px`);
+      container.style?.setProperty('--map-left', `${Math.round(insets.left)}px`);
       if (root) { root.style.setProperty('--m3-dock', `${Math.round(insets.bottom)}px`); root.style.setProperty('--m3-left', `${Math.round(insets.left)}px`); root.style.setProperty('--m3-top', `${Math.round(insets.top)}px`); }
     }
     if (!opened) { openView(); if (trip && route && !reducedMotion) rig.jump(rig.framing(route.points.filter((_, i) => i % 4 === 0 || i === route!.points.length - 1), { pad: 1.5, min: 70 })); }

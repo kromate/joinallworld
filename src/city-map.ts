@@ -248,6 +248,7 @@ export function createCityMap(container: HTMLElement, { onSelectVenue = () => {}
       dock = place;
       root.style.setProperty('--cmap-dock', `${Math.round(free.sheet) + 8}px`);
       container.style.setProperty('--map-dock', `${Math.round(free.sheet) + 8}px`);
+      container.style.setProperty('--map-left', `${Math.round(free.left)}px`);
       root.style.setProperty('--cmap-free-left', `${Math.round(free.left)}px`);
       root.style.setProperty('--cmap-free-top', `${Math.round(free.top)}px`);
     }

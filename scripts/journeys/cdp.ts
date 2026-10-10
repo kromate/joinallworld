@@ -40,13 +40,13 @@ export class Browser {
   }
 
   /** Connects to the page of a Chrome already listening on the port. */
-  static async attach(debugPort: number, child: ChildProcess, profile: string): Promise<Browser> {
+  static async attach(debugPort: number, child: ChildProcess, profile: string, targetId?: string): Promise<Browser> {
     const browser = new Browser(child, profile);
     let targets: any[] | undefined;
     for (let i = 0; i < 100 && !targets; i++) {
       try { targets = await (await fetch(`http://127.0.0.1:${debugPort}/json`)).json() as any[]; } catch { await sleep(150); }
     }
-    const page = targets?.find((target) => target.type === 'page');
+    const page = targets?.find((target) => target.type === 'page' && (!targetId || target.id === targetId));
     if (!page) { browser.close(); throw new Error('Chrome did not start a page'); }
     browser.ws = new WebSocket(page.webSocketDebuggerUrl);
     await new Promise<void>((done, fail) => { browser.ws.onopen = () => done(); browser.ws.onerror = () => fail(new Error('DevTools socket failed')); });
@@ -181,7 +181,23 @@ export class Browser {
     writeFileSync(file, Buffer.from(shot.data, 'base64'));
   }
 
+  /** Another isolated browser context (own cookies and storage) with one page, inside the same Chrome process: a second player. */
+  static async second(debugPort: number, first: Browser): Promise<Browser> {
+    const version = await (await fetch(`http://127.0.0.1:${debugPort}/json/version`)).json() as { webSocketDebuggerUrl: string };
+    const root = new WebSocket(version.webSocketDebuggerUrl);
+    await new Promise<void>((done, fail) => { root.onopen = () => done(); root.onerror = () => fail(new Error('browser socket failed')); });
+    const ask = (method: string, params: object = {}) => new Promise<any>((done) => { const id = Math.floor(Math.random() * 1e9); const on = (event: MessageEvent) => { const m = JSON.parse(String(event.data)); if (m.id === id) { root.removeEventListener('message', on); done(m.result); } }; root.addEventListener('message', on); root.send(JSON.stringify({ id, method, params })); });
+    const context = await ask('Target.createBrowserContext');
+    const target = await ask('Target.createTarget', { url: 'about:blank', browserContextId: context.browserContextId });
+    root.close();
+    const other = await Browser.attach(debugPort, first.child, first.profile, target.targetId);
+    other.shared = true;
+    return other;
+  }
+  shared = false;
+
   close(): void {
+    if (this.shared) { try { this.ws?.close(); } catch { /* closed */ } return; }
     try { this.ws?.close(); } catch { /* closed */ }
     try { this.child.kill('SIGTERM'); } catch { /* gone */ }
     try { rmSync(this.profile, { recursive: true, force: true }); } catch { /* removed */ }

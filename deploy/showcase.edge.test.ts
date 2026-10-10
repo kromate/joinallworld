@@ -149,6 +149,17 @@ test('Worker: a showcase shop from sign-in to approval, the contact release, a f
   assert.equal((await post(ada, '/api/showcase/mine/photos/remove', { photo: big.photo })).code, 'photo_removed')
   assert.equal(await count('showcase_images'), 3)
 
+  // Order and captions: the first photo is the cover; a refused caption changes nothing.
+  const own = (await call('/api/showcase/mine', undefined, ada.cookie)).shop.photos as Json[]
+  const ids = own.map((item) => item.id as string)
+  const arranged = await post(ada, '/api/showcase/mine/photos/arrange', { order: [...ids].reverse(), captions: { [ids[0] as string]: 'Cover shot' } })
+  assert.deepEqual([arranged.ok, arranged.code], [true, 'photos_arranged'])
+  const after = (await call('/api/showcase/mine', undefined, ada.cookie)).shop.photos as Json[]
+  assert.deepEqual(after.map((item) => item.id), [...ids].reverse())
+  assert.equal(after.find((item) => item.id === ids[0])?.caption, 'Cover shot')
+  assert.equal((await post(ada, '/api/showcase/mine/photos/arrange', { order: ids, captions: { [ids[0] as string]: 'call 08012345678' } })).error, 'contact_not_allowed')
+  assert.equal((await post(ada, '/api/showcase/mine/photos/arrange', { order: ids.slice(1) })).error, 'invalid_photo_order')
+
   // Review and approval by an operator.
   assert.equal((await post(ada, '/api/showcase/mine/submit')).status, 'review')
   assert.equal((await call(`/api/showcase/${shop}`)).error, 'shop_unavailable')

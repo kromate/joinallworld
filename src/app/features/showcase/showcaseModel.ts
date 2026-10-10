@@ -3,6 +3,8 @@
 // these checks only save a round trip. Nothing here is in src/game, so none of it is in the first download.
 import { SHOWCASE, SHOWCASE_CATEGORIES, SHOWCASE_ICONS, SHOWCASE_TEMPLATES } from '../../../types/showcase.ts'
 import type { ShowcaseCategory, ShowcaseHours, ShowcaseIcon, ShowcaseInput, ShowcaseMine, ShowcaseService, ShowcaseStatus, ShowcaseTemplate } from '../../../types/showcase.ts'
+import { cachedCityContent, cityName, cityRules } from '../../../game/cities/registry.ts'
+import type { TrustBadge } from '../../../game/trust/index.ts'
 import { fitWithin, refusalFor, toBase64 } from '../messages/pictureModel.ts'
 
 export const CATEGORY_LABELS: Record<ShowcaseCategory, string> = {
@@ -33,6 +35,9 @@ export function inkFor(colour: string): string {
   return 0.2126 * (r ?? 0) + 0.7152 * (g ?? 0) + 0.0722 * (b ?? 0) > 0.4 ? '#14181c' : '#ffffff'
 }
 
+/** The body of the "I am 18 or older" answer. The route refuses it without the city, so every screen builds it here. */
+export const adultConsentBody = (cityId: string): { cityId: string; age: 'adult' } => ({ cityId, age: 'adult' })
+
 export const photoUrl = (id: string): string => `/api/showcase/photo/${encodeURIComponent(id)}`
 export const shopPath = (id: string): string => `/api/showcase/${encodeURIComponent(id)}`
 export interface DirectoryQuery { city?: string; venue?: string; category?: string; q?: string; after?: string }
@@ -41,13 +46,75 @@ export function directoryPath(query: DirectoryQuery): string {
   return `/api/showcase/directory${parts.length ? `?${parts.join('&')}` : ''}`
 }
 /** The seller's own price, as a number with the naira sign. Always shown beside "Seller's price, paid outside Allworld". */
-export const sellerPrice = (value: number): string => (value > 0 ? `₦${Math.round(value).toLocaleString('en-NG')}` : 'Ask the seller')
+export const sellerPrice = (value: number): string => (Number.isFinite(value) && Math.round(value) > 0 ? `₦${Math.round(value).toLocaleString('en-NG')}` : 'Ask the seller')
 export const PRICE_NOTE = 'Seller’s price, paid outside Allworld'
 
 /** One line for each day: "Monday 09:00 to 18:00" or "Sunday closed". */
 export function hoursLines(hours: readonly (ShowcaseHours | null)[]): { day: string; text: string }[] {
   return WEEKDAYS.map((day, at) => { const item = hours[at]; return { day, text: item ? `${item.open} to ${item.close}` : 'closed' } })
 }
+
+/** The short names of the days, Monday first, for the compact week. */
+export const WEEKDAYS_SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as const
+export interface WeekLine { day: string; text: string; today: boolean; closed: boolean }
+/** The compact week: one line a day, today marked. */
+export function weekLines(hours: readonly (ShowcaseHours | null)[], today: number): WeekLine[] {
+  return WEEKDAYS_SHORT.map((day, at) => { const item = hours[at]; return { day, text: item ? `${item.open} to ${item.close}` : 'Closed', today: at === today, closed: !item } })
+}
+
+const clockMinutes = (clock: string): number => { const [h, m] = clock.split(':'); return (Number(h) || 0) * 60 + (Number(m) || 0) }
+/** The weekday (Monday = 0) and minute of the day at `now` in a time zone; an unknown zone reads as the device's own. */
+export function clockIn(now: Date, zone?: string): { day: number; minute: number } {
+  if (zone) {
+    try {
+      const parts = new Intl.DateTimeFormat('en-GB', { timeZone: zone, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(now)
+      const get = (type: string): string => parts.find((part) => part.type === type)?.value ?? ''
+      const day = WEEKDAYS_SHORT.indexOf(get('weekday') as (typeof WEEKDAYS_SHORT)[number])
+      if (day >= 0) return { day, minute: (Number(get('hour')) % 24) * 60 + Number(get('minute')) }
+    } catch { /* an unknown zone: fall back to the device clock */ }
+  }
+  return { day: (now.getDay() + 6) % 7, minute: now.getHours() * 60 + now.getMinutes() }
+}
+export interface OpenStatus { open: boolean; text: string; today: number }
+/**
+ * Is the shop open at `now` (the clock is injected), and in words. A day whose closing time is not after its opening time runs
+ * past midnight into the next day. `zone` is the shop's own time zone, so a buyer far away reads the shop's day, not their own.
+ */
+export function openStatus(hours: readonly (ShowcaseHours | null)[], now: Date, zone?: string): OpenStatus {
+  const { day, minute } = clockIn(now, zone)
+  const today = hours[day], yesterday = hours[(day + 6) % 7]
+  if (today) {
+    const from = clockMinutes(today.open), to = clockMinutes(today.close)
+    if (to > from && minute >= from && minute < to) return { open: true, text: `Open now · closes at ${today.close}`, today: day }
+    if (to <= from && minute >= from) return { open: true, text: `Open now · closes at ${today.close} tomorrow`, today: day }
+  }
+  if (yesterday && clockMinutes(yesterday.close) <= clockMinutes(yesterday.open) && minute < clockMinutes(yesterday.close)) return { open: true, text: `Open now · closes at ${yesterday.close}`, today: day }
+  for (let ahead = 0; ahead <= 7; ahead += 1) {
+    const at = (day + ahead) % 7, item = hours[at]
+    if (!item || (ahead === 0 && minute >= clockMinutes(item.open))) continue
+    const when = ahead === 0 ? '' : ahead === 1 ? ' tomorrow' : ` ${WEEKDAYS[at]}`
+    return { open: false, text: `Closed · opens${when} at ${item.open}`, today: day }
+  }
+  return { open: false, text: 'Closed', today: day }
+}
+/** The shop's own time zone: its city's, and Nigeria's until a city says otherwise. */
+export const zoneOf = (city: string): string => cityRules(city)?.timezone ?? 'Africa/Lagos'
+/** "Market name, City" for a shop's place, as far as the city is known on this device. */
+export function placeWords(city: string, venue: string): string {
+  const market = cachedCityContent(city)?.venues.find((item) => item.id === venue)?.name
+  const where = cityName(city) ?? city
+  return market ? `${market}, ${where}` : where
+}
+
+/** What the shop page and the editor's preview draw: a shop as buyers see it. */
+export interface ShopFace {
+  name: string; sign: string; template: ShowcaseTemplate; colours: readonly [string, string]; logo: ShowcaseIcon; category: ShowcaseCategory
+  city: string; venue: string; slot: number | null; about: string; hours: readonly (ShowcaseHours | null)[]
+  photos: readonly { id: string; w: number; h: number; caption?: string }[]; serviceList: readonly ShowcaseService[]; pay: boolean
+  badge: TrustBadge | null; payNotice: string | null
+}
+/** The caption of a photo, or what a screen reader hears when there is none. */
+export const photoAlt = (name: string, photo: { caption?: string }, at: number, count: number): string => photo.caption || `${name}, photo ${at + 1} of ${count}`
 
 // ---- the editor's draft ------------------------------------------------------------------------------------------------
 export interface ServiceDraft { label: string; price: string; note: string }
@@ -92,20 +159,76 @@ export function inputOf(draft: ShopDraft, city: string): ShowcaseInput {
     chat: { url: draft.chat.trim() }, pay: draft.pay.trim() ? { url: draft.pay.trim() } : null,
   }
 }
-/** What is missing or wrong, in the order the form shows it. The server checks everything again. */
-export function draftIssues(draft: ShopDraft): string[] {
-  const issues: string[] = []
+/** A problem and the field it belongs to: `field` is the id suffix of the input (`name`, `service-0-price`, `hours-2`, `chat` …). */
+export interface Problem { field: string; message: string }
+/** What is missing or wrong, in the order the form shows it, each with its field. The server checks everything again. */
+export function draftProblems(draft: ShopDraft): Problem[] {
+  const found: Problem[] = []
   const name = draft.name.trim()
-  if (name.length < SHOWCASE.name.min || name.length > SHOWCASE.name.max) issues.push(`Give the shop a name of ${SHOWCASE.name.min} to ${SHOWCASE.name.max} letters.`)
-  if (!draft.venue) issues.push('Choose the market your shop is in.')
-  if (!draft.sign.trim()) issues.push('Write a short sign for the front of the shop.')
-  if (!draft.about.trim()) issues.push('Say a little about the shop.')
-  if (!draft.services.some((item) => item.label.trim())) issues.push('Add at least one service.')
-  for (const item of draft.services) if (item.label.trim() && item.price.trim() !== '' && !(Number.isInteger(Number(item.price)) && Number(item.price) >= 0 && Number(item.price) <= SHOWCASE.priceMax)) { issues.push(`The price of ${item.label.trim()} must be a whole number of naira.`); break }
-  for (const day of draft.hours) if (day.open && day.to <= day.from) { issues.push('Closing time must be after opening time.'); break }
-  if (!draft.chat.trim()) issues.push('Add the link where people can chat with you.')
-  return issues
+  if (name.length < SHOWCASE.name.min || name.length > SHOWCASE.name.max) found.push({ field: 'name', message: `Give the shop a name of ${SHOWCASE.name.min} to ${SHOWCASE.name.max} letters.` })
+  if (!draft.venue) found.push({ field: 'venue', message: 'Choose the market your shop is in.' })
+  if (!draft.sign.trim()) found.push({ field: 'sign', message: 'Write a short sign for the front of the shop.' })
+  if (!draft.about.trim()) found.push({ field: 'about', message: 'Say a little about the shop.' })
+  if (!draft.services.some((item) => item.label.trim())) found.push({ field: 'service-0-label', message: 'Add at least one service.' })
+  draft.services.forEach((item, at) => { if (item.label.trim() && item.price.trim() !== '' && !(Number.isInteger(Number(item.price)) && Number(item.price) >= 0 && Number(item.price) <= SHOWCASE.priceMax)) found.push({ field: `service-${at}-price`, message: `The price of ${item.label.trim()} must be a whole number of naira.` }) })
+  draft.hours.forEach((day, at) => { if (day.open && day.to <= day.from) found.push({ field: `hours-${at}`, message: `${WEEKDAYS[at]}: closing time must be after opening time.` }) })
+  if (!draft.chat.trim()) found.push({ field: 'chat', message: 'Add the link where people can chat with you.' })
+  return found
 }
+export const draftIssues = (draft: ShopDraft): string[] => draftProblems(draft).map((item) => item.message)
+
+const TEXT_REFUSALS = new Set(['fee_request', 'money_doubling', 'text_blocked', 'links_not_allowed', 'contact_not_allowed', 'home_address_not_allowed'])
+const SHAPES: Readonly<Record<string, RegExp>> = { contact_not_allowed: /\d[\d\s().-]{6,}|@/, links_not_allowed: /https?:|www\.|\b[a-z0-9-]+\.(?:com|ng|net|org|co|io|me|ly)\b/i, home_address_not_allowed: /\b(?:home address|house address|my house|my home|flat \d|apartment \d|\d+\s+\w+\s+(?:street|road|avenue|close))\b/i }
+/**
+ * The field a refusal from the server belongs to. A wording refusal does not say which text it was, so the texts are looked
+ * through for the shape that was refused; when none shows, the About box takes it (the longest text). Null: not about a field.
+ */
+export function refusalProblem(code: string | undefined, draft: ShopDraft, fallback: string): Problem | null {
+  if (!code) return null
+  const message = wordsFor(code, fallback)
+  switch (code) {
+    case 'chat_link_not_allowed': return { field: 'chat', message }
+    case 'pay_link_not_allowed': return { field: 'pay', message }
+    case 'slot_taken': return { field: 'slot', message }
+    case 'market_full': case 'market_required': return { field: 'venue', message }
+    case 'photos_needed': case 'photo_limit': case 'upload_limit': case 'picture_store_full': case 'picture_rejected': return { field: 'photos', message }
+    default:
+  }
+  if (!TEXT_REFUSALS.has(code)) return null
+  const texts: [string, string][] = [['name', draft.name], ['sign', draft.sign], ['about', draft.about], ...draft.services.flatMap((item, at): [string, string][] => [[`service-${at}-label`, item.label], [`service-${at}-note`, item.note]])]
+  const shape = SHAPES[code]
+  const hit = shape ? texts.find(([, text]) => shape.test(text)) : undefined
+  return { field: hit?.[0] ?? 'about', message }
+}
+
+// ---- keeping the editor in step with the server ------------------------------------------------------------------------
+const same = (a: unknown, b: unknown): boolean => JSON.stringify(a) === JSON.stringify(b)
+export const DRAFT_PARTS: Readonly<Record<keyof ShopDraft, string>> = Object.freeze({
+  venue: 'the market', slot: 'the stall number', name: 'the name', category: 'the kind', template: 'the look', colours: 'the colours', sign: 'the sign', logo: 'the logo', about: 'the about text', services: 'the services', hours: 'the hours', chat: 'the chat link', pay: 'the payment link',
+})
+const PARTS = Object.keys(DRAFT_PARTS) as (keyof ShopDraft)[]
+/** The parts of a draft that differ between two drafts. */
+export const draftChanges = (a: ShopDraft, b: ShopDraft): (keyof ShopDraft)[] => PARTS.filter((part) => !same(a[part], b[part]))
+/** Parts the seller edited here and that also changed on the server to something else: the only real conflict. */
+export const draftClashes = (base: ShopDraft, mine: ShopDraft, latest: ShopDraft): (keyof ShopDraft)[] => PARTS.filter((part) => !same(mine[part], base[part]) && !same(latest[part], base[part]) && !same(latest[part], mine[part]))
+/** The latest shop with the seller's own unsaved edits laid over it, part by part: what they changed stays, the rest is the latest. */
+export function mergeDraft(base: ShopDraft, mine: ShopDraft, latest: ShopDraft): ShopDraft {
+  const merged: ShopDraft = JSON.parse(JSON.stringify(latest)) as ShopDraft
+  for (const part of PARTS) if (!same(mine[part], base[part])) Object.assign(merged, { [part]: JSON.parse(JSON.stringify(mine[part])) as unknown })
+  return merged
+}
+
+// ---- photos: order ---------------------------------------------------------------------------------------------------------
+/** The ids with one moved earlier (-1) or later (+1); the first is the cover. Out of range changes nothing. */
+export function movePhoto(order: readonly string[], id: string, step: -1 | 1): string[] {
+  const at = order.indexOf(id), to = at + step
+  if (at < 0 || to < 0 || to >= order.length) return [...order]
+  const next = [...order]
+  next.splice(at, 1); next.splice(to, 0, id)
+  return next
+}
+/** The ids with one moved to the front: it becomes the cover. */
+export const makeCover = (order: readonly string[], id: string): string[] => (order.includes(id) ? [id, ...order.filter((item) => item !== id)] : [...order])
 
 /** Words for a shop's status, for the banner at the top of the editor. */
 export function statusWords(status: ShowcaseStatus, photos: number, note?: string): string {
@@ -146,7 +269,9 @@ export const CODE_WORDS: Readonly<Record<string, string>> = Object.freeze({
   go_limit: `You can open ${SHOWCASE.goPerDay} chats or payment pages a day. Try again tomorrow.`,
   own_shop: 'This is your own shop.',
   shop_unavailable: 'This shop is not available.',
-  revision_conflict: 'The shop changed somewhere else. Reload it and try again.',
+  revision_conflict: 'Your shop changed somewhere else. Load the latest, check it, and save again.',
+  invalid_photo_order: 'The photos changed. Reload and try again.',
+  invalid_caption: 'A photo caption can be up to 60 letters.',
   rate_limited: 'Too many tries. Wait a moment.',
 })
 export const wordsFor = (code: string | undefined, fallback: string): string => (code ? CODE_WORDS[code] : undefined) ?? fallback

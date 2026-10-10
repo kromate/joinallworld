@@ -6,7 +6,7 @@ type ReadError = HostErrorCode | SessionErrorCode | StorageErrorCode | 'rate_lim
 type WriteError = ReadError | JsonBodyErrorCode | OnceErrorCode | 'verification_required' | 'account_too_new' | 'adults_only' | 'age_required' | 'invalid_shop' | 'invalid_city' | 'market_required'
   | 'slot_taken' | 'market_full' | 'showcase_full' | 'unsupported_shop_field' | 'fee_request' | 'money_doubling' | 'text_blocked' | 'links_not_allowed' | 'contact_not_allowed' | 'home_address_not_allowed'
   | 'chat_link_not_allowed' | 'pay_link_not_allowed' | 'no_shop' | 'shop_incomplete' | 'photos_needed' | 'invalid_picture' | 'picture_rejected' | 'photo_limit' | 'upload_limit' | 'picture_store_full' | 'pictures_unavailable'
-  | 'unknown_photo' | 'shop_held' | 'go_limit' | 'own_shop' | 'invalid_reason' | 'expected_revision_required' | 'revision_conflict'
+  | 'unknown_photo' | 'invalid_photo_order' | 'invalid_caption' | 'shop_held' | 'go_limit' | 'own_shop' | 'invalid_reason' | 'expected_revision_required' | 'revision_conflict'
 type OperatorError = HostErrorCode | StorageErrorCode | JsonBodyErrorCode | 'not_found' | 'moderator_token_required' | 'rate_limited' | 'unknown_shop' | 'unknown_photo' | 'invalid_action' | 'not_in_review' | 'not_held'
 type Receipt = { clientId: string }
 type Result = Ok<{ ok: boolean; code: string; id?: string; revision?: number; status?: string; duplicate?: true; reason?: string }>
@@ -18,6 +18,7 @@ export interface ShowcaseHttpRoutes {
   'GET /api/showcase/:id': { params: { id: string }; response: Ok<{ shop: ShowcaseView }>; errors: ReadError }
   'POST /api/showcase/mine': { body: Receipt & { expectedRevision: number } & ShowcaseInput; response: Result; errors: WriteError }
   'POST /api/showcase/mine/photos': { body: Receipt & { type: 'image/jpeg' | 'image/png' | 'image/webp'; data: string }; response: Result & { photo?: string }; errors: WriteError }
+  'POST /api/showcase/mine/photos/arrange': { body: Receipt & { order: string[]; captions?: Record<string, string> }; response: Result; errors: WriteError }
   'POST /api/showcase/mine/photos/remove': { body: Receipt & { photo: string }; response: Result; errors: WriteError }
   'POST /api/showcase/mine/submit': { body: Receipt; response: Result; errors: WriteError }
   'POST /api/showcase/mine/hide': { body: Receipt & { hidden: boolean }; response: Result; errors: WriteError }

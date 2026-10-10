@@ -192,6 +192,41 @@ test('photos: parsed and rewritten, capped in size and count, limited per day, k
   assert.equal((await s.call('/api/showcase/photo/zz')).status, 404);
 });
 
+test('photo order and captions: the first photo is the cover, captions are short and screened, and a bad list changes nothing', async (t) => {
+  const s = await setup(t);
+  const ada = await s.seller('ada@example.com', 'Ada'); s.ready();
+  const id = await s.live(ada);
+  const mine = async () => (await s.call('/api/showcase/mine', undefined, ada.cookie)).shop.photos as Json[];
+  const [a, b, c] = (await mine()).map((photo) => photo.id as string) as [string, string, string];
+  const card = async () => (await s.call(`/api/showcase/directory`)).shops[0].cover as string;
+  assert.equal(await card(), a, 'the first photo is the cover');
+  assert.equal(((await s.call('/api/showcase/directory')).shops[0].hours as unknown[]).length, 7, 'a card carries the hours, so it can say open or closed now');
+  const arranged = await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [c, a, b], captions: { [c]: ' Knotless  braids, done ', [a]: 'Before' } });
+  assert.deepEqual([arranged.ok, arranged.code], [true, 'photos_arranged']);
+  assert.deepEqual((await mine()).map((photo) => [photo.id, photo.caption]), [[c, 'Knotless braids, done'], [a, 'Before'], [b, undefined]]);
+  assert.equal(await card(), c, 'the new first photo is the cover');
+  const page = (await s.call(`/api/showcase/${id}`)).shop;
+  assert.deepEqual(page.photos.map((photo: Json) => [photo.id, photo.caption]), [[c, 'Knotless braids, done'], [a, 'Before'], [b, undefined]]);
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [b, c, a], captions: { [c]: '' } })).ok, true);
+  assert.equal((await mine()).find((photo) => photo.id === c)?.caption, undefined, 'an empty caption clears it');
+  const before = JSON.stringify(await mine());
+  // Not a permutation, an unknown photo, a long caption and screened captions are refused and change nothing.
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [a, b] })).error, 'invalid_photo_order');
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [a, a, b] })).error, 'invalid_photo_order');
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [a, b, 'nope'] })).error, 'unknown_photo');
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [a, b, c], captions: { [a]: 'x'.repeat(SHOWCASE.caption + 1) } })).error, 'invalid_caption');
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [a, b, c], captions: { [a]: 'call 08012345678' } })).error, 'contact_not_allowed');
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [a, b, c], captions: { [a]: 'see wa.me/2348012345678' } })).error, 'links_not_allowed');
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [a, b, c], captions: { [a]: 'pay a fee first' } })).error, 'fee_request');
+  assert.equal((await s.post(ada, '/api/showcase/mine/photos/arrange', { order: [a, b, c], captions: { zzz: 'hi' } })).error, 'unknown_photo');
+  assert.equal(JSON.stringify(await mine()), before);
+  // Only the owner's own shop: someone with no shop is told so, and a guest is refused.
+  const bola = await s.seller('bola@example.com', 'Bola'); s.ready();
+  assert.equal((await s.post(bola, '/api/showcase/mine/photos/arrange', { order: [a, b, c] })).error, 'no_shop');
+  const visitor = await s.guest('Visitor');
+  assert.equal((await s.post(visitor, '/api/showcase/mine/photos/arrange', { order: [] })).error, 'account_required');
+});
+
 test('the chat picture trim cannot reach showcase photos, and a full store refuses a new photo instead of deleting an old one', async (t) => {
   // A ceiling of a fifth of a megabyte: one photo of 150 kB fits, a second does not.
   const s = await setup(t, { SHOWCASE_IMAGES_MAX_MB: '0.2' });

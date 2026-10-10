@@ -184,6 +184,7 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
       if (found === false) return response(null, 'invalid_saved_journey', false, 'Saved driving data is invalid and has been kept for recovery.')
       if (!found) return response(null, 'no_journey', true)
       if (found.state.status === 'running') {
+        if (found.revision >= MAX_TIME) return response(view(found), 'revision_exhausted', false)
         const now = ctx.now()
         if (!safeTime(now)) return response(view(found), 'invalid_server_clock', false)
         const why = found.cityId !== cityId ? 'Lesson paused because your character changed cities.'
@@ -216,6 +217,7 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
         if (found && now < watermark(found)) return { ok: false, code: 'clock_reversed', journeyId: found.journeyId, revision: found.revision }
         if (found && found.state.status !== 'complete') {
           if (found.state.status === 'running' && (found.cityId !== cityId || found.location !== location)) {
+            if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
             pauseRecord(found, now, 'Lesson paused because your character left its bound city or location.')
             writeRecord(records, found, ctx)
           }
@@ -299,6 +301,7 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
       if (found === null || found === false) return response(null, found === false ? 'invalid_saved_journey' : 'no_journey', false)
       if (found.cityId !== cityId || found.location !== location) {
         if (found.state.status === 'running') {
+          if (found.revision >= MAX_TIME) return response(view(found), 'revision_exhausted', false)
           const now = ctx.now()
           if (!safeTime(now)) return response(view(found), 'invalid_server_clock', false)
           pauseRecord(found, now, 'Lesson paused because your character left its bound city or location.')
@@ -316,6 +319,8 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
         return response(view(found), receipt.code, true, undefined, true)
       }
       if (body.sequence !== found.nextSequence) return response(view(found), 'sequence_conflict', false)
+      if (found.nextSequence >= MAX_TIME) return response(view(found), 'sequence_exhausted', false)
+      if (found.revision >= MAX_TIME) return response(view(found), 'revision_exhausted', false)
       if (!reverseGearIssuanceEnabled && explicitGear) return response(view(found), 'reverse_gear_disabled', false)
       const now = ctx.now()
       if (!safeTime(now)) return response(view(found), 'invalid_server_clock', false)
@@ -366,6 +371,7 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
         if (found.revision !== body.revision) return { ok: false, code: 'revision_conflict', journeyId: found.journeyId, revision: found.revision }
         if (found.cityId !== cityId || found.location !== location) {
           if (found.state.status === 'running') {
+            if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
             pauseRecord(found, now, 'Lesson paused because your character left its bound city or location.')
             writeRecord(records, found, ctx)
           }
@@ -373,9 +379,11 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
         }
         if (target === 'paused') {
           if (found.state.status !== 'running') return { ok: false, code: 'journey_not_running' }
+          if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
           pauseRecord(found, now, 'Lesson paused; the vehicle is safely stopped.')
         } else {
           if (found.state.status !== 'paused') return { ok: false, code: 'journey_not_paused' }
+          if (found.revision >= MAX_TIME) return { ok: false, code: 'revision_exhausted', journeyId: found.journeyId, revision: found.revision }
           if (now < watermark(found)) return { ok: false, code: 'clock_reversed', journeyId: found.journeyId, revision: found.revision }
           const safe = pauseDriving(found.state)
           found.state = { ...safe, status: 'running', feedback: 'Lesson resumed; controls are accepted in timed packets.' }

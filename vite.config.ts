@@ -200,6 +200,8 @@ export default defineConfig({
     // rail, the map's character) is fetched with that city's map, so it must never fall through to the `engine` rule below.
     const part = id.match(/\/src\/game\/cities\/([^/]+)\/([\w-]+)\.ts$/)
     if (part) {
+      // The four Ogun cities share one table of links, read by every one of their rules: it rides in the engine chunk instead of a file of its own.
+      if (part[1] === 'ogun' && part[2] === 'links') return 'engine'
       if (/^(rules|index|links|localUnits)$/.test(part[2] as string)) return undefined
       return `city-${part[1]}-${part[2]}`
     }
@@ -255,6 +257,9 @@ export default defineConfig({
     if (/\/src\/game\/memory\/(mind|lines)\.ts$/.test(id)) return undefined
     if (/\/src\/game\/neighbourhood-space\.ts$/.test(id)) return undefined
     if (/\/src\/game\/home-plan\.ts$/.test(id)) return undefined
+    // Small modules every page uses, shared by the lazy panels and each needing no more than Vue and the engine: kept in the engine chunk
+    // (already in the first download) instead of one file apiece, which would each carry its own header and lose what the others share when compressed.
+    if (/\/src\/(geo\/frame|campus\/unilag\/(slices|volunteer)|app\/ui\/format|app\/features\/(commerce\/connectionReturn|account\/(accountLite|accountTrack)|hud\/(usePulse|onlinePillModel|coachModel)|sim\/settingsModel|tour\/tourState|neighbourhood\/cityWalkState))\.ts$/.test(id)) return 'engine'
     if (/\/src\/(game\/|life\.ts$|campus\/unilag\/(content|spot-names)\.ts$|tables\/places\.ts$)/.test(id)) return 'engine'
     } } },
   },

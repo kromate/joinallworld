@@ -1,0 +1,106 @@
+{
+  "review": "public_metadata_read_only",
+  "pins": {
+    "world_commit": "d559946e030c79ea5df21e4ea1bad89e05897fd2",
+    "world_tree": "a36276797be9cf6dbae7df0219f05c34752a8c99",
+    "receipts_commit": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+    "receipts_tree": "a0d8af7b3f97e075482e4806734b7a5988cebb11",
+    "source_sha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+    "source_parent": "0a5e2983126e3dac406af1c3a121e9cbfef78feb"
+  },
+  "evidence_sha256": {
+    "world/c12-cloud-package-comparison.json": "1f0211ed8abd362a652d4b36677850b548ae5e84ccab01fbe864d975c16d2b1d",
+    "world/c12-worker-build-layout-diagnosis.json": "e9d03b14d238b30aa2d18cf75be32e81f85b810a0cb2635272bc82d56ec4d87f",
+    "world/c12-sealed-public-file-index.json": "48e2ad7b6e1dc87a34416ccdd506b2c78fa58fd261b41c287f5e747441aa2e55",
+    "independent-package/manifest.json": "86aa7c726f5cb735fa0519e3681c703738daddfcaa3b3a2d239a773949483aa9",
+    "independent-package/provenance.json": "20569e31fc21137528165552e7504878d5e5f4fc364768aaa26dc94e022a1b18",
+    "independent-retained-dist-package/receipt.json": "b777a5cbcb2679e23e397b95a899e91854a6e2c3e41c179008d49b0d97619b57",
+    "independent-retained-dist-package/command.log": "289c1317da527c9955767be441c16305bca0560dd973a880b47789f3a4cdd85d"
+  },
+  "comparison": {
+    "payload_entries_original": 6227,
+    "payload_entries_independent": 6227,
+    "unique_paths_original": 6227,
+    "unique_paths_independent": 6227,
+    "same_path_set": true,
+    "same_exact_order": true,
+    "unchanged_payload_rows": 6226,
+    "changed_payload_rows": 1,
+    "changed": {
+      "index": 6225,
+      "path": "worker.js",
+      "original": { "bytes": 4851144, "sha256": "fd7fa978cda473d67bdf5c006bcb3289b901180cdfd9123c49bb405fc976fbf4" },
+      "independent": { "bytes": 4846908, "sha256": "443f113d0070ba6d3df6dd52ba8204a479011b10b0592e275893c2ffc021839b" },
+      "byte_difference": -4236
+    },
+    "payload_bytes_original": 102339028,
+    "payload_bytes_independent": 102334792,
+    "manifest_bytes_each": 1416390,
+    "physical_files_each": 6228,
+    "total_bytes_original": 103755418,
+    "total_bytes_independent": 103751182,
+    "total_byte_difference": -4236
+  },
+  "original_public": {
+    "package_digest": "3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331",
+    "manifest_sha256": "d5a3b4e5dd80be8dc57a0296e9af4b7898ff23c7875aeedf342b879b6e94a314",
+    "worker_sha256": "fd7fa978cda473d67bdf5c006bcb3289b901180cdfd9123c49bb405fc976fbf4"
+  },
+  "independent": {
+    "package_digest_recorded": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+    "manifest_sha256": "86aa7c726f5cb735fa0519e3681c703738daddfcaa3b3a2d239a773949483aa9",
+    "worker_sha256": "443f113d0070ba6d3df6dd52ba8204a479011b10b0592e275893c2ffc021839b",
+    "source_contract": { "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621", "publish": false }
+  },
+  "digest_verification": {
+    "consistent_across_provenance_log_and_comparison": true,
+    "manifest_inputs_fully_compared": true,
+    "guard_source_sha256": "9d0af289e2e0699dbd63011c300721ad58bff46a550e5d5950215b731ed61c8e",
+    "guard_source_present_in_allowed_evidence": false,
+    "guard_executed_locally": false,
+    "independent_algorithm_recomputation_claimed": false
+  },
+  "recipe": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "memory_old_space_mib": 1536,
+    "heavy_slots": 1,
+    "outer_exit": 0,
+    "outer_duration_seconds": 223.494209,
+    "inner_exit": 0,
+    "inner_duration_seconds": 1.2768276710012287,
+    "fresh_game_build": false,
+    "github_artifact_download": false,
+    "original_transport_forbidden_retained": true,
+    "retained_build_rawlog_sha256": "35602fc7962f5527f4a1a534ea98831b667b32baaafe6bcf93c46bcfcecc114f",
+    "retained_dist_files": 6225,
+    "dist_census_unchanged_recorded": true
+  },
+  "source_provenance": {
+    "head_after_matches": true,
+    "git_status_after_empty": true,
+    "source_unchanged_recorded": true,
+    "head_before_recorded": false,
+    "git_status_before_recorded": false,
+    "detailed_pins_location": "provenance.json",
+    "historical_dist_hash_census_present": false,
+    "source_pins": {
+      "package.json": "ff2e40d7cefe461e9f08588b288d6063b9cf8c6db1838effe3b326ca9e7145d9",
+      "package-lock.json": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9",
+      "deploy/tooling/package.json": "caea42b0980584c5ac088f5dc2c66f39e4922e931012ea06f39707c9bd99ce21",
+      "deploy/tooling/package-lock.json": "9bb2971f2ab2b436415de142b0c37070a127eea6bfd3adf0be0b76c9f030ee98",
+      "deploy/cloudflare-worker.js": "4e8d3324d7b2dbf634cd1eb6771a9e92bcc65abd95560468c4213ac42e88225d",
+      "deploy/cloudflare-worker.ts": "a36e7587f98f7a0e13a1861d9eec37910c669f2c7151018e90d5d6ba34187093",
+      "scripts/package-joinallworld.mjs": "8fe117721c56c321c41d501e5b2ab1f5c94716668d20b05de83d201e816cef1a",
+      "scripts/guard-joinallworld-package.mjs": "9d0af289e2e0699dbd63011c300721ad58bff46a550e5d5950215b731ed61c8e"
+    }
+  },
+  "limits": [
+    "no actual new payload bytes inspected",
+    "no guard or package policy execution",
+    "no old sealed acceptance inherited",
+    "no normalization semantics accepted from diagnosis metadata",
+    "no browser journey or deployment acceptance"
+  ],
+  "executed_locally": { "tests": false, "guard": false, "build": false, "compiler": false, "artifact_download": false, "browser": false, "source_mutation": false }
+}

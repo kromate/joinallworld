@@ -1,0 +1,65 @@
+{
+  "verdict": "APPROVE_CONTRACT_ONLY_LAUNCH_HELD",
+  "ref": "711aac363b4f3315e8a236a9d1acd5b0d52b7b2a",
+  "parent": "d559946e030c79ea5df21e4ea1bad89e05897fd2",
+  "reviewedAt": "2026-10-10T03:14:09.410Z",
+  "fullContractRead": true,
+  "commitScope": "Only world/REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md changes versus immediate parent d559. Cumulative diff versus940 includes other earlier changes; not claimed doc-only.",
+  "pins": [
+    {
+      "path": "world/REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md",
+      "bytes": 7945,
+      "sha256": "f38bdb14436f78a37516d961159519444ea249755ade95edf1cf43dc88ee7460"
+    },
+    {
+      "path": "world/tooling/serve-sealed-africa.mjs",
+      "bytes": 34121,
+      "sha256": "55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56"
+    },
+    {
+      "path": "world/tooling/stage-capability-policy.mjs",
+      "bytes": 1341,
+      "sha256": "af748ece4eccbb2a9dfc7ad9901a13b3d06d4afc1ef497c53bf140d74a51b5ef"
+    }
+  ],
+  "helperAndPolicyUnchanged": true,
+  "timing": {
+    "T0": "First owned process launch; monotonic elapsed supervision required",
+    "phaseMaxSeconds": 900,
+    "readyMaxSeconds": 120,
+    "helperSeconds": 720,
+    "actionCutoff": "min(actualStageDeadline-60s,T0+780s)",
+    "proof": "Readiness byT0+120 and stage runtime720 imply naturalexpiry no laterT0+840, leaving at least60s for full cleanup beforeT0+900. Earlier readiness shifts cutoff/expiry earlier, never later.",
+    "sameStoreRestart": "Exact helper SIGWINCH uses withinStageLife remainingdeadline and does notassign a new deadline. No renewable stage.",
+    "pendingCommands": "Controller must check cutoff before each action and cancel/stop in-flight work under absolutephase deadlines; no request/screenshot may extend thephase."
+  },
+  "resources": {
+    "aggregateRssBytes": 4294967296,
+    "sampleMaxIntervalMs": 500,
+    "included": "Owned controller+stage+Chromium+all descendants; aggregate, not perprocess",
+    "httpMs": 20000,
+    "httpCancelRequired": true,
+    "cdpMs": 10000,
+    "screenshotMs": 15000,
+    "screenshotMaxBytes": 2097152,
+    "screenshotMaxCount": 32,
+    "screenshotsTotalMaxBytes": 50331648,
+    "publicLogsAndObservationsMaxBytes": 16777216,
+    "nesting": "CDP10s remains binding for screenshot CDP commands;15s screenshot is the end-to-end ceiling, not permission to extend CDP10s. Enforce both individualPNG and cumulativecount/bytecaps before retaining/publishing data.",
+    "enforcement": "Numeric limits are requirements, not runtime measurements. Stalled process enumeration/sampling or unbounded binary/base64 buffer growth must failclosed; actual controller review still required."
+  },
+  "cleanup": {
+    "normal": "Natural helper expiry and actual clean disposal; restoreviewport/ownedtabs; prove ownedprocessabsence beforelease release",
+    "emergency": "Only recorded ownedprocessgroups; Miniflare INT/TERM/HUP hooks are not graceful-disposal proof. At overalldeadline retainprivate store and honestly mark interrupted/cleanupfailed; never rewrite killed control as stopped.",
+    "interpretation": "Terminal section stopped-checkpoint wording applies to successful naturaldisposal; explicit emergency exception governs kills. No helperpatch, renewal, broaderprocesskill or reset."
+  },
+  "launchStillMissing": [
+    "Immutable controller source/hash and actual named Astra/model execution binding",
+    "Reviewed existing Chromium151/ws/CDP binary/helper identity and launcharguments",
+    "Actual cloudpackage provenance/guard/fullcomparison and ownsealedacceptance",
+    "Live leases/ownedgroup handles/readiness/deadlines plus actual RSS/time/output evidence",
+    "Main allowance above4% at newphase admission"
+  ],
+  "remainingScopes": "Two freshcloud actors; one activegame tab;2M once each; normalUI; noMacactor/session/store transfer, directgameactionAPI/timewarp/extra grant/Forbiddenbypass; can stop with exactpartialcity queue.",
+  "noActions": "Source/doc reads and receiptwrites only; no browser, stage, sourceedit, compiler, tests, network or newworker."
+}

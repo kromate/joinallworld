@@ -1,0 +1,149 @@
+{
+  "review": "Root independent public metadata and algorithm verification",
+  "reviewedAt": "2026-10-10T03:19:33.017400+00:00",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "evidencePins": [
+    {
+      "commit": "d559946e030c79ea5df21e4ea1bad89e05897fd2",
+      "path": "world/c12-cloud-package-comparison.json",
+      "bytes": 2590,
+      "sha256": "1f0211ed8abd362a652d4b36677850b548ae5e84ccab01fbe864d975c16d2b1d"
+    },
+    {
+      "commit": "d559946e030c79ea5df21e4ea1bad89e05897fd2",
+      "path": "world/c12-worker-build-layout-diagnosis.json",
+      "bytes": 1332,
+      "sha256": "e9d03b14d238b30aa2d18cf75be32e81f85b810a0cb2635272bc82d56ec4d87f"
+    },
+    {
+      "commit": "d559946e030c79ea5df21e4ea1bad89e05897fd2",
+      "path": "world/c12-sealed-public-file-index.json",
+      "bytes": 1205188,
+      "sha256": "48e2ad7b6e1dc87a34416ccdd506b2c78fa58fd261b41c287f5e747441aa2e55"
+    },
+    {
+      "commit": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-package/manifest.json",
+      "bytes": 1416390,
+      "sha256": "86aa7c726f5cb735fa0519e3681c703738daddfcaa3b3a2d239a773949483aa9"
+    },
+    {
+      "commit": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-package/provenance.json",
+      "bytes": 3835,
+      "sha256": "20569e31fc21137528165552e7504878d5e5f4fc364768aaa26dc94e022a1b18"
+    },
+    {
+      "commit": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-retained-dist-package/receipt.json",
+      "bytes": 2504,
+      "sha256": "b777a5cbcb2679e23e397b95a899e91854a6e2c3e41c179008d49b0d97619b57"
+    },
+    {
+      "commit": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-retained-dist-package/command.log",
+      "bytes": 4388,
+      "sha256": "289c1317da527c9955767be441c16305bca0560dd973a880b47789f3a4cdd85d"
+    }
+  ],
+  "trackedSourcePins": [
+    {
+      "path": "package.json",
+      "tracked": true,
+      "sha256": "ff2e40d7cefe461e9f08588b288d6063b9cf8c6db1838effe3b326ca9e7145d9",
+      "matched": true
+    },
+    {
+      "path": "package-lock.json",
+      "tracked": true,
+      "sha256": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9",
+      "matched": true
+    },
+    {
+      "path": "deploy/tooling/package.json",
+      "tracked": true,
+      "sha256": "caea42b0980584c5ac088f5dc2c66f39e4922e931012ea06f39707c9bd99ce21",
+      "matched": true
+    },
+    {
+      "path": "deploy/tooling/package-lock.json",
+      "tracked": true,
+      "sha256": "9bb2971f2ab2b436415de142b0c37070a127eea6bfd3adf0be0b76c9f030ee98",
+      "matched": true
+    },
+    {
+      "path": "deploy/cloudflare-worker.js",
+      "tracked": true,
+      "sha256": "4e8d3324d7b2dbf634cd1eb6771a9e92bcc65abd95560468c4213ac42e88225d",
+      "matched": true
+    },
+    {
+      "path": "deploy/cloudflare-worker.ts",
+      "tracked": true,
+      "sha256": "a36e7587f98f7a0e13a1861d9eec37910c669f2c7151018e90d5d6ba34187093",
+      "matched": true
+    },
+    {
+      "path": "scripts/package-joinallworld.mjs",
+      "tracked": true,
+      "sha256": "8fe117721c56c321c41d501e5b2ab1f5c94716668d20b05de83d201e816cef1a",
+      "matched": true
+    },
+    {
+      "path": "scripts/guard-joinallworld-package.mjs",
+      "tracked": true,
+      "sha256": "9d0af289e2e0699dbd63011c300721ad58bff46a550e5d5950215b731ed61c8e",
+      "matched": true
+    }
+  ],
+  "guardSourceSha256": "9d0af289e2e0699dbd63011c300721ad58bff46a550e5d5950215b731ed61c8e",
+  "algorithm": "Actual guard walks sorted top-level assets recursively then manifest.json, worker.js, wrangler.json; SHA256(JSON.stringify(files)) with path/bytes/sha256 object order. Recomputed from public file metadata only.",
+  "original": {
+    "digest": "3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331",
+    "files": 6228,
+    "bytes": 103755418
+  },
+  "independent": {
+    "digest": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+    "files": 6228,
+    "bytes": 103751182
+  },
+  "boundsContract": {
+    "ref": "711aac363b4f3315e8a236a9d1acd5b0d52b7b2a",
+    "pinsMatched": [
+      {
+        "path": "world/REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md",
+        "bytes": 7945,
+        "sha256": "f38bdb14436f78a37516d961159519444ea249755ade95edf1cf43dc88ee7460"
+      },
+      {
+        "path": "world/tooling/serve-sealed-africa.mjs",
+        "bytes": 34121,
+        "sha256": "55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56"
+      },
+      {
+        "path": "world/tooling/stage-capability-policy.mjs",
+        "bytes": 1341,
+        "sha256": "af748ece4eccbb2a9dfc7ad9901a13b3d06d4afc1ef497c53bf140d74a51b5ef"
+      }
+    ],
+    "verdict": "APPROVE_CONTRACT_ONLY_LAUNCH_HELD"
+  },
+  "acceptance": "METADATA_AND_NUMERIC_CONTRACT_ACCEPTED; actual new payload/policy/GLB checks and completed runtime seal receipts remain separate; browser launch held for immutable controller/Astra binding",
+  "noExecution": [
+    "package guard",
+    "build",
+    "compiler",
+    "browser",
+    "stage",
+    "deployment",
+    "artifact download"
+  ],
+  "limitations": [
+    "no actual new payload bytes inspected",
+    "no guard or package policy execution",
+    "no old sealed acceptance inherited",
+    "no normalization semantics accepted from diagnosis metadata",
+    "no browser journey or deployment acceptance"
+  ]
+}

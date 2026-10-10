@@ -1,10 +1,10 @@
 # Combined Allworld repair and remaining-work ledger
 
-Observed checkpoint: 2026-10-10T02:56:00.793523+00:00. Goal remains active and the complete original handoff scope is retained.
+Observed checkpoint: 2026-10-10 03:25 UTC. Goal remains active and the complete original handoff scope is retained. Latest [independent country seal review](c12-cloud-seal-root-review.md) accepts scoped synthetic checks; actual browser travel and combined UI startup repair remain open.
 
 ## Usage and execution rule
 
-Direct human message `01a12367-3e20-7150-86f7-a14cacab49bd` supersedes the old clock cutoff and five-percent threshold. Continue existing online work while applicable main allowance exceeds 4%. At 4% remaining or below stop new implementation/build/render/spawn work, then safely save evidence, preserve processes and user data, publish owned source and this single deduplicated ledger. There is no clock cutoff. The final 4% is reserved for checkpointing, with no automatic implementation restart. Latest actual Root sample is 87% used and 13% remaining. Local heavy implementation/compiler/build/render remains online under the human instruction; a cleared monitor pressure hold does not authorize a new local heavy stage. No paid credits, reset, reserve-model switch or model hopping is authorized. The full goal remains active.
+Direct human message `01a12367-3e20-7150-86f7-a14cacab49bd` supersedes the old clock cutoff and five-percent threshold. Continue existing online work while applicable main allowance exceeds 4%. At 4% remaining or below stop new implementation/build/render/spawn work, then safely save evidence, preserve processes and user data, publish owned source and this single deduplicated ledger. There is no clock cutoff. The final 4% is reserved for checkpointing, with no automatic implementation restart. Latest actual Root sample is 89% used and 11% remaining. Local heavy implementation/compiler/build/render remains online under the human instruction; a cleared monitor pressure hold does not authorize a new local heavy stage. No paid credits, reset, reserve-model switch or model hopping is authorized. The full goal remains active.
 
 Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 3 asynchronous/multi-path acceptance; 4 durable or cross-system integration; 5 foundational multi-domain work or external-device dependencies. Difficulty is not severity or a promise of duration. Respect prerequisites and fix P1 integrity bugs before dependent features, even when a cosmetic task is easier. Source-only findings, diagnostic renders, compiler success and actual production are distinct.
 
@@ -30,7 +30,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | INT-002 | 2/5 | P2 | Reproduced native UI defect | Lumo obscures lesson feedback at 320px | New remote candidate and unchanged download gates |
 | INT-003 | 2/5 | P1 | 241 compiler closed; Home contact remains | Head-controller nullable closure compiler failure | GRAPHICS-owned reviewed source capsule |
 | INT-004 | 2/5 | P2 | Local wage/replay accepted; exact XP measurement open | Complete current original-store teaching lesson under OFF | OFF readiness and one owned browser lease |
-| INT-028 | 2/5 | P2 verification | c12 compiler/build raw accepted; matrix pending | Retain actual remote diagnostic and compiler evidence | New repaired SHA/exact checks |
+| INT-028 | 2/5 | P2 verification | c12 four Node22 originals accepted; remote compiler4096 recorded; matrix pending | Retain actual remote diagnostic and compiler evidence | New repaired SHA/exact checks |
 | INT-024 | 3/5 | P1 release gate | 5e numeric pass; 241 office job pass; visual/host gaps | NPC post-placement floor evidence | INT-003 |
 | INT-005 | 3/5 | P1 | 1b source/focused pass; a646 H1-H3 source/2PASS; compiler hold; native open | Driving duplicate replay occurs after clock/timeout mutation | Independent contract review |
 | INT-033 | 3/5 | P1 save integrity | 1b225 source closed; focused16PASS, durable boundary gaps open | Driving revision/sequence safe-integer exhaustion | Existing driving service owner; strict reader/writer contract |
@@ -41,7 +41,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | INT-023 | 3/5 | P1 boundary gate | 619 loader corrected; e52 inherited-root getter repair/proof pending | Consent loader unknown data can invoke getters or escape abort semantics | INT-001; INT-021 |
 | INT-025 | 3/5 | P1 release gate | Current final coverage pending | Creator/game/other-player saved-look identity on final graphics | INT-014; INT-015; INT-024 |
 | INT-010 | 4/5 | P1 | Provider28 source changes required | Migrate real country catalogue callers and preserve route authority | WORLD scope agreement; current admission checkpoint |
-| INT-011 | 4/5 | P1 | c12 seal15PASS; combined/full/native pending | Accept next five countries as actual playable journeys | INT-010 or independently reviewed compatible registry path |
+| INT-011 | 4/5 | P1 | Distinct cloud28e seal14PASS/15cities/31assets accepted; browser controller/actual journeys/full release pending | Accept next five countries as actual playable journeys | INT-010 or independently reviewed compatible registry path |
 | INT-012 | 4/5 | P1 | Inactive e52 adapter; A1 replay/A2 inherited-getter fixes assigned; actual corrected proof pending | Durable household transaction adapter and exact once settlement | INT-001; completed loader review; explicit shared-file allocation |
 | INT-013 | 4/5 | P1 | Open private-media acceptance | Voice record/review/send/play/retry/delete with consent and cleanup | Explicit synthetic audio/permission setup; available paired browser actors |
 | INT-014 | 4/5 | P1 | Confirmed diagnostic graphics failure | Home bed contact penetration | Reviewed rest/contact source ownership |

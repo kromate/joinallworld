@@ -1,0 +1,246 @@
+{
+  "review": "Root accepts exact independent c12 sealed synthetic execution",
+  "reviewedAt": "2026-10-10T03:22:45.868327+00:00",
+  "decision": "ACCEPT_SCOPE_ONLY",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "packageDigest": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+  "worldCheckpoint": "51d53aee481c7e1351e2d191cd90c62cac799235",
+  "publishedReceiptRef": "e424c0bd902fff71e899a481f2dc8ef9710779fd",
+  "evidencePins": [
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-package-sealed15-once/receipt.json",
+      "bytes": 3000,
+      "sha256": "9664efe5c1e9bc1f38798f45eea3a44454d4ad7baebcf13f6126f2e7fb61496e"
+    },
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-package-sealed15-once/command.log",
+      "bytes": 21479,
+      "sha256": "c594d470b2d882d3e30e7e2dd581b534da34d701628a2fa9357d1ad4841a4d39"
+    },
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-seal-tool-pins.json",
+      "bytes": 747,
+      "sha256": "2b4b515a867d696dc04907f5f893a26249039f2a7af7c38466d35e4257e883d6"
+    },
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-seal-observations.json",
+      "bytes": 15892,
+      "sha256": "f32a51deac01d71c15b12a264ded82266459a94c9a100f7227a990258df5d9dd"
+    }
+  ],
+  "toolSourceSha": "2df4569f5bc0bbabe90238c1482907a87eb75f67",
+  "toolPinsMatched": {
+    "world/tooling/verify-sealed-africa.mjs": "f6b59c1709ab30aaa36c4dc03b4dedbf2f73b5720d164356e208c5dba635b014",
+    "world/tooling/sealed-africa-coverage.mjs": "c84e5e69225421b5fa58accf963f6456a84c2a797724ba89a4e0d4623a6948bb",
+    "world/tooling/sealed-admin-rate-policy.mjs": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b"
+  },
+  "fullVerifierAndHelpersRead": true,
+  "rawLogAndObservationsIdentical": true,
+  "guardActuallyInvokedByPinnedVerifier": true,
+  "sourceRuntime": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "heapMiB": 1536,
+    "heavySlots": 1,
+    "headAfter": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+    "statusAfterEmpty": true,
+    "perFileBeforeAfterMapsEmpty": true
+  },
+  "passedOutcomes": [
+    {
+      "check": "source-and-package-identity",
+      "status": "passed"
+    },
+    {
+      "check": "sealed-worker-start-and-sqlite",
+      "status": "passed"
+    },
+    {
+      "check": "packaged-assets-all-destinations",
+      "status": "passed",
+      "count": 31,
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers",
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town",
+        "addis-ababa",
+        "cairo",
+        "rabat",
+        "kigali",
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-third-three",
+      "status": "passed",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-third-three",
+      "status": "passed",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-third-two",
+      "status": "passed",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-third-two",
+      "status": "passed",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "sqlite-restart",
+      "status": "passed"
+    }
+  ],
+  "coveredCities": [
+    "yaounde",
+    "lome",
+    "accra",
+    "nairobi",
+    "algiers",
+    "cotonou",
+    "abidjan",
+    "dakar",
+    "cape-town",
+    "addis-ababa",
+    "cairo",
+    "rabat",
+    "kigali",
+    "kampala",
+    "lusaka"
+  ],
+  "selectedAssets": 31,
+  "allAssetMetadataPinsMatchNewManifest": true,
+  "servedAssetPinsMatchExceptApprovedIndexTransform": true,
+  "rateWaits": [
+    {
+      "status": 429,
+      "code": "rate_limited",
+      "bucketCount": 31,
+      "windowMs": 60000,
+      "waitNumber": 1,
+      "remainingMs": 120828,
+      "phase": "credit",
+      "delayMs": 15339,
+      "intentSha256": "d3ee40c95018095edd23797e771dbf5e61bfb72f34762a822b0d09564d1eac79",
+      "sameIntentRetried": true,
+      "sameAdminAddress": true,
+      "authenticatedFounderBucket": true
+    },
+    {
+      "status": 429,
+      "code": "rate_limited",
+      "bucketCount": 31,
+      "windowMs": 60000,
+      "waitNumber": 2,
+      "remainingMs": 78210,
+      "phase": "receipt-replay",
+      "delayMs": 32778,
+      "intentSha256": "00282e16d942cd5b9e4fa49e35e75c4aaaa66917e22e65705c1eb770f5df6dfa",
+      "sameIntentRetried": true,
+      "sameAdminAddress": true,
+      "authenticatedFounderBucket": true
+    }
+  ],
+  "verifierElapsedMs": 144672,
+  "verifierLimitMs": 168000,
+  "wrapperIncludingLeaseWaitSeconds": 235.05986,
+  "cleanupFailureRecorded": false,
+  "restartCoverage": "Actual fixture calls dispose/recreate same SQLite and validates flight/action/receipt/home possessions at canonical fixture checkpoints; final label alone not used as proof.",
+  "scope": "Exact packaged Worker on fresh isolated Miniflare SQLite with synthetic accounts, actual auth admin wallet credit/replay, HTTP actions, controlled timestamp advance and fault injection; not ordinary UI travel.",
+  "releaseReady": false,
+  "limitations": [
+    "Root inspected public execution evidence and pinned source, not new package payload bytes locally.",
+    "Empty per-file before/after maps; after HEAD clean/source unchanged recorded, separately matched tracked source/tool/manifest pins.",
+    "Full game/UI/release gates, combined UI startup budget, actual browser flight/phone/reconnect, original production saves and deployment remain separate.",
+    "No physical-device/native zoom/heat or production16 acceptance."
+  ],
+  "noRootExecution": [
+    "guard",
+    "compiler",
+    "build",
+    "stage",
+    "browser",
+    "upload"
+  ]
+}

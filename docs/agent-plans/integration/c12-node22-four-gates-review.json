@@ -1,0 +1,113 @@
+{
+  "review": "four_published_node22_phases_read_only",
+  "publication": {
+    "commit": "8774dc3b85a78d32df5922fe9ccf5ca590d0a175",
+    "tree": "af150f0081dce304d774d546497880e28dfdd7b1",
+    "parent": "1fb6fd64308eb64fa7db8038e562d96623c94689"
+  },
+  "world_review": {
+    "commit": "d6d8c2ee8b5e3168820e9f9268791e0f31814ec6",
+    "tree": "b1f9df41efe80edf32f3cb2f96c60c5623f17e86"
+  },
+  "source": {
+    "sha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+    "parent": "0a5e2983126e3dac406af1c3a121e9cbfef78feb",
+    "node": "v22.23.3",
+    "npm": "11.9.0",
+    "heavy_slots": 1
+  },
+  "phases": [
+    {
+      "name": "node22-compiler4096",
+      "receipt_sha256": "33a62bc7b3d64595bf1a7d1d263582901e5179e5dcec89ef6e91173adf4669e6",
+      "log_sha256": "12565987d4bb68da8e9dc4338783ab59f36dcce1a853016fb25e1614e03d51d1",
+      "hashes_match_world": true,
+      "command": ["node", "--experimental-strip-types", "scripts/agent-slot.ts", "heavy", "--", "npm", "run", "typecheck"],
+      "old_space_mib_from_environment": 4096,
+      "wrapper_duration_seconds": 161.17658,
+      "exit": 0,
+      "result": { "projects": 5, "errors_ts_vue": 0, "baselined_existing_javascript": 0 }
+    },
+    {
+      "name": "node22-build",
+      "receipt_sha256": "4c36e8d72612108394106e6840a2898957daf79328ae95c1bb24780812899572",
+      "log_sha256": "11f7f6c6f6e10328797f89b1bda0edd863ec96933c3c3389c5d11cefc8bac13c",
+      "hashes_match_world": true,
+      "command": ["node", "--experimental-strip-types", "scripts/agent-slot.ts", "heavy", "--", "python3", "/workspace/remote-verification/lease-phase-guard.py", "npm", "run", "build"],
+      "old_space_mib_from_environment": 1536,
+      "wrapper_duration_seconds": 153.908229,
+      "vite_duration_seconds": 59.02,
+      "modules_transformed": 2130,
+      "exit": 0
+    },
+    {
+      "name": "node22-download",
+      "receipt_sha256": "d941c9cec57b77e7d9e68de6fcbeeacac91801ba80170862f5dc1812c057915b",
+      "log_sha256": "0895e3c75190956c48da3422509b2559e59d2290902ec97b771ef274fd33fef9",
+      "hashes_match_world": true,
+      "command": ["node", "--experimental-strip-types", "scripts/agent-slot.ts", "heavy", "--", "python3", "/workspace/remote-verification/lease-phase-guard.py", "npm", "run", "size:download"],
+      "old_space_mib_from_environment": 1536,
+      "wrapper_duration_seconds": 97.756403,
+      "exit": 0,
+      "cities_measured": 55,
+      "largest_city": "lagos",
+      "first_paint_files": 5,
+      "lagos_startup_files": 28,
+      "gate_counts": { "pass": 10, "fail": 0, "not_measured": 2 },
+      "gates": {
+        "loading_raw": { "measured": 91469, "budget": 92000 },
+        "loading_gzip": { "measured": 35568, "budget": 37000 },
+        "first_paint_brotli": { "measured": 35693, "budget": 36800 },
+        "startup_raw": { "measured": 614258, "budget": 615000 },
+        "startup_gzip": { "measured": 222677, "budget": 223000 },
+        "startup_brotli": { "measured": 195402, "budget": 195600 },
+        "scene_host_raw": { "measured": 177152, "budget": 192000 },
+        "scene_host_gzip": { "measured": 66031, "budget": 71000 },
+        "base_body_brotli": { "measured": 138098, "budget": 300000 },
+        "clip_pack_brotli": { "measured": 55111, "budget": 200000 },
+        "wardrobe_item_brotli": { "status": "not_measured" },
+        "street_tile_brotli": { "status": "not_measured" }
+      }
+    },
+    {
+      "name": "node22-smoke",
+      "receipt_sha256": "e85b3fec173a2f4624b701fc7cabfd3ae34f29c3b92184eb401a153a150d94f1",
+      "log_sha256": "88fd176ae95ba1765471a2a7ae5b5ac0c24bc4ae03b08a3992049ee05117edb1",
+      "hashes_match_world": true,
+      "command": ["node", "--experimental-strip-types", "scripts/agent-slot.ts", "heavy", "--", "python3", "/workspace/remote-verification/lease-phase-guard.py", "npm", "run", "test:smoke"],
+      "old_space_mib_from_environment": 1536,
+      "wrapper_duration_seconds": 4.056737,
+      "test_duration_ms": 2675.421914,
+      "exit": 0,
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "startup_city_lines": 55
+    }
+  ],
+  "provenance": {
+    "head_after_matches_exact_c12": true,
+    "git_status_after_empty": true,
+    "source_unchanged_recorded": true,
+    "signals": 0,
+    "hard_stops": 0,
+    "source_pins_before_all_empty": true,
+    "source_pins_after_all_empty": true,
+    "head_before_recorded": false,
+    "git_status_before_recorded": false,
+    "per_file_before_after_parity_proven": false
+  },
+  "acceptance": {
+    "exact_c12_node22_compiler": true,
+    "exact_c12_node22_build": true,
+    "exact_c12_node22_download_budget": true,
+    "exact_c12_node22_smoke": true,
+    "focused_125_prior_evidence_preserved": true,
+    "host_prior_result": { "tests": 1027, "pass": 1024, "skipped": 3 },
+    "broader_game_ui_release_native_deployment": false
+  },
+  "executed_locally": { "commands": false, "tests": false, "build": false, "install": false, "network": false, "compiler": false, "metadata_mutation": false, "source_write": false }
+}

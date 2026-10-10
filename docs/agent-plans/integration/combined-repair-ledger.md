@@ -489,3 +489,17 @@ Actual GRAPHICS241b Office job succeeds and all-five compiler output is clean. H
 [Exact combined budget failure](7f-startup-budget-failure.json) is reproduced on both Node22/24. Saving338raw and163Brotli is a minimum arithmetic requirement, not accepted optimization. Existing registry reviewer is diagnosing a coherent startup saving without changing55city admission, fares, guest flow, source permissions or budgets. No unchanged failed-build retry was dispatched.
 
 Actual integration-repairs job114098981131 also fails the same startup invariant in src/app/entry.test.ts:203,136PASS/1FAIL/0SKIP. Raw logSHA `1380f565722550dd0dd743e21adfb021cea8880ae96c5611ff42c8b319262ba9`. It adds no separate movement/receipt defect; preserve the test and fix actual bytes. Root independently matched all13 immutable driving review pins atf4.
+
+## Additional exact gate evidence
+
+[Combined7f completed partitions](7f-passed-partition-review.json): Worker22/24 each159PASS0FAIL0SKIP; Node22host1032tests/1029PASS3existingSKIP; tooling22 all36PASS. All four raw job logs are read and hash-pinned. The same startupraw/Brotli failure persists; unfinished partitions are not accepted.
+
+[Country-only b9a1 receipts](b9a1-c12-gate-review.json) are independently read/hash-matched: Node22/24Africa host suites each10PASS covering15 foreign destinations, Node24host1024PASS3existingSKIP, smoke15PASS, download614258raw/222677gzip/195402Brotli and35693firstpaint. All wrappers have empty source-pin maps, so a complete unchanged-byte census is not inferred. These c12 results do not close combined7f failure or any browser/provider/production gate.
+
+[Bounded startup diagnosis](7f-startup-diagnosis.md) proposes a coherent two-file generator encoding repair for all15 standard authored foreign flights, preserving every row/order/fare/km/duration/directional route ID and all55 admissions. Nonstandard rows remain full objects. The same existing online country worker receives this unit; actual emitted-source parity, compiler and measured final Node22/24 artifact gates are required before acceptance. No source was changed by the reviewer.
+
+[Household storage evidence](household-d3-scoped-storage-evidence.json) records five actual focused storage/rollback passes. The source was not independently reviewed or activated; the original private source push encountered automatic approval rejection and no Root bypass is attempted. The service remains unregistered, and trusted actor/life provenance, residence/social lifecycle writers and atomic liability settlement remain substantive INT-012/019 requirements.
+
+Driving1b has a separate owner-confirmed unchanged Brotli gate failure195610>195600 by10bytes. Source/focused passes do not override it. Living's existing writer is limited to H1/H2/H3 and counter test follow-up, with no concurrent shared-startup edits. The final combined budget repair must be measured with the actual proposed driving/guide/graphics source; filename/compression changes are not a waiver.
+
+Latest actual main allowance83%used/17%remaining, zero credits/resets. Four-percent stop/no-clock rule remains in force. WORLD owns one finite fresh c12 native lease; old-compatible Clerk is queued after it, with original teaching identities, completed receipts and stores preserved.

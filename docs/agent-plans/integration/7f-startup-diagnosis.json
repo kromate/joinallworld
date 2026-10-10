@@ -1,0 +1,58 @@
+{
+  "review": "source-only",
+  "source": {
+    "repository": "clean integration checkout",
+    "commit": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81",
+    "tree": "b08f02304e1255c6481459a337de4c5012f40503",
+    "base": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "country_parent": "c12b8ebd83cd301475fb1d7bf9e143af260d6621"
+  },
+  "observed": {
+    "ci_run": "38013621959",
+    "node_versions": [22, 24],
+    "first_paint_brotli": 35704,
+    "startup_raw": { "measured": 615338, "budget": 615000, "over": 338 },
+    "startup_gzip": { "measured": 222986, "budget": 223000, "over": 0 },
+    "startup_brotli": { "measured": 195763, "budget": 195600, "over": 163 },
+    "largest_city": "lagos",
+    "measured_city_count": 55
+  },
+  "changed_startup_inputs": [
+    { "file": "src/game/cities/catalogue.generated.ts", "lines": "55-59", "source_bytes_added": 433, "role": "eager trusted city facts" },
+    { "file": "src/game/cities/loaders.generated.ts", "lines": "55-59", "source_bytes_added": 264, "role": "eager lazy-chunk descriptors" },
+    { "file": "src/game/cities/routes.generated.ts", "lines": "380-434", "source_bytes_added": 1143, "role": "startup authored route projection" }
+  ],
+  "recommended_patch": {
+    "owned_files": [
+      "scripts/city/build-catalogue.ts",
+      "src/game/cities/routes.generated.ts"
+    ],
+    "action": "Emit a local foreignFlight helper and compact calls for all 15 generator-verified standard Lagos foreign flights, preserving exact literal id, name, km, fare, seconds and array position.",
+    "guard": "Only compact an exact standard property set and exact values derived by the existing destination-rule formulas; serialize every non-matching route in full.",
+    "runtime_authority_added": false,
+    "admission_changed": false
+  },
+  "forbidden_shortcuts": [
+    "delete authored flights and use sorted generated fallback",
+    "remove or defer catalogue or loader rows",
+    "raise or alter download budgets",
+    "adopt the unaccepted provider change",
+    "claim savings from source arithmetic without artifact measurement"
+  ],
+  "acceptance": [
+    "deep ordered AUTHORED_CITY_LINKS parity",
+    "all 15 directional lagos:<city>:air keys retained",
+    "allCityLinks and linksFrom(lagos) parity",
+    "atlas, guest-first, saved/homeward, server fare/admission journeys pass",
+    "catalogue freshness, compiler, focused tests and full suite pass",
+    "unchanged Node 22 and 24 startup budgets pass over all 55 cities",
+    "first-paint and native/artifact gates remain green"
+  ],
+  "executed": {
+    "build": false,
+    "compiler": false,
+    "tests": false,
+    "server": false,
+    "browser": false
+  }
+}

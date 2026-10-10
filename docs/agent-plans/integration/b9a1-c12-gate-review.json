@@ -1,0 +1,150 @@
+{
+  "observedAt": "2026-10-10T01:50:08.201469+00:00",
+  "publication": "b9a1ac277877cc814da585bede56dcf612f177ba",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "reviews": [
+    {
+      "unit": "c12-node22-africa15",
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "node": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "server/africa-host.test.ts",
+        "deploy/africa-host.test.ts"
+      ],
+      "duration_seconds": 72.455014,
+      "exit": 0,
+      "rawLogSha256": "c714cdeb02a476065fd6794084280f57dc1d2a01d5e1e0e8402ec35b98a5e7e9",
+      "summary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0
+      },
+      "measurements": [],
+      "wrapperSourceUnchanged": true,
+      "sourcePinMapsPresent": false
+    },
+    {
+      "unit": "c12-node24-africa15",
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "node": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "server/africa-host.test.ts",
+        "deploy/africa-host.test.ts"
+      ],
+      "duration_seconds": 156.545957,
+      "exit": 0,
+      "rawLogSha256": "679c242de0bbba8190d5f3661b20ba80e5f15e6610c86fae943ba232a1bbd7fd",
+      "summary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0
+      },
+      "measurements": [],
+      "wrapperSourceUnchanged": true,
+      "sourcePinMapsPresent": false
+    },
+    {
+      "unit": "c12-node24-host",
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "node": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "scripts/node-test-plan.ts",
+        "host"
+      ],
+      "duration_seconds": 308.666189,
+      "exit": 0,
+      "rawLogSha256": "03122ef22b58c4ef530cc6e65bba086735fa765efb7af4a10ffd64be4bdf38e8",
+      "summary": {
+        "tests": 1027,
+        "pass": 1024,
+        "fail": 0,
+        "skipped": 3
+      },
+      "measurements": [],
+      "wrapperSourceUnchanged": true,
+      "sourcePinMapsPresent": false
+    },
+    {
+      "unit": "c12-size-download",
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "node": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "size:download"
+      ],
+      "duration_seconds": 211.276845,
+      "exit": 0,
+      "rawLogSha256": "e8c17f4b47e45846ee32630e45c430f0996b56a6cf848c9c704f77769b29d6f6",
+      "summary": {},
+      "measurements": [
+        "ok   FIRST_PAINT_BROTLI        35693  budget 36,800 brotli bytes (max) [provisional]  5 files: index.html, stylesheet and JavaScript",
+        "ok   STARTUP_RAW              614258  budget 615,000 raw bytes (max)  largest over 55 cities (lagos)",
+        "ok   STARTUP_GZIP             222677  budget 223,000 gzip bytes (max)  largest over 55 cities (lagos)",
+        "ok   STARTUP_BROTLI           195402  budget 195,600 brotli bytes (max) [provisional]  largest over 55 cities (lagos)"
+      ],
+      "wrapperSourceUnchanged": true,
+      "sourcePinMapsPresent": false
+    },
+    {
+      "unit": "c12-smoke",
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "node": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "test:smoke"
+      ],
+      "duration_seconds": 133.974871,
+      "exit": 0,
+      "rawLogSha256": "2fda7074fa37f7208d2d438146bea97d4fbcb2dedbd3878c7d2fe6a53c206748",
+      "summary": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "skipped": 0
+      },
+      "measurements": [],
+      "wrapperSourceUnchanged": true,
+      "sourcePinMapsPresent": false
+    }
+  ],
+  "qualification": "Named rawlogs match receipts; empty source-pin maps do not prove complete byte census. c12 only, not combined7f, whole programme, browser, deployment or production."
+}

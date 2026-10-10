@@ -1,0 +1,535 @@
+{
+  "schema": 1,
+  "at": "2026-10-10T04:27:53.989110+00:00",
+  "verdict": "MODIFY_OWNER_HELPER_LAUNCH_HELD",
+  "launchAuthorized": false,
+  "sourceOnly": true,
+  "publicationCommit": "b7eea09360e020c30c1ae2cbf22894026c43c7d8",
+  "manifestSha256": "2a6292adc64467b017890df4bf2252140586d31c4e06892e09d5b6e977e674d5",
+  "all11FilesFullyRead": true,
+  "files": [
+    {
+      "path": "astra-controller/country-controller.v3.mjs",
+      "bytes": 62346,
+      "sha256": "4d31fbf5ab809953a2f44d0bed671db6d55f4f954ff6fc1e5ab5763251347042",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-controller/selected-source-pins.v3.json",
+      "bytes": 27736,
+      "sha256": "d266e16dfdc2b132d51992bd9ae69b652c9c6afcec05f3d34916b27028f97721",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-controller/review-proposal.v3.NOT-APPROVED.json",
+      "bytes": 3413,
+      "sha256": "f1ed86f62e7f7604e630e61c36840f0869ab179cdebf16ce101630b598fadf35",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-controller/operator-binding.v3.json",
+      "bytes": 1003,
+      "sha256": "827991a37ebfbb4f28d6478d7c5b0dbc451f762007f4e4b5042d1d40558dbf22",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-controller/owner-mailbox-schema.v2.json",
+      "bytes": 3620,
+      "sha256": "1a0ed5f1b32279a014052afa5cfcef58c4fc169707561d3874709385b3fc761d",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-controller/source-only-receipt.v3.json",
+      "bytes": 2559,
+      "sha256": "d6fd346a67202e8200100cfb9315df2089ac002e391bcaeb0bb8cc78c3644e60",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-controller/controller-plan.v3.md",
+      "bytes": 8252,
+      "sha256": "f67b0dc26d167ee30f8fdef600ea7b4ae99e8d8c25d77fdc5db2d89a12116aa5",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-owner-helper/world-owner-mailbox.v1.mjs",
+      "bytes": 27428,
+      "sha256": "1968cd84614cf06c89166f605089db611fd91f129a029557ce623c96846e3201",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-owner-helper/selected-source-pins.json",
+      "bytes": 9356,
+      "sha256": "90548b5f5ad2952dae4fc9135e1a1fb23d7665456fab927a02d1f98699c4815f",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-owner-helper/owner-binding.v3.NOT-APPROVED.json",
+      "bytes": 1339,
+      "sha256": "b08d627eea247bbd9c1c42ec5f3f1765e2a8fbcd1e3c82f92c61f063dfab1b2f",
+      "matchesManifest": true
+    },
+    {
+      "path": "astra-owner-helper/owner-helper-plan.md",
+      "bytes": 6798,
+      "sha256": "231385f90711f554e30553d46d66a3ce9b63a4299f5681d0698b83f3270200d2",
+      "matchesManifest": true
+    }
+  ],
+  "allManifestFilesMatch": true,
+  "contract": {
+    "commit": "711aac363b4f3315e8a236a9d1acd5b0d52b7b2a",
+    "sha256": "f38bdb14436f78a37516d961159519444ea249755ade95edf1cf43dc88ee7460",
+    "unchangedPin": true,
+    "caps": {
+      "total": 900000,
+      "ready": 120000,
+      "stage": 720,
+      "newAction": 780000,
+      "reserve": 60000,
+      "rss": 4294967296,
+      "sample": 250,
+      "maxSampleGap": 500,
+      "http": 20000,
+      "cdp": 10000,
+      "screenshot": 15000,
+      "png": 2097152,
+      "pngCount": 32,
+      "pngTotal": 50331648,
+      "observations": 16777216,
+      "protocol": 3145728,
+      "mailbox": 65536
+    }
+  },
+  "gitSourcePins": [
+    {
+      "path": "deploy/tooling/package-lock.json",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 48429,
+      "sha256": "9bb2971f2ab2b436415de142b0c37070a127eea6bfd3adf0be0b76c9f030ee98",
+      "matches": true
+    },
+    {
+      "path": "deploy/tooling/package.json",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 260,
+      "sha256": "caea42b0980584c5ac088f5dc2c66f39e4922e931012ea06f39707c9bd99ce21",
+      "matches": true
+    },
+    {
+      "path": "server/accounts/test-tokens.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 4272,
+      "sha256": "63e90a74d2fc73531c5d3086a6fcdf5c12cc779fc162869002102ec837ac390f",
+      "matches": true
+    },
+    {
+      "path": "server/accounts/token.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 13741,
+      "sha256": "cc4adb6e87d5b3ce9956193d7cc9eca284049957d2d755745499eb3ecd599e97",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/bank/BankApp.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 13007,
+      "sha256": "dccb18ae520052dc55c70f0dbaa864a5f00bd25ae1f258a8eb16e44bd1911322",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/hud/HudBar.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 15312,
+      "sha256": "96447fe7c3536cd1191322a7b7900c641988d28805957bdd2e2d640d9cef69e9",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/CreatorApp.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 28684,
+      "sha256": "968bc8caf5ada262243d0e971ba9982630a88189cccccb10e3f1a017cd3ec786",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/QuickStartApp.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 897,
+      "sha256": "cc8f691d0ec090c7af277d696286374e6d9086bbacd6605130ab2030e92c3b8b",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/StepHome.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 9968,
+      "sha256": "197ca0882631fd25558d5c211693589f8d70658d4b7b78bd045328c565a70e1b",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/StepSpirit.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 2596,
+      "sha256": "454a3df1f643be428894df2f4341ed2f667f01b3f07a8846b5c51458e818afe8",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/StepWho.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 2427,
+      "sha256": "5385d49d7f4523146a291453374e583ba858c764060d7f7c6debde2d8a21e225",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/start/creatorModel.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 8646,
+      "sha256": "fb28c8974b45ea3a286664ac9e7829437f4519ec8bb9d753adfaa5dcadcbb5c0",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/MapApp.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 7100,
+      "sha256": "91280453ca6cbad64d553c7bf5f0b19d9210b376a0116b6c5b9201ce469e0a1d",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/MapLevels.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 3971,
+      "sha256": "db7de783d9d97b840808c3de5d9abee3a5a468d1179a24745a5b89f9240cc4cc",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/TripBar.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 2011,
+      "sha256": "b8e66e41e718f66f15c472eb531475580b77117bd5b3f5e506a4a68f549e4b55",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/VenueCard.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 6226,
+      "sha256": "8d9475277a43d8cb8aa6ccd48f4b65acb38f98341dd5b5edcb36ceaaa69b017c",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/travelModel.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 23426,
+      "sha256": "bf0b56822c4374c8ab5e4e0f7e25fb8281d15e79969038bac263545c54d42625",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/venue/RunningActionProgress.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 7493,
+      "sha256": "3a7e780e8506e5601821a15852355aadfd2e830dcbaec112500e50fa0d92e1a4",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/venue/VenueActions.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 4992,
+      "sha256": "a04a8f202429ae46d64439e52abb1c7e24b5f769e951264e8f29444582172dd4",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/venue/VenuePanel.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 8796,
+      "sha256": "ed723edbfbf79144a6a5d08037f39d58970feb17fc5c41dae3d068e651e2968a",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/venue/venueModel.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 3470,
+      "sha256": "5350561b896dc37df055d06308a08a5e75c369ff1c04137d2eec003086300a73",
+      "matches": true
+    },
+    {
+      "path": "src/app/scene/MapWorld.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 9976,
+      "sha256": "cb618233c279d720c3e6bc2f3caf5329a5e66a5b0b7df6ab77d5c78e7e687f7a",
+      "matches": true
+    },
+    {
+      "path": "src/map3d/geo/atlas.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 119127,
+      "sha256": "c3a303fd97905e57ae9659955c8d114e879c18536dba1a7017ba7625bd7de35c",
+      "matches": true
+    },
+    {
+      "path": "src/map3d/geo/info.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 10052,
+      "sha256": "d1d9a8546808ea2d3920799d347ec1455e90c05a96b457238f76a9ef126281d4",
+      "matches": true
+    },
+    {
+      "path": "src/map3d/regions.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 20929,
+      "sha256": "7cf221fa83c2d6f7d7d55223a7dd360f25293cdb69fc258aabcc64c0ad227d15",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/sealed-admin-rate-policy.mjs",
+      "commit": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 2628,
+      "sha256": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/sealed-africa-coverage.mjs",
+      "commit": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 4131,
+      "sha256": "c84e5e69225421b5fa58accf963f6456a84c2a797724ba89a4e0d4623a6948bb",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/serve-sealed-africa.mjs",
+      "commit": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 34121,
+      "sha256": "55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-capability-policy.mjs",
+      "commit": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 1341,
+      "sha256": "af748ece4eccbb2a9dfc7ad9901a13b3d06d4afc1ef497c53bf140d74a51b5ef",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-checkpoint-policy.mjs",
+      "commit": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 5359,
+      "sha256": "2975f3f67c71c01b279d4de3adbd942180dd443b9ca2e5c818cec002866622ff",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/stage-control-file.mjs",
+      "commit": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 5093,
+      "sha256": "bdeecb804a0d2f8c63ec6d1fa2823ba4ca0a91efa37f5d71dd744fb38e5b721a",
+      "matches": true
+    },
+    {
+      "path": "world/tooling/verify-sealed-africa.mjs",
+      "commit": "94079eed212d521aab6b7dd748db94a3459f00b3",
+      "bytes": 28940,
+      "sha256": "f6b59c1709ab30aaa36c4dc03b4dedbf2f73b5720d164356e208c5dba635b014",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/nav/BottomNav.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 2110,
+      "sha256": "2db0abb4e79f1086f74861e23b613e822434245fc77735eb73bb784279378788",
+      "matches": true
+    },
+    {
+      "path": "src/app/features/travel/RideApp.vue",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 4116,
+      "sha256": "86403f59f46cd790e8f7ef4d07fc94d19ff706f26f23a6542b9c7afde9fddeed",
+      "matches": true
+    },
+    {
+      "path": "src/game/arrival.test.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 4258,
+      "sha256": "3f4d61ac28ebd4a8335e3e9015a95bae343f3f84208d5277b9e5e14747902116",
+      "matches": true
+    },
+    {
+      "path": "server/routes/admin.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 42227,
+      "sha256": "91ba7951fdee165630a40be887b702bb1ea411546c8402e8f7d9a2f497bad5ff",
+      "matches": true
+    },
+    {
+      "path": "server/admin/actions.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 23077,
+      "sha256": "c7feb9e77ed0ead61199c567664abb1390fb0c07851ed8bb8805e923e80bd307",
+      "matches": true
+    },
+    {
+      "path": "server/admin/store.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 7018,
+      "sha256": "2a9273d9bff346a451e5bf9f7fc152e12689fa2ed0e3aa35505642f97aadb093",
+      "matches": true
+    },
+    {
+      "path": "server/admin/players.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 9894,
+      "sha256": "f371e441f81f65edfa0f3acecff3ec6222dbeffc3155b958975357fd7bfadaa2",
+      "matches": true
+    },
+    {
+      "path": "server/routes/once.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 14048,
+      "sha256": "197e5499c469b4e28a3aefa4698ec3838b86325a4f1aae88b97756a2c235451f",
+      "matches": true
+    },
+    {
+      "path": "server/protocol.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 20727,
+      "sha256": "27742061f222dc021d6882a9f2a2372a3eb30c3b40ebdde7b5b909462a59dbf5",
+      "matches": true
+    },
+    {
+      "path": "server/types.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 72039,
+      "sha256": "59eaee81667763b6d36bf3bf12f4b1611c5ca0ffebed28dc096b060cf9f969c0",
+      "matches": true
+    },
+    {
+      "path": "server/economy/effects.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 2322,
+      "sha256": "711f2bcd4ca166560b96fb9a3145789eb2102d2c46e19af7453a6eb6be3bda46",
+      "matches": true
+    },
+    {
+      "path": "server/life-service.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 11656,
+      "sha256": "f4801b7f35a48a3abebc10837a95f65620bbbfd499478664fffc8d06c7cb3818",
+      "matches": true
+    },
+    {
+      "path": "server/character.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 5042,
+      "sha256": "f15bdeb0e6ce3e079c8c7b2480c5767c7b6a29aa05e10583e183dbfadf497b18",
+      "matches": true
+    },
+    {
+      "path": "deploy/sqlite-schema.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 12585,
+      "sha256": "826a86e0ba217e78b5dbe1077d91b7457f3454df5fbe5d4a3d698de6def5fcb9",
+      "matches": true
+    },
+    {
+      "path": "deploy/sqlite-store.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 69239,
+      "sha256": "a54149ccc1f4f1a4db69379a041b0fcd7c90f5830fbcbe7393d261c690f58b5d",
+      "matches": true
+    },
+    {
+      "path": "server/keyed.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 34966,
+      "sha256": "6a29d1b39e941e1a2cf7ecd53acc8cfca6366d837eec9eeabe23b93d8a7fd97c",
+      "matches": true
+    },
+    {
+      "path": "src/types/life.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 54038,
+      "sha256": "a57338328b05b9277ac4b5497acd2d54ae17f3bb303f30f25d1eb19ac9a98a73",
+      "matches": true
+    },
+    {
+      "path": "src/game/systems/activities.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 31060,
+      "sha256": "a22bdbba4ba4a936fa6abd14abfda7f2672d7364e22ab898a438ac6957feb98a",
+      "matches": true
+    },
+    {
+      "path": "src/game/systems/estate.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 53660,
+      "sha256": "e4bfc0fd555c67b7389bef0901ead7a8eb81cfde9bff9ba54e79650ad0a41873",
+      "matches": true
+    },
+    {
+      "path": "src/game/systems/wallet.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 14131,
+      "sha256": "bdbb8946be389b4ce8ba7ee2249b9fece88af486c61248cae02456c50f8127d5",
+      "matches": true
+    },
+    {
+      "path": "src/game/systems/travel.ts",
+      "commit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "bytes": 39654,
+      "sha256": "4a6fc79eed2fb00e28c3a3e7d5e669fb59ae3be30ce397b8e36c492ede4e7fad",
+      "matches": true
+    }
+  ],
+  "allAvailableGitPinsMatch": true,
+  "originalFindings": [
+    {
+      "id": "F1",
+      "status": "CLOSED_AT_SOURCE_DESIGN_SCOPE",
+      "evidence": "Public --run starts independentWatchdog, derives T0 from its Linux PID birth, forks supervisor before pin preflight, tracks exact roots/descendants, samples at 250ms, refuses >500ms gaps/4GiB, aborts missing readiness at 120s and starts emergency cleanup at 890s. fileDigest carries readiness AbortSignal. Owner helper must register with watchdog before SQLite/HTTP. No runtime scheduling, cold-import latency or cleanup performance is proved."
+    },
+    {
+      "id": "F2",
+      "status": "CLOSED_AT_SOURCE_DESIGN_SCOPE",
+      "evidence": "Cdp.call clamps timeout to 10000ms. Screenshot has separate token-bound 15000ms deadline, forwarded to independent watchdog and checked after bounded PNG decode/write. Runtime IPC latency and cancellation remain unproved."
+    },
+    {
+      "id": "F3",
+      "status": "CLOSED_AT_SOURCE_DESIGN_SCOPE",
+      "evidence": "Single page navigates A then B then A before onboarding; each requires actual Document status200 and loopback remote address/port, and both cookie stores remain empty. Later A cookie present/B absent check retained."
+    },
+    {
+      "id": "F4",
+      "status": "CLOSED_AT_SOURCE_DESIGN_SCOPE",
+      "evidence": "Return now enters normal Home navigation, chooses/waits an offered local route if needed, checks original home heading plus Private venue line and PNG, then owner requires Lagos/location home/no active action/owned protected state before completion. Exact c12 arrival.test.ts states resident return already lands at home; the new observation also covers that case. No live visual evidence claimed."
+    }
+  ],
+  "remainingConcreteFindings": [
+    {
+      "id": "H1",
+      "priority": "P1",
+      "title": "Funding target is not bound to authenticated browser actor/account identity",
+      "location": "world-owner-mailbox.v1.mjs snapshot(), protectedFields(), fund(); controller capture-baseline-and-fund-once request",
+      "evidence": "snapshot scans sessions by name, returns column public_id but discards session publicId/account/expiry and device/account relationship. fund accepts that match using name, cash and home, without a private public-ID witness from the normal browser session. protectedFields checks name/ID/home assets only. No explicit A/B identity inequality is enforced. Exact c12 SessionRecord distinguishes guest secret from account-owned session reached only through accountDevices; display name is not the authority.",
+      "fix": "For this fresh guest-only scope, bind each origin to its normal authenticated public ID using a reviewed read-only normal-session response witness; keep that ID private. Query that ID, validate stored publicId equality/current guest status/live expiry/current character, record protected identity metadata and assert A != B. Reject account-owned/device-bound ambiguity rather than adding provider login/cookie injection. If account actors are intentionally supported, validate account/session/device authority explicitly without publishing secrets."
+    },
+    {
+      "id": "H2",
+      "priority": "P2",
+      "title": "Protected-state and cross-actor claims exceed the comparisons performed",
+      "location": "world-owner-mailbox.v1.mjs creditProof(), fund(), observeActor(), verify-city-home-checkpoint",
+      "evidence": "creditProof verifies money/audit/prefix effects but never compares protectedFields(after) with baseline before returning verified funding. Later homeProof compares only the active actor. observeActor for completed A during B checks its ID but not its protected state or wallet/receipt snapshot; no final comparison proves B funding/journeys left A unchanged.",
+      "fix": "Before issuing successful funding proof compare protected identity/home/ownership/inventory immediately after first credit and replay. Freeze each completed actor checkpoint and compare it during/after the other actor funding and at finalization, with only explicitly explained normal settlement fields excluded. Keep raw baselines private."
+    },
+    {
+      "id": "H3",
+      "priority": "P2",
+      "title": "Restart can be dispatched after the new-action cutoff",
+      "location": "world-owner-mailbox.v1.mjs one-exact-sigwinch-restart handler",
+      "evidence": "Main-loop guard() is nonmutating. Handler performs synchronous snapshot/home/control and durable intent work, then process.kill without guard(true) at dispatch. Unlike funding POST, restart has no immediate actionDeadline check. A request admitted just before cutoff can signal after it; subsequent guard/failure does not undo the restart.",
+      "fix": "Call guard(true) immediately before the signal after intent persistence and revalidate exact PID birth. If cutoff has passed, retain intent as unexecuted and return partial; never renew or send substitute signals."
+    }
+  ],
+  "moneyPrivacyAndLimitNotes": [
+    "Read-only SQL is explicit (DatabaseSync readOnly, SELECT and BEGIN/COMMIT). No raw save writes, DDL, minting or browser action APIs are present. Store discovery checks seven table names and version2; strengthen/read-only verify current main_store_authority and required columns before claiming full schema validation. Current SQL failures are conservative refusals, not permission to repair a store.",
+    "Funding intent is written wx and fsynced with directory before POST. Exactly 2000000, root /api/admin/me, scoped admin POST, same payload/clientId replay and readback one wallet/audit/receipt are present. On ambiguous first transport, original state must prove success before replay; unavailable proof stops without a fresh intent. Replay transport ambiguity also stops. No auto helper restart is authorized.",
+    "Actual admin route c12 uses ctx.once on caller.session and fingerprint [target,action,params,reason]. creditProof queries the unique clientId and kind but does not compare receipt sender/fp to authenticated root identity/intent; tighten that evidence linkage rather than claiming those fields were validated. UUID and matching audit/target/money strongly constrain ordinary accidental mismatch but are not a substitute for explicit authority checks.",
+    "Private output uses 0700 directory/0600 regular files with no-follow bounded reads, and safe public publication compares an exact allowlisted object. Full session rows, baselines, cookie/control and request envelopes remain private; name-scan currently reads unrelated session values into memory, so ID-scoped lookup also reduces unnecessary private reads.",
+    "Owner restart uses one exclusive durable intent, exact PID birth, actual helper event count1, same port/store/deadline, root readiness and SQLite inode plus saved receipts. Original stage helper and numeric720/900/120/60 bounds stay pinned. Root must prove actual terminal process absence before releasing leases.",
+    "Quota freshness now requires observed_at_utc <=60s and >4 percent plus live owner commitment. Current false NOT-APPROVED bindings are correct; do not fabricate approval/time/live usage.",
+    "Remaining runtime proofs: all remote binary/package/ws pins, accepted independent28e guard/seal, actual leases/processes, owner-ready/auth/schema, bounded request cancellation/HTTP behavior, visible controls/overlays, activity witnesses, natural expiry and cleanup. Syntax receipt is preparation evidence only."
+  ],
+  "qualification": "Read all 11 manifest files, including full 60-line owner helper, plus selected exact c12 authority source. No reviewed executable, syntax check, tests, build, browser, SQLite connection, network, funding, restart, source edit or new agent. Only requested /tmp review files written. Existing WORLD remains sole owner. No launch authority derives from this report."
+}

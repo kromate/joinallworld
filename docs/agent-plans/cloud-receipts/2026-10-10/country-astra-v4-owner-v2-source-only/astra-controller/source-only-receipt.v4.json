@@ -1,0 +1,142 @@
+{
+  "schema": 1,
+  "status": "SOURCE_ONLY_SUCCESSOR_NOT_APPROVED",
+  "createdAt": "2026-10-10T04:37:01.496315+00:00",
+  "controller": {
+    "sha256": "b92773045ea16f20f9e7f92e18aca0901dbb791a6e5e43bcb93f1ca52b759fce",
+    "bytes": 65342,
+    "maxBytes": 65342
+  },
+  "ownerHelper": {
+    "sha256": "1f9b26b4182354e931ec81b81061f0158158007e7c87b5c15e3ca961523126ba",
+    "bytes": 36276,
+    "maxBytes": 36276
+  },
+  "controllerPinsSha256": "6a691491b357ca565069a37419f49f96523ea11d9c2a1ba93352f4a4021741ac",
+  "ownerPinsSha256": "4e87b590b2adfd0b891fcfa7c6f70e12193b1861dbfc34bf323d00855a6800d3",
+  "fullReviewsRead": {
+    "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/review-inputs/c12-browser-controller-v3-review.json": {
+      "sha256": "9ea98ab1cb412288459bff441fc891d230e8177eac6cd3a24ab9f30fc8cb001a",
+      "bytes": 24377,
+      "maxBytes": 24377
+    },
+    "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/review-inputs/c12-browser-controller-v3-review.md": {
+      "sha256": "57edd646df6cb46e0e72aa73b9fe2488da25f910d62b5b391b4b3a82644ec1fc",
+      "bytes": 7809,
+      "maxBytes": 7809
+    },
+    "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/review-inputs/c12-browser-owner-protocol-review.json": {
+      "sha256": "fbf5f25b0e719abe9ab62d22fdd0f1e1bfa26aff66fa82f39e85f55cb27d29ef",
+      "bytes": 4006,
+      "maxBytes": 4006
+    }
+  },
+  "reviewPublicationCommit": "44f76e8a",
+  "newLocalGitSourcePinsVerified": [
+    {
+      "path": "server/routes/core.ts",
+      "sha256": "322c1409c63dfaffb3da34ad74923622770e3bfebfa429afeacb661dff6ff5be",
+      "bytes": 21160,
+      "maxBytes": 21160,
+      "gitCommit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "exactGitBytes": true
+    },
+    {
+      "path": "server/admin/gate.ts",
+      "sha256": "fe98d0a424daa7d5be00aaefb69de457c112b38d2d15e320baa1b2c69fc5c1c3",
+      "bytes": 5675,
+      "maxBytes": 5675,
+      "gitCommit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "exactGitBytes": true
+    },
+    {
+      "path": "src/client.ts",
+      "sha256": "d0f2da50b4f9df4525d08cb89e971601a82d0528383d5039ce70aacceb544b32",
+      "bytes": 51782,
+      "maxBytes": 51782,
+      "gitCommit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "exactGitBytes": true
+    },
+    {
+      "path": "src/game/systems/property.ts",
+      "sha256": "858c6f46e9ce8f8b870c4fabd726bf17054d07748ed1300d23b87a7dbf3fa5f1",
+      "bytes": 11904,
+      "maxBytes": 11904,
+      "gitCommit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "exactGitBytes": true
+    },
+    {
+      "path": "src/game/systems/home.ts",
+      "sha256": "2a9e4c3609b27218518bc2c3cd5b5aa6fcda2fb8cfe3ea130b862d4cfe7585b2",
+      "bytes": 34995,
+      "maxBytes": 34995,
+      "gitCommit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "exactGitBytes": true
+    },
+    {
+      "path": "src/game/cities/africa/contentBuilder.ts",
+      "sha256": "8bce9bcc63af77a94b020c84e3f3820665a8f52e49f7de9fb6196f31bb0b9e68",
+      "bytes": 13559,
+      "maxBytes": 13559,
+      "gitCommit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "exactGitBytes": true
+    }
+  ],
+  "preservedControllerV3": {
+    "sha256": "4d31fbf5ab809953a2f44d0bed671db6d55f4f954ff6fc1e5ab5763251347042",
+    "bytes": 62346,
+    "maxBytes": 62346
+  },
+  "preservedOwnerHelperV1": {
+    "sha256": "1968cd84614cf06c89166f605089db611fd91f129a029557ce623c96846e3201",
+    "bytes": 27428,
+    "maxBytes": 27428
+  },
+  "syntaxChecks": [
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/country-controller.v4.mjs",
+      "command": [
+        "node",
+        "--check",
+        "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/country-controller.v4.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nodeVersion": "v24.19.0"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-owner-helper/world-owner-mailbox.v2.mjs",
+      "command": [
+        "node",
+        "--check",
+        "/workspace/remote-verification/worker-results/c1-third-five/astra-owner-helper/world-owner-mailbox.v2.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nodeVersion": "v24.19.0"
+    }
+  ],
+  "runtime": {
+    "controllerExecuted": false,
+    "ownerHelperExecuted": false,
+    "stageStarted": false,
+    "browserStarted": false,
+    "sqliteOpened": false,
+    "networkRequests": false,
+    "creditsDispatched": false,
+    "signalsSent": false,
+    "buildOrSealRerun": false,
+    "testsRun": false,
+    "newAgentSpawned": false
+  },
+  "quotaLatestDelegatedRemainingPercent": 6,
+  "quotaMeasurementNotLocallyToolAttested": true,
+  "backendModelIdExposed": false,
+  "requestedModel": "gpt-6-astra",
+  "requestedReasoning": "high",
+  "acceptedSpawnToolResponse": {
+    "task_name": "/root/country_browser_astra"
+  }
+}

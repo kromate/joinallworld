@@ -412,6 +412,56 @@ test('Driving capability loss releases buffered controls and fences an older sam
   }
 })
 
+test('Driving capability loss also stops an ordinary held throttle on a control reply', async () => {
+  pending.clear(); intervalCallbacks.clear(); server.requests.splice(0)
+  const component = (await load('/src/app/features/living-world/DrivingApp.vue')).default
+  const oldIdentity = captureIdentity()
+  setIdentity(session('reverse-throttle-loss-owner'), 'lagos')
+  const traced = traceApi(), mounted = mount(component)
+  try {
+    await waitFor(() => count('/api/living-world/driving') === 1)
+    resolveAt('/api/living-world/driving', 0, drivingReply(server.now(), { ok: true, code: 'no_journey', reverseGearControls: true }))
+    await waitFor(() => count('/api/living-world/qualification') === 1)
+    resolveAt('/api/living-world/qualification', 0, { ok: true, code: 'not_qualified', valid: false, qualification: null, serverTime: server.now() })
+    await waitFor(() => count('/api/living-world/rental') === 1)
+    resolveAt('/api/living-world/rental', 0, { ok: true, code: 'eligible', permission: null, revision: null, eligible: true, valid: false, tripAvailable: false, allocation: 'none', serverTime: server.now() })
+    await waitFor(() => setupValue(mounted.setup, 'busy') === false && setupValue(mounted.setup, 'rentalBusy') === false)
+
+    const scene = { present() {}, setInput() {}, setReducedMotion() {}, begin(ready?: () => void) { ready?.() }, exit() {}, setVisible() {}, resize() {}, dispose() {} }
+    Reflect.set(mounted.setup, 'scene', scene)
+    const location = app.game.state.value.location
+    const start = setupValue(mounted.setup, 'startLesson') as () => Promise<void>
+    const starting = start()
+    await waitFor(() => count('/api/living-world/driving/start') === 1)
+    const started = runningView(location)
+    resolveAt('/api/living-world/driving/start', 0, drivingReply(server.now(), { ok: true, code: 'started', session: started, reverseGearControls: true }))
+    await starting
+
+    const touchDown = setupValue(mounted.setup, 'touchDown') as (control: 'throttle', event: PointerEvent) => void
+    touchDown('throttle', { currentTarget: { setPointerCapture() {} }, pointerId: 81 } as unknown as PointerEvent)
+    const sample = [...intervalCallbacks.values()][0]
+    assert.ok(sample)
+    for (let index = 0; index < 4; index += 1) sample()
+    assert.equal((setupValue(mounted.setup, 'held') as DrivingInput).throttle, 1)
+    const sendFrames = setupValue(mounted.setup, 'sendFrames') as () => Promise<void>
+    const sending = sendFrames()
+    await waitFor(() => count('/api/living-world/driving/input') === 1)
+    const driven: DrivingSessionView = { ...started, revision: 2, nextSequence: 2, state: { ...started.state } }
+    resolveAt('/api/living-world/driving/input', 0, drivingReply(server.now(), { ok: true, code: 'controls_accepted', session: driven }))
+    await sending
+    await waitFor(() => count('/api/living-world/driving/pause') === 1)
+    assert.equal(setupValue(mounted.setup, 'reverseGearControls'), false)
+    assert.equal(setupValue(mounted.setup, 'active'), false, 'an ordinary legacy throttle is stopped on capability loss')
+    assert.deepEqual(setupValue(mounted.setup, 'held'), { throttle: 0, brake: 0, steer: 0 })
+    assert.equal((setupValue(mounted.setup, 'pendingFrames') as DrivingInput[]).length, 0)
+    const paused: DrivingSessionView = { ...driven, revision: 3,
+      state: { ...driven.state, status: 'paused', speed: 0, stopDwellMs: 0 } }
+    resolveAt('/api/living-world/driving/pause', 0, drivingReply(server.now(), { ok: true, code: 'paused', session: paused }))
+  } finally {
+    mounted.unmount(); traced.restore(); restoreIdentity(oldIdentity); intervalCallbacks.clear(); server.requests.splice(0)
+  }
+})
+
 test('Driving fences an unmounted in-flight control and reconciles only while its actor still owns the request', async () => {
   pending.clear(); intervalCallbacks.clear()
   const component = (await load('/src/app/features/living-world/DrivingApp.vue')).default

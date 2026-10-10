@@ -297,18 +297,6 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
       const { records } = collection(ctx, db)
       const found = existing(records, session.publicId)
       if (found === null || found === false) return response(null, found === false ? 'invalid_saved_journey' : 'no_journey', false)
-      if (!reverseGearIssuanceEnabled && explicitGear) {
-        // Preserve an already committed packet's retry result, but never apply a new explicit
-        // gear request or mutate a row while this trusted issuance option is off.
-        if (found.cityId !== cityId || found.location !== location) return response(view(found), found.cityId !== cityId ? 'city_mismatch' : 'location_changed', false)
-        if (found.journeyId !== body.journeyId) return response(view(found), 'journey_mismatch', false)
-        const prior = found.lastPacket
-        if (prior?.sequence === body.sequence) {
-          if (prior.fingerprint !== fingerprint) return response(view(found), 'packet_conflict', false)
-          return response(view(found), prior.code, true, undefined, true)
-        }
-        return response(view(found), 'reverse_gear_disabled', false)
-      }
       if (found.cityId !== cityId || found.location !== location) {
         if (found.state.status === 'running') {
           const now = ctx.now()
@@ -319,9 +307,18 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
         return response(view(found), found.cityId !== cityId ? 'city_mismatch' : 'location_changed', false)
       }
       if (found.journeyId !== body.journeyId) return response(view(found), 'journey_mismatch', false)
+      // Replay the sole retained successful packet only after actor and journey context, city,
+      // location, and the strict saved-row validation above have succeeded. A delayed exact
+      // retry must not run timeout/clock pausing first, regardless of issuance mode or frame shape.
+      const receipt = found.lastPacket
+      if (receipt?.sequence === body.sequence) {
+        if (receipt.fingerprint !== fingerprint) return response(view(found), 'packet_conflict', false)
+        return response(view(found), receipt.code, true, undefined, true)
+      }
+      if (body.sequence !== found.nextSequence) return response(view(found), 'sequence_conflict', false)
+      if (!reverseGearIssuanceEnabled && explicitGear) return response(view(found), 'reverse_gear_disabled', false)
       const now = ctx.now()
       if (!safeTime(now)) return response(view(found), 'invalid_server_clock', false)
-      const receipt = found.lastPacket
       const elapsed = now - found.lastInputAt
       let pauseCode: string | null = null
       if (found.state.status === 'running' && now < watermark(found)) {
@@ -333,11 +330,6 @@ export function createDrivingService(ctx: RouteContext, options: DrivingServiceO
         writeRecord(records, found, ctx)
         pauseCode = 'input_timeout'
       }
-      if (receipt?.sequence === body.sequence) {
-        if (receipt.fingerprint !== fingerprint) return response(view(found), 'packet_conflict', false)
-        return response(view(found), receipt.code, true, undefined, true)
-      }
-      if (body.sequence !== found.nextSequence) return response(view(found), 'sequence_conflict', false)
       if (pauseCode) return response(view(found), pauseCode, false)
       if (found.state.status !== 'running') return response(view(found), found.state.status === 'complete' ? 'journey_complete' : 'journey_paused', false)
       const credit = Math.min(MAX_CREDIT_MS, found.creditMs + elapsed)

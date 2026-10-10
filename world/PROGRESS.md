@@ -1,3 +1,21 @@
+# Exact online runtime receipts reviewed, 10 October 2026 at 01:59 UTC
+
+Public583c86cad7f0d1ac0dd88dbbebd6f1492f44af30 independently binds raw
+receipt/log hashes to clean c12. Node22.23.3 and24.19 all15 foreign host/Worker
+journey groups pass10 tests each with0 skips. Node24 full host passes1024 of
+1027 with0 failures and3 explicit historical receipt/storage design skips.
+Exact size/download stays614258raw/222677gzip/195402Brotli within original
+615000/223000/195600 caps; smoke15 passes with0 skips. See
+third-five-c1-cloud-runtime-gate-review.json. Remaining required source corpus
+is separate, and this scoped acceptance does not imply complete matrix/native.
+
+New01:57:49 monitor sample shows material paging, superseding earlier proceed
+advice. Existing finite stage44993/store/timer remain; no additional local
+browser/heavy work until supported clearance. Integration coordinates any
+already-active operator step to a safe checkpoint. No actor funding has begun
+by WORLD; actual operator state still needs acknowledgement. Original eec
+store/cookies remain untouched. Production remainsC1/11; no upload performed.
+
 # Finite c12 browser stage ready, 10 October 2026 at 01:57 UTC
 
 Monitor clearance permits this one cached finite phase despite warning pressure

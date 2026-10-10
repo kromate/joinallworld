@@ -1,0 +1,184 @@
+{
+  "observedAtUtc": "2026-10-10T01:58:29.953175+00:00",
+  "decision": "ACCEPT these five exact-source phases; all required broader gates/native/deployment remain separately incomplete",
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "phases": [
+    {
+      "name": "c12-node22-africa15",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "583c86cad7f0d1ac0dd88dbbebd6f1492f44af30",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-node22-africa15/",
+      "receiptSha256": "035635695b2ea3e031c0fb8d4086232be8b83a3529dcbc5af257225c72ccf3ee",
+      "logSha256": "c714cdeb02a476065fd6794084280f57dc1d2a01d5e1e0e8402ec35b98a5e7e9",
+      "nodeVersion": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "server/africa-host.test.ts",
+        "deploy/africa-host.test.ts"
+      ],
+      "durationSeconds": 72.455014,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "# tests 10",
+        "# pass 10",
+        "# fail 0",
+        "# skipped 0"
+      ]
+    },
+    {
+      "name": "c12-node24-africa15",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "583c86cad7f0d1ac0dd88dbbebd6f1492f44af30",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-node24-africa15/",
+      "receiptSha256": "afc01948cd505b2bd6af56af27562a55affaede1d747ac576dffdc345d99cff9",
+      "logSha256": "679c242de0bbba8190d5f3661b20ba80e5f15e6610c86fae943ba232a1bbd7fd",
+      "nodeVersion": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "server/africa-host.test.ts",
+        "deploy/africa-host.test.ts"
+      ],
+      "durationSeconds": 156.545957,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "\u2139 tests 10",
+        "\u2139 pass 10",
+        "\u2139 fail 0",
+        "\u2139 skipped 0"
+      ]
+    },
+    {
+      "name": "c12-node24-host",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "583c86cad7f0d1ac0dd88dbbebd6f1492f44af30",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-node24-host/",
+      "receiptSha256": "45d915e750cfdbffad3fd93e0dd90bb4a9b1dbe5d0966968c57ba3ac5684d8b8",
+      "logSha256": "03122ef22b58c4ef530cc6e65bba086735fa765efb7af4a10ffd64be4bdf38e8",
+      "nodeVersion": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "scripts/node-test-plan.ts",
+        "host"
+      ],
+      "durationSeconds": 308.666189,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "\u2714 legacy full current manifests remain compatible and explicit old versions bypass the pointer (0.576863ms)",
+        "\u2714 bad, missing, and mismatched pointer targets fail closed and are not cached (0.662431ms)",
+        "\u2714 a trip between cities is skipped once, for the price shown, on the Node host (1204.14929ms)",
+        "\u2714 a skip that cannot be paid is refused with the amount missing, and the character stays on its way (51.003792ms)",
+        "\u2714 the skipped legs: Lagos to Ibadan and back by bus, the first skip free and the second charged once (84.643671ms)",
+        "\u2139 tests 1027",
+        "\u2139 pass 1024",
+        "\u2139 fail 0",
+        "\u2139 skipped 3"
+      ]
+    },
+    {
+      "name": "c12-size-download",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "583c86cad7f0d1ac0dd88dbbebd6f1492f44af30",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-size-download/",
+      "receiptSha256": "21cf77cf916a1edf9d6359ca7488b34eabc1b9e885aa7a7b58f2d6d0068986b9",
+      "logSha256": "e8c17f4b47e45846ee32630e45c430f0996b56a6cf848c9c704f77769b29d6f6",
+      "nodeVersion": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "size:download"
+      ],
+      "durationSeconds": 211.276845,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "ok   STARTUP_RAW              614258  budget 615,000 raw bytes (max)  largest over 55 cities (lagos)",
+        "ok   STARTUP_GZIP             222677  budget 223,000 gzip bytes (max)  largest over 55 cities (lagos)",
+        "ok   STARTUP_BROTLI           195402  budget 195,600 brotli bytes (max) [provisional]  largest over 55 cities (lagos)",
+        "First paint (5 files) and lagos startup (28 files): kB raw / gzip / brotli",
+        "   624.8    227.2    195.4  lagos startup"
+      ]
+    },
+    {
+      "name": "c12-smoke",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "583c86cad7f0d1ac0dd88dbbebd6f1492f44af30",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/c12-smoke/",
+      "receiptSha256": "050511c22a0cfb9be258c9dbbeb963182c6768462e5804a8313e8eb021c03537",
+      "logSha256": "2fda7074fa37f7208d2d438146bea97d4fbcb2dedbd3878c7d2fe6a53c206748",
+      "nodeVersion": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "test:smoke"
+      ],
+      "durationSeconds": 133.974871,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "\u2139 cairo automatic startup: 570710 raw 211687 gzip bytes",
+        "\u2139 rabat automatic startup: 570707 raw 211694 gzip bytes",
+        "\u2139 kigali automatic startup: 570718 raw 211692 gzip bytes",
+        "\u2139 kampala automatic startup: 570727 raw 211705 gzip bytes",
+        "\u2139 lusaka automatic startup: 570738 raw 211704 gzip bytes",
+        "\u2139 tests 15",
+        "\u2139 pass 15",
+        "\u2139 fail 0",
+        "\u2139 skipped 0"
+      ]
+    }
+  ],
+  "limitations": [
+    "Node22 host/tooling/Worker and remaining fullgame/UI/release corpus are not inferred from this scoped evidence",
+    "Original focused cache125 receipt retained",
+    "No native browser or production16 claim"
+  ],
+  "knownHostSkips": [
+    {
+      "name": "interaction receipts are short-lived: after ten minutes the flood has expired and an old interaction id is decided afresh",
+      "reason": "Existing design conflict: receipts live as long as the timed id can be accepted (24 h); expired id refused, never decided afresh"
+    },
+    {
+      "name": "a receipt table written under the old shared allowance is read as it is after a restart: money kept, old interactions due",
+      "reason": "Existing storage conflict: old shared table is not retained; untimed IDs refused"
+    },
+    {
+      "name": "grouped: a failed write that carried only lazy commits undoes nothing and is written once the disk works",
+      "reason": "Existing design conflict: failed write undoes unsaved lazy commits; listeners wait for the file"
+    }
+  ]
+}

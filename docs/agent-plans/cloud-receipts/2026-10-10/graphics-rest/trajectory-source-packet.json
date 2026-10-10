@@ -1,0 +1,304 @@
+{
+  "bedGeometry": {
+    "bedTopYWorld": 0.7337499856948853,
+    "blanketCenterOffsetTiles": 0.14,
+    "blanketDepthTiles": 0.58,
+    "blanketTopTiles": 0.575,
+    "blanketZBoundsWorld": [
+      -6.5375,
+      -5.0875
+    ],
+    "centerWorldApprox": [
+      -6.875,
+      -6.25
+    ],
+    "footprintTiles": [
+      1,
+      2
+    ],
+    "posteriorWitnessZ": -5.543670507475726,
+    "tileWorldMeters": 1.25,
+    "witnessWithinBlanket": true
+  },
+  "egress": {
+    "accepted": false,
+    "candidateCount": 60,
+    "leastPenetratingFiniteObservedByRegion": {
+      "head-back": {
+        "dx": 0,
+        "dz": 0.32,
+        "minimumGap": 0.9535590453355952
+      },
+      "pelvis-back": {
+        "dx": 0.16,
+        "dz": 0.16,
+        "minimumGap": -0.08400099289666352
+      },
+      "torso-back": {
+        "dx": 0.32,
+        "dz": 0.08,
+        "minimumGap": 0.14284912270984562
+      }
+    },
+    "unsupportedSamplesByRegion": {
+      "head-back": 0,
+      "pelvis-back": 0,
+      "torso-back": 0
+    },
+    "worstObservedByRegion": {
+      "head-back": {
+        "dx": 0.08,
+        "dz": -0.16,
+        "minimumGap": 0.6881856241449679
+      },
+      "pelvis-back": {
+        "dx": -0.24,
+        "dz": 0.08,
+        "minimumGap": -0.08400099289666374
+      },
+      "torso-back": {
+        "dx": -0.32,
+        "dz": 0.08,
+        "minimumGap": 0.1428491227098454
+      }
+    }
+  },
+  "journey": {
+    "captures": null,
+    "error": "Error: Home action did not reach its actual furniture-use pose: enter; timing={\"count\":73,\"totalMs\":7400.70000000298,\"maximumMs\":975.5}",
+    "frameCount": 73,
+    "probeCalls": 67,
+    "result": "FAIL",
+    "simTotalMs": 7400.70000000298,
+    "surfaceQueries": 86832
+  },
+  "mappedFrame": {
+    "bones": {
+      "mixamorigHead": {
+        "local": [
+          0.0025600000000000015,
+          0.04143999999999992,
+          0.006408333333333328
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "world": [
+          -6.9178893365558,
+          1.4927934114695762,
+          -5.385922615972875
+        ]
+      },
+      "mixamorigHips": {
+        "local": [
+          -0.0066070549013117486,
+          0.29188234430064186,
+          0.05669877536592072
+        ],
+        "quaternion": [
+          0.01918119120214713,
+          -0.004374980603585764,
+          0.02335181951136418,
+          0.9995337082731597
+        ],
+        "world": [
+          -6.897027690821898,
+          0.7742312595172125,
+          -5.534724771429689
+        ]
+      },
+      "mixamorigNeck": {
+        "local": [
+          0,
+          0.20735333333333328,
+          0.06169666666666667
+        ],
+        "quaternion": [
+          0.08566677467103198,
+          -0.010297054648955027,
+          0.03236457760648231,
+          0.9957448008899535
+        ],
+        "world": [
+          -6.914851944860457,
+          1.4423795962078376,
+          -5.403096292005106
+        ]
+      },
+      "mixamorigSpine": {
+        "local": [
+          0.0016383333333333334,
+          0.08584999999999987,
+          0.01473833333333333
+        ],
+        "quaternion": [
+          0.12258181103129856,
+          -0.0048501850522781045,
+          -0.02368026908191007,
+          0.9921640087029231
+        ],
+        "world": [
+          -6.90020379691164,
+          0.8824200605542881,
+          -5.5118466653365825
+        ]
+      },
+      "mixamorigSpine1": {
+        "local": [
+          0,
+          0.1005600000000002,
+          -0.020596666666666662
+        ],
+        "quaternion": [
+          0.11871589134013064,
+          0.0014871927627281964,
+          0.003423198050578318,
+          0.9929212492016231
+        ],
+        "world": [
+          -6.900097493646918,
+          1.0123190861382547,
+          -5.501107247930157
+        ]
+      },
+      "mixamorigSpine2": {
+        "local": [
+          0,
+          0.12164166666666665,
+          -0.05284666666666667
+        ],
+        "quaternion": [
+          -0.2563460321961202,
+          -0.006002436866201741,
+          0.02017329881133127,
+          0.9663558974539566
+        ],
+        "world": [
+          -6.901267858203844,
+          1.1796569404083355,
+          -5.482188648130553
+        ]
+      }
+    },
+    "hipsWorld": [
+      -6.897027690821898,
+      0.7742312595172125,
+      -5.534724771429689
+    ],
+    "rootLocal": [
+      -4.388638033740141,
+      0.4035982296001225,
+      -3.1067210374484873
+    ],
+    "rootQuaternion": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "rootWorld": [
+      -6.888638033740141,
+      0.4035982296001225,
+      -5.606721037448487
+    ]
+  },
+  "mappedPoseContact": {
+    "baselineSource": "first egress full384 sample at offset dx=-.08,dz=0; all three region counts 384",
+    "feet": {
+      "left": {
+        "maximumGap": 0.6257445841125417,
+        "minimumGap": 0.587693646167542,
+        "sampled": 80,
+        "withinFourMillimetres": 0
+      },
+      "right": {
+        "maximumGap": 0.637447478069076,
+        "minimumGap": 0.5999805757611782,
+        "sampled": 64,
+        "withinFourMillimetres": 0
+      }
+    },
+    "floorY": 0.03,
+    "headMinGap": 0.688185624144968,
+    "pelvisMinGap": -0.08400099289666363,
+    "pelvisWitness": {
+      "gap": -0.08400099289666363,
+      "mesh": "Authored casual suit",
+      "supportY": 0.7337499856948853,
+      "vertex": 3507,
+      "world": [
+        -6.972671017937307,
+        0.6497489927982216,
+        -5.543670507475726
+      ]
+    },
+    "torsoMinGap": 0.1428491227098454
+  },
+  "run": {
+    "bundleSha256": "5dab248a943f260ff7f54884e6534d9e95f2689fd8bb3f9b9c86b2c828d931f9",
+    "factorySha256": "c918c5e07a107469b2c772268f6ad4816f9a18690bc77e7ff83b6e6cec710df1",
+    "failurePath": "/workspace/remote-verification/repositories/worker-graphics-rest-egress-first/evidence/graphics-loop/native-game-adoption-v1/home-journey-results/remote-1791595810164/home-journey-failure.json",
+    "failureSha256": "2c3bac97516cbf6bb471855b63081f955ba0dc4ac1c25f13fd5a9422fa5fae10",
+    "head": "b98099cfa0afda8168fcf184d5f541e43861a8c2"
+  },
+  "transition": {
+    "action": {
+      "completed": null,
+      "requestedPose": "lie",
+      "started": "started"
+    },
+    "anchorBlend": 0.545398875328646,
+    "clip": "lie-down",
+    "clipDurationSeconds": 2.20000005,
+    "clipTimeSeconds": 1.1666666678949995,
+    "homeObjectPhase": "not exposed",
+    "phase": "transition",
+    "smoothstepLinearProgress": 0.5303030188090221
+  },
+  "verticalRepair": {
+    "attempts": [
+      {
+        "bodyRegionsClear": false,
+        "cumulativeLift": 0.08100099289666363,
+        "floorFeetClearAndPlanted": true,
+        "requestedLift": 0.08100099289666363
+      },
+      {
+        "bodyRegionsClear": false,
+        "cumulativeLift": 0.1531769685426051,
+        "floorFeetClearAndPlanted": true,
+        "requestedLift": 0.07217597564594147
+      },
+      {
+        "bodyRegionsClear": true,
+        "cumulativeLift": 0.15738887135255086,
+        "floorFeetClearAndPlanted": true,
+        "requestedLift": 0.004211902809945767
+      }
+    ],
+    "cumulativeLift": 0.15738887135255086,
+    "finalAccepted": true,
+    "finalFeet": {
+      "left": {
+        "maximumGap": 0.035595323676871765,
+        "minimumGap": 0.00028336520341934457,
+        "sampled": 80,
+        "withinFourMillimetres": 9
+      },
+      "right": {
+        "maximumGap": 0.03919466375876693,
+        "minimumGap": 0.0006840729614222829,
+        "sampled": 64,
+        "withinFourMillimetres": 5
+      }
+    },
+    "finalRegionMinimumGaps": {
+      "head-back": 0.8455744978427959,
+      "pelvis-back": -0.0031634307478717316,
+      "torso-back": 0.306282092501883
+    }
+  }
+}

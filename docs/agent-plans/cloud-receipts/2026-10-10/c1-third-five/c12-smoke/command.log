@@ -1,0 +1,101 @@
+agent-slot: waiting for heavy slot (1/1 busy: pid 82684 in /workspace/remote-verification/repositories/worker-world-country-provider50: bash -lc set -o pipefail; node --experimental-strip-types --test --test-concurrency=1 scripts/download-budget.test.ts src/app/entry.test.ts 2>&1 | tee /workspace/remote-verification/worker-results/world-country/focused-28f9626/command.log (3m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (76s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (77s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (78s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (79s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (80s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (81s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (82s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (83s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (84s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (85s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (86s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (87s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (88s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (89s))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (2m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 83252 in /workspace/remote-verification/repositories/worker-household-identity: node --experimental-strip-types scripts/typecheck.ts --serial (3m))
+agent-slot: waiting for heavy slot (1/1 busy: pid 82487 in /workspace/remote-verification/repositories/worker-graphics-rest-egress-first: env CHROME_BIN=/usr/bin/chromium python3 evidence/graphics-loop/native-game-adoption-v1/bounded-render.py /tmp/graphics-rest-matrix-optimized-20261010.log /tmp/graphics-rest-matrix-optimized-20261010-receipt.json node evidence/graphics-loop/native-game-adoption-v1/render-home-journey.mjs . (5m))
+
+> joinallworld@0.1.0 test:smoke
+> node --experimental-strip-types --test --test-concurrency=1 src/app/entry.test.ts server/release.test.ts src/types/protocol.test.ts
+
+✔ JavaScript is limited to the service worker, release shims and exact reviewed tooling (15.943298ms)
+✔ the two release shims only point at the TypeScript they stand for (0.508641ms)
+✔ every file in public/ is an asset the release package admits (no dot-file, no map, no manifest, no xml) (10.077664ms)
+✔ the Worker config is the one the release package fixes, and the Worker exports its Durable Object (0.566597ms)
+✔ the default build config emits no source map (maps are opt-in, SOURCEMAPS=1, into dist-maps/) (0.236063ms)
+✔ the first download paints without the game shell, rules engine or city content; the startup closure reads them through the browser system set (1.223209ms)
+✔ the shared shell does not statically import a city venue or regular catalogue (0.334881ms)
+✔ each generated catalogue row has one checked-in Node and Worker loader (0.676622ms)
+✔ Three.js, maps, scene hosts, campus world, models and telemetry SDKs remain separate from both entry and shell (2.109004ms)
+✔ the eager JavaScript does not grow and contains only the loading screen and Vue (4.45919ms)
+ℹ assets/vue-32f50792.js 81170 raw 30886 gzip; assets/preload-helper-86ad5cfe.js 1260 raw 698 gzip; assets/app-f71137d9.js 9039 raw 3984 gzip; total 91469 raw 35568 gzip
+✔ automatic game startup, including one selected city, stays within the original first-load budget (840.827685ms)
+ℹ lagos automatic startup: 614258 raw 222677 gzip bytes
+ℹ ibadan automatic startup: 581922 raw 214616 gzip bytes
+ℹ abuja automatic startup: 593581 raw 215534 gzip bytes
+ℹ port-harcourt automatic startup: 583305 raw 215166 gzip bytes
+ℹ abeokuta automatic startup: 571310 raw 211728 gzip bytes
+ℹ ota automatic startup: 569926 raw 211085 gzip bytes
+ℹ ijebu-ode automatic startup: 570601 raw 211353 gzip bytes
+ℹ sagamu automatic startup: 574194 raw 212887 gzip bytes
+ℹ kano automatic startup: 594786 raw 215670 gzip bytes
+ℹ enugu automatic startup: 584409 raw 215560 gzip bytes
+ℹ benin-city automatic startup: 585387 raw 215601 gzip bytes
+ℹ calabar automatic startup: 587497 raw 216536 gzip bytes
+ℹ uyo automatic startup: 582266 raw 214595 gzip bytes
+ℹ umuahia automatic startup: 588827 raw 215686 gzip bytes
+ℹ owerri automatic startup: 590344 raw 215944 gzip bytes
+ℹ yenagoa automatic startup: 590790 raw 215853 gzip bytes
+ℹ awka automatic startup: 587901 raw 215791 gzip bytes
+ℹ kaduna automatic startup: 585044 raw 215127 gzip bytes
+ℹ maiduguri automatic startup: 585385 raw 215010 gzip bytes
+ℹ gombe automatic startup: 584803 raw 215105 gzip bytes
+ℹ yola automatic startup: 584854 raw 215089 gzip bytes
+ℹ ilorin automatic startup: 583773 raw 215048 gzip bytes
+ℹ minna automatic startup: 581103 raw 214609 gzip bytes
+ℹ osogbo automatic startup: 582759 raw 214715 gzip bytes
+ℹ damaturu automatic startup: 580504 raw 214104 gzip bytes
+ℹ jalingo automatic startup: 580785 raw 214063 gzip bytes
+ℹ akure automatic startup: 582778 raw 214664 gzip bytes
+ℹ ado-ekiti automatic startup: 580650 raw 214252 gzip bytes
+ℹ asaba automatic startup: 580821 raw 214605 gzip bytes
+ℹ lokoja automatic startup: 579956 raw 214076 gzip bytes
+ℹ jos automatic startup: 587551 raw 215936 gzip bytes
+ℹ lafia automatic startup: 579952 raw 214026 gzip bytes
+ℹ katsina automatic startup: 588826 raw 215596 gzip bytes
+ℹ sokoto automatic startup: 586926 raw 215525 gzip bytes
+ℹ birnin-kebbi automatic startup: 585595 raw 215286 gzip bytes
+ℹ gusau automatic startup: 583008 raw 214536 gzip bytes
+ℹ dutse automatic startup: 584219 raw 215054 gzip bytes
+ℹ bauchi automatic startup: 589331 raw 215709 gzip bytes
+ℹ makurdi automatic startup: 581791 raw 214399 gzip bytes
+ℹ abakaliki automatic startup: 581473 raw 214576 gzip bytes
+ℹ accra automatic startup: 570632 raw 211655 gzip bytes
+ℹ algiers automatic startup: 570760 raw 211751 gzip bytes
+ℹ lome automatic startup: 570663 raw 211722 gzip bytes
+ℹ nairobi automatic startup: 570705 raw 211723 gzip bytes
+ℹ yaounde automatic startup: 570677 raw 211715 gzip bytes
+ℹ abidjan automatic startup: 570764 raw 211795 gzip bytes
+ℹ addis-ababa automatic startup: 570717 raw 211714 gzip bytes
+ℹ cape-town automatic startup: 570851 raw 211810 gzip bytes
+ℹ cotonou automatic startup: 570726 raw 211749 gzip bytes
+ℹ dakar automatic startup: 570693 raw 211727 gzip bytes
+ℹ cairo automatic startup: 570710 raw 211687 gzip bytes
+ℹ rabat automatic startup: 570707 raw 211694 gzip bytes
+ℹ kigali automatic startup: 570718 raw 211692 gzip bytes
+ℹ kampala automatic startup: 570727 raw 211705 gzip bytes
+ℹ lusaka automatic startup: 570738 raw 211704 gzip bytes
+✔ every registered route is typed, and every typed route is registered (11.287994ms)
+✔ every frame type the server accepts or sends is typed (38.137372ms)
+✔ the Cloudflare Worker runs the shared registries: the same routes and frames, plus what the types say only it does (5.798253ms)
+✔ core, social, civic and support answers carry exactly the typed keys (578.189767ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2482.686802

@@ -1,0 +1,60 @@
+{
+  "sha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "branch": "codex/cloud-c1-third-five-sourcecheck-20261010",
+  "parent": "0a5e2983126e3dac406af1c3a121e9cbfef78feb",
+  "checkout": "/workspace/remote-verification/repositories/coordinator-c1-third-five-sourcecheck",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "14153703424",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "npm",
+    "run",
+    "test:smoke"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 83824,
+  "started_at_utc": "2026-10-10T01:28:12.821176+00:00",
+  "ended_at_utc": "2026-10-10T01:30:26.796047+00:00",
+  "duration_seconds": 133.974871,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 19,
+    "sample_source": "Monitor latest user handoff: main shared allowance19% remaining",
+    "recorded_at_utc": "2026-10-10T01:27:45.795355+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/c12b8ebd83cd301475fb1d7bf9e143af260d6621/smoke/command.log",
+  "log_sha256": "2fda7074fa37f7208d2d438146bea97d4fbcb2dedbd3878c7d2fe6a53c206748",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

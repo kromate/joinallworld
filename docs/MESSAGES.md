@@ -27,6 +27,17 @@ A client sends `mentions: [{ id, start }]` beside the body. The server checks ea
 
 A gift is a line in the two players' direct chat (`gift: { n, r? }`; the receiver sees "Ada sent you ₦1,500", the sender "You sent ₦1,500"). The money moves exactly as before (`transfer`: same limits, same receipt). The recipient's other devices are told live (`transfer`, `social-sync`, `life-changed`). A gift for a player who is away is applied on their next request; `r` records what a ride debt took of it and is shown to the receiver only.
 
+## Requests for money
+
+In a direct chat with a friend, Chat options has **Request money** beside **Send money**: an amount in whole naira (within the gift minimum and maximum) and an optional note of at most 60 characters. Nothing moves. The request is a card in both players' chat (`request` on the message: amount, note, `state`, `mine`, `expiresAt`, `payable`, and the transfer id as `receipt` once paid).
+
+- The friend asked sees **Pay** and **Decline**; Pay asks "Pay ₦X to Name?" once more before the call. The one who asked sees **Cancel request**. A paid, declined, cancelled or expired card has no buttons. Cards cannot be edited, deleted, forwarded or pinned.
+- States: open, paid, declined, cancelled; expired is not stored, an open request reads as expired 24 hours after it was made. Blocking either way ends open requests between the two players.
+- Limits (`src/moneyRequest.ts`): one open request per friend, 3 per friend and 10 in all per rolling day, 5 a minute, 500 kept on the server, forgotten 2 days after they were made.
+- Paying is an ordinary transfer, the same code as Send money: the same caps, daily limits, friend and block rules and the same receipt, once per `clientId`. A refusal (a cap, a daily limit, not enough money) shows the gift wording and leaves the card open. The recipient's wallet and statement show it as any gift.
+- Routes: `POST /api/social/money-requests { to, amount, note?, clientId }` and `POST /api/social/money-requests/answer { id, op: pay | decline | cancel, cityId?, clientId }`. Both are exactly-once per `clientId`; the card changes live on both sides (`message-changed`). Each choice on a card keeps one client id until the server answers, so a double tap or a retry cannot act twice.
+- Code: `src/app/features/messages/` (`MoneyRequestCard.vue`, `moneyRequestModel.ts`, `moneyRequests.ts`), loaded with the Messages app, not the first download.
+
 ## Stored shapes (all additive)
 
 | Where | Field | Cost |
@@ -36,6 +47,8 @@ A gift is a line in the two players' direct chat (`gift: { n, r? }`; the receive
 | message | `re?: { seq, from, text }` | about 140 bytes, only on a reply |
 | message | `rx?: { id: emoji }` | about 45 bytes per reaction |
 | message | `gift?: { n, r? }` | about 20 bytes, only on a gift |
+| `social.moneyRequests[id]` | `{ from, to, n, note?, at, expires, state, conv, seq, paid? }` | about 150 bytes per request, at most 500 |
+| message | `req?: { id, n, note?, x, s? }` | about 60 bytes, only on a request card |
 | message | `img?: { id, w, h, n, rp?, hid?, gone? }` | about 90 bytes, only on a picture (docs/CHAT-PICTURES.md) |
 | `social.players[id].convs[conv]` | `mute?`, `pin?` | 6 bytes each |
 | `social.players[id]` | `groups?`, `mentions?`, `pictures?`, `noPictures?`, `pics?`, `notify?` | only when set |

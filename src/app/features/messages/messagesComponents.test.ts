@@ -8,7 +8,7 @@ import type { ViteDevServer } from 'vite'
 import { createSSRApp, h } from 'vue'
 import type { Component } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import type { Conversation, Message, MessagePinsView, SocialOverview } from '../../../types/social.ts'
+import type { Conversation, Message, MessagePinsView, MoneyRequestView, SocialOverview } from '../../../types/social.ts'
 
 const root = fileURLToPath(new URL('../../../..', import.meta.url))
 let vite: ViteDevServer
@@ -113,4 +113,27 @@ test('the group panel: people with the admin marked, who may change them, the si
   assert.ok(!member.includes('Remove') && !member.includes('Add people') && member.includes('Ada runs this group'))
   const full = words(await render('/src/app/features/messages/GroupManage.vue', { conv: { ...conv, members: Array.from({ length: 12 }, (_, i) => ({ id: i ? `m${i}` : 'ada', name: `P${i}` })) }, me }))
   assert.ok(full.includes('12 of 12'))
+})
+
+test('a request for money is a card: the friend asked gets Pay and Decline, the asker gets Cancel, and a resolved card has none', async () => {
+  const request: MoneyRequestView = { id: 'MR-1', amount: 1500, note: 'Lunch', state: 'open', mine: false, expiresAt: 5000, payable: true }
+  const card = (view: Partial<MoneyRequestView>, extra: Record<string, unknown> = {}) => bubble(line({ body: 'Asked for ₦1,500: Lunch', request: { ...request, ...view } }), { now: 1000, ...extra })
+  const asked = await card({})
+  assert.match(asked, /role="group"[^>]*aria-label="Bola asked you ₦1,500: Lunch\. Open\."/)
+  assert.ok(words(asked).includes('Bola asked you') && words(asked).includes('₦1,500') && words(asked).includes('Lunch') && words(asked).includes('Open'))
+  assert.match(asked, />Pay<\/button>/); assert.match(asked, />Decline<\/button>/); assert.ok(!asked.includes('Cancel request'))
+  const own = await card({ mine: true, payable: false })
+  assert.ok(words(own).includes('You asked Bola')); assert.match(own, />Cancel request<\/button>/); assert.ok(!own.includes('>Pay<'))
+  for (const [state, label] of [['paid', 'Paid'], ['declined', 'Declined'], ['cancelled', 'Cancelled']] as const) {
+    const done = await card({ state })
+    assert.ok(words(done).includes(label), state); assert.ok(!done.includes('request-btn'), `${state} has no buttons`)
+  }
+  const late = await card({}, { now: 5000 })
+  assert.ok(words(late).includes('Expired') && !late.includes('request-btn'), 'out of time, with no write yet')
+  assert.match(await card({}, { requestBusy: true }), /<button[^>]*disabled[^>]*>Working…<\/button>/)
+  assert.match(await card({}, { requestOffline: true }), /<button[^>]*disabled[^>]*>Pay<\/button>/)
+  const menu = await card({}, { canActions: true })
+  assert.ok(!menu.includes('class="bubble-text"'), 'a card is not words')
+  const hostile = await card({ note: '<img src=x onerror=alert(1)>' })
+  assert.ok(!hostile.includes('<img') && hostile.includes('&lt;img'))
 })

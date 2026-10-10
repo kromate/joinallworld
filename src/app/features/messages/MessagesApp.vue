@@ -15,9 +15,9 @@ import { civicTitle } from '../../../game/cities/terminology.ts'
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
-import type { Conversation, Message, SearchResult, ThreadItem } from '../../../types/social.ts'
+import type { Conversation, Message, MoneyRequestView, SearchResult, ThreadItem } from '../../../types/social.ts'
 import type { PlayerRef } from '../../../types/protocol.ts'
-import { call, cityId as socialCityId, discard, newClientId, onCallFrame, onSocketOpen, openThread, perform, reconnect as reconnectSocial, retry, send, social, start as startSocial, sync, threadView } from '../social/useSocial.ts'
+import { call, cityId as socialCityId, discard, newClientId, onCallFrame, onSocketOpen, openThread, perform, refreshLife, reconnect as reconnectSocial, retry, send, social, start as startSocial, sync, threadView } from '../social/useSocial.ts'
 import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import GameIcon from '../../ui/GameIcon.vue'
@@ -52,6 +52,9 @@ import MessageAction from './MessageAction.vue'
 import MessageBubble from './MessageBubble.vue'
 import PinnedMessages from './PinnedMessages.vue'
 import { canPinMessage, createMessagePins } from './messagePins.ts'
+import { createMoneyRequests } from './moneyRequests.ts'
+import type { RequestOp } from './moneyRequestModel.ts'
+import { mergeMessages } from '../../../game/social-model.ts'
 import { isMessagePinsFrame } from './messagePinsFrame.ts'
 import FriendPicker from './FriendPicker.vue'
 import GroupManage from './GroupManage.vue'
@@ -277,6 +280,28 @@ async function sendMoneyTo(player: string, name: string): Promise<void> {
   for (let tries = 0; tries < 40 && personUi.player !== player; tries += 1) await new Promise((done) => setTimeout(done, 50))
   if (turn === actorTurn && personUi.player === player) { personUi.form = 'money'; personUi.clientId = newClientId() }
 }
+/** Requests for money: asking from the chat options, and answering a card in the thread. A card is redrawn from the server's answer (and from the live frame both players get). */
+const now = ref(Date.now())
+const clock = setInterval(() => { now.value = Date.now() }, 15000)
+onBeforeUnmount(() => clearInterval(clock))
+const requests = createMoneyRequests({
+  call: async (path, body) => { const result = await call<{ request: MoneyRequestView; message?: Message }>(path, body); void sync(); return result },
+  newClientId,
+  cityId: socialCityId,
+  apply(message, request) {
+    const key = message?.conv ?? ui.open
+    const thread = key ? social.threads.get(key) : undefined
+    if (!thread) return
+    const line = message ?? thread.messages.find((item) => item.request?.id === request.id)
+    if (line) thread.messages = mergeMessages(thread.messages, [{ ...line, request }])
+  },
+  toast: (text, kind) => game.toast(text, kind),
+  refreshLife,
+})
+function answerCard(item: ThreadItem, id: string, op: RequestOp): void {
+  if (!isOutbox(item) && item.request) void requests.answer(id, op, item.from?.name ?? 'them', item.request.amount)
+}
+const transferLimits = computed(() => { const transfer = game.view.value.social?.transfer; return transfer ? { min: transfer.min, max: transfer.maxPerTransfer } : {} })
 function newGroup(): void { Object.assign(group, { open: true, name: '', members: [], clientId: newClientId() }) }
 // Opened for a new group (the guide's "create a group"): the form opens as soon as the chats are there to pick friends from.
 watch([wantGroup, me], () => { if (wantGroup.value && me.value) { wantGroup.value = false; newGroup() } }, { immediate: true })
@@ -424,7 +449,21 @@ defineExpose({
 
         <GroupManage v-if="conv?.kind === 'group' && ui.manage" :conv="conv" :me="me" @left="groupLeft" @player="openCard" />
         <section v-else-if="partner && ui.manage" class="messages-manage" aria-label="Chat options">
-          <BaseButton small data-chat="send-money" @click="sendMoneyTo(partner, title)">Send money</BaseButton>
+          <span class="bubble-actions is-start">
+            <BaseButton small data-chat="send-money" @click="sendMoneyTo(partner, title)">Send money</BaseButton>
+            <BaseButton v-if="conv?.kind === 'dm'" small data-chat="request-money" :disabled="!connected" :reason="connected ? null : 'Reconnect to ask for money.'" @click="requests.openForm()">Request money</BaseButton>
+          </span>
+          <form v-if="requests.ask.open && conv?.kind === 'dm'" class="messages-request" aria-label="Request money" @submit.prevent="requests.submit(partner, transferLimits)">
+            <label for="message-request-amount">Amount to ask for (₦)</label>
+            <input id="message-request-amount" v-model="requests.ask.amount" class="messages-field" name="amount" inputmode="numeric" pattern="[0-9]*" maxlength="13" required :aria-invalid="requests.ask.error ? true : undefined" aria-describedby="message-request-help">
+            <label for="message-request-note">Note (optional)</label>
+            <input id="message-request-note" v-model="requests.ask.note" class="messages-field" name="note" maxlength="60" placeholder="What is it for?">
+            <p id="message-request-help" class="messages-note" :class="{ 'is-warn': requests.ask.error }" :role="requests.ask.error ? 'alert' : undefined">{{ requests.ask.error || `Your friend sees a card and can pay or decline it. It lasts 24 hours. Paying counts as a gift under the usual gift limits.` }}</p>
+            <span class="bubble-actions is-start">
+              <BaseButton small variant="primary" type="submit" :disabled="requests.ask.busy">{{ requests.ask.busy ? 'Sending…' : 'Send request' }}</BaseButton>
+              <BaseButton small @click="requests.closeForm()">Cancel</BaseButton>
+            </span>
+          </form>
           <template v-if="conv?.kind === 'dm'">
           <label class="messages-switch"><input type="checkbox" :checked="conv.pinned === true" @change="pinChat(($event.target as HTMLInputElement).checked)"> Pin to the top of my chats</label>
           <BaseButton small variant="danger" @click="hideChat">Delete this chat for me</BaseButton>
@@ -454,7 +493,7 @@ defineExpose({
                 </span>
               </div>
               <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
-              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(row.item))" :pinned="isPinned(row.item)" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
+              <MessageBubble v-else :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(row.item))" :pinned="isPinned(row.item)" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" :now="now" :request-busy="Boolean(row.item.request && requests.busy.has(row.item.request.id))" :request-offline="!connected" @request="(id, op) => answerCard(row.item, id, op)" @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
             </template>
           </div>
           <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>

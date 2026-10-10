@@ -65,6 +65,7 @@ import { UUID_PATTERN, venueRoomKey, isDeparting } from '../protocol.ts';
 import { streetRoomKey } from '../../src/game/neighbourhood-space.ts';
 import { lagosTime, lagosDayStart } from '../../src/game/clock.ts';
 import { TRANSFER_LIMITS, PLAYER_ACTIONS } from '../../src/game/content/npcs.ts';
+import { MONEY_REQUEST, moneyRequestStateAt } from '../../src/moneyRequest.ts';
 import { freeOf } from '../../src/game/systems/wallet.ts';
 import { venueLabel } from '../../src/game/content/venues.ts';
 import { cityName } from '../../src/game/cities/index.ts';
@@ -88,9 +89,9 @@ import { characterCity } from '../character.ts';
 import { forEachValue, scanKeys } from '../keyed.ts';
 import { FOUNDER_EMAIL_SHA256, FOUNDER_PAGE, welcomeNote, autoFriend, emailHash, friendsIn, friendsSince } from './founder.ts';
 import type { CityId, PlayerRef } from '../../src/types/protocol.ts';
-import type { PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView, ChatPrefs } from '../../src/types/social.ts';
+import type { MoneyRequestView, PlayerReportReceipt, ReportReason, ConversationKind, HouseView, SocialPushFrame, SocialUpdate, SocialUpdateKind, Whereabouts, PresenceStatus, Mention, PictureView, ChatPrefs } from '../../src/types/social.ts';
 import type { LifeState } from '../../src/types/life.ts';
-import type { AccountRecord, ConversationRecord, ImageRef, VoiceRef, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, VisitRecord, WsConnection } from '../types.ts';
+import type { AccountRecord, ConversationRecord, ImageRef, MoneyRequestRecord, VoiceRef, Db, HouseRecord, MessageRecord, PendingEffect, PlayerReportRecord, RouteContext, SessionRecord, SocialCollection, SocialEffectPayload, SocialPlayerRecord, VisitRecord, WsConnection } from '../types.ts';
 import { captureProjection } from './capture.ts';
 
 /** A request body or socket frame: every field is untrusted until a validator below has read it. */
@@ -121,6 +122,7 @@ export const REPORT_REASONS: readonly ReportReason[] = Object.freeze<ReportReaso
 
 const CONTROL = /[\u0000-\u0008\u000b-\u001f\u007f]/;
 const CLIENT_ID = /^[A-Za-z0-9:_-]{8,80}$/;
+const REQUEST_ID = /^MR-[0-9]{1,12}$/;
 const CONV_ID = /^(dm|g|h)\.[0-9a-f.-]{1,80}$/;
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value);
 const naira = (value: unknown): string => `₦${Math.round(Number(value) || 0).toLocaleString('en-NG')}`;
@@ -486,6 +488,13 @@ function buildService(ctx: RouteContext) {
     if (left.length) s.pending[session.publicId] = left; else delete s.pending[session.publicId];
   }
 
+  /** Forget requests whose day is over (they were all closed or expired by then). Their lines in the chat keep how they ended. */
+  function forgetMoneyRequests(s: SocialCollection, t: number): void {
+    const book = s.moneyRequests;
+    if (!book) return;
+    for (const [key, record] of Object.entries(book)) if (t - record.at > MONEY_REQUEST.keepMs) delete book[key];
+    if (!Object.keys(book).length) delete s.moneyRequests;
+  }
   /** Hourly housekeeping: return unclaimed gifts, forget long-idle players. */
   function sweep(s: SocialCollection, t: number): void {
     if (t - (s.sweptAt || 0) < LIMITS.sweepMs) return;
@@ -507,6 +516,7 @@ function buildService(ctx: RouteContext) {
       }
       if (keep.length) s.pending[to] = keep; else delete s.pending[to];
     }
+    forgetMoneyRequests(s, t);
     const founder = founderId(s);
     // The players who may have gone idle, by the index of when each was last seen; each is judged again by its own record below.
     for (const { key: id } of scanKeys(s.players, 'socialPlayer', { nBelow: t - LIMITS.playerIdleMs, missing: true })) {
@@ -567,6 +577,23 @@ function buildService(ctx: RouteContext) {
     }
     return tally.size ? [...tally].map(([emoji, { count, mine }]) => ({ emoji, count, ...(mine ? { mine: true as const } : {}) })) : undefined;
   }
+  /** A request for money as `viewer` sees it. The stored request decides; once it has been forgotten the line itself says how it ended (and a line that never ended read as expired). */
+  function requestView(s: SocialCollection, line: NonNullable<MessageRecord['req']>, asker: string | null, viewer: string): MoneyRequestView {
+    const record = s.moneyRequests?.[line.id], mine = asker === viewer;
+    const state = record ? moneyRequestStateAt(record, now()) : line.s ?? 'expired';
+    const payable = !mine && state === 'open' && Boolean(asker) && !blockedEither(s, viewer, asker!);
+    return { id: line.id, amount: line.n, ...(line.note ? { note: line.note } : {}), state, mine, expiresAt: record?.expires ?? line.x, payable, ...(record?.paid ? { receipt: record.paid.transferId } : {}) };
+  }
+  /** What a chat line says of a stored request. */
+  const reqOf = (record: MoneyRequestRecord): NonNullable<MessageRecord['req']> => ({ id: record.id, n: record.n, ...(record.note ? { note: record.note } : {}), x: record.expires, ...(record.state !== 'open' ? { s: record.state } : {}) });
+  /** End a request: the stored record and its line in the chat say how, and both players' open chats are told. */
+  function closeRequest(s: SocialCollection, record: MoneyRequestRecord, state: 'paid' | 'declined' | 'cancelled', push: PushList): void {
+    record.state = state; record.closedAt = now();
+    const conv = s.convs[record.conv], line = conv?.messages.find((item) => item.seq === record.seq);
+    if (!conv || !line?.req) return;
+    line.req.s = state;
+    for (const member of conv.members) if (visibleTo(s, member, line) && s.players[member]?.convs[conv.id]) push.push([member, { type: 'message-changed', conv: summary(s, conv, member), message: messageView(s, conv, line, member) }]);
+  }
   function messageView(s: SocialCollection, conv: ConversationRecord, message: MessageRecord, viewer: string) {
     const quote = message.re && !s.players[viewer]?.blocked[message.re.from] ? { seq: message.re.seq, from: pub(s, message.re.from), text: message.re.text } : undefined;
     const picture = pictureView(s, conv, message, viewer), voice = voiceView(s, message, viewer);
@@ -576,6 +603,7 @@ function buildService(ctx: RouteContext) {
       ...(quote ? { replyTo: quote } : {}),
       ...(reactionsOf(s, message, viewer) ? { reactions: reactionsOf(s, message, viewer) } : {}),
       ...(message.gift ? { gift: { amount: message.gift.n, ...(message.gift.r && message.from !== viewer ? { repaid: message.gift.r } : {}) } } : {}),
+      ...(message.req ? { request: requestView(s, message.req, message.from, viewer) } : {}),
       ...(picture ? { image: picture } : {}), ...(voice ? { voice } : {}), ...(message.version ? { version: message.version } : {}),
       ...(message.editedAt ? { editedAt: message.editedAt } : {}), ...(message.deletedAt ? { deleted: true as const } : {}), ...(message.forwarded ? { forwarded: true as const } : {}) };
   }
@@ -601,7 +629,7 @@ function buildService(ctx: RouteContext) {
     if (revision >= Number.MAX_SAFE_INTEGER) throw ctx.fail(409, 'pins_changed');
     return revision + 1;
   };
-  const globallyPinnable = (message: MessageRecord): boolean => Boolean(message.from && !message.sys && !message.auto && !message.gift && !message.deletedAt &&
+  const globallyPinnable = (message: MessageRecord): boolean => Boolean(message.from && !message.sys && !message.auto && !message.gift && !message.req && !message.deletedAt &&
     (!message.img || !message.img.gone && !message.img.hid) && (!message.voice || !message.voice.gone && !message.voice.hidden && now() - message.at <= VOICE_POLICY.retentionMs));
   function canManagePins(s: SocialCollection, conv: ConversationRecord, viewer: string): boolean {
     if (conv.kind === 'dm') return !blockedEither(s, viewer, conv.members.find((member) => member !== viewer)!);
@@ -939,6 +967,45 @@ function buildService(ctx: RouteContext) {
     return null;
   }
 
+  /**
+   * One gift of naira, inside the caller's ctx.once: every rule a transfer has (friends, caps, daily limits, blocks, where the credit lands) lives here, so a gift
+   * and the payment of a request for money are the same thing. A refusal changes nothing.
+   */
+  function performTransfer(db: Db, session: SessionRecord, s: SocialCollection, p: SocialPlayerRecord, id: string, push: PushList, to: string, cityId: CityId, amount: number, cid: string) {
+    const L = TRANSFER_LIMITS, t = now();
+    const transferId = peerTransferId(id, cid);
+    const { target, refusal } = other(s, id, to);
+    if (refusal) return refusal;
+    if (!ctx.allow(`social:transfer:${id}`, 5)) return no('rate_limited', 'Too many transfers in a minute. Wait, then try again.');
+    if (!areFriends(s, id, to)) return no('friends_only', `You can only send money to friends. Add ${target.name} as a friend first.`);
+    const wait = (ms: number) => { const minutes = Math.ceil(ms / 60000); return minutes >= 60 ? `${Math.ceil(minutes / 60)} h` : `${minutes} min`; };
+    if (t - p.first < L.minAccountAgeMs) return no('account_too_new', `Sending money opens 24 hours after you start playing. Try again in ${wait(L.minAccountAgeMs - (t - p.first))}.`);
+    const since = friendsSince(s.players, id, to);
+    if (t - since < L.minFriendshipMs) return no('friendship_too_new', `You and ${target.name} only just became friends. Try again in ${wait(L.minFriendshipMs - (t - since))}.`);
+    const day = lagosTime(t).day;
+    if (target.recv.day !== day) target.recv = { day, amount: 0 };
+    // The part of the gift that is the sender's unrestricted funds (an admin's credit) is neither blocked by nor counted against the recipient's daily cap: to them it is an ordinary gift,
+    // and what they receive is ordinary money (it is never passed on as unrestricted).
+    const unlimited = Math.min(freeOf(ctx.settle(session, cityId)), amount), counted = amount - unlimited;
+    if (target.recv.amount + counted > L.dailyReceive) return no('recipient_limit', `${target.name} has received the most a player can be given in one day (${naira(L.dailyReceive)}).`);
+    if ((s.pending[to]?.length ?? 0) >= LIMITS.pending) return no('recipient_unavailable', `${target.name} has too many gifts waiting. Ask them to log in first.`);
+    // Where the money will land, decided before anything is charged. No life anywhere: no gift.
+    const theirs = ctx.core.sessionByPublicId(db, to);
+    const creditCity = theirs && theirs.expiresAt > t ? lifeCity(theirs, cityId) : null;
+    if (!creditCity) return no('recipient_no_life', `${target.name} has no life in any city right now, so there is nowhere to put the money. Nothing was sent.`);
+    const sent = act(session, cityId, 'transfer-out', { to, name: target.name, amount, transferId }, `social|transfer|${id}|${cid}`);
+    if (!sent.ok) return no(sent.code, sent.reason!);
+    target.recv.amount += counted;
+    // The gift is a line in the two players' chat: "You sent ₦1,500" for the sender, "Ada sent you ₦1,500" for the receiver.
+    const gkey = dmId(id, to), chat = s.convs[gkey] ??= { id: gkey, kind: 'dm', members: [id, to].sort(), seq: 0, created: t, messages: [], pinScope: ctx.randomId() };
+    index(s, id, chat, chat.seq); index(s, to, chat, chat.seq);
+    const line = append(s, chat, id, `Sent ${naira(amount)}`, null, false, { gift: { n: amount } });
+    const credited = owe(s, db, to, creditCity, { op: 'transfer-in', from: id, name: p.name, amount, transferId }, { keep: true, gift: { conv: gkey, seq: line.seq } });
+    fanOut(s, chat, line, push, null);
+    push.push([to, { type: 'transfer', from: pub(s, id), amount, credited }], [to, { type: 'social-sync' }]);
+    notify(s, to, 'transfer', `${p.name} sent you ${naira(amount)}.`, { from: id, amount }, push);
+    return yes('sent', { amount, to: pub(s, to), credited, creditedCity: creditCity, balance: sent.state.cash });
+  }
   const service = {
     LIMITS,
     presence,
@@ -1364,6 +1431,10 @@ function buildService(ctx: RouteContext) {
       push.push(...visibilityPinPushes(s, id, target, direct?.id));
       for (const [host, guest] of [[id, target], [target, id]] as [string, string][]) if (endVisit(s, host, guest)) { housePush(s, host, push); push.push([guest, { type: 'invite-house', house: houseView(s, host, guest) }]); }
       delete s.houses[id]?.knocks[target]; delete s.houses[target]?.knocks[id];
+      // A request open between the two can no longer be paid: it ends here, and stays ended if the block is lifted.
+      for (const record of Object.values(s.moneyRequests ?? {})) {
+        if (record.state === 'open' && (record.from === id && record.to === target || record.from === target && record.to === id)) closeRequest(s, record, 'cancelled', push);
+      }
       return yes('blocked', { push });
     },
     unblock(db: Db, session: SessionRecord, body: SocialBody) {
@@ -1526,7 +1597,7 @@ function buildService(ctx: RouteContext) {
         const source = memberConv(s, id, convId(body.forward.conv));
         const sourceSeq = body.forward.seq;
         forwarded = source?.messages.find((item) => item.seq === sourceSeq);
-        if (!forwarded || forwarded.deletedAt || forwarded.sys || forwarded.auto || forwarded.gift || forwarded.img || forwarded.voice || !visibleTo(s, id, forwarded)) return no('unknown_message', 'Only an available text message can be forwarded.');
+        if (!forwarded || forwarded.deletedAt || forwarded.sys || forwarded.auto || forwarded.gift || forwarded.req || forwarded.img || forwarded.voice || !visibleTo(s, id, forwarded)) return no('unknown_message', 'Only an available text message can be forwarded.');
       }
       const message = forwarded ? text(forwarded.body, LIMITS.body, 'invalid_message') : voice ? caption(body.body) || 'Voice note' : picture ? caption(body.body) : text(body.body, LIMITS.body, 'invalid_message');
       const to = body.to !== undefined ? uuid(body.to) : null, key = to ? dmId(session.publicId, to) : convId(body.conv);
@@ -1694,7 +1765,7 @@ function buildService(ctx: RouteContext) {
       if (!conv) return no('not_a_member', 'You are not in that conversation.');
       const line = conv.messages.find((item) => item.seq === body.seq);
       if (!line || !visibleTo(s, id, line)) return no('unknown_message', 'That message is not available.');
-      if (line.from !== id || line.sys || line.auto || line.gift) return no('not_allowed', 'You can only change your own messages, not payment records.');
+      if (line.from !== id || line.sys || line.auto || line.gift || line.req) return no('not_allowed', 'You can only change your own messages, not payment records.');
       if (conv.kind === 'dm' && blockedEither(s, id, conv.members.find((member) => member !== id)!)) return no('blocked', 'You cannot change messages in this chat.');
       const push: PushList = [];
       const outcome = ctx.once(db, session, { id: body.clientId, kind: 'message.update', fingerprint: [key, body.seq, body.op, body.version, sha256Hex(replacement)] }, () => {
@@ -2259,40 +2330,75 @@ function buildService(ctx: RouteContext) {
       if (typeof amount !== 'number' || !Number.isSafeInteger(amount) || amount <= 0) throw bad('invalid_amount');
       const { s, p, id } = enter(db, session);
       const push: PushList = [];
-      const outcome = ctx.once(db, session, { id: cid, kind: 'transfer', fingerprint: [to, amount, cityId] }, () => {
-        const L = TRANSFER_LIMITS, t = now();
-        const transferId = peerTransferId(id, cid as string);
+      const outcome = ctx.once(db, session, { id: cid, kind: 'transfer', fingerprint: [to, amount, cityId] }, () => performTransfer(db, session, s, p, id, push, to, cityId, amount, cid as string));
+      return outcome.ok && !repeated(outcome) ? { ...outcome, push } : outcome;
+    },
+    /**
+     * Ask a friend for money. Nothing moves: this writes a request (social.moneyRequests) and its card in the two players' chat.
+     * Exactly once per `clientId`. The friend pays it with answerMoneyRequest, which is a gift under every gift rule.
+     */
+    requestMoney(db: Db, session: SessionRecord, body: SocialBody) {
+      const to = uuid(body.to), cid = body.clientId, amount = body.amount;
+      ctx.onceId(cid);
+      if (typeof amount !== 'number' || !Number.isSafeInteger(amount) || amount <= 0) throw bad('invalid_amount');
+      const note = body.note === undefined || body.note === null || (typeof body.note === 'string' && !body.note.trim()) ? '' : text(body.note, MONEY_REQUEST.noteMax, 'invalid_note');
+      const { s, id } = enter(db, session);
+      const push: PushList = [];
+      const outcome = ctx.once(db, session, { id: cid, kind: 'money.request', fingerprint: [to, amount, sha256Hex(note)] }, () => {
+        const L = TRANSFER_LIMITS, t = now(), DAY = 86400000;
         const { target, refusal } = other(s, id, to);
         if (refusal) return refusal;
-        if (!ctx.allow(`social:transfer:${id}`, 5)) return no('rate_limited', 'Too many transfers in a minute. Wait, then try again.');
-        if (!areFriends(s, id, to)) return no('friends_only', `You can only send money to friends. Add ${target.name} as a friend first.`);
-        const wait = (ms: number) => { const minutes = Math.ceil(ms / 60000); return minutes >= 60 ? `${Math.ceil(minutes / 60)} h` : `${minutes} min`; };
-        if (t - p.first < L.minAccountAgeMs) return no('account_too_new', `Sending money opens 24 hours after you start playing. Try again in ${wait(L.minAccountAgeMs - (t - p.first))}.`);
-        const since = friendsSince(s.players, id, to);
-        if (t - since < L.minFriendshipMs) return no('friendship_too_new', `You and ${target.name} only just became friends. Try again in ${wait(L.minFriendshipMs - (t - since))}.`);
-        const day = lagosTime(t).day;
-        if (target.recv.day !== day) target.recv = { day, amount: 0 };
-        // The part of the gift that is the sender's unrestricted funds (an admin's credit) is neither blocked by nor counted against the recipient's daily cap: to them it is an ordinary gift,
-        // and what they receive is ordinary money (it is never passed on as unrestricted).
-        const unlimited = Math.min(freeOf(ctx.settle(session, cityId)), amount), counted = amount - unlimited;
-        if (target.recv.amount + counted > L.dailyReceive) return no('recipient_limit', `${target.name} has received the most a player can be given in one day (${naira(L.dailyReceive)}).`);
-        if ((s.pending[to]?.length ?? 0) >= LIMITS.pending) return no('recipient_unavailable', `${target.name} has too many gifts waiting. Ask them to log in first.`);
-        // Where the money will land, decided before anything is charged. No life anywhere: no gift.
-        const theirs = ctx.core.sessionByPublicId(db, to);
-        const creditCity = theirs && theirs.expiresAt > t ? lifeCity(theirs, cityId) : null;
-        if (!creditCity) return no('recipient_no_life', `${target.name} has no life in any city right now, so there is nowhere to put the money. Nothing was sent.`);
-        const sent = act(session, cityId, 'transfer-out', { to, name: target.name, amount, transferId }, `social|transfer|${id}|${cid}`);
-        if (!sent.ok) return no(sent.code, sent.reason!);
-        target.recv.amount += counted;
-        // The gift is a line in the two players' chat: "You sent ₦1,500" for the sender, "Ada sent you ₦1,500" for the receiver.
-        const gkey = dmId(id, to), chat = s.convs[gkey] ??= { id: gkey, kind: 'dm', members: [id, to].sort(), seq: 0, created: t, messages: [], pinScope: ctx.randomId() };
+        const refused = mutedRefusal(id) ?? (note ? screened(note, 'Your note', true) : null);
+        if (refused) return refused;
+        if (!areFriends(s, id, to)) return no('friends_only', `You can only ask friends for money. Add ${target.name} as a friend first.`);
+        if (amount < L.min) return no('amount_too_small', `The smallest amount is ${naira(L.min)}.`);
+        if (amount > L.maxPerTransfer) return no('amount_too_large', `The largest amount is ${naira(L.maxPerTransfer)}.`);
+        forgetMoneyRequests(s, t);
+        const book = s.moneyRequests ?? {}, mine = Object.values(book).filter((record) => record.from === id && t - record.at < DAY);
+        if (mine.some((record) => record.to === to && moneyRequestStateAt(record, t) === 'open')) return no('request_open', `${target.name} already has a request from you waiting. Cancel it, or wait for their answer.`);
+        if (mine.filter((record) => record.to === to).length >= MONEY_REQUEST.perPairPerDay) return no('request_limit', `You can ask ${target.name} for money ${MONEY_REQUEST.perPairPerDay} times a day. Try again tomorrow.`);
+        if (mine.length >= MONEY_REQUEST.perDay) return no('request_limit', `You can ask for money ${MONEY_REQUEST.perDay} times a day. Try again tomorrow.`);
+        if (Object.keys(book).length >= MONEY_REQUEST.stored) return no('requests_full', 'Too many requests are open right now. Try again later.');
+        if (!ctx.allow(`social:money-request:${id}`, MONEY_REQUEST.perMinute)) return no('rate_limited', 'Too many requests in a minute. Wait, then try again.');
+        const requestId = `MR-${++s.seq}`, gkey = dmId(id, to), chat = s.convs[gkey] ??= { id: gkey, kind: 'dm', members: [id, to].sort(), seq: 0, created: t, messages: [], pinScope: ctx.randomId() };
         index(s, id, chat, chat.seq); index(s, to, chat, chat.seq);
-        const line = append(s, chat, id, `Sent ${naira(amount)}`, null, false, { gift: { n: amount } });
-        const credited = owe(s, db, to, creditCity, { op: 'transfer-in', from: id, name: p.name, amount, transferId }, { keep: true, gift: { conv: gkey, seq: line.seq } });
+        const req = { id: requestId, n: amount, ...(note ? { note } : {}), x: t + MONEY_REQUEST.expiresMs };
+        const line = append(s, chat, id, `Asked for ${naira(amount)}${note ? `: ${note}` : ''}`, null, false, { req });
+        (s.moneyRequests ??= {})[requestId] = { id: requestId, from: id, to, n: amount, ...(note ? { note } : {}), at: t, expires: req.x, state: 'open', conv: gkey, seq: line.seq };
         fanOut(s, chat, line, push, null);
-        push.push([to, { type: 'transfer', from: pub(s, id), amount, credited }], [to, { type: 'social-sync' }]);
-        notify(s, to, 'transfer', `${p.name} sent you ${naira(amount)}.`, { from: id, amount }, push);
-        return yes('sent', { amount, to: pub(s, to), credited, creditedCity: creditCity, balance: sent.state.cash });
+        notify(s, to, 'transfer', `${s.players[id]!.name} asked you for ${naira(amount)}.`, { from: id, amount }, push);
+        return yes('requested', { request: requestView(s, req, id, id), message: messageView(s, chat, line, id) });
+      });
+      return outcome.ok && !repeated(outcome) ? { ...outcome, push } : outcome;
+    },
+    /**
+     * Answer a request: the friend asked pays it or declines it, the one who asked cancels it. Exactly once per `clientId`.
+     * Paying is performTransfer, the same code as a gift, so a refusal (a cap, a block, not friends) leaves the request waiting.
+     * What settled it is kept on the request: the transfer's id, which the two wallet lines carry.
+     */
+    answerMoneyRequest(db: Db, session: SessionRecord, body: SocialBody) {
+      const requestId = typeof body.id === 'string' && REQUEST_ID.test(body.id) ? body.id : null, op = body.op, cid = body.clientId;
+      if (!requestId) throw bad('invalid_request');
+      if (op !== 'pay' && op !== 'decline' && op !== 'cancel') throw bad('invalid_op');
+      ctx.onceId(cid);
+      const cityId = op === 'pay' ? city(body.cityId) : null;
+      const { s, p, id } = enter(db, session);
+      const push: PushList = [];
+      const outcome = ctx.once(db, session, { id: cid, kind: op === 'pay' ? 'money.pay' : 'money.answer', fingerprint: [requestId, op, cityId ?? ''] }, () => {
+        const record = s.moneyRequests?.[requestId];
+        if (!record || record[op === 'cancel' ? 'from' : 'to'] !== id) return no('unknown_request', 'That request was not found.');
+        const state = moneyRequestStateAt(record, now());
+        if (state !== 'open') return no(`request_${state}`, state === 'expired' ? 'That request has expired.' : `That request was already ${state}.`);
+        const closed = (to: 'paid' | 'declined' | 'cancelled') => closeRequest(s, record, to, push);
+        if (op === 'pay') {
+          const sent = performTransfer(db, session, s, p, id, push, record.from, cityId!, record.n, cid as string);
+          if (!sent.ok) return sent;
+          record.paid = { transferId: peerTransferId(id, cid as string), cid: cid as string };
+          closed('paid');
+          return yes('paid', { request: requestView(s, reqOf(record), record.from, id), receipt: record.paid.transferId, amount: record.n, balance: sent.balance });
+        }
+        closed(op === 'decline' ? 'declined' : 'cancelled');
+        return yes(op === 'decline' ? 'declined' : 'cancelled', { request: requestView(s, reqOf(record), record.from, id) });
       });
       return outcome.ok && !repeated(outcome) ? { ...outcome, push } : outcome;
     },

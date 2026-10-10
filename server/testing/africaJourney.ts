@@ -13,6 +13,8 @@ export const AFRICA_DESTINATION_BATCHES = [
   AFRICA_DESTINATIONS,
   ['cotonou', 'abidjan', 'dakar', 'cape-town'],
   ['addis-ababa'],
+  ['cairo', 'rabat', 'kigali'],
+  ['kampala', 'lusaka'],
 ] as const
 
 export interface JourneyStoredSnapshot {

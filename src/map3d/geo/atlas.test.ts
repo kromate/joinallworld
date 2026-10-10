@@ -159,8 +159,8 @@ test('open versus coming soon is derived from the additive city catalogue', () =
   const openStates = [...new Set(nigeriaCities.map((city) => city.state.id))];
   assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)).sort(), openStates.slice().sort());
   const openForeignCountries = [...new Set(cityCatalogue().filter((city) => city.open && city.countryISO && city.countryISO !== 'ng').map((city) => city.countryISO!))].sort();
-  assert.deepEqual(openForeignCountries, ['bj', 'ci', 'cm', 'dz', 'et', 'gh', 'ke', 'sn', 'tg', 'za'], 'each open foreign-city catalogue entry admits its country');
-  assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)).sort(), ['bj', 'ci', 'cm', 'dz', 'et', 'gh', 'ke', 'ng', 'sn', 'tg', 'za'], 'Nigeria and the ten open foreign-city countries are enterable');
+  assert.deepEqual(openForeignCountries, ['bj', 'ci', 'cm', 'dz', 'eg', 'et', 'gh', 'ke', 'ma', 'rw', 'sn', 'tg', 'ug', 'za', 'zm'], 'each open foreign-city catalogue entry admits its country');
+  assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)).sort(), ['bj', 'ci', 'cm', 'dz', 'eg', 'et', 'gh', 'ke', 'ma', 'ng', 'rw', 'sn', 'tg', 'ug', 'za', 'zm'], 'Nigeria and the fifteen open foreign-city countries are enterable');
   const context = { current: 'lagos', held: ['lagos'], routes: null };
   for (const feature of nigeria.features) {
     const info = regionInfo({ kind: 'state', id: feature.id }, { ...context, feature });

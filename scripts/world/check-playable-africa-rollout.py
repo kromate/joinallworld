@@ -103,13 +103,13 @@ def check_city(root, city):
     country = facts.get('country')
     require(isinstance(iso, str) and re.fullmatch(r'[A-Z]{2}', iso) is not None, 'invalid receipt country')
     require(isinstance(country, dict) and country.get('idISOlower') == iso.lower(), 'facts country mismatch')
-    if 'generationIdentity' in receipt:
-        identity = receipt['generationIdentity']
-        state = facts.get('state')
-        require(isinstance(identity, dict) and isinstance(state, dict), 'invalid generation identity')
-        require(identity.get('cityId') == city and isinstance(identity.get('stateId'), str) and
-                identity['stateId'] == state.get('idunique') and isinstance(identity.get('stateName'), str) and
-                identity['stateName'] == state.get('name'), 'generation identity mismatch')
+    identity = receipt.get('generationIdentity')
+    state = facts.get('state')
+    require(isinstance(identity, dict) and isinstance(state, dict), 'missing or invalid generation identity')
+    require(identity.get('cityId') == city and isinstance(identity.get('stateId'), str) and
+            0 < len(identity['stateId']) <= 128 and identity['stateId'] == state.get('idunique') and
+            isinstance(identity.get('stateName'), str) and 0 < len(identity['stateName']) <= 256 and
+            identity['stateName'] == state.get('name'), 'generation identity mismatch')
     return {'city': city, 'status': 'pinned-assets-match'}
 
 

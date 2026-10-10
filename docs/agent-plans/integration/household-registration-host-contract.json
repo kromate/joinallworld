@@ -1,0 +1,57 @@
+{
+  "decision": "APPROVE_REGISTRATION_HOST_INTERFACE_CONTRACT_ONLY",
+  "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "householdSource": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
+  "pins": {
+    "e52/server/households/records.ts": "ec8b77b1ba951e5b26f2a17e885b13f22a28c5de404c64d366f21ed7935f146d",
+    "e52/server/households/consent.ts": "c611ebf9ceda2e44902829b34e74fe42b3b190ba9c6a9b93ffa3544b34df59c7",
+    "e52/server/households/durableService.ts": "ce2eed20b0ecfdf4b0f7a455e6227a0988e138046d2e4357683b068bd35da9fa",
+    "e52/server/households/durableReads.ts": "7410741e57a49ebd764c0ccb000c172138342bf32f52a987a2731173b9d24cbd",
+    "e52/server/routes/once.ts": "6072fa044253a38d35b948a33163ea0a2e787ef197bcce3d3760393be94b7046",
+    "3e3/src/types/life.ts": "a57338328b05b9277ac4b5497acd2d54ae17f3bb303f30f25d1eb19ac9a98a73",
+    "3e3/src/game/systems/estate.ts": "e4bfc0fd555c67b7389bef0901ead7a8eb81cfde9bff9ba54e79650ad0a41873",
+    "3e3/src/game/systems/property.ts": "858c6f46e9ce8f8b870c4fabd726bf17054d07748ed1300d23b87a7dbf3fa5f1",
+    "3e3/server/character.ts": "f15bdeb0e6ce3e079c8c7b2480c5767c7b6a29aa05e10583e183dbfadf497b18",
+    "3e3/server/protocol.ts": "27742061f222dc021d6882a9f2a2372a3eb30c3b40ebdde7b5b909462a59dbf5",
+    "3e3/server/world/service.ts": "c01a5c6c5f47d074ddfb66f7d2989f823d0bf11542b0655ba26d411e52ca07a1"
+  },
+  "proposedRoutes": ["GET /api/households/self-context", "POST /api/households/register-owned", "POST /api/households/enroll-life"],
+  "firstAssignmentWhitelist": [
+    "register-current-owned",
+    "enroll-current-life"
+  ],
+  "onceKinds": [
+    "household.register-owned-v1",
+    "household.enroll-life-v1"
+  ],
+  "fingerprint": "hh-host-v1: + SHA256(fixed ordered array of public intent and authenticated character; excludes clientId and generated IDs); 75 ASCII chars",
+  "receiptFormat": "household-host-v1",
+  "replayGuard": "Matching receipt plus exact already-identified authenticated life, before mutable eligibility; unidentified receipt match refuses",
+  "selector": "Exact current pinned CityLifeRecord -> estate current residence, living own, settled hasPlace, exact valid plot/LGA, no pending old address",
+  "firstSliceExcludes": [
+    "Away unregistered dwelling",
+    "Rented dwelling registration",
+    "Other actor or transient visit home",
+    "Automatic invitation/member/access/payment"
+  ],
+  "generatedIds": [
+    "LifeId if absent",
+    "HomeId/incarnation if unbound",
+    "HouseholdId"
+  ],
+  "atomicFlow": [
+    "Authenticate and inspect",
+    "Probe stable public-intent receipt before any ID generation",
+    "On absence enforce expected conditions",
+    "Canonical real-draft assignment and binding",
+    "Translate server IDs into private register Command",
+    "Async actual-draft loader/reducer",
+    "Synchronous final once verify/apply/receipt",
+    "Outer durable commit or total abort"
+  ],
+  "legacy": "Preserve old receipts and exact e52/A1 command entry; no cross-format migration/fallback on new wrapper kinds",
+  "allocation": "Existing Cloud household writer with serialized integration writer for shared route/host/types/LIGHT_KINDS; canonical lifecycle/scene preservation before activation",
+  "runtimeAccepted": false,
+  "activationApproved": false,
+  "sourceModified": false
+}

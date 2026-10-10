@@ -1,0 +1,169 @@
+{
+  "decision": "APPROVE_WITH_EXPLICIT_FINITE_CONTRACT",
+  "reviewedAt": "2026-10-10T03:00:16.613Z",
+  "document": {
+    "ref": "d40f66bc2e68aeb5006e78c7ed15e8556742d53a",
+    "path": "docs/agent-plans/living-world/mapped-authority-gap-current-2026-10-10.json",
+    "sha256": "e9d639e3159e21abd201d17f61f08ed0e63a7a4c3f63b9f8a4413acef292046e",
+    "read": "complete"
+  },
+  "baseline": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "pins": {
+    "src/models/vehicles/index.ts": "7db039a0b25373a86354639fd703a96aab3a3de48a3088c14c555cc0fa6afc19",
+    "src/models/vehicles/geometry.ts": "4bf847bd17a735050daa4686ed0be495c64a7936ed3c65c6e306e740edc94885",
+    "src/models/vehicles/sedan-interior.ts": "3d9a5b3a516031fb7b6e14058a3d3c2615a3f531a38b56781d2f4a66bf8b0a57",
+    "src/app/features/living-world/drivingScene.ts": "3d42051273229265a17fcc5e04b7e5c95ddb72e7fa5fd00520d910cd19cf006c"
+  },
+  "allFourBaselinePinsMatch": true,
+  "allocation": {
+    "writer": "Existing idle Cloud vehicle writer only; Integration confirms exclusive ownership",
+    "newFilesOnly": [
+      "server/living-world/sedan-aperture.ts",
+      "server/living-world/sedan-aperture.test.ts"
+    ],
+    "bothAbsentAtBaseline": true,
+    "forbidden": [
+      "Any existing source/startup/route/import registration edit",
+      "Shared asset or renderer geometry changes",
+      "Rejected385 payload",
+      "Route activation, physical resolver or motion verifier binding",
+      "Granting canBoard or authoritative clearance"
+    ]
+  },
+  "readScope": [
+    "index.ts poseVehicle195–242,addDoor377–409,splitCarDoorPanels608–665,buildCar667–760,sedan dimensions838",
+    "geometry.ts complete profilePrism80–114",
+    "sedan-interior.ts layout, authored floor/dashboard/cushion/backrest construction and full steering build/pose through292",
+    "drivingScene.ts sample88–123 and actual enter/exit phases195–275; selected phase markers through331"
+  ],
+  "geometry": {
+    "frame": "vehicle-body-local metres, +Z forward, driver -X",
+    "apertureZY": [
+      [
+        -0.05,
+        0.49
+      ],
+      [
+        0.89,
+        0.49
+      ],
+      [
+        0.89,
+        1.27
+      ],
+      [
+        0.7325,
+        1.48
+      ],
+      [
+        -0.05,
+        1.48
+      ]
+    ],
+    "derivation": "Intersection of driver cap with source clipping planes; forward roof slope -4/3. y<=1.48 alone is not a rectangular opening.",
+    "hingeXYZ": [
+      -0.96,
+      0.93,
+      0.89
+    ],
+    "doorRadians": [
+      0,
+      1.7278759594743864
+    ],
+    "closedPanelCenterXYZ": [
+      -0.96,
+      0.93,
+      0.42
+    ],
+    "splitSlabX": [
+      -1.07,
+      -0.89
+    ],
+    "floor": {
+      "min": [
+        -0.78,
+        0.46,
+        -1.25
+      ],
+      "max": [
+        0.78,
+        0.52,
+        0.9
+      ]
+    },
+    "seatAnchors": [
+      [
+        -0.437,
+        0.74,
+        0.42
+      ],
+      [
+        0.437,
+        0.74,
+        0.42
+      ],
+      [
+        -0.437,
+        0.74,
+        -0.58
+      ],
+      [
+        0.437,
+        0.74,
+        -0.58
+      ]
+    ],
+    "cushion": "width.54, y.50..62, depth.62 centered anchor.z+.03",
+    "backrest": "width.54,y.62..1.20,depth.13 centered anchor.z-.31",
+    "dashboard": {
+      "center": [
+        0,
+        1.055,
+        0.77
+      ],
+      "size": [
+        1.34,
+        0.14,
+        0.28
+      ]
+    },
+    "steering": {
+      "center": [
+        -0.437,
+        0.93,
+        0.6
+      ],
+      "angle": "-normalizedInput*.62, input[-1,1]",
+      "obstacle": "rim radius.155/tube.022 plus spokes and hub; conservative rotation enclosure, not stale exported initial AABB"
+    },
+    "retainedShell": "Roof/hood/sill/oppositecap remain static; retain trim/glass/windscreen obstacles. No empty constant-roof corridor."
+  },
+  "implementationContract": {
+    "api": "Export a frozen source-pinned sedan-aperture descriptor and one pure bounded analyzeSedanAperture(input) function with structured valid/blocked/unknown reasons, candidate geometric metrics, canBoard:false and authoritativeClearance:false literal fields.",
+    "dependencies": "No runtime import of renderer/Three/app/startup. Tests may read pinned sources and construct existing sedan/interior CPU geometry to verify descriptor correspondence; no asset edits.",
+    "input": "Explicit static rigid body-to-world transform (translation + orthonormal rotation), finite door-angle interval within[0,.55pi], steering interval within[-1,1], and 1..64 actor sweep enclosures. Each enclosure supplies finite capsule radius>0<=2 and line-segment endpoints bounded within10m of vehicle, plus phase label and enclosure provenance. This input is a claimed over-approximation, not certified actor geometry.",
+    "bounds": "Reject before allocation: more64segments, nonfinite values, reversed/outofrange intervals, invalid radius, reflected/singular/nonrigid transform, scale/shear, unknown/moving body pose or missing provenance. Finite fixedgeometry and fixed64 sweep cap; no open recursion/unbounded adaptive sampling.",
+    "algorithm": "Transform enclosures into body frame; erode true convex tapered aperture by radius plus explicit numeric margin; test retained shell and authored cabin obstacle bounds separately; hinge moving panel geometry about actualpivot. Bound full angle interval with analytic trig extrema or proven conservative envelope, not endpoint-only samples. Broadphase bounds may overreject, never omit floor/seat/dashboard/steering or door interiors. Return unknown when source/detail/pose cannot be enclosed.",
+    "numerics": "Keep analytical vertices distinct from Float32 mesh limits. Establish test-backed conservative outward obstacle/inward opening margin accounting for Float32 rounding and rigid transforms; contact within margin is blocked/unknown. Never move geometry to make clearance pass. Require a positive bounded margin and a documented lower numerical bound; reject insufficient margin.",
+    "pose": "Static body yaw/pitch/roll/translation supported only through validated rigid transform. poseVehicle bounce causes body y/pitch/roll changes; moving/nondefault unspecified body poses must be unknown. Do not silently use car-root planar coordinates.",
+    "authority": "Even candidate-clear output means only supplied-enclosure versus conservative geometry check. No actor fit, support, fullclip or travel authorization. Keep both authority flags false for every result."
+  },
+  "requiredTests": [
+    "Four source SHA pins; exact fivevertices/forwardtaper and wrongconstantroof counterexample; distinguishnominalcenterfromhinge.",
+    "Actual Float32 generated driver cap partition, retained shell/glass/trim at map/street detail; conservative descriptor correspondence.",
+    "Door closed/intermediate/open and interiorangle collision missedbyendpoint-only test; positiveopening -X direction.",
+    "Contact/justinside/justoutside each boundary at numericmargin; Float32 ULP perturbations; NaN/Infinity/degenerate/oversized inputs.",
+    "Rigid translated/yawed/pitched/rolled static frame equivalence; scale/shear/reflection/unknownmovingpose failclosed.",
+    "Floor cushion/backrest/dashboard and full steering interval obstacles; demonstrate initial staticsteeringAABB cannotauthorize clearance.",
+    "Bounded sweep between samples catches collision; incomplete/unproven envelope neverauthorizes.",
+    "Actual scene phase fixtures enterwalk→sitclip+seatslide→doorclose, and exitslide→standclip, normal/reduced timings; no center-only or phasecomplete clearanceclaim.",
+    "Every outcome retains canBoard:false/authoritativeClearance:false; source/publicroutes unchanged; onlytwo newfiles diff."
+  ],
+  "remainingAuthorityGates": [
+    "Certified clothed fullactor envelope and all entry/exit clip interpolation",
+    "Ground/seat support and terrain continuity",
+    "Mapped continuous wholevehicle motion/traffic/yield proof",
+    "Renderer contact/collision/mobile acceptance"
+  ],
+  "execution": "No implementation, tests, compiler, browser or process launch performed in this review."
+}

@@ -1,0 +1,236 @@
+{
+  "review": "published_receipts_read_only",
+  "publication": {
+    "commit": "1fb6fd64308eb64fa7db8038e562d96623c94689",
+    "tree": "a0d8af7b3f97e075482e4806734b7a5988cebb11",
+    "parent": "9d165a7e089c1299a9d90375a951d054ec29248e"
+  },
+  "source": {
+    "commit": "3a120c8e6d335488472cc9018a4f978b0e7ab56a",
+    "tree": "98df07ec74299478eaa6c98997947dbe906fded5",
+    "parent": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+    "branch": "codex/cloud-lagos-flights-startup-budget-20261010"
+  },
+  "execution": {
+    "location": "existing Codex cloud environment /workspace",
+    "declared_mode": "escalated",
+    "npm": "11.9.0",
+    "node_versions": [
+      "v22.23.3",
+      "v24.19.0"
+    ],
+    "build_command": [
+      "node",
+      "--experimental-strip-types",
+      "scripts/agent-slot.ts",
+      "heavy",
+      "--",
+      "npm",
+      "run",
+      "build"
+    ],
+    "size_command": [
+      "node",
+      "--experimental-strip-types",
+      "scripts/agent-slot.ts",
+      "heavy",
+      "--",
+      "npm",
+      "run",
+      "size:download"
+    ],
+    "node_options": "--max-old-space-size=1536",
+    "agent_slot_heavy": "1",
+    "heavy_slots": 1,
+    "literal_max_workers_recorded": false
+  },
+  "receipts": [
+    {
+      "name": "lagos-compact-node22-build",
+      "node": "v22.23.3",
+      "exit": 0,
+      "duration_seconds": 62.373381,
+      "log_blob": "89ac16408f4747a311f8ea700d391720cdd96aea",
+      "log_sha256": "1d450e166fe3cd7e84d77ef5cd04b26174efc8d59e10bcf4dfa3468c66498899",
+      "hash_matches": true
+    },
+    {
+      "name": "lagos-compact-node22-size",
+      "node": "v22.23.3",
+      "exit": 1,
+      "duration_seconds": 111.148231,
+      "log_blob": "fe7a67e8ba73c62cba98e4c2f2d64d4d20229882",
+      "log_sha256": "09b1b5876bafebc56b64e00e7f26d1b51d664712e09a9dcd7b50c810b7bbe46e",
+      "hash_matches": true
+    },
+    {
+      "name": "lagos-compact-node24-build",
+      "node": "v24.19.0",
+      "exit": 0,
+      "duration_seconds": 104.181968,
+      "log_blob": "333183faa87c88f43ffb4042e2a0b89dc8401882",
+      "log_sha256": "15c990bd2ae3dd7fca163582073c8ecde2c7765191a1985b3d124ff4981eff43",
+      "hash_matches": true
+    },
+    {
+      "name": "lagos-compact-node24-size",
+      "node": "v24.19.0",
+      "exit": 1,
+      "duration_seconds": 191.036955,
+      "log_blob": "ffaaac1194c4cc1d0a7af496204bcc42b17fe513",
+      "log_sha256": "1aebeb85ca9b20f9a049901e4ae93f9a7962b5194e715d356f905a86dc46b84e",
+      "hash_matches": true
+    }
+  ],
+  "exit_counts": {
+    "zero": 2,
+    "nonzero": 2
+  },
+  "build": {
+    "node22": "pass",
+    "node24": "pass",
+    "modules_transformed_each": 2135
+  },
+  "measurements_identical_across_runtimes": true,
+  "measurements": {
+    "first_paint_files": 5,
+    "startup_files_lagos": 28,
+    "cities_measured": 55,
+    "largest_city": "lagos",
+    "loading_raw": {
+      "measured": 91469,
+      "budget": 92000,
+      "status": "pass"
+    },
+    "loading_gzip": {
+      "measured": 35569,
+      "budget": 37000,
+      "status": "pass"
+    },
+    "first_paint_brotli": {
+      "measured": 35699,
+      "budget": 36800,
+      "status": "pass"
+    },
+    "startup_raw": {
+      "measured": 614092,
+      "budget": 615000,
+      "status": "pass",
+      "margin": 908
+    },
+    "startup_gzip": {
+      "measured": 222987,
+      "budget": 223000,
+      "status": "pass",
+      "margin": 13
+    },
+    "startup_brotli": {
+      "measured": 195739,
+      "budget": 195600,
+      "status": "fail",
+      "over": 139
+    },
+    "scene_host_raw": {
+      "measured": 177152,
+      "budget": 192000,
+      "status": "pass"
+    },
+    "scene_host_gzip": {
+      "measured": 66028,
+      "budget": 71000,
+      "status": "pass"
+    },
+    "base_body_brotli": {
+      "measured": 138098,
+      "budget": 300000,
+      "status": "pass"
+    },
+    "clip_pack_brotli": {
+      "measured": 55111,
+      "budget": 200000,
+      "status": "pass"
+    },
+    "wardrobe_item_brotli": {
+      "status": "not_measured"
+    },
+    "street_tile_brotli": {
+      "status": "not_measured"
+    }
+  },
+  "gate_counts_per_runtime": {
+    "pass": 9,
+    "fail": 1,
+    "not_measured": 2
+  },
+  "provenance": {
+    "head_after_matches": true,
+    "git_status_after_empty": true,
+    "source_unchanged_recorded": true,
+    "head_before_present": false,
+    "git_status_before_present": false,
+    "source_pins_before": {},
+    "source_pins_after": {},
+    "source_manifest_referenced": false,
+    "source_file_hashes_present": false
+  },
+  "conclusion": "builds_pass_but_measured_size_gate_fails_startup_brotli_in_both_runtimes",
+  "integration_acceptance": false,
+  "executed_locally": {
+    "tests": false,
+    "build": false,
+    "compiler": false,
+    "browser": false,
+    "server": false,
+    "git_mutation": false
+  },
+  "rootVerification": {
+    "all4OriginalReceiptAndLogPairsChecked": true,
+    "originals": [
+      {
+        "name": "lagos-compact-node22-build",
+        "receiptHash": "f3499cb2cba67a54341fac0bf58c5e4893c67e6180287a8ebc38030e60fdb0ee",
+        "originalReceiptBlobSha256": "d9b2b2da686d48212ea2f2eabc23ca6cc67c265a6c03bc9dbfec9771a835dbf7",
+        "originalLogHashMatched": true,
+        "exit": 0,
+        "relevantLogLines": [
+          "\u2713 2135 modules transformed."
+        ]
+      },
+      {
+        "name": "lagos-compact-node22-size",
+        "receiptHash": "fa94683e5a05d0ea797a2d7e2043032a8ee7582660f05ed8664238b578bc4c22",
+        "originalReceiptBlobSha256": "b15a0142ace2a6eb4eff573f94973c0dcc8d011750801035df7adfc7c3cb0bad",
+        "originalLogHashMatched": true,
+        "exit": 1,
+        "relevantLogLines": [
+          "OVER STARTUP_BROTLI           195739  budget 195,600 brotli bytes (max) [provisional]  largest over 55 cities (lagos)",
+          "1 budget(s) exceeded: STARTUP_BROTLI"
+        ]
+      },
+      {
+        "name": "lagos-compact-node24-build",
+        "receiptHash": "621b2937a50a4a05a730a0a9d2b7b8b5fea1695c8f4cfd345ef77592479e21f4",
+        "originalReceiptBlobSha256": "18083bc58e31b7eb19dcb8924dcfcfed6693017416c75d1ca1e9752c291668db",
+        "originalLogHashMatched": true,
+        "exit": 0,
+        "relevantLogLines": [
+          "\u2713 2135 modules transformed."
+        ]
+      },
+      {
+        "name": "lagos-compact-node24-size",
+        "receiptHash": "734427cd293013cf04ada2b968788c885117ba669fe69685df416fd10205fb9f",
+        "originalReceiptBlobSha256": "fe65de8cc2ba62b9ed459b138a2783b289b64b3235903bc5e6c91e4c03df031d",
+        "originalLogHashMatched": true,
+        "exit": 1,
+        "relevantLogLines": [
+          "OVER STARTUP_BROTLI           195739  budget 195,600 brotli bytes (max) [provisional]  largest over 55 cities (lagos)",
+          "1 budget(s) exceeded: STARTUP_BROTLI"
+        ]
+      }
+    ],
+    "sourceViteConfigSha256": "30fae1c03533823e1af46c537bf496031ef402feb9e8c004c6df94e09c85b17b",
+    "sourceConfigMaxWorkers": 1,
+    "limits": "Pinned committed config has maxWorkers1; original execution receipts omit before-state and per-file pins, so no additional runtime provenance claim."
+  }
+}

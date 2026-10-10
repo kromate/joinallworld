@@ -1,11 +1,11 @@
 {
-  "observedAt": "2026-10-10T02:56:00.793523+00:00",
+  "observedAt": "2026-10-10T03:05:51.437027+00:00",
   "reviewedSource": "3e3e0876fc50f3166a0d0968f8616b577da27870",
   "adapter": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
   "all20SourcePinsMatched": true,
   "reviewerContract": "canonical-household-writer-contract.md",
   "reviewerDecision": "APPROVE_BOUNDED_IMPLEMENTATION_CONTRACT_ONLY",
-  "rootDecision": "HOLD_SHARED_WRITER_ALLOCATION_PENDING_FIRST_ASSIGNMENT_SEAM",
+  "rootDecision": "APPROVE_CANONICAL_WRITER_CONTRACT_QUEUE_AFTER_REPAIRED_ADAPTER_ACCEPTANCE",
   "findingsAccepted": [
     "C1 cross-city identity continuity",
     "C2 multiple legacy lives per publicId",
@@ -14,9 +14,15 @@
     "C5 residence metadata preservation and scene capture",
     "C6 plot shard separate commit boundary"
   ],
-  "unresolved": "Stable receipt fingerprint needs immutable LifeId before probe, while first assignment is persisted only on success; async consent view currently requires present facts before the synchronous once callback. Specify transaction-local provisional plan, distinct planned/stored authority and exact absent expectations, then atomically apply assignment plus consent and receipt. Do not fabricate stored facts or mint IDs on reads.",
-  "nextAction": "Existing Astra finite source review clarifies one first-unidentified flow. Existing household writer finishes A1/A2 proof before broader serialized shared-file allocation.",
+  "unresolved": "Current A1/A2 repair source and raw actual proof not yet accepted; canonical lifecycle/scene/termination/liability implementation and host evidence remain required.",
+  "nextAction": "Existing same household writer finishes A1/A2 source proof, then implements the serialized canonical writer/lifecycle/host-wrapper unit after Root accepts that repaired source. No public activation before complete consumer safety.",
   "runtimeAccepted": false,
   "activationApproved": false,
-  "limits": "This review does not implement identities, durable household use, rent, lifecycle hooks or liability settlement."
+  "limits": "This review does not implement identities, durable household use, rent, lifecycle hooks or liability settlement.",
+  "firstAssignmentContract": "household-first-assignment-contract.md",
+  "all9FirstAssignmentPinsMatched": true,
+  "approvedSequence": "Pure provisional random LifeId; stable once absence probe; real canonical assignment to isolated Db draft; fresh actual authority reads and async loader/reducer; synchronous final once verify/apply/receipt; outer atomic commit. All failed paths throw, final didRun false aborts staged draft.",
+  "registrationHostContract": "household-registration-host-contract.md",
+  "all11RegistrationHostPinsMatched": true,
+  "publicWrapperSequence": "Stable public-intent fingerprint and receipt probe before generated IDs. Exact successful receipt immutable-life ownership guard before mutable checks. On absence real draft identity/home rows, translated private command, async loader, one synchronous receipt/apply callback and atomic commit."
 }

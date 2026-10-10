@@ -1,5 +1,7 @@
 # Canonical household writer prerequisite
 
+Root sequencing correction: the later [first-assignment contract](household-first-assignment-contract.md) governs provisional ID generation and real isolated-draft staging before the async loader. The original callback-only wording below is superseded at that seam. Public registration input and corrected adapter acceptance remain prerequisites.
+
 Decision: **APPROVE this bounded implementation contract; existing source is not ready for household activation.** Implement one canonical life/home writer unit in the existing Cloud household/integration writer's serialized lane. Do not expose registration as a completed household feature. No implementation, runtime, compiler, tests, browser, store mutation or activation was performed in this review.
 
 Reviewed checkout: `3e3e0876fc50f3166a0d0968f8616b577da27870`, clean and unchanged. The separate identity/adapter source is `e52cae83fcbc31348f8b7160790ff37c9c22855c`; it is not present in the 3e3 checkout. Exact hashes are in the accompanying JSON. Governing household contract SHA256: `30d64bf19fed4b11c910cbd02f48c4c652a07d93bd5e01e4dc7d4279284ebf63`.

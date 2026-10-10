@@ -1,0 +1,57 @@
+{
+  "decision": "APPROVE_PROVISIONAL_ID_REAL_DRAFT_FLOW_CONTRACT_ONLY",
+  "source": "e52cae83fcbc31348f8b7160790ff37c9c22855c",
+  "pins": {
+    "server/households/durableService.ts": "ce2eed20b0ecfdf4b0f7a455e6227a0988e138046d2e4357683b068bd35da9fa",
+    "server/households/durableReads.ts": "7410741e57a49ebd764c0ccb000c172138342bf32f52a987a2731173b9d24cbd",
+    "server/households/durableApply.ts": "e4fb1bfda1fbdbeb2c3029e2f077aba7590643eb54c7ccb2fb4fb3d1446e75ae",
+    "server/households/consentView.ts": "78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8",
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d",
+    "server/households/records.ts": "ec8b77b1ba951e5b26f2a17e885b13f22a28c5de404c64d366f21ed7935f146d",
+    "server/routes/once.ts": "6072fa044253a38d35b948a33163ea0a2e787ef197bcce3d3760393be94b7046",
+    "server/store.ts": "4c739e503df0423661737c0805162bd887ae06669094acdbb868733a67c93296",
+    "deploy/sqlite-store.ts": "a54149ccc1f4f1a4db69379a041b0fcd7c90f5830fbcbe7393d261c690f58b5d"
+  },
+  "correction": "Opaque candidate generation before probe and real isolated draft insertion after confirmed absence before async load are permitted; durable persistence requires final success receipt and outer commit.",
+  "steps": [
+    "parse and authenticate",
+    "inspect stored identified versus exact existing-unidentified",
+    "identified stable replay before mutable eligibility; A1 legacy path only when genuine",
+    "unidentified pure opaque assignment plan",
+    "stable once absence probe; conflict/any returned result terminal on unidentified branch",
+    "verify original absence/source witnesses and stage real canonical draft rows",
+    "fresh authority proof and existing async loader/reducer",
+    "synchronous final once verify post-state and apply patch",
+    "abort if callback did not run or any failure; durable outer success only"
+  ],
+  "changes": [
+    "Private actor inspection/preparation port",
+    "Canonical draft writer and phase-specific verifiers",
+    "Service abort discipline and final didRun check",
+    "Corrected association/storage validators"
+  ],
+  "unchanged": [
+    "General once semantics",
+    "Async consent loader required-present semantics",
+    "Reducer authority expectations",
+    "Store transaction APIs",
+    "Business/shared source in this review"
+  ],
+  "unresolved": [
+    "Real canonical writer and lifecycle source hooks absent",
+    "Trusted first-registration dwelling/ID construction and retry mapping",
+    "First-assignment operation whitelist; no enrollment of unidentified invite recipient by owner"
+  ],
+  "proofsRequired": [
+    "Node file HTTP commit/reopen",
+    "Worker SQLite HTTP commit/reopen",
+    "All failure stages rollback identity/rows/receipt",
+    "Legacy unidentified conflict refusal",
+    "Identified replay no generator or mutable load",
+    "Unexpected final duplicate aborts tentative draft",
+    "Concurrent first assignment uniqueness"
+  ],
+  "runtimeAccepted": false,
+  "activationApproved": false,
+  "sourceModified": false
+}

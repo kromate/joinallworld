@@ -165,6 +165,11 @@ export class Browser {
     await this.send('Input.insertText', { text: value });
   }
 
+  /** The body of a finished response the page received (by the request id kept in `requests`), or null. */
+  async responseBody(requestId: string): Promise<string | null> {
+    try { return (await this.send('Network.getResponseBody', { requestId })).body as string; } catch { return null; }
+  }
+
   async screenshot(file: string): Promise<void> {
     const shot = await this.send('Page.captureScreenshot', { format: 'png' });
     writeFileSync(file, Buffer.from(shot.data, 'base64'));

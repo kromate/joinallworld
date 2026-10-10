@@ -1,0 +1,52 @@
+Actual lease-start allowance guard: {"rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.", "minimum_remaining_percent_exclusive": 4, "latest_remaining_percent": 6, "sample_source": "LIVING Sol fresh direct account94%used6%remaining delegated receipt in this root turn", "recorded_at_utc": "2026-10-10T04:25:27.325288+00:00", "allow_new_heavy": true, "heavy_slots": 1, "additional_spend": 0}
+{
+  "status": "measured-source-and-authored-native-rest-frames",
+  "output": "/workspace/remote-verification/worker-results/native-interaction-temporal/wrist-causal/wrist-causal-measurement.json",
+  "sourceHead": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+  "authoredSha256": "dfa53941f0fb77d69e59f59fa017f72efa45eddd7e6e8b8414b4a4dba332d552",
+  "clipSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
+  "sourceDeltas": {
+    "left": {
+      "restToIdle0Radians": 0.2357466046507353,
+      "restToIdle7667Radians": 0.23574575882566912,
+      "idle0ToInteract7667Radians": 1.0470768633043057,
+      "bindRestToInteract7667Radians": 1.09473770922696
+    },
+    "right": {
+      "restToIdle0Radians": 0.2670674057915725,
+      "restToIdle7667Radians": 0.26706769780634265,
+      "idle0ToInteract7667Radians": 0.0000012061659303217155,
+      "bindRestToInteract7667Radians": 0.26706793956402847
+    }
+  },
+  "familyDelta": {
+    "male": {
+      "Left": {
+        "bindToNeutralForearmRootRadians": 1.0369401965278953,
+        "bindToNeutralHandRootRadians": 1.0369401965278953,
+        "bindToNeutralHandLocalRadians": 0,
+        "neutralForearmHandLengthMeters": 0.26747674670154353
+      },
+      "Right": {
+        "bindToNeutralForearmRootRadians": 1.0380538257036342,
+        "bindToNeutralHandRootRadians": 1.0380538257036342,
+        "bindToNeutralHandLocalRadians": 0,
+        "neutralForearmHandLengthMeters": 0.26747674670154353
+      }
+    },
+    "female": {
+      "Left": {
+        "bindToNeutralForearmRootRadians": 0.8869228898013558,
+        "bindToNeutralHandRootRadians": 0.8869228898013558,
+        "bindToNeutralHandLocalRadians": 0,
+        "neutralForearmHandLengthMeters": 0.21058958328593003
+      },
+      "Right": {
+        "bindToNeutralForearmRootRadians": 0.8866176289272001,
+        "bindToNeutralHandRootRadians": 0.8866176289272001,
+        "bindToNeutralHandLocalRadians": 0,
+        "neutralForearmHandLengthMeters": 0.21058958328593003
+      }
+    }
+  }
+}

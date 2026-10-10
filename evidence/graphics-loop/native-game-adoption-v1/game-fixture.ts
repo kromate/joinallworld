@@ -324,7 +324,6 @@ function createFixture() {
     if (closeCameraActor && isCloseCamera()) placeCloseCamera(closeCameraActor);
     entry.look(camera.position.x, camera.position.z);
     renderer.render(world, camera);
-    if (closeCameraActor && isCloseCamera()) closeCameraRay = measureCloseCameraRay(closeCameraActor);
   }
 
   function placeCloseCamera(actor: THREE.Object3D) {
@@ -341,12 +340,8 @@ function createFixture() {
     const bounds = new THREE.Box3().setFromObject(actor);
     const target = bounds.getCenter(new THREE.Vector3());
     target.y = bounds.min.y + Math.min(1.2, bounds.getSize(new THREE.Vector3()).y * 0.5);
-    const signature = `${actor.uuid}:${currentCamera}:${origin.toArray().map((part) => part.toFixed(3)).join(',')}:${bounds.min.toArray().map((part) => part.toFixed(3)).join(',')}:${bounds.max.toArray().map((part) => part.toFixed(3)).join(',')}`;
-    if (signature === closeCameraPlacementSignature) {
-      camera.updateMatrixWorld(true);
-      closeCameraRay = measureCloseCameraRay(actor);
-      return;
-    }
+    const signature = `${actor.uuid}:${currentCamera}:${origin.toArray().map((part) => part.toFixed(3)).join(',')}`;
+    if (signature === closeCameraPlacementSignature) return;
     camera.fov = 48;
     camera.updateProjectionMatrix();
     const offsets = side === 'face-candidate' ? [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6,
@@ -778,6 +773,7 @@ function createFixture() {
   function renderForCapture() {
     draw();
     const actor = closeCameraActor;
+    if (actor && isCloseCamera()) closeCameraRay = measureCloseCameraRay(actor);
     let actorPixel: number[] | null = null;
     let backgroundPixel: number[] | null = null;
     let actorPixelContrast = 0;

@@ -1,0 +1,176 @@
+{
+  "run": {
+    "head": "c8f412a2667662b26608be948f25a0eae29c7d25",
+    "parent": "1b0ad1cf03304c296f3cefaf59fed1a2d1465374",
+    "baseline": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+    "runId": "remote-1791592281968",
+    "failurePath": "evidence/graphics-loop/native-game-adoption-v1/home-journey-results/remote-1791592281968/home-journey-failure.json",
+    "failureSha256": "b01bcc1e2a7040137b986022c83e302696d999bdb1a702dcd56f1fcda955a8f1",
+    "bundlePath": "evidence/graphics-loop/native-game-adoption-v1/home-journey.bundle.js",
+    "bundleSha256": "4358e49ea7b9b40898ad1b844a42a0762f203d76b7cb011b4318d21b90b5c113",
+    "sourceExecutionPins": {
+      "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts": "0b8cae21df1bbdde58326cd4a898758dd277d55f8d90f04090ba57256d78ac6b",
+      "src/scene/body/native/native-rest-contact-v15/native-rest-contact.ts": "2e8e55be0020bb9d8b86e0173bac35fde453b1bcc665f761e75427fc02db575e",
+      "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts": "75e6437c6172647f2614a843d8e9448d180e117c10f26b5495f748c01008984c"
+    },
+    "commandLog": "/tmp/graphics-rest-pelvis-candidate1-20261010.log",
+    "commandLogSha256": "87dfb1012d68bd5da958ead1e37d3e8cf15754204bb414383acf479acd1692a2",
+    "receipt": "/tmp/graphics-rest-pelvis-candidate1-20261010-receipt.json",
+    "receiptSha256": "4424cbf56453c6ed313441c8763a88bd716cd4f38fa9d8e6b8748a2dc26f8296",
+    "renderExitCode": 1,
+    "elapsedSeconds": 11.984,
+    "peakGroupRssBytes": 1032650752
+  },
+  "candidate": {
+    "requestedLift": 0.007256294395655452,
+    "cumulativeLift": 0.007256294395655452,
+    "before": {
+      "rootWorld": [
+        -6.884652308776317,
+        0.5018619106697442,
+        -5.838557372844211
+      ],
+      "hipsWorld": [
+        -6.892969603855551,
+        0.8743043978556969,
+        -5.739820546296654
+      ],
+      "segmentLengths": {
+        "left": {
+          "upper": 0.530244433088977,
+          "lower": 0.5538910504334097
+        },
+        "right": {
+          "upper": 0.5302444330889768,
+          "lower": 0.5538910504334095
+        }
+      },
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minimumGap": -0.0030000002162544614,
+          "maximumGap": 0.2540170266259276
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minimumGap": 0.24858732154915408,
+          "maximumGap": 0.8698993921052935
+        },
+        "head-back": {
+          "sampled": 384,
+          "minimumGap": 0.8150297598181135,
+          "maximumGap": 1.134288203714373
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.813737253289879,
+          "maximumGap": 0.948190721102252,
+          "withinFourMillimetres": 0
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.8931668422511029,
+          "maximumGap": 0.9906982526390908,
+          "withinFourMillimetres": 0
+        }
+      },
+      "footSolveResult": null
+    },
+    "after": {
+      "rootWorld": [
+        -6.884652308776317,
+        0.5018619106697442,
+        -5.838557372844211
+      ],
+      "hipsWorld": [
+        -6.892969603855551,
+        0.794304397855697,
+        -5.739820546296654
+      ],
+      "segmentLengths": {
+        "left": {
+          "upper": 0.5302444330889768,
+          "lower": 0.5538910504334095
+        },
+        "right": {
+          "upper": 0.5302444330889772,
+          "lower": 0.5538910504334095
+        }
+      },
+      "regions": {
+        "pelvis-back": {
+          "sampled": 384,
+          "minimumGap": -0.14748261725417733,
+          "maximumGap": 0.17792734967443313
+        },
+        "torso-back": {
+          "sampled": 384,
+          "minimumGap": 0.17412428456410134,
+          "maximumGap": 0.7898993909132006
+        },
+        "head-back": {
+          "sampled": 384,
+          "minimumGap": 0.7350297626493343,
+          "maximumGap": 1.0542882037143728
+        }
+      },
+      "feet": {
+        "left": {
+          "sampled": 80,
+          "minimumGap": 0.0035504660996640014,
+          "maximumGap": 0.14408648804632515,
+          "withinFourMillimetres": 3
+        },
+        "right": {
+          "sampled": 64,
+          "minimumGap": 0.0035882276489818954,
+          "maximumGap": 0.11463842798734922,
+          "withinFourMillimetres": 1
+        }
+      },
+      "footSolveResult": {
+        "corrected": 2,
+        "maxError": 0,
+        "limited": false,
+        "limitedReasons": [
+          {
+            "code": "pelvis-lowering-budget-exhausted",
+            "requestedLowering": 0.014187304831274212,
+            "cumulativeLowering": 0.08
+          },
+          {
+            "code": "pelvis-lowering-budget-exhausted",
+            "requestedLowering": 0.006359197730870905,
+            "cumulativeLowering": 0.08
+          }
+        ],
+        "unresolvedReasons": [],
+        "finalLegReach": [
+          {
+            "side": "left",
+            "upperLength": 0.41758012829292845,
+            "lowerLength": 0.4362024030179236,
+            "actualAnkleReach": 0.8532875437352607,
+            "requestedAnkleReach": 0.8550981836988784,
+            "maximumReach": 0.853782531310852,
+            "extensionRatio": 1.0015409689701738
+          },
+          {
+            "side": "right",
+            "upperLength": 0.4175801282929292,
+            "lowerLength": 0.4362024030179232,
+            "actualAnkleReach": 0.8532875203049424,
+            "requestedAnkleReach": 0.8552034029243433,
+            "maximumReach": 0.8537825313108524,
+            "extensionRatio": 1.0016642078765765
+          }
+        ]
+      }
+    },
+    "bodyRegionsClear": false,
+    "floorFeetClearAndPlanted": true,
+    "solverError": "Native lie foot support failed (0.007642002142625032 m, limited=true); diagnostics={\"result\":{\"corrected\":2,\"maxError\":0"
+  }
+}

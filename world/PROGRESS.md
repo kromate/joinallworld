@@ -1,3 +1,31 @@
+# Independent next-five release proposal, 10 October 2026 at 00:25 UTC
+
+The existing C1 catalogue and registry already consume generated city rows.
+A concrete C1-based assembly proposal selects exactly33 files from reviewed
+391ccfe9: three generated catalogues/loaders/routes,25 city asset files and
+five provenance receipts. Eight shared dependencies match C1 byte for byte.
+See third-five-c1-release-proposal.json. It deliberately leaves the broader
+streaming migration as its own active milestone; full global coverage remains
+the objective. This C1-based candidate is not yet assembled or accepted.
+Its own generator, compiler, engine/host, budget, sealed/native and production
+checks are required; World-based candidate measurements cannot substitute.
+Integration alone assembles, existing cloud capacity runs heavy checks,
+Astra owns native review, WORLD alone uploads an accepted artifact.
+
+# Clean native retained-store checkpoint, 10 October 2026 at 00:21 UTC
+
+Stage32810 finished normally at00:21:04.848UTC, exit0; child27474 is absent,
+control is stopped, and all seven original control/store fields remain exact.
+The cold store preserves both actors' pre-replay cash, numerical charisma,
+completed shifts, career shifts/performance/generation and active-action state,
+plus identities, protected fields, homes, old school and all receipt contents.
+A whole city-state hash differs across the replay window; B matches. Changed
+paths are unproved because the raw pre-state was not retained. Exact prelesson
+numerical XP delta also remains unproved. These limits do not erase the scoped
+native wage, same-ID replay and clean store retention witnesses.
+No new local server or production deployment is active. The next-country
+runtime/release work remains independent. Earlier dated checkpoints follow.
+
 # Next-five source and retained-save checkpoint, 10 October 2026 at 00:18 UTC
 
 Remote generated candidate391ccfe9 was independently reviewed: fourteen files,

@@ -1,6 +1,6 @@
 {
-  "decision": "ACCEPT scoped retained original-actor OFF completion, reload and same-ID wage replay; stage terminal still pending",
-  "observedAtUtc": "2026-10-10T00:18:50.013156+00:00",
+  "decision": "ACCEPT scoped retained original-actor OFF completion, reload, same-ID wage replay and clean terminal store retention",
+  "observedAtUtc": "2026-10-10T00:22:39.529640+00:00",
   "sourceSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
   "packageDigest": "96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad",
   "stageHelperSha256": "55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56",
@@ -79,20 +79,75 @@
     "originalCompletionRowUnchanged": true,
     "bothActorsIdentityProtectedHomeAndSchoolUnchangedByReplay": true,
     "afterNativeReceiptSha256": "f4f44771e7bad0d7bbf55798535cd56b18dc889ecadf6edc1db60b8e33952a99",
-    "newActorsGrantsLessonsResetsOrDirectStoreWrites": false
+    "newActorsGrantsLessonsResetsOrDirectStoreWrites": false,
+    "coldCheckpointProgressionAndCashMatchesPreReplay": true
   },
   "sameIdReplayArtifactSha256": "fdbc3be1b58f680d9a8e9c2b68dd6c1a39c44d5e2891f39a682759987e7e11e1",
   "scopeLimitations": [
     "Exact numerical charisma delta unproved because original before snapshot did not retain numeric XP. Canonical post charisma322.5 and native displayed level/progress are separate evidence.",
     "A social hash changed as expected for earned cash3000 and a new shift rumour. Reversing precisely these changes reproduces the entire before hash.",
     "No production deployment, physical phone/Safari, paired B browser, social or media acceptance.",
-    "Original ON whole-city-state changes beyond preserved named fields remain qualified separately."
+    "Original ON whole-city-state changes beyond preserved named fields remain qualified separately.",
+    "A whole city-state hash differs between pre-replay and the cold checkpoint; B matches. Named progression/identity/protected fields and receipt contents match. Full changed-path attribution is unproved without retained raw pre-state."
   ],
   "cleanup": {
     "nativeOwnedTabClosed": true,
     "nativeBrowserLeaseReleased": true,
     "stageSession": 32810,
     "stageChildPid": 27474,
-    "stageState": "running until original fixed internal deadline; no early signal"
+    "stageState": "cleanly stopped at original internal deadline; child absent and original store retained"
+  },
+  "terminal": {
+    "sha256": "e6ee0ea1a2bc81cc7aa99438241a61f6c58448445cd3aa43eccee7aa716320b3",
+    "sessionId": 32810,
+    "exitCode": 0,
+    "stoppedAt": "2026-10-10T00:21:04.848Z",
+    "childAbsent": true,
+    "allSevenRetained": true,
+    "scope": "Actual cold retained-store read after natural stage deadline. Comparison against immediately pre-replay after-native snapshot. No additional mutation/replay. Exact prelesson XP delta remains unproved.",
+    "actors": [
+      {
+        "role": "A",
+        "progressionAndCash": {
+          "cash": 369500,
+          "charisma": 322.5,
+          "completedShifts": 1,
+          "careerShifts": 1,
+          "careerPerformance": 60,
+          "careerGeneration": 1,
+          "activeActionNone": true
+        },
+        "matchesPreReplayAfterNativeValues": true,
+        "identityProtectedHomeSchoolAndAllRowsMatchPreReplay": true,
+        "cityStateSha256": "722a7ee735f18b2f2f68407e7acbda33b625adba83ab39940b4f083db655376b",
+        "wholeCityStateMatchesPreReplay": false,
+        "receiptCounts": {
+          "action_receipts": 46,
+          "once_receipts": 8,
+          "wallet_effects": 18
+        }
+      },
+      {
+        "role": "B",
+        "progressionAndCash": {
+          "cash": 176000,
+          "charisma": 0,
+          "completedShifts": 0,
+          "careerShifts": 0,
+          "careerPerformance": 0,
+          "careerGeneration": 0,
+          "activeActionNone": true
+        },
+        "matchesPreReplayAfterNativeValues": true,
+        "identityProtectedHomeSchoolAndAllRowsMatchPreReplay": true,
+        "cityStateSha256": "12d468275e36853bd705da48353b9292f9a606b444ce7b8116049e996fb7981a",
+        "wholeCityStateMatchesPreReplay": true,
+        "receiptCounts": {
+          "action_receipts": 12,
+          "once_receipts": 0,
+          "wallet_effects": 8
+        }
+      }
+    ]
   }
 }

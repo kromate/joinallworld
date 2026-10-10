@@ -1,0 +1,165 @@
+{
+  "schema": "joinallworld.native-interaction-temporal-run-receipt.v1",
+  "status": "bounded-render-completed; fixture-checks-pass-with-explicit-evidence-limits",
+  "source": {
+    "repo": "/workspace/remote-verification/repositories/worker-graphics-native-interaction-temporal-29df",
+    "branch": "codex/cloud-native-interaction-temporal-93bc",
+    "head": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+    "clean": true
+  },
+  "dependency": {
+    "node": "v24.19.0",
+    "nodeModulesRealpath": "/workspace/remote-verification/repositories/coordinator-graphics-wiring/node_modules",
+    "packageLockSha256": "d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9"
+  },
+  "inputs": {
+    "gestureController": {
+      "path": "/workspace/remote-verification/repositories/worker-graphics-native-interaction-temporal-29df/src/scene/body/native/native-interaction-gesture.ts",
+      "sha256": "70d28b67deb52af9e0a274ed92d7e2f8d04a309a7129854782adb7994ed24cf3"
+    },
+    "gestureTests": {
+      "path": "/workspace/remote-verification/repositories/worker-graphics-native-interaction-temporal-29df/src/scene/body/native/native-interaction-gesture.test.ts",
+      "sha256": "29933dafc34e5abc853b24dde2385662f78774199b1d00fd20b3b154393f4d5d"
+    },
+    "bundle": {
+      "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/game-fixture.bundle.js",
+      "sha256": "6e06602ee76ccaa4480239f5bc9217a60b0c5a62a47d4d72d127839274f19997",
+      "bytes": 10066514
+    },
+    "runner": {
+      "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/temporal-office-runner.mjs",
+      "sha256": "6db2f0088019e56fa5d1a200d0f657c7ef41041bcd9b68cbc6ed12dcc1d4b54a"
+    }
+  },
+  "gates": {
+    "parentCompilerRawSha256": "c6d0ce4ad749af4de8ba988365b247a38f2c909b201c5bfe83c568dd4a83f97b",
+    "bundleLog": {
+      "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/bundle-93bc.log",
+      "sha256": "a193953e0ac5aa719ed52461f43373c70243bc7a91e8ba5de16bb414bfb0eaa3"
+    },
+    "browserRawLog": {
+      "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/browser-93bc-v2.log",
+      "sha256": "3c8fc2f99ab2106c7c740a6a942000c34676e29883967011a14de45143138240"
+    },
+    "browserReceipt": {
+      "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/browser-93bc-v2-receipt.json",
+      "sha256": "0de1398a2239b88f0226e8890ea63f75ac0c51a586a0c63a902adf1b801fd0da"
+    },
+    "report": {
+      "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/temporal-office-report.json",
+      "sha256": "b1a96b3cc674807a5b08f68c6ae423ffbd2119be4b2bbb6fdf9d8b5a721bfa1d"
+    },
+    "runnerPreconditionFailurePreserved": {
+      "log": "/workspace/remote-verification/worker-results/native-interaction-temporal/browser-93bc.log",
+      "sha256": "615bc08e72fe741a7044d69193b9f36f455800b406f27623ae8a3ee4404abaf7",
+      "receipt": "/workspace/remote-verification/worker-results/native-interaction-temporal/browser-93bc-receipt.json",
+      "receiptSha256": "f46355e80552d46366ee1d8c86a7e8745f438a86b70253fabd485763fb28052e"
+    }
+  },
+  "renderedEvidence": {
+    "totalDirectCanvasPngs": 14,
+    "directCanvases": [
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/dapo-interaction-t180-canvas.png",
+        "bytes": 151942,
+        "sha256": "b2c30f319359fa1b405f6956d654be557cedd89977e99bc77eb71f84e8940505"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/dapo-interaction-t540-canvas.png",
+        "bytes": 174719,
+        "sha256": "13e0c3c34ed9447d04a900c6693610448dd713aeb65269ed2e18c6d3719fa742"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/dapo-interaction-t900-canvas.png",
+        "bytes": 174594,
+        "sha256": "cee2056869bacbb5ff680250e8942445b94a27e4f7900c45966b30783df2b331"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/dapo-returned-idle-canvas.png",
+        "bytes": 176524,
+        "sha256": "115517fe096099f85fe466c43132a13008519e1884681d2f0c851ef1ecfdd083"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/mrs-okafor-interaction-t180-canvas.png",
+        "bytes": 189346,
+        "sha256": "444eda1c33205ed4650bf0ed0045c9cb8ee0787b4efee2beebd18316dd92ea80"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/mrs-okafor-interaction-t540-canvas.png",
+        "bytes": 179429,
+        "sha256": "aa56aa48502e5fe8f1b84a4cf8c96ef2e49eb3eb66649671784eb11a2561adea"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/mrs-okafor-interaction-t900-canvas.png",
+        "bytes": 181361,
+        "sha256": "3cc1200d2ab5baca175fa82b2240bcb8dfd3a2061cfeaedf4b38f779c55bdc38"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/mrs-okafor-returned-idle-canvas.png",
+        "bytes": 175791,
+        "sha256": "a860500dd393046d1103f55d37c1d3fc3f708a9971958fa21ced8d9eee9554ed"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/player-front-idle-canvas.png",
+        "bytes": 132480,
+        "sha256": "2ba010a225c06016860ec5888d2ba5aa58d7e402833df66f689e07f0277cb1be"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/player-front-interact-canvas.png",
+        "bytes": 159009,
+        "sha256": "5281e55f687676f34ae1d7984ce755f61f36c241371c029a8da7f10f96e7ce55"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/player-front-walk-canvas.png",
+        "bytes": 196791,
+        "sha256": "1a1273199d494115e067ad0f9d79afae2d41dff4d635e11eb38c20a438e03076"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/player-profile-idle-canvas.png",
+        "bytes": 136338,
+        "sha256": "3ced49dc4d13555eefa0f3323bb47d112b4cb1cbc9fb9097d406ecc8cdb495d6"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/player-profile-interact-canvas.png",
+        "bytes": 186041,
+        "sha256": "770b61ffae28487571c0d1ada440a2c12fa104cfd5a93b14046f76b1f81aa554"
+      },
+      {
+        "path": "/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2/player-profile-walk-canvas.png",
+        "bytes": 139984,
+        "sha256": "62bcf029024f99aab199fc9bb4fd34a4e75ab056eabe37e44fd7e28abd96eb1f"
+      }
+    ],
+    "checks": {
+      "realOfficeReady": true,
+      "playerSixDirectCaptures": true,
+      "bothNPCActionPromisesCompletedSerially": true,
+      "activeSamplesWereRealInteractions": true,
+      "exactReturnedIdle": true,
+      "phaseShoeWitnessesPass": true,
+      "jawRestored": true,
+      "actorsVisible": true,
+      "directActorPixels": true,
+      "consoleClean": true
+    },
+    "elapsedMs": 39390,
+    "mrsTalkFrames": 34,
+    "dapoTalkFrames": 34,
+    "contactEvidencePhasesPerNpc": 3,
+    "sourceDerivedCounts": {
+      "mrsActiveSampleUseCalls": 34,
+      "dapoActiveSampleUseCalls": 34,
+      "perCallSampleClockSeconds": 0.03333333333333333,
+      "derivation": "Fixture reports 34 talkLoopFrames; frozen venue stepCrowd samples the active actor once per call. Setup/teardown calls and CPU cost were not separately instrumented."
+    }
+  },
+  "limits": [
+    "Intermediate captures have no full deformed-shoe vertex oracle; only placement, interaction-entry, and returned-idle fixture geometry probes are authoritative.",
+    "No blink-weight snapshot is exposed by the fixture; blink restoration unproven.",
+    "The 34-frame talk loop samples 34*(1/30)s = 1.133s of crowd steps; provider interaction clip duration is not exposed, so active beyond-clip-duration behavior unproven.",
+    "The fixture exposes no native gait phase for NPCs; no NPC walk claim.",
+    "Headless WebGL uses SwiftShader; not physical-device certification.",
+    "Direct pixels and pixel contrast establish visible rendered actor regions, not garment/clothing certification.",
+    "Player 'interact' images are the fixture's stand-in animation pose, not an actual player-to-NPC life interaction."
+  ]
+}

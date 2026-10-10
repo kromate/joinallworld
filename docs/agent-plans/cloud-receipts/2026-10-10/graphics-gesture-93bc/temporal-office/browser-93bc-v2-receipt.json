@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "exitCode": 0,
+  "peakGroupRssBytes": 1523187712,
+  "elapsedSeconds": 42.697,
+  "limits": {
+    "rssBytes": 2147483648,
+    "seconds": 120
+  },
+  "command": [
+    "env",
+    "AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots",
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "server",
+    "--",
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "browser",
+    "--",
+    "env",
+    "NATIVE_TEMPORAL_RESULTS=/workspace/remote-verification/worker-results/native-interaction-temporal/actual-run-v2",
+    "node",
+    "/workspace/remote-verification/worker-results/native-interaction-temporal/temporal-office-runner.mjs"
+  ]
+}

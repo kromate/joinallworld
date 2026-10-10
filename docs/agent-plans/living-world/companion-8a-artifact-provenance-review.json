@@ -1,0 +1,24 @@
+{
+  "observedAtUtc": "2026-10-10T00:45:54.011053+00:00",
+  "candidate": "8a48405963ca526bfe059b413be250d834d50b90",
+  "handoffPublishedCommit": "a8d9c19f8ee9524726e932f71ead0840c107f42c",
+  "handoffPath": "docs/agent-plans/cloud-receipts/2026-10-10/companion/sealed-artifact-handoff.md",
+  "handoffSha256": "1ff96242e0fd845fe6f7e0cad58b1d56ff8b1600c7a47161ab696dcfce0d5003",
+  "handoffBytes": 3330,
+  "wholeHandoffRead": true,
+  "reportedTarSha256": "990eb62b8f47be6fbcbb68a78f7fa9cb11bfa669cf2ed65ef5dac8b7fab21b7c",
+  "reportedGuardPackageDigest": "88c193147084502f7ce7b5b4a8e71e83e625900418908fbbc2f036416975c0b3",
+  "reportedManifestSha256": "9baa2ffc8a023c9e2d4a133bba1038ea344712c66583ecfa9640621fe818f5c3",
+  "reportedWorkerSha256": "74524d136eb24b8eb9cfc47b134d7d5628e35c02dd21e0d1ca6d4e29e8975f77",
+  "actualSourceReview": [
+    "Entire candidate vite.config.ts inspected: no GitHEAD browser build-ID injection",
+    "Actual package-joinallworld.mjs bundles Worker from source, copies existing dist, writes expectedConfig from supplied sourceSha",
+    "Actual guard validates manifest bytes and exact BUILD_ID configuration, but does not independently prove copied dist was built from sourceSha"
+  ],
+  "finding": "The pre-commit dist timestamp does not prove a version mismatch. No build-ID defect claimed. Existing owner should verify package config, compiled corrected CompanionHost, actual artifact hashes and available raw acceptance evidence. Do not blindly rebuild unchanged source.",
+  "reportedHistoricalPasses": "19 focused tests/build/download caps reported; raw historical logs absent in handoff. Exact five-project compiler independently verified separately.",
+  "nativeBatch": "Existing Astra normal original Clerk active decisions/reload/once claim and 320/390 guide hiding, help reachability and idle restoration, after same sealed artifact and owned stage/lease gates. No reset of completed teacher.",
+  "nativePlayed": false,
+  "releaseApproved": false,
+  "activationApproved": false
+}

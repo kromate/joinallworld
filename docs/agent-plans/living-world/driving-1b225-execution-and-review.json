@@ -1,0 +1,141 @@
+{
+  "observedAtUtc": "2026-10-10T00:45:54.011053+00:00",
+  "candidate": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+  "executionScope": "Published cloud Node24 execution; Root read receipts/logs and source, did not execute local tests/build/browser.",
+  "focused": {
+    "f2-ui-raw.log": {
+      "publishedReceiptCommit": "a8d9c19f8ee9524726e932f71ead0840c107f42c",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/f2-ui-raw.log",
+      "sha256": "6c296cdac9d2eba24ebf41374a7b962cfdc8646184b67c19dfc7c4fb5c31d96c",
+      "bytes": 1029,
+      "pass": 7,
+      "fail": 0,
+      "skip": 0,
+      "wholeLogIndependentlyRead": true,
+      "executionSourceCheckpoint": "44c1e540ed0244276a2ea74609aa9dec9ffd377c",
+      "drivingCases": 6,
+      "barberCases": 1,
+      "renderOverriddenWithNull": true,
+      "finalUiBytesEqualTo44c": true,
+      "renderedDomProof": false
+    },
+    "l1-service-raw.log": {
+      "publishedReceiptCommit": "a8d9c19f8ee9524726e932f71ead0840c107f42c",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/l1-service-raw.log",
+      "sha256": "5c41e679f9dccfd97076ce7050d053dc4422b80f883272b0adb741a27e132da6",
+      "bytes": 7969,
+      "pass": 16,
+      "fail": 0,
+      "skip": 0,
+      "wholeLogIndependentlyRead": true,
+      "executionSourceCheckpoint": "1b225b90faf375b8195058ee17257e7d31cf8a98"
+    }
+  },
+  "checks": {
+    "compiler-final": {
+      "publishedReceiptCommit": "ba703527b7448074031ed21b491f70c8b8baaef5",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/compiler-final/receipt.json",
+      "receiptSha256": "827d31bf57e9e8158769e6823887ff27565509cbf1818aebe76f95fb1f2e8894",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/compiler-final/command.log",
+      "logSha256": "dd746544cb303e0051d73dfae02f231d3dd61011f2a35388381a12d0b5bbd961",
+      "logBytes": 91,
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/typecheck.ts",
+        "--serial"
+      ],
+      "nodeVersion": "v24.19.0",
+      "npmVersion": "11.9.0",
+      "heapMiB": 4096,
+      "startedAtUtc": "2026-10-10T00:33:22.725179+00:00",
+      "endedAtUtc": "2026-10-10T00:35:21.362677+00:00",
+      "durationSeconds": 118.637498,
+      "exitCode": 0,
+      "headAfter": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "statusAfterClean": true,
+      "sourceUnchangedReported": true,
+      "beforeAfterPinMapsEmpty": true,
+      "projects": 5,
+      "errors": 0,
+      "baselineWaivers": 0,
+      "wholeLogRead": true
+    },
+    "build-final": {
+      "publishedReceiptCommit": "ba703527b7448074031ed21b491f70c8b8baaef5",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/build-final/receipt.json",
+      "receiptSha256": "2d4ad92605d185f03bb7f067ad56d5d2228792593a6a9b95643c93d3e43c9aab",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/build-final/command.log",
+      "logSha256": "4a204efdcab1ec8ddd422a8e1054e04c9587c9346fab9e093dd1dac03351e21b",
+      "logBytes": 86362,
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "nodeVersion": "v24.19.0",
+      "npmVersion": "11.9.0",
+      "heapMiB": 1536,
+      "startedAtUtc": "2026-10-10T00:35:35.821952+00:00",
+      "endedAtUtc": "2026-10-10T00:36:31.251538+00:00",
+      "durationSeconds": 55.429586,
+      "exitCode": 0,
+      "headAfter": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "statusAfterClean": true,
+      "sourceUnchangedReported": true,
+      "beforeAfterPinMapsEmpty": true,
+      "buildSeconds": 54.47,
+      "receiptAndLogHashAndTerminalSummaryRead": true,
+      "downloadBudgetNotProved": true
+    }
+  },
+  "independentSourceReview": {
+    "thread": "01a122db-a5fe-7211-b9c6-0fc01bec9bd5",
+    "turn": "01a1233e-be93-7a31-9b03-b4dcbc46feca",
+    "actualModel": "gpt-6-astra",
+    "effort": "high",
+    "actualTurnContextAt": "2026-10-10T00:37:57.099Z",
+    "decision": "APPROVE_L1_SOURCE_DELTA",
+    "allSevenPinsMatch": true,
+    "reports": {
+      "md": {
+        "sha256": "d29cca7156ea12371a31ec97bfb9c8440624b65accc64227313266be5cab6669",
+        "bytes": 8535,
+        "wholeReportIndependentlyRead": true
+      },
+      "json": {
+        "sha256": "99588b201c128b125fbf1d73531204b4240bb2dbe93f93a9de8e12387711397e",
+        "bytes": 2802,
+        "wholeReportIndependentlyRead": true
+      }
+    },
+    "sourceClosed": [
+      "D1",
+      "D2",
+      "D3",
+      "L1"
+    ],
+    "executionPerformedByReviewer": false,
+    "preciseTestGaps": [
+      "last-safe nextSequence max-1 to max transition",
+      "actual accepted maximum-sequence receipt replay",
+      "exhausted replay combined with timeout/clock reversal",
+      "exhausted start/input/lifecycle context-mismatch paths",
+      "real durable reopen and Worker parity"
+    ]
+  },
+  "workerAssignmentProvenance": "Existing cloud implementation requested/configured Luna; accepted assignment receipt or actual model metadata remains unavailable. Worker name is insufficient.",
+  "remainingGates": [
+    "Exact changed host composition, default-OFF Node and Worker configuration review",
+    "Actual durable Node/Worker ON-to-OFF reopening and receipt/write-failure parity",
+    "Compatible OFF artifact and rollback pin before v2 issuance; never C1/eec rollback after v2",
+    "Final combined download budgets, smoke, frozen package and rendered native driving proof",
+    "Last-safe sequence and exhausted context-path focused evidence",
+    "Original school recovery retaining original score and no reset or qualification gift",
+    "Remaining full connected programme including mobile physical device, multiplayer, real businesses and live consented Goalmatic"
+  ],
+  "releaseApproved": false,
+  "activationApproved": false,
+  "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "extraSpendAllowed": false
+}

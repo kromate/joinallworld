@@ -1,0 +1,503 @@
+{
+  "decision": "APPROVE_INTEGRATION_SOURCE_TREE_ONLY",
+  "tree": "b08f02304e1255c6481459a337de4c5012f40503",
+  "eec": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "c12": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "mergeBase": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "report": "eec-c12-integration-source-review.md",
+  "blockers": [],
+  "countryPathCount": 33,
+  "checkerFixtureTestPathCount": 5,
+  "eecSideDeltaPathCount": 38,
+  "overlappingDeltaPaths": [],
+  "allCountryPathsExactC12": true,
+  "allEecDeltaPathsExactEec": true,
+  "countryPins": [
+    {
+      "path": "src/game/cities/cairo/content.ts",
+      "blob": "212d315f552c037fcb0a1c8cb1451fa468426ba2",
+      "sameAsC12": true,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/cairo/facts.ts",
+      "blob": "6273f732a1531f86b20ed49d4f27cfb6461661b8",
+      "sameAsC12": true,
+      "sha256": "29ede7f78b26400bf5e9ca743f084afc4b0edeba09e016d7337bd4696c1e43f7"
+    },
+    {
+      "path": "src/game/cities/cairo/geometry.ts",
+      "blob": "9b6803eabd76d5c39c0adc25188bf02f67c2df86",
+      "sameAsC12": true,
+      "sha256": "c6301066e94d51388e08a81b058b0a25010c3031a46c61dc927d5575113c0e9f"
+    },
+    {
+      "path": "src/game/cities/cairo/index.ts",
+      "blob": "14763a8bdf08913632f17c0dc6863b82d41b67b2",
+      "sameAsC12": true,
+      "sha256": "778e6d00fa125cfc1c9350132b52128c054528920400e0889ee7cc72d9615281"
+    },
+    {
+      "path": "src/game/cities/cairo/map.ts",
+      "blob": "672dfbc9d6b41d1c20de657e927b5cad8936145d",
+      "sameAsC12": true,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/catalogue.generated.ts",
+      "blob": "d53b322a59b0a4f8afbe4930832350775bd594a7",
+      "sameAsC12": true,
+      "sha256": "0969ee3c04a10152d1894706187bd9fd531b83295a4b7cb6bcaad692f1be3046"
+    },
+    {
+      "path": "src/game/cities/kampala/content.ts",
+      "blob": "212d315f552c037fcb0a1c8cb1451fa468426ba2",
+      "sameAsC12": true,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/kampala/facts.ts",
+      "blob": "fc24bddc867156df54d797b8e1aef3c2da42cd3f",
+      "sameAsC12": true,
+      "sha256": "bb110111a8362cef2f556b93b7ce3476fe99a72bcc6227267ee46f540840a537"
+    },
+    {
+      "path": "src/game/cities/kampala/geometry.ts",
+      "blob": "cdbd9cce31f651a1dacfcd11f1c708bd702407db",
+      "sameAsC12": true,
+      "sha256": "8c40eea827e1be4b58a7810531713517edd82591201752ece77065ffbcf8fd84"
+    },
+    {
+      "path": "src/game/cities/kampala/index.ts",
+      "blob": "5edd00a328a18bb62a1f20b73ee774921e1f5ab9",
+      "sameAsC12": true,
+      "sha256": "ffd34fc4c1bacbb2ce6bcfb7575ac590817df213fd9ede3289692f8e7caf0043"
+    },
+    {
+      "path": "src/game/cities/kampala/map.ts",
+      "blob": "672dfbc9d6b41d1c20de657e927b5cad8936145d",
+      "sameAsC12": true,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/kigali/content.ts",
+      "blob": "212d315f552c037fcb0a1c8cb1451fa468426ba2",
+      "sameAsC12": true,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/kigali/facts.ts",
+      "blob": "2eaa47c7086502992081e65a545b351d2a7abc75",
+      "sameAsC12": true,
+      "sha256": "c3dda954330e82df148b9e4650e9efec48f5ac63b3aabcc7154a125ca00f304d"
+    },
+    {
+      "path": "src/game/cities/kigali/geometry.ts",
+      "blob": "229cfbcb8894e8a721ff07155c91817c9e261e21",
+      "sameAsC12": true,
+      "sha256": "9d60c5de3c5b5973d80c9e1ec099925fd85a573d4ccf774771572bcf1e0f605f"
+    },
+    {
+      "path": "src/game/cities/kigali/index.ts",
+      "blob": "03c0afb6307b70f6d1a6c7982afc06902bce10a4",
+      "sameAsC12": true,
+      "sha256": "7d745b23c1ed2ce95cd40de452abeb51bd84f5c5fa88c452326cd92aef886e0a"
+    },
+    {
+      "path": "src/game/cities/kigali/map.ts",
+      "blob": "672dfbc9d6b41d1c20de657e927b5cad8936145d",
+      "sameAsC12": true,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/loaders.generated.ts",
+      "blob": "be63d2165a1f5ff9dc6b1d77ab154795fa518128",
+      "sameAsC12": true,
+      "sha256": "857c3a9cc6acc600db61e6f18259ee27046afe3ef997028909c09a5f37a12dea"
+    },
+    {
+      "path": "src/game/cities/lusaka/content.ts",
+      "blob": "212d315f552c037fcb0a1c8cb1451fa468426ba2",
+      "sameAsC12": true,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/lusaka/facts.ts",
+      "blob": "3a925601368e9ac96db2fc3b60c3723a23a7d20b",
+      "sameAsC12": true,
+      "sha256": "cea6bd55be5d78a4ec694c9a7592615bf503cc1a12e060296ad94de12177ac5e"
+    },
+    {
+      "path": "src/game/cities/lusaka/geometry.ts",
+      "blob": "02f7787b0375d2dc9a3bae3a27d5c887d99c762e",
+      "sameAsC12": true,
+      "sha256": "2a0caeffb24dae18c29d05c8727e5ee33e759528e12730718fad0e049ab451ba"
+    },
+    {
+      "path": "src/game/cities/lusaka/index.ts",
+      "blob": "45432e68791abfe57394f86fe0736b714b3f36cc",
+      "sameAsC12": true,
+      "sha256": "6ca635db7509902097eba5c87f18ef0b780ff06e7f41111b11878cef5e0cae62"
+    },
+    {
+      "path": "src/game/cities/lusaka/map.ts",
+      "blob": "672dfbc9d6b41d1c20de657e927b5cad8936145d",
+      "sameAsC12": true,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/rabat/content.ts",
+      "blob": "212d315f552c037fcb0a1c8cb1451fa468426ba2",
+      "sameAsC12": true,
+      "sha256": "61c203521094eae4471dbee3af88fa04a8176f8c9ab8bf3534dc854f2d57d8ae"
+    },
+    {
+      "path": "src/game/cities/rabat/facts.ts",
+      "blob": "f6bae51d184944f99a7bb24253e29038eae6fd5f",
+      "sameAsC12": true,
+      "sha256": "d33e4234a4ca8771aeaa4eeb38efbafe04218c89acad8f44034833a2e00333fd"
+    },
+    {
+      "path": "src/game/cities/rabat/geometry.ts",
+      "blob": "8af1a901ea2832bec8e8f3997299d53989fb4a63",
+      "sameAsC12": true,
+      "sha256": "6a50867f7847d06a62288f68b469a21859c8984a00422d244b057d7db28f29de"
+    },
+    {
+      "path": "src/game/cities/rabat/index.ts",
+      "blob": "5666d5b90575c93dca3687863a73f41dbb08fa6b",
+      "sameAsC12": true,
+      "sha256": "a09a480e2a440d60421238022314e6760159d061506738e7cbdd007de78f7efb"
+    },
+    {
+      "path": "src/game/cities/rabat/map.ts",
+      "blob": "672dfbc9d6b41d1c20de657e927b5cad8936145d",
+      "sameAsC12": true,
+      "sha256": "4072aa863b120ce635d76c345a6fd27d0ea633ff868c02d19de64c462b16bb59"
+    },
+    {
+      "path": "src/game/cities/routes.generated.ts",
+      "blob": "950821b6032360fba5d443bfd25d87cfaa902327",
+      "sameAsC12": true,
+      "sha256": "1bf2e138c33ea59104666a4ccd3b49f05ba81c5d0e13a7d659075e3863a8dd97"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/cairo.json",
+      "blob": "605aed97fadfa731db79580ae6b9680da4cdb65d",
+      "sameAsC12": true,
+      "sha256": "7000fd7934c132ed98ce6bc33a95e42b7b4b92c96dcfda9623d11e9c6d70753a"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/kampala.json",
+      "blob": "210f47efb463c0d368408932081f9da00fc5925d",
+      "sameAsC12": true,
+      "sha256": "d28bc90206afd501474fe5ee16478de3d4d2be09408a7f2193481a758800a9a6"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/kigali.json",
+      "blob": "31050d5b5e861f0f8f98e683385f9033b76aea42",
+      "sameAsC12": true,
+      "sha256": "5ae7a1dd3726693f8b60c6421662110888145dd71085e77778f06761cbf6da0b"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/lusaka.json",
+      "blob": "8eb983cd8671f570885d3a859584e6b39bcb3d23",
+      "sameAsC12": true,
+      "sha256": "03031475e4d89dfebfd36b59cb90e8068a59a60a92290a9406feca1a32bd7d22"
+    },
+    {
+      "path": "world/playable-africa-rollout/receipts/rabat.json",
+      "blob": "da0a7739e2bad5fa0c7cc72becf1dea9ab616e03",
+      "sameAsC12": true,
+      "sha256": "1a5f01148dcbba735989df1af73c04e439b8e1acef0f9c2aab5a0134c26f2d9d"
+    }
+  ],
+  "checkerFixtureTestPins": [
+    {
+      "path": "scripts/world/check-playable-africa-rollout.py",
+      "blob": "caf068285410b10cad29ce56ebf1366fb1a86205",
+      "sameAsC12": true,
+      "sha256": "d82adecbb101ac20386d303a0c7762a82714fb896eaa3bfbdecec1747b5b0ab7"
+    },
+    {
+      "path": "server/testing/africaJourney.ts",
+      "blob": "848d259e7feed9f502ab3c673eaaa7bd80575e0d",
+      "sameAsC12": true,
+      "sha256": "66202144ded068a55708b7ac4684ea43b7717897c44d8e535033b657413dd880"
+    },
+    {
+      "path": "src/game/cities/allCities.test.ts",
+      "blob": "4dc43179f515fdcc59c642068cd758b4bcf1d4b6",
+      "sameAsC12": true,
+      "sha256": "4059377f9ddd8f51466aca9961f350274567d7037c0c085fe0581010b48ef15f"
+    },
+    {
+      "path": "src/map3d/geo/atlas.test.ts",
+      "blob": "980c4da291967e65c4e20a09fdbd613868952561",
+      "sameAsC12": true,
+      "sha256": "1ecd4bc513d6d55fcf8b31ec26d0e4920ff00ff682b9ea71e1c1c7be2f929796"
+    },
+    {
+      "path": "src/map3d/world.test.ts",
+      "blob": "f5f9d57dc2adfbae155e5b1e0c8fb0b1d0ba0fb8",
+      "sameAsC12": true,
+      "sha256": "ed7d2f852b5a51d969ff6b8726868f5333f926fd619883ad66562a215e111e80"
+    }
+  ],
+  "eecDeltaPins": [
+    {
+      "path": "deploy/business.edge.test.ts",
+      "blob": "74c6385cb31faf9a84c05a0c1c25463d1865790e",
+      "sameAsEec": true,
+      "sha256": "0ffd6d94c2320909e36af46fa019b026608e1ef21f9595a80f2d810328a6fc32"
+    },
+    {
+      "path": "deploy/chat.edge.test.ts",
+      "blob": "8636a45f068dd2af0d7f77086840fcebe8f04708",
+      "sameAsEec": true,
+      "sha256": "a802b6433d5e1339427baee2a295141b5ec72e25b5578e10daa7e1de73289c6a"
+    },
+    {
+      "path": "deploy/cloudflare-worker.ts",
+      "blob": "ab815ce645840bf5067086d8dd7439d31b5f29ff",
+      "sameAsEec": true,
+      "sha256": "b53d611a9d3cf71c400a186eef8aa8c0495dce7df14c6623ada4ca42d68a6982"
+    },
+    {
+      "path": "deploy/living-world-teaching.edge.test.ts",
+      "blob": "050e109f2de1729b06c64442bb126f90d5be1a39",
+      "sameAsEec": true,
+      "sha256": "7b255132ab1370e961565b5bc8eab13221247eab856bde7831f9ea390665f47c"
+    },
+    {
+      "path": "deploy/voice-notes.edge.test.ts",
+      "blob": "a2e9721a55122a6b08f53d457d9c96578191a55b",
+      "sameAsEec": true,
+      "sha256": "d3a328900005caae616b486bccf579bc57b1790324a640cc0cd829e98763be9b"
+    },
+    {
+      "path": "docs/PARITY-DELIVERY.md",
+      "blob": "075a3ff1f80b61645dc0203787799acefe11db8f",
+      "sameAsEec": true,
+      "sha256": "a1de5f9adfb5402868518810fc35c22d3aa96d4b07866377003e5a1e0781e708"
+    },
+    {
+      "path": "docs/research/lagos-life-bounded-branch-access-2026-10-09.md",
+      "blob": "34a68919db8091a1cfdff950db61e84d9ef685f9",
+      "sameAsEec": true,
+      "sha256": "be092cef759a5ac905ac3a968acbfbd91df0225f62d9ae2295570f460fc18075"
+    },
+    {
+      "path": "server/business.test.ts",
+      "blob": "9777ca20ad78f27821cc763a65a9ceee091c1448",
+      "sameAsEec": true,
+      "sha256": "13296e3ce09723a116707e356d9ea34f8b45b08c6cf0d874d13a9d84be5f186e"
+    },
+    {
+      "path": "server/chat.test.ts",
+      "blob": "b63909763253a590b297e50981cf6a882cca1fbc",
+      "sameAsEec": true,
+      "sha256": "10fa145c34676be3676bdbda8bac91ab979d19efe9ff52d63a5725175dedffff"
+    },
+    {
+      "path": "server/once.test.ts",
+      "blob": "fb50d4e0916b2a1a8d58916079c698dc86817ace",
+      "sameAsEec": true,
+      "sha256": "f2ab0758aef70fc71580f33f4b30a010fd0ca8edb1972aa92bdd2f91357c7a61"
+    },
+    {
+      "path": "server/recovery-receipt-isolation.test.ts",
+      "blob": "cdeb974c3b7b679c514bfadf4c7673fef3358709",
+      "sameAsEec": true,
+      "sha256": "57c45677307aa6b8b33c8b901393802d66627edd96b439c94d138d0f9a33f1a9"
+    },
+    {
+      "path": "server/routes/core.ts",
+      "blob": "e3671f9e9b931f6b32c8321a3a5c1168b224760b",
+      "sameAsEec": true,
+      "sha256": "d54c1ad916a5e69fc261038c9c2ca3ef2bb1f1b41a8563da6e549c185e91b4a5"
+    },
+    {
+      "path": "server/routes/once.ts",
+      "blob": "d545d1edaffe7467d3a0e2ed76ff693a26c46032",
+      "sameAsEec": true,
+      "sha256": "4dcef6f9c8a8e27f0d26e55b573013e3a28e7c48285233f5a3d755a04c4c93b4"
+    },
+    {
+      "path": "server/routes/social.ts",
+      "blob": "f6bbee6158cb0c0b4a3a2a428c822a0ccb1e5be5",
+      "sameAsEec": true,
+      "sha256": "d4cf9be06ad354bcb2611203c40597a399d8a758725de507d330cbe952b2df9a"
+    },
+    {
+      "path": "server/server.ts",
+      "blob": "1c3a8f752ad30a1651e6fd8a0b8013a708217e1e",
+      "sameAsEec": true,
+      "sha256": "c551d2a3f1b157b908cbc7ab6dc57d993019d43cf73494bb0f5cf9e49722d5e7"
+    },
+    {
+      "path": "server/social/service.ts",
+      "blob": "d2ba6dd717a1012ac127f27acaeddb7c3dab12b1",
+      "sameAsEec": true,
+      "sha256": "d8532e16cfd49f5e3fd4df77804cbff3ba518ac3725a65c1800da3232da61e6a"
+    },
+    {
+      "path": "server/social/voice-notes.test.ts",
+      "blob": "5b96a9244c7478c7eeebdeb01e87ecd94056818a",
+      "sameAsEec": true,
+      "sha256": "22403670f2188dcad0baee94abad29e091941ff7239e1045c6aaee64f3b26aa1"
+    },
+    {
+      "path": "server/teaching-career.test.ts",
+      "blob": "4247e0fc655d1dcd52a7e628a0462a778206e516",
+      "sameAsEec": true,
+      "sha256": "f3a62b9ca815dbf8dc91b1ee5aadb04197af8d25bb9490ece09b2c41a6ea1fb8"
+    },
+    {
+      "path": "server/testing/businessJourney.ts",
+      "blob": "080d629c8e10f5fed07d8446eef5a2b6801c6e57",
+      "sameAsEec": true,
+      "sha256": "c54d916183b6dbba12abdcbfab70fec5bcb6baef4f99ec6eebc8fdc3d01a3380"
+    },
+    {
+      "path": "server/types.ts",
+      "blob": "53cb04f85446b20983e82b993dad6c0d0d807c99",
+      "sameAsEec": true,
+      "sha256": "d391f5d9b16a5ae53b2cb67f4d01ffa7078095b224adf9eb214bdb0fe9d85b4b"
+    },
+    {
+      "path": "src/app/features/messages/MessageBubble.vue",
+      "blob": "3ded90181126e23747a09768dd9cf81690a44c33",
+      "sameAsEec": true,
+      "sha256": "c2a36fbbbad1c725f414677680ab052aecf68b8fc78fb3d1f6689f1a88a19503"
+    },
+    {
+      "path": "src/app/features/messages/MessagesApp.vue",
+      "blob": "c6361ce0fceaf0b7a28045c74a23ac9633cbeaab",
+      "sameAsEec": true,
+      "sha256": "3917d57bcc88f023edc2d5a4d05ed63d34967b650163ccff3b79697160b7923a"
+    },
+    {
+      "path": "src/app/features/messages/PinnedMessages.vue",
+      "blob": "6627b8577e5a87d1e85c2d565cdb33dc309b8188",
+      "sameAsEec": true,
+      "sha256": "be302516091b574e57ad9fe7067a8f9f0d61836ce3587ac1a59ee8fca047dd9e"
+    },
+    {
+      "path": "src/app/features/messages/messagePins.test.ts",
+      "blob": "00d00bf9d0e73a152f571816bcd3047ebb2b3d92",
+      "sameAsEec": true,
+      "sha256": "d7b3f636e8fc64a1943a690c1192002aeeedb5b3e009fd5ef06e5c2260c61430"
+    },
+    {
+      "path": "src/app/features/messages/messagePins.ts",
+      "blob": "de4733bebecbb3580c65a3a19290fca6b08be809",
+      "sameAsEec": true,
+      "sha256": "6194259c60027837a6db1db6c9311a129594fe9d5cc913087e919cd01a474339"
+    },
+    {
+      "path": "src/app/features/messages/messagePinsFrame.ts",
+      "blob": "5ad1dfd05c78f23aa4bd7101107dadf54f89133f",
+      "sameAsEec": true,
+      "sha256": "5862bdebc543049e4535c2805d2be94ed09ef65472ae662be284b5c9ba024ba5"
+    },
+    {
+      "path": "src/app/features/messages/messagesComponents.test.ts",
+      "blob": "df42c929c73d2d38231a8f1aabaea3903c226566",
+      "sameAsEec": true,
+      "sha256": "ee6631f74e38c40416ddcb5089cd57d635062dcd0e328a0f9e593075c66cc4c7"
+    },
+    {
+      "path": "src/app/features/social/socialClient.ts",
+      "blob": "475c804e93f3e86158d7af03f7e95c3ff7cc8177",
+      "sameAsEec": true,
+      "sha256": "2c7ffae30671f1ad8b520c731d2960df14e120c35a74752d9b3e6122739cb092"
+    },
+    {
+      "path": "src/app/state/game.test.ts",
+      "blob": "7bbcfb143c39f53bd149cd4637d2c4b5083cee86",
+      "sameAsEec": true,
+      "sha256": "f1c0c23b48b7d37bdc55bb4be66f3826e7f4f6184d774c87a972eb23aad9c033"
+    },
+    {
+      "path": "src/app/state/game.ts",
+      "blob": "2a5c6ce3dd8b2235fa59b971cb7c6cb949b7ef3e",
+      "sameAsEec": true,
+      "sha256": "2158a603d61a4d0c44ef9d6ddbbf7638b081a3bef64649a7541e0ac6603042e9"
+    },
+    {
+      "path": "src/app/types/client.ts",
+      "blob": "a88e1eccd22b8e053087c002a75f6e1d6e2e6ecf",
+      "sameAsEec": true,
+      "sha256": "7484ed025e4366cb719e8607fb7dda39e7fac5f0dd3dfa3f0979383b0df25743"
+    },
+    {
+      "path": "src/client.test.ts",
+      "blob": "5ed0ddba240f789f3eaa5cb9513d14cfc49c3bb2",
+      "sameAsEec": true,
+      "sha256": "5ceb123b0481a3c0e6a33353903a7abc0d22d509f276bf6673cc26234600ca57"
+    },
+    {
+      "path": "src/client.ts",
+      "blob": "6dfabe9f74d3e0396abe23451fa8dee5c372e067",
+      "sameAsEec": true,
+      "sha256": "f6bff3fb471d7ee49071ccf88af3454d29668a1cf29c93c76bc35e78d384adc4"
+    },
+    {
+      "path": "src/game/settle.test.ts",
+      "blob": "053c2a791a7a48b246b220e19f3ac88cb0e40f6c",
+      "sameAsEec": true,
+      "sha256": "0bf2010eab0becf75d9439ae4a3a150c6bbca35a040e65249ec33133e29d079c"
+    },
+    {
+      "path": "src/game/systems/goals.ts",
+      "blob": "1be58b5f68717ec5642164252de85e23dd805f18",
+      "sameAsEec": true,
+      "sha256": "db185f2a4cc1de9d4144e1674c4eed590748c83ae520def615e4733260e2b8c2"
+    },
+    {
+      "path": "src/types/protocol.test.ts",
+      "blob": "6bc19bbb042dffd266b6c4228134840039fcad81",
+      "sameAsEec": true,
+      "sha256": "7b9fea1ddb80ce2a7d04cca5ecf861302862bfe3786e224cc8d7105e9a05b8bf"
+    },
+    {
+      "path": "src/types/protocol.ts",
+      "blob": "e37c4285554affc3e21c51b20b136c55b1bfc1c9",
+      "sameAsEec": true,
+      "sha256": "b678b7662c3407577abd02e9a5e94a9dcc7b9aa120c1f52f3dac80c75177dde8"
+    },
+    {
+      "path": "src/types/social.ts",
+      "blob": "c538fceff67ab73574010056b2717a60d36015e0",
+      "sameAsEec": true,
+      "sha256": "333487defca0f0e7f3f916e56ca0f907a7cbfb617a173c01640e0b5f62d3bd7e"
+    }
+  ],
+  "couplingFindings": [
+    "Generated catalogue and loader additions share the same five-city order",
+    "Five fixed Lagos air links retain reviewed fares and seconds",
+    "Cold rules loader unchanged; all-city source checker compares complete foreign union",
+    "Node and Worker host fixtures iterate all five source-exported batches",
+    "Trusted teaching options, message-pin scopes/receipts/visibility and voice handling are exact eec bytes",
+    "No merge-induced identity, account, store or permission implementation fork identified"
+  ],
+  "limits": [
+    "Git tree identity is not a commit/source SHA accepted by packaging",
+    "No compiler, tests, build, runtime, browser, server or deploy executed",
+    "Old c12 package and eec runtime/native evidence do not transfer",
+    "Country tool211/FA8 assembly remains separately pinned",
+    "Later household and reverse-driving candidates are not included or approved"
+  ],
+  "usageObservation": {
+    "codexUsedPercent": 81,
+    "codexRemainingPercent": 19,
+    "stopThresholdRemainingPercent": 4,
+    "belowStopThreshold": false
+  },
+  "sourcePublicationApproved": true,
+  "releaseApproved": false,
+  "activationApproved": false,
+  "wholeGoalComplete": false,
+  "publishedCombinedSource": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81"
+}

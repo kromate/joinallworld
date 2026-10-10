@@ -1,10 +1,10 @@
 # Combined Allworld repair and remaining-work ledger
 
-Observed checkpoint: 2026-10-10T00:18:22+00:00. Goal remains active and the complete original handoff scope is retained.
+Observed checkpoint: 2026-10-10T01:41:34.789351+00:00. Goal remains active and the complete original handoff scope is retained.
 
 ## Usage and execution rule
 
-The human instruction was read directly in Monitor chat: at roughly 5% remaining main Codex allowance, stop starting parallel implementation/build/render work, safely checkpoint existing owned work, and leave a detailed combined list for sequential one-task/one-worker repair when the user resumes. Independently observed allowance was 72% used / 28% remaining on 10 October. No credits, reset, reserve-model switch or paid capacity is authorized. The existing 09:00 Africa/Lagos, 10 October (08:00 UTC) experiment cutoff also remains. This ledger does not itself pause or complete the full goal.
+Direct human message `01a12367-3e20-7150-86f7-a14cacab49bd` supersedes the old clock cutoff and five-percent threshold. Continue existing online work while applicable main allowance exceeds 4%. At 4% remaining or below stop new implementation/build/render/spawn work, then safely save evidence, preserve processes and user data, publish owned source and this single deduplicated ledger. There is no clock cutoff. The final 4% is reserved for checkpointing, with no automatic implementation restart. Latest actual Root sample is 82% used and 18% remaining. No paid credits, reset, reserve-model switch or model hopping is authorized. The full goal remains active.
 
 Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 3 asynchronous/multi-path acceptance; 4 durable or cross-system integration; 5 foundational multi-domain work or external-device dependencies. Difficulty is not severity or a promise of duration. Respect prerequisites and fix P1 integrity bugs before dependent features, even when a cosmetic task is easier. Source-only findings, diagnostic renders, compiler success and actual production are distinct.
 
@@ -16,7 +16,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | Runtime `eec14690544a4646e4cd8a5ad280d61bbe2709ca`; CI [37998929401](https://github.com/kromate/joinallworld/actions/runs/37998929401) | 14 required jobs pass; Node3672 pass/4 existing skips; Worker157/157 on each runtime; five compiler projects/build/download/smoke/policy | Not deployed; byte gates do not prove no heat/lag |
 | Seal [38002567221](https://github.com/kromate/joinallworld/actions/runs/38002567221); package `96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad` | Exact package inventory/hash/local sealed journey checks accepted | releaseReady false; no production acceptance inherited |
 | Household `35731140a32da445b8bfd95075f79c0948010694`; cloud log `d99e305a49dec04c936af5bc6897aa37f8cec31c47d34020b49f9a98762fbd4c` | Source foundation pushed; existing remote4096MiB serial five-project compiler exit0/168.247s; three runtime source pins unchanged | Parser/reducer/planner foundation only. Original1536OOM retained; no local cap change |
-| Native ON current window after receipt `14f2e22fff6f861118d5a6239b3cfc2af0832fb3c390d07beb09bd654a43107a` | Original A wrong/right diagnose/explain, final-check reload; actual markerrev5/gen1. Both actors nine protected fields/identity/storage and all old receipt row contents preserved; old school unchanged | No final wage, same-ID completion retry, originalB browser or physical-device acceptance |
+| Native ON current window after receipt `14f2e22fff6f861118d5a6239b3cfc2af0832fb3c390d07beb09bd654a43107a` | Original A wrong/right diagnose/explain, final-check reload; actual markerrev5/gen1. Both actors nine protected fields/identity/storage and all old receipt row contents preserved; old school unchanged | Original native OFF completion later paid3000 once and same-ID replay was accepted. Exact numericXP delta, originalB browser and physical-device acceptance remain open |
 | Docs checkpoint `4a0973d7d07151c8e4637a886d8737b8a8e02993`; driving review digest `9622fb4370b882510b876ef7840a7d266799158442e9d9535bc3d5fc609bc905` | Public scoped acceptance and independent F1–F3 review published | Reviews identify implementation requirements, not completed driving repair |
 | Country projection `5dd7ae415da8e6b58fb3f7a2b0f0cbb8dc5249bf`; WORLD `bb6b779dc648c5d492d6b6db22361962153eb2c5` | Root matched seven source hashes; multicity fixture source/test checkpoint accepted separately | Actual caller/provider migration and five new admissions remain open |
 
@@ -28,26 +28,26 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 | INT-021 | 1/5 | P1 | 619 source corrected; runtime diagnostics pending | Household accepted-invitation key/value mismatch | INT-001 |
 | INT-022 | 1/5 | P2 | 619 source corrected; runtime diagnostics pending | Unqueried household pair facts masquerade as absent | INT-001 |
 | INT-002 | 2/5 | P2 | Reproduced native UI defect | Lumo obscures lesson feedback at 320px | New remote candidate and unchanged download gates |
-| INT-003 | 2/5 | P1 | Compiler/office pass; home fails | Head-controller nullable closure compiler failure | GRAPHICS-owned reviewed source capsule |
+| INT-003 | 2/5 | P1 | 241 compiler closed; Home contact remains | Head-controller nullable closure compiler failure | GRAPHICS-owned reviewed source capsule |
 | INT-004 | 2/5 | P2 | Local wage/replay accepted; exact XP measurement open | Complete current original-store teaching lesson under OFF | OFF readiness and one owned browser lease |
-| INT-028 | 2/5 | P2 verification | Diagnostics resolved; d7 compiler fails | Retain actual remote diagnostic and compiler evidence | New repaired SHA/exact checks |
-| INT-024 | 3/5 | P1 release gate | Actual NPC floor checker fails both NPCs | NPC post-placement floor evidence | INT-003 |
-| INT-005 | 3/5 | P1 | Confirmed source defect | Driving duplicate replay occurs after clock/timeout mutation | Independent contract review |
+| INT-028 | 2/5 | P2 verification | c12 compiler/build raw accepted; matrix pending | Retain actual remote diagnostic and compiler evidence | New repaired SHA/exact checks |
+| INT-024 | 3/5 | P1 release gate | 5e numeric pass; 241 office job pass; visual/host gaps | NPC post-placement floor evidence | INT-003 |
+| INT-005 | 3/5 | P1 | 1b source/focused pass; f4 durable2PASS; native open | Driving duplicate replay occurs after clock/timeout mutation | Independent contract review |
 | INT-033 | 3/5 | P1 save integrity | 1b225 source closed; focused16PASS, durable boundary gaps open | Driving revision/sequence safe-integer exhaustion | Existing driving service owner; strict reader/writer contract |
-| INT-006 | 3/5 | P1 | Contract gap | Driving capability freshness on every response | INT-005 |
+| INT-006 | 3/5 | P1 | 1b capability source pass; f4 OFF host2PASS; native open | Driving capability freshness on every response | INT-005 |
 | INT-007 | 3/5 | P1 | Open acceptance | Business tax/quote/ambiguous retry and identity browser journeys | Isolated consenting actors and controlled actual transaction funding |
 | INT-008 | 3/5 | P2 | Qualified earlier evidence | Investigate earlier synthetic character hash differences | Historical private artifacts availability |
 | INT-009 | 3/5 | P2 | Open verification | Long labels, offline interactions and native200% zoom | Unlocked native surface; relevant combined artifact |
 | INT-023 | 3/5 | P1 boundary gate | 619 source corrected; runtime diagnostics pending | Consent loader unknown data can invoke getters or escape abort semantics | INT-001; INT-021 |
 | INT-025 | 3/5 | P1 release gate | Current final coverage pending | Creator/game/other-player saved-look identity on final graphics | INT-014; INT-015; INT-024 |
-| INT-010 | 4/5 | P1 | Implementation pending | Migrate real country catalogue callers and preserve route authority | WORLD scope agreement; current admission checkpoint |
-| INT-011 | 4/5 | P1 | New admission proposal; not live | Accept next five countries as actual playable journeys | INT-010 or independently reviewed compatible registry path |
+| INT-010 | 4/5 | P1 | Provider28 source changes required | Migrate real country catalogue callers and preserve route authority | WORLD scope agreement; current admission checkpoint |
+| INT-011 | 4/5 | P1 | c12 seal15PASS; combined/full/native pending | Accept next five countries as actual playable journeys | INT-010 or independently reviewed compatible registry path |
 | INT-012 | 4/5 | P1 | Implementation pending | Durable household transaction adapter and exact once settlement | INT-001; completed loader review; explicit shared-file allocation |
 | INT-013 | 4/5 | P1 | Open private-media acceptance | Voice record/review/send/play/retry/delete with consent and cleanup | Explicit synthetic audio/permission setup; available paired browser actors |
 | INT-014 | 4/5 | P1 | Confirmed diagnostic graphics failure | Home bed contact penetration | Reviewed rest/contact source ownership |
 | INT-015 | 4/5 | P1 | Confirmed diagnostic graphics failure | Stair clearance/contact | GRAPHICS capsule and LIVING movement coordination |
-| INT-016 | 4/5 | P1 | Contract gap | Compatible driving v2 rollback before first issuance | INT-005; INT-006; explicit authority types |
-| INT-017 | 4/5 | P1 | Open integrated release acceptance | Final combined source, seals and coordinated production | Accepted candidate units; unchangedbindings/secrets/namespace |
+| INT-016 | 4/5 | P1 | f4 OFF durable2PASS; compatible rollback artifact open | Compatible driving v2 rollback before first issuance | INT-005; INT-006; explicit authority types |
+| INT-017 | 4/5 | P1 | 7f pushed; exact CI budget jobs fail; release open | Final combined source, seals and coordinated production | Accepted candidate units; unchangedbindings/secrets/namespace |
 | INT-018 | 4/5 | P2 | Open research queue/access | Continue exact public-source queues and Recent | Public source access; original private captures unavailable |
 | INT-026 | 4/5 | P1 programme gap | Incomplete broad rollout | Authored wardrobe/hair/footwear look coverage | INT-014; INT-015; INT-025; INT-017 budget gate |
 | INT-029 | 4/5 | P1 feature gate | Pure domain only | Consenting NPC barber appearance and once settlement | GRAPHICS target and Integration accounting |
@@ -87,7 +87,7 @@ Ranks 1–5 are estimates: 1 small isolated correction; 2 narrow existing flow; 
 - Owner: WORLD host; existing Astra operator. Exact source/reference: `eec14690544a4646e4cd8a5ad280d61bbe2709ca`.
 - Files/dependency boundary: Teaching service/browser; original isolated retained store.
 - Evidence/reproduction: ON wrong/right diagnose/explain and final CHECK reload passed. SerialOFF normal final wrong/right and reload now completed: cash366500-to369500, one3000wallet effect, shifts1, performance60. Actual same-successful-native-ID HTTP200 duplicate shift_completed changed no cash/receipts or either actor protected facts. Before/after every old row content and identities/home.storage/wholeoldschool independently compared. See teaching-off-native-acceptance.md/json. Exact numericXP delta remains unproved; B browser and production remain outside scope.
-- Next repair and acceptance: Retain accepted original wage/replay scope. Wait unchanged host deadline and inspect real terminal. Measure exactXP on a separately controlled legitimate lesson, plus new-ID stale-final refusal and OFF-issued unmarked shift; never reset or repeat the completed original wage.
+- Next repair and acceptance: Retain accepted original wage/replay scope. Original owned host naturally ended at00:21:04.848UTC, exit0; all seven retained processes absent. Preserve its stores. Measure exactXP on a separately controlled legitimate lesson, plus new-ID stale-final refusal and OFF-issued unmarked shift; never reset or repeat the completed original wage.
 - Prerequisites: OFF readiness and one owned browser lease. Difficulty basis: Finite existing normal gameplay; actual intent replay cannot be replaced by reload.
 
 ### INT-005 — Driving duplicate replay occurs after clock/timeout mutation
@@ -467,3 +467,25 @@ WORLD211d4442 changes only two release verifier tool files plus owner evidence. 
 Root independently read the direct human message in Monitor turn01a12367-3e20-7150-86f7-a14cacab49bd on10October. It supersedes the prior09:00Lagos cutoff and5% threshold: continue existing online work while applicable main allowance exceeds4%; stop new implementation/build/render/spawning at4% remaining or below, then safely preserve/push authorized source, exact evidence and this single deduplicated easiest-to-hardest ledger. No clock cutoff, paid credits, reserve/model hopping, process killing or automatic implementation restart after checkpoint. Latest main sample80%used/20%remaining ownerreported; Root79%/21% prioractual. Fresh own sample required before new heavy work. Stable33INT/58ANN inventory retained.
 
 [Four branch observations](../../research/lagos-life-branches4-2026-10-10.md) complete a bounded public source pass and retain precise follow-up/loading gaps. No original queue root is removed and no new unique-reply count asserted.
+
+## Exact combined candidate and delivered country package
+
+Integration pushed `7f2dd820cdeb2b14aa16c19e7f665cb84579be81` to both requested delivery and consolidated refs. Tree `b08f02304e1255c6481459a337de4c5012f40503` preserves all76 independently reviewed source pins:33 country paths including five source receipts, five checker/fixture paths,38 app-side paths. No conflicting owner work was discarded. [Source review](eec-c12-integration-source-review.md) approves source publication only.
+
+[Combined CI38013621959](https://github.com/kromate/joinallworld/actions/runs/38013621959) is the single actual full/ui dispatch on7f. UI regressions, release policy and host acceptance pass. Both Node22/24 compiler/build jobs pass their compiler/build phases but fail the download phase; actual startup raw615338 exceeds615000 by338 and Brotli195763 exceeds195600 by163; gzip222986 is within223000 with14bytes headroom; firstpaint35704 passes. Remaining Node and Worker partitions continue. Predecessor eec green results are not inherited.
+
+[Country package inspection](c12-sealed-root-review.json) independently hashes all6228files,103755418bytes,largest4851144bytes and exact unchanged publish:false config. Run38013456110 succeeds with tools2df and runtimec12,14 named outcomes,31 assets and the exact15 foreign-city union. Package digest `3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331`; tar `8d07c74cfc0b717d855224928949d2bead1ac6681f7c81ad01ed297c795b50aa`. Two bounded authenticated-admin rate waits retained original intents. This closes actual artifact transport and scoped sealed synthetic checks, not combined7f, ordinary guest funding, native, provider or production acceptance.
+
+[Published raw execution review](d69-scoped-execution-review.json) accepts exact c12 compiler/build and f4's two real Node-file/Worker-SQLite reopen tests from immutable d69. All source-pin maps are empty; wrapper source_unchanged is not a complete byte census. Changed driving host source still has an independent Astra review pending; compatible OFF rollback package and actual UI remain required.
+
+Owner inputs were freshly fetched: WORLD `bde4da5991d4c173e094192e8be371a09f708c82`, inventorySHA `e836a34a2af9dc373a3bdf83abf9e302e610e6bf1eac2d39806a782db65814c1`; GRAPHICS `3c2dc3be7b3f64ed5acfa1508720d4c90121ea28`, inventorySHA `724f98905f36cf4edf940b0297a17f08b3251a094a054379a7bf65aa7634410f`; LIVING `5877fd8f25ea108b1c7d5b23ca839de3730cf991`, inventorySHA `00c02aea2bd3cee54add5f5422423399458d74017d69f68f39430ad237ab9676`. Their statements retain owner evidence scope until independent review. WORLD package transport maps to INT-017 and is now closed at artifact delivery level; c12 clean/matrix/native/deploy map to INT-011/017; lazy provider and Moroni/future admissions map to INT-010/011 and remain open. LIVING's added R14 exhaustion execution maps to INT-033 and R15 Clerk actual native earning maps to INT-032; neither is accepted from inventory alone. No duplicate combined ledger or feature activation is created.
+
+Actual GRAPHICS241b Office job succeeds and all-five compiler output is clean. Home fails at partial entry:7.642mm foot error exceeds4mm after151.739mm total root lift. Its two-file successor also preserves transition mode during a repeated solve; it is not a type-only patch. Strict caps remain unchanged. Current Home fixes, complete garment pixels, final identity/bytes/mobile and production acceptance remain open.
+
+[Transport decision](guarded-artifact-transport-review.json) records the single successful existing Actions path under its unchanged no-extra-spend guard. The draft-release alternative remains unexecuted and blocked by Cloud API access. Private financial records and raw browser captures are excluded. Production stays C1/11 countries. All33 repair IDs and58 announcement rows remain present.
+
+[Driving host source review](driving-host-source-review.md) approves immutable e8/f4 source only. Actual two host tests have H1/H2/H3 coverage gaps: GET precedes cold replay and already pauses the row; immediate resume retry does not cross another restart; Node omitted/nonboolean options are not exercised. Existing online Living writer receives bounded test-only follow-up. Complete persisted-row replay, compatible OFF artifact before issuance and native capability behavior remain open. INT-005/006/016/033 retain their broader scope.
+
+[Exact combined budget failure](7f-startup-budget-failure.json) is reproduced on both Node22/24. Saving338raw and163Brotli is a minimum arithmetic requirement, not accepted optimization. Existing registry reviewer is diagnosing a coherent startup saving without changing55city admission, fares, guest flow, source permissions or budgets. No unchanged failed-build retry was dispatched.
+
+Actual integration-repairs job114098981131 also fails the same startup invariant in src/app/entry.test.ts:203,136PASS/1FAIL/0SKIP. Raw logSHA `1380f565722550dd0dd743e21adfb021cea8880ae96c5611ff42c8b319262ba9`. It adds no separate movement/receipt defect; preserve the test and fix actual bytes. Root independently matched all13 immutable driving review pins atf4.

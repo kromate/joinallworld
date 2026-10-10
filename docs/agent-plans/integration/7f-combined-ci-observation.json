@@ -1,0 +1,109 @@
+{
+  "observedAt": "2026-10-10T01:43:20.448488+00:00",
+  "url": "https://github.com/kromate/joinallworld/actions/runs/38013621959",
+  "headSha": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81",
+  "status": "queued",
+  "conclusion": "",
+  "run": 38013621959,
+  "fullChecks": true,
+  "uiChecks": true,
+  "jobs": [
+    {
+      "id": 114098980937,
+      "name": "ui-regressions",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 114098980972,
+      "name": "full (24)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 114098981039,
+      "name": "release-policy",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 114098981056,
+      "name": "full-worker (24)",
+      "status": "in_progress",
+      "conclusion": ""
+    },
+    {
+      "id": 114098981065,
+      "name": "full-node (24, tooling)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "id": 114098981075,
+      "name": "host-acceptance",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 114098981078,
+      "name": "full (22)",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 114098981085,
+      "name": "full-worker (22)",
+      "status": "in_progress",
+      "conclusion": ""
+    },
+    {
+      "id": 114098981105,
+      "name": "full-node (22, game)",
+      "status": "in_progress",
+      "conclusion": ""
+    },
+    {
+      "id": 114098981108,
+      "name": "full-node (22, host)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 114098981131,
+      "name": "integration-repairs",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 114098981154,
+      "name": "full-node (22, tooling)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 114098981182,
+      "name": "full-node (24, host)",
+      "status": "queued",
+      "conclusion": ""
+    },
+    {
+      "id": 114098981215,
+      "name": "full-node (24, game)",
+      "status": "in_progress",
+      "conclusion": ""
+    },
+    {
+      "id": 114098981644,
+      "name": "typecheck-fast",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 114098981871,
+      "name": "build-and-smoke-fast",
+      "status": "completed",
+      "conclusion": "skipped"
+    }
+  ],
+  "limits": "Exact7f partial outcomes. PredecessorCI not inherited; unfinished jobs remain pending. No new sealed/browser/provider/production acceptance."
+}

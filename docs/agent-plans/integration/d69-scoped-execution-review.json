@@ -1,0 +1,74 @@
+{
+  "publication": "d69d6c2e863550764f7a35b0c69ba78343b58aa3",
+  "reviews": [
+    {
+      "sha": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
+      "node_version": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "server/living-world/driving-host-reopen.test.ts",
+        "deploy/living-world-driving-v2.edge.test.ts"
+      ],
+      "check_environment": {
+        "NODE_OPTIONS": "--max-old-space-size=1536",
+        "NODE_USE_ENV_PROXY": "1",
+        "AGENT_SLOT_HEAVY": "1"
+      },
+      "duration_seconds": 8.806209,
+      "exit_status": 0,
+      "log_sha256": "167d9462c809082ef284bbe4fd33766a1e6db0dad8e7b3429e4c37954074ea40",
+      "source_unchanged": true
+    },
+    {
+      "sha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "node_version": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "check_environment": {
+        "NODE_OPTIONS": "--max-old-space-size=4096",
+        "NODE_USE_ENV_PROXY": "1",
+        "AGENT_SLOT_HEAVY": "1"
+      },
+      "duration_seconds": 120.008864,
+      "exit_status": 0,
+      "log_sha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7",
+      "source_unchanged": true
+    },
+    {
+      "sha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "node_version": "v24.19.0",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "build"
+      ],
+      "check_environment": {
+        "NODE_OPTIONS": "--max-old-space-size=1536",
+        "NODE_USE_ENV_PROXY": "1",
+        "AGENT_SLOT_HEAVY": "1"
+      },
+      "duration_seconds": 54.688766,
+      "exit_status": 0,
+      "log_sha256": "35602fc7962f5527f4a1a534ea98831b667b32baaafe6bcf93c46bcfcecc114f",
+      "source_unchanged": true
+    }
+  ],
+  "scope": "Exactnamed compiler/build and actualtwohosttest execution; no fullmatrix/native/rollbackartifact/combinedSHA/production acceptance.",
+  "qualification": "Source-pin maps are empty in all three wrappers. source_unchanged is the wrapper clean-tree/head observation, not an independently complete source-byte census. Integration read and hash-matched each named raw log."
+}

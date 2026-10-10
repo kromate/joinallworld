@@ -459,3 +459,13 @@ Public Family JavaScript, loading backdrop and OG image returned 200 with exact 
 10 October 01:19 UTC: [supplemental media](research/lagos-life-supplemental2-2026-10-10.md) closes two posts/five supplied images, with Ayo cycle/settlement unverified. Original2/6/28/739/254 and city129 retained.
 
 10 October 01:21 UTC: [four branch observations](research/lagos-life-branches4-2026-10-10.md) retain exact loading/follow-up queues without closing trees or treating author consideration as delivery. All original counts and city129 unchanged.
+
+## 10 October 2026 combined-source and country-package checkpoint
+
+Combined candidate `7f2dd820cdeb2b14aa16c19e7f665cb84579be81` is pushed to the requested delivery branch. [Independent source review](agent-plans/integration/eec-c12-integration-source-review.md) preserves all76 owner pins. Its [full CI38013621959](https://github.com/kromate/joinallworld/actions/runs/38013621959) has UI/release-policy/host passes but both download jobs fail; remaining full partitions continue. It has no new production acceptance.
+
+[Country package review](agent-plans/integration/c12-sealed-root-review.json) independently matches every file and the exact publish:false configuration of sealedc12, package digest `3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331`. Actual sealed workflow38013456110 passes14 named synthetic outcomes/all15 destinations/31 assets/SQLite restart. This package excludes combined app7f acceptance. Native, final combined seal and WORLD-coordinated production remain open; C1 production and its retained saves/receipts remain the baseline.
+
+[Execution review](agent-plans/integration/d69-scoped-execution-review.json) records actual c12 compiler/build and f4 Node-file/Worker-SQLite reopening2PASS without inventing source-pin coverage. [Combined ledger](agent-plans/integration/combined-repair-ledger.md) retains all33 repair IDs and58 announcement rows. The direct human stop rule is <=4% main remaining, no clock cutoff, final4% for saving/pushing/reporting. No data reset, paid tier change, new deployment target or raw financial publication occurred.
+
+[Exact startup failure](agent-plans/integration/7f-startup-budget-failure.json):615338raw/222986gzip/195763Brotli, firstpaint35704. Existing615000/223000/195600 limits remain. [Driving host review](agent-plans/integration/driving-host-source-review.md) approves trusted source but identifies cold-first replay, lifecycle-restart replay and Node option-matrix gaps; bounded test-only follow-up remains separate from production activation.

@@ -1,0 +1,199 @@
+diff --git a/scripts/world/check-playable-africa-rollout.py b/scripts/world/check-playable-africa-rollout.py
+new file mode 100644
+index 0000000..caf0682
+--- /dev/null
++++ b/scripts/world/check-playable-africa-rollout.py
+@@ -0,0 +1,130 @@
++#!/usr/bin/env python3
++"""Read-only, bounded verification of committed starter assets and receipt identities."""
++import hashlib
++import json
++import os
++from pathlib import Path
++import re
++import stat
++import sys
++
++ASSETS = frozenset(('facts.ts', 'geometry.ts', 'index.ts', 'content.ts', 'map.ts'))
++CITY_ID = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*\Z')
++SHA256 = re.compile(r'[0-9a-f]{64}\Z')
++ROOT = Path(__file__).absolute().parents[2]
++
++
++def require(condition, message):
++    if not condition:
++        raise ValueError(message)
++
++
++def read_bounded(root, parts, maximum):
++    """Open every directory and the final regular file without following symlinks."""
++    require(root.is_absolute(), 'repository root must be absolute')
++    require(all(part not in ('', '.', '..') and '/' not in part for part in parts), 'invalid path component')
++    descriptor = os.open('/', os.O_RDONLY | os.O_DIRECTORY)
++    try:
++        for part in (*root.parts[1:], *parts[:-1]):
++            child = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=descriptor)
++            os.close(descriptor)
++            descriptor = child
++        file_descriptor = os.open(parts[-1], os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=descriptor)
++        try:
++            before = os.fstat(file_descriptor)
++            require(stat.S_ISREG(before.st_mode), 'source must be a regular file')
++            require(0 < before.st_size <= maximum, 'source byte bound exceeded')
++            chunks = []
++            remaining = maximum + 1
++            while remaining:
++                chunk = os.read(file_descriptor, min(remaining, 65536))
++                if not chunk:
++                    break
++                chunks.append(chunk)
++                remaining -= len(chunk)
++            data = b''.join(chunks)
++            after = os.fstat(file_descriptor)
++            require(len(data) == before.st_size <= maximum, 'source size changed or exceeded bound')
++            require((before.st_size, before.st_mtime_ns, before.st_ctime_ns) ==
++                    (after.st_size, after.st_mtime_ns, after.st_ctime_ns), 'source changed during read')
++            return data
++        finally:
++            os.close(file_descriptor)
++    finally:
++        os.close(descriptor)
++
++
++def unique_object(pairs):
++    result = {}
++    for key, value in pairs:
++        require(key not in result, 'duplicate JSON key')
++        result[key] = value
++    return result
++
++
++def reject_constant(value):
++    raise ValueError('nonfinite JSON number: ' + value)
++
++
++DECODER = json.JSONDecoder(object_pairs_hook=unique_object, parse_constant=reject_constant)
++
++
++def facts_object(data):
++    text = data.decode('utf-8')
++    markers = list(re.finditer(r'\bexport const FACTS\s*=\s*', text))
++    require(len(markers) == 1, 'facts must have one literal FACTS export')
++    value, end = DECODER.raw_decode(text, markers[0].end())
++    require(re.fullmatch(r'\s+satisfies DestinationFacts\s*;?\s*', text[end:]) is not None,
++            'facts export must be a JSON object with a DestinationFacts suffix')
++    require(isinstance(value, dict), 'facts must be a JSON object')
++    return value
++
++
++def check_city(root, city):
++    receipt_bytes = read_bounded(root, ('world', 'playable-africa-rollout', 'receipts', city + '.json'), 256 * 1024)
++    receipt = DECODER.decode(receipt_bytes.decode('utf-8'))
++    require(isinstance(receipt, dict) and receipt.get('cityId') == city, 'receipt city mismatch')
++    assets = receipt.get('assets')
++    require(isinstance(assets, dict) and set(assets) == ASSETS, 'receipt requires exactly five asset keys')
++    facts = None
++    for name in sorted(ASSETS):
++        pin = assets[name]
++        require(isinstance(pin, dict) and set(pin) == {'bytes', 'sha256'}, 'invalid asset pin fields')
++        size = pin['bytes']
++        digest = pin['sha256']
++        require(type(size) is int and 0 < size <= 8 * 1024 * 1024, 'invalid asset byte pin')
++        require(isinstance(digest, str) and SHA256.fullmatch(digest) is not None, 'invalid asset hash pin')
++        data = read_bounded(root, ('src', 'game', 'cities', city, name), 8 * 1024 * 1024)
++        require(len(data) == size and hashlib.sha256(data).hexdigest() == digest, 'asset bytes/hash mismatch: ' + name)
++        if name == 'facts.ts':
++            facts = facts_object(data)
++    require(facts is not None and facts.get('id') == city, 'facts city mismatch')
++    iso = receipt.get('countryIso2')
++    country = facts.get('country')
++    require(isinstance(iso, str) and re.fullmatch(r'[A-Z]{2}', iso) is not None, 'invalid receipt country')
++    require(isinstance(country, dict) and country.get('idISOlower') == iso.lower(), 'facts country mismatch')
++    identity = receipt.get('generationIdentity')
++    state = facts.get('state')
++    require(isinstance(identity, dict) and isinstance(state, dict), 'missing or invalid generation identity')
++    require(identity.get('cityId') == city and isinstance(identity.get('stateId'), str) and
++            0 < len(identity['stateId']) <= 128 and identity['stateId'] == state.get('idunique') and
++            isinstance(identity.get('stateName'), str) and 0 < len(identity['stateName']) <= 256 and
++            identity['stateName'] == state.get('name'), 'generation identity mismatch')
++    return {'city': city, 'status': 'pinned-assets-match'}
++
++
++def main(cities):
++    require(1 <= len(cities) <= 53 and len(set(cities)) == len(cities), 'require 1–53 unique city IDs')
++    require(all(len(city) <= 64 and CITY_ID.fullmatch(city) is not None for city in cities), 'invalid city ID')
++    # Verify every requested city before emitting successful rows.
++    rows = [check_city(ROOT, city) for city in cities]
++    for row in rows:
++        print(json.dumps(row, separators=(',', ':')))
++
++
++if __name__ == '__main__':
++    try:
++        main(sys.argv[1:])
++    except (OSError, ValueError, UnicodeError, RecursionError) as error:
++        print('offline starter check refused: ' + str(error), file=sys.stderr)
++        sys.exit(1)
+diff --git a/server/testing/africaJourney.ts b/server/testing/africaJourney.ts
+index a3f2d85..848d259 100644
+--- a/server/testing/africaJourney.ts
++++ b/server/testing/africaJourney.ts
+@@ -13,6 +13,8 @@ export const AFRICA_DESTINATION_BATCHES = [
+   AFRICA_DESTINATIONS,
+   ['cotonou', 'abidjan', 'dakar', 'cape-town'],
+   ['addis-ababa'],
++  ['cairo', 'rabat', 'kigali'],
++  ['kampala', 'lusaka'],
+ ] as const
+ 
+ export interface JourneyStoredSnapshot {
+diff --git a/src/game/cities/allCities.test.ts b/src/game/cities/allCities.test.ts
+index 17694bf..4dc4317 100644
+--- a/src/game/cities/allCities.test.ts
++++ b/src/game/cities/allCities.test.ts
+@@ -70,6 +70,17 @@ test('every generated city passes its offline source and output check', () => {
+         return row.city
+       })
+     })
++    const remaining = foreign.filter(id => !checked.includes(id))
++    if (remaining.length) {
++      const output = execFileSync(python, [join(root, 'scripts/world/check-playable-africa-rollout.py'), ...remaining], {
++        cwd: root, encoding: 'utf8', timeout: 60_000,
++      })
++      for (const line of output.trim().split('\n')) {
++        const row: unknown = JSON.parse(line)
++        assert.ok(row && typeof row === 'object' && 'city' in row && typeof row.city === 'string' && 'status' in row && row.status === 'pinned-assets-match', 'rollout source checker confirms each pinned city')
++        checked.push(row.city)
++      }
++    }
+     assert.deepEqual(checked.sort(), foreign.sort(), 'the source checker covers exactly every registered foreign city')
+   }
+ })
+diff --git a/src/map3d/geo/atlas.test.ts b/src/map3d/geo/atlas.test.ts
+index 9681c26..980c4da 100644
+--- a/src/map3d/geo/atlas.test.ts
++++ b/src/map3d/geo/atlas.test.ts
+@@ -159,8 +159,8 @@ test('open versus coming soon is derived from the additive city catalogue', () =
+   const openStates = [...new Set(nigeriaCities.map((city) => city.state.id))];
+   assert.deepEqual(Object.keys(ATLAS.state).filter((id) => canEnter('state', id)).sort(), openStates.slice().sort());
+   const openForeignCountries = [...new Set(cityCatalogue().filter((city) => city.open && city.countryISO && city.countryISO !== 'ng').map((city) => city.countryISO!))].sort();
+-  assert.deepEqual(openForeignCountries, ['bj', 'ci', 'cm', 'dz', 'et', 'gh', 'ke', 'sn', 'tg', 'za'], 'each open foreign-city catalogue entry admits its country');
+-  assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)).sort(), ['bj', 'ci', 'cm', 'dz', 'et', 'gh', 'ke', 'ng', 'sn', 'tg', 'za'], 'Nigeria and the ten open foreign-city countries are enterable');
++  assert.deepEqual(openForeignCountries, ['bj', 'ci', 'cm', 'dz', 'eg', 'et', 'gh', 'ke', 'ma', 'rw', 'sn', 'tg', 'ug', 'za', 'zm'], 'each open foreign-city catalogue entry admits its country');
++  assert.deepEqual(world.features.map((feature) => feature.id).filter((id) => canEnter('country', id)).sort(), ['bj', 'ci', 'cm', 'dz', 'eg', 'et', 'gh', 'ke', 'ma', 'ng', 'rw', 'sn', 'tg', 'ug', 'za', 'zm'], 'Nigeria and the fifteen open foreign-city countries are enterable');
+   const context = { current: 'lagos', held: ['lagos'], routes: null };
+   for (const feature of nigeria.features) {
+     const info = regionInfo({ kind: 'state', id: feature.id }, { ...context, feature });
+diff --git a/src/map3d/world.test.ts b/src/map3d/world.test.ts
+index fb8d421..f5f9d57 100644
+--- a/src/map3d/world.test.ts
++++ b/src/map3d/world.test.ts
+@@ -212,7 +212,7 @@ test('open and coming-soon cities share the live registry and canonical links',
+   for (const item of soon) { const city = cityCatalogueEntry(item.id); assert.ok(city, 'registered city'); assert.equal(city.open, false); }
+   const kaduna = cityCatalogueEntry('kaduna');
+   if (kaduna && !kaduna.open) { assert.equal(cityEntry('kaduna')?.preview?.length, 3); assert.ok(allCityLinks().some((link) => link.a === 'kaduna' || link.b === 'kaduna')); }
+-  const foreign = [['cm', 'yaounde'], ['tg', 'lome'], ['gh', 'accra'], ['ke', 'nairobi'], ['dz', 'algiers'], ['bj', 'cotonou'], ['ci', 'abidjan'], ['sn', 'dakar'], ['za', 'cape-town'], ['et', 'addis-ababa']] as const;
++  const foreign = [['cm', 'yaounde'], ['tg', 'lome'], ['gh', 'accra'], ['ke', 'nairobi'], ['dz', 'algiers'], ['bj', 'cotonou'], ['ci', 'abidjan'], ['sn', 'dakar'], ['za', 'cape-town'], ['et', 'addis-ababa'], ['eg', 'cairo'], ['ma', 'rabat'], ['rw', 'kigali'], ['ug', 'kampala'], ['zm', 'lusaka']] as const;
+   assert.deepEqual(countryList().map(country => country.id).sort(), ['nigeria', ...foreign.map(([iso]) => iso)].sort());
+   for (const [iso, capital] of foreign) {
+     assert.equal(cityCatalogueEntry(capital)?.countryISO, iso, `${capital}: catalogue country`);

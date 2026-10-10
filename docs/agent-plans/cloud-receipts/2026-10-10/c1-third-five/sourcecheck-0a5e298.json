@@ -1,0 +1,16 @@
+{
+  "sha": "0a5e2983126e3dac406af1c3a121e9cbfef78feb",
+  "parent": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
+  "branch": "codex/cloud-c1-third-five-sourcecheck-20261010",
+  "changed_files": [
+    "scripts/world/check-playable-africa-rollout.py",
+    "src/game/cities/allCities.test.ts"
+  ],
+  "runtime33files": "unchanged",
+  "verification": "queued/prepared; not executed",
+  "other_actual_game_failures": [
+    "src/map3d/geo/atlas.test.ts:157",
+    "src/map3d/world.test.ts:205"
+  ],
+  "additional_host_coverage_gap": "africaJourney has old10 destinations only;5new batches need allocated fixture migration"
+}

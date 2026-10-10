@@ -1,0 +1,39 @@
+COMMAND ['python3', 'scripts/world/check-playable-africa-rollout.py', 'cairo', 'rabat', 'kigali', 'kampala', 'lusaka']
+{"city":"cairo","status":"pinned-assets-match"}
+{"city":"rabat","status":"pinned-assets-match"}
+{"city":"kigali","status":"pinned-assets-match"}
+{"city":"kampala","status":"pinned-assets-match"}
+{"city":"lusaka","status":"pinned-assets-match"}
+EXIT 0
+COMMAND ['python3', '/workspace/remote-verification/worker-results/c1-third-five/sourcecheck-negative-diagnostics.py', '/workspace/remote-verification/repositories/coordinator-c1-third-five-sourcecheck']
+{"case": "missing-receipt", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: [Errno 2] No such file or directory: 'cairo.json'"}
+{"case": "missing-asset", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: [Errno 2] No such file or directory: 'geometry.ts'"}
+{"case": "hash-mismatch", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: asset bytes/hash mismatch: geometry.ts"}
+{"case": "byte-mismatch", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: asset bytes/hash mismatch: geometry.ts"}
+{"case": "boolean-byte-pin", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: invalid asset byte pin"}
+{"case": "oversized-byte-pin", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: invalid asset byte pin"}
+{"case": "missing-identity", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: missing or invalid generation identity"}
+{"case": "wrong-country", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: facts country mismatch"}
+{"case": "wrong-state", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: generation identity mismatch"}
+{"case": "extra-asset-key", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: receipt requires exactly five asset keys"}
+{"case": "asset-symlink", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: [Errno 40] Too many levels of symbolic links: 'geometry.ts'"}
+{"case": "receipt-symlink", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: [Errno 40] Too many levels of symbolic links: 'cairo.json'"}
+{"case": "parent-symlink", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: [Errno 20] Not a directory: 'cairo'"}
+{"case": "duplicate-city-ids", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: require 1\u201353 unique city IDs"}
+{"case": "path-traversal", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: invalid city ID"}
+{"case": "nonregular-asset", "exit_status": 1, "successful_rows": 0, "stderr": "offline starter check refused: source must be a regular file"}
+{"status": "pass", "negative_cases": 16, "helper_sha256": "d82adecbb101ac20386d303a0c7762a82714fb896eaa3bfbdecec1747b5b0ab7"}
+EXIT 0
+COMMAND ['node', '--experimental-strip-types', '--test', '--test-concurrency=1', '--test-name-pattern=every generated city passes its offline source and output check|open versus coming soon is derived from the additive city catalogue|open and coming-soon cities share the live registry and canonical links', 'src/game/cities/allCities.test.ts', 'src/map3d/geo/atlas.test.ts', 'src/map3d/world.test.ts']
+✔ every generated city passes its offline source and output check (6381.05886ms)
+✔ open versus coming soon is derived from the additive city catalogue (31.768596ms)
+✔ open and coming-soon cities share the live registry and canonical links (9.095444ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8877.555392
+EXIT 0

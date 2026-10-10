@@ -1,5 +1,5 @@
 {
-  "recorded_at_utc": "2026-10-10T00:31:31.486863+00:00",
+  "recorded_at_utc": "2026-10-10T01:21:27.124023+00:00",
   "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
   "hostname": "96cc63a2f9d2",
   "node": "v24.19.0",
@@ -10,14 +10,14 @@
     "shared_heavy_slots": 1
   },
   "publication": "unconfirmed; Settings review/save then Publish required",
-  "model_attestation": "spawn tool requests recorded; shell variables and codex_app worker thread response expose no actual model/reasoning metadata",
+  "model_attestation": "Configured spawn assignments retained; provider backend model IDs are not exposed. No hidden metadata queried.",
   "workers": [
     {
       "worker_id": "/root/graphics_rest_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
       "checkout": "/workspace/remote-verification/repositories/worker-graphics-rest-pelvis-trial",
-      "branch": "codex/cloud-graphics-rest-pelvis-trial-20261010",
+      "branch": "codex/cloud-graphics-rest-egress-first-20261010",
       "base_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
       "scope": [
         "rest-pose-adapter.ts",
@@ -25,7 +25,7 @@
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
       "runtime_model_id": "not independently exposed; configured spawn request only",
-      "checkout_head_sha": "c8f412a2667662b26608be948f25a0eae29c7d25",
+      "checkout_head_sha": "f798c7fe914990d6f27623c2e144149b8df54a35",
       "changed_files": [
         "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
       ],
@@ -35,17 +35,17 @@
       "severity": "P1",
       "difficulty": 4,
       "effort_basis": "Coupled geometry/IK state repair; full saved-home stages required.",
-      "latest_known_execution_handle": 4794,
+      "latest_known_execution_handle": "See source-bound raw receipt; previous handle retained only as historical",
       "host": "96cc63a2f9d2",
-      "status": "actual strict/bounded saved-home trial requested; source frozen",
-      "latest_evidence": "graphics-rest/graphics-rest-trial4-evidence.json; failed previous trial retained"
+      "status": "running performance correction; previous bounded journey FAIL (timeout)",
+      "latest_evidence": "graphics-rest/f798-egress-first-evidence.json"
     },
     {
       "worker_id": "/root/graphics_stairs_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
       "checkout": "/workspace/remote-verification/repositories/worker-graphics-stairs",
-      "branch": "codex/cloud-graphics-stairs-v9-20261010",
+      "branch": "codex/cloud-graphics-factory-stairs-trial-20261010",
       "base_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
       "scope": [
         "native-clip-solver.ts",
@@ -53,7 +53,7 @@
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
       "runtime_model_id": "not independently exposed; configured spawn request only",
-      "checkout_head_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+      "checkout_head_sha": "d98203c6360011132109893076d7b1f07ea8f328",
       "changed_files": [],
       "task_ids": [
         "INT-015"
@@ -61,17 +61,17 @@
       "severity": "P1",
       "difficulty": 4,
       "effort_basis": "Real transformed stepped host; both families/directions and signed gap repair.",
-      "latest_known_execution_handle": null,
+      "latest_known_execution_handle": "See source-bound raw receipt; previous handle retained only as historical",
       "host": "96cc63a2f9d2",
-      "status": "16 real stepped-host cases passed; now new shared factory repeat-solve regression",
-      "latest_evidence": "graphics-stairs/evidence.md and pelvis-budget-transform-regression.json"
+      "status": "completed scoped matrix and nonzero public-budget repeat PASS; actual browser stairs pending",
+      "latest_evidence": "graphics-stairs/trial-d982-public-pelvis-budget-host.json"
     },
     {
       "worker_id": "/root/household_consent_view_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
       "checkout": "/workspace/remote-verification/repositories/worker-household-identity",
-      "branch": "codex/cloud-household-consent-view-20261010",
+      "branch": "codex/cloud-household-consent-adapter-20261010",
       "base_sha": "35731140a32da445b8bfd95075f79c0948010694",
       "scope": [
         "server/households/consentView.ts"
@@ -84,7 +84,7 @@
         "scope": "actual internal durable adapter after exact port contract",
         "status": "read-only mapping requested"
       },
-      "checkout_head_sha": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
+      "checkout_head_sha": "86b36df707f19f7932d7903ecbb81757426b0497",
       "changed_files": [
         "server/households/consentView.ts"
       ],
@@ -97,17 +97,17 @@
       "severity": "P1/P2",
       "difficulty": 3,
       "effort_basis": "Actual transactional persistence and canonical authority boundaries require separate evidence.",
-      "latest_known_execution_handle": 59259,
+      "latest_known_execution_handle": "See source-bound raw receipt; previous handle retained only as historical",
       "host": "96cc63a2f9d2",
-      "status": "loader all11 runtime check passed; internal durable adapter ports authorized, exact contract pending",
-      "latest_evidence": "household-loader619/load-reducer-all11/receipt.json"
+      "status": "committed local clean adapter; canonical durable and compiler tests pending",
+      "latest_evidence": "worker-results/household-consent-view/durable-adapter-status.md"
     },
     {
       "worker_id": "/root/world_country_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
       "checkout": "/workspace/remote-verification/repositories/worker-world-country-provider50",
-      "branch": "codex/cloud-country-provider50-20261010",
+      "branch": "codex/cloud-country-provider50-followup-20261010",
       "base_sha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
       "scope": [
         "country admission owned proposal/test scope"
@@ -115,7 +115,7 @@
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
       "runtime_model_id": "not independently exposed; configured spawn request only",
       "pushed_sha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
-      "status": "provider50 actual compiler and160 focused assertions passed; browser resolver correction/build pending",
+      "status": "completed read-only c12 review; provider followup published but untested/unbuilt",
       "latest_test_result": "17 named assertions passed, zero failed/skipped in escalated execution",
       "latest_log": "/workspace/remote-verification/worker-results/world-country/focused-tests-escalated.log",
       "latest_log_sha256": "3e713211e116304ad548825483730d4ddec843a9a123c258bbf6f04f5b3268e8",
@@ -125,7 +125,7 @@
         "exit_status": 0,
         "acquisition": "none; reservation crash durability unproven"
       },
-      "checkout_head_sha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+      "checkout_head_sha": "28f9626b65f00f696b45e0852d72096a6f949f0e",
       "changed_files": [],
       "task_ids": [
         "INT-010",
@@ -134,16 +134,16 @@
       "severity": "P1",
       "difficulty": 4,
       "effort_basis": "55row source preparation complete; shared caller integration and playable acceptance remain.",
-      "latest_known_execution_handle": 85545,
+      "latest_known_execution_handle": "See source-bound raw receipt; previous handle retained only as historical",
       "host": "96cc63a2f9d2",
-      "latest_evidence": "world55/size-download and test-smoke-readable: exact391 budgets pass, historical tooling guard fails"
+      "latest_evidence": "provider publication review rejection resolved with exact origin/scope/standing authorization"
     },
     {
       "worker_id": "/root/living_driving_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "high",
       "checkout": "/workspace/remote-verification/repositories/worker-living-driving-final-safety-20261010",
-      "branch": "codex/cloud-living-final-safety-20261010",
+      "branch": "codex/cloud-driving-host-reopen-tests-20261010",
       "base_sha": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
       "scope": [
         "driving service/client/response type hunks"
@@ -152,7 +152,7 @@
       "runtime_model_id": "not independently exposed; configured spawn request only",
       "app_thread_id": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
       "overlay_hashes": "all seven frozen overlay hashes independently verified by worker",
-      "checkout_head_sha": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "checkout_head_sha": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
       "changed_files": [],
       "task_ids": [
         "INT-005",
@@ -161,18 +161,18 @@
       "severity": "P1",
       "difficulty": 3,
       "effort_basis": "Replay and capability multichannel behavior; independent rollback/store review required.",
-      "latest_known_execution_handle": 66184,
+      "latest_known_execution_handle": "See source-bound raw receipt; previous handle retained only as historical",
       "host": "96cc63a2f9d2",
       "pushed_sha": "1b225b90faf375b8195058ee17257e7d31cf8a98",
-      "status": "final16service/7computedUI tests passed; exact fullcompiler/build/caps pending",
-      "latest_evidence": "living-final-safety/evidence.md; computed UI harness renders null; F3 open"
+      "status": "resumed real Node/Worker host tests; no runtime result yet",
+      "latest_evidence": "final1b225 source passes compiler/build; download195610 exceeds195600"
     },
     {
       "worker_id": "/root/graphics_head_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
       "checkout": "/workspace/remote-verification/repositories/worker-graphics-npc-contact-trial",
-      "branch": "codex/cloud-graphics-npc-contact-trial-20261010",
+      "branch": "codex/cloud-graphics-npc-contact-refresh-20261010",
       "base_sha": "9122e0c4eb2d6db3fca4ed6e71687c4168923162",
       "scope": [
         "native-source-sampler.ts",
@@ -181,9 +181,9 @@
       ],
       "checkout_receipt": "worker acknowledged clean exact base",
       "runtime_model_id": "not independently exposed; configured spawn request only",
-      "status": "actual NPC physical-floor failure reproduced; narrowly allocated venue hooks repair active",
+      "status": "completed exact compiler/office/NPC refresh PASS; full native release pending",
       "pushed_sha": "cae2b9fd1200ce0c22ccf27b0cf2973ef83ace0b",
-      "checkout_head_sha": "bcb28f57c45aa87dba5c2725f3be04417df12ce2",
+      "checkout_head_sha": "54976a324f6ef4c1db0c0ccc4e3f3be81059bd1d",
       "changed_files": [
         "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts"
       ],
@@ -193,9 +193,9 @@
       "severity": "P1 gate",
       "difficulty": 3,
       "effort_basis": "Existing fixture instrumentation; actual deformed surfaces and motion verification.",
-      "latest_known_execution_handle": null,
+      "latest_known_execution_handle": "See source-bound raw receipt; previous handle retained only as historical",
       "host": "96cc63a2f9d2",
-      "latest_evidence": "npc-contact-baseline; all authored144 sole points measured; checker fails"
+      "latest_evidence": "worker-results/npc-contact-refresh/final-summary.json"
     }
   ],
   "inventory_kind": "Cloud owner execution receipt; Integration retains sole combined ledger",
@@ -216,5 +216,14 @@
     "compiler": "all5 actual4096PASS",
     "sealed_archive_sha256": "990eb62b8f47be6fbcbb68a78f7fa9cb11bfa669cf2ed65ef5dac8b7fab21b7c",
     "status": "sealed local package; delivery and actualUI pending; older build summary explicitly qualified"
+  },
+  "coordinator": {
+    "graphics_sha": "241b29a4a7572b1d19d9c382dfad600726a0064d",
+    "previous_run": "38011720287 FAIL at5e81; office render/NPC physical gates PASS, compiler and home FAIL",
+    "country_sha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+    "country_previous_game": "91d0ba3 Node24 exit1:2589 total/2585 pass/3 fail/1 skip; raw receipt retained",
+    "country_current_scope": "Focused command exit0; wrapper125 bytecode flag retained; full corrected matrix pending",
+    "production": "C1 unchanged;11 countries; no deployment performed",
+    "artifact_transport": "No delivery claimed; existing GitHub workflow mechanism identified but API unavailable and upload cost not independently verified"
   }
 }

@@ -607,6 +607,7 @@ export const HTTP_ROUTE_KEYS = [
   'GET /api/civic/radio',
   'POST /api/civic/radio/shoutout',
   'GET /api/civic/richlist',
+  'GET /api/civic/boards',
   'POST /api/civic/prefs',
   'POST /api/support/reports',
   'GET /api/support/statement',

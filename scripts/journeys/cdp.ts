@@ -159,6 +159,12 @@ export class Browser {
     }
   }
 
+  /** A real key press (down and up) such as Escape. */
+  async press(key: string, code: string, keyCode: number): Promise<void> {
+    await this.send('Input.dispatchKeyEvent', { type: 'rawKeyDown', key, code, windowsVirtualKeyCode: keyCode });
+    await this.send('Input.dispatchKeyEvent', { type: 'keyUp', key, code, windowsVirtualKeyCode: keyCode });
+  }
+
   async type(selector: string, value: string): Promise<void> {
     await this.click(selector);
     await this.eval(`(() => { const el = document.querySelector(${JSON.stringify(selector)}); el.focus(); el.select?.(); })()`);

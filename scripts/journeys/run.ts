@@ -48,7 +48,7 @@ const DESTINATIONS: Record<string, { name: string; level: 'africa' | 'nigeria'; 
   kigali: { name: 'Kigali', level: 'africa', row: 'Rwanda' },
   kampala: { name: 'Kampala', level: 'africa', row: 'Uganda' },
   lusaka: { name: 'Lusaka', level: 'africa', row: 'Zambia' },
-  abuja: { name: 'Abuja', level: 'nigeria', row: 'Abuja' },
+  abuja: { name: 'Abuja', level: 'nigeria', row: 'Federal Capital Territory' },
 };
 
 // ---- the server -----------------------------------------------------------------------------------------------------
@@ -82,6 +82,7 @@ interface CityResult { city: string; steps: StepResult[]; consoleErrors: string[
 class Journey {
   readonly steps: StepResult[] = [];
   readonly notes: string[] = [];
+  readonly unexpectedRefusals: string[] = [];
   private shotNo = 0;
   readonly city: string;
   readonly browser: Browser;
@@ -96,7 +97,17 @@ class Journey {
   async run(step: number, name: string, body: (detail: Record<string, unknown>) => Promise<void>): Promise<boolean> {
     const detail: Record<string, unknown> = {};
     let status: Status = 'PASS';
+    const seen = this.browser.requests.length;
     try { await body(detail); } catch (error) { status = 'FAIL'; detail['failure'] = error instanceof Error ? error.message : String(error); }
+    // Every failed request the page itself made during the step (by the browser's own record), with the one expected 401 left out.
+    const failedCalls: string[] = [];
+    for (const request of this.browser.requests.slice(seen)) {
+      if ((request.status ?? 0) < 400 || (request.status === 401 && request.url.endsWith('/api/session'))) continue;
+      const line = `${request.status} ${request.method} ${request.url.replace(base, '')} ${((await this.browser.responseBody(request.requestId)) ?? '').slice(0, 160)}`;
+      failedCalls.push(line);
+      if (!KNOWN_REFUSALS.some((pattern) => pattern.test(line))) this.unexpectedRefusals.push(`step ${step}: ${line}`);
+    }
+    if (failedCalls.length) detail['pageRequestsRefused'] = failedCalls;
     const shot = await this.shot(`step${step}-${status === 'PASS' ? 'ok' : 'fail'}`).catch(() => undefined);
     this.steps.push({ step, name, status, detail, ...(shot ? { shot } : {}) });
     console.log(`  [${this.tag}] step ${step} ${status}: ${name}${status === 'FAIL' ? ` -- ${String(detail['failure']).slice(0, 300)}` : ''}`);
@@ -153,7 +164,13 @@ async function dismiss(b: Browser, waitMs = 5000): Promise<void> {
   }
 }
 async function gameShown(b: Browser): Promise<void> { await b.waitFor(`!!document.querySelector('.hud-cash') && !document.querySelector('[data-cr-root]')`, 60000, 'the game screen with the wallet'); }
-const KNOWN_LOG_NOISE = [/status of 401 \(Unauthorized\) .*\/api\/session$/, /status of 409 \(Conflict\) .*\/api\/street\/me$/];
+/**
+ * Browser log lines for refusals the app is built to give and handle: no session yet on the first visit (401 /api/session), the street journey
+ * not begun (409 street_journey_missing) and the page's last read of the city just left (409 city_moved, which says where the character is).
+ * The page's refused requests are also kept with their bodies per step; one that is not one of these is counted as an error below.
+ */
+const KNOWN_LOG_NOISE = [/status of 401 \(Unauthorized\) .*\/api\/session$/, /status of 409 \(Conflict\) .*\/api\/street\/me$/, /status of 409 \(Conflict\) .*\/api\/life\?city=[a-z-]+$/];
+const KNOWN_REFUSALS = [/street_journey_missing/, /"error":"city_moved"/];
 const realErrors = (b: Browser): string[] => b.consoleErrors.filter((line) => !KNOWN_LOG_NOISE.some((pattern) => pattern.test(line)));
 
 /** Chooses Ikeja on the Home step: the list is clicked again when the first tap landed before the area list was ready. */
@@ -163,6 +180,18 @@ async function chooseIkeja(b: Browser): Promise<void> {
     if (await b.waitFor(`(() => { const next = document.querySelector('[data-key="primary"], [data-key="next"]'); return !!next && !next.disabled; })()`, 4000, 'the Next button to unlock').catch(() => false)) return;
   }
   throw new Error('Choosing Ikeja never unlocked the Next button on the Home step');
+}
+
+/** Taps "Start your life" and makes sure the tap was taken (a request left the page); a tap that lands while the step is still settling is repeated. */
+async function tapStartYourLife(b: Browser): Promise<void> {
+  const before = b.requests.length;
+  for (let tries = 0; tries < 4; tries++) {
+    await sleep(500);
+    await b.click('[data-key="primary"]', 'Start your life');
+    const taken = await b.waitFor<boolean>(`!!document.querySelector('[data-cr-error]') || !!document.querySelector('.hud-cash') || window.__creatorMounts > 0`, 4000, 'the tap to be taken').catch(() => false) || b.requests.slice(before).some((request) => request.method === 'POST');
+    if (taken) return;
+  }
+  throw new Error('"Start your life" was tapped four times and nothing was sent');
 }
 
 // ---- step 1: the start screens --------------------------------------------------------------------------------------
@@ -181,7 +210,7 @@ async function start(b: Browser, j: Journey, name: string, detail: Record<string
   // A remount of the creator after the tap is watched for (it is a defect when it happens): the page's own state is read, not guessed.
   await b.eval(`window.__creatorMounts = 0; new MutationObserver((records) => { for (const r of records) for (const n of r.addedNodes) if (n.nodeType === 1 && (n.matches('[data-cr-root]') || n.querySelector('[data-cr-root]'))) window.__creatorMounts++; }).observe(document.body, { childList: true, subtree: true }); true`);
   const asked = b.requests.length;
-  await b.click('[data-key="primary"]', 'Start your life');
+  await tapStartYourLife(b);
   // Done when the creator has closed on the game, or (a defect) the creator has been built again at its first step.
   const outcome = await b.waitFor<string>(`(() => {
     const root = document.querySelector('[data-cr-root]');
@@ -213,25 +242,29 @@ async function start(b: Browser, j: Journey, name: string, detail: Record<string
 }
 
 // ---- the map and the ticket -----------------------------------------------------------------------------------------
+const shownNow = (selector: string): string => `[...document.querySelectorAll(${JSON.stringify(selector)})].some((e) => { const r = e.getBoundingClientRect(); return r.width > 1 && r.height > 1 && getComputedStyle(e).visibility !== 'hidden'; })`;
 async function openMapAt(b: Browser, level: 'africa' | 'nigeria'): Promise<void> {
-  const atlasUp = await b.eval<boolean>(`!!document.querySelector('[data-atlas-levels]')`);
-  if (!atlasUp) {
-    if (!(await b.eval<boolean>(`!!document.querySelector('.map-levels-cur')`))) await b.click('[data-nav="map"]');
-    await b.waitFor(`!!document.querySelector('.map-levels-cur, [data-atlas-levels]')`, 30000, 'the map');
-  }
+  // The world map stays built underneath the city map: only what is on screen counts.
+  if (!(await b.eval<boolean>(shownNow('[data-atlas-levels]'))) && !(await b.eval<boolean>(shownNow('.map-levels-cur')))) await b.click('[data-nav="map"]');
+  await b.waitFor(`${shownNow('.map-levels-cur')} || ${shownNow('[data-atlas-levels]')}`, 30000, 'the map');
   const wanted = level === 'africa' ? 1 : 2;
-  const current = await b.eval<string>(`document.querySelector('[data-atlas-levels]')?.textContent?.trim() || ''`);
+  const atlasOn = await b.eval<boolean>(shownNow('[data-atlas-levels]'));
+  const current = atlasOn ? await b.eval<string>(`document.querySelector('[data-atlas-levels]').textContent.trim()`) : '';
   if (!current.toLowerCase().startsWith(level)) {
-    if (await b.eval<boolean>(`!!document.querySelector('.map-levels-cur')`)) { await b.click('.map-levels-cur'); await b.click(`[data-map-level="${level}"]`); }
-    else { await b.click('[data-atlas-levels]'); await b.click(`[data-atlas-level="${wanted}"]`); }
+    if (atlasOn) { await b.click('[data-atlas-levels]'); await b.click(`[data-atlas-level="${wanted}"]`); }
+    else { await b.click('.map-levels-cur'); await b.click(`[data-map-level="${level}"]`); }
   }
-  await b.waitFor(`(document.querySelector('[data-atlas-levels]')?.textContent || '').trim().toLowerCase().startsWith(${JSON.stringify(level)})`, 30000, `the ${level} map level`);
+  await b.waitFor(`${shownNow('[data-atlas-levels]')} && document.querySelector('[data-atlas-levels]').textContent.trim().toLowerCase().startsWith(${JSON.stringify(level)})`, 30000, `the ${level} map level`);
 }
 /** Finds the destination on the map and opens its card; returns the fare shown on its flight line. */
 async function openDestination(b: Browser, city: string): Promise<{ fare: number; enabled: boolean; why: string }> {
   const target = DESTINATIONS[city]!;
   await openMapAt(b, target.level);
-  if (!(await b.eval<boolean>(`!!document.querySelector('[data-atlas-search]') && document.querySelector('[data-atlas-search]').getBoundingClientRect().width > 1`))) await b.click('[data-atlas-list]');
+  const searchShown = (): Promise<boolean> => b.eval<boolean>(`!!document.querySelector('[data-atlas-search]') && document.querySelector('[data-atlas-search]').getBoundingClientRect().width > 1`);
+  // The list of places is always open on a wide screen and behind "Find a place" on a narrow one.
+  const open = await b.waitFor<boolean>(`!!document.querySelector('[data-atlas-search]') && document.querySelector('[data-atlas-search]').getBoundingClientRect().width > 1`, 6000, 'the list').catch(() => false);
+  if (!open && !(await searchShown())) await b.click('[data-atlas-list]');
+  await b.waitFor(`!!document.querySelector('[data-atlas-search]') && document.querySelector('[data-atlas-search]').getBoundingClientRect().width > 1`, 15000, 'the search box of the map list');
   await b.type('[data-atlas-search]', target.row);
   await b.click('[data-atlas-pick]', target.row);
   await b.waitFor(`document.querySelector('[data-atlas-go="${city}:air"]')`, 30000, `the flight line to ${target.name}`);
@@ -438,12 +471,14 @@ async function journey(city: string, phone: { width: number; height: number } | 
         // The place action of step 5 must be over before a ticket can be bought (the card says so otherwise).
         await until(async () => !(await lifeRaw(b, city)).state?.activeAction, 40000, 'the place action to finish');
         // The statement of step 5 is still open: close it, then use the Home tab.
-        await b.click('button', 'Close');
-        await b.waitFor(`!document.querySelector('.statement-app, .bank-app')`, 10000, 'the sheet to close');
+        // Escape is the app's own way out of a sheet (statement, then the phone's home screen, then closed).
+        const homeFree = `(() => { const el = document.querySelector('[data-nav="home"]'); if (!el) return false; const r = el.getBoundingClientRect(); const top = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return !!top && (el === top || el.contains(top)); })()`;
+        for (let presses = 0; presses < 4 && !(await b.eval<boolean>(homeFree)); presses++) { await b.press('Escape', 'Escape', 27); await sleep(700); }
+        await b.waitFor(homeFree, 10000, 'the Home tab to be free of sheets');
         await b.click('[data-nav="home"]');
         await b.click('[data-visitor="home"]');
-        await b.waitFor(`document.querySelector('[data-atlas-go$=":air"][data-atlas-go^="lagos"]')`, 30000, 'the flight home');
-        const fare = await b.eval<number>(`Number(document.querySelector('[data-atlas-go^="lagos:"]').getAttribute('aria-label').match(/₦([\\d,]+)/)[1].replace(/,/g, ''))`);
+        await b.waitFor(`document.querySelector('[data-atlas-go="lagos:air"]')`, 30000, 'the flight home');
+        const fare = await b.eval<number>(`Number(document.querySelector('[data-atlas-go="lagos:air"]').getAttribute('aria-label').match(/₦([\\d,]+)/)[1].replace(/,/g, ''))`);
         detail['cashBefore'] = before; detail['fare'] = fare;
         await j.shot('flight-home');
         await b.click('[data-atlas-go="lagos:air"]');
@@ -498,7 +533,7 @@ async function journey(city: string, phone: { width: number; height: number } | 
 }
 
 function finish(j: Journey, b: Browser, tag: string): CityResult {
-  const errors = realErrors(b);
+  const errors = [...realErrors(b), ...j.unexpectedRefusals];
   const ok = j.steps.length > 0 && j.steps.every((step) => step.status === 'PASS') && errors.length === 0;
   const result: CityResult = { city: tag, steps: j.steps, consoleErrors: errors, notes: j.notes, ok };
   writeFileSync(join(out, `${tag}.json`), JSON.stringify({ ...result, tolerated: b.consoleErrors.filter((line) => !errors.includes(line)) }, null, 2));
@@ -530,24 +565,28 @@ async function phoneRun(size: { width: number; height: number }): Promise<Record
     await reach('name field', '[data-qs-name]'); await reach('Play now', '[data-key="play-now"]'); await reach('Next', '[data-key="next"]');
     await b.type('[data-qs-name]', 'Journey Phone');
     for (let at = 0; at < 4; at++) {
-      if (at === 3) { await reach('area Ikeja', '[data-key="area:ikeja"]'); await b.click('[data-key="area:ikeja"]', undefined, 60000); }
+      if (at === 3) { await reach('area Ikeja', '[data-key="area:ikeja"]'); await chooseIkeja(b); }
       await b.click('[data-key="primary"], [data-key="next"]', undefined, 60000);
       await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === ${JSON.stringify(['look', 'spirit', 'home', 'ready'][at])}`, 60000, 'the next step');
       await reach(`${['look', 'spirit', 'home', 'ready'][at]} primary`, '[data-key="primary"]');
     }
     await j.shot('ready');
     const t1 = Date.now();
-    await b.click('[data-key="primary"]', 'Start your life');
-    const outcome = await b.waitFor<string>(`(async () => { const root = document.querySelector('[data-cr-root]'); const m = await fetch('/api/life?city=lagos').then((r) => r.ok ? r.json() : null).catch(() => null); if (m?.state?.onboarding?.done && !root) return 'settled'; if (root && root.dataset.step === 'who' && m?.state) return 'creator-back-at-start'; return ''; })()`, 120000, 'the creator to finish');
+    await b.eval(`window.__creatorMounts = 0; new MutationObserver((records) => { for (const r of records) for (const n of r.addedNodes) if (n.nodeType === 1 && (n.matches('[data-cr-root]') || n.querySelector('[data-cr-root]'))) window.__creatorMounts++; }).observe(document.body, { childList: true, subtree: true }); true`);
+    await tapStartYourLife(b);
+    const outcome = await b.waitFor<string>(`(() => { const root = document.querySelector('[data-cr-root]'); if (window.__creatorMounts > 0 && root && root.dataset.step === 'who') return 'creator-back-at-start'; if (!root && document.querySelector('.hud-cash')) return 'settled'; return ''; })()`, 180000, 'the creator to finish or return');
     report['startOutcome'] = outcome;
     report['secondsStartYourLife'] = Math.round((Date.now() - t1) / 100) / 10;
     if (outcome !== 'settled') {
       await b.click('[data-key="play-now"]'); await gameShown(b); await dismiss(b);
       await b.click('.hud-name'); await b.click('.sim-link', 'Make this life yours');
       await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'spirit'`, 60000, 'the settle screen');
-      await b.click('[data-key="primary"]'); await b.click('[data-key="area:ikeja"]', undefined, 60000); await b.click('[data-key="primary"]');
+      await b.click('[data-key="primary"]');
+      await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'home'`, 60000, 'the Home step');
+      await chooseIkeja(b); await b.click('[data-key="primary"]');
+      await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'ready'`, 60000, 'the Ready step');
       await b.click('[data-key="primary"]', 'Start your life');
-      await b.waitFor(`(async () => { const m = await fetch('/api/life?city=lagos').then((r) => r.json()); return m.state.onboarding.done && !document.querySelector('[data-cr-root]'); })()`, 120000, 'the settled life');
+      await until(async () => (await lifeRaw(b, 'lagos')).state?.onboarding?.done === true, 180000, 'the settled life');
     }
     await gameShown(b); await dismiss(b);
     report['secondsToInteractiveGame'] = Math.round((Date.now() - t0) / 100) / 10;
@@ -562,6 +601,24 @@ async function phoneRun(size: { width: number; height: number }): Promise<Record
     await j.shot('card');
     const cardText = await sheetText(b);
     report['cardMentionsDestination'] = cardText.includes(target.name);
+    // Fund once and fly, to see the arrival screen at this size.
+    await fund(await sessionId(b), line.fare * 2 + 200000, 'Journey phone fixture');
+    await b.waitFor(`(document.querySelector('.hud-cash')?.textContent || '').replace(/[^0-9]/g, '').length >= 6`, 30000, 'the credited wallet');
+    await openDestination(b, 'cairo');
+    await b.click('[data-atlas-go="cairo:air"]');
+    if (await b.waitFor<string>(`document.querySelector('[data-atlas-sure]') ? 'ask' : ''`, 3000, 'confirm').catch(() => '')) await b.click('[data-atlas-sure]');
+    const flown = Date.now();
+    await until(async () => { const m = await lifeRaw(b, 'lagos'); return m.state?.estate?.city === 'cairo' && !m.state.activeAction; }, 180000, 'the arrival in Cairo');
+    report['secondsFlight'] = Math.round((Date.now() - flown) / 100) / 10;
+    await gameShown(b); await dismiss(b);
+    await b.waitFor(`[...document.querySelectorAll('canvas')].some((c) => c.getBoundingClientRect().width > 200)`, 60000, 'the destination scene');
+    await sleep(1500);
+    await j.shot('arrived');
+    await reach('wallet at destination', '.hud-cash'); await reach('Map tab at destination', '[data-nav="map"]'); await reach('Home tab at destination', '[data-nav="home"]'); await reach('Phone tab at destination', '[data-nav="phone"]');
+    await b.click('[data-nav="map"]');
+    await b.waitFor(`(document.querySelector('.map-levels-cur')?.textContent || '').includes('Cairo')`, 60000, 'the Cairo map');
+    await reach('map level chip', '.map-levels-cur');
+    await j.shot('city-map');
     const clipped = Object.entries(report['controls'] as Record<string, any>).filter(([, v]) => !v.present || !v.inView || !v.reachable || v.clippedText).map(([k]) => k);
     report['clippedOrUnreachable'] = clipped;
     report['consoleErrors'] = realErrors(b);

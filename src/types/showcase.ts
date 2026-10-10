@@ -31,6 +31,8 @@ export const SHOWCASE = Object.freeze({
   services: 12,
   label: 40,
   note: 80,
+  /** A photo's caption (also its alt text). */
+  caption: 60,
   priceMax: 100000000,
   photosMin: 3,
   photosMax: 6,
@@ -85,6 +87,8 @@ export interface ShowcasePhoto {
   at: number
   /** Public: the shop was approved before it, or after it. A new shop's first photos wait for the first approval. */
   approved: boolean
+  /** The seller's short words about the photo; screened like all shop text. */
+  caption?: string
   /** Hidden until an operator decides (two distinct reports). */
   hidden?: true
   /** Distinct players who reported it. Server only. */
@@ -157,14 +161,14 @@ export interface ShowcaseCard {
 export interface ShowcasePage { shops: ShowcaseCard[]; next: string | null }
 export interface ShowcaseView extends ShowcaseCard {
   about: string
-  photos: { id: string; w: number; h: number }[]
+  photos: { id: string; w: number; h: number; caption?: string }[]
   serviceList: ShowcaseService[]
   hours: (ShowcaseHours | null)[]
   /** Set for 7 days after the pay link changed. */
   payNotice: string | null
   priceLabel: string
 }
-export interface ShowcasePhotoView { id: string; w: number; h: number; approved: boolean; hidden: boolean }
+export interface ShowcasePhotoView { id: string; w: number; h: number; approved: boolean; hidden: boolean; caption?: string }
 /** The owner's own record: the links are theirs to see. */
 export interface ShowcaseMine {
   shop: (Omit<ShowcaseShop, 'photos' | 'v'> & { photos: ShowcasePhotoView[] }) | null

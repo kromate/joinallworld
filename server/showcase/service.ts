@@ -7,12 +7,12 @@
 import { SAFETY_LINE, outboundLink, screenFee } from '../../src/game/trust/index.ts';
 import { businessVenue } from '../../src/game/business-model.ts';
 import { SHOWCASE } from '../../src/types/showcase.ts';
-import type { ShowcaseCard, ShowcaseChatKind, ShowcaseCollection, ShowcaseGo, ShowcaseInput, ShowcaseLinkKind, ShowcaseMine, ShowcasePage, ShowcasePayKind, ShowcaseQueueItem, ShowcaseShop, ShowcaseView } from '../../src/types/showcase.ts';
+import type { ShowcasePhoto, ShowcaseCard, ShowcaseChatKind, ShowcaseCollection, ShowcaseGo, ShowcaseInput, ShowcaseLinkKind, ShowcaseMine, ShowcasePage, ShowcasePayKind, ShowcaseQueueItem, ShowcaseShop, ShowcaseView } from '../../src/types/showcase.ts';
 import { screenText } from '../moderation/text.ts';
 import { trustService } from '../trust/service.ts';
 import type { Db, RouteContext, SessionRecord } from '../types.ts';
-import { isShop, peekShowcase, pruneContacts, shopOf, showcaseOf } from './data.ts';
-import { parseInput, prose, searchable } from './model.ts';
+import { isShop, peekShowcase, record, pruneContacts, shopOf, showcaseOf } from './data.ts';
+import { line, parseInput, prose, searchable } from './model.ts';
 
 const CHAT_SITES: Readonly<Record<string, ShowcaseChatKind>> = { WhatsApp: 'whatsapp', Instagram: 'instagram' };
 const PAY_SITES: Readonly<Record<string, ShowcasePayKind>> = { Paystack: 'paystack', Flutterwave: 'flutterwave', Selar: 'selar' };
@@ -75,7 +75,7 @@ export function showcaseService(ctx: RouteContext) {
   function view(db: Db, shop: ShowcaseShop): ShowcaseView | null {
     const base = card(db, shop);
     if (!base) return null;
-    return { ...base, about: shop.about, photos: shop.photos.filter((photo) => photo.approved && !photo.hidden).map((photo) => ({ id: photo.id, w: photo.w, h: photo.h })), serviceList: shop.services, hours: shop.hours,
+    return { ...base, about: shop.about, photos: shop.photos.filter((photo) => photo.approved && !photo.hidden).map((photo) => ({ id: photo.id, w: photo.w, h: photo.h, ...(photo.caption ? { caption: photo.caption } : {}) })), serviceList: shop.services, hours: shop.hours,
       payNotice: shop.pay && shop.payChangedAt !== undefined && shop.payChangedAt + SHOWCASE.payNoticeMs > now() ? PAY_NOTICE : null, priceLabel: PRICE_LABEL };
   }
   function get(db: Db, id: string, viewer?: string): ShowcaseShop {
@@ -91,6 +91,12 @@ export function showcaseService(ctx: RouteContext) {
     if (!link || !found || (derived !== undefined && derived !== found)) throw ctx.fail(400, refusal);
     return { url: link.url, kind: found };
   }
+  /** The same screening for every text a seller writes that strangers read: the global text filter, fee requests and home addresses. */
+  function screen(text: string): void {
+    const refusal = screenFee(text, { what: 'This shop' }) ?? screenText(text, { contact: true, what: 'This shop' });
+    if (refusal) throw ctx.fail(400, refusal.code);
+    if (HOME_ADDRESS.test(text)) throw ctx.fail(400, 'home_address_not_allowed');
+  }
   /** Parse, screen every text, check the market and the links. Returns the clean input with links normalised. */
   function validate(body: Record<string, unknown>): ShowcaseInput & { chat: { url: string; kind: ShowcaseChatKind }; pay: { url: string; kind: ShowcasePayKind } | null } {
     const parsed = parseInput(body);
@@ -99,11 +105,7 @@ export function showcaseService(ctx: RouteContext) {
     const city = ctx.cityIds.find((id) => id === input.city);
     if (!city) throw ctx.fail(400, 'invalid_city');
     if (!businessVenue(city, input.venue)) throw ctx.fail(400, 'market_required');
-    for (const text of prose(input)) {
-      const refusal = screenFee(text, { what: 'This shop' }) ?? screenText(text, { contact: true, what: 'This shop' });
-      if (refusal) throw ctx.fail(400, refusal.code);
-      if (HOME_ADDRESS.test(text)) throw ctx.fail(400, 'home_address_not_allowed');
-    }
+    for (const text of prose(input)) screen(text);
     const chat = linkOf('chat', input.chat.url, input.chat.kind) as { url: string; kind: ShowcaseChatKind };
     const pay = input.pay ? linkOf('pay', input.pay.url, input.pay.kind) as { url: string; kind: ShowcasePayKind } : null;
     return { ...input, city, chat, pay };
@@ -155,7 +157,7 @@ export function showcaseService(ctx: RouteContext) {
       const owner = collection.owners[session.publicId], today = dayOf(now());
       const used = owner && owner.day === today ? owner.uploads : 0;
       const { photos, v: _v, ...rest } = shop ?? ({} as ShowcaseShop);
-      return { shop: shop ? { ...rest, photos: photos.map((photo) => ({ id: photo.id, w: photo.w, h: photo.h, approved: photo.approved, hidden: photo.hidden === true })) } : null, blocked: blocked(db, session), uploadsLeft: Math.max(0, SHOWCASE.uploadsPerDay - used) };
+      return { shop: shop ? { ...rest, photos: photos.map((photo) => ({ id: photo.id, w: photo.w, h: photo.h, approved: photo.approved, hidden: photo.hidden === true, ...(photo.caption ? { caption: photo.caption } : {}) })) } : null, blocked: blocked(db, session), uploadsLeft: Math.max(0, SHOWCASE.uploadsPerDay - used) };
     },
     /** Create or edit the caller's one shop. */
     save(db: Db, session: SessionRecord, body: Record<string, unknown>) {
@@ -257,6 +259,37 @@ export function showcaseService(ctx: RouteContext) {
       shop.updatedAt = now(); shop.revision += 1;
       collection.shops[shop.id] = shop;
       return { ok: true, code: 'photo_removed', id: shop.id, revision: shop.revision, status: shop.status };
+    },
+    /**
+     * Put the shop's photos in the seller's order (the first is the cover) and set or clear their captions. `order` must list
+     * every photo of the shop exactly once; `captions` maps a photo id to its caption (an empty text clears it). Every caption is
+     * screened like any other shop text.
+     */
+    arrange(db: Db, session: SessionRecord, body: Record<string, unknown>) {
+      gate(db, session);
+      const { collection, shop } = mineOf(db, session, true);
+      if (!shop) throw ctx.fail(404, 'no_shop');
+      if (shop.status === 'held') throw ctx.fail(403, 'shop_held');
+      const order = body.order, captions = body.captions;
+      if (!Array.isArray(order) || order.length !== shop.photos.length || new Set(order).size !== order.length) throw ctx.fail(400, 'invalid_photo_order');
+      const byId = new Map(shop.photos.map((photo) => [photo.id, photo]));
+      if (!order.every((id) => typeof id === 'string' && byId.has(id))) throw ctx.fail(404, 'unknown_photo');
+      const words = new Map<string, string>();
+      if (captions !== undefined) {
+        if (!record(captions)) throw ctx.fail(400, 'invalid_caption');
+        for (const [id, value] of Object.entries(captions)) {
+          if (!byId.has(id)) throw ctx.fail(404, 'unknown_photo');
+          const clean = line(value, 0, SHOWCASE.caption);
+          if (clean === null) throw ctx.fail(400, 'invalid_caption');
+          if (clean) screen(clean);
+          words.set(id, clean);
+        }
+      }
+      shop.photos = order.map((id) => byId.get(String(id)) as ShowcasePhoto);
+      for (const [id, text] of words) { const photo = byId.get(id); if (photo) { if (text) photo.caption = text; else delete photo.caption; } }
+      shop.updatedAt = now(); shop.revision += 1;
+      collection.shops[shop.id] = shop;
+      return { ok: true, code: 'photos_arranged', id: shop.id, revision: shop.revision, status: shop.status };
     },
     /** The caller wants the chat or pay destination of a shop. One contact event is kept; the link is not stored anywhere new. */
     go(db: Db, session: SessionRecord, id: string, kind: unknown): { ok: true; code: 'link' } & ShowcaseGo {

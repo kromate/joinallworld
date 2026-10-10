@@ -774,7 +774,7 @@ export const HTTP_ROUTE_KEYS = [
   'POST /api/real-value/listings/:id/report', 'POST /api/real-value/listings/:id/event', 'POST /api/real-value/listings/:id/contact-request',
   'POST /api/real-value/contacts/:id/answer', 'POST /api/real-value/contacts/:id/revoke',
   'GET /api/showcase/directory', 'GET /api/showcase/mine', 'GET /api/showcase/photo/:id', 'GET /api/showcase/:id',
-  'POST /api/showcase/mine', 'POST /api/showcase/mine/photos', 'POST /api/showcase/mine/photos/remove', 'POST /api/showcase/mine/submit',
+  'POST /api/showcase/mine', 'POST /api/showcase/mine/photos', 'POST /api/showcase/mine/photos/arrange', 'POST /api/showcase/mine/photos/remove', 'POST /api/showcase/mine/submit',
   'POST /api/showcase/mine/hide', 'POST /api/showcase/mine/remove', 'POST /api/showcase/:id/go', 'POST /api/showcase/:id/report',
   'GET /api/mod/showcase', 'POST /api/mod/showcase', 'GET /api/mod/showcase/photo/:id',
   'POST /api/trust/phone/complete',

@@ -58,6 +58,7 @@ Public and signed-in routes, under `/api/showcase/`:
 | `GET mine` | account | your shop with your own links, status, `blocked` (the refusal you would meet), `uploadsLeft` |
 | `POST mine` | publisher | create or edit: `{clientId, expectedRevision, ...shop}`; `expectedRevision` is 0 to create |
 | `POST mine/photos` | publisher | `{clientId, type, data}` (base64) |
+| `POST mine/photos/arrange` | publisher | `{clientId, order, captions?}`: `order` lists every photo id once (first is the cover); `captions` maps a photo id to a caption of at most 60 characters (empty clears), screened like all shop text |
 | `POST mine/photos/remove` | publisher | `{clientId, photo}` |
 | `POST mine/submit` | publisher | draft to review |
 | `POST mine/hide` | publisher | `{clientId, hidden}` |

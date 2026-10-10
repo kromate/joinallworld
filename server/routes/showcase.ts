@@ -9,6 +9,7 @@
  *   GET  /api/showcase/mine                              the caller's shop with their own links, status and upload allowance
  *   POST /api/showcase/mine                              create or edit        { clientId, expectedRevision, ...shop }
  *   POST /api/showcase/mine/photos                       { clientId, type, data (base64) }
+ *   POST /api/showcase/mine/photos/arrange               { clientId, order: [photo ids, first = cover], captions?: { photo id: text } }
  *   POST /api/showcase/mine/photos/remove · /submit · /hide · /remove
  *   POST /api/showcase/:id/go                            { clientId, kind: 'chat' | 'pay' } the link, for a signed-in adult
  *   POST /api/showcase/:id/report                        { clientId, reason, note?, photo? }
@@ -95,6 +96,7 @@ export default function showcaseRoutes(ctx: RouteContext): Record<RouteKey, Rout
     'GET /api/showcase/:id': read((db, viewer, request) => ({ shop: service.view(db, service.get(db, String(request.params.id), viewer)) })),
     'POST /api/showcase/mine': write('save', (db, session, _id, body) => service.save(db, session, body)),
     'POST /api/showcase/mine/photos': upload,
+    'POST /api/showcase/mine/photos/arrange': write('photo-arrange', (db, session, _id, body) => service.arrange(db, session, body)),
     'POST /api/showcase/mine/photos/remove': write('photo-remove', (db, session, _id, body, gone) => service.detach(db, session, body.photo, gone)),
     'POST /api/showcase/mine/submit': write('submit', (db, session) => service.submit(db, session)),
     'POST /api/showcase/mine/hide': write('hide', (db, session, _id, body) => service.hide(db, session, body.hidden)),

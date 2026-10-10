@@ -29,10 +29,35 @@ handles and stage deadline before the first browser action. The phase lasts at
 most 900 seconds; stop new actions 60 seconds before its natural deadline.
 Do not restart or extend the stage to avoid the deadline.
 
-The proposal must state and enforce a measured process-group RSS ceiling,
-request/screenshot timeouts, output-byte limit, and cleanup behavior for both
-stage and Chromium. The earlier 120-second browser capability probe does not
-prove a 900-second journey run. Capture actual memory/time observations.
+The stage's internal timer starts after its bootstrap requests. It cannot enforce
+the complete phase duration by itself. The immutable controller must use these
+bounds, measured from its first owned process launch:
+
+| Resource | Required bound |
+| --- | --- |
+| Complete phase, including bootstrap and cleanup | 900 seconds |
+| Bootstrap and readiness | 120 seconds; otherwise fail before any browser action |
+| Exact stage helper duration | `--seconds 720`; no renewal |
+| Last new browser action | Earlier of stage deadline minus 60 seconds and phase start plus 780 seconds |
+| Aggregate RSS of owned controller, stage, browser and descendants | 4 GiB; sample at most 500 ms apart and abort on excess |
+| Individual HTTP request | 20 seconds, with request cancellation |
+| CDP command | 10 seconds |
+| Screenshot | 15 seconds; at most 2 MiB per PNG, 32 PNGs and 48 MiB total |
+| Public logs and structured observations | 16 MiB total; no raw private state |
+
+These are launch limits, not measured performance claims. The previous capability
+probe used about 1.285 GB and does not prove this journey fits them. Publish actual
+peak RSS, elapsed time, output sizes and any exceeded limit. Resource failure is
+a partial result, never acceptance or permission to repeat with larger bounds.
+
+The controller must stop browser actions on timeout/resource failure and preserve
+owned checkpoints. Normal success uses the helper's natural deadline and actual
+clean disposal. Review the emergency process-group cleanup explicitly: Miniflare
+has its own INT/TERM/HUP hooks, so those signals do not prove graceful disposal.
+At the overall deadline, terminate only the recorded owned group, record failed
+or interrupted cleanup honestly, retain the private store, and release leases
+only after confirming the owned processes are absent. Do not silently alter the
+pinned helper to add another signal or claim a stopped checkpoint after a kill.
 Require main allowance above 4% before starting a new phase; preserve active
 work and use the final 4% for checkpoints and reporting.
 

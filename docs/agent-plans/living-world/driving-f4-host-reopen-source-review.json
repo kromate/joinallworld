@@ -1,0 +1,66 @@
+{
+  "reviewedAtUtc": "2026-10-10T01:28:57.243412+00:00",
+  "candidate": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
+  "hostComposition": "e8a1bd30319e63931e47a43f833f74a83f500d2c",
+  "previousReviewedSafetySource": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+  "publishedBranch": "codex/cloud-driving-host-reopen-tests-20261010",
+  "remoteExactRefVerified": true,
+  "wholeHostDiffAndBothTestFilesRead": true,
+  "sourcePins": {
+    "deploy/cloudflare-worker.ts": {
+      "sha256": "efef66d80ae36134fe95271e0eea0391e7789b9e4b3834aa68ace8f5f09c795b",
+      "bytes": 74070
+    },
+    "server/routes/living-world.ts": {
+      "sha256": "39ecdf13390562eccadbfc3aaa76b082188b4d7045131e3124a94fd5dcc6c8e6",
+      "bytes": 5048
+    },
+    "server/server.ts": {
+      "sha256": "c6499252095e1e7548b25fb2566dfb56ec94bc2b8328a957403f90e3a2c31181",
+      "bytes": 63611
+    },
+    "server/types.ts": {
+      "sha256": "a54a8daba84cf6a87e64cad9c6027fd0a4f50b46b5734130102d8bf3842868f9",
+      "bytes": 72559
+    },
+    "server/living-world/driving-host-reopen.test.ts": {
+      "sha256": "62189f28ca37633bf6ae8f3f65707633cc2eada1d3bc96e63295b0429172386b",
+      "bytes": 10031
+    },
+    "deploy/living-world-driving-v2.edge.test.ts": {
+      "sha256": "54a56f003a732e93c4ea786ddf84fe0ba0ddcc05e2f079fe7814ae0be372fb5e",
+      "bytes": 12014
+    }
+  },
+  "sourceFindings": [
+    "Normal registered routes forward only trusted context literal true; no request/save activation source added.",
+    "Node constructor option defaults false and passes only literal true; environment value is not read as issuance authority.",
+    "Worker env binding enables only exact string 1; omitted, zero, true string and whitespace leave issuance OFF.",
+    "Node test uses production createServer routes, actual temporary devices.json, server/store close and same-file host reopen; ordinary HTTP onboarding and driving.",
+    "Worker test bundles actual production Worker, uses persistent Durable Object SQLite, disposes/recreates runtime on same directory and reads actual collection/once tables; no service factory substitution.",
+    "Tests assert retained input receipt and lifecycle duplicate, v2 read/write preservation under OFF and explicit-gear refusal without row mutation."
+  ],
+  "execution": {
+    "status": "REPORTED_NOT_INDEPENDENTLY_ACCEPTED",
+    "reportedPass": 2,
+    "reportedFail": 0,
+    "reportedSkip": 0,
+    "reportedDurationSeconds": 8.806,
+    "reportedRawLogSha256": "167d9462c809082ef284bbe4fd33766a1e6db0dad8e7b3429e4c37954074ea40",
+    "actualPublishedLogAndReceiptStillRequired": true,
+    "request": "Existing cloud coordinator asked to publish original sanitized log/receipt without rerun."
+  },
+  "limitations": [
+    "Synthetic isolated actors/stores; no original player browser or live save acceptance.",
+    "No storage failure/corruption/terminal/full Node-Worker parity matrix claim.",
+    "No last-safe nextSequence MAX-1 to MAX boundary execution claim.",
+    "Compatible OFF staging and rollback package pin still required before v2 issuance.",
+    "Changed-source compiler/build/download budgets/smoke/frozen package/native/release/live gates remain open; prior 1b checks do not automatically apply.",
+    "Actual remote Luna model provenance remains unavailable."
+  ],
+  "independentReviewRequested": "Integration asked to use existing Astra reviewer at supported boundary; not yet reported.",
+  "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "releaseApproved": false,
+  "activationApproved": false,
+  "rootLocalExecution": "Git/Python source inspection and docs only; no test/build/compiler/browser/server/upload."
+}

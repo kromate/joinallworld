@@ -1,0 +1,85 @@
+{
+  "observedAtUtc": "2026-10-10T01:39:58.162541+00:00",
+  "source": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
+  "scope": "Source only; selected scoring/qualification/ordinary UI paths and complete starter-rental service read. No stage/browser or earned qualification acceptance.",
+  "pins": {
+    "server/living-world/driving-service.ts": {
+      "sha256": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+      "bytes": 28685
+    },
+    "src/game/living-world/driving.ts": {
+      "sha256": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+      "bytes": 23374
+    },
+    "src/app/features/living-world/DrivingApp.vue": {
+      "sha256": "b08e09dfc72baae923438f48f4a0b983b8b2f0437789933b714932bc3a1e13b6",
+      "bytes": 69719
+    },
+    "server/living-world/qualification-service.ts": {
+      "sha256": "7a12218487339393494f89f90edcee50a6ac6d798f89aa781e6945f5dc8c6704",
+      "bytes": 11916
+    },
+    "server/living-world/rental-service.ts": {
+      "sha256": "3223b587a4083de20f66ce1510b7c7fe6ac21d0a2af0bc832125d1442b00659b",
+      "bytes": 13065
+    }
+  },
+  "observations": [
+    {
+      "path": "src/game/living-world/driving.ts",
+      "lines": [
+        229,
+        230,
+        242,
+        288
+      ],
+      "fact": "Score penalties subtract during steps; final pass requires score>=70. The original0-score recovery must not be called a passed result."
+    },
+    {
+      "path": "server/living-world/driving-service.ts",
+      "lines": [
+        214,
+        216,
+        218,
+        224,
+        227
+      ],
+      "fact": "Passed result retained. Pending original cannot be replaced through start; completed failed attempt permits a new ordinary start."
+    },
+    {
+      "path": "src/app/features/living-world/DrivingApp.vue",
+      "lines": [
+        846,
+        851,
+        854,
+        858,
+        859
+      ],
+      "fact": "Real UI offers Resume saved lesson, Practise again after failure, Claim simulated qualification and Claim free starter permission. Permission allocates no car and mapped trips remain unavailable."
+    },
+    {
+      "path": "server/living-world/qualification-service.ts",
+      "lines": [
+        160,
+        162,
+        163,
+        164,
+        165,
+        166
+      ],
+      "fact": "Qualification requires saved passed evidence bound to actual journey, city/location, route/version and valid earned timestamp."
+    },
+    {
+      "path": "server/living-world/rental-service.ts",
+      "fact": "Strict entitlement reader binds actor/catalogue qualification, rejects corrupt/future rows unchanged, requires actual saved passed evidence and once-bound claim; all replies set tripAvailable:false/allocation:none. No physical rental accepted."
+    }
+  ],
+  "nativePlan": "school-original-recovery-native-batch-2026-10-10.md",
+  "prerequisites": [
+    "Exact changed-source independent review/compiler/build/caps/smoke",
+    "Actually delivered compatible OFF package and rollback pin before original v2 issuance",
+    "Existing bounded WORLD original-store stage and existing Astra operator"
+  ],
+  "originalStorePolicy": "Preserve original0-score attempt through actual controls and normal failed completion; ordinary Practise again must earn a pass. No manual save edit, grant, teleport or score gift.",
+  "fullProgrammeStillOpen": true
+}

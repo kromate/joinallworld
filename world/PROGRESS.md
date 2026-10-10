@@ -1,11 +1,11 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T04:00:31.790771+00:00
+Updated: 2026-10-10T04:05:27.320718+00:00
 
 The previous status-only turn confirmed the live build but changed no source.
 This turn identified the exact zero-delay reconnect test edge, matched all three
-files to production C1, and recorded the completed controller review. The cloud
-owner is diagnosing cancellation; the same Astra operator has a new repair turn.
+files to production C1, and recorded the completed controller review. The exact public diagnostic confirms cancellation for real zero and nonzero
+timers. The same Astra operator has a new controller/helper repair turn.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -30,7 +30,7 @@ They are **not deployed**.
 | Delivered sealed package and 31 served assets | Accepted; package digest `3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331` |
 | Normal browser onboarding and controlled credit replay | Passed for two fresh synthetic players |
 | Five new browser city journeys and same-store restart | All five unvisited; still required |
-| Full host/tooling and Worker suites on Node 22 and 24 | Accepted; Node 24 game suite failed one reconnect assertion; diagnosis pending |
+| Full host/tooling and Worker suites on Node 22 and 24 | Accepted; Node 24 game suite failed one reconnect assertion; harness failure classified; original suite remains failed |
 | Production upload and live 16-country check | Not started |
 
 Evidence: [source](third-five-c1-successor-source-acceptance.json),
@@ -70,10 +70,11 @@ The concrete owner mailbox helper is also required before launch; schema alone
 cannot fund, audit or restart the stage. No browser launch is approved.
 
 The original Node 24 full-game suite ended with exit 1 after 1,272 seconds.
-The owner reports 2,587 passes, one failure and one skip. A zero jitter delay can
-bypass the test's fake timer Map; all three implicated files match live C1.
-[Source diagnosis](c12-reconnect-zero-delay-diagnosis.json). Actual bounded
-cancellation diagnostics and full original raw-log review are still pending.
+Root verified the full raw log: 2,587 passes, one failure and one skip. A zero
+jitter delay bypasses the test's fake timer Map; all three files match live C1.
+[Source diagnosis](c12-reconnect-zero-delay-diagnosis.json). The bounded diagnostic passed for real 0ms and 500ms timers, with exact raw
+hashes verified. The original full suite remains failed; this qualifies its
+cause and does not establish complete release acceptance.
 Other already accepted checks will not be repeated without a source change.
 
 The separate combined source `3e3e0876fc50f3166a0d0968f8616b577da27870`

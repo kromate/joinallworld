@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "observedAtUtc": "2026-10-10T04:00:31.790771+00:00",
-  "decision": "SOURCE_EDGE_IDENTIFIED_RUNTIME_DIAGNOSTIC_PENDING",
+  "observedAtUtc": "2026-10-10T04:05:27.320718+00:00",
+  "decision": "ACCEPT_SCOPED_HARNESS_FAILURE_CLASSIFICATION_ORIGINAL_FULL_SUITE_REMAINS_FAILED",
   "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
   "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "pins": [
@@ -44,22 +44,89 @@
     "durationSeconds": 1272.099332,
     "exitStatus": 1,
     "logSha256": "8eb04afa596a9fed3c647947d0e36945104623bf0be9837c98efeedf5b8fa208",
-    "reportedCounts": {
-      "passed": 2587,
-      "failed": 1,
-      "skipped": 1
-    },
-    "receiptEvidence": "Cloud original exec-dab9ab37 output independently read; counts and matched assertion reported by owner, full raw public log still pending",
+    "receiptEvidence": "Root read complete original public log and receipt; exact assertion510 actual0/expected1 and all summary counts confirmed",
     "perFilePinsInReceipt": false,
-    "sourceCleanUnchanged": true
+    "sourceCleanUnchanged": true,
+    "counts": {
+      "tests": 2589,
+      "pass": 2587,
+      "fail": 1,
+      "skipped": 1,
+      "cancelled": 0
+    }
   },
-  "nextAction": "Existing cloud owner checks original exact failure and runs one bounded temporary diagnostic of real zero-delay cancellation and a nonzero-delay case. No unchanged full rerun for green.",
+  "nextAction": "Keep the original full suite failure and accepted harness qualification. Integration determines release gate disposition from this exact evidence. Continue remaining distinct source checks and all five actual browser journeys; do not change valid production jitter or rerun an unchanged suite only for green.",
   "runtimeEdits": false,
   "testsEdited": false,
   "productionChanged": false,
   "limitations": [
-    "Original failed full suite remains failed.",
-    "A static edge and owner report do not prove the complete release or browser journeys.",
-    "No change to valid reconnect jitter or production runtime is justified by this edge."
-  ]
+    "Original full game suite remains exit1, not an all-pass receipt.",
+    "Diagnostic proves zero/nonzero timer cancellation in a controlled Node harness; no real browser/network/device acceptance.",
+    "No game or test source edited; no deployment."
+  ],
+  "rawEvidence": {
+    "publicationCommit": "7d2fd3feb14cd0befcd3246a8f43abc853bc19c3",
+    "files": {
+      "country-c12-node24-game-original-receipt.json": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-node24-game-original-receipt.json",
+        "bytes": 2563,
+        "sha256": "4d8dfc71908470ef4295d3e23a8a9d48936b30e1a4ee16935bfaf04359b7ca04"
+      },
+      "country-c12-node24-game-original.log": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-node24-game-original.log",
+        "bytes": 274298,
+        "sha256": "8eb04afa596a9fed3c647947d0e36945104623bf0be9837c98efeedf5b8fa208"
+      },
+      "country-c12-node24-game-failure-classification.json": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-node24-game-failure-classification.json",
+        "bytes": 959,
+        "sha256": "20666404074ce68de17a8a52f601e25ca26812f8fd26766c32888efef843d219"
+      },
+      "country-c12-reconnect-zero-delay-diagnostic.mjs": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-reconnect-zero-delay-diagnostic.mjs",
+        "bytes": 2356,
+        "sha256": "0c4d63c7d55e50f22a0f147e4c881a0d8cfd81434ffd2743f1f9cfc7c7f2e5b1"
+      },
+      "country-c12-reconnect-zero-delay-receipt.json": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-reconnect-zero-delay-receipt.json",
+        "bytes": 2632,
+        "sha256": "8c185d61e841652b532a48c7327b5c5577b9c48ef1d1e47fd843a8dfc3072765"
+      },
+      "country-c12-reconnect-zero-delay.log": {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-reconnect-zero-delay.log",
+        "bytes": 823,
+        "sha256": "dd30433f052415b7d6656d1880d8e5e0cf9021fffbb1374e3cfcaf6f6e2bd244"
+      }
+    }
+  },
+  "diagnostic": {
+    "sourceReviewedInFull": true,
+    "receiptReviewedInFull": true,
+    "logHashMatches": true,
+    "exitStatus": 0,
+    "wrapperDurationSeconds": 0.295433,
+    "node": "v24.19.0",
+    "cases": [
+      {
+        "random": 0,
+        "delay": 0,
+        "originalHarnessWouldReportPending": false,
+        "actualTimerScheduled": true,
+        "actualTimerCleared": true,
+        "noSocketAfterDestroy": true
+      },
+      {
+        "random": 0.5,
+        "delay": 500,
+        "originalHarnessWouldReportPending": true,
+        "actualTimerScheduled": true,
+        "actualTimerCleared": true,
+        "noSocketAfterDestroy": true
+      }
+    ],
+    "postDestroyObservationMs": 25,
+    "scope": "Canonical createCommunity against temporary browser globals, real Node timers and controlled random values; no browser/network/production action",
+    "sourceCleanUnchanged": true,
+    "perFileExecutionPinMapsEmpty": true
+  }
 }

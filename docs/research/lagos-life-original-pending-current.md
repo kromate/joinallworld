@@ -2,7 +2,7 @@
 
 9 October 2026, user-requested handoff. Capture739 distinct descendant-inclusive replies;254 scheduled page traversals. Six newly discovered branch pages remain. Thirteen of28 residual URLs received scoped observations;15 were not revisited. This ledger does not mean those trees exhausted. Root sort offers Relevant, Recent, Likes; no Recent sweep was performed. [Final scoped report](lagos-life-original-scoped-final-2026-10-09.md) supersedes the older unscoped loading interpretation.
 
-The named Loading timeline indicator was in Trending during scoped rechecks; separate unnamed conversation indicators were recorded. Preserve actual filtered/unavailable/comment-continuation evidence. The city129 queue and current32 image-status queue remain separate; the original handoff had58 image items. Known long-text queue is empty.
+The named Loading timeline indicator was in Trending during scoped rechecks; separate unnamed conversation indicators were recorded. Preserve actual filtered/unavailable/comment-continuation evidence. The city129 queue and current17 image-status queue remain separate; the original handoff had58 image items. Known long-text queue is empty.
 
 ## Bounded access recheck — 9 October 2026, 13:17 UTC
 
@@ -70,39 +70,28 @@ The [neighbour image and newer-post pass](lagos-life-neighbours-current-2026-10-
 
 [Next-twelve evidence](lagos-life-images-next12-2026-10-10.md) completes twelve supplied image posts. Current queue: **32 original images, six branches and28 residual URLs**. Signup support acknowledges work but no fix is verified. Fictional police screenshots show a time inconsistency without proving its cause. Historical739/254 and city129 remain unchanged; Recent and deeper descendants stay open.
 
+## Image review continuation — 10 October 2026, 01:03 UTC
+
+[Next-sixteen evidence](lagos-life-images-next16-2026-10-10.md) completes15posts and20suppliedimages. Current **17originalimages/6branches/28residuals**. SamSecOps app-only andSokeyeA X Error remainunread afterboundedrecovery. Historical739/254 andcity129 unchanged. Officiallocation-expansion acknowledgment hasnoverifiedIlorin deliverydate; readerclaims/advertisements/pendingbetting screenshots are notcurrentpayment orroadmapproof.
+
 ## Image-bearing posts awaiting visual review
 
 Text does not resolve unseen attachments. Private witnesses require privacy review before publication.
 
-1. [Image-bearing post](https://x.com/SamSecOps/status/2105979792377905569) — app-only restriction observed; attachment unread
-2. [Image-bearing post](https://x.com/Mistersabii/status/2106116556581433814)
-3. [Image-bearing post](https://x.com/HIMzu0c/status/2106090624319451369)
-4. [Image-bearing post](https://x.com/cantbemac/status/2106142104133185640)
-5. [Image-bearing post](https://x.com/Big_briggs25/status/2106081338868572238)
-6. [Image-bearing post](https://x.com/X_mplary_Chris/status/2107709085978145269)
-7. [Image-bearing post](https://x.com/DePaytez/status/2107551079856541874)
-8. [Image-bearing post](https://x.com/SokeyeA/status/2105742615144513619)
-9. [Image-bearing post](https://x.com/SokeyeA/status/2105622005722788348)
-10. [Image-bearing post](https://x.com/SokeyeA/status/2105939482226946210)
-11. [Image-bearing post](https://x.com/HAMMAD_FAWY/status/2105607639384445142)
-12. [Image-bearing post](https://x.com/notsegun/status/2105564411079581867)
-13. [Image-bearing post](https://x.com/Thefuvknfeather/status/2106310477139878253)
-14. [Image-bearing post](https://x.com/Tee__Elle/status/2105615986829521074)
-15. [Image-bearing post](https://x.com/tifezay001/status/2105736302377451945)
-16. [Image-bearing post](https://x.com/caspady1/status/2105612570946404377)
-17. [Image-bearing post](https://x.com/Pixeltale10/status/2106082724314267672)
-18. [Image-bearing post](https://x.com/Hollar_prewitt/status/2105572305329865103)
-19. [Image-bearing post](https://x.com/DeltaAlpha2x/status/2106274881763483941)
-20. [Image-bearing post](https://x.com/MitiniP/status/2107510168892166292)
-21. [Image-bearing post](https://x.com/pheezzsleekasf/status/2106370930868142450)
-22. [Image-bearing post](https://x.com/spacehoster1/status/2107031070151766453)
-23. [Image-bearing post](https://x.com/GODPLUSMOM001/status/2107789463690641733)
-24. [Image-bearing post](https://x.com/JesseChukwuemek/status/2107493674951000230)
-25. [Image-bearing post](https://x.com/piccollo_chegun/status/2106774098907156562)
-26. [Image-bearing post](https://x.com/tundelawal01/status/2106135906277101754)
-27. [Image-bearing post](https://x.com/MosesAustihap0/status/2106717179177521604)
-28. [Image-bearing post](https://x.com/naijaexploit/status/2106582284325327169)
-29. [Image-bearing post](https://x.com/Alexslowfire/status/2107064728392470535)
-30. [Image-bearing post](https://x.com/olawalemuiz12/status/2105576154258186737)
-31. [Image-bearing post](https://x.com/grok/status/2107139882984288483)
-32. [Image-bearing post](https://x.com/RodrigoHenande/status/2106127217654718639)
+1. [Image-bearing post](https://x.com/SamSecOps/status/2105979792377905569) — app-only; unread
+2. [Image-bearing post](https://x.com/SokeyeA/status/2105622005722788348) — X Error after bounded recovery; unread
+3. [Image-bearing post](https://x.com/Hollar_prewitt/status/2105572305329865103)
+4. [Image-bearing post](https://x.com/DeltaAlpha2x/status/2106274881763483941)
+5. [Image-bearing post](https://x.com/MitiniP/status/2107510168892166292)
+6. [Image-bearing post](https://x.com/pheezzsleekasf/status/2106370930868142450)
+7. [Image-bearing post](https://x.com/spacehoster1/status/2107031070151766453)
+8. [Image-bearing post](https://x.com/GODPLUSMOM001/status/2107789463690641733)
+9. [Image-bearing post](https://x.com/JesseChukwuemek/status/2107493674951000230)
+10. [Image-bearing post](https://x.com/piccollo_chegun/status/2106774098907156562)
+11. [Image-bearing post](https://x.com/tundelawal01/status/2106135906277101754)
+12. [Image-bearing post](https://x.com/MosesAustihap0/status/2106717179177521604)
+13. [Image-bearing post](https://x.com/naijaexploit/status/2106582284325327169)
+14. [Image-bearing post](https://x.com/Alexslowfire/status/2107064728392470535)
+15. [Image-bearing post](https://x.com/olawalemuiz12/status/2105576154258186737)
+16. [Image-bearing post](https://x.com/grok/status/2107139882984288483)
+17. [Image-bearing post](https://x.com/RodrigoHenande/status/2106127217654718639)

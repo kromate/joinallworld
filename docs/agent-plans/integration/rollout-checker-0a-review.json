@@ -1,0 +1,28 @@
+{
+  "reviewedAtUtc": "2026-10-10T01:04:00.826136+00:00",
+  "source": "0a5e2983126e3dac406af1c3a121e9cbfef78feb",
+  "base": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
+  "decision": "MODIFY",
+  "twoFileDiffOnly": true,
+  "all33RuntimeFilesUnchanged": true,
+  "sourcePins": {
+    "scripts/world/check-playable-africa-rollout.py": "917ecabb3c578d723b1fb47bcb06ad91aea0ddc4c82ed09178388b40c4fe8a39",
+    "src/game/cities/allCities.test.ts": "4059377f9ddd8f51466aca9961f350274567d7037c0c085fe0581010b48ef15f"
+  },
+  "acceptedSource": [
+    "Alloldcheckers retained; dynamicremainingcoverage added; exact sortedforeign equality retained",
+    "Boundedregularnonsymlink reads, exact fiveassetkeys, byte/hash identity, duplicateJSON and tornread refusal",
+    "No sourceacquisition/network/cache writes"
+  ],
+  "finding": {
+    "id": "missing-generation-identity",
+    "requirement": "Require receiptgenerationIdentity and exact city/statefacts consistency",
+    "actualInMemoryDiagnostic": "Five valid asset pins andmatchingcity/country/facts WITHOUTgenerationIdentity returns pinned-assets-match",
+    "file": "scripts/world/check-playable-africa-rollout.py",
+    "line": 106,
+    "scope": "Actual in-memory invocation of reviewed checker, bounded artificial bytes. No repository file, runtime asset, actor or store changed."
+  },
+  "fullSuiteAccepted": false,
+  "productionAccepted": false,
+  "next": "Same existingcloudassembler requiresgenerationIdentity then actualpositive/negative offline checks and correctedsourcegates."
+}

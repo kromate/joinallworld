@@ -429,3 +429,11 @@ Actual final1b225 compiler/build receipts at ba703527 independently hash-match c
 [Household consumer design brief](household-consumer-prototype-brief.md) defines three distinct future flows using primary app references and explicit ordinaryfriend consent. All14sourcepins match. No rendered prototype, endpoint, membership authority, shared-home activity, or rent settlement is accepted. f28182fe actual internal schema/keyed/receipt seam is published; real Node/Worker transaction-root and keyed-map descriptor compatibility findings require repair before durable acceptance.
 
 [Next-twelve public research](../../research/lagos-life-images-next12-2026-10-10.md) exactly reduces44to32imageitems. All6branches/28residuals/historical739/254/city129 unchanged; Recent and app-only attachment remain unaccepted. Country91fivegates are accepted but allCities source check fails because oldcheckers cover10foreignIDs while15registered; strict union stays unchanged and narrow readonlychecker migration is underway. No newproduction acceptance.
+
+## 10 October 01:05 UTC source integration findings
+
+[Household f281 seam review](household-f281-seam-review.md) is MODIFY: genuine keyedmap descriptors and Node transactionroot descriptors intentionally containplaceholder values, makingcurrentgeneric strict reads rejectvalidpersistedstate. Sameexistingworker repairs genuineWeakMapkeyedidentity andexplicittrustedtransactionroot extraction; ordinaryaccessor/undefinedcorruption stillrefuses. No lifecycle/residence/financialactivation.
+
+[Provider50 followup](provider50-followup-review.md) is changesrequired: ISO-vs-citypending keys, permanentlycached initial rejection, latestselection/pending/error/retry UI, foreignassetstartupmeasurement and exactorderedadmissionprojection before55combination. Trustedserverfull/browserlazy andunchangedcaps retained.
+
+[Rollout0a checker](rollout-checker-0a-review.md) retainsstrictforeignunion andall33runtimebytes but actualtinynegative diagnostic accepts missinggenerationIdentity. Narrow mandatoryidentity repair next; no sourcequery or broaderbuilderdependencies. These are actualsourcefindings, not acceptedfixes or deployment.

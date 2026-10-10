@@ -1,0 +1,103 @@
+{
+  "decision": "MODIFY",
+  "scope": "Finite source-only household persistence seam review",
+  "commit": "f28182fe08aaf9efecd412c64340dc609a66883d",
+  "parent": "ba4031a068549b4fcccc27963592b4f4cb159148",
+  "report": "household-f281-seam-review.md",
+  "execution": {
+    "sourceReads": true,
+    "diagnostic": false,
+    "tests": false,
+    "compiler": false,
+    "runtime": false,
+    "browser": false,
+    "sourceEdits": false,
+    "newWorkers": false
+  },
+  "sourceSha256": {
+    "server/households/durableStorage.ts": "28a8a8f7a101dc836074974d327dc014c14c31e067550f5d8c736cfb88904dd8",
+    "server/keyed.ts": "fcb0980c057d9e658c64e5e69512c2b60cb7eb39365a9c9d5475872b9e92af68",
+    "server/store.ts": "4c739e503df0423661737c0805162bd887ae06669094acdbb868733a67c93296",
+    "deploy/sqlite-store.ts": "a54149ccc1f4f1a4db69379a041b0fcd7c90f5830fbcbe7393d261c690f58b5d",
+    "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d"
+  },
+  "findings": [
+    {
+      "id": "S1",
+      "priority": "P1",
+      "file": "server/households/durableStorage.ts",
+      "line": 120,
+      "title": "Existing genuine keyed rows are rejected by placeholder descriptor value",
+      "evidence": "server/keyed.ts:373 always reports value undefined for existing keyed entries; get returns actual row separately",
+      "reproducer": "Normal collection with the report's valid lifeFacts row loaded through actual splitText and Layer; householdPoint on ordinary root wrapper returns invalid, including after pre-read",
+      "repair": "Use existing WeakMap-backed isKeyedMap for genuine map handling; ordinary objects use own enumerable data descriptor value without indexed access; retain own undefined refusal"
+    },
+    {
+      "id": "S2",
+      "priority": "P1",
+      "file": "server/households/durableStorage.ts",
+      "line": 100,
+      "title": "Node transaction root placeholder is rejected before point lookup",
+      "evidence": "server/store.ts:299 reports value undefined for existing DB own properties; Worker root descriptor returns actual value",
+      "reproducer": "Normal persisted root in a genuine Node store callback passed directly to householdPoint; rejected in legacy and entries layouts, even after pre-read",
+      "repair": "Explicit trusted transaction root extraction with presence and actual read, then strict unknown-root parser; no generic accessor/descriptor spoof relaxation"
+    }
+  ],
+  "boundaryObligations": [
+    {
+      "id": "B1",
+      "file": "server/households/durableStorage.ts",
+      "line": 78,
+      "status": "BOUNDEDNESS_CLAIM_LIMIT",
+      "detail": "Canonical metadata has twelve keys; Reflect.ownKeys enumerates all malformed root keys before rejection. Never enumerate child maps. Validate root once per transaction and define ingress root bounds."
+    },
+    {
+      "id": "B2",
+      "file": "server/households/durableStorage.ts",
+      "line": 47,
+      "status": "FAIL_CLOSED_LIFECYCLE_SCOPE_GAP",
+      "detail": "lifeLocations and byCharacterLife are registered but lack validators. No consumer currently exists. Narrow supported validator map type or supply explicit strict lifecycle schemas and key/crosslink checks before writes."
+    },
+    {
+      "id": "B3",
+      "file": "server/households/durableStorage.ts",
+      "line": 143,
+      "status": "RAW_UNKNOWN_VALIDATOR_PRECONDITION",
+      "detail": "Foundation shape guards read nested fields and can invoke accessors; use bounded descriptor snapshot before them or document trusted serialized precondition. Storage failures abort and must not become absence."
+    }
+  ],
+  "fixture": {
+    "map": "lifeFacts",
+    "key": "22222222-2222-4222-8222-222222222222",
+    "row": {
+      "id": "22222222-2222-4222-8222-222222222222",
+      "revision": 1,
+      "who": {
+        "character": "11111111-1111-4111-8111-111111111111",
+        "life": "22222222-2222-4222-8222-222222222222"
+      },
+      "state": "available"
+    },
+    "expected": "present",
+    "sourcePredictedActual": "invalid",
+    "executed": false
+  },
+  "repairOwner": "Same existing remote household worker; shared host files remain separately allocated",
+  "actualEvidenceRequired": [
+    "Node legacy/entries and Worker supported layouts",
+    "Existing row and same-transaction insertion",
+    "Commit and reopen",
+    "Missing/deleted versus raw own undefined",
+    "Accessor and inherited getter remain uninvoked",
+    "Untrusted synthetic proxy is not recognized as KeyedMap",
+    "Point-read counters with no child-map enumeration",
+    "Host read failure abort without receipt or writes",
+    "Exact locator/index lifecycle and atomic consent checks when implemented"
+  ],
+  "durableExecutionApproved": false,
+  "activationApproved": false,
+  "unreceivedImplementationApproved": false,
+  "inputReceiptSha256": "fd98bc78679d4b6a0379c562be731f0677c3b3a1451ae2dc4201d61e92bf1e46",
+  "rootIndependentlyRead": true,
+  "rootReviewedAtUtc": "2026-10-10T01:04:00.810195+00:00"
+}

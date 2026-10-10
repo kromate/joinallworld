@@ -1,0 +1,72 @@
+{
+  "reviewedCommit": "28f9626b65f00f696b45e0852d72096a6f949f0e",
+  "tree": "da73711f2a3e14cff6989d6037c56c470a778a89",
+  "parent": "2ef1f188ee18a5ede4b22de1bf36beed4a9c46f4",
+  "integrationBase": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "reviewMode": "source-only",
+  "verdict": "changes-required",
+  "findings": [
+    {
+      "id": "provider-state-and-retry",
+      "priority": "P1",
+      "locations": [
+        "src/game/cities/catalogue-provider.browser.ts:12-16",
+        "src/game/cities/catalogue-provider.browser.ts:22-23"
+      ],
+      "problem": "City IDs are checked in country-keyed pending/failure sets, and the first rejected directory promise is cached forever.",
+      "fix": "Map city to fact.countryId for state; clear only the identical failed initialization promise so explicit retry can create a new request."
+    },
+    {
+      "id": "ui-actor-and-presentation",
+      "priority": "P1",
+      "locations": [
+        "src/app/features/start/StepHome.vue:44-45",
+        "src/map3d/geo/atlas.ts:1060-1066",
+        "src/map3d/regions.ts:62-71",
+        "src/map3d/regions.ts:113-116"
+      ],
+      "problem": "Country preparation has no latest-actor guard or visible pending/error/retry state; failures are unhandled or swallowed and unprepared display metadata falls back to ISO placeholders.",
+      "fix": "Use a monotonic actor token, retain ready UI while loading, publish only the latest result, and present recoverable pending/offline/error states without placeholder authority."
+    },
+    {
+      "id": "startup-size-assets",
+      "priority": "P2",
+      "locations": [
+        "scripts/startup-size.ts:42-63",
+        "scripts/startup-size.ts:81-90",
+        "scripts/download-budget.ts:132-144",
+        "scripts/download-budget.ts:198-204"
+      ],
+      "problem": "startup-size validates selected index/shard presence but totals only JavaScript chunks; download-budget's full Brotli measurement does include them.",
+      "fix": "Add selected OutputAsset raw/gzip bytes to separately labelled full startup totals."
+    },
+    {
+      "id": "literal-fifty",
+      "priority": "P1-combination-blocker",
+      "locations": [
+        "scripts/download-budget.ts:244-246",
+        "src/app/entry.test.ts:243-247"
+      ],
+      "problem": "A literal 50 aborts a 55-row combined tree before measurement, while simply removing it could admit unreviewed rows.",
+      "fix": "Derive and compare the exact ordered trusted admission IDs; keep queued/closed rows outside admission or update projections and pins explicitly."
+    }
+  ],
+  "accepted": [
+    "Runtime directory validates exact country set and exact per-country city rows before publication.",
+    "Trusted local facts retain admission, routing, name, coordinate, and airport authority; HTTP metadata supplies no fares or links.",
+    "Default server/Node provider remains eager and synchronous; Vite swaps only browser imports.",
+    "No source path automatically fetches every country shard."
+  ],
+  "executed": [],
+  "notExecuted": [
+    "compiler",
+    "tests",
+    "build",
+    "server",
+    "browser",
+    "runtime measurement"
+  ],
+  "inputReceiptSha256": "c5fda98e4b0d824a1e789e126f0051cda328d61f4f5f2635d06f42a4ad1e4c79",
+  "rootIndependentlyRead": true,
+  "rootReviewedAtUtc": "2026-10-10T01:04:00.731163+00:00"
+}

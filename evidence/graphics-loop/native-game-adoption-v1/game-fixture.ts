@@ -46,7 +46,9 @@ interface CameraActorFrame {
   cameraAxisDot: number;
   selectedCameraSide: 'face-candidate' | 'back-control' | 'profile-control';
   visibilityRay: { clearLine: boolean; firstActorHit: { name: string; distance: number } | null;
-    nearestOccluder: { name: string; distance: number } | null; bodyCenterLineClear: boolean };
+    nearestOccluder: { name: string; distance: number } | null; bodyCenterLineClear: boolean;
+    lowerBodyLineClear: boolean; lowerBodyTargets: { name: string; clearLine: boolean;
+      firstActorHit: { name: string; distance: number } | null; nearestOccluder: { name: string; distance: number } | null }[] };
 }
 
 declare global {
@@ -256,7 +258,8 @@ function createFixture() {
   let currentCamera = 'scene';
   function isCloseCamera(name = currentCamera) { return /-(?:close)(?:-(?:back|profile))?$/.test(name); }
   let closeCameraActor: THREE.Object3D | null = null;
-  let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null, bodyCenterLineClear: false };
+  let closeCameraRay: CameraActorFrame['visibilityRay'] = { clearLine: false, firstActorHit: null, nearestOccluder: null,
+    bodyCenterLineClear: false, lowerBodyLineClear: false, lowerBodyTargets: [] };
   let unsupportedProbe: Record<string, unknown> | null = null;
   let interaction: Record<string, unknown> | null = null;
   let nativeNpcRefreshWitness: Record<string, unknown> | null = null;
@@ -339,16 +342,30 @@ function createFixture() {
     camera.fov = 48;
     camera.updateProjectionMatrix();
     const offsets = side === 'face-candidate' ? [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6,
-      Math.PI / 4, -Math.PI / 4, Math.PI / 3, -Math.PI / 3, Math.PI / 2, -Math.PI / 2] : [0];
-    // The office has real foreground furniture. Pick a close-up angle only after its
-    // face and torso rays are clear; retain the original candidate if every view is blocked.
-    for (const offset of offsets) {
-      const candidate = viewAxis.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), offset);
-      camera.position.copy(origin).addScaledVector(candidate, 3.8);
-      camera.position.y = bounds.min.y + 1.4;
-      camera.lookAt(target);
-      const visibility = measureCloseCameraRay(actor);
-      if (side !== 'face-candidate' || (visibility.clearLine && visibility.bodyCenterLineClear)) break;
+      Math.PI / 4, -Math.PI / 4, Math.PI / 3, -Math.PI / 3, Math.PI / 2, -Math.PI / 2]
+      : [0, Math.PI / 12, -Math.PI / 12, Math.PI / 6, -Math.PI / 6];
+    // Keep the complete actor in view and ray-test the head, torso, knees and feet.
+    // Candidate order is deterministic; furniture stays in the scene and blocks views
+    // truthfully when no camera position can see the lower body.
+    for (const height of [1.4, 2.1, 2.8]) {
+      for (const offset of offsets) {
+        const candidate = viewAxis.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), offset);
+        camera.position.copy(origin).addScaledVector(candidate, 3.8);
+        camera.position.y = bounds.min.y + height;
+        camera.lookAt(target);
+        const visibility = measureCloseCameraRay(actor);
+        closeCameraRay = visibility;
+        camera.updateMatrixWorld(true);
+        const corners = [
+          new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.min.y, bounds.max.z),
+          new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.min.x, bounds.max.y, bounds.max.z),
+          new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.min.z), new THREE.Vector3(bounds.max.x, bounds.min.y, bounds.max.z),
+          new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.min.z), new THREE.Vector3(bounds.max.x, bounds.max.y, bounds.max.z),
+        ].map((point) => point.project(camera));
+        const framed = corners.every((point) => point.z > -1 && point.z < 1
+          && point.x > -0.96 && point.x < 0.96 && point.y > -0.96 && point.y < 0.96);
+        if (framed && visibility.clearLine && visibility.bodyCenterLineClear && visibility.lowerBodyLineClear) return;
+      }
     }
   }
 
@@ -376,7 +393,7 @@ function createFixture() {
       cameraPosition: camera.position.toArray() as [number, number, number],
       ndc: { minX, maxX, minY, maxY }, allCornersInFrustum,
       wholeActorVisible: allCornersInFrustum && minX > -0.96 && maxX < 0.96 && minY > -0.96 && maxY < 0.96
-        && closeCameraRay.clearLine,
+        && closeCameraRay.clearLine && closeCameraRay.bodyCenterLineClear && closeCameraRay.lowerBodyLineClear,
       cameraAxisDot: actorAxis.dot(toCamera),
       selectedCameraSide: currentCamera.endsWith('-back') ? 'back-control'
         : currentCamera.endsWith('-profile') ? 'profile-control' : 'face-candidate', visibilityRay: closeCameraRay };
@@ -408,7 +425,16 @@ function createFixture() {
         clearLine: Boolean(actorHit && (!obstruction || obstruction.distance >= actorHit.distance - 0.02)) };
     };
     const faceRay = trace(faceTarget), bodyRay = trace(bodyCenter);
-    return { ...faceRay, bodyCenterLineClear: bodyRay.clearLine };
+    const lowerBodyTargets = ['mixamorigLeftLeg', 'mixamorigRightLeg', 'mixamorigLeftFoot', 'mixamorigRightFoot']
+      .map((name) => {
+        const bone = actor.getObjectByName(name);
+        if (!bone) return { name, clearLine: false, firstActorHit: null, nearestOccluder: null };
+        const result = trace(bone.getWorldPosition(new THREE.Vector3()));
+        return { name, ...result };
+      });
+    return { ...faceRay, bodyCenterLineClear: bodyRay.clearLine,
+      lowerBodyLineClear: lowerBodyTargets.length === 4 && lowerBodyTargets.every((target) => target.clearLine),
+      lowerBodyTargets };
   }
 
   const playerLoader = async (owner: Kit, look: unknown, seed: unknown, scale: number): Promise<SkinnedBody> => {

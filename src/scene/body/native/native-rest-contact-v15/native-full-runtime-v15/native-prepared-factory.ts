@@ -624,10 +624,11 @@ function createPosePort(root: THREE.Group, sampler: NativeSourceLandmarkSampler,
   // Grounded IK may translate the pelvis when the source legs are already at
   // full extension. Include it in the checkpoint so repeated host solves
   // always start from the same sampled pose instead of accumulating drift.
-  const contactBones = ['mixamorigHips', 'mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigRightUpLeg', 'mixamorigRightLeg']
+  const contactBones = ['mixamorigHips', 'mixamorigLeftUpLeg', 'mixamorigLeftLeg', 'mixamorigLeftFoot',
+    'mixamorigRightUpLeg', 'mixamorigRightLeg', 'mixamorigRightFoot']
     .map((name) => bones.get(name))
     .filter((bone): bone is THREE.Bone => Boolean(bone));
-  if (contactBones.length !== 5) throw new Error('Native authored contact checkpoint lacks hips/thigh/calf bones');
+  if (contactBones.length !== 7) throw new Error('Native authored contact checkpoint lacks hips/thigh/calf/foot bones');
   const contactBaseline = contactBones.map((bone) => ({ bone, position: new THREE.Vector3(), quaternion: new THREE.Quaternion(), scale: new THREE.Vector3() }));
   let contactBaselineReady = false;
   let blend: { clip: string; fade: number; from: Map<THREE.Bone, { p: THREE.Vector3; q: THREE.Quaternion; s: THREE.Vector3 }> } | null = null;

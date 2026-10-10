@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAtUtc": "2026-10-10T04:09:48.910005+00:00",
+  "observedAtUtc": "2026-10-10T04:12:29.172088+00:00",
   "owner": "WORLD",
   "goalStatus": "active",
   "productionCountries": 11,
@@ -9,8 +9,8 @@
     "timeCutoff": null,
     "reserve": "final4% for checkpoint/push/inventory/reporting",
     "spend": "zero extra spend; existing authorized included cloud only",
-    "source": "WORLD direct account query 2026-10-10T03:57:08Z: 92 percent used, 8 remaining",
-    "latestRemainingPercent": 8
+    "source": "WORLD direct actual account query2026-10-10 after04:09UTC:93 percent used,7 remaining",
+    "latestRemainingPercent": 7
   },
   "completed": [
     {
@@ -76,6 +76,13 @@
       "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
       "evidence": "world/third-five-c1-native-stage-checkpoint.json",
       "scope": "Checkpoint and resource cleanup only; no cityjourney, native restart or production16 acceptance."
+    },
+    {
+      "id": "WORLD-C12-RECONNECT-DIAGNOSIS",
+      "outcome": "Original Node24 game failure classified by full raw log and controlled zero/nonzero real timer diagnostic; canonical createCommunity cancels both delays, exact C1/c12 runtime pins identical",
+      "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "evidence": "world/c12-reconnect-zero-delay-diagnosis.json; public7d2fd3fe raw original suite and diagnostic",
+      "scope": "Scoped diagnosis only; original2587PASS/1FAIL/1SKIP suite remainsfailed. No browser/network/production acceptance or runtimeedit."
     }
   ],
   "remainingOrderedEasiestToHardest": [

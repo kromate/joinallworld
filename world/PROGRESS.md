@@ -100,7 +100,7 @@ This is future scaling work, not a defect deployed to production.
    remaining Africa and the global pipeline. Lazy metadata, Moroni acquisition
    durability, regional conditions and later photorealism remain in scope.
 
-The main allowance is 8% remaining at the latest actual sample. Stop new work
+The main allowance is 7% remaining at the latest actual sample. Stop new work
 at 4% remaining and use that reserve for safe checkpoints and reporting.
 There is no clock cutoff or extra-spend authorization.
 

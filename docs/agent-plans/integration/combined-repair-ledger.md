@@ -644,3 +644,61 @@ Cloudparent revision63 reports its completed read-only census found no live matc
 GRAPHICS final safe checkpoint is independently fetched and remote-backed: `7b5a196e9fb5791bc7634f3e46674af0b7a31238` on `codex/graphics-four-percent-checkpoint-20261010-v1`. Five safe review/inventory notes plus one publication manifest, no runtime source or held private patch. Public stop JSON12086bytes/SHA25615f12393feff04ac67606e2694a2e1ebc2c638979d647f3c46004a049be04e45 matches fetched bytes. The ten owner bugs retain their rough effort basis and map without duplicate IDs: temporal actor-ID/blink checker, wrist baseline and standing crouch/shoe tips map to INT024; bed blend/support and furniture journeys to INT014/015; wardrobe/hair/body to INT026; baked office extras and broad world quality to INT027; saved appearance across creator/game/remote/LODs to INT025; combined bytes/resource/device/release to INT017/020. Owner-reported wrist `7aeacb04dc2a523e3b504898aad9f95bf11d5c0a` has52-boneCPU and explicit2file compiler PASS but full1536MiB compiler OOM; browser/stance unrun. Frozen REST patch e2818d0d/adapter978cb7a8 is source only, with nearest-side support-switch continuity risk open. Latest child is reported terminal; no live jobs/leases per original owner census,170 pre-existing zombies untouched. Root preserves that attribution. Held cf8 publication remains automatically rejected pending exact human approval, with no alternate publisher/source copy. Allthree owners' final checkpoint refs are now retained in this single ledger.
 
 Final remote-head snapshot: WORLD published subsequent owned checkpoint `842f61b60510531d1d748d3893cb26a427f1ba6e` on codex/world-foundation; Root ls-remote matches the full SHA. It reports full terminal source-only checkpoint-command inspection and retains the unreviewed provider ref5f0a57a16e674e3290960c7be313033c6d3abdb0. This updates publication provenance, not runtime or provider acceptance; earlier648 original stop JSON proof stays intact. Other final owner refs above are preserved. This completes the bounded collection; no automatic implementation restart.
+
+## 2026-10-10 11:30 UTC — Continuation synchronisation and owner-ID cross-reference
+
+A full fetch of the public remote (299 branches) was compared with the handoff resource manifest. All six manifest documents match by byte count and SHA-256, all fifteen pinned source commits are present, and no pinned owner branch head has moved: Integration `20584db3552d6735e5cdf184b887ffce6ea67915`, WORLD `c986412b4bba7179794dad81082cdde5c008dbad`, LIVING `614244cef753b9894481509388109dc0c5f1ccb1`, GRAPHICS `7b5a196e9fb5791bc7634f3e46674af0b7a31238` and `3c2dc3be7b3f64ed5acfa1508720d4c90121ea28`, cloud receipts `3f6246f25da3301690ae7a1b07c6b67b67f6841f`, runtime candidate `3e3e0876fc50f3166a0d0968f8616b577da27870`. Held GRAPHICS `cf8b7417b5f428dc6cb59f601fbde560cd9a7c71` is not retrievable from the remote and stays held for approval. Public health still reports production `c1f7c1f7369139ce559292318ba9842c23a28267`. The [reconciliation manifest](../cloud-continuation-20261010/reconciliation-manifest.json) lists each inherited patch with its disposition; the [synchronisation report](../cloud-continuation-20261010/SYNC-REPORT.md) records capability and the ready queue. No source was merged, built or deployed by this entry, and no item changes status.
+
+Coverage finding: all 35 INT IDs and all 58 ANN rows are present above, but the owner unit IDs were recorded only in the handoff coverage audit. They are bound here so that each stays traceable in this ledger. An INT item is not accepted while any owner unit mapped to it is open.
+
+| Owner unit | Ledger scope |
+|---|---|
+| WORLD-C12-MATRIX | INT-028, INT-011, INT-017 |
+| WORLD-C12-NATIVE | INT-011 |
+| WORLD-C12-DEPLOY16 | INT-011, INT-017 |
+| WORLD-MORONI-DURABILITY | INT-010, INT-011 (own sub-item) |
+| WORLD-LAZY-PROVIDER | INT-010, INT-017 |
+| WORLD-AFRICA-REMAINING | INT-010, INT-011 (own sub-item) |
+| WORLD-GLOBAL-DETAIL | INT-010, INT-011, INT-027, INT-020 (own sub-item; not closed by any single INT) |
+| LIVING R01 | INT-004 |
+| LIVING R02 | INT-002 |
+| LIVING R03 | INT-028, INT-017 |
+| LIVING R04 | INT-005 |
+| LIVING R05 | INT-006, INT-016 |
+| LIVING R06 | INT-016, INT-030 |
+| LIVING R07 | INT-029 |
+| LIVING R08 | INT-013, INT-020 |
+| LIVING R09 | INT-030 |
+| LIVING R10 | INT-031 |
+| LIVING R11 | INT-032 and related ANN rows |
+| LIVING R12 | External automation lane, parked; no INT closes it |
+| LIVING R13 | INT-017 plus real-merchant lane, parked |
+| LIVING R14 | INT-033 |
+| LIVING R15 | INT-032 |
+| GFX-NPC-FLOOR | INT-024 |
+| GFX-IDENTITY-FINAL | INT-025 |
+| GFX-BYTES-FINAL | INT-017 |
+| GFX-PHONE-PERFORMANCE | INT-020 |
+| GFX-REST-IK | INT-014 |
+| GFX-STAIRS | INT-015 |
+| GFX-WARDROBE-LOOK-COVERAGE | INT-026 |
+| GFX-FULL-WORLD | INT-027 |
+| GRAPHICS final issue 1 (actor-ID join, blink peak) | INT-024 |
+| GRAPHICS final issue 2 (wrist baseline) | INT-024, INT-025 |
+| GRAPHICS final issue 3 (bed blend loses planted contact) | INT-014 |
+| GRAPHICS final issue 4 (standing crouch, shoe toes) | INT-024, INT-026 |
+| GRAPHICS final issue 5 (wardrobe/hair/body/face matrix) | INT-026 |
+| GRAPHICS final issue 6 (office extras bypass provider) | INT-024, INT-027 |
+| GRAPHICS final issue 7 (furniture entry/use/exit/repeat/cancel) | INT-014, INT-015, INT-027 |
+| GRAPHICS final issue 8 (same identity everywhere) | INT-025 |
+| GRAPHICS final issue 9 (city/home/street/market and remaining world) | INT-027 |
+| GRAPHICS final issue 10 (combined release, mobile, bytes) | INT-017, INT-020 |
+| Cloud country-browser-five | INT-011 |
+| Cloud wrist-render-and-stance | INT-024, INT-025, INT-026 |
+| Cloud justice-host-save-proof | INT-035 |
+| Cloud provider55-admission-caps | INT-010, INT-017 |
+| Cloud bed-support-transfer | INT-014 |
+| Cloud household-authority-and-runtime | INT-012, INT-019, INT-023 |
+| Cloud graphics-background-and-wardrobe | INT-024, INT-026, INT-027 |
+
+The six automation lanes of the coverage audit stay explicit: in-game staff/services/schedules and offline settlement (INT-012, INT-019, INT-031, INT-032 and household/commerce ANN rows); decorator timers, edit grants, gifts and reservations (additional obligations 2 and 3); social timers and callbacks across identity changes (INT-034); the external automation lane (LIVING R12, parked); real merchant integration (LIVING R13, parked); and development CI/release/reporting (INT-017, INT-028).

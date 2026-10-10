@@ -1,0 +1,94 @@
+{
+  "reviewedAt": "2026-10-10T04:40:02.114135+00:00",
+  "candidate": "ef92f8f182658703e3a2de5a12395f6681ce93c4",
+  "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "decision": "ACCEPT_PURE_REPAIR_SCOPE_PENDING_SERVICE_RELEASE_GATES",
+  "actualWorker": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
+  "actualTurn": "01a123f8-c386-7385-8e60-b1904d64d5e3",
+  "actualTurnStatus": "completed",
+  "modelEvidence": "Existing Cloud worker configured gpt-6-luna; backend actual model ID remains unexposed. Not inferred from its name.",
+  "sourceProof": {
+    "files": {
+      "justice-practice.ts": {
+        "bytes": 31322,
+        "sha256": "d1a1c6a47bfaa7ff4c36e413ee912230675121139d469b0e230b126cc6218df1",
+        "matchesFinalCommitCommand": true
+      },
+      "justice-practice.test.ts": {
+        "bytes": 22406,
+        "sha256": "0b85dc3ea088f0d1f98d0e2091d8b6d07642673ae8bcbce7a9b8cc89ac9ecb46",
+        "matchesFinalCommitCommand": true
+      }
+    },
+    "contextCheckedHunks": 14,
+    "shortContextResolvedByExactHunkHeader": 1,
+    "allFinalHashesMatchActualBeforeCommitAndCommitReceipt": true,
+    "sourceScope": "Complete changed transition/reader/helpers and unchanged apply/replay/view source reviewed. Original production/public3e3 source comparison retained. No Sol runtime execution."
+  },
+  "red": {
+    "id": "exec-70011bc5-abda-4d6f-9d44-9d378a0611dd",
+    "exit": 1,
+    "bytes": 1080,
+    "sha256": "4309daed81841b196f61c016232bae849a26c367231ace5f9a9ebcb8161a1157",
+    "captureTruncated": false
+  },
+  "final": {
+    "id": "exec-8790f9c2-f0c1-44fe-a4a6-8f5ada640681",
+    "exit": 0,
+    "bytes": 1090,
+    "sha256": "790e702204df80f41124cdac5be229fac1a50bc30c838c39c8194fea75a1d624",
+    "captureTruncated": false,
+    "pass": 9,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 116.315299,
+    "originalTeeHashMatchesCapture": true
+  },
+  "intermediateRunsPreserved": [
+    {
+      "id": "exec-a7a256a8-e43e-4fd1-a1f2-8869839f9437",
+      "exit": 1,
+      "bytes": 3214,
+      "sha256": "d7f79a2d680a619f22ec284345c1c0d457cf2422733b9a8ee9b0882d635c6f6f",
+      "captureTruncated": false
+    },
+    {
+      "id": "exec-319ad30d-3678-40b4-81d5-6af9564bc749",
+      "exit": 0,
+      "bytes": 1089,
+      "sha256": "6a1d1d31aaeaf45f9f3a7e838d6f4c5ab18530e41faa6c1facfac6a035b236f5",
+      "captureTruncated": false
+    }
+  ],
+  "contract": "732aef3fe0f16b45440f82778344d0e78c703264",
+  "sourceAcceptance": [
+    "Canonical new evidence-set writes; chronological receipts and decision reason order unchanged.",
+    "Reconstruct every original outcome/revision from empty; accept only exact canonical order OR exact first-successful-inspection chronology. inspect-review contributes npc-recount, repeated/stale/terminal receipts add no inspected evidence.",
+    "All six initial orders serialize/read after every inspection and complete the authored sequence. Legitimate legacy prefixes, repeated/stale and terminal replay supported; arbitrary matching-set permutations, altered histories/revisions/decisions/future schema refused.",
+    "Reader returns detached canonical projection and does not mutate supplied state. Old same-ID outcome/replay history,24receipt/16384byte bounds and fictional-domain authority remain intact."
+  ],
+  "remainingTestScope": [
+    "All-six legacy representations at later notice/review prefixes are not each explicitly enumerated by current nine tests; broad algorithm source reviewed, final service/reopen acceptance must cover required histories.",
+    "Actual GET stored row/timestamps/revision unchanged and next ordinary action persists canonical form through real service/CAS.",
+    "Node/Worker cold reopen, stale/CAS/actor/once/economy/privacy guards and mobile actual free-choice gameplay.",
+    "Exact compiler/build/caps/staging/compatible rollback/production and live saved-progress observations."
+  ],
+  "rollbackSourceFinding": {
+    "decision": "ORIGINAL_JUSTICE_MODULE_IS_NOT_COMPATIBLE_ROLLBACK",
+    "executed": false,
+    "cause": "Original reader requires canonical raw evidence ordering but reconstructs chronological append transitions. New canonical evidence paired with legitimate noncanonical chronological receipts fails its replay equality.",
+    "readerOnlyFallbackInsufficient": "New reader canonicalizes prior state; an old append transition can write a hybrid order matching neither full original chronology nor canonical order.",
+    "required": "Pre-pin and test a compatible rollback image retaining BOTH corrected reader and canonicalizing transitions before activating repaired practice. Preserve all saved histories; no reset or forced canonical UI inspection order."
+  },
+  "integration": "Sol notified existing Integration sole shared writer for service/test allocation and possible finite C1-based urgent save-repair release. Only complete gated accepted phase may deploy through WORLD existing sole uploader. Full connected programme not reduced.",
+  "publication": "Private clean two-file commit observed; normal original authorised publication requested, not yet independently verified. No alternate publisher/denied ancestry.",
+  "guard": {
+    "lastFreshUsedPercent": 95,
+    "remainingPercent": 5,
+    "stopNewAtRemainingPercent": 4,
+    "onlineOnlyHeavy": true,
+    "newWorkers": 0,
+    "newSpending": 0
+  },
+  "productionChanged": false
+}

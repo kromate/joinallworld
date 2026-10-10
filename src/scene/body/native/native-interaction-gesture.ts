@@ -159,7 +159,13 @@ export function createNativeInteractionGestureController(
       throw new Error(`Native interaction gesture has invalid direction for ${bone.name}`);
     }
     desiredDirection.transformDirection(inverseParentMatrix.copy(bone.parent.matrixWorld).invert());
-    bone.quaternion.setFromUnitVectors(localChildOffset, desiredDirection).normalize();
+    // Keep the captured local orientation's axial twist. The child offset is transformed by
+    // the current bone quaternion before comparing it with the target in parent coordinates;
+    // applying the minimal correction in parent space preserves the quaternion component
+    // around the segment axis instead of reconstructing an arbitrary swing-only rotation.
+    const currentDirection = localChildOffset.clone().applyQuaternion(bone.quaternion).normalize();
+    const directionDelta = new THREE.Quaternion().setFromUnitVectors(currentDirection, desiredDirection);
+    bone.quaternion.premultiply(directionDelta).normalize();
     root.updateWorldMatrix(true, true);
   }
 

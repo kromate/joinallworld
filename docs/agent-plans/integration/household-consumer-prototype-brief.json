@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-10",
+  "decision": "APPROVE_BOUNDED_DESIGN_EXPLORATION",
+  "scope": "Three future consumer prototypes for the same existing remote household worker; not implementation, evaluated UI, durable authority, or activation",
+  "report": "household-consumer-prototype-brief.md",
+  "execution": {
+    "sourceReads": true,
+    "publicWebReads": true,
+    "browser": false,
+    "screenshots": false,
+    "tests": false,
+    "compiler": false,
+    "runtime": false,
+    "newWorkers": false,
+    "sourceEdits": false
+  },
+  "pins": {
+    "consumerBase": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+    "foundation": "35731140a32da445b8bfd95075f79c0948010694",
+    "loader": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
+    "contractSha256": "30d64bf19fed4b11c910cbd02f48c4c652a07d93bd5e01e4dc7d4279284ebf63",
+    "identityArchitectureSha256": "d041499a90c44f3ec8fe8b476af132c5ac1c0458b6e21e2f704c9ed7b499359c",
+    "adapterBriefSha256": "a295e8d4ac4d5004ca00ac514db669e7071068e5bb654fe1260f1eb9dc4366df",
+    "filesSha256": {
+      "server/households/records.ts": "d03bfcacd3d7b985fe0b907b63cb6f1ecde560e89bb560f0e1be199ce817b4b4",
+      "server/households/consent.ts": "2bd7dbca14e5e934f30045562a55f077567f8691f6666bdd63daa0781c33730a",
+      "server/households/lifeIdentity.ts": "31e457f73c6047147089c33ea76a802bdb694ff4485dda4b10776903b7bc594d",
+      "server/households/consentView.ts": "78e4eb7e451b7082a8c69b2f95f86536df90bbe3d695fbe37661ab593b3340d8",
+      "src/types/family.ts": "78abdcd2b9d61017c8a5134f125dc14ab73964a3e921183c4677bf1de394c636",
+      "server/social/family.ts": "c78eec0da86a9238b7264f572529ccf669af50ed539de5ac781ee3d883dda51e",
+      "src/app/features/social/FamilyApp.vue": "5f19ac33f7d711ebee072466d69ac9cc3c050d33e795b54222f7e3dab2407435",
+      "src/app/features/social/useFamily.ts": "667369c2f8bcd889a9e90d18d72d783d1443cc6127b5f8d9edc8da27328f2f13",
+      "src/app/features/home/HomeChip.vue": "1c249bbdd2a4e8101bb772e7d82c29bd28d7c42944f4a96d2fb35b0904cd7384",
+      "src/app/features/home/homeScene.ts": "6bd8470c77438fb907c98d5b6eac5fc54621b7d2c5c280c852d5dec307f7e783",
+      "src/app/features/home/homeState.ts": "bd77ce47da45c8d2e8c32ac86fbd8f6b884e6e8438802e9e471903f40b34a0e5",
+      "src/app/features/home/homeModel.ts": "d2ce5f34a393c216c6fdc67866a66fc7e7f6493c06a7f90d5b3b4e81d0454733",
+      "src/app/features/travel/VisitorHome.vue": "047cec9f33fb07f17b2100765414fbb96356063fbe96850afc4beb07416c8159",
+      "src/app/features/visit/VisitHome.vue": "23829396bfa9f846ffe09292a7cf49e5772dd174b6b6046d17812f1e4ddf3931"
+    }
+  },
+  "references": [
+    {
+      "app": "Google Home",
+      "url": "https://support.google.com/googlehome/answer/9155535?hl=en",
+      "lesson": "Named home, invitation and permission review, separate leave/remove"
+    },
+    {
+      "app": "Apple Home",
+      "url": "https://support.apple.com/en-us/102386",
+      "lesson": "Resident and guest distinction; home-specific permissions and leaving"
+    },
+    {
+      "app": "Airbnb",
+      "url": "https://www.airbnb.com/help/article/1175",
+      "additionalUrl": "https://www.airbnb.com/help/article/3737",
+      "lesson": "Access preview and explicit invitation/removal lifecycle"
+    }
+  ],
+  "guidelines": "https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md",
+  "prototypes": [
+    {
+      "id": "A",
+      "name": "Your homes",
+      "primaryObject": "Place",
+      "screens": [
+        "Owned/shared home list",
+        "Invitation review",
+        "Home detail and journey",
+        "Permitted actions and exit"
+      ],
+      "strength": "Multi-home and original-home clarity",
+      "risk": "Joining mistaken for moving"
+    },
+    {
+      "id": "B",
+      "name": "Invitation and access record",
+      "primaryObject": "Consent decision with separate current access",
+      "screens": [
+        "Inbox",
+        "Full invitation review",
+        "Minimal decision record",
+        "Fresh access detail"
+      ],
+      "strength": "Consent and uncertain-request recovery",
+      "risk": "Historical success mistaken for current authority"
+    },
+    {
+      "id": "C",
+      "name": "Doorway access",
+      "primaryObject": "Physical boundary",
+      "screens": [
+        "Remote preview",
+        "Review and accept",
+        "Doorway or journey sheet",
+        "Inside activities and Step outside",
+        "Access details and Leave household"
+      ],
+      "strength": "Daily entry/use/exit",
+      "risk": "Visit or presence mistaken for membership"
+    }
+  ],
+  "constraints": {
+    "targetCssPixels": 48,
+    "minimumWidths": [
+      320,
+      390
+    ],
+    "textZoomPercent": 200,
+    "invitationTtlDays": 7,
+    "durableRosterIncludingOwner": 12,
+    "nonOwnerSceneOccupants": 5,
+    "originalHomeRetained": true,
+    "membershipExpiryFromInvitationTtl": false,
+    "ordinaryFriendRequired": true,
+    "automaticFounderFriendshipEligible": false,
+    "acceptanceTeleports": false,
+    "familyRoleGrantsAccess": false,
+    "temporaryVisitGrantsMembership": false,
+    "rentActions": false,
+    "automaticLoanOrTravelPurchase": false,
+    "ownerInventoryOrEditing": false,
+    "offlineMutationQueue": false,
+    "uncertainRetryReusesIntent": true,
+    "receiptSuccessRestoresAccess": false
+  },
+  "requiredApiContracts": [
+    "Actor-scoped bounded list/detail projections with exact life, home epoch, server time, expiry, original-home presence/absence and separate membership/physical access",
+    "Discriminated consent mutation with client intent and expectations; server-owned identities and actor authority",
+    "Strict retained receipt reconciliation before current loader; fresh projection after old successful replay",
+    "Validated selection, arrival, entry and public egress without estate.home replacement",
+    "Narrow member Sleep/Nap/Cook context, fixture capability revision, own resources and durable activity settlement"
+  ],
+  "apiStatus": "Requirements and illustrative DTO/route names only; no received durable consumer endpoint claimed",
+  "futurePrototypeWhitelist": [
+    "proposals/household-consumer/README.md",
+    "proposals/household-consumer/three entry views",
+    "proposals/household-consumer/shared styles",
+    "proposals/household-consumer/typed fictional fixture driver",
+    "proposals/household-consumer/state matrix"
+  ],
+  "integrationAllocationRequired": [
+    "src/app/features/household/",
+    "Home entry points and scene access",
+    "Existing travel and social lifecycle",
+    "Shared server types/routes",
+    "Foundation changes"
+  ],
+  "sharedHostOwner": "Existing cloud integration writer; no duplicate writer",
+  "actualAcceptanceOutstanding": [
+    "Exact cloud compiler/test evidence",
+    "Node and Worker durable transaction/reopen/replay",
+    "Concurrent acceptance and removal",
+    "Original-home and receipt preservation",
+    "Exact-life callback fencing including A-to-B-to-A",
+    "Member resource and activity settlement",
+    "Rendered mobile/keyboard/focus/offline journey",
+    "Review of three actually implemented distinct prototypes"
+  ],
+  "prohibited": [
+    "Runtime actor reset",
+    "Score or license grant",
+    "Wallet/home reset",
+    "Paid resources",
+    "Provider or secret changes",
+    "Production activation"
+  ],
+  "inputEvidenceSha256": "b2667504ae325bf0264be3d1d417624a071d3cfb4a2841138ccc9d10137ac964",
+  "independentSourcePinsMatched": true,
+  "reviewedAtUtc": "2026-10-10T01:01:32.535658+00:00"
+}

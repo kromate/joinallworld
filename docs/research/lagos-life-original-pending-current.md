@@ -2,7 +2,7 @@
 
 9 October 2026, user-requested handoff. Capture739 distinct descendant-inclusive replies;254 scheduled page traversals. Six newly discovered branch pages remain. Thirteen of28 residual URLs received scoped observations;15 were not revisited. This ledger does not mean those trees exhausted. Root sort offers Relevant, Recent, Likes; no Recent sweep was performed. [Final scoped report](lagos-life-original-scoped-final-2026-10-09.md) supersedes the older unscoped loading interpretation.
 
-The named Loading timeline indicator was in Trending during scoped rechecks; separate unnamed conversation indicators were recorded. Preserve actual filtered/unavailable/comment-continuation evidence. The city129 queue and current44 image-status queue remain separate; the original handoff had58 image items. Known long-text queue is empty.
+The named Loading timeline indicator was in Trending during scoped rechecks; separate unnamed conversation indicators were recorded. Preserve actual filtered/unavailable/comment-continuation evidence. The city129 queue and current32 image-status queue remain separate; the original handoff had58 image items. Known long-text queue is empty.
 
 ## Bounded access recheck — 9 October 2026, 13:17 UTC
 
@@ -66,51 +66,43 @@ The [neighbour image and newer-post pass](lagos-life-neighbours-current-2026-10-
 
 [Next-eight evidence](lagos-life-images-next8-2026-10-10.md) completes eight supplied image posts. Current queue: **44 original images, six branches and28 residual URLs**. SamSecOps remains app-only unread; source-clipped labels remain unknown. Historical739/254 and city129 unchanged. Screenshots show historical game interfaces, not current enforcement, paid outcomes, wealth rules or author commitments.
 
+## Image review continuation — 10 October 2026, 00:51 UTC
+
+[Next-twelve evidence](lagos-life-images-next12-2026-10-10.md) completes twelve supplied image posts. Current queue: **32 original images, six branches and28 residual URLs**. Signup support acknowledges work but no fix is verified. Fictional police screenshots show a time inconsistency without proving its cause. Historical739/254 and city129 remain unchanged; Recent and deeper descendants stay open.
+
 ## Image-bearing posts awaiting visual review
 
-Text does not resolve unseen attachments. Private witnesses require privacy review before any publication.
+Text does not resolve unseen attachments. Private witnesses require privacy review before publication.
 
-1. [Image-bearing post](https://x.com/SamSecOps/status/2105979792377905569) — 10 October app-only restriction observed; attachment unread
-2. [Image-bearing post](https://x.com/Raaee_rayyy/status/2106478920941948998)
-3. [Image-bearing post](https://x.com/jxs3phszn/status/2106377877230878739)
-4. [Image-bearing post](https://x.com/D_deevin/status/2106354578899820889)
-5. [Image-bearing post](https://x.com/da_luffy001/status/2106006005834453108)
-6. [Image-bearing post](https://x.com/cherryadevan/status/2106074360628793753)
-7. [Image-bearing post](https://x.com/Creek1606/status/2105985265512693832)
-8. [Image-bearing post](https://x.com/callmerhodah/status/2105707835501752823)
-9. [Image-bearing post](https://x.com/Beebulahi/status/2106462198503723288)
-10. [Image-bearing post](https://x.com/GibsonJohn_Dev/status/2106486599445831693)
-11. [Image-bearing post](https://x.com/Hundredd_C/status/2106022045788033071)
-12. [Image-bearing post](https://x.com/megumi855/status/2107087831977832479)
-13. [Image-bearing post](https://x.com/nkwummuo1of/status/2106752184104648803)
-14. [Image-bearing post](https://x.com/Mistersabii/status/2106116556581433814)
-15. [Image-bearing post](https://x.com/HIMzu0c/status/2106090624319451369)
-16. [Image-bearing post](https://x.com/cantbemac/status/2106142104133185640)
-17. [Image-bearing post](https://x.com/Big_briggs25/status/2106081338868572238)
-18. [Image-bearing post](https://x.com/X_mplary_Chris/status/2107709085978145269)
-19. [Image-bearing post](https://x.com/DePaytez/status/2107551079856541874)
-20. [Image-bearing post](https://x.com/SokeyeA/status/2105742615144513619)
-21. [Image-bearing post](https://x.com/SokeyeA/status/2105622005722788348)
-22. [Image-bearing post](https://x.com/SokeyeA/status/2105939482226946210)
-23. [Image-bearing post](https://x.com/HAMMAD_FAWY/status/2105607639384445142)
-24. [Image-bearing post](https://x.com/notsegun/status/2105564411079581867)
-25. [Image-bearing post](https://x.com/Thefuvknfeather/status/2106310477139878253)
-26. [Image-bearing post](https://x.com/Tee__Elle/status/2105615986829521074)
-27. [Image-bearing post](https://x.com/tifezay001/status/2105736302377451945)
-28. [Image-bearing post](https://x.com/caspady1/status/2105612570946404377)
-29. [Image-bearing post](https://x.com/Pixeltale10/status/2106082724314267672)
-30. [Image-bearing post](https://x.com/Hollar_prewitt/status/2105572305329865103)
-31. [Image-bearing post](https://x.com/DeltaAlpha2x/status/2106274881763483941)
-32. [Image-bearing post](https://x.com/MitiniP/status/2107510168892166292)
-33. [Image-bearing post](https://x.com/pheezzsleekasf/status/2106370930868142450)
-34. [Image-bearing post](https://x.com/spacehoster1/status/2107031070151766453)
-35. [Image-bearing post](https://x.com/GODPLUSMOM001/status/2107789463690641733)
-36. [Image-bearing post](https://x.com/JesseChukwuemek/status/2107493674951000230)
-37. [Image-bearing post](https://x.com/piccollo_chegun/status/2106774098907156562)
-38. [Image-bearing post](https://x.com/tundelawal01/status/2106135906277101754)
-39. [Image-bearing post](https://x.com/MosesAustihap0/status/2106717179177521604)
-40. [Image-bearing post](https://x.com/naijaexploit/status/2106582284325327169)
-41. [Image-bearing post](https://x.com/Alexslowfire/status/2107064728392470535)
-42. [Image-bearing post](https://x.com/olawalemuiz12/status/2105576154258186737)
-43. [Image-bearing post](https://x.com/grok/status/2107139882984288483)
-44. [Image-bearing post](https://x.com/RodrigoHenande/status/2106127217654718639)
+1. [Image-bearing post](https://x.com/SamSecOps/status/2105979792377905569) — app-only restriction observed; attachment unread
+2. [Image-bearing post](https://x.com/Mistersabii/status/2106116556581433814)
+3. [Image-bearing post](https://x.com/HIMzu0c/status/2106090624319451369)
+4. [Image-bearing post](https://x.com/cantbemac/status/2106142104133185640)
+5. [Image-bearing post](https://x.com/Big_briggs25/status/2106081338868572238)
+6. [Image-bearing post](https://x.com/X_mplary_Chris/status/2107709085978145269)
+7. [Image-bearing post](https://x.com/DePaytez/status/2107551079856541874)
+8. [Image-bearing post](https://x.com/SokeyeA/status/2105742615144513619)
+9. [Image-bearing post](https://x.com/SokeyeA/status/2105622005722788348)
+10. [Image-bearing post](https://x.com/SokeyeA/status/2105939482226946210)
+11. [Image-bearing post](https://x.com/HAMMAD_FAWY/status/2105607639384445142)
+12. [Image-bearing post](https://x.com/notsegun/status/2105564411079581867)
+13. [Image-bearing post](https://x.com/Thefuvknfeather/status/2106310477139878253)
+14. [Image-bearing post](https://x.com/Tee__Elle/status/2105615986829521074)
+15. [Image-bearing post](https://x.com/tifezay001/status/2105736302377451945)
+16. [Image-bearing post](https://x.com/caspady1/status/2105612570946404377)
+17. [Image-bearing post](https://x.com/Pixeltale10/status/2106082724314267672)
+18. [Image-bearing post](https://x.com/Hollar_prewitt/status/2105572305329865103)
+19. [Image-bearing post](https://x.com/DeltaAlpha2x/status/2106274881763483941)
+20. [Image-bearing post](https://x.com/MitiniP/status/2107510168892166292)
+21. [Image-bearing post](https://x.com/pheezzsleekasf/status/2106370930868142450)
+22. [Image-bearing post](https://x.com/spacehoster1/status/2107031070151766453)
+23. [Image-bearing post](https://x.com/GODPLUSMOM001/status/2107789463690641733)
+24. [Image-bearing post](https://x.com/JesseChukwuemek/status/2107493674951000230)
+25. [Image-bearing post](https://x.com/piccollo_chegun/status/2106774098907156562)
+26. [Image-bearing post](https://x.com/tundelawal01/status/2106135906277101754)
+27. [Image-bearing post](https://x.com/MosesAustihap0/status/2106717179177521604)
+28. [Image-bearing post](https://x.com/naijaexploit/status/2106582284325327169)
+29. [Image-bearing post](https://x.com/Alexslowfire/status/2107064728392470535)
+30. [Image-bearing post](https://x.com/olawalemuiz12/status/2105576154258186737)
+31. [Image-bearing post](https://x.com/grok/status/2107139882984288483)
+32. [Image-bearing post](https://x.com/RodrigoHenande/status/2106127217654718639)

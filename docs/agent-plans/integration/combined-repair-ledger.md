@@ -421,3 +421,11 @@ Household619 actual public raw log proves11load-to-reducer transitions and8negat
 Country91d0ba33 source assembly is independently accepted against every approved33byte/hash pin,8dependencies and unchangedC1generator. Candidate-specific gates remain separate from391and eec. Provider50 measurement files have a finite ownership extension to follow the emitted startup import graph under unchanged caps; missing measurements must fail. Trustedserverfull/browserlazy remains the contract.
 
 Companion8a newly packaged reused dist does not close fresh exact-source artifact identity and raw gate requirements. One actual fresh build/download/smoke/package run is requested; no repeated unchanged compiler. Production remainsC1.
+
+## 10 October 01:00 UTC continuation
+
+Actual final1b225 compiler/build receipts at ba703527 independently hash-match clean unchanged source: five clean projects at4096MiB, build at1536MiB, default heavy1. Focused16service/7computed-state evidence remains scoped; actualhost/durable/render/finalbudget/rollback gates remain open.
+
+[Household consumer design brief](household-consumer-prototype-brief.md) defines three distinct future flows using primary app references and explicit ordinaryfriend consent. All14sourcepins match. No rendered prototype, endpoint, membership authority, shared-home activity, or rent settlement is accepted. f28182fe actual internal schema/keyed/receipt seam is published; real Node/Worker transaction-root and keyed-map descriptor compatibility findings require repair before durable acceptance.
+
+[Next-twelve public research](../../research/lagos-life-images-next12-2026-10-10.md) exactly reduces44to32imageitems. All6branches/28residuals/historical739/254/city129 unchanged; Recent and app-only attachment remain unaccepted. Country91fivegates are accepted but allCities source check fails because oldcheckers cover10foreignIDs while15registered; strict union stays unchanged and narrow readonlychecker migration is underway. No newproduction acceptance.

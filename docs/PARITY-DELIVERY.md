@@ -441,3 +441,7 @@ The sealed package has 6,112 files, 100,298,010 bytes and largest file 4,515,249
 The existing `joinallworld-next` / `JOINALLWORLD` SQLite binding and `joinallworld-sqlite-v1` migration were retained. No save reset, migration replacement, provider-secret change or new database was performed. Before/after checks preserved the same two existing synthetic public identities, balances and duplicate-action receipts. The production Family consent/unlink/retry probe passed and cleaned up its links. After adoption, public smoke passed 9 checks / 281 requests / 40 cities in 54.9 seconds. Live Chrome loaded the existing user character and Family screen without console errors.
 
 Public Family JavaScript, loading backdrop and OG image returned 200 with exact source hashes. The broader app-flow audit, voice-note stash and reliability B roadmap remain open. This phase does not claim physical-phone thermal performance or a newly verified microphone/audio-device path. All owned QA servers, temporary tabs and resource leases were stopped.
+
+## 10 October 2026, 00:51 UTC research acceptance
+
+[Next-twelve public image evidence](research/lagos-life-images-next12-2026-10-10.md) is independently read and reconciled against the prior44 IDs. Exactly12 completed posts are removed; current32images,6branches,28residuals retained. Historical739/254 and city129 unchanged. No Recent, exhaustive comments, current ledger/payment or feature-parity acceptance.

@@ -15,7 +15,36 @@
       "logSha256": "6c296cdac9d2eba24ebf41374a7b962cfdc8646184b67c19dfc7c4fb5c31d96c"
     },
     "DOMProved": false,
-    "durableHostReopenProved": false
+    "durableHostReopenProved": false,
+    "compiler-final": {
+      "publication": "ba703527b7448074031ed21b491f70c8b8baaef5",
+      "logSha256": "dd746544cb303e0051d73dfae02f231d3dd61011f2a35388381a12d0b5bbd961",
+      "node": "v24.19.0",
+      "heapMiB": 4096,
+      "durationSeconds": 118.637498,
+      "exit": 0,
+      "sourceUnchanged": true,
+      "clean": true,
+      "projects": 5,
+      "rawReceiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/compiler-final/receipt.json"
+    },
+    "build-final": {
+      "publication": "ba703527b7448074031ed21b491f70c8b8baaef5",
+      "logSha256": "4a204efdcab1ec8ddd422a8e1054e04c9587c9346fab9e093dd1dac03351e21b",
+      "node": "v24.19.0",
+      "heapMiB": 1536,
+      "durationSeconds": 55.429586,
+      "exit": 0,
+      "sourceUnchanged": true,
+      "clean": true,
+      "rawReceiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-final-safety/build-final/receipt.json"
+    },
+    "remaining": [
+      "Final download/smoke",
+      "Actual Node/Worker default-OFF host composition and durable reopen",
+      "Compatible v2 OFF rollback before issuance",
+      "Real DOM/native retained-state journeys"
+    ]
   },
   "household": {
     "source": "619b8fbc7d1837d6225ce6eb0d0871739eb22d75",
@@ -32,5 +61,6 @@
     "reason": "New packaging reused older dist and only a validation summary retained for build/download; fresh exact build/runtime ID and raw gates requested, no duplicate compiler."
   },
   "resourcePolicy": "Actual logs show serial remote heavy slot and Node24.19, default1536MiB; compiler-only4096 exception separately approved.",
-  "production": "No new upload or activation."
+  "production": "No new upload or activation.",
+  "lastReviewedAtUtc": "2026-10-10T01:01:32.248217+00:00"
 }

@@ -99,7 +99,9 @@ function context(store: Store) {
   return { store, once: once.once, onceId: once.onceId, now: () => NOW }
 }
 
-const descriptor = () => ({ id: `${NOW}:${ids.request}`, kind: 'external-untrusted-kind', fingerprint: '' })
+function descriptor(): { id: `${number}:${string}`; kind: string; fingerprint: string } {
+  return { id: `${NOW}:${ids.request}`, kind: 'external-untrusted-kind', fingerprint: '' }
+}
 const command = () => ({ op: 'register', householdId: ids.household, homeId: ids.home, epoch: 1 })
 const object = (value: unknown): value is object => value !== null && typeof value === 'object'
 

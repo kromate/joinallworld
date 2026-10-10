@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-10T02:16:32.603987+00:00",
+  "observedAt": "2026-10-10T02:23:48.967178+00:00",
   "candidate": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
   "base": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
   "branch": "codex/cloud-driving-host-reopen-h1h2h3-20261010",
@@ -31,8 +31,7 @@
     "introducedByThisDelta": false,
     "inheritedFrom": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
     "shutdownContract": "Production close(callback) already awaits world/store/telemetry flush; Store.close is optional",
-    "correction": "0f882bbabfe924cb4f8da1a18067683353b4b674",
-    "correctionEvidence": "Actual child commit terminal0, one Node test line changed; ahead1. Corrected blob not yet published/read, no execution acceptance.",
+    "correctionEvidence": "Actual child fileChange and commit command terminal0: after close callback, read store.close, require typeof function, await close.call(store). One Node-test helper only; ahead2 of public a646. No raw compiler result/published successor blob accepted.",
     "receipt": {
       "receiptSha256": "07299de9c003de2ce08c7a8c0b2e23e309c84320ec947f6bca343a154a88b894",
       "logSha256": "e3c368c7775b8bf41e2b868f831c724d0100487966fccdd520f8cd960a93ab5e",
@@ -47,7 +46,12 @@
       "node": "v24.19.0",
       "heap": "--max-old-space-size=4096",
       "sourcePinMapsEmpty": true
-    }
+    },
+    "intermediateCorrection": "0f882bbabfe924cb4f8da1a18067683353b4b674",
+    "correction": "38594def6eeeab969b3f5148784edfda438aa387",
+    "expectedSuccessorPatch": "const close = server.store.close; if (typeof close !== function) throw fixture error; await close.call(server.store)",
+    "expectedCorrectedNodeSha256": "57aa35bcfb918da2ea9f98a804d32a42128e3e206affcb96ea241372a21bea3a",
+    "expectedHashScope": "Derived from immutable a646 plus both actual completed child fileChange diffs. Expected bytes only; not independently obtained successor Git blob."
   },
   "focusedExecution": {
     "reportedPass": 2,
@@ -82,7 +86,9 @@
     "turnStatus": "inProgress",
     "threadStatus": "idle",
     "liveProcessVerified": false,
-    "note": "Asked coordinator for current actual handle; turn/lock state is insufficient."
+    "note": "Asked coordinator for current actual handle; turn/lock state is insufficient.",
+    "compilerStatus": "Queued according to current child messages and log; not compiler execution. Another actual npm test:edge parent109970 observed alive at11:59, not a current Root live handle.",
+    "slotStatusCaveat": "slotRoot() uses AGENT_SLOT_DIR or this checkout git-common-dir. Standalone free status had no explicit override; ambient environment unverified. Asked owner to inspect shared registry explicitly, without deleting locks or duplicating phases."
   },
   "decision": "H1-H3 scoped source and exact a646 focused execution accepted; integration held for compiler failure and unpublished corrected SHA. No acceptance transfers to 0f882.",
   "notAccepted": [
@@ -93,8 +99,8 @@
   ],
   "next": "Same existing writer publishes permitted corrected source and raw terminal receipts. Existing independent reviewer checks final delta; then exact integrated gates and compatible OFF artifact before original v2. Shared startup remains Integration/WORLD country writer.",
   "allowance": {
-    "usedPercent": 84,
-    "remainingPercent": 16,
+    "usedPercent": 85,
+    "remainingPercent": 15,
     "stopNewAtRemainingPercent": 4,
     "clockCutoff": null
   },

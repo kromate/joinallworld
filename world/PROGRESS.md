@@ -1,4 +1,14 @@
-# Separate next-five source accepted, 10 October 2026 at 00:44 UTC
+# Exact five-country compiler accepted, 10 October 2026 at 00:42 UTC
+
+Public receiptref2b504cc8 matches exact clean91d0ba33 candidate. The unchanged
+catalogue generator --check exits0. All five strict projects pass with zero
+TS/Vue errors and zero existing JavaScript baselines, actual exit0 with
+Node24.19/4096MiB serial heavy1 on existing cloud capacity. Both raw logs and
+numeric receipts match their SHA pins. This is compiler/source acceptance,
+not runtime or release completion. Candidate build/download/smoke, full
+Node/Worker checks, sealed artifact and native travel/save gates remain open.
+
+# Separate next-five source accepted, 10 October 2026 at 00:41 UTC
 
 Actual remote candidate91d0ba3346ecd74c4eb0eaf29db1a585ce246195 is based on
 productionC1 and changes exactly33 approved files. Independent byte/hash

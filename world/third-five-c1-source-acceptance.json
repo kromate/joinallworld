@@ -46,7 +46,7 @@
   "sourcePinsVerified": 33,
   "unchangedDependencyPinsVerified": 8,
   "unchangedGenerator": "scripts/city/build-catalogue.ts",
-  "generatorExecution": "Cloud assembly report says --check passes55; candidate execution receipt not independently read yet.",
+  "generatorExecution": "ACCEPT unchanged C1 generator --check exit0, exact clean91 candidate.",
   "countriesExpectedAfterRelease": 16,
   "newCountries": [
     "EG",
@@ -87,8 +87,7 @@
     }
   ],
   "unacceptedGates": [
-    "existingC1 generator --check",
-    "allfivecompiler projects and full requiredNode/Worker/release checks",
+    "full requiredNode/Worker/release checks",
     "candidate-specific startup/download/public assets and sealed source/package identity",
     "realnewdestination map loading and outbound/return journeys in isolated actors",
     "retained original saves and duplicate-action/receipt invariants",
@@ -258,5 +257,36 @@
       "osmSha256": "15dd79b4b068e10ad54fb1650cd87347aaec235fb5a66084d91e7d86f14d167b",
       "coverage": "Bounded central sample, approximate silhouettes and fictional game services; not whole-city reconstruction."
     }
-  ]
+  ],
+  "candidateChecks": [
+    {
+      "name": "catalogue-check",
+      "receiptRef": "2b504cc8e0e99b6aae3f5332f5f7678972f3ae0c",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/catalogue-check/receipt.json",
+      "receiptSha256": "912b741dcad0eceb35384ad17e0ce62f871dd915b96a3b1e7ed6d814368aae1e",
+      "logSha256": "5b637d901cea5aceae446296a502577f0bd74e7db110475dfb15e40515bea43a",
+      "exitStatus": 0,
+      "startedAtUtc": "2026-10-10T00:33:30.503468+00:00",
+      "endedAtUtc": "2026-10-10T00:34:03.946102+00:00",
+      "nodeVersion": "v24.19.0",
+      "heap": "--max-old-space-size=1536",
+      "sharedHeavySlots": 1,
+      "sourceUnchanged": true
+    },
+    {
+      "name": "typecheck-cloud-4096-readable",
+      "receiptRef": "2b504cc8e0e99b6aae3f5332f5f7678972f3ae0c",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/typecheck-cloud-4096-readable/receipt.json",
+      "receiptSha256": "f42eaac15c036680449787ddf3035f518f078d1e5fdb51493abf5164cd34f93e",
+      "logSha256": "e4a2b0ad05c650003cfb21d27194315a5a00064af070512fd886693de73d48e7",
+      "exitStatus": 0,
+      "startedAtUtc": "2026-10-10T00:35:24.527234+00:00",
+      "endedAtUtc": "2026-10-10T00:37:25.548028+00:00",
+      "nodeVersion": "v24.19.0",
+      "heap": "--max-old-space-size=4096",
+      "sharedHeavySlots": 1,
+      "sourceUnchanged": true
+    }
+  ],
+  "updatedAtUtc": "2026-10-10T00:42:41.666991+00:00"
 }

@@ -4,9 +4,9 @@
   "goal": "Full graphics overhaul unchanged; native firstrelease is a phase, not fullgoal completion",
   "lastVerifiedProduction": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "fetchedMain": "c1f7c1f7369139ce559292318ba9842c23a28267",
-  "latestSource": "bcb28f57c45aa87dba5c2725f3be04417df12ce2",
+  "latestSource": "644cbe79b4c315ff672b9ee2bb5f298a787efa18",
   "sourceBranch": "codex/cloud-graphics-wiring-v9-20261010",
-  "latestRun": 38006548215,
+  "latestRun": 38008067182,
   "nativeAccepted": false,
   "nativeDeployed": false,
   "usagePolicy": {
@@ -17,7 +17,12 @@
     "reserveLast5ForCheckpoint": true,
     "hardCutoffUTC": "2026-10-10T08:00:00Z",
     "paidUsage": "none",
-    "modelHopping": "forbidden"
+    "modelHopping": "forbidden",
+    "latestSnapshot": {
+      "usedPercent": 73,
+      "remainingPercent": 27,
+      "stopAtRemainingPercent": 5
+    }
   },
   "completedScoped": [
     {
@@ -45,22 +50,25 @@
       "id": "GFX-NPC-FLOOR",
       "status": "implementation_online",
       "severity": "P1 release gate",
-      "difficulty": 2,
-      "effortBasis": "Fixture-sized geometry measurements; existing real actors/floor callbacks available.",
+      "difficulty": 3,
+      "effortBasis": "Actual skinned-sole host-floor checker now fails for both NPCs; requires bounded production placement/pose correction and full witness rerun",
       "files": [
         "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
         "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs"
       ],
-      "repro": "Run actual office fixture, start Mrs Okafor hello and Dapo talk, then inspect actual shoe vertices against host floor after canonical placement.",
-      "evidence": "Current office checks.playerContact samples player only. Factory internally checks grounded contacts; Dapo tilted sole in PNG alone is not confirmed penetration.",
-      "suggestedFix": "Add independent real post-placement NPC idle/interact/returned-idle shoe gap/reach evidence without production API/budget expansion.",
+      "repro": "Run strict office fixture and check-native-npc-foot-contact.mjs on full report; idle/interact/returned-idle, both sides, every authored sole vertex",
+      "evidence": "Remote NPC strict fixture compile/bundle/render PASS, contact checker exit1 with complete finite actual support coverage; raw numeric report publication pending",
+      "suggestedFix": "Solve actual native host floor after mount/placement and pose changes; preserve native reach/foot swing, retain independent physical floor gap oracle",
       "dependencies": [
         "current head candidate"
       ],
       "hypotheses": [
         "A visibly tilted NPC sole may be valid heel support; do not force all foot vertices onto floor."
       ],
-      "worker": "cloud head worker, dedicated fixture checkout"
+      "worker": "cloud head worker, dedicated fixture checkout",
+      "state": "actual_floor_defect_reproduced_repair_allocated_online",
+      "source": "9122e0c4eb2d6db3fca4ed6e71687c4168923162",
+      "ownerAllocation": "Existing cloud NPC worker: venue-scenes.ts canonical NPC place/mount/pose hooks and private floor helper only. Cloud Sol sole shared factory/wiring assembler."
     },
     {
       "id": "GFX-REST-IK",
@@ -86,7 +94,23 @@
       "hypotheses": [
         "Iterative lift will converge within existing caps; unproven until actual full journey passes."
       ],
-      "worker": "cloud rest"
+      "worker": "cloud rest",
+      "newSourceFindings": [
+        {
+          "kind": "reproduced_trial4_solver_state",
+          "evidence": "Remote exact home trial4 final nested solver diagnostic corrected=0,maxError=0,limited=true,grounded-side-missing; four pelvis-only passes total .054153055754m, everypass continues before leg IK",
+          "interpretation": "Bounded pelvis adjustments can exhaust entire iteration allowance without fitting a foot; shared factory owner testing separate bounded phases",
+          "status": "fix_hypothesis_not_yet_passed"
+        },
+        {
+          "kind": "independently_verified_source_coordinate_mismatch",
+          "file": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+          "source": "644cbe79b4c315ff672b9ee2bb5f298a787efa18",
+          "evidence": "captureBaseline stores boneActorPoint(hips).y actor-local, solve subtracts hips.getWorldPosition().y world-space; lowering quantities also mix actor/parent frames",
+          "status": "source_defect_verified_runtime_impact_pending",
+          "suggestedFix": "Choose consistent correction units/frame, convert deltas explicitly and verify cumulative8cm budget across transformed root/parent and repeated solves"
+        }
+      ]
     },
     {
       "id": "GFX-STAIRS",
@@ -108,7 +132,19 @@
       "hypotheses": [
         "Absolute lowest sole seed may choose wrong foot; abs-gap tentative patch reverted, NOT accepted."
       ],
-      "worker": "cloud stairs"
+      "worker": "cloud stairs",
+      "state": "original_actual_case_independently_passed_broad_matrix_owner_reported_pending_raw_review",
+      "latestProof": {
+        "source": "58922dc609e37f26c0af6ea0ddff71f9ebf76866",
+        "published": "644cbe79b4c315ff672b9ee2bb5f298a787efa18",
+        "baselineGapM": 0.014894675661380141,
+        "trialGapM": 0.00022198443449150673,
+        "pointCount": 144,
+        "matrixCasesOwnerReported": 16,
+        "matrixJSONSha256": "db7851a9dfae0c52bb7799b21370cb56e2cc5b30a6ab3a12ec70603759e85fbc",
+        "bothBelowJSONSha256": "a84282c05701b6e8cf7b0a92d0acb4b9ba93c35b806c2b11f451a8f6ae9f994b",
+        "remaining": "publish/rawreviewmatrix and actualbrowserhome"
+      }
     },
     {
       "id": "GFX-IDENTITY-FINAL",
@@ -226,5 +262,53 @@
   },
   "evidenceRoot": "/Users/anthonyakpan/Desktop/joinallworld/evidence/graphics-loop/native-game-adoption-v1",
   "currentProof": "cloud-head-independent-review-v1.json",
-  "historicalExperiments": "Graphics dashboard old8fixrecords/olderPNG labelled prototypes; superseded blockers must not be re-added solely from those records."
+  "historicalExperiments": "Graphics dashboard old8fixrecords/olderPNG labelled prototypes; superseded blockers must not be re-added solely from those records.",
+  "latestStairTrial": {
+    "at": "2026-10-10T00:14:47.631306+00:00",
+    "implementation": "58922dc609e37f26c0af6ea0ddff71f9ebf76866",
+    "publishedFeedback": "644cbe79b4c315ff672b9ee2bb5f298a787efa18",
+    "receiptSource": "72375198fce51960f556365e9b08c10bf1daa677",
+    "manifestFilesVerified": 99,
+    "manifestHashMismatches": 0,
+    "baseline": {
+      "closestGapM": 0.014894675661380141,
+      "status": "fail"
+    },
+    "originalCaseTrial": {
+      "status": "pass",
+      "closestGapM": 0.00022198443449150673,
+      "actualSolePointCount": 144,
+      "groundedSides": [
+        "left"
+      ],
+      "penetratingPoints": 0,
+      "reportedTargetResidualM": 0,
+      "limited": false,
+      "unresolvedReasons": [],
+      "jsonSha256": "22e6369f4f16fbf9e4627aebf2640241a856c6c0d289f6af8ce262c616d424e1"
+    },
+    "scope": "male descending step12 phase.18 exact transformed boxed host; original stride call, not rollback sampleStill",
+    "independentSourceReview": "target uses worst signed surface gap for actual deformed vertex coordinates, preserves flat-plane target and existing reach/contact caps",
+    "remaining": [
+      "male/female broader ascent/descent/phase coverage",
+      "both-below-surface case",
+      "actual browser home journey",
+      "bed rest repair",
+      "NPC actual floor witnesses",
+      "final creator/identity and bytes/combined checks",
+      "physical phone performance unverified"
+    ],
+    "productionAccepted": false,
+    "deployed": false
+  },
+  "updatedAt": "2026-10-10T00:23:10.349006+00:00",
+  "latestRunResult": {
+    "run": 38008067182,
+    "status": "completed",
+    "conclusion": "failure",
+    "officeJob": 114081383862,
+    "office": "success",
+    "homeJob": 114081384025,
+    "home": "failure"
+  }
 }

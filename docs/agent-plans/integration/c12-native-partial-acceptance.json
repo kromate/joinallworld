@@ -1,0 +1,78 @@
+{
+  "observedAt": "2026-10-10T02:15:50.777714+00:00",
+  "decision": "ACCEPT scoped normal onboarding, pre-funding fare refusal, owner-controlled funding/replay and safe shutdown only. All five city journeys remain unvisited.",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "package": "3a018ad0bd2b7325360a9aeff607f0331610e2e22c6b42081fdb7dd4175a4331",
+  "operatorFinalSha256": "48ee70c7aeddec44ff5a7682ec60c20e55d27bb7ee7f59ba1863bb9a300c00ea",
+  "actorStartingCash": [
+    76000,
+    40000
+  ],
+  "ordinaryOwnedHomes": "Both new actors settled normally with owned Ikeja starter homes; original players were not reset.",
+  "browser": {
+    "distinctAliasEntry": true,
+    "normalOnboarding": true,
+    "preFundingRefusals": [
+      "Cairo334000 fare needs258000more",
+      "Kampala285000 fare needs245000more"
+    ],
+    "mobile": {
+      "B390": {
+        "width": 390,
+        "bodyWidth": 390,
+        "height": 844
+      },
+      "B320": {
+        "width": 320,
+        "bodyWidth": 320,
+        "height": 740
+      },
+      "scope": "Travel map/fare panel only, beforefunding; no flight or localforeignactivity.",
+      "externalWidget": "100x rightedge overlaps B fare edge at390; not altered",
+      "A": "Actual width1440; noA390claim; corresponding screenshot filename corrected"
+    },
+    "afterFundingCashObserved": false,
+    "allFiveCitiesUnvisited": true
+  },
+  "funding": {
+    "publicationCommit": "ce9d2577153e6f55a20e6e2f3da6a04f9bbfd344",
+    "path": "world/third-five-c1-native-funding-acceptance.json",
+    "sha256": "703d15abd44d111e495c4c9f02c8713ec46963dcf79891143df58cc5cc7bca3c",
+    "amountEach": 2000000,
+    "sameIntentDuplicates": true,
+    "walletEffectsEach": 1,
+    "onceReceiptsEach": 1,
+    "scope": "Root read and hash-checked public sanitized WORLD owner receipt; raw private credentials/state excluded."
+  },
+  "shutdown": {
+    "publicationCommit": "e3c2add29a6aa18dc20e82973deeb7c1e449e018",
+    "path": "world/third-five-c1-native-stage-checkpoint.json",
+    "sha256": "8f274feae5f29d971c47529845bc296e7a2db00d24911d01a9b1ed61ed3bdc47",
+    "terminalExitCode": 0,
+    "stoppedAt": "2026-10-10T02:11:17.548Z",
+    "retainedStore": true,
+    "restartCount": 0,
+    "cleanupAt": "2026-10-10T02:07:59.749Z",
+    "ownedTabsClosedCount": 2,
+    "viewportReset": true,
+    "leaseExitCode": 130,
+    "originalUserTabsUntouched": true,
+    "cookiesPreserved": true
+  },
+  "unvisitedCities": [
+    "cairo",
+    "rabat",
+    "kigali",
+    "kampala",
+    "lusaka"
+  ],
+  "remaining": [
+    "Outbound/arrival/localactivity/homeward cityjourneys",
+    "Foreign phone/map and focus interaction",
+    "Save/reload afterfunding",
+    "Owner sameSQLite restart/reconnect",
+    "Posttravel protected-field and receiptprefix preservation"
+  ],
+  "privacy": "Only allowlisted summary and hashes published. Screenshots, transcripts, raw actor/session state and credentials remain private.",
+  "production": "No new production release or actor mutation."
+}

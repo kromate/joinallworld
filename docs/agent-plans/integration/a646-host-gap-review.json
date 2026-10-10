@@ -1,0 +1,72 @@
+{
+  "decision": "APPROVE_H1_H2_H3_TEST_SOURCE_CLOSURE_ONLY",
+  "candidate": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+  "comparisonBase": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
+  "observedHead": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "workingTree": "clean",
+  "scope": "Cumulative f4-to-a646 diff, full Node/Worker host test files, unchanged trusted-host runtime. No runtime PASS accepted in this source review.",
+  "cumulativeFiles": [
+    "deploy/living-world-driving-v2.edge.test.ts",
+    "server/living-world/driving-host-reopen.test.ts",
+    "server/living-world/driving-service.test.ts"
+  ],
+  "sha256": {
+    "server/living-world/driving-host-reopen.test.ts": "82731568b0c6bce3727d60be7076d5daf9e3a5e401451db6d0345a9e2b362cef",
+    "deploy/living-world-driving-v2.edge.test.ts": "6875c0f267fe873be23331c21882a1f8fe95510fd03945b9a098a6874db60b49",
+    "server/living-world/driving-service.test.ts": "5db571a1305c31f854a6378c66c11950be020d3427258e199268ab05d30380c6",
+    "server/living-world/driving-service.ts": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+    "server/server.ts": "c6499252095e1e7548b25fb2566dfb56ec94bc2b8328a957403f90e3a2c31181",
+    "server/types.ts": "a54a8daba84cf6a87e64cad9c6027fd0a4f50b46b5734130102d8bf3842868f9",
+    "server/routes/living-world.ts": "39ecdf13390562eccadbfc3aaa76b082188b4d7045131e3124a94fd5dcc6c8e6",
+    "deploy/cloudflare-worker.ts": "efef66d80ae36134fe95271e0eea0391e7789b9e4b3834aa68ace8f5f09c795b"
+  },
+  "findings": [],
+  "parentReportedCompilerHold": {
+    "diagnostic": "TS2722 optional store.close call",
+    "location": "server/living-world/driving-host-reopen.test.ts:34",
+    "evidenceStatus": "Reported by Root after this source inspection; raw compiler evidence not reviewed here",
+    "disposition": "Integration held until exact published correction and successful bound compiler result. H1-H3 test-design source approval remains narrow. No acceptance of incompletely identified successor."
+  },
+  "closures": [
+    {
+      "id": "H1",
+      "status": "CLOSED_IN_SOURCE_AWAITING_BOUND_EXECUTION",
+      "node": "Node:115-131 captures issued row/lastPacket and once map; closes server and store; advances controlled time 2000ms beyond 1500ms input timeout; reopens OFF. Read-only file snapshots precede first POST/input, no GET. Exact original packet must replay successfully with duplicate=true/capability absent, entire issued row and original once map unchanged.",
+      "worker": "Worker:115-126 captures issued row and SQL once receipts, awaits real 1600ms delay, disposes/recreates Miniflare over same SQLite persistence, then sends original POST/input before any GET. Full saved row and receipt-set comparisons detect timeout writes or receipt changes."
+    },
+    {
+      "id": "H2",
+      "status": "CLOSED_IN_SOURCE_AWAITING_BOUND_EXECUTION",
+      "node": "Node:140-172 creates genuine resume receipt through normal HTTP, retains immediate duplicate assertions, makes legacy input/explicit-gear refusal, captures current row/receipts, then closes/reopens again. Identical old resume request is first driving request. Duplicate success and unchanged full current row/once map required.",
+      "worker": "Worker:135-166 follows same pattern and actually disposes/recreates SQLite Worker again before first old resume POST. No pre-replay current read. SQL receipts compared by id/at/kind/value in stable id order."
+    },
+    {
+      "id": "H3",
+      "status": "CLOSED_IN_SOURCE_AWAITING_BOUND_EXECUTION",
+      "node": "Node:17-18 now accepts options object without forcing a flag. Lines 77-88 omit flag with env='1'; 92-101 supply runtime string 'true' via JSON.parse with env='1'; both refuse explicit reverse without creating v2. Literal true at 104 activates response capability and accepted reverse creates v2. Explicit false and omitted OFF reopens both covered.",
+      "worker": "Exact '1' positive and undefined/'0'/'true'/whitespace negative binding cases remain unchanged at Worker:92-117."
+    }
+  ],
+  "runtimeSource": "No host/service/runtime files differ from f4. Node strict true and default false at server.ts:161,519; Worker exact env==='1' at cloudflare-worker.ts:376; route literal true at routes/living-world.ts:12; captured service authority at driving-service.ts:153 unchanged. Strict readers, retained replay ordering, counters and no-new-explicit-gear OFF rules unchanged.",
+  "testIntegrity": [
+    "All setup, requests, reads, delays and restart operations are awaited sequentially. No async-forEach or speculative requests.",
+    "Node uses actual production route registry/createServer and devices.json; store.close is awaited. Readbacks parse file without mutating it.",
+    "Worker compiles production Worker entry and uses Miniflare workerd Durable Object SQLite with persistent folder across dispose/recreate. SQL is read-only. It does not replace the driving service/store.",
+    "Node controlled clock is a constructor fixture option used for protocol IDs and driving delay only. Worker waits real time. Neither file directly seeds/funds wallet, mutates driving rows, grants score/license, or bypasses money timers.",
+    "JSON.parse for a deliberately invalid constructor value is test-only runtime boundary input; it does not weaken production types or permission checks.",
+    "Inherited service counter test matches independently reviewed d38 hash; this review does not turn its pending execution into a PASS."
+  ],
+  "remainingLimits": [
+    "No actual a646 raw command/log/exit or compiler evidence reviewed here. Root reviews publication separately; old f4 two-PASS result does not transfer.",
+    "Node and Worker are recreated against the same store, not a separate pinned rollback binary. Compatible OFF artifact must still be verified before real true issuance; C1/eec v1-only rollback remains forbidden after v2 exists.",
+    "Worker test uses test-built bundle, default collection SQL layout and stub ASSETS; not sealed package/native UI or entries-layout coverage.",
+    "New cold replay assertions check persisted canonical row and response duplicate/code/capability, not all response session fields. Existing runtime returns canonical view unchanged; these tests alone do not constitute every response-freshness case.",
+    "H2 replays old lifecycle receipt after later valid input, preserving latest row. It does not explicitly compare every intervening pre-close receipt against its creation-time snapshot, but proves persisted pre-close receipt set is not changed by cold replay.",
+    "No crash/commit-interruption, process-kill or host deployment proof. Graceful close/dispose is the tested lifecycle.",
+    "No original asset/home/wallet/qualification reset is present, but two test files are not a complete preservation/native regression matrix.",
+    "Exact integrated compiler/build/budget/protocol/sealed/native gates remain required. No release, activation, paid/auth/provider action authorized."
+  ],
+  "actions": "Only read-only Git source/diff/hash commands plus requested /tmp reports. No source edits, tests/compiler/build/server/browser or agent spawning.",
+  "originalPrivateReviewJsonSha256": "511babdc76be417d694f3734eeb76c6210d640c32d6d1daf1b95487a16cc78a0",
+  "publicationNote": "Repository path omitted from this derived public review; source pins and approval scope unchanged."
+}

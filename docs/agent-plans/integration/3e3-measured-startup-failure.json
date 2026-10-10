@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-10T02:18:31.601673+00:00",
+  "source": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "ci": 38016051589,
+  "jobs": [
+    114106426507,
+    114106426740
+  ],
+  "sourceCompiler": "PASS 5 projects/0 errors onNode22/24",
+  "productionBuild": "PASS onNode22/24",
+  "startup": {
+    "raw": 614097,
+    "gzip": 223002,
+    "brotli": 195915,
+    "firstPaintBrotli": 35700
+  },
+  "limits": {
+    "raw": 615000,
+    "gzip": 223000,
+    "brotli": 195600
+  },
+  "deltaVersus7f": {
+    "raw": -1241,
+    "gzip": 16,
+    "brotli": 152
+  },
+  "result": "FAIL gzip by2/Brotli by315. Source equivalence approval retained, measured optimisation acceptance refused. Remaining fullCI jobs live; no identical retry/cap waiver.",
+  "rawLogs": [
+    {
+      "node": "22",
+      "sha256": "94df921ca68cc4df16569cea04684f4f14a0465660dfaa5abb753b8699816368",
+      "bytes": 183353
+    },
+    {
+      "node": "24",
+      "sha256": "4d0a60c23e0145f2d5060c4406d231b1d8008fce93f0e7233e777419a2a60c1a",
+      "bytes": 183828
+    }
+  ]
+}

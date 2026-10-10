@@ -1,0 +1,83 @@
+{
+  "decision": "APPROVE_EXACT_ROUTE_ENCODING_SOURCE_EQUIVALENCE_ONLY",
+  "candidate": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "parent": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81",
+  "observedRepositoryHead": "7f2dd820cdeb2b14aa16c19e7f665cb84579be81",
+  "workingTree": "clean at read",
+  "changedFiles": [
+    "scripts/city/build-catalogue.ts",
+    "src/game/cities/routes.generated.ts"
+  ],
+  "sourceSha256": {
+    "scripts/city/build-catalogue.ts": "e1bc9391c715467b48474b4d1ab05a1a75cb4773b9d111f9a411044b7558ea2b",
+    "src/game/cities/routes.generated.ts": "594abff1a5904fabb318c8a286cf99eb23fb614dc3e71bbc0ba2c03af596bfa6",
+    "src/game/cities/catalogue.generated.ts": "0969ee3c04a10152d1894706187bd9fd531b83295a4b7cb6bcaad692f1be3046",
+    "src/game/cities/loaders.generated.ts": "857c3a9cc6acc600db61e6f18259ee27046afe3ef997028909c09a5f37a12dea",
+    "src/game/cities/generatedLinks.ts": "3860ff242e16bf482f8a26d6e53a528787f8f0d47404b8207e138f4c0816eb2a",
+    "src/game/content/travel.ts": "5f8f5a5c659d07da0c0ce0a0d50d609c88a74b616acb5312b2adad8b80d82f1f",
+    "src/types/content.ts": "b83c63408552c125a161782b8332c04879f8c56dadea7794998e4438051d21e2",
+    "src/game/cities/registry.ts": "c785929592a90590cfc6a107b7db466dc40515f11770d7a1cbb4d427da1f4efa",
+    "src/game/cities/africa/rules.ts": "a616559f029d2cb4ae8e63eb1bce8fe9f4c4bf8ff2f581aeacf10c8c740a6eb2"
+  },
+  "parentSha256": {
+    "scripts/city/build-catalogue.ts": "9499e633a83ca4326b934dfeb0d8d181602257d352528fdba6d7e1c218039bf5",
+    "src/game/cities/routes.generated.ts": "1bf2e138c33ea59104666a4ccd3b49f05ba81c5d0e13a7d659075e3863a8dd97"
+  },
+  "findings": [],
+  "equivalence": {
+    "catalogueRows": 55,
+    "loaderRows": 55,
+    "catalogueAndLoadersByteUnchanged": true,
+    "authoredRouteOrder": "Map iteration and insertion order unchanged. No filtering/reordering during row mapping. Existing 24 full rows followed by 15 foreign flights in identical order.",
+    "compactFlightOrder": [
+      "accra",
+      "algiers",
+      "lome",
+      "nairobi",
+      "yaounde",
+      "abidjan",
+      "addis-ababa",
+      "cape-town",
+      "cotonou",
+      "dakar",
+      "cairo",
+      "rabat",
+      "kigali",
+      "kampala",
+      "lusaka"
+    ],
+    "propertyOrder": [
+      "a",
+      "b",
+      "mode",
+      "beta",
+      "label",
+      "icon",
+      "km",
+      "fare",
+      "seconds"
+    ],
+    "identity": "Endpoints a='lagos', b=exact authored destination, mode='air' unchanged. Registry undirected linkKey and linksFrom directional destination calculations unchanged. No new route ID or endpoint normalization.",
+    "values": "Full diff read confirms exact name Unicode, icon, km, fare and seconds for all 15 compact calls. Runtime helper reconstructs original values, never computes geography, fare or time.",
+    "mutability": "Both versions freeze outer authored array only. Prior generated JSON objects were mutable despite source rules using timedLink frozen objects. New helper returns fresh ordinary mutable objects, preserving generated-row own data properties and descriptor behavior.",
+    "canonicalQualification": "Generator:73-84 requires Lagos-first air beta=true to known non-Nigerian destination, exact ordered own enumerable string keys, and complete serialized equality with timedLink canonical row using destination name/atlas, Lagos 3.4/6.45, rounded greatCircleKm, generatedAirFare and current intercitySeconds.",
+    "fallback": "Any nonqualifying endpoint/direction/mode/beta/country, custom label/icon/km/fare/time/status or extra enumerable field keeps old full JSON object serialization in original order at generator:89. No partial canonical overwrite.",
+    "consumerCompatibility": "registry.ts:143-170 unchanged; authored precedence, generated links suppression, full catalogue union, link caching and directional linksFrom remain equivalent. CityLink/CityLinkFrom shapes unchanged."
+  },
+  "limits": [
+    "Static source equivalence only. No generator execution, compiler, tests, build, browser, server or runtime fare journey performed.",
+    "Canonical source modules are trusted data. This does not add a parser for malicious getters/proxies/toJSON or preservation of non-JSON properties; previous generator already used JSON serialization.",
+    "Canonical geography/timetable changes cause full-object fallback for nonmatching authored rows, or generation of updated literals for changed authored rules. Compact encoding is not a license to normalize custom content.",
+    "The generated helper return annotation broadens inferred element types to CityLink while preserving intended public contract and runtime values; exact-candidate compiler remains required.",
+    "New build-time dependencies generatedLinks/travel were inspected. Generated runtime module adds no runtime import of either; only private local reconstruction helper.",
+    "Budget improvement is unmeasured here. Existing exact-source compiler/build/budget, stale-generated check, route/registry/fare and sealed host checks do not transfer automatically."
+  ],
+  "nextGates": [
+    "Root independently checks old/new decoded rows and full property order using its nonexecuting parser and verifies exact two-file integration.",
+    "Authorized cloud must run generator freshness and exact-candidate compiler/tests/build/budget, including custom-row fallback expectations and unchanged 55-city catalogue/loaders.",
+    "Retain route/fare/seconds and directional identity checks through actual Node/Worker integration; do not approve payment/residency/issuance or deployment from this review."
+  ],
+  "actions": "Only immutable Git source/diff/count/hash reads and requested /tmp report writes. No source edit, merge, source execution, compiler/test/build, server/browser, new agent or paid/auth/provider action.",
+  "originalPrivateReviewJsonSha256": "0d64711f119d77543f712036fc3ed4fe5a8f9cacc15f692e2e59c9be804f0401",
+  "publicationNote": "Repository path omitted from this derived public review; source pins and approval scope unchanged."
+}

@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-10T02:14:27.208615+00:00",
+  "source": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+  "reviews": [
+    {
+      "partition": "all5-compiler-serial-4096",
+      "receiptPublication": "2a0dd73bb289f57fb691911d5ce8dee689f4e7e0",
+      "source": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+      "receiptSha256": "07299de9c003de2ce08c7a8c0b2e23e309c84320ec947f6bca343a154a88b894",
+      "logSha256": "e3c368c7775b8bf41e2b868f831c724d0100487966fccdd520f8cd960a93ab5e",
+      "logBytes": 570,
+      "exit": 1,
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "scripts/typecheck.ts",
+        "--serial"
+      ],
+      "node": "v24.19.0",
+      "sourceUnchanged": true,
+      "gitStatusAfter": "",
+      "durationSeconds": 134.377405,
+      "sourcePinMap": {},
+      "summary": [
+        "server/living-world/driving-host-reopen.test.ts:34:9 TS2722 Cannot invoke an object which is possibly 'undefined'."
+      ]
+    },
+    {
+      "partition": "driving-host-reopen-h1h2h3-final-focused",
+      "receiptPublication": "2a0dd73bb289f57fb691911d5ce8dee689f4e7e0",
+      "source": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
+      "receiptSha256": "d73e2b2cf0d008334feb232e8d05e0613dde6f21667fbe8c617ded25b2fa6baf",
+      "logSha256": "2392b8089d6b781f18689175e8fcc7583bf0bd091d86f389730a43696b36ff6e",
+      "logBytes": 5577,
+      "exit": 0,
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "server/living-world/driving-host-reopen.test.ts",
+        "deploy/living-world-driving-v2.edge.test.ts"
+      ],
+      "node": "v24.19.0",
+      "sourceUnchanged": true,
+      "gitStatusAfter": "",
+      "durationSeconds": 42.298803,
+      "sourcePinMap": {},
+      "summary": [
+        "\u2139 tests 2",
+        "\u2139 pass 2",
+        "\u2139 fail 0",
+        "\u2139 skipped 0",
+        "\u2139 duration_ms 8054.372846"
+      ]
+    }
+  ],
+  "outcome": "Actual a646 Node/Worker host focused tests2PASS0SKIP accepted at scoped cold-reopen boundary. Exact compiler FAIL TS2722 retained. No integration, rollback artifact, browser or production acceptance."
+}

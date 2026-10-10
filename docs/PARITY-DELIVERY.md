@@ -479,3 +479,17 @@ Additional exact partition evidence: Worker22/24 each159PASS and Node22host1029P
 [Combined 7f CI 38013621959](https://github.com/kromate/joinallworld/actions/runs/38013621959) is terminal failure. Both Worker partitions passed 159/159, both host partitions passed 1,029 checks with three skips, and both tooling partitions passed 36/36. Node 24 game passed 2,608 checks, with one failure and one skip. Its only failure is the same startup assertion. Node 22 game was cancelled. [Actual terminal log review](agent-plans/integration/7f-terminal-partition-review.json) preserves raw hashes and exact counts. Startup raw/Brotli remain 338/163 bytes over unchanged limits. The generator repair needs actual published-source review and new exact gates. No production upload or full acceptance.
 
 Actual c12 browser entry and normal onboarding succeeded for two fresh consenting actors with owned homes. Insufficient-fare refusals were reproduced. The operator paused at a safe checkpoint after material paging was reported. Funding, travel, restart and five-city acceptance remain unproved. Original stores and production remain unchanged.
+
+## 2026-10-10 02:15 UTC route repair pushed, scoped host gaps verified
+
+Exact 3e3 route repair is pushed to both delivery branches after [source review](agent-plans/integration/3e3-route-source-review.md) and independent ordered equality of all 39 routes. The 55-city catalogue/loaders are unchanged. [Full CI 38016051589](https://github.com/kromate/joinallworld/actions/runs/38016051589) checks this changed combined source. Source approval does not establish measured size or deployment acceptance.
+
+[Country native checkpoint](agent-plans/integration/c12-native-partial-acceptance.json) accepts onboarding, pre-funding refusals, controlled funding/replay and safe cleanup/shutdown at their stated scopes. All five city journeys remain unvisited. Original players and production are unchanged.
+
+[a646 host source review](agent-plans/integration/a646-host-gap-review.md) closes H1-H3 in test design, with [two actual Node/Worker passes](agent-plans/integration/2a0-a646-execution-review.json). Its TS2722 compiler error remains a separate integration hold. Corrected source, final gates, compatible OFF rollback artifact and native acceptance are still required.
+
+## 2026-10-10 02:18 UTC compressed startup still blocks release
+
+[Measured 3e3 gates](agent-plans/integration/3e3-measured-startup-failure.json) pass compiler and build on Node 22/24 but fail download limits at 223,002 gzip and 195,915 Brotli bytes. Raw startup is now within its limit at 614,097 bytes. Compressed bytes increased despite raw savings. Existing startup owner is diagnosing a different repair; no waiver or identical retry. Remaining full CI checks continue.
+
+[Published household source inventory](agent-plans/integration/e52-household-inventory.md) confirms an inactive transaction adapter and ten source pins. Real session/life/home/pair authority, lifecycle, residency and financial consumers remain unbound. No durable household journey or activation is accepted.

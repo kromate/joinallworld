@@ -471,16 +471,37 @@
       "destinationIntegrationSha": null
     },
     {
-      "key": "graphics_held_private",
+      "key": "graphics_diagnostic_published",
       "owner": "GRAPHICS",
       "commit": "cf8b7417b5f428dc6cb59f601fbde560cd9a7c71",
-      "branches": [],
-      "branchCount": 0,
+      "branches": [
+        "codex/cloud-npc-camera-final-20261010"
+      ],
+      "branchCount": 1,
       "containedInCombinedCandidate": false,
+      "retrievable": true,
+      "ledgerItems": "INT-024",
+      "originalEvidence": "Published after owner approval; two diagnostic files under evidence/ only; retained as evidence, not a runtime patch; its camera gates remain failed",
+      "disposition": "accepted",
+      "destinationIntegrationSha": null
+    },
+    {
+      "key": "private_rest_driving_household",
+      "owner": "GRAPHICS, LIVING",
+      "commit": null,
       "retrievable": false,
-      "ledgerItems": "INT-014, INT-015, INT-024 to INT-027",
-      "originalEvidence": "Not present on the public remote after a full fetch; publication was rejected by automatic approval review",
+      "containedInCombinedCandidate": false,
+      "ledgerItems": "INT-014, INT-012, INT-016",
+      "originalEvidence": "Named in owner inventories; not on the remote",
       "disposition": "held for approval",
+      "destinationIntegrationSha": null
+    },
+    {
+      "key": "wrist_repair_dependency",
+      "owner": "GRAPHICS",
+      "commit": "93bc1acc",
+      "note": "Wrist repair depends on this whole line (51 native rig files plus wiring); trial merge in progress",
+      "disposition": "needs repair",
       "destinationIntegrationSha": null
     }
   ]

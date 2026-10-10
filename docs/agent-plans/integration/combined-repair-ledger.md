@@ -702,3 +702,39 @@ Coverage finding: all 35 INT IDs and all 58 ANN rows are present above, but the 
 | Cloud graphics-background-and-wardrobe | INT-024, INT-026, INT-027 |
 
 The six automation lanes of the coverage audit stay explicit: in-game staff/services/schedules and offline settlement (INT-012, INT-019, INT-031, INT-032 and household/commerce ANN rows); decorator timers, edit grants, gifts and reservations (additional obligations 2 and 3); social timers and callbacks across identity changes (INT-034); the external automation lane (LIVING R12, parked); real merchant integration (LIVING R13, parked); and development CI/release/reporting (INT-017, INT-028).
+
+## 2026-10-10 11:45 UTC — Owner approvals, publication correction and new requirements
+
+Correction to the previous entry: `cf8b7417b5f428dc6cb59f601fbde560cd9a7c71` was not on the remote at the first fetch; the owner then approved it and it was published without force on `codex/cloud-npc-camera-final-20261010` (see the handoff [publication manifest](../cloud-handoff-20261010/graphics-approved-publication-manifest.json)). It is now fetched and verified. Its chain changes two diagnostic files under `evidence/` only; it is not a runtime repair and closes no item. The rest-support patch, and the private driving and household checkpoints, remain unpublished and outside this approval; INT-014 stays waiting on that source.
+
+Finding from the first GRAPHICS unit: the published wrist repair `7aeacb04dc2a523e3b504898aad9f95bf11d5c0a` cannot be integrated alone. It modifies two files of a native rig (51 files under `src/scene/body/native/` plus scene wiring) that the combined candidate does not contain. Nothing was applied. A trial merge of that whole line onto the candidate, with full gates and measured byte effect, is the next GRAPHICS unit; INT-024, INT-025 and the wrist sub-item stay open.
+
+Owner decisions recorded today:
+
+- Releases go out in batches of accepted work, each with its own gates.
+- Checks run mainly on the owner's machine, serialised through the shared heavy-command queue. The earlier allowance stop applied to a different session and does not gate this one. No extra spend.
+- Physical-device acceptance (INT-020) is done by the owner. Simulated phone viewport and throttled-network runs are in scope and are labelled simulated; they never substitute for the physical result.
+- The external automation lane (LIVING R12) and the real-merchant lane (LIVING R13) are authorised and no longer parked. Requirement added: the flow must be seamless, and the player is never shown or asked about the automation provider. Real payments stay outside the game's accounts: sellers supply their own contact and payment links, and the game holds no money.
+- Aggregate analytics access is restored (additional obligation 7). Person-level and replay data stay out of scope.
+
+New requirements from the owner, checked for overlap with existing rows. Each keeps its own stable ID; the overlap column lists rows whose work it shares, and closing those rows does not close the new one.
+
+| ID | Estimate | Requirement | Overlaps |
+|---|---|---|---|
+| STRAT-01 | 4/5 | Skills and services showcase: shop plots a seller can claim on a street, with building style | ANN-29, ANN-31, LIVING-R13 |
+| STRAT-02 | 3/5 | Shop editor: name, category, colours, sign, logo, 3 to 6 portfolio photos, prices, opening hours; 4 to 6 building templates and category presets | ANN-29, OBL-2 |
+| STRAT-03 | 2/5 | Contact and pay buttons: seller's own chat link and payment link. Allworld never holds money | LIVING-R13 |
+| STRAT-04 | 3/5 | Walk-in shop view and a searchable market directory by category and city, with follow/save and a shareable shop link | ANN-29, ANN-58 |
+| STRAT-05 | 3/5 | Reviews from players who contacted a seller; verified badge or uniform | ANN-11 |
+| STRAT-06 | 4/5 | Seamless booking: enquire or book a real service from inside the world, with the automation provider invisible to the player | LIVING-R12, AUTO-4 |
+| STRAT-07 | 3/5 | City and state leaderboards and rivalries | ANN-49, ANN-58 |
+| STRAT-08 | 3/5 | Guest-first five minutes: enter at once, meet someone, finish something together, then offer to save the character | OBL-6, ANN-35 |
+| STRAT-09 | 5/5 | One connected career loop: learn to drive, pass the licence test, deliver to another player's shop, they serve customers, both progress; NPC fallback when quiet | INT-030, INT-031, INT-029, INT-032 |
+| STRAT-10 | 5/5 | One polished room: walk, sit, sleep, buy and place furniture, invite a friend, leave and return, reload without losing anything; fixed-angle view, walls fade | ANN-08, ANN-25, ANN-26, INT-014, INT-015 |
+| STRAT-11 | 3/5 | Phone layout around the world: money, time and needs on top; Home, Build, Map, Phone at the bottom; one contextual action; one current objective | OBL-6, INT-009 |
+| STRAT-12 | 4/5 | Decorating loop: select, preview, move/rotate, valid or blocked placement, confirm, save; server checks ownership and payment once | ANN-08, ANN-26, ANN-54 |
+| STRAT-13 | 4/5 | Map: nearby district in detail, distant areas simple, clustered player markers, clear way to get there | WORLD-GLOBAL-DETAIL, WORLD-LAZY-PROVIDER |
+| STRAT-14 | 4/5 | Community contributions: templates for a street, outfit, shop or mission; review; visible credit | None |
+| STRAT-15 | 2/5 | Market night: a weekly event so buyers and sellers are online together | ANN-57 |
+| STRAT-16 | 2/5 | Measurement: shop visits, contact clicks, seller-reported sales, first-mission completion, friend joins, return rates (aggregate only) | OBL-7 |
+| STRAT-17 | 5/5 | Phone app (Android/iPhone) sharing the same backend | STRAT-10 |

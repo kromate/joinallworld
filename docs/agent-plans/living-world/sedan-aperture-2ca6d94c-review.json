@@ -1,0 +1,73 @@
+{
+  "candidate": "2ca6d94c39dc06ee0a17626219207859bf5b3cb6",
+  "sourceProof": "30 prior uniquely matched hunks +2 follow-up hunks +1 exact single-occurrence command replacement; both final hashes match actual source before/after19-pass run and commit",
+  "files": {
+    "sedan-aperture.ts": {
+      "bytes": 31925,
+      "sha256": "be8a436cfae4238f25c0e9dc516135870088dde98d8631a19aa78652bcfbe215"
+    },
+    "sedan-aperture.test.ts": {
+      "bytes": 35165,
+      "sha256": "0b496813b3074d191dfa22b9ff2bd32dc83f1311990b36be8276c257097cdaf6"
+    }
+  },
+  "execution": {
+    "id": "exec-44e3353b-7d2a-4c95-928a-c5cd91fb1bd7",
+    "exit": 0,
+    "bytes": 1982,
+    "sha256": "361aa4ddb7d0048c167fa4ab8c6c81ef069bd3b9202f2d379738b198e7569bd1",
+    "pass": 19,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 216.502861,
+    "matchesActualTeeHash": true
+  },
+  "failedRunsPreserved": [
+    {
+      "id": "exec-89297793-343a-4737-8992-0d93ac7a8da1",
+      "exit": 1,
+      "capturedBytes": 20000,
+      "sha256": "74e4e85a07d00bd87c4d0e47e79047d02b1724bc566da0d19a47cd9003eacf63",
+      "captureTruncated": true
+    },
+    {
+      "id": "exec-b863ff21-d9d0-4655-a929-763fc3017493",
+      "exit": 1,
+      "capturedBytes": 6087,
+      "sha256": "6729717def46b4b618bd506c9f1a1c0b535a5a2556e8a8a6e9f546549eedfb4a",
+      "captureTruncated": false
+    }
+  ],
+  "reviewedAt": "2026-10-10T04:31:18.351347+00:00",
+  "decision": "ACCEPT_FINITE_SOURCE_AND_CPU_GEOMETRY_AUDIT_ONLY",
+  "publicBaseline": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "changedFiles": [
+    "server/living-world/sedan-aperture.ts",
+    "server/living-world/sedan-aperture.test.ts"
+  ],
+  "progress": [
+    "Retained driver cap outside the articulated cut is conservatively enclosed.",
+    "Full source-offset windscreen AABB, eight actual-mesh vertex witnesses and actual face contact. Original nominal-point envelope fixture retains its narrower meaning.",
+    "Both side glass/pillar/trim sets included; passenger handle uses source z=.04, driver uses z=.12.",
+    "Rear-glass and roof-trim envelopes; street-only actual rear-window witness respects map.trim=false.",
+    "Actual generated interior bounds, retained obstacle identities, continuous door envelope, actual normal/reduced anchor centerlines and strict descriptor/source refusals retain their scope."
+  ],
+  "testRepairs": "Map detail omits the optional rear-window box. Rear glass and B-pillar lie outside the driver clipping volume and keep original obstacle IDs. Only test expectations changed after those failures; no distance/cap/source geometry waiver.",
+  "sourcePublication": "Local exact clean two-file commit observed. Normal authorised original publication pending at time of review; no alternate publisher or denied ancestry.",
+  "executionScope": "Existing cloud shared heavy1; read-only matching Three dependency reuse. Final explicit1536heap command, no install, renderer, server, browser or runtime registration. Sol only reconstructed/read/hashed artifacts.",
+  "pending": [
+    "Final exact compiler evidence and public source receipt before integration.",
+    "Complete clothed actor pose and continuous animated boarding/exiting fit.",
+    "Terrain and support, full scene collision, mapped route/yield/vehicle authority.",
+    "Actual desktop/mobile controls, interrupted journey and complete earned licence/rental/restock/barber progression.",
+    "Final integrated unchanged download caps, compatibleOFF package/staging, production release and live/save observation."
+  ],
+  "authority": {
+    "canBoard": false,
+    "authoritativeClearance": false,
+    "routeAuthorized": false,
+    "actorFitAccepted": false,
+    "runtimeRegistered": false,
+    "deployed": false
+  }
+}

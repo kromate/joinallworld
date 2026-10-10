@@ -1,0 +1,36 @@
+{
+  "reviewedAt": "2026-10-10T04:31:18.351347+00:00",
+  "candidate": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "decision": "NODE22_TERMINAL_RESULT_VERIFIED_MATRIX_STILL_NOT_ALL_PASS",
+  "originalNode22": {
+    "commandId": "exec-b09e672d-91a1-470e-b9c0-9846484eddd1",
+    "node": "v22.23.3",
+    "pid": 162772,
+    "exit": 0,
+    "endedAt": "2026-10-10T04:23:26.830499+00:00",
+    "durationSeconds": 1320.566582,
+    "pass": 2588,
+    "fail": 0,
+    "skip": 1,
+    "tests": 2589,
+    "declaredFullLogSha256": "0a7fbed005a10400ab7a4ade16f93360d4b785afa8d9307e3f1aaf2cc572f22d",
+    "headAfter": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+    "gitStatusAfter": "",
+    "sourceUnchanged": true,
+    "sourcePinsBefore": {},
+    "sourcePinsAfter": {},
+    "originalReceiptCompleteInSupportedToolCapture": true,
+    "entireRawLogIndependentlyDownloaded": false
+  },
+  "scope": "Complete first original receipt and terminal counts inspected inside combined tool output. Combined output is truncated later; no claim that all remaining receipt bytes or entire raw log were inspected.",
+  "priorNode24": {
+    "pass": 2587,
+    "fail": 1,
+    "skip": 1,
+    "status": "FAIL retained",
+    "finding": "community-reconnect-c12-source-review.json"
+  },
+  "matrix": "Original terminal matrix explicitly records node24-game-corrected-full wrapper_exit1 and node22-game-corrected-full wrapper_exit0. One passing runtime does not clear the other failure.",
+  "releasePolicy": "Separate original driver terminal reports package guard and plan inventory wrapperExit0. Published complete raw receipts pending; no deployment acceptance.",
+  "next": "Existing exclusive owner repairs zero-delay test harness deterministically, retaining valid production jitter and both original runtime results. No unchanged full-suite retry from Node22 success."
+}

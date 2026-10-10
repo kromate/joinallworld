@@ -22,7 +22,7 @@
       "funding",
       "spawn"
     ],
-    "blockingAuditConsecutiveGoalTurns": 1
+    "blockingAuditConsecutiveGoalTurns": 2
   },
   "sourceCheckpoint": {
     "head": "34acb4b5a8bcdabfd58765f8e61b58aaaa1bf391",
@@ -156,5 +156,48 @@
       "scope": "Actual Cloudparent gitls-remote output observed; prototype budget-fix checkpoint only, no corrected55/15 or consumer/production acceptance claimed."
     }
   ],
-  "terminalUpdateAtUtc": "2026-10-10T04:57:44.370474+00:00"
+  "terminalUpdateAtUtc": "2026-10-10T04:57:44.370474+00:00",
+  "publicCloudFinalSnapshot": {
+    "publicationCommit": "3f6246f25da3301690ae7a1b07c6b67b67f6841f",
+    "files": [
+      {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/four-percent-final-checkpoint/execution-policy-stop.json",
+        "bytes": 986,
+        "sha256": "740fe0a290b1c321b04709a6632c2076a3adfe99633b7195320b9c90e1691404"
+      },
+      {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/four-percent-final-checkpoint/process-inventory.json",
+        "bytes": 26060,
+        "sha256": "9d5e95fbcc67ee7260337b25658352e5a324eeba76527fa6cd29b293f54dd076"
+      },
+      {
+        "path": "docs/agent-plans/cloud-receipts/2026-10-10/four-percent-final-checkpoint/owner-checkpoint-inventory.json",
+        "bytes": 12623,
+        "sha256": "cf451b00fac92c680409b10f16a4ba89ef1694ab3e497d8b7b1be3683f2921a3"
+      }
+    ],
+    "processObservedAtUtc": "2026-10-10T04:54:21.918023+00:00",
+    "hostname": "96cc63a2f9d2",
+    "matchingLivePhaseProcesses": [],
+    "sharedLeases": {
+      "heavy": [],
+      "server": [],
+      "browser": []
+    },
+    "preexistingChromiumZombies": 170,
+    "preexistingZombieRssKb": 0,
+    "countryCheckpointOwnerRow": {
+      "owner": "/root/country_browser_astra",
+      "checkpoint": "source packet8bceca5f586ca4b619759bb778dd142151b08302",
+      "sourceControllerSha256": "b92773045ea16f20f9e7f92e18aca0901dbb791a6e5e43bcb93f1ca52b759fce",
+      "ownerHelperSha256": "1f9b26b4182354e931ec81b81061f0158158007e7c87b5c15e3ca961523126ba",
+      "privateCheckpointPath": "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/checkpoint-quota4-no-launch-20261010.json",
+      "privateCheckpointSha256": "6b95288375a1ebcf5ef3c3a334c90dfb0033bdf20522fe1ffc41e892c860b020",
+      "runtime": "never launched; no stage/browser/helper/funding/READY/livebindings",
+      "modelEvidence": "Accepted explicit spawn requestedgpt-6-astra/high; backend model ID unexposed",
+      "stopAcknowledged": true
+    },
+    "scope": "Read/hash/parse public original snapshot at its recordedtime. No freshglobal/allprocessabsence claim and no runtime or implementation performed. The private5341B country checkpoint itself remains owner-reported, not fetched.",
+    "rootReviewAtUtc": "2026-10-10T05:00:31.292058+00:00"
+  }
 }

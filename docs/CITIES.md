@@ -65,6 +65,8 @@ Map geometry follows the equirectangular Nigeria frame: 8 degrees east and 9 deg
 
 ## Adding a city
 
+Cities outside Nigeria follow [Cities abroad](CITIES-ABROAD.md).
+
 New cities use `src/game/cities/<id>/spec.ts` and pinned source records. Follow [City research](CITY-RESEARCH.md), then run `npm run cities:build -- <id>` and `npm run cities:build -- <id> --check`. The generator derives gameplay from place kinds and writes the runtime modules. Sagamu uses a separate legacy recipe to retain its existing authored content exactly.
 
 1. Review the spec and pinned sources, then generate the city. Keep generated, licensed geometry behind the map loader. The registry generates road and eligible air links automatically. Only verified rail lines need authored links, written with `timedLink({ …, mode, km })`; their seconds come from `INTERCITY_TIME`. Every provisional fare carries `beta: true`.

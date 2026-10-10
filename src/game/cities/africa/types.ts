@@ -1,5 +1,5 @@
 import { originAt } from '../../../geo/frame.ts'
-import type { CityMapOrigin, CityMapPack } from '../../../types/content.ts'
+import type { CityMapOrigin, CityMapPack, SceneKind, VenueCategoryId } from '../../../types/content.ts'
 
 /** Small sourced fact set for a playable destination starter. Only the airport is a real venue. */
 export interface DestinationFacts {
@@ -17,6 +17,40 @@ export interface DestinationFacts {
   readonly bounds: readonly [west: number, south: number, east: number, north: number]
   /** Explains the scope and limits of the starter play area. */
   readonly coverageNote: string
+  /** Real names for what the compact rules show before any map loads. Absent for a bare starter zone. */
+  readonly names?: DestinationNames
+}
+
+/** Real names for the parts of a destination that load first. */
+export interface DestinationNames {
+  /** The play area as a place: "Greater Cairo", not "Starter play zone". */
+  readonly area: string
+  /** What its parts are called here, lower case ("district"). */
+  readonly unit: string
+  /** The road hub (a station or terminal that is a mapped place). */
+  readonly roadHub: string
+}
+
+/** A real, sourced place that stands in for a generic game venue, or adds one. */
+export interface DestinationPlace {
+  /** The generic starter venue it replaces; its id, spots and activities are kept so saved lives and goals still resolve. */
+  readonly slot?: keyof ReturnType<typeof destinationVenueIds>
+  /** Id suffix of an added venue (`<city>-<key>`); required when there is no slot. */
+  readonly key?: string
+  readonly name: string
+  readonly district: string
+  readonly kind: SceneKind
+  readonly category: VenueCategoryId
+  readonly icon: string
+  readonly lon: number
+  readonly lat: number
+  /** One plain sentence about the real place. */
+  readonly line: string
+  /** The recorded OpenStreetMap element, such as `way/123`. */
+  readonly osm: string
+  readonly wikidata?: string
+  /** How the point was obtained. */
+  readonly accuracy: 'mapped-feature' | 'feature-centroid'
 }
 
 export type DestinationMapLoader = () => Promise<CityMapPack<string, string>>

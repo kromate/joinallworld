@@ -4,7 +4,7 @@ import { fromLocal, toLocal } from '../../../geo/frame.ts'
 import type { CityContent, TravelModeDefinition } from '../../../types/content.ts'
 import type { CityBounds, CityContentSpec, CityPoint, CityPersonSeed, CityVenueSeed } from '../contentBuilder.ts'
 import { destinationVenueIds, validateDestinationFacts } from './types.ts'
-import type { DestinationFacts } from './types.ts'
+import type { DestinationFacts, DestinationPlace } from './types.ts'
 
 const betaNote = 'Starter gameplay placeholder; shared game economy values are provisional and do not describe local prices.'
 
@@ -43,6 +43,8 @@ const regularPairs: readonly (readonly [string, string])[] = Object.freeze([
 const starterNames: readonly string[] = Object.freeze([
   'Alex', 'Casey', 'Jordan', 'Morgan', 'Riley', 'Taylor', 'Avery', 'Quinn', 'Jamie', 'Robin',
   'Jesse', 'Cameron', 'Drew', 'Skyler', 'Sidney', 'Sam', 'Ari', 'Lee', 'Remy', 'Noel',
+  'Blake', 'Dana', 'Eden', 'Finley', 'Gray', 'Harper', 'Indigo', 'Kai', 'Logan', 'Marlow',
+  'Nico', 'Oakley', 'Parker', 'Reese', 'Sage', 'Tatum', 'Uri', 'Vale', 'Wren', 'Yael',
 ])
 
 const peopleFor = (id: string, venues: readonly CityVenueSeed[]): readonly CityPersonSeed[] => Object.freeze(venues.flatMap((venue, index) => {
@@ -89,14 +91,28 @@ function replaceHomeMeal(content: CityContent<string>, cityId: string): CityCont
   })
 }
 
-/** Build generic playable prose and activities without inventing local businesses or customs. */
-export function buildDestinationContent(facts: DestinationFacts): CityContent<string> {
+/** The one activity an added real place offers, by what kind of place it is. */
+function visitSeed(valid: DestinationFacts, place: DestinationPlace, id: string): CityVenueSeed {
+  const sight = place.kind === 'worship' ? ['Take a quiet moment', '🕊️', ['rest', 'fun'], { fun: 6, energy: 5 }] as const
+    : place.kind === 'quad' ? ['Walk the campus', '🎓', ['fun'], { fun: 8, energy: 1 }] as const
+    : place.kind === 'viewing' ? ['Watch from the stands', '🏟️', ['fun'], { fun: 10 }] as const
+    : ['Look around', '🧭', ['fun'], { fun: 8, energy: 1 }] as const
+  return {
+    id, name: place.name, district: place.district, kind: place.kind, category: place.category, icon: place.icon,
+    point: { lon: place.lon, lat: place.lat }, description: place.line, ambient: [], beta: true,
+    note: `${place.name}: OpenStreetMap ${place.osm}${place.wikidata ? `, Wikidata ${place.wikidata}` : ''} (${place.accuracy}). ${valid.licence}.`,
+    spots: [spot('visit', 'Visit', activity(`${id}-visit`, sight[0], sight[1], [...sight[2]], { cost: 0, effects: sight[3], beta: true, note: betaNote }))],
+  }
+}
+
+/** Build generic playable prose and activities without inventing local businesses or customs. Real places, where given, replace the generic names and points. */
+export function buildDestinationContent(facts: DestinationFacts, places: readonly DestinationPlace[] = []): CityContent<string> {
   const valid = validateDestinationFacts(facts)
   const ids = destinationVenueIds(valid.id, valid.airport.id)
   const centre = pointAt(valid, 0, 0)
-  const venues: readonly CityVenueSeed[] = Object.freeze([
+  const generic: readonly CityVenueSeed[] = Object.freeze([
     {
-      id: ids.airport, name: valid.airport.name, district: 'Starter play zone', kind: 'airport', category: 'civic', icon: 'airport',
+      id: ids.airport, name: valid.airport.name, district: valid.names?.area ?? 'Starter play zone', kind: 'airport', category: 'civic', icon: 'airport',
       point: { lon: valid.airport.lon, lat: valid.airport.lat }, description: `Arrive at ${valid.airport.name}.`, ambient: [], beta: true,
       note: `${valid.sourceLabel}; airport location: ${valid.airport.sourceUrl}. ${valid.licence}.`,
       spots: [spot('arrival', 'Visitor information', activity(`${valid.id}-arrival-info`, 'Read visitor information', '🧭', ['travel'], { effects: { fun: 2 }, beta: true, note: betaNote }))],
@@ -151,6 +167,20 @@ export function buildDestinationContent(facts: DestinationFacts): CityContent<st
       spots: [spot('notices', 'Community noticeboard', activity(`${valid.id}-community-notices`, 'Read community game notices', '📋', ['civic'], { cost: 0, effects: { fun: 2 }, beta: true, note: betaNote }))],
     },
   ])
+  const real = new Map<string, DestinationPlace>(places.flatMap(place => place.slot ? [[ids[place.slot], place] as const] : []))
+  const slotted = generic.map((venue): CityVenueSeed => {
+    const place = real.get(venue.id)
+    if (!place) return venue
+    // The slot keeps its id, kind, spots and activities; the real place gives it a name, a point and a description.
+    return { ...venue, name: place.name, district: place.district, point: { lon: place.lon, lat: place.lat }, description: place.line,
+      note: `${place.name}: OpenStreetMap ${place.osm}${place.wikidata ? `, Wikidata ${place.wikidata}` : ''} (${place.accuracy}). ${valid.licence}. ${betaNote}` }
+  })
+  const added = places.filter(place => !place.slot).map(place => {
+    if (!place.key || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(place.key)) throw new TypeError(`${valid.id}: an added place needs a lowercase key`)
+    return visitSeed(valid, place, `${valid.id}-${place.key}`)
+  })
+  const venues: readonly CityVenueSeed[] = Object.freeze([...slotted, ...added])
+  const area = valid.names?.area ?? 'Starter play zone'
   const home = centre
   const bounds = contentBounds(valid, venues, home)
   const recreationActivity = `${valid.id}-recreation`
@@ -160,13 +190,13 @@ export function buildDestinationContent(facts: DestinationFacts): CityContent<st
     cityName: valid.name,
     origin: valid.mapOrigin,
     bounds,
-    localUnitDescriptions: { centre: `Starter play zone within ${valid.coverageNote}` },
+    localUnitDescriptions: { centre: `${area} within ${valid.coverageNote}` },
     venues,
     people: peopleFor(valid.id, venues),
     careerVenues: { 'community-helper': ids.community, tech: ids.community },
     careerSummaries: { 'community-helper': 'Help run activities at the community game venue.', tech: 'Build technical skills at the community game venue.' },
     unavailableCareerIds: careers,
-    houses: [{ id: `${valid.id}-centre-home`, label: 'Starter room (game home)', districtId: 'centre-home', district: 'Starter play zone', rent: 6000, grid: 6, point: home }],
+    houses: [{ id: `${valid.id}-centre-home`, label: 'Starter room (game home)', districtId: 'centre-home', district: area, rent: 6000, grid: 6, point: home }],
     events: [],
     firstFun: { venue: ids.recreation, spot: 'visit', activity: recreationActivity, title: 'Take a free break', hint: 'Visit the recreation game venue for fun and rest.' },
     buka: ids.meal,
@@ -176,7 +206,7 @@ export function buildDestinationContent(facts: DestinationFacts): CityContent<st
     radioVenueIds: [ids.recreation], billboardRoads: [],
     tablePlaces: [{ id: `${ids.recreation}-chess`, venueId: ids.recreation, game: 'chess', label: 'Starter chess table (game venue)', seats: 2 }],
     dreamWording: {}, lotteryWording: {},
-    unitLabel: 'starter play zone', wishPrefix: valid.id,
+    unitLabel: valid.names?.unit ?? 'starter play zone', wishPrefix: valid.id,
   })
   return replaceHomeMeal({
     ...content,

@@ -1,11 +1,14 @@
 import { toLocal } from '../../../geo/frame.ts'
 import type { CityMapPack, CityModule, LonLatPolygon } from '../../../types/content.ts'
 import type { CityPack, Point2 } from '../../../map3d/types.ts'
+import type { RoadRows } from '../../../map3d/cities/module.ts'
 import { validateDestinationFacts } from './types.ts'
 import type { DestinationFacts } from './types.ts'
 
 export interface DestinationGeometry {
   readonly land: readonly LonLatPolygon[]
+  /** The play area where it is more than the land, because water lies inside it. */
+  readonly playArea?: readonly LonLatPolygon[]
   readonly buildings: readonly {
     readonly id: string
     readonly ring: readonly Point2[]
@@ -15,10 +18,27 @@ export interface DestinationGeometry {
   readonly roads: readonly { readonly id: string; readonly name: string; readonly major: boolean; readonly points: readonly Point2[] }[]
 }
 
-export function createDestinationMap(facts: DestinationFacts, geometry: DestinationGeometry, loadModule: () => Promise<CityModule>): CityMapPack<string, 'centre'> {
+/** The wider map of a destination whose geography was gathered city-wide rather than as a central sample. */
+export interface DestinationTerrain {
+  /** A wider first-level outline for the overview; the play area outline is used when absent. */
+  readonly state?: readonly LonLatPolygon[]
+  /** Rivers, lakes and sea inside the play area, as polygons. */
+  readonly water: readonly LonLatPolygon[]
+  /** Main roads in the compact row format of `RoadRows`. */
+  readonly roads: RoadRows
+  /** Names of the strongest roads. */
+  readonly trunkRoads: readonly string[]
+  /** Ground labels that are not venues: neighbourhoods, and water bodies (`kind: 'water'`). */
+  readonly names: readonly { readonly id: string; readonly name: string; readonly lon: number; readonly lat: number; readonly kind: 'neighbourhood' | 'water' }[]
+  /** Where each layer came from. */
+  readonly source: string
+  readonly licence: string
+}
+
+export function createDestinationMap(facts: DestinationFacts, geometry: DestinationGeometry, loadModule: () => Promise<CityModule>, terrain?: DestinationTerrain): CityMapPack<string, 'centre'> {
   const valid = validateDestinationFacts(facts)
   if (!geometry.land.length || geometry.buildings.length > 350 || geometry.roads.length > 160) throw new RangeError('Starter map geometry exceeds its bounds')
-  const rings = [...geometry.land.flat(), ...geometry.buildings.map(building => building.ring), ...geometry.roads.map(road => road.points)]
+  const rings = [...geometry.land.flat(), ...(geometry.playArea?.flat() ?? []), ...(terrain?.state?.flat() ?? []), ...(terrain?.water.flat() ?? []), ...geometry.buildings.map(building => building.ring), ...geometry.roads.map(road => road.points)]
   for (const ring of rings) {
     if (ring.length > 6000 || !ring.every(([lon, lat]) => Number.isFinite(lon) && Number.isFinite(lat) && Math.abs(lon) <= 180 && Math.abs(lat) <= 90)) throw new TypeError('Starter map needs finite WGS84 points')
   }
@@ -27,11 +47,16 @@ export function createDestinationMap(facts: DestinationFacts, geometry: Destinat
     cityId: valid.id, origin: valid.mapOrigin, projection: 'nigeria-equirectangular-v1', unitsPerKm: 10,
     localUnitIds: ['centre'], stateFeatureId: valid.state.idunique,
     loadGeometry: async () => ({
-      localUnits: { centre: geometry.land }, playArea: geometry.land, state: geometry.land, water: [],
-      gridDegrees: .000001, sharedArcCount: 0, source: `${valid.sourceLabel}. ${valid.coverageNote}`, licence: valid.licence,
+      localUnits: { centre: geometry.land }, playArea: geometry.playArea ?? geometry.land, state: terrain?.state ?? geometry.playArea ?? geometry.land, water: terrain?.water ?? [],
+      gridDegrees: .000001, sharedArcCount: 0, source: `${terrain ? `${terrain.source}. ` : ''}${valid.sourceLabel}. ${valid.coverageNote}`, licence: terrain ? `${valid.licence}; ${terrain.licence}` : valid.licence,
     }),
     loadScene: async (): Promise<CityPack> => {
       const [{ createModulePack }, module] = await Promise.all([import('../../../map3d/cities/module.ts'), loadModule()])
+      if (terrain) {
+        // City-wide geography: the shared module renderer draws the outline, water, roads and labels, as for the Nigerian cities.
+        const labels = terrain.names.map(name => ({ id: name.id, name: name.name, lon: name.lon, lat: name.lat, kind: name.kind }))
+        return createModulePack(module, { spread: true, landmarks: labels, roads: terrain.roads, character: { extent: 'city', trunkRoads: terrain.trunkRoads } })
+      }
       const pack = await createModulePack(module, { spread: true, character: { extent: 'city' } })
       const origin = valid.mapOrigin
       const buildings = geometry.buildings.map(building => {

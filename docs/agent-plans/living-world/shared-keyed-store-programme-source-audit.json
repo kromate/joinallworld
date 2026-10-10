@@ -1,0 +1,50 @@
+{
+  "observedAtUtc": "2026-10-10T01:11:03.487511+00:00",
+  "sharedSeam": "f28182fe08aaf9efecd412c64340dc609a66883d",
+  "reportedLocal65e6498": "GitHub commit API returned422; no published source accepted from this local shorthand. Publishedf281 resolved/fetched by fullSHA.",
+  "integrationReviewCommit": "16f0dfd84e3aa2ff14a7ef2b99d6aca95eea1d5b",
+  "allFiveIntegrationSourcePinsIndependentlyMatch": true,
+  "wholeDurableStorageRead": true,
+  "underlyingSourceFindings": {
+    "S1": "Genuine KeyedMap getOwnPropertyDescriptor reports own data valueundefined even after indexedget. HouseholdPoint rejects it; plain-object indexed read also unnecessarily reaches inherited lookup before absence.",
+    "S2": "Actual Node async DBproxy reports own top-level collection descriptor.valueundefined; rootOf rejects existinghouseholds. Worker rootdescriptor returnsactualcollection.",
+    "repair": "Sameexisting householdwriter: explicit trusted host root extraction and WeakMap-backed genuine map point reads. Preserve ordinary ownundefined/accessor/inherited corruption refusal; no blanket descriptor relaxation."
+  },
+  "programmeSource": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+  "programmePins": {
+    "server/living-world/driving-service.ts": {
+      "source": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "sha256": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+      "bytes": 28685
+    },
+    "server/living-world/clerk-service.ts": {
+      "source": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "sha256": "4afa60186499cd6ffba1e69e9632d5560c414beb4cc2faadb63415d2f66860df",
+      "bytes": 17118
+    },
+    "server/living-world/barber-service.ts": {
+      "source": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "sha256": "5b7bb38430a347da7ba1b2ff6cb206af15ed91835d22a7736beef275f1261cd4",
+      "bytes": 33164
+    },
+    "server/living-world/privacy.ts": {
+      "source": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "sha256": "daeab3412007ef382de6fa915246c3fc82b8146dbf045bf153a4e78898bb57be",
+      "bytes": 19127
+    },
+    "server/living-world/npc-inventory.ts": {
+      "source": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "sha256": "4092d68608b9e1e8a96f6d6eeff8ac60ac875b54208d3126e2e07b1032aae603",
+      "bytes": 20771
+    }
+  },
+  "boundedImpactAudit": [
+    "Driving/qualification/barber keyed storage is registered in existing KEYED_SPECS. Current services use ownpresence + actual indexed entry, rather than rejecting placeholder descriptor.value.",
+    "Clerk maps and NPC parcels/npcInventory are not registered keyed maps in this source. Their descriptor checks apply to ordinary parsed nested records.",
+    "Privacy erasure preflight reads only descriptor.configurable, not placeholder value; actual row reads use indexed access."
+  ],
+  "qualification": "Source-pattern audit only. Does not prove actual host durability or every service path; no tests/runtime/store reads performed. Do not generalize householdadapter failure into a current driving/Clerk failure or use this audit to waive Node/Worker checks.",
+  "existingOwnerNotified": true,
+  "sharedSourceModified": false,
+  "activationApproved": false
+}

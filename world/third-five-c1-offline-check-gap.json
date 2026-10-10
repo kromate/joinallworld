@@ -92,5 +92,43 @@
     "Named failure and source mismatch are directly observed; entire suite completion and full raw stderr are not yet inspected.",
     "No actual runtime regression or geometry defect is inferred from this checker integration gap.",
     "No new city is deployed by recording this diagnosis."
-  ]
+  ],
+  "readOnlyActualLegacyCheckerExecution": {
+    "executionLocation": "WORLD isolated checkout with exactC1 script blobs",
+    "checks": [
+      {
+        "script": "scripts/world/build-playable-africa.py",
+        "scriptSha256": "d977607983c57aca45876ca914a26a5ceafdf7e07509865e5843da9744a8314f",
+        "exitStatus": 0,
+        "stdoutSha256": "88f7bcc8d20b455d8427645acf88baa8f5a8a2adc6ac02ad0430b034eaebfaa4",
+        "checkedCityIds": [
+          "yaounde",
+          "lome",
+          "accra",
+          "nairobi",
+          "algiers"
+        ]
+      },
+      {
+        "script": "scripts/world/build-playable-africa-wave2.py",
+        "scriptSha256": "0842dd6a4230a88f06206108854f9ebd9f9d2eaeaea6ec8044c29fbc6c64572f",
+        "exitStatus": 0,
+        "stdoutSha256": "bd458cda9fa15111f468964cb9f275852b0271109ff27f2a6a439b3eef7b2ed1",
+        "checkedCityIds": [
+          "cotonou",
+          "abidjan",
+          "dakar",
+          "cape-town",
+          "addis-ababa"
+        ]
+      }
+    ],
+    "observedCheckedCount": 10,
+    "registeredForeignCountFromExact91": 15,
+    "exactCoverageEquality": false,
+    "writes": "Both --check modes only read tracked asset/receipt pins. No network or game/cache/ledger modification.",
+    "scope": "This local lightweight offline diagnostic confirms the coverage mismatch. It is not a full91 game-suite execution or terminal receipt.",
+    "exact91LegacyAssetFilesVerified": 50,
+    "exact91LegacyReceiptsVerified": 10
+  }
 }

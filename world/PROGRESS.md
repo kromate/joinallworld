@@ -1,3 +1,16 @@
+# Offline source-check mismatch reproduced, 10 October 2026 at 00:59 UTC
+
+Both exact91 legacy Python checker blobs actually run --check with exit0 and
+emit precisely10 foreign IDs. All50 legacy city assets and10 source receipts
+are byte-equal91. Exact91 registers15 foreign cities, so its required sorted
+coverage equality fails for the five new cities. This confirms the named
+failure cause through a lightweight readonly diagnostic; full terminal suite
+receipt and absence of other failures remain unproved. Integration's approved
+same cloud assembler can repair the two checker/caller files in a separate
+successor checkout without touching the running91 execution. The next21-country
+input now explicitly requires the actually accepted corrected predecessor,
+not the held91 source. No deployment, acquisition, cache or save write occurred.
+
 # Required foreign checker integration identified, 10 October 2026 at 00:53 UTC
 
 The exact91 full-game log records a failure in the offline generated-city

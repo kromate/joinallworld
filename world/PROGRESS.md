@@ -1,3 +1,15 @@
+# Next serial country input pinned, 10 October 2026 at 00:44 UTC
+
+After the current16-country release passes, the next input adds Gaborone,
+Windhoek, Harare, Maputo and Luanda. All30 corrected city files/receipt pins
+match their immutable source packet and receipt asset pins. The exact current
+source is607355ea; see fourth-five-c1-release-proposal.json. It requires a fresh
+main base preserving the preceding55 rows/39 routes and concurrent production
+changes. The three catalogue outputs must be regenerated and independently
+verified on that base. No60-city compiler, startup, travel or production claim
+is made. Runtime budget failure must trigger the separate provider integration,
+not cap changes or cosmetic green countries. Current live count remains11.
+
 # Exact five-country compiler accepted, 10 October 2026 at 00:42 UTC
 
 Public receiptref2b504cc8 matches exact clean91d0ba33 candidate. The unchanged

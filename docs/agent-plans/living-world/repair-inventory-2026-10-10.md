@@ -40,4 +40,3 @@ Integration alone writes the combined deduplicated ledger. This file is the Livi
 | LIVING-R13 | 5; several operator-consent and integration batches | Real-business experiences and complete production observation remain required. Current synthetic/save checks are scoped. | Merchant consent/provenance, distinguished game objects/currency and actual services. No actual healthcare/legal service disguised as career game. Full exact-SHA review/stage/release/live save and prospective observation gates for each accepted phase. Depends actual business contracts and relevant completed journeys. |
 
 The full goal is unfinished. Difficulty ordering does not waive prerequisites or urgent save hazards. At the <=4% threshold, checkpoint all active source/log/process states without new implementation, and let Integration deduplicate this inventory with WORLD/GRAPHICS/household work. A saved record does not execute while the runtime is stopped.
-

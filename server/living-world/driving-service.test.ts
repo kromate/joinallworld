@@ -835,3 +835,95 @@ test('malformed saved journey is left intact and a failed durable start leaves n
   const absent = await (await broken.request(`${drivingPath}?city=lagos`, null, next.cookie)).json() as Reply
   assert.deepEqual([absent.ok, absent.code, absent.session], [true, 'no_journey', null])
 })
+
+async function responseTour(f: Awaited<ReturnType<typeof fixture>>): Promise<Array<{ step: string; reply: Reply }>> {
+  const tour: Array<{ step: string; reply: Reply }> = []
+  const note = (step: string, reply: Reply) => { tour.push({ step, reply }) }
+  const player = await onboard(f)
+  const cookie = player.cookie
+  note('current before any journey', await (await f.request(`${drivingPath}?city=lagos`, null, cookie)).json() as Reply)
+  const startBody = { cityId: 'lagos', requestId: id(f) }
+  const started = await post(f, `${drivingPath}/start`, startBody, cookie)
+  note('start', started)
+  assert.ok(started.session)
+  note('start retry', await post(f, `${drivingPath}/start`, startBody, cookie))
+  f.advance(100)
+  const packet = { cityId: 'lagos', journeyId: started.session.journeyId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }
+  note('input accepted', await post(f, `${drivingPath}/input`, packet, cookie))
+  note('input exact replay', await post(f, `${drivingPath}/input`, packet, cookie))
+  note('input conflicting replay', await post(f, `${drivingPath}/input`, { ...packet, frames: [{ throttle: 0, brake: 1, steer: 0 }] }, cookie))
+  note('input stale sequence', await post(f, `${drivingPath}/input`, { ...packet, sequence: 9 }, cookie))
+  note('input unknown journey', await post(f, `${drivingPath}/input`, { ...packet, journeyId: 'someone-else' }, cookie))
+  note('input explicit gear', await post(f, `${drivingPath}/input`, { ...packet, sequence: 2, frames: [{ throttle: 0, brake: 0, steer: 0, gear: 'reverse' }] }, cookie))
+  const current = await (await f.request(`${drivingPath}?city=lagos`, null, cookie)).json() as Reply
+  note('current after restart-pause', current)
+  assert.ok(current.session)
+  const stale = { cityId: 'lagos', requestId: id(f), journeyId: started.session.journeyId, revision: current.session.revision + 7 }
+  note('resume stale revision', await post(f, `${drivingPath}/resume`, stale, cookie))
+  const resumeBody = { ...stale, revision: current.session.revision }
+  note('resume', await post(f, `${drivingPath}/resume`, resumeBody, cookie))
+  note('resume replay', await post(f, `${drivingPath}/resume`, resumeBody, cookie))
+  const running = await (await f.request(`${drivingPath}?city=lagos`, null, cookie)).json() as Reply
+  assert.ok(running.session)
+  const pauseBody = { cityId: 'lagos', requestId: id(f), journeyId: started.session.journeyId, revision: running.session.revision }
+  note('pause', await post(f, `${drivingPath}/pause`, pauseBody, cookie))
+  note('pause replay', await post(f, `${drivingPath}/pause`, pauseBody, cookie))
+  note('restart refused while not restartable', await post(f, `${drivingPath}/restart`, { ...pauseBody, requestId: id(f), revision: 1 }, cookie))
+  return tour
+}
+
+test('capability freshness: trusted ON stamps every driving response, refusals and replays included; OFF stamps none', async t => {
+  const on = await fixture(t, { routes: configuredDrivingRoutes(true) })
+  const onTour = await responseTour(on)
+  const codes = new Set(onTour.map(entry => entry.reply.code))
+  for (const code of ['started', 'controls_accepted', 'packet_conflict', 'sequence_conflict', 'resumed'])
+    assert.ok(codes.has(code), `the tour exercises ${code}`)
+  assert.ok(onTour.some(entry => entry.reply.duplicate === true), 'the tour includes duplicate replays')
+  assert.ok(onTour.some(entry => entry.reply.ok === false), 'the tour includes refusals')
+  for (const { step, reply } of onTour) {
+    assert.ok(Object.hasOwn(reply, 'course'), `${step} is a driving response body`)
+    assert.equal(reply.reverseGearControls, true, `${step} (${reply.code}) must restate the capability`)
+  }
+  for (const option of [undefined, false] as const) {
+    const off = await fixture(t, { routes: configuredDrivingRoutes(option) })
+    for (const { step, reply } of await responseTour(off)) {
+      assert.ok(Object.hasOwn(reply, 'course'), `${step} is a driving response body`)
+      assert.equal(Object.hasOwn(reply, 'reverseGearControls'), false, `OFF ${step} (${reply.code}) must omit the capability`)
+    }
+  }
+})
+
+test('rows an OFF host writes keep the exact version 1 shape: no gear field, version 1, same keys as before reverse existed', async t => {
+  const f = await fixture(t, { routes: configuredDrivingRoutes(false) })
+  const player = await onboard(f)
+  const readRow = () => f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id])) as Promise<Record<string, unknown>>
+  const rowKeys = ['v', 'publicId', 'journeyId', 'cityId', 'location', 'createdAt', 'updatedAt', 'lastInputAt', 'creditMs', 'revision', 'nextSequence', 'state', 'lastPacket']
+  const stateKeys = ['routeId', 'routeVersion', 'position', 'heading', 'speed', 'checkpointIndex', 'checkpointEntry', 'stopDwellMs', 'score', 'status', 'assessment', 'feedback']
+  const check = async (step: string) => {
+    const row = await readRow()
+    assert.equal(row['v'], 1, `${step}: version`)
+    assert.deepEqual(Object.keys(row).sort(), [...rowKeys].sort(), `${step}: row keys`)
+    assert.deepEqual(Object.keys(row['state'] as object).sort(), [...stateKeys].sort(), `${step}: state keys`)
+  }
+  const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  assert.ok(started.session)
+  await check('start')
+  f.advance(100)
+  const forward = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: started.session.journeyId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }, player.cookie)
+  assert.ok(forward.ok)
+  await check('forward input')
+  for (const gear of ['forward', 'reverse']) {
+    const refused = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: started.session.journeyId, sequence: 2, frames: [{ throttle: 1, brake: 0, steer: 0, gear }] }, player.cookie)
+    assert.equal(refused.code, 'reverse_gear_disabled')
+    await check(`refused ${gear}`)
+  }
+  const paused = await (await f.request(`${drivingPath}?city=lagos`, null, player.cookie)).json() as Reply
+  assert.ok(paused.session)
+  await check('reload pause')
+  const resumed = await post(f, `${drivingPath}/resume`, { cityId: 'lagos', requestId: id(f), journeyId: started.session.journeyId, revision: paused.session.revision }, player.cookie)
+  assert.ok(resumed.ok)
+  await check('resume')
+  const pausedAgain = await post(f, `${drivingPath}/pause`, { cityId: 'lagos', requestId: id(f), journeyId: started.session.journeyId, revision: resumed.session!.revision }, player.cookie)
+  assert.ok(pausedAgain.ok)
+  await check('pause')
+})

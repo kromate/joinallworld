@@ -31,7 +31,7 @@ async function host(dataDir: string, options: Parameters<typeof createServer>[0]
 async function stop(server: AllworldServer): Promise<void> {
   server.closeAllConnections()
   await new Promise<void>((resolve, reject) => server.close(error => error ? reject(error) : resolve()))
-  await server.store.close()
+  await server.store.close?.()
 }
 
 async function player(request: (path: string, body?: unknown, cookie?: string) => Promise<Response>, name: string, now: number) {
@@ -170,4 +170,48 @@ test('Node production routes require literal constructor authority and an OFF re
   assert.deepEqual([lifecycleReplay.ok, lifecycleReplay.duplicate, lifecycleReplay.reverseGearControls], [true, true, undefined], 'the exact previously accepted resume is the first driving request after a second OFF reopen')
   assert.deepEqual(await record(dataDir, reverseCookie, legacyWrite.session!.journeyId), beforeSecondReopen, 'cold OFF lifecycle replay does not mutate the current row')
   assert.deepEqual(await receipts(dataDir, reverseCookie), receiptsBeforeSecondReopen, 'cold OFF lifecycle replay does not add or rewrite once receipts')
+})
+
+test('an exhausted counter survives a Node file-store reopen: new packets and loads are refused and no row is rewritten', async t => {
+  const dataDir = await mkdtemp(join(tmpdir(), 'joinallworld-driving-node-exhausted-'))
+  let current: AllworldServer | null = null
+  t.after(async () => { try { if (current) await stop(current) } finally { await rm(dataDir, { recursive: true, force: true }) } })
+  const clock = { now: 100_000 }
+  const max = Number.MAX_SAFE_INTEGER
+  let app = await host(dataDir, {}, clock)
+  current = app.server
+  const cookie = await player(app.request, 'Node exhausted', clock.now)
+  const started = await (await app.request(PATH + '/start', { cityId: 'lagos', requestId: id(clock.now) }, cookie)).json() as DrivingResponse
+  assert.ok(started.ok && started.session)
+  const journeyId = started.session.journeyId
+  clock.now += 250
+  const packet = { cityId: 'lagos', journeyId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }
+  assert.ok(((await (await app.request(PATH + '/input', packet, cookie)).json()) as DrivingResponse).ok)
+  // Place the saved counters at the last safe values through the store's own transaction, then flush to disk.
+  await app.server.store.transact(db => {
+    const rows = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving
+    const row = Object.values(rows).find(value => value['journeyId'] === journeyId)
+    assert.ok(row)
+    row['revision'] = max
+    row['nextSequence'] = max
+    row['lastPacket'] = { ...(row['lastPacket'] as object), sequence: max - 1 }
+  })
+  await stop(current); current = null
+  const seeded = await record(dataDir, cookie, journeyId)
+  const seededReceipts = await receipts(dataDir, cookie)
+  assert.equal(seeded['revision'], max)
+
+  for (const reopen of [1, 2]) {
+    clock.now += 5_000
+    app = await host(dataDir, {}, clock)
+    current = app.server
+    const refused = await (await app.request(PATH + '/input', { ...packet, sequence: max, frames: [{ throttle: 0, brake: 1, steer: 0 }] }, cookie)).json() as DrivingResponse
+    assert.deepEqual([refused.ok, refused.code], [false, 'sequence_exhausted'], `reopen ${reopen}: a new packet is refused`)
+    assert.deepEqual(await record(dataDir, cookie, journeyId), seeded, `reopen ${reopen}: the refusal wrote no driving row`)
+    const read = await (await app.request(PATH + '?city=lagos', undefined, cookie)).json() as DrivingResponse
+    assert.deepEqual([read.ok, read.code], [false, 'revision_exhausted'], `reopen ${reopen}: loading refuses instead of pausing`)
+    assert.deepEqual(await record(dataDir, cookie, journeyId), seeded, `reopen ${reopen}: loading wrote no driving row`)
+    assert.deepEqual(await receipts(dataDir, cookie), seededReceipts, `reopen ${reopen}: no receipt was added`)
+    await stop(current); current = null
+  }
 })

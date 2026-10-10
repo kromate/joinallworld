@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "observedAtUtc": "2026-10-10T00:40:26.931869+00:00",
-  "decision": "ACCEPT exact separate source assembly; release acceptance pending",
+  "decision": "ACCEPT exact separate source, generator, five-project compiler, build/download and15smoke checks; full release/native acceptance pending",
   "candidateSha": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
   "baseSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
   "citySourceSha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
@@ -87,11 +87,11 @@
     }
   ],
   "unacceptedGates": [
-    "full requiredNode/Worker/release checks",
-    "candidate-specific startup/download/public assets and sealed source/package identity",
-    "realnewdestination map loading and outbound/return journeys in isolated actors",
-    "retained original saves and duplicate-action/receipt invariants",
-    "final productiongreen16 count and directdestination availability"
+    "Full required Node22+24 game/host/tooling/Worker/release-policy/UI/integration-repair coverage at exact candidate",
+    "Sealed public assets, package guards and Worker/app embedded source/build identity",
+    "Real new-destination map loading and outbound/local-activity/return journeys with compatible isolated actors",
+    "Retained saves, identities, wallet effects and same-ID/conflict receipts plus restart proof",
+    "Exact final main synchronization, approved artifact upload and production16green/direct destination verification"
   ],
   "diagnosticFailures": [
     {
@@ -102,7 +102,8 @@
   "limits": [
     "No new country is deployed by this receipt.",
     "391 startup caps do not certify the separate91 candidate.",
-    "Source equality does not prove actual map rendering, travel, retained-save continuity or physical-device behavior."
+    "Source equality does not prove actual map rendering, travel, retained-save continuity or physical-device behavior.",
+    "Cloud commentary reported16/16smoke. Actual raw log is15/pass15/fail0/skipped0; this receipt uses measured counts."
   ],
   "preservedCataloguePrefix": {
     "rows": 50,
@@ -286,7 +287,69 @@
       "heap": "--max-old-space-size=4096",
       "sharedHeavySlots": 1,
       "sourceUnchanged": true
+    },
+    {
+      "name": "build",
+      "receiptRef": "51bb30d059cfba5129c92a2df56e6775c645a40d",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/build/receipt.json",
+      "receiptSha256": "f0cff325cdaff8475ded0021abd8f284db713bee62d3a056c2940ca6755e51a5",
+      "logSha256": "af356e00903eea2bb644e13963cfc874d99de8ad9e719b1542c1c53bb96e78d1",
+      "exitStatus": 0,
+      "startedAtUtc": "2026-10-10T00:38:06.543840+00:00",
+      "endedAtUtc": "2026-10-10T00:41:33.389425+00:00",
+      "nodeVersion": "v24.19.0",
+      "heap": "--max-old-space-size=1536",
+      "sharedHeavySlots": 1,
+      "sourceUnchanged": true
+    },
+    {
+      "name": "size-download",
+      "receiptRef": "51bb30d059cfba5129c92a2df56e6775c645a40d",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/size-download/receipt.json",
+      "receiptSha256": "e9a23dbca664f6894ba5a106f6736f435c172ae8c5f5408f505fefa2822f92a6",
+      "logSha256": "42528458f68e638356712ba7c26db7445ac27335bb4b2c23644660b8f3822c50",
+      "exitStatus": 0,
+      "startedAtUtc": "2026-10-10T00:41:33.547233+00:00",
+      "endedAtUtc": "2026-10-10T00:43:09.514631+00:00",
+      "nodeVersion": "v24.19.0",
+      "heap": "--max-old-space-size=1536",
+      "sharedHeavySlots": 1,
+      "sourceUnchanged": true,
+      "measurementsBytes": {
+        "LOADING_RAW": 91469,
+        "LOADING_GZIP": 35568,
+        "FIRST_PAINT_BROTLI": 35693,
+        "STARTUP_RAW": 614258,
+        "STARTUP_GZIP": 222677,
+        "STARTUP_BROTLI": 195402
+      },
+      "startupHeadroomBytes": {
+        "raw": 742,
+        "gzip": 323,
+        "brotliProvisional": 198
+      }
+    },
+    {
+      "name": "test-smoke-readable",
+      "receiptRef": "51bb30d059cfba5129c92a2df56e6775c645a40d",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/c1-third-five/test-smoke-readable/receipt.json",
+      "receiptSha256": "6932b7565b583e327720ca6f9a36b2a5f137364af262f00e5584c88a27d863b2",
+      "logSha256": "bac37d36bedc983952f3dbe91e098a32ebd76c98a4b172c8b513dafffeaa8490",
+      "exitStatus": 0,
+      "startedAtUtc": "2026-10-10T00:43:09.679410+00:00",
+      "endedAtUtc": "2026-10-10T00:43:12.654296+00:00",
+      "nodeVersion": "v24.19.0",
+      "heap": "--max-old-space-size=1536",
+      "sharedHeavySlots": 1,
+      "sourceUnchanged": true,
+      "counts": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
     }
   ],
-  "updatedAtUtc": "2026-10-10T00:42:41.666991+00:00"
+  "updatedAtUtc": "2026-10-10T00:48:15.398231+00:00"
 }

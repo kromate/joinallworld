@@ -1,3 +1,15 @@
+# Exact country build/download/smoke accepted, 10 October 2026 at 00:48 UTC
+
+Public51bb30d0 raw receipts independently match exact clean91d0ba33 source and
+exit0. Its fresh build passes, download budgets pass with startup614258raw,
+222677gzip and195402Brotli bytes. Smoke actually passes15/15 with zero failures
+or skips; the cloud16/16 summary was corrected against the raw log. Original
+caps stay unchanged. Startup headroom is only742raw/323gzip/198Brotli bytes,
+so the next country batch must be measured and the separate streaming-provider
+migration remains necessary if it fails. Full Node22+24/Worker/host/release/UI
+checks, source-bound seal, native five-country journeys/save continuity and
+actual upload/live16 proof are still open. Production remains11countries.
+
 # Next serial country input pinned, 10 October 2026 at 00:44 UTC
 
 After the current16-country release passes, the next input adds Gaborone,

@@ -1,0 +1,45 @@
+{
+  "observedAtUtc": "2026-10-10T00:31:49.400563+00:00",
+  "sourceSha": "44c1e540ed0244276a2ea74609aa9dec9ffd377c",
+  "parent": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
+  "branch": "codex/cloud-living-final-safety-20261010",
+  "rootFullTwoFileDiffRead": true,
+  "changedScope": "DrivingApp.vue and practiceIdentity.test.ts only,14insertions/3deletions",
+  "pins": {
+    "src/app/features/living-world/DrivingApp.vue": {
+      "sha256": "b08e09dfc72baae923438f48f4a0b983b8b2f0437789933b714932bc3a1e13b6",
+      "bytes": 69719
+    },
+    "src/app/features/living-world/practiceIdentity.test.ts": {
+      "sha256": "3b6173241b941a7ee439df1b2d29de89225b9ef1fa908b927046c4869f2cd66d",
+      "bytes": 44456
+    },
+    "server/living-world/driving-service.ts": {
+      "sha256": "7e7abcb72ddfe2dcbde041e6faaf48c51b336ec1e01e5bff07eded5329282b61",
+      "bytes": 27707
+    },
+    "server/living-world/driving-service.test.ts": {
+      "sha256": "0ef67a228afa40a64fd3a93d78d488263bc0fe5d0e852af1c86deae7d801fce9",
+      "bytes": 52343
+    }
+  },
+  "sourceDecision": "D3 CANONICAL DISPLAY SOURCE CONDITION CORRECT; NOT RENDERED/NATIVE OR RELEASE ACCEPTANCE",
+  "sourceBehavior": "hasCanonicalGear checks own persisted gear; transmission status renders when permission or canonical gear exists, while selector remains gated by permission. No default-forward forgery or capability restoration.",
+  "testBoundary": {
+    "setupAssertions": "hasCanonicalGear, transmissionStatus Reverse, untouched serverState while pause pending; authoritative subsequent paused state",
+    "renderedTemplateExecuted": false,
+    "evidence": "practiceIdentity.test.ts64\u201374 mount intentionally clones actual compiled SFC but replaces render with ()=>null, explicitly disclaiming template/layout evidence",
+    "requiredNext": "Meaningful actual compiled template/SSR test if supported without fake template or extra dependencies, otherwise existing Astra actual artifact rendered status/selector proof remains open."
+  },
+  "execution": "Root no tests/compiler/build/browser; actual new-source commands/logs pending. Prior67615/7 does not transfer to44c.",
+  "open": [
+    "Independent existing Astra final source review",
+    "L1 separately allocated revision/sequence exhaustion guards",
+    "Exact final commands/logs/compiler/build/download/smoke",
+    "Compatible OFF deployed Node/Worker rollback and durable reopen before v2 issuance",
+    "Original native back-out without score/qualification gifts",
+    "Physical-phone/mobile/multiplayer/full connected programme"
+  ],
+  "production": "C1 unchanged, teaching and reverse issuance OFF",
+  "model": "Cloud assignment receipt requested; backend model not exposed, no name-based inference"
+}

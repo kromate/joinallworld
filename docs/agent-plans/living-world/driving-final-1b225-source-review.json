@@ -1,0 +1,73 @@
+{
+  "observedAtUtc": "2026-10-10T00:34:08.033211+00:00",
+  "candidate": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+  "branch": "codex/cloud-living-final-safety-20261010",
+  "base": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
+  "rootGitFetchAndRemoteRefVerified": true,
+  "rootFullDiffsRead": "676-to44c full two UI files;44c-to1b225 full two service files",
+  "pins": {
+    "server/living-world/driving-service.ts": {
+      "sha256": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+      "bytes": 28685
+    },
+    "server/living-world/driving-service.test.ts": {
+      "sha256": "c3297399a1248aaa3cfa7bf35fc332415ca3f59a8feb19d0ef0e1752b4993027",
+      "bytes": 58655
+    },
+    "src/app/features/living-world/DrivingApp.vue": {
+      "sha256": "b08e09dfc72baae923438f48f4a0b983b8b2f0437789933b714932bc3a1e13b6",
+      "bytes": 69719
+    },
+    "src/app/features/living-world/practiceIdentity.test.ts": {
+      "sha256": "3b6173241b941a7ee439df1b2d29de89225b9ef1fa908b927046c4869f2cd66d",
+      "bytes": 44456
+    },
+    "src/game/living-world/driving.ts": {
+      "sha256": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+      "bytes": 23374
+    },
+    "src/game/living-world/driving.test.ts": {
+      "sha256": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+      "bytes": 22062
+    },
+    "src/types/living-world.ts": {
+      "sha256": "27757f7089a482d5b046692fdc1d53ed06272788c3633949a2ed6efa64dbc677",
+      "bytes": 4567
+    }
+  },
+  "sourceAssessment": {
+    "D1": "Prior source-closed retained replay remains before new input counter/clock/timeout processing",
+    "D2": "Prior source-closed true-to-OFF held control revocation retained",
+    "D3": "Canonical saved gear status independent of selector permission; source condition corrected",
+    "L1": "Current/context/start/pause/restart/input/resume increment sites enumerated and exhaustion guards read; final independent source review pending"
+  },
+  "newRegressionSourceRead": {
+    "exhaustedRevisionFullRow": "current, pause, new input, resume refuse before row mutation",
+    "exhaustedSequenceFullRow": "nextSequence MAX refuses sequence_exhausted without invalid row",
+    "lastSafe": "MAX-1 toMAX legacy andv2 legacy input remains reader-valid; retained exact packet replay atMAX preservesrow",
+    "scope": "Synthetic controlled fixture counters; never applied to original native store or production"
+  },
+  "workerFinalReceipt": {
+    "thread": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
+    "turn": "01a12332-0632-72f0-b00f-2b39d05ebff4",
+    "status": "completed",
+    "reportedServicePass": 16,
+    "reportedComponentStatePass": 7,
+    "reportedSkip": 0,
+    "rawLogsIndependentlyRead": false,
+    "renderedTemplateOrNativeProof": false
+  },
+  "UIEvidenceGap": "The test harness deliberately returns null for render, so computed status assertions are not rendered DOM. Recorded and acknowledged by worker. Existing actual-template/native Astra lane required, never a fake template that repeats implementation.",
+  "openGates": [
+    "Existing independent Astra final1b225 source review",
+    "Actual final source-focused logs/commands/model assignment provenance",
+    "Exact five-project compiler/build/download caps/smoke/artifact sourceID",
+    "Compatible OFF Node/Worker deployed rollback artifact beforev2 issuance",
+    "Durable v2 reopen/terminal/receipt parity and failed-write recovery",
+    "Original road-edge recovery retaining zero-score old attempt, no gifts",
+    "Physical mobile/multiplayer and entire connected gameplay programme"
+  ],
+  "releaseApproved": false,
+  "activationApproved": false,
+  "production": "C1 teaching and reverse new issuance OFF, no new deployment"
+}

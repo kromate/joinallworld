@@ -1,3 +1,26 @@
+# Native phase safely checkpointed; visual work moves online, 10 October 2026
+
+Stage44993 ends naturally at02:11:17UTC with exit0. Exact helper child and
+owned process group are absent. Shared heavy/server/browser slots are all free.
+Private mode0600 stopped control and fresh SQLite store are retained. Read-only
+post-shutdown checks preserve both test identities/names, funded cash, original
+ledger prefix and home/ownership/property/estate/inventory/business fields.
+Each existing funding receipt remains one; no repeat credit or raw state edit.
+
+Existing Astra operator closes only its two owned tabs, restores viewport and
+releases its browser keeper at02:07:59UTC. Allfive target city journeys remain
+UNVISITED due to resource hold; no native restart/physical-phone acceptance.
+Read third-five-c1-native-stage-checkpoint.json for scoped cleanup evidence.
+The original eec actors/store/cookies stay separate. No local stage renewal.
+
+Existing cloud has actual Chromium151/ws/CDP capability. WORLD assigns the
+existing country owner one bounded read/download of the same published artifact
+and source-only finite normal-UI journey plan. Package equality and plan/tool
+pins must be reviewed before any cloud browser launch; no new dependencies,
+service, paid resource, rebuilt substitute or additional artifact-upload job.
+Integration owns fresh combined3e3 full CI; its source equivalence is accepted,
+actual compiler/build/budgets/full matrix remain separate. Production stays11.
+
 # Normal onboarding and controlled funding accepted, 10 October 2026
 
 Existing Astra confirms both unique browser origins resolve and keep separate

@@ -590,6 +590,24 @@ test('Recovery parity: Node and Worker share onboarding, social, blocking, civic
  await edge.restart();
 });
 
+test('Place boards: the Worker (real SQLite object storage) and Node answer the same, and a hidden player changes no total', async t=>{
+ const {fixture:nodeFixture}=await import('../server/test-fixture.ts');
+ const edge=await fixture(t), node=await nodeFixture(t,{now:Date.now});
+ interface Driver { device(name: string): Promise<{ id: string; cookie: string }>; request(path: string, body?: object | null, cookie?: string | null): Promise<Response> }
+ async function sequence(f: Driver){
+   const people=[];for(const name of ['Ada','Bola','Chidi','Dayo','Efe'])people.push(await f.device(name));
+   const out=[];const read=async(path: string,who?: { cookie: string })=>{const body=await (await f.request(path,null,who?.cookie)).json();delete body.serverTime;delete body.lastWeek;delete body.week;return body;};
+   for(const who of people)await f.request('/api/civic/pulse?city=lagos',null,who.cookie);
+   await f.request('/api/civic/prefs',{richList:false},(people[1] as { cookie: string }).cookie);
+   for(const scope of ['city','state','country'])out.push(await read(`/api/civic/boards?scope=${scope}&by=residents`,people[0]));
+   out.push(await read('/api/civic/boards?scope=sea',people[0]));
+   return out;
+ }
+ const expected=await sequence(node),actual=await sequence(edge);assert.deepEqual(actual,expected);
+ for(const index of [0,1,2])assert.equal((expected[index] as { rows: { residents: number; active: number }[] }).rows[0]?.residents,5);
+ assert.equal((expected[3] as { error: string }).error,'invalid_scope');
+});
+
 test('Recovery Worker: SQL receipt failure rolls back debit; feature write failure does not acknowledge friendship',async t=>{
  const f=await fixture(t),a=await f.device('Ada'),b=await f.device('Bola');
  await f.life(a);for(const who of [a,b])assert.equal((await f.request('/api/social/me',null,who.cookie)).status,200);

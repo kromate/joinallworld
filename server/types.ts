@@ -526,6 +526,15 @@ export interface ResidentRecord {
   earned: number
   gems: number
   claims: number
+  /** Lagos week this resident was last added to the city's weekly tally, and what they added then (server/civic/boards.ts). */
+  tw?: number
+  te?: number
+}
+/** A city's weekly totals, kept as residents check in so the place boards never read the residents. */
+export interface PrideWeek { week: number; active: number; earned: number }
+export interface PrideTally extends PrideWeek {
+  /** The week before, when this one rolled over from it: with the residents there were then. */
+  prev?: PrideWeek & { residents: number }
 }
 export interface ElectionRecord {
   candidates: Record<string, { name: string; slogan: string; at: number; /** party id, absent for an independent */ party?: string }>
@@ -552,6 +561,8 @@ export interface CivicCityRecord {
   visits: number
   prunedAt: number
   residents: Record<string, ResidentRecord>
+  /** This week's totals and the last week's; absent until a resident checks in. */
+  pride?: PrideTally
   gov: { elections: Record<string, ElectionRecord>; announcements: AnnouncementRecord[] }
   ads: { billboard: Record<string, AdRecord>; sea: Record<string, AdRecord> }
   hunt: { found: number; claims: number; byDay: Record<string, number> }

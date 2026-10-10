@@ -9,6 +9,7 @@ import { DISTRICTS, UNKNOWN_DISTRICT, OWN_DISTRICT, NEIGHBOURS, RICH_LIST } from
 
 import type { LifeState } from '../../src/types/life.ts';
 import { scanKeys } from '../keyed.ts';
+import { addToTally } from './boards.ts';
 import type { PlayerRef } from '../../src/types/protocol.ts';
 import type { CityCounters, District as DistrictView, NeighbourHome, HuntCounters, RichRow } from '../../src/types/civic.ts';
 import type { CivicCityRecord, CivicCollection, ResidentRecord } from '../types.ts';
@@ -52,6 +53,7 @@ export function checkIn(city: CivicCityRecord, now: number, who: PlayerRef, life
   }
   city.hunt.claims = count(city.hunt.claims) + Math.max(0, claims - count(resident.claims));
   resident.gems = gems; resident.claims = claims;
+  addToTally(city, resident, now);
   if (now - city.prunedAt >= PRUNE_EVERY_MS) {
     city.prunedAt = now;
     // The index says who last checked in before the cut-off; each is judged again by its own record.

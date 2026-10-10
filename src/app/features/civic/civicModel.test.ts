@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { CivicNotice, GovRules, GovYou, RadioEntry } from '../../../types/civic.ts'
 import {
-  announceWhy, count, dateTime, electionRules, explain, gemToast, huntChipLines, huntClaimWhy, huntSearchWhy, inClub, lastResultLine, noticeToast, podium,
+  announceWhy, boardAmount, boardsPath, compactMoney, count, lastWeekLine, ordinal, placeShareLine, standingLine, dateTime, electionRules, explain, gemToast, huntChipLines, huntClaimWhy, huntSearchWhy, inClub, lastResultLine, noticeToast, podium,
   radioKey, radioPath, radioWhy, rentWhy, runWhy, schedule, shoutoutMissing, sloganTooShort, song, unseenNews, unseenNotices, until, voteWhy,
 } from './civicModel.ts'
 
@@ -192,4 +192,34 @@ test('the hunt chip: no number until the counters are here; a toast for one more
 test('cache keys and paths match the server routes', () => {
   assert.equal(radioKey('lagos', 'quilox'), 'radio:lagos:quilox')
   assert.equal(radioPath('lagos', 'quilox'), '/api/civic/radio?city=lagos&venue=quilox')
+})
+
+test('places: ordinals, compact money and the figure of each measure', () => {
+  assert.deepEqual([1, 2, 3, 4, 11, 12, 13, 21, 22, 23, 101, 111].map(ordinal), ['1st', '2nd', '3rd', '4th', '11th', '12th', '13th', '21st', '22nd', '23rd', '101st', '111th'])
+  assert.deepEqual([950, 1200, 1_200_000, 1_000_000, 3_540_000_000].map(compactMoney), ['₦950', '₦1,200', '₦1.2m', '₦1m', '₦3.5bn'])
+  assert.deepEqual([boardAmount('pride', 1234), boardAmount('earned', 2_500_000), boardAmount('active', 4200), boardAmount('residents', 7)], ['₦1,234', '₦2.5m', '4,200', '7'])
+  assert.equal(boardsPath('state', 'earned'), '/api/civic/boards?scope=state&by=earned')
+})
+
+test('places: where the viewer\'s place stands, in each measure and each state of the ranking', () => {
+  const behind = { id: 'abuja', name: 'Abuja', amount: 1_200_000 }
+  assert.equal(standingLine({ id: 'ibadan', name: 'Ibadan', rank: 2, behind }, 'earned', 5), 'Ibadan is 2nd, ₦1.2m behind Abuja this week.')
+  assert.equal(standingLine({ id: 'ibadan', name: 'Ibadan', rank: 2, behind: { ...behind, amount: 300 } }, 'pride', 5), 'Ibadan is 2nd, ₦300 a player behind Abuja this week.')
+  assert.equal(standingLine({ id: 'ibadan', name: 'Ibadan', rank: 3, behind: { ...behind, amount: 1 } }, 'residents', 5), 'Ibadan is 3rd, 1 player behind Abuja this week.')
+  assert.equal(standingLine({ id: 'ibadan', name: 'Ibadan', rank: 3, behind: { ...behind, amount: 12 } }, 'active', 5), 'Ibadan is 3rd, 12 active players behind Abuja this week.')
+  assert.equal(standingLine({ id: 'ibadan', name: 'Ibadan', rank: 3, behind: { ...behind, amount: 0 } }, 'pride', 5), 'Ibadan is 3rd, level with Abuja this week.')
+  assert.equal(standingLine({ id: 'kano', name: 'Kano', rank: 1, behind: null }, 'pride', 5), 'Kano is 1st this week.')
+  assert.equal(standingLine({ id: 'ota', name: 'Ota', rank: null, behind: null }, 'pride', 5), 'Ota needs 5 players, 5 of them active this week, to be ranked.')
+  assert.equal(standingLine(null, 'pride', 5), 'Play in a city to see where it stands.')
+})
+
+test('places: the share line is plain text and only for a ranked place; last week\'s winner', () => {
+  assert.equal(placeShareLine({ id: 'kano', name: 'Kano', rank: 1, behind: null }, 'city'), 'Kano is #1 in Allworld this week.')
+  assert.equal(placeShareLine({ id: 'oyo', name: 'Oyo State', rank: 3, behind: null }, 'state'), 'Oyo State is the #3 state in Allworld this week.')
+  assert.equal(placeShareLine({ id: 'ng', name: 'Nigeria', rank: 2, behind: null }, 'country'), 'Nigeria is the #2 country in Allworld this week.')
+  assert.equal(placeShareLine({ id: 'ota', name: 'Ota', rank: null, behind: null }, 'city'), null)
+  assert.equal(placeShareLine(null, 'city'), null)
+  assert.ok(!/https?:|\//.test(placeShareLine({ id: 'kano', name: 'Kano', rank: 1, behind: null }, 'city') ?? ''))
+  assert.equal(lastWeekLine({ week: 2900, winner: { id: 'kano', name: 'Kano' } }), 'Last week: Kano')
+  assert.equal(lastWeekLine({ week: 2900, winner: null }), null)
 })

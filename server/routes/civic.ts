@@ -55,6 +55,8 @@ import { civicTitle } from '../../src/game/cities/terminology.ts';
  *   GET  /api/civic/radio       ?venue=<venueId>  { city, venue, club, playing, queue, price, slotSeconds, perDay, usedToday, queueMax }
  *   POST /api/civic/radio/shoutout { cityId, title, artist, requestId } → { ok, code, reason?, duplicate?, state, entry, radio }
  *   GET  /api/civic/richlist    { city, week, size, balances, earners, you, counters }
+ *   GET  /api/civic/boards?scope=city|state|country&by=pride|earned|active|residents&after=&limit=   places ranked against each other, from the cities' weekly tallies
+ *                               (server/civic/boards.ts): { scope, by, week, min, rows, next, total, unranked, you, lastWeek }. Aggregates only; read-only.
  *   POST /api/civic/prefs        { richList?: boolean, directory?: boolean }  (true = listed) → { ok, prefs: { richList, directory } }
  */
 import type { LifeState } from '../../src/types/life.ts';
@@ -82,6 +84,7 @@ import { addShoutout, isClub, publicEntry, radioView, shoutBlock, validateSong }
 import { characterCity } from '../character.ts';
 import { pulseOf } from '../pulse.ts';
 import type { Viewer } from '../pulse.ts';
+import { BOARD_MEASURES, BOARD_PAGE, BOARD_SCOPES, boardView, createBoards } from '../civic/boards.ts';
 import { NEIGHBOURS_PAGE, RICH_PAGE, checkIn, counters, huntCounters, neighboursPage, neighboursView, richListPage, richListView } from '../civic/residents.ts';
 
 const COUNTER_CACHE_MS = 5000;
@@ -162,6 +165,8 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
   const onlineHere = (cityId: CityId, viewer: Viewer | null): number => pulses.pulse(viewer).cities[cityId] ?? 0;
   /** The caller, as the pulse counts them: online themselves, in the city their character is in. */
   const viewerOf = (session: SessionRecord | null | undefined): Viewer | null => (session ? { id: session.publicId, city: characterCity(session) } : null);
+  /** The place boards, built from the cities' weekly tallies at most every few seconds (server/civic/boards.ts). */
+  const boards = createBoards();
   const counterCache = new Map<CityId, { at: number; value: CityCounters }>();
   function cityCounters(city: CivicCityRecord, cityId: CityId, viewer: Viewer | null): CityCounters {
     const hit = counterCache.get(cityId), now = ctx.now();
@@ -456,6 +461,20 @@ export default function civicRoutes(ctx: RouteContext): Record<RouteKey, RouteHa
         return { body, renew: true };
       }
       return { body: await store.read(db => { const { session, who, civic, city } = peek(db, request, cityId); return build(civic, city, who, viewerOf(session)); }) };
+    },
+    'GET /api/civic/boards': async (request) => {
+      const scope = BOARD_SCOPES.find((item) => item === (request.query.get('scope') ?? 'city')), by = BOARD_MEASURES.find((item) => item === (request.query.get('by') ?? 'pride'));
+      if (!scope) throw fail(400, 'invalid_scope');
+      if (!by) throw fail(400, 'invalid_measure');
+      const size = Math.min(BOARD_PAGE.max, Math.max(1, Number(request.query.get('limit')) || BOARD_PAGE.size));
+      const body = await store.read(db => {
+        const session = request.session(db);
+        limit('read', session?.publicId ?? `ip:${request.ip}`, 120);
+        const view = boardView(boards.get(civicOf(db), ctx.now()), scope, by, session ? characterCity(session) : null, request.query.get('after'), size);
+        if (!view) throw fail(400, 'invalid_cursor');
+        return view;
+      });
+      return { body };
     },
     'POST /api/civic/prefs': async (request) => {
       const body = await request.json();

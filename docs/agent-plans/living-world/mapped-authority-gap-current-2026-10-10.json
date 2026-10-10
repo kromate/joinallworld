@@ -40,5 +40,56 @@
   "native": "Original save/browser holds remain. Earned qualification cannot be gifted; originalscore0 needs honest assessment/new practise after reverse-compatible artifact gates.",
   "wKeyObservation": "Current source updateHeld preserves wheelSteer when W adds throttle. onKey/blur/focus handlers inspected; actual reported steering reset root cause still unproved. No speculative repair.",
   "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
-  "acceptance": "No physical car/mapped journey accepted; byte pins and missing authorities verified only"
+  "acceptance": "No physical car/mapped journey accepted; byte pins and missing authorities verified only",
+  "sedanApertureRefinement": {
+    "reviewedAt": "2026-10-10T02:54:29.594482+00:00",
+    "checkout": "06264daf522dc134f3d1062598aeba461b87ce92",
+    "scope": "Selected source slices: index.ts splitCarDoorPanels/buildCar/addDoor/poseVehicle; geometry.ts complete profilePrism; sedan-interior.ts through authored floor/seat/dashboard/steering construction; drivingScene.ts sample/entry/exit phases. Not a full-file or rendered review.",
+    "pins": {
+      "src/models/vehicles/index.ts": "7db039a0b25373a86354639fd703a96aab3a3de48a3088c14c555cc0fa6afc19",
+      "src/models/vehicles/geometry.ts": "4bf847bd17a735050daa4686ed0be495c64a7936ed3c65c6e306e740edc94885",
+      "src/models/vehicles/sedan-interior.ts": "3d9a5b3a516031fb7b6e14058a3d3c2615a3f531a38b56781d2f4a66bf8b0a57",
+      "src/app/features/living-world/drivingScene.ts": "3d42051273229265a17fcc5e04b7e5c95ddb72e7fa5fd00520d910cd19cf006c"
+    },
+    "allFourPinsMatchExistingBoardingDescriptor": true,
+    "analyticalDriverSideProfileIntersection": {
+      "frame": "vehicle body-local metres, ordered [z,y] vertices",
+      "vertices": [
+        [
+          -0.05,
+          0.49
+        ],
+        [
+          0.89,
+          0.49
+        ],
+        [
+          0.89,
+          1.27
+        ],
+        [
+          0.7325,
+          1.48
+        ],
+        [
+          -0.05,
+          1.48
+        ]
+      ],
+      "derivation": "Intersect source sedan side silhouette with y>=0.49, y<=roof-0.05=1.48 and -0.05<=z<=0.89. Forward roof segment [z0.695,y1.53] to [z1.055,y1.05] has slope -4/3; at z0.89 roof y1.27. Only driver-side cap is split; roof/hood/sill/opposite cap remain static.",
+      "frontHeightAbovePartitionBase": 0.78,
+      "frontHeightAboveAuthoredFloorTop": 0.75,
+      "centerHeightAboveAuthoredFloorTop": 0.96,
+      "qualification": "Analytical double-precision surface partition only. Not actual Float32 generated triangles, final portal or proof of traversable free space."
+    },
+    "implementationAcceptanceRefinement": [
+      "Do not equate the rectangular clipping box or constant roofY to a traversable aperture. Preserve the tapered forward boundary and all retained shell surfaces; validate conservative Float32 rounding/contact margin without moving any geometry.",
+      "Separate door opening surface from continuous free corridor to the seat. Authored floor, cushions/backrests, dashboard, steering wheel and roof remain obstacles/supports; source box bounds and dynamic steering must be accounted for.",
+      "Use the actual hinged panel transform and complete door-angle interval. Source helper uses +Z hinge at(-0.96,0.93,0.89), not nominal panel center(-0.96,0.93,0.42).",
+      "Keep world/body frame conversion explicit. poseVehicle supports body translation/pitch/roll; stopped current scene supplies default bounce0, but nondefault/unknown poses cannot inherit planar-only clearance.",
+      "Entry currently transitions to sit and slides toward seat while clip easing can still run; validate full clothed pose/clip swept volume and ground/seat support across that actual trajectory, normal and reduced motion. Timed phase completion and anchor centers alone prove no clearance.",
+      "No route or canBoard activation from this analytic prerequisite. Integration confirms existing writer/exclusive two-file allocation; remaining actor/terrain/mapped continuous-motion authority and native mobile gameplay must pass."
+    ],
+    "currentDecision": "Refine pending source implementation task; no runtime change, physics PASS or native collision claim. Exclusive allocation still unconfirmed."
+  }
 }

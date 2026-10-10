@@ -241,6 +241,8 @@ async function adminShell(request: Request, env: WorkerEnv, url: URL): Promise<R
 /** The bindings and variables of the Worker (wrangler.jsonc, plus secrets and the outreach/voice settings the host may read). */
 export interface WorkerEnv {
   INTERACTIVE_TEACHING_STARTS?: string
+  /** New reverse issuance only for the exact host value '1'; unset remains OFF. */
+  REVERSE_GEAR_ISSUANCE?: string
   JOINALLWORLD: DurableObjectNamespace
   ASSETS: Fetcher
   BUILD_ID?: string
@@ -371,6 +373,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
     const context: RouteContext = this.context = {
       store: this.store, images: this.images, voices: this.voices, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
       ...(env.INTERACTIVE_TEACHING_STARTS === '1' ? { interactiveTeachingStarts: true } : {}),
+      reverseGearIssuance: env.REVERSE_GEAR_ISSUANCE === '1',
       randomId: () => crypto.randomUUID(),
       // Relay credentials for calls (server/call-relay.ts): the day's count lives in the object's own storage, so the ceiling holds across restarts.
       callRelay: createCallRelay({

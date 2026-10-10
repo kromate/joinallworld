@@ -12,6 +12,7 @@ import { createNativeSourceLandmarkSampler } from './native-source-sampler.ts';
 import type { NativeSourceJoint, SourceLandmarks, NativeSourceFrame } from './native-source-pose.ts';
 
 type Rig = { root: THREE.Group; bones: Map<string, THREE.Bone> };
+type AuthoredRig = Rig & { body: THREE.SkinnedMesh };
 const sourceJointToBone: Readonly<Record<NativeSourceJoint, string>> = {
   Hips: 'Hips', Spine: 'Spine', Spine1: 'Spine1', Spine2: 'Spine2', Neck: 'Neck', Head: 'Head',
   LeftShoulder: 'LeftShoulder', LeftArm: 'LeftArm', LeftForeArm: 'LeftForeArm', LeftHand: 'LeftHand',
@@ -122,7 +123,7 @@ type AuthoredNodeRecord = {
   readonly scale?: readonly number[];
 };
 
-function reconstructedAuthoredRig(): Rig {
+function reconstructedAuthoredRig(): AuthoredRig {
   const bytes = readFileSync(new URL('./authored-body-compression/outcompressed/parametric-base-facial-meshopt.glb', import.meta.url));
   const digest = createHash('sha256').update(bytes).digest('hex');
   assert.equal(digest, 'dfa53941f0fb77d69e59f59fa017f72efa45eddd7e6e8b8414b4a4dba332d552',

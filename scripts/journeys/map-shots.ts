@@ -31,11 +31,18 @@ const base = `http://127.0.0.1:${port}`;
 mkdirSync(out, { recursive: true });
 const work = mkdtempSync(join(tmpdir(), 'mapshots-'));
 const dataDir = join(work, 'data'), cookieFile = join(work, 'founder.cookie');
-const ROWS: Record<string, { name: string; row: string }> = {
+const ROWS: Record<string, { name: string; row: string; level?: 'africa' | 'nigeria' }> = {
+  abuja: { name: 'Abuja', row: 'Federal Capital Territory', level: 'nigeria' }, accra: { name: 'Accra', row: 'Ghana' },
   cairo: { name: 'Cairo', row: 'Egypt' }, kigali: { name: 'Kigali', row: 'Rwanda' }, rabat: { name: 'Rabat', row: 'Morocco' },
   kampala: { name: 'Kampala', row: 'Uganda' }, lusaka: { name: 'Lusaka', row: 'Zambia' },
 };
 const PLACE_TO_OPEN: Record<string, string> = { cairo: 'Khan El Khalili', kigali: '', lagos: '' };
+// --water "cairo=0.5,0.5;rabat=0.2,0.5": where on the screen (fractions of width, height, from the whole-city view) to zoom in on the main water.
+const waterAt: Record<string, [number, number]> = {};
+for (const part of arg('water', '').split(';').filter(Boolean)) { const [c, xy] = part.split('='); const [x, y] = xy!.split(',').map(Number); waterAt[c!.trim()] = [x!, y!]; }
+// --short "abuja,accra": cities that only get the default view and the simple map (the comparison cities).
+const short = new Set(arg('short', 'lagos,abuja,accra').split(',').filter(Boolean));
+const waterOnly = process.argv.includes('--water-only');
 
 let server: ChildProcess | null = null;
 const serverLog: string[] = [];
@@ -99,21 +106,34 @@ const shownNow = (s: string): string => `[...document.querySelectorAll(${JSON.st
 
 /** Play now, then settle through Sim > Profile (the full creator's last tap is not used). */
 async function settle(b: Browser): Promise<string> {
+  console.log('settle step 1');
   await b.goto(base + '/');
+  console.log('settle step 2');
   await b.waitFor(`!!document.querySelector('[data-qs-name]')`, 60000, 'the start screen');
   await sleep(600);
+  console.log('settle step 3');
   await b.type('[data-qs-name]', 'Map Checker');
+  console.log('settle step 4');
   await b.click('[data-key="play-now"]');
   await gameShown(b); await dismiss(b);
+  console.log('settle step 5');
   await b.click('.hud-name');
+  console.log('settle step 6');
   await b.click('.sim-link', 'Make this life yours');
+  console.log('settle step 7');
   await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'spirit'`, 20000, 'spirit');
+  console.log('settle step 8');
   await b.click('[data-key="primary"]');
+  console.log('settle step 9');
   await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'home'`, 20000, 'home');
   await chooseIkeja(b);
+  console.log('settle step 10');
   await b.click('[data-key="primary"]');
+  console.log('settle step 11');
   await b.waitFor(`document.querySelector('[data-cr-root]')?.dataset.step === 'ready'`, 20000, 'ready');
+  console.log('settle step 12');
   await b.click('[data-key="primary"]', 'Start your life');
+  console.log('settle step 13');
   await b.waitFor(`(async () => { const m = await fetch('/api/life?city=lagos').then((r) => r.json()); return m.state.onboarding.done && !document.querySelector('[data-cr-root]'); })()`, 60000, 'settled');
   await gameShown(b); await dismiss(b);
   return b.eval<string>(`fetch('/api/session').then((r) => r.json()).then((j) => j.session.id)`);
@@ -124,9 +144,10 @@ async function fly(b: Browser, city: string): Promise<void> {
   const t = ROWS[city]!;
   if (!(await b.eval<boolean>(shownNow('[data-atlas-levels]'))) && !(await b.eval<boolean>(shownNow('.map-levels-cur')))) await b.click('[data-nav="map"]');
   await b.waitFor(`${shownNow('.map-levels-cur')} || ${shownNow('[data-atlas-levels]')}`, 30000, 'the map');
-  if (!(await b.eval<boolean>(shownNow('[data-atlas-levels]')))) { await b.click('.map-levels-cur'); await b.click('[data-map-level="africa"]'); }
-  else { const cur = await b.eval<string>(`document.querySelector('[data-atlas-levels]').textContent.trim().toLowerCase()`); if (!cur.startsWith('africa')) { await b.click('[data-atlas-levels]'); await b.click('[data-atlas-level="1"]'); } }
-  await b.waitFor(`${shownNow('[data-atlas-levels]')} && document.querySelector('[data-atlas-levels]').textContent.trim().toLowerCase().startsWith('africa')`, 30000, 'africa level');
+  const level = t.level ?? 'africa', wanted = level === 'africa' ? 1 : 2;
+  if (!(await b.eval<boolean>(shownNow('[data-atlas-levels]')))) { await b.click('.map-levels-cur'); await b.click(`[data-map-level="${level}"]`); }
+  else { const cur = await b.eval<string>(`document.querySelector('[data-atlas-levels]').textContent.trim().toLowerCase()`); if (!cur.startsWith(level)) { await b.click('[data-atlas-levels]'); await b.click(`[data-atlas-level="${wanted}"]`); } }
+  await b.waitFor(`${shownNow('[data-atlas-levels]')} && document.querySelector('[data-atlas-levels]').textContent.trim().toLowerCase().startsWith(${JSON.stringify(level)})`, 30000, `${level} level`);
   if (!(await b.eval<boolean>(`!!document.querySelector('[data-atlas-search]') && document.querySelector('[data-atlas-search]').getBoundingClientRect().width > 1`))) await b.click('[data-atlas-list]').catch(() => undefined);
   await b.waitFor(`!!document.querySelector('[data-atlas-search]') && document.querySelector('[data-atlas-search]').getBoundingClientRect().width > 1`, 15000, 'search');
   await b.type('[data-atlas-search]', t.row);
@@ -212,14 +233,38 @@ async function click3(b: Browser, name: string, times: number): Promise<void> {
   for (let i = 0; i < times; i++) { await b.click(`[data-m3="${name}"]`, undefined, 8000).catch(() => undefined); await sleep(700); }
 }
 
+async function wheelZoom(b: Browser, fx: number, fy: number, notches: number): Promise<void> {
+  const { width, height } = b.viewport;
+  for (let i = 0; i < notches; i++) { await b.send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: width * fx, y: height * fy, deltaX: 0, deltaY: -120 }); await sleep(250); }
+}
+async function simpleMap(b: Browser, shot: (l: string) => Promise<void>, label: string, prefix: string): Promise<void> {
+  const hasSwitch = await b.eval<boolean>(`(() => { const s = document.querySelector('.cmap-switch'); return !!s && !s.hidden && s.getBoundingClientRect().width > 1; })()`);
+  if (!hasSwitch) { notes.push(`${prefix}: no Simple map switch offered`); return; }
+  await b.click('.cmap-switch');
+  await b.waitFor(`document.querySelector('[data-map]')?.dataset.map === '2d'`, 60000, 'the simple map');
+  await sleep(3500);
+  await shot(label);
+  await b.click('.cmap-switch');
+  await b.waitFor(`document.querySelector('[data-map]')?.dataset.map === '3d'`, 60000, 'the 3D map');
+  await sleep(3000);
+}
+
 async function mapSet(b: Browser, prefix: string, place: string, opts: { phone?: boolean } = {}): Promise<void> {
   const shot = async (label: string): Promise<void> => { await sleep(700); await b.screenshot(join(out, `${prefix}-${label}.png`)); console.log(`shot ${prefix}-${label}`); };
   await openMap(b, prefix);
+  if (waterOnly) {
+    const w = waterAt[prefix];
+    await click3(b, 'fit', 1); await sleep(1500);
+    await shot('02-whole-city');
+    if (w) { await wheelZoom(b, w[0], w[1], 6); await sleep(1800); await shot('05-zoom-water'); }
+    return;
+  }
   await shot('01-default');
   if (opts.phone) { await listOpen(b); await shot('02-list'); await scrollList(b, 'bottom'); await shot('03-list-bottom'); }
   await pan(b, prefix);
   if (opts.phone) { await b.click('.map-handle').catch(() => undefined); await sleep(600); }
   await click3(b, 'fit', 1); await sleep(1500);
+  if (short.has(prefix) && !opts.phone) { await simpleMap(b, shot, '08-simple-map', prefix); return; }
   await shot(opts.phone ? '04-whole-city' : '02-whole-city');
   if (opts.phone) return;
   await click3(b, 'in', 3); await sleep(1800);
@@ -227,6 +272,7 @@ async function mapSet(b: Browser, prefix: string, place: string, opts: { phone?:
   await click3(b, 'in', 2); await sleep(1800);
   await shot('04-zoom-closer');
   await click3(b, 'fit', 1); await sleep(1200);
+  { const w = waterAt[prefix]; if (w) { await wheelZoom(b, w[0], w[1], 6); await sleep(1800); await shot('04b-zoom-water'); await click3(b, 'fit', 1); await sleep(1200); } }
   await listOpen(b);
   await scrollList(b, 'top'); await shot('05-list-top');
   const total = await scrollList(b, 'bottom'); notes.push(`${prefix}: list scroll height ${total}`);
@@ -240,17 +286,7 @@ async function mapSet(b: Browser, prefix: string, place: string, opts: { phone?:
   await sleep(2500);
   await shot('07-place-card');
   await b.press('Escape', 'Escape', 27); await sleep(800);
-  // The simple map, if the page offers it.
-  const hasSwitch = await b.eval<boolean>(`(() => { const s = document.querySelector('.cmap-switch'); return !!s && !s.hidden && s.getBoundingClientRect().width > 1; })()`);
-  if (hasSwitch) {
-    await b.click('.cmap-switch'); 
-    await b.waitFor(`document.querySelector('[data-map]')?.dataset.map === '2d'`, 60000, 'the simple map');
-    await sleep(3500);
-    await shot('08-simple-map');
-    await b.click('.cmap-switch');
-    await b.waitFor(`document.querySelector('[data-map]')?.dataset.map === '3d'`, 60000, 'the 3D map');
-    await sleep(3000);
-  } else notes.push(`${prefix}: no Simple map switch offered`);
+  await simpleMap(b, shot, '08-simple-map', prefix);
 }
 
 let b: Browser | null = null;

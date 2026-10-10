@@ -1,0 +1,75 @@
+{
+  "reviewedAt": "2026-10-10T04:22:04.751721+00:00",
+  "decision": "INFLIGHT_SOURCE_REVIEW_REQUIRES_OPPOSITE_SIDE_AND_ACTUAL_GLASS_PROOF",
+  "baseline": "c1383b53a935153451beca180b0c264d99b4c126",
+  "workerTurn": "01a123f8-c386-7385-8e60-b1904d64d5e3",
+  "sourceSnapshot": {
+    "sedan-aperture.ts": {
+      "bytes": 30341,
+      "sha256": "84260772ac126a2f9e8163650beec014cf9bf5d3678262be854a8f1e8847a847"
+    },
+    "sedan-aperture.test.ts": {
+      "bytes": 31004,
+      "sha256": "4032e9a3f6f088f9d3ae223d522380d8d814041121fd4bfbe39bf5e4f1b30a4c"
+    }
+  },
+  "hunksUniqueContextVerified": 11,
+  "workerFinalHashesVerified": false,
+  "candidateCommit": null,
+  "runtimeExecutionBySol": false,
+  "focusedRunStatus": "Not yet executed for this snapshot; existing Node22 full suite occupies shared heavy slot. No duplicate/restart requested.",
+  "progress": [
+    "New retained driver-cap pieces cover the cited middle/rear location conservatively.",
+    "New full windscreen AABB and rear glass/roof trim descriptors; original arbitrary phase/replay/source pins unchanged.",
+    "Actual interior solid bounds are compared with source-owned expected descriptors; runtime result pending."
+  ],
+  "remaining": [
+    {
+      "id": "AP4-opposite-side-glass-and-trim",
+      "evidence": "Hash-verified pinned vehicles/index.ts lines700-704 emit both side signs;734-737 emit both trim signs. Current analyzer STREET_GLASS_AND_TRIM still contains only driver negative-X descriptors.",
+      "sourceDerivedUnexecutedFixture": {
+        "point": [
+          0.986,
+          1.2,
+          0.4
+        ],
+        "radius": 0.001,
+        "contactMargin": 0.005
+      },
+      "expected": "Actual street +X front glass surface lies at the point; it is beyond opposite cap maxX=.95. Current source has no shell/door/interior enclosure for this point. Owner must reproduce on CPU meshes.",
+      "required": "Include both source-authored side glass/pillar/trim envelopes and prove real generated mesh correspondence. Passenger handle is at cabinZ+.22=.04, while driver is .12; do not mirror all Z values blindly."
+    },
+    {
+      "id": "AP4-windscreen-original-fixture-precision",
+      "correction": "Prior nominal profile-line point did not account for source slopedWindscreen normal offset. New test correctly expects actual triangle distance greater than .01 and less than .04; that proves a conservative envelope fixture, not an actual 1cm-radius-with-margin surface contact.",
+      "nominalFixture": [
+        0,
+        1.1375943396226413,
+        1.4
+      ],
+      "sourceDerivedLowerGlassFacePoint": [
+        0,
+        1.1633448770711934,
+        1.4
+      ],
+      "derivation": "Box is displaced .045 along local transformed thickness normal, with half thickness .0225. At fixed z=1.4 lower face is nominalY+.0225/(1.06/hypot(1.06,.59)). Source algebra only, not generated Float32 or runtime proof.",
+      "required": "Prove an actual retained sloped-glass triangle contact and containment of all generated windscreen box vertices, including intermediate span. Keep original envelope fixture under its correct scope."
+    }
+  ],
+  "pinnedPublicSource": {
+    "commit": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+    "path": "src/models/vehicles/index.ts",
+    "bytes": 54314,
+    "sha256": "7db039a0b25373a86354639fd703a96aab3a3de48a3088c14c555cc0fa6afc19",
+    "gitBlobAndSha256Verified": true
+  },
+  "authority": {
+    "canBoard": false,
+    "authoritativeClearance": false,
+    "routeAuthorized": false,
+    "actorFitAccepted": false,
+    "deployed": false
+  },
+  "coordination": "Same existing worker follow-up sent through its existing Cloud parent. Latest source hashes requested; full contract already delivered. No new worker/shared-source writer.",
+  "scope": "Finite original AP4 required retained-component audit. Full clothed actor, support, actual animation/mobile and mapped driving authority remain separate unfinished programme gates."
+}

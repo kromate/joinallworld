@@ -101,7 +101,7 @@
     "executed": false
   },
   "cause": "UI offers all three records at once; transition records click chronology, but reader requires canonical evidence presentation order. Tests start in canonical order and do not cover all permutations.",
-  "ownership": "Sol requests Integration allocate the same suitable available Luna writer with exclusive scope. No worker assignment/execution yet verified; no new worker spawned.",
+  "ownership": "Integration assigned urgent INT035 to LIVING. A dependent queue for the same existing Cloud worker is requested; native queue acknowledgement and implementation are not yet verified. No new worker or shared service/UI writer.",
   "proposedExclusiveWriteScope": [
     "src/game/living-world/justice-practice.ts",
     "src/game/living-world/justice-practice.test.ts"
@@ -124,5 +124,26 @@
     "newWorkerSpawned": false,
     "newBranchBase": "3e3e0876fc50f3166a0d0968f8616b577da27870",
     "forbiddenAncestry": "Denied385 and private sedan ancestry must not enter this separate law repair"
-  }
+  },
+  "preservingHistoryContract": {
+    "commit": "732aef3fe0f16b45440f82778344d0e78c703264",
+    "fullFilesIndependentlyRead": true,
+    "files": [
+      {
+        "path": "docs/agent-plans/integration/justice-evidence-order-root-review.md",
+        "bytes": 6999,
+        "sha256": "0a0c00514f9f780e8a82aedc52156c4072d789c584a1ed1098b1f70e7d044942"
+      },
+      {
+        "path": "docs/agent-plans/integration/justice-evidence-order-root-review.json",
+        "bytes": 7903,
+        "sha256": "bb0f1feedd41bd47820142cc160f49c6c1478ccb91cbd43e72ae0684ac4c6eb0"
+      }
+    ],
+    "boundary": "Accept raw evidence order only if exactly canonical reconstructed order OR exactly first successful inspection chronology derived from fully validated original chronological receipts. Arbitrary matching-set permutations remain refused.",
+    "immutable": "Preserve exact chronological action receipts, IDs, expected revisions, action/reason order, outcomes, decisions and once fingerprints. Validate replay from empty against every original result.",
+    "get": "Detached canonical GET performs no storage, timestamp, revision, receipt or progression mutation. Next authorized action may persist canonical representation.",
+    "limits": "Keep 24 receipts,16384 bytes,+512/1024 rows and all existing authority/privacy/economy limits. No reset, deletion, broad migration or cap increase."
+  },
+  "contractUpdatedAt": "2026-10-10T04:22:04.751721+00:00"
 }

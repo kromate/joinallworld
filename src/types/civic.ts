@@ -301,6 +301,54 @@ export interface RichListResponse {
   counters: CityCounters
 }
 
+// ---- place boards (cities, states, countries) -----------------------------------------------------
+
+export type BoardScope = 'city' | 'state' | 'country'
+export type BoardMeasure = 'pride' | 'earned' | 'active' | 'residents'
+/** One ranked place. Only places with enough players are ranked (`BoardsResponse.min`); no player is named or counted singly. */
+export interface BoardRow {
+  rank: number
+  id: string
+  name: string
+  /** The state a city is in, the country a state is in; null for a country. */
+  within: string | null
+  /** Players who have signed in as residents. */
+  residents: number
+  /** Residents who have opened the game this Lagos week. */
+  active: number
+  /** Naira those residents received this week (their last check-in). */
+  earned: number
+  /** Naira received this week per resident: rewards taking part, not size. */
+  pride: number
+  /** The viewer's own place. */
+  you: boolean
+}
+export interface BoardYou {
+  id: string
+  name: string
+  /** null while the place has too few players to be ranked. */
+  rank: number | null
+  /** The place just above and what this one lacks to match it, in the measure ranked by. */
+  behind: { id: string; name: string; amount: number } | null
+}
+export interface BoardsResponse {
+  scope: BoardScope
+  by: BoardMeasure
+  /** Lagos week the board counts. */
+  week: number
+  /** Players a place needs (residents and active) before its numbers are shown or ranked. */
+  min: number
+  rows: BoardRow[]
+  /** Cursor for the next page: the rank of the last row sent. */
+  next: string | null
+  /** Ranked places in all, and places left off for having too few players. */
+  total: number
+  unranked: number
+  you: BoardYou | null
+  /** The winner by pride of the week before, kept for the week after. */
+  lastWeek: { week: number; winner: { id: string; name: string } | null }
+}
+
 /** `true` = listed. Stored the other way round (as "hidden" flags), so no entry means listed. */
 export interface PrefsBody { richList?: boolean; directory?: boolean }
 export interface PrefsResponse { ok: true; prefs: { richList: boolean; directory: boolean } }
@@ -327,6 +375,8 @@ export interface CivicHttpRoutes {
   'POST /api/civic/radio/shoutout': { body: ShoutoutBody; response: Ok<ShoutoutResponse>; errors: CivicWrite | OnceErrorCode }
   'GET /api/civic/richlist': { query: { city: CityId }; response: Ok<RichListResponse>; errors: CivicRead | StorageErrorCode }
   /** The one civic write without a city. */
+  /** 400 `invalid_scope`, `invalid_measure`, `invalid_cursor`. Aggregates only: no player is named. */
+  'GET /api/civic/boards': { query: { scope?: BoardScope; by?: BoardMeasure; after?: string; limit?: number }; response: Ok<BoardsResponse>; errors: HostErrorCode | 'civic_rate_limited' | 'invalid_scope' | 'invalid_measure' | 'invalid_cursor' | StorageErrorCode }
   'POST /api/civic/prefs': { body: PrefsBody; response: Ok<PrefsResponse>; errors: HostErrorCode | JsonBodyErrorCode | SessionErrorCode | StorageErrorCode | 'civic_rate_limited' | 'invalid_prefs' }
 }
 
@@ -344,4 +394,5 @@ export const ADS_RESPONSE_KEYS = ['billboards', 'city', 'palette', 'sea', 'serve
 export const HUNT_RESPONSE_KEYS = ['city', 'claims', 'found', 'gemsPerDay', 'prize', 'serverTime', 'today', 'you'] as const satisfies readonly (keyof HuntResponse | keyof ApiEnvelope)[]
 export const RADIO_RESPONSE_KEYS = ['city', 'club', 'perDay', 'playing', 'price', 'queue', 'queueMax', 'serverTime', 'slotSeconds', 'usedToday', 'venue'] as const satisfies readonly (keyof RadioResponse | keyof ApiEnvelope)[]
 export const RICH_LIST_RESPONSE_KEYS = ['balances', 'city', 'counters', 'earners', 'serverTime', 'size', 'week', 'you'] as const satisfies readonly (keyof RichListResponse | keyof ApiEnvelope)[]
+export const BOARDS_RESPONSE_KEYS = ['by', 'lastWeek', 'min', 'next', 'rows', 'scope', 'serverTime', 'total', 'unranked', 'week', 'you'] as const satisfies readonly (keyof BoardsResponse | keyof ApiEnvelope)[]
 export const PREFS_RESPONSE_KEYS = ['ok', 'prefs', 'serverTime'] as const satisfies readonly (keyof PrefsResponse | keyof ApiEnvelope)[]

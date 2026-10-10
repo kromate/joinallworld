@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Rich List: top balances and top earners of the week, plus the real city counters. Everything
 // shown comes from the server (GET /api/civic/richlist); nothing is estimated here.
-import { computed } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { RichListResponse } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
@@ -13,7 +13,10 @@ import RichBoard from './RichBoard.vue'
 import { count, richKey, richPath } from './civicModel.ts'
 import { useCivic, useLoaded, useOffline } from './useCivic.ts'
 
-defineProps<{ params?: unknown }>()
+const props = defineProps<{ params?: unknown }>()
+// The cities, states and countries board is its own lazily loaded part of this screen.
+const PlacesBoard = defineAsyncComponent(() => import('./PlacesBoard.vue'))
+const tab = ref<'players' | 'places'>(typeof props.params === 'object' && props.params !== null && Reflect.get(props.params, 'tab') === 'places' ? 'places' : 'players')
 const { game } = useApp()
 const civic = useCivic()
 const offline = useOffline()
@@ -31,6 +34,12 @@ async function toggle(): Promise<void> {
 
 <template>
   <div class="richlist">
+    <nav class="richlist-tabs" role="group" aria-label="Rich List">
+      <button type="button" :class="{ 'is-on': tab === 'players' }" :aria-pressed="tab === 'players'" @click="tab = 'players'">Players</button>
+      <button type="button" :class="{ 'is-on': tab === 'places' }" :aria-pressed="tab === 'places'" @click="tab = 'places'">Places</button>
+    </nav>
+    <PlacesBoard v-if="tab === 'places'" />
+    <template v-else>
     <CivicStatus :item="item" @retry="reload" />
     <template v-if="data">
       <section v-if="you?.listed" class="ui-hero richlist-hero"><small>You{{ you.balanceRank ? ` · rank ${you.balanceRank}` : '' }}</small><strong>{{ money(you.cash) }}</strong><p>Earned {{ money(you.earned) }} this week</p></section>
@@ -51,10 +60,14 @@ async function toggle(): Promise<void> {
       </div>
       <HowItWorks id="richlist-rules" page label="How the lists are counted" :rules="['Balances are each player’s in-game naira at their last check-in.', 'Earners count naira received since Monday, Nigerian time.', 'Players are counted once they have opened the game since this feature shipped; “online” means a live connection right now.', 'You can hide yourself from both lists with the button above. This is a beta feature.']" />
     </template>
+    </template>
   </div>
 </template>
 
 <style scoped>
+.richlist-tabs { display: flex; gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
+.richlist-tabs button { flex: 1 1 0; padding: 0 8px; min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 13px var(--font); color: var(--c-ink-2); cursor: pointer; }
+.richlist-tabs button.is-on { background: #fff; color: var(--c-ink); }
 .civic-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0 0; }
 .civic-actions .civic-action { flex: 1 1 140px; display: grid; margin: 0; }
 .richlist-hero { --hero: var(--app-tint, #b7791f); }

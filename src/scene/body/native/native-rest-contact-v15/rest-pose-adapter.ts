@@ -796,7 +796,7 @@ export function createNativeRestPoseAdapter(
             } catch (error) {
               mappedEgressError = error instanceof Error ? error.message : String(error);
             }
-            const mappedEgressTrial = lastLiftTrial;
+            const mappedEgressTrial = lastLiftTrial as Readonly<Record<string, unknown>> | null;
             const mappedEgressAccepted = mappedEgressTrial?.accepted === true;
             if (mappedEgressAccepted) measurement = measure(support.surface, sampleParentLocalContacts);
             const attempts: Readonly<Record<string, unknown>>[] = [];

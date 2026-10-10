@@ -1,0 +1,55 @@
+{
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "publishedAtUtc": "2026-10-10T04:25:02.662288+00:00",
+  "records": [
+    {
+      "label": "node22-game-corrected-full",
+      "originalReceiptSha256": "cb5fa6c0affc78db44132d3c3e6a836dbc6117f6e32c261e29ed4cb1534d811e",
+      "originalLogSha256": "0a7fbed005a10400ab7a4ade16f93360d4b785afa8d9307e3f1aaf2cc572f22d",
+      "exitStatus": 0,
+      "counts": {
+        "tests": 2589,
+        "pass": 2588,
+        "fail": 0,
+        "skipped": 1,
+        "cancelled": 0
+      },
+      "sourcePinMapEmpty": true,
+      "originalStartUtc": "2026-10-10T04:01:26.263917+00:00",
+      "originalEndUtc": "2026-10-10T04:23:26.830499+00:00"
+    },
+    {
+      "label": "release-policy-package-guard",
+      "originalReceiptSha256": "337abea775eb8e25ec64ca97f0a91833cd6b6316850ab4c813e690a7bfb8b30d",
+      "originalLogSha256": "e89061568944ed828cbd8b5641bd3bb8832a11d3c440f0b8e6e12d4a994c7dc5",
+      "exitStatus": 0,
+      "counts": {},
+      "sourcePinMapEmpty": true,
+      "originalStartUtc": "2026-10-10T04:23:27.205071+00:00",
+      "originalEndUtc": "2026-10-10T04:23:28.746480+00:00"
+    },
+    {
+      "label": "release-policy-plan-inventory",
+      "originalReceiptSha256": "556952882c9d45c4ec72ac0a9ad47d529d5b7904f7b4f6b8777d68c227964df7",
+      "originalLogSha256": "d1b8bd1242ee4bebb85e4d9c0c00b68790a1db436a2cd333d032690a4e8fc786",
+      "exitStatus": 0,
+      "counts": {},
+      "sourcePinMapEmpty": true,
+      "originalStartUtc": "2026-10-10T04:23:28.893538+00:00",
+      "originalEndUtc": "2026-10-10T04:23:29.157159+00:00"
+    }
+  ],
+  "originalNode24GameSuite": {
+    "exitStatus": 1,
+    "tests": 2589,
+    "pass": 2587,
+    "fail": 1,
+    "skip": 1,
+    "classification": "verified zero-delay reconnect test timer bookkeeping gap; full original result remains FAIL",
+    "publicReceiptCommit": "7d2fd3feb14cd0befcd3246a8f43abc853bc19c3"
+  },
+  "cleanHeadAndStatusVerifiedByOriginalWrapper": true,
+  "fullBytePinMapsInOriginalWrappers": false,
+  "newSuiteRerunsForReporting": false,
+  "browserNativeOrDeploymentAcceptance": false
+}

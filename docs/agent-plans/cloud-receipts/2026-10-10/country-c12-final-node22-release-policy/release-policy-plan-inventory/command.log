@@ -1,0 +1,29 @@
+Actual lease-start allowance guard: {"rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.", "minimum_remaining_percent_exclusive": 4, "latest_remaining_percent": 7, "sample_source": "LIVING direct account93%used7%remaining latest delegated receipt", "recorded_at_utc": "2026-10-10T04:11:12.379088+00:00", "allow_new_heavy": true, "heavy_slots": 1, "additional_spend": 0}
+{
+  "totalFiles": 508,
+  "partitions": {
+    "game": {
+      "globs": [
+        "src/**/*.test.js",
+        "src/**/*.test.ts"
+      ],
+      "files": 357
+    },
+    "host": {
+      "globs": [
+        "server/**/*.test.js",
+        "server/**/*.test.ts"
+      ],
+      "files": 147
+    },
+    "tooling": {
+      "globs": [
+        "scripts/city/*.test.ts",
+        "scripts/agent-slot.test.ts",
+        "scripts/typecheck.test.ts",
+        "scripts/download-budget.test.ts"
+      ],
+      "files": 4
+    }
+  }
+}

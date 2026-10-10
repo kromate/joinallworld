@@ -1,5 +1,5 @@
 {
-  "observedAtUtc": "2026-10-10T00:19:03.426641+00:00",
+  "observedAtUtc": "2026-10-10T00:22:45.720227+00:00",
   "decision": "ACCEPT_SCOPED_ORIGINAL_LESSON_OFF_COMPLETION_AND_OWNER_HTTP_REPLAY",
   "sourceSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
   "packageDigest": "96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad",
@@ -28,6 +28,11 @@
       "artifact": "native-eec-off-900-replay.json",
       "sha256": "fdbc3be1b58f680d9a8e9c2b68dd6c1a39c44d5e2891f39a682759987e7e11e1",
       "bytes": 1189
+    },
+    "terminal": {
+      "artifact": "native-eec-off-900-terminal.json",
+      "sha256": "e6ee0ea1a2bc81cc7aa99438241a61f6c58448445cd3aa43eccee7aa716320b3",
+      "bytes": 1957
     }
   },
   "actualOperatorModel": {
@@ -155,7 +160,7 @@
     "bothActorsIdentityProtectedHomeAndSchoolUnchangedByReplay": true,
     "newActorsGrantsLessonsResetsOrDirectStoreWrites": false
   },
-  "replayScope": "One canonical /api/action POST of successful native final-answer ID and bound intent using existing actor auth. No native UI retry control existed; this is owner HTTP replay, not browser replay. Root did not access credentials or raw store.",
+  "replayScope": "One canonical /api/action POST of successful native final-answer ID and bound intent using existing actor auth. No native UI retry control existed; this is owner HTTP replay, not browser replay. Root did not access credentials or raw store. Subsequent actual cold retained-store read independently matches pre-replay cash, numeric charisma, shifts, performance, generation and no active action for both actors. A whole city-state hash differs; no whole-city immutability claimed.",
   "mobile": {
     "widths": [
       390,
@@ -179,7 +184,15 @@
     "unrelatedTabsPreserved": true,
     "worldServerNotInterrupted": true
   },
-  "stageCleanup": "Browser lease released; WORLD stage exec32810/PID27474 actually live at Root00:17 observation, fixed expiry00:21:04.823. Owner final stage/store cleanup receipt pending.",
+  "stageCleanup": {
+    "execSession": 32810,
+    "exitCode": 0,
+    "stoppedAt": "2026-10-10T00:21:04.848Z",
+    "childAbsent": true,
+    "allSevenRetained": true,
+    "rootPidAbsentObservedAt": "2026-10-10T00:21:09Z",
+    "coldStoreReadAt": "2026-10-10T00:21:52.338702+00:00"
+  },
   "remaining": [
     "Numeric XP delta lacks before snapshot; do not claim25",
     "OFF-issued unmarked new shift and new-ID stale-final refusal remain unverified",
@@ -190,5 +203,35 @@
     "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
     "teachingStarts": "OFF",
     "newDeployment": false
-  }
+  },
+  "rootIndependentColdTerminalComparisons": [
+    {
+      "role": "A",
+      "independentlyComparedPreReplayAndColdTerminalProgression": {
+        "cash": true,
+        "charisma": true,
+        "completedShifts": true,
+        "careerShifts": true,
+        "careerPerformance": true,
+        "careerGeneration": true,
+        "activeActionNone": true
+      },
+      "ownerIdentityProtectedHomeSchoolAndAllRowsMatchPreReplay": true,
+      "wholeCityStateMatchesPreReplay": false
+    },
+    {
+      "role": "B",
+      "independentlyComparedPreReplayAndColdTerminalProgression": {
+        "cash": true,
+        "charisma": true,
+        "completedShifts": true,
+        "careerShifts": true,
+        "careerPerformance": true,
+        "careerGeneration": true,
+        "activeActionNone": true
+      },
+      "ownerIdentityProtectedHomeSchoolAndAllRowsMatchPreReplay": true,
+      "wholeCityStateMatchesPreReplay": true
+    }
+  ]
 }

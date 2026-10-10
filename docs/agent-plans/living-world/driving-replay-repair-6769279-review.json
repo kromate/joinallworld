@@ -55,6 +55,14 @@
       "id": "F3",
       "status": "OPEN",
       "evidence": "Compatible OFF reader/writer rollback image and durable Node/Worker/native reopen not accepted; worker explicitly leaves artifact compatibility open."
+    },
+    {
+      "id": "L1-exhaustion",
+      "status": "OPEN_SEPARATELY_SCOPED_EXISTING_ONLINE_WRITER",
+      "priority": "P1",
+      "provenance": "Inherited eec source-predicted strict-save corruption, not native observed. Published Astra full report read.",
+      "evidence": "pauseRecord/accepted input/resume can increment safe-integer revision or sequence beyond MAX_SAFE_INTEGER; subsequent strict read refuses written row. Restart-only guard does not cover these paths.",
+      "acceptance": "Before any exhausted increment/write refuse and preserve full row; meaningful current/pause/input/resume regressions and ordinary v1/v2/replay checks. Same existing worker owns only service/test after immutable current checks."
     }
   ],
   "workerReportedTests": {
@@ -65,5 +73,12 @@
     "actualLogsIndependentlyRead": false
   },
   "next": "Existing Integration Astra final review, cloud exact compiler/build/log publication, existing Luna scoped display repair if confirmed, compatible rollback and native recovery. Keep pure frozen files/default OFF/original score unchanged.",
-  "remoteModelAssignment": "Requested Luna; accepted spawn/runtime receipt still pending, not inferred from name."
+  "remoteModelAssignment": "Requested Luna; accepted spawn/runtime receipt still pending, not inferred from name.",
+  "independentD7ReviewAdopted": {
+    "publishedCommit": "e8695a5530f6559701a1cafb6f47dbe5c87a2277",
+    "mdSha256": "d70c51346678979d1126e3dc4a9ef6607c13498bc5706029a8617f0fe21fbd8c",
+    "jsonSha256": "6bec4fcfab2bcb29ba63d0661adbd58f99235419bf13f2e21192808df5b8c4c6",
+    "rootReadEntireBoth": true,
+    "decision": "MODIFY d7, not final repair source approval"
+  }
 }

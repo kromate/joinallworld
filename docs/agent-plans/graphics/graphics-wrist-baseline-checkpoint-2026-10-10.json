@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-10T04:46:47.433617+00:00",
+  "publishedCommit": "8bceca5f586ca4b619759bb778dd142151b08302",
+  "runtimeSha": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+  "status": "Measured calibration cause; correction not certified",
+  "receipt": {
+    "pid": 174757,
+    "startedAt": "2026-10-10T04:32:17.417996+00:00",
+    "endedAt": "2026-10-10T04:32:17.705844+00:00",
+    "seconds": 0.287848,
+    "exitStatus": 0,
+    "sourceUnchanged": true
+  },
+  "sourceDeltasDegrees": {
+    "left": {
+      "restToIdle0Radians": 13.507285481026317,
+      "restToIdle7667Radians": 13.50723701881982,
+      "idle0ToInteract7667Radians": 59.99308509313334,
+      "bindRestToInteract7667Radians": 62.72385041252472
+    },
+    "right": {
+      "restToIdle0Radians": 15.301835197364824,
+      "restToIdle7667Radians": 15.301851928578708,
+      "idle0ToInteract7667Radians": 6.910821719990482e-05,
+      "bindRestToInteract7667Radians": 15.30186578027377
+    }
+  },
+  "familiesMeasured": [
+    "male",
+    "female"
+  ],
+  "sourceInputs": {
+    "sourceHead": "93bc1acc87dc7e80373910d20a25daf6078e5b24",
+    "sourceClean": true,
+    "authoredPath": "src/scene/body/native/authored-body-compression/outcompressed/parametric-base-facial-meshopt.glb",
+    "authoredSha256": "dfa53941f0fb77d69e59f59fa017f72efa45eddd7e6e8b8414b4a4dba332d552",
+    "authoredBoneCount": 52,
+    "clipPath": "src/scene/body/assets/clip-pack.glb",
+    "clipSha256": "89a2c636d3a9d1d9eac0e1125c20ca14d030c55ae27561dd8644b30645fd3d47",
+    "sourceSourceRig": "clip-pack.glb private source skeleton, sampled by production NativeSourceLandmarkSampler",
+    "targetRig": "pinned authored-body GLB node hierarchy reconstructed with actual authored bind transforms and 52 source joint nodes; actual native family correction and NativeNeutralPose applied; no skin/garment claims",
+    "dependencyRealpath": "/workspace/remote-verification/repositories/coordinator-graphics-wiring/node_modules (same-lockfile shared dependency symlink)"
+  },
+  "independentPins": [
+    {
+      "name": "scope.json",
+      "bytes": 602,
+      "sha256": "d241eca45f9b3df183a1f9f13d5ace631c108dfb0a26bd8e2fd023c2f3547461"
+    },
+    {
+      "name": "wrist-causal-diagnostic-v1.mjs",
+      "bytes": 11690,
+      "sha256": "b9bf3681920fa146188883e9b9b6cbef9b0728b79b2e732c6e38588236cdbe4d"
+    },
+    {
+      "name": "command.log",
+      "bytes": 2567,
+      "sha256": "358c5f956d4b84dba8b6583f2b25f64159e0ef9f8aebc881f44410987fc29644"
+    },
+    {
+      "name": "wrist-causal-measurement.json",
+      "bytes": 54484,
+      "sha256": "c87bf599b7db2776e4eb617315751af2bfb8d8222411f963870dcf0292592ea5"
+    },
+    {
+      "name": "receipt.json",
+      "bytes": 2684,
+      "sha256": "c297d7be1ae3b7f1e5638a427ab2b856fcdde173e6227b7f3ad4066ba2a12dff"
+    }
+  ],
+  "cause": "Current wrist controller uses sourcebindrest/targetbindrest while flatidle/interact posepipeline uses sourceidle0 and targetNativeNeutral. Actualrightinteraction delta fromidle~0deg but currentcontroller adds15.3deg; targetforearmbasis also changes from bind to neutral.",
+  "scope": "Actual authored52bone hierarchy/production sampler math; not skin/garment/browser/mobile/physicaldevice acceptance",
+  "correctiveContract": "Match baseline to posepipeline; neutralgesture correction must not silentlychange furniture/rest/stair/cook/drink sampledclip wristmapping. Preserve measuredhandorigins and actual intendedleftwristmotion.",
+  "stanceAlternativeHypothesis": {
+    "status": "UNPROVEN pending sameactor before/afterstages",
+    "source": "https://threejs.org/docs/pages/Matrix4.html",
+    "fact": "Three.js documents nonuniform parent scale can make world matrices unsuitable for position/rotation/scale decomposition",
+    "requirement": "Measure norms/scales/legdistances first; no guessednormalizationfix"
+  }
+}

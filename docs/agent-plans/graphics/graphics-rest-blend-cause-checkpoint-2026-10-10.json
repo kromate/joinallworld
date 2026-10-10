@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-10T04:44:11.922506+00:00",
+  "sourceHead": "a5b13d35e59190515269c9a3852649caac38b470",
+  "testedSource": "HEAD plus uncommitted9line typing overlay; not cleanHEAD",
+  "adapterSha256": "461c69a2ff465d7d6c7720a758ae6cd6ddf4e01c179c69164142168eaba457b3",
+  "factorySha256": "9da34f4caea2c4e68c68fb266e92507d07051f4f9d9d966453604c037ee7c98c",
+  "bundleSha256": "12e6f12867a604c00a9bab53ec1d4206dceb9c87a6a1256e3a03c39e266c0cc2",
+  "failureSha256": "3a98829fc801b040c7c81aeb7c3289141cca968ce39c06d439e5ee140aee5605",
+  "logSha256": "a2a9043d159551f1a20b22fd799a72ed7892720154b2a7008214d437f3be95fb",
+  "receiptSha256": "1b461259971b381f730257f63852ea8b2352ea69fa816a50a9873931bf0f69d7",
+  "rawNumericTool": "exec-7c1f313b-26c7-4203-8cd6-19235948b197",
+  "pinsTool": "exec-110ac8b2-220e-42da-b7df-2d9ea6d00347",
+  "typingDiffTool": "exec-3c267a03-cfdb-4d23-a816-c8c9b9e0ba2f",
+  "status": "ACTUALFAIL, not home journey acceptance",
+  "elapsedSeconds": 4.585,
+  "peakGroupRssBytes": 990109696,
+  "sourceAndDisplaySeconds": 0.06666666666666667,
+  "mapped": {
+    "leftGapMeters": 0.044720583420268925,
+    "leftFloorWeight": 0.7168300955067826,
+    "rightGapMeters": 0.1076026622963843,
+    "rightFloorWeight": 0.03182448631087731
+  },
+  "solver": {
+    "corrected": 1,
+    "maxError": 0,
+    "limited": false,
+    "leftMinimumGapMeters": 0.0004708286042545279,
+    "leftMaximumGapMeters": 0.030838877197191833,
+    "rightMinimumGapMeters": 0.1076026622963843,
+    "rightMaximumGapMeters": 0.2026339097825122
+  },
+  "afterAdapterBlend": {
+    "leftMinimumGapMeters": 0.01117411734523717,
+    "leftMaximumGapMeters": 0.03905931639774257,
+    "rightMinimumGapMeters": 0.10760266229638418,
+    "rightMaximumGapMeters": 0.2026339097825121
+  },
+  "bodyRegionSamples": {
+    "pelvis-back": 0,
+    "torso-back": 0,
+    "head-back": 0
+  },
+  "cause": "Originalsolver plantsLEFT within4mm; adapter floorWeight blend reopens11.174mm gap before any prop/body support. Preserve realplanted support until actualtransfer, retaining source swing side. No blind threshold changes.",
+  "unchangedGates": [
+    "4mm floor/prop penetration",
+    "4mm actualplanting",
+    "rootcaps",
+    "actualauthoredsole sampling",
+    "completejourney"
+  ],
+  "fullGoalActive": true,
+  "compiler": {
+    "tool": "exec-82d14dd5-704d-47c2-b262-ad4d92476f20",
+    "exitStatus": 0,
+    "secondsIncludingLease": 12.935,
+    "sourceAtStart": "a5b13d35e59190515269c9a3852649caac38b470",
+    "adapterAtStart": "461c69a2ff465d7d6c7720a758ae6cd6ddf4e01c179c69164142168eaba457b3",
+    "scope": "focused homejourney; not5projectstrict",
+    "earlierTypeFailuresRetained": [
+      "exec-2f4f2f8e-c083-46f4-899d-3f2cac0f1733",
+      "exec-9d181c1a-7ca1-4e21-b47d-33fef49ef07f",
+      "exec-17616983-f593-41d7-8be9-8e1a71ffe5d4"
+    ]
+  },
+  "actualTrialTool": "exec-14ab789d-ca84-4c79-815d-a4beaec032dc",
+  "actualTrialInclusiveSeconds": 4.923
+}

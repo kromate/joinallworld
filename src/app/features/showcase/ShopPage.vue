@@ -51,7 +51,7 @@ async function go(kind: ShowcaseLinkKind): Promise<void> {
   } finally { busy.value = '' }
 }
 async function declareAdult(): Promise<void> {
-  try { await game.fetchJson('/api/growth/consent', { method: 'POST', body: { age: 'adult' } }); needs.value = ''; note.value = 'Thank you. Press Chat or Pay again.' } catch (error) { note.value = error instanceof Error ? error.message : 'That did not work.' }
+  try { await game.fetchJson('/api/growth/consent', { method: 'POST', body: { cityId: game.view.value.cityId, age: 'adult' } }); needs.value = ''; note.value = 'Thank you. Press Chat or Pay again.' } catch (error) { note.value = error instanceof Error ? error.message : 'That did not work.' }
 }
 async function report(): Promise<void> {
   if (!reporting.value || !reason.value || busy.value) return

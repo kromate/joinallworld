@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-10T02:23:48.967178+00:00",
+  "observedAt": "2026-10-10T02:43:50.212734+00:00",
   "candidate": "a6461c2208d9621bf79f69fb5409d5bc43cd7746",
   "base": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
   "branch": "codex/cloud-driving-host-reopen-h1h2h3-20261010",
@@ -89,7 +89,7 @@
     "note": "Asked coordinator for current actual handle; turn/lock state is insufficient.",
     "compilerStatus": "Queued according to current child messages and log; not compiler execution. Another actual npm test:edge parent109970 observed alive at11:59, not a current Root live handle.",
     "slotStatusCaveat": "slotRoot() uses AGENT_SLOT_DIR or this checkout git-common-dir. Standalone free status had no explicit override; ambient environment unverified. Asked owner to inspect shared registry explicitly, without deleting locks or duplicating phases.",
-    "latestOwnerCompilerReport": "Coordinator reports shared compiler acquired after Node22Worker terminal; direct actual compiler handle/log has not yet been independently inspected by Sol."
+    "latestOwnerCompilerReport": "Actual run-check compiler exit0 receipt now fully read. Corrected worker turn completed; no old compiler/build handle treated as live."
   },
   "decision": "H1-H3 scoped source and exact a646 focused execution accepted; integration held for compiler failure and unpublished corrected SHA. No acceptance transfers to 0f882.",
   "notAccepted": [
@@ -131,6 +131,76 @@
     "reportedReason": "Review did not accept authorization for this exact source payload and GitHub destination.",
     "evidence": "Actual cloud coordinator agent message msg_06f15880045237d6016ac9a1186c4487d29234d857bfd620e0 + actual child publication-blocked message. Full raw rejection output requested; no alternative publisher/credential or retry.",
     "rawReviewReasonReceived": false,
-    "authorizedChecksContinue": true
+    "authorizedChecksContinue": true,
+    "trustedApprovalQuestionPresented": true,
+    "humanAnswerReceived": false,
+    "privateReviewArtifact": "/Users/anthonyakpan/Documents/Codex/living-world-evidence/2026-10-10/driving-source-publication-review/38594-test-close.patch",
+    "privateArtifactApplied": false,
+    "noAlternativePublisher": true
+  },
+  "correctedExecution": {
+    "source": "38594def6eeeab969b3f5148784edfda438aa387",
+    "sourcePublished": false,
+    "actualFinalNodeHash": "57aa35bcfb918da2ea9f98a804d32a42128e3e206affcb96ea241372a21bea3a",
+    "matchesDerivedReviewedHelper": true,
+    "workerTestHashUnchanged": "6875c0f267fe873be23331c21882a1f8fe95510fd03945b9a098a6874db60b49",
+    "sourceProof": "Actual final child Git HEAD/clean status, a646-to-final changed-file list and SHA256 output reviewed; public final Git object still unavailable. No private code republished.",
+    "compiler": {
+      "receiptFullyReadFromActualCommandOutput": true,
+      "actualCommandId": "exec-2de4532c-39bd-4ebf-84a3-beb73093ceeb",
+      "exit": 0,
+      "headAfter": "38594def6eeeab969b3f5148784edfda438aa387",
+      "gitStatusAfter": "",
+      "node": "v24.19.0",
+      "heapMiB": 4096,
+      "serial": true,
+      "wrapperSecondsIncludingWait": 1291.814597,
+      "startedAt": "2026-10-10T02:06:30.894820+00:00",
+      "endedAt": "2026-10-10T02:28:02.709417+00:00",
+      "rawLogSha256": "7b2b0c5e0b5e904db919725ce84d601e6737090a1da7f18101bfe42b33a46bb6",
+      "fullOriginalRawHashIndependentlyValidated": false,
+      "scope": "Actual compiler process terminal0; project zero-error counts worker-reported pending complete original raw review."
+    },
+    "focused": {
+      "receiptFullyReadFromActualCommandOutput": true,
+      "actualCommandId": "exec-568c38e1-bc75-4319-ad8c-318394996b36",
+      "exit": 0,
+      "pass": 2,
+      "fail": 0,
+      "skip": 0,
+      "testSeconds": 8.242726946,
+      "wrapperSeconds": 8.403498,
+      "headAfter": "38594def6eeeab969b3f5148784edfda438aa387",
+      "gitStatusAfter": "",
+      "heapMiB": 1536,
+      "rawLogSha256": "789d8ffe6805694776f27078c9c966f8a3e950fc6233ea64b3c92a24413375e3",
+      "rawTerminalSummaryRead": true,
+      "fullOriginalRawHashIndependentlyValidated": false
+    },
+    "smoke": {
+      "receiptFullyReadFromActualCommandOutput": true,
+      "actualCommandId": "exec-41d17642-5d06-41b9-92fd-9217fa0533b9",
+      "exit": 0,
+      "pass": 16,
+      "fail": 0,
+      "skip": 0,
+      "testSeconds": 2.499380747,
+      "wrapperSecondsIncludingWait": 92.922005,
+      "rawLogSha256": "eae958d2686923b8476b56b93a84dab3ad3e1068b4e05ba381ccc9e70967c4a3",
+      "rawTerminalSummaryRead": true,
+      "fullOriginalRawHashIndependentlyValidated": false
+    },
+    "build": "Worker completed/PASS; hash8f91b0aba86067cdd709239fe6081c082f3bfb7d599eca94837435d0c3a12af9 recorded. Full original log/receipt not yet independently reviewed.",
+    "budget": {
+      "workerReportedBrotli": 195610,
+      "cap": 195600,
+      "overBy": 10,
+      "status": "FAIL retained; no cap change or accepted rollback package",
+      "rawLogSha256": "6f7466533ea8daf4ab003edc24063b29bdc9536a63eab1d3fc37c48a7badf34c"
+    },
+    "sourcePinMapsEmpty": true,
+    "workerTurn": "01a1238a-5b87-7063-b96e-425f86117dc7",
+    "workerTurnStatus": "completed",
+    "releaseAccepted": false
   }
 }

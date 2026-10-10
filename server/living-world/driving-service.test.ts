@@ -603,6 +603,97 @@ test('revision and sequence exhaustion refuse writes while the last safe legacy 
   assert.deepEqual(await readRow(v2Owner.id), v2AtMax, 'the v2 writer shape and retained receipt remain readable at max revision')
 })
 
+test('the last safe sequence and revision are accepted once; max receipts replay before timeout and clock reversal', async t => {
+  const f = await fixture(t, { routes: configuredDrivingRoutes(true) })
+  const max = Number.MAX_SAFE_INTEGER
+  for (const scenario of [
+    { name: 'v1 timeout', version: 1, clockReversed: false },
+    { name: 'v1 reversed clock', version: 1, clockReversed: true },
+    { name: 'retained v2 timeout', version: 2, clockReversed: false },
+    { name: 'retained v2 reversed clock', version: 2, clockReversed: true },
+  ] as const) {
+    const player = await onboard(f)
+    const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+    assert.ok(started.ok && started.session, scenario.name)
+    if (scenario.version === 2) {
+      f.advance(100)
+      const v2 = await post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: started.session!.journeyId, sequence: 1,
+        frames: [{ throttle: 0, brake: 0, steer: 0, gear: 'forward' }] }, player.cookie)
+      assert.ok(v2.ok && v2.session, `${scenario.name} fixture must first retain a valid v2 row`)
+    }
+    await f.server.store.transact(db => {
+      const row = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving[player.id]
+      assert.ok(row, `${scenario.name} fixture has its journey`)
+      assert.equal(row['v'], scenario.version)
+      row['revision'] = max - 1
+      row['nextSequence'] = max - 1
+      row['lastPacket'] = { sequence: max - 2, fingerprint: 'prior-safe-boundary-receipt', code: 'controls_accepted' }
+    })
+    f.advance(100)
+    const packet = { cityId: 'lagos', journeyId: started.session!.journeyId, sequence: max - 1,
+      frames: [{ throttle: 1, brake: 0, steer: 0 }] }
+    const accepted = await post(f, `${drivingPath}/input`, packet, player.cookie)
+    assert.deepEqual([accepted.ok, accepted.code, accepted.session?.revision, accepted.session?.nextSequence],
+      [true, 'controls_accepted', max, max], `${scenario.name}: MAX_SAFE_INTEGER - 1 is the final accepted revision and sequence`)
+    const readRow = () => f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+    let expected = await readRow()
+    const boundary = expected as { v: number; revision: number; nextSequence: number; lastPacket: { sequence: number } }
+    assert.deepEqual([boundary.v, boundary.revision, boundary.nextSequence, boundary.lastPacket.sequence],
+      [scenario.version, max, max, max - 1], `${scenario.name}: the successful boundary packet is retained without overflow`)
+
+    if (scenario.clockReversed) {
+      await f.server.store.transact(db => {
+        const row = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving[player.id]
+        assert.ok(row)
+        row['updatedAt'] = f.now() + 5000
+        row['lastInputAt'] = f.now() + 5000
+      })
+      expected = await readRow()
+    } else f.advance(1600)
+
+    const replay = await post(f, `${drivingPath}/input`, packet, player.cookie)
+    assert.deepEqual([replay.ok, replay.code, replay.duplicate, replay.session?.revision, replay.session?.nextSequence],
+      [true, 'controls_accepted', true, max, max], `${scenario.name}: retained MAX - 1 success replays before timeout/clock processing`)
+    assert.deepEqual(await readRow(), expected, `${scenario.name}: delayed exact replay leaves the complete v${scenario.version} driving row unchanged`)
+
+    const overflow = await post(f, `${drivingPath}/input`, { ...packet, sequence: max }, player.cookie)
+    assert.deepEqual([overflow.ok, overflow.code, overflow.session?.revision, overflow.session?.nextSequence],
+      [false, 'sequence_exhausted', max, max], `${scenario.name}: MAX itself cannot be accepted`)
+    assert.deepEqual(await readRow(), expected, `${scenario.name}: exhausted sequence refusal leaves the complete row unchanged`)
+  }
+})
+
+test('an exhausted running row refuses every lifecycle and control route on location mismatch without rewriting it', async t => {
+  const f = await fixture(t, { routes: configuredDrivingRoutes(true) })
+  const max = Number.MAX_SAFE_INTEGER
+  const player = await onboard(f)
+  const started = await post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)
+  assert.ok(started.ok && started.session)
+  await f.server.store.transact(db => {
+    const row = (db.livingWorld as { driving: Record<string, Record<string, unknown>> }).driving[player.id]
+    assert.ok(row)
+    row['revision'] = max
+    const life = Object.values(db.sessions).find(record => record.publicId === player.id)!.cities.lagos!.state
+    life.location = 'library' as typeof life.location
+  })
+  const readRow = () => f.server.store.read(db => snapshot((db.livingWorld as { driving: Record<string, unknown> }).driving[player.id]))
+  const before = await readRow()
+  const body = { cityId: 'lagos', journeyId: started.session!.journeyId, revision: max }
+  const attempts: Array<[string, Promise<Reply>]> = [
+    ['current', f.request(`${drivingPath}?city=lagos`, null, player.cookie).then(response => response.json() as Promise<Reply>)],
+    ['start', post(f, `${drivingPath}/start`, { cityId: 'lagos', requestId: id(f) }, player.cookie)],
+    ['input', post(f, `${drivingPath}/input`, { cityId: 'lagos', journeyId: body.journeyId, sequence: 1, frames: [{ throttle: 1, brake: 0, steer: 0 }] }, player.cookie)],
+    ['pause', post(f, `${drivingPath}/pause`, { ...body, requestId: id(f) }, player.cookie)],
+    ['resume', post(f, `${drivingPath}/resume`, { ...body, requestId: id(f) }, player.cookie)],
+    ['restart', post(f, `${drivingPath}/restart`, { ...body, requestId: id(f) }, player.cookie)],
+  ]
+  for (const [route, pending] of attempts) {
+    const answer = await pending
+    assert.deepEqual([answer.ok, answer.code], [false, 'revision_exhausted'], `${route} must stop before its context-mismatch pause can overflow`)
+    assert.deepEqual(await readRow(), before, `${route} must preserve the entire exhausted driving row; life settling is outside this assertion`)
+  }
+})
+
 test('replaying a start receipt after a failed run is superseded by the canonical fresh journey', async t => {
   const f = await livingFixture(t)
   const player = await onboard(f)

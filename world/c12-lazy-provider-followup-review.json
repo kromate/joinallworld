@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T04:09:48.910005+00:00",
+  "decision": "SOURCE_REVIEW_MODIFY_NO_RUNTIME_ACCEPTANCE",
+  "source": "28f9626b65f00f696b45e0852d72096a6f949f0e",
+  "branch": "codex/cloud-country-provider50-followup-20261010",
+  "pins": [
+    {
+      "path": "src/game/cities/catalogue-provider.browser.ts",
+      "bytes": 4525,
+      "sha256": "91f9d42de7a5b678b409eae81fe4331f0e579093652627b22bbbc8e933dc26d0"
+    },
+    {
+      "path": "src/app/features/start/StepHome.vue",
+      "bytes": 11551,
+      "sha256": "d6cdc5a41ead5e6f63407b4fbc8e2435ccc92298e20056f4703b0fac214b06ee"
+    },
+    {
+      "path": "src/app/features/start/placesModel.ts",
+      "bytes": 5533,
+      "sha256": "6086ea3c53dc4c1d75c128cd5da7fa289f049fddd19709059133bcb71899cb54"
+    },
+    {
+      "path": "src/browser/countryDirectory.ts",
+      "bytes": 14946,
+      "sha256": "847cd1eebabf1bdfd6238ab3bca9996b27d4186a9ed3611d172b7035da413f1f"
+    },
+    {
+      "path": "scripts/download-budget.ts",
+      "bytes": 15983,
+      "sha256": "61709e39d2dc06e15e4ec20a31f27875dc8c7e61fa1892366bb86c9bc3faf809"
+    },
+    {
+      "path": "src/game/cities/foreign-admission.generated.ts",
+      "bytes": 663,
+      "sha256": "c1d3b64555cc7bce02b35bfd073b3f045982c2bd50d0e54934d18338d1c73f20"
+    },
+    {
+      "path": "src/game/cities/catalogue.generated.ts",
+      "bytes": 3692,
+      "sha256": "88a49bd6230cfe7da918ef808e2df5ee087524bb5f725570bda96697f13b531b"
+    }
+  ],
+  "actualAdmission": {
+    "nigeriaCityRows": 40,
+    "foreignCityRows": 10,
+    "totalCityRows": 50,
+    "requiredCompatibleC12Total": 55,
+    "requiredCompatibleC12Foreign": 15
+  },
+  "findings": [
+    {
+      "id": "P1",
+      "path": "src/game/cities/catalogue-provider.browser.ts",
+      "problem": "prepareCountryCatalogue writes pending/failures by country ISO; catalogueState reads them by city ID.",
+      "requiredBehavior": "Resolve city ID to trusted country ISO before inspecting country work/failure state. Ready requires actually resident verified row; unknown/closed remain explicit."
+    },
+    {
+      "id": "P2",
+      "path": "src/game/cities/catalogue-provider.browser.ts",
+      "problem": "openDirectory caches its promise, including rejection, forever.",
+      "requiredBehavior": "Clear only the matching failed promise/runtime reference; preserve successful coalesced initialization and allow bounded user retry."
+    },
+    {
+      "id": "P3",
+      "path": "src/app/features/start/StepHome.vue",
+      "problem": "chooseCountry awaits without current-selection or component-lifetime guard and has no country load/error/retry UI.",
+      "requiredBehavior": "Invalidate older selections and unmounted callbacks. Clear incompatible area/draft/readiness immediately. Apply results only to current selection; expose bounded retry through actual ordinary controls."
+    },
+    {
+      "id": "P4",
+      "path": "src/app/features/start/StepHome.vue",
+      "problem": "Country picker renders only accepted index entries, while Nigeria status is legacy. chooseCountry also returns immediately for ng. A foreign selection cannot return to Nigeria.",
+      "requiredBehavior": "Always offer protected Nigeria and implement ordinary selection back to its static catalogue, without HTTP, purchases, or game-state mutation."
+    },
+    {
+      "id": "P5",
+      "path": "scripts/download-budget.ts",
+      "problem": "Download checker still hardcodes50 bootstrap rows; admission has only10foreign cities.",
+      "requiredBehavior": "Regenerate exact55-city/15foreign accepted prefix from actual reviewedc12 inputs and count all foreign bootstrap metadata requests in startup coverage. Existing byte caps remain unchanged."
+    }
+  ],
+  "executionBoundary": {
+    "writer": "same existing online country-provider owner; next available slot after its current owned unit",
+    "sourceCorrectionNeedsProduction16First": false,
+    "runtimeIntegrationNeedsCompatibleAcceptedSource": true,
+    "browserOperator": "existing Astra operator only",
+    "localHeavyAllowed": false,
+    "newWorkerOrPaidCapacity": false,
+    "testsAuthoredByRoot": false,
+    "runtimeOrProductionEditedByRoot": false
+  },
+  "acceptanceEvidence": [
+    "Exact corrected source/ref and regenerated admission pins; preserve all40 Nigeria rows and original rules/IDs/routes.",
+    "Existing relevant source/compiler/budget checks with actual raw receipts and unchanged limits.",
+    "Bounded temporary non-test diagnostic: delayed A then B, failed directory followed by retry, repeated country requests and ordinary Nigeria-return selection with zero HTTP.",
+    "Actual browser consumer proof before runtime admission; static review alone cannot prove interaction."
+  ],
+  "scope": "The prototype is not live. No runtime failure or production regression is inferred from static source review."
+}

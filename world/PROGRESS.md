@@ -1,11 +1,11 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T04:05:27.320718+00:00
+Updated: 2026-10-10T04:09:48.910005+00:00
 
-The previous status-only turn confirmed the live build but changed no source.
-This turn identified the exact zero-delay reconnect test edge, matched all three
-files to production C1, and recorded the completed controller review. The exact public diagnostic confirms cancellation for real zero and nonzero
-timers. The same Astra operator has a new controller/helper repair turn.
+The previous goal turn made progress: exact reconnect failure classification
+and cancellation evidence were accepted and pushed. This turn reviewed the latest
+lazy provider source and found its Nigeria-return selector is blocked. Its source
+correction can proceed separately from deploying the current country batch.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -81,6 +81,13 @@ The separate combined source `3e3e0876fc50f3166a0d0968f8616b577da27870`
 preserves route values, but its measured startup gzip/Brotli exceed the existing
 limits. The CI is terminal. Integration and the existing cloud owner handle
 the source repair. It has no production acceptance.
+
+The existing lazy provider prototype still contains50 cities, including10 foreign
+cities, rather than the current prepared55/15 prefix. Its source review confirms
+state/retry/selection defects and a blocked Nigeria-return selector. The same
+online owner received the correction scope; source correction does not need to
+wait for production16. [Exact provider review](c12-lazy-provider-followup-review.json).
+This is future scaling work, not a defect deployed to production.
 
 ## Next actions, in order
 

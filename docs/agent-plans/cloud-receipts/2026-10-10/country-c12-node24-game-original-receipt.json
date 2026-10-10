@@ -1,0 +1,63 @@
+{
+  "sha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "branch": "codex/cloud-c1-third-five-sourcecheck-20261010",
+  "parent": "0a5e2983126e3dac406af1c3a121e9cbfef78feb",
+  "checkout": "/workspace/remote-verification/repositories/coordinator-c1-third-five-sourcecheck",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "16747933696",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "python3",
+    "/workspace/remote-verification/lease-phase-guard.py",
+    "node",
+    "--experimental-strip-types",
+    "scripts/node-test-plan.ts",
+    "game"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 149289,
+  "started_at_utc": "2026-10-10T03:26:26.272215+00:00",
+  "ended_at_utc": "2026-10-10T03:47:38.371547+00:00",
+  "duration_seconds": 1272.099332,
+  "exit_status": 1,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 11,
+    "sample_source": "LIVING direct account owner receipt11%remaining",
+    "recorded_at_utc": "2026-10-10T03:21:50.543920+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/c12b8ebd83cd301475fb1d7bf9e143af260d6621/node24-game-corrected-full/command.log",
+  "log_sha256": "8eb04afa596a9fed3c647947d0e36945104623bf0be9837c98efeedf5b8fa208",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

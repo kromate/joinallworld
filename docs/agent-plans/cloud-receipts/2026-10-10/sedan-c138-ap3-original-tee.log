@@ -1,0 +1,25 @@
+✔ source-pinned driver cap partition matches Float32 emission coordinates (4.879709ms)
+✔ actual map and street CPU sedan/interior/door partitions emit bounded Float32 meshes (29.45162ms)
+✔ the tapered front rejects a capsule that fits at the aperture center (0.68848ms)
+✔ the complete hinged-door interval catches intermediate motion missed by endpoint poses (1.810648ms)
+✔ source interior and steering sweeps report known possible intersections (0.442542ms)
+✔ closed, intermediate, and fully open door positions are covered by one full-sweep envelope (0.38786ms)
+✔ valid rigid body transforms are applied and non-rigid or malformed transforms fail closed (0.375101ms)
+✔ translated static yaw, pitch, and roll preserve body-local obstacle checks (0.520869ms)
+✔ relative 10m bounds are invariant to vehicle translation away from world origin (0.379347ms)
+✔ source pins, descriptor accessors, capsule bounds, radii, and capsule count are checked (0.569612ms)
+✔ Float32 and explicit margins shrink the opening and grow modeled obstacles (0.413859ms)
+✔ retained opposite cap and shell profile are checked as conservative obstacles (0.579207ms)
+✔ driver-side glass inside the clipped door region is moving, not a static shell collision (0.204736ms)
+✔ aperture boundary failure is blocked and never reported clear (0.166479ms)
+✔ explicit intervals, positive numeric margin, phase labels, and static pose fail closed (0.419297ms)
+✔ scene phase fixtures preserve normal and reduced motion ordering without actor-fit claims (7.113349ms)
+✔ the authority contract stays negative even for empty or apparently clear proposals (0.218317ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 197.726795

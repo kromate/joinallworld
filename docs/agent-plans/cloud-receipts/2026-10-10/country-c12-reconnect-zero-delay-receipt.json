@@ -1,0 +1,62 @@
+{
+  "sha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "branch": "codex/cloud-c1-third-five-sourcecheck-20261010",
+  "parent": "0a5e2983126e3dac406af1c3a121e9cbfef78feb",
+  "checkout": "/workspace/remote-verification/repositories/coordinator-c1-third-five-sourcecheck",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
+  "execution_location": "existing Codex cloud environment /workspace",
+  "declared_command_execution_mode": "escalated",
+  "resources_before": {
+    "memory.current": "16814567424",
+    "memory.max": "34359738368",
+    "cpu.max": "400000 100000"
+  },
+  "hostname": "96cc63a2f9d2",
+  "node_version": "v24.19.0",
+  "npm_version": "11.9.0",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "scripts/agent-slot.ts",
+    "heavy",
+    "--",
+    "python3",
+    "/workspace/remote-verification/lease-phase-guard.py",
+    "node",
+    "--experimental-strip-types",
+    "/workspace/remote-verification/worker-results/c1-third-five/reconnect-zero-delay-diagnostic.mjs"
+  ],
+  "check_environment": {
+    "NODE_OPTIONS": "--max-old-space-size=1536",
+    "NODE_USE_ENV_PROXY": "1",
+    "AGENT_SLOT_DIR": "/workspace/remote-verification/agent-slots",
+    "AGENT_SLOT_HEAVY": "1"
+  },
+  "pid": 162111,
+  "started_at_utc": "2026-10-10T04:00:17.252430+00:00",
+  "ended_at_utc": "2026-10-10T04:00:17.547863+00:00",
+  "duration_seconds": 0.295433,
+  "exit_status": 0,
+  "signal": null,
+  "hard_stop_triggered": false,
+  "allowance_guard_at_start": {
+    "rule": "No clock cutoff; stop NEW implementation/build/render/spawn at shared main allowance <=4%; preserve active jobs/source and reserve4% for checkpoints/pushes/reporting. No automatic restart after checkpoint.",
+    "minimum_remaining_percent_exclusive": 4,
+    "latest_remaining_percent": 8,
+    "sample_source": "WORLD and LIVING direct account92%used8%remaining03:57UTC",
+    "recorded_at_utc": "2026-10-10T03:59:58.821654+00:00",
+    "allow_new_heavy": true,
+    "heavy_slots": 1,
+    "additional_spend": 0
+  },
+  "clock_cutoff": null,
+  "log": "/workspace/remote-verification/receipts/c12b8ebd83cd301475fb1d7bf9e143af260d6621/reconnect-zero-delay-diagnostic/command.log",
+  "log_sha256": "dd30433f052415b7d6656d1880d8e5e0cf9021fffbb1374e3cfcaf6f6e2bd244",
+  "source_pins_before": {},
+  "source_pins_after": {},
+  "head_after": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "git_status_after": "",
+  "source_unchanged": true,
+  "spending": "existing provided capacity only; no paid resources or workflows dispatched",
+  "published_environment": "unconfirmed; Settings review/save and Publish are user actions"
+}

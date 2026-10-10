@@ -1,0 +1,19 @@
+{
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "counts": {
+    "tests": 2589,
+    "pass": 2587,
+    "fail": 1,
+    "skip": 1
+  },
+  "assertion": "src/community.test.ts:510 a reconnect is waiting, actual0 expected1",
+  "rawLogSha256": "8eb04afa596a9fed3c647947d0e36945104623bf0be9837c98efeedf5b8fa208",
+  "classification": "confirmed test-harness zero-delay omission; actual canonical controller cancels zero and nonzero reconnect timers",
+  "mechanism": "reconnectDelay floors uniform jitter and may return0; test setTimeout routes falsy delay to real timer outside Map then asserts Map size1",
+  "runtimeFailureProved": false,
+  "sourceEdited": false,
+  "fullSuiteRerun": false,
+  "diagnosticExit": 0,
+  "diagnosticLogSha256": "dd30433f052415b7d6656d1880d8e5e0cf9021fffbb1374e3cfcaf6f6e2bd244",
+  "scope": "temporary controlled-global browser substitute against real canonical createCommunity; no real browser/network, no full-suite rerun"
+}

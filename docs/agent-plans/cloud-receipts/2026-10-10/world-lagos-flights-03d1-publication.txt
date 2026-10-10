@@ -1,0 +1,29 @@
+WORLD Lagos source correction publish receipt
+Captured: 2026-10-10 03:40:54 UTC
+Checkout: /workspace/remote-verification/repositories/worker-world-lagos-flights
+Remote: https://github.com/kromate/joinallworld.git
+Branch: codex/cloud-lagos-flights-startup-budget-20261010
+Base: 3a120c8e6d335488472cc9018a4f978b0e7ab56a
+Commit/pushed SHA: 03d1d4d9d1b901b367cfd0a4f91455ac1334c9db
+Working tree: clean
+
+Commands and observed results:
+1. git ls-remote --heads origin codex/cloud-lagos-flights-startup-budget-20261010
+   exit 0; 3a120c8e6d335488472cc9018a4f978b0e7ab56a refs/heads/codex/cloud-lagos-flights-startup-budget-20261010
+2. git push origin HEAD:refs/heads/codex/cloud-lagos-flights-startup-budget-20261010
+   exit 0; To https://github.com/kromate/joinallworld.git; 3a120c8..03d1d4d HEAD -> codex/cloud-lagos-flights-startup-budget-20261010
+3. git ls-remote --heads origin codex/cloud-lagos-flights-startup-budget-20261010
+   exit 0; 03d1d4d9d1b901b367cfd0a4f91455ac1334c9db refs/heads/codex/cloud-lagos-flights-startup-budget-20261010
+4. node --experimental-strip-types scripts/city/build-catalogue.ts
+   exit 0; City catalogue generated for 55 open cities.
+5. node --experimental-strip-types scripts/city/build-catalogue.ts --check
+   exit 0; no output
+6. git diff --check
+   exit 0; no output
+7. node --experimental-strip-types /tmp/world-lagos-compaction-diagnostics.ts
+   exit 0; {"absentStandard":"pass","standardWithoutNigeria":"pass","standardWithNigeria":"pass","compactOnly":"pass","mixedPrefix":"pass","noCompact":"pass"}
+   Qualification: the harness extracted the fixture-availability source block and compactSpread expression, but used a synthetic compactability predicate; existing generator execution exercised its actual canonical/custom fallback self-checks.
+
+Owned source SHA256: scripts/city/build-catalogue.ts 17852d9efea92237dc07720de310f5a957cca8ebea16dbfea03eac35f10b367c
+Generated routes SHA256: src/game/cities/routes.generated.ts eede408a489697e23567dd3ee2c0209aa4bbe931c4df755e557772353dddbcea (unchanged; current route list has a full-object prefix)
+Only source diff: scripts/city/build-catalogue.ts, 19 insertions(+), 18 deletions(-). No generated file changed. No compiler/build/cap run was performed for this source-only correction.

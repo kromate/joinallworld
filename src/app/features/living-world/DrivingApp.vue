@@ -146,6 +146,7 @@ const canClaimStarterPermission = computed(() => {
   })
 const practiceLabel = 'Authored simulated practice course · not a mapped public road or real licence test.'
 const canonicalGear = computed<DrivingGear>(() => serverState.value?.gear === 'reverse' ? 'reverse' : 'forward')
+const hasCanonicalGear = computed(() => Boolean(serverState.value && Object.hasOwn(serverState.value, 'gear')))
 const transmissionStatus = computed(() => {
   const saved = serverState.value
   if (!saved) return 'Server-confirmed direction is not available.'
@@ -813,7 +814,7 @@ onBeforeUnmount(() => {
         <button type="button" :disabled="!active || !online || needsRefresh" :aria-pressed="requestedGear === 'forward'" @click="selectGear('forward')">Drive</button>
         <button type="button" :disabled="!active || !online || needsRefresh" :aria-pressed="requestedGear === 'reverse'" @click="selectGear('reverse')">Reverse</button>
       </div>
-      <p v-if="reverseGearControls" class="transmission-status" role="status">{{ transmissionStatus }}</p>
+      <p v-if="reverseGearControls || hasCanonicalGear" class="transmission-status" role="status">{{ transmissionStatus }}</p>
       <div class="wheel-controls" aria-label="Steering">
         <button type="button" aria-label="Steer left" :disabled="!active" @pointerdown.prevent="touchDown('left', $event)" @pointerup="touchUp" @pointercancel="touchUp" @lostpointercapture="touchUp">←</button>
         <div class="steering-control">

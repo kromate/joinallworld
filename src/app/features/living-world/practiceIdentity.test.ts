@@ -433,7 +433,8 @@ test('Driving capability loss also stops an ordinary held throttle on a control 
     const start = setupValue(mounted.setup, 'startLesson') as () => Promise<void>
     const starting = start()
     await waitFor(() => count('/api/living-world/driving/start') === 1)
-    const started = runningView(location)
+    const initial = runningView(location)
+    const started: DrivingSessionView = { ...initial, state: { ...initial.state, gear: 'reverse' } }
     resolveAt('/api/living-world/driving/start', 0, drivingReply(server.now(), { ok: true, code: 'started', session: started, reverseGearControls: true }))
     await starting
 
@@ -454,9 +455,18 @@ test('Driving capability loss also stops an ordinary held throttle on a control 
     assert.equal(setupValue(mounted.setup, 'active'), false, 'an ordinary legacy throttle is stopped on capability loss')
     assert.deepEqual(setupValue(mounted.setup, 'held'), { throttle: 0, brake: 0, steer: 0 })
     assert.equal((setupValue(mounted.setup, 'pendingFrames') as DrivingInput[]).length, 0)
+    assert.equal(setupValue(mounted.setup, 'hasCanonicalGear'), true)
+    assert.match(String(setupValue(mounted.setup, 'transmissionStatus')), /Server-confirmed direction: Reverse/,
+      'canonical reverse remains visible while the OFF pause request is pending')
+    assert.deepEqual(setupValue(mounted.setup, 'serverState'), driven.state,
+      'capability loss does not forge a local forward or paused server state')
     const paused: DrivingSessionView = { ...driven, revision: 3,
-      state: { ...driven.state, status: 'paused', speed: 0, stopDwellMs: 0 } }
+      state: { ...driven.state, status: 'paused', speed: 0, stopDwellMs: 0, gear: 'reverse' } }
     resolveAt('/api/living-world/driving/pause', 0, drivingReply(server.now(), { ok: true, code: 'paused', session: paused }))
+    await waitFor(() => setupValue(mounted.setup, 'lifecyclePending') === 0)
+    assert.equal((setupValue(mounted.setup, 'serverState') as { status?: string }).status, 'paused',
+      'only the authoritative pause reply changes server state')
+    assert.match(String(setupValue(mounted.setup, 'transmissionStatus')), /Server-confirmed direction: Reverse/)
   } finally {
     mounted.unmount(); traced.restore(); restoreIdentity(oldIdentity); intervalCallbacks.clear(); server.requests.splice(0)
   }

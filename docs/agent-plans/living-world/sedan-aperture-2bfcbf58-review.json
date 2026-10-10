@@ -1,0 +1,41 @@
+{
+  "candidate": "2bfcbf584d3eae3b31a645269904d8e4786af29b",
+  "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "decision": "REPAIR_BEFORE_INTEGRATION",
+  "sourceReviewScope": "Actual completed child turn, original execution outputs, initial source prefix plus all subsequent untruncated update hunks; full final file remains requested. No Root runtime test.",
+  "verifiedExecution": {
+    "commandId": "exec-dc4ac44c-d1e5-4dce-8971-a028939df0d8",
+    "exitCode": 0,
+    "pass": 9,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 132.029451,
+    "rawLogSha256": "931455b0ec0f279b78cbd2474c9c5df0af0881b9ef700bc671646b454e125535"
+  },
+  "pins": {
+    "implementation": "32707a5b0f1377e37000731e00aa4f540aa462ecaaa037b0b5fcc9aeeae47b5b",
+    "test": "90272a2b9ad2edb0d1c2c8b207f86b1bce6b2051d684552930c21b5fc1e481cd"
+  },
+  "findings": [
+    {
+      "id": "AP1",
+      "priority": "required",
+      "evidence": "Final validInput updates reject >64 but not zero capsules; margin rejects <0 and accepts zero. Actual focused test uses contactMargin:0.",
+      "required": "Require 1..64 enclosures and strictly positive bounded explicit contact margin at or above a documented/test-backed numerical lower bound; meaningful invalid/just-below/contact/just-above tests."
+    },
+    {
+      "id": "AP2",
+      "priority": "required",
+      "evidence": "Initial full API prefix supplies only sourcePins/bodyTransform/capsules/contactMargin. Subsequent implementation update hunks do not add intervals or phase. Capsule exactKeys only id/start/end/radius/provenance.",
+      "required": "Implement explicit finite door-angle and steering intervals and each enclosure phase label per ec915 contract. Reject missing/reversed/out-of-range intervals. Conservative full-global envelopes may remain as a sound overapproximation but report actual supplied interval and test invalid descriptors."
+    },
+    {
+      "id": "AP3",
+      "priority": "verification gap",
+      "evidence": "9 named tests omit actual entry/exit normal/reduced phase fixtures; initial source add is truncated in Root read_thread, so full final geometry/obstacle algorithms not independently reviewed.",
+      "required": "Return full final files with byte hashes. Verify actual Float32 CPU geometry at map/street details plus source-pinned current entry/sit/slide/door-close/exit/stand trajectories. Reject unproven/invalid descriptions; do not invent an easy trajectory or claim actor-fit."
+    }
+  ],
+  "authority": "All results must keep canBoard:false, authoritativeClearance:false, routeAuthorized:false; no routes/source registration/build/release claimed.",
+  "model": "Existing worker configured gpt-6-luna/high per prior metadata; actual backend unexposed. Root has not applied override."
+}

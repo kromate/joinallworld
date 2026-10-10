@@ -1,0 +1,332 @@
+{
+  "schema": "allworld.graphics.resume-inventory.v1",
+  "at": "2026-10-10T03:11:09.492811+00:00",
+  "goal": "Full graphics overhaul unchanged; native firstrelease is a phase, not fullgoal completion",
+  "lastVerifiedProduction": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "fetchedMain": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "latestSource": "c8bcef6a1685080048665fd6e9841b02188f7422",
+  "sourceBranch": "codex/cloud-graphics-grounded-interaction-20261010",
+  "latestRun": 38012825418,
+  "nativeAccepted": false,
+  "nativeDeployed": false,
+  "usagePolicy": {
+    "observedUsedPercent": 87,
+    "observedRemainingPercent": 13,
+    "stopNewWorkAtRemainingPercent": 4,
+    "reserveLast4ForCheckpoint": true,
+    "hardClockCutoff": null,
+    "humanInstructionProvenance": {
+      "thread": "01a11ddc-3607-7ba1-b778-9878f6a9646b",
+      "userMessage": "01a12367-3e20-7150-86f7-a14cacab49bd",
+      "exactText": "Keep them working online, but stop at 4% remaining, even if 9 a.m reach and we have more then 3% continue. Make sure they save everything and combine the remaining bugs into one list, easiest to hardest. then push the work to github"
+    },
+    "paidUsage": "none",
+    "modelHopping": "forbidden",
+    "checkpoint": "At4% or below safely stop new implementation/build/render/spawn; save and push exact owned source/evidence, preserve unresolved failures; Integration alone merges deduplicated remaining ledger easiest-hardest. No automatic implementation restart."
+  },
+  "completedScoped": [
+    {
+      "task": "Native neutral standing and exact actual static furniture query cache",
+      "sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+      "proof": "V9 officePASS; cache7Raycaster parityPASS; neutral bone length/clavicle/head regressionsPASS; independently improvedidle pixels",
+      "scope": "Component evidence; homefails, no native deployed."
+    },
+    {
+      "task": "Native measured head orientation + noncommuting actor/neck regression and compilerguard",
+      "sha": "bcb28f57c45aa87dba5c2725f3be04417df12ce2",
+      "headWorkerSHA": "0f8abaa76dee15f7287bfe22d42d890e579ab954",
+      "proof": "Current fullgamecompiler/strict office/home graphPASS; head3tests/NPC lifecyclePASS; actualoffice38006548215job114076539215SUCCESS; latest Dapo interact/Mrsreturnedidle rootviewed",
+      "scope": "Realplayer+2officeNPCs; actualfloorNPC externalfixture and fullnativehome/identity/bytes remain."
+    },
+    {
+      "task": "Real social NPC speech/action wiring",
+      "sha": "bcb28f57c45aa87dba5c2725f3be04417df12ce2",
+      "proof": "MrsOkafor hello+Dapo talk completed; actual jaw Body/Teeth/Tongue moves then0restored; actorcleanup/contextlost/consoleclean",
+      "scope": "Office2NPCfixture; not all venues/alllooks/mobile certification."
+    },
+    {
+      "task": "Actual officeNPCphysicalfloor repair and independent browserpixel review",
+      "sha": "438a24111983a0634c6fa14eae86664222548fce",
+      "proof": "Independent24baseline/candidate rows, exact2NPC x3phases x2feet; fixture strictcompile/bundle/render and physicalcheckerPASS; forwardgaze/clothing actualPNGs viewed",
+      "scope": "Mount/idle/interact/return only; refresh/reposition/finalfactory/wholemodel stillpending."
+    },
+    {
+      "task": "Current canonical NPC floor contact and same-identity refresh",
+      "sha": "241b29a4a7572b1d19d9c382dfad600726a0064d",
+      "proof": "Exact successor office job SUCCESS. Root recalculated16 physical contact and reach rows; all28checks pass;0.144222m refresh preservesidentity, no consoleerrors.",
+      "scope": "Exact office fixture only; home fails and complete garment angles/identity/bytes/mobile gates pending."
+    },
+    {
+      "task": "Explicit transition mode compiler contract",
+      "sha": "241b29a4a7572b1d19d9c382dfad600726a0064d",
+      "proof": "All101sourcepins match; GHA38012825418 fullgame typecheck and strict office/home compiler PASS. Requestedmode preserved across stairretry.",
+      "scope": "Exact compiler correction verified; overall run fails due home contact. Not deployment acceptance."
+    }
+  ],
+  "remainingOrdered": [
+    {
+      "id": "GFX-CAMERA-EVIDENCE",
+      "difficulty": 1,
+      "status": "cf8_four_camera_gates_failed",
+      "severity": "P1 evidence gate",
+      "evidence": "27savedmatrixrows;17numericfailrows are not17provengeometryfailures. Root3NPCpixels viewed. Realbackcounterocclusion, midpointfootpixelfalse-negative candidates.",
+      "suggestedFix": "Currentdeformedbounds andactualvisibletriangle pixel/raywitnesses withoriginaloccluders/sectors. No passwaivers.",
+      "dependencies": [
+        "GFX-NPC-MOTION"
+      ],
+      "publication": "Exactcf8twofileprivate-sourceGitHubpush auto-rejected, human approvalquestion pending; no alternatepublisher andno deniedsource in thiscoordinationpayload."
+    },
+    {
+      "id": "GFX-NPC-FLOOR",
+      "status": "numeric_contact_refresh_pass_clear_garment_angle_pending",
+      "severity": "P1 release gate",
+      "difficulty": 1,
+      "effortBasis": "Existing fixture already renders currentactor; back camera blocked bycounter needs deterministic clear angle.",
+      "files": [
+        "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts",
+        "evidence/graphics-loop/native-game-adoption-v1/render-game-fixture.mjs",
+        "src/scene/venue-scenes.ts"
+      ],
+      "repro": "Run strict office fixture and check-native-npc-foot-contact.mjs on full report; idle/interact/returned-idle, both sides, every authored sole vertex",
+      "evidence": "Exact24128officechecks/16physicalfloor+reach rowsPASS;144shoevertices covered bothNPCs, worstpenetration0.183mm;0.144222m identity refreshPASS. Cf8fourcamera gatesFAIL, realbackcounterocclusion. Newc8perframegesture contact/runtimeproofpending.",
+      "suggestedFix": "Same remoteNPCfixture worker captures clearback/side with originalscene preserved; actualpostsolve fail returns false currentlyignored byhost and needs explicit final failure-path review.",
+      "dependencies": [
+        "current shared factory source and exact combined office fixture"
+      ],
+      "hypotheses": [
+        "A visibly tilted NPC sole may be valid heel support; do not force all foot vertices onto floor."
+      ],
+      "worker": "cloud head worker, dedicated fixture checkout",
+      "state": "actual241contact_refresh_pass; movinggarment andnewc8runtimepending",
+      "source": "241b29a4a7572b1d19d9c382dfad600726a0064d",
+      "ownerAllocation": "Existing cloud NPC worker: venue-scenes.ts canonical NPC place/mount/pose hooks and private floor helper only. Cloud Sol sole shared factory/wiring assembler.",
+      "reviewRemaining": [
+        "clear front/back/side garment pixels",
+        "host failure handling review",
+        "final current successor and release evidence"
+      ]
+    },
+    {
+      "id": "GFX-NPC-MOTION",
+      "difficulty": 2,
+      "status": "twistfix_four_component_tests_pass_actual_motion_pending",
+      "severity": "P1 release gate",
+      "source": "c8bcef6a1685080048665fd6e9841b02188f7422",
+      "evidence": "Fixedinteract@.4/talkonly cause addressed by upperarmgesture overgroundedneutral andactiveblink. Integratedc8strict5projectcompilerPASS. Separatetwistfixdraft4componenttestsPASS actual52bone male/femalefamily correctedtarget, retains handmatrix andarmquaternions. Originallegacy23target calibration notnativecertification.",
+      "suggestedFix": "Sol integrates exacttwistfix and sameexistingworker verifies realclothedtemporalinteraction/loop/idle/contact/runtime; no extraassets/RAF.",
+      "dependencies": [
+        "GFX-NPC-FLOOR"
+      ],
+      "ownerAllocation": "ExistingonlineNPCworker narrowmodule/fixture; Solsharedfactory/wiring; Integrationsoleassembler; WORLDsoleuploader."
+    },
+    {
+      "id": "GFX-BYTES-FINAL",
+      "status": "required_not_passed_on_latest_combination",
+      "severity": "P1 release gate",
+      "difficulty": 3,
+      "effortBasis": "Reproducible full artifacts + bundling/cost savings, not lazy-load arithmetic.",
+      "files": [
+        "evidence/graphics-loop/native-game-adoption-v1/measure-native-distribution.mjs",
+        "scripts/download-budget.ts",
+        "package manifest/source seal"
+      ],
+      "repro": "Build exact final native+Integration combination and compare identical firstpaint/startup/fixedjourney/whole distributed files against C1.",
+      "evidence": "V2 qualified startup195441Br vs C1 195277 (+164), cap195600. Integration eec startup195571 (29headroom), so combined must be rebuilt and may exceed. Whole V2 graphics package +4929051Br. Later user permits moderate measured growth; hardcaps unchanged.",
+      "suggestedFix": "Measure exact assembled candidate, earn startup headroom by measured savings; no cap waiver from partial runs.",
+      "dependencies": [
+        "final accepted contact/head/identity source",
+        "Integration sole assembly"
+      ],
+      "hypotheses": [
+        "Native combined startup cap might fail; NOT measured current combined."
+      ]
+    },
+    {
+      "id": "GFX-IDENTITY-FINAL",
+      "status": "required_not_passed_on_latest",
+      "severity": "P1 release gate",
+      "difficulty": 3,
+      "effortBasis": "Existing creator saved-look/coldcache fixture; must run exact final current source.",
+      "files": [
+        "evidence/graphics-loop/native-game-adoption-v1/creator-identity.ts",
+        "src/scene/body/provider.ts"
+      ],
+      "repro": "Creator -> game -> other-player views -> save/reload same seed/look/LOD; bothfamilies.",
+      "evidence": "Older V7 1737f5058e3c5e88e2a19d3b9f319c07536d5983 creatorPASS; cannot inherit onto current head/contact final.",
+      "suggestedFix": "Run exact finalcreator-game-otherplayer-save/reload/LOD views bothfamilies. Legacywhole-look lifecycle is compatibility evidence, not acceptance of promisedrich native rendering for those looks.",
+      "dependencies": [
+        "GFX-REST-IK",
+        "GFX-STAIRS",
+        "GFX-NPC-FLOOR"
+      ],
+      "hypotheses": [
+        "Current source preserves saved identity; latest complete final run pending."
+      ]
+    },
+    {
+      "id": "GFX-PHONE-PERFORMANCE",
+      "status": "unverified_required",
+      "severity": "P1 final acceptance gate",
+      "difficulty": 3,
+      "effortBasis": "Physical supported devices and reproducible fulljourneys/dense scenes; hardware access required for final certification.",
+      "files": [
+        "docs/character-graphics-research-2026-10-08/QA.md",
+        "actual runtime performance/evidence harness"
+      ],
+      "repro": "Cold/warm fulljourneys, touchcontrols, input latency, frame pacing, memory/cleanup over repeat transitions on real supportedphones.",
+      "evidence": "HeadlessSwiftShader anddesktop390px layout only; no physicalphoneFPS certification.",
+      "suggestedFix": "Continue independent emulatedlayout/resource work; measure real supportedphones when available, never mark desktopemulation as phonepass.",
+      "dependencies": [
+        "playable final combinedslice"
+      ],
+      "hypotheses": []
+    },
+    {
+      "id": "GFX-REST-IK",
+      "status": "b601_retime_failed_contact_switch_under_diagnosis",
+      "severity": "P0 blocks player home activity",
+      "difficulty": 4,
+      "effortBasis": "Coupled real clothing skinning and floor IK during entry/still/exit, 3 prop families, strict caps.",
+      "files": [
+        "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts",
+        "src/scene/body/native/native-rest-contact-v15/native-rest-contact.ts"
+      ],
+      "repro": "Actual saved spring-bed; home-sleep navigation/entry in render-home-journey.mjs. Current failure upright partial lie.",
+      "evidence": "Focusedtyping/helper2PASS, actual8sentrytimeout atdisplay3.7/3.85s andsource2.1625/2.2s. Foot~1.05mabovefloor; peaks25.7/26.1m/s. Savedpair source1.9292\u21921.9375 changesfloor\u2192prop ownership, root+68mm/foot+856mm. No completedrest/getup proof.",
+      "suggestedFix": "Sameworker traces exact pre/post contact branch andselectedalignment/cache state before correction. Possible angle-wrap179.8deg discontinuity unverified; retiming/budgetincrease insufficient.",
+      "dependencies": [
+        "Sol sole sharedfactory/runtime writer",
+        "actual host furniture support and unchangedacceptance"
+      ],
+      "hypotheses": [
+        "Repeatedskinning/per-point worldmatrix recalculation dominatescandidate search.",
+        "Baseactor anchor interpolatesuprightbodyintomattress beforelying posture."
+      ],
+      "worker": "cloud rest",
+      "newSourceFindings": [
+        {
+          "kind": "reproduced_trial4_solver_state",
+          "evidence": "Remote exact home trial4 final nested solver diagnostic corrected=0,maxError=0,limited=true,grounded-side-missing; four pelvis-only passes total .054153055754m, everypass continues before leg IK",
+          "interpretation": "Bounded pelvis adjustments can exhaust entire iteration allowance without fitting a foot; shared factory owner testing separate bounded phases",
+          "status": "fix_hypothesis_not_yet_passed"
+        },
+        {
+          "kind": "independently_verified_source_coordinate_mismatch",
+          "file": "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts",
+          "source": "644cbe79b4c315ff672b9ee2bb5f298a787efa18",
+          "evidence": "captureBaseline stores boneActorPoint(hips).y actor-local, solve subtracts hips.getWorldPosition().y world-space; lowering quantities also mix actor/parent frames",
+          "status": "source_defect_verified_runtime_impact_pending",
+          "suggestedFix": "Choose consistent correction units/frame, convert deltas explicitly and verify cumulative8cm budget across transformed root/parent and repeated solves"
+        }
+      ],
+      "source": "b601882c35dd9096b454a55ab28dc1b550cb1b8e"
+    },
+    {
+      "id": "GFX-STAIRS",
+      "status": "independent_final16repeat_matrix_pass_browser_pending",
+      "severity": "P0 blocks duplex stairs",
+      "difficulty": 4,
+      "effortBasis": "Rigid soles, different tread heights, native reach, transformed scene, full gait/support phases.",
+      "files": [
+        "src/scene/body/native/native-clip-solver.ts",
+        "src/scene/body/native/native-rest-contact-v15/native-full-runtime-v15/native-prepared-factory.ts"
+      ],
+      "repro": "Actual boxed duplex grid12 flightx7/y14/w6/h2; transformed parent; down direction-1 step12 phase.18, actorfit(tile*.72), yawdirection*pi/2.",
+      "evidence": "Exact published102f54fa rawJSON: bothfamilies/up/down4phases4scales .75/.9/1.05/1.2 yaw.41/-.23,144actualsoleverts, allfinite,4mmnonpenetration+planted support; two publicsolves maxpointdrift0; rotationnoise<=4.22e-8rad. Both-belownegative\u2192PASS. Actualhomebrowserpending.",
+      "suggestedFix": "Keep transition contactmode in public host re-solves and Foot transforms in checkpoint; verify repeated public solving with firstvalidnonzero pelvis correction, then actualhomebrowserstairs.",
+      "dependencies": [
+        "actual host per-point stair query",
+        "Sol shared factory ownership"
+      ],
+      "hypotheses": [
+        "Absolute lowest sole seed may choose wrong foot; abs-gap tentative patch reverted, NOT accepted."
+      ],
+      "worker": "cloud stairs",
+      "state": "original_actual_case_independently_passed_broad_matrix_owner_reported_pending_raw_review",
+      "latestProof": {
+        "source": "58922dc609e37f26c0af6ea0ddff71f9ebf76866",
+        "published": "644cbe79b4c315ff672b9ee2bb5f298a787efa18",
+        "baselineGapM": 0.014894675661380141,
+        "trialGapM": 0.00022198443449150673,
+        "pointCount": 144,
+        "matrixCasesOwnerReported": 16,
+        "matrixJSONSha256": "db7851a9dfae0c52bb7799b21370cb56e2cc5b30a6ab3a12ec70603759e85fbc",
+        "bothBelowJSONSha256": "a84282c05701b6e8cf7b0a92d0acb4b9ba93c35b806c2b11f451a8f6ae9f994b",
+        "remaining": "publish/rawreviewmatrix and actualbrowserhome"
+      },
+      "source": "d98203c6360011132109893076d7b1f07ea8f328",
+      "sourceReviewRemaining": "Actual finalbrowser journey; nonzero publicpelvis repeat ownerPASS rawpublication/reviewpending."
+    },
+    {
+      "id": "GFX-WARDROBE-LOOK-COVERAGE",
+      "status": "incomplete_broad_rollout",
+      "severity": "P1 overall goal",
+      "difficulty": 4,
+      "effortBasis": "Real rigged garment/hair authoring and repeated multi-look motion/LOD; asset cost constraints.",
+      "files": [
+        "src/scene/body/native/authored-look-bridge.ts",
+        "src/scene/body/native/authored-presentation.ts",
+        "src/scene/body/native/native-full-runtime-v1/apply-authored-clothing-packet-v1.ts",
+        "native garment/hair/footwear assets"
+      ],
+      "repro": "All creator bodies/builds/ages/heights/outfits/hair/accessories, front/profile/back walk/sit/reach/blink and allview identity.",
+      "evidence": "Current native admission limited adult average plaincasual/office specifichair/noaccessories; otherlooks whole-lifecycle legacy. Female office angularneckline and repeatedcurlyhair below requested warm expressivehumanproportion target. Historical variants labelled prototypes, not livefixes.",
+      "suggestedFix": "Finish one authored look at a time using actual rig+garments+morph masks; reuse shared sources/compression and measure package. Extend admission only after its full lifecycle/identity proves.",
+      "dependencies": [
+        "first native full journey accepted",
+        "GFX-BYTES-FINAL"
+      ],
+      "hypotheses": []
+    },
+    {
+      "id": "GFX-FULL-WORLD",
+      "status": "incomplete",
+      "severity": "P1 overall goal",
+      "difficulty": 5,
+      "effortBasis": "Shared materials/LOD/light/contact techniques across many real environments, owner coordination and dense scene performance.",
+      "files": [
+        "src/scene/home-scene.ts",
+        "src/scene/props.ts",
+        "src/scene/venue-scenes.ts",
+        "src/scene/neighbourhood-scene.ts",
+        "lighting/material systems",
+        "map renderer interfaces owned with WORLD"
+      ],
+      "repro": "Complete playable home-street-market slice, NPCs/furniture/car/vegetation/water/day-night then remainingcities/buildings/catalogue; full journeys anddense scenes.",
+      "evidence": "Office actual background still lowpoly/legacy decorative actors; native office subset does not prove whole-world coherent quality. Prior sofa prototype1762e2ef607b1b84dcd5284729d7b5698de2a0ce rejected flat/boxy. No full-world final acceptance.",
+      "suggestedFix": "Apply measured shared quality improvements with matched gamepixels/motion/resources, begin full verticalslice then roll out; coordinate geography/interfaces with WORLD.",
+      "dependencies": [
+        "native lifecycle/contact gates",
+        "stable combined source/bytes",
+        "WORLD geography ownership"
+      ],
+      "hypotheses": []
+    }
+  ],
+  "coordination": {
+    "implementation": "remote cloud Luna workers only",
+    "review": "local root only review/hash/report/images",
+    "assembly": "Integration",
+    "productionUpload": "WORLD"
+  },
+  "evidenceRoot": "/Users/anthonyakpan/Desktop/joinallworld/evidence/graphics-loop/native-game-adoption-v1",
+  "currentProof": "Integratedc8 strict5projectcompilerPASS. Separate twistfix draft4component testsPASS including pinnedactual52bone male/femalefamilycorrection. Actualmovingclothes/contact/idle/runtimeverification pending.",
+  "historicalExperiments": "Graphics dashboard old8fixrecords/olderPNG labelled prototypes; superseded blockers must not be re-added solely from those records.",
+  "latestStairTrial": {
+    "commit": "d98203c6360011132109893076d7b1f07ea8f328",
+    "factorySha256": "5f48b927eea73117915d6d837c367977af059b147b2ddf2a026223f81b1ea063",
+    "independentStatus": "16repeatgrid +bothbelow pass",
+    "receipt": "cloud-stair-trial-d98203c/independent-review.json",
+    "actualHomeBrowser": "pending"
+  },
+  "updatedAt": "2026-10-10T03:11:09.492811+00:00",
+  "latestRunResult": "Public241officePASS/homeFAIL. Privateb601retiming actualFAIL8sentrytimeout with25.7/26.1m/s footmotion.",
+  "todayPriority": "Working clothed player and real NPC delivery before2026-10-10T23:00:00Z, Africa/Lagos end ofday; wholegraphicsgoal unchanged",
+  "latestReceiptPublication": "51bb30d059cfba5129c92a2df56e6775c645a40d",
+  "latestSourcePublication": "private online integrated candidate; not accepted or deployed",
+  "latestDiagnostics": {
+    "rest": "b601FAIL; patch00db005dc44a809bca2180e8dd7557bf214838908f904f8b6dee244f19954507; failurec4b27dd64f5e943c65b53917faee04be0cc8e8825c9cc852d5086ac09e6fdc7e",
+    "gesture": "4PASS rawtool exec-84e7f39b-4500-469f-9962-8d43d194ad09; realriggeometry/clothedbrowser acceptance pending",
+    "checkpointApproval": "Cf8 exactpush humanquestionpending, diagnostic source preserved privately, no reroute"
+  }
+}

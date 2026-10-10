@@ -1,0 +1,88 @@
+{
+  "reviewedAt": "2026-10-10T04:02:03.831842+00:00",
+  "candidate": "c1383b53a935153451beca180b0c264d99b4c126",
+  "base": "4ad527e6ad2751c8e9b4580dba51ad4ae25f5b4b",
+  "decision": "REPAIR_RETAINED_COMPONENT_COVERAGE_BEFORE_INTEGRATION",
+  "sourceProof": {
+    "files": [
+      {
+        "file": "sedan-aperture.ts",
+        "bytes": 28922,
+        "sha256": "72cc936cd943e2e92d6752f9e8a360f0b3517e793cd562f5a3b7921ee23a80fb"
+      },
+      {
+        "file": "sedan-aperture.test.ts",
+        "bytes": 25415,
+        "sha256": "6727b286dbfa2e2b9a8eb779aaff6d2172518891f74ab0a55ed669a7f9bac6e8"
+      }
+    ],
+    "hunksContextChecked": 18,
+    "allFinalHashesMatched": true,
+    "reviewScope": "All source reconstructed, selected changed geometry/CPU/path fixtures reviewed. Existing complete4ad review retained. No Sol runtime."
+  },
+  "execution": {
+    "id": "exec-d70d482a-5344-42ec-aeda-c437d5098d45",
+    "exit": 0,
+    "bytes": 1777,
+    "sha256": "3e58d7f9edab7980c056218779a0dcb0f8e4f91aa16fbffdd179999bc50bd404",
+    "pass": 17,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 197.726795,
+    "commandOriginalOutputHashMatchesWorkerFinalLog": true
+  },
+  "firstFailurePreserved": {
+    "id": "exec-587690d4-0ac9-48f1-b266-2c68a6fca729",
+    "exit": 1,
+    "bytes": 3940,
+    "sha256": "99bf3b72821126af4576306022c88c612c1d7765d8fa1c2569de8673b7ff7bcd"
+  },
+  "progress": [
+    "Strict primitive phase and no-coercion refusal regression.",
+    "Map and street Three CPU meshes constructed with existing read-only dependency tree, matching lock and Three0.180.0; no install/renderer.",
+    "Moving driver glass/trim separated from static fragments, with actual moving/retained mesh vertex checks.",
+    "Actual sedan anchor-derived linear centerline segments cover normal/reduced scene phases. They remain explicitly unverified clothed actor enclosures."
+  ],
+  "remaining": [
+    {
+      "id": "AP4-retained-driver-cap",
+      "priority": "required",
+      "sourceDerivedUnexecutedCandidate": {
+        "point": [
+          -0.95,
+          0.7,
+          -1.3
+        ],
+        "radius": 0.02,
+        "contactMargin": 0.005
+      },
+      "evidence": "Driver cap outside door volume is retained by source splitter, but SHELL covers only opposite cap, lower driver sill and profile-edge boxes; this middle/rear driver-cap contact is outside those enclosures.",
+      "required": "Cover actual retained driver-side cap remainder and prove real triangle contact with CPU source mesh."
+    },
+    {
+      "id": "AP4-sloped-windscreen",
+      "priority": "required",
+      "sourceDerivedUnexecutedCandidate": {
+        "point": [
+          0,
+          1.1375943396226413,
+          1.4
+        ],
+        "radius": 0.005,
+        "contactMargin": 0.005
+      },
+      "evidence": "Actual sloped glass spans between source endpoints; current windscreen boxes cover only endpoints, while body-profile boxes do not enclose the middle of the glass plane.",
+      "required": "Conservatively cover the full actual windscreen span and prove CPU triangle contact; audit all required retained shell/glass/trim and cabin solids in one finite batch."
+    }
+  ],
+  "testCoverageLimit": "Current CPU test proves finite Float32 meshes, selected glass vertices, door sweep sample coverage and steering endpoint bounds. It does not establish full retained surface/interior bound correspondence.",
+  "coordination": "Same existing Cloud writer follow-up sent via existing parent. No new worker or competing source writer.",
+  "authority": {
+    "canBoard": false,
+    "authoritativeClearance": false,
+    "routeAuthorized": false,
+    "actorFitAccepted": false,
+    "runtimeRegistered": false,
+    "deployed": false
+  }
+}

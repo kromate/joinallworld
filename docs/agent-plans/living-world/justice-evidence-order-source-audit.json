@@ -1,0 +1,118 @@
+{
+  "observedAt": "2026-10-10T04:02:03.831842+00:00",
+  "rootSource": "ce8fa0a8976de0df381dbb8f41968b833a975b6d",
+  "decision": "REPAIR_EXISTING_ACTIVE_PRACTICE",
+  "sourceScope": "Complete pure state/transition/reconstruction source; selected real Vue interaction, service mutation and test slices. Source-only finding, no Sol runtime/browser/test.",
+  "pins": [
+    {
+      "path": "src/game/living-world/justice-practice.ts",
+      "bytes": 30357,
+      "sha256": "4bc13cf9b72efc5208be7369993021a245f4185e565d8f989dcd7b08ca812518"
+    },
+    {
+      "path": "src/game/living-world/justice-practice.test.ts",
+      "bytes": 11511,
+      "sha256": "56071c2208e61da84f7f9781beb965bae40730ff3ea69c54209f39c91e90112a"
+    },
+    {
+      "path": "server/living-world/justice-practice-service.ts",
+      "bytes": 19157,
+      "sha256": "6589a3b1442c2ba8158dfa78daf513b9f3f35c5664467d0c92c07c1106188833"
+    },
+    {
+      "path": "server/living-world/justice-practice-service.test.ts",
+      "bytes": 13006,
+      "sha256": "1f8b6f9df6dd0bd091173477183ba1c9715a9d91b8308a3c13c119612b8c3511"
+    },
+    {
+      "path": "src/app/features/living-world/JusticeApp.vue",
+      "bytes": 18299,
+      "sha256": "589f6e795e26033a29769f2959e3c64a7937c650c340c64f20d76b3794dde558"
+    },
+    {
+      "path": "src/app/features/living-world/justiceReply.ts",
+      "bytes": 7603,
+      "sha256": "74a19052294b9aa06b68829ae160acd3f94e92f6eaaeeb2c079a573cc4dd5a7a"
+    },
+    {
+      "path": "server/routes/living-world.ts",
+      "bytes": 4989,
+      "sha256": "5d2840b17d0d0abba4c5afa208296699b34d35a9e24dc2b65d1236c25fa4bd3d"
+    }
+  ],
+  "sourceComparison": [
+    {
+      "ref": "c1f7c1f7369139ce559292318ba9842c23a28267",
+      "path": "src/game/living-world/justice-practice.ts",
+      "bytes": 30357,
+      "sha256": "4bc13cf9b72efc5208be7369993021a245f4185e565d8f989dcd7b08ca812518",
+      "matchesRoot": true
+    },
+    {
+      "ref": "c1f7c1f7369139ce559292318ba9842c23a28267",
+      "path": "server/living-world/justice-practice-service.ts",
+      "bytes": 19157,
+      "sha256": "6589a3b1442c2ba8158dfa78daf513b9f3f35c5664467d0c92c07c1106188833",
+      "matchesRoot": true
+    },
+    {
+      "ref": "c1f7c1f7369139ce559292318ba9842c23a28267",
+      "path": "src/app/features/living-world/JusticeApp.vue",
+      "bytes": 18299,
+      "sha256": "589f6e795e26033a29769f2959e3c64a7937c650c340c64f20d76b3794dde558",
+      "matchesRoot": true
+    },
+    {
+      "ref": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+      "path": "src/game/living-world/justice-practice.ts",
+      "bytes": 30357,
+      "sha256": "4bc13cf9b72efc5208be7369993021a245f4185e565d8f989dcd7b08ca812518",
+      "matchesRoot": true
+    },
+    {
+      "ref": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+      "path": "server/living-world/justice-practice-service.ts",
+      "bytes": 19157,
+      "sha256": "6589a3b1442c2ba8158dfa78daf513b9f3f35c5664467d0c92c07c1106188833",
+      "matchesRoot": true
+    },
+    {
+      "ref": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+      "path": "src/app/features/living-world/JusticeApp.vue",
+      "bytes": 18299,
+      "sha256": "589f6e795e26033a29769f2959e3c64a7937c650c340c64f20d76b3794dde558",
+      "matchesRoot": true
+    }
+  ],
+  "scenario": {
+    "case": "fictional-shipment-review-01",
+    "steps": [
+      {
+        "action": "inspect seal-log",
+        "expectedRevision": 0
+      },
+      {
+        "action": "inspect dispatch-copy",
+        "expectedRevision": 1
+      }
+    ],
+    "expected": "Both inspected records persist and practice can continue or reload.",
+    "sourceDerivedActual": "transition pushes seal-log then dispatch-copy; strict reader rejects non-monotonic evidence ordering. Service writes the row before rereading it and can return invalid_saved_justice_practice with the row still stored.",
+    "executed": false
+  },
+  "cause": "UI offers all three records at once; transition records click chronology, but reader requires canonical evidence presentation order. Tests start in canonical order and do not cover all permutations.",
+  "ownership": "Sol requests Integration allocate the same suitable available Luna writer with exclusive scope. No worker assignment/execution yet verified; no new worker spawned.",
+  "proposedExclusiveWriteScope": [
+    "src/game/living-world/justice-practice.ts",
+    "src/game/living-world/justice-practice.test.ts"
+  ],
+  "acceptance": [
+    "All six initial evidence-reading permutations remain reconstructible after every action and reach the existing authored sequence.",
+    "Normalize the reviewed-evidence set independently of chronological action receipts; preserve exact prior receipts, revisions, decisions and same-ID replay.",
+    "Existing reconstructible noncanonical saved histories resume through a proven compatibility reader; forged or future states remain refused. No reset, deleted row, schema/cap waiver or fabricated completion.",
+    "Wrong decisions and missing supporting evidence cannot advance; no passive timer progression or invented legal privilege.",
+    "Owner-run exact-source focused regressions, then actual Node/Worker cold reopen and mobile interaction proof before release.",
+    "Preserve identity, cash, home, private messages, actual justice/moderation data and other missions."
+  ],
+  "scopeLimit": "Only repairs the existing fictional NPC process exercise. Full simulated law role progression, rulebook, bounded judgments and appeals remain unaccepted programme work."
+}

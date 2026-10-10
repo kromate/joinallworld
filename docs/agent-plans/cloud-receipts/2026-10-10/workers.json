@@ -1,5 +1,5 @@
 {
-  "recorded_at_utc": "2026-10-09T23:50:47.216511+00:00",
+  "recorded_at_utc": "2026-10-10T00:07:34.201620+00:00",
   "environment_id": "ccarenv_b64_Y2NhcmVudl9hNWQ2NjA5ZDA3MjQ4MTkxYjdmNmJiN2Y0NzJlMjEyYw",
   "hostname": "96cc63a2f9d2",
   "node": "v24.19.0",
@@ -24,7 +24,20 @@
         "native-rest-contact.ts"
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
-      "runtime_model_id": "not independently exposed"
+      "runtime_model_id": "not independently exposed; configured spawn request only",
+      "checkout_head_sha": "4c2dec572f51f04c2f4972be609ed5eb5bbc794f",
+      "changed_files": [
+        "src/scene/body/native/native-rest-contact-v15/rest-pose-adapter.ts"
+      ],
+      "task_ids": [
+        "INT-014"
+      ],
+      "severity": "P1",
+      "difficulty": 4,
+      "effort_basis": "Coupled geometry/IK state repair; full saved-home stages required.",
+      "latest_known_execution_handle": 4794,
+      "host": "96cc63a2f9d2",
+      "status": "active source repair"
     },
     {
       "worker_id": "/root/graphics_stairs_cloud",
@@ -38,7 +51,20 @@
         "dedicated stair module/tests"
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
-      "runtime_model_id": "not independently exposed"
+      "runtime_model_id": "not independently exposed; configured spawn request only",
+      "checkout_head_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
+      "changed_files": [
+        "src/scene/body/native/native-clip-solver.ts"
+      ],
+      "task_ids": [
+        "INT-015"
+      ],
+      "severity": "P1",
+      "difficulty": 4,
+      "effort_basis": "Real transformed stepped host; both families/directions and signed gap repair.",
+      "latest_known_execution_handle": null,
+      "host": "96cc63a2f9d2",
+      "status": "active source repair"
     },
     {
       "worker_id": "/root/household_consent_view_cloud",
@@ -51,7 +77,7 @@
         "server/households/consentView.ts"
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
-      "runtime_model_id": "not independently exposed",
+      "runtime_model_id": "not independently exposed; configured spawn request only",
       "pushed_sha": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
       "completed_proposal": "household consent view loader; focused strict compiler + two runtime observations passed",
       "next_assignment": {
@@ -60,22 +86,38 @@
         "branch": "codex/cloud-companion-yield-20261010",
         "base_sha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
         "status": "pins verified, implementation active"
-      }
+      },
+      "checkout_head_sha": "8e6757eb92653b3df621cf5e88653b5d6f9bbab4",
+      "changed_files": [
+        "server/households/consentView.ts"
+      ],
+      "task_ids": [
+        "INT-001",
+        "INT-021",
+        "INT-022",
+        "INT-023"
+      ],
+      "severity": "P1/P2",
+      "difficulty": 3,
+      "effort_basis": "Loader-only fixes plus all eleven load\u2192reducer cases; no durable adapter allocated.",
+      "latest_known_execution_handle": null,
+      "host": "96cc63a2f9d2",
+      "status": "active source repair"
     },
     {
       "worker_id": "/root/world_country_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
-      "checkout": "/workspace/remote-verification/repositories/worker-world-country",
-      "branch": "codex/cloud-country-admission-20261010",
+      "checkout": "/workspace/remote-verification/repositories/worker-world-third-five",
+      "branch": "codex/cloud-third-five-admission-20261010",
       "base_sha": "5dd7ae415da8e6b58fb3f7a2b0f0cbb8dc5249bf",
       "scope": [
         "country admission owned proposal/test scope"
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
-      "runtime_model_id": "not independently exposed",
-      "pushed_sha": "d173b2c4c3d28e4323c169d88521236abef710ee",
-      "status": "source checkpoint completed/pushed; read-only Senegal diagnosis active",
+      "runtime_model_id": "not independently exposed; configured spawn request only",
+      "pushed_sha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+      "status": "frozen candidate; parent verification active",
       "latest_test_result": "17 named assertions passed, zero failed/skipped in escalated execution",
       "latest_log": "/workspace/remote-verification/worker-results/world-country/focused-tests-escalated.log",
       "latest_log_sha256": "3e713211e116304ad548825483730d4ddec843a9a123c258bbf6f04f5b3268e8",
@@ -84,7 +126,18 @@
         "tests": 33,
         "exit_status": 0,
         "acquisition": "none; reservation crash durability unproven"
-      }
+      },
+      "checkout_head_sha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+      "changed_files": [],
+      "task_ids": [
+        "INT-010",
+        "INT-011"
+      ],
+      "severity": "P1",
+      "difficulty": 4,
+      "effort_basis": "55row source preparation complete; shared caller integration and playable acceptance remain.",
+      "latest_known_execution_handle": 85545,
+      "host": "96cc63a2f9d2"
     },
     {
       "worker_id": "/root/living_driving_cloud",
@@ -97,16 +150,29 @@
         "driving service/client/response type hunks"
       ],
       "checkout_receipt": "worker acknowledged clean branch/exact source before implementation",
-      "runtime_model_id": "not independently exposed",
+      "runtime_model_id": "not independently exposed; configured spawn request only",
       "app_thread_id": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
-      "overlay_hashes": "all seven frozen overlay hashes independently verified by worker"
+      "overlay_hashes": "all seven frozen overlay hashes independently verified by worker",
+      "checkout_head_sha": "d7ccfa5dfea65dacd541ca1dddc885f7f410df9e",
+      "changed_files": [],
+      "task_ids": [
+        "INT-005",
+        "INT-006"
+      ],
+      "severity": "P1",
+      "difficulty": 3,
+      "effort_basis": "Replay and capability multichannel behavior; independent rollback/store review required.",
+      "latest_known_execution_handle": 66184,
+      "host": "96cc63a2f9d2",
+      "pushed_sha": "d7ccfa5dfea65dacd541ca1dddc885f7f410df9e",
+      "status": "frozen candidate; parent verification active"
     },
     {
       "worker_id": "/root/graphics_head_cloud",
       "configured_spawn_model": "gpt-6-luna",
       "configured_reasoning": "inherited/default",
-      "checkout": "/workspace/remote-verification/repositories/worker-graphics-head",
-      "branch": "codex/cloud-graphics-head-v9-20261010",
+      "checkout": "/workspace/remote-verification/repositories/worker-graphics-npc-contact",
+      "branch": "codex/cloud-graphics-npc-contact-20261010",
       "base_sha": "7dd846527b82ba3331400c996bd20dc9cff748e0",
       "scope": [
         "native-source-sampler.ts",
@@ -114,9 +180,49 @@
         "head module/tests"
       ],
       "checkout_receipt": "worker acknowledged clean exact base",
-      "runtime_model_id": "not independently exposed",
-      "status": "head checkpoint reviewed/wired; strict nullability fix and NPC fixture follow-up active",
-      "pushed_sha": "cae2b9fd1200ce0c22ccf27b0cf2973ef83ace0b"
+      "runtime_model_id": "not independently exposed; configured spawn request only",
+      "status": "active source repair",
+      "pushed_sha": "cae2b9fd1200ce0c22ccf27b0cf2973ef83ace0b",
+      "checkout_head_sha": "bcb28f57c45aa87dba5c2725f3be04417df12ce2",
+      "changed_files": [
+        "evidence/graphics-loop/native-game-adoption-v1/game-fixture.ts"
+      ],
+      "task_ids": [
+        "INT-024"
+      ],
+      "severity": "P1 gate",
+      "difficulty": 3,
+      "effort_basis": "Existing fixture instrumentation; actual deformed surfaces and motion verification.",
+      "latest_known_execution_handle": null,
+      "host": "96cc63a2f9d2"
     }
-  ]
+  ],
+  "inventory_kind": "Cloud owner execution receipt; Integration retains sole combined ledger",
+  "safe_stop": "At usage<=5% stop NEW parallel work and checkpoint owned jobs; absolute cutoff2026-10-10T08:00:00Z",
+  "current_check_sessions": {
+    "companion_compiler4096": 27918,
+    "living_compiler4096": 66184,
+    "world55_build": 5351
+  },
+  "graphics_head_compiler": {
+    "sha": "bcb28f57c45aa87dba5c2725f3be04417df12ce2",
+    "scope": "actual office graph",
+    "exit": 0,
+    "log_sha256": "2c9794b27bda1d9835d521b7f2dd23952975ddce2be428d25d0f566d12d44ab3"
+  },
+  "companion": {
+    "task_id": "INT-002",
+    "branch": "codex/cloud-companion-yield-20261010",
+    "sha": "8a48405963ca526bfe059b413be250d834d50b90",
+    "changed_files": [
+      "src/app/features/companion/CompanionHost.vue"
+    ],
+    "focused": "19PASS",
+    "build": "PASS worker receipt",
+    "budget": "PASS worker receipt",
+    "compiler1536": "FAIL OOM preserved",
+    "compiler4096_session": 27918,
+    "browser": "pending actual combined320/390/focus/restore",
+    "push": "PASS following verified same-repository destination and authorization"
+  }
 }

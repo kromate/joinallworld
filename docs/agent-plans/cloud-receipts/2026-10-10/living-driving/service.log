@@ -1,0 +1,22 @@
+✔ driving packets are server-stepped, sequenced, retryable and bootstrap always pauses (341.002892ms)
+✔ reverse issuance is literal trusted true; OFF refuses atomically and retains v1/v2 journeys (71.857684ms)
+✔ legacy forward packets remain valid and reverse requests brake before a saved backward step (47.804209ms)
+✔ only a held quick-start is blocked; confirmed guests and legacy lives remain eligible (36.782794ms)
+✔ stale lifecycle CAS and excessive or early control packets do not move the journey (27.304809ms)
+✔ paused pending attempt can restart once; old journey receipts and packets cannot affect its replacement (62.731003ms)
+✔ distinct concurrent restart IDs against one paused revision have one winner (23.328682ms)
+✔ malformed restart payload and reversed server time leave the paused save unchanged (24.480319ms)
+✔ restart refuses running, moved, failed-terminal, and passed attempts without replacing their record (95.281668ms)
+✔ failed restart transaction leaves the paused attempt intact and permits the same-ID retry (25.79503ms)
+✔ replaying a start receipt after a failed run is superseded by the canonical fresh journey (19.467647ms)
+✔ server timeout and clock reversal pause without granting hidden simulation time (30.195687ms)
+✔ the public route isolates actors, pins city and location, and rejects altered packets (39.73511ms)
+✔ malformed saved journey is left intact and a failed durable start leaves no record (48.490605ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1613.804841

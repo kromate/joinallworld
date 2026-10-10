@@ -1,0 +1,14 @@
+checkout=/workspace/remote-verification/repositories/worker-world-third-five
+branch=codex/cloud-third-five-admission-20261010
+source_sha=391ccfe9b9494681bdee0129a3c3fbdd972d74f4
+worktree=clean
+host_memory_at_start=33GiB total, 32GiB available
+command=AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 NODE_OPTIONS=--max-old-space-size=4096 node --experimental-strip-types scripts/agent-slot.ts heavy -- npm run typecheck
+exec_session_handle=85545
+started_utc=$(cat /workspace/remote-verification/worker-results/world-third-five/compiler.started)
+finished_utc=$(cat /workspace/remote-verification/worker-results/world-third-five/compiler.finished)
+exit=$(cat /workspace/remote-verification/worker-results/world-third-five/compiler.exit)
+result=Typecheck clean: 5 projects, 0 errors in .ts and .vue, 0 baselined in existing JavaScript.
+log=/workspace/remote-verification/worker-results/world-third-five/compiler.log
+log_sha256=$(sha256sum /workspace/remote-verification/worker-results/world-third-five/compiler.log | cut -d ' ' -f 1)
+scope=compiler-only; no build or download run

@@ -1,0 +1,26 @@
+✔ validates the 40-row Nigeria prefix and exact ordered foreign allowlist (1.77833ms)
+✔ rejects a changed historical baseline pin (0.419628ms)
+✔ rejects C1 reordering, country mutation, and unreviewed extensions (0.453888ms)
+✔ accepts only a declared, source-pinned extension after the unchanged C1 prefix (1.679141ms)
+✔ accepts multiple source-packet-pinned cities in one foreign country shard (0.82855ms)
+✔ country shards reject non-catalogue metadata and preserve all 40 Nigeria rows (0.499057ms)
+✔ keeps Nigeria static and cold, then lazily loads and caches a verified foreign shard (26.512103ms)
+✔ supports an eleventh foreign row and multiple admitted cities in one country (3.260136ms)
+✔ prunes typed catalogue rows with the raw-shard LRU and reloads an evicted country (3.394728ms)
+✔ rejects unadmitted IDs, duplicate requests, and an index with extra countries (2.146771ms)
+✔ refuses a foreign admission list whose ordered digest differs from the descriptor (0.647238ms)
+✔ requires a non-empty bounded foreign admission instead of treating Nigeria as a directory fallback (0.296483ms)
+▶ does not publish a shard with a missing, extra, cross-country, or non-finite city row
+  ✔ extra ID (1.21072ms)
+  ✔ wrong country (1.261808ms)
+  ✔ non-finite coordinate (1.141978ms)
+✔ does not publish a shard with a missing, extra, cross-country, or non-finite city row (4.35882ms)
+✔ rejects a hash-valid extra shard row when the index declares the admitted count (1.932059ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.109099

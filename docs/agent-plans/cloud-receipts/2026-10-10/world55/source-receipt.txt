@@ -1,0 +1,25 @@
+checkout=/workspace/remote-verification/repositories/worker-world-third-five
+branch=codex/cloud-third-five-admission-20261010
+base=3eb9e7cbaec40784eada66f0a8278cbe0f521f59
+commit=391ccfe9b9494681bdee0129a3c3fbdd972d74f4
+remote_ref=refs/heads/codex/cloud-third-five-admission-20261010
+remote_ls_remote_sha=391ccfe9b9494681bdee0129a3c3fbdd972d74f4
+proposal_sha256=8a04b60b242abcd54beab912eb39a46cb958c9f8c93bba1cc814a02b3610582f
+runtime_admission_sha256=8a04b60b242abcd54beab912eb39a46cb958c9f8c93bba1cc814a02b3610582f
+canonical_foreign_admission_sha256=c882a0975ab7ec6d5f538c44ccf2447d50d159068f1daab877d026a81b9fbe91
+source_packet=world/playable-africa-rollout/batches/third-five.json
+source_packet_sha256=c68c9e47de7ff5f8b2bc64daa7e6891ffec59221005a29ff3d8324d9e38300a5
+asset_receipt_verification=5 cities; each receipt plus 5 asset bytes/hash pins verified; all match source packet pins
+npm_ci= npm ci --ignore-scripts --no-audit --no-fund --cache /workspace/.npm-cache (88 packages installed)
+generator=AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 node --experimental-strip-types scripts/agent-slot.ts heavy -- node --experimental-strip-types scripts/city/build-catalogue.ts
+check_and_tests=AGENT_SLOT_DIR=/workspace/remote-verification/agent-slots AGENT_SLOT_HEAVY=1 NODE_OPTIONS=--max-old-space-size=1536 node --experimental-strip-types scripts/agent-slot.ts heavy -- bash -lc 'node --experimental-strip-types scripts/city/build-catalogue.ts --check && node --experimental-strip-types --test --test-concurrency=1 scripts/city/runtime-admission.test.ts src/browser/countryDirectory.test.ts'
+focused_started_utc=2026-10-09T23:55:37Z
+focused_finished_utc=2026-10-09T23:55:38Z
+focused_exit=0
+focused_result=17 tests pass; named assertions recorded in focused.log
+focused_log=/workspace/remote-verification/worker-results/world-third-five/focused.log
+focused_log_sha256=af6a930701bbcc5e619834818dea5ab8bf1bfec97b4625e6ebafde6a02b3c2a0
+changed_files=14 exactly: runtime-admission.json; catalogue.generated, loaders.generated, routes.generated, foreign-admission.generated, foreign-loaders.generated, country-directory.generated, trusted-city-facts.generated; public index plus five country shards
+C1_baseline_pins=catalogue.generated 3692 bytes 88a49bd6230cfe7da918ef808e2df5ee087524bb5f725570bda96697f13b531b; loaders.generated 2962 bytes c9a3a7255c8aee9ef2137f0a24d610de0a4c540e3f7298ac8d62370c6e98eb21; routes.generated 8088 bytes 334b0a83bcc69dc4b347a3ab35b664b1cf2488e54257b4f66856c9278f48cd0c; catalogue.ts 2494 bytes e9307cc3625922a338c7534f96709001555c0b86ff54dad528db306c64260a03
+C1_preservation=50 catalogue rows exact, 50 loader entries exact, all 34 prior C1 route objects remain unchanged; catalogue.ts byte/hash unchanged
+scope=No handwritten caller, registry, bootstrap, server, auth, or runtime activation changes. No network acquisition or paid spend. Runtime acceptance remains pending integration-owned caller migration.

@@ -1,0 +1,14 @@
+✔ Driving rejects stale account/city A to B to A replies before clock or storage effects (3003.15687ms)
+✔ Driving qualification and rental replies are fenced by synchronous context changes (40.60433ms)
+✔ Driving keeps legacy frames until direction is chosen and shows requested versus server gear (22.702164ms)
+✔ Driving capability loss releases buffered controls and fences an older same-revision enable reply (19.445804ms)
+✔ Driving fences an unmounted in-flight control and reconciles only while its actor still owns the request (47.185203ms)
+✔ Barber does not revive a stale claimed result and rejects a late unmount reply (108.542132ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9321.393672

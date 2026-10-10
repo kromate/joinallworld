@@ -1,0 +1,33 @@
+Task: yield floating Companion stage while shell foreground screens or interactive teaching lessons are active
+Checkout: /workspace/remote-verification/repositories/worker-companion-yield
+Base SHA: eec14690544a4646e4cd8a5ad280d61bbe2709ca
+Branch: codex/cloud-companion-yield-20261010
+Commit: 8a48405963ca526bfe059b413be250d834d50b90
+GitHub origin: https://github.com/kromate/joinallworld.git
+Configured worker model: gpt-6-luna (delegation metadata); shell/runtime model attestation unavailable
+Host attestation: unavailable for this scope
+
+Verified baseline pins:
+src/app/features/companion/CompanionHost.vue 89c2e2e889ede89f7aefbcaedb47b59bf8e7482dd7d8e51c87a7bb4a9b9abe1c
+src/app/features/companion/companion.test.ts 50424dccf9d2c721bd1ae2d3fb0b85a88e865c2d50bfbcf3a779c56c435ac36c
+src/app/state/shell.ts af9bc4c75c23f29a825c92808713c86732be3967341e22e8ef4bc529531bd9e5
+src/app/features/venue/RunningActionProgress.vue 3a7e780e8506e5601821a15852355aadfd2e830dcbaec112500e50fa0d92e1a4
+
+Owned patch:
+Only src/app/features/companion/CompanionHost.vue changed.
+Final source SHA256: c444b94c82a4920ecebe2b0d9db22c726e9e0b876aaf36c4087d1926c0cd94c2
+Behavior: floating eligibility now uses typed shell.sheet, shell.inPhone, non-venue game mode, and activeAction kind=activity with its optional teaching marker. Existing synchronous watch disposes the stage on hide and restarts it when eligible; CompanionSheet's existing entry/rendering remains unchanged.
+
+Validation:
+- npm ci --no-audit --no-fund: exit 0; 88 packages installed from lockfile. package-lock.json hash unchanged: d3a82d0f0d7e750bee84042a2ab36dcaa655cf6e7c9bdb8047823e507112efa9.
+- Focused existing test `node --experimental-strip-types --test --test-concurrency=1 src/app/features/companion/companion.test.ts`: exit 0; 19 passed, 0 failed/skipped.
+- `npm run typecheck` through agent-slot heavy, default 1536 MiB: exit 1. Client and test compiler subprocesses each aborted with SIGABRT / heap OOM; script reported no useful diagnostics. No waiver/update was applied.
+- `npm run build` through agent-slot heavy, 1536 MiB: exit 0. Vite transformed 2,110 modules; CompanionHost output emitted. Existing circular chunk warnings appeared for slices/engine and navigation/campus-rules.
+- `npm run size:download` through agent-slot heavy: exit 0; all applicable download budgets passed; wardrobe/street tile categories were n/a because there were no matching files.
+- `git diff --check`: exit 0. Working tree clean after commit.
+- No browser/viewport check was run. Hidden-stage disposal/resume follows existing computed/watch mechanism, but actual interaction remains for combined artifact verification.
+
+Push status:
+- First push went to the local baseline clone because clone inherited its local origin. That accidental local ref was deleted; baseline checkout remains clean.
+- This checkout's origin was corrected to GitHub. Default push failed to reach proxy port 8080.
+- Escalated push was rejected by auto-review: “This pushes the private repository’s source branch to an unverified external GitHub destination; the user authorized the code change and review branch but did not specifically authorize exporting that source to this destination.” No GitHub push completed. Root was informed; commit remains local.

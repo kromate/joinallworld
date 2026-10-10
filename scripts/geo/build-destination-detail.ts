@@ -50,7 +50,9 @@ const pick = (ref: string): Element => {
   if (!element) throw new Error(`${ref} is not in the recorded answer`);
   return element;
 };
-const nameOf = (element: Element): string => (element.tags?.['name:en'] ?? element.tags?.name ?? '').replace(/\s+/g, ' ').trim();
+/** The English name, else the French one, else the local one (a name is never transliterated here). */
+const nameIn = (tags: Record<string, string> | undefined): string => (tags?.['name:en'] ?? tags?.['name:fr'] ?? tags?.name ?? '').replace(/\s+/g, ' ').trim();
+const nameOf = (element: Element): string => nameIn(element.tags);
 
 const labelled = config.names.map((choice) => ({ name: choice.label ?? nameOf(pick(choice.ref)), at: centreOf(pick(choice.ref)) }));
 /** The district of a place is the nearest labelled neighbourhood within two and a half kilometres, else the whole area. */
@@ -163,7 +165,7 @@ for (const way of roadsAnswer.elements) {
     if (!isMajor && km < config.minRoadKm) continue;
     const q = piece.map(([lon, lat]): P => [Math.round(lon * 1e4), Math.round(lat * 1e4)]);
     const steps = q.slice(1).flatMap(([x, y], i) => [x - q[i]![0], y - q[i]![1]]);
-    const name = (way.tags['name:en'] ?? way.tags.name ?? way.tags.ref ?? '').replace(/\s+/g, ' ').trim() || 'Road';
+    const name = nameIn(way.tags) || (way.tags.ref ?? '').trim() || 'Road';
     candidates.push({ row: `  [${JSON.stringify(name)}, ${isMajor ? 1 : 0}, ${q[0]![0]}, ${q[0]![1]}, ${steps.join(', ')}],`, km, points: q.length, major: isMajor });
   }
 }

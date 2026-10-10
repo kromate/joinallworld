@@ -160,8 +160,9 @@ export function builtUp(points: readonly P[], anchors: readonly P[], water: read
   // The fine grid: the coarse mask, plus the water, scan-filled row by row (even-odd over every ring of every polygon).
   const fine = cell / split, fc = cols * split, fr = rows * split;
   const wet = new Uint8Array(fc * fr);
-  for (let r = 0; r < fr; r++) {
-    const lat = box[0] + (r + 0.5) * fine;
+  // A fine cell is wet when any part of it is under water: three scan lines per row and the cells the span touches, so that a stream narrower than a cell still lies inside the play area.
+  for (let r = 0; r < fr; r++) for (const part of [0.2, 0.5, 0.8]) {
+    const lat = box[0] + (r + part) * fine;
     // Each polygon is filled on its own (even-odd over its outer ring and holes) and the polygons are joined, so a river that meets the sea does not cancel it.
     for (const polygon of water) {
       const hits: number[] = [];
@@ -171,7 +172,7 @@ export function builtUp(points: readonly P[], anchors: readonly P[], water: read
       }
       hits.sort((a, b) => a - b);
       for (let h = 0; h + 1 < hits.length; h += 2) {
-        const from = Math.max(0, Math.ceil((hits[h]! - box[1]) / fine - 0.5)), to = Math.min(fc - 1, Math.floor((hits[h + 1]! - box[1]) / fine - 0.5));
+        const from = Math.max(0, Math.floor((hits[h]! - box[1]) / fine)), to = Math.min(fc - 1, Math.floor((hits[h + 1]! - box[1]) / fine));
         for (let c = from; c <= to; c++) wet[r * fc + c] = 1;
       }
     }

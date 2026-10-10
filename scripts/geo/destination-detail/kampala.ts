@@ -12,7 +12,7 @@ export const CONFIG: DetailConfig = {
   cell: 0.004,
   grow: 2,
   split: 12,
-  shore: 1,
+  shore: 0,
   minHole: 40,
   minRoadKm: 0.7,
   maxRoads: 700,

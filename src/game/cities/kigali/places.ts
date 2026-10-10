@@ -63,7 +63,7 @@ export const PLACES: readonly DestinationPlace[] = [
   },
   {
     "slot": "recreation",
-    "name": "Kigali Centenary Park",
+    "name": "Parc Centenaire de Kigali",
     "district": "Kimihurura",
     "kind": "park",
     "category": "fun",
@@ -197,7 +197,7 @@ export const PLACES: readonly DestinationPlace[] = [
   },
   {
     "key": "parliament",
-    "name": "Parliament",
+    "name": "Parlement",
     "district": "Kimihurura",
     "kind": "walk",
     "category": "fun",
@@ -225,7 +225,7 @@ export const PLACES: readonly DestinationPlace[] = [
   },
   {
     "key": "pele-stadium",
-    "name": "Kigali Pelé Stadium",
+    "name": "Stade Pelé de Kigali",
     "district": "Nyamirambo",
     "kind": "viewing",
     "category": "fun",
@@ -265,7 +265,7 @@ export const PLACES: readonly DestinationPlace[] = [
   },
   {
     "key": "kigali-golf-course",
-    "name": "Kigali Golf Course",
+    "name": "Parcours de Golf de Kigali",
     "district": "Kacyiru",
     "kind": "walk",
     "category": "fun",

@@ -43,6 +43,10 @@ function browserSystems(): Plugin {
     // The browser only reads lives (src/game/profile.ts): what only playing one needs is not in the page.
     load(id) { return /\/src\/game\/profile\.ts$/.test(id) ? 'export const PLAYS = false;\nexport const LEFT_OUT = {};\n' : null; },
     async resolveId(source, importer, options) {
+      if (/\bcatalogue-provider\.ts$/.test(source)) {
+        const resolved = await this.resolve(source, importer, { ...options, skipSelf: true });
+        return resolved && /\/src\/game\/cities\/catalogue-provider\.ts$/.test(resolved.id) ? resolved.id.replace(/catalogue-provider\.ts$/, 'catalogue-provider.browser.ts') : null;
+      }
       if (!/systems\/index\.ts$/.test(source)) return null;
       const resolved = await this.resolve(source, importer, { ...options, skipSelf: true });
       return resolved && /\/src\/game\/systems\/index\.ts$/.test(resolved.id) ? resolved.id.replace(/index\.ts$/, 'browser.ts') : null;

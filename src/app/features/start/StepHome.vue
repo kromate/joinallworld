@@ -16,7 +16,7 @@ import { useApp } from '../../state/app.ts'
 import HouseArt from '../world/HouseArt.vue'
 import { findLga, lgaCardUi as ui } from '../world/lgaCardModel.ts'
 import type { AreaChoice } from './onboardingModel.ts'
-import { PLACES, cityOpen, firstOpen, groupLgas, stateOfCity, stateOpen, unitOf } from './placesModel.ts'
+import { PLACES, placesForCountry, availableCountryDirectory, cityOpen, firstOpen, groupLgas, onCatalogueChanged, prepareCountryPlaces, stateOfCity, stateOpen, unitOf } from './placesModel.ts'
 import { cr } from './creatorState.ts'
 import { areaForCity, useHomeCity } from './homeCityModel.ts'
 import type { LgaCard } from '../../../types/view.ts'
@@ -34,8 +34,15 @@ const first = (props.choosable ? cr.city : null) ?? (stateOfCity(estate.value.ci
 const stateId = ref(stateOfCity(first)?.id ?? start?.state.id ?? '')
 const city = useHomeCity(first, (ready) => emit('ready', ready), (id) => { cr.city = id; validateArea() })
 const { cityId, readyCityId, loading, error: loadError } = city
-const country = PLACES[0]
-const states = computed(() => country?.states ?? [])
+const countryId = ref('ng')
+const countryNames = ref<readonly {iso2:string; name:string; status:string}[]>([])
+const catalogueVersion = ref(0)
+const unsubscribeCatalogue = onCatalogueChanged(() => { catalogueVersion.value++ })
+const country = computed(() => { catalogueVersion.value; return placesForCountry(countryId.value)[0] })
+const states = computed(() => { catalogueVersion.value; return country.value?.states ?? [] })
+const countryPickerOpen = ref(false)
+async function showCountries(): Promise<void> { countryPickerOpen.value = true; countryNames.value = await availableCountryDirectory() }
+async function chooseCountry(iso2: string): Promise<void> { const countryInfo = countryNames.value.find(item => item.iso2 === iso2); if (!countryInfo || iso2 === 'ng' || countryInfo.status !== 'accepted') return; countryId.value = iso2; await prepareCountryPlaces(iso2); catalogueVersion.value++; stateId.value = states.value[0]?.id ?? ''; const next = states.value.flatMap(state => state.cities).find(city => cityOpen(city.id)); if (next) await pickCity(next.id) }
 const openStates = computed(() => states.value.filter(stateOpen))
 const stateNow = computed(() => states.value.find((item) => item.id === stateId.value) ?? null)
 const openCities = computed(() => (stateNow.value?.cities ?? []).filter((item) => cityOpen(item.id)))
@@ -97,17 +104,19 @@ onMounted(() => {
   if (!props.choosable || readyCityId.value === cityId.value) { validateArea(); emit('ready', true) }
   else void city.select(cityId.value)
 })
-onBeforeUnmount(city.cancel)
+onBeforeUnmount(() => { city.cancel(); unsubscribeCatalogue() })
 </script>
 
 <template>
   <div class="cr-home" data-lga-card>
     <nav class="cr-places" aria-label="Where in the world">
       <ol>
-        <li>{{ country?.name }}</li>
+        <li>{{ country?.name ?? 'Nigeria' }}</li>
         <li v-if="openStates.length <= 1 || !choosable">{{ stateNow?.name }}</li>
         <li v-if="openStates.length <= 1 || !choosable">{{ cityNow?.name }}</li>
       </ol>
+      <button v-if="choosable" type="button" class="cr-chip" data-key="country:choose" @click="showCountries">Choose another country</button>
+      <div v-if="countryPickerOpen" class="cr-chips" role="group" aria-label="Country"><button v-for="item in countryNames.filter(item => item.status === 'accepted')" :key="item.iso2" type="button" class="cr-chip" :aria-pressed="item.iso2 === countryId" @click="chooseCountry(item.iso2)">{{ item.name }}</button></div>
       <div v-if="openStates.length > 1 && choosable" class="cr-chips" role="group" aria-label="State">
         <button v-for="item in openStates" :key="item.id" type="button" class="cr-chip" :aria-pressed="item.id === stateId" @click="pickState(item.id)">{{ item.name }}</button>
       </div>

@@ -21,6 +21,8 @@ import { knownCityIds, cityRules, cityCatalogue, cityCatalogueEntry, loadCityMap
  * legacy   true when the server already keeps lives for this city although it is shown as coming
  *          soon. Only a player who already has such a life is offered it, labelled "Preview".
  */
+import { trustedCityFacts } from '../game/cities/catalogue-provider.ts';
+import { TRUSTED_CITY_FACTS_ROWS } from '../game/cities/trusted-city-facts.generated.ts';
 import type { AfricaGroupId, AtlasLevelId, Box4, CityId, CityPack, CityStatus, ContinentId, Hub, Point2, RegionEntry, RegionKind, RegionStatus, ZoneId } from './types.ts';
 
 /** What a city module's `import()` gives: the pack's parts as named exports, and the same object as `default`. */
@@ -59,16 +61,18 @@ export type CityAccess = 'here' | 'enter' | 'preview' | 'soon';
 
 const cityDescriptor = (id: string): CityEntry | null => {
   const catalogue = cityCatalogueEntry(id);
-  if (!catalogue) return null;
+  const fact = trustedCityFacts(id);
+  if (!catalogue && !fact) return null;
   const rules = cityRules(id);
-  return { id, name: catalogue.name, region: catalogue.state.name, status: catalogue.open ? 'playable' : 'soon',
-    lon: catalogue.lon, lat: catalogue.lat, teaser: rules?.atlas.teaser ?? catalogue.teaser ?? `${catalogue.name}, ${catalogue.state.name}.`,
-    ...((rules?.atlas.preview ?? catalogue.preview) ? { preview: rules?.atlas.preview ?? catalogue.preview } : !catalogue.open ? { preview: [] } : {}),
-    pack: catalogue.open ? async () => (await loadCityMap(id)).loadScene() : null };
+  const name = catalogue?.name ?? fact!.name, stateName = catalogue?.state.name ?? (fact!.countryId === 'ng' ? fact!.countryId : fact!.countryId.toUpperCase());
+  return { id, name, region: catalogue?.state.name ?? stateName, status: fact?.open || catalogue?.open ? 'playable' : 'soon',
+    lon: catalogue?.lon ?? fact!.lon, lat: catalogue?.lat ?? fact!.lat, teaser: rules?.atlas.teaser ?? catalogue?.teaser ?? `${name}, ${stateName}.`,
+    ...((rules?.atlas.preview ?? catalogue?.preview) ? { preview: rules?.atlas.preview ?? catalogue?.preview } : !catalogue?.open ? { preview: [] } : {}),
+    pack: fact?.open || catalogue?.open ? async () => (await loadCityMap(id)).loadScene() : null };
 };
 const nigeriaCities = (): Readonly<Record<string, CityEntry>> => Object.fromEntries(knownCityIds().flatMap(id => {
-  const catalogue = cityCatalogueEntry(id);
-  if (catalogue?.countryISO && catalogue.countryISO !== 'ng') return [];
+  const catalogue = cityCatalogueEntry(id), fact = trustedCityFacts(id);
+  if ((catalogue?.countryISO && catalogue.countryISO !== 'ng') || (fact && fact.countryId !== 'ng')) return [];
   const city = cityDescriptor(id); return city ? [[id, city]] : [];
 }));
 
@@ -107,9 +111,9 @@ export const citiesOf = (countryId: string) => countryId === 'nigeria' || countr
   ? Object.values(nigeriaCities())
   : Object.values(foreignCountries().find(country => country.id === countryId)?.cities ?? {});
 export function cityEntry(cityId: string): CityRecord | null {
-  const city = cityDescriptor(cityId), catalogue = cityCatalogueEntry(cityId);
-  if (!city || !catalogue) return null;
-  return { ...city, country: catalogue.countryISO && catalogue.countryISO !== 'ng' ? catalogue.countryISO : COUNTRIES.nigeria.id, countryName: catalogue.countryName ?? COUNTRIES.nigeria.name };
+  const city = cityDescriptor(cityId), catalogue = cityCatalogueEntry(cityId), fact = trustedCityFacts(cityId);
+  if (!city || (!catalogue && !fact)) return null;
+  return { ...city, country: fact?.countryId && fact.countryId !== 'ng' ? fact.countryId : COUNTRIES.nigeria.id, countryName: catalogue?.countryName ?? (fact?.countryId === 'ng' ? COUNTRIES.nigeria.name : fact?.countryId.toUpperCase() ?? COUNTRIES.nigeria.name) };
 }
 export const isPlayable = (cityId: string) => cityEntry(cityId)?.status === 'playable';
 /** Does this city have a 3D pack? Without one the city map falls back to the 2D schematic. */
@@ -259,7 +263,8 @@ export function regionEntry(kind: RegionKind, id: string): RegionInfo {
     return { ...entry, ...(city ? { city: city.id } : {}), status: open ? 'open' : city ? 'planned' : entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };
   }
   if (kind === 'country' && id !== 'ng') {
-    const open = cityCatalogue().find(city => city.countryISO === id && city.open);
+    const fact = TRUSTED_CITY_FACTS_ROWS.find(row => row[3] === id);
+    const open = fact ? { id: fact[0], countryName: id.toUpperCase(), name: fact[1] } : undefined;
     if (open) return { ...entry, status: 'open', city: open.id, teaser: entry?.teaser ?? `${open.countryName ?? id} is open through ${open.name}.` };
   }
   return { ...entry, status: entry && 'status' in entry ? entry.status as RegionStatus : 'soon' };

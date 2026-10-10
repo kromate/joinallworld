@@ -36,6 +36,7 @@ const GENERATED_CITY_CATALOGUE: readonly CityCatalogueEntry[] = Object.freeze(GE
   id, name, state: Object.freeze({ id: stateId, name: stateName }), lon, lat, open: true, airport: airport === 1,
   ...(countryISO ? { countryISO, countryName } : {}),
 })))
+export const RESERVED_CITY_CATALOGUE = Object.freeze(RESERVED_CITIES)
 export const CITY_CATALOGUE: readonly CityCatalogueEntry[] = Object.freeze([
   ...GENERATED_CITY_CATALOGUE.slice(0, 4),
   ...RESERVED_CITIES.filter(city => !GENERATED_CITY_CATALOGUE.some(open => open.id === city.id)),

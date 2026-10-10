@@ -41,6 +41,7 @@ import { cachedCityContent, loadCityContent, loadCityRoutes, loadCityMap, loadSt
  */
 import * as THREE from 'three';
 import { allCityLinks } from '../../game/cities/registry.ts';
+import { prepareCountryCatalogue } from '../../game/cities/catalogue-provider.ts';
 import type { AfricaGroupId, Box4, RegionKind } from '../types.ts';
 import { createRig } from '../camera.ts';
 import { createFlick, isDrag, isTap } from '../../scene/gesture.ts';
@@ -1056,6 +1057,7 @@ export function createAtlas(container: HTMLElement, { onFriend = () => {}, onOpe
   function select(ref: RegionRef | null, { from = 'map', flyTo = false }: SelectOptions = {}): boolean {
     const hit = find(ref);
     if (!same(hit, selected)) { countryDetailModel?.mapSelectionChanged(); sheetOpen = false; selectedCity = null; overviewLink = null; confirming = null; creditAsk = false; }
+    if (hit?.kind === 'country' && hit.id !== 'ng' && regionEntry('country', hit.id).status === 'open') void prepareCountryCatalogue(hit.id).then(() => { drawSheet(); request(); }, () => {});
     if (preview && reducedMotion) preview = null; // the still preview lasts until something else is chosen
     selected = hit ? { kind: hit.kind, id: hit.id } : null;
     const city = hit ? infoOf(hit).city : null;

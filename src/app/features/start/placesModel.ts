@@ -3,6 +3,7 @@
 // is (CITY_RULES), and its local governments come from the life's view (estate.lgas), which is
 // what the server validates. Places that are not open yet are listed as coming, never as dead controls.
 import { cityCatalogue, cityCatalogueEntry, cityRules, isOpenCityId } from '../../../game/cities/registry.ts'
+import { trustedCityFacts, prepareCountryCatalogue, countryDirectory, subscribeCatalogueChanges } from '../../../game/cities/catalogue-provider.ts'
 import type { LgaCard } from '../../../types/view.ts'
 
 export interface CityPlace { id: string; name: string }
@@ -25,7 +26,12 @@ export function placesFrom(cityIds: readonly string[]): readonly CountryPlace[] 
   }
   return [{ id: 'nigeria', name: 'Nigeria', states: [...states.values()] }]
 }
-export const PLACES: readonly CountryPlace[] = placesFrom(cityCatalogue().map((city) => city.id))
+export const PLACES: readonly CountryPlace[] = placesFrom(cityCatalogue().filter(city => !city.countryISO || city.countryISO === 'ng').map((city) => city.id))
+export const placesForCountry = (countryId: string): CountryPlace[] => { const rows=cityCatalogue().filter(city => (countryId==='ng' ? !city.countryISO || city.countryISO==='ng' : city.countryISO===countryId)); return [{id:countryId==='ng'?'nigeria':countryId,name:rows.find(row=>row.countryName)?.countryName ?? (countryId==='ng'?'Nigeria':countryId.toUpperCase()),states:placesFrom(rows.map(row=>row.id))[0]?.states ?? []}] }
+export const prepareCountryPlaces = prepareCountryCatalogue
+export const availableCountryDirectory = countryDirectory
+export const onCatalogueChanged = subscribeCatalogueChanges
+export const trustedOpenCountries = () => [...new Set([...PLACES.map(() => 'ng'), ...cityCatalogue().flatMap(city => { const fact=trustedCityFacts(city.id); return fact && fact.countryId !== 'ng' ? [fact.countryId] : [] })])]
 
 /** Whether lives can be lived in this city today. */
 export const cityOpen = (cityId: string): boolean => isOpenCityId(cityId)

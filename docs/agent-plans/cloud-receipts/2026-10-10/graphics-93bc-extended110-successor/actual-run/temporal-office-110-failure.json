@@ -1,0 +1,36 @@
+{
+  "status": "failed",
+  "message": "Extended temporal fixture checks failed: {\"readyRealOffice\":true,\"exactOfferedPlayerActionsCompletedSerially\":true,\"actualPlayerModeAndPoseRestored\":true,\"atLeast110NaturalActiveSamplesAndBeyondSourceClipDuration\":true,\"fullShoeGeometryPassAtEveryCapturedNpcFrame\":true,\"synchronizedJawMovesAndRestores\":true,\"actualBlinkPulseAndBaselineRestore\":false,\"sourceArmLandmarksMoveDuringRealAction\":true,\"measuredVenuePoseContactAndExpressionCalls\":false,\"directPixelMotionAndVisibleActor\":true,\"consoleClean\":true}",
+  "elapsedMs": 75314,
+  "lastObservedActionState": {
+    "npcId": "dapo",
+    "targetFrame": 108,
+    "observedAtElapsedMs": 68390,
+    "progress": {
+      "npcId": "dapo",
+      "frame": 108,
+      "sourceSeconds": 3.6,
+      "stepMs": 8.300000004470348,
+      "drawMs": 91.19999999552965,
+      "frameWorkMs": 99.5
+    },
+    "done": false,
+    "error": null,
+    "interaction": {
+      "npcId": "dapo",
+      "activityId": "npc-dapo-hello",
+      "label": "Say Hello",
+      "started": {
+        "ok": true,
+        "code": "started"
+      },
+      "completed": false,
+      "npcPoseDuringInteraction": "interact",
+      "npcPoseAfterCompletion": null,
+      "npcPoseLifecyclePass": false,
+      "talkLoopStarted": true
+    }
+  },
+  "chromeStderr": "[171718:171748:1010/042353.113941:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[171718:171748:1010/042353.118277:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171748:1010/042353.118885:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[171718:171748:1010/042353.118936:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[171718:171748:1010/042353.118942:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171748:1010/042353.131379:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171748:1010/042353.168554:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171718:1010/042353.182398:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[171718:171718:1010/042353.182475:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[171718:171748:1010/042353.182500:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171748:1010/042353.182514:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171718:1010/042353.182623:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n\nDevTools listening on ws://127.0.0.1:34601/devtools/browser/fe62991f-f3e5-48b3-b284-7e909f3af1ec\n[171718:171718:1010/042353.194170:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[171718:171718:1010/042353.196290:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[171718:171718:1010/042353.197063:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[171718:171748:1010/042353.197064:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[171718:171748:1010/042353.197082:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory\n[171718:171748:1010/042353.197358:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171718:1010/042353.295007:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: unknown error type: \n[171718:171718:1010/042353.295135:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[171718:171748:1010/042353.295328:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171718:1010/042353.318213:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n[171718:171748:1010/042353.318367:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are \"tcp\" and on UNIX \"unix\")\n[171718:171718:1010/042353.333538:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: \n",
+  "consoleErrors": []
+}

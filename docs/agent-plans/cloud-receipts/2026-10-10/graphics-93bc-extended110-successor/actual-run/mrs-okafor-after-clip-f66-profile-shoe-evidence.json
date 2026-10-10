@@ -1,0 +1,1750 @@
+{
+  "npcId": "mrs-okafor",
+  "phase": "live-frame-66",
+  "footBoneMatrices": {
+    "mixamorigLeftFoot": {
+      "matrixWorld": [
+        1.5413809087433525,
+        -0.1093683274299518,
+        -0.00965546443122041,
+        0,
+        0.09976629636441937,
+        1.451918960907613,
+        -0.5195072491730763,
+        0,
+        0.045840431367239046,
+        0.5175709273025529,
+        1.4553105355696199,
+        0,
+        5.366733560828403,
+        0.15548505196785078,
+        -4.684112417380602,
+        1
+      ],
+      "position": [
+        0.02974666666666667,
+        -0.37754000000000015,
+        -0.01772666666666666
+      ],
+      "quaternion": [
+        -0.3313491587799095,
+        -0.011301583745183367,
+        0.017799109707253097,
+        0.9432726015708959
+      ],
+      "quaternionNorm": 0.9999999999999999,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "mixamorigLeftToeBase": {
+      "matrixWorld": [
+        1.5413809087433525,
+        -0.1093683274299518,
+        -0.00965546443122041,
+        0,
+        0.09976629636441937,
+        1.451918960907613,
+        -0.5195072491730763,
+        0,
+        0.045840431367239046,
+        0.5175709273025529,
+        1.4553105355696199,
+        0,
+        5.366733560828403,
+        0.15548505196785073,
+        -4.481728972077622,
+        1
+      ],
+      "position": [
+        -0.0008183333333333376,
+        -0.0440299999999999,
+        0.12334250000000002
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "quaternionNorm": 1,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "mixamorigRightFoot": {
+      "matrixWorld": [
+        1.5414382880368704,
+        0.1085566260403808,
+        0.009655464431220407,
+        0,
+        -0.09900170667997628,
+        1.4519712962065627,
+        -0.5195072491730771,
+        0,
+        -0.04556787382691433,
+        0.5175949949638756,
+        1.4553105355696199,
+        0,
+        5.045565749524399,
+        0.15673606968114684,
+        -4.683937925705759,
+        1
+      ],
+      "position": [
+        -0.02974666666666667,
+        -0.37754000000000015,
+        -0.01772666666666666
+      ],
+      "quaternion": [
+        -0.3218646119366419,
+        0.008617504487474616,
+        -0.01860363263519322,
+        0.9465636877949936
+      ],
+      "quaternionNorm": 1,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "mixamorigRightToeBase": {
+      "matrixWorld": [
+        1.5414382880368704,
+        0.1085566260403808,
+        0.009655464431220407,
+        0,
+        -0.09900170667997628,
+        1.4519712962065627,
+        -0.5195072491730771,
+        0,
+        -0.04556787382691433,
+        0.5175949949638756,
+        1.4553105355696199,
+        0,
+        5.045565749524399,
+        0.1567360696811469,
+        -4.48155448040278,
+        1
+      ],
+      "position": [
+        0.0008183333333333376,
+        -0.0440299999999999,
+        0.12334250000000002
+      ],
+      "quaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "quaternionNorm": 1,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "sampleFrame": "post-placement current native skinned-shoe geometry and actor matrices",
+  "nativeVenueFootContactSolve": {
+    "attempts": 70,
+    "pose": "interact",
+    "status": "pass",
+    "reason": null,
+    "contactSides": [
+      "left",
+      "right"
+    ],
+    "sampledPointCount": 144,
+    "targetClearanceMeters": 0.016,
+    "corrected": 2,
+    "maxError": 0.00018294773277077736,
+    "limited": false,
+    "physicalOraclePass": true,
+    "sides": [
+      {
+        "side": "left",
+        "candidateCount": 80,
+        "coverageComplete": true,
+        "nearestAbsolutePhysicalGap": 0.00018294773277077736,
+        "minimumSignedPhysicalGap": -0.00018294773277077736,
+        "physicalVerticalCorrection": 0.00018294773277077736,
+        "physicalRequestedAnkleReach": 1.0701022687239001,
+        "maximumRequestedLegReach": 1.1596266685881949,
+        "withinReach": true,
+        "withinPhysicalTolerance": true,
+        "postSolveActualAnkleReach": 1.0739967653989897,
+        "postSolveMaximumLegReach": 1.159626668588195
+      },
+      {
+        "side": "right",
+        "candidateCount": 64,
+        "coverageComplete": true,
+        "nearestAbsolutePhysicalGap": 0.00003505790183970514,
+        "minimumSignedPhysicalGap": -0.00003505790183970514,
+        "physicalVerticalCorrection": 0.00003505790183970514,
+        "physicalRequestedAnkleReach": 1.0889090324984418,
+        "maximumRequestedLegReach": 1.1596266685881953,
+        "withinReach": true,
+        "withinPhysicalTolerance": true,
+        "postSolveActualAnkleReach": 1.0827655066249293,
+        "postSolveMaximumLegReach": 1.1596266685881949
+      }
+    ]
+  },
+  "contactCallback": "SceneEntry.walk.contactHeightAt",
+  "contactTargetClearanceMeters": 0.016,
+  "sides": [
+    {
+      "side": "left",
+      "authoredFootVertexMinY": -0.003431889461353421,
+      "soleCandidateCount": 80,
+      "actualLowestSoleY": 0.06981705256525245,
+      "supportBandMeters": 0.0025,
+      "deformedSoleCandidateCount": 80,
+      "lowSoleSupportBandCount": 2,
+      "lowSoleSupportBand": [
+        {
+          "vertex": 443,
+          "x": 5.336975341276815,
+          "y": 0.06981705256525245,
+          "z": -4.532654123391012,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.016182947732770778,
+          "gapToSceneFloor": -0.00018294773277077736
+        },
+        {
+          "vertex": 445,
+          "x": 5.318228485547214,
+          "y": 0.0711976545503216,
+          "z": -4.507413703597971,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.014802345747701617,
+          "gapToSceneFloor": 0.001197654252298383
+        }
+      ],
+      "deformedSoleSamples": [
+        {
+          "vertex": 52,
+          "x": 5.4504559433580875,
+          "y": 0.0990857778564786,
+          "z": -4.505553172120267,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.013085777558455372,
+          "gapToSceneFloor": 0.029085777558455372
+        },
+        {
+          "vertex": 53,
+          "x": 5.452706933122119,
+          "y": 0.0890202801902315,
+          "z": -4.531488124205767,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.00302027989220828,
+          "gapToSceneFloor": 0.01902027989220828
+        },
+        {
+          "vertex": 54,
+          "x": 5.4533087634759685,
+          "y": 0.08219084354495543,
+          "z": -4.556803337833197,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0038091567530677967,
+          "gapToSceneFloor": 0.012190843246932204
+        },
+        {
+          "vertex": 60,
+          "x": 5.451726959733649,
+          "y": 0.07781618633402644,
+          "z": -4.579200334368044,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.008183813963996783,
+          "gapToSceneFloor": 0.007816186036003217
+        },
+        {
+          "vertex": 61,
+          "x": 5.447812361142669,
+          "y": 0.07581203112089521,
+          "z": -4.600929682699224,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.010187969177128012,
+          "gapToSceneFloor": 0.005812030822871989
+        },
+        {
+          "vertex": 124,
+          "x": 5.442852335929747,
+          "y": 0.1271620263525053,
+          "z": -4.460540100719145,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.04116202605448206,
+          "gapToSceneFloor": 0.05716202605448206
+        },
+        {
+          "vertex": 130,
+          "x": 5.446989848031908,
+          "y": 0.11220936671588808,
+          "z": -4.481776559730419,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.02620936641786485,
+          "gapToSceneFloor": 0.04220936641786485
+        },
+        {
+          "vertex": 132,
+          "x": 5.300589030101642,
+          "y": 0.07848147808784615,
+          "z": -4.4853963368171215,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.00751852221017707,
+          "gapToSceneFloor": 0.00848147778982293
+        },
+        {
+          "vertex": 133,
+          "x": 5.3003654270031655,
+          "y": 0.07474743451452834,
+          "z": -4.483171699371617,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.011252565783494886,
+          "gapToSceneFloor": 0.004747434216505114
+        },
+        {
+          "vertex": 134,
+          "x": 5.305368609128648,
+          "y": 0.09373640302781625,
+          "z": -4.4562598622498335,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.007736402729793021,
+          "gapToSceneFloor": 0.02373640272979302
+        },
+        {
+          "vertex": 135,
+          "x": 5.3055485197302295,
+          "y": 0.09592873744116227,
+          "z": -4.459735661924759,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.00992873714313905,
+          "gapToSceneFloor": 0.02592873714313905
+        },
+        {
+          "vertex": 136,
+          "x": 5.305753725509482,
+          "y": 0.09833727431028262,
+          "z": -4.462967051458506,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.012337274012259397,
+          "gapToSceneFloor": 0.028337274012259397
+        },
+        {
+          "vertex": 138,
+          "x": 5.3135683895322865,
+          "y": 0.11986796405529741,
+          "z": -4.434861204157473,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03386796375727419,
+          "gapToSceneFloor": 0.04986796375727419
+        },
+        {
+          "vertex": 139,
+          "x": 5.313530672001669,
+          "y": 0.11907756131097048,
+          "z": -4.430492916516825,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03307756101294726,
+          "gapToSceneFloor": 0.04907756101294726
+        },
+        {
+          "vertex": 140,
+          "x": 5.324294579567161,
+          "y": 0.14668791356891236,
+          "z": -4.409446302521575,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.06068791327088914,
+          "gapToSceneFloor": 0.07668791327088914
+        },
+        {
+          "vertex": 141,
+          "x": 5.3242305195252575,
+          "y": 0.1465090019590303,
+          "z": -4.414361136447157,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.060509001661007075,
+          "gapToSceneFloor": 0.07650900166100708
+        },
+        {
+          "vertex": 143,
+          "x": 5.313665010449037,
+          "y": 0.12101579535590473,
+          "z": -4.438851981870334,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03501579505788151,
+          "gapToSceneFloor": 0.05101579505788151
+        },
+        {
+          "vertex": 291,
+          "x": 5.398411609240851,
+          "y": 0.08190004992777257,
+          "z": -4.530455303434765,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0040999503702506546,
+          "gapToSceneFloor": 0.011900049629749346
+        },
+        {
+          "vertex": 292,
+          "x": 5.377900617621751,
+          "y": 0.07834909447344512,
+          "z": -4.530893399683651,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0076509058245781,
+          "gapToSceneFloor": 0.0083490941754219
+        },
+        {
+          "vertex": 293,
+          "x": 5.376932844851742,
+          "y": 0.07339350530932875,
+          "z": -4.556124686462715,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.01260649498869447,
+          "gapToSceneFloor": 0.003393505011305531
+        },
+        {
+          "vertex": 294,
+          "x": 5.39736067308471,
+          "y": 0.07617636021200952,
+          "z": -4.55589159168578,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.009823640086013705,
+          "gapToSceneFloor": 0.006176359913986296
+        },
+        {
+          "vertex": 295,
+          "x": 5.416980261226761,
+          "y": 0.07851588360690932,
+          "z": -4.555968526550212,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.007484116691113901,
+          "gapToSceneFloor": 0.008515883308886099
+        },
+        {
+          "vertex": 296,
+          "x": 5.418001696692484,
+          "y": 0.08487694598164197,
+          "z": -4.530399833619265,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0011230543163812529,
+          "gapToSceneFloor": 0.014876945683618747
+        },
+        {
+          "vertex": 297,
+          "x": 5.418449604417285,
+          "y": 0.09538495968341612,
+          "z": -4.503180233965926,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.009384959385392896,
+          "gapToSceneFloor": 0.025384959385392897
+        },
+        {
+          "vertex": 298,
+          "x": 5.399631946899123,
+          "y": 0.09206976455611546,
+          "z": -4.503136102654208,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.006069764258092233,
+          "gapToSceneFloor": 0.022069764258092234
+        },
+        {
+          "vertex": 299,
+          "x": 5.37952330888982,
+          "y": 0.08786418688746538,
+          "z": -4.503695261156027,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0018641865894421517,
+          "gapToSceneFloor": 0.017864186589442152
+        },
+        {
+          "vertex": 300,
+          "x": 5.435804121215236,
+          "y": 0.08717127279925664,
+          "z": -4.530810613562082,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0011712725012334169,
+          "gapToSceneFloor": 0.017171272501233417
+        },
+        {
+          "vertex": 301,
+          "x": 5.435444393442484,
+          "y": 0.08049516496331983,
+          "z": -4.5562880504216885,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.00550483533470339,
+          "gapToSceneFloor": 0.01049516466529661
+        },
+        {
+          "vertex": 302,
+          "x": 5.435015835094663,
+          "y": 0.09755996797341854,
+          "z": -4.504139681884374,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.011559967675395313,
+          "gapToSceneFloor": 0.027559967675395314
+        },
+        {
+          "vertex": 303,
+          "x": 5.397174159091733,
+          "y": 0.07333884830206609,
+          "z": -4.578090429339051,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.012661151995957132,
+          "gapToSceneFloor": 0.0033388480040428686
+        },
+        {
+          "vertex": 307,
+          "x": 5.415913854565031,
+          "y": 0.07420834997609048,
+          "z": -4.60044993139176,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.011791650321932745,
+          "gapToSceneFloor": 0.004208349678067255
+        },
+        {
+          "vertex": 308,
+          "x": 5.4164181487483,
+          "y": 0.07500951134201828,
+          "z": -4.578261502670092,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.010990488956004948,
+          "gapToSceneFloor": 0.005009511043995052
+        },
+        {
+          "vertex": 309,
+          "x": 5.43440617214926,
+          "y": 0.07647615457406244,
+          "z": -4.578638427000755,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.009523845723960783,
+          "gapToSceneFloor": 0.006476154276039217
+        },
+        {
+          "vertex": 310,
+          "x": 5.4327871945731125,
+          "y": 0.07516761466932415,
+          "z": -4.600957884558543,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.010832385628699079,
+          "gapToSceneFloor": 0.0051676143713009215
+        },
+        {
+          "vertex": 331,
+          "x": 5.401265794992056,
+          "y": 0.14483760523482958,
+          "z": -4.4267649151349655,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.058837604936806356,
+          "gapToSceneFloor": 0.07483760493680636
+        },
+        {
+          "vertex": 332,
+          "x": 5.385950534630634,
+          "y": 0.14627584379750583,
+          "z": -4.42353311430906,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.060275843499482604,
+          "gapToSceneFloor": 0.0762758434994826
+        },
+        {
+          "vertex": 333,
+          "x": 5.38383486996616,
+          "y": 0.12457798737548251,
+          "z": -4.448409629488306,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03857798707745928,
+          "gapToSceneFloor": 0.05457798707745928
+        },
+        {
+          "vertex": 334,
+          "x": 5.4009258558561735,
+          "y": 0.12851350847690973,
+          "z": -4.44865850035151,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.04251350817888651,
+          "gapToSceneFloor": 0.05851350817888651
+        },
+        {
+          "vertex": 335,
+          "x": 5.415611915392807,
+          "y": 0.1301373613744064,
+          "z": -4.450632199384829,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.04413736107638318,
+          "gapToSceneFloor": 0.06013736107638318
+        },
+        {
+          "vertex": 336,
+          "x": 5.414092935194021,
+          "y": 0.14286646785433943,
+          "z": -4.431179217420542,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.056866467556316205,
+          "gapToSceneFloor": 0.0728664675563162
+        },
+        {
+          "vertex": 338,
+          "x": 5.429446095914828,
+          "y": 0.12924941082549904,
+          "z": -4.455003238860657,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.043249410527475815,
+          "gapToSceneFloor": 0.059249410527475815
+        },
+        {
+          "vertex": 339,
+          "x": 5.400284396123393,
+          "y": 0.1076258429790735,
+          "z": -4.47561085900164,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.021625842681050278,
+          "gapToSceneFloor": 0.03762584268105028
+        },
+        {
+          "vertex": 340,
+          "x": 5.381518175385697,
+          "y": 0.10317305369546208,
+          "z": -4.4760410892413285,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.017173053397438853,
+          "gapToSceneFloor": 0.033173053397438854
+        },
+        {
+          "vertex": 341,
+          "x": 5.417215935515409,
+          "y": 0.11063344861331681,
+          "z": -4.476276220371187,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.024633448315293585,
+          "gapToSceneFloor": 0.040633448315293585
+        },
+        {
+          "vertex": 342,
+          "x": 5.432512233206289,
+          "y": 0.11188723640941108,
+          "z": -4.478595944813244,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.02588723611138785,
+          "gapToSceneFloor": 0.04188723611138785
+        },
+        {
+          "vertex": 419,
+          "x": 5.33641548286275,
+          "y": 0.16335540821933978,
+          "z": -4.403828511498844,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07735540792131655,
+          "gapToSceneFloor": 0.09335540792131655
+        },
+        {
+          "vertex": 420,
+          "x": 5.335932406025017,
+          "y": 0.15719004930380515,
+          "z": -4.40113468458265,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07119004900578192,
+          "gapToSceneFloor": 0.08719004900578192
+        },
+        {
+          "vertex": 421,
+          "x": 5.35010151658645,
+          "y": 0.15768655209211382,
+          "z": -4.400249324764085,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0716865517940906,
+          "gapToSceneFloor": 0.0876865517940906
+        },
+        {
+          "vertex": 426,
+          "x": 5.368525223699032,
+          "y": 0.15709670000269207,
+          "z": -4.401629032684213,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07109669970466885,
+          "gapToSceneFloor": 0.08709669970466885
+        },
+        {
+          "vertex": 443,
+          "x": 5.336975341276815,
+          "y": 0.06981705256525245,
+          "z": -4.532654123391012,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.016182947732770778,
+          "gapToSceneFloor": -0.00018294773277077736
+        },
+        {
+          "vertex": 444,
+          "x": 5.338523407761056,
+          "y": 0.07754390204341165,
+          "z": -4.505725248045268,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.008456098254611577,
+          "gapToSceneFloor": 0.007543901745388423
+        },
+        {
+          "vertex": 445,
+          "x": 5.318228485547214,
+          "y": 0.0711976545503216,
+          "z": -4.507413703597971,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.014802345747701617,
+          "gapToSceneFloor": 0.001197654252298383
+        },
+        {
+          "vertex": 446,
+          "x": 5.357327256008678,
+          "y": 0.07431575365163615,
+          "z": -4.531613042652035,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.011684246646387078,
+          "gapToSceneFloor": 0.004315753353612922
+        },
+        {
+          "vertex": 448,
+          "x": 5.359054566663231,
+          "y": 0.08307389387565023,
+          "z": -4.504529982665146,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0029261064223729955,
+          "gapToSceneFloor": 0.013073893577627005
+        },
+        {
+          "vertex": 470,
+          "x": 5.328635889342253,
+          "y": 0.12882599341584106,
+          "z": -4.426372400610898,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.04282599311781783,
+          "gapToSceneFloor": 0.05882599311781783
+        },
+        {
+          "vertex": 471,
+          "x": 5.322564684696469,
+          "y": 0.10182774541955743,
+          "z": -4.453610708817483,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.015827745121534204,
+          "gapToSceneFloor": 0.031827745121534204
+        },
+        {
+          "vertex": 472,
+          "x": 5.341262766667795,
+          "y": 0.11037608546246597,
+          "z": -4.451060307096612,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.024376085164442743,
+          "gapToSceneFloor": 0.04037608516444274
+        },
+        {
+          "vertex": 473,
+          "x": 5.34562911569554,
+          "y": 0.1386541966687087,
+          "z": -4.422853491149622,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.05265419637068548,
+          "gapToSceneFloor": 0.06865419637068548
+        },
+        {
+          "vertex": 474,
+          "x": 5.366301592406885,
+          "y": 0.14710133710702364,
+          "z": -4.4210055277454785,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.061101336809000414,
+          "gapToSceneFloor": 0.07710133680900041
+        },
+        {
+          "vertex": 475,
+          "x": 5.3628338212829645,
+          "y": 0.11837075905286722,
+          "z": -4.449202050268594,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03237075875484399,
+          "gapToSceneFloor": 0.04837075875484399
+        },
+        {
+          "vertex": 476,
+          "x": 5.319586341366308,
+          "y": 0.08320823102106657,
+          "z": -4.480589327518093,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0027917692769566516,
+          "gapToSceneFloor": 0.013208230723043349
+        },
+        {
+          "vertex": 477,
+          "x": 5.339435675721518,
+          "y": 0.09069612362759592,
+          "z": -4.478570196790795,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.004696123329572699,
+          "gapToSceneFloor": 0.0206961233295727
+        },
+        {
+          "vertex": 478,
+          "x": 5.360662803517116,
+          "y": 0.09749213276040246,
+          "z": -4.477022896525309,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.011492132462379234,
+          "gapToSceneFloor": 0.027492132462379235
+        },
+        {
+          "vertex": 648,
+          "x": 5.30971538394179,
+          "y": 0.09787990751927991,
+          "z": -4.467041862749577,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.011879907221256689,
+          "gapToSceneFloor": 0.02787990722125669
+        },
+        {
+          "vertex": 649,
+          "x": 5.313804021604015,
+          "y": 0.09879762638839547,
+          "z": -4.470593873270775,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.012797626090372244,
+          "gapToSceneFloor": 0.028797626090372244
+        },
+        {
+          "vertex": 668,
+          "x": 5.316772446280994,
+          "y": 0.1187466860802894,
+          "z": -4.4440330329180915,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03274668578226618,
+          "gapToSceneFloor": 0.04874668578226618
+        },
+        {
+          "vertex": 759,
+          "x": 5.305368609128648,
+          "y": 0.09373640302781625,
+          "z": -4.4562598622498335,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.007736402729793021,
+          "gapToSceneFloor": 0.02373640272979302
+        },
+        {
+          "vertex": 760,
+          "x": 5.3003654270031655,
+          "y": 0.07474743451452834,
+          "z": -4.483171699371617,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.011252565783494886,
+          "gapToSceneFloor": 0.004747434216505114
+        },
+        {
+          "vertex": 762,
+          "x": 5.368525223699032,
+          "y": 0.15709670000269207,
+          "z": -4.401629032684213,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07109669970466885,
+          "gapToSceneFloor": 0.08709669970466885
+        },
+        {
+          "vertex": 763,
+          "x": 5.35010151658645,
+          "y": 0.15768655209211382,
+          "z": -4.400249324764085,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0716865517940906,
+          "gapToSceneFloor": 0.0876865517940906
+        },
+        {
+          "vertex": 765,
+          "x": 5.313530672001669,
+          "y": 0.11907756131097048,
+          "z": -4.430492916516825,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03307756101294726,
+          "gapToSceneFloor": 0.04907756101294726
+        },
+        {
+          "vertex": 766,
+          "x": 5.335932406025017,
+          "y": 0.15719004930380515,
+          "z": -4.40113468458265,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07119004900578192,
+          "gapToSceneFloor": 0.08719004900578192
+        },
+        {
+          "vertex": 767,
+          "x": 5.324294579567161,
+          "y": 0.14668791356891236,
+          "z": -4.409446302521575,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.06068791327088914,
+          "gapToSceneFloor": 0.07668791327088914
+        },
+        {
+          "vertex": 774,
+          "x": 5.447812361142669,
+          "y": 0.07581203112089521,
+          "z": -4.600929682699224,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.010187969177128012,
+          "gapToSceneFloor": 0.005812030822871989
+        },
+        {
+          "vertex": 787,
+          "x": 5.4504559433580875,
+          "y": 0.0990857778564786,
+          "z": -4.505553172120267,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.013085777558455372,
+          "gapToSceneFloor": 0.029085777558455372
+        },
+        {
+          "vertex": 788,
+          "x": 5.446989848031908,
+          "y": 0.11220936671588808,
+          "z": -4.481776559730419,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.02620936641786485,
+          "gapToSceneFloor": 0.04220936641786485
+        },
+        {
+          "vertex": 789,
+          "x": 5.442852335929747,
+          "y": 0.1271620263525053,
+          "z": -4.460540100719145,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.04116202605448206,
+          "gapToSceneFloor": 0.05716202605448206
+        },
+        {
+          "vertex": 795,
+          "x": 5.451726959733649,
+          "y": 0.07781618633402644,
+          "z": -4.579200334368044,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.008183813963996783,
+          "gapToSceneFloor": 0.007816186036003217
+        },
+        {
+          "vertex": 796,
+          "x": 5.4533087634759685,
+          "y": 0.08219084354495543,
+          "z": -4.556803337833197,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0038091567530677967,
+          "gapToSceneFloor": 0.012190843246932204
+        },
+        {
+          "vertex": 797,
+          "x": 5.452706933122119,
+          "y": 0.0890202801902315,
+          "z": -4.531488124205767,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.00302027989220828,
+          "gapToSceneFloor": 0.01902027989220828
+        }
+      ],
+      "callbackSupportCoverage": "80/80",
+      "callbackSupportCoverageComplete": true,
+      "nonFiniteSampleCount": 0,
+      "callbackNonFiniteSampleCount": 0,
+      "maxAbsoluteGapToSceneFloor": 0.09335540792131655,
+      "nearestAbsoluteGapToSceneFloor": 0.00018294773277077736,
+      "minimumSignedGapToSceneFloor": -0.00018294773277077736,
+      "withinFourMillimetersOfSceneFloor": true,
+      "nativeLegReach": {
+        "upperLength": 0.5737704365889572,
+        "lowerLength": 0.5858562319992379,
+        "actualAnkleReach": 1.0739967653989897,
+        "physicalVerticalCorrection": 0.00018294773277077736,
+        "physicalRequestedAnkleReach": 1.0738138355365459,
+        "callbackVerticalCorrection": 0.016182947732770778,
+        "callbackRequestedAnkleReach": 1.0578154223243652,
+        "maximumLegReach": 1.159626668588195,
+        "withinReach": true
+      }
+    },
+    {
+      "side": "right",
+      "authoredFootVertexMinY": -0.003431889461353421,
+      "soleCandidateCount": 64,
+      "actualLowestSoleY": 0.06996494239618352,
+      "supportBandMeters": 0.0025,
+      "deformedSoleCandidateCount": 64,
+      "lowSoleSupportBandCount": 2,
+      "lowSoleSupportBand": [
+        {
+          "vertex": 1089,
+          "x": 5.015524754987452,
+          "y": 0.06996494239618352,
+          "z": -4.537993070323146,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.016035057901839705,
+          "gapToSceneFloor": -0.00003505790183970514
+        },
+        {
+          "vertex": 1093,
+          "x": 4.99607606495781,
+          "y": 0.07133690587167116,
+          "z": -4.538963442080059,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.014663094426352066,
+          "gapToSceneFloor": 0.001336905573647934
+        }
+      ],
+      "deformedSoleSamples": [
+        {
+          "vertex": 849,
+          "x": 4.961503883324292,
+          "y": 0.07382791293885821,
+          "z": -4.5411735150273325,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.012172087359165015,
+          "gapToSceneFloor": 0.003827912640834985
+        },
+        {
+          "vertex": 850,
+          "x": 4.963501469986684,
+          "y": 0.08528355942101,
+          "z": -4.513392375548092,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0007164408770132247,
+          "gapToSceneFloor": 0.015283559122986776
+        },
+        {
+          "vertex": 923,
+          "x": 4.969763952687422,
+          "y": 0.12522227646133752,
+          "z": -4.461754935206582,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03922227616331429,
+          "gapToSceneFloor": 0.05522227616331429
+        },
+        {
+          "vertex": 928,
+          "x": 4.966435927788977,
+          "y": 0.10273354032465402,
+          "z": -4.486716216690881,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0167335400266308,
+          "gapToSceneFloor": 0.0327335400266308
+        },
+        {
+          "vertex": 930,
+          "x": 5.11161473086568,
+          "y": 0.0854204115077195,
+          "z": -4.482084959643966,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0005795887903037311,
+          "gapToSceneFloor": 0.01542041120969627
+        },
+        {
+          "vertex": 931,
+          "x": 5.111856349418727,
+          "y": 0.08118785837844206,
+          "z": -4.4799333059395465,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.004812141919581167,
+          "gapToSceneFloor": 0.011187858080418833
+        },
+        {
+          "vertex": 932,
+          "x": 5.1068153280082695,
+          "y": 0.10057165939166296,
+          "z": -4.457718644887312,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.014571659093639736,
+          "gapToSceneFloor": 0.030571659093639736
+        },
+        {
+          "vertex": 933,
+          "x": 5.107013952120069,
+          "y": 0.097824935447647,
+          "z": -4.45441481749158,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.01182493514962378,
+          "gapToSceneFloor": 0.02782493514962378
+        },
+        {
+          "vertex": 934,
+          "x": 5.111349525870878,
+          "y": 0.08976575713219788,
+          "z": -4.484057512185075,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.003765756834174655,
+          "gapToSceneFloor": 0.019765756834174655
+        },
+        {
+          "vertex": 935,
+          "x": 5.1065906474614104,
+          "y": 0.10354607103107576,
+          "z": -4.4608061419581775,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.017546070733052532,
+          "gapToSceneFloor": 0.03354607073305253
+        },
+        {
+          "vertex": 936,
+          "x": 5.098891848633528,
+          "y": 0.1222016433715778,
+          "z": -4.433965161969857,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03620164307355457,
+          "gapToSceneFloor": 0.05220164307355457
+        },
+        {
+          "vertex": 937,
+          "x": 5.098929015045118,
+          "y": 0.12097722483901963,
+          "z": -4.429777882358932,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0349772245409964,
+          "gapToSceneFloor": 0.0509772245409964
+        },
+        {
+          "vertex": 938,
+          "x": 5.088186863171605,
+          "y": 0.14762487369246013,
+          "z": -4.4140909559226795,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.06162487339443691,
+          "gapToSceneFloor": 0.07762487339443691
+        },
+        {
+          "vertex": 939,
+          "x": 5.088077695845687,
+          "y": 0.1477599379698662,
+          "z": -4.409251499825857,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.06175993767184297,
+          "gapToSceneFloor": 0.07775993767184297
+        },
+        {
+          "vertex": 940,
+          "x": 5.098790664504145,
+          "y": 0.12383372595497515,
+          "z": -4.437783766244587,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03783372565695192,
+          "gapToSceneFloor": 0.05383372565695192
+        },
+        {
+          "vertex": 1089,
+          "x": 5.015524754987452,
+          "y": 0.06996494239618352,
+          "z": -4.537993070323146,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.016035057901839705,
+          "gapToSceneFloor": -0.00003505790183970514
+        },
+        {
+          "vertex": 1093,
+          "x": 4.99607606495781,
+          "y": 0.07133690587167116,
+          "z": -4.538963442080059,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.014663094426352066,
+          "gapToSceneFloor": 0.001336905573647934
+        },
+        {
+          "vertex": 1095,
+          "x": 5.014246667657065,
+          "y": 0.07975991173585172,
+          "z": -4.509971151387228,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0062400885621715085,
+          "gapToSceneFloor": 0.009759911437828492
+        },
+        {
+          "vertex": 1096,
+          "x": 4.995499604294884,
+          "y": 0.0820585203966126,
+          "z": -4.510610362432897,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.003941479901410624,
+          "gapToSceneFloor": 0.012058520098589376
+        },
+        {
+          "vertex": 1097,
+          "x": 5.03420881788723,
+          "y": 0.07738458590963482,
+          "z": -4.509498143623547,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.008615414388388407,
+          "gapToSceneFloor": 0.007384585611611594
+        },
+        {
+          "vertex": 1098,
+          "x": 4.978359567952445,
+          "y": 0.07260426310810199,
+          "z": -4.540054289026973,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.013395737189921236,
+          "gapToSceneFloor": 0.002604262810078764
+        },
+        {
+          "vertex": 1100,
+          "x": 4.978954138449372,
+          "y": 0.08380840379137246,
+          "z": -4.511868872527722,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.002191596506650767,
+          "gapToSceneFloor": 0.013808403493349233
+        },
+        {
+          "vertex": 1129,
+          "x": 5.011028074205499,
+          "y": 0.14610680458651829,
+          "z": -4.426590291532252,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.06010680428849506,
+          "gapToSceneFloor": 0.07610680428849506
+        },
+        {
+          "vertex": 1130,
+          "x": 5.011910648369936,
+          "y": 0.12456601194356767,
+          "z": -4.450592113553722,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03856601164554445,
+          "gapToSceneFloor": 0.05456601164554445
+        },
+        {
+          "vertex": 1131,
+          "x": 5.0291608809945885,
+          "y": 0.11933438874829033,
+          "z": -4.450831974481113,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03333438845026711,
+          "gapToSceneFloor": 0.04933438845026711
+        },
+        {
+          "vertex": 1132,
+          "x": 5.02634376833574,
+          "y": 0.14753698682811558,
+          "z": -4.423358754465781,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.06153698653009236,
+          "gapToSceneFloor": 0.07753698653009236
+        },
+        {
+          "vertex": 1133,
+          "x": 4.998199898169753,
+          "y": 0.14414242226861823,
+          "z": -4.431004593686271,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.05814242197059501,
+          "gapToSceneFloor": 0.07414242197059501
+        },
+        {
+          "vertex": 1134,
+          "x": 4.997076396032977,
+          "y": 0.12753680901416253,
+          "z": -4.45204473463261,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.04153680871613931,
+          "gapToSceneFloor": 0.05753680871613931
+        },
+        {
+          "vertex": 1136,
+          "x": 4.983178448071449,
+          "y": 0.12723747416475065,
+          "z": -4.456208158741831,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.04123747386672742,
+          "gapToSceneFloor": 0.05723747386672742
+        },
+        {
+          "vertex": 1137,
+          "x": 5.0132727309445,
+          "y": 0.0974102230472178,
+          "z": -4.480668497438489,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.011410222749194579,
+          "gapToSceneFloor": 0.02741022274919458
+        },
+        {
+          "vertex": 1138,
+          "x": 5.032014190533494,
+          "y": 0.09364039357407529,
+          "z": -4.480725917991877,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.007640393276052065,
+          "gapToSceneFloor": 0.023640393276052066
+        },
+        {
+          "vertex": 1139,
+          "x": 4.9963036323345005,
+          "y": 0.10049308008614301,
+          "z": -4.4813534552494625,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.014493079788119784,
+          "gapToSceneFloor": 0.030493079788119784
+        },
+        {
+          "vertex": 1140,
+          "x": 4.980961616235673,
+          "y": 0.10203316264126301,
+          "z": -4.483620791650516,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.016033162343239787,
+          "gapToSceneFloor": 0.03203316234323979
+        },
+        {
+          "vertex": 1217,
+          "x": 5.075888087066897,
+          "y": 0.1645904557250315,
+          "z": -4.403653921390767,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07859045542700828,
+          "gapToSceneFloor": 0.09459045542700828
+        },
+        {
+          "vertex": 1218,
+          "x": 5.076367837658424,
+          "y": 0.15842484579962546,
+          "z": -4.4009601601167985,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07242484550160223,
+          "gapToSceneFloor": 0.08842484550160223
+        },
+        {
+          "vertex": 1220,
+          "x": 5.062199030484639,
+          "y": 0.15892880872750775,
+          "z": -4.400074767520419,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07292880842948453,
+          "gapToSceneFloor": 0.08892880842948453
+        },
+        {
+          "vertex": 1224,
+          "x": 5.043774855594839,
+          "y": 0.15834866335948017,
+          "z": -4.401454606598755,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07234866306145694,
+          "gapToSceneFloor": 0.08834866306145694
+        },
+        {
+          "vertex": 1243,
+          "x": 5.074649934060987,
+          "y": 0.07347854242408913,
+          "z": -4.507937692192609,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.012521457873934091,
+          "gapToSceneFloor": 0.003478542126065909
+        },
+        {
+          "vertex": 1246,
+          "x": 5.054444469210126,
+          "y": 0.07531906548273899,
+          "z": -4.508802057106803,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.010680934815284232,
+          "gapToSceneFloor": 0.005319065184715768
+        },
+        {
+          "vertex": 1268,
+          "x": 5.083916105206036,
+          "y": 0.12890531850718973,
+          "z": -4.42643854678921,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0429053182091665,
+          "gapToSceneFloor": 0.0589053182091665
+        },
+        {
+          "vertex": 1269,
+          "x": 5.066923141391525,
+          "y": 0.1378873821010543,
+          "z": -4.423332252084634,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.05188738180303108,
+          "gapToSceneFloor": 0.06788738180303108
+        },
+        {
+          "vertex": 1270,
+          "x": 5.071679653952828,
+          "y": 0.10704296421742364,
+          "z": -4.452516080879812,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.021042963919400415,
+          "gapToSceneFloor": 0.037042963919400415
+        },
+        {
+          "vertex": 1271,
+          "x": 5.090109547932783,
+          "y": 0.10211004364361385,
+          "z": -4.453456874991029,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.01611004334559063,
+          "gapToSceneFloor": 0.03211004334559063
+        },
+        {
+          "vertex": 1272,
+          "x": 5.046013604201721,
+          "y": 0.14816948147802475,
+          "z": -4.420894698093493,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.062169481180001526,
+          "gapToSceneFloor": 0.07816948118000153
+        },
+        {
+          "vertex": 1273,
+          "x": 5.050225703929432,
+          "y": 0.11304713675161389,
+          "z": -4.451581644147324,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.027047136453590664,
+          "gapToSceneFloor": 0.043047136453590665
+        },
+        {
+          "vertex": 1274,
+          "x": 5.093142848185997,
+          "y": 0.0837248466029972,
+          "z": -4.480267082453607,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.002275153695026025,
+          "gapToSceneFloor": 0.013724846304973976
+        },
+        {
+          "vertex": 1275,
+          "x": 5.0736819608885835,
+          "y": 0.08656735146363295,
+          "z": -4.48054108592141,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.000567351165609728,
+          "gapToSceneFloor": 0.01656735116560973
+        },
+        {
+          "vertex": 1276,
+          "x": 5.05272898591816,
+          "y": 0.08993081292993407,
+          "z": -4.480703591682232,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.003930812631910849,
+          "gapToSceneFloor": 0.01993081263191085
+        },
+        {
+          "vertex": 1445,
+          "x": 5.1068159007635785,
+          "y": 0.09040725956244156,
+          "z": -4.487491066161971,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.004407259264418331,
+          "gapToSceneFloor": 0.02040725926441833
+        },
+        {
+          "vertex": 1446,
+          "x": 5.102276563490811,
+          "y": 0.09110417271585902,
+          "z": -4.490875004604732,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.005104172417835798,
+          "gapToSceneFloor": 0.021104172417835798
+        },
+        {
+          "vertex": 1447,
+          "x": 5.0986156478821325,
+          "y": 0.10326692095118227,
+          "z": -4.468719873194989,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.017266920653159046,
+          "gapToSceneFloor": 0.033266920653159046
+        },
+        {
+          "vertex": 1448,
+          "x": 5.102613573439641,
+          "y": 0.10336246158570596,
+          "z": -4.464779156922981,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.017362461287682734,
+          "gapToSceneFloor": 0.033362461287682735
+        },
+        {
+          "vertex": 1466,
+          "x": 5.095671953695478,
+          "y": 0.12194066925369174,
+          "z": -4.442816417199474,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03594066895566851,
+          "gapToSceneFloor": 0.05194066895566851
+        },
+        {
+          "vertex": 1557,
+          "x": 5.111856349418727,
+          "y": 0.08118785837844206,
+          "z": -4.4799333059395465,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.004812141919581167,
+          "gapToSceneFloor": 0.011187858080418833
+        },
+        {
+          "vertex": 1558,
+          "x": 5.107013952120069,
+          "y": 0.097824935447647,
+          "z": -4.45441481749158,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.01182493514962378,
+          "gapToSceneFloor": 0.02782493514962378
+        },
+        {
+          "vertex": 1560,
+          "x": 5.062199030484639,
+          "y": 0.15892880872750775,
+          "z": -4.400074767520419,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07292880842948453,
+          "gapToSceneFloor": 0.08892880842948453
+        },
+        {
+          "vertex": 1561,
+          "x": 5.043774855594839,
+          "y": 0.15834866335948017,
+          "z": -4.401454606598755,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07234866306145694,
+          "gapToSceneFloor": 0.08834866306145694
+        },
+        {
+          "vertex": 1563,
+          "x": 5.098929015045118,
+          "y": 0.12097722483901963,
+          "z": -4.429777882358932,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0349772245409964,
+          "gapToSceneFloor": 0.0509772245409964
+        },
+        {
+          "vertex": 1564,
+          "x": 5.076367837658424,
+          "y": 0.15842484579962546,
+          "z": -4.4009601601167985,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.07242484550160223,
+          "gapToSceneFloor": 0.08842484550160223
+        },
+        {
+          "vertex": 1565,
+          "x": 5.088077695845687,
+          "y": 0.1477599379698662,
+          "z": -4.409251499825857,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.06175993767184297,
+          "gapToSceneFloor": 0.07775993767184297
+        },
+        {
+          "vertex": 1585,
+          "x": 4.966435927788977,
+          "y": 0.10273354032465402,
+          "z": -4.486716216690881,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.0167335400266308,
+          "gapToSceneFloor": 0.0327335400266308
+        },
+        {
+          "vertex": 1586,
+          "x": 4.963501469986684,
+          "y": 0.08528355942101,
+          "z": -4.513392375548092,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.0007164408770132247,
+          "gapToSceneFloor": 0.015283559122986776
+        },
+        {
+          "vertex": 1587,
+          "x": 4.969763952687422,
+          "y": 0.12522227646133752,
+          "z": -4.461754935206582,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": 0.03922227616331429,
+          "gapToSceneFloor": 0.05522227616331429
+        },
+        {
+          "vertex": 1595,
+          "x": 4.961503883324292,
+          "y": 0.07382791293885821,
+          "z": -4.5411735150273325,
+          "callbackTargetY": 0.08600000029802322,
+          "sceneFloorY": 0.07000000029802322,
+          "errorToCallbackTarget": -0.012172087359165015,
+          "gapToSceneFloor": 0.003827912640834985
+        }
+      ],
+      "callbackSupportCoverage": "64/64",
+      "callbackSupportCoverageComplete": true,
+      "nonFiniteSampleCount": 0,
+      "callbackNonFiniteSampleCount": 0,
+      "maxAbsoluteGapToSceneFloor": 0.09459045542700828,
+      "nearestAbsoluteGapToSceneFloor": 0.00003505790183970514,
+      "minimumSignedGapToSceneFloor": -0.00003505790183970514,
+      "withinFourMillimetersOfSceneFloor": true,
+      "nativeLegReach": {
+        "upperLength": 0.573770436588957,
+        "lowerLength": 0.585856231999238,
+        "actualAnkleReach": 1.0827655066249293,
+        "physicalVerticalCorrection": 0.00003505790183970514,
+        "physicalRequestedAnkleReach": 1.0827304520918355,
+        "callbackVerticalCorrection": 0.016035057901839705,
+        "callbackRequestedAnkleReach": 1.0667320126562938,
+        "maximumLegReach": 1.1596266685881949,
+        "withinReach": true
+      }
+    }
+  ],
+  "bothFeetWithinFourMillimetersOfSceneFloor": true
+}

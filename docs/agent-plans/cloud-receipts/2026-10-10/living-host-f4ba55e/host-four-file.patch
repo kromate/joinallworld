@@ -1,0 +1,77 @@
+diff --git a/deploy/cloudflare-worker.ts b/deploy/cloudflare-worker.ts
+index ab815ce..a12f090 100644
+--- a/deploy/cloudflare-worker.ts
++++ b/deploy/cloudflare-worker.ts
+@@ -241,6 +241,8 @@ async function adminShell(request: Request, env: WorkerEnv, url: URL): Promise<R
+ /** The bindings and variables of the Worker (wrangler.jsonc, plus secrets and the outreach/voice settings the host may read). */
+ export interface WorkerEnv {
+   INTERACTIVE_TEACHING_STARTS?: string
++  /** New reverse issuance only for the exact host value '1'; unset remains OFF. */
++  REVERSE_GEAR_ISSUANCE?: string
+   JOINALLWORLD: DurableObjectNamespace
+   ASSETS: Fetcher
+   BUILD_ID?: string
+@@ -371,6 +373,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
+     const context: RouteContext = this.context = {
+       store: this.store, images: this.images, voices: this.voices, shards: this.shards, now, fail: protocolError, collection, publicSession, cityIds: registeredCityIds(), telemetry: this.telemetry,
+       ...(env.INTERACTIVE_TEACHING_STARTS === '1' ? { interactiveTeachingStarts: true } : {}),
++      reverseGearIssuance: env.REVERSE_GEAR_ISSUANCE === '1',
+       randomId: () => crypto.randomUUID(),
+       // Relay credentials for calls (server/call-relay.ts): the day's count lives in the object's own storage, so the ceiling holds across restarts.
+       callRelay: createCallRelay({
+diff --git a/server/routes/living-world.ts b/server/routes/living-world.ts
+index 74382eb..c4f304b 100644
+--- a/server/routes/living-world.ts
++++ b/server/routes/living-world.ts
+@@ -9,7 +9,7 @@ import { createAssessmentService } from '../living-world/assessment-service.ts'
+ import type { RouteContext, RouteHandler, RouteKey } from '../types.ts'
+ 
+ export default function livingWorldRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
+-  const driving = createDrivingService(ctx)
++  const driving = createDrivingService(ctx, { reverseGearIssuance: ctx.reverseGearIssuance === true })
+   const qualification = createQualificationService(ctx, readDrivingQualificationEvidence)
+   const barber = createBarberService(ctx)
+   const rental = createStarterRentalService(ctx)
+diff --git a/server/server.ts b/server/server.ts
+index 1c3a8f7..79b3236 100644
+--- a/server/server.ts
++++ b/server/server.ts
+@@ -65,6 +65,8 @@ export type Connection = WebSocket & WsConnection;
+ export interface ServerOptions {
+   /** Trusted host activation only; player requests cannot opt in. */
+   interactiveTeachingStarts?: boolean
++  /** Trusted host activation only; v2 readers remain available when omitted. */
++  reverseGearIssuance?: boolean
+   commerceGateway?: CommerceGateway
+   streetAssets?: RouteContext['streetAssets']
+   dataDir?: string
+@@ -156,7 +158,7 @@ async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<stri
+ }
+ 
+ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), commerceGateway, streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
+-  lazyFlushMs, shardIo, interactiveTeachingStarts = false,
++  lazyFlushMs, shardIo, interactiveTeachingStarts = false, reverseGearIssuance = false,
+   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
+   moderatorToken = process.env.MODERATOR_TOKEN,
+   trustProxy = process.env.TRUST_PROXY === '1',
+@@ -514,6 +516,7 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
+   const ctx: RouteContext = {
+     store, images: createFileImages(join(dataDir, 'chat-images')), voices: createFileVoices(join(dataDir, 'chat-voice-notes')), shards: shards as ShardStore, now, fail, allow, peek, retryIn, collection, send, broadcast, publicSession, cityIds: registeredCityIds(), telemetry,
+     ...(interactiveTeachingStarts === true ? { interactiveTeachingStarts: true } : {}),
++    reverseGearIssuance: reverseGearIssuance === true,
+     randomId,
+     on(event, fn) { let list = listeners.get(event); if (!list) listeners.set(event, list = []); list.push(fn as Listener); },
+     emit(event, data) { for (const fn of listeners.get(event) || []) { try { fn(data); } catch (error) { console.error(`Listener for ${event} failed:`, fieldOf(error, 'message')); } } },
+diff --git a/server/types.ts b/server/types.ts
+index 53cb04f..8a63a87 100644
+--- a/server/types.ts
++++ b/server/types.ts
+@@ -1140,6 +1140,8 @@ export interface RouteContext {
+   streetAssets?: import('./street/types.ts').StreetAssetReader
+   /** Trusted host-only display capability. Never read from a request or persisted life. */
+   interactiveTeachingStarts?: boolean
++  /** Trusted host authority for new reverse-capable sessions; absent means OFF. */
++  reverseGearIssuance?: boolean
+   store: Store
+   /** Server time in ms — never call Date.now(). */
+   now(): number

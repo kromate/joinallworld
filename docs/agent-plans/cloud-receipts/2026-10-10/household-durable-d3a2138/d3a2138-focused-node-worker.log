@@ -1,0 +1,13 @@
+✔ storage edge rejects accessors without invoking them and propagates point-read faults (1.840223ms)
+✔ Node file Store: durable register receipt reopens and duplicate avoids current home loading (50.46479ms)
+✔ Node file Store: a failed durable write rejects without household or once receipt (5.832313ms)
+✔ Worker SQLite Store: entries commit and close/reopen receipt replay share the real transaction layer (15.288807ms)
+✔ Worker SQLite Store: SQL entry failure rolls back the household row and once receipt (8.492321ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.892855

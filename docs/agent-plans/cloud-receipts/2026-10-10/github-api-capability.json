@@ -1,0 +1,9 @@
+{
+  "command": "gh api --include repos/kromate/joinallworld -q {full_name: .full_name, permissions: .permissions}",
+  "result": "Get https://api.github.com/repos/kromate/joinallworld: Forbidden",
+  "exit": 1,
+  "credentials_inspected": false,
+  "draft_release_created": false,
+  "artifact_uploaded": false,
+  "consequence": "Cannot use existing API authentication here to draft-release upload/read or dispatch workflow; HTTPS Git scoped push/read works. No newlogin/scopes/service or improvised transport."
+}

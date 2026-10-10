@@ -12,7 +12,7 @@ export const SEDAN_CLEARANCE_SOURCE = Object.freeze({
     'src/models/vehicles/sedan-interior.ts': '3d9a5b3a516031fb7b6e14058a3d3c2615a3f531a38b56781d2f4a66bf8b0a57',
     'src/models/vehicles/index.ts': '7db039a0b25373a86354639fd703a96aab3a3de48a3088c14c555cc0fa6afc19',
     'src/models/vehicles/geometry.ts': '4bf847bd17a735050daa4686ed0be495c64a7936ed3c65c6e306e740edc94885',
-    'src/app/features/living-world/drivingScene.ts': '3d42051273229265a17fcc5e04b7e5c95ddb72e7fa5fd00520d910cd19cf006c',
+    'src/app/features/living-world/drivingScene.ts': 'f7dedaecc5be14ba2088a3884cbd234c6c2beefcd9669695974598d270df34b0',
   }),
 })
 

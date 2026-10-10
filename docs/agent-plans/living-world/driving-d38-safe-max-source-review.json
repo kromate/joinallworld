@@ -34,14 +34,42 @@
     "One exhausted running row at location mismatch is sent sequentially through current/start/input/pause/resume/restart; each revision_exhausted response preserves complete driving row. Session/life settling explicitly outside assertion."
   ],
   "execution": {
-    "status": "REPORTED_PENDING_PUBLISHED_RAW_LOG_RECEIPT",
-    "reportedPass": 18,
-    "reportedFail": 0,
-    "reportedSkip": 0,
-    "reportedRawLogSha256": "0045d7b7e45b8bd3896ead7310c9c6150e548e69bd8929ed3600de5fdaf0a824",
-    "firstMissingWsFailureRetainedRequested": true,
-    "dependencyHandoffLockfileEquivalenceRequested": true,
-    "rootReran": false
+    "status": "ACCEPT_SCOPED18_SERVICE_TESTS",
+    "publishedReceiptCommit": "5708bf23f99481b60d50965dcb359de521988036",
+    "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-d38-boundary/receipt.json",
+    "receiptSha256": "bbf3eda9e58a81e3c50842fb3c5321314a3e933b422f69c4abf2ccff5b8dda94",
+    "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-d38-boundary/command.log",
+    "logSha256": "0045d7b7e45b8bd3896ead7310c9c6150e548e69bd8929ed3600de5fdaf0a824",
+    "logBytes": 2098,
+    "wholeReceiptAndLogRead": true,
+    "pass": 18,
+    "fail": 0,
+    "skip": 0,
+    "rawDurationMs": 2143.789966,
+    "wrapperDurationSeconds": 2.307279,
+    "command": [
+      "node",
+      "--experimental-strip-types",
+      "scripts/agent-slot.ts",
+      "heavy",
+      "--",
+      "node",
+      "--experimental-strip-types",
+      "--test",
+      "--test-concurrency=1",
+      "server/living-world/driving-service.test.ts"
+    ],
+    "nodeVersion": "v24.19.0",
+    "npmVersion": "11.9.0",
+    "heapMiB": 1536,
+    "concurrency": 1,
+    "exitCode": 0,
+    "headAfter": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
+    "statusAfterClean": true,
+    "sourceUnchangedReported": true,
+    "beforeAfterSourcePinMapsEmpty": true,
+    "noFullByteCensusInferred": true,
+    "scope": "Actual Node HTTP/store service fixture with explicit trusted-ON route override; not normal host/cold Worker/native proof."
   },
   "independentAstraReviewRequested": true,
   "productionSource": "c1f7c1f7369139ce559292318ba9842c23a28267",
@@ -53,5 +81,81 @@
     "Actual preserved school S0-S8 and entire later programme"
   ],
   "releaseApproved": false,
-  "rootScope": "Source/evidence only; no runtime source change or local heavy work."
+  "rootScope": "Source/evidence only; no runtime source change or local heavy work.",
+  "independentReview": {
+    "decision": "APPROVE_COUNTER_TEST_SOURCE_DELTA_ONLY",
+    "thread": "01a122db-a5fe-7211-b9c6-0fc01bec9bd5",
+    "turn": "01a12382-1ed8-7453-9910-4f4e03f00419",
+    "actualModel": "gpt-6-astra",
+    "effort": "high",
+    "actualTurnContextAt": "2026-10-10T01:51:32.646Z",
+    "allThreePinsMatch": true,
+    "pins": {
+      "server/living-world/driving-service.test.ts": "5db571a1305c31f854a6378c66c11950be020d3427258e199268ab05d30380c6",
+      "server/living-world/driving-service.ts": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+      "server/test-fixture.ts": "d376084667d9978e37a0d07d1d374c190c153cc368759a16bda38833dd0199a9"
+    },
+    "reports": {
+      "allworld-driving-counter-source-review.md": {
+        "sha256": "6fc2e036cc43a174971135295b7a97199990ee1036d4f9d034f0b668e596caf1",
+        "bytes": 4821,
+        "wholeReportRead": true
+      },
+      "allworld-driving-counter-source-review.json": {
+        "sha256": "60bfba0edc41d1a18908fc7f382362f445fe3ef519ae29f826fb7dfcc0789d58",
+        "bytes": 5584,
+        "wholeReportRead": true
+      }
+    },
+    "limits": [
+      "All six route checks assert driving-row nonmutation, not absence of clock reads or global side effects. Start reads ctx.now at service:212 and checks clock at 213/217 before revision guard 220; restart reads/checks clock 254-260 before 261; pause/resume read/check clock 368-369 before 374. Session/life settlement, rate accounting and lifecycle once receipts are outside the snapshot.",
+      "Six-route location mismatch matrix uses one v1 row with stable valid clock. It does not cross all routes with v2, wrong city/actor, backward or invalid clocks. Current unconditionally pauses any running row, so its case alone does not distinguish location mismatch from normal reload.",
+      "Final safe MAX-1 to MAX transition is covered for input with legacy three-field frames on v1 and retained v2. Last-safe pause/current/resume/restart writes and explicit-gear boundary packets are not added here. Existing base separately covers several exhaustion refusals.",
+      "At simultaneous sequence/revision exhaustion, new-input sequence_exhausted masks revision_exhausted by design; base already tests revision-only exhaustion with a low nextSequence.",
+      "Same packet receipt replay is checked at exhaustion. Changed fingerprint at the exhausted sequence and multiple repeated replays are not added here; no need to weaken production validation to add them.",
+      "Reversed-clock fixture sets stored updatedAt/lastInputAt ahead of controlled clock, preserving strict ordering. It exercises future watermark, not actual system clock rollback.",
+      "Tests do not close/reopen hosts, run Worker SQLite, switch OFF, or prove native/DOM behavior. Host review H1-H3 remain independent and open.",
+      "Claimed 18 focused PASS lacks reviewed immutable raw execution receipt at this review time; no runtime PASS accepted here.",
+      "Parent reports base Brotli 195610 bytes exceeds 195600 cap by 10. This review does not remeasure or waive that failure. Changed host/candidate has no inherited budget/build/native acceptance."
+    ],
+    "sourceBlockers": [],
+    "reviewerExecutedTests": false
+  },
+  "retainedFailure": {
+    "source": "c671ad0a6ed5760247947d7c7104e47e59c3607d",
+    "exitCode": 1,
+    "cause": "ERR_MODULE_NOT_FOUND ws before service assertions execute",
+    "rawLogSha256": "57f367f653deb6843483617311a7ae9f06612148a13cf77423e862e4f8a8d2f0",
+    "rawLogBytes": 9590,
+    "receiptSha256": "5ec4fa2a46cd916c62406cc94f3b61ec8b7bbb5c9718151fe7263fb8a9cdfde5",
+    "publishedPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-c671-missing-dependency",
+    "notSameSourceAsPassedD38": true,
+    "qualification": "c671 and d38 differ by sequential request test-design correction; do not call this a proven unchanged-source rerun or a production algorithm failure."
+  },
+  "dependencyHandoff": {
+    "sha256": "91055eb82f6f009834e7622ad763d54f7285404b2865ae38dd8733f2bef2b875",
+    "publishedPath": "docs/agent-plans/cloud-receipts/2026-10-10/living-d38-boundary/dependency-handoff-current.json",
+    "recordedAtUtc": "2026-10-10T01:51:39.774017+00:00",
+    "currentTwoLockfileEqualitiesMatchImmutableC671D38F4": true,
+    "beforeRunEqualityOnlyWorkerReported": true,
+    "symlinkTargetsCurrentOnly": true
+  },
+  "comparisonScopes": {
+    "versusF4ChangedPaths": [
+      "server/living-world/driving-service.test.ts"
+    ],
+    "versus1bChangedPaths": [
+      "deploy/cloudflare-worker.ts",
+      "deploy/living-world-driving-v2.edge.test.ts",
+      "server/living-world/driving-host-reopen.test.ts",
+      "server/living-world/driving-service.test.ts",
+      "server/routes/living-world.ts",
+      "server/server.ts",
+      "server/types.ts"
+    ],
+    "versus1bChangedFileCount": 7,
+    "noCompilerBuildBudgetInheritance": true
+  },
+  "executionReviewedAtUtc": "2026-10-10T02:03:00.867148+00:00",
+  "startupRepairOwnership": "Integration sole assembler allocates WORLD existing country worker only generator/routes.generated.ts compact encoding; Living worker only R14/H1-H3 test files. No shared startup runtime edit by Root/Living."
 }

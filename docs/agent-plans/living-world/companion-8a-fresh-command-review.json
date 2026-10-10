@@ -1,0 +1,108 @@
+{
+  "reviewedAtUtc": "2026-10-10T02:03:00.867148+00:00",
+  "source": "8a48405963ca526bfe059b413be250d834d50b90",
+  "publishedReceiptCommit": "5708bf23f99481b60d50965dcb359de521988036",
+  "scope": "Fresh published command evidence, not original native or existing sealed archive binary equality.",
+  "checks": {
+    "focused": {
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/companion-8a-fresh/focused/receipt.json",
+      "receiptSha256": "91e7074753483dbc8b732fb3041cd9e8b4bceb2cac7bcc3d1fc6eb80f062e75c",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/companion-8a-fresh/focused/command.log",
+      "logSha256": "b4326dc9cc2b4edcf8b02f5453b204693556ba91da3055ecde83b5823c5d9256",
+      "logBytes": 2533,
+      "exitCode": 0,
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "src/app/features/companion/companion.test.ts"
+      ],
+      "nodeVersion": "v24.19.0",
+      "sourcePinsMatched": true,
+      "result": {
+        "tests": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0
+      },
+      "receiptMissingBeforeAfterHeadStatusAndTime": true,
+      "wholeReceiptRead": true,
+      "logReadScope": "Whole raw log",
+      "VueForegroundBranchesExercised": false
+    },
+    "build": {
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/companion-8a-fresh/build/receipt.json",
+      "receiptSha256": "5879222141d67aee6d90ac537f8f5d97cf28e89efb00fe1c53fcef79ab296a68",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/companion-8a-fresh/build/command.log",
+      "logSha256": "22e1d55830a77e82154c4744f565e804939a938638bcad69a863a421323430c7",
+      "logBytes": 86671,
+      "exitCode": 0,
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "build"
+      ],
+      "nodeVersion": "v24.19.0",
+      "sourcePinsMatched": true,
+      "result": {
+        "bundler": "Vite 7.3.6",
+        "modules_transformed": 2110,
+        "build_duration_seconds": 51.47
+      },
+      "receiptMissingBeforeAfterHeadStatusAndTime": true,
+      "wholeReceiptRead": true,
+      "logReadScope": "Hash, actual terminal build summary and error scan; not every emitted asset line.",
+      "buildTerminalSummaryConfirmed": true
+    },
+    "size-download": {
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/companion-8a-fresh/size-download/receipt.json",
+      "receiptSha256": "0fc5152cda5b053e97a8e0190e89f8f6ac7cf78c4b359b50fdfb42c8cc68d295",
+      "logPath": "docs/agent-plans/cloud-receipts/2026-10-10/companion-8a-fresh/size-download/command.log",
+      "logSha256": "37faf0ed5c97d9a1b946f9bedbb299c41dc390d74983703067d7f94651a1aeae",
+      "logBytes": 6037,
+      "exitCode": 0,
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "size:download"
+      ],
+      "nodeVersion": "v24.19.0",
+      "sourcePinsMatched": true,
+      "result": {
+        "startup_raw": 614094,
+        "startup_gzip": 222674,
+        "startup_brotli": 195574,
+        "companion_host_brotli_kb": 24.4,
+        "all_applicable_budgets_passed": true,
+        "wardrobe_and_street_tile_budgets": "n/a: no matching artifacts"
+      },
+      "receiptMissingBeforeAfterHeadStatusAndTime": true,
+      "wholeReceiptRead": true,
+      "logReadScope": "Whole raw log"
+    }
+  },
+  "limits": [
+    "Nineteen focused cases exercise companion brain/routes/director, not actual CompanionHost Vue foreground or mobile layout.",
+    "Fresh8a budget startup614094raw/222674gzip/195574Brotli passes, but does not repair or certify1b/f4/d38/combined source.",
+    "8a fresh receipts include two exact source pins; no before/after full HEAD/status/time census.",
+    "Pre-existing reported archive990eb/package88c193 was integrity-checked with old dist smoke; rebuilt-dist vs archive full byte equality and actual transport remain unverified.",
+    "Native phone/active-teaching branches, help/preferences/disposal/restoration and physical phone still open."
+  ],
+  "nativeOrReleaseAccepted": false
+}

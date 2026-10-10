@@ -78,10 +78,11 @@ export interface SedanApertureResult {
       readonly windscreenUpperZY: readonly [0.695, 1.53]
       readonly sideGlassAndPillar: readonly Readonly<{ id: string; center: Point3; size: Point3 }>[]
       readonly sideTrimPanels: readonly Readonly<{ id: string; center: Point3; size: Point3 }>[]
-      readonly clippedGlassAndTrim: 'hinged-parts-in-sweep-envelope; remainder-retained'
+      readonly clippedGlassAndTrim: 'driver-cut-pieces-hinged; all-other-glass-and-trim-retained'
     }>
     readonly doorSweepBounds: Readonly<{ min: Point3; max: Point3 }>
     readonly interiorObstacleIds: readonly string[]
+    readonly retainedObstacleIds: readonly string[]
     readonly steeringSweep: '[-1,1]'
     readonly doorSweepRadians: readonly [number, number]
   } | null
@@ -106,13 +107,19 @@ const RETAINED_SHELL = Object.freeze({
     Object.freeze({ id: 'driver-front-glass', center: Object.freeze([-0.966, 1.20, 0.4175] as const), size: Object.freeze([0.04, 0.5, 1.085] as const) }),
     Object.freeze({ id: 'driver-rear-glass', center: Object.freeze([-0.966, 1.20, -0.7575] as const), size: Object.freeze([0.04, 0.5, 1.125] as const) }),
     Object.freeze({ id: 'driver-b-pillar', center: Object.freeze([-0.975, 1.20, -0.16] as const), size: Object.freeze([0.055, 0.58, 0.1] as const) }),
+    Object.freeze({ id: 'passenger-front-glass', center: Object.freeze([0.966, 1.20, 0.4175] as const), size: Object.freeze([0.04, 0.5, 1.085] as const) }),
+    Object.freeze({ id: 'passenger-rear-glass', center: Object.freeze([0.966, 1.20, -0.7575] as const), size: Object.freeze([0.04, 0.5, 1.125] as const) }),
+    Object.freeze({ id: 'passenger-b-pillar', center: Object.freeze([0.975, 1.20, -0.16] as const), size: Object.freeze([0.055, 0.58, 0.1] as const) }),
   ]),
   sideTrimPanels: Object.freeze([
     Object.freeze({ id: 'driver-shoulder-trim', center: Object.freeze([-0.995, 0.94, 0] as const), size: Object.freeze([0.06, 0.09, 3.306] as const) }),
     Object.freeze({ id: 'driver-pillar-trim', center: Object.freeze([-1.002, 0.88, -0.18] as const), size: Object.freeze([0.065, 0.68, 0.035] as const) }),
     Object.freeze({ id: 'driver-door-handle-trim', center: Object.freeze([-1.008, 0.91, 0.12] as const), size: Object.freeze([0.075, 0.07, 0.28] as const) }),
+    Object.freeze({ id: 'passenger-shoulder-trim', center: Object.freeze([0.995, 0.94, 0] as const), size: Object.freeze([0.06, 0.09, 3.306] as const) }),
+    Object.freeze({ id: 'passenger-pillar-trim', center: Object.freeze([1.002, 0.88, -0.18] as const), size: Object.freeze([0.065, 0.68, 0.035] as const) }),
+    Object.freeze({ id: 'passenger-door-handle-trim', center: Object.freeze([1.008, 0.91, 0.04] as const), size: Object.freeze([0.075, 0.07, 0.28] as const) }),
   ]),
-  clippedGlassAndTrim: 'hinged-parts-in-sweep-envelope; remainder-retained' as const,
+  clippedGlassAndTrim: 'driver-cut-pieces-hinged; all-other-glass-and-trim-retained' as const,
 })
 
 const DOOR = Object.freeze({
@@ -405,14 +412,31 @@ function retainedPanelFragments(box: Box): readonly Box[] {
   return Object.freeze(fragments)
 }
 const STREET_GLASS_AND_TRIM: readonly Box[] = Object.freeze([
-  ...RETAINED_SHELL.sideGlassAndPillar.map(panel => panelBounds(panel.id, panel.center, panel.size)),
-  ...RETAINED_SHELL.sideTrimPanels.map(panel => panelBounds(panel.id, panel.center, panel.size)),
+  ...RETAINED_SHELL.sideGlassAndPillar.filter(panel => panel.id.startsWith('driver-')).map(panel => panelBounds(panel.id, panel.center, panel.size)),
+  ...RETAINED_SHELL.sideTrimPanels.filter(panel => panel.id.startsWith('driver-')).map(panel => panelBounds(panel.id, panel.center, panel.size)),
+])
+const OPPOSITE_SIDE_GLASS_AND_TRIM: readonly Box[] = Object.freeze([
+  ...RETAINED_SHELL.sideGlassAndPillar.filter(panel => panel.id.startsWith('passenger-')).map(panel => panelBounds(panel.id, panel.center, panel.size)),
+  ...RETAINED_SHELL.sideTrimPanels.filter(panel => panel.id.startsWith('passenger-')).map(panel => panelBounds(panel.id, panel.center, panel.size)),
 ])
 const SHELL: readonly Box[] = Object.freeze([
   Object.freeze({ id: 'opposite-cap', min: [0.92, 0.45, -2.175] as const, max: [0.95, 1.53, 2.175] as const }),
   Object.freeze({ id: 'driver-cap-lower-sill', min: [-0.95, 0.45, -2.175] as const, max: [-0.92, 0.49, 2.175] as const }),
+  // The driver cap is a retained profile-prism face outside splitCarDoorPanels' hinge cut.
+  // These four conservative pieces exclude the clipping volume; the side aperture itself stays
+  // articulated, while the rear/front cap, sill, and roof remain modeled as shell obstacles.
+  Object.freeze({ id: 'driver-cap-retained-rear', min: [-0.95, 0.45, -2.175] as const, max: [-0.95, 1.53, -0.05] as const }),
+  Object.freeze({ id: 'driver-cap-retained-front', min: [-0.95, 0.45, 0.89] as const, max: [-0.95, 1.53, 2.175] as const }),
+  Object.freeze({ id: 'driver-cap-retained-sill', min: [-0.95, 0.45, -2.175] as const, max: [-0.95, 0.49, 2.175] as const }),
+  Object.freeze({ id: 'driver-cap-retained-roof', min: [-0.95, 1.48, -2.175] as const, max: [-0.95, 1.53, 2.175] as const }),
+  // Outward AABB of the retained sloped windshield box emitted by slopedWindscreen().
+  Object.freeze({ id: 'windscreen-sloped-panel', min: [-0.817, 0.959, 0.705] as const, max: [0.817, 1.589, 1.788] as const }),
   Object.freeze({ id: 'windscreen-lower', min: [-0.95, 0.915, 1.73] as const, max: [0.95, 0.965, 1.78] as const }),
   Object.freeze({ id: 'windscreen-upper', min: [-0.95, 1.505, 0.67] as const, max: [0.95, 1.555, 0.72] as const }),
+  // The static rear-glass box is emitted separately from the hinged side panels.
+  Object.freeze({ id: 'rear-glass-static', min: [-0.798, 0.969, -1.443] as const, max: [0.798, 1.431, -1.291] as const }),
+  // The cabin shoulder trim sits above the hinge clip and remains part of the static body.
+  Object.freeze({ id: 'roof-shoulder-trim', min: [-0.836, 1.515, -1.144] as const, max: [0.836, 1.595, 0.784] as const }),
   ...PROFILE.map(([z0, y0], index) => {
     const [z1, y1] = PROFILE[(index + 1) % PROFILE.length]!
     return Object.freeze({ id: `retained-profile-edge-${index}`,
@@ -420,6 +444,7 @@ const SHELL: readonly Box[] = Object.freeze([
       max: [0.95, Math.max(y0, y1) + 0.025, Math.max(z0, z1) + 0.025] as const })
   }),
   ...STREET_GLASS_AND_TRIM.flatMap(retainedPanelFragments),
+  ...OPPOSITE_SIDE_GLASS_AND_TRIM,
 ])
 
 function frozenResult(code: SedanApertureCode, modelIntersections: string[], shellIntersections: string[], sweepOverlapCandidates: string[], apertureFailures: string[], apertureCrossings: string[], doorBounds = DOOR_SWEEP, doorInterval: readonly [number, number] = [0, DOOR.maxAngle]): SedanApertureResult {
@@ -436,6 +461,7 @@ function frozenResult(code: SedanApertureCode, modelIntersections: string[], she
       retainedShell: RETAINED_SHELL,
       doorSweepBounds: Object.freeze({ min: doorBounds.min, max: doorBounds.max }),
       interiorObstacleIds: Object.freeze([...INTERIOR.map(box => box.id), STEERING_BOX.id]),
+      retainedObstacleIds: Object.freeze(SHELL.map(box => box.id)),
       steeringSweep: '[-1,1]' as const,
       doorSweepRadians: Object.freeze([doorInterval[0], doorInterval[1]] as const),
     }) : null,

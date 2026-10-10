@@ -33,6 +33,21 @@ const world = (point: readonly [number, number, number], position: readonly [num
     iz * w + iw * -z + ix * -y - iy * -x + position[2]]
 }
 const pinnedSource = (path: string): string => readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8')
+function pointToMeshDistance(point: readonly [number, number, number], mesh: THREE.Mesh): number {
+  const attribute = mesh.geometry.getAttribute('position'), index = mesh.geometry.index
+  const target = new THREE.Vector3(...point), a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3()
+  const triangle = new THREE.Triangle(), closest = new THREE.Vector3()
+  let minimum = Infinity
+  const count = index?.count ?? attribute.count
+  for (let offset = 0; offset + 2 < count; offset += 3) {
+    const ia = index?.getX(offset) ?? offset, ib = index?.getX(offset + 1) ?? offset + 1, ic = index?.getX(offset + 2) ?? offset + 2
+    triangle.set(a.fromBufferAttribute(attribute, ia).applyMatrix4(mesh.matrixWorld),
+      b.fromBufferAttribute(attribute, ib).applyMatrix4(mesh.matrixWorld), c.fromBufferAttribute(attribute, ic).applyMatrix4(mesh.matrixWorld))
+    triangle.closestPointToPoint(target, closest)
+    minimum = Math.min(minimum, closest.distanceTo(target))
+  }
+  return minimum
+}
 
 test('source-pinned driver cap partition matches Float32 emission coordinates', () => {
   for (const [path, expected] of Object.entries(SEDAN_APERTURE_SOURCE.pins))
@@ -59,6 +74,10 @@ test('source-pinned driver cap partition matches Float32 emission coordinates', 
   assert.deepEqual(geometry.doorSweepRadians, [0, Math.PI * 0.55])
   assert.deepEqual(geometry.steeringSweep, '[-1,1]')
   assert.equal(geometry.interiorObstacleIds.length, 12)
+  for (const id of ['driver-cap-retained-rear', 'driver-cap-retained-front', 'driver-cap-retained-sill',
+    'driver-cap-retained-roof', 'windscreen-sloped-panel', 'rear-glass-static', 'roof-shoulder-trim',
+    'passenger-front-glass', 'passenger-rear-glass', 'passenger-b-pillar', 'passenger-shoulder-trim',
+    'passenger-pillar-trim', 'passenger-door-handle-trim']) assert.ok(geometry.retainedObstacleIds.includes(id), id)
   assert.deepEqual(geometry.retainedShell, {
     prismWidth: 1.9,
     driverCapX: -0.95,
@@ -71,13 +90,19 @@ test('source-pinned driver cap partition matches Float32 emission coordinates', 
       { id: 'driver-front-glass', center: [-0.966, 1.20, 0.4175], size: [0.04, 0.5, 1.085] },
       { id: 'driver-rear-glass', center: [-0.966, 1.20, -0.7575], size: [0.04, 0.5, 1.125] },
       { id: 'driver-b-pillar', center: [-0.975, 1.20, -0.16], size: [0.055, 0.58, 0.1] },
+      { id: 'passenger-front-glass', center: [0.966, 1.20, 0.4175], size: [0.04, 0.5, 1.085] },
+      { id: 'passenger-rear-glass', center: [0.966, 1.20, -0.7575], size: [0.04, 0.5, 1.125] },
+      { id: 'passenger-b-pillar', center: [0.975, 1.20, -0.16], size: [0.055, 0.58, 0.1] },
     ],
     sideTrimPanels: [
       { id: 'driver-shoulder-trim', center: [-0.995, 0.94, 0], size: [0.06, 0.09, 3.306] },
       { id: 'driver-pillar-trim', center: [-1.002, 0.88, -0.18], size: [0.065, 0.68, 0.035] },
       { id: 'driver-door-handle-trim', center: [-1.008, 0.91, 0.12], size: [0.075, 0.07, 0.28] },
+      { id: 'passenger-shoulder-trim', center: [0.995, 0.94, 0], size: [0.06, 0.09, 3.306] },
+      { id: 'passenger-pillar-trim', center: [1.002, 0.88, -0.18], size: [0.065, 0.68, 0.035] },
+      { id: 'passenger-door-handle-trim', center: [1.008, 0.91, 0.04], size: [0.075, 0.07, 0.28] },
     ],
-    clippedGlassAndTrim: 'hinged-parts-in-sweep-envelope; remainder-retained',
+    clippedGlassAndTrim: 'driver-cut-pieces-hinged; all-other-glass-and-trim-retained',
   })
   assert.equal(Object.isFrozen(geometry.doorSweepBounds.min), true)
   assert.equal(Object.isFrozen(geometry.retainedShell.sideGlassAndPillar[0]!.center), true)
@@ -117,6 +142,15 @@ test('actual map and street CPU sedan/interior/door partitions emit bounded Floa
       const retainedGlassVertex: readonly [number, number, number] = detail === 'street' ? [-0.986, 1.45, 0.96] : [-0.966, 1.45, -1.214]
       assert.ok(hasWorldVertex(doorPanel, movingGlassVertex), `${detail} clipped glass remains in the moving door mesh`)
       assert.ok(hasWorldVertex(staticBody, retainedGlassVertex), `${detail} glass remainder stays in static body mesh`)
+      if (detail === 'street') {
+        assert.ok(hasWorldVertex(doorPanel, [-1.0455, 0.875, -0.02]), 'clipped handle trim remains on the articulated panel')
+        assert.ok(hasWorldVertex(staticBody, [-1.025, 0.895, -1.653]), 'shoulder trim outside the cut remains in the static body')
+        assert.ok(hasWorldVertex(staticBody, [-0.836, 1.595, -1.1435]), 'roof shoulder trim remains in the static body outside the hinge cut')
+      }
+      if (detail === 'street') {
+        assert.ok(hasWorldVertex(staticBody, [1.025, 0.895, -1.653]), 'opposite shoulder trim remains static')
+        assert.ok(hasWorldVertex(staticBody, [1.0455, 0.875, -0.1]), 'opposite handle trim remains static')
+      }
       const modelGeometry = analyzeSedanAperture(input([capsule('actual-mesh-fixture', -2.8, 1, 0.4)])).sourceGeometry!
       const bounds = modelGeometry.doorSweepBounds
       for (const door of [0, 0.5, 1]) {
@@ -133,6 +167,27 @@ test('actual map and street CPU sedan/interior/door partitions emit bounded Floa
       assert.ok(solidIds.includes('cabin-floor') && solidIds.includes('dashboard') && solidIds.includes('driver-cushion') && solidIds.includes('driver-backrest'))
       assert.equal(solidIds.filter(id => id.endsWith('-cushion')).length, 4)
       assert.equal(solidIds.filter(id => id.endsWith('-backrest')).length, 4)
+      const expectedInteriorBounds: Record<string, readonly [number, number, number, number, number, number]> = {
+        'cabin-floor': [-0.78, 0.46, -1.25, 0.78, 0.52, 0.90],
+        dashboard: [-0.67, 0.985, 0.63, 0.67, 1.125, 0.91],
+        'driver-cushion': [-0.707, 0.50, 0.14, -0.167, 0.62, 0.76],
+        'driver-backrest': [-0.707, 0.62, 0.045, -0.167, 1.20, 0.175],
+        'front-passenger-cushion': [0.167, 0.50, 0.14, 0.707, 0.62, 0.76],
+        'front-passenger-backrest': [0.167, 0.62, 0.045, 0.707, 1.20, 0.175],
+        'rear-driver-side-cushion': [-0.707, 0.50, -0.86, -0.167, 0.62, -0.24],
+        'rear-driver-side-backrest': [-0.707, 0.62, -0.955, -0.167, 1.20, -0.825],
+        'rear-passenger-side-cushion': [0.167, 0.50, -0.86, 0.707, 0.62, -0.24],
+        'rear-passenger-side-backrest': [0.167, 0.62, -0.955, 0.707, 1.20, -0.825],
+      }
+      for (const solid of interior.solids.filter(value => value.id !== 'steering-wheel')) {
+        const expected = expectedInteriorBounds[solid.id]
+        assert.ok(expected, `${detail}/${solid.id} has a matching analyzer descriptor`)
+        const actual = [solid.bounds.min.x, solid.bounds.min.y, solid.bounds.min.z,
+          solid.bounds.max.x, solid.bounds.max.y, solid.bounds.max.z]
+        for (let coordinate = 0; coordinate < expected.length; coordinate += 1)
+          assert.ok(Math.abs(actual[coordinate]! - expected[coordinate]!) <= 1e-6,
+            `${detail}/${solid.id} actual geometry bound ${coordinate}: ${actual[coordinate]} vs ${expected[coordinate]}`)
+      }
       const steering = interior.solids.find(solid => solid.id === 'steering-wheel')!
       for (const value of [-1, 1]) {
         interior.poseSteering(value)
@@ -309,6 +364,77 @@ test('driver-side glass inside the clipped door region is moving, not a static s
   assert.ok(!result.shellIntersections.some(id => id.startsWith('glass-moving-part:driver-front-glass')))
   assert.equal(result.candidateGeometry, 'clear-for-supplied-capsules')
   assert.deepEqual([result.canBoard, result.authoritativeClearance, result.routeAuthorized], [false, false, false])
+})
+
+test('retained source-cap and windshield contacts are covered by the shell envelopes', () => {
+  for (const detail of ['map', 'street'] as const) {
+    const model = buildVehicle('sedan', { detail })
+    try {
+      const body = model.userData.parts.body.getObjectByName('static-body')
+      if (!(body instanceof THREE.Mesh)) throw new Error(`${detail} sedan static body mesh is missing`)
+      model.object3D.updateMatrixWorld(true)
+      const capPoint = [-0.95, 0.70, -1.30] as const
+      assert.ok(pointToMeshDistance(capPoint, body) < 1e-5, `${detail} actual retained driver-cap triangles contact the fixture`)
+      const cap = analyzeSedanAperture(input([capsule('retained-driver-cap', ...capPoint)]))
+      assert.ok(cap.shellIntersections.includes('retained-driver-cap:driver-cap-retained-rear'))
+
+      const windscreenPoint = [0, 0.94 + (1.755 - 1.4) * 0.59 / 1.06, 1.4] as const
+      const windscreenDistance = pointToMeshDistance(windscreenPoint, body)
+      assert.ok(windscreenDistance > 0.01 && windscreenDistance < 0.04, `${detail} source windshield triangle is near but outside this 1cm capsule: ${windscreenDistance}`)
+      const windshield = analyzeSedanAperture(input([capsule('sloped-windscreen-envelope', ...windscreenPoint, 0.005)]))
+      assert.ok(windshield.shellIntersections.includes('sloped-windscreen-envelope:windscreen-sloped-panel'))
+      assert.deepEqual([windshield.canBoard, windshield.authoritativeClearance, windshield.routeAuthorized], [false, false, false])
+
+      const angle = Math.atan2(0.695 - 1.755, 1.53 - 0.94), glassHeight = Math.hypot(0.695 - 1.755, 1.53 - 0.94)
+      const centerY = (0.94 + 1.53) / 2 - Math.sin(angle) * 0.045
+      const centerZ = (1.755 + 0.695) / 2 + Math.cos(angle) * 0.045
+      for (const x of [-0.817, 0.817]) for (const y of [-glassHeight / 2, glassHeight / 2]) for (const z of [-0.0225, 0.0225]) {
+        const vertex = [x, centerY + Math.cos(angle) * y - Math.sin(angle) * z,
+          centerZ + Math.sin(angle) * y + Math.cos(angle) * z] as const
+        assert.ok(pointToMeshDistance(vertex, body) < 1e-5, `${detail} actual sloped-windscreen vertex is present`)
+        assert.ok(vertex[0] >= -0.817 - 1e-5 && vertex[0] <= 0.817 + 1e-5
+          && vertex[1] >= 0.959 - 1e-5 && vertex[1] <= 1.589 + 1e-5
+          && vertex[2] >= 0.705 - 1e-5 && vertex[2] <= 1.788 + 1e-5, `${detail} sloped-windscreen vertex fits the shell envelope`)
+      }
+      const glassFacePoint = [0, centerY - Math.sin(angle) * 0.0225, centerZ + Math.cos(angle) * 0.0225] as const
+      assert.ok(pointToMeshDistance(glassFacePoint, body) < 1e-5, `${detail} actual sloped-windscreen face contact`)
+      assert.ok(analyzeSedanAperture(input([capsule('sloped-windscreen-face', ...glassFacePoint, 0.001)]))
+        .shellIntersections.includes('sloped-windscreen-face:windscreen-sloped-panel'))
+
+      const oppositeGlassPoint = [detail === 'street' ? 0.986 : 0.966, 1.2, 0.4] as const
+      assert.ok(pointToMeshDistance(oppositeGlassPoint, body) < 1e-5, `${detail} actual opposite-front-glass triangles contact the witness`)
+      const oppositeGlass = analyzeSedanAperture(input([capsule('opposite-front-glass', ...oppositeGlassPoint, 0.001)]))
+      assert.ok(oppositeGlass.shellIntersections.includes('opposite-front-glass:passenger-front-glass'))
+
+      const rearGlassPoint = [0, 1.2 - Math.sin(0.22) * 0.025, -1.367 + Math.cos(0.22) * 0.025] as const
+      if (detail === 'street') assert.ok(pointToMeshDistance(rearGlassPoint, body) < 1e-5, 'street actual static rear-glass triangles contact the witness')
+      const rearGlass = analyzeSedanAperture(input([capsule('rear-window-glass', ...rearGlassPoint, 0.001)]))
+      assert.ok(rearGlass.shellIntersections.includes('rear-window-glass:rear-glass-static'))
+    } finally {
+      model.userData.dispose()
+    }
+  }
+})
+
+test('retained side glass, pillar, shoulder trim, and rear glass stay covered after partition', () => {
+  const cases = [
+    { id: 'front-glass-remainder', point: [-0.966, 1.45, 0.96] as const, match: ':driver-front-glass:retained-z-high' },
+    { id: 'rear-glass-remainder', point: [-0.966, 1.2, -1.214] as const, match: ':driver-rear-glass' },
+    { id: 'b-pillar-remainder', point: [-0.975, 1.49, -0.16] as const, match: ':driver-b-pillar' },
+    { id: 'shoulder-trim-remainder', point: [-1.0, 0.94, -1.5] as const, match: ':driver-shoulder-trim:retained-z-low' },
+    { id: 'rear-window-static', point: [0, 1.2, -1.367] as const, match: ':rear-glass-static' },
+    { id: 'roof-shoulder-trim', point: [0, 1.555, -0.18] as const, match: ':roof-shoulder-trim' },
+    { id: 'passenger-front-glass', point: [0.986, 1.2, 0.4] as const, match: ':passenger-front-glass' },
+    { id: 'passenger-rear-glass', point: [0.966, 1.2, -1.214] as const, match: ':passenger-rear-glass' },
+    { id: 'passenger-b-pillar', point: [0.975, 1.2, -0.16] as const, match: ':passenger-b-pillar' },
+    { id: 'passenger-shoulder-trim', point: [1.0, 0.94, -1.5] as const, match: ':passenger-shoulder-trim' },
+    { id: 'passenger-pillar-trim', point: [1.002, 0.88, -0.18] as const, match: ':passenger-pillar-trim' },
+    { id: 'passenger-door-handle-trim', point: [1.008, 0.91, 0.04] as const, match: ':passenger-door-handle-trim' },
+  ]
+  for (const fixture of cases) {
+    const result = analyzeSedanAperture(input([capsule(fixture.id, ...fixture.point)]))
+    assert.ok(result.shellIntersections.some(value => value.endsWith(fixture.match)), fixture.id)
+  }
 })
 
 test('aperture boundary failure is blocked and never reported clear', () => {

@@ -1,5 +1,11 @@
 ## 2026-10-10 03:55 UTC — Controller corrections and messaging actor prerequisite
 
+## Justice save integrity and reconnect diagnosis — 10 October 2026, 04:11 UTC
+
+The [Justice source review](agent-plans/integration/justice-evidence-order-root-review.md) confirms a valid evidence-click order can persist a practice record that the next reader rejects. The preserving repair contract retains chronological receipts and admits only fully reconstructible legacy ordering; source-only finding, no live affected-user claim. LIVING owns the existing ONLINE repair. The single [repair ledger](agent-plans/integration/combined-repair-ledger.md) now retains35 IDs and all58 announcement rows unchanged.
+
+The [country reconnect diagnostic](agent-plans/integration/c12-reconnect-diagnostic-root-review.md) is independently pinned: actual canonical timers at0ms/500ms cancel correctly in a controlled fake-browser diagnostic. Original Node24 game suite remains2587PASS/1FAIL/1SKIP; fixture omission is diagnosed but not yet repaired or rerun on changed source. Combined startup limits, five normal browser country journeys and final production remain open. Current quota7%remaining; human<=4%new-work stop retained. No runtime or production change in this checkpoint.
+
 [Exact controller review](agent-plans/integration/c12-controller-root-astra-review.md) requires four corrections before launch: enforced preflight deadlines, both CDP/screenshot bounds, both-origin browser preflight before onboarding, and rendered owned-home arrival. Root independently matched11 published file hashes/lengths and32 public Git pins;30 actual installed/private cloud pins and live ownership remain unproved here. The independent country seal stays accepted at synthetic scope; no normal five-city, funding, restart or new production acceptance is inferred. WORLD retains the sole release queue.
 
 [Startup03d source review](agent-plans/integration/startup-03d-source-review.md) accepts optional fixtures and the delimiter fix only. All three committed generated outputs are unchanged; measured startup closure is still open. Final3e3 CI remains failed, and the latest3a Brotli result remains139bytes over its unchanged cap.

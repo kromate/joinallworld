@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-10T04:10:48.627516+00:00",
+  "originalPublicCommit": "7d2fd3feb14cd0befcd3246a8f43abc853bc19c3",
+  "source": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "combinedSource": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "decision": "ACCEPT_SCOPED_HARNESS_DIAGNOSIS_ORIGINAL_SUITE_REMAINS_FAIL",
+  "rawPins": [
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-node24-game-original-receipt.json",
+      "bytes": 2563,
+      "sha256": "4d8dfc71908470ef4295d3e23a8a9d48936b30e1a4ee16935bfaf04359b7ca04"
+    },
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-node24-game-original.log",
+      "bytes": 274298,
+      "sha256": "8eb04afa596a9fed3c647947d0e36945104623bf0be9837c98efeedf5b8fa208"
+    },
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-node24-game-failure-classification.json",
+      "bytes": 959,
+      "sha256": "20666404074ce68de17a8a52f601e25ca26812f8fd26766c32888efef843d219"
+    },
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-reconnect-zero-delay-diagnostic.mjs",
+      "bytes": 2356,
+      "sha256": "0c4d63c7d55e50f22a0f147e4c881a0d8cfd81434ffd2743f1f9cfc7c7f2e5b1"
+    },
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-reconnect-zero-delay-receipt.json",
+      "bytes": 2632,
+      "sha256": "8c185d61e841652b532a48c7327b5c5577b9c48ef1d1e47fd843a8dfc3072765"
+    },
+    {
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12-reconnect-zero-delay.log",
+      "bytes": 823,
+      "sha256": "dd30433f052415b7d6656d1880d8e5e0cf9021fffbb1374e3cfcaf6f6e2bd244"
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "src/community.ts",
+      "bytes": 48659,
+      "sha256": "f5032ab3b12656ad4b85e4be1296827d441165645da8e4ec86a3b17833dd1eb4",
+      "c12MatchesCombined": true
+    },
+    {
+      "path": "src/community.test.ts",
+      "bytes": 38319,
+      "sha256": "76d5b1e6d68c56c7a3d5e0f1e843f1855837df3d67c578ba7c697c8fe120fa1f",
+      "c12MatchesCombined": true
+    },
+    {
+      "path": "src/reconnect.ts",
+      "bytes": 291,
+      "sha256": "eee061fc76e853fcdb76ebeec6adc7fab6cac79e2eb8f9d62ab314bfe3e82189",
+      "c12MatchesCombined": true
+    }
+  ],
+  "originalCounts": {
+    "tests": 2589,
+    "pass": 2587,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 1
+  },
+  "originalExit": 1,
+  "diagnosticExit": 0,
+  "diagnosticDurationSeconds": 0.295433,
+  "diagnosticCases": [
+    {
+      "jitter": 0,
+      "delayMs": 0
+    },
+    {
+      "jitter": 0.5,
+      "delayMs": 500
+    }
+  ],
+  "accepted": "Real canonical createCommunity schedules and clears each timer; no additional substitute socket after destroy during25ms observation. Existing test excludes explicit0 delay from its Map before asserting size1.",
+  "limits": "Controlled globals/fake socket, not real browser, provider or entire reconnect fault coverage. Original random sample was not instrumented; mechanism is reproduced, not a historical RNG trace. Receipt per-file before/after maps are empty; clean-after/source-unchanged is owner-recorded only.",
+  "next": "Existing ONLINE country writer repairs fixture only; preserve runtime jitter/backoff/assertions. Capture legitimate0 after initialization or scoped bookkeeping; keep real async tick settlement and global restoration. Run changed-source focused checks before final exact combined gates.",
+  "runtimeEdited": false,
+  "fullSuiteRerun": false,
+  "productionAcceptance": false,
+  "rootExecution": false
+}

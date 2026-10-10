@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "status": "SOURCE_ONLY_NOT_APPROVED",
+  "createdAt": "2026-10-10T04:17:08.519113+00:00",
+  "controller": {
+    "sha256": "4d31fbf5ab809953a2f44d0bed671db6d55f4f954ff6fc1e5ab5763251347042",
+    "bytes": 62346,
+    "maxBytes": 62346
+  },
+  "ownerHelper": {
+    "sha256": "1968cd84614cf06c89166f605089db611fd91f129a029557ce623c96846e3201",
+    "bytes": 27428,
+    "maxBytes": 27428
+  },
+  "preservedV1Sha256": "214e77832e8b8d09cb4ecfa0c2565f52fabc1ec20dd3803a67c96efc2c74decf",
+  "controllerPinsSha256": "d266e16dfdc2b132d51992bd9ae69b652c9c6afcec05f3d34916b27028f97721",
+  "ownerPinsSha256": "90548b5f5ad2952dae4fc9135e1a1fb23d7665456fab927a02d1f98699c4815f",
+  "fullReviewRead": {
+    "commit": "830c3beb",
+    "sha256": "0806da9758878e9f6a127ca8688d436e52fb4c28827b8f3efbb3ba96925838c1"
+  },
+  "newLocalGitSourcePinsVerified": 23,
+  "syntaxChecks": [
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/country-controller.v3.mjs",
+      "command": [
+        "node",
+        "--check",
+        "/workspace/remote-verification/worker-results/c1-third-five/astra-controller/country-controller.v3.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nodeVersion": "v24.19.0"
+    },
+    {
+      "path": "/workspace/remote-verification/worker-results/c1-third-five/astra-owner-helper/world-owner-mailbox.v1.mjs",
+      "command": [
+        "node",
+        "--check",
+        "/workspace/remote-verification/worker-results/c1-third-five/astra-owner-helper/world-owner-mailbox.v1.mjs"
+      ],
+      "exitCode": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nodeVersion": "v24.19.0"
+    }
+  ],
+  "runtime": {
+    "controllerExecuted": false,
+    "ownerHelperExecuted": false,
+    "stageStarted": false,
+    "browserStarted": false,
+    "sqliteOpened": false,
+    "networkRequests": false,
+    "creditsDispatched": false,
+    "signalsSent": false,
+    "buildOrSealRerun": false
+  },
+  "quotaLatestDelegatedRemainingPercent": 7,
+  "quotaMeasurementNotLocallyToolAttested": true,
+  "preservedV2Sha256": "1da6928f223e8d3bc5545638c0102edd98818c6fc6c81e8e6470fd843efcc5db",
+  "v3Change": "Independent watchdog token-bound end-to-end screenshot deadline, in addition to every-command 10s cap."
+}

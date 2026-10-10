@@ -1,0 +1,55 @@
+{
+  "observedAt": "2026-10-10T01:55:45.272776+00:00",
+  "publication": "5708bf23f99481b60d50965dcb359de521988036",
+  "reviews": [
+    {
+      "unit": "living-d38-boundary",
+      "source": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
+      "exit": 0,
+      "node": "v24.19.0",
+      "duration_seconds": 2.307279,
+      "rawLogSha256": "0045d7b7e45b8bd3896ead7310c9c6150e548e69bd8929ed3600de5fdaf0a824",
+      "summary": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "skipped": 0
+      },
+      "measures": [],
+      "sourcePinMapsPresent": false
+    },
+    {
+      "unit": "living-final-safety/budget-final",
+      "source": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "exit": 1,
+      "node": "v24.19.0",
+      "duration_seconds": 95.182974,
+      "rawLogSha256": "32a47a189dd81da10fdee988cf256c0cfa8498e0346f644c96dfa4f9f12f0e5d",
+      "summary": {},
+      "measures": [
+        "ok   STARTUP_RAW              614094  budget 615,000 raw bytes (max)  largest over 50 cities (lagos)",
+        "ok   STARTUP_GZIP             222695  budget 223,000 gzip bytes (max)  largest over 50 cities (lagos)",
+        "OVER STARTUP_BROTLI           195610  budget 195,600 brotli bytes (max) [provisional]  largest over 50 cities (lagos)",
+        "1 budget(s) exceeded: STARTUP_BROTLI"
+      ],
+      "sourcePinMapsPresent": false
+    },
+    {
+      "unit": "living-final-safety/smoke-final",
+      "source": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+      "exit": 0,
+      "node": "v24.19.0",
+      "duration_seconds": 3.200696,
+      "rawLogSha256": "b867a906b0895c00c5fdc84b652c75f6b2b253cd3811df41697bea4347f26548",
+      "summary": {
+        "tests": 16,
+        "pass": 16,
+        "fail": 0,
+        "skipped": 0
+      },
+      "measures": [],
+      "sourcePinMapsPresent": false
+    }
+  ],
+  "scope": "Exactd38 focusedservice18PASS and1b smoke16PASS independentlyrawhashmatched;1b195610BrotliFAILretained. No hostH1H2H3, unchangedbytecensus, combinedbudget, native, rollbackartifact or production acceptance."
+}

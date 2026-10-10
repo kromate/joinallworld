@@ -1,0 +1,53 @@
+{
+  "decision": "APPROVE_COUNTER_TEST_SOURCE_DELTA_ONLY",
+  "candidate": "d38baceb29a7618b4a5ed06fe7075065d01488fa",
+  "base": "1b225b90faf375b8195058ee17257e7d31cf8a98",
+  "alreadyReviewedHostTests": "f4ba55eb66d5bd1171be64d170a6d4753d8a033d",
+  "scopeCorrection": "Candidate versus base changes seven files: six previously reviewed e8/f4 host and host-test files plus driving-service.test.ts. Candidate versus f4 changes only driving-service.test.ts with 91 additions. Do not represent the whole candidate as test-only relative to 1b.",
+  "sha256": {
+    "server/living-world/driving-service.test.ts": "5db571a1305c31f854a6378c66c11950be020d3427258e199268ab05d30380c6",
+    "server/living-world/driving-service.ts": "ef7b0bc85c9fd34a467b85f39fa8450d248476315806d47a566a981a6590c319",
+    "server/test-fixture.ts": "d376084667d9978e37a0d07d1d374c190c153cc368759a16bda38833dd0199a9"
+  },
+  "sourceFindings": [],
+  "acceptedCoverage": [
+    {
+      "lines": "606-663",
+      "claim": "Four sequential scenarios cover v1/v2 crossed with timeout/future watermark. Both revision and nextSequence are placed at MAX_SAFE_INTEGER-1 with coherent prior receipt. A real accepted legacy packet advances both exactly to MAX_SAFE_INTEGER and retains the actual successful receipt. Identical packet then replays successfully with duplicate=true, unchanged complete driving row and max counters. New sequence MAX refuses sequence_exhausted with unchanged row."
+    },
+    {
+      "lines": "618-631",
+      "claim": "v2 fixture is created through a successful explicit forward-gear input before counters are seeded; v1 stays v1. Counter and prior receipt seeding is valid under unchanged strict savedRecord invariants, not proof of organically reaching quadrillions of packets."
+    },
+    {
+      "lines": "666-694",
+      "claim": "One exhausted running v1 row is moved out of its bound location by changing the actor's life to library. Current, start, input, pause, resume and restart each return revision_exhausted and leave the whole driving row unchanged. Every request and subsequent snapshot comparison is awaited before the next request starts."
+    },
+    {
+      "lines": "682-691",
+      "claim": "Final commit replaces already-started promises with deferred functions. There is no async-forEach or unawaited case. Original immediate-promise array could overlap requests despite sequential awaiting; this correction removes that overlap."
+    },
+    {
+      "lines": "18-30; server/test-fixture.ts:67-83",
+      "claim": "Tests use actual Node HTTP server and store with production service implementation; configuredDrivingRoutes explicitly replaces the driving route module to inject trusted ON. This is service boundary coverage, not normal trusted-host wiring coverage."
+    }
+  ],
+  "limits": [
+    "All six route checks assert driving-row nonmutation, not absence of clock reads or global side effects. Start reads ctx.now at service:212 and checks clock at 213/217 before revision guard 220; restart reads/checks clock 254-260 before 261; pause/resume read/check clock 368-369 before 374. Session/life settlement, rate accounting and lifecycle once receipts are outside the snapshot.",
+    "Six-route location mismatch matrix uses one v1 row with stable valid clock. It does not cross all routes with v2, wrong city/actor, backward or invalid clocks. Current unconditionally pauses any running row, so its case alone does not distinguish location mismatch from normal reload.",
+    "Final safe MAX-1 to MAX transition is covered for input with legacy three-field frames on v1 and retained v2. Last-safe pause/current/resume/restart writes and explicit-gear boundary packets are not added here. Existing base separately covers several exhaustion refusals.",
+    "At simultaneous sequence/revision exhaustion, new-input sequence_exhausted masks revision_exhausted by design; base already tests revision-only exhaustion with a low nextSequence.",
+    "Same packet receipt replay is checked at exhaustion. Changed fingerprint at the exhausted sequence and multiple repeated replays are not added here; no need to weaken production validation to add them.",
+    "Reversed-clock fixture sets stored updatedAt/lastInputAt ahead of controlled clock, preserving strict ordering. It exercises future watermark, not actual system clock rollback.",
+    "Tests do not close/reopen hosts, run Worker SQLite, switch OFF, or prove native/DOM behavior. Host review H1-H3 remain independent and open.",
+    "Claimed 18 focused PASS lacks reviewed immutable raw execution receipt at this review time; no runtime PASS accepted here.",
+    "Parent reports base Brotli 195610 bytes exceeds 195600 cap by 10. This review does not remeasure or waive that failure. Changed host/candidate has no inherited budget/build/native acceptance."
+  ],
+  "nextGates": [
+    "Bind actual cloud command/log/exit and exact source pins to this candidate or final corrected integration before accepting runtime results.",
+    "Root verifies all seven-file provenance before integration; existing serialized Living cloud worker owns tests only.",
+    "Retain previously approved host source boundaries and independent H1-H3 follow-up; do not count these service tests as their closure.",
+    "Keep compatible OFF rollback artifact-before-issuance requirement and all exact-candidate compiler/build/budget/sealed/native gates open."
+  ],
+  "actions": "Read immutable Git source/diffs and hashes only. Wrote these /tmp reports. No source edits, local execution, compiler, tests, server, browser, new agent or activation."
+}

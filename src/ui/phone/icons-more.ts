@@ -26,6 +26,8 @@ registerGlyphs({
   neighbours: `<path d="M2.5 12 8 7l5.5 5v8h-11Z" ${F}/><path d="M13.5 13.5 17 10.5l4.5 4V20h-8M6.5 20v-3.5h3V20"/>`,
   // The Business app: a market stall under its awning.
   business: `<path d="M3.5 10 5 4.5h14l1.5 5.5a2.2 2.2 0 0 1-4.3 0 2.2 2.2 0 0 1-4.2 0 2.2 2.2 0 0 1-4.2 0 2.2 2.2 0 0 1-4.3 0Z" ${F}/><path d="M5 12.5V20h14v-7.5M9.5 20v-4.5h5V20"/>`,
+  // The Services app: a shop sign with a star, hanging from a post.
+  showcase: `<rect x="9" y="7.5" width="11.5" height="8" rx="2" ${F}/><path d="M5 20.5V4h8.5M9 7.5V4M3.5 20.5h17"/><path d="M14.8 9.6l.7 1.4 1.5.2-1.1 1 .3 1.5-1.4-.8-1.4.8.3-1.5-1.1-1 1.5-.2Z" ${S}/>`,
   ads: `<rect x="3" y="4.5" width="18" height="10" rx="2" ${F}/><path d="M8 14.5V20M16 14.5V20M6 20h12M7 8.5h7M7 11h4"/>`,
   support: `<circle cx="12" cy="12" r="8.5" ${F}/><circle cx="12" cy="12" r="3.5"/><path d="m6 6 3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5"/>`,
   expand: '<path d="M14 4.5h5.5V10M10 19.5H4.5V14M19.5 4.5 13.5 10.5M4.5 19.5l6-6"/>',

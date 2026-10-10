@@ -412,7 +412,7 @@ Research actual00:23–00:24UTC bounded public originalroot/iGiftGod branch read
 
 Astra actualdurableadapterport contract independently read/published household-durable-adapter-contract.md/json. Root explicitly allocates existingonlinehouseholdworker internal Event.type-to-kind union/sixconstructions foundation correction, preservingwireguard; then actualdurableNode/Workeradapterfiles and sharedtypes/keyed/once patches to solecloudintegrationwriter. Realpersistedconsent/index/receipt/abort/reopen gates; canonicallife/home/pairauthority/lifecycle missingwriters remain nextrequiredunits, no fabricatedconstants/publicrouteactivation/payment/homeuse. Loader-source approval is not householdcompletion.
 
-## 10 October 00:48 UTC finite acceptance
+## 10 October 00:42 UTC finite acceptance
 
 Final driving1b225 source review closes inherited counter guards and preserves D1/D2/D3 source behavior. Seven source hashes independently match. Published raw16service and7computed-state logs match their declared hashes; the component renderer is null, so no DOM visibility is accepted. Host composition, actual Node/Worker durable reopen, compatible OFF rollback and original native journey remain open. See driving-1b225-astra-review.md/json and focused-receipt-review-2026-10-10.json.
 

@@ -93,15 +93,17 @@
     "currentDecision": "Exclusive two-file task approved at ec915; actual worker turn completed at 2bfcbf58. Sol requires contract repairs before integration; see sedan-aperture-2bfcbf58-review.json."
   },
   "sedanImplementationReview": {
-    "source": "2bfcbf584d3eae3b31a645269904d8e4786af29b",
-    "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
-    "actualCompletedTurn": "01a123c6-43ae-7761-a67b-0abe8e754cca",
-    "decision": "REPAIR_BEFORE_INTEGRATION",
-    "review": "sedan-aperture-2bfcbf58-review.json",
-    "execution": "Original focused output terminal0, 9 pass/0 fail/0 skip; no build/native/integration/release.",
-    "contract": "Full hash-verified ec915 MD/JSON delivered through existing coordinator after worker proxy fetch failed.",
-    "remaining": "AP1 nonempty sweep/positive numerical margin, AP2 explicit intervals and phase labels, AP3 actual Float32 geometry/scene fixtures and full final source review.",
-    "routing": "Root direct child send failed; coordinator native handoff succeeded, actual child completion now verified.",
-    "authority": "canBoard/authoritativeClearance/routeAuthorized remain false."
+    "candidate": "4ad527e6ad2751c8e9b4580dba51ad4ae25f5b4b",
+    "review": "sedan-aperture-4ad527e6-review.json",
+    "decision": "REPAIR_AND_VERIFY_BEFORE_INTEGRATION",
+    "focusedPass": 15,
+    "rawHash": "668791ce9ef467aad6aeb66888ee27d16da3661221d0414426e9c29ddd7e1ece",
+    "actorFitAccepted": false,
+    "remaining": [
+      "Actual CPU mesh/continuous scene fixtures",
+      "Primitive phase validation",
+      "Correct static versus moving panel partition"
+    ],
+    "sameWorkerFollowupSent": true
   }
 }

@@ -1,0 +1,76 @@
+{
+  "reviewedAt": "2026-10-10T03:52:44.820273+00:00",
+  "candidate": "4ad527e6ad2751c8e9b4580dba51ad4ae25f5b4b",
+  "base": "2bfcbf584d3eae3b31a645269904d8e4786af29b",
+  "publicBaseline": "3e3e0876fc50f3166a0d0968f8616b577da27870",
+  "allocation": "ec915719f9e9478632b08be0a7a1d38846be4a3e",
+  "decision": "REPAIR_AND_VERIFY_BEFORE_INTEGRATION",
+  "sourceReview": "Complete two files reconstructed from 49 context-verified hunks, final byte hashes match original worker receipt; full source read. No implementation/test/build/browser by Sol.",
+  "files": [
+    {
+      "file": "sedan-aperture.ts",
+      "bytes": 27251,
+      "sha256": "e821730b3a197c1d7261764e0a64a3ba5c228f0e993a72702bae4fb3977b2da3"
+    },
+    {
+      "file": "sedan-aperture.test.ts",
+      "bytes": 17923,
+      "sha256": "446cecce541f9f042ac6129c84268adcf173360c4fb0ffea69e301139f765aa9"
+    }
+  ],
+  "originalExecution": {
+    "commandId": "exec-d77adc75-6efb-4776-a972-9bcdbb37a7f5",
+    "exit": 0,
+    "pass": 15,
+    "fail": 0,
+    "skip": 0,
+    "rawBytes": 7341,
+    "rawSha256": "668791ce9ef467aad6aeb66888ee27d16da3661221d0414426e9c29ddd7e1ece"
+  },
+  "rawEvidenceQualification": "Worker hand-written log hash689850e14c8e36dc0affc453e9eac4292da713ad7a223b019db54c5e42ff76b8 is not byte-exact raw output: waits omitted and scene-test duration changed from0.499558 to0.499016. Original tool output retained with originalExecution hash; 15-pass execution itself is supported.",
+  "progress": [
+    "AP1: empty inputs and margins below0.005 rejected; numeric lower-bound proof remains required.",
+    "AP2: static motion, angle/steering intervals and phase field added. Door bounds use supplied interval; documented steering envelope overapproximates full range.",
+    "AP3: all four actual source files are hashed by the first test; retrieval and pin subgates closed.",
+    "AP4: shell/profile/glass/trim boxes added and original roof/opposite-cap candidates tested, but actual retained/moving correspondence remains open.",
+    "AP5: aperture failure now produces blocked_candidate/aperture_boundary_failure and cannot report clear; regression passed.",
+    "AP6: world domain enlarged and local10m bound retained; translation100m and combined rigid rotations tested."
+  ],
+  "remainingFindings": [
+    {
+      "id": "AP3",
+      "priority": "required",
+      "evidence": "No real Three CPU model construction. Phase test checks source strings and four manually chosen point capsules, not continuous actual normal/reduced entry, clip easing, seat slide, closing, exit and stand paths.",
+      "required": "Using existing pinned authorized dependencies, CPU-construct map/street Float32 geometry, compare descriptor coverage, and derive real path enclosures with margins. Preserve full actor/support/scene authority gaps."
+    },
+    {
+      "id": "AP7",
+      "priority": "required",
+      "evidence": "validCapsule accepts phase through String(phase), allowing an object with custom coercion to execute a callback and masquerade as a phase.",
+      "required": "Require a primitive string enum without coercion; refuse object phases without invoking their callbacks."
+    },
+    {
+      "id": "AP8",
+      "priority": "required",
+      "evidence": "SHELL includes full original front glass and shoulder/handle trim as static boxes. Source splitCarDoorPanels partitions their aperture portions into the hinged door. Source-derived unexecuted [-0.966,1.20,0.40], radius0.02/margin0.005 at fully open door illustrates potential false static blockage.",
+      "required": "Verify actual Float32 retained-versus-articulated partition. Cover the true retained remainder and moving parts without blocking an open doorway with the unsplit original panels."
+    }
+  ],
+  "correction": "Initial handoff incorrectly said four source hashes were absent. Full test read proves they are present; correction delivered to Cloud parent and Integration.",
+  "coordination": {
+    "sameWorker": "01a12301-a53b-74f7-9b18-ac5ec00c205a",
+    "completedTurn": "01a123d8-0746-73c7-ba49-8ef5c2d273cc",
+    "followupSentViaExistingParent": true,
+    "newWorkerSpawned": false
+  },
+  "authority": {
+    "canBoard": false,
+    "authoritativeClearance": false,
+    "routeAuthorized": false,
+    "actorFitAccepted": false,
+    "runtimeRegistered": false,
+    "publishedSourceBySol": false,
+    "deployed": false
+  },
+  "model": "Existing worker configured gpt-6-luna/high; backend actual ID is not exposed. Sol actual runtime gpt-6.1-sol/high was previously independently recorded."
+}

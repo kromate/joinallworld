@@ -2,7 +2,7 @@
   "candidate": "2bfcbf584d3eae3b31a645269904d8e4786af29b",
   "base": "3e3e0876fc50f3166a0d0968f8616b577da27870",
   "decision": "REPAIR_BEFORE_INTEGRATION",
-  "sourceReviewScope": "Actual completed child turn, original execution outputs, initial source prefix plus all subsequent untruncated update hunks; full final file remains requested. No Root runtime test.",
+  "sourceReviewScope": "Complete implementation and test independently reconstructed from all original untruncated add/update events; each hunk context checked and both final byte hashes matched. Original focused output independently hashed. No Root execution.",
   "verifiedExecution": {
     "commandId": "exec-dc4ac44c-d1e5-4dce-8971-a028939df0d8",
     "exitCode": 0,
@@ -32,10 +32,29 @@
     {
       "id": "AP3",
       "priority": "verification gap",
-      "evidence": "9 named tests omit actual entry/exit normal/reduced phase fixtures; initial source add is truncated in Root read_thread, so full final geometry/obstacle algorithms not independently reviewed.",
-      "required": "Return full final files with byte hashes. Verify actual Float32 CPU geometry at map/street details plus source-pinned current entry/sit/slide/door-close/exit/stand trajectories. Reject unproven/invalid descriptions; do not invent an easy trajectory or claim actor-fit."
+      "evidence": "Full final source is now independently read and hash matched. The original nine tests still lack actual CPU construction of map/street Float32 geometry and real continuous normal/reduced entry/exit fixtures.",
+      "required": "Verify actual generated geometry and source-pinned continuous scene paths; full source retrieval is closed. Do not invent an easy path or claim actor fit."
+    },
+    {
+      "id": "AP4",
+      "priority": "required",
+      "evidence": "Original retainedShell is metadata only. Source-derived, unexecuted point candidates [0,1.53,0.3] and [0.95,1.35,0.3], radius0.02/margin0.005 can contact actual roof/opposite cap without an original modeled collision.",
+      "required": "Conservatively cover actual retained shell, glass and trim and verify against CPU-generated geometry."
+    },
+    {
+      "id": "AP5",
+      "priority": "required",
+      "evidence": "Original candidateGeometry ignores apertureFailures. Source-derived unexecuted [-0.95,1.55,0.3], radius0.02/margin0.005 can fail the portal but report clear.",
+      "required": "Failed or unknown portal must never report clear; structured blocked reason and regression."
+    },
+    {
+      "id": "AP6",
+      "priority": "required",
+      "evidence": "Original absolute 10m world coordinates reject equivalent car and actor translated 100m although the contract requires vehicle-relative bounds.",
+      "required": "Separate bounded world precision from 10m body-local bounds; verify translation and rigid rotation equivalence."
     }
   ],
   "authority": "All results must keep canBoard:false, authoritativeClearance:false, routeAuthorized:false; no routes/source registration/build/release claimed.",
-  "model": "Existing worker configured gpt-6-luna/high per prior metadata; actual backend unexposed. Root has not applied override."
+  "model": "Existing worker configured gpt-6-luna/high per prior metadata; actual backend unexposed. Root has not applied override.",
+  "supersededByRepairReview": "sedan-aperture-4ad527e6-review.json"
 }

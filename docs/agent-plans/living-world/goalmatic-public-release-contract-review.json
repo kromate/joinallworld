@@ -1,0 +1,62 @@
+{
+  "decision": "PUBLIC_RELEASE_CODEC_IDENTIFIED_LIVE_INTEGRATION_UNACCEPTED",
+  "sources": [
+    {
+      "url": "https://goalmatic.io/apps/store/goals",
+      "kind": "public release listing",
+      "version": "0.8.8",
+      "observed": "2026-10-10"
+    },
+    {
+      "url": "https://goals.apps.goalmatic.io/assets/useGoalStore-Cp0wf_Tx.js",
+      "bytes": 44225,
+      "sha256": "e4f09da1dadadf8457ad22649294acde098b29df20aebdb80c753d9cf15c6469",
+      "kind": "published client codec and data adapter"
+    },
+    {
+      "url": "https://goals.apps.goalmatic.io/assets/goals-D2mzJHwc.js",
+      "bytes": 11017,
+      "sha256": "d9c2c95997df79ecd9573bdf3b9a6bc5e3ccf0eb81df95be9e9f02dae0a4144b",
+      "kind": "published domain helpers"
+    },
+    {
+      "url": "https://goals.apps.goalmatic.io/",
+      "bytes": 61385,
+      "sha256": "ad7db73443d49fd93e35cde93e1c2ef61690667ea720c7aa35736564040de278",
+      "kind": "anonymous HTML and injected public data SDK"
+    }
+  ],
+  "observedWriteFields": [
+    "title",
+    "parent_id",
+    "notes",
+    "labels_json",
+    "priority",
+    "status",
+    "progress_mode",
+    "manual_progress",
+    "target_value",
+    "current_value",
+    "target_unit",
+    "target_date",
+    "focus_date",
+    "scheduled_start",
+    "duration_minutes",
+    "recurrence_json",
+    "sort_order",
+    "calendar_event_id",
+    "active_focus_json",
+    "history_json"
+  ],
+  "publicResource": "Logical Goals table and Goals assistant, as listed by public release; no installed physical binding read.",
+  "observedCompatibilityGap": "The published client calls GoalmaticData.update with table key, record ID and data, without revision/idempotency options. The injected SDK supports optional expectedRevision/idempotencyKey, but the observed client codec does not retain revision. Static source is insufficient to prove safe concurrent milestone writes.",
+  "remaining": [
+    "Actual installed release manifest field definitions and authoritative table binding",
+    "Selected existing workspace/record and ordinary explicit user consent",
+    "Permission and authentication scope for a revision-checked idempotent integration",
+    "Production backend and installed-client compatibility, sandbox conflict/replay/revoke/reconnect proof",
+    "Durable game-event producer, target-bound outbox and minimal consented destination policy"
+  ],
+  "safety": "No JS executed, session acquired, installation created, consent granted, credits used, private records read or remote write/deployment performed. Static client examples are not user records. Private repository source/contracts remain outside this public repository.",
+  "adapter": "Existing server/living-world/sync.ts disabledMilestonePublisher remains side-effect-free; no live mode or runtime registration added."
+}

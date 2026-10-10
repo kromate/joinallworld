@@ -1,0 +1,69 @@
+{
+  "observedAtUtc": "2026-10-10T00:19:03.426641+00:00",
+  "sourceSha": "6769279eb4a573e8bec4a8eb94a72ef7f911389e",
+  "branch": "codex/cloud-living-replay-repair-20261010",
+  "decision": "MODIFY_NOT_INTEGRATION_OR_ACTIVATION_ACCEPTANCE",
+  "sourcePins": {
+    "server/living-world/driving-service.ts": {
+      "sha256": "7e7abcb72ddfe2dcbde041e6faaf48c51b336ec1e01e5bff07eded5329282b61",
+      "bytes": 27707
+    },
+    "server/living-world/driving-service.test.ts": {
+      "sha256": "0ef67a228afa40a64fd3a93d78d488263bc0fe5d0e852af1c86deae7d801fce9",
+      "bytes": 52343
+    },
+    "src/app/features/living-world/DrivingApp.vue": {
+      "sha256": "b17534eb138d16ebbc1b611e48021974e562a9545361eb4380f0c51fa6aaa875",
+      "bytes": 69587
+    },
+    "src/app/features/living-world/practiceIdentity.test.ts": {
+      "sha256": "5ddf6152b0322c94aad447f2afa05ee2a782ccde3f372ba12fe600753886f6ae",
+      "bytes": 43561
+    },
+    "src/game/living-world/driving.ts": {
+      "sha256": "eceefd4facee9e5085a45e2e691a32c87be94851b518ff2fce012c9dc43f9ded",
+      "bytes": 23374
+    },
+    "src/game/living-world/driving.test.ts": {
+      "sha256": "a959a8376a5fb3b71153f4af2dc6dd21213e294968daa41e49e06b0204a0e15e",
+      "bytes": 22062
+    }
+  },
+  "rootRead": "Entire d7-to-676 four-file diff, selected capability/adoption/transmission source; no execution claimed.",
+  "publicationReconciliation": "Initial SHA fetch not-our-ref; subsequent actual published branch census and branch fetch succeeded. Initial failure preserved; no worker restart.",
+  "findings": [
+    {
+      "id": "F1",
+      "status": "Source ordering repaired; runtime scope pending log review",
+      "evidence": "Strict row/context/journey before lastPacket; retained success/conflict and current-sequence checks now precede clock/timeout writes. Old OFF explicit sequence returns sequence_conflict. Added ON explicit/legacy timeout and reversed-clock full-row checks."
+    },
+    {
+      "id": "F2-held",
+      "status": "Source repaired; reported component PASS awaiting actual log review",
+      "evidence": "hadCapability now revokes ordinary held throttle on capability loss; fixture expects inactive, empty held/pending frames and automatic pause."
+    },
+    {
+      "id": "F2-display",
+      "status": "OPEN",
+      "priority": "P2",
+      "path": "src/app/features/living-world/DrivingApp.vue",
+      "line": 816,
+      "evidence": "Canonical transmission status still v-if reverseGearControls; OFF hides authoritative Reverse even while canonical state remains reverse. Permission controls and canonical direction display need separate conditions.",
+      "acceptance": "Current OFF response revokes controls immediately, preserves canonical Reverse status until authoritative stop/change; meaningful mounted DOM assertion before delayed pause and after current reconciliation."
+    },
+    {
+      "id": "F3",
+      "status": "OPEN",
+      "evidence": "Compatible OFF reader/writer rollback image and durable Node/Worker/native reopen not accepted; worker explicitly leaves artifact compatibility open."
+    }
+  ],
+  "workerReportedTests": {
+    "service": 15,
+    "component": 7,
+    "skips": 0,
+    "evidenceMdSha256": "2deb4817d1fbfc200c3392e5813e22abab302d03b621ae73a769f54c9f4c597e",
+    "actualLogsIndependentlyRead": false
+  },
+  "next": "Existing Integration Astra final review, cloud exact compiler/build/log publication, existing Luna scoped display repair if confirmed, compatible rollback and native recovery. Keep pure frozen files/default OFF/original score unchanged.",
+  "remoteModelAssignment": "Requested Luna; accepted spawn/runtime receipt still pending, not inferred from name."
+}

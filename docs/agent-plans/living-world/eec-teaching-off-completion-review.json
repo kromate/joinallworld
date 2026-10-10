@@ -1,0 +1,194 @@
+{
+  "observedAtUtc": "2026-10-10T00:19:03.426641+00:00",
+  "decision": "ACCEPT_SCOPED_ORIGINAL_LESSON_OFF_COMPLETION_AND_OWNER_HTTP_REPLAY",
+  "sourceSha": "eec14690544a4646e4cd8a5ad280d61bbe2709ca",
+  "packageDigest": "96258b60dd55919156e7723a55d9463ada26aba68c54a3a02d462cfac76be1ad",
+  "receipts": {
+    "operator": {
+      "artifact": "allworld-eec-native-off-final.json",
+      "sha256": "a0147b6e596fb9234133cfaed0e75b4a01613775e9853dd49fdd9357c31af710",
+      "bytes": 10673
+    },
+    "ready": {
+      "artifact": "native-eec-off-900-ready.json",
+      "sha256": "0f098e09dccce794e4bb94a968f09e4d03c9065d6e56a61b65bdc9f688ba5245",
+      "bytes": 1678
+    },
+    "before": {
+      "artifact": "native-eec-off-900-before-actors.json",
+      "sha256": "822fedec51afba6baf441587b126d05c2e1792e769a35237242fa428b8191d75",
+      "bytes": 13180
+    },
+    "after": {
+      "artifact": "native-eec-off-900-after-actors.json",
+      "sha256": "f4f44771e7bad0d7bbf55798535cd56b18dc889ecadf6edc1db60b8e33952a99",
+      "bytes": 13795
+    },
+    "replay": {
+      "artifact": "native-eec-off-900-replay.json",
+      "sha256": "fdbc3be1b58f680d9a8e9c2b68dd6c1a39c44d5e2891f39a682759987e7e11e1",
+      "bytes": 1189
+    }
+  },
+  "actualOperatorModel": {
+    "model": "gpt-6-astra",
+    "effort": "medium",
+    "runtimeTimestamp": "2026-10-10T00:07:49.481Z",
+    "turnId": "01a12323-299a-73b1-9427-25ad9b20399c",
+    "verifiedFrom": "Existing local turn_context metadata only"
+  },
+  "nativeUi": {
+    "wrongFinalPaidNothing": true,
+    "correctFinalFictionalCashDelta": 3000,
+    "careerPerformance": [
+      50,
+      60
+    ],
+    "charismaDisplayedProgress": [
+      0,
+      8
+    ],
+    "reloadRetainedCompletion": true,
+    "exactNumericXpDeltaAccepted": false,
+    "naturalAdditionalEffects": [
+      "Gem found1of3 today",
+      "Wish granted Finish a shift +3",
+      "Career incident appeared; no incident choice selected"
+    ]
+  },
+  "rootIndependentSanitizedHashComparisons": [
+    {
+      "role": "A",
+      "sameActor": true,
+      "identityHashesUnchanged": true,
+      "homeStorageUnchanged": true,
+      "protectedChangedKeys": [
+        "cash",
+        "social"
+      ],
+      "cashDelta": 3000,
+      "completedShifts": [
+        0,
+        1
+      ],
+      "careerGenerationUnchanged": true,
+      "wholeDrivingRecordUnchanged": true,
+      "receiptComparisons": {
+        "action_receipts": {
+          "beforeCount": 44,
+          "afterCount": 46,
+          "oldRowsPreservedWithMultiplicity": true,
+          "oldRowsExactPrefix": true,
+          "sameOrderedDigest": false
+        },
+        "once_receipts": {
+          "beforeCount": 8,
+          "afterCount": 8,
+          "oldRowsPreservedWithMultiplicity": true,
+          "oldRowsExactPrefix": true,
+          "sameOrderedDigest": true
+        },
+        "wallet_effects": {
+          "beforeCount": 17,
+          "afterCount": 18,
+          "oldRowsPreservedWithMultiplicity": true,
+          "oldRowsExactPrefix": true,
+          "sameOrderedDigest": false
+        }
+      },
+      "socialAttribution": {
+        "ownerReversedOnlyEarnedAndShiftRumour": true,
+        "reportedReverseHashMatchesIndependentlyReadBefore": true
+      }
+    },
+    {
+      "role": "B",
+      "sameActor": true,
+      "identityHashesUnchanged": true,
+      "homeStorageUnchanged": true,
+      "protectedChangedKeys": [],
+      "cashDelta": 0,
+      "completedShifts": [
+        0,
+        0
+      ],
+      "careerGenerationUnchanged": true,
+      "wholeDrivingRecordUnchanged": true,
+      "receiptComparisons": {
+        "action_receipts": {
+          "beforeCount": 12,
+          "afterCount": 12,
+          "oldRowsPreservedWithMultiplicity": true,
+          "oldRowsExactPrefix": true,
+          "sameOrderedDigest": true
+        },
+        "once_receipts": {
+          "beforeCount": 0,
+          "afterCount": 0,
+          "oldRowsPreservedWithMultiplicity": true,
+          "oldRowsExactPrefix": true,
+          "sameOrderedDigest": true
+        },
+        "wallet_effects": {
+          "beforeCount": 8,
+          "afterCount": 8,
+          "oldRowsPreservedWithMultiplicity": true,
+          "oldRowsExactPrefix": true,
+          "sameOrderedDigest": true
+        }
+      },
+      "socialAttribution": {
+        "unchanged": true
+      }
+    }
+  ],
+  "ownerCanonicalHttpReplayWitness": {
+    "actualNativeIntentFingerprintMatchedBeforeRequest": true,
+    "httpStatus": 200,
+    "ok": true,
+    "duplicate": true,
+    "code": "shift_completed",
+    "cashUnchangedByReplay": true,
+    "walletRowsUnchangedByReplay": true,
+    "actionAndOnceRowsUnchangedByReplay": true,
+    "originalCompletionRowUnchanged": true,
+    "bothActorsIdentityProtectedHomeAndSchoolUnchangedByReplay": true,
+    "newActorsGrantsLessonsResetsOrDirectStoreWrites": false
+  },
+  "replayScope": "One canonical /api/action POST of successful native final-answer ID and bound intent using existing actor auth. No native UI retry control existed; this is owner HTTP replay, not browser replay. Root did not access credentials or raw store.",
+  "mobile": {
+    "widths": [
+      390,
+      320
+    ],
+    "appOwnedLumoHitConfirmed": true,
+    "externalOverlayDistinctAndPreserved": true,
+    "correctedCompanionArtifactNativePass": false,
+    "physicalDeviceProof": false
+  },
+  "cleanup": {
+    "ownedTabId": "1412594553",
+    "tabClosed": true,
+    "closeEvent": {
+      "event": "close owned OFF tab",
+      "before": "2026-10-10T00:10:29.903Z",
+      "after": "2026-10-10T00:10:29.914Z"
+    },
+    "viewportReset": true,
+    "beforeHardCutoff": true,
+    "unrelatedTabsPreserved": true,
+    "worldServerNotInterrupted": true
+  },
+  "stageCleanup": "Browser lease released; WORLD stage exec32810/PID27474 actually live at Root00:17 observation, fixed expiry00:21:04.823. Owner final stage/store cleanup receipt pending.",
+  "remaining": [
+    "Numeric XP delta lacks before snapshot; do not claim25",
+    "OFF-issued unmarked new shift and new-ID stale-final refusal remain unverified",
+    "Prospective live teaching deployment/observation pending",
+    "Original full connected journey, physical-phone/multiplayer and later programme remain incomplete"
+  ],
+  "production": {
+    "sourceSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+    "teachingStarts": "OFF",
+    "newDeployment": false
+  }
+}

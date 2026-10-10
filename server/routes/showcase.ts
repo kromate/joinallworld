@@ -3,7 +3,7 @@
  * Showcase shops under /api/showcase/ (docs/SHOWCASE.md). Browsing is public; the seller's calls need a publishing account
  * (the stall conditions plus an adult's own word); `go` needs a signed-in adult and is the only call that returns a link.
  *
- *   GET  /api/showcase/directory?city&category&q&after   cards, newest first, paged
+ *   GET  /api/showcase/directory?city&venue&category&q&after   cards, newest first, paged
  *   GET  /api/showcase/:id                               one shop page
  *   GET  /api/showcase/photo/:id                         a photo's bytes (public photos of live shops; the owner sees all of theirs)
  *   GET  /api/showcase/mine                              the caller's shop with their own links, status and upload allowance

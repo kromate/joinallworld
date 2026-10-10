@@ -131,7 +131,7 @@ export function showcaseService(ctx: RouteContext) {
   return {
     trust, gate, buyerGate, blocked, isPublic, visible, card, view, get,
     page(db: Db, query: URLSearchParams, viewer?: string): ShowcasePage {
-      const city = query.get('city'), category = query.get('category'), after = query.get('after');
+      const city = query.get('city'), venue = query.get('venue'), category = query.get('category'), after = query.get('after');
       const q = searchable((query.get('q') ?? '').slice(0, SHOWCASE.search));
       if (after && !/^SC-\d{1,16}$/.test(after)) throw ctx.fail(400, 'invalid_cursor');
       const below = after ? idNumber(after) : Infinity;
@@ -140,7 +140,7 @@ export function showcaseService(ctx: RouteContext) {
       let more = false;
       for (const id of ordered) {
         const shop = peekShowcase(db).shops[id];
-        if (!isShop(shop) || shop.id !== id || (city && shop.city !== city) || (category && shop.category !== category)) continue;
+        if (!isShop(shop) || shop.id !== id || (city && shop.city !== city) || (venue && shop.venue !== venue) || (category && shop.category !== category)) continue;
         if (q && !searchable([shop.name, shop.sign, ...shop.services.map((item) => item.label)].join(' ')).includes(q)) continue;
         if (!isPublic(db, shop, viewer)) continue;
         const face = card(db, shop);

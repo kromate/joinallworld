@@ -21,6 +21,7 @@ import { TRAVEL_PANELS } from './travel/register.ts'
 import { ACCOUNT_PANELS } from './account/register.ts'
 import { COMMERCE_PANELS } from './commerce/register.ts'
 import { BUSINESS_PANELS } from './business/register.ts'
+import { SHOWCASE_PANELS } from './showcase/register.ts'
 import { POLITICS_PANELS } from './politics/register.ts'
 import { ADMIN_PANELS } from './admin/register.ts'
 import { LIVING_WORLD_PANELS } from './living-world/register.ts'
@@ -96,4 +97,4 @@ export const buy = lazyPanel('buy', 'Buy', 'nav', bodyLoader('home/BuyMode'), {
   enabled: (state) => social.me?.visiting ? 'Leave the visit before rearranging your furniture' : state.stories?.running ? 'End your scene before rearranging furniture' : state.location === 'home' || 'Go home to buy furniture',
 })
 
-export const NATIVE_PANELS: readonly VuePanel[] = [captureChip, landPanel, stories, storyChip, neighbourhoodPanel, capture, bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...GAMES_PANELS, ...CAMPUS_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS, ...ACCOUNT_PANELS, ...BUSINESS_PANELS, ...COMMERCE_PANELS, ...POLITICS_PANELS, ...ADMIN_PANELS, ...LIVING_WORLD_PANELS]
+export const NATIVE_PANELS: readonly VuePanel[] = [captureChip, landPanel, stories, storyChip, neighbourhoodPanel, capture, bank, messages, support, jobs, career, statement, invest, houses, cars, groceries, health, goals, profile, needs, skills, settings, boutique, healthChip, weatherChip, goalChip, homeChip, buy, ...CIVIC_APPS, ...CIVIC_HUD, ...GROWTH_PANELS, ...GROWTH_HUD_PANELS, ...TABLES_PANELS, ...GAMES_PANELS, ...CAMPUS_PANELS, ...WORLD_PANELS, ...SOCIAL_PANELS, ...START_PANELS, ...TRAVEL_PANELS, ...ACCOUNT_PANELS, ...BUSINESS_PANELS, ...SHOWCASE_PANELS, ...COMMERCE_PANELS, ...POLITICS_PANELS, ...ADMIN_PANELS, ...LIVING_WORLD_PANELS]

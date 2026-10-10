@@ -12,7 +12,7 @@ type Receipt = { clientId: string }
 type Result = Ok<{ ok: boolean; code: string; id?: string; revision?: number; status?: string; duplicate?: true; reason?: string }>
 
 export interface ShowcaseHttpRoutes {
-  'GET /api/showcase/directory': { query: { city?: string; category?: string; q?: string; after?: string }; response: Ok<ShowcasePage>; errors: ReadError }
+  'GET /api/showcase/directory': { query: { city?: string; venue?: string; category?: string; q?: string; after?: string }; response: Ok<ShowcasePage>; errors: ReadError }
   'GET /api/showcase/mine': { response: Ok<ShowcaseMine>; errors: ReadError }
   'GET /api/showcase/photo/:id': { params: { id: string }; response: Ok<Record<string, never>>; errors: ReadError | 'unknown_photo' }
   'GET /api/showcase/:id': { params: { id: string }; response: Ok<{ shop: ShowcaseView }>; errors: ReadError }

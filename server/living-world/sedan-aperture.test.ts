@@ -2,6 +2,9 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
+import * as THREE from 'three'
+import { buildVehicle, poseVehicle } from '../../src/models/vehicles/index.ts'
+import { createSedanInterior } from '../../src/models/vehicles/sedan-interior.ts'
 import {
   analyzeSedanAperture,
   SEDAN_APERTURE_SOURCE,
@@ -78,6 +81,74 @@ test('source-pinned driver cap partition matches Float32 emission coordinates', 
   })
   assert.equal(Object.isFrozen(geometry.doorSweepBounds.min), true)
   assert.equal(Object.isFrozen(geometry.retainedShell.sideGlassAndPillar[0]!.center), true)
+})
+
+test('actual map and street CPU sedan/interior/door partitions emit bounded Float32 meshes', () => {
+  for (const detail of ['map', 'street'] as const) {
+    const model = buildVehicle('sedan', { detail })
+    const interior = createSedanInterior(model)
+    try {
+      const body = model.userData.parts.body
+      const staticBody = body.getObjectByName('static-body')
+      const doorRoot = model.userData.parts.doors[0]
+      const doorPanel = doorRoot?.getObjectByName('door-panel')
+      if (!(staticBody instanceof THREE.Mesh) || !(doorPanel instanceof THREE.Mesh)) throw new Error(`${detail} sedan meshes are missing`)
+      const staticPosition = staticBody.geometry.getAttribute('position')
+      const doorPosition = doorPanel.geometry.getAttribute('position')
+      const interiorPosition = interior.geometry.getAttribute('position')
+      assert.ok(staticPosition.array instanceof Float32Array)
+      assert.ok(doorPosition.array instanceof Float32Array)
+      assert.ok(interiorPosition.array instanceof Float32Array)
+      assert.ok(staticPosition.count > 0 && doorPosition.count > 0 && interiorPosition.count > 0)
+      assert.ok(Math.abs(doorRoot.position.x + 0.96) <= 1e-12)
+      assert.ok(Math.abs(doorRoot.position.y - 0.93) <= 1e-12)
+      assert.ok(Math.abs(doorRoot.position.z - 0.89) <= 1e-12)
+      poseVehicle(model, { door: 0 })
+      model.object3D.updateMatrixWorld(true)
+      const hasWorldVertex = (mesh: THREE.Mesh, expected: readonly [number, number, number]): boolean => {
+        const attribute = mesh.geometry.getAttribute('position')
+        for (let index = 0; index < attribute.count; index += 1) {
+          const point = new THREE.Vector3().fromBufferAttribute(attribute, index).applyMatrix4(mesh.matrixWorld)
+          if (point.distanceToSquared(new THREE.Vector3(...expected)) < 1e-10) return true
+        }
+        return false
+      }
+      const movingGlassVertex: readonly [number, number, number] = detail === 'street' ? [-0.986, 1.45, 0.89] : [-0.966, 1.45, -0.05]
+      const retainedGlassVertex: readonly [number, number, number] = detail === 'street' ? [-0.986, 1.45, 0.96] : [-0.966, 1.45, -1.214]
+      assert.ok(hasWorldVertex(doorPanel, movingGlassVertex), `${detail} clipped glass remains in the moving door mesh`)
+      assert.ok(hasWorldVertex(staticBody, retainedGlassVertex), `${detail} glass remainder stays in static body mesh`)
+      const modelGeometry = analyzeSedanAperture(input([capsule('actual-mesh-fixture', -2.8, 1, 0.4)])).sourceGeometry!
+      const bounds = modelGeometry.doorSweepBounds
+      for (const door of [0, 0.5, 1]) {
+        poseVehicle(model, { door })
+        model.object3D.updateMatrixWorld(true)
+        for (let index = 0; index < doorPosition.count; index += 1) {
+          const point = new THREE.Vector3().fromBufferAttribute(doorPosition, index).applyMatrix4(doorPanel.matrixWorld)
+          assert.ok(point.x >= bounds.min[0] - 1e-5 && point.x <= bounds.max[0] + 1e-5, `${detail}/${door}/x`)
+          assert.ok(point.y >= bounds.min[1] - 1e-5 && point.y <= bounds.max[1] + 1e-5, `${detail}/${door}/y`)
+          assert.ok(point.z >= bounds.min[2] - 1e-5 && point.z <= bounds.max[2] + 1e-5, `${detail}/${door}/z`)
+        }
+      }
+      const solidIds = interior.solids.map(solid => solid.id)
+      assert.ok(solidIds.includes('cabin-floor') && solidIds.includes('dashboard') && solidIds.includes('driver-cushion') && solidIds.includes('driver-backrest'))
+      assert.equal(solidIds.filter(id => id.endsWith('-cushion')).length, 4)
+      assert.equal(solidIds.filter(id => id.endsWith('-backrest')).length, 4)
+      const steering = interior.solids.find(solid => solid.id === 'steering-wheel')!
+      for (const value of [-1, 1]) {
+        interior.poseSteering(value)
+        for (let vertex = steering.vertexStart; vertex < steering.vertexStart + steering.vertexCount; vertex += 1) {
+          const offset = vertex * 3
+          const x = interiorPosition.getX(vertex), y = interiorPosition.getY(vertex), z = interiorPosition.getZ(vertex)
+          assert.ok(x >= -0.64 - 1e-5 && x <= -0.23 + 1e-5, `${detail}/${value}/steering-x/${offset}`)
+          assert.ok(y >= 0.75 - 1e-5 && y <= 1.11 + 1e-5, `${detail}/${value}/steering-y/${offset}`)
+          assert.ok(z >= 0.40 - 1e-5 && z <= 0.80 + 1e-5, `${detail}/${value}/steering-z/${offset}`)
+        }
+      }
+    } finally {
+      interior.dispose()
+      model.userData.dispose()
+    }
+  }
 })
 
 test('the tapered front rejects a capsule that fits at the aperture center', () => {
@@ -203,6 +274,10 @@ test('source pins, descriptor accessors, capsule bounds, radii, and capsule coun
   const capsuleGetter = Object.defineProperty({ ...capsule('accessor', 0, 0, 0) }, 'radius', { get() { throw new Error('no getter') } })
   assert.equal(analyzeSedanAperture(input([capsuleGetter])).code, 'invalid_descriptor')
   assert.equal(analyzeSedanAperture(input([{ ...capsule('moving', 0, 0, 0), velocity: [1, 0, 0] } as SedanCapsule])).code, 'invalid_descriptor')
+  let coercions = 0
+  const hostilePhase = { toString() { coercions += 1; throw new Error('phase must not be coerced') } }
+  assert.equal(analyzeSedanAperture(input([{ ...capsule('hostile-phase', 0, 0, 0), phase: hostilePhase } as unknown as SedanCapsule])).code, 'invalid_descriptor')
+  assert.equal(coercions, 0)
 })
 
 test('Float32 and explicit margins shrink the opening and grow modeled obstacles', () => {
@@ -223,6 +298,17 @@ test('retained opposite cap and shell profile are checked as conservative obstac
   assert.ok(result.shellIntersections.some(value => value.startsWith('roof-edge-hit:retained-profile-edge-')))
   assert.equal(result.canBoard, false)
   assert.equal(result.authoritativeClearance, false)
+})
+
+test('driver-side glass inside the clipped door region is moving, not a static shell collision', () => {
+  const angle = Math.PI * 0.55
+  const result = analyzeSedanAperture(input([capsule('glass-moving-part', -0.966, 1.2, 0.4)], {
+    doorAngleInterval: [angle, angle],
+  }))
+  assert.equal(result.code, 'ok')
+  assert.ok(!result.shellIntersections.some(id => id.startsWith('glass-moving-part:driver-front-glass')))
+  assert.equal(result.candidateGeometry, 'clear-for-supplied-capsules')
+  assert.deepEqual([result.canBoard, result.authoritativeClearance, result.routeAuthorized], [false, false, false])
 })
 
 test('aperture boundary failure is blocked and never reported clear', () => {
@@ -260,6 +346,8 @@ test('scene phase fixtures preserve normal and reduced motion ordering without a
   for (const phase of ['enter-walk', 'enter-seat', 'exit-slide', 'exit-seat']) assert.ok(source.includes(`phase === '${phase}'`))
   assert.ok(source.indexOf("} else if (phase === 'enter-walk')") < source.indexOf("} else if (phase === 'enter-seat')"))
   assert.ok(source.indexOf("} else if (phase === 'exit-slide')") < source.indexOf("} else if (phase === 'exit-seat')"))
+  const enterWalk = source.slice(source.indexOf("} else if (phase === 'enter-walk')"), source.indexOf("} else if (phase === 'enter-seat')"))
+  assert.match(enterWalk, /reduceMotion \? 0\.24 : 0\.62/)
   const enterSeat = source.slice(source.indexOf("} else if (phase === 'enter-seat')"), source.indexOf("} else if (phase === 'exit-door')"))
   assert.match(enterSeat, /reduceMotion \? 0\.18 : 0\.38/)
   assert.match(enterSeat, /reduceMotion \? 0\.1 : 0\.22/)
@@ -267,21 +355,42 @@ test('scene phase fixtures preserve normal and reduced motion ordering without a
   assert.match(enterSeat, /1 - Math\.max\(0, phaseTime - seatMoveDuration\) \/ doorCloseDuration/)
   const exitSlide = source.slice(source.indexOf("} else if (phase === 'exit-slide')"), source.indexOf("} else if (phase === 'exit-seat')"))
   assert.match(exitSlide, /bodySeat\.[xz].*exitSeat\.[xz]/s)
+  assert.match(exitSlide, /reduceMotion \? 0\.22 : 0\.5/)
   assert.match(exitSlide, /moveActor\(seated, current\.heading, 'sit'/)
   assert.match(exitSlide, /setActorPose\('stand'/)
   const exitSeat = source.slice(source.indexOf("} else if (phase === 'exit-seat')"), source.indexOf("} else if (phase === 'exit-walk')"))
   assert.match(exitSeat, /reduceMotion \? 0\.22 : 0\.35/)
-  const candidates = [
-    capsule('normal-enter-walk', -1.12, 0.8, 0.2, 0.18, 'enter-walk'),
-    capsule('reduced-enter-seat', -0.96, 0.9, 0.42, 0.18, 'enter-seat'),
-    capsule('normal-exit-slide', -0.95, 0.75, 0.42, 0.18, 'exit-slide'),
-    capsule('reduced-exit-seat', -1.4, 0.55, 0.42, 0.18, 'exit-seat'),
-  ].map(item => ({ ...item, provenance: 'scene-anchor-trajectory-only-unverified' }))
-  const result = analyzeSedanAperture(input(candidates))
-  assert.equal(result.code, 'ok')
-  assert.equal(result.canBoard, false)
-  assert.equal(result.authoritativeClearance, false)
-  assert.equal(result.routeAuthorized, false)
+  const model = buildVehicle('sedan', { detail: 'street' })
+  try {
+    const root = model.object3D
+    root.position.set(0, 0, 0); root.rotation.y = 0; root.updateWorldMatrix(true, true)
+    const doorAnchor = model.userData.anchors.door
+    const closedDoorLocal = root.worldToLocal(doorAnchor.getWorldPosition(new THREE.Vector3()))
+    const driver = model.userData.anchors.driver.getWorldPosition(new THREE.Vector3())
+    const door = root.localToWorld(closedDoorLocal.clone())
+    const outward = new THREE.Vector3(-1, 0, 0).transformDirection(root.matrixWorld)
+    const approach = door.clone().addScaledVector(outward, 1.5); approach.y = 0
+    const threshold = door.clone().addScaledVector(outward, 0.2); threshold.y = 0
+    const bodySeat = new THREE.Vector3(driver.x, driver.y - 0.6 * (1.75 / 2.45), driver.z)
+    const thresholdSeat = new THREE.Vector3(threshold.x, bodySeat.y, threshold.z)
+    const exitSeat = door.clone().addScaledVector(outward, 0.6); exitSeat.y = bodySeat.y
+    const exitGround = new THREE.Vector3(exitSeat.x, 0, exitSeat.z)
+    const track = [
+      { phase: 'enter-walk' as const, start: approach, end: threshold, door: [Math.PI * 0.55, Math.PI * 0.55] as const },
+      { phase: 'enter-seat' as const, start: thresholdSeat, end: bodySeat, door: [0, Math.PI * 0.55] as const },
+      { phase: 'exit-slide' as const, start: bodySeat, end: exitSeat, door: [Math.PI * 0.55, Math.PI * 0.55] as const },
+      { phase: 'exit-seat' as const, start: exitSeat, end: exitGround, door: [Math.PI * 0.55, Math.PI * 0.55] as const },
+    ]
+    for (const mode of ['normal', 'reduced'] as const) for (const [index, item] of track.entries()) {
+      const phaseCapsule: SedanCapsule = {
+        id: `${mode}-${item.phase}`, start: [item.start.x, item.start.y, item.start.z], end: [item.end.x, item.end.y, item.end.z],
+        radius: 0.02, phase: item.phase, provenance: `drivingScene-${mode}-anchor-centerline-unverified`,
+      }
+      const result = analyzeSedanAperture(input([phaseCapsule], { doorAngleInterval: item.door }))
+      assert.equal(result.code, 'ok', `${mode}/${item.phase}/${index}`)
+      assert.deepEqual([result.canBoard, result.authoritativeClearance, result.routeAuthorized], [false, false, false])
+    }
+  } finally { model.userData.dispose() }
 })
 
 test('the authority contract stays negative even for empty or apparently clear proposals', () => {

@@ -207,7 +207,8 @@ function validCapsule(value: unknown): value is SedanCapsule {
   const id = ownData(value, 'id'), start = ownData(value, 'start'), end = ownData(value, 'end')
   const radius = ownData(value, 'radius'), provenance = ownData(value, 'provenance'), phase = ownData(value, 'phase')
   return typeof id === 'string' && /^[A-Za-z0-9:_-]{1,64}$/.test(id) && vec3(start, 1_000_000) && vec3(end, 1_000_000)
-    && finite(radius, 2) && radius > 0 && ['enter-walk', 'enter-seat', 'exit-slide', 'exit-seat'].includes(String(phase))
+    && finite(radius, 2) && radius > 0 && typeof phase === 'string'
+    && (phase === 'enter-walk' || phase === 'enter-seat' || phase === 'exit-slide' || phase === 'exit-seat')
     && typeof provenance === 'string' && /^[A-Za-z0-9:_./-]{1,120}$/.test(provenance)
 }
 function validInterval(value: unknown, lower: number, upper: number): value is readonly [number, number] {
@@ -385,6 +386,28 @@ function panelBounds(id: string, center: Point3, size: Point3): Box {
     min: [center[0] - size[0] / 2, center[1] - size[1] / 2, center[2] - size[2] / 2] as const,
     max: [center[0] + size[0] / 2, center[1] + size[1] / 2, center[2] + size[2] / 2] as const })
 }
+const DOOR_CLIP: Box = Object.freeze({ id: 'door-panel-clipping-volume',
+  min: [-1.07, Math.fround(0.49), Math.fround(-0.05)], max: [-0.89, Math.fround(1.48), Math.fround(0.89)] })
+function retainedPanelFragments(box: Box): readonly Box[] {
+  const innerMin: Point3 = [Math.max(box.min[0], DOOR_CLIP.min[0]), Math.max(box.min[1], DOOR_CLIP.min[1]), Math.max(box.min[2], DOOR_CLIP.min[2])]
+  const innerMax: Point3 = [Math.min(box.max[0], DOOR_CLIP.max[0]), Math.min(box.max[1], DOOR_CLIP.max[1]), Math.min(box.max[2], DOOR_CLIP.max[2])]
+  if (innerMin.some((value, axis) => value >= innerMax[axis]!)) return Object.freeze([box])
+  const fragments: Box[] = []
+  const add = (id: string, min: Point3, max: Point3): void => {
+    if (min.every((value, axis) => value < max[axis]!)) fragments.push(Object.freeze({ id, min, max }))
+  }
+  add(`${box.id}:retained-x-low`, box.min, [innerMin[0], box.max[1], box.max[2]])
+  add(`${box.id}:retained-x-high`, [innerMax[0], box.min[1], box.min[2]], box.max)
+  add(`${box.id}:retained-y-low`, [innerMin[0], box.min[1], box.min[2]], [innerMax[0], innerMin[1], box.max[2]])
+  add(`${box.id}:retained-y-high`, [innerMin[0], innerMax[1], box.min[2]], [innerMax[0], box.max[1], box.max[2]])
+  add(`${box.id}:retained-z-low`, [innerMin[0], innerMin[1], box.min[2]], [innerMax[0], innerMax[1], innerMin[2]])
+  add(`${box.id}:retained-z-high`, [innerMin[0], innerMin[1], innerMax[2]], [innerMax[0], innerMax[1], box.max[2]])
+  return Object.freeze(fragments)
+}
+const STREET_GLASS_AND_TRIM: readonly Box[] = Object.freeze([
+  ...RETAINED_SHELL.sideGlassAndPillar.map(panel => panelBounds(panel.id, panel.center, panel.size)),
+  ...RETAINED_SHELL.sideTrimPanels.map(panel => panelBounds(panel.id, panel.center, panel.size)),
+])
 const SHELL: readonly Box[] = Object.freeze([
   Object.freeze({ id: 'opposite-cap', min: [0.92, 0.45, -2.175] as const, max: [0.95, 1.53, 2.175] as const }),
   Object.freeze({ id: 'driver-cap-lower-sill', min: [-0.95, 0.45, -2.175] as const, max: [-0.92, 0.49, 2.175] as const }),
@@ -396,8 +419,7 @@ const SHELL: readonly Box[] = Object.freeze([
       min: [-0.95, Math.min(y0, y1) - 0.025, Math.min(z0, z1) - 0.025] as const,
       max: [0.95, Math.max(y0, y1) + 0.025, Math.max(z0, z1) + 0.025] as const })
   }),
-  ...RETAINED_SHELL.sideGlassAndPillar.map(panel => panelBounds(panel.id, panel.center, panel.size)),
-  ...RETAINED_SHELL.sideTrimPanels.map(panel => panelBounds(panel.id, panel.center, panel.size)),
+  ...STREET_GLASS_AND_TRIM.flatMap(retainedPanelFragments),
 ])
 
 function frozenResult(code: SedanApertureCode, modelIntersections: string[], shellIntersections: string[], sweepOverlapCandidates: string[], apertureFailures: string[], apertureCrossings: string[], doorBounds = DOOR_SWEEP, doorInterval: readonly [number, number] = [0, DOOR.maxAngle]): SedanApertureResult {

@@ -301,6 +301,13 @@ export function createNativeRestPoseAdapter(
       feet: Object.freeze(feet), footSolveResult: solve });
   }
 
+  function compactTrialSnapshot(snapshot: Readonly<Record<string, unknown>>): Readonly<Record<string, unknown>> {
+    const solve = snapshot.footSolveResult as FootSolveResult | null;
+    return Object.freeze({ floorY: snapshot.floorY, rootWorld: snapshot.rootWorld, hipsWorld: snapshot.hipsWorld,
+      segmentLengths: snapshot.segmentLengths, regions: snapshot.regions, feet: snapshot.feet,
+      footSolveResult: solve ? Object.freeze({ corrected: solve.corrected, maxError: solve.maxError, limited: solve.limited }) : null });
+  }
+
   function shiftRootWorldY(delta: number): void {
     if (!Number.isFinite(delta) || Math.abs(delta) > MAX_REST_ROOT_SHIFT_METRES) {
       throw new Error(`Native rest root anchor correction is outside measured bounds: ${delta}`);
@@ -607,10 +614,10 @@ export function createNativeRestPoseAdapter(
       const bodyClearBeforeSolve = bodyClear(candidate);
       if (!bodyClearBeforeSolve) {
         attempts.push(Object.freeze({ dx, dz, bodyClearBeforeSolve,
-          before: liftTrialSnapshot(floorY, candidate, sampleContacts), accepted: false }));
+          before: compactTrialSnapshot(liftTrialSnapshot(floorY, candidate, sampleContacts)), accepted: false }));
         continue;
       }
-      const before = liftTrialSnapshot(floorY, candidate, sampleContacts);
+      const before = compactTrialSnapshot(liftTrialSnapshot(floorY, candidate, sampleContacts));
       // Mapped entry frames can have floating soles before IK. For each offset
       // whose actual posterior samples clear the bed, run the unchanged bounded
       // host solver and judge the resulting body and sole samples afterward.
@@ -627,7 +634,7 @@ export function createNativeRestPoseAdapter(
         catch (measureError) { measurementError = measureError instanceof Error ? measureError.message : String(measureError); }
         attempts.push(Object.freeze({ dx, dz, bodyClearBeforeSolve,
           before,
-          after: safeTrialSnapshot(failedMeasurement), accepted: false,
+          after: compactTrialSnapshot(safeTrialSnapshot(failedMeasurement)), accepted: false,
           solverError: error instanceof Error ? error.message : String(error),
           ...(measurementError ? { measurementError } : {}) }));
         lastSolverError = error;
@@ -638,8 +645,8 @@ export function createNativeRestPoseAdapter(
       const clear = bodyClear(candidate);
       attempts.push(Object.freeze({ dx, dz, bodyClearBeforeSolve,
         before,
-        after: liftTrialSnapshot(floorY, candidate, sampleContacts,
-          footSolveResult && typeof footSolveResult === 'object' ? footSolveResult : undefined),
+        after: compactTrialSnapshot(liftTrialSnapshot(floorY, candidate, sampleContacts,
+          footSolveResult && typeof footSolveResult === 'object' ? footSolveResult : undefined)),
         bodyRegionsClear: clear, floorFeetClearAndPlanted: planted, accepted: clear && planted }));
       if (clear && planted) {
         const end = root.getWorldPosition(new THREE.Vector3());
@@ -663,9 +670,10 @@ export function createNativeRestPoseAdapter(
       diagnostics.liftTrial = lastLiftTrial;
     }
     if (hadSolverError) throw lastSolverError;
-    solveHostFeet?.(surface, floorY);
-    const finalMeasurement = measure(surface, sampleContacts);
-    throw new Error(`Native lie cannot clear measured bed geometry during upright entry within ${MAX_REST_ROOT_SHIFT_METRES} m while preserving planted floor contacts; evidence=${evidence(surface, finalMeasurement, mappedFrame, 0)}`);
+    // A mapped partial-lie frame may still intersect the mattress at every
+    // bounded XZ offset. Callers can record this pre-lift search and then try
+    // the independent bounded vertical solver from the immutable mapped pose.
+    return Object.freeze([0, 0] as const);
   }
 
   function minimumNonpenetratingLift(measurement: NativeRestContactMeasure): number {
@@ -755,6 +763,7 @@ export function createNativeRestPoseAdapter(
         const mappedContactRootLocal = root.position.clone();
         root.updateWorldMatrix(true, false); root.updateMatrixWorld(true);
         const mappedContactRootWorld = root.getWorldPosition(new THREE.Vector3());
+        let attemptedMappedEgress = false;
         if (floorContactPhase) {
           // The mapped upright/partial-lie frame can place the clothed posterior
           // through the mattress even when its Hips joint is at the bed surface.
@@ -772,12 +781,30 @@ export function createNativeRestPoseAdapter(
           } else {
             const rootLocal = mappedContactRootLocal.clone();
             const mappedBones = mappedContactBones;
+            // Test the bounded horizontal egress from the exact mapped pose
+            // before a vertical trial consumes the frame's pelvis budget.
+            // If no horizontal candidate clears measured body and sole gates,
+            // retain that evidence and continue with the existing lift solver.
+            attemptedMappedEgress = true;
+            let mappedEgressError: string | undefined;
+            try {
+              appliedRootCorrectionXZ = egressUprightLieFromProp(
+                support.surface, floorY!, sampleParentLocalContacts, solveHostFeet,
+                mappedContactBones, mappedContactRootLocal, mappedContactRootWorld,
+                mappedFrame, phase, anchorBlend,
+              );
+            } catch (error) {
+              mappedEgressError = error instanceof Error ? error.message : String(error);
+            }
+            const mappedEgressTrial = lastLiftTrial;
+            const mappedEgressAccepted = mappedEgressTrial?.accepted === true;
+            if (mappedEgressAccepted) measurement = measure(support.surface, sampleParentLocalContacts);
             const attempts: Readonly<Record<string, unknown>>[] = [];
             let cumulativeLift = 0;
             let trialMeasurement = measurement;
-            let trialFeetPlanted = false;
-            let accepted = false;
-            for (let pass = 0; pass < MAX_UPRIGHT_LIFT_SOLVES; pass++) {
+            let trialFeetPlanted = mappedEgressAccepted;
+            let accepted = mappedEgressAccepted;
+            for (let pass = 0; !accepted && pass < MAX_UPRIGHT_LIFT_SOLVES; pass++) {
               const requiredLift = minimumNonpenetratingLift(trialMeasurement);
               const targetLift = pass === 0 ? requiredLift : cumulativeLift + requiredLift;
               if (!(requiredLift > 0) || targetLift > MAX_REST_ROOT_SHIFT_METRES) break;
@@ -798,7 +825,8 @@ export function createNativeRestPoseAdapter(
                   bodyRegionsClear: bodyRegionsClear(failedMeasurement), floorFeetClearAndPlanted: floorFeetClearAndPlanted(floorY!, sampleParentLocalContacts) }));
                 lastLiftTrial = Object.freeze({ propId: support.surface.id, pose, phase, anchorBlend,
                   mappedFrame, attempts: Object.freeze(attempts), cumulativeLift: targetLift,
-                  accepted: false, solverError: error instanceof Error ? error.message : String(error) });
+                  accepted: false, solverError: error instanceof Error ? error.message : String(error),
+                  mappedPoseEgress: mappedEgressTrial, ...(mappedEgressError ? { mappedPoseEgressError: mappedEgressError } : {}) });
                 const diagnostics = root.userData.nativeRestProbeDiagnostics;
                 if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
                   diagnostics.liftTrial = lastLiftTrial;
@@ -833,13 +861,14 @@ export function createNativeRestPoseAdapter(
             }
             lastLiftTrial = Object.freeze({ propId: support.surface.id, pose, phase, anchorBlend,
               mappedFrame, attempts: Object.freeze(attempts), cumulativeLift,
-              accepted, bodyRegionsClear: bodyRegionsClear(trialMeasurement), floorFeetClearAndPlanted: trialFeetPlanted });
+              accepted, bodyRegionsClear: bodyRegionsClear(trialMeasurement), floorFeetClearAndPlanted: trialFeetPlanted,
+              mappedPoseEgress: mappedEgressTrial, ...(mappedEgressError ? { mappedPoseEgressError: mappedEgressError } : {}) });
             const diagnostics = root.userData.nativeRestProbeDiagnostics;
             if (root.userData.nativeRestDiagnosticsEnabled === true && diagnostics && typeof diagnostics === 'object') {
               diagnostics.liftTrial = lastLiftTrial;
             }
           }
-          if (pose === 'lie' && (['pelvis-back', 'torso-back', 'head-back'] as const).some((region) => {
+          if (!attemptedMappedEgress && pose === 'lie' && (['pelvis-back', 'torso-back', 'head-back'] as const).some((region) => {
             const sample = measurement.regions[region];
             return sample.sampled > 0 && sample.minimumGap < -MAX_PENETRATION_METRES;
           })) {

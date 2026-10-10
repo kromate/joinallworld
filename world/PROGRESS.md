@@ -1,12 +1,12 @@
 # World delivery checkpoint
 
-Updated: 2026-10-10T03:20:02.614472+00:00
+Updated: 2026-10-10T03:28:52.110405+00:00
 
-The previous goal turn was a status check. This turn accepted the exact cloud
-package file comparison and Node 22 full Worker/compiler/build/download/smoke
-evidence. Its one sealed verification ended with exit 0: original cloud output shows 14
-passed checks, 15 cities, 31 assets and 144,672 ms elapsed. Its public raw receipt/log hashes, all selected asset pins and tool pins are
-now verified. Browser visits remain incomplete.
+The previous goal turn made progress: package comparison, fourteen source phases
+and the independent cloud seal were accepted. This turn verified the complete
+seven-module stage import closure and its non-starting CLI diagnostic, and
+recorded the actual cloud Astra controller assignment. Browser visits remain
+incomplete.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -62,11 +62,13 @@ package passed its actual on-disk guard. Its own sealed run is terminal with
 Its artifact read returned Forbidden, retained as a transport gap. The package
 was independently produced from already owned c12 source and compiled output.
 The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) was approved
-in design; launch still requires the immutable controller, actual Astra binding,
-resource enforcement and reviewed package. The full phase now includes bounded
+in design. The actual cloud operator is `/root/country_browser_astra`, requested
+as `gpt-6-astra`; backend model identity is not exposed. Launch still requires
+the immutable controller, enforced resources and actual process bindings,
+with reviewed package. [Complete tooling pins](c12-browser-toolchain-review.json)
+include the restored verifier dependency. The full phase now includes bounded
 bootstrap, 720-second stage duration, cleanup and aggregate RSS limits. Two actors
-are required because
-all five round trips exceed one controlled 2,000,000 test credit.
+are required because all five round trips exceed one controlled 2,000,000 test credit.
 No private local players, cookies or database are transferred.
 
 The separate combined source `3e3e0876fc50f3166a0d0968f8616b577da27870`
@@ -85,7 +87,7 @@ the source repair. It has no production acceptance.
    remaining Africa and the global pipeline. Lazy metadata, Moroni acquisition
    durability, regional conditions and later photorealism remain in scope.
 
-The main allowance is 12% remaining at the latest actual sample. Stop new work
+The main allowance is 11% remaining at the latest actual sample. Stop new work
 at 4% remaining and use that reserve for safe checkpoints and reporting.
 There is no clock cutoff or extra-spend authorization.
 

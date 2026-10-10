@@ -15,6 +15,11 @@ normal UI, separate from source checks and from production deployment.
   `55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56`.
 - Capability policy SHA-256:
   `af748ece4eccbb2a9dfc7ad9901a13b3d06d4afc1ef497c53bf140d74a51b5ef`.
+- Verify the complete seven-file relative import closure recorded in
+  [the tooling review](c12-browser-toolchain-review.json). The stage imports
+  `verify-sealed-africa.mjs`, which imports the coverage and admin-rate modules.
+  Shipping only the stage and policy files fails before startup. Check actual
+  regular files and all seven hashes in the cloud controller preflight.
 - Actual existing Chromium 151 binary, existing `ws`/CDP helper source and
   reviewed launch arguments. No dependency installation is part of this task.
 - Named existing Astra reviewer/operator and the exact immutable UI controller

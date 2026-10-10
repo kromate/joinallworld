@@ -1,0 +1,72 @@
+{
+  "observedAtUtc": "2026-10-10T03:28:12.847080+00:00",
+  "decision": "ACCEPT pinned local-module import closure and non-starting CLI diagnostic; actual cloud regular-file/runtime pins remain controller preflight",
+  "toolSourceSha": "94079eed212d521aab6b7dd748db94a3459f00b3",
+  "files": {
+    "serve-sealed-africa.mjs": "55f38b91528966dbb43dfc80274471de11fb010b2bc3dc66b9b4f2712d619f56",
+    "stage-capability-policy.mjs": "af748ece4eccbb2a9dfc7ad9901a13b3d06d4afc1ef497c53bf140d74a51b5ef",
+    "stage-checkpoint-policy.mjs": "2975f3f67c71c01b279d4de3adbd942180dd443b9ca2e5c818cec002866622ff",
+    "stage-control-file.mjs": "bdeecb804a0d2f8c63ec6d1fa2823ba4ca0a91efa37f5d71dd744fb38e5b721a",
+    "verify-sealed-africa.mjs": "f6b59c1709ab30aaa36c4dc03b4dedbf2f73b5720d164356e208c5dba635b014",
+    "sealed-africa-coverage.mjs": "c84e5e69225421b5fa58accf963f6456a84c2a797724ba89a4e0d4623a6948bb",
+    "sealed-admin-rate-policy.mjs": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b"
+  },
+  "relativeImportEdges": [
+    {
+      "from": "serve-sealed-africa.mjs",
+      "to": "verify-sealed-africa.mjs"
+    },
+    {
+      "from": "serve-sealed-africa.mjs",
+      "to": "stage-checkpoint-policy.mjs"
+    },
+    {
+      "from": "serve-sealed-africa.mjs",
+      "to": "stage-capability-policy.mjs"
+    },
+    {
+      "from": "serve-sealed-africa.mjs",
+      "to": "stage-control-file.mjs"
+    },
+    {
+      "from": "verify-sealed-africa.mjs",
+      "to": "sealed-africa-coverage.mjs"
+    },
+    {
+      "from": "verify-sealed-africa.mjs",
+      "to": "sealed-admin-rate-policy.mjs"
+    }
+  ],
+  "relativeImportClosureComplete": true,
+  "requiredRegularFiles": 7,
+  "diagnostic": {
+    "command": [
+      "node",
+      "world/tooling/serve-sealed-africa.mjs",
+      "--help"
+    ],
+    "nodeVersion": "v22.19.0",
+    "exitStatus": 0,
+    "stdoutBytes": 1948,
+    "stdoutSha256": "9d52480410eb46c34cb205f18ed0f295913a0b788b3b04267189b09cee187d0a",
+    "stderrBytes": 0,
+    "timeLimitSeconds": 5,
+    "stageLaunched": false
+  },
+  "cloudMissingModuleIdentified": "verify-sealed-africa.mjs imports coverage and admin-rate-policy; it must be shipped with stage helper",
+  "actualCloudRepairWitness": "Original Cloud exec495605ad copied exact verify module and updated stage-pins record. Actual full cloud files/helper CLI must still be checked before UI.",
+  "operator": {
+    "canonicalTask": "/root/country_browser_astra",
+    "threadId": "01a123d0-cf20-70c1-ad9e-5f824abef065",
+    "configuredModelRequest": "gpt-6-astra",
+    "effort": "high",
+    "acceptedSpawnObserved": true,
+    "backendModelIdExposed": false,
+    "actualBrowserExecution": false
+  },
+  "limits": [
+    "No Worker, stage, browser, compiler or build started by this diagnostic.",
+    "No claim that cloud controller exists or has passed review.",
+    "Normal UI journeys and production16 remain incomplete."
+  ]
+}

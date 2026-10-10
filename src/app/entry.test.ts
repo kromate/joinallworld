@@ -200,58 +200,54 @@ test('the eager JavaScript does not grow and contains only the loading screen an
   for (const name of all.filter((item) => /^(three|sentry|sentry-replay|posthog|world-adapter)-/.test(item))) assert.ok(!names.includes(`assets/${name}`), `${name} is not eager`)
 })
 
-test('automatic game startup, including one selected city, stays within the original first-load budget', (t) => {
+test('automatic startup keeps Nigeria eager and admits foreign bootstrap only for the selected city', (t) => {
   const dist = join(root, 'dist')
   if (!existsSync(join(dist, 'index.html')) || !existsSync(join(dist, 'assets'))) { t.diagnostic('no dist/: run `npm run build` to check the complete startup payload'); return }
   const all = readdirSync(join(dist, 'assets')).filter(name => name.endsWith('.js'))
-  const core = all.filter(name => /^startApp-[\w-]+\.js$/.test(name))
-  assert.equal(core.length, 1, 'the automatic startup has one deferred game shell')
-  const routes = all.filter(name => /^city-routes-[\w-]+\.js$/.test(name))
-  assert.equal(routes.length, 1, 'the automatic startup has one lazy authored-route table')
-  const catalogueRows = readFileSync(join(root, 'src/game/cities/catalogue.generated.ts'), 'utf8').split('\n').filter((line) => /^  \["/.test(line)).map((line) => JSON.parse(line.trim().replace(/,$/, '')) as [string, string, string, string, number, number, 0 | 1])
-  const loaderExports = [...readFileSync(join(root, 'src/game/cities/loaders.generated.ts'), 'utf8').matchAll(/\.([A-Za-z_$][\w$]*),$/gm)].map((match) => match[1] ?? '')
-  assert.equal(loaderExports.length, catalogueRows.length)
   const one = (pattern: RegExp, label: string): string => {
-    const found = all.filter((name) => pattern.test(name))
+    const found = all.filter(name => pattern.test(name))
     assert.equal(found.length, 1, label)
     return found[0] ?? ''
   }
-  const homewardRules = one(/^homeward-rules-[\w-]{8}\.js$/, 'recovery reader and planner have one conditional chunk')
-  const panelBodies = one(/^panelBodies-[\w-]{8}\.js$/, 'unopened app body loaders have one conditional chunk')
-  const measure = (names: readonly string[]) => names.reduce((sum, name) => {
-    const bytes = readFileSync(join(dist, name))
-    return { raw: sum.raw + bytes.length, gzip: sum.gzip + gzipSync(bytes).length }
-  }, { raw: 0, gzip: 0 })
-  const common = [...core, ...routes]
-  const commonNames = eagerChunks(dist, common.map((name) => `assets/${name}`))
-  const commonCode = commonNames.map((name) => readFileSync(join(dist, name), 'utf8')).join('\n')
-  for (let index = 0; index < catalogueRows.length; index += 1) {
-    const row = catalogueRows[index]!, id = row[0], exportName = loaderExports[index]!
-    const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    const rules = one(new RegExp(`^city-${escaped}-rules-[\\w-]+\\.js$`), `${id} has one lazy rules chunk`)
-    const content = one(new RegExp(`^city-${escaped}-content-[\\w-]+\\.js$`), `${id} has one lazy content chunk`)
-    const catalogueStart = commonCode.indexOf(JSON.stringify(row.slice(0, 4)).slice(0, -1) + ',')
-    assert.ok(catalogueStart >= 0, `${id}'s compact catalogue tuple is in the built startup`)
-    const catalogueTuple = arrayLiteralAt(commonCode, catalogueStart)
-    const loaderPattern = new RegExp(`\\["\\./${rules.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}","${exportName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\]`)
-    const loaderMatch = loaderPattern.exec(commonCode)
-    assert.ok(loaderMatch?.index !== undefined, `${id}'s emitted rule URL and export share one compact loader tuple`)
-    const loaderTuple = arrayLiteralAt(commonCode, loaderMatch.index)
-    // Terser writes fractional coordinates as -.21 or .55; keep full numeric equality after parsing.
-    const jsonTuple = catalogueTuple.replace(/"(?:\\.|[^"\\])*"|(?<=[[,])(-?\.\d+(?:e[+-]?\d+)?)(?=[,\]])/g, (token: string, fraction: string | undefined) => fraction === undefined ? token : JSON.stringify(Number(fraction)))
-    assert.deepEqual(JSON.parse(jsonTuple), row)
-    assert.deepEqual(JSON.parse(loaderTuple), [`./${rules}`, exportName])
-    const marginal = Buffer.byteLength(catalogueTuple) + Buffer.byteLength(loaderTuple) + 2
-    assert.ok(marginal <= 150, `${id} adds ${marginal} built bytes of catalogue and loader rows (limit 150)`)
-    const names = eagerChunks(dist, [...common, rules, content].map((name) => `assets/${name}`))
-    assert.ok(!names.includes(`assets/${homewardRules}`), `${id} does not preload conditional homeward rules`)
-    assert.ok(!names.includes(`assets/${panelBodies}`), `${id} does not preload unopened app body loaders`)
-    assert.ok(names.includes(`assets/${rules}`) && names.includes(`assets/${content}`) && names.includes(`assets/${routes[0]}`), `${id} loads its rules, content and authored routes`)
-    assert.deepEqual(names.filter((name) => /\/city-.+-(?:rules|content)-[\w-]+\.js$/.test(name) && !name.includes(`city-${id}-`) && !/\/city-(?:formula|ogun)-rules-/.test(name) && !/\/city-(?:ogun-)?content-builder-/.test(name) && !/\/city-ogun-content-/.test(name) && !/\/city-formula-content-/.test(name)), [], `${id} does not load another city's rules or content`)
-    assert.deepEqual(names.filter((name) => /\/city-.+-map-[\w-]+\.js$/.test(name)), [], `${id} does not load a map at startup`)
-    const total = measure(names)
+  const shell = one(/^startApp-[\w-]+\.js$/, 'the automatic startup has one deferred game shell')
+  const routes = one(/^city-routes-[\w-]+\.js$/, 'the automatic startup has one lazy authored-route table')
+  const homewardRules = one(/^homeward-rules-[\w-]+\.js$/, 'recovery reader and planner have one conditional chunk')
+  const panelBodies = one(/^panelBodies-[\w-]+\.js$/, 'unopened app body loaders have one conditional chunk')
+  const facts = readFileSync(join(root, 'src/game/cities/trusted-city-facts.generated.ts'), 'utf8')
+  const nigeria = readFileSync(join(root, 'src/game/cities/nigeria-catalogue.generated.ts'), 'utf8')
+  const rows = [...nigeria.matchAll(/^  \[([^\n]+)\],$/gm)].map(match => JSON.parse(`[${match[1]}]`) as [string, string, string, string, number, number, 0 | 1])
+  assert.equal(rows.length, 40, 'the eager Nigeria catalogue has exactly 40 cities')
+  const escaped = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const rulesFor = (id: string) => one(new RegExp(`^city-${escaped(id)}-rules-[\\w-]+\\.js$`), `${id} has one lazy rules chunk`)
+  const contentFor = (id: string) => one(new RegExp(`^city-${escaped(id)}-content-[\\w-]+\\.js$`), `${id} has one lazy content chunk`)
+  const common = eagerChunks(dist, [`assets/${shell}`, `assets/${routes}`])
+  const commonCode = common.map(name => readFileSync(join(dist, name), 'utf8')).join('\n')
+  assert.match(nigeria, /NIGERIA_CITY_LOADERS/)
+  assert.match(facts, /TRUSTED_CITY_FACTS_ROWS/)
+  for (const row of rows) {
+    const id = row[0]
+    const rules = rulesFor(id), content = contentFor(id)
+    assert.ok(commonCode.includes(JSON.stringify(id)), `${id} remains in the eager Nigeria catalogue`)
+    assert.ok(commonCode.includes(`./${rules}`), `${id} has an eager loader reference to its lazy rules chunk`)
+    const names = eagerChunks(dist, [`assets/${shell}`, `assets/${routes}`, `assets/${rules}`, `assets/${content}`])
+    assert.ok(names.includes(`assets/${routes}`) && names.includes(`assets/${rules}`) && names.includes(`assets/${content}`), `${id} startup includes its rules, content and authored routes`)
+    assert.ok(!names.includes(`assets/${homewardRules}`), `${id} does not preload conditional recovery rules`)
+    assert.ok(!names.includes(`assets/${panelBodies}`), `${id} does not preload unopened app bodies`)
+    assert.deepEqual(names.filter(name => /\/city-.+-(?:rules|content)-[\w-]+\.js$/.test(name) && !name.includes(`city-${id}-`) && !/\/city-(?:formula|ogun)-rules-/.test(name) && !/\/city-(?:ogun-)?content-builder-/.test(name) && !/\/city-ogun-content-/.test(name) && !/\/city-formula-content-/.test(name)), [], `${id} does not load another city's rules or content`)
+    assert.deepEqual(names.filter(name => /\/city-.+-map-[\w-]+\.js$/.test(name)), [], `${id} does not load a map at startup`)
+    const total = names.reduce((sum, name) => { const bytes = readFileSync(join(dist, name)); return { raw: sum.raw + bytes.length, gzip: sum.gzip + gzipSync(bytes).length } }, { raw: 0, gzip: 0 })
     t.diagnostic(`${id} automatic startup: ${total.raw} raw ${total.gzip} gzip bytes`)
     assert.ok(total.raw <= BUDGET.raw, `automatic startup for ${id} is ${total.raw} bytes (budget ${BUDGET.raw})`)
-    assert.ok(total.gzip <= BUDGET.gzip, `automatic startup for ${id} is ${total.gzip} gzip bytes (budget ${BUDGET.gzip})`)
+    assert.ok(total.gzip <= BUDGET.gzip, `automatic startup for ${id} is ${total.gzip} bytes (budget ${BUDGET.gzip})`)
   }
+  const foreignIds = ['accra', 'algiers', 'lome', 'nairobi', 'yaounde', 'abidjan', 'addis-ababa', 'cape-town', 'cotonou', 'dakar']
+  for (const id of foreignIds) {
+    rulesFor(id); contentFor(id)
+    assert.ok(!new RegExp(`\\["']${escaped(id)}["']\\s*:\\s*async`).test(commonCode), `${id} has no eager rule loader`)
+  }
+  assert.ok(!commonCode.includes('foreign-loaders.generated'), 'the foreign loader map stays outside the eager closure')
+  assert.ok(!common.some(name => /country-directory|foreign-loaders/.test(name)), 'foreign directory metadata stays outside the common startup')
+  const admission = readFileSync(join(root, 'src/game/cities/foreign-admission.generated.ts'), 'utf8')
+  const dakarCountry = admission.match(/id: "dakar", countryISO: "([a-z]{2})"/)?.[1]
+  assert.equal(dakarCountry, 'sn', 'selected Dakar uses Senegal bootstrap')
 })

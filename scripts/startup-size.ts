@@ -39,6 +39,20 @@ for (const prefix of [`city-${city}-rules`, `city-${city}-content`, 'city-routes
   if (matches.length !== 1) throw new Error(`Expected one startup chunk for ${prefix}, found ${matches.length}`)
   queue.push(...matches)
 }
+const foreignAdmission = await import('../src/game/cities/foreign-admission.generated.ts')
+const admitted = foreignAdmission.FOREIGN_ADMITTED_CITIES.find(row => row.id === city)
+if (admitted) {
+  const loaderChunks = [...chunks].filter(([, chunk]) => Object.keys(chunk.modules).some(id => id.replace(/\\/g, '/').endsWith('/src/game/cities/foreign-loaders.generated.ts')))
+  if (loaderChunks.length !== 1) throw new Error(`Expected one foreign loader lookup chunk for ${city}, found ${loaderChunks.length}`)
+  queue.push(loaderChunks[0]![0])
+  const indexName = [...outputs].find(item => item.type === 'asset' && /^world-country-directory\/index-[\w-]+\.txt$/.test(item.fileName))
+  if (!indexName || indexName.type !== 'asset') throw new Error('Required emitted country directory index is missing')
+  const directory = JSON.parse(String(indexName.source)) as { countries?: readonly { iso2: string; path: string }[] }
+  const country = directory.countries?.find(item => item.iso2 === admitted.countryISO)
+  if (!country) throw new Error(`Required country shard is missing for ${city}`)
+  const shardName = `world-country-directory/${country.path}`
+  if (!outputs.some(item => item.type === 'asset' && item.fileName === shardName)) throw new Error(`Required emitted country shard is missing: ${shardName}`)
+}
 const startup = new Set<string>()
 while (queue.length) {
   const name = queue.pop() as string

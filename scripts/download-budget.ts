@@ -61,6 +61,32 @@ export function readDist(dir: string): Dist {
 }
 
 const text = (dist: Dist, name: string): string => Buffer.from(dist.get(name) ?? new Uint8Array()).toString('utf8')
+const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+
+function admittedCountry(city: string): string | null {
+  const source = readFileSync(join(REPO_ROOT, 'src/game/cities/foreign-admission.generated.ts'), 'utf8')
+  return [...source.matchAll(/\{\s*id:\s*"([^"]+)",\s*countryISO:\s*"([a-z]{2})"\s*\}/g)].find(match => match[1] === city)?.[2] ?? null
+}
+
+function foreignStartupAssets(dist: Dist, city: string): string[] | null {
+  const country = admittedCountry(city)
+  if (!country) return []
+  const indexes = [...dist.keys()].filter(name => /^world-country-directory\/index-[\w-]+\.txt$/.test(name))
+  if (indexes.length !== 1) return null
+  let index: { countries?: readonly { iso2: string; path: string }[] }
+  try { index = JSON.parse(text(dist, indexes[0] as string)) as typeof index } catch { return null }
+  const entry = index.countries?.find(item => item.iso2 === country)
+  if (!entry) return null
+  const shard = `world-country-directory/${entry.path}`
+  return dist.has(shard) ? [indexes[0] as string, shard] : null
+}
+
+function foreignLoaderChunk(dist: Dist, city: string): string | null {
+  const id = city.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const pattern = new RegExp(`(?:^|[,\\{])\"?${id}\"?:(?:async)?\\(\\)=>`)
+  const matches = [...dist.keys()].filter(name => name.endsWith('.js') && pattern.test(text(dist, name)))
+  return matches.length === 1 ? matches[0] as string : null
+}
 
 /** Static imports of a built chunk: `from"./x.js"` and `import"./x.js"`, not `import("./x.js")` and not the preload map. */
 export function staticImports(code: string): string[] {
@@ -103,7 +129,7 @@ export function cityIds(dist: Dist): string[] {
   return [...count].filter(([, row]) => row.rules === 1 && row.content === 1).map(([id]) => id).sort()
 }
 
-/** First paint plus the shell, the authored routes and one city's rules and content; null when the build lacks one of them. */
+/** First paint plus the emitted shell, authored routes, one city's rules/content and its bootstrap packet when foreign. */
 export function startupFiles(dist: Dist, city: string): Set<string> | null {
   const only = (pattern: RegExp): string | null => {
     const found = [...dist.keys()].filter((name) => pattern.test(name))
@@ -111,7 +137,11 @@ export function startupFiles(dist: Dist, city: string): Set<string> | null {
   }
   const parts = [only(/^assets\/startApp-[\w-]{8}\.js$/), only(/^assets\/city-routes-[\w-]{8}\.js$/), only(new RegExp(`^assets/city-${city}-rules-[\\w-]{8}\\.js$`)), only(new RegExp(`^assets/city-${city}-content-[\\w-]{8}\\.js$`))]
   if (parts.some((part) => part === null)) return null
-  return closure(dist, [...pageAssets(text(dist, 'index.html')), ...(parts as string[])]).add('index.html')
+  const foreignAssets = foreignStartupAssets(dist, city)
+  if (foreignAssets === null) return null
+  const extra = admittedCountry(city) ? foreignLoaderChunk(dist, city) : null
+  if (admittedCountry(city) && !extra) return null
+  return new Set([...closure(dist, [...pageAssets(text(dist, 'index.html')), ...(parts as string[]), ...(extra ? [extra] : [])]), 'index.html', ...foreignAssets])
 }
 
 export function measure(dist: Dist, files: Iterable<string>, only?: RegExp): Size {
@@ -157,7 +187,7 @@ export interface Check { budget: BudgetName; measured: number | null; detail: st
 const JS = /\.js$/
 
 /** Every named budget this report can measure from the build, in the order they are printed. */
-export function checks(dist: Dist, city = 'lagos'): Check[] {
+export function checks(dist: Dist, city = 'lagos', requiredCities: readonly string[] = cityIds(dist)): Check[] {
   const found: Omit<Check, 'status'>[] = []
   const add = (budget: BudgetName, measured: number | null, detail: string): void => { found.push({ budget, measured, detail }) }
   const paint = firstPaintFiles(dist)
@@ -165,7 +195,8 @@ export function checks(dist: Dist, city = 'lagos'): Check[] {
   add('LOADING_RAW', paint.size ? loading.raw : null, 'first-paint JavaScript')
   add('LOADING_GZIP', paint.size ? loading.gzip : null, 'first-paint JavaScript')
   add('FIRST_PAINT_BROTLI', paint.size ? everything.brotli : null, `${paint.size} files: index.html, stylesheet and JavaScript`)
-  const startups = [...new Set([city, ...cityIds(dist)])].flatMap((id) => { const files = startupFiles(dist, id); return files ? [{ id, js: measure(dist, files, JS), all: measure(dist, files) }] : [] })
+  const startupIds = [...new Set([city, ...requiredCities])]
+  const startups = startupIds.map((id) => { const files = startupFiles(dist, id); if (!files) throw new Error(`Required startup measurement is missing for ${id}`); return { id, js: measure(dist, files, JS), all: measure(dist, files) } })
   const largest = (key: 'raw' | 'gzip' | 'brotli', pick: 'js' | 'all') => startups.reduce<{ id: string; value: number } | null>((best, item) => (!best || item[pick][key] > best.value ? { id: item.id, value: item[pick][key] } : best), null)
   for (const [budget, key, pick] of [['STARTUP_RAW', 'raw', 'js'], ['STARTUP_GZIP', 'gzip', 'js'], ['STARTUP_BROTLI', 'brotli', 'all']] as const) {
     const top = largest(key, pick)
@@ -192,7 +223,8 @@ export function formatReport(dist: Dist, results: readonly Check[], groups: read
     const measured = item.measured === null ? '       -' : String(item.measured).padStart(8)
     lines.push(`${item.status === 'over' ? 'OVER' : item.status === 'ok' ? 'ok  ' : 'n/a '} ${item.budget.padEnd(22)} ${measured}  budget ${describeBudget(budget)}${budget.status === 'provisional' ? ' [provisional]' : ''}  ${item.detail}`)
   }
-  const paint = firstPaintFiles(dist), startup = startupFiles(dist, 'lagos') ?? new Set<string>()
+  const paint = firstPaintFiles(dist), startup = startupFiles(dist, 'lagos')
+  if (!startup) throw new Error('Required startup measurement is missing for lagos')
   lines.push('', `First paint (${paint.size} files) and lagos startup (${startup.size} files): kB raw / gzip / brotli`)
   for (const [label, files] of [['first paint', paint], ['lagos startup', startup]] as const) {
     const size = measure(dist, files)
@@ -209,8 +241,12 @@ function main(): number {
   const dir = resolve(root, args.includes('--dist') ? args[args.indexOf('--dist') + 1] ?? 'dist' : 'dist')
   if (!existsSync(join(dir, 'index.html'))) { console.error(`No build at ${dir}: run \`npm run build\` first.`); return 2 }
   const dist = readDist(dir)
-  const results = checks(dist)
-  const groups = lazyGroups(dist, startupFiles(dist, 'lagos') ?? firstPaintFiles(dist))
+  const required = [...readFileSync(join(root, 'src/game/cities/catalogue.generated.ts'), 'utf8').matchAll(/^  \[[\"]([^\"]+)[\"]/gm)].map(match => match[1] as string)
+  if (required.length !== 50) throw new Error(`Expected 50 checked-in city bootstrap rows, found ${required.length}`)
+  const results = checks(dist, 'lagos', required)
+  const lagosStartup = startupFiles(dist, 'lagos')
+  if (!lagosStartup) throw new Error('Required startup measurement is missing for lagos')
+  const groups = lazyGroups(dist, lagosStartup)
   if (args.includes('--json')) console.log(JSON.stringify({ checks: results, lazyGroups: groups }, null, 2))
   else console.log(formatReport(dist, results, groups, args.includes('--all') ? Infinity : args.includes('--top') ? Number(args[args.indexOf('--top') + 1]) || 30 : 30))
   const over = results.filter((item) => item.status === 'over')

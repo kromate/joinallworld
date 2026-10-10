@@ -202,9 +202,13 @@ export default defineConfig({
     if (wording) return `city-${wording[1]}-content`
     // Of a city's folder the engine reads only the rules, the registry entry and the links. Every other file (roads, water, landmarks,
     // rail, the map's character) is fetched with that city's map, so it must never fall through to the `engine` rule below.
+    // Browser foreign loaders are requested only after that country's verified shard is ready.
+    // Keep their generated lookup table out of the eager rules engine chunk.
+    if (/\/src\/game\/cities\/foreign-loaders\.generated\.ts$/.test(id)) return undefined
     const part = id.match(/\/src\/game\/cities\/([^/]+)\/([\w-]+)\.ts$/)
     if (part) {
-      if (/^(rules|index|links|localUnits)$/.test(part[2] as string)) return undefined
+      if (part[2] === 'index') return `city-${part[1]}-rules`
+      if (/^(rules|links|localUnits)$/.test(part[2] as string)) return undefined
       return `city-${part[1]}-${part[2]}`
     }
     // A city's own scenes are fetched when a venue of that city is shown (src/scene/city-scenes.ts): one chunk per city — Ogun's four

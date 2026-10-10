@@ -21,6 +21,11 @@ function build(extra: Record<string, Uint8Array> = {}): Dist {
     'assets/city-lagos-content-GGGGGGGG.js': bytes('export const b=1;'),
     'assets/city-kano-rules-HHHHHHHH.js': bytes('export const a=2;'),
     'assets/city-kano-content-IIIIIIII.js': bytes('export const b=2;'),
+    'assets/city-dakar-rules-MMMMMMMM.js': bytes('export const a=3;'),
+    'assets/city-dakar-content-NNNNNNNN.js': bytes('export const b=3;'),
+    'assets/foreign-loaders-OOOOOOOO.js': bytes('export const f={"dakar":async()=>import("./city-dakar-rules-MMMMMMMM.js")};'),
+    'world-country-directory/index-PPPPPPPP.txt': bytes('{"countries":[{"iso2":"sn","path":"countries/sn-QQQQQQQQ.txt"}]}'),
+    'world-country-directory/countries/sn-QQQQQQQQ.txt': bytes('{"cities":[]}'),
     'assets/city-kano-scenes-JJJJJJJJ.js': bytes('export const s=1;'),
     'assets/city-ibadan-scenes-KKKKKKKK.js': bytes('export const s=2;'),
     'assets/world-adapter-LLLLLLLL.js': bytes('export const w=1;'),
@@ -40,6 +45,7 @@ test('first paint is index.html, its stylesheet and scripts, and what they impor
   assert.deepEqual(cityIds(dist), ['kano', 'lagos'])
   assert.deepEqual([...startupFiles(dist, 'kano')!].sort(), [...firstPaintFiles(dist), 'assets/startApp-DDDDDDDD.js', 'assets/city-routes-EEEEEEEE.js', 'assets/city-kano-rules-HHHHHHHH.js', 'assets/city-kano-content-IIIIIIII.js'].sort())
   assert.equal(startupFiles(dist, 'ibadan'), null, 'a city without rules and content chunks has no startup')
+  assert.deepEqual([...startupFiles(dist, 'dakar')!].sort(), [...firstPaintFiles(dist), 'index.html', 'assets/startApp-DDDDDDDD.js', 'assets/city-routes-EEEEEEEE.js', 'assets/city-dakar-rules-MMMMMMMM.js', 'assets/city-dakar-content-NNNNNNNN.js', 'assets/foreign-loaders-OOOOOOOO.js', 'world-country-directory/index-PPPPPPPP.txt', 'world-country-directory/countries/sn-QQQQQQQQ.txt'].sort(), 'selected foreign startup accounts for its loader map and country bootstrap')
 })
 
 test('chunks group by name without the hash, and cities fold into one group per kind', () => {
@@ -81,4 +87,15 @@ test('a budget that is exceeded is reported over', () => {
   assert.equal(byName.CLIP_PACK_BROTLI?.status, 'over', 'a pack is the sum of its files')
   assert.equal(byName.WARDROBE_ITEM_BROTLI?.status, 'over', 'an item is the largest of its files')
   assert.ok((byName.WARDROBE_ITEM_BROTLI?.measured ?? 0) > 60_000)
+})
+
+test('required startup cities fail closed when emitted bootstrap pieces are missing', () => {
+  const dist = build()
+  assert.throws(() => checks(dist, 'lagos', ['not-emitted']), /Required startup measurement is missing for not-emitted/)
+  const missingShard = new Map(dist)
+  missingShard.delete('world-country-directory/countries/sn-QQQQQQQQ.txt')
+  assert.equal(startupFiles(missingShard, 'dakar'), null)
+  const missingLoader = new Map(dist)
+  missingLoader.delete('assets/foreign-loaders-OOOOOOOO.js')
+  assert.equal(startupFiles(missingLoader, 'dakar'), null)
 })

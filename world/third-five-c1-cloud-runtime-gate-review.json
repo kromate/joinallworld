@@ -1,6 +1,6 @@
 {
-  "observedAtUtc": "2026-10-10T03:06:54.819120+00:00",
-  "decision": "ACCEPT ten exact-source phases: both full hosts, tooling and Workers; both all15 Africa host/Worker groups; download and smoke. Full game/UI/release/native/deployment remain separate.",
+  "observedAtUtc": "2026-10-10T03:14:11.251918+00:00",
+  "decision": "ACCEPT fourteen exact-source phases: both full hosts/tooling/Workers, both Africa15 host/Worker groups, both download/smoke phases, plus Node22 compiler/build. Full game/UI/release/native/deployment remain separate.",
   "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
   "phases": [
     {
@@ -310,6 +310,126 @@
         "# skipped 0",
         "# todo 0"
       ]
+    },
+    {
+      "name": "c12-node22-compiler4096",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "8774dc3b85a78d32df5922fe9ccf5ca590d0a175",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node22-compiler4096/",
+      "receiptSha256": "33a62bc7b3d64595bf1a7d1d263582901e5179e5dcec89ef6e91173adf4669e6",
+      "logSha256": "12565987d4bb68da8e9dc4338783ab59f36dcce1a853016fb25e1614e03d51d1",
+      "nodeVersion": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "durationSeconds": 161.17658,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "Typecheck clean: 5 projects, 0 errors in .ts and .vue, 0 baselined in existing JavaScript."
+      ],
+      "provenanceLimit": "Receipt before/after per-file source-pin maps are empty; clean exact HEAD and unchanged status recorded. No per-file before-pin claim."
+    },
+    {
+      "name": "c12-node22-build",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "8774dc3b85a78d32df5922fe9ccf5ca590d0a175",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node22-build/",
+      "receiptSha256": "4c36e8d72612108394106e6840a2898957daf79328ae95c1bb24780812899572",
+      "logSha256": "11f7f6c6f6e10328797f89b1bda0edd863ec96933c3c3389c5d11cefc8bac13c",
+      "nodeVersion": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "python3",
+        "/workspace/remote-verification/lease-phase-guard.py",
+        "npm",
+        "run",
+        "build"
+      ],
+      "durationSeconds": 153.908229,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "2130 modules transformed",
+        "built in 59.02s"
+      ],
+      "provenanceLimit": "Receipt before/after per-file source-pin maps are empty; clean exact HEAD and unchanged status recorded. No per-file before-pin claim."
+    },
+    {
+      "name": "c12-node22-download",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "8774dc3b85a78d32df5922fe9ccf5ca590d0a175",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node22-download/",
+      "receiptSha256": "d941c9cec57b77e7d9e68de6fcbeeacac91801ba80170862f5dc1812c057915b",
+      "logSha256": "0895e3c75190956c48da3422509b2559e59d2290902ec97b771ef274fd33fef9",
+      "nodeVersion": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "python3",
+        "/workspace/remote-verification/lease-phase-guard.py",
+        "npm",
+        "run",
+        "size:download"
+      ],
+      "durationSeconds": 97.756403,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "ok   LOADING_RAW               91469  budget 92,000 raw bytes (max)  first-paint JavaScript",
+        "ok   LOADING_GZIP              35568  budget 37,000 gzip bytes (max)  first-paint JavaScript",
+        "ok   FIRST_PAINT_BROTLI        35693  budget 36,800 brotli bytes (max) [provisional]  5 files: index.html, stylesheet and JavaScript",
+        "ok   STARTUP_RAW              614258  budget 615,000 raw bytes (max)  largest over 55 cities (lagos)",
+        "ok   STARTUP_GZIP             222677  budget 223,000 gzip bytes (max)  largest over 55 cities (lagos)",
+        "ok   STARTUP_BROTLI           195402  budget 195,600 brotli bytes (max) [provisional]  largest over 55 cities (lagos)"
+      ],
+      "provenanceLimit": "Receipt before/after per-file source-pin maps are empty; clean exact HEAD and unchanged status recorded. No per-file before-pin claim."
+    },
+    {
+      "name": "c12-node22-smoke",
+      "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+      "publishedReceiptRef": "8774dc3b85a78d32df5922fe9ccf5ca590d0a175",
+      "path": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/node22-smoke/",
+      "receiptSha256": "e85b3fec173a2f4624b701fc7cabfd3ae34f29c3b92184eb401a153a150d94f1",
+      "logSha256": "88fd176ae95ba1765471a2a7ae5b5ac0c24bc4ae03b08a3992049ee05117edb1",
+      "nodeVersion": "v22.23.3",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "scripts/agent-slot.ts",
+        "heavy",
+        "--",
+        "python3",
+        "/workspace/remote-verification/lease-phase-guard.py",
+        "npm",
+        "run",
+        "test:smoke"
+      ],
+      "durationSeconds": 4.056737,
+      "exitStatus": 0,
+      "sourceUnchanged": true,
+      "summaryLines": [
+        "# tests 15",
+        "# pass 15",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0"
+      ],
+      "provenanceLimit": "Receipt before/after per-file source-pin maps are empty; clean exact HEAD and unchanged status recorded. No per-file before-pin claim."
     }
   ],
   "limitations": [

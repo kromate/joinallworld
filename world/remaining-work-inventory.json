@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAtUtc": "2026-10-10T03:06:54.819120+00:00",
+  "observedAtUtc": "2026-10-10T03:14:11.253481+00:00",
   "owner": "WORLD",
   "goalStatus": "active",
   "productionCountries": 11,
@@ -99,8 +99,8 @@
       "kind": "incomplete acceptance",
       "difficulty": 2,
       "owner": "existing cloud country execution, Integration reviews",
-      "repro": "Ten exact-source phases accepted, including both Node22/24 full host/tooling/Worker suites and Africa15 groups. Full game/UI/release corpus remains separate.",
-      "evidence": "world/third-five-c1-successor-gate-review.json",
+      "repro": "Fourteen exact-source phases accepted: both Node22/24 full host/tooling/Worker suites and Africa15 groups, both smoke/download phases, Node22 compiler/build. Full game/UI/release corpus remains separate.",
+      "evidence": "world/third-five-c1-cloud-runtime-gate-review.json; world/third-five-c1-successor-gate-review.json",
       "impact": "Sixteen-country release not ready",
       "files": [
         ".github/workflows/ci.yml",

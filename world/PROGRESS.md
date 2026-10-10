@@ -3,8 +3,9 @@
 Updated: 2026-10-10T03:06:54.819120+00:00
 
 The previous goal turn was a status check. This turn accepted the exact cloud
-package file comparison and Node 22 full Worker evidence, and assigned one
-sealed verification of that separate package. Browser visits remain incomplete.
+package file comparison and Node 22 full Worker/compiler/build/download/smoke
+evidence. One sealed verification of that separate package is queued under the
+existing shared cloud lease. Browser visits remain incomplete.
 The full world-building goal remains active and incomplete.
 
 ## What the player can use
@@ -59,7 +60,9 @@ Its artifact read returned Forbidden, retained as a transport gap. The package
 was independently produced from already owned c12 source and compiled output.
 The [finite browser contract](REMOTE-COUNTRY-BROWSER-ACCEPTANCE.md) was approved
 in design; launch still requires the immutable controller, actual Astra binding,
-resource enforcement and reviewed package. Two fresh actors are required because
+resource enforcement and reviewed package. The full phase now includes bounded
+bootstrap, 720-second stage duration, cleanup and aggregate RSS limits. Two actors
+are required because
 all five round trips exceed one controlled 2,000,000 test credit.
 No private local players, cookies or database are transferred.
 

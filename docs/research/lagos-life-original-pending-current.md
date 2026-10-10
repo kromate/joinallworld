@@ -2,7 +2,7 @@
 
 9 October 2026, user-requested handoff. Capture739 distinct descendant-inclusive replies;254 scheduled page traversals. Six newly discovered branch pages remain. Thirteen of28 residual URLs received scoped observations;15 were not revisited. This ledger does not mean those trees exhausted. Root sort offers Relevant, Recent, Likes; no Recent sweep was performed. [Final scoped report](lagos-life-original-scoped-final-2026-10-09.md) supersedes the older unscoped loading interpretation.
 
-The named Loading timeline indicator was in Trending during scoped rechecks; separate unnamed conversation indicators were recorded. Preserve actual filtered/unavailable/comment-continuation evidence. The city129 queue and current17 image-status queue remain separate; the original handoff had58 image items. Known long-text queue is empty.
+The named Loading timeline indicator was in Trending during scoped rechecks; separate unnamed conversation indicators were recorded. Preserve actual filtered/unavailable/comment-continuation evidence. The city129 queue and current2 image-status queue remain separate; the original handoff had58 image items. Known long-text queue is empty.
 
 ## Bounded access recheck — 9 October 2026, 13:17 UTC
 
@@ -38,11 +38,11 @@ Observed means a scoped recheck happened; it does not assert all descendants rea
 11. [Residual page](https://x.com/Deking423206/status/2105918415122665945) — scoped observation saved
 12. [Residual page](https://x.com/mayeshimself/status/2106108161320997030) — scoped observation saved
 13. [Residual page](https://x.com/Russia_dot_Z/status/2106286819562094705) — scoped observation saved
-14. [Residual page](https://x.com/IamnotaNigerian/status/2106076743274467373) — not revisited
-15. [Residual page](https://x.com/u_joseph6/status/2107191617467691509) — not revisited
-16. [Residual page](https://x.com/10psdawg/status/2106080454197793179) — not revisited
+14. [Residual page](https://x.com/IamnotaNigerian/status/2106076743274467373) — bounded observation 10 October; deeper descendants remain open
+15. [Residual page](https://x.com/u_joseph6/status/2107191617467691509) — bounded observation 10 October; deeper descendants remain open
+16. [Residual page](https://x.com/10psdawg/status/2106080454197793179) — bounded observation 10 October; deeper descendants remain open
 17. [Residual page](https://x.com/Shalom_HeyEliy/status/2106083797544681880) — bounded visible conversation observed at 19:59 UTC; deeper descendants unverified
-18. [Residual page](https://x.com/cha_nelllll/status/2106200378278617572) — not revisited
+18. [Residual page](https://x.com/cha_nelllll/status/2106200378278617572) — bounded observation 10 October; deeper descendants remain open
 19. [Residual page](https://x.com/iinii_oluwa/status/2105776153915170883) — not revisited
 20. [Residual page](https://x.com/badboylexxy/status/2105778047471206888) — not revisited
 21. [Residual page](https://x.com/Ewo_ma/status/2105881848626724953) — not revisited
@@ -74,24 +74,29 @@ The [neighbour image and newer-post pass](lagos-life-neighbours-current-2026-10-
 
 [Next-sixteen evidence](lagos-life-images-next16-2026-10-10.md) completes15posts and20suppliedimages. Current **17originalimages/6branches/28residuals**. SamSecOps app-only andSokeyeA X Error remainunread afterboundedrecovery. Historical739/254 andcity129 unchanged. Officiallocation-expansion acknowledgment hasnoverifiedIlorin deliverydate; readerclaims/advertisements/pendingbetting screenshots are notcurrentpayment orroadmapproof.
 
+## Image review continuation — 10 October 2026, 01:08 UTC
+
+[Final accessible image batch](lagos-life-images-final15-2026-10-10.md) completes fifteen posts and sixteen supplied images. **Two original image items remain unread** after earlier bounded access failures. All six branch pages,28residuals, historical739/254 and city129 remain. Recent and the newer milestone attachment are separate. No full-comment coverage or current-payment claim.
+
 ## Image-bearing posts awaiting visual review
 
 Text does not resolve unseen attachments. Private witnesses require privacy review before publication.
 
-1. [Image-bearing post](https://x.com/SamSecOps/status/2105979792377905569) — app-only; unread
+1. [Image-bearing post](https://x.com/SamSecOps/status/2105979792377905569) — app-only restriction; unread
 2. [Image-bearing post](https://x.com/SokeyeA/status/2105622005722788348) — X Error after bounded recovery; unread
-3. [Image-bearing post](https://x.com/Hollar_prewitt/status/2105572305329865103)
-4. [Image-bearing post](https://x.com/DeltaAlpha2x/status/2106274881763483941)
-5. [Image-bearing post](https://x.com/MitiniP/status/2107510168892166292)
-6. [Image-bearing post](https://x.com/pheezzsleekasf/status/2106370930868142450)
-7. [Image-bearing post](https://x.com/spacehoster1/status/2107031070151766453)
-8. [Image-bearing post](https://x.com/GODPLUSMOM001/status/2107789463690641733)
-9. [Image-bearing post](https://x.com/JesseChukwuemek/status/2107493674951000230)
-10. [Image-bearing post](https://x.com/piccollo_chegun/status/2106774098907156562)
-11. [Image-bearing post](https://x.com/tundelawal01/status/2106135906277101754)
-12. [Image-bearing post](https://x.com/MosesAustihap0/status/2106717179177521604)
-13. [Image-bearing post](https://x.com/naijaexploit/status/2106582284325327169)
-14. [Image-bearing post](https://x.com/Alexslowfire/status/2107064728392470535)
-15. [Image-bearing post](https://x.com/olawalemuiz12/status/2105576154258186737)
-16. [Image-bearing post](https://x.com/grok/status/2107139882984288483)
-17. [Image-bearing post](https://x.com/RodrigoHenande/status/2106127217654718639)
+
+## 10 October 01:11 UTC milestone and residual observations
+
+[Milestone and residual evidence](lagos-life-milestone-residual4-2026-10-10.md) completes the newer author milestone attachment and records four bounded residual observations. The author dashboard is historical reported data, not independently measured popularity or live counts. All28 residual URLs and six branch pages remain; no tree exhaustion is accepted. Original image queue remains two inaccessible posts.
+
+Two separately discovered supplemental attachments remain unread: [reader home, four images](https://x.com/dawgg335/status/2108557254194499735) and [reader Ayo23/23 loop allegation](https://x.com/AgbemukoIfe/status/2108575989643018727). No cause, author promise, withdrawal capability or account-deletion policy is inferred. Historical739/254, city129 and the Recent gap remain unchanged.
+
+## 10 October 01:19 UTC supplemental media complete
+
+[Two supplemental media posts](lagos-life-supplemental2-2026-10-10.md) now have fully read text and all five supplied images inspected. The Ayo screenshot confirms a displayed23–23 low-seed position; the reported cycle, resignation and settlement remain unverified. The reader home images do not establish purchases or stored contents. These two supplemental attachments are closed; the original two inaccessible image posts, six branch pages and28 residual URLs remain. Historical739/254 and city129 unchanged; no Recent or exhausted-tree claim.
+
+## 10 October 01:21 UTC four branch observations
+
+[Four known branch observations](lagos-life-branches4-2026-10-10.md) read the four previously unvisited recent-pass roots and two relevant descendant pages. Exact loading and follow-up URLs are retained; no tree or known root is closed. Reader PWA instructions are not actual compatibility evidence; the author notes a transfer request for team consideration without a delivery promise. Public DM invitations do not authorize private messages. Original2images/6branches/28residuals,739/254 and city129 remain.
+
+New follow-up pages are [browser/PWA instruction](https://x.com/badfendibarbie/status/2105993225500537219), [partner gifting](https://x.com/Ewo_ma/status/2106008974512242876), [wealth conversation](https://x.com/Ewo_ma/status/2106009128380276831), and [public help invitation](https://x.com/tifezay001/status/2105760379968127224). The shared badboylexxy root was already inspected once in this pass and is not queued again as an unread root. Deeper replies remain unverified.

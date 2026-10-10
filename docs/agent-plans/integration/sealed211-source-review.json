@@ -1,0 +1,112 @@
+{
+  "decision": "APPROVE_NARROW_SOURCE_DELTAS",
+  "sourceOnly": true,
+  "blockers": [],
+  "verifierCommit": "211d4442d37b5dfc50e8163e518a4370cfb5bbf5",
+  "verifierParent": "dcd29b4e02557300d7ad6db803b687eb74962a66",
+  "checkerCommit": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "checkerParent": "0a5e2983126e3dac406af1c3a121e9cbfef78feb",
+  "portableBaseline": "fa8ba00ac63be7ddf0edf80be27ea1a81a7ed6fe",
+  "legacySource": "3af17a01b8bd406bfb830ca0d2ee66d2d0093d28",
+  "sha256": {
+    "world/tooling/sealed-africa-coverage.mjs": "c84e5e69225421b5fa58accf963f6456a84c2a797724ba89a4e0d4623a6948bb",
+    "world/tooling/verify-sealed-africa.mjs": "f6b59c1709ab30aaa36c4dc03b4dedbf2f73b5720d164356e208c5dba635b014",
+    "world/sealed-fifteen-coverage-source-acceptance.json": "8d2f6a1fa3fa1b36ce7b2524ebd8455501ffc2054474c19f8f5d5424df613aab",
+    "scripts/world/check-playable-africa-rollout.py": "d82adecbb101ac20386d303a0c7762a82714fb896eaa3bfbdecec1747b5b0ab7",
+    "server/testing/africaJourney.ts": "66202144ded068a55708b7ac4684ea43b7717897c44d8e535033b657413dd880",
+    "src/map3d/geo/atlas.test.ts": "1ecd4bc513d6d55fcf8b31ec26d0e4920ff00ff682b9ea71e1c1c7be2f929796",
+    "src/map3d/world.test.ts": "ed7d2f852b5a51d969ff6b8726868f5333f926fd619883ad66562a215e111e80",
+    "src/game/cities/registry.ts_at_c12_and_legacy": "c785929592a90590cfc6a107b7db466dc40515f11770d7a1cbb4d427da1f4efa"
+  },
+  "approvedAssemblyFiles": [
+    "world/tooling/sealed-africa-coverage.mjs",
+    "world/tooling/verify-sealed-africa.mjs"
+  ],
+  "soleAssemblyOwner": "WORLD authorised Root mechanical assembly; lease returned to WORLD",
+  "wholeBranchMergeApproved": false,
+  "coverage": {
+    "acceptedCounts": [
+      5,
+      10,
+      15
+    ],
+    "legacyFiveRequiresExactSourceAndExport": true,
+    "otherBatchCounts": [
+      3,
+      5
+    ],
+    "exactKnownOrder": true,
+    "duplicatesRejected": true,
+    "allOpenRegisteredForeignRulesLoaded": true,
+    "foreignUnionEqualityBeforeEmulatorConstruction": true,
+    "newBatches": [
+      [
+        "cairo",
+        "rabat",
+        "kigali"
+      ],
+      [
+        "kampala",
+        "lusaka"
+      ]
+    ],
+    "selectedFifteenCityAssets": 31
+  },
+  "limitsMsUnchanged": {
+    "total": 168000,
+    "request": 12000,
+    "start": 20000,
+    "restart": 15000,
+    "dispose": 10000
+  },
+  "funding": {
+    "perJourneySyntheticCredit": 2000000,
+    "amountUnchanged": true,
+    "aggregateFixtureCountIncreases": true,
+    "ordinaryGuestAffordabilityProved": false
+  },
+  "checker": {
+    "actualChangedFileCount": 4,
+    "generationIdentityMandatory": true,
+    "stateIdCharacters": [
+      1,
+      128
+    ],
+    "stateNameCharacters": [
+      1,
+      256
+    ],
+    "requiredFieldsMatchPinnedFactsExactly": true,
+    "additionalIdentityMetadataRejected": false,
+    "existingByteHashPathAndDuplicateJsonGuardsPreserved": true,
+    "productionRuntimePathsChanged": false,
+    "external33PinManifestIndependentlyRehashed": false,
+    "actualChangedFilesVersus91": 5,
+    "actualChangedFilesVersus0a": 4
+  },
+  "evidenceLimits": [
+    "Acceptance JSON is supplied evidence, not reviewer execution",
+    "Cold-load observation is 50-city ten-foreign prefix, not exact corrected55 runtime",
+    "Prior FA8 workflow success predates changed tools",
+    "More work fits within unchanged configured limits only if actual run succeeds",
+    "Promise timeout is not synchronous CPU preemption",
+    "Cleanup may occur after work deadline",
+    "No package/source acceptance transfer from tooling approval"
+  ],
+  "execution": {
+    "sourceReads": true,
+    "tests": false,
+    "diagnostics": false,
+    "compiler": false,
+    "server": false,
+    "browser": false,
+    "dispatch": false,
+    "sourceEdits": false
+  },
+  "releaseApproved": false,
+  "activationApproved": false,
+  "paidResourcesApproved": false,
+  "root33RuntimePinsComparedAgainst91": true,
+  "assembledTooling": "2df4569f5bc0bbabe90238c1482907a87eb75f67",
+  "assemblyScope": "Exactlytwofiles37add7del on FA8; push and freshrefmatch, no execution/dispatch/release."
+}

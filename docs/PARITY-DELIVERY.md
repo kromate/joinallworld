@@ -449,3 +449,13 @@ Public Family JavaScript, loading backdrop and OG image returned 200 with exact 
 ## 10 October 2026, 01:03 UTC research acceptance
 
 [Next-sixteen safe evidence](research/lagos-life-images-next16-2026-10-10.md) independently read:15completeposts/20images and exact32-to17queuedifference. Two accessfailures remainunread; allother6/28/historical739/254/city129 queuespreserved. No currentsettlement, Recent/exhaustion orfullparity claim.
+
+## 10 October 2026, 01:08 UTC research acceptance
+
+[Final accessible original-image evidence](research/lagos-life-images-final15-2026-10-10.md) is independently read and exactly reconciled17to2. Fifteen posts/sixteen supplied images complete; prior access failures remain unread. No exhaustive reply tree, Recent, current competitor payments or full parity accepted.
+
+10 October 01:11 UTC: [milestone attachment and four residual observations](research/lagos-life-milestone-residual4-2026-10-10.md) inspected without exhaustion or live-statistics proof. Original image queue remains2, all6branches/28residuals and city129 retained. Two newly discovered supplemental media posts are queued separately.
+
+10 October 01:19 UTC: [supplemental media](research/lagos-life-supplemental2-2026-10-10.md) closes two posts/five supplied images, with Ayo cycle/settlement unverified. Original2/6/28/739/254 and city129 retained.
+
+10 October 01:21 UTC: [four branch observations](research/lagos-life-branches4-2026-10-10.md) retain exact loading/follow-up queues without closing trees or treating author consideration as delivery. All original counts and city129 unchanged.

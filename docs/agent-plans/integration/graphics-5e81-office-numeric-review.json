@@ -1,0 +1,134 @@
+{
+  "source": "5e81e24c45c0d590b726c449f67f6e71b4ee4e84",
+  "run": 38011720287,
+  "manifestPinsMatched": 101,
+  "checkerSourceSha256": "c977edcd27ca2ac9b57848d544865038cbb2638a1bde6b65eb3f2ad3df4b0cdb",
+  "actualReportSha256": "f8fb467412f6ef41b1f28dff9a80bd5bfe0ca31f376beac193cc0cc3f3245c8f",
+  "floorSummarySha256": "754a2ec0a0155770cad1f343ab34665d22463e86f325ee64474776587c1a9610",
+  "sourceManifestSha256": "47411b9189f147037cc0488f2baf0cdb7f4ec26c6e567ec0c83fe9e6907365a1",
+  "numericRows": [
+    {
+      "npcId": "mrs-okafor",
+      "phase": "canonical-placement-idle",
+      "side": "left",
+      "samples": 80,
+      "nearestAbsoluteGap": 0.00018294773277068022,
+      "minimumSignedGap": -0.00018294773277068022
+    },
+    {
+      "npcId": "mrs-okafor",
+      "phase": "canonical-placement-idle",
+      "side": "right",
+      "samples": 64,
+      "nearestAbsoluteGap": 3.5057901839816163e-05,
+      "minimumSignedGap": -3.5057901839816163e-05
+    },
+    {
+      "npcId": "mrs-okafor",
+      "phase": "during-interaction",
+      "side": "left",
+      "samples": 80,
+      "nearestAbsoluteGap": 4.404097919685768e-11,
+      "minimumSignedGap": 4.404097919685768e-11
+    },
+    {
+      "npcId": "mrs-okafor",
+      "phase": "during-interaction",
+      "side": "right",
+      "samples": 64,
+      "nearestAbsoluteGap": 1.0739141481794223e-05,
+      "minimumSignedGap": -1.0739141481794223e-05
+    },
+    {
+      "npcId": "mrs-okafor",
+      "phase": "returned-idle-after-interaction",
+      "side": "left",
+      "samples": 80,
+      "nearestAbsoluteGap": 0.00018294773277077736,
+      "minimumSignedGap": -0.00018294773277077736
+    },
+    {
+      "npcId": "mrs-okafor",
+      "phase": "returned-idle-after-interaction",
+      "side": "right",
+      "samples": 64,
+      "nearestAbsoluteGap": 3.5057901839927186e-05,
+      "minimumSignedGap": -3.5057901839927186e-05
+    },
+    {
+      "npcId": "dapo",
+      "phase": "canonical-placement-idle",
+      "side": "left",
+      "samples": 80,
+      "nearestAbsoluteGap": 1.827777034774103e-05,
+      "minimumSignedGap": -1.827777034774103e-05
+    },
+    {
+      "npcId": "dapo",
+      "phase": "canonical-placement-idle",
+      "side": "right",
+      "samples": 64,
+      "nearestAbsoluteGap": 2.360763840011937e-05,
+      "minimumSignedGap": -2.360763840011937e-05
+    },
+    {
+      "npcId": "dapo",
+      "phase": "during-interaction",
+      "side": "left",
+      "samples": 80,
+      "nearestAbsoluteGap": 7.316877659313548e-11,
+      "minimumSignedGap": 7.316877659313548e-11
+    },
+    {
+      "npcId": "dapo",
+      "phase": "during-interaction",
+      "side": "right",
+      "samples": 64,
+      "nearestAbsoluteGap": 1.1089967736604978e-05,
+      "minimumSignedGap": -1.1089967736604978e-05
+    },
+    {
+      "npcId": "dapo",
+      "phase": "returned-idle-after-interaction",
+      "side": "left",
+      "samples": 80,
+      "nearestAbsoluteGap": 1.827777034774103e-05,
+      "minimumSignedGap": -1.827777034774103e-05
+    },
+    {
+      "npcId": "dapo",
+      "phase": "returned-idle-after-interaction",
+      "side": "right",
+      "samples": 64,
+      "nearestAbsoluteGap": 2.360763840011937e-05,
+      "minimumSignedGap": -2.360763840011937e-05
+    }
+  ],
+  "refreshRows": [
+    {
+      "id": "mrs-okafor",
+      "identityPreserved": true,
+      "repositionMeters": 0.1442220510185597,
+      "solveAttemptsBefore": 1,
+      "solveAttemptsAfter": 2,
+      "repeatedSolve": true,
+      "solverStatus": "pass",
+      "postSolveContactPass": true
+    },
+    {
+      "id": "dapo",
+      "identityPreserved": true,
+      "repositionMeters": 0.1442220510185597,
+      "solveAttemptsBefore": 1,
+      "solveAttemptsAfter": 2,
+      "repeatedSolve": true,
+      "solverStatus": "pass",
+      "postSolveContactPass": true
+    }
+  ],
+  "fixtureChecksPassed": 28,
+  "fixtureChecksTotal": 28,
+  "consoleErrors": [],
+  "scope": "Read-only source and recorded numeric geometry evidence; callback-derived floor oracle, not an independent scene-mesh collision proof, visual inspection, all pose families, current production or physical device acceptance. Exact combined compilation and Home transition still fail.",
+  "productionAccepted": false
+}

@@ -6,7 +6,7 @@ This lists all 58 dated author-announcement links in the historical feature cata
 
 | Post | Current evidence | Next work |
 |---|---|---|
-| [Original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) |739 replies/254 scheduled traversals; no exhausted-tree claim. | [6 known branches,17 current images,28 scoped residual records](lagos-life-original-pending-current.md),15 residual URLs not revisited. Recent sort available, sweep open. |
+| [Original launch](https://x.com/Shalom_HeyEliy/status/2105541070486470749) |739 replies/254 scheduled traversals; no exhausted-tree claim. | [6 known branches,2 current images,28 scoped residual records](lagos-life-original-pending-current.md),15 residual URLs not revisited. Recent sort available, sweep open. |
 | [City launch](https://x.com/Shalom_HeyEliy/status/2107244922290012303) |743 descendant-inclusive replies,110 branch visits. | [Current129-page queue](lagos-life-pending-replies-current.md), four truncated posts and image follow-up. |
 
 ## Announcement roots
@@ -76,4 +76,18 @@ The historical feature-request root and its395 captured visible replies are sepa
 
 ## Newer author supplement — observed 10 October 2026
 
-[Milestone claim](https://x.com/Shalom_HeyEliy/status/2108547340344693188) and [later metric claim](https://x.com/Shalom_HeyEliy/status/2108625054846099491) have fully read text but unverified live statistics. The milestone attachment remains unread. See [bounded evidence](lagos-life-neighbours-current-2026-10-10.md). These two posts supplement the historical statistics row; they do not change the 58-announcement inventory or prove current feature behavior.
+[Milestone claim](https://x.com/Shalom_HeyEliy/status/2108547340344693188) and [later metric claim](https://x.com/Shalom_HeyEliy/status/2108625054846099491) have fully read text but unverified live statistics. The milestone attachment was fully inspected in the [milestone pass](lagos-life-milestone-residual4-2026-10-10.md); its numbers remain historical author claims without independent methodology or live-counter verification. See [bounded evidence](lagos-life-neighbours-current-2026-10-10.md). These two posts supplement the historical statistics row; they do not change the 58-announcement inventory or prove current feature behavior.
+
+## Supplemental media queue after milestone pass
+
+[Reader home showcase](https://x.com/dawgg335/status/2108557254194499735), four images, and [reader Ayo loop allegation](https://x.com/AgbemukoIfe/status/2108575989643018727), attachment and full text, remain unread. These are separate from the two inaccessible original image posts. Four original residuals received bounded observations; all28 URLs remain and deeper conversation coverage stays qualified. The historical58 author-announcement inventory is unchanged.
+
+## 10 October 01:19 UTC supplemental media complete
+
+[Two supplemental media posts](lagos-life-supplemental2-2026-10-10.md) now have fully read text and all five supplied images inspected. The Ayo screenshot confirms a displayed23–23 low-seed position; the reported cycle, resignation and settlement remain unverified. The reader home images do not establish purchases or stored contents. These two supplemental attachments are closed; the original two inaccessible image posts, six branch pages and28 residual URLs remain. Historical739/254 and city129 unchanged; no Recent or exhausted-tree claim.
+
+## 10 October 01:21 UTC four branch observations
+
+[Four known branch observations](lagos-life-branches4-2026-10-10.md) read the four previously unvisited recent-pass roots and two relevant descendant pages. Exact loading and follow-up URLs are retained; no tree or known root is closed. Reader PWA instructions are not actual compatibility evidence; the author notes a transfer request for team consideration without a delivery promise. Public DM invitations do not authorize private messages. Original2images/6branches/28residuals,739/254 and city129 remain.
+
+New follow-up pages are [browser/PWA instruction](https://x.com/badfendibarbie/status/2105993225500537219), [partner gifting](https://x.com/Ewo_ma/status/2106008974512242876), [wealth conversation](https://x.com/Ewo_ma/status/2106009128380276831), and [public help invitation](https://x.com/tifezay001/status/2105760379968127224). The shared badboylexxy root was already inspected once in this pass and is not queued again as an unread root. Deeper replies remain unverified.

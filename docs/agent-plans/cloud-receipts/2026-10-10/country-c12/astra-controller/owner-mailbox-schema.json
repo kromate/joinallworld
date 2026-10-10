@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "status": "SOURCE_ONLY_SCHEMA_NO_RUNTIME_DATA",
+  "privateDirectoryMode": "0700",
+  "requestResponseMode": "0600",
+  "maximumFileBytes": 65536,
+  "requestCommonFields": [
+    "schema",
+    "id",
+    "kind",
+    "operatorId",
+    "controllerSha256",
+    "reviewSha256",
+    "actor",
+    "stage.pid",
+    "stage.port",
+    "stage.storeId",
+    "stage.deadline"
+  ],
+  "responseCommonExample": {
+    "schema": 1,
+    "requestId": "EXACT_REQUEST_UUID",
+    "requestSha256": "SHA256_OF_EXACT_REQUEST_FILE_BYTES",
+    "ownerId": "EXACT_REVIEW_WORLD_OWNER_ID",
+    "verified": true
+  },
+  "trust": "Existing named local WORLD owner; exact request byte hash; no invented approvals or cryptographic-signature claim",
+  "responseFieldsByKind": {
+    "publish-live-pre-ui-provenance": {
+      "published": true,
+      "publicationReference": "ACTUAL_PUBLIC_SAFE_RECEIPT_REFERENCE",
+      "restriction": "Publish only safe nested provenance/origin/cookie-count facts; generic envelope includes private store ID."
+    },
+    "capture-baseline-and-fund-once": {
+      "onboardingCash": "ACTUAL_MEASURED_INTEGER",
+      "amount": 2000000,
+      "duplicate": true,
+      "creditEffects": 1,
+      "walletEffects": 1,
+      "receiptEffects": 1,
+      "auditEffects": 1,
+      "replayBalanceDelta": 0,
+      "fundedCash": "ACTUAL_ONBOARDING_CASH_PLUS_2000000",
+      "protectedBaselineSha256": "PRIVATE_BASELINE_SHA256",
+      "intentSha256": "PERSISTED_ORIGINAL_IDENTICAL_REPLAY_INTENT_SHA256",
+      "requiredProcedure": "Persist ONE intent before actual root POST /api/admin/players/:id/act; replay identical clientId/payload; inspect original result/state after ambiguity; no new intent/grant."
+    },
+    "verify-local-activity-result": {
+      "actionSucceeded": true,
+      "completedOnce": true,
+      "cost": 0,
+      "seconds": "EXACT_DISPLAYED_DURATION",
+      "resultSha256": "ACTUAL_RESULT_SHA256"
+    },
+    "verify-city-home-checkpoint": {
+      "protectedStatePreserved": true,
+      "prefixesPreserved": true,
+      "cash": "ACTUAL_UI_AND_OWNER_CASH",
+      "roundTripFare": "TWICE_QUOTED_CITY_FARE",
+      "requiredProcedure": "Actual protected identity/home/ownership/inventory and original ledger/receipt prefix comparison; only real fare/activity/wallet/location deltas."
+    },
+    "one-exact-sigwinch-restart": {
+      "signal": "SIGWINCH",
+      "restartCount": 1,
+      "sameStore": true,
+      "port": "EXACT_ORIGINAL_PORT",
+      "deadline": "EXACT_ORIGINAL_STAGE_DEADLINE",
+      "requiredProcedure": "One signal to the recorded helper PID only; observe stage-restart-observation.json actual helper event, same store/port and readiness; no renewal."
+    },
+    "verify-reloaded-state": {
+      "identityHomeWalletReceiptPreserved": true,
+      "prefixesPreserved": true
+    }
+  },
+  "unknownOrUnprovedOwnerResponse": "Do not emit verified:true; no response or explicit failure yields PARTIAL. Do not reset/recreate actor or fund again."
+}

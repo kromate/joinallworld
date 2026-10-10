@@ -1,0 +1,180 @@
+{
+  "observedAtUtc": "2026-10-10T03:20:02.614472+00:00",
+  "decision": "ACCEPT independent cloud package sealed synthetic journeys, assets and persisted restart; not browser or deployment acceptance",
+  "sourceSha": "c12b8ebd83cd301475fb1d7bf9e143af260d6621",
+  "packageDigest": "28e4f93df5e608b63d3d862173b03b418d70c141803de7f69a6ed836ffb5030d",
+  "publishedReceiptRef": "e424c0bd902fff71e899a481f2dc8ef9710779fd",
+  "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-package-sealed15-once/receipt.json",
+  "receiptSha256": "9664efe5c1e9bc1f38798f45eea3a44454d4ad7baebcf13f6126f2e7fb61496e",
+  "rawLogPath": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-package-sealed15-once/command.log",
+  "rawLogSha256": "c594d470b2d882d3e30e7e2dd581b534da34d701628a2fa9357d1ad4841a4d39",
+  "toolPinsPath": "docs/agent-plans/cloud-receipts/2026-10-10/country-c12/independent-seal-tool-pins.json",
+  "toolPinsSha256": "2b4b515a867d696dc04907f5f893a26249039f2a7af7c38466d35e4257e883d6",
+  "toolSourceSha": "2df4569f5bc0bbabe90238c1482907a87eb75f67",
+  "toolPins": {
+    "world/tooling/verify-sealed-africa.mjs": "f6b59c1709ab30aaa36c4dc03b4dedbf2f73b5720d164356e208c5dba635b014",
+    "world/tooling/sealed-africa-coverage.mjs": "c84e5e69225421b5fa58accf963f6456a84c2a797724ba89a4e0d4623a6948bb",
+    "world/tooling/sealed-admin-rate-policy.mjs": "82d30442dcc0ed164ce1e1ea8a96ccb230fa94b2930274fe4bc258e211c49c8b"
+  },
+  "exitStatus": 0,
+  "sourceUnchanged": true,
+  "wrapperDurationSecondsIncludingLeaseWait": 235.05986,
+  "verifierElapsedMs": 144672,
+  "verifierLimitMs": 168000,
+  "passedChecks": [
+    {
+      "check": "source-and-package-identity",
+      "status": "passed"
+    },
+    {
+      "check": "sealed-worker-start-and-sqlite",
+      "status": "passed"
+    },
+    {
+      "check": "packaged-assets-all-destinations",
+      "status": "passed",
+      "count": 31,
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers",
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town",
+        "addis-ababa",
+        "cairo",
+        "rabat",
+        "kigali",
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-first-five",
+      "status": "passed",
+      "cities": [
+        "yaounde",
+        "lome",
+        "accra",
+        "nairobi",
+        "algiers"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-second-four",
+      "status": "passed",
+      "cities": [
+        "cotonou",
+        "abidjan",
+        "dakar",
+        "cape-town"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-addis-ababa",
+      "status": "passed",
+      "cities": [
+        "addis-ababa"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-third-three",
+      "status": "passed",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-third-three",
+      "status": "passed",
+      "cities": [
+        "cairo",
+        "rabat",
+        "kigali"
+      ]
+    },
+    {
+      "check": "air-travel-save-reload-meal-return-third-two",
+      "status": "passed",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "homeward-route-and-save-recovery-third-two",
+      "status": "passed",
+      "cities": [
+        "kampala",
+        "lusaka"
+      ]
+    },
+    {
+      "check": "sqlite-restart",
+      "status": "passed"
+    }
+  ],
+  "coveredCities": [
+    "yaounde",
+    "lome",
+    "accra",
+    "nairobi",
+    "algiers",
+    "cotonou",
+    "abidjan",
+    "dakar",
+    "cape-town",
+    "addis-ababa",
+    "cairo",
+    "rabat",
+    "kigali",
+    "kampala",
+    "lusaka"
+  ],
+  "verifiedAssets": 31,
+  "allSelectedAssetManifestPinsMatched": true,
+  "indexResponseTransform": "canonical-preview-image-origin; recorded separately from static hash",
+  "rateWaitCount": 2,
+  "sameAuthenticatedAddressAndIntentRetained": true,
+  "releaseReady": false,
+  "limitations": [
+    "Full game/UI/release matrix remains separate.",
+    "Synthetic sealed fixture journeys do not prove normal UI flight completion, phone rendering or production travel.",
+    "No production upload, new live country or original Nigeria save continuity claim.",
+    "Receipt per-file before/after source pin maps are empty; exact clean HEAD/source unchanged and separately pinned tools/manifest inspected.",
+    "Distinct independently built package acceptance; no inherited original artifact acceptance."
+  ]
+}

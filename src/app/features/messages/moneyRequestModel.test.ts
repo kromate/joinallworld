@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { MONEY_REQUEST } from '../../../moneyRequest.ts'
-import { cardButtons, cardState, cardTitle, checkRequest, doneText, refusalText } from './moneyRequestModel.ts'
+import { cardButtons, cardState, cardTitle, checkRequest, doneText, otherParty, refusalText } from './moneyRequestModel.ts'
 import type { MoneyRequestView } from '../../../types/social.ts'
 
 const view = (extra: Partial<MoneyRequestView> = {}): MoneyRequestView => ({ id: 'MR-1', amount: 500, state: 'open', mine: false, expiresAt: 1000, payable: true, ...extra })
@@ -41,4 +41,10 @@ test('titles and refusals are plain sentences, and the server wording wins', () 
   assert.match(refusalText('network'), /Connection lost/)
   assert.match(refusalText('mystery'), /Nothing was changed/)
   assert.equal(doneText('pay', 1500, 'Ada'), 'Paid ₦1,500 to Ada')
+})
+
+test('a card names the other person on each side: the asker sees the friend, the friend sees the asker', () => {
+  assert.equal(cardTitle(true, otherParty(true, 'Ada', 'Bola')), 'You asked Bola')
+  assert.equal(cardTitle(false, otherParty(false, 'Ada', 'Bola')), 'Ada asked you')
+  assert.equal(otherParty(true, 'Ada', undefined), 'your friend')
 })

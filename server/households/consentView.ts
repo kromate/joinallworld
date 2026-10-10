@@ -1,9 +1,10 @@
 import {
   LIMITS, isCharacterIndex, isHome, isHomeIndex, isHousehold, isInvite,
   isLifeFact, isLifeIndex, isMember, isPair, isView, parseCommand, point as isPoint, record,
+  identity, oneOf,
   type Authority, type CharacterId, type CharacterRead, type Command,
-  type Home, type Household, type Identity, type Invite, type LifeFact,
-  type LifeId, type LifeRead, type Member, type Point, type View,
+  type Home, type Household, type Identity, type Invite, type InviteId, type LifeFact,
+  type LifeId, type LifeRead, type Member, type PairFact, type Point, type View,
 } from './records.ts'
 
 /** Transaction-local point access. Every missing row is explicit; not-loaded is never absence. */
@@ -20,28 +21,99 @@ export interface ConsentReadTransaction {
   pairFact(a: Identity, b: Identity): Promise<Point<unknown>>
   invite(id: string): Promise<Point<unknown>>
   member(id: string): Promise<Point<unknown>>
+  /** Add this supporting keyed row to the optimistic transaction read set. Commit must fail if its revision changes. */
+  protectInviteRead(id: InviteId, revision: number): Promise<void>
 }
 
 export type ConsentViewLoad = Readonly<{ ok: true; command: Command; view: View }> | Readonly<{ ok: false; code: string }>
 const fail = (code: string): ConsentViewLoad => ({ ok: false, code })
 type KnownPoint<T> = Exclude<Point<T>, { readonly state: 'not-loaded' }>
-const hasPoint = <T>(p: Point<unknown>, check: (x: unknown) => x is T): p is Point<T> => isPoint(p, check)
+const hasPoint = <T>(p: unknown, check: (x: unknown) => x is T): p is Point<T> => isPoint(p, check)
 const idOf = (x: unknown): string | undefined => record(x) && typeof x.id === 'string' ? x.id : undefined
 const unique = <T>(xs: readonly T[]): boolean => new Set(xs).size === xs.length
+
+type Snapshot = Readonly<{ ok: true; value: unknown }> | Readonly<{ ok: false }>
+interface SnapshotBudget { remaining: number; stringUnits: number }
+function snapshotData(value: unknown, budget: SnapshotBudget = { remaining: 2048, stringUnits: 16384 }, depth = 0, ancestors: WeakSet<object> = new WeakSet()): Snapshot {
+  if (value === null || value === undefined || typeof value === 'boolean' || typeof value === 'number') return { ok: true, value }
+  if (typeof value === 'string') {
+    if (value.length > 4096 || budget.stringUnits < value.length) return { ok: false }
+    budget.stringUnits -= value.length
+    return { ok: true, value }
+  }
+  if (typeof value !== 'object' || depth > 12 || budget.remaining <= 0) return { ok: false }
+  const object = value
+  if (ancestors.has(object)) return { ok: false }
+  ancestors.add(object)
+  budget.remaining -= 1
+  try {
+    const array = Array.isArray(object)
+    const prototype = Object.getPrototypeOf(object)
+    const keys = Reflect.ownKeys(object)
+    if (array) {
+      const length = Object.getOwnPropertyDescriptor(object, 'length')
+      if (prototype !== Array.prototype || !length || !Object.hasOwn(length, 'value') || !Number.isSafeInteger(length.value) || length.value < 0 || length.value > 64 || keys.length !== length.value + 1) return { ok: false }
+      const copy: unknown[] = []
+      for (let index = 0; index < length.value; index += 1) {
+        const descriptor = Object.getOwnPropertyDescriptor(object, String(index))
+        if (!descriptor || descriptor.enumerable !== true || !Object.hasOwn(descriptor, 'value')) return { ok: false }
+        const child = snapshotData(descriptor.value, budget, depth + 1, ancestors)
+        if (!child.ok) return child
+        copy.push(child.value)
+      }
+      return { ok: true, value: Object.freeze(copy) }
+    }
+    if ((prototype !== Object.prototype && prototype !== null) || keys.length > 64) return { ok: false }
+    const copy: Record<string, unknown> = Object.create(null)
+    for (const key of keys) {
+      if (typeof key !== 'string' || key.length > 4096 || budget.stringUnits < key.length) return { ok: false }
+      budget.stringUnits -= key.length
+      const descriptor = Object.getOwnPropertyDescriptor(object, key)
+      if (!descriptor || descriptor.enumerable !== true || !Object.hasOwn(descriptor, 'value')) return { ok: false }
+      const child = snapshotData(descriptor.value, budget, depth + 1, ancestors)
+      if (!child.ok) return child
+      Object.defineProperty(copy, key, { value: child.value, enumerable: true, writable: true, configurable: true })
+    }
+    return { ok: true, value: Object.freeze(copy) }
+  } catch {
+    // Reflection failures indicate malformed/uninspectable input; storage read errors are never caught here.
+    return { ok: false }
+  } finally {
+    ancestors.delete(object)
+  }
+}
+function freezeGraph<T>(value: T, seen: WeakSet<object> = new WeakSet()): T {
+  if (value === null || typeof value !== 'object' || seen.has(value)) return value
+  seen.add(value)
+  for (const key of Reflect.ownKeys(value)) {
+    const descriptor = Object.getOwnPropertyDescriptor(value, key)
+    if (descriptor && Object.hasOwn(descriptor, 'value')) freezeGraph(descriptor.value, seen)
+  }
+  return Object.freeze(value)
+}
+const systemAuthority = (x: unknown): x is Extract<Authority, { readonly kind: 'system' }> => {
+  if (!record(x) || x.kind !== 'system' || !identity(x.subject) || !oneOf(x.cause, ['blocked','unfriended','member_life_changed','owner_life_changed','character_erased','home_retired']) || !record(x.evidence)) return false
+  return x.evidence.kind === 'home' || x.evidence.kind === 'life' && isLifeFact(x.evidence.value) || x.evidence.kind === 'pair' && isPair(x.evidence.value)
+}
 const linkedMemberInvites = async (tx: ConsentReadTransaction, members: readonly Member[], household: Household): Promise<boolean> => {
   if (members.length > LIMITS.residents) return false
   for (const member of members) {
     const p = await point(tx.invite(member.inviteId), isInvite)
     if (!p || p.state !== 'present') return false
     const invite = p.value
-    if (invite.state !== 'accepted' || invite.membershipId !== member.id || invite.answeredAt !== member.acceptedAt || invite.householdId !== household.id || invite.homeId !== household.homeId || invite.epoch !== household.epoch || invite.owner.character !== member.owner.character || invite.owner.life !== member.owner.life || invite.recipient.character !== member.member.character || invite.recipient.life !== member.member.life || invite.permissions[0] !== member.permissions[0] || invite.permissions[1] !== member.permissions[1]) return false
+    if (invite.id !== member.inviteId || invite.state !== 'accepted' || invite.membershipId !== member.id || invite.answeredAt !== member.acceptedAt || invite.householdId !== household.id || invite.homeId !== household.homeId || invite.epoch !== household.epoch || invite.owner.character !== member.owner.character || invite.owner.life !== member.owner.life || invite.recipient.character !== member.member.character || invite.recipient.life !== member.member.life || invite.permissions[0] !== member.permissions[0] || invite.permissions[1] !== member.permissions[1]) return false
+    await tx.protectInviteRead(member.inviteId, invite.revision)
   }
   return true
 }
 
 async function point<T>(read: Promise<Point<unknown>>, check: (x: unknown) => x is T): Promise<KnownPoint<T> | null> {
-  const p = await read
-  return hasPoint(p, check) && p.state !== 'not-loaded' ? p : null
+  // Await outside the snapshot guard: a storage failure rejects the load and aborts its transaction.
+  const raw = await read
+  const safe = snapshotData(raw)
+  if (!safe.ok || !hasPoint(safe.value, check)) return null
+  const p = safe.value
+  return p.state !== 'not-loaded' ? p : null
 }
 async function indexedCharacters(tx: ConsentReadTransaction, ids: readonly CharacterId[]): Promise<readonly CharacterRead[] | null> {
   if (ids.length > 28 || !unique(ids)) return null
@@ -78,8 +150,11 @@ async function rows<T>(ids: readonly string[], max: number, read: (id: string) =
 
 /** Build the reducer view from trusted transaction reads; command data never supplies authority. */
 export async function loadConsentView(rawCommand: unknown, tx: ConsentReadTransaction): Promise<ConsentViewLoad> {
-  const command = parseCommand(rawCommand)
-  if (!command) return fail('invalid_command')
+  const safeCommand = snapshotData(rawCommand)
+  if (!safeCommand.ok) return fail('invalid_command')
+  const parsedCommand = parseCommand(safeCommand.value)
+  if (!parsedCommand) return fail('invalid_command')
+  const command = freezeGraph(parsedCommand)
   const now = tx.now()
   if (!Number.isSafeInteger(now) || now < 0) return fail('invalid_time')
 
@@ -92,9 +167,9 @@ export async function loadConsentView(rawCommand: unknown, tx: ConsentReadTransa
     if (home.value.id !== command.homeId || (homeIndex.state === 'present' && homeIndex.value.id !== command.homeId)) return fail('home_binding_mismatch')
     const characters = await indexedCharacters(tx, [home.value.owner.character])
     if (!characters) return fail('owner_index_unproven')
-    const view: View = { op: 'register', now, home, household, homeIndex, authority: { kind: 'actor', actor: session.value, pair: { state: 'absent' } }, characters, lives: [] }
+    const view: View = { op: 'register', now, home, household, homeIndex, authority: { kind: 'actor', actor: session.value, pair: { state: 'not-loaded' } }, characters, lives: [] }
     if (!isView(view)) return fail('canonical_view_invalid')
-    return { ok: true, command, view }
+    return { ok: true, command, view: freezeGraph(view) }
   }
 
   const householdPoint = await point(tx.household(command.householdId), isHousehold)
@@ -110,24 +185,28 @@ export async function loadConsentView(rawCommand: unknown, tx: ConsentReadTransa
   const home: Home = homePoint.value
   if (home.id !== h.homeId || (homeIndex.state === 'present' && homeIndex.value.id !== h.homeId)) return fail('home_binding_mismatch')
 
-  const systemPoint = await tx.systemAuthority()
-  if (!isPoint(systemPoint, (x): x is Authority => record(x) && (x.kind === 'actor' || x.kind === 'system')) || systemPoint.state === 'not-loaded') return fail('system_authority_unproven')
+  const systemPoint = await point(tx.systemAuthority(), systemAuthority)
+  if (!systemPoint) return fail('system_authority_unproven')
   const session = await point(tx.sessionLife(), isLifeFact)
   if (!session) return fail('session_identity_unproven')
   let authority: Authority
   if (systemPoint.state === 'present') {
-    if (systemPoint.value.kind !== 'system') return fail('invalid_system_authority')
     authority = systemPoint.value
   }
   else if (session.state === 'present') {
-    let pair: Point<unknown> = { state: 'absent' }
-    if (command.op === 'invite') pair = await tx.pairFact(home.owner, command.recipient)
+    let pair: Point<PairFact> = { state: 'not-loaded' }
+    if (command.op === 'invite') {
+      const loadedPair = await point(tx.pairFact(home.owner, command.recipient), isPair)
+      if (!loadedPair) return fail('relationship_read_invalid')
+      pair = loadedPair
+    }
     else if (command.op === 'accept') {
       const invitePoint = await point(tx.invite(command.inviteId), isInvite)
       if (!invitePoint || invitePoint.state !== 'present') return fail('invitation_unproven')
-      pair = await tx.pairFact(invitePoint.value.recipient, home.owner)
+      const loadedPair = await point(tx.pairFact(invitePoint.value.recipient, home.owner), isPair)
+      if (!loadedPair) return fail('relationship_read_invalid')
+      pair = loadedPair
     }
-    if (!hasPoint(pair, isPair)) return fail('relationship_read_invalid')
     authority = { kind: 'actor', actor: session.value, pair }
   } else {
     return fail('actor_identity_absent')
@@ -169,7 +248,7 @@ export async function loadConsentView(rawCommand: unknown, tx: ConsentReadTransa
       if (!invitePoint || invitePoint.state !== 'present') return fail('invitation_unproven')
       const i = invitePoint.value
       if (i.householdId !== h.id || i.homeId !== h.homeId || i.epoch !== h.epoch || i.owner.character !== h.owner.character || i.owner.life !== h.owner.life) return fail('invitation_crosslink_mismatch')
-      const charIds = command.op === 'accept' ? [h.owner.character, i.recipient.character] : [i.recipient.character]
+      const charIds = [h.owner.character, i.recipient.character]
       characters = await indexedCharacters(tx, charIds)
       if (command.op === 'accept') {
         freshMember = await point(tx.member(command.membershipId), isMember) ?? undefined
@@ -183,7 +262,7 @@ export async function loadConsentView(rawCommand: unknown, tx: ConsentReadTransa
       const m = memberPoint.value
       if (m.householdId !== h.id || m.homeId !== h.homeId || m.epoch !== h.epoch || m.owner.character !== h.owner.character || m.owner.life !== h.owner.life) return fail('membership_crosslink_mismatch')
       if (!await linkedMemberInvites(tx, [m], h)) return fail('member_invite_crosslink_mismatch')
-      characters = await indexedCharacters(tx, [m.member.character])
+      characters = await indexedCharacters(tx, [h.owner.character, m.member.character])
       lives = await indexedLives(tx, [m.member.life])
       if (!characters || !lives) return fail('membership_indexes_unproven')
     } else {
@@ -221,5 +300,5 @@ export async function loadConsentView(rawCommand: unknown, tx: ConsentReadTransa
     }
   }
   if (!isView(view) || view.op !== command.op) return fail('canonical_view_invalid')
-  return { ok: true, command, view }
+  return { ok: true, command, view: freezeGraph(view) }
 }

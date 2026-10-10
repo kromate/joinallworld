@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-10T00:40:26.931869+00:00",
+  "decision": "ACCEPT exact separate source assembly; release acceptance pending",
+  "candidateSha": "91d0ba3346ecd74c4eb0eaf29db1a585ce246195",
+  "baseSha": "c1f7c1f7369139ce559292318ba9842c23a28267",
+  "citySourceSha": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+  "proposalSha256": "5ce33acf294dcc1cc628ebc5b2e1949fb7e20f3642c1ee00a146cedac82d6694",
+  "receiptRef": "a8d9c19f8ee9524726e932f71ead0840c107f42c",
+  "exactChangedFileCount": 33,
+  "exactChangedPaths": [
+    "src/game/cities/cairo/content.ts",
+    "src/game/cities/cairo/facts.ts",
+    "src/game/cities/cairo/geometry.ts",
+    "src/game/cities/cairo/index.ts",
+    "src/game/cities/cairo/map.ts",
+    "src/game/cities/catalogue.generated.ts",
+    "src/game/cities/kampala/content.ts",
+    "src/game/cities/kampala/facts.ts",
+    "src/game/cities/kampala/geometry.ts",
+    "src/game/cities/kampala/index.ts",
+    "src/game/cities/kampala/map.ts",
+    "src/game/cities/kigali/content.ts",
+    "src/game/cities/kigali/facts.ts",
+    "src/game/cities/kigali/geometry.ts",
+    "src/game/cities/kigali/index.ts",
+    "src/game/cities/kigali/map.ts",
+    "src/game/cities/loaders.generated.ts",
+    "src/game/cities/lusaka/content.ts",
+    "src/game/cities/lusaka/facts.ts",
+    "src/game/cities/lusaka/geometry.ts",
+    "src/game/cities/lusaka/index.ts",
+    "src/game/cities/lusaka/map.ts",
+    "src/game/cities/rabat/content.ts",
+    "src/game/cities/rabat/facts.ts",
+    "src/game/cities/rabat/geometry.ts",
+    "src/game/cities/rabat/index.ts",
+    "src/game/cities/rabat/map.ts",
+    "src/game/cities/routes.generated.ts",
+    "world/playable-africa-rollout/receipts/cairo.json",
+    "world/playable-africa-rollout/receipts/kampala.json",
+    "world/playable-africa-rollout/receipts/kigali.json",
+    "world/playable-africa-rollout/receipts/lusaka.json",
+    "world/playable-africa-rollout/receipts/rabat.json"
+  ],
+  "sourcePinsVerified": 33,
+  "unchangedDependencyPinsVerified": 8,
+  "unchangedGenerator": "scripts/city/build-catalogue.ts",
+  "generatorExecution": "Cloud assembly report says --check passes55; candidate execution receipt not independently read yet.",
+  "countriesExpectedAfterRelease": 16,
+  "newCountries": [
+    "EG",
+    "MA",
+    "RW",
+    "UG",
+    "ZM"
+  ],
+  "productionCountriesNow": 11,
+  "productionVerifiedBuild": "joinallworld-c1f7c1f7369139ce559292318ba",
+  "broadWorldSourceChecks": [
+    {
+      "name": "size-download",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/world55/size-download/receipt.json",
+      "receiptSha256": "b68e98729c909874b23cb2b55c7e3464edc1b1dadf14e9d5c3ad56af808238a6",
+      "logSha256": "17214b9e724b18dd89fc076ffd224c76c5c2c1f917ee3d17ad345110d36035ab",
+      "exitStatus": 0,
+      "scopeSource": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+      "candidate91Acceptance": false,
+      "measurementsBytes": {
+        "LOADING_RAW": 91469,
+        "LOADING_GZIP": 35568,
+        "FIRST_PAINT_BROTLI": 35693,
+        "STARTUP_RAW": 614258,
+        "STARTUP_GZIP": 222677,
+        "STARTUP_BROTLI": 195402
+      }
+    },
+    {
+      "name": "test-smoke-readable",
+      "receiptPath": "docs/agent-plans/cloud-receipts/2026-10-10/world55/test-smoke-readable/receipt.json",
+      "receiptSha256": "1abbe8650dc45c7e5a7d81648888795cb3633463f40ddf0553615a442d01a4e3",
+      "logSha256": "ca7a90494f031fbfaf3483ae1353159beba014348d98b221a34a9dc029ac3d41",
+      "exitStatus": 1,
+      "scopeSource": "391ccfe9b9494681bdee0129a3c3fbdd972d74f4",
+      "candidate91Acceptance": false,
+      "failure": "Unapproved tooling .mjs file inventory differs from release.test.ts exact allowlist. This broad source is not release accepted; no guard waiver."
+    }
+  ],
+  "unacceptedGates": [
+    "existingC1 generator --check",
+    "allfivecompiler projects and full requiredNode/Worker/release checks",
+    "candidate-specific startup/download/public assets and sealed source/package identity",
+    "realnewdestination map loading and outbound/return journeys in isolated actors",
+    "retained original saves and duplicate-action/receipt invariants",
+    "final productiongreen16 count and directdestination availability"
+  ],
+  "diagnosticFailures": [
+    {
+      "status": "corrected without source mutation",
+      "description": "First read-only local audit used an incorrect proposal dependency key and nonexistent scripts/generate-city-catalogue.ts path. It exited1, so that run did not prove dependencies or generator. This corrected audit uses unchangedSharedDependencyPins and actual scripts/city/build-catalogue.ts and exits0."
+    }
+  ],
+  "limits": [
+    "No new country is deployed by this receipt.",
+    "391 startup caps do not certify the separate91 candidate.",
+    "Source equality does not prove actual map rendering, travel, retained-save continuity or physical-device behavior."
+  ],
+  "preservedCataloguePrefix": {
+    "rows": 50,
+    "nigeriaRows": 40,
+    "exactEquality": true
+  },
+  "preservedRoutesPrefix": {
+    "routes": 34,
+    "exactEquality": true
+  },
+  "newRoutes": [
+    {
+      "a": "lagos",
+      "b": "cairo",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Cairo",
+      "icon": "\u2708\ufe0f",
+      "km": 3919,
+      "fare": 334000,
+      "seconds": 20
+    },
+    {
+      "a": "lagos",
+      "b": "rabat",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Rabat",
+      "icon": "\u2708\ufe0f",
+      "km": 3242,
+      "fare": 279000,
+      "seconds": 20
+    },
+    {
+      "a": "lagos",
+      "b": "kigali",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Kigali",
+      "icon": "\u2708\ufe0f",
+      "km": 3103,
+      "fare": 268000,
+      "seconds": 20
+    },
+    {
+      "a": "lagos",
+      "b": "kampala",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Kampala",
+      "icon": "\u2708\ufe0f",
+      "km": 3308,
+      "fare": 285000,
+      "seconds": 20
+    },
+    {
+      "a": "lagos",
+      "b": "lusaka",
+      "mode": "air",
+      "beta": true,
+      "label": "Flight between Lagos and Lusaka",
+      "icon": "\u2708\ufe0f",
+      "km": 3664,
+      "fare": 313000,
+      "seconds": 20
+    }
+  ],
+  "cityReceiptAssetPinsVerified": 25,
+  "sourceCoverage": [
+    {
+      "city": "cairo",
+      "country": "EG",
+      "kept": {
+        "buildings": 131,
+        "roads": 160
+      },
+      "observed": {
+        "buildings": 131,
+        "roads": 227,
+        "unresolvedWays": 0,
+        "relationsOmitted": 69
+      },
+      "osmBytes": 1283456,
+      "osmSha256": "660eb85468fb440ad139619ffa78de8b567a6771b2e034ee2174eb115e2c8a69",
+      "coverage": "Bounded central sample, approximate silhouettes and fictional game services; not whole-city reconstruction."
+    },
+    {
+      "city": "rabat",
+      "country": "MA",
+      "kept": {
+        "buildings": 341,
+        "roads": 160
+      },
+      "observed": {
+        "buildings": 341,
+        "roads": 243,
+        "unresolvedWays": 0,
+        "relationsOmitted": 27
+      },
+      "osmBytes": 1306555,
+      "osmSha256": "b6ea8a00b3ad5eb13a87b3ecda5f49fbb8cf3f48a31f03275c6330a3fd9be403",
+      "coverage": "Bounded central sample, approximate silhouettes and fictional game services; not whole-city reconstruction."
+    },
+    {
+      "city": "kigali",
+      "country": "RW",
+      "kept": {
+        "buildings": 350,
+        "roads": 70
+      },
+      "observed": {
+        "buildings": 572,
+        "roads": 70,
+        "unresolvedWays": 0,
+        "relationsOmitted": 15
+      },
+      "osmBytes": 999059,
+      "osmSha256": "f50f92d9ea511fedaca7698fd97e3e08c698b8f6e92505fd5663dc60212cbc2b",
+      "coverage": "Bounded central sample, approximate silhouettes and fictional game services; not whole-city reconstruction."
+    },
+    {
+      "city": "kampala",
+      "country": "UG",
+      "kept": {
+        "buildings": 264,
+        "roads": 160
+      },
+      "observed": {
+        "buildings": 264,
+        "roads": 173,
+        "unresolvedWays": 0,
+        "relationsOmitted": 10
+      },
+      "osmBytes": 1339646,
+      "osmSha256": "b3e512197cdfd049d61bf2360bef743b925f396f4390387061966a4b0a74dfbf",
+      "coverage": "Bounded central sample, approximate silhouettes and fictional game services; not whole-city reconstruction."
+    },
+    {
+      "city": "lusaka",
+      "country": "ZM",
+      "kept": {
+        "buildings": 228,
+        "roads": 96
+      },
+      "observed": {
+        "buildings": 228,
+        "roads": 96,
+        "unresolvedWays": 0,
+        "relationsOmitted": 50
+      },
+      "osmBytes": 713193,
+      "osmSha256": "15dd79b4b068e10ad54fb1650cd87347aaec235fb5a66084d91e7d86f14d167b",
+      "coverage": "Bounded central sample, approximate silhouettes and fictional game services; not whole-city reconstruction."
+    }
+  ]
+}

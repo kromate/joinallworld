@@ -1,3 +1,21 @@
+# Separate next-five source accepted, 10 October 2026 at 00:44 UTC
+
+Actual remote candidate91d0ba3346ecd74c4eb0eaf29db1a585ce246195 is based on
+productionC1 and changes exactly33 approved files. Independent byte/hash
+inspection verifies all33 source pins, eight unchanged shared dependencies,
+unchanged catalogue generator, the full50-row catalogue prefix including40
+Nigeria rows, all34 old routes and25 city asset pins from their receipts.
+Five new Lagos air routes lead to Cairo, Rabat, Kigali, Kampala and Lusaka.
+Source coverage remains bounded central samples and approximate silhouettes;
+services are fictional. See third-five-c1-source-acceptance.json.
+Actual public391 size/download log passes its original budgets; its smoke
+exits1 because the broad World source contains unapproved tooling mjs files.
+That broad source is not release accepted and no policy is waived. These391
+measurements cannot certify the separate91 candidate. Fresh candidate91 gates,
+sealed/native outbound-return journeys and save continuity remain required.
+Live production health still identifiesC1:11 countries open, not16.
+No new local worker, heavy check, server or browser was started.
+
 # Africa coverage identity audit, 10 October 2026 at 00:34 UTC
 
 The current atlas has56 geographic features. The final proposed53-country

@@ -411,6 +411,13 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
         return { side: contact.side, distance };
       }).sort((a, b) => a.distance - b.distance || a.side.localeCompare(b.side))[0]?.side
       : undefined;
+    function supportTargetY(contact: FootContact): number {
+      // Translate the current sole by its worst signed surface gap. The highest
+      // tread alone is not the target for a tilted sole whose vertices differ in Y.
+      let correction = -Infinity;
+      for (const point of contact.points ?? [contact]) correction = Math.max(correction, heightAt(point) - point.y);
+      return contact.y + correction;
+    }
     function alreadySupported(contact: FootContact): boolean {
       let minimumGap = Infinity;
       for (const point of contact.points ?? [contact]) {
@@ -419,7 +426,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
         minimumGap = Math.min(minimumGap, gap);
       }
       if (minimumGap > 0.004) return false;
-      const targetY = Math.max(...(contact.points ?? [contact]).map(heightAt));
+      const targetY = supportTargetY(contact);
       if (!Number.isFinite(targetY)) return false;
       const sole = pointInActor(contact.x, contact.y, contact.z);
       const targetSole = pointInActor(contact.x, targetY, contact.z);
@@ -443,8 +450,7 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
           // Preserve a planted sole already above support and inside the accepted
           // 4 mm band; no pelvis correction is needed, and all samples are clear.
           if (alreadySupported(contact)) continue;
-          let targetY = -Infinity;
-          for (const point of contact.points ?? [contact]) targetY = Math.max(targetY, heightAt(point));
+          const targetY = supportTargetY(contact);
           if (!Number.isFinite(targetY) || targetY >= contact.y - 0.0002) continue;
           const leg = legs.find((candidate) => candidate.side === contact.side)!;
           if (wouldExceedLegReach(contact, targetY, leg)) {
@@ -485,7 +491,8 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
         }
         let targetY = mode === 'grounded' || mode === 'transition' && planted ? -Infinity : contact.y;
         if (planted) {
-          for (const point of points) targetY = Math.max(targetY, heightAt(point));
+          const supportY = supportTargetY(contact);
+          targetY = mode === 'motion' ? Math.max(targetY, supportY) : supportY;
         } else if (mode === 'transition') {
           // Preserve the animated swing height unless any sampled part of that sole
           // penetrates the measured floor. In that case lift it only enough to clear
@@ -541,9 +548,8 @@ function createAuthoredFootContacts(actor: THREE.Group, shoes: THREE.SkinnedMesh
     const finalSolePoints: ContactSolveDiagnostics['finalSolePoints'][number][] = [];
     const finalLegReach: ContactSolveDiagnostics['finalLegReach'][number][] = [];
     for (const contact of finalContacts) {
-      let targetY = -Infinity;
+      const targetY = supportTargetY(contact);
       const points = contact.points ?? [contact];
-      for (const point of points) targetY = Math.max(targetY, heightAt(point));
       points.forEach((point, index) => {
         const floorY = heightAt(point);
         finalSolePoints.push(Object.freeze({ side: contact.side, index, y: point.y, floorY, gap: point.y - floorY }));

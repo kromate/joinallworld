@@ -164,23 +164,24 @@ function goVote(venue: string): void { shell.close(); void goTo(venue) }
 </template>
 
 <style scoped>
-.civic-note { font-size: 12px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
+.civic-note { font-size: 13px !important; line-height: 1.5 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
 .civic-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0 0; }
 .civic-actions .civic-action { flex: 1 1 140px; display: grid; margin: 0; }
 .civic-form { display: grid; gap: var(--s-3); margin: var(--s-2) 0; }
+.civic-form input, .civic-form select, .civic-form textarea { min-height: var(--tap); font-size: 16px; }
 .civic-form.is-card { padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
-.civic-form label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; margin: 0 !important; }
+.civic-form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; margin: 0 !important; }
 .civic-checks { list-style: none; padding: 0; margin: var(--s-1) 0 var(--s-2); display: grid; gap: 6px; }
 .civic-checks li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; border-radius: var(--r-sm); background: var(--c-fill); }
 .civic-checks li > i { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 12px; font-weight: 700; color: #fff; background: var(--c-green-dark); }
 .civic-checks .is-unmet > i { background: var(--c-red); }
 .civic-checks li > div { min-width: 0; display: grid; gap: 2px; justify-items: start; }
-.civic-checks strong { font-size: 13px; font-weight: 600; }
-.civic-checks small { font-size: 12px; color: var(--c-muted); overflow-wrap: anywhere; }
-.civic-link { border: 0; background: none; padding: 0; min-height: var(--tap); font: 600 12px var(--font); color: var(--c-green-dark); text-decoration: underline; cursor: pointer; }
+.civic-checks strong { font-size: 14px; font-weight: 600; }
+.civic-checks small { font-size: 13px; color: var(--c-muted); overflow-wrap: anywhere; }
+.civic-link { border: 0; background: none; padding: 0; min-height: var(--tap); font: 600 13px var(--font); color: var(--c-green-dark); text-decoration: underline; cursor: pointer; }
 .civic-refusal { border-radius: var(--r-sm); background: var(--c-red-soft); box-shadow: inset 0 0 0 1.5px #e3a995; padding: 10px 12px; margin: var(--s-2) 0; display: grid; gap: 2px; }
 .civic-refusal strong { font-size: 13px; color: var(--c-red-dark); }
-.civic-refusal p { margin: 0 !important; font-size: 12px !important; line-height: 1.45 !important; overflow-wrap: anywhere; }
+.civic-refusal p { margin: 0 !important; font-size: 13px !important; line-height: 1.45 !important; overflow-wrap: anywhere; }
 :global(.ph.is-wide) .civic-checks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 :global(.ph.is-wide) .civic-form input { max-width: 460px; }
 .governor-ballot { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); margin-bottom: var(--s-2); }
@@ -189,12 +190,12 @@ function goVote(venue: string): void { shell.close(); void goTo(venue) }
 .governor-cycle { margin-bottom: var(--s-2); padding: 12px 14px 14px; border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
 .governor-cycle ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; list-style: none; margin: 0 0 10px; padding: 0; }
 .governor-cycle li { display: grid; gap: 1px; padding: 7px 8px; border-radius: var(--r-xs); background: var(--c-fill); text-align: center; color: var(--c-muted); }
-.governor-cycle li b { font-size: 12px; }
-.governor-cycle li small { font-size: 11px; }
+.governor-cycle li b { font-size: 13px; }
+.governor-cycle li small { font-size: 12px; }
 .governor-cycle li.is-now { background: var(--app-tint, var(--c-green-dark)); color: #fff; }
 .governor-cycle p { display: grid; gap: 1px; margin: 0 !important; font-size: 13px !important; }
 .governor-cycle p strong { font-size: 16px; }
-.governor-cycle p span { color: var(--c-muted); font-size: 12px; }
+.governor-cycle p span { color: var(--c-muted); font-size: 13px; }
 .governor-cycle p span b { color: var(--c-ink); }
 .governor-bar { height: 6px; border-radius: 6px; background: var(--c-fill-2); overflow: hidden; margin-top: 4px; }
 .governor-bar i { display: block; height: 100%; border-radius: 6px; background: var(--app-tint, var(--c-green)); }
@@ -204,6 +205,6 @@ function goVote(venue: string): void { shell.close(); void goTo(venue) }
 .governor-who strong { flex: 1; min-width: 0; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .governor-who span:last-child { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--c-ink-2); }
 .governor-who .ui-avatar { width: 34px; height: 34px; font-size: 14px; }
-.governor-candidate q { font-size: 13px; color: var(--c-ink-2); overflow-wrap: anywhere; }
+.governor-candidate q { font-size: 14px; color: var(--c-ink-2); overflow-wrap: anywhere; }
 .governor-candidate .civic-action { margin: 2px 0 0; }
 </style>

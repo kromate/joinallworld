@@ -110,19 +110,19 @@ async function send(): Promise<void> {
 .report-form select:focus-visible, .report-form textarea:focus-visible { outline: var(--focus); outline-offset: 2px; }
 .report-form textarea { resize: vertical; }
 .report-form textarea[aria-invalid='true'] { border-color: var(--c-red); }
-.report-fine { font-size: 12px; line-height: 1.45; color: var(--c-muted); }
+.report-fine { font-size: 13px; line-height: 1.5; color: var(--c-muted); }
 .report-send { display: grid; gap: 4px; }
 .report-send :deep(.is-primary) { background: var(--c-amber-dark); }
-.report-send small { color: var(--c-red); font-size: 12px; }
-.report-good, .report-error { padding: 9px 12px; border-radius: var(--r-sm); font-size: 13px; font-weight: 600; line-height: 1.4; }
+.report-send small { color: var(--c-red); font-size: 13px; }
+.report-good, .report-error { padding: 9px 12px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; line-height: 1.4; }
 .report-good { background: var(--c-green-soft); color: var(--c-green-dark); }
 .report-error { background: var(--c-red-soft); color: var(--c-red-dark); }
 .report-good:focus, .report-error:focus { outline: none; }
 .report-list { list-style: none; margin: 0; padding: 0; }
 .report-list li { margin: 0 0 var(--s-2); padding: var(--s-3) var(--s-4); border-radius: var(--r-md); background: #fff; border: 1px solid var(--c-line); min-width: 0; }
 .report-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s-2); font-size: 13px; }
-.report-head strong { font-family: ui-monospace, monospace; font-size: 12px; }
+.report-head strong { font-family: ui-monospace, monospace; font-size: 13px; }
 .report-text { margin: 6px 0 4px; font-size: var(--t-body); line-height: 1.45; overflow-wrap: anywhere; }
-.report-list small { color: var(--c-muted); font-size: 12px; }
+.report-list small { color: var(--c-muted); font-size: 13px; }
 .report-reply { overflow-wrap: anywhere; margin-top: 8px; padding: 8px 10px; border-radius: var(--r-sm); background: var(--c-blue-soft); font-size: var(--t-body); line-height: 1.45; }
 </style>

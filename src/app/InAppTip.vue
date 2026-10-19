@@ -1,24 +1,34 @@
 <script setup lang="ts">
 // A small, closable tip for players who opened Allworld inside another app's browser that is blocking storage. It never covers the game's controls:
 // one short card at the top, only as wide as its text, and nothing else on the page is made inert.
-import { onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { dismissTip, inAppTip, isStandalone, liveInAppEnv, tipDismissed } from './state/inAppBrowser.ts'
 
 const tip = ref<ReturnType<typeof inAppTip>>(null)
+// The front door and the sheets are a modal dialog: nothing outside it can be seen or pressed while it is open, whatever its z-index. So while one is open the tip lives inside it.
+const host = ref('body')
+let watcher: MutationObserver | null = null
+const follow = (): void => { host.value = document.getElementById('life-dialog')?.hasAttribute('open') ? '#life-dialog' : 'body' }
 const keep = (): Storage | null => { try { return window.localStorage } catch { return null } }
 onMounted(() => {
   const found = inAppTip(navigator.userAgent, liveInAppEnv(), { standalone: isStandalone() })
   if (found && !tipDismissed(keep())) tip.value = found
+  follow()
+  watcher = new MutationObserver(follow)
+  watcher.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['open'] })
 })
+onBeforeUnmount(() => { watcher?.disconnect() })
 const close = (): void => { dismissTip(keep()); tip.value = null }
 </script>
 
 <template>
-  <aside v-if="tip" class="inapp-tip" role="status">
-    <p class="inapp-title">{{ tip.title }}</p>
-    <p class="inapp-detail">{{ tip.detail }}</p>
-    <button type="button" @click="close">{{ tip.dismiss }}</button>
-  </aside>
+  <Teleport v-if="tip" :to="host">
+    <aside class="inapp-tip" role="status">
+      <p class="inapp-title">{{ tip.title }}</p>
+      <p class="inapp-detail">{{ tip.detail }}</p>
+      <button type="button" @click="close">{{ tip.dismiss }}</button>
+    </aside>
+  </Teleport>
 </template>
 
 <style scoped>

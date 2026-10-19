@@ -1,7 +1,7 @@
 /* Daylight character studio. The native character fills the sky stage; the five-step editor stays on paper.
    The layout follows its container so full-screen, landscape and embedded views keep the same controls. */
 
-.cr-root{--cr-pad:clamp(16px,2.4vw,36px);--cr-tools:60px;--cr-lift:20px;--cr-line:#d8e4e7;--cr-sky:#e7f1f6;--cr-paper:#fafcfc;--cr-ink:#10323d;--cr-green:#176848;--cr-amber:#d79535;position:relative;display:grid;height:100%;min-height:0;overflow:hidden;overflow:clip;color:var(--cr-ink);font-family:var(--font);
+.cr-root{--cr-pad:clamp(16px,2.4vw,36px);--cr-tools:60px;--cr-lift:20px;--cr-line:#d8e4e7;--cr-edge:#c4d4d9;--cr-sky:#e7f1f6;--cr-paper:#fafcfc;--cr-ink:#10323d;--cr-green:#176848;--cr-amber:#d79535;position:relative;display:grid;height:100%;min-height:0;overflow:hidden;overflow:clip;color:var(--cr-ink);font-family:var(--font);
   background:radial-gradient(ellipse 70% 72% at 45% 38%,#f9fcfd 0,#e7f1f6 58%,#cadfe9 100%)}
 .cr-root *{box-sizing:border-box}
 .cr-root h1,.cr-root h3,.cr-root p,.cr-root ol,.cr-root ul,.cr-root dl,.cr-root dd,.cr-root fieldset{margin:0;padding:0}
@@ -98,6 +98,10 @@
 .cr-path-intro .cr-banner{margin:0!important}
 .cr-banner{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;margin:0 0 12px!important;padding:12px 14px;border-radius:14px;font-size:13px!important;line-height:1.4!important}
 .cr-banner>span:nth-child(2){flex:1 1 200px}
+.cr-root .cr-banner{padding:12px 14px}
+.cr-root .cr-caption{padding:8px 14px}
+.cr-root .cr-hint{padding:6px 14px}
+.cr-root .cr-default{padding:10px 14px}
 .cr-banner.is-info{background:var(--c-blue-soft);color:var(--c-blue)}
 .cr-banner.is-good{background:var(--c-green-soft);color:var(--c-green-dark)}
 .cr-banner.is-warn{background:var(--c-amber-soft);color:var(--c-amber-dark)}
@@ -168,7 +172,7 @@
 
 /* presets */
 .cr-presets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
-.cr-preset{display:grid;justify-items:start;align-content:start;gap:4px;min-height:96px;padding:10px 8px;border:1px solid var(--cr-line);border-radius:12px;background:#fff;font-weight:650;font-size:12px;min-width:0;text-align:left}
+.cr-preset{display:grid;justify-items:start;align-content:start;gap:4px;min-height:96px;padding:10px 8px;border:1px solid var(--cr-line);border-radius:12px;background:#fff;font-weight:650;font-size:13px;min-width:0;text-align:left}
 .cr-preset:hover{border-color:#8faeb5;background:#f6fafb}
 .cr-preset[aria-pressed=true]{border-color:var(--cr-green);box-shadow:inset 0 0 0 1px var(--cr-green);background:#edf6f0}
 
@@ -229,14 +233,14 @@
 .cr-ready{display:grid;gap:14px;padding:18px;border-radius:20px;background:linear-gradient(160deg,var(--c-green-soft),var(--c-canvas) 60%);border:1px solid color-mix(in srgb,var(--c-green-dark) 18%,var(--c-surface));box-shadow:0 6px 20px -12px color-mix(in srgb,var(--c-green-dark) 60%,transparent)}
 .cr-ready-top{display:flex;align-items:center;gap:14px}
 .cr-ready-top .look-avatar{flex:none;width:52px;height:52px;border-radius:50%;background:var(--c-surface);border:2px solid var(--c-green-dark);padding:2px}
-.cr-eyebrow{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--c-green-dark)}
+.cr-eyebrow{font-size:13px;font-weight:700;color:var(--c-green-dark)}
 .cr-ready-name{font-size:26px;line-height:1.1;letter-spacing:-.5px;overflow-wrap:anywhere}
 .cr-pills{display:flex;flex-wrap:wrap;gap:6px}
 .cr-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:999px;background:var(--c-surface);border:1px solid var(--cr-edge);font-size:14px;font-weight:600}
 .cr-ready~.cr-note,.cr-ready .cr-note{font-size:12px!important}
 .cr-sum{display:grid}
 .cr-sum>div{display:grid;grid-template-columns:1fr auto;grid-template-areas:'dt act' 'dd dd';align-items:center;gap:2px 10px;min-height:48px;padding:8px 0;border-top:1px solid var(--c-line)}
-.cr-sum dt{grid-area:dt;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--c-muted)}
+.cr-sum dt{grid-area:dt;font-size:13px;font-weight:700;color:var(--c-muted)}
 .cr-sum dd{grid-area:dd;font-size:15px;font-weight:600;overflow-wrap:anywhere}
 
 /* wide screens: a little more room to breathe */
@@ -280,8 +284,11 @@
 
 /* The three starts take room: tighter rows, no fine print on a short screen, and a smaller stage on a phone so the name field stays in view. */
 .cr-choices{gap:6px}
-.cr-choices .cr-btn.is-signup{min-height:44px;font-size:14px}
-.cr-choices .cr-link{min-height:44px}
+.cr-choices .cr-btn.is-signup,.cr-more .cr-btn.is-signup{min-height:44px;font-size:14px}
+.cr-choices .cr-link,.cr-more .cr-link{min-height:44px}
+/* Sign up and log in sit under the fields (in the scroll), not in the footer: the footer keeps Play now and the way on. */
+.cr-more{display:grid;gap:8px;margin-top:20px;justify-items:stretch}
+.cr-more .cr-link{justify-self:center}
 @container cr (max-height:900px){.cr-foot:has(.cr-choices) .cr-fine{display:none}}
 @container cr (max-width:639px){.cr-root:has(.cr-choices){--cr-stage-h:36cqh}}
 /* A short phone (320x568): the stage gives most of its height to the panel, so the fields are not left under the footer and the primary button stays on screen. The Look step keeps more of it. */
@@ -356,7 +363,7 @@
   .cr-host:not(.is-embedded) .cr-root.is-sheet-up{--cr-stage-h:20cqh;grid-template-rows:minmax(120px,var(--cr-stage-h)) minmax(0,1fr)}
   .cr-host:not(.is-embedded) .cr-root.is-sheet-up .cr-hint,.cr-host:not(.is-embedded) .cr-root.is-sheet-up .cr-turn,.cr-host:not(.is-embedded) .cr-root.is-sheet-up .cr-caption{display:none}
   .cr-grab{position:absolute;z-index:4;top:0;left:50%;transform:translateX(-50%);display:grid;place-items:center;width:96px;height:44px;margin-top:-10px;padding:0;border:0;background:none;touch-action:none}
-  .cr-grab i{display:block;width:40px;height:5px;border-radius:5px;background:var(--cr-edge)}
+  .cr-grab i{display:block;width:40px;height:5px;border-radius:5px;background:#aebfc6}
   .cr-head{padding-top:14px}
   .cr-head-row{min-height:44px}
   .cr-foot{gap:4px;padding:8px 16px max(8px,env(safe-area-inset-bottom))}
@@ -417,4 +424,11 @@
   .cr-host:not(.is-embedded) .cr-scroll{padding-bottom:calc(28px + env(safe-area-inset-bottom));scroll-padding-bottom:28px;-webkit-mask-image:linear-gradient(#000 calc(100% - 22px),transparent);mask-image:linear-gradient(#000 calc(100% - 22px),transparent)}
   .cr-editor .look-swatch{min-height:92px;align-content:start}
   .cr-editor .look-swatch span,.cr-editor .look-swatch{overflow-wrap:anywhere}
+}
+
+/* A phone's first step: the fields come first. The step line already names the step, so its label under the bar goes. */
+@container cr (max-width:520px){
+  .cr-progress .is-current span{display:none}
+  .cr-progress li>.cr-prog-item{min-height:26px}
+  [data-step=who] .cr-lead{display:none}
 }

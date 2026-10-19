@@ -81,7 +81,7 @@
 .ph-note .ph-icon.ph-artwork{background-color:transparent;background-repeat:no-repeat;border-radius:23%;box-shadow:0 4px 8px #07162330,inset 0 1px 0 #ffffff26}
 .ph-icon svg{width:19px;height:19px}
 .ph-note>span:last-child{min-width:0;display:grid;gap:1px}
-.ph-note small{font-size:11px;font-weight:600;opacity:.82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph-note small{font-size:12px;font-weight:600;opacity:.82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ph-note b{font-size:13px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ph-note.is-compact b{-webkit-line-clamp:1}
 .ph-note.is-fresh{background:#f2f6f4e8}
@@ -99,7 +99,7 @@
 .ph-appbtn .ph-icon{transition:transform .12s ease-out}
 .ph-appbtn:hover .ph-icon{transform:scale(1.05)}
 .ph-appbtn:active .ph-icon{transform:scale(.93);filter:brightness(.88)}
-.ph-label{max-width:84px;font-size:11.5px;font-weight:500;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px #00131fcc}
+.ph-label{max-width:84px;font-size:12px;font-weight:500;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px #00131fcc}
 .ph-appbtn.is-running .ph-label::before{content:'';display:inline-block;width:5px;height:5px;margin:0 4px 1px 0;border-radius:50%;background:#8dffbd;vertical-align:middle}
 .ph-badge{position:absolute;top:0;left:calc(50% + 13px);min-width:21px;height:21px;padding:0 6px;border-radius:11px;background:var(--c-badge);color:#fff;font-size:11.5px;font-weight:700;line-height:21px;text-align:center;box-shadow:0 0 0 2px #ffffffe6,0 2px 4px #0000004d}
 .ph-dots{flex:none;display:flex;align-items:center;justify-content:center;height:36px}
@@ -161,6 +161,7 @@
 /* On a real phone the device is the screen: full width, no bezel, the scene still peeks above it. */
 @media(max-width:520px){
   #life-dialog[data-phone]{padding-bottom:0;--ph-top:calc(52px + env(safe-area-inset-top))}
+  #life-dialog[data-phone]::backdrop{background:rgba(8,14,11,.84)}
   .ph-stage{gap:6px}.ph-close{margin-right:10px}
   .ph{--ph-w:100vw;--ph-h:calc(100 * var(--ui-vh) - 58px - env(safe-area-inset-top));padding:0;border-radius:30px 30px 0 0;box-shadow:0 -1px 0 #ffffff33,var(--e-3);background:#0e1014}
   .ph::before,.ph::after,.ph-island{display:none}

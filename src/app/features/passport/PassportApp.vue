@@ -348,8 +348,9 @@ onMounted(() => { void retention.load() })
 .passport-heading small,.passport-heading p { margin: 0; color: var(--c-muted); font-size: 12px; }
 .passport-heading h3 { margin: 1px 0; font-size: 20px; line-height: 1.1; }
 .passport-offline { margin: 2px 0; padding: 10px 12px; border-radius: var(--r-sm); background: var(--c-amber-soft, #fff6d8); color: var(--c-ink-2); font-size: 13px; line-height: 1.4; }
-.passport-tabs { position: sticky; top: -1px; z-index: 2; display: grid; grid-template-columns: minmax(min-content, .72fr) minmax(min-content, .92fr) minmax(min-content, 1.4fr) minmax(min-content, 1fr); gap: 3px; min-width: 0; margin: 0 -4px var(--s-2); padding: 4px; border-radius: 13px; background: var(--c-fill); }
-.passport-tabs button { min-width: 44px; min-height: 44px; padding: 6px 5px; border: 0; border-radius: 10px; background: transparent; color: var(--c-muted); font: 650 12px/1.2 var(--font); cursor: pointer; white-space: normal; }
+.passport-tabs { position: sticky; top: -1px; z-index: 2; display: flex; gap: 3px; min-width: 0; margin: 0 -4px var(--s-2); padding: 4px; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; border-radius: 13px; background: var(--c-fill); -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 22px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 22px), transparent); }
+.passport-tabs::-webkit-scrollbar { display: none; }
+.passport-tabs button { flex: 1 0 auto; min-width: 44px; min-height: 44px; padding: 6px 12px; border: 0; border-radius: 10px; background: transparent; color: var(--c-muted); font: 650 13px/1.2 var(--font); cursor: pointer; white-space: nowrap; }
 .passport-tabs button[aria-selected="true"] { background: var(--c-surface-solid); color: var(--c-ink); box-shadow: var(--e-1), var(--ring); }
 .passport-tabs button:focus-visible,.passport-list button:focus-visible,.passport-people button:focus-visible { outline: var(--focus); outline-offset: 2px; }
 .passport-app [role="tabpanel"] { min-width: 0; outline: none; }
@@ -404,7 +405,6 @@ onMounted(() => { void retention.load() })
 .passport-avatar { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--c-fill); font-size: 20px; }
 .passport-people-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--s-3); }
 @container passport (max-width: 300px) {
-  .passport-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .passport-achievement-head strong { grid-column: 2; justify-self: start; }
   .passport-titles,.passport-records { grid-template-columns: 1fr; }
   .passport-list button,.passport-people button { padding-inline: 10px; }

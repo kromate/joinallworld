@@ -154,7 +154,7 @@ onMounted(() => { void load() })
       <template v-else>
         <div class="cl-card">
           <h3>Join a clan</h3>
-          <div class="cl-row"><input v-model="code" class="cl-input" placeholder="Six letters, or the invite link" aria-label="Clan code or link" autocapitalize="characters" @keydown.enter="look"><BaseButton @click="look">Find</BaseButton></div>
+          <div class="cl-row"><input v-model="code" class="cl-input" placeholder="Code or invite link" aria-label="Clan code or link" autocapitalize="characters" @keydown.enter="look"><BaseButton @click="look">Find</BaseButton></div>
           <div v-if="preview" class="cl-preview" :style="{ borderColor: preview.hex }">
             <p><b>{{ preview.name }}</b> · {{ preview.cityName }} · {{ preview.size }} of {{ preview.cap }} · led by {{ preview.leader }}</p>
             <BaseButton variant="primary" block :disabled="busy" @click="join">Join {{ preview.name }}</BaseButton>
@@ -217,7 +217,7 @@ onMounted(() => { void load() })
 .cl-head { display: grid; gap: 8px; }
 .cl-back, .cl-link { border: 0; background: none; padding: 4px 0; font: inherit; color: var(--c-accent, #1f6f43); cursor: pointer; text-align: left; }
 .cl-tabs, .cl-period { display: flex; gap: 6px; }
-.cl-tabs button, .cl-period button { flex: 1; min-height: 40px; border: 1px solid #cfc7b8; background: #fff; border-radius: 20px; font: 600 14px system-ui; cursor: pointer; }
+.cl-tabs button, .cl-period button { flex: 1; min-height: 44px; border: 1px solid #cfc7b8; background: #fff; border-radius: 20px; font: 600 14px system-ui; cursor: pointer; }
 .cl-tabs button.on, .cl-period button.on { background: #20232c; color: #fff; border-color: #20232c; }
 .cl-card { display: grid; gap: 8px; padding: 12px; background: #f3efe8; border-radius: 14px; border-left: 6px solid transparent; }
 .cl-card h3, .cl-card h4, .cl-card p { margin: 0; }

@@ -242,7 +242,7 @@ onBeforeUnmount(() => clearTimeout(disarm))
   <section class="cb" aria-label="Chess">
     <div class="cb-main">
       <div class="cb-bar" :class="{ 'is-turn': topBar.turn }">
-        <span class="cb-who"><b>{{ topBar.name }}</b><small v-if="topBar.bot"> (bot)</small><small v-if="topBar.you"> (you)</small></span>
+        <span class="cb-who"><b>{{ topBar.name }}</b><small v-if="topBar.bot" class="cb-botnote"> (bot)</small><small v-if="topBar.you"> (you)</small></span>
         <BaseChip v-if="topBar.bot">Computer{{ level ? `, ${level}` : '' }}</BaseChip>
         <span class="cb-taken" :aria-label="`Captured: ${topBar.words}`"><i v-for="(piece, at) in topBar.pieces" :key="at" v-html="pieceSvg(piece)" /><em v-if="topBar.lead > 0">+{{ topBar.lead }}</em></span>
         <span v-if="topBar.clock" class="cb-clock" :class="{ 'is-low': topBar.clock.low, 'is-live': topBar.clock.live }"><small v-if="topBar.clock.note">{{ topBar.clock.note }}</small>{{ topBar.clock.text }}</span>
@@ -279,7 +279,7 @@ onBeforeUnmount(() => clearTimeout(disarm))
       </div>
 
       <div class="cb-bar" :class="{ 'is-turn': bottomBar.turn }">
-        <span class="cb-who"><b>{{ bottomBar.name }}</b><small v-if="bottomBar.bot"> (bot)</small><small v-if="bottomBar.you"> (you)</small></span>
+        <span class="cb-who"><b>{{ bottomBar.name }}</b><small v-if="bottomBar.bot" class="cb-botnote"> (bot)</small><small v-if="bottomBar.you"> (you)</small></span>
         <BaseChip v-if="bottomBar.bot">Computer{{ level ? `, ${level}` : '' }}</BaseChip>
         <span class="cb-taken" :aria-label="`Captured: ${bottomBar.words}`"><i v-for="(piece, at) in bottomBar.pieces" :key="at" v-html="pieceSvg(piece)" /><em v-if="bottomBar.lead > 0">+{{ bottomBar.lead }}</em></span>
         <span v-if="bottomBar.clock" class="cb-clock" :class="{ 'is-low': bottomBar.clock.low, 'is-live': bottomBar.clock.live }"><small v-if="bottomBar.clock.note">{{ bottomBar.clock.note }}</small>{{ bottomBar.clock.text }}</span>
@@ -320,15 +320,17 @@ onBeforeUnmount(() => clearTimeout(disarm))
   .cb { grid-template-columns: minmax(0, 520px) minmax(220px, 1fr); align-items: start; }
   .cb-moves { max-height: 320px; }
 }
-.cb-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 4px var(--s-2); padding: 6px 10px; min-height: 44px; border-radius: var(--r-sm); background: var(--c-fill); border: 2px solid transparent; }
+.cb-bar { display: flex; align-items: center; flex-wrap: nowrap; gap: 4px var(--s-2); padding: 6px 10px; min-height: 44px; border-radius: var(--r-sm); background: var(--c-fill); border: 2px solid transparent; }
 .cb-bar.is-turn { border-color: var(--c-amber); background: var(--c-amber-soft); }
 .cb-who { font-size: 14px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cb-who small { color: var(--c-muted); font-weight: 600; }
-.cb-taken { display: inline-flex; align-items: center; flex: 1 1 auto; min-width: 0; flex-wrap: wrap; }
+.cb-botnote { display: none; }
+.cb-bar :deep(.base-chip) { flex: none; }
+.cb-taken { display: inline-flex; align-items: center; flex: 1 1 0; min-width: 0; flex-wrap: wrap; }
 .cb-taken i { display: block; width: 18px; height: 18px; margin-right: -6px; }
 .cb-taken i :deep(svg) { width: 100%; height: 100%; display: block; }
 .cb-taken em { margin-left: 10px; font-style: normal; font-size: 12px; font-weight: 800; color: var(--c-ink-2); }
-.cb-clock { margin-left: auto; font: 800 18px var(--font); font-variant-numeric: tabular-nums; padding: 2px 10px; border-radius: var(--r-xs); background: var(--c-surface-solid); color: var(--c-ink); display: inline-flex; align-items: baseline; gap: 6px; }
+.cb-clock { flex: none; margin-left: auto; font: 800 18px var(--font); font-variant-numeric: tabular-nums; padding: 2px 10px; border-radius: var(--r-xs); background: var(--c-surface-solid); color: var(--c-ink); display: inline-flex; align-items: baseline; gap: 6px; }
 .cb-clock small { font-size: 11px; font-weight: 700; color: var(--c-muted); }
 .cb-clock.is-live { background: var(--c-night); color: #fff; }
 .cb-clock.is-low { background: var(--c-red); color: #fff; }

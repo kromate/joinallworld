@@ -40,7 +40,7 @@ const classes = computed(() => [`is-${props.item?.s}`, { 'is-small': props.small
 .wh-card .wh-n { position: absolute; top: 4px; left: 6px; font-size: 15px; font-weight: 800; line-height: 1; }
 .wh-card .wh-s :deep(svg) { width: 30px; height: 30px; }
 .wh-card .wh-s b { font-size: 12px; letter-spacing: .5px; font-weight: 900; }
-.wh-card small { position: absolute; bottom: 3px; left: 0; right: 0; text-align: center; font-size: 8px; line-height: 1; font-weight: 700; color: #5b6472; }
+.wh-card small { position: absolute; bottom: 4px; left: 2px; right: 2px; text-align: center; font-size: 10px; line-height: 1.05; font-weight: 700; color: #4a5260; }
 .wh-card.is-whot { background: #8f1d1d; color: #fff; }
 .wh-card.is-back { background: repeating-linear-gradient(45deg, #b23a2e 0 6px, #8f1d1d 6px 12px); border: 2px solid #fff; cursor: default; }
 .wh-card.is-small { width: 26px; height: 36px; border-radius: 5px; box-shadow: none; cursor: default; }

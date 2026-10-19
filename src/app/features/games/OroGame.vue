@@ -173,13 +173,16 @@ defineExpose({ press })
 <template>
   <div class="oro" :data-mode="mode">
     <p v-if="status === 'loading'" class="oro-note" role="status">{{ mode === 'daily' ? 'Fetching today’s puzzle…' : 'Loading a practice word…' }}</p>
+    <button v-if="status === 'loading'" type="button" class="oro-back" @click="emit('close')">‹ All games</button>
     <template v-else-if="status === 'error'">
       <p class="oro-note" role="alert">{{ failure || 'The puzzle could not be loaded.' }}</p>
       <BaseButton v-if="mode === 'daily'" @click="loadDaily">Try again</BaseButton>
       <BaseButton v-else variant="primary" @click="reloadPractice">Reload game</BaseButton>
+      <BaseButton @click="emit('close')">Back to Games</BaseButton>
     </template>
     <template v-else>
       <header class="oro-head">
+        <button type="button" class="oro-back" @click="emit('close')">‹ All games</button>
         <b>{{ mode === 'daily' ? `Oro #${no}` : 'Oro practice' }}</b>
         <label class="oro-hard" :class="{ 'is-locked': rows.length > 0 }">
           <input type="checkbox" :checked="hard" :disabled="busy || rows.length > 0 || done" @change="toggleHard"> Hard mode
@@ -229,13 +232,15 @@ defineExpose({ press })
 </template>
 
 <style scoped>
-.oro { display: grid; gap: 10px; justify-items: center; }
+.oro { display: grid; gap: 8px; justify-items: center; }
 .oro > * { max-width: 100%; }
 .oro-note { font-size: 13px; color: var(--c-muted); text-align: center; }
-.oro-head { display: flex; flex-wrap: wrap; gap: 8px; width: min(100%, 340px); justify-content: space-between; align-items: center; font-size: 15px; }
-.oro-hard { font-size: 12px; color: var(--c-muted); display: inline-flex; gap: 6px; align-items: center; min-height: 44px; }
+.oro-head { display: flex; gap: 8px; width: min(100%, 340px); justify-content: space-between; align-items: center; font-size: 15px; }
+.oro-head b { flex: 1 1 auto; text-align: center; white-space: nowrap; }
+.oro-back { flex: none; min-height: 44px; padding: 0 4px; border: 0; background: none; color: var(--c-muted); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; }
+.oro-hard { flex: none; font-size: 12px; color: var(--c-muted); display: inline-flex; gap: 6px; align-items: center; min-height: 44px; }
 .oro-hard.is-locked { opacity: .6; }
-.oro-grid { display: grid; gap: 5px; width: min(100%, 300px); }
+.oro-grid { display: grid; gap: 5px; width: max(210px, min(100%, 300px, calc((100dvh - 340px) * 5 / 6))); }
 .oro-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
 .oro-tile { aspect-ratio: 1; display: grid; place-items: center; border: 2px solid #c9ccd4; border-radius: 6px; font-size: clamp(22px, 8vw, 30px); font-weight: 800; text-transform: uppercase; background: #fff; color: #20232c; }
 .oro-tile.has-letter { border-color: #7d828f; }
@@ -244,10 +249,10 @@ defineExpose({ press })
 .oro-tile.is-p { background: #d7a62b; border-color: #d7a62b; color: #3d310e; animation: oro-flip 420ms ease both; animation-delay: var(--d); }
 .oro-tile.is-a { background: #6f7480; border-color: #6f7480; color: #fff; animation: oro-flip 420ms ease both; animation-delay: var(--d); }
 .oro-grid.is-shaking { animation: oro-shake 400ms; }
-.oro-msg { min-height: 20px; margin: 0; font-size: 13px; font-weight: 700; text-align: center; color: #9a3b2c; }
+.oro-msg { min-height: 18px; margin: 0; font-size: 13px; font-weight: 700; text-align: center; color: #9a3b2c; }
 .oro-keys { display: grid; gap: 6px; width: min(100%, 420px); }
 .oro-keyrow { display: flex; justify-content: center; gap: 5px; }
-.oro-key { flex: 1 1 0; min-width: 0; height: 52px; border: 0; border-radius: 7px; background: #d9dce3; color: #20232c; font: inherit; font-weight: 700; font-size: 15px; text-transform: uppercase; cursor: pointer; padding: 0; }
+.oro-key { flex: 1 1 0; min-width: 0; height: 48px; border: 0; border-radius: 7px; background: #d9dce3; color: #20232c; font: inherit; font-weight: 700; font-size: 15px; text-transform: uppercase; cursor: pointer; padding: 0; }
 .oro-key.is-wide { flex: 1.6 1 0; font-size: 12px; }
 .oro-key:focus-visible { outline: 3px solid #1f6feb; outline-offset: 1px; }
 .oro-key:disabled { opacity: .6; cursor: wait; }

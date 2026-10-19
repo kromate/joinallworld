@@ -36,7 +36,7 @@ a{color:inherit}.wrap{max-width:640px;margin:0 auto;padding:0 16px 40px}
 .mark{display:grid;place-items:center;aspect-ratio:16/9;border-radius:16px;background:var(--c1);color:var(--c2);font-size:72px;font-weight:800}
 h1{font-size:26px;line-height:1.2;margin:16px 0 4px;overflow-wrap:anywhere}h2{font-size:18px;margin:28px 0 10px}
 .meta{margin:0;color:#4a5361;font-size:15px;overflow-wrap:anywhere}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
-.chips li{padding:4px 10px;border-radius:999px;background:#e8e4da;font-size:13px}
+.chips li{padding:4px 12px;border-radius:999px;background:#e8e4da;font-size:14px}
 .btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 18px;border-radius:12px;border:2px solid #1f6f4a;background:#1f6f4a;color:#fff;font-weight:700;font-size:16px;text-align:center;text-decoration:none}
 .btn.alt{background:transparent;color:#1f6f4a}.btn.sm{min-height:44px;padding:8px 14px;font-size:15px}
 .act{display:grid;gap:10px;margin:18px 0 0}.fine{margin:10px 0 0;font-size:14px;color:#4a5361}.warn{margin:8px 0 0;font-size:14px;color:#7a4b00}
@@ -47,7 +47,7 @@ h1{font-size:26px;line-height:1.2;margin:16px 0 4px;overflow-wrap:anywhere}h2{fo
 table{width:100%;border-collapse:collapse;font-size:15px}td{padding:6px 0;border-bottom:1px solid #e1ddd2}td:last-child{text-align:right}
 .inside{margin-top:28px;padding:18px;border-radius:16px;background:#183b2a;color:#fff}.inside h2{margin:0 0 6px}.inside p{margin:0 0 14px;font-size:15px}.inside .btn{background:#e8a643;border-color:#e8a643;color:#20232c}
 .foot{margin:28px 0 0;font-size:13px;color:#4a5361}.empty{padding:14px;border-radius:14px;background:#fff;border:1px dashed #cfc9bb;color:#4a5361;font-size:15px}
-.gone{text-align:center;padding:64px 0 0}.gone .btn{display:inline-flex;margin-top:18px}
+.gone{text-align:center;padding:64px 16px 0}.gone .btn{display:inline-flex;margin-top:18px}
 @media(max-width:340px){h1{font-size:23px}.btn{font-size:15px}}`;
 
 const head = (title: string, description: string, url: string, image: { url: string; w?: number; h?: number; alt: string }, robots: string): string =>

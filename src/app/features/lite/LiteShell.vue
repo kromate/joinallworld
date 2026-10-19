@@ -31,15 +31,29 @@ const more = (): void => { shell.open('phone') }
 // covers what you are reading.
 const tabsEl = ref<HTMLElement | null>(null)
 let timer = 0
+let watched: HTMLElement | null = null
 const setVar = (name: string, px: number): void => { const style = document.body.style; const value = `${px}px`; if (style.getPropertyValue(name) !== value) style.setProperty(name, value) }
 function measure(): void {
   setVar('--lite-tabs', tabsEl.value?.offsetHeight ?? 54)
-  const stack = document.querySelector<HTMLElement>('.life-bottom')
-  const height = stack ? Math.ceil(stack.getBoundingClientRect().height) : 0
+  const height = watched?.isConnected ? Math.ceil(watched.getBoundingClientRect().height) : 0
   setVar('--lite-dock', height > 0 ? height + 16 : 0)
 }
-onMounted(() => { measure(); timer = window.setInterval(measure, 400); window.addEventListener('resize', measure) })
-onBeforeUnmount(() => { clearInterval(timer); window.removeEventListener('resize', measure); document.body.style.removeProperty('--lite-tabs'); document.body.style.removeProperty('--lite-dock') })
+// Sizes are measured only when they change; a slow check notices when the stack itself is added or replaced.
+const sizes = typeof ResizeObserver === 'function' ? new ResizeObserver(measure) : null
+function watchStack(): void {
+  const stack = document.querySelector<HTMLElement>('.life-bottom')
+  if (stack === watched) return
+  if (watched) sizes?.unobserve(watched)
+  watched = stack
+  if (stack) sizes?.observe(stack)
+  measure()
+}
+onMounted(() => {
+  if (tabsEl.value) sizes?.observe(tabsEl.value)
+  watchStack(); timer = window.setInterval(sizes ? watchStack : () => { watchStack(); measure() }, 1000)
+  window.addEventListener('resize', measure)
+})
+onBeforeUnmount(() => { clearInterval(timer); sizes?.disconnect(); window.removeEventListener('resize', measure); document.body.style.removeProperty('--lite-tabs'); document.body.style.removeProperty('--lite-dock') })
 </script>
 
 <template>

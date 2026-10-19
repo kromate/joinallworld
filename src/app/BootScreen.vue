@@ -89,7 +89,7 @@ async function clearAndReload(): Promise<void> {
 
 <template>
   <component :is="game" v-if="game" />
-  <main v-else class="boot-screen" aria-labelledby="boot-title" :aria-busy="busy">
+  <main v-else class="boot-screen" :class="{ 'is-waiting': stage !== 'loading' }" aria-labelledby="boot-title" :aria-busy="busy">
     <section class="boot-content">
       <img class="boot-world" src="/icons/world-loader.webp" width="96" height="96" alt="" :class="{ paused: failed }">
       <h1 id="boot-title">Allworld</h1>

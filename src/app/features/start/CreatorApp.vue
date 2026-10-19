@@ -424,6 +424,12 @@ onBeforeUnmount(() => {
             <p v-if="canStay" class="cr-stay"><button type="button" class="cr-link" data-key="stay" :disabled="Boolean(cr.pending)" @click="finish(true)">Move in, but stay here for now</button></p>
           </div>
         </Transition>
+        <!-- The other two ways in (sign up, log in) sit under the choices in the scroll, so the footer keeps one row and the fields stay in view on a phone. -->
+        <div v-if="choices && !finished" class="cr-more" data-cr-more>
+          <BonusLine v-if="account.available && !account.signedIn" />
+          <button type="button" class="cr-btn is-signup" data-key="sign-up" @click="openSignUp">Sign up free<span> to keep your character</span></button>
+          <button type="button" class="cr-link" data-key="sign-in" @click="openSignIn">Already have an account? Log in</button>
+        </div>
         <span class="cr-sr" role="status" aria-live="polite">{{ alt }}</span>
       </div>
 
@@ -440,9 +446,6 @@ onBeforeUnmount(() => {
               <button type="button" class="cr-btn is-primary" data-qs="play" data-key="play-now" @click="playNow(false)">{{ campusEntry ? 'Explore UNILAG' : 'Play now' }}</button>
               <button type="button" class="cr-btn" data-key="next" :disabled="Boolean(blocked) || Boolean(cr.pending)" @click="next">{{ nextLabel(steps, cr.step) }}</button>
             </div>
-            <BonusLine v-if="account.available && !account.signedIn" />
-            <button type="button" class="cr-btn is-signup" data-key="sign-up" @click="openSignUp">Sign up free<span> to keep your character</span></button>
-            <button type="button" class="cr-link" data-key="sign-in" @click="openSignIn">Already have an account? Log in</button>
           </div>
           <template v-else>
             <button v-if="playable && !last" type="button" class="cr-btn" data-qs="play" data-key="play-now" :disabled="homePending" @click="playNow(false)">{{ campusEntry ? 'Explore UNILAG' : 'Play now' }}</button>

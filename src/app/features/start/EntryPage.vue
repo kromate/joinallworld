@@ -275,17 +275,17 @@ h1:focus { outline: none; }
 .en-btn.is-primary:hover:enabled { background: #175a38; }
 .en-btn.is-small { min-height: var(--tap); align-self: flex-start; }
 .en-btn:disabled { opacity: .65; cursor: default; }
-.en-link { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding: 0 4px; border: 0; background: none; color: var(--c-green-dark); font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.en-link { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding: 0 8px; margin-left: -8px; border: 0; background: none; color: var(--c-green-dark); font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .en-link:disabled { opacity: .6; cursor: default; }
 .en-btn:focus-visible, .en-link:focus-visible { outline: var(--focus); outline-offset: 2px; }
 .en-fine { display: flex; flex-wrap: wrap; align-items: center; column-gap: 8px; color: var(--c-muted); font-size: 13px; }
 .en-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0; list-style: none; }
-.en-tiles li { display: flex; align-items: center; gap: 8px; min-height: 52px; padding: 8px 10px; border-radius: 14px; background: var(--c-canvas); border: 1px solid var(--c-line); font-size: 12.5px; font-weight: 600; line-height: 1.25; }
+.en-tiles li { display: flex; align-items: center; gap: 8px; min-height: 52px; padding: 8px 10px; border-radius: 14px; background: var(--c-canvas); border: 1px solid var(--c-line); font-size: 13px; font-weight: 600; line-height: 1.25; }
 .en-tiles i { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--c-green-soft); color: var(--c-green-dark); }
 .en-find { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
-.en-find small { color: var(--c-muted); font-size: 12px; }
+.en-find small { color: var(--c-muted); font-size: 13px; }
 .en-found { color: var(--c-ink-2); font-size: 14px; }
-.en-quiet { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; column-gap: 12px; padding-top: 6px; border-top: 1px solid var(--c-line); }
+.en-quiet { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; column-gap: 20px; padding-top: 6px; border-top: 1px solid var(--c-line); }
 .en-quiet .en-link { font-size: 13px; font-weight: 600; color: var(--c-ink-2); }
 
 .en-shot { display: block; width: calc(100% + 44px); max-width: none; height: auto; aspect-ratio: 640 / 280; margin: -22px -22px 0; object-fit: cover; border-radius: 24px 24px 0 0; background: var(--c-fill); }
@@ -306,7 +306,7 @@ h1:focus { outline: none; }
   /* The first look is the headline and Play now: the reassurance and the feature tiles are quieter, and sit closer together. */
   .en-pitch { font-size: 14.5px; }
   .en-tiles { gap: 6px; }
-  .en-tiles li { min-height: 44px; padding: 6px 8px; background: transparent; font-size: 12px; font-weight: 600; color: var(--c-ink-2); }
+  .en-tiles li { min-height: 44px; padding: 6px 8px; background: transparent; font-size: 13px; font-weight: 600; color: var(--c-ink-2); }
   .en-tiles i { width: 26px; height: 26px; }
   .en-find { gap: 0; }
 }

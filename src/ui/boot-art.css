@@ -9,5 +9,7 @@
 @media(prefers-reduced-motion:reduce) { .boot-world { animation: none; } }
 
 .boot-screen .boot-note { margin: 12px 0 0; color: var(--c-muted); font-size: 14px; }
+/* On a short screen the words reach over the corner pictures: the pictures fade so the words stay readable. */
+@media (max-height: 760px) { .boot-screen.is-waiting::before, .boot-screen.is-waiting::after { opacity: .3; } }
 .boot-screen button:disabled { opacity: .6; cursor: default; }
 .boot-screen button:hover { background: var(--c-night); }

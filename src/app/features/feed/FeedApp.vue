@@ -7,7 +7,8 @@
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import './feed.css'
-import { computed, onMounted, ref, watch } from 'vue'
+import './feedApp.css'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import PlayerAvatar from '../social/PlayerAvatar.vue'
@@ -69,7 +70,15 @@ onMounted(() => {
 watch(() => game.view.value.connected, (on, was) => { if (on && !was) { void loadMe(); void load(); void loadPlaces() } })
 // A new inbox line (a reply, a reaction): read the inbox again.
 watch(feedUnseen, (n, before) => { if (n > before) void loadMe() })
-watch(tab, (t) => { posts.value = []; next.value = null; open.value = null; if (t === 'inbox') void readInbox(); else void load() })
+watch(tab, (t) => { posts.value = []; next.value = null; open.value = null; if (t === 'inbox') void readInbox(); else void load(); void nextTick(showTab) })
+
+// The tab row scrolls on a narrow screen: fade the side that has more tabs, and keep the chosen tab in view.
+const tabsEl = ref<HTMLElement | null>(null), fadeLeft = ref(false), fadeRight = ref(false)
+function tabHints(): void { const el = tabsEl.value; if (!el) return; fadeLeft.value = el.scrollLeft > 4; fadeRight.value = el.scrollLeft + el.clientWidth < el.scrollWidth - 4 }
+function showTab(): void { tabsEl.value?.querySelector<HTMLElement>('.is-on')?.scrollIntoView({ inline: 'nearest', block: 'nearest' }); tabHints() }
+onMounted(() => { void nextTick(tabHints); window.addEventListener('resize', tabHints) })
+onBeforeUnmount(() => window.removeEventListener('resize', tabHints))
+watch(cityName, () => void nextTick(tabHints))
 
 // ---- composing ---------------------------------------------------------------------------------------------------------------------
 const text = ref(''), vis = ref<Visibility | ''>(''), crew = ref(''), label = ref(''), media = ref<FeedMedia | null>(null), preview = ref(''), busy = ref(false), draftN = ref<number | null>(null)
@@ -165,7 +174,7 @@ async function addFriend(s: Suggestion): Promise<void> {
 
 <template>
   <section class="feed" aria-label="Feed" data-feed="app">
-    <nav class="feed-tabs" aria-label="Feed tabs">
+    <nav ref="tabsEl" class="feed-tabs" :class="{ 'has-left': fadeLeft, 'has-right': fadeRight }" aria-label="Feed tabs" @scroll.passive="tabHints">
       <button type="button" :class="{ 'is-on': tab === 'near' }" @click="tab = 'near'">Near you</button>
       <button type="button" :class="{ 'is-on': tab === 'friends' }" @click="tab = 'friends'">Friends</button>
       <button type="button" :class="{ 'is-on': tab === 'city' }" @click="tab = 'city'">{{ cityName }}</button>

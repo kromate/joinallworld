@@ -2,6 +2,7 @@
 // One post: who, where and when, the words, a photo or clip, an event or gig inside it, reactions, the newest replies and a reply box.
 // Everything a viewer may do is what the server said (`canReply`, `mine`); this only draws it.
 import './feed.css'
+import './feedApp.css'
 import { computed, defineAsyncComponent, ref } from 'vue'
 import PlayerAvatar from '../social/PlayerAvatar.vue'
 import ScamNotice from '../trust/ScamNotice.vue'

@@ -12,7 +12,7 @@ const AI = ' <span class="tag">AI</span>';
 const naira = (value: number): string => `₦${Math.round(value).toLocaleString('en-NG')}`;
 const named = (name: unknown): string => `${esc(name)}${AI}`;
 const when = (ms: number): string => new Date(ms).toLocaleString('en-GB', { timeZone: 'Africa/Lagos', weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-const notFound = (origin: unknown, what: string): string => shell(origin, '/agents/league', `${what} not found`, 'AI agents playing Allworld.', `<h1>${esc(what)} not found</h1><p class="note">It may have ended a while ago.</p><p><a href="/agents/league">The Agent league</a></p>`, { index: false });
+const notFound = (origin: unknown, what: string): string => shell(origin, '/agents/league', `${what} not found`, 'AI agents playing Allworld.', `<h1>${esc(what)} not found</h1><p class="note">It may have ended a while ago.</p><p class="nav"><a href="/agents/league">The Agent league</a></p>`, { index: false });
 
 export interface CupPage {
   id: string; label: string; week: number; kind: string; status: string; format: string | null; unit: string; note: string | null
@@ -33,7 +33,7 @@ export function cupPageHtml(cup: CupPage | null, origin: unknown): string {
   const rounds = cup.rounds.filter((r) => r.matches.length).map((r) => `<h2>Round ${r.round}</h2><ul>${r.matches.map((m) => `<li>${m.players.map(named).join(' v ')}: ${m.text ? esc(m.text) : m.status === 'playing' ? `playing · <a href="/agents/match/${esc(m.match)}">watch</a>` : 'waiting'}</li>`).join('')}</ul>`).join('');
   const entrants = !cup.results && !cup.standings && !cup.scores ? `<p>${cup.entrants.length ? cup.entrants.map((e) => named(e.name)).join(', ') : 'No agent has entered yet.'}</p>` : '';
   return shell(origin, `/agents/cup/${cup.id}`, title, description, `<h1>${esc(title)}</h1><p class="note">Every player here is an AI agent. ${cup.kind === 'life' ? 'Measured by the game itself, from entry to Sunday night (Lagos time).' : 'Played on the server; nothing an agent says can change a result.'}</p>${cup.note ? `<p class="note">${esc(cup.note)}</p>` : ''}
-${results}${table}${scores}${entrants}${rounds}<p><a href="/agents/league">The Agent league</a> · <a href="/agents/join">Bring your own assistant</a> · <a class="btn" href="/">Open Allworld</a></p>`, { refresh: cup.status === 'running' ? 120 : 0 });
+${results}${table}${scores}${entrants}${rounds}<p class="nav"><a href="/agents/league">The Agent league</a><a href="/agents/join">Bring your own assistant</a><a class="btn" href="/">Open Allworld</a></p>`, { refresh: cup.status === 'running' ? 120 : 0 });
 }
 
 export interface ChallengePage {
@@ -54,7 +54,7 @@ export function challengePageHtml(c: ChallengePage | null, origin: unknown, watc
     : done ? `<p>${esc(c.result?.text ?? '')}</p>${c.replay ? `<p><a class="btn" href="/replay?replay=${esc(c.replay)}">Watch the replay</a></p>` : ''}`
     : `<p class="note">It is being played now.</p>${watch ? `<p><a class="btn" href="${esc(watch)}">Watch</a></p>` : ''}`;
   const vs = c.to ? `<p>${named(c.from.name)} v ${named(c.to.name)}</p>` : `<p>${named(c.from.name)} v your agent?</p>`;
-  return shell(origin, `/agents/challenge/${c.code}`, title, description, `<h1>${esc(title)}</h1>${vs}${scores}${body}<p class="note">Both sides are AI agents, each played by somebody's own assistant.</p><p><a href="/agents/league">The Agent league</a> · <a class="btn" href="/">Open Allworld</a></p>`, { refresh: c.status === 'playing' ? 60 : 0 });
+  return shell(origin, `/agents/challenge/${c.code}`, title, description, `<h1>${esc(title)}</h1>${vs}${scores}${body}<p class="note">Both sides are AI agents, each played by somebody's own assistant.</p><p class="nav"><a href="/agents/league">The Agent league</a><a class="btn" href="/">Open Allworld</a></p>`, { refresh: c.status === 'playing' ? 60 : 0 });
 }
 
 export interface MatchPage { match: string; label: string; kind: string; status: string; players: { name: string }[]; result?: { text: string }; ref?: { cup?: string; challenge?: string }; replay?: string; toMove?: number[]; n?: number }
@@ -66,6 +66,6 @@ export function matchPageHtml(m: MatchPage | null, origin: unknown, watch: strin
   const state = m.result ? `<p>${esc(m.result.text)}</p>${m.replay ? `<p><a class="btn" href="/replay?replay=${esc(m.replay)}">Watch the replay</a></p>` : ''}`
     : m.status === 'waiting' ? '<p class="note">Waiting for the agents to start.</p>'
     : `<p class="note">Playing now${m.n !== undefined ? `, ${m.n} moves so far` : ''}${turn ? `: ${esc(turn)}` : ''}. This page refreshes itself.</p>${watch ? `<p><a class="btn" href="${esc(watch)}">Watch in the game</a></p>` : ''}`;
-  const back = m.ref?.cup ? `<a href="/agents/cup/${esc(m.ref.cup)}">The cup</a> · ` : m.ref?.challenge ? `<a href="/agents/challenge/${esc(m.ref.challenge)}">The challenge</a> · ` : '';
-  return shell(origin, `/agents/match/${m.match}`, title, 'Two AI agents play on Allworld.', `<h1>${esc(m.label)}</h1><p>${m.players.map((p) => named(p.name)).join(' v ')}</p>${state}<p>${back}<a href="/agents/league">The Agent league</a></p>`, { index: false, refresh: m.status === 'playing' || m.status === 'waiting' ? 20 : 0 });
+  const back = m.ref?.cup ? `<a href="/agents/cup/${esc(m.ref.cup)}">The cup</a>` : m.ref?.challenge ? `<a href="/agents/challenge/${esc(m.ref.challenge)}">The challenge</a>` : '';
+  return shell(origin, `/agents/match/${m.match}`, title, 'Two AI agents play on Allworld.', `<h1>${esc(m.label)}</h1><p>${m.players.map((p) => named(p.name)).join(' v ')}</p>${state}<p class="nav">${back}<a href="/agents/league">The Agent league</a></p>`, { index: false, refresh: m.status === 'playing' || m.status === 'waiting' ? 20 : 0 });
 }

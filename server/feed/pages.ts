@@ -9,9 +9,9 @@ import { escapeHtml as esc } from '../path-meta.ts'
 import type { CrewView, EventView, PostView, ProfileView } from '../../src/types/feed.ts'
 
 const STYLE = `*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#193126;font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}
-.wrap{width:min(560px,100%);margin:0 auto;padding:22px 16px 48px}.brand{font-weight:850;text-decoration:none}.card{margin:14px 0;padding:24px 20px;border-radius:22px;background:#174c36;color:#fff}
+.wrap{width:min(560px,100%);margin:0 auto;padding:22px 16px 48px}.brand{display:inline-flex;align-items:center;min-height:44px;font-weight:850;text-decoration:none}.card{margin:6px 0 14px;padding:24px 20px;border-radius:22px;background:#174c36;color:#fff}
 .card h1{margin:4px 0 6px;font-size:clamp(28px,8vw,42px);line-height:1.05;overflow-wrap:anywhere}.card p{margin:4px 0;opacity:.92}.go{display:block;margin:18px 0 8px;padding:15px 18px;border-radius:14px;background:#f2b134;color:#193126;font-weight:850;font-size:18px;text-align:center;text-decoration:none}
-.muted{color:#53665d;font-size:14px}.people{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.people span{padding:3px 9px;border-radius:999px;background:#ffffff26;font-size:13px}`
+.muted{color:#46594f;font-size:15px}.people{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.people span{padding:4px 10px;border-radius:999px;background:#ffffff26;font-size:14px}`
 function page(origin: unknown, path: string, title: string, description: string, body: string, image?: string): string {
   const base = safeOrigin(origin), url = `${base}${path}`, img = image ? `${base}${image}` : `${base}${OG_IMAGE}`
   return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title>
@@ -46,5 +46,5 @@ export function profileSocialHtml(profile: ProfileView, posts: readonly PostView
   const lines = [profile.handle ? `<b>@${esc(profile.handle)}</b>` : '', profile.bio ? `<p>${esc(profile.bio)}</p>` : '', profile.status ? `<p class="meta">${esc(profile.status.text)}${profile.status.place ? ` · ${esc(profile.status.place)}` : ''}</p>` : '', profile.work.rating ? `<p class="meta">Gigs: ${esc(profile.work.rating)}</p>` : '', profile.work.vouches.length ? `<p class="meta">Vouched for ${esc(profile.work.vouches.map((v) => `${v.skill} (${v.count})`).join(', '))}</p>` : ''].filter(Boolean).join('')
   const list = posts.slice(0, 10).map((p) => `<li><b>${esc(p.body.slice(0, 280) || (p.media ? 'Photo' : ''))}</b><p class="meta">${esc(new Date(p.at).toISOString().slice(0, 10))}${p.place ? ` · ${esc(p.place.label ?? p.place.cityName)}` : ''}</p></li>`).join('')
   if (!pic && !lines && !list) return ''
-  return `<section style="margin:14px 0 0;padding:16px;border:1px solid #d7d2c5;border-radius:18px;background:#fff">${pic}${lines}<a href="${esc(`${base}/?join=${profile.id}`)}" style="display:inline-block;margin-top:8px;padding:9px 14px;border-radius:12px;background:#174c36;color:#fff;font-weight:750;text-decoration:none">Say hi on Allworld</a></section>${list ? `<h2>Posts</h2><ul class="history">${list}</ul>` : ''}`
+  return `<section style="margin:14px 0 0;padding:16px;border:1px solid #d7d2c5;border-radius:18px;background:#fff">${pic}${lines}<a href="${esc(`${base}/?join=${profile.id}`)}" style="display:inline-flex;align-items:center;min-height:44px;margin-top:8px;padding:0 16px;border-radius:12px;background:#174c36;color:#fff;font-weight:750;text-decoration:none">Say hi on Allworld</a></section>${list ? `<h2>Posts</h2><ul class="history">${list}</ul>` : ''}`
 }

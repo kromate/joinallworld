@@ -60,6 +60,7 @@ const canReview = (g: GigView): boolean => g.state === 'done' && Boolean(g.revie
       <label>Details<textarea v-model="form.about" :maxlength="FEED.gig.about" placeholder="When, where, how long" /></label>
       <label>Reward in game money (₦)<input v-model.number="form.reward" type="number" min="0" :max="FEED.gig.rewardMax" step="100"></label>
       <div class="feed-row"><button type="submit" class="social-btn is-primary" :disabled="busy || form.title.trim().length < 3">Post it</button><button type="button" class="feed-pill" @click="making = false">Cancel</button></div>
+      <p v-if="form.title.trim().length < 3" class="feed-note">Give the gig a title of at least 3 letters to post it.</p>
     </form>
 
     <template v-if="mine.length">

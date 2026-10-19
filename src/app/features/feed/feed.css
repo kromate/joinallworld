@@ -1,10 +1,13 @@
 /* The feed: posts, the composer, the tabs, crews, events and gigs. Uses the kit's tokens (src/ui/tokens.css). */
 .feed{display:grid;gap:10px;min-width:0}
-.feed-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px}
-.feed-tabs button{flex:none;border:0;border-radius:var(--r-pill);background:var(--c-fill);color:var(--c-ink);font:650 13px var(--font);padding:8px 14px;min-height:36px;cursor:pointer}
+.feed-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.feed-tabs button{flex:none;border:0;border-radius:var(--r-pill);background:var(--c-fill);color:var(--c-ink);font:650 13px var(--font);padding:8px 16px;min-height:44px;cursor:pointer}
 .feed-tabs button.is-on{background:var(--c-ink);color:#fff}
 .feed-tabs .feed-dot{display:inline-grid;place-items:center;min-width:18px;height:18px;margin-left:6px;border-radius:9px;background:var(--c-red,#c0392b);color:#fff;font-size:11px;padding:0 5px}
 .feed-card{background:#fff;border-radius:var(--r-md);box-shadow:var(--e-1),var(--ring);padding:12px 14px;min-width:0}
+.feed ul.social-list{padding:0;list-style:none}
+.feed-card>.feed-who{display:grid;gap:2px;min-width:0}
+.feed-card>.feed-who small{color:var(--c-muted);font-size:13px}
 .feed-card.is-hidden{opacity:.7;outline:1px dashed var(--c-amber)}
 .feed-head{display:flex;align-items:center;gap:10px;min-width:0}
 .feed-head .feed-who{flex:1;min-width:0;display:grid}
@@ -19,6 +22,7 @@
 .feed-embed{margin:8px 0 0;padding:10px 12px;border-radius:12px;border:1px solid var(--c-line);display:grid;gap:4px}
 .feed-embed b{font-size:15px}.feed-embed small{color:var(--c-muted)}
 .feed-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0 0}
+.feed-row .feed-pill{min-height:44px;padding:8px 16px}
 .feed-bar button,.feed-pill{border:0;border-radius:var(--r-pill);background:var(--c-fill);color:var(--c-ink);font:600 13px var(--font);padding:6px 10px;min-height:32px;cursor:pointer}
 .feed-bar button.is-mine{background:var(--button-selected,#e6edf9);box-shadow:inset 0 0 0 1px currentColor}
 .feed-bar .feed-grow{flex:1}

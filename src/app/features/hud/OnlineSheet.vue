@@ -39,7 +39,7 @@ const invite = (): void => { emit('close'); shareInvite('hud', () => game.toast(
 </template>
 
 <style scoped>
-.online-sheet { margin-top: auto; margin-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); }
+.online-sheet { margin-top: auto; margin-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); white-space: normal; }
 .online-title { margin: 0; padding: 16px 64px 6px 18px; font-size: 16px; }
 .online-split { margin: 0; padding: 4px 18px; font-variant-numeric: tabular-nums; }
 .online-note { margin: 0; padding: 6px 18px 0; color: var(--c-muted); font-size: var(--t-small); }

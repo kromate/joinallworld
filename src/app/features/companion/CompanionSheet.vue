@@ -61,11 +61,11 @@ const MODES: { id: CompanionMode; label: string; note: string }[] = [
 </template>
 
 <style scoped>
-.cs-head { display: flex; align-items: center; gap: 10px; padding: 12px 64px 10px 16px; border-bottom: 1px solid var(--c-line); }
+.cs-head { display: flex; align-items: center; gap: 10px; padding: 12px 114px 10px 16px; border-bottom: 1px solid var(--c-line); }
 .cs-head h2 { margin: 0; font-size: var(--t-title); line-height: 1.1; }
 .cs-head p { margin: 2px 0 0; color: var(--c-muted); font-size: var(--t-small); }
 .cs-tag { display: inline-block; padding: 1px 8px; border-radius: var(--r-pill); background: var(--c-green-soft); color: var(--c-green-dark); font-weight: 700; }
-.cs-gear { margin-left: auto; position: absolute; right: 58px; top: 9px; width: var(--tap); height: var(--tap); border: 0; border-radius: 50%; background: var(--c-fill); font-size: 18px; cursor: pointer; }
+.cs-gear { margin-left: auto; position: absolute; right: 62px; top: 9px; width: var(--tap); height: var(--tap); border: 0; border-radius: 50%; background: var(--c-fill); font-size: 18px; cursor: pointer; }
 .cs-settings { padding: 10px 16px; background: var(--c-canvas); border-bottom: 1px solid var(--c-line); font-size: var(--t-body); }
 .cs-settings p { margin: 0 0 6px; }
 .cs-settings [role='radiogroup'], .cs-tourlist { display: flex; flex-wrap: wrap; gap: 6px; }

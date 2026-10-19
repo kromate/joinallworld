@@ -36,6 +36,6 @@ const empty = computed(() => (lagos.value ? STATE_HOUSE_TEXT.empty : `${cityName
 <style scoped>
 .governor-seat { display: grid; gap: 3px; margin-bottom: var(--s-2); padding: 16px 18px; border-radius: var(--r-lg); background: #e6f3ec; color: #153d2b; box-shadow: none; }
 .governor-seat h3 { margin: 0 !important; font-size: 20px !important; letter-spacing: -.1px !important; text-transform: none !important; color: inherit !important; }
-.governor-seat p { margin: 0 !important; font-size: 13px !important; }
+.governor-seat p { margin: 0 !important; font-size: 14px !important; }
 .governor-seat small { font-size: 14px; opacity: .85; }
 </style>

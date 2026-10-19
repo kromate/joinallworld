@@ -42,46 +42,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 
 /* ---- top bar: clock · mood · name · saved · wallet -------------------------------------- */
 .life-status{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;height:48px;max-width:calc(100% - 24px);padding:0 6px 0 18px;background:var(--c-surface);border:1px solid #fff;border-radius:var(--r-pill);box-shadow:var(--e-2);white-space:nowrap;pointer-events:auto;z-index:4}
-.life-clock{font-size:var(--t-body);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.1px}
-.life-ui button.life-mood{display:inline-flex;align-items:center;min-height:var(--tap);padding:0 2px 0 12px;border-left:1px solid var(--c-line);border-radius:0;background:none;color:var(--c-green-dark);font-weight:600;min-width:0}
-.life-mood span{overflow:hidden;text-overflow:ellipsis}
-.life-ui button.life-mood.is-uneasy{color:#8a5a12}.life-ui button.life-mood.is-bad{color:var(--c-red-dark)}.life-ui button.life-mood.is-neutral{color:var(--c-muted)}
-.life-ui .life-status-profile{display:flex;align-items:center;gap:5px;background:none;color:var(--c-ink-2);font-weight:600;min-height:var(--tap);padding:0 4px 0 12px;max-width:170px;border-left:1px solid var(--c-line);border-radius:0}
-.life-status-profile span{overflow:hidden;text-overflow:ellipsis}
-.life-ui .life-status-profile svg{flex:none;width:17px;height:17px;color:var(--c-green-dark)}
-.life-saved{display:inline-flex;align-items:center;gap:5px;font-size:var(--t-small);font-weight:700;color:var(--c-muted);background:none;padding:0}
-.life-saved i{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;font-style:normal;background:var(--c-green-soft);color:var(--c-green-dark)}
-.life-ui .life-saved svg{width:14px;height:14px}
-.life-saved.is-saving i{background:var(--c-amber-soft);color:var(--c-amber-dark)}
-.life-ui button.life-saved.is-off,.life-saved.is-unsaved{min-height:34px;padding:0 12px 0 6px;border-radius:var(--r-pill);background:var(--c-red-soft);color:var(--c-red-dark);box-shadow:inset 0 0 0 1px #e9b9a8}
-.life-saved.is-off i{background:var(--c-red-dark);color:#fff}
-.life-ui button.life-saved.is-wait{background:var(--c-amber-soft);color:var(--c-amber-dark);box-shadow:inset 0 0 0 1px #ead38f}
-.life-saved.is-wait i{background:var(--c-amber-dark)}
-.life-ui button.life-cash{position:relative;min-height:36px;padding:0 15px;border-radius:var(--r-pill);background:var(--c-ink);color:#fff;font-weight:700;font-size:var(--t-body);font-variant-numeric:tabular-nums;letter-spacing:.1px}
-.life-cash::after{content:'';position:absolute;inset:-4px -2px}
-.life-cash.is-up{animation:life-flash-up 1.1s ease-out}
-.life-cash.is-down{animation:life-flash-down 1.1s ease-out}
-.life-delta{position:absolute;right:8px;top:calc(100% - 6px);max-width:min(270px,80vw);padding:3px 10px;border-radius:var(--r-pill);font-size:var(--t-small);font-weight:700;line-height:1.35;overflow:hidden;text-overflow:ellipsis;opacity:0;visibility:hidden;pointer-events:none;box-shadow:var(--e-1)}
-.life-delta.is-up{background:var(--c-green-dark);color:#fff;animation:life-delta 3.4s ease-out}
-.life-delta.is-down{background:#fff;color:#8a3f1d;border:1px solid #e8c9b6;animation:life-delta 3.4s ease-out}
-@keyframes life-delta{0%{opacity:0;visibility:visible;transform:translateY(-6px)}8%,82%{opacity:1;visibility:visible;transform:none}100%{opacity:0;visibility:hidden}}
-@keyframes life-flash-up{0%,40%{background:#2f8a57;box-shadow:0 0 0 4px #2f8a5740}100%{background:var(--c-ink);box-shadow:0 0 0 0 transparent}}
-@keyframes life-flash-down{0%,40%{background:#a2542a;box-shadow:0 0 0 4px #a2542a40}100%{background:var(--c-ink);box-shadow:0 0 0 0 transparent}}
 
-/* ---- connection notice: what happened, and the one action that resolves it ----------------- */
-.life-notice{position:absolute;z-index:5;top:70px;left:50%;transform:translateX(-50%);width:min(600px,calc(100% - 720px));display:flex;align-items:center;gap:12px;padding:12px 12px 12px 14px;background:#fff7ee;border:1.5px solid #e2a47e;border-radius:var(--r-lg);box-shadow:var(--e-2);pointer-events:auto}
-.life-notice:empty{display:none}
-.life-notice>i{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--c-red-dark);color:#fff}
-.life-ui .life-notice>i svg{width:22px;height:22px}
-.life-notice>div{flex:1 1 220px;min-width:0}
-.life-notice strong{display:block;font-size:var(--t-lead);line-height:1.25;color:var(--c-ink)}
-.life-notice p{margin-top:2px;font-size:var(--t-caption);line-height:1.4;color:var(--c-ink-2)}
-.life-notice-actions{flex:none;display:flex;flex-wrap:wrap;gap:6px}
-.life-notice .ui-button{white-space:nowrap}
-.life-notice .ui-button:not(.is-primary){background:#fff;box-shadow:inset 0 0 0 1px var(--c-line)}
-.life-notice.is-storage{background:var(--c-amber-soft);border-color:#e0c46c}
-.life-notice.is-storage>i{background:var(--c-amber-dark)}
-@media(max-width:1183px){.life-notice{flex-wrap:wrap;width:min(600px,calc(100% - 24px))}.life-notice-actions{flex:1 1 100%}.life-notice-actions .ui-button{flex:1}.has-notice .life-sidebar{top:calc(78px + var(--notice-h,0px))}}
 
 /* ---- sidebar: needs strip, More, Clean screen, goal line, tray --------------------------- */
 .life-sidebar{position:absolute;top:70px;left:14px;width:264px;display:flex;flex-direction:column;gap:8px;max-height:calc(100 * var(--ui-vh) - 330px);z-index:3}
@@ -252,7 +213,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-nav button{flex:1;display:grid;justify-items:center;gap:2px;min-height:50px;padding:6px 4px 5px;border-radius:21px;background:none;font-size:var(--t-small);font-weight:600;color:var(--c-ink-2);transition:background var(--ease),color var(--ease)}
 .life-nav button:hover{background:var(--c-fill)}
 .life-nav button.is-selected{background:var(--c-ink);color:#fff}
-.life-nav button.is-off{opacity:.45}
+.life-nav button.is-off{opacity:.7;color:var(--c-muted)}
 .life-ui .life-nav svg{width:22px;height:22px}
 
 /* ---- sheets (the dialog): one header, one close button, one scrolling body ---------------- */
@@ -509,7 +470,7 @@ button.ui-row:hover{background:#f7f9f8}
   .life-goal .life-job small{flex:1 1 0;min-width:0}
   .life-goal .life-job em{flex:none;margin:0}
   .life-tray{display:none}
-  .is-tray-open .life-tray{display:grid;gap:8px;max-height:calc(100 * var(--ui-vh) - 250px);overflow-y:auto;padding:8px;background:#fff;border-radius:22px;box-shadow:var(--e-2);pointer-events:auto}
+  .is-tray-open .life-tray{display:grid;gap:8px;max-height:calc(100 * var(--ui-vh) - 176px);overflow-y:auto;padding:8px;background:linear-gradient(#fff 30%,#fff0) top/100% 30px local no-repeat,linear-gradient(#fff0,#fff 70%) bottom/100% 30px local no-repeat,linear-gradient(#17212f26,#17212f00) top/100% 9px no-repeat,linear-gradient(#17212f00,#17212f26) bottom/100% 9px no-repeat,#fff;border-radius:22px;box-shadow:var(--e-2);pointer-events:auto}
   .is-tray-open .life-menu{order:0;padding:0;box-shadow:none;border-top:1px solid var(--c-line);border-radius:0;padding-top:6px}
   .life-hud{overflow:visible}
   .life-tray .life-job,.life-tray .home-chip,.life-tray .health-chip{box-shadow:none;background:var(--c-fill)}

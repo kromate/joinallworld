@@ -12,8 +12,9 @@
  *   rippleStep(ms, reduced)      { scale, opacity } for a ripple `ms` after the tap
  */
 
-import type { Batch, BatchGeometry, Colour } from './types.ts';
-import { GLOW } from './build.ts';
+import type * as THREE from 'three';
+import type { Batch, BatchGeometry, Colour, ThreeModule } from './types.ts';
+import { GLOW, createBatch } from './build.ts';
 
 const TAU = Math.PI * 2;
 
@@ -57,3 +58,45 @@ export function rippleStep(ms: number, reduced: boolean): { scale: number; opaci
   const ease = 1 - (1 - k) * (1 - k);
   return { scale: 0.35 + ease * 1.15, opacity: done ? 0 : (1 - k) * 0.9, done };
 }
+
+// ---- swapping the venue scene's own marks after it builds them (the files that build them are pinned) ----------------------------
+// restyleMarks() finds the 'mark-spot', 'mark-near' and 'mark-goal' meshes by name and gives each the new look: its geometry is replaced (the old freed), the spot ring breathes and the goal mark ripples once per
+// tap. Both animate in the mesh's own onBeforeRender, so they cost nothing while no frame is drawn and allocate nothing per frame.
+
+type MarkKind = 'spot' | 'near' | 'goal';
+const MARK = /^mark-(spot|near|goal)$/;
+
+/** Called by the scene's ambient hub right after the scene has built its marks: swaps the look of each one it finds by name. */
+export function restyleMarks(THREE: ThreeModule, parent: THREE.Object3D): void {
+  for (const child of parent?.children ?? []) {
+    const kind = MARK.exec(child.name)?.[1] as MarkKind | undefined;
+    if (kind && (child as THREE.Mesh).isMesh && !child.userData.restyled) { child.userData.restyled = true; restyle(THREE, child as THREE.Mesh, kind); }
+  }
+}
+
+function restyle(THREE: ThreeModule, mesh: THREE.Mesh, kind: MarkKind): void {
+  const old = mesh.geometry, col = old.getAttribute('color');
+  const accent = col ? `#${new THREE.Color().setRGB(col.getX(0), col.getY(0), col.getZ(0)).getHexString()}` : '#e0a43a';
+  const b = createBatch(THREE);
+  if (kind === 'spot') spotMark(b, accent); else if (kind === 'near') nearMark(b); else rippleMark(b);
+  const made = b.build({ solid: mesh.material as THREE.Material, glow: mesh.material as THREE.Material, glass: mesh.material as THREE.Material }).meshes[0]!;
+  mesh.geometry = made.geometry; old.dispose();
+  if (kind === 'spot') {
+    mesh.onBeforeRender = () => { mesh.scale.setScalar(pulse(performance.now() / 1000, reducedMotion())); };
+  } else if (kind === 'goal') {
+    const own = (mesh.material as THREE.MeshBasicMaterial).clone();
+    own.transparent = true; own.depthWrite = false; own.opacity = 0;
+    mesh.material = own; mesh.renderOrder = 2;
+    (mesh as unknown as { dispose(): void }).dispose = () => own.dispose();
+    let x = NaN, z = NaN, seen = -1e9, start = 0, reduced = false;
+    mesh.onBeforeRender = () => {
+      const now = performance.now();
+      if (mesh.position.x !== x || mesh.position.z !== z || now - seen > 250) { x = mesh.position.x; z = mesh.position.z; start = now; reduced = reducedMotion(); }
+      seen = now;
+      const step = rippleStep(now - start, reduced);
+      mesh.scale.setScalar(step.scale); own.opacity = step.opacity;
+      if (step.done) mesh.visible = false;
+    };
+  }
+}
+function reducedMotion(): boolean { return globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true; }

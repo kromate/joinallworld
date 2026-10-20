@@ -377,7 +377,7 @@ export function spotMarker(b: Batch, x: number, z: number, color: Colour = '#f2d
   // A warm ring round a light centre and a small dot: it reads as a place to stand, not a hole in the ground.
   b.disc(x, y + 0.085, z, 0.62, color, { seg: 18 });
   b.disc(x, y + 0.09, z, 0.5, '#fbf3dc', { seg: 18 });
-  b.disc(x, y + 0.095, z, 0.13, color, { seg: 10 });
+  b.disc(x, y + 0.095, z, 0.13, color, { seg: 12 });
 }
 
 export interface GameTableOptions { game?: string; ry?: number; accent?: Colour }

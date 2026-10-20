@@ -139,6 +139,7 @@ onMounted(() => {
       onScenes, onError: sceneFailed,
       onHost: () => { viewHostRevision.value++; if (scene.venue.value) hostUp(); layout(); reportPlace() } })
       scene.venue.value = venue
+      if (import.meta.env.DEV) (window as unknown as { __awVenue?: unknown }).__awVenue = venue
       void import('../features/neighbourhood/neighbourhoodStore.ts').then((module) => module.startNeighbourhood())
       venue.setState(game.state.value)
       showPlayer(); showCrowd(); showGoal()

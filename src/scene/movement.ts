@@ -151,6 +151,7 @@ export function footprintRecorder(inner: Batch, { low = 0.34, high = 1.2 }: { lo
       return batch;
     },
     world: (x, y, z) => inner.world(x, y, z),
+    note: (kind, x, z, r, h) => inner.note?.(kind, x, z, r, h),
     get triangles() { return inner.triangles; },
     build: (materials) => inner.build(materials),
   };

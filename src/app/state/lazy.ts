@@ -1,11 +1,11 @@
 // Every lazily loaded screen goes through lazyComponent(): a light "Loading…" after a short delay, two quiet
-// automatic retries (1 s, then 3 s), and if the code still does not arrive a plain message with "Try again"
-// (and "Reload page" when the failure looks like a chunk that a new deploy has removed). It never rejects,
-// so a slow network cannot leave a blank box: the screen shows up on its own the moment the code lands.
+// automatic retries (1 s, then 3 s), and if the code still does not arrive a plain message with "Try again".
+// A chunk that a new deploy has removed also asks the host whether the app was updated, which offers the
+// Reload banner (updateNotice.ts). It never rejects, so a slow network cannot leave a blank box: the screen
+// shows up on its own the moment the code lands. (Kept tiny on purpose: it is part of the first download.)
 import { defineAsyncComponent, h, reactive } from 'vue'
 import type { AsyncComponentLoader, Component } from 'vue'
-import { createLazyLoader } from '../../lazy-load.ts'
-import { isChunkLoadError, noteChunkFailure } from './updateNotice.ts'
+import { noteChunkFailure } from './updateNotice.ts'
 
 /** A load faster than this never shows a loading line, so quick loads do not flash. */
 export const LAZY_SHOW_AFTER_MS = 200
@@ -16,22 +16,16 @@ export const LAZY_FAILED_TEXT = 'Couldn’t load this. Check your connection.'
 
 /** The loading logic without any rendering: one shared load per screen, whatever number of places show it. */
 export function createLazyScreen<T>(load: () => Promise<T>) {
-  const view = reactive({ failed: false, stale: false })
-  let timer: ReturnType<typeof setTimeout> | undefined, settle: (value: T) => void, lastError: unknown = null
+  const view = reactive({ failed: false })
+  let timer: ReturnType<typeof setTimeout> | undefined, settle: (value: T) => void, started = false
   const done = new Promise<T>((resolve) => { settle = resolve })
-  const arm = (): void => { clearTimeout(timer); timer = setTimeout(() => { view.failed = true }, LAZY_TIMEOUT_MS) }
-  const piece = createLazyLoader<T>(() => load().catch((error: unknown) => { lastError = error; throw error }), {
-    delays: [1000, 3000], // the first retry after 1 s, the second after 3 s
-    onState({ status }) {
-      if (status === 'ready') { clearTimeout(timer); view.failed = false; settle(piece.value as T) }
-      else if (status === 'failed') { view.failed = true; view.stale = isChunkLoadError(lastError); void noteChunkFailure() }
-    },
-  })
-  return {
-    view,
-    loader(): Promise<T> { if (piece.state.status === 'idle') { arm(); void piece.load() } return done },
-    retry(): void { view.failed = false; arm(); void piece.load() },
+  const give = (): void => { view.failed = true; void noteChunkFailure() }
+  const attempt = (tries: number): void => {
+    load().then((loaded) => { clearTimeout(timer); view.failed = false; settle(loaded) },
+      () => { if (tries < 2) setTimeout(attempt, tries ? 3000 : 1000, tries + 1); else give() }) // retries after 1 s, then 3 s
   }
+  const start = (): void => { started = true; clearTimeout(timer); timer = setTimeout(give, LAZY_TIMEOUT_MS); view.failed = false; attempt(0) }
+  return { view, retry: start, loader(): Promise<T> { if (!started) start(); return done } }
 }
 
 const box = 'padding:16px;text-align:center'
@@ -48,11 +42,7 @@ function make<T extends Component>(load: AsyncComponentLoader<T>, quiet: boolean
     suspensible: false, // inside a Suspense a failure would hang its fallback; this screen speaks for itself
     delay: LAZY_SHOW_AFTER_MS,
     ...(quiet ? {} : { loadingComponent: () => view.failed
-      ? h('div', { role: 'alert', style: box }, [
-        h('p', LAZY_FAILED_TEXT),
-        h('button', { type: 'button', class: 'ui-button is-primary', onClick: retry }, 'Try again'),
-        view.stale ? h('button', { type: 'button', class: 'ui-button', onClick: () => location.reload() }, 'Reload page') : null,
-      ])
+      ? h('div', { role: 'alert', style: box }, [h('p', LAZY_FAILED_TEXT), h('button', { type: 'button', class: 'ui-button is-primary', onClick: retry }, 'Try again')])
       : h('p', { role: 'status', style: box }, LAZY_LOADING_TEXT) }),
   })
 }

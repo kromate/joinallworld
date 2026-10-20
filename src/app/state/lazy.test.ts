@@ -39,16 +39,9 @@ test('when every retry fails the screen says so, offers Try again, and Try again
   const loaded = screen.loader()
   await settle(); await tick(1000); await tick(3000)
   assert.equal(calls, 3, 'one attempt and two retries')
-  assert.equal(screen.view.failed, true); assert.equal(screen.view.stale, true, 'a failed dynamic import offers a page reload')
+  assert.equal(screen.view.failed, true)
   up = true; screen.retry(); await settle()
   assert.equal(await loaded, 'ok'); assert.equal(screen.view.failed, false); assert.equal(calls, 4)
-})
-
-test('a failure that is not a missing chunk does not offer a reload', async (t) => {
-  const { tick } = fakeTimers(t)
-  const screen = createLazyScreen(async () => { throw new Error('boom') })
-  void screen.loader(); await settle(); await tick(1000); await tick(3000)
-  assert.equal(screen.view.failed, true); assert.equal(screen.view.stale, false)
 })
 
 test('a download that hangs gives up after the timeout, and still shows the screen if the code lands late', async (t) => {

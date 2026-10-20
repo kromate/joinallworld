@@ -8,7 +8,7 @@
 .buy-tabs{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;padding:1px 1px var(--s-2)}.buy-tabs::-webkit-scrollbar{display:none}
 /* Wider than a phone the tabs wrap onto a second line instead of running under the panel's edge, where nothing shows there are more. */
 @media(min-width:721px){.buy-tabs{flex-wrap:wrap;overflow-x:visible}}
-.life-ui .buy-tabs button{background:var(--c-fill);border-radius:var(--r-chip);padding:0 13px;min-height:var(--tap);font-size:12px;white-space:nowrap;flex-shrink:0}
+.life-ui .buy-tabs button{background:var(--c-fill);border-radius:var(--r-chip);padding:0 13px;min-height:var(--tap);font-size:13px;white-space:nowrap;flex-shrink:0}
 .life-ui .buy-tabs .is-selected{background:var(--c-ink);color:#fff}
 /* One short rail of cards: the room stays in view above it */
 .buy-grid{display:flex;gap:var(--s-2);overflow-x:auto;scrollbar-width:thin;scroll-snap-type:x proximity;padding:1px 1px 4px}
@@ -23,19 +23,20 @@
 .buy-need{color:var(--c-red);font-size:11px;line-height:1.2;font-weight:600}
 .buy-stored-actions{display:flex;gap:4px;flex-wrap:wrap;justify-content:center}
 .life-ui .buy-stored-actions button{background:var(--c-green-soft);color:var(--c-green-dark);border-radius:14px;min-height:36px;padding:0 10px;font-size:11px;font-weight:600}
-.buy-hint{font-size:11px;line-height:1.4;color:var(--c-muted);margin:var(--s-1) 2px 0!important}
+.buy-hint{font-size:12px;line-height:1.4;color:var(--c-muted);margin:var(--s-1) 2px 0!important}
 /* Placement: the pad under the thumb, the rest beside it */
 .buy-place.is-placing{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:var(--s-3);max-width:480px;padding:var(--s-2) var(--s-3) var(--s-2) var(--s-2)}
-.buy-place-main{display:grid;gap:6px;min-width:0}
+.buy-place-main{display:grid;gap:6px;min-width:0;max-width:100%}
+.buy-place-main>*{min-width:0}
 .buy-place header{justify-content:space-between}
-.buy-place header strong{font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.buy-place header strong{font-size:14px;flex:1 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .buy-place header span{flex:none;font-weight:700;color:var(--c-green-dark);font-size:13px}
 .buy-why{font-size:12px;font-weight:600;line-height:1.35;margin:0!important}.buy-why.is-good{color:var(--c-green-dark)}.buy-why.is-bad{color:var(--c-red)}
 .buy-pad{display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,44px);gap:0}
 .life-ui .buy-pad button{background:var(--c-fill);border-radius:14px;font-size:18px;width:44px;height:44px}
 .buy-pad-move-left{grid-area:1/1}.buy-pad-move-up{grid-area:1/3}.buy-pad-rotate{grid-area:2/2}.buy-pad-move-down{grid-area:3/1}.buy-pad-move-right{grid-area:3/3}
 .life-ui .buy-pad .buy-pad-rotate{background:var(--c-ink);color:#fff}
-.buy-row{display:flex;gap:var(--s-2);flex-wrap:wrap}.buy-row .ui-button{flex:1;white-space:nowrap;padding:10px 12px}
+.buy-row{display:flex;gap:var(--s-2);flex-wrap:wrap}.buy-row .ui-button{flex:1 1 auto;min-width:0;white-space:nowrap;padding:10px 12px}
 .buy-place:not(.is-placing){padding:var(--s-3);display:grid;gap:var(--s-2)}
 @media(pointer:coarse){.buy-keys{display:none}}
 .home-chip{display:grid;gap:4px;background:var(--c-surface);border:1px solid #fff;border-radius:20px;padding:9px 12px;pointer-events:auto;font-size:12px}
@@ -44,7 +45,7 @@
 .life-ui .home-chip-button,.life-ui .home-kitchen-toggle{background:var(--c-green-soft);color:var(--c-green-dark);border-radius:14px;min-height:var(--tap);padding:0 10px;font-size:11px;text-align:left;width:100%}
 .home-kitchen{display:grid;gap:4px}
 .home-kitchen-list{display:flex;flex-wrap:wrap;gap:3px;max-height:calc(22 * var(--ui-vh));overflow-y:auto}.home-kitchen-list span{background:var(--c-fill);border-radius:10px;padding:2px 6px;font-size:var(--t-small)}
-@media(max-width:720px){.buy-catalogue,.buy-place{border-radius:22px}.life-ui .buy-card{flex-basis:108px;min-height:110px}.buy-stars-note{display:none}}
+@media(max-width:720px){.buy-tabs{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 24px),transparent)}.buy-catalogue,.buy-place{border-radius:22px}.life-ui .buy-card{flex-basis:108px;min-height:110px}.buy-stars-note{display:none}}
 /* glyphs (no emoji): tab icons, star ratings, the furniture icon on a card, the kitchen caret */
 .buy-tabs svg.ui-glyph{margin-right:5px;opacity:.85}
 .buy-star{display:inline-flex;color:#c98a12}.life-ui .buy-star svg.ui-glyph{width:1em;height:1em;vertical-align:-.12em}.buy-star path{fill-opacity:1}

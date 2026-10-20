@@ -167,6 +167,8 @@ function change(): void { plan.value = null; problems.value = []; error.value = 
 </template>
 
 <style scoped>
+/* The phone hides the corner Close of the main sheet; this sheet opens over the app and needs its own. */
+:deep(.base-sheet-close) { display: grid !important; }
 .sp-head { padding: 16px 56px 8px 18px; }
 .sp-head h2 { margin: 0; font-size: 18px; }
 .sp-head p { margin: 2px 0 0; font-size: 13px; color: var(--c-ink-2); }

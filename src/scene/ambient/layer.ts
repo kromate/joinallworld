@@ -55,7 +55,7 @@ export const WAVE_MS = 3_500;
 export interface Room { triangles: number; meshes: number }
 export interface AmbientTag { id: string; name: string; kind: string; text: string; marker: string; colour: string; position: { x: number; y: number; z: number } }
 /** `you` is set only while this person is talking with the player: where the player stands, so the host can walk up to a talking distance. */
-export interface AmbientPerson { id: string; role: Role; x: number; z: number; sitting: boolean; you?: { x: number; z: number } }
+export interface AmbientPerson { id: string; role: Role; x: number; z: number; sitting: boolean; you?: { x: number; z: number }; ry?: number }
 /** The partner id that means the player in `talk(id, PLAYER_PARTNER, ms)`: the person turns to the player and holds there until the time is up or `ms` is 0. */
 export const PLAYER_PARTNER = 'you'
 /** A greeting gesture at the start of a talk with the player, and the beat of a speaking turn (ms). */
@@ -162,6 +162,8 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
   const entries = new Map<string, Entry>()
   const barks = new Map<string, { text: string; timer: ReturnType<typeof setTimeout> }>()
   let far: FarFigures | null = null, farKey = '', farPending: FarFigures | null = null, farRevision = 0
+  /** The person the player is talking with: kept here, not on the figure, so it survives the figure being rebuilt or the person leaving and coming back. */
+  let withPlayer: { id: string; until: number; since: number } | null = null
   let windowLeft = 0, frames = 0, disposed = false, current = clock()
   let fullCap = 0, leanCap = 0, farCap = 0
   let residents: Resident[] = []
@@ -283,6 +285,7 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
     let pose: AmbientPose = sample.walking && still ? 'stand' : sample.pose
     let face = sample.ry, moving = false
     const sitting = sample.mode === 'sit'
+    if (withPlayer && withPlayer.id === entry.id && !entry.talk?.player && at < withPlayer.until) entry.talk = { until: withPlayer.until, face: entry.ry, lead: true, since: withPlayer.since, player: true }
     if (entry.talk && at < entry.talk.until) {
       if (entry.talk.player) {
         // Talking with the player: turn to wherever they stand now (the turn is eased below), greet with a gesture, then give a small hand gesture as each speaking turn begins.
@@ -520,8 +523,8 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
       frames += 1
       const closing = windowLeft > 0 && windowLeft - dt <= 0
       windowLeft = Math.max(0, windowLeft - dt)
-      // A talk with the player keeps the window open until it ends, so the turn to face them and back is drawn.
-      for (const entry of entries.values()) if (entry.talk?.player && at < entry.talk.until) { windowLeft = Math.max(windowLeft, 0.25); break }
+      // A talk with the player keeps the window open for the turn and the greeting; after that the person simply stands facing them (the host wakes the window again while the player walks).
+      for (const entry of entries.values()) if (entry.talk?.player && at < entry.talk.until && at - (entry.talk.since ?? at) < GREET_MS + TALK_TURN_MS) { windowLeft = Math.max(windowLeft, 0.25); break }
       sync(at, dt, false)
       // Street life moves with the window; a slow frame drops it for good (the hand-testing switch keeps it on).
       if (street) { if (!streetChoice?.forced && streetGuard?.frame(dt) === 'slow') dropStreet(); else street.step(at, options.avatar(), dt) }
@@ -558,7 +561,7 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
       return { id, name, kind: 'npc', text: name, marker: 'dot', colour: '#58d68a', position: { x: entry.x, y: entry.holder.position.y + entry.top, z: entry.z } }
     },
     people() {
-      return [...entries.values()].filter(entry => entry.holder.visible).map((entry) => ({ id: entry.id, role: entry.role, x: entry.x, z: entry.z, sitting: entry.shownKey.startsWith('sit'), ...(entry.talk?.player ? { you: { ...options.avatar() } } : {}) }))
+      return [...entries.values()].filter(entry => entry.holder.visible).map((entry) => ({ id: entry.id, role: entry.role, x: entry.x, z: entry.z, sitting: entry.shownKey.startsWith('sit'), ...(entry.talk?.player ? { you: { ...options.avatar() }, ry: entry.ry } : {}) }))
     },
     tags() {
       const out: AmbientTag[] = []
@@ -582,15 +585,17 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
     talk(a, b, ms = 8_000) {
       if (b === PLAYER_PARTNER) {
         const person = entries.get(a)
-        if (disposed || !person) return false
         if (ms <= 0) {
           // The talk is over: back to the routine, turning back with the same ease.
-          if (person.talk?.player) { person.talk = null; windowLeft = Math.max(windowLeft, 1.5) }
-          return true
+          if (withPlayer?.id === a) withPlayer = null
+          if (person?.talk?.player) { person.talk = null; windowLeft = Math.max(windowLeft, 1.5) }
+          return !disposed
         }
+        if (disposed || !person) return false
         const now = clock()
+        withPlayer = { id: a, until: now + ms, since: now }
         person.talk = { until: now + ms, face: person.ry, lead: true, since: now, player: true }
-        windowLeft = Math.max(windowLeft, Math.min(ms, WINDOW_MS) / 1000)
+        windowLeft = Math.max(windowLeft, (GREET_MS + TALK_TURN_MS) / 1000)
         return true
       }
       const first = entries.get(a), second = entries.get(b)

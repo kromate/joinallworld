@@ -4,6 +4,8 @@ Assets the game ships that it did not make itself, where they came from, under w
 
 The arena games' packs (Fight, Race, Football: KayKit, Kenney and our own Blender-made pieces) have their own pipeline, manifests and credits: [ASSET-PIPELINE.md](ASSET-PIPELINE.md).
 
+What assets must look like, and when a file is allowed at all: [ART-DIRECTION.md](ART-DIRECTION.md).
+
 ## Skinned body (`src/scene/body/assets/`)
 
 For every player, with no switch, the player's own figure is one skinned mesh with baked clips instead of the procedural avatar (`src/scene/characters.ts`): in the home room, in every venue, and in the look preview once the world has fetched it. Other players and NPCs keep the procedural figure. The files are built into `dist/assets/` with hashed names (`base-body-male-<hash>.glb`, `base-body-female-<hash>.glb`, `clip-pack-<hash>.glb`), served as `model/gltf-binary` and cached as immutable. Nothing below is fetched before a scene's first frame, or at all on a device the fallback rules below exclude.
@@ -177,3 +179,16 @@ node --experimental-strip-types scripts/assets/bake-food.ts \
 `scripts/assets/bake-food.ts` accepts only the pinned one-node, one-primitive, identity-transform asset and its 512 px indexed atlas. It preserves all 370 triangles and their original winding, welding only identical position/normal/colour tuples from 532 to 404 vertices. The nearest atlas colour at each source UV is converted from sRGB to linear RGB and emitted beside the geometry. This is a measured gradient approximation because 164 source triangles cross atlas colours; a 10-step barycentric grid over every triangle measured 24,420 samples, maximum linear-channel error 0.048984 and RMS error 0.009508. The importer rejects a maximum error above 0.06.
 
 The generated TypeScript is 10,345 bytes, 4,298 bytes with gzip level 9, and has SHA-256 `38f59214b8a4086762653ff321be87143f737aee13a9fb286ecfa4d6094bc313`. Its 5,496-byte payload stores int16 positions, octahedral int16 normals, palette indices and delta-coded triangle indices. A small decoder runs once at module initialization; scratch buffers are function-local. Maximum decoded errors are 0.000006169 scene units in position, 0.002559 degrees in normal direction and 2.609e-8 in linear colour. Repeating the command with the pinned archive produces the same bytes. At runtime this prop requires no GLB loader or separate asset request, texture, material, geometry object, or draw call: its arrays merge into the buka's existing solid batch and shared vertex-colour material.
+
+## Where every other shipped model is accounted for
+
+This page covers the body and clip files and the buka pot. The other shipped `.glb` files each have a record next to their source:
+
+| Models | Record | Terms |
+| --- | --- | --- |
+| Arena packs (Fight, Race, Football) | `scripts/assets/manifests/*.json`, credits in Help | CC0, CC BY or ours; checked by `npm run assets:budget` and `assets:credits` |
+| Vehicles (`src/models/vehicles/assets`) and the street set (`src/scene/street/assets`), 166 files | `scripts/assets/provenance/meshy.json`, checked by `node --experimental-strip-types scripts/assets/provenance.ts --check` | **Not verified.** Most vehicles are inferred to be Meshy-generated, the street set scripted with generated image tiles; Meshy's terms for paid output have not been read here. The record lists what is known and what is left to do |
+| Housing studio furniture (`src/housing-studio/assets`) | `src/housing-studio/assets/NOTICE.md` | Made for Allworld in Blender (a private asset library); AGPL-3.0-or-later |
+| Nigeria runtime slices (`public/assets/nigeria-runtime`) | `THIRD-PARTY-NOTICES.txt` in each folder | Made for Allworld; baked maps from Poly Haven, CC0 |
+| City scenery kits and heroes (`public/assets/scene-factory`) | [SCENE-FACTORY.md](SCENE-FACTORY.md) | Built by Allworld's scene factory with Blender |
+| Native characters (`public/character-lab`) | `public/character-lab/THIRD_PARTY_NOTICES.md` | MakeHuman system assets, CC0; motion from CMU data (see the notice) |

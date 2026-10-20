@@ -128,10 +128,14 @@ export function drawRoadBillboard(b: Batch, x: number, z: number): void {
   for (const [dy, h, colour] of [[0.85, 0.7, '#1f5a3a'], [0, 0.7, '#e5b52b'], [-0.85, 0.7, '#d8473a']] as const) b.quad(x, 4.4 + dy, z - 0.1, 5.8, h, colour, { ry: Math.PI });
   b.quad(x, 4.4, z - 0.11, 4.6, 0.3, LIT, { ry: Math.PI, layer: 'glow' });
 }
-/** The glow of a street lamp after dark: a bright head and a soft warm pool on the pavement (drawn only at dusk and night). */
-export function drawLampGlow(b: Batch, x: number, y: number, z: number): void {
+/**
+ * The glow of a street lamp after dark: a bright head and, when `discs` is set (the phone tier, which has no light-pool mesh), a soft warm
+ * pool on the pavement as flat discs in the glow batch (drawn only at dusk and night). Other tiers get the pool as one instanced
+ * quad for all the lamps (street/light-pools.ts).
+ */
+export function drawLampGlow(b: Batch, x: number, y: number, z: number, discs = true): void {
   b.ball(x, y, z, 0.42, 0.28, 0.42, LIT, { seg: 6, layer: 'glow' });
-  for (const [i, radius, colour] of [[0, 3.6, '#686c76'], [1, 2.5, '#797567'], [2, 1.4, '#8d8268']] as const) b.disc(x, 0.07 + i * 0.004, z, radius, colour, { seg: 16, layer: 'glow' });
+  if (discs) for (const [i, radius, colour] of [[0, 3.6, '#686c76'], [1, 2.5, '#797567'], [2, 1.4, '#8d8268']] as const) b.disc(x, 0.07 + i * 0.004, z, radius, colour, { seg: 16, layer: 'glow' });
 }
 
 const SAND = '#d9c9a6', GREEN = '#3f8a57', DARK = '#3b3f46';

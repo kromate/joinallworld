@@ -22,6 +22,25 @@ the owner; all are reversible. Effort is agent days; waves run in parallel where
 - **Ownership.** One phase per folder set; `vite.config.ts`, `src/budgets.ts`, `src/scene/quality.ts`'s tier gate and
   `AccountSettings.vue` belong to the integrator; a phase that needs a change there files a one-line request in its record.
 
+## Status, 20 October 2026 (04:00 Lagos)
+
+Every phase the review marked "go" is live (build b9ecaaf74; four releases through the night, each with the continuity check):
+
+| Phase | State | Critic |
+| --- | --- | --- |
+| 0 Evidence, 0b `fx` chunk | live | anchors proven at 12:00 vs 21:00; bot-walk baseline 8 stalls |
+| 1 Rain and smoke | live | earned its place (1.30 → 1.35); tune: wet ground answered by 2b |
+| 2 Post stack | live, **on** (owner: "deploy with everything on"); ambient occlusion opt-in `?ao=1` after a kerb smear | not earned as shipped; needs the vehicle lights below to have more to light |
+| 3 Feel | live | cheap, unproven in a picture; four events still have no caller |
+| 4 Ticker and memory | live | not scored (not graphics) |
+| 2b Light from things, wet ground | live | earned its place, only just (night 1.35 → 1.40, wet 1.35 → 1.45, dusk unchanged) |
+| 7 Governor and warm-up | live | keep, unproven on a phone; the gate stall (150–200 ms) is the street build in one task, not a governor matter |
+| 12 Art direction, provenance, runbook; 13 growth deltas | live (docs, scripts) | 166 models recorded as `unverified` pending Meshy's terms |
+
+Scorecards: `docs/evidence/critic-wave1-20261020.md`, `critic-wave2-20261020.md`. Frame rows: `docs/evidence/frames.md`.
+
+**What the critic says to do next, in order:** (1) headlamps, tail lamps and a contact shadow under every vehicle on the existing pool mesh, and a stronger dusk pool; (2) the road itself wet, with puddles; (3) slice the street build or start it when the player nears the gate, to kill the 150–200 ms stall; (4) a phone row in the frame table (a real device, not the software-GL emulator); (5) shoot the live configuration (`?post=1&ao=0`) at 2× before claiming the post stack looks right. Waiting phases (5, 8, 10, 11) keep their triggers; the owner has two reads to do (Meshy's terms, TRELLIS.2's DINOv3 licence).
+
 ## Worth-it review (19 October, the owner's rule: build only what clearly outweighs its drawbacks)
 
 Each phase judged before any code. "Go" means build as narrowed here; "Wait" means not now, revisit when the trigger is met;

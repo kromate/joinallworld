@@ -224,6 +224,63 @@ connected at once**, and **about 5,000 players who came by in the last six weeks
 than 50 ms of the one thread. The second number is the one to watch: `store.collections.social` in the operator's
 overview, and the Durable Object's CPU time and memory in the platform's dashboard.
 
+## A viral week: 100,000 daily players
+
+Added 20 October 2026 (open-source plan, Phase 13). The question a link that takes off asks: what would the platform bill, and what
+do we switch off first. Everything is for the host as deployed (`wrangler.jsonc`: one Worker, one Durable Object class
+`JoinAllworldState` with SQLite, the static files served through the Worker with `run_worker_first`) and uses the per-player figures
+measured above ("What one open page asks for").
+
+**Prices, read from Cloudflare's pages on 20 October 2026** (Durable Objects pricing, "last updated Oct 18, 2026"; Workers pricing;
+Workers static-assets billing): Workers Paid $5 a month with 10 million requests and 30 million CPU ms included, then $0.30 a million
+requests and $0.02 a million CPU ms; Durable Object requests 1 million included, then $0.15 a million (incoming socket frames count
+20 to 1; outgoing frames and protocol pings are free); duration 400,000 GB-s included, then $12.50 a million GB-s; SQLite rows
+written 50 million included, then $1.00 a million; rows read 25 billion included, then $0.001 a million; storage 5 GB included,
+then $0.20 a GB-month. Requests that match `run_worker_first` always invoke the Worker, so **every static file we serve is a billed
+Worker request** (the table above omits that and the Worker CPU line).
+
+**The model.** 100,000 players a day for 30 days (3 million player-days). A player is connected half an hour a day, a quarter of an
+hour at rest and a quarter busy (the two profiles measured above). A third of the day's players are new that day and fetch about 50
+files (an assumption: the file count of a first visit has not been measured here).
+
+| Line | Per player-day | A month at 100,000 a day | Beyond the plan |
+| --- | --- | --- | --- |
+| Worker requests (pages, polls, actions) | 157.5 | 472.5 million | $138.75 (after the 10 million included) |
+| Worker requests for first-visit files | 16.7 | 50 million | $15 |
+| Durable Object requests (socket frames at 20 to 1) | 181.5 | 544.5 million | $81.50 (after 1 million) |
+| SQLite rows written | 134 | 402 million | $352 (after 50 million) |
+| Worker CPU, if a request averages 2 ms (not measured) | | about 1 billion ms | about $20 |
+| Duration, one object always in memory | | 331,776 GB-s | $0 (inside the 400,000 included) |
+| Rows read, storage | | well inside the included amounts | $0 |
+| Base | | | $5 |
+| **Total** | | | **about $610 a month, $0.006 a daily player** |
+
+Rows written are more than half of it: a busy hour writes 530 rows and a rest hour 6, so the whole bill moves with how many players are busy
+(every 100 rows a player-day is $300 a month at this size; all players busy for their half hour is about $1,060 in total, all at
+rest about $200). The formula for any size: Worker requests × $0.30 + DO requests × $0.15 + rows × $1.00, each per million after
+the included amounts, plus $5. For scale: a Lagos browser game that went viral is reported in the press (not verified; idea 34 in [OPEN-SOURCE-LEARNINGS.md](OPEN-SOURCE-LEARNINGS.md)) at about $6,000 a month across two providers for 1 to 3 million players in a week, the same order of cost per player.
+
+**The bill is not what stops a viral week; the one object is.** At 100,000 a day the average number connected is about 2,100
+(100,000 × half an hour ÷ 24 hours) and an evening peak is several times that (an assumption of 3 to 5 times: 6,000 to 10,000).
+The measured comfort of one object is about 500 busy or 1,000 mostly-at-rest players at once ("What to promise"), the default
+`MAX_SOCKETS` is 4,000 and `MAX_ACTIVE_SESSIONS` is 10,000 stored sessions, which 100,000 players reach in a day or so. Until the
+big collections are stored per entry and the load is spread over more objects ("What comes next", steps 1 and 5), the answer to a
+link that takes off is the full-world page, not a large bill. More objects change the duration line: each object that is kept in
+memory all month is 331,776 GB-s, about $4 a month beyond the included amount once the plan's 400,000 is used up.
+
+**What to switch off first**, in order, and what each buys. The first two protect the object; the rest save money or writes.
+
+| Order | Switch | Where | Effect |
+| --- | --- | --- | --- |
+| 1 | `maxActiveSessions` (lower it to hold the line), `newSessionsPerAddress` | Admin, World settings | New visitors are asked to wait and retry (10, 20, 40, then every 30 s); nobody with a session is affected |
+| 2 | `MAX_SOCKETS` | a variable of the Worker | New sockets are closed with `socket_capacity`; the game's polls and actions carry on, the room panel retries |
+| 3 | `chatPictures` (off by default), `chatPush` | Admin, World settings | No picture uploads or message pushes: fewer requests and rows |
+| 4 | The e-mail and push kill switches, `EMAIL_DAILY_CAP`, `PUSH_DAILY_CAP` | the operator's switches; variables | No outreach mail or notifications that day |
+| 5 | `houseAgentsOn`, `agentCallsOn`, `aiFollowOn`, `houseMemoryOn` | Admin settings of those features | The hosted-model features stop; this saves model spend (already capped per day), not Worker or object load |
+
+Nothing on the list sheds the rows that actions write: they are the game. If rows are the bill that hurts, the lever is writing
+fewer per action, which is a change to the game, not a switch.
+
 ## What comes next
 
 In order. Each step is worth doing by itself.

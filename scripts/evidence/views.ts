@@ -3,7 +3,7 @@
 // A view is: a city, the game actions that bring a fresh open-mode life to the place, the place the page must report when it
 // is there, and an in-game clock. Lagos time is UTC+1 all year, which is how the game reads the hour (src/game/clock.ts).
 
-export type ViewName = 'street-dusk' | 'kano-noon' | 'home-night';
+export type ViewName = 'street-dusk' | 'street-night' | 'kano-noon' | 'home-night';
 export type Band = 'day' | 'dusk' | 'night';
 
 /** One game action sent over HTTP before the browser opens, then waited for until it has finished. */
@@ -37,6 +37,11 @@ export const VIEWS: Readonly<Record<ViewName, ViewSpec>> = Object.freeze({
     name: 'street-dusk', title: 'A Lagos street at dusk', city: 'lagos', location: 'neighbourhood', band: 'dusk', clock: { hour: 18, minute: 30 }, path: '/', camera: 'street-pose',
     steps: [goHome, { type: 'home.door', payload: { direction: 'outside' } }],
     note: 'The home street (the street-life scene: traffic, passers-by, shopfronts) seen from the pavement, where the map dive lands. Open mode puts the new life in Agege, so this is not Yaba; the scene is the same code for every Lagos home.',
+  },
+  'street-night': {
+    name: 'street-night', title: 'A Lagos street at night', city: 'lagos', location: 'neighbourhood', band: 'night', clock: { hour: 21, minute: 0 }, path: '/', camera: 'street-pose',
+    steps: [goHome, { type: 'home.door', payload: { direction: 'outside' } }],
+    note: 'The same street and camera as street-dusk at 21:00, when lamps, windows and signs are meant to be the light (open-source plan phase 2b).',
   },
   'kano-noon': {
     name: 'kano-noon', title: 'A Kano venue at noon', city: 'kano', location: 'kurmi-market', band: 'day', clock: { hour: 12, minute: 0 }, path: '/',
@@ -96,9 +101,9 @@ export function proveClock(day: number, night: number): { ok: boolean; differenc
   return { ok: difference >= PROOF_MIN_DIFFERENCE, difference };
 }
 
-export interface ShootOptions { base: string; views: ViewName[]; out: string; scale: number; width: number; height: number; dwellMs: number; gpu: 'swiftshader' | 'metal'; uncapped: boolean; day: string; clock: { hour: number; minute: number } | null; proveClock: boolean; query: string }
+export interface ShootOptions { base: string; views: ViewName[]; out: string; scale: number; width: number; height: number; dwellMs: number; gpu: 'swiftshader' | 'metal'; uncapped: boolean; day: string; clock: { hour: number; minute: number } | null; proveClock: boolean; query: string; sid: string | null }
 
-/** `--uncapped` and `--prove-clock` are switches; `--clock HH:MM` replaces each view's own clock.  `--base URL --view name[,name|all] --out DIR --scale N --size WxH --dwell SECONDS --gpu swiftshader|metal --day YYYY-MM-DD --query "quality=high&wet=1"` (extra page query). */
+/** `--uncapped` and `--prove-clock` are switches; `--clock HH:MM` replaces each view's own clock; `--sid SID` shoots the life of an earlier run (its `sid` is in the run's JSON) instead of a new one, so two runs show the very same street (a before and an after, `?post=0` and `?post=1`); a life already at the view's place is not moved.  `--base URL --view name[,name|all] --out DIR --scale N --size WxH --dwell SECONDS --gpu swiftshader|metal --day YYYY-MM-DD --query "quality=high&wet=1"` (extra page query). */
 export function parseShootArgs(argv: readonly string[], today = new Date().toISOString().slice(0, 10)): ShootOptions {
   const value = (name: string): string | undefined => {
     const at = argv.indexOf(`--${name}`);
@@ -117,7 +122,7 @@ export function parseShootArgs(argv: readonly string[], today = new Date().toISO
   if (gpu !== 'swiftshader' && gpu !== 'metal') throw new Error('--gpu is swiftshader or metal.');
   const day = value('day') ?? today;
   lagosInstant(day, { hour: 12, minute: 0 });
-  return { base, views, out: value('out') ?? 'docs/evidence/out', scale, width: Number(size[1]), height: Number(size[2]), dwellMs: dwell * 1000, gpu, uncapped: argv.includes('--uncapped'), day, clock: value('clock') === undefined ? null : parseClock(value('clock')!), proveClock: argv.includes('--prove-clock'), query: (value('query') ?? '').replace(/^[?&]+/, '') };
+  return { base, views, out: value('out') ?? 'docs/evidence/out', scale, width: Number(size[1]), height: Number(size[2]), dwellMs: dwell * 1000, gpu, uncapped: argv.includes('--uncapped'), day, clock: value('clock') === undefined ? null : parseClock(value('clock')!), proveClock: argv.includes('--prove-clock'), query: (value('query') ?? '').replace(/^[?&]+/, ''), sid: value('sid') ?? null };
 }
 
 /**

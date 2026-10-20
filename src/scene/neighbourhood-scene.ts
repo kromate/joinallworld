@@ -6,10 +6,11 @@
 import type * as THREE from 'three';
 import { ESTATE, HOUSE_STYLE, lgaOf, lgasOf } from '../game/content/world.ts';
 import { cachedCityContent, cityRules } from '../game/cities/registry.ts';
-import { CLEAR_LOOK, lookAt, lookKey } from '../game/conditions/look.ts';
+import { CLEAR_LOOK, adjustLighting, lookAt, lookKey } from '../game/conditions/look.ts';
+import { lagosTime } from '../game/clock.ts';
 import type { LookConditions } from '../game/conditions/look.ts';
 import type { Weather } from './fx/weather.ts';
-import { withWetQuery } from './weather-query.ts';
+import { withOutageQuery, withWetQuery } from './weather-query.ts';
 import { unpackStyle } from './house-style.ts';
 import type { HouseStyle, HouseTierId, LifeState } from '../types/life.ts';
 import type { WorldStreetResponse } from '../types/world.ts';
@@ -21,6 +22,7 @@ import { createBatch, hash, releaseObjects, sceneMaterials } from './build.ts';
 import type { Kit } from './kit.ts';
 import { createWalkGrid } from './movement.ts';
 import { lightingFor, timeOfDay } from './lighting.ts';
+import { renderTier } from './look.ts';
 import type { SceneCamera, ScenePerson, SceneTag, TimeOfDay } from './types.ts';
 import { ROW_HALF_WIDTH, rowX, streetRow } from '../game/neighbourhood-space.ts';
 import { bodyAllowed, drawsWebGL2 } from './body/gate.ts';
@@ -29,6 +31,12 @@ import type { ModelCache, ModelLayer } from './models/scene-models.ts';
 import { boxOf, fileKey, familyOf, hasFar, WINDOW_TILES } from './street/street-kit.ts';
 import { BOUNDS, BUS_STOP, Z, planStreet, sceneryMix } from './street/street-plan.ts';
 import type { PlanHouse, StreetPlan } from './street/street-plan.ts';
+import { WINDOW_LIT_FRAGMENT_PARS, WINDOW_LIT_VERTEX, WINDOW_LIT_VERTEX_PARS, buildingSeed, emittersFor, emittersKey } from './street/night-lights.ts';
+import type { Emitters } from './street/night-lights.ts';
+import { createLightPools, lampPool } from './street/light-pools.ts';
+import type { LightPools } from './street/light-pools.ts';
+import { makeWetGround } from './street/wet-ground.ts';
+import type { WetGround } from './street/wet-ground.ts';
 import { drawDanfo, drawKeke, drawLampGlow, drawPole, drawPoleAdverts, drawRoadBillboard, drawWires, standInFor, tone } from './street/street-standins.ts';
 import type { FrameGuard, Lane, StreetChoice } from './street-life/plan.ts';
 import type { StreetLife } from './street-life/draw.ts';
@@ -42,8 +50,6 @@ const CAMERA: SceneCamera = { landscape: [15, 12, 17], portrait: [9, 10, 15], st
 /** What the street's model meshes may cost on top of the road and the walls (a venue scene is 17,000 triangles and 60 draw calls with its crowd). */
 const MODEL_BUDGET = { triangles: 11500, drawCalls: 20 };
 const FENCE_COLOUR = ['#d9c9a6', '#5d9a62', '#f6f2e6', '#c9c2b0'];
-/** How lit the windows are by the time of day. */
-const WINDOW_GLOW: Record<TimeOfDay, number> = { day: 0, dusk: 0.8, night: 1.5 };
 const NO_MODELS: ModelCache = createModelCache({ load: () => Promise.reject(new Error('No models')), texture: () => null });
 /**
  * Street life (src/scene/street-life): people along the kerb of the near pavement (they step aside round the player), on the far pavement
@@ -97,11 +103,25 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
   let streetLife: StreetLife | null = null, streetChoice: StreetChoice | null = null, streetGuard: FrameGuard | null = null, streetWindow = 0, streetDropped = false;
   let streetLayout: StreetLayout | null = null, forget: ((layout: StreetLayout | null) => void) | null = null;
   let lit: THREE.MeshStandardMaterial[] = [];
+  // Light that comes from things (street/night-lights.ts): the hour as a minute, what is lit now, and the shared numbers the shaders read.
+  // Windows of the model buildings are lit by a draw per building and floor; the lamps' pools are one instanced mesh (not on the phone tier).
+  const tierName = renderTier().name, high = tierName === 'high';
+  let streetMinute = 720, emit: Emitters = emittersFor({ band: 'day', minuteOfDay: 720, outage: false, high }), lightKey = '';
+  const windowShare = { value: 0 }, windowPower = { value: 1 };
+  let streetLamps: { light: THREE.PointLight; base: number }[] = [];
+  const pools: LightPools | null = tierName === 'phone' ? null : createLightPools(kit, group);
+  // The ground (road, kerbs, pavements) is drawn by its own copy of the solid material, so rain can darken and gloss it (street/wet-ground.ts):
+  // the same layer and the same draw call, only another material.
+  let groundMaterial: THREE.Material | null = null, groundWet: WetGround | null = null;
+  // The lamp heads' own glow material: its brightness is the hour's lamp level (on the high tier brighter than the screen holds, so bloom finds it).
+  const lampHead = new THREE.MeshBasicMaterial({ vertexColors: true });
   // The weather (src/scene/fx, one lazy chunk): rain on the street, none under the houses' roofs. A dry street never loads it. It asks for no frames
   // of its own: it moves in the same window as the street's people (stepAmbient below). True when the conditions changed.
   let weatherFx: Weather | null = null, weatherAsked = false, wetNow: LookConditions = CLEAR_LOOK;
   function syncWeather(state: LifeState): boolean {
-    const city = state.estate.city, next = finite(state.t) ? withWetQuery(lookAt(city, null, cityRules(city)?.climate, state.t)) : wetNow;
+    // The district is the home's local government: a power cut (NEPA) is by district, the same cut the home and the venues see.
+    const city = state.estate.city, district = lgaOf(city, state.estate.plot?.lga ?? state.estate.lga)?.name;
+    const next = finite(state.t) ? withOutageQuery(withWetQuery(lookAt(city, district ? { district } : null, cityRules(city)?.climate, state.t))) : wetNow;
     const changed = lookKey(next) !== lookKey(wetNow);
     wetNow = next;
     if (weatherFx) { weatherFx.setTime(streetTime); weatherFx.update(wetNow); return changed; }
@@ -166,20 +186,46 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
     const family = familyOf(atlas), mask = family ? windowMask(family) : null;
     if (!mask) return;
     const m = material as THREE.MeshStandardMaterial;
-    m.emissiveMap = mask; m.emissive.set('#ffd9a0'); m.emissiveIntensity = WINDOW_GLOW[streetTime];
+    m.emissiveMap = mask; m.emissive.set('#ffd9a0'); m.emissiveIntensity = emit.glass;
+    // Chained after the host's see-through patch: this floor of this building is lit when its own draw is under the hour's share and the grid is on.
+    const before = m.onBeforeCompile, key = m.customProgramCacheKey;
+    m.onBeforeCompile = (shader, renderer) => {
+      before.call(m, shader, renderer);
+      shader.uniforms.uWindowShare = windowShare; shader.uniforms.uWindowPower = windowPower;
+      shader.vertexShader = shader.vertexShader.replace('#include <common>', `#include <common>\n${WINDOW_LIT_VERTEX_PARS}`).replace('#include <begin_vertex>', WINDOW_LIT_VERTEX);
+      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `#include <common>\n${WINDOW_LIT_FRAGMENT_PARS}`)
+        .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\ntotalEmissiveRadiance *= windowLit();');
+    };
+    m.customProgramCacheKey = () => `${key.call(m)}|street-windows-1`;
     lit.push(m);
   };
-  const light = (): void => { for (const material of lit) material.emissiveIntensity = WINDOW_GLOW[streetTime]; for (const mesh of nightMeshes) mesh.visible = streetTime !== 'day'; dressing?.setTime(streetTime); };
+  const lampsOn = (): boolean => streetTime !== 'day' && emit.power === 1;
+  const lighting = (): ReturnType<typeof lightingFor> => adjustLighting(lightingFor('outdoor', streetTime), wetNow);
+  /** Hand what is lit now to everything that glows: the windows, the shop glass and signs, the lamps and their pools, the wet ground. */
+  const light = (): void => {
+    emit = emittersFor({ band: streetTime, minuteOfDay: streetMinute, outage: wetNow.outage, high });
+    windowShare.value = emit.share; windowPower.value = emit.power;
+    for (const material of lit) material.emissiveIntensity = emit.glass;
+    lampHead.color.setScalar(emit.lamp);
+    for (const mesh of nightMeshes) mesh.visible = lampsOn();
+    for (const lamp of streetLamps) lamp.light.intensity = lampsOn() ? lamp.base : 0;
+    dressing?.setLight(emit);
+    pools?.setLevel({ pool: emit.pool, share: emit.share, power: emit.power, wet: wetNow.wet });
+    groundWet?.setWet(wetNow.wet, lighting().sky[0]);
+    lightKey = `${emittersKey(emit)}${wetNow.wet ? 'w' : ''}`;
+  };
   const lifeSeed = (): string => street ? `${street.anchor.lga}/${street.anchor.estate}/${streetRow(street.anchor.plot)}` : `home/${anchor ?? 0}`;
   const country = (): string | null => cityRules(street?.city ?? cityId)?.country.id ?? null;
   /** Street life's scenery (phase 3b): shopfronts on the plan's shop buildings, furniture along the far kerb. Rebuilt with the plan. */
   function dressStreet(): void {
     dressing?.dispose(); dressing = null;
+    pools?.setSource('scenery', []);
     if (!sceneryModule || disposed) return;
     const avoid = plan.pieces.filter(item => item.z > Z.farKerb && item.z < Z.farFront + 3).map(item => ({ x: item.x, z: item.z, r: 1.6 }));
     for (let x = -ROW_HALF_WIDTH + 10; x <= ROW_HALF_WIDTH - 6; x += 26) avoid.push({ x, z: Z.farKerb + 0.7, r: 0.6 });
-    dressing = sceneryModule.createStreetScenery(kit, { parent: group, frontages: sceneryModule.frontagesOf(plan.pieces, boxOf), seed: lifeSeed(), country: country(), time: streetTime,
+    dressing = sceneryModule.createStreetScenery(kit, { parent: group, frontages: sceneryModule.frontagesOf(plan.pieces, boxOf), seed: lifeSeed(), country: country(), light: emit,
       furniture: { half: ROW_HALF_WIDTH, lineZ: Z.farKerb + 0.45, road: -1, base: 0.05, crossings: CROSSING_SPECS, avoid, flagX: 68 } });
+    pools?.setSource('scenery', dressing.pools);
   }
 
   function render(): void {
@@ -224,19 +270,30 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
     void width; void deep;
     // The lamps' heads and the pools of light under them: their own meshes, shown from dusk (the day has no use for them).
     const after = createBatch(THREE);
-    for (const [x, y, z] of plan.lights) drawLampGlow(after, x, y - 0.1, z - 0.05);
-    const built = b.build(sceneMaterials(kit)), dark = after.build(sceneMaterials(kit));
-    nightMeshes = dark.meshes; nightMeshes.forEach(mesh => { mesh.visible = streetTime !== 'day'; });
+    for (const [x, y, z] of plan.lights) drawLampGlow(after, x, y - 0.1, z - 0.05, !pools);
+    if (!groundMaterial) {
+      const solid = sceneMaterials(kit).solid.clone();
+      solid.userData = {};   // the copy is not yet patched by the host (its see-through patch is added by adopt)
+      kit.adopt(solid);
+      groundMaterial = solid; groundWet = makeWetGround(THREE, solid, [Z.pavement0 - 0.4, Z.pavement1 + 0.1]);
+      groundWet.setWet(wetNow.wet, lighting().sky[0]);
+    }
+    const built = b.build({ ...sceneMaterials(kit), solid: groundMaterial }), dark = after.build({ ...sceneMaterials(kit), glow: lampHead });
+    nightMeshes = dark.meshes; nightMeshes.forEach(mesh => { mesh.visible = lampsOn(); });
+    streetLamps = built.lights.map(item => ({ light: item as THREE.PointLight, base: (item as THREE.PointLight).intensity }));
+    streetLamps.forEach(lamp => { if (!lampsOn()) lamp.light.intensity = 0; });
+    pools?.setSource('plan', plan.lights.map(([x, , z]) => lampPool(x, z)));
     sceneryObjects = [...built.meshes, ...dark.meshes, ...built.lights];
     sceneryObjects.forEach(object => scenery.add(object));
 
-    layer = createModelLayer(kit, models, { budget: MODEL_BUDGET, nearRadius: 30, focus: { x: focusX, z: focusZ }, decorate });
+    layer = createModelLayer(kit, models, { budget: MODEL_BUDGET, nearRadius: 30, focus: { x: focusX, z: focusZ }, decorate, seedOf: placement => buildingSeed(placement.x, placement.z) });
     for (const item of plan.pieces) layer.add({ near: fileKey(item.asset, item.palette), far: hasFar(item.asset) ? fileKey(item.asset, item.palette, 'far') : undefined, x: item.x, ...(item.y === undefined ? {} : { y: item.y }), z: item.z, ry: item.ry, scale: item.scale,
       tint: item.tint, ...(item.mode ? { mode: item.mode } : {}), labels: item.labels, priority: item.priority, ...(item.detail ? { detail: true } : {}), standIn: standInFor(item) });
     scenery.add(layer.group);
     layer.build();
     if (models !== NO_MODELS && notify) { const own = layer, changed = notify; void own.load(() => { if (layer === own) { light(); changed(); } }); }
     dressStreet();
+    light();
   }
   render();
 
@@ -315,9 +372,9 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
     group, camera: CAMERA, ground: '#7f9a71', walk,
     cycleDistance(jog:boolean){return avatar.cycleDistance(jog);},
     stepCharacter(dt:number){return avatar.step(dt);},
-    get background() { return lightingFor('outdoor', streetTime).sky[0]; },
-    get sky() { return lightingFor('outdoor', streetTime).sky; },
-    lighting() { return lightingFor('outdoor', streetTime); },
+    get background() { return lighting().sky[0]; },
+    get sky() { return lighting().sky; },
+    lighting() { return lighting(); },
     get homeDoor() { return { ...HOME_DOOR, x: ownX() }; },
     streetGate: { x: BUS_STOP.x, z: 0, ry: Math.PI / 2 },
     setStreet(next) {
@@ -356,10 +413,12 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
       const nextTime = finite(state.t) ? timeOfDay(state.t) : streetTime;
       const timeChanged = nextTime !== streetTime;
       streetTime = nextTime;
-      if (timeChanged) light();
-      const weatherChanged = syncWeather(state);
+      if (finite(state.t)) streetMinute = lagosTime(state.t).minuteOfDay;
+      const weatherChanged = syncWeather(state), keyBefore = lightKey;
+      light();
+      const lightChanged = timeChanged || lightKey !== keyBefore;
       const next = JSON.stringify([state.estate.style, state.estate.tier, state.estate.living, state.estate.plot]);
-      if (next === signature) return timeChanged || weatherChanged;
+      if (next === signature) return lightChanged || weatherChanged;
       signature = next; currentStyle = state.estate.style; ownTier = state.estate.tier; cityId = state.estate.city;
       if (state.estate.plot) anchor = state.estate.plot.plot;
       plan = planNow(); grid = makeGrid(); render(); return true;
@@ -416,6 +475,6 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
     wakeAmbient() { const weather = weatherFx?.wake() ?? false; if (!streetLife) return weather; if (streetWindow <= 0) streetGuard?.reset(); streetWindow = STREET_WINDOW_S; return true; },
     settleAmbient() { streetWindow = 0; streetLife?.step(Date.now(), avatar.object.position); weatherFx?.settle(); },
     get ambientAwake() { return (streetLife !== null && streetWindow > 0) || (weatherFx?.awake ?? false); },
-    dispose() { disposed = true; weatherFx?.dispose(); weatherFx = null; forget?.(streetLayout); streetLife?.dispose(); streetLife = null; dressing?.dispose(); dressing = null; for (const peer of peers.values()) dropPeer(peer); releaseObjects(sceneryObjects); layer?.dispose(); layer = null; for (const mask of masks.values()) mask?.dispose(); avatar.dispose(); group.parent?.remove(group); },
+    dispose() { disposed = true; weatherFx?.dispose(); weatherFx = null; pools?.dispose(); lampHead.dispose(); groundMaterial?.dispose(); groundMaterial = null; groundWet = null; forget?.(streetLayout); streetLife?.dispose(); streetLife = null; dressing?.dispose(); dressing = null; for (const peer of peers.values()) dropPeer(peer); releaseObjects(sceneryObjects); layer?.dispose(); layer = null; for (const mask of masks.values()) mask?.dispose(); avatar.dispose(); group.parent?.remove(group); },
   } satisfies HostScene;
 }

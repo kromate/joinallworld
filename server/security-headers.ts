@@ -147,6 +147,12 @@ export const PAGE_CONTENT_SECURITY_POLICY = "default-src 'none'; img-src 'self';
 
 const hsts = (facts: RequestFacts): Record<string, string> => (production(facts) ? { 'Strict-Transport-Security': HSTS } : {});
 
+interface PageRequestContext {
+  pathname: string
+  status: number
+  method: string
+}
+
 /** Headers of the game's page (the Content-Type and caching are the host's). */
 export function appHeaders(policy: AppPolicy): Record<string, string> {
   if (policy.admin) return adminHeaders(policy);
@@ -166,9 +172,13 @@ export function adminHeaders(policy: AppPolicy): Record<string, string> {
 }
 
 /** Headers of a page a module serves. A page cannot change them. */
-export function pageHeaders(facts: RequestFacts): Record<string, string> {
+export function pageHeaders(facts: RequestFacts, context?: PageRequestContext): Record<string, string> {
+  const indexable = context !== undefined
+    && /^\/(?:about|features|pages|skills)\/?$/.test(context.pathname)
+    && context.status === 200
+    && (context.method === 'GET' || context.method === 'HEAD');
   return {
-    'Content-Type': 'text/html; charset=utf-8', ...BASE, 'Referrer-Policy': 'no-referrer', ...hsts(facts), 'X-Robots-Tag': 'noindex, nofollow',
+    'Content-Type': 'text/html; charset=utf-8', ...BASE, 'Referrer-Policy': 'no-referrer', ...hsts(facts), 'X-Robots-Tag': indexable ? 'index, follow' : 'noindex, nofollow',
     'Content-Security-Policy': production(facts) ? `${PAGE_CONTENT_SECURITY_POLICY}; upgrade-insecure-requests` : PAGE_CONTENT_SECURITY_POLICY,
   };
 }

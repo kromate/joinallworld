@@ -35,6 +35,8 @@ test('harmattan hazes the sky and the light; the rains turn them grey-blue; both
   assert.ok(hazy.sun[1] < base.sun[1] && wet.sun[1] < base.sun[1])
   for (const preset of [hazy, wet]) for (const colour of [...preset.sky, preset.hemi[0], preset.hemi[1]]) assert.match(colour, /^#[0-9a-f]{6}$/)
   assert.equal(hazy.lamps, base.lamps)
+  // The rains also take the warmth out of the sun (a cooler colour), harmattan keeps it.
+  assert.notEqual(wet.sun[0], base.sun[0]); assert.match(wet.sun[0], /^#[0-9a-f]{6}$/); assert.equal(hazy.sun[0], base.sun[0])
 })
 
 test('tint moves a colour part of the way and leaves a value it cannot read alone', () => {

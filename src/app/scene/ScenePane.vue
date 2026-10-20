@@ -68,10 +68,16 @@ function layout(): void {
   const rows = Math.max(0, ...props.rows().map((node) => { const row = node?.getBoundingClientRect(); return row?.height ? row.bottom : 0 }))
   venue.setInsets({ top: covered - page.top, bottom: stack?.height ? page.bottom - stack.top : 0, hint: rows ? rows - page.top : 0 })
 }
+let drawTimer = 0
 /** A host is drawing: the wait is over. After a wait the scene comes up with the same short fade as an arrival — never a flash. */
 function hostUp(): void {
   const box = container.value
   if (!box) return
+  // The venue host may still be linking shaders (shader-warmup.ts): the card stays until it has drawn once ('allworld-drawn', data-drawn), 2.5 s at most, so the fade shows a picture.
+  if (scene.venue.value?.host === 'venue' && !box.dataset.drawn) {
+    if (!drawTimer) { box.addEventListener('allworld-drawn', hostUp, { once: true }); drawTimer = window.setTimeout(() => { if (!box.dataset.drawn) { box.dataset.drawn = '1'; hostUp() } }, 2500) }
+    return
+  }
   if (waiting.value) { box.classList.remove('is-arriving'); void box.offsetWidth; box.classList.add('is-arriving') }
   waiting.value = false; stuck.value = null; clearTimeout(tipTimer)
   if (!drawn) { drawn = true; telemetry.sceneReady(true, box.querySelector('canvas')) }

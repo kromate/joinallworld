@@ -113,6 +113,8 @@ import type { LifeState } from './types/life.ts';
 import { inputMode, readFacts } from './ui/inputMode.ts';
 import { NPC_WORD, addNpcWord, npcAria, npcTitle } from './ui/npc-mark.ts';
 import { createShaderWarmup } from './scene/shader-warmup.ts';
+import { createGovernor, pageScale, releaseGovernor, setActiveGovernor } from './scene/governor.ts';
+import { lightFps } from './lightMode.ts';
 import { releaseSharedGpu } from './scene/shared-gpu.ts';
 import type { FxHost } from './scene/fx/index.ts';
 
@@ -161,6 +163,8 @@ export interface VenueDiagnostics extends SceneDiagnostics {
   tier: string
   matte: boolean
   pixelRatio: number | undefined
+  /** The frame governor (src/scene/governor.ts): the render scale now, whether `?scale=` fixed it, and its last verdict. */
+  governor: { locked: boolean; scale: number; p90: number | null; slow: boolean; pressed: boolean; fullSeconds: number; seq: number; clock: number }
   shadowMap: number
   avatarPx: number | null
   tags: ShownTag[]
@@ -489,6 +493,13 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   let gone = false;
   // New shader programs link before the draw that first needs them (src/scene/shader-warmup.ts).
   const warmup = createShaderWarmup(renderer);
+  // The frame governor (src/scene/governor.ts): fed the gap between the frames this host's own loop draws, it answers with a render scale. `?scale=0.8` fixes it.
+  const governor = createGovernor({ locked: pageScale() }), baseRatio = renderer.getPixelRatio?.() ?? 1;
+  let lastTickAt = 0, marked = false;
+  setActiveGovernor(governor);
+  /** Draw at `scale` of the tier's pixel ratio (setPixelRatio resizes the canvas itself) and size the post stack's buffers to match. */
+  function applyScale(scale: number) { renderer.setPixelRatio?.(baseRatio * scale); fx?.post?.setSize(size.width, size.height, renderer.getPixelRatio()); }
+  if (governor.locked) renderer.setPixelRatio?.(baseRatio * governor.scale);
   // The high tier's post stack (bloom, grade, vignette, MSAA; src/scene/fx): fetched after the first frame, never on a phone or a wide screen.
   let fx: FxHost | null = null, fxStarted = false;
   // Bodies are preloaded. Host mutations already request a draw, so mounting must not request a second one.
@@ -846,6 +857,10 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   // ---- the motion loop: frames only while something moves ------------------------------------
   function tick(dt: number) {
     const updateStarted = measurement ? performance.now() : undefined;
+    // The gap since the last frame of this run of frames (not in light mode, which draws at 30 on purpose); a run that stopped has no gap.
+    const stamp = performance.now();
+    if (lastTickAt && !lightFps()) { const next = governor.frame(stamp - lastTickAt); if (next !== null) applyScale(next); }
+    lastTickAt = stamp;
     let more = false;
     const yaw = (held.lookRight ? 1 : 0) - (held.lookLeft ? 1 : 0), pitch = (held.lookUp ? 1 : 0) - (held.lookDown ? 1 : 0);
     if (yaw || pitch) { orbit.rotate(yaw * LOOK_YAW * dt, pitch * LOOK_PITCH * dt); more = true; }
@@ -878,6 +893,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     orbit.apply(camera);
     if (shake) shake.apply(camera.position, orbit.azimuth, orbit.distance * 0.03);
     renderScene(updateStarted);
+    if (!more) lastTickAt = 0;
     return more;
   }
   const head = new THREE.Vector3(), eye = new THREE.Vector3();
@@ -1457,13 +1473,14 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   }
   function renderScene(updateStarted?: number) {
     if (gone || container.hidden === true) return;
-    if (current && warmup.hold(scene, scene, camera, () => { if (!gone && !loop.running) renderScene(); })) return;
+    if (current && warmup.hold(scene, scene, camera, () => { if (!gone && !loop.running) renderScene(); }, fx?.post?.target)) return;
     if (!view) refreshStaticSolids();
     standIn.start(renderer);
     view?.render();
     lookIn(); aimGhost();
     lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz);
     (fx?.post ?? renderer).render(scene, camera); renderCount += 1; projectTags();
+    if (!marked) { marked = true; container.setAttribute?.('data-drawn', '1'); container.dispatchEvent?.(new Event('allworld-drawn')); } // the loading card waits for this (ScenePane.vue hostUp)
     if (tier.name === 'high' && !fxStarted) startFx();
     if (measurement) {
       const at = performance.now();
@@ -1616,6 +1633,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     resetView();
     currentLocation = id;
     current = sceneFor(id);
+    governor.reset(); lastTickAt = 0; // a new scene: the old frames say nothing about it
     current.group.visible = true;
     current.setPlayer?.(player);
     dressStandIn();
@@ -1786,7 +1804,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
         textures: renderer.info?.memory.textures,
         location: currentLocation, background, scenes: built.size, crowd: crowd.length,
         lighting: { hemi: lights.hemi.intensity, sun: lights.sun.intensity, sky: `#${lights.hemi.color.getHexString()}` },
-        tier: tier.name, matte: kit.matte, pixelRatio: renderer.getPixelRatio?.(), shadowMap: lights.sun.shadow.mapSize.x, avatarPx: avatarPixels(),
+        tier: tier.name, matte: kit.matte, pixelRatio: renderer.getPixelRatio?.(), governor: { locked: governor.locked, ...governor.verdict }, shadowMap: lights.sun.shadow.mapSize.x, avatarPx: avatarPixels(),
         tags: shownTags.map((tag) => ({ ...tag })),
       };
     },
@@ -1862,7 +1880,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       if (gone) return;
       view?.dispose(); view = null;
       detty?.hook.dispose(); detty = null;
-      gone = true; reducedMotion?.removeEventListener?.('change', onReducedMotion); loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
+      gone = true; releaseGovernor(governor); reducedMotion?.removeEventListener?.('change', onReducedMotion); loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
       win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:shake', onShake); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);

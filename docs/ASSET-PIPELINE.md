@@ -3,6 +3,7 @@
 How the models for Fight, Race and Football are chosen, made, checked and credited. The scripts live in `scripts/assets/`; the
 packs they produce live in `public/assets/packs/<pack>/`, so a game fetches them only when it starts (no game loads them yet:
 Phases 4 to 6 of `docs/agent-plans/viral/PHASES.md` do that). Older single assets made by hand are in [ASSETS.md](ASSETS.md).
+What the assets must look like, and the rules for making a family or using no file at all, is in [ART-DIRECTION.md](ART-DIRECTION.md).
 
 | Path | What it is |
 | --- | --- |
@@ -186,3 +187,36 @@ blender --background --factory-startup --python scripts/assets/blender/goal.py -
 | cwebp (libwebp) | BSD-3-Clause | WebP textures |
 
 No Blender add-on beyond the bundled ones, and no new npm dependency.
+
+## Local image-to-3D (optional runbook)
+
+For a market's worth of wares or one landmark from photos of real Lagos things, not for people (the world's two bodies are enough)
+and not for anything a generator in `src/scene/` can draw ([ART-DIRECTION.md](ART-DIRECTION.md), the zero-asset rule). It runs on
+the owner's Mac; nothing here is installed by the repository, and this page was written without installing any of it.
+
+**Licences, read from GitHub on 20 October 2026** (`gh api repos/<r> --jq .license.spdx_id`, and each project's own README):
+
+| Tool | Licence | What to know before a file ships |
+| --- | --- | --- |
+| `microsoft/TRELLIS.2` | MIT | Code and weights are MIT, but its DINOv3 image encoder has its own licence. AssetFurnace therefore marks TRELLIS output `commercial-conditional`. Read the DINOv3 licence and write the clause in the file's provenance row before shipping. |
+| `Bingeljell/image-to-3dlab` (AssetFurnace) | Apache-2.0 | The studio, not a model: it runs the backends on a Mac, writes a `.provenance.json` next to every file (hashes, settings, licence classes) and refuses an input without a real transparent foreground. Keep its NOTICE if code is ever copied. |
+| `VAST-AI-Research/TripoSR` | MIT | The fast, rough one. The repository licence was checked; the weights' own licence was not. |
+| `Tencent-Hunyuan/Hunyuan3D-2` | GitHub reports `NOASSERTION` (a custom licence) | AssetFurnace's README says the weights are under the Tencent Hunyuan Community License, **not licensed for use in the EU, UK or South Korea**. Allworld is worldwide: **Hunyuan3D output is not shipped** until that licence has been read and allows it. |
+
+**Steps**
+
+1. **Photo.** One object, your own photo (no stock images, no other game's screenshots, no person without their consent), plain
+   background, cut out to a transparent foreground.
+2. **Generate** with AssetFurnace (a TRELLIS.2 or TripoSR backend). Read `install.sh` before running it, as its README asks; it
+   downloads no weights until you choose a backend and it states each licence first. Keep the `.provenance.json` sidecar.
+3. **A character** is made in a **T-pose with empty hands** and plain clothes, which rigs best. Its own skeleton is not shipped:
+   **retarget it to one of the two shipped skeletons** (the 23-bone male or female body, [ASSETS.md](ASSETS.md)), never a third
+   body. The retargeting script does not exist yet (`scripts/body/retarget.ts` is named in the plan and not written); until it
+   does, a generated model may only be a static prop.
+4. **A prop** goes through `node --experimental-strip-types scripts/assets/prepare.ts --file in.glb --out out.glb --kind prop --fit y:<metres>`,
+   which scales it to metres, makes the texture a WebP of at most 1024 px, compresses it and refuses it over the 1,500-triangle cap.
+   Simplify or re-generate; never raise the cap.
+5. **Record it.** `fetch-pack.ts` has no source kind for a file made on the owner's Mac yet; add one (`local`) when the first photo
+   model is actually wanted, so that it gets a manifest row (`licence`: `ours`, `made`: the tool and its version, the photo's hash)
+   and the Help credits. Until then a file waits for a row in `scripts/assets/provenance/` and does not ship.
+6. **Judge it in the game**, not in the tool's viewer ([ART-DIRECTION.md](ART-DIRECTION.md), section 5).

@@ -226,6 +226,7 @@ onBeforeUnmount(() => { if (poll !== null) clearInterval(poll); left = true; bac
 
       <nav class="en-quiet" aria-label="More">
         <button type="button" class="en-link" data-key="agent" data-entry-agent @click="openAgent"><GameIcon name="link" :size="16" /> Connect an AI agent</button>
+        <a class="en-link" href="/about" target="_blank" rel="noopener">About</a>
         <a class="en-link" href="/privacy" target="_blank" rel="noopener">Privacy</a>
         <a class="en-link" :href="SOURCE_URL" target="_blank" rel="noopener noreferrer">Source code · AGPL</a>
       </nav>

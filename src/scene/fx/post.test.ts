@@ -148,9 +148,9 @@ test('dispose releases the composer and the table', () => {
   assert.ok(log.includes('composer disposed')); assert.equal(texture!.disposed, true)
 })
 
-test('post-process ambient occlusion is on unless ?ao=0', () => {
-  assert.equal(postAoEnabled({ location: { search: '' } }), true)
+test('post-process ambient occlusion is off unless ?ao=1 (the kerb smear in the phase 2b night pair)', () => {
+  assert.equal(postAoEnabled({ location: { search: '' } }), false)
   assert.equal(postAoEnabled({ location: { search: '?ao=1' } }), true)
   assert.equal(postAoEnabled({ location: { search: '?ao=0' } }), false)
-  assert.equal(postAoEnabled({}), true)
+  assert.equal(postAoEnabled({}), false)
 })

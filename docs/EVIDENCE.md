@@ -90,6 +90,13 @@ node --experimental-strip-types scripts/evidence/inspect.ts docs/evidence/out/*-
 node --experimental-strip-types scripts/agent-slot.ts browser -- node --experimental-strip-types scripts/evidence/walk.ts --base http://127.0.0.1:5211
 #    --max-stalls N changes the limit (default 8, the baseline below)   --window SECONDS per scene (default 10)
 
+# 4b. the first-load check: a new visitor on a phone-sized page taps Play now and must reach a usable scene in at most two taps,
+#     with no loading card or "Starting…" on screen for more than 1 s at a time. Against any base URL; needs no diagnostics hook.
+#     Against a live address it starts a real guest life there, so run it on purpose. Exit 1 on a failed limit, 2 if it cannot run.
+node --experimental-strip-types scripts/agent-slot.ts browser -- node --experimental-strip-types scripts/evidence/first-load.ts --base http://127.0.0.1:5211
+#    --max-taps N (default 2)   --max-wait MS (default 1000)   --timeout SECONDS (default 60)   --gpu metal|swiftshader
+#    Written 20 October 2026 and not yet run against a server: its first run's JSON belongs in docs/evidence/frames.md.
+
 # 5. their tests (part of npm test)
 node --experimental-strip-types --test scripts/evidence/*.test.ts
 ```

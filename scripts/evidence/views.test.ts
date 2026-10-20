@@ -8,8 +8,8 @@ import { chromeCandidates } from './cdp.ts';
 import { STAGES, STALL_BASELINE, judgeGaps } from './walk.ts';
 import { PROOF_CLOCKS, PROOF_MIN_DIFFERENCE, VIEWS, VIEW_NAMES, classifyErrors, defaultGpu, lagosInstant, parseClock, parseShootArgs, percentile, proveClock, summariseGaps } from './views.ts';
 
-test('there are exactly the three reference views', () => {
-  assert.deepEqual([...VIEW_NAMES].sort(), ['home-night', 'kano-noon', 'street-dusk']);
+test('there are exactly the reference views: the three anchors and the street at night', () => {
+  assert.deepEqual([...VIEW_NAMES].sort(), ['home-night', 'kano-noon', 'street-dusk', 'street-night']);
   for (const name of VIEW_NAMES) { assert.equal(VIEWS[name].name, name); assert.ok(VIEWS[name].steps.length > 0 && VIEWS[name].location && VIEWS[name].title); }
 });
 
@@ -49,12 +49,14 @@ test('the walk counts a stall as a frame gap over 42 ms and a slow frame as over
 
 test('arguments: defaults, lists, and clear refusals', () => {
   const defaults = parseShootArgs([], '2026-10-19');
-  assert.deepEqual(defaults.views, ['street-dusk', 'kano-noon', 'home-night']);
+  assert.deepEqual(defaults.views, ['street-dusk', 'street-night', 'kano-noon', 'home-night']);
   assert.equal(defaults.base, 'http://127.0.0.1:5211');
   assert.equal(defaults.scale, 2);
   assert.equal(defaults.dwellMs, 10_000);
   assert.equal(defaults.day, '2026-10-19');
   assert.equal(defaults.uncapped, false);
+  assert.equal(defaults.sid, null);
+  assert.equal(parseShootArgs(['--sid', 'abc123']).sid, 'abc123', 'a life of an earlier run can be shot again');
   assert.equal(parseShootArgs(['--uncapped']).uncapped, true);
   const asked = parseShootArgs(['--view', 'kano-noon,home-night', '--base=http://localhost:5300/', '--scale', '1', '--size', '800x600', '--dwell', '3', '--gpu', 'swiftshader'], '2026-10-19');
   assert.deepEqual(asked.views, ['kano-noon', 'home-night']);

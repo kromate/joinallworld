@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { createKit } from '../kit.ts';
 import { createStreetLife } from './draw.ts';
+import { createGovernor, setActiveGovernor } from '../governor.ts';
 import { CAR_LENGTH, HARD_CAP, PERSON_TRIANGLES, VEHICLE_TRIANGLES, planTraffic, venueLanes } from './plan.ts';
 import type { Lane, Road } from './plan.ts';
 import { personAt, planPeople, walkNow } from './crowd.ts';
@@ -121,17 +122,22 @@ test('the final guard: given the walkable bounds, nobody and no vehicle whose pl
   life.dispose(); free.dispose(); kit.dispose();
 });
 
-test('adaptive caps: slow frames (a mean over 24 ms across 60) draw fewer people and vehicles; fast ones change nothing', () => {
+test('adaptive caps: a governor that says the render scale cannot help draws fewer people and vehicles; fast frames change nothing', () => {
   const kit = createKit();
   const life = createStreetLife(kit, { parent: new THREE.Group(), seed: 'a', lanes, roads: [road], crowd: 200, vehicles: 8, at: TEN });
   const crowd = life.group.children[0] as THREE.InstancedMesh;
-  for (let i = 0; i < 120; i++) life.step(TEN + i * 16, null, 1 / 60);
-  assert.equal(life.people, 200);
-  for (let i = 0; i < 62; i++) life.step(TEN + i * 30, null, 0.03);
-  assert.ok(life.people < 200 && life.people === crowd.count && life.vehicles < 8, `${life.people} / ${life.vehicles}`);
-  assert.equal(life.triangles, life.people * PERSON_TRIANGLES + life.vehicles * VEHICLE_TRIANGLES);
-  life.setCaps({ crowd: 10_000, vehicles: 10_000 });
-  assert.equal(life.people, 200, 'never more than planned');
+  const governor = createGovernor();
+  setActiveGovernor(governor);
+  try {
+    for (let i = 0; i < 120; i++) { governor.frame(16); life.step(TEN + i * 16, null, 1 / 60); }
+    assert.equal(life.people, 200);
+    // 30 ms whatever the scale: the governor tries a lower scale, finds it no better, and the street draws less.
+    for (let i = 0; i < 200 && life.people === 200; i++) { governor.frame(30); life.step(TEN + i * 30, null, 0.03); }
+    assert.ok(life.people < 200 && life.people === crowd.count && life.vehicles < 8, `${life.people} / ${life.vehicles}`);
+    assert.equal(life.triangles, life.people * PERSON_TRIANGLES + life.vehicles * VEHICLE_TRIANGLES);
+    life.setCaps({ crowd: 10_000, vehicles: 10_000 });
+    assert.equal(life.people, 200, 'never more than planned');
+  } finally { setActiveGovernor(null); }
   life.dispose(); kit.dispose();
 });
 

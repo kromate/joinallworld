@@ -50,6 +50,8 @@ export interface ViewResult {
   scenePng: string;
   /** Mean brightness of the 3D canvas, 0 to 255: how bright the light is. */
   sceneMeanLuminance: number | null;
+  /** The session of the life shot: pass it back as --sid to shoot the same street again. */
+  sid: string;
 }
 
 interface LifeView { state: { location: string; activeAction: unknown } }
@@ -59,8 +61,9 @@ async function lifeOf(base: string, sid: string, city: string): Promise<LifeView
 }
 
 /** Play the view's steps and wait until the life is at rest where the view expects it. */
-async function arrange(base: string, sid: string, spec: ViewSpec): Promise<void> {
-  await lifeOf(base, sid, spec.city); // creates the life, settled with a house in open mode
+async function arrange(base: string, sid: string, spec: ViewSpec, reused = false): Promise<void> {
+  const first = await lifeOf(base, sid, spec.city); // creates the life, settled with a house in open mode
+  if (reused && first.location === spec.location) return; // a life of an earlier run, already there: shoot it as it is
   for (const step of spec.steps) {
     const reply = await act(base, sid, step.type, step.payload, spec.city);
     if (!reply.ok) throw new Error(`${spec.name}: "${step.type}" was refused (${reply.code ?? 'no code'}: ${reply.reason ?? 'no reason'}). Is the server in open mode (npm run dev:open)?`);
@@ -83,8 +86,8 @@ const HIDE_DEV_CHROME = `(() => {
 })()`;
 
 async function shootView(page: Page, base: string, spec: ViewSpec, options: ReturnType<typeof parseShootArgs>, outDir: string, stem: string = spec.name): Promise<ViewResult> {
-  const sid = await openSession(base, 'Evidence');
-  await arrange(base, sid, spec);
+  const sid = options.sid ?? await openSession(base, 'Evidence');
+  await arrange(base, sid, spec, options.sid !== null);
   await setCookie(page, base, sid);
   const pinned = lagosInstant(options.day, spec.clock);
   // The page picks its city from the saved character; a fresh browser has none, so say which city this life is in.
@@ -165,7 +168,7 @@ async function shootView(page: Page, base: string, spec: ViewSpec, options: Retu
     consoleErrors: errors, knownErrors: known.length, gpuName: gl.name, softwareRendered: gl.name === null ? null : /swiftshader|llvmpipe|software|basic render/i.test(gl.name), drawCalls: num(d.drawCalls), triangles: num(d.triangles), geometries: num(d.geometries), textures: num(d.textures),
     tier: typeof d.tier === 'string' ? d.tier : null, pixelRatio: num(d.pixelRatio), size: `${options.width}x${options.height}@${options.scale}x`, gpu: options.gpu, uncapped: options.uncapped,
     frames: summariseGaps(gaps.slice(2)), rendersInDwell: num(d.renderCount) === null ? null : (num(d.renderCount) as number) - before,
-    png, scenePng: sceneUrl ? scenePng : '', sceneMeanLuminance: luminance,
+    png, scenePng: sceneUrl ? scenePng : '', sceneMeanLuminance: luminance, sid,
   };
 }
 

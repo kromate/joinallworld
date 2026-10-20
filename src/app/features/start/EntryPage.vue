@@ -313,4 +313,6 @@ h1:focus { outline: none; }
 @media (max-height: 620px) { .en-tiles li { min-height: 44px; } .en-card { gap: 8px; } }
 /* A very large screen: the same card, drawn larger so it is not lost in the picture. */
 @media (min-width: 1800px) and (min-height: 1000px) { .en-card { width: 38rem; font-size: 21px; padding: 32px 32px 26px; } h1 { font-size: 40px; } .en-btn.is-primary { min-height: 68px; font-size: 24px; } .en-btn { min-height: 56px; } .en-live { font-size: 17px; } .en-tiles li { font-size: 17px; } .en-fine, .en-find small { font-size: 17px; } .en-quiet .en-link { font-size: 17px; } .en-brand b { font-size: 26px; } }
+/* An ultra-wide screen: the card grows again (zoom keeps every proportion) so it is a clear centrepiece, not a small box on the map. */
+@media (min-width: 2800px) and (min-height: 1300px) { .en-card { zoom: 1.5; max-height: calc(100% / 1.5); } }
 </style>

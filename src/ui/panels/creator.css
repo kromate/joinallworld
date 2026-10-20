@@ -22,7 +22,7 @@
 @container cr (min-width:640px) and (min-aspect-ratio:1/1){
   .cr-root{grid-template-rows:minmax(0,1fr);grid-template-columns:minmax(0,57fr) minmax(0,43fr);--cr-tools:68px;--cr-lift:0px;
     padding-inline:max(0px,calc((100cqw - 2100px) / 2))}
-  .cr-panel{margin:16px 16px 16px 0;border:1px solid #ffffff;border-radius:22px;box-shadow:0 20px 48px #10323d1c;max-width:680px;width:100%;justify-self:center}
+  .cr-panel{margin:16px 16px 16px 0;border:1px solid #ffffff;border-radius:22px;overflow:clip;box-shadow:0 20px 48px #10323d1c;max-width:680px;width:100%;justify-self:center}
 }
 @container cr (min-width:640px) and (min-aspect-ratio:1/1) and (max-height:520px){
   .cr-root{--cr-tools:52px;grid-template-columns:minmax(0,46fr) minmax(0,54fr)}
@@ -94,7 +94,7 @@
 .cr-note{font-size:13px!important;line-height:1.45!important;color:var(--c-muted)}
 .cr-note.is-warn{color:var(--c-amber-dark)}
 .cr-stay{text-align:center}
-.cr-path-intro{display:grid;gap:8px;margin:0 0 12px}
+.cr-path-intro{display:grid;gap:8px;margin:0 0 18px}
 .cr-path-intro .cr-banner{margin:0!important}
 .cr-banner{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;margin:0 0 12px!important;padding:12px 14px;border-radius:14px;font-size:13px!important;line-height:1.4!important}
 .cr-banner>span:nth-child(2){flex:1 1 200px}
@@ -291,6 +291,8 @@
 .cr-more .cr-link{justify-self:center}
 @container cr (max-height:900px){.cr-foot:has(.cr-choices) .cr-fine{display:none}}
 @container cr (max-width:639px){.cr-root:has(.cr-choices){--cr-stage-h:36cqh}}
+/* A portrait tablet: the picture has more room than it needs, so the name field and the choices keep their room. */
+@container cr (min-width:640px) and (max-aspect-ratio:1/1){.cr-root{--cr-stage-h:42cqh}.cr-root:has(.cr-choices){--cr-stage-h:32cqh}}
 /* A short phone (320x568): the stage gives most of its height to the panel, so the fields are not left under the footer and the primary button stays on screen. The Look step keeps more of it. */
 @container cr (max-width:639px) and (max-height:700px){
   .cr-root,.cr-root:has(.cr-choices){grid-template-rows:minmax(224px,var(--cr-stage-h)) minmax(0,1fr);--cr-stage-h:36cqh}

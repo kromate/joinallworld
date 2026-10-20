@@ -29,7 +29,7 @@ const clip = (text: string, max: number): string => { const letters = Array.from
 const colour = (value: string | undefined, fallback: string): string => (value !== undefined && HEX.test(value) ? value : fallback);
 const photoPath = (id: string): string => `/api/showcase/photo/${encodeURIComponent(id)}`;
 
-const STYLE = `*{box-sizing:border-box}body{margin:0;background:#f6f4ef;color:#1d2330;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+const STYLE = `@media(min-width:1800px){body{zoom:1.25}}@media(min-width:2800px){body{zoom:1.6}}*{box-sizing:border-box}body{margin:0;background:#f6f4ef;color:#1d2330;font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
 a{color:inherit}.wrap{max-width:640px;margin:0 auto;padding:0 16px 40px}
 .top{display:flex;align-items:center;justify-content:space-between;min-height:56px}.brand{font-weight:800;letter-spacing:.02em;text-decoration:none;font-size:18px;display:inline-flex;align-items:center;min-height:44px}
 .hero{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:16px;background:var(--c2)}

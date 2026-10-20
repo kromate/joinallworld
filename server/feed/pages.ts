@@ -8,7 +8,7 @@ import { OG_IMAGE, safeOrigin } from '../growth/share.ts'
 import { escapeHtml as esc } from '../path-meta.ts'
 import type { CrewView, EventView, PostView, ProfileView } from '../../src/types/feed.ts'
 
-const STYLE = `*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#193126;font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}
+const STYLE = `@media(min-width:1800px){body{zoom:1.25}}@media(min-width:2800px){body{zoom:1.6}}*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#193126;font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit}
 .wrap{width:min(560px,100%);margin:0 auto;padding:22px 16px 48px}.brand{display:inline-flex;align-items:center;min-height:44px;font-weight:850;text-decoration:none}.card{margin:6px 0 14px;padding:24px 20px;border-radius:22px;background:#174c36;color:#fff}
 .card h1{margin:4px 0 6px;font-size:clamp(28px,8vw,42px);line-height:1.05;overflow-wrap:anywhere}.card p{margin:4px 0;opacity:.92}.go{display:block;margin:18px 0 8px;padding:15px 18px;border-radius:14px;background:#f2b134;color:#193126;font-weight:850;font-size:18px;text-align:center;text-decoration:none}
 .muted{color:#46594f;font-size:15px}.people{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.people span{padding:4px 10px;border-radius:999px;background:#ffffff26;font-size:14px}`

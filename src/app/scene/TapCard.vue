@@ -5,10 +5,7 @@
 //   scenery       a tap that walks nowhere (a wall, a tree, a prop): what it is, that it is just scenery, and the nearest thing to do.
 // People and game tables already open their own card. Loaded after the scene is up, so it is not part of the first download.
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import type * as THREE from 'three'
 import type { ActivityCard } from '../../types/view.ts'
-import type { ThreeModule } from '../../scene/types.ts'
-import type { SceneViewExtension } from '../../scene/view-extension.ts'
 import { useApp } from '../state/app.ts'
 import GameIcon from '../ui/GameIcon.vue'
 import { activityFace } from '../features/venue/venueModel.ts'
@@ -21,7 +18,7 @@ const state = game.state, view = game.view
 const root = ref<HTMLElement | null>(null)
 
 interface Near { id: string; label: string; icon: string; px: number; py: number; x: number; z: number }
-type Shown = { kind: 'spot'; id: string; at: { x: number; y: number } } | { kind: 'scenery'; at: { x: number; y: number }; near: Near | null }
+type Shown = { kind: 'spot'; id: string; at: { x: number; y: number } } | { kind: 'scenery'; at: { x: number; y: number }; near: Near | null; name?: string | undefined }
 const shown = ref<Shown | null>(null)
 const pos = ref({ x: 0, y: 0, sheet: false, lift: 0 })
 const pending = ref<string | null>(null)
@@ -79,44 +76,27 @@ function onClick(event: MouseEvent): void {
   // Bare ground the avatar walks to needs no words. A tap the avatar cannot reach (a wall, water, a prop in the way) leaves it standing short of the spot: that is scenery.
   watchWalk(event, at)
 }
-/** The host's own view source (its camera and avatar), taken once through setView with a factory that installs no view. */
-interface Source { THREE: ThreeModule; camera: THREE.PerspectiveCamera; canvas: HTMLCanvasElement; walker: { x: number; z: number; moving: boolean }; read(): { y: number; walk: { scale: number } | null } }
-let source: Source | null = null
-const SCENERY_CARD = false
-function grab(canvas: HTMLCanvasElement): Source | null {
-  // Off until the host offers a read-only camera: borrowing it through setView would replace the campus and first-person views.
-  if (!SCENERY_CARD) return null
-  if (source?.canvas === canvas) return source
-  const taken: { src: Source | null } = { src: null }
-  // The host runs the factory at once and takes no view from a null answer (the type asks for one only because first person returns one).
-  const factory = (next: unknown): SceneViewExtension => { taken.src = next as Source; return null as unknown as SceneViewExtension }
-  try { scene.venue.value?.setView(factory) } catch { taken.src = null }
-  source = taken.src?.canvas === canvas ? taken.src : null
-  return source
-}
-/** Where on the floor a tap at this point of the canvas lands, or null when the ray never reaches it (the sky). */
-function floorPoint(src: Source, event: MouseEvent): { x: number; z: number } | null {
-  const rect = src.canvas.getBoundingClientRect()
-  if (!rect.width || !rect.height) return null
-  const { THREE: three, camera } = src
-  const ray = new three.Raycaster()
-  camera.updateMatrixWorld(true)
-  ray.setFromCamera(new three.Vector2(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1), camera)
-  const hit = ray.ray.intersectPlane(new three.Plane(new three.Vector3(0, 1, 0), -src.read().y), new three.Vector3())
-  return hit ? { x: hit.x, z: hit.z } : null
-}
 let polls = 0
+function nearOf(spot: { id: string; label: string } | null): Near | null {
+  if (!spot) return null
+  const reading = scene.venue.value?.diagnostics() as unknown as Reading | undefined
+  const seen = reading?.spots?.find((item) => item.id === spot.id) as unknown as { px?: number; py?: number; x?: number; z?: number } | undefined
+  return { id: spot.id, label: label(spot.id) || spot.label, icon: iconOf(spot.id), px: seen?.px ?? 0, py: seen?.py ?? 0, x: seen?.x ?? 0, z: seen?.z ?? 0 }
+}
 function watchWalk(event: MouseEvent, at: { x: number; y: number }): void {
-  const canvas = event.target as HTMLCanvasElement, src = grab(canvas)
-  const goal = src ? floorPoint(src, event) : null
-  const reach = (src?.read().walk?.scale ?? 1) * 1.6
+  // The host says, read only, what the tap landed on: a named prop is answered at once; bare floor is watched to see whether the avatar gets there.
+  const what = scene.venue.value?.describeAt?.(event.clientX, event.clientY) ?? null
+  if (what?.kind === 'prop') { show({ kind: 'scenery', at, near: nearOf(what.near), name: what.name }, 6000); return }
+  const goal = what?.kind === 'floor' ? what.at : null
+  const reach = 1.6
   polls = 0
   const check = (): void => {
     const venue = scene.venue.value
     if (!venue || quiet()) return
-    if (src && src.walker.moving && ++polls < 48) { checkTimer = window.setTimeout(check, 250); return }
     const now = venue.diagnostics() as unknown as Reading
-    if (!now.avatar || now.avatar.moving) return
+    if (!now.avatar) return
+    if (now.avatar.moving && ++polls < 48) { checkTimer = window.setTimeout(check, 250); return }
+    if (now.avatar.moving) return
     // Standing short of where the tap pointed (or, with no floor point, not having moved at all).
     const short = goal ? Math.hypot(now.avatar.x - goal.x, now.avatar.z - goal.z) > reach : !wentSomewhere(before, now.avatar)
     if (!short || (now as { avatar: { near?: string | null } }).avatar.near) return
@@ -189,7 +169,7 @@ onBeforeUnmount(() => {
       </template>
       <template v-else>
         <header class="tap-head">
-          <span class="tap-title"><strong>Just scenery</strong><small>You cannot go there, and there is nothing to do with it.</small></span>
+          <span class="tap-title"><strong>{{ shown.name ?? 'Just scenery' }}</strong><small>{{ shown.name ? 'Just scenery: nothing to do with it.' : 'You cannot go there, and there is nothing to do with it.' }}</small></span>
           <button class="tap-close" type="button" aria-label="Close" @click="hide">×</button>
         </header>
         <p v-if="shown.near" class="tap-note">The nearest thing to do:</p>

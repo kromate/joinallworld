@@ -26,7 +26,7 @@
  */
 
 import type * as THREE from 'three';
-import type { Batch, BatchGeometry, BatchLayer, BatchOptions, BatchResult, Colour, LightSpec, SceneMaterials, ThreeModule } from './types.ts';
+import type { Batch, BatchGeometry, BatchLayer, BatchOptions, BatchResult, Colour, LightSpec, PropMark, SceneMaterials, ThreeModule } from './types.ts';
 import type { Kit } from './kit.ts';
 import { bakeVertexAO, createOccluders, type AoPrim } from './ao-bake.ts';
 import { aoStrength, bakedAO, renderTier } from './look.ts';
@@ -126,6 +126,7 @@ export function createBatch(THREE: ThreeModule): Batch {
   const store = (name: string, part: string | undefined): LayerData => { if (!part) return layers[name]!; const key = `${name}@${part}`; return (layers[key] ||= layer()); };
   const stack = [new THREE.Matrix4()];
   const lights: LightSpec[] = [];
+  const props: PropMark[] = [];
   const colours = new Map<Colour, [number, number, number]>();
   const m = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), p = new THREE.Vector3(), s = new THREE.Vector3();
   const n3 = new THREE.Matrix3(), v = new THREE.Vector3(), tint = new THREE.Color();
@@ -216,6 +217,7 @@ export function createBatch(THREE: ThreeModule): Batch {
     },
     /** Where a local point ends up in scene space — for anchors recorded while drawing. */
     world(x, y, z) { v.set(x, y, z).applyMatrix4(stack[stack.length - 1]!); return { x: v.x, y: v.y, z: v.z }; },
+    note(kind, x, z, r, h) { v.set(x, 0, z).applyMatrix4(stack[stack.length - 1]!); props.push({ kind, x: v.x, z: v.z, r, h }); },
     get triangles(): number { let count = 0; for (const data of Object.values(layers)) count += data.idx.length; return count / 3; },
     /**
      * The ambient-occlusion factors build() would compute, computed now in steps (`yield` after about SLICE_MS of work) and
@@ -286,6 +288,7 @@ export function createBatch(THREE: ThreeModule): Batch {
         light.userData.intensity = spec.intensity;
         return light;
       });
+      if (props.length && meshes[0]) meshes[0].userData.props = props.slice();
       return { meshes, lights: pointLights, triangles };
     },
   };

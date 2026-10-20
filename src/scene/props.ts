@@ -41,6 +41,7 @@ export function ground(b: Batch, { w = 30, d = 26, color = '#4f7d4c', edge = '#3
 
 export interface TableOptions { w?: number; d?: number; h?: number; color?: Colour; leg?: Colour; ry?: number; round?: boolean }
 export function table(b: Batch, x: number, z: number, { w = 2.2, d = 1.2, h = 1.05, color = WOOD, leg = WOOD_DARK, ry = 0, round = false }: TableOptions = {}): void {
+  b.note?.('Table', x, z, 0.8, 0.8);
   b.at(x, 0, z, ry, () => {
     if (round) {
       b.cyl(0, h - 0.05, 0, w / 2, 0.1, color, { seg: 12 });
@@ -55,6 +56,7 @@ export function table(b: Batch, x: number, z: number, { w = 2.2, d = 1.2, h = 1.
 
 export interface ChairOptions { ry?: number; color?: Colour; leg?: Colour; seat?: number }
 export function chair(b: Batch, x: number, z: number, { ry = 0, color = '#4d6f8f', leg = METAL_DARK, seat = 0.6 }: ChairOptions = {}): void {
+  b.note?.('Chair', x, z, 0.4, 1);
   b.at(x, 0, z, ry, () => {
     b.box(0, seat - 0.05, 0, 0.62, 0.1, 0.6, color);
     b.box(0, seat + 0.42, -0.27, 0.62, 0.75, 0.08, color);
@@ -65,6 +67,7 @@ export function chair(b: Batch, x: number, z: number, { ry = 0, color = '#4d6f8f
 
 export interface StoolOptions { color?: Colour; h?: number; r?: number }
 export function stool(b: Batch, x: number, z: number, { color = WOOD, h = 0.6, r = 0.3 }: StoolOptions = {}): void {
+  b.note?.('Stool', x, z, 0.3, 0.6);
   b.cyl(x, h - 0.05, z, r, 0.1, color, { seg: 8 });
   b.cyl(x, (h - 0.1) / 2, z, 0.06, h - 0.1, METAL_DARK, { seg: 5 });
   b.seat?.(x, z, 0, h);
@@ -72,6 +75,7 @@ export function stool(b: Batch, x: number, z: number, { color = WOOD, h = 0.6, r
 
 export interface BenchOptions { w?: number; ry?: number; color?: Colour; leg?: Colour; back?: boolean; seat?: number }
 export function bench(b: Batch, x: number, z: number, { w = 3, ry = 0, color = WOOD, leg = WOOD_DARK, back = false, seat = 0.6 }: BenchOptions = {}): void {
+  b.note?.('Bench', x, z, w / 2, 0.9);
   b.at(x, 0, z, ry, () => {
     b.box(0, seat - 0.05, 0, w, 0.1, 0.55, color);
     for (const side of [-1, 1]) b.box(side * (w / 2 - 0.2), (seat - 0.1) / 2, 0, 0.12, seat - 0.1, 0.48, leg);
@@ -82,6 +86,7 @@ export function bench(b: Batch, x: number, z: number, { w = 3, ry = 0, color = W
 
 export interface SofaOptions { w?: number; ry?: number; color?: Colour; cushion?: Colour }
 export function sofa(b: Batch, x: number, z: number, { w = 3, ry = 0, color = '#7a5c8e', cushion }: SofaOptions = {}): void {
+  b.note?.('Sofa', x, z, 1, 0.9);
   const pad = cushion || color;
   b.at(x, 0, z, ry, () => {
     b.box(0, 0.3, 0, w, 0.6, 1.1, color);
@@ -94,6 +99,7 @@ export function sofa(b: Batch, x: number, z: number, { w = 3, ry = 0, color = '#
 
 export interface CounterOptions { w?: number; d?: number; h?: number; ry?: number; color?: Colour; top?: Colour; stripe?: Colour }
 export function counter(b: Batch, x: number, z: number, { w = 5, d = 1, h = 1.35, ry = 0, color = WOOD, top = WOOD_LIGHT, stripe }: CounterOptions = {}): void {
+  b.note?.('Counter', x, z, 1.2, 1.1);
   b.at(x, 0, z, ry, () => {
     b.box(0, (h - 0.1) / 2, 0, w, h - 0.1, d, color);
     b.box(0, h - 0.05, 0, w + 0.2, 0.1, d + 0.2, top);
@@ -104,6 +110,7 @@ export function counter(b: Batch, x: number, z: number, { w = 5, d = 1, h = 1.35
 export interface StallOptions { w?: number; ry?: number; awning?: Colour[]; goods?: Colour[]; frame?: Colour }
 /** Market stall: posts, striped awning, a display table and heaps of goods. */
 export function stall(b: Batch, x: number, z: number, { w = 3.6, ry = 0, awning = ['#d2553f', '#f0e2c0'], goods = ['#d9482f', '#e8a13a', '#5f9a48'], frame = WOOD_DARK }: StallOptions = {}): void {
+  b.note?.('Market stall', x, z, 1.5, 2.4);
   b.at(x, 0, z, ry, () => {
     for (const side of [-1, 1]) {
       b.box(side * (w / 2 - 0.08), 1.5, 0.75, 0.12, 3, 0.12, frame);
@@ -124,6 +131,7 @@ export function stall(b: Batch, x: number, z: number, { w = 3.6, ry = 0, awning 
 
 export interface SpeakerOptions { h?: number; w?: number; ry?: number; color?: Colour; cone?: Colour; y?: number }
 export function speaker(b: Batch, x: number, z: number, { h = 2, w = 1, ry = 0, color = '#26282d', cone = '#4a4e57', y = 0 }: SpeakerOptions = {}): void {
+  b.note?.('Speaker', x, z, 0.5, 1.4);
   b.at(x, y, z, ry, () => {
     b.box(0, h / 2, 0, w, h, w * 0.8, color);
     b.cyl(0, h * 0.68, w * 0.4, w * 0.22, 0.05, cone, { rx: Math.PI / 2, seg: 8 });
@@ -143,6 +151,7 @@ export function screen(b: Batch, x: number, y: number, z: number, { w = 3, h = 1
 
 export interface PlantOptions { s?: number; pot?: Colour; leaf?: Colour }
 export function plant(b: Batch, x: number, z: number, { s = 1, pot = '#b06a4a', leaf = LEAF }: PlantOptions = {}): void {
+  b.note?.('Plant', x, z, 0.4, 1);
   b.cyl(x, 0.3 * s, z, 0.34 * s, 0.6 * s, pot, { top: 1.25, seg: 7 });
   b.ico(x, 1.05 * s, z, 0.5 * s, 0.7 * s, 0.5 * s, leaf);
   b.ico(x + 0.2 * s, 1.5 * s, z - 0.1 * s, 0.34 * s, 0.5 * s, 0.34 * s, LEAF_LIGHT);
@@ -150,6 +159,7 @@ export function plant(b: Batch, x: number, z: number, { s = 1, pot = '#b06a4a', 
 
 export interface PalmOptions { s?: number; lean?: number; ry?: number }
 export function palm(b: Batch, x: number, z: number, { s = 1, lean = 0.12, ry = 0 }: PalmOptions = {}): void {
+  b.note?.('Palm tree', x, z, 0.9, 4.5);
   b.at(x, 0, z, ry, () => {
     const height = 5.2 * s;
     for (let i = 0; i < 4; i++) b.cyl(lean * i * i * 0.35 * s, (i + 0.5) * height / 4, 0, (0.24 - i * 0.03) * s, height / 4 + 0.05, i % 2 ? '#8b7355' : '#7a6449', { seg: 6, rz: -lean * i * 0.5 });
@@ -167,6 +177,7 @@ export function palm(b: Batch, x: number, z: number, { s = 1, lean = 0.12, ry = 
 
 export interface LeafTreeOptions { s?: number; tone?: number }
 export function leafTree(b: Batch, x: number, z: number, { s = 1, tone = 0 }: LeafTreeOptions = {}): void {
+  b.note?.('Tree', x, z, 1.3, 3.6);
   const [a, c, d] = ([[LEAF_DARK, LEAF, LEAF_LIGHT], ['#2f6f5c', '#3d8468', '#5b9f74'], ['#4d7f3d', '#6a9a45', '#8cb354']] as [Colour, Colour, Colour][])[tone % 3]!;
   b.cyl(x, 1.4 * s, z, 0.26 * s, 2.8 * s, '#6b5440', { top: 0.7, seg: 6 });
   b.ico(x, 3.5 * s, z, 1.8 * s, 2.1 * s, 1.7 * s, a);
@@ -176,6 +187,7 @@ export function leafTree(b: Batch, x: number, z: number, { s = 1, tone = 0 }: Le
 
 export interface BushOptions { s?: number; color?: Colour }
 export function bush(b: Batch, x: number, z: number, { s = 1, color = LEAF }: BushOptions = {}): void {
+  b.note?.('Bush', x, z, 0.8, 1);
   b.ico(x, 0.45 * s, z, 0.8 * s, 0.6 * s, 0.7 * s, color);
   b.ico(x + 0.55 * s, 0.35 * s, z + 0.2 * s, 0.5 * s, 0.45 * s, 0.5 * s, LEAF_DARK);
 }
@@ -183,6 +195,7 @@ export function bush(b: Batch, x: number, z: number, { s = 1, color = LEAF }: Bu
 export interface LampPostOptions { h?: number; light?: boolean; color?: Colour }
 /** Street lamp. `light` adds a real point light; leave it off for most lamps to stay cheap. */
 export function lampPost(b: Batch, x: number, z: number, { h = 4, light = false, color = '#34413f' }: LampPostOptions = {}): void {
+  b.note?.('Lamp post', x, z, 0.3, h);
   b.cyl(x, h / 2, z, 0.07, h, color, { seg: 5 });
   b.cyl(x, 0.1, z, 0.2, 0.2, color, { seg: 6 });
   b.box(x, h + 0.1, z, 0.42, 0.55, 0.42, WARM, GLOW);
@@ -193,6 +206,7 @@ export function lampPost(b: Batch, x: number, z: number, { h = 4, light = false,
 export interface ShelfOptions { w?: number; h?: number; d?: number; ry?: number; color?: Colour; rows?: number; per?: number; items?: Colour[]; y?: number }
 /** Bookcase / goods shelf with rows of small coloured boxes on its front (+z) face. */
 export function shelf(b: Batch, x: number, z: number, { w = 3, h = 3.6, d = 0.6, ry = 0, color = WOOD_DARK, rows = 3, per = 6, items = ['#7c9a9c', '#b6867c', '#a79c62', '#7f77a0', '#b9603f'], y = 0 }: ShelfOptions = {}): void {
+  b.note?.('Shelf', x, z, 0.8, 1.8);
   b.at(x, y, z, ry, () => {
     b.box(0, h / 2, -d * 0.2, w, h, d * 0.6, color);
     const step = (h - 0.3) / rows;
@@ -209,6 +223,7 @@ export function shelf(b: Batch, x: number, z: number, { w = 3, h = 3.6, d = 0.6,
 
 export interface BedOptions { ry?: number; frame?: Colour; sheet?: Colour; blanket?: Colour }
 export function bed(b: Batch, x: number, z: number, { ry = 0, frame = METAL, sheet = '#e9eef0', blanket = '#7fb0c9' }: BedOptions = {}): void {
+  b.note?.('Bed', x, z, 1.2, 0.8);
   b.at(x, 0, z, ry, () => {
     b.box(0, 0.45, 0, 1.5, 0.14, 3.2, frame);
     for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.box(sx * 0.68, 0.2, sz * 1.5, 0.1, 0.4, 0.1, frame);
@@ -232,6 +247,7 @@ export function laptop(b: Batch, x: number, y: number, z: number, { ry = 0, colo
 export interface DeskOptions { ry?: number; w?: number; color?: Colour; laptop?: boolean; seatColor?: Colour }
 /** Work desk with a chair on its +z side. */
 export function desk(b: Batch, x: number, z: number, { ry = 0, w = 2.2, color = WOOD_LIGHT, laptop: withLaptop = true, seatColor = '#4d6f8f' }: DeskOptions = {}): void {
+  b.note?.('Desk', x, z, 0.8, 0.9);
   b.at(x, 0, z, ry, () => {
     table(b, 0, 0, { w, d: 1.1, color });
     if (withLaptop) laptop(b, 0, 1.05, -0.05, { ry: Math.PI });
@@ -271,6 +287,7 @@ export function crate(b: Batch, x: number, y: number, z: number, { s = 0.7, colo
 
 export interface ColumnOptions { h?: number; r?: number; color?: Colour; seg?: number }
 export function column(b: Batch, x: number, z: number, { h = 5, r = 0.4, color = WHITE, seg = 8 }: ColumnOptions = {}): void {
+  b.note?.('Column', x, z, 0.4, 3);
   b.box(x, 0.15, z, r * 2.8, 0.3, r * 2.8, color);
   b.cyl(x, h / 2, z, r, h - 0.6, color, { seg, top: 0.86 });
   b.box(x, h - 0.15, z, r * 2.6, 0.3, r * 2.6, color);
@@ -279,6 +296,7 @@ export function column(b: Batch, x: number, z: number, { h = 5, r = 0.4, color =
 export interface FlagOptions { h?: number; colors?: Colour[]; w?: number; ry?: number }
 /** Flag on a pole; `colors` are vertical bands, left to right. */
 export function flag(b: Batch, x: number, z: number, { h = 6, colors = ['#2f8f55', WHITE, '#2f8f55'], w = 1.8, ry = 0 }: FlagOptions = {}): void {
+  b.note?.('Flag', x, z, 0.3, 4);
   b.at(x, 0, z, ry, () => {
     b.cyl(0, h / 2, 0, 0.06, h, '#c9ced3', { seg: 5 });
     b.cyl(0, 0.12, 0, 0.3, 0.24, METAL, { seg: 6 });
@@ -291,6 +309,7 @@ export function flag(b: Batch, x: number, z: number, { h = 6, colors = ['#2f8f55
 export interface ParasolOptions { h?: number; r?: number; colors?: Colour[] }
 /** Parasol / canopy umbrella. */
 export function parasol(b: Batch, x: number, z: number, { h = 2.9, r = 1.7, colors = ['#e9614b', WHITE] }: ParasolOptions = {}): void {
+  b.note?.('Parasol', x, z, 1.2, 2.4);
   b.cyl(x, h / 2, z, 0.05, h, WOOD_DARK, { seg: 5 });
   b.cone(x, h + 0.15, z, r, 0.6, colors[0]!, { seg: 8 });
   b.cyl(x, h - 0.17, z, r, 0.06, colors[1] || colors[0]!, { seg: 8 });
@@ -434,6 +453,7 @@ export function gameTable(b: Batch, x: number, z: number, { game = 'whot', ry = 
 export interface KioskOptions { ry?: number; w?: number; color?: Colour; roof?: Colour; fascia?: Colour; text?: string; textColor?: Colour }
 /** Small serving kiosk with a roof, hatch, counter and an optional fascia text. */
 export function kiosk(b: Batch, x: number, z: number, { ry = 0, w = 3.6, color = '#c69a4e', roof = '#b5483f', fascia = '#e2bb62', text, textColor = '#3a2a1a' }: KioskOptions = {}): void {
+  b.note?.('Kiosk', x, z, 1.8, 3);
   b.at(x, 0, z, ry, () => {
     b.box(0, 0.08, 0.2, w + 0.8, 0.16, 3.4, '#8f8b7c');
     b.box(0, 1.5, -0.5, w, 2.84, 1.8, color);
@@ -450,6 +470,7 @@ export function kiosk(b: Batch, x: number, z: number, { ry = 0, w = 3.6, color =
 export interface TallTreeOptions { h?: number; s?: number; tone?: number }
 /** Tall forest tree: a long trunk with a high crown. */
 export function tallTree(b: Batch, x: number, z: number, { h = 8, s = 1, tone = 0 }: TallTreeOptions = {}): void {
+  b.note?.('Tree', x, z, 1.4, 5.5);
   const [a, c] = ([[LEAF_DARK, LEAF], ['#2f6f5c', '#3d8468'], ['#4d7f3d', '#6a9a45']] as [Colour, Colour][])[tone % 3]!;
   b.cyl(x, h / 2, z, 0.3 * s, h, '#6b5440', { top: 0.6, seg: 6 });
   b.ico(x, h + 0.6 * s, z, 2 * s, 1.6 * s, 1.9 * s, a);
@@ -459,6 +480,7 @@ export function tallTree(b: Batch, x: number, z: number, { h = 8, s = 1, tone = 
 export interface CarOptions { ry?: number; color?: Colour; glass?: Colour }
 /** Simple parked car. */
 export function car(b: Batch, x: number, z: number, { ry = 0, color = '#22262c', glass = '#8fb8cc' }: CarOptions = {}): void {
+  b.note?.('Car', x, z, 1.6, 1.5);
   b.at(x, 0, z, ry, () => {
     b.box(0, 0.62, 0, 1.9, 0.6, 4.2, color);
     b.box(0, 1.2, -0.2, 1.7, 0.6, 2.3, color);
@@ -523,6 +545,7 @@ export function sign(b: Batch, x: number, y: number, z: number, text: string, { 
 export interface SignBoardOptions { y?: number; size?: number; ry?: number; color?: Colour; board?: Colour; lit?: boolean; posts?: boolean }
 /** Free-standing or wall signage board with block text. */
 export function signBoard(b: Batch, x: number, z: number, text: string, { y = 2.6, size = 0.5, ry = 0, color = WHITE, board = '#2f4a45', lit = false, posts = true }: SignBoardOptions = {}): void {
+  b.note?.('Sign', x, z, 0.6, 2);
   const width = textWidth(text, size) + 0.6;
   b.at(x, 0, z, ry, () => {
     if (posts) for (const side of [-1, 1]) b.box(side * (width / 2 - 0.1), y / 2, -0.1, 0.1, y, 0.1, METAL_DARK);

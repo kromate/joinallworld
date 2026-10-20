@@ -10,7 +10,7 @@ import { createKit } from '../kit.ts';
 import { loadAllCityScenes } from '../city-scenes.ts';
 import { MAX_CROWD, SCENES } from '../venue-scenes.ts';
 import { crowded } from '../space.ts';
-import { ACQUAINTANCE_KEY, REMEMBER_REACH, WAVE_MS, WINDOW_MS, MAX_FIGURES, MAX_RESIDENTS, createAmbientLayer } from './layer.ts';
+import { ACQUAINTANCE_KEY, PLAYER_PARTNER, REMEMBER_REACH, WAVE_MS, WINDOW_MS, MAX_FIGURES, MAX_RESIDENTS, createAmbientLayer } from './layer.ts';
 import { MEMORY_LINES } from '../../news/memory-lines.ts';
 import type { Ident, Stage } from './plan.ts';
 import { createWalkGrid } from '../walk-grid.ts';
@@ -215,6 +215,37 @@ test('two regulars face each other while they talk, and go back to their own way
   for (let i = 0; i < 40; i++) rig.layer.step(0.05, TEN + 9_000 + i * 50)
   assert.ok(Math.abs(rig.holders()[0]!.rotation.y) < 0.1, 'back to facing the way they were placed')
   assert.equal(rig.layer.talk('npc:a', 'npc:nobody'), false)
+  rig.done()
+})
+
+test('a regular turns to the player for a talk, tells the host where the player is, and goes back to their routine when it ends', () => {
+  const rig = onFloor({ x: 3, z: 0 })
+  rig.layer.setResidents([{ id: 'npc:a', seed: 'a', x: 0, z: 0, ry: 0 }])
+  assert.equal(rig.layer.people().find((p) => p.id === 'npc:a')?.you, undefined)
+  assert.equal(rig.layer.talk('npc:a', PLAYER_PARTNER, 60_000), true)
+  assert.deepEqual(rig.layer.people().find((p) => p.id === 'npc:a')?.you, { x: 3, z: 0 })
+  assert.ok(rig.layer.awake, 'the window is open for the turn')
+  rig.layer.step(0.05, TEN)
+  assert.ok(Math.abs(rig.holders()[0]!.rotation.y) < Math.PI / 2 - 0.1, 'the turn is eased, not a snap')
+  for (let i = 0; i < 40; i++) rig.layer.step(0.05, TEN + i * 50)
+  assert.ok(Math.abs(rig.holders()[0]!.rotation.y - Math.PI / 2) < 0.05, 'facing the player')
+  assert.equal(rig.layer.talk('npc:a', PLAYER_PARTNER, 0), true)
+  for (let i = 0; i < 60; i++) rig.layer.step(0.05, TEN + i * 50)
+  assert.ok(Math.abs(rig.holders()[0]!.rotation.y) < 0.05, 'back to the way they were placed')
+  assert.equal(rig.layer.people().find((p) => p.id === 'npc:a')?.you, undefined)
+  assert.equal(rig.layer.talk('npc:nobody', PLAYER_PARTNER, 1000), false)
+  rig.done()
+})
+
+test('a still placement (reduced motion) turns the regular to the player at once, with no gesture', () => {
+  const rig = onFloor({ x: 0, z: 3 })
+  rig.layer.setResidents([{ id: 'npc:a', seed: 'a', x: 0, z: 0, ry: 2 }])
+  rig.layer.talk('npc:a', PLAYER_PARTNER, 60_000)
+  rig.layer.settle(TEN)
+  assert.ok(Math.abs(rig.holders()[0]!.rotation.y) < 0.01)
+  rig.layer.talk('npc:a', PLAYER_PARTNER, 0)
+  rig.layer.settle(TEN)
+  assert.ok(Math.abs(rig.holders()[0]!.rotation.y - 2) < 0.01)
   rig.done()
 })
 

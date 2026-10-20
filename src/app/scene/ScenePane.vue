@@ -23,6 +23,7 @@ import { noteChunkFailure } from '../state/updateNotice.ts'
 import { social } from '../features/social/useSocial.ts'
 import { lightOn } from '../../lightMode.ts'
 import { placeNow } from '../features/places/placeState.ts'
+import { followTalk } from './talkStance.ts'
 
 const SceneViewToggle = defineAsyncComponent(() => import('./SceneViewToggle.vue'))
 const viewHostRevision = ref(0)
@@ -52,6 +53,8 @@ let tipTimer = 0
 let drawn = false
 let observer: ResizeObserver | null = null
 let disposed = false
+// The person card opened on someone: the player and that person walk up, face each other and greet; closing it ends the talk (talkStance.ts).
+const stopTalking = followTalk(shell, () => scene.venue.value)
 
 /** Tell the scene how much of the screen the HUD covers, so it draws itself in the free part. The host redraws only if the snapped values changed. */
 function layout(): void {
@@ -173,6 +176,7 @@ watch(() => props.hidden, (hidden) => { if (!hidden) { onResize(); layout() } },
 onBeforeUnmount(() => {
   disposed = true
   clearTimeout(tipTimer)
+  stopTalking()
   window.removeEventListener('resize', onResize)
   observer?.disconnect()
   scene.venue.value?.dispose()

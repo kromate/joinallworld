@@ -54,7 +54,13 @@ export const WAVE_MS = 3_500;
 
 export interface Room { triangles: number; meshes: number }
 export interface AmbientTag { id: string; name: string; kind: string; text: string; marker: string; colour: string; position: { x: number; y: number; z: number } }
-export interface AmbientPerson { id: string; role: Role; x: number; z: number; sitting: boolean }
+/** `you` is set only while this person is talking with the player: where the player stands, so the host can walk up to a talking distance. */
+export interface AmbientPerson { id: string; role: Role; x: number; z: number; sitting: boolean; you?: { x: number; z: number } }
+/** The partner id that means the player in `talk(id, PLAYER_PARTNER, ms)`: the person turns to the player and holds there until the time is up or `ms` is 0. */
+export const PLAYER_PARTNER = 'you'
+/** A greeting gesture at the start of a talk with the player, and the beat of a speaking turn (ms). */
+export const GREET_MS = 1_800
+export const TALK_TURN_MS = 2_600
 /** A regular standing in the scene (placed by the scene). */
 export interface Resident { id: string; seed: string; look?: unknown; x: number; z: number; ry: number }
 
@@ -96,7 +102,7 @@ interface Entry {
   gaze: GazeState
   top: number
   /** Facing a partner for a talk, until the time. */
-  talk: { until: number; face: number; lead: boolean } | null
+  talk: { until: number; face: number; lead: boolean; since?: number; player?: boolean } | null
   /** A spoken bark animates the mouth only while the existing ambient window happens to be open. */
   speakingUntil: number
   /** The wave a regular gives the player they remember (see `memories`). */
@@ -278,8 +284,15 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
     let face = sample.ry, moving = false
     const sitting = sample.mode === 'sit'
     if (entry.talk && at < entry.talk.until) {
-      face = entry.talk.face
-      pose = entry.talk.lead === (Math.floor(at / 2600) % 2 === 0) && !still ? 'wave' : 'stand'
+      if (entry.talk.player) {
+        // Talking with the player: turn to wherever they stand now (the turn is eased below), greet with a gesture, then give a small hand gesture as each speaking turn begins.
+        face = Math.atan2(player.x - sample.x, player.z - sample.z)
+        const t = at - (entry.talk.since ?? at)
+        pose = !still && (t < GREET_MS || (t - GREET_MS) % TALK_TURN_MS < 900) ? 'wave' : 'stand'
+      } else {
+        face = entry.talk.face
+        pose = entry.talk.lead === (Math.floor(at / TALK_TURN_MS) % 2 === 0) && !still ? 'wave' : 'stand'
+      }
     } else if (entry.talk) entry.talk = null
     // A regular who remembers the player waves and says one line when they come near. Never on a still placement: nothing moves there, and nothing asks for frames.
     const memory = memories.get(entry.id)
@@ -300,7 +313,7 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
       moving = entry.motion.step(dt) || moving
       const blinkAt = (at + entry.blinkOffset) % entry.blinkPeriod
       const blink = blinkAt < 180 ? Math.sin((blinkAt / 180) * Math.PI) : 0
-      const takingTurn = entry.talk && at < entry.talk.until && entry.talk.lead === (Math.floor(at / 2600) % 2 === 0)
+      const takingTurn = entry.talk && at < entry.talk.until && (entry.talk.player ? (at - (entry.talk.since ?? at)) >= GREET_MS && Math.floor((at - (entry.talk.since ?? at) - GREET_MS) / TALK_TURN_MS) % 2 === 0 : entry.talk.lead === (Math.floor(at / TALK_TURN_MS) % 2 === 0))
       const speaking = at < entry.speakingUntil || takingTurn
       const speech = speaking ? 0.25 + ((Math.sin(at / 82 + entry.speechPhase) + 1) / 2) * 0.75 : 0
       entry.motion.face(blink, speech)
@@ -507,6 +520,8 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
       frames += 1
       const closing = windowLeft > 0 && windowLeft - dt <= 0
       windowLeft = Math.max(0, windowLeft - dt)
+      // A talk with the player keeps the window open until it ends, so the turn to face them and back is drawn.
+      for (const entry of entries.values()) if (entry.talk?.player && at < entry.talk.until) { windowLeft = Math.max(windowLeft, 0.25); break }
       sync(at, dt, false)
       // Street life moves with the window; a slow frame drops it for good (the hand-testing switch keeps it on).
       if (street) { if (!streetChoice?.forced && streetGuard?.frame(dt) === 'slow') dropStreet(); else street.step(at, options.avatar(), dt) }
@@ -543,7 +558,7 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
       return { id, name, kind: 'npc', text: name, marker: 'dot', colour: '#58d68a', position: { x: entry.x, y: entry.holder.position.y + entry.top, z: entry.z } }
     },
     people() {
-      return [...entries.values()].filter(entry => entry.holder.visible).map((entry) => ({ id: entry.id, role: entry.role, x: entry.x, z: entry.z, sitting: entry.shownKey.startsWith('sit') }))
+      return [...entries.values()].filter(entry => entry.holder.visible).map((entry) => ({ id: entry.id, role: entry.role, x: entry.x, z: entry.z, sitting: entry.shownKey.startsWith('sit'), ...(entry.talk?.player ? { you: { ...options.avatar() } } : {}) }))
     },
     tags() {
       const out: AmbientTag[] = []
@@ -565,6 +580,19 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
       return true
     },
     talk(a, b, ms = 8_000) {
+      if (b === PLAYER_PARTNER) {
+        const person = entries.get(a)
+        if (disposed || !person) return false
+        if (ms <= 0) {
+          // The talk is over: back to the routine, turning back with the same ease.
+          if (person.talk?.player) { person.talk = null; windowLeft = Math.max(windowLeft, 1.5) }
+          return true
+        }
+        const now = clock()
+        person.talk = { until: now + ms, face: person.ry, lead: true, since: now, player: true }
+        windowLeft = Math.max(windowLeft, Math.min(ms, WINDOW_MS) / 1000)
+        return true
+      }
       const first = entries.get(a), second = entries.get(b)
       if (disposed || !first || !second) return false
       const until = clock() + ms

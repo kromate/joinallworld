@@ -90,4 +90,5 @@ button.plot-slot { cursor: pointer; }
 .plot-slot.selected { border-color: var(--c-green-dark); }
 .land-confirm { display: grid; gap: 8px; padding: 4px 0; }
 .land-confirm p { margin: 0; }
+.ph.is-wide .land-panel > .ui-button { width: auto; min-width: 240px; justify-self: start; }
 </style>

@@ -3,6 +3,8 @@
 .worlds-hero{display:grid;gap:4px;padding:16px 18px}
 .worlds-hero>small{font-size:13px;font-weight:600;color:var(--c-muted)}
 .worlds-hero>strong{font-size:24px;font-weight:700;line-height:1.15;letter-spacing:-.2px}
+.ph.is-wide .worlds-hero{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px}
+.ph.is-wide .worlds-hero>:not(.ui-button),.ph.is-wide .worlds-hero>.ui-button:only-of-type{grid-column:1/-1}
 .worlds-hero>p{margin:2px 0 10px;font-size:14px;line-height:1.5;color:var(--c-ink-2)}
 .worlds-form h3{margin:0 0 10px}
 .worlds-label{display:block;margin:10px 0 6px;font-size:13px;font-weight:650}

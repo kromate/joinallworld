@@ -10,6 +10,8 @@
 .campus-tabs button[aria-current="page"]{background:#fff;color:var(--c-ink);box-shadow:0 1px 5px #00000016}
 .campus-body{display:grid;gap:var(--s-3)}
 .campus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-3)}
+/* A grid with one card (away from campus) uses the full width instead of leaving an empty half */
+.campus-grid>.campus-card:only-child{grid-column:1/-1}
 .campus-card{border:1px solid var(--c-line);border-radius:18px;padding:var(--s-3);min-width:0;background:#fff}
 .campus-card>p{font-size:var(--t-body);margin:6px 0 var(--s-2);line-height:1.45}
 .campus-card-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}

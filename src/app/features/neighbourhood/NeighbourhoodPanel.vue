@@ -76,4 +76,5 @@ function stepOutside(): void {
 .neighbourhood-doors { list-style: none; padding: 0; margin: 0; }
 .neighbourhood-doors li { display: flex; align-items: center; gap: 12px; min-height: 56px; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--c-line); }
 .neighbourhood-doors small { display: block; margin-top: 4px; }
+.ph.is-wide .neighbourhood-panel > .ui-button { width: auto; min-width: 240px; justify-self: start; }
 </style>

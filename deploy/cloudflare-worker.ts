@@ -824,7 +824,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (!page || typeof page.html !== 'string') return none();
       const status = typeof page.status === 'number' && Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200;
       this.telemetry.http({ method: raw.method, route: key, status, ms: performance.now() - began });
-      return new Response(raw.method === 'HEAD' ? null : page.html, { status, headers: { ...pageHeaders(factsOfUrl(url)), 'Cache-Control': page.cache !== false && raw.method !== 'POST' && status === 200 ? 'public, max-age=300' : 'no-store' } });
+      return new Response(raw.method === 'HEAD' ? null : page.html, { status, headers: { ...pageHeaders(factsOfUrl(url), { pathname: url.pathname, status, method: raw.method }), 'Cache-Control': page.cache !== false && raw.method !== 'POST' && status === 200 ? 'public, max-age=300' : 'no-store' } });
     } catch (thrown) {
       const coded = (thrown ?? {}) as Partial<HttpError>;
       const known = Number.isInteger(coded.status) && typeof coded.code === 'string';

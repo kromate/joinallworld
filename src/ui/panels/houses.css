@@ -7,8 +7,8 @@
 .houses-home :deep(.world-card.is-hero>.world-house){aspect-ratio:9/5;object-fit:cover}
 .houses-home :deep(.world-card:not(.is-hero)){border:0;border-radius:0}
 .houses-acts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 14px 14px}
-.houses-act{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:66px;padding:10px 4px;border:0;border-radius:12px;background:var(--c-fill);color:var(--c-ink);font:650 12px var(--font);cursor:pointer}
-.houses-act.is-primary{background:var(--c-green-dark);color:#fff}
+.houses-act{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:66px;padding:10px 4px;border:0;border-radius:12px;background:var(--c-fill);color:var(--c-ink);font:650 13px var(--font);cursor:pointer}
+.houses-act.is-primary{background:var(--button-primary,var(--c-green-dark));color:#fff}
 .houses-act :deep(svg){width:22px;height:22px}
 .houses-act:hover{filter:brightness(.96)}
 .houses-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:8px;margin:0 0 var(--s-3)}
@@ -18,16 +18,16 @@
 .houses-tile[data-houses=copy]{grid-column:1/-1;min-height:0;background:linear-gradient(135deg,#fff7ec,#eef7ff)}
 .houses-tile i{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--c-fill);font-style:normal}
 .houses-tile i :deep(svg){width:18px;height:18px}
-.houses-tile b{font-size:13px;line-height:1.2}
-.houses-tile small{font-size:11px;line-height:1.3;color:var(--c-muted)}
+.houses-tile b{font-size:14px;line-height:1.25}
+.houses-tile small{font-size:12px;line-height:1.35;color:var(--c-muted)}
 .houses-fold{margin-bottom:8px;background:#fff;border:1px solid var(--c-line);border-radius:14px}
 .houses-fold>summary{min-height:56px;padding:8px 14px}
 .houses-fold>summary>span{display:grid;gap:1px;min-width:0}
 .houses-fold>summary b{font-size:14px}
-.houses-fold>summary small{font-size:11px;font-weight:500;color:var(--c-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.houses-fold>summary small{font-size:12px;line-height:1.35;font-weight:500;color:var(--c-muted)}
 .houses-fold>:not(summary){margin:0 12px 12px}
 .houses-fold :deep(.world-card){border:0;padding:0}
-.houses-fold :deep(.visit-home){margin:0}
+.houses-fold :deep(.visit-home){margin:0 12px 12px}
 .houses-rent-hero strong{font-size:20px}
 .houses-progress{height:8px;margin-top:8px;border-radius:8px;background:var(--c-fill-2);overflow:hidden}
 .houses-progress i{display:block;height:100%;border-radius:8px;background:#176347}

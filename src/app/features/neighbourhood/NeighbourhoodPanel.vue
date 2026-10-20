@@ -70,8 +70,10 @@ function stepOutside(): void {
 </template>
 
 <style scoped>
-.neighbourhood-panel { padding: 8px 0; }
-.neighbourhood-doors { list-style: none; padding: 0; margin: 16px 0; }
-.neighbourhood-doors li { display: flex; align-items: center; gap: 12px; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--c-line); }
+.neighbourhood-panel { display: grid; gap: 12px; padding: 8px 0; align-content: start; }
+.neighbourhood-panel > h2, .neighbourhood-panel > p { margin: 0; }
+.neighbourhood-panel > .ui-button { width: 100%; }
+.neighbourhood-doors { list-style: none; padding: 0; margin: 0; }
+.neighbourhood-doors li { display: flex; align-items: center; gap: 12px; min-height: 56px; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--c-line); }
 .neighbourhood-doors small { display: block; margin-top: 4px; }
 </style>

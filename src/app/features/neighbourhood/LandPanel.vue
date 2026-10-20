@@ -79,12 +79,15 @@ onMounted(load)
 </template>
 
 <style scoped>
-.land-panel { padding: 8px 0; }
-.plot-preview { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
-.plot-slot { min-width: 88px; min-height: 82px; padding: 12px; border: 2px solid var(--c-line); border-radius: var(--r-sm); background: var(--c-surface); color: var(--c-ink); font: inherit; text-align: center; }
+.land-panel { display: grid; gap: 12px; padding: 8px 0; }
+.land-panel > h2, .land-panel > p { margin: 0; }
+.land-panel > .ui-button { width: 100%; }
+.plot-preview { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; margin: 8px 0; }
+.plot-slot { display: grid; align-content: center; justify-items: center; gap: 6px; min-width: 88px; min-height: 82px; padding: 12px; border: 2px solid var(--c-line); border-radius: var(--r-sm); background: var(--c-surface); color: var(--c-ink); font: inherit; text-align: center; }
 button.plot-slot { cursor: pointer; }
-.plot-slot small { display: block; margin-top: 8px; }
+.plot-slot small { display: block; }
 .plot-slot.owned { background: var(--c-green-pale); }
 .plot-slot.selected { border-color: var(--c-green-dark); }
-.land-confirm { padding: 12px 0; }
+.land-confirm { display: grid; gap: 8px; padding: 4px 0; }
+.land-confirm p { margin: 0; }
 </style>

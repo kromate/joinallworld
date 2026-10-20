@@ -61,3 +61,4 @@
 | 2026-10-19T12:00Z | active | registered | this file | write pages |
 | 2026-10-19 | verified-local | pages written, tests and build pass | commit a523ccd95 | edge + full tests, push, deploy |
 | 2026-10-19T20:20Z | complete | added /skills; merged main; deployed | live 7603fe394, smoke PASS 295 | none |
+| 2026-10-20 | active | /features: rain and smoke, street lights, city news, regulars remember you, reduce shake (open-source waves, live b9ecaaf74); /pages Settings line | server/docs-pages.test.ts 8 pass | release |

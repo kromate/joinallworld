@@ -279,7 +279,7 @@ export const PAGE_SECTIONS: readonly GuideSection[] = [
       { name: 'Stay in touch', text: 'Notifications and e-mail, only if you say yes.', open: 'Phone' },
       { name: 'Feedback', text: 'The public ideas board and problem reports.', open: 'Phone' },
       { name: 'Help', text: 'How to play, the tour, shortcuts and credits.', open: 'Phone' },
-      { name: 'Settings', text: 'Wallpaper, camera, guidance, sound, data, calls, visit door, residence, account, privacy, AI agent memory, mail and credits.', open: 'Phone or Sim sheet' },
+      { name: 'Settings', text: 'Wallpaper, camera view (with Reduce shake and flashes), guidance, sound, data, calls, visit door, residence, account, privacy, AI agent memory, mail and credits.', open: 'Phone or Sim sheet' },
     ],
   },
   {

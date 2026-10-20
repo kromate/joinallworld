@@ -23,6 +23,8 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 @keyframes ui-progress{from{transform:translateX(0)}to{transform:translateX(150%)}}
 
 .life-ui{position:absolute;zoom:var(--ui-zoom);--ui-vh:calc(1dvh / var(--ui-zoom));inset:0;z-index:10;overflow:hidden;pointer-events:none;font-family:var(--font);color:var(--c-ink);font-size:13px;line-height:1.35}
+/* A very wide window keeps the HUD in a 16:9 middle, so the corners are not a head-turn away from the scene; the world still fills the whole window. */
+@media(min-width:2400px) and (min-aspect-ratio:2/1){#life-overlay{width:calc(100 * var(--ui-vh) * 16 / 9);margin-inline:auto}}
 .life-ui *,#life-dialog *{box-sizing:border-box}
 .life-ui button,.life-ui input{font:inherit}
 .life-ui button{cursor:pointer;border:0;color:inherit;pointer-events:auto;-webkit-tap-highlight-color:transparent}
@@ -33,15 +35,13 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 
 /* ---- brand (top-left on a wide screen; a small mark inside the top bar on a narrow one) ---- */
 .life-wordmark{position:absolute;top:12px;left:14px;z-index:4;display:flex;align-items:center;gap:8px;height:48px;padding:0 16px 0 9px;background:var(--c-surface);border:1px solid #fff;border-radius:var(--r-pill);box-shadow:var(--e-2);pointer-events:auto}
-.life-wordmark i,.life-status-mark{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:linear-gradient(150deg,#39c07a,#1d6b43);color:#fff;box-shadow:inset 0 1px 0 #ffffff59}
-.life-ui .life-wordmark svg,.life-ui .life-status-mark svg{width:19px;height:19px}
+.life-wordmark i{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:linear-gradient(150deg,#39c07a,#1d6b43);color:#fff;box-shadow:inset 0 1px 0 #ffffff59}
+.life-ui .life-wordmark svg{width:19px;height:19px}
 .life-wordmark span{font-size:16px;font-weight:800;letter-spacing:-.5px;color:var(--c-ink)}
 .life-wordmark b{font-weight:500;color:var(--c-green-dark)}
-.life-status-mark{display:none;width:26px;height:26px;border-radius:9px;margin-left:-6px}
-@media(max-width:1140px){.life-wordmark{display:none}.life-status-mark{display:grid}}
+@media(max-width:1140px){.life-wordmark{display:none}}
 
 /* ---- top bar: clock · mood · name · saved · wallet -------------------------------------- */
-.life-status{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;height:48px;max-width:calc(100% - 24px);padding:0 6px 0 18px;background:var(--c-surface);border:1px solid #fff;border-radius:var(--r-pill);box-shadow:var(--e-2);white-space:nowrap;pointer-events:auto;z-index:4}
 
 
 /* ---- sidebar: needs strip, More, Clean screen, goal line, tray --------------------------- */
@@ -49,23 +49,6 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-sidebar>*,.life-menu{flex:none;min-width:0}
 @media(min-width:1240px){.life-sidebar{max-height:calc(100 * var(--ui-vh) - 100px)}}
 .life-quick{display:flex;align-items:center;gap:6px;order:-2}
-.life-needs{flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,1fr);gap:7px 10px;padding:10px 12px;background:var(--c-surface);border:1px solid #fff;border-radius:var(--r-lg);box-shadow:var(--e-2)}
-.life-need{display:flex;align-items:center;gap:5px;min-width:0;border-radius:8px}
-.life-need>span{flex:none;display:grid;place-items:center;width:16px;height:16px;color:var(--c-ink-2)}
-.life-ui .life-need svg{width:15px;height:15px}
-.life-need [role=meter]{flex:1;min-width:10px;height:6px;overflow:hidden;border-radius:6px;background:var(--c-fill-2)}
-.life-need i{display:block;height:100%;width:var(--need);border-radius:6px;background:var(--c-green);transition:width var(--ease)}
-.life-need.is-low i{background:var(--c-low)}
-.life-need.is-critical i{background:var(--c-critical)}
-.life-need.is-low>span{color:var(--c-low)}
-.life-need.is-critical>span{color:var(--c-critical)}
-/* Low is never colour alone: a mark stands beside the bar (“!” low, “!!” critical); the meter's aria-valuetext says the word. */
-.life-need.is-low::after{content:'!';flex:none;font-size:11px;font-weight:800;line-height:1;color:var(--c-low)}
-.life-need.is-critical::after{content:'!!';color:var(--c-critical)}
-.life-need.is-up{animation:life-need-up 1.2s ease-out}
-.life-need.is-down{animation:life-need-down 1.2s ease-out}
-@keyframes life-need-up{0%,35%{box-shadow:0 0 0 3px #bfe5cd;background:#bfe5cd}100%{box-shadow:0 0 0 0 transparent;background:transparent}}
-@keyframes life-need-down{0%,35%{box-shadow:0 0 0 3px #f6d9b8;background:#f6d9b8}100%{box-shadow:0 0 0 0 transparent;background:transparent}}
 .life-round{position:relative;flex:none;display:grid;place-items:center;width:var(--tap);height:var(--tap);border-radius:50%;background:var(--c-surface);border:1px solid #fff!important;box-shadow:var(--e-2)}
 .life-round[aria-expanded=true],.life-round[aria-pressed=true]{background:var(--c-ink);color:#fff}
 .life-badge{position:absolute;top:-3px;right:-3px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--c-badge);color:#fff;font-size:11px;font-weight:700;line-height:19px;text-align:center;box-shadow:0 0 0 2px #fff}
@@ -73,8 +56,10 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-alerts:empty,.life-goal:empty,.life-hud:empty{display:none}
 .life-hud{flex:0 1 auto;overflow-y:auto;min-height:0;scrollbar-width:thin;padding:1px}
 .life-tray{display:contents}
-/* Where the window is too short for the open menu and the chip list together, the list waits behind the menu instead of being squeezed to a sliver. */
-@media(min-width:721px) and (max-width:1239px) and (max-height:840px),(min-width:1240px) and (max-height:610px){.is-tray-open .life-hud{display:none}}
+/* Where the window is a tablet, or too short for the open menu and the chip list together, the list waits behind the menu instead of running under the stick and the bottom cards. */
+@media(min-width:721px) and (max-width:1239px),(min-width:1240px) and (max-height:610px){.is-tray-open .life-hud{display:none}}
+/* A tablet with the phone open: the phone covers the middle of the screen, so the chip column, the bottom cards, the guide's bubble and the install tip would only peek out cut off beside it; they wait until it closes. */
+@media(min-width:521px) and (max-width:999px){body:has(#life-dialog[data-phone][open]) :is(.life-sidebar,.life-bottom,.lumo-bubble,.inapp-tip,[aria-label='Add Allworld to your phone']){visibility:hidden}}
 /* A guest of the quick start: the chip column is folded behind "More" on a wide screen too (on a phone it always is), so the goal line is the one thing asking for attention. */
 @media(min-width:721px){.is-guest:not(.is-tray-open) .life-hud{display:none}}
 /* ONE line of guidance, on every screen: while the coach line is talking (the first starter goals) it carries the goal's name and what to tap, so the goal chip that says the same thing waits. It is back the moment the coach is silent or dismissed. */
@@ -110,7 +95,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-ui .life-job:disabled{opacity:1;cursor:default}
 
 /* ---- Clean screen: only the top bar, the toggle, the progress chip and the nav ------------ */
-.is-clean .life-needs,.is-clean [data-tray-toggle],.is-clean .life-alerts,.is-clean .life-goal,.is-clean .life-tray,.is-clean [data-slot=main],.is-clean [data-slot=coach]{display:none!important}
+.is-clean [data-tray-toggle],.is-clean .life-alerts,.is-clean .life-goal,.is-clean .life-tray,.is-clean [data-slot=main],.is-clean [data-slot=coach]{display:none!important}
 .life-ui[data-mode=buy] .life-sidebar,.life-ui[data-mode=map] .life-sidebar{display:none}
 
 /* ---- toasts --------------------------------------------------------------------------- */
@@ -427,18 +412,6 @@ button.ui-row:hover{background:#f7f9f8}
 
 /* ---- PHONE -------------------------------------------------------------------------------- */
 @media(max-width:720px){
-  .life-status{top:8px;left:8px;right:8px;transform:none;max-width:none;justify-content:space-between;gap:8px;height:44px;padding:0 4px 0 12px}
-  .life-clock{font-size:12px}
-  .life-ui button.life-mood{font-size:12px;padding-left:8px}
-  .life-ui .life-status-profile{display:none}
-  .life-saved.is-ok span,.life-saved.is-saving span,.life-ui button.life-saved.is-off span,.life-saved.is-unsaved span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-  .life-ui button.life-saved.is-off,.life-saved.is-unsaved{padding:0 6px}
-  .life-saved-slot{margin-left:auto}
-  .life-ui button.life-cash{font-size:13px;padding:0 12px}
-  .life-notice{top:58px;left:8px;right:8px;width:auto;transform:none;gap:10px;padding:10px 10px 10px 12px}
-  .life-notice>i{width:34px;height:34px}
-  .life-notice strong{font-size:14px}
-  .has-notice .life-sidebar{top:calc(64px + var(--notice-h,0px))}
   /* ONE ROW UNDER THE TOP BAR: the goal line on the left, then any LOW needs, More and Clean screen. With no need low the
      strip steps aside altogether (the mood in the top bar opens all six), so the scene keeps the screen. Alerts get a row of
      their own only while there is one; the More tray opens under it. */
@@ -450,12 +423,6 @@ button.ui-row:hover{background:#f7f9f8}
   .life-alerts .map-event-chip{min-height:44px;white-space:normal;overflow-wrap:anywhere}
   .life-alerts .map-event-chip small{white-space:normal}
   .life-tray{grid-column:1/-1;grid-row:3}
-  .life-needs{display:none}
-  .life-needs.has-low{flex:none;display:flex;align-items:center;gap:8px;height:var(--tap);padding:0 12px;border-radius:var(--r-pill)}
-  .life-need{display:none}
-  .life-need.is-low{display:flex;width:38px;gap:3px}
-  .life-need>span{width:14px}
-  .life-ui .life-need svg{width:14px;height:14px}
   /* One line of guidance: while the first-session coach is talking, it carries the goal's name — the chip that repeats it waits. */
   .has-coach[data-mode=venue] .life-goal{display:none}
   .life-goal .life-job{width:fit-content;max-width:100%}
@@ -479,8 +446,6 @@ button.ui-row:hover{background:#f7f9f8}
   .life-venue-panel{border-radius:22px}
   /* The wallet's change note is a small badge on the bar's lower edge, under the wallet: the amount only (its reason is in the
      toast and in the Bank), so it never lies over the goal line or the two round buttons below. */
-  .life-delta{right:10px;top:calc(100% - 11px);z-index:1}
-  .life-delta-why{display:none}
   /* Collapsed, the card is the place's name and its spots; the ambient line comes back with the activities. */
   :not(.is-expanded)>.life-bottom .life-venue-heading p{display:none}
   :not(.is-expanded)>.life-bottom .life-venue-header{margin-bottom:4px}
@@ -495,21 +460,17 @@ button.ui-row:hover{background:#f7f9f8}
   #community-panel{top:58px;right:8px;bottom:8px;width:calc(100vw - 16px)}
   .map-open .awm-heading{padding-top:66px;padding-bottom:12px}.map-open .awm-heading h2{font-size:20px}.map-open .awm-heading p{display:none}.map-open .awm{padding-bottom:84px}.map-open .awm-viewport,.map-open .awm-svg{min-height:210px}
 }
-@media(max-width:360px){.life-mood{display:none}}
 
 
 @media(prefers-reduced-motion:reduce){
   .life-ui *,.life-toast{scroll-behavior:auto!important;transition:none!important}
-  .life-cash.is-up,.life-cash.is-down,.life-need.is-up,.life-need.is-down,.life-toast,.ui-skeleton i,.ui-loading,.scene-wait::after{animation:none}
-  .life-delta.is-up,.life-delta.is-down{animation:life-delta-still 3.4s steps(1,end)}
-  @keyframes life-delta-still{0%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+  .life-toast,.ui-skeleton i,.ui-loading,.scene-wait::after{animation:none}
 }
 
 /* ---- glyphs in place of emoji: spacing where a glyph sits before a label ---------------------- */
 .life-spots button svg.ui-glyph,.sim-tabs button svg.ui-glyph{margin-right:6px;opacity:.85}
 .life-venue-heading h1 svg.ui-glyph{margin-right:2px;color:var(--c-green-dark)}
 .life-ui .life-venue-heading p svg.ui-glyph,.life-ui .life-lock svg.ui-glyph,.life-ui .life-action-meta svg.ui-glyph{width:1.05em;height:1.05em;vertical-align:-.16em}
-.life-mood svg.ui-glyph{margin-right:4px}
 .life-avatar,.sim-avatar{color:#35566a}
 .life-action-emoji,.life-progress-icon,.life-job>span{color:var(--c-ink-2)}
 .life-coach>span{color:var(--c-amber-dark)}
@@ -528,13 +489,9 @@ button.ui-row:hover{background:#f7f9f8}
    the top bar and one row of HUD on the left, and ONE row at the bottom — the venue card (name and
    spots on a single line) with the nav beside it — so the scene keeps the height. */
 @media(max-height:520px) and (min-width:600px){
-  .life-wordmark{display:none}.life-status-mark{display:grid}
-  .life-status{top:max(6px,env(safe-area-inset-top));height:44px}
+  .life-wordmark{display:none}
   .life-sidebar{top:max(6px,env(safe-area-inset-top));left:max(8px,env(safe-area-inset-left));width:auto;max-width:calc(50% - 190px);max-height:none;display:grid;grid-template-columns:auto;gap:6px}
   .life-quick{order:0}
-  .life-needs{display:none}
-  .life-needs.has-low{display:flex;align-items:center;gap:8px;height:var(--tap);padding:0 12px;border-radius:var(--r-pill)}
-  .life-need{display:none}.life-need.is-low{display:flex;width:38px;gap:3px}
   .life-goal{max-width:260px}
   .life-bottom>.life-alerts{grid-column:1/-1}
   .has-coach[data-mode=venue] .life-goal{display:none}
@@ -597,7 +554,7 @@ button.ui-row:hover{background:#f7f9f8}
 .attn{position:fixed;inset:0;z-index:45;pointer-events:none;font-family:var(--font)}
 .attn-bubble,.attn-cue{position:absolute;margin:0;transform:translate(-50%,-50%);padding:7px 14px;border-radius:var(--r-pill);background:#1b1f27f2;color:#fff;font-size:14px;font-weight:600;line-height:1.3;white-space:nowrap;box-shadow:var(--e-2),inset 0 0 0 1px #ffffff26}
 .attn-bubble{background:#fff6dc;color:#4a3608;box-shadow:var(--e-2),inset 0 0 0 1.5px #e39a1c;animation:attn-in .3s var(--ease-pop)}
-.attn-cue{box-sizing:border-box;left:50%;top:38%;max-width:calc(100vw - 24px);white-space:normal;overflow-wrap:anywhere;animation:attn-cue 2.6s var(--ease-out) forwards}
+.attn-cue{box-sizing:border-box;left:50%;top:38%;width:max-content;max-width:calc(100vw - 24px);text-align:center;white-space:normal;overflow-wrap:anywhere;animation:attn-cue 2.6s var(--ease-out) forwards}
 .attn-cue.is-good{background:var(--c-green-dark)}.attn-cue.is-warn{background:#7a4a05}.attn-cue.is-spend{background:#4a525c}
 @keyframes attn-in{from{opacity:0;transform:translate(-50%,-50%) scale(.8)}to{opacity:1;transform:translate(-50%,-50%)}}
 @keyframes attn-cue{0%{opacity:0;transform:translate(-50%,-30%) scale(.9)}10%,78%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(-50%,-70%)}}

@@ -91,7 +91,7 @@ export function createAttention({ root, dialog }: { root?: ParentNode; dialog?: 
       const scale = frame.width / layer.offsetWidth || 1;
       const left = box.left - gap * 2, right = size.width - box.right - gap * 2;
       const beside = Math.max(left, right) >= 120;
-      pill.style.width = `${Math.min(380, beside ? Math.max(left, right) : size.width - gap * 2) / scale}px`;
+      pill.style.maxWidth = `${Math.min(380, beside ? Math.max(left, right) : size.width - gap * 2) / scale}px`;
       const bounds = { width: pill.offsetWidth * scale, height: pill.offsetHeight * scale };
       let x = (box.left + box.right) / 2, y = box.top - gap - bounds.height / 2;
       if (beside) { x = left >= right ? box.left - gap - bounds.width / 2 : box.right + gap + bounds.width / 2; y = (box.top + box.bottom) / 2; }

@@ -141,6 +141,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:linear-grad
 .life-spots::-webkit-scrollbar{display:none}
 .life-spots button{flex:none;min-height:var(--tap);padding:0 14px;border-radius:999px;background:#e9ecea;font-size:13px;white-space:nowrap}
 .life-spots .is-selected{background:var(--c-ink);color:#fff}
+@media(min-width:1024px){.life-spots{flex-wrap:wrap;overflow:visible}}
 .life-spots .life-expand{position:sticky;left:0;z-index:1;display:grid;place-items:center;width:var(--tap);padding:0;background:#e6e9e7;box-shadow:6px 0 8px -4px var(--c-surface-solid)}
 .life-expand svg{width:16px;height:16px;transform:rotate(180deg);transition:transform var(--ease)}
 .life-expand.is-expanded svg{transform:none}

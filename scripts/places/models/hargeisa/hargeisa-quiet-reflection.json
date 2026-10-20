@@ -1,0 +1,228 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/906825193",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0ede4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#2f6b4f",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dfd2",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    12.8
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#2f6b4f",
+    "profile": [
+     [
+      7.2,
+      0,
+      "#e8e2d2"
+     ],
+     [
+      7.2,
+      2.2
+     ],
+     [
+      7.6,
+      2.2,
+      "#2f6b4f"
+     ],
+     [
+      7.3,
+      3.6
+     ],
+     [
+      6.2,
+      5.6
+     ],
+     [
+      4.2,
+      7.2
+     ],
+     [
+      2,
+      8.1
+     ],
+     [
+      0,
+      8.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    21.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9b08a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.3,
+      1.2
+     ],
+     [
+      0.1,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -17,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "pencil",
+    "colour": "#f0ede4",
+    "trim": "#2f6b4f",
+    "accent": "#2f6b4f",
+    "cap_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    17,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "pencil",
+    "colour": "#f0ede4",
+    "trim": "#2f6b4f",
+    "accent": "#2f6b4f",
+    "cap_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "arcade",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 4.2,
+    "thickness": 2.4,
+    "shape": "pointed",
+    "colour": "#f0ede4",
+    "trim": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#e8e2d2",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of Ali Matan Mosque found; OSM hall outline plus typed green/white dome and twin minarets."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-quiet-reflection"
+}

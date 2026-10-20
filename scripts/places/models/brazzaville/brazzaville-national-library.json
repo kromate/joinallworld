@@ -1,0 +1,1563 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-national-library",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biblioth%C3%A8que_Nationale_du_Congo_Brazza.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rhudel Okou\u00e9l\u00e9",
+   "view": "front",
+   "file": "/tmp/places-evidence/brazzaville/lib2.jpg",
+   "used": "single-storey white render hall, central pedimented portico on six slim columns, flat green-metal side canopies, barred windows, brown timber door, paved forecourt, trees behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sur_les_routes_de_la_R%C3%A9publique_du_Congo._22.jpg",
+   "licence": "CC BY 4.0",
+   "author": "ArnoBOUJIKA",
+   "view": "street",
+   "used": "cream boundary wall with black iron railings and gate in front of the same white gabled front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1026525114",
+   "used": "overall size only (about 31 x 24 m); the odd footprint is not copied"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     13.5,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cfcdc4",
+    "material": "concrete",
+    "overhang": 0.5,
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     4.6,
+     10
+    ]
+   },
+   "at": [
+    -9.0,
+    -1.5
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.5,
+    "colour": "#3d6b4a",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     4.6,
+     10
+    ]
+   },
+   "at": [
+    9.0,
+    -1.5
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.5,
+    "colour": "#3d6b4a",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 1.6,
+    "height": 3.9,
+    "columns": 6,
+    "pediment": true,
+    "steps": 1,
+    "colour": "#dcdad2",
+    "roofColour": "#bdb9ae"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "door",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.14
+    ],
+    "z0": 0.1,
+    "height": 2.7,
+    "colour": "#6b3a1e",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-tr",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.14
+    ],
+    "z0": 2.8,
+    "height": 0.5,
+    "colour": "#3c4a3c",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar-4",
+   "at": [
+    -0.88,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar-3",
+   "at": [
+    -0.66,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar-2",
+   "at": [
+    -0.44,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar-1",
+   "at": [
+    -0.22,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar0",
+   "at": [
+    0.0,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar1",
+   "at": [
+    0.22,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar2",
+   "at": [
+    0.44,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar3",
+   "at": [
+    0.66,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-bar4",
+   "at": [
+    0.88,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.04,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 3.2,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "door-hbar",
+   "at": [
+    0,
+    -6.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     0.06
+    ],
+    "z0": 1.6,
+    "height": 0.05,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1",
+   "at": [
+    -2.8,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.12
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#2a2420",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-panel",
+   "at": [
+    -2.8,
+    -6.52,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.12
+    ],
+    "z0": 2.1,
+    "height": 0.6,
+    "colour": "#7a3f1c",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-bar-3",
+   "at": [
+    -3.61,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-bar-2",
+   "at": [
+    -3.34,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-bar-1",
+   "at": [
+    -3.07,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-bar0",
+   "at": [
+    -2.8,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-bar1",
+   "at": [
+    -2.53,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-bar2",
+   "at": [
+    -2.26,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-bar3",
+   "at": [
+    -1.9899999999999998,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win-1-mid",
+   "at": [
+    -2.8,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.05
+    ],
+    "z0": 1.8,
+    "height": 0.04,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1",
+   "at": [
+    2.8,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.12
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#2a2420",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-panel",
+   "at": [
+    2.8,
+    -6.52,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.12
+    ],
+    "z0": 2.1,
+    "height": 0.6,
+    "colour": "#7a3f1c",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-bar-3",
+   "at": [
+    1.9899999999999998,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-bar-2",
+   "at": [
+    2.26,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-bar-1",
+   "at": [
+    2.53,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-bar0",
+   "at": [
+    2.8,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-bar1",
+   "at": [
+    3.07,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-bar2",
+   "at": [
+    3.34,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-bar3",
+   "at": [
+    3.61,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.0,
+    "height": 1.7,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "win1-mid",
+   "at": [
+    2.8,
+    -6.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.05
+    ],
+    "z0": 1.8,
+    "height": 0.04,
+    "colour": "#e4e2da",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1",
+   "at": [
+    -9.0,
+    -6.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.12
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#3a2f28",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1-bar-3",
+   "at": [
+    -9.84,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1-bar-2",
+   "at": [
+    -9.56,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1-bar-1",
+   "at": [
+    -9.28,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1-bar0",
+   "at": [
+    -9.0,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1-bar1",
+   "at": [
+    -8.72,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1-bar2",
+   "at": [
+    -8.44,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1-bar3",
+   "at": [
+    -8.16,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin-1-mid",
+   "at": [
+    -9.0,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.05
+    ],
+    "z0": 1.9,
+    "height": 0.04,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "stain-1",
+   "at": [
+    -9.0,
+    -6.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#9a9486",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1",
+   "at": [
+    9.0,
+    -6.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.12
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#3a2f28",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1-bar-3",
+   "at": [
+    8.16,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1-bar-2",
+   "at": [
+    8.44,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1-bar-1",
+   "at": [
+    8.72,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1-bar0",
+   "at": [
+    9.0,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1-bar1",
+   "at": [
+    9.28,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1-bar2",
+   "at": [
+    9.56,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1-bar3",
+   "at": [
+    9.84,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.035,
+     0.05
+    ],
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "wwin1-mid",
+   "at": [
+    9.0,
+    -6.06,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.05
+    ],
+    "z0": 1.9,
+    "height": 0.04,
+    "colour": "#1c1c1c",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "stain1",
+   "at": [
+    9.0,
+    -6.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#9a9486",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "stain-hall",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     13.5,
+     0.04
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#a29c8e",
+    "top": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "shield",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "z0": 4.5,
+    "height": 0.9,
+    "colour": "#b8b2a0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "pavers",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     26
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#9fa095",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "pavers-grass",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     26
+    ],
+    "z0": 0.05,
+    "height": 0.01,
+    "colour": "#6f8a3a",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "pole",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "radius": 0.07,
+    "n": 6,
+    "z0": 0,
+    "height": 9,
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "pole-base",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.9
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#6b6659",
+    "top": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 3,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 3,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    27,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Portico columns still heavier than the slim real ones; no weathering streaks on the pediment tympanum or lettering band; forecourt paver grid is flat colour (no grid pattern); trees are generic broadleaf."
+ }
+}

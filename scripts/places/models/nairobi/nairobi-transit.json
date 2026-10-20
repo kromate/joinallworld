@@ -1,0 +1,480 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nairobi_Railway_Station_entrance.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Caligula",
+   "view": "front",
+   "file": "/tmp/places-evidence/nairobi/rail1.jpg",
+   "used": "coursed grey-brown stone walls, central gabled entrance with three round arches under a flat blank sign canopy, louvred green shutters in the gable, red clay-tile roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nairobi_Railway_Station_(8501927933).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Casey Hugelfink from Munich",
+   "view": "side",
+   "used": "whole frontage: row of tall stone gables with tiled roofs, clock on a mast at the entrance, long low verandah at one end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/499873616",
+   "used": "150 x 18 m long thin station building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "station-canopy",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "length": 78,
+    "depth": 7,
+    "height_inner": 6.5,
+    "height_outer": 4.2,
+    "kind": "iron",
+    "colour": "#5d5a54"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 8,
+    "height": 0.9,
+    "colour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "tracks": 2,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "range",
+   "footprint": {
+    "rect": [
+     84,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8570",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "back": "punched"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#a89a82"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a5543c",
+    "material": "clay-tile",
+    "pitch": 26,
+    "axis": "x",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     19,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -7.5
+   ],
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8570",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 6.2,
+      "opening": 0.62,
+      "height": 0.78,
+      "depth": 1.6,
+      "pierColour": "#9a8c76",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a5543c",
+    "material": "clay-tile",
+    "pitch": 44,
+    "axis": "y",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-flank",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    15.5,
+    -7.5
+   ],
+   "height": 9.0,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8570",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a5543c",
+    "material": "clay-tile",
+    "pitch": 44,
+    "axis": "y",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-canopy",
+   "at": [
+    0,
+    -11.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     2.2
+    ],
+    "z0": 3.9,
+    "height": 2.3,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-under",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     16.6,
+     2.6
+    ],
+    "z0": 3.6,
+    "height": 0.3,
+    "colour": "#6e6a60"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shut0-0.9",
+   "at": [
+    -0.9,
+    -10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 8.4,
+    "height": 2.0,
+    "colour": "#4f7a56"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shut00",
+   "at": [
+    0,
+    -10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 8.4,
+    "height": 2.0,
+    "colour": "#4f7a56"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shut00.9",
+   "at": [
+    0.9,
+    -10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 8.4,
+    "height": 2.0,
+    "colour": "#4f7a56"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shut15.5-0.9",
+   "at": [
+    14.6,
+    -10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#4f7a56"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shut15.50",
+   "at": [
+    15.5,
+    -10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#4f7a56"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shut15.50.9",
+   "at": [
+    16.4,
+    -10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#4f7a56"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "verandah",
+   "footprint": {
+    "rect": [
+     24,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -8
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8570",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c4a38",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     5
+    ]
+   },
+   "at": [
+    32,
+    -8
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8e78",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5543c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -46,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    46,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": 0,
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-transit",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stone is a flat colour, not coursed blocks; arches are recessed not walk-through gates; sign canopy is blank; far wings and platform side simplified"
+ }
+}

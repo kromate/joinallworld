@@ -1,0 +1,483 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/214613002",
+   "used": "real market outline, name match, scaled by 0.34 to the 118 m scene clamp, as the paved trading yard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mbare's_maze.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yann Macherez",
+   "view": "street",
+   "file": "/tmp/places-evidence/harare/h1014-mbare-maze.jpg",
+   "used": "Matapi-style flats: 4-5 storey concrete frame, brick infill panels and rendered ochre walls, open access decks, satellite dishes"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mbare_Bus_Terminus.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Samwise Gamgee",
+   "view": "street",
+   "file": "/tmp/places-evidence/harare/h1014-mbare-bus.jpg",
+   "used": "open bare paved terminus, hawkers under umbrellas and cloth shades, low long metal-roofed shed and coaches at the far side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2010_market_Harare_Zimbabwe_5866074969.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "detail",
+   "used": "stall style: produce heaped on the ground and in buckets, wire-mesh and tarpaulin stall walls, corrugated sheet partitions"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "yard",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -36.7,
+      -11.9
+     ],
+     [
+      -34.4,
+      9.7
+     ],
+     [
+      -32.8,
+      31.6
+     ],
+     [
+      -26.0,
+      81.2
+     ],
+     [
+      -21.4,
+      80.6
+     ],
+     [
+      -11.4,
+      65.4
+     ],
+     [
+      29.0,
+      39.6
+     ],
+     [
+      37.5,
+      32.4
+     ],
+     [
+      43.0,
+      22.4
+     ],
+     [
+      42.2,
+      10.6
+     ],
+     [
+      72.9,
+      7.2
+     ],
+     [
+      69.6,
+      -26.4
+     ],
+     [
+      35.5,
+      -23.0
+     ],
+     [
+      35.9,
+      -19.6
+     ],
+     [
+      4.1,
+      -17.2
+     ],
+     [
+      3.9,
+      -21.8
+     ],
+     [
+      -9.9,
+      -31.9
+     ],
+     [
+      -13.4,
+      -31.7
+     ],
+     [
+      -14.0,
+      -37.0
+     ],
+     [
+      -23.3,
+      -36.0
+     ],
+     [
+      -22.9,
+      -31.6
+     ],
+     [
+      -30.3,
+      -30.9
+     ],
+     [
+      -29.7,
+      -24.9
+     ],
+     [
+      -34.3,
+      -24.5
+     ],
+     [
+      -33.2,
+      -12.3
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#b8a285"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "shed",
+    "post_pitch": 4.5,
+    "goods": "sacks",
+    "roof_colour": "#8b8b88",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "shed",
+    "post_pitch": 4.5,
+    "goods": "sacks",
+    "roof_colour": "#8b8b88",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "shed",
+    "post_pitch": 4.5,
+    "goods": "sacks",
+    "roof_colour": "#8b8b88",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#2f6f9a",
+     "#b5563c",
+     "#e0c14a",
+     "#3f7f4f",
+     "#8a4f8a"
+    ],
+    "goods_colours": [
+     "#d9622b",
+     "#9a6a3a",
+     "#c8d86a",
+     "#b13a2f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    28,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e0c14a",
+     "#2f6f9a",
+     "#b5563c",
+     "#f6f2ea"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -45,
+    22,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    22,
+    18,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "kind": "coach",
+    "density": 0.8,
+    "coach_share": 0.7,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    22,
+    30,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "kind": "mixed",
+    "density": 0.6,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flats-0",
+   "footprint": {
+    "rect": [
+     36,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    48
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b79b7d",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 5.5,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flats-1",
+   "footprint": {
+    "rect": [
+     32,
+     12
+    ]
+   },
+   "at": [
+    10,
+    52
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b79b7d",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 5.5,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flats-brick",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    46,
+    40
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5563c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.6,
+    "legs": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "bunting",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 3.0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the whole market; layout of sheds, stall rows, bus bays and flats is typed from the outline, photos of stalls, terminus and flats."
+ }
+}

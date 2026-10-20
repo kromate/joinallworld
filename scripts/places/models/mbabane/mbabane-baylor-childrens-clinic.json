@@ -1,0 +1,113 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/784173087",
+   "used": "real outline (5-sided, about 102 x 57 m, 5426 m2); no photo found, so storeys, cream walls, teal bands and red roof come from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3e3b5",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "plinth": 0.4,
+    "bands": "#3b8ea5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a24a36",
+    "material": "corrugated",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 4.5,
+    "height": 3.6,
+    "form": "flat",
+    "columns": 2,
+    "colour": "#3b8ea5"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -10,
+    -32,
+    3.4
+   ],
+   "params": {
+    "size": 2.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-baylor-childrens-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real outline only, no photo exists; storeys, colours, roof and entrance canopy assumed from the brief; roof flattened to fit LOD1 budget."
+ }
+}

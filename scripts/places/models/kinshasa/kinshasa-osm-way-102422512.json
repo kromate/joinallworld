@@ -1,0 +1,372 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-way-102422512",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:H%C3%94PITAL_DU_CINQUANTENAIRE.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tite koya",
+   "view": "front",
+   "file": "/tmp/places-evidence/kinshasa/hosp.jpg",
+   "used": "white multi-storey ward blocks with vertical strips of round (porthole) windows, low dark-grey entrance range with flat canopy, lower right wing with round medallions, black railing fence, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/102422512",
+   "used": "identity and site size only: the 89,000 m2 polygon is the whole hospital site, not one building, so buildings are composed individually"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 2.2,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     38,
+     15
+    ]
+   },
+   "at": [
+    -36,
+    14
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebeae4",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.45,
+    "plinth": 0.3,
+    "bands": "#9aa0a5",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "material": "membrane",
+    "parapet": 0.8,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-centre",
+   "footprint": {
+    "rect": [
+     24,
+     15
+    ]
+   },
+   "at": [
+    -6,
+    14
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebeae4",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "bands": "#9aa0a5",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "material": "membrane",
+    "parapet": 0.8,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-block",
+   "footprint": {
+    "rect": [
+     14,
+     13
+    ]
+   },
+   "at": [
+    13,
+    16
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebeae4",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "bands": "#c9ced1",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    25,
+    18
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebeae4",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "bands": "#c9ced1",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    44,
+    6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebeae4",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "bands": "#9aa0a5",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-range",
+   "footprint": {
+    "rect": [
+     92,
+     12
+    ]
+   },
+   "at": [
+    8,
+    -2
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#585c60",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "bands": "#44474a",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50",
+    "overhang": 2.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    2,
+    -3
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a4d50",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c3f42",
+    "overhang": 0.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    2,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "height": 4.2,
+    "colour": "#7d8186"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    36,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3,
+    "colour": "#c9ced1",
+    "roofColour": "#4a4d50",
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -4,
+    -8.4,
+    3.4
+   ],
+   "params": {
+    "size": 1.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.0,
+    "kind": "railing",
+    "pillarEvery": 14,
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   118,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round windows are small circles with fewer strips than the dense medallions in the photo; tall ward blocks and dark entrance range with gate pavilion now read correctly, but the canopy is lighter than the real deep one and building counts behind the front are estimated; site polygon (336 m) cannot fit the 120 m clamp."
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/9415532",
+   "used": "real pavilion-comb footprint of Hospital de Sampaka (141 x 120 m, architect PMMT in tags), scaled to fit the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 100,
+    "simplify": 5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0e8",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "bands": "#4a7f9a",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f969b",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -8,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -76,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 2.4,
+    "colour": "#f2f2f0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 24,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     80
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -84
+    ],
+    "yawDeg": 270,
+    "colour": "#c8c8c8"
+   },
+   {
+    "at": [
+     -4,
+     -88
+    ],
+    "yawDeg": 90,
+    "colour": "#2f4f7a"
+   }
+  ],
+  "extent": [
+   120,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building found; real comb footprint extruded to 3 storeys, facade and entrance are typical guesses"
+ }
+}

@@ -1,0 +1,285 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Egal_International_Airport.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "William John Gauthier",
+   "view": "front",
+   "used": "two-level arrivals block with glazed control cab on top, grey cladding panels, green window frames, lower grey wings left and right with hangar-like opening, flag, apron"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "low-body",
+   "footprint": {
+    "rect": [
+     23,
+     12
+    ]
+   },
+   "at": [
+    -2.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3d6d8",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "glassColour": "#2f7a55",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b9bdc0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b5",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdedd",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#2f7a55",
+    "bands": "#c2c6c6",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b8ba",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cab",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 10.5,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dcd8c0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#9fc7b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4b8",
+    "overhang": 0.9,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     17,
+     12
+    ]
+   },
+   "at": [
+    17.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9ccce",
+    "windows": "none",
+    "glassColour": "#4b5a60",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b5",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     15,
+     11
+    ]
+   },
+   "at": [
+    -21.6,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4c8ca",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#6a9aa0",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adaf",
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2.6,
+    -6.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 4,
+    "depth": 2.2,
+    "height": 3,
+    "thickness": 0.25,
+    "columns": 0,
+    "colour": "#2f7a55"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -25,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    14,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.6,
+    -6.05,
+    2.9
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#f2f2f0",
+    "frameColour": "#c8362f",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -38,
+     -4
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     34,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Photo has a stepped tower with balcony rails, antennas and a dark hangar door on the right wing; model has a plain glazed cab and blank right wing."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-airport-hargeisa-airport"
+}

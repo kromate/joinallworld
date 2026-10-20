@@ -1,0 +1,460 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-national-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Ghana.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Livinba",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/accra-national-museum-1.jpg",
+   "used": "low cream single-storey front with a deep dark blue-grey flat fascia/roof overhang, relief panel and drapery at left, dark glazed entrance, right wing with small dark window openings, low saucer aluminium dome behind, clipped hedge in front, flagpole"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_entrance_of_National_Museum_of_Ghana.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Livinba",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/accra-national-museum-2.jpg",
+   "used": "porte-cochere canopy over the drive, dark double door entrance, cannons by the door, terracotta paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/187124244",
+   "used": "overall scale (about 90 x 48 m site); the outline is jagged so the building is composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b4655",
+    "overhang": 3.0,
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -6.5,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.5
+    ],
+    "height": 3.2,
+    "colour": "#1f252d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-wall",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    -26,
+    -8
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a3340"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -26,
+    -9.6,
+    0.6
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#3c3f42",
+    "frameColour": "#e8e2d0",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -26,
+    -9.7,
+    2.2
+   ],
+   "params": {
+    "width": 12,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#a02025",
+    "frameColour": "#1a1a1a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    26,
+    1
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b4655",
+    "overhang": 1.6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    22,
+    17,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#e8e2d0",
+    "profile": [
+     [
+      13,
+      0,
+      "#e8e2d0"
+     ],
+     [
+      13,
+      3.6
+     ],
+     [
+      13.4,
+      3.8,
+      "#2d3541"
+     ],
+     [
+      13.4,
+      5.4
+     ],
+     [
+      14,
+      5.6,
+      "#2d3541"
+     ],
+     [
+      14,
+      5.9,
+      "#a9afb3"
+     ],
+     [
+      10.5,
+      7.3
+     ],
+     [
+      6,
+      8.3
+     ],
+     [
+      1.5,
+      8.8
+     ],
+     [
+      0.3,
+      8.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     24,
+     2.2
+    ],
+    "height": 1.5,
+    "colour": "#2d5a2a",
+    "windows": "none",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -14.6,
+    0
+   ],
+   "rotDeg": -6,
+   "params": {
+    "rect": [
+     14,
+     2.2
+    ],
+    "height": 1.5,
+    "colour": "#2d5a2a",
+    "windows": "none",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13,
+    -16,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "rect": [
+     12,
+     2.2
+    ],
+    "height": 1.5,
+    "colour": "#2d5a2a",
+    "windows": "none",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -19,
+    0
+   ],
+   "rotDeg": -24,
+   "params": {
+    "rect": [
+     10,
+     2.2
+    ],
+    "height": 1.5,
+    "colour": "#2d5a2a",
+    "windows": "none",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -3,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "colour": "#1b7a43",
+    "colours": [
+     "#c8362f",
+     "#f2c230",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -6,
+    -9,
+    0.4
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.0,
+    "yaw": 270
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -38,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    36,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31,
+    -8,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 1.9,
+    "colour": "#d6d0c2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -9,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 1.9,
+    "colour": "#d6d0c2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -1,
+    3.7
+   ],
+   "params": {
+    "rect": [
+     50,
+     15
+    ],
+    "height": 1.2,
+    "colour": "#2a3340",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -8,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     11,
+     5
+    ],
+    "height": 1.2,
+    "colour": "#2a3340",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dark fascia slab, dome rim ring, continuous hedges and sawtooth wing windows added; hedge is straight prisms not a curving drive, blue-lit relief wall block remains at left, drapery and seated statues only suggested, ground is still red-brown bands."
+ }
+}

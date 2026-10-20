@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/802940630",
+   "used": "greenhouse (9 x 7 m diamond plan) 2.7 m from the venue point, used as the glazed conservatory"
+  },
+  {
+   "kind": "text",
+   "used": "Wikidata: Sanitas Tea Garden, a coffee shop in Gaborone; brief: thatched shelter and tables under trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "conservatory",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bfd8d0",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bands": "#f2f2ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cfe0dc",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    -11,
+    2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "deck_height": 0.4,
+    "post_height": 2.6,
+    "roof": "pyramid",
+    "bar": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "radius": 1.5,
+    "colours": [
+     "#f6f2ea",
+     "#c9a46a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "radius": 1.5,
+    "colours": [
+     "#f6f2ea",
+     "#8a6a45"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.0,
+    "colour": "#8a6a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   44,
+   34
+  ],
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -16,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     14,
+     6
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     3,
+     12
+    ],
+    "height": 10
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; greenhouse outline real, thatched pavilion and tables are typed from the brief"
+ }
+}

@@ -1,0 +1,472 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-airport-kigali-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kigali_International_Airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/ap5.jpg",
+   "used": "two-level terminal: dark glazed ground floor behind a row of cream splayed piers, maroon fascia and roof, recessed upper storey with second maroon roof, trees at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KigaliAirport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "SteveRwanda",
+   "view": "street",
+   "file": "/tmp/places-evidence/kigali/ap0.jpg",
+   "used": "cream V-shaped sign gantry at the entrance, the terminal's long wing with splayed piers, green verge and palms, flag"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 2.2,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c2f33",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b3a36",
+    "overhang": 2.4,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     44,
+     11
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "z0": 7.4,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6b3a36",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a2f2b",
+    "overhang": 2.6,
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "loft",
+   "id": "west-wing",
+   "at": [
+    -38,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#d9cfb4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       13,
+       15
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       17,
+       16.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -29,
+    -8.6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     58,
+     0
+    ],
+    "count": 14,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#e2d6b4",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.35,
+          1.6
+         ],
+         "cx": -0.45
+        },
+        {
+         "z": 6.4,
+         "rect": [
+          0.4,
+          1.6
+         ],
+         "cx": -1.0
+        },
+        {
+         "z": 8.2,
+         "rect": [
+          0.5,
+          1.2
+         ],
+         "cx": -1.2,
+         "cy": -0.5
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#e2d6b4",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.35,
+          1.6
+         ],
+         "cx": 0.45
+        },
+        {
+         "z": 6.4,
+         "rect": [
+          0.4,
+          1.6
+         ],
+         "cx": 1.0
+        },
+        {
+         "z": 8.2,
+         "rect": [
+          0.5,
+          1.2
+         ],
+         "cx": 1.2,
+         "cy": -0.5
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "v-left",
+   "at": [
+    -58,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#e6dbb8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       1.6
+      ],
+      "cx": 2.5
+     },
+     {
+      "z": 10,
+      "rect": [
+       2.2,
+       1.6
+      ],
+      "cx": -3.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "v-right",
+   "at": [
+    -48,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#e6dbb8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       1.6
+      ],
+      "cx": -2.5
+     },
+     {
+      "z": 10,
+      "rect": [
+       2.2,
+       1.6
+      ],
+      "cx": 3.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -53,
+    -14,
+    6.2
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#f2f0ea",
+    "frameColour": "#d8cfae",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -53,
+    -14,
+    5.2
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#2a6db0",
+    "frameColour": "#f2f0ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#2a6db0"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 5,
+    "spacing": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lattice",
+   "footprint": {
+    "rect": [
+     58,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -8.6
+   ],
+   "z0": 6.6,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dbb8",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       0.8,
+       0.55
+      ],
+      "colours": [
+       "#e6dbb8",
+       "#6b3a36"
+      ],
+      "mode": "checker",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dbb8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -18,
+    2,
+    12.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     36,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "mass",
+      "footprint": {
+       "rect": [
+        4,
+        2.5
+       ]
+      },
+      "height": 1.2,
+      "storeys": 1,
+      "wall": {
+       "material": "painted-render",
+       "colour": "#5f7f4a",
+       "windows": "none",
+       "plinth": 0
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#6f9a52"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -20
+    ],
+    "height": 4
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -22
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Piers now splayed paired blades with a lattice band, maroon upper volume with plant boxes and a battered west wing; no lettering, dark ground glazing less detailed, 2019 extension and tower not modelled, V sign not tied to the terminal."
+ }
+}

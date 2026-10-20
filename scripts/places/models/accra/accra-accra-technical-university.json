@@ -4,6 +4,11 @@
  "city": "accra",
  "venueId": "accra-accra-technical-university",
  "verified": "photo",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "roadside tree crown is crude blocky leaves and too small; teaching-block balconies are simple slabs; canopy text strip is a plain blue band; railings sparse"
+ },
  "evidence": [
   {
    "kind": "photo",
@@ -121,10 +126,10 @@
       -5.0
      ]
     ],
-    "z0": 6.4,
-    "height": 1.9,
-    "colour": "#e8d49a",
-    "topColour": "#d9c58a"
+    "z0": 6.2,
+    "height": 2.3,
+    "colour": "#e8c46a",
+    "topColour": "#d9b55a"
    }
   },
   {
@@ -132,16 +137,16 @@
    "id": "canopy-board",
    "at": [
     0,
-    -4.9,
+    -5.0,
     0
    ],
    "params": {
     "rect": [
-     24,
-     0.25
+     22,
+     0.3
     ],
-    "z0": 6.9,
-    "height": 0.9,
+    "z0": 7.0,
+    "height": 0.8,
     "colour": "#2b3f9a"
    }
   },
@@ -254,12 +259,12 @@
    "type": "core/dome",
    "at": [
     0,
-    12,
-    0
+    6,
+    7.6
    ],
    "params": {
-    "radius": 5,
-    "height": 3,
+    "radius": 5.5,
+    "height": 3.2,
     "profile": "hemi",
     "colour": "#c8cccf"
    }
@@ -301,38 +306,42 @@
    "id": "teaching-block",
    "footprint": {
     "rect": [
-     34,
-     12
+     26,
+     10
     ]
    },
    "at": [
-    -34,
-    14
+    -38,
+    16
    ],
-   "height": 11.4,
+   "height": 10.5,
    "storeys": 3,
    "wall": {
     "material": "painted-render",
-    "colour": "#d8c294",
-    "windows": "ribbon",
-    "windowRatio": 0.4,
+    "colour": "#eadfba",
+    "windows": "punched",
+    "windowRatio": 0.2,
     "faces": {
-     "front": "ribbon",
+     "front": "punched",
      "back": "plain",
      "left": "plain",
      "right": "plain"
     },
-    "glassColour": "#5a6e8a",
+    "glassColour": "#4a7ab0",
     "pattern": [
      {
-      "type": "bands",
-      "colours": [
-       "#efe3c0"
+      "type": "balconies",
+      "faces": [
+       "front"
       ],
-      "height": 0.5,
-      "at": 0.5,
-      "proud": 0.4,
-      "floors": "all"
+      "depth": 1.6,
+      "width": 18,
+      "every": 19,
+      "railKind": "solid",
+      "colour": "#efe3c0",
+      "railColour": "#3f6fb0",
+      "floors": "all",
+      "continuous": true
      }
     ]
    },
@@ -352,14 +361,14 @@
     ]
    },
    "at": [
-    30,
-    18
+    34,
+    16
    ],
-   "height": 8.0,
-   "storeys": 2,
+   "height": 4.2,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d8c294",
+    "colour": "#eadfba",
     "windows": "punched",
     "windowRatio": 0.2,
     "bay": 6,
@@ -371,10 +380,293 @@
    },
    "roof": {
     "form": "hip",
-    "colour": "#9a7a5a",
-    "pitch": 12,
+    "colour": "#8a5a3c",
+    "pitch": 10,
     "overhang": 0.6
    }
+  },
+  {
+   "type": "loft",
+   "id": "big-trunk",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.9,
+      "colour": "#6b5a4a"
+     },
+     {
+      "z": 5,
+      "circle": 0.7,
+      "cx": 0.5,
+      "colour": "#6b5a4a"
+     },
+     {
+      "z": 9,
+      "circle": 0.5,
+      "cx": 2.5,
+      "cy": 0.5,
+      "colour": "#6b5a4a"
+     },
+     {
+      "z": 13,
+      "circle": 0.3,
+      "cx": 4,
+      "cy": 0.5,
+      "colour": "#6b5a4a"
+     }
+    ],
+    "colour": "#6b5a4a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "crown24",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    24,
+    -8,
+    13
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      -1.92,
+      "#6f9a4a"
+     ],
+     [
+      3.2,
+      0,
+      "#7ea85a"
+     ],
+     [
+      0.1,
+      2.5600000000000005,
+      "#7ea85a"
+     ]
+    ],
+    "segments": 10,
+    "colour": "#7ea85a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crown20",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20,
+    -7,
+    14
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      -1.68,
+      "#6f9a4a"
+     ],
+     [
+      2.8,
+      0,
+      "#7ea85a"
+     ],
+     [
+      0.1,
+      2.2399999999999998,
+      "#7ea85a"
+     ]
+    ],
+    "segments": 10,
+    "colour": "#7ea85a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crown28",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    28,
+    -8,
+    16
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      -1.7999999999999998,
+      "#6f9a4a"
+     ],
+     [
+      3.0,
+      0,
+      "#7ea85a"
+     ],
+     [
+      0.1,
+      2.4000000000000004,
+      "#7ea85a"
+     ]
+    ],
+    "segments": 10,
+    "colour": "#7ea85a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crown25",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    25,
+    -7,
+    18
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      -1.44,
+      "#6f9a4a"
+     ],
+     [
+      2.4,
+      0,
+      "#7ea85a"
+     ],
+     [
+      0.1,
+      1.92,
+      "#7ea85a"
+     ]
+    ],
+    "segments": 10,
+    "colour": "#7ea85a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-bay",
+   "at": [
+    -26.5,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     10.2
+    ],
+    "height": 10.8,
+    "colour": "#b8a27a",
+    "material": "stone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18.5,
+    -5.4,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "height": 1.4,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 3.5,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-1",
+   "at": [
+    -15.5,
+    -5.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.2,
+    "colour": "#eadfba"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18.5,
+    -5.4,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "height": 1.4,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 3.5,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    15.5,
+    -5.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.2,
+    "colour": "#eadfba"
+   },
+   "lod": [
+    0,
+    1
+   ]
   },
   {
    "type": "tree-grove",
@@ -394,22 +686,6 @@
     "kind": "broadleaf",
     "min_height": 8,
     "max_height": 12
-   }
-  },
-  {
-   "type": "tree",
-   "lod": [
-    0,
-    1
-   ],
-   "at": [
-    18,
-    -9,
-    0
-   ],
-   "params": {
-    "kind": "broadleaf",
-    "height": 10
    }
   }
  ],

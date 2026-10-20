@@ -1,0 +1,421 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/944749373",
+   "used": "real 14.9 x 5.4 m farmhouse outline (rotated), containing the venue point"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "small fenced farm: irrigated plots, farmhouse, elevated water tank, sheds, trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "farmhouse",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9a979",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d8a84",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed1",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    -22,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9588",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d8a84",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed2",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    -22,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#e6dcc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d8a84",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.6,
+    "legHeight": 5,
+    "legs": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0,
+    "height": 1.6,
+    "thickness": 0.2,
+    "colour": "#c9a979",
+    "points": [
+     [
+      -45,
+      -35
+     ],
+     [
+      45,
+      -35
+     ],
+     [
+      45,
+      35
+     ],
+     [
+      -45,
+      35
+     ],
+     [
+      -45,
+      -35
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "leafColour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -20,
+    18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       7
+      ],
+      "height": 0.35,
+      "colour": "#7a9a3c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       7
+      ],
+      "height": 0.35,
+      "colour": "#5d8a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    20,
+    18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       7
+      ],
+      "height": 0.35,
+      "colour": "#7a9a3c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -20,
+    28,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       7
+      ],
+      "height": 0.35,
+      "colour": "#5d8a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       7
+      ],
+      "height": 0.35,
+      "colour": "#7a9a3c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    20,
+    28,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       7
+      ],
+      "height": 0.35,
+      "colour": "#5d8a3a"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; site layout beyond the farmhouse outline is plausible, not observed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-osm-node-7174815188"
+}

@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/808130249",
+   "used": "real 11 x 6 m ticket-office outline (quadrilateral, bearing 145 deg) of Gare routiere de REX; the rest of the yard is typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    -22,
+    6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#80858a",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     44,
+     7
+    ]
+   },
+   "at": [
+    6,
+    10
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb7a8",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#80858a",
+    "material": "corrugated",
+    "overhang": 1.5,
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     6,
+     0
+    ],
+    "end": [
+     27,
+     6,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 3.4,
+      "colour": "#6c9ac0"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -6,
+     0
+    ],
+    "end": [
+     24,
+     -6,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       2.4
+      ],
+      "height": 2.5,
+      "colour": "#6c9ac0",
+      "topColour": "#eadfc6"
+     }
+    }
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "count": 4,
+    "spacing": 3.1,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f0",
+    "count": 4,
+    "spacing": 3.1,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "colour": "#6c9ac0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; only the 62 m2 ticket-office outline is real, the shelter, kiosks and minibus bays are typed from the brief."
+ }
+}

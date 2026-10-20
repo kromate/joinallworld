@@ -1,0 +1,639 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-airport-laayoune-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hassan_1_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anass Sedrati",
+   "view": "front",
+   "file": "/tmp/places-evidence/laayoune/airport1.jpg",
+   "used": "two-storey cream terminal front: row of eight scalloped tan vault canopies at first-floor level, dark lattice arched recesses, ground-floor glazed bays and two entrance doors, palms, roof sign letters (blank here)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%A7%D9%84%D8%AF%D8%AE%D9%84%D8%A9_%D8%AF_%D9%84%D9%85%D8%B7%D8%A7%D8%B1_%D8%AF_%D8%A7%D9%84%D8%B9%D9%8A%D9%88%D9%86.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anass Sedrati",
+   "view": "front",
+   "file": "/tmp/places-evidence/laayoune/airport2.jpg",
+   "used": "single-storey entrance pavilion with flat deep-eaved roof, lawn, palms, flag, striped kerb"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.78,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     66,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc8a0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#c9ad7c",
+    "plinth": 0.4,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8ad9a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -44,
+    6
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b896",
+    "material": "concrete",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -26.6,
+     -9,
+     5.4
+    ],
+    "end": [
+     26.6,
+     -9,
+     5.4
+    ],
+    "of": {
+     "type": "canopy",
+     "params": {
+      "form": "curved",
+      "width": 6.8,
+      "depth": 3.0,
+      "height": 0.4,
+      "rise": 2.4,
+      "thickness": 0.45,
+      "colour": "#c2a577",
+      "edgeColour": "#a98b5c"
+     }
+    },
+    "lod2Step": 2
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "round",
+    "colour": "#e6d9bd",
+    "shaftRadius": 2.0,
+    "cabRadius": 3.2,
+    "cabColour": "#4d5b63",
+    "bandColour": "#b8ad9a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -8.5,
+    9.5
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b5262c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -26.6,
+     -9.05,
+     5.8
+    ],
+    "end": [
+     26.6,
+     -9.05,
+     5.8
+    ],
+    "of": {
+     "type": "mass",
+     "id": "b",
+     "footprint": {
+      "rect": [
+       5.2,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 2.8,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#3a3028",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#3a3028"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "start": [
+     -30,
+     -9.05,
+     5.6
+    ],
+    "end": [
+     30,
+     -9.05,
+     5.6
+    ],
+    "of": {
+     "type": "mass",
+     "id": "b",
+     "footprint": {
+      "rect": [
+       1.3,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 2.2,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#4a4038",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#4a4038"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -29,
+     -9.1,
+     0.4
+    ],
+    "end": [
+     29,
+     -9.1,
+     0.4
+    ],
+    "of": {
+     "type": "mass",
+     "id": "pier",
+     "footprint": {
+      "rect": [
+       1.2,
+       0.8
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 5.2,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#e3d3b2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#cdbb98"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 22,
+    "start": [
+     -30,
+     -6,
+     9.7
+    ],
+    "end": [
+     -4,
+     -6,
+     9.7
+    ],
+    "of": {
+     "type": "mass",
+     "id": "b",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 1.3,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#aeb2b4",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#aeb2b4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "start": [
+     6,
+     -6,
+     9.7
+    ],
+    "end": [
+     30,
+     -6,
+     9.7
+    ],
+    "of": {
+     "type": "mass",
+     "id": "b",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 1.3,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#aeb2b4",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#aeb2b4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 18,
+    "start": [
+     -26,
+     -18,
+     0.1
+    ],
+    "end": [
+     26,
+     -18,
+     0.1
+    ],
+    "of": {
+     "type": "mass",
+     "id": "b",
+     "footprint": {
+      "rect": [
+       3.0,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 1.1,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#9aa09c",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#9aa09c"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ent11",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    -14,
+    -9.2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a3f7a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a3f7a"
+   },
+   "baseZ": 2.9,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ent12",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    -14,
+    -9.2
+   ],
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f8794",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8794"
+   },
+   "baseZ": 0.4,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ent13",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    12,
+    -9.2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a3f7a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a3f7a"
+   },
+   "baseZ": 2.9,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ent14",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    12,
+    -9.2
+   ],
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f8794",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8794"
+   },
+   "baseZ": 0.4,
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -12
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -13
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -33,
+     -16
+    ],
+    "height": 8
+   }
+  ],
+  "cars": [],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "critic fixes only partly landed: 8 separate scalloped canopies and the removal of the blank entrance blocks, parking and flat sign board are done; the added recess arches, lattice windows, piers, glazed entrance doors, roof letters and barrier fence are authored as masses in line arrays that did not render (array-of-mass form not accepted as intended), so the facade still reads as regular punched windows"
+ }
+}

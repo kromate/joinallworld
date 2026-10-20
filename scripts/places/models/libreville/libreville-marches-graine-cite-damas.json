@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-marches-graine-cite-damas",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1136729229",
+   "used": "real outline 25x12 m (containing, 287 m2, bearing 52)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mapillary_(5243458702412575,_uV6ALUj7S0YI3M1qxZyKgk)_(walkerb10)_2022-05-25_12H37M24S000.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "walkerb10",
+   "view": "street",
+   "used": "programme style only: grey metal roof, green accents; not compared to this site"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b0",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.5,
+    "bands": "#a9c0b8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f6f66",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "count": 5,
+    "height": 4,
+    "radius": 0.3,
+    "colour": "#f6f3ea",
+    "roofColour": "#a9c0b8",
+    "roofDepth": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 4.5,
+    "colour": "#a9c0b8",
+    "posts": false
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -10,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e9dfc6",
+     "#2f5f9a",
+     "#c43a2f"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this site; real small outline is used but the brief's 55x28 hall was shrunk to the OSM footprint and details are typed."
+ }
+}

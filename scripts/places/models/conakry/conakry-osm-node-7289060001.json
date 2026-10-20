@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-osm-node-7289060001",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/549177961",
+   "used": "containing 193 m2 irregular building outline (bearing 50) as the shop block; shutter fronts placed on its south-west face"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/conakry.json#conakry-osm-node-7289060001",
+   "used": "painted shop, corrugated roof, rolled shutter front, awning, blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c9a0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#4f7a9a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b7f84",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 1.1
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -8.6,
+    -8.0
+   ],
+   "rotDeg": -50,
+   "params": {
+    "width": 3.4,
+    "height": 3.2,
+    "kind": "shutter",
+    "colour": "#4f7a9a"
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -5.0,
+    -12.2
+   ],
+   "rotDeg": -50,
+   "params": {
+    "width": 3.4,
+    "height": 3.2,
+    "kind": "shutter",
+    "colour": "#b9b3a3"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -9.6,
+    -9.2
+   ],
+   "rotDeg": -50,
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "height": 2.8,
+    "colours": [
+     "#4f7a9a",
+     "#e8e4d8"
+    ]
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -14,
+    -8
+   ],
+   "params": {
+    "height": 4,
+    "width": 1.6,
+    "colour": "#4f7a9a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    14
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; unnamed OSM outline may exceed the shop alone."
+ }
+}

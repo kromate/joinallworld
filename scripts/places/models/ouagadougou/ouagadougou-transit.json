@@ -1,0 +1,234 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/28068278",
+   "used": "station site of about 107 x 147 m (bus_station, name match): the red-earth coach yard, hall placed along the long back edge. No photo of Ouaga-Inter found (Commons only has the different Sogebaf station)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efebe2",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "none"
+    },
+    "bands": "#2f6b9a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8790",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "offices",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -48,
+    46
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a4a35",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 8,
+    "height": 4.4,
+    "columns": 8,
+    "colour": "#7d8790",
+    "edgeColour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -12,
+    20,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "kind": "coach",
+    "density": 0.8,
+    "colours": [
+     "#f1f1ee",
+     "#2f6b9a",
+     "#c8362f"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "kind": "coach",
+    "density": 0.6,
+    "colours": [
+     "#f1f1ee",
+     "#d9a441",
+     "#2f6b9a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#8a4a35"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    32,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9a441"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    36,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.5,
+    "bottom": 3,
+    "colour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    60.5,
+    6.2
+   ],
+   "params": {
+    "width": 16,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#2f6b9a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -48,
+     -30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     48,
+     -10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -50,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   150
+  ]
+ }
+}

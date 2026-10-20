@@ -1,0 +1,226 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sierra_Leone_House_of_Parliament_(1430592766).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jared & Melanie & Huxley Ponchot",
+   "view": "front",
+   "file": "/tmp/places-evidence/freetown/parl2.jpg",
+   "used": "dark board-marked brutalist concrete, ground plinth wall with deep-set entrance, projecting upper storey with strip glazing and heavy overhanging flat roof, low shallow dome behind, cylindrical tower right, three white flagpoles on a huge paved concrete plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parliament_of_Sierra_Leone_(1428823795).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jared & Melanie & Huxley Ponchot",
+   "view": "interior",
+   "used": "chamber interior only: circular debating hall under the dome; not modelled in detail"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/33080070",
+   "used": "overall size (about 43 m square, rotated 128 deg); modelled as a rect front block plus dome"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.48,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     76,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#4a4742",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55524c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     70,
+     28
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "z0": 5.5,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3f3c38",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#55524c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b4944",
+    "overhang": 3.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    8,
+    12.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      3.2,
+      "#5a5750"
+     ],
+     [
+      10,
+      2.6,
+      "#5a5750"
+     ],
+     [
+      14,
+      1.4,
+      "#5a5750"
+     ],
+     [
+      0,
+      0,
+      "#5a5750"
+     ]
+    ],
+    "segments": 28
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    7,
+    5.5
+   ],
+   "params": {
+    "radius": 3.8,
+    "n": 20,
+    "height": 14,
+    "colour": "#45423d"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "colour": "#e6e8ea",
+    "count": 3,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.5,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#6a675f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     90,
+     40
+    ]
+   },
+   "at": [
+    0,
+    -32
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#77746b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b786f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "dome and tower are simple; real board-marked texture and plinth openings not reproduced; chamber interior not modelled"
+ }
+}

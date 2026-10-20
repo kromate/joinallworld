@@ -1,0 +1,253 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yaounde.json",
+   "used": "covered concrete trading hall 90x50, long corrugated roof, louvre bands, street stalls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/762802854",
+   "used": "NOT used: nearest match 10 m away is a 215 m2 building, too small to be the market hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     90,
+     36
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c9c2b0",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "louvre",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.6,
+    "bands": "#b4654a",
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    -17
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e1cd",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#b4654a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 5,
+    "height": 3.8,
+    "colour": "#b4654a",
+    "edgeColour": "#e9e1cd",
+    "columns": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 4.2,
+    "colour": "#b4654a",
+    "frameColour": "#c9c2b0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    44,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 3.6,
+    "colour": "#2f6a9a",
+    "frameColour": "#c9c2b0",
+    "posts": true
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    -24
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#c0392b",
+     "#2f6a9a",
+     "#e0b03a",
+     "#3a8a4a",
+     "#d9732b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -24
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#d9732b",
+     "#3a8a4a",
+     "#e0b03a",
+     "#2f6a9a",
+     "#c0392b"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -34,
+    -10
+   ],
+   "params": {
+    "width": 7,
+    "depth": 1.6,
+    "colours": [
+     "#c0392b",
+     "#e9e1cd"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    34
+   ],
+   "params": {
+    "length": 40,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7d8286"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    26
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline of the real hall; size and program from the brief only."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-marche-de-nkol-eton"
+}

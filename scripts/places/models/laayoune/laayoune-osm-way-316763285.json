@@ -1,0 +1,240 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-way-316763285",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/316763285",
+   "used": "site polygon only (163 x 100 m campus plot, not a building outline): sets the walled sand yard extent"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey cream and ochre U block, central arched entrance, two flagpoles, sand courtyard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3b0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bands": "#c9a77c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     16,
+     35
+    ]
+   },
+   "at": [
+    -25,
+    9.5
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#c9a77c",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     16,
+     35
+    ]
+   },
+   "at": [
+    25,
+    9.5
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#c9a77c",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "right": "plain",
+     "left": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 7.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5ecd8",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "gate-arch",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 6,
+    "thickness": 1.2,
+    "opening": 3.4,
+    "colour": "#f5ecd8",
+    "trim": "#c9a77c",
+    "finials": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -7,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c1272d"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    7,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#006233"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "colour": "#c9a77c",
+    "pillarEvery": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -20
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -20
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; U block from the brief, details generic"
+ }
+}

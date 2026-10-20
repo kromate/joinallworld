@@ -56,15 +56,40 @@
    "height": 5.2,
    "storeys": 1,
    "wall": {
-    "material": "concrete",
-    "colour": "#5f5b55",
-    "windows": "none",
-    "bay": 8
+    "material": "painted-render",
+    "colour": "#4a4540",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#6f7a82",
-    "parapet": 0.3
+    "colour": "#3b3d40"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base-red-right",
+   "footprint": {
+    "rect": [
+     44,
+     0.6
+    ]
+   },
+   "at": [
+    22,
+    -7.1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a3328",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3328"
    }
   },
   {
@@ -72,36 +97,35 @@
    "id": "clerestory",
    "footprint": {
     "rect": [
-     36,
-     11
+     40,
+     10
     ]
    },
    "at": [
-    -4,
+    6,
     1
    ],
    "rotDeg": 0,
    "z0": 5.2,
-   "height": 4.2,
+   "height": 4.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#d6cdb0",
+    "colour": "#d9d0b2",
     "windows": "ribbon",
-    "windowRatio": 0.45,
+    "windowRatio": 0.55,
     "faces": {
      "front": "ribbon",
      "back": "ribbon",
      "left": "none",
      "right": "none"
     },
-    "glassColour": "#4d5a66",
-    "bay": 4.2
+    "glassColour": "#1f2830",
+    "bay": 4.0
    },
    "roof": {
     "form": "flat",
-    "colour": "#a8a496",
-    "parapet": 0.5
+    "colour": "#a8a496"
    }
   },
   {
@@ -109,81 +133,124 @@
    "id": "sign-board",
    "footprint": {
     "rect": [
-     17,
-     0.8
+     14,
+     0.5
     ]
    },
    "at": [
-    -4,
-    -4.4
+    6,
+    0
    ],
    "rotDeg": 0,
-   "z0": 9.4,
-   "height": 1.6,
+   "z0": 9.6,
+   "height": 1.4,
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#2f4a45",
+    "colour": "#f2f0ea",
     "windows": "none"
    },
    "roof": {
     "form": "flat",
-    "colour": "#2f4a45"
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -3,
+    -1,
+    11.0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#2f6a45",
+    "profile": [
+     [
+      1.0,
+      0
+     ],
+     [
+      1.0,
+      0.5
+     ],
+     [
+      0,
+      0.5
+     ]
+    ]
    }
   },
   {
    "type": "canopy",
    "at": [
     0,
-    -8.5,
+    -9,
     0
    ],
    "params": {
     "form": "flat",
     "width": 88,
-    "depth": 7,
-    "height": 4.6,
-    "thickness": 0.5,
+    "depth": 8,
+    "height": 4.8,
+    "thickness": 0.4,
     "columns": 11,
-    "colour": "#7f8c97",
-    "edgeColour": "#5d6872"
+    "colour": "#4d5358",
+    "edgeColour": "#3b4044"
    }
   },
   {
    "type": "mass",
-   "id": "end-block",
+   "id": "end-block-lower",
    "footprint": {
     "rect": [
-     15,
-     12
+     13,
+     11
     ]
    },
    "at": [
     51,
-    2
+    -3
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 7,
-   "storeys": 2,
+   "height": 4.2,
+   "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e9e5dd",
-    "windows": "punched",
-    "windowRatio": 0.12,
-    "faces": {
-     "front": "punched",
-     "back": "none",
-     "left": "none",
-     "right": "none"
-    },
-    "glassColour": "#3b4046",
-    "bay": 6
+    "colour": "#ece8e0",
+    "windows": "none"
    },
    "roof": {
     "form": "flat",
+    "colour": "#ece8e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block-upper",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    51,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
     "colour": "#b13a35",
-    "parapet": 1.2
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b13a35"
    }
   },
   {
@@ -241,29 +308,268 @@
    }
   },
   {
-   "type": "silo",
+   "type": "revolve",
    "at": [
-    -56,
-    8,
+    -58,
+    12,
     0
    ],
    "params": {
-    "radius": 6.5,
-    "height": 30,
-    "colour": "#b6b6b0"
+    "segments": 20,
+    "colour": "#a9aaa6",
+    "profile": [
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      17
+     ],
+     [
+      0,
+      17
+     ]
+    ]
    }
   },
   {
-   "type": "silo",
+   "type": "revolve",
    "at": [
-    -56,
-    -4,
+    -58,
+    2,
     0
    ],
    "params": {
-    "radius": 6.5,
-    "height": 30,
-    "colour": "#b6b6b0"
+    "segments": 20,
+    "colour": "#a9aaa6",
+    "profile": [
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      17
+     ],
+     [
+      0,
+      17
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-mast0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -54,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c8f92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-jib0",
+   "footprint": {
+    "rect": [
+     11,
+     0.9
+    ]
+   },
+   "at": [
+    -50,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 14,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-mast1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -42,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c8f92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-jib1",
+   "footprint": {
+    "rect": [
+     11,
+     0.9
+    ]
+   },
+   "at": [
+    -38,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-mast2",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c8f92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-jib2",
+   "footprint": {
+    "rect": [
+     11,
+     0.9
+    ]
+   },
+   "at": [
+    -26,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 18,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -20,
+     0
+    ],
+    "end": [
+     18,
+     -20,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.6,
+        1.2
+       ],
+       "height": 0.5,
+       "colour": "#b8302a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.5
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.7
+       ],
+       "height": 2.0,
+       "colour": "#f2f2f2"
+      }
+     }
+    ]
    }
   },
   {
@@ -290,6 +596,6 @@
  "review": {
   "rounds": 2,
   "match": "fair",
-  "gaps": "fuel pumps, cranes and the red rear wall are not modelled; building shortened to fit the 120 m clamp"
+  "gaps": "crane lattices and cable/fuel-pump details are simplified blocks; building shortened to fit the 120 m clamp"
  }
 }

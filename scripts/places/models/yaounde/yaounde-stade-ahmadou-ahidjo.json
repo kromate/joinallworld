@@ -1,0 +1,611 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-stade-ahmadou-ahidjo",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_Ahmadou_Ahidjo_2014_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bdx",
+   "view": "interior",
+   "file": "/tmp/places-evidence/yaounde/stade2.jpg",
+   "used": "open concrete bowl with ochre-yellow raked seating and a few red blocks, one covered stand with pale tent roof and red-brown end frame on the far side, dark running track around green pitch, tall floodlight masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_Omnisports_Ahmadou_Ahidjo_Yaound%C3%A9_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kondah",
+   "view": "interior",
+   "file": "/tmp/places-evidence/yaounde/stade1.jpg",
+   "used": "yellow plastic seats, red-brown running track, stepped upper tier with cantilever light roof edge, scoreboard screen on far stand"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7284142",
+   "used": "oval bowl proportions (about 250 x 210 m outline); modelled at reduced scale to fit the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      38.0,
+      0.0
+     ],
+     [
+      36.71,
+      7.76
+     ],
+     [
+      32.91,
+      15.0
+     ],
+     [
+      26.87,
+      21.21
+     ],
+     [
+      19.0,
+      25.98
+     ],
+     [
+      9.84,
+      28.98
+     ],
+     [
+      0.0,
+      30.0
+     ],
+     [
+      -9.84,
+      28.98
+     ],
+     [
+      -19.0,
+      25.98
+     ],
+     [
+      -26.87,
+      21.21
+     ],
+     [
+      -32.91,
+      15.0
+     ],
+     [
+      -36.71,
+      7.76
+     ],
+     [
+      -38.0,
+      0.0
+     ],
+     [
+      -36.71,
+      -7.76
+     ],
+     [
+      -32.91,
+      -15.0
+     ],
+     [
+      -26.87,
+      -21.21
+     ],
+     [
+      -19.0,
+      -25.98
+     ],
+     [
+      -9.84,
+      -28.98
+     ],
+     [
+      -0.0,
+      -30.0
+     ],
+     [
+      9.84,
+      -28.98
+     ],
+     [
+      19.0,
+      -25.98
+     ],
+     [
+      26.87,
+      -21.21
+     ],
+     [
+      32.91,
+      -15.0
+     ],
+     [
+      36.71,
+      -7.76
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.15,
+    "colour": "#7a3a2e",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      27.0,
+      0.0
+     ],
+     [
+      26.08,
+      4.92
+     ],
+     [
+      23.38,
+      9.5
+     ],
+     [
+      19.09,
+      13.44
+     ],
+     [
+      13.5,
+      16.45
+     ],
+     [
+      6.99,
+      18.35
+     ],
+     [
+      0.0,
+      19.0
+     ],
+     [
+      -6.99,
+      18.35
+     ],
+     [
+      -13.5,
+      16.45
+     ],
+     [
+      -19.09,
+      13.44
+     ],
+     [
+      -23.38,
+      9.5
+     ],
+     [
+      -26.08,
+      4.92
+     ],
+     [
+      -27.0,
+      0.0
+     ],
+     [
+      -26.08,
+      -4.92
+     ],
+     [
+      -23.38,
+      -9.5
+     ],
+     [
+      -19.09,
+      -13.44
+     ],
+     [
+      -13.5,
+      -16.45
+     ],
+     [
+      -6.99,
+      -18.35
+     ],
+     [
+      -0.0,
+      -19.0
+     ],
+     [
+      6.99,
+      -18.35
+     ],
+     [
+      13.5,
+      -16.45
+     ],
+     [
+      19.09,
+      -13.44
+     ],
+     [
+      23.38,
+      -9.5
+     ],
+     [
+      26.08,
+      -4.92
+     ]
+    ],
+    "z0": 0.25,
+    "height": 0.1,
+    "colour": "#5d9a45",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     33
+    ],
+    "end": [
+     34,
+     33
+    ],
+    "rows": 18,
+    "rise": 0.75,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#e0ac2a",
+    "concreteColour": "#b3ae9f",
+    "underColour": "#8d897e",
+    "seatColours": [
+     "#e0ac2a",
+     "#4e8a3c",
+     "#b5402f",
+     "#d9a22a",
+     "#3f7f3a",
+     "#c24a35"
+    ],
+    "blocks": 4,
+    "flip": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 38,
+    "radiusY": 30,
+    "startDeg": 145,
+    "endDeg": 215,
+    "rows": 14,
+    "rise": 0.7,
+    "run": 0.8,
+    "firstHeight": 2,
+    "facetDeg": 20,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#e0ac2a",
+    "concreteColour": "#b3ae9f",
+    "underColour": "#8d897e",
+    "seatColours": [
+     "#e0ac2a",
+     "#4e8a3c",
+     "#b5402f",
+     "#d9a22a",
+     "#3f7f3a",
+     "#c24a35"
+    ],
+    "blocks": 4
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 38,
+    "radiusY": 30,
+    "startDeg": 215,
+    "endDeg": 325,
+    "rows": 14,
+    "rise": 0.7,
+    "run": 0.8,
+    "firstHeight": 2,
+    "facetDeg": 20,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#e0ac2a",
+    "concreteColour": "#b3ae9f",
+    "underColour": "#8d897e",
+    "seatColours": [
+     "#e0ac2a",
+     "#4e8a3c",
+     "#b5402f",
+     "#d9a22a",
+     "#3f7f3a",
+     "#c24a35"
+    ],
+    "blocks": 4
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 38,
+    "radiusY": 30,
+    "startDeg": 325,
+    "endDeg": 395,
+    "rows": 14,
+    "rise": 0.7,
+    "run": 0.8,
+    "firstHeight": 2,
+    "facetDeg": 20,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#e0ac2a",
+    "concreteColour": "#b3ae9f",
+    "underColour": "#8d897e",
+    "seatColours": [
+     "#e0ac2a",
+     "#4e8a3c",
+     "#b5402f",
+     "#d9a22a",
+     "#3f7f3a",
+     "#c24a35"
+    ],
+    "blocks": 4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      40
+     ],
+     [
+      34,
+      40
+     ],
+     [
+      34,
+      52
+     ],
+     [
+      -34,
+      52
+     ]
+    ],
+    "z0": 17,
+    "height": 0.8,
+    "colour": "#e6e0cc",
+    "top": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "points": [
+       [
+        -0.3,
+        0
+       ],
+       [
+        0.3,
+        0
+       ],
+       [
+        0.3,
+        0.6
+       ],
+       [
+        -0.3,
+        0.6
+       ]
+      ],
+      "z0": 0,
+      "height": 17,
+      "colour": "#8d897e",
+      "top": true
+     }
+    },
+    "mode": "line",
+    "start": [
+     -32,
+     51
+    ],
+    "end": [
+     32,
+     51
+    ],
+    "count": 8,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      48
+     ],
+     [
+      -34,
+      48
+     ],
+     [
+      -34,
+      57
+     ],
+     [
+      -42,
+      57
+     ]
+    ],
+    "z0": 8,
+    "height": 10,
+    "colour": "#a5503b",
+    "top": true
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    -44,
+    12
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "post_height": 2,
+    "facing": "north"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -46,
+    38,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    46,
+    38,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -44
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     -44
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -58
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Reduced scene scale; main stand is a flat pale canopy on posts with a red end wing block (not a curved swept frame); tent-roof folds, upper terrace and scoreboard screen detail not modelled."
+ }
+}

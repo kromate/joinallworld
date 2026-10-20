@@ -1,0 +1,349 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1005223767",
+   "used": "campus extent only (139x132 m): the real outline is the whole hospital grounds, so wards are placed inside it as separate pavilions"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-1",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#7aa08a",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a4a35",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-2",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#7aa08a",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a4a35",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-3",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#7aa08a",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a4a35",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "maternity",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    32,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#7aa08a",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a4a35",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    26,
+    -42
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d9c0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#a86a4a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a35",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "theatre",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    34,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe4de",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a82",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -4,
+    -23
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "colour": "#e8e1cf",
+    "roofColour": "#7a4a35"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -4,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "colour": "#e8e1cf",
+    "roofColour": "#7a4a35"
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -30,
+    -45.5
+   ],
+   "params": {
+    "length": 46,
+    "depth": 2.4,
+    "eaveHeight": 2.9,
+    "attachHeight": 3.8,
+    "colour": "#e8e1cf",
+    "roofColour": "#7a4a35"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    26,
+    -58
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "colour": "#e8e1cf",
+    "roofColour": "#7a4a35"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    26,
+    -55,
+    4.2
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -66,
+    -66
+   ],
+   "params": {
+    "length": 130,
+    "height": 2,
+    "colour": "#d6cfbd"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -66
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -58,
+    -52
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   150,
+   145
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real outline is the whole hospital grounds so wards, admin block and theatre are plausible typed pavilions inside it."
+ }
+}

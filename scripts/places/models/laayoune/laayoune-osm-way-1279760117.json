@@ -1,0 +1,322 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1279760117",
+   "used": "real park outline (about 206 x 145 m rhombus-rectangle) rotated square and scaled to 55 percent for the scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: fenced sandy park, gravel paths, young palms, low shelters, kiosk; no photos found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; plan is the real outline but rotated to the axes, planting and shelters are typical rather than surveyed"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -64.8,
+      44.8
+     ],
+     [
+      48.5,
+      44.8
+     ],
+     [
+      62.7,
+      -33.9
+     ],
+     [
+      -46.4,
+      -55.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#dcc59e",
+    "top": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -56.8,
+      0
+     ],
+     [
+      54.7,
+      0
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -47.7
+     ],
+     [
+      0,
+      36.8
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -42.5,
+      -33.5
+     ],
+     [
+      42.5,
+      33.5
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#c9b896"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -49.75,
+     -36.25
+    ],
+    "end": [
+     49.75,
+     -36.25
+    ],
+    "count": 9,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -49.75,
+     36.25
+    ],
+    "end": [
+     49.75,
+     36.25
+    ],
+    "count": 9,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 5.5
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -31.875,
+     -14
+    ],
+    "end": [
+     -31.875,
+     14
+    ],
+    "count": 4,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 4.5
+     }
+    }
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    31.875,
+    20.1,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#b3a898"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -31.875,
+    25.125,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#b3a898"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    -25.125,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#e1c49c"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -6,
+    5,
+    0.2
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -64.8,
+      44.8
+     ],
+     [
+      48.5,
+      44.8
+     ],
+     [
+      62.7,
+      -33.9
+     ],
+     [
+      -46.4,
+      -55.7
+     ],
+     [
+      -64.8,
+      44.8
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 0.2,
+    "colour": "#c9b896"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -55.599999999999994,
+    -5.450000000000003,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#c9b896",
+    "board_colour": "#f1e7d3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-way-1279760117"
+}

@@ -1,0 +1,231 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-way-1450938789",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/khartoum.json",
+   "used": "neighbourhood market on the Omdurman edge: tin-roofed stalls and a few small shops around a sand lot, about 90 x 70 m, mud-render and sand colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1450938789",
+   "used": "identity only: the tagged outline is a 890 m long thin strip, too stretched to use, so a typical 90 x 70 m lot is composed instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "depth": 4,
+    "height": 3.4,
+    "roof": "shed",
+    "unit_width": 3,
+    "veranda": 1.6,
+    "shutter_colours": [
+     "#798f9a",
+     "#a85a3e",
+     "#5d7a64"
+    ],
+    "awning_colours": [
+     "#e8dfc9",
+     "#b7503f",
+     "#798f9a"
+    ],
+    "wall_colour": "#cbb68c",
+    "roof_colour": "#8a9498"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 3.6,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.3,
+    "wall_colour": "#c3ad82",
+    "roof_colour": "#9a6a52"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -20,
+    4,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "gable",
+    "wall_colour": "#cbb68c",
+    "roof_colour": "#8a9498"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "wall_colour": "#cbb68c",
+    "roof_colour": "#9a6a52"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e8dfc9",
+     "#798f9a",
+     "#b7503f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#798f9a",
+     "#e8dfc9",
+     "#c8a24a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    2,
+    14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#b7503f",
+     "#e8dfc9",
+     "#798f9a"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    34,
+    20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2.5,
+    "height": 2.6,
+    "colours": [
+     "#b7503f",
+     "#e8dfc9"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    36,
+    34,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "legs": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this unnamed market exists; layout is a plausible sand lot with a shop row on the north side, two gabled sheds, umbrella stalls and acacia-like shade trees, typical of Omdurman edge markets, not this exact plan."
+ }
+}

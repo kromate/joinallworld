@@ -1,0 +1,153 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/477618336",
+   "used": "building footprint (containing match, 288 m2); no photo of the building found on Commons, Wikipedia or Wikidata"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/hargeisa.json#hargeisa-community-notices",
+   "used": "one storey, 4.5 m, pale green render, flat roof, walled compound with gate and flag"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9d3c0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "glassColour": "#4a5a63",
+    "bands": "#f0ede4",
+    "plinth": 0.3,
+    "parapet": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a69f",
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#e6e1d3",
+    "points": [
+     [
+      -22,
+      -20
+     ],
+     [
+      22,
+      -20
+     ],
+     [
+      22,
+      20
+     ],
+     [
+      -22,
+      20
+     ],
+     [
+      -22,
+      -20
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    8,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "pillar": 0.6,
+    "leaf": "bars",
+    "colour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#c8362f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -14,
+     -14
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     16,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: colours, window rhythm and compound walls are typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-community-notices"
+}

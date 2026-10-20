@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-way-1264837437",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1264837437",
+   "used": "footprint of the named school block (42 x 26 m, name-matched)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey terracotta-pink classroom block, covered walkway, fenced sand playground, gate, flags"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d79a76",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#f1e7d3",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    28,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 10,
+    "colour": "#b6323a"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    32,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 10,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "height": 3,
+    "colour": "#a8654a",
+    "board_colour": "#f1e7d3"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "points": [
+     [
+      -45,
+      -38
+     ],
+     [
+      45,
+      -38
+     ],
+     [
+      45,
+      40
+     ],
+     [
+      -45,
+      40
+     ],
+     [
+      -45,
+      -38
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#c9b896"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No photo; block outline is the real one, facade colour, storeys and gate/fence layout are from the brief; walkway omitted."
+ }
+}

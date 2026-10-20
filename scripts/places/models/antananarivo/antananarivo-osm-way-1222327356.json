@@ -1,0 +1,245 @@
+{
+ "venueId": "antananarivo-osm-way-1222327356",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1222327356",
+   "used": "real ground outline (124 x 73 m skewed quadrilateral) used as the laterite apron; no photo found anywhere"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/antananarivo.json#antananarivo-osm-way-1222327356",
+   "used": "small club ground with one covered main stand, blue trim, grey corrugated roof, four floodlights, perimeter wall"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58.3,
+      -34.5
+     ],
+     [
+      -3,
+      -71.7
+     ],
+     [
+      61.3,
+      34.3
+     ],
+     [
+      -3,
+      69.3
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#b7704a"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "rotDeg": 31,
+   "params": {
+    "length": 68,
+    "width": 44,
+    "stripes": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 31,
+   "params": {
+    "start": [
+     -26,
+     -30
+    ],
+    "end": [
+     26,
+     -30
+    ],
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "flip": true,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 5,
+    "seatColour": "#2f5d8a",
+    "concreteColour": "#b5ada0",
+    "underColour": "#7d786f",
+    "canopy": {
+     "height": 6.5,
+     "depth": 8,
+     "thickness": 0.5,
+     "slopeDeg": 6,
+     "colour": "#6b6f73",
+     "edgeColour": "#2f5d8a"
+    }
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "rotDeg": 31,
+   "lod": [
+    0,
+    2
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#b5ada0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -48,
+    0,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#b5ada0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    30,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    30,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; outline is the real OSM polygon but stand position, colours and masts follow the brief only"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.06
+ }
+}

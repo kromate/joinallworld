@@ -1,0 +1,644 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-airport-kampala-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entebbe_Airport_DF-ST-02-03027.jpg",
+   "licence": "public domain (US DoD)",
+   "author": "US Department of Defense",
+   "view": "front",
+   "file": "/tmp/places-evidence/kampala/air2.jpg",
+   "used": "long low two-storey terminal, glazed upper band, flat dark roof, small cores at the end, light concrete walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entebbe_Uganda_Airport_Old_Tower1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Micha Sender",
+   "view": "front",
+   "file": "/tmp/places-evidence/kampala/air1.jpg",
+   "used": "old control tower: white-grey boxy 4-storey shaft with glazed stair strips, balcony, glazed cab under a green pyramidal roof; low annex; red steel hangar frame beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/87270697",
+   "used": "terminal outline (about 159 x 74 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d1c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#6f8798",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#9a958a",
+       "#d6d1c4"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8c88",
+    "overhang": 1.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "core-a",
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "z0": 11.1,
+    "height": 3,
+    "colour": "#cfcbc0",
+    "topColour": "#8d8c88"
+   },
+   "at": [
+    -30,
+    -60
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "core-b",
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "z0": 11.1,
+    "height": 3,
+    "colour": "#cfcbc0",
+    "topColour": "#8d8c88"
+   },
+   "at": [
+    30,
+    -30
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#c9cccb",
+    "topColour": "#c8cccc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "storeys": 4,
+    "trimColour": "#c4c8c8"
+   },
+   "at": [
+    -63,
+    -22
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-annex",
+   "params": {
+    "rect": [
+     24,
+     10
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#c9cdcd",
+    "topColour": "#b8bcbc",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "storeys": 1
+   },
+   "at": [
+    -80,
+    -24
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-balcony",
+   "params": {
+    "rect": [
+     12.5,
+     12.5
+    ],
+    "z0": 19,
+    "height": 1.3,
+    "colour": "#c8cccc",
+    "topColour": "#c8cccc"
+   },
+   "at": [
+    -63,
+    -22
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-cab",
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 20.1,
+    "height": 3.2,
+    "colour": "#496a78",
+    "topColour": "#496a78",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#4f7886"
+   },
+   "at": [
+    -63,
+    -22
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tower-roof",
+   "params": {
+    "colour": "#2f7a4c",
+    "sections": [
+     {
+      "z": 23.4,
+      "rect": [
+       9.6,
+       9.6
+      ]
+     },
+     {
+      "z": 28.5,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     }
+    ]
+   },
+   "at": [
+    -63,
+    -22
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "central-block",
+   "params": {
+    "rect": [
+     44,
+     26
+    ],
+    "z0": 10.6,
+    "height": 6.5,
+    "colour": "#d0cbbd",
+    "topColour": "#8d8c88",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#6f8798",
+    "storeys": 2
+   },
+   "at": [
+    0,
+    -10
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "overhang-slab",
+   "params": {
+    "rect": [
+     48,
+     30
+    ],
+    "z0": 17.1,
+    "height": 0.7,
+    "colour": "#bdb8ab",
+    "topColour": "#8d8c88"
+   },
+   "at": [
+    0,
+    -10
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-0",
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "z0": 0.3,
+    "height": 10.4,
+    "colour": "#bdb8ab",
+    "topColour": "#bdb8ab"
+   },
+   "at": [
+    -60,
+    -38.5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-1",
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "z0": 0.3,
+    "height": 10.4,
+    "colour": "#bdb8ab",
+    "topColour": "#bdb8ab"
+   },
+   "at": [
+    -40,
+    -38.5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-2",
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "z0": 0.3,
+    "height": 10.4,
+    "colour": "#bdb8ab",
+    "topColour": "#bdb8ab"
+   },
+   "at": [
+    -20,
+    -38.5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-3",
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "z0": 0.3,
+    "height": 10.4,
+    "colour": "#bdb8ab",
+    "topColour": "#bdb8ab"
+   },
+   "at": [
+    0,
+    -38.5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-4",
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "z0": 0.3,
+    "height": 10.4,
+    "colour": "#bdb8ab",
+    "topColour": "#bdb8ab"
+   },
+   "at": [
+    20,
+    -38.5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-5",
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "z0": 0.3,
+    "height": 10.4,
+    "colour": "#bdb8ab",
+    "topColour": "#bdb8ab"
+   },
+   "at": [
+    40,
+    -38.5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-6",
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "z0": 0.3,
+    "height": 10.4,
+    "colour": "#bdb8ab",
+    "topColour": "#bdb8ab"
+   },
+   "at": [
+    60,
+    -38.5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "rect": [
+     140,
+     36
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#7d7d7a",
+    "topColour": "#7d7d7a"
+   },
+   "at": [
+    0,
+    -62
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "taxi-line",
+   "params": {
+    "rect": [
+     140,
+     0.5
+    ],
+    "z0": 0.08,
+    "height": 0.03,
+    "colour": "#d8b52a",
+    "topColour": "#d8b52a"
+   },
+   "at": [
+    0,
+    -76
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "plane-body-0",
+   "params": {
+    "segments": 8,
+    "colour": "#e8e6e0",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      1.9,
+      0.1
+     ],
+     [
+      2.2,
+      2.6
+     ],
+     [
+      2.0,
+      4.6
+     ],
+     [
+      0.2,
+      5.0
+     ]
+    ]
+   },
+   "rotDeg": 90,
+   "at": [
+    20,
+    -62
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plane-wing-0",
+   "params": {
+    "rect": [
+     6,
+     30
+    ],
+    "z0": 1.8,
+    "height": 0.4,
+    "colour": "#d6d4cf",
+    "topColour": "#d6d4cf"
+   },
+   "at": [
+    20,
+    -62
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plane-tail-0",
+   "params": {
+    "rect": [
+     0.5,
+     5
+    ],
+    "z0": 4.5,
+    "height": 5.5,
+    "colour": "#b8322c",
+    "topColour": "#b8322c"
+   },
+   "at": [
+    20,
+    -62
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "plane-body-1",
+   "params": {
+    "segments": 8,
+    "colour": "#e8e6e0",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      1.9,
+      0.1
+     ],
+     [
+      2.2,
+      2.6
+     ],
+     [
+      2.0,
+      4.6
+     ],
+     [
+      0.2,
+      5.0
+     ]
+    ]
+   },
+   "rotDeg": 90,
+   "at": [
+    -30,
+    -56
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plane-wing-1",
+   "params": {
+    "rect": [
+     6,
+     30
+    ],
+    "z0": 1.8,
+    "height": 0.4,
+    "colour": "#d6d4cf",
+    "topColour": "#d6d4cf"
+   },
+   "at": [
+    -30,
+    -56
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plane-tail-1",
+   "params": {
+    "rect": [
+     0.5,
+     5
+    ],
+    "z0": 4.5,
+    "height": 5.5,
+    "colour": "#b8322c",
+    "topColour": "#b8322c"
+   },
+   "at": [
+    -30,
+    -56
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "params": {
+    "rect": [
+     140,
+     30
+    ],
+    "z0": 0,
+    "height": 8,
+    "topScale": [
+     0.6,
+     0.3
+    ],
+    "colour": "#4f7a3e",
+    "topColour": "#4f7a3e"
+   },
+   "at": [
+    0,
+    62
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 3,
+  "treeKind": "palm",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Added raised central block with overhang slab, solid piers under the glazed band, greyer tower with wider balcony and steeper green roof, tarmac apron with yellow taxi line, two simple aircraft and a green hillside; aircraft are crude, bay rhythm of the glazing and the 1980s details of the photo are approximate, OSM outline still scaled."
+ }
+}

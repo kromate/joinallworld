@@ -1,0 +1,237 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-node-6360028085",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "No photo or description of this specific place was found (brief confidence low); OSM nearest shed (20 m2) not clearly this place so not used; composed as the cleared turning area of a 4x4 track at the highland forest edge: dark soil circle, track entering, broadleaf tree wall behind, boulders, blank signboard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#3a2f2a",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 8
+     },
+     {
+      "z": 0.12,
+      "circle": 8
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "colour": "#4a3a30",
+    "section": {
+     "rect": [
+      3.5,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      0,
+      -22
+     ],
+     [
+      1,
+      -16
+     ],
+     [
+      0,
+      -8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#4a4642",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.4,
+       2
+      ]
+     },
+     {
+      "z": 0.45,
+      "ellipse": [
+       1.728,
+       1.44
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.72,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    7,
+    -3,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#3f3b38",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2,
+       1.8
+      ]
+     },
+     {
+      "z": 0.35,
+      "ellipse": [
+       1.44,
+       1.296
+      ]
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.6,
+       0.54
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    9,
+    3,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#35322f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3,
+       2.4
+      ]
+     },
+     {
+      "z": 0.55,
+      "ellipse": [
+       2.16,
+       1.728
+      ]
+     },
+     {
+      "z": 1.1,
+      "ellipse": [
+       0.8999999999999999,
+       0.72
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 9,
+    "spread": 22,
+    "line": 22
+   },
+   "at": [
+    0,
+    14,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 4
+   },
+   "at": [
+    -14,
+    4,
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "width": 1.8,
+    "height": 1.2,
+    "bottom": 0.9,
+    "colour": "#f0ebe0",
+    "frameColour": "#6b6760"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "trees": 0,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; turning circle, forest edge and sign are typed guesses."
+ }
+}

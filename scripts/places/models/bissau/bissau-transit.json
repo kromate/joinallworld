@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: informal central toca-toca minibus halt, paved lot about 40 x 25 m, basic corrugated shelter, six bays, blank sign board; the nearest OSM building (54 x 13 m, 33 m away, untagged) is not reliable so it is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     25
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#a9a49a",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     16,
+     4.5
+    ]
+   },
+   "at": [
+    -8,
+    8
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9876b",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a7f78",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    12,
+    9,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 3.5,
+    "height": 2.8,
+    "colour": "#c9876b",
+    "roofColour": "#8a7f78"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 2.4,
+    "colour": "#c9876b",
+    "frameColour": "#8a7f78"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "colour": "#e5e0d3",
+    "stripe": "#b5503a",
+    "count": 3,
+    "spacing": 3.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    4,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#d9b84a",
+    "stripe": "#2f2f2f",
+    "count": 3,
+    "spacing": 3.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    18,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 7,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 6,
+    "colour": "#4f8a3f"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or reliable footprint: typical minibus halt composed from brief facts"
+ },
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   80,
+   60
+  ]
+ }
+}

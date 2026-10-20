@@ -1,0 +1,929 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-stade-conombo",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Soccer_ouagadougou.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "kyselak",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ouagadougou/conombo1.jpg",
+   "used": "open sand-coloured concrete terraces without roof, broad stepped rows, access stair with white railings, low rear wall with railing, sandy strip beside the artificial grass pitch, slim floodlight poles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/385566809",
+   "used": "overall size only (about 224 x 185 m); modelled as a rounded rectangle at about 55 percent scale to fit the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     53.0,
+     81.0
+    ],
+    "height": 0.1,
+    "colour": "#cdb88c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     42,
+     70
+    ],
+    "height": 0.08,
+    "colour": "#44762f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 12,
+    "seatColour": "#cdb88c",
+    "concreteColour": "#cdb88c",
+    "underColour": "#c2ad82",
+    "backWall": 1.2,
+    "facetDeg": 15,
+    "start": [
+     26,
+     -40
+    ],
+    "end": [
+     26,
+     40
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 12,
+    "seatColour": "#cdb88c",
+    "concreteColour": "#cdb88c",
+    "underColour": "#c2ad82",
+    "backWall": 1.2,
+    "facetDeg": 15,
+    "start": [
+     26,
+     40
+    ],
+    "end": [
+     -26,
+     40
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 12,
+    "seatColour": "#cdb88c",
+    "concreteColour": "#cdb88c",
+    "underColour": "#c2ad82",
+    "backWall": 1.2,
+    "facetDeg": 15,
+    "start": [
+     -26,
+     40
+    ],
+    "end": [
+     -26,
+     -40
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 12,
+    "seatColour": "#cdb88c",
+    "concreteColour": "#cdb88c",
+    "underColour": "#c2ad82",
+    "backWall": 1.2,
+    "facetDeg": 15,
+    "start": [
+     -26,
+     -40
+    ],
+    "end": [
+     26,
+     -40
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 12,
+    "seatColour": "#cdb88c",
+    "concreteColour": "#cdb88c",
+    "underColour": "#c2ad82",
+    "backWall": 1.2,
+    "facetDeg": 18,
+    "centre": [
+     26,
+     40
+    ],
+    "radius": 0.5,
+    "startDeg": 0,
+    "endDeg": 90
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 12,
+    "seatColour": "#cdb88c",
+    "concreteColour": "#cdb88c",
+    "underColour": "#c2ad82",
+    "backWall": 1.2,
+    "facetDeg": 18,
+    "centre": [
+     -26,
+     40
+    ],
+    "radius": 0.5,
+    "startDeg": 90,
+    "endDeg": 180
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 12,
+    "seatColour": "#cdb88c",
+    "concreteColour": "#cdb88c",
+    "underColour": "#c2ad82",
+    "backWall": 1.2,
+    "facetDeg": 18,
+    "centre": [
+     -26,
+     -40
+    ],
+    "radius": 0.5,
+    "startDeg": 180,
+    "endDeg": 270
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 12,
+    "seatColour": "#cdb88c",
+    "concreteColour": "#cdb88c",
+    "underColour": "#c2ad82",
+    "backWall": 1.2,
+    "facetDeg": 18,
+    "centre": [
+     26,
+     -40
+    ],
+    "radius": 0.5,
+    "startDeg": 270,
+    "endDeg": 360
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    10.399999999999999
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "closed": true,
+    "colour": "#f2f2ee",
+    "points": [
+     [
+      38.0,
+      -40,
+      0
+     ],
+     [
+      38.0,
+      40,
+      0
+     ],
+     [
+      34.4,
+      48.4,
+      0
+     ],
+     [
+      26,
+      52.0,
+      0
+     ],
+     [
+      -26,
+      52.0,
+      0
+     ],
+     [
+      -34.4,
+      48.4,
+      0
+     ],
+     [
+      -38.0,
+      40,
+      0
+     ],
+     [
+      -38.0,
+      -40,
+      0
+     ],
+     [
+      -34.4,
+      -48.4,
+      0
+     ],
+     [
+      -26,
+      -52.0,
+      0
+     ],
+     [
+      26,
+      -52.0,
+      0
+     ],
+     [
+      34.4,
+      -48.4,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "points": [
+     [
+      -26.3,
+      -15.2,
+      2.0
+     ],
+     [
+      -38.0,
+      -15.2,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "points": [
+     [
+      -26.3,
+      -12.8,
+      2.0
+     ],
+     [
+      -38.0,
+      -12.8,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -32.15,
+    -14,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     12.0,
+     2.0
+    ],
+    "height": 0.05,
+    "colour": "#bfa97c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "points": [
+     [
+      -26.3,
+      12.8,
+      2.0
+     ],
+     [
+      -38.0,
+      12.8,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "points": [
+     [
+      -26.3,
+      15.2,
+      2.0
+     ],
+     [
+      -38.0,
+      15.2,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -32.15,
+    14,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     12.0,
+     2.0
+    ],
+    "height": 0.05,
+    "colour": "#bfa97c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "points": [
+     [
+      26.3,
+      -15.2,
+      2.0
+     ],
+     [
+      38.0,
+      -15.2,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "points": [
+     [
+      26.3,
+      -12.8,
+      2.0
+     ],
+     [
+      38.0,
+      -12.8,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    32.15,
+    -14,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     12.0,
+     2.0
+    ],
+    "height": 0.05,
+    "colour": "#bfa97c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "points": [
+     [
+      26.3,
+      12.8,
+      2.0
+     ],
+     [
+      38.0,
+      12.8,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "n": 4,
+    "points": [
+     [
+      26.3,
+      15.2,
+      2.0
+     ],
+     [
+      38.0,
+      15.2,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    32.15,
+    14,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     12.0,
+     2.0
+    ],
+    "height": 0.05,
+    "colour": "#bfa97c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -38.9,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     2.6
+    ],
+    "height": 2.4,
+    "colour": "#4a4038"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    38.9,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     2.6
+    ],
+    "height": 2.4,
+    "colour": "#4a4038"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -34,
+    -47,
+    0
+   ],
+   "params": {
+    "colour": "#9a9a96",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    -47,
+    20
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#c8c8c4"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    34,
+    -47,
+    0
+   ],
+   "params": {
+    "colour": "#9a9a96",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    -47,
+    20
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#c8c8c4"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -34,
+    47,
+    0
+   ],
+   "params": {
+    "colour": "#9a9a96",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    47,
+    20
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#c8c8c4"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    34,
+    47,
+    0
+   ],
+   "params": {
+    "colour": "#9a9a96",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    47,
+    20
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#c8c8c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Straight sand-coloured tiers with solid rear walls, sandy strip, darker artificial grass, rails; outline is a rounded rectangle (loosely evidenced), stair flights and tunnel door are simplified, photo is an interior view so the cmp is from outside."
+ }
+}

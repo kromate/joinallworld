@@ -1,0 +1,408 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-canal-walk",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Canal_Walk_Exterior_11.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nkansah Rexford Nyarko",
+   "view": "street",
+   "file": "/tmp/places-evidence/cape-town/canal.jpg",
+   "used": "cream-and-pink rendered corner block with tall arched glazed bay and blank oval sign, curved colonnade with terracotta tile roof, green-copper dome behind, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/429507655",
+   "used": "overall scale only: 614 m outline, an entrance wing of about 100 m is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall-body",
+   "footprint": {
+    "rect": [
+     90,
+     60
+    ]
+   },
+   "at": [
+    -24,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d2bc",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#d9a89a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a98a",
+    "parapet": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-block",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    22,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cfb4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bands": "#d9a89a",
+    "cornice": true,
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb7a0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-bay",
+   "footprint": {
+    "rect": [
+     11,
+     2.4
+    ]
+   },
+   "at": [
+    22,
+    -9.4
+   ],
+   "rotDeg": 0,
+   "z0": 12,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7f7c",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#6d8b88"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb7a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-l",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.8
+    ]
+   },
+   "at": [
+    10.4,
+    -9.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-r",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.8
+    ]
+   },
+   "at": [
+    33.6,
+    -9.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3cc"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    22,
+    -10.8,
+    7
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.4,
+    "bottom": 0,
+    "colour": "#1f2a33",
+    "frameColour": "#e6dccb",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     40
+    ],
+    "radius": 44,
+    "startDeg": 240,
+    "endDeg": 300,
+    "count": 9,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.6,
+      "n": 10,
+      "height": 7,
+      "colour": "#e6dccb"
+     }
+    },
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -34,
+    -16,
+    7
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.4,
+      1.0
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      40
+     ],
+     "radius": 44,
+     "startDeg": 240,
+     "endDeg": 300
+    },
+    "colour": "#e6dccb"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -34,
+    -16,
+    8.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.6,
+      0.7
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      40
+     ],
+     "radius": 44,
+     "startDeg": 240,
+     "endDeg": 300
+    },
+    "colour": "#b8573a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    28,
+    14
+   ],
+   "params": {
+    "colour": "#8fb7a0",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      7,
+      0,
+      "#e6d3b3"
+     ],
+     [
+      7,
+      5
+     ],
+     [
+      7.4,
+      5.4,
+      "#e6d3b3"
+     ],
+     [
+      6.5,
+      5.8,
+      "#8fb7a0"
+     ],
+     [
+      5.5,
+      8
+     ],
+     [
+      3,
+      10.5
+     ],
+     [
+      0.4,
+      12.5
+     ],
+     [
+      0.4,
+      15
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 6,
+    "spread": 12,
+    "colour": "#3f6b35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20,
+    "count": 3,
+    "spread": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 22,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tall 4-storey corner block with glazed bay and quoins, round-column colonnade with terracotta roof, drum-and-dome and palms added; arched mullioned bay is plain glass, oval sign hidden, balustraded balcony and dense banana planting not modelled, mall body is a flat-roofed stand-in"
+ }
+}

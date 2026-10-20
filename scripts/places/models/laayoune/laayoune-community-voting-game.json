@@ -1,0 +1,214 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1268253518",
+   "used": "nearest building is a 34 x 9 m annex 4 m away (nearest quality), used only as scale hint for one block"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey terracotta-pink classroom blocks around a sandy walled courtyard, canopy walkway, flag"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-n",
+   "footprint": {
+    "rect": [
+     60,
+     11
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d79a76",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#e8d3b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-w",
+   "footprint": {
+    "rect": [
+     11,
+     34
+    ]
+   },
+   "at": [
+    -24.5,
+    -6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d79a76",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#e8d3b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-e",
+   "footprint": {
+    "rect": [
+     11,
+     34
+    ]
+   },
+   "at": [
+    24.5,
+    -6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c98a68",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#e8d3b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-house",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8654a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 36,
+    "depth": 3,
+    "height": 3.2,
+    "columns": 8,
+    "colour": "#e8d3b0",
+    "edgeColour": "#a8654a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#e8d3b0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#e8d3b0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c1272d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or reliable footprint; U-plan courtyard school from the brief"
+ }
+}

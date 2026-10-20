@@ -1,0 +1,254 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Rue_Mbaka_10.jpg",
+   "licence": "CC0",
+   "author": "Africany",
+   "view": "street",
+   "file": "/tmp/places-evidence/brazzaville/mk0.jpg",
+   "used": "neighbourhood character only: balconied white and ochre 3-5 storey render blocks, stalls under coloured umbrellas and tarpaulin at the street edge"
+  },
+  {
+   "kind": "text",
+   "used": "brief: crowded stalls under corrugated and tarpaulin shades beside rendered shops. The matched OSM building is a 53 m2 hut and is NOT used."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8c88",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -6,
+    36,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 44,
+    "depth": 3.6,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 5,
+    "rows": 3,
+    "dx": 9,
+    "dy": 6,
+    "centre": [
+     -30,
+     -4,
+     0
+    ],
+    "of": {
+     "type": "umbrella-cluster",
+     "params": {
+      "count": 4,
+      "spread": 3,
+      "colours": [
+       "#d94f4f",
+       "#3b6fa8",
+       "#e0b93a",
+       "#7aa24f"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    18,
+    -6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#b86b4a",
+     "#3b6fa8",
+     "#e0b93a",
+     "#c93a35"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shops-w",
+   "footprint": {
+    "rect": [
+     10,
+     34
+    ]
+   },
+   "at": [
+    -48,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeece4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "right"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shops-e",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    44,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a56a",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     32
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the market grounds itself and the OSM hit is a hut, so layout is typed from the brief plus the surrounding street character."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-market-game"
+}

@@ -1,0 +1,314 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gaborone_National_Museum_20200211.jpg",
+   "licence": "CC BY 4.0",
+   "author": "CNJerem",
+   "view": "front",
+   "file": "/tmp/places-evidence/gaborone/museum1.jpg",
+   "used": "octagonal gallery under a low hipped corrugated roof with a louvred clerestory lantern and flat cap, cream walls, flat entrance canopy on thin white columns, white block with flat metal-edged roof at right, brick paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/93259552",
+   "used": "overall extent only: the outline is a many-part complex; a front section is composed by hand from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "octagon",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 13,
+    "n": 8,
+    "height": 5.6,
+    "colour": "#e2cf94",
+    "windows": "none",
+    "plinth": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "octagon-roof",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 16,
+    "n": 8,
+    "z0": 5.6,
+    "height": 3.6,
+    "topScale": 0.3,
+    "colour": "#b9bdbe",
+    "topColour": "#b9bdbe",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 4.2,
+    "n": 8,
+    "z0": 9.2,
+    "height": 2.6,
+    "colour": "#d5d8d8",
+    "windows": "louvre",
+    "windowRatio": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-cap",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 6.6,
+    "n": 8,
+    "z0": 11.8,
+    "height": 0.35,
+    "topScale": 1.0,
+    "colour": "#c9cdce",
+    "topColour": "#c9cdce"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer-wing",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    -3
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2cf94",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cdce",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 9,
+    "height": 3.8,
+    "thickness": 0.35,
+    "columns": 8,
+    "colour": "#ffffff",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     22,
+     15
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "none",
+    "faces": {
+     "left": "none"
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cdce",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    24,
+    -7.7,
+    2.0
+   ],
+   "params": {
+    "width": 6,
+    "height": 6,
+    "bottom": 2.0,
+    "colour": "#ffffff",
+    "frameColour": "#e8943a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-gallery",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-band",
+   "footprint": {
+    "rect": [
+     22.4,
+     15.4
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6b4a36",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4a36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "reception-recess",
+   "footprint": {
+    "rect": [
+     26,
+     1
+    ]
+   },
+   "at": [
+    -4,
+    -9.2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b2f36",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2f36"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -6,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     34,
+     -14
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-botswana-national-museum",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "cream recolour and raised octagon roof/lantern applied, but render lighting washes walls pale; sign board still renders as blue square rather than white banner with logo; brick-red paving not shown (plaza renders grey)"
+ }
+}

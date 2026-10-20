@@ -1,0 +1,150 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/143040550",
+   "used": "prayer hall outline about 52 x 21 m, bearing 111 deg"
+  },
+  {
+   "kind": "text",
+   "used": "brief: plastered hall, green single dome, slender minaret, arched windows; No photo of this building was found: the geo-nearby Commons photos show other places (road, market street, hotel deck, glass office), so none was used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede1",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dfd0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    0,
+    9.8
+   ],
+   "params": {
+    "radius": 7.5,
+    "height": 6,
+    "profile": "onion",
+    "drum": 2.5,
+    "windows": 8,
+    "colour": "#3f7f6b",
+    "drum_colour": "#f1ede1",
+    "finial": true,
+    "finial_height": 1.8
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -25,
+    -6,
+    0
+   ],
+   "rotDeg": -21,
+   "params": {
+    "height": 26,
+    "style": "pencil",
+    "base_width": 2.6,
+    "colour": "#f1ede1",
+    "cap_colour": "#3f7f6b",
+    "accent": "#3f7f6b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -38,
+      -24
+     ],
+     [
+      30,
+      -24
+     ],
+     [
+      38,
+      22
+     ],
+     [
+      -30,
+      26
+     ],
+     [
+      -38,
+      -24
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#e8e3d4"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-way-143040550",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "dome, minaret and arched windows are from the brief, not a photo"
+ }
+}

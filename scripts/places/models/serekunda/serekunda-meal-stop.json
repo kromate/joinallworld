@@ -1,0 +1,127 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/282746432",
+   "used": "nearest building (14 m) 22x10 m; photos found nearby were insects, not used. Size from brief 16x10"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9d9b4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#8a5a36"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a44",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "veranda",
+   "id": "terrace",
+   "at": [
+    0,
+    -6.3,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 2.6,
+    "height": 3,
+    "roof": "lean-to",
+    "roof_colour": "#8a5a44",
+    "wall_colour": "#8a5a36"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "tables",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "colours": [
+     "#f4efe3",
+     "#8a5a36"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -10,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 2,
+    "colour": "#8a5a36"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -12,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   45,
+   35
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this place; modest typed eatery from brief (size, hip corrugated roof, veranda)."
+ }
+}

@@ -1,0 +1,405 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort_Bullen.jpg",
+   "licence": "CC0",
+   "author": "VloErop",
+   "view": "interior",
+   "file": "/tmp/places-evidence/serekunda/fort1.jpg",
+   "used": "weathered grey-white plastered rampart walls ~3.5 m with small firing slits, arched recesses, steps up to the gun platform, cobbled floor, large tree; critic round: courtyard modelled as roof-level terrace inside parapet"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort_Bullen2.jpg",
+   "licence": "CC0",
+   "author": "VloErop",
+   "view": "interior",
+   "file": "/tmp/places-evidence/serekunda/fort2.jpg",
+   "used": "hexagonal paving, white outbuilding with rusty roof, arched magazine doorway, stairs with railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/263258266",
+   "used": "real fort outline with three round bastions"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 5,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ramparts",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b9b6aa",
+    "windows": "none",
+    "windowRatio": 0.04,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4c8b0",
+    "parapet": 1.1,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    24,
+    14,
+    3.6
+   ],
+   "rotDeg": 60,
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -22,
+    -16,
+    3.6
+   ],
+   "rotDeg": 210,
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    0,
+    28,
+    3.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gun-terrace",
+   "footprint": {
+    "rect": [
+     18,
+     7
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "z0": 3.6,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#aeaca0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a8e",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "magazine",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "z0": 3.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c4c1b4",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a599",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "outbuilding",
+   "footprint": {
+    "rect": [
+     6,
+     4.5
+    ]
+   },
+   "at": [
+    10,
+    -1
+   ],
+   "z0": 3.6,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9b5a43",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    2,
+    10,
+    3.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.2,
+    "height": 1.6,
+    "run": 3.5,
+    "rails": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -3,
+    8,
+    3.6
+   ],
+   "params": {
+    "colour": "#5a4a3c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55
+     },
+     {
+      "z": 3,
+      "circle": 0.45
+     },
+     {
+      "z": 6,
+      "circle": 0.3
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3,
+    8,
+    3.6
+   ],
+   "params": {
+    "section": {
+     "circle": 0.27
+    },
+    "points": [
+     [
+      0,
+      0,
+      5
+     ],
+     [
+      -2,
+      1,
+      8
+     ],
+     [
+      -5,
+      1,
+      11.5
+     ]
+    ],
+    "curve": true,
+    "colour": "#5a4a3c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3,
+    8,
+    3.6
+   ],
+   "params": {
+    "section": {
+     "circle": 0.27
+    },
+    "points": [
+     [
+      0,
+      0,
+      5
+     ],
+     [
+      2.5,
+      -1,
+      8.5
+     ],
+     [
+      5.5,
+      0,
+      12
+     ]
+    ],
+    "curve": true,
+    "colour": "#5a4a3c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3,
+    8,
+    3.6
+   ],
+   "params": {
+    "section": {
+     "circle": 0.22499999999999998
+    },
+    "points": [
+     [
+      0,
+      0,
+      6
+     ],
+     [
+      0,
+      2.5,
+      9
+     ],
+     [
+      1,
+      4.5,
+      12
+     ]
+    ],
+    "curve": true,
+    "colour": "#5a4a3c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3,
+    8,
+    3.6
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15000000000000002
+    },
+    "points": [
+     [
+      -2,
+      1,
+      8
+     ],
+     [
+      -4,
+      -1.5,
+      10
+     ],
+     [
+      -6,
+      -2,
+      12.5
+     ]
+    ],
+    "curve": true,
+    "colour": "#5a4a3c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3,
+    8,
+    3.6
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15000000000000002
+    },
+    "points": [
+     [
+      2.5,
+      -1,
+      8.5
+     ],
+     [
+      4,
+      -3,
+      10.5
+     ],
+     [
+      3,
+      -5,
+      12
+     ]
+    ],
+    "curve": true,
+    "colour": "#5a4a3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-263258266",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "interior courtyard is modelled as the roof-level terrace inside the parapet (camera is outside); no firing slits, hex pavers are generic tiles, wall weathering is only a mud-render texture, tree is bare but simpler than the real gnarled one"
+ }
+}

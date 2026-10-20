@@ -1,0 +1,429 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-airport-bamako-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:L%27a%C3%A9roport_international_Pr%C3%A9sident_Modibo_Ke%C3%AFta_de_Bamako-Senou.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lin Diallo",
+   "view": "front",
+   "file": "/tmp/places-evidence/bamako/airport1.jpg",
+   "used": "landside facade: recessed glazed wall, deep overhanging roof of steel trusses on raked struts every ~5 m, low front canopy edge, grey roof, blank fascia"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_terminal_building_at_Bamako-S%C3%A9nou_International_Airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "PetterLundkvist",
+   "view": "street",
+   "file": "/tmp/places-evidence/bamako/airport2.jpg",
+   "used": "older entrance: cream columns, terracotta-orange canopy and sawtooth soffit, dark-framed glazing, brick paving, planting bed"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/bamako.json",
+   "used": "control tower beside terminal, car park, floodlights; no OSM building matched"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     64,
+     22
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6d6a66",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "bands": "#d9d2c2",
+    "glassColour": "#6a5a4c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a3",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     20,
+     18
+    ]
+   },
+   "at": [
+    -42,
+    6
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8aaa8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     20,
+     18
+    ]
+   },
+   "at": [
+    42,
+    6
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8aaa8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-soffit",
+   "at": [
+    0,
+    -3
+   ],
+   "params": {
+    "rect": [
+     72,
+     38
+    ],
+    "z0": 11.6,
+    "height": 0.3,
+    "colour": "#2e2522"
+   }
+  },
+  {
+   "type": "array",
+   "id": "roof-slats",
+   "params": {
+    "mode": "line",
+    "start": [
+     -35.5,
+     -3,
+     12
+    ],
+    "end": [
+     35.5,
+     -3,
+     12
+    ],
+    "count": 120,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.35,
+         40
+        ]
+       },
+       {
+        "z": 1.4,
+        "rect": [
+         0.35,
+         40
+        ],
+        "cy": -4
+       }
+      ],
+      "colour": "#3a302c",
+      "topColour": "#a9aeb0"
+     }
+    },
+    "lod1Step": 4,
+    "lod2Step": 60
+   }
+  },
+  {
+   "type": "array",
+   "id": "fins-a",
+   "params": {
+    "mode": "line",
+    "start": [
+     -33,
+     -22,
+     0
+    ],
+    "end": [
+     31,
+     -22,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.5,
+         1.4
+        ]
+       },
+       {
+        "z": 12,
+        "rect": [
+         0.5,
+         1.4
+        ],
+        "cx": 2.2,
+        "cy": -4.4
+       }
+      ],
+      "colour": "#6b3a2c"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "id": "fins-b",
+   "params": {
+    "mode": "line",
+    "start": [
+     -31,
+     -22,
+     0
+    ],
+    "end": [
+     33,
+     -22,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.5,
+         1.4
+        ]
+       },
+       {
+        "z": 12,
+        "rect": [
+         0.5,
+         1.4
+        ],
+        "cx": -2.2,
+        "cy": -4.4
+       }
+      ],
+      "colour": "#6b3a2c"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-canopy",
+   "at": [
+    0,
+    -19
+   ],
+   "params": {
+    "rect": [
+     70,
+     5
+    ],
+    "z0": 4.6,
+    "height": 0.5,
+    "colour": "#8a7a6c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-edge",
+   "at": [
+    0,
+    -23
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.5
+    ],
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#7c6e62"
+   }
+  },
+  {
+   "type": "array",
+   "id": "canopy-posts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     -21,
+     0
+    ],
+    "end": [
+     32,
+     -21,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 4.6,
+      "colour": "#e9e0c8"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-band",
+   "at": [
+    0,
+    -23.5
+   ],
+   "params": {
+    "rect": [
+     50,
+     0.5
+    ],
+    "z0": 5.4,
+    "height": 1.8,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -24,
+    10,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#e2ddd0"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 12
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 5,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -36
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "X-fins and slatted roof now read; roof slats still shallow-sloped vs real deep truss overhang; sign band is plain white (no emissive material, no lettering); hall glazing tinted but still cool; no festive lighting."
+ }
+}

@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-bibliotheque-nationale",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/531996409",
+   "used": "real irregular footprint (name match, 1,096 m2, zig-zag plan at bearing 49 deg), opened 11 Nov 1969 per OSM start_date"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 3-storey rendered block, ribbon windows, deep entrance canopy, low boundary wall; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#9a9a94",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f918b",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#9a9a94",
+    "edgeColour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#bdb8a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.4,
+    "thickness": 0.3,
+    "colour": "#d6d0bc",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43",
+    "colours": [
+     "#1b7a43",
+     "#f6d21c",
+     "#2a5ca8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 1.4,
+    "colour": "#2f6b4f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; storeys, colours, canopy and wall are typed; OSM plan may mark a rotated footprint so front orientation is unverified"
+ }
+}

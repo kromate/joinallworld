@@ -1,0 +1,228 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief rabat-community-voting-game",
+   "used": "paved civic square, central fountain, palms, flagpoles, kiosks, low surrounding buildings; nearby Commons photos show Hassan Tower and the mausoleum, not this square"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/42305066",
+   "used": "checked only: the OSM park polygon is 911 x 284 m, too large and irregular to be the square; not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 90,
+    "border": 2,
+    "colour": "#d9c7a0",
+    "border_colour": "#b9b2a6"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "waterColour": "#6fa8c4",
+    "rimColour": "#e8e0cc"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -46
+   ],
+   "params": {
+    "width": 20,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 12,
+      "colour": "#b5222a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     -30
+    ],
+    "end": [
+     36,
+     -30
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    22
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    22
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     38
+    ],
+    "end": [
+     40,
+     38
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -38
+    ],
+    "end": [
+     40,
+     -38
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bldg-back",
+   "footprint": {
+    "rect": [
+     70,
+     12
+    ]
+   },
+   "at": [
+    0,
+    56
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bldg-left",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    -56,
+    10
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the square; layout generic from brief"
+ }
+}

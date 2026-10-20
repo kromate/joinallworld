@@ -1,0 +1,386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Groote_Schuur_Hospital.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Danie van der Merwe",
+   "view": "front",
+   "used": "Old Main Building: long five-storey cream render block with red hip-tile roofs, central pedimented bay with arched windows and two palms, taller right wing, square cream belfry tower with black dome behind, small domed turret left, pine slope behind",
+   "file": "/tmp/places-evidence/cape-town/gs1.jpg"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Groote_Schuur_Hospital",
+   "used": "1938 Old Main Building on Devil's Peak slope (OSM outline is the whole 500 m campus, not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     58,
+     12
+    ]
+   },
+   "at": [
+    -20,
+    0
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "rect",
+    "bands": "#cfc7ae",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8533d",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    25,
+    2
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dec9",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "rect",
+    "bands": "#cfc7ae",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8533d",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-wing",
+   "footprint": {
+    "rect": [
+     11,
+     18
+    ]
+   },
+   "at": [
+    46,
+    2
+   ],
+   "z0": 0,
+   "height": 25,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "rect",
+    "bands": "#cfc7ae",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8533d",
+    "material": "clay-tile",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -59,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "rect",
+    "bands": "#cfc7ae",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eae4d2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e8e2d0",
+    "pitch": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    17,
+    10
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 33,
+    "colour": "#dcd3bb",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.1,
+    "trimColour": "#cfc6ac",
+    "plinth": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-dome",
+   "at": [
+    17,
+    10,
+    33
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#2e343a",
+    "profile": [
+     [
+      4.9,
+      0,
+      "#cfc6ac"
+     ],
+     [
+      4.9,
+      0.8
+     ],
+     [
+      4.2,
+      1.0,
+      "#2e343a"
+     ],
+     [
+      3.6,
+      2.2
+     ],
+     [
+      2.2,
+      3.6
+     ],
+     [
+      0.4,
+      4.4
+     ],
+     [
+      0.1,
+      5.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "west-turret",
+   "at": [
+    -48,
+    2,
+    15
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#d7cfb8",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      4.5,
+      "#d7cfb8"
+     ],
+     [
+      2.9,
+      4.6,
+      "#c4bca4"
+     ],
+     [
+      2.1,
+      5.4,
+      "#b9b5a8"
+     ],
+     [
+      0.3,
+      7.4
+     ],
+     [
+      0.1,
+      8.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     -18,
+     0
+    ],
+    "end": [
+     6,
+     -18,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 11
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     42
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     50,
+     44
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only the Old Main Building is modelled (OSM campus outline unused); window rhythm and wing depths approximate, no arched ground floor detail or pine slope"
+ }
+}

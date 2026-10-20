@@ -1,0 +1,170 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-node-6743676049",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/6743676049",
+   "used": "the 364 m2 building polygon containing the market point, used as the main covered shed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-shed",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a68a64",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a5a3c",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a77c",
+     "#a68a64",
+     "#6b6f73",
+     "#b6552f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#7a5a3c",
+     "#c9a77c",
+     "#3f6b8a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -16,
+    16,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a68a64",
+     "#6b6f73",
+     "#c9a77c"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "colours": [
+     "#6b6f73",
+     "#c9a77c"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    26,
+    10,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "colours": [
+     "#b6552f",
+     "#c9a77c",
+     "#3f6b8a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   90,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the market; only the OSM shed outline is real, stall rows and awnings are typical roadside village market layout."
+ }
+}

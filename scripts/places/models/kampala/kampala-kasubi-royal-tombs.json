@@ -1,0 +1,333 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-kasubi-royal-tombs",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kasubi_Tombs_20250815_1.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Z thomas",
+   "view": "front",
+   "file": "/tmp/places-evidence/kampala/kasubi1.jpg",
+   "used": "single huge conical thatched dome (about 0.55 height to width, straight sides, slight eave flare), dark topknot with finial, low dark entrance opening at front, brick-coloured path, red laterite courtyard, reed fence panels either side, broadleaf trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/169069193",
+   "used": "site is a 700 m enclosure; only the Muzibu Azaala Mpanga hut is modelled, 31 m diameter from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 30,
+  "aspect": 1.72
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "thatch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#c4a060",
+    "material": "mud-render",
+    "profile": [
+     [
+      16.6,
+      0,
+      "#8a6c40"
+     ],
+     [
+      16.2,
+      0.5,
+      "#b08e56"
+     ],
+     [
+      15.6,
+      1.2,
+      "#c4a05e"
+     ],
+     [
+      15.0,
+      2.0,
+      "#cca866"
+     ],
+     [
+      2.4,
+      17.0,
+      "#c8a462"
+     ],
+     [
+      2.3,
+      17.1,
+      "#4a3a28"
+     ],
+     [
+      1.7,
+      18.0,
+      "#4a3a28"
+     ],
+     [
+      0,
+      18.4,
+      "#4a3a28"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#a89168",
+    "profile": [
+     [
+      16.6,
+      0
+     ],
+     [
+      2.4,
+      17
+     ],
+     [
+      0,
+      18.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "finial",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 18.2,
+    "height": 2.4,
+    "topScale": 0.4,
+    "colour": "#d8d4c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doorway",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -15.9
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     1.3
+    ],
+    "height": 2.4,
+    "colour": "#1e1610",
+    "topColour": "#1e1610",
+    "topScale": [
+     0.55,
+     1.0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -31.5
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     30
+    ],
+    "height": 0.12,
+    "colour": "#b8603c",
+    "topColour": "#b8603c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "reedfence",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 2.4,
+    "thickness": 0.25,
+    "colour": "#cdb98f",
+    "points": [
+     [
+      -60,
+      -10
+     ],
+     [
+      -12,
+      -10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "reedfence-r",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 2.4,
+    "thickness": 0.25,
+    "colour": "#cdb98f",
+    "points": [
+     [
+      12,
+      -10
+     ],
+     [
+      60,
+      -10
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     6
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     12
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     18
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     22
+    ],
+    "height": 24
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     20
+    ],
+    "height": 23
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     16
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     10
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     4
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     14
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     12
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     34
+    ],
+    "height": 24
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Thatch is smooth lathe texture, not shaggy fibre; eave not frayed; trees are generic broadleaf stand-ins; other tombs/enclosure not modelled"
+ }
+}

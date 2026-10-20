@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-node-2135030807",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/186490296",
+   "used": "checked only: 56 m2 footprint too small for the described restaurant, not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey rendered restaurant/bar with street terrace and bright awning; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#d9a57a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "rise": 2.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "id": "balc",
+   "at": [
+    0,
+    -6.1,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "floors": 1,
+    "storeyHeight": 3.5,
+    "colour": "#d9a57a"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awn",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.4,
+    "height": 2.8,
+    "colours": [
+     "#d9a57a",
+     "#ece6d6"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "terrace",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "colours": [
+     "#d9a57a",
+     "#ece6d6"
+    ]
+   }
+  },
+  {
+   "type": "roof-sign",
+   "id": "board",
+   "at": [
+    -5,
+    -6.3,
+    6.2
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.0,
+    "colour": "#b5603f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 3,
+  "treeKind": "palm",
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo; OSM footprint too small, brief dims used; facade details assumed"
+ }
+}

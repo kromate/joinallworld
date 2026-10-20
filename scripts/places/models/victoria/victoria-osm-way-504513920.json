@@ -1,0 +1,237 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/504513920",
+   "used": "irregular park outline 12,684 m2"
+  },
+  {
+   "kind": "text",
+   "used": "brief: lawn, palms, benches, low enclosing wall, small pavilion; Commons nearby photos show Victoria port from the air, park not identifiable so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7fa56a",
+    "windows": "none",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa56a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -10
+     ],
+     [
+      30,
+      -10
+     ],
+     [
+      30,
+      -7
+     ],
+     [
+      -30,
+      -7
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#c9c3b5"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -30
+     ],
+     [
+      1,
+      -30
+     ],
+     [
+      1,
+      20
+     ],
+     [
+      -2,
+      20
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#c9c3b5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    8,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9cdb2",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d32",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -50,
+    -20,
+    0.5
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 11
+     }
+    },
+    "count": 7,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     100,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -30,
+    -3,
+    0.5
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.5
+      ],
+      "height": 0.5,
+      "colour": "#5b4636"
+     }
+    },
+    "count": 6,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the park; lawn, path, benches, pavilion and palms are brief-derived; low enclosing wall not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-way-504513920"
+}

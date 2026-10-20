@@ -1,0 +1,214 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/193354332",
+   "used": "No photo found (Wikidata/Commons/Wikipedia searched, none for this venue); 30x10 m hall outline (name match) as the covered market hall; surrounding 8537 m2 market area way/596757623 guides the stall field; stalls, tarps and rusty roofs from brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9c7a5a",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f8a82",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#b05a2f"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.2,
+    "roof": "gable",
+    "roof_colour": "#8f8a82"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -28,
+    26,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#a0602f"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -40,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#b05a2f",
+     "#cfc3a6",
+     "#2b6fa6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -40,
+    12,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#cfc3a6",
+     "#b3261e",
+     "#d8a62c"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -38,
+    40,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.6,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -38,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.6,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    30,
+    16,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 9,
+    "colours": [
+     "#2b6fa6",
+     "#b3261e",
+     "#d8a62c"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2,
+    "colours": [
+     "#b05a2f",
+     "#cfc3a6"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; stall layout is a plausible grid, only the 30x10 hall outline is real; OSM building:levels=25 tag ignored as bad data."
+ }
+}

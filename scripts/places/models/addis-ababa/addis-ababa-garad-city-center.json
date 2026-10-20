@@ -1,0 +1,158 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/702459922",
+   "used": "real irregular footprint (~133 x 52 m, 6400 m2)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bole_Road,_Addis_Ababa_(1).jpg",
+   "licence": "CC BY 3.0 pl",
+   "author": "Radoslaw Botev",
+   "view": "street",
+   "file": "/tmp/places-evidence/addis-ababa/garad1.jpg",
+   "used": "street context only: Bole Road mid-rise rendered blocks with ribbon windows and glass wings; the centre itself is not clearly visible, so not used for verification"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cdb0",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "plinth": 0.5,
+    "bands": "#eae4d3",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9cdb0",
+       "#cdbf9f"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-stair",
+   "at": [
+    -10,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "z0": 0,
+    "height": 23,
+    "colour": "#6f8f9b",
+    "topColour": "#5d7c88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-a",
+   "at": [
+    -30,
+    -12,
+    20.1
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.6
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#2f6f9e",
+    "topColour": "#2f6f9e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-b",
+   "at": [
+    40,
+    -24,
+    20.1
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.6
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#b5a37a",
+    "topColour": "#b5a37a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -5,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 12,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -5,
+    -62,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "count": 6,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-garad-city-center",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building itself; real OSM outline scaled 0.85, ribbon windows and glass stair core are typed guesses."
+ }
+}

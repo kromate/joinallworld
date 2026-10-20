@@ -1,0 +1,133 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/230061010",
+   "used": "real outline about 44 x 43 m rotated; name match (townhall)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Dar Naim district town hall, two storeys, arched entrance, flagpoles; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mairie",
+   "footprint": {
+    "osm": true,
+    "fit": 46
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b5",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bands": "#c58f5c",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 7,
+    "archWidth": 5,
+    "springHeight": 3.4,
+    "colour": "#c58f5c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "colour": "#1b7a43",
+    "count": 2,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#d9b98a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: OSM outline (scaled 0.76) with typed arched town hall; portal placement not tied to the scaled outline."
+ }
+}

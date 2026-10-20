@@ -1,0 +1,219 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-national-museum",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/288801150",
+   "used": "real 50 x 49 m outline (name match)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Museum_in_Lusaka,_Zambia_-_2014.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Ninara",
+   "view": "interior",
+   "used": "interior only (thatched huts diorama): not used for the facade"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lusaka_National_Museum",
+   "used": "two floors, opened 1996"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched"
+    },
+    "bands": "#8a7e6a",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f90",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     6
+    ],
+    "height": 0.9,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.15,
+    "run": 0.6,
+    "count": 6,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -31,
+     0.9
+    ],
+    "end": [
+     6,
+     -31,
+     0.9
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.0,
+        1.0
+       ],
+       "height": 8,
+       "colour": "#f3efe6"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#8a7e6a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     10,
+     -34,
+     0
+    ],
+    "end": [
+     18,
+     -34,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "core/flag",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {}
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only an interior photo exists; facade colours, entrance portico, steps and flags are typed. Front direction is assumed."
+ }
+}

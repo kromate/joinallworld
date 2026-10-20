@@ -1,0 +1,414 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-military-history-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luanda-SMiguelFort2.jpg",
+   "licence": "CC BY 2.0",
+   "author": "flickr user (see Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/luanda/fort2.jpg",
+   "used": "tall sheer whitewashed curtain wall with stepped crenellated parapet, round-arched stone portal at left, cannons on carriages at the foot, bronze statue group, cobbled forecourt, flagpole on the rampart, baobab-like tree at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AspectoAereodaFortalezadeSMiguel.JPG",
+   "licence": "Public domain",
+   "author": "Xavier Lopes",
+   "view": "aerial",
+   "used": "irregular bastioned plan on the bay headland, long low white building inside the walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/369001086",
+   "used": "NOT used: nearest match is Shopping Fortaleza, not the fort"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "shiftX": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "curtain",
+   "footprint": {
+    "polygon": [
+     [
+      -34,
+      -26
+     ],
+     [
+      -12,
+      -30
+     ],
+     [
+      12,
+      -30
+     ],
+     [
+      34,
+      -26
+     ],
+     [
+      44,
+      -6
+     ],
+     [
+      36,
+      24
+     ],
+     [
+      12,
+      34
+     ],
+     [
+      -14,
+      34
+     ],
+     [
+      -38,
+      22
+     ],
+     [
+      -46,
+      -2
+     ]
+    ]
+   },
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bastion-w",
+   "footprint": {
+    "polygon": [
+     [
+      -12,
+      -8
+     ],
+     [
+      12,
+      -8
+     ],
+     [
+      12,
+      10
+     ],
+     [
+      -12,
+      10
+     ]
+    ]
+   },
+   "at": [
+    -44,
+    -24
+   ],
+   "rotDeg": 25,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    -17,
+    -31.6,
+    0
+   ],
+   "params": {
+    "width": 5.2,
+    "height": 7,
+    "depth": 0.6,
+    "archWidth": 4.2,
+    "springHeight": 4.8,
+    "pointed": false,
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -24,
+    -33,
+    0.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 1,
+    "spacing": 3,
+    "scale": 1.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -2,
+    -33,
+    0.2
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4.2,
+    "scale": 1.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    20,
+    -34,
+    0.2
+   ],
+   "params": {
+    "count": 1,
+    "spacing": 3,
+    "scale": 1.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    24,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 4.2,
+    "colour": "#5a5548"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    26.5,
+    -35.5,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#5a5548"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "params": {
+    "rect": [
+     2.4,
+     1.4
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#f4f1ea",
+    "topColour": "#f4f1ea"
+   },
+   "at": [
+    -4,
+    -33.5
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -28,
+    11
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#b8232a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 1,
+    "spread": 10
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bastion-e",
+   "at": [
+    42,
+    -20
+   ],
+   "rotDeg": -30,
+   "params": {
+    "colour": "#f1efe8",
+    "topColour": "#e6e2d6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       24,
+       19
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       20,
+       15
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-surround",
+   "params": {
+    "rect": [
+     7.5,
+     1.4
+    ],
+    "z0": 0,
+    "height": 10,
+    "topScale": [
+     0.62,
+     1
+    ],
+    "colour": "#a89572",
+    "topColour": "#a89572"
+   },
+   "at": [
+    -17,
+    -30.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porthole",
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 6,
+    "height": 1.2,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   },
+   "at": [
+    -8,
+    -30.1
+   ]
+  },
+  {
+   "type": "battlement-wall",
+   "id": "parapet-low",
+   "at": [
+    0,
+    -29.2,
+    11
+   ],
+   "params": {
+    "length": 44,
+    "height": 3.2,
+    "thickness": 2.2,
+    "merlons": true,
+    "batter": 0.2,
+    "points": [
+     [
+      -34,
+      0
+     ],
+     [
+      0,
+      0.5
+     ],
+     [
+      34,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "id": "parapet-high",
+   "at": [
+    0,
+    -27.5,
+    13
+   ],
+   "params": {
+    "length": 44,
+    "height": 3.2,
+    "thickness": 2.2,
+    "merlons": true,
+    "points": [
+     [
+      -30,
+      0
+     ],
+     [
+      -5,
+      0.5
+     ],
+     [
+      10,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Inner hall removed, portal tapers, bastion-e sloped, porthole is a square stand-in; parapet merlons still render small and thin, tree not visible in render, curtain is a flat polygon without batter or curve, statues generic."
+ }
+}

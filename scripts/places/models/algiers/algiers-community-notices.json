@@ -1,0 +1,346 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Assembl\u00e9e_populaire_nationale_(Alg\u00e9rie).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user 29324474@N02",
+   "view": "front",
+   "file": "/tmp/places-evidence/algiers/apn1.jpg",
+   "used": "beige limestone Art Deco block: giant pilaster colonnade with tall slit windows in the centre, stepped attic with a blank name board, plainer side wings with small square windows, flagpoles and railing at the base"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4572537",
+   "used": "footprint, 5 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 23,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8ccb4",
+    "windows": "none",
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#c9bc9c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     22,
+     24
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4c8ae",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#c4b898",
+    "glassColour": "#2b2e32",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     22,
+     24
+    ]
+   },
+   "at": [
+    33,
+    0
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4c8ae",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#c4b898",
+    "glassColour": "#2b2e32",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       1.8
+      ],
+      "z0": 1.2,
+      "height": 19,
+      "colour": "#e0d5bd",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "count": 11,
+    "start": [
+     -20,
+     -13.9,
+     0
+    ],
+    "end": [
+     20,
+     -13.9,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "slits",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.3
+      ],
+      "z0": 4,
+      "height": 13,
+      "colour": "#3a3b3e",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -18,
+     -13.1,
+     0
+    ],
+    "end": [
+     18,
+     -13.1,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "at": [
+    0,
+    -13.6
+   ],
+   "params": {
+    "rect": [
+     46,
+     2.6
+    ],
+    "z0": 20.2,
+    "height": 2.8,
+    "colour": "#cfc3a8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-low",
+   "at": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     36,
+     22
+    ],
+    "z0": 23,
+    "height": 4,
+    "colour": "#d8ccb4",
+    "topColour": "#b9b09a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-high",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "rect": [
+     26,
+     16
+    ],
+    "z0": 27,
+    "height": 4,
+    "colour": "#d8ccb4",
+    "topColour": "#b9b09a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "name-board",
+   "at": [
+    0,
+    -15.2,
+    20.9
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.8,
+    "colour": "#cfc6ae"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    -30,
+    -12.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 5.5,
+    "depth": 0.6,
+    "archWidth": 3.6,
+    "springHeight": 3.2,
+    "pointed": false,
+    "colour": "#c9bc9c"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    30,
+    -12.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 5.5,
+    "depth": 0.6,
+    "archWidth": 3.6,
+    "springHeight": 3.2,
+    "pointed": false,
+    "colour": "#c9bc9c"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.6,
+    "colour": "#1c1d1f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24,
+    -20.5,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 8,
+    "spacing": 6,
+    "colours": [
+     "#ffffff",
+     "#0b7d3b"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 1,
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "OSM outline replaced by a composed plan; flags and railing stock; name board colour not matched; no lamp posts"
+ }
+}

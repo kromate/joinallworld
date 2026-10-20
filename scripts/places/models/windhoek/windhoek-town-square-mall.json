@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-town-square-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/95200941",
+   "used": "real outline (name match, 2257 m2, 88 x 40 m, stepped courtyard-and-wing plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b47a",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 5,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#efe3c2",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 4,
+    "height": 3.6,
+    "colour": "#7d8a8f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -25,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 10,
+    "colour": "#7d8a8f"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "count": 6,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists for this mall: footprint is real, three storeys, ochre render and entrance canopy are typed assumptions"
+ }
+}

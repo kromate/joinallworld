@@ -1,0 +1,649 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-nyandungu-wetland-park",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nyandungu_Entry.jpg",
+   "licence": "CC0",
+   "author": "Fikiri-jenly",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/wp2.jpg",
+   "used": "entrance gate: grey stone-clad piers and wall, flat concrete lintel beam, dark green tree emblem, cobbled paving, boom barrier"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nature_and_Cloud_view_in_Nyandungu_Eco_Tourism_Park.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aline NDACYAYISENGA",
+   "view": "street",
+   "file": "/tmp/places-evidence/kigali/wp0.jpg",
+   "used": "open lawn, small timber footbridge with railings, stone benches, bamboo clump, flat-topped acacias, pines"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/14458649",
+   "used": "park is ~1.6 km: only the entrance zone is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 8,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    5
+   ],
+   "params": {
+    "rect": [
+     90,
+     75
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#7fc241"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-l",
+   "at": [
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#8f8c85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-r",
+   "at": [
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#8f8c85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-lintel",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     1.6
+    ],
+    "z0": 4,
+    "height": 0.7,
+    "colour": "#77767a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-arm",
+   "at": [
+    9,
+    -1.2
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.12
+    ],
+    "z0": 1,
+    "height": 0.12,
+    "colour": "#d9d9d9"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-arm-post",
+   "at": [
+    5.8,
+    -1.2
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#6c6c6c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -19,
+    0.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.2,
+    "thickness": 0.6,
+    "colour": "#7d7a72"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stream",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     90,
+     3.2
+    ],
+    "z0": 0.06,
+    "height": 0.1,
+    "colour": "#6fa8c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron-near",
+   "at": [
+    0,
+    -36.2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.4
+    ],
+    "z0": 0,
+    "height": 0.18,
+    "colour": "#bdbab2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron-far",
+   "at": [
+    0,
+    -23.8
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.4
+    ],
+    "z0": 0,
+    "height": 0.18,
+    "colour": "#bdbab2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     5.2
+    ],
+    "z0": 0.2,
+    "height": 0.25,
+    "colour": "#a98258"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-post-a-1",
+   "at": [
+    -1.35,
+    -32
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 0.4,
+    "height": 1.1,
+    "colour": "#b98f5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-post-b-1",
+   "at": [
+    -1.35,
+    -28
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 0.4,
+    "height": 1.1,
+    "colour": "#b98f5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-1",
+   "at": [
+    -1.35,
+    -30
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     4.3
+    ],
+    "z0": 1.1,
+    "height": 0.12,
+    "colour": "#b98f5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-mid-1",
+   "at": [
+    -1.35,
+    -30
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     4.3
+    ],
+    "z0": 0.75,
+    "height": 0.1,
+    "colour": "#b98f5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-post-a1",
+   "at": [
+    1.35,
+    -32
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 0.4,
+    "height": 1.1,
+    "colour": "#b98f5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-post-b1",
+   "at": [
+    1.35,
+    -28
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 0.4,
+    "height": 1.1,
+    "colour": "#b98f5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail1",
+   "at": [
+    1.35,
+    -30
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     4.3
+    ],
+    "z0": 1.1,
+    "height": 0.12,
+    "colour": "#b98f5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-mid1",
+   "at": [
+    1.35,
+    -30
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     4.3
+    ],
+    "z0": 0.75,
+    "height": 0.1,
+    "colour": "#b98f5c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 10,
+    "radius": 1.6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.25,
+        0.25
+       ],
+       "height": 9,
+       "topScale": 0.3,
+       "colour": "#9bb23c"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 6,
+    "radius": 1.0,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.22,
+        0.22
+       ],
+       "height": 6,
+       "z0": 0,
+       "topScale": 0.3,
+       "colour": "#7fa02f"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4,
+    "count": 4,
+    "spread": 2.5,
+    "colour": "#5f8f2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table",
+   "at": [
+    -22,
+    -26
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#a9a8a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench0",
+   "at": [
+    -24.5,
+    -26.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.6
+    ],
+    "height": 0.5,
+    "colour": "#a9a8a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "benchback0",
+   "at": [
+    -24.5,
+    -26.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#a9a8a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench1",
+   "at": [
+    -22,
+    -28.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "rect": [
+     1.6,
+     0.6
+    ],
+    "height": 0.5,
+    "colour": "#a9a8a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "benchback1",
+   "at": [
+    -22,
+    -28.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#a9a8a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench2",
+   "at": [
+    -20,
+    -26.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.6
+    ],
+    "height": 0.5,
+    "colour": "#a9a8a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "benchback2",
+   "at": [
+    -20,
+    -26.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#a9a8a3"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#6f5638"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    18,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#9a7b52"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 5,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 3,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17,
+    "count": 4,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     0
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   75
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "bamboo and benches are blocky stand-ins, grass texture and reed edges absent; park layout around the real gate is invented, park itself is 1.6 km"
+ }
+}

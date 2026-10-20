@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-node-10155854393",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: long 3-storey block of the 2008-09 Chinese-funded Fendall expansion, ~55 x 14 m, ribbon windows, hip roof; the containing OSM polygon is 144 m long and clearly a campus complex, not this block; no photo of this place found (Commons search, Wikidata P18 and brief sources checked)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     55,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ece5cf",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#ffffff",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#a14d3a",
+    "material": "clay-tile",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 0,
+   "height": 12.8,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ffffff",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a14d3a",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -7.1,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "floors": 3,
+    "storeyHeight": 4,
+    "proud": 1.2,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.0,
+    "run": 2,
+    "count": 4,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#b8433a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; block size and tiled hip roof inferred from brief, not the OSM campus polygon"
+ }
+}

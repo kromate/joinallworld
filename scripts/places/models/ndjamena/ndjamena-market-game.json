@@ -1,0 +1,823 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1528730827",
+   "used": "containing marketplace polygon (242x149 m, 3.3 ha): only sets overall scale; outline too large and coarse, a 100x72 m walled core is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "brief ndjamena-market-game",
+   "used": "sand pens, rope-and-pole corrals, acacias, shade sheds, perimeter fence, gate; No photo of this place found on Wikimedia Commons or Wikipedia (Commons searches by name returned nothing)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 2.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#b88f66",
+    "points": [
+     [
+      -50,
+      -36
+     ],
+     [
+      -6,
+      -36
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 2.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#b88f66",
+    "points": [
+     [
+      6,
+      -36
+     ],
+     [
+      50,
+      -36
+     ],
+     [
+      50,
+      36
+     ],
+     [
+      -50,
+      36
+     ],
+     [
+      -50,
+      -36
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 3.2,
+    "pillar": 0.9,
+    "leaf": "bars",
+    "colour": "#c9a979",
+    "leafColour": "#6b5a48"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      -42.0,
+      -24.0
+     ],
+     [
+      -18.0,
+      -24.0
+     ],
+     [
+      -18.0,
+      -4.0
+     ],
+     [
+      -42.0,
+      -4.0
+     ],
+     [
+      -42.0,
+      -24.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "thickness": 0.25,
+    "kind": "palisade",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      -42.0,
+      -24.0
+     ],
+     [
+      -18.0,
+      -24.0
+     ],
+     [
+      -18.0,
+      -4.0
+     ],
+     [
+      -42.0,
+      -4.0
+     ],
+     [
+      -42.0,
+      -24.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    -34,
+    -17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 1.0,
+    "colour": "#d9cdb6"
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    -27,
+    -11,
+    0
+   ],
+   "rotDeg": 70,
+   "params": {
+    "scale": 0.95,
+    "colour": "#6e5a46"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      -42.0,
+      5.0
+     ],
+     [
+      -18.0,
+      5.0
+     ],
+     [
+      -18.0,
+      23.0
+     ],
+     [
+      -42.0,
+      23.0
+     ],
+     [
+      -42.0,
+      5.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "thickness": 0.25,
+    "kind": "palisade",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      -42.0,
+      5.0
+     ],
+     [
+      -18.0,
+      5.0
+     ],
+     [
+      -18.0,
+      23.0
+     ],
+     [
+      -42.0,
+      23.0
+     ],
+     [
+      -42.0,
+      5.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    -31,
+    14,
+    0
+   ],
+   "rotDeg": 30,
+   "params": {
+    "scale": 1.0,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    -29,
+    17,
+    0
+   ],
+   "rotDeg": 110,
+   "params": {
+    "scale": 0.95,
+    "colour": "#e0d6c2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      -11.0,
+      -24.0
+     ],
+     [
+      11.0,
+      -24.0
+     ],
+     [
+      11.0,
+      -4.0
+     ],
+     [
+      -11.0,
+      -4.0
+     ],
+     [
+      -11.0,
+      -24.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "thickness": 0.25,
+    "kind": "palisade",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      -11.0,
+      -24.0
+     ],
+     [
+      11.0,
+      -24.0
+     ],
+     [
+      11.0,
+      -4.0
+     ],
+     [
+      -11.0,
+      -4.0
+     ],
+     [
+      -11.0,
+      -24.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    2,
+    -17,
+    0
+   ],
+   "rotDeg": 60,
+   "params": {
+    "scale": 1.0,
+    "colour": "#4b3b2d"
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    3,
+    -11,
+    0
+   ],
+   "rotDeg": 150,
+   "params": {
+    "scale": 0.95,
+    "colour": "#6e5a46"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      -11.0,
+      5.0
+     ],
+     [
+      11.0,
+      5.0
+     ],
+     [
+      11.0,
+      23.0
+     ],
+     [
+      -11.0,
+      23.0
+     ],
+     [
+      -11.0,
+      5.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "thickness": 0.25,
+    "kind": "palisade",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      -11.0,
+      5.0
+     ],
+     [
+      11.0,
+      5.0
+     ],
+     [
+      11.0,
+      23.0
+     ],
+     [
+      -11.0,
+      23.0
+     ],
+     [
+      -11.0,
+      5.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    -4,
+    14,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 1.0,
+    "colour": "#c9a979"
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    1,
+    17,
+    0
+   ],
+   "rotDeg": 190,
+   "params": {
+    "scale": 0.95,
+    "colour": "#e0d6c2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      18.0,
+      -24.0
+     ],
+     [
+      42.0,
+      -24.0
+     ],
+     [
+      42.0,
+      -4.0
+     ],
+     [
+      18.0,
+      -4.0
+     ],
+     [
+      18.0,
+      -24.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "thickness": 0.25,
+    "kind": "palisade",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      18.0,
+      -24.0
+     ],
+     [
+      42.0,
+      -24.0
+     ],
+     [
+      42.0,
+      -4.0
+     ],
+     [
+      18.0,
+      -4.0
+     ],
+     [
+      18.0,
+      -24.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    29,
+    -17,
+    0
+   ],
+   "rotDeg": 120,
+   "params": {
+    "scale": 1.0,
+    "colour": "#d9cdb6"
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    33,
+    -11,
+    0
+   ],
+   "rotDeg": 230,
+   "params": {
+    "scale": 0.95,
+    "colour": "#6e5a46"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      18.0,
+      5.0
+     ],
+     [
+      42.0,
+      5.0
+     ],
+     [
+      42.0,
+      23.0
+     ],
+     [
+      18.0,
+      23.0
+     ],
+     [
+      18.0,
+      5.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "thickness": 0.25,
+    "kind": "palisade",
+    "colour": "#8a6a45",
+    "points": [
+     [
+      18.0,
+      5.0
+     ],
+     [
+      42.0,
+      5.0
+     ],
+     [
+      42.0,
+      23.0
+     ],
+     [
+      18.0,
+      23.0
+     ],
+     [
+      18.0,
+      5.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    32,
+    14,
+    0
+   ],
+   "rotDeg": 150,
+   "params": {
+    "scale": 1.0,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    31,
+    17,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "scale": 0.95,
+    "colour": "#e0d6c2"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "at": [
+    -30,
+    28,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "shed",
+    "post_pitch": 4.5,
+    "goods": "sacks",
+    "roof_colour": "#8d8a84",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "at": [
+    22,
+    29,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed",
+    "post_pitch": 4.5,
+    "goods": "sacks",
+    "roof_colour": "#9a9588",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; layout of pens, fence line and sheds is plausible, not surveyed."
+ }
+}

@@ -1,0 +1,472 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EritreaInstituteOfTechnology.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Grullab",
+   "view": "front",
+   "file": "/tmp/places-evidence/asmara/eit.jpg",
+   "used": "red-brick cylindrical block with cream window bands at left, cream colonnaded arc roof, red-brick right block with clock tower, wide steps, three flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/529703008",
+   "used": "campus is 1.4 km wide: only the main entrance group is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 70,
+  "aspect": 2.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "round-block",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     38,
+     38
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a3a",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "bands": "#e6dcc6",
+    "plinth": 0.4,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    40,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a3a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e6dcc6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-tower",
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 17,
+    "height": 10,
+    "colour": "#9a4a3a",
+    "windows": "none",
+    "topColour": "#8a8f93"
+   },
+   "at": [
+    40,
+    10
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "count": 2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    5,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 115,
+    "count": 3
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    62,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "count": 3,
+    "spacing": 3.5,
+    "colours": [
+     "#e0332d",
+     "#3a9a4a",
+     "#4189dd"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arc-roof",
+   "at": [
+    -30,
+    4,
+    17
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      8,
+      1.8
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 25,
+     "startDeg": 200,
+     "endDeg": 352,
+     "plane": "xy",
+     "steps": 9
+    },
+    "colour": "#e6dcc6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "params": {
+    "rect": [
+     42,
+     10
+    ],
+    "z0": 16.2,
+    "height": 1.8,
+    "colour": "#e6dcc6"
+   },
+   "at": [
+    15,
+    -7
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -30,
+     4,
+     0
+    ],
+    "radius": 25,
+    "startDeg": 205,
+    "endDeg": 350,
+    "count": 7,
+    "lod1Step": 3,
+    "lod2Step": 20,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 6,
+      "z0": 0,
+      "height": 16.2,
+      "colour": "#e6dcc6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -11,
+     0
+    ],
+    "end": [
+     35,
+     -11,
+     0
+    ],
+    "count": 6,
+    "lod1Step": 3,
+    "lod2Step": 20,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 6,
+      "z0": 0,
+      "height": 16.2,
+      "colour": "#e6dcc6"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-dial",
+   "params": {
+    "rect": [
+     3.6,
+     0.3
+    ],
+    "z0": 19,
+    "height": 3.6,
+    "colour": "#efe9da",
+    "windows": "none"
+   },
+   "at": [
+    40,
+    6.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "params": {
+    "rect": [
+     0.5,
+     0.2
+    ],
+    "z0": 19.2,
+    "height": 3.2,
+    "colour": "#c4302b",
+    "windows": "none"
+   },
+   "at": [
+    40,
+    6.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "params": {
+    "rect": [
+     3.0,
+     0.2
+    ],
+    "z0": 20.5,
+    "height": 0.5,
+    "colour": "#c4302b",
+    "windows": "none"
+   },
+   "at": [
+    40,
+    6.6
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "ring0",
+   "at": [
+    -30,
+    4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      19.3,
+      0,
+      "#6f8fa6"
+     ],
+     [
+      19.3,
+      4.4,
+      "#6f8fa6"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "ring1",
+   "at": [
+    -30,
+    4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      19.2,
+      6.2,
+      "#e6dcc6"
+     ],
+     [
+      19.2,
+      7.8,
+      "#e6dcc6"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "ring2",
+   "at": [
+    -30,
+    4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      19.2,
+      7.9,
+      "#2b3440"
+     ],
+     [
+      19.2,
+      9.5,
+      "#2b3440"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "ring3",
+   "at": [
+    -30,
+    4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      19.2,
+      11.2,
+      "#e6dcc6"
+     ],
+     [
+      19.2,
+      12.8,
+      "#e6dcc6"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "ring4",
+   "at": [
+    -30,
+    4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      19.2,
+      12.9,
+      "#2b3440"
+     ],
+     [
+      19.2,
+      14.5,
+      "#2b3440"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a curved arc plus short straight slab (camera sees it nearly flat, columns too regular vs real coffered arc); round block windows are flat dark bands not punched openings, ground glazing is a blue ring; clock tower with red cross added; flags tall but at far right edge; steps widened."
+ }
+}

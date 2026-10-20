@@ -1,0 +1,216 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/0",
+   "used": "park outline (51,321 m2, name match, fitted to scene scale); pavilion, paths and tree lines are typical, not photographed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6d9a4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9c52",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "p1",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -24
+     ],
+     [
+      -20,
+      -6
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      40,
+      16
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "p2",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      -4,
+      30
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "id": "pav",
+   "at": [
+    10,
+    6,
+    0.5
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#7a3a2c"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "id": "av1",
+   "at": [
+    -10,
+    -34,
+    0.5
+   ],
+   "params": {
+    "length": 70,
+    "count": 9,
+    "kind": "broadleaf",
+    "height_min": 8,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "id": "av2",
+   "at": [
+    -10,
+    34,
+    0.5
+   ],
+   "params": {
+    "length": 70,
+    "count": 9,
+    "kind": "broadleaf",
+    "height_min": 8,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "gr",
+   "at": [
+    -40,
+    0,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 10,
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "b1",
+   "at": [
+    -6,
+    -3,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "b2",
+   "at": [
+    24,
+    10,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "l1",
+   "at": [
+    -30,
+    -12,
+    0.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   150,
+   110
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; interior layout of paths, pavilion and tree lines is imagined"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-maseru-central-park"
+}

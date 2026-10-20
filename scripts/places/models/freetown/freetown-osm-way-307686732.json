@@ -1,0 +1,268 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Freetown_Railway_Museum.jpg",
+   "licence": "Public domain",
+   "author": "Davidbstanley (Wikivoyage shared)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/freetown/rail1.jpg",
+   "used": "interior of the train shed only: pale square concrete columns, steel truss under a corrugated roof, green narrow-gauge carriages and a green diesel loco with red buffer beam; no exterior photo found"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/307686732",
+   "used": "real building outline (about 52 x 50 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe4d2",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a7a6c",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "tracks": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -38,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     11,
+     2.4
+    ],
+    "height": 2.6,
+    "colour": "#1f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -38,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     11.2,
+     2.6
+    ],
+    "height": 0.35,
+    "colour": "#e8e4d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -38,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     11,
+     2.4
+    ],
+    "height": 2.6,
+    "colour": "#1f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -38,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     11.2,
+     2.6
+    ],
+    "height": 0.35,
+    "colour": "#e8e4d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -38,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     5,
+     2.2
+    ],
+    "height": 2.4,
+    "colour": "#1f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -38,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     2.3
+    ],
+    "height": 0.5,
+    "colour": "#b8322c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -43,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     8,
+     2.3
+    ],
+    "height": 2.5,
+    "colour": "#3f6f56"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -43,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     8.2,
+     2.4
+    ],
+    "height": 0.4,
+    "colour": "#b8322c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 2.2,
+    "colour": "#1f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.5,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#6b6f70"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -30
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only an interior photo exists: exterior is a plain shed on the real OSM outline with corrugated gable roof; green carriages and loco blocks on tracks in the yard are schematic."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-osm-way-307686732"
+}

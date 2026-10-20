@@ -1,0 +1,395 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-red-castle",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Old_Castle,_Central_of_Tripoli,_Libya.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tawil81",
+   "view": "front",
+   "file": "/tmp/places-evidence/tripoli/castle1.jpg",
+   "used": "long ochre stone sea wall with crenellated top, left bastion with three big arched openings, red-orange upper block behind, palms and fountains on the quay, two columns at far left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Red_castle_CBL_Tripoli_Libya.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mohamed Tailamun",
+   "view": "front",
+   "file": "/tmp/places-evidence/tripoli/castle2.jpg",
+   "used": "bastion proportions and arch rhythm, pale stone wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/100827834",
+   "used": "overall extent and bearing only; sea front, bastion and courtyard ranges composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.82,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "sea-wall",
+   "footprint": {
+    "rect": [
+     110,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4923f",
+    "windows": "punched",
+    "plinth": 1.5,
+    "cornice": true,
+    "windowShape": "rect",
+    "windowRatio": 0.05,
+    "bay": 5,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98d52",
+    "parapet": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bastion",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    -42,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9985a",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "plinth": 2.5,
+    "bay": 8.6,
+    "groundKind": "plain"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98d52",
+    "parapet": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-block",
+   "footprint": {
+    "rect": [
+     64,
+     12
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c8502c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c6a4a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "courtyard-range",
+   "footprint": {
+    "rect": [
+     70,
+     20
+    ]
+   },
+   "at": [
+    -5,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d3b4",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    0,
+    -0.5,
+    11
+   ],
+   "params": {
+    "length": 110,
+    "height": 1.6,
+    "thickness": 0.8,
+    "colour": "#b98d52"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 1.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#2e5f8a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    18,
+    -36,
+    0
+   ],
+   "params": {
+    "radius": 4
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    26,
+    -36,
+    0
+   ],
+   "params": {
+    "radius": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 4,
+    "spread": 2,
+    "line": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 4,
+    "spread": 2,
+    "line": 70
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-tower",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    44,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 32,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d0602f",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c6a4a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -70,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "width": 2,
+    "round": true,
+    "colour": "#cdb98a",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "tower",
+   "at": [
+    -60,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "width": 2,
+    "round": true,
+    "colour": "#cdb98a",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -57,
+      -8
+     ],
+     [
+      57,
+      -8
+     ],
+     [
+      57,
+      7
+     ],
+     [
+      -57,
+      7
+     ]
+    ],
+    "z0": 0,
+    "height": 3,
+    "topScale": 0.96,
+    "colour": "#b8873f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "bastion still shows a ribbon of small windows, not three big open arches, and no stepped ruined parapet; sea wall gun ports are small; battered base barely visible; no water, irregular outline simplified"
+ }
+}

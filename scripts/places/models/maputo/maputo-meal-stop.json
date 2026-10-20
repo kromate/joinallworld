@@ -1,0 +1,384 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cafe_Continental_Maputo_(349072701).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Maurits Verbiest (Flickr)",
+   "view": "street",
+   "file": "/tmp/places-evidence/maputo/continental.jpg",
+   "used": "eight-storey stepped art-deco block, stone-grey stucco, vertical pilaster fins on the long side, tall plain canted corner bay, deep ground-floor awning and blank signboards, balconies on the lower right wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7014526",
+   "used": "footprint (name match score 0.5, 8 levels tagged, size agrees with the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -55,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 0.7,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "polygon": [
+     [
+      -32,
+      -0.9
+     ],
+     [
+      -27.4,
+      -3.5
+     ],
+     [
+      -25.7,
+      -0.4
+     ],
+     [
+      -12.82,
+      -7.67
+     ],
+     [
+      0.39,
+      15.79
+     ],
+     [
+      -17,
+      25.6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 31,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9ab92",
+    "glassColour": "#3e4852",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 3.8,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 4.6,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.4,
+      "depth": 0.45,
+      "spacing": 0.9,
+      "colour": "#a89a82",
+      "from": 1,
+      "skipGround": true,
+      "margin": 0.6,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "middle",
+   "footprint": {
+    "polygon": [
+     [
+      -12.82,
+      -7.67
+     ],
+     [
+      6.36,
+      -18.5
+     ],
+     [
+      19.58,
+      4.96
+     ],
+     [
+      0.39,
+      15.79
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 27.6,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfb299",
+    "glassColour": "#3e4852",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 3.8,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 4.6,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.45,
+      "proud": 0.1,
+      "colour": "#cdc2ac",
+      "at": 1.0,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "polygon": [
+     [
+      6.36,
+      -18.5
+     ],
+     [
+      8.3,
+      -19.6
+     ],
+     [
+      6.9,
+      -22
+     ],
+     [
+      15.9,
+      -27
+     ],
+     [
+      30.5,
+      -1.2
+     ],
+     [
+      19.58,
+      4.96
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c6b9a2",
+    "glassColour": "#3e4852",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 3.8,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 4.6,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.2,
+      "width": 2.4,
+      "every": 4.8,
+      "floors": "upper",
+      "colour": "#b0a48e",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "height": 0.45,
+      "proud": 0.1,
+      "colour": "#cdc2ac",
+      "at": 1.0,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roofbox",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    26,
+    -8
+   ],
+   "z0": 21,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4cdbd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "rotDeg": -29,
+   "params": {
+    "width": 16,
+    "depth": 2.6,
+    "drop": 0.6,
+    "height": 3.4,
+    "colours": [
+     "#e8e4d8",
+     "#4a4f55"
+    ],
+    "stripe": 0.45
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -23,
+    0
+   ],
+   "rotDeg": -29,
+   "params": {
+    "width": 14,
+    "depth": 2.6,
+    "drop": 0.6,
+    "height": 3.4,
+    "colours": [
+     "#d9d3c3",
+     "#3d4248"
+    ],
+    "stripe": 0.45
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -12.5,
+    0
+   ],
+   "rotDeg": -29,
+   "params": {
+    "width": 11,
+    "height": 1.3,
+    "colour": "#e6e2d6",
+    "posts": false,
+    "bottom": 3.5999999999999996,
+    "frameColour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -9.5,
+    0
+   ],
+   "rotDeg": -29,
+   "params": {
+    "width": 9,
+    "height": 2.2,
+    "colour": "#b3262a",
+    "posts": false,
+    "bottom": 5.2,
+    "frameColour": "#b3262a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     35,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-meal-stop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped three-mass split (tall left tower, lower middle, lower balcony wing) with grouped fins on the tower and red/white signs; but the deep dark ground arcade, canted corner bay, fins on the middle and long wall, paired narrow windows and the rooftop box detail are only approximated (triangle budget), and the tree is simplified"
+ }
+}

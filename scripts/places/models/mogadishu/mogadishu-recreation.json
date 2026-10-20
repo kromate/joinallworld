@@ -1,0 +1,191 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mogadishu.json#mogadishu-recreation",
+   "used": "Daynile district tourism and recreation centre: sandy grounds, palms, picnic shelters, entrance gate, boundary wall, about 120 x 90 m. No OSM outline and no photo found."
+  }
+ ],
+ "parts": [
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4.2,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#e8d9b3",
+    "leafColour": "#6a9a74"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -60,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e8d9b3"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    10,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e8d9b3"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -4,
+     0
+    ],
+    "end": [
+     36,
+     -4,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "mosque-domed/pavilion",
+      "params": {
+       "width": 8,
+       "depth": 6,
+       "height": 3.4,
+       "roof": "hip",
+       "rise": 1.5,
+       "posts": 4,
+       "colour": "#b9622f",
+       "cap_colour": "#b9622f"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 9,
+    "height": 4,
+    "roof": "hip",
+    "rise": 2,
+    "posts": 6,
+    "colour": "#e8d9b3",
+    "cap_colour": "#6a9a74"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -22,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 2.6,
+    "height": 2.7,
+    "colour": "#6a9a74"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 9,
+    "spread": 9,
+    "line": 104
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 8,
+    "spread": 9,
+    "line": 100
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    48,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.6,
+    "legHeight": 5
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Everything is typed from the brief; layout of shelters, gate position and boundary are guessed."
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

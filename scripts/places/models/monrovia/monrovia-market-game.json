@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/302305106",
+   "used": "real 1243 m2 outline of Turning Point Market (name match), used for the covered trading hall"
+  },
+  {
+   "kind": "text",
+   "used": "brief: timber stalls under corrugated sheets and umbrellas around a muddy yard; no photo of this place found (Commons search, Wikidata P18 and brief sources checked)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 52
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9588",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d5a3f",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 7,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#b8744f",
+     "#d8d2c4",
+     "#9a9588"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    34,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    10,
+    30,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.2,
+    "colour": "#b8744f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "OSM outline hall plus stall rows; no photo, stall layout and colours typed from brief"
+ }
+}

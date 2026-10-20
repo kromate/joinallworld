@@ -1,0 +1,164 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-node-6554383286",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Hargeisa",
+   "used": "city context only; no photo of this place found (Commons search empty)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 24,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "polygon": [
+     [
+      -20,
+      -12
+     ],
+     [
+      18,
+      -15
+     ],
+     [
+      20,
+      12
+     ],
+     [
+      -8,
+      15
+     ],
+     [
+      -22,
+      6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b08a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c3a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wall",
+   "footprint": {
+    "rect": [
+     30,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "z0": 0.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d6c3a0",
+    "windows": "none",
+    "parapet": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-return",
+   "footprint": {
+    "rect": [
+     0.6,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    -5
+   ],
+   "z0": 0.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b08a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    6,
+    6,
+    0.5
+   ],
+   "params": {
+    "width": 5.5,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "hip",
+    "rise": 1.2,
+    "posts": 4,
+    "colour": "#f0ede4",
+    "cap_colour": "#a3a69f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -24,
+     12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     24,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or footprint; viewpoint terrace, low wall and shelter typed from the brief."
+ }
+}

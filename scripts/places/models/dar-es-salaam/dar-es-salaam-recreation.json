@@ -1,0 +1,273 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/368997802",
+   "used": "park outline: a long sliver triangle (about 197 x 55 m, 5,400 m2, scaled by 0.6 here to a 118 m side), used as the paved and lawned ground"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dar-es-salaam.json#dar-es-salaam-recreation",
+   "used": "Old Post Office park in the city centre: small paved square with trees, a fountain, railings and a kiosk (typed in the brief; no photo of the park found, nearby street photos show other buildings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park-ground",
+   "footprint": {
+    "polygon": [
+     [
+      -63.7,
+      -43.3
+     ],
+     [
+      20.9,
+      34.6
+     ],
+     [
+      42.8,
+      8.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8b890",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9db586"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -56.1,
+      -38.1
+     ],
+     [
+      -15.9,
+      -10.8
+     ],
+     [
+      27.1,
+      18.5
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -46.0,
+    -28.2,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 5,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "market-open/fountain",
+   "at": [
+    -11.1,
+    -7.5,
+    0
+   ],
+   "params": {
+    "radius": 3.2
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    11.8,
+    14.1,
+    0
+   ],
+   "rotDeg": -34,
+   "params": {
+    "kind": "kiosk",
+    "width": 3.4,
+    "depth": 2.6,
+    "height": 2.8,
+    "colour": "#b9b2a4",
+    "roof_colour": "#8a8f92"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    -32.8,
+    -27.1,
+    0
+   ],
+   "rotDeg": -34,
+   "params": {
+    "width": 6,
+    "depth": 3.5,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "market-open/railing",
+   "at": [
+    -9.2,
+    -20.7,
+    0
+   ],
+   "rotDeg": -34,
+   "params": {
+    "length": 24,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46.6,
+    -37.7
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40.3,
+    -20.1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24.0,
+    -23.6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25.2,
+    -7.4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0.0,
+    -9.6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -0.8,
+    8.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22.3,
+    15.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10.8,
+    1.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14.5,
+    3.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the park; layout (central path, fountain, kiosk, pergola, trees) is typical of a small Dar es Salaam city-centre park and the brief only"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   150,
+   110
+  ]
+ }
+}

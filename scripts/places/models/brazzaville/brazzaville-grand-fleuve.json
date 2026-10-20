@@ -1,0 +1,748 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Geant_Casino.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Prevel EPOTA",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/brazzaville/gf1.jpg",
+   "used": "single-storey hypermarket box in cream-white cladding panels with a dark flat roof edge and rooftop plant, dark vertical entrance pylon, low green-roofed canopy at the left corner, white 2-storey office wing behind right, perimeter fence and car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/477506458",
+   "used": "overall scale only (the real outline is an L of 4295 m2; the photographed hypermarket box is modelled as a clean rectangle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "store",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "points": [
+     [
+      -31,
+      -19
+     ],
+     [
+      31,
+      -19
+     ],
+     [
+      31,
+      19
+     ],
+     [
+      -8,
+      19
+     ],
+     [
+      -8,
+      5
+     ],
+     [
+      -31,
+      5
+     ]
+    ],
+    "height": 9.5,
+    "colour": "#e6e3da",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#e8e6de",
+      "#dcdad2"
+     ],
+     "slits": 0
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-band",
+   "at": [
+    0,
+    0,
+    8.8
+   ],
+   "params": {
+    "points": [
+     [
+      -31.4,
+      -19.4
+     ],
+     [
+      31.4,
+      -19.4
+     ],
+     [
+      31.4,
+      19.4
+     ],
+     [
+      -7.6,
+      19.4
+     ],
+     [
+      -7.6,
+      5.4
+     ],
+     [
+      -31.4,
+      5.4
+     ]
+    ],
+    "height": 0.9,
+    "colour": "#3a3d44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-top",
+   "at": [
+    0,
+    0,
+    9.5
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -18
+     ],
+     [
+      30,
+      -18
+     ],
+     [
+      30,
+      18
+     ],
+     [
+      -7,
+      18
+     ],
+     [
+      -7,
+      6
+     ],
+     [
+      -30,
+      6
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#6f7378"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -8,
+    9.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "height": 1.6,
+    "colour": "#8d9096"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    2,
+    9.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 1.8,
+    "colour": "#7d8187"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -4,
+    9.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 1.4,
+    "colour": "#8d9096"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    12,
+    9.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "height": 1.5,
+    "colour": "#7d8187"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    10,
+    9.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 8,
+    "colour": "#555a60"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     2.6
+    ],
+    "height": 17,
+    "colour": "#2a2e35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -21.5,
+    4.0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#3b6fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -21.5,
+    7.6
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#e0b93a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -21.5,
+    11.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#c93a35"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 4,
+    "height": 2.8,
+    "thickness": 0.3,
+    "colour": "#7a9a52",
+    "edgeColour": "#7a9a52",
+    "columns": 5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26.0,
+    -17.5,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.6
+    ],
+    "height": 3.6,
+    "colour": "#c93a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22.8,
+    -17.5,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.6
+    ],
+    "height": 3.6,
+    "colour": "#c93a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19.6,
+    -17.5,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.6
+    ],
+    "height": 3.6,
+    "colour": "#c93a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16.4,
+    -17.5,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.6
+    ],
+    "height": 3.6,
+    "colour": "#c93a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.2,
+    -17.5,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.6
+    ],
+    "height": 3.6,
+    "colour": "#c93a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -23.5,
+    -17.6,
+    9.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.2
+    ],
+    "height": 0.5,
+    "colour": "#8d2a26"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -34,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "height": 1.5,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    -28.2,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "height": 1.1,
+    "colour": "#d9423a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19,
+    -28.2,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "height": 1.1,
+    "colour": "#3b6fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -28.2,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "height": 1.1,
+    "colour": "#e0b93a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -28.2,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "height": 1.1,
+    "colour": "#4f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -28.2,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "height": 1.1,
+    "colour": "#d9423a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -28.2,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "height": 1.1,
+    "colour": "#3b6fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    -28.2,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "height": 1.1,
+    "colour": "#e0b93a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-wing",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    44,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.2,
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front",
+      "back"
+     ],
+     "colours": [
+      "#f2f0ea",
+      "#c9ccd0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9096",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    62,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     7
+    ],
+    "height": 9,
+    "colour": "#3b6fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    62.3,
+    12,
+    6
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     5.6
+    ],
+    "height": 3,
+    "colour": "#e0b93a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.6,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -35,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -40
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     55,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -18
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "L-outline, parapet band, roof plant, raised red letters, taller pylon with tenant panels, lower canopy, white wall with hoarding panels and 2-storey banded office wing added; fence/wall line runs past the lot edge, no tower mast detail, no real street, cars still on a lot."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-grand-fleuve"
+}

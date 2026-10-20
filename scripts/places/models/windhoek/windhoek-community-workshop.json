@@ -1,0 +1,533 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/904160060",
+   "used": "real campus boundary (287 x 234 m, 51,734 m2) as the paved ground slab; teaching blocks arranged inside it around a central plaza"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Windhoek",
+   "used": "brief: 2-4 storey rendered blocks with sun-shades around plazas and a taller library block; contemporary Windhoek palette"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "id": "campus-ground",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -68.9,
+      38.9
+     ],
+     [
+      -66.8,
+      42.4
+     ],
+     [
+      19.2,
+      60.9
+     ],
+     [
+      23.4,
+      57.7
+     ],
+     [
+      27.2,
+      45.1
+     ],
+     [
+      40.1,
+      23.9
+     ],
+     [
+      45.6,
+      25.2
+     ],
+     [
+      56.9,
+      15.7
+     ],
+     [
+      62.0,
+      10.1
+     ],
+     [
+      65.1,
+      5.2
+     ],
+     [
+      67.5,
+      -0.0
+     ],
+     [
+      73.2,
+      -24.0
+     ],
+     [
+      74.0,
+      -48.0
+     ],
+     [
+      15.6,
+      -48.2
+     ],
+     [
+      -33.3,
+      -44.1
+     ],
+     [
+      -48.5,
+      -48.4
+     ],
+     [
+      -52.8,
+      -45.2
+     ],
+     [
+      -55.9,
+      -19.0
+     ],
+     [
+      -63.7,
+      -7.6
+     ],
+     [
+      -66.2,
+      -2.0
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "slot": "plain",
+    "bottom": false,
+    "colour": "#b9ad98",
+    "topColour": "#c4b8a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north",
+   "footprint": {
+    "rect": [
+     33.6,
+     7.68
+    ]
+   },
+   "at": [
+    0.0,
+    29.759999999999998
+   ],
+   "rotDeg": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "bay": 7,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9835a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south",
+   "footprint": {
+    "rect": [
+     30.72,
+     7.68
+    ]
+   },
+   "at": [
+    -5.76,
+    -29.759999999999998
+   ],
+   "rotDeg": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "bay": 7,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9835a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west",
+   "footprint": {
+    "rect": [
+     7.68,
+     31.68
+    ]
+   },
+   "at": [
+    -37.44,
+    -2.4
+   ],
+   "rotDeg": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "bay": 7,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9835a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east",
+   "footprint": {
+    "rect": [
+     7.68,
+     27.84
+    ]
+   },
+   "at": [
+    42.239999999999995,
+    -5.76
+   ],
+   "rotDeg": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "bay": 7,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9835a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     11.52,
+     11.52
+    ]
+   },
+   "at": [
+    14.399999999999999,
+    5.76
+   ],
+   "rotDeg": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7d8a8f",
+    "bay": 7,
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "bands": "#b9835a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture",
+   "footprint": {
+    "rect": [
+     19.2,
+     6.72
+    ]
+   },
+   "at": [
+    -29.759999999999998,
+    -31.68
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "bay": 7,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9835a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     14.399999999999999,
+     6.72
+    ]
+   },
+   "at": [
+    -45.6,
+    28.799999999999997
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "bay": 7,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9835a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "labs",
+   "footprint": {
+    "rect": [
+     17.28,
+     6.72
+    ]
+   },
+   "at": [
+    49.92,
+    -29.759999999999998
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "bay": 7,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9835a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade0",
+   "params": {
+    "rect": [
+     17,
+     2.5
+    ],
+    "z0": 3.2,
+    "height": 0.3,
+    "colour": "#7d8a8f",
+    "topColour": "#7d8a8f"
+   },
+   "at": [
+    -22,
+    11
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shade1",
+   "params": {
+    "rect": [
+     17,
+     2.5
+    ],
+    "z0": 3.2,
+    "height": 0.3,
+    "colour": "#7d8a8f",
+    "topColour": "#7d8a8f"
+   },
+   "at": [
+    -22,
+    -17
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shade2",
+   "params": {
+    "rect": [
+     2.5,
+     13
+    ],
+    "z0": 3.2,
+    "height": 0.3,
+    "colour": "#7d8a8f",
+    "topColour": "#7d8a8f"
+   },
+   "at": [
+    33,
+    -3
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "carpark",
+   "params": {
+    "rect": [
+     33,
+     19
+    ],
+    "z0": 0.2,
+    "height": 0.05,
+    "colour": "#55575a",
+    "topColour": "#55575a"
+   },
+   "at": [
+    -3,
+    -50
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    11,
+    -57,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "colour": "#7d8a8f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    5,
+    -57,
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    22,
+    -57,
+    0
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable photo of the campus (nearby Commons photos show a street and a group portrait); block positions and heights are typical, not surveyed"
+ },
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -14,
+     0
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     5,
+     -12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     29,
+     -24
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -53,
+     5
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     58,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   120
+  ]
+ }
+}

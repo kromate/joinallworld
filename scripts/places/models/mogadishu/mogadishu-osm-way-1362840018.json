@@ -1,0 +1,215 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-way-1362840018",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1362840018",
+   "used": "cafe outline, a rotated rectangle about 11 x 8.7 m, matched by name"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey pastel shopfront with big window, awning, blank sign board, neon strip and two umbrellas; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -15.7
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1d6c4",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "plinth": 0.2,
+    "bands": "#4fa3a5",
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 9.4,
+    "depth": 2.0,
+    "drop": 0.7,
+    "height": 3.0,
+    "colours": [
+     "#4fa3a5",
+     "#fffaf2"
+    ],
+    "stripe": 0.8,
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.9,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.0,
+    "bottom": 3.5,
+    "colour": "#4fa3a5",
+    "frameColour": "#fffaf2",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "neon",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -5.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     0.08
+    ],
+    "z0": 3.1,
+    "height": 0.12,
+    "colour": "#ff8fb1",
+    "topColour": "#ff8fb1"
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbrellas",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -3.2,
+     -8,
+     0
+    ],
+    "end": [
+     3.2,
+     -8,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#fffaf2",
+      "profile": [
+       [
+        0.1,
+        0,
+        "#555"
+       ],
+       [
+        0.1,
+        2.2
+       ],
+       [
+        1.2,
+        2.2,
+        "#fffaf2"
+       ],
+       [
+        0.1,
+        2.7
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tables",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -3.2,
+     -8,
+     0
+    ],
+    "end": [
+     3.2,
+     -8,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 8,
+      "height": 0.75,
+      "colour": "#4fa3a5",
+      "topColour": "#fffaf2"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     -1
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: pastel scheme, awning and umbrellas come from the brief; only the outline is real"
+ }
+}

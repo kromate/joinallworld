@@ -1,0 +1,92 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-way-397444369",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/441436643",
+   "used": "nearest OSM faculty building (13 m away, same name): 24 x 12 m, brick, metal roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "polygon": [
+     [
+      -12.3,
+      3.5
+     ],
+     [
+      -9.2,
+      3.5
+     ],
+     [
+      -9.2,
+      6.2
+     ],
+     [
+      11.5,
+      6.6
+     ],
+     [
+      11.7,
+      -5.9
+     ],
+     [
+      -12.1,
+      -6.3
+     ]
+    ]
+   },
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8d4c8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#3f6f8a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a9e9f",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint/brief only, so facade details, colours and roof are typical for Moroni, not observed."
+ }
+}

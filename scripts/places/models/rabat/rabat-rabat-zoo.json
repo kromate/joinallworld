@@ -1,0 +1,259 @@
+{
+ "name": "Rabat Zoo",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Rabat_Zoo",
+   "used": "48 ha Temara zoological garden opened 1973, reopened 2012; entrance, enclosures, kiosks"
+  },
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:Zoo_rabat.jpg",
+   "used": "setting only: red-brown earth, dry grass banks, eucalyptus-type broadleaf trees, green fence rail (no building visible)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/508257049",
+   "used": "nearest OSM building is a 10 m hut 27 m away; not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the entrance or buildings found; gate, kiosks and pavilion are a plausible typical Moroccan zoo entrance sized from the brief"
+ },
+ "parts": [
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 3.5,
+    "height": 8,
+    "openings": 1,
+    "kind": "round",
+    "pier": "#e8dcc0",
+    "crest": "none",
+    "crenellated": false
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 2.6,
+    "height": 2.9,
+    "colour": "#b9703f",
+    "sign_colour": "#b9703f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 2.6,
+    "height": 2.9,
+    "colour": "#b9703f",
+    "sign_colour": "#b9703f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 3,
+    "height": 2.8,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    18,
+    -4
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9703f",
+    "material": "clay-tile",
+    "rise": 1.8,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -33,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 15,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    18,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 15,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.4,
+    "thickness": 0.2,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#2f5f4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 6,
+    "spread": 6,
+    "line": 60
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 5,
+    "line": 24
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -8,
+    -44,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -36
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -36
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-rabat-zoo"
+}

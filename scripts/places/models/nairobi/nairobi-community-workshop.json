@@ -1,0 +1,520 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universityofnairobi.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kenyaverification",
+   "view": "street",
+   "file": "/tmp/places-evidence/nairobi/uon2.jpg",
+   "used": "main block: five storeys of stone-clad piers with a saw-toothed (zigzag) green roof edge, deep glazing with green cantilever sills, white ribbon-window block behind left, hedges and lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nairobi_universitet.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rotsee2",
+   "view": "front",
+   "file": "/tmp/places-evidence/nairobi/uon1.jpg",
+   "used": "entrance gate: pitched arch over a blue-railed gateway between small hip-roofed lodges, tall hall behind clad in a blue-and-white lattice"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/79418479",
+   "used": "only the match (name quality) and the campus scale; the 1012 m2 outline is a single elongated block so the campus is composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "piers taper but are not cut into zigzag arches; roof teeth are a folded surface, lower amplitude than the real sawtooth; agave plants are approximated; wider campus is three blocks and a gate"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library-block",
+   "footprint": {
+    "rect": [
+     66,
+     17
+    ]
+   },
+   "at": [
+    6,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4ab86",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#1c2528",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8f7458"
+      ],
+      "height": 0.5,
+      "proud": 0.4,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b57",
+    "overhang": 2.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "surface",
+   "id": "zigzag-roof",
+   "at": [
+    6,
+    14,
+    21.2
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 72,
+    "depth": 21,
+    "rise": 6.0,
+    "folds": 12,
+    "foldAxis": "y",
+    "thickness": 0.5,
+    "colour": "#1f6b4a",
+    "edgeColour": "#1a5a3e"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     4.7,
+     0
+    ],
+    "end": [
+     36,
+     4.7,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         3.4,
+         1.8
+        ]
+       },
+       {
+        "z": 6,
+        "rect": [
+         2.4,
+         1.3
+        ]
+       },
+       {
+        "z": 21,
+        "rect": [
+         1.7,
+         1.1
+        ]
+       }
+      ],
+      "colour": "#b89b7d",
+      "material": "stone-blocks"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     48,
+     13
+    ]
+   },
+   "at": [
+    -58,
+    36
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "bands": "#cfc9b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8c86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lattice-hall",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    -8,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8dde2",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.6,
+       2.6
+      ],
+      "colours": [
+       "#d8dde2",
+       "#4a6fa3",
+       "#e6e9ec"
+      ],
+      "mode": "checker",
+      "gap": 0.1,
+      "proud": 0.12
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 2.4,
+    "colour": "#a9b0b6",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-lodge-l",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -24,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a08b6c",
+    "windows": "none",
+    "plinth": 0.2,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e7a5e",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-lodge-r",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -8,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4d8",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e7a5e",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gate-arch",
+   "params": {
+    "section": "rect",
+    "width": 0.9,
+    "height": 0.7,
+    "arc": {
+     "centre": [
+      -16,
+      -26,
+      3.2
+     ],
+     "radius": 8.0,
+     "startDeg": 160,
+     "endDeg": 20,
+     "plane": "xz"
+    },
+    "colour": "#c9cdbf",
+    "caps": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-l",
+   "at": [
+    -23.4,
+    -26.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 4.6,
+    "colour": "#9a8a70",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-r",
+   "at": [
+    -8.6,
+    -26.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 4.6,
+    "colour": "#9a8a70",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -16,
+    -26.4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "pillar": 0.5,
+    "leaf": "bars",
+    "leafColour": "#3d8fd0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -27.5,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#f2f2ee",
+    "frameColour": "#3d8fd0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "sills-floors",
+   "params": {
+    "mode": "line",
+    "start": [
+     6,
+     3.6,
+     4.2
+    ],
+    "end": [
+     6,
+     3.6,
+     16.8
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       66,
+       1.6
+      ],
+      "height": 0.4,
+      "colour": "#1f6b4a"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "array",
+   "id": "hedge",
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -6,
+     0
+    ],
+    "end": [
+     34,
+     -6,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "market-open/hedge",
+     "params": {
+      "length": 9.5,
+      "height": 1.0,
+      "depth": 1.4,
+      "colour": "#3f6f2f"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "array",
+   "id": "agave",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -4,
+     0
+    ],
+    "end": [
+     22,
+     -4,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 3
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   110
+  ]
+ }
+}

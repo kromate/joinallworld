@@ -1,0 +1,279 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/899502785",
+   "used": "name match only for the market; its own outline is a 4 m kiosk so not used, surrounding marketplace area is 15,266 m2"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Old Town central market, perimeter wall, lock-up rows, corrugated sheds, umbrella stalls on open lanes"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    -24,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#b7573d",
+     "#4a6a7a",
+     "#c9a24a"
+    ],
+    "wall_colour": "#c4b9a6",
+    "roof_colour": "#7a3b2e",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -24,
+    26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#b7573d",
+     "#4a6a7a",
+     "#c9a24a"
+    ],
+    "wall_colour": "#c4b9a6",
+    "roof_colour": "#7a3b2e",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -44,
+    -4,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#b7573d",
+     "#4a6a7a",
+     "#c9a24a"
+    ],
+    "wall_colour": "#c4b9a6",
+    "roof_colour": "#7a3b2e",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7a3b2e",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    10,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "shed"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -22,
+    4,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -10,
+    18,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -48,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c4b9a6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -48,
+    38,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c4b9a6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    48,
+    38,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 76,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c4b9a6"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.8,
+    "pillar": 1.2,
+    "colour": "#b7573d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this market; layout typed from brief, no mass part, stalls generic"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-market-game"
+}

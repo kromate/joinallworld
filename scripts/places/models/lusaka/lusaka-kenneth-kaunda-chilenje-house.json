@@ -1,0 +1,649 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-kenneth-kaunda-chilenje-house",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chilenje_House_394_Eingangstafel.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mutinondo",
+   "view": "front",
+   "file": "/tmp/places-evidence/lusaka/chilenje1.jpg",
+   "used": "entrance only: red-brick pillar with a cream stone plaque panel and flat grey cap, orange-yellow pierced breeze-block screen walls either side, large shade tree, low house behind in pinkish cream render with a dark brown fascia"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/510361822",
+   "used": "not used for geometry: the OSM feature is a 168 x 55 m park polygon, not the house"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 36,
+  "aspect": 1.0,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     15,
+     9.5
+    ]
+   },
+   "at": [
+    4,
+    10
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ead0b8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.25,
+    "cornice": false,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a4636",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-wing",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    8
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ead0b8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a4636",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pillar",
+   "footprint": {
+    "rect": [
+     7,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4442b",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d79",
+    "parapet": 0.15,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -4.75,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     0.12
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#e3d2b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque-border-top",
+   "at": [
+    0,
+    -4.83,
+    4.55
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.08
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#6f7173"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque-border-bot",
+   "at": [
+    0,
+    -4.83,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.08
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#6f7173"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque-border-l",
+   "at": [
+    -2.65,
+    -4.83,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.08
+    ],
+    "z0": 0,
+    "height": 3.87,
+    "colour": "#6f7173"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque-border-r",
+   "at": [
+    2.65,
+    -4.83,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.08
+    ],
+    "z0": 0,
+    "height": 3.87,
+    "colour": "#6f7173"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque-line-0",
+   "at": [
+    0,
+    -4.83,
+    4.1
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7e66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-line-1",
+   "at": [
+    0,
+    -4.83,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7e66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-line-2",
+   "at": [
+    0,
+    -4.83,
+    3.05
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7e66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-line-3",
+   "at": [
+    0,
+    -4.83,
+    2.75
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7e66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-line-4",
+   "at": [
+    0,
+    -4.83,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7e66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-line-5",
+   "at": [
+    0,
+    -4.83,
+    1.9
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7e66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-line-6",
+   "at": [
+    0,
+    -4.83,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7e66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-line-7",
+   "at": [
+    0,
+    -4.83,
+    1.3
+   ],
+   "params": {
+    "rect": [
+     3.9,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7e66"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "screen-l",
+   "at": [
+    -11,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#dfa646",
+    "windows": "punched",
+    "windowRatio": 0.7,
+    "bay": 0.55,
+    "storeys": 4,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    },
+    "glassColour": "#8a5f26"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-cap-l",
+   "at": [
+    -11,
+    -4,
+    2.1
+   ],
+   "params": {
+    "rect": [
+     15.1,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#7d7d79"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-r",
+   "at": [
+    11,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#dfa646",
+    "windows": "punched",
+    "windowRatio": 0.7,
+    "bay": 0.55,
+    "storeys": 4,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    },
+    "glassColour": "#8a5f26"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-cap-r",
+   "at": [
+    11,
+    -4,
+    2.1
+   ],
+   "params": {
+    "rect": [
+     15.1,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#7d7d79"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-side",
+   "at": [
+    -18.5,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     14
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "colour": "#dfa646"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tree-trunk",
+   "at": [
+    -6,
+    -7,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.9
+     },
+     {
+      "z": 3,
+      "circle": 0.7,
+      "cx": 1.0,
+      "cy": 0.5
+     },
+     {
+      "z": 8.5,
+      "circle": 0.45,
+      "cx": 2.6,
+      "cy": 1.2
+     }
+    ],
+    "colour": "#4a3a2c",
+    "curve": true
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tree-canopy",
+   "at": [
+    -3,
+    -6,
+    8.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#243c26"
+     ],
+     [
+      8,
+      0.5,
+      "#243c26"
+     ],
+     [
+      11,
+      2.5,
+      "#2b4a2d"
+     ],
+     [
+      9,
+      5,
+      "#2b4a2d"
+     ],
+     [
+      4,
+      6.8,
+      "#243c26"
+     ],
+     [
+      0,
+      7,
+      "#243c26"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tree-canopy2",
+   "at": [
+    -12,
+    -10,
+    7
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#243c26"
+     ],
+     [
+      5,
+      0.5,
+      "#243c26"
+     ],
+     [
+      7,
+      2,
+      "#2b4a2d"
+     ],
+     [
+      5,
+      4,
+      "#2b4a2d"
+     ],
+     [
+      0,
+      5,
+      "#243c26"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tree-trunk2",
+   "at": [
+    -12,
+    -10,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.6
+     },
+     {
+      "z": 7,
+      "circle": 0.35
+     }
+    ],
+    "colour": "#4a3a2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Plaque is a cream panel in a brick frame with grey border and blank text-line strips (no legible lettering by rule); screens are pierced by a plain window grid, not the square-spiral pattern; tree canopy is a blocky lump; house behind is a typical bungalow, only a sliver is seen in the photo."
+ }
+}

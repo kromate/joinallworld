@@ -1,0 +1,129 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/8007052060",
+   "used": "containing building outline: a long low rendered block (about 36 x 11.5 m), restaurant is one unit of it"
+  },
+  {
+   "kind": "text",
+   "used": "brief: unnamed local restaurant, rendered one-storey, terrace with awning and umbrellas; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: the OSM block is a long low building; which unit is the restaurant and the terrace side are assumed."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "building",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d6b4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b85c3a",
+    "plinth": 0.4,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.4,
+    "drop": 0.6,
+    "height": 2.8,
+    "colours": [
+     "#b85c3a",
+     "#e8dfc6"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -5,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "radius": 1.4,
+    "colours": [
+     "#b85c3a",
+     "#e8dfc6",
+     "#c4bdae"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -5,
+    -8.7,
+    3.4
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "colour": "#f0e9d4",
+    "frame": "#b85c3a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    15,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-osm-node-8007052060"
+}

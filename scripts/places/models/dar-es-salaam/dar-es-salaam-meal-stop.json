@@ -1,0 +1,255 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/688369590",
+   "used": "containing building Golden Jubilee Towers: 25 levels, complex footprint about 60 x 57 m; match is only 'containing' so the outline is NOT copied, only the tower-on-podium typology and height class"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Akemi Revolving Restaurant, rotating glazed drum crowning a city-centre high-rise (typed from the name, no source); photo candidates were of the neighbouring JB Belmont hotel and are a different building so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 38,
+  "aspect": 0.8,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     46,
+     36
+    ]
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c8d4da",
+    "glassColour": "#3d5566",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     28,
+     24
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 12,
+   "height": 62,
+   "storeys": 18,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c6cc",
+    "glassColour": "#3d5566",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e8e4da"
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "core-stalk",
+   "at": [
+    0,
+    2,
+    74
+   ],
+   "params": {
+    "radius": 4.5,
+    "n": 12,
+    "height": 3,
+    "colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    77
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#3d5566",
+    "profile": [
+     [
+      5,
+      0,
+      "#e8e4da"
+     ],
+     [
+      11.5,
+      0.4,
+      "#e8e4da"
+     ],
+     [
+      11.5,
+      1.2,
+      "#e8e4da"
+     ],
+     [
+      11.8,
+      1.6,
+      "#3d6a82"
+     ],
+     [
+      11.8,
+      5.4,
+      "#3d6a82"
+     ],
+     [
+      11.5,
+      6,
+      "#e8e4da"
+     ],
+     [
+      11.5,
+      6.6,
+      "#6f7478"
+     ],
+     [
+      4,
+      7.4,
+      "#6f7478"
+     ],
+     [
+      0,
+      7.6,
+      "#6f7478"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    2,
+    76
+   ],
+   "params": {
+    "radius": 11,
+    "n": 8,
+    "height": 8,
+    "colour": "#3d6a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -18.4,
+    6
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "height": 2.6,
+    "colour": "#2f4d63"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    8,
+    74
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 4,
+    "colour": "#8a8f94"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of Akemi or its host tower (candidates showed the neighbouring JB Belmont hotel); typed tower-on-podium with a rotating glazed drum, outline not copied from the OSM containing building."
+ }
+}

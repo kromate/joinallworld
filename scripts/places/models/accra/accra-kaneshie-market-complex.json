@@ -1,0 +1,548 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kaneshie_Market_Accra.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "NanaYawBotar",
+   "view": "street",
+   "file": "/tmp/places-evidence/accra/kan.jpg",
+   "used": "three-storey yellow painted block with white oval dots, white breeze-block screen panels between yellow columns, plain white sign band at first floor, open ground floor of shops, umbrellas along the street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/276981508",
+   "used": "market footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 28,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market",
+   "footprint": {
+    "rect": [
+     100,
+     30
+    ]
+   },
+   "height": 14.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c01c",
+    "windows": "none",
+    "pattern": {
+     "type": "pilotis",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9893",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-dark",
+   "params": {
+    "rect": [
+     98,
+     0.6
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#2b2622"
+   },
+   "at": [
+    0,
+    -12.5
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "z0": 0,
+      "height": 4.5,
+      "colour": "#e6c01c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     -14.6,
+     0
+    ],
+    "end": [
+     48,
+     -14.6,
+     0
+    ],
+    "count": 13,
+    "lod1Step": 2,
+    "lod2Step": 13
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screens-1",
+   "params": {
+    "rect": [
+     98,
+     0.4
+    ],
+    "z0": 6.5,
+    "height": 3,
+    "colour": "#d6d4cd"
+   },
+   "at": [
+    0,
+    -15.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "screens-2",
+   "params": {
+    "rect": [
+     98,
+     0.4
+    ],
+    "z0": 11,
+    "height": 2.2,
+    "colour": "#d6d4cd"
+   },
+   "at": [
+    0,
+    -15.1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "z0": 6.5,
+      "height": 3,
+      "colour": "#e6c01c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     -15.3,
+     0
+    ],
+    "end": [
+     48,
+     -15.3,
+     0
+    ],
+    "count": 13,
+    "lod1Step": 2,
+    "lod2Step": 13
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "z0": 11,
+      "height": 2.2,
+      "colour": "#e6c01c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     -15.3,
+     0
+    ],
+    "end": [
+     48,
+     -15.3,
+     0
+    ],
+    "count": 13,
+    "lod1Step": 2,
+    "lod2Step": 13
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-band",
+   "params": {
+    "rect": [
+     100,
+     0.8
+    ],
+    "z0": 9.5,
+    "height": 1.5,
+    "colour": "#f2f0e8"
+   },
+   "at": [
+    0,
+    -15.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lettering",
+   "params": {
+    "rect": [
+     60,
+     0.2
+    ],
+    "z0": 9.9,
+    "height": 0.7,
+    "colour": "#1a1a1a"
+   },
+   "at": [
+    -8,
+    -15.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "red-sign",
+   "params": {
+    "rect": [
+     5,
+     0.2
+    ],
+    "z0": 9.7,
+    "height": 1.1,
+    "colour": "#c43a3a"
+   },
+   "at": [
+    22,
+    -15.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "spandrel",
+   "params": {
+    "rect": [
+     100.4,
+     0.6
+    ],
+    "z0": 4.5,
+    "height": 2,
+    "colour": "#e6c01c"
+   },
+   "at": [
+    0,
+    -15.2
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       0.15
+      ],
+      "z0": 5.1,
+      "height": 0.8,
+      "colour": "#f6f3e6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     -15.6,
+     0
+    ],
+    "end": [
+     48,
+     -15.6,
+     0
+    ],
+    "count": 26,
+    "lod1Step": 2,
+    "lod2Step": 26
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       0.15
+      ],
+      "z0": 13.2,
+      "height": 0.7,
+      "colour": "#f6f3e6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     -15.6,
+     0
+    ],
+    "end": [
+     48,
+     -15.6,
+     0
+    ],
+    "count": 24,
+    "lod1Step": 2,
+    "lod2Step": 24
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -45,
+    -21
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -32,
+    -25
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -19,
+    -29
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -21
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    7,
+    -25
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    20,
+    -29
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    33,
+    -21
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    46,
+    -25
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    59,
+    -29
+   ],
+   "params": {
+    "count": 20,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#d94f4f",
+     "#e8d44a",
+     "#f0ece4",
+     "#5aa6d6",
+     "#4f9a55"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -34
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    20,
+    -44
+   ],
+   "params": {
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 2,
+  "treeKind": "palm",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-kaneshie-market-complex",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rectangular footprint, not the curved OSM outline; no oval dot pattern on yellow panels (only small white dashes); breeze blocks are flat grey panels; lettering is a plain black strip; camera still looks from further away."
+ }
+}

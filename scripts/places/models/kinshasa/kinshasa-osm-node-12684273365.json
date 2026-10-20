@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-node-12684273365",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kinshasa.json#kinshasa-osm-node-12684273365",
+   "used": "Simon Kimbangu statue: no photo found on Commons; bronze-brown figure on white stepped concrete plinth in a small paved plaza with flags and palms. Nearest OSM way is a 20x9 m building, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -10,
+      -10
+     ],
+     [
+      10,
+      -10
+     ],
+     [
+      10,
+      10
+     ],
+     [
+      -10,
+      10
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 1.2,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    0,
+    0,
+    1.2
+   ],
+   "params": {
+    "height": 7.5,
+    "plinthHeight": 3.5,
+    "colour": "#6b4f3a",
+    "plinthColour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 8,
+    "colours": [
+     "#2f6b8c",
+     "#f7d33a",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    10,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 0.9,
+    "thickness": 0.25,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; statue pose and plinth proportions are typical, not surveyed."
+ }
+}

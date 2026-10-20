@@ -1,0 +1,314 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1037462146",
+   "used": "name-matched Marche de Bonfi building (30x13 m lock-up block, bearing 46 deg) as the rendered shop block"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/505452428",
+   "used": "surrounding 15,000 m2 market area: size of the stall yard"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/conakry.json#conakry-market-game",
+   "used": "corrugated shelters, umbrellas, rendered lock-up shops by a main road"
+  },
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:Ramadanyat_projet_de_partage_de_don_organis%C3%A9_au_lyc%C3%A9e_Bonfi.jpg",
+   "used": "rejected, not used: school courtyard, not the market; not used except the ochre weathered render and brick-red trim colours"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lockups",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c9a0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#b85c3a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8d90",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-w",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    12
+   ],
+   "rotDeg": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a3a09a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b7f84",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-e",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    32,
+    -10
+   ],
+   "rotDeg": 20,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b98a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f7377",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-n",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    8,
+    32
+   ],
+   "rotDeg": -10,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b85c3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#868a8d",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    -22
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#c0392b",
+     "#2f6a9a",
+     "#e0b03a",
+     "#3a8a4a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    -30
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#e0b03a",
+     "#c0392b",
+     "#2f6a9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 7,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#2f6a9a",
+     "#e0b03a",
+     "#c0392b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    20,
+    22
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 0.9,
+    "colours": [
+     "#3a8a4a",
+     "#c0392b",
+     "#e0b03a"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -8,
+    22
+   ],
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7b7f84"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    22,
+    -26
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "colours": [
+     "#c0392b",
+     "#2f6a9a",
+     "#e0b03a"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    0,
+    -14.5
+   ],
+   "params": {
+    "width": 3.4,
+    "kind": "shutter",
+    "colour": "#4f7a9a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -42,
+    22
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    18
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the market (nearby photo is a school yard); only the lock-up block follows OSM, stall layout typical."
+ }
+}

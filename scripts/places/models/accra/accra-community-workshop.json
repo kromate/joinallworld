@@ -1,0 +1,866 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Legon_Tower.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rtevels",
+   "view": "street",
+   "file": "/tmp/places-evidence/accra/ug2.jpg",
+   "used": "Great Hall: white walls, big terracotta hip roof over a clerestory band, lower tiled eaves; square white tower with balcony, clock-box with lattice star panels and a red pagoda cap; royal palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Great_hall_university_of_Ghana.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Shannon Kwabi",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/ug1.jpg",
+   "used": "tower and hall seen up a flight of stone steps with stone retaining walls and planters; tower height relative to hall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/278303032",
+   "used": "none (nearest match is a cafeteria, not the hall)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 0.75,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-low",
+   "footprint": {
+    "rect": [
+     46,
+     18
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "trimColour": "#2b2b2b",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 7,
+    "plinth": 0.3
+   },
+   "roof": {
+    "material": "clay-tile",
+    "colour": "#c4572f",
+    "form": "hip",
+    "pitch": 12,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-mid",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -8,
+    1
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "trimColour": "#2b2b2b",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "material": "clay-tile",
+    "colour": "#c4572f",
+    "form": "hip",
+    "pitch": 12,
+    "overhang": 1.1
+   },
+   "z0": 4.4
+  },
+  {
+   "type": "mass",
+   "id": "hall-clere",
+   "footprint": {
+    "rect": [
+     28,
+     12
+    ]
+   },
+   "at": [
+    -9,
+    2
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "trimColour": "#2b2b2b",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "bay": 2.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "material": "clay-tile",
+    "colour": "#c4572f",
+    "form": "hip",
+    "pitch": 26,
+    "overhang": 2.2
+   },
+   "z0": 7.8
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "at": [
+    19.5,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 34,
+    "colour": "#cfccc2",
+    "windows": "none",
+    "topScale": 0.95
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit0",
+   "at": [
+    19.5,
+    -1.05,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit1",
+   "at": [
+    19.5,
+    -1.05,
+    8.4
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit2",
+   "at": [
+    19.5,
+    -1.05,
+    11.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit3",
+   "at": [
+    19.5,
+    -1.05,
+    15.2
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit4",
+   "at": [
+    19.5,
+    -1.05,
+    18.6
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit5",
+   "at": [
+    19.5,
+    -1.05,
+    22.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit6",
+   "at": [
+    19.5,
+    -1.05,
+    25.4
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit7",
+   "at": [
+    19.5,
+    -1.05,
+    28.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-balcony",
+   "at": [
+    19.5,
+    2,
+    33.4
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     7.8
+    ],
+    "height": 0.5,
+    "colour": "#d8d5ca",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    15.8,
+    -1.6,
+    33.9
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     7.4,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "id": "post",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 1.0,
+      "colour": "#e8e5da",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    15.8,
+    5.6,
+    33.9
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     7.4,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "id": "post",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 1.0,
+      "colour": "#e8e5da",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bal-rail-f",
+   "at": [
+    19.5,
+    -1.6,
+    34.9
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     0.2
+    ],
+    "height": 0.15,
+    "colour": "#e8e5da",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal-rail-b",
+   "at": [
+    19.5,
+    5.6,
+    34.9
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     0.2
+    ],
+    "height": 0.15,
+    "colour": "#e8e5da",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal-rail-l",
+   "at": [
+    15.6,
+    2,
+    34.9
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     7.8
+    ],
+    "height": 0.15,
+    "colour": "#e8e5da",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal-rail-r",
+   "at": [
+    23.4,
+    2,
+    34.9
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     7.8
+    ],
+    "height": 0.15,
+    "colour": "#e8e5da",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-box",
+   "at": [
+    19.5,
+    2,
+    33.9
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "height": 4.4,
+    "colour": "#e9e6dc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clk-frame-f",
+   "at": [
+    19.5,
+    -0.75,
+    34.5
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     0.1
+    ],
+    "height": 3.2,
+    "colour": "#cfc9b6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clk-star-f",
+   "at": [
+    19.5,
+    -0.85,
+    34.8
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.1
+    ],
+    "height": 2.6,
+    "colour": "#1f1f1f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clk-frame-r",
+   "at": [
+    22.25,
+    2,
+    34.5
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     3.8
+    ],
+    "height": 3.2,
+    "colour": "#cfc9b6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clk-star-r",
+   "at": [
+    22.35,
+    2,
+    34.8
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     3.0
+    ],
+    "height": 2.6,
+    "colour": "#1f1f1f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap-eaves",
+   "at": [
+    19.5,
+    2,
+    38.3
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     7.2
+    ],
+    "height": 0.5,
+    "colour": "#c4572f",
+    "windows": "none",
+    "topScale": 0.75
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    19.5,
+    2,
+    38.8
+   ],
+   "params": {
+    "colour": "#b4542f",
+    "segments": 12,
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      2.2,
+      0
+     ],
+     [
+      1.4,
+      0.8
+     ],
+     [
+      1.1,
+      1.6
+     ],
+     [
+      1.9,
+      2.1
+     ],
+     [
+      1.1,
+      2.9
+     ],
+     [
+      0.3,
+      3.6
+     ],
+     [
+      0.1,
+      4.8,
+      "#2f3a36"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -21,
+    -9.08,
+    0.7
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     36,
+     0,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "id": "shutter",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.0,
+       0.15
+      ],
+      "height": 1.8,
+      "colour": "#2b2b2b",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    -26,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     6
+    ],
+    "height": 1.4,
+    "colour": "#9a8f78",
+    "windows": "none",
+    "topScale": [
+     1,
+     0.4
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-l",
+   "at": [
+    -37.5,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     10
+    ],
+    "height": 1.6,
+    "colour": "#8c7f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-r",
+   "at": [
+    -14.5,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     10
+    ],
+    "height": 1.6,
+    "colour": "#8c7f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-l",
+   "at": [
+    -34,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 0.9,
+    "colour": "#8c7f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-lg",
+   "at": [
+    -34,
+    -9.5,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 0.5,
+    "colour": "#4f7a2e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-r",
+   "at": [
+    -18,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 0.9,
+    "colour": "#8c7f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-rg",
+   "at": [
+    -18,
+    -9.5,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 0.5,
+    "colour": "#4f7a2e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "royal0",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "royal1",
+   "at": [
+    12,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "royal2",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Clock star panels are plain black squares (no lattice frame); balustrade is a rail with posts, not pierced; palms are low-poly; hall is a simplified 3-tier hip stack and the foreground stone wall and planters are blocks."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-community-workshop"
+}

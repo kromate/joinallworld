@@ -1,0 +1,271 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Sierra_Leone_at_Cotton_tree_in_Freetown_-_Mapillary_(Yp2BPDsT7TyNtrN6lZ4z9Q).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "danbjoseph @ Mapillary.com",
+   "view": "street",
+   "file": "/tmp/places-evidence/freetown/museum.jpg",
+   "used": "tall cream block stepping back in tiers, deep vertical fin/grille screen on the street face, dark plinth with railing, low hipped red-tile house at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/307244436",
+   "used": "location only: containing outline is 191 m2, too small against the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 50,
+  "pitchDeg": -2,
+  "fovDeg": 80,
+  "aspect": 1.29
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     48,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5a5750",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     45,
+     18
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 3.5,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bdb88a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "left"
+      ],
+      "colour": "#7d7a52",
+      "spacing": 1.2,
+      "depth": 1.2,
+      "width": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8666",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 28,
+    "start": [
+     -21.5,
+     -8.5,
+     3.5
+    ],
+    "end": [
+     21.5,
+     -8.5,
+     3.5
+    ],
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#7d7a52",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.5,
+          0.6
+         ]
+        },
+        {
+         "z": 12,
+         "rect": [
+          0.5,
+          2.0
+         ],
+         "cy": -0.7
+        },
+        {
+         "z": 24,
+         "rect": [
+          0.5,
+          3.6
+         ],
+         "cy": -1.5
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 1.2,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -36,
+    4
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0c6",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c4a35",
+    "material": "clay-tile",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -44,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#8c8c88"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-block",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -62,
+    8
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#2a54a8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9892",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-osm-node-3563419694",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fin screen is vertical and only mildly raked, no grille infill or deep stepped sawtooth; end face plain; context block and house are simple"
+ }
+}

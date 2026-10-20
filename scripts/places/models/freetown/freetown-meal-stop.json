@@ -1,0 +1,170 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: no photo found; thatched open-sided beachside dining pavilion, small rendered kitchen, loose umbrellas and sun-loungers on sand"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/494419772",
+   "used": "orientation and scale cue only: nearest match 30 m away, a 39 x 9 m building, not trusted as the restaurant outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    -4,
+    2,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 11,
+    "deck_height": 0.8,
+    "post_height": 3.2,
+    "roof": "pyramid",
+    "thatch": true,
+    "rail": true,
+    "bar": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    14,
+    10
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a88c5a",
+    "material": "thatch",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#f1ead8",
+     "#c8a878",
+     "#2e7d8a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.5,
+    "umbrellas": true,
+    "loungers": true
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.6,
+    "bottom": 1.4,
+    "colour": "#7a5a3c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and the nearest OSM building is untrusted; pavilion size and layout from the brief only."
+ }
+}

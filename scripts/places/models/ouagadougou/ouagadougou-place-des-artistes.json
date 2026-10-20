@@ -1,0 +1,330 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/151687160",
+   "used": "real round-ish park outline, about 68 m across, named Place des Artistes"
+  },
+  {
+   "kind": "text",
+   "ref": "brief ouagadougou-place-des-artistes",
+   "used": "landscaped square with sculptures on plinths, paved paths, fountain, steps; no photo of the works found, so sculptures are generic figures on plinths"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9aa66f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa66f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "paved-core",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#c8b48c",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      16,
+      0.08
+     ],
+     [
+      0,
+      0.08
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d9d3c4",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      4.6,
+      0
+     ],
+     [
+      4.6,
+      0.7
+     ],
+     [
+      4.1,
+      0.7
+     ],
+     [
+      4.1,
+      0.4,
+      "#6fa8c4"
+     ],
+     [
+      0,
+      0.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "fountain-jet",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#bfd9e6",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.2,
+      2.0
+     ],
+     [
+      0,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "path-strip",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.51
+   ],
+   "params": {
+    "points": [
+     [
+      -33,
+      0
+     ],
+     [
+      33,
+      0
+     ]
+    ],
+    "width": 3,
+    "colour": "#c9c0ae"
+   }
+  },
+  {
+   "type": "path-strip",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.51
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -33
+     ],
+     [
+      0,
+      33
+     ]
+    ],
+    "width": 3,
+    "colour": "#c9c0ae"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "id": "sculpture-1",
+   "at": [
+    17.2,
+    12.0,
+    0.5
+   ],
+   "params": {
+    "height": 6.720000000000001,
+    "width": 2.4,
+    "steps": 2,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#6a583b"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "id": "sculpture-2",
+   "at": [
+    -19.0,
+    8.9,
+    0.5
+   ],
+   "params": {
+    "height": 5.760000000000001,
+    "width": 2.4,
+    "steps": 2,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#7a5a3c"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "id": "sculpture-3",
+   "at": [
+    -0.0,
+    -21.0,
+    0.5
+   ],
+   "params": {
+    "height": 7.68,
+    "width": 2.4,
+    "steps": 2,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#3f3a36"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 9,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 8,
+    "facing": "centre",
+    "of": {
+     "type": "park-bench",
+     "params": {
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 29,
+    "startDeg": 10,
+    "endDeg": 350,
+    "count": 10,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 8
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-place-des-artistes",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the square; sculptures generic, layout inferred from outline and brief"
+ }
+}

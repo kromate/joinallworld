@@ -1,0 +1,889 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kidanemhret_Catholic_Church,_Asmara,_Eritrea.jpg",
+   "licence": "CC BY-SA 1.0",
+   "author": "Unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/asmara/kidane.jpg",
+   "used": "ochre stucco pedimented facade with three tall arched recesses, dark red doors, square clock bell tower at left, khaki dome with lantern and cross behind, wide front steps with balustrade"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/120666025",
+   "used": "overall size only (about 50x33 m); outline is irregular and the brief's round-plan guess is contradicted by the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8bd8c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "bands": "#e3cfa2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9b58a",
+    "material": "concrete",
+    "pitch": 14,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    -14,
+    -2.4
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8bd8c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "bands": "#e3cfa2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3cfa2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "aisle-arch-l",
+   "at": [
+    -14,
+    -14.45,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 8.5,
+    "depth": 0.4,
+    "archWidth": 3.4,
+    "springHeight": 6.5,
+    "colour": "#b5955e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    14,
+    -2.4
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8bd8c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "bands": "#e3cfa2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3cfa2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "aisle-arch-r",
+   "at": [
+    14,
+    -14.45,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 8.5,
+    "depth": 0.4,
+    "archWidth": 3.4,
+    "springHeight": 6.5,
+    "colour": "#b5955e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pediment",
+   "at": [
+    0,
+    -14.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     22.4,
+     1.0
+    ],
+    "z0": 17,
+    "height": 3.0,
+    "colour": "#d8bd8c",
+    "topScale": [
+     0.02,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    0,
+    -14.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     23.0,
+     1.4
+    ],
+    "z0": 16.5,
+    "height": 0.6,
+    "colour": "#e3cfa2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-apex-v",
+   "at": [
+    0,
+    -14.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 19.8,
+    "height": 2.2,
+    "colour": "#7a6a50"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-apex-h",
+   "at": [
+    0,
+    -14.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.25
+    ],
+    "z0": 21.0,
+    "height": 0.25,
+    "colour": "#7a6a50"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arch-portal",
+   "id": "recess-l",
+   "at": [
+    -7.3,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 14.0,
+    "depth": 0.9,
+    "archWidth": 5.2,
+    "springHeight": 10.2,
+    "colour": "#b5955e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-l",
+   "at": [
+    -7.3,
+    -14.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "z0": 6.5,
+    "height": 7.2,
+    "colour": "#3f3a52",
+    "topScale": [
+     0.7,
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-l",
+   "at": [
+    -7.3,
+    -14.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "z0": 2.2,
+    "height": 3.4,
+    "colour": "#7a2a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arch-portal",
+   "id": "recess-c",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 14.0,
+    "depth": 0.9,
+    "archWidth": 5.2,
+    "springHeight": 10.2,
+    "colour": "#b5955e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-c",
+   "at": [
+    0,
+    -14.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "z0": 6.5,
+    "height": 7.2,
+    "colour": "#3f3a52",
+    "topScale": [
+     0.7,
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-c",
+   "at": [
+    0,
+    -14.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "z0": 2.2,
+    "height": 3.4,
+    "colour": "#7a2a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arch-portal",
+   "id": "recess-r",
+   "at": [
+    7.3,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 14.0,
+    "depth": 0.9,
+    "archWidth": 5.2,
+    "springHeight": 10.2,
+    "colour": "#b5955e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-r",
+   "at": [
+    7.3,
+    -14.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "z0": 6.5,
+    "height": 7.2,
+    "colour": "#3f3a52",
+    "topScale": [
+     0.7,
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-r",
+   "at": [
+    7.3,
+    -14.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "z0": 2.2,
+    "height": 3.4,
+    "colour": "#7a2a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    -14.5,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 0,
+    "height": 34,
+    "colour": "#d8bd8c",
+    "trimColour": "#e3cfa2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cornice",
+   "at": [
+    -14.5,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "z0": 34,
+    "height": 0.8,
+    "colour": "#e3cfa2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-clock",
+   "at": [
+    -14.5,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "z0": 23.5,
+    "height": 2.4,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tw-slit-1",
+   "at": [
+    -14.5,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 17,
+    "height": 3.5,
+    "colour": "#3f3a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tw-slit-2",
+   "at": [
+    -14.5,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 26.5,
+    "height": 3.4,
+    "colour": "#3f3a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tw-pair-a",
+   "at": [
+    -15.3,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 29.5,
+    "height": 3.6,
+    "colour": "#3f3a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tw-pair-b",
+   "at": [
+    -13.7,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 29.5,
+    "height": 3.6,
+    "colour": "#3f3a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tw-pair-c",
+   "at": [
+    -15.3,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 26.5,
+    "height": 2.2,
+    "colour": "#3f3a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tw-pair-d",
+   "at": [
+    -13.7,
+    -12.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 26.5,
+    "height": 2.2,
+    "colour": "#3f3a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": null,
+    "z0": 17,
+    "height": 3,
+    "colour": "#d8bd8c",
+    "radius": 9.5,
+    "n": 16
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    -5,
+    20
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#c9c597",
+    "profile": [
+     [
+      10,
+      0
+     ],
+     [
+      9.9,
+      1.0
+     ],
+     [
+      8.6,
+      2.8
+     ],
+     [
+      5.5,
+      4.2
+     ],
+     [
+      2.6,
+      4.9
+     ],
+     [
+      0,
+      5.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": null,
+    "z0": 25,
+    "height": 2.2,
+    "colour": "#e3cfa2",
+    "radius": 1.1,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.28,
+     0.28
+    ],
+    "z0": 27.2,
+    "height": 3,
+    "colour": "#7a6a50"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.28
+    ],
+    "z0": 28.9,
+    "height": 0.28,
+    "colour": "#7a6a50"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    0,
+    -18.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     38,
+     7
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#c4a86f",
+    "topScale": [
+     1,
+     0.3
+    ],
+    "topOffset": [
+     0,
+     2.4
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-l",
+   "at": [
+    -27,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#5b5348"
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "balustrade-l",
+   "at": [
+    -27,
+    -19,
+    1.4
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.0,
+    "colour": "#d6c59a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-r",
+   "at": [
+    27,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#5b5348"
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "balustrade-r",
+   "at": [
+    27,
+    -19,
+    1.4
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.0,
+    "colour": "#d6c59a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pediment, slim flat-topped clock campanile, low khaki dome with lantern and crosses, balustrades and wide steps added; the three deep arched recesses do not read on the front (arch-portal parts sink into the wall), windows square-topped, dome ribbing missing."
+ }
+}

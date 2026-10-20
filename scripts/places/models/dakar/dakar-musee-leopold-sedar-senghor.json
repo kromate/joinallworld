@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-musee-leopold-sedar-senghor",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/211930955",
+   "used": "real fan-shaped villa outline (about 38 x 37 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:L%C3%A9opold_S%C3%A9dar_Senghor_regarde_sa_maison.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Edlobag",
+   "view": "detail",
+   "file": "/tmp/places-evidence/dakar/sen1.jpg",
+   "used": "the seated bronze statue of Senghor on a salmon-pink plinth ringed by a low curved wall and gravel, about 90 m from the museum (not the building itself)"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the museum building was found; massing is the real outline with a plausible white two-storey villa treatment, roof and openings are guesses"
+ },
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#cf9a86",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d6",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    22,
+    -24
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.0
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#d98d7a",
+    "topColour": "#4a4a46",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "figure",
+   "at": [
+    22,
+    -24
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 2.4,
+    "height": 2.2,
+    "colour": "#3a3a36",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#efe5cf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -12
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ }
+}

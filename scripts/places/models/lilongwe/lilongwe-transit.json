@@ -1,0 +1,298 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/652857039",
+   "used": "real bus depot outline (about 110 x 96 m, bearing 107) as the paved yard at 0.85 scale"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lilongwe",
+   "used": "Old Town bus stations; brief: open bay terminal with ticket hall and shed shelters"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52.9,
+      -24.1
+     ],
+     [
+      -51.0,
+      -28.2
+     ],
+     [
+      -12.8,
+      -39.8
+     ],
+     [
+      -8.5,
+      -39.3
+     ],
+     [
+      20.3,
+      -49.8
+     ],
+     [
+      24.9,
+      -46.8
+     ],
+     [
+      57.0,
+      16.2
+     ],
+     [
+      46.0,
+      28.2
+     ],
+     [
+      -18.9,
+      47.3
+     ],
+     [
+      -32.2,
+      45.3
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#55585b",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     40,
+     9
+    ]
+   },
+   "at": [
+    -5,
+    -5
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d7ccb2",
+    "windows": "ribbon",
+    "plinth": 0,
+    "windowRatio": 0.12,
+    "bands": "#2a5d8f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8084",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-sign",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    -5,
+    -10
+   ],
+   "z0": 4.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a5d8f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8c24a",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -12,
+    16,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 6,
+    "height": 4.2,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#7b8084",
+    "accent": "#2a5d8f"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    22,
+    2,
+    0
+   ],
+   "rotDeg": -58,
+   "params": {
+    "length": 26,
+    "depth": 6,
+    "height": 4.2,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#7b8084",
+    "accent": "#e8c24a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -8,
+    30,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "kind": "coach",
+    "density": 0.8,
+    "colours": [
+     "#2a5d8f",
+     "#e8c24a",
+     "#e9e9e5"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "length": 34,
+    "kind": "mixed",
+    "density": 0.7,
+    "coach_share": 0.4
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#e8c24a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -38,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2a5d8f"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    30,
+    26,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists; building positions and bus bays are typical for a Malawian bus park, not surveyed"
+ }
+}

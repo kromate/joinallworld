@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-osm-way-240118946",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/praia.json",
+   "used": "private university campus; the OSM outline is a 99,000 m2 campus site, not a building, so a modest campus of an L-shaped four-storey block, a glass stair tower, and a low annex is composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "main-L",
+   "params": {
+    "points": [
+     [
+      -25,
+      -9
+     ],
+     [
+      25,
+      -9
+     ],
+     [
+      25,
+      9
+     ],
+     [
+      7,
+      9
+     ],
+     [
+      7,
+      2
+     ],
+     [
+      -25,
+      2
+     ]
+    ],
+    "height": 14,
+    "colour": "#f1eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "storeys": 4,
+    "faces": {},
+    "plinth": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -10,
+    -11
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa6c0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#1f5a87"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5a87",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    20
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#1f5a87"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -10,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2,
+    "height": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -9.3,
+    4
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.4,
+    "colour": "#1f5a87"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    16,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -16
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -15
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and OSM is a 99,000 m2 campus site, so the buildings are typical, not the real ones"
+ }
+}

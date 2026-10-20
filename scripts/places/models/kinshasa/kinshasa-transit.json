@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/204363498",
+   "used": "only a containing unnamed building (35 x 19 m, bearing 165): not trusted as the station, so not used as the outline"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kinshasa.json",
+   "used": "70 x 16 m single-storey colonial-style rail-side station, cream render, rust corrugated gable roof, platform canopy, forecourt bus bay; Commons photos found show the Gare Centrale area (a mural wall and a distant office block), a different building, so none used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station-hall",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#8a3b2e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 13,
+    "cap": "hip",
+    "cap_rise": 3.5,
+    "clock": true
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 4.3,
+    "colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 7,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    14,
+    1
+   ],
+   "params": {
+    "width": 66,
+    "depth": 6,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "tracks": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "kind": "coach",
+    "density": 0.6,
+    "colours": [
+     "#f1f1ee",
+     "#2d5fa8",
+     "#e0b422"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline of Kinshasa Est: a typical 1930s colonial rail-side station composed from the brief (size, cream render, rust roof, canopy, clock tower, bus bay); real proportions and details unknown."
+ }
+}

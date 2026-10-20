@@ -1,0 +1,323 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-bandar-maadi-mall",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/cairo.json",
+   "used": "brief: L-shaped three-storey beige stone and glass mall about 110 x 50 m, flat roof with terrace, awnings, signage boards, open car park, palms. No photo or OSM polygon found."
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 16,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     78,
+     24
+    ]
+   },
+   "at": [
+    -16,
+    8
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e3d5b3",
+    "glassColour": "#5f7f88",
+    "windows": "curtain",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#c3b392",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e3d5b3",
+       "#d6c7a2"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8c",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "return-wing",
+   "footprint": {
+    "rect": [
+     30,
+     40
+    ]
+   },
+   "at": [
+    38,
+    28
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c9a4",
+    "glassColour": "#5f7f88",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#c3b392",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8c",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-atrium",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    28,
+    -4
+   ],
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa0aa",
+    "glassColour": "#5f7f88",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bands": "#c3b392",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "membrane",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-terrace",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    -26,
+    10
+   ],
+   "z0": 16,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc0",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#5f7f88"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8ad98",
+    "material": "membrane",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -34,
+    -4.2,
+    4
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.2,
+    "colours": [
+     "#8a2f2f",
+     "#e3d5b3"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -14,
+    -4.2,
+    4
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.2,
+    "colours": [
+     "#2f5f8a",
+     "#e3d5b3"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6,
+    -4.2,
+    4
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#8a2f2f",
+     "#e3d5b3"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "bottom": 16.5,
+    "colour": "#2f5f8a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    28,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.8,
+    "bottom": 1.2,
+    "colour": "#8a2f2f",
+    "posts": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -16,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 24,
+    "density": 0.55
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "line": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -55,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or OSM outline: composed from the brief (L-plan beige and glass three-storey mall, glass corner atrium, roof terrace, awnings, car park). Real proportions, entrance positions and facade details unverified."
+ }
+}

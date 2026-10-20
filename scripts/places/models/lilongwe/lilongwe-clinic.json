@@ -1,0 +1,480 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kamuzu_Central_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mpalehills",
+   "view": "front",
+   "file": "/tmp/places-evidence/lilongwe/clinic1.jpg",
+   "used": "tall white rendered slab blocks with blank flanks and narrow full-height slit windows on the gables, a ribbon-glazed ward wing with a lean-to roof on the left, steel-frame water tower, low white sheds and an open frame walkway in front, a broadleaf tree"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/444042319",
+   "used": "scale check only (about 38 x 32 m block); the photo block layout is used instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 2.2,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab-a",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -2,
+    4
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "glassColour": "#5d7488",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e4e0d4",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5,
+    "pitch": 18,
+    "high": "left"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-b",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    21,
+    6
+   ],
+   "height": 19.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "glassColour": "#5d7488",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e4e0d4",
+    "material": "concrete",
+    "pitch": 18,
+    "overhang": 0.3,
+    "high": "right"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-wing",
+   "footprint": {
+    "rect": [
+     32,
+     11
+    ]
+   },
+   "at": [
+    -29,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d4",
+    "glassColour": "#4d6272",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0,
+    "bands": "#d9d2bd",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "depth": 1.2,
+      "every": 2.4,
+      "width": 2.0,
+      "floors": "all",
+      "railKind": "solid",
+      "colour": "#f4efe0",
+      "railColour": "#b9c4c8"
+     },
+     {
+      "type": "floors",
+      "colours": [
+       "#efe8d4",
+       "#d9d2bd"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6a7783",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.6,
+    "high": "right"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-shed",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    -12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d7d9d9",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "pitch": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-low",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    38,
+    -8
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddc9a0",
+    "glassColour": "#4a4038",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d4d6d6",
+    "material": "corrugated",
+    "pitch": 5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -50,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 4,
+    "legHeight": 24,
+    "legs": 4,
+    "colour": "#c3c8cb"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -22,
+     0
+    ],
+    "end": [
+     -14,
+     -22,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.2,
+        0.2
+       ],
+       "height": 3.6,
+       "colour": "#6a7a82"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    -22,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     20.4,
+     6
+    ],
+    "height": 0.1,
+    "colour": "#9aa8ae"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.5,
+    -3.05,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 12.5,
+    "colour": "#5d7488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.5,
+    -3.05,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 12.5,
+    "colour": "#5d7488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.2,
+    -3.05,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 12.5,
+    "colour": "#5d7488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.2,
+    -3.05,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 12.5,
+    "colour": "#5d7488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    31,
+    -1.05,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 9.5,
+    "colour": "#5d7488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    33.0,
+    -1.05,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 9.5,
+    "colour": "#5d7488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -3.05,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 12.5,
+    "colour": "#5d7488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.0,
+    -3.05,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 12.5,
+    "colour": "#5d7488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -2.9,
+    20
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 1,
+    "colour": "#6a7a82"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -2.9,
+    20
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 1,
+    "colour": "#6a7a82"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   120,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tight photo crop so framing differs; water tower is four legs without lattice; slit windows and balcony railings simplified; tree crown smaller than photo; deeper wings behind unseen"
+ }
+}

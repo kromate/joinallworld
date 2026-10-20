@@ -1,0 +1,979 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zambia_National_Assembly_Building.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Lighton Phiri",
+   "view": "front",
+   "file": "/tmp/places-evidence/lusaka/assembly.jpg",
+   "used": "tall windowless rust-red chamber block behind a long low dark glazed pavilion with a lettering band, palm rows, red lamp posts, paved processional walk, lawns"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12678449",
+   "used": "overall size (about 72 x 52 m); the photo shows a wide frontage so a measured rectangle is used rather than the rotated outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     80,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a3624",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "plinth": 1.2,
+    "cornice": true,
+    "bay": 4.0,
+    "bands": "#c9a24a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5144",
+    "material": "membrane",
+    "overhang": 1.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "rect": [
+     32,
+     22
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "z0": 8.5,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a8492f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f3d28",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier--6",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -36,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier--5",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -30,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier--4",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -24,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier--3",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -18,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier--2",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -12,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier--1",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -6,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier-1",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    6,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier-2",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    12,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier-3",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    18,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier-4",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    24,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier-5",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    30,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier-6",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    36,
+    -19.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lettering",
+   "footprint": {
+    "rect": [
+     34,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -19.2
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "render",
+    "colour": "#d4af37",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4af37"
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "walk",
+   "footprint": {
+    "rect": [
+     12,
+     36
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c49a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c49a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walk-step1",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c49a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c49a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walk-step2",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c49a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c49a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn-1",
+   "footprint": {
+    "rect": [
+     30,
+     36
+    ]
+   },
+   "at": [
+    -24,
+    -40
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "render",
+    "colour": "#58a83a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58a83a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-1",
+   "footprint": {
+    "rect": [
+     1.2,
+     32
+    ]
+   },
+   "at": [
+    -7.5,
+    -40
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "render",
+    "colour": "#2f6b2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp-10-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -4.5,
+    -30
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp-101",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -9.5,
+    -30
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp-11-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -4.5,
+    -44
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp-111",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -9.5,
+    -44
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp-12-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -4.5,
+    -56
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp-121",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -9.5,
+    -56
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -36,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn1",
+   "footprint": {
+    "rect": [
+     30,
+     36
+    ]
+   },
+   "at": [
+    24,
+    -40
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "render",
+    "colour": "#58a83a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58a83a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge1",
+   "footprint": {
+    "rect": [
+     1.2,
+     32
+    ]
+   },
+   "at": [
+    7.5,
+    -40
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "render",
+    "colour": "#2f6b2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp10-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    4.5,
+    -30
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp101",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    9.5,
+    -30
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp11-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    4.5,
+    -44
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp111",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    9.5,
+    -44
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp12-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    4.5,
+    -56
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lamp121",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    9.5,
+    -56
+   ],
+   "height": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b02a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0e0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    36,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion is a plain box with no stone-clad base or palm crowns as full as photo; walk is not stepped in many slabs; lamp posts are square not round with globes; plaza removed"
+ }
+}

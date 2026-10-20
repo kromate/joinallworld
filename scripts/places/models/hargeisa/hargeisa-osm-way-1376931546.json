@@ -1,0 +1,311 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-way-1376931546",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1376931546",
+   "used": "60x16 m strip outline (leisure=park) as the memorial garden; name match"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Hargeisa",
+   "used": "city context; no photo found. Hand shape inferred from the name (raised hand)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "garden",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c4bb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9bb08a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c4bb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth2",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.5,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6b4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "wrist",
+   "at": [
+    0,
+    0,
+    2.4
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       1.6
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       2.0,
+       1.4
+      ]
+     }
+    ],
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "palm",
+   "at": [
+    0,
+    0,
+    5.0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       1.3
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       3.6,
+       1.0
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       3.8,
+       0.8
+      ]
+     }
+    ],
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.62,
+         0.6
+        ]
+       },
+       {
+        "z": 2.8,
+        "rect": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "z": 3.2,
+        "rect": [
+         0.3,
+         0.3
+        ]
+       }
+      ],
+      "colour": "#f0ede4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -1.4,
+     0,
+     7.3
+    ],
+    "end": [
+     1.4,
+     0,
+     7.3
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "loft",
+   "id": "thumb",
+   "at": [
+    2.1,
+    0,
+    5.8999999999999995
+   ],
+   "rotDeg": 0,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.7,
+       0.6
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ],
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "colour": "#c8c4bb"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -6,
+    0.5
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#2f6b4f",
+     "#f0ede4"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -8,
+     20
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     8,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; strip outline is real, hand sculpture shape inferred from the name only."
+ }
+}

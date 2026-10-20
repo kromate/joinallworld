@@ -1,0 +1,197 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/253125007",
+   "used": "bus station outline (174 x 156 m, scaled) as the tarmac apron"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nyabugogo_car_park.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Philemon Niyomwungeli",
+   "view": "street",
+   "file": "/tmp/places-evidence/kigali/tr-bus1.jpg",
+   "used": "context only (moto-taxi crowd, hillside, mid-rise shopfront blocks); not the station buildings, so not compared"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5d6064",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d6064"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -18,
+    -6,
+    0.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 7,
+    "height": 4.6,
+    "columns": 8,
+    "colour": "#7d8a92",
+    "edgeColour": "#3f6b9a"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -18,
+    10,
+    0.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 7,
+    "height": 4.6,
+    "columns": 8,
+    "colour": "#7d8a92",
+    "edgeColour": "#3f6b9a"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    26,
+    -4,
+    0.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 7,
+    "height": 4.6,
+    "columns": 6,
+    "colour": "#7d8a92",
+    "edgeColour": "#3f6b9a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -18,
+    -16,
+    0.5
+   ],
+   "params": {
+    "length": 46,
+    "kind": "coach",
+    "density": 0.8,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -18,
+    20,
+    0.5
+   ],
+   "params": {
+    "length": 46,
+    "kind": "coach",
+    "density": 0.7,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    24,
+    10,
+    0.5
+   ],
+   "params": {
+    "length": 30,
+    "kind": "mixed",
+    "density": 0.6,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -44,
+    -24
+   ],
+   "z0": 0.5,
+   "height": 4.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8a92",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -44,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "height": 2,
+    "bottom": 4.5,
+    "colour": "#3f6b9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the station buildings (the nearby photo is a street scene); canopies, bays and ticket hall are typed from the brief on the real outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-transit"
+}

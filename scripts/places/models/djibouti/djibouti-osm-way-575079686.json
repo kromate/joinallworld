@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-way-575079686",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/369402224",
+   "used": "name-matched building outline (about 116 x 72 m, one long teaching range with a southern wing); campus area is way/575079686"
+  },
+  {
+   "kind": "text",
+   "used": "brief: plain two-storey concrete teaching blocks with painted render, ribbon windows; no photograph found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc8a6",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#f1ebdc",
+    "plinth": 0.5,
+    "glassColour": "#4b5a64"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -70,
+    -27
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7a8791",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7a83"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2,
+    "colour": "#cfc6b2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -50,
+     -30
+    ],
+    "height": 6
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     10,
+     -30
+    ],
+    "height": 5
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -20,
+     30
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: real OSM outline plus brief facts"
+ }
+}

@@ -1,0 +1,514 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-airport-conakry-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tour_de_contr%C3%B4le_de_l%E2%80%99a%C3%A9roport_international_Ahmed_S%C3%A9kou_Tour%C3%A9_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aboubacarkhoraa",
+   "view": "front",
+   "file": "/tmp/places-evidence/conakry/tower1.jpg",
+   "used": "airside view: ochre-yellow control tower block with maroon frame and projecting window boxes, octagonal glazed cab with timber-look cap, two low ochre/maroon terminal wings with ribbon windows and a barred ground floor"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entre_de_l%27a%C3%A9roport_de_Conakry.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aboubacarkhoraa",
+   "view": "street",
+   "used": "landside: low wide buildings, red-and-white kerb, pink railings, lamps and palms along the access road"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 0.75,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     44,
+     18
+    ]
+   },
+   "at": [
+    14,
+    -2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c577",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#6a2a2c",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a2a2c",
+    "parapet": 0.7,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -18,
+    -6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c577",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#6a2a2c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a2a2c",
+    "parapet": 0.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    6
+   ],
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c577",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#6a2a2c"
+      ],
+      "height": 0.9,
+      "floors": "all",
+      "proud": 0.25
+     },
+     {
+      "type": "fins",
+      "width": 1.0,
+      "depth": 0.5,
+      "spacing": 3.4,
+      "colour": "#6a2a2c",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a2a2c",
+    "parapet": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    6,
+    33.9
+   ],
+   "params": {
+    "colour": "#2e3d45",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -4.93,
+        -4.93
+       ],
+       [
+        4.93,
+        -4.93
+       ],
+       [
+        6.96,
+        -1.972
+       ],
+       [
+        6.96,
+        1.972
+       ],
+       [
+        4.93,
+        4.93
+       ],
+       [
+        -4.93,
+        4.93
+       ],
+       [
+        -6.96,
+        1.972
+       ],
+       [
+        -6.96,
+        -1.972
+       ]
+      ]
+     },
+     {
+      "z": 3.4,
+      "poly": [
+       [
+        -6.09,
+        -6.09
+       ],
+       [
+        6.09,
+        -6.09
+       ],
+       [
+        8.555,
+        -2.436
+       ],
+       [
+        8.555,
+        2.436
+       ],
+       [
+        6.09,
+        6.09
+       ],
+       [
+        -6.09,
+        6.09
+       ],
+       [
+        -8.555,
+        2.436
+       ],
+       [
+        -8.555,
+        -2.436
+       ]
+      ],
+      "colour": "#3a4a52"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    6,
+    36.3
+   ],
+   "params": {
+    "colour": "#b39a62",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -8.12,
+        -8.12
+       ],
+       [
+        8.12,
+        -8.12
+       ],
+       [
+        11.309999999999999,
+        -3.2479999999999998
+       ],
+       [
+        11.309999999999999,
+        3.2479999999999998
+       ],
+       [
+        8.12,
+        8.12
+       ],
+       [
+        -8.12,
+        8.12
+       ],
+       [
+        -11.309999999999999,
+        3.2479999999999998
+       ],
+       [
+        -11.309999999999999,
+        -3.2479999999999998
+       ]
+      ]
+     },
+     {
+      "z": 1.4,
+      "poly": [
+       [
+        -8.12,
+        -8.12
+       ],
+       [
+        8.12,
+        -8.12
+       ],
+       [
+        11.309999999999999,
+        -3.2479999999999998
+       ],
+       [
+        11.309999999999999,
+        3.2479999999999998
+       ],
+       [
+        8.12,
+        8.12
+       ],
+       [
+        -8.12,
+        8.12
+       ],
+       [
+        -11.309999999999999,
+        3.2479999999999998
+       ],
+       [
+        -11.309999999999999,
+        -3.2479999999999998
+       ]
+      ],
+      "colour": "#a8905a"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    6,
+    37.7
+   ],
+   "params": {
+    "colour": "#6a2a2c",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -8.12,
+        -8.12
+       ],
+       [
+        8.12,
+        -8.12
+       ],
+       [
+        11.309999999999999,
+        -3.2479999999999998
+       ],
+       [
+        11.309999999999999,
+        3.2479999999999998
+       ],
+       [
+        8.12,
+        8.12
+       ],
+       [
+        -8.12,
+        8.12
+       ],
+       [
+        -11.309999999999999,
+        3.2479999999999998
+       ],
+       [
+        -11.309999999999999,
+        -3.2479999999999998
+       ]
+      ]
+     },
+     {
+      "z": 0.3,
+      "poly": [
+       [
+        -8.41,
+        -8.41
+       ],
+       [
+        8.41,
+        -8.41
+       ],
+       [
+        11.745,
+        -3.364
+       ],
+       [
+        11.745,
+        3.364
+       ],
+       [
+        8.41,
+        8.41
+       ],
+       [
+        -8.41,
+        8.41
+       ],
+       [
+        -11.745,
+        3.364
+       ],
+       [
+        -11.745,
+        -3.364
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    6,
+    38
+   ],
+   "params": {
+    "colour": "#555555",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.25,
+       0.25
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       0.15,
+       0.15
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6.2,
+    6.8,
+    38
+   ],
+   "params": {
+    "colour": "#555555",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.15,
+       0.15
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -26,
+    -24,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    20,
+    -24,
+    0
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    34,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.4,
+    "colour": "#3a5f8f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower is a plain grid with fins, not the projecting window boxes; cab is a simple flared glazed octagon with flat cap; wings lack barred ground floor and are lower than the photo"
+ }
+}

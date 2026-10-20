@@ -1,0 +1,232 @@
+{
+ "name": "Coqueiros",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: open-air terrace restaurant, hip clay-tile roof, timber terrace with umbrellas under coconut palms; OSM building nearest at 12 m is an odd irregular polygon, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#f2efe6",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5664a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-slab",
+   "at": [
+    0,
+    -9
+   ],
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#c9b98c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-beam",
+   "at": [
+    0,
+    -11.8
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.3
+    ],
+    "z0": 2.9,
+    "height": 0.3,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6.3,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 3.8,
+    "height": 3.0,
+    "colours": [
+     "#f2efe6",
+     "#7a5a3a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -5,
+    -9
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "colours": [
+     "#f2efe6",
+     "#7a5a3a",
+     "#d9c9a0"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    6,
+    -9
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "colours": [
+     "#f2efe6",
+     "#b5664a",
+     "#d9c9a0"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "thickness": 0.2,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13,
+    -4
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    7
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    10
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 1,
+    "spread": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-osm-node-4965931451",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: terrace restaurant typical for Coqueiros, real building shape unknown"
+ }
+}

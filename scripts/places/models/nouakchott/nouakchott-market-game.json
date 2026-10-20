@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "No photo or reliable outline (OSM match is a 49 m2 nearest hit). Typed brief: 80x60 m district market of lock-up shops, tin-roofed stalls and umbrellas on sand."
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lockups0",
+   "footprint": {
+    "rect": [
+     62,
+     5.5
+    ]
+   },
+   "at": [
+    2,
+    -18
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b5a45",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups1",
+   "footprint": {
+    "rect": [
+     48,
+     5.5
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb08a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b5a45",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups2",
+   "footprint": {
+    "rect": [
+     62,
+     5.5
+    ]
+   },
+   "at": [
+    2,
+    22
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4b690",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b5a45",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 2.8,
+    "colour": "#bfc7ca",
+    "roofColour": "#8b5a45"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 6,
+    "height": 2.8,
+    "colour": "#bfc7ca",
+    "roofColour": "#a0624a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -6,
+    14,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -10.5,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 5.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c8553d",
+     "#e0b13a",
+     "#3f7f8f",
+     "#f0eadb"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -18,
+    1.5,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 5.5,
+    "kind": "umbrella",
+    "colours": [
+     "#e0b13a",
+     "#f0eadb",
+     "#8b3a3a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    16.5,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 5.6,
+    "kind": "umbrella",
+    "colours": [
+     "#3f7f8f",
+     "#c8553d",
+     "#f0eadb"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo evidence; layout of lanes and stalls is typical, not surveyed."
+ }
+}

@@ -1,0 +1,575 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rabat_Ville_railway_station_in_2026.02.jpg",
+   "licence": "CC0",
+   "author": "CAPTAIN RAJU",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/transit0.jpg",
+   "used": "cream rendered block with cornice band, low wing on the left, entrance canopy on columns, new glass barrel hall with arched rib frame at the right, grey stone plinth"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gare_de_Rabat_Ville_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Davide Cesare Veniani",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/transit1.jpg",
+   "used": "original 1923 massing: tall plain cream central block, lower flat wings, flat porch canopy on columns, blank sign band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/156426654",
+   "used": "overall length only (289 m, clamped); a 105 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -1
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eee8da",
+    "windows": "none",
+    "plinth": 1.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c2b2",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-old",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eee8da",
+    "windows": "none",
+    "plinth": 2.0,
+    "cornice": true,
+    "bands": "#d9d0bb"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c2b2",
+    "parapet": 1.1,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-plinth",
+   "at": [
+    -2,
+    -9.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.4
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#8d8c85"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2,
+    -9.6,
+    8.2
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#2e3034",
+    "frameColour": "#d9d0bb",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east-low",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    15,
+    -1
+   ],
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eee8da",
+    "windows": "none",
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c2b2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "at": [
+    -13,
+    -12,
+    0
+   ],
+   "params": {
+    "n": 24,
+    "radius": 5.5,
+    "z0": 4.2,
+    "height": 0.6,
+    "colour": "#f0ece2",
+    "topColour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col0",
+   "at": [
+    -17.0,
+    -15.5,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.3,
+    "z0": 0,
+    "height": 4.3,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col1",
+   "at": [
+    -14.4,
+    -15.5,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.3,
+    "z0": 0,
+    "height": 4.3,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col2",
+   "at": [
+    -11.8,
+    -15.5,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.3,
+    "z0": 0,
+    "height": 4.3,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col3",
+   "at": [
+    -9.2,
+    -15.5,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.3,
+    "z0": 0,
+    "height": 4.3,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    33,
+    5
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eee8da",
+    "windows": "none",
+    "plinth": 2.0
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#8fc2ba",
+    "rise": 8,
+    "overhang": 0.2,
+    "material": "glass"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-hall-low",
+   "footprint": {
+    "rect": [
+     36,
+     12
+    ]
+   },
+   "at": [
+    33,
+    19
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eee8da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#8fc2ba",
+    "rise": 4,
+    "overhang": 0.2,
+    "material": "glass"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rib0",
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "at": [
+    15.0,
+    5,
+    7.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.7
+     ]
+    },
+    "arc": {
+     "plane": "yz",
+     "radius": 8.0,
+     "startDeg": 0,
+     "endDeg": 180,
+     "centre": [
+      0,
+      0
+     ]
+    },
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rib1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22.2,
+    5,
+    7.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.7
+     ]
+    },
+    "arc": {
+     "plane": "yz",
+     "radius": 8.0,
+     "startDeg": 0,
+     "endDeg": 180,
+     "centre": [
+      0,
+      0
+     ]
+    },
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rib2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    29.4,
+    5,
+    7.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.7
+     ]
+    },
+    "arc": {
+     "plane": "yz",
+     "radius": 8.0,
+     "startDeg": 0,
+     "endDeg": 180,
+     "centre": [
+      0,
+      0
+     ]
+    },
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rib3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    36.6,
+    5,
+    7.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.7
+     ]
+    },
+    "arc": {
+     "plane": "yz",
+     "radius": 8.0,
+     "startDeg": 0,
+     "endDeg": 180,
+     "centre": [
+      0,
+      0
+     ]
+    },
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rib4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    43.8,
+    5,
+    7.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.7
+     ]
+    },
+    "arc": {
+     "plane": "yz",
+     "radius": 8.0,
+     "startDeg": 0,
+     "endDeg": 180,
+     "centre": [
+      0,
+      0
+     ]
+    },
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rib5",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    51.0,
+    5,
+    7.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.7
+     ]
+    },
+    "arc": {
+     "plane": "yz",
+     "radius": 8.0,
+     "startDeg": 0,
+     "endDeg": 180,
+     "centre": [
+      0,
+      0
+     ]
+    },
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rib-front",
+   "at": [
+    14.6,
+    5,
+    7.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      1.2
+     ]
+    },
+    "arc": {
+     "plane": "yz",
+     "radius": 8.4,
+     "startDeg": 0,
+     "endDeg": 180,
+     "centre": [
+      0,
+      0
+     ]
+    },
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -17
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -17
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glass vault is a simple barrel with plain white ribs; the ornamented lattice front arch, white ribbed steel structure and signage text are not reproduced; stepped lower barrel is schematic; porch canopy is a plain disc on four columns; ground-floor stone plinth only a flat grey band."
+ }
+}

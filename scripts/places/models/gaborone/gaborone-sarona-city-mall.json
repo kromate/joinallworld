@@ -1,0 +1,174 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/14721222",
+   "used": "real stepped mall outline (about 150 x 120 m), 2 levels"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "terracotta stylised entrance block, sand render, blank boards, flat canopy, large car parks"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 4,
+    "scale": 0.9
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e1cf",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bay": 5,
+    "plinth": 0.5,
+    "bands": "#b5654a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     8
+    ],
+    "height": 21,
+    "colour": "#b5654a",
+    "topColour": "#ffffff",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -56.2,
+    15
+   ],
+   "params": {
+    "width": 9,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    30,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 9,
+    "bottom": 0,
+    "colour": "#e9e1cf",
+    "posts": true
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -52,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 6,
+    "height": 5,
+    "columns": 5,
+    "colour": "#ffffff",
+    "edgeColour": "#b5654a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -70,
+    -85,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 7,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 40,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -70,
+     -70
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     10,
+     -80
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     55,
+     -65
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-sarona-city-mall",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real OSM outline only, stylised entrance placed from brief"
+ }
+}

@@ -1,0 +1,778 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Mosque_of_Ghana1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amuzujoe",
+   "view": "street",
+   "file": "/tmp/places-evidence/accra/mosque.jpg",
+   "used": "cream stone, central grey-blue dome on stepped drum with cascade of smaller domes, long front gallery with arched bays and a row of small domes, four tall slender minarets with two balconies and dark pointed caps"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13161605",
+   "used": "checked extent (about 86 x 56 m); composed as regular blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     52,
+     46
+    ]
+   },
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dccfae",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bb98",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "params": {
+    "n": 16,
+    "radius": 13,
+    "z0": 16,
+    "height": 12,
+    "colour": "#e0d3b3",
+    "windowRatio": 0.35
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "main-dome",
+   "at": [
+    0,
+    0,
+    28
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      13.8,
+      0
+     ],
+     [
+      13.9,
+      1.2
+     ],
+     [
+      13,
+      6
+     ],
+     [
+      10.5,
+      10
+     ],
+     [
+      6.5,
+      13
+     ],
+     [
+      2,
+      14.6
+     ],
+     [
+      0,
+      14.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    42.5
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.5,
+      4
+     ],
+     [
+      0.15,
+      4.4
+     ],
+     [
+      0.1,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery",
+   "footprint": {
+    "rect": [
+     100,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c8a4",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cabc9a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "segments": 24,
+      "colour": "#7d8294",
+      "profile": [
+       [
+        3.4,
+        0
+       ],
+       [
+        3.468,
+        0.8
+       ],
+       [
+        2.8899999999999997,
+        2.48
+       ],
+       [
+        1.7,
+        3.6
+       ],
+       [
+        0,
+        4
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -42,
+     -30,
+     8
+    ],
+    "end": [
+     42,
+     -30,
+     8
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    13.86,
+    8.0,
+    16
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      6,
+      0
+     ],
+     [
+      6.12,
+      1.5
+     ],
+     [
+      5.1,
+      3.7199999999999998
+     ],
+     [
+      3.0,
+      5.4
+     ],
+     [
+      0,
+      6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0.0,
+    16.0,
+    16
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      6,
+      0
+     ],
+     [
+      6.12,
+      1.5
+     ],
+     [
+      5.1,
+      3.7199999999999998
+     ],
+     [
+      3.0,
+      5.4
+     ],
+     [
+      0,
+      6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -13.86,
+    8.0,
+    16
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      6,
+      0
+     ],
+     [
+      6.12,
+      1.5
+     ],
+     [
+      5.1,
+      3.7199999999999998
+     ],
+     [
+      3.0,
+      5.4
+     ],
+     [
+      0,
+      6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -13.86,
+    -8.0,
+    16
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      6,
+      0
+     ],
+     [
+      6.12,
+      1.5
+     ],
+     [
+      5.1,
+      3.7199999999999998
+     ],
+     [
+      3.0,
+      5.4
+     ],
+     [
+      0,
+      6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -0.0,
+    -16.0,
+    16
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      6,
+      0
+     ],
+     [
+      6.12,
+      1.5
+     ],
+     [
+      5.1,
+      3.7199999999999998
+     ],
+     [
+      3.0,
+      5.4
+     ],
+     [
+      0,
+      6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    13.86,
+    -8.0,
+    16
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      6,
+      0
+     ],
+     [
+      6.12,
+      1.5
+     ],
+     [
+      5.1,
+      3.7199999999999998
+     ],
+     [
+      3.0,
+      5.4
+     ],
+     [
+      0,
+      6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    21.0,
+    0.0,
+    14
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      3.8,
+      0
+     ],
+     [
+      3.876,
+      0.95
+     ],
+     [
+      3.23,
+      2.356
+     ],
+     [
+      1.9,
+      3.42
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10.5,
+    16.37,
+    14
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      3.8,
+      0
+     ],
+     [
+      3.876,
+      0.95
+     ],
+     [
+      3.23,
+      2.356
+     ],
+     [
+      1.9,
+      3.42
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10.5,
+    16.37,
+    14
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      3.8,
+      0
+     ],
+     [
+      3.876,
+      0.95
+     ],
+     [
+      3.23,
+      2.356
+     ],
+     [
+      1.9,
+      3.42
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -21.0,
+    0.0,
+    14
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      3.8,
+      0
+     ],
+     [
+      3.876,
+      0.95
+     ],
+     [
+      3.23,
+      2.356
+     ],
+     [
+      1.9,
+      3.42
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10.5,
+    -16.37,
+    14
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      3.8,
+      0
+     ],
+     [
+      3.876,
+      0.95
+     ],
+     [
+      3.23,
+      2.356
+     ],
+     [
+      1.9,
+      3.42
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10.5,
+    -16.37,
+    14
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#7d8294",
+    "profile": [
+     [
+      3.8,
+      0
+     ],
+     [
+      3.876,
+      0.95
+     ],
+     [
+      3.23,
+      2.356
+     ],
+     [
+      1.9,
+      3.42
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "minaret",
+   "id": "minaret0",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 66,
+    "style": "pencil",
+    "colour": "#e2d6b8",
+    "cap_colour": "#6b6f7c"
+   }
+  },
+  {
+   "type": "minaret",
+   "id": "minaret1",
+   "at": [
+    -46,
+    8,
+    0
+   ],
+   "params": {
+    "height": 56,
+    "style": "pencil",
+    "colour": "#e2d6b8",
+    "cap_colour": "#6b6f7c"
+   }
+  },
+  {
+   "type": "minaret",
+   "id": "minaret2",
+   "at": [
+    46,
+    8,
+    0
+   ],
+   "params": {
+    "height": 56,
+    "style": "pencil",
+    "colour": "#e2d6b8",
+    "cap_colour": "#6b6f7c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5,
+       0.4
+      ],
+      "z0": 0.8,
+      "height": 5.6,
+      "colour": "#bfae88"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -37.2,
+     0
+    ],
+    "end": [
+     44,
+     -37.2,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 8,
+  "treeKind": "palm",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-ghana-national-mosque",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only 3 minarets with simple balconies and cone caps; arched bays are flat recessed strips (not pointed); dome tiers simplified; domes still read bluer than the photo grey-slate."
+ }
+}

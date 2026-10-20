@@ -1,0 +1,902 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Independence_Square,_Accra,_Ghana.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "RyansWorld",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/bss1.jpg",
+   "used": "parade-ground layout: central yellow-cream reviewing stand with a white arch behind it, soldier statue on a tall stone shaft, long low canopied stands either side, two rows of flagpoles, white balustrade, foreground fountain and hedges"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Black_Star_Monument,_Accra,_Ghana.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "RyansWorld",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/bss2.jpg",
+   "used": "Independence Arch: limestone block piers, deep entablature, ring ornaments on the piers, black star on a stepped plinth above (no text modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/11529315",
+   "used": "scale only: square is 246 m wide, the central 150 m is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.06,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "parade-paving",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     40
+    ],
+    "height": 0.15,
+    "colour": "#b3aea2"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -72,
+    19,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 0.5,
+      "colour": "#6b6a66",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balustrade-rail",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#f1efe8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade-cap",
+   "at": [
+    0,
+    -4,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.5
+    ],
+    "height": 0.25,
+    "colour": "#f1efe8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -44,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     88,
+     0,
+     0
+    ],
+    "count": 32,
+    "of": {
+     "type": "prism",
+     "id": "baluster",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.1,
+      "colour": "#f1efe8",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -50,
+    16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     47,
+     0,
+     0
+    ],
+    "count": 15,
+    "of": [
+     {
+      "type": "prism",
+      "id": "pole",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.14,
+        0.14
+       ],
+       "height": 13,
+       "colour": "#d5d5d5",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "id": "fr",
+      "at": [
+       0.9,
+       0,
+       13.0
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        0.06
+       ],
+       "height": 0.45,
+       "colour": "#c8282a",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "id": "fy",
+      "at": [
+       0.9,
+       0,
+       12.55
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        0.06
+       ],
+       "height": 0.45,
+       "colour": "#e8bd24",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "id": "fg",
+      "at": [
+       0.9,
+       0,
+       12.1
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        0.06
+       ],
+       "height": 0.45,
+       "colour": "#2f8a4a",
+       "windows": "none"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    25,
+    16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     25,
+     0,
+     0
+    ],
+    "count": 12,
+    "of": [
+     {
+      "type": "prism",
+      "id": "pole",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.14,
+        0.14
+       ],
+       "height": 13,
+       "colour": "#d5d5d5",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "id": "fr",
+      "at": [
+       0.9,
+       0,
+       13.0
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        0.06
+       ],
+       "height": 0.45,
+       "colour": "#c8282a",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "id": "fy",
+      "at": [
+       0.9,
+       0,
+       12.55
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        0.06
+       ],
+       "height": 0.45,
+       "colour": "#e8bd24",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "id": "fg",
+      "at": [
+       0.9,
+       0,
+       12.1
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        0.06
+       ],
+       "height": 0.45,
+       "colour": "#2f8a4a",
+       "windows": "none"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pav-low",
+   "at": [
+    0,
+    22,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     30,
+     9
+    ],
+    "height": 0.7,
+    "colour": "#e4d890",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-up",
+   "at": [
+    0,
+    22,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     30,
+     9
+    ],
+    "height": 0.7,
+    "colour": "#e4d890",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-roof",
+   "at": [
+    0,
+    22,
+    14.4
+   ],
+   "params": {
+    "rect": [
+     33,
+     10.5
+    ],
+    "height": 0.35,
+    "colour": "#efe6b0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-rail1",
+   "at": [
+    0,
+    17.7,
+    5.3
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.3
+    ],
+    "height": 0.9,
+    "colour": "#f2ecc2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-rail2",
+   "at": [
+    0,
+    17.7,
+    10.3
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.3
+    ],
+    "height": 0.9,
+    "colour": "#f2ecc2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -13.5,
+    18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     27,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "id": "col",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 14.4,
+      "colour": "#e4d890",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pav-inner",
+   "at": [
+    0,
+    25,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#9a9376",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "white-arch",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      4.6,
+      5
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 15,
+     "radiusY": 23,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#f5f3ee",
+    "steps": 16
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-base",
+   "at": [
+    10,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 1.2,
+    "colour": "#cfc5ae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "at": [
+    10,
+    12,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 11.5,
+    "colour": "#9d9078",
+    "windows": "none",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue",
+   "at": [
+    10,
+    12,
+    12.7
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.8
+    ],
+    "height": 3.2,
+    "colour": "#3b3b3b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "stand-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -28,
+     24
+    ],
+    "end": [
+     -60,
+     24
+    ],
+    "rows": 7,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 1.2,
+    "seatColours": [
+     "#8e8b84",
+     "#b7b2a2"
+    ],
+    "concreteColour": "#c9c4b2",
+    "under": "open",
+    "canopy": {
+     "height": 6.5,
+     "depth": 8,
+     "colour": "#e8e4d4",
+     "slopeDeg": 0,
+     "supports": 8
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "id": "stand-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     60,
+     24
+    ],
+    "end": [
+     28,
+     24
+    ],
+    "rows": 7,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 1.2,
+    "seatColours": [
+     "#8e8b84",
+     "#b7b2a2"
+    ],
+    "concreteColour": "#c9c4b2",
+    "under": "open",
+    "canopy": {
+     "height": 6.5,
+     "depth": 8,
+     "colour": "#e8e4d4",
+     "slopeDeg": 0,
+     "supports": 8
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    58,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#d6cdb4",
+    "segments": 28,
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      14,
+      1.4
+     ],
+     [
+      13,
+      1.5
+     ],
+     [
+      13,
+      0.5
+     ],
+     [
+      4.2,
+      0.5
+     ],
+     [
+      4.2,
+      11,
+      "#d6cdb4"
+     ],
+     [
+      4.3,
+      11.6,
+      "#4a86c0"
+     ],
+     [
+      4.3,
+      12.4,
+      "#4a86c0"
+     ],
+     [
+      4.2,
+      12.5
+     ],
+     [
+      8,
+      13.2
+     ],
+     [
+      8.4,
+      14.2
+     ],
+     [
+      7.4,
+      14.3
+     ],
+     [
+      0.1,
+      13.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "hedge-ring",
+   "at": [
+    58,
+    -30,
+    0.6
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      1.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 17.5,
+     "startDeg": 120,
+     "endDeg": 330,
+     "plane": "xy"
+    },
+    "colour": "#a8b32c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stand-l-lo",
+   "at": [
+    -44.0,
+    24,
+    0
+   ],
+   "params": {
+    "rect": [
+     32,
+     7
+    ],
+    "height": 3.5,
+    "colour": "#a8a498",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stand-l-roof-lo",
+   "at": [
+    -44.0,
+    22,
+    6.4
+   ],
+   "params": {
+    "rect": [
+     32,
+     8
+    ],
+    "height": 0.3,
+    "colour": "#e8e4d4",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stand-r-lo",
+   "at": [
+    44.0,
+    24,
+    0
+   ],
+   "params": {
+    "rect": [
+     32,
+     7
+    ],
+    "height": 3.5,
+    "colour": "#a8a498",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stand-r-roof-lo",
+   "at": [
+    44.0,
+    22,
+    6.4
+   ],
+   "params": {
+    "rect": [
+     32,
+     8
+    ],
+    "height": 0.3,
+    "colour": "#e8e4d4",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion is a slab-and-column approximation (no cantilevered balcony detail); arch stands upright, not leaning; stands are simplified raked tiers; fountain is a scaled revolve without the water-jet sculpture; hedge ring and fountain sit small because of the fit-all camera."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-community-voting-game"
+}

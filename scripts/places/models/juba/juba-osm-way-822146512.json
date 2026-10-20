@@ -1,0 +1,109 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-way-822146512",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/822146512",
+   "used": "real outline (41 x 21 m, 829 m2, named Munuki Mosque, building=mosque)"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found for this place; brief has city-level sources only, so details are typical for Juba"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#cdb68e",
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb68e",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "on": "hall",
+   "params": {
+    "radius": 6.5,
+    "profile": "hemi",
+    "drum": 1.5,
+    "colour": "#3f8f6b",
+    "finial": 2
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -15,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "radius": 1.3,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f4f1ea",
+    "capColour": "#3f8f6b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; dome and minaret placement are typical for a Juba neighbourhood mosque, not observed."
+ }
+}

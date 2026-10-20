@@ -1,0 +1,189 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dar-es-salaam.json#dar-es-salaam-community-voting-game",
+   "used": "formal multi-storey government building with flag mast, entrance canopy, concrete modernist 1970s; the OSM item is a small pitched-roof council office that does not match the 60x30 typed hall, so only the style is used"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/688369885",
+   "used": "context only (containing match, 190 m2, not used for the outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4da",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#6f7478",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "council-wing",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    -34,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.5,
+    "thickness": 0.5,
+    "columns": 4,
+    "colour": "#6f7478",
+    "edgeColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 1.0,
+    "run": 2.0,
+    "count": 5,
+    "colour": "#b5b0a4"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#1eb53a",
+     "#fcd116",
+     "#00a3dd"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 1.0,
+    "colour": "#6f7478"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building (the Commons City Hall picture shows the historic building elsewhere); massing, colours and canopy are typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-community-voting-game"
+}

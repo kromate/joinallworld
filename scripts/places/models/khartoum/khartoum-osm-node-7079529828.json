@@ -1,0 +1,233 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/khartoum.json#khartoum-osm-node-7079529828",
+   "used": "one-storey family restaurant, L-shaped dining block in a walled plot with shaded courtyard seating. OSM nearest way (11 m, 101 m2) is not a containing match so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining",
+   "footprint": {
+    "polygon": [
+     [
+      -10,
+      -4
+     ],
+     [
+      4,
+      -4
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      -2,
+      2
+     ],
+     [
+      -2,
+      8
+     ],
+     [
+      -10,
+      8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b5",
+    "windows": "screen",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "screen"
+    },
+    "bands": "#5a8a74",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#f6f0e0",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      28,
+      0
+     ],
+     [
+      28,
+      22
+     ],
+     [
+      0,
+      22
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.8,
+    "colour": "#5a8a74",
+    "board_colour": "#5a8a74"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2,
+    "drop": 0.5,
+    "height": 2.9,
+    "colours": [
+     "#5a8a74",
+     "#f6f0e0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 0.9,
+    "bottom": 3.0,
+    "colour": "#5a8a74",
+    "frameColour": "#f6f0e0",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    7,
+    4,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 4,
+    "colours": [
+     "#5a8a74",
+     "#f6f0e0",
+     "#e8d9b5"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    9,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2,
+    "colours": [
+     "#5a8a74",
+     "#f6f0e0"
+    ]
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; L-plan and wall are typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-node-7079529828",
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ }
+}

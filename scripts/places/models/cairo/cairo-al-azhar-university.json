@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-al-azhar-university",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A7%D9%84%D8%A3%D8%B2%D9%87%D8%B1_%D8%A8%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kareem torky",
+   "view": "detail",
+   "file": "/tmp/places-evidence/cairo/al-azhar-university-0.jpg",
+   "used": "entrance portal: three large pointed arches in grey granite panels under a dark fluted cornice band and sign band with an overhanging flat roof; the photo shows only the gate, so the whole is not photo-checked"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16731311",
+   "used": "main block outline (bent block, 147 x 55 m), 5 storeys from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "faculty",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9b3a2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b9b3a2",
+       "#a9a392"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#8d887a"
+     }
+    ],
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#a8a291"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867c",
+    "parapet": 0.8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a2a19b",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 10,
+      "opening": 0.8,
+      "height": 0.9,
+      "depth": 1.2,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d5a52",
+    "overhang": 2.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -34.8,
+    12.4
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#3f5a50",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -38
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only the entrance portal is photographed; the campus block is the OSM outline with pointed windows, portal position is a guess relative to the auto-fitted outline."
+ }
+}

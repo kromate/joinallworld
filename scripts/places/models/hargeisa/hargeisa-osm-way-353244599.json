@@ -1,0 +1,135 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kuwaiti.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Omar Abdulkadir Mohamed",
+   "view": "street",
+   "used": "colour only: ochre/sand-yellow render, orange dome, slender square-section minaret; distant view of a mosque group, cannot be matched to this footprint"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/353244599",
+   "used": "real 747 m2 irregular footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb77e",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "windowShape": "arched",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9bd8c",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    7
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d98f4e",
+    "profile": [
+     [
+      4.2,
+      0,
+      "#dcb77e"
+     ],
+     [
+      4.2,
+      1.2
+     ],
+     [
+      3.9,
+      2.4
+     ],
+     [
+      3.1,
+      3.5
+     ],
+     [
+      1.9,
+      4.3
+     ],
+     [
+      0,
+      4.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/minaret",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "style": "pencil",
+    "colour": "#dcb77e",
+    "trim": "#f0ede4",
+    "cap_colour": "#d98f4e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2,
+    "colour": "#dcb77e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": 4,
+  "treeKind": "acacia",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-way-353244599",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only a distant mosque-group photo (ochre colour reference); dome/minaret placement typed."
+ }
+}

@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cape_Town_waterfront_and_Table_Mountain_from_Victoria_Wharf_mall.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Daniel Case",
+   "view": "street",
+   "file": "/tmp/places-evidence/cape-town/market-game-1.jpg",
+   "used": "waterfront colour palette only (white painted brick, dark grey corrugated roofs, pale Georgian-style quayside blocks); the photo is a view FROM the mall, not of it, so it is not a match target"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/8035431",
+   "used": "name-quality footprint (363 x 170 m, scaled to fit the 118 m scene clamp), 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 7
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0d2",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 9,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#9a4f3a",
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 20,
+    "cap": "hip",
+    "cap_rise": 5,
+    "clock": true,
+    "wall_colour": "#e8e0d2",
+    "roof_colour": "#7c8084"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    12,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.5,
+    "colours": [
+     "#9a4f3a",
+     "#f6f2ea"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#9a4f3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#3a5a7a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -42,
+     0
+    ],
+    "end": [
+     0,
+     -42,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "flagpole",
+     "params": {}
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    36,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -66,
+    0.02
+   ],
+   "params": {
+    "width": 100,
+    "depth": 12,
+    "shape": "rect",
+    "colour": "#4f7a90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the mall itself (only views from it): the outline is the real OSM plan scaled to 0.37, but the real mix of brick warehouse gables, sheds and the interior atrium is not shown; roof is flat grey; clock tower, awning, flags and signs are placed from the brief, not an image."
+ }
+}

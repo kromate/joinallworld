@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-rocher",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Au_mont_f%C3%A9b%C3%A9.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jimerveille",
+   "view": "detail",
+   "file": "/tmp/places-evidence/yaounde/rocher.jpg",
+   "used": "colour and rounded-boulder character only (rust-brown granite #8a5a45, darker #5e4034, grass at edge, hillside houses below); photo shows a painted boulder near Mont Febe, not the Rocher du Loup massif, so it does not verify the shape"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 45,
+    "depth": 40,
+    "height": 14,
+    "seed": 11,
+    "stairs": false,
+    "rock_colour": "#7a4f3c",
+    "boulders": 8
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -4,
+    2,
+    11
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 6,
+    "colour": "#8a5a45",
+    "statue": false
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    6,
+    -3,
+    10
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 5,
+    "colour": "#5e4034",
+    "statue": false
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    0,
+    8,
+    9
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 5,
+    "colour": "#8a5a45",
+    "statue": false
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -12,
+    -6,
+    6
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 5,
+    "colour": "#5e4034",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    13,
+    6,
+    6
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 5,
+    "colour": "#8a5a45",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -10,
+    10,
+    5
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 4,
+    "colour": "#8a5a45",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    10,
+    -12,
+    4
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 4,
+    "colour": "#5e4034",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -2,
+    -14,
+    3
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 4,
+    "colour": "#8a5a45",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -22
+     ],
+     [
+      -14,
+      -14
+     ],
+     [
+      -8,
+      -8
+     ],
+     [
+      -6,
+      0
+     ],
+     [
+      -2,
+      6
+     ]
+    ],
+    "width": 1.2,
+    "colour": "#b08a68"
+   }
+  },
+  {
+   "type": "terrace-row",
+   "at": [
+    -22,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 7,
+    "storeys": 1,
+    "kind": "euro",
+    "roof": "gable",
+    "wall_colour": "#c9a98a",
+    "roof_colour": "#a5503b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "terrace-row",
+   "at": [
+    6,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "storeys": 2,
+    "kind": "euro",
+    "roof": "gable",
+    "wall_colour": "#b9b3a2",
+    "roof_colour": "#8a4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     20
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No wide photo of the Rocher du Loup outcrop found (only a painted-boulder close-up near Mont Febe), so verified downgraded to text; massing is a generic boulder-crowned granite knoll with a narrow footpath and two house rows, extent and layout are guesses."
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Botswana_Earth_Science.JPG",
+   "licence": "Public domain",
+   "author": "Iulus Ascanius",
+   "view": "street",
+   "file": "/tmp/places-evidence/gaborone/ub2.jpg",
+   "used": "three-storey red-brick teaching block, flat roof with deep overhang, small square windows, open ground-floor loggia with piers on the projecting wing, clipped round shrubs, kerb and road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Botswana_Library.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Theodorekanjo",
+   "view": "street",
+   "used": "buff brick colour reference only (library block not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/110020793",
+   "used": "campus is 2.4 km across; one teaching block of the campus is modelled, not the whole outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "long-block",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    -22,
+    10
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#9b4b38",
+    "windows": "punched",
+    "windowRatio": 0.02,
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 1.8,
+      "spacing": 3.5,
+      "width": 0.9,
+      "kind": "square",
+      "colour": "#9b4b38",
+      "backColour": "#3a2a26"
+     }
+    ],
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e4638",
+    "overhang": 1.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia-wing",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    24,
+    -6
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a24f3a",
+    "windows": "punched",
+    "windowRatio": 0.02,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 1.8,
+      "spacing": 3.5,
+      "width": 0.9,
+      "kind": "square",
+      "colour": "#8f4231",
+      "backColour": "#3a2a26"
+     }
+    ],
+    "windowShape": "rect",
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e4638",
+    "overhang": 1.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    10
+   ],
+   "z0": 11,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a24f3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8f80",
+    "pitch": 8,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "shrub",
+      "height": 3.2,
+      "spread": 3.4
+     }
+    },
+    "mode": "line",
+    "start": [
+     -32,
+     -15,
+     0
+    ],
+    "end": [
+     38,
+     -16,
+     0
+    ],
+    "count": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "model is too small and distant in frame vs the photo; windows are tall narrow slots (min 0.7 m wide) not small squares; recessed balcony bays and open-balcony tower end not modelled; shrubs are generic low-poly trees; kerb only as road forecourt"
+ }
+}

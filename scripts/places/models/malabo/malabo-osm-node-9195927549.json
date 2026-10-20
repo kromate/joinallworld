@@ -1,0 +1,207 @@
+{
+ "verified": "text",
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 10,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     45,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae0",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#c4c8c8",
+    "plinth": 0.5,
+    "parapet": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f969b",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-entrance",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d6a8a",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8c8",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -13,
+    10
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.6,
+    "bottom": 0.1,
+    "colour": "#3d6a8a",
+    "frameColour": "#c4c8c8",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 2.4,
+    "count": 4,
+    "colour": "#c4c8c8"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -15,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 1.8,
+    "drop": 0.4,
+    "height": 3,
+    "colours": [
+     "#3d6a8a",
+     "#eceae0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    15,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 1.8,
+    "drop": 0.4,
+    "height": 3,
+    "colours": [
+     "#3d6a8a",
+     "#eceae0"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "width": 44,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-node-9195927549",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/malabo.json",
+   "used": "typed brief only; no photo found in the evidence file"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of this place exists in the evidence; typed brief only. Massing, glazing and signage are plausible, not observed."
+ }
+}

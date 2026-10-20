@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-state-library",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/319091518",
+   "used": "outline of the unnamed 3-level building containing the library point (about 47 x 35 m, skewed rectangle with a notch on the front-left)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: boxy modernist painted-render block, ribbon windows, flat roof, recessed entrance, brick accent. Nearby Commons photos show the Ministry of Defence and a military hospital, not the library, so none used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d9c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a24a36",
+    "plinth": 0.6,
+    "parapet": 0.5,
+    "glassColour": "#4f5f66"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -4,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.4,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#a24a36",
+    "edgeColour": "#7d8a8f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.6,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.5,
+    "bottom": 1.2,
+    "colour": "#7d8a8f",
+    "frameColour": "#a24a36",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#a24a36"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Outline only; entrance position, window rhythm and colours are inferred from the brief."
+ }
+}

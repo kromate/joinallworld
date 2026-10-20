@@ -1,0 +1,331 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centre_Hospitalier_Universitaire_de_Brazzaville.jpg",
+   "licence": "CC0",
+   "author": "Africany",
+   "view": "front",
+   "file": "/tmp/places-evidence/brazzaville/chu.jpg",
+   "used": "ochre-yellow ward block with ribbon windows and balconies behind a lower ochre admin block with a blank white signboard, split-stone brown boundary wall in front, broadleaf trees and shrubs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/368809377",
+   "used": "campus is 614 x 482 m, far too large for the scene clamp: one ward court is modelled at its real storey height"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 34,
+  "aspect": 1.33,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     58,
+     15
+    ]
+   },
+   "at": [
+    -30,
+    30
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a63c",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#b88a2c",
+    "frameColour": "#3a3a3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98a3a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-link",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    -6,
+    22
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c066",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98a3a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    10,
+    3
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a63c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cf9f4a",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "boundary-wall",
+   "footprint": {
+    "rect": [
+     100,
+     0.8
+    ]
+   },
+   "at": [
+    -5,
+    -9
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5a3238",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#5a3238",
+       "#e8e2d8",
+       "#5a3238"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5050",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -38,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 3,
+    "height": 3,
+    "form": "flat",
+    "colour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.8
+    ],
+    "z0": 2.2,
+    "height": 0.8,
+    "colour": "#e8e8e4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.8
+    ],
+    "z0": 2.2,
+    "height": 0.8,
+    "colour": "#e8e8e4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.8
+    ],
+    "z0": 2.2,
+    "height": 0.8,
+    "colour": "#e8e8e4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -5,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 0.9,
+    "bottom": 1.6,
+    "colour": "#c9a43a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -3.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.4
+    ],
+    "z0": 3.4,
+    "height": 4,
+    "colour": "#eef3f6",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     6
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     8
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     6
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     22
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "camera is far wider than the close photo so the wall and signboard read small; wall is a coarse checker pattern not crazy-paving; AC boxes are tiny; ward glazing still reads dark blue; shrubs not modelled; only one court of campus"
+ }
+}

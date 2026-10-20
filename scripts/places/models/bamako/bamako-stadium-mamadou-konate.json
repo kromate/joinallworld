@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-stadium-mamadou-konate",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/149401318",
+   "used": "site outline 203 x 150 m (rotated rectangle, bearing 21 deg): perimeter wall, bowl and pitch sized inside it"
+  },
+  {
+   "kind": "text",
+   "used": "brief: modest bowl, covered main stand on one touchline, open terracing, floodlight masts, scoreboard, gate, laterite/concrete/terracotta colours; contrasted with the 55,000-seat 26 Mars stadium"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 94,
+    "width": 62
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    -0.02
+   ],
+   "params": {
+    "length": 102,
+    "width": 70,
+    "lane_width": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -36,
+     -43
+    ],
+    "end": [
+     36,
+     -43
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColour": "#a65a3a",
+    "seatColours": [
+     "#a65a3a",
+     "#c9a27a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#b5b1a8",
+    "under": "solid",
+    "backWall": 1.5,
+    "canopy": {
+     "height": 9.5,
+     "depth": 11,
+     "colour": "#8a8f94",
+     "thickness": 0.4,
+     "slopeDeg": 6,
+     "supports": 7
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     36,
+     45
+    ],
+    "end": [
+     -36,
+     45
+    ],
+    "flip": false,
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#b5b1a8",
+    "concreteColour": "#b5b1a8",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     55,
+     -26
+    ],
+    "end": [
+     55,
+     26
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#c9a27a",
+    "concreteColour": "#b5b1a8",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -55,
+     26
+    ],
+    "end": [
+     -55,
+     -26
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#c9a27a",
+    "concreteColour": "#b5b1a8",
+    "under": "open"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    55,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    55,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -50,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "post_height": 3,
+    "facing": "east"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.4,
+    "thickness": 0.35,
+    "pillarEvery": 0,
+    "colour": "#c9a27a",
+    "points": [
+     [
+      -62,
+      -56
+     ],
+     [
+      62,
+      -56
+     ],
+     [
+      62,
+      56
+     ],
+     [
+      -62,
+      56
+     ],
+     [
+      -62,
+      -56
+     ]
+    ]
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; layout from OSM outline (203 x 150 m) and brief; bowl scaled down to fit the 120 m clamp, stand details generic."
+ }
+}

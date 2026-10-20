@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-open-university",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Open_University_of_Tanzania.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LittleT889",
+   "view": "street",
+   "used": "only the roadside entrance sign (white board on posts, bare roadside, bollards, low tin-roofed kiosks, broadleaf trees); no building visible, so blocks are not photo-checked"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/669083772",
+   "used": "campus outline about 90 x 61 m with bearing 16 deg: sets the extent and orientation of the block layout"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dar-es-salaam.json#dar-es-salaam-open-university",
+   "used": "headquarters campus of a few three-to-four storey rendered office and teaching blocks, 1992"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin-block",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    -2,
+    -8
+   ],
+   "rotDeg": -16,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#8a8f92"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "teaching-wing",
+   "footprint": {
+    "rect": [
+     14,
+     32
+    ]
+   },
+   "at": [
+    24,
+    14
+   ],
+   "rotDeg": -16,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d9bd",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bands": "#8a8f92"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture-block",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    -12,
+    22
+   ],
+   "rotDeg": -16,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd2b8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#8a8f92"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library-glass",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -26,
+    6
+   ],
+   "rotDeg": -16,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d5566",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canteen-shed",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    10,
+    38
+   ],
+   "rotDeg": -16,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc6ae",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "bands": "#8a8f92"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c4a3a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 4,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#6f7478"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "bottom": 1.6,
+    "colour": "#f2f2ee",
+    "frameColour": "#8a8f92",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    34,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "pitch": 5,
+    "kind": "kiosk"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -6,
+    -28,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -14
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    34
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 16
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists; block layout, heights and colours are typical for a 1990s Tanzanian campus and follow the brief only"
+ },
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   110
+  ]
+ }
+}

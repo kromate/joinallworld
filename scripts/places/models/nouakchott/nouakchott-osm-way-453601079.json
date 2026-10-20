@@ -1,0 +1,715 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-osm-way-453601079",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nouakchott_fish_market_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons user (Mooo...)",
+   "view": "front",
+   "file": "/tmp/places-evidence/nouakchott/fm2.jpg",
+   "used": "ochre-yellow weathered render hall, ground-storey arcade of big pointed arches with triangular spandrel openings above, gently curved roof line, low rear block, slim guyed antenna mast, sand floor with tarps, crates and chest freezers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pirogues_Nouakchott_fish_market.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons user (Mooo...)",
+   "view": "side",
+   "file": "/tmp/places-evidence/nouakchott/fm3.jpg",
+   "used": "painted white pirogues with blue gunwale and high raked prows drawn up on pale sand in a row"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fish_market_in_Nouakchott_-_Mauritania.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons",
+   "view": "street",
+   "file": "/tmp/places-evidence/nouakchott/fm1.jpg",
+   "used": "open sand with surf behind, vendors on the ground with fish on tarps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/453601079",
+   "used": "hall footprint (U of two legs and a rear bar, about 57 x 56 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb558",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 3.5,
+      "spacing": 19,
+      "width": 1.6,
+      "kind": "square",
+      "colour": "#cfc9b8",
+      "backColour": "#6a4f2a",
+      "storeys": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "curved",
+    "rise": 2.8,
+    "colour": "#d9b765",
+    "material": "concrete",
+    "parapet": 0,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rear-block",
+   "params": {
+    "rect": [
+     30,
+     8
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#d8b765",
+    "topColour": "#c9a85a",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    36
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pirogues",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -46
+    ],
+    "end": [
+     26,
+     -46
+    ],
+    "count": 7,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#f3f1ea",
+      "capTop": true,
+      "sections": [
+       {
+        "z": 0.0,
+        "rect": [
+         0.5,
+         3.0
+        ],
+        "cy": 0
+       },
+       {
+        "z": 0.6,
+        "ellipse": [
+         1.0,
+         3.4
+        ],
+        "cy": 0
+       },
+       {
+        "z": 1.1,
+        "ellipse": [
+         0.9,
+         3.8
+        ],
+        "cy": 0.2
+       },
+       {
+        "z": 1.9,
+        "rect": [
+         0.3,
+         0.6
+        ],
+        "cy": 1.9
+       }
+      ]
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "stalls",
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -33
+    ],
+    "end": [
+     22,
+     -33
+    ],
+    "count": 6,
+    "of": {
+     "type": "umbrella",
+     "params": {
+      "radius": 1.6,
+      "height": 2.4,
+      "colour": "#3d7a9a"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-rib-0",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -28.4,
+      -29.5,
+      0
+     ],
+     [
+      -27.799999999999997,
+      -29.5,
+      3.87
+     ],
+     [
+      -24.828,
+      -29.5,
+      6.708
+     ],
+     [
+      -21.35,
+      -29.5,
+      8.17
+     ],
+     [
+      -19,
+      -29.5,
+      8.6
+     ],
+     [
+      -16.65,
+      -29.5,
+      8.17
+     ],
+     [
+      -13.172,
+      -29.5,
+      6.708
+     ],
+     [
+      -10.200000000000003,
+      -29.5,
+      3.87
+     ],
+     [
+      -9.600000000000001,
+      -29.5,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#dcb558"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-rib-1",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -9.4,
+      -29.5,
+      0
+     ],
+     [
+      -8.8,
+      -29.5,
+      3.87
+     ],
+     [
+      -5.828,
+      -29.5,
+      6.708
+     ],
+     [
+      -2.35,
+      -29.5,
+      8.17
+     ],
+     [
+      0,
+      -29.5,
+      8.6
+     ],
+     [
+      2.35,
+      -29.5,
+      8.17
+     ],
+     [
+      5.828,
+      -29.5,
+      6.708
+     ],
+     [
+      8.8,
+      -29.5,
+      3.87
+     ],
+     [
+      9.4,
+      -29.5,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#dcb558"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-rib-2",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      9.6,
+      -29.5,
+      0
+     ],
+     [
+      10.2,
+      -29.5,
+      3.87
+     ],
+     [
+      13.172,
+      -29.5,
+      6.708
+     ],
+     [
+      16.65,
+      -29.5,
+      8.17
+     ],
+     [
+      19,
+      -29.5,
+      8.6
+     ],
+     [
+      21.35,
+      -29.5,
+      8.17
+     ],
+     [
+      24.828,
+      -29.5,
+      6.708
+     ],
+     [
+      27.8,
+      -29.5,
+      3.87
+     ],
+     [
+      28.4,
+      -29.5,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#dcb558"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-band",
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      1.0
+     ]
+    },
+    "points": [
+     [
+      -28,
+      -29.5,
+      9.6
+     ],
+     [
+      -14,
+      -29.5,
+      10.6
+     ],
+     [
+      0,
+      -29.5,
+      11.0
+     ],
+     [
+      14,
+      -29.5,
+      10.6
+     ],
+     [
+      28,
+      -29.5,
+      9.6
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#d9b765"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "mast",
+   "at": [
+    -8,
+    26,
+    9
+   ],
+   "params": {
+    "colour": "#6b6f73",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast-kit",
+   "at": [
+    -8,
+    26,
+    19
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.6
+    ],
+    "height": 1.6,
+    "colour": "#b9bcbf",
+    "topColour": "#d0d3d5"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "guy-0",
+   "params": {
+    "section": {
+     "circle": 0.05
+    },
+    "points": [
+     [
+      -8,
+      26,
+      22
+     ],
+     [
+      -17,
+      20,
+      9
+     ]
+    ],
+    "colour": "#444444"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "guy-1",
+   "params": {
+    "section": {
+     "circle": 0.05
+    },
+    "points": [
+     [
+      -8,
+      26,
+      22
+     ],
+     [
+      1,
+      20,
+      9
+     ]
+    ],
+    "colour": "#444444"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "guy-2",
+   "params": {
+    "section": {
+     "circle": 0.05
+    },
+    "points": [
+     [
+      -8,
+      26,
+      22
+     ],
+     [
+      -8,
+      35,
+      9
+     ]
+    ],
+    "colour": "#444444"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "freezers",
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -36
+    ],
+    "end": [
+     20,
+     -36
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 0.9,
+      "colour": "#e6e4dc",
+      "topColour": "#f2f0ea"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "tarps",
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -41
+    ],
+    "end": [
+     22,
+     -41
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.5,
+       3.2
+      ],
+      "height": 0.12,
+      "colour": "#2f4a73",
+      "topColour": "#2f4a73"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "fish-piles",
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -41
+    ],
+    "end": [
+     18,
+     -41
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       1.8
+      ],
+      "height": 0.35,
+      "colour": "#777f86",
+      "topColour": "#8d959b"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "arcade now open with 3 slender-pier pointed arches and guyed mast; roof still shows a slight eave, no triangular spandrel cut-outs, no crowd; fish piles and tarps are simple slabs"
+ }
+}

@@ -1,0 +1,506 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-osm-way-665879789",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Est%C3%A1dio_da_V%C3%A1rzea.jpg",
+   "licence": "Public domain",
+   "author": "Xandu",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/praia/varzea1.jpg",
+   "used": "long far stand of concrete terraces with blue seat blocks and yellow aisle stairs, raised covered central box with arched parapet, low peach building and canopy on the near side, green pitch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CV-praia-stadion.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Balou46",
+   "view": "aerial",
+   "used": "end terrace walls, two stand blocks either side of the central box, yellow edge trim on the low near building"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/665879789",
+   "used": "overall extent about 136 x 118 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 13,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "rect": [
+     106,
+     68
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f8a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a3a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -54,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 25
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    54,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 25
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -38
+     ],
+     [
+      58,
+      -38
+     ]
+    ],
+    "height": 2.4,
+    "colour": "#e8e0d0"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     50,
+     38
+    ],
+    "end": [
+     -50,
+     38
+    ],
+    "rows": 20,
+    "rise": 0.55,
+    "run": 0.9,
+    "seatColours": [
+     "#cfc6b0",
+     "#cfc6b0",
+     "#e0b92a",
+     "#cfc6b0",
+     "#3b5fb0",
+     "#cfc6b0",
+     "#cfc6b0",
+     "#e0b92a"
+    ],
+    "blocks": 8,
+    "seatColour": "#cfc6b0",
+    "concreteColour": "#cdc4b0",
+    "backWall": 0.8,
+    "under": "solid"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-box",
+   "footprint": {
+    "rect": [
+     30,
+     8
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "z0": 11.4,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7d4cc",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-box-seats",
+   "footprint": {
+    "rect": [
+     26,
+     3
+    ]
+   },
+   "at": [
+    0,
+    48.5
+   ],
+   "z0": 11.9,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f4f9e",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4f9e",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     54,
+     -30
+    ],
+    "end": [
+     54,
+     30
+    ],
+    "rows": 5,
+    "rise": 0.5,
+    "run": 0.9,
+    "seatColour": "#cfc6b0",
+    "concreteColour": "#cdc4b0",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -54,
+     30
+    ],
+    "end": [
+     -54,
+     -30
+    ],
+    "rows": 5,
+    "rise": 0.5,
+    "run": 0.9,
+    "seatColour": "#cfc6b0",
+    "concreteColour": "#cdc4b0",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "near-block",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    -8,
+    -40
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3b98d",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": "#e8b830"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9784a",
+    "parapet": 0.5,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    -48,
+    70
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a58f",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e0a58f",
+      "#c98b78"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9876f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-wing",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    72
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a088",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9876f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "at": [
+    35,
+    92,
+    0
+   ],
+   "params": {
+    "radius": 28,
+    "n": 9,
+    "height": 32,
+    "topScale": 0.3,
+    "colour": "#8a5a48",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house0",
+   "footprint": {
+    "rect": [
+     9.415680154384777,
+     7.877160912324162
+    ]
+   },
+   "at": [
+    -21.572212237448653,
+    85.10986549964424
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc8",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cdbb",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house1",
+   "footprint": {
+    "rect": [
+     7.9373238441867855,
+     8.986934506531387
+    ]
+   },
+   "at": [
+    10.633597180835961,
+    92.77806204298402
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a98a",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cdbb",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house2",
+   "footprint": {
+    "rect": [
+     10.444088433701289,
+     6.6957660161300145
+    ]
+   },
+   "at": [
+    40.24584331377423,
+    93.19140373108688
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9d4d8",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cdbb",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     -56
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -48,
+     -62
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -12,
+     -64
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     20,
+     -58
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     38,
+     -66
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     60,
+     -56
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -65,
+     -52
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hill is a smooth cone, hillside housing reduced to 3 boxes plus a plain pink hotel, far stand aisle blocks only approximate yellow/blue stairs, arched parapet on the central box missing, no dense green tree mass in the foreground"
+ }
+}

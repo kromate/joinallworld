@@ -1,0 +1,261 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-ministries-square",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: 8-storey mid-century ministry slabs with deep sun-shading facing a paved square; OSM match is a 25 x 15 m nearest building, not credible for a 110 m ministry front, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     64,
+     15
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#8d9494",
+    "plinth": 0.6,
+    "parapet": 1.0,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d88",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    0,
+    2.4,
+    3
+   ],
+   "params": {
+    "length": 60,
+    "height": 26,
+    "pitch": 2.4,
+    "depth": 0.6,
+    "colour": "#f3efe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    -39,
+    -2
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9b8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d88",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    39,
+    -2
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9b8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d88",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     18,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9494",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d88"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#cc1f2a",
+     "#111111",
+     "#e0b83a"
+    ]
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 30,
+    "border": 1.2,
+    "colour": "#c9c4b6",
+    "border_colour": "#8d9494"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 3,
+    "line": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 3,
+    "line": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence; generic mid-century ministry slabs, dimensions from the brief."
+ }
+}

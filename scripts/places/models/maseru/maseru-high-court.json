@@ -1,0 +1,20 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "maseru", "venueId": "maseru-high-court",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/321057537", "used": "real outline: rounded rear rotunda-like body with a stepped entrance projection to the front (name match)"},
+  {"kind": "text", "used": "brief: two-storey sandstone colonial courthouse, columned entrance, hip roof of red tile, flags, forecourt wall. No photo found on Commons or Wikidata."}
+ ],
+ "camera": {"yawDeg": 15, "pitchDeg": 12, "fovDeg": 50},
+ "parts": [
+  {"type": "mass", "id": "court", "footprint": {"osm": true, "scale": 1.0, "simplify": 5}, "height": 11, "storeys": 2,
+   "wall": {"material": "sandstone", "colour": "#d9c29a", "windows": "arched", "windowRatio": 0.2, "bay": 9, "bands": "#efe6d2", "plinth": 0.8, "cornice": true},
+   "roof": {"form": "hip", "colour": "#7a3a2c", "material": "clay-tile", "pitch": 9, "overhang": 0.8}},
+  {"type": "core/portico", "at": [0, -32, 0], "rotDeg": 0, "params": {"width": 14, "depth": 4.5, "height": 8, "columns": 6, "pediment": true, "steps": 5, "colour": "#efe6d2", "roofColour": "#7a3a2c"}},
+  {"type": "core/flag", "at": [-14, -40, 0], "params": {"height": 9, "count": 2, "spacing": 28}},
+  {"type": "core/fence-wall", "at": [0, -48, 0], "params": {"length": 70, "height": 1.2, "thickness": 0.4, "kind": "wall", "pillarEvery": 6, "colour": "#d9c29a"}},
+  {"type": "core/lamp", "at": [-30, -44, 0], "params": {"height": 6, "count": 3, "spacing": 30}}
+ ],
+ "site": {"ground": "paving", "forecourt": "road", "trees": 2, "treeKind": "broadleaf", "extent": [130, 130]},
+ "review": {"rounds": 0, "match": "rough", "gaps": "No photo; real outline plus brief. Portico position and window rhythm are assumed."}
+}

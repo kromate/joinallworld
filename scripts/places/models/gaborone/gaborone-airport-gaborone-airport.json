@@ -1,0 +1,207 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KhamaAirportExpansion.jpg",
+   "licence": "Public domain",
+   "author": "Iulus Ascanius",
+   "view": "back",
+   "file": "/tmp/places-evidence/gaborone/airport1.jpg",
+   "used": "long low glazed airside elevation over a buff brick base, flat roof, control tower standing at the east end"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "17,000 m2 over two levels, about 140 x 55 m, expanded 2008+"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     96,
+     50
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a9496",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 3.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "overhang": 3.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-brick",
+   "footprint": {
+    "rect": [
+     97,
+     52
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b59f80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     44
+    ]
+   },
+   "at": [
+    44,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0d0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 80,
+    "depth": 11,
+    "height": 5,
+    "thickness": 0.5,
+    "columns": 12,
+    "colour": "#f6f2ea",
+    "edgeColour": "#c9c6bc"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    72,
+    10,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "style": "round",
+    "colour": "#d8d4cb",
+    "shaftRadius": 3.8,
+    "cabRadius": 6.6,
+    "cabColour": "#5a666a",
+    "bandColour": "#b5b8b6"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -31.0,
+    22,
+    5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -3.0,
+    22,
+    5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -58,
+    28,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 6,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-airport-gaborone-airport",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "photo shows unfinished terminal under scaffold; finished form from brief (buff brick base, glazed upper, deep roof, shorter wider tower further east); no cars/trees/swoosh"
+ }
+}

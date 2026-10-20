@@ -1,0 +1,96 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/249526247",
+   "used": "unnamed building containing the venue point (907 m2, irregular rectangle); glazed ground-floor gallery and 3 storeys from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 20,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece5d4",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "groundKind": "shopfront",
+    "groundHeight": 4,
+    "bands": "#6f8c96",
+    "glassColour": "#6f8c96"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2,
+    "colours": [
+     "#6f8c96",
+     "#ece5d4"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; outline from OSM containing building which may be an adjacent block; storey count and gallery glazing assumed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-galeries-tsika"
+}

@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/34392127",
+   "used": "real irregular outline, 378 m long, auto-fitted"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-level white and glazed mall, big car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.14,
+    "bands": "#c9b48a",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "ribbon"
+    },
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a7aa8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 8,
+    "height": 5,
+    "form": "flat",
+    "colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "bottom": 4,
+    "colour": "#4a7aa8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    22,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 4,
+    "colours": [
+     "#e70013",
+     "#f1eee6",
+     "#4a7aa8",
+     "#c9b48a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -40
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -40,
+     -48
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -25,
+     -52
+    ],
+    "yawDeg": 90,
+    "colour": "#f1eee6"
+   },
+   {
+    "at": [
+     -10,
+     -48
+    ],
+    "yawDeg": 90,
+    "colour": "#2f3a4a"
+   },
+   {
+    "at": [
+     10,
+     -52
+    ],
+    "yawDeg": 90,
+    "colour": "#8a2f2f"
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Real outline only; no photo of Tunis City found, atrium position and facade colours are from the brief; asphalt apron simplified"
+ }
+}

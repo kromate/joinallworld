@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/364766139",
+   "used": "real park polygon of the esplanade (5,700 m2) as the paved/lawn platform"
+  },
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/Category:Brazzaville",
+   "used": "no usable photo; brief: Corniche riverside esplanade with paved walks, flag poles, lawns, a pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a49a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    40,
+    0.5
+   ],
+   "params": {
+    "height": 10,
+    "count": 6,
+    "spacing": 6,
+    "colour": "#c8102e"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    10,
+    10,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "colour": "#e4dfd0",
+    "cap_colour": "#a0503a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    25,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    0,
+    0.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 6,
+    "spacing": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    20,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 10,
+    "line": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     5
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; furniture layout typical, not observed."
+ }
+}

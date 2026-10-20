@@ -1,0 +1,265 @@
+{
+ "name": "Feira de Artesanato e Ateliers",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (no photo found, OSM building nearest at 43 m is not reliable): craft fair of small timber-and-tin stalls and ateliers under trees, painted wall, laterite ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.0,
+    "thickness": 0.25,
+    "colour": "#d9a441"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.4,
+    "thickness": 0.25,
+    "colour": "#7fa3b5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "height": 2.0,
+    "thickness": 0.25,
+    "colour": "#a8774a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-wall",
+   "at": [
+    30,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     22
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "colour": "#c9553a",
+    "topColour": "#d9a441"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-stripe",
+   "at": [
+    30,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     16
+    ],
+    "z0": 0.8,
+    "height": 1.0,
+    "colour": "#7fa3b5"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    -10
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 5.2,
+    "kind": "stall",
+    "colours": [
+     "#a8774a",
+     "#d9a441",
+     "#7fa3b5"
+    ],
+    "roof_colour": "#8a7f78",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 5.2,
+    "kind": "stall",
+    "colours": [
+     "#7fa3b5",
+     "#a8774a",
+     "#d9a441"
+    ],
+    "roof_colour": "#8a7f78",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    10
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 5.6,
+    "kind": "umbrella",
+    "colours": [
+     "#d9a441",
+     "#7fa3b5"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    15
+   ],
+   "params": {
+    "length": 16,
+    "depth": 6,
+    "height": 3.5,
+    "roof": "shed",
+    "wall_colour": "#a8774a",
+    "roof_colour": "#8a7f78",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    15
+   ],
+   "params": {
+    "length": 12,
+    "depth": 5,
+    "height": 3.3,
+    "roof": "gable",
+    "wall_colour": "#d9a441",
+    "roof_colour": "#8a7f78",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -14
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -14
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    14
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-osm-node-4719996189",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: stall layout, painted walls and sheds are typical for a craft fair, not the real site"
+ }
+}

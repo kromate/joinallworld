@@ -1,0 +1,499 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-costa-do-sol-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/688152569",
+   "used": "name-matched stadium outline, about 99 x 168 m, long axis north-south: ground wall line, pitch orientation, stand positions"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small club ground, one covered grandstand, low terraces elsewhere, four floodlight masts, club colours red/white (assumed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; stand length, roof and terrace layout inferred from outline and brief"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -49.3,
+      -49.4
+     ],
+     [
+      -46.5,
+      47.8
+     ],
+     [
+      -42.3,
+      66.6
+     ],
+     [
+      -30,
+      78
+     ],
+     [
+      -16.8,
+      83.7
+     ],
+     [
+      0.2,
+      85.2
+     ],
+     [
+      13.6,
+      82.6
+     ],
+     [
+      26.3,
+      77.7
+     ],
+     [
+      34.5,
+      71
+     ],
+     [
+      41.7,
+      61.7
+     ],
+     [
+      47.7,
+      50.6
+     ],
+     [
+      49.5,
+      41.6
+     ],
+     [
+      49.7,
+      10.7
+     ],
+     [
+      47.9,
+      -52.5
+     ],
+     [
+      44.6,
+      -63.6
+     ],
+     [
+      34.3,
+      -72.4
+     ],
+     [
+      23.2,
+      -77.8
+     ],
+     [
+      7.4,
+      -81.4
+     ],
+     [
+      -7.5,
+      -83.2
+     ],
+     [
+      -23.8,
+      -79.6
+     ],
+     [
+      -35.6,
+      -75.2
+     ],
+     [
+      -45.4,
+      -65.2
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#b9b4a8",
+    "topColour": "#b9b4a8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -49.3,
+      -49.4,
+      0.9
+     ],
+     [
+      -46.5,
+      47.8,
+      0.9
+     ],
+     [
+      -42.3,
+      66.6,
+      0.9
+     ],
+     [
+      -30,
+      78,
+      0.9
+     ],
+     [
+      -16.8,
+      83.7,
+      0.9
+     ],
+     [
+      0.2,
+      85.2,
+      0.9
+     ],
+     [
+      13.6,
+      82.6,
+      0.9
+     ],
+     [
+      26.3,
+      77.7,
+      0.9
+     ],
+     [
+      34.5,
+      71,
+      0.9
+     ],
+     [
+      41.7,
+      61.7,
+      0.9
+     ],
+     [
+      47.7,
+      50.6,
+      0.9
+     ],
+     [
+      49.5,
+      41.6,
+      0.9
+     ],
+     [
+      49.7,
+      10.7,
+      0.9
+     ],
+     [
+      47.9,
+      -52.5,
+      0.9
+     ],
+     [
+      44.6,
+      -63.6,
+      0.9
+     ],
+     [
+      34.3,
+      -72.4,
+      0.9
+     ],
+     [
+      23.2,
+      -77.8,
+      0.9
+     ],
+     [
+      7.4,
+      -81.4,
+      0.9
+     ],
+     [
+      -7.5,
+      -83.2,
+      0.9
+     ],
+     [
+      -23.8,
+      -79.6,
+      0.9
+     ],
+     [
+      -35.6,
+      -75.2,
+      0.9
+     ],
+     [
+      -45.4,
+      -65.2,
+      0.9
+     ]
+    ],
+    "closed": true,
+    "section": {
+     "rect": [
+      0.4,
+      1.8
+     ]
+    },
+    "colour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -36,
+      -60
+     ],
+     [
+      36,
+      -60
+     ],
+     [
+      36,
+      60
+     ],
+     [
+      -36,
+      60
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#4f8a3f",
+    "topColour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     42,
+     -38
+    ],
+    "end": [
+     42,
+     38
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "canopy": {
+     "depth": 9,
+     "height": 9.5,
+     "colour": "#8a8f94"
+    },
+    "seatColours": [
+     "#c8372d",
+     "#f4f1ea"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d9d4c8",
+    "backWall": 1.0
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -42,
+     60
+    ],
+    "end": [
+     -42,
+     -48
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColours": [
+     "#d9d4c8",
+     "#c8372d"
+    ],
+    "concreteColour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26,
+     -72
+    ],
+    "end": [
+     26,
+     -72
+    ],
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "flip": true,
+    "seatColours": [
+     "#d9d4c8",
+     "#c8372d"
+    ],
+    "concreteColour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     26,
+     76
+    ],
+    "end": [
+     -26,
+     76
+    ],
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "seatColours": [
+     "#d9d4c8",
+     "#c8372d"
+    ],
+    "concreteColour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    58,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    58,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -30,
+    82,
+    1.6
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "facing": "south"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     70
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ }
+}

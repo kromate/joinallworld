@@ -1,0 +1,324 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/192079182",
+   "used": "NOT used: the match is Universidade Lusiada de Angola, a different institution, and its Commons photo shows that building"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Agostinho Neto University faculty block in central Luanda, 3-5 storeys, H plan about 80 x 35 m, pale weathered render, ribbon windows, courtyard, blank signage board, flags, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "polygon": [
+     [
+      -40,
+      -17.5
+     ],
+     [
+      -22,
+      -17.5
+     ],
+     [
+      -22,
+      17.5
+     ],
+     [
+      -40,
+      17.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d0b9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8a8f8f",
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "polygon": [
+     [
+      22,
+      -17.5
+     ],
+     [
+      40,
+      -17.5
+     ],
+     [
+      40,
+      17.5
+     ],
+     [
+      22,
+      17.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d0b9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8a8f8f",
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "polygon": [
+     [
+      -22,
+      -6
+     ],
+     [
+      22,
+      -6
+     ],
+     [
+      22,
+      6
+     ],
+     [
+      -22,
+      6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11.2,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d0b9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8a8f8f",
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-core",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe6",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.4,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8f",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 3.6,
+    "colour": "#8a8f8f",
+    "columns": 4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 0.8,
+    "colour": "#3a5f8a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {}
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -32
+    ],
+    "end": [
+     -8,
+     -32
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -24
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -24
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    12
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-community-workshop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the right building; H plan and ribbon windows typed from brief"
+ }
+}

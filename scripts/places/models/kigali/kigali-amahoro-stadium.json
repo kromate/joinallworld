@@ -1,0 +1,672 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-amahoro-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Amahoro_Stadium_Kigali.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/am0.jpg",
+   "used": "rebuilt closed oval: perforated diamond-pattern cream screen facade, scalloped pale roof-edge ring, low beige base, gatehouse at right, perimeter fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17855095",
+   "used": "oval outline, scaled 0.47 to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 48,
+  "aspect": 2.1,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "base",
+   "params": {
+    "points": [
+     [
+      5.9,
+      43.4
+     ],
+     [
+      -11.6,
+      42.2
+     ],
+     [
+      -25.7,
+      39.3
+     ],
+     [
+      -39.2,
+      33.4
+     ],
+     [
+      -49.3,
+      24.9
+     ],
+     [
+      -56.4,
+      14.2
+     ],
+     [
+      -59.0,
+      0.5
+     ],
+     [
+      -57.5,
+      -12.8
+     ],
+     [
+      -50.9,
+      -27.2
+     ],
+     [
+      -42.0,
+      -35.3
+     ],
+     [
+      -30.1,
+      -42.0
+     ],
+     [
+      -16.8,
+      -44.4
+     ],
+     [
+      -4.0,
+      -43.3
+     ],
+     [
+      11.5,
+      -41.7
+     ],
+     [
+      26.5,
+      -38.9
+     ],
+     [
+      40.7,
+      -32.9
+     ],
+     [
+      50.3,
+      -23.2
+     ],
+     [
+      57.7,
+      -9.8
+     ],
+     [
+      59.4,
+      4.0
+     ],
+     [
+      57.3,
+      14.8
+     ],
+     [
+      51.2,
+      26.2
+     ],
+     [
+      44.7,
+      33.8
+     ],
+     [
+      34.9,
+      39.7
+     ],
+     [
+      22.2,
+      43.2
+     ]
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#cdbd9f",
+    "topColour": "#cdbd9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.9,
+      43.4
+     ],
+     [
+      -11.6,
+      42.2
+     ],
+     [
+      -25.7,
+      39.3
+     ],
+     [
+      -39.2,
+      33.4
+     ],
+     [
+      -49.3,
+      24.9
+     ],
+     [
+      -56.4,
+      14.2
+     ],
+     [
+      -59.0,
+      0.5
+     ],
+     [
+      -57.5,
+      -12.8
+     ],
+     [
+      -50.9,
+      -27.2
+     ],
+     [
+      -42.0,
+      -35.3
+     ],
+     [
+      -30.1,
+      -42.0
+     ],
+     [
+      -16.8,
+      -44.4
+     ],
+     [
+      -4.0,
+      -43.3
+     ],
+     [
+      11.5,
+      -41.7
+     ],
+     [
+      26.5,
+      -38.9
+     ],
+     [
+      40.7,
+      -32.9
+     ],
+     [
+      50.3,
+      -23.2
+     ],
+     [
+      57.7,
+      -9.8
+     ],
+     [
+      59.4,
+      4.0
+     ],
+     [
+      57.3,
+      14.8
+     ],
+     [
+      51.2,
+      26.2
+     ],
+     [
+      44.7,
+      33.8
+     ],
+     [
+      34.9,
+      39.7
+     ],
+     [
+      22.2,
+      43.2
+     ]
+    ],
+    "z0": 4,
+    "height": 13,
+    "colour": "#cdbd9f",
+    "topColour": "#dcc592",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.2,
+       1.2
+      ],
+      "colours": [
+       "#d4c6a6",
+       "#a39172"
+      ],
+      "mode": "checker",
+      "gap": 0.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-flat",
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      5.9,
+      43.4
+     ],
+     [
+      -11.6,
+      42.2
+     ],
+     [
+      -25.7,
+      39.3
+     ],
+     [
+      -39.2,
+      33.4
+     ],
+     [
+      -49.3,
+      24.9
+     ],
+     [
+      -56.4,
+      14.2
+     ],
+     [
+      -59.0,
+      0.5
+     ],
+     [
+      -57.5,
+      -12.8
+     ],
+     [
+      -50.9,
+      -27.2
+     ],
+     [
+      -42.0,
+      -35.3
+     ],
+     [
+      -30.1,
+      -42.0
+     ],
+     [
+      -16.8,
+      -44.4
+     ],
+     [
+      -4.0,
+      -43.3
+     ],
+     [
+      11.5,
+      -41.7
+     ],
+     [
+      26.5,
+      -38.9
+     ],
+     [
+      40.7,
+      -32.9
+     ],
+     [
+      50.3,
+      -23.2
+     ],
+     [
+      57.7,
+      -9.8
+     ],
+     [
+      59.4,
+      4.0
+     ],
+     [
+      57.3,
+      14.8
+     ],
+     [
+      51.2,
+      26.2
+     ],
+     [
+      44.7,
+      33.8
+     ],
+     [
+      34.9,
+      39.7
+     ],
+     [
+      22.2,
+      43.2
+     ]
+    ],
+    "z0": 4,
+    "height": 13,
+    "colour": "#bcab8a",
+    "topColour": "#dcc592"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-ring",
+   "params": {
+    "points": [
+     [
+      5.9,
+      43.4
+     ],
+     [
+      -11.6,
+      42.2
+     ],
+     [
+      -25.7,
+      39.3
+     ],
+     [
+      -39.2,
+      33.4
+     ],
+     [
+      -49.3,
+      24.9
+     ],
+     [
+      -56.4,
+      14.2
+     ],
+     [
+      -59.0,
+      0.5
+     ],
+     [
+      -57.5,
+      -12.8
+     ],
+     [
+      -50.9,
+      -27.2
+     ],
+     [
+      -42.0,
+      -35.3
+     ],
+     [
+      -30.1,
+      -42.0
+     ],
+     [
+      -16.8,
+      -44.4
+     ],
+     [
+      -4.0,
+      -43.3
+     ],
+     [
+      11.5,
+      -41.7
+     ],
+     [
+      26.5,
+      -38.9
+     ],
+     [
+      40.7,
+      -32.9
+     ],
+     [
+      50.3,
+      -23.2
+     ],
+     [
+      57.7,
+      -9.8
+     ],
+     [
+      59.4,
+      4.0
+     ],
+     [
+      57.3,
+      14.8
+     ],
+     [
+      51.2,
+      26.2
+     ],
+     [
+      44.7,
+      33.8
+     ],
+     [
+      34.9,
+      39.7
+     ],
+     [
+      22.2,
+      43.2
+     ]
+    ],
+    "z0": 17,
+    "height": 2.0,
+    "topScale": 1.06,
+    "colour": "#e0cfa6",
+    "topColour": "#e8d9b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    44,
+    -52
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c7a98d",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c7a0",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -47,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 6,
+    "colours": [
+     "#2a6db0",
+     "#e6c229",
+     "#2f8f4e"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 44,
+    "radius": 59,
+    "radiusY": 44,
+    "centre": [
+     0,
+     0
+    ],
+    "facing": "outward",
+    "dz": 0,
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       19
+      ],
+      "params": {
+       "colour": "#e8d9b4",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          3.4,
+          1.6
+         ]
+        },
+        {
+         "z": 1.2,
+         "rect": [
+          2.8,
+          1.8
+         ]
+        },
+        {
+         "z": 2.0,
+         "rect": [
+          1.4,
+          1.4
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -46,
+    9
+   ],
+   "params": {
+    "width": 26,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#ece3cc",
+    "frameColour": "#a39172",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -56,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#6e6a60"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -66,
+     -48
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -60
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Facade is a small checker, not a true diamond lattice; scalloped cream crown, fence and larger gatehouse added; no planting, lettering is a blank board, oval fitted at 0.47 scale from OSM."
+ }
+}

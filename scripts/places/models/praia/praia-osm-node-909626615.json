@@ -1,0 +1,400 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pelourinho_Cidade_Velha_IW.jpg",
+   "licence": "Public domain",
+   "author": "Ingo Woelbern",
+   "view": "street",
+   "file": "/tmp/places-evidence/praia/pel1.jpg",
+   "used": "slender whitish marble column on a low stepped octagonal base, ring of small black bollards with chain, grey cobbled square, acacia and palm trees behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cidade_Velha-Pelourinho_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ji-Elle",
+   "view": "street",
+   "used": "column proportion and base (not downloaded for comparison)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/605996494",
+   "used": "not used: nearest-quality match 23 m away, a different building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     30
+    ],
+    "height": 0.06,
+    "colour": "#55575a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    0.06
+   ],
+   "params": {
+    "rect": [
+     44,
+     10
+    ],
+    "height": 0.02,
+    "colour": "#4a4c4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 2.1,
+    "n": 16,
+    "height": 0.22,
+    "colour": "#c9bfa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "radius": 1.5,
+    "n": 16,
+    "height": 0.22,
+    "colour": "#d8cfba"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0.44
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#e8e3d6",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0
+     ],
+     [
+      0.45,
+      0.15
+     ],
+     [
+      0.3,
+      0.25
+     ],
+     [
+      0.22,
+      0.4
+     ],
+     [
+      0.2,
+      0.6
+     ],
+     [
+      0.18,
+      0.8
+     ],
+     [
+      0.18,
+      4.0
+     ],
+     [
+      0.22,
+      4.1
+     ],
+     [
+      0.3,
+      4.2
+     ],
+     [
+      0.3,
+      4.4
+     ],
+     [
+      0.22,
+      4.5
+     ],
+     [
+      0.14,
+      4.65
+     ],
+     [
+      0.1,
+      4.8
+     ],
+     [
+      0.05,
+      5.1
+     ],
+     [
+      0,
+      5.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.45
+   ],
+   "params": {
+    "section": {
+     "circle": 0.025
+    },
+    "closed": true,
+    "sag": 0,
+    "points": [
+     [
+      3.9,
+      0.0,
+      0
+     ],
+     [
+      3.3774990759259933,
+      1.9499999979792462,
+      0
+     ],
+     [
+      1.9500000040415073,
+      3.3774990724259455,
+      0
+     ],
+     [
+      7.000096408191143e-09,
+      3.9,
+      0
+     ],
+     [
+      -1.9499999919169855,
+      3.377499079426041,
+      0
+     ],
+     [
+      -3.3774990689258972,
+      1.9500000101037684,
+      0
+     ],
+     [
+      -3.9,
+      1.4000192816382285e-08,
+      0
+     ],
+     [
+      -3.3774990829260902,
+      -1.9499999858547232,
+      0
+     ],
+     [
+      -1.9500000161660291,
+      -3.377499065425849,
+      0
+     ],
+     [
+      -2.100028835859947e-08,
+      -3.9,
+      0
+     ],
+     [
+      1.9499999797924628,
+      -3.3774990864261376,
+      0
+     ],
+     [
+      3.3774990619258007,
+      -1.9500000222282912,
+      0
+     ]
+    ],
+    "colour": "#1b1d1f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 3.9,
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.11,
+      "n": 6,
+      "height": 0.8,
+      "colour": "#15171a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     1.2
+    ],
+    "height": 1.1,
+    "colour": "#4a4540"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    9,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     1
+    ],
+    "height": 0.8,
+    "colour": "#524c45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     8
+    ],
+    "height": 0.05,
+    "z0": 0,
+    "colour": "#2f4f63"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -7,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     6,
+     5
+    ],
+    "height": 12
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     1,
+     8
+    ],
+    "height": 13
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     12,
+     9
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     4
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   44,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Slender column on 2-tier round plinth, black bollards with chain, flat-topped acacias, palm, walls and sea edge added; ground is a plain dark plane not true irregular cobble, tree canopies are light green low-poly, no leaning trunks, no pickup/market stalls"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-osm-node-909626615"
+}

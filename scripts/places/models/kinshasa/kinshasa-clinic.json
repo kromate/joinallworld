@@ -1,0 +1,291 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/792136806",
+   "used": "compound outline (about 53 x 65 m) as a paved yard; ward pavilions arranged inside it. No photo of the buildings was found."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yard",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9a98c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#4a7f8c",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-ward",
+   "footprint": {
+    "rect": [
+     9,
+     40
+    ]
+   },
+   "at": [
+    -18,
+    3
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#4a7f8c",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-ward",
+   "footprint": {
+    "rect": [
+     9,
+     40
+    ]
+   },
+   "at": [
+    18,
+    3
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#4a7f8c",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-ward",
+   "footprint": {
+    "rect": [
+     28,
+     9
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#4a7f8c",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -31.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#4a7f8c"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 14,
+    "height": 2.8,
+    "form": "flat",
+    "colour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    18,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 14,
+    "height": 2.8,
+    "form": "flat",
+    "colour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ambulance-bay",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -14,
+    -27
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7f8c",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.8,
+    "bottom": 2.2,
+    "colour": "#ffffff",
+    "frameColour": "#4a7f8c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; pavilion layout is an assumption inside the real OSM outline"
+ }
+}

@@ -1,0 +1,311 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1515147302",
+   "used": "small park building (15 x 5 m) used as the shaded seating kiosk; surrounding play area (about 353 m2 OSM park area, brief 70 x 50 m) laid out from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shade-kiosk",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cf9f",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f86b5",
+    "material": "concrete",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#3f86b5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    25,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#3f86b5"
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -18,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "colours": [
+     "#d46a3a",
+     "#3f86b5",
+     "#e8b92f",
+     "#4d9a5c"
+    ]
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    20,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "posts": 4,
+    "colour": "#d46a3a",
+    "cap_colour": "#e8b92f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -28,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#d46a3a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "pillar": 0.5,
+    "colour": "#d46a3a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -10,
+    8,
+    0
+   ],
+   "params": {
+    "section": "circle",
+    "radius": 0.12,
+    "arc": {
+     "plane": "xz",
+     "radius": 2.2,
+     "startDeg": 0,
+     "endDeg": 180
+    },
+    "colour": "#d46a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    11,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 0.9,
+    "colour": "#3f86b5"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    6,
+    12,
+    0
+   ],
+   "params": {
+    "section": "circle",
+    "radius": 0.12,
+    "arc": {
+     "plane": "xz",
+     "radius": 2.2,
+     "startDeg": 0,
+     "endDeg": 180
+    },
+    "colour": "#3f86b5"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    15,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 0.9,
+    "colour": "#e8b92f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -22,
+    14,
+    0
+   ],
+   "params": {
+    "section": "circle",
+    "radius": 0.12,
+    "arc": {
+     "plane": "xz",
+     "radius": 2.2,
+     "startDeg": 0,
+     "endDeg": 180
+    },
+    "colour": "#e8b92f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    17,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 0.9,
+    "colour": "#4d9a5c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-recreation",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; play frames are simple stand-ins, layout from brief and tiny OSM kiosk."
+ }
+}

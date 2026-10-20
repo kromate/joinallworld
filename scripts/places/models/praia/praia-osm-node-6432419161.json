@@ -1,0 +1,130 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/814965120",
+   "used": "footprint (containing match, about 6x6 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/praia.json",
+   "used": "single-storey painted snack shop, awning, blank sign, kiosk; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#9fc0d3",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#d97a2b",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "material": "concrete",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "rotDeg": -31,
+   "params": {
+    "width": 5,
+    "depth": 1.6,
+    "colours": [
+     "#d97a2b",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -3.4,
+    3.2
+   ],
+   "rotDeg": -31,
+   "params": {
+    "width": 4,
+    "height": 0.8,
+    "bottom": 0,
+    "colour": "#d97a2b",
+    "posts": false
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    7,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.6,
+    "depth": 2,
+    "height": 2.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -7,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-osm-node-6432419161",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo: tiny real 6 m outline, colours typed from the brief"
+ }
+}

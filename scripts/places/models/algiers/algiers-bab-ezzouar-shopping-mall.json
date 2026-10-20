@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-bab-ezzouar-shopping-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/306260659",
+   "used": "real 130 x 127 m outline (containing match), 3 levels, retail"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pale render facade, tinted glass entrance bays, central skylit atrium, surface car park; no photo of the building was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5da",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#c7c1b3",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#4a6a7c"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5ac",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-skylight",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     22
+    ],
+    "z0": 17,
+    "height": 3.5,
+    "topScale": 0.7,
+    "colour": "#6f8fa0",
+    "topColour": "#8fb0c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay-1",
+   "footprint": {
+    "rect": [
+     18,
+     5
+    ]
+   },
+   "at": [
+    2,
+    -52
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a6a7c",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c7c1b3",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    2,
+    -54.5,
+    10.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.4,
+    "colour": "#c7c1b3"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    16,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 4,
+    "colours": [
+     "#ffffff",
+     "#0b7d3b"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "palm",
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the mall was found: massing is the real OSM outline (auto-scaled by 0.74 to fit the scene) with facade, atrium skylight, entrance bay and signage inferred from the brief; entrance bay position is approximate"
+ }
+}

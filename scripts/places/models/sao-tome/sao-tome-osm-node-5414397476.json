@@ -1,0 +1,340 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/561535092",
+   "used": "clubhouse outline 25 x 14 m (name match 0.75); pitch, stand and goals are typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -40
+     ],
+     [
+      60,
+      -40
+     ],
+     [
+      60,
+      40
+     ],
+     [
+      -60,
+      40
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#8a6b4c",
+    "material": "laterite"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -33
+     ],
+     [
+      52,
+      -33
+     ],
+     [
+      52,
+      33
+     ],
+     [
+      -52,
+      33
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#6f8f3f",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      -0.1,
+      -33
+     ],
+     [
+      0.1,
+      -33
+     ],
+     [
+      0.1,
+      33
+     ],
+     [
+      -0.1,
+      33
+     ]
+    ],
+    "height": 0.03,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -30,
+     -38
+    ],
+    "end": [
+     30,
+     -38
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "bay": 6,
+    "seatColours": [
+     "#2f5f93",
+     "#b8b4aa"
+    ],
+    "blocks": 2,
+    "concreteColour": "#b8b4aa",
+    "underColour": "#a9a59d",
+    "canopy": {
+     "height": 3.4,
+     "depth": 6,
+     "thickness": 0.25,
+     "slopeDeg": 4,
+     "colour": "#7b8891",
+     "overhangBack": 0.5
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     25.5,
+     14.2
+    ]
+   },
+   "at": [
+    0,
+    -52
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8b4aa",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b8891",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.6
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -52,
+      -3.6,
+      0
+     ],
+     [
+      -52,
+      -3.6,
+      2.4
+     ],
+     [
+      -52,
+      3.6,
+      2.4
+     ],
+     [
+      -52,
+      3.6,
+      0
+     ]
+    ],
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      52,
+      -3.6,
+      0
+     ],
+     [
+      52,
+      -3.6,
+      2.4
+     ],
+     [
+      52,
+      3.6,
+      2.4
+     ],
+     [
+      52,
+      3.6,
+      0
+     ]
+    ],
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -58,
+    -46
+   ],
+   "params": {
+    "length": 116,
+    "height": 1.6,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "colour": "#2f5f93"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 14,
+    "count": 8,
+    "kind": "palm",
+    "min_height": 8,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -66,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     68,
+     30
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; stand length, clubhouse position relative to the pitch and goal posts are assumptions."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-osm-node-5414397476"
+}

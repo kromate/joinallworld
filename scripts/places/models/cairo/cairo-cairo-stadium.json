@@ -1,0 +1,627 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-cairo-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_International_Stadium_2019.jpg",
+   "licence": "Public domain",
+   "author": "Crosskimo",
+   "view": "interior",
+   "file": "/tmp/places-evidence/cairo/stadium3.jpg",
+   "used": "comparison view: oval bowl, blue running track around a green pitch, two-tier blue and orange seating, partial roof over the far stand, tall corner floodlight masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_International_Stadium-gate.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Faris knight",
+   "view": "street",
+   "file": "/tmp/places-evidence/cairo/stadium2.jpg",
+   "used": "entrance approach: broad concrete gateway arch with a green signboard on a low pale facade, tall slender masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_International_Stadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "original uploader (Real)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/cairo/stadium1.jpg",
+   "used": "two-tier stands in blue-grey seating with radial concrete stair divisions, pale concrete, blue running track around a green pitch, big screen"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_Stadium_Afcon_u23_2019.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Crosskimo",
+   "view": "interior",
+   "file": "/tmp/places-evidence/cairo/stadium4.jpg",
+   "used": "cantilever roof with a floodlight bar over one stand, tall corner floodlight masts"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/331203",
+   "used": "oval bowl (about 268 x 220 m) scaled to about 0.45 to fit the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      41.0,
+      0.0
+     ],
+     [
+      39.6,
+      9.06
+     ],
+     [
+      35.51,
+      17.5
+     ],
+     [
+      28.99,
+      24.75
+     ],
+     [
+      20.5,
+      30.31
+     ],
+     [
+      10.61,
+      33.81
+     ],
+     [
+      0.0,
+      35.0
+     ],
+     [
+      -10.61,
+      33.81
+     ],
+     [
+      -20.5,
+      30.31
+     ],
+     [
+      -28.99,
+      24.75
+     ],
+     [
+      -35.51,
+      17.5
+     ],
+     [
+      -39.6,
+      9.06
+     ],
+     [
+      -41.0,
+      0.0
+     ],
+     [
+      -39.6,
+      -9.06
+     ],
+     [
+      -35.51,
+      -17.5
+     ],
+     [
+      -28.99,
+      -24.75
+     ],
+     [
+      -20.5,
+      -30.31
+     ],
+     [
+      -10.61,
+      -33.81
+     ],
+     [
+      -0.0,
+      -35.0
+     ],
+     [
+      10.61,
+      -33.81
+     ],
+     [
+      20.5,
+      -30.31
+     ],
+     [
+      28.99,
+      -24.75
+     ],
+     [
+      35.51,
+      -17.5
+     ],
+     [
+      39.6,
+      -9.06
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#2f63b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      27.0,
+      0.0
+     ],
+     [
+      25.68,
+      5.56
+     ],
+     [
+      21.84,
+      10.58
+     ],
+     [
+      15.87,
+      14.56
+     ],
+     [
+      8.34,
+      17.12
+     ],
+     [
+      0.0,
+      18.0
+     ],
+     [
+      -8.34,
+      17.12
+     ],
+     [
+      -15.87,
+      14.56
+     ],
+     [
+      -21.84,
+      10.58
+     ],
+     [
+      -25.68,
+      5.56
+     ],
+     [
+      -27.0,
+      0.0
+     ],
+     [
+      -25.68,
+      -5.56
+     ],
+     [
+      -21.84,
+      -10.58
+     ],
+     [
+      -15.87,
+      -14.56
+     ],
+     [
+      -8.34,
+      -17.12
+     ],
+     [
+      -0.0,
+      -18.0
+     ],
+     [
+      8.34,
+      -17.12
+     ],
+     [
+      15.87,
+      -14.56
+     ],
+     [
+      21.84,
+      -10.58
+     ],
+     [
+      25.68,
+      -5.56
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#5f9a3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 34,
+    "startDeg": 0,
+    "endDeg": 360,
+    "firstHeight": 4,
+    "facetDeg": 14,
+    "under": "solid",
+    "slab": 0.8,
+    "stepped": false,
+    "backWall": 1.5,
+    "bay": 8,
+    "seatColours": [
+     "#3d6a9c",
+     "#b9683c",
+     "#3d6a9c"
+    ],
+    "blocks": 24,
+    "concreteColour": "#cdc4b0",
+    "underColour": "#c9bfa8",
+    "tiers": [
+     {
+      "rows": 7,
+      "rise": 0.85,
+      "run": 0.95
+     },
+     {
+      "rows": 7,
+      "rise": 0.85,
+      "run": 0.95,
+      "gap": 2.5,
+      "lift": 1.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 34,
+    "startDeg": 58,
+    "endDeg": 122,
+    "rows": 1,
+    "rise": 0.1,
+    "run": 0.1,
+    "firstHeight": 0,
+    "facetDeg": 15,
+    "under": "open",
+    "canopy": {
+     "height": 24,
+     "depth": 16,
+     "thickness": 1.6,
+     "slopeDeg": 3,
+     "colour": "#d8d2c2",
+     "edgeColour": "#e4e0d4"
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.4
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      25.6
+     ],
+     "radius": 54,
+     "radiusY": 48,
+     "startDeg": 58,
+     "endDeg": 122,
+     "plane": "xy"
+    },
+    "colour": "#3a3f46",
+    "steps": 14
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 57.5,
+    "radiusY": 51,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 30,
+    "facing": "outward",
+    "lod1Step": 3,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.8,
+       2.4
+      ],
+      "height": 24,
+      "colour": "#e2dac6"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      3.5
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      22.5
+     ],
+     "radius": 57,
+     "radiusY": 50.5,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#cfc6b0",
+    "steps": 36
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -66,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 54,
+    "colour": "#4a5058"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -66,
+    -56,
+    54
+   ],
+   "params": {
+    "rect": [
+     10,
+     1.6
+    ],
+    "height": 5.5,
+    "colour": "#c9ccc8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -66,
+    56,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 54,
+    "colour": "#4a5058"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -66,
+    56,
+    54
+   ],
+   "params": {
+    "rect": [
+     10,
+     1.6
+    ],
+    "height": 5.5,
+    "colour": "#c9ccc8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    66,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 54,
+    "colour": "#4a5058"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    66,
+    -56,
+    54
+   ],
+   "params": {
+    "rect": [
+     10,
+     1.6
+    ],
+    "height": 5.5,
+    "colour": "#c9ccc8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    66,
+    56,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 54,
+    "colour": "#4a5058"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    66,
+    56,
+    54
+   ],
+   "params": {
+    "rect": [
+     10,
+     1.6
+    ],
+    "height": 5.5,
+    "colour": "#c9ccc8"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 13,
+    "openings": 1,
+    "kind": "round"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 2.2,
+    "bottom": 13,
+    "colour": "#2f6b4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -75
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -76
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -70
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "All photos are interiors, so the exterior (piers, ring beam, gate arch) is typical rather than seen; two tiers with 24 radial blocks and a wide blue track are now modelled, but the roof is a simple canopy with a dark bar, there is no big screen and the real exterior arcade is not modelled; bowl scaled to ~0.45."
+ }
+}

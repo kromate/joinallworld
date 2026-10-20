@@ -1,0 +1,222 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:James_Fort_Ghana.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Synth85",
+   "view": "street",
+   "file": "/tmp/places-evidence/accra/fort.jpg",
+   "used": "tall cream whitewashed rampart with weathered streaks, black painted plinth, projecting string courses, big black arched gate, lower slit-windowed two-storey block behind with a low pitched roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/177958818",
+   "used": "checked only; composed as long landward rampart from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 3,
+  "fovDeg": 36,
+  "aspect": 2.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "walls",
+   "footprint": {
+    "rect": [
+     64,
+     4
+    ]
+   },
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#d9cdb0",
+    "windows": "none",
+    "cornice": true,
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ],
+     "colour": "#c9bb9a"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ab",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "params": {
+    "rect": [
+     64.3,
+     4.3
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#1f1f22"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     36,
+     4
+    ]
+   },
+   "at": [
+    -12,
+    3.5
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#d8cdb0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3d3c3a",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    14,
+    -2.6,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6.5,
+    "depth": 1.2,
+    "archWidth": 9,
+    "springHeight": 4.5,
+    "colour": "#25252a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "params": {
+    "rect": [
+     1.4,
+     1
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#cdbf9d"
+   },
+   "at": [
+    7.8,
+    -2.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "params": {
+    "rect": [
+     1.4,
+     1
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#cdbf9d"
+   },
+   "at": [
+    20.2,
+    -2.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hood",
+   "params": {
+    "rect": [
+     15,
+     1.0
+    ],
+    "z0": 6.8,
+    "height": 0.5,
+    "colour": "#bfae88"
+   },
+   "at": [
+    14,
+    -2.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "params": {
+    "rect": [
+     9,
+     0.3
+    ],
+    "z0": 7.0,
+    "height": 1.0,
+    "colour": "#18181a"
+   },
+   "at": [
+    14,
+    -2.5
+   ]
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -24,
+    0,
+    8.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "scale": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 3,
+  "treeKind": "palm",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-james-fort",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Gate is a flat black panel with blocky arch; no weathering streaks or cracks; slit windows simplified; sign board is plain black; curved plinth step missing."
+ }
+}

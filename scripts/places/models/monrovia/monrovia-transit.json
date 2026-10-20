@@ -1,0 +1,339 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/755944493",
+   "used": "nearest OSM feature is a 17 m kitchen building, not the taxi park; used only as a small kiosk-scale hint, not the footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open paved shared-taxi lot with ten bays of waiting cars, three corrugated sheds, four ticket kiosks, a blank sign board (no photo found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -27,
+     6
+    ],
+    "end": [
+     27,
+     6
+    ],
+    "yaw": 90,
+    "of": [
+     {
+      "type": "car",
+      "params": {
+       "colour": "#d8d0b8",
+       "count": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -21,
+     -4
+    ],
+    "end": [
+     21,
+     -4
+    ],
+    "yaw": 90,
+    "of": [
+     {
+      "type": "car",
+      "params": {
+       "colour": "#cc9a3a",
+       "count": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-24",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -24,
+    -16
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9b968b",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#7b8891",
+    "material": "corrugated",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed0",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9b968b",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#8a7f6e",
+    "material": "corrugated",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed24",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    24,
+    -16
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9b968b",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#7b8891",
+    "material": "corrugated",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk1",
+   "footprint": {
+    "rect": [
+     3,
+     2.4
+    ]
+   },
+   "at": [
+    -33,
+    -5
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cc9a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk2",
+   "footprint": {
+    "rect": [
+     3,
+     2.4
+    ]
+   },
+   "at": [
+    33,
+    -5
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc9b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cc9a3a",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk3",
+   "footprint": {
+    "rect": [
+     3,
+     2.4
+    ]
+   },
+   "at": [
+    -12,
+    16
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9b968b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cc9a3a",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk4",
+   "footprint": {
+    "rect": [
+     3,
+     2.4
+    ]
+   },
+   "at": [
+    12,
+    16
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cc9a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 2.4,
+    "colour": "#cc9a3a",
+    "frameColour": "#9b968b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no evidence of the real layout; typical shared-taxi park composed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-transit"
+}

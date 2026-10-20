@@ -1,0 +1,170 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/120789690",
+   "used": "real outline: long block with stepped front and rear notch, 4 levels tagged"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e2d2ac",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#d99b82",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3d",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-tower",
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 14.5,
+    "height": 8,
+    "colour": "#e2d2ac",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "topColour": "#a65a3d"
+   },
+   "at": [
+    0,
+    -14
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "z0": 22.5,
+    "height": 0.6,
+    "colour": "#a65a3d"
+   },
+   "at": [
+    0,
+    -14
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balcony",
+   "params": {
+    "rect": [
+     9,
+     2.2
+    ],
+    "z0": 6.5,
+    "height": 0.5,
+    "colour": "#d99b82"
+   },
+   "at": [
+    0,
+    -24
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "count": 4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2,
+    "colours": [
+     "#4189dd",
+     "#ea3a2a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: real OSM outline with typed stucco, hip roof and entrance tower from the brief; details are guesses."
+ }
+}

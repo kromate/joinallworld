@@ -1,0 +1,257 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-suwilanji-gardens",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: private garden and events venue with lawns, fountain, covered pavilions (no photo found; OSM nearest match is an unnamed 447 m2 building 16 m away, not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9a77c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-a",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -24,
+    14
+   ],
+   "height": 4.0,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efe6d2",
+    "windows": "arched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-b",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    26,
+    16
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efe6d2",
+    "windows": "arched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 5.0,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -4,
+    0.5
+   ],
+   "params": {
+    "radius": 3.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "height": 5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     -30
+    ],
+    "end": [
+     36,
+     -30
+    ],
+    "count": 6
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -42,
+      -32
+     ],
+     [
+      42,
+      -32
+     ],
+     [
+      42,
+      32
+     ],
+     [
+      -42,
+      32
+     ],
+     [
+      -42,
+      -32
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#efe6d2",
+    "pillarEvery": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -22
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or reliable footprint: typical Lusaka garden-venue layout from the brief"
+ }
+}

@@ -1,0 +1,282 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/359610506",
+   "used": "real park outline: a wedge about 48 m wide at the north end narrowing to about 9 m at the south, 106 m long"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -37.8,
+      36.6
+     ],
+     [
+      10.5,
+      40.4
+     ],
+     [
+      26.1,
+      -60.4
+     ],
+     [
+      17.7,
+      -62.4
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#7c9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.15,
+    -11.45,
+    0.15
+   ],
+   "rotDeg": 19.6,
+   "params": {
+    "rect": [
+     3.2,
+     104
+    ],
+    "height": 0.06,
+    "colour": "#c9a679"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7,
+    20,
+    0.15
+   ],
+   "params": {
+    "radius": 8,
+    "n": 20,
+    "height": 0.07,
+    "colour": "#d2a679"
+   }
+  },
+  {
+   "type": "hospital/basin-fountain",
+   "at": [
+    -7,
+    20,
+    0.2
+   ],
+   "params": {
+    "radius": 3.2,
+    "rimColour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -13,
+    -3
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2a679",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#b8754d",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -37.8,
+      36.6
+     ],
+     [
+      10.5,
+      40.4
+     ],
+     [
+      26.1,
+      -60.4
+     ],
+     [
+      17.7,
+      -62.4
+     ],
+     [
+      -37.8,
+      36.6
+     ]
+    ],
+    "height": 1.2,
+    "thickness": 0.25,
+    "colour": "#b5b0a6",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    21.9,
+    -62.2,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "width": 4.5,
+    "height": 3,
+    "colour": "#b8754d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 6,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 3,
+    "spread": 5,
+    "line": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 5,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 3,
+    "spread": 5,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5,
+    "line": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the garden exists in evidence: only the OSM outline is real; paths, pavilion, fountain, gate and tree placement are typical, not observed."
+ }
+}

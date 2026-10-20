@@ -1,0 +1,220 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/196584205",
+   "used": "small roofed building 21 x 11 m near the market point (nearest match, 11 m), used as the covered market shed"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Gatumba border-town market, lines of tarpaulin and sheet stalls along a dusty road; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    22,
+    14
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f93",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f8587",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c8362f",
+     "#2f7f78",
+     "#e0a526",
+     "#3f6fb5"
+    ],
+    "jitter": 0.3
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c8362f",
+     "#2f7f78",
+     "#e0a526",
+     "#3f6fb5"
+    ],
+    "jitter": 0.3
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c8362f",
+     "#2f7f78",
+     "#e0a526",
+     "#3f6fb5"
+    ],
+    "jitter": 0.3
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -18,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3f6fb5"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -6,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    6,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#9b7a58"
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    2,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 8,
+    "colours": [
+     "#c8362f",
+     "#2f7f78",
+     "#e0a526",
+     "#3f6fb5"
+    ]
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    -4,
+    2,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 8,
+    "colours": [
+     "#c8362f",
+     "#2f7f78",
+     "#e0a526",
+     "#3f6fb5"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     0
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-node-5648265555",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only a nearest-match 21x11 m outline; stall layout typed from the brief"
+ }
+}

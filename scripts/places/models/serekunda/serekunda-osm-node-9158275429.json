@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-node-9158275429",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: tiny roadside mini-market, one room, painted front in green/terracotta, awning, corrugated roof, blank signboard; nearest OSM building (18 x 10 m residential, 9 m away) is not matched so not used; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 15,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9c4a0",
+    "windows": "none",
+    "bands": "#c8503c",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -1.8,
+    -2.55,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.15
+    ],
+    "height": 2.0,
+    "colour": "#2c3a3a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    2.2,
+    -2.55,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.15
+    ],
+    "height": 2.5,
+    "colour": "#c8503c"
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -2.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 1.6,
+    "drop": 0.4,
+    "height": 2.6,
+    "colours": [
+     "#c8503c",
+     "#f4efe3"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2.9,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 0.9,
+    "bottom": 2.8,
+    "colour": "#f4efe3",
+    "frameColour": "#c8503c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -4.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#b88a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     4
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     3
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   30,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; generic Gambian roadside shop from the brief (size 8 x 5 m)"
+ }
+}

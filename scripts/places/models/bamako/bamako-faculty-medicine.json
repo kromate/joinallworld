@@ -1,0 +1,677 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-faculty-medicine",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FMOS_USTTB_ACCUEIL.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "USTTB",
+   "view": "front",
+   "file": "/tmp/places-evidence/bamako/fmos.jpg",
+   "used": "ochre-yellow stained render, wide central stair of three flights with cheek walls, recessed entrance bay, small upper windows, free-standing pylons carrying a large blank sign board, iron gate and fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/313493908",
+   "used": "main block footprint and size (40x34 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 2.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b46a",
+    "windows": "none",
+    "windowShape": "rect",
+    "windowRatio": 0,
+    "bay": 3.4,
+    "bands": "#a8945a",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a08a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8a560",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a08a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-opening",
+   "footprint": {
+    "rect": [
+     4.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -16.2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1e1c1a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1e1c1a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notice-panel",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -4.8,
+    -16.2
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a7f5e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7f5e"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "notice-panel-r",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    4.8,
+    -16.2
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a7f5e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7f5e"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "slit-0",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -15,
+    -17.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a28",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a28"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "slit-1",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -17.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a28",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a28"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "slit-2",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -5,
+    -17.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a28",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a28"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "slit-3",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -17.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a28",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a28"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "slit-4",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    5,
+    -17.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a28",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a28"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "slit-5",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    10,
+    -17.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a28",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a28"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "slit-6",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    15,
+    -17.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2a28",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2a28"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "core/steps",
+   "id": "steps-c",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 2.4,
+    "run": 4,
+    "count": 12,
+    "colour": "#d9c08e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps-l",
+   "at": [
+    -6.4,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "rise": 2.4,
+    "run": 4,
+    "count": 12,
+    "colour": "#d9c08e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps-r",
+   "at": [
+    6.4,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "rise": 2.4,
+    "run": 4,
+    "count": 12,
+    "colour": "#d9c08e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cheek-l",
+   "footprint": {
+    "rect": [
+     1.2,
+     6
+    ]
+   },
+   "at": [
+    -3.6,
+    -19.5
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b070",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a460"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "cheek-r",
+   "footprint": {
+    "rect": [
+     1.2,
+     6
+    ]
+   },
+   "at": [
+    3.6,
+    -19.5
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b070",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a460"
+   },
+   "z0": 0
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9.5,
+    -18,
+    0.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5,
+    "height": 1.8,
+    "thickness": 0.8,
+    "colour": "#cfc386"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9.5,
+    -18,
+    0.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5,
+    "height": 1.8,
+    "thickness": 0.8,
+    "colour": "#cfc386"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -24
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2c28a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0a67f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    10,
+    -24
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2c28a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0a67f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "height": 1.8,
+    "bottom": 6.0,
+    "colour": "#eef0f5",
+    "frameColour": "#2d4f9a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-text-0",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -24.2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2d4f9a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d4f9a"
+   },
+   "z0": 6.95
+  },
+  {
+   "type": "mass",
+   "id": "sign-text-1",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -24.2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2d4f9a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d4f9a"
+   },
+   "z0": 6.35
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 2.0,
+    "thickness": 0.15,
+    "kind": "fence",
+    "pillarEvery": 4,
+    "colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Sign board has only two blank blue text bands; no posters, planters on cheek walls or gate detail; facade stain is flat colour with dark slits only."
+ }
+}

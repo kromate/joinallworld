@@ -1,0 +1,364 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Windhoek_Central_Hospital_-_Mapillary.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mapillary",
+   "view": "street",
+   "file": "/tmp/places-evidence/windhoek/hospital.jpg",
+   "used": "tall brutalist ward slab about a dozen storeys, sand-grey concrete with deep dark recessed ribbon windows in a strong grid, solid stair tower at the left end, low pale annex and white shade-net car park in front, guard container, palms, paved road with kerb"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12324237",
+   "used": "podium footprint (94 x 70 m, name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4cbb4",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c84",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-slab",
+   "footprint": {
+    "rect": [
+     66,
+     17
+    ]
+   },
+   "at": [
+    -17,
+    16
+   ],
+   "z0": 6,
+   "height": 50,
+   "storeys": 14,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bfb398",
+    "windows": "none",
+    "windowRatio": 0.6,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#c4b99e",
+      "#4d463d"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c84",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     8,
+     17
+    ]
+   },
+   "at": [
+    -53,
+    16
+   ],
+   "z0": 0,
+   "height": 58,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdc3aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c84",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-core",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    10,
+    16
+   ],
+   "z0": 0,
+   "height": 50,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c7bda6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c84"
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    -30,
+    16,
+    56
+   ],
+   "params": {}
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -12,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#d9d2c0",
+    "roofColour": "#a8a090",
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -12,
+    -35.5,
+    3.9
+   ],
+   "params": {
+    "size": 1.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -58,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 2.6,
+    "bottom": 0.8,
+    "colour": "#f2f2f0",
+    "frameColour": "#8a8a88"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    48,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     3
+    ],
+    "height": 2.9,
+    "colour": "#efe6cf"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    24,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "height": 2.8,
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    24,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "density": 0.35
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    -56,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.6,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#6f7a6e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    60,
+    55,
+    0
+   ],
+   "params": {
+    "radius": 6.5
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    24,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "height": 2.8,
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    48,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5,
+    "height": 2.8,
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    40,
+    -30,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.2
+    ],
+    "height": 0.2,
+    "colour": "#b03a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Slab facade is alternating sand/dark floor bands, not deeply recessed projecting slabs with spandrels; no rooftop plant clutter beyond one mast; guard container reduced to a plain cream box; shade-net canopies are flat tables; a green blob (broadleaf tree) remains on the podium roof; no boom barrier."
+ }
+}

@@ -1,0 +1,916 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kimironko_Market,_Kigali.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Talley Beth Gale",
+   "view": "interior",
+   "file": "/tmp/places-evidence/kigali/mk1.jpg",
+   "used": "steel-truss open hall, dark underside of corrugated roof, stalls with produce"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D7%94%D7%A9%D7%95%D7%A7_%D7%94%D7%9E%D7%A8%D7%9B%D7%96%D7%99_%D7%A7%D7%99%D7%9E%D7%99%D7%A8%D7%95%D7%A0%D7%A7%D7%95_%D7%91%D7%A7%D7%99%D7%92%D7%90%D7%9C%D7%99_%D7%91%D7%99%D7%A8%D7%AA_%D7%A8%D7%95%D7%90%D7%A0%D7%93%D7%94_(15).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hanay",
+   "view": "street",
+   "file": "/tmp/places-evidence/kigali/mk0.jpg",
+   "used": "rusty grey corrugated lean-to roofs on thin steel posts over open stall lanes, yellow-painted block stall counters with stacked blue and red crates"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/106506354",
+   "used": "footprint (diagonal strip)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground-slab",
+   "params": {
+    "points": [
+     [
+      -52.9,
+      -46
+     ],
+     [
+      -29.3,
+      -5.2
+     ],
+     [
+      -27.3,
+      -6.3
+     ],
+     [
+      -1.1,
+      32.3
+     ],
+     [
+      1.1,
+      31.1
+     ],
+     [
+      25.8,
+      68.2
+     ],
+     [
+      53.3,
+      52.4
+     ],
+     [
+      -16.5,
+      -64.2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-lean",
+   "params": {
+    "points": [
+     [
+      -57.6,
+      -51.38
+     ],
+     [
+      -31.64,
+      -6.5
+     ],
+     [
+      -29.44,
+      -7.71
+     ],
+     [
+      -0.62,
+      34.75
+     ],
+     [
+      1.8,
+      33.43
+     ],
+     [
+      28.97,
+      74.24
+     ],
+     [
+      59.22,
+      56.86
+     ],
+     [
+      -17.56,
+      -71.4
+     ]
+    ],
+    "z0": 4.3,
+    "height": 0.3,
+    "colour": "#6b5240"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-main",
+   "params": {
+    "points": [
+     [
+      -52.9,
+      -46
+     ],
+     [
+      -29.3,
+      -5.2
+     ],
+     [
+      -27.3,
+      -6.3
+     ],
+     [
+      -1.1,
+      32.3
+     ],
+     [
+      1.1,
+      31.1
+     ],
+     [
+      25.8,
+      68.2
+     ],
+     [
+      53.3,
+      52.4
+     ],
+     [
+      -16.5,
+      -64.2
+     ]
+    ],
+    "z0": 4.6,
+    "height": 0.4,
+    "colour": "#86644a",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-under",
+   "params": {
+    "points": [
+     [
+      -52.9,
+      -46
+     ],
+     [
+      -29.3,
+      -5.2
+     ],
+     [
+      -27.3,
+      -6.3
+     ],
+     [
+      -1.1,
+      32.3
+     ],
+     [
+      1.1,
+      31.1
+     ],
+     [
+      25.8,
+      68.2
+     ],
+     [
+      53.3,
+      52.4
+     ],
+     [
+      -16.5,
+      -64.2
+     ]
+    ],
+    "z0": 4.4,
+    "height": 0.2,
+    "colour": "#3b332c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -22.2,
+     -58.2,
+     0
+    ],
+    "end": [
+     44.8,
+     53.2,
+     0
+    ],
+    "count": 27,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.22,
+        0.22
+       ],
+       "z0": 0,
+       "height": 4.4,
+       "colour": "#4d4a47"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30.8,
+     -53.1,
+     0
+    ],
+    "end": [
+     36.2,
+     58.4,
+     0
+    ],
+    "count": 27,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.22,
+        0.22
+       ],
+       "z0": 0,
+       "height": 4.4,
+       "colour": "#4d4a47"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -39.3,
+     -47.9,
+     0
+    ],
+    "end": [
+     27.6,
+     63.5,
+     0
+    ],
+    "count": 27,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.22,
+        0.22
+       ],
+       "z0": 0,
+       "height": 4.4,
+       "colour": "#4d4a47"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -47.9,
+     -42.8,
+     0
+    ],
+    "end": [
+     -24.7,
+     -4.2,
+     0
+    ],
+    "count": 10,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.22,
+        0.22
+       ],
+       "z0": 0,
+       "height": 4.4,
+       "colour": "#4d4a47"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -18.8,
+     -57.4,
+     0
+    ],
+    "end": [
+     45.6,
+     49.8,
+     0
+    ],
+    "count": 26,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        4.2,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.2,
+       "colour": "#e3b830"
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "at": [
+       -0.5665418824010596,
+       -0.9428840307723236,
+       0
+      ],
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        1.0,
+        0.8
+       ],
+       "z0": 1.2,
+       "height": 0.9,
+       "colour": "#2f6fa8"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -23.1,
+     -54.8,
+     0
+    ],
+    "end": [
+     41.3,
+     52.3,
+     0
+    ],
+    "count": 26,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        4.2,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.2,
+       "colour": "#e3b830"
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "at": [
+       -0.5665418824010596,
+       -0.9428840307723236,
+       0
+      ],
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        1.0,
+        0.8
+       ],
+       "z0": 1.2,
+       "height": 0.9,
+       "colour": "#c0392b"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -27.3,
+     -52.2,
+     0
+    ],
+    "end": [
+     37.0,
+     54.9,
+     0
+    ],
+    "count": 26,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        4.2,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.2,
+       "colour": "#e3b830"
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "at": [
+       -0.5665418824010596,
+       -0.9428840307723236,
+       0
+      ],
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        1.0,
+        0.8
+       ],
+       "z0": 1.2,
+       "height": 0.9,
+       "colour": "#2f6fa8"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -31.6,
+     -49.6,
+     0
+    ],
+    "end": [
+     32.8,
+     57.5,
+     0
+    ],
+    "count": 26,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        4.2,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.2,
+       "colour": "#e3b830"
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "at": [
+       -0.5665418824010596,
+       -0.9428840307723236,
+       0
+      ],
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        1.0,
+        0.8
+       ],
+       "z0": 1.2,
+       "height": 0.9,
+       "colour": "#2f6fa8"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -35.9,
+     -47.1,
+     0
+    ],
+    "end": [
+     28.5,
+     60.1,
+     0
+    ],
+    "count": 26,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        4.2,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.2,
+       "colour": "#e3b830"
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "at": [
+       -0.5665418824010596,
+       -0.9428840307723236,
+       0
+      ],
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        1.0,
+        0.8
+       ],
+       "z0": 1.2,
+       "height": 0.9,
+       "colour": "#c0392b"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40.2,
+     -44.5,
+     0
+    ],
+    "end": [
+     19.0,
+     54.1,
+     0
+    ],
+    "count": 24,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        4.2,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.2,
+       "colour": "#e3b830"
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "at": [
+       -0.5665418824010596,
+       -0.9428840307723236,
+       0
+      ],
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        1.0,
+        0.8
+       ],
+       "z0": 1.2,
+       "height": 0.9,
+       "colour": "#2f6fa8"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -47.1,
+     -46.2,
+     0
+    ],
+    "end": [
+     -11.0,
+     13.8,
+     0
+    ],
+    "count": 15,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        4.2,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.2,
+       "colour": "#e3b830"
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "at": [
+       -0.5665418824010596,
+       -0.9428840307723236,
+       0
+      ],
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        1.0,
+        0.8
+       ],
+       "z0": 1.2,
+       "height": 0.9,
+       "colour": "#c0392b"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -23.7,
+     -55.0,
+     0
+    ],
+    "end": [
+     41.2,
+     53.0,
+     0
+    ],
+    "count": 15,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        8,
+        0.3
+       ],
+       "z0": 5.0,
+       "height": 0.18,
+       "colour": "#5f5040"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -38.3,
+     -46.2,
+     0
+    ],
+    "end": [
+     26.6,
+     61.8,
+     0
+    ],
+    "count": 15,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        8,
+        0.3
+       ],
+       "z0": 5.0,
+       "height": 0.18,
+       "colour": "#5f5040"
+      }
+     }
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     53.1,
+     49.0,
+     0
+    ],
+    "end": [
+     -11.0,
+     -58.1,
+     0
+    ],
+    "count": 40,
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        3.0,
+        2.6
+       ],
+       "z0": 0,
+       "height": 3.0,
+       "colour": "#e3b830"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.1239956136039397,
+       -0.6728550071145368,
+       0
+      ],
+      "rotDeg": 59,
+      "params": {
+       "rect": [
+        2.0,
+        0.1
+       ],
+       "z0": 0,
+       "height": 2.2,
+       "colour": "#3a2f28"
+      },
+      "lod": [
+       0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "open steel-post hall with rusty roof, yellow counters and crates added; roof hides the lanes from the high camera, steel trusses, produce piles and the stepped OSM outline are simplified"
+ }
+}

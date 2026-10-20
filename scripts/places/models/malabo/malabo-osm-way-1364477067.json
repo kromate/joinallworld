@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-way-1364477067",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1364477067",
+   "used": "campus outline is ~950 m across (far over the scene clamp): only a representative 3-block cluster is modelled, oriented to the 70 deg bearing"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long white rendered 3-storey teaching blocks with ribbon windows among lawns and palms; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    -18,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#3d7a8f",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     46,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#3d7a8f",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    34,
+    10
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#3d7a8f",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    38,
+    -24
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d7a8f",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3d6d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -33,
+    -23.2,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 11,
+    "pitch": 2.4,
+    "colour": "#3d7a8f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -18,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5,
+    "colours": [
+     "#3e9a00",
+     "#ffffff",
+     "#e32118"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -32,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "colour": "#3d7a8f"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    18,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 112,
+    "depth": 86,
+    "colour": "#6d9a4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -46,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; campus is a 950 m site, only a small cluster modelled from the brief."
+ }
+}

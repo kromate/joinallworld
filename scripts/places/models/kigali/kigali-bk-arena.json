@@ -1,0 +1,367 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-bk-arena",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bk_arena.jpg",
+   "licence": "CC0",
+   "author": "Baraka official",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/bk0.jpg",
+   "used": "low oval drum: cream podium, dark blue glazed ring, upper band of brown perforated cladding with circular motifs, thin dark roof edge, blue banner board over entrance"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BK_ARENA(ENTERTAINMENT_HOUSE).jpg",
+   "licence": "CC0",
+   "author": "Igiraneza Divine",
+   "view": "front",
+   "used": "second view confirming proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/715821982",
+   "used": "oval footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 2.1,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cbbfa6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbfa6",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazing",
+   "footprint": {
+    "osm": true,
+    "scale": 0.985
+   },
+   "z0": 4,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c4a6b",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58.7,
+      10.3
+     ],
+     [
+      -57.4,
+      22.4
+     ],
+     [
+      -50.9,
+      33.8
+     ],
+     [
+      -41.6,
+      41.3
+     ],
+     [
+      -30.4,
+      46.1
+     ],
+     [
+      -12.0,
+      47.4
+     ],
+     [
+      6.6,
+      44.5
+     ],
+     [
+      22.2,
+      39.8
+     ],
+     [
+      34.3,
+      32.1
+     ],
+     [
+      46.1,
+      21.6
+     ],
+     [
+      55.0,
+      8.2
+     ],
+     [
+      58.9,
+      -6.5
+     ],
+     [
+      57.7,
+      -17.0
+     ],
+     [
+      51.9,
+      -30.6
+     ],
+     [
+      43.6,
+      -39.5
+     ],
+     [
+      30.1,
+      -46.3
+     ],
+     [
+      17.7,
+      -48.4
+     ],
+     [
+      -0.1,
+      -47.1
+     ],
+     [
+      -17.4,
+      -41.2
+     ],
+     [
+      -31.8,
+      -33.8
+     ],
+     [
+      -42.8,
+      -23.9
+     ],
+     [
+      -50.5,
+      -14.1
+     ],
+     [
+      -56.9,
+      -2.2
+     ]
+    ],
+    "z0": 13,
+    "height": 7,
+    "colour": "#7c5a3e",
+    "topColour": "#cfd4d8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       4.0,
+       2.8
+      ],
+      "colours": [
+       "#80603f",
+       "#6a4b32"
+      ],
+      "mode": "checker"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-flat",
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      -58.7,
+      10.3
+     ],
+     [
+      -57.4,
+      22.4
+     ],
+     [
+      -50.9,
+      33.8
+     ],
+     [
+      -41.6,
+      41.3
+     ],
+     [
+      -30.4,
+      46.1
+     ],
+     [
+      -12.0,
+      47.4
+     ],
+     [
+      6.6,
+      44.5
+     ],
+     [
+      22.2,
+      39.8
+     ],
+     [
+      34.3,
+      32.1
+     ],
+     [
+      46.1,
+      21.6
+     ],
+     [
+      55.0,
+      8.2
+     ],
+     [
+      58.9,
+      -6.5
+     ],
+     [
+      57.7,
+      -17.0
+     ],
+     [
+      51.9,
+      -30.6
+     ],
+     [
+      43.6,
+      -39.5
+     ],
+     [
+      30.1,
+      -46.3
+     ],
+     [
+      17.7,
+      -48.4
+     ],
+     [
+      -0.1,
+      -47.1
+     ],
+     [
+      -17.4,
+      -41.2
+     ],
+     [
+      -31.8,
+      -33.8
+     ],
+     [
+      -42.8,
+      -23.9
+     ],
+     [
+      -50.5,
+      -14.1
+     ],
+     [
+      -56.9,
+      -2.2
+     ]
+    ],
+    "z0": 13,
+    "height": 7,
+    "colour": "#7c5a3e",
+    "topColour": "#cfd4d8"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -47,
+    14
+   ],
+   "params": {
+    "width": 22,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#1f5fa8",
+    "frameColour": "#c9d2d8",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   158,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Brown cladding is a coarse checker, not the circular-motif perforated screen; band slightly tall; no podium colonnade/railings or BK ARENA lettering (blank blue banner board only); no tents/people."
+ }
+}

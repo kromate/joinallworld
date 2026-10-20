@@ -1,0 +1,754 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:El_Hadj_Hassan_Gouled_Aptidon_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Skilla1st",
+   "view": "interior",
+   "file": "/tmp/places-evidence/djibouti/stadium.jpg",
+   "used": "long low main stand with cream base and row of openings, flat pale grey roof on slim supports, blue-teal seating, two lattice floodlight masts, red-brown track around green pitch, low white boundary walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1051274500",
+   "used": "stadium extent (about 190 x 140 m bowl inside the mapped area); oval modelled as athletics-track"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 7,
+  "fovDeg": 55,
+  "aspect": 1.56,
+  "fit": "building",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "width": 96,
+    "colour": "#c0583f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     80,
+     52
+    ],
+    "end": [
+     -80,
+     52
+    ],
+    "rows": 7,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.2,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 8,
+    "seatColours": [
+     "#3f7f8f",
+     "#cfd6d2",
+     "#2f5f7a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#e6d79a",
+    "underColour": "#e3d089",
+    "canopy": {
+     "height": 5.2,
+     "depth": 7,
+     "thickness": 0.35,
+     "slopeDeg": 0,
+     "colour": "#b7c4cb",
+     "edgeColour": "#9fb3be",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -30,
+     -52
+    ],
+    "end": [
+     30,
+     -52
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "open",
+    "bay": 6,
+    "seatColours": [
+     "#cfd6d2",
+     "#3f7f8f"
+    ],
+    "blocks": 2,
+    "concreteColour": "#d9ccae"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -64,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#6ab2e7"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -64,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#12ad2b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -64,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#d7141a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    62.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     140,
+     0.6
+    ],
+    "height": 2.4,
+    "colour": "#eeeae0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -62.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     140,
+     0.6
+    ],
+    "height": 2.4,
+    "colour": "#eeeae0"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -90,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 10,
+    "count": 9,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -92,
+    50,
+    0
+   ],
+   "params": {
+    "colour": "#7d848a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.63,
+       0.63
+      ],
+      "cx": -3.3000000000000003,
+      "cy": -3.3000000000000003
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.48999999999999994,
+       0.48999999999999994
+      ],
+      "cx": -1.35,
+      "cy": -1.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -92,
+    50,
+    0
+   ],
+   "params": {
+    "colour": "#7d848a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.63,
+       0.63
+      ],
+      "cx": -3.3000000000000003,
+      "cy": 3.3000000000000003
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.48999999999999994,
+       0.48999999999999994
+      ],
+      "cx": -1.35,
+      "cy": 1.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -92,
+    50,
+    0
+   ],
+   "params": {
+    "colour": "#7d848a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.63,
+       0.63
+      ],
+      "cx": 3.3000000000000003,
+      "cy": -3.3000000000000003
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.48999999999999994,
+       0.48999999999999994
+      ],
+      "cx": 1.35,
+      "cy": -1.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -92,
+    50,
+    0
+   ],
+   "params": {
+    "colour": "#7d848a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.63,
+       0.63
+      ],
+      "cx": 3.3000000000000003,
+      "cy": 3.3000000000000003
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.48999999999999994,
+       0.48999999999999994
+      ],
+      "cx": 1.35,
+      "cy": 1.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -92,
+    50,
+    4
+   ],
+   "params": {
+    "rect": [
+     6.072000000000001,
+     6.072000000000001
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -92,
+    50,
+    9
+   ],
+   "params": {
+    "rect": [
+     5.412000000000001,
+     5.412000000000001
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -92,
+    50,
+    14
+   ],
+   "params": {
+    "rect": [
+     4.752000000000001,
+     4.752000000000001
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -92,
+    50,
+    19
+   ],
+   "params": {
+    "rect": [
+     4.0920000000000005,
+     4.0920000000000005
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -92,
+    50,
+    24
+   ],
+   "params": {
+    "rect": [
+     3.4320000000000004,
+     3.4320000000000004
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -92,
+    50,
+    29
+   ],
+   "params": {
+    "rect": [
+     2.7720000000000002,
+     2.7720000000000002
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -92,
+    50,
+    30
+   ],
+   "params": {
+    "rect": [
+     10,
+     2
+    ],
+    "height": 5,
+    "colour": "#fffbe8",
+    "topColour": "#ffffff"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    92,
+    50,
+    0
+   ],
+   "params": {
+    "colour": "#7d848a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.63,
+       0.63
+      ],
+      "cx": -3.3000000000000003,
+      "cy": -3.3000000000000003
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.48999999999999994,
+       0.48999999999999994
+      ],
+      "cx": -1.35,
+      "cy": -1.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    92,
+    50,
+    0
+   ],
+   "params": {
+    "colour": "#7d848a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.63,
+       0.63
+      ],
+      "cx": -3.3000000000000003,
+      "cy": 3.3000000000000003
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.48999999999999994,
+       0.48999999999999994
+      ],
+      "cx": -1.35,
+      "cy": 1.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    92,
+    50,
+    0
+   ],
+   "params": {
+    "colour": "#7d848a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.63,
+       0.63
+      ],
+      "cx": 3.3000000000000003,
+      "cy": -3.3000000000000003
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.48999999999999994,
+       0.48999999999999994
+      ],
+      "cx": 1.35,
+      "cy": -1.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    92,
+    50,
+    0
+   ],
+   "params": {
+    "colour": "#7d848a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.63,
+       0.63
+      ],
+      "cx": 3.3000000000000003,
+      "cy": 3.3000000000000003
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.48999999999999994,
+       0.48999999999999994
+      ],
+      "cx": 1.35,
+      "cy": 1.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    92,
+    50,
+    4
+   ],
+   "params": {
+    "rect": [
+     6.072000000000001,
+     6.072000000000001
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    92,
+    50,
+    9
+   ],
+   "params": {
+    "rect": [
+     5.412000000000001,
+     5.412000000000001
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    92,
+    50,
+    14
+   ],
+   "params": {
+    "rect": [
+     4.752000000000001,
+     4.752000000000001
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    92,
+    50,
+    19
+   ],
+   "params": {
+    "rect": [
+     4.0920000000000005,
+     4.0920000000000005
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    92,
+    50,
+    24
+   ],
+   "params": {
+    "rect": [
+     3.4320000000000004,
+     3.4320000000000004
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    92,
+    50,
+    29
+   ],
+   "params": {
+    "rect": [
+     2.7720000000000002,
+     2.7720000000000002
+    ],
+    "height": 0.25,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    92,
+    50,
+    30
+   ],
+   "params": {
+    "rect": [
+     10,
+     2
+    ],
+    "height": 5,
+    "colour": "#fffbe8",
+    "topColour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    43,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     2
+    ],
+    "height": 2.2,
+    "colour": "#2e5a98",
+    "topColour": "#2e5a98"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    43,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     2.6
+    ],
+    "height": 0.25,
+    "colour": "#25497c",
+    "topColour": "#25497c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    43,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     2
+    ],
+    "height": 2.2,
+    "colour": "#2e5a98",
+    "topColour": "#2e5a98"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    43,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     2.6
+    ],
+    "height": 0.25,
+    "colour": "#25497c",
+    "topColour": "#25497c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   150,
+   138
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-way-1051274500",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is a night view from the stand; render is an exterior overview. Lattice masts are simple legs and rings, canopy thin, dugouts simple blocks without sloped roofs or interior seat detail."
+ }
+}

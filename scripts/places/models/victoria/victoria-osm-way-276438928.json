@@ -1,0 +1,453 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eden_Plaza_-_Eden_Island_-_Mahe_-_Seychelles_-_2025_-_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "NorbertNagel",
+   "view": "front",
+   "file": "/tmp/places-evidence/victoria/eden2.jpg",
+   "used": "central round-patterned brick paving, two flanking two-storey cream blocks on pillars with open upper galleries and dark railings, dark timber lattice pavilion at the far end, palms in planters, red roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eden_Plaza_-_Eden_Island_-_Mahe_-_Seychelles_-_2025_-_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "NorbertNagel",
+   "view": "front",
+   "used": "cream stucco, red roofs, footbridge, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/276438928",
+   "used": "scale of the plaza only (long chevron outline ~138 m); modelled as the main courtyard stretch"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": -0.35,
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     96
+    ],
+    "height": 0.05,
+    "colour": "#a89870"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    10,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     22,
+     92
+    ],
+    "height": 0.1,
+    "colour": "#a89870"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     16,
+     64
+    ]
+   },
+   "at": [
+    -19,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9bf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "left",
+       "right",
+       "front"
+      ],
+      "inset": 3,
+      "spacing": 6,
+      "width": 0.7,
+      "colour": "#e0d3b6"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "left",
+       "right",
+       "front"
+      ],
+      "depth": 3,
+      "floors": "upper",
+      "railKind": "bars",
+      "railColour": "#3a2e26",
+      "colour": "#d9cdb2",
+      "continuous": true
+     }
+    ],
+    "bay": 6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5472e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     16,
+     64
+    ]
+   },
+   "at": [
+    19,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9bf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "left",
+       "right",
+       "front"
+      ],
+      "inset": 3,
+      "spacing": 6,
+      "width": 0.7,
+      "colour": "#e0d3b6"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "left",
+       "right",
+       "front"
+      ],
+      "depth": 3,
+      "floors": "upper",
+      "railKind": "bars",
+      "railColour": "#3a2e26",
+      "colour": "#d9cdb2",
+      "continuous": true
+     }
+    ],
+    "bay": 6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5472e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 4.5,
+    "colour": "#2b2d30",
+    "frameColour": "#2b2d30",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -8.6,
+    -14,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 9,
+      "colour": "#3a2e26"
+     }
+    },
+    "count": 11,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     56
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    8.6,
+    -14,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 9,
+      "colour": "#3a2e26"
+     }
+    },
+    "count": 11,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     56
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "height": 7,
+    "colour": "#4a3426",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "colour": "#3a2a1f"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    52,
+    7
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       13,
+       11
+      ],
+      "colour": "#4a3426"
+     },
+     {
+      "z": 6,
+      "rect": [
+       8,
+       7
+      ],
+      "colour": "#4a3426"
+     },
+     {
+      "z": 11,
+      "rect": [
+       1.2,
+       6
+      ],
+      "colour": "#3a2a1f"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -7,
+    -10,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       2,
+       2
+      ],
+      "height": 1,
+      "colour": "#4a3a2e"
+     }
+    },
+    "count": 5,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     40
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    7,
+    -10,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       2,
+       2
+      ],
+      "height": 1,
+      "colour": "#4a3a2e"
+     }
+    },
+    "count": 5,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     40
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     -8
+    ],
+    "height": 18
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -6
+    ],
+    "height": 18
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -3,
+     6
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   60,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Critic fixes applied (pilotis colonnade, bar rails, steel gallery columns, planters, tan paving, taller palms, steeper dark timber hall) but the blocks still read as stucco houses with glazed ground floors; the hall is a plain hipped box, not a lattice; palms are low-poly and not crowding the frame; paving has no concentric pattern; camera is a distant overview, not the street-level photo viewpoint."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-way-276438928"
+}

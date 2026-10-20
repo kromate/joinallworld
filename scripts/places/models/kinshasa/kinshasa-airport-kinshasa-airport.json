@@ -1,0 +1,615 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-airport-kinshasa-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A%C3%A9roport_International_de_N%27djili_Kinshasa.JPG",
+   "licence": "Public domain",
+   "author": "Humprey J. L. Boyelo",
+   "view": "front",
+   "file": "/tmp/places-evidence/kinshasa/air3.jpg",
+   "used": "yellow two-storey wings with open ground floor and blue-grey edge bands, taller central block carrying a stepped control tower with glazed cab and blue roof, apron"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_building_Kinshasa_International_Airport.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "en.wikipedia uploader",
+   "view": "side",
+   "used": "yellow wing length and floodlight masts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1217910645",
+   "used": "overall scale only (the OSM terminal is the 2015 international building; the photographed yellow 1959 terminal is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    -37,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb548",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 2.0,
+      "spacing": 4.5,
+      "width": 0.45,
+      "colour": "#dcb548",
+      "backColour": "#8a6f48"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44627f",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     36,
+     18
+    ]
+   },
+   "at": [
+    35,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb548",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 2.0,
+      "spacing": 4.5,
+      "width": 0.45,
+      "colour": "#dcb548",
+      "backColour": "#8a6f48"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44627f",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb548",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 2.0,
+      "spacing": 4.5,
+      "width": 0.45,
+      "colour": "#dcb548",
+      "backColour": "#8a6f48"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44627f",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb548",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44627f",
+    "overhang": 1.2,
+    "parapet": 0.3
+   },
+   "z0": 13
+  },
+  {
+   "type": "mass",
+   "id": "tower-shaft",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb548",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44627f",
+    "overhang": 1.0,
+    "parapet": 0.3
+   },
+   "z0": 20.4
+  },
+  {
+   "type": "mass",
+   "id": "tower-cab",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9fb0",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44627f",
+    "overhang": 2.5,
+    "parapet": 0.2
+   },
+   "z0": 29.8
+  },
+  {
+   "type": "mass",
+   "id": "mast-a",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    1
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   },
+   "z0": 34.3
+  },
+  {
+   "type": "mass",
+   "id": "mast-b",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   },
+   "z0": 34.3
+  },
+  {
+   "type": "mass",
+   "id": "mast-c",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   },
+   "z0": 34.3
+  },
+  {
+   "type": "mass",
+   "id": "dish-a",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    3,
+    1
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d0d3d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d3d6"
+   },
+   "z0": 34.4
+  },
+  {
+   "type": "mass",
+   "id": "dish-b",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d0d3d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d3d6"
+   },
+   "z0": 34.4
+  },
+  {
+   "type": "mass",
+   "id": "roof-mast-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   },
+   "z0": 13.4
+  },
+  {
+   "type": "mass",
+   "id": "roof-mast-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    9,
+    2
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   },
+   "z0": 13.4
+  },
+  {
+   "type": "mass",
+   "id": "roof-dish",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d0d3d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d3d6"
+   },
+   "z0": 13.4
+  },
+  {
+   "type": "mass",
+   "id": "back-mast-1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -30,
+    12
+   ],
+   "height": 22,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "back-mast-2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    30,
+    13
+   ],
+   "height": 26,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "back-mast-3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    44,
+    10
+   ],
+   "height": 20,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9096",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   },
+   "z0": 0
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -44,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    44,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower now narrow shaft over wider stepped block with blue slab and larger cab, thin pilotis, antennas and dishes, tan apron; tower proportions still squat, wings lack the open upper gallery with balustrade, photo shows far more roof clutter"
+ }
+}

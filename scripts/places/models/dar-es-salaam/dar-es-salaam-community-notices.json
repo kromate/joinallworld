@@ -1,0 +1,166 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1192591949",
+   "used": "footprint of the council office (428 m2, name match)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dar-es-salaam.json#dar-es-salaam-community-notices",
+   "used": "two-storey rendered government office, hip roof, flags, blank board, steps"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 34
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#3e6b55",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c4a3a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -4,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 3,
+    "height": 4.2,
+    "columns": 4,
+    "pediment": false,
+    "steps": 2,
+    "colour": "#f1ece0",
+    "roofColour": "#8c4a3a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#1eb53a",
+     "#fcd116",
+     "#00a3dd"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 1.2,
+    "colour": "#3e6b55"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.4,
+    "thickness": 0.3,
+    "colour": "#f1ece0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; only the OSM outline is real. Facade, roof colour, flags and entrance are typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-community-notices"
+}

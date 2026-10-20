@@ -1,0 +1,548 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-national-theatre",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Theatre_of_Ghana_(46534792205).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Francisco Anzola",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/accra-national-theatre-0.jpg",
+   "used": "huge white ship-hull auditorium flaring outward as it rises, pointed bow to the right, raised on short white columns above a pink granite podium with glazed foyer and wide steps, lower hull wing at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Theater_of_Ghana_-_Accra.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amuzujoe",
+   "view": "street",
+   "file": "/tmp/places-evidence/accra/accra-national-theatre-2.jpg",
+   "used": "second lower hull volume beyond the main hull, grey-beige metal cladding, palms and plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/156362159",
+   "used": "scale only (about 113 x 108 m, containing match tagged hut)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     104,
+     28
+    ]
+   },
+   "at": [
+    2,
+    -8
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#b69a8c",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#a98d80",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98d80",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -22.3,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.6
+    ],
+    "height": 6.5,
+    "colour": "#3a4a52",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "rise": 0.45,
+    "run": 1.1,
+    "count": 8,
+    "colour": "#c4a98a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    6,
+    14
+   ],
+   "params": {
+    "colour": "#f1eee6",
+    "smooth": true,
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -25.5,
+        -9.3
+       ],
+       [
+        23.8,
+        -10.2
+       ],
+       [
+        32.3,
+        0.0
+       ],
+       [
+        23.8,
+        10.2
+       ],
+       [
+        -25.5,
+        9.3
+       ]
+      ],
+      "colour": "#f1eee6"
+     },
+     {
+      "z": 2.5,
+      "poly": [
+       [
+        -28.5,
+        -10.4
+       ],
+       [
+        26.6,
+        -11.4
+       ],
+       [
+        36.1,
+        0.0
+       ],
+       [
+        26.6,
+        11.4
+       ],
+       [
+        -28.5,
+        10.4
+       ]
+      ]
+     },
+     {
+      "z": 6,
+      "poly": [
+       [
+        -33.0,
+        -12.1
+       ],
+       [
+        30.8,
+        -13.2
+       ],
+       [
+        41.8,
+        0.0
+       ],
+       [
+        30.8,
+        13.2
+       ],
+       [
+        -33.0,
+        12.1
+       ]
+      ]
+     },
+     {
+      "z": 14,
+      "poly": [
+       [
+        -37.5,
+        -13.8
+       ],
+       [
+        35.0,
+        -15.0
+       ],
+       [
+        47.5,
+        0.0
+       ],
+       [
+        35.0,
+        15.0
+       ],
+       [
+        -37.5,
+        13.8
+       ]
+      ]
+     },
+     {
+      "z": 26,
+      "poly": [
+       [
+        -39.0,
+        -14.3
+       ],
+       [
+        36.4,
+        -15.6
+       ],
+       [
+        49.4,
+        0.0
+       ],
+       [
+        36.4,
+        15.6
+       ],
+       [
+        -39.0,
+        14.3
+       ]
+      ]
+     }
+    ],
+    "curve": true,
+    "material": "whitewash"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -36,
+    -10,
+    9
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     76,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       3.0
+      ],
+      "height": 5.0,
+      "colour": "#f4f2ec",
+      "windows": "none",
+      "topScale": 1.6
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -8,
+    9
+   ],
+   "params": {
+    "rect": [
+     74,
+     6
+    ],
+    "height": 4.5,
+    "colour": "#2a3a42",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    72,
+    -6,
+    9
+   ],
+   "params": {
+    "colour": "#f1eee6",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -12.6,
+        -7.2
+       ],
+       [
+        10.8,
+        -8.1
+       ],
+       [
+        16.2,
+        0.0
+       ],
+       [
+        10.8,
+        8.1
+       ],
+       [
+        -12.6,
+        7.2
+       ]
+      ],
+      "colour": "#f1eee6"
+     },
+     {
+      "z": 2,
+      "poly": [
+       [
+        -14.0,
+        -8.0
+       ],
+       [
+        12.0,
+        -9.0
+       ],
+       [
+        18.0,
+        0.0
+       ],
+       [
+        12.0,
+        9.0
+       ],
+       [
+        -14.0,
+        8.0
+       ]
+      ]
+     },
+     {
+      "z": 5,
+      "poly": [
+       [
+        -17.5,
+        -10.0
+       ],
+       [
+        15.0,
+        -11.2
+       ],
+       [
+        22.5,
+        0.0
+       ],
+       [
+        15.0,
+        11.2
+       ],
+       [
+        -17.5,
+        10.0
+       ]
+      ]
+     },
+     {
+      "z": 10,
+      "poly": [
+       [
+        -19.6,
+        -11.2
+       ],
+       [
+        16.8,
+        -12.6
+       ],
+       [
+        25.2,
+        0.0
+       ],
+       [
+        16.8,
+        12.6
+       ],
+       [
+        -19.6,
+        11.2
+       ]
+      ]
+     }
+    ],
+    "material": "whitewash"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    60,
+    -12,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.8
+      ],
+      "height": 9,
+      "colour": "#f4f2ec",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    60,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     18
+    ],
+    "height": 9,
+    "colour": "#c2a393",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -4,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#9aa3a8",
+    "count": 4,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 5,
+    "height": 6.5,
+    "thickness": 0.8,
+    "columns": 0,
+    "colour": "#c2a393",
+    "edgeColour": "#b69a8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hull is now a smooth white lofted shell raised on tapered columns over a pink granite podium with canopy; but hull is bowl-like rather than a flared bow sail, columns are only partly visible against dark foyer band, second wing is a small blunt bowl, no stepped recess or arched side door."
+ }
+}

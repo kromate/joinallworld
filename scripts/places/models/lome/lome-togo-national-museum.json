@@ -1,0 +1,450 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-togo-national-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palais_des_Congr%C3%A8s_de_Lom%C3%A9_r%C3%A9nov%C3%A9_23.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alfrednadjere",
+   "view": "front",
+   "file": "/tmp/places-evidence/lome/museum2.jpg",
+   "used": "Palais des Congres (houses the museum): long low two-storey block on slim pilotis, white fascia bands, dark glass ribbon, central white fin porch, raised oval drum with saw-tooth roof edge behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lom%C3%A9-Palais_des_Congr%C3%A8s.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "twohundred 2010",
+   "view": "detail",
+   "file": "/tmp/places-evidence/lome/museum1.jpg",
+   "used": "entrance: big concrete sail/fin over a round balcony drum, grey concrete bands, amber-tinted glazing, flat canopy over steps, saw-tooth parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/112412981",
+   "used": "overall extent only (135 m curved outline, match quality containing); modelled as a straight 100 m portion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     104,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8099",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "pattern": {
+     "type": "pilotis",
+     "faces": [
+      "front",
+      "back"
+     ]
+    },
+    "plinth": 0,
+    "bands": "#eeeeea",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "material": "concrete",
+    "overhang": 2.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     106,
+     28
+    ],
+    "height": 0.9,
+    "colour": "#eeeeea",
+    "topColour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    10.3
+   ],
+   "params": {
+    "rect": [
+     106,
+     28
+    ],
+    "height": 0.9,
+    "colour": "#eeeeea",
+    "topColour": "#eeeeea"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    8,
+    11
+   ],
+   "params": {
+    "colour": "#f0efea",
+    "topColour": "#f0efea",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       20,
+       12
+      ]
+     },
+     {
+      "z": 3.2,
+      "ellipse": [
+       20,
+       12
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       19,
+       11
+      ]
+     },
+     {
+      "z": 4.2,
+      "ellipse": [
+       19,
+       11
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    8,
+    15.2
+   ],
+   "params": {
+    "colour": "#6a6e72",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       21,
+       13
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       21.5,
+       13.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "radius": 20,
+    "radiusY": 12,
+    "count": 20,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       0.8
+      ],
+      "height": 1.2,
+      "colour": "#6a6e72",
+      "topScale": 0.3
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 100,
+    "centre": [
+     0,
+     8,
+     15.6
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#d6d4cd",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       6
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       5,
+       3.5
+      ],
+      "cy": 0.8
+     },
+     {
+      "z": 13,
+      "rect": [
+       1.5,
+       1
+      ],
+      "cy": 1.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -14.5,
+    3
+   ],
+   "params": {
+    "profile": [
+     [
+      3.5,
+      0,
+      "#d6d4cd"
+     ],
+     [
+      3.5,
+      1.2,
+      "#d6d4cd"
+     ],
+     [
+      0.1,
+      1.2,
+      "#d6d4cd"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-canopy",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "z0": 4.2,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c5c3bc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c5c3bc"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.3,
+    "run": 1.0,
+    "count": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-l",
+   "footprint": {
+    "rect": [
+     0.8,
+     26
+    ]
+   },
+   "at": [
+    -52,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8c1a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-r",
+   "footprint": {
+    "rect": [
+     0.8,
+     26
+    ]
+   },
+   "at": [
+    52,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8c1a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     -26,
+     0
+    ],
+    "end": [
+     60,
+     -26,
+     0
+    ],
+    "count": 61,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       0.15
+      ],
+      "height": 1.8,
+      "colour": "#f2f2ee"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 100
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -26,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     120,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#f2f2ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -25
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -25
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Straight 104 m block instead of the curved ~135 m outline; drum and sail fin simplified; fence is thin posts and a rail; glass tinted by render sky."
+ }
+}

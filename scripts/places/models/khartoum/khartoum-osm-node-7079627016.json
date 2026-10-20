@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-node-7079627016",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/khartoum.json",
+   "used": "standard Sudanese neighbourhood mosque: cream walls, green trim, one small dome, single square minaret about 22 m, courtyard wall (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     17
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee3c8",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#3f7d5c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c2",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     18,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fbf8ee",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7d5c",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "dome",
+   "at": [
+    0,
+    2,
+    7.5
+   ],
+   "params": {
+    "radius": 4.6,
+    "profile": "hemi",
+    "drum": 2.2,
+    "drumRadius": 3.8,
+    "finial": 1.4,
+    "colour": "#e9e4d4",
+    "drumColour": "#eee3c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-shaft",
+   "at": [
+    -11,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 18,
+    "colour": "#eee3c8",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-gallery",
+   "at": [
+    -11,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "z0": 16,
+    "height": 1.0,
+    "colour": "#3f7d5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-lantern",
+   "at": [
+    -11,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "z0": 17,
+    "height": 3,
+    "colour": "#fbf8ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "minaret-cap",
+   "at": [
+    -11,
+    -6,
+    20
+   ],
+   "params": {
+    "radius": 1.1,
+    "profile": "hemi",
+    "finial": 1.6,
+    "colour": "#3f7d5c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "yard-wall",
+   "params": {
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#eee3c8",
+    "pillarEvery": 6,
+    "points": [
+     [
+      -17,
+      -16
+     ],
+     [
+      17,
+      -16
+     ],
+     [
+      17,
+      17
+     ],
+     [
+      -17,
+      17
+     ],
+     [
+      -17,
+      -16
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 10,
+    "line": 28,
+    "colour": "#4f7a3c"
+   },
+   "at": [
+    0,
+    -19
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; typical Sudanese neighbourhood mosque from text, proportions and colours not checked against this mosque."
+ }
+}

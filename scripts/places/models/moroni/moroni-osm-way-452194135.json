@@ -1,0 +1,97 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-way-452194135",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/452194135",
+   "used": "four-sided footprint about 13 x 9 m, brick walls, metal roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "polygon": [
+     [
+      -7.3,
+      3.3
+     ],
+     [
+      -6,
+      -5.2
+     ],
+     [
+      7.3,
+      -3.3
+     ],
+     [
+      6,
+      5.2
+     ]
+    ]
+   },
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0ebe0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "bands": "#3f8f6a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdbf",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    8,
+    -6.5,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "style": "pencil",
+    "colour": "#f0ebe0",
+    "trim": "#3f8f6a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   45,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint/brief only, so facade details, colours and roof are typical for Moroni, not observed."
+ }
+}

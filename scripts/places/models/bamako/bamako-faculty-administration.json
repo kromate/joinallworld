@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-faculty-administration",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/339595826",
+   "used": "real outline, ~31x28 m (containing match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#a65a3a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca3",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "rotDeg": -14,
+   "height": 13.6,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a6a7a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b83",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -8,
+    -15,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "length": 8,
+    "height": 9,
+    "pitch": 1.2,
+    "depth": 0.5,
+    "colour": "#a65a3a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "width": 9,
+    "rise": 1.0,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 2.5,
+    "colours": [
+     "#14b53a",
+     "#fcd116",
+     "#ce1126"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -6,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; massing from OSM outline and brief only, entrance bay and brise-soleil placement guessed."
+ }
+}

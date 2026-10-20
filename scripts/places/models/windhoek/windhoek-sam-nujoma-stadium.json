@@ -1,0 +1,500 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-sam-nujoma-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SamNujomaStadium.JPG",
+   "licence": "Public domain",
+   "author": "Thomas.macmillan",
+   "view": "interior",
+   "file": "/tmp/places-evidence/windhoek/stad1.jpg",
+   "used": "low pale-grey concrete raked terraces in separate blocks with stair aisles, concrete fascia wall behind, no roof over the stands shown, single tall floodlight mast, grass pitch with a running-track-free surround, scoreboard-free open end"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2294419",
+   "used": "overall size (about 160 x 140 m with surrounds); rectangular pitch surround with straight terrace banks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 24,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "width": 54,
+    "stripes": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -23,
+     32
+    ],
+    "end": [
+     -44,
+     32
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -23,
+     -32
+    ],
+    "end": [
+     -44,
+     -32
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     1,
+     32
+    ],
+    "end": [
+     -20,
+     32
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     1,
+     -32
+    ],
+    "end": [
+     -20,
+     -32
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     25,
+     32
+    ],
+    "end": [
+     4,
+     32
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     25,
+     -32
+    ],
+    "end": [
+     4,
+     -32
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     44,
+     32
+    ],
+    "end": [
+     28,
+     32
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     44,
+     -32
+    ],
+    "end": [
+     28,
+     -32
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     22
+    ],
+    "end": [
+     -50,
+     -4
+    ],
+    "rows": 6,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     -7
+    ],
+    "end": [
+     -50,
+     -22
+    ],
+    "rows": 6,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#bdb9b0",
+     "#b0ada4"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa69d",
+    "underColour": "#9d998f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -46,
+      43
+     ],
+     [
+      46,
+      43
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -46,
+      -43
+     ],
+     [
+      46,
+      -43
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -24
+     ],
+     [
+      -58,
+      24
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -44,
+    31,
+    1.0
+   ],
+   "params": {
+    "length": 88,
+    "height": 1.0,
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -44,
+    -31,
+    1.0
+   ],
+   "params": {
+    "length": 88,
+    "height": 1.0,
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    0,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   110
+  ],
+  "cars": 0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "now separate low terrace blocks with aisles, single mast, rail lines and straight walls, but near-side blocks may face the wrong way, fascia walls and rails read as detached strips, pitch is uniform bright green not worn yellow-green, no covered stand"
+ }
+}

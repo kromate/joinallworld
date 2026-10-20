@@ -1,0 +1,1003 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EASS_Temple_Nairobi.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/nairobi/temple1.jpg",
+   "used": "long two-storey cream hall, peach cornice bands, ground-floor central porch with scalloped arches, upper balcony rail with scalloped arch row, three shikharas on the roof with a small central dome, lawn forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/446049106",
+   "used": "irregular outline, 67 x 52 m site; not used for massing because the photo shows a simple rectangular front hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     38,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4d98c",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#e8b48c"
+      ],
+      "height": 0.9,
+      "at": 0.97,
+      "proud": 0.3,
+      "floors": "all"
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#e8b48c"
+      ],
+      "height": 0.5,
+      "at": 0.5,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6cf9a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     19,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f8e4a4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 6.3,
+      "opening": 0.72,
+      "height": 0.82,
+      "depth": 1.8,
+      "pierColour": "#f8e4a4",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8b48c",
+    "parapet": 0.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     9,
+     13
+    ]
+   },
+   "at": [
+    -23,
+    -1
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1d58a",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6cf9a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     9,
+     13
+    ]
+   },
+   "at": [
+    23,
+    -1
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1d58a",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6cf9a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#d9c7a4"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    27,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -19,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 1
+   }
+  },
+  {
+   "type": "shikhara",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "on": "main",
+   "params": {
+    "width": 6.6,
+    "height": 17,
+    "base_height": 2.4,
+    "layers": 16,
+    "colour": "#e2a272",
+    "amalaka": true
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    4,
+    9.2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e2a272",
+    "profile": [
+     [
+      3.3,
+      0
+     ],
+     [
+      2.1999999999999997,
+      8.5
+     ],
+     [
+      0.1,
+      17
+     ]
+    ]
+   }
+  },
+  {
+   "type": "shikhara",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "on": "main",
+   "params": {
+    "width": 5.4,
+    "height": 13.5,
+    "base_height": 2.4,
+    "layers": 16,
+    "colour": "#e2a272",
+    "amalaka": true
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -9,
+    4,
+    9.2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e2a272",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      1.8,
+      6.75
+     ],
+     [
+      0.1,
+      13.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "shikhara",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9,
+    6,
+    0
+   ],
+   "on": "main",
+   "params": {
+    "width": 5.4,
+    "height": 13.5,
+    "base_height": 2.4,
+    "layers": 16,
+    "colour": "#e2a272",
+    "amalaka": true
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    9,
+    4,
+    9.2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e2a272",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      1.8,
+      6.75
+     ],
+     [
+      0.1,
+      13.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -10.5,
+    5.3
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f2e6c0",
+    "profile": [
+     [
+      2.4,
+      0
+     ],
+     [
+      2.4,
+      0.4
+     ],
+     [
+      2.1,
+      1.1
+     ],
+     [
+      1.4,
+      1.7
+     ],
+     [
+      0.5,
+      2.1
+     ],
+     [
+      0.12,
+      2.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col0",
+   "at": [
+    -9,
+    -13.5,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.6,
+    "colour": "#f8e4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col1",
+   "at": [
+    -6,
+    -13.5,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.6,
+    "colour": "#f8e4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col2",
+   "at": [
+    -3,
+    -13.5,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.6,
+    "colour": "#f8e4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col3",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.6,
+    "colour": "#f8e4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col4",
+   "at": [
+    3,
+    -13.5,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.6,
+    "colour": "#f8e4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col5",
+   "at": [
+    6,
+    -13.5,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.6,
+    "colour": "#f8e4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col6",
+   "at": [
+    9,
+    -13.5,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.6,
+    "colour": "#f8e4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    0,
+    -12,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     22,
+     6.6
+    ],
+    "height": 0.7,
+    "colour": "#e8b48c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "at": [
+    0,
+    -9.6,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.25
+    ],
+    "height": 1.0,
+    "colour": "#f3e2ae"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch0",
+   "at": [
+    -14.0,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap0",
+   "at": [
+    -14.0,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch1",
+   "at": [
+    -10.5,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap1",
+   "at": [
+    -10.5,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch2",
+   "at": [
+    -7.0,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap2",
+   "at": [
+    -7.0,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch3",
+   "at": [
+    -3.5,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap3",
+   "at": [
+    -3.5,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch4",
+   "at": [
+    0.0,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap4",
+   "at": [
+    0.0,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch5",
+   "at": [
+    3.5,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap5",
+   "at": [
+    3.5,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch6",
+   "at": [
+    7.0,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap6",
+   "at": [
+    7.0,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch7",
+   "at": [
+    10.5,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap7",
+   "at": [
+    10.5,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch8",
+   "at": [
+    14.0,
+    -8.62,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#5d4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "archcap8",
+   "at": [
+    14.0,
+    -8.55,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.35
+    ],
+    "height": 0.45,
+    "colour": "#e8b48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-satsang-temple",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "scalloped arches are plain round arches and dark rects (no cusps); shikharas lack carved ornament; porch is a recessed arcade rather than free columns carrying arches"
+ }
+}

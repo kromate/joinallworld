@@ -1,0 +1,258 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/khartoum.json#khartoum-osm-node-6207175685",
+   "used": "Al-Qamarab residential plots, western Omdurman: open sand, low boundary walls, sparse acacia, one tank. OSM nearest way is a 26 m2 hut 13.7 m away, used only as scale for a small shed"
+  }
+ ],
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#d6c29b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#c8b186",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      60
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 1.4,
+    "thickness": 0.3,
+    "colour": "#b69c72",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      38
+     ],
+     [
+      40,
+      38
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    10,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.4,
+    "thickness": 0.3,
+    "colour": "#b69c72"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    10,
+    0
+   ],
+   "params": {
+    "height": 1.4,
+    "thickness": 0.3,
+    "colour": "#b69c72",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      40
+     ],
+     [
+      -50,
+      40
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     5.7,
+     4.5
+    ]
+   },
+   "at": [
+    -35,
+    -30
+   ],
+   "rotDeg": 10,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d6c29b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed2",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    38,
+    -20
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#e8dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a9498",
+    "material": "corrugated",
+    "rise": 0.5
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 3,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    35,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    45,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -5,
+    -35,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Mostly empty land; wall layout and plot subdivision are invented to read as plots, nothing built is documented."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-node-6207175685",
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ }
+}

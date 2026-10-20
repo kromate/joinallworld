@@ -5,7 +5,7 @@
 //
 // For every <out>/<city>/<venueId>.json report with status "ok" it writes <venueId>.lod{n}.<sha8>.glb next to the raw files, removes
 // older packed files of the same LOD, and records `packed.lod{n} = {file, bytes, brotliBytes, sha256, triangles}` in the report.
-// A model over a brotli gate (LOD0 110 KB, LOD1 30 KB, LOD2 6 KB) turns the report into status "rejected" with an error line.
+// A model over a brotli gate (LOD0 110,000, LOD1 30,000, LOD2 6,000 bytes) turns the report into status "rejected" with an error line.
 // The `trim` material is NOT given a texture here: the game binds the one global atlas (scripts/places/atlas/trim.webp).
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url'
 import { brotliCompressSync, constants } from 'node:zlib'
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..')
-export const BROTLI_GATE: Record<number, number> = { 0: 110 * 1024, 1: 30 * 1024, 2: 6 * 1024 }
+export const BROTLI_GATE: Record<number, number> = { 0: 110_000, 1: 30_000, 2: 6000 } // the game budgets (src/scene/places/limits.ts)
 // Quantisation: 14-bit positions (7 mm over 120 m), 12-bit UVs (atlas is 2048 px), 8-bit normals and colours.
 const PACK_ARGS = ['-cc', '-km', '-vp', '14', '-vt', '12', '-vn', '8', '-vc', '8', '-kv']
 

@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-airport-yaounde-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/36745022",
+   "used": "terminal outline 196 x 81 m (aeroway=terminal)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/15715843",
+   "used": "aerodrome Nsimalen NSI"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4ddc9",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "bands": "#b7b2a4",
+    "glassColour": "#4f6f8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c86",
+    "parapet": 0.5,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -25,
+    -60,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 10,
+    "height": 6,
+    "colour": "#cfc9b8",
+    "columns": 6
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    30,
+    70,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "style": "round",
+    "colour": "#e4ddc9"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -75,
+    5
+   ],
+   "params": {
+    "width": 12,
+    "height": 1.2,
+    "colour": "#2f5d3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -95
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real outline scaled to 61 percent to fit the scene clamp; facade, canopy and tower are typical, not observed"
+ }
+}

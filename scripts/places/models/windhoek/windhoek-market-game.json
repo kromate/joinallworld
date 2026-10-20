@@ -1,0 +1,325 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/13959141",
+   "used": "market extent (about 175 x 90 m, name match); condensed to a 110 x 80 m modelled core since the outline is an open site, not a building"
+  },
+  {
+   "kind": "text",
+   "used": "brief: rows of corrugated-metal stalls, braai sheds, painted lock-ups on dust ground; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "braai-shed",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -18,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b0aaa0",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.5,
+    "overhang": 1.2,
+    "colour": "#8c8f92",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups",
+   "footprint": {
+    "rect": [
+     34,
+     6
+    ]
+   },
+   "at": [
+    38,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b9835a",
+    "windows": "none",
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups-2",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    -48,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3b8ea5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "stall",
+     "footprint": {
+      "rect": [
+       8,
+       3.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 2.6,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#b0aaa0",
+      "windows": "none",
+      "faces": {
+       "front": "plain"
+      }
+     },
+     "roof": {
+      "form": "shed",
+      "high": "back",
+      "rise": 0.6,
+      "overhang": 0.4,
+      "colour": "#8c8f92",
+      "material": "corrugated"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -20,
+     0
+    ],
+    "end": [
+     26,
+     -20,
+     0
+    ],
+    "count": 6,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "stall",
+     "footprint": {
+      "rect": [
+       8,
+       3.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 2.6,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#b9835a",
+      "windows": "none",
+      "faces": {
+       "front": "plain"
+      }
+     },
+     "roof": {
+      "form": "shed",
+      "high": "back",
+      "rise": 0.6,
+      "overhang": 0.4,
+      "colour": "#8c8f92",
+      "material": "corrugated"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -8,
+     0
+    ],
+    "end": [
+     26,
+     -8,
+     0
+    ],
+    "count": 6,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "stall",
+     "footprint": {
+      "rect": [
+       8,
+       3.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 2.6,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#3b8ea5",
+      "windows": "none",
+      "faces": {
+       "front": "plain"
+      }
+     },
+     "roof": {
+      "form": "shed",
+      "high": "back",
+      "rise": 0.6,
+      "overhang": 0.4,
+      "colour": "#8c8f92",
+      "material": "corrugated"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     4,
+     0
+    ],
+    "end": [
+     26,
+     4,
+     0
+    ],
+    "count": 6,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    55,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 3,
+    "spread": 16,
+    "colour": "#7c8a4c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 2,
+    "spread": 10,
+    "colour": "#7c8a4c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; stall layout is a regular grid of typical corrugated stalls, not the real plan"
+ }
+}

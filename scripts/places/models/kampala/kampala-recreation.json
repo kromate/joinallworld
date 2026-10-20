@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stone_Steps,_Entebbe,_Uganda_(15271265097).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Rod Waddington",
+   "view": "detail",
+   "file": "/tmp/places-evidence/kampala/bot2.jpg",
+   "used": "mossy stone-block steps climbing through palms and ferns"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EntebbeBotanicalGarden.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/kampala/bot1.jpg",
+   "used": "red laterite track under vine-draped rainforest trees, dense dark green canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/183107239",
+   "used": "park outline (1 km, scaled into the scene)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": -0.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f8f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8f45"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -45
+     ],
+     [
+      -20,
+      -25
+     ],
+     [
+      0,
+      -12
+     ],
+     [
+      10,
+      10
+     ],
+     [
+      30,
+      30
+     ]
+    ],
+    "width": 4,
+    "colour": "#b5643c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -30
+     ],
+     [
+      -30,
+      -38
+     ],
+     [
+      10,
+      -40
+     ],
+     [
+      40,
+      -35
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    18,
+    12,
+    0.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.5,
+    "rise": 0.3,
+    "run": 0.7,
+    "count": 10,
+    "colour": "#7b8a5a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -30,
+    -20,
+    0.3
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#efe6cf",
+    "cap_colour": "#9a4a36"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -25,
+    25,
+    0.3
+   ],
+   "params": {
+    "width": 45,
+    "depth": 40,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 26
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    35,
+    15,
+    0.3
+   ],
+   "params": {
+    "width": 40,
+    "depth": 45,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 26
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -12,
+    0.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 6,
+    "spread": 10,
+    "line": 1
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    5,
+    -48,
+    0.3
+   ],
+   "params": {
+    "length": 18,
+    "width": 2.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "real outline is 1 km across so only a representative cut is modelled; no vine-draped trunks, mossy step detail is plain; layout of paths and pavilion assumed"
+ }
+}

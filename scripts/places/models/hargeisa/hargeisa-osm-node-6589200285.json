@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-node-6589200285",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Hargeisa",
+   "used": "city context only; no photo of this place found (Commons search empty)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ede4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "plinth": 0.4,
+    "bands": "#2f6b4f",
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a69f",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -5.2
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ede4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b4f",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    0,
+    1,
+    4.4
+   ],
+   "params": {
+    "radius": 3.0,
+    "profile": "hemisphere",
+    "drum": 0.8,
+    "colour": "#2f6b4f",
+    "finial": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.8,
+    "colour": "#c9b08a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.8,
+    "colour": "#c9b08a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -12,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; small domed whitewashed hall typed from the brief, real appearance unknown (dome rendered grey)."
+ }
+}

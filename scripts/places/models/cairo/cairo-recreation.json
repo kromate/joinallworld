@@ -1,0 +1,676 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ayyubid_Wall_Al-Azhar_Park_Cairo_01-2006.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Blazej Pindor",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/cairo-recreation-1.jpg",
+   "used": "restored Ayyubid wall of honey-coloured ashlar with a crenellated top, a squat square tower, a stair up to the wall walk, the road below and bougainvillea beds"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Al-Azhar_Park_Cairo_01-2006.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Blazej Pindor",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/cairo-recreation-0.jpg",
+   "used": "sloping lawns with clipped hedges, a hexagonal timber gazebo on a low plinth with a stepped pyramidal roof, a wide low octagonal pavilion with a lantern roof, water channel terrace, city skyline"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24745061",
+   "used": "park is 1.3 km long: only a 150 m section is modelled as a vignette (wall, terraces, pavilions)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "terrace-1",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     30
+    ],
+    "height": 0.5,
+    "colour": "#6f9a4a",
+    "topColour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-2",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     20
+    ],
+    "height": 1.6,
+    "colour": "#7da250",
+    "topColour": "#7da250"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "water-channel",
+   "at": [
+    -5,
+    -24,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     40
+    ],
+    "height": 0.15,
+    "colour": "#5f9ab0",
+    "topColour": "#5f9ab0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool",
+   "at": [
+    -5,
+    -41,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     8
+    ],
+    "height": 0.15,
+    "colour": "#5f9ab0",
+    "topColour": "#5f9ab0"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "wall",
+   "at": [
+    -6,
+    10,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "height": 22,
+    "thickness": 4,
+    "merlon_height": 2.4,
+    "merlon_width": 2.0,
+    "pitch": 4.2,
+    "colour": "#d0ba88",
+    "trim": "#c4ad7a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-tower",
+   "at": [
+    48,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "height": 30,
+    "colour": "#cfb887",
+    "topColour": "#c4ad7a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    48,
+    10,
+    30
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.1,
+    "thickness": 1.0,
+    "merlon_height": 2.2,
+    "merlon_width": 1.8,
+    "pitch": 3.6,
+    "colour": "#c4ad7a",
+    "trim": "#c4ad7a"
+   }
+  },
+  {
+   "type": "corner-tower",
+   "at": [
+    -56,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "height": 27,
+    "kind": "round",
+    "cap": "flat"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-return",
+   "at": [
+    60,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     22
+    ],
+    "height": 22,
+    "colour": "#d0ba88",
+    "topColour": "#c4ad7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    -30,
+    28
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d4ae",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "bay": 3.6,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b08a5c",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gazebo-plinth",
+   "at": [
+    34,
+    -28,
+    0.5
+   ],
+   "params": {
+    "n": 6,
+    "radius": 7,
+    "height": 0.6,
+    "colour": "#c9b98f",
+    "topColour": "#c9b98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gazebo",
+   "at": [
+    34,
+    -28,
+    1.1
+   ],
+   "params": {
+    "n": 6,
+    "radius": 5.2,
+    "height": 4.2,
+    "colour": "#6b4a36",
+    "topColour": "#5c3d2b",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    34,
+    -28,
+    5.3
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#6e4a35",
+    "topColour": "#6e4a35",
+    "profile": [
+     [
+      6.6000000000000005,
+      0.0
+     ],
+     [
+      6.300000000000001,
+      0.6000000000000001
+     ],
+     [
+      4.800000000000001,
+      0.75
+     ],
+     [
+      4.5,
+      1.6500000000000001
+     ],
+     [
+      0.30000000000000004,
+      3.9000000000000004
+     ],
+     [
+      0.15000000000000002,
+      4.800000000000001
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "octagon-pavilion",
+   "at": [
+    50,
+    -8,
+    0.5
+   ],
+   "params": {
+    "n": 8,
+    "radius": 13,
+    "height": 1.3,
+    "colour": "#b9a27c",
+    "topColour": "#c5b08b"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    50,
+    -8,
+    1.8
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#a98a66",
+    "topColour": "#a98a66",
+    "profile": [
+     [
+      14.21,
+      0.0
+     ],
+     [
+      13.92,
+      0.725
+     ],
+     [
+      4.93,
+      3.3349999999999995
+     ],
+     [
+      4.35,
+      4.64
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "octagon-lantern",
+   "at": [
+    50,
+    -8,
+    6.5
+   ],
+   "params": {
+    "n": 8,
+    "radius": 4.5,
+    "height": 2.4,
+    "colour": "#6b4a36",
+    "topColour": "#6b4a36",
+    "windows": "punched",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    50,
+    -8,
+    8.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#a98a66",
+    "topColour": "#a98a66",
+    "profile": [
+     [
+      4.76,
+      0.0
+     ],
+     [
+      0.27999999999999997,
+      2.52
+     ],
+     [
+      0.13999999999999999,
+      3.36
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "hedge-row",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5,
+       1.4
+      ],
+      "height": 1.0,
+      "colour": "#3f7a35",
+      "topColour": "#3f7a35"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -58,
+     -12,
+     0.5
+    ],
+    "end": [
+     -14,
+     -12,
+     0.5
+    ],
+    "count": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 5,
+    "count": 3,
+    "line": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 3,
+    "line": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -58,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 3,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    40,
+    7,
+    0
+   ],
+   "params": {
+    "width": 2.5,
+    "rise": 20,
+    "run": 1.6,
+    "count": 22,
+    "colour": "#b9a27c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    3,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     130,
+     6
+    ],
+    "height": 0.05,
+    "colour": "#cdb78c",
+    "topColour": "#cdb78c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "bougainvillea",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#a8247f",
+      "topColour": "#c23a96",
+      "profile": [
+       [
+        0.1,
+        0
+       ],
+       [
+        2.4,
+        0.3
+       ],
+       [
+        3.0,
+        1.2
+       ],
+       [
+        2.2,
+        2.2
+       ],
+       [
+        0,
+        2.6
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     -44,
+     0.5
+    ],
+    "end": [
+     52,
+     -44,
+     0.5
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "skyline",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       10,
+       9
+      ],
+      "height": 26,
+      "colour": "#d9c49c",
+      "topColour": "#cdb88f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -50,
+     40,
+     0
+    ],
+    "end": [
+     50,
+     40,
+     0
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 9,
+    "vary": {
+     "height": [
+      22,
+      32
+     ]
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/minaret",
+   "at": [
+    24,
+    34,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "style": "pencil",
+    "colour": "#d9c49c",
+    "trim": "#c4ad7a",
+    "base_width": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mid-tower",
+   "at": [
+    -6,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     9
+    ],
+    "height": 28,
+    "colour": "#cfb887",
+    "topColour": "#c4ad7a"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "mid-crown",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6,
+    10,
+    28
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.1,
+    "thickness": 1.0,
+    "merlon_height": 2.2,
+    "merlon_width": 1.8,
+    "pitch": 3.6,
+    "colour": "#c4ad7a",
+    "trim": "#c4ad7a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wall raised to 22 m and thickened, second mid tower, taller stair, larger pavilions, bougainvillea beds, road strip and a skyline of plain slabs; still stepped flat terraces instead of a sloped hillside, skyline slabs are crude, no batter or ashlar relief on wall"
+ }
+}

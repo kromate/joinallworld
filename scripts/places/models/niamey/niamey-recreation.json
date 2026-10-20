@@ -1,0 +1,231 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/699097345",
+   "used": "garden outline (about 92 x 84 m, leisure=park); lodge, umbrellas and palms are typed from the brief, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "garden",
+   "params": {
+    "points": [
+     [
+      -41.8,
+      -43.4
+     ],
+     [
+      41.9,
+      -36.7
+     ],
+     [
+      26.9,
+      38.4
+     ],
+     [
+      11.2,
+      50.5
+     ],
+     [
+      -16,
+      50.5
+     ],
+     [
+      -25.9,
+      35.5
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#c8b184",
+    "topColour": "#c8b184"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "length": 4,
+    "height": 1.8,
+    "thickness": 0.25,
+    "colour": "#e9dfc6",
+    "points": [
+     [
+      -41.8,
+      -43.4
+     ],
+     [
+      41.9,
+      -36.7
+     ],
+     [
+      26.9,
+      38.4
+     ],
+     [
+      11.2,
+      50.5
+     ],
+     [
+      -16,
+      50.5
+     ],
+     [
+      -25.9,
+      35.5
+     ],
+     [
+      -41.8,
+      -43.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b6a52",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -10,
+    -8
+   ],
+   "params": {
+    "count": 6,
+    "spread": 8,
+    "radius": 1.6,
+    "colours": [
+     "#c28f5a",
+     "#e9dfc6",
+     "#8b6a52"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -18
+   ],
+   "params": {
+    "count": 4,
+    "spread": 6,
+    "radius": 1.6,
+    "colours": [
+     "#e9dfc6",
+     "#c28f5a"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -25
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -20
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    30
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    25
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "count": 6,
+    "kind": "acacia",
+    "min_height": 5,
+    "max_height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "real garden outline; lodge, umbrellas, palms typed from brief, no photo"
+ }
+}

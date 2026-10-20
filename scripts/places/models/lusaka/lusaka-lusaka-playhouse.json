@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-lusaka-playhouse",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lusaka_Play_house.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alex Mukuka",
+   "view": "front",
+   "file": "/tmp/places-evidence/lusaka/playhouse1.jpg",
+   "used": "ochre-yellow rendered gabled foyer with a blank blue board on the gable, dark grey corrugated low-pitch roofs, red brick lower wings, covered front porch, green water tank on a steel tower to the left, wire fence, car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/676289242",
+   "used": "overall extent only (about 58 x 37 m, irregular rotated outline): the ragged outline is rebuilt as the separate volumes seen in the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.25,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "auditorium",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    4,
+    12
+   ],
+   "rotDeg": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c27a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "faces": {
+     "front": "none",
+     "left": "punched",
+     "right": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#555a58",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    -2
+   ],
+   "rotDeg": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c27a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#555a58",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing-west",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    -22,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4f38",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e4a40",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing-east",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    27,
+    -2
+   ],
+   "rotDeg": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4f38",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e4a40",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -9,
+    18
+   ],
+   "rotDeg": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbb8a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#555a58",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -10.4,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#1f4f9a",
+    "frameColour": "#d8c27a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 5.0,
+    "legHeight": 12,
+    "legs": 4,
+    "colour": "#2c5a3e"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 4,
+    "height": 3.2,
+    "thickness": 0.3,
+    "columns": 3,
+    "colour": "#46494a",
+    "edgeColour": "#46494a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#b5ad9c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#9aa0a3"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#d6d6d2",
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Volumes, ochre render, dark corrugated roofs, brick wings, blue blank board and green tank on tower match; fence is sparse, rear wing outline simplified, trees and wire fence differ."
+ }
+}

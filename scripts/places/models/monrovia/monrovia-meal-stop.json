@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small roadside restaurant, single-storey painted block 14 x 9 m with covered terrace; OSM match is only 'nearest' to a 580 m2 shape that does not fit, so not used; no photo of this place found (Commons search, Wikidata P18 and brief sources checked)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e3d49b",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "plinth": 0.3,
+    "bands": "#b8744f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8891",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 3,
+    "colours": [
+     "#b8744f",
+     "#f2eee2"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -3,
+    -8.5,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "radius": 1.2,
+    "colours": [
+     "#f2eee2",
+     "#b8744f"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    11,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "colour": "#b8744f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 2.4,
+    "colour": "#f2eee2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and no reliable outline; modest typed building"
+ }
+}

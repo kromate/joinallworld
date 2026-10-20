@@ -1,0 +1,281 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/23465935",
+   "used": "not the footprint: the OSM way is the whole 413 x 225 m campus parcel, far too large for one building, so only its wooded-campus setting is used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: church-run campus, two-storey brick-and-render lecture blocks around a courtyard with a chapel and bell tower. The Commons photos of this university are lecture-hall interiors and graduation portraits (no exterior), so nothing was compared"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "north-block",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a2553a",
+    "glassColour": "#3a4a52",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5.5,
+    "plinth": 0.4,
+    "bands": "#f1ead8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     13,
+     32
+    ]
+   },
+   "at": [
+    -21.5,
+    -8
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a2553a",
+    "glassColour": "#3a4a52",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5.5,
+    "plinth": 0.4,
+    "bands": "#f1ead8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     13,
+     32
+    ]
+   },
+   "at": [
+    21.5,
+    -8
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a2553a",
+    "glassColour": "#3a4a52",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5.5,
+    "plinth": 0.4,
+    "bands": "#f1ead8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-bay",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    0,
+    6.5
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -34
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "glassColour": "#3a4a52",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "windowShape": "arched",
+    "bay": 4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    8.5,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 15,
+    "cap": "hip",
+    "capRise": 3,
+    "windows": "none",
+    "colour": "#f1ead8",
+    "capColour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -2,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     28
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     28
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     0
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -30
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -30
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo: massing is a typical church-campus U-court scaled down; real campus has many separate buildings across 413 x 225 m"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-way-23465935"
+}

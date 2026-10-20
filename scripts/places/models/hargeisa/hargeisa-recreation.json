@@ -1,0 +1,192 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "typed small dairy plant; no outline or photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c4bb",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bands": "#6e7f8a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7f8a",
+    "material": "metal-sheet",
+    "rise": 2.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -24,
+    -13
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9d3c0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "storage-tank",
+   "at": [
+    26,
+    -5,
+    0
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 9,
+    "roof": "cone",
+    "colour": "#d9dcde"
+   }
+  },
+  {
+   "type": "storage-tank",
+   "at": [
+    26,
+    2,
+    0
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 9,
+    "roof": "cone",
+    "colour": "#d9dcde"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -14,
+    12,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 2.2,
+    "legs": 3,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    16,
+    10,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "radius": 0.7,
+    "material": "brick"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#c8c4bb",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "colour": "#6e7f8a",
+    "board_colour": "#b9d3c0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo, no OSM outline; typed single-storey dairy shed with tanks and a stack."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-recreation"
+}

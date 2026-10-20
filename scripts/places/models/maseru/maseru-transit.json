@@ -1,0 +1,311 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/320347119",
+   "used": "nearest small building (9x7 m), taken only as a booth-sized volume, not the main footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Maseru Bridge border crossing, customs and immigration hall with lane canopies; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aaa0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#2f4a8a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -22,
+    14
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booth-a",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    -12,
+    -4
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e0",
+    "windows": "ribbon",
+    "windowRatio": 0.45
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4a8a",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booth-b",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    12,
+    -4
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e0",
+    "windows": "ribbon",
+    "windowRatio": 0.45
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4a8a",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 14,
+    "height": 5.6,
+    "thickness": 0.6,
+    "columns": 6,
+    "colour": "#8c8f92",
+    "edgeColour": "#2f4a8a",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 56,
+    "depth": 4,
+    "height": 4.2,
+    "thickness": 0.35,
+    "columns": 8,
+    "colour": "#b0aaa0",
+    "edgeColour": "#e8e8e0",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    8,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -40,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.4,
+    "kind": "fence",
+    "pillarEvery": 4,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    17,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.4,
+    "kind": "fence",
+    "pillarEvery": 4,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#2f4a8a",
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#2f4a8a",
+     "#e8e8e0",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5,
+    5.6
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0.2,
+    "colour": "#2f4a8a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; layout, colours and canopy sizes are typical-border-post assumptions"
+ }
+}

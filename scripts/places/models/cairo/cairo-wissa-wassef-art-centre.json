@@ -1,0 +1,1120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-wissa-wassef-art-centre",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0645\u0631\u0643\u0632 \u0631\u0645\u0633\u064a\u0633 \u0648\u064a\u0635\u0627 \u0648\u0627\u0635\u0641.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Summering2018",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/wissa.jpg",
+   "used": "curved sand-ochre mud-render gate walls with rounded tops, slatted timber gate with fretwork, blank sign board, tree canopy, low arched mud-brick studios glimpsed behind; colours"
+  },
+  {
+   "kind": "text",
+   "used": "brief: cluster of low vaulted/domed mud-brick studios in gardens, about 60x40 m (no OSM footprint)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "studio-west",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -18,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c8a27c",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9bd92",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio-east",
+   "footprint": {
+    "rect": [
+     18,
+     11
+    ]
+   },
+   "at": [
+    16,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c8a27c",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9bd92",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio-rear",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c8a27c",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9bd92",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loom-hall",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -2,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c8a27c",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9bd92",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -18,
+    6,
+    4.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c8a27c",
+    "profile": [
+     [
+      5.2,
+      0,
+      "#b8946a"
+     ],
+     [
+      5.2,
+      0.4
+     ],
+     [
+      4.784000000000001,
+      1.4400000000000002
+     ],
+     [
+      3.6399999999999997,
+      2.7
+     ],
+     [
+      1.8199999999999998,
+      3.42
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    8,
+    4.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c8a27c",
+    "profile": [
+     [
+      5.6,
+      0,
+      "#b8946a"
+     ],
+     [
+      5.6,
+      0.4
+     ],
+     [
+      5.152,
+      1.52
+     ],
+     [
+      3.9199999999999995,
+      2.8499999999999996
+     ],
+     [
+      1.9599999999999997,
+      3.61
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -2,
+    -2,
+    3.8
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c8a27c",
+    "profile": [
+     [
+      4.2,
+      0,
+      "#b8946a"
+     ],
+     [
+      4.2,
+      0.4
+     ],
+     [
+      3.8640000000000003,
+      1.2000000000000002
+     ],
+     [
+      2.94,
+      2.25
+     ],
+     [
+      1.47,
+      2.8499999999999996
+     ],
+     [
+      0,
+      3.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6,
+    20,
+    4.4
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c8a27c",
+    "profile": [
+     [
+      4.0,
+      0,
+      "#b8946a"
+     ],
+     [
+      4.0,
+      0.4
+     ],
+     [
+      3.68,
+      1.2000000000000002
+     ],
+     [
+      2.8,
+      2.25
+     ],
+     [
+      1.4,
+      2.8499999999999996
+     ],
+     [
+      0,
+      3.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    8,
+    20,
+    4.4
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c8a27c",
+    "profile": [
+     [
+      4.0,
+      0,
+      "#b8946a"
+     ],
+     [
+      4.0,
+      0.4
+     ],
+     [
+      3.68,
+      1.2000000000000002
+     ],
+     [
+      2.8,
+      2.25
+     ],
+     [
+      1.4,
+      2.8499999999999996
+     ],
+     [
+      0,
+      3.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "gate-pier-left",
+   "at": [
+    -5.6,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#c99a72",
+    "profile": [
+     [
+      3.25,
+      0,
+      "#b88a62"
+     ],
+     [
+      3.25,
+      0.4
+     ],
+     [
+      3.25,
+      3.6
+     ],
+     [
+      3.12,
+      4.0
+     ],
+     [
+      2.6,
+      4.65
+     ],
+     [
+      1.4625000000000001,
+      4.95
+     ],
+     [
+      0,
+      5.0,
+      "#d4a97f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "gate-pier-right",
+   "at": [
+    5.6,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#c99a72",
+    "profile": [
+     [
+      3.25,
+      0,
+      "#b88a62"
+     ],
+     [
+      3.25,
+      0.4
+     ],
+     [
+      3.25,
+      3.312
+     ],
+     [
+      3.12,
+      3.6799999999999997
+     ],
+     [
+      2.6,
+      4.278
+     ],
+     [
+      1.4625000000000001,
+      4.553999999999999
+     ],
+     [
+      0,
+      4.6,
+      "#d4a97f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-leaf-right",
+   "at": [
+    1.6,
+    -14.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.6,
+     0.12
+    ],
+    "z0": 0.1,
+    "height": 3.6,
+    "colour": "#c4a26a",
+    "topColour": "#c4a26a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-leaf-right-frame",
+   "at": [
+    1.0,
+    -14.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.12,
+     0.2
+    ],
+    "z0": 0.0,
+    "height": 3.5,
+    "colour": "#5d6a5a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-leaf-left",
+   "at": [
+    -3.4,
+    -14.6
+   ],
+   "rotDeg": 62,
+   "params": {
+    "rect": [
+     2.6,
+     0.12
+    ],
+    "z0": 0.1,
+    "height": 3.6,
+    "colour": "#c4a26a",
+    "topColour": "#c4a26a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-leaf-left-frame",
+   "at": [
+    -3.6,
+    -14.7
+   ],
+   "rotDeg": 62,
+   "params": {
+    "rect": [
+     0.12,
+     0.2
+    ],
+    "z0": 0.0,
+    "height": 3.5,
+    "colour": "#5d6a5a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-fret",
+   "at": [
+    1.6,
+    -14.7
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.05
+    ],
+    "z0": 2.0,
+    "height": 0.9,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-board",
+   "at": [
+    6.0,
+    -17.3
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.15
+    ],
+    "z0": 1.5,
+    "height": 3.0,
+    "colour": "#f2f0ea",
+    "trimColour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-logo",
+   "at": [
+    6.0,
+    -17.45
+   ],
+   "params": {
+    "points": [
+     [
+      -0.4,
+      -0.3
+     ],
+     [
+      0.4,
+      -0.3
+     ],
+     [
+      0,
+      0.4
+     ]
+    ],
+    "z0": 3.4,
+    "height": 0.02,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dirt-path",
+   "at": [
+    0,
+    -6
+   ],
+   "params": {
+    "rect": [
+     5,
+     16
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#cdb68e"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "trunk0",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#5a4632",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.3,
+      8
+     ],
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "canopy0",
+   "at": [
+    -8,
+    -14,
+    5.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#34502a",
+    "profile": [
+     [
+      0,
+      0,
+      "#2f4a22"
+     ],
+     [
+      4.4,
+      0.8
+     ],
+     [
+      5.5,
+      2.2
+     ],
+     [
+      4.675,
+      3.8
+     ],
+     [
+      2.2,
+      4.8
+     ],
+     [
+      0,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk1",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#5a4632",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.3,
+      9.5
+     ],
+     [
+      0,
+      9.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "canopy1",
+   "at": [
+    0,
+    -12,
+    6.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#34502a",
+    "profile": [
+     [
+      0,
+      0,
+      "#2f4a22"
+     ],
+     [
+      5.2,
+      0.8
+     ],
+     [
+      6.5,
+      2.2
+     ],
+     [
+      5.5249999999999995,
+      3.8
+     ],
+     [
+      2.6,
+      4.8
+     ],
+     [
+      0,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk2",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#5a4632",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.3,
+      8.5
+     ],
+     [
+      0,
+      8.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "canopy2",
+   "at": [
+    8,
+    -14,
+    5.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#34502a",
+    "profile": [
+     [
+      0,
+      0,
+      "#2f4a22"
+     ],
+     [
+      4.4,
+      0.8
+     ],
+     [
+      5.5,
+      2.2
+     ],
+     [
+      4.675,
+      3.8
+     ],
+     [
+      2.2,
+      4.8
+     ],
+     [
+      0,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk3",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#5a4632",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.3,
+      7.5
+     ],
+     [
+      0,
+      7.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "canopy3",
+   "at": [
+    -14,
+    -8,
+    4.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#34502a",
+    "profile": [
+     [
+      0,
+      0,
+      "#2f4a22"
+     ],
+     [
+      4.0,
+      0.8
+     ],
+     [
+      5,
+      2.2
+     ],
+     [
+      4.25,
+      3.8
+     ],
+     [
+      2.0,
+      4.8
+     ],
+     [
+      0,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk4",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#5a4632",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.3,
+      7.5
+     ],
+     [
+      0,
+      7.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "canopy4",
+   "at": [
+    14,
+    -8,
+    4.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#34502a",
+    "profile": [
+     [
+      0,
+      0,
+      "#2f4a22"
+     ],
+     [
+      4.0,
+      0.8
+     ],
+     [
+      5,
+      2.2
+     ],
+     [
+      4.25,
+      3.8
+     ],
+     [
+      2.0,
+      4.8
+     ],
+     [
+      0,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk5",
+   "at": [
+    -3,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#5a4632",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.3,
+      8
+     ],
+     [
+      0,
+      8
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "canopy5",
+   "at": [
+    -3,
+    -4,
+    5.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#34502a",
+    "profile": [
+     [
+      0,
+      0,
+      "#2f4a22"
+     ],
+     [
+      3.6,
+      0.8
+     ],
+     [
+      4.5,
+      2.2
+     ],
+     [
+      3.8249999999999997,
+      3.8
+     ],
+     [
+      1.8,
+      4.8
+     ],
+     [
+      0,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate piers are full cylinders with shallow domed tops, not curved half-walls; gate leaves plain slabs without picket tops or fretwork cutouts; canopies are lollipop blobs, not irregular dense foliage; studios behind are guessed; camera framing still wider than the close gate photo"
+ }
+}

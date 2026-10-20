@@ -1,0 +1,250 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/364766140",
+   "used": "real park outline (29,055 m2, 304 m long): fitted to the scene clamp as a paved ceremonial plaza"
+  },
+  {
+   "kind": "text",
+   "used": "brief: paved plaza near the Corniche, flag poles, mausoleum precinct (Wikipedia mentions the Marien Ngouabi mausoleum). The only nearby Commons photo is of farmland, not used."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9bb",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-w",
+   "at": [
+    -28,
+    -8,
+    0.5
+   ],
+   "rotDeg": 25,
+   "params": {
+    "rect": [
+     34,
+     16
+    ],
+    "height": 0.15,
+    "colour": "#7fa87a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-e",
+   "at": [
+    34,
+    10,
+    0.5
+   ],
+   "rotDeg": 25,
+   "params": {
+    "rect": [
+     34,
+     16
+    ],
+    "height": 0.15,
+    "colour": "#7fa87a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mausoleum",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    2,
+    6
+   ],
+   "rotDeg": 25,
+   "z0": 0.5,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e3d6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49a",
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    -2.5,
+    -6.5,
+    0.5
+   ],
+   "rotDeg": 25,
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -30
+    ],
+    "end": [
+     18,
+     -58
+    ],
+    "count": 8,
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 12,
+      "colour": "#1b7a43"
+     }
+    }
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -4,
+    -24,
+    0.5
+   ],
+   "params": {
+    "radius": 4.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -24,
+    0.5
+   ],
+   "rotDeg": 25,
+   "params": {
+    "height": 7,
+    "count": 6,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "market-open/statue-on-plinth",
+   "at": [
+    22,
+    -10,
+    0.5
+   ],
+   "params": {
+    "height": 4,
+    "plinth": 1.4,
+    "colour": "#5a5148"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     24
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     30
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     -20
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the precinct; mausoleum form, statue and fountain placement are typed, not seen."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-marien-ngouabi-esplanade"
+}

@@ -1,0 +1,187 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/206543431",
+   "used": "park outline (about 110 x 250 m, tapering north), leisure=park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 40,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6a8a5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a8a5a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.65
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -52
+     ],
+     [
+      0,
+      52
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.65
+   ],
+   "params": {
+    "points": [
+     [
+      -18,
+      -30
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      30
+     ]
+    ],
+    "width": 1.8,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    8,
+    -14,
+    0.65
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "hip",
+    "colour": "#f0ece2",
+    "cap_colour": "#9a5a3e"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    18,
+    0.65
+   ],
+   "params": {
+    "radius": 3.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.65
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     2.5,
+     -48
+    ],
+    "end": [
+     2.5,
+     50
+    ],
+    "count": 8,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 4
+     }
+    }
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    8,
+    36,
+    0.65
+   ],
+   "params": {
+    "width": 24,
+    "depth": 36,
+    "count": 10,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -6,
+    -38,
+    0.65
+   ],
+   "params": {
+    "width": 24,
+    "depth": 20,
+    "count": 7,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   130,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-osm-way-206543431",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Outline only; paths, pavilion, fountain, trees typed, no photo found."
+ }
+}

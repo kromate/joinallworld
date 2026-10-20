@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-osm-node-13134140271",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: hospital under construction, exposed reinforced-concrete frame with unfinished block infill; no photo found"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1428726748",
+   "used": "footprint: containing building, 236 m2, about 19 x 13 m; lower three storeys extruded, topped by a bare column frame and slab"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 16,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a9a69c",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#8c8a82",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84",
+    "material": "concrete",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 3.8,
+      "colour": "#b4b0a4"
+     }
+    },
+    "mode": "grid",
+    "cols": 4,
+    "rows": 3,
+    "dx": 5,
+    "dy": 5,
+    "centred": true,
+    "yaw": -25
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     12
+    ],
+    "z0": 14.8,
+    "height": 0.4,
+    "colour": "#8c8a82"
+   },
+   "rotDeg": -25
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "legs": 1.2,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -4,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -18,
+    6
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    24,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real small outline used, open top frame, slab and infill state are schematic; the brief's 70 x 25 m size is not supported by OSM."
+ }
+}

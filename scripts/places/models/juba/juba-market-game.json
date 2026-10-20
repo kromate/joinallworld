@@ -1,0 +1,349 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/juba.json#juba-market-game",
+   "used": "unplanned open market ~100x80 m: rows of tarpaulin awnings in faded colours, corrugated lock-up range at the back, two zinc sheds, red earth ground, broadleaf shade trees. OSM match is a 3.7 m node box inside a 36,500 m2 market area, not used as a building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lock-ups",
+   "footprint": {
+    "rect": [
+     56,
+     5
+    ]
+   },
+   "at": [
+    0,
+    32
+   ],
+   "rotDeg": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#b8553a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-shed",
+   "footprint": {
+    "rect": [
+     8,
+     34
+    ]
+   },
+   "at": [
+    40,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb68e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7f8489",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-shed",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    18
+   ],
+   "rotDeg": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/awning",
+     "params": {
+      "width": 3.0,
+      "depth": 2.2,
+      "colours": [
+       "#b8553a",
+       "#cdb68e",
+       "#6d8fb0",
+       "#7aa07a",
+       "#d4a94a",
+       "#a79c8a"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30.0,
+     -30,
+     0
+    ],
+    "end": [
+     16.0,
+     -30,
+     0
+    ],
+    "count": 13
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/awning",
+     "params": {
+      "width": 3.0,
+      "depth": 2.2,
+      "colours": [
+       "#cdb68e",
+       "#6d8fb0",
+       "#7aa07a",
+       "#d4a94a",
+       "#a79c8a",
+       "#b8553a"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27.5,
+     -22,
+     0
+    ],
+    "end": [
+     18.5,
+     -22,
+     0
+    ],
+    "count": 12
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/awning",
+     "params": {
+      "width": 3.0,
+      "depth": 2.2,
+      "colours": [
+       "#6d8fb0",
+       "#7aa07a",
+       "#d4a94a",
+       "#a79c8a",
+       "#b8553a",
+       "#cdb68e"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30.0,
+     -14,
+     0
+    ],
+    "end": [
+     16.0,
+     -14,
+     0
+    ],
+    "count": 11
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/awning",
+     "params": {
+      "width": 3.0,
+      "depth": 2.2,
+      "colours": [
+       "#7aa07a",
+       "#d4a94a",
+       "#a79c8a",
+       "#b8553a",
+       "#cdb68e",
+       "#6d8fb0"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27.5,
+     -6,
+     0
+    ],
+    "end": [
+     18.5,
+     -6,
+     0
+    ],
+    "count": 13
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/awning",
+     "params": {
+      "width": 3.0,
+      "depth": 2.2,
+      "colours": [
+       "#d4a94a",
+       "#a79c8a",
+       "#b8553a",
+       "#cdb68e",
+       "#6d8fb0",
+       "#7aa07a"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30.0,
+     2,
+     0
+    ],
+    "end": [
+     16.0,
+     2,
+     0
+    ],
+    "count": 12
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/awning",
+     "params": {
+      "width": 3.0,
+      "depth": 2.2,
+      "colours": [
+       "#a79c8a",
+       "#b8553a",
+       "#cdb68e",
+       "#6d8fb0",
+       "#7aa07a",
+       "#d4a94a"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27.5,
+     10,
+     0
+    ],
+    "end": [
+     18.5,
+     10,
+     0
+    ],
+    "count": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or survey of the market; layout is typical open-air market, not mapped stall by stall."
+ }
+}

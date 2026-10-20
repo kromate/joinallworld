@@ -1,0 +1,387 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-felix-eboue-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/48986326",
+   "used": "named outline: oval bowl ~190x130 m with a NE-SW long axis; modelled as a smaller ground bowl, the real outline is too large for the clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      60.0,
+      0.0
+     ],
+     [
+      59.09,
+      7.99
+     ],
+     [
+      56.38,
+      15.73
+     ],
+     [
+      51.96,
+      23.0
+     ],
+     [
+      45.96,
+      29.57
+     ],
+     [
+      38.57,
+      35.24
+     ],
+     [
+      30.0,
+      39.84
+     ],
+     [
+      20.52,
+      43.23
+     ],
+     [
+      10.42,
+      45.3
+     ],
+     [
+      0.0,
+      46.0
+     ],
+     [
+      -10.42,
+      45.3
+     ],
+     [
+      -20.52,
+      43.23
+     ],
+     [
+      -30.0,
+      39.84
+     ],
+     [
+      -38.57,
+      35.24
+     ],
+     [
+      -45.96,
+      29.57
+     ],
+     [
+      -51.96,
+      23.0
+     ],
+     [
+      -56.38,
+      15.73
+     ],
+     [
+      -59.09,
+      7.99
+     ],
+     [
+      -60.0,
+      0.0
+     ],
+     [
+      -59.09,
+      -7.99
+     ],
+     [
+      -56.38,
+      -15.73
+     ],
+     [
+      -51.96,
+      -23.0
+     ],
+     [
+      -45.96,
+      -29.57
+     ],
+     [
+      -38.57,
+      -35.24
+     ],
+     [
+      -30.0,
+      -39.84
+     ],
+     [
+      -20.52,
+      -43.23
+     ],
+     [
+      -10.42,
+      -45.3
+     ],
+     [
+      -0.0,
+      -46.0
+     ],
+     [
+      10.42,
+      -45.3
+     ],
+     [
+      20.52,
+      -43.23
+     ],
+     [
+      30.0,
+      -39.84
+     ],
+     [
+      38.57,
+      -35.24
+     ],
+     [
+      45.96,
+      -29.57
+     ],
+     [
+      51.96,
+      -23.0
+     ],
+     [
+      56.38,
+      -15.73
+     ],
+     [
+      59.09,
+      -7.99
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#7a9a5a"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 42,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 14,
+    "rise": 0.6,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 14,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#b86b4a",
+    "concreteColour": "#c8c2b4",
+    "underColour": "#a8a398",
+    "canopy": {
+     "height": 3.8,
+     "depth": 11,
+     "thickness": 0.5,
+     "slopeDeg": 3,
+     "colour": "#8c8c88",
+     "edgeColour": "#e5e0d3"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 42,
+    "startDeg": 25,
+    "endDeg": 155,
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "facetDeg": 14,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#c8c2b4",
+    "concreteColour": "#c8c2b4",
+    "underColour": "#a8a398"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e5e0d3",
+    "points": [
+     [
+      -64,
+      -50
+     ],
+     [
+      64,
+      -50
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.5,
+    "pillar": 1.2,
+    "colour": "#e5e0d3"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -56
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5e0d3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   150,
+   120
+  ]
+ }
+}

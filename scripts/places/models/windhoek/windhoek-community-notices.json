@@ -1,0 +1,388 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tintenpalast,_Windhoek,_Namibia,_2018-08-04,_DD_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Diego Delso",
+   "view": "front",
+   "file": "/tmp/places-evidence/windhoek/tinten.jpg",
+   "used": "long two-storey cream block with a central recessed two-storey colonnade/loggia, low grey hip roof, flight of stone steps up a terraced rock garden, lawn with a low retaining wall, tall date palms and pink bougainvillea hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/907342843",
+   "used": "size check only: 65 x 11 m hipped, 3 levels, tile roof; nearest match, not used as outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     62,
+     12
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 8,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfbf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.2,
+    "bay": 3.4,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d7a70",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     12,
+     26
+    ]
+   },
+   "at": [
+    -25,
+    29
+   ],
+   "z0": 8,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.9,
+    "bay": 4.5,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d7a70",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     12,
+     26
+    ]
+   },
+   "at": [
+    25,
+    29
+   ],
+   "z0": 8,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.9,
+    "bay": 4.5,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d7a70",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     72,
+     58
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8068",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89d88"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    3.2,
+    8
+   ],
+   "params": {
+    "length": 26,
+    "count": 9,
+    "height": 9,
+    "radius": 0.3,
+    "kind": "square",
+    "beamHeight": 0.5,
+    "roofDepth": 3,
+    "colour": "#f4efe2",
+    "roofColour": "#8d8f86"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 8,
+    "run": 1.2,
+    "count": 14,
+    "colour": "#a39887"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -13,
+    3,
+    19.5
+   ],
+   "params": {
+    "length": 26,
+    "height": 0.9,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 78,
+    "height": 0.7,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8f866f"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -24,
+    -10,
+    8
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.2,
+    "depth": 2.2,
+    "colour": "#9a3a78"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -37,
+    -6,
+    8
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15,
+    "count": 1,
+    "spread": 3
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.6,
+    "depth": 1.8,
+    "colour": "#9a3a78"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "count": 1,
+    "spread": 4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    24,
+    -10,
+    8
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.2,
+    "depth": 2.2,
+    "colour": "#9a3a78"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    37,
+    -6,
+    8
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15,
+    "count": 1,
+    "spread": 3
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    30,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.6,
+    "depth": 1.8,
+    "colour": "#9a3a78"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    42,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "count": 1,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   110,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -10
+    ],
+    "height": 10
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-community-notices",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Evidence mismatch noted: venue id is community-notices but the brief names the National Assembly and the photo is the Tintenpalast, so the building is kept as the brief intends. Colonnade reads as a flat-fronted portico rather than a recessed loggia; terrace is a plain stone block with a ramp-like stair, not a rocky terraced garden; hedges and palms are generic low-poly; roof pitch is low but not tiled-texture."
+ }
+}

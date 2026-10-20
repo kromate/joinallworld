@@ -1,0 +1,257 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/452729966",
+   "used": "named marketplace outline 108 x 53 m on a 48 degree axis; hall and lock-up rows aligned to it"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/rabat.json#rabat-market-game",
+   "used": "neighbourhood souk: covered halls, lock-up shops with awnings, umbrella stalls; corrugated roofs, render in cream and ochre"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 28,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "covered-hall",
+   "footprint": {
+    "rect": [
+     66,
+     24
+    ]
+   },
+   "at": [
+    1.5,
+    0.0
+   ],
+   "rotDeg": 48.3,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2c2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "bands": "#b9703f",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "shape": "arch",
+      "bay": 5.5,
+      "opening": 0.62,
+      "height": 0.8,
+      "depth": 0.6,
+      "storeys": 1,
+      "colour": "#8a6b4a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8a84",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     40,
+     6
+    ]
+   },
+   "at": [
+    1.5,
+    0.0
+   ],
+   "rotDeg": 48.3,
+   "z0": 7.5,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9b4a6",
+    "windows": "louvre",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8a84",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "lockups-n",
+   "at": [
+    19.0,
+    -20.95
+   ],
+   "rotDeg": 48.3,
+   "params": {
+    "length": 60,
+    "depth": 4,
+    "height": 3.4,
+    "roof": "shed",
+    "unit_width": 3.0,
+    "awning_colours": [
+     "#b9703f",
+     "#e8dcc0",
+     "#2f6b4f"
+    ],
+    "wall_colour": "#e8dcc0",
+    "roof_colour": "#8c8a84",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "lockups-s",
+   "at": [
+    -16.0,
+    20.95
+   ],
+   "rotDeg": 228.3,
+   "params": {
+    "length": 60,
+    "depth": 4,
+    "height": 3.4,
+    "roof": "shed",
+    "unit_width": 3.0,
+    "awning_colours": [
+     "#c9a56b",
+     "#e8dcc0",
+     "#8a3b30"
+    ],
+    "wall_colour": "#d9d2c2",
+    "roof_colour": "#8c8a84",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-a",
+   "at": [
+    -6.14,
+    -33.38
+   ],
+   "rotDeg": 48.3,
+   "params": {
+    "count": 14,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "colours": [
+     "#b9703f",
+     "#e8dcc0",
+     "#2f6b4f",
+     "#c9a56b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-b",
+   "at": [
+    -30.78,
+    -11.42
+   ],
+   "rotDeg": 48.3,
+   "params": {
+    "count": 14,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "colours": [
+     "#8a3b30",
+     "#e8dcc0",
+     "#3a6ea5",
+     "#c9a56b"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "id": "hall-awning",
+   "at": [
+    11.06,
+    -8.51
+   ],
+   "rotDeg": 48.3,
+   "params": {
+    "width": 22,
+    "depth": 2.2,
+    "height": 3.2,
+    "colours": [
+     "#b9703f",
+     "#e8dcc0"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "kiosk",
+   "at": [
+    34.08,
+    24.54
+   ],
+   "rotDeg": 48.3,
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#3f7a4a"
+   }
+  },
+  {
+   "type": "parked-car",
+   "id": "van",
+   "at": [
+    -26.44,
+    -31.36
+   ],
+   "rotDeg": 48.3,
+   "params": {
+    "yaw": 0,
+    "colour": "#d8d8d4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for Souk d'Akkari; the hall, rows and stalls are a typical Moroccan souk layout placed on the real outline's axis, not observed."
+ }
+}

@@ -1,0 +1,388 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Executive_Mansion_Apr_09.JPG",
+   "licence": "Public domain",
+   "author": "Wikimedia Commons user (my-self)",
+   "view": "front",
+   "file": "/tmp/places-evidence/monrovia/mansion.jpg",
+   "used": "boxy multi-storey block wrapped in olive-tan perforated screens between dark vertical piers, flat roof with thin cornice and a lower set-back roof pavilion, small projecting entrance canopy, dark pillared railing fence in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/100219509",
+   "used": "overall extent only (containing match, ragged outline not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     72,
+     28
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#6b6b4a",
+    "windows": "none",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.6,
+       2.2
+      ],
+      "colours": [
+       "#6b6b4a",
+       "#75754f",
+       "#5f5f42"
+      ],
+      "slits": {
+       "fraction": 0.35,
+       "colour": "#2b2b26"
+      },
+      "faces": [
+       "front",
+       "left",
+       "right",
+       "back"
+      ]
+     },
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 1.0,
+      "spacing": 4.5,
+      "colour": "#4b4d4d",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#55575a",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ],
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f716f",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    8
+   ],
+   "z0": 16,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8f8c",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-void",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6d6e6b",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6e6b"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -9,
+    7.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 7,
+    "height": 0,
+    "thickness": 0.6,
+    "columns": 2,
+    "colour": "#6f7171"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b5b2a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0.8
+   ],
+   "params": {
+    "length": 72,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "railing",
+    "pillarEvery": 8,
+    "colour": "#111111"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#b22234",
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-wall",
+   "footprint": {
+    "rect": [
+     72,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2e3030",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e3030"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -24,
+     0
+    ],
+    "end": [
+     36,
+     -24,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#232626",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.8,
+         0.8
+        ]
+       },
+       {
+        "z": 3,
+        "rect": [
+         0.8,
+         0.8
+        ]
+       },
+       {
+        "z": 3.2,
+        "rect": [
+         1.0,
+         1.0
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -33,
+     -6,
+     16
+    ],
+    "end": [
+     -33,
+     -6,
+     16
+    ],
+    "count": 1,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#9a9c9a",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.2,
+         0.2
+        ]
+       },
+       {
+        "z": 5,
+        "rect": [
+         0.1,
+         0.1
+        ]
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     0
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -4
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "oblique photo; screens are panel slits not true perforated grid, no porch second storey detail, rooftop antennas minimal, fence simplified"
+ }
+}

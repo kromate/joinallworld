@@ -1,0 +1,141 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1090283912",
+   "used": "containing-building outline 538 m2, 2 wings; used as the main volume"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two storeys, hip tile roof, terrace, awning, blank board; crenellation guess kept as a low parapet run"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#a8553a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2.2,
+    "colours": [
+     "#a8553a",
+     "#ece6d8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#6e3a2a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "parapet",
+   "at": [
+    -3,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "tree",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 8,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM outline used, castle crenellation is a guess (low parapet)."
+ }
+}

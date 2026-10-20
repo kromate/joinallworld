@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/443030762",
+   "used": "not used: containing building is the Residence 2000 apartment block (64 m long), not a cafe"
+  },
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:72H_de_l%27enfant_orphelins_en_Guin%C3%A9e_Conakry_15.jpg",
+   "used": "rejected, not used: interior reading room 116 m away; not the exterior"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/conakry.json#conakry-meal-stop",
+   "used": "20x12 m cafe, glazed shopfront with covered terrace, blue-grey glass, cream render"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede6d4",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#4a6a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#c4bdae",
+    "edgeColour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -13,
+    -9
+   ],
+   "params": {
+    "height": 5,
+    "width": 2,
+    "colour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -6,
+    -8
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    6,
+    -8
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    11,
+    -13
+   ],
+   "params": {
+    "radius": 1.6,
+    "colour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -11,
+    -13
+   ],
+   "params": {
+    "radius": 1.6,
+    "colour": "#c4bdae"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo or footprint; typical cafe from brief."
+ }
+}

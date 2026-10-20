@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief tripoli-community-notices: 4-storey cream-render ministry block with flag and plain columns",
+   "used": "massing, colours, portico"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     60,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5d2a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#aaa59b",
+      "height": 0.5,
+      "at": 0.02
+     }
+    ],
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    -38,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddc99c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 4,
+    "height": 9,
+    "columns": 6,
+    "pediment": false,
+    "steps": 4,
+    "colour": "#f3efe6",
+    "roofColour": "#aaa59b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43",
+    "count": 2,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -22
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; typed cream 4-storey ministry block with portico, flags and gate."
+ }
+}

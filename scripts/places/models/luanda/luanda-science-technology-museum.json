@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-science-technology-museum",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/528180740",
+   "used": "real 121 x 76 m outline (name match, height tag 6 m), auto-fitted to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Luanda",
+   "used": "brief: pale-render exhibition block with a glazed entrance near the old fort; no photo of this building found (nearby fort photos show a different structure)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece4d1",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "bay": 7,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9190",
+    "parapet": 0.6,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-lobby",
+   "at": [
+    23.9,
+    -42.8,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "rect": [
+     12,
+     3.6
+    ],
+    "height": 8.5,
+    "colour": "#3f6b8a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    24.7,
+    -44.2,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 10,
+    "rise": 0.25,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    16.8,
+    -37.8,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#3f6b8a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.7,
+    -52.1,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    33.6,
+    -52.1,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building; outline is real but facade, entrance position and height are typed from the brief. The outline looks bastion-like and may belong to the adjacent fort grounds."
+ }
+}

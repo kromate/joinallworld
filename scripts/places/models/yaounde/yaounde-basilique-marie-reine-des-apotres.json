@@ -1,0 +1,331 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-basilique-marie-reine-des-apotres",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Basilique_Marie_-reine_des_apotres_de_Mvoly%C3%A9_01.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Z. NGNOGUE",
+   "view": "front",
+   "file": "/tmp/places-evidence/yaounde/bas2.jpg",
+   "used": "dark low overlapping roofs with wide overhangs, tall steep pointed glazed gable at the back right, white piers with painted panels on the front, palm trees, low stone parapet wall, red laterite forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Int%C3%A9rieur_Basilique_Marie-Reine_des_ap%C3%B4tres_de_Mvoly%C3%A9_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Steve Mvondo",
+   "view": "interior",
+   "used": "warm wood-brown tones, side walls of tall pastel stained glass sloping inward"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188128528",
+   "used": "footprint of the lower hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5a4636",
+    "windows": "none",
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4540",
+    "material": "metal-sheet",
+    "overhang": 4,
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    4,
+    8.5
+   ],
+   "params": {
+    "colour": "#7f9396",
+    "topColour": "#2e2b28",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       24,
+       3.2
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       16,
+       2.6
+      ],
+      "cx": 4
+     },
+     {
+      "z": 12,
+      "rect": [
+       9,
+       2.0
+      ],
+      "cx": 7.5
+     },
+     {
+      "z": 18,
+      "rect": [
+       1.2,
+       1.0
+      ],
+      "cx": 11.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -39.5,
+     0
+    ],
+    "end": [
+     30,
+     -30,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.1,
+        1.1
+       ],
+       "height": 7.5,
+       "colour": "#f2efe6"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    2,
+    7.5
+   ],
+   "params": {
+    "colour": "#33302c",
+    "topColour": "#2a2724",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       34,
+       22
+      ]
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       33,
+       21
+      ]
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       26,
+       15
+      ],
+      "cx": 3
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    4,
+    9.2
+   ],
+   "params": {
+    "colour": "#3d3a35",
+    "topColour": "#2a2724",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       20,
+       12
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       19,
+       11
+      ]
+     },
+     {
+      "z": 1.3,
+      "ellipse": [
+       12,
+       6
+      ],
+      "cx": 3
+     }
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -22,
+    -30,
+    8.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 10,
+    "height": 0.4,
+    "thickness": 0.7,
+    "colour": "#2e2b28",
+    "edgeColour": "#2a2724"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     -38.5,
+     0.9
+    ],
+    "end": [
+     26,
+     -31,
+     0.9
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        3.4,
+        0.3
+       ],
+       "height": 4.8,
+       "colour": "#8d6a45"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     0,
+     0
+    ],
+    "end": [
+     38,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 9
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.0,
+    "thickness": 0.5,
+    "colour": "#6b5f52"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "one-sided wedge gable and layered dark roofs added, painted panels simplified to flat panels; roof is stacked ellipses not fanned curved planes; OSM blob makes porch curved not recessed"
+ }
+}

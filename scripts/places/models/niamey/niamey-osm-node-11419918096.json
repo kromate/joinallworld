@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-osm-node-11419918096",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/238260863",
+   "used": "not used: an 8 x 8 m nearest building, too small to be the institute"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/niamey.json#niamey-osm-node-11419918096",
+   "used": "two-storey rendered U-shaped block about 50 x 20 m, flat roof, sports ground beside it, floodlights, flag, perimeter wall; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "institute",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     50,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#c28f5a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 4,
+    "colour": "#b5b0a6",
+    "columns": 4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     34
+    ],
+    "height": 0.08,
+    "colour": "#8f9a5e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    2,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     40,
+     22
+    ],
+    "height": 0.04,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    66,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    66,
+    18,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    14,
+    18,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#e8782a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    40,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 2,
+    "thickness": 0.25,
+    "colour": "#b5b0a6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: block layout and sports ground are typed from the brief"
+ }
+}

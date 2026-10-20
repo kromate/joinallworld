@@ -1,0 +1,1152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Independence_Square_(7667683818).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Gustavo Sugahara",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/maputo/maputo-recreation-0.jpg",
+   "used": "layout: circular roundabout with green island, stepped plinth with standing bronze statue, City Hall on the west side, white cathedral with tall spire behind, tall pale-yellow hotel slab right, tree-lined radial roads"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pra%C3%A7a_da_Independ%C3%AAncia_(18222341974).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "MOPA Maputo",
+   "view": "front",
+   "file": "/tmp/places-evidence/maputo/maputo-recreation-2.jpg",
+   "used": "City Hall: grey stone neoclassical, central six-column loggia with arched openings, flanking pavilions with low domed turrets, terracotta hipped roofs, grand stair"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/955322535",
+   "used": "square extent only (about 210 x 140 m); composed centred on the statue roundabout"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.7,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "roundabout",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 14,
+    "road_width": 24,
+    "island_colour": "#6f9a4a",
+    "trees": 0,
+    "kerb": true
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "height": 10,
+    "width": 6,
+    "steps": 4,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#8c7440"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -47.0,
+    -17.1,
+    0.08
+   ],
+   "rotDeg": -70,
+   "params": {
+    "width": 12,
+    "depth": 76,
+    "border": 0,
+    "colour": "#4d4f52",
+    "border_colour": "#4d4f52"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -17.1,
+    -47.0,
+    0.08
+   ],
+   "rotDeg": -20,
+   "params": {
+    "width": 12,
+    "depth": 76,
+    "border": 0,
+    "colour": "#4d4f52",
+    "border_colour": "#4d4f52"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    17.1,
+    -47.0,
+    0.08
+   ],
+   "rotDeg": 20,
+   "params": {
+    "width": 12,
+    "depth": 76,
+    "border": 0,
+    "colour": "#4d4f52",
+    "border_colour": "#4d4f52"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    47.0,
+    -17.1,
+    0.08
+   ],
+   "rotDeg": 70,
+   "params": {
+    "width": 12,
+    "depth": 76,
+    "border": 0,
+    "colour": "#4d4f52",
+    "border_colour": "#4d4f52"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    47.0,
+    -17.1,
+    0.08
+   ],
+   "rotDeg": 70,
+   "params": {
+    "width": 12,
+    "depth": 76,
+    "border": 0,
+    "colour": "#4d4f52",
+    "border_colour": "#4d4f52"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.7,
+     -61.0,
+     0
+    ],
+    "end": [
+     -25.0,
+     -92.0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28.7,
+     -55.5,
+     0
+    ],
+    "end": [
+     -40.0,
+     -86.5,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     28.7,
+     -55.5,
+     0
+    ],
+    "end": [
+     40.0,
+     -86.5,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     13.7,
+     -61.0,
+     0
+    ],
+    "end": [
+     25.0,
+     -92.0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     61.0,
+     -13.7,
+     0
+    ],
+    "end": [
+     92.0,
+     -25.0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     55.5,
+     -28.7,
+     0
+    ],
+    "end": [
+     86.5,
+     -40.0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -55.5,
+     -28.7,
+     0
+    ],
+    "end": [
+     -86.5,
+     -40.0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -61.0,
+     -13.7,
+     0
+    ],
+    "end": [
+     -92.0,
+     -25.0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -25,
+    31,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.3,
+    "run": 1.8,
+    "count": 2,
+    "colour": "#b7b0a0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall-wing-l",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    -45,
+    44
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#9d9a92",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.0,
+      "depth": 0.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-wing-r",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    -5,
+    44
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#9d9a92",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.0,
+      "depth": 0.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-centre",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -25,
+    44
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#94918a",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "plinth": 1.5,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.0,
+      "depth": 0.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#807a6e",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-turret-l",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -34,
+    44
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8c8575",
+    "windows": "round",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#5f5d58",
+    "rise": 2.2
+   },
+   "z0": 12.5
+  },
+  {
+   "type": "mass",
+   "id": "hall-turret-r",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -16,
+    44
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8c8575",
+    "windows": "round",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#5f5d58",
+    "rise": 2.2
+   },
+   "z0": 12.5
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -25,
+    34,
+    2.0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.6,
+    "height": 6.5,
+    "columns": 6,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#aaa597",
+    "roofColour": "#8a8374"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     15,
+     30
+    ]
+   },
+   "at": [
+    28,
+    62
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bay": 8,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e7e3da",
+    "pitch": 26,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     20.2,
+     50,
+     0
+    ],
+    "end": [
+     20.2,
+     74,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.2
+      ],
+      "height": 9,
+      "colour": "#f1efe8",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     35.8,
+     50,
+     0
+    ],
+    "end": [
+     35.8,
+     74,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.2
+      ],
+      "height": 9,
+      "colour": "#f1efe8",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "cathedral-tower",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    28,
+    44.5
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f2ec",
+    "windows": "pointed",
+    "windowRatio": 0.08,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e7e3da",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    28,
+    44.5,
+    24
+   ],
+   "params": {
+    "baseWidth": 4.5,
+    "height": 17,
+    "shaftHeight": 2,
+    "sides": 4,
+    "colour": "#f0eee8",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    44.5,
+    40.5
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 3,
+    "colour": "#f0eee8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    44.5,
+    42.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "height": 0.2,
+    "colour": "#f0eee8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     44,
+     11
+    ]
+   },
+   "at": [
+    60,
+    58
+   ],
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d79c",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "bay": 14,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e3d79c",
+       "#d2c485"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3a8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-podium",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    60,
+    48
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d7c98a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3a8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah-house",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    62,
+    -16
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe9dc",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7fae9a",
+    "pitch": 28,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    62,
+    -23,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 2.6,
+    "height": 3.2,
+    "balustrade": true,
+    "steps": false,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    76,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "height": 34,
+    "colour": "#cfc7b4",
+    "windows": "none",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    78,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     10,
+     12
+    ],
+    "height": 42,
+    "colour": "#bdb7ab",
+    "windows": "none",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15,
+    76,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "height": 28,
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    78,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "height": 36,
+    "colour": "#c7c0b0",
+    "windows": "none",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    72,
+    30,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "height": 30,
+    "colour": "#d4cbb2",
+    "windows": "none",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52,
+    72,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     12
+    ],
+    "height": 26,
+    "colour": "#c9c2b0",
+    "windows": "none",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -60,
+    56,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "height": 22,
+    "colour": "#d0c8b4",
+    "windows": "none",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -25,
+    36,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ring road reads as a plain circle with radial slabs, not the real oval loop; avenue trees only partial; cathedral is a gabled nave rather than barrel-vaulted with transepts; hotel and backdrop blocks are plain boxes without balconies; green verandah building simplified; City Hall lacks loggia detail; ground is flat grass (real site is paved asphalt)"
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-way-790417508",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/319162760",
+   "used": "real pinwheel ward-block outline (name match, ~105x72 m); heights, ochre stucco and ribbon windows from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 14
+   },
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9b36a",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bay": 10,
+    "bands": "#efe3c4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    -3,
+    -60,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 7,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "amb-bay",
+   "at": [
+    22,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#cfc6b0",
+    "roofColour": "#9a968d",
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "cross-board",
+   "at": [
+    -3,
+    -64,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "bottom": 1,
+    "colour": "#f3f3f0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: storey count, window rhythm and colours come from the brief; corridors and courtyards only implied by outline."
+ }
+}

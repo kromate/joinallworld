@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-blackitude-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BLackitude_Museum.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Awinda",
+   "view": "side",
+   "file": "/tmp/places-evidence/yaounde/bm1.jpg",
+   "used": "white painted long wall with a projecting cornice band, small barred windows in a row on the upper floors, low barred vents at ground, small balcony at the corner, rubble stone neighbour wall, tall tower beside"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_la_Blackitude_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Manuella sali",
+   "view": "interior",
+   "used": "blue-and-white patterned interior only, not modelled outside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/420509981",
+   "used": "overall size (36 x 21 m rectangle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.53,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     34,
+     19
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d9d3c3",
+    "faces": {
+     "back": "none",
+     "right": "plain"
+    },
+    "bay": 7.5,
+    "groundKind": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ac",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-bay",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    14.5,
+    -12
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e1d3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ac",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#b9a98f"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    10,
+    -9.6,
+    8.5
+   ],
+   "params": {
+    "width": 3.0,
+    "depth": 1.4,
+    "wall_colour": "#efe9da"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    17.5,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.4,
+    "thickness": 0.5,
+    "colour": "#b08f5e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "blue balconies removed, plain white render with cornice bands and one corner balcony; windows are plain casements not barred grilles; red wall inscription omitted (no lettering); building is wider than the tall slab in the photo"
+ }
+}

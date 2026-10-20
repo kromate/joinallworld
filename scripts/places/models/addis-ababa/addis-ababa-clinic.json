@@ -1,0 +1,118 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2717135",
+   "used": "real hospital outline (about 132 x 68 m), orientation and fit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; storey count and colours from the brief; older low blocks of the real campus are not separated."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 10,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#9fb3b0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "bay",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "id": "cross",
+   "at": [
+    0,
+    -40,
+    9
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "walk",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "width": 2.6,
+    "height": 3.0
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -40,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-clinic"
+}

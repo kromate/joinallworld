@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: one-storey L-shaped rendered NGO clinic with corrugated roof; no photo or outline found, so a modest typical building"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     18,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#6e8f6a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a33",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    -5.5,
+    8.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "bands": "#6e8f6a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f442f",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    3,
+    -5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3.5,
+    "height": 3.2,
+    "columns": 2,
+    "colour": "#b5ada0",
+    "edgeColour": "#6e8f6a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.8,
+    "bottom": 1.6,
+    "colour": "#f4f1e8",
+    "frameColour": "#c8362f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text-only: generic L-shaped clinic; real size, layout and colours unknown."
+ }
+}

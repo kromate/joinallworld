@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/645022387",
+   "used": "small 18 x 14 m building at the yard (containing match only): the tin office/waiting shed; yard layout from the brief (queue of vans, kiosks)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tin-shed",
+   "footprint": {
+    "osm": true,
+    "fit": 18
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#bdb6a4",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b5a45",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -4,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 5,
+    "height": 3.2,
+    "form": "shed",
+    "colour": "#8b5a45",
+    "accent": "#d9b98a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#3f7a8a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    16,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#c0883f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#9a5a45"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -18,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#efeee8",
+    "stripe": "#2f6b8a",
+    "count": 8,
+    "spacing": 3.0,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -24,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#e6d9b0",
+    "stripe": "#8b3a2e",
+    "count": 1,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#d9b98a",
+    "frameColour": "#8b5a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint and brief only, details typical for the city."
+ }
+}

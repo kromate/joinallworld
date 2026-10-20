@@ -1,0 +1,463 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:1970s_National_Museum_in_Salisbury,_Rhodesia_6847123932.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Rob from United Kingdom",
+   "view": "front",
+   "file": "/tmp/places-evidence/harare/museum.jpg",
+   "used": "flat-roofed cream-clad block, vertical blue-grey piers along the long wing, cantilevered cream entrance box on a glazed ground floor, breeze-block lattice screen, stone base wall, low planting with red beds, lawn in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8153277",
+   "used": "overall extent of about 57 x 36 m (irregular multi-wing outline simplified to the wing plus entrance block seen in the photo)"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q8071996",
+   "used": "identity: museum of 1903, photo is the Wikidata P18 image"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "entrance box crest, stone cladding texture on rubble wall and sculptures omitted; lattice screen is a single panel; wing and box heights estimated from the photo"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     38,
+     18
+    ]
+   },
+   "at": [
+    -20,
+    6
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8cc",
+    "windows": "none",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       3.2,
+       1.4
+      ],
+      "colours": [
+       "#efe8cc",
+       "#e6dfc2",
+       "#f3edd6"
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8995a3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -3.3,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -37,
+     0,
+     0
+    ],
+    "end": [
+     -5,
+     0,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.6
+      ],
+      "height": 11.6,
+      "colour": "#7f8da1",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "screen",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    2,
+    1
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4dfd0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       0.9,
+       0.9
+      ],
+      "colours": [
+       "#e4dfd0",
+       "#d2cdbd",
+       "#efeadc"
+      ],
+      "slits": {
+       "fraction": 0.35,
+       "colour": "#5d584e"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     19,
+     8
+    ]
+   },
+   "at": [
+    14,
+    4
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3b434c",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#2d343c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-box",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    15,
+    0
+   ],
+   "z0": 4,
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#f1ebd3",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       3,
+       1.3
+      ],
+      "colours": [
+       "#f1ebd3",
+       "#e8e1c8",
+       "#f4eedb"
+      ],
+      "faces": [
+       "front",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dcc8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-wall",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    28,
+    -4
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8b7d68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b7d68"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 4,
+    "colour": "#d8d3c2"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 1,
+    "spacing": 10
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -34,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 3,
+    "colour": "#b43a3a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 3,
+    "colour": "#b43a3a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 3,
+    "colour": "#b43a3a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    22,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.5,
+    "colour": "#2f6b3a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    13,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     5,
+     0,
+     0
+    ],
+    "end": [
+     25,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 4,
+      "colour": "#d8d2bc",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 3,
+    "colour": "#b43a3a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -1,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 3,
+    "colour": "#b43a3a",
+    "hedge": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   84,
+   44
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-human-sciences-museum"
+}

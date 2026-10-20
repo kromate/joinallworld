@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1069654816",
+   "used": "terminal building outline (87 x 58 m, 1 level, flat roof, cement block); bays and shelters from the brief, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 170,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8ccb2",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": "#2a5d8f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084",
+    "material": "corrugated",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 80,
+    "depth": 8,
+    "height": 4.5,
+    "columns": 8,
+    "colour": "#7b8084",
+    "edgeColour": "#2a5d8f"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 80,
+    "depth": 8,
+    "height": 4.5,
+    "columns": 8,
+    "colour": "#7b8084",
+    "edgeColour": "#e8c24a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -54,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "kind": "coach",
+    "density": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "colour": "#2a5d8f"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       3,
+       3
+      ]
+     },
+     "height": 2.6,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#e8c24a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#7b8084"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -34
+    ],
+    "end": [
+     40,
+     -34
+    ],
+    "count": 5
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     -10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "outline from OSM only; shelters, bays and kiosks are assumed from the brief"
+ }
+}

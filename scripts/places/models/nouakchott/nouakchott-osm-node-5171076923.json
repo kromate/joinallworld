@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-osm-node-5171076923",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Only a name and coordinates; OSM containing outline is a 1384 m2 irregular building=yes of unknown use, not used. Brief: 60x40 m open sand lot, few acacias, low wall."
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "thickness": 0.35,
+    "colour": "#d9b98a",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.35,
+    "colour": "#d9b98a",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    30,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.35,
+    "colour": "#d9b98a",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "thickness": 0.35,
+    "colour": "#d9b98a",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    16,
+    10
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3c9a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "What stands on the lot is unknown; modelled as walled sand lot with trees and a small shelter."
+ }
+}

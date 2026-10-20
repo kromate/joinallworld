@@ -1,0 +1,378 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: rocky coastal viewpoint (no OSM outline, no photo found; Commons Anse Boileau hit was an unrelated bay sunset)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -8
+     ],
+     [
+      -6,
+      -11
+     ],
+     [
+      6,
+      -10
+     ],
+     [
+      13,
+      -5
+     ],
+     [
+      12,
+      5
+     ],
+     [
+      4,
+      10
+     ],
+     [
+      -7,
+      9
+     ],
+     [
+      -13,
+      3
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#c9b98f"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    -2,
+    2,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -6,
+        -4
+       ],
+       [
+        5,
+        -5
+       ],
+       [
+        7,
+        3
+       ],
+       [
+        -1,
+        6
+       ],
+       [
+        -7,
+        2
+       ]
+      ],
+      "colour": "#8a8780"
+     },
+     {
+      "z": 2.2,
+      "poly": [
+       [
+        -5,
+        -3
+       ],
+       [
+        3,
+        -3.5
+       ],
+       [
+        5,
+        2
+       ],
+       [
+        -1,
+        4
+       ],
+       [
+        -5,
+        1
+       ]
+      ],
+      "colour": "#6b6a66"
+     },
+     {
+      "z": 3.4,
+      "poly": [
+       [
+        -3,
+        -2
+       ],
+       [
+        1.5,
+        -2
+       ],
+       [
+        3,
+        1
+       ],
+       [
+        -1,
+        2.5
+       ],
+       [
+        -3,
+        0.5
+       ]
+      ],
+      "colour": "#8a8780"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    7,
+    -3,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.6,
+       2.0
+      ],
+      "colour": "#6b6a66"
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       1.9,
+       1.5
+      ],
+      "colour": "#8a8780"
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "colour": "#6b6a66"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    -9,
+    -4,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.0,
+       1.6
+      ],
+      "colour": "#8a8780"
+     },
+     {
+      "z": 1.3,
+      "ellipse": [
+       1.4,
+       1.1
+      ],
+      "colour": "#6b6a66"
+     },
+     {
+      "z": 1.8,
+      "ellipse": [
+       0.6,
+       0.5
+      ],
+      "colour": "#8a8780"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    -10,
+    7,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.4,
+       1.8
+      ],
+      "colour": "#6b6a66"
+     },
+     {
+      "z": 2.0,
+      "ellipse": [
+       1.6,
+       1.2
+      ],
+      "colour": "#8a8780"
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       0.7,
+       0.6
+      ],
+      "colour": "#6b6a66"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -9
+     ],
+     [
+      -8,
+      -6
+     ],
+     [
+      -3,
+      -5
+     ],
+     [
+      1,
+      -8
+     ],
+     [
+      4,
+      -6
+     ],
+     [
+      8,
+      -1
+     ],
+     [
+      7,
+      4
+     ]
+    ],
+    "section": {
+     "rect": [
+      1.2,
+      0.1
+     ]
+    },
+    "colour": "#d8c9a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    6,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    6,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -2,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence: granite boulder outcrop, sand apron and path are typical of Seychelles coastal viewpoints, not this place's real layout."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-node-9694888508"
+}

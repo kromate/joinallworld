@@ -1,0 +1,508 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parc_De_la_Valle_de_la_N'Sele_Kinshasa_DRC.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Raht (Wikimedia Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/kinshasa/nsele2.jpg",
+   "used": "entrance: broad brown arch sweeping up from the left over the road, red slanted steel columns, timber sign board with thatched cap on top, small brick gatehouse with dark hip roof, green-roofed building left, oil palms, pinkish paved road, green hills behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nsele_Valley_Park,_Kinshasa,_DR_Congo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "EdwinAlden.1995",
+   "view": "street",
+   "file": "/tmp/places-evidence/kinshasa/nsele1.jpg",
+   "used": "setting only: tall green grass savannah, rolling green hills, scattered palms"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Nsele_Valley_Park",
+   "used": "plane-wreck restaurant, solar array, water tank on the plateau (placed behind the gate)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "id": "great-arch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      4.5,
+      5.0
+     ]
+    },
+    "points": [
+     [
+      -22,
+      0,
+      1
+     ],
+     [
+      -17,
+      0,
+      5
+     ],
+     [
+      -11,
+      0,
+      8.2
+     ],
+     [
+      -4,
+      0,
+      9.4
+     ],
+     [
+      4,
+      0,
+      9.4
+     ],
+     [
+      11,
+      0,
+      8.6
+     ],
+     [
+      15,
+      0,
+      5
+     ],
+     [
+      17,
+      0,
+      0.5
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#4a2a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-block",
+   "at": [
+    0,
+    -2.3,
+    8.4
+   ],
+   "params": {
+    "rect": [
+     22,
+     1.2
+    ],
+    "height": 4.2,
+    "colour": "#8a6144",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "thatch-cap",
+   "at": [
+    0,
+    -1.2,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     24.5,
+     4.0
+    ],
+    "height": 1.4,
+    "topScale": 0.88,
+    "colour": "#98804e",
+    "material": "thatch"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter-band",
+   "at": [
+    0,
+    -3.0,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     17,
+     0.15
+    ],
+    "height": 1.3,
+    "colour": "#c9a67c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gatehouse",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 3.2,
+    "colour": "#b58b66",
+    "material": "brick",
+    "windows": "rect",
+    "windowRatio": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "gatehouse-roof",
+   "at": [
+    10,
+    6,
+    3.2
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#3a3a3d",
+    "phase": 45,
+    "profile": [
+     [
+      3.4,
+      0
+     ],
+     [
+      3.0,
+      0.2
+     ],
+     [
+      0,
+      1.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-sign",
+   "at": [
+    10,
+    3.9,
+    2.3
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "height": 0.8,
+    "colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-l",
+   "at": [
+    -17,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     1.6
+    ],
+    "height": 1.3,
+    "colour": "#a9a9a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-r",
+   "at": [
+    16,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.6
+    ],
+    "height": 1.3,
+    "colour": "#a9a9a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-hall",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -42,
+    36
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c3b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f8a57",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    40
+   ],
+   "height": 3.4,
+   "wall": {
+    "material": "timber",
+    "colour": "#a68a64",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b6f73",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 8,
+    "tilt": 18
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    28,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 3,
+    "tankHeight": 4,
+    "legHeight": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 12,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    70,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 70
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    4,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#d9dbdc"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fuselage",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 2.1
+    },
+    "points": [
+     [
+      20,
+      62,
+      2.4
+     ],
+     [
+      44,
+      62,
+      2.4
+     ]
+    ],
+    "colour": "#e4e6e6",
+    "n": 10
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "col-r",
+   "params": {
+    "section": {
+     "rect": [
+      1.3,
+      1.3
+     ]
+    },
+    "points": [
+     [
+      14.5,
+      -1,
+      0
+     ],
+     [
+      16.5,
+      -1,
+      8.2
+     ]
+    ],
+    "colour": "#8c3b2e"
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -1.5,
+     0
+    ],
+    "end": [
+     -16.5,
+     -1.5,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.4,
+        0.4
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        3.5,
+        0,
+        7
+       ]
+      ],
+      "colour": "#8c3b2e"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   70,
+   50
+  ],
+  "forecourtColour": "#b89a8c"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Arch flatter and sign flush on crown after critic fixes, but arch is still more rounded and narrower than the photo's heavy flat band; slanted red columns are mostly hidden behind the arch from this camera; gatehouse is small and hills, grass and pickup are not modelled."
+ }
+}

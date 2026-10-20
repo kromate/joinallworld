@@ -1,0 +1,911 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Addis_abeba,_chiesa_della_trinit%C3%A0,_esterno_02.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Sailko",
+   "view": "front",
+   "file": "/tmp/places-evidence/addis-ababa/trin1.jpg",
+   "used": "flat ochre-limestone front with seven round arches (taller central arch), banded cornice, stepped baroque attic with pinnacles and cross, two corner towers with grey onion domes, statues on pedestals, broad steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Holy_Trinity_Cathedral_Addis_Abeba.jpg",
+   "licence": "CC BY 2.0",
+   "author": "VBzi",
+   "view": "street",
+   "file": "/tmp/places-evidence/addis-ababa/trin2.jpg",
+   "used": "grey-green central dome with lantern and cross over ochre drum"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/43456286",
+   "used": "real outline 54 x 26 m with east apse"
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Arches are real recessed openings with yellow/blue/teal backs but shallower than the photo and the centre arch is not double width; gable is a plain stepped pyramid without scrolls; pilasters are plain; statues are boxes; dome is hidden behind the attic."
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.32
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c8b68f",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 7.4,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 2.2,
+      "colour": "#2e2822",
+      "faces": [
+       "front"
+      ],
+      "storeys": 1
+     },
+     {
+      "type": "bands",
+      "colour": "#9d8c6c",
+      "height": 0.6,
+      "proud": 0.3,
+      "at": 0.0,
+      "floors": [
+       1
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8678",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps-wide",
+   "at": [
+    -1.9,
+    -17.5
+   ],
+   "params": {
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#a8a290",
+    "rect": [
+     56,
+     8
+    ],
+    "topColour": "#b8b2a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps-wide-2",
+   "at": [
+    -1.9,
+    -16.5
+   ],
+   "params": {
+    "z0": 1.2,
+    "height": 0.9,
+    "colour": "#a8a290",
+    "rect": [
+     52,
+     6
+    ],
+    "topColour": "#b8b2a0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-l",
+   "at": [
+    -27,
+    -15.5
+   ],
+   "params": {
+    "z0": 2.1,
+    "height": 3.2,
+    "colour": "#a49c88",
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "statue-l",
+   "at": [
+    -27,
+    -15.5
+   ],
+   "params": {
+    "z0": 5.3,
+    "height": 3.6,
+    "colour": "#6d6a58",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-r",
+   "at": [
+    27,
+    -15.5
+   ],
+   "params": {
+    "z0": 2.1,
+    "height": 3.2,
+    "colour": "#a49c88",
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "statue-r",
+   "at": [
+    27,
+    -15.5
+   ],
+   "params": {
+    "z0": 5.3,
+    "height": 3.6,
+    "colour": "#6d6a58",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-back-0",
+   "at": [
+    -22.2,
+    -12.4
+   ],
+   "params": {
+    "z0": 0.6,
+    "height": 6.5,
+    "colour": "#d8b23a",
+    "rect": [
+     3.2,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-back-1",
+   "at": [
+    -14.799999999999999,
+    -12.4
+   ],
+   "params": {
+    "z0": 0.6,
+    "height": 6.5,
+    "colour": "#3a5fa8",
+    "rect": [
+     3.2,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-back-2",
+   "at": [
+    -7.399999999999999,
+    -12.4
+   ],
+   "params": {
+    "z0": 0.6,
+    "height": 6.5,
+    "colour": "#2f8c88",
+    "rect": [
+     3.2,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-back-3",
+   "at": [
+    3.552713678800501e-15,
+    -12.4
+   ],
+   "params": {
+    "z0": 0.6,
+    "height": 6.5,
+    "colour": "#d8b23a",
+    "rect": [
+     3.2,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-back-4",
+   "at": [
+    7.400000000000002,
+    -12.4
+   ],
+   "params": {
+    "z0": 0.6,
+    "height": 6.5,
+    "colour": "#2f8c88",
+    "rect": [
+     3.2,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-back-5",
+   "at": [
+    14.8,
+    -12.4
+   ],
+   "params": {
+    "z0": 0.6,
+    "height": 6.5,
+    "colour": "#3a5fa8",
+    "rect": [
+     3.2,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-back-6",
+   "at": [
+    22.200000000000006,
+    -12.4
+   ],
+   "params": {
+    "z0": 0.6,
+    "height": 6.5,
+    "colour": "#d8b23a",
+    "rect": [
+     3.2,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "params": {
+    "count": 8,
+    "start": [
+     -25.9,
+     -13.3
+    ],
+    "end": [
+     25.9,
+     -13.3
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 0,
+      "height": 19,
+      "colour": "#bba97f",
+      "rect": [
+       1.4,
+       0.8
+      ]
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "attic-wide",
+   "at": [
+    0,
+    -12.5
+   ],
+   "params": {
+    "z0": 19,
+    "height": 2.2,
+    "colour": "#c4b28a",
+    "rect": [
+     40,
+     3
+    ],
+    "topColour": "#b6a47c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-wing-l",
+   "at": [
+    -12,
+    -12.5
+   ],
+   "params": {
+    "z0": 21.2,
+    "height": 2.6,
+    "colour": "#c8b890",
+    "rect": [
+     9,
+     2.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "attic-wing-r",
+   "at": [
+    12,
+    -12.5
+   ],
+   "params": {
+    "z0": 21.2,
+    "height": 2.6,
+    "colour": "#c8b890",
+    "rect": [
+     9,
+     2.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "gable",
+   "at": [
+    0,
+    -12.5,
+    21.2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       16,
+       2.2
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       11,
+       2.0
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       6,
+       1.8
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       3.2,
+       1.6
+      ]
+     }
+    ],
+    "colour": "#cdbd98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    -12.5
+   ],
+   "params": {
+    "z0": 29.2,
+    "height": 3.2,
+    "colour": "#4a4540",
+    "rect": [
+     0.4,
+     0.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -12.5
+   ],
+   "params": {
+    "z0": 31,
+    "height": 0.45,
+    "colour": "#4a4540",
+    "rect": [
+     1.8,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pinnacles",
+   "params": {
+    "count": 6,
+    "start": [
+     -17,
+     -12.5
+    ],
+    "end": [
+     17,
+     -12.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 21.2,
+      "height": 3.4,
+      "colour": "#b9a67e",
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "topColour": "#a89670"
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-l",
+   "at": [
+    -23,
+    -11.5
+   ],
+   "params": {
+    "z0": 19,
+    "height": 7.5,
+    "colour": "#c4b28a",
+    "rect": [
+     5.4,
+     4.6
+    ],
+    "topColour": "#b9a67e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-l",
+   "at": [
+    -23,
+    -13.9
+   ],
+   "params": {
+    "z0": 21.5,
+    "height": 4,
+    "colour": "#2e2822",
+    "rect": [
+     2.4,
+     0.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "onion-l",
+   "at": [
+    -23,
+    -11.5,
+    26.5
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#5f5e5a",
+    "profile": [
+     [
+      2.5,
+      0,
+      "#b9a67e"
+     ],
+     [
+      2.5,
+      0.6
+     ],
+     [
+      2.2,
+      1.4,
+      "#5f5e5a"
+     ],
+     [
+      3.0,
+      2.6
+     ],
+     [
+      3.1,
+      3.6
+     ],
+     [
+      2.2,
+      5.2
+     ],
+     [
+      1.0,
+      6.6
+     ],
+     [
+      0.3,
+      7.8
+     ],
+     [
+      0.12,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "wheel-l",
+   "at": [
+    -23,
+    -11.5,
+    36.5
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3a3835",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      0.15
+     ],
+     [
+      0.1,
+      0.15
+     ],
+     [
+      0.1,
+      1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-r",
+   "at": [
+    23,
+    -11.5
+   ],
+   "params": {
+    "z0": 19,
+    "height": 7.5,
+    "colour": "#c4b28a",
+    "rect": [
+     5.4,
+     4.6
+    ],
+    "topColour": "#b9a67e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-r",
+   "at": [
+    23,
+    -13.9
+   ],
+   "params": {
+    "z0": 21.5,
+    "height": 4,
+    "colour": "#2e2822",
+    "rect": [
+     2.4,
+     0.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "onion-r",
+   "at": [
+    23,
+    -11.5,
+    26.5
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#5f5e5a",
+    "profile": [
+     [
+      2.5,
+      0,
+      "#b9a67e"
+     ],
+     [
+      2.5,
+      0.6
+     ],
+     [
+      2.2,
+      1.4,
+      "#5f5e5a"
+     ],
+     [
+      3.0,
+      2.6
+     ],
+     [
+      3.1,
+      3.6
+     ],
+     [
+      2.2,
+      5.2
+     ],
+     [
+      1.0,
+      6.6
+     ],
+     [
+      0.3,
+      7.8
+     ],
+     [
+      0.12,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "wheel-r",
+   "at": [
+    23,
+    -11.5,
+    36.5
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3a3835",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      0.15
+     ],
+     [
+      0.1,
+      0.15
+     ],
+     [
+      0.1,
+      1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "central-dome",
+   "at": [
+    0,
+    0,
+    19
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#7d8a82",
+    "profile": [
+     [
+      6.8,
+      0,
+      "#c4b28a"
+     ],
+     [
+      6.8,
+      3.5
+     ],
+     [
+      6.3,
+      4.2,
+      "#8a8f88"
+     ],
+     [
+      5.6,
+      6.0,
+      "#7d8a82"
+     ],
+     [
+      4.0,
+      7.8
+     ],
+     [
+      2.0,
+      9.0
+     ],
+     [
+      0.7,
+      9.6
+     ],
+     [
+      0.2,
+      10.8
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-quiet-reflection"
+}

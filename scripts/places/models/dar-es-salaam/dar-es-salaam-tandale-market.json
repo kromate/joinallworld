@@ -1,0 +1,510 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-tandale-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/337541673",
+   "used": "only a 25 x 23 m cement-block commercial building within the market (containing quality, no name): modelled as the shop block; the rest of the market is not mapped"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dar-es-salaam.json#dar-es-salaam-tandale-market",
+   "used": "dense informal neighbourhood market of tin-roofed stalls, sheds and umbrellas on bare earth; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 12,
+    "height": 4.2,
+    "roof": "gable",
+    "cladding": "#9a7a55",
+    "goods": "sacks",
+    "roof_colour": "#8c4a3a",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -34,
+    -14,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "length": 18,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "shed",
+    "cladding": "#8a6a4a",
+    "goods": "sacks",
+    "roof_colour": "#a0a4a6",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    36,
+    22,
+    0
+   ],
+   "rotDeg": -6,
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "shed",
+    "cladding": "#7e6a52",
+    "goods": "sacks",
+    "roof_colour": "#8c4a3a",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    28,
+    0
+   ],
+   "rotDeg": 4,
+   "params": {
+    "length": 16,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed",
+    "cladding": "#9a8466",
+    "goods": "sacks",
+    "roof_colour": "#b5ada0",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-shops",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    34,
+    -14
+   ],
+   "rotDeg": -5,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5ada0",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "bay": 4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c4a3a",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "type": "stall-row",
+   "at": [
+    -40.19048178596073,
+    -26,
+    0
+   ],
+   "rotDeg": 6,
+   "params": {
+    "count": 12,
+    "pitch": 3.4,
+    "kind": "stall",
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ],
+    "jitter": 0.6
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "stall-row",
+   "at": [
+    -30.19267071760174,
+    -8,
+    0
+   ],
+   "rotDeg": 3,
+   "params": {
+    "count": 9,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ],
+    "jitter": 0.6
+   }
+  },
+  {
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "type": "stall-row",
+   "at": [
+    -9.261358624580494,
+    22,
+    0
+   ],
+   "rotDeg": 6,
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ],
+    "jitter": 0.6
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "stall-row",
+   "at": [
+    -13.480469119132792,
+    36,
+    0
+   ],
+   "rotDeg": 3,
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "stall",
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ],
+    "jitter": 0.6
+   }
+  },
+  {
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "type": "stall-row",
+   "at": [
+    8.376493824916874,
+    -22,
+    0
+   ],
+   "rotDeg": -4,
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "stall",
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ],
+    "jitter": 0.6
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "stall-row",
+   "at": [
+    -45.432819482962174,
+    14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 5,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ],
+    "jitter": 0.6
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "umbrella-cluster",
+   "at": [
+    -18,
+    16,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 5,
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "umbrella-cluster",
+   "at": [
+    20,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 5,
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    40,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 5,
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "umbrella-cluster",
+   "at": [
+    -46,
+    0,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 5,
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "umbrella-cluster",
+   "at": [
+    46,
+    6,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 5,
+    "colours": [
+     "#d9533f",
+     "#e0b13a",
+     "#3f7fbf",
+     "#4fa36a",
+     "#c46fa0",
+     "#e8e2d0"
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    -52,
+    -24
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    52,
+    32
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    -4,
+    -36
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    56,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/car",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or mapped outline of the market; stall lanes, sheds and the concrete shop block are a typical Dar es Salaam informal market layout"
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   140,
+   100
+  ]
+ }
+}

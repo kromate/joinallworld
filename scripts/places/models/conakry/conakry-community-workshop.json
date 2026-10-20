@@ -1,0 +1,519 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universit%C3%A9_Kofi_Annan_de_Guin%C3%A9e_en_2024_06.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Aboubacarkhoraa",
+   "view": "front",
+   "file": "/tmp/places-evidence/conakry/uni1.jpg",
+   "used": "six-storey white block on slim green pilotis, vertical green pilaster frames around paired windows, curved open stair tower with white balcony rings and green rails, thin green roof overhang"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vue_des_b%C3%A2timents_de_l%27UKAG.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aboubacarkhoraa",
+   "view": "aerial",
+   "used": "second block with green hipped roof and arched stair openings, white walls with green trim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/954959875",
+   "used": "block size about 30 x 12 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 44,
+  "aspect": 1.05,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadb",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "windowShape": "rect",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 0,
+      "spacing": 6,
+      "width": 0.8,
+      "kind": "round",
+      "colour": "#4a7d5c"
+     },
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.4,
+      "spacing": 3.8,
+      "colour": "#4a7d5c",
+      "skipGround": true,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5a45",
+    "overhang": 1.6,
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     3.6,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -5.4
+   ],
+   "z0": 0,
+   "height": 20.6,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7d5c"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -6.5,
+    3.0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efeadb",
+    "profile": [
+     [
+      0,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#4a7d5c"
+     ],
+     [
+      4.5,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      0,
+      0.5,
+      "#efeadb"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -6.5,
+    6.4
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efeadb",
+    "profile": [
+     [
+      0,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#4a7d5c"
+     ],
+     [
+      4.5,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      0,
+      0.5,
+      "#efeadb"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -6.5,
+    9.8
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efeadb",
+    "profile": [
+     [
+      0,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#4a7d5c"
+     ],
+     [
+      4.5,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      0,
+      0.5,
+      "#efeadb"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -6.5,
+    13.2
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efeadb",
+    "profile": [
+     [
+      0,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#4a7d5c"
+     ],
+     [
+      4.5,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      0,
+      0.5,
+      "#efeadb"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -6.5,
+    16.6
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efeadb",
+    "profile": [
+     [
+      0,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#4a7d5c"
+     ],
+     [
+      4.5,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      0,
+      0.5,
+      "#efeadb"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -6.5,
+    20.0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efeadb",
+    "profile": [
+     [
+      0,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      4.5,
+      0.5,
+      "#4a7d5c"
+     ],
+     [
+      4.5,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      1.5,
+      "#4a7d5c"
+     ],
+     [
+      4.35,
+      0.5,
+      "#efeadb"
+     ],
+     [
+      0,
+      0.5,
+      "#efeadb"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "second",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    26,
+    5
+   ],
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadb",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "windowShape": "rect",
+    "bands": "#4a7d5c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7554",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "colour": "#4a7d5c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -16
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stair tower is stacked curved slabs with green rails around a solid core, no visible stair flights; pilaster frames are straight green fins without pointed-arch heads; no motorbikes; second block simplified with horizontal green bands"
+ }
+}

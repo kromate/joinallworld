@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-maerua-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/122097005",
+   "used": "real mall outline (39,058 m2, about 349 x 171 m, scaled to the 118 m limit), two storeys"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Maerua_Mall",
+   "used": "2006 double-size extension by Concor, 54,128 m2 GLA, two levels; render and glass entrances typed from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c2",
+    "windows": "none",
+    "bands": "#b9835a",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#7d8a8f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "id": "atrium0",
+   "at": [
+    -13.7,
+    35.7,
+    0
+   ],
+   "rotDeg": -34.3,
+   "params": {
+    "colour": "#7fa6b6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       7
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       14,
+       7
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       12,
+       5
+      ]
+     },
+     {
+      "z": 14.5,
+      "rect": [
+       8,
+       2.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -13.7,
+    35.7,
+    0
+   ],
+   "rotDeg": -34.3,
+   "params": {
+    "width": 9,
+    "height": 2,
+    "bottom": 9,
+    "colour": "#7d8a8f",
+    "posts": false
+   }
+  },
+  {
+   "type": "loft",
+   "id": "atrium1",
+   "at": [
+    18.0,
+    14.1,
+    0
+   ],
+   "rotDeg": -34.3,
+   "params": {
+    "colour": "#7fa6b6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       7
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       14,
+       7
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       12,
+       5
+      ]
+     },
+     {
+      "z": 14.5,
+      "rect": [
+       8,
+       2.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18.0,
+    14.1,
+    0
+   ],
+   "rotDeg": -34.3,
+   "params": {
+    "width": 9,
+    "height": 2,
+    "bottom": 9,
+    "colour": "#7d8a8f",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carpark",
+   "params": {
+    "rect": [
+     40,
+     30
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#4e5053",
+    "topColour": "#4e5053"
+   },
+   "at": [
+    44,
+    52
+   ],
+   "rotDeg": 0
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this mall (the only listed image is a different mall in Polokwane, not used); entrance positions, colours and facade are typed, not seen"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ }
+}

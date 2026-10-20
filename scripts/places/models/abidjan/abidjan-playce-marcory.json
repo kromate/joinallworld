@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-playce-marcory",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/386496611",
+   "used": "real mall outline (225 x 107 m, name match) fitted to 118 m; 2 levels per OSM, modelled as 2 sales levels plus a roof-level terrace pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e5e9eb",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#c7502f",
+    "cornice": true,
+    "plinth": 0.4,
+    "glassColour": "#7f98a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#adb2b5",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     6
+    ],
+    "height": 14,
+    "colour": "#4a5560",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#9cb4c2",
+    "faces": {
+     "front": "curtain"
+    }
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 6,
+    "height": 5,
+    "columns": 4,
+    "colour": "#c7502f",
+    "edgeColour": "#4a5560"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#c7502f",
+    "frameColour": "#4a5560"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#4a5560",
+    "frameColour": "#c7502f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -3,
+    13
+   ],
+   "params": {
+    "rect": [
+     30,
+     10
+    ],
+    "height": 3.2,
+    "colour": "#4a5560",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#9cb4c2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 5,
+    "line": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real outline (scaled) with typed glazed mall facade, terracotta-red canopy, roof pavilion."
+ }
+}

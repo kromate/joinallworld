@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-universite-des-sciences-et-technologies",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:U.S.T.B.,_Domaine_Universitaire_de_Kpond%C3%A9hou,_Cotonou.jpg",
+   "licence": "CC BY 3.0",
+   "author": "DG-IRAO",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/ustb1.jpg",
+   "used": "three-storey cream rendered block, salmon-brown vertical pilasters and storey bands, ribbon windows with louvred dark panes, projecting tiled balcony bays at the corner with a flat roof and a large blank sign board on top"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6303187",
+   "used": "multi-wing footprint about 108 x 59 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 8,
+  "fovDeg": 32,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#c98466",
+    "bay": 4,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "left",
+       "right",
+       "back"
+      ],
+      "colour": "#c98466",
+      "width": 0.6,
+      "depth": 0.4,
+      "spacing": 4
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8378",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -11.25,
+    4
+   ],
+   "params": {
+    "rect": [
+     9,
+     2.6
+    ],
+    "height": 1.1,
+    "colour": "#e8dfc6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -11.25,
+    8
+   ],
+   "params": {
+    "rect": [
+     9,
+     2.6
+    ],
+    "height": 1.1,
+    "colour": "#e8dfc6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -11.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.01,
+    "colour": "#e8dfc6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    -9,
+    -10.5,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     9,
+     1.6
+    ],
+    "height": 2.6,
+    "colour": "#f4f4f0",
+    "trimColour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "lod": [
+    0
+   ],
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#f2c200",
+     "#d4262b"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -18
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Compact 3-storey block with salmon pilaster fins, bands and two stacked balcony bays plus rooftop sign box; balconies sit on the front face not wrapped round a chamfered corner, ribbon windows not grouped louvre panes, OSM wing outline replaced by a simple rect (photo shows only the corner block)."
+ }
+}

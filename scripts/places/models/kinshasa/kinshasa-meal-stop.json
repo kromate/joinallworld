@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1370430403",
+   "used": "footprint of the pavilion (containing match, 9x5.8 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kinshasa.json#kinshasa-meal-stop",
+   "used": "riverside beach eatery: open timber pavilion, corrugated roof, plastic chairs under umbrellas, sand beach, small pier"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#2f6b8c"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "rotDeg": 32,
+   "params": {
+    "width": 7,
+    "depth": 2.4,
+    "colours": [
+     "#2f6b8c",
+     "#f7f4ee"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#2f6b8c",
+    "frameColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "colours": [
+     "#2f6b8c",
+     "#f7f4ee",
+     "#c9a77c"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.5,
+    "umbrellas": true,
+    "loungers": false
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16,
+    "width": 2.4,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; roof may be thatch in reality; chairs and pier are typical, not surveyed."
+ }
+}

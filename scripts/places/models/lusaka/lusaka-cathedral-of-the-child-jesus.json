@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-cathedral-of-the-child-jesus",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/654342533",
+   "used": "real outline of the cathedral (76 x 47 m, name match)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lusaka",
+   "used": "seat of the Roman Catholic Archdiocese of Lusaka; no photo found, brick mission cathedral typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a85f43",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b7178",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dfc9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f666c",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -26,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 26,
+    "cap": "pyramid",
+    "capRise": 6,
+    "colour": "#a85f43",
+    "capColour": "#5f666c",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 1.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    46,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real outline, but brick, gable roof, tower position and windows are typed; no facade photo found"
+ }
+}

@@ -1,0 +1,203 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-node-6575061831",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/6575061831",
+   "used": "location only: the nearest building is a 9 m2 outbuilding, not the church; size from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#4a7f8c",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "rise": 3.2,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade-tower",
+   "footprint": {
+    "rect": [
+     5,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -12.6
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "bands": "#4a7f8c",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d3",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 11.8,
+    "height": 3.6,
+    "colour": "#4a7f8c"
+   },
+   "at": [
+    0,
+    -12.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "z0": 13.3,
+    "height": 0.5,
+    "colour": "#4a7f8c"
+   },
+   "at": [
+    0,
+    -12.6
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.7,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#4a7f8c",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e8e1cf"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   44,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or real outline (OSM node resolves to a 9 m2 outbuilding); size, facade cross and corrugated roof are typical for a Kinshasa neighbourhood church per the brief."
+ }
+}

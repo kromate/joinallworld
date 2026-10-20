@@ -1,0 +1,376 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-osm-way-552008098",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Case_d%27olivier_de_sanderval_a_Conakry.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/conakry/mus1.jpg",
+   "used": "the 1896 Sanderval case: a beehive dome of weathered grey plaster with a moss-olive crown, arched window with a pale blue shutter, pale blue door, low stone kerb"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_National_de_Guin%C3%A9e_27042022_005.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Yamen",
+   "view": "street",
+   "file": "/tmp/places-evidence/conakry/mus0.jpg",
+   "used": "frontage wall: bare red brick with two small recessed grilled windows, a pale plaster sign panel under a flat overhanging cap (lettering and emblem left out)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/552008098",
+   "used": "compound size (88 x 74 m) for site extent; U building sized from the brief inside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede4cc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a9926a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8503a",
+    "material": "clay-tile",
+    "rise": 1.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "case",
+   "at": [
+    0,
+    0,
+    0.35
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#a39f92",
+    "topColour": "#7f7a45",
+    "profile": [
+     [
+      4.5,
+      0.0,
+      "#a39f92"
+     ],
+     [
+      4.65,
+      0.45
+     ],
+     [
+      4.5,
+      1.8,
+      "#9a968a"
+     ],
+     [
+      4.05,
+      3.0,
+      "#8f8c80"
+     ],
+     [
+      3.6,
+      3.75,
+      "#8f8c80"
+     ],
+     [
+      3.45,
+      3.82,
+      "#7f7a45"
+     ],
+     [
+      3.0,
+      4.65,
+      "#7f7a45"
+     ],
+     [
+      2.25,
+      5.7,
+      "#7f7a45"
+     ],
+     [
+      1.35,
+      6.6,
+      "#7f7a45"
+     ],
+     [
+      0.6,
+      7.2,
+      "#7f7a45"
+     ],
+     [
+      0.0,
+      7.5,
+      "#7f7a45"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "kerb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#b4b0a4",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      5.85,
+      0.0
+     ],
+     [
+      5.85,
+      0.38
+     ],
+     [
+      0.0,
+      0.38
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win-recess",
+   "at": [
+    0.9,
+    -3.82
+   ],
+   "params": {
+    "rect": [
+     1.65,
+     0.45
+    ],
+    "height": 2.25,
+    "z0": 2.1,
+    "colour": "#2e2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win-arch",
+   "at": [
+    0.9,
+    -3.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 0.52,
+    "z0": 4.35,
+    "colour": "#2e2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win-frame",
+   "at": [
+    0.9,
+    -3.97
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     0.15
+    ],
+    "height": 0.22,
+    "z0": 1.88,
+    "colour": "#d9cfae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shutter",
+   "at": [
+    -1.05,
+    -4.12
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.18
+    ],
+    "height": 2.4,
+    "z0": 2.03,
+    "colour": "#a9bfd9"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shutter-diamond",
+   "at": [
+    -1.05,
+    -4.26
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.08
+    ],
+    "height": 1.05,
+    "z0": 2.7,
+    "colour": "#c6d6ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap",
+   "at": [
+    0.9,
+    -3.53
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.75
+    ],
+    "height": 0.3,
+    "z0": 4.95,
+    "colour": "#b4b0a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    2.55,
+    -3.6
+   ],
+   "params": {
+    "rect": [
+     1.05,
+     0.12
+    ],
+    "height": 0.6,
+    "z0": 4.05,
+    "colour": "#b08a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "case-door",
+   "at": [
+    -5.55,
+    -3.0
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     1.95
+    ],
+    "height": 3.9,
+    "z0": 0.38,
+    "colour": "#a9bfd9"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-diamond",
+   "at": [
+    -5.67,
+    -3.0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.9
+    ],
+    "height": 1.5,
+    "z0": 1.5,
+    "colour": "#c6d6ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-surround",
+   "at": [
+    -4.95,
+    -1.95
+   ],
+   "params": {
+    "rect": [
+     1.05,
+     1.5
+    ],
+    "height": 4.5,
+    "z0": 0.38,
+    "colour": "#b4a98a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Beehive case is now the hero (revolve, grey plaster, olive crown, kerb, blue shutter and door); it is a cone-like silhouette without weathering streaks, window arch is a flat block, and the small museum building behind is typed from the brief, not seen."
+ }
+}

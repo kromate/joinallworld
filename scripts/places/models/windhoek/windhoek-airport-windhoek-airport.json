@@ -1,0 +1,325 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hosea_Kutako_International_Airport,_Namibia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Olga Ernst",
+   "view": "front",
+   "file": "/tmp/places-evidence/windhoek/airport.jpg",
+   "used": "landside facade: low single-storey terminal under a pale silver-grey corrugated metal fascia that sweeps down over a recessed glazed entrance, dark grey steel posts, glazed left end with orange panels, yellow-panel wall on the right, tall date palms at the kerb"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1220600278",
+   "used": "overall scale only (215 m long, jagged outline); a 100 m landside portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     64,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd2d2",
+    "windows": "none",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8ca",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-end",
+   "footprint": {
+    "rect": [
+     14,
+     1
+    ]
+   },
+   "at": [
+    -24,
+    -11.2
+   ],
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d98a4a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9da1a4",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-wall",
+   "footprint": {
+    "rect": [
+     22,
+     1
+    ]
+   },
+   "at": [
+    20,
+    -11.2
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c32e",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9da1a4",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -6,
+    -8,
+    5.4
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 44,
+    "depth": 12,
+    "rise": 1.2,
+    "folds": 1,
+    "slopeY": -0.35,
+    "thickness": 0.6,
+    "colour": "#d4d7d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     14,
+     2
+    ]
+   },
+   "at": [
+    -2,
+    -11
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa3a6",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7e8487"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 4.6,
+      "colour": "#4b5258"
+     }
+    },
+    "start": [
+     -12,
+     -13,
+     0
+    ],
+    "end": [
+     18,
+     -13,
+     0
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -26,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.6,
+    "colour": "#4b5258"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -11.8,
+    0.0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.0,
+    "bottom": 4.9,
+    "colour": "#6f8c92",
+    "frameColour": "#aeb2b4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    44,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#2b5fa8",
+     "#c8362f",
+     "#2f8a4f"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 19,
+    "count": 1,
+    "spread": 1.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 21,
+    "count": 1,
+    "spread": 1.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d4",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "extent": [
+   110,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -40,
+     -22
+    ],
+    "height": 7
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-airport-windhoek-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fascia canopy is a shallow folded plane that reads weakly from the camera and is not a deep corrugated sweep; wall still renders blue-grey in lighting; palms are generic low-poly; orange glazing and yellow wall are flat blocks."
+ }
+}

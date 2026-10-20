@@ -1,0 +1,114 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/331313850",
+   "used": "real outline (61 x 20 m, name match): an angular bent slab block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Opening_Remark_by_Dean_of_Faculty_of_Economic_and_Development_of_the_Catholic_University_of_Congo_(UCC)_-_Radio_Okapi_Photo_John_Bompengo-_18_December_2013_(12236918085).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "MONUSCO Photos",
+   "view": "interior",
+   "file": "/tmp/places-evidence/kinshasa/ucc1.jpg",
+   "used": "interior only (pale cream walls, window strip with orange frames): used for the colour choice, not a facade comparison"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "glassColour": "#4a7f8c",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#c9c4b8",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -14
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found; facade (ribbon windows, bands) from the brief; chapel from the brief not modelled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-way-331313850"
+}

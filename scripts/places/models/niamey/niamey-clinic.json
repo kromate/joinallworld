@@ -1,0 +1,293 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/311561398",
+   "used": "name match: the real 9.5 x 7.3 m pavilion outline (bearing 174) as the central block; surrounding compound is 10,955 m2 (way/789361639)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: low rendered pavilion blocks in a walled compound, red-cross sign, ambulance bay, water tank, sand ground, acacias. The Commons photos near it show only the Boulevard Developpement street, so were not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc3",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -26,
+    14
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#6f9a8a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "overhang": 1.4,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     28,
+     9
+    ]
+   },
+   "at": [
+    26,
+    14
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8bb",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#6f9a8a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "overhang": 1.4,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "maternity",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    34
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a6",
+    "overhang": 1.2,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#b5b0a6",
+    "roofColour": "#6f9a8a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#e9dfc6",
+    "roofColour": "#6f9a8a",
+    "vans": 1,
+    "marking": true
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -5.2,
+    3.2
+   ],
+   "params": {
+    "size": 1.8,
+    "colour": "#c8242b",
+    "plateColour": "#f4f4f1",
+    "facing": "front"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -40,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 6,
+    "legs": 4,
+    "colour": "#9aa7ad"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d3c7a8",
+    "points": [
+     [
+      -52,
+      -26
+     ],
+     [
+      52,
+      -26
+     ],
+     [
+      52,
+      48
+     ],
+     [
+      -52,
+      48
+     ],
+     [
+      -52,
+      -26
+     ]
+    ]
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "kind": "piers"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -40,
+     -12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     40,
+     -8
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     44,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the hospital; only the small OSM pavilion is real, other wards, compound wall and layout are typical."
+ }
+}

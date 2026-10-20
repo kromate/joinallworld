@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-owela-museum",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/122250917",
+   "used": "real building outline (28 x 20 m rectangle rotated 61 degrees), museum tag, name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "fit": 30
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "bands": "#a8603f",
+    "cornice": true,
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9b3b2c",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "rotDeg": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9b3b2c",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "rise": 0.9,
+    "run": 0.35,
+    "count": 4,
+    "colour": "#b9ad98"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -24
+     ],
+     [
+      26,
+      -24
+     ],
+     [
+      26,
+      22
+     ],
+     [
+      -26,
+      22
+     ],
+     [
+      -26,
+      -24
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "fence",
+    "colour": "#3f4a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -22,
+     -18
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     22,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     24,
+     16
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building found (nearby Commons photo shows the Scientific Society building, not the museum); massing from the OSM outline and brief only; storeys, roof and colours are typed"
+ }
+}

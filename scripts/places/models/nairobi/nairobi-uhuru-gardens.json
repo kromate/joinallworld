@@ -1,0 +1,777 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-uhuru-gardens",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uhuru_Gardens,_Nairobi.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Luide Kakembo",
+   "view": "front",
+   "file": "/tmp/places-evidence/nairobi/uhuru1.jpg",
+   "used": "tapering stone column with a tall pointed arch between two leaning legs, belfry-like crown and thin spire, clasped-hand sculpture and dove inside the arch, flag-raising bronze group on a stepped stone block at left, round arcaded podium, wide marble steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uhuru_Gardens_Monument_from_a_different_angle.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Luide Kakembo",
+   "view": "side",
+   "file": "/tmp/places-evidence/nairobi/uhuru2.jpg",
+   "used": "podium with five round-arched recesses, wall to the left, flag group on a block to the right, buff travertine colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/40006019",
+   "used": "park is 700 m wide; only the memorial plaza is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 3,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     30
+    ],
+    "height": 0.4,
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    1,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     36,
+     26
+    ],
+    "height": 0.5,
+    "colour": "#c7b69b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     33,
+     23
+    ],
+    "height": 0.55,
+    "colour": "#d1c2a8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 33,
+    "rise": 0.45,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#cfc3ab"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    4,
+    1.45
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#cdb89a",
+    "arcade": {
+     "from": 0.1,
+     "to": 1.7,
+     "count": 9,
+     "width": 2.0,
+     "height": 1.5,
+     "sill": 0.0,
+     "shape": "round",
+     "depth": 0.5,
+     "innerColour": "#8c7a5c"
+    },
+    "profile": [
+     [
+      12.4,
+      0
+     ],
+     [
+      12.4,
+      1.9
+     ],
+     [
+      11.2,
+      2.0
+     ],
+     [
+      11.2,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    2,
+    1.45
+   ],
+   "params": {
+    "colour": "#c9b196",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       3.2
+      ],
+      "cx": -7.2
+     },
+     {
+      "z": 6,
+      "rect": [
+       2.5,
+       3.1
+      ],
+      "cx": -6.6
+     },
+     {
+      "z": 12,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": -5.6
+     },
+     {
+      "z": 16,
+      "rect": [
+       2.3,
+       3.0
+      ],
+      "cx": -4.0
+     },
+     {
+      "z": 19,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": -2.0
+     },
+     {
+      "z": 22,
+      "rect": [
+       2.6,
+       3.0
+      ],
+      "cx": -0.6
+     }
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    2,
+    1.45
+   ],
+   "params": {
+    "colour": "#c9b196",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       3.2
+      ],
+      "cx": 7.2
+     },
+     {
+      "z": 6,
+      "rect": [
+       2.5,
+       3.1
+      ],
+      "cx": 6.6
+     },
+     {
+      "z": 12,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": 5.6
+     },
+     {
+      "z": 16,
+      "rect": [
+       2.3,
+       3.0
+      ],
+      "cx": 4.0
+     },
+     {
+      "z": 19,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": 2.0
+     },
+     {
+      "z": 22,
+      "rect": [
+       2.6,
+       3.0
+      ],
+      "cx": 0.6
+     }
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    2,
+    1.45
+   ],
+   "params": {
+    "colour": "#c9b196",
+    "sections": [
+     {
+      "z": 18,
+      "rect": [
+       5.6,
+       3.4
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       4.0,
+       3.0
+      ]
+     },
+     {
+      "z": 38,
+      "rect": [
+       3.0,
+       2.6
+      ]
+     },
+     {
+      "z": 39.2,
+      "rect": [
+       3.8,
+       3.2
+      ]
+     },
+     {
+      "z": 41.4,
+      "rect": [
+       3.5,
+       3.0
+      ]
+     },
+     {
+      "z": 41.8,
+      "rect": [
+       2.4,
+       2.2
+      ]
+     },
+     {
+      "z": 46,
+      "rect": [
+       1.5,
+       1.5
+      ]
+     },
+     {
+      "z": 52,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    25.45
+   ],
+   "params": {
+    "rect": [
+     4.9,
+     4.165
+    ],
+    "height": 0.25,
+    "colour": "#b09a7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    29.45
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     3.74
+    ],
+    "height": 0.25,
+    "colour": "#b09a7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    33.45
+   ],
+   "params": {
+    "rect": [
+     3.9,
+     3.315
+    ],
+    "height": 0.25,
+    "colour": "#b09a7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    36.45
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     2.975
+    ],
+    "height": 0.25,
+    "colour": "#b09a7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    38.45
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     2.72
+    ],
+    "height": 0.25,
+    "colour": "#b09a7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    2,
+    1.45
+   ],
+   "params": {
+    "colour": "#ece6d8",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.5,
+       1.2
+      ]
+     },
+     {
+      "z": 1.8,
+      "ellipse": [
+       1.7,
+       1.3
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       1.0,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    2,
+    4.85
+   ],
+   "params": {
+    "colour": "#f7f5ee",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.5,
+       0.25
+      ]
+     },
+     {
+      "z": 0.6,
+      "ellipse": [
+       1.6,
+       0.35
+      ]
+     },
+     {
+      "z": 1.1,
+      "ellipse": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.2,
+    2,
+    5.15
+   ],
+   "params": {
+    "colour": "#f7f5ee",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.3,
+       0.3
+      ]
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       0.2,
+       0.2
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -3,
+    1.45
+   ],
+   "params": {
+    "rect": [
+     14,
+     6.5
+    ],
+    "height": 1.4,
+    "colour": "#bba784"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -3.4,
+    2.8499999999999996
+   ],
+   "params": {
+    "rect": [
+     13,
+     6.9
+    ],
+    "height": 1.0,
+    "topScale": [
+     0.9,
+     1.0
+    ],
+    "colour": "#c4b08e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -3.8,
+    3.8499999999999996
+   ],
+   "params": {
+    "rect": [
+     11,
+     6.4
+    ],
+    "height": 0.8,
+    "colour": "#c9b196"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.5,
+    -6.3,
+    1.75
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "height": 1.5,
+    "colour": "#5a4a36"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -17.5,
+    -3,
+    4.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 3.4,
+    "pose": "stand",
+    "colour": "#26231f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -15.5,
+    -3,
+    4.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 3.8,
+    "pose": "stand",
+    "colour": "#26231f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -13.5,
+    -3,
+    4.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 4.0,
+    "pose": "stand",
+    "colour": "#26231f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -11.8,
+    -3,
+    4.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 3.4,
+    "pose": "stand",
+    "colour": "#26231f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -14,
+    -3,
+    4.65
+   ],
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -3.5,
+      0,
+      0.5
+     ],
+     [
+      0.5,
+      0,
+      5.5
+     ],
+     [
+      2.2,
+      0,
+      9
+     ]
+    ],
+    "colour": "#3a3a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.0,
+    -3,
+    10.850000000000001
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     2.2
+    ],
+    "height": 1.4,
+    "colour": "#2f6b3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 14,
+    "line": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 10,
+    "line": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is tall and tapering with belfry ledge and bands but the arch reads as a smooth U rather than a pointed arch; flag block is a stepped box without the curved hollow underside; figures are upright and not clearly gripping the leaning pole; dove/fist are small blobs; podium wall arcade only partly visible; render viewpoint higher than the photo."
+ }
+}

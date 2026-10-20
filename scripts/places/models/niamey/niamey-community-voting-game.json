@@ -1,0 +1,196 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: Rond point Tolle, a traffic roundabout on the NW edge of Niamey with a landscaped island; the monument form is unknown so only a modest plain plinth is used. The OSM match is a 23 m2 nearest building, not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "roundabout",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 20,
+    "road_width": 7,
+    "island_colour": "#c9b98f",
+    "trees": 5,
+    "kerb": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -3
+     ],
+     [
+      3,
+      -3
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      -3,
+      3
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#b5b0a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.8,
+      -1.8
+     ],
+     [
+      1.8,
+      -1.8
+     ],
+     [
+      1.8,
+      1.8
+     ],
+     [
+      -1.8,
+      1.8
+     ]
+    ],
+    "z0": 0.5,
+    "height": 1.0,
+    "topScale": 0.9,
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.7,
+      -0.7
+     ],
+     [
+      0.7,
+      -0.7
+     ],
+     [
+      0.7,
+      0.7
+     ],
+     [
+      -0.7,
+      0.7
+     ]
+    ],
+    "z0": 1.5,
+    "height": 2.4,
+    "topScale": 0.7,
+    "colour": "#c9ad86"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roadside-wall",
+   "footprint": {
+    "rect": [
+     16,
+     0.5
+    ]
+   },
+   "at": [
+    -34,
+    32
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b98a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a97a55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 0,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     20
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     34,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No imagery; monument form unknown so a plain stepped plinth on a standard roundabout."
+ }
+}

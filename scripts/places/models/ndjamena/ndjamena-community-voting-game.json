@@ -1,0 +1,166 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: arrondissement town hall; nearest OSM building (80 m2, 9 m away) is not reliable so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#b88f66",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9588",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 6,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#b88f66",
+    "roofColour": "#9a9588"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0,
+    "height": 1.8,
+    "thickness": 0.3,
+    "pillarEvery": 6,
+    "colour": "#d9c9a8",
+    "points": [
+     [
+      -24,
+      -20
+     ],
+     [
+      24,
+      -20
+     ],
+     [
+      24,
+      14
+     ],
+     [
+      -24,
+      14
+     ],
+     [
+      -24,
+      -20
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "leafColour": "#2d3033"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -18,
+     -10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     19,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no evidence; typed from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-community-voting-game"
+}

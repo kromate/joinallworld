@@ -1,0 +1,289 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-march-de-djelibougou",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/93314858",
+   "used": "real marketplace outline (152x119 m, name match): perimeter wall and inward-facing lock-up rows follow it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -83.4,
+      45.3
+     ],
+     [
+      -65,
+      -71.4
+     ],
+     [
+      85.1,
+      -45.1
+     ],
+     [
+      62.5,
+      72.2
+     ],
+     [
+      -83.4,
+      45.3
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#c9a27a"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    8.0,
+    -46.4,
+    0
+   ],
+   "rotDeg": 189.9,
+   "params": {
+    "length": 100,
+    "depth": 3.8,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "shutter_colours": [
+     "#a65a3a",
+     "#b5b1a8",
+     "#6a7a8a",
+     "#c9a27a"
+    ],
+    "roof_colour": "#7a6a5c",
+    "wall_colour": "#c9a27a"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -62.3,
+    -11.2,
+    0
+   ],
+   "rotDeg": 99.0,
+   "params": {
+    "length": 70,
+    "depth": 3.8,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "shutter_colours": [
+     "#a65a3a",
+     "#b5b1a8",
+     "#6a7a8a",
+     "#c9a27a"
+    ],
+    "roof_colour": "#7a6a5c",
+    "wall_colour": "#c9a27a"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -8.3,
+    46.9,
+    0
+   ],
+   "rotDeg": 10.4,
+   "params": {
+    "length": 100,
+    "depth": 3.8,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "shutter_colours": [
+     "#a65a3a",
+     "#b5b1a8",
+     "#6a7a8a",
+     "#c9a27a"
+    ],
+    "roof_colour": "#7a6a5c",
+    "wall_colour": "#c9a27a"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    62.0,
+    11.3,
+    0
+   ],
+   "rotDeg": -79.1,
+   "params": {
+    "length": 70,
+    "depth": 3.8,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "shutter_colours": [
+     "#a65a3a",
+     "#b5b1a8",
+     "#6a7a8a",
+     "#c9a27a"
+    ],
+    "roof_colour": "#7a6a5c",
+    "wall_colour": "#c9a27a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -15,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7a6a5c"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -15,
+    12,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7a6a5c"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    28,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c43a2f",
+     "#e8c13a",
+     "#3f7a4a",
+     "#e9dfc6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    30,
+    22,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#2f6aa8",
+     "#e9dfc6",
+     "#c43a2f"
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    10,
+    -62,
+    0
+   ],
+   "rotDeg": 9.8,
+   "params": {
+    "width": 10,
+    "height": 4.2,
+    "colour": "#c9a27a",
+    "board_colour": "#a65a3a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -5,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    50,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; perimeter from OSM outline, lock-up row orientation approximate, interior layout guessed."
+ }
+}

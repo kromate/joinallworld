@@ -1,0 +1,686 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-national-museum-of-antiquities",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_national_des_antiquit%C3%A9s_et_des_arts_islamiques,_Alger.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Riad Salih",
+   "view": "front",
+   "file": "/tmp/places-evidence/algiers/ant1.jpg",
+   "used": "whitewashed two-storey block with a taller right wing, zellige tile cornice friezes, horseshoe windows, tiled entrance panel, black iron fence on a pink kerb"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Algerian_National_Museum_of_Antiquities_and_Islamic_Art.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Muhammed amine benloulou",
+   "view": "front",
+   "file": "/tmp/places-evidence/algiers/ant2.jpg",
+   "used": "entrance porch with blue tile sign board, tiled door frame, green zigzag frieze"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/346403805",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "left-wing",
+   "at": [
+    -10.0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     9
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "bay": 5.5,
+    "faces": [
+     "-y",
+     "+y"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre",
+   "at": [
+    3.0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     12,
+     9
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "bay": 5.5,
+    "faces": [
+     "-y",
+     "+y"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "right-wing",
+   "at": [
+    13.0,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     8,
+     9
+    ],
+    "z0": 0,
+    "height": 11.8,
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "bay": 5.5,
+    "faces": [
+     "-y",
+     "+y"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rear",
+   "at": [
+    0.0,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     34,
+     5
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#ece8de",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch",
+   "at": [
+    4.75,
+    -5.25
+   ],
+   "params": {
+    "rect": [
+     8.5,
+     2.5
+    ],
+    "z0": 0,
+    "height": 4.3,
+    "colour": "#f4f2ea",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.0,
+    "bay": 5,
+    "faces": [
+     "-y",
+     "+y"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "at": [
+    4.75,
+    -5.3
+   ],
+   "params": {
+    "rect": [
+     9.100000000000001,
+     3.0
+    ],
+    "z0": 4.3,
+    "height": 0.4,
+    "colour": "#e8e4da",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "tile-sign",
+   "at": [
+    4.7,
+    -6.6,
+    4.7
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#1f3f8a",
+    "frameColour": "#c9a24a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-frame",
+   "at": [
+    4.6,
+    -6.550000000000001
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.2999999999999998
+    ],
+    "z0": 0.4,
+    "height": 3.4,
+    "colour": "#d8d4c8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    4.699999999999999,
+    -6.65
+   ],
+   "params": {
+    "rect": [
+     1.7999999999999998,
+     0.2999999999999998
+    ],
+    "z0": 0.4,
+    "height": 3,
+    "colour": "#1e1e22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tile-panel",
+   "at": [
+    -7.5,
+    -4.05
+   ],
+   "params": {
+    "rect": [
+     4.6000000000000005,
+     0.30000000000000027
+    ],
+    "z0": 0.5,
+    "height": 7.2,
+    "colour": "#7f9cc0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tile-panel-inset",
+   "at": [
+    -7.5,
+    -4.199999999999999
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.20000000000000018
+    ],
+    "z0": 1.0,
+    "height": 5.6,
+    "colour": "#5f7fa8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-o0",
+   "at": [
+    -10.0,
+    -4.025
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.25000000000000044
+    ],
+    "z0": 7.1,
+    "height": 0.45,
+    "colour": "#c9a24a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-g0",
+   "at": [
+    -10.0,
+    -4.025
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.25000000000000044
+    ],
+    "z0": 6.65,
+    "height": 0.45,
+    "colour": "#2f6f5a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-o1",
+   "at": [
+    3.0,
+    -4.025
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.25000000000000044
+    ],
+    "z0": 7.699999999999999,
+    "height": 0.45,
+    "colour": "#c9a24a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-g1",
+   "at": [
+    3.0,
+    -4.025
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.25000000000000044
+    ],
+    "z0": 7.25,
+    "height": 0.45,
+    "colour": "#2f6f5a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-o2",
+   "at": [
+    13.0,
+    -3.025
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.25
+    ],
+    "z0": 10.9,
+    "height": 0.45,
+    "colour": "#c9a24a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-g2",
+   "at": [
+    13.0,
+    -3.025
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.25
+    ],
+    "z0": 10.450000000000001,
+    "height": 0.45,
+    "colour": "#2f6f5a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-p",
+   "at": [
+    4.75,
+    -6.75
+   ],
+   "params": {
+    "rect": [
+     9.100000000000001,
+     0.3000000000000007
+    ],
+    "z0": 3.7,
+    "height": 0.4,
+    "colour": "#2f6f5a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-l",
+   "at": [
+    -4.0,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5999999999999996
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#d9a3a0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-r",
+   "at": [
+    22.0,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5999999999999996
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#d9a3a0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-l",
+   "at": [
+    0,
+    3.0,
+    0.5
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.5,
+    "colour": "#1d1d20",
+    "points": [
+     [
+      -14,
+      -14.1
+     ],
+     [
+      6,
+      -14.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-r",
+   "at": [
+    0,
+    3.0,
+    0.5
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.5,
+    "colour": "#1d1d20",
+    "points": [
+     [
+      12,
+      -14.1
+     ],
+     [
+      32,
+      -14.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp-a",
+   "at": [
+    -2,
+    -8
+   ],
+   "params": {
+    "height": 4.5
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp-b",
+   "at": [
+    10.8,
+    -8
+   ],
+   "params": {
+    "height": 4.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub0",
+   "at": [
+    -8,
+    -8,
+    0.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a7a3a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.4,
+      0.2
+     ],
+     [
+      1.54,
+      1.26
+     ],
+     [
+      0.84,
+      2.38
+     ],
+     [
+      0,
+      2.6599999999999997
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub1",
+   "at": [
+    -4,
+    -8.5,
+    0.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a7a3a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.0,
+      0.2
+     ],
+     [
+      1.1,
+      0.9
+     ],
+     [
+      0.6,
+      1.7
+     ],
+     [
+      0,
+      1.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub2",
+   "at": [
+    15,
+    -8,
+    0.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a7a3a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.5,
+      0.2
+     ],
+     [
+      1.6500000000000001,
+      1.35
+     ],
+     [
+      0.8999999999999999,
+      2.55
+     ],
+     [
+      0,
+      2.8499999999999996
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub3",
+   "at": [
+    20,
+    -8,
+    0.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a7a3a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.2,
+      0.2
+     ],
+     [
+      1.32,
+      1.08
+     ],
+     [
+      0.72,
+      2.04
+     ],
+     [
+      0,
+      2.28
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub4",
+   "at": [
+    3,
+    -6,
+    0.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a7a3a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.9,
+      0.2
+     ],
+     [
+      0.9900000000000001,
+      0.81
+     ],
+     [
+      0.54,
+      1.53
+     ],
+     [
+      0,
+      1.71
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "windows are tall plain arches without horseshoe tile surrounds; zigzag friezes are flat bands; tile sign is a plain blue board; left-wing tile panel is flat blue; two site palms remain (not in photo); free-standing parts replace OSM outline"
+ }
+}

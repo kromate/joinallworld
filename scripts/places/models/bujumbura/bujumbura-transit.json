@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/980855965",
+   "used": "weak name match (0.6, 58 m away): only the size of a long building (57 x 17 m) taken for the covered waiting shed"
+  },
+  {
+   "kind": "text",
+   "used": "brief: paved yard of minibuses and coaches, rows of kiosks, covered waiting shed; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "id": "yard",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     60
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8a8378",
+    "topColour": "#8a8378"
+   }
+  },
+  {
+   "type": "office-tower/open-shelter",
+   "at": [
+    0,
+    22,
+    0.5
+   ],
+   "params": {
+    "length": 57,
+    "depth": 14,
+    "height": 4.6,
+    "form": "shed",
+    "support": "steel",
+    "roof_colour": "#8a8f93",
+    "roof_material": "corrugated",
+    "colour": "#b5603f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "offices",
+   "footprint": {
+    "rect": [
+     57,
+     5
+    ]
+   },
+   "at": [
+    0,
+    31
+   ],
+   "z0": 0.5,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c4b6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#b5603f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "office-tower/bus-park-row",
+   "at": [
+    -22,
+    -4,
+    0.5
+   ],
+   "params": {
+    "length": 40,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.3,
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "office-tower/bus-park-row",
+   "at": [
+    18,
+    -4,
+    0.5
+   ],
+   "params": {
+    "length": 44,
+    "kind": "mixed",
+    "density": 0.7,
+    "coach_share": 0.4,
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "office-tower/bus-park-row",
+   "at": [
+    0,
+    -20,
+    0.5
+   ],
+   "params": {
+    "length": 70,
+    "kind": "mixed",
+    "density": 0.7,
+    "coach_share": 0.2,
+    "yaw": 0,
+    "lines": true
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -40.0,
+    8,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.0,
+    "depth": 2.2,
+    "height": 2.6,
+    "wall_colour": "#c9c4b6",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -36.2,
+    8,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.0,
+    "depth": 2.2,
+    "height": 2.6,
+    "wall_colour": "#b5603f",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -32.4,
+    8,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.0,
+    "depth": 2.2,
+    "height": 2.6,
+    "wall_colour": "#9fb3b0",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -28.6,
+    8,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.0,
+    "depth": 2.2,
+    "height": 2.6,
+    "wall_colour": "#c9c4b6",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -24.8,
+    8,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.0,
+    "depth": 2.2,
+    "height": 2.6,
+    "wall_colour": "#b5603f",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -21.0,
+    8,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.0,
+    "depth": 2.2,
+    "height": 2.6,
+    "wall_colour": "#9fb3b0",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#b5603f",
+    "frameColour": "#8a8f93"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#2f6b4f",
+    "frameColour": "#8a8f93"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30.5,
+    0.5
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    25,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    42,
+    -20,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   76
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; weak OSM match, yard, shed, kiosks and bus rows are typed from the brief"
+ }
+}

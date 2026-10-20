@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: modest rendered 2-storey district hall, hip roof, flag and balcony; no photo of the place found (nearby geo photos show a church and street)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcb8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#4a5560",
+    "plinth": 0.5,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9876b",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.8,
+    "run": 0.7,
+    "count": 5,
+    "colour": "#b4ae9e"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -6.6,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "floors": 1,
+    "storeyHeight": 4.2,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 4,
+    "colours": [
+     "#1b7a43",
+     "#f4d03f"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   50
+  ]
+ }
+}

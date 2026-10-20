@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-node-2174030720",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: thatched open pavilion bar and umbrellas on sand by Lake Tanganyika; no OSM outline (node) and no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "thatched-pavilion",
+   "id": "bar",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 9,
+    "deck_height": 0.6,
+    "post_height": 3.2,
+    "roof": "hip",
+    "thatch": true,
+    "bar": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umbA",
+   "at": [
+    -8,
+    -7,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 7,
+    "colours": [
+     "#e1cf9a",
+     "#ece6d6",
+     "#b5603f"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umbB",
+   "at": [
+    9,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 7,
+    "colours": [
+     "#e1cf9a",
+     "#ece6d6",
+     "#3f6f8f"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "kiosk",
+   "at": [
+    -12,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "box",
+    "width": 3.2,
+    "depth": 2.6,
+    "height": 2.6,
+    "colour": "#a8845a"
+   }
+  },
+  {
+   "type": "beach-row",
+   "id": "loungers",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": 6,
+  "treeKind": "palm",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no photo and no outline: pavilion/umbrella layout typical of a Tanganyika beach bar"
+ }
+}

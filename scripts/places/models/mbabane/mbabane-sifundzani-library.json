@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-sifundzani-library",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1010807491",
+   "used": "real outline: elongated rectangle about 27 x 10 m (OSM amenity=library, name match)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mbabane.json#mbabane-sifundzani-library",
+   "used": "one-storey painted block, corrugated roof, gable porch, fenced yard; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bay": 3.5,
+    "bands": "#a8603f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a24a36",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -17,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.5,
+    "kind": "fence",
+    "colour": "#4a4f55"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -18
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM outline only, facade generic"
+ }
+}

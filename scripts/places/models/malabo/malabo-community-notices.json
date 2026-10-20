@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/282840658",
+   "used": "real footprint of the Senado building in Malabo (1881 m2); the Commons Senate photos show the newer Ciudad de la Paz building, a different structure, so were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#b9a46a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f969b",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.0,
+    "pillarEvery": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -40
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -24
+    ],
+    "yawDeg": 270,
+    "colour": "#c8c8c8"
+   },
+   {
+    "at": [
+     -4,
+     -28
+    ],
+    "yawDeg": 90,
+    "colour": "#2f4f7a"
+   },
+   {
+    "at": [
+     6,
+     -24
+    ],
+    "yawDeg": 270,
+    "colour": "#b8bcc2"
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building (Commons images show the new Ciudad de la Paz Senate); massing from outline only, no portico placed"
+ }
+}

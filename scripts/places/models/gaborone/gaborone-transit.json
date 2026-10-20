@@ -1,0 +1,317 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "open bus rank with ten bays and shelters beside a painted-render station building and a short platform with canopy and rail tracks; OSM bus-rank match is 342 m away so its outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     70
+    ],
+    "height": 0.1,
+    "colour": "#5a5c5e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    24
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8bd",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 4,
+    "plinth": 0.4,
+    "bands": "#a8553a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "material": "corrugated",
+    "parapet": 0.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -30,
+    15,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 6,
+    "height": 4,
+    "columns": 8,
+    "colour": "#a8553a",
+    "edgeColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    17.8,
+    8
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#f1ece0",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -2
+    ],
+    "end": [
+     48,
+     -2
+    ],
+    "count": 10,
+    "lod1Step": 2,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        3.0,
+        11
+       ],
+       "height": 3.2,
+       "colour": "#f1ece0",
+       "windows": "none",
+       "topColour": "#3b6fa0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -20
+    ],
+    "end": [
+     48,
+     -20
+    ],
+    "count": 10,
+    "lod1Step": 2,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        8,
+        0.6
+       ],
+       "height": 3.0,
+       "colour": "#a8553a",
+       "windows": "none",
+       "topColour": "#a8553a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       3.2,
+       0
+      ],
+      "params": {
+       "rect": [
+        8,
+        1.8
+       ],
+       "height": 0.4,
+       "colour": "#8b8b88",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    42,
+    24,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     5
+    ],
+    "height": 0.9,
+    "colour": "#9a9a96",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     0.18
+    ],
+    "height": 0.25,
+    "colour": "#6b5a4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    38.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     0.18
+    ],
+    "height": 0.25,
+    "colour": "#6b5a4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 3,
+    "colour": "#a8553a",
+    "topColour": "#f1ece0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -52,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 6,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -55,
+     30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     55,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and OSM bus-rank outline 342 m off; typed bus rank with 10 bays and station block"
+ }
+}

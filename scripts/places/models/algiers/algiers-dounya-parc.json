@@ -1,0 +1,286 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-dounya-parc",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/399227616",
+   "used": "identifies a 790 ha park; far too large to model whole, so one typical leisure-park corner is composed from the brief (lawns, palm avenue, pavilions, fountain, gate, car park); no photo found (the only Commons file named Parc Dounya shows a lake and scrub, not verifiably this place, so it was not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 38,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    -20,
+    10,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 44,
+    "colour": "#76a055"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 30,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -50
+     ],
+     [
+      -20,
+      -20
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      25,
+      10
+     ],
+     [
+      45,
+      35
+     ]
+    ],
+    "width": 5,
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      -30,
+      25
+     ],
+     [
+      -50,
+      45
+     ]
+    ],
+    "width": 3.5,
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "count": 8,
+    "kind": "palm",
+    "gap": 7,
+    "height_min": 9,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -45,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -8,
+    20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 4,
+    "kind": "hip",
+    "roof_colour": "#b5523b"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.6,
+    "kind": "hip",
+    "roof_colour": "#9fa7a8"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -45,
+    40,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "colour": "#ece7da",
+    "cap_colour": "#b5523b"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    12,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -30,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "pillar": 1.5,
+    "colour": "#ece7da",
+    "leaf": "bars"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -22,
+    -55,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.6,
+    "height": 2.7,
+    "wall_colour": "#ece7da",
+    "roof_colour": "#9fa7a8"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6,
+    "wall_colour": "#b5523b",
+    "roof_colour": "#ece7da"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -45,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 5,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this park: layout is typical of the brief, not measured; the 790 ha extent is not representable"
+ }
+}

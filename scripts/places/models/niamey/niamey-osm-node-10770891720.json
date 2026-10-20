@@ -1,0 +1,179 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-osm-node-10770891720",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1158429978",
+   "used": "real building outline (nearest 0.2 m, tagged building=restaurant, 24 x 8.8 m, rotated 51 deg)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/niamey.json#niamey-osm-node-10770891720",
+   "used": "walled yard, covered eating area, blank signboard; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "concrete",
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 10,
+    "depth": 6,
+    "height": 3,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#5b6670",
+    "roof_colour": "#8b6a52"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#d7c9a5"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#d7c9a5"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 36,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#d7c9a5"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    18,
+    -1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 36,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#d7c9a5"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   50,
+   42
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: facade, roof and yard wall are typical for the city, only the outline is real"
+ }
+}

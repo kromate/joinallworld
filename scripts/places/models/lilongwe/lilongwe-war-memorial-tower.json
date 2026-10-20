@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-war-memorial-tower",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/878869869",
+   "used": "memorial plot outline (about 43 x 34 m, quality containing) as the paved forecourt"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lilongwe",
+   "used": "named as a central landmark; brief: slender plain shaft on a stepped base (form assumed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 0.8,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -21.6,
+      2.7
+     ],
+     [
+      -15.4,
+      16.4
+     ],
+     [
+      -8.4,
+      13.2
+     ],
+     [
+      -4.9,
+      20.8
+     ],
+     [
+      18.8,
+      10.0
+     ],
+     [
+      14.9,
+      1.4
+     ],
+     [
+      23.0,
+      -2.2
+     ],
+     [
+      17.4,
+      -14.5
+     ],
+     [
+      9.1,
+      -10.7
+     ],
+     [
+      4.4,
+      -21.1
+     ],
+     [
+      -19.2,
+      -10.4
+     ],
+     [
+      -14.7,
+      -0.4
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#b6b2a6",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#a8a396",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#b9b3a4",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#c4beaf",
+    "top": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    2.3
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       2.6,
+       2.6
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 19,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     }
+    ],
+    "colour": "#b9b3a4",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    21.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#8e887a",
+    "top": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    9,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c23a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     14
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists; shaft height, taper and base are assumed"
+ }
+}

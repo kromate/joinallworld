@@ -1,0 +1,567 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-airport-lusaka-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kenneth_Kaunda_International_Airport_3.jpg",
+   "licence": "see Commons page",
+   "author": "Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/lusaka/airport4.jpg",
+   "used": "Terminal Two glazing: two storeys of blue-green glass in a fine mullion grid, a projecting stainless-grey band at each floor line, brushed-metal ground-floor entrance piers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kenneth_Kaunda_International_Airport_10.jpg",
+   "licence": "see Commons page",
+   "author": "Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/lusaka/airport3.jpg",
+   "used": "grey rendered round entrance columns with black joint bands, grey panel soffit and cladding colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lusaka_International_Airport,_Zambia_-_entrance,_2015.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "stone wu",
+   "view": "front",
+   "used": "NOT used for massing: shows the older Terminal One (lattice screen facade); only the low flat entrance canopy idea was noted"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Kenneth_Kaunda_International_Airport",
+   "used": "Terminal Two opened 2021, two storeys, six gates, new control tower"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     116,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b5dcdc",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b4babd",
+    "plinth": 0.3,
+    "cornice": true,
+    "bay": 3.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bec1",
+    "material": "metal-sheet",
+    "overhang": 0.6,
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     80,
+     14
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b5dcdc",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bands": "#b4babd",
+    "bay": 3.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b6",
+    "material": "metal-sheet",
+    "overhang": 1,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-wing",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -76,
+    -4
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cfd2d3",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4a9ac",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -26,
+    5.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 110,
+    "depth": 6,
+    "height": 0.1,
+    "thickness": 0.6,
+    "columns": 0,
+    "colour": "#c9cdcf",
+    "edgeColour": "#9da3a6"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    56,
+    12,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "style": "round",
+    "colour": "#d9dcdd",
+    "cabColour": "#4b6f86",
+    "bandColour": "#b9bec1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -32.0,
+    43,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -19.2,
+    43,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -6.399999999999999,
+    43,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    6.400000000000006,
+    43,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    19.200000000000003,
+    43,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    32.0,
+    43,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -60,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-0",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -50,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-1",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -40,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-2",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -30,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-3",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -20,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-4",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -10,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-5",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-6",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    10,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-7",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    20,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-8",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    30,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-9",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    40,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steel-pier-10",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    50,
+    -23
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arrival-sign",
+   "footprint": {
+    "rect": [
+     16,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -23
+   ],
+   "z0": 5.4,
+   "height": 1.6,
+   "wall": {
+    "material": "render",
+    "colour": "#2a63b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a63b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 2,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Only a close-up photo exists so overall massing is unverified; glass still reads darker navy than the pale blue-green pane; no glazed sliding doors or true mullion/band relief"
+ }
+}

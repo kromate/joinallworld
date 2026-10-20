@@ -1,0 +1,209 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-university-campus-b",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/103080743",
+   "used": "nearest building=university outline (52x23 m, 5.6 m away) as the main lecture block; two flanking wings added to give the briefed U around a quad, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c1b0",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 4,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c9c1b0",
+       "#aaa59b"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-north",
+   "footprint": {
+    "rect": [
+     38,
+     12
+    ]
+   },
+   "at": [
+    26,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c1b0",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 4,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c9c1b0",
+       "#aaa59b"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-south",
+   "footprint": {
+    "rect": [
+     38,
+     12
+    ]
+   },
+   "at": [
+    26,
+    -22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c1b0",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 4,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c9c1b0",
+       "#aaa59b"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps",
+   "footprint": {
+    "rect": [
+     3,
+     16
+    ]
+   },
+   "at": [
+    -16,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aaa59b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa59b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; only main block is OSM (nearest match), wings and U layout are from the brief"
+ }
+}

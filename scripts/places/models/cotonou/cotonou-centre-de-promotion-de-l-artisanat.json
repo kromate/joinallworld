@@ -1,0 +1,628 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-centre-de-promotion-de-l-artisanat",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centre_de_promotion_de_l%27artisanat_du_B%C3%A9nin_-_Fa%C3%A7ade_de_loin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ross.Patrick",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/art1.jpg",
+   "used": "low red-and-white zigzag mosaic perimeter wall carrying painted relief panels, blue-edged blank name boards above, small green-roofed pavilion behind left, paving-block ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centre_de_promotion_de_l%27artisanat_de_Cotonou_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Azogbonon",
+   "view": "street",
+   "file": "/tmp/places-evidence/cotonou/art2.jpg",
+   "used": "entrance gap between wall and a long single-storey building clad in stone with arched timber doors and a green metal pitched roof, paved yard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/95012510",
+   "used": "site extent only (222 x 137 m park-like area); modelled as the street-front compound"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.03,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk-left",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f3b34",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.2,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#24553a",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wing",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    4,
+    34
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c9a0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f8a58",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-base",
+   "at": [
+    3.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.55,
+    "colour": "#c24a30",
+    "topColour": "#c24a30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "zig-grey",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1875,
+       0.7
+      ],
+      "z0": 0.55,
+      "height": 0.45,
+      "colour": "#b8bcc4",
+      "topColour": "#b8bcc4"
+     }
+    },
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -14.21875,
+     0
+    ],
+    "end": [
+     19.03125,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "zig-red",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1875,
+       0.7
+      ],
+      "z0": 1.0,
+      "height": 0.4,
+      "colour": "#c24a30",
+      "topColour": "#c24a30"
+     }
+    },
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -13.03125,
+     0
+    ],
+    "end": [
+     20.21875,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-body",
+   "at": [
+    3.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.7
+    ],
+    "z0": 1.0,
+    "height": 0.4,
+    "colour": "#c24a30",
+    "topColour": "#c24a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-cap",
+   "at": [
+    3.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.8
+    ],
+    "z0": 1.4,
+    "height": 0.15,
+    "colour": "#b8bcc4",
+    "topColour": "#b8bcc4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-0",
+   "at": [
+    -13.5,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.5
+    ],
+    "z0": 1.55,
+    "height": 2.4,
+    "colour": "#d9d4c4",
+    "topColour": "#d9d4c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-1",
+   "at": [
+    -8.5,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.5
+    ],
+    "z0": 1.55,
+    "height": 2.4,
+    "colour": "#c9a98c",
+    "topColour": "#c9a98c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-2",
+   "at": [
+    -2.0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     0.5
+    ],
+    "z0": 1.55,
+    "height": 2.4,
+    "colour": "#b9a592",
+    "topColour": "#b9a592"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-3",
+   "at": [
+    5.0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     0.5
+    ],
+    "z0": 1.55,
+    "height": 2.4,
+    "colour": "#4f9a88",
+    "topColour": "#4f9a88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-4",
+   "at": [
+    10.5,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.5
+    ],
+    "z0": 1.55,
+    "height": 2.4,
+    "colour": "#a8452e",
+    "topColour": "#a8452e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-5",
+   "at": [
+    15.0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     0.5
+    ],
+    "z0": 1.55,
+    "height": 2.4,
+    "colour": "#b8573a",
+    "topColour": "#b8573a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-6",
+   "at": [
+    18.5,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.5
+    ],
+    "z0": 1.55,
+    "height": 2.4,
+    "colour": "#d4cdb8",
+    "topColour": "#d4cdb8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-board",
+   "at": [
+    -1,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.4
+    ],
+    "z0": 4.2,
+    "height": 1.6,
+    "colour": "#f4f4f6",
+    "topColour": "#f4f4f6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-board-edge",
+   "at": [
+    -1,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     26.6,
+     0.3
+    ],
+    "z0": 4.1,
+    "height": 1.8,
+    "colour": "#2a4a8a",
+    "topColour": "#2a4a8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board-post-l",
+   "at": [
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#2a2a2a",
+    "topColour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board-post-m",
+   "at": [
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#2a2a2a",
+    "topColour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "billboard-tall",
+   "at": [
+    4,
+    3
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "z0": 3,
+    "height": 9,
+    "colour": "#eceef0",
+    "topColour": "#eceef0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "billboard-post",
+   "at": [
+    4,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#555555",
+    "topColour": "#555555"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-left",
+   "at": [
+    -7,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "z0": 5.5,
+    "height": 3.2,
+    "colour": "#f4f4f6",
+    "topColour": "#f4f4f6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-left-edge",
+   "at": [
+    -7,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.2
+    ],
+    "z0": 5.4,
+    "height": 3.5,
+    "colour": "#2a4a8a",
+    "topColour": "#2a4a8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-right",
+   "at": [
+    16,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.3
+    ],
+    "z0": 4.4,
+    "height": 4.2,
+    "colour": "#f2f0e6",
+    "topColour": "#f2f0e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-right-edge",
+   "at": [
+    16,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     8.5,
+     0.2
+    ],
+    "z0": 4.3,
+    "height": 4.5,
+    "colour": "#2a4a8a",
+    "topColour": "#2a4a8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-r1",
+   "at": [
+    12.5,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#2a2a2a",
+    "topColour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-r2",
+   "at": [
+    19.5,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#2a2a2a",
+    "topColour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "street",
+   "at": [
+    3,
+    -8
+   ],
+   "params": {
+    "rect": [
+     48,
+     10
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#a79c8e",
+    "topColour": "#a79c8e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 2,
+    "spread": 2,
+    "line": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Low red/grey stepped wall, relief panels in teal/terracotta, name board, tall white billboard and two edged signboards, glazed green-roofed pavilion at left follow the photo; zigzag is a coarse two-row approximation, panels are flat colours without relief, signboards blank (no text), paving-block texture is flat grey, photo is an oblique view and model is frontal."
+ }
+}

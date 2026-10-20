@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/206511356",
+   "used": "outline of the plot (about 27 x 23 m, with a small rear annex)"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this dibiterie exists; shop is a single-storey shed-roofed block with a front awning, tiled counter and umbrellas typical of Dakar roadside grills"
+ },
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d5c0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#2f6f4f",
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9196",
+    "material": "corrugated",
+    "overhang": 0.6,
+    "high": "back"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 4,
+    "height": 3.0,
+    "colour": "#2f6f4f",
+    "columns": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "counter",
+   "at": [
+    0,
+    -13
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f0ece4",
+    "topColour": "#7a6a5c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grill",
+   "at": [
+    -6,
+    -12.5
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.9
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#2e2f31",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.4,
+    "bottom": 3.1,
+    "colour": "#2f6f4f",
+    "frameColour": "#e8d5c0"
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    11,
+    -17,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "colours": [
+     "#2f6f4f",
+     "#e8d5c0"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "at": [
+    -9,
+    -18
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.6
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#7a6a5c",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -22,
+     12
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ }
+}

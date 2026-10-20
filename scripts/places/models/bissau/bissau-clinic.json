@@ -1,0 +1,409 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Nacional_Simao_Mendes,_Bissau,_VOA.jpg",
+   "licence": "Public domain",
+   "author": "Ana Guedes / VOA",
+   "view": "front",
+   "file": "/tmp/places-evidence/bissau/hosp1.jpg",
+   "used": "entrance block clad in pale blue-grey panels with green frames, green-painted side wings, deep red-brick gate pillars with flat slab canopy, wide blank sign board over the arched entry"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/130124422",
+   "used": "zig-zag ward footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 32,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -20,
+    -31
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a3c796",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "overhang": 0.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    20,
+    -31.5
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a3c796",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "overhang": 0.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-rear",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a3c796",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f90",
+    "material": "clay-tile",
+    "overhang": 0.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0bdc8",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f90",
+    "overhang": 1.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "railing",
+    "pillarEvery": 6,
+    "colour": "#3f7a52"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 2.8,
+    "colour": "#7fa878",
+    "roofColour": "#8a8f90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -35.3
+   ],
+   "z0": 5.0,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6dc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -35.3,
+    6.9
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "height": 2.8,
+    "colour": "#3f7a52",
+    "topColour": "#3f7a52"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -35.7,
+    7.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.2,
+     0,
+     0
+    ],
+    "end": [
+     4.2,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.7,
+        0.3
+       ],
+       "height": 2.2,
+       "colour": "#2e3a40",
+       "topColour": "#2e3a40"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -35.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     0.6
+    ],
+    "height": 4.8,
+    "colour": "#3f7a52",
+    "topColour": "#3f7a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -35.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.6
+    ],
+    "height": 4.0,
+    "colour": "#1f2628",
+    "topColour": "#1f2628"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -36.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.2,
+        1.2
+       ],
+       "height": 5,
+       "colour": "#8f3d2c",
+       "topColour": "#8f3d2c"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       5
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        1.6
+       ],
+       "height": 0.4,
+       "colour": "#7a3224",
+       "topColour": "#7a3224"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -38.3,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     4,
+     3.4
+    ],
+    "height": 0.4,
+    "colour": "#a8452f",
+    "topColour": "#a8452f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Entrance block, window bank, arched entry, brick pillars and slab canopy are modelled, but the OSM ward outline is replaced by three rectangular wings so the frontage dominates; no wrought-iron fence detail, no framed window surrounds, and camera is far wider than the close-up photo."
+ }
+}

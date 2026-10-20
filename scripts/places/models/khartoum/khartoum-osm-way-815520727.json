@@ -1,0 +1,157 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/815520727",
+   "used": "hospital building outline (irregular wing plan, about 42 x 21 m); two-storey height, verandas, colours from the brief and typical Sudanese public hospitals; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 15,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3ab",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#8da29b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9283",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mosque-domed/veranda",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 2.6,
+    "height": 3.2,
+    "rise": 0.5,
+    "colour": "#f4eee0"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -2,
+    -17.6,
+    7
+   ],
+   "params": {
+    "size": 2.2
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 2,
+    "legs": 6
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -22,
+    2,
+    0
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 2,
+    "legs": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 3,
+  "treeKind": "acacia",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-way-815520727",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM wing outline with assumed verandas, colours from brief."
+ }
+}

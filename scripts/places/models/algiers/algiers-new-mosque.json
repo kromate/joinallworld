@@ -1,0 +1,494 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-new-mosque",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Djamaa_J%27did.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lamine Bensaou",
+   "view": "street",
+   "file": "/tmp/places-evidence/algiers/nm1.jpg",
+   "used": "plain white walls, big central dome on a low drum with a small lantern, lower side domes, scalloped parapet, square clock minaret with crenellated cap, green iron railing"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16270848",
+   "used": "hall outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.04,
+    "plinth": 0.5,
+    "bay": 14,
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee6",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-wing",
+   "at": [
+    -6,
+    -15
+   ],
+   "params": {
+    "rect": [
+     42,
+     18
+    ],
+    "height": 11,
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.04,
+    "bay": 14,
+    "faces": [
+     "-y"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-wing-roof",
+   "at": [
+    -6,
+    -15
+   ],
+   "params": {
+    "rect": [
+     42.6,
+     18.6
+    ],
+    "z0": 11,
+    "height": 0.8,
+    "colour": "#efece4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    -2,
+    4
+   ],
+   "params": {
+    "rect": [
+     17,
+     17
+    ],
+    "z0": 11,
+    "height": 3,
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.06,
+    "bay": 8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "central-dome",
+   "at": [
+    -2,
+    4,
+    14
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#f8f6f0",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      2
+     ],
+     [
+      9,
+      5
+     ],
+     [
+      6.8,
+      8
+     ],
+     [
+      3.6,
+      10
+     ],
+     [
+      0,
+      10.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern",
+   "at": [
+    -2,
+    4,
+    24.8
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e2d4",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.2
+     ],
+     [
+      0.4,
+      2
+     ],
+     [
+      0,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "side-dome",
+   "at": [
+    -14,
+    -4,
+    11
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f6f4ee",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      1.2
+     ],
+     [
+      4.1,
+      3
+     ],
+     [
+      2.2,
+      4.2
+     ],
+     [
+      0,
+      4.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "side-dome2",
+   "at": [
+    12,
+    -4,
+    11
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f6f4ee",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      4.6,
+      0
+     ],
+     [
+      4.6,
+      1.1
+     ],
+     [
+      3.8,
+      2.8
+     ],
+     [
+      2,
+      3.9
+     ],
+     [
+      0,
+      4.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret",
+   "at": [
+    22,
+    10
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     5.2
+    ],
+    "height": 26,
+    "colour": "#f2efe6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-frame",
+   "at": [
+    22,
+    7.35
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "z0": 17,
+    "height": 3.6,
+    "colour": "#b8a67e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-face",
+   "at": [
+    22,
+    7.15
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "z0": 17.7,
+    "height": 2.2,
+    "colour": "#ece8dc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roundel",
+   "at": [
+    22,
+    7.35
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 11.5,
+    "height": 2.2,
+    "colour": "#c9b98a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gallery",
+   "at": [
+    22,
+    10
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     6.2
+    ],
+    "z0": 26,
+    "height": 1.8,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellation",
+   "id": "min-crenel",
+   "at": [
+    18.9,
+    6.9,
+    27.8
+   ],
+   "params": {
+    "length": 6.2,
+    "height": 0.1,
+    "thickness": 0.5,
+    "merlon_height": 0.8,
+    "merlon_width": 0.8,
+    "pitch": 1.6,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-top",
+   "at": [
+    22,
+    10
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "z0": 27.8,
+    "height": 3.4,
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-cap",
+   "at": [
+    22,
+    10,
+    31.2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#e6e0d0",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.6,
+      0
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/crenellation",
+   "id": "scallop-front",
+   "at": [
+    -27,
+    -24.2,
+    11.2
+   ],
+   "params": {
+    "length": 42,
+    "height": 0.1,
+    "thickness": 0.5,
+    "merlon_height": 1.0,
+    "merlon_width": 0.9,
+    "pitch": 1.8,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "green-railing",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.4,
+    "colour": "#2f5a45",
+    "points": [
+     [
+      -32,
+      -28
+     ],
+     [
+      16,
+      -28
+     ],
+     [
+      26,
+      -20
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "minaret floats off the OSM hall and is taller/slimmer than the stout photo tower; scallop parapet is plain merlons and sticks out past the front wing; front wing and hall do not read as one long white mass; railing is a thin rail not a green balustrade; dome too tall and hemispherical; no gable curves"
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/656804896",
+   "used": "campus-wide 200,000 m2 polygon: far too large and unreliable for a single building, not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1963 college, linked one and two-storey brick and render classroom blocks along covered walkways, corrugated hip roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     36,
+     12
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#e9dfc7",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#b36a48",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d4033",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "class-west",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    -30,
+    -5
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b36a48",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#e9dfc7",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d4033",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "class-east",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    30,
+    -2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a95e40",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#e9dfc7",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d4033",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#f3efe6",
+    "roofColour": "#7d4033"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -18
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     14
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-evelyn-hone-college",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM is whole campus so unused; brick blocks and hip roofs from brief"
+ }
+}

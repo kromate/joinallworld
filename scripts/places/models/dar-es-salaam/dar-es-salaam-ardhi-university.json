@@ -1,0 +1,236 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Girls%27_Hostel_(Low_Cost)_Ardhi_University_.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chiboko",
+   "view": "street",
+   "file": "/tmp/places-evidence/dar-es-salaam/ardhi0.jpg",
+   "used": "campus hostel blocks: salmon-pink rendered walls, stepped mono-pitch terracotta tile roofs, mature green broadleaf trees all round, bare grey concrete block at the edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/126763952",
+   "used": "real footprint of the tagged university building (770 m2, 4 levels, cement block)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "step-0",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0705a",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a6048",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-1",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0705a",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a6048",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-2",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0705a",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a6048",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-3",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    0,
+    13
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0705a",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a6048",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grey-slab",
+   "footprint": {
+    "rect": [
+     8,
+     20
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "height": 38,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9aaa3",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 70,
+    "count": 27,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 22,
+    "keep_out": [
+     [
+      -18,
+      -16,
+      18,
+      22
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -10,
+    26
+   ],
+   "params": {
+    "width": 70,
+    "depth": 16,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 16,
+    "max_height": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-ardhi-university",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Photo is a canopy-obscured panorama; stepped terracotta units and grey slab now match, but layout is composed, trees are generic blobs and the slab is plain."
+ }
+}

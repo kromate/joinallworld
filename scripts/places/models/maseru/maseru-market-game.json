@@ -1,0 +1,426 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/0",
+   "used": "plot outline of the market yard (4,649 m2, name match); stall and shed layout is typical, not photographed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yard",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aaa0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa59b",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed0",
+   "at": [
+    -16.61,
+    -28.28,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8c8f92",
+    "roof_material": "corrugated",
+    "wall_colour": "#4f6a5a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed1",
+   "at": [
+    5.99,
+    -14.83,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8c8f92",
+    "roof_material": "corrugated",
+    "wall_colour": "#4f6a5a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed2",
+   "at": [
+    26.75,
+    -2.14,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8c8f92",
+    "roof_material": "corrugated",
+    "wall_colour": "#4f6a5a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed3",
+   "at": [
+    -21.5,
+    -10.84,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8c8f92",
+    "roof_material": "corrugated",
+    "wall_colour": "#4f6a5a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed4",
+   "at": [
+    1.11,
+    2.6,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8c8f92",
+    "roof_material": "corrugated",
+    "wall_colour": "#4f6a5a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed5",
+   "at": [
+    21.86,
+    15.3,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8c8f92",
+    "roof_material": "corrugated",
+    "wall_colour": "#4f6a5a"
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "stalls0",
+   "at": [
+    -19.93,
+    -36.09,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a24a36",
+     "#4f6a5a",
+     "#d9b24a",
+     "#3d6f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "stalls1",
+   "at": [
+    2.32,
+    -27.1,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a24a36",
+     "#4f6a5a",
+     "#d9b24a",
+     "#3d6f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "stalls2",
+   "at": [
+    23.83,
+    -16.26,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a24a36",
+     "#4f6a5a",
+     "#d9b24a",
+     "#3d6f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "stalls3",
+   "at": [
+    -30.81,
+    -3.82,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a24a36",
+     "#4f6a5a",
+     "#d9b24a",
+     "#3d6f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "stalls4",
+   "at": [
+    9.67,
+    -2.57,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a24a36",
+     "#4f6a5a",
+     "#d9b24a",
+     "#3d6f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "stalls5",
+   "at": [
+    -12.27,
+    3.67,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a24a36",
+     "#4f6a5a",
+     "#d9b24a",
+     "#3d6f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "stalls6",
+   "at": [
+    8.49,
+    16.37,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a24a36",
+     "#4f6a5a",
+     "#d9b24a",
+     "#3d6f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "stalls7",
+   "at": [
+    30.78,
+    14.59,
+    0.5
+   ],
+   "rotDeg": 22,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#a24a36",
+     "#4f6a5a",
+     "#d9b24a",
+     "#3d6f9a"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "busrank",
+   "at": [
+    9.03,
+    -33.02,
+    0
+   ],
+   "rotDeg": 22,
+   "params": {
+    "length": 36,
+    "kind": "van",
+    "density": 0.8,
+    "colours": [
+     "#f1f1ee",
+     "#e8e0c8"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "at": [
+    -52,
+    6,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t2",
+   "at": [
+    50,
+    12,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   130,
+   100
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this market found; shed and stall layout imagined on the real plot outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-market-game"
+}

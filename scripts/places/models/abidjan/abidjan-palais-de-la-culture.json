@@ -1,0 +1,319 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-palais-de-la-culture",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lagune_Abidjan_3384.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GuillaumeG",
+   "view": "side",
+   "file": "/tmp/places-evidence/abidjan/palais-de-la-culture-0.jpg",
+   "used": "only the Fokker F27 library plane parked in the grounds (white, small tail, round windows) and the green lagoon bank; the building itself is not visible"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wikiconvention_francophone_2023_by_Le_Commissaire_at_Abidjan_-_15.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Le Commissaire",
+   "view": "interior",
+   "used": "interior only: wood-panelled hall, stepped stage; not used for the exterior"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CONCERT_3_AU_PALAIS_DE_LA_CULTURE_D%27ABIDJAN.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Singoloua225",
+   "view": "interior",
+   "used": "travertine/cream stone cladding and glass stair seen in interior photos suggest beige stone walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/147068724",
+   "used": "campus outline (411 x 241 m) scaled to a 116 m podium; halls placed on it from the brief (500 and 1000 seat halls, 2500 seat open-air theatre)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "fit": 116
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b4a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grand-hall",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "z0": 1.2,
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d2c3a3",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#4f7a8f",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "small-hall",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    -34,
+    10
+   ],
+   "z0": 1.2,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d8c3",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#4f7a8f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     50,
+     12
+    ]
+   },
+   "at": [
+    -12,
+    -12
+   ],
+   "z0": 1.2,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f7a8f",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b0702f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "material": "concrete",
+    "overhang": 2.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -23,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     56,
+     7
+    ],
+    "height": 0.9,
+    "colour": "#d9cfba",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -29,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     62,
+     6
+    ],
+    "height": 0.6,
+    "colour": "#d2c9b6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -12,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.3,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#c9bfa9"
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    30,
+    -26,
+    1.2
+   ],
+   "rotDeg": 15,
+   "params": {
+    "scale": 0.75,
+    "colour": "#e6e4dd",
+    "tailColour": "#d8d6cf"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -42,
+    -26,
+    1.2
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#ee8a2a",
+    "colours": [
+     "#ee8a2a",
+     "#ffffff",
+     "#1f9a52"
+    ],
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 5,
+    "spread": 6,
+    "line": 10
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    56,
+    22,
+    1.2
+   ],
+   "params": {
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 12,
+    "startDeg": 200,
+    "endDeg": 340,
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "facetDeg": 20,
+    "seatColour": "#cfc7b4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of the building exists in the evidence; hall layout, colours and open-air theatre placement are from brief facts; only the Fokker plane is photo-backed."
+ }
+}

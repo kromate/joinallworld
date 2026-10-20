@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-way-786546062",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/786546062",
+   "used": "real outline (93 x 33 m, tagged hospital but named DMI Nursery); single-storey school/clinic block"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found for this place; brief has city-level sources only, so details are typical for Juba"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4e3b8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#d98a2b",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d5f86",
+    "material": "corrugated",
+    "rise": 1.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.8,
+    "colour": "#4f7a54"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.4,
+    "colour": "#d98a2b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; massing from the real outline only; roof, colours and covered playground are typical guesses."
+ }
+}

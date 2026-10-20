@@ -1,0 +1,195 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1266320835",
+   "used": "real outline of the hospital block (71 x 45 m, name-matched) as the main footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey pale ochre block, walled compound, guarded gate, helipad, ambulance bay, flags; nearby Commons photo shows a river, not the hospital, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building; the compound wall, helipad and gate positions are assumed from the brief"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#f5ecd8",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    42,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#f5ecd8",
+    "roofColour": "#8f8a82"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "colour": "#f5f5f0"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "colour": "#8f8a82",
+    "board_colour": "#f5ecd8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -56,
+      -50
+     ],
+     [
+      -4,
+      -50
+     ],
+     [
+      4,
+      -50
+     ],
+     [
+      56,
+      -50
+     ],
+     [
+      56,
+      50
+     ],
+     [
+      -56,
+      50
+     ],
+     [
+      -56,
+      -50
+     ]
+    ],
+    "height": 2.6,
+    "thickness": 0.35,
+    "colour": "#d9c3a0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -47,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b6323a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    6,
+    -47,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-way-1266320835"
+}

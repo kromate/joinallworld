@@ -1,0 +1,227 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/praia.json",
+   "used": "walled yard 60x40, low plastered hall with metal roof, stall rows, sheds, umbrellas, gate; OSM match is a 67 m2 building 3 m away so not used; Commons market photos show the Plateau market, a different place"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-hall",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    10
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8d28f",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched"
+    },
+    "bands": "#b2603f"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.2,
+    "overhang": 1.2,
+    "colour": "#7b8891",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      60,
+      40
+     ],
+     [
+      0,
+      40
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#e8d28f"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    16,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "shed",
+    "roof_colour": "#7b8891",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed",
+    "roof_colour": "#7b8891"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#b2603f",
+     "#ffffff",
+     "#d97a2b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#ffffff",
+     "#e8d28f",
+     "#b2603f"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -2,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 4,
+    "colours": [
+     "#ffffff",
+     "#b2603f"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.2,
+    "height": 4.2,
+    "openings": 1,
+    "pier": "#b2603f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: layout from the brief only, yard size and stall positions are typed"
+ }
+}

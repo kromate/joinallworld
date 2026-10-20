@@ -1,0 +1,157 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/96580889",
+   "used": "real name-matched compound outline (50 x 34 m) for the courtyard wall; hall sits inside"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q105706883",
+   "used": "Muso Kunda Museum of Women, founded 1995 (no photo available)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "kind": "L",
+    "size": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c3a0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#f1ece0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a84b32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -19.4,
+      22.5
+     ],
+     [
+      13.8,
+      25.9
+     ],
+     [
+      19.6,
+      -21.5
+     ],
+     [
+      -13.6,
+      -26.7
+     ],
+     [
+      -19.4,
+      22.5
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    3,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "colour": "#a65a3a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -5,
+    -25,
+    1.8
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.8,
+    "colour": "#a65a3a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; hall form is from the brief, not seen. Compound wall follows the real outline."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-muso-kunda"
+}

@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-hindu-temple",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1069109066",
+   "used": "real outline (about 61 x 27 m, stepped east hall and lower west wing); roof tower positions follow the two volumes"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Lusaka",
+   "used": "identity only (BAPS mandir); no photo of this building was found, carved-stone shikharas and domes are the BAPS tradition, not observed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mandir-osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6d5b8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.35,
+      "spacing": 3.2,
+      "colour": "#c9a77c",
+      "margin": 1.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c8a6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "shikhara",
+   "id": "main-shikhara",
+   "at": [
+    11,
+    3,
+    8.8
+   ],
+   "params": {
+    "width": 11,
+    "height": 19,
+    "base_height": 4,
+    "layers": 22,
+    "colour": "#eadcc0",
+    "amalaka": true
+   }
+  },
+  {
+   "type": "shikhara",
+   "id": "west-shikhara",
+   "at": [
+    -12,
+    -4,
+    8.8
+   ],
+   "params": {
+    "width": 7,
+    "height": 12,
+    "base_height": 3,
+    "layers": 18,
+    "colour": "#eadcc0",
+    "amalaka": true
+   }
+  },
+  {
+   "type": "core/dome",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    21,
+    -6,
+    8.8
+   ],
+   "params": {
+    "radius": 2.4,
+    "height": 3.4,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#e4d1ae",
+    "drumColour": "#d4bf98",
+    "finial": 1.0
+   }
+  },
+  {
+   "type": "core/dome",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -4,
+    12,
+    8.8
+   ],
+   "params": {
+    "radius": 2.4,
+    "height": 3.4,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#e4d1ae",
+    "drumColour": "#d4bf98",
+    "finial": 1.0
+   }
+  },
+  {
+   "type": "core/dome",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26,
+    -4,
+    8.8
+   ],
+   "params": {
+    "radius": 2.2,
+    "height": 3.0,
+    "profile": "hemi",
+    "drum": 1.0,
+    "colour": "#e4d1ae",
+    "drumColour": "#d4bf98",
+    "finial": 1.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.6,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#d8ccb4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#d8ccb4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building: outline from OSM, tower layout and carved stone look assumed from BAPS mandir tradition."
+ }
+}

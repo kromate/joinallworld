@@ -1,0 +1,193 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "no photo or reliable outline found (OSM nearest building is a 19 m diamond 7 m away, rejected); typed from the brief: two-storey water-company office, blue accent, water tank"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#2f6f9a",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a35",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    -9.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6f9a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9a92",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -13
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#9c9a92"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    28,
+    6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3.2,
+    "legHeight": 7,
+    "colour": "#2f6f9a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 1.6,
+    "colour": "#2f6f9a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -26,
+    -18
+   ],
+   "params": {
+    "length": 52,
+    "height": 2.2,
+    "colour": "#d4cdb8",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typed office with blue band and water tank."
+ }
+}

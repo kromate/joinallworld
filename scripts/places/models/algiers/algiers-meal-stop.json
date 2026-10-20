@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1172848204",
+   "used": "real outline (31 x 20 m, name match Cafeteria Telemly)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Place_Krim_Belkacem_%C3%A0_Telemly.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dzairium",
+   "view": "street",
+   "file": "/tmp/places-evidence/algiers/cafe1.jpg",
+   "used": "street context only (cream Haussmann blocks with iron balconies, chequered paving, benches); does not show the cafe itself"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#f4efe2",
+    "groundKind": "shopfront",
+    "groundHeight": 4.2,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 1.8,
+    "height": 3.2,
+    "colours": [
+     "#5f8a8e",
+     "#f4efe2"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.1,
+    "bottom": 3.6,
+    "colour": "#5f8a8e",
+    "posts": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3,
+    -17,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    2,
+    -17,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the cafe itself; massing from OSM outline and typical Haussmann block (height and balconies assumed)"
+ }
+}

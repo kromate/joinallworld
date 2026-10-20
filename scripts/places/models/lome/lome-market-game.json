@@ -1,0 +1,300 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Minist%C3%A8re_des_sports_et_des_loisirs.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Frappipi 01",
+   "view": "street",
+   "file": "/tmp/places-evidence/lome/as1.jpg",
+   "used": "neighbourhood colour cues only (a ministry compound, not the market): ochre-pink render, rust-red piers, palms. Not the market itself, so not photo-verified."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/763961094",
+   "used": "market district outline (32780 m2, name match), scaled by 0.45 to fit the scene clamp; edge shop blocks and shed grid placed inside"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "polygon": [
+     [
+      -45.5,
+      45.2
+     ],
+     [
+      13.7,
+      63.5
+     ],
+     [
+      24.5,
+      24.5
+     ],
+     [
+      28.2,
+      7.7
+     ],
+     [
+      38.2,
+      -53.1
+     ],
+     [
+      -2.1,
+      -66.1
+     ],
+     [
+      -7.4,
+      -64.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9a67a",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfa877",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    -18,
+    -62,
+    0.25
+   ],
+   "params": {
+    "width": 44,
+    "depth": 10,
+    "storeys": 2,
+    "floor_height": 3.6,
+    "ground_height": 3.8,
+    "windows": "punched",
+    "window_ratio": 0.18,
+    "roof": "flat",
+    "parapet": 0.8,
+    "wall_colour": "#c27f62",
+    "trim_colour": "#eadfc6"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    28,
+    -50,
+    0.25
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "storeys": 3,
+    "floor_height": 3.4,
+    "ground_height": 4.0,
+    "windows": "punched",
+    "window_ratio": 0.2,
+    "roof": "flat",
+    "parapet": 0.8,
+    "wall_colour": "#6c9ac0",
+    "trim_colour": "#eadfc6"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    -34,
+    10,
+    0.25
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 50,
+    "depth": 9,
+    "storeys": 2,
+    "floor_height": 3.5,
+    "ground_height": 3.8,
+    "windows": "punched",
+    "window_ratio": 0.16,
+    "roof": "flat",
+    "parapet": 0.8,
+    "wall_colour": "#eadfc6",
+    "trim_colour": "#c27f62"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    4,
+    6,
+    0.25
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 4,
+    "dx": 17,
+    "dy": 13,
+    "of": {
+     "type": "market-shed",
+     "params": {
+      "length": 14,
+      "depth": 6,
+      "height": 3.4,
+      "roof": "gable",
+      "roof_colour": "#8c4a37"
+     }
+    }
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -36,
+    0.25
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c27f62",
+     "#6c9ac0",
+     "#eadfc6",
+     "#e0b84a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    30,
+    16,
+    0.25
+   ],
+   "params": {
+    "count": 8,
+    "spread": 7,
+    "colours": [
+     "#6c9ac0",
+     "#c27f62",
+     "#eadfc6"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -10,
+    58,
+    0.25
+   ],
+   "params": {
+    "count": 7,
+    "spread": 6,
+    "colours": [
+     "#eadfc6",
+     "#6c9ac0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -44,
+    0.25
+   ],
+   "params": {
+    "width": 5,
+    "colours": [
+     "#6c9ac0",
+     "#eadfc6"
+    ]
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -40,
+    -58,
+    0.25
+   ],
+   "params": {
+    "height": 6,
+    "width": 4,
+    "colour": "#eadfc6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    42,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of the market: shop blocks, shed grid and stalls are placed from the brief inside the scaled OSM outline"
+ }
+}

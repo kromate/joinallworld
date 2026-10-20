@@ -1,0 +1,240 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-heinitzburg",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/828455818",
+   "used": "real castle outline (690 m2, wikidata Q111413446 hotel Heinitzburg, 3.5 m match)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Heinitzburg",
+   "used": "1914 Wilhelm Sander hilltop castle: cream plaster, crenellated round tower, taller square tower, steep red roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Klein_Windhoek,_Windhoek,_Namibia_-_panoramio_(9).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "mroszewski",
+   "view": "street",
+   "file": "/tmp/places-evidence/windhoek/hz1.jpg",
+   "used": "only a tiny white crenellated tower on the ridge is visible, too small to compare; colours only (ochre-cream boundary walls, rust-red railings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "castle",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c2",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "windowShape": "arched",
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d8c9a0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9b3b2c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "round-tower",
+   "at": [
+    3.8,
+    17.5,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e8dbb8",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#8a8a82"
+     ],
+     [
+      3.6,
+      1.5,
+      "#8a8a82"
+     ],
+     [
+      3.2,
+      1.6,
+      "#efe3c2"
+     ],
+     [
+      3.2,
+      15,
+      "#efe3c2"
+     ],
+     [
+      3.7,
+      15.3,
+      "#d8c9a0"
+     ],
+     [
+      3.7,
+      16.6,
+      "#efe3c2"
+     ],
+     [
+      3.3,
+      16.6,
+      "#9b9a90"
+     ],
+     [
+      0,
+      16.6,
+      "#9b9a90"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "merlons",
+   "at": [
+    3.8,
+    17.5,
+    16.6
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 12,
+    "radius": 3.45,
+    "startDeg": 0,
+    "endDeg": 330,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.6
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#efe3c2",
+      "topColour": "#d8c9a0"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "square-tower",
+   "at": [
+    13.2,
+    -11.0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "z0": 0,
+    "height": 22,
+    "colour": "#efe3c2",
+    "topColour": "#d8c9a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "storeys": 5
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower-roof",
+   "at": [
+    13.2,
+    -11.0,
+    22
+   ],
+   "rotDeg": -30,
+   "params": {
+    "colour": "#9b3b2c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no usable close photo of the castle; tower positions, heights and detailing are from the brief and the real outline, not read from an image"
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -20,
+     -22
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     22,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

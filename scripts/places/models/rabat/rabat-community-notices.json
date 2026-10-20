@@ -1,0 +1,353 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moroccan_Parliament_Building.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fernando Pascullo",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/parl0.jpg",
+   "used": "two-storey ochre-pink stone block with a deep recessed dark-red loggia, eight square pilasters, tall paned windows, projecting flat cornice, green iron fence, flagpoles, white side wings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rabat_Parliament.jpg",
+   "licence": "see Commons",
+   "author": "unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/parl4.jpg",
+   "used": "cross-check of proportions and red recess colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/156348306",
+   "used": "overall complex size only (162 m); the front block seen in the photo is modelled by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.778,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     11,
+     30
+    ]
+   },
+   "at": [
+    -26.5,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b98a63",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a86",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     11,
+     30
+    ]
+   },
+   "at": [
+    26.5,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b98a63",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a86",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia-back",
+   "footprint": {
+    "rect": [
+     42,
+     26
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#8e2f2b",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 6.6,
+    "windowShape": "rect",
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     66,
+     31
+    ],
+    "z0": 13,
+    "height": 1.6,
+    "colour": "#8f6e52",
+    "topColour": "#8f6e52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     67.2,
+     32.2
+    ],
+    "z0": 14.6,
+    "height": 0.5,
+    "colour": "#7c5f48",
+    "topColour": "#7c5f48"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       1.5
+      ],
+      "z0": 0,
+      "height": 13,
+      "colour": "#b98a63",
+      "topColour": "#c79a72"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -21,
+     -13
+    ],
+    "end": [
+     21,
+     -13
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-board",
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "z0": 5.2,
+    "height": 1.5,
+    "colour": "#9b2f2c",
+    "topColour": "#9b2f2c"
+   },
+   "at": [
+    0,
+    -12.2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -41,
+    4
+   ],
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efeae0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    41,
+    4
+   ],
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efeae0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 2,
+    "colour": "#bdb4a4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -22
+   ],
+   "params": {
+    "length": 48,
+    "height": 2.2,
+    "kind": "fence",
+    "colour": "#2f7a4a",
+    "pillarEvery": 16
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -16,
+    -16
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b5222a",
+    "count": 5,
+    "spacing": 1.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -16
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b5222a",
+    "count": 4,
+    "spacing": 1.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    6,
+    13.5
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#b5222a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Wings simplified; no stone relief on pilaster capitals, window surrounds, trees/hedges and the ornate gate are generic"
+ }
+}

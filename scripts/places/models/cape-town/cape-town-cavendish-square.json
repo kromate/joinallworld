@@ -1,0 +1,483 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-cavendish-square",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cavendis_Square_aerial_view.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Damien du Toit",
+   "view": "aerial",
+   "used": "long low mall slab with green flat roofs carrying raised lighter-green plant boxes and rooftop deck, cream walls with bands of glazing, round glazed stair drum at the corner, surrounded by small suburban buildings",
+   "file": "/tmp/places-evidence/cape-town/cav.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27248967",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 32,
+  "fovDeg": 45,
+  "aspect": 2.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 85
+   },
+   "z0": 0,
+   "height": 14,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a6a0",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a8a6a0",
+       "#55575a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f9a74",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-light",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    -18,
+    0
+   ],
+   "z0": 14,
+   "height": 0.5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8fc19a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fc19a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-light-b",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    22,
+    10
+   ],
+   "z0": 14,
+   "height": 0.5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#94c79f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#94c79f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box-a",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    -6,
+    -8
+   ],
+   "z0": 14.5,
+   "height": 2.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6fa380",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa380"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box-b",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    20,
+    14
+   ],
+   "z0": 14.5,
+   "height": 2.4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7bb087",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7bb087"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box-c",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -30,
+    18
+   ],
+   "z0": 14.5,
+   "height": 1.8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6a9d7b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a9d7b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box-d",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    8,
+    -24
+   ],
+   "z0": 14.5,
+   "height": 1.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a9094",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9094"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "courtyard-notch",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    2,
+    -2
+   ],
+   "z0": 14.5,
+   "height": 0.5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f6d52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6d52"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lower-wing",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    34,
+    -50
+   ],
+   "z0": 0,
+   "height": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a6a0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a8a6a0",
+       "#55575a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fc19a",
+    "parapet": 0.3
+   },
+   "storeys": 3
+  },
+  {
+   "type": "prism",
+   "id": "glass-drum",
+   "at": [
+    -8,
+    -52
+   ],
+   "params": {
+    "n": 14,
+    "radius": 6.5,
+    "height": 15,
+    "colour": "#e3d9bf",
+    "windows": "rect",
+    "windowRatio": 0.35,
+    "trimColour": "#e8e0cc",
+    "storeys": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hotel-1",
+   "at": [
+    -73.0,
+    -8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     22
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#eeece6",
+    "topColour": "#d8d6d0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f0eee8",
+       "#b9b7b0"
+      ]
+     }
+    ],
+    "storeys": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hotel-2",
+   "at": [
+    -72.0,
+    -8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     18
+    ],
+    "z0": 12,
+    "height": 10,
+    "colour": "#eeece6",
+    "topColour": "#d8d6d0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f0eee8",
+       "#b9b7b0"
+      ]
+     }
+    ],
+    "storeys": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hotel-3",
+   "at": [
+    -71.0,
+    -8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     13,
+     14
+    ],
+    "z0": 22,
+    "height": 8,
+    "colour": "#eeece6",
+    "topColour": "#d8d6d0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f0eee8",
+       "#b9b7b0"
+      ]
+     }
+    ],
+    "storeys": 2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 2,
+    "dx": 18,
+    "dy": 16,
+    "of": [
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "params": {
+       "rect": [
+        9,
+        8
+       ],
+       "height": 3.2,
+       "colour": "#e8dcc6",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0
+      ],
+      "at": [
+       0,
+       0,
+       3.2
+      ],
+      "params": {
+       "rect": [
+        9.6,
+        8.6
+       ],
+       "height": 2.2,
+       "topScale": [
+        1,
+        0.08
+       ],
+       "colour": "#8a5a48",
+       "windows": "none"
+      }
+     }
+    ]
+   },
+   "at": [
+    10,
+    -78
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -62
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -60
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -70
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Single OSM block with grey floor bands rather than true open parking decks and set-back terraces; roof notch and plant boxes are indicative; houses, hotel and lower wing are generic context placed by eye; photo is a low-res aerial"
+ }
+}

@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-beach-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Commons File:A_la_plage_de_Libreville.jpg (CC0, ArnoBOUJIKA): general beach character only (grey-brown sand, scattered dark rocks, a lone broadleaf tree, grey Atlantic); no structures visible, so not a photo match of the venue"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/15900924",
+   "used": "leisure=park, 31,700 m2 long thin seafront strip (426 x 112 m), containing match only; used for scale and shore-side setting"
+  },
+  {
+   "kind": "text",
+   "used": "brief: paillote shelters, bar pavilion, umbrellas, steps to the sand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a42",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b79b5a",
+    "material": "thatch",
+    "pitch": 30,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "at": [
+    20,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.2,
+    "thatch": true
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "at": [
+    -30,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "height": 3.0,
+    "thatch": true
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "at": [
+    4,
+    22,
+    0
+   ],
+   "params": {
+    "radius": 3.9,
+    "height": 3.1,
+    "thatch": true
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -20,
+    30,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 5,
+    "umbrellas": true,
+    "loungers": true
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    18,
+    34,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 5,
+    "umbrellas": true,
+    "loungers": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#bdb6a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rock-groyne",
+   "footprint": {
+    "rect": [
+     18,
+     3
+    ]
+   },
+   "at": [
+    40,
+    30
+   ],
+   "rotDeg": 35,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#6b6a64",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6a64"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 11
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -14,
+     0
+    ],
+    "end": [
+     46,
+     -14,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the venue itself; shelter layout, bar and umbrellas are typed from the brief; rocks and sea edge not modelled"
+ }
+}

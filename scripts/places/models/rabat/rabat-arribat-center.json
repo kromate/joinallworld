@@ -1,0 +1,285 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entr%C3%A9e_Arribat_center_maroc_au_2020.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nadia 202019",
+   "view": "street",
+   "file": "/tmp/places-evidence/rabat/arribat2.jpg",
+   "used": "golden-yellow cladding block with a large tonal leaf relief, deep flat white canopy over shopfronts, vertical timber slats and tall glazed shopfronts, pale stone paved plaza with fountain jets, adjacent dark glass tower"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arribat_Center.jpg",
+   "licence": "CC0",
+   "author": "Taha ahh",
+   "view": "interior",
+   "used": "timber pergola roofs, pale stone-clad columns, planted open-air mall circulation (context only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1566872299",
+   "used": "containing outline only, about 129 x 64 m, treated as site extent not copied"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b93e",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "groundKind": "curtain",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#d9b83e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-block",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 9,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6c24a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-tower",
+   "footprint": {
+    "rect": [
+     12,
+     18
+    ]
+   },
+   "at": [
+    -50,
+    6
+   ],
+   "height": 38,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d5260",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "bands": "#8d8f8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    6,
+    -21,
+    5.4
+   ],
+   "params": {
+    "width": 54,
+    "depth": 9,
+    "height": 0.9,
+    "colour": "#f2f2ee",
+    "edgeColour": "#dcdcd6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -17.1,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 2,
+    "bottom": 6.6,
+    "colour": "#2e2e30",
+    "frameColour": "#2e2e30",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -14,
+     -17.5
+    ],
+    "end": [
+     26,
+     -17.5
+    ],
+    "of": {
+     "type": "mass",
+     "id": "slat",
+     "footprint": {
+      "rect": [
+       0.6,
+       0.5
+      ]
+     },
+     "height": 5.2,
+     "wall": {
+      "material": "timber",
+      "colour": "#7a4e30",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#7a4e30"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 12,
+    "rows": 6,
+    "dx": 3.6,
+    "dy": 3.6,
+    "centred": true,
+    "of": {
+     "type": "mass",
+     "id": "jet",
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "height": 6,
+     "wall": {
+      "material": "render",
+      "colour": "#f4f8fb",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f4f8fb"
+     }
+    }
+   },
+   "at": [
+    10,
+    -32,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "leaf",
+   "footprint": {
+    "rect": [
+     18,
+     0.8
+    ]
+   },
+   "at": [
+    -2,
+    -11.9
+   ],
+   "z0": 13.5,
+   "height": 10,
+   "wall": {
+    "material": "render",
+    "colour": "#f3dd88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efd77e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "extent": [
+   130,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -32
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "ginkgo relief is one pale panel, fountain jets are posts, shopfront slats and glazing simplified"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-arribat-center"
+}

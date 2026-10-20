@@ -1,0 +1,159 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/267049817",
+   "used": "real irregular mall outline (341 x 228 m, fitted to the scene clamp), 2 levels per brief"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "two-level painted-render mall, blank sign boards, flat canopy, large car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8bd",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "plinth": 0.5,
+    "bands": "#a8553a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-tower",
+   "at": [
+    -40,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     10
+    ],
+    "height": 19,
+    "colour": "#a8553a",
+    "topColour": "#f6f2ea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -40,
+    -57.5,
+    13
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#f6f2ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 8,
+    "height": 5,
+    "columns": 6,
+    "colour": "#f6f2ea",
+    "edgeColour": "#a8553a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -100,
+    -85,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 8,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "forecourtDepth": 40,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -90,
+     -100
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -20,
+     -90
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     60,
+     -72
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-airport-junction-shopping-center",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real OSM outline scaled 0.32 and simplified; facade colours and tower typed from brief"
+ }
+}

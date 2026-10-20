@@ -1,0 +1,183 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/143040548",
+   "used": "nave outline about 45 x 23 m, bearing 16 deg"
+  },
+  {
+   "kind": "text",
+   "used": "brief: stuccoed gothic-revival nave, pitched corrugated roof, pointed windows, square front tower; No photo of this building was found: the geo-nearby Commons photos show other places (road, market street, hotel deck, glass office), so none was used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6e0cf",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8891",
+    "material": "corrugated",
+    "pitch": 38,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    -6.2,
+    -23.2,
+    0
+   ],
+   "rotDeg": -16,
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 19,
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "storeys": 3,
+    "colour": "#e2dcc9",
+    "topColour": "#8d8a82",
+    "plinth": 0.6
+   }
+  },
+  {
+   "type": "spire",
+   "at": [
+    -6.2,
+    -23.2,
+    19
+   ],
+   "rotDeg": -16,
+   "params": {
+    "baseWidth": 7,
+    "height": 7,
+    "sides": 4,
+    "colour": "#7b8891",
+    "finial": true
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -7.6,
+    -28.4,
+    0
+   ],
+   "rotDeg": -16,
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -38
+     ],
+     [
+      26,
+      -38
+     ],
+     [
+      26,
+      38
+     ],
+     [
+      -26,
+      38
+     ],
+     [
+      -26,
+      -38
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.25,
+    "colour": "#8d8a82"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   90,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-way-143040548",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "nave and tower placement guessed from the outline; no photo of this church"
+ }
+}

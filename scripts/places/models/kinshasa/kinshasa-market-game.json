@@ -1,0 +1,267 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kinshasa.json#kinshasa-market-game",
+   "used": "Marche Wenzeyambila: no photo or usable OSM outline (nearest way is a 12x10 m building); dense plank stall rows with tarpaulins, corrugated sheds and hand-painted shop wall on red earth, 80x60 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -17,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "stall",
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "stall",
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    4,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -12,
+    22,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 8,
+    "height": 3.5,
+    "roof": "shed",
+    "cladding": "timber",
+    "roof_colour": "#6b6f73",
+    "roof_material": "corrugated",
+    "goods": "sacks",
+    "wall_colour": "#a68a64"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    24,
+    10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "cladding": "timber",
+    "roof_colour": "#6b6f73",
+    "roof_material": "corrugated",
+    "goods": "sacks",
+    "wall_colour": "#d9c9a3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "painted-shops",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    32
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a3",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#2f6b8c"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 9,
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; layout is typical eastern-commune market vernacular, not surveyed."
+ }
+}

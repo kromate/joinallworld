@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-palais-des-congres",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1435653903",
+   "used": "real outline (113 x 85 m, 9146 m2, conference centre, opened 2026-05-03)"
+  },
+  {
+   "kind": "text",
+   "url": "https://fr.wikipedia.org/wiki/Palais_des_congr%C3%A8s_de_Libreville",
+   "used": "about 43,000 m2, 1970s modernist, restored 2020s"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palais",
+   "footprint": {
+    "osm": true
+   },
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e6dd",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#c9b27a",
+    "glassColour": "#6f8c96"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a39a",
+    "material": "concrete",
+    "parapet": 0.8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -75,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 5,
+    "colours": [
+     "#2f8a4a",
+     "#f2cc2e",
+     "#2a63a8"
+    ]
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    10,
+    -85,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; real outline, 3 storeys, ribbon glazing and brief colours. The monumental colonnade and podium steps are not placed (front unknown)."
+ }
+}

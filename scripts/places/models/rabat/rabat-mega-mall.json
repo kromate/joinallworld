@@ -1,0 +1,760 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-mega-mall",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20161219_MM-Entree_zaers-INGLOT_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Taoufik.somatri",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/rabat-mega-mall-0.jpg",
+   "used": "long dark teal glass curtain-wall hall about 12 m high, taller cream stone-clad end block at left with a blank sign band and blue banner, slim cream pylon at right, small flat canopy over the entrance, forecourt car park, tall green hedge behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/109711402",
+   "used": "named footprint 173 x 59 m; scaled down to fit the 120 m scene clamp, the plan is rectangular with a rear service wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     48,
+     40
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9c3b0",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "glassColour": "#1f4a4a",
+    "plinth": 2.0,
+    "trimColour": "#c9b79a",
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "curtain"
+    },
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -51,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 3.2,
+    "trimColour": "#c9b79a",
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-pylon",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    8,
+    -16
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 3.0,
+    "trimColour": "#c9b79a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     24,
+     36
+    ]
+   },
+   "at": [
+    23,
+    -2
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede4cf",
+    "windows": "ribbon",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign-main",
+   "at": [
+    -51,
+    -20.6,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 2.8,
+    "bottom": 9.4,
+    "colour": "#d9cfb4",
+    "frameColour": "#a69a7e",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner-left",
+   "at": [
+    -51,
+    -20.5
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     0.2
+    ],
+    "z0": 2.0,
+    "height": 7.0,
+    "colour": "#1f4f9a",
+    "topColour": "#1f4f9a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner-right",
+   "at": [
+    6,
+    -20.3
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.2
+    ],
+    "z0": 3.0,
+    "height": 6.2,
+    "colour": "#2a63ac",
+    "topColour": "#2a63ac",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    -16,
+    -23.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 8,
+    "height": 4.5,
+    "thickness": 0.2,
+    "columns": 2,
+    "colour": "#c4c6c4",
+    "edgeColour": "#e6e6e2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner-entry-a",
+   "at": [
+    -16,
+    -27
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.1
+    ],
+    "z0": 2.0,
+    "height": 4.0,
+    "colour": "#d7d2cc",
+    "topColour": "#d7d2cc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner-entry-b",
+   "at": [
+    -8,
+    -27
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.1
+    ],
+    "z0": 2.0,
+    "height": 4.0,
+    "colour": "#d86a8a",
+    "topColour": "#d86a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -27,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bamboo",
+   "at": [
+    38,
+    21
+   ],
+   "params": {
+    "rect": [
+     30,
+     4
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#587f3c",
+    "topColour": "#587f3c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bamboo2",
+   "at": [
+    0,
+    23
+   ],
+   "params": {
+    "rect": [
+     16,
+     3
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#587f3c",
+    "topColour": "#587f3c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars-00",
+   "at": [
+    -40.0,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#23262b",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-01",
+   "at": [
+    -36.5,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#3a3f48",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-02",
+   "at": [
+    -33.0,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#7a7d82",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-03",
+   "at": [
+    -29.5,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#2c2f33",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-10",
+   "at": [
+    -40.0,
+    -37,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#7a7d82",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-11",
+   "at": [
+    -36.5,
+    -37,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#2c2f33",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-12",
+   "at": [
+    -33.0,
+    -37,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#a45a2a",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-13",
+   "at": [
+    -29.5,
+    -37,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#1e2a44",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-20",
+   "at": [
+    -40.0,
+    -44,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#a45a2a",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-21",
+   "at": [
+    -36.5,
+    -44,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#1e2a44",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-22",
+   "at": [
+    -33.0,
+    -44,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#cfd0d2",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cars-23",
+   "at": [
+    -29.5,
+    -44,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#3d4046",
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo shows only the glazed west end; east wing and rear inferred from OSM outline and kept plain. Banners, sign band, cars and canopy are simplified; bamboo screen is a tapered green prism."
+ }
+}

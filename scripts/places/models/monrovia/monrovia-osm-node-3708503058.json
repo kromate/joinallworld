@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-node-3708503058",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: plastered rectangular AME nave 24x12 m with gable front, small square tower, arched windows; OSM nearest match is a 21 m2 shed 9 m away so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ece7d9",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 3.5,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain"
+    },
+    "bands": "#9fb6c4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8891",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    -9,
+    -7.2
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f1e6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b8891",
+    "material": "corrugated",
+    "pitch": 35,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.8,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#bdb7aa"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#9fb6c4",
+    "frameColour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this church; typical Americo-Liberian gabled nave and tower from brief text"
+ }
+}

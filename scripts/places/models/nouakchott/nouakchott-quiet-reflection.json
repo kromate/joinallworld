@@ -1,0 +1,110 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/535692984",
+   "used": "Airport Mosque outline, about 22 x 21 m, bearing 86 degrees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "osm": true,
+    "fit": 24
+   },
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "arched",
+    "bay": 4,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#9fb8c4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d0c4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "on": "prayer-hall",
+   "params": {
+    "radius": 6.5,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#eeeadf",
+    "drumColour": "#f1ede2",
+    "finial": 1.5
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "radius": 1.1,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f3efe6",
+    "capColour": "#9fb8c4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -17,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#e4dccb"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint and brief only, details typical for the city."
+ }
+}

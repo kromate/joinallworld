@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/122956893",
+   "used": "only the compound extent (9.7 ha) is known; polygon is the site, not a building, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward--30",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    10
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#b5603f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a35",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-30",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    30,
+    10
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#b5603f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a35",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#b5603f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a35",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "none",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978f"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 80
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     36
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and no building outline (OSM is the compound); typical ward-block layout assumed"
+ }
+}

@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mogadishu.json#mogadishu-transit",
+   "used": "Xoosh crossroads on the Afgooye road: tarmac junction, bus-stop shelter, four kiosks, two billboard frames. The only OSM building (27 x 12 m, 12.6 m away) is not reliable so is used only as the size of the largest kiosk row."
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "id": "road-ew",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     110,
+     14
+    ],
+    "height": 0.08,
+    "colour": "#55575a",
+    "topColour": "#55575a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road-ns",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     14,
+     110
+    ],
+    "height": 0.08,
+    "colour": "#55575a",
+    "topColour": "#55575a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "island",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "radius": 3,
+    "n": 10,
+    "height": 0.2,
+    "colour": "#b9b3a0",
+    "topColour": "#b9b3a0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 3,
+    "height": 3,
+    "thickness": 0.25,
+    "columns": 4,
+    "colour": "#8d8a82",
+    "edgeColour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -17,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    17,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#ede6d4"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -14,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#9c9283"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -13,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4.5,
+    "bottom": 3,
+    "colour": "#cdbf9f",
+    "frameColour": "#8d8a82"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    32,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 9,
+    "height": 4.5,
+    "bottom": 3,
+    "colour": "#ede6d4",
+    "frameColour": "#8d8a82"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "kind": "van",
+    "density": 0.8,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 3,
+    "spread": 10,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    8,
+    8,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": -16
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Junction geometry, kiosk and billboard positions are typed; no photo or reliable outline; lane markings missing."
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   120,
+   120
+  ]
+ }
+}

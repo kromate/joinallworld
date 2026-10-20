@@ -1,0 +1,158 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: single-storey rendered retail hall 30x20 m with shopfront, blank blue sign board and awning; the OSM building that contains the node is a 5,400 m2 irregular block, not trusted for a small shop; no photo found (only a portrait was listed nearby for another venue)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5d8",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6d747a",
+    "material": "metal-sheet",
+    "rise": 1.6,
+    "overhang": 0.6,
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     22,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -10.4
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3d6a8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d6a8a"
+   },
+   "z0": 3.0
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -10.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#3d6a8a",
+     "#e9e5d8"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6,
+    -10.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#3d6a8a",
+     "#e9e5d8"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; a typed guess from the brief (30x20 m shed-roofed shop), OSM block not trusted."
+ }
+}

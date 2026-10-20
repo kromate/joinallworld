@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-node-4784675163",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "No photo or description of this specific place was found (brief confidence low); composed as an open lava-slope viewpoint: dark basalt mounds, a rough path climbing to a flat lookout, one blank signboard; no structures known"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    -9,
+    8,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "colour": "#3f3b38",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       12,
+       9
+      ]
+     },
+     {
+      "z": 1.3,
+      "ellipse": [
+       8.64,
+       6.4799999999999995
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       3.5999999999999996,
+       2.6999999999999997
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    12,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "colour": "#35322f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       15,
+       10
+      ]
+     },
+     {
+      "z": 1.7,
+      "ellipse": [
+       10.799999999999999,
+       7.199999999999999
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       4.5,
+       3.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#4a4642",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       7,
+       6
+      ]
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       5.04,
+       4.32
+      ]
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       2.1,
+       1.7999999999999998
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    13,
+    -6,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "colour": "#6b6760",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6,
+       5
+      ]
+     },
+     {
+      "z": 0.65,
+      "ellipse": [
+       4.32,
+       3.5999999999999996
+      ]
+     },
+     {
+      "z": 1.3,
+      "ellipse": [
+       1.7999999999999998,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    18,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#3f3b38",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       10,
+       7
+      ]
+     },
+     {
+      "z": 1.1,
+      "ellipse": [
+       7.199999999999999,
+       5.04
+      ]
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       3.0,
+       2.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "colour": "#6b6760",
+    "section": {
+     "rect": [
+      1.4,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -3,
+      -16
+     ],
+     [
+      -1,
+      -9
+     ],
+     [
+      2,
+      -3
+     ],
+     [
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#4a4642",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -4,
+        -2
+       ],
+       [
+        4,
+        -3
+       ],
+       [
+        5,
+        2
+       ],
+       [
+        -3,
+        3
+       ]
+      ]
+     },
+     {
+      "z": 0.3,
+      "poly": [
+       [
+        -4,
+        -2
+       ],
+       [
+        4,
+        -3
+       ],
+       [
+        5,
+        2
+       ],
+       [
+        -3,
+        3
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.5,
+    -4,
+    0
+   ],
+   "rotDeg": -20,
+   "params": {
+    "width": 1.8,
+    "height": 1.1,
+    "bottom": 0.9,
+    "colour": "#f0ebe0",
+    "frameColour": "#6b6760"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": 0,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; lava mounds, path, lookout pad and signboard are typed guesses."
+ }
+}

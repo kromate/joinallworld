@@ -1,0 +1,223 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gambia_Banjul_0020.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Atamari",
+   "view": "front",
+   "file": "/tmp/places-evidence/serekunda/clinic1.jpg",
+   "used": "style reference only (identity of the hospital in the photo is not confirmed as this building): cream render, low-pitched tan corrugated hip roofs, taller central block with flagpole, dark window grids, black arched-rail iron gate between pink piers with lamps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/255643579",
+   "used": "main building outline (48 x 15 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d6a8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#d9c9a0",
+    "glassColour": "#3b3a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4a373",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 32,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcb0",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "plinth": 0.5,
+    "bands": "#d9c9a0",
+    "glassColour": "#2f2e2e"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4a373",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -1,
+    16
+   ],
+   "params": {
+    "height": 10,
+    "count": 1,
+    "colour": "#ce1126"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#e6c2c4",
+    "leafColour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5.7,
+    -22,
+    4.0
+   ],
+   "params": {
+    "height": 0.9,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    5.7,
+    -22,
+    4.0
+   ],
+   "params": {
+    "height": 0.9,
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17.5,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.2,
+    "kind": "railing",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    17.5,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.2,
+    "kind": "railing",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5.5,
+    "height": 3.6,
+    "columns": 3,
+    "vans": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "photo identity unconfirmed (style reference only); OSM plan is a bent 48x15 m block, central block placement approximate; flag is plain red (no tricolour part); gate lamps simplified"
+ }
+}

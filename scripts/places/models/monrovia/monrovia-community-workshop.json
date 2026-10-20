@@ -1,0 +1,261 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Liberia_in_2009.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Michael Keating",
+   "view": "front",
+   "file": "/tmp/places-evidence/monrovia/uol.jpg",
+   "used": "two-storey cream-yellow academic range: taller central gabled block, flanking wings with green corrugated hip roofs, upper-floor balcony railings on the right wing, grey plinth, ribbon of small windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/94957275",
+   "used": "not used for massing: the outline is the whole 430 m campus"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    -1,
+    -2.5
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cdbb92",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "bands": "#c8b588",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 1.1
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 20,
+    "colour": "#a89a78",
+    "material": "concrete",
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    31,
+    -1.5
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d2c29a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 1.1
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 8,
+    "colour": "#7d8a55",
+    "material": "corrugated",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    2.5
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d2c29a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 1.1,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 8,
+    "colour": "#7d8a55",
+    "material": "corrugated",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "height": 8,
+   "z0": 0,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d4c39a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -2,
+    -9,
+    4
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#e8e0c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    62,
+    -3
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#4fa7a0",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 10,
+    "colour": "#c9cdc9",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -1,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#9a978f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     6
+    ],
+    "height": 18
+   }
+  ],
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "balconies are generic, no dense shrubs/banana plants, no weathering stains, left wing simplified"
+ }
+}

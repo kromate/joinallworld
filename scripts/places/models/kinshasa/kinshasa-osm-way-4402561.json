@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-way-4402561",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2501887",
+   "used": "oval outline 294 x 227 m, scaled by 0.4 to fit the 118 m scene clamp (width 118 x depth 91)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_des_martyrs_Protest.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "MONUSCO Photos",
+   "view": "interior",
+   "file": "/tmp/places-evidence/kinshasa/stade1.jpg",
+   "used": "interior only (no exterior photo found): two-tier bowl with a concourse gap between tiers, perimeter advertising boards, grass pitch, light structural columns under the upper rim; used for tier count and colours, not compared as a camera match"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Stade_des_Martyrs",
+   "used": "80,000 seats, 1994 Chinese-built, 2008 renovation with new lighting and scoreboard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "id": "bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 118,
+    "depth": 91,
+    "height": 17,
+    "tiers": 2,
+    "roof": "canopy",
+    "roof_style": "shed",
+    "wall": "ribs",
+    "seat_colour": "#2a5fa8",
+    "seat_colour2": "#d9d5cb",
+    "track": false,
+    "floodlights": true,
+    "roof_material": "membrane"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    28,
+    6
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "north"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -50
+   ],
+   "params": {
+    "width": 14,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 14,
+    "colours": [
+     "#1c8ad6",
+     "#f7d618",
+     "#ce1021"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -54,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 8,
+    "spread": 100
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   136,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No exterior photo found, only a crowd interior view, so verified is footprint: outline proportions from OSM, generic ribbed outer wall in the bowl's default tone rather than the real pale concrete, roof coverage and seat colours estimated, scoreboard and gates placed by guess."
+ }
+}

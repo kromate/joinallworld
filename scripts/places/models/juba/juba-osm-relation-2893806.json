@@ -1,0 +1,277 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-relation-2893806",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2893806",
+   "used": "name match: 184 x 127 m extent, long axis rotated 12 deg; modelled as an oval bowl scaled to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Juba_Stadium",
+   "used": "opened 1962, renovated 2022-24 to about 19,000, artificial turf; no exterior photo found on Commons (only two march photos), stand colours assumed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "width": 46,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 31,
+    "concreteColour": "#d7ccb2",
+    "under": "solid",
+    "facetDeg": 12,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 22,
+    "seatColours": [
+     "#2f5d8a",
+     "#d7ccb2"
+    ],
+    "blocks": 6,
+    "backWall": 1.0,
+    "canopy": {
+     "height": 11,
+     "depth": 11,
+     "colour": "#9a9a96",
+     "slopeDeg": 4,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 31,
+    "concreteColour": "#d7ccb2",
+    "under": "solid",
+    "facetDeg": 12,
+    "startDeg": 25,
+    "endDeg": 155,
+    "rows": 18,
+    "seatColours": [
+     "#2f5d8a",
+     "#d7ccb2"
+    ],
+    "blocks": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 31,
+    "concreteColour": "#d7ccb2",
+    "under": "solid",
+    "facetDeg": 12,
+    "startDeg": 157,
+    "endDeg": 203,
+    "rows": 14,
+    "seatColour": "#2f5d8a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 31,
+    "concreteColour": "#d7ccb2",
+    "under": "solid",
+    "facetDeg": 12,
+    "startDeg": 337,
+    "endDeg": 383,
+    "rows": 14,
+    "seatColour": "#2f5d8a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    36,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    36,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    40,
+    6
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -22,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colours": [
+     "#1b7a43",
+     "#c8242b",
+     "#101010"
+    ],
+    "count": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#f1ece0",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    62,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no exterior photo; oval bowl scaled to scene clamp from OSM extent, stand colours, canopy and floodlight count assumed"
+ }
+}

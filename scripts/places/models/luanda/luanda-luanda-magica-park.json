@@ -1,0 +1,287 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/224361373",
+   "used": "NOT used: the containing match is a different venue (sports centre 'Gamma'), 245 m across"
+  },
+  {
+   "kind": "text",
+   "used": "brief: fenced fairground-style children's park about 90 x 70 m with a gate, kiosks, two shade pavilions, umbrellas and a blank sign board in yellow, red and blue; no photo or source found (the carousel is a typical fairground addition)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     88,
+     68
+    ],
+    "height": 0.1,
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#3f8fc4",
+    "points": [
+     [
+      -44,
+      -34
+     ],
+     [
+      44,
+      -34
+     ],
+     [
+      44,
+      34
+     ],
+     [
+      -44,
+      34
+     ],
+     [
+      -44,
+      -34
+     ]
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4.2,
+    "colour": "#f0c94a",
+    "board_colour": "#d6573c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -34.5,
+    4.2
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#d6573c",
+    "frameColour": "#f0c94a",
+    "posts": false
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -22,
+    6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 6,
+    "colour": "#f0c94a",
+    "cap_colour": "#d6573c"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    22,
+    6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 6,
+    "colour": "#3f8fc4",
+    "cap_colour": "#f0c94a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d6573c",
+    "width": 3.4,
+    "depth": 2.4
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#f0c94a",
+    "width": 3.4,
+    "depth": 2.4
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3f8fc4",
+    "width": 3.4,
+    "depth": 2.4
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 8,
+    "colours": [
+     "#d6573c",
+     "#f0c94a",
+     "#3f8fc4"
+    ]
+   }
+  },
+  {
+   "type": "carousel",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "height": 6.5,
+    "colour": "#d6573c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -38,
+    26
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    38,
+    26
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -38,
+    -26
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    38,
+    -26
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-luanda-magica-park",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or source; layout typed from brief (carousel is a guess)"
+ }
+}

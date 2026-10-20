@@ -1,0 +1,447 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Views_of_Yaounde_Cameroon_05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kateregga1",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/yaounde/esplanade.jpg",
+   "used": "Hotel de Ville long cream block on brown fins with projecting balconies and pinkish-brown roof, round finned annexe at the right, blue pools and paved esplanade in front, lawn with flag masts at the left, tree canopy behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     72,
+     18
+    ]
+   },
+   "at": [
+    -2,
+    10
+   ],
+   "z0": 6,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d6b8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#6a6c68",
+    "bands": "#c9b48f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8776a",
+    "parapet": 0.5,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-top",
+   "footprint": {
+    "rect": [
+     36,
+     12
+    ]
+   },
+   "at": [
+    -2,
+    12
+   ],
+   "z0": 16,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a65a48",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilotis-floor",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    -2,
+    9
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a2f2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b48f"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.2
+      ],
+      "height": 16,
+      "colour": "#8a5a3d",
+      "topScale": 1.4
+     }
+    },
+    "mode": "line",
+    "start": [
+     -37,
+     -1
+    ],
+    "end": [
+     33,
+     -1
+    ],
+    "count": 36
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       2.4
+      ],
+      "z0": 6,
+      "height": 0.5,
+      "colour": "#d9cdb0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -34,
+     -1.6
+    ],
+    "end": [
+     30,
+     -1.6
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    43,
+    8
+   ],
+   "params": {
+    "radius": 10,
+    "n": 16,
+    "height": 11,
+    "colour": "#3a2f2a",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.4
+      ],
+      "z0": 0,
+      "height": 11,
+      "colour": "#8a5a3d",
+      "topScale": 1.5
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     43,
+     8
+    ],
+    "radius": 10.6,
+    "count": 24,
+    "facing": "outward"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    43,
+    8
+   ],
+   "params": {
+    "radius": 10.8,
+    "n": 24,
+    "z0": 11,
+    "height": 1.2,
+    "colour": "#5a3a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -8
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -3
+     ],
+     [
+      -14,
+      -5
+     ],
+     [
+      4,
+      -3
+     ],
+     [
+      20,
+      -5
+     ],
+     [
+      32,
+      -2
+     ],
+     [
+      30,
+      3
+     ],
+     [
+      10,
+      4
+     ],
+     [
+      -10,
+      3
+     ],
+     [
+      -28,
+      4
+     ]
+    ],
+    "height": 0.15,
+    "z0": 0.02,
+    "colour": "#4aa6c8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    -8
+   ],
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "height": 0.15,
+    "z0": 0.02,
+    "colour": "#4aa6c8",
+    "points": [
+     [
+      -12,
+      -2
+     ],
+     [
+      -2,
+      -5
+     ],
+     [
+      10,
+      -3
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      -10,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -52,
+    -14
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 2.5,
+    "colours": [
+     "#1b7a43",
+     "#c8362f",
+     "#f2c230"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -4,
+    -4
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.2,
+    "run": 1.4,
+    "count": 4,
+    "colour": "#cfc9b9"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-block",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -50,
+    32
+   ],
+   "rotDeg": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d2b4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#5a4a40",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a5a3d"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5040",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   120,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     36
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -36
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Drum annexe now dark brown roof with tapering fins, denser fins and balconies, pools in front, tall block behind; curved entry ramp and exact pool shapes approximate; no OSM outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-community-voting-game"
+}

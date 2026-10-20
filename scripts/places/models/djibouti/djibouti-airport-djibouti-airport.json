@@ -1,0 +1,180 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/205286206",
+   "used": "real terminal outline (about 110 x 38 m, stepped plan)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Djibouti%E2%80%93Ambouli_International_Airport",
+   "used": "single small terminal; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2d2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "material": "membrane",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "departures-hall",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f6f86",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 42,
+    "depth": 8,
+    "height": 4.8,
+    "form": "flat",
+    "columns": 6,
+    "colour": "#c9c2b4"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    40,
+    6,
+    10
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#e9e2d2",
+    "cabColour": "#4f6f86"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2,
+    "colour": "#d8d8d4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; two-storey block, tower and canopy are typed guesses over the real OSM outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-airport-djibouti-airport"
+}

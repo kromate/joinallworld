@@ -1,0 +1,325 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-osm-way-1451346354",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1451346354",
+   "used": "real marketplace outline (181 x 154 m diamond); modelled as a 110 x 80 m portion within the scene clamp"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ndjamena.json#ndjamena-osm-way-1451346354",
+   "used": "rows of parasol and tarpaulin stalls, red-brown sand lanes, lock-up shops at edges"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -56,
+      18
+     ],
+     [
+      -4,
+      -55
+     ],
+     [
+      58,
+      -14
+     ],
+     [
+      6,
+      58
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#b88f66"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c43a2f",
+     "#e8c13a",
+     "#3f7a4a",
+     "#e9dfc6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "tarp",
+    "colours": [
+     "#2f5f9a",
+     "#e8c13a",
+     "#c43a2f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#3f7a4a",
+     "#e9dfc6",
+     "#b86a4a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    24,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "tarp",
+    "colours": [
+     "#c43a2f",
+     "#2f5f9a",
+     "#e8c13a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -28.5,
+    -21,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#2f5f9a",
+     "#e8c13a",
+     "#c43a2f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -28.5,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#3f7a4a",
+     "#e9dfc6",
+     "#b86a4a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -28.5,
+    15,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c43a2f",
+     "#2f5f9a",
+     "#e8c13a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#b86a4a",
+     "#2f5f9a",
+     "#8a5a44"
+    ],
+    "roof_colour": "#8d8a84",
+    "wall_colour": "#c9a979"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -45,
+    5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 50,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#c43a2f",
+     "#e9dfc6"
+    ],
+    "roof_colour": "#8d8a84",
+    "wall_colour": "#b88f66"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    20,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#c43a2f",
+     "#e9dfc6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    22,
+    12,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 3,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#2f5f9a",
+     "#e9dfc6"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -42,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: stall and lock-up layout plausible from the brief, not surveyed."
+ }
+}

@@ -1,0 +1,853 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ouagadougou-Mus%C3%A9e_national_du_Burkina_Faso_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ji-Elle",
+   "view": "street",
+   "file": "/tmp/places-evidence/ouagadougou/natmus1.jpg",
+   "used": "museum entrance on the road: terracotta mud-render perimeter wall about 2.6 m with relief pillars, central horned arch gate, thatched huts behind, laterite ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ouagadougou-Mus%C3%A9e_national_du_Burkina_Faso_(3).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ji-Elle",
+   "view": "detail",
+   "file": "/tmp/places-evidence/ouagadougou/natmus3.jpg",
+   "used": "gate: pointed arch between two outward-curving horn uprights, inner striped posts with trapezoid lintels, conical thatch roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28811290",
+   "used": "29 ha site only; outline far exceeds the scene, so a gateway slice is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "id": "arch-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.1,
+      1.0
+     ]
+    },
+    "curve": true,
+    "steps": 8,
+    "points": [
+     [
+      -4.0,
+      0,
+      0
+     ],
+     [
+      -3.8,
+      0,
+      3.5
+     ],
+     [
+      -2.6,
+      0,
+      6.5
+     ],
+     [
+      -1.0,
+      0,
+      8.4
+     ],
+     [
+      0,
+      0,
+      9.0
+     ]
+    ],
+    "colour": "#b0603e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.1,
+      1.0
+     ]
+    },
+    "curve": true,
+    "steps": 8,
+    "points": [
+     [
+      4.0,
+      0,
+      0
+     ],
+     [
+      3.8,
+      0,
+      3.5
+     ],
+     [
+      2.6,
+      0,
+      6.5
+     ],
+     [
+      1.0,
+      0,
+      8.4
+     ],
+     [
+      0,
+      0,
+      9.0
+     ]
+    ],
+    "colour": "#b0603e"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a9593a",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       1.4
+      ],
+      "cx": -5.0
+     },
+     {
+      "z": 3,
+      "rect": [
+       1.7,
+       1.3
+      ],
+      "cx": -5.6
+     },
+     {
+      "z": 6,
+      "rect": [
+       1.5,
+       1.2
+      ],
+      "cx": -6.6
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.4,
+       1.1
+      ],
+      "cx": -8.0
+     },
+     {
+      "z": 11,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": -9.2
+     },
+     {
+      "z": 11.8,
+      "rect": [
+       0.3,
+       0.8
+      ],
+      "cx": -9.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a9593a",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       1.4
+      ],
+      "cx": 5.0
+     },
+     {
+      "z": 3,
+      "rect": [
+       1.7,
+       1.3
+      ],
+      "cx": 5.6
+     },
+     {
+      "z": 6,
+      "rect": [
+       1.5,
+       1.2
+      ],
+      "cx": 6.6
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.4,
+       1.1
+      ],
+      "cx": 8.0
+     },
+     {
+      "z": 11,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": 9.2
+     },
+     {
+      "z": 11.8,
+      "rect": [
+       0.3,
+       0.8
+      ],
+      "cx": 9.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "orn-tri",
+   "at": [
+    0,
+    -0.3,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "height": 1.6,
+    "colour": "#c97b52",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-base-l",
+   "at": [
+    -5.6,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.6
+    ],
+    "height": 1.3,
+    "colour": "#9a4f33",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-base-r",
+   "at": [
+    5.6,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.6
+    ],
+    "height": 1.3,
+    "colour": "#9a4f33",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-l",
+   "at": [
+    -17,
+    0.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.7
+    ],
+    "height": 2.5,
+    "colour": "#b0603e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-r",
+   "at": [
+    17,
+    0.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.7
+    ],
+    "height": 2.5,
+    "colour": "#b0603e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26.5,
+    -0.25,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.35
+      ],
+      "height": 3.0,
+      "colour": "#8e4529",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26.5,
+    -0.25,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.35
+      ],
+      "height": 3.0,
+      "colour": "#8e4529",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8.5,
+    -0.25,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.35
+      ],
+      "height": 3.0,
+      "colour": "#8e4529",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26,
+    -0.2,
+    0.7
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.2
+      ],
+      "height": 1.5,
+      "colour": "#7e3b22",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8.5,
+    -0.2,
+    0.7
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.2
+      ],
+      "height": 1.5,
+      "colour": "#7e3b22",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26.5,
+    -0.3,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.4
+      ],
+      "height": 0.6,
+      "colour": "#5e2c1a",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8.5,
+    -0.3,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.4
+      ],
+      "height": 0.6,
+      "colour": "#5e2c1a",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inner-post-l",
+   "at": [
+    -2.6,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#e9e1d2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inner-post-r",
+   "at": [
+    2.6,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 4.4,
+    "colour": "#e9e1d2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lintel-l",
+   "at": [
+    -2.6,
+    6,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.2
+    ],
+    "height": 0.7,
+    "colour": "#d9ccb4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lintel-r",
+   "at": [
+    2.6,
+    6,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.2
+    ],
+    "height": 0.7,
+    "colour": "#d9ccb4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     7
+    ],
+    "height": 0.06,
+    "colour": "#8d857c",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    -9,
+    14,
+    0
+   ],
+   "params": {
+    "radius": 3.4,
+    "kind": "round"
+   }
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "params": {
+    "radius": 3.8,
+    "kind": "round"
+   }
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    9.5,
+    13,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "kind": "round"
+   }
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    -20,
+    22,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "kind": "round"
+   }
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    19,
+    20,
+    0
+   ],
+   "params": {
+    "radius": 3.4,
+    "kind": "round"
+   }
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    -30,
+    16,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "kind": "round"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    30,
+    15,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "kind": "round"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    -4,
+    28,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "kind": "round"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    12,
+    30,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "kind": "round"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -22,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     20,
+     -5
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-national-museum",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Relief motifs are plain inset panels; gate ornament simplified; ground is a flat tint with a tall wall seen end-on; huts are typed not seen"
+ }
+}

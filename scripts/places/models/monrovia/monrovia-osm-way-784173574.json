@@ -1,0 +1,152 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/3619278",
+   "used": "real outline: sprawling multi-wing ward complex about 128 x 64 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Firestone plantation hospital, low 2-storey pale render blocks, hipped corrugated roof in rust brown, covered entrance, water tank (no photo found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 105,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7d8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#6f8f7a",
+    "plinth": 0.5,
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "pitch": 18,
+    "colour": "#8d5a3f",
+    "material": "corrugated",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 8,
+    "height": 4,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#ffffff",
+    "edgeColour": "#6f8f7a"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -35,
+    25,
+    0
+   ],
+   "params": {
+    "radius": 2.2,
+    "height": 3,
+    "legs": 4,
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    26,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.6,
+    "colour": "#ffffff",
+    "frameColour": "#6f8f7a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -5,
+    -44,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 5,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -35
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     35
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     20
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real outline, flat roof instead of hip to stay in LOD1 budget, typed colours"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-way-784173574"
+}

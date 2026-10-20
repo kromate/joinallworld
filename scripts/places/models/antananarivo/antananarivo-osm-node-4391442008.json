@@ -1,0 +1,183 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (leisure centre grounds with lawns, pavilion, play area, kiosks, fenced); nothing else found, no OSM footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.8,
+    "thickness": 0.3,
+    "pillarEvery": 4,
+    "colour": "#ece6d8"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#a8553a",
+    "board_colour": "#a8553a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    18,
+    8,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2,
+    "posts": 6,
+    "colour": "#ece6d8",
+    "cap_colour": "#a8553a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#a8553a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#9bb08a"
+   }
+  },
+  {
+   "type": "carousel",
+   "at": [
+    -22,
+    12,
+    0
+   ],
+   "params": {
+    "radius": 3.5,
+    "height": 4.5,
+    "colour": "#d94f4f"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -28,
+    24,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 12,
+    "count": 8,
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 24,
+    "count": 6,
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 5,
+    "spacing": 15
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     36
+    ],
+    "height": 0.08,
+    "colour": "#c9a679"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence beyond the name; fenced lawns with an open hip-roof pavilion, two kiosks, play carousel and tree groves are typical, not observed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-osm-node-4391442008"
+}

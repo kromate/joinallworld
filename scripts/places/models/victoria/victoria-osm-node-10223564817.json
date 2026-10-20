@@ -1,0 +1,152 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small Creole-style restaurant, pale-green painted house, veranda and garden; the containing OSM building is a 330 m2 irregular residential outline so it was not used; nearby Commons photos show other places"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "polygon": [
+     [
+      -7,
+      -3.5
+     ],
+     [
+      7,
+      -3.5
+     ],
+     [
+      7,
+      4.5
+     ],
+     [
+      -7,
+      4.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a7b79a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "windowShape": "rect",
+    "bands": "#f4efe4",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d32",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-wing",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    9.5,
+    2.5
+   ],
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a7b79a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a63d32",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -6.1,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 2.6,
+    "height": 3.0,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   48,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-node-10223564817",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and OSM outline unsuitable: modest typed guess of a pale-green Creole house."
+ }
+}

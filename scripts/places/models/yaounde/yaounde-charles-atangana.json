@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-charles-atangana",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/220117510",
+   "used": "round 10 m plaza outline of the memorial (historic=memorial, Wikidata: statue of Charles Atangana)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.0,
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "n": 24,
+    "height": 0.35,
+    "colour": "#b8b2a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.35
+   ],
+   "params": {
+    "radius": 2.6,
+    "n": 16,
+    "height": 0.4,
+    "colour": "#a39d92"
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    0,
+    0,
+    0.75
+   ],
+   "params": {
+    "height": 5.2,
+    "plinth_height": 2.2,
+    "colour": "#8f8a80",
+    "figure_colour": "#4d3f2a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 16,
+    "radius": 4.8,
+    "startDeg": 0,
+    "endDeg": 337,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.14,
+       "n": 6,
+       "height": 0.8,
+       "colour": "#6b6258"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; statue figure, plinth and ring bollards are generic for a small memorial plaza"
+ }
+}

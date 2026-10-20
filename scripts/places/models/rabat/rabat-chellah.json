@@ -1,0 +1,431 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chellah_landscape.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "HalaRah",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/chellah2.jpg",
+   "used": "square Marinid minaret of tan stone with zellij-patterned upper faces, small lantern and stork nest; low ruined mosque walls and stone blocks; ochre rammed-earth rampart on the left; palm and olive trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chellah_%2820819811164%29.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Rob Dozier",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/chellah1.jpg",
+   "used": "crenellated ochre rampart with corner towers on a rise, arched side gate, roman ruin blocks, green lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/190237527",
+   "used": "enclosure is about 300 m, only the minaret-side corner of the enclosure is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "minaret-shaft",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    24,
+    10
+   ],
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#b79c70",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "size": [
+      0.8,
+      1.1
+     ],
+     "colours": [
+      "#b79c70",
+      "#a8895d",
+      "#bfa478"
+     ],
+     "faces": [
+      "front",
+      "left",
+      "right"
+     ],
+     "skipGround": true
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a78a5e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "minaret-lantern",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    24,
+    10
+   ],
+   "z0": 22,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f9a62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a78a5e",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stork-nest",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    24,
+    10
+   ],
+   "z0": 28.3,
+   "height": 0.9,
+   "wall": {
+    "material": "timber",
+    "colour": "#6d5a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d5a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque-wall",
+   "footprint": {
+    "rect": [
+     30,
+     1.8
+    ]
+   },
+   "at": [
+    42,
+    9
+   ],
+   "height": 7.5,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98d63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98d63"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "thickness": 0.7,
+    "colour": "#9d8b6d",
+    "points": [
+     [
+      -10,
+      0
+     ],
+     [
+      -2,
+      0.4
+     ],
+     [
+      6,
+      -0.3
+     ],
+     [
+      12,
+      0.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -12,
+     -1
+    ],
+    "end": [
+     10,
+     3
+    ],
+    "of": {
+     "type": "mass",
+     "id": "block",
+     "footprint": {
+      "rect": [
+       1.3,
+       0.9
+      ]
+     },
+     "height": 0.9,
+     "wall": {
+      "material": "stone",
+      "colour": "#c3b08a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#b8a57f"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rampart-a",
+   "footprint": {
+    "rect": [
+     40,
+     4
+    ]
+   },
+   "at": [
+    -34,
+    26
+   ],
+   "height": 9,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c49a58",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rampart-b",
+   "footprint": {
+    "rect": [
+     30,
+     4.5
+    ]
+   },
+   "at": [
+    -8,
+    29
+   ],
+   "height": 6,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9a05c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rampart-c",
+   "footprint": {
+    "rect": [
+     26,
+     4
+    ]
+   },
+   "at": [
+    20,
+    30
+   ],
+   "height": 8,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#bf9552",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    -14,
+    10
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "render",
+    "colour": "#6f8f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f45"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 3,
+    "dx": 4.4,
+    "dy": 4.0,
+    "centred": true,
+    "of": {
+     "type": "mass",
+     "id": "ruin",
+     "footprint": {
+      "rect": [
+       2.2,
+       1.4
+      ]
+     },
+     "height": 1.1,
+     "wall": {
+      "material": "stone",
+      "colour": "#c4a06a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#b8844a"
+     }
+    }
+   },
+   "at": [
+    4,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -30,
+     -4
+    ],
+    "end": [
+     -6,
+     -6
+    ],
+    "of": {
+     "type": "mass",
+     "id": "stub",
+     "footprint": {
+      "rect": [
+       1.6,
+       3.2
+      ]
+     },
+     "height": 0.8,
+     "wall": {
+      "material": "stone",
+      "colour": "#b8935a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#a8804a"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   110,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     -4
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -8
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-chellah",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "minaret zellij and blind arches are colour panels only; ruins are simple blocks; rampart is stepped boxes"
+ }
+}

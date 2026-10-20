@@ -1,0 +1,981 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-airport-dakar-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A%C3%A9roport_international_Blaise_Diagne.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Barka94",
+   "view": "front",
+   "file": "/tmp/places-evidence/dakar/aibd.jpg",
+   "used": "long horizontal glazed tube pod with ring frames, rooftop letter rail (blank blocks), glazed skybridge on round piers, low open colonnaded undercroft"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A%C3%A9roport_international_Blaise-Diagne_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Barke11",
+   "view": "street",
+   "used": "white looping sculptural ring link at left, deep flat canopy over pilotis, blue-teal glazing"
+  },
+  {
+   "kind": "text",
+   "used": "no OSM footprint matched; a 112 m portion of the terminal is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 2.05,
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only a 112 m portion of terminal; pod is an oval mass with ring frames, not a true rounded tube; skybridge truss not diagonal-braced; letters are plain blocks"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    0,
+    -6,
+    6.8
+   ],
+   "params": {
+    "rect": [
+     112,
+     24
+    ],
+    "height": 1.0,
+    "colour": "#d9d4ca"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "undercroft-back",
+   "at": [
+    0,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     1
+    ],
+    "height": 7.2,
+    "colour": "#5a4f45"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.8,
+      "n": 12,
+      "height": 7.2,
+      "colour": "#e0dcd2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -50,
+     -16,
+     0
+    ],
+    "end": [
+     50,
+     -16,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod-big",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     66,
+     18.4
+    ]
+   },
+   "at": [
+    -12,
+    -2
+   ],
+   "z0": 7.6,
+   "height": 11.2,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f8a86",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#4a8f8a",
+    "bands": "#d8e2dc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e4dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod-small",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     12,
+     15
+    ]
+   },
+   "at": [
+    28,
+    -2
+   ],
+   "z0": 7.6,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f8a86",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#4a8f8a",
+    "bands": "#d8e2dc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e4dc"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring-44",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.1700000000000002
+     ]
+    },
+    "points": [
+     [
+      -44.0,
+      7.2,
+      13.2
+     ],
+     [
+      -44.0,
+      6.5,
+      15.73
+     ],
+     [
+      -44.0,
+      4.51,
+      17.87
+     ],
+     [
+      -44.0,
+      1.52,
+      19.3
+     ],
+     [
+      -44.0,
+      -2.0,
+      19.8
+     ],
+     [
+      -44.0,
+      -5.52,
+      19.3
+     ],
+     [
+      -44.0,
+      -8.51,
+      17.87
+     ],
+     [
+      -44.0,
+      -10.5,
+      15.73
+     ],
+     [
+      -44.0,
+      -11.2,
+      13.2
+     ],
+     [
+      -44.0,
+      -10.5,
+      10.67
+     ],
+     [
+      -44.0,
+      -8.51,
+      8.53
+     ],
+     [
+      -44.0,
+      -5.52,
+      7.1
+     ],
+     [
+      -44.0,
+      -2.0,
+      6.6
+     ],
+     [
+      -44.0,
+      1.52,
+      7.1
+     ],
+     [
+      -44.0,
+      4.51,
+      8.53
+     ],
+     [
+      -44.0,
+      6.5,
+      10.67
+     ]
+    ],
+    "curve": true,
+    "closed": true,
+    "colour": "#e6e4dc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring-33",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.1700000000000002
+     ]
+    },
+    "points": [
+     [
+      -33.0,
+      7.2,
+      13.2
+     ],
+     [
+      -33.0,
+      6.5,
+      15.73
+     ],
+     [
+      -33.0,
+      4.51,
+      17.87
+     ],
+     [
+      -33.0,
+      1.52,
+      19.3
+     ],
+     [
+      -33.0,
+      -2.0,
+      19.8
+     ],
+     [
+      -33.0,
+      -5.52,
+      19.3
+     ],
+     [
+      -33.0,
+      -8.51,
+      17.87
+     ],
+     [
+      -33.0,
+      -10.5,
+      15.73
+     ],
+     [
+      -33.0,
+      -11.2,
+      13.2
+     ],
+     [
+      -33.0,
+      -10.5,
+      10.67
+     ],
+     [
+      -33.0,
+      -8.51,
+      8.53
+     ],
+     [
+      -33.0,
+      -5.52,
+      7.1
+     ],
+     [
+      -33.0,
+      -2.0,
+      6.6
+     ],
+     [
+      -33.0,
+      1.52,
+      7.1
+     ],
+     [
+      -33.0,
+      4.51,
+      8.53
+     ],
+     [
+      -33.0,
+      6.5,
+      10.67
+     ]
+    ],
+    "curve": true,
+    "closed": true,
+    "colour": "#e6e4dc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring-22",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.1700000000000002
+     ]
+    },
+    "points": [
+     [
+      -22.0,
+      7.2,
+      13.2
+     ],
+     [
+      -22.0,
+      6.5,
+      15.73
+     ],
+     [
+      -22.0,
+      4.51,
+      17.87
+     ],
+     [
+      -22.0,
+      1.52,
+      19.3
+     ],
+     [
+      -22.0,
+      -2.0,
+      19.8
+     ],
+     [
+      -22.0,
+      -5.52,
+      19.3
+     ],
+     [
+      -22.0,
+      -8.51,
+      17.87
+     ],
+     [
+      -22.0,
+      -10.5,
+      15.73
+     ],
+     [
+      -22.0,
+      -11.2,
+      13.2
+     ],
+     [
+      -22.0,
+      -10.5,
+      10.67
+     ],
+     [
+      -22.0,
+      -8.51,
+      8.53
+     ],
+     [
+      -22.0,
+      -5.52,
+      7.1
+     ],
+     [
+      -22.0,
+      -2.0,
+      6.6
+     ],
+     [
+      -22.0,
+      1.52,
+      7.1
+     ],
+     [
+      -22.0,
+      4.51,
+      8.53
+     ],
+     [
+      -22.0,
+      6.5,
+      10.67
+     ]
+    ],
+    "curve": true,
+    "closed": true,
+    "colour": "#e6e4dc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring-11",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.1700000000000002
+     ]
+    },
+    "points": [
+     [
+      -11.0,
+      7.2,
+      13.2
+     ],
+     [
+      -11.0,
+      6.5,
+      15.73
+     ],
+     [
+      -11.0,
+      4.51,
+      17.87
+     ],
+     [
+      -11.0,
+      1.52,
+      19.3
+     ],
+     [
+      -11.0,
+      -2.0,
+      19.8
+     ],
+     [
+      -11.0,
+      -5.52,
+      19.3
+     ],
+     [
+      -11.0,
+      -8.51,
+      17.87
+     ],
+     [
+      -11.0,
+      -10.5,
+      15.73
+     ],
+     [
+      -11.0,
+      -11.2,
+      13.2
+     ],
+     [
+      -11.0,
+      -10.5,
+      10.67
+     ],
+     [
+      -11.0,
+      -8.51,
+      8.53
+     ],
+     [
+      -11.0,
+      -5.52,
+      7.1
+     ],
+     [
+      -11.0,
+      -2.0,
+      6.6
+     ],
+     [
+      -11.0,
+      1.52,
+      7.1
+     ],
+     [
+      -11.0,
+      4.51,
+      8.53
+     ],
+     [
+      -11.0,
+      6.5,
+      10.67
+     ]
+    ],
+    "curve": true,
+    "closed": true,
+    "colour": "#e6e4dc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring0",
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.1700000000000002
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      7.2,
+      13.2
+     ],
+     [
+      0.0,
+      6.5,
+      15.73
+     ],
+     [
+      0.0,
+      4.51,
+      17.87
+     ],
+     [
+      0.0,
+      1.52,
+      19.3
+     ],
+     [
+      0.0,
+      -2.0,
+      19.8
+     ],
+     [
+      0.0,
+      -5.52,
+      19.3
+     ],
+     [
+      0.0,
+      -8.51,
+      17.87
+     ],
+     [
+      0.0,
+      -10.5,
+      15.73
+     ],
+     [
+      0.0,
+      -11.2,
+      13.2
+     ],
+     [
+      0.0,
+      -10.5,
+      10.67
+     ],
+     [
+      0.0,
+      -8.51,
+      8.53
+     ],
+     [
+      0.0,
+      -5.52,
+      7.1
+     ],
+     [
+      0.0,
+      -2.0,
+      6.6
+     ],
+     [
+      0.0,
+      1.52,
+      7.1
+     ],
+     [
+      0.0,
+      4.51,
+      8.53
+     ],
+     [
+      0.0,
+      6.5,
+      10.67
+     ]
+    ],
+    "curve": true,
+    "closed": true,
+    "colour": "#e6e4dc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring-44",
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      2.08
+     ]
+    },
+    "points": [
+     [
+      -44.0,
+      7.2,
+      13.2
+     ],
+     [
+      -44.0,
+      6.5,
+      15.73
+     ],
+     [
+      -44.0,
+      4.51,
+      17.87
+     ],
+     [
+      -44.0,
+      1.52,
+      19.3
+     ],
+     [
+      -44.0,
+      -2.0,
+      19.8
+     ],
+     [
+      -44.0,
+      -5.52,
+      19.3
+     ],
+     [
+      -44.0,
+      -8.51,
+      17.87
+     ],
+     [
+      -44.0,
+      -10.5,
+      15.73
+     ],
+     [
+      -44.0,
+      -11.2,
+      13.2
+     ],
+     [
+      -44.0,
+      -10.5,
+      10.67
+     ],
+     [
+      -44.0,
+      -8.51,
+      8.53
+     ],
+     [
+      -44.0,
+      -5.52,
+      7.1
+     ],
+     [
+      -44.0,
+      -2.0,
+      6.6
+     ],
+     [
+      -44.0,
+      1.52,
+      7.1
+     ],
+     [
+      -44.0,
+      4.51,
+      8.53
+     ],
+     [
+      -44.0,
+      6.5,
+      10.67
+     ]
+    ],
+    "curve": true,
+    "closed": true,
+    "colour": "#efede6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring20",
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      2.08
+     ]
+    },
+    "points": [
+     [
+      20.0,
+      7.2,
+      13.2
+     ],
+     [
+      20.0,
+      6.5,
+      15.73
+     ],
+     [
+      20.0,
+      4.51,
+      17.87
+     ],
+     [
+      20.0,
+      1.52,
+      19.3
+     ],
+     [
+      20.0,
+      -2.0,
+      19.8
+     ],
+     [
+      20.0,
+      -5.52,
+      19.3
+     ],
+     [
+      20.0,
+      -8.51,
+      17.87
+     ],
+     [
+      20.0,
+      -10.5,
+      15.73
+     ],
+     [
+      20.0,
+      -11.2,
+      13.2
+     ],
+     [
+      20.0,
+      -10.5,
+      10.67
+     ],
+     [
+      20.0,
+      -8.51,
+      8.53
+     ],
+     [
+      20.0,
+      -5.52,
+      7.1
+     ],
+     [
+      20.0,
+      -2.0,
+      6.6
+     ],
+     [
+      20.0,
+      1.52,
+      7.1
+     ],
+     [
+      20.0,
+      4.51,
+      8.53
+     ],
+     [
+      20.0,
+      6.5,
+      10.67
+     ]
+    ],
+    "curve": true,
+    "closed": true,
+    "colour": "#efede6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-rail",
+   "at": [
+    -2,
+    -2,
+    19
+   ],
+   "params": {
+    "rect": [
+     64,
+     0.5
+    ],
+    "height": 0.8,
+    "colour": "#d8d6cf"
+   }
+  },
+  {
+   "type": "array",
+   "id": "letters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.5
+      ],
+      "height": 2.6,
+      "colour": "#f6f6f2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -32,
+     -2,
+     19.8
+    ],
+    "end": [
+     30,
+     -2,
+     19.8
+    ],
+    "count": 24,
+    "lod1Step": 4,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skybridge",
+   "footprint": {
+    "rect": [
+     34,
+     5
+    ]
+   },
+   "at": [
+    50,
+    -4
+   ],
+   "z0": 10,
+   "height": 4.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7da5a8",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#6a9aa0",
+    "bands": "#e8e6df"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2e0d8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "bridge-piers",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.9,
+      "n": 12,
+      "height": 10,
+      "colour": "#e0dcd2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     36,
+     -4,
+     0
+    ],
+    "end": [
+     62,
+     -4,
+     0
+    ],
+    "count": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   90
+  ]
+ }
+}

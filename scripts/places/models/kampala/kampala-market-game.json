@@ -1,0 +1,1572 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ST._BALIKUDEMBE_OWINO_MARKET.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alvinategyeka",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kampala/owino1.jpg",
+   "used": "dense rows of long low-pitched corrugated sheds, mostly weathered green with rust-red patches, narrow aisles with stall tarps and umbrellas, brick-paved lane, concrete rail-walkway edge, hill town behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:OWINO_MARKET._front_view.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alvinategyeka",
+   "view": "street",
+   "used": "long red-painted two-storey lock-up block with rust corrugated roof facing the road, concrete multi-storey block at the right, tarp-covered ground stalls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/161834654",
+   "used": "market area about 44,000 square metres; the named OSM building (13 m) is too small, so the whole area is composed and clamped to the scene size"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 32,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lane",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -2
+   ],
+   "params": {
+    "rect": [
+     110,
+     76
+    ],
+    "height": 0.05,
+    "colour": "#a8644a",
+    "topColour": "#a8644a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concrete-block",
+   "footprint": {
+    "rect": [
+     7,
+     92
+    ]
+   },
+   "at": [
+    62,
+    -4
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9cdb4",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colour": "#c9bca0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8680",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-rail",
+   "at": [
+    58.2,
+    -4
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     92
+    ],
+    "z0": 11.5,
+    "height": 1.2,
+    "colour": "#c4605a",
+    "topColour": "#c4605a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-slab",
+   "at": [
+    58.6,
+    -4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     92
+    ],
+    "z0": 11.1,
+    "height": 0.4,
+    "colour": "#cfc2a8",
+    "topColour": "#cfc2a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redblock",
+   "footprint": {
+    "rect": [
+     96,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -47
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8402e",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colour": "#8a2a20"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8603a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "colour": "#8a6a4a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       150,
+       30
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       130,
+       20
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed0_-55",
+   "footprint": {
+    "rect": [
+     49.15929254183783,
+     8
+    ]
+   },
+   "at": [
+    -30.120353729081085,
+    -36
+   ],
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#78947a",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed0_-5",
+   "footprint": {
+    "rect": [
+     59.64070745816217,
+     8
+    ]
+   },
+   "at": [
+    24.879646270918915,
+    -36
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a9a70",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps0_0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.0,
+     -30.75
+    ],
+    "end": [
+     52,
+     -30.75
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 2.2,
+      "colour": "#2f6fc4",
+      "topColour": "#2f6fc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps0_1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.7,
+     -30.75
+    ],
+    "end": [
+     52,
+     -30.75
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 1.6,
+      "colour": "#c8402f",
+      "topColour": "#c8402f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbs0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -30.75
+    ],
+    "end": [
+     50,
+     -30.75
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.2,
+      "n": 8,
+      "z0": 3.4,
+      "height": 0.45,
+      "topScale": 0.1,
+      "colour": "#8a3ac8",
+      "topColour": "#d03a6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed1_-55",
+   "footprint": {
+    "rect": [
+     41.01704168700112,
+     8
+    ]
+   },
+   "at": [
+    -34.19147915649944,
+    -25.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8603a",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed1_-13",
+   "footprint": {
+    "rect": [
+     31.866951265088787,
+     8
+    ]
+   },
+   "at": [
+    2.850517319545511,
+    -25.5
+   ],
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#587f60",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed1_19",
+   "footprint": {
+    "rect": [
+     35.3160070479101,
+     8
+    ]
+   },
+   "at": [
+    37.04199647604495,
+    -25.5
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a9a70",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps1_0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.0,
+     -20.25
+    ],
+    "end": [
+     52,
+     -20.25
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 2.2,
+      "colour": "#2f6fc4",
+      "topColour": "#2f6fc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps1_1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.7,
+     -20.25
+    ],
+    "end": [
+     52,
+     -20.25
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 1.6,
+      "colour": "#c8402f",
+      "topColour": "#c8402f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbs1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -20.25
+    ],
+    "end": [
+     50,
+     -20.25
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.2,
+      "n": 8,
+      "z0": 3.4,
+      "height": 0.45,
+      "topScale": 0.1,
+      "colour": "#8a3ac8",
+      "topColour": "#d03a6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed2_-55",
+   "footprint": {
+    "rect": [
+     61.129229025487774,
+     8
+    ]
+   },
+   "at": [
+    -24.135385487256112,
+    -15
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f8f68",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed2_6",
+   "footprint": {
+    "rect": [
+     47.67077097451222,
+     8
+    ]
+   },
+   "at": [
+    30.864614512743888,
+    -15
+   ],
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#78947a",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps2_0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.0,
+     -9.75
+    ],
+    "end": [
+     52,
+     -9.75
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 2.2,
+      "colour": "#2f6fc4",
+      "topColour": "#2f6fc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps2_1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.7,
+     -9.75
+    ],
+    "end": [
+     52,
+     -9.75
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 1.6,
+      "colour": "#c8402f",
+      "topColour": "#c8402f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbs2",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -9.75
+    ],
+    "end": [
+     50,
+     -9.75
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.2,
+      "n": 8,
+      "z0": 3.4,
+      "height": 0.45,
+      "topScale": 0.1,
+      "colour": "#d03a6a",
+      "topColour": "#d03a6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed3_-55",
+   "footprint": {
+    "rect": [
+     42.09721316570377,
+     8
+    ]
+   },
+   "at": [
+    -33.651393417148114,
+    -4.5
+   ],
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f8f68",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed3_-12",
+   "footprint": {
+    "rect": [
+     34.72346644144569,
+     8
+    ]
+   },
+   "at": [
+    5.358946386426611,
+    -4.5
+   ],
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f8a6a",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed3_23",
+   "footprint": {
+    "rect": [
+     31.379320392850545,
+     8
+    ]
+   },
+   "at": [
+    39.01033980357472,
+    -4.5
+   ],
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b9174",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps3_0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.0,
+     0.75
+    ],
+    "end": [
+     52,
+     0.75
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 2.2,
+      "colour": "#2f6fc4",
+      "topColour": "#2f6fc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps3_1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.7,
+     0.75
+    ],
+    "end": [
+     52,
+     0.75
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 1.6,
+      "colour": "#c8402f",
+      "topColour": "#c8402f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbs3",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     0.75
+    ],
+    "end": [
+     50,
+     0.75
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.2,
+      "n": 8,
+      "z0": 3.4,
+      "height": 0.45,
+      "topScale": 0.1,
+      "colour": "#d03a6a",
+      "topColour": "#d03a6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed4_-55",
+   "footprint": {
+    "rect": [
+     59.56460492573635,
+     8
+    ]
+   },
+   "at": [
+    -24.917697537131826,
+    6
+   ],
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f8a6a",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed4_5",
+   "footprint": {
+    "rect": [
+     49.23539507426365,
+     8
+    ]
+   },
+   "at": [
+    30.082302462868174,
+    6
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f8a6a",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps4_0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.0,
+     11.25
+    ],
+    "end": [
+     52,
+     11.25
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 2.2,
+      "colour": "#2f6fc4",
+      "topColour": "#2f6fc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps4_1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.7,
+     11.25
+    ],
+    "end": [
+     52,
+     11.25
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 1.6,
+      "colour": "#c8402f",
+      "topColour": "#c8402f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbs4",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     11.25
+    ],
+    "end": [
+     50,
+     11.25
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.2,
+      "n": 8,
+      "z0": 3.4,
+      "height": 0.45,
+      "topScale": 0.1,
+      "colour": "#e8c03a",
+      "topColour": "#d03a6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed5_-55",
+   "footprint": {
+    "rect": [
+     38.85498177330933,
+     8
+    ]
+   },
+   "at": [
+    -35.27250911334533,
+    16.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f8f68",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed5_-15",
+   "footprint": {
+    "rect": [
+     35.72737708767771,
+     8
+    ]
+   },
+   "at": [
+    2.618670317148191,
+    16.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a9a70",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed5_20",
+   "footprint": {
+    "rect": [
+     33.61764113901295,
+     8
+    ]
+   },
+   "at": [
+    37.89117943049352,
+    16.5
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9bfa8",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps5_0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.0,
+     21.75
+    ],
+    "end": [
+     52,
+     21.75
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 2.2,
+      "colour": "#2f6fc4",
+      "topColour": "#2f6fc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps5_1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.7,
+     21.75
+    ],
+    "end": [
+     52,
+     21.75
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 1.6,
+      "colour": "#c8402f",
+      "topColour": "#c8402f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbs5",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     21.75
+    ],
+    "end": [
+     50,
+     21.75
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.2,
+      "n": 8,
+      "z0": 3.4,
+      "height": 0.45,
+      "topScale": 0.1,
+      "colour": "#d03a6a",
+      "topColour": "#d03a6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed6_-55",
+   "footprint": {
+    "rect": [
+     45.11773262857927,
+     8
+    ]
+   },
+   "at": [
+    -32.141133685710365,
+    27
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#587f60",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed6_-9",
+   "footprint": {
+    "rect": [
+     63.68226737142073,
+     8
+    ]
+   },
+   "at": [
+    22.858866314289635,
+    27
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f8f68",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps6_0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.0,
+     32.25
+    ],
+    "end": [
+     52,
+     32.25
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 2.2,
+      "colour": "#2f6fc4",
+      "topColour": "#2f6fc4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tarps6_1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.7,
+     32.25
+    ],
+    "end": [
+     52,
+     32.25
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 1.6,
+      "colour": "#c8402f",
+      "topColour": "#c8402f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbs6",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     32.25
+    ],
+    "end": [
+     50,
+     32.25
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.2,
+      "n": 8,
+      "z0": 3.4,
+      "height": 0.45,
+      "topScale": 0.1,
+      "colour": "#8a3ac8",
+      "topColour": "#d03a6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hb0",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -48.57909767922681,
+    53.52689107539846
+   ],
+   "z0": 4,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c07a52",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8603a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hb1",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -30.59635804491928,
+    54.510444644432184
+   ],
+   "z0": 4,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b86a4a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f8f68",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hb2",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -9.272071453460134,
+    56.5736736072001
+   ],
+   "z0": 4,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a5a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8603a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hb3",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    10.685094168650073,
+    51.97859773182642
+   ],
+   "z0": 4,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a5a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8603a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hb4",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    31.618783938048946,
+    54.41464502084594
+   ],
+   "z0": 4,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b86a4a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8603a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hb5",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    51.326431721093414,
+    54.44119411410771
+   ],
+   "z0": 4,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a5a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a6a58",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   125
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Sheds now run in parallel rows with 2.5 m aisles, long concrete wall with rail and hill block added, but stall tarps/umbrellas are barely visible from this camera, brick lane and ground read pale, roofs lack rust patches and the hill is a few boxes"
+ }
+}

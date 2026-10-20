@@ -1,0 +1,443 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89_%D8%A7%D9%84%D9%82%D8%A8%D8%B7%D9%8A_04.jpg",
+   "licence": "CC0",
+   "author": "David Adel Wahba Khalil 2",
+   "view": "back",
+   "file": "/tmp/places-evidence/cairo/coptic1.jpg",
+   "used": "five storeys: exposed brick lower floors, maroon-painted upper floors, white shuttered windows with stone-framed lintels, projecting stair/lift tower with a stepped taller top, stacked pipes, roof railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/774871347",
+   "used": "hospital outline (name match, 77 x 58 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.667,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lower",
+   "footprint": {
+    "osm": true,
+    "simplify": 12
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a35c46",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.16,
+    "bay": 18,
+    "trimColour": "#d8cdb8",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#8a3d3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true,
+    "simplify": 12
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a04a4a",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.16,
+    "bay": 18,
+    "trimColour": "#efe9dc",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d8cdb8",
+      "at": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8078",
+    "parapet": 0
+   },
+   "z0": 8
+  },
+  {
+   "type": "mass",
+   "id": "wing-a",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    -8
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a4545",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "bay": 4,
+    "trimColour": "#efe9dc",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8078",
+    "parapet": 0.9
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "wing-b",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    24,
+    -4
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a4545",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "bay": 4,
+    "trimColour": "#efe9dc",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8078",
+    "parapet": 0.9
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "wing-c",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    14
+   ],
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a4545",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "bay": 4,
+    "trimColour": "#efe9dc",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8078",
+    "parapet": 0.9
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "wing-d",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    30,
+    18
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a4545",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "bay": 4,
+    "trimColour": "#efe9dc",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8078",
+    "parapet": 0.9
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -33
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a35c46",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 6,
+    "trimColour": "#e6e0d4"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#8a3d3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -33
+   ],
+   "z0": 17,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3b3a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "rect",
+    "bay": 6,
+    "trimColour": "#efe9dc",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8078",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac-0",
+   "at": [
+    -20,
+    -29.2,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.6
+    ],
+    "height": 0.9,
+    "colour": "#d9d9d4",
+    "topColour": "#d9d9d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac-1",
+   "at": [
+    -12,
+    -29.2,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.6
+    ],
+    "height": 0.9,
+    "colour": "#d9d9d4",
+    "topColour": "#d9d9d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac-2",
+   "at": [
+    12,
+    -29.2,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.6
+    ],
+    "height": 0.9,
+    "colour": "#d9d9d4",
+    "topColour": "#d9d9d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac-3",
+   "at": [
+    22,
+    -29.2,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.6
+    ],
+    "height": 0.9,
+    "colour": "#d9d9d4",
+    "topColour": "#d9d9d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pipe-0",
+   "at": [
+    -8,
+    -29.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 17,
+    "colour": "#6e6a64",
+    "topColour": "#6e6a64"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pipe-1",
+   "at": [
+    8,
+    -29.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 17,
+    "colour": "#6e6a64",
+    "topColour": "#6e6a64"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "yard-trees",
+   "at": [
+    -30,
+    -34
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 5,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "treeKind": "broadleaf",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Brick base, maroon render, string course, stepped wings of differing heights and a centre-front brick/maroon stair tower are in; windows are a coarse grid because the OSM polygon walls blow the triangle budget, so the real tall paired shuttered windows with stone lintels, pipe runs and AC boxes are only suggested. Photo is the rear elevation; front unverified."
+ }
+}

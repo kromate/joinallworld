@@ -1,0 +1,246 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-way-1007170590",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1220549514",
+   "used": "real outline of the named main block (37 x 17 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/khartoum.json",
+   "used": "cream low-rise blocks with red-brick accent, arched windows, shaded courtyards, covered walkways, garden forecourt"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebdfc4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "bay": 4.5,
+    "bands": "#a4573d",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9283",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebdfc4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bands": "#a4573d",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9283",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    34,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4573d",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9283",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-s",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -17,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f2e5",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9283",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy-walkway",
+   "id": "walk",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 3.2,
+    "spans": 10,
+    "tower": false,
+    "rails": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    -4,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall",
+   "params": {
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#ebdfc4",
+    "pillarEvery": 8,
+    "points": [
+     [
+      -55,
+      -48
+     ],
+     [
+      55,
+      -48
+     ],
+     [
+      55,
+      40
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "garden",
+   "at": [
+    -40,
+    -38
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 6,
+    "spread": 8,
+    "line": 80,
+    "colour": "#5f8a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; main block uses the real OSM outline, other wings are typed layout, walkway colour defaults dark."
+ }
+}

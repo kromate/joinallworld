@@ -1,0 +1,202 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/433100614",
+   "used": "real 22x14 m rotated outline of the market shed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-shed",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a9a0",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a5a3e",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tin-lean-to",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    -16,
+    -14
+   ],
+   "rotDeg": 18,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a968c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a7f78",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tin-lean-to-2",
+   "footprint": {
+    "rect": [
+     8,
+     4.5
+    ]
+   },
+   "at": [
+    17,
+    12
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9aa92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a5a3e",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -4,
+    -20,
+    0
+   ],
+   "rotDeg": 162,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#c94f3d",
+     "#e8b13c",
+     "#3d7fbf",
+     "#f0ece2"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    19,
+    0
+   ],
+   "rotDeg": 162,
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "table"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#d94f4f",
+     "#f0ece2",
+     "#e8b13c"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     16
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   80,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found for this market; real outline plus text brief only (shed height, stalls, colours typed from city style)"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-market-game"
+}

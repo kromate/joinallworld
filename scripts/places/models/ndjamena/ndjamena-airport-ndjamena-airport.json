@@ -1,0 +1,407 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:N'Djamena_International_Airport,_Chad.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Goldsztajn",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/ndjamena/airport.jpg",
+   "used": "two terminal blocks seen from the apron: yellow-cream 2-storey block with red-brown flat roof sections and a glass pyramid entrance, lower orange-cream block with open canopies; hazy sand ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/157457096",
+   "used": "terminal size and orientation only (outline is a 12-vertex chain, simplified to two blocks per photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    20,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     34
+    ],
+    "height": 0.08,
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     42,
+     18
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cc7e",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#b9ad66"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d5f4c",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-annex",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -2,
+    -1
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a870",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d5f4c",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-pyramid",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 6,
+    "topScale": 0.15,
+    "colour": "#4f7fb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     52,
+     15
+    ]
+   },
+   "at": [
+    32,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3b98a",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#efe2c6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b08e",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    62,
+    16,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "style": "round",
+    "colour": "#e6dcc8",
+    "cabColour": "#4a6a7a"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    80,
+    -24,
+    0
+   ],
+   "rotDeg": 170,
+   "params": {
+    "scale": 0.8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    14,
+    -3.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 4,
+    "columns": 4,
+    "colour": "#efe6d0",
+    "edgeColour": "#a89f8c"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    32,
+    -4.3,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#efe6d0",
+    "edgeColour": "#a89f8c"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    50,
+    -5.1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 3.8,
+    "columns": 4,
+    "colour": "#efe6d0",
+    "edgeColour": "#a89f8c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac-0",
+   "at": [
+    22,
+    6,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 1.2,
+    "colour": "#9a9a98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac-1",
+   "at": [
+    30,
+    6,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 1.2,
+    "colour": "#9a9a98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac-2",
+   "at": [
+    40,
+    6,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 1.2,
+    "colour": "#9a9a98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac-3",
+   "at": [
+    48,
+    6,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 1.2,
+    "colour": "#9a9a98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bus-0",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     2.6
+    ],
+    "height": 3.2,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bus-1",
+   "at": [
+    38,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     2.6
+    ],
+    "height": 3.2,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bus-2",
+   "at": [
+    54,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     2.6
+    ],
+    "height": 3.2,
+    "colour": "#f2f2f0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -50,
+     22
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     10,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pyramid shape simplified; no hipped roof sections; background city and haze absent; apron is a flat slab on sand ground"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-airport-ndjamena-airport"
+}

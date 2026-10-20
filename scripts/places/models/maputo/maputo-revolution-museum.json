@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-revolution-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museu_da_Revolu%C3%A7%C3%A3o,_Maputo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jcornelius",
+   "view": "front",
+   "file": "/tmp/places-evidence/maputo/maputo-revolution-museum-0.jpg",
+   "used": "modernist four-storey block over a glazed ground floor: left half with cantilevered cream balcony slabs, right two-thirds with white vertical brise-soleil fins, entrance canopy right of centre, roof penthouse"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/476023645",
+   "used": "width 40 m by about 18 m only (match quality containing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 0.8,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8d2c0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#7f9096",
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc",
+    "overhang": 0.6,
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-block",
+   "footprint": {
+    "rect": [
+     21,
+     17
+    ]
+   },
+   "at": [
+    6.5,
+    0
+   ],
+   "height": 14.4,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dfb4",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#8d9fa6",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.22,
+      "depth": 0.8,
+      "spacing": 1.6,
+      "colour": "#f3f0e8",
+      "from": 1,
+      "margin": 0.3
+     },
+     {
+      "type": "bands",
+      "colour": "#f3f0e8",
+      "height": 0.5,
+      "proud": 0.35,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabf",
+    "parapet": 0.4
+   },
+   "z0": 3.8
+  },
+  {
+   "type": "mass",
+   "id": "balcony-block",
+   "footprint": {
+    "rect": [
+     13,
+     17
+    ]
+   },
+   "at": [
+    -10.5,
+    0
+   ],
+   "height": 14.4,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dfb4",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#8d9fa6",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "depth": 2.2,
+      "rail": 0.9,
+      "width": 11.5,
+      "every": 15,
+      "slab": 0.4,
+      "floors": "all",
+      "colour": "#e7dcae",
+      "railKind": "solid",
+      "railColour": "#e0d6a8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabf",
+    "parapet": 0.4
+   },
+   "z0": 3.8
+  },
+  {
+   "type": "mass",
+   "id": "penthouse",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    9,
+    3
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6dcb0",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabf",
+    "parapet": 0.2
+   },
+   "z0": 18.2
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -9.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     3.5
+    ],
+    "height": 0.35,
+    "z0": 3.9,
+    "colour": "#f3f0e8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.2,
+    -8.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 4,
+    "colour": "#f3f0e8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -4,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -23,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Facade less deep: no cantilever brackets or fine mullion detail, glazing reads darker, no marble plinth/ramp/railings or bollards, roof-top services simplified; photo shows a neighbour block at left not modelled"
+ }
+}

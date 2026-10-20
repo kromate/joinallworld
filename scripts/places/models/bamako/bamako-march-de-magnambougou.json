@@ -1,0 +1,142 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/155146673",
+   "used": "real 7-sided market outline (162 x 60 m, area 9512 m2) as the shed footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: covered single-storey trading shed, concrete columns, lock-up shops along the edges"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b1a8",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -12,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 3.3,
+    "height": 3.2,
+    "unit_width": 3,
+    "shutter_colours": [
+     "#a65a3a",
+     "#7a8a8f",
+     "#c9a27a"
+    ],
+    "wall_colour": "#c9a27a",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -60,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a27a",
+     "#a65a3a",
+     "#b5b1a8",
+     "#7a8a8f"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -48,
+    6
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "colour": "#a65a3a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -62,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    58,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this market found; real outline only, interior and roof structure invented from brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-march-de-magnambougou"
+}

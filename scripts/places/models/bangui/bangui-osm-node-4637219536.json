@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-osm-node-4637219536",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Bangui",
+   "used": "city context only; no photo of this place found on Wikidata P18, Commons or Wikipedia"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188651094",
+   "used": "nearest building is 63 m2 and 10 m away: not used, size from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e0c8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#2a5f8f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f8a82",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 4,
+    "height": 3.2,
+    "colour": "#2a5f8f",
+    "columns": 2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -6,
+    -6.5,
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 2,
+    "colour": "#d6cdb4",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -9
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed from brief only; no photo or reliable outline; colours and canopy are guesses."
+ }
+}

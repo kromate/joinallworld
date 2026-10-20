@@ -1,0 +1,1237 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-national-heroes-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Heroes_Stadium_20.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Icem4k",
+   "view": "side",
+   "file": "/tmp/places-evidence/lusaka/stadium2.jpg",
+   "used": "outer facade: white concrete ring with square columns, two ring beams and a zigzag balustrade band, red-brown stair tower, wide white stair ramps, cream and tan striped tensile roof on a steel truss, street lamps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Heroes_National_Stadium_07.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jae zambia",
+   "view": "interior",
+   "file": "/tmp/places-evidence/lusaka/stadium1.jpg",
+   "used": "green pitch, orange track, red/blue/white seat blocks, white roof-support columns and truss roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9099651",
+   "used": "round bowl about 260-300 m across: modelled as a circular bowl scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftX": 0.15
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#c9c6bd",
+    "profile": [
+     [
+      0.1,
+      0.05
+     ],
+     [
+      64,
+      0.05
+     ],
+     [
+      64,
+      0.12
+     ],
+     [
+      0.1,
+      0.12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#4f8a3a",
+    "profile": [
+     [
+      0.1,
+      0.2
+     ],
+     [
+      24,
+      0.2,
+      "#4f8a3a"
+     ],
+     [
+      24,
+      0.25,
+      "#c4623a"
+     ],
+     [
+      33,
+      0.25,
+      "#c4623a"
+     ],
+     [
+      33,
+      0.2
+     ],
+     [
+      0.1,
+      0.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 47,
+    "startDeg": 0,
+    "endDeg": 359,
+    "rows": 6,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 2.5,
+    "facetDeg": 30,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#e8e6e0",
+     "#d9782a",
+     "#e8e6e0"
+    ],
+    "blocks": 2,
+    "concreteColour": "#e2dfd6",
+    "underColour": "#cfcbc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#4a463f",
+    "profile": [
+     [
+      53,
+      0.1
+     ],
+     [
+      53.8,
+      0.1
+     ],
+     [
+      53.8,
+      9.5
+     ],
+     [
+      53,
+      9.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f0eee8",
+    "profile": [
+     [
+      51.5,
+      9.4
+     ],
+     [
+      56,
+      9.4
+     ],
+     [
+      56,
+      11.0
+     ],
+     [
+      51.5,
+      11.0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f0eee8",
+    "profile": [
+     [
+      51.5,
+      16.4
+     ],
+     [
+      55.5,
+      16.4
+     ],
+     [
+      55.5,
+      18.0
+     ],
+     [
+      51.5,
+      18.0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d8d4c8",
+    "profile": [
+     [
+      55.6,
+      11.0
+     ],
+     [
+      56.6,
+      11.0
+     ],
+     [
+      56.6,
+      14.0
+     ],
+     [
+      55.6,
+      14.0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 55,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 16,
+    "facing": "outward",
+    "lod1Step": 4,
+    "lod2Step": 8,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        1.8
+       ],
+       "height": 18,
+       "colour": "#eeece6"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 56.8,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 16,
+    "facing": "outward",
+    "lod2Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       11.4
+      ],
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        6.6
+       ],
+       "height": 2.2,
+       "colour": "#d6d2c6"
+      }
+     }
+    ],
+    "lod1Step": 99
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e7d3a6",
+    "profile": [
+     [
+      58,
+      18.2
+     ],
+     [
+      58,
+      19.6,
+      "#d9bf86"
+     ],
+     [
+      40,
+      27.0
+     ],
+     [
+      40,
+      25.6
+     ],
+     [
+      58,
+      18.2
+     ]
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 49,
+    "startDeg": 0,
+    "endDeg": 315,
+    "count": 8,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "points": [
+        [
+         0,
+         9.5,
+         18.2
+        ],
+        [
+         0,
+         0,
+         22.8
+        ],
+        [
+         0,
+         -9.5,
+         27.0
+        ]
+       ],
+       "curve": true,
+       "colour": "#e7d3a6",
+       "section": {
+        "rect": [
+         15,
+         0.5
+        ]
+       }
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 49,
+    "startDeg": 11.25,
+    "endDeg": 326.25,
+    "count": 8,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "points": [
+        [
+         0,
+         9.5,
+         18.2
+        ],
+        [
+         0,
+         0,
+         22.8
+        ],
+        [
+         0,
+         -9.5,
+         27.0
+        ]
+       ],
+       "curve": true,
+       "colour": "#c9a66b",
+       "section": {
+        "rect": [
+         15,
+         0.5
+        ]
+       }
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#6a6f73",
+    "profile": [
+     [
+      40,
+      25.6
+     ],
+     [
+      40,
+      27.0
+     ],
+     [
+      39,
+      27.0
+     ],
+     [
+      39,
+      24.6
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 49,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 12,
+    "facing": "outward",
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       19
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        18
+       ],
+       "height": 0.9,
+       "colour": "#7a7f84"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 56.2,
+    "startDeg": 22.5,
+    "endDeg": 337.5,
+    "count": 8,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        3.0,
+        2.0
+       ],
+       "height": 25,
+       "colour": "#9b4a30"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -61,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     6
+    ],
+    "height": 3.0,
+    "topScale": [
+     1,
+     0.5
+    ],
+    "colour": "#ece9e0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     4
+    ],
+    "height": 5.2,
+    "topScale": [
+     1,
+     0.4
+    ],
+    "colour": "#eae7de"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 66,
+    "startDeg": 45,
+    "endDeg": 315,
+    "count": 4,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#b8bcc0",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        },
+        {
+         "z": 30,
+         "rect": [
+          0.5,
+          0.5
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       30
+      ],
+      "params": {
+       "rect": [
+        4,
+        1
+       ],
+       "height": 1.6,
+       "colour": "#d7d9dc"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e2dfd6",
+    "profile": [
+     [
+      0.1,
+      0.3
+     ],
+     [
+      54,
+      0.3
+     ],
+     [
+      54,
+      18
+     ],
+     [
+      40,
+      12
+     ],
+     [
+      0.1,
+      0.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 56.8,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 16,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "points": [
+        [
+         -7.0,
+         0,
+         11
+        ],
+        [
+         -4.666666666666666,
+         0,
+         14
+        ],
+        [
+         -2.333333333333333,
+         0,
+         11
+        ],
+        [
+         0.0,
+         0,
+         14
+        ],
+        [
+         2.333333333333334,
+         0,
+         11
+        ],
+        [
+         4.666666666666666,
+         0,
+         14
+        ],
+        [
+         7.0,
+         0,
+         11
+        ]
+       ],
+       "colour": "#f2f0ea",
+       "section": {
+        "rect": [
+         0.4,
+         0.35
+        ]
+       }
+      }
+     }
+    ],
+    "lod1Step": 99
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -58.0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 8.5,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -60.6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 6.8,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -63.2,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 5.1,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -65.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 3.4000000000000004,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -68.4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 1.7000000000000002,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20.4,
+    -64,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     14
+    ],
+    "height": 4,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "colour": "#e6e3da"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.5999999999999996,
+    -64,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     14
+    ],
+    "height": 4,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "colour": "#e6e3da"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -58.0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 8.5,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -60.6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 6.8,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -63.2,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 5.1,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -65.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 3.4000000000000004,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -68.4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 1.7000000000000002,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.5999999999999996,
+    -64,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     14
+    ],
+    "height": 4,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "colour": "#e6e3da"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.4,
+    -64,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     14
+    ],
+    "height": 4,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "colour": "#e6e3da"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 68,
+    "startDeg": 15,
+    "endDeg": 345,
+    "count": 30,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        3.5,
+        0.15
+       ],
+       "height": 2,
+       "colour": "#3d4a3a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -52
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round bowl not real oval; petal roof is 16 flat-ish curved slabs without ragged lobed edge; seat-colour band may still show above wall; ramps are stepped blocks, not long splayed ramps; fence is dark posts not folding gate."
+ }
+}

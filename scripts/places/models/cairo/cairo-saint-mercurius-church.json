@@ -1,0 +1,35 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "cairo", "venueId": "cairo-saint-mercurius-church",
+ "verified": "text",
+ "evidence": [
+  {"kind": "photo", "url": "https://commons.wikimedia.org/wiki/File:Cairo,_monastero_di_san_mercurio,_01.JPG", "licence": "CC BY 3.0", "author": "Sailko", "view": "interior", "file": "/tmp/places-evidence/cairo/cairo-saint-mercurius-church-2.jpg", "used": "interior only (no exterior photo exists on Commons): red-brick walls striped with pale limestone courses, tall timber-trussed nave under a pitched roof, round-arched aisle bays, a brick half-dome over the haikal; proportions of a narrow tall basilica"},
+  {"kind": "photo", "url": "https://commons.wikimedia.org/wiki/File:Cairo,_monastero_di_san_mercurio,_06.JPG", "licence": "CC BY 3.0", "author": "Sailko", "view": "interior", "file": "/tmp/places-evidence/cairo/abu-1.jpg", "used": "nave section: timber gabled roof, brick-and-stone arches, apse half-dome"},
+  {"kind": "osm", "ref": "way/1379086879", "used": "compound context only (Abu Sayfayn Cloister 68 x 54 m); its irregular outline is not the church, so it is not used as the footprint"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 14, "fovDeg": 45},
+ "parts": [
+  {"type": "mass", "id": "nave", "footprint": {"rect": [14, 24]}, "at": [0, 4], "height": 8.5, "storeys": 2,
+   "wall": {"material": "brick", "colour": "#b4694a", "windows": "arched", "windowRatio": 0.12, "bay": 4, "plinth": 0.5,
+            "bands": "#dccfa8", "pattern": {"type": "bands", "colour": "#dccfa8"}},
+   "roof": {"form": "gable", "colour": "#8f6f52", "material": "clay-tile", "pitch": 24, "overhang": 0.5}},
+  {"type": "mass", "id": "aisle-n", "footprint": {"rect": [4.5, 22]}, "at": [-9.25, 4], "height": 5, "storeys": 1,
+   "wall": {"material": "limestone", "colour": "#d8c9a0", "windows": "arched", "windowRatio": 0.1, "bay": 4, "plinth": 0.4},
+   "roof": {"form": "shed", "colour": "#8f6f52", "pitch": 12}},
+  {"type": "mass", "id": "aisle-s", "footprint": {"rect": [4.5, 22]}, "at": [9.25, 4], "height": 5, "storeys": 1,
+   "wall": {"material": "limestone", "colour": "#d8c9a0", "windows": "arched", "windowRatio": 0.1, "bay": 4, "plinth": 0.4},
+   "roof": {"form": "shed", "colour": "#8f6f52", "pitch": 12}},
+  {"type": "mass", "id": "narthex", "footprint": {"rect": [14, 5]}, "at": [0, -10.5], "height": 6, "storeys": 1,
+   "wall": {"material": "limestone", "colour": "#d8c9a0", "windows": "arched", "windowRatio": 0.2, "plinth": 0.5, "cornice": true},
+   "roof": {"form": "flat", "colour": "#a39a8c", "parapet": 0.5}},
+  {"type": "mass", "id": "haikal", "footprint": {"rect": [8, 7]}, "at": [0, 19.5], "height": 7, "storeys": 1,
+   "wall": {"material": "brick", "colour": "#b4694a", "windows": "none", "plinth": 0.4, "bands": "#dccfa8"},
+   "roof": {"form": "flat", "colour": "#a39a8c", "parapet": 0.4}},
+  {"type": "mosque-domed/dome", "at": [0, 19.5, 7.4], "params": {"radius": 3.4, "height": 3.2, "drum": 1.6, "windows": 4, "colour": "#cdbb93", "drum_colour": "#d8c9a0", "finial": true}},
+  {"type": "core/steps", "at": [0, -14.2, 0], "params": {"width": 6, "rise": 0.9, "run": 0.4, "count": 4, "colour": "#cfc2a0"}},
+  {"type": "mosque-domed/bell-tower", "at": [-8.5, -11, 0], "params": {"width": 4.2, "height": 15, "cap": "pyramid", "colour": "#d8c9a0", "cap_colour": "#8f6f52"}},
+  {"type": "mosque-domed/cross", "at": [0, -2, 11.6], "params": {"height": 1.6}},
+  {"type": "mosque-domed/cloister", "at": [0, -18, 0], "params": {"width": 36, "depth": 20, "thickness": 1.0, "height": 3.6, "gate_width": 5, "colour": "#cdbd96", "trim": "#d8c9a0", "bay": 4.5}},
+  {"type": "core/tree", "at": [-14, -20, 0], "params": {"kind": "palm", "height": 8, "count": 2, "spread": 3, "line": 6}}
+ ],
+ "site": {"ground": "paving", "forecourt": "plaza", "forecourtDepth": 6, "extent": [60, 60]}
+}

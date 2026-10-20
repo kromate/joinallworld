@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-signal-hill-frame",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/454243435",
+   "used": "nearest match is a 23 m2 toilet block, not the frame; not used for shape"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Signal_Hill,_Cape_Town",
+   "used": "flat summit viewpoint with car park and renosterveld; brief: small steel viewing frame about 8 x 3 x 4 m on a terrace with three steps"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frame-post-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -3.8,
+    0
+   ],
+   "z0": 0.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3f44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f44",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frame-post-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    3.8,
+    0
+   ],
+   "z0": 0.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3f44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f44",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frame-lintel",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.7,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3f44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f44",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frame-sill",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3f44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f44",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.5
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 2,
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wall",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    3.8
+   ],
+   "z0": 0.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8f94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -16,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.0,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    8,
+    -3,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or reliable outline found; frame shape (posts, lintel, sill) is an assumption from the brief"
+ }
+}

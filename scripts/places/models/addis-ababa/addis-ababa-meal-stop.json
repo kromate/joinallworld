@@ -1,0 +1,119 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1535018953",
+   "used": "real footprint (265 m2), building opened 1953"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Churchill_Avenue,_Addis_Ababa,_September_2022.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Mjr74",
+   "view": "street",
+   "file": "/tmp/places-evidence/addis-ababa/tomoca1.jpg",
+   "used": "surrounding Churchill Avenue context only; the cafe is not visible"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cdb0",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain"
+    },
+    "plinth": 0.4,
+    "bands": "#7a4a2f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "parapet": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2,
+    "height": 2.8,
+    "colours": [
+     "#7a4a2f",
+     "#f0ece0"
+    ]
+   }
+  },
+  {
+   "type": "shopfront",
+   "id": "door",
+   "at": [
+    4,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 3.2,
+    "kind": "glazed",
+    "colour": "#7a4a2f",
+    "sign_colour": "#7a4a2f"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spread": 2,
+    "colours": [
+     "#f0ece0",
+     "#7a4a2f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Real outline and 1953 date only; facade detail (Italian-era glazing, awning) is typed, no photo of the cafe."
+ }
+}

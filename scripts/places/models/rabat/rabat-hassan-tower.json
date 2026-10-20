@@ -1,0 +1,1704 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-hassan-tower",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hassan_Tower,_Rabat,_Marocco_(%D8%B5%D9%88%D9%85%D8%B9%D8%A9_%D8%AD%D8%B3%D8%A7%D9%86_).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Petar Milosevic",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/rabat-hassan-tower-0.jpg",
+   "used": "square ochre sandstone shaft 44 m with two string courses, sebka lattice panel on the top stage, mid-height carved arch panel, small dark door at the base, rubble stair at the left corner, foreground stumps of broken grey columns, white balustrade behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:14042012-Tour_Hassan_-_Morocco_(7089700255).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "WiLPrZ from Rabat, Maroc",
+   "view": "aerial",
+   "used": "field of columns on a paved esplanade"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/253426261",
+   "used": "plan size about 15.5 m square, height 44 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 2,
+  "fovDeg": 30,
+  "aspect": 0.73,
+  "fit": "building",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 44,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c79a64",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#e3d3b2"
+      ],
+      "height": 0.35,
+      "proud": 0.12,
+      "at": 0.0,
+      "floors": [
+       1,
+       2
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9805a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sebka-0",
+   "at": [
+    0,
+    -8.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     10.6,
+     0.5
+    ],
+    "z0": 30,
+    "height": 13.6,
+    "colour": "#cfa26b",
+    "topColour": "#cfa26b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       0.5,
+       0.5
+      ],
+      "colours": [
+       "#c79a64",
+       "#a9794a"
+      ],
+      "mode": "checker",
+      "gap": 0.04,
+      "proud": 0.12,
+      "slits": {
+       "fraction": 0.35,
+       "colour": "#7a5232",
+       "width": 0.22,
+       "height": 0.35
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sebka-90",
+   "at": [
+    8.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "rect": [
+     10.6,
+     0.5
+    ],
+    "z0": 30,
+    "height": 13.6,
+    "colour": "#cfa26b",
+    "topColour": "#cfa26b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       0.5,
+       0.5
+      ],
+      "colours": [
+       "#c79a64",
+       "#a9794a"
+      ],
+      "mode": "checker",
+      "gap": 0.04,
+      "proud": 0.12,
+      "slits": {
+       "fraction": 0.35,
+       "colour": "#7a5232",
+       "width": 0.22,
+       "height": 0.35
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sebka-180",
+   "at": [
+    0,
+    8.0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "rect": [
+     10.6,
+     0.5
+    ],
+    "z0": 30,
+    "height": 13.6,
+    "colour": "#cfa26b",
+    "topColour": "#cfa26b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       0.5,
+       0.5
+      ],
+      "colours": [
+       "#c79a64",
+       "#a9794a"
+      ],
+      "mode": "checker",
+      "gap": 0.04,
+      "proud": 0.12,
+      "slits": {
+       "fraction": 0.35,
+       "colour": "#7a5232",
+       "width": 0.22,
+       "height": 0.35
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sebka-270",
+   "at": [
+    -8.0,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "rect": [
+     10.6,
+     0.5
+    ],
+    "z0": 30,
+    "height": 13.6,
+    "colour": "#cfa26b",
+    "topColour": "#cfa26b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       0.5,
+       0.5
+      ],
+      "colours": [
+       "#c79a64",
+       "#a9794a"
+      ],
+      "mode": "checker",
+      "gap": 0.04,
+      "proud": 0.12,
+      "slits": {
+       "fraction": 0.35,
+       "colour": "#7a5232",
+       "width": 0.22,
+       "height": 0.35
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-panel",
+   "at": [
+    0.4,
+    -8.0
+   ],
+   "params": {
+    "rect": [
+     9.5,
+     0.3
+    ],
+    "z0": 15.2,
+    "height": 10,
+    "colour": "#d4a872",
+    "topColour": "#d4a872",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "arch-horseshoe",
+   "at": [
+    0.4,
+    -8.2,
+    0
+   ],
+   "params": {
+    "colour": "#b98650",
+    "sections": [
+     {
+      "z": 15.6,
+      "rect": [
+       6,
+       0.3
+      ]
+     },
+     {
+      "z": 19.0,
+      "rect": [
+       6.4,
+       0.3
+      ]
+     },
+     {
+      "z": 21.0,
+      "rect": [
+       5.4,
+       0.3
+      ]
+     },
+     {
+      "z": 22.6,
+      "rect": [
+       3.8,
+       0.3
+      ]
+     },
+     {
+      "z": 23.6,
+      "rect": [
+       2.0,
+       0.3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "arch-inner",
+   "at": [
+    0.4,
+    -8.45,
+    0
+   ],
+   "params": {
+    "colour": "#7a5232",
+    "sections": [
+     {
+      "z": 15.6,
+      "rect": [
+       3.4,
+       0.3
+      ]
+     },
+     {
+      "z": 18.5,
+      "rect": [
+       3.6,
+       0.3
+      ]
+     },
+     {
+      "z": 20.2,
+      "rect": [
+       2.8,
+       0.3
+      ]
+     },
+     {
+      "z": 21.4,
+      "rect": [
+       1.4,
+       0.3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "window-slit",
+   "at": [
+    0.4,
+    -8.3
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.3
+    ],
+    "z0": 28.2,
+    "height": 2.2,
+    "colour": "#4a3524",
+    "topColour": "#4a3524",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0.4,
+    -8.2
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#3a2a1d",
+    "topColour": "#3a2a1d",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-0",
+   "at": [
+    -9.4,
+    -12.4
+   ],
+   "params": {
+    "rect": [
+     3,
+     1.7
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#bb8e5c",
+    "topColour": "#c9a070",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-1",
+   "at": [
+    -9.4,
+    -10.4
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.7
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#bb8e5c",
+    "topColour": "#c9a070",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-2",
+   "at": [
+    -9.4,
+    -8.4
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.7
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#bb8e5c",
+    "topColour": "#c9a070",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-3",
+   "at": [
+    -9.4,
+    -6.4
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.7
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#bb8e5c",
+    "topColour": "#c9a070",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-4",
+   "at": [
+    -9.4,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.7
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#bb8e5c",
+    "topColour": "#c9a070",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balustrade",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -16
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.6
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#ece8df",
+    "topColour": "#f4f1ea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-0",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#9d8d85",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        0.66
+       ],
+       [
+        0.768,
+        0.66,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        1.32
+       ],
+       [
+        0.8,
+        1.32,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        2
+       ],
+       [
+        0,
+        2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-1",
+   "at": [
+    -12,
+    -27,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        1.056
+       ],
+       [
+        0.768,
+        1.056,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        2.112
+       ],
+       [
+        0.8,
+        2.112,
+        "#a39587"
+       ],
+       [
+        0.8,
+        3.2
+       ],
+       [
+        0,
+        3.2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-2",
+   "at": [
+    -3,
+    -23,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#9d8d85",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        1.4520000000000002
+       ],
+       [
+        0.768,
+        1.4520000000000002,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        2.9040000000000004
+       ],
+       [
+        0.8,
+        2.9040000000000004,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        4.4
+       ],
+       [
+        0,
+        4.4
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-3",
+   "at": [
+    5,
+    -29,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        1.6500000000000001
+       ],
+       [
+        0.768,
+        1.6500000000000001,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        3.3000000000000003
+       ],
+       [
+        0.8,
+        3.3000000000000003,
+        "#a39587"
+       ],
+       [
+        0.8,
+        5
+       ],
+       [
+        0,
+        5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-4",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#9d8d85",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        0.8580000000000001
+       ],
+       [
+        0.768,
+        0.8580000000000001,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        1.7160000000000002
+       ],
+       [
+        0.8,
+        1.7160000000000002,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        2.6
+       ],
+       [
+        0,
+        2.6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-5",
+   "at": [
+    22,
+    -30,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        1.254
+       ],
+       [
+        0.768,
+        1.254,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        2.508
+       ],
+       [
+        0.8,
+        2.508,
+        "#a39587"
+       ],
+       [
+        0.8,
+        3.8
+       ],
+       [
+        0,
+        3.8
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-6",
+   "at": [
+    -26,
+    -32,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#9d8d85",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        1.584
+       ],
+       [
+        0.768,
+        1.584,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        3.168
+       ],
+       [
+        0.8,
+        3.168,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        4.8
+       ],
+       [
+        0,
+        4.8
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-7",
+   "at": [
+    -8,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        0.7260000000000001
+       ],
+       [
+        0.768,
+        0.7260000000000001,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        1.4520000000000002
+       ],
+       [
+        0.8,
+        1.4520000000000002,
+        "#a39587"
+       ],
+       [
+        0.8,
+        2.2
+       ],
+       [
+        0,
+        2.2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-8",
+   "at": [
+    10,
+    -35,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#9d8d85",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        1.32
+       ],
+       [
+        0.768,
+        1.32,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        2.64
+       ],
+       [
+        0.8,
+        2.64,
+        "#9d8d85"
+       ],
+       [
+        0.8,
+        4
+       ],
+       [
+        0,
+        4
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-9",
+   "at": [
+    26,
+    -23,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        0.99
+       ],
+       [
+        0.768,
+        0.99,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        1.98
+       ],
+       [
+        0.8,
+        1.98,
+        "#a39587"
+       ],
+       [
+        0.8,
+        3
+       ],
+       [
+        0,
+        3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "colS-0",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        0.8250000000000001
+       ],
+       [
+        0.768,
+        0.8250000000000001,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        1.6500000000000001
+       ],
+       [
+        0.8,
+        1.6500000000000001,
+        "#a39587"
+       ],
+       [
+        0.8,
+        2.5
+       ],
+       [
+        0,
+        2.5
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "colS-1",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        1.1880000000000002
+       ],
+       [
+        0.768,
+        1.1880000000000002,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        2.3760000000000003
+       ],
+       [
+        0.8,
+        2.3760000000000003,
+        "#a39587"
+       ],
+       [
+        0.8,
+        3.6
+       ],
+       [
+        0,
+        3.6
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "colS-2",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        1.584
+       ],
+       [
+        0.768,
+        1.584,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        3.168
+       ],
+       [
+        0.8,
+        3.168,
+        "#a39587"
+       ],
+       [
+        0.8,
+        4.8
+       ],
+       [
+        0,
+        4.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "colS-3",
+   "at": [
+    20,
+    6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        0.99
+       ],
+       [
+        0.768,
+        0.99,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        1.98
+       ],
+       [
+        0.8,
+        1.98,
+        "#a39587"
+       ],
+       [
+        0.8,
+        3
+       ],
+       [
+        0,
+        3
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "colS-4",
+   "at": [
+    30,
+    2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        0.66
+       ],
+       [
+        0.768,
+        0.66,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        1.32
+       ],
+       [
+        0.8,
+        1.32,
+        "#a39587"
+       ],
+       [
+        0.8,
+        2
+       ],
+       [
+        0,
+        2
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "colS-5",
+   "at": [
+    14,
+    8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a39587",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#a39587"
+       ],
+       [
+        0.8,
+        1.3860000000000001
+       ],
+       [
+        0.768,
+        1.3860000000000001,
+        "#8e8174"
+       ],
+       [
+        0.768,
+        2.7720000000000002
+       ],
+       [
+        0.8,
+        2.7720000000000002,
+        "#a39587"
+       ],
+       [
+        0.8,
+        4.2
+       ],
+       [
+        0,
+        4.2
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     28
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     28
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     2,
+     28
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     28
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     28
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Sebka is a checker/slit lattice and the horseshoe relief is a stacked-loft stand-in; shaft reads slightly short in frame because the camera fits the whole plaza; columns are plain drums without joints detail."
+ }
+}

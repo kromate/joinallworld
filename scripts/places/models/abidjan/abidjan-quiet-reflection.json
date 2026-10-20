@@ -44,77 +44,37 @@
  },
  "parts": [
   {
-   "type": "loft",
+   "type": "prism",
    "params": {
-    "colour": "#e6dfd0",
-    "sections": [
-     {
-      "z": 0,
-      "poly": [
-       [
-        8,
-        -30
-       ],
-       [
-        58,
-        -6
-       ],
-       [
-        40,
-        26
-       ],
-       [
-        6,
-        22
-       ]
-      ],
-      "cx": 0
-     },
-     {
-      "z": 14,
-      "poly": [
-       [
-        8,
-        -26
-       ],
-       [
-        50,
-        -5
-       ],
-       [
-        36,
-        20
-       ],
-       [
-        7,
-        17
-       ]
-      ],
-      "cx": 0
-     },
-     {
-      "z": 24,
-      "poly": [
-       [
-        8,
-        -18
-       ],
-       [
-        22,
-        -8
-       ],
-       [
-        14,
-        10
-       ],
-       [
-        7,
-        10
-       ]
-      ],
-      "cx": 0
-     }
-    ]
+    "points": [
+     [
+      8,
+      -30
+     ],
+     [
+      58,
+      -6
+     ],
+     [
+      40,
+      26
+     ],
+     [
+      6,
+      22
+     ]
+    ],
+    "height": 40,
+    "topScale": [
+     0.12,
+     0.3
+    ],
+    "topOffset": [
+     -16,
+     0
+    ],
+    "colour": "#efe8d6",
+    "topColour": "#f2ecdc"
    }
   },
   {
@@ -123,16 +83,48 @@
    "footprint": {
     "polygon": [
      [
-      -62,
-      -26
+      -62.0,
+      -27.0
      ],
      [
-      -24,
-      -30
+      -57.2,
+      -28.5
+     ],
+     [
+      -52.5,
+      -29.8
+     ],
+     [
+      -47.8,
+      -30.5
+     ],
+     [
+      -43.0,
+      -30.5
+     ],
+     [
+      -38.2,
+      -29.7
+     ],
+     [
+      -33.5,
+      -28.3
+     ],
+     [
+      -28.8,
+      -26.3
+     ],
+     [
+      -24.0,
+      -24.0
      ],
      [
       -22,
       -16
+     ],
+     [
+      -41,
+      -12
      ],
      [
       -60,
@@ -141,23 +133,23 @@
     ]
    },
    "z0": 0,
-   "height": 9,
+   "height": 7,
    "storeys": 1,
    "wall": {
     "material": "concrete",
-    "colour": "#b8b5ae",
+    "colour": "#d8d0bc",
     "windows": "ribbon",
-    "windowRatio": 0.35,
-    "glassColour": "#2b3033",
+    "windowRatio": 0.3,
+    "glassColour": "#1d2224",
     "faces": {
      "back": "plain"
     }
    },
    "roof": {
     "form": "flat",
-    "colour": "#a8a69f",
-    "overhang": 0.8,
-    "parapet": 0.4
+    "colour": "#c9c3b2",
+    "overhang": 1.2,
+    "parapet": 0.2
    }
   },
   {
@@ -165,21 +157,21 @@
    "id": "text-wall",
    "footprint": {
     "rect": [
-     26,
+     14,
      2
     ]
    },
    "at": [
-    -40,
-    -28
+    -42,
+    -31
    ],
    "rotDeg": 4,
    "z0": 0,
-   "height": 13,
+   "height": 9,
    "storeys": 3,
    "wall": {
     "material": "concrete",
-    "colour": "#c4c1ba",
+    "colour": "#d2cab6",
     "windows": "none",
     "plinth": 0
    },
@@ -191,7 +183,7 @@
   {
    "type": "loft",
    "params": {
-    "colour": "#cfcdc6",
+    "colour": "#d6d3c8",
     "sections": [
      {
       "z": 0,
@@ -199,20 +191,28 @@
        7,
        6
       ],
+      "cx": -12
+     },
+     {
+      "z": 16,
+      "rect": [
+       5,
+       5
+      ],
       "cx": -9
      },
      {
-      "z": 18,
+      "z": 32,
       "rect": [
-       5.4,
-       5.2
+       4,
+       4.6
       ],
-      "cx": -7.2
+      "cx": -6.4
      },
      {
-      "z": 38,
+      "z": 42,
       "rect": [
-       4.6,
+       4.2,
        4.6
       ],
       "cx": -6.2
@@ -231,7 +231,7 @@
   {
    "type": "loft",
    "params": {
-    "colour": "#cfcdc6",
+    "colour": "#d6d3c8",
     "sections": [
      {
       "z": 0,
@@ -239,20 +239,28 @@
        7,
        6
       ],
+      "cx": 12
+     },
+     {
+      "z": 16,
+      "rect": [
+       5,
+       5
+      ],
       "cx": 9
      },
      {
-      "z": 18,
+      "z": 32,
       "rect": [
-       5.4,
-       5.2
+       4,
+       4.6
       ],
-      "cx": 7.2
+      "cx": 6.4
      },
      {
-      "z": 38,
+      "z": 42,
       "rect": [
-       4.6,
+       4.2,
        4.6
       ],
       "cx": 6.2
@@ -276,36 +284,36 @@
      {
       "z": 0,
       "rect": [
-       8,
-       6
+       6,
+       5.4
       ]
      },
      {
       "z": 26,
       "rect": [
-       6.4,
-       5
+       4.4,
+       4.4
       ]
      },
      {
       "z": 48,
       "rect": [
-       7,
-       5.2
+       4.8,
+       4.6
       ]
      },
      {
-      "z": 58,
+      "z": 60,
       "rect": [
-       6,
-       4.6
+       4.4,
+       4.2
       ]
      },
      {
       "z": 70,
       "rect": [
-       5.4,
-       4.4
+       4.2,
+       4.0
       ]
      }
     ]
@@ -314,7 +322,7 @@
   {
    "type": "prism",
    "at": [
-    -11.6,
+    -12.5,
     0,
     49.5
    ],
@@ -334,7 +342,7 @@
   {
    "type": "prism",
    "at": [
-    11.6,
+    12.5,
     0,
     49.5
    ],
@@ -364,9 +372,9 @@
       66
      ],
      [
-      18,
-      6,
-      22
+      14,
+      5,
+      36
      ]
     ],
     "sag": 0.2,
@@ -386,9 +394,9 @@
       64
      ],
      [
-      24,
+      22,
       8,
-      16
+      24
      ]
     ],
     "sag": 0.3,
@@ -408,9 +416,9 @@
       62
      ],
      [
-      30,
+      32,
       10,
-      12
+      14
      ]
     ],
     "sag": 0.3,
@@ -426,10 +434,10 @@
    ],
    "params": {
     "width": 30,
-    "rise": 0.9,
+    "rise": 0.5,
     "run": 1.5,
     "count": 3,
-    "colour": "#a4584a"
+    "colour": "#b9b4a6"
    }
   },
   {
@@ -490,5 +498,10 @@
  "schema": "allworld-place-model",
  "version": 2,
  "city": "abidjan",
- "venueId": "abidjan-quiet-reflection"
+ "venueId": "abidjan-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wedge now a clean tapering prism but lacks the pointed-arch facade and cross; legs flare but stay slimmer than the photo; entrance wing is approximate; no hill or railing."
+ }
 }

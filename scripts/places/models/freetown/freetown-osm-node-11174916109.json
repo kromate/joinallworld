@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-osm-node-11174916109",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: no photo found; single-storey rendered shop with shuttered counter, awning and blank sign board, corrugated shed roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/307687057",
+   "used": "rejected: nearest building 12 m away is a 18 x 14 m stepped outline, larger than a small trading shop"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a8",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    },
+    "bands": "#a85f46"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f70",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 8.5,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#a85f46",
+     "#efe9d9"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -4.1,
+    2.8
+   ],
+   "params": {
+    "width": 7,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#efe9d9",
+    "posts": false
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    10,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#a85f46"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; shop plan is a plain 10 x 8 m rectangle, the OSM outline was rejected; sign board not drawn at LOD0."
+ }
+}

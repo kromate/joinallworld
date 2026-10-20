@@ -1,0 +1,473 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Holy_Trinity_Church_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Shahadusadik",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/accra-quiet-reflection-0.jpg",
+   "used": "warm brown sandstone walls, steep red clay-tile gabled nave with big round arch recess holding three lancets in the gable, lower aisle gables, separate square bell tower with pyramidal tile spire, arched porch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Holy_Trinity_church_Accra.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Shahadusadik",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/accra-quiet-reflection-2.jpg",
+   "used": "second view of the same elevation, tower proportions and roof colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/546664046",
+   "used": "scale only (about 38 x 17 m footprint, gabled roof)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.778,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    -4,
+    8
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a06c42",
+    "windows": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    },
+    "trimColour": "#c99a6e"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 42,
+    "colour": "#8f4637",
+    "material": "clay-tile",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    -4,
+    -7.3,
+    0.6
+   ],
+   "params": {
+    "width": 10.5,
+    "height": 9,
+    "depth": 0.8,
+    "archWidth": 9.4,
+    "springHeight": 4.5,
+    "colour": "#c99a6e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -4,
+    -7.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.2,
+     0,
+     2.4
+    ],
+    "end": [
+     2.2,
+     0,
+     2.4
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.4
+      ],
+      "height": 5.4,
+      "colour": "#3a2f2a",
+      "windows": "none",
+      "topScale": 0.12
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     28,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a06c42",
+    "windows": "pointed",
+    "windowRatio": 0.08,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 40,
+    "colour": "#8f4637",
+    "material": "clay-tile",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-right",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    6.5,
+    6
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a06c42",
+    "windows": "pointed",
+    "windowRatio": 0.12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 38,
+    "colour": "#8f4637",
+    "material": "clay-tile",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    9.5,
+    -9
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a06c42",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 40,
+    "colour": "#8f4637",
+    "material": "clay-tile",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    17,
+    2
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#9a6639",
+    "windows": "arched",
+    "plinth": 0.6,
+    "cornice": false,
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "pyramidal",
+    "rise": 8,
+    "colour": "#8a3f30",
+    "material": "clay-tile",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    28
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a06c42",
+    "windows": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 40,
+    "colour": "#8f4637",
+    "material": "clay-tile",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -7.1,
+    14.4
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#5a4a40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -7.1,
+    15.8
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 0.3,
+    "colour": "#5a4a40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    2,
+    21.0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#5a4a40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    2,
+    23.4
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 0.3,
+    "colour": "#5a4a40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    4,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#303236",
+    "count": 3,
+    "spacing": 3.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    2.5,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     20,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.6
+      ],
+      "height": 4.5,
+      "colour": "#8e5c36",
+      "windows": "none",
+      "topScale": 0.7
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower now stout and set right with darker spire, pointed lancets, buttress row and fewer cars; but tower belfry windows are tall slits not paired arches, stone texture still reads as brick, aisle roofs not stepped, trees low-poly and the photo's side elevation (nave running back) is not matched."
+ }
+}

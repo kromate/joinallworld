@@ -1,0 +1,200 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/374443931",
+   "used": "Parc Ehel Limame outline, about 43 x 30 m quadrilateral turned 103 degrees; modelled as fenced sandy garden"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "garden-bed",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22.7,
+      -10.2
+     ],
+     [
+      16.2,
+      -18.8
+     ],
+     [
+      24,
+      9.2
+     ],
+     [
+      -17.5,
+      19
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#d9bf8f",
+    "topColour": "#dcc496"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22.7,
+      -10.2
+     ],
+     [
+      16.2,
+      -18.8
+     ],
+     [
+      24,
+      9.2
+     ],
+     [
+      -17.5,
+      19
+     ],
+     [
+      -22.7,
+      -10.2
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#7a6a52"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -3,
+    -14.5,
+    0
+   ],
+   "rotDeg": -12,
+   "params": {
+    "width": 4.5,
+    "height": 3,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#d9c9a5"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -3,
+      -14
+     ],
+     [
+      0,
+      -2
+     ],
+     [
+      2,
+      6
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbbd9f"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "waterColour": "#6fa8c4",
+    "rimColour": "#d9cfb8"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "width": 6.5,
+    "depth": 5,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#b8734f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15,
+    6
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 3,
+    "spread": 3,
+    "line": 14,
+    "colour": "#7a8a46"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -8
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5,
+    "count": 2,
+    "spread": 3,
+    "line": 8,
+    "colour": "#7a8a46"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint and brief only, details typical for the city."
+ }
+}

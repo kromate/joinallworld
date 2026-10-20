@@ -1,0 +1,702 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eastgate_Centre,_Harare,_Zimbabwe.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "David Brazier",
+   "view": "front",
+   "file": "/tmp/places-evidence/harare/eastgate1.jpg",
+   "used": "long nine-storey grey-brown concrete block with floor banding, six concrete lattice stair cores along the front, two rows of brick funnels on a red-pink roof lip, brown brick podium of shops at the foot, taller hotel and office slabs behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zimbabwe_Harare_Eastgate_Shopping_Mall.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Gary Bembridge",
+   "view": "interior",
+   "file": "/tmp/places-evidence/harare/eastgate2.jpg",
+   "used": "interior atrium palette only (pink-brown paving, brick)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/136596487",
+   "used": "length about 131 m; modelled as the full two-row complex 130 x 46 m, nine storeys per the Wikipedia source"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 32,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "window grid is coarse (budget forced a wide bay), lattice cores are speckled panels not open lattice, podium is a plain stepped brown slab without the curved bay front, neighbours are single boxes; Meikles-style slab sits behind the roof and is mostly hidden"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "blocks",
+   "footprint": {
+    "rect": [
+     118,
+     46
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#85766b",
+    "windows": "punched",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8d7d72",
+       "#74665c"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.4,
+    "glassColour": "#2f2a27",
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b26a55",
+    "material": "concrete",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    4,
+    33
+   ],
+   "params": {
+    "rect": [
+     122,
+     50
+    ],
+    "height": 1.2,
+    "colour": "#c4786c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     104,
+     16
+    ]
+   },
+   "at": [
+    -2,
+    -29
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b57a4a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b57a4a",
+       "#7a5a44"
+      ]
+     }
+    ],
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8a7e",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-end",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -60,
+    -28
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9b8a4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c9b8a4",
+       "#7a8a92"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8a7e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -57,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#85766b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       2.4
+      ],
+      "colours": [
+       "#8a7a6c",
+       "#7a6b5f",
+       "#968676"
+      ],
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#2d2926"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -57,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#80716a",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#85766b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       2.4
+      ],
+      "colours": [
+       "#8a7a6c",
+       "#7a6b5f",
+       "#968676"
+      ],
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#2d2926"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#80716a",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#85766b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       2.4
+      ],
+      "colours": [
+       "#8a7a6c",
+       "#7a6b5f",
+       "#968676"
+      ],
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#2d2926"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#80716a",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#85766b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       2.4
+      ],
+      "colours": [
+       "#8a7a6c",
+       "#7a6b5f",
+       "#968676"
+      ],
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#2d2926"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#80716a",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    43,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#85766b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       2.4
+      ],
+      "colours": [
+       "#8a7a6c",
+       "#7a6b5f",
+       "#968676"
+      ],
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#2d2926"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    43,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#80716a",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    55,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#85766b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       2.4
+      ],
+      "colours": [
+       "#8a7a6c",
+       "#7a6b5f",
+       "#968676"
+      ],
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#2d2926"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    55,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 36,
+    "colour": "#80716a",
+    "windows": "none"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -10,
+    34.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     0,
+     0
+    ],
+    "end": [
+     54,
+     0,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 6,
+    "lod2Step": 24,
+    "of": {
+     "type": "brick-stack",
+     "params": {
+      "height": 5.2,
+      "radius": 0.9,
+      "colour": "#9a7765"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    16,
+    34.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     0,
+     0
+    ],
+    "end": [
+     54,
+     0,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 6,
+    "lod2Step": 24,
+    "of": {
+     "type": "brick-stack",
+     "params": {
+      "height": 5.2,
+      "radius": 0.9,
+      "colour": "#9a7765"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     54,
+     18
+    ]
+   },
+   "at": [
+    12,
+    58
+   ],
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a867e",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8a867e",
+       "#7a766e"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-slab",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -54,
+    64
+   ],
+   "z0": 0,
+   "height": 62,
+   "storeys": 16,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f94",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#aaa69b",
+       "#8e8a80"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9296"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-eastgate-mall"
+}

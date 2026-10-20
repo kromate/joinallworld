@@ -1,0 +1,524 @@
+{
+ "name": "Theatre Mohammed V",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Façade_du_théâtre_Mohammed-V_de_rabat.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Fauve",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/rabat-national-theatre-1.jpg",
+   "used": "three-storey tall glazed foyer block in a white concrete frame with brass-coloured balcony fronts, beige stone side wings, white entrance canopy on slender columns, low barrel roof behind, wide paved forecourt with palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/264640892",
+   "used": "name-matched 82 x 45 m footprint size; plan is skewed so aligned rectangles are used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 30,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "mullion rhythm still regular and glass reads blue-grey; balconies are plain stepped slabs with brass fronts (no slats); advertising screen omitted on purpose; vault is low-contrast"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fly-house",
+   "footprint": {
+    "rect": [
+     62,
+     30
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 19.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e1d8",
+    "windows": "none",
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#d6d4cc",
+    "rise": 5.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-wings",
+   "footprint": {
+    "rect": [
+     74,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3c3a8",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e1d8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-foyer",
+   "footprint": {
+    "rect": [
+     58,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "height": 14.4,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d9c9a0",
+    "glassColour": "#d2dcdb",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "curtain"
+    },
+    "bands": "#e8e6df",
+    "cornice": 0.8,
+    "bay": 6.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6df",
+    "parapet": 1.0,
+    "overhang": 1.0
+   },
+   "z0": 4.6
+  },
+  {
+   "type": "prism",
+   "id": "frame-l",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30.2,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     1.6
+    ],
+    "height": 19,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame-r",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    30.2,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     1.6
+    ],
+    "height": 19,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -17,
+    4.4
+   ],
+   "params": {
+    "width": 34,
+    "depth": 5,
+    "height": 0,
+    "thickness": 0.5,
+    "colour": "#eeece6",
+    "edgeColour": "#eeece6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 32,
+    "rise": 0.4,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#bfb8a8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 4.4,
+      "colour": "#c4b79c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15,
+     0
+    ],
+    "end": [
+     15,
+     0
+    ],
+    "count": 6,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-pier-l",
+   "lod": [
+    0
+   ],
+   "at": [
+    -27,
+    -9.8
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.2
+    ],
+    "height": 3.4,
+    "colour": "#7a2630"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-pier-r",
+   "lod": [
+    0
+   ],
+   "at": [
+    27,
+    -9.8
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.2
+    ],
+    "height": 3.4,
+    "colour": "#7a2630"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "b1-slab",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     58,
+     3.0
+    ],
+    "z0": 5.0,
+    "height": 0.5,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "b1-front",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -16.6
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.3
+    ],
+    "z0": 5.5,
+    "height": 1.1,
+    "colour": "#c2a867"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "b2l-slab",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     16,
+     3.0
+    ],
+    "z0": 9.4,
+    "height": 0.5,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "b2l-front",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    -16.6
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.3
+    ],
+    "z0": 9.9,
+    "height": 1.1,
+    "colour": "#c2a867"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "b2r-slab",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     16,
+     3.0
+    ],
+    "z0": 9.4,
+    "height": 0.5,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "b2r-front",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22,
+    -16.6
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.3
+    ],
+    "z0": 9.9,
+    "height": 1.1,
+    "colour": "#c2a867"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "b3-slab",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     36,
+     3.0
+    ],
+    "z0": 13.8,
+    "height": 0.5,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "b3-front",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -16.6
+   ],
+   "params": {
+    "rect": [
+     36,
+     0.3
+    ],
+    "z0": 14.3,
+    "height": 1.1,
+    "colour": "#c2a867"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-ground",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -9.6
+   ],
+   "params": {
+    "rect": [
+     60,
+     1.2
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#d3c3a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doors",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -10.3
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.3
+    ],
+    "z0": 0.4,
+    "height": 3.6,
+    "colour": "#3b3a38"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -11
+   ],
+   "params": {
+    "rect": [
+     62,
+     8
+    ],
+    "z0": 18.6,
+    "height": 1.4,
+    "colour": "#f0eee8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-national-theatre"
+}

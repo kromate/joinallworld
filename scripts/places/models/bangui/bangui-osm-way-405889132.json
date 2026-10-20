@@ -1,0 +1,233 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-osm-way-405889132",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%C3%A2timent_universit%C3%A9_de_Bangui_05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Imoini22",
+   "view": "front",
+   "file": "/tmp/places-evidence/bangui/univ5.jpg",
+   "used": "long two-storey teaching block: deep recessed ground floor on slim piers, upper floor a cream concrete frame with grids of louvred windows, dark sign panel upper left, brick stub wall at left end, flat roof, red laterite forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%C3%A2timent_universit%C3%A9_de_Bangui_20.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Imoini22",
+   "view": "side",
+   "used": "same louvre-grid upper floor seen from the rear, confirms cream/salmon concrete colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/405889132",
+   "used": "campus outline is 360 m across (not one building): only used to confirm location, one block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     66,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c59f",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 3.5,
+      "spacing": 4.4,
+      "width": 0.5,
+      "colour": "#cdbb92",
+      "backColour": "#1f1c1a",
+      "storeys": 1
+     },
+     {
+      "type": "louvres",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "colour": "#c9b78e",
+      "backColour": "#1f1c1a",
+      "pitch": 0.5,
+      "band": 0.75,
+      "at": 0.12,
+      "floors": [
+       1
+      ],
+      "margin": 1.0
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "colour": "#cbb88e",
+      "height": 0.9,
+      "at": 0.0,
+      "floors": [
+       1
+      ]
+     }
+    ],
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4b48e",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-stub",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    -37,
+    -6
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a3604a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3604a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -7.8,
+    4.6
+   ],
+   "params": {
+    "width": 12,
+    "height": 3.4,
+    "bottom": 0,
+    "colour": "#2e2c2c",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Louvre band is now cream-on-dark and the tree is larger; ground floor still reads as dark bays between piers rather than a deep recessed colonnade, no square-grid mullion frame on the upper floor, tree trunk and canopy smaller than photo."
+ }
+}

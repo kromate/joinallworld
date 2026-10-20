@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-249687879",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/249687879",
+   "used": "leisure=stadium outline (27,226 m2, named Serrekunda West, Wikidata Q16600652) as the walled ground; pitch aligned to its long axis"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open sandy suburban ground with boundary walls, a roadside kiosk and steps; no photo found on Commons or Wikidata (no image property)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": -0.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbf9f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "stadium/football-pitch",
+   "at": [
+    0,
+    -2,
+    0.12
+   ],
+   "rotDeg": 57,
+   "params": {
+    "length": 58,
+    "width": 36,
+    "stripes": 0,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 57,
+   "params": {
+    "start": [
+     -18,
+     -24
+    ],
+    "end": [
+     18,
+     -24
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "seatColour": "#b8d0d8",
+    "concreteColour": "#cdbf9f",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    3.3,
+    -42.7,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    -1.6,
+    41.6,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -48,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#b8d0d8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -85,
+     20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     80,
+     40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -75,
+     60
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -70
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo exists; pitch, one stand and walls are typed onto the real OSM outline (scaled 0.51 to fit); true stand layout, goalposts' size and surroundings unknown; boundary wall omitted"
+ }
+}

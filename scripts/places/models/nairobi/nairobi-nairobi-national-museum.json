@@ -1,0 +1,693 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-nairobi-national-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nairobi_Museum_entrance_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Karl Ragnar Gjertsen",
+   "view": "front",
+   "file": "/tmp/places-evidence/nairobi/museum1.jpg",
+   "used": "1929 front: cream ashlar stone courses, four tall pale Corinthian-style columns on stepped plinths in an open loggia, dark red-brown double timber door, plain entablature and a small window above, low steps, two cannons, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/95122002",
+   "used": "overall extent (about 48 x 43 m) and the stepped rear wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 32,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9b98a",
+    "glassColour": "#3d4a52",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none",
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    },
+    "bay": 5,
+    "plinth": 0.9,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a878"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5a58a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     18,
+     26
+    ]
+   },
+   "at": [
+    -24,
+    18
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9c08f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a69b87",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     20,
+     30
+    ]
+   },
+   "at": [
+    24,
+    20
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#dcc496",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a69b87",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#4b5a60",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       11,
+       9
+      ]
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       11,
+       9
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       10,
+       8.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -9.2,
+    -12.4,
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    9.2,
+    -12.4,
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 24,
+    "colours": [
+     "#1b1b1b",
+     "#bb1e1e"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flank--1",
+   "footprint": {
+    "rect": [
+     9,
+     4.4
+    ]
+   },
+   "at": [
+    -12.5,
+    -8.2
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9b98a",
+    "windows": "none",
+    "plinth": 0.9,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a878"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5a58a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    -10.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "height": 12,
+    "colour": "#e2cfa2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.2,
+    -10.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "height": 12,
+    "colour": "#e2cfa2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flank-1",
+   "footprint": {
+    "rect": [
+     9,
+     4.4
+    ]
+   },
+   "at": [
+    12.5,
+    -8.2
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9b98a",
+    "windows": "none",
+    "plinth": 0.9,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a878"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5a58a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    -10.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "height": 12,
+    "colour": "#e2cfa2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.2,
+    -10.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "height": 12,
+    "colour": "#e2cfa2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     4
+    ],
+    "height": 1,
+    "colour": "#d6c3a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     4.5
+    ],
+    "height": 0.2,
+    "colour": "#d6c3a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     3.6
+    ],
+    "height": 0.4,
+    "colour": "#d6c3a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.35,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     2.7
+    ],
+    "height": 0.6000000000000001,
+    "colour": "#d6c3a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.8
+    ],
+    "height": 0.8,
+    "colour": "#d6c3a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.9
+    ],
+    "height": 1.0,
+    "colour": "#d6c3a0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9.4,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.6,
+     0,
+     0
+    ],
+    "end": [
+     6.6,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "revolve",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "segments": 16,
+       "colour": "#e8dcc0",
+       "profile": [
+        [
+         1.0,
+         0,
+         "#d6c3a0"
+        ],
+        [
+         1.0,
+         0.5
+        ],
+        [
+         0.8,
+         0.5,
+         "#e8dcc0"
+        ],
+        [
+         0.8,
+         0.9
+        ],
+        [
+         0.6,
+         0.9
+        ],
+        [
+         0.6,
+         8.0
+        ],
+        [
+         0.7,
+         8.1
+        ],
+        [
+         0.7,
+         8.3
+        ],
+        [
+         1.05,
+         9.0,
+         "#e8dcc0"
+        ],
+        [
+         1.05,
+         9.2
+        ]
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "lod": [
+       2
+      ],
+      "params": {
+       "segments": 6,
+       "colour": "#e8dcc0",
+       "profile": [
+        [
+         1.0,
+         0
+        ],
+        [
+         0.7,
+         9.2
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.2,
+    10.2
+   ],
+   "params": {
+    "rect": [
+     17.4,
+     4.9
+    ],
+    "height": 1.8,
+    "colour": "#d9c08f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.2,
+    10.1
+   ],
+   "params": {
+    "rect": [
+     18.2,
+     5.3
+    ],
+    "height": 0.3,
+    "colour": "#cdb68c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.15,
+    1
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.4
+    ],
+    "height": 4.4,
+    "colour": "#7a3f2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.15,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#2f3b42"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.1,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.35
+    ],
+    "height": 0.15,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.1,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.35
+    ],
+    "height": 0.15,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.1,
+    5.9
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.35
+    ],
+    "height": 2.9,
+    "colour": "#e8dcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -12
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -12
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Recessed loggia, capitals, plinths, steps, pilasters and cream ashlar added; capitals are simple flares not Egyptian-style, door panels/notice boards, mullioned window detail, flag placement and plain forecourt remain."
+ }
+}

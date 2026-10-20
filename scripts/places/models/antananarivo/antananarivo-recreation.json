@@ -1,0 +1,603 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/antananarivo.json",
+   "used": "typed adventure park: timber reception pavilion, three zip-line towers, climbing frames, lawns, pines; no photo or OSM footprint exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "reception",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -22,
+    -12
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a7a55",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a5a4a",
+    "material": "timber-shingle",
+    "pitch": 25,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    -22,
+    -17.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     3.2
+    ],
+    "height": 0.4,
+    "colour": "#a8895f",
+    "topColour": "#a8895f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "zip-a",
+   "at": [
+    -6,
+    18,
+    0
+   ],
+   "params": {
+    "colour": "#9a7a55",
+    "topColour": "#7a5a4a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "zip-a-deck",
+   "at": [
+    -6,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "z0": 12,
+    "height": 0.3,
+    "colour": "#7a5a4a",
+    "topColour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "zip-a-hut",
+   "at": [
+    -6,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 12.3,
+    "height": 2.2,
+    "topScale": 0.2,
+    "colour": "#9a7a55",
+    "topColour": "#7a5a4a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "zip-b",
+   "at": [
+    18,
+    -2,
+    0
+   ],
+   "params": {
+    "colour": "#9a7a55",
+    "topColour": "#7a5a4a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "zip-b-deck",
+   "at": [
+    18,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "z0": 9,
+    "height": 0.3,
+    "colour": "#7a5a4a",
+    "topColour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "zip-b-hut",
+   "at": [
+    18,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 9.3,
+    "height": 2.2,
+    "topScale": 0.2,
+    "colour": "#9a7a55",
+    "topColour": "#7a5a4a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "zip-c",
+   "at": [
+    34,
+    22,
+    0
+   ],
+   "params": {
+    "colour": "#9a7a55",
+    "topColour": "#7a5a4a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "zip-c-deck",
+   "at": [
+    34,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "z0": 7,
+    "height": 0.3,
+    "colour": "#7a5a4a",
+    "topColour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "zip-c-hut",
+   "at": [
+    34,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 7.3,
+    "height": 2.2,
+    "topScale": 0.2,
+    "colour": "#9a7a55",
+    "topColour": "#7a5a4a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "zip-ab",
+   "params": {
+    "radius": 0.05,
+    "n": 4,
+    "points": [
+     [
+      -6,
+      18,
+      11.6
+     ],
+     [
+      18,
+      -2,
+      8.6
+     ]
+    ],
+    "sag": 1.0,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "zip-bc",
+   "params": {
+    "radius": 0.05,
+    "n": 4,
+    "points": [
+     [
+      18,
+      -2,
+      8.6
+     ],
+     [
+      34,
+      22,
+      6.6
+     ]
+    ],
+    "sag": 0.8,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     4,
+     0
+    ],
+    "end": [
+     -2,
+     4,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.35,
+        0.35
+       ],
+       "height": 5.5,
+       "colour": "#9a7a55"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "z0": 5.5,
+       "height": 0.3,
+       "colour": "#7a5a4a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "beam-a",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -18,
+      4,
+      4.6
+     ],
+     [
+      -2,
+      4,
+      4.6
+     ]
+    ],
+    "colour": "#9a7a55"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rope-a",
+   "params": {
+    "radius": 0.04,
+    "n": 4,
+    "points": [
+     [
+      -18,
+      4,
+      3.0
+     ],
+     [
+      -2,
+      4,
+      3.0
+     ]
+    ],
+    "sag": 0.5,
+    "colour": "#c9b98a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "beam-b",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -18,
+      4,
+      2.2
+     ],
+     [
+      -18,
+      10,
+      2.2
+     ],
+     [
+      -2,
+      10,
+      2.2
+     ]
+    ],
+    "colour": "#9a7a55"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     10,
+     0
+    ],
+    "end": [
+     -2,
+     10,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 2.4,
+      "colour": "#9a7a55"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "colour": "#7a5a4a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "extent": [
+   100,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -36,
+     24
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     44,
+     2
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -24
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence of the real layout; zip towers, rope frames and pavilion are plausible placements from the brief only"
+ }
+}

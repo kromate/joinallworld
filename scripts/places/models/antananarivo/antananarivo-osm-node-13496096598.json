@@ -1,0 +1,280 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (CHRD district referral hospital, Ambohimangakely, pavilion wards under corrugated roofs); no photo, no OSM footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin-spine",
+   "footprint": {
+    "rect": [
+     45,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    },
+    "bands": "#6e8f6a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a33",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    -17.5,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a33",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    17.5,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5ada0",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a33",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-low",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6e8f6a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a33",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#ece6d8",
+    "roofColour": "#6e8f6a",
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -14.5,
+    2.6
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#f1f1ee",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2,
+    "thickness": 0.25,
+    "pillarEvery": 5,
+    "colour": "#b5ada0"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "colour": "#6e8f6a",
+    "board_colour": "#6e8f6a"
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "trees": 2,
+    "paths": true
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "heading": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or outline found; U-plan ward blocks typed from the brief, wing proportions and colours are plausible not observed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-osm-node-13496096598"
+}

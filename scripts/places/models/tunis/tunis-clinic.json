@@ -1,0 +1,112 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/93674305",
+   "used": "real hospital outline (Mongi Slim, La Marsa), 6785 m2, name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#c9ced1",
+    "plinth": 0.5,
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.8
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -10,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -6,
+    -48,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car-park",
+   "at": [
+    60,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "No photo found; outline is real OSM but storey height and facade detail come from the brief"
+ }
+}

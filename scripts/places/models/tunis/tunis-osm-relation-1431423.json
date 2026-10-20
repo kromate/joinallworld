@@ -1,0 +1,135 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/1431423",
+   "used": "real outline of the ministry compound (88 x 61 m, several wings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8b8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 14,
+    "plinth": 0.6,
+    "bands": "#f7f5ef",
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9890",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 22,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c2b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -41,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#9a9890"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -4,
+    22
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#d62718"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -36
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building found (Commons lists only Hotel du Lac); outline, height and colour from OSM and brief; entrance position assumed; windows only on front/back faces to stay in budget"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-relation-1431423"
+}

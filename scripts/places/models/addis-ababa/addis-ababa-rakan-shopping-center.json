@@ -1,0 +1,161 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/710698252",
+   "used": "real 59 x 20 m outline (rotated so the long face is the front); no photo of this centre found in Commons or Wikipedia"
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: four-storey rendered block with terracotta bands and rooftop sign boards is typed from the brief; real facade, colours and entrance unknown."
+ },
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "groundKind": "shopfront",
+    "groundHeight": 4.2,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c27a4d",
+      "height": 0.9,
+      "proud": 0.15,
+      "at": 0.0,
+      "floors": [
+       1,
+       2
+      ]
+     },
+     {
+      "type": "balconies",
+      "depth": 1.2,
+      "width": 8,
+      "every": 10,
+      "floors": [
+       2
+      ],
+      "colour": "#c27a4d"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "roof-sign-a",
+   "at": [
+    -14,
+    -8,
+    16.9
+   ],
+   "params": {
+    "width": 12,
+    "height": 3.2,
+    "bottom": 0.2,
+    "colour": "#c27a4d",
+    "frameColour": "#9a9890"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "roof-sign-b",
+   "at": [
+    14,
+    -8,
+    16.9
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.0,
+    "bottom": 0.2,
+    "colour": "#e8e0cc",
+    "frameColour": "#9a9890"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "shop-awning",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 1.8,
+    "colours": [
+     "#c27a4d",
+     "#e8e0cc"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "id": "cars",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-rakan-shopping-center"
+}

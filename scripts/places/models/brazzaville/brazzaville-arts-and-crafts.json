@@ -1,0 +1,121 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-arts-and-crafts",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/694114716",
+   "used": "real outline of the museum building (396 m2, irregular 10-point plan)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: low rendered craft centre, terracotta roof and sign; the only nearby Commons photos are interiors (wood-slat wall) so none were used for shape"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d3a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bay": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0503a",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#b86b4a",
+    "frameColour": "#7a3f2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22.0,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -15.0,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8.0,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20.0,
+     16
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28.0,
+     16
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found (only interiors): shape is the real OSM outline, colours/roof from the brief; roof is flat not hip because the outline is concave"
+ }
+}

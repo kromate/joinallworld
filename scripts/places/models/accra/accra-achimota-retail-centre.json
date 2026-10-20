@@ -1,0 +1,319 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-achimota-retail-centre",
+ "verified": "footprint",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this centre found (the listed image is a South African mall, not used); frontage, canopy and sign colours are typical, only the plan, one storey and metal/concrete materials come from OSM"
+ },
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/614856645",
+   "used": "outline (74 x 35 m, one level, metal and concrete), rotated so the long face is the front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shops",
+   "footprint": {
+    "polygon": [
+     [
+      38.1,
+      15.4
+     ],
+     [
+      38.2,
+      -15.9
+     ],
+     [
+      -36.2,
+      -15.9
+     ],
+     [
+      -36.3,
+      19.4
+     ],
+     [
+      -9.4,
+      19.3
+     ],
+     [
+      -9.4,
+      7.4
+     ],
+     [
+      4.3,
+      7.5
+     ],
+     [
+      4.3,
+      15.4
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cc",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#7f98a6",
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#c43a2a"
+      ],
+      "height": 0.8,
+      "at": 0.93,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa2",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "supermarket-front",
+   "footprint": {
+    "rect": [
+     24,
+     3
+    ]
+   },
+   "at": [
+    -18,
+    -16.4
+   ],
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a0a4a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa2"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    6,
+    -18.1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.35,
+    "columns": 7,
+    "colour": "#c43a2a",
+    "edgeColour": "#efe5cc"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -18.1,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.6,
+    "bottom": 4.6,
+    "colour": "#c43a2a",
+    "frameColour": "#efe5cc",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    24,
+    -18.9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 9,
+    "bottom": 0.5,
+    "colour": "#efe5cc",
+    "frameColour": "#c43a2a",
+    "posts": true
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    34,
+    -16.9,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 3.4,
+    "colour": "#a0a4a6",
+    "frameColour": "#c43a2a",
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    24,
+    -16.3,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2,
+    "height": 2.7,
+    "colours": [
+     "#c43a2a",
+     "#efe5cc"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#8d9296"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -27.9,
+     0
+    ],
+    "end": [
+     34,
+     -27.9,
+     0
+    ],
+    "count": 10,
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#3a3d42"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     -35.9,
+     0
+    ],
+    "end": [
+     30,
+     -35.9,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -10,
+    -23.9,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    20,
+    -23.9,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -23.9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    42,
+    -23.9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   70
+  ]
+ }
+}

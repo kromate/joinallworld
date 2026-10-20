@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: plain 3-storey institutional block for the national archives; nearby OSM building is a 49 m2 different one so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#9a9a94",
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -10,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 4,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#6b6f73"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text-only: typical institutional block; the real archives building was not found."
+ }
+}

@@ -1,0 +1,385 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Green_Square_Tripoli.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "David Holt",
+   "view": "street",
+   "file": "/tmp/places-evidence/tripoli/sq1.jpg",
+   "used": "vast pale-grey paved square, three-storey cream Italian arcaded block at left with arched ground arcade and tall arched windows, taller red-brown block in the middle, white block with green window bands at right, two lattice floodlight masts, palms at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Martyrs%E2%80%99_Square,_Tripoli_(6961717143).jpg",
+   "licence": "OGL v1.0",
+   "author": "Foreign and Commonwealth Office",
+   "view": "street",
+   "file": "/tmp/places-evidence/tripoli/sq2.jpg",
+   "used": "honey-coloured Red Castle wall and palms at the square's edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/460114454",
+   "used": "fountain location and size"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "fit": "building",
+  "margin": 0.05,
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     60
+    ],
+    "height": 0.15,
+    "colour": "#a8a8a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "italian-block",
+   "footprint": {
+    "rect": [
+     60,
+     18
+    ]
+   },
+   "at": [
+    -28,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cdb0",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 5.5,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 5.5,
+      "opening": 0.62,
+      "height": 0.9,
+      "depth": 0.8,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "balconies",
+      "colour": "#8a8a80",
+      "floors": [
+       1
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#e6dfc8",
+      "height": 0.9,
+      "at": 0.97,
+      "floors": [
+       2
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#9fb58f",
+      "height": 0.25,
+      "at": 0.5,
+      "floors": [
+       1
+      ]
+     }
+    ],
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-block",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    16,
+    42
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5a42",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 4.0,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9890",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    42,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e8e2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 4.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e6e8e2",
+       "#3f8f78"
+      ]
+     }
+    ],
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -14,
+    8,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    28,
+    12,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "radius": 3
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    14,
+    34,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -52,
+    21,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    16,
+    48,
+    16
+   ],
+   "params": {
+    "rect": [
+     7,
+     4
+    ],
+    "height": 3,
+    "colour": "#d8cdb0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    16,
+    35.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 16,
+    "colour": "#e4dcc2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 5,
+    "spread": 6,
+    "line": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     18
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     57,
+     20
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     18
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     67,
+     20
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     72,
+     18
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -26
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   116,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Longer cream arcaded block with balcony band, taller masts, street trees, setback red block and paving match layout; no lattice mast legs or corner chamfer, cornice simple, facades less ornate, fountain moved aside."
+ }
+}

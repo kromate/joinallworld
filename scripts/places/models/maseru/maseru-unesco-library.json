@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-unesco-library",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/398367996",
+   "used": "real outline of the National Commission for UNESCO building (715 m2, 2 levels, containing match), main wing"
+  },
+  {
+   "kind": "text",
+   "used": "brief: face-brick library with shaded porch, red-brown corrugated hip roof, beside the State Library; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8603f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#efe6d2",
+    "bay": 3.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3a2c",
+    "material": "corrugated",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 4.2,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#efe6d2",
+    "roofColour": "#7a3a2c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -31,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.6,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#6b5a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real outline used with a flat parapet roof (hip cannot fit the irregular plan); porch position approximate"
+ }
+}

@@ -1,0 +1,262 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/382872691",
+   "used": "campus area only (60,000 m2 landuse polygon, not a building): sets the scale of the layout, not used as a footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dar-es-salaam.json#dar-es-salaam-community-workshop",
+   "used": "1957 technical institute on Morogoro Road: three-storey rendered teaching blocks in an H plan with workshop sheds"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-front",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#9a9a94",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "corrugated",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-rear",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#9a9a94",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "corrugated",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     12,
+     32
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a94",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-1",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    -38,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a94",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f7478",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-2",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    38,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b0a4",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f7478",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 3,
+    "height": 3.2,
+    "columns": 5,
+    "colour": "#6f7478",
+    "edgeColour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#3e6b55"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 8,
+    "line": 50
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.6,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#b5b0a4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the campus; blocks, sheds and colours are typed from the brief. The real campus is a 240 m polygon of which only one cluster is modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-community-workshop"
+}

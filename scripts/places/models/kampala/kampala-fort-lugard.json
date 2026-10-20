@@ -1,0 +1,746 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-fort-lugard",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort_Lugard.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ibossa2",
+   "view": "front",
+   "file": "/tmp/places-evidence/kampala/fort1.jpg",
+   "used": "small neoclassical museum on a hill: four white columns and pediment portico, grey-green render with red brick quoins and window surrounds, green shutters, low hipped roof, reached by a wide central stair between terraced walls of flaggy orange-brown stone"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FORT_LUGARD.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alvinategyeka",
+   "view": "side",
+   "used": "terrace wall height versus building, building set back behind the stone retaining walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/263780777",
+   "used": "12 x 12 m irregular outline, judged too small and ragged for the museum; only the scale was used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    8
+   ],
+   "params": {
+    "rect": [
+     48,
+     18
+    ],
+    "height": 8.1,
+    "colour": "#b07040",
+    "topColour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "z0": 8.1,
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c9478",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.0,
+      "depth": 0.2,
+      "spacing": 15.5,
+      "colour": "#a8523a",
+      "margin": 0
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f7058",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-4.5",
+   "at": [
+    -4.5,
+    -1.2
+   ],
+   "params": {
+    "radius": 0.32,
+    "n": 10,
+    "z0": 8.1,
+    "height": 6.6,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-1.5",
+   "at": [
+    -1.5,
+    -1.2
+   ],
+   "params": {
+    "radius": 0.32,
+    "n": 10,
+    "z0": 8.1,
+    "height": 6.6,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col1.5",
+   "at": [
+    1.5,
+    -1.2
+   ],
+   "params": {
+    "radius": 0.32,
+    "n": 10,
+    "z0": 8.1,
+    "height": 6.6,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col4.5",
+   "at": [
+    4.5,
+    -1.2
+   ],
+   "params": {
+    "radius": 0.32,
+    "n": 10,
+    "z0": 8.1,
+    "height": 6.6,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entab",
+   "at": [
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     11.6,
+     3.4
+    ],
+    "z0": 14.7,
+    "height": 0.7,
+    "colour": "#e8e4d8",
+    "topColour": "#8a8f7a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pediment",
+   "at": [
+    0,
+    -1.4,
+    15.399999999999999
+   ],
+   "params": {
+    "colour": "#8e9a84",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       11.8,
+       0.9
+      ]
+     },
+     {
+      "z": 2.3,
+      "rect": [
+       0.5,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crest",
+   "at": [
+    0,
+    -1.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.15
+    ],
+    "z0": 16.1,
+    "height": 1.0,
+    "colour": "#a8523a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "z0": 8.1,
+    "height": 3.4,
+    "colour": "#2d3a33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "winL",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6.5,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "z0": 9.299999999999999,
+    "height": 2.6,
+    "colour": "#3f6a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "winR",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6.5,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "z0": 9.299999999999999,
+    "height": 2.6,
+    "colour": "#3f6a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "surr-1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6.5,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.2
+    ],
+    "z0": 9.0,
+    "height": 3.2,
+    "colour": "#a8523a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quoin-1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10.6,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 8.1,
+    "height": 7.4,
+    "colour": "#a8523a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "surr1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6.5,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.2
+    ],
+    "z0": 9.0,
+    "height": 3.2,
+    "colour": "#a8523a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quoin1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10.6,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 8.1,
+    "height": 7.4,
+    "colour": "#a8523a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step0",
+   "at": [
+    0,
+    -5.5
+   ],
+   "params": {
+    "rect": [
+     12,
+     9.0
+    ],
+    "height": 1.6199999999999999,
+    "colour": "#8a7662",
+    "topColour": "#8a7662"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    0,
+    -4.55
+   ],
+   "params": {
+    "rect": [
+     12,
+     7.1
+    ],
+    "height": 3.2399999999999998,
+    "colour": "#8a7662",
+    "topColour": "#8a7662"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    0,
+    -3.5999999999999996
+   ],
+   "params": {
+    "rect": [
+     12,
+     5.199999999999999
+    ],
+    "height": 4.859999999999999,
+    "colour": "#8a7662",
+    "topColour": "#8a7662"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step3",
+   "at": [
+    0,
+    -2.65
+   ],
+   "params": {
+    "rect": [
+     12,
+     3.3
+    ],
+    "height": 6.4799999999999995,
+    "colour": "#8a7662",
+    "topColour": "#8a7662"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step4",
+   "at": [
+    0,
+    -1.7
+   ],
+   "params": {
+    "rect": [
+     12,
+     1.4
+    ],
+    "height": 8.1,
+    "colour": "#8a7662",
+    "topColour": "#8a7662"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier1L",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    -19,
+    -8
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c28a52",
+    "bands": "#8a5a34",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b6a40",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier1R",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    19,
+    -8
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c28a52",
+    "bands": "#8a5a34",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b6a40",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2L",
+   "footprint": {
+    "rect": [
+     26,
+     4
+    ]
+   },
+   "at": [
+    -19,
+    -3.5
+   ],
+   "z0": 0,
+   "height": 6.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c28a52",
+    "bands": "#8a5a34",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b6a40",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2R",
+   "footprint": {
+    "rect": [
+     26,
+     4
+    ]
+   },
+   "at": [
+    19,
+    -3.5
+   ],
+   "z0": 0,
+   "height": 6.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c28a52",
+    "bands": "#8a5a34",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b6a40",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-1_-6.2",
+   "at": [
+    -6.6,
+    -6.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 5.0,
+    "colour": "#b07040",
+    "topColour": "#a09484"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-1_-5.2",
+   "at": [
+    -6.6,
+    -5.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 7.3,
+    "colour": "#b07040",
+    "topColour": "#a09484"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1_-6.2",
+   "at": [
+    6.6,
+    -6.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 5.0,
+    "colour": "#b07040",
+    "topColour": "#a09484"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1_-5.2",
+   "at": [
+    6.6,
+    -5.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 7.3,
+    "colour": "#b07040",
+    "topColour": "#a09484"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -16
+   ],
+   "params": {
+    "rect": [
+     56,
+     10
+    ],
+    "height": 0.06,
+    "colour": "#8a7060",
+    "topColour": "#8a7060"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "plotwall",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 7.5,
+    "thickness": 0.3,
+    "colour": "#eceae2",
+    "points": [
+     [
+      -40,
+      19
+     ],
+     [
+      -13,
+      19
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "plotwallR",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 7.5,
+    "thickness": 0.3,
+    "colour": "#eceae2",
+    "points": [
+     [
+      13,
+      19
+     ],
+     [
+      40,
+      19
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     18
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     16
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Walls are regular banded courses, not irregular flagstone, and there is no side ramp; hipped side roofs and neighbouring mosque omitted; pediment has only a plain crest"
+ }
+}

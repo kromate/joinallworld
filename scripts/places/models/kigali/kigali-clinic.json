@@ -1,0 +1,303 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/125898408",
+   "used": "main block outline: 94 x 49 m rectangle rotated 31 degrees; levels and roof from brief"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kigali.json",
+   "used": "cream render, tile-coloured hip roofs, covered ambulance entrance, helipad (no exterior photo exists on Commons; only MRI interiors)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     94,
+     49
+    ]
+   },
+   "rotDeg": -31.3,
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13.6,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe7d3",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#d8c9a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98a",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-a",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    -38.84,
+    -13.84
+   ],
+   "rotDeg": -31.3,
+   "z0": 0,
+   "height": 10.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ecda",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a34",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-b",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    5.59,
+    -40.85
+   ],
+   "rotDeg": -31.3,
+   "z0": 0,
+   "height": 10.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ecda",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a34",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    -14.03,
+    -23.07
+   ],
+   "rotDeg": -31.3,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f6c8c",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#2f6c8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c9a6",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "hospital/canopy-fascia",
+   "at": [
+    -17.14,
+    -28.2,
+    0
+   ],
+   "rotDeg": -31.3,
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#f6f1e4",
+    "roofColour": "#c7bfa9"
+   }
+  },
+  {
+   "type": "hospital/ambulance-bay",
+   "at": [
+    -44.92,
+    -27.69,
+    0
+   ],
+   "rotDeg": -31.3,
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "hospital/helipad",
+   "at": [
+    29.63,
+    21.78,
+    0
+   ],
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -11.2,
+    -37.66,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -59.0,
+    -29.67,
+    0
+   ],
+   "rotDeg": -31.3,
+   "params": {
+    "length": 70,
+    "height": 1.4,
+    "colour": "#d8d0bc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "cars": [
+   {
+    "at": [
+     -32.81,
+     -38.57
+    ],
+    "yawDeg": 0,
+    "colour": "#d9d9d9"
+   },
+   {
+    "at": [
+     -27.68,
+     -41.68
+    ],
+    "yawDeg": 0,
+    "colour": "#2f3a44"
+   },
+   {
+    "at": [
+     -22.56,
+     -44.8
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   }
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -67.02,
+     -23.62
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     7.31,
+     -68.82
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -28.66,
+     -31.73
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo exists; rendered once against the real rotated outline only. Real wings and courtyards unknown, main block roof simplified to flat."
+ }
+}

@@ -1,0 +1,514 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-osm-way-1066128727",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1066128727",
+   "used": "real triangular park outline (142 x 79 m), scaled to 0.62 to fit scene clamp"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ndjamena.json#ndjamena-osm-way-1066128727",
+   "used": "paved paths, benches, low shade trees on sand, boundary wall, pavilion, kiosk"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40.9,
+      22.0
+     ],
+     [
+      23.8,
+      22.4
+     ],
+     [
+      17.1,
+      -44.5
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      -36.81,
+      19.8
+     ],
+     [
+      21.42,
+      20.16
+     ],
+     [
+      15.390000000000002,
+      -40.050000000000004
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b9b27a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40.9,
+      22.0
+     ],
+     [
+      23.8,
+      22.4
+     ],
+     [
+      17.1,
+      -44.5
+     ],
+     [
+      -40.9,
+      22.0
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.3,
+    "colour": "#e6dcc8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      -34.765,
+      18.7,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ]
+    ],
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      20.23,
+      19.04,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ]
+    ],
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      14.535,
+      -37.824999999999996,
+      0
+     ],
+     [
+      0,
+      0,
+      0
+     ]
+    ],
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "n": 24,
+    "radius": 6,
+    "height": 0.1,
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "market-open/fountain",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "radius": 3.2,
+    "jet": true
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -7,
+    -3,
+    0.2
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.2
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    7,
+    3,
+    0.2
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.2
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    13.090000000000002,
+    13.44
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc8",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a9588"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -20.45,
+    12.100000000000001,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    11.300000000000002,
+    -37.85,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.0,
+    "pillar": 0.8,
+    "colour": "#e6dcc8"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -0.6,
+    -10.9,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16.8,
+    11.6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -3.2,
+    -13.9,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    4.4,
+    -20.8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    11.6,
+    -28.7,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14.8,
+    -2.3,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14.8,
+    -1.0,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8.1,
+    -23.0,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12.7,
+    0.5,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -0.7,
+    14.4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    3.3,
+    -13.6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12.2,
+    -16.1,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    11.1,
+    -7.4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9.8,
+    -1.4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0.1,
+    10.2,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    11.7,
+    -28.6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: outline real, furniture layout plausible not surveyed."
+ }
+}

@@ -1,0 +1,1190 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ste.-Famille_Church_-_Genocide_Site_-_Viewed_through_Trees_-_Kigali_-_Rwanda.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Adam Jones, Ph.D.",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kigali/qr-church1.jpg",
+   "used": "red-brick walls, white-tiled pilaster strips and cross on the gable front, long low-pitched orange clay-tile nave roof, lean-to side porch, narrow tall windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Facade_of_Ste.-Famille_Church_-_Genocide_Site_-_Kigali_-_Rwanda.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Adam Jones, Ph.D.",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/qr-facade.jpg",
+   "used": "facade composition: taller central brick block with white-tile cross, two tile pilaster strips, paired tall windows, lower flanking brick wings with single long windows, round arched door"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/106340981",
+   "used": "overall length about 60 m and about 20 m width (plan is irregular, the nave is composed as a rectangle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 12,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     17,
+     44
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 22,
+    "colour": "#c8762f",
+    "material": "clay-tile",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.5,
+     6
+    ]
+   },
+   "at": [
+    10.6,
+    16
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 12,
+    "colour": "#c8762f",
+    "material": "clay-tile",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     21,
+     3
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "height": 9,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a24a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     7.5,
+     3
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "height": 12,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a24a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-l",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    -4.45,
+    -0.25
+   ],
+   "height": 12,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-ol",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    -9.8,
+    -0.25
+   ],
+   "height": 9,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-r",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    4.45,
+    -0.25
+   ],
+   "height": 12,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-or",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    9.8,
+    -0.25
+   ],
+   "height": 9,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-v",
+   "footprint": {
+    "rect": [
+     1.1,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.25
+   ],
+   "height": 10.5,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da",
+    "overhang": 0
+   },
+   "z0": 3.5
+  },
+  {
+   "type": "mass",
+   "id": "cross-h",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.25
+   ],
+   "height": 1.4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da",
+    "overhang": 0
+   },
+   "z0": 11
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -1.7,
+    0,
+    3.2
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 5,
+    "kind": "rect"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -2.6,
+    0,
+    3.2
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 5,
+    "kind": "rect"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -7.4,
+    0,
+    2.8
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 5,
+    "kind": "rect"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    1.7,
+    0,
+    3.2
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 5,
+    "kind": "rect"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    2.6,
+    0,
+    3.2
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 5,
+    "kind": "rect"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    7.4,
+    0,
+    2.8
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 5,
+    "kind": "rect"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 3.8,
+    "arch": true,
+    "colour": "#f1efe8",
+    "trim": "#e4e2da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    6
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    9
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    12
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    15
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l4",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    18
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l5",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    21
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l6",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    24
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l7",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    27
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    30
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l9",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    33
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l10",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    36
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l11",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    39
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l12",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    42
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-l13",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.75,
+    45
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    6
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    9
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    12
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    15
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r4",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    18
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r5",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    21
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r6",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    24
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r7",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    27
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    30
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r9",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    33
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r10",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    36
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r11",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    39
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r12",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    42
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rib-r13",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8.75,
+    45
+   ],
+   "height": 8.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4532f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4532f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -1.6,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "rise": 0.3,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#d6c7a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     35
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "nave is a simple gable (real roof has transept cross-gable and hip ends); wall ribs are approximate; facade tile checker texture and door arch surround are flat colour; side porch simplified; photo trees occlude much"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-quiet-reflection"
+}

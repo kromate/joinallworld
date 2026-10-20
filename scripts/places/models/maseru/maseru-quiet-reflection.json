@@ -1,0 +1,548 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Roman_Catholic_Archdiocese_of_Maseru.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Vanbasten 23",
+   "view": "front",
+   "file": "/tmp/places-evidence/maseru/cathedral.jpg",
+   "used": "twin square sandstone towers with stepped belfries, cross finials, central gable with round window and cross, grey-roofed nave behind, low arcaded side aisle on the left, palms, railing with stone piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/295032311",
+   "used": "overall size and cross plan (nave about 45 m, transept offsets); outline itself too ragged to extrude"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.33,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     16,
+     34
+    ]
+   },
+   "at": [
+    0,
+    21
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9a66f",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none"
+    },
+    "bay": 5,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#8c9094",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-west",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -11,
+    3.5
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c4a064",
+    "windows": "none",
+    "faces": {
+     "front": "arched"
+    },
+    "windowRatio": 0.08,
+    "bay": 3,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99660",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-east",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    11,
+    3.5
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c4a064",
+    "windows": "none",
+    "faces": {
+     "front": "arched"
+    },
+    "windowRatio": 0.08,
+    "bay": 3,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99660",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-west",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -11,
+    3.5
+   ],
+   "z0": 20,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cdab74",
+    "windows": "arched",
+    "windowRatio": 0.55,
+    "bay": 1.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99660",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-east",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    11,
+    3.5
+   ],
+   "z0": 20,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cdab74",
+    "windows": "arched",
+    "windowRatio": 0.55,
+    "bay": 1.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99660",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     16,
+     3
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9a66f",
+    "windows": "round",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 16
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#8c9094",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9a66f",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#8c9094",
+    "material": "slate",
+    "pitch": 33,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-arcade",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    -12.5,
+    18
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cdab74",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 3,
+    "plinth": 0.4,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "left"
+     ]
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9094",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-chapel",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    -22,
+    8
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c4a064",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#8c9094",
+    "material": "slate",
+    "pitch": 45,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-east",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    25,
+    14
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c9094",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 1.0,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#cdab74"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "railing",
+    "pillarEvery": 3.5,
+    "colour": "#b79a68"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 5,
+    "spread": 4,
+    "line": 26
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -18.5,
+    8,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "count": 9,
+    "height": 5,
+    "radius": 0.2,
+    "kind": "round",
+    "beamHeight": 0.5,
+    "roofDepth": 1.5,
+    "colour": "#d2b57e",
+    "roofColour": "#8c9094"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    1.5,
+    16.8
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#a79a85"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    -11,
+    3.5,
+    24.5
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#a79a85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finial--11",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -11,
+    3.5
+   ],
+   "z0": 24.5,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cdab74",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99660"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    11,
+    3.5,
+    24.5
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#a79a85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finial-11",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    11,
+    3.5
+   ],
+   "z0": 24.5,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cdab74",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99660"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Towers slimmed to 6x6 with same-width arched-opening belfries and cross finials; front gable raised with round window and cross; palms 12 m and stone-pier railing added. Belfries use arched openings not true lattice, colonnade aisle approximate, windows on nave faces over-regular, no sculpted fountain or fence infill detail."
+ }
+}

@@ -1,0 +1,214 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-airport-algiers-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeroport_Houari_Boumediene_IMG_0155.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Poudou99",
+   "view": "back",
+   "file": "/tmp/places-evidence/algiers/air2.jpg",
+   "used": "airside elevation of the new terminal: long low glazed pier with pale concrete piers, central white octagonal block with small windows and a cylindrical tower cab, a row of jet bridges, floodlight masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Algiers_Houari_Boumediene_Airport_05.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mouh2jijel",
+   "view": "interior",
+   "used": "pale stone floor and grey columns only (not modelled)"
+  },
+  {
+   "kind": "text",
+   "used": "only a section of the terminal is modelled because the real terminal exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     104,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f8294",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#cfd1cd",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "width": 1.2,
+      "depth": 0.6,
+      "spacing": 6,
+      "colour": "#d6d6d0",
+      "margin": 2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cbca",
+    "parapet": 0.5,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "head-block",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "n": 8,
+    "radius": 12,
+    "z0": 5,
+    "height": 9,
+    "colour": "#e6e4de",
+    "topColour": "#cfd0cd",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "storeys": 3,
+    "bay": 4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-cab",
+   "at": [
+    0,
+    2,
+    14
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#7e9a8e",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      4,
+      0
+     ],
+     [
+      4,
+      2.4
+     ],
+     [
+      4.4,
+      2.6
+     ],
+     [
+      4.4,
+      3.2
+     ],
+     [
+      0,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "jet-bridges",
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "rotDeg": 0,
+     "params": {
+      "length": 10,
+      "colour": "#7f9488"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -44,
+     9,
+     3.4
+    ],
+    "end": [
+     44,
+     9,
+     3.4
+    ],
+    "lod1Step": 3,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "masts",
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 13
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -54,
+     30,
+     0
+    ],
+    "end": [
+     54,
+     30,
+     0
+    ],
+    "lod2Step": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   124,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Only a ~105 m section modelled; head block is a plain octagon with simple window bands; jet bridges are stock parts, a little chunky; no apron markings or aircraft; sky context absent"
+ }
+}

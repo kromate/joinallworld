@@ -1,0 +1,332 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-way-347366427",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_de_Malabo_Equatorial_Guinea.JPG",
+   "licence": "Public domain",
+   "author": "Tadpolefarmer",
+   "view": "interior",
+   "file": "/tmp/places-evidence/malabo/stadium1.jpg",
+   "used": "yellow main-stand seats, blue end-stand seats, terracotta wall, red track, white tensile umbrella roof on slim masts over one side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuevo_Estadio_de_Malabo_(16326698279).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user",
+   "view": "interior",
+   "file": "/tmp/places-evidence/malabo/stadium2.jpg",
+   "used": "row of white domed membrane umbrellas on steel masts with cable stays, orange seat blocks split by stair aisles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/347366427",
+   "used": "oval 152 x 224 m outline, long axis north-south"
+  }
+ ],
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 118,
+    "height": 9,
+    "roof": "none",
+    "roof_style": "shed",
+    "wall": "ribs",
+    "seat_colour": "#e3a02a",
+    "seat_colour2": "#d8921f",
+    "floodlights": false,
+    "ground": false,
+    "wall_colour": "#c98a6a",
+    "trim_colour": "#efe6d0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "circle": 0.3
+       },
+       "points": [
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         9.5
+        ]
+       ],
+       "colour": "#9a9fa3",
+       "n": 6
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       10.2
+      ],
+      "params": {
+       "profile": [
+        [
+         0,
+         1.6,
+         "#f4f4f0"
+        ],
+        [
+         3,
+         1.3,
+         "#f4f4f0"
+        ],
+        [
+         5.5,
+         0.5,
+         "#f4f4f0"
+        ],
+        [
+         6.5,
+         0,
+         "#f4f4f0"
+        ],
+        [
+         0,
+         0,
+         "#f4f4f0"
+        ]
+       ],
+       "segments": 14
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "circle": 0.1
+       },
+       "points": [
+        [
+         0,
+         0,
+         10
+        ],
+        [
+         0,
+         0,
+         16
+        ]
+       ],
+       "colour": "#cfd2d4",
+       "n": 4
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -36,
+     -50,
+     0
+    ],
+    "end": [
+     -36,
+     50,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      4.5,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -34,
+      -52,
+      9.2
+     ],
+     [
+      -34,
+      0,
+      10.2
+     ],
+     [
+      -34,
+      52,
+      9.2
+     ]
+    ],
+    "colour": "#f2f2ee",
+    "n": 8
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 112,
+    "width": 70,
+    "pitch": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 100,
+    "width": 62
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -34,
+      -52,
+      0.6
+     ],
+     [
+      -34,
+      52,
+      0.6
+     ]
+    ],
+    "colour": "#2f7a45",
+    "n": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-block",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -44,
+    56
+   ],
+   "height": 6,
+   "wall": {
+    "colour": "#9a9da0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    62,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    62,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   130
+  ]
+ },
+ "camera": {
+  "yawDeg": 90,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Interior-only photos. Canopy is a beam on slim columns carrying a row of white domes (no cable stays or truss detail); bowl part has two seat colours only so end stands are not blue; no perimeter fence part; wall terracotta set through wall_colour (validator warns it is not a declared param but the composer applies it); bowl clamped to 120 m."
+ }
+}

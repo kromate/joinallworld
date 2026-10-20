@@ -1,0 +1,90 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/319528084",
+   "used": "real hospital campus outline (name match, 2.1 ha)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 9
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3c4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bands": "#a8a095",
+    "plinth": 0.4,
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a65a3d",
+    "material": "corrugated",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "colour": "#d9b36a",
+    "roofColour": "#a8a095"
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    0,
+    -65,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: real campus outline (scaled 0.55 to fit) with flat roof for budget; ward blocks and courtyards not distinguished."
+ }
+}

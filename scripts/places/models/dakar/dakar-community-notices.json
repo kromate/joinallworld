@@ -1,0 +1,530 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dakar_-_Assembl%C3%A9e_nationale.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "HaguardDuNord",
+   "view": "front",
+   "file": "/tmp/places-evidence/dakar/assembly.jpg",
+   "used": "long white five-storey slab with pierced concrete brise-soleil, setback attic block, central glazed lobby under a huge winged concrete canopy, blue stepped pools and striped paving in front, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/340121040",
+   "used": "overall size (92 x 56 m); the stranger polygon is replaced by a 88 m slab as the photo shows"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": -0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pools are flat rectangles with a raised step (not terraced tapering), paving stripes parallel not radiating, canopy scallops are simple diamonds, pots are green stubs; facade fins only approximate the brise-soleil"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     88,
+     20
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f2f2ee",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "bands": "#f7f7f4",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "colour": "#f7f7f4"
+    },
+    "glassColour": "#c3d3d6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c9c4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-block",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 21.5,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f4f4f1",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e9e5",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     26,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6dcd8",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "plinth": 0.3,
+    "glassColour": "#a9c4c8",
+    "bands": "#c9a85a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-left",
+   "at": [
+    -17,
+    -11,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "rect": [
+     1.6,
+     15
+    ],
+    "height": 14,
+    "colour": "#f4f4f1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-right",
+   "at": [
+    17,
+    -11,
+    0
+   ],
+   "rotDeg": -8,
+   "params": {
+    "rect": [
+     1.6,
+     15
+    ],
+    "height": 14,
+    "colour": "#f4f4f1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    0,
+    -11,
+    14
+   ],
+   "params": {
+    "rect": [
+     36,
+     16
+    ],
+    "height": 1.2,
+    "colour": "#f4f4f1"
+   }
+  },
+  {
+   "type": "array",
+   "id": "scallops",
+   "params": {
+    "of": {
+     "type": "prism",
+     "rotDeg": 45,
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "height": 1.2,
+      "colour": "#ecece8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -17,
+     -19.4,
+     14
+    ],
+    "end": [
+     17,
+     -19.4,
+     14
+    ],
+    "count": 18,
+    "lod2Step": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balcony-band",
+   "at": [
+    0,
+    -5,
+    19
+   ],
+   "params": {
+    "rect": [
+     34,
+     5
+    ],
+    "height": 0.8,
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool-l0",
+   "at": [
+    -32.0,
+    -26.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     36,
+     24
+    ],
+    "height": 0.3,
+    "colour": "#2d86c6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool-l1",
+   "at": [
+    -29.0,
+    -26.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     18
+    ],
+    "height": 0.55,
+    "colour": "#3592d0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool-l2",
+   "at": [
+    -26.0,
+    -26.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     12
+    ],
+    "height": 0.8,
+    "colour": "#47a3dc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool-r0",
+   "at": [
+    32.0,
+    -26.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     36,
+     24
+    ],
+    "height": 0.3,
+    "colour": "#2d86c6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool-r1",
+   "at": [
+    29.0,
+    -26.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     18
+    ],
+    "height": 0.55,
+    "colour": "#3592d0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool-r2",
+   "at": [
+    26.0,
+    -26.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     12
+    ],
+    "height": 0.8,
+    "colour": "#47a3dc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-light",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     28
+    ],
+    "height": 0.2,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "array",
+   "id": "stripes",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       28
+      ],
+      "height": 0.25,
+      "colour": "#8a8884"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10.5,
+     -28,
+     0
+    ],
+    "end": [
+     10.5,
+     -28,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium-steps",
+   "at": [
+    0,
+    -19.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     2
+    ],
+    "height": 0.8,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "array",
+   "id": "pots-1",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.6,
+      "n": 8,
+      "height": 1.6,
+      "colour": "#3f7d3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -13,
+     -16,
+     0.3
+    ],
+    "end": [
+     -30,
+     -34,
+     0.3
+    ],
+    "count": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "id": "palm-144",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm-138",
+   "at": [
+    -38,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "array",
+   "id": "pots1",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.6,
+      "n": 8,
+      "height": 1.6,
+      "colour": "#3f7d3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     13,
+     -16,
+     0.3
+    ],
+    "end": [
+     30,
+     -34,
+     0.3
+    ],
+    "count": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "id": "palm144",
+   "at": [
+    44,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm138",
+   "at": [
+    38,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   90
+  ]
+ }
+}

@@ -1,0 +1,392 @@
+{
+ "name": "Great Mosque of Salé (Grand Mosque)",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Salé_mosque_DSCF6808.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "R Prazeres",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/rabat/rabat-quiet-reflection-0.jpg",
+   "used": "low whitewashed prayer hall, square white clerestory cube under a green glazed-tile pyramidal roof, carved ochre sandstone portal with green hip roof, tall square ochre minaret with lantern and small cap, brown tiled lean-to roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:المسجد_الأعظم_بسلا.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anass Sedrati",
+   "view": "street",
+   "file": "/tmp/places-evidence/rabat/rabat-quiet-reflection-5.jpg",
+   "used": "ochre stone door surround with green roof at the head of a stepped lane, white walls, green-and-white striped steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/453091664",
+   "used": "mosque outline (name match, 80 x 53 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 22,
+  "fovDeg": 40,
+  "aspect": 1.25
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "pitched brown lean-to roofs only two strips and read nearly flat from this camera; portal and minaret carving are colour bands/panels not real sebka or stucco; walls still carry a window row; exact minaret and portal positions estimated"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.8
+   },
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "plinth": 0.5,
+    "cornice": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58f6c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave-cube",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    2,
+    -2
+   ],
+   "z0": 8,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "parapet": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a52",
+    "material": "clay-tile",
+    "rise": 7.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-cube",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    14,
+    20
+   ],
+   "z0": 8,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "parapet": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a52",
+    "material": "clay-tile",
+    "rise": 3.2,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -24,
+    -5,
+    30.6
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.8,
+    "colour": "#b98d5e",
+    "finial": 1.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "rotDeg": -64,
+   "params": {
+    "width": 7,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 5,
+    "colour": "#d9cdb4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-1",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -10.6,
+    -26.5
+   ],
+   "rotDeg": 57,
+   "z0": 8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c8560",
+    "material": "clay-tile",
+    "rise": 3.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-2",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -5.1,
+    -18.2
+   ],
+   "rotDeg": 57,
+   "z0": 8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c8560",
+    "material": "clay-tile",
+    "rise": 3.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "minaret-base",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -24,
+    -5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b98d5e",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7650",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "minaret-shaft",
+   "footprint": {
+    "rect": [
+     6.6,
+     6.6
+    ]
+   },
+   "at": [
+    -24,
+    -5
+   ],
+   "z0": 9,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b98d5e",
+    "windows": "none",
+    "cornice": 0.6,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.1,
+       1.4
+      ],
+      "colours": [
+       "#b98d5e",
+       "#8a6240",
+       "#a67a4f"
+      ],
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7650",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "minaret-lantern",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    -24,
+    -5
+   ],
+   "z0": 26,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b58a5a",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "cornice": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7650",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     8,
+     5.4
+    ]
+   },
+   "at": [
+    -15.5,
+    -26.8
+   ],
+   "rotDeg": -64,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#a0724c",
+    "windows": "none",
+    "cornice": 0.7,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 3.8,
+      "depth": 1.2,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#6f4a33",
+       "#b08358"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a52",
+    "material": "clay-tile",
+    "rise": 3.8,
+    "overhang": 1.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-quiet-reflection"
+}

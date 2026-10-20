@@ -1,0 +1,209 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/949080358",
+   "used": "nearest commercial building (22 x 20 m, 35 m away) placed beside the junction as a shop; roundabout, bus bays and minibuses from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 30,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "roundabout",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 32,
+    "road_width": 9,
+    "island_colour": "#6f9a52",
+    "trees": 8,
+    "kerb": true
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -48,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    46,
+    24,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    34,
+    30,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 180
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "stripe": "#2f7ea0",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -40,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#ece6d6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    40,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#cfc3aa"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    6,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    -52,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc3aa",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9283",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.5,
+    "bottom": 3,
+    "colour": "#2f7ea0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "acacia",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; junction layout and bus bays assumed from brief, OSM shop only nearby."
+ }
+}

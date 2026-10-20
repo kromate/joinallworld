@@ -1,0 +1,220 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-mbabane-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/784172577",
+   "used": "hospital site is 233 x 108 m (campus polygon); only the L-shaped block plan was composed within the scene clamp"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mbabane.json",
+   "used": "cream 3-storey block, green tile roof, red-brick band, canopy, ambulance bay"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3e3b5",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#8a2f25"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6a5a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    -30,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3e3b5",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#8a2f25"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6a5a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a2f25",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#8a2f25",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -8.2,
+    9
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    24,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; L-shaped cream block with green hip roof from the brief, not the real 233 m site."
+ }
+}

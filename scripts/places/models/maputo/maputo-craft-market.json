@@ -1,0 +1,248 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-craft-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: open-air craft, flower and food market on a paved square, rows of small stalls with colourful parasols, two kiosks (OSM match is the surrounding Parque dos Continuadores park, not used for footprint; nearby Commons photos show other buildings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the market found; stall grid, parasol colours and kiosk positions are typical, not observed"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     72,
+     42
+    ],
+    "height": 0.12,
+    "colour": "#c9bfae",
+    "topColour": "#c9bfae"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 4.6,
+    "kind": "umbrella",
+    "colours": [
+     "#d9a441",
+     "#c76f4f",
+     "#3f8aa6"
+    ],
+    "goods_colours": [
+     "#d9a441",
+     "#c76f4f",
+     "#efe6d0",
+     "#6aa36a"
+    ],
+    "jitter": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 4.6,
+    "kind": "umbrella",
+    "colours": [
+     "#c76f4f",
+     "#efe6d0",
+     "#d9a441"
+    ],
+    "goods_colours": [
+     "#d9a441",
+     "#c76f4f",
+     "#efe6d0",
+     "#6aa36a"
+    ],
+    "jitter": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 4.6,
+    "kind": "umbrella",
+    "colours": [
+     "#3f8aa6",
+     "#d9a441",
+     "#c76f4f"
+    ],
+    "goods_colours": [
+     "#d9a441",
+     "#c76f4f",
+     "#efe6d0",
+     "#6aa36a"
+    ],
+    "jitter": 0.4
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#b5543a",
+    "wall_colour": "#efe6d0"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -26,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "colours": [
+     "#d9a441",
+     "#c76f4f",
+     "#efe6d0"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    31,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c76f4f",
+    "width": 3.6,
+    "depth": 2.4
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -31,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9a441",
+    "width": 3.6,
+    "depth": 2.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    24,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "colours": [
+     "#c76f4f",
+     "#efe6d0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "colours": [
+     "#d9a441",
+     "#efe6d0"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -40,
+     -18
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     40,
+     -24
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     44,
+     12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -42,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

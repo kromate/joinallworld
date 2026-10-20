@@ -1,0 +1,254 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-mvithiza-waterfall",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "No photo or outline found; granite ledge with cascade, pool and viewing rail per brief (Sibebe granite terrain)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "colour": "#8a8a82",
+    "curve": true,
+    "steps": 3,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       30,
+       14
+      ]
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       27.6,
+       12.88
+      ],
+      "cx": 0
+     },
+     {
+      "z": 7.6499999999999995,
+      "ellipse": [
+       16.5,
+       7.700000000000001
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       6.0,
+       2.8000000000000003
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -26,
+    18,
+    0
+   ],
+   "params": {
+    "colour": "#6b6358",
+    "curve": true,
+    "steps": 3,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       12,
+       9
+      ]
+     },
+     {
+      "z": 3.0,
+      "ellipse": [
+       11.040000000000001,
+       8.280000000000001
+      ],
+      "cx": 0
+     },
+     {
+      "z": 5.1,
+      "ellipse": [
+       6.6000000000000005,
+       4.95
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       2.4000000000000004,
+       1.8
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    24,
+    20,
+    0
+   ],
+   "params": {
+    "colour": "#7a7468",
+    "curve": true,
+    "steps": 3,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       11,
+       8
+      ]
+     },
+     {
+      "z": 2.5,
+      "ellipse": [
+       10.120000000000001,
+       7.36
+      ],
+      "cx": 0
+     },
+     {
+      "z": 4.25,
+      "ellipse": [
+       6.050000000000001,
+       4.4
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       2.2,
+       1.6
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 4,
+    "depth": 14,
+    "rise": -8,
+    "thickness": 0.3,
+    "folds": 2,
+    "z": 8.5,
+    "colour": "#dfe9ec"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 18,
+    "shape": "oval",
+    "colour": "#5f7f7a"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -10,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.1,
+    "colour": "#6b4a2f"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    14,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 30,
+    "count": 6,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 30,
+    "count": 6,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "water",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; fall height, pool shape and rail location are assumed."
+ }
+}

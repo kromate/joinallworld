@@ -37,9 +37,9 @@
   "fit": "building"
  },
  "review": {
-  "rounds": 2,
+  "rounds": 3,
   "match": "fair",
-  "gaps": "jet bridge hidden at left end, glazing bays wider than the photo, no airside vehicles, canopy slab is flat rather than swept"
+  "gaps": "render wall panels read blue-grey and ground floor still shows few dark voids; canopy slab not swept; jet bridge gallery small and airside vehicles are plain boxes; letters are blank blocks (no legible name by rule)"
  },
  "parts": [
   {
@@ -60,7 +60,7 @@
    "storeys": 1,
    "wall": {
     "material": "painted-render",
-    "colour": "#e2dccd",
+    "colour": "#e6dfcf",
     "windows": "none",
     "plinth": 0.3,
     "pattern": [
@@ -69,9 +69,9 @@
       "faces": [
        "front"
       ],
-      "inset": 4,
-      "spacing": 9,
-      "width": 1.4,
+      "inset": 5,
+      "spacing": 11,
+      "width": 1.8,
       "kind": "square",
       "colour": "#d8d1c1",
       "backColour": "#2b2f31"
@@ -94,12 +94,12 @@
    ],
    "params": {
     "rect": [
-     124,
-     16
+     126,
+     18
     ],
-    "z0": 6.0,
-    "height": 1.6,
-    "colour": "#b9b5aa"
+    "z0": 5.8,
+    "height": 2.4,
+    "colour": "#b0aca1"
    }
   },
   {
@@ -107,22 +107,22 @@
    "id": "glazed",
    "footprint": {
     "rect": [
-     112,
-     15
+     104,
+     10
     ]
    },
    "at": [
     0,
-    2.5
+    4.5
    ],
-   "z0": 7.1,
-   "height": 5.6,
+   "z0": 8.4,
+   "height": 4.6,
    "storeys": 1,
    "wall": {
     "material": "glass-curtain",
     "colour": "#5f7886",
     "windows": "curtain",
-    "windowRatio": 0.75,
+    "windowRatio": 0.8,
     "faces": {
      "left": "plain",
      "right": "plain",
@@ -134,9 +134,9 @@
       "faces": [
        "front"
       ],
-      "spacing": 9,
-      "depth": 0.6,
-      "width": 1.1,
+      "spacing": 14,
+      "depth": 0.8,
+      "width": 1.8,
       "colour": "#d9d3c5"
      }
     ]
@@ -153,57 +153,816 @@
    "id": "parapet-band",
    "at": [
     0,
-    2.5,
+    4.5,
     0
    ],
    "params": {
     "rect": [
-     116,
-     16
+     108,
+     12
     ],
-    "z0": 12.0,
-    "height": 1.6,
+    "z0": 13.0,
+    "height": 1.8,
     "colour": "#b4b0a5"
    }
   },
   {
-   "type": "core/sign-board",
+   "type": "prism",
    "at": [
-    -2,
-    -4,
-    12.5
+    -44,
+    -9.5,
+    0
    ],
    "params": {
-    "width": 58,
-    "height": 1.8,
-    "bottom": 0.6,
-    "colour": "#f4f2ec",
-    "frameColour": "#f4f2ec",
-    "posts": false
+    "rect": [
+     14,
+     1.5
+    ],
+    "z0": 0,
+    "height": 5.8,
+    "colour": "#e6dfcf"
    }
   },
   {
-   "type": "jet-bridge",
+   "type": "prism",
    "at": [
-    -58,
     -22,
-    5.2
+    -9.5,
+    0
    ],
-   "rotDeg": 90,
    "params": {
-    "length": 20,
+    "rect": [
+     16,
+     1.5
+    ],
+    "z0": 0,
+    "height": 5.8,
+    "colour": "#e6dfcf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.5
+    ],
+    "z0": 0,
+    "height": 5.8,
+    "colour": "#e6dfcf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.5
+    ],
+    "z0": 0,
+    "height": 5.8,
+    "colour": "#e6dfcf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.5
+    ],
+    "z0": 0,
+    "height": 5.8,
+    "colour": "#e6dfcf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30.0,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27.7,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -25.4,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -23.1,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20.8,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18.5,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16.200000000000003,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.900000000000002,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.600000000000001,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.3,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.0,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.700000000000003,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.400000000000002,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.10000000000000142,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.1999999999999957,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.799999999999997,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.099999999999994,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.399999999999999,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.699999999999996,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16.0,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    18.299999999999997,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.599999999999994,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    22.9,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    25.199999999999996,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    27.499999999999993,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 14.8,
+    "height": 1.6,
+    "colour": "#f4f2ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bridge-gallery",
+   "at": [
+    -62,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     22
+    ],
+    "z0": 4.2,
+    "height": 3.6,
+    "colour": "#8fb0bd"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     22.4
+    ],
+    "z0": 7.4,
+    "height": 0.5,
     "colour": "#d5d9db"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#2a6fb0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#2a6fb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tug",
+   "footprint": {
+    "rect": [
+     9,
+     3.6
+    ]
+   },
+   "at": [
+    -30,
+    -26
+   ],
+   "z0": 0.4,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e4e0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       4.5,
+       2.2
+      ],
+      "z0": 0.5,
+      "height": 1.6,
+      "colour": "#e3b421"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -32
+    ],
+    "end": [
+     28,
+     -32
+    ],
+    "count": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tug2",
+   "footprint": {
+    "rect": [
+     9,
+     3.6
+    ]
+   },
+   "at": [
+    6,
+    -24
+   ],
+   "z0": 0.4,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e4e0"
    }
   },
   {
    "type": "control-tower",
    "at": [
     -38,
-    48,
+    60,
     0
    ],
    "params": {
-    "height": 42,
+    "height": 26,
     "style": "round",
     "colour": "#dcd7cb",
     "cabColour": "#4d6470",

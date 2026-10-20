@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sede_do_Minist%C3%A9rio_da_Justi%C3%A7a,_Bissau,_Guin%C3%A9-Bissau_(1).jpg",
+   "licence": "Public domain",
+   "author": "VOA / Commons",
+   "view": "front",
+   "file": "/tmp/places-evidence/bissau/min1.jpg",
+   "used": "STYLE REFERENCE ONLY: the neighbouring Ministerio da Justica, not this ministry: cream render, white pilasters, central pediment and arched window, tall shuttered windows, red hip tile roof, balustrade fence. Not claimed as this building."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/130337533",
+   "used": "not used: OSM match is a different ministry (Pescas), name score 0.5"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     56,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcae",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f2efe6",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0653c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d2",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c0653c",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -12.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7.5,
+     0,
+     0
+    ],
+    "end": [
+     7.5,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.0,
+        0.8
+       ],
+       "height": 11.6,
+       "colour": "#f4f0e2",
+       "topColour": "#f4f0e2"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.1,
+        0.6
+       ],
+       "height": 11.4,
+       "colour": "#f4f0e2",
+       "topColour": "#f4f0e2"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.6,
+    "thickness": 0.4,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#efe9d8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -4,
+    12.5
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#ce1126"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photo is the neighbouring Ministerio da Justica (style reference, not this building). Central pediment, balustrade, pilaster pairs and shuttered windows simplified; plan and size follow the brief, not the OSM match."
+ }
+}

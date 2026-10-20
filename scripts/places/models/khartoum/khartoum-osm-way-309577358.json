@@ -1,0 +1,383 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-way-309577358",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Faculty_of_Science_(University_of_Khartoum)_001.jpg",
+   "licence": "see Commons page",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/khartoum/uok2.jpg",
+   "used": "long two-storey terracotta brick block with arcaded galleries on both floors, central three-stage tower with pointed windows, flat roofs, palm-lined lane and lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:U-of-K_Entrance.jpg",
+   "licence": "CC BY-SA 3.0 cz",
+   "author": "Petr Adam Dohnalek",
+   "view": "front",
+   "file": "/tmp/places-evidence/khartoum/uok1.jpg",
+   "used": "campus gate: ochre round pavilion with brick clock tower and two big pointed ochre arches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/309577358",
+   "used": "campus context only; main block composed from the photo and brief (about 100 x 20 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     96,
+     20
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b8764a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "bands": "#c58a62",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 5,
+      "opening": 0.62,
+      "height": 0.88,
+      "depth": 1.2,
+      "storeys": 2,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "faces": {
+     "front": "plain",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f5a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b8764a",
+    "windows": "pointed-arch",
+    "windowRatio": 0.35,
+    "bay": 4.5,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#d6b48c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f5a3c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-podium",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    -49,
+    -46
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e2b560",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2b560"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-brick-tower",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    -49,
+    -46
+   ],
+   "z0": 2.6,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65f3e",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8794d",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-drum",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     9.5,
+     9.5
+    ]
+   },
+   "at": [
+    -49,
+    -46
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e2b560",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8c47a",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -46,
+     -46,
+     0
+    ],
+    "radius": 3.8,
+    "count": 8,
+    "startDeg": 200,
+    "endDeg": 340,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.3,
+      "n": 8,
+      "height": 2.6,
+      "colour": "#cfc7b4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     8,
+     -26,
+     0
+    ],
+    "end": [
+     8,
+     -6,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 14
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 10
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 2,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-l",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     36
+    ],
+    "height": 0.06,
+    "colour": "#7f9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-r",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     36
+    ],
+    "height": 0.06,
+    "colour": "#7f9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     36
+    ],
+    "height": 0.05,
+    "colour": "#7a746c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Pointed arcade still reads as glazed arches rather than recessed open galleries; no balustrade; tower lancets simple; lane and lawn added but palms are low-poly and shorter than photo; campus gate shown small at left."
+ }
+}

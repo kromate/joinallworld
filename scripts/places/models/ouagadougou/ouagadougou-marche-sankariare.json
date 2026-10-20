@@ -1,0 +1,210 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-marche-sankariare",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/30950063",
+   "used": "market plot outline 168x84 m, bearing 168; stalls, tin roofs per brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plot",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "laterite",
+    "colour": "#a9643f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9643f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "shed",
+    "wall_colour": "#b8754d",
+    "roof_colour": "#8a4a35",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "shed",
+    "wall_colour": "#b8754d",
+    "roof_colour": "#8a4a35",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    10,
+    22,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "shed",
+    "wall_colour": "#b8754d",
+    "roof_colour": "#8a4a35",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -20,
+    40,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "shed",
+    "wall_colour": "#b8754d",
+    "roof_colour": "#8a4a35",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d1a42a",
+     "#2f7fb5",
+     "#c8362f",
+     "#efe8d8"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    28,
+    10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 7,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    55,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    8,
+    -52
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f6a4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.8,
+    "overhang": 0.5,
+    "colour": "#8a4a35",
+    "material": "corrugated"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM plot outline only. Stall and shed layout is typical, not observed; stalls sparser than a real dense market."
+ }
+}

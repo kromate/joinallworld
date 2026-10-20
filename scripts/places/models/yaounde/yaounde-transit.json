@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: central bus and shared-taxi park, ticket hall, kiosks, coach bays, corrugated shed canopy. OSM outline (a 1122 m2 train_station way) is a poor fit so not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8b3a6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#b4654a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 8,
+    "height": 4.6,
+    "columns": 8,
+    "colour": "#7d8286",
+    "edgeColour": "#4f6f8a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "mixed",
+    "density": 0.7,
+    "coach_share": 0.4
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -34,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#4f6f8a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -34,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#b4654a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    34,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#4f6f8a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    34,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#b4654a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     34
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this place; generic bus park for Yaounde sized from the brief (90 x 60 m); signboards omitted."
+ }
+}

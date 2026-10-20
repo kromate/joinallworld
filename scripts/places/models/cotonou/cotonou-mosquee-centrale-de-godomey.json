@@ -1,0 +1,253 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-mosquee-centrale-de-godomey",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (low confidence): 40 x 32 m hall, 16 m, central dome, two ~32 m minarets, four roof pinnacles, white and grey with blue trim. OSM match is a nearest 19 x 10 m building 56 m away, judged not reliable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "rect": [
+     40,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "windowShape": "pointed",
+    "bands": "#4a6f9a",
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d949b",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dado",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     40.4,
+     32.4
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#4a6f9a",
+    "topColour": "#4a6f9a"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "id": "dome",
+   "at": [
+    0,
+    0,
+    15.8
+   ],
+   "params": {
+    "radius": 8.0,
+    "profile": "hemi",
+    "drum": 2.6,
+    "windows": 8,
+    "colour": "#8d949b",
+    "drum_colour": "#f2f0ea",
+    "finial": true
+   }
+  },
+  {
+   "type": "mosque-domed/portal",
+   "id": "entrance",
+   "at": [
+    0,
+    -16.0,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 13.5,
+    "depth": 2.2,
+    "pointed": true,
+    "colour": "#f2f0ea",
+    "trim": "#4a6f9a",
+    "cap_colour": "#8d949b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "court-wall",
+   "at": [
+    -28.0,
+    -26.0,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 2.2,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "mosque-domed/minaret",
+   "id": "minaret-1",
+   "at": [
+    -24,
+    -19,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "style": "pencil",
+    "colour": "#f2f0ea",
+    "trim": "#4a6f9a",
+    "cap_colour": "#4a6f9a"
+   }
+  },
+  {
+   "type": "mosque-domed/minaret",
+   "id": "minaret-2",
+   "at": [
+    24,
+    -19,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "style": "pencil",
+    "colour": "#f2f0ea",
+    "trim": "#4a6f9a",
+    "cap_colour": "#4a6f9a"
+   }
+  },
+  {
+   "type": "pinnacle",
+   "id": "pinnacle-1",
+   "at": [
+    -19,
+    -15,
+    15
+   ],
+   "params": {
+    "radius": 0.5,
+    "height": 2.0,
+    "style": "cone",
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "pinnacle",
+   "id": "pinnacle-2",
+   "at": [
+    19,
+    -15,
+    15
+   ],
+   "params": {
+    "radius": 0.5,
+    "height": 2.0,
+    "style": "cone",
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "pinnacle",
+   "id": "pinnacle-3",
+   "at": [
+    -19,
+    15,
+    15
+   ],
+   "params": {
+    "radius": 0.5,
+    "height": 2.0,
+    "style": "cone",
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "pinnacle",
+   "id": "pinnacle-4",
+   "at": [
+    19,
+    15,
+    15
+   ],
+   "params": {
+    "radius": 0.5,
+    "height": 2.0,
+    "style": "cone",
+    "colour": "#f2f0ea"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -32.0,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32.0,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30.0,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   77
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo anywhere; typical neighbourhood mosque in the colours given by the brief"
+ }
+}

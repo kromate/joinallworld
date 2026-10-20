@@ -1,0 +1,195 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-node-9201097499",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/mogadishu.json",
+   "used": "narrow stele about 4 m high on a stepped base at a dusty street corner with blank commemorative board; low two-storey concrete houses behind. Surroundings only: the OSM polygon containing the node is a 28x17 m house, not the marker"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     3.4
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     2.4
+    ],
+    "z0": 0.3,
+    "height": 0.3,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stele",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.6,
+      "rect": [
+       1.5,
+       0.9
+      ]
+     },
+     {
+      "z": 4.0,
+      "rect": [
+       0.9,
+       0.5
+      ]
+     }
+    ],
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "board",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.6
+   ],
+   "rotDeg": 0,
+   "z0": 1.4,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e5dfd0",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e5dfd0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-l",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfba",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-r",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    11,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cbbfa6",
+    "windows": "punched",
+    "windowRatio": 0.16
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "tree",
+   "id": "acacia",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; marker shape and board are generic stele; surrounding houses typical, not the real ones."
+ }
+}

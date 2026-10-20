@@ -1,0 +1,597 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Koubba_pavilion_at_Parc_du_Belv%C3%A9d%C3%A8re_in_Tunis.(2017).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user",
+   "view": "front",
+   "file": "/tmp/places-evidence/tunis/koubba.jpg",
+   "used": "Koubba pavilion: whitewashed square pavilion, flat roof with small corner pinnacles, green-tile eave line, open loggias with black-and-white striped arches over paired slender columns and lattice screens, stepped plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/48720329",
+   "used": "park only (110 ha); Koubba at scene centre, surrounded by lawn and tree groves"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     26
+    ],
+    "height": 0.15,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     14.6,
+     14.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4efe2",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe2",
+    "parapet": 0.0
+   },
+   "z0": 0.15
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.7
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     9.6
+    ],
+    "height": 4.9,
+    "colour": "#1d1d1d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frieze",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4efe2",
+    "windows": "none",
+    "plinth": 0,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.4,
+      "opening": 0.8,
+      "height": 0.8,
+      "depth": 0.5,
+      "storeys": 1,
+      "colour": "#e9e3d4",
+      "pierColour": "#f4efe2",
+      "faces": [
+       "front",
+       "right",
+       "back",
+       "left"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#3f7a52"
+      ],
+      "height": 0.25,
+      "at": 0.95,
+      "floors": [
+       0
+      ],
+      "proud": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe2",
+    "parapet": 0.7
+   },
+   "z0": 6.7
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    6.7
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "height": 0.5,
+    "colour": "#2f2f2f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.5,
+     -5.5,
+     0
+    ],
+    "end": [
+     5.5,
+     -5.5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#f1ece0",
+      "profile": [
+       [
+        0.6,
+        0
+       ],
+       [
+        0.35,
+        0.4
+       ],
+       [
+        0.32,
+        4.7
+       ],
+       [
+        0.6,
+        5.0
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.5,
+     5.5,
+     0
+    ],
+    "end": [
+     5.5,
+     5.5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#f1ece0",
+      "profile": [
+       [
+        0.6,
+        0
+       ],
+       [
+        0.35,
+        0.4
+       ],
+       [
+        0.32,
+        4.7
+       ],
+       [
+        0.6,
+        5.0
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.5,
+     -5.5,
+     0
+    ],
+    "end": [
+     -5.5,
+     5.5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#f1ece0",
+      "profile": [
+       [
+        0.6,
+        0
+       ],
+       [
+        0.35,
+        0.4
+       ],
+       [
+        0.32,
+        4.7
+       ],
+       [
+        0.6,
+        5.0
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     5.5,
+     -5.5,
+     0
+    ],
+    "end": [
+     5.5,
+     5.5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#f1ece0",
+      "profile": [
+       [
+        0.6,
+        0
+       ],
+       [
+        0.35,
+        0.4
+       ],
+       [
+        0.32,
+        4.7
+       ],
+       [
+        0.6,
+        5.0
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.4,
+    0.1
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.4,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#f0ead9"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    8.4,
+    0,
+    0.1
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.4,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#f0ead9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7,
+    -7,
+    10.1
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 2.0,
+    "topScale": 0.25,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -7,
+    10.1
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 2.0,
+    "topScale": 0.25,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7,
+    7,
+    10.1
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 2.0,
+    "topScale": 0.25,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    7,
+    10.1
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 2.0,
+    "topScale": 0.25,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -12
+     ],
+     [
+      -10,
+      -30
+     ],
+     [
+      -30,
+      -48
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 6,
+    "spread": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 4,
+    "spread": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 3,
+    "spread": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Frieze arches still carry glazed windows instead of black-and-white voussoirs with lattice spandrels; columns are evenly spaced not paired; corner pinnacles are small; plinth steps shallow; paved stone surround only approximated by a slab."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-recreation"
+}

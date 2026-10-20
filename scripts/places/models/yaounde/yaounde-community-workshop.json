@@ -1,0 +1,414 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Campus_University_of_Yaound%C3%A9_I_(2014)_frontal.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bdx",
+   "view": "front",
+   "file": "/tmp/places-evidence/yaounde/uy1a.jpg",
+   "used": "3-storey faculty block: red rendered upper walls and pink-red shed roof, white lower storeys with open galleries, brown vertical concrete fins, curved drive, clipped hedges"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_Yaound%C3%A9_I_(2014)_faculty_of_science_buildings_(2).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bdx",
+   "view": "street",
+   "file": "/tmp/places-evidence/yaounde/uy1b.jpg",
+   "used": "two-storey gallery blocks with timber louvre bands, round concrete columns, stone-clad end walls, ochre render, laterite paths"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188072747",
+   "used": "campus is 900 m wide: only one representative faculty block group is modelled, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-main",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "plain",
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    },
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "colour": "#2e2420"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e3da",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-upper",
+   "footprint": {
+    "rect": [
+     44,
+     14.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b53a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c8584a",
+    "pitch": 14,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-end",
+   "footprint": {
+    "rect": [
+     12,
+     13
+    ]
+   },
+   "at": [
+    -28,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e3da",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       1.0
+      ],
+      "height": 9,
+      "colour": "#6b4a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -21,
+     -7.4
+    ],
+    "end": [
+     21,
+     -7.4
+    ],
+    "count": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-step",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    -38,
+    2
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede6",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e3da",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery-block",
+   "footprint": {
+    "rect": [
+     40,
+     11
+    ]
+   },
+   "at": [
+    -4,
+    34
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c99a6b",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a3b30",
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#b8844f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/colonnade",
+     "params": {
+      "length": 1,
+      "count": 1,
+      "height": 4,
+      "radius": 0.4,
+      "kind": "round",
+      "colour": "#a8745a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -22,
+     28
+    ],
+    "end": [
+     16,
+     28
+    ],
+    "count": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "stone-end",
+   "footprint": {
+    "rect": [
+     5,
+     11
+    ]
+   },
+   "at": [
+    -26,
+    34
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e665d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.8,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#b8b0a2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -4,
+    -22
+   ],
+   "params": {
+    "length": 60,
+    "height": 0.9,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#7a7468"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -18
+   ],
+   "params": {
+    "colour": "#2f4a7a",
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.0,
+    "thickness": 1.2,
+    "kind": "wall",
+    "colour": "#3f6b3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "length": 56,
+    "height": 1.6,
+    "thickness": 0.7,
+    "kind": "wall",
+    "colour": "#8a8478"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -8
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "One faculty block of a 900 m campus; red upper storey under asymmetric shed approximated, gallery recesses and hedge terraces simplified, drive not curved"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-community-workshop"
+}

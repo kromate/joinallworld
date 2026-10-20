@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-tsunami-parc",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/652865991",
+   "used": "name-quality match (tourism=theme_park, about 170 x 130 m irregular site, bearing 146); only a central play-and-kiosk portion at reduced size is modelled inside the scene clamp, the lawn is the site ground"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small recreation park with colourful kiosks, low covered pavilion, play area, fence and gate, umbrellas; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#f6f3ea",
+    "cap_colour": "#c4503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "snack-hall",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    22
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c07a",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c4503a",
+    "material": "metal-sheet",
+    "rise": 1.1,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "carousel",
+   "at": [
+    24,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 5.5,
+    "height": 7,
+    "colour": "#d94f4f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -20,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#a9c0b8"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9c07a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c4503a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -8,
+    0,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 5,
+    "colours": [
+     "#c4503a",
+     "#d9c07a",
+     "#a9c0b8",
+     "#f6f3ea"
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.6,
+    "colour": "#a9c0b8",
+    "board_colour": "#d9c07a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -34
+     ],
+     [
+      40,
+      -34
+     ],
+     [
+      40,
+      34
+     ],
+     [
+      -40,
+      34
+     ],
+     [
+      -40,
+      -34
+     ]
+    ],
+    "height": 1.8,
+    "colour": "#a9c0b8",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    20,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "count": 6,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; layout of kiosks, pavilion and play area is typical, not the real arrangement"
+ }
+}

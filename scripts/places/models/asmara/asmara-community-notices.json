@@ -1,0 +1,273 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Asmara,_ministero_dell%27educazione_02.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Sailko",
+   "view": "street",
+   "file": "/tmp/places-evidence/asmara/moe1.jpg",
+   "used": "stepped street block: ochre stucco upper floors over a rose-red ground storey, red entrance bay with clock and ribbon window, taller red stair tower at left, lower ochre link, framed windows, flat roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/278141933",
+   "used": "overall plan size (48 x 43 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base-rose",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5675c",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-ochre",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.4,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c9a56e",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-bay",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    -9,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0594f",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#d8cdb8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867d",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    -19,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0594f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-ochre",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    -12.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#cba961",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#d8cdb8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -9,
+    -11.3,
+    3.6
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.8,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -9,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "count": 3
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -3,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2,
+    "colours": [
+     "#4189dd",
+     "#ea3a2a"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     -14
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wall relief, flower-shop neighbour, clock and stepped tower crown omitted; windows are generic; ground-floor rustication not modelled."
+ }
+}

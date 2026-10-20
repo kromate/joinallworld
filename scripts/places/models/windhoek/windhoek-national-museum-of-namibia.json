@@ -1,0 +1,703 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-national-museum-of-namibia",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alte_Feste_Windhoek.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "Lonelyplanet (de.wikipedia)",
+   "view": "front",
+   "file": "/tmp/places-evidence/windhoek/feste2.jpg",
+   "used": "long low whitewashed verandah wing with balustrade and open arcade, two crenellated end towers, central stair up a lawn, rubble plinth, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alte_Feste_Windhoek_(Aussenansicht).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/windhoek/feste1.jpg",
+   "used": "crenellated tower with barred window, light rubble stone base, shallow verandah roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/121547674",
+   "used": "identity only; outline is a whole-complex polygon, the photographed front range is modelled instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     66,
+     24
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8ccb4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8ccb4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah-wing",
+   "footprint": {
+    "rect": [
+     50,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 3.5,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e8e0cc",
+    "windows": "none",
+    "faces": {},
+    "windowRatio": 0.05,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "material": "metal-sheet",
+    "overhang": 0.3,
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     44,
+     5
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 3.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 3.5,
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3efe6",
+    "windows": "punched",
+    "windowRatio": 0.04
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d2",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 3.5,
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3efe6",
+    "windows": "punched",
+    "windowRatio": 0.04
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d2",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34.5,
+     -4.5,
+     0
+    ],
+    "end": [
+     -25.5,
+     -4.5,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     "z0": 11.7,
+     "height": 0.8,
+     "storeys": 1,
+     "wall": {
+      "material": "whitewash",
+      "colour": "#f3efe6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f3efe6"
+     }
+    },
+    "lod2Step": 50,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34.5,
+     4.5,
+     0
+    ],
+    "end": [
+     -25.5,
+     4.5,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     "z0": 11.7,
+     "height": 0.8,
+     "storeys": 1,
+     "wall": {
+      "material": "whitewash",
+      "colour": "#f3efe6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f3efe6"
+     }
+    },
+    "lod2Step": 50,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     25.5,
+     -4.5,
+     0
+    ],
+    "end": [
+     34.5,
+     -4.5,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     "z0": 11.7,
+     "height": 0.8,
+     "storeys": 1,
+     "wall": {
+      "material": "whitewash",
+      "colour": "#f3efe6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f3efe6"
+     }
+    },
+    "lod2Step": 50,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     25.5,
+     4.5,
+     0
+    ],
+    "end": [
+     34.5,
+     4.5,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     "z0": 11.7,
+     "height": 0.8,
+     "storeys": 1,
+     "wall": {
+      "material": "whitewash",
+      "colour": "#f3efe6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f3efe6"
+     }
+    },
+    "lod2Step": 50,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -3.4,
+    3.5
+   ],
+   "params": {
+    "length": 46,
+    "count": 14,
+    "height": 3.2,
+    "radius": 0.25,
+    "kind": "square",
+    "beamHeight": 0.4,
+    "roofDepth": 1.0,
+    "colour": "#f6f2e8",
+    "roofColour": "#d6d0c2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -13,
+    -4.6,
+    3.5
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "rail",
+    "pillarEvery": 2.5,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    13,
+    -4.6,
+    3.5
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "rail",
+    "pillarEvery": 2.5,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 3.5,
+    "run": 0.8,
+    "count": 14,
+    "colour": "#8c8270"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -3.1,
+    -15,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "height": 1.2,
+    "thickness": 0.5,
+    "colour": "#f3efe6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    3.1,
+    -15,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "height": 1.2,
+    "thickness": 0.5,
+    "colour": "#f3efe6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 66,
+    "height": 1.0,
+    "thickness": 0.8,
+    "colour": "#b9a98a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -20.5,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "height": 0.7,
+    "thickness": 0.6,
+    "colour": "#b9a98a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "road",
+   "footprint": {
+    "rect": [
+     110,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -31
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f6d68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6d68"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18,
+    "count": 1,
+    "colour": "#4d6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "count": 1,
+    "colour": "#4d6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 19,
+    "count": 1,
+    "colour": "#4d6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "count": 1,
+    "colour": "#4d6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "count": 1,
+    "colour": "#4d6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -23,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.0,
+    "count": 3,
+    "spread": 2.5,
+    "colour": "#5a7a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.0,
+    "count": 3,
+    "spread": 2.5,
+    "colour": "#5a7a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.0,
+    "count": 3,
+    "spread": 2.5,
+    "colour": "#5a7a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.0,
+    "count": 3,
+    "spread": 2.5,
+    "colour": "#5a7a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "verandah is an enclosed light box behind a square-post colonnade rather than an open gallery with visible interior; steps are a plain slab with simple cheek walls (no rubble flanks, no arched gateway); merlons only on towers and verandah roofline at LOD0/1; palms are generic low-poly fans; shrubs and road are simple; rear block dropped at LOD2; verandah roofline merlon strip and tower side merlons omitted for the LOD2 budget"
+ }
+}

@@ -1,0 +1,744 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grande_mosqu%C3%A9e_de_Dakar.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "M.GADJ!",
+   "view": "front",
+   "file": "/tmp/places-evidence/dakar/mos1.jpg",
+   "used": "long white wall with cornice and blind arched panels, three projecting green-tiled horseshoe gateways, green pyramidal roofs, tall square lattice minaret"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grande_Mosqu%C3%A9_de_dakar.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rignese",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dakar/mos2.jpg",
+   "used": "minaret proportion: tall slim white shaft, lattice bands, small lantern top"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3471478",
+   "used": "complex outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 2.4,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Front wall, three horseshoe gateways with green pyramid roofs and squat lattice minaret are composed; zellige ornament, true horseshoe arch cutouts and the lattice diamond pattern are only suggested by flat bands and pointed openings; minaret slightly short; rear complex omitted."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     92,
+     30
+    ]
+   },
+   "at": [
+    0,
+    15
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6f5ef",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.55,
+    "bay": 7,
+    "glassColour": "#ebe9e0",
+    "faces": {
+     "front": "pointed",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6d8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eave-band",
+   "at": [
+    0,
+    -0.2
+   ],
+   "params": {
+    "rect": [
+     93,
+     1.2
+    ],
+    "z0": 6.4,
+    "height": 0.9,
+    "colour": "#2f6f4f",
+    "topColour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "zellige-trim",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -0.35
+   ],
+   "params": {
+    "rect": [
+     93,
+     0.4
+    ],
+    "z0": 5.6,
+    "height": 0.5,
+    "colour": "#b9c5b0",
+    "topColour": "#b9c5b0"
+   }
+  },
+  {
+   "type": "array",
+   "id": "niche-windows",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.3
+      ],
+      "height": 1.1,
+      "colour": "#7c8a86",
+      "topColour": "#7c8a86"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -39,
+     -0.2,
+     3.7
+    ],
+    "end": [
+     39,
+     -0.2,
+     3.7
+    ],
+    "count": 12,
+    "skip": [
+     5,
+     6,
+     7,
+     10,
+     11
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-roof-front",
+   "at": [
+    0,
+    6,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     88,
+     10
+    ],
+    "height": 1.2,
+    "topScale": [
+     0.95,
+     0.5
+    ],
+    "colour": "#55745d",
+    "topColour": "#55745d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-roof-back",
+   "at": [
+    0,
+    22,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     70,
+     14
+    ],
+    "height": 1.6,
+    "topScale": [
+     0.9,
+     0.4
+    ],
+    "colour": "#55745d",
+    "topColour": "#55745d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-c",
+   "at": [
+    1,
+    -1.3
+   ],
+   "params": {
+    "rect": [
+     6,
+     2.6
+    ],
+    "height": 9.5,
+    "colour": "#d8dccf",
+    "topColour": "#2f6f4f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-c-zellige",
+   "at": [
+    1,
+    -2.65
+   ],
+   "params": {
+    "rect": [
+     6.8,
+     0.25
+    ],
+    "height": 8.9,
+    "colour": "#7f9a86",
+    "topColour": "#7f9a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-c-arch",
+   "at": [
+    1,
+    -2.9
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.3
+    ],
+    "height": 7.7,
+    "colour": "#eef0e8",
+    "topColour": "#eef0e8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-c",
+   "at": [
+    1,
+    -3.1
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.3
+    ],
+    "height": 6.5,
+    "colour": "#1f5a3c",
+    "topColour": "#1f5a3c",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.3,
+    "glassColour": "#2f7a54",
+    "faces": {
+     "front": "windows",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-c-roof",
+   "at": [
+    1,
+    -1.3
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     3.6
+    ],
+    "z0": 9.5,
+    "height": 4.2,
+    "topScale": 0.08,
+    "colour": "#2f6f4f",
+    "topColour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-l",
+   "at": [
+    -12.5,
+    -1.1
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     2.2
+    ],
+    "height": 8.4,
+    "colour": "#d8dccf",
+    "topColour": "#2f6f4f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-l-zellige",
+   "at": [
+    -12.5,
+    -2.25
+   ],
+   "params": {
+    "rect": [
+     5.3999999999999995,
+     0.25
+    ],
+    "height": 7.800000000000001,
+    "colour": "#7f9a86",
+    "topColour": "#7f9a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-l-arch",
+   "at": [
+    -12.5,
+    -2.5
+   ],
+   "params": {
+    "rect": [
+     2.9999999999999996,
+     0.3
+    ],
+    "height": 6.6000000000000005,
+    "colour": "#eef0e8",
+    "topColour": "#eef0e8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-l",
+   "at": [
+    -12.5,
+    -2.7
+   ],
+   "params": {
+    "rect": [
+     2.1999999999999997,
+     0.3
+    ],
+    "height": 5.4,
+    "colour": "#1f5a3c",
+    "topColour": "#1f5a3c",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.3,
+    "glassColour": "#2f7a54",
+    "faces": {
+     "front": "windows",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-l-roof",
+   "at": [
+    -12.5,
+    -1.1
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     3.2
+    ],
+    "z0": 8.4,
+    "height": 2.4,
+    "topScale": 0.08,
+    "colour": "#2f6f4f",
+    "topColour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-r",
+   "at": [
+    12,
+    -1.1
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     2.2
+    ],
+    "height": 8.4,
+    "colour": "#d8dccf",
+    "topColour": "#2f6f4f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-r-zellige",
+   "at": [
+    12,
+    -2.25
+   ],
+   "params": {
+    "rect": [
+     5.3999999999999995,
+     0.25
+    ],
+    "height": 7.800000000000001,
+    "colour": "#7f9a86",
+    "topColour": "#7f9a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-r-arch",
+   "at": [
+    12,
+    -2.5
+   ],
+   "params": {
+    "rect": [
+     2.9999999999999996,
+     0.3
+    ],
+    "height": 6.6000000000000005,
+    "colour": "#eef0e8",
+    "topColour": "#eef0e8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-r",
+   "at": [
+    12,
+    -2.7
+   ],
+   "params": {
+    "rect": [
+     2.1999999999999997,
+     0.3
+    ],
+    "height": 5.4,
+    "colour": "#1f5a3c",
+    "topColour": "#1f5a3c",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.3,
+    "glassColour": "#2f7a54",
+    "faces": {
+     "front": "windows",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-r-roof",
+   "at": [
+    12,
+    -1.1
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     3.2
+    ],
+    "z0": 8.4,
+    "height": 2.4,
+    "topScale": 0.08,
+    "colour": "#2f6f4f",
+    "topColour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-base",
+   "at": [
+    1,
+    4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 15,
+    "colour": "#f6f5ef",
+    "topColour": "#f6f5ef",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-lattice",
+   "at": [
+    1,
+    4.5,
+    11
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "height": 5,
+    "colour": "#e9eee2",
+    "topColour": "#e9eee2",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.7,
+    "glassColour": "#5d7f6a",
+    "faces": {
+     "front": "windows",
+     "back": "windows",
+     "left": "windows",
+     "right": "windows"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-lattice-low",
+   "at": [
+    1,
+    4.5,
+    16
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "height": 5,
+    "colour": "#dfe6d8",
+    "topColour": "#dfe6d8",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.8,
+    "glassColour": "#4f7f64",
+    "faces": {
+     "front": "windows",
+     "back": "windows",
+     "left": "windows",
+     "right": "windows"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-band",
+   "at": [
+    1,
+    4.5,
+    21
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     6.0
+    ],
+    "height": 1.0,
+    "colour": "#2f6f4f",
+    "topColour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "array",
+   "id": "crenel",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    1,
+    4.5,
+    22
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 0.8,
+      "colour": "#f6f5ef",
+      "topColour": "#f6f5ef"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 2.9,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-top",
+   "at": [
+    1,
+    4.5,
+    22
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 6,
+    "colour": "#e9eee2",
+    "topColour": "#e9eee2",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.8,
+    "glassColour": "#5d7f6a",
+    "faces": {
+     "front": "windows",
+     "back": "windows",
+     "left": "windows",
+     "right": "windows"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-lantern-band",
+   "at": [
+    1,
+    4.5,
+    28
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     3.8
+    ],
+    "height": 0.6,
+    "colour": "#2f6f4f",
+    "topColour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "minaret-cap",
+   "at": [
+    1,
+    4.5,
+    28.6
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#e6dfc0",
+    "profile": [
+     [
+      1.4,
+      0
+     ],
+     [
+      1.2,
+      0.5
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.3,
+      1.5
+     ],
+     [
+      0.35,
+      1.8
+     ],
+     [
+      0,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   120,
+   70
+  ]
+ }
+}

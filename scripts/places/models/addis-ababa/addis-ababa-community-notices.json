@@ -1,0 +1,111 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/40162501",
+   "used": "real building outline (chevron plan, about 121 x 106 m), orientation and fit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building found (Commons search returned none); massing, fins, clock tower and forecourt follow the brief."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c6",
+    "windows": "none",
+    "plinth": 0.8,
+    "bands": "#8c8a82",
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "id": "tower",
+   "at": [
+    0,
+    -15,
+    26
+   ],
+   "params": {
+    "width": 5,
+    "height": 22,
+    "cap": "flat",
+    "clock": true,
+    "windows": "none",
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.9,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#bdb6a6"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flags",
+   "at": [
+    -24,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 6,
+    "spacing": 10,
+    "colours": [
+     "#2e8b3a",
+     "#f2d02b",
+     "#d12f2f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-community-notices"
+}

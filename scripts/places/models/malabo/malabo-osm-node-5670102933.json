@@ -1,0 +1,168 @@
+{
+ "verified": "text",
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "wall",
+    "colour": "#8b6a4a",
+    "points": [
+     [
+      -14,
+      0
+     ],
+     [
+      -4,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "pillar": 0.35,
+    "leaf": "bars",
+    "colour": "#7a5a3c",
+    "leafColour": "#6b4f36"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    4,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "wall",
+    "colour": "#8b6a4a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.8,
+    "bottom": 1.0,
+    "colour": "#6b4f36",
+    "frameColour": "#4a3828"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 2.8,
+    "roof": "gable",
+    "rise": 1.2,
+    "posts": 4,
+    "colour": "#8b6a4a",
+    "cap_colour": "#6b5a45"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    22
+   ],
+   "params": {
+    "width": 46,
+    "depth": 10,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 3,
+    "spread": 5,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 2,
+    "spread": 5,
+    "line": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-node-5670102933",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/malabo.json",
+   "used": "typed brief only; no photo found in the evidence file"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo or description; gate, signboard, shelter and forest wall are a typed guess from the place type."
+ }
+}

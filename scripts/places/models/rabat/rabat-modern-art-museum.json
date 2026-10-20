@@ -1,0 +1,441 @@
+{
+ "name": "Mohammed VI Museum of Modern and Contemporary Art",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MMVI.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "J. N'Demenye",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/rabat-modern-art-museum-0.jpg",
+   "used": "white two-storey frontage of paired horseshoe-arch bays with lattice screens, taller central block with one great glazed arch, dark patterned frieze bands, wide shallow steps and bollarded plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/256716497",
+   "used": "overall size only (3,520 m2, containing match; the real outline is zig-zag and rotated, so a straight frontage is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 23,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wing upper storey is a row of arched windows with lattice pilasters, not the real two-level paired horseshoe-arch arcade with lattice spandrels; great arch is a pointed dark loft with white frame hidden, not a recessed horseshoe; no carved frieze detail"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     60,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f1ea",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "windowShape": "arched",
+    "glassColour": "#2a3138",
+    "plinth": 0.6,
+    "parapet": 0.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 7.5,
+      "depth": 1.4,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cf",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     20,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f1ea",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-wings",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -13.05
+   ],
+   "params": {
+    "rect": [
+     60.4,
+     0.3
+    ],
+    "z0": 10.3,
+    "height": 1.0,
+    "colour": "#3f474c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze-centre",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -13.05
+   ],
+   "params": {
+    "rect": [
+     20.4,
+     0.3
+    ],
+    "z0": 14.6,
+    "height": 1.3,
+    "colour": "#3f474c"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "arch-frame",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -13.0,
+    0
+   ],
+   "params": {
+    "colour": "#f7f5ef",
+    "sections": [
+     {
+      "z": 0.6,
+      "rect": [
+       14,
+       0.3
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       14,
+       0.3
+      ]
+     },
+     {
+      "z": 9.2,
+      "rect": [
+       12,
+       0.3
+      ]
+     },
+     {
+      "z": 11.4,
+      "rect": [
+       8.5,
+       0.3
+      ]
+     },
+     {
+      "z": 13.2,
+      "rect": [
+       4.5,
+       0.3
+      ]
+     },
+     {
+      "z": 14.2,
+      "rect": [
+       1.2,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "glass-arch",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -13.25,
+    0
+   ],
+   "params": {
+    "colour": "#26323a",
+    "sections": [
+     {
+      "z": 0.6,
+      "rect": [
+       10.8,
+       0.3
+      ]
+     },
+     {
+      "z": 6.3,
+      "rect": [
+       10.8,
+       0.3
+      ]
+     },
+     {
+      "z": 8.6,
+      "rect": [
+       9.4,
+       0.3
+      ]
+     },
+     {
+      "z": 10.6,
+      "rect": [
+       6.4,
+       0.3
+      ]
+     },
+     {
+      "z": 12.2,
+      "rect": [
+       3.2,
+       0.3
+      ]
+     },
+     {
+      "z": 13.0,
+      "rect": [
+       0.8,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lat-c-8",
+   "lod": [
+    0
+   ],
+   "at": [
+    -8.0,
+    -13.2
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "z0": 0.8,
+    "height": 13.6,
+    "colour": "#f2efe8",
+    "windows": "rect",
+    "windowShape": "rect",
+    "windowRatio": 0.5,
+    "glassColour": "#e0dcd0",
+    "faces": [
+     "front"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lat-c+8",
+   "lod": [
+    0
+   ],
+   "at": [
+    8.0,
+    -13.2
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "z0": 0.8,
+    "height": 13.6,
+    "colour": "#f2efe8",
+    "windows": "rect",
+    "windowShape": "rect",
+    "windowRatio": 0.5,
+    "glassColour": "#e0dcd0",
+    "faces": [
+     "front"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "wing-lattice",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -13.2,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.3
+      ],
+      "z0": 0.8,
+      "height": 9.6,
+      "colour": "#f2efe8",
+      "windows": "rect",
+      "windowShape": "rect",
+      "windowRatio": 0.45,
+      "glassColour": "#c9c5b8",
+      "faces": [
+       "front"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     0
+    ],
+    "end": [
+     26,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 14
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 1.0,
+      "colour": "#b7bcc0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     0
+    ],
+    "end": [
+     26,
+     0
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-modern-art-museum"
+}

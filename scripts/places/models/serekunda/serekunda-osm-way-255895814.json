@@ -1,0 +1,216 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/780239580",
+   "used": "main laboratory block outline 36 x 7 m (rotated 76 deg)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/255895814",
+   "used": "compound area 64,000 m2 (spacing of the outbuildings)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1982 livestock research station, low render blocks with louvres and corrugated hip roofs; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lab-block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "louvre",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bands": "#8fb0a6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -28
+   ],
+   "rotDeg": 8,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b4a6",
+    "windows": "louvre",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8fb0a6",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cattle-shed",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    34,
+    26
+   ],
+   "rotDeg": 76,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b4a6",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a9a96",
+    "material": "corrugated",
+    "rise": 1.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    -36,
+    10
+   ],
+   "rotDeg": 76,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49b",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "radius": 2.0,
+    "height": 3.0,
+    "legs": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "params": {
+    "points": [
+     [
+      -60,
+      -60
+     ],
+     [
+      60,
+      -60
+     ],
+     [
+      60,
+      50
+     ],
+     [
+      -60,
+      50
+     ],
+     [
+      -60,
+      -60
+     ]
+    ],
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#8a8f8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-255895814",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo: lab block uses the real 36x7 m outline, other blocks and cattle shed are placed typically, not surveyed"
+ }
+}

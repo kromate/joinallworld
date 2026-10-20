@@ -1,0 +1,259 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/654502236",
+   "used": "leisure=park confirmed; outline is 1.1 km x 0.9 km, far beyond the scene clamp, so a 110 x 80 m promenade corner is modelled"
+  },
+  {
+   "kind": "text",
+   "used": "brief: lawns, shade trees, promenade paths, small pavilion, railings, bandstand; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 35,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 80,
+    "colour": "#5f9a45"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -20
+     ],
+     [
+      -20,
+      -10
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      30,
+      12
+     ],
+     [
+      55,
+      10
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#d3cfc0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      5
+     ],
+     [
+      -5,
+      30
+     ],
+     [
+      -15,
+      40
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#d3cfc0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -10
+     ],
+     [
+      -25,
+      -38
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#d3cfc0"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    28,
+    24,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "colour": "#efeadb",
+    "cap_colour": "#9a4a38"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    -4,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -40
+     ],
+     [
+      55,
+      -40
+     ],
+     [
+      55,
+      40
+     ],
+     [
+      -55,
+      40
+     ],
+     [
+      -55,
+      -40
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.12,
+    "kind": "wall",
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    28,
+    16,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.5,
+    "run": 2,
+    "count": 3,
+    "colour": "#d3cfc0"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 28,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    32,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 26,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 6,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-recreation",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and OSM outline far too large; a typical promenade corner of a Malabo park."
+ }
+}

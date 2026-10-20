@@ -1,0 +1,457 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://en.wikipedia.org/wiki/File:Dembel_City_Center.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Vob08",
+   "view": "front",
+   "file": "/tmp/places-evidence/addis-ababa/dembel-main.jpg",
+   "used": "yellow rendered 4-storey podium with ribbon windows and domed terrace, concave blue curtain-glass body, tall glass end tower right, dark glass and brown blocks left, yellow slab at right edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/42553504",
+   "used": "overall extent (112 m wide); the OSM way is tagged parking so the massing follows the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Curved glass is a 6-facet arc with storey colour bands instead of mullion grid and sunshade fins; podium front only gently curved, rotunda is a simple dome, shopfront signage is a single blank board; left glass blocks are plain slabs; street furniture generic."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "polygon": [
+     [
+      -56,
+      0
+     ],
+     [
+      -8,
+      0
+     ],
+     [
+      2.7,
+      -2.25
+     ],
+     [
+      13.3,
+      -3.9
+     ],
+     [
+      24.0,
+      -4.5
+     ],
+     [
+      34.7,
+      -3.9
+     ],
+     [
+      45.3,
+      -2.25
+     ],
+     [
+      56.0,
+      -0.0
+     ],
+     [
+      56,
+      0
+     ],
+     [
+      56,
+      36
+     ],
+     [
+      -56,
+      36
+     ]
+    ]
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c668",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "bay": 20,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a988c",
+    "parapet": 0.8
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-body",
+   "params": {
+    "points": [
+     [
+      -19.7,
+      7.14
+     ],
+     [
+      -7.13,
+      12.18
+     ],
+     [
+      5.43,
+      15.06
+     ],
+     [
+      18.0,
+      16.0
+     ],
+     [
+      30.57,
+      15.06
+     ],
+     [
+      43.13,
+      12.18
+     ],
+     [
+      55.7,
+      7.14
+     ],
+     [
+      60.0,
+      25.01
+     ],
+     [
+      46.0,
+      30.11
+     ],
+     [
+      32.0,
+      33.04
+     ],
+     [
+      18.0,
+      34.0
+     ],
+     [
+      4.0,
+      33.04
+     ],
+     [
+      -10.0,
+      30.11
+     ],
+     [
+      -24.0,
+      25.01
+     ]
+    ],
+    "z0": 15,
+    "height": 33,
+    "colour": "#42677f",
+    "topColour": "#5c6b75",
+    "windows": "none",
+    "storeys": 4,
+    "windowRatio": 0.55,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#42677f",
+      "#385a70"
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-right",
+   "at": [
+    44,
+    2
+   ],
+   "params": {
+    "rect": [
+     16,
+     18
+    ],
+    "z0": 15,
+    "height": 52,
+    "colour": "#375d7a",
+    "topColour": "#6f7f8a",
+    "windows": "none",
+    "storeys": 5,
+    "windowRatio": 0.55,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#375d7a",
+      "#2f5068"
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-yellow",
+   "at": [
+    54,
+    4
+   ],
+   "params": {
+    "rect": [
+     11,
+     16
+    ],
+    "z0": 15,
+    "height": 46,
+    "colour": "#d4c060",
+    "topColour": "#9a988c",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "storeys": 5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#d4c060",
+      "#c4b050"
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-left",
+   "at": [
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     22
+    ],
+    "z0": 15,
+    "height": 30,
+    "colour": "#3a4650",
+    "topColour": "#5a6068",
+    "windows": "none",
+    "storeys": 4,
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-brown",
+   "at": [
+    -17,
+    2
+   ],
+   "params": {
+    "rect": [
+     15,
+     22
+    ],
+    "z0": 15,
+    "height": 33,
+    "colour": "#58403c",
+    "topColour": "#5a6068",
+    "windows": "none",
+    "storeys": 4,
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band-gold",
+   "at": [
+    -6.5,
+    2
+   ],
+   "params": {
+    "rect": [
+     5,
+     22
+    ],
+    "z0": 15,
+    "height": 34,
+    "colour": "#b9964b",
+    "topColour": "#9a988c",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "storeys": 4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern-dome",
+   "at": [
+    18,
+    2,
+    15.2
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#bcd0dc",
+    "profile": [
+     [
+      7,
+      0
+     ],
+     [
+      7,
+      0.8,
+      "#cfd8de"
+     ],
+     [
+      6.4,
+      1.6
+     ],
+     [
+      4,
+      2.6
+     ],
+     [
+      0,
+      3.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "canopy",
+   "id": "entrance",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 5,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#7b7a70",
+    "edgeColour": "#e8dc8c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board-red",
+   "at": [
+    8,
+    -18.8,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 2.6,
+    "bottom": 8.2,
+    "colour": "#b8332f",
+    "frameColour": "#cfcac0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board-dark",
+   "at": [
+    -24,
+    -18.8,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 2,
+    "bottom": 6.5,
+    "colour": "#2c2f33",
+    "frameColour": "#cfcac0",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     0
+    ],
+    "end": [
+     40,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 7
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-dembel-city-center"
+}

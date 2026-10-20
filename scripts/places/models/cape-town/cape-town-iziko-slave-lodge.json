@@ -1,0 +1,463 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-iziko-slave-lodge",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Slave_Lodge_museum.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "HelenOnline",
+   "view": "front",
+   "file": "/tmp/places-evidence/cape-town/iziko-slave-lodge-0.jpg",
+   "used": "long cream-yellow plastered two-storey front, flat parapet with cornice, left pedimented pavilion with gold relief, black-shuttered windows in two rows, white quoins at the corner"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/21445411",
+   "used": "plan about 60.8 x 40.3 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 38
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "rect": [
+     60.8,
+     40.3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ebcb93",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "glassColour": "#3a2c22",
+    "bay": 8.5,
+    "faces": {
+     "front": "punched",
+     "right": "punched",
+     "left": "punched",
+     "back": "punched"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7468",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     15,
+     1.8
+    ]
+   },
+   "at": [
+    -22,
+    -21.0
+   ],
+   "height": 10.2,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ecd09a",
+    "windows": "punched",
+    "windowRatio": 0.13,
+    "glassColour": "#3a2c22",
+    "bay": 5,
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe8d2",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "market-open/pediment",
+   "on": "pavilion",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "width": 15.6,
+    "rise": 5.5,
+    "depth": 0.9,
+    "colour": "#f1eadb"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -22,
+    -22.3,
+    10.4
+   ],
+   "params": {
+    "colour": "#d4a24c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       11.6,
+       0.5
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.6,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.5,
+       0.9
+      ]
+     },
+     "height": 0.6,
+     "wall": {
+      "material": "stone",
+      "colour": "#efe9d9",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#efe9d9"
+     }
+    },
+    "mode": "line",
+    "count": 14,
+    "start": [
+     30.4,
+     -20.5,
+     0.2
+    ],
+    "end": [
+     30.4,
+     -20.5,
+     9.0
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -22,
+    -24.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.15,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#a9a496"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     "height": 0.6,
+     "wall": {
+      "material": "stone",
+      "colour": "#f1eadb",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f1eadb"
+     }
+    },
+    "mode": "line",
+    "count": 14,
+    "start": [
+     29.7,
+     -20.5,
+     0.8
+    ],
+    "end": [
+     29.7,
+     -20.5,
+     9.6
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil0",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -29.6,
+    -22.2
+   ],
+   "z0": 0,
+   "height": 10.2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eadb",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eadb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil1",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -14.4,
+    -22.2
+   ],
+   "z0": 0,
+   "height": 10.2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eadb",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eadb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-sur",
+   "footprint": {
+    "rect": [
+     3.6,
+     0.5
+    ]
+   },
+   "at": [
+    -22,
+    -22.35
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eadb",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eadb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -22,
+    -22.5
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#3d2f26",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d2f26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-pan",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.5
+    ]
+   },
+   "at": [
+    -22,
+    -22.6
+   ],
+   "z0": 0.4,
+   "height": 2.8,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#4a3a2e",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "banner0",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -27.4,
+    -22.4
+   ],
+   "z0": 2.6,
+   "height": 6.0,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#5b4a3a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b4a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "banner1",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -17.0,
+    -22.4
+   ],
+   "z0": 2.6,
+   "height": 6.0,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#5b4a3a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b4a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "banner-c",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    33,
+    -20.6
+   ],
+   "z0": 2.2,
+   "height": 6.0,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#5b4a3a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b4a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -26
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "windows are black rectangles not louvred shutter pairs; pavilion pilasters and banners are simple boxes; quoins are plain blocks; no relief on tympanum; cream is slightly paler than photo"
+ }
+}

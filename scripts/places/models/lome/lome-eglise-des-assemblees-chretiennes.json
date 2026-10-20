@@ -1,0 +1,272 @@
+{
+ "name": "Église des Assemblées Chrétiennes",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/200062018",
+   "used": "real outline 36 x 18 m, building=temple, rotated 38 degrees from north-south"
+  },
+  {
+   "kind": "text",
+   "used": "brief: wide boxy auditorium hall in painted render, taller entrance facade in blue, blank sign board, steel cross, perimeter wall and gate; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "rect",
+    "glassColour": "#6c9ac0",
+    "plinth": 0.5,
+    "trimColour": "#bdb7a8",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#bdb7a8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#80858a",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-front",
+   "footprint": {
+    "rect": [
+     12,
+     3.2
+    ]
+   },
+   "at": [
+    -6.4,
+    -8.2
+   ],
+   "rotDeg": -38,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6c9ac0",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2eee4",
+    "parapet": 0.5,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    -8.74,
+    -11.19,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 3.5,
+    "thickness": 0.35,
+    "colour": "#bdb7a8"
+   },
+   "rotDeg": -38
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9.11,
+    -11.66,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.5,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#bdb7a8"
+   },
+   "rotDeg": -38
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16.98,
+    -3.87,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 1.8,
+    "bottom": 1.6,
+    "colour": "#6c9ac0",
+    "frameColour": "#f2eee4"
+   },
+   "rotDeg": -38
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -15.47,
+    -13.3,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#bdb7a8"
+   },
+   "rotDeg": -38
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -1.28,
+    -24.38,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "pillar": 0.6,
+    "leaf": "bars",
+    "colour": "#bdb7a8"
+   },
+   "rotDeg": -38
+  },
+  {
+   "type": "car",
+   "at": [
+    -20.74,
+    -16.79,
+    0
+   ],
+   "params": {
+    "colour": "#d0d3d6",
+    "count": 3,
+    "spacing": 3.0
+   },
+   "rotDeg": -38
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25.07,
+    6.9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 5,
+    "line": 6
+   },
+   "rotDeg": -38
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    -6.4,
+    -8.2,
+    12.5
+   ],
+   "rotDeg": -38,
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 4.0,
+    "colour": "#8d9298"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    -6.4,
+    -8.2,
+    14.2
+   ],
+   "rotDeg": -38,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#8d9298"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-eglise-des-assemblees-chretiennes",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint is the real OSM outline, entrance front, shed roof, steel cross, sign board and wall are assumed from the brief; entrance side unknown."
+ }
+}

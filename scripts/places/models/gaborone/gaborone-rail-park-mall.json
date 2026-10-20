@@ -1,0 +1,158 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/261197878",
+   "used": "real irregular mall outline (260 m, fitted to scene clamp), 2 levels"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "painted render in sand with teal glass accent, blank sign board, awning, car park by the railway"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8bd",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bay": 5,
+    "plinth": 0.5,
+    "bands": "#6f8a8f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "height": 15,
+    "colour": "#6f8a8f",
+    "topColour": "#e6d8bd",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -55.5,
+    10
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -50,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 36,
+    "depth": 6,
+    "height": 4.5,
+    "columns": 6,
+    "colour": "#ffffff",
+    "edgeColour": "#6f8a8f"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -90,
+    -85,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 8,
+    "spacing": 26
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 40,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -80,
+     -95
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     20,
+     -88
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     75,
+     -80
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-rail-park-mall",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable photo (only a street snap of an indoor scene); real OSM outline simplified, facade and entrance typed from brief"
+ }
+}

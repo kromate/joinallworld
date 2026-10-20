@@ -1,0 +1,405 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-brazza-memorial",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Memorial_pierre_Savorgnan_de_Brazza_24.jpg",
+   "licence": "CC0",
+   "author": "Africany",
+   "view": "front",
+   "file": "/tmp/places-evidence/brazzaville/mem24.jpg",
+   "used": "round cream drum with a banded flat roof ring and arched glazing, four-column gabled portico with steps, white standing statue on a stepped plinth with a basin in front, brick-paver plaza, palms and tall conifers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Memorial_pierre_Savorgnan_de_Brazza_31.jpg",
+   "licence": "CC0",
+   "author": "Africany",
+   "view": "street",
+   "used": "paving pattern, conifers and surroundings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/370986946",
+   "used": "circular drum plan with portico bump, rotated to face -y"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.33,
+  "margin": 0.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rotunda",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 180
+   },
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2c2",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "arched",
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#8a6a2a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6c66",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 17.6,
+    "n": 40,
+    "z0": 9.5,
+    "height": 1.4,
+    "colour": "#8a6a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    2.5,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 21,
+    "depth": 8,
+    "height": 12.5,
+    "columns": 4,
+    "pediment": true,
+    "steps": 7,
+    "colour": "#e4e0d4",
+    "roofColour": "#d4d1c8"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    2.5,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 21,
+    "rise": 0.35,
+    "run": 0.7,
+    "count": 5,
+    "colour": "#4a4540"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -33,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 15.5,
+    "n": 40,
+    "z0": 10.9,
+    "height": 0.7,
+    "colour": "#6f5520",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    16,
+    -40,
+    0
+   ],
+   "params": {
+    "radius": 8,
+    "waterColour": "#6fa8c4",
+    "rimColour": "#cfcac0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "height": 1.2,
+    "colour": "#c9b48f",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "z0": 1.2,
+    "height": 1.2,
+    "colour": "#c9b48f",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     4.6
+    ],
+    "z0": 2.4,
+    "height": 2.4,
+    "colour": "#c4ac84",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -14,
+    -32,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 6,
+    "depth": 2.5,
+    "colours": [
+     "#d9622b",
+     "#e8832e"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    16,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#f2f0ea",
+    "sections": [
+     {
+      "z": 5,
+      "rect": [
+       3.2,
+       2.4
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       3.0,
+       2.2
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       2.2,
+       1.7
+      ]
+     },
+     {
+      "z": 12.3,
+      "rect": [
+       2.9,
+       1.6
+      ]
+     },
+     {
+      "z": 13.6,
+      "rect": [
+       2.4,
+       1.4
+      ]
+     },
+     {
+      "z": 14.0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 15.4,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 15.6,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18.2,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 4.8,
+    "height": 11,
+    "colour": "#e0ddd5",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -24
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -26
+    ],
+    "height": 6
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     48,
+     -6
+    ],
+    "height": 22
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     54,
+     -12
+    ],
+    "height": 19
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     44,
+     -14
+    ],
+    "height": 17
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "statue is a lofted robed figure without face or arm detail and sits far right of the rotunda; ground is grey paving not brown interlocking brick; no conifer cypress texture; pediment top reads dark; no tents or hedges"
+ }
+}

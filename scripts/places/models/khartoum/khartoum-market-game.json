@@ -1,0 +1,370 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/khartoum.json#khartoum-market-game",
+   "used": "Souq Sitta street market: tin-roofed lock-up rows around a central lane, corrugated sheds, cloth awnings and umbrella stalls; no photo or OSM outline (match none)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    28,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.4,
+    "shutter_colours": [
+     "#6f8a96",
+     "#8a5a3c",
+     "#b8a47a"
+    ],
+    "awning_colours": [
+     "#b5574a",
+     "#d9a94a",
+     "#5f86a3",
+     "#8aa57a",
+     "#e4dac2",
+     "#a9774f"
+    ],
+    "roof_colour": "#8a9498",
+    "roof_material": "corrugated",
+    "wall_colour": "#cdb890"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    22,
+    30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 34,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.4,
+    "shutter_colours": [
+     "#6f8a96",
+     "#8a5a3c",
+     "#b8a47a"
+    ],
+    "awning_colours": [
+     "#b5574a",
+     "#d9a94a",
+     "#5f86a3",
+     "#8aa57a",
+     "#e4dac2",
+     "#a9774f"
+    ],
+    "roof_colour": "#8a9498",
+    "roof_material": "corrugated",
+    "wall_colour": "#cdb890"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -38,
+    -4,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.4,
+    "shutter_colours": [
+     "#6f8a96",
+     "#8a5a3c",
+     "#b8a47a"
+    ],
+    "awning_colours": [
+     "#b5574a",
+     "#d9a94a",
+     "#5f86a3",
+     "#8aa57a",
+     "#e4dac2",
+     "#a9774f"
+    ],
+    "roof_colour": "#8a9498",
+    "roof_material": "corrugated",
+    "wall_colour": "#cdb890"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    18,
+    0,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "shed",
+    "cladding": "corrugated",
+    "roof_colour": "#8a9498",
+    "roof_material": "corrugated",
+    "wall_colour": "#cdb890",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "cladding": "corrugated",
+    "roof_colour": "#7f888c",
+    "roof_material": "corrugated",
+    "wall_colour": "#ece3cf",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#b5574a",
+     "#d9a94a",
+     "#5f86a3",
+     "#8aa57a",
+     "#e4dac2",
+     "#a9774f"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    8,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "stall",
+    "colours": [
+     "#b5574a",
+     "#d9a94a",
+     "#5f86a3",
+     "#8aa57a",
+     "#e4dac2",
+     "#a9774f"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#b5574a",
+     "#d9a94a",
+     "#5f86a3",
+     "#8aa57a",
+     "#e4dac2",
+     "#a9774f"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "stall",
+    "colours": [
+     "#b5574a",
+     "#d9a94a",
+     "#5f86a3",
+     "#8aa57a",
+     "#e4dac2",
+     "#a9774f"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    40,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#b5574a",
+     "#e4dac2"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 5,
+    "colours": [
+     "#b5574a",
+     "#d9a94a",
+     "#5f86a3",
+     "#8aa57a",
+     "#e4dac2",
+     "#a9774f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -48,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    46,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or outline found; layout is typical Khartoum street-market vernacular, not surveyed. Not rendered against a photo."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-market-game",
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ }
+}

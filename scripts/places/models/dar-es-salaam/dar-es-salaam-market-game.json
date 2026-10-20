@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/42394912",
+   "used": "market footprint: rotated parallelogram about 91 x 60 m, bearing 161 degrees (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: rebuilt six-storey Kariakoo market complex (reopened Feb 2026), rooftop food court, 26 m, concrete with glass-curtain accents, blank sign board and awning"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kariakoo_Waking_Up.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ismizotz",
+   "view": "street",
+   "file": "/tmp/places-evidence/dar-es-salaam/kariakoo1.jpg",
+   "used": "NOT used for form: it shows the pre-fire 1970s market with a huge folded concrete roof, a different building from the rebuilt complex; only the street setting (market stalls, tarpaulins, parasols at the foot of the building) informs the site"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market",
+   "footprint": {
+    "osm": true
+   },
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4dfd2",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#3d5566",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c47c5a"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ground-arcade-glass",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.5
+    ],
+    "height": 4,
+    "colour": "#496274"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "food-court",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 26,
+   "height": 4.5,
+   "storeys": 1,
+   "on": "market",
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b7c7cf",
+    "glassColour": "#4a6a7c",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b8b2",
+    "parapet": 0.3,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -26.5,
+    15
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.6
+    ],
+    "height": 4,
+    "colour": "#2f5d8a"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -30
+    ],
+    "end": [
+     28,
+     -30
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "awning",
+      "params": {
+       "width": 6,
+       "colours": [
+        "#c47c5a",
+        "#e4dfd2"
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the rebuilt six-storey complex (only the pre-fire folded-roof market): real OSM outline plus brief facts. Sign board and awnings sit off the rotated outline and are not seen; facade detailing is generic."
+ }
+}

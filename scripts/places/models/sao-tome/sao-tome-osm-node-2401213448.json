@@ -1,0 +1,401 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/sao-tome.json",
+   "used": "natural waterfall in a forested ravine; no photo or outline found, size and form from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      32.0,
+      0.0
+     ],
+     [
+      30.43,
+      8.03
+     ],
+     [
+      25.89,
+      15.28
+     ],
+     [
+      18.81,
+      21.03
+     ],
+     [
+      9.89,
+      24.73
+     ],
+     [
+      0.0,
+      26.0
+     ],
+     [
+      -9.89,
+      24.73
+     ],
+     [
+      -18.81,
+      21.03
+     ],
+     [
+      -25.89,
+      15.28
+     ],
+     [
+      -30.43,
+      8.03
+     ],
+     [
+      -32.0,
+      0.0
+     ],
+     [
+      -30.43,
+      -8.03
+     ],
+     [
+      -25.89,
+      -15.28
+     ],
+     [
+      -18.81,
+      -21.03
+     ],
+     [
+      -9.89,
+      -24.73
+     ],
+     [
+      -0.0,
+      -26.0
+     ],
+     [
+      9.89,
+      -24.73
+     ],
+     [
+      18.81,
+      -21.03
+     ],
+     [
+      25.89,
+      -15.28
+     ],
+     [
+      30.43,
+      -8.03
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#5f8a45",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "colour": "#5b5a58",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       30,
+       6
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       27,
+       5
+      ],
+      "cx": 0.5
+     },
+     {
+      "z": 8,
+      "rect": [
+       23,
+       4.2
+      ],
+      "cx": -1
+     },
+     {
+      "z": 12,
+      "rect": [
+       19,
+       3.6
+      ],
+      "cx": -0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -14,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#6a6a66",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       6
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       5,
+       4.5
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       3,
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#4e4d4a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8,
+       6
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       5.5,
+       4
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       3,
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -3,
+    0.15
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "shape": "oval",
+    "colour": "#5f8ea3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -12,
+      -24,
+      0.2
+     ],
+     [
+      -8,
+      -16,
+      0.2
+     ],
+     [
+      -12,
+      -8,
+      0.2
+     ],
+     [
+      -8,
+      0,
+      0.2
+     ],
+     [
+      -4,
+      8,
+      0.2
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#9c8a6a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      0,
+      -9,
+      0.15
+     ],
+     [
+      2,
+      -14,
+      0.15
+     ],
+     [
+      -1,
+      -20,
+      0.15
+     ],
+     [
+      3,
+      -26,
+      0.15
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#5f8ea3"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -8,
+    -3,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -22,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 30,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 30,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 10,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Text only: rock face height, pool and path layout are generic; no fall of water shown as geometry beyond the stream bed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-osm-node-2401213448"
+}

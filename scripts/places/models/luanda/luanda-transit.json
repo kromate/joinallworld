@@ -1,0 +1,443 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Esta%C3%A7%C3%A3o_do_Bungo.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Carlos Reis",
+   "view": "front",
+   "file": "/tmp/places-evidence/luanda/bungo.jpg",
+   "used": "two-storey cream painted-render front with a slightly projecting centre pavilion (grey pilasters, three tall arched grey-blue doors, blank billboard panel, parapet board above), arched grille windows on the ground floor, shuttered rectangular windows with surrounds upstairs, string courses, low red tile roof behind the parapet, kerb and road in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/226831624",
+   "used": "name-matched station outline (about 61 m long): length and orientation only; the photo shows a plain rectangular front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.78,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     60,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6b8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.75,
+    "bay": 4.4,
+    "plinth": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#c9c3a0",
+    "glassColour": "#8a8f8c",
+    "trimColour": "#dcd3a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     60,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.6,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6b8",
+    "windows": "punched",
+    "windowRatio": 0.7,
+    "bay": 4.4,
+    "glassColour": "#7d8480",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "cornice": true,
+    "trimColour": "#e8e0c8",
+    "bands": "#c9c3a0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523c",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 0.5,
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-g",
+   "footprint": {
+    "rect": [
+     19,
+     13.4
+    ]
+   },
+   "at": [
+    0,
+    -0.7
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6b8",
+    "windows": "arched",
+    "plinth": 0.5,
+    "windowShape": "arched",
+    "windowRatio": 0.9,
+    "bay": 5.8,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#8c9aa6",
+    "trimColour": "#a9b0b4",
+    "bands": "#c9c3a0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4cdb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-u",
+   "footprint": {
+    "rect": [
+     19,
+     13.4
+    ]
+   },
+   "at": [
+    0,
+    -0.7
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6b8",
+    "windows": "none",
+    "plinth": 0,
+    "bands": "#c9c3a0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3a8",
+    "parapet": 0.5
+   },
+   "z0": 5.6
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-l",
+   "at": [
+    -9.6,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.7
+    ],
+    "z0": 0,
+    "height": 11.4,
+    "colour": "#cfcab4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-r",
+   "at": [
+    9.6,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.7
+    ],
+    "z0": 0,
+    "height": 11.4,
+    "colour": "#cfcab4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "billboard",
+   "at": [
+    0,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     15,
+     0.3
+    ],
+    "z0": 6.4,
+    "height": 4,
+    "colour": "#f4f0e8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bb-red",
+   "at": [
+    0,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     14.6,
+     0.2
+    ],
+    "z0": 6.6,
+    "height": 3.6,
+    "colour": "#b8473d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bb-train",
+   "at": [
+    2.5,
+    -7.82
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.15
+    ],
+    "z0": 7.0,
+    "height": 2.4,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bb-train-stripe",
+   "at": [
+    2.5,
+    -7.9
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     0.1
+    ],
+    "z0": 7.6,
+    "height": 0.8,
+    "colour": "#c23a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "string-course",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     60.6,
+     12.6
+    ],
+    "z0": 5.4,
+    "height": 0.35,
+    "colour": "#c9c3a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment-1",
+   "at": [
+    0,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     17,
+     0.8
+    ],
+    "z0": 11.8,
+    "height": 0.6,
+    "colour": "#e3dcbd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment-2",
+   "at": [
+    0,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.7
+    ],
+    "z0": 12.4,
+    "height": 0.7,
+    "colour": "#e3dcbd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment-3",
+   "at": [
+    0,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.6
+    ],
+    "z0": 13.1,
+    "height": 0.6,
+    "colour": "#e3dcbd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-board",
+   "at": [
+    0,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.4
+    ],
+    "z0": 11.0,
+    "height": 0.8,
+    "colour": "#d9d2b4"
+   }
+  },
+  {
+   "type": "station-canopy",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 52,
+    "depth": 7,
+    "height_inner": 6.5,
+    "height_outer": 3.8,
+    "kind": "iron",
+    "colour": "#7b8a8f"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 3,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    24,
+    -9,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -25,
+    -9,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     35,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "windows still wide and dark rather than tall shuttered portrait openings; centre arches are glazed arched windows, not recessed double doors with grey voussoirs; stepped pediment and train-image billboard are simplified blocks; no grilles, air-conditioners, bollards or lamp post; rear canopy and tracks generic"
+ }
+}

@@ -1,0 +1,423 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-airport-cape-town-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CTIA-CentralTerminal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Andres de Wet",
+   "view": "street",
+   "file": "/tmp/places-evidence/cape-town/airport.jpg",
+   "used": "elevated deck on splayed V columns, glazed hall with yellow panels, long swept white roof overhanging"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/797196863",
+   "used": "not used: the OSM match is the VORTAC beacon, not the terminal"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "arrivals",
+   "footprint": {
+    "rect": [
+     112,
+     14
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9cfa0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#e8dca0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     118,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 7,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9bb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     104,
+     18
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 8.4,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6c93c",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f6ef9a",
+    "glassColour": "#f0e6a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -52,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 9,
+    "height": 4,
+    "colour": "#2d3a4a",
+    "edgeColour": "#b9bcc0",
+    "columns": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 4,
+    "spread": 22
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    26,
+    -28,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    2,
+    3,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      36,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      -62,
+      0,
+      19.5
+     ],
+     [
+      -40,
+      0,
+      22.5
+     ],
+     [
+      -10,
+      0,
+      25.5
+     ],
+     [
+      0,
+      0,
+      25
+     ],
+     [
+      10,
+      0,
+      25.5
+     ],
+     [
+      40,
+      0,
+      22.5
+     ],
+     [
+      62,
+      0,
+      19.5
+     ]
+    ],
+    "curve": true,
+    "taper": 0.15,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    2,
+    -7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      -60,
+      0,
+      19.2
+     ],
+     [
+      -30,
+      0,
+      22.2
+     ],
+     [
+      0,
+      0,
+      24.5
+     ],
+     [
+      30,
+      0,
+      22.2
+     ],
+     [
+      60,
+      0,
+      19.2
+     ]
+    ],
+    "curve": true,
+    "colour": "#fff2a0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     0
+    ],
+    "end": [
+     48,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#e2dccd",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.4,
+          3
+         ],
+         "cx": -5
+        },
+        {
+         "z": 8,
+         "rect": [
+          2.8,
+          3
+         ],
+         "cx": -0.5
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#e2dccd",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.4,
+          3
+         ],
+         "cx": 5
+        },
+        {
+         "z": 8,
+         "rect": [
+          2.8,
+          3
+         ],
+         "cx": 0.5
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#e2dccd",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       4
+      ],
+      "cx": -12
+     },
+     {
+      "z": 10,
+      "rect": [
+       3,
+       4
+      ],
+      "cx": -2
+     },
+     {
+      "z": 19,
+      "rect": [
+       3.5,
+       4
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#e2dccd",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       4
+      ],
+      "cx": 12
+     },
+     {
+      "z": 10,
+      "rect": [
+       3,
+       4
+      ],
+      "cx": 2
+     },
+     {
+      "z": 19,
+      "rect": [
+       3.5,
+       4
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Swept wing roof and splayed V columns added; blue sky-reflection still tints deck roofs and ground patches (renderer glass slot); yellow hall approximated with ribbon glazing; night lighting not modelled"
+ }
+}

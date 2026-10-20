@@ -1,0 +1,512 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-martyrs-memorial",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alger_Memorial-du-Martyr_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mouh2jijel",
+   "view": "front",
+   "file": "/tmp/places-evidence/algiers/mm1.jpg",
+   "used": "three curved concrete leaves, pale grey-white colour, turret with arched windows and antenna between leaves, wide steps and palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Martyrs_Memorial._Algiers,_Algeria.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Boumediene15",
+   "view": "front",
+   "file": "/tmp/places-evidence/algiers/mm2.jpg",
+   "used": "leaf spacing and turret height"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1271711154",
+   "used": "esplanade extent (75 x 65 m), height 92 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "esplanade",
+   "params": {
+    "rect": [
+     75,
+     65
+    ],
+    "height": 5,
+    "colour": "#b9b2a0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "rise": 0.5,
+    "run": 3.0,
+    "count": 10,
+    "colour": "#c4bdae"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leaf-180",
+   "rotDeg": 180,
+   "at": [
+    0,
+    0,
+    5
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#d4cbb8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       52,
+       9
+      ],
+      "cy": -28
+     },
+     {
+      "z": 6,
+      "rect": [
+       46,
+       8
+      ],
+      "cy": -25
+     },
+     {
+      "z": 16,
+      "rect": [
+       36,
+       6.5
+      ],
+      "cy": -17
+     },
+     {
+      "z": 35,
+      "rect": [
+       22,
+       5
+      ],
+      "cy": -11.5
+     },
+     {
+      "z": 58,
+      "rect": [
+       12,
+       3.6
+      ],
+      "cy": -8
+     },
+     {
+      "z": 78,
+      "rect": [
+       8,
+       2.8
+      ],
+      "cy": -7
+     },
+     {
+      "z": 92,
+      "rect": [
+       5.5,
+       2
+      ],
+      "cy": -6.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leaf-300",
+   "rotDeg": 300,
+   "at": [
+    0,
+    0,
+    5
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#d4cbb8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       52,
+       9
+      ],
+      "cy": -28
+     },
+     {
+      "z": 6,
+      "rect": [
+       46,
+       8
+      ],
+      "cy": -25
+     },
+     {
+      "z": 16,
+      "rect": [
+       36,
+       6.5
+      ],
+      "cy": -17
+     },
+     {
+      "z": 35,
+      "rect": [
+       22,
+       5
+      ],
+      "cy": -11.5
+     },
+     {
+      "z": 58,
+      "rect": [
+       12,
+       3.6
+      ],
+      "cy": -8
+     },
+     {
+      "z": 78,
+      "rect": [
+       8,
+       2.8
+      ],
+      "cy": -7
+     },
+     {
+      "z": 92,
+      "rect": [
+       5.5,
+       2
+      ],
+      "cy": -6.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leaf-60",
+   "rotDeg": 60,
+   "at": [
+    0,
+    0,
+    5
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#d4cbb8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       52,
+       9
+      ],
+      "cy": -28
+     },
+     {
+      "z": 6,
+      "rect": [
+       46,
+       8
+      ],
+      "cy": -25
+     },
+     {
+      "z": 16,
+      "rect": [
+       36,
+       6.5
+      ],
+      "cy": -17
+     },
+     {
+      "z": 35,
+      "rect": [
+       22,
+       5
+      ],
+      "cy": -11.5
+     },
+     {
+      "z": 58,
+      "rect": [
+       12,
+       3.6
+      ],
+      "cy": -8
+     },
+     {
+      "z": 78,
+      "rect": [
+       8,
+       2.8
+      ],
+      "cy": -7
+     },
+     {
+      "z": 92,
+      "rect": [
+       5.5,
+       2
+      ],
+      "cy": -6.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret",
+   "at": [
+    0,
+    0,
+    35
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e2d8c2",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      4.2,
+      0
+     ],
+     [
+      4.2,
+      36
+     ],
+     [
+      4.8,
+      36.6
+     ],
+     [
+      4.8,
+      40
+     ],
+     [
+      2.8,
+      42
+     ],
+     [
+      0,
+      43
+     ]
+    ],
+    "arcade": {
+     "from": 24,
+     "to": 35,
+     "count": 8,
+     "width": 1.1,
+     "height": 4.5,
+     "sill": 0,
+     "shape": "arch",
+     "depth": 0.5
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "antenna",
+   "params": {
+    "radius": 0.45,
+    "points": [
+     [
+      0,
+      0,
+      75
+     ],
+     [
+      0,
+      0,
+      103
+     ]
+    ],
+    "colour": "#7f8386"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "foot-180",
+   "rotDeg": 180,
+   "at": [
+    0,
+    -30.5,
+    5
+   ],
+   "params": {
+    "width": 9,
+    "height": 7,
+    "depth": 1.2,
+    "archWidth": 6,
+    "springHeight": 4,
+    "colour": "#3c3a36"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "foot-300",
+   "rotDeg": 300,
+   "at": [
+    0,
+    -30.5,
+    5
+   ],
+   "params": {
+    "width": 9,
+    "height": 7,
+    "depth": 1.2,
+    "archWidth": 6,
+    "springHeight": 4,
+    "colour": "#3c3a36"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "foot-60",
+   "rotDeg": 60,
+   "at": [
+    0,
+    -30.5,
+    5
+   ],
+   "params": {
+    "width": 9,
+    "height": 7,
+    "depth": 1.2,
+    "archWidth": 6,
+    "springHeight": 4,
+    "colour": "#3c3a36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soldier-0",
+   "at": [
+    0,
+    25.2,
+    5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 5,
+    "colour": "#5a4a36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soldier-1",
+   "at": [
+    -21.8,
+    -12.6,
+    5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 5,
+    "colour": "#5a4a36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soldier-2",
+   "at": [
+    21.8,
+    -12.6,
+    5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 5,
+    "colour": "#5a4a36"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -19,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -43
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -38
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "turret visible between leaves but its arched windows are small; leaves thicker and less flared at the foot than photo; steps are a short flight not the full slope; soldier statues are blocks; leaf-foot arches are flat portals"
+ }
+}

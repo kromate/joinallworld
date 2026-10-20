@@ -1,0 +1,228 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malabo_bay_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "tadpolefarm",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/malabo/port1.jpg",
+   "used": "layout only: quay and container yard on the north mole, white and blue-roofed sheds behind, breakwater; aerial view not comparable to a 3/4 render"
+  },
+  {
+   "kind": "text",
+   "used": "brief: concrete quay, container yard, harbour sheds, moored cargo ship; no OSM outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -4
+     ],
+     [
+      60,
+      -4
+     ],
+     [
+      60,
+      40
+     ],
+     [
+      -60,
+      40
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#b9bcba"
+   }
+  },
+  {
+   "type": "quay",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "depth": 14,
+    "water_depth": 36
+   }
+  },
+  {
+   "type": "cargo-ship",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "width": 15,
+    "hull_colour": "#3a3f48",
+    "stripe_colour": "#2f5f8a"
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "nx": 3,
+    "ny": 4,
+    "levels": 3
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    8,
+    16,
+    0
+   ],
+   "params": {
+    "nx": 3,
+    "ny": 3,
+    "levels": 2
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    42,
+    22,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 16,
+    "height": 8,
+    "roof": "gable",
+    "colour": "#d8dad8",
+    "roof_colour": "#2f5f8a"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    -45,
+    30,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "height": 7,
+    "roof": "shed",
+    "colour": "#d8dad8",
+    "roof_colour": "#8f969b"
+   }
+  },
+  {
+   "type": "quay-crane",
+   "at": [
+    -40,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "reach": 24,
+    "colour": "#2f5f8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      40
+     ],
+     [
+      60,
+      40
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#b9bcba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -5,
+    2,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    2,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    20,
+    34,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Layout loosely from an aerial photo; no side-by-side possible; ship sits tight to the quay and sheds are generic."
+ }
+}

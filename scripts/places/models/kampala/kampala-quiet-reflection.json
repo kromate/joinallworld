@@ -1,0 +1,405 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Namirembe_Cathedral_Image01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Timothy Akolamazima",
+   "view": "front",
+   "file": "/tmp/places-evidence/kampala/nam1.jpg",
+   "used": "orange-red earth brick, terracotta tile roofs, steep west gable with tall lancet, front pylon with round window, low porch roofs, tiled dome with cross over the crossing, pointed-arch recesses"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NAMIREMBE_CATHEDRAL._side_view.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Namirembe Cathedral photographer (Commons)",
+   "view": "side",
+   "file": "/tmp/places-evidence/kampala/nam2.jpg",
+   "used": "side elevation: aisle lean-to, apse and dome silhouette, palms to the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/129123588",
+   "used": "overall size and cross plan (70 x 43 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     18,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c95a24",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "faces": {},
+    "bay": 5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c0562c",
+    "material": "clay-tile",
+    "pitch": 46,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c95a24",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "bay": 5.5,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b04a28",
+    "material": "clay-tile",
+    "pitch": 36,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "choir",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c95a24",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "windowShape": "pointed",
+    "bay": 5.5,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b04a28",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     5,
+     22
+    ]
+   },
+   "at": [
+    11.5,
+    -4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c95a24",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "windowShape": "pointed",
+    "bay": 5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b04a28",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     5,
+     22
+    ]
+   },
+   "at": [
+    -11.5,
+    -4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c95a24",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "bay": 5,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b04a28",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-pylon",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -6.5,
+    -17.6
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c95a24",
+    "windows": "round",
+    "windowRatio": 0.1,
+    "faces": {}
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b04a28",
+    "material": "clay-tile",
+    "pitch": 45,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     4.5
+    ]
+   },
+   "at": [
+    -1,
+    -19.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c95a24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b04a28",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    14,
+    9
+   ],
+   "params": {
+    "radius": 5.5,
+    "height": 4.5,
+    "profile": "hemi",
+    "drum": 6,
+    "drumRadius": 5.4,
+    "lantern": 1.8,
+    "finial": 2.6,
+    "colour": "#b04a28",
+    "drumColour": "#c95a24"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -1,
+    -22.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.25,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#7d3a38"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14,
+    "count": 3,
+    "spread": 5
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    0,
+    36.5
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c95a24",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.16,
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b04a28",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     19,
+     27
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a2a28",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a2a28"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "nave still a plain long box without brick arch recesses or buttress stepping; pylon is a separate tower not a stepped front gable; no tall front lancet gable; porch is a simple hip; no flying gutters"
+ }
+}

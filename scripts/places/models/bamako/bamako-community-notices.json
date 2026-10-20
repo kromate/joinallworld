@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/bamako.json",
+   "used": "District town hall: 3-storey rendered administrative block ~55x22 m with flagpole forecourt, steps, gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/90527879",
+   "used": "rejected: tagged train_station named Bamako, wrong building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     50,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c3a0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "bands": "#f1ece0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca3",
+    "parapet": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "rotDeg": 0,
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a65a3a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca3",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 1.2,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#14b53a",
+     "#fcd116",
+     "#ce1126"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "colour": "#3a3d41"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; modest typical civic block, central bay and colours guessed."
+ }
+}

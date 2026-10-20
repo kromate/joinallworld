@@ -1,0 +1,311 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/192853164",
+   "used": "1017 m2 irregular lock-up block (containing match, building=yes) as the shed range"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yaounde.json",
+   "used": "open market, corrugated sheds and tarpaulin stalls, red earth lanes"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lockups",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8a07a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#b4654a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a5513a",
+    "material": "corrugated",
+    "overhang": 0.6,
+    "rise": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-w",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    16
+   ],
+   "rotDeg": -12,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d8286",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b4654a",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-e",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    34,
+    -12
+   ],
+   "rotDeg": 25,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8a07a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8d90",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 0.8
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    -26
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#a5513a"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -14,
+    -34
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#c0392b",
+     "#2f6a9a",
+     "#e0b03a",
+     "#3a8a4a",
+     "#d9732b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -14,
+    -42
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 0.9,
+    "colours": [
+     "#d9732b",
+     "#3a8a4a",
+     "#e0b03a",
+     "#2f6a9a",
+     "#c0392b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    40,
+    -2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#c0392b",
+     "#2f6a9a",
+     "#e0b03a",
+     "#3a8a4a",
+     "#d9732b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -44,
+    -6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#e0b03a",
+     "#3a8a4a",
+     "#d9732b"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    22,
+    32
+   ],
+   "params": {
+    "count": 9,
+    "spread": 8,
+    "colours": [
+     "#c0392b",
+     "#2f6a9a",
+     "#e0b03a",
+     "#3a8a4a",
+     "#d9732b"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -22
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2,
+    "colours": [
+     "#2f6a9a",
+     "#e9e1cd"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -20,
+    -18
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#c0392b",
+     "#e9e1cd"
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -50
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 0.9,
+    "leaf": "bars",
+    "colour": "#b4654a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -46,
+    30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    46,
+    24
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; only the small OSM lock-up block is real, stall and shed placement is typical for a Yaounde neighbourhood market."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-marche-de-mvog-mbi"
+}

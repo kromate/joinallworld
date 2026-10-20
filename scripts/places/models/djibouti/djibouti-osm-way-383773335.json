@@ -1,0 +1,224 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/754080227",
+   "used": "garden outline, about 43 x 40 m"
+  },
+  {
+   "kind": "text",
+   "used": "palms in rows, gravel cross paths, central round plaza and low pavilion; colonial-era city garden"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 28,
+  "fovDeg": 42,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a9a62",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b8e5a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     42
+    ],
+    "height": 0.05,
+    "colour": "#d8cba8",
+    "topColour": "#d8cba8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -1,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     42,
+     2.4
+    ],
+    "height": 0.05,
+    "colour": "#d8cba8",
+    "topColour": "#d8cba8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1,
+    0.5
+   ],
+   "params": {
+    "radius": 6,
+    "n": 20,
+    "height": 0.07,
+    "colour": "#e4d6b8",
+    "topColour": "#e4d6b8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -9,
+     -17
+    ],
+    "end": [
+     -9,
+     16
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 8,
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     9,
+     -17
+    ],
+    "end": [
+     9,
+     16
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 8,
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     8,
+     4.5
+    ]
+   },
+   "at": [
+    -2,
+    14
+   ],
+   "z0": 0.5,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "glassColour": "#6b8e5a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4d6b8",
+    "overhang": 0.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    11,
+    0.5
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#e4d6b8"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -16,
+    -4,
+    0.5
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 3,
+    "spacing": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-way-383773335",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; outline only. Path layout, palm rows and pavilion are typical guesses."
+ }
+}

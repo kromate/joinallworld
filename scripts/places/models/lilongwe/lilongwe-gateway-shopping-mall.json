@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-gateway-shopping-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/289660593",
+   "used": "real 223x120 m irregular outline (auto-fitted)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 112,
+    "rotDeg": 90
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#2f6f8f",
+    "parapet": 0.8,
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9398",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -33
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f6f8f",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bands": "#c8453a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8453a",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#c8453a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#2f6f8f"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -45,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -58
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     -58
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -40,
+     -48,
+     90
+    ],
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -30,
+     -55,
+     90
+    ],
+    "colour": "#8a2f2f"
+   },
+   {
+    "at": [
+     -20,
+     -48,
+     90
+    ],
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     -10,
+     -55,
+     90
+    ],
+    "colour": "#2f3a4a"
+   },
+   {
+    "at": [
+     0,
+     -48,
+     90
+    ],
+    "colour": "#c8453a"
+   },
+   {
+    "at": [
+     10,
+     -55,
+     90
+    ],
+    "colour": "#3a6f8f"
+   },
+   {
+    "at": [
+     20,
+     -48,
+     90
+    ],
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     30,
+     -55,
+     90
+    ],
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     40,
+     -48,
+     90
+    ],
+    "colour": "#2f3a4a"
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; outline from OSM, cream render and blue/red entrance accents are brief-typed"
+ }
+}

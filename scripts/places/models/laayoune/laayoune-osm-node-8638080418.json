@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-node-8638080418",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: terracotta-pink single-storey cafe, arched windows, wide front terrace with awnings, blank sign board. OSM point only; nearest building (86 m2 sliver) rejected."
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c98a62",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "bay": 3.2,
+    "plinth": 0.4,
+    "bands": "#e8d3b0",
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8472e",
+    "material": "clay-tile",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#e8d3b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8d3b0"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -4.8,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "depth": 3.2,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#2e6b4a",
+     "#e8d3b0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6,
+    -4.8,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "depth": 3.2,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#2e6b4a",
+     "#e8d3b0"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     7,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -4.1
+   ],
+   "rotDeg": 0,
+   "z0": 4.0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2e6b4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e6b4a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    13.5,
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "container",
+    "width": 2.6,
+    "depth": 2.2,
+    "colour": "#e8d3b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -6
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -8
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -13,
+     9
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; the cafe size, colours and arches come from the brief, not an image."
+ }
+}

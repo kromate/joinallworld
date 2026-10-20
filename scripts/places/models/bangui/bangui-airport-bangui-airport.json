@@ -1,0 +1,299 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bangui_airport_2.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Afrika Force from South Africa",
+   "view": "front",
+   "file": "/tmp/places-evidence/bangui/airport1.jpg",
+   "used": "two-level terminal: red-orange lower storey with glazed doors and red balcony ledge, cream upper slab with dark soffit band and roof railing, yellow roof sign board, round lawn with red-white kerb"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     84,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8472f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6cc",
+    "parapet": 1.1,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-slab",
+   "footprint": {
+    "rect": [
+     90,
+     15
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 5.0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3c8",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#6b3a2a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6cc",
+    "parapet": 0.3,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     16,
+     18
+    ]
+   },
+   "at": [
+    -34,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.2,
+    10.6
+   ],
+   "params": {
+    "width": 28,
+    "height": 2.5,
+    "bottom": 0,
+    "colour": "#e5c447",
+    "frameColour": "#2b2b2b",
+    "posts": true
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    40,
+    20,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "style": "round",
+    "colour": "#e8dfc4",
+    "cabColour": "#6d8a95"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 5,
+    "spacing": 15
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 26,
+    "rise": 0.6,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#8a4a35"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -11.1,
+    2.4
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#e8e0c8",
+    "frameColour": "#2b2b2b",
+    "posts": false
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    -4.6,
+    10.2
+   ],
+   "params": {
+    "length": 88,
+    "height": 1.1,
+    "colour": "#2b2b2b",
+    "glass": false
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0.25,
+      "#3f7a35"
+     ],
+     [
+      13,
+      0.25,
+      "#3f7a35"
+     ],
+     [
+      13,
+      0.35,
+      "#d9d9d4"
+     ],
+     [
+      13.6,
+      0.35,
+      "#c0392b"
+     ],
+     [
+      13.6,
+      0,
+      "#c0392b"
+     ]
+    ],
+    "segments": 32
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     46,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-airport-bangui-airport",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Critic fixes applied (punched lower wall, cream parapet terrace, cream upper slab with dark band, wider framed roof sign, steps, arrivals board, roof railing, round lawn, tower moved back/lowered). Still flatter than photo: no true recessed soffit shadow or red balcony ledge, simple window rhythm, end wing shows z-fight texture glitch at left, tower not in photo."
+ }
+}

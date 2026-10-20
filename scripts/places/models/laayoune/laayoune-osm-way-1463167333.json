@@ -1,0 +1,253 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1463167333",
+   "used": "real ground outline (about 85 x 155 m, long axis north-south) used for the pitch alignment and the fence line, scaled to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small municipal ground, single covered grandstand with a rust-red roof, concrete terrace bank, four floodlights; no photos found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; stand position and size are assumed"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     48,
+     86
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#bfa27e",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     76
+    ],
+    "z0": 0.1,
+    "height": 0.05,
+    "colour": "#7a9a4e",
+    "top": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 70,
+    "width": 44
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26,
+     -34
+    ],
+    "end": [
+     -26,
+     34
+    ],
+    "rows": 10,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "bay": 6,
+    "seatColour": "#cfc6b0",
+    "concreteColour": "#cfc6b0",
+    "underColour": "#b7a98c",
+    "canopy": {
+     "height": 4.5,
+     "depth": 6,
+     "thickness": 0.4,
+     "slopeDeg": 6,
+     "colour": "#a8472e",
+     "edgeColour": "#8f3a26"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      27,
+      -34
+     ],
+     [
+      34,
+      -34
+     ],
+     [
+      34,
+      34
+     ],
+     [
+      27,
+      34
+     ]
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "topScale": 1,
+    "colour": "#cfc6b0",
+    "top": true
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "post_height": 2.4,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -52
+     ],
+     [
+      40,
+      -52
+     ],
+     [
+      40,
+      52
+     ],
+     [
+      -40,
+      52
+     ],
+     [
+      -40,
+      -52
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e8d3b0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -33,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -33,
+    40,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    33,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    33,
+    40,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-way-1463167333"
+}

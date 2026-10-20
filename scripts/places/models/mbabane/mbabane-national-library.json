@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-national-library",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2170584",
+   "used": "name-matched 802 m2 outline with rear service ell"
+  },
+  {
+   "kind": "text",
+   "used": "No photo found on Commons or Wikidata; massing from the brief and OSM outline, colours from the Mbabane city style. Brick and render per brief."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8603f",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#efe6d2",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    2,
+    -21,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.0,
+    "colour": "#efe6d2"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; recessed entrance and window layout assumed."
+ }
+}

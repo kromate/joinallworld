@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-mairie-bogodogo",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/797690219",
+   "used": "real footprint 22x17 m, rotated, two storeys per brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3d4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3.4,
+    "plinth": 0.5,
+    "bands": "#b8754d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#d63a2f",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.6,
+    "colour": "#b5b0a6",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#b8754d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; only the real OSM outline, sizes and brief used. Veranda, roof details and colours are typical, not observed."
+ }
+}

@@ -1,0 +1,487 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-scala-cinema",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Scala_Cinema_Maputo.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jcornelius",
+   "view": "front",
+   "file": "/tmp/places-evidence/maputo/scala.jpg",
+   "used": "art-deco frontage: taller ochre-cream central tower with three tall paired windows, pilasters, hood and blank sign board; lower right bay; left wing with grey canopy; long first-floor veranda over a dark ground storey"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/250552691",
+   "used": "size only (the outline is a sheared 52 m slab); a 32 m frontage is modelled from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-front",
+   "footprint": {
+    "rect": [
+     32,
+     18
+    ]
+   },
+   "at": [
+    1,
+    2
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a4640",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 4.4,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3a2",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "z0": 4.4,
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8be84",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    -9.5,
+    2
+   ],
+   "z0": 4.4,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee2",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d7f80",
+    "material": "corrugated",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veranda",
+   "params": {
+    "rect": [
+     22,
+     2.6
+    ],
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#cfc8b4"
+   },
+   "at": [
+    5.5,
+    -8.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.12
+    ],
+    "z0": 4.7,
+    "height": 1.0,
+    "colour": "#8c7f63"
+   },
+   "at": [
+    5.5,
+    -9.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hood",
+   "params": {
+    "rect": [
+     8,
+     1.3
+    ],
+    "z0": 11.4,
+    "height": 0.35,
+    "colour": "#6d6a5f"
+   },
+   "at": [
+    0,
+    -6.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     9,
+     0.5
+    ],
+    "z0": 16.9,
+    "height": 1.6,
+    "colour": "#e3d3a2"
+   },
+   "at": [
+    0,
+    -5.7
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "z0": 4.7,
+      "height": 13.2,
+      "colour": "#e8d9ab"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.1,
+     -6.3
+    ],
+    "end": [
+     4.1,
+     -6.3
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "left-canopy",
+   "at": [
+    -9.5,
+    -10.5,
+    4.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 4,
+    "height": 0,
+    "thickness": 0.5,
+    "colour": "#7b8186",
+    "edgeColour": "#556068"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "shop-awning",
+   "at": [
+    10,
+    -8.5,
+    3.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 2,
+    "height": 0,
+    "thickness": 0.4,
+    "colour": "#8c2e2a",
+    "edgeColour": "#8c2e2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "params": {
+    "rect": [
+     11,
+     1.2
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#9a968c"
+   },
+   "at": [
+    -1,
+    -11.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "scala-letters",
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "z0": 17.4,
+    "height": 0.8,
+    "colour": "#3a3b3d"
+   },
+   "at": [
+    0,
+    -6.05
+   ]
+  },
+  {
+   "type": "array",
+   "id": "relief-panels",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.12
+      ],
+      "z0": 8.6,
+      "height": 1.2,
+      "colour": "#c9b783"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3,
+     -6.1
+    ],
+    "end": [
+     3,
+     -6.1
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "shutters-right",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.12
+      ],
+      "z0": 6.0,
+      "height": 2.4,
+      "colour": "#ece6d2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     7,
+     -8.1
+    ],
+    "end": [
+     13,
+     -8.1
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "array",
+   "id": "shutters-left",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.12
+      ],
+      "z0": 6.0,
+      "height": 2.4,
+      "colour": "#7f8a7a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -6.1
+    ],
+    "end": [
+     -7,
+     -6.1
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-shed",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    -9.5,
+    4
+   ],
+   "z0": 14.9,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee8da",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d7f80",
+    "material": "corrugated",
+    "rise": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -14
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ground storey glazing reads brighter and flatter than the dark recessed arcade; no relief carving, real louvred shutters are simple slats; lettering is a blank board; tall neighbouring building and rooftop shed detail simplified."
+ }
+}

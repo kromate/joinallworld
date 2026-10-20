@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/783202654",
+   "used": "real outline of the Coptic Hospital compound (about 149 x 133 m, name match), modelled as the low wings"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lusaka",
+   "used": "no building-level source; private hospital with front drive and ambulance bay typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c2b2",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f3ec",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "bands": "#4a7a96"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 4,
+    "colour": "#f6f3ec"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real compound outline as a flat-roofed 2-storey slab; wing structure, courtyards, roof forms and the ward block position are typed"
+ }
+}

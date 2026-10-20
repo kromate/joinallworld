@@ -1,0 +1,137 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/761298089",
+   "used": "building outline (470 m2, nearest 0.1 m); form and colours from the brief (single storey, covered walkway, ambulance bay, wall). The only Commons photo is a Gulf of Tadjoura view 100 m away, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bands": "#5e9bb5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7523c",
+    "material": "corrugated",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.4,
+    "height": 2.9,
+    "colour": "#5e9bb5",
+    "roofColour": "#a7523c"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -3,
+    3.0
+   ],
+   "params": {
+    "size": 2
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    18,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5.5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c9b8a0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   52,
+   48
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Outline only, no photo; walkway, bay and sign positions are typical, not observed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-node-5380475275"
+}

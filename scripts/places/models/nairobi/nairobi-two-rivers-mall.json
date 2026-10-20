@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-two-rivers-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/963923390",
+   "used": "real mall outline (340 x 154 m, diagonal), fitted to 112 m by the scene clamp"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centum_Investment_Company_at_Two_Rivers_Mall,_Nairobi.jpg",
+   "licence": "CC BY-SA",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/nairobi/trm1.jpg",
+   "used": "office tower of the Two Rivers development: square tower in pale grey tile with one dark brown panel face and a stair/service frame; low dark-brown mall block with blank signage at its foot"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Two_rivers_park,_kenya.jpg",
+   "licence": "CC BY-SA",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/nairobi/trm2.jpg",
+   "used": "ferris wheel (white rim, red A-frame legs, pods) beside a lake with pedalos and trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 112,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e4dfd2",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "bands": "#b19d78",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb1",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "height": 38,
+    "storeys": 12,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "colour": "#cfd2d0",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -19.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.6
+    ],
+    "height": 34,
+    "colour": "#4a352c"
+   }
+  },
+  {
+   "type": "ferris-wheel",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 12,
+    "gondolas": 16
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 1.5,
+    "colour": "#3b8a9a",
+    "frameColour": "#b19d78"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -30,
+    4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 6,
+    "height": 4,
+    "columns": 4,
+    "colour": "#d8d4c8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -20,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "density": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -42,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 4,
+    "line": 30
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mall outline scaled 0.35 to the 120 m clamp so the 60 m wheel is shown at radius 12; wheel pods are multicolour and legs not red; photos show only the office tower and wheel, not the mall facade, so facade is estimated (glass and stone bands); tower placement relative to the mall is a guess."
+ }
+}

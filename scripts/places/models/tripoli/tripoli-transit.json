@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+   "used": "no photo or description found; OSM bus_station area is a 176 m irregular lot, so a modest bus park with canopies, ticket building and kiosk is composed instead"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-building",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8c39a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9890",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    0,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 9,
+    "height": 5.2,
+    "columns": 8,
+    "colour": "#9a9890"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 9,
+    "height": 5.2,
+    "columns": 8,
+    "colour": "#b8b2a5"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "coach",
+    "density": 0.7,
+    "coach_share": 0.7,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "mixed",
+    "density": 0.5,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f3efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c6a4a",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.5,
+    "bottom": 5.5,
+    "colour": "#d8c39a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 2,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and OSM lot not used; generic bus park with canopies"
+ }
+}

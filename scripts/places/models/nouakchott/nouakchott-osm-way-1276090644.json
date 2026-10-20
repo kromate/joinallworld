@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-osm-way-1276090644",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1276090644",
+   "used": "named theme_park polygon, 500 x 360 m on the Atlantic dunes; the scene shows a 110 x 80 m fenced corner of it with the leisure features from the brief (shade shelters, kiosks, umbrellas); no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#e3c9a0",
+    "points": [
+     [
+      -55,
+      -40
+     ],
+     [
+      55,
+      -40
+     ],
+     [
+      55,
+      40
+     ],
+     [
+      -55,
+      40
+     ],
+     [
+      -55,
+      -40
+     ]
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "colour": "#8b5a45",
+    "board_colour": "#9fb8c4"
+   }
+  },
+  {
+   "type": "market-open/thatched-pavilion",
+   "at": [
+    -30,
+    10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "roof": "pyramid",
+    "deck_height": 0.5,
+    "post_height": 2.8
+   }
+  },
+  {
+   "type": "market-open/thatched-pavilion",
+   "at": [
+    5,
+    25,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 9,
+    "roof": "pyramid",
+    "deck_height": 0.5,
+    "post_height": 2.8
+   }
+  },
+  {
+   "type": "market-open/thatched-pavilion",
+   "at": [
+    35,
+    5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "roof": "hip",
+    "deck_height": 0.5,
+    "post_height": 2.8
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -40,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#9fb8c4"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#9fb8c4"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    40,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#9fb8c4"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#e3c9a0",
+     "#9a3b2e",
+     "#9fb8c4"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     16
+    ],
+    "height": 0.1,
+    "colour": "#d8c79e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ }
+}

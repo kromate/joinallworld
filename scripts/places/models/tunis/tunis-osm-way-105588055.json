@@ -1,0 +1,390 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:INSAT.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "M Dhifallah",
+   "view": "front",
+   "file": "/tmp/places-evidence/tunis/insat1.jpg",
+   "used": "long cream precast-panel block of three storeys with grey ribbon windows, projecting flat-roofed entrance portico with square piers and a blank sign board, four grey cylindrical stair/vent stacks with flared caps on the facade, low green hedges, street in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/105588055",
+   "used": "campus extent and orientation only (426 x 234 m); the model shows the main teaching block and two rear wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     104,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9cfb9",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 3.2,
+    "plinth": 0.4,
+    "bands": "#c9bfa8",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     22,
+     52
+    ]
+   },
+   "at": [
+    -40,
+    39
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4cab4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     22,
+     52
+    ]
+   },
+   "at": [
+    40,
+    39
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4cab4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    2,
+    -19
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2d8c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2d8c2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    2,
+    -25.3,
+    11
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.8,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -47,
+    -14.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#9ea4a8"
+     ],
+     [
+      1.9,
+      0,
+      "#9ea4a8"
+     ],
+     [
+      1.9,
+      15,
+      "#9ea4a8"
+     ],
+     [
+      2.6,
+      15,
+      "#7f858a"
+     ],
+     [
+      2.6,
+      16,
+      "#7f858a"
+     ],
+     [
+      0,
+      16.4,
+      "#7f858a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    -14.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#9ea4a8"
+     ],
+     [
+      1.9,
+      0,
+      "#9ea4a8"
+     ],
+     [
+      1.9,
+      15,
+      "#9ea4a8"
+     ],
+     [
+      2.6,
+      15,
+      "#7f858a"
+     ],
+     [
+      2.6,
+      16,
+      "#7f858a"
+     ],
+     [
+      0,
+      16.4,
+      "#7f858a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    18,
+    -14.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#9ea4a8"
+     ],
+     [
+      1.9,
+      0,
+      "#9ea4a8"
+     ],
+     [
+      1.9,
+      15,
+      "#9ea4a8"
+     ],
+     [
+      2.6,
+      15,
+      "#7f858a"
+     ],
+     [
+      2.6,
+      16,
+      "#7f858a"
+     ],
+     [
+      0,
+      16.4,
+      "#7f858a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    44,
+    -14.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#9ea4a8"
+     ],
+     [
+      1.9,
+      0,
+      "#9ea4a8"
+     ],
+     [
+      1.9,
+      15,
+      "#9ea4a8"
+     ],
+     [
+      2.6,
+      15,
+      "#7f858a"
+     ],
+     [
+      2.6,
+      16,
+      "#7f858a"
+     ],
+     [
+      0,
+      16.4,
+      "#7f858a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 10.5,
+    "colour": "#e2d8c2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 10.5,
+    "colour": "#e2d8c2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -33
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-way-105588055",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "massing, ribbon windows, four stacks and portico match; real facade has vertical panel joints, hedges and a taller entrance piers detail; rear wings and campus are schematic"
+ }
+}

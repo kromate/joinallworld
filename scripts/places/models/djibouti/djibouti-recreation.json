@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/754578032",
+   "used": "circular park outline (about 62 m across)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: landscaped roundabout with palms, low planter wall, small monument; centrepiece not documented"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "kerb",
+   "params": {
+    "radius": 31,
+    "n": 40,
+    "height": 0.4,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planting",
+   "params": {
+    "radius": 29.5,
+    "n": 40,
+    "height": 0.5,
+    "colour": "#6b8e5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inner-wall",
+   "params": {
+    "radius": 9,
+    "n": 24,
+    "height": 0.9,
+    "z0": 0.5,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inner-bed",
+   "params": {
+    "radius": 8.2,
+    "n": 24,
+    "height": 0.95,
+    "z0": 0.5,
+    "colour": "#7d9a62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "polygon": [
+     [
+      -3,
+      -3
+     ],
+     [
+      3,
+      -3
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      -3,
+      3
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "monument",
+   "params": {
+    "sections": [
+     {
+      "z": 2.3,
+      "rect": [
+       3.0,
+       3.0
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ],
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 7
+     }
+    },
+    "mode": "arc",
+    "count": 9,
+    "radius": 18,
+    "facing": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: round outline, monument and palms assumed"
+ }
+}

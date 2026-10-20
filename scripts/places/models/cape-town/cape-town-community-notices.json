@@ -1,0 +1,599 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Houses_of_Parliament_(Cape_Town).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "PhilippN",
+   "view": "street",
+   "used": "white Corinthian six-column portico with big pediment, red-brick walls with white pilasters, window surrounds and balustrade parapet, low wing at left with a silver lantern dome behind, iron railing with white piers and green lamp-posts",
+   "file": "/tmp/places-evidence/cape-town/parl1.jpg"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Parliament_of_South_Africa",
+   "used": "built 1875-1884"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     36,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b85a44",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 9,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "trimColour": "#f2efe8",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.2,
+      "depth": 0.5,
+      "spacing": 9,
+      "colour": "#f2efe8",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d8",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -35,
+    -4
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b85a44",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "trimColour": "#f2efe8",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.2,
+      "depth": 0.5,
+      "spacing": 6,
+      "colour": "#f2efe8",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d8",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    35,
+    -4
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b85a44",
+    "windows": "none",
+    "windowRatio": 0.16,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "trimColour": "#f2efe8",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.2,
+      "depth": 0.5,
+      "spacing": 6,
+      "colour": "#f2efe8",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d8",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern-dome",
+   "at": [
+    -35,
+    -4,
+    15
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#c8d0d6",
+    "profile": [
+     [
+      7,
+      0,
+      "#f2efe8"
+     ],
+     [
+      7,
+      1.4
+     ],
+     [
+      6.2,
+      1.6,
+      "#f2efe8"
+     ],
+     [
+      6.2,
+      3.0
+     ],
+     [
+      5.4,
+      3.1,
+      "#c8d0d6"
+     ],
+     [
+      3.4,
+      5.2
+     ],
+     [
+      1.2,
+      6.4
+     ],
+     [
+      1.2,
+      7.4,
+      "#f2efe8"
+     ],
+     [
+      0.2,
+      8.2,
+      "#c8d0d6"
+     ],
+     [
+      0.1,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-block",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -8,
+    10
+   ],
+   "z0": 19,
+   "height": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0503c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps-1",
+   "footprint": {
+    "rect": [
+     34,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "z0": 0,
+   "height": 0.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4ca",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4ca"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps-2",
+   "footprint": {
+    "rect": [
+     31,
+     12.5
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "z0": 0.6,
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -21,
+     4.0
+    ],
+    "end": [
+     11,
+     -21,
+     4.0
+    ],
+    "count": 6,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "colour": "#f2efe8",
+      "profile": [
+       [
+        1.7,
+        0,
+        "#f2efe8"
+       ],
+       [
+        1.7,
+        0.5
+       ],
+       [
+        1.35,
+        0.7
+       ],
+       [
+        1.3,
+        12.2
+       ],
+       [
+        1.55,
+        12.4
+       ],
+       [
+        2.0,
+        13.2
+       ],
+       [
+        2.1,
+        14.2
+       ],
+       [
+        2.2,
+        14.6
+       ]
+      ]
+     },
+     "lod": [
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entablature",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "z0": 18.2,
+   "height": 2.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pediment",
+   "at": [
+    0,
+    -17,
+    20.6
+   ],
+   "params": {
+    "colour": "#f2efe8",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       30.4,
+       13.4
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       1.0,
+       13.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "railing",
+    "pillarEvery": 28,
+    "colour": "#1f2529"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -49,
+     -34,
+     0
+    ],
+    "end": [
+     49,
+     -34,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       1.3
+      ],
+      "height": 3.2,
+      "colour": "#f2efe8",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     -31,
+     0
+    ],
+    "end": [
+     42,
+     -31,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -21,
+     1.6
+    ],
+    "end": [
+     11,
+     -21,
+     1.6
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "lod": [
+      0
+     ],
+     "params": {
+      "rect": [
+       3.6,
+       3.6
+      ],
+      "height": 2.4,
+      "colour": "#f2efe8",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "colonnade-lo",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    -21,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     26,
+     3
+    ],
+    "height": 16.6,
+    "colour": "#f2efe8",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -42
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -44
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -40
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Columns fluted-look only from texture, capitals are simple flares; no dentils, window surrounds or balustrade on the wings; east wing has no windows and centre windows are sparse to hold triangle budget; fence is plain railing with white piers, lamps generic"
+ }
+}

@@ -1,0 +1,187 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/mogadishu.json",
+   "used": "16x12 m two-storey rendered street restaurant, terrace, balcony, blank signage in cream/terracotta; OSM nearest polygon (57 m long, untagged) was not trusted"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9d9b0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    },
+    "bands": "#f5efe0",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     16,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -7.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2492f",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f5efe0",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "id": "bal",
+   "at": [
+    0,
+    -6.1,
+    3.6
+   ],
+   "params": {
+    "length": 14,
+    "floors": 1,
+    "storeyHeight": 3.6,
+    "proud": 1.3,
+    "colour": "#c2492f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "rotDeg": 0,
+   "z0": 3.6,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c2492f",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f5efe0"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awn",
+   "at": [
+    0,
+    -9.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 1.6,
+    "colours": [
+     "#c2492f",
+     "#f5efe0"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm",
+   "at": [
+    11,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; layout from the brief only, OSM polygon rejected; facade and signage colours are the brief's guess."
+ }
+}

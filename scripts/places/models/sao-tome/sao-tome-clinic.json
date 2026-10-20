@@ -1,0 +1,392 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Central_Dr._Ayres_de_Menezes,_S%C3%A3o_Tom%C3%A9_e_Pr%C3%ADncipe.jpg",
+   "licence": "Public domain",
+   "author": "Oscar Medeiros (VOA)",
+   "view": "street",
+   "file": "/tmp/places-evidence/sao-tome/hosp.jpg",
+   "used": "octagonal pink pavilion with steep terracotta hip roof, grey plinth and white pilasters; large ochre gate piers with globe lamp; blue railing gate and fence; sign board on posts above gate; yellow taxi"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/206524513",
+   "used": "campus is about 240 m across; a representative cluster of wards is modelled, not the whole outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion-front",
+   "footprint": {
+    "polygon": [
+     [
+      -3.4,
+      -5.0
+     ],
+     [
+      3.4,
+      -5.0
+     ],
+     [
+      6.0,
+      -2.4
+     ],
+     [
+      6.0,
+      2.4
+     ],
+     [
+      3.4,
+      5.0
+     ],
+     [
+      -3.4,
+      5.0
+     ],
+     [
+      -6.0,
+      2.4
+     ],
+     [
+      -6.0,
+      -2.4
+     ]
+    ]
+   },
+   "at": [
+    -8,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8aaa0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "plinth": 1.1,
+    "bands": "#f4f0e6",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0603e",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    8,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8aaa0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "plinth": 1.1,
+    "bands": "#f4f0e6",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0603e",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-c",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -10,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8aaa0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "plinth": 1.1,
+    "bands": "#f4f0e6",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0603e",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cover",
+   "footprint": {
+    "rect": [
+     8,
+     2.6
+    ]
+   },
+   "at": [
+    21,
+    1.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1d6c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    1.5,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc783",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b36e",
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    11.5,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc783",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b36e",
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    6.5,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8.2,
+    "height": 2.2,
+    "pillar": 0.1,
+    "leaf": "bars",
+    "colour": "#3a7f9c",
+    "leafColour": "#3a7f9c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "kind": "railing",
+    "colour": "#4a86a4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    13,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.8,
+    "kind": "railing",
+    "colour": "#4a86a4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    11.5,
+    -12,
+    3.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#f4f0e6"
+     ],
+     [
+      0.5,
+      0.4,
+      "#f4f0e6"
+     ],
+     [
+      0.7,
+      1.0,
+      "#f4f0e6"
+     ],
+     [
+      0.5,
+      1.6,
+      "#f4f0e6"
+     ],
+     [
+      0,
+      1.7,
+      "#f4f0e6"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.5,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.2,
+    "bottom": 5.6,
+    "colour": "#efe9d8",
+    "frameColour": "#c9c3b0",
+    "posts": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.7,
+    -12,
+    7.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 1.4,
+    "colour": "#2a3f8f"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#e3b52a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only part of a 240 m campus; octagonal pavilion pilasters/shutters simplified; fence is railing but no mesh; people and trees omitted; H logo reduced to blue block"
+ }
+}

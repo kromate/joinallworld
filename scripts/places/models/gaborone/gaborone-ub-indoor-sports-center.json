@@ -1,0 +1,775 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-ub-indoor-sports-center",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Indoor_sport_center.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Theodorekanjo",
+   "view": "front",
+   "file": "/tmp/places-evidence/gaborone/indoor.jpg",
+   "used": "dark mottled stone-tile cladding, tall central block with big glazed panels either side of a recessed glass bay, low entrance podium with steps, lower curved-roof wings in pale cladding, rooftop railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/298220287",
+   "used": "overall round hall outline (quality containing, scaled 0.9 to fit the scene); the front block and wings follow the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 0.62
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#6e645a",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c7ca",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-podium",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    1,
+    -49
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#6a6056",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d5650"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.2,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-left",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -13,
+    -40
+   ],
+   "height": 20,
+   "z0": 0,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f5850",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d4741",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-right",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    13,
+    -40
+   ],
+   "height": 20,
+   "z0": 0,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f5850",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d4741",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-base",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "height": 4.5,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f5850",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d4741",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-lintel",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "height": 4,
+   "z0": 16,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f5850",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d4741",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-left",
+   "footprint": {
+    "rect": [
+     12.5,
+     0.6
+    ]
+   },
+   "at": [
+    -12.5,
+    -46.3
+   ],
+   "height": 10.5,
+   "z0": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f98a6",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#6f8c9c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d5650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-right",
+   "footprint": {
+    "rect": [
+     12.5,
+     0.6
+    ]
+   },
+   "at": [
+    12.5,
+    -46.3
+   ],
+   "height": 10.5,
+   "z0": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f98a6",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#6f8c9c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d5650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess-glass",
+   "footprint": {
+    "rect": [
+     9,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -41.5
+   ],
+   "height": 11.5,
+   "z0": 4.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f4a50",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#34424a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d5650"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -40,
+    20
+   ],
+   "params": {
+    "rect": [
+     10,
+     11
+    ],
+    "height": 2.2,
+    "colour": "#5f5850"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    13,
+    -40,
+    20
+   ],
+   "params": {
+    "rect": [
+     10,
+     11
+    ],
+    "height": 1.2,
+    "colour": "#5f5850"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -45.6,
+    22.2
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.2
+    ],
+    "height": 1.0,
+    "colour": "#b5b8ba"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    13,
+    -45.6,
+    21.2
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.2
+    ],
+    "height": 1.0,
+    "colour": "#b5b8ba"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -46.2,
+    16.8
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#b9bbbd"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-left",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -24.09,
+      -34.4
+     ],
+     [
+      -28.37,
+      -30.97
+     ],
+     [
+      -32.17,
+      -27.0
+     ],
+     [
+      -35.42,
+      -22.57
+     ],
+     [
+      -38.06,
+      -17.75
+     ],
+     [
+      -40.06,
+      -12.63
+     ],
+     [
+      -41.36,
+      -7.29
+     ],
+     [
+      -41.96,
+      -1.83
+     ],
+     [
+      -41.84,
+      3.66
+     ],
+     [
+      -29.89,
+      2.61
+     ],
+     [
+      -29.97,
+      -1.31
+     ],
+     [
+      -29.54,
+      -5.21
+     ],
+     [
+      -28.61,
+      -9.02
+     ],
+     [
+      -27.19,
+      -12.68
+     ],
+     [
+      -25.3,
+      -16.12
+     ],
+     [
+      -22.98,
+      -19.28
+     ],
+     [
+      -20.27,
+      -22.12
+     ],
+     [
+      -17.21,
+      -24.57
+     ]
+    ],
+    "height": 12,
+    "colour": "#5f5850",
+    "material": "tile-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "points": [
+     [
+      -24.09,
+      -34.4
+     ],
+     [
+      -28.37,
+      -30.97
+     ],
+     [
+      -32.17,
+      -27.0
+     ],
+     [
+      -35.42,
+      -22.57
+     ],
+     [
+      -38.06,
+      -17.75
+     ],
+     [
+      -40.06,
+      -12.63
+     ],
+     [
+      -41.36,
+      -7.29
+     ],
+     [
+      -41.96,
+      -1.83
+     ],
+     [
+      -41.84,
+      3.66
+     ],
+     [
+      -29.89,
+      2.61
+     ],
+     [
+      -29.97,
+      -1.31
+     ],
+     [
+      -29.54,
+      -5.21
+     ],
+     [
+      -28.61,
+      -9.02
+     ],
+     [
+      -27.19,
+      -12.68
+     ],
+     [
+      -25.3,
+      -16.12
+     ],
+     [
+      -22.98,
+      -19.28
+     ],
+     [
+      -20.27,
+      -22.12
+     ],
+     [
+      -17.21,
+      -24.57
+     ]
+    ],
+    "height": 2,
+    "colour": "#c9ccce",
+    "material": "metal-sheet"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-right",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      24.09,
+      -34.4
+     ],
+     [
+      28.37,
+      -30.97
+     ],
+     [
+      32.17,
+      -27.0
+     ],
+     [
+      35.42,
+      -22.57
+     ],
+     [
+      38.06,
+      -17.75
+     ],
+     [
+      40.06,
+      -12.63
+     ],
+     [
+      41.36,
+      -7.29
+     ],
+     [
+      41.96,
+      -1.83
+     ],
+     [
+      41.84,
+      3.66
+     ],
+     [
+      29.89,
+      2.61
+     ],
+     [
+      29.97,
+      -1.31
+     ],
+     [
+      29.54,
+      -5.21
+     ],
+     [
+      28.61,
+      -9.02
+     ],
+     [
+      27.19,
+      -12.68
+     ],
+     [
+      25.3,
+      -16.12
+     ],
+     [
+      22.98,
+      -19.28
+     ],
+     [
+      20.27,
+      -22.12
+     ],
+     [
+      17.21,
+      -24.57
+     ]
+    ],
+    "height": 12,
+    "colour": "#5f5850",
+    "material": "tile-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "points": [
+     [
+      24.09,
+      -34.4
+     ],
+     [
+      28.37,
+      -30.97
+     ],
+     [
+      32.17,
+      -27.0
+     ],
+     [
+      35.42,
+      -22.57
+     ],
+     [
+      38.06,
+      -17.75
+     ],
+     [
+      40.06,
+      -12.63
+     ],
+     [
+      41.36,
+      -7.29
+     ],
+     [
+      41.96,
+      -1.83
+     ],
+     [
+      41.84,
+      3.66
+     ],
+     [
+      29.89,
+      2.61
+     ],
+     [
+      29.97,
+      -1.31
+     ],
+     [
+      29.54,
+      -5.21
+     ],
+     [
+      28.61,
+      -9.02
+     ],
+     [
+      27.19,
+      -12.68
+     ],
+     [
+      25.3,
+      -16.12
+     ],
+     [
+      22.98,
+      -19.28
+     ],
+     [
+      20.27,
+      -22.12
+     ],
+     [
+      17.21,
+      -24.57
+     ]
+    ],
+    "height": 2,
+    "colour": "#c9ccce",
+    "material": "metal-sheet"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -18,
+     -60
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     30,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Curved stone towers are approximated by arc prisms with pale fascia; recess is a stone portal with dark glass but no sloped glass face, steps, tile texture or lettering."
+ }
+}

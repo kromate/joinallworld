@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/300933916",
+   "used": "building size 28 x 16.5 m, two storeys; no photo of the headquarters was found (Commons ICCN images show parks and field posts)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hq",
+   "footprint": {
+    "rect": [
+     28,
+     16.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4da",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2f6b4f",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "none",
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b4f",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 1.5,
+    "count": 3
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    -14,
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    6,
+    -14,
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.8,
+    "bottom": 1.5,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building; form from OSM size and brief"
+ }
+}

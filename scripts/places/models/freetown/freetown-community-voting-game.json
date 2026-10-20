@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/997490375",
+   "used": "nearest unnamed building 23 m away; used only for the 36 x 35 m extent, outline not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed-main",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a85f46",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.2,
+    "overhang": 1.2,
+    "colour": "#8c4a35",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-side",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    14,
+    -2
+   ],
+   "rotDeg": -12,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd0b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.9,
+    "overhang": 0.8,
+    "colour": "#8c4a35",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -18,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#7e8b73"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#a85f46"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    4,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#dcd0b0"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -16,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    10,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2,
+    "colour": "#7e8b73"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence of this junction; informal roadside market typical of the area, layout assumed"
+ }
+}

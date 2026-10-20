@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-node-4787069324",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/djibouti.json#djibouti-osm-node-4787069324",
+   "used": "low flat-roofed ops block 30x14 m, apron canopy, flag, fence wall, car park; OSM match was a nearest block 21 m away so not used; no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ops",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6cdb6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.2,
+    "bands": "#7a8791"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 6,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#7a8791",
+    "edgeColour": "#b9b09c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -17,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#6ab2e7"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "kind": "wall",
+    "colour": "#b9b09c"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; plain utilitarian block typed from brief."
+ }
+}

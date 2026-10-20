@@ -1,0 +1,88 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-way-390008871",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/390008871",
+   "used": "six-sided footprint about 12 x 7.5 m, 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0ebe0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdbf",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    5,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "style": "pencil",
+    "colour": "#f0ebe0",
+    "trim": "#b9a58a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint/brief only, so facade details, colours and roof are typical for Moroni, not observed."
+ }
+}

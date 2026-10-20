@@ -1,0 +1,178 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-way-120789231",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/120789231",
+   "used": "church plan outline (name match, about 72 x 59 m footprint, 2255 m2)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Asmara",
+   "used": "Orthodox cathedral of 1938; banded stone as Aksumite-inspired style, freestanding belfry (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 12,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c3b08a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8a7a62",
+       "#c3b08a"
+      ],
+      "height": 0.35,
+      "spacing": 1.4
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f7a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stepped-top",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     14
+    ],
+    "z0": 14,
+    "height": 4,
+    "topScale": 0.7,
+    "colour": "#b9a67f",
+    "topColour": "#a79574"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "belfry",
+   "at": [
+    -34,
+    -20
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 19,
+      "rect": [
+       5.6,
+       5.6
+      ]
+     },
+     {
+      "z": 23,
+      "rect": [
+       3.5,
+       3.5
+      ]
+     }
+    ],
+    "colour": "#c9b98f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "colour": "#b5a37d"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.2,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#8a7a62"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: plan from OSM, banded stone and belfry from brief text only"
+ }
+}

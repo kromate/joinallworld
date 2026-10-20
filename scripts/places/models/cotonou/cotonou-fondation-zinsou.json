@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-fondation-zinsou",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/691519143",
+   "used": "real 322 m2 outline (match: containing), 2 storeys from brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: whitewashed contemporary gallery with a mural and garden; no photo of this building found (the nearby geo photo shows the Ministry of Sports)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gallery",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2efe8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a948a",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-panel",
+   "at": [
+    -9,
+    -11,
+    0.4
+   ],
+   "rotDeg": 35,
+   "params": {
+    "rect": [
+     9,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#3f6f8a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#3f6f8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#e9e4d8",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "pillar": 0.7,
+    "leaf": "bars",
+    "colour": "#e9e4d8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    6,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 3,
+    "colour": "#5f8f55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the building; outline real, facade and mural typical."
+ }
+}

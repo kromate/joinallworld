@@ -1,0 +1,158 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/291396458",
+   "used": "real irregular footprint (about 39 x 33 m, named match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 3-storey white private clinic, glazed canopy entrance, ambulance bay, car park; no usable photo of this building found (Commons results were street photos of an unrelated event)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: entrance canopy, ambulance bay and car park are placed from the brief, not from evidence; real facade details unknown."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#4a7f8f",
+    "bands": "#cfc8b6",
+    "plinth": 0.5,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 2,
+    "round": false,
+    "colour": "#d7e4e6",
+    "roofColour": "#4a7f8f"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    34,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 7,
+    "colour": "#d4cfc0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-osm-way-291396458"
+}

@@ -1,0 +1,456 @@
+{
+ "name": "University of Lom\u00e9",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CI2L_et_FLLA_%C3%A0_l%27universit%C3%A9_de_Lom%C3%A9.jpg",
+   "licence": "CC0",
+   "author": "L'embellie",
+   "view": "street",
+   "file": "/tmp/places-evidence/lome/univ1.jpg",
+   "used": "campus teaching blocks: long brown 3-storey block with tall narrow windows and orange end/entrance colonnade, white 4-storey block with grey vertical piers and a hip roof, paved road, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/353542176",
+   "used": "campus identity only (2.9 km site outline, far too large to model); two representative blocks composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -58,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brown-block",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5b4338",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "windowShape": "rect",
+    "glassColour": "#a9bccb",
+    "plinth": 0.9,
+    "bay": 2.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#4a352b"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d88f68",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    38,
+    30
+   ],
+   "rotDeg": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "glassColour": "#4a5560",
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "colour": "#6f747a"
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#8a8f94"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7d80",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    18,
+    18,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "width": 3.4,
+    "height": 2.8,
+    "colour": "#7a5c46",
+    "roofColour": "#7a5c46"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 9,
+    "line": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-end",
+   "footprint": {
+    "rect": [
+     1,
+     16.4
+    ]
+   },
+   "at": [
+    -63.5,
+    6
+   ],
+   "height": 11.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98c63",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d98c63"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "colonnade-back",
+   "footprint": {
+    "rect": [
+     14,
+     1
+    ]
+   },
+   "at": [
+    -5,
+    13
+   ],
+   "height": 10.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a2e2a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2e2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "colonnade-roof",
+   "footprint": {
+    "rect": [
+     15,
+     16.4
+    ]
+   },
+   "at": [
+    -5,
+    6
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98c63",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d98c63"
+   },
+   "z0": 10.4
+  },
+  {
+   "type": "mass",
+   "id": "colonnade-pier-r",
+   "footprint": {
+    "rect": [
+     1,
+     16.4
+    ]
+   },
+   "at": [
+    3,
+    6
+   ],
+   "height": 11.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98c63",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d98c63"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -10.5,
+    -1.4,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "count": 10,
+    "height": 10.4,
+    "radius": 0.3,
+    "kind": "square",
+    "beamHeight": 0.2,
+    "colour": "#d9a63c",
+    "roofColour": "#d98c63"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "road",
+   "footprint": {
+    "rect": [
+     110,
+     9
+    ]
+   },
+   "at": [
+    -5,
+    -13
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4b4e52",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b4e52"
+   },
+   "z0": -0.44
+  },
+  {
+   "type": "mass",
+   "id": "road-line",
+   "footprint": {
+    "rect": [
+     110,
+     0.5
+    ]
+   },
+   "at": [
+    -5,
+    -13
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2ee",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee"
+   },
+   "z0": -0.4
+  },
+  {
+   "type": "mass",
+   "id": "kerb",
+   "footprint": {
+    "rect": [
+     110,
+     0.5
+    ]
+   },
+   "at": [
+    -5,
+    -8.4
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9362f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9362f"
+   },
+   "z0": -0.3
+  },
+  {
+   "type": "mass",
+   "id": "footpath",
+   "footprint": {
+    "rect": [
+     110,
+     3
+    ]
+   },
+   "at": [
+    -5,
+    -6.4
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b5ab",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5ab"
+   },
+   "z0": -0.42
+  },
+  {
+   "type": "mass",
+   "id": "shrubs",
+   "footprint": {
+    "rect": [
+     40,
+     1.2
+    ]
+   },
+   "at": [
+    -30,
+    -4.2
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6b34",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    33,
+    17.8,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "width": 3,
+    "height": 2.6,
+    "colour": "#6f747a",
+    "roofColour": "#6f747a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-community-workshop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open orange colonnade with yellow fins, thin end pier, taller window slots, road/kerb/footpath/lawn and covered parking added; window slots still read smaller than the real paired glazing, no AC row or dashed-line detail, only two blocks of a 2.9 km campus."
+ }
+}

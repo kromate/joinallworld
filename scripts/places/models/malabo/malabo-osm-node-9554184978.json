@@ -1,0 +1,144 @@
+{
+ "verified": "text",
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/malabo.json",
+   "used": "typed brief only; no photo found in the evidence file"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/669390442",
+   "used": "not used for the footprint: nearest match at 12 m, 486 m2 skewed block, much larger than the cafe in the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e4c0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#a8603a",
+    "faces": {
+     "front": "curtain",
+     "left": "punched",
+     "right": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f969b",
+    "material": "concrete",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 2.4,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#a8603a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.6,
+    2.9
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 0.0,
+    "colour": "#a8603a",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 6,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#a8603a",
+     "#ffffff",
+     "#f0e4c0"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-node-9554184978",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed guess: small cafe with awning and umbrellas; OSM nearest building rejected as too large."
+ }
+}

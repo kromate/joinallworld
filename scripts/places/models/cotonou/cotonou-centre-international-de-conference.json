@@ -1,0 +1,500 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-centre-international-de-conference",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palais_des_congr%C3%A8s_Cotonou.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Yendifa",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/pdc1.jpg",
+   "used": "three white cylindrical drums with oval oculus tops (big centre, smaller flanks) rising from a long low cream colonnaded base, white tent and palms in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palais_des_congr%C3%A8s_de_Cotonou_B%C3%A9nin_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Azogbonon",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/pdc2.jpg",
+   "used": "drum proportions and spacing, pale cream base with brown columns, forecourt with barrier and sign board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/272739650",
+   "used": "overall extent (about 77 m) only; the plan is recomposed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     56,
+     18
+    ]
+   },
+   "at": [
+    4,
+    10
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cc",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9cfba",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-recess",
+   "at": [
+    8,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.6
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2e2620",
+    "topColour": "#2e2620"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "id": "front-colonnade",
+   "at": [
+    -18,
+    -1.2,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "count": 14,
+    "height": 3.9,
+    "radius": 0.3,
+    "kind": "square",
+    "beamHeight": 0.5,
+    "colour": "#efe9da",
+    "roofColour": "#d9cfba"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "id": "entry-steps",
+   "at": [
+    8,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.6,
+    "run": 1.4,
+    "count": 5,
+    "colour": "#d8ccb3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "drum-centre",
+   "at": [
+    14,
+    18,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      0,
+      0,
+      "#f1ece0"
+     ],
+     [
+      9,
+      0,
+      "#f1ece0"
+     ],
+     [
+      13,
+      12,
+      "#f1ece0"
+     ],
+     [
+      13.5,
+      12.5,
+      "#f1ece0"
+     ],
+     [
+      10.14,
+      12.5,
+      "#f1ece0"
+     ],
+     [
+      10.14,
+      12.1,
+      "#3a2f26"
+     ],
+     [
+      0,
+      12.1,
+      "#3a2f26"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum-left",
+   "at": [
+    -24,
+    16,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      0,
+      0,
+      "#f1ece0"
+     ],
+     [
+      6,
+      0,
+      "#f1ece0"
+     ],
+     [
+      8.5,
+      9,
+      "#f1ece0"
+     ],
+     [
+      9.0,
+      9.5,
+      "#f1ece0"
+     ],
+     [
+      6.63,
+      9.5,
+      "#f1ece0"
+     ],
+     [
+      6.63,
+      9.1,
+      "#3a2f26"
+     ],
+     [
+      0,
+      9.1,
+      "#3a2f26"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum-right",
+   "at": [
+    34,
+    14,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      0,
+      0,
+      "#f1ece0"
+     ],
+     [
+      4,
+      0,
+      "#f1ece0"
+     ],
+     [
+      5.5,
+      6,
+      "#f1ece0"
+     ],
+     [
+      6.0,
+      6.5,
+      "#f1ece0"
+     ],
+     [
+      4.29,
+      6.5,
+      "#f1ece0"
+     ],
+     [
+      4.29,
+      6.1,
+      "#3a2f26"
+     ],
+     [
+      0,
+      6.1,
+      "#3a2f26"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tent",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    -32,
+    -10
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f4f4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#eef1f3",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tent-sign",
+   "at": [
+    -26,
+    -15.4
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.5
+    ],
+    "z0": 1.0,
+    "height": 1.4,
+    "colour": "#f4f6f8",
+    "topColour": "#f4f6f8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -28
+   ],
+   "params": {
+    "rect": [
+     84,
+     10
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#8d9094",
+    "topColour": "#8d9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt",
+   "at": [
+    2,
+    -17
+   ],
+   "params": {
+    "rect": [
+     64,
+     12
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#9a9a98",
+    "topColour": "#9a9a98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-1",
+   "at": [
+    30,
+    -22
+   ],
+   "params": {
+    "rect": [
+     34,
+     2.0
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#5d8f2e",
+    "topColour": "#5d8f2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-2",
+   "at": [
+    30,
+    -25
+   ],
+   "params": {
+    "rect": [
+     36,
+     1.5
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#7fae35",
+    "topColour": "#7fae35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-3",
+   "at": [
+    -40,
+    -22
+   ],
+   "params": {
+    "rect": [
+     10,
+     3
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#3f7a35",
+    "topColour": "#3f7a35"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1,
+    "spacing": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    42,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1,
+    "spacing": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 5,
+    "line": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 3,
+    "line": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Flared bowl drums with dark oculus (centre largest), low colonnaded base with recessed entrance and steps, long white tent, hedges, lamps and grey road follow the photo; drum rims are level rather than tilted, tent sign is blank, no wooden-pergola (removed), trees are stock shapes, drum count (3) is approximate."
+ }
+}

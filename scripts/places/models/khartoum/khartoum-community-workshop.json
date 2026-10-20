@@ -1,0 +1,674 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:International_University_of_Africa_Mosque.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Azri Alhaq",
+   "view": "front",
+   "file": "/tmp/places-evidence/khartoum/uni3.jpg",
+   "used": "campus mosque: long low brown-brick wall with cream parapet band, arched lattice windows, cream dome behind, cream minaret at left, date palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_Gate_of_International_University_of_Africa.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Azri Alhaq",
+   "view": "front",
+   "file": "/tmp/places-evidence/khartoum/uni2.jpg",
+   "used": "main gate: salmon-pink tile-clad portal with tall tower pier and wide arch, low pink wall with blank fascia"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Africa_Conference_Hall,_International_University_of_Africa.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Azri Alhaq",
+   "view": "detail",
+   "file": "/tmp/places-evidence/khartoum/uni4.jpg",
+   "used": "pink-rendered teaching blocks with deep flat canopy and dark glazing, brick return wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/294267503",
+   "used": "campus is 750 m across so not modelled as an outline; only a representative core"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mosque-wall",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8c6b4f",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#efe4c8",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe4c8",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    4,
+    2
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7556",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 4,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#efe4c8",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe4c8",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    4,
+    2,
+    9.5
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#f4ebd6",
+    "material": "painted-render",
+    "profile": [
+     [
+      8.4,
+      0,
+      "#efe4c8"
+     ],
+     [
+      8.4,
+      1.6
+     ],
+     [
+      8.0,
+      1.6,
+      "#f4ebd6"
+     ],
+     [
+      7.88,
+      2.82
+     ],
+     [
+      7.52,
+      3.99
+     ],
+     [
+      6.93,
+      5.1
+     ],
+     [
+      6.13,
+      6.1
+     ],
+     [
+      5.14,
+      6.96
+     ],
+     [
+      4.0,
+      7.66
+     ],
+     [
+      2.74,
+      8.18
+     ],
+     [
+      1.39,
+      8.49
+     ],
+     [
+      0.0,
+      8.6
+     ],
+     [
+      0.5,
+      9.0
+     ],
+     [
+      0.3,
+      10.5
+     ],
+     [
+      0.3,
+      12.5,
+      "#d8c9a0"
+     ],
+     [
+      0,
+      12.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -22,
+    -2,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#eadfc5",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.7,
+      0,
+      "#eadfc5"
+     ],
+     [
+      2.5,
+      14
+     ],
+     [
+      3.5,
+      14
+     ],
+     [
+      3.5,
+      14.7,
+      "#f1e8d2"
+     ],
+     [
+      2.0,
+      14.7
+     ],
+     [
+      2.0,
+      19
+     ],
+     [
+      2.9,
+      19
+     ],
+     [
+      2.9,
+      19.7,
+      "#f1e8d2"
+     ],
+     [
+      1.6,
+      19.7
+     ],
+     [
+      1.5,
+      22.5
+     ],
+     [
+      2.0,
+      22.5,
+      "#f4ebd6"
+     ],
+     [
+      2.0,
+      23.3
+     ],
+     [
+      1.6,
+      24.3
+     ],
+     [
+      0.8,
+      25.3
+     ],
+     [
+      0.25,
+      26.3
+     ],
+     [
+      0.1,
+      28
+     ],
+     [
+      0,
+      28
+     ]
+    ],
+    "arcade": {
+     "from": 14.8,
+     "to": 18.8,
+     "count": 4,
+     "width": 0.9,
+     "height": 2.6,
+     "sill": 0.5,
+     "shape": "arched",
+     "depth": 0.3,
+     "innerColour": "#5a4636"
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kufic-border",
+   "at": [
+    -4,
+    -7.15
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.3
+    ],
+    "z0": 1.2,
+    "height": 3.4,
+    "colour": "#efe4c8",
+    "topColour": "#efe4c8",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kufic-inset",
+   "at": [
+    -4,
+    -7.35
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.3
+    ],
+    "z0": 1.8,
+    "height": 2.2,
+    "colour": "#9a7556",
+    "topColour": "#9a7556",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "blind-arch-0",
+   "at": [
+    16.0,
+    -7.1
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.25
+    ],
+    "z0": 0.6,
+    "height": 3.0,
+    "colour": "#efe4c8",
+    "topColour": "#efe4c8",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "blind-arch-1",
+   "at": [
+    20.5,
+    -7.1
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.25
+    ],
+    "z0": 0.6,
+    "height": 3.0,
+    "colour": "#efe4c8",
+    "topColour": "#efe4c8",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "blind-arch-2",
+   "at": [
+    25.0,
+    -7.1
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.25
+    ],
+    "z0": 0.6,
+    "height": 3.0,
+    "colour": "#efe4c8",
+    "topColour": "#efe4c8",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-left",
+   "at": [
+    -46,
+    -24
+   ],
+   "params": {
+    "rect": [
+     4,
+     5
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#d98c73",
+    "topColour": "#e3a58f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-right",
+   "at": [
+    -34,
+    -24
+   ],
+   "params": {
+    "rect": [
+     4,
+     5
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#d98c73",
+    "topColour": "#e3a58f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-lintel",
+   "at": [
+    -40,
+    -24
+   ],
+   "params": {
+    "rect": [
+     16,
+     5
+    ],
+    "z0": 11,
+    "height": 2.5,
+    "colour": "#d98c73",
+    "topColour": "#e3a58f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spandrel-l1",
+   "lod": [
+    0
+   ],
+   "at": [
+    -43.3,
+    -24
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     5
+    ],
+    "z0": 7,
+    "height": 4,
+    "colour": "#d98c73",
+    "topColour": "#e3a58f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spandrel-r1",
+   "lod": [
+    0
+   ],
+   "at": [
+    -36.7,
+    -24
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     5
+    ],
+    "z0": 7,
+    "height": 4,
+    "colour": "#d98c73",
+    "topColour": "#e3a58f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spandrel-l2",
+   "lod": [
+    0
+   ],
+   "at": [
+    -42.2,
+    -24
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     5
+    ],
+    "z0": 9.3,
+    "height": 1.7,
+    "colour": "#d98c73",
+    "topColour": "#e3a58f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spandrel-r2",
+   "lod": [
+    0
+   ],
+   "at": [
+    -37.8,
+    -24
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     5
+    ],
+    "z0": 9.3,
+    "height": 1.7,
+    "colour": "#d98c73",
+    "topColour": "#e3a58f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gate-arch",
+   "params": {
+    "section": "rect",
+    "width": 0.9,
+    "height": 4.6,
+    "arc": {
+     "centre": [
+      -40,
+      -24,
+      7
+     ],
+     "radius": 4,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#c6755d"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -26,
+     -11
+    ],
+    "end": [
+     26,
+     -11
+    ],
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 12
+      }
+     }
+    ],
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 68,
+    "height": 1.2,
+    "thickness": 0.8,
+    "colour": "#a14e3f"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#eadfc5",
+    "profile": [
+     [
+      2.5,
+      0
+     ],
+     [
+      1.8,
+      20
+     ],
+     [
+      1.5,
+      22.5
+     ],
+     [
+      0,
+      27
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a representative core of a 750 m campus; lattice window detail, thin kufic inset and blind arches are simple flat panels; palms are low-poly and short; minaret cap more pointed than the photo's small onion; gate is a stepped-arch approximation."
+ }
+}

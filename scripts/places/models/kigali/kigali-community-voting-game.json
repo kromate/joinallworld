@@ -1,0 +1,248 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/253124794",
+   "used": "plaza outline (leisure=park, about 97 x 78 m, name quality match); no photo of the plaza itself (the two nearby street photos show other buildings)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kigali.json",
+   "used": "flagpoles, low central monument with a statue, steps, fountain basin, clipped trees"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc8b6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inner-paving",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "n": 24,
+    "radius": 24,
+    "height": 0.12,
+    "colour": "#b9b2a0",
+    "topColour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "basin",
+   "at": [
+    0,
+    0,
+    0.62
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#8a8f93",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      9,
+      0
+     ],
+     [
+      9,
+      0.7
+     ],
+     [
+      8.4,
+      0.7
+     ],
+     [
+      8.4,
+      0.45
+     ],
+     [
+      0,
+      0.45
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "monument",
+   "at": [
+    0,
+    0,
+    1.05
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#8a8f93",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      3.4,
+      0
+     ],
+     [
+      3.4,
+      0.6
+     ],
+     [
+      2.6,
+      0.6
+     ],
+     [
+      2.6,
+      1.2
+     ],
+     [
+      1.4,
+      1.2
+     ],
+     [
+      1.4,
+      3.2
+     ],
+     [
+      0,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    0,
+    0,
+    4.25
+   ],
+   "params": {
+    "height": 2.6,
+    "plinth_height": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/flag",
+     "params": {
+      "height": 11,
+      "count": 1,
+      "colours": [
+       "#20603d"
+      ]
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -18,
+     -34
+    ],
+    "end": [
+     18,
+     -34
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.15,
+    "run": 0.5,
+    "count": 2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 5,
+      "count": 1,
+      "spread": 3.5
+     }
+    },
+    "mode": "arc",
+    "count": 14,
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 34,
+    "radiusY": 28,
+    "startDeg": 10,
+    "endDeg": 350
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    43,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 0.9,
+    "colour": "#bdb8a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the plaza; outline from OSM, monument, flags and tree ring are from the brief."
+ }
+}

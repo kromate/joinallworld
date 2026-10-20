@@ -1,0 +1,501 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ocean_Road_Cancer_Institute_(34775222422).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "front",
+   "file": "/tmp/places-evidence/dar-es-salaam/clinic0.jpg",
+   "used": "whitewashed walls; left wing with three arched windows and deep-eaved rust-red hip roof; octagonal domed tower with grey dome, four small corner domes and star finial; crenellated square tower; two-level arched veranda link; rubble-stone boundary wall with white piers, lattice panels and a brown sliding gate in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/369844321",
+   "used": "overall extent only (65 x 54 m); outline is a ragged diagonal polygon so the massing follows the photo instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efebe0",
+    "windows": "pointed",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8553a",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dome-tower",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -2,
+    6
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efebe0",
+    "windows": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efebe0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    -2,
+    6,
+    15
+   ],
+   "params": {
+    "profile": [
+     [
+      6.2,
+      0,
+      "#e7e4da"
+     ],
+     [
+      6.2,
+      0.6,
+      "#e7e4da"
+     ],
+     [
+      5.2,
+      0.9,
+      "#c8ced1"
+     ],
+     [
+      5.3,
+      2.4,
+      "#c8ced1"
+     ],
+     [
+      4.0,
+      4.4,
+      "#c8ced1"
+     ],
+     [
+      2.2,
+      5.8,
+      "#c8ced1"
+     ],
+     [
+      0.5,
+      6.5,
+      "#c8ced1"
+     ],
+     [
+      0,
+      6.5,
+      "#c8ced1"
+     ]
+    ],
+    "segments": 20
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -2,
+    6,
+    21.4
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 2.4,
+    "sides": 8,
+    "colour": "#6a6a66"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        1.2,
+        0,
+        "#e7e4da"
+       ],
+       [
+        1.2,
+        0.4,
+        "#e7e4da"
+       ],
+       [
+        1.0,
+        0.8,
+        "#cfd6da"
+       ],
+       [
+        0.6,
+        1.5,
+        "#cfd6da"
+       ],
+       [
+        0.0,
+        1.9,
+        "#cfd6da"
+       ]
+      ],
+      "segments": 10
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 9,
+    "dy": 9
+   },
+   "at": [
+    -2,
+    6,
+    15
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "veranda-link",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    11,
+    2
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efebe0",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 2.8,
+      "opening": 0.75
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keep-tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    14,
+    12
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efebe0",
+    "windows": "pointed",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efebe0",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     13
+    ]
+   },
+   "at": [
+    29,
+    4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efebe0",
+    "windows": "pointed",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8553a",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    40,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#e6dcc8",
+    "cap_colour": "#b0624a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b8a98c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    1,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 2.0,
+    "height": 2.3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#b8a98c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 2.3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b8a98c"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    4.5,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.3,
+    "pillar": 0.6,
+    "leaf": "bars",
+    "colour": "#efebe0",
+    "leafColour": "#6a4330"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -14.4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.6,
+    "bottom": 0.7,
+    "colour": "#2f78b5",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "mosque-domed/crenellation",
+   "at": [
+    10.5,
+    8.5,
+    14
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 7,
+    "height": 0.2,
+    "thickness": 0.6,
+    "merlon_height": 1.0,
+    "merlon_width": 0.7,
+    "pitch": 1.4,
+    "colour": "#efebe0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/crenellation",
+   "at": [
+    10.5,
+    15.5,
+    14
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 7,
+    "height": 0.2,
+    "thickness": 0.6,
+    "merlon_height": 1.0,
+    "merlon_width": 0.7,
+    "pitch": 1.4,
+    "colour": "#efebe0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 2.9,
+      "colour": "#f2efe6",
+      "material": "plain"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     -14
+    ],
+    "end": [
+     44,
+     -14
+    ],
+    "count": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower fatter with corner domes but dome profile is simplified and star finial is a spire; keep crenellations are plain merlon strips; rubble-stone wall is flat tone with white piers, no lattice panels; gate is bars not slats."
+ }
+}

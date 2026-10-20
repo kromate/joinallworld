@@ -1,0 +1,274 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PIZZAIOLO_CLUBHOUSE_HARAMOUS_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Abass Chirdon",
+   "view": "street",
+   "used": "sand-ochre render, low wing, gabled entrance block with arched loggia, low garden wall, shrubs, lamp, mint box"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/334025440",
+   "used": "footprint (name match, about 522 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc298",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#c9a878"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9673f",
+    "material": "clay-tile",
+    "pitch": 15,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    4,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b88a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9673f",
+    "material": "clay-tile",
+    "pitch": 35,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    4,
+    -11.05,
+    0.2
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 3.4,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    4,
+    -11.3,
+    0.0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.6,
+    "kind": "arch",
+    "trim": "#f2f0ea"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -1.5,
+    -11.05,
+    0.5
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.2,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -11.8,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#bdb5a5"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -27,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 33,
+    "height": 0.7,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#d8bf94"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.2,
+    "count": 9,
+    "spread": 6,
+    "line": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -23,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.0,
+    "count": 9,
+    "spread": 6,
+    "line": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -19,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -2,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mint-box",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -30,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9d6bf",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9cc8b2"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   55,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Entrance loggia is one arch plus door, no recessed depth; OSM footprint is irregular so wing shape differs from the photo; garden ground reads redder than ochre; distant pink blocks, fences and shrub variety not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-node-4932312785"
+}

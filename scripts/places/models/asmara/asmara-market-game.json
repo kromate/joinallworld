@@ -1,0 +1,331 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/4434231",
+   "used": "name-matched marketplace outline (100 x 25 m, long N-S) as the main tin-roofed hall"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/asmara.json",
+   "used": "Medeber as the metalworkers' market: grey metal cladding, rust-red and corrugated sheds; flanking workshop rows are typed, no layout retrieved"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f93",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    -30,
+    -35
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a65a3d",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   },
+   "id": "m1"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     15,
+     24
+    ]
+   },
+   "at": [
+    -30,
+    -4
+   ],
+   "height": 3.8000000000000003,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f93",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a65a3d",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   },
+   "id": "m2"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    -30,
+    27
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c4b6",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   },
+   "id": "m3"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    32,
+    -30
+   ],
+   "height": 3.8000000000000003,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f93",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   },
+   "id": "m4"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     15,
+     24
+    ]
+   },
+   "at": [
+    32,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a65a3d",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a65a3d",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   },
+   "id": "m5"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    32,
+    30
+   ],
+   "height": 3.8000000000000003,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f93",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   },
+   "id": "m6"
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -8,
+     -48
+    ],
+    "end": [
+     16,
+     -48
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       2
+      ],
+      "height": 2.4,
+      "colour": "#a65a3d"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -22,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#a65a3d",
+     "#c9c4b6"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#8a8f93",
+     "#c9c4b6"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -56,
+    0
+   ],
+   "params": {
+    "colour": "#c9c4b6",
+    "count": 3,
+    "spacing": 4
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": 0,
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; hall from OSM outline, flanking workshop rows and stalls are typed, not surveyed; rows reduced to fit LOD1 budget."
+ }
+}

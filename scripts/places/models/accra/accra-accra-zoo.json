@@ -1,0 +1,561 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-accra-zoo",
+ "verified": "footprint",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; enclosure layout, kiosks and animals are typical rather than surveyed"
+ },
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/239174767",
+   "used": "plot outline 68 x 49 m (tourism=zoo), used as the perimeter wall; the gate sits on the south-west edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 28,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -41.8,
+      1.9
+     ],
+     [
+      -14.8,
+      -39.1
+     ],
+     [
+      41.8,
+      -1.9
+     ],
+     [
+      14.8,
+      39.1
+     ],
+     [
+      -41.8,
+      1.9
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d9ceb2"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -28.3,
+    -18.6,
+    0
+   ],
+   "rotDeg": -56.6,
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#e8dcc0",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-booth",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -23,
+    -23
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7479",
+    "overhang": 0.5
+   },
+   "rotDeg": -56.6
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -32.5,
+    -12,
+    0
+   ],
+   "rotDeg": -56.6,
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 3.2,
+    "colour": "#5f7a3c",
+    "frameColour": "#8a6a46"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.977198753653555,
+      -14.674911127552328
+     ],
+     [
+      8.44153033347323,
+      -23.38913568779276
+     ],
+     [
+      14.977198753653555,
+      -13.325088872447672
+     ],
+     [
+      1.5584696665267703,
+      -4.61086431220724
+     ],
+     [
+      -4.977198753653555,
+      -14.674911127552328
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "bars",
+    "pillarEvery": 2.5,
+    "colour": "#4a4f52"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.3172272301010137,
+      -14.322073288035853
+     ],
+     [
+      8.088692493956753,
+      -21.729164164240217
+     ],
+     [
+      13.317227230101015,
+      -13.677926711964147
+     ],
+     [
+      1.9113075060432463,
+      -6.27083583575978
+     ],
+     [
+      -3.3172272301010137,
+      -14.322073288035853
+     ]
+    ],
+    "height": 0.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 99,
+    "colour": "#b8ad96"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      4.861471814291869,
+      12.780449837432645
+     ],
+     [
+      16.602859765527803,
+      5.1555033472222656
+     ],
+     [
+      23.138528185708132,
+      15.219550162567355
+     ],
+     [
+      11.397140234472195,
+      22.844496652777732
+     ],
+     [
+      4.861471814291869,
+      12.780449837432645
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "bars",
+    "pillarEvery": 2.5,
+    "colour": "#4a4f52"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      6.521443337844411,
+      13.133287676949124
+     ],
+     [
+      16.25002192601133,
+      6.815474870774808
+     ],
+     [
+      21.47855666215559,
+      14.86671232305088
+     ],
+     [
+      11.749978073988672,
+      21.184525129225193
+     ],
+     [
+      6.521443337844411,
+      13.133287676949124
+     ]
+    ],
+    "height": 0.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 99,
+    "colour": "#b8ad96"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15.755218582747679,
+      11.074481370363042
+     ],
+     [
+      -5.691171767402591,
+      4.538812950182717
+     ],
+     [
+      -0.2447814172523204,
+      12.925518629636958
+     ],
+     [
+      -10.308828232597408,
+      19.461187049817283
+     ],
+     [
+      -15.755218582747679,
+      11.074481370363042
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "bars",
+    "pillarEvery": 2.5,
+    "colour": "#4a4f52"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14.095247059195138,
+      11.42731920987952
+     ],
+     [
+      -6.044009606919067,
+      6.198784473735258
+     ],
+     [
+      -1.9047529408048613,
+      12.57268079012048
+     ],
+     [
+      -9.955990393080931,
+      17.80121552626474
+     ],
+     [
+      -14.095247059195138,
+      11.42731920987952
+     ]
+    ],
+    "height": 0.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 99,
+    "colour": "#b8ad96"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      19.35577150270526,
+      -7.050822380679273
+     ],
+     [
+      27.742477182159497,
+      -12.497212730829544
+     ],
+     [
+      32.64422849729474,
+      -4.949177619320727
+     ],
+     [
+      24.257522817840503,
+      0.49721273082954376
+     ],
+     [
+      19.35577150270526,
+      -7.050822380679273
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "bars",
+    "pillarEvery": 2.5,
+    "colour": "#4a4f52"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      21.0157430262578,
+      -6.697984541162796
+     ],
+     [
+      27.389639342643022,
+      -10.837241207277003
+     ],
+     [
+      30.9842569737422,
+      -5.302015458837204
+     ],
+     [
+      24.610360657356978,
+      -1.1627587927229976
+     ],
+     [
+      21.0157430262578,
+      -6.697984541162796
+     ]
+    ],
+    "height": 0.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 99,
+    "colour": "#b8ad96"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    5,
+    -14
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7479",
+    "overhang": 0.4
+   },
+   "rotDeg": -33
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -18,
+    -4,
+    0
+   ],
+   "rotDeg": -33,
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "colour": "#8a6a46",
+    "cap_colour": "#6e7479"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "rotDeg": -33,
+   "params": {
+    "kind": "stall",
+    "width": 3.0,
+    "depth": 2.2,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    24,
+    20,
+    0
+   ],
+   "rotDeg": -33,
+   "params": {
+    "kind": "stall",
+    "width": 3.0,
+    "depth": 2.2,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 12,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   100,
+   90
+  ]
+ }
+}

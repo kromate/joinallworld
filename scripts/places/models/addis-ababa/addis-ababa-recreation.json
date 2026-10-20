@@ -1,0 +1,1049 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AddisView.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DaneyWiki",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/addis-ababa/park1.jpg",
+   "used": "green lawn, curving asphalt promenade with lamp posts, broad pale-paved plaza beside a lake with a tall central fountain jet, scattered young trees, glass tower and white blocks on the skyline"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/42662074",
+   "used": "park outline, auto-fitted to the model extent"
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Lake is now a large organic water body with a central plume and four side jets, crescent plaza, curving asphalt path, lamp posts, tree row and skyline (dark tower, white mid-rise blocks); but the whole-park fit camera shows it small and from a different angle than the photo, the lawn is the raw OSM outline, jets are thin cones, trees are generic."
+ },
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7fa05a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "params": {
+    "z0": 0.5,
+    "height": 0.15,
+    "colour": "#e2e0d8",
+    "points": [
+     [
+      -45.0,
+      -6.0
+     ],
+     [
+      -37.5,
+      -8.59
+     ],
+     [
+      -30.0,
+      -11.0
+     ],
+     [
+      -22.5,
+      -13.07
+     ],
+     [
+      -15.0,
+      -14.66
+     ],
+     [
+      -7.5,
+      -15.66
+     ],
+     [
+      0.0,
+      -16.0
+     ],
+     [
+      7.5,
+      -15.66
+     ],
+     [
+      15.0,
+      -14.66
+     ],
+     [
+      22.5,
+      -13.07
+     ],
+     [
+      30.0,
+      -11.0
+     ],
+     [
+      37.5,
+      -8.59
+     ],
+     [
+      45.0,
+      -6.0
+     ],
+     [
+      45.0,
+      8.0
+     ],
+     [
+      37.5,
+      6.45
+     ],
+     [
+      30.0,
+      5.0
+     ],
+     [
+      22.5,
+      3.76
+     ],
+     [
+      15.0,
+      2.8
+     ],
+     [
+      7.5,
+      2.2
+     ],
+     [
+      0.0,
+      2.0
+     ],
+     [
+      -7.5,
+      2.2
+     ],
+     [
+      -15.0,
+      2.8
+     ],
+     [
+      -22.5,
+      3.76
+     ],
+     [
+      -30.0,
+      5.0
+     ],
+     [
+      -37.5,
+      6.45
+     ],
+     [
+      -45.0,
+      8.0
+     ]
+    ],
+    "topColour": "#e2e0d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lake-edge",
+   "params": {
+    "z0": 0.5,
+    "height": 0.3,
+    "colour": "#e6e4dc",
+    "points": [
+     [
+      43.0,
+      24.0
+     ],
+     [
+      44.54,
+      29.18
+     ],
+     [
+      42.52,
+      33.66
+     ],
+     [
+      36.65,
+      37.34
+     ],
+     [
+      27.97,
+      40.29
+     ],
+     [
+      18.24,
+      42.66
+     ],
+     [
+      8.82,
+      44.51
+     ],
+     [
+      0.0,
+      45.76
+     ],
+     [
+      -8.82,
+      46.15
+     ],
+     [
+      -18.24,
+      45.39
+     ],
+     [
+      -27.97,
+      43.24
+     ],
+     [
+      -36.65,
+      39.69
+     ],
+     [
+      -42.52,
+      34.97
+     ],
+     [
+      -44.54,
+      29.55
+     ],
+     [
+      -43.0,
+      24.0
+     ],
+     [
+      -39.31,
+      18.82
+     ],
+     [
+      -34.96,
+      14.34
+     ],
+     [
+      -30.59,
+      10.66
+     ],
+     [
+      -25.65,
+      7.71
+     ],
+     [
+      -19.07,
+      5.34
+     ],
+     [
+      -10.32,
+      3.49
+     ],
+     [
+      -0.0,
+      2.24
+     ],
+     [
+      10.32,
+      1.85
+     ],
+     [
+      19.07,
+      2.61
+     ],
+     [
+      25.65,
+      4.76
+     ],
+     [
+      30.59,
+      8.31
+     ],
+     [
+      34.96,
+      13.03
+     ],
+     [
+      39.31,
+      18.45
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lake",
+   "params": {
+    "z0": 0.8,
+    "height": 0.12,
+    "colour": "#5f8fa8",
+    "points": [
+     [
+      40.0,
+      24.0
+     ],
+     [
+      41.43,
+      28.5
+     ],
+     [
+      39.55,
+      32.4
+     ],
+     [
+      34.09,
+      35.6
+     ],
+     [
+      26.02,
+      38.17
+     ],
+     [
+      16.97,
+      40.23
+     ],
+     [
+      8.2,
+      41.84
+     ],
+     [
+      0.0,
+      42.92
+     ],
+     [
+      -8.2,
+      43.26
+     ],
+     [
+      -16.97,
+      42.6
+     ],
+     [
+      -26.02,
+      40.73
+     ],
+     [
+      -34.09,
+      37.64
+     ],
+     [
+      -39.55,
+      33.54
+     ],
+     [
+      -41.43,
+      28.83
+     ],
+     [
+      -40.0,
+      24.0
+     ],
+     [
+      -36.57,
+      19.5
+     ],
+     [
+      -32.53,
+      15.6
+     ],
+     [
+      -28.46,
+      12.4
+     ],
+     [
+      -23.86,
+      9.83
+     ],
+     [
+      -17.74,
+      7.77
+     ],
+     [
+      -9.6,
+      6.16
+     ],
+     [
+      -0.0,
+      5.08
+     ],
+     [
+      9.6,
+      4.74
+     ],
+     [
+      17.74,
+      5.4
+     ],
+     [
+      23.86,
+      7.27
+     ],
+     [
+      28.46,
+      10.36
+     ],
+     [
+      32.53,
+      14.46
+     ],
+     [
+      36.57,
+      19.17
+     ]
+    ],
+    "topColour": "#6f9fb8"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "fountain-jet",
+   "at": [
+    0,
+    24,
+    0.9
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#eef4f6",
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      1.2,
+      1.5
+     ],
+     [
+      0.6,
+      8
+     ],
+     [
+      0.4,
+      18
+     ],
+     [
+      1.4,
+      24
+     ],
+     [
+      2.4,
+      28
+     ],
+     [
+      0.6,
+      30
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "jet-0",
+   "at": [
+    -18,
+    20,
+    0.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#eef4f6",
+    "profile": [
+     [
+      1.2,
+      0
+     ],
+     [
+      0.5,
+      4
+     ],
+     [
+      0.3,
+      9
+     ],
+     [
+      0.9,
+      12
+     ],
+     [
+      0.2,
+      14
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "jet-1",
+   "at": [
+    18,
+    20,
+    0.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#eef4f6",
+    "profile": [
+     [
+      1.2,
+      0
+     ],
+     [
+      0.5,
+      4
+     ],
+     [
+      0.3,
+      9
+     ],
+     [
+      0.9,
+      12
+     ],
+     [
+      0.2,
+      14
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "jet-2",
+   "at": [
+    -10,
+    32,
+    0.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#eef4f6",
+    "profile": [
+     [
+      1.2,
+      0
+     ],
+     [
+      0.5,
+      4
+     ],
+     [
+      0.3,
+      9
+     ],
+     [
+      0.9,
+      12
+     ],
+     [
+      0.2,
+      14
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "jet-3",
+   "at": [
+    10,
+    32,
+    0.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#eef4f6",
+    "profile": [
+     [
+      1.2,
+      0
+     ],
+     [
+      0.5,
+      4
+     ],
+     [
+      0.3,
+      9
+     ],
+     [
+      0.9,
+      12
+     ],
+     [
+      0.2,
+      14
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "path",
+   "params": {
+    "points": [
+     [
+      -60.0,
+      -22.36,
+      0.55
+     ],
+     [
+      -52.5,
+      -24.08,
+      0.55
+     ],
+     [
+      -45.0,
+      -25.58,
+      0.55
+     ],
+     [
+      -37.5,
+      -26.76,
+      0.55
+     ],
+     [
+      -30.0,
+      -27.57,
+      0.55
+     ],
+     [
+      -22.5,
+      -27.97,
+      0.55
+     ],
+     [
+      -15.0,
+      -27.92,
+      0.55
+     ],
+     [
+      -7.5,
+      -27.43,
+      0.55
+     ],
+     [
+      0.0,
+      -26.54,
+      0.55
+     ],
+     [
+      7.5,
+      -25.28,
+      0.55
+     ],
+     [
+      15.0,
+      -23.73,
+      0.55
+     ],
+     [
+      22.5,
+      -21.98,
+      0.55
+     ],
+     [
+      30.0,
+      -20.11,
+      0.55
+     ],
+     [
+      37.5,
+      -18.24,
+      0.55
+     ],
+     [
+      45.0,
+      -16.47,
+      0.55
+     ],
+     [
+      52.5,
+      -14.89,
+      0.55
+     ],
+     [
+      60.0,
+      -13.6,
+      0.55
+     ]
+    ],
+    "section": {
+     "rect": [
+      6,
+      0.2
+     ]
+    },
+    "colour": "#4a4a4c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "params": {
+    "count": 10,
+    "start": [
+     -52,
+     -26
+    ],
+    "end": [
+     52,
+     -26
+    ],
+    "of": {
+     "type": "prism",
+     "id": "lamp",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "z0": 0.5,
+      "height": 8,
+      "colour": "#9aa0a4",
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lake-trees",
+   "params": {
+    "count": 9,
+    "start": [
+     -40,
+     44
+    ],
+    "end": [
+     40,
+     44
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#3f6f3a",
+      "profile": [
+       [
+        0.3,
+        0,
+        "#5a4632"
+       ],
+       [
+        0.3,
+        5
+       ],
+       [
+        2.4,
+        5.5
+       ],
+       [
+        2.6,
+        9
+       ],
+       [
+        1.6,
+        13
+       ],
+       [
+        0.2,
+        15
+       ]
+      ]
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-far",
+   "at": [
+    -46,
+    50
+   ],
+   "params": {
+    "z0": 0,
+    "height": 40,
+    "colour": "#2f3d4c",
+    "rect": [
+     16,
+     16
+    ],
+    "topColour": "#3a4656"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-0",
+   "at": [
+    20,
+    52
+   ],
+   "params": {
+    "z0": 0,
+    "height": 18,
+    "colour": "#ecebe6",
+    "rect": [
+     13,
+     12
+    ],
+    "topColour": "#cfcfcf",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "storeys": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-lo-0",
+   "at": [
+    20,
+    52
+   ],
+   "params": {
+    "z0": 0,
+    "height": 18,
+    "colour": "#ecebe6",
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-1",
+   "at": [
+    36,
+    52
+   ],
+   "params": {
+    "z0": 0,
+    "height": 21,
+    "colour": "#ecebe6",
+    "rect": [
+     13,
+     12
+    ],
+    "topColour": "#cfcfcf",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "storeys": 6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-lo-1",
+   "at": [
+    36,
+    52
+   ],
+   "params": {
+    "z0": 0,
+    "height": 21,
+    "colour": "#ecebe6",
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-2",
+   "at": [
+    52,
+    52
+   ],
+   "params": {
+    "z0": 0,
+    "height": 24,
+    "colour": "#ecebe6",
+    "rect": [
+     13,
+     12
+    ],
+    "topColour": "#cfcfcf",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "storeys": 7
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-lo-2",
+   "at": [
+    52,
+    52
+   ],
+   "params": {
+    "z0": 0,
+    "height": 24,
+    "colour": "#ecebe6",
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -36
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-recreation"
+}

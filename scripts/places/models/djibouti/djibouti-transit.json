@@ -1,0 +1,553 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nagad_railway_station.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "Skilla1st",
+   "view": "front",
+   "file": "/tmp/places-evidence/djibouti/nagad.png",
+   "used": "beige stone-clad front, central projecting three-arch portal, glazed bay at left, long wide flight of granite steps, roof sign frame with three flagpoles, lower wing with arched ground-floor openings at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/568000828",
+   "used": "overall size (about 99 x 30 m); plan simplified to an axis-aligned rectangle so the front faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 1.03,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     62,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b99b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "colours": [
+       "#cdbd9f",
+       "#c4b393",
+       "#d3c4a8"
+      ],
+      "slits": 0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ab90",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    41,
+    0
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b99b",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ab90",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    6,
+    -10
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d3c4a8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "bay": 9.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ab90",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "at": [
+    6,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     5.5
+    ],
+    "height": 2.2,
+    "z0": 12,
+    "colour": "#d6c8ad"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-surround",
+   "at": [
+    -20,
+    -12.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#d0c0a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-bay",
+   "footprint": {
+    "rect": [
+     9,
+     0.8
+    ]
+   },
+   "at": [
+    -20,
+    -13.2
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3846",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "glassColour": "#34455a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6558"
+   }
+  },
+  {
+   "type": "arcade",
+   "id": "wing-arcade",
+   "at": [
+    41,
+    -6.2,
+    0
+   ],
+   "params": {
+    "length": 17,
+    "height": 4.5,
+    "thickness": 1.2,
+    "bays": 4,
+    "shape": "round",
+    "recess": 0.8,
+    "roof": false,
+    "parapet": false,
+    "colour": "#cdbd9f",
+    "trim": "#bfae8e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "roof-sign",
+   "at": [
+    3,
+    -6,
+    14
+   ],
+   "params": {
+    "width": 14,
+    "height": 4,
+    "bottom": 0.5,
+    "colour": "#d9d6cf",
+    "frameColour": "#8a8a88",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner",
+   "at": [
+    6,
+    -12.6,
+    14.2
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.3
+    ],
+    "height": 1.6,
+    "colour": "#b02a2a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -2,
+    -6,
+    18.2
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#2a8a3a",
+    "count": 1
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    3,
+    -6,
+    18.2
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#5aa0d8",
+    "count": 1
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -6,
+    18.2
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#c8281e",
+    "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-0",
+   "at": [
+    0,
+    -21.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 0.28,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-1",
+   "at": [
+    0,
+    -20.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 0.56,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-2",
+   "at": [
+    0,
+    -20.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 0.8400000000000001,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-3",
+   "at": [
+    0,
+    -19.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 1.12,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-4",
+   "at": [
+    0,
+    -18.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 1.4000000000000001,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-5",
+   "at": [
+    0,
+    -18.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 1.6800000000000002,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-6",
+   "at": [
+    0,
+    -17.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 1.9600000000000002,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-7",
+   "at": [
+    0,
+    -17.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 2.24,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-8",
+   "at": [
+    0,
+    -16.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 2.5200000000000005,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-9",
+   "at": [
+    0,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 2.8000000000000003,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-10",
+   "at": [
+    0,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 3.08,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-11",
+   "at": [
+    0,
+    -14.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 3.3600000000000003,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-12",
+   "at": [
+    0,
+    -14.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 3.6400000000000006,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-13",
+   "at": [
+    0,
+    -13.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.6
+    ],
+    "height": 3.9200000000000004,
+    "colour": "#8f8d88"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "framing still wider than the close photo (fit-to-building includes whole site); arches are glazed arched windows not deep open reveals; roof sign is a plain block, not an open lattice frame; steps lack the side ramp"
+ }
+}

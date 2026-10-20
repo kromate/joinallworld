@@ -1,0 +1,351 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-way-179953386",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/179953386",
+   "used": "not used: outline is a 13 ha enclosure, not the building"
+  },
+  {
+   "kind": "text",
+   "used": "brief: white three-storey museum with columned entrance, steps, flags and lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     60,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f5ef",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     64,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -15
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48a",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-blue",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    -37,
+    -3
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f5ef",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-blue2",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    37,
+    -3
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f5ef",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-band",
+   "footprint": {
+    "rect": [
+     26,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -14.6
+   ],
+   "z0": 12,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f5fa3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 1.2,
+    "count": 6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#d81e2b",
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2,
+    "kind": "fence",
+    "pillarEvery": 6,
+    "colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-8",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -8,
+    -13.5
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0ece0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-3",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -3,
+    -13.5
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0ece0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col3",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    3,
+    -13.5
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0ece0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col8",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    8,
+    -13.5
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0ece0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ece0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -26
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -26
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; modest typical museum from brief"
+ }
+}

@@ -1,0 +1,400 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Campus_Pictures_064.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Botho University",
+   "view": "street",
+   "file": "/tmp/places-evidence/gaborone/botho1.jpg",
+   "used": "three-storey stepped block of warm grey render with slate-blue vertical stair/glazing towers, dark ribbon windows with awning sashes, flat roofs, jacaranda-like trees in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/128573803",
+   "used": "campus polygon only (not a building), so not used for massing; overall campus extent considered"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4aca0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f92",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4aca0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f92",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "at": [
+    19,
+    -2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4aca0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f92",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-1",
+   "footprint": {
+    "rect": [
+     6,
+     17
+    ]
+   },
+   "at": [
+    -15,
+    0.5
+   ],
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6b7f98",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 2.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d6079",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-2",
+   "footprint": {
+    "rect": [
+     6,
+     17
+    ]
+   },
+   "at": [
+    7,
+    2.5
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6b7f98",
+    "windows": "ribbon",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "windowRatio": 0.2,
+    "bay": 2.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d6079",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-1",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.8
+    ]
+   },
+   "at": [
+    -33,
+    -8.4
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f2328",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f46"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-2",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.8
+    ]
+   },
+   "at": [
+    -6,
+    -6.4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f2328",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f46"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-3",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.8
+    ]
+   },
+   "at": [
+    19,
+    -4.4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f2328",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f46"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     70,
+     12
+    ]
+   },
+   "at": [
+    -2,
+    20
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4aca0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "plinth": 0.3,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f92",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.16,
+    "run": 0.35,
+    "count": 4,
+    "colour": "#b0a898"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 8,
+    "spacing": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -2,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-botho-university",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "stepped depth and 3 storeys with taller blue-grey cores, but windows are generic punched rather than tall dark glazed bays with awnings; trees are lollipop broadleaf not dense canopies; no flags"
+ }
+}

@@ -40,42 +40,67 @@
  "parts": [
   {
    "type": "mass",
-   "id": "lecture-block",
+   "id": "core",
    "footprint": {
     "rect": [
-     62,
-     15
+     65,
+     13
     ]
    },
    "at": [
-    0,
+    2.5,
     0
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 8.6,
+   "height": 7.2,
    "storeys": 2,
    "wall": {
     "material": "concrete",
-    "colour": "#cdc8bd",
+    "colour": "#cfcabf",
     "windows": "punched",
-    "windowRatio": 0.55,
+    "windowRatio": 0.72,
     "windowShape": "rect",
-    "glassColour": "#2c3036",
+    "glassColour": "#1e2226",
     "faces": {
      "front": "punched",
      "back": "none",
      "left": "none",
      "right": "none"
     },
-    "bay": 5,
-    "plinth": 0.5,
-    "cornice": 0.3
+    "bay": 4.5
    },
    "roof": {
     "form": "flat",
     "colour": "#a9a59b",
-    "parapet": 1.1
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     65,
+     1.2
+    ]
+   },
+   "at": [
+    2.5,
+    -6.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcabf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabf"
    }
   },
   {
@@ -83,17 +108,17 @@
    "id": "pier0",
    "footprint": {
     "rect": [
-     2.6,
-     16.6
+     4.6,
+     3.4
     ]
    },
    "at": [
-    -27.5,
-    -0.8
+    -28,
+    -8.2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.6,
+   "height": 9.8,
    "storeys": 2,
    "wall": {
     "material": "red-brick",
@@ -110,17 +135,17 @@
    "id": "pier1",
    "footprint": {
     "rect": [
-     2.6,
-     16.6
+     4.6,
+     3.4
     ]
    },
    "at": [
-    -18.333333333333336,
-    -0.8
+    -19,
+    -8.2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.6,
+   "height": 9.8,
    "storeys": 2,
    "wall": {
     "material": "red-brick",
@@ -137,17 +162,17 @@
    "id": "pier2",
    "footprint": {
     "rect": [
-     2.6,
-     16.6
+     4.6,
+     3.4
     ]
    },
    "at": [
-    -9.166666666666668,
-    -0.8
+    -10,
+    -8.2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.6,
+   "height": 9.8,
    "storeys": 2,
    "wall": {
     "material": "red-brick",
@@ -164,17 +189,17 @@
    "id": "pier3",
    "footprint": {
     "rect": [
-     2.6,
-     16.6
+     4.6,
+     3.4
     ]
    },
    "at": [
-    0.0,
-    -0.8
+    -1,
+    -8.2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.6,
+   "height": 9.8,
    "storeys": 2,
    "wall": {
     "material": "red-brick",
@@ -191,17 +216,17 @@
    "id": "pier4",
    "footprint": {
     "rect": [
-     2.6,
-     16.6
+     4.6,
+     3.4
     ]
    },
    "at": [
-    9.166666666666664,
-    -0.8
+    8,
+    -8.2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.6,
+   "height": 9.8,
    "storeys": 2,
    "wall": {
     "material": "red-brick",
@@ -218,17 +243,17 @@
    "id": "pier5",
    "footprint": {
     "rect": [
-     2.6,
-     16.6
+     4.6,
+     3.4
     ]
    },
    "at": [
-    18.333333333333336,
-    -0.8
+    17,
+    -8.2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.6,
+   "height": 9.8,
    "storeys": 2,
    "wall": {
     "material": "red-brick",
@@ -245,17 +270,17 @@
    "id": "pier6",
    "footprint": {
     "rect": [
-     2.6,
-     16.6
+     4.6,
+     3.4
     ]
    },
    "at": [
-    27.5,
-    -0.8
+    26,
+    -8.2
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.6,
+   "height": 9.8,
    "storeys": 2,
    "wall": {
     "material": "red-brick",
@@ -269,6 +294,34 @@
   },
   {
    "type": "mass",
+   "id": "parapet",
+   "footprint": {
+    "rect": [
+     65,
+     4.2
+    ]
+   },
+   "at": [
+    2.5,
+    -7.9
+   ],
+   "rotDeg": 0,
+   "z0": 7.0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcabf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a4",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
    "id": "brick-end",
    "footprint": {
     "rect": [
@@ -277,12 +330,12 @@
     ]
    },
    "at": [
-    39,
-    0
+    42,
+    -1.5
    ],
    "rotDeg": 0,
    "z0": 0,
-   "height": 9.6,
+   "height": 9.8,
    "storeys": 2,
    "wall": {
     "material": "red-brick",
@@ -291,8 +344,7 @@
    },
    "roof": {
     "form": "flat",
-    "colour": "#a9573f",
-    "parapet": 0.5
+    "colour": "#a9573f"
    }
   },
   {
@@ -324,17 +376,171 @@
    }
   },
   {
-   "type": "pergola",
+   "type": "mass",
+   "id": "pergola-roof",
+   "footprint": {
+    "rect": [
+     12,
+     1.4
+    ]
+   },
    "at": [
-    34,
-    -11,
+    30,
+    -10.2
+   ],
+   "rotDeg": 0,
+   "z0": 3.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a3b2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
     0
    ],
    "params": {
-    "width": 12,
-    "depth": 6,
-    "height": 3.3,
-    "colour": "#8a3b2f"
+    "mode": "line",
+    "start": [
+     24.5,
+     -10.7,
+     0
+    ],
+    "end": [
+     35.5,
+     -10.7,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.3,
+      "colour": "#8a3b2f"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     9
+    ],
+    "height": 2.2,
+    "topScale": [
+     0.75,
+     0.45
+    ],
+    "colour": "#5f9a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     7
+    ],
+    "height": 1.4,
+    "topScale": [
+     0.75,
+     0.45
+    ],
+    "colour": "#5f9a45"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      -40
+     ],
+     [
+      -40,
+      -30
+     ],
+     [
+      -8,
+      -34
+     ],
+     [
+      18,
+      -22
+     ],
+     [
+      30,
+      -13.5
+     ]
+    ],
+    "width": 4.5,
+    "colour": "#b49a82"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      -37.6
+     ],
+     [
+      -40,
+      -27.6
+     ],
+     [
+      -8,
+      -31.6
+     ],
+     [
+      18,
+      -19.8
+     ],
+     [
+      28,
+      -12
+     ]
+    ],
+    "width": 0.4,
+    "colour": "#f2f0ea"
    }
   },
   {
@@ -342,58 +548,21 @@
    "id": "office-block",
    "footprint": {
     "rect": [
-     34,
+     24,
      11
     ]
    },
    "at": [
-    -42,
-    42
+    -60,
+    50
    ],
    "rotDeg": 0,
    "z0": 0,
    "height": 7.6,
    "storeys": 2,
    "wall": {
-    "material": "painted-render",
+    "material": "concrete",
     "colour": "#efeee9",
-    "windows": "punched",
-    "windowRatio": 0.25,
-    "faces": {
-     "front": "punched",
-     "back": "none",
-     "left": "none",
-     "right": "none"
-    },
-    "glassColour": "#556068",
-    "bay": 3.2
-   },
-   "roof": {
-    "form": "flat",
-    "colour": "#9fa29f",
-    "parapet": 0.4
-   }
-  },
-  {
-   "type": "mass",
-   "id": "office-gable",
-   "footprint": {
-    "rect": [
-     12,
-     11
-    ]
-   },
-   "at": [
-    -65,
-    42
-   ],
-   "rotDeg": 0,
-   "z0": 0,
-   "height": 7.6,
-   "storeys": 2,
-   "wall": {
-    "material": "painted-render",
-    "colour": "#f1f0eb",
     "windows": "none"
    },
    "roof": {
@@ -449,8 +618,8 @@
   ]
  },
  "review": {
-  "rounds": 1,
+  "rounds": 2,
   "match": "fair",
-  "gaps": "photo is a close shot: recessed window bays, sloping grass banks, pale parapet panel shapes and the red steel pergola proportions are simplified; neighbouring office blocks from a second photo"
+  "gaps": "pale panel weathering, 2x3 pane grid and reveal depth approximated by one punched window band; mounds are tapered prisms"
  }
 }

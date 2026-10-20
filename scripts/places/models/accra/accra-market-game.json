@@ -1,0 +1,521 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Makola_Market_Entrance,_Accra,_Ghana.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Benggriff",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/accra-market-game-0.jpg",
+   "used": "two-storey market block: bright yellow painted upper floor with a blank board band, grey block ground floor with punched windows and corrugated lean-to awnings, pale pink block to the right, crowd of umbrellas and stalls in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Street_Outside_Makola_Market,_Accra,_Ghana.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Benggriff",
+   "view": "street",
+   "file": "/tmp/places-evidence/accra/accra-market-game-1.jpg",
+   "used": "street packed with big striped umbrellas, goods stacks, yellow and pink shopfront blocks beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/307927457",
+   "used": "scale only (48 x 25 m, 2 levels, flat roof); outline is a nearest match so it is not used as the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d04a",
+    "windows": "none",
+    "plinth": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#aaa59a",
+       "#e6d04a"
+      ]
+     }
+    ],
+    "cornice": false,
+    "trimColour": "#c9b53a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a63a",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pink-block",
+   "footprint": {
+    "rect": [
+     18,
+     18
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cf9f94",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#7d7770",
+       "#cf9f94"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9998f",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    -8,
+    28
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cabfa8",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 2.5,
+    "colour": "#8f8780",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -6,
+    -11.3,
+    7.6
+   ],
+   "params": {
+    "width": 30,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#d6452c",
+    "frameColour": "#e6d04a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -22,
+    -11.8,
+    6.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 6,
+    "bottom": 0,
+    "colour": "#f2efe6",
+    "frameColour": "#555a5e",
+    "posts": true
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    12,
+    -12,
+    6.0
+   ],
+   "params": {
+    "width": 6,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#e8e4da",
+    "frameColour": "#555a5e",
+    "posts": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -22,
+    -11.2,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.0,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#8f867c",
+     "#6f7c84"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    -11.2,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.0,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#8f867c",
+     "#6f7c84"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -11.2,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.0,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#8f867c",
+     "#6f7c84"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    8,
+    -11.2,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.0,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#8f867c",
+     "#6f7c84"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    18,
+    -11.2,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.0,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#8f867c",
+     "#6f7c84"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "blue-gate",
+   "footprint": {
+    "rect": [
+     5,
+     0.6
+    ]
+   },
+   "at": [
+    20,
+    -12.2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f5f9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5f9a"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "size": 1.9,
+    "colours": [
+     "#e8c35a",
+     "#f0a030",
+     "#e58aa0",
+     "#f2efe6"
+    ],
+    "goods_colours": [
+     "#c0472a",
+     "#e2c35a",
+     "#4f8a4f",
+     "#f2efe6"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -26,
+    -17.5,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "size": 1.9,
+    "colours": [
+     "#e0a030",
+     "#e8c35a",
+     "#d9708a",
+     "#3f6bb0"
+    ],
+    "goods_colours": [
+     "#c0472a",
+     "#e2c35a",
+     "#4f8a4f",
+     "#f2efe6"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -26,
+    -21,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "size": 1.9,
+    "colours": [
+     "#f2efe6",
+     "#e58aa0",
+     "#e8c35a",
+     "#c0472a"
+    ],
+    "goods_colours": [
+     "#c0472a",
+     "#e2c35a",
+     "#4f8a4f",
+     "#f2efe6"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -26,
+    -24.5,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "size": 1.9,
+    "colours": [
+     "#e8c35a",
+     "#f0a030",
+     "#d9708a",
+     "#f2efe6"
+    ],
+    "goods_colours": [
+     "#c0472a",
+     "#e2c35a",
+     "#4f8a4f",
+     "#f2efe6"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -12,
+    -13.5,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 9,
+    "radius": 2.4,
+    "height": 2.8,
+    "colours": [
+     "#e8c35a",
+     "#e58aa0",
+     "#f0a030"
+    ],
+    "tables": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -13.5,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 9,
+    "radius": 2.4,
+    "height": 2.8,
+    "colours": [
+     "#f0a030",
+     "#e8c35a",
+     "#d9708a"
+    ],
+    "tables": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Flat yellow upper floor, red band, grey shopfronts with awnings and dense umbrella field now present; but stalls are offset left of the facade, side billboards render as blue blocks, no blue gate detail, crowd and goods stacks are generic, rear hall roof still visible."
+ }
+}

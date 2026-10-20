@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-place-rotary",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/364766149",
+   "used": "real park polygon of the traffic island (3,400 m2) as green ground"
+  },
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/Category:Brazzaville",
+   "used": "no photo of the roundabout monument exists; Commons geotagged images near it show other scenes (a riverbank, a club event) and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7fa87a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a5c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a9a49a",
+    "profile": [
+     [
+      11,
+      0.5
+     ],
+     [
+      11,
+      0.7
+     ],
+     [
+      10.2,
+      0.7
+     ],
+     [
+      10.2,
+      0.9,
+      "#7fa87a"
+     ],
+     [
+      6.5,
+      0.9
+     ],
+     [
+      6.5,
+      1.4,
+      "#cfc9bb"
+     ],
+     [
+      4.2,
+      1.4
+     ],
+     [
+      4.2,
+      1.9,
+      "#cfc9bb"
+     ],
+     [
+      2.4,
+      1.9
+     ]
+    ],
+    "segments": 28
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.9
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 2.2,
+    "colour": "#cfc9bb",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    4
+   ],
+   "params": {
+    "colour": "#d8d2c2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    6,
+    0,
+    0.9
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#1b7a43",
+     "#f4c70a",
+     "#c8102e"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9.9,
+    9.9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9.9,
+    9.9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9.9,
+    -9.9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9.9,
+    -9.9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Monument form on the island is a typical plinth with flagpoles; no photo, so its real shape is unknown."
+ }
+}

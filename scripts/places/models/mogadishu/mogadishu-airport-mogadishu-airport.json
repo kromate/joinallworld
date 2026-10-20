@@ -1,0 +1,189 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-airport-mogadishu-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2015_01_25_Turkish_President_Visit_to_Somalia-3_(16176886347).jpg",
+   "licence": "CC0",
+   "author": "AMISOM Public Information",
+   "view": "front",
+   "file": "/tmp/places-evidence/mogadishu/mgA-air2.jpg",
+   "used": "landside elevation of the 2015 terminal: flat roof, glazed ground floor with grey mullion grid and glass doors, dark grey panelled upper storey, low white entrance apron with steps (banners and flags left out)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/477792622",
+   "used": "terminal footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal-ground",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "rotDeg": -40,
+    "fit": 118
+   },
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#27374a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 4,
+    "plinth": 0.5,
+    "bands": "#6a6e72"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55595c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal-upper",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "rotDeg": -40,
+    "fit": 118
+   },
+   "z0": 10,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a4d50",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#4a4d50",
+      "#4c4f52",
+      "#484b4e"
+     ],
+     "slits": 0
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "rect": [
+     40,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -31
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e6e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.15,
+    "run": 1.2,
+    "count": 2,
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -60,
+    45,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "style": "round",
+    "colour": "#d9d6cf",
+    "cabColour": "#4a6a82"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -25,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#4189dd"
+    ],
+    "count": 3,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -88,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.4,
+    "colour": "#d8d2c4",
+    "pillarEvery": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 20,
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "glazing raised to 10 m, darker, low apron with steps added; sliding door openings not cut, OSM outline wings stagger unlike the straight photographed front"
+ }
+}

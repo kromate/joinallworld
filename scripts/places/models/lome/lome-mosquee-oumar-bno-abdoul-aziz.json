@@ -1,0 +1,687 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-mosquee-oumar-bno-abdoul-aziz",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/230107279",
+   "used": "main hall outline (26 x 17 m, name match, bearing 88 deg)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: wide prayer hall, main dome plus four smaller, two minarets, pointed-arch arcade across the front; cream render with green and sand accents (typed from city style, no photo of this mosque found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "pointed",
+    "windowRatio": 0.2,
+    "glassColour": "#4a6b80",
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#4a8a6a",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "pointed",
+      "bay": 3.6,
+      "opening": 0.6,
+      "height": 0.85,
+      "depth": 1.0,
+      "colour": "#efe6d0",
+      "pierColour": "#d7c9a0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7c9a0",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    9.3
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#4a8a6a",
+    "profile": [
+     [
+      6.324000000000001,
+      0,
+      "#d7c9a0"
+     ],
+     [
+      6.324000000000001,
+      0.5
+     ],
+     [
+      6.2,
+      0.5,
+      "#4a8a6a"
+     ],
+     [
+      6.04,
+      1.81
+     ],
+     [
+      5.59,
+      3.06
+     ],
+     [
+      4.85,
+      4.17
+     ],
+     [
+      3.87,
+      5.1
+     ],
+     [
+      2.69,
+      5.81
+     ],
+     [
+      1.38,
+      6.24
+     ],
+     [
+      0.0,
+      6.39
+     ]
+    ],
+    "topColour": "#4a8a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -6.6,
+      -6.6
+     ],
+     [
+      6.6,
+      -6.6
+     ],
+     [
+      6.6,
+      6.6
+     ],
+     [
+      -6.6,
+      6.6
+     ]
+    ],
+    "z0": 8.5,
+    "height": 0.8,
+    "colour": "#d7c9a0",
+    "topColour": "#d7c9a0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9.8,
+    -5.2,
+    8.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#4a8a6a",
+    "profile": [
+     [
+      2.1420000000000003,
+      0,
+      "#d7c9a0"
+     ],
+     [
+      2.1420000000000003,
+      0.5
+     ],
+     [
+      2.1,
+      0.5,
+      "#4a8a6a"
+     ],
+     [
+      2.05,
+      0.94
+     ],
+     [
+      1.89,
+      1.37
+     ],
+     [
+      1.64,
+      1.74
+     ],
+     [
+      1.31,
+      2.06
+     ],
+     [
+      0.91,
+      2.3
+     ],
+     [
+      0.47,
+      2.44
+     ],
+     [
+      0.0,
+      2.5
+     ]
+    ],
+    "topColour": "#4a8a6a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10,
+    -5.2,
+    8.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#4a8a6a",
+    "profile": [
+     [
+      2.1420000000000003,
+      0,
+      "#d7c9a0"
+     ],
+     [
+      2.1420000000000003,
+      0.5
+     ],
+     [
+      2.1,
+      0.5,
+      "#4a8a6a"
+     ],
+     [
+      2.05,
+      0.94
+     ],
+     [
+      1.89,
+      1.37
+     ],
+     [
+      1.64,
+      1.74
+     ],
+     [
+      1.31,
+      2.06
+     ],
+     [
+      0.91,
+      2.3
+     ],
+     [
+      0.47,
+      2.44
+     ],
+     [
+      0.0,
+      2.5
+     ]
+    ],
+    "topColour": "#4a8a6a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9.8,
+    5.2,
+    8.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#4a8a6a",
+    "profile": [
+     [
+      2.1420000000000003,
+      0,
+      "#d7c9a0"
+     ],
+     [
+      2.1420000000000003,
+      0.5
+     ],
+     [
+      2.1,
+      0.5,
+      "#4a8a6a"
+     ],
+     [
+      2.05,
+      0.94
+     ],
+     [
+      1.89,
+      1.37
+     ],
+     [
+      1.64,
+      1.74
+     ],
+     [
+      1.31,
+      2.06
+     ],
+     [
+      0.91,
+      2.3
+     ],
+     [
+      0.47,
+      2.44
+     ],
+     [
+      0.0,
+      2.5
+     ]
+    ],
+    "topColour": "#4a8a6a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10,
+    5.2,
+    8.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#4a8a6a",
+    "profile": [
+     [
+      2.1420000000000003,
+      0,
+      "#d7c9a0"
+     ],
+     [
+      2.1420000000000003,
+      0.5
+     ],
+     [
+      2.1,
+      0.5,
+      "#4a8a6a"
+     ],
+     [
+      2.05,
+      0.94
+     ],
+     [
+      1.89,
+      1.37
+     ],
+     [
+      1.64,
+      1.74
+     ],
+     [
+      1.31,
+      2.06
+     ],
+     [
+      0.91,
+      2.3
+     ],
+     [
+      0.47,
+      2.44
+     ],
+     [
+      0.0,
+      2.5
+     ]
+    ],
+    "topColour": "#4a8a6a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -12.8,
+    -8.4,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.35,
+      0,
+      "#d7c9a0"
+     ],
+     [
+      1.35,
+      1.2
+     ],
+     [
+      1.1,
+      1.2,
+      "#efe6d0"
+     ],
+     [
+      1.0,
+      10
+     ],
+     [
+      1.55,
+      10,
+      "#d7c9a0"
+     ],
+     [
+      1.55,
+      11
+     ],
+     [
+      0.95,
+      11,
+      "#efe6d0"
+     ],
+     [
+      0.9,
+      17
+     ],
+     [
+      1.4,
+      17,
+      "#d7c9a0"
+     ],
+     [
+      1.4,
+      17.8
+     ],
+     [
+      0.8,
+      17.8,
+      "#4a8a6a"
+     ],
+     [
+      0.75,
+      19.5
+     ],
+     [
+      0.0,
+      22.5
+     ],
+     [
+      0.0,
+      24.5,
+      "#d4af37"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -12.8,
+    -8.4,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.2,
+      0
+     ],
+     [
+      1.0,
+      17
+     ],
+     [
+      0.0,
+      24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    13.0,
+    -7.8,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.35,
+      0,
+      "#d7c9a0"
+     ],
+     [
+      1.35,
+      1.2
+     ],
+     [
+      1.1,
+      1.2,
+      "#efe6d0"
+     ],
+     [
+      1.0,
+      10
+     ],
+     [
+      1.55,
+      10,
+      "#d7c9a0"
+     ],
+     [
+      1.55,
+      11
+     ],
+     [
+      0.95,
+      11,
+      "#efe6d0"
+     ],
+     [
+      0.9,
+      17
+     ],
+     [
+      1.4,
+      17,
+      "#d7c9a0"
+     ],
+     [
+      1.4,
+      17.8
+     ],
+     [
+      0.8,
+      17.8,
+      "#4a8a6a"
+     ],
+     [
+      0.75,
+      19.5
+     ],
+     [
+      0.0,
+      22.5
+     ],
+     [
+      0.0,
+      24.5,
+      "#d4af37"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    13.0,
+    -7.8,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.2,
+      0
+     ],
+     [
+      1.0,
+      17
+     ],
+     [
+      0.0,
+      24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0.5,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#d7c9a0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d7c9a0"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found, so form is typed from the brief on the real OSM outline: dome and minaret profiles generic, no real window/arch rhythm, entrance and boundary guessed."
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

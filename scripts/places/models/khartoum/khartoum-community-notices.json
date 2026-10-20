@@ -1,0 +1,157 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1552704315",
+   "used": "containing building outline (2466 m2, comparable to brief 85x32)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: five-storey concrete slab, brise-soleil, recessed entrance, flagpoles"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ministry",
+   "footprint": {
+    "osm": true,
+    "simplify": 5
+   },
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3c7ae",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "plinth": 0.8,
+    "bands": "#8d8a82",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.35,
+      "depth": 0.9,
+      "spacing": 5,
+      "colour": "#efe9da",
+      "margin": 2
+     }
+    ],
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "porte-cochere",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 9,
+    "height": 5.2,
+    "columns": 4,
+    "colour": "#8d8a82",
+    "edgeColour": "#efe9da"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#d21034",
+     "#ffffff",
+     "#000000"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#bdb49f"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -42,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3,
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -42,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "count": 4,
+    "height": 8,
+    "spread": 5,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; the OSM outline is a zig-zag footprint, brise-soleil approximated by fins."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-community-notices"
+}

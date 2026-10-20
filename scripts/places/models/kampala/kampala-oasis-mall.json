@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-oasis-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/0",
+   "used": "real Oasis Mall outline (name match)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/kampala.json kampala-oasis-mall",
+   "used": "glassy 3-storey mall, blue accent, rooftop terrace"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd8dc",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bands": "#2f5d8a",
+    "bay": 6,
+    "plinth": 0.4,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#cfd8dc",
+      "#2f5d8a"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-terrace",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 16,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f5d8a",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0",
+    "material": "membrane",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#2f5d8a",
+    "frameColour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -75,
+    0
+   ],
+   "params": {
+    "colour": "#d0d0d0",
+    "count": 6,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -10,
+    -70,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 5,
+    "spacing": 15
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real outline with brief's glass-and-blue mid-rise, rooftop terrace position guessed"
+ }
+}

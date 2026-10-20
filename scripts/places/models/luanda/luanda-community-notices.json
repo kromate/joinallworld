@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6431029",
+   "used": "real outline: courthouse block about 47 x 49 m, bearing 175 deg"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Luanda",
+   "used": "colonial Baixa style typed from brief: ochre render, white trim, clay-tile hip roof, arched ground arcade; the nearby geotagged photos show other buildings and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf93",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "bay": 4.2,
+    "plinth": 0.9,
+    "cornice": true,
+    "bands": "#f3efe6",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.2,
+      "opening": 0.6,
+      "height": 0.7,
+      "depth": 0.8,
+      "pierColour": "#f3efe6",
+      "faces": [
+       "front"
+      ],
+      "storeys": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5543a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 8,
+    "columns": 4,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#f3efe6",
+    "roofColour": "#b5543a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c8202a",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    12,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#111111",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -40
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -40
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the courthouse (nearby geotagged photos show other buildings): real OSM outline with ochre render, arched ground arcade, clay-tile hip roof from the brief; real facade detailing unknown."
+ }
+}

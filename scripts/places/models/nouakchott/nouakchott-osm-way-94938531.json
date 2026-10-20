@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-osm-way-94938531",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NouakchottNationalMuseum1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Clemens Schmillen",
+   "view": "front",
+   "file": "/tmp/places-evidence/nouakchott/museum.jpg",
+   "used": "long two-storey cream block, solid upper storey with rows of small square windows, open colonnade ground floor, red and green entrance arch, low railing fence with green piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/94938531",
+   "used": "overall size and bearing only (the traced outline is irregular; the photo shows a plain long rectangle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.475,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     62,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8b4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 2.7,
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 2.6,
+      "spacing": 5.4,
+      "width": 0.8,
+      "kind": "square",
+      "colour": "#e2d3ad",
+      "backColour": "#d3c39d"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bd9f",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#d7c9a5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-pier-l",
+   "at": [
+    -8,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 3.8,
+    "colour": "#3f8a62",
+    "topColour": "#3f8a62"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-pier-r",
+   "at": [
+    8,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 3.8,
+    "colour": "#3f8a62",
+    "topColour": "#3f8a62"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "red-arch",
+   "at": [
+    0,
+    -19,
+    3.6
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.7
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 8,
+     "bulge": 2.2,
+     "startDeg": 180,
+     "endDeg": 0
+    },
+    "colour": "#8c2a2a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.6,
+    "thickness": 0.2,
+    "kind": "railing",
+    "pillarEvery": 5,
+    "colour": "#4b8f6a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    8,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.6,
+    "thickness": 0.2,
+    "kind": "railing",
+    "pillarEvery": 5,
+    "colour": "#4b8f6a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    3,
+    -14,
+    10.5
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -25,
+    -16,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Ground-floor colonnade backing renders dark, red entrance arch is a round arc not the angular portal, no checkerboard fence base or street lamps, upper windows are paired slits in photo."
+ }
+}

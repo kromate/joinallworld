@@ -1,0 +1,758 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cape_Town_station_2018.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Antony-22",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/cape-town/station.jpg",
+   "used": "low cream concourse with dark ribbon band and flat roof, long grey canopy walkways angled over the forecourt, saw-tooth platform roofs behind, palms and green forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/424212273",
+   "used": "overall scale only: 676 m outline, about 130 m of concourse and platform shed modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "concourse",
+   "footprint": {
+    "rect": [
+     90,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ebe8de",
+    "windows": "none",
+    "bands": "#4f545a",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       4.5,
+       2.2
+      ],
+      "colours": [
+       "#f4f2ea",
+       "#f4f2ea",
+       "#6b5d4c"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b4a3a",
+    "material": "concrete",
+    "parapet": 0.4,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay0",
+   "footprint": {
+    "rect": [
+     90,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    24.0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#59616a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#59616a",
+    "material": "concrete",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay1",
+   "footprint": {
+    "rect": [
+     90,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    30.2
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#857a6b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#857a6b",
+    "material": "concrete",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay2",
+   "footprint": {
+    "rect": [
+     90,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    36.4
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#59616a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#59616a",
+    "material": "concrete",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay3",
+   "footprint": {
+    "rect": [
+     90,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    42.6
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#857a6b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#857a6b",
+    "material": "concrete",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay4",
+   "footprint": {
+    "rect": [
+     90,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    48.8
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#59616a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#59616a",
+    "material": "concrete",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay5",
+   "footprint": {
+    "rect": [
+     90,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    55.0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#857a6b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#857a6b",
+    "material": "concrete",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay6",
+   "footprint": {
+    "rect": [
+     90,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    61.2
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#59616a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#59616a",
+    "material": "concrete",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay7",
+   "footprint": {
+    "rect": [
+     90,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    67.4
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#857a6b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#857a6b",
+    "material": "concrete",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -14,
+    -26,
+    4.2
+   ],
+   "rotDeg": 30,
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 7,
+    "height": 0,
+    "thickness": 0.5,
+    "columns": 3,
+    "colour": "#9fa2a5",
+    "edgeColour": "#b9b9b5"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    22,
+    -24,
+    4.2
+   ],
+   "rotDeg": 30,
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 7,
+    "height": 0,
+    "thickness": 0.5,
+    "columns": 3,
+    "colour": "#9fa2a5",
+    "edgeColour": "#b9b9b5"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -25,
+    -9.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "bottom": 7.2,
+    "colour": "#3b5d7a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "footbridge",
+   "footprint": {
+    "rect": [
+     3,
+     40
+    ]
+   },
+   "at": [
+    55,
+    -12
+   ],
+   "z0": 5.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge-pier-12",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    55,
+    -12
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a69f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower0",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    -56,
+    46
+   ],
+   "z0": 0,
+   "height": 51,
+   "storeys": 15,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b9a98a",
+       "#8f8672"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower1",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -40,
+    70
+   ],
+   "z0": 0,
+   "height": 51,
+   "storeys": 15,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b9a98a",
+       "#8f8672"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60.0,
+      -45.0
+     ],
+     [
+      -50.0,
+      -42.55555555555556
+     ],
+     [
+      -40.0,
+      -40.55555555555556
+     ],
+     [
+      -30.0,
+      -39.0
+     ],
+     [
+      -20.0,
+      -37.888888888888886
+     ],
+     [
+      -10.0,
+      -37.22222222222222
+     ],
+     [
+      0.0,
+      -37.0
+     ],
+     [
+      10.0,
+      -37.22222222222222
+     ],
+     [
+      20.0,
+      -37.888888888888886
+     ],
+     [
+      30.0,
+      -39.0
+     ],
+     [
+      40.0,
+      -40.55555555555556
+     ],
+     [
+      50.0,
+      -42.55555555555556
+     ],
+     [
+      60.0,
+      -45.0
+     ],
+     [
+      60.0,
+      -59.0
+     ],
+     [
+      50.0,
+      -56.55555555555556
+     ],
+     [
+      40.0,
+      -54.55555555555556
+     ],
+     [
+      30.0,
+      -53.0
+     ],
+     [
+      20.0,
+      -51.888888888888886
+     ],
+     [
+      10.0,
+      -51.22222222222222
+     ],
+     [
+      0.0,
+      -51.0
+     ],
+     [
+      -10.0,
+      -51.22222222222222
+     ],
+     [
+      -20.0,
+      -51.888888888888886
+     ],
+     [
+      -30.0,
+      -53.0
+     ],
+     [
+      -40.0,
+      -54.55555555555556
+     ],
+     [
+      -50.0,
+      -56.55555555555556
+     ],
+     [
+      -60.0,
+      -59.0
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#55585c",
+    "material": "concrete"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     24
+    ],
+    "height": 0.15,
+    "colour": "#6f9a4e",
+    "material": "concrete"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 1,
+    "spread": 1,
+    "colour": "#3f7a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -40,
+    -41,
+    0.12
+   ],
+   "params": {
+    "colour": "#d9d9d9",
+    "count": 2,
+    "spacing": 4,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -43,
+    0.12
+   ],
+   "params": {
+    "colour": "#b03a2e",
+    "count": 2,
+    "spacing": 4,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    10,
+    -47,
+    0.12
+   ],
+   "params": {
+    "colour": "#f0f0f0",
+    "count": 2,
+    "spacing": 4,
+    "yaw": 180
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    25,
+    -48,
+    0.12
+   ],
+   "params": {
+    "colour": "#2e3a52",
+    "count": 2,
+    "spacing": 4,
+    "yaw": 180
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    50,
+    -47,
+    0.12
+   ],
+   "params": {
+    "colour": "#d9d9d9",
+    "count": 2,
+    "spacing": 4,
+    "yaw": 180
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "platform bays still read bluish and glossy; curved road and green forecourt lawn do not show in render (grey site hides them); footbridge, towers and angled canopies added but simplified; no tracks"
+ }
+}

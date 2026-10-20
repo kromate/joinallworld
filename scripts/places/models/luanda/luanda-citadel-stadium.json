@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-citadel-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/9176661",
+   "used": "oval bowl proportions (about 205 x 254 m, long axis north-south), scaled to scene"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Est\u00e1dio_da_Cidadela",
+   "used": "1972 closed concrete bowl, two tiers (upper ring condemned 2006), floodlight masts; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "length": 62,
+    "width": 40,
+    "stripes": 8,
+    "markings": true,
+    "goals": true
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 54,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 14,
+    "rise": 0.7,
+    "run": 0.8,
+    "firstHeight": 3,
+    "facetDeg": 12,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "seatColour": "#b9b5aa",
+    "concreteColour": "#b9b5aa",
+    "underColour": "#8d8a82",
+    "blocks": 4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 71,
+    "startDeg": 45,
+    "endDeg": 405,
+    "count": 4,
+    "facing": "outward",
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 38,
+      "head_width": 6
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -60
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     -60
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo found for this stadium; bowl sized from OSM outline proportions (oval, long axis N-S), two-tier look, closed concrete tone and four masts from text. No facade ramps, no scoreboard, outline is a symmetric oval rather than the real slightly irregular plan."
+ }
+}

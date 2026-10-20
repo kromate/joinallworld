@@ -1,0 +1,575 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parc_national_du_Mali._Pavillon_d%E2%80%99entr%C3%A9e.jpg",
+   "licence": "CC0",
+   "author": "Davidoscarbodart",
+   "view": "front",
+   "file": "/tmp/places-evidence/bamako/zoo-pavillon.jpg",
+   "used": "entrance pavilion of the Parc national du Mali / zoo: warm brick block with perforated breeze-block panel, huge steel-truss cantilevered tilted roof with cream fascia, pale blue guard hut, black bar fence and gate, brick paving, big shade trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/149893031",
+   "used": "zoo extent only (360 x 300 m, too large and irregular for the scene); enclosures and walkways composed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-right",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    3.5,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b87a52",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#b87a52",
+      "#6a3f2c"
+     ],
+     "slits": 0.25
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     1.2,
+     4.5
+    ]
+   },
+   "at": [
+    -4.4,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9694a",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gateway-lintel",
+   "at": [
+    -1.9,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     4.5
+    ],
+    "z0": 2.6,
+    "height": 0.7,
+    "colour": "#8a6a52"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "cantilever-roof",
+   "at": [
+    -2,
+    -2.5,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 22,
+    "depth": 14,
+    "rise": 0,
+    "folds": 1,
+    "slopeX": -5,
+    "thickness": 0.5,
+    "z": 4.6,
+    "colour": "#cdbfa9",
+    "edgeColour": "#e4dccd",
+    "underColour": "#b9ab95",
+    "slopeY": -6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 5.6,
+    "colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 5.6,
+    "colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    2.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 5.6,
+    "colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    2.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 5.6,
+    "colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard-hut",
+   "footprint": {
+    "rect": [
+     3.2,
+     3
+    ]
+   },
+   "at": [
+    11,
+    2
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8cbd8",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hut-door",
+   "at": [
+    11,
+    0.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.12
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#1e1f22"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "bars",
+    "height": 2.4,
+    "colour": "#2d3033",
+    "points": [
+     [
+      -30,
+      6
+     ],
+     [
+      -8,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "bars",
+    "height": 2.4,
+    "colour": "#2d3033",
+    "points": [
+     [
+      14,
+      6
+     ],
+     [
+      34,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    35,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 40,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "bars",
+    "height": 2.8,
+    "colour": "#3a3d41",
+    "points": [
+     [
+      -27,
+      35
+     ],
+     [
+      -13,
+      35
+     ],
+     [
+      -13,
+      45
+     ],
+     [
+      -27,
+      45
+     ],
+     [
+      -27,
+      35
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelter0",
+   "at": [
+    -20,
+    42.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#c9a27a",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "bars",
+    "height": 2.8,
+    "colour": "#3a3d41",
+    "points": [
+     [
+      -7,
+      43
+     ],
+     [
+      7,
+      43
+     ],
+     [
+      7,
+      53
+     ],
+     [
+      -7,
+      53
+     ],
+     [
+      -7,
+      43
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelter1",
+   "at": [
+    0,
+    50.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#c9a27a",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "bars",
+    "height": 2.8,
+    "colour": "#3a3d41",
+    "points": [
+     [
+      17,
+      43
+     ],
+     [
+      31,
+      43
+     ],
+     [
+      31,
+      53
+     ],
+     [
+      17,
+      53
+     ],
+     [
+      17,
+      43
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelter2",
+   "at": [
+    24,
+    50.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#c9a27a",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "bars",
+    "height": 2.4,
+    "colour": "#1b1c1e",
+    "points": [
+     [
+      -7,
+      1.5
+     ],
+     [
+      -26,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.08,
+       12
+      ],
+      "z0": 4.4,
+      "height": 0.12,
+      "colour": "#6e7377"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -11,
+     -2.5
+    ],
+    "end": [
+     7,
+     -2.5
+    ],
+    "count": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Roof tilts sideways but the back edge is not raised and the steel-truss underside is only a few beams; breeze-block panel is a coarse random tile pattern, not a regular hole grid; ground is grey paving (no brick-paver colour control); scattered fence bars and generic trees."
+ }
+}

@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-way-1024928619",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1024928619",
+   "used": "mosque outline, a rotated rectangle about 26 x 22 m, matched by name"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Masjidka Afarta Minaaradood, four minarets, central dome, white render with green; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 44,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -68.4
+   },
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.26,
+    "plinth": 0.6,
+    "bay": 3.4,
+    "bands": "#d5c9a6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0dccf",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    0,
+    10.2
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#2d6e5d",
+    "profile": [
+     [
+      7.2,
+      0,
+      "#f4f1e8"
+     ],
+     [
+      7.2,
+      2.4
+     ],
+     [
+      7.6,
+      2.4,
+      "#d5c9a6"
+     ],
+     [
+      7.6,
+      2.9,
+      "#2d6e5d"
+     ],
+     [
+      7.0,
+      4.4
+     ],
+     [
+      5.9,
+      6.0
+     ],
+     [
+      4.3,
+      7.3
+     ],
+     [
+      2.4,
+      8.1
+     ],
+     [
+      0.8,
+      8.4
+     ],
+     [
+      0.0,
+      8.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    18.6
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c9a74a",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.3,
+      1.6
+     ],
+     [
+      0.12,
+      1.8
+     ],
+     [
+      0.12,
+      2.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "corner-domelets",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    9.5
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 19,
+    "dy": 15,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "colour": "#2d6e5d",
+      "profile": [
+       [
+        2.0,
+        0,
+        "#f4f1e8"
+       ],
+       [
+        2.0,
+        0.9
+       ],
+       [
+        1.6,
+        1.9
+       ],
+       [
+        0.9,
+        2.6
+       ],
+       [
+        0,
+        2.9
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "core/minaret",
+   "id": "minaret-1-1",
+   "at": [
+    -14.4,
+    -12.0,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "radius": 1.05,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "capColour": "#2d6e5d"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "id": "minaret-11",
+   "at": [
+    -14.4,
+    12.0,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "radius": 1.05,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "capColour": "#2d6e5d"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "id": "minaret1-1",
+   "at": [
+    14.4,
+    -12.0,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "radius": 1.05,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "capColour": "#2d6e5d"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "id": "minaret11",
+   "at": [
+    14.4,
+    12.0,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "radius": 1.05,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "capColour": "#2d6e5d"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -11.6,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 3.5,
+    "height": 6.8,
+    "columns": 6,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#d5c9a6",
+    "roofColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.6,
+    "run": 2,
+    "count": 3,
+    "colour": "#d9d2bd"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: facade, dome profile and colours come from the brief; only the outline is real"
+ }
+}

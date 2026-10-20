@@ -1,0 +1,636 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-campaign-against-genocide-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:An_aerial_view_of_new_look_of_Rwanda_Parliament_Building_in_Kimihurura,_Kigali_on_May_16,_2019._Emmanuel_Kwizera.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Emmanuelkwizera",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kigali/cg0.jpg",
+   "used": "the Parliament/CND complex in Kimihurura that Wikidata and OSM tie to this venue (the museum has no photo of its own): six-storey white slab with grey balconies behind, lower white gabled halls with green roofs, terracotta entrance panels, long low white wing with green roof at right, white perimeter wall on terraced slope"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/125898407",
+   "used": "Parliament building outline (containing match, 142 m wide multi-wing): overall extent only, wings recomposed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 2.1,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    2,
+    16
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecece8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.8,
+      "rail": 1.0,
+      "width": 4.5,
+      "every": 6.0,
+      "slab": 0.25,
+      "railKind": "solid",
+      "colour": "#9a9b9a",
+      "railColour": "#8d8e8d",
+      "floors": "upper",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-top",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    16
+   ],
+   "z0": 24,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-1",
+   "footprint": {
+    "rect": [
+     11,
+     22
+    ]
+   },
+   "at": [
+    -30,
+    -4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f3f1",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c9c86"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -30,
+    -4,
+    8
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 12,
+    "depth": 23,
+    "rise": 2.2,
+    "folds": 6,
+    "foldAxis": "x",
+    "colour": "#4f9a80",
+    "thickness": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-2",
+   "footprint": {
+    "rect": [
+     11,
+     22
+    ]
+   },
+   "at": [
+    -18,
+    -4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f3f1",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c9c86"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -18,
+    -4,
+    8
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 12,
+    "depth": 23,
+    "rise": 2.2,
+    "folds": 6,
+    "foldAxis": "x",
+    "colour": "#4f9a80",
+    "thickness": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-3",
+   "footprint": {
+    "rect": [
+     11,
+     22
+    ]
+   },
+   "at": [
+    -6,
+    -4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f3f1",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c9c86"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -6,
+    -4,
+    8
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 12,
+    "depth": 23,
+    "rise": 2.2,
+    "folds": 6,
+    "foldAxis": "x",
+    "colour": "#4f9a80",
+    "thickness": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     44,
+     8
+    ]
+   },
+   "at": [
+    -18,
+    8
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ebe8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c9c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    17,
+    -4
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2ef",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 3.6,
+      "opening": 0.7,
+      "height": 0.85,
+      "depth": 1.2,
+      "storeys": 1,
+      "colour": "#dcdedc",
+      "pierColour": "#f4f4f1"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c9c86",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-low",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -48,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efefec",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbb",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -55,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "height": 1.4,
+    "kind": "wall",
+    "colour": "#f1f1f1"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.6,
+    "run": 1.6,
+    "count": 6,
+    "colour": "#c9946a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    22,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#2a6db0"
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#b6552b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       2.4
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       5.2,
+       2.4
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       3.8,
+       2.4
+      ]
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       2,
+       2.4
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       0.6,
+       2.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#b6552b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       2.4
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       5.2,
+       2.4
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       3.8,
+       2.4
+      ]
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       2,
+       2.4
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       0.6,
+       2.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-0",
+   "footprint": {
+    "rect": [
+     110,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    -26
+   ],
+   "z0": -0.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-1",
+   "footprint": {
+    "rect": [
+     110,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    -31
+   ],
+   "z0": -0.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-2",
+   "footprint": {
+    "rect": [
+     110,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    -36
+   ],
+   "z0": -0.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-3",
+   "footprint": {
+    "rect": [
+     110,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    -41
+   ],
+   "z0": -0.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -62,
+     -4
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -30
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -20
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Halls have folded green roofs, pointed windows and terracotta pointed entrance blocks, wing attached; pointed arcades only on windows, terraces are flat slabs, no curved drive or zig-zag railing; models the Parliament compound the venue is tied to."
+ }
+}

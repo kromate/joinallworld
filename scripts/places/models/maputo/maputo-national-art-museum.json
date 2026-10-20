@@ -1,0 +1,189 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-national-art-museum",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/255757248",
+   "used": "exact building outline (about 24 x 21 m rotated 32 degrees, name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief only (no photograph of this building was found): colonial-era villa with arcaded veranda, hipped clay-tile roof, sculpture garden with statues towards Av. Ho Chi Minh"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#b8a07a",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 3.4,
+      "opening": 0.6,
+      "depth": 1.4,
+      "storeys": 1,
+      "colour": "#f4f1ea"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5543a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "pose": "stand",
+    "colour": "#3f3a33"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    16,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 2.6,
+    "pose": "stand",
+    "colour": "#4a3f33"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    2,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 3.6,
+    "pose": "stand",
+    "colour": "#3a3630"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.6,
+    "thickness": 0.3,
+    "pillarEvery": 5,
+    "colour": "#e8dfc8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: outline from OSM, villa style, veranda, roof and sculpture garden follow the brief only; colours and veranda position are plausible not verified"
+ }
+}

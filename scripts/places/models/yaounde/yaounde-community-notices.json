@@ -1,0 +1,248 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Avenue_de_France,_Yaound%C3%A9_III_-_Mapillary_(lWHBubfTwoAzyhbH67GOiQ).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "a seraphin a @ Mapillary.com",
+   "view": "street",
+   "file": "/tmp/places-evidence/yaounde/assembly.jpg",
+   "used": "white flat-roofed low block with a brown-framed tall glazed bay, black railing fence on a red-brown brick plinth wall, taller grey ribbon-windowed block behind, palms and a big broadleaf tree"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1365331752",
+   "used": "main hall footprint, 3 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.6,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "glassColour": "#5a4a40",
+    "trimColour": "#7a5a45",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d5cd",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-bay",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -8,
+    -24
+   ],
+   "rotDeg": -42,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6b4a38",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#6f7f86",
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece9e1",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    34,
+    42
+   ],
+   "rotDeg": -36,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bdbdb8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -56
+   ],
+   "params": {
+    "length": 96,
+    "height": 2.5,
+    "thickness": 0.4,
+    "kind": "railing",
+    "colour": "#26282a",
+    "pillarEvery": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -56.4
+   ],
+   "params": {
+    "length": 96,
+    "height": 0.8,
+    "thickness": 0.7,
+    "kind": "wall",
+    "colour": "#8a4e3c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -48
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#1b7a43",
+     "#c8362f",
+     "#f2c230"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -33
+   ],
+   "rotDeg": -42,
+   "params": {
+    "width": 10,
+    "rise": 1.0,
+    "run": 1.5,
+    "count": 3,
+    "colour": "#bfb9ab"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   120,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -50
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -54,
+     -54
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -44
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -46,
+     -52
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     -40
+    ],
+    "height": 14
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Street photo is oblique through a fence; hall is now a low white pavilion with brown glazed bay, tall railing on brick plinth, grey block behind, taller trees; tree and entrance detail approximate"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-community-notices"
+}

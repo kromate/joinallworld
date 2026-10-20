@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/harare.json harare-meal-stop",
+   "used": "small garden cafe attached to the National Gallery: render walls, covered timber terrace, umbrellas, painted mural; no photo of the cafe itself was found"
+  },
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:National_Gallery_Zimbabwe.jpg",
+   "used": "gallery grounds only (CC BY-SA 3.0, Awinda): black stone sculptures, low stone walls, planting; the neighbouring gallery, not the cafe"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -2,
+    2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cc",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "material": "membrane",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    8,
+    4.5
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfb4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 6,
+    "height": 3.2,
+    "thickness": 0.25,
+    "columns": 4,
+    "colour": "#8a6a45",
+    "edgeColour": "#6b5035"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mural-wall",
+   "footprint": {
+    "rect": [
+     0.5,
+     8
+    ]
+   },
+   "at": [
+    -10.2,
+    2
+   ],
+   "height": 3.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9733f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9733f"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 7,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#d9b24a",
+     "#f6f2ea",
+     "#b5563c",
+     "#f6f2ea",
+     "#6f8a5a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -9,
+    -5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    5,
+    -5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    11,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 2.5,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 2.4,
+    "pose": "stand",
+    "colour": "#33312e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -18,
+      -20
+     ],
+     [
+      16,
+      -20
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#bfb6a5"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the cafe exists in the sources; layout typed from the brief (small rendered cafe, timber terrace, umbrellas, mural wall)."
+ }
+}

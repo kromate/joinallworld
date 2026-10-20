@@ -1,0 +1,108 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: beachside bar with thatched shelters and timber deck; no OSM outline or photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "thatched-pavilion",
+   "id": "main",
+   "at": [
+    -5,
+    0,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "deck_height": 0.6,
+    "post_height": 3,
+    "roof": "pyramid",
+    "thatch": true,
+    "bar": true,
+    "rail": true,
+    "wall_colour": "#8a5a36",
+    "roof_colour": "#b79b5a"
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "id": "side",
+   "at": [
+    13,
+    6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "deck_height": 0.5,
+    "post_height": 2.8,
+    "roof": "pyramid",
+    "thatch": true,
+    "bar": false,
+    "wall_colour": "#c9a672",
+    "roof_colour": "#b79b5a"
+   }
+  },
+  {
+   "type": "beach-row",
+   "id": "umbrellas",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.5,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#efe6d0",
+     "#c9a672"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -16,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 4,
+    "line": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-node-6300945109",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; thatched beach-bar typed from brief, deck/layout invented."
+ }
+}

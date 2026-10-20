@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-osm-way-616434324",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/616434324",
+   "used": "real outline of the building (22 x 21 m, irregular hexagon, 357 m2)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/conakry.json#conakry-osm-way-616434324",
+   "used": "two storeys, rendered walls, ribbon glazing, shopfronts at ground, blank sign boards, parking forecourt (typed, no source on the centre)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5ddc9",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#bdb7a8",
+    "faces": {
+     "front": "curtain"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 3.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -12.5,
+    3.4
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 0.3,
+    "form": "flat",
+    "colour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -13,
+    5.6
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#4a6a8a",
+    "frameColour": "#bdb7a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 4.5,
+    "bottom": 3.0,
+    "colour": "#c9a43c",
+    "frameColour": "#7b7f84",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.0,
+    "colour": "#b9b5a8",
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the centre exists; real OSM outline with typed two-storey shopfront block, canopy, blank signs, parking."
+ }
+}

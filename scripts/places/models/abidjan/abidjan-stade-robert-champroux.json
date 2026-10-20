@@ -194,8 +194,23 @@
       -4.69
      ]
     ],
-    "height": 0.12,
+    "height": 0.2,
     "colour": "#4f9a45"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "width": 74,
+    "infield": false,
+    "pitch": false,
+    "colour": "#8a4a3a"
    }
   },
   {
@@ -210,8 +225,8 @@
     "startDeg": 0,
     "endDeg": 360,
     "rows": 9,
-    "rise": 0.5,
-    "run": 0.85,
+    "rise": 0.65,
+    "run": 1.1,
     "firstHeight": 1.6,
     "facetDeg": 14,
     "under": "open",
@@ -219,8 +234,8 @@
     "slab": 0.5,
     "bay": 8,
     "seatColours": [
-     "#d6d0c0",
-     "#b8452f"
+     "#bfb9a8",
+     "#a9a391"
     ],
     "blocks": 2,
     "concreteColour": "#d6d0c0",
@@ -238,29 +253,29 @@
     "radiusY": 38,
     "startDeg": 35,
     "endDeg": 145,
-    "rows": 14,
-    "rise": 0.55,
-    "run": 0.85,
-    "firstHeight": 2.0,
-    "facetDeg": 12,
+    "rows": 8,
+    "rise": 0.6,
+    "run": 1.0,
+    "firstHeight": 1.5,
+    "facetDeg": 16,
     "under": "open",
     "stepped": true,
     "slab": 0.5,
     "bay": 8,
     "seatColours": [
-     "#d6d0c0",
-     "#b8452f"
+     "#bfb9a8",
+     "#a9a391"
     ],
     "blocks": 2,
     "concreteColour": "#d6d0c0",
     "underColour": "#b9b3a4",
     "canopy": {
-     "height": 9,
-     "depth": 13,
+     "height": 4.5,
+     "depth": 10,
      "thickness": 0.5,
      "slopeDeg": 2,
-     "colour": "#8d9396",
-     "edgeColour": "#4b5155",
+     "colour": "#2e3234",
+     "edgeColour": "#2e3234",
      "overhangBack": 0.6
     }
    }
@@ -274,25 +289,22 @@
      0,
      0
     ],
-    "radius": 55,
-    "radiusY": 41,
-    "startDeg": 38,
-    "endDeg": 142,
-    "count": 9,
-    "facing": "outward",
+    "radius": 60,
+    "radiusY": 46,
+    "startDeg": 45,
+    "endDeg": 135,
+    "count": 6,
     "of": [
      {
-      "type": "prism",
+      "type": "core/tree",
       "params": {
-       "rect": [
-        0.5,
-        0.5
-       ],
-       "height": 9,
-       "colour": "#6e7377"
+       "kind": "palm",
+       "height": 15,
+       "count": 1
       }
      }
-    ]
+    ],
+    "lod1Step": 2
    }
   },
   {
@@ -306,35 +318,21 @@
     ],
     "radius": 60,
     "radiusY": 46,
-    "startDeg": 0,
-    "endDeg": 360,
-    "count": 16,
-    "lod2Step": 4,
+    "startDeg": 150,
+    "endDeg": 390,
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 10,
     "of": [
      {
       "type": "core/tree",
       "params": {
        "kind": "palm",
-       "height": 11,
+       "height": 12,
        "count": 1
       }
      }
     ]
-   }
-  },
-  {
-   "type": "fence-wall",
-   "at": [
-    -30,
-    -29,
-    0
-   ],
-   "params": {
-    "length": 60,
-    "height": 2.2,
-    "thickness": 0.15,
-    "kind": "fence",
-    "colour": "#4a4f52"
    }
   },
   {
@@ -359,32 +357,8 @@
     0
    ],
    "params": {
-    "height": 30,
-    "head_width": 4
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    58,
-    -44,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "head_width": 4
-   }
-  },
-  {
-   "type": "floodlight-mast",
-   "at": [
-    -58,
-    44,
-    0
-   ],
-   "params": {
-    "height": 30,
-    "head_width": 4
+    "height": 34,
+    "head_width": 3
    }
   },
   {
@@ -395,13 +369,81 @@
     0
    ],
    "params": {
-    "height": 30,
-    "head_width": 4
+    "height": 34,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 36,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 28,
+    "facing": "outward",
+    "lod2Step": 28,
+    "of": [
+     {
+      "type": "fence-wall",
+      "at": [
+       -3,
+       0,
+       0
+      ],
+      "params": {
+       "length": 6,
+       "height": 2.2,
+       "thickness": 0.12,
+       "kind": "fence",
+       "colour": "#4a4f52"
+      }
+     }
+    ],
+    "lod1Step": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 63,
+    "radiusY": 47.5,
+    "startDeg": 40,
+    "endDeg": 140,
+    "count": 13,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 13,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 11,
+       "colour": "#2e3234"
+      }
+     }
+    ]
    }
   }
  ],
  "site": {
-  "ground": "asphalt",
+  "ground": "grass",
   "forecourt": "road",
   "extent": [
    150,
@@ -411,5 +453,10 @@
  "schema": "allworld-place-model",
  "version": 2,
  "city": "abidjan",
- "venueId": "abidjan-stade-robert-champroux"
+ "venueId": "abidjan-stade-robert-champroux",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dark canopy now sits on posts at the stand; rust track, perimeter fence, grass ground, palms and two floodlights added; bowl is still a full oval and the stand seat tones are approximate."
+ }
 }

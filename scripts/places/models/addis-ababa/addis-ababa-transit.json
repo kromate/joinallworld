@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/42656252",
+   "used": "bus-station yard outline, 14074 m2 (134 x 109 m): the asphalt apron; canopies, bays and ticket hall are laid inside it"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/addis-ababa.json",
+   "used": "broad paved yard, rows of coaches under long steel-framed canopies, ticket hall, kiosks; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yard",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6e6e6c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6e6c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     38,
+     12
+    ]
+   },
+   "at": [
+    -8,
+    -30
+   ],
+   "z0": 0.1,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c4b6",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#a6553a",
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-frontage-canopy",
+   "footprint": {
+    "rect": [
+     38,
+     4
+    ]
+   },
+   "at": [
+    -8,
+    -38
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f8c84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 9,
+    "height": 5.0,
+    "form": "shed",
+    "support": "steel",
+    "roof_colour": "#8a8f93",
+    "roof_material": "corrugated"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -6,
+    4,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 9,
+    "height": 5.0,
+    "form": "shed",
+    "support": "steel",
+    "roof_colour": "#8a8f93",
+    "roof_material": "corrugated"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "length": 66,
+    "depth": 9,
+    "height": 5.0,
+    "form": "shed",
+    "support": "steel",
+    "roof_colour": "#8a8f93",
+    "roof_material": "corrugated"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -33,
+    2,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "kind": "coach",
+    "density": 0.8,
+    "coach_share": 0.8,
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "kind": "coach",
+    "density": 0.7,
+    "coach_share": 0.8,
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    41,
+    6,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "kind": "mixed",
+    "density": 0.6,
+    "coach_share": 0.5,
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -34,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#a6553a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#a6553a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    13,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    48,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#8f8c84"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.6,
+    "bottom": 3.5,
+    "colour": "#a6553a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 22
+   },
+   "rotDeg": 0
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; yard outline from OSM, canopies, bus rows and ticket hall are typical for a long-distance station, not observed"
+ }
+}

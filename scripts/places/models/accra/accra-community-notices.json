@@ -1,0 +1,902 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jubilee_Hous_2.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Cca Raheem",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/jub2.jpg",
+   "used": "two flared bronze-patterned tower wings with glazed centre recess, wide white-and-yellow flat canopy roof, flagpole, patterned red-and-cream forecourt, black lattice gate fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jubilee_Hous_3.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Cca Raheem",
+   "view": "street",
+   "file": "/tmp/places-evidence/accra/jub3.jpg",
+   "used": "tapering truncated-pyramid proportions, white wall and gold name boards along the perimeter"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7892588",
+   "used": "scale only: outline is the whole complex, not the main block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 2,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "podium",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     78,
+     40
+    ],
+    "height": 1.2,
+    "colour": "#e8e1cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-glass",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 1.2,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8d94",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": {
+     "colour": "#d8c8a0"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6df",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-steps",
+   "at": [
+    0,
+    -17.4,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "height": 0.5,
+    "colour": "#e8e1cc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt-red",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     18
+    ],
+    "height": 0.1,
+    "colour": "#c47a63"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt-cream",
+   "at": [
+    0,
+    -26,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     60,
+     3
+    ],
+    "height": 0.05,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt-cream2",
+   "at": [
+    0,
+    -21,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     60,
+     2
+    ],
+    "height": 0.05,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flagpole",
+   "at": [
+    6,
+    8,
+    21.4
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 12,
+    "colour": "#cfcfcf",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-wall",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "rect": [
+     88,
+     0.5
+    ],
+    "height": 0.9,
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -40,
+    -36,
+    0.9
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     80,
+     0,
+     0
+    ],
+    "count": 27,
+    "of": {
+     "type": "prism",
+     "id": "rail",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 2.1,
+      "colour": "#1e1e1e",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -44,
+    -10,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "prism",
+     "id": "x",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "height": 0.1,
+      "colour": "#000000"
+     }
+    }
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "left-wing",
+   "at": [
+    -17,
+    0,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     26,
+     30
+    ],
+    "height": 19,
+    "topScale": [
+     0.6,
+     1.0
+    ],
+    "colour": "#7a5a34",
+    "topColour": "#b08a4a",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "size": [
+      0.8,
+      1.6
+     ],
+     "colours": [
+      "#8a6a3a",
+      "#b8924e",
+      "#4e3822"
+     ],
+     "slits": 0.12,
+     "faces": "front"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "right-wing",
+   "at": [
+    17,
+    0,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     26,
+     30
+    ],
+    "height": 19,
+    "topScale": [
+     0.6,
+     1.0
+    ],
+    "colour": "#7a5a34",
+    "topColour": "#b08a4a",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "size": [
+      0.8,
+      1.6
+     ],
+     "colours": [
+      "#8a6a3a",
+      "#b8924e",
+      "#4e3822"
+     ],
+     "slits": 0.12,
+     "faces": "front"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-yellow",
+   "at": [
+    0,
+    0,
+    19.8
+   ],
+   "params": {
+    "rect": [
+     58,
+     31
+    ],
+    "height": 0.6,
+    "colour": "#e3c13a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "canopy-flare",
+   "at": [
+    0,
+    0,
+    20.4
+   ],
+   "params": {
+    "colour": "#f4f2ec",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       60,
+       33
+      ]
+     },
+     {
+      "z": 0.5,
+      "rect": [
+       64,
+       34
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       72,
+       36
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "canopy-oval",
+   "at": [
+    0,
+    0,
+    22.1
+   ],
+   "params": {
+    "colour": "#e3c13a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       9,
+       5
+      ]
+     },
+     {
+      "z": 0.15,
+      "ellipse": [
+       9,
+       5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-front",
+   "at": [
+    0,
+    -14,
+    20.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     4
+    ],
+    "height": 0.4,
+    "colour": "#f7f5ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-r",
+   "at": [
+    7.4,
+    8,
+    32.6
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.1
+    ],
+    "height": 0.7,
+    "colour": "#c8282a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-y",
+   "at": [
+    7.4,
+    8,
+    31.9
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.1
+    ],
+    "height": 0.7,
+    "colour": "#e5b822"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-g",
+   "at": [
+    7.4,
+    8,
+    31.2
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.1
+    ],
+    "height": 0.7,
+    "colour": "#2f8a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-star",
+   "at": [
+    7.4,
+    7.95,
+    32.05
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.1
+    ],
+    "height": 0.4,
+    "colour": "#111111"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grail0",
+   "at": [
+    0,
+    -36,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     88,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1e1e1e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grail1",
+   "at": [
+    0,
+    -36,
+    2.1
+   ],
+   "params": {
+    "rect": [
+     88,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1e1e1e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grail2",
+   "at": [
+    0,
+    -36,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     88,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1e1e1e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grail3",
+   "at": [
+    0,
+    -36,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     88,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1e1e1e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -40,
+    -36.05,
+    1.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     80,
+     0,
+     0
+    ],
+    "count": 20,
+    "of": {
+     "type": "prism",
+     "id": "tick",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.6,
+       0.1
+      ],
+      "height": 1.0,
+      "colour": "#1e1e1e"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -44,
+    -36,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     88,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "id": "pier",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        1.6
+       ],
+       "height": 4.2,
+       "colour": "#f4f2ea"
+      }
+     },
+     {
+      "type": "prism",
+      "id": "pcap",
+      "at": [
+       0,
+       0,
+       4.2
+      ],
+      "params": {
+       "rect": [
+        1.9,
+        1.9
+       ],
+       "height": 0.25,
+       "colour": "#d9d6cc"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "letters-l",
+   "at": [
+    -14,
+    -36.5,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.3
+    ],
+    "height": 1.6,
+    "colour": "#b58a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letters-r",
+   "at": [
+    14,
+    -36.5,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.3
+    ],
+    "height": 1.6,
+    "colour": "#b58a3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -36,
+    -22,
+    0.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     72,
+     0,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "id": "cr",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       3,
+       2
+      ],
+      "height": 0.05,
+      "colour": "#eadfc4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -36,
+    -26,
+    0.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     72,
+     0,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "id": "cr",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       3,
+       2
+      ],
+      "height": 0.05,
+      "colour": "#eadfc4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -36,
+    -30,
+    0.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     72,
+     0,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "id": "cr",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       3,
+       2
+      ],
+      "height": 0.05,
+      "colour": "#eadfc4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Lattice skin is a coloured panel grid, not true gold ribs; flare is a loft, not the curled wing-tip edges; gate maze is rails and ticks, not the real maze pattern; forecourt pattern is a simple cream grid; lettering boards are blank."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-community-notices"
+}

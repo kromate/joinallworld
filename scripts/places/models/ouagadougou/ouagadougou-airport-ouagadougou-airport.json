@@ -1,0 +1,798 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-airport-ouagadougou-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ouagadougou_airport.jpg",
+   "licence": "Public domain (Service de Presse et d'Information, France)",
+   "author": "unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/ouagadougou/airport.jpg",
+   "used": "two-storey white flat-roofed terminal, regular dark rectangular windows, small ground-floor loggia bay at right, slim white tower with dark railed cab; historic (1950s) view, so later extensions are not shown"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.58
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     72,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7dc",
+    "windows": "none",
+    "windowRatio": 0.36,
+    "bay": 7.0,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5aa",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-shaft",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    3,
+    2
+   ],
+   "z0": 8.6,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5aa",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    3,
+    2,
+    16.6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.5,
+       5.5
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       9.5,
+       9.5
+      ]
+     }
+    ],
+    "colour": "#2f3133",
+    "topColour": "#3a3c3e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cab-rail",
+   "footprint": {
+    "rect": [
+     10.2,
+     10.2
+    ]
+   },
+   "at": [
+    3,
+    2
+   ],
+   "z0": 20.8,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8d90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shaft-balcony",
+   "footprint": {
+    "rect": [
+     6.8,
+     6.8
+    ]
+   },
+   "at": [
+    3,
+    2
+   ],
+   "z0": 13.2,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8d90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "antenna-0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -0.5,
+    2
+   ],
+   "z0": 21.8,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#555a5e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "antenna-1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    6.5,
+    2
+   ],
+   "z0": 21.8,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#555a5e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    25,
+    -9.8
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a4642",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -46,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.6,
+    "colour": "#e9e9e6",
+    "tailColour": "#a84a3a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    34,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.6,
+    "thickness": 0.3,
+    "colour": "#cfcabc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "awning",
+   "footprint": {
+    "rect": [
+     40,
+     2.2
+    ]
+   },
+   "at": [
+    -8,
+    -8.6
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcabc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lettering-band",
+   "footprint": {
+    "rect": [
+     18,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -7.7
+   ],
+   "z0": 7.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-0",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -31,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-lo-0",
+   "footprint": {
+    "rect": [
+     2.08,
+     0.5
+    ]
+   },
+   "at": [
+    -30.5,
+    -7.6
+   ],
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-1",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -24,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-lo-1",
+   "footprint": {
+    "rect": [
+     2.08,
+     0.5
+    ]
+   },
+   "at": [
+    -23.5,
+    -7.6
+   ],
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-2",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -17,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-lo-2",
+   "footprint": {
+    "rect": [
+     2.08,
+     0.5
+    ]
+   },
+   "at": [
+    -16.5,
+    -7.6
+   ],
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-3",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-lo-3",
+   "footprint": {
+    "rect": [
+     2.08,
+     0.5
+    ]
+   },
+   "at": [
+    -9.5,
+    -7.6
+   ],
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-4",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    -2.5,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-lo-4",
+   "footprint": {
+    "rect": [
+     4.0,
+     0.5
+    ]
+   },
+   "at": [
+    -2.0,
+    -7.6
+   ],
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-5",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    6,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-lo-5",
+   "footprint": {
+    "rect": [
+     2.08,
+     0.5
+    ]
+   },
+   "at": [
+    6.5,
+    -7.6
+   ],
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-6",
+   "footprint": {
+    "rect": [
+     2.8,
+     0.5
+    ]
+   },
+   "at": [
+    14,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-lo-6",
+   "footprint": {
+    "rect": [
+     2.2399999999999998,
+     0.5
+    ]
+   },
+   "at": [
+    14.5,
+    -7.6
+   ],
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-7",
+   "footprint": {
+    "rect": [
+     2.8,
+     0.5
+    ]
+   },
+   "at": [
+    22,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-up-8",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    30,
+    -7.6
+   ],
+   "z0": 5.3,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -13
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -13
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -6
+    ]
+   }
+  ],
+  "cars": 0,
+  "extent": [
+   130,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "1950s photo only: later extensions unknown; window widths evened out; tower kept at its photographed position (about 54% along the visible facade, whose left end is hidden by the aircraft); railings are slabs."
+ }
+}

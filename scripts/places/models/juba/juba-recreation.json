@@ -1,0 +1,110 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/312829137",
+   "used": "real park outline (358 x 235 m, leisure=park, name is only an ID), auto-fitted"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found for this place; brief has city-level sources only, so details are typical for Juba"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 40,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fa86a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9a55"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 8,
+    "spread": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    25,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 6,
+    "spread": 40
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3,
+    "kind": "hip"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; a plain lawn on the real outline with scattered trees and one shelter, features unobserved."
+ }
+}

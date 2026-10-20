@@ -1,0 +1,406 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-theatre-daniel-sorano",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%C3%A2tre_Daniel_Sorano.jpg",
+   "licence": "CC BY 4.0",
+   "author": "PaulAxelKOUASSI",
+   "view": "front",
+   "file": "/tmp/places-evidence/dakar/sorano.jpg",
+   "used": "1965 concrete front: ground storey of dark glass between square pale stone-faced piers, deep flat canopy slab with a long blank sign band, upper storeys recessed behind a second row of piers with coffered soffit and a plain pale top band, stone-clad end piers, wide low steps, red curtain at the doors, flag poles on both sides"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1106208264",
+   "used": "nearest-quality outline (about 85 x 30 m): overall length and depth only, the front is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-glass",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a4f55",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#3f464d",
+    "bay": 3.5,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a7"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy",
+   "footprint": {
+    "rect": [
+     72,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 6.2,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cfbd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     62,
+     8
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "z0": 8.2,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5d5850",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a7",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-band",
+   "footprint": {
+    "rect": [
+     66,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 17.7,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6cfbf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cfbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-stone-left",
+   "footprint": {
+    "rect": [
+     7,
+     14
+    ]
+   },
+   "at": [
+    -36,
+    -1
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c9b79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a7"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-stone-right",
+   "footprint": {
+    "rect": [
+     7,
+     14
+    ]
+   },
+   "at": [
+    36,
+    -1
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c9b79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a7"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fly-tower",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4bcac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa498",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -9.5,
+     0
+    ],
+    "end": [
+     28,
+     -9.5,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.6,
+        2.6
+       ],
+       "height": 8.2,
+       "colour": "#c9b79a",
+       "material": "concrete"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -2.5,
+     8.2
+    ],
+    "end": [
+     27,
+     -2.5,
+     8.2
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.5,
+        2.5
+       ],
+       "height": 9.5,
+       "colour": "#d6cfbf",
+       "material": "concrete"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b8b2a7"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -11.1,
+    6.4
+   ],
+   "params": {
+    "width": 64,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#e6dfd0",
+    "frameColour": "#e6dfd0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -31,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "colours": [
+     "#00853f",
+     "#fdef42",
+     "#e31b23"
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    31,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "colours": [
+     "#00853f",
+     "#fdef42",
+     "#e31b23"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -16,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -16,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "curtain",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -7.2
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a01820",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a01820"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "coffered soffits, stone texture on piers, raised-letter sign and curtain detail simplified; upper loggia is plain piers over a dark back wall"
+ }
+}

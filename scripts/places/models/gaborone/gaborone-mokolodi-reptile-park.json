@@ -1,0 +1,246 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-mokolodi-reptile-park",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/876154784",
+   "used": "reception building outline (about 11 x 9 m) 17 m from the venue point"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Mokolodi_Nature_Reserve",
+   "used": "reptile park, entrance and reception area, small enclosures in bush"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "reception",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a38b5a",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3,
+    "roof": "hip",
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "enclosure-1",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    14,
+    -6
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "enclosure-2",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    24,
+    -6
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "enclosure-3",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    14,
+    6
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "enclosure-4",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   70,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -24,
+     6
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -18,
+     16
+    ],
+    "height": 7
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     32,
+     14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     6,
+     18
+    ],
+    "height": 6
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; enclosures and layout typed from the brief"
+ }
+}

@@ -1,0 +1,577 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Catedral_de_Nossa_Senhora_da_Gra%C3%A7a_(20234213142).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-tome/cathedral.jpg",
+   "used": "two square towers flush with the gable facade, dark pointed spires, pale ochre walls with cream pilaster/band trim, arched windows, central rounded portal, rose window, clay-tile gable and low aisles, wide steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1126946640",
+   "used": "overall size only (outline is messy, nave/towers composed from the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 42
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9.8,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.17,
+    "plinth": 1.0,
+    "bands": "#efe6c4",
+    "cornice": true,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e4a34",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     5.0,
+     24
+    ]
+   },
+   "at": [
+    -7.4,
+    2
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e4a34",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     5.0,
+     24
+    ]
+   },
+   "at": [
+    7.4,
+    2
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e4a34",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a0553a",
+    "material": "clay-tile",
+    "pitch": 26
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps",
+   "footprint": {
+    "rect": [
+     19,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -16.6
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b2a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -15.35,
+    1.2
+   ],
+   "params": {
+    "width": 5.6,
+    "height": 6.2,
+    "depth": 0.7,
+    "archWidth": 3.5,
+    "springHeight": 3.6,
+    "pointed": false,
+    "colour": "#6e6b66"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rose",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -15.1
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efdc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efdc"
+   },
+   "z0": 10.2
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    -14.8,
+    14.9
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     4.8,
+     5.0
+    ]
+   },
+   "at": [
+    -7.3,
+    -12.5
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 1.0,
+    "bands": "#efe6c4",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6c4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-l",
+   "footprint": {
+    "rect": [
+     4.4,
+     4.6
+    ]
+   },
+   "at": [
+    -7.3,
+    -12.5
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "glassColour": "#3a3532",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6c4",
+    "material": "concrete"
+   },
+   "z0": 13
+  },
+  {
+   "type": "mass",
+   "id": "balcony-l",
+   "footprint": {
+    "rect": [
+     5.2,
+     5.4
+    ]
+   },
+   "at": [
+    -7.3,
+    -12.5
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6c4",
+    "material": "concrete"
+   },
+   "z0": 17.5
+  },
+  {
+   "type": "loft",
+   "id": "spire-l",
+   "at": [
+    -7.3,
+    -12.5,
+    17.9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.4,
+       4.6
+      ],
+      "colour": "#2b2a30"
+     },
+     {
+      "z": 0.4,
+      "rect": [
+       3.9,
+       4.1
+      ],
+      "colour": "#2b2a30"
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       2.0,
+       2.1
+      ],
+      "colour": "#2b2a30"
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "colour": "#2b2a30"
+     }
+    ],
+    "colour": "#2b2a30",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    -7.3,
+    -12.5,
+    27.4
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     4.8,
+     5.0
+    ]
+   },
+   "at": [
+    7.3,
+    -12.5
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 1.0,
+    "bands": "#efe6c4",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6c4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-r",
+   "footprint": {
+    "rect": [
+     4.4,
+     4.6
+    ]
+   },
+   "at": [
+    7.3,
+    -12.5
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "glassColour": "#3a3532",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6c4",
+    "material": "concrete"
+   },
+   "z0": 13
+  },
+  {
+   "type": "mass",
+   "id": "balcony-r",
+   "footprint": {
+    "rect": [
+     5.2,
+     5.4
+    ]
+   },
+   "at": [
+    7.3,
+    -12.5
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6c4",
+    "material": "concrete"
+   },
+   "z0": 17.5
+  },
+  {
+   "type": "loft",
+   "id": "spire-r",
+   "at": [
+    7.3,
+    -12.5,
+    17.9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.4,
+       4.6
+      ],
+      "colour": "#2b2a30"
+     },
+     {
+      "z": 0.4,
+      "rect": [
+       3.9,
+       4.1
+      ],
+      "colour": "#2b2a30"
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       2.0,
+       2.1
+      ],
+      "colour": "#2b2a30"
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "colour": "#2b2a30"
+     }
+    ],
+    "colour": "#2b2a30",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    7.3,
+    -12.5,
+    27.4
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "belfry arches are single not paired; spires lack dormers; portal lacks rusticated arch frame; facade windows are rectangular grids not paired arched clusters; no flagpoles or dense tree shade"
+ }
+}

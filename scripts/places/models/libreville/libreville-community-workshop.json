@@ -1,0 +1,199 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/251369723",
+   "used": "campus is 860 x 740 m, far too large to model; two representative teaching blocks only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c08f",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bands": "#8c7a5a",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9c08f",
+       "#6f5f45"
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a60",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -34,
+    27
+   ],
+   "rotDeg": 90,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c08f",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bands": "#8c7a5a",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9c08f",
+       "#6f5f45"
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a60",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walkway",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -24,
+    10
+   ],
+   "rotDeg": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb6a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b80",
+    "parapet": 0.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -13
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -13
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -11
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     45
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable photo (previous evidence was a litter bin), so verified=text: plausible Omar Bongo University teaching blocks in an L with a covered walkway; galleries only suggested by small punched openings and dark floor bands, no true recess depth, A/C boxes or stains"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-community-workshop"
+}

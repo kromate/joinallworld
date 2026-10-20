@@ -1,0 +1,214 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/windhoek.json#windhoek-community-voting-game",
+   "used": "authored game venue, no real building and no photo; the OSM building at that point is a car dealership and is not used. A 24x14 m one-storey Windhoek-style civic hall: cream render with burnt-sienna base band, hipped corrugated roof in oxide red, entrance porch with steps and a ramp, blank signboard, one flagpole, paved plaza with queue posts and shade acacias"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#a8603f",
+    "bay": 3.2,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9b3b2c",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9b3b2c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    6.5,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     4
+    ],
+    "height": 0.35,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.8,
+    "bottom": 1.0,
+    "colour": "#a8603f",
+    "frameColour": "#efe3c2",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    11.5,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1,
+    "colours": [
+     "#2b5fa8"
+    ]
+   }
+  },
+  {
+   "type": "queue-posts",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     12
+    ],
+    "height": 0.1,
+    "colour": "#bdb5a4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   56,
+   44
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text-only authored venue, no real building or photo exists; generic hall with porch, sign board, flag and queue posts."
+ }
+}

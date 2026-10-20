@@ -1,0 +1,208 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: youth training village, low painted dormitory and class blocks round a central yard with a pitch, green corrugated hip roofs (low confidence). Nearby Commons photos show birds and a bay, not the village, so unused."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "north-block",
+   "footprint": {
+    "rect": [
+     58,
+     10
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "rotDeg": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#8fb0c8",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6f5b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     10,
+     28
+    ]
+   },
+   "at": [
+    -24,
+    -4
+   ],
+   "rotDeg": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#8fb0c8",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6f5b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     10,
+     28
+    ]
+   },
+   "at": [
+    24,
+    -4
+   ],
+   "rotDeg": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#8fb0c8",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6f5b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-lodge",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb0c8",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6f5b",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "width": 18,
+    "stripes": 4,
+    "goals": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.6,
+    "kind": "fence",
+    "colour": "#c8c3b5"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -33,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    33,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-node-769201090",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo and no OSM outline: layout from brief, real building layout unknown"
+ }
+}

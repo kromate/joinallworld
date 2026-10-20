@@ -1,0 +1,420 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-osm-way-280771623",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_du_Caf%C3%A9_%C3%A0_Monte_Caf%C3%A9_(S%C3%A3o_Tom%C3%A9)_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ji-Elle",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-tome/museum1.jpg",
+   "used": "two storeys (not one), white render, upper timber verandah with balustrade and brown shuttered doors, dark clay-tile hip roof with pink eave edge, central stair between weathered retaining walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_du_Caf%C3%A9_%C3%A0_Monte_Caf%C3%A9_(S%C3%A3o_Tom%C3%A9)_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ji-Elle",
+   "view": "side",
+   "file": "/tmp/places-evidence/sao-tome/museum2.jpg",
+   "used": "timber brackets under verandah, shuttered ground windows, verandah depth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/280771623",
+   "used": "58 m x 9 m length and depth"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 58
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     58,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e0",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "groundKind": "punched",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "punched"
+    },
+    "glassColour": "#6b4a30"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d4239",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah-slab",
+   "footprint": {
+    "rect": [
+     58,
+     2.0
+    ]
+   },
+   "at": [
+    0,
+    -5.5
+   ],
+   "z0": 3.7,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d4c6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -6.5,
+    4.1
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#9a6a44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -28,
+    -6.4
+   ],
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a6a44",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -20,
+    -6.4
+   ],
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a6a44",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post4",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -12,
+    -6.4
+   ],
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a6a44",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post6",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -6.4
+   ],
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a6a44",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4,
+    -6.4
+   ],
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a6a44",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post10",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    12,
+    -6.4
+   ],
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a6a44",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post12",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    20,
+    -6.4
+   ],
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a6a44",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post14",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    28,
+    -6.4
+   ],
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a6a44",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retaining-wall",
+   "footprint": {
+    "rect": [
+     58,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd3c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcaa"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10.2,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 2.4,
+    "run": 3.2,
+    "count": 10,
+    "colour": "#a0553a"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -4.52,
+    0.6
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.6,
+    "arch": false,
+    "colour": "#5a1f22",
+    "trim": "#ece9e0"
+   }
+  },
+  {
+   "type": "ball-gate-piers",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "gap": 5.6,
+    "height": 3.4,
+    "colour": "#e4e2d6",
+    "wall_colour": "#e4e2d6",
+    "trim_colour": "#e4e2d6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper openings render dark rather than brown shuttered, recessed verandah gallery and balustrade still thin, bluish tint on ground storey, no mossy wall texture, central stair small, pink eave edge and door hidden behind retaining wall"
+ }
+}

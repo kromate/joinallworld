@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-impala-observation-point",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SAFARI_AT_THE_NATIONAL_PARK_(3).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Ferfive",
+   "view": "street",
+   "file": "/tmp/places-evidence/nairobi/imp1.jpg",
+   "used": "setting only: open green grassland plain with sparse bushes and distant antelope, no structure visible; not a comparison of the lookout"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1239349940",
+   "used": "nearest building (121 m2, 1 m away): sized and rotated as the picnic shelter"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lookout-deck",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     9
+    ],
+    "height": 0.9,
+    "colour": "#8c6d48",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.5,
+     1.8,
+     0.9
+    ],
+    "end": [
+     10.5,
+     1.8,
+     0.9
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.18
+      ],
+      "height": 1.1,
+      "colour": "#5c4630"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    1.6,
+    0.9
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#5c4630"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.9,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#a58b62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "picnic-shelter",
+   "footprint": {
+    "rect": [
+     11.4,
+     10.6
+    ]
+   },
+   "at": [
+    0,
+    -18
+   ],
+   "rotDeg": 20,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a45",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 28,
+    "material": "thatch",
+    "colour": "#a8905a",
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#5c4630",
+    "frameColour": "#a58b62"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 3,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 2,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5,
+    "count": 4,
+    "spread": 30
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#d8d2c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the lookout itself exists; deck, rails and thatched shelter are typical park furniture sized from the one OSM building"
+ }
+}

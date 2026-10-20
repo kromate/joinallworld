@@ -1,0 +1,162 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/295839262",
+   "used": "zig-zag laboratory block outline about 51 x 43 m, bearing 39 deg"
+  },
+  {
+   "kind": "text",
+   "used": "brief: low institutional laboratory blocks with deep eaves in a leafy compound; no photos exist for it."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lab",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#8aa08f",
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b4",
+    "parapet": 0.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "colours": [
+     "#bf0a30"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 0.8,
+    "colour": "#8aa08f",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -45,
+      -45
+     ],
+     [
+      45,
+      -45
+     ],
+     [
+      45,
+      40
+     ],
+     [
+      -45,
+      40
+     ],
+     [
+      -45,
+      -45
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#d8d2c0"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 30,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 3,
+    "spread": 8,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-way-295839261",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "flat roof stands in for deep-eaved hips on the irregular outline; no photo"
+ }
+}

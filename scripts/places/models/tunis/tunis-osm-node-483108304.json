@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-node-483108304",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: cream concrete 2-3 storey teaching blocks around a campus yard with flags and steps. Commons photos found show other Tunis engineering schools (ENSIT, ESSTT), not this institute; the matched OSM outline is the whole 128,000 m2 El Manar school site, unusable as a building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-west",
+   "footprint": {
+    "rect": [
+     14,
+     36
+    ]
+   },
+   "at": [
+    -28,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d2c2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#f7f5ef",
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     14,
+     36
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d2c2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#f7f5ef",
+    "plinth": 0.5,
+    "faces": {
+     "right": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     42,
+     12
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d2c2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#f7f5ef",
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1,
+    "run": 2,
+    "count": 5,
+    "colour": "#f7f5ef"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#e70013",
+     "#2f5fa3",
+     "#f7f5ef"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -8
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -24
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -14,
+     -24
+    ],
+    "yawDeg": 90,
+    "colour": "#f1eee6"
+   },
+   {
+    "at": [
+     -8,
+     -24
+    ],
+    "yawDeg": 90,
+    "colour": "#2f3a4a"
+   },
+   {
+    "at": [
+     18,
+     -24
+    ],
+    "yawDeg": 90,
+    "colour": "#8a2f2f"
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this institute and OSM match is the whole school site; H-shaped yard block typed from brief"
+ }
+}

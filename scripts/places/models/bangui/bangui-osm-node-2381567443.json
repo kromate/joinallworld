@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-osm-node-2381567443",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/188876512",
+   "used": "No photo found (Wikidata/Commons/Wikipedia searched, none for this venue); containing outline is a zig-zag 404 m2 shape, unverified; rect used for the typed two-storey brasserie"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brasserie",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e3c2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#8a5a36",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a35",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "lean-to",
+    "roof_colour": "#7a4a35"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7.5,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.5,
+    "colours": [
+     "#2b6fa6",
+     "#f0e3c2"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -13,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 10,
+    "colours": [
+     "#2b6fa6",
+     "#f0e3c2"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -14,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.2,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#d9d2c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   52,
+   42
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; riverside setting and plastic-chair terrace typed from the brief."
+ }
+}

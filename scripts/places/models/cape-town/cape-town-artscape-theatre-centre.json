@@ -1,0 +1,407 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-artscape-theatre-centre",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Artscape_Theatre_Centre_(28522803654).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Adamina",
+   "view": "front",
+   "file": "/tmp/places-evidence/cape-town/artscape.jpg",
+   "used": "fin-ribbed dark glazed upper floor, cream concrete header band, recessed ground-floor foyer, wide granite steps, taller blank cream side block, flat paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/423976455",
+   "used": "overall size and 28 m height (fan-shaped outline not copied)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.25,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "header",
+   "footprint": {
+    "rect": [
+     74,
+     22
+    ]
+   },
+   "at": [
+    -6,
+    5.5
+   ],
+   "rotDeg": 0,
+   "z0": 25,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d9d4c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfbab0",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-block",
+   "footprint": {
+    "rect": [
+     24,
+     32
+    ]
+   },
+   "at": [
+    43,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 34,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d2cdc0",
+    "windows": "none",
+    "bands": "#bdb8ab"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29e95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fly-tower",
+   "footprint": {
+    "rect": [
+     44,
+     36
+    ]
+   },
+   "at": [
+    -4,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 34,
+   "storeys": 6,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a9a69f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88"
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     70,
+     20
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "z0": 4.6,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a2118",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#3a2e22",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8680"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-box",
+   "footprint": {
+    "rect": [
+     70,
+     20
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "z0": 10.6,
+   "height": 14.4,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a2e22",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#3a2e22",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "colour": "#4a3a28",
+     "width": 0.5,
+     "depth": 1.4,
+     "spacing": 2.2
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29e95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-block",
+   "footprint": {
+    "rect": [
+     70,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -2
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bfbbb2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfbbb2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 56,
+    "rise": 0.33,
+    "run": 0.55,
+    "count": 14,
+    "colour": "#c9c5ba"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cheek-l",
+   "footprint": {
+    "rect": [
+     3,
+     15
+    ]
+   },
+   "at": [
+    -37,
+    -14
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e0dbcf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0dbcf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cheek-r",
+   "footprint": {
+    "rect": [
+     6,
+     15
+    ]
+   },
+   "at": [
+    28,
+    -14
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e0dbcf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0dbcf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lettering",
+   "footprint": {
+    "rect": [
+     26,
+     0.5
+    ]
+   },
+   "at": [
+    -22,
+    -5.2
+   ],
+   "z0": 26,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8935a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -26,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     7,
+     50
+    ],
+    "height": 0.08,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -26,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     7,
+     50
+    ],
+    "height": 0.08,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    34,
+    -10,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     7,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 20,
+      "colour": "#c8c8c8"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   110
+  ],
+  "groundColour": "#4d4d50"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Bronze-brown fins and recessed foyer on a raised stair block with cheek walls, taller side block, three flagpoles and white plaza stripes added; steps read as one smooth slab not 12 distinct treads, fins lack the timber cross-panels, lettering strip is a thin plain band, no signage detail"
+ }
+}

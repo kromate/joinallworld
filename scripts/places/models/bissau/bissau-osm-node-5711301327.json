@@ -1,0 +1,551 @@
+{
+ "name": "Monumento a Teixeira Pinto",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DC_-_Foto_Iris_No_09_-_Est%C3%A1tua_de_Teixeira_Pinto_-_Bissau.jpg",
+   "licence": "Public domain",
+   "author": "Foto Iris",
+   "view": "front",
+   "used": "white rectangular shaft on a low stepped base with side buttresses, dark crest on the shaft, blank plaque, olive-bronze uniformed standing statue, tall casuarina and flowering shrubs, red laterite paths"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DC_-_Foto_Serra_No_112_-_Monumento_a_Teixeira_Pinto_-_Bissau.jpg",
+   "licence": "Public domain",
+   "author": "Foto Serra",
+   "view": "back",
+   "used": "base slab and avenue axis"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/600737407",
+   "used": "round garden about 43 m across"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 28,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "garden",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#8a9a55",
+    "profile": [
+     [
+      0,
+      0.02
+     ],
+     [
+      21,
+      0.02
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    0,
+    -0.3
+   ],
+   "params": {
+    "rect": [
+     10,
+     3.2
+    ],
+    "z0": 0.05,
+    "height": 0.4,
+    "colour": "#a7a399"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     2.2
+    ],
+    "z0": 0.45,
+    "height": 1.6,
+    "colour": "#d8d3c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-wings",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     1.4
+    ],
+    "z0": 0.45,
+    "height": 2.5,
+    "colour": "#cfc9ba"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "z0": 2.05,
+    "height": 6.4,
+    "colour": "#ece8dc",
+    "topColour": "#ddd7c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-cap",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "z0": 8.45,
+    "height": 0.35,
+    "colour": "#b7b2a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crest",
+   "at": [
+    0,
+    -0.9
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "z0": 6.0,
+    "height": 1.1,
+    "colour": "#3c3b3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -1.2
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.12
+    ],
+    "z0": 1.4,
+    "height": 0.7,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    0,
+    8.8
+   ],
+   "params": {
+    "height": 6.8,
+    "colour": "#4e5444"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path0",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     22
+    ],
+    "z0": 0.03,
+    "height": 0.1,
+    "colour": "#c4623f"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "prism",
+   "id": "path1",
+   "at": [
+    -7,
+    -14
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     22
+    ],
+    "z0": 0.03,
+    "height": 0.1,
+    "colour": "#c4623f"
+   },
+   "rotDeg": -12
+  },
+  {
+   "type": "prism",
+   "id": "path2",
+   "at": [
+    7,
+    -14
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     22
+    ],
+    "z0": 0.03,
+    "height": 0.1,
+    "colour": "#c4623f"
+   },
+   "rotDeg": 12
+  },
+  {
+   "type": "prism",
+   "id": "grass1",
+   "at": [
+    -3.6,
+    -14
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     22
+    ],
+    "z0": 0.03,
+    "height": 0.1,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass2",
+   "at": [
+    3.6,
+    -14
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     22
+    ],
+    "z0": 0.03,
+    "height": 0.1,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4.3,
+    -2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.6,
+    "count": 1,
+    "spread": 0,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4.3,
+    -2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.6,
+    "count": 1,
+    "spread": 0,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hedge",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#3f6a35",
+    "profile": [
+     [
+      12,
+      0.02
+     ],
+     [
+      12,
+      0.8
+     ],
+     [
+      12.5,
+      0.8
+     ],
+     [
+      12.5,
+      0.02
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13.6,
+    1.4
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13.0,
+    4.9
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12.3,
+    7.8
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10.5,
+    9.8
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.9,
+    10.9
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3.7,
+    11.5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -0.8,
+    13.8
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    1.6,
+    10.2
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2.9,
+    9.6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5.6,
+    9.6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8.6,
+    7.5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11.5,
+    6.9
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13.9,
+    5.2
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14.5,
+    0.3
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22,
+    "count": 1,
+    "spread": 0,
+    "colour": "#8aa24c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-osm-node-5711301327",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Conifers are generic stacked cones rather than feathery casuarina; statue generic and slightly small; flowering shrubs plain round; ground plain not laterite fan blend; hedge ring only simple"
+ }
+}

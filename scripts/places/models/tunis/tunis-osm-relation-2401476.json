@@ -1,0 +1,357 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tunis,_Museum_Bardo.jpg",
+   "licence": "CC BY 2.0",
+   "author": "see Commons",
+   "view": "front",
+   "file": "/tmp/places-evidence/tunis/bardo1.jpg",
+   "used": "modern white wing: large white rendered volume, deep recessed entrance under a tall lintel block, small scattered square windows, flat roof, flag; palace behind it from brief"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2401476",
+   "used": "outline of the museum (98 x 87 m); the front-left projection is the entrance block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.78,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "polygon": [
+     [
+      -47.5,
+      43.2
+     ],
+     [
+      -44.9,
+      -19.8
+     ],
+     [
+      -15.1,
+      -19.8
+     ],
+     [
+      -14.8,
+      -37.9
+     ],
+     [
+      24.4,
+      -37.2
+     ],
+     [
+      24.4,
+      -41.3
+     ],
+     [
+      46.7,
+      -41.2
+     ],
+     [
+      46.4,
+      -20.3
+     ],
+     [
+      52.9,
+      -20.1
+     ],
+     [
+      52,
+      7.7
+     ],
+     [
+      45.1,
+      7.7
+     ],
+     [
+      44.4,
+      36.9
+     ],
+     [
+      19.5,
+      36.7
+     ],
+     [
+      19.5,
+      39.6
+     ]
+    ]
+   },
+   "height": 16,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e8e2",
+    "windows": "punched",
+    "windowRatio": 0.02,
+    "bay": 7,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     7,
+     23
+    ]
+   },
+   "at": [
+    -41.4,
+    -31.4
+   ],
+   "height": 28,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     7,
+     23
+    ]
+   },
+   "at": [
+    -20.5,
+    -31.4
+   ],
+   "height": 28,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     28,
+     23
+    ]
+   },
+   "at": [
+    -31,
+    -31.4
+   ],
+   "z0": 17,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f2f1ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -22,
+    34
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "bay": 5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a52",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -48,
+    -5
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbb88f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -38,
+    -28,
+    20
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#d62718"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    -31,
+    -21.5
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#4a4640",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4640"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "banner",
+   "footprint": {
+    "rect": [
+     10,
+     0.6
+    ]
+   },
+   "at": [
+    -31,
+    -43
+   ],
+   "z0": 6,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9b79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -50,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-relation-2401476",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tall corner portal, blank white render and sparse windows now read; recess reads blue not shadowed, no real banner print, small windows still regular, palace reduced to low block behind"
+ }
+}

@@ -1,0 +1,210 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-congo-gallery",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small one-storey exhibition hall with canopy entrance and sculpture garden; OSM outline is a 73 m odd quad (containing match only), not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     40,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe5d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4a5560",
+    "plinth": 0.4,
+    "bands": "#8a5a36"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     12,
+     14
+    ]
+   },
+   "at": [
+    26,
+    -2
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4ae9e",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#4a5560"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 4.5,
+    "columns": 2,
+    "colour": "#8a5a36",
+    "edgeColour": "#b4ae9e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#8a5a36",
+    "frameColour": "#b4ae9e"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    -15,
+    0
+   ],
+   "params": {
+    "colour": "#4a3a30",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 1,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 3.6,
+      "ellipse": [
+       0.5,
+       0.4
+      ]
+     },
+     {
+      "z": 4.4,
+      "circle": 0.35
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#6a4a36",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       1,
+       1
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       0.6,
+       0.5
+      ]
+     },
+     {
+      "z": 4.2,
+      "circle": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   80,
+   60
+  ]
+ }
+}

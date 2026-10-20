@@ -1,0 +1,99 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-palais-des-congres",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/55685714",
+   "used": "real stepped three-lobed outline (name match, 13,300 m2), fitted to the scene"
+  },
+  {
+   "kind": "text",
+   "url": "https://fr.wikipedia.org/wiki/Palais_des_congr%C3%A8s_de_Brazzaville",
+   "used": "1984 Sino-Congolese concrete conference palace, about three storeys"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4ded0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#9a9a94",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "concrete",
+    "overhang": 1.5,
+    "parapet": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -60
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -75
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -55
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only interior photos exist on Commons; exterior colonnade, entrance and flags not placed (no view of them)."
+ }
+}

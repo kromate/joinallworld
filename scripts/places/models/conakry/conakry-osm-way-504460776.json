@@ -1,0 +1,197 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universit%C3%A9_Nongo_Conakry.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Diane bora",
+   "view": "front",
+   "file": "/tmp/places-evidence/conakry/unc0.jpg",
+   "used": "five-storey block with deep open balcony galleries, cream slabs, white railings, tall brick-red columns, arched grey entrance gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/567865548",
+   "used": "building outline (zig-zag plan, about 63 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 2.2,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ead9b8",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.3,
+    "glassColour": "#4f6a73",
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.8,
+      "rail": 0.95,
+      "width": 3.5,
+      "every": 3.0,
+      "slab": 0.25,
+      "railKind": "solid",
+      "colour": "#d9b983",
+      "railColour": "#f4f4f0",
+      "floors": "upper",
+      "continuous": true
+     },
+     {
+      "type": "fins",
+      "width": 0.6,
+      "depth": 1.9,
+      "spacing": 3.5,
+      "colour": "#b5553a",
+      "margin": 0.3
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 3.6,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#b5553a",
+    "leafColour": "#8c9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.8,
+    -9,
+    6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.15
+    ],
+    "height": 9,
+    "colour": "#c8342c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.15
+    ],
+    "height": 9,
+    "colour": "#e8c030"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.8,
+    -9,
+    6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.15
+    ],
+    "height": 9,
+    "colour": "#2f8f4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -18
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -19
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-osm-way-504460776",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Tall brick columns, wooden-tan galleries, arched gate and hanging flag added; plan is the real zig-zag so no single straight gallery, no pitched roof over tower (gable fit fails on the irregular outline), balustrades read solid."
+ }
+}

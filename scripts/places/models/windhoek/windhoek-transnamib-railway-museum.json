@@ -1,0 +1,716 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-transnamib-railway-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Windhuk_Bahnhof_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zairon",
+   "view": "front",
+   "file": "/tmp/places-evidence/windhoek/rm-bahnhof1.jpg",
+   "used": "Wilhelmine station front: cream render, dark slate hip roof on centre block with small cupola, two end wings with stepped Dutch gables, red-tile awning over the entrance with a steam locomotive, tarmac forecourt, palm and fig trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/117985282",
+   "used": "containing building only (53.9 x 24.1 m overall); not used as outline, size cross-check"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.87,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfb4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#d9cf9f",
+    "trimColour": "#2f5a3f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#464b52",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     17,
+     15
+    ]
+   },
+   "at": [
+    -20.5,
+    0.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3bd",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#2f5a3f",
+    "bands": "#d9cf9f"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#464b52",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     17,
+     15
+    ]
+   },
+   "at": [
+    20.5,
+    0.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3bd",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#2f5a3f",
+    "bands": "#d9cf9f"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#464b52",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform-range",
+   "footprint": {
+    "rect": [
+     58,
+     6
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d4a3c",
+    "material": "clay-tile",
+    "pitch": 12
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "pitched",
+    "width": 12,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#9b4a38",
+    "edgeColour": "#d8d2c0",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -20.5,
+    -6.9,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 8.5,
+      "rect": [
+       17,
+       0.6
+      ]
+     },
+     {
+      "z": 9.3,
+      "rect": [
+       17,
+       0.6
+      ]
+     },
+     {
+      "z": 9.3,
+      "rect": [
+       15.6,
+       0.6
+      ]
+     },
+     {
+      "z": 10.3,
+      "rect": [
+       15.6,
+       0.6
+      ]
+     },
+     {
+      "z": 10.3,
+      "rect": [
+       13.2,
+       0.6
+      ]
+     },
+     {
+      "z": 11.3,
+      "rect": [
+       13.2,
+       0.6
+      ]
+     },
+     {
+      "z": 11.3,
+      "rect": [
+       10,
+       0.6
+      ]
+     },
+     {
+      "z": 12.3,
+      "rect": [
+       10,
+       0.6
+      ]
+     },
+     {
+      "z": 12.3,
+      "rect": [
+       6.2,
+       0.6
+      ]
+     },
+     {
+      "z": 13.3,
+      "rect": [
+       6.2,
+       0.6
+      ]
+     },
+     {
+      "z": 13.3,
+      "rect": [
+       3,
+       0.6
+      ]
+     },
+     {
+      "z": 14.1,
+      "rect": [
+       3,
+       0.6
+      ]
+     },
+     {
+      "z": 14.1,
+      "rect": [
+       1.2,
+       0.6
+      ]
+     },
+     {
+      "z": 14.7,
+      "rect": [
+       1.2,
+       0.6
+      ]
+     }
+    ],
+    "colour": "#ece3bd"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    20.5,
+    -6.9,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 8.5,
+      "rect": [
+       17,
+       0.6
+      ]
+     },
+     {
+      "z": 9.3,
+      "rect": [
+       17,
+       0.6
+      ]
+     },
+     {
+      "z": 9.3,
+      "rect": [
+       15.6,
+       0.6
+      ]
+     },
+     {
+      "z": 10.3,
+      "rect": [
+       15.6,
+       0.6
+      ]
+     },
+     {
+      "z": 10.3,
+      "rect": [
+       13.2,
+       0.6
+      ]
+     },
+     {
+      "z": 11.3,
+      "rect": [
+       13.2,
+       0.6
+      ]
+     },
+     {
+      "z": 11.3,
+      "rect": [
+       10,
+       0.6
+      ]
+     },
+     {
+      "z": 12.3,
+      "rect": [
+       10,
+       0.6
+      ]
+     },
+     {
+      "z": 12.3,
+      "rect": [
+       6.2,
+       0.6
+      ]
+     },
+     {
+      "z": 13.3,
+      "rect": [
+       6.2,
+       0.6
+      ]
+     },
+     {
+      "z": 13.3,
+      "rect": [
+       3,
+       0.6
+      ]
+     },
+     {
+      "z": 14.1,
+      "rect": [
+       3,
+       0.6
+      ]
+     },
+     {
+      "z": 14.1,
+      "rect": [
+       1.2,
+       0.6
+      ]
+     },
+     {
+      "z": 14.7,
+      "rect": [
+       1.2,
+       0.6
+      ]
+     }
+    ],
+    "colour": "#ece3bd"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 9.5,
+    "height": 2.2,
+    "colour": "#eadfb4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.9,
+      -1.9
+     ],
+     [
+      1.9,
+      -1.9
+     ],
+     [
+      1.9,
+      1.9
+     ],
+     [
+      -1.9,
+      1.9
+     ]
+    ],
+    "z0": 11.7,
+    "height": 1.5,
+    "topScale": 0.05,
+    "colour": "#464b52"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -6,
+    -5.0,
+    10.8
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.2,
+    "height": 1.5,
+    "roof_colour": "#464b52",
+    "wall_colour": "#eadfb4"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    0,
+    -5.0,
+    10.8
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.2,
+    "height": 1.5,
+    "roof_colour": "#464b52",
+    "wall_colour": "#eadfb4"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    6,
+    -5.0,
+    10.8
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.2,
+    "height": 1.5,
+    "roof_colour": "#464b52",
+    "wall_colour": "#eadfb4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 4.8,
+      "height": 4.2,
+      "colour": "#f3efe0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8.5,
+     -7.4
+    ],
+    "end": [
+     8.5,
+     -7.4
+    ],
+    "count": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "loco-cab",
+   "at": [
+    2,
+    -11.5
+   ],
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#1e3a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#151515"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loco-boiler",
+   "at": [
+    -0.8,
+    -11.5
+   ],
+   "footprint": {
+    "rect": [
+     3.4,
+     1.9
+    ]
+   },
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#161616",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#161616"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loco-stack",
+   "at": [
+    -2,
+    -11.5
+   ],
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#111111",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#111111"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "cart7",
+   "at": [
+    7,
+    -14
+   ],
+   "footprint": {
+    "rect": [
+     2.4,
+     1.4
+    ]
+   },
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3a2e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "cart10",
+   "at": [
+    10,
+    -14
+   ],
+   "footprint": {
+    "rect": [
+     2.4,
+     1.4
+    ]
+   },
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3a2e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -33,
+     -10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Colonnade and cupola hidden/simplified, stepped (not scalloped) gables, locomotive built from boxes, trees approximate"
+ }
+}

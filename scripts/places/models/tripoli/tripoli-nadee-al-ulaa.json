@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-nadee-al-ulaa",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/138642178",
+   "used": "real park outline (30,339 m2) as the lawn plate"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+   "used": "palms and sand-render low pavilion from the brief; no photo of this club exists (the nearby Souq photo shows a different place)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "grounds",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -5,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#c9a56b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5,
+    -10.5
+   ],
+   "params": {
+    "width": 18,
+    "depth": 2.5,
+    "colours": [
+     "#c9a56b",
+     "#f3efe6"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -10
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9a56b"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -28,
+    -33
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.5,
+    "leaf": "bars",
+    "colour": "#f3efe6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -33
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.8,
+    "kind": "railing",
+    "colour": "#aaa59b",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    10
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 30,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    15
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 4,
+    "spread": 20,
+    "line": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM park plate scaled 0.54, pavilion/gate/kiosk are plausible placements"
+ }
+}

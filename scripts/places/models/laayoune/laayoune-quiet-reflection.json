@@ -1,0 +1,922 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Laayoune_Cathedral_2011.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bjorn Christian Torrissen",
+   "view": "side",
+   "used": "salmon-pink render, round-arched gable with lattice window, ochre barrel vault, square slit tower beside the nave, low arcaded side wing, cross at the gable"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/310863257",
+   "used": "overall size (33 x 18 m) and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 50,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "nave",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       13,
+       22
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 5,
+      "rect": [
+       13,
+       22
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 5.71,
+      "rect": [
+       12.91,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 6.41,
+      "rect": [
+       12.62,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 7.09,
+      "rect": [
+       12.16,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 7.73,
+      "rect": [
+       11.51,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 8.34,
+      "rect": [
+       10.7,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 8.9,
+      "rect": [
+       9.73,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 9.4,
+      "rect": [
+       8.62,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 9.84,
+      "rect": [
+       7.38,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 10.21,
+      "rect": [
+       6.04,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       4.61,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 10.71,
+      "rect": [
+       3.11,
+       22
+      ],
+      "colour": "#d9a860"
+     },
+     {
+      "z": 10.84,
+      "rect": [
+       1.57,
+       22
+      ],
+      "colour": "#d9a860"
+     }
+    ],
+    "colour": "#e9a47f",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    13
+   ],
+   "height": 5.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9a47f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0976f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-a",
+   "at": [
+    8.0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.6
+    ],
+    "height": 17,
+    "colour": "#e39c78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-b",
+   "at": [
+    10.0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.6
+    ],
+    "height": 17,
+    "colour": "#e39c78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-lintel",
+   "at": [
+    9,
+    6,
+    11.9
+   ],
+   "params": {
+    "rect": [
+     3,
+     1.6
+    ],
+    "height": 5.1,
+    "colour": "#e39c78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-parapet",
+   "at": [
+    9,
+    6,
+    17
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.8
+    ],
+    "height": 0.3,
+    "colour": "#eab08c",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "side-wing",
+   "footprint": {
+    "rect": [
+     6,
+     13
+    ]
+   },
+   "at": [
+    11,
+    -4
+   ],
+   "height": 3.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a07a",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 2.4
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e39c78",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "wing-dome",
+   "at": [
+    11,
+    -7,
+    3.8
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#f4f1ea"
+     ],
+     [
+      1.7,
+      0,
+      "#f4f1ea"
+     ],
+     [
+      1.6,
+      0.5,
+      "#f4f1ea"
+     ],
+     [
+      1.2,
+      1.0,
+      "#f4f1ea"
+     ],
+     [
+      0.6,
+      1.35,
+      "#f4f1ea"
+     ],
+     [
+      0,
+      1.5,
+      "#f4f1ea"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "side-arch-0",
+   "at": [
+    6.4,
+    -8.5,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 3.8,
+      "rect": [
+       0.5,
+       1.6
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       0.5,
+       1.6
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.34,
+      "rect": [
+       0.5,
+       1.57
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.52,
+      "rect": [
+       0.5,
+       1.47
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.7,
+      "rect": [
+       0.5,
+       1.25
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.82,
+      "rect": [
+       0.5,
+       1.01
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.91,
+      "rect": [
+       0.5,
+       0.73
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.96,
+      "rect": [
+       0.5,
+       0.47
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.99,
+      "rect": [
+       0.5,
+       0.24
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 6.0,
+      "rect": [
+       0.5,
+       0.3
+      ],
+      "colour": "#f2dcc4"
+     }
+    ],
+    "colour": "#f2dcc4",
+    "material": "painted-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "side-arch-1",
+   "at": [
+    6.4,
+    -5,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 3.8,
+      "rect": [
+       0.5,
+       1.6
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       0.5,
+       1.6
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.34,
+      "rect": [
+       0.5,
+       1.57
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.52,
+      "rect": [
+       0.5,
+       1.47
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.7,
+      "rect": [
+       0.5,
+       1.25
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.82,
+      "rect": [
+       0.5,
+       1.01
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.91,
+      "rect": [
+       0.5,
+       0.73
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.96,
+      "rect": [
+       0.5,
+       0.47
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.99,
+      "rect": [
+       0.5,
+       0.24
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 6.0,
+      "rect": [
+       0.5,
+       0.3
+      ],
+      "colour": "#f2dcc4"
+     }
+    ],
+    "colour": "#f2dcc4",
+    "material": "painted-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "side-arch-2",
+   "at": [
+    6.4,
+    -1.5,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 3.8,
+      "rect": [
+       0.5,
+       1.6
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       0.5,
+       1.6
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.34,
+      "rect": [
+       0.5,
+       1.57
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.52,
+      "rect": [
+       0.5,
+       1.47
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.7,
+      "rect": [
+       0.5,
+       1.25
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.82,
+      "rect": [
+       0.5,
+       1.01
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.91,
+      "rect": [
+       0.5,
+       0.73
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.96,
+      "rect": [
+       0.5,
+       0.47
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 5.99,
+      "rect": [
+       0.5,
+       0.24
+      ],
+      "colour": "#f2dcc4"
+     },
+     {
+      "z": 6.0,
+      "rect": [
+       0.5,
+       0.3
+      ],
+      "colour": "#f2dcc4"
+     }
+    ],
+    "colour": "#f2dcc4",
+    "material": "painted-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    13,
+    14
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a07a",
+    "windowShape": "arched",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 3.2,
+     "faces": [
+      "left"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e39c78",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-surround",
+   "at": [
+    0,
+    -11.2,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.5,
+      "rect": [
+       9.4,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 5,
+      "rect": [
+       9.4,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 5.84,
+      "rect": [
+       9.25,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 6.88,
+      "rect": [
+       8.62,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 7.92,
+      "rect": [
+       7.36,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 8.66,
+      "rect": [
+       5.91,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 9.18,
+      "rect": [
+       4.31,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 9.49,
+      "rect": [
+       2.77,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 9.65,
+      "rect": [
+       1.4,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     },
+     {
+      "z": 9.7,
+      "rect": [
+       0.3,
+       0.4
+      ],
+      "colour": "#e9a47f"
+     }
+    ],
+    "colour": "#e9a47f",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-lattice",
+   "at": [
+    0,
+    -11.45,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 1.5,
+      "rect": [
+       8.0,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 5,
+      "rect": [
+       8.0,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 5.71,
+      "rect": [
+       7.87,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 6.6,
+      "rect": [
+       7.33,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 7.49,
+      "rect": [
+       6.26,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 8.11,
+      "rect": [
+       5.03,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 8.56,
+      "rect": [
+       3.66,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 8.82,
+      "rect": [
+       2.36,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 8.96,
+      "rect": [
+       1.19,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     },
+     {
+      "z": 9.0,
+      "rect": [
+       0.3,
+       0.2
+      ],
+      "colour": "#f6e6d2"
+     }
+    ],
+    "colour": "#f6e6d2",
+    "material": "painted-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    -10.9,
+    9.9
+   ],
+   "params": {}
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "colour": "#d98f6b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -18
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -16
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower is a two-pier frame so its arched opening reads only from the side; vault shading banded; ochre half-dome arch ends simplified to pale arch panels; planting, benches, lamp poles omitted"
+ }
+}

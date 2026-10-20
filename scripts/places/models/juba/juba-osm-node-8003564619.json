@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-node-8003564619",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/juba.json#juba-osm-node-8003564619",
+   "used": "brief only: U-plan single-storey PHCC, cream render with green trim, hipped rust corrugated roof, arrival veranda, water tank, ambulance bay. Nearest OSM way is a 20 m2 shed (2.6 m away), unrelated, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-main",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#3d8f6b",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3a2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    -15.5,
+    11
+   ],
+   "rotDeg": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#3d8f6b"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3a2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    15.5,
+    11
+   ],
+   "rotDeg": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#3d8f6b"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3a2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "market-open/veranda",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 2.8,
+    "height": 3.0,
+    "roof": "lean-to",
+    "wall_colour": "#3d8f6b",
+    "roof_colour": "#7a3a2e"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#f0e8d4",
+    "roofColour": "#7a3a2e"
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "heading": 90
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    7,
+    -4.4,
+    2.6
+   ],
+   "params": {
+    "size": 1.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.6,
+    "legHeight": 5,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d4",
+    "count": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   46
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; U plan, veranda and tank from brief text, nearest OSM building unrelated"
+ }
+}

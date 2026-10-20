@@ -1,0 +1,937 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-pointe-des-almadies",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pointe_des_Almadies_-_Senegal.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jeff Attaway",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dakar/alm1.jpg",
+   "used": "terracotta hotel cluster with white tent, red and green courts, beach, dark rubble breakwater, basalt rocks in surf, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PointeAlmadies.jpg",
+   "licence": "Public domain",
+   "author": "Ji-Elle",
+   "view": "detail",
+   "file": "/tmp/places-evidence/dakar/alm2.jpg",
+   "used": "dark rocky shoreline and low cliff with surf"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 60,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hotel-main",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -40,
+    14
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9755a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0604a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-wing",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -56,
+    2
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d08a6a",
+    "windows": "none",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0604a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-round",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -20,
+    4
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c06d54",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a65a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d6b8",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8643f",
+    "material": "thatch",
+    "pitch": 28,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tent",
+   "at": [
+    -6,
+    14,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f4f4f2",
+    "profile": [
+     [
+      4.5,
+      0
+     ],
+     [
+      4.0,
+      2.0
+     ],
+     [
+      2.2,
+      5.0
+     ],
+     [
+      0.4,
+      8.5
+     ],
+     [
+      0,
+      9.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    36,
+    -12
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-upper",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -44,
+    16
+   ],
+   "z0": 10,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6805f",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0604a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-terrace",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    24
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cc7a5a",
+    "windows": "none",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0604a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-a",
+   "at": [
+    -26,
+    -28
+   ],
+   "params": {
+    "rect": [
+     16,
+     28
+    ],
+    "height": 0.15,
+    "colour": "#b9503f",
+    "topColour": "#b9503f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-b",
+   "at": [
+    -9,
+    -28
+   ],
+   "params": {
+    "rect": [
+     16,
+     28
+    ],
+    "height": 0.15,
+    "colour": "#c0584a",
+    "topColour": "#c0584a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-c",
+   "at": [
+    8,
+    -28
+   ],
+   "params": {
+    "rect": [
+     16,
+     28
+    ],
+    "height": 0.15,
+    "colour": "#a54a3d",
+    "topColour": "#a54a3d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-d",
+   "at": [
+    25,
+    -28
+   ],
+   "params": {
+    "rect": [
+     16,
+     28
+    ],
+    "height": 0.15,
+    "colour": "#6f9a64",
+    "topColour": "#6f9a64"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -34,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 68,
+    "height": 2.4,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#3f8a5a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 28,
+    "height": 2.4,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#3f8a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sea",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      64
+     ],
+     [
+      80,
+      64
+     ],
+     [
+      80,
+      -30
+     ],
+     [
+      62,
+      -16
+     ],
+     [
+      40,
+      -4
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      0,
+      22
+     ],
+     [
+      -20,
+      32
+     ],
+     [
+      -70,
+      40
+     ]
+    ],
+    "height": 0.06,
+    "colour": "#2f7f94",
+    "topColour": "#3a93a8",
+    "z0": 0.02
+   }
+  },
+  {
+   "type": "prism",
+   "id": "beach",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      40
+     ],
+     [
+      -20,
+      32
+     ],
+     [
+      0,
+      22
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      40,
+      -4
+     ],
+     [
+      62,
+      -16
+     ],
+     [
+      62,
+      -22
+     ],
+     [
+      38,
+      -12
+     ],
+     [
+      14,
+      2
+     ],
+     [
+      -8,
+      14
+     ],
+     [
+      -30,
+      22
+     ],
+     [
+      -70,
+      30
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#dcc48e",
+    "topColour": "#e3cd9a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "breakwater",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      38,
+      -6,
+      0.7
+     ],
+     [
+      52,
+      -4,
+      0.9
+     ],
+     [
+      60,
+      3,
+      1.0
+     ],
+     [
+      68,
+      12,
+      1.0
+     ],
+     [
+      71,
+      22,
+      1.0
+     ],
+     [
+      66,
+      29,
+      1.0
+     ]
+    ],
+    "curve": true,
+    "steps": 12,
+    "colour": "#2f2e2e",
+    "section": {
+     "rect": [
+      3.6,
+      2.4
+     ]
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "breakwater-walk",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      38,
+      -6,
+      1.95
+     ],
+     [
+      52,
+      -4,
+      2.15
+     ],
+     [
+      60,
+      3,
+      2.25
+     ],
+     [
+      68,
+      12,
+      2.25
+     ],
+     [
+      71,
+      22,
+      2.25
+     ],
+     [
+      66,
+      29,
+      2.25
+     ]
+    ],
+    "curve": true,
+    "steps": 12,
+    "colour": "#bfb49a",
+    "section": {
+     "rect": [
+      1.2,
+      0.2
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "surf-rocks",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 7,
+      "colour": "#3b3a3a",
+      "profile": [
+       [
+        3.0,
+        0
+       ],
+       [
+        2.4,
+        0.5
+       ],
+       [
+        1.2,
+        0.9
+       ],
+       [
+        0,
+        1.0
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     8,
+     32,
+     0
+    ],
+    "end": [
+     44,
+     22,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "outer-rocks",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 7,
+      "colour": "#454344",
+      "profile": [
+       [
+        2.6,
+        0
+       ],
+       [
+        2.0,
+        0.5
+       ],
+       [
+        1.0,
+        0.8
+       ],
+       [
+        0,
+        0.9
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     46,
+     -14,
+     0
+    ],
+    "end": [
+     84,
+     6,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      6
+     ],
+     [
+      -62,
+      6
+     ],
+     [
+      -54,
+      -40
+     ],
+     [
+      -62,
+      -40
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#5f5f5d",
+    "topColour": "#6a6a68"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dirt-path",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -14
+     ],
+     [
+      -44,
+      -14
+     ],
+     [
+      -44,
+      -44
+     ],
+     [
+      -50,
+      -44
+     ]
+    ],
+    "height": 0.04,
+    "colour": "#a8865a",
+    "topColour": "#b08f62"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "shanties-a",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       3.6
+      ],
+      "height": 2.3,
+      "colour": "#b09a80",
+      "topColour": "#8a6a4a"
+     }
+    },
+    "mode": "grid",
+    "cols": 5,
+    "rows": 5,
+    "dx": 4.2,
+    "dy": 4.4,
+    "centre": [
+     52,
+     -36,
+     0
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "shanties-b",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       3.2
+      ],
+      "height": 2.1,
+      "colour": "#a8b0b0",
+      "topColour": "#6f8a8f"
+     }
+    },
+    "mode": "grid",
+    "cols": 4,
+    "rows": 4,
+    "dx": 4.8,
+    "dy": 4.8,
+    "centre": [
+     56,
+     -58,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 40
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 30
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "spread": 50
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -46,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 30
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Layout now follows the aerial (curved sand strip, hooked rubble breakwater, four courts, shanty blocks, stepped terracotta hotel with tent) but trees are sparse lollipops rather than dense canopy, shanty roofs are plain boxes, no basalt shoreline detail and no curved hotel fronts."
+ }
+}

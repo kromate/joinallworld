@@ -1,0 +1,189 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/bangui.json",
+   "used": "north terminal motor park: open laterite yard, long shed roof over waiting area, ticket kiosks, blue signage board, minibuses; no photo found and the OSM building match is only the nearest unnamed building so it is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter-office",
+   "footprint": {
+    "rect": [
+     30,
+     7
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d6bc",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "bay": 4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f8a82",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-kiosk-a",
+   "footprint": {
+    "rect": [
+     3,
+     2.5
+    ]
+   },
+   "at": [
+    -12,
+    -2
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f6f9a",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a82",
+    "material": "metal-sheet",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-kiosk-b",
+   "footprint": {
+    "rect": [
+     3,
+     2.5
+    ]
+   },
+   "at": [
+    14,
+    -2
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f6f9a",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a82",
+    "material": "metal-sheet",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 32,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 6,
+    "colour": "#8f8a82"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.5,
+    "colour": "#2f6f9a"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e4",
+    "count": 6,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and OSM match is not the terminal; whole layout typed from the brief"
+ }
+}

@@ -1,0 +1,446 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-city-stars-mall",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flickr_-_Bakar_88_-_City_Stars,_Cairo.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Andrew A. Shenouda",
+   "view": "street",
+   "file": "/tmp/places-evidence/cairo/stars1.jpg",
+   "used": "orange-terracotta hotel tower with punched window grid, tall blue glass tower and glass spine, low sand-coloured service/mall block with roller-door bays in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Citystars_Shopping_Mall,_Heliopolis.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LittleT889",
+   "view": "interior",
+   "used": "atrium only: five mall levels, cream columns (not modelled; informs storey count and beige/cream palette)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/284336557",
+   "used": "overall size (333 x 237 m); only the street-front tower end is modelled because of the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall-base",
+   "footprint": {
+    "rect": [
+     56,
+     30
+    ]
+   },
+   "at": [
+    -24,
+    -12
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e0c9a0",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#f0e2c0",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 14,
+      "opening": 0.6,
+      "height": 0.3,
+      "depth": 0.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0a690",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "bays",
+   "params": {
+    "start": [
+     -38,
+     -27.3
+    ],
+    "end": [
+     -10,
+     -27.3
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       9,
+       0.5
+      ],
+      "height": 5.5,
+      "colour": "#7d6a48",
+      "z0": 0.05
+     }
+    },
+    "mode": "line"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-wing-l",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    -25.5,
+    4
+   ],
+   "height": 64,
+   "storeys": 14,
+   "wall": {
+    "material": "render",
+    "colour": "#d98a4c",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "windowShape": "rect",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.6,
+    "trimColour": "#a85f2e",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b86a34",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a8a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-wing-r",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    1.5,
+    4
+   ],
+   "height": 64,
+   "storeys": 14,
+   "wall": {
+    "material": "render",
+    "colour": "#d98a4c",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "windowShape": "rect",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.6,
+    "trimColour": "#a85f2e",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b86a34",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a8a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-back",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -12,
+    10
+   ],
+   "height": 64,
+   "storeys": 16,
+   "wall": {
+    "material": "render",
+    "colour": "#d98a4c",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6.5,
+    "trimColour": "#c97a3e",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a8a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-notch",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    4
+   ],
+   "height": 58,
+   "storeys": 15,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a5aa6",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#2f66b8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9198",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-cap",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    -12,
+    4
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d98a4c",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6.5,
+    "trimColour": "#c97a3e",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a8a",
+    "parapet": 0.8
+   },
+   "z0": 58
+  },
+  {
+   "type": "prism",
+   "id": "blue-win-0",
+   "at": [
+    -30,
+    -7.05,
+    58
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.15
+    ],
+    "height": 2.4,
+    "colour": "#2f66b8",
+    "topColour": "#2f66b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-win-1",
+   "at": [
+    -30,
+    -7.05,
+    52
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.15
+    ],
+    "height": 2.4,
+    "colour": "#2f66b8",
+    "topColour": "#2f66b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-win-2",
+   "at": [
+    6,
+    -7.05,
+    58
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.15
+    ],
+    "height": 2.4,
+    "colour": "#2f66b8",
+    "topColour": "#2f66b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-win-3",
+   "at": [
+    6,
+    -7.05,
+    52
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.15
+    ],
+    "height": 2.4,
+    "colour": "#2f66b8",
+    "topColour": "#2f66b8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "mall-sign",
+   "at": [
+    -38,
+    -27.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2,
+    "bottom": 9,
+    "colour": "#e9d8b0",
+    "frameColour": "#b0a690",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -46,
+    -26
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 10
+   }
+  },
+  {
+   "type": "car",
+   "id": "yellow-truck",
+   "at": [
+    -34,
+    -26
+   ],
+   "params": {
+    "colour": "#e8c21e",
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Orange tower now one massing with a recessed blue glass notch and a capped top; real tower has balcony-line window rows with darker frames and a stepped parapet, mine is a plain window grid; beige base has arched roller bays but is boxier than the real low service block. Only the tower end of the 333 m mall is modelled."
+ }
+}

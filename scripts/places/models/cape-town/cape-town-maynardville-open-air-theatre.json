@@ -1,0 +1,633 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-maynardville-open-air-theatre",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maynardville_Open-Air_Theatre_entrance_-_Wynberg_Park_-_Cape_Town.jpg",
+   "licence": "CC0",
+   "author": "Abu Shawka",
+   "view": "front",
+   "file": "/tmp/places-evidence/cape-town/maynardville-open-air-theatre-0.jpg",
+   "used": "two white rendered gate lodges with dark overhanging flat roofs, arched shuttered windows, black iron gate, brick-paved approach, dense tree canopy behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maynardville_Open-Air_Theatre_2023.jpg",
+   "licence": "see Commons",
+   "author": "see Commons",
+   "view": "street",
+   "file": "/tmp/places-evidence/cape-town/maynardville-open-air-theatre-2.jpg",
+   "used": "low grass stage framed by clipped hedges in front of old trees and palms, audience on the lawn in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32609679",
+   "used": "park context only (containing match, not used as footprint)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lodge-l",
+   "footprint": {
+    "rect": [
+     4,
+     3.4
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "none",
+    "plinth": 0.2,
+    "cornice": true,
+    "windowRatio": 0.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f1a17",
+    "overhang": 0.75,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge-r",
+   "footprint": {
+    "rect": [
+     5,
+     4.2
+    ]
+   },
+   "at": [
+    6.5,
+    0
+   ],
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "none",
+    "plinth": 0.2,
+    "cornice": true,
+    "windowRatio": 0.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f1a17",
+    "overhang": 0.85,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -1.6,
+    0
+   ],
+   "params": {
+    "width": 7.6,
+    "height": 4.4,
+    "pillar": 0.25,
+    "leaf": "bars",
+    "colour": "#111111",
+    "leafColour": "#111111"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -16
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      30
+     ]
+    ],
+    "width": 9,
+    "colour": "#6a3a2e"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    76
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 16,
+    "startDeg": 30,
+    "endDeg": 150,
+    "rows": 7,
+    "rise": 0.35,
+    "run": 1.0,
+    "firstHeight": 0.3,
+    "seatColour": "#6a9a4a",
+    "concreteColour": "#5e8a40",
+    "facetDeg": 12,
+    "closeEnds": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stage",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    0,
+    95
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    0,
+    98.4,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "depth": 1.2,
+    "colour": "#3f6e34"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -24,
+    40,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 60,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 17
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    24,
+    40,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 60,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 17
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    108,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    92,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    92,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    0,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.8,
+    "thickness": 0.4,
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    24,
+    0,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.8,
+    "thickness": 0.4,
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-l0",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -7.65,
+    -1.8
+   ],
+   "height": 5.3500000000000005,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f4ee"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "pil-l1",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -4.35,
+    -1.8
+   ],
+   "height": 5.3500000000000005,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f4ee"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "cornice-l",
+   "footprint": {
+    "rect": [
+     4.5,
+     3.9
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e8e5dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e5dc"
+   },
+   "z0": 4.9
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -5.7,
+    -1.72,
+    1.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.9,
+    "kind": "arch",
+    "trim": "#f6f4ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crest-l",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -5.7,
+    -1.5999999999999999
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#c8a34a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8a34a"
+   },
+   "z0": 3.6
+  },
+  {
+   "type": "mass",
+   "id": "name-l",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -5.7,
+    -1.5999999999999999
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#2a2420",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2420"
+   },
+   "z0": 2.9
+  },
+  {
+   "type": "mass",
+   "id": "pil-r0",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    4.35,
+    -2.2
+   ],
+   "height": 5.95,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f4ee"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "pil-r1",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    8.65,
+    -2.2
+   ],
+   "height": 5.95,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f4ee"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "cornice-r",
+   "footprint": {
+    "rect": [
+     5.5,
+     4.7
+    ]
+   },
+   "at": [
+    6.5,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e8e5dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e5dc"
+   },
+   "z0": 5.5
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    6.8,
+    -2.12,
+    1.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.9,
+    "kind": "arch",
+    "trim": "#f6f4ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crest-r",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    6.8,
+    -2.0
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#c8a34a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8a34a"
+   },
+   "z0": 3.6
+  },
+  {
+   "type": "mass",
+   "id": "name-r",
+   "footprint": {
+    "rect": [
+     3.6,
+     0.5
+    ]
+   },
+   "at": [
+    6.8,
+    -2.0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#2a2420",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2420"
+   },
+   "z0": 2.9
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 8,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   110,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Lodges are still shorter and plainer than the photo (no real lettering or crest relief, arched shutter hidden by a foreground tree); low-poly trees are lighter and more open than the dense dark canopy; ground is green lawn not dark brick all round."
+ }
+}

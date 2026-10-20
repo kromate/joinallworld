@@ -1,0 +1,28 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "lilongwe", "venueId": "lilongwe-civo-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/221073293", "used": "real outline: an oval about 140 m across by 216 m long running almost north-south; modelled at roughly half size (compressed to fit the scene clamp) with the same proportions"},
+  {"kind": "text", "url": "https://en.wikipedia.org/wiki/Civo_Stadium", "used": "25,000 seats, Chinese-government reconstruction 2010; one covered main stand, open terraces elsewhere (brief)"}
+ ],
+ "camera": {"yawDeg": -25, "pitchDeg": 12, "fovDeg": 50, "aspect": 1.5, "fit": "building", "margin": 0.04},
+ "parts": [
+  {"type": "prism", "at": [0, 0, 0], "params": {"points": [[24,0],[23.2,10.6],[20.8,20],[16.9,28],[12,34],[6.2,38.6],[0,40],[-6.2,38.6],[-12,34],[-16.9,28],[-20.8,20],[-23.2,10.6],[-24,0],[-23.2,-10.6],[-20.8,-20],[-16.9,-28],[-12,-34],[-6.2,-38.6],[0,-40],[6.2,-38.6],[12,-34],[16.9,-28],[20.8,-20],[23.2,-10.6]], "z0": 0, "height": 0.12, "colour": "#6f9a4a", "top": true}},
+  {"type": "stand", "at": [0, 0, 0], "params": {"centre": [0, 0], "radius": 28, "radiusY": 46, "startDeg": 215, "endDeg": 325, "rows": 16, "rise": 0.7, "run": 0.78, "firstHeight": 3.5, "facetDeg": 14, "under": "solid", "stepped": true, "slab": 0.7, "bay": 6, "seatColour": "#3a5f9a", "concreteColour": "#c9c5bb", "underColour": "#aaa69c", "canopy": {"height": 1.0, "depth": 15, "thickness": 4.5, "slopeDeg": 3, "colour": "#8d9399", "edgeColour": "#c9c5bb", "overhangBack": 1.5}, "backWall": 0}},
+  {"type": "stand", "at": [0, 0, 0], "params": {"centre": [0, 0], "radius": 28, "radiusY": 46, "startDeg": -35, "endDeg": 215, "rows": 11, "rise": 0.7, "run": 0.78, "firstHeight": 2.2, "facetDeg": 14, "under": "solid", "stepped": false, "slab": 0.6, "bay": 8, "seatColour": "#3a5f9a", "seatColours": ["#3a5f9a", "#c9c5bb"], "blocks": 6, "concreteColour": "#c9c5bb", "underColour": "#b5b1a7"}},
+  {"type": "mass", "id": "scoreboard-base", "footprint": {"rect": [10, 1.5]}, "at": [0, 44], "z0": 10.5, "height": 5, "storeys": 1,
+   "wall": {"material": "metal-cladding", "colour": "#2a2f35", "windows": "none", "plinth": 0},
+   "roof": {"form": "flat", "colour": "#2a2f35", "material": "metal-sheet", "overhang": 0.2}},
+  {"type": "lamp", "at": [-33, -42, 0], "params": {"height": 34, "count": 1}},
+  {"type": "lamp", "at": [33, -42, 0], "params": {"height": 34, "count": 1}},
+  {"type": "lamp", "at": [-33, 42, 0], "params": {"height": 34, "count": 1}},
+  {"type": "lamp", "at": [33, 42, 0], "params": {"height": 34, "count": 1}},
+  {"type": "mass", "id": "gate-west", "footprint": {"rect": [3, 7]}, "at": [-42, 0], "height": 3.6, "storeys": 1,
+   "wall": {"material": "painted-render", "colour": "#e8e5dc", "windows": "none", "plinth": 0},
+   "roof": {"form": "flat", "colour": "#3a5f9a", "material": "metal-sheet", "overhang": 0.5}},
+  {"type": "mass", "id": "gate-east", "footprint": {"rect": [3, 7]}, "at": [42, 0], "height": 3.6, "storeys": 1,
+   "wall": {"material": "painted-render", "colour": "#e8e5dc", "windows": "none", "plinth": 0},
+   "roof": {"form": "flat", "colour": "#3a5f9a", "material": "metal-sheet", "overhang": 0.5}}
+ ],
+ "site": {"ground": "laterite", "forecourt": "parking", "forecourtDepth": 5, "trees": [{"kind": "broadleaf", "at": [-46, -50], "height": 9}, {"kind": "broadleaf", "at": [46, -48], "height": 9}, {"kind": "broadleaf", "at": [-48, 40], "height": 8}], "extent": [100, 120]}
+}

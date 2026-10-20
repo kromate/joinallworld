@@ -16,7 +16,7 @@ const PLACES = resolve(HERE, '..');
 
 function arg(name: string, def?: string): string | undefined {
   const i = process.argv.indexOf(`--${name}`);
-  return i >= 0 && i + 1 < process.argv.length && !process.argv[i + 1].startsWith('--') ? process.argv[i + 1] : def;
+  return i >= 0 && i + 1 < process.argv.length && !process.argv[i + 1]!.startsWith('--') ? process.argv[i + 1] : def;
 }
 const flag = (name: string): boolean => process.argv.includes(`--${name}`);
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));

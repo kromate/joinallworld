@@ -21,7 +21,7 @@ const deadUntil = new Map<string, number>()
 function pickEndpoint(i: number): string {
   const live = ENDPOINTS.filter((u) => (deadUntil.get(u) ?? 0) < Date.now())
   const pool = live.length ? live : ENDPOINTS
-  return pool[i % pool.length]
+  return pool[i % pool.length]!
 }
 const RADIUS = 250
 const NAME_MAX_M = 400
@@ -146,7 +146,7 @@ function parseElement(raw: any): El | null {
   if (raw.type === 'way') {
     const g: LL[] | undefined = raw.geometry
     if (!g || g.length < 4) return null
-    if (g[0].lat !== g[g.length - 1].lat || g[0].lon !== g[g.length - 1].lon) return null
+    if (g[0]!.lat !== g[g.length - 1]!.lat || g[0]!.lon !== g[g.length - 1]!.lon) return null
     outer = g
   } else if (raw.type === 'relation') {
     const outers: LL[][] = []
@@ -158,8 +158,8 @@ function parseElement(raw: any): El | null {
     }
     const rings = assembleRings(outers)
     if (!rings.length) return null
-    const lat = rings[0][0].lat
-    const lon = rings[0][0].lon
+    const lat = rings[0]![0]!.lat
+    const lon = rings[0]![0]!.lon
     let bestA = -1
     for (const r of rings) {
       const a = Math.abs(signedArea(toLocal(r, lat, lon)))
@@ -170,19 +170,19 @@ function parseElement(raw: any): El | null {
     }
     if (!outer) return null
     const o = outer
-    const olat = o[0].lat
-    const olon = o[0].lon
+    const olat = o[0]!.lat
+    const olon = o[0]!.lon
     const op = toLocal(o, olat, olon)
     for (const r of assembleRings(inners)) {
       const ip = toLocal(r, olat, olon)
-      if (pointInPoly(ip[0][0], ip[0][1], op)) holesArea += Math.abs(signedArea(ip))
+      if (pointInPoly(ip[0]![0], ip[0]![1], op)) holesArea += Math.abs(signedArea(ip))
     }
   }
   if (!outer) return null
   // drop the repeated closing vertex
   const ring = outer.slice(0, -1)
-  const lat1 = ring[0].lat
-  const lon1 = ring[0].lon
+  const lat1 = ring[0]!.lat
+  const lon1 = ring[0]!.lon
   const p1 = toLocal(ring, lat1, lon1)
   const area = Math.abs(signedArea(p1)) - holesArea
   const [cx, cy] = centroid(p1)
@@ -292,11 +292,11 @@ function matchVenue(v: Venue, els: El[]): Match {
     }
     terms.sort((a, b) => (isBuilding(b.el) ? 1 : 0) - (isBuilding(a.el) ? 1 : 0) || b.el.area - a.el.area)
     if (terms.length && (!chosen || isAerodrome(chosen.el) || isAirport)) {
-      const t = terms[0]
+      const t = terms[0]!
       otherTerms = terms.slice(1, 4).map((x) => x.el)
       // when the chosen match is a named non-aerodrome non-terminal element for an airport, keep it only if it is a building
       if (!chosen || isAerodrome(chosen.el) || !isBuilding(chosen.el)) {
-        const q: Match['quality'] = chosen?.el === aerodrome || quality === 'name' ? 'name' : quality === 'none' ? 'containing' : quality
+        const q = (chosen?.el === aerodrome || quality === 'name' ? 'name' : quality === 'none' ? 'containing' : quality) as Match['quality'] | 'none'
         return { quality: q === 'none' ? 'containing' : q, distanceM: round1(t.dist), nameScore: ns || undefined, el: t.el, aerodrome, otherTerms }
       }
     }
@@ -397,11 +397,11 @@ async function worker() {
   while (idx < todo.length) {
     const city = todo[idx++]
     try {
-      const r = await processCity(city, byCity.get(city)!)
+      const r = await processCity(city!, byCity.get(city!)!)
       done++
       console.log(`[osm] ${done}/${todo.length} ${city} els=${r.elements} ${JSON.stringify(r.quality)} t=${Math.round((Date.now() - t0) / 1000)}s`)
     } catch (e) {
-      failed.push(city)
+      failed.push(city!)
       appendFileSync(failLog, `${new Date().toISOString()} ${city} ${(e as Error).message}\n`)
       console.error(`[osm] FAILED ${city}: ${(e as Error).message}`)
     }

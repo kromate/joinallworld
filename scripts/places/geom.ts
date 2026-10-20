@@ -18,8 +18,8 @@ export function pointToLocal(lat: number, lon: number, lat0: number, lon0: numbe
 export function signedArea(p: XY[]): number {
   let a = 0
   for (let i = 0, n = p.length; i < n; i++) {
-    const [x1, y1] = p[i]
-    const [x2, y2] = p[(i + 1) % n]
+    const [x1, y1] = p[i]!
+    const [x2, y2] = p[(i + 1) % n]!
     a += x1 * y2 - x2 * y1
   }
   return a / 2
@@ -30,8 +30,8 @@ export function centroid(p: XY[]): XY {
   let cx = 0
   let cy = 0
   for (let i = 0, n = p.length; i < n; i++) {
-    const [x1, y1] = p[i]
-    const [x2, y2] = p[(i + 1) % n]
+    const [x1, y1] = p[i]!
+    const [x2, y2] = p[(i + 1) % n]!
     const c = x1 * y2 - x2 * y1
     a += c
     cx += (x1 + x2) * c
@@ -52,8 +52,8 @@ export function centroid(p: XY[]): XY {
 export function pointInPoly(x: number, y: number, p: XY[]): boolean {
   let inside = false
   for (let i = 0, j = p.length - 1; i < p.length; j = i++) {
-    const [xi, yi] = p[i]
-    const [xj, yj] = p[j]
+    const [xi, yi] = p[i]!
+    const [xj, yj] = p[j]!
     if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside
   }
   return inside
@@ -73,7 +73,7 @@ export function distToPoly(x: number, y: number, p: XY[]): number {
   if (pointInPoly(x, y, p)) return 0
   let d = Infinity
   for (let i = 0, j = p.length - 1; i < p.length; j = i++) {
-    d = Math.min(d, segDist(x, y, p[j][0], p[j][1], p[i][0], p[i][1]))
+    d = Math.min(d, segDist(x, y, p[j]![0], p[j]![1], p[i]![0], p[i]![1]))
   }
   return d
 }
@@ -92,7 +92,7 @@ function dpOpen(pts: XY[], eps: number): XY[] {
     let md = 0
     let mi = -1
     for (let i = s + 1; i < e; i++) {
-      const d = perpDist(pts[i], pts[s], pts[e])
+      const d = perpDist(pts[i]!, pts[s]!, pts[e]!)
       if (d > md) {
         md = d
         mi = i
@@ -111,11 +111,11 @@ export function simplifyRing(ring: XY[], max = 64): XY[] {
   if (ring.length <= 3) return ring
   // split at the two farthest-apart anchor points so both halves are open polylines
   let i0 = 0
-  for (let i = 1; i < ring.length; i++) if (ring[i][0] < ring[i0][0]) i0 = i
+  for (let i = 1; i < ring.length; i++) if (ring[i]![0] < ring[i0]![0]) i0 = i
   let i1 = 0
   let best = -1
   for (let i = 0; i < ring.length; i++) {
-    const d = Math.hypot(ring[i][0] - ring[i0][0], ring[i][1] - ring[i0][1])
+    const d = Math.hypot(ring[i]![0] - ring[i0]![0], ring[i]![1] - ring[i0]![1])
     if (d > best) {
       best = d
       i1 = i
@@ -128,7 +128,7 @@ export function simplifyRing(ring: XY[], max = 64): XY[] {
   let eps = 0.25
   for (let iter = 0; iter < 30; iter++) {
     const a = dpOpen(half1, eps)
-    const b = dpOpen(half2, eps)
+    const b = dpOpen(half2 as XY[], eps)
     const out = [...a.slice(0, -1), ...b.slice(0, -1)]
     if (out.length <= max || iter === 29) return out.length >= 3 ? out : ring.slice(0, 3)
     eps *= 1.5
@@ -142,13 +142,13 @@ export function convexHull(pts: XY[]): XY[] {
   const cross = (o: XY, a: XY, b: XY) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
   const lo: XY[] = []
   for (const q of p) {
-    while (lo.length >= 2 && cross(lo[lo.length - 2], lo[lo.length - 1], q) <= 0) lo.pop()
+    while (lo.length >= 2 && cross(lo[lo.length - 2]!, lo[lo.length - 1]!, q) <= 0) lo.pop()
     lo.push(q)
   }
   const up: XY[] = []
   for (let i = p.length - 1; i >= 0; i--) {
-    const q = p[i]
-    while (up.length >= 2 && cross(up[up.length - 2], up[up.length - 1], q) <= 0) up.pop()
+    const q = p[i]!
+    while (up.length >= 2 && cross(up[up.length - 2]!, up[up.length - 1]!, q) <= 0) up.pop()
     up.push(q)
   }
   return [...lo.slice(0, -1), ...up.slice(0, -1)]
@@ -160,8 +160,8 @@ export function minAreaRect(pts: XY[]): { w: number; d: number; angle: number } 
   if (h.length < 3) return { w: 0, d: 0, angle: 0 }
   let best = { area: Infinity, w: 0, d: 0, ang: 0 }
   for (let i = 0; i < h.length; i++) {
-    const [ax, ay] = h[i]
-    const [bx, by] = h[(i + 1) % h.length]
+    const [ax, ay] = h[i]!
+    const [bx, by] = h[(i + 1) % h.length]!
     const len = Math.hypot(bx - ax, by - ay)
     if (len < 1e-9) continue
     const ux = (bx - ax) / len
@@ -202,27 +202,27 @@ export function assembleRings(ways: LL[][]): LL[][] {
   while (open.length) {
     let cur = open.pop()!
     let guard = 0
-    while (!same(cur[0], cur[cur.length - 1]) && guard++ < 10000) {
-      const end = cur[cur.length - 1]
+    while (!same(cur[0]!, cur[cur.length - 1]!) && guard++ < 10000) {
+      const end = cur[cur.length - 1]!
       let found = -1
       let rev = false
       for (let i = 0; i < open.length; i++) {
-        if (same(open[i][0], end)) {
+        if (same(open[i]![0]!, end)) {
           found = i
           break
         }
-        if (same(open[i][open[i].length - 1], end)) {
+        if (same(open[i]![open[i]!.length - 1]!, end)) {
           found = i
           rev = true
           break
         }
       }
       if (found < 0) break
-      const nxt = open.splice(found, 1)[0]
+      const nxt = open.splice(found, 1)[0]!
       if (rev) nxt.reverse()
       cur = cur.concat(nxt.slice(1))
     }
-    if (cur.length >= 4 && same(cur[0], cur[cur.length - 1])) rings.push(cur)
+    if (cur.length >= 4 && same(cur[0]!, cur[cur.length - 1]!)) rings.push(cur)
   }
   return rings
 }

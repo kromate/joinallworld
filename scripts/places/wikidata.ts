@@ -56,7 +56,7 @@ async function api(params: Record<string, string>): Promise<any> {
         continue
       }
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      const j = await res.json()
+      const j = (await res.json()) as { error?: { code?: string } }
       if (j.error) {
         if (/maxlag|ratelimit|readonly/i.test(j.error.code ?? '')) { await sleep(5000 * 2 ** Math.min(i, 4)); continue }
         throw new Error(`api error ${j.error.code}`)
@@ -86,7 +86,7 @@ const quantity = (claims: any, pid: string, metres: boolean): number | null => {
   if (!Number.isFinite(n)) return null
   if (metres) {
     const unit = String(v.unit ?? '').split('/').pop() ?? ''
-    if (unit in UNIT_M) n *= UNIT_M[unit]
+    if (unit in UNIT_M) n *= UNIT_M[unit]!
     else if (unit !== '' && unit !== '1') return null
     n = Math.round(n * 10) / 10
   }
@@ -143,7 +143,7 @@ async function fetchLabels(qids: string[]) {
 
 async function search(name: string): Promise<string[]> {
   const key = normName(name)
-  if (key in searchCache) return searchCache[key]
+  if (key in searchCache) return searchCache[key]!
   const j = await api({ action: 'wbsearchentities', search: name.replace(/\(game venue\)/i, '').trim(), language: 'en', uselang: 'en', type: 'item', limit: '5' })
   const out: string[] = (j.search ?? []).map((s: any) => s.id)
   searchCache[key] = out

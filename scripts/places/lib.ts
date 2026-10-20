@@ -67,7 +67,7 @@ export async function fetchRetry(
   for (let i = 0; i < tries; i++) {
     const url = urls[i % urls.length]
     try {
-      const res = await fetch(url, init)
+      const res = await fetch(url!, init)
       if (res.ok) return res
       if (res.status === 429 || res.status >= 500) {
         lastErr = new Error(`HTTP ${res.status} from ${url}`)
@@ -140,7 +140,7 @@ export function nameScore(a: string, b: string): number {
   if (contained && Math.min(sa.size, sb.size) >= 2) return Math.max(jac, 0.75)
   if (jac >= 0.5) return jac
   // a lone distinctive word fully contained in the other name (e.g. "Nike" in "Nike Art Gallery")
-  if (contained && distinct[0].length >= 5) return 0.6
+  if (contained && distinct[0]!.length >= 5) return 0.6
   return 0
 }
 

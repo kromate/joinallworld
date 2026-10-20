@@ -13,7 +13,7 @@ mkdirSync(OUT_DIR, { recursive: true })
 const args = process.argv.slice(2)
 const onlyCities = (() => {
   const i = args.indexOf('--city')
-  return i >= 0 ? new Set(args[i + 1].split(',')) : null
+  return i >= 0 ? new Set(args[i + 1]!.split(',')) : null
 })()
 const NO_GEO = args.includes('--no-geo')
 const OFFLINE = args.includes('--offline')
@@ -89,7 +89,7 @@ async function api(host: string, params: Record<string, string>): Promise<any> {
       } else if (!res.ok) {
         throw Object.assign(new Error(`HTTP ${res.status} ${host}`), { fatal: true })
       } else {
-        const j = await res.json()
+        const j = (await res.json()) as { error?: { code?: string; info?: string } }
         if (!j.error) return j
         if (/maxlag|ratelimit|readonly|internal|busy/i.test(j.error.code ?? '')) {
           backoff = 5000 * 2 ** Math.min(i, 4)
@@ -117,7 +117,7 @@ async function runPool<T>(items: T[], label: string, fn: (item: T) => Promise<vo
     while (idx < total) {
       const it = items[idx++]
       try {
-        await fn(it)
+        await fn(it as T)
       } catch (e) {
         console.error(`[${label}] failed: ${(e as Error).message}`)
       }
@@ -317,7 +317,7 @@ async function fetchEntities(ctx: Ctx[]) {
       const wikis: Record<string, string> = {}
       for (const [site, sl] of Object.entries<any>(e.sitelinks ?? {})) {
         const m = /^([a-z_]+)wiki$/.exec(site)
-        if (m && !['commons', 'species', 'meta', 'wikidata', 'simple'].includes(m[1])) wikis[m[1].replace(/_/g, '-')] = sl.title
+        if (m && !['commons', 'species', 'meta', 'wikidata', 'simple'].includes(m[1]!)) wikis[m[1]!.replace(/_/g, '-')] = sl.title
       }
       const cc = e.sitelinks?.commonswiki?.title as string | undefined
       entCache.set(id, {
@@ -547,7 +547,7 @@ function pick(list: Cand[]): Cand[] {
   const used: Record<string, number> = {}
   const out: Cand[] = []
   for (const p of list) {
-    if ((used[p.source] ?? 0) >= cap[p.source]) continue
+    if ((used[p.source] ?? 0) >= cap[p.source]!) continue
     used[p.source] = (used[p.source] ?? 0) + 1
     out.push(p)
     if (out.length === 8) break
@@ -613,7 +613,7 @@ for (const [city, cs] of byCity) {
     sc.n++
     if (photos.length >= 1) { stats.ge1++; sc.ge1++ }
     if (photos.length >= 3) { stats.ge3++; sc.ge3++ }
-    for (const s of new Set(photos.map((p) => p.source))) stats.bySourceVenues[s]++
+    for (const s of new Set(photos.map((p) => p.source))) stats.bySourceVenues[s]!++
   }
   writeAtomic(join(OUT_DIR, city + '.json'), JSON.stringify({ city, generatedAt, venues }, null, 1) + '\n')
 }

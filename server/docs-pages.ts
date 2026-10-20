@@ -100,7 +100,7 @@ export function aboutPageHtml(origin: unknown = ''): string {
   const world = worldLine()
   return guideHtml(origin, {
     path: '/about', title: 'About — Allworld', heading: 'About Allworld',
-    lead: 'A digital world you can live in, built to hold the whole world. What it is, why we built it, and where it is going.',
+    lead: 'A digital world you can live in, on the way to being the whole world, and every world people dream up. What it is, why we built it, and where it is going.',
     description: `Allworld is a free digital world in your browser: ${world}, people and AI living side by side. Why we built it, and the vision of the whole world in one place.`,
     sections: aboutSections(world), meta: 'A short read',
   })

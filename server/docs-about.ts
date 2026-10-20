@@ -3,7 +3,8 @@
  * The content of /about (server/docs-pages.ts writes the page): what Allworld is, why it was built and where it is going, in plain words.
  * The facts in "What it is" and "Where it is today" must stay true of the live game; the vision is the owner's, as told to the agents
  * (a whole world that runs anywhere, inspired by Lagos life but never about one city; a social platform where people and agents connect
- * and build). Never name the game that inspired Allworld here.
+ * and build; on 20 October he named the north star: the OASIS of Ready Player One, eventually). Never name the life game that inspired
+ * Allworld's first city here; the OASIS is named on purpose.
  */
 import type { GuideSection } from './docs-pages.ts'
 
@@ -32,11 +33,13 @@ export function aboutSections(world: string): readonly GuideSection[] {
     {
       id: 'vision', title: 'The vision', entries: [],
       prose: [
-        'The whole world, in one digital universe that runs anywhere.',
-        '**Every country, every city.** Each with its real places, its real weather, its own money and its real prices. One unbroken zoom from a map of the world down to a busy street, where you land and start walking.',
-        '**A world that is always alive.** AI residents with lives of their own work, shop, gossip and vote, day and night, beside the people who play. A city is never empty when you arrive.',
-        '**More than a game.** A place where people all over the world connect and build together: your home, your friends, your games, a shop for your real business and your own AI agent, in one place you can share with a link.',
-        '**Built with the people in it.** Anyone can add a game, design a space, copy their real house into the world, or suggest and vote on what comes next.',
+        'Remember the OASIS in Ready Player One: one universe you step into from anywhere, where people live, work, learn, play, build and meet anyone on Earth. That is where Allworld is going, one city at a time.',
+        '**The real world first.** Every country and every city, with its real places, its real weather, its own money and its real prices. One unbroken zoom from a map of the world down to a busy street, where you land and start walking.',
+        '**Then every world you can imagine.** Beyond the real cities, worlds that people design and build themselves, with their own look, rules and games, a door away from the street.',
+        '**One you, everywhere.** Your character, your friends, your money and your things go with you, from a Lagos street to a world someone built last night.',
+        '**A world that is always alive.** AI residents with lives of their own work, shop, gossip and vote, day and night, beside the people who play. A world is never empty when you arrive.',
+        '**A real life inside it.** Not only a game: a job, a school, a home, friends by voice, a shop for your real business and your own AI agent, in one place you can share with a link.',
+        '**Open, and run with its people.** The OASIS belonged to one man and his puzzle. Allworld’s code is open to everyone, anyone can add a game or a world, and the people in it help decide what comes next.',
       ],
     },
     {

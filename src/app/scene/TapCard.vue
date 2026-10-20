@@ -82,7 +82,10 @@ function onClick(event: MouseEvent): void {
 /** The host's own view source (its camera and avatar), taken once through setView with a factory that installs no view. */
 interface Source { THREE: ThreeModule; camera: THREE.PerspectiveCamera; canvas: HTMLCanvasElement; walker: { x: number; z: number; moving: boolean }; read(): { y: number; walk: { scale: number } | null } }
 let source: Source | null = null
+const SCENERY_CARD = false
 function grab(canvas: HTMLCanvasElement): Source | null {
+  // Off until the host offers a read-only camera: borrowing it through setView would replace the campus and first-person views.
+  if (!SCENERY_CARD) return null
   if (source?.canvas === canvas) return source
   const taken: { src: Source | null } = { src: null }
   // The host runs the factory at once and takes no view from a null answer (the type asks for one only because first person returns one).

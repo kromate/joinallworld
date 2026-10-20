@@ -53,3 +53,15 @@
 .life-ui .buy-x svg,.life-ui .buy-pad svg.ui-glyph{width:18px;height:18px}
 .home-kitchen-caret{display:inline-block;transform:rotate(90deg);font-style:normal}.home-kitchen-caret.is-open{transform:rotate(-90deg)}
 .life-ui .home-kitchen-caret svg.ui-glyph{width:1em;height:1em;vertical-align:-.15em}
+/* Large screens: a wider catalogue with roomier cards and 13-14px text, so it does not read as a small box lost in the scene */
+@media(min-width:1200px){
+  /* the bottom stack is 640px wide; a wider panel overflows it evenly on both sides */
+  .buy-catalogue{width:min(860px,calc(100vw - 40px));max-width:none}
+  .life-ui .buy-card{flex-basis:140px;min-height:128px;font-size:13px;padding:9px 8px 10px;gap:3px}
+  .buy-card-top{font-size:12px}.buy-emoji{font-size:30px}.buy-need{font-size:12px}
+  .life-ui .buy-stored-actions button{font-size:12px}
+  .life-ui .buy-catalogue>header button{font-size:13px}.buy-chip{font-size:13px}
+  .life-ui .buy-tabs button{font-size:14px}
+  .buy-hint,.buy-why{font-size:13px}
+  .buy-place.is-placing{width:min(540px,calc(100vw - 40px));max-width:none}.buy-place header strong{font-size:15px}.buy-place header span{font-size:14px}
+}

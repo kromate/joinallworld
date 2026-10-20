@@ -6,6 +6,7 @@
 .houses-home :deep(.world-card.is-hero>.house-photo),.houses-home :deep(.world-card.is-hero>.world-house){width:calc(100% + 28px);max-width:none;margin:0 -14px;border-radius:0}
 .houses-home :deep(.world-card.is-hero>.world-house){aspect-ratio:9/5;object-fit:cover}
 .houses-home :deep(.world-card:not(.is-hero)){border:0;border-radius:0}
+.ph.is-wide .houses-home :deep(.world-card.is-hero>.house-photo),.ph.is-wide .houses-home :deep(.world-card.is-hero>.world-house){aspect-ratio:12/5;max-height:300px;object-fit:cover}
 .houses-acts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 14px 14px}
 .houses-act{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:66px;padding:10px 4px;border:0;border-radius:12px;background:var(--c-fill);color:var(--c-ink);font:650 13px var(--font);cursor:pointer}
 .houses-act.is-primary{background:var(--button-primary,var(--c-green-dark));color:#fff}

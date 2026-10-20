@@ -4,6 +4,9 @@
  * wide tier never imports this file):
  *
  *   RenderPass          the scene into a half-float buffer with 4x MSAA (hardware edges, no extra code)
+ *   EffectPass          a clamp: a pixel that is not a number, infinite or absurdly bright becomes a sane value. Without it one
+ *                       bad pixel (a specular highlight that overflows half float at some camera angle) is spread by the bloom's
+ *                       mip chain over most of the screen, which turns white
  *   N8AOPostPass        ambient occlusion at half resolution in its "Performance" quality: contact shadows under eaves, cars, steps
  *   EffectPass          bloom (only what is brighter than the threshold, so only lamps and signs), tone mapping, the colour grade
  *                       (a 16^3 table made in code, grade.ts) and a gentle vignette, all in one shader
@@ -31,6 +34,8 @@ export interface PostLibs {
   EffectComposer: new (renderer: THREE.WebGLRenderer, options?: Record<string, unknown>) => Composer
   RenderPass: new (scene: THREE.Scene, camera: THREE.Camera) => PostPass
   EffectPass: new (camera: THREE.Camera, ...effects: unknown[]) => PostPass
+  Effect: new (name: string, fragmentShader: string, options?: Record<string, unknown>) => unknown
+  BlendFunction: { SRC: number }
   BloomEffect: new (options?: Record<string, unknown>) => unknown
   LUT3DEffect: new (lut: THREE.Texture, options?: Record<string, unknown>) => unknown
   VignetteEffect: new (options?: Record<string, unknown>) => unknown
@@ -108,11 +113,25 @@ function toneModeFor(THREE: ThreeModule, renderer: THREE.WebGLRenderer, modes: P
   return modes.NEUTRAL;
 }
 
+/** The brightest value a pixel may keep before the bloom: far above the threshold, far below half float's limit (65504). */
+export const CLAMP_MAX = 64;
+/**
+ * The clamp's shader. NaN and infinity are found from the bits (an exponent of all ones), not with isnan / isinf, which a
+ * fast-math compiler may remove; they become black. Everything else is held between 0 and CLAMP_MAX.
+ */
+export const CLAMP_SHADER = `
+bool bad(float v) { return (floatBitsToUint(v) & 0x7f800000u) == 0x7f800000u; }
+float fix(float v) { return bad(v) ? 0.0 : clamp(v, 0.0, ${CLAMP_MAX.toFixed(1)}); }
+void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor) {
+  outputColor = vec4(fix(inputColor.r), fix(inputColor.g), fix(inputColor.b), bad(inputColor.a) ? 1.0 : clamp(inputColor.a, 0.0, 1.0));
+}
+`;
+
 /** Fetch the libraries (a lazy chunk of its own). Named imports only. */
 export async function loadPostLibs(ao: boolean): Promise<PostLibs> {
   // Destructured in the `then` so the bundler can drop every other export of the library.
   const [pp, n8] = await Promise.all([
-    import('postprocessing').then(({ EffectComposer, RenderPass, EffectPass, BloomEffect, LUT3DEffect, VignetteEffect, ToneMappingEffect, ToneMappingMode }) => ({ EffectComposer, RenderPass, EffectPass, BloomEffect, LUT3DEffect, VignetteEffect, ToneMappingEffect, ToneMappingMode })),
+    import('postprocessing').then(({ EffectComposer, RenderPass, EffectPass, Effect, BlendFunction, BloomEffect, LUT3DEffect, VignetteEffect, ToneMappingEffect, ToneMappingMode }) => ({ EffectComposer, RenderPass, EffectPass, Effect, BlendFunction, BloomEffect, LUT3DEffect, VignetteEffect, ToneMappingEffect, ToneMappingMode })),
     // @ts-ignore n8ao ships no type declarations; what is used from it is described by PostLibs above.
     ao ? import('n8ao').then(({ N8AOPostPass }: { N8AOPostPass: PostLibs['N8AOPostPass'] }) => ({ N8AOPostPass })) : Promise.resolve(null),
   ]);
@@ -146,6 +165,8 @@ export function buildPost(THREE: ThreeModule, renderer: THREE.WebGLRenderer, lib
     ao.configuration.intensity = AO_SETTINGS.intensity;
     composer.addPass(ao);
   }
+  const clamp = new libs.EffectPass(camera, new libs.Effect('Clamp', CLAMP_SHADER, { blendFunction: libs.BlendFunction.SRC }));
+  composer.addPass(clamp);
   const bloom = new libs.BloomEffect({ luminanceThreshold: threshold, mipmapBlur: true, ...BLOOM_SETTINGS });
   const tone = new libs.ToneMappingEffect({ mode: toneModeFor(THREE, renderer, libs.ToneMappingMode) });
   const graded = new libs.LUT3DEffect(lut);
@@ -160,7 +181,7 @@ export function buildPost(THREE: ThreeModule, renderer: THREE.WebGLRenderer, lib
       // postprocessing's passes take the scene and camera as mainScene / mainCamera; n8ao's takes them as scene / camera.
       render.mainScene = view; render.mainCamera = eye;
       if (ao) { ao.scene = view; ao.camera = eye; }
-      grading.mainCamera = eye;
+      clamp.mainCamera = eye; grading.mainCamera = eye;
       composer.render();
     },
     setSize(w, h, ratio) {

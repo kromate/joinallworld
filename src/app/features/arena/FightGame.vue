@@ -317,7 +317,7 @@ onBeforeUnmount(() => {
 @media (hover: hover) { .keys { display: block; } .fg-pad { height: 206px; } }
 /* Landscape: the arena takes the whole screen and the thumbs sit on top of its lower corners. */
 @media (orientation: landscape) {
-  .fg-pad { position: absolute; left: 0; right: 0; bottom: 0; height: 176px; pointer-events: none; }
+  .fg-pad { position: absolute; left: 0; right: 0; bottom: 0; max-width: 1400px; margin-inline: auto; height: 176px; pointer-events: none; }
   .fg-pad .fg-btn { pointer-events: auto; opacity: .7; } .keys { display: none; }
 }
 @media (orientation: landscape) and (max-height: 500px) { .fg-pad { height: 150px; } .fg-btn.mv { width: 64px; height: 64px; } .fg-btn.punch { width: 76px; height: 76px; } .fg-btn.kick { right: 82px; width: 62px; height: 62px; } .fg-btn.block { bottom: 78px; width: 58px; height: 58px; } .fg-btn.jump { right: 70px; bottom: 68px; width: 56px; height: 56px; } .fg-right { height: 146px; width: 150px; } }

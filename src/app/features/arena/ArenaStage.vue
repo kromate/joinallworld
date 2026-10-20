@@ -129,6 +129,8 @@ html.arena-open, html.arena-open body { overflow: hidden; }
 /* Not playing (lobby, result): the arena is the top part and the cards sit below, scrolling. */
 .as-body :deep(.arena-fill) { flex: none; height: min(46vh, 100vw); min-height: 0; }
 .as-body > :deep(*) { box-sizing: border-box; }
+/* A wide window: the lobby and the result are one centred column, not a strip across the screen with the cards lost under it; the bar's buttons stay with it. */
+@media (min-width: 900px) { .as-body:not(.is-play) > :deep(*) { width: 100%; max-width: 1200px; align-self: center; } .as-bar { max-width: 1700px; margin-inline: auto; } }
 .as-body :deep(.rp), .as-body :deep([class$="-card"]) { margin: 0 10px; }
 /* Playing: the arena's holder (a game's `*-stage`) takes all of it, whatever height cap the game's own styles put on it in the lobby. */
 .as-body.is-play :deep(.arena-fill > [class$="-stage"]) { flex: 1 1 auto; height: 100%; max-height: none !important; min-height: 0 !important; border-radius: 0; }

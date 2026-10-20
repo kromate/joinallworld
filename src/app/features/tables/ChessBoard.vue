@@ -314,8 +314,8 @@ onBeforeUnmount(() => clearTimeout(disarm))
 
 <style scoped>
 .cb { container-type: inline-size; display: grid; gap: var(--s-3); margin: 0 0 var(--s-3); min-width: 0; }
-.cb-main { display: grid; gap: var(--s-2); width: 100%; max-width: 520px; min-width: 0; }
-.cb-side { display: grid; gap: var(--s-2); min-width: 0; align-content: start; }
+.cb-main { display: grid; gap: var(--s-2); width: 100%; max-width: 520px; min-width: 0; justify-self: center; }
+.cb-side { display: grid; gap: var(--s-2); width: 100%; max-width: 520px; min-width: 0; align-content: start; justify-self: center; }
 @container (min-width: 760px) {
   .cb { grid-template-columns: minmax(0, 520px) minmax(220px, 1fr); align-items: start; }
   .cb-moves { max-height: 320px; }

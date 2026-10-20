@@ -53,7 +53,8 @@ async function save(body: object): Promise<void> {
 .birthday { display: grid; gap: 8px; justify-items: start; margin: 0; padding: 14px; border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
 .birthday > * { margin: 0; max-width: 100%; }
 .birthday .social-note { margin: 0 !important; }
-.birthday .social-note .social-btn { margin: 6px 6px 0 0; }
+.birthday .social-note { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.birthday .social-note .social-btn { margin: 0; }
 .birthday-hello { margin: 0 0 6px; font-weight: 600; }
 .birthday-form { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .birthday-share { flex-basis: 100%; font-size: 13px; }

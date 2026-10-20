@@ -30,5 +30,12 @@ body.is-lite .life-ui .life-bottom{z-index:6;left:0;right:0;width:min(720px,calc
   body.is-lite .life-ui .life-bottom{left:auto;right:16px;width:440px}
   .lite-main{margin-bottom:0;padding-right:476px}
 }
+/* Wide screens: header, page, side strips and tab bar share one centred 1184px stage (720px page, 24px gap, 440px strip column), so nothing is pinned to a far corner. */
+@media(min-width:1280px){
+  .lite-top{padding-inline:max(16px,calc((100% - 1184px)/2))}
+  .lite-main{padding-right:484px}
+  .lite-tabs{padding-inline:max(0px,calc((100% - 1184px)/2))}
+  body.is-lite .life-ui .life-bottom{left:calc(50% + 152px);right:auto}
+}
 /* The Chats button floats at the bottom of its list: leave room so the last row is not under it. */
 .lite-main{padding-bottom:80px}

@@ -5,14 +5,15 @@
 // only the public player id and is shown as text to copy, never as markup from another player.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, defineAsyncComponent, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { inviteIdFrom } from '../../../game/social-model.ts'
 import type { HouseView } from '../../../types/social.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import GateNote from './GateNote.vue'
-const GuestsStrip = defineAsyncComponent(() => import('../visit/GuestsStrip.vue'))
-const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
+import { lazyQuiet } from '../../state/lazy.ts'
+const GuestsStrip = lazyQuiet(() => import('../visit/GuestsStrip.vue'))
+const VisitButton = lazyQuiet(() => import('../visit/VisitButton.vue'))
 import PlayerAvatar from './PlayerAvatar.vue'
 import { HOST_STATUS, homeLine, knockReason, knockView, roomLine, statusText } from './inviteModel.ts'
 import { inviteUi } from './socialState.ts'

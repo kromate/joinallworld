@@ -53,12 +53,14 @@ export type SavedPill =
   | { kind: 'status'; tone: 'ok' | 'saving' | 'unsaved'; icon: string; text: string; title: string }
   | { kind: 'button'; wait: boolean; icon: string; text: string; title: string; gate?: 'new' | 'expired' }
 /** The saved indicator in the top bar: saved, saving, not saving, or why the game is not connected (then it is a button). */
-export function savedPill(view: Pick<PanelView, 'connected' | 'link' | 'net' | 'storage'>, saving: number): SavedPill {
+export function savedPill(view: Pick<PanelView, 'connected' | 'link' | 'net' | 'storage' | 'reconnecting'>, saving: number): SavedPill {
   const net = view.net?.text ?? '', link = linkWording(view)
   if (link) {
     if (link.tone === 'wait' && !link.gate) return { kind: 'status', tone: 'saving', icon: link.icon, text: link.pill, title: net }
     return { kind: 'button', wait: link.tone === 'wait', icon: link.icon, text: link.pill, title: net, gate: link.gate }
   }
+  // Requests are failing but not for long enough to call it down: a quiet note, nothing greyed out.
+  if (view.reconnecting) return { kind: 'status', tone: 'saving', icon: 'refresh', text: 'Reconnecting…', title: 'Slow connection. You can keep playing.' }
   if (view.storage) return { kind: 'status', tone: 'unsaved', icon: 'error', text: 'Not saving', title: view.storage.reason }
   if (saving > 0) return { kind: 'status', tone: 'saving', icon: 'refresh', text: 'Saving…', title: 'Sending your action to the server' }
   return { kind: 'status', tone: 'ok', icon: 'good', text: 'Saved', title: net || 'Progress saved on the server' }

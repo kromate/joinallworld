@@ -2,17 +2,18 @@
 // What is happening right now: the running activity (or trip) with its bar, the time left, and
 // Cancel with the real cancel rule. The time is the server's: it moves when a state arrives
 // (about once a second while something runs), never on a timer of its own.
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { cityName } from '../../../game/cities/registry.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { money } from '../../ui/format.ts'
 import { isTrip } from './tripModel.ts'
 import type { ActionPayload } from '../../../types/actions.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 // Paying to arrive now ('travel.skip') is fetched when a trip that offers it is running, not with the first screen.
-const SkipTrip = defineAsyncComponent(() => import('../travel/SkipTrip.vue'))
-const TeachingShift = defineAsyncComponent(() => import('../jobs/TeachingShift.vue'))
+const SkipTrip = lazyComponent(() => import('../travel/SkipTrip.vue'))
+const TeachingShift = lazyComponent(() => import('../jobs/TeachingShift.vue'))
 const { game, command } = useApp()
 const state = game.state
 const view = game.view

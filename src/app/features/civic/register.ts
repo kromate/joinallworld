@@ -7,53 +7,54 @@
 // The two HUD chips are listed apart: src/app/features/hud/HudSidebar.vue draws only existing
 // panels as chips today, so a Vue chip registered before it is taught to draw one would vanish
 // from the HUD. Register CIVIC_PANELS once it does (or CIVIC_APPS alone until then).
-import { defineAsyncComponent } from 'vue'
+
 import { civicTitle, civicOffice } from '../../../game/cities/terminology.ts'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { civicNews } from './civicBadges.ts'
 import { bodyLoader } from '../../state/panelBody.ts'
+import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
 
 export const governor = definePanel({
   id: 'governor', title: 'Chairman', titleFor: state => civicTitle(state.estate.city), placement: 'phone', order: 40, live: false, group: 'city',
   badge: (state, view) => civicNews(view, state),
-  component: defineAsyncComponent(bodyLoader('civic/GovernorApp')),
+  component: lazyComponent(bodyLoader('civic/GovernorApp')),
 })
 export const stateHouse = definePanel({
   id: 'state-house', title: 'State House', titleFor: state => civicOffice(state.estate.city), placement: 'modal',
-  component: defineAsyncComponent(bodyLoader('civic/StateHouseSheet')),
+  component: lazyComponent(bodyLoader('civic/StateHouseSheet')),
 })
 export const neighbours = definePanel({
   id: 'neighbours', title: 'Neighbours', placement: 'phone', order: 42, group: 'city',
-  component: defineAsyncComponent(bodyLoader('civic/NeighboursApp')),
+  component: lazyComponent(bodyLoader('civic/NeighboursApp')),
 })
 export const ads = definePanel({
   id: 'ads', title: 'Billboards', placement: 'phone', order: 44, live: false, group: 'city',
-  component: defineAsyncComponent(bodyLoader('civic/AdsApp')),
+  component: lazyComponent(bodyLoader('civic/AdsApp')),
 })
 export const huntSheet = definePanel({
   id: 'hunt-sheet', title: 'Gem hunt', placement: 'phone', order: 45, group: 'city',
   /** All gems found and the prize not collected yet. */
   badge: (_state, view) => (view.civic?.hunt?.canClaim ? 1 : 0),
-  component: defineAsyncComponent(bodyLoader('civic/HuntSheet')),
+  component: lazyComponent(bodyLoader('civic/HuntSheet')),
 })
 export const radio = definePanel({
   id: 'radio', title: 'Radio', placement: 'phone', order: 46, live: false, group: 'city',
-  component: defineAsyncComponent(bodyLoader('civic/RadioApp')),
+  component: lazyComponent(bodyLoader('civic/RadioApp')),
 })
 export const richlist = definePanel({
   id: 'richlist', title: 'Rich List', placement: 'phone', order: 48, group: 'money',
-  component: defineAsyncComponent(bodyLoader('civic/RichListApp')),
+  component: lazyComponent(bodyLoader('civic/RichListApp')),
 })
 
 /** HUD chips (placement 'hud'). */
 export const huntChip = definePanel({
   id: 'hunt', title: 'Daily hunt', icon: 'hunt', placement: 'hud', order: 20,
-  component: defineAsyncComponent(() => import('./HuntChip.vue')),
+  component: lazyQuiet(() => import('./HuntChip.vue')),
 })
 export const radioBanner = definePanel({
   id: 'radio-banner', title: 'Club radio', icon: 'radio', placement: 'hud', order: 30,
-  component: defineAsyncComponent(() => import('./RadioBanner.vue')),
+  component: lazyQuiet(() => import('./RadioBanner.vue')),
 })
 
 export const CIVIC_APPS: readonly VuePanel[] = [governor, stateHouse, neighbours, ads, huntSheet, radio, richlist]

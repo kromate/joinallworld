@@ -6,7 +6,7 @@
 // Every disabled control says why. All names are rendered as text.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, defineAsyncComponent, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { roomSummary, presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { PeopleListing } from '../../../types/social.ts'
@@ -21,10 +21,11 @@ import AiTag from './AiTag.vue'
 import ResidentBadge from '../locate/ResidentBadge.vue'
 import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
+import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
 // The founder's view of every player: its own chunk, read only when it is shown.
-const PlayersList = defineAsyncComponent(() => import('./PlayersList.vue'))
+const PlayersList = lazyComponent(() => import('./PlayersList.vue'))
 // Close friends (docs/SOCIAL-GLUE.md): who sees where you are in the game, and where the ones who share with you are now.
-const GluePart = defineAsyncComponent(() => import('../glue/GluePart.vue'))
+const GluePart = lazyQuiet(() => import('../glue/GluePart.vue'))
 import { closenessText, presenceClass, STALE_MS, staleSteps, venueNameOf } from './socialWords.ts'
 import { peopleUi } from './socialState.ts'
 import { useSocialScreen } from './useSocialScreen.ts'

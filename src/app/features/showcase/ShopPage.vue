@@ -2,7 +2,7 @@
 // One shop: the sign, what it does, photos, services with the seller's own prices, hours, who runs it, and the two ways out:
 // Chat and Pay. Neither link is on this page. Pressing a button asks the server for it (a signed-in adult only), and the
 // answer goes to the "You are leaving Allworld" sheet, which names the site and the address before anything opens.
-import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { TRUST_REPORT_REASONS, TRUST_REPORT_WORDS } from '../../../game/trust/index.ts'
 import type { OutboundLink, TrustReportReason } from '../../../game/trust/index.ts'
@@ -12,7 +12,8 @@ import GameIcon from '../../ui/GameIcon.vue'
 import SkeletonRows from '../../ui/SkeletonRows.vue'
 import ShopFront from './ShopFront.vue'
 import { adultConsentBody, wordsFor } from './showcaseModel.ts'
-const LinkInterstitial = defineAsyncComponent(() => import('../trust/LinkInterstitial.vue'))
+import { lazyComponent } from '../../state/lazy.ts'
+const LinkInterstitial = lazyComponent(() => import('../trust/LinkInterstitial.vue'))
 
 const props = defineProps<{ id: string }>()
 const emit = defineEmits<{ back: [] }>()

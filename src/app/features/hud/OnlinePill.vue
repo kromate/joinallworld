@@ -6,13 +6,14 @@
 // when nobody else at all is online it says something true and warmer instead of a bare "1" ("You're first here", or "N played
 // today"). The dot is green while the numbers are recent and amber when they are not. A number that
 // changes steps to its new value in a few timed steps (none under reduced motion); there is no animation loop.
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { onCallFrame, onSocketOpen, sendFrame, social } from '../social/useSocial.ts'
 import { aloneLine, easeSteps, onlineView, pulseAria, pulseTitle, pulseTone, compactCount } from './onlinePillModel.ts'
 import { usePulse } from './usePulse.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 // The sheet is its own chunk: fetched the first time the pill is pressed.
-const OnlineSheet = defineAsyncComponent(() => import('./OnlineSheet.vue'))
+const OnlineSheet = lazyComponent(() => import('./OnlineSheet.vue'))
 
 const { game, api } = useApp()
 const pulse = usePulse((path) => api.fetchJson(path))

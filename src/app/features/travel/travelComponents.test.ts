@@ -32,7 +32,7 @@ const travelState = async (): Promise<TravelStateModule> => ({ ...(await load<Tr
 /** Run `body` while the fake server is unreachable, then reconnect. */
 async function whileOffline(body: () => Promise<void>): Promise<void> {
   server.fault.offline = true
-  await app.game.refresh()
+  for (let i = 0; i < 3; i++) await app.game.refresh() // three failures in a row: the grace is over
   try { assert.equal(app.game.connected.value, false); await body() } finally {
     server.fault.offline = false
     assert.equal(await app.game.connect(), true)

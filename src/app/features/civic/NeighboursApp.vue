@@ -2,7 +2,7 @@
 // Neighbours: the directory of player homes, grouped by district, with truthful presence.
 // Counts and the online flag come from the server (GET /api/civic/neighbours). "Say hi" opens that
 // player's card (the social 'person' panel): chat, add friend, knock at their house.
-import { computed, defineAsyncComponent } from 'vue'
+import { computed } from 'vue'
 import ResidentBadge from '../locate/ResidentBadge.vue'
 import { useConfirmedOnly } from '../locate/confirmedFilter.ts'
 import { useApp } from '../../state/app.ts'
@@ -16,8 +16,9 @@ import CivicAvatar from './CivicAvatar.vue'
 import CivicStale from './CivicStale.vue'
 import CivicStatus from './CivicStatus.vue'
 import { count, hoodKey, hoodPath } from './civicModel.ts'
+import { lazyQuiet } from '../../state/lazy.ts'
 // The rest of a district, read a page at a time: its own chunk, fetched when the first district with more homes is drawn.
-const MoreRows = defineAsyncComponent(() => import('./MoreRows.vue'))
+const MoreRows = lazyQuiet(() => import('./MoreRows.vue'))
 import { useCivic, useLoaded, useOffline } from './useCivic.ts'
 
 defineProps<{ params?: unknown }>()

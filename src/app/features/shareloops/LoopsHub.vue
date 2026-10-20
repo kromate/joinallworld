@@ -2,7 +2,7 @@
 // The "Share" tab of My Life (docs/SHARE-LOOPS.md): the things people screenshot and post, each made on this device from the player's own
 // records. Where I grew up (the street video), What did you get (the start card), the passport (a page per continent), the month (Wrapped)
 // and street fame (this week's board in the player's city, and the badge). Every card opens in LoopCardSheet, ready for the share sheet.
-import { computed, defineAsyncComponent, onMounted, ref, shallowRef } from 'vue'
+import { computed, onMounted, ref, shallowRef } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import LoopCardSheet from './LoopCardSheet.vue'
@@ -13,9 +13,10 @@ import type { LoopShare } from './loopShare.ts'
 import { fameCard, fameText, monthBefore, monthTitle, pageProgress, passportPages, passportText, stampDate, stampTone, wrappedCard, wrappedText } from './loopCards.ts'
 import type { PassportPage } from './loopCards.ts'
 import type { FameView, PassportView, WrappedView } from '../../../types/shareloops.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
-const StreetVideo = defineAsyncComponent(() => import('./StreetVideo.vue'))
-const StartCard = defineAsyncComponent(() => import('./StartCard.vue'))
+const StreetVideo = lazyComponent(() => import('./StreetVideo.vue'))
+const StartCard = lazyComponent(() => import('./StartCard.vue'))
 const { game } = useApp()
 const passport = shallowRef<PassportView | null>(null), wrapped = shallowRef<WrappedView | null>(null), fame = shallowRef<FameView | null>(null)
 const month = ref(''), open = ref<'street' | 'start' | null>(null)

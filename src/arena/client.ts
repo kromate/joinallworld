@@ -12,7 +12,7 @@
  * game must send inputs when they CHANGE, never per frame. `InputPipe` below coalesces them: at most one frame per
  * `minGapMs`, presses are never lost (they are OR-ed into the next frame), and a hard ceiling keeps a long burst under the limit.
  */
-import { reconnectDelay, STABLE_CONNECTION_MS } from '../reconnect.ts'
+import { onWake, reconnectDelay, STABLE_CONNECTION_MS } from '../reconnect.ts'
 import type { ArenaServerFrame, ArenaStateFrame } from '../types/arena.ts'
 
 /** The refusals of stakes and backing (src/arena/stakes.ts, the table stakes' own codes): said to the player like the room's own. */
@@ -69,6 +69,8 @@ export function createArenaClient(listener: ArenaListener): ArenaClient {
     }
     socket.onerror = () => {}
   }
+  // The network is back, or the tab is shown again: connect now instead of waiting out the pause (or the give-up).
+  const stopWake = onWake(() => { if (!ws && !done) { attempts = 0; if (timer) { clearTimeout(timer); timer = null } connect() } })
   return {
     connect,
     status: () => status,
@@ -79,6 +81,7 @@ export function createArenaClient(listener: ArenaListener): ArenaClient {
     },
     close() {
       done = true
+      stopWake()
       if (timer) { clearTimeout(timer); timer = null }
       const old = ws; ws = null
       try { old?.close() } catch { /* already closed */ }

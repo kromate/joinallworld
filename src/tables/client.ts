@@ -10,7 +10,7 @@
  * seat is kept on the server, not here. No timer repeats while nothing is happening.
  */
 import type { PanelApi } from '../app/types/panel.ts';
-import { reconnectDelay, STABLE_CONNECTION_MS } from '../reconnect.ts';
+import { onWake, reconnectDelay, STABLE_CONNECTION_MS } from '../reconnect.ts';
 import type { TableGameId, TableOptionValue, TableRating, TableServerFrame, TableStateFrame, TableSummary, TablesClaimResult } from '../types/growth.ts';
 
 /** A refusal frame: only `code` and `reason` are read here, the socket also carries other modules' errors. */
@@ -136,6 +136,9 @@ try {
     try { old?.close(); } catch { /* already closed */ }
   });
 } catch { /* not a browser */ }
+
+// The network is back, or the tab is shown again: a table on screen reconnects now instead of waiting out the pause.
+onWake(() => { if (!ws && T.tableId && T.api) reconnect(); });
 
 /** Called from the Tables app's bind(): idempotent. */
 export function start(api: PanelApi): void {

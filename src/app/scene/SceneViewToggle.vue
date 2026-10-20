@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
 import { useApp } from '../state/app.ts'
 import { onViewPreferencesChange, readViewPreferences, setViewPreferences } from '../../scene/first-person/preferences.ts'
+import { lazyQuiet } from '../state/lazy.ts'
 
-const FirstPersonJourney = defineAsyncComponent(() => import('./FirstPersonJourney.vue'))
+const FirstPersonJourney = lazyQuiet(() => import('./FirstPersonJourney.vue'))
 
 const props = defineProps<{ hostRevision: number }>()
 const { scene, shell, game } = useApp()

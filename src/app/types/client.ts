@@ -103,6 +103,8 @@ export interface GameClient {
   retryAfter: number | null
   storage: StorageProblem | null
   readonly online: boolean
+  /** Requests are failing but not for long enough to call the server unreachable: still playable. */
+  readonly reconnecting: boolean
   readonly pendingAction: PendingActionIntent | null
   readonly snapshotPhase: SnapshotPhase
   readonly interactiveTeachingStarts: boolean

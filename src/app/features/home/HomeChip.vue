@@ -6,7 +6,7 @@
 // Buy mode itself — the catalogue, the placement panel and the selected-object panel — is BuyMode.vue,
 // fetched the first time Buy is opened. What the two share is homeState.ts; the conversation with
 // the scene is homeScene.ts, which this chip starts because it is in the HUD from the first paint.
-import { computed, defineAsyncComponent } from 'vue'
+import { computed } from 'vue'
 import { isDeparting } from '../../../life.ts'
 import { KINDS } from '../../../game/content/furniture.ts'
 import { houseOf } from './houseOf.ts'
@@ -18,8 +18,9 @@ import { defOf, isBuying, objectOf, roomStatus } from './buyModel.ts'
 import { retryRoom, startHome } from './homeScene.ts'
 import { H, kitchenOpen, scene } from './homeState.ts'
 import { social } from '../social/useSocial.ts'
+import { lazyQuiet } from '../../state/lazy.ts'
 
-const StoryChip = defineAsyncComponent(() => import('../story/StoryChip.vue'))
+const StoryChip = lazyQuiet(() => import('../story/StoryChip.vue'))
 
 const { game, shell, command, scene: world } = useApp()
 const state = game.state

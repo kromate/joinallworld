@@ -3,13 +3,14 @@
 // own button. Drop it into App.vue once. It shows the panel when the controller is running, and what
 // went wrong (with the two ways out) while the community code did not load or did not start.
 // Hidden while closed; the store keeps it closed at home.
-import { defineAsyncComponent } from 'vue'
+
 import { useCommunity } from './communityStore.ts'
 import type { CommunityStore } from './communityStore.ts'
+import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
 // The panel is drawn only once the community code has loaded (long after the first paint), so its own code is fetched with it.
-const CommunityPanel = defineAsyncComponent(() => import('./CommunityPanel.vue'))
+const CommunityPanel = lazyComponent(() => import('./CommunityPanel.vue'))
 // Five minutes together in voice: the friendship card (only while the player is in voice; its code is fetched then).
-const VoiceFriendOffer = defineAsyncComponent(() => import('./VoiceFriendOffer.vue'))
+const VoiceFriendOffer = lazyQuiet(() => import('./VoiceFriendOffer.vue'))
 
 const props = defineProps<{ store?: CommunityStore }>()
 const store = props.store ?? useCommunity()

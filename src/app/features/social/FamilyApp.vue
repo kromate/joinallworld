@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import type { FamilyId } from '../../../types/life.ts'
 import type { PlayerRef } from '../../../types/protocol.ts'
 import BaseButton from '../../ui/BaseButton.vue'
@@ -11,9 +11,10 @@ import CallButton from './CallButton.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import { useSocialScreen } from './useSocialScreen.ts'
 import { useFamily } from './useFamily.ts'
-const PersonCallButton = defineAsyncComponent(() => import('../calls/PersonCallButton.vue'))
+import { lazyQuiet } from '../../state/lazy.ts'
+const PersonCallButton = lazyQuiet(() => import('../calls/PersonCallButton.vue'))
 // Marriage between two adult players and a shared home (docs/SOCIAL-GLUE.md "Family life"): its own chunk.
-const GluePart = defineAsyncComponent(() => import('../glue/GluePart.vue'))
+const GluePart = lazyQuiet(() => import('../glue/GluePart.vue'))
 defineProps<{ params?: unknown }>()
 const { view, client, state, shell, cannot } = useSocialScreen()
 const { data, error, loading, pending, canRetry, load, send, retrySend } = useFamily(client)

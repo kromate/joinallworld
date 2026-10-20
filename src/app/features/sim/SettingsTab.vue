@@ -8,7 +8,7 @@
 // The account section (features/account/AccountSettings.vue) draws itself only when accounts are
 // configured on this server. A guest is still told what a device session is, so nobody mistakes it
 // for a password-protected account; that explanation is left out once the device is signed in.
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 // The wallpaper tiles are drawn by the phone's stylesheet; the phone's code may not have been fetched yet.
 import '../../../ui/phone/phone.css'
 import { useApp } from '../../state/app.ts'
@@ -21,12 +21,13 @@ import GameIcon from '../../ui/GameIcon.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
 import DataLightSection from './DataLightSection.vue'
 import CallSettings from '../calls/CallSettings.vue'
-const VisitDoor = defineAsyncComponent(() => import('../visit/VisitDoor.vue'))
+import { lazyComponent } from '../../state/lazy.ts'
+const VisitDoor = lazyComponent(() => import('../visit/VisitDoor.vue'))
 // What AI characters remember about the person, with see / delete / turn off (lazy: its own chunk).
-const AgentMemory = defineAsyncComponent(() => import('../agents/AgentMemory.vue'))
+const AgentMemory = lazyComponent(() => import('../agents/AgentMemory.vue'))
 import AccountSettings from '../account/AccountSettings.vue'
 // A web assistant (ChatGPT, Claude) asking to play for the person: shown only while this tab holds its sign-in request (features/agents/oauthEntry.ts).
-const OAuthApproval = defineAsyncComponent(() => import('../agents/OAuthApproval.vue'))
+const OAuthApproval = lazyComponent(() => import('../agents/OAuthApproval.vue'))
 const oauthWaiting = ref((() => { try { return sessionStorage.getItem('jaw:oauth-request') !== null } catch { return false } })())
 import ResidenceCard from '../locate/ResidenceCard.vue'
 import { useAccount } from '../account/useAccount.ts'

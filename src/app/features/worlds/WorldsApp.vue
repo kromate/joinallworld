@@ -3,14 +3,15 @@
 // from a starter: empty, a hangout, a treasure hunt, a race, an obstacle course, an island), walks into it in 3D
 // (src/app/features/spaces/WorldScreen.vue) to fill it and give it a script, sends friends its link, lets friends build with them, and
 // browses and likes the worlds others opened. The 3D screen is fetched only when a world is entered.
-import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import '../../../ui/panels/worlds.css'
 import { useApp } from '../../state/app.ts'
 import { track } from '../world/worldModel.ts'
 import { liteGames, myFriends, worldBuilders, worldCoverUrl, worldCreate, worldDelete, worldLike, worldUpdate, worldsList, type WorldCard } from '../spaces/spacesClient.ts'
 import { cardLine, emptyForm, formOf, groundChoices, groundForTemplate, groundTint, likeLabel, makeWhy, openChoices, sizeChoices, skyChoices, skyTint, templateChoices, worldUrl, WORLDS, type WorldForm } from './worldsModel.ts'
-const WorldScreen = defineAsyncComponent(() => import('../spaces/WorldScreen.vue'))
-const PhotoWorldSheet = defineAsyncComponent(() => import('./PhotoWorldSheet.vue'))
+import { lazyComponent } from '../../state/lazy.ts'
+const WorldScreen = lazyComponent(() => import('../spaces/WorldScreen.vue'))
+const PhotoWorldSheet = lazyComponent(() => import('./PhotoWorldSheet.vue'))
 
 type Tab = 'new' | 'popular' | 'friends'
 const props = defineProps<{ params?: unknown }>()

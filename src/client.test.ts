@@ -4,7 +4,7 @@ await Promise.all(['lagos', 'ibadan'].map(preloadCityContent));
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createClient, outgoing, TEXT, STORAGE_KEY, roomJoinNeeded } from './client.ts';
+import { createClient, outgoing, TEXT, STORAGE_KEY, roomJoinNeeded, graceOver, GRACE_FAILURES, GRACE_MS, REQUEST_TIMEOUT_MS } from './client.ts';
 import { dispatch } from './life.ts';
 import { START_HOMES, TRAITS, DREAMS } from './game/content/traits.ts';
 import { createLife } from './life.ts';
@@ -541,10 +541,16 @@ test('connection loss mid-session pauses changes with the recovery text and keep
   const h = harness();
   await h.client.connect();
   h.setUp(false);
+  // The first failures are a grace: still connected and playable, only a quiet "Reconnecting…".
   const result = await h.client.command('travel', { id: 'library', mode: 'cab' });
   assert.equal(result.ok, false); assert.equal(result.reason, TEXT.connectionLost);
+  assert.deepEqual(h.statuses.at(-1), ['Reconnecting…', false]);
+  assert.equal(h.client.online, true); assert.equal(h.client.reconnecting, true); assert.equal(h.client.link, 'online');
+  await h.client.command('travel', { id: 'library', mode: 'cab' }); assert.equal(h.client.online, true);
+  // The third failure in a row is the real thing: read-only, with the recovery text.
+  await h.client.command('travel', { id: 'library', mode: 'cab' });
   assert.deepEqual(h.statuses.at(-1), ['Connection lost. Reconnect to check your saved progress.', true]);
-  assert.equal(h.client.online, false); assert.equal(h.client.state.cash, 5000);
+  assert.equal(h.client.online, false); assert.equal(h.client.reconnecting, false); assert.equal(h.client.state.cash, 5000);
   const sent = h.calls.length;
   assert.equal((await h.client.command('cancel')).code, 'offline'); assert.equal(h.calls.length, sent);
   h.setUp(true);
@@ -695,6 +701,8 @@ test('client.link says why the game is not playable: expired, new, offline and u
   assert.equal(await client.connect(), true); assert.equal(client.link, 'online');
   serverUp = false;
   assert.equal((await client.command('cancel')).ok, false);
+  assert.equal(client.link, 'online', 'one failed request is only a grace, not an outage');
+  await client.command('cancel'); await client.command('cancel');
   assert.equal(client.link, 'unreachable', 'the device is online, the server did not answer');
   deviceOnline = false;
   assert.equal(await client.connect(), false);
@@ -822,4 +830,42 @@ test('a new start refused for too many new players from one network address is r
   const returning = createClient({ fetch: async () => limited, storage: { getItem: () => JSON.stringify({ identity: { name: 'Ada' }, cityId: 'lagos', state: {} }), setItem() {} }, setTimeout: () => 0, clearTimeout: () => {} });
   assert.equal(await returning.connect(), false);
   assert.deepEqual([returning.refusal, returning.retryAfter], [null, null]);
+});
+
+test('grace before "unreachable": 3 failures in a row, or 2 over 10 s; any answer starts the count again', async () => {
+  assert.equal(graceOver(1, 0), false); assert.equal(graceOver(1, 60000), false, 'one failure is never enough');
+  assert.equal(graceOver(2, 9999), false); assert.equal(graceOver(2, GRACE_MS), true); assert.equal(graceOver(GRACE_FAILURES, 0), true);
+  let clock = 0, up = false;
+  const life = createLife({ name: 'Ada' }), timers: { run: () => void }[] = [];
+  const client = createClient({ now: () => clock, setTimeout: (run: () => void) => { timers.push({ run }); return timers.length; }, clearTimeout: () => {},
+    storage: { getItem: () => null, setItem() {} },
+    fetch: async (path: string) => {
+      if (!up && path.startsWith('/api/life')) throw new TypeError('fetch failed');
+      return path === '/api/session' ? json(200, { session: { id: 'p1', name: 'Ada' }, serverTime: 1000 }) : json(200, { state: life, rev: 1, serverTime: 1000 });
+    } });
+  up = true; assert.equal(await client.connect(), true); up = false;
+  // Slow failures: the second one comes 12 s after the first, which is enough.
+  assert.equal(await client.refresh(), false); assert.equal(client.online, true); assert.equal(client.reconnecting, true);
+  assert.ok(timers.length > 0, 'the next read is booked by itself');
+  clock = 12000; assert.equal(await client.refresh(), false);
+  assert.equal(client.online, false); assert.equal(client.link, 'unreachable'); assert.equal(client.reconnecting, false);
+  // Back up: connecting works again, and a single failure afterwards is a grace again.
+  up = true; assert.equal(await client.connect(), true); up = false;
+  assert.equal(await client.refresh(), false); assert.equal(client.online, true); assert.equal(client.reconnecting, true);
+  up = true; assert.equal(await client.refresh(), true); assert.equal(client.reconnecting, false, 'an answer ends the grace');
+  up = false; await client.refresh(); await client.refresh(); assert.equal(client.online, true, 'the earlier failure no longer counts');
+});
+
+test('a device with no network at all is offline at once, with no grace', async () => {
+  let deviceOnline = true;
+  const life = createLife({ name: 'Ada' });
+  const client = createClient({ now: () => 0, setTimeout: () => 0, clearTimeout: () => {}, storage: { getItem: () => null, setItem() {} }, isOnline: () => deviceOnline,
+    fetch: async (path: string) => { if (!deviceOnline) throw new TypeError('fetch failed'); return path === '/api/session' ? json(200, { session: { id: 'p1', name: 'Ada' }, serverTime: 1000 }) : json(200, { state: life, rev: 1, serverTime: 1000 }); } });
+  await client.connect(); deviceOnline = false;
+  await client.refresh();
+  assert.equal(client.link, 'offline'); assert.equal(client.online, false);
+});
+
+test('a slow answer is not a failure: the request timeout is generous', () => {
+  assert.ok(REQUEST_TIMEOUT_MS >= 20000);
 });

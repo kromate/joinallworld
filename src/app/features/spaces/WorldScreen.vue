@@ -2,7 +2,7 @@
 // Walk through a space in 3D (docs/SPACES-3D.md, phase 2): a home, a group room or a world (docs/WORLDS.md), its furniture and
 // the models players placed, in the realistic look. The owner (or a group member) can place their own models: choose one, tap a floor to put it there, turn
 // it, size it, lift it, and save. Full screen over the game; lazy (three and the engine load only when this opens).
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
 import '../../../ui/controls.css'
 import { useApp } from '../../state/app.ts'
 import { modelBytes, modelUpload, scriptSave, worldCoverUpload, worldRead, worldSave, type ModelView, type PlacedModel, type WorldView, type WorldWhere } from './spacesClient.ts'
@@ -12,8 +12,9 @@ import { neighbourPlots, neighboursFrom, pagesFor } from './streetModel.ts'
 import { unpackStyle } from '../../../scene/house-style.ts'
 import { PROPS, PROP_IDS, PROP_OWNER, propModel, propOf, propView, type PropDef, type PropId } from '../../../spaces/props.ts'
 import { embedUrl, screenPosition, youtubeId, type ScreenState } from '../../../spaces/screen.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 // A world's lite game (docs/WORLDS.md phase 3): the arena's own room, fetched only when someone presses Play.
-const LiteRoom = defineAsyncComponent(() => import('../arena/LiteRoom.vue'))
+const LiteRoom = lazyComponent(() => import('../arena/LiteRoom.vue'))
 import { checkGlb, GLB_LIMITS } from '../../../spaces/glb.ts'
 import { scriptNames, SCRIPT, TEMPLATES } from '../../../spaces/script.ts'
 import type { Placement } from '../../../spaces/layout.ts'
@@ -25,7 +26,7 @@ import type { Together } from '../../../spaces/world/together.ts'
 /** `place`: a model to put down in front of the player as soon as the space is built (just uploaded, or chosen in My 3D models). */
 const props = defineProps<{ where: WorldWhere; place?: ModelView | null }>()
 // A premiere in this world (docs/ALLWORLD-HOUSE.md): play the track on the screen, clip the moment. Loaded only in a world.
-const PremiereBar = defineAsyncComponent(() => import('../watch/PremiereBar.vue'))
+const PremiereBar = lazyComponent(() => import('../watch/PremiereBar.vue'))
 /** `saved`: a world's layout was saved and its cover drawn (the Worlds app refreshes its list). */
 const emit = defineEmits<{ close: []; saved: [] }>()
 const { game, shell } = useApp()

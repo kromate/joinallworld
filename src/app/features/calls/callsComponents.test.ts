@@ -213,7 +213,7 @@ test('the call screens respect reduced motion and stay out of the entry bundle: 
   const css = await readFile(new URL('./calls.css', import.meta.url), 'utf8')
   assert.match(css, /prefers-reduced-motion: reduce\) \{ \.call-ring, \.is-reconnecting \.call-dot \{ animation: none/)
   const host = await readFile(new URL('./CallsHost.vue', import.meta.url), 'utf8')
-  assert.match(host, /defineAsyncComponent\(\(\) => import\('\.\/CallsUi\.vue'\)\)/)
+  assert.match(host, /lazyComponent\(\(\) => import\('\.\/CallsUi\.vue'\)\)/)
   const loader = await readFile(new URL('./callsLoader.ts', import.meta.url), 'utf8')
   assert.match(loader, /import\('\.\.\/\.\.\/\.\.\/calls\.ts'\)/)
   assert.match(loader, /import\('\.\/callTones\.ts'\)/)

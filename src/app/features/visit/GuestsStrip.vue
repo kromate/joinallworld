@@ -3,13 +3,14 @@
 // someone who came through a link); a guest sees who else is inside and Leave. Names are text, never markup.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, defineAsyncComponent, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { useCall } from '../calls/useCall.ts'
 import PlayerAvatar from '../social/PlayerAvatar.vue'
 import { call, perform, social, cityId, sync } from '../social/useSocial.ts'
 import type { HouseView } from '../../../types/social.ts'
 import type { CaptureConsentResult } from '../../../types/visit.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 const props = defineProps<{ house: HouseView }>()
 const { shell } = useApp()
@@ -20,7 +21,7 @@ const friends = computed(() => new Set((social.me?.friends ?? []).map((item) => 
 const asked = computed(() => new Set((social.me?.requests.out ?? []).map((item) => item.id)))
 const others = computed(() => props.house.guests.filter((guest) => guest.id !== mine.value))
 // Walk through the host's home in 3D (docs/SPACES-3D.md): fetched only when opened.
-const WorldScreen = defineAsyncComponent(() => import('../spaces/WorldScreen.vue'))
+const WorldScreen = lazyComponent(() => import('../spaces/WorldScreen.vue'))
 const walking = ref(false)
 const captureBusy = ref(false)
 const captureError = ref('')

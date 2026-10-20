@@ -3,15 +3,16 @@
 // Both are for Nigeria only and each has an admin switch, so the app shows only what is open or already joined. Each season loads when its tab is opened.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, defineAsyncComponent, onMounted, ref, shallowRef } from 'vue'
+import { computed, onMounted, ref, shallowRef } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { SeasonsView } from '../../../types/minigames.ts'
 import { minigamesApi } from './minigamesApi.ts'
 import { tabsFor } from './seasonsModel.ts'
 import type { Tab } from './seasonsModel.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
-const NyscPanel = defineAsyncComponent(() => import('./NyscPanel.vue'))
-const JambPanel = defineAsyncComponent(() => import('./JambPanel.vue'))
+const NyscPanel = lazyComponent(() => import('./NyscPanel.vue'))
+const JambPanel = lazyComponent(() => import('./JambPanel.vue'))
 const { game } = useApp()
 const api = minigamesApi(game.fetchJson)
 const city = computed(() => game.view.value.cityId)

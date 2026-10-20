@@ -13,7 +13,7 @@
 // more): the server takes a fresh sign-in for those, never this browser's cookie alone.
 //
 // Deleting says exactly what goes and what stays.
-import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import PasswordField from './PasswordField.vue'
@@ -24,10 +24,11 @@ import { useAccount } from './useAccount.ts'
 import ComebackSwitches from '../growth/ComebackSwitches.vue'
 import { COMEBACK_ACCOUNT_SENTENCE } from '../growth/touchModel.ts'
 import { useGrowth } from '../growth/useGrowth.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 // The account's trust badge, phone and ID checks, and what it may post (lazy: its own chunk).
-const TrustCard = defineAsyncComponent(() => import('../trust/TrustCard.vue'))
+const TrustCard = lazyComponent(() => import('../trust/TrustCard.vue'))
 // AI agent keys and agent characters (lazy: its own chunk, fetched only when this section is shown to a signed-in player).
-const AgentAccess = defineAsyncComponent(() => import('../agents/AgentAccess.vue'))
+const AgentAccess = lazyComponent(() => import('../agents/AgentAccess.vue'))
 
 /** What is waiting for the person to prove who they are. */
 type Pending = { kind: 'everywhere' } | { kind: 'export' } | { kind: 'switch'; id: string; name: string } | { kind: 'delete' }

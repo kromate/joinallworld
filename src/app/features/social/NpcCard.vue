@@ -3,7 +3,7 @@
 // start with them (each takes a few seconds and can be cancelled).
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, defineAsyncComponent, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { contentFor, regularFor, regularsFor, venueFor } from '../../../game/cities/runtime.ts'
 import { cityRules } from '../../../game/cities/registry.ts'
@@ -19,8 +19,9 @@ import ClosenessMeter from './ClosenessMeter.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import { npcActionReason, npcMeterMax, npcReason } from './personModel.ts'
 import { closenessText, STRANGER_TEXT, tagLabel } from './socialWords.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
-const PublicProfile = defineAsyncComponent(() => import('./PublicProfile.vue'))
+const PublicProfile = lazyComponent(() => import('./PublicProfile.vue'))
 
 const props = defineProps<{ id: string }>()
 const { game, shell } = useApp()

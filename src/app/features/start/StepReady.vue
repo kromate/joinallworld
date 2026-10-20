@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Step 5, "Ready": the whole character on one card, each line with a way back to change it. The
 // buttons that start the life are the creator's footer. What comes right after is one social action, not a tour (features/firstminute).
-import { computed, defineAsyncComponent, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { DREAMS, TRAITS } from '../../../game/content/traits.ts'
 import { dreamFor } from '../../../game/cities/characterContent.ts'
 import { cachedCityContent } from '../../../game/cities/registry.ts'
@@ -9,9 +9,10 @@ import type { DreamId, Look, TraitId } from '../../../types/life.ts'
 import { lookSummary } from './lookModel.ts'
 import type { StepId } from './creatorModel.ts'
 import GameIcon from '../../ui/GameIcon.vue'
+import { lazyComponent } from '../../state/lazy.ts'
 
 // The share card is drawn from the stage and fetched only when asked for, so the first download does not grow. `canCard`: the stage is on screen to draw from.
-const CharacterCard = defineAsyncComponent(() => import('./CharacterCard.vue'))
+const CharacterCard = lazyComponent(() => import('./CharacterCard.vue'))
 const showCard = ref(false)
 const props = defineProps<{ city?: string; name: string; look: Look; traits: readonly TraitId[]; dream: DreamId | null; area: string; canCard?: boolean }>()
 const emit = defineEmits<{ edit: [step: StepId] }>()

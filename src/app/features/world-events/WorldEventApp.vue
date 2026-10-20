@@ -3,14 +3,15 @@
 // result card, and election night's board. Every step is checked by the server; the buttons only ask.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { eventStep, loadEvent, worldEvent } from './eventStore.ts'
 import { howWords, untilWords, whenWords } from './eventWords.ts'
 import { venueFor } from '../../../game/cities/runtime.ts'
 import { shareGist } from '../growth/shareMoment.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
-const ElectionBoard = defineAsyncComponent(() => import('./ElectionBoard.vue'))
+const ElectionBoard = lazyComponent(() => import('./ElectionBoard.vue'))
 const { game } = useApp()
 const clock = ref(Date.now())
 let timer: ReturnType<typeof setInterval> | undefined

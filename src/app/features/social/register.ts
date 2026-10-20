@@ -5,50 +5,51 @@
 //
 // Messages is registered in src/app/features/panels.ts and the Inbox chip in
 // features/growth/register.ts (GROWTH_HUD_PANELS), as before.
-import { defineAsyncComponent } from 'vue'
+
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { social } from './useSocial.ts'
 import { knocksWaiting, requestsWaiting } from './socialModel.ts'
 import { bodyLoader } from '../../state/panelBody.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 export const people = definePanel({
   id: 'people', title: 'People', placement: 'sim-tab', order: 50, phone: true, group: 'people',
   badge: () => requestsWaiting(social.me),
-  component: defineAsyncComponent(bodyLoader('social/PeopleApp')),
+  component: lazyComponent(bodyLoader('social/PeopleApp')),
 })
 
 export const person = definePanel({
   id: 'person', title: 'Person', placement: 'modal',
-  component: defineAsyncComponent(bodyLoader('social/PersonApp')),
+  component: lazyComponent(bodyLoader('social/PersonApp')),
 })
 
 export const contacts = definePanel({
   id: 'contacts', title: 'Contacts', placement: 'phone', order: 20, group: 'people',
-  component: defineAsyncComponent(bodyLoader('social/ContactsApp')),
+  component: lazyComponent(bodyLoader('social/ContactsApp')),
 })
 
 export const family = definePanel({
   id: 'family', title: 'Family', placement: 'phone', order: 36, group: 'people',
-  component: defineAsyncComponent(bodyLoader('social/FamilyApp')),
+  component: lazyComponent(bodyLoader('social/FamilyApp')),
 })
 
 export const invite = definePanel({
   id: 'invite', title: 'Invite', placement: 'phone', order: 38, group: 'people',
   badge: () => knocksWaiting(social.me),
-  component: defineAsyncComponent(bodyLoader('social/InviteApp')),
+  component: lazyComponent(bodyLoader('social/InviteApp')),
 })
 
 /** The AI agents online now, as people are listed: chat, call, go to them (features/agents/AgentsOnlineApp.vue). */
 export const aiAgents = definePanel({
   id: 'ai-agents', title: 'AI agents', placement: 'phone', order: 21, group: 'people',
-  component: defineAsyncComponent(bodyLoader('agents/AgentsOnlineApp')),
+  component: lazyComponent(bodyLoader('agents/AgentsOnlineApp')),
 })
 
 /** A chat with a resident or a house agent, kept on this phone (features/agents/AgentChatApp.vue): a phone screen like a Messages conversation, reached from the AI agents list, Messages and a card (not an app icon). */
 export const agentChat = definePanel({
   id: 'agent-chat', title: 'Chat', placement: 'phone', hidden: () => true,
-  component: defineAsyncComponent(bodyLoader('agents/AgentChatApp')),
+  component: lazyComponent(bodyLoader('agents/AgentChatApp')),
 })
 
 /** Spread into NATIVE_PANELS (src/app/features/panels.ts). Messages is registered there already. */

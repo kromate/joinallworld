@@ -5,7 +5,7 @@
 // Everything shown comes from view.career (systems/career.js), so this file holds no rules.
 // The work-dilemma card is drawn only while the life has one waiting
 // (view.career.dilemma is its id; the words are a lazy chunk fetched here, src/game/content/dilemmas.ts); a choice sends 'career.dilemma' { choice }.
-import { computed, defineAsyncComponent, ref, shallowRef, watch } from 'vue'
+import { computed, ref, shallowRef, watch } from 'vue'
 import type { ActionPayload } from '../../../types/actions.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -16,12 +16,13 @@ import { readOnlyReason, useAct } from '../kit/act.ts'
 import type { DilemmaDefinition } from '../../../types/content.ts'
 import { chipWords } from './jobsModel.ts'
 import { percent, promotionLine, stepLine } from './careerModel.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 defineProps<{ params?: unknown }>()
 
 const { game, shell, goTo, command } = useApp()
 const { act, pending } = useAct()
-const TeachingShift = defineAsyncComponent(() => import('./TeachingShift.vue'))
+const TeachingShift = lazyComponent(() => import('./TeachingShift.vue'))
 const teach = (payload: ActionPayload<'career.teach'>): Promise<boolean> => act('teach', () => command('career.teach', payload))
 const cancelTeaching = (): Promise<boolean> => act('cancel-teaching', () => command('cancel'))
 const view = game.view

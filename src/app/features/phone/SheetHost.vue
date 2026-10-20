@@ -17,6 +17,7 @@ import { play } from '../../../quick-start/entry.ts'
 import { useApp } from '../../state/app.ts'
 import BaseSheet from '../../ui/BaseSheet.vue'
 import { useSheetScope } from './phoneModel.ts'
+import { createLazyScreen, LAZY_FAILED_TEXT, LAZY_LOADING_TEXT, LAZY_SHOW_AFTER_MS } from '../../state/lazy.ts'
 
 const { game, shell } = useApp()
 const sheet = shell.sheet
@@ -25,17 +26,21 @@ const panel = computed(() => (sheet.value?.kind === 'panel' ? shell.byId.get(she
 const lock = computed(() => { void game.view.value; return sheet.value ? shell.lockOf() : null })
 const body = ref<{ back(): boolean } | null>(null)
 const renderer: ShallowRef<Component | null> = shallowRef(null)
-const failed = ref(false)
-let loading: Promise<void> | null = null
+// The loading line waits a moment so a quick load does not flash; the code is asked for again by itself (1 s, then 3 s).
+const late = ref(false)
+let lateTimer: ReturnType<typeof setTimeout> | undefined
 let gone = false
+const screen = createLazyScreen(() => import('./SheetBody.vue'))
+const failed = computed(() => screen.view.failed)
 // The body is rebuilt when the identity or the city under it really changes (not when the first session or city of a new life arrives, see scopeSwitched).
 const scope = useSheetScope(computed(() => game.session.value?.id ?? null), game.cityId, () => play.sending || play.settling)
 function loadBody(): void {
-  if (renderer.value || loading || !sheet.value) return
-  failed.value = false
-  loading = import('./SheetBody.vue').then(module => {
-    if (!gone) renderer.value = module.default
-  }, () => { if (!gone) failed.value = true }).finally(() => { loading = null })
+  if (renderer.value || !sheet.value) return
+  late.value = false
+  clearTimeout(lateTimer)
+  lateTimer = setTimeout(() => { late.value = true }, LAZY_SHOW_AFTER_MS)
+  if (failed.value) screen.retry()
+  void screen.loader().then((module) => { if (!gone) renderer.value = module.default })
 }
 watch(() => Boolean(sheet.value), open => { if (open) loadBody() }, { immediate: true })
 /** A panel that takes the whole screen (the character creator): no app bar, no lock note, no corner button. */
@@ -60,7 +65,7 @@ function onClose(by: 'escape' | 'backdrop' | 'button'): void {
 // a browser lets only one Esc in a row be refused, and going back level by level needs several.
 // The dialog's `cancel` event still arrives for the back gesture, and lands in the same function.
 shell.escape.run = () => { if (lock.value) refused(); else onClose('escape') }
-onBeforeUnmount(() => { gone = true; shell.escape.run = null })
+onBeforeUnmount(() => { gone = true; clearTimeout(lateTimer); shell.escape.run = null })
 function refused(): void { const reason = lock.value?.reason; if (reason) game.toast(reason) }
 </script>
 
@@ -68,8 +73,8 @@ function refused(): void { const reason = lock.value?.reason; if (reason) game.t
   <BaseSheet id="life-dialog" :open="Boolean(sheet)" :locked="Boolean(lock)" :data-phone="inPhone ? '' : undefined" :label="dialogLabel" :class="{ 'is-phone': inPhone, 'is-fullscreen': fullscreen }" @close="onClose" @refused="refused">
     <component :is="renderer" v-if="sheet && renderer" :key="scope" ref="body" :fullscreen="fullscreen" :lock-reason="lock?.reason" />
     <div v-else-if="sheet" id="life-dialog-content" class="sheet-body" :aria-busy="!failed">
-      <p :role="failed ? 'alert' : 'status'">{{ failed ? 'This screen could not load. Try again when your connection is ready.' : 'Loading screen…' }}</p>
-      <button v-if="failed" type="button" class="ui-button" @click="loadBody">Try loading screen again</button>
+      <p v-if="failed || late" :role="failed ? 'alert' : 'status'">{{ failed ? LAZY_FAILED_TEXT : LAZY_LOADING_TEXT }}</p>
+      <button v-if="failed" type="button" class="ui-button is-primary" @click="loadBody">Try again</button>
       <p v-if="lock" class="sheet-lock" role="note">🔒 {{ lock.reason }}</p>
       <button v-else type="button" class="ui-button" @click="onClose('button')">Close</button>
     </div>

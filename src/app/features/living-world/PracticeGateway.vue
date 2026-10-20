@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, defineComponent, ref, type Component } from 'vue'
+import { computed, defineComponent, ref, type Component } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { PanelExposed } from '../../types/panel.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 defineOptions({ inheritAttrs: false })
 const props = defineProps<{ params?: unknown }>()
 const { shell } = useApp()
 const child = ref<PanelExposed | null>(null)
-const driving = defineAsyncComponent(() => import('./DrivingApp.vue'))
-const barber = defineAsyncComponent(() => import('./BarberApp.vue'))
-const clerk = defineAsyncComponent(() => import('./ClerkApp.vue'))
-const justice = defineAsyncComponent(() => import('./JusticeApp.vue'))
+const driving = lazyComponent(() => import('./DrivingApp.vue'))
+const barber = lazyComponent(() => import('./BarberApp.vue'))
+const clerk = lazyComponent(() => import('./ClerkApp.vue'))
+const justice = lazyComponent(() => import('./JusticeApp.vue'))
 const unavailable: Component = defineComponent({
   name: 'PracticeGatewayUnavailable',
   setup: () => () => null,

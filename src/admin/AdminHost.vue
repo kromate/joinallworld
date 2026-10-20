@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // The admin address's page. It asks the server who this browser is (the account routes) and shows one of: the sign-in, a plain "staff only"
 // page for someone who is signed in but is not an admin, or the admin screens. No game, no scene, no sound, no companion is loaded here.
-import { defineAsyncComponent, onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { createAccount } from '../app/features/account/accountStore.ts'
 import { setAdminTransport } from '../app/features/admin/transport.ts'
 import { admin } from '../app/features/admin/useAdmin.ts'
@@ -11,8 +11,9 @@ import { STAFF_ONLY, gameUrlOf, phaseOf } from './phase.ts'
 import type { Phase } from './phase.ts'
 import { fetchJson, transport } from './transport.ts'
 import './host.css'
+import { lazyComponent } from '../app/state/lazy.ts'
 
-const AdminShell = defineAsyncComponent(() => import('../app/features/admin/AdminShell.vue'))
+const AdminShell = lazyComponent(() => import('../app/features/admin/AdminShell.vue'))
 setAdminTransport(transport)
 const account = createAccount({ fetchJson, loadProvider: () => import('../app/features/account/identityProvider.ts'), origin: () => location.origin, forgetLife() { /* no life is kept here */ }, reload: () => location.reload() })
 const phase = ref<Phase>('loading')

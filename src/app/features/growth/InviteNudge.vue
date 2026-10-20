@@ -5,7 +5,7 @@
 // activity and never to a guest who has not pressed Play. When to prompt is inviteNudgeModel.ts;
 // what is remembered is kept on this device (INVITE_KEY). Nothing here runs on a timer except the
 // short waits noted below, each a single timeout that is cleared when it no longer applies.
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { useCommunity } from '../community/communityStore.ts'
 import { EMPTY_ROOM_MS, INVITE_KEY, PROMPT_MS, decideInvite, freshMemory, inviteMemory, promptActed, promptDismissed, promptShown } from './inviteNudgeModel.ts'
@@ -13,9 +13,10 @@ import type { InviteMemory, InviteMoment } from './inviteNudgeModel.ts'
 import { useGrowth } from './useGrowth.ts'
 import { hold } from '../../state/landingHold.ts'
 import { settleWanted, tour } from '../tour/tourState.ts'
+import { lazyQuiet } from '../../state/lazy.ts'
 
 // The chip is loaded the first time a prompt is shown, so the button stays small.
-const InviteChip = defineAsyncComponent(() => import('./InviteChip.vue'))
+const InviteChip = lazyQuiet(() => import('./InviteChip.vue'))
 const { game, shell } = useApp()
 const growth = useGrowth()
 const community = useCommunity()

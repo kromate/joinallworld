@@ -76,7 +76,7 @@ test('a list that did not load keeps what it had, says so, and offers a retry', 
 
 test('offline: the form is disabled, the send says why and that the text is kept', async () => {
   server.fault.offline = true
-  await app.game.refresh()
+  for (let i = 0; i < 3; i++) await app.game.refresh() // three failures in a row: the grace is over
   try {
     const html = await render()
     const words = text(html)

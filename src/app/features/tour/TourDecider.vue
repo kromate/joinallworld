@@ -6,16 +6,17 @@
 // is in front: no sheet, no activity, no call, the venue view, the HUD drawn. Never for a life that has already
 // played, or with Hints off. Phone → Help and Settings start it again ('jaw:tour'); ? opens the shortcuts ('jaw:shortcuts').
 // When it is due by itself, the first-minute strip takes its turn instead (handOff below); asked for, it runs as before.
-import { defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { coachHints } from '../hud/coachModel.ts'
 import { markTourSeen, tourDue, tourSeen } from './tourSeen.ts'
 import { track, tour } from './tourState.ts'
 import type { TourId } from '../companion/types.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 const emit = defineEmits<{ ready: [] }>()
-const TourHost = defineAsyncComponent(() => import('./TourHost.vue'))
-const ShortcutsSheet = defineAsyncComponent(() => import('./ShortcutsSheet.vue'))
+const TourHost = lazyComponent(() => import('./TourHost.vue'))
+const ShortcutsSheet = lazyComponent(() => import('./ShortcutsSheet.vue'))
 
 /** After the arrival settles: the venue draws, the first toasts are read. */
 const SETTLE_MS = 1500

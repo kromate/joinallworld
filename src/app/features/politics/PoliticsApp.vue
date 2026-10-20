@@ -4,7 +4,7 @@
 // One screen for the three seats (city, state, nation) and the parties. The ballot of a seat is GET /api/civic/gov?tier=; the rest
 // (rules, treasury, parties) is GET /api/politics/overview. Every control that is off says why. Filing a candidacy, drawing the
 // salary and founding a party keep their request id until applied, so pressing again after a lost answer is the SAME request.
-import { computed, defineAsyncComponent, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { GovResponse } from '../../../types/civic.ts'
 import type { BillView, CaseView, JusticeResponse, LeverView, PoliticsResponse, TierId, Verdict } from '../../../types/politics.ts'
@@ -13,7 +13,8 @@ import EmptyState from '../../ui/EmptyState.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import AiTag from '../social/AiTag.vue'
 import CivicAction from '../civic/CivicAction.vue'
-const PrisonCard = defineAsyncComponent(() => import('./PrisonCard.vue'))
+import { lazyComponent } from '../../state/lazy.ts'
+const PrisonCard = lazyComponent(() => import('./PrisonCard.vue'))
 import CivicAvatar from '../civic/CivicAvatar.vue'
 import CivicStale from '../civic/CivicStale.vue'
 import CivicStatus from '../civic/CivicStatus.vue'

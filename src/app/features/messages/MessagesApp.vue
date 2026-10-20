@@ -12,7 +12,7 @@ import { civicTitle } from '../../../game/cities/terminology.ts'
 // The social state is the one the existing People, Contacts and Invite screens use
 // (src/app/features/social/useSocial.ts): a message sent here shows there. All text is rendered as text;
 // nothing a player typed is ever markup or a link.
-import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { formatClock } from '../../../game/clock.ts'
 import type { Conversation, Message, MoneyRequestView, SearchResult, ThreadItem } from '../../../types/social.ts'
@@ -33,9 +33,10 @@ import { useGrowth } from '../growth/useGrowth.ts'
 import PersonCallButton from '../calls/PersonCallButton.vue'
 import PingButton from '../ping/PingButton.vue'
 import PingStrip from '../ping/PingStrip.vue'
-const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
+import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
+const VisitButton = lazyQuiet(() => import('../visit/VisitButton.vue'))
 // The social glue (docs/SOCIAL-GLUE.md), one lazy chunk: here the strip of close friends who are somewhere now, above the chats.
-const GluePart = defineAsyncComponent(() => import('../glue/GluePart.vue'))
+const GluePart = lazyQuiet(() => import('../glue/GluePart.vue'))
 import { pingInstead } from '../ping/pingModel.ts'
 import { personUi } from '../social/socialState.ts'
 import FounderTag from '../social/FounderTag.vue'
@@ -71,7 +72,7 @@ import ChatSettings from './ChatSettings.vue'
 import ChatMenu from './ChatMenu.vue'
 import AttachSheet from './AttachSheet.vue'
 // Spray packets are fetched only when a group member opens one (docs/SMALLER-FEATURES.md).
-const SprayPacket = defineAsyncComponent(() => import('./SprayPacket.vue'))
+const SprayPacket = lazyComponent(() => import('./SprayPacket.vue'))
 import type { AttachChoice } from './AttachSheet.vue'
 import Lightbox from './Lightbox.vue'
 import { askedAboutNotifications, noteAskedAboutNotifications } from './notifyAsk.ts'

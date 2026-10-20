@@ -3,7 +3,7 @@
 // Everything a viewer may do is what the server said (`canReply`, `mine`); this only draws it.
 import './feed.css'
 import './feedApp.css'
-import { computed, defineAsyncComponent, ref } from 'vue'
+import { computed, ref } from 'vue'
 import PlayerAvatar from '../social/PlayerAvatar.vue'
 import ScamNotice from '../trust/ScamNotice.vue'
 import { SCAM_REPORT_REASON } from '../trust/scamNotice.ts'
@@ -11,11 +11,12 @@ import { agoText, badgePlaceText, visibilityWord } from '../../../feed/model.ts'
 import { mediaUrl, portraitUrl } from './feedApi.ts'
 import type { FeedApi } from './feedApi.ts'
 import type { PostView, ReplyView } from '../../../types/feed.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 const props = defineProps<{ post: PostView; api: FeedApi; now: number; full?: boolean }>()
 const emit = defineEmits<{ changed: [post: PostView]; removed: [id: string]; person: [id: string, name: string]; open: [id: string]; toast: [text: string, tone?: 'error']; share: [post: PostView]; event: [id: string]; gig: [id: string]; duet: [post: PostView] }>()
 // Duets (docs/SHARE-LOOPS.md): a clip that answers a clip shows beside it; sharing one makes a single video on this device, fetched when asked.
-const DuetSheet = defineAsyncComponent(() => import('../shareloops/DuetSheet.vue'))
+const DuetSheet = lazyComponent(() => import('../shareloops/DuetSheet.vue'))
 const sharingDuet = ref(false)
 const isClip = computed(() => props.post.kind === 'clip' && (props.post.media?.type === 'webm' || props.post.media?.type === 'mp4'))
 const QUICK = ['❤️', '😂', '🔥', '👏', '😮', '🙏']

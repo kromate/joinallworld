@@ -4,7 +4,7 @@
 // table against the computer (the Tables app, with no venue needed). Friends: sit at a table in a
 // park or lounge and play for real; "Tables near you" lists the tables of the city the player is in.
 // Opened by an address too: /games (this hub) and /games/oro (params { play: 'oro' }: today's word at once).
-import { computed, defineAsyncComponent, markRaw, onMounted, ref, shallowRef, watch } from 'vue'
+import { computed, markRaw, onMounted, ref, shallowRef, watch } from 'vue'
 import type { Component } from 'vue'
 import { isDeparting } from '../../../life.ts'
 import { useApp } from '../../state/app.ts'
@@ -23,10 +23,11 @@ import { pendingTable } from '../../../quick-start/entry.ts'
 import { useSection } from '../kit/section.ts'
 import { partition, rowSub, tableTitle } from '../tables/tablesModel.ts'
 import { useTables } from '../tables/useTables.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 const props = defineProps<{ params?: unknown }>()
-const OroGame = defineAsyncComponent(() => import('./OroGame.vue'))
-const ClansScreen = defineAsyncComponent(() => import('./ClansScreen.vue'))
+const OroGame = lazyComponent(() => import('./OroGame.vue'))
+const ClansScreen = lazyComponent(() => import('./ClansScreen.vue'))
 const { game, shell, goTo } = useApp()
 const tables = useTables()
 const growth = useGrowth()
@@ -48,7 +49,7 @@ const practiceSeats = ref<Record<string, number>>(Object.fromEntries(ARENA_CATAL
 const codeBox = ref<HTMLInputElement | null>(null)
 async function openLive(entry: ArenaCatalogEntry | null, intent: ArenaIntent): Promise<void> {
   if (!entry) { game.toast('That game is not available.', 'error'); return }
-  liveScreen.value = markRaw(defineAsyncComponent(entry.screen))
+  liveScreen.value = markRaw(lazyComponent(entry.screen))
   live.value = { entry, intent }; liveKey.value += 1; screen.value = 'live'
 }
 const openRoom = (room: string): Promise<void> => openLive(catalogEntry(gameOfRoom(room)), { kind: 'join', room })

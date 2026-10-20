@@ -5,12 +5,13 @@
 // and then waits to be tapped. Beside it, in the same slot, the "What you can do now" card (src/app/features/relief) for a moment
 // a player could be stuck in: it shows nothing otherwise.
 import '../../../ui/panels/map.css'
-import { computed, defineAsyncComponent, ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { chipKey, markShown } from './roadsideChipModel.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
-const ReliefCard = defineAsyncComponent(() => import('../relief/ReliefCard.vue'))
+const ReliefCard = lazyComponent(() => import('../relief/ReliefCard.vue'))
 const { game, shell } = useApp()
 const event = computed(() => game.view.value.travel?.event ?? null)
 const fresh = ref(false)

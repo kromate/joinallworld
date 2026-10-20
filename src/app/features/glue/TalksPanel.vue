@@ -3,7 +3,7 @@
 // time, a length, up to five friends as speakers, and where: the Square, the place you stand in, or a community's world), ask to be
 // reminded, and when it is time the host opens the stage where they stand. The stage itself (hands, the question queue, the moderator's
 // buttons) is the world events' StagePanel. There is no recording: the voice never reaches the server.
-import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { social } from '../social/useSocial.ts'
 import { enterRoom, enterSquare } from '../places/placesStore.ts'
@@ -11,8 +11,9 @@ import { GLUE } from '../../../glue/model.ts'
 import { SQUARE_ROOM } from '../../../places/model.ts'
 import type { TalkView, TalksView } from '../../../types/glue.ts'
 import { glue, glueCall } from './glueStore.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 // The stage is shown through the place view of the world events (its stage only, outside the Square): the chunk the places already load.
-const PlaceLive = defineAsyncComponent(() => import('../world-events/PlaceLive.vue'))
+const PlaceLive = lazyComponent(() => import('../world-events/PlaceLive.vue'))
 
 const { game, shell } = useApp()
 const talks = ref<TalkView[]>([]), rooms = ref<TalksView['rooms']>([]), problem = ref<string | null>(null), busy = ref(false), making = ref(false), stageOf = ref<string | null>(null)

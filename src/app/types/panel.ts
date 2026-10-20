@@ -34,6 +34,8 @@ export interface PanelView extends LifeView {
   city: City
   /** The one flag to test for "can anything change". */
   connected: boolean
+  /** True for a few seconds while requests fail but the server is not yet called unreachable: still connected. */
+  reconnecting?: boolean
   /** Use only to word the reason truthfully. */
   link: LinkState
   session: OwnSession | null

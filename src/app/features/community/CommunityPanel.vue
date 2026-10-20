@@ -13,7 +13,7 @@
 //
 // Layout: a header (place, connection, head count), then the people and voice, then the chat, whose thread takes the room that is
 // left and whose composer stays at the bottom of the sheet. On a wide screen the people and voice sit left and the chat right.
-import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { CommunityStore } from './communityStore.ts'
 import NpcBadge from '../../ui/NpcBadge.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'
@@ -24,7 +24,8 @@ import type { ChatLine, MemberRow } from '../../../types/community.ts'
 import ScamNotice from '../trust/ScamNotice.vue'
 import { SCAM_REPORT_REASON, scamReportText } from '../trust/scamNotice.ts'
 import '../../../community.css'
-const LinkInterstitial = defineAsyncComponent(() => import('../trust/LinkInterstitial.vue'))
+import { lazyComponent } from '../../state/lazy.ts'
+const LinkInterstitial = lazyComponent(() => import('../trust/LinkInterstitial.vue'))
 
 const props = defineProps<{ store: Pick<CommunityStore, 'state' | 'controller' | 'close' | 'openPerson'> }>()
 const s = computed(() => props.store.state.value)

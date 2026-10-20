@@ -4,11 +4,12 @@
 // The phone and ID checks are offered as the server reports them: with no provider configured each says it is
 // coming soon, and asking answers with the server's own sentence. What the account may post comes from the same
 // rules every listing uses (src/game/trust/tiers.ts), each with its reason.
-import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { PostKind } from '../../../game/trust/index.ts'
 import { atLeast } from '../../../game/trust/index.ts'
 import type { TrustAnswer, TrustMe } from '../../../types/trust.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
 const { game } = useApp()
 const me = ref<TrustMe | null>(null)
@@ -16,8 +17,8 @@ const failed = ref(false)
 const said = ref('')
 const busy = ref(false)
 const checking = ref<'phone' | 'id' | null>(null)
-const PhoneCheck = defineAsyncComponent(() => import('./PhoneCheck.vue'))
-const IdCheck = defineAsyncComponent(() => import('./IdCheck.vue'))
+const PhoneCheck = lazyComponent(() => import('./PhoneCheck.vue'))
+const IdCheck = lazyComponent(() => import('./IdCheck.vue'))
 function finished(): void { checking.value = null; said.value = 'Verification complete.'; void load() }
 const checked = (kind: 'phone' | 'id'): boolean => Boolean(me.value && (kind === 'phone' ? atLeast(me.value.tier, 'phone') : me.value.adultVerified))
 

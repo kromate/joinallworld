@@ -49,6 +49,8 @@ export interface Game {
   link: Ref<LinkState>
   /** True when connected with a session: the one flag for "can anything change". */
   connected: ComputedRef<boolean>
+  /** Requests are failing but the server is not yet called unreachable: still connected, only a quiet note. */
+  reconnecting: Ref<boolean>
   net: Ref<NetStatus>
   storage: ShallowRef<StorageProblem | null>
   session: ShallowRef<OwnSession | null>
@@ -140,6 +142,7 @@ export function createGame(options: GameOptions = {}): Game {
   const storyMode = ref(client.storyMode)
   const cityId = ref<CityId>(client.cityId)
   const online = ref(client.online)
+  const reconnecting = ref(client.reconnecting)
   const connected = computed(() => online.value)
 
   /** Copy what the client model holds into the refs. Cheap: each ref only notifies when its value changed. */
@@ -154,6 +157,7 @@ export function createGame(options: GameOptions = {}): Game {
     storyMode.value = client.storyMode
     cityId.value = client.cityId
     if (withOnline) online.value = client.online
+    reconnecting.value = client.reconnecting
   }
 
   /**
@@ -181,7 +185,7 @@ export function createGame(options: GameOptions = {}): Game {
     const now = client.serverNow()
     return {
       ...viewLife(life, { now, cityId: city, interactiveTeachingStarts: interactiveTeachingStarts.value, storyMode: storyMode.value }),
-      cityId: city, city: clientCity(city), connected: online.value, link: link.value, session: session.value, net: net.value, storage: storage.value,
+      cityId: city, city: clientCity(city), connected: online.value, reconnecting: reconnecting.value, link: link.value, session: session.value, net: net.value, storage: storage.value,
       // The life's own name (the server keeps it equal to the session nickname), so a rename shows as soon as the next state arrives.
       name: life.name || client.identity.name, now,
       clock: clockFormat.format(new Date(now)).replace(',', ' ·'),
@@ -241,7 +245,7 @@ export function createGame(options: GameOptions = {}): Game {
   }
 
   return {
-    state, view, link, connected, net, storage, session, pendingAction, snapshotPhase, cityId, saving, mode,
+    state, view, link, connected, reconnecting, net, storage, session, pendingAction, snapshotPhase, cityId, saving, mode,
     command, resend, retryPendingAction, connect, switchCity,
     async refresh() { const ok = client.online ? await client.refresh() : false; publish(); return ok },
     lifeChanged: (hint) => client.lifeChanged(hint),

@@ -129,6 +129,8 @@ export interface Client {
   newId(): TimedId
   storage: StorageProblem | null
   readonly online: boolean
+  /** Requests are failing but not for long enough to call the server unreachable: still playable. */
+  readonly reconnecting: boolean
   readonly pendingAction: PendingActionIntent | null
   readonly snapshotPhase: SnapshotPhase
   /** Server-advertised for this in-memory actor/city/connection snapshot only; never saved. */
@@ -210,6 +212,16 @@ const NAME_TEXT: Readonly<Record<NameRefusalCode, string>> = { name_not_allowed:
 
 const ACTIVE_POLL_MS = 1000;
 const IDLE_POLL_MS = 60000;
+/** A slow network is not a dead one: a request may take this long before it counts as a failure. */
+export const REQUEST_TIMEOUT_MS = 20000;
+/**
+ * Grace before "Server unreachable": it is declared only after GRACE_FAILURES failures in a row, or two failures GRACE_MS apart.
+ * Until then the game stays playable and only says "Reconnecting…"; the next read is tried after 1.5 s, then 3 s.
+ */
+export const GRACE_FAILURES = 3;
+export const GRACE_MS = 10000;
+/** Pure: whether `failures` failures in a row, the first `sinceFirstMs` ago, mean the server is unreachable. */
+export const graceOver = (failures: number, sinceFirstMs: number): boolean => failures >= GRACE_FAILURES || (failures >= 2 && sinceFirstMs >= GRACE_MS);
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value)
 function pendingIntent(value: unknown): PendingActionIntent | null {
   if (!isRecord(value) || typeof value.sessionId !== 'string' || !value.sessionId || value.sessionId.length > 100 || typeof value.actionId !== 'string'
@@ -309,6 +321,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     /** null while the server is saving normally; { reason } from the moment it says it cannot (storage: "failing", or 503 storage_unavailable). */
     storage: null,
     get online() { return client.ready && Boolean(client.session); },
+    /** True while requests are failing but the grace has not run out: still playable, only a quiet "Reconnecting…". */
+    get reconnecting() { return failures > 0 && client.ready; },
     get pendingAction() { return pendingAction ? structuredClone(pendingAction) : null; },
     get snapshotPhase() { return snapshotPhase; },
     get interactiveTeachingStarts() { return hasCapability('teaching') },
@@ -317,6 +331,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     api, fetchJson: fetchScoped, connect, command, retryPendingAction, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
   };
   let pollTimer: unknown = null;
+  let graceTimer: unknown = null, failures = 0, firstFailureAt = 0;
   let identityGeneration = 0;
   if (!cachedStateReady && !savedWaiting) status('Saved travel could not be read. Reconnect to reconcile; the saved copy is preserved.', true)
   const routeCooldowns = new Map<string, { until: number; attempts: number }>()
@@ -382,7 +397,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     try {
       // A string, or a falsy value, goes out as it is (fetch decides); anything else is JSON.
       response = await fetch(path, { ...options, body: options.body && typeof options.body !== 'string' ? JSON.stringify(options.body) : options.body as BodyInit | null | undefined,
-        headers: { 'Content-Type': 'application/json', ...(client.session && path !== '/api/session' ? { 'X-Allworld-Actor': client.session.id } : {}), ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(10000) });
+        headers: { 'Content-Type': 'application/json', ...(client.session && path !== '/api/session' ? { 'X-Allworld-Actor': client.session.id } : {}), ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(REQUEST_TIMEOUT_MS) });
     } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error(TEXT.connectionLost); }
     let payload: Payload;
     try { payload = await response.json() as Payload; } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error('Server returned an unreadable response'); }
@@ -398,6 +413,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       client.storage = next;
       if (changed) { status(next ? next.reason : 'Connected · progress saved', Boolean(next)); onChange(client.state, client.state); }
     }
+    // Any answer below 500 proves the server is there: the failures in a row start again.
+    if (failures > 0 && response.status < 500) { settleGrace(); status('Connected · progress saved'); onChange(client.state, client.state) }
     if (!response.ok) {
       const error: ApiError = Error(payload.error === 'action_expired' ? TEXT.outOfSync : payload.error || payload.message || 'Connection failed');
       error.status = response.status; error.code = payload.code || payload.error;
@@ -497,11 +514,24 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   /** The request did not get an answer worth having: the device is offline, or the server is not reachable. */
   const down = (): LinkState => (isOnline() ? 'unreachable' : 'offline');
   function lost(error: ApiError, text?: string): void {
+    // A server that does not answer once or twice is probably a slow network: stay connected, say "Reconnecting…", read again soon.
+    if (error.code !== 'economy_unavailable' && isOnline()) {
+      if (!failures) firstFailureAt = now()
+      if (!graceOver(++failures, now() - firstFailureAt)) {
+        cancelTimer(pollTimer); cancelTimer(graceTimer)
+        graceTimer = later(() => { void refresh('Disconnected · action will settle on server') }, 1500 * failures)
+        status('Reconnecting…'); onChange(client.state, client.state)
+        return
+      }
+    }
+    settleGrace()
     teachingCapability = null; teachingTransition = null
     client.ready = false; client.link = error.code === 'economy_unavailable' ? 'recovery' : down();
     status(client.link === 'recovery' ? error.reason || TEXT.paused.recovery : text || error.message, true);
     onChange(client.state, client.state);
   }
+  /** The server answered, or was given up on: the count of failures in a row starts again. */
+  function settleGrace(): void { failures = 0; cancelTimer(graceTimer) }
 
   /** Poll while the page is visible: every second during a timed action, once a minute when idle. */
   function schedule(): void {
@@ -509,7 +539,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     if (isHidden() || !client.online) return;
     pollTimer = later(() => refresh('Disconnected · action will settle on server'), Math.max(client.state.activeAction ? ACTIVE_POLL_MS : IDLE_POLL_MS, cooldownDelay('/api/life')));
   }
-  function stop(): void { cancelTimer(pollTimer); }
+  function stop(): void { cancelTimer(pollTimer); cancelTimer(graceTimer); }
 
   async function loadedSnapshot<T extends { state: LifeState }>(response: T, responseCurrent: () => boolean = () => true): Promise<T> {
     await loadLife(response.state);
@@ -588,6 +618,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   async function connect(createNew = false, startCity?: string): Promise<boolean> {
     const attempt = ++connectGeneration, current = (): boolean => attempt === connectGeneration
+    settleGrace();
     teachingCapability = null; teachingTransition = null; client.ready = false; client.link = 'connecting'; client.refusal = null; client.retryAfter = null;
     status('Connecting…');
     try {

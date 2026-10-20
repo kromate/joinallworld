@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import AppBar from '../../ui/AppBar.vue'
 import PanelHost from './PanelHost.vue'
 import type PhoneDeviceType from './PhoneDevice.vue'
+import { lazyComponent } from '../../state/lazy.ts'
 
 defineProps<{ fullscreen: boolean; lockReason?: string }>()
-const PhoneDevice = defineAsyncComponent(() => import('./PhoneDevice.vue'))
-const SimSheet = defineAsyncComponent(() => import('../sim/SimSheet.vue'))
-const HelpBody = defineAsyncComponent(() => import('../help/HelpBody.vue'))
+const PhoneDevice = lazyComponent(() => import('./PhoneDevice.vue'))
+const SimSheet = lazyComponent(() => import('../sim/SimSheet.vue'))
+const HelpBody = lazyComponent(() => import('../help/HelpBody.vue'))
 const { shell } = useApp()
 const sheet = shell.sheet
 const inPhone = shell.inPhone

@@ -8,7 +8,7 @@
 // disables the buttons that would repeat it. Player names are text, never markup.
 import LazyList from '../../ui/LazyList.vue'
 import { chunkedView } from '../../ui/lazyList.ts'
-import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { isDeparting } from '../../../life.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -25,12 +25,13 @@ import { markGameShown, markNotNow, tableCard } from '../social/friendOfferModel
 import { offerMemory, saveOfferMemory } from '../social/friendOfferStore.ts'
 import PenaltyBoard from './PenaltyBoard.vue'
 import WhotBoard from './WhotBoard.vue'
+import { lazyComponent } from '../../state/lazy.ts'
 // The board games' screens are chunks of their own, fetched when a table of that game is opened.
-const ChessBoard = defineAsyncComponent(() => import('./ChessBoard.vue'))
-const WeaveBoard = defineAsyncComponent(() => import('./WeaveBoard.vue'))
+const ChessBoard = lazyComponent(() => import('./ChessBoard.vue'))
+const WeaveBoard = lazyComponent(() => import('./WeaveBoard.vue'))
 // After a game with people: the one friendship card (add as friend, a small gift, invite), a chunk of its own.
-const FriendOfferCard = defineAsyncComponent(() => import('../social/FriendOfferCard.vue'))
-const AyoBoard = defineAsyncComponent(() => import('./AyoBoard.vue'))
+const FriendOfferCard = lazyComponent(() => import('../social/FriendOfferCard.vue'))
+const AyoBoard = lazyComponent(() => import('./AyoBoard.vue'))
 import { GAME_LABELS, ayoRules, chessRules, isAyoState, isChessState, isPenaltyState, isWeaveState, isWhotState, penaltyRules, tableById, weaveRules, whotRules } from './tablesBoundary.ts'
 import {
   AGAIN_STAKE_NOTE, LIST_RULES, NO_TABLE_HERE, PLAY_MONEY, acceptNote, adultAnswer, botCounts, botLabel, heroFigure, heroNote, hostNote, leavesOnBack, openLabel, optionKey, outcomeNote, outcomeTitle,

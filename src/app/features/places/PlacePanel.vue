@@ -4,7 +4,7 @@
 // this only asks (placesStore.ts). Voice is asked for by its button alone, as everywhere (src/community.ts).
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import PlayerAvatar from '../social/PlayerAvatar.vue'
@@ -17,16 +17,17 @@ import { gist, loadGist } from '../gist/gistStore.ts'
 import { squareLine } from '../gist/gistModel.ts'
 import { SQUARE_TURN_MS } from '../gist/gistConfig.ts'
 import type { FurnitureDefinition } from '../../../types/content.ts'
+import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
 
 // Design with AI (docs/SPACES.md): fetched only when opened.
-const DesignSheet = defineAsyncComponent(() => import('../spaces/DesignSheet.vue'))
+const DesignSheet = lazyComponent(() => import('../spaces/DesignSheet.vue'))
 const designOpen = ref(false)
 // The city news line (src/news/): once it has loaded it shows the Square's line, with the gist line below as its fallback.
-const Ticker = defineAsyncComponent(() => import('../gist/Ticker.vue'))
+const Ticker = lazyQuiet(() => import('../gist/Ticker.vue'))
 const tickerOn = ref(false)
-const WorldScreen = defineAsyncComponent(() => import('../spaces/WorldScreen.vue'))
+const WorldScreen = lazyComponent(() => import('../spaces/WorldScreen.vue'))
 // The world's live moments here (docs/WORLD-EVENTS.md): the weekly event's bar and drops, election night, a stage. Its own chunk.
-const PlaceLive = defineAsyncComponent(() => import('../world-events/PlaceLive.vue'))
+const PlaceLive = lazyComponent(() => import('../world-events/PlaceLive.vue'))
 const walking = ref(false)
 const { game, shell, community } = useApp()
 const now = computed(() => placeNow.value)

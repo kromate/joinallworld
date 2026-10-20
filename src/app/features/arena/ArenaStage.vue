@@ -13,11 +13,12 @@
 //   </ArenaStage>
 //
 // Inside, a `.arena-fill` element grows to the free height (use it for the canvas holder).
-import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { getSound, setSound } from '../../../audio/settings.ts'
 import type { ScreenPad } from '../../../arena/input/usePad.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
-const ArenaPadPanel = defineAsyncComponent(() => import('./ArenaPadPanel.vue'))
+const ArenaPadPanel = lazyComponent(() => import('./ArenaPadPanel.vue'))
 const props = defineProps<{ title: string; chip?: string; off?: boolean; /** The game is on and the player is in it: the arena fills the whole screen and the bar fades. */ play?: boolean; /** The screen's controller (usePad): the Controller button and panel. */ pad?: ScreenPad }>()
 const emit = defineEmits<{ leave: [] }>()
 

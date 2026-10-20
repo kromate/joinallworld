@@ -182,8 +182,8 @@ test('all three apps are lazy panels: a body loader in the registry, no static i
     for (const name of modules) assert.match(source, new RegExp(`await import\\('[^']*${name}\\.ts'\\)`), `${file} loads ${name} on demand`);
   }
   const seasons = readFileSync(join(here, 'SeasonsApp.vue'), 'utf8');
-  assert.match(seasons, /defineAsyncComponent\(\(\) => import\('\.\/NyscPanel\.vue'\)\)/);
-  assert.match(seasons, /defineAsyncComponent\(\(\) => import\('\.\/JambPanel\.vue'\)\)/);
+  assert.match(seasons, /lazyComponent\(\(\) => import\('\.\/NyscPanel\.vue'\)\)/);
+  assert.match(seasons, /lazyComponent\(\(\) => import\('\.\/JambPanel\.vue'\)\)/);
 });
 
 test('the apps say what they are: AI-played traders, game naira only, nothing real, and the seasons for Nigeria only', () => {

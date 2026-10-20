@@ -10,7 +10,7 @@ import '../ui/tokens.css'
 import '../ui/shell.css'
 // The compact layout of a phone (and a phone on its side), after the page layout it adjusts.
 import '../ui/compact.css'
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from './state/app.ts'
 import { heldActionFor, shortcutFor } from '../ui/keys.ts'
 import { social, start as startSocial, wakeSocket } from './features/social/useSocial.ts'
@@ -32,19 +32,20 @@ import PanelHost from './features/phone/PanelHost.vue'
 import SheetHost from './features/phone/SheetHost.vue'
 import { startLandingHold } from './state/landingHold.ts'
 import { createPageLifecycle } from './state/pageLifecycle.ts'
+import { lazyComponent, lazyQuiet } from './state/lazy.ts'
 // The Community aside is fetched the first time it is opened (and ahead of that when the browser is idle: state/idlePreload.ts).
-const CommunityHost = defineAsyncComponent({ loader: () => import('./features/community/CommunityHost.vue'), onError: (_error, retry, fail, attempts) => { if (attempts <= 3) setTimeout(retry, 800 * attempts); else fail() } })
+const CommunityHost = lazyComponent(() => import('./features/community/CommunityHost.vue'))
 // The panel of a place (the Square, a group's room) is fetched the first time the player stands in one.
 // The link-landing banner ("You're joining Ada") exists only for a player who arrived by a link: its code is fetched then.
-const LinkBanner = defineAsyncComponent(() => import('./features/landing/LinkBanner.vue'))
-const PlacePanel = defineAsyncComponent(() => import('./features/places/PlacePanel.vue'))
+const LinkBanner = lazyQuiet(() => import('./features/landing/LinkBanner.vue'))
+const PlacePanel = lazyComponent(() => import('./features/places/PlacePanel.vue'))
 import CallsHost from './features/calls/CallsHost.vue'
 import PingHost from './features/ping/PingHost.vue'
 import ScenePane from './scene/ScenePane.vue'
 import { lite, liteWhy } from './state/lite.ts'
 import { bodyLoader } from './state/panelBody.ts'
 // Allworld Lite (state/lite.ts): no scene, the social apps full screen. Fetched only when Lite is on.
-const LiteShell = defineAsyncComponent(bodyLoader('lite/LiteShell'))
+const LiteShell = lazyComponent(bodyLoader('lite/LiteShell'))
 import MapPane from './scene/MapPane.vue'
 
 const { game, ready, shell, api, community, scene, command, connect, quickStart, startLife, switchCity, menu, landing, showMapLayer } = useApp()
@@ -130,15 +131,17 @@ const onStartLife = (event: Event): void => startLife((event as CustomEvent<{ na
 const onQuickStart = (event: Event): void => { const detail = (event as CustomEvent<{ name?: string | null; city?: string }>).detail; void quickStart(detail?.name ?? null, detail?.city) }
 const onReconnect = (): void => menu('reconnect')
 const onSwitchCity = (event: Event): void => { const city = (event as CustomEvent<{ city?: string }>).detail?.city; if (city) void switchCity(city) }
-// The device got its network back: try the connection once, by itself (an event, not a timer).
-const onOnline = (): void => { if (!game.connected.value && (game.link.value === 'offline' || game.link.value === 'unreachable')) void connect() }
+// The device got its network back, or the tab is in front again: a game that gave up (offline, unreachable) is connected again by
+// itself, a connected one reads the life now (also ends the short "Reconnecting…" grace). An event, not a timer.
+const retryNow = (): void => { if (game.connected.value) void game.wake(); else if (game.link.value === 'offline' || game.link.value === 'unreachable') void connect() }
+const onOnline = retryNow
 const lifecycle = createPageLifecycle(game, community)
 const onPageHide = (): void => lifecycle.onPageHide()
 // Restored from the back/forward cache: the socket was closed on pagehide, so bring the community back (voice stays off).
 const onPageShow = (event: Event): void => lifecycle.onPageShow(event as PageTransitionEvent)
 // In front again (the tab was hidden, the phone was locked): the life is read before anything else, and a socket that
 // was lost meanwhile is opened now, so this device is not left showing what another one has since changed.
-const onVisibility = (): void => { if (document.hidden) game.stop(); else { wakeSocket(); void game.wake() } }
+const onVisibility = (): void => { if (document.hidden) game.stop(); else { wakeSocket(); retryNow() } }
 
 const listeners: [EventTarget, string, EventListener][] = [
   [window, 'keydown', onKey as EventListener], [window, 'keyup', onKeyUp as EventListener], [window, 'jaw:scene-spot', onSceneSpot],

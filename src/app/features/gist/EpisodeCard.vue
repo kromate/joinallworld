@@ -43,9 +43,9 @@ async function share(): Promise<void> {
 </template>
 
 <style scoped>
-.episode-card { margin: 12px 0; padding: 10px 12px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); }
-.episode-card h3 { font-size: 14px; margin: 0 0 6px; }
-.episode-lines, .episode-facts { margin: 0 0 6px; padding-left: 18px; }
-.episode-lines li { margin-bottom: 3px; }
+.episode-card { margin: 0; padding: 14px; border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
+.episode-card h3 { font-size: 16px; margin: 0 0 6px; }
+.episode-lines, .episode-facts { margin: 0 0 8px; padding-left: 18px; font-size: 14px; line-height: 1.45; }
+.episode-lines li { margin-bottom: 4px; }
 .episode-ai { margin-left: 6px; padding: 0 6px; border-radius: 99px; background: #4338ca; color: #fff; font-size: 11px; font-weight: 700; }
 </style>

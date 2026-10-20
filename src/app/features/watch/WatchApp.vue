@@ -27,6 +27,7 @@ const tab = ref<Tab>(TABS.find((item) => item.id === props.params?.tab)?.id ?? '
 
 <style scoped>
 .watch-app { display: grid; gap: 10px; padding: 4px; overflow-wrap: anywhere; }
-.watch-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.watch-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.watch-tabs .social-btn { padding: 6px 4px; font-size: 13px; line-height: 1.2; text-align: center; overflow-wrap: normal; }
 .watch-tabs .is-on { background: var(--c-ink, #222); color: var(--c-bg, #fff); }
 </style>

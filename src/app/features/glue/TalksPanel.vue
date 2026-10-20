@@ -85,3 +85,7 @@ async function goTo(t: TalkView): Promise<void> {
     </article>
   </section>
 </template>
+
+<style scoped>
+.glue-talks { display: grid; gap: 10px; min-width: 0; overflow-wrap: anywhere; }
+</style>

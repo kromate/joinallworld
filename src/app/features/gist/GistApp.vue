@@ -51,3 +51,9 @@ const shareFailed = (): void => game.toast('That could not be shared. Try again.
     <button v-if="gist.lines.length" type="button" class="social-btn" :disabled="gist.loading || offline" @click="refresh(true)">Refresh</button>
   </section>
 </template>
+
+<style scoped>
+.gist-app { display: grid; gap: 12px; min-width: 0; overflow-wrap: anywhere; }
+.gist-app > * { margin-top: 0; margin-bottom: 0; }
+.gist-app > .social-btn { justify-self: start; }
+</style>

@@ -53,13 +53,13 @@ async function make(): Promise<LoopShare | null> {
 </template>
 
 <style scoped>
-.fp { margin: 12px 0; padding: 10px 12px; border-radius: 12px; background: #f7f3ea; color: #1b1b1b; font-family: Georgia, "Times New Roman", serif; }
+.fp { margin: 0; padding: 14px; border-radius: var(--r-md); background: #f7f3ea; color: #1b1b1b; font-family: Georgia, "Times New Roman", serif; }
 .fp-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; border-bottom: 2px solid #1b1b1b; padding-bottom: 4px; }
 .fp-head b { font-size: 16px; }
 .fp-head small { font-family: system-ui, sans-serif; font-size: 12px; color: #555; }
 .fp-headline { margin: 8px 0 6px; font-size: 18px; line-height: 1.25; }
-.fp-stories { margin: 0 0 6px; padding-left: 18px; font-size: 13px; }
+.fp-stories { margin: 0 0 8px; padding-left: 18px; font-size: 14px; line-height: 1.4; }
 .fp-stories li { margin-bottom: 4px; }
 .fp-credit { margin: 0 0 8px; font: 12px system-ui, sans-serif; color: #666; }
-.fp-share { min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: #1b1b1b; color: #fff; font: 700 13px system-ui, sans-serif; cursor: pointer; }
+.fp-share { min-height: var(--tap, 44px); padding: 0 16px; border: 0; border-radius: 999px; background: #1b1b1b; color: #fff; font: 700 13px system-ui, sans-serif; cursor: pointer; }
 </style>

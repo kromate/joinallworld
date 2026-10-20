@@ -56,7 +56,7 @@ const role = (slot: FamilyId): string => view.value.social.family.find(member =>
 <template>
   <div class="family-app">
     <header class="family-intro">
-      <small>YOUR CIRCLE</small><h2>Make yourself at home.</h2>
+      <small>Your circle</small><h2>Make yourself at home.</h2>
       <p>Keep your game family, or invite friends into your family roles. Each person chooses whether to join.</p>
     </header>
     <p v-if="loading && !data" role="status">Loading your family…</p>
@@ -105,14 +105,14 @@ const role = (slot: FamilyId): string => view.value.social.family.find(member =>
 <style scoped>
 .family-app{display:grid;gap:20px;min-width:0;color:#25372f}
 .family-intro{background:#fff0db;padding:20px;border-radius:18px}
-.family-intro small{font-size:11px;font-weight:800;letter-spacing:.12em;color:#775a2e}
+.family-intro small{font-size:13px;font-weight:700;color:#6b4f25}
 .family-intro h2{font-size:26px;line-height:1.1;letter-spacing:-.04em;margin:10px 0}
 .family-app p{font-size:14px;line-height:1.5;margin:6px 0;overflow-wrap:anywhere}
-.family-section{display:grid;gap:10px}.family-app h3{font-size:16px;margin:0 0 4px}.family-app h4{font-size:17px;margin:2px 0}
+.family-section{display:grid;gap:10px}.family-app h3{font-size:17px;margin:0 0 4px;text-transform:none!important;letter-spacing:0!important;color:#25372f!important}.family-app h4{font-size:17px;margin:2px 0}
 .family-card{display:grid;gap:10px;background:#fff;padding:16px;border:1px solid #dce4df;border-radius:16px;min-width:0}
-.family-person{display:flex;gap:12px;align-items:center}.family-person>div{min-width:0}.family-person h4{overflow-wrap:anywhere}.family-person small{font-size:12px;color:#52665c}.family-person p{font-size:12px;color:#52665c}
+.family-person{display:flex;gap:12px;align-items:center}.family-person>div{min-width:0}.family-person h4{overflow-wrap:anywhere}.family-person small{font-size:13px;color:#52665c}.family-person p{font-size:12px;color:#52665c}
 .family-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.family-actions>*{max-width:100%}
 .family-invitation,.family-notice{padding:12px;background:#fff4d7;border-radius:12px}
 .family-card form{display:grid;gap:8px}.family-card select{width:100%;min-height:44px;font:inherit;padding:10px;border:1px solid #9daa9f;border-radius:8px;background:#fff;color:#25372f}
-.family-card label{font-weight:700;font-size:13px}.family-app footer p{font-size:12px;color:#52665c}
+.family-card label{font-weight:700;font-size:13px}.family-app footer p{font-size:13px;color:#52665c}
 </style>

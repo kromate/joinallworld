@@ -93,14 +93,14 @@ function openVenueChat(): void { shell.close(); app.community.toggle(true) }
         <span class="social-avatar" aria-hidden="true"><PlayerAvatar :name="npc.name" :seed="npc.id" /></span><strong>{{ npc.name }}</strong><small><NpcBadge lead />{{ npc.role }}</small>
       </button>
     </div>
-    <button v-for="npc in social.away" :key="`a${npc.id}`" type="button" class="social-btn is-away" @click="shell.open('person', { npc: npc.id })">{{ npc.name }} · {{ npc.where }}</button>
-    <button v-if="life.location !== 'home' && view.connected" type="button" class="social-btn" @click="openVenueChat">Open venue chat</button>
-    <button type="button" class="social-btn" data-people-agents @click="shell.open('ai-agents')">AI agents online: chat, call or meet them</button>
+    <button v-for="npc in social.away" :key="`a${npc.id}`" type="button" class="social-btn is-wide is-away" @click="shell.open('person', { npc: npc.id })">{{ npc.name }} · {{ npc.where }}</button>
+    <button v-if="life.location !== 'home' && view.connected" type="button" class="social-btn is-wide" @click="openVenueChat">Open venue chat</button>
+    <button type="button" class="social-btn is-wide" data-people-agents @click="shell.open('ai-agents')">AI agents online: chat, call or meet them</button>
 
     <h3 class="ui-section">Friends</h3>
     <GateNote v-if="gate" :gate="gate" :action="action?.label ?? null" @action="runAction" @retry="retryLoad" />
     <template v-else-if="state.me">
-      <BaseButton @click="shell.open('contacts')">Find a player by name</BaseButton>
+      <button type="button" class="social-btn is-wide" @click="shell.open('contacts')">Find a player by name</button>
       <GluePart part="close" />
       <div v-if="state.me.requests.in.length || state.me.friends.length" class="social-list">
         <div v-for="request in state.me.requests.in" :key="`r${request.id}`" class="social-row is-ask">

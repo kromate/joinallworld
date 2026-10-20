@@ -11,6 +11,7 @@ import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import PlayerAvatar from '../social/PlayerAvatar.vue'
 import PostCard from './PostCard.vue'
+import EmptyState from '../../ui/EmptyState.vue'
 import { feedApi, mediaUrl, uploadMedia } from './feedApi.ts'
 import { encodePhoto } from './feedMedia.ts'
 import { shareLink, whatsappUrl } from './feedShare.ts'
@@ -214,6 +215,9 @@ function sharePlace(): void { if (sharedCity.value) void import('../growth/share
             <span class="social-actions"><button type="button" class="social-btn" @click="openCrew(c)">Open</button></span>
           </li>
         </ul>
+        <EmptyState v-if="!crews.length" icon="people" title="You are not in a community yet" text="Join one with a code, look around your city, or start your own.">
+          <span class="feed-row is-centered"><button type="button" class="social-btn is-primary" @click="tab = 'discover'">Find one</button><button type="button" class="social-btn" @click="tab = 'start'">Start one</button></span>
+        </EmptyState>
         <form class="feed-card feed-form" @submit.prevent="preview ? join() : look()">
           <b>Join with a code</b>
           <label>Code<input v-model="code" maxlength="8" placeholder="ABCDEF" autocapitalize="characters"></label>
@@ -225,7 +229,9 @@ function sharePlace(): void { if (sharedCity.value) void import('../growth/share
       <template v-else-if="tab === 'discover'">
         <p class="social-note">Communities around your city that anyone can join.</p>
         <select v-model="kindFilter" aria-label="Kind"><option value="">Every kind</option><option v-for="[id, label] in COMMUNITY_KINDS.filter(([k]) => k !== 'crew')" :key="id" :value="id">{{ label }}</option></select>
-        <p v-if="!found.length" class="feed-note">None yet. Start the first.</p>
+        <EmptyState v-if="!found.length" icon="people" title="None here yet" text="Be the first: start one for your city, estate or club.">
+          <button type="button" class="social-btn is-primary" @click="tab = 'start'">Start one</button>
+        </EmptyState>
         <div v-for="c in found" :key="c.id" class="feed-card">
           <div class="feed-head"><div class="feed-who"><b>{{ c.name }}</b><small>{{ c.kindLabel }}<template v-if="placeLine(c)"> · {{ placeLine(c) }}</template> · {{ c.size }} members{{ c.world ? ' · 3D world' : '' }}</small></div>
             <button v-if="!c.mine" type="button" class="social-btn is-primary" :disabled="busy" @click="join(c.id)">Join</button><button v-else type="button" class="social-btn" @click="openCrew(c)">Open</button></div>
@@ -253,8 +259,18 @@ function sharePlace(): void { if (sharedCity.value) void import('../growth/share
         </template>
         <label>Colour<select v-model="form.colour"><option v-for="c in COLOURS" :key="c.id" :value="c.id">{{ c.label }}</option></select></label>
         <p class="feed-note">{{ form.kind === 'crew' ? `A crew holds ${FEED.crew.size} friends.` : `A community holds up to ${FEED.community.size} members. You can give it a 3D world and a group chat next.` }}</p>
+        <p v-if="form.name.trim().length < FEED.crew.nameMin" class="feed-note">Give it a name to start it.</p>
         <button type="submit" class="social-btn is-primary" :disabled="busy || form.name.trim().length < FEED.crew.nameMin">Start it</button>
       </form>
     </template>
   </section>
 </template>
+
+<style scoped>
+.feed .feed-pill { min-height: var(--tap, 44px); padding: 0 14px; display: inline-flex; align-items: center; text-decoration: none; }
+.feed input[type='checkbox'], .feed input[type='radio'] { flex: none; width: 22px; height: 22px; min-width: 22px; padding: 0; margin: 0; accent-color: var(--c-green-dark); }
+.feed .feed-form label.feed-row, .feed .feed-card label.feed-row { display: flex !important; flex-wrap: nowrap; align-items: center; gap: 10px; min-height: var(--tap, 44px); }
+.feed .feed-row.is-centered { justify-content: center; }
+.feed .social-list { padding: 0; list-style: none; }
+.feed .social-row > .feed-crew-chip { flex: none; }
+</style>

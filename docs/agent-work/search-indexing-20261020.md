@@ -6,14 +6,14 @@
 - **Owner:** Codex primary agent
 - **Model / effort:** primary coordinator; bounded read-only audit by `gpt-6-luna` / low; usage and cost unavailable
 - **Thread:** `01a1590e-cc9f-7a90-a533-e0845ab792bc`
-- **UTC updated:** `2026-10-20T12:02:00Z`
+- **UTC updated:** `2026-10-20T12:55:00Z`
 - **Status:** active
 - **Work state:** deployment
 
 ## Goal and boundaries
 
 - **Goal:** Improve Google crawlability after Search Console domain verification and successful sitemap submission.
-- **In scope:** One exact robots rule needed for the anonymous session check used to render public entry pages; exact successful GET/HEAD exceptions to the module-page noindex header for the three public guides; existing focused verification and Search Console evidence.
+- **In scope:** One exact robots rule needed for the anonymous session check used to render public entry pages; exact successful GET/HEAD exceptions to the module-page noindex header for the four public guides; existing focused verification and Search Console evidence.
 - **Out of scope:** New tests, game/session/authentication changes, unrelated agents' work. User explicitly authorized an isolated checkout, commit/deploy of these fixes, and fresh Google indexing checks.
 - **Exclusive file ownership:** `public/robots.txt`, `server/security-headers.ts` pageHeaders policy, the pageHeaders call in `server/server.ts` replyPage, the pageHeaders call in `deploy/cloudflare-worker.ts` page(), this record. Preserve shared registries and every other hunk. Existing docs-page owner is active only on guide copy/shared prefix registration; design claims do not include these header hunks.
 - **Input contract:** Live `/games` test reports Soft 404 and shows the server-unreachable notice. Google explicitly lists `/api/session` as blocked by robots.txt.
@@ -81,3 +81,13 @@
 User approved: "yes, use an isolated checkout and deploy the fixes, then rerun Google’s indexing checks". The managed checkout starts at public main `4d229318e67667970b157e4798c533c4b5be0fad`; the primary checkout’s unpublished guide commits are excluded. Public main differs from production `b9ecaaf74741c7b3b3b31bb60d07f964610aaca5` only in documentation and asset-provenance bookkeeping. Local release lock currently belongs to Claude; prepare source/checks now, then acquire the lane and refresh main before publication.
 
 The isolated candidate was independently rechecked by Luna: 20 existing guide/security tests plus 2 focused SEO/client checks, all 22 passed. Test-run durations 2.030 s and 0.712 s; the first waited for the shared heavy slot. No source changes were made by the worker. The public health ID is truncated to 40 total characters; use the release run/package guard to bind the full source SHA and health to confirm runtime adoption.
+
+## Combined release handoff
+
+Anthony explicitly authorized contacting Claude to coordinate the release. Claude agreed to publish its checked guide commits and hand off before packaging or deploying, so both changes ship once. Public main is now `f216863c88c2621c9438720c77c31862f6a06232`. It contains the guide updates and `/about`; the isolated branch merged only this published revision in `e0366d207638d5fed94e622a2831762e900d1f34`, preserving both parents. The shared Worker prefix line merged cleanly. Added `/about` to the same exact successful GET/HEAD index exception. No other runtime change was added by this task.
+
+The local lock was acquired normally as `codex-search-indexing` after Claude released it. A private copy of the existing continuity helper and synthetic fixture is prepared at `/private/tmp/search-indexing-continuity-m1k53B` (directory mode 700, fixture mode 600); no helper action has run yet. Refresh it immediately before deployment, then run the after check against the same private copy. Never print or commit credentials.
+
+Next: focused checks on the combined candidate, server/Worker typechecks, commit and fast-forward main publication, exact CI, protected `joinallworld-release.yml` with `source_sha` and `deploy=true`, live robots/header/build probe, continuity and smoke, then fresh Google URL tests. Search Console's robots report has not populated for this new Domain property and its recrawl control is disabled; use a recrawl request only if available after deployment. A passing live test, accepted indexing request and actual indexing are distinct outcomes. Production is still the old build at this checkpoint.
+
+Combined verification: Luna ran the existing guide/security checks (22 pass, 0 fail, 1.768 s) and focused SEO/client checks (2 pass, 0 fail, 0.851 s) through the shared heavy slot. Total 24 pass. Primary's temporary policy probe passed 225 path/method/status combinations for the four-guide exception; all other response headers were identical and the default remained excluded. `git diff --check` passed. No tracked tests added or changed by this task. Full exact-candidate typecheck/build and release smoke remain CI/release gates, not local completion claims.

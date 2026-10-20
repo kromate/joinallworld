@@ -174,7 +174,7 @@ export function adminHeaders(policy: AppPolicy): Record<string, string> {
 /** Headers of a page a module serves. A page cannot change them. */
 export function pageHeaders(facts: RequestFacts, context?: PageRequestContext): Record<string, string> {
   const indexable = context !== undefined
-    && /^\/(?:features|pages|skills)\/?$/.test(context.pathname)
+    && /^\/(?:about|features|pages|skills)\/?$/.test(context.pathname)
     && context.status === 200
     && (context.method === 'GET' || context.method === 'HEAD');
   return {

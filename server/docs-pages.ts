@@ -1,7 +1,7 @@
 /**
  * OWNER: growth
- * The two public guide pages, written by both hosts (ctx.pages, registered in server/routes/profiles.ts beside /privacy; the Worker lists the prefixes):
- * /features, every feature in the game and how to reach it, /pages, every page, screen and address, and /skills, the AI skills people use to build for it. Plain HTML with no script, the
+ * The public guide pages, written by both hosts (ctx.pages, registered in server/routes/profiles.ts beside /privacy; the Worker lists the prefixes):
+ * /about, what Allworld is, why it was built and the vision (server/docs-about.ts), /features, every feature in the game and how to reach it, /pages, every page, screen and address, and /skills, the AI skills people use to build for it. Plain HTML with no script, the
  * privacy page's palette in a wider layout with a contents list, so a reader moves around by links alone. Every entry states what the code
  * does today (src/paths.ts, src/app/features/*, server/routes/*): when a feature or an address changes, change its line here.
  */
@@ -11,8 +11,9 @@ import { cityCatalogue } from '../src/game/cities/registry.ts'
 import { worldFigures } from '../src/app/features/start/entryModel.ts'
 import { FEATURE_SECTIONS } from './docs-features.ts'
 import { SKILL_SECTIONS } from './docs-skills.ts'
+import { aboutSections } from './docs-about.ts'
 
-const UPDATED = '19 October 2026'
+const UPDATED = '20 October 2026'
 
 /** One line of a guide: what it is, what it does, and how to get there. */
 export interface GuideEntry {
@@ -31,6 +32,8 @@ export interface GuideSection {
   id: string
   title: string
   intro?: string
+  /** Paragraphs shown before the cards, for a page that reads as prose (/about). `code` in backquotes is code, `**words**` bold. */
+  prose?: string[]
   entries: GuideEntry[]
 }
 
@@ -49,11 +52,12 @@ section{margin-top:40px}h2{font-size:23px;margin:0 0 4px;padding-top:8px;border-
 .card{background:#fffdf7;border:1px solid #e0dacb;border-radius:12px;padding:14px 16px}.card h3{font-size:16.5px;margin:0 0 4px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.card h3 a{text-decoration:none}.card h3 a:hover{text-decoration:underline}
 .card p{margin:0 0 6px;font-size:15px}.card .how{color:#4a5c53;font-size:14px;margin:0}.card .how b{color:#193126;font-weight:600}
 .tag{font-size:11.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;background:#fde7c4;color:#7a4b00;border-radius:999px;padding:1px 8px}
+.prose{max-width:720px}.prose p{font-size:17px;line-height:1.65;margin:0 0 14px}.prose strong{color:#0f5132}.prose+.grid{margin-top:8px}
 .up{display:inline-block;margin-top:12px;font-size:14px}.foot{margin-top:48px;font-size:14px;color:#5b6b63}
 @media (max-width:860px){html{scroll-padding-top:12px}.bar{position:static}.page{grid-template-columns:1fr;gap:0}.toc{display:none}.chips{display:flex}h1{font-size:28px}}`
 
 /** Escape, then show `backquoted` words as code. */
-const rich = (text: string): string => esc(text).replace(/`([^`]+)`/g, '<code>$1</code>')
+const rich = (text: string): string => esc(text).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
 
 function entryHtml(entry: GuideEntry, base: string): string {
   const external = entry.href?.startsWith('https://') ?? false
@@ -63,24 +67,24 @@ function entryHtml(entry: GuideEntry, base: string): string {
   return `<div class="card"><h3>${name}${tag}</h3><p>${rich(entry.text)}</p>${how}</div>`
 }
 
-interface GuideOptions { path: GuidePath; title: string; heading: string; lead: string; description: string; sections: readonly GuideSection[] }
+interface GuideOptions { path: GuidePath; title: string; heading: string; lead: string; description: string; sections: readonly GuideSection[]; /** The line under the lead; the entry count when absent. */ meta?: string }
 
-export type GuidePath = '/features' | '/pages' | '/skills'
+export type GuidePath = '/about' | '/features' | '/pages' | '/skills'
 
-const NAV: readonly [string, string][] = [['/features', 'Features'], ['/pages', 'Pages'], ['/skills', 'Skills'], ['/money', 'Money'], ['/privacy', 'Privacy']]
+const NAV: readonly [string, string][] = [['/about', 'About'], ['/features', 'Features'], ['/pages', 'Pages'], ['/skills', 'Skills'], ['/money', 'Money'], ['/privacy', 'Privacy']]
 
 function guideHtml(origin: unknown, o: GuideOptions): string {
   const base = safeOrigin(origin)
   const nav = NAV.map(([path, label]) => `<a href="${esc(`${base}${path}`)}"${path === o.path ? ' aria-current="page"' : ''}>${label}</a>`).join('')
-  const toc = o.sections.map((s) => `<li><a href="#${s.id}">${esc(s.title)} <span>${s.entries.length}</span></a></li>`).join('')
+  const toc = o.sections.map((s) => `<li><a href="#${s.id}">${esc(s.title)}${s.entries.length ? ` <span>${s.entries.length}</span>` : ''}</a></li>`).join('')
   const chips = o.sections.map((s) => `<li><a href="#${s.id}">${esc(s.title)}</a></li>`).join('')
   const total = o.sections.reduce((n, s) => n + s.entries.length, 0)
-  const body = o.sections.map((s) => `<section id="${s.id}"><h2><a href="#${s.id}">${esc(s.title)}</a></h2>${s.intro ? `<p class="intro">${rich(s.intro)}</p>` : ''}<div class="grid">${s.entries.map((e) => entryHtml(e, base)).join('')}</div><a class="up" href="#top">Back to top</a></section>`).join('\n')
+  const body = o.sections.map((s) => `<section id="${s.id}"><h2><a href="#${s.id}">${esc(s.title)}</a></h2>${s.intro ? `<p class="intro">${rich(s.intro)}</p>` : ''}${s.prose ? `<div class="prose">${s.prose.map((p) => `<p>${rich(p)}</p>`).join('')}</div>` : ''}${s.entries.length ? `<div class="grid">${s.entries.map((e) => entryHtml(e, base)).join('')}</div>` : ''}<a class="up" href="#top">Back to top</a></section>`).join('\n')
   return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)}</title>
 <meta name="description" content="${esc(o.description)}"><link rel="canonical" href="${esc(`${base}${o.path}`)}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:image" content="${esc(`${base}${OG_IMAGE}`)}"><style>${STYLE}</style></head>
 <body id="top"><header class="bar"><div class="in"><a class="brand" href="${esc(`${base}/`)}">Allworld</a><nav aria-label="Guides">${nav}</nav></div></header>
 <div class="page"><aside class="toc" aria-label="On this page"><b>On this page</b><ol>${toc}</ol></aside><main>
-<h1>${esc(o.heading)}</h1><p class="lead">${rich(o.lead)}</p><p class="meta">${total} entries in ${o.sections.length} sections · Updated ${UPDATED}</p><ul class="chips" aria-label="Sections">${chips}</ul>
+<h1>${esc(o.heading)}</h1><p class="lead">${rich(o.lead)}</p><p class="meta">${esc(o.meta ?? `${total} entries in ${o.sections.length} sections`)} · Updated ${UPDATED}</p><ul class="chips" aria-label="Sections">${chips}</ul>
 ${body}
 <p class="foot">This guide is kept in step with the game's code; the source is public (AGPL). <a href="${esc(`${base}/`)}">Back to Allworld</a></p></main></div></body></html>`
 }
@@ -89,6 +93,16 @@ ${body}
 function worldLine(): string {
   const { cities, countries } = worldFigures(cityCatalogue())
   return `${cities} open cities in ${countries} countries`
+}
+
+export function aboutPageHtml(origin: unknown = ''): string {
+  const world = worldLine()
+  return guideHtml(origin, {
+    path: '/about', title: 'About — Allworld', heading: 'About Allworld',
+    lead: 'A digital world you can live in, built to hold the whole world. What it is, why we built it, and where it is going.',
+    description: `Allworld is a free digital world in your browser: ${world}, people and AI living side by side. Why we built it, and the vision of the whole world in one place.`,
+    sections: aboutSections(world), meta: 'A short read',
+  })
 }
 
 export function featuresPageHtml(origin: unknown = ''): string {
@@ -119,7 +133,7 @@ export function skillsPageHtml(origin: unknown = ''): string {
 }
 
 /** The guides' own addresses. Each answers its exact path (and a trailing slash) only: anything under /skills/ is a file of a skill, served as before. */
-const GUIDES: Readonly<Record<GuidePath, (origin: unknown) => string>> = { '/features': featuresPageHtml, '/pages': pagesPageHtml, '/skills': skillsPageHtml }
+const GUIDES: Readonly<Record<GuidePath, (origin: unknown) => string>> = { '/about': aboutPageHtml, '/features': featuresPageHtml, '/pages': pagesPageHtml, '/skills': skillsPageHtml }
 export function guidePage(path: string, origin: unknown): string | null {
   const exact = path.length > 1 ? path.replace(/\/$/, '') : path
   return Object.hasOwn(GUIDES, exact) ? GUIDES[exact as GuidePath](origin) : null
@@ -137,6 +151,7 @@ export const PAGE_SECTIONS: readonly GuideSection[] = [
       { name: 'Features', href: '/features', text: 'Every feature in the game, grouped, with how to reach it.', open: '`/features`' },
       { name: 'Pages', href: '/pages', text: 'This page: every address, screen and app.', open: '`/pages`' },
       { name: 'Skills', href: '/skills', text: 'AI skills that copy your house, design a room or build a game, and how to connect your AI.', open: '`/skills`' },
+      { name: 'About', href: '/about', text: 'What Allworld is, why we built it and the vision of the whole world in one place.', open: '`/about`' },
       { name: 'Money', href: '/money', text: 'Game naira is never real money. What real money exists, who holds it, and how to report a scam.', open: '`/money`' },
       { name: 'Privacy', href: '/privacy', text: 'What Allworld stores, what never leaves your phone, and how to download or erase your account.', open: '`/privacy`' },
     ],

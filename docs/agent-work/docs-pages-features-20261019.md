@@ -62,3 +62,4 @@
 | 2026-10-19 | verified-local | pages written, tests and build pass | commit a523ccd95 | edge + full tests, push, deploy |
 | 2026-10-19T20:20Z | complete | added /skills; merged main; deployed | live 7603fe394, smoke PASS 295 | none |
 | 2026-10-20 | active | /features: rain and smoke, street lights, city news, regulars remember you, reduce shake (open-source waves, live b9ecaaf74); /pages Settings line | server/docs-pages.test.ts 8 pass | release |
+| 2026-10-20T12:00Z | active | /about (what Allworld is, why we built it, the vision, where it is today, join in) as prose in the guide shell; About in the guide nav, /pages, the landing's quiet links, sitemap, reserved words, both hosts | server/docs-pages.test.ts 10 pass; typecheck clean; desktop and 390 px screenshots | release. Note for search-indexing-20261020 (Codex, uncommitted): its index exception in server/security-headers.ts names features, pages and skills only; /about needs adding |

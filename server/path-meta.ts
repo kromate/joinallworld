@@ -164,5 +164,5 @@ export function withPathMeta(html: string, pathname: string, origin = '', search
 /** The addresses worth listing in the sitemap, from the registry: the games, every open city, every state with several open cities, and the guides (server/docs-pages.ts). */
 export function sitemapPaths(): string[] {
   const states = knownStateIds().filter((state) => openCitiesOf(state).length > 1);
-  return ['/games', ...ENTRY_VARIANTS.flatMap((variant) => (variant.id === 'home' || variant.id === 'games' ? [] : [variant.paths[0] ?? ''])), ...GAME_SLUGS.map((game) => `/games/${game}`), ...openCityIds().map((id) => `/${id}`), ...states.map((state) => `/${state}`), '/features', '/pages', '/skills'];
+  return ['/games', ...ENTRY_VARIANTS.flatMap((variant) => (variant.id === 'home' || variant.id === 'games' ? [] : [variant.paths[0] ?? ''])), ...GAME_SLUGS.map((game) => `/games/${game}`), ...openCityIds().map((id) => `/${id}`), ...states.map((state) => `/${state}`), '/about', '/features', '/pages', '/skills'];
 }

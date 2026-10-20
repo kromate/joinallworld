@@ -42,6 +42,16 @@ export const MAX_REACTIVE = 1;
 /** Legacy far-quad cost; replaced by measured native street geometry during integration. */
 export const STREET_PERSON = 2;
 
+/**
+ * People who remember the player (src/news/acquaintance.ts, one day, kept on this device): a regular the player said hello to or bought a drink
+ * for turns, waves and says one line when the player walks up. The layer looks at the store itself, by the regular's id, because the scene
+ * hands it only an id, a seed and a place. The key is the store's own (a test keeps the two equal); with nothing stored, nothing is fetched.
+ */
+export const ACQUAINTANCE_KEY = 'joinallworld-acquaintance-v1';
+/** How near the player must come, in metres, and how long the wave lasts. */
+export const REMEMBER_REACH = 6;
+export const WAVE_MS = 3_500;
+
 export interface Room { triangles: number; meshes: number }
 export interface AmbientTag { id: string; name: string; kind: string; text: string; marker: string; colour: string; position: { x: number; y: number; z: number } }
 export interface AmbientPerson { id: string; role: Role; x: number; z: number; sitting: boolean }
@@ -89,6 +99,8 @@ interface Entry {
   talk: { until: number; face: number; lead: boolean } | null
   /** A spoken bark animates the mouth only while the existing ambient window happens to be open. */
   speakingUntil: number
+  /** The wave a regular gives the player they remember (see `memories`). */
+  wave: { until: number } | null
   blinkPeriod: number
   blinkOffset: number
   speechPhase: number
@@ -147,9 +159,32 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
   let windowLeft = 0, frames = 0, disposed = false, current = clock()
   let fullCap = 0, leanCap = 0, farCap = 0
   let residents: Resident[] = []
+  /** What each regular who remembers the player says when the player comes near (told once), by the regular's id; kept if the figure is rebuilt. */
+  const memories = new Map<string, { line: string; told: boolean }>()
+  const asked = new Set<string>()
   // Street life: decided once for the layer, when its gate's chunk is in (only a full-tier layer asks for it).
   let streetChoice: StreetChoice | null = null, streetAsked = 0, streetGuard: FrameGuard | null = null
   let street: StreetLife | null = null, streetDropped = false
+
+  /** Which of these regulars remember the player? Looked up once each, and only when the device holds any memory at all. */
+  function askMemories(list: readonly Resident[]): void {
+    const fresh = list.filter((resident) => resident.id.startsWith('npc:') && !asked.has(resident.id))
+    if (!fresh.length) return
+    let kept = false
+    try { kept = Boolean(globalThis.localStorage?.getItem(ACQUAINTANCE_KEY)) } catch { kept = false }
+    if (!kept) return
+    for (const resident of fresh) asked.add(resident.id)
+    void import('../../news/acquaintance.ts').then(async (store) => {
+      const now = Date.now()
+      const known = fresh.flatMap((resident) => { const kind = store.recall(resident.id.slice(4), now); return kind ? [{ resident, kind }] : [] })
+      if (!known.length || disposed) return
+      const lines = await import('../../news/memory-lines.ts')
+      if (disposed) return
+      for (const { resident, kind } of known) {
+        memories.set(resident.id, { line: lines.memoryLineIn(ident.cityId, kind, resident.seed), told: false })
+      }
+    }).catch(() => { /* a regular who does not remember is no harm */ })
+  }
 
   /** Optional extras are bounded separately from the venue's interactive residents. */
   function budget(): void {
@@ -165,7 +200,7 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
     const blinkPeriod = 4_200 + hash(`${seed}|blink-period`) % 2_400
     const entry: Entry = {
       id, seed, look, lookKey: appearanceKey(look), role, resident, lean, holder, figures: new Map(), shown: null, shownKey: '', motion: null, reactive: false,
-      x: 0, z: 0, ry: 0, placed: false, ox: 0, oz: 0, gaze: newGaze(), top: 2.9, talk: null, speakingUntil: 0,
+      x: 0, z: 0, ry: 0, placed: false, ox: 0, oz: 0, gaze: newGaze(), top: 2.9, talk: null, speakingUntil: 0, wave: null,
       blinkPeriod, blinkOffset: hash(`${seed}|blink-phase`) % blinkPeriod, speechPhase: (hash(`${seed}|speech-phase`) % 6_283) / 1_000,
     }
     entries.set(id, entry)
@@ -246,6 +281,17 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
       face = entry.talk.face
       pose = entry.talk.lead === (Math.floor(at / 2600) % 2 === 0) && !still ? 'wave' : 'stand'
     } else if (entry.talk) entry.talk = null
+    // A regular who remembers the player waves and says one line when they come near. Never on a still placement: nothing moves there, and nothing asks for frames.
+    const memory = memories.get(entry.id)
+    if (memory && !memory.told && !still && Math.hypot(sample.x - player.x, sample.z - player.z) < REMEMBER_REACH) {
+      memory.told = true
+      entry.wave = { until: at + WAVE_MS }
+      layer.speak(entry.id, memory.line)
+    }
+    if (entry.wave && at < entry.wave.until && !still) {
+      face = Math.atan2(player.x - sample.x, player.z - sample.z)
+      pose = 'wave'
+    } else if (entry.wave) entry.wave = null
     // A still placement is also the reduced-motion path: it never pays to bake morph targets.
     const keepBaked = still && entry.reactive && pose !== 'sit'
     if (setReactive(entry, keepBaked || (reactive && !still), pose, sample.step, sample.seat, !promotion.spent)) promotion.spent = true
@@ -455,7 +501,7 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
   budget()
   sync(clock(), 0, true)
 
-  return {
+  const layer: AmbientLayer = {
     step(dt, at = clock()) {
       if (disposed) return false
       frames += 1
@@ -485,6 +531,7 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
         if (entry?.resident && (entry.seed !== resident.seed || entry.lookKey !== appearanceKey(resident.look))) leave(entry)
       }
       residents = next
+      askMemories(next)
       budget()
       sync(clock(), 0, true)
       return residents.map((resident) => resident.id)
@@ -543,4 +590,5 @@ export function createAmbientLayer(options: LayerOptions): AmbientLayer {
       group.parent?.remove(group)
     },
   }
+  return layer
 }

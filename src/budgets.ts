@@ -190,6 +190,17 @@ export const SCENE_HOST_GZIP: Budget = {
   why: 'The shared scene chunk gzipped: measured 68.3 kB plus about 4%.',
 }
 
+export const FX_RAW: Budget = {
+  value: 400_000, unit: 'raw bytes', limit: 'max', status: 'provisional',
+  enforcedIn: 'src/scene/city-scenes.test.ts, scripts/download-budget.ts',
+  why: 'The lazy fx chunk (weather, particles, post-processing, game feel and the libraries behind them), fetched by a scene host after its first frame. A first guess: measured after phase 2 of docs/OPEN-SOURCE-PLAN.md lands, then set to the measurement plus about 4%. Not part of the first download.',
+}
+export const FX_GZIP: Budget = {
+  value: 120_000, unit: 'gzip bytes', limit: 'max', status: 'provisional',
+  enforcedIn: 'src/scene/city-scenes.test.ts, scripts/download-budget.ts',
+  why: 'The fx chunk gzipped: a first guess, measured after phase 2 of docs/OPEN-SOURCE-PLAN.md lands.',
+}
+
 // ---- Download budgets in brotli (scripts/download-budget.ts). PROVISIONAL: realism-plan targets -----------------------------------
 
 export const FIRST_PAINT_BROTLI: Budget = {
@@ -280,7 +291,7 @@ export const BUDGETS = {
   NATIVE_FULL_BODY_TRIANGLES, CANONICAL_FULL_BODY_TRIANGLES, CANONICAL_LOD_BODY_TRIANGLES,
   AVATAR_LOW_TRIANGLES, AVATAR_MEDIUM_TRIANGLES_MIN, AVATAR_MEDIUM_TRIANGLES, AVATAR_HIGH_TRIANGLES_MIN, AVATAR_HIGH_TRIANGLES,
   CITY_TRIANGLES, CITY_DRAW_CALLS, AERIAL_DIVE_TRIANGLES, AERIAL_DIVE_DRAW_CALLS, HOUSES_DETAIL_TRIANGLES, HOUSES_MAX_DETAILED, HOUSES_DRAW_CALLS,
-  STARTUP_RAW, STARTUP_GZIP, LOADING_RAW, LOADING_GZIP, SCENE_HOST_RAW, SCENE_HOST_GZIP,
+  STARTUP_RAW, STARTUP_GZIP, LOADING_RAW, LOADING_GZIP, SCENE_HOST_RAW, SCENE_HOST_GZIP, FX_RAW, FX_GZIP,
   FIRST_PAINT_BROTLI, STARTUP_BROTLI, BASE_BODY_BROTLI, CLIP_PACK_BROTLI, WARDROBE_ITEM_BROTLI, WARDROBE_ITEM_TRIANGLES, WARDROBE_ITEM_TEXTURE_PX,
   STREET_TILE_BROTLI, STREET_TILE_TRIANGLES, PHONE_SCENE_DRAW_CALLS,
   CITY_SCENE_RECIPES_BYTES, TALK_INDEX_BYTES, TALK_CITY_PACK_BYTES, CITY_CONTENT_RECIPE_TALK_BYTES, SCENE_KIT_BROTLI, HERO_BROTLI,

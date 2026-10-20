@@ -21,6 +21,9 @@ import type { FurnitureDefinition } from '../../../types/content.ts'
 // Design with AI (docs/SPACES.md): fetched only when opened.
 const DesignSheet = defineAsyncComponent(() => import('../spaces/DesignSheet.vue'))
 const designOpen = ref(false)
+// The city news line (src/news/): once it has loaded it shows the Square's line, with the gist line below as its fallback.
+const Ticker = defineAsyncComponent(() => import('../gist/Ticker.vue'))
+const tickerOn = ref(false)
 const WorldScreen = defineAsyncComponent(() => import('../spaces/WorldScreen.vue'))
 // The world's live moments here (docs/WORLD-EVENTS.md): the weekly event's bar and drops, election night, a stage. Its own chunk.
 const PlaceLive = defineAsyncComponent(() => import('../world-events/PlaceLive.vue'))
@@ -117,7 +120,8 @@ const whatsapp = computed(() => `https://wa.me/?text=${encodeURIComponent(`${now
       <button type="button" data-place="step-out" @click="stepOut()"><span>Step out</span></button>
     </div>
     <p class="social-note place-voice-note" role="status">{{ voiceNote }}</p>
-    <p v-if="gistLine" class="social-note place-gist" data-place="gist">{{ gistLine }}</p>
+    <p v-if="gistLine && !tickerOn" class="social-note place-gist" data-place="gist">{{ gistLine }}</p>
+    <Ticker v-if="now.kind === 'square'" variant="square" :fallback="gistLine" @ready="tickerOn = true" />
     <PlaceLive :room="now.kind === 'room' ? roomKeyOf(now.id) : SQUARE_ROOM" :square="now.kind === 'square'" />
     <p v-if="offline" class="ui-note" role="status">Reconnect to talk, build or invite.</p>
     <p v-if="problem" class="ui-error" role="alert">{{ problem }}</p>

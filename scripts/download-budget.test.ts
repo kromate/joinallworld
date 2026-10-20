@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict'
 import { randomBytes } from 'node:crypto'
 import test from 'node:test'
-import { addSizes, checks, cityIds, closure, firstPaintFiles, groupOf, lazyGroups, pageAssets, sizeOf, staticImports, startupFiles } from './download-budget.ts'
+import { addSizes, checks, stableBytes, cityIds, closure, firstPaintFiles, groupOf, lazyGroups, pageAssets, sizeOf, staticImports, startupFiles } from './download-budget.ts'
 import type { Dist } from './download-budget.ts'
 import type { CityContentAssetManifestRow } from '../src/game/cities/content-asset.ts'
 
@@ -162,4 +162,23 @@ test('combined city accounting fails closed on duplicate IDs and unknown asset m
   assert.throws(() => checks(build(), 'lagos', [row, row]), /Invalid or duplicate city content manifest row/)
   assert.throws(() => checks(build({ 'assets/recipe-city-port-harcourt-abcdef0.js': noise(10) }), 'lagos', [row]), /Unknown, duplicate, or ambiguous city recipe/)
   assert.throws(() => checks(build({ ...talkPack('port-harcourt', noise(10)) }), 'lagos', [row]), /Unknown, duplicate, or ambiguous Talk city reference/)
+})
+
+test('the fx chunk is not measured until a build has one, then held to its raw and gzip budgets', () => {
+  const status = (dist: Dist) => Object.fromEntries(checks(dist).map((item) => [item.budget, item.status]))
+  assert.equal(status(build()).FX_RAW, 'not measured')
+  assert.equal(status(build({ 'assets/fx-MMMMMMM.js': bytes('export const f=1;') })).FX_RAW, 'ok')
+  assert.equal(status(build({ 'assets/fx-MMMMMMM.js': bytes('export const f=1;') })).FX_GZIP, 'ok')
+  const big = status(build({ 'assets/fx-MMMMMMM.js': noise(400_001) }))
+  assert.equal(big.FX_RAW, 'over')
+  assert.equal(big.FX_GZIP, 'over')
+})
+
+
+test('sizes: two files that differ only in the chunk hashes they name measure the same compressed size', () => {
+  const a = bytes('import"./assets/engine-1a2b3c4.js";import"./assets/fx-9f8e7d6.js";' + 'const a=1;'.repeat(200))
+  const b = bytes('import"./assets/engine-0badf00.js";import"./assets/fx-c0ffee1.js";' + 'const a=1;'.repeat(200))
+  assert.equal(stableBytes(a).length, a.length)
+  assert.deepEqual(sizeOf(a), sizeOf(b))
+  assert.equal(Buffer.from(stableBytes(bytes('plain text, no hashes'))).toString(), 'plain text, no hashes')
 })

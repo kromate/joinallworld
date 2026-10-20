@@ -104,7 +104,7 @@ the render-target light map, Yuka walking, Street Sense, batched crowds).
   traffic and crowds; interactables = doors, stalls, seats). Three anchor screenshots in `docs/evidence/anchors/` taken today:
   Yaba street at dusk, a Kano venue at noon, a home at night. Today's Yaba is the "1–2" anchor by definition.
 - `scripts/evidence/shoot.ts`: a repo-safe screenshot harness on the `dev:open` server (port 5211, settled life with a house),
-  headless Chromium over CDP, with named views (`?view=yaba-dusk` etc.) and a fixed clock; writes PNG plus a JSON line with
+  headless Chromium over CDP, with named views (`?view=street-dusk` etc.) and a fixed clock; writes PNG plus a JSON line with
   console errors, draw calls, triangles and frame time p50/p95 over a 10-second dwell (`renderer.info`, the `?streetperf=1`
   readout). The owner's private `shots/shot.mjs` stays private; this one has no account and no live site.
 - `scripts/evidence/inspect.ts`: pixel metrics on each PNG (colour entropy bits, dominant-colour share, edge density, luminance

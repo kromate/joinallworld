@@ -39,3 +39,26 @@ test('the map data is credited in the map corner and under About, with the sourc
   assert.match(corner, /credit\.rel = 'noopener noreferrer'/)
   assert.match(read('src/city-map.css'), /\.map-credit\{position:absolute;z-index:7;left:var\(--map-left,10px\)/)
 })
+
+// Every library the game ships in its dependencies is listed in NOTICE.md with its licence, and none of the licences is one the AGPL
+// cannot carry. Rows name the package by its link text ("Three.js", "Vue") or by the package name in backticks; ALIASES covers the
+// packages whose row uses a different name.
+const ALIASES: Readonly<Record<string, string>> = { three: 'Three.js', '@dimforge/rapier3d-compat': 'Rapier', posthog: 'posthog-js' };
+const DENIED_LICENCES = ['GPL-2.0-only', 'SSPL', 'Proprietary', 'UNLICENSED'];
+
+test('every dependency in package.json has a row in the NOTICE runtime table, and none carries a licence the AGPL cannot include', () => {
+  const dependencies = Object.keys((JSON.parse(read('package.json')) as { dependencies: Record<string, string> }).dependencies);
+  const notice = read('NOTICE.md');
+  const start = notice.indexOf('## Runtime dependencies');
+  assert.ok(start >= 0, 'NOTICE.md has a "Runtime dependencies" section');
+  const section = notice.slice(start).split(/\n## /)[0] as string;
+  const rows = section.split('\n').filter((line) => /^\|/.test(line) && !/^\|\s*(Package|-+)/.test(line)).map((line) => line.split('|').slice(1, -1).map((cell) => cell.trim()));
+  assert.ok(rows.length >= dependencies.length - 1, 'the table has rows');
+  const missing = dependencies.filter((name) => !rows.some(([cell]) => cell !== undefined && (cell.includes(`\`${name}\``) || cell.toLowerCase().includes(`[${(ALIASES[name] ?? name).toLowerCase()}]`))));
+  assert.deepEqual(missing, [], 'each dependency needs a row in NOTICE.md "Runtime dependencies"');
+  for (const [cell, licence] of rows) {
+    const denied = DENIED_LICENCES.filter((word) => new RegExp(`(^|[^A-Za-z0-9.-])${word.replace(/[-.]/g, '\\$&')}($|[^A-Za-z0-9.-])`, 'i').test(licence ?? ''));
+    assert.deepEqual(denied, [], `${cell}: licence ${licence} is not AGPL-compatible`);
+    assert.ok(licence, `${cell} lists a licence`);
+  }
+});

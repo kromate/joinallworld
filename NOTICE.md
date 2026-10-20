@@ -34,6 +34,7 @@ The data is stored as generated modules under `src/map3d/geo/data/` and `src/mod
 | [ws](https://github.com/websockets/ws) | MIT |
 | [@sentry/browser](https://github.com/getsentry/sentry-javascript) | MIT |
 | [posthog-js](https://github.com/PostHog/posthog-js) | Apache-2.0 AND MIT |
+| [meshoptimizer](https://github.com/zeux/meshoptimizer) (`meshoptimizer`: mesh simplification for the lower-detail bodies, and the decoder for compressed models) | MIT |
 | [Rapier](https://rapier.rs/) (`@dimforge/rapier3d-compat`, physics in the 3D space screen) | Apache-2.0 |
 | [postprocessing](https://github.com/pmndrs/postprocessing) (the HIGH tier's post-processing pass: bloom, anti-aliasing, grade, vignette) | Zlib |
 | [N8AO](https://github.com/N8python/n8ao) (ambient occlusion on the HIGH tier) | ISC |

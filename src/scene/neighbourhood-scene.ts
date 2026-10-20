@@ -6,6 +6,10 @@
 import type * as THREE from 'three';
 import { ESTATE, HOUSE_STYLE, lgaOf, lgasOf } from '../game/content/world.ts';
 import { cachedCityContent, cityRules } from '../game/cities/registry.ts';
+import { CLEAR_LOOK, lookAt, lookKey } from '../game/conditions/look.ts';
+import type { LookConditions } from '../game/conditions/look.ts';
+import type { Weather } from './fx/weather.ts';
+import { withWetQuery } from './weather-query.ts';
 import { unpackStyle } from './house-style.ts';
 import type { HouseStyle, HouseTierId, LifeState } from '../types/life.ts';
 import type { WorldStreetResponse } from '../types/world.ts';
@@ -93,6 +97,23 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
   let streetLife: StreetLife | null = null, streetChoice: StreetChoice | null = null, streetGuard: FrameGuard | null = null, streetWindow = 0, streetDropped = false;
   let streetLayout: StreetLayout | null = null, forget: ((layout: StreetLayout | null) => void) | null = null;
   let lit: THREE.MeshStandardMaterial[] = [];
+  // The weather (src/scene/fx, one lazy chunk): rain on the street, none under the houses' roofs. A dry street never loads it. It asks for no frames
+  // of its own: it moves in the same window as the street's people (stepAmbient below). True when the conditions changed.
+  let weatherFx: Weather | null = null, weatherAsked = false, wetNow: LookConditions = CLEAR_LOOK;
+  function syncWeather(state: LifeState): boolean {
+    const city = state.estate.city, next = finite(state.t) ? withWetQuery(lookAt(city, null, cityRules(city)?.climate, state.t)) : wetNow;
+    const changed = lookKey(next) !== lookKey(wetNow);
+    wetNow = next;
+    if (weatherFx) { weatherFx.setTime(streetTime); weatherFx.update(wetNow); return changed; }
+    if (!wetNow.wet || weatherAsked || disposed) return changed;
+    weatherAsked = true;
+    void import('./fx/index.ts').then((fx) => fx.loadFxHere()).then(({ tier, weather: fx }) => {
+      if (disposed) return;
+      weatherFx = fx.createWeather({ THREE, parent: group, tier, time: streetTime, roofs: { boxes: plan.solids, bounds: [BOUNDS[0] - 8, BOUNDS[1] - 8, BOUNDS[2] + 8, BOUNDS[3] + 8], buildings: true } });
+      weatherFx.update(wetNow); notify?.();
+    }).catch(() => { weatherAsked = false; });
+    return changed;
+  }
   const masks = new Map<string, THREE.Texture | null>();
   const ownX = (): number => anchor === null ? 0 : rowX(anchor);
   const entrance = () => ({ ...ENTRANCE, x: ownX() });
@@ -336,8 +357,9 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
       const timeChanged = nextTime !== streetTime;
       streetTime = nextTime;
       if (timeChanged) light();
+      const weatherChanged = syncWeather(state);
       const next = JSON.stringify([state.estate.style, state.estate.tier, state.estate.living, state.estate.plot]);
-      if (next === signature) return timeChanged;
+      if (next === signature) return timeChanged || weatherChanged;
       signature = next; currentStyle = state.estate.style; ownTier = state.estate.tier; cityId = state.estate.city;
       if (state.estate.plot) anchor = state.estate.plot.plot;
       plan = planNow(); grid = makeGrid(); render(); return true;
@@ -384,15 +406,16 @@ export function buildNeighbourhoodScene(kit: Kit): HostScene {
     },
     /** Street life's window of frames (the host's ambient hooks): opened when the player moves, it keeps the people and cars going a while. */
     stepAmbient(dt: number) {
-      if (!streetLife || streetWindow <= 0) return false;
+      const weather = weatherFx?.step(dt) ?? false;
+      if (!streetLife || streetWindow <= 0) return weather;
       streetWindow = Math.max(0, streetWindow - dt);
-      if (!streetChoice?.forced && streetGuard?.frame(dt) === 'slow') { streetLife.dispose(); streetLife = null; streetDropped = true; streetWindow = 0; return false; }
+      if (!streetChoice?.forced && streetGuard?.frame(dt) === 'slow') { streetLife.dispose(); streetLife = null; streetDropped = true; streetWindow = 0; return weather; }
       streetLife.step(Date.now(), avatar.object.position, dt);
-      return streetWindow > 0;
+      return streetWindow > 0 || weather;
     },
-    wakeAmbient() { if (!streetLife) return false; if (streetWindow <= 0) streetGuard?.reset(); streetWindow = STREET_WINDOW_S; return true; },
-    settleAmbient() { streetWindow = 0; streetLife?.step(Date.now(), avatar.object.position); },
-    get ambientAwake() { return streetLife !== null && streetWindow > 0; },
-    dispose() { disposed = true; forget?.(streetLayout); streetLife?.dispose(); streetLife = null; dressing?.dispose(); dressing = null; for (const peer of peers.values()) dropPeer(peer); releaseObjects(sceneryObjects); layer?.dispose(); layer = null; for (const mask of masks.values()) mask?.dispose(); avatar.dispose(); group.parent?.remove(group); },
+    wakeAmbient() { const weather = weatherFx?.wake() ?? false; if (!streetLife) return weather; if (streetWindow <= 0) streetGuard?.reset(); streetWindow = STREET_WINDOW_S; return true; },
+    settleAmbient() { streetWindow = 0; streetLife?.step(Date.now(), avatar.object.position); weatherFx?.settle(); },
+    get ambientAwake() { return (streetLife !== null && streetWindow > 0) || (weatherFx?.awake ?? false); },
+    dispose() { disposed = true; weatherFx?.dispose(); weatherFx = null; forget?.(streetLayout); streetLife?.dispose(); streetLife = null; dressing?.dispose(); dressing = null; for (const peer of peers.values()) dropPeer(peer); releaseObjects(sceneryObjects); layer?.dispose(); layer = null; for (const mask of masks.values()) mask?.dispose(); avatar.dispose(); group.parent?.remove(group); },
   } satisfies HostScene;
 }

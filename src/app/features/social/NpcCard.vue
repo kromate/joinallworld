@@ -54,13 +54,17 @@ const starting = ref(false)
 const reasonFor = (cost: number): string | null => npcActionReason(why.value, cost, game.state.value.cash)
 
 /** Walk to the people spot if the player is not there, then start the activity; close the card when it started. */
-async function start(activity: string): Promise<void> {
+async function start(activity: string, action = ''): Promise<void> {
   if (starting.value) return
   starting.value = true
   try {
     if (game.state.value.spot !== 'people') { const moved = await game.command('spot', { id: 'people' }); if (!moved.ok) return }
     const result = await game.command('activity', { id: activity })
-    if (result.ok) shell.close()
+    if (result.ok) {
+      // For one day, on this device only, the regular remembers a hello or a drink (src/news/acquaintance.ts): they wave when you walk up.
+      void import('../../../news/acquaintance.ts').then(({ kindOfAction, remember }) => { const kind = kindOfAction(action); if (kind) remember(props.id, kind) }).catch(() => { /* nothing remembered */ })
+      shell.close()
+    }
   } finally { starting.value = false }
 }
 </script>
@@ -76,7 +80,7 @@ async function start(activity: string): Promise<void> {
     <p>{{ rel ? closenessText(rel, view.social.maxCloseness) : STRANGER_TEXT }}</p>
     <ClosenessMeter :points="points" :max="max" :label="`Closeness with ${base.name}`" />
     <div v-if="here?.actions.length" class="social-grid">
-      <button v-for="action in here.actions" :key="action.id" type="button" class="social-act" :disabled="Boolean(reasonFor(action.cost)) || starting" @click="start(action.activity)">
+      <button v-for="action in here.actions" :key="action.id" type="button" class="social-act" :disabled="Boolean(reasonFor(action.cost)) || starting" @click="start(action.activity, action.id)">
         <strong><GameIcon kind="npc-action" :id="action.id" :emoji="action.icon" inline /> {{ action.label }}</strong>
         <small><GameIcon name="clock" inline /> {{ action.duration }}s · {{ action.cost ? money(action.cost) : 'Free' }} · {{ action.tags.map(tagLabel).join(' ') }}<template v-if="action.chance !== null"> · {{ action.chance }}% chance</template></small>
         <span v-if="reasonFor(action.cost)" class="social-why">{{ reasonFor(action.cost) }}</span>

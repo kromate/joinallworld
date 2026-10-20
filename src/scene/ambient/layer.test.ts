@@ -10,7 +10,8 @@ import { createKit } from '../kit.ts';
 import { loadAllCityScenes } from '../city-scenes.ts';
 import { MAX_CROWD, SCENES } from '../venue-scenes.ts';
 import { crowded } from '../space.ts';
-import { WINDOW_MS, MAX_FIGURES, MAX_RESIDENTS, createAmbientLayer } from './layer.ts';
+import { ACQUAINTANCE_KEY, REMEMBER_REACH, WAVE_MS, WINDOW_MS, MAX_FIGURES, MAX_RESIDENTS, createAmbientLayer } from './layer.ts';
+import { MEMORY_LINES } from '../../news/memory-lines.ts';
 import type { Ident, Stage } from './plan.ts';
 import { createWalkGrid } from '../walk-grid.ts';
 import type { SceneEntry, SceneVenue } from '../types.ts';
@@ -142,6 +143,65 @@ test('a regular glances at the player who comes close, then looks away; one far 
   for (let i = 0; i < 40; i++) { far.layer.step(0.05, TEN + i * 50); still.push(far.holders()[0]!.rotation.y) }
   assert.ok(Math.max(...still.map(Math.abs)) < 0.01)
   far.done()
+})
+
+/** Run with a stand-in for the device's storage holding what the news store would keep, then put the real one back. */
+async function withMemory<T>(people: Record<string, { kind: string; until: number }> | null, run: () => Promise<T>): Promise<T> {
+  const had = Object.getOwnPropertyDescriptor(globalThis, 'localStorage')
+  const stub = { getItem: (key: string) => (key === ACQUAINTANCE_KEY && people ? JSON.stringify({ v: 1, people }) : null), setItem: () => undefined }
+  Object.defineProperty(globalThis, 'localStorage', { value: stub, configurable: true, writable: true })
+  try { return await run() } finally { if (had) Object.defineProperty(globalThis, 'localStorage', had); else Reflect.deleteProperty(globalThis, 'localStorage') }
+}
+const later = (ms = 60) => new Promise((resolve) => setTimeout(resolve, ms))
+
+test('a regular who remembers the player turns, waves and says one line when they come near; a stranger, a far-off player and an empty memory get nothing', async () => {
+  const soon = Date.now() + 3_600_000
+  await withMemory({ a: { kind: 'bought', until: soon } }, async () => {
+    const rig = onFloor({ x: 3, z: 1.5 })
+    rig.layer.setResidents([{ id: 'npc:a', seed: 'a', x: 0, z: 0, ry: 0 }, { id: 'npc:b', seed: 'b', x: -3, z: 0, ry: 0 }])
+    await later()
+    const turned: number[] = []
+    for (let i = 0; i < 30; i++) { rig.layer.step(0.05, TEN + i * 50); turned.push(rig.holders()[0]!.rotation.y) }
+    const barks = rig.layer.tags().filter((tag) => tag.kind === 'bark')
+    assert.deepEqual(barks.map((tag) => tag.id), ['bark:npc:a'], 'only the one who remembers speaks')
+    assert.ok(MEMORY_LINES.bought.lagos.includes(barks[0]!.text), barks[0]!.text)
+    assert.ok(Math.max(...turned) > 0.9, `turned to the player (${Math.max(...turned).toFixed(2)})`)
+    assert.ok(WAVE_MS > 0 && REMEMBER_REACH > 3)
+    // Told once: the same line is not spoken again when the wave is over and the player is still close.
+    rig.layer.step(0.05, TEN + 10_000)
+    const again = rig.layer.speak('npc:a', 'x', 1)
+    assert.equal(again, true)
+    rig.done()
+    const far = onFloor({ x: 30, z: 30 })
+    far.layer.setResidents([{ id: 'npc:a', seed: 'a', x: 0, z: 0, ry: 0 }])
+    await later()
+    for (let i = 0; i < 30; i++) far.layer.step(0.05, TEN + i * 50)
+    assert.deepEqual(far.layer.tags(), [], 'too far to be seen')
+    far.done()
+    // Reduced motion: a still placement never waves or speaks.
+    const calm = onFloor({ x: 3, z: 1.5 })
+    calm.layer.setResidents([{ id: 'npc:a', seed: 'a', x: 0, z: 0, ry: 0 }])
+    await later()
+    calm.layer.settle(TEN)
+    assert.deepEqual(calm.layer.tags(), [])
+    calm.done()
+  })
+  await withMemory(null, async () => {
+    const rig = onFloor({ x: 3, z: 1.5 })
+    rig.layer.setResidents([{ id: 'npc:a', seed: 'a', x: 0, z: 0, ry: 0 }])
+    await later()
+    for (let i = 0; i < 30; i++) rig.layer.step(0.05, TEN + i * 50)
+    assert.deepEqual(rig.layer.tags(), [], 'nothing remembered, nothing said')
+    rig.done()
+  })
+  await withMemory({ a: { kind: 'greeted', until: Date.now() - 1000 } }, async () => {
+    const rig = onFloor({ x: 3, z: 1.5 })
+    rig.layer.setResidents([{ id: 'npc:a', seed: 'a', x: 0, z: 0, ry: 0 }])
+    await later()
+    for (let i = 0; i < 30; i++) rig.layer.step(0.05, TEN + i * 50)
+    assert.deepEqual(rig.layer.tags(), [], 'a day later they have forgotten')
+    rig.done()
+  })
 })
 
 test('two regulars face each other while they talk, and go back to their own way after', () => {

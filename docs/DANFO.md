@@ -99,6 +99,12 @@ the pidgin bank, Accra has its own, Nairobi, Kampala and Dar es Salaam share a S
 The generated talk banks belong to venue regulars and house characters and are hundreds of kilobytes a city, so the conductor does not
 load them. Like the talk banks' phrasebook, the phrases await review by fluent speakers.
 
+## Radio
+
+Between the conductor's calls the run shows a "Radio" line in the same bubble when the conductor has been quiet for 20 seconds: a line the city
+news ticker posted in the last hour (docs/GIST.md, "The ticker"), or a line about the hour in the city's register. Text only; `src/news/radio.ts`
+is fetched at the first quiet stretch of a run.
+
 ## Views and devices
 
 - **3D road** (`src/app/features/danfo/roadView3d.ts`): the game's procedural vehicles (`src/models/vehicles`), pooled; instanced lane

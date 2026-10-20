@@ -577,6 +577,10 @@ button.ui-row:hover{background:#f7f9f8}
 .life-burst{position:fixed;left:50%;top:var(--toast-top,84px);width:0;height:0;z-index:41;pointer-events:none}
 .life-burst i{position:absolute;left:0;top:0;width:8px;height:8px;border-radius:2px;background:var(--c,#f2b01e);animation:life-burst .9s var(--ease-out) forwards}
 @keyframes life-burst{from{opacity:1;transform:translate(0,0) rotate(0)}70%{opacity:1}to{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r))}}
+/* The pop (src/scene/feel/pop.ts): squash to (1.3, 0.7) and spring back past 1 in 180 ms. It uses the `scale` property, so it adds to any transform the element has. --pop (0..1) is how hard; reduced motion makes it softer and shorter in the script. */
+.feel-pop{animation:feel-pop var(--pop-ms,180ms) cubic-bezier(.2,.9,.3,1) both}
+.scene-reward.feel-pop{transform-origin:50% 100%}
+@keyframes feel-pop{0%{scale:calc(1 + .3*var(--pop,1)) calc(1 - .3*var(--pop,1))}55%{scale:calc(1 - .08*var(--pop,1)) calc(1 + .08*var(--pop,1))}100%{scale:1 1}}
 /* A new roadside event draws the eye to its chip twice, then waits: it never opens by itself (panels/roadside-chip.js). */
 .map-event-chip.is-new{animation:ui-nudge .7s var(--ease-out) 2}
 @keyframes ui-nudge{0%,100%{box-shadow:0 0 0 0 #e39a1c00}40%{box-shadow:0 0 0 6px #e39a1c66}}

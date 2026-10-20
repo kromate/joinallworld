@@ -3,10 +3,11 @@
  * The HIGH quality tier's extras, all lazy: nothing here is in the startup bundle, and a phone never
  * imports it. A procedurally generated environment map (three's RoomEnvironment through PMREM, no
  * download) at low intensity gives standard materials a believable specular response, and a subtle
- * bloom for emissive night lights (EffectComposer + UnrealBloomPass, fetched only at night).
+ * post stack for emissive night lights, contact shading and a climate grade (src/scene/fx/post.ts, fetched only on demand).
  */
 import type * as THREE from 'three';
 import type { ThreeModule } from './types.ts';
+import type { GradeKind, HourBand } from './fx/grade.ts';
 
 /** Environment intensity as a share of the scene's brightest hemisphere light (night gets less). */
 /** The bloom pipeline draws at up to this pixel ratio (the canvas itself stays at the tier's): a retina screen costs ~half the pixels, and a glow is soft anyway. */
@@ -40,27 +41,21 @@ export async function ensureEnvironment(THREE: ThreeModule, renderer: Renderer, 
   } catch { /* no environment: the scene simply keeps its direct lights */ }
 }
 
-export interface Bloom { render(scene: THREE.Scene, camera: THREE.Camera): void; setSize(width: number, height: number, pixelRatio: number): void; dispose(): void }
-/**
- * A subtle bloom for the night's lamps and signs: threshold high so only emissive surfaces glow.
- * The composer draws into a 2x MSAA half-float target and OutputPass applies the same tone mapping.
- */
-export async function createBloom(THREE: ThreeModule, renderer: Renderer, width: number, height: number, threshold = 0.85): Promise<Bloom> {
-  const [{ EffectComposer }, { RenderPass }, { UnrealBloomPass }, { OutputPass }] = await Promise.all([
-    import('three/examples/jsm/postprocessing/EffectComposer.js'),
-    import('three/examples/jsm/postprocessing/RenderPass.js'),
-    import('three/examples/jsm/postprocessing/UnrealBloomPass.js'),
-    import('three/examples/jsm/postprocessing/OutputPass.js'),
-  ]);
-  const target = new THREE.WebGLRenderTarget(width, height, { type: THREE.HalfFloatType, samples: 2 });
-  const composer = new EffectComposer(renderer, target);
-  const render = new RenderPass(new THREE.Scene(), new THREE.PerspectiveCamera());
-  const bloom = new UnrealBloomPass(new THREE.Vector2(width, height), 0.4, 0.55, threshold);
-  composer.addPass(render); composer.addPass(bloom); composer.addPass(new OutputPass());
-  return {
-    render(scene, camera) { render.scene = scene; render.camera = camera; composer.render(); },
-    setSize(w, h, ratio) { composer.setPixelRatio(Math.min(ratio, BLOOM_RATIO)); composer.setSize(w, h); },
-    dispose() { composer.dispose(); target.dispose(); },
-  };
+export interface Bloom {
+  render(scene: THREE.Scene, camera: THREE.Camera): void
+  setSize(width: number, height: number, pixelRatio: number): void
+  /** Re-grade the picture for a season and hour (src/scene/fx/grade.ts). Optional: a caller that never asks keeps the clear-day grade. */
+  setGrade?(kind: GradeKind, band: HourBand): void
+  dispose(): void
 }
-
+/**
+ * The HIGH tier's post stack (src/scene/fx/post.ts): bloom for the night's lamps and signs (threshold high so only emissive
+ * surfaces glow), contact shading, a gentle vignette, MSAA and the climate grade, in one lazy chunk. This keeps its old
+ * signature: the stack is built here and drawn at up to BLOOM_RATIO.
+ */
+export async function createBloom(THREE: ThreeModule, renderer: Renderer, width: number, height: number, threshold = 0.85, grade?: { kind: GradeKind; band: HourBand }): Promise<Bloom> {
+  const { createPost, postAoEnabled } = await import('./fx/post.ts');
+  const post = await createPost(THREE, renderer, width, height, { threshold, maxRatio: BLOOM_RATIO, ao: postAoEnabled(), ...(grade ? { grade } : {}) });
+  post.setSize(width, height, renderer.getPixelRatio?.() ?? 1);
+  return post;
+}

@@ -12,7 +12,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SCENE_HOST_RAW, SCENE_HOST_GZIP } from '../budgets.ts';
+import { SCENE_HOST_RAW, SCENE_HOST_GZIP, FX_RAW, FX_GZIP } from '../budgets.ts';
 import type * as THREE from 'three';
 import { createKit } from './kit.ts';
 import type { SceneVenue } from './types.ts';
@@ -318,5 +318,48 @@ test('the shared scene chunk holds no city\'s own scenes: each is a chunk of its
   for (const name of cities) {
     const own = readFileSync(join(assets, name), 'utf8');
     assert.deepEqual([...own.matchAll(/(?:\bfrom|\bimport)\s*"\.\/([^"]+\.js)"/g)].map((match) => match[1] as string).filter((other) => /^city-.+-scenes/.test(other)), [], `${name} needs no other city's scenes`);
+  }
+});
+
+// ---- the fx chunk ----------------------------------------------------------------------------------------------------------------
+// Weather, particles, post-processing and game feel (src/scene/fx, src/scene/feel, and the libraries behind them) are one lazy chunk, `fx`.
+// Its budget is a first guess until phase 2 of docs/OPEN-SOURCE-PLAN.md has put real code in it. With no `fx` chunk (nothing imports it yet)
+// both tests pass; the second one holds from the day there is one.
+test('the fx chunk, when the build has one, is inside its raw and gzip budgets', (t) => {
+  const assets = join(root, 'dist', 'assets');
+  if (!existsSync(assets)) { t.diagnostic('no dist/: run `npm run build` to check the fx chunk'); return; }
+  const fx = readdirSync(assets).filter((name) => /^fx-[\w-]{7}\.js$/.test(name));
+  if (!fx.length) { t.diagnostic('no fx chunk in this build: nothing imports src/scene/fx yet'); return; }
+  assert.equal(fx.length, 1, 'one fx chunk');
+  const bytes = readFileSync(join(assets, fx[0]!)), size = { raw: bytes.length, gzip: gzipSync(bytes).length };
+  t.diagnostic(`${fx[0]} ${size.raw} raw ${size.gzip} gzip`);
+  assert.ok(size.raw <= FX_RAW.value, `the fx chunk is ${size.raw} bytes (budget ${FX_RAW.value})`);
+  assert.ok(size.gzip <= FX_GZIP.value, `the fx chunk is ${size.gzip} bytes gzipped (budget ${FX_GZIP.value})`);
+});
+
+test('no chunk of the first download, of any city\'s startup or of the scene host imports the fx chunk statically', (t) => {
+  const assets = join(root, 'dist', 'assets');
+  if (!existsSync(assets)) { t.diagnostic('no dist/: run `npm run build` to check the fx chunk'); return; }
+  const names = readdirSync(assets).filter((name) => name.endsWith('.js'));
+  const statics = (name: string): string[] => [...readFileSync(join(assets, name), 'utf8').matchAll(/(?:\bfrom|\bimport)\s*"\.\/([^"]+\.js)"/g)].map((match) => match[1] as string);
+  /** `roots` and every chunk they import statically (a dynamic `import("./x.js")` is not followed). */
+  const closure = (roots: string[]): Set<string> => {
+    const seen = new Set<string>(), queue = [...roots];
+    while (queue.length) { const name = queue.pop()!; if (seen.has(name) || !names.includes(name)) continue; seen.add(name); queue.push(...statics(name)); }
+    return seen;
+  };
+  const html = existsSync(join(root, 'dist', 'index.html')) ? readFileSync(join(root, 'dist', 'index.html'), 'utf8') : '';
+  const page = [...html.matchAll(/<(?:script|link)\b[^>]*\b(?:src|href)="\/assets\/([^"]+\.js)"/g)].map((match) => match[1] as string);
+  const cities = [...new Set(names.map((name) => /^city-(.+)-(?:rules|content)-[\w-]{7}\.js$/.exec(name)?.[1]).filter((id): id is string => !!id))];
+  const sets: Record<string, string[]> = {
+    'first page': page,
+    'startup shell': names.filter((name) => /^startApp-[\w-]{7}\.js$/.test(name)),
+    'scene host': names.filter((name) => /^world-adapter-[\w-]{7}\.js$/.test(name)),
+    ...Object.fromEntries(cities.map((id) => [`${id} startup`, names.filter((name) => name.startsWith(`city-${id}-rules-`) || name.startsWith(`city-${id}-content-`))])),
+  };
+  for (const [label, roots] of Object.entries(sets)) {
+    const reached = closure(roots);
+    t.diagnostic(`${label}: ${reached.size} chunks`);
+    assert.deepEqual([...reached].filter((name) => /^fx-[\w-]{7}\.js$/.test(name)), [], `${label} must not import the fx chunk statically`);
   }
 });

@@ -18,6 +18,9 @@ import { ACT, ARENA_W, BODY_H, HZ, MOVES, PHASE } from './fight.ts'
 import type { FighterSnap, FightSnap } from './fight.ts'
 import { defaultNativeLook, nativeFightersAllowed, unpackNativeLook } from './native-look.ts'
 import type { ArenaNative } from '../types/arena.ts'
+import { shakeReduced } from '../scene/feel/reduce.ts'
+import { createHitStop } from '../scene/feel/hitstop.ts'
+import { fightHitStopMs } from '../scene/feel/tiers.ts'
 import { clipsFor, spawnNativeFighter, warmNative } from './fight-native.ts'
 import type { NativeFighter } from './fight-native.ts'
 
@@ -242,7 +245,9 @@ export async function createFightView(canvas: HTMLCanvasElement, opts: { reduced
   let nextSpark = 0
 
   const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 80)
-  const shake = new Shake(opts.reduced), shakeOffset = new THREE.Vector3()
+  const shake = new Shake(opts.reduced || shakeReduced()), shakeOffset = new THREE.Vector3()
+  // Hit-stop: the fighters' poses and the sparks hold for 50-90 ms when a blow lands (src/scene/feel/hitstop.ts). Real time, not frames; the rules and input never wait.
+  const hitStop = createHitStop()
   const look = new THREE.Vector3(0, CANVAS_Y + 0.95, 0), camPos = new THREE.Vector3(0, CANVAS_Y + 1.6, 7)
   const stats = new FrameStats()
   let last = 0, koSince = -1, sizeW = 300, sizeH = 300, inset: Insets = NO_INSETS, snapCamera = true
@@ -281,6 +286,7 @@ export async function createFightView(canvas: HTMLCanvasElement, opts: { reduced
         return meta.own && meta.you === seat ? meta.own : mixd
       }) as [FighterSnap, FighterSnap]
       const over = b.p === PHASE.over
+      const held = hitStop.advance(dt) // 0 while a blow's freeze lasts: poses and sparks use this, the camera and the rules do not
       // Who is sitting where: dress each seat from its public look when the roster changes (the real characters), or give up on them.
       const seats = opts.seats?.() ?? null
       if (mode === 'native' && clipsModel) {
@@ -313,7 +319,7 @@ export async function createFightView(canvas: HTMLCanvasElement, opts: { reduced
         const action = body.actions.get(clip)
         const scale = clip === 'punch' || clip === 'punch-2' || clip === 'kick' ? attackScale(action?.getClip().duration ?? 0.4, f[3]) : clip === 'walk' || clip === 'walk-back' ? (mode === 'native' ? Math.min(1.7, Math.max(0.7, Math.abs(speed) / WALK_SPEED)) : Math.min(1.6, Math.max(0.7, Math.abs(speed) / 2.2))) : 1
         play(body, clip, now, startedAttack || (startedHurt && (clip === 'hit' || clip === 'hit-2')), scale)
-        body.mixer.update(dt)
+        body.mixer.update(held)
         // The shadow stays on the canvas and shrinks as the fighter rises.
         const lift = Math.max(0, f[1] * UNIT)
         body.shadow.position.set(w.x, CANVAS_Y + 0.012, 0)
@@ -324,9 +330,9 @@ export async function createFightView(canvas: HTMLCanvasElement, opts: { reduced
       for (let i = 0; i < SPARKS; i++) {
         const life = sparkLife[i] as number
         if (life >= 1) { sparkPos[i * 3 + 1] = -10; continue }
-        sparkLife[i] = life + dt * 2.2
-        sparkVel[i * 3 + 1] = (sparkVel[i * 3 + 1] as number) - 9.8 * dt
-        for (let k = 0; k < 3; k++) sparkPos[i * 3 + k] = (sparkPos[i * 3 + k] as number) + (sparkVel[i * 3 + k] as number) * dt
+        sparkLife[i] = life + held * 2.2
+        sparkVel[i * 3 + 1] = (sparkVel[i * 3 + 1] as number) - 9.8 * held
+        for (let k = 0; k < 3; k++) sparkPos[i * 3 + k] = (sparkPos[i * 3 + k] as number) + (sparkVel[i * 3 + k] as number) * held
       }
       sparkGeo.attributes.position!.needsUpdate = true
       // The camera: between the two, closer as they close in; on a knock-out it turns slowly round the one who went down.
@@ -356,6 +362,7 @@ export async function createFightView(canvas: HTMLCanvasElement, opts: { reduced
         const body = bodies[seat]
         if (body) { if (blocked) body.blockHitUntil = performance.now() + 260; else if (strong) body.strongUntil = performance.now() + 400 }
         shake.kick(blocked ? 0.05 : strong ? 0.22 : 0.12)
+        if (!shake.reduced) hitStop.freeze(fightHitStopMs(!!strong, !!blocked))
         const at = toWorld(x, y), n = blocked ? 8 : strong ? 18 : 12
         for (let i = 0; i < n; i++) {
           const k = nextSpark = (nextSpark + 1) % SPARKS, a = Math.random() * Math.PI * 2, v = 1.5 + Math.random() * (strong ? 4 : 2.6)

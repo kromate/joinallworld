@@ -73,6 +73,31 @@ public when written and holds no id; nothing in it is about the caller. (`id`, n
 * **Share.** Kind `gist` of the share cards (docs/SHARE-CARDS.md): the browser sends only the line's number, `createShare` reads the line from the
   ledger, and the card's headline is its words (`card-news.png`, lands beside the sharer). An expired or unknown number gives "nothing to share".
 
+## The ticker (Phase 4 of the open-source plan)
+
+A one-line city news board, built on the lines the page already has: `src/news/` (lazy only; never in the first download), shown by
+`src/app/features/gist/Ticker.vue`. The observer (`src/news/observer.ts`, pure) watches the gist lines the store holds, a few of the player's own
+numbers (a money jump, a goal done, a level up) and the districts that have just lost light (`powerCutAt`, the conditions code the scene's lamps
+and generators already read). It posts at most one line per 7 seconds plus a weight (a heavy story holds the board longer), counts per hour of the
+city clock for ordinals ("the 3rd food stall opened in Yaba Market this hour"), never posts the same words or reuses a bank line within an hour,
+tells a life topic or an outage at most once an hour, and fills a quiet hour with one line of colour ("the suya smoke rises as the sun drops").
+The words are a small bank per register (`src/news/banks.ts`): Lagos pidgin-light for Nigerian cities, Kano for the northern ones, plain English
+elsewhere; the pidgin and Hausa-flavoured phrases are BETA, like the conductor's, and await review by fluent speakers. A line holds no name, no
+price and no amount. Nothing is stored and nothing is sent to the server.
+
+Where it shows: the Square panel (the ticker's line instead of the plain gist line; the gist line stays as its fallback when the ticker has
+nothing fresh), a thin "News" strip in the notice slot for nine seconds after each line (`mountTicker.ts`, started from the chatter chunk ten seconds
+after the game is up, so the first download carries none of it; it stays out of the way of the coach and of the Square), and the danfo radio (`src/news/radio.ts`, read in `DanfoRun.vue` when the conductor
+has been quiet for 20 seconds). The gist route is read at most once a minute by the ticker, through the store's own limit.
+
+### People who remember you
+
+`src/news/acquaintance.ts` keeps, on this device only (`localStorage` key `joinallworld-acquaintance-v1`), which regular you said hello to (or
+gisted with, joked with, complimented) or bought a drink for, for 24 hours: `{ v: 1, people: { <regular id>: { kind: 'greeted' | 'bought', until } } }`,
+at most 50 entries, bad entries skipped. `NpcCard.vue` writes it when an interaction starts. The ambient layer (`src/scene/ambient/layer.ts`)
+looks it up by the regular's id and, when the player comes within 6 m, the regular turns, waves for 3.5 seconds and says one line (thirty per kind,
+ten per register, `src/news/memory-lines.ts`); never on a still placement (reduced motion). No server table, no player id, nothing shared.
+
 ## For agents
 
 `check_gist { query }` (server/agents/tools-more.ts) is read-only: it returns at most five matching lines of the agent's city and the world,

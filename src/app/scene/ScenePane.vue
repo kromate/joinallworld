@@ -25,6 +25,7 @@ import { lightOn } from '../../lightMode.ts'
 import { placeNow } from '../features/places/placeState.ts'
 
 const SceneViewToggle = defineAsyncComponent(() => import('./SceneViewToggle.vue'))
+const TapCard = defineAsyncComponent(() => import('./TapCard.vue'))
 const viewHostRevision = ref(0)
 
 const props = defineProps<{
@@ -184,6 +185,7 @@ defineExpose({ layout })
 <template>
   <div id="venue-scene" ref="container" class="life-scene" :data-mode="game.mode.value" :hidden="hidden" @animationend.self="onResize">
     <SceneViewToggle v-if="!waiting" :host-revision="viewHostRevision" />
+    <TapCard v-if="!waiting" :bottom="props.bottom" />
     <div v-if="waiting" class="scene-wait" :class="{ 'is-stuck': failed || stuck }" role="status">
       <img src="/icons/world-loader.webp" width="96" height="96" alt="" />
       <SceneUnsupported v-if="failed" />

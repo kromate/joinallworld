@@ -43,3 +43,11 @@ function onArrow(event: KeyboardEvent, index: number): void {
   </div>
   <PanelHost v-if="current" :key="current.id" class="sheet-body" role="tabpanel" :aria-labelledby="`sim-tab-${current.id}`" :panel="current" :params="params" />
 </template>
+
+<style>
+/* The sheet is 480 px on a desktop or tablet: seven tabs fit without a scroll. */
+@media (min-width: 480px) {
+  .sim-tabs[role='tablist'] { gap: 2px; }
+  .sim-tabs[role='tablist'] button { padding: 0 8px; }
+}
+</style>

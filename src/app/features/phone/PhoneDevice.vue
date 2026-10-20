@@ -57,7 +57,12 @@ const appPanel = computed(() => (app.value && !app.value.help ? shell.byId.get(a
 const appParams = computed(() => (sheet.value?.kind === 'panel' ? sheet.value.params : null))
 const tint = computed(() => (app.value ? tintOf(appPanel.value ?? { id: app.value.id }) : undefined))
 const shade = ref(false)
-const wide = ref(false)
+// Wide mode: the player's own choice (the expand button) wins and lasts across apps. With no choice made, the
+// Tables and Games apps open wide on a big window (1400 x 900 or more), where their boards use the room; every
+// other app, and every phone or laptop screen, opens at the normal width.
+const wideChoice = ref<boolean | null>(null)
+const OPEN_WIDE_APPS = new Set(['tables', 'games'])
+const wide = computed(() => wideChoice.value ?? (Boolean(app.value && OPEN_WIDE_APPS.has(app.value.id)) && typeof window.matchMedia === 'function' && window.matchMedia('(min-width: 1400px) and (min-height: 900px)').matches))
 const page = ref(0)
 const lastApp = ref<string | null>(null)
 
@@ -232,7 +237,7 @@ defineExpose({
               <button class="ph-back" type="button" aria-label="Back to the home screen" @click="shell.open('phone')"><GameIcon bare name="back" /></button>
               <AppArtwork class="ph-bar-icon" :app="app.id" />
               <h2>{{ app.title }}</h2>
-              <button class="ph-wide" type="button" :aria-pressed="wide" :aria-label="wide ? 'Make the phone narrower' : 'Make the phone wider'" :title="wide ? 'Narrower' : 'Wider'" @click="wide = !wide"><GameIcon bare :name="wide ? 'shrink' : 'expand'" /></button>
+              <button class="ph-wide" type="button" :aria-pressed="wide" :aria-label="wide ? 'Make the phone narrower' : 'Make the phone wider'" :title="wide ? 'Narrower' : 'Wider'" @click="wideChoice = !wide"><GameIcon bare :name="wide ? 'shrink' : 'expand'" /></button>
               <button class="ph-appclose" type="button" aria-label="Close the phone" @click="shell.close()"><GameIcon bare name="close" /></button>
             </template>
           </header>

@@ -111,14 +111,14 @@ function showAround(): void { emit('close'); window.dispatchEvent(new CustomEven
 .fm-top { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .fm-top b { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--c-green-dark, #1d6b43); }
 .fm-here { flex: none; padding: 2px 8px; border-radius: 999px; background: var(--c-green-soft, #e8f5ec); color: var(--c-green-dark, #1d6b43); font-weight: 650; }
-.fm-x { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 50%; background: none; color: var(--c-muted, #6b7280); }
+.fm-x { flex: none; display: grid; place-items: center; width: 44px; height: 44px; margin: -8px -8px -8px 0; border: 0; border-radius: 50%; background: none; color: var(--c-muted, #6b7280); }
 .fm-items { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
-.fm-items button { width: 100%; padding: 4px 0; border: 0; background: none; color: inherit; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fm-items button { width: 100%; min-height: 44px; padding: 4px 0; border: 0; background: none; color: inherit; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .fm-act { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
 .fm-act small { flex: 1 1 140px; color: var(--c-muted, #6b7280); }
-.fm-go { min-height: 40px; padding: 0 16px; border: 0; border-radius: var(--r-pill, 999px); background: var(--c-green-dark, #1d6b43); color: #fff; font-weight: 700; }
+.fm-go { min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--r-pill, 999px); background: var(--c-green-dark, #1d6b43); color: #fff; font-weight: 700; }
 .fm-go:disabled { opacity: .6; cursor: default; }
-.fm-link { min-height: 40px; padding: 0 4px; border: 0; background: none; color: var(--c-green-dark, #1d6b43); font-weight: 650; text-decoration: underline; }
+.fm-link { min-height: 44px; padding: 0 8px; border: 0; background: none; color: var(--c-green-dark, #1d6b43); font-weight: 650; text-decoration: underline; }
 @keyframes fm-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .fm { animation: none; } }
 </style>

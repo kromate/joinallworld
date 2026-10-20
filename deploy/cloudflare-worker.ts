@@ -105,7 +105,7 @@ const ACK_CHECK_MS = 60000;
 /** How often expired sessions are looked for after start-up (expiredSessions below). */
 const EXPIRY_SWEEP_MS = 60000;
 /** Path prefixes outside /api/ that a module may serve as an HTML page (ctx.pages). The Worker sends these to the object. */
-const PAGE_PREFIXES = ['/s/', '/e/', '/shop/', '/agents/', '/p/', '/episode/', '/c/', '/ev/', '/privacy', '/money', '/economy/', '/features', '/pages', '/skills'];
+const PAGE_PREFIXES = ['/s/', '/e/', '/shop/', '/agents/', '/p/', '/episode/', '/c/', '/ev/', '/privacy', '/money', '/economy/', '/about', '/features', '/pages', '/skills'];
 /** A socket's attachment may hold 2,048 bytes. */
 const ATTACHMENT_BYTES = 2000;
 /** The limiter's STORED classes, one table each (server/limiter.ts). The short class is kept in memory and has no table. */
@@ -827,7 +827,7 @@ export class JoinAllworldState extends DurableObject<WorkerEnv> {
       if (!page || typeof page.html !== 'string') return none();
       const status = typeof page.status === 'number' && Number.isInteger(page.status) && page.status >= 200 && page.status <= 599 ? page.status : 200;
       this.telemetry.http({ method: raw.method, route: key, status, ms: performance.now() - began });
-      return new Response(raw.method === 'HEAD' ? null : page.html, { status, headers: { ...pageHeaders(factsOfUrl(url)), 'Cache-Control': page.cache !== false && raw.method !== 'POST' && status === 200 ? 'public, max-age=300' : 'no-store' } });
+      return new Response(raw.method === 'HEAD' ? null : page.html, { status, headers: { ...pageHeaders(factsOfUrl(url), { pathname: url.pathname, status, method: raw.method }), 'Cache-Control': page.cache !== false && raw.method !== 'POST' && status === 200 ? 'public, max-age=300' : 'no-store' } });
     } catch (thrown) {
       const coded = (thrown ?? {}) as Partial<HttpError>;
       const known = Number.isInteger(coded.status) && typeof coded.code === 'string';

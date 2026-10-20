@@ -53,6 +53,7 @@ type AmbientPerson = import('../../scene/ambient/layer.ts').AmbientPerson;
 /** What the adapter asks of either host (the venue host has more; the campus host has no setGoal/zoom/recentre/prepare). */
 interface WorldHost {
   setView?(factory: SceneViewFactory | null): boolean;
+  describeAt?(clientX: number, clientY: number): import('../../venue-world.ts').TapDescription | null;
   setStreet?(street: WorldStreetResponse | null): void;
   walkNeighbourDoor?(host: string): boolean;
   walkStreetGate?(): boolean;
@@ -294,6 +295,8 @@ export function createWorldAdapter(container: HTMLElement, { location = 'park', 
 
   return {
     setView(factory: SceneViewFactory | null) { viewFactory = factory; return host?.setView?.(factory) ?? false; },
+    /** What a tap would land on, read only (the venue host only; the campus answers null). */
+    describeAt(clientX: number, clientY: number) { return host?.describeAt?.(clientX, clientY) ?? null; },
     update() { host?.update(); },
     resize() { host?.resize(); },
     get location() { return currentLocation; },

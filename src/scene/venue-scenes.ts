@@ -92,6 +92,10 @@ import { FIGURE_GAP, gapFor, tieOf, newGaze, stepGaze, watch, gazing } from './s
 import type { GazeState } from './space.ts';
 import { spotMarker, gameTable } from './props.ts';
 import { createAmbientHub } from './ambient/hub.ts';
+import { coverRecorder } from './roof-record.ts';
+import type { CoverRecorder } from './roof-record.ts';
+import type { Weather } from './fx/weather.ts';
+import { withWetQuery } from './weather-query.ts';
 import type { Ident } from './ambient/plan.ts';
 import { tablesAt, GAME_LABELS } from '../tables/city-places.ts';
 import { CITY_RULES, DEFAULT_CITY_ID } from '../game/cities/registry.ts';
@@ -484,6 +488,23 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     heightAt: (x, z) => walk.heightAt(x, z), avatar: () => ({ x: avatar.position.x, z: avatar.position.z }), fixed: () => staticExtras?.group.userData.occupiedPositions ?? [], spent: () => spentWithoutAmbient(), live: () => live, changed: () => ambientChanged?.(false), ready: () => { batchKey = null; buildActors(); ambientChanged?.(true); },
   });
 
+  // The weather (src/scene/fx, one lazy chunk): rain on an open-air place, a grill's smoke, a running generator's exhaust. A dry place with nothing to
+  // smoke never loads it. It asks for no frames of its own: it moves inside the same wake window as the background people (ambient/layer.ts).
+  let weatherFx: Weather | null = null, weatherAsked = false, roofRecord: CoverRecorder | null = null;
+  function syncWeather() {
+    if (!live || disposed) return;
+    const outdoor = mood === 'outdoor', place = () => ({ landmarks: layout?.spots ?? [], behind: footprints?.floor ? { x: footprints.floor[2] - 1.5, z: footprints.floor[1] + 1.5 } : null });
+    if (weatherFx) { weatherFx.setTime(view.time); weatherFx.update(view.weather, place()); ambientChanged?.(true); return; }
+    if (weatherAsked || !((outdoor && view.weather.wet) || (view.weather.outage && view.weather.generator) || (layout?.spots ?? []).some((spot) => /suya|grill|smoke/i.test(spot.key)))) return;
+    weatherAsked = true;
+    void import('./fx/index.ts').then((fx) => fx.loadFxHere()).then(({ tier, weather: fx }) => {
+      if (!live || disposed) { weatherAsked = false; return; }
+      const b = grid?.bounds ?? footprints?.floor ?? [-20, -20, 20, 20];
+      weatherFx = fx.createWeather({ THREE, parent: group, tier, open: outdoor, time: view.time, roofs: { boxes: roofRecord?.boxes() ?? [], bounds: [b[0] - 8, b[1] - 8, b[2] + 8, b[3] + 8] } });
+      syncWeather();
+    }).catch(() => { weatherAsked = false; });
+  }
+
   let refreshingCharacters = false;
   group.userData.refreshCharacterCosts = () => {
     if (!live || refreshingCharacters) return;
@@ -501,7 +522,8 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
   }
 
   function drawStatic() {
-    let recorder = footprintRecorder(createBatch(THREE));
+    roofRecord = coverRecorder(createBatch(THREE));
+    let recorder = footprintRecorder(roofRecord.batch);
     let batch = recorder.batch;
     const neutralWorship = !runtime && options.design && wanted === 'worship' && !options.variant;
     layout = ((neutralWorship && parametric ? parametric.buildQuietParametricWorship(batch, context) : def.build(batch, context)) || {}) as SceneLayout;
@@ -928,6 +950,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     shared.materials.glow.color.setScalar(preset.glow);
     for (const object of staticObjects as THREE.PointLight[]) if (object.isPointLight) object.intensity = object.userData.intensity * preset.lamps;
     if (sky) paintSky(THREE, sky, preset.sky);
+    syncWeather();
   }
   function runtimeSupport(x: number, z: number): number | null { return runtime?.createHost.support(runtime.support, x, z) ?? null; }
   function meshDrawCalls(mesh: THREE.Mesh): number {
@@ -1013,6 +1036,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
     actorBatch?.dispose(); actorBatch = null;
     releaseObjects(markObjects);
     ambient.release();
+    weatherFx?.dispose(); weatherFx = null; weatherAsked = false;
     marks.ring = null; marks.near = null; marks.goal = null;
     clearFigures();
     avatar.parent?.remove(avatar);
@@ -1224,12 +1248,12 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
       return changed;
     },
     /** One step of the people (their own window of frames: src/scene/ambient/layer.ts). True while the window is open. */
-    stepAmbient(dt: number) { const changed = ambient.layer?.step(dt) ?? false; guardRuntimeBudget(); return changed; },
+    stepAmbient(dt: number) { const changed = ambient.layer?.step(dt) ?? false, weather = weatherFx?.step(dt) ?? false; guardRuntimeBudget(); return changed || weather; },
     /** Open the window: the host draws frames for a few seconds so the people can be seen walking. False when there is nobody to see. */
-    wakeAmbient() { return ambient.layer?.wake() ?? false; },
+    wakeAmbient() { const people = ambient.layer?.wake() ?? false, weather = weatherFx?.wake() ?? false; return people || weather; },
     /** Place the people as they are and stand them still (reduced motion, no frame loop). */
-    settleAmbient() { ambient.layer?.settle(); },
-    get ambientAwake() { return stopLeft > 0 || (ambient.layer?.awake ?? false); },
+    settleAmbient() { ambient.layer?.settle(); weatherFx?.settle(); },
+    get ambientAwake() { return stopLeft > 0 || (ambient.layer?.awake ?? false) || (weatherFx?.awake ?? false); },
     get ambientFrames() { return ambient.layer?.frames ?? 0; },
     ambientPeople() { return ambient.people(); },
     ambientCaps() { return ambient.caps(); },
@@ -1283,7 +1307,7 @@ function createEntry(kit: Kit, venue: SceneVenue | null | undefined, wanted: str
         if (time !== view.time) { view.time = time; changed = true; }
       }
       if (Number.isFinite(state.t)) {
-        const weather = lookAt(cityId, venue, CITY_RULES[cityId]?.climate, state.t!);
+        const weather = withWetQuery(lookAt(cityId, venue, CITY_RULES[cityId]?.climate, state.t!));
         if (lookKey(weather) !== lookKey(view.weather)) { view.weather = weather; changed = true; }
         if (festiveChanged(state.t!)) changed = true;
       }

@@ -8,10 +8,10 @@ import { escapeHtml as esc } from '../path-meta.ts'
 import { naira } from '../../src/promote/model.ts'
 import type { EconomyView } from '../../src/types/neighbourhood.ts'
 
-const STYLE = `*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#193126;font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
-.wrap{max-width:760px;margin:0 auto;padding:22px 16px 48px}.brand{font-weight:850;text-decoration:none;color:#0f5132}h1{font-size:clamp(26px,7vw,38px);line-height:1.1;margin:14px 0 4px}h2{font-size:18px;margin:26px 0 8px}
-.meta{color:#53665d;font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}.stat{padding:14px;border-radius:16px;background:#174c36;color:#fff}.stat b{display:block;font-size:22px;overflow-wrap:anywhere}.stat span{font-size:13px;opacity:.85}
-table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}th,td{padding:8px 12px;text-align:left;border-bottom:1px solid #e6e1d3;font-size:15px}td.n,th.n{text-align:right}.go{display:inline-block;margin:18px 0 8px;padding:13px 18px;border-radius:14px;background:#f2b134;color:#193126;font-weight:850;text-decoration:none}a{color:#0f5132}`
+const STYLE = `@media(min-width:1800px){body{zoom:1.25}}@media(min-width:2800px){body{zoom:1.6}}*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#193126;font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:22px 16px 48px}.brand{display:inline-flex;align-items:center;min-height:44px;font-weight:850;text-decoration:none;color:#0f5132}h1{font-size:clamp(26px,7vw,38px);line-height:1.1;margin:14px 0 4px}h2{font-size:18px;margin:26px 0 8px}
+.meta{color:#53665d;font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}.stat{padding:14px 12px;border-radius:16px;background:#174c36;color:#fff}.stat b{display:block;font-size:clamp(18px,5.4vw,22px);line-height:1.25;overflow-wrap:anywhere}.stat span{display:block;margin-top:2px;font-size:14px;line-height:1.35;opacity:.92}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e6e1d3;font-size:15px}td.n,th.n{text-align:right}.go{display:inline-block;margin:18px 0 8px;padding:13px 18px;border-radius:14px;background:#f2b134;color:#193126;font-weight:850;text-decoration:none}a{color:#0f5132}`
 
 export function economyNotFoundHtml(origin: unknown): string {
   const base = safeOrigin(origin)

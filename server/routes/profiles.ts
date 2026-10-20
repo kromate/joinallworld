@@ -22,7 +22,7 @@ export default function profileRoutes(ctx: RouteContext): Record<RouteKey, Route
   ctx.pages?.set('/money', async ({ origin }) => ({ status: 200, cache: true, html: moneyPageHtml(origin) }))
   // The public guides (server/docs-pages.ts): every feature, every page and screen, and the AI skills. Each answers its exact address;
   // a longer one renders nothing and falls through (under /skills/ that is a skill's own files, public/skills/).
-  for (const prefix of ['/features', '/pages', '/skills']) ctx.pages?.set(prefix, async ({ path, origin }) => { const html = guidePage(path, origin); return html === null ? null : { status: 200, cache: true, html } })
+  for (const prefix of ['/about', '/features', '/pages', '/skills']) ctx.pages?.set(prefix, async ({ path, origin }) => { const html = guidePage(path, origin); return html === null ? null : { status: 200, cache: true, html } })
   ctx.pages?.set('/p/', async ({ path, query, origin, ip, method }) => {
     if (method !== 'GET' && method !== 'HEAD') return { status: 405, cache: false, html: unavailableProfilePageHtml(origin) }
     if (!ctx.allow(`profile:page:${ip}`, 60, 60000)) return { status: 429, cache: false, html: unavailableProfilePageHtml(origin) }

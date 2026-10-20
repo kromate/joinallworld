@@ -97,4 +97,6 @@ export function startChatter(): void {
   watch(() => [cityTalkContextKey(talkContext()), scene.venue.value] as const, reset, { flush: 'sync' })
   globalThis.document.addEventListener('visibilitychange', () => { if (globalThis.document.hidden) reset() })
   globalThis.setInterval(tick, POLL_MS)
+  // The city news strip (src/news/, docs/GIST.md "The ticker") starts here too: this chunk is fetched by every player once the game is up, so the first download carries nothing of it.
+  void import('../features/gist/mountTicker.ts').then(({ mountTicker }) => { mountTicker() }, () => undefined)
 }

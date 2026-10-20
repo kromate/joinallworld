@@ -355,7 +355,10 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
   function replyPage(res: ServerResponse, status: number, html: string, { cache = false, head = false }: { cache?: boolean; head?: boolean } = {}): boolean {
     if (res.headersSent || res.writableEnded || res.destroyed) return false;
     try {
-      res.writeHead(Number.isInteger(status) && status >= 200 && status <= 599 ? status : 200, { ...pageHeaders(factsOf(res.req)), 'Cache-Control': cache ? 'public, max-age=300' : 'no-store' });
+      const code = Number.isInteger(status) && status >= 200 && status <= 599 ? status : 200;
+      let pathname = '';
+      try { pathname = new URL(res.req.url ?? '/', 'http://localhost').pathname; } catch { /* malformed request target: keep the default page headers */ }
+      res.writeHead(code, { ...pageHeaders(factsOf(res.req), { pathname, status: code, method: res.req.method ?? '' }), 'Cache-Control': cache ? 'public, max-age=300' : 'no-store' });
       res.end(head ? undefined : html);
       return true;
     } catch (error) { log(`Page could not be written: ${errorDetail(error)}`); try { res.destroy(); } catch {} return false; }

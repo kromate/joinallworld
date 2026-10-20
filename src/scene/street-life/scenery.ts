@@ -15,11 +15,14 @@ import type { Bay, Frontage } from './shopfronts.ts';
 export { frontagesOf, planShopfronts } from './shopfronts.ts';
 import { flagFor, furnitureParts, planFurniture, planters } from './furniture.ts';
 import type { FlagSpec, FurnitureInput, FurnitureItem } from './furniture.ts';
+import { bayLights, emittersFor } from '../street/night-lights.ts';
+import type { Emitters } from '../street/night-lights.ts';
+import { lampPool } from '../street/light-pools.ts';
+import type { PoolSpot } from '../street/light-pools.ts';
 
 export type SceneryTime = 'day' | 'dusk' | 'night';
-/** How brightly the windows and lamp heads glow, and the signs, by the time of day. */
-export const GLASS_GLOW: Readonly<Record<SceneryTime, number>> = Object.freeze({ day: 0.12, dusk: 0.85, night: 1.3 });
-export const SIGN_GLOW: Readonly<Record<SceneryTime, number>> = Object.freeze({ day: 0, dusk: 0.45, night: 0.8 });
+/** The light a street is given before the scene tells it the hour (see night-lights.ts emittersFor): a plain day. */
+export const DAY_LIGHT: Emitters = emittersFor({ band: 'day', minuteOfDay: 720, outage: false, high: false });
 
 export interface SceneryPlan { bays: Bay[]; items: FurnitureItem[]; parts: Parts }
 /** The whole street's scenery as parts: the shop bays on the frontages, their planters, the furniture along the kerb line. */
@@ -29,6 +32,17 @@ export function planScenery(frontages: readonly Frontage[], furniture: Omit<Furn
   return { bays, items, parts: joinParts(shopParts(bays, furniture.base), furnitureParts(items, furniture.crossings, furniture.road, seed, furniture.base)) };
 }
 
+/**
+ * The ground pools of a street's scenery: one under every lamp head, and a soft spill on the pavement in front of each shop window
+ * (stronger when the shop is lit, gone when its draw is over the share, kept by a generator in a power cut).
+ */
+export function scenerySpots(plan: SceneryPlan, lights: { seeds: readonly number[]; generators: readonly boolean[] }, road: 1 | -1): PoolSpot[] {
+  const spots: PoolSpot[] = [];
+  for (const item of plan.items) if (item.kind === 'lamp') spots.push(lampPool(item.x, item.z + road * 1.15));
+  plan.bays.forEach((bay, i) => spots.push({ x: bay.x, z: bay.z + bay.facing * 1.8, rx: bay.width * 0.7, rz: 1.9, colour: SHOP_NAMES[bay.shop]!.glow, strength: 0.5, seed: lights.seeds[i]!, generator: lights.generators[i]! }));
+  return spots;
+}
+
 export interface SceneryOptions {
   parent: THREE.Object3D
   frontages: readonly Frontage[]
@@ -36,11 +50,15 @@ export interface SceneryOptions {
   seed: string
   /** The city's country id (the flag). */
   country: string | null
-  time: SceneryTime
+  /** What is lit now (night-lights.ts): brightness of glass, signs and lamp heads, the share of shops lit, and the grid. */
+  light: Emitters
 }
 export interface StreetScenery {
   readonly group: THREE.Group
-  setTime(time: SceneryTime): void
+  /** The hour or the grid changed: re-light the glass, the signs and the lamp heads. */
+  setLight(light: Emitters): void
+  /** The ground pools this scenery asks for (a lamp's, and the spill before each shop), for the street's one pool mesh (street/light-pools.ts). */
+  readonly pools: readonly PoolSpot[]
   readonly bays: number
   readonly items: number
   readonly triangles: number
@@ -103,7 +121,9 @@ function paintAtlas(kit: Kit, country: string | null): THREE.CanvasTexture | nul
 const QUAD_PARS = /* glsl */`
 attribute vec4 aCell;
 attribute float aLit;
+attribute vec2 aShop;
 varying float vLit;
+varying vec2 vShop;
 `;
 const QUAD_UV = /* glsl */`
 #include <uv_vertex>
@@ -111,6 +131,16 @@ const QUAD_UV = /* glsl */`
 vMapUv = uv * aCell.zw + aCell.xy;
 #endif
 vLit = aLit;
+vShop = aShop;
+`;
+// A shop is lit while its draw is under the share (a sign a little longer than its window), and a power cut darkens all but a generator's.
+const GLASS_VERTEX_PARS = /* glsl */`
+attribute vec2 aShop;
+varying vec2 vShop;
+`;
+const GLASS_VERTEX = /* glsl */`
+#include <begin_vertex>
+vShop = aShop;
 `;
 
 export function createStreetScenery(kit: Kit, options: SceneryOptions): StreetScenery {
@@ -119,7 +149,8 @@ export function createStreetScenery(kit: Kit, options: SceneryOptions): StreetSc
   group.name = 'street-scenery';
   options.parent.add(group);
   const plan = planScenery(options.frontages, options.furniture, options.seed), parts = plan.parts;
-  const glow = { value: GLASS_GLOW[options.time] }, signGlow = { value: SIGN_GLOW[options.time] };
+  const lights = bayLights(plan.bays.length, options.seed);
+  const glow = { value: options.light.glass }, lamp = { value: options.light.lamp }, signGlow = { value: options.light.sign }, share = { value: options.light.share }, power = { value: options.light.power };
   const owned: { geometry: THREE.BufferGeometry; material: THREE.Material; mesh: THREE.InstancedMesh }[] = [];
   const matrix = new THREE.Matrix4(), position = new THREE.Vector3(), scale = new THREE.Vector3(), turn = new THREE.Quaternion(), euler = new THREE.Euler(0, 0, 0, 'YXZ'), colour = new THREE.Color();
 
@@ -147,32 +178,50 @@ export function createStreetScenery(kit: Kit, options: SceneryOptions): StreetSc
   if (parts.glows.length) {
     const material = new THREE.MeshLambertMaterial({ color: '#5a5f66' });
     material.onBeforeCompile = (shader) => {
-      shader.uniforms.uGlow = glow;
+      shader.uniforms.uGlow = glow; shader.uniforms.uLamp = lamp; shader.uniforms.uShare = share; shader.uniforms.uPower = power;
+      shader.vertexShader = shader.vertexShader.replace('#include <common>', `#include <common>\n${GLASS_VERTEX_PARS}`).replace('#include <begin_vertex>', GLASS_VERTEX);
+      // vShop.x below zero is a lamp head: lit whenever there is power. Anything else is a shop's window: lit while its draw is under the share.
       shader.fragmentShader = shader.fragmentShader
-        .replace('#include <common>', '#include <common>\nuniform float uGlow;')
-        .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n#ifdef USE_COLOR\ntotalEmissiveRadiance += vColor.rgb * uGlow;\n#endif');
+        .replace('#include <common>', '#include <common>\nuniform float uGlow;\nuniform float uLamp;\nuniform float uShare;\nuniform float uPower;\nvarying vec2 vShop;')
+        .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+#ifdef USE_COLOR
+{
+  float fed = max(uPower, vShop.y * 0.8);
+  float on = (vShop.x < uShare ? 1.0 : 0.0) * fed;
+  float level = vShop.x < 0.0 ? uLamp : uGlow * mix(0.06, 1.0, on);
+  totalEmissiveRadiance += vColor.rgb * level * (vShop.x < 0.0 ? fed : 1.0);
+}
+#endif`);
     };
-    material.customProgramCacheKey = () => 'street-scenery-glow-1';
-    const mesh = instanced('street-scenery-glow', new THREE.BoxGeometry(1, 1, 1), material, parts.glows.length, (i) => boxMatrix(parts.glows[i]!));
+    material.customProgramCacheKey = () => 'street-scenery-glow-2';
+    const geometry = new THREE.BoxGeometry(1, 1, 1), shop = new Float32Array(parts.glows.length * 2);
+    parts.glows.forEach((b, i) => { shop[i * 2] = b.bay === undefined ? -1 : lights.seeds[b.bay]!; shop[i * 2 + 1] = b.bay !== undefined && lights.generators[b.bay] ? 1 : 0; });
+    geometry.setAttribute('aShop', new THREE.InstancedBufferAttribute(shop, 2));
+    const mesh = instanced('street-scenery-glow', geometry, material, parts.glows.length, (i) => boxMatrix(parts.glows[i]!));
     parts.glows.forEach((b, i) => mesh.setColorAt(i, colour.set(b.colour)));
     mesh.instanceColor!.needsUpdate = true;
   }
   if (parts.quads.length) {
     const geometry = new THREE.PlaneGeometry(1, 1);
-    const cells = new Float32Array(parts.quads.length * 4), lit = new Float32Array(parts.quads.length);
-    parts.quads.forEach((q, i) => { cells.set(atlasUv(q.cell), i * 4); lit[i] = q.lit ? 1 : 0; });
+    const cells = new Float32Array(parts.quads.length * 4), lit = new Float32Array(parts.quads.length), shop = new Float32Array(parts.quads.length * 2);
+    parts.quads.forEach((q, i) => { cells.set(atlasUv(q.cell), i * 4); lit[i] = q.lit ? 1 : 0; shop[i * 2] = q.bay === undefined ? -1 : lights.seeds[q.bay]!; shop[i * 2 + 1] = q.bay !== undefined && lights.generators[q.bay] ? 1 : 0; });
     geometry.setAttribute('aCell', new THREE.InstancedBufferAttribute(cells, 4));
     geometry.setAttribute('aLit', new THREE.InstancedBufferAttribute(lit, 1));
+    geometry.setAttribute('aShop', new THREE.InstancedBufferAttribute(shop, 2));
     const map = paintAtlas(kit, options.country);
     const material = new THREE.MeshLambertMaterial({ color: '#ffffff', map, alphaTest: 0.5, side: THREE.DoubleSide });
     material.onBeforeCompile = (shader) => {
-      shader.uniforms.uSignGlow = signGlow;
+      shader.uniforms.uSignGlow = signGlow; shader.uniforms.uShare = share; shader.uniforms.uPower = power;
       shader.vertexShader = shader.vertexShader.replace('#include <common>', `#include <common>\n${QUAD_PARS}`).replace('#include <uv_vertex>', QUAD_UV);
       shader.fragmentShader = shader.fragmentShader
-        .replace('#include <common>', '#include <common>\nuniform float uSignGlow;\nvarying float vLit;')
-        .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\ntotalEmissiveRadiance += diffuseColor.rgb * uSignGlow * vLit;');
+        .replace('#include <common>', '#include <common>\nuniform float uSignGlow;\nuniform float uShare;\nuniform float uPower;\nvarying float vLit;\nvarying vec2 vShop;')
+        .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+{
+  float signOn = (vShop.x < min(1.0, uShare + 0.25) ? 1.0 : 0.0) * max(uPower, vShop.y * 0.8);
+  totalEmissiveRadiance += diffuseColor.rgb * uSignGlow * vLit * signOn;
+}`);
     };
-    material.customProgramCacheKey = () => 'street-scenery-atlas-1';
+    material.customProgramCacheKey = () => 'street-scenery-atlas-2';
     instanced('street-scenery-atlas', geometry, material, parts.quads.length, (i) => {
       const q = parts.quads[i]!;
       matrix.compose(position.set(q.x, q.y, q.z), turn.setFromEuler(euler.set(0, q.ry, 0, 'YXZ')), scale.set(q.w, q.h, 1));
@@ -195,7 +244,8 @@ export function createStreetScenery(kit: Kit, options: SceneryOptions): StreetSc
     get items() { return plan.items.length; },
     get triangles() { return disposed ? 0 : triangles; },
     get drawCalls() { return disposed ? 0 : drawCalls; },
-    setTime(time) { glow.value = GLASS_GLOW[time] ?? GLASS_GLOW.day; signGlow.value = SIGN_GLOW[time] ?? 0; },
+    setLight(light) { glow.value = light.glass; lamp.value = light.lamp; signGlow.value = light.sign; share.value = light.share; power.value = light.power; },
+    pools: scenerySpots(plan, lights, options.furniture.road),
     dispose() {
       if (disposed) return;
       disposed = true;

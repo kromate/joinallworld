@@ -37,7 +37,7 @@ export function tint(a: string, b: string, amount: number): string {
 export function adjustLighting(base: Lighting, now: Readonly<LookConditions>): Lighting {
   if (!now.outage && !now.wet && !now.harmattan) return base
   let { glow, lamps } = base
-  let hemiPower = base.hemi[2], sunPower = base.sun[1]
+  let hemiPower = base.hemi[2], sunPower = base.sun[1], sunColour = base.sun[0]
   let sky: [string, string] = [...base.sky], hemi: [string, string] = [base.hemi[0], base.hemi[1]]
   if (now.outage) {
     // Dark outside the generator's reach; a generator keeps the room lit, only a little dimmer.
@@ -54,9 +54,11 @@ export function adjustLighting(base: Lighting, now: Readonly<LookConditions>): L
     sky = [tint(sky[0], RAIN, 0.35), tint(sky[1], RAIN, 0.3)]
     hemi = [tint(hemi[0], RAIN, 0.25), tint(hemi[1], RAIN, 0.15)]
     sunPower *= 0.75
+    // The sun loses its warmth too: rain-washed light is cooler as well as weaker.
+    sunColour = tint(sunColour, RAIN, 0.4)
     hemiPower *= 0.95
   }
-  return { ...base, sky, hemi: [hemi[0], hemi[1], hemiPower], sun: [base.sun[0], sunPower, base.sun[2]], glow, lamps }
+  return { ...base, sky, hemi: [hemi[0], hemi[1], hemiPower], sun: [sunColour, sunPower, base.sun[2]], glow, lamps }
 }
 
 /** What a place's light has to reckon with at `now`: its district's power, whether it has a generator, and the season of its city. */

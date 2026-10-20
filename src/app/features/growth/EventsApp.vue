@@ -100,6 +100,9 @@ function addToCalendar(event: CalendarOccurrence): void {
 </template>
 
 <style scoped>
-.gr-fest { margin: var(--s-2) 0; padding: var(--s-2) var(--s-3); border: 2px solid; border-radius: var(--r-sm); font-size: 13px; line-height: 1.4; color: var(--c-ink); }
-.gr-note { font-size: 12px; line-height: 1.45; color: var(--c-muted); margin: var(--s-2) 2px; }
+.gr-fest { margin: var(--s-2) 0; padding: var(--s-2) var(--s-3); border: 2px solid; border-radius: var(--r-sm); font-size: 14px; line-height: 1.4; color: var(--c-ink); }
+.gr-note { font-size: 13px; line-height: 1.5; color: var(--c-muted); margin: var(--s-2) 2px; }
+/* The phone expanded wide: two columns of event cards, with notes and headings across both. */
+.ph.is-wide .events { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-3); align-items: start; }
+.ph.is-wide .events > :not(.gr-card) { grid-column: 1 / -1; }
 </style>

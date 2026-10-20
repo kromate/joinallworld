@@ -39,13 +39,27 @@ export interface Size { raw: number; gzip: number; brotli: number }
 /** Brotli at quality 11 is slow on big chunks and every city's startup shares most of them: a file is measured once. */
 const measured = new WeakMap<Uint8Array, Size>()
 
+/**
+ * The bytes a compressor measures: the file with every chunk hash in it replaced by zeros of the same length. A chunk names the
+ * chunks it imports by their hashed file names, so a change to any lazy chunk changes those names in the untouched startup files, and
+ * seven random hex characters compress a little better or worse each time: the startup brotli figure moved by up to about 150 bytes
+ * between builds with identical raw sizes. Zeroing the hashes keeps the raw size exact and makes the compressed figures a property
+ * of the code alone.
+ */
+export function stableBytes(data: Uint8Array): Uint8Array {
+  const text = Buffer.from(data).toString('latin1')
+  const stable = text.replace(/-[0-9a-f]{7}(?=\.(?:m?js|css|json|woff2?|png|webp|svg|glb|wasm)\b)/g, '-0000000')
+  return stable === text ? data : Buffer.from(stable, 'latin1')
+}
+
 export function sizeOf(data: Uint8Array): Size {
   const known = measured.get(data)
   if (known) return known
+  const stable = stableBytes(data)
   const size = {
     raw: data.length,
-    gzip: gzipSync(data).length,
-    brotli: brotliCompressSync(data, { params: { [constants.BROTLI_PARAM_QUALITY]: 11, [constants.BROTLI_PARAM_SIZE_HINT]: data.length } }).length,
+    gzip: gzipSync(stable).length,
+    brotli: brotliCompressSync(stable, { params: { [constants.BROTLI_PARAM_QUALITY]: 11, [constants.BROTLI_PARAM_SIZE_HINT]: stable.length } }).length,
   }
   measured.set(data, size)
   return size
@@ -59,7 +73,8 @@ export async function measureAll(dist: Dist): Promise<void> {
   const queue = [...dist.values()].filter(data => !measured.has(data)).sort((a, b) => b.length - a.length)
   const worker = async (): Promise<void> => {
     for (let data = queue.shift(); data; data = queue.shift()) {
-      const [gz, br] = await Promise.all([gzipAsync(data), brotliAsync(data, { params: { [constants.BROTLI_PARAM_QUALITY]: 11, [constants.BROTLI_PARAM_SIZE_HINT]: data.length } })])
+      const stable = stableBytes(data)
+      const [gz, br] = await Promise.all([gzipAsync(stable), brotliAsync(stable, { params: { [constants.BROTLI_PARAM_QUALITY]: 11, [constants.BROTLI_PARAM_SIZE_HINT]: stable.length } })])
       measured.set(data, { raw: data.length, gzip: gz.length, brotli: br.length })
     }
   }

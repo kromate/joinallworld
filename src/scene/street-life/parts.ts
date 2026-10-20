@@ -8,8 +8,9 @@
  *   quads   cells of one canvas atlas (shop signs, mannequins in the windows, the flag)
  *   blobs   low round shapes (tree canopies, shrubs in planters)
  */
-export interface BoxPart { x: number; y: number; z: number; w: number; h: number; d: number; ry: number; colour: string; tilt?: number }
-export interface QuadPart { x: number; y: number; z: number; w: number; h: number; ry: number; cell: number; lit?: boolean }
+/** `bay` names the shop bay a window or a sign belongs to (its index in the plan's bays): the light on it is that shop's. */
+export interface BoxPart { x: number; y: number; z: number; w: number; h: number; d: number; ry: number; colour: string; tilt?: number; bay?: number }
+export interface QuadPart { x: number; y: number; z: number; w: number; h: number; ry: number; cell: number; lit?: boolean; bay?: number }
 export interface BlobPart { x: number; y: number; z: number; r: number; colour: string }
 export interface Parts { boxes: BoxPart[]; glows: BoxPart[]; quads: QuadPart[]; blobs: BlobPart[] }
 

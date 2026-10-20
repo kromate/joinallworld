@@ -255,3 +255,25 @@ Repos read: gamedev-skills/awesome-gamedev-agent-skills (game-feel, game-ai, cre
 naranyala/awesome-threejs-vfx; billpwchan/neon-zenith (rain.js, governor.js, README) and halcyon; rawprogress/fable-cities
 (PROMPT.md); StarKnightt/night-street; Khalidabdi1/factory; Faizankhan17623/OpenCity (npcmemory.js, citynews.js);
 okoliken/light-off; levy-street/world-of-claudecraft; Bingeljell/image-to-3dlab; and the library repos in the table.
+
+## Peers to watch (standing)
+
+**Re-read monthly.** The next reading is due 19 November 2026; whoever does it changes the dates below, notes what moved, and
+adds a line to the next phase's work record if something is worth borrowing. Each reading is five minutes: open the repository or
+page, look at what changed since the last date, and check that the licence is the same. Borrow ideas and techniques; never copy
+assets or names (the rules in [OPEN-SOURCE-PLAN.md](OPEN-SOURCE-PLAN.md)). Last checked: **19 October 2026**, the pass that wrote
+this page. The GitHub columns (licence as GitHub reports it, last push) were re-read on 20 October 2026 with `gh api repos/<r>`.
+
+| Peer | Lane | Where | Licence | Last push | What we watch it for |
+| --- | --- | --- | --- | --- | --- |
+| Light-Off | A Lagos three.js game with no assets, Claude-built | `okoliken/light-off` | none stated | 14 Oct 2026 | Zero-asset scenes in our own city |
+| OpenCity | A living-city sim; its NPC memory and city-news modules | `Faizankhan17623/OpenCity` | none stated | 16 Oct 2026 | Ideas 11 and 12 (the ticker and the memory) |
+| Factory Yard | A live isometric town | `Khalidabdi1/factory` | MIT | 11 Oct 2026 | Isometric life, how it stays readable |
+| World of ClaudeCraft | A complete browser MMO (22 languages, a wiki generated from live content) | `levy-street/world-of-claudecraft` | MIT | 20 Oct 2026 | Render-only weather, generated docs, an environment for agents |
+| Fable Cities | An agent-built city builder with a critic prompt | `rawprogress/fable-cities` | custom text (read it) | 2 Sep 2026 | The critic and blind-pair method (EVIDENCE.md) |
+| Neon Zenith | A street-level open world; its rain, governor and per-view frame table | `billpwchan/neon-zenith` | custom text (read it) | 6 Oct 2026 | Ideas 1 and 17; its README's frame table |
+| Cinevva open-world series | Thirty posts on a browser open world (voice, crowds, skeletons) | `app.cinevva.com` (blog) | not checked | Feb to Jun 2026 | Ideas 21, 23 and 26 |
+
+Read a licence cell as GitHub's word, not a legal reading. "None stated" means GitHub found no licence file, so nothing may be
+copied from that repository at all. "Custom text" means a licence file GitHub cannot name: read it before borrowing anything but
+an idea. Hosted games reported in the press (idea 34 above) are read from the press and are not listed here. If a peer is archived or silent for three months, drop it from the table and say so in this paragraph.

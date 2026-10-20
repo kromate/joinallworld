@@ -31,8 +31,28 @@ test('loadFx returns a host that remembers its tier and disposes without error, 
   }
 })
 
+test('only the high tier given a context builds the post stack; the others stay on the plain path', async () => {
+  const context = { THREE: {}, renderer: {}, cityId: 'lagos' } as never
+  for (const tier of ['phone', 'wide'] as const) {
+    const host = await loadFx(tier, context)
+    assert.equal(host.post, null)
+    host.regrade(Date.now())
+    host.dispose()
+  }
+  const bare = await loadFx('high')
+  assert.equal(bare.post, null, 'no context, no stack')
+})
+
 test('the file marks where the next phases add their imports, and never imports the post libraries statically', () => {
   const source = readFileSync(new URL('./index.ts', import.meta.url), 'utf8')
   assert.ok(source.includes('// FX_IMPORTS'), 'phases 1 to 3 look for this marker')
   assert.deepEqual(source.match(/^\s*import\s(?!type\b)[^\n]*['"](?:postprocessing|n8ao)['"]/gm) ?? [], [], 'postprocessing and n8ao are imported lazily, behind the high-tier check')
+})
+
+test('the venue host starts the fx host only on the high tier, lazily, and keeps the plain draw otherwise', () => {
+  const source = readFileSync(new URL('../../venue-world.ts', import.meta.url), 'utf8')
+  assert.ok(source.includes("if (tier.name === 'high' && !fxStarted) startFx()"), 'the gate is the high tier')
+  assert.ok(source.includes("import('./scene/fx/index.ts')"), 'the fx chunk is fetched with a dynamic import')
+  assert.deepEqual(source.match(/^\s*import\s(?!type\b)[^\n]*scene\/fx\//gm) ?? [], [], 'never a static import of the fx chunk')
+  assert.ok(source.includes('(fx?.post ?? renderer).render(scene, camera)'), 'the draw falls back to the renderer')
 })

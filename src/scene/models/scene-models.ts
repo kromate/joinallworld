@@ -85,6 +85,8 @@ export interface LayerOptions {
   nearRadius?: number;
   /** Called for each new material (shadows, see-through patch, night windows). */
   decorate?: (material: THREE.Material, atlas: string) => void;
+  /** A number for each placement (a building's own draw): when given, every merged mesh carries it as the vertex attribute `aSeed`, so a material can light some buildings and not others. */
+  seedOf?: (placement: Placement) => number;
   /** Where near / far is measured from at first (the camera's place); `focus()` moves it. */
   focus?: { x: number; z: number };
   /** Colour of a label's board and of its letters. */
@@ -371,13 +373,13 @@ export function createModelLayer(kit: Kit, cache: ModelCache, options: LayerOpti
     for (const [key, g] of groups) {
       let vertices = 0, indices = 0;
       for (const { part } of g.parts) { vertices += part.position.length / 3; indices += part.index.length; }
-      const pos = new Float32Array(vertices * 3), nor = new Float32Array(vertices * 3), col = new Float32Array(vertices * 3), uv = new Float32Array(vertices * 2);
+      const pos = new Float32Array(vertices * 3), nor = new Float32Array(vertices * 3), col = new Float32Array(vertices * 3), uv = new Float32Array(vertices * 2), seed = options.seedOf ? new Float32Array(vertices) : null;
       const idx = vertices > 65535 ? new Uint32Array(indices) : new Uint16Array(indices);
       let v = 0, ii = 0;
       for (const { part, placement, rect } of g.parts) {
         const s = placement.scale ?? 1, turn = placement.ry ?? 0, c = Math.cos(turn), sn = Math.sin(turn), ox = placement.x, oy = placement.y ?? 0, oz = placement.z;
         const tint = tintOf(placement.tint), n = part.position.length / 3;
-        const bounds = rect && part.uv ? uvBounds(part.uv) : null;
+        const bounds = rect && part.uv ? uvBounds(part.uv) : null, mark = seed ? options.seedOf!(placement) : 0;
         for (let k = 0; k < n; k++) {
           const px = part.position[k * 3]!, py = part.position[k * 3 + 1]!, pz = part.position[k * 3 + 2]!;
           pos[(v + k) * 3] = (px * c + pz * sn) * s + ox; pos[(v + k) * 3 + 1] = py * s + oy; pos[(v + k) * 3 + 2] = (-px * sn + pz * c) * s + oz;
@@ -388,6 +390,7 @@ export function createModelLayer(kit: Kit, cache: ModelCache, options: LayerOpti
             const r = part.color ? part.color[k * 3]! : 1, gg = part.color ? part.color[k * 3 + 1]! : 1, b = part.color ? part.color[k * 3 + 2]! : 1;
             col[(v + k) * 3] = r * tint[0]; col[(v + k) * 3 + 1] = gg * tint[1]; col[(v + k) * 3 + 2] = b * tint[2];
           }
+          if (seed) seed[v + k] = mark;
           if (part.uv) {
             const u = part.uv[k * 2]!, w = part.uv[k * 2 + 1]!;
             if (rect && bounds) {
@@ -404,6 +407,7 @@ export function createModelLayer(kit: Kit, cache: ModelCache, options: LayerOpti
       geometry.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
       geometry.setAttribute('color', new THREE.BufferAttribute(col, 3));
       geometry.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
+      if (seed) geometry.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
       geometry.setIndex(new THREE.BufferAttribute(idx, 1));
       const mesh = new THREE.Mesh(geometry, materialFor(g.atlas));
       mesh.name = `model:${key}`;

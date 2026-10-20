@@ -72,9 +72,11 @@ const elsewhere = computed(() => homePin.value !== null && homePin.value.city !=
 </template>
 
 <style scoped>
-.home-pin { margin: 12px 0; }
-.home-pin h3 { font-size: 14px; margin: 0 0 4px; }
+.home-pin { display: grid; gap: 8px; justify-items: start; margin: 0; padding: 14px; border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
+.home-pin > * { margin: 0; max-width: 100%; }
+.home-pin .social-field, .home-pin .social-list { width: 100%; }
+.home-pin h3 { font-size: 16px; }
 .home-pin h3 small { font-weight: 400; color: var(--c-muted); }
 .home-pin-weather { margin: 0 0 6px; font-size: 14px; }
-.home-pin-credit { display: block; margin: 4px 0; font-size: 11px; color: var(--c-muted); }
+.home-pin-credit { display: block; font-size: 12px; color: var(--c-muted); }
 </style>

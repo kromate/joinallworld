@@ -23,7 +23,7 @@ async function change(body: Record<string, unknown>): Promise<void> { busy.value
       <div><strong>{{ line.line }}</strong><small>Close friend</small></div>
       <span class="social-actions"><button type="button" class="social-btn" @click="shell.open('messages', { to: line.id, name: line.name })">Chat</button></span>
     </div>
-    <button type="button" class="social-btn" :aria-expanded="open" @click="open = !open">Close friends{{ view ? ` · ${view.list.length}` : '' }} · {{ view?.on ? 'they see where you are' : 'sharing off' }}</button>
+    <button type="button" class="social-btn is-wide" :aria-expanded="open" @click="open = !open">Close friends{{ view ? ` · ${view.list.length}` : '' }} · {{ view?.on ? 'they see where you are' : 'sharing off' }}</button>
     <div v-if="open && view" class="feed-card feed-form">
       <label class="feed-row"><input type="checkbox" :checked="view.on" :disabled="busy" data-glue="close-switch" @change="change({ on: ($event.target as HTMLInputElement).checked })"> Let my close friends see where I am in the game</label>
       <p class="social-note">They see the place in Allworld you are at (a venue, the Square, your city), never where you are in real life. Nobody else sees it. Off stops it at once.</p>

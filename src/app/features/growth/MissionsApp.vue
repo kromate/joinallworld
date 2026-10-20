@@ -176,8 +176,8 @@ function go(mission: MissionRow): void {
 .gr-hero p { margin: 0; }
 .gr-lock { font-size: 14px; line-height: 1.5; }
 .gr-dots { display: flex; gap: 6px; margin-top: 6px; }
-.gr-dots i { width: 22px; height: 22px; border-radius: 7px; background: rgba(255, 255, 255, .28); display: block; }
-.gr-dots i.is-on { background: #fff; }
+.gr-dots i { width: 22px; height: 22px; border-radius: 7px; background: var(--c-fill-2, #e3e7e5); display: block; }
+.gr-dots i.is-on { background: var(--c-green); }
 .gr-milestones { display: grid; gap: 8px; margin: 0 0 var(--s-3); padding: 11px 12px; border-radius: var(--r-md); background: var(--c-surface-solid); box-shadow: var(--e-1), var(--ring); }.gr-milestones header { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }.gr-milestones header b { font-size: 14px; }.gr-milestones header strong { color: var(--c-green-dark); font-size: 12px; font-variant-numeric: tabular-nums; }.gr-milestones p { margin: 0; color: var(--c-muted); font-size: 11px; line-height: 1.45; }
 .gr-milestone-meter { height: 7px; overflow: hidden; border-radius: var(--r-pill); background: var(--c-fill); }.gr-milestone-meter i { display: block; height: 100%; border-radius: inherit; background: var(--c-green); }
 .gr-milestones ol { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; }.gr-milestones li { display: flex; justify-content: center; align-items: center; gap: 5px; min-height: 30px; border-radius: var(--r-sm); background: var(--c-fill); color: var(--c-muted); font-size: 11px; font-weight: 700; }.gr-milestones li.is-reached { background: var(--c-green-soft); color: var(--c-green-dark); }

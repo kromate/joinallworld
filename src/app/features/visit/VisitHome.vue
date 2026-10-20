@@ -162,9 +162,12 @@ const usesLine = (link: { uses: number; max?: number }): string => `${link.uses}
 .visit-row { cursor: pointer; }
 .visit-row input { width: 22px; height: 22px; flex: none; }
 .visit-options { display: grid; gap: 6px; margin: 6px 0 10px; font-size: 13px; }
-.visit-check { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.visit-num { width: 76px; min-height: 44px; font: 400 16px var(--font); }
-.visit-check select { min-height: 44px; max-width: 100%; font: 400 16px var(--font); }
+/* The dialog's field rules make a label with a field in it a grid and every field full width; these rows stay in one line. */
+.visit-options { font-size: 14px; }
+.visit-check { display: flex !important; gap: 8px; align-items: center; flex-wrap: wrap; min-height: 44px; font-weight: 400 !important; line-height: 1.4; }
+.visit-check input[type=checkbox] { flex: none; width: 22px; height: 22px; margin: 0; }
+.visit-check .visit-num { width: 76px !important; min-height: 44px; font: 400 16px var(--font); }
+.visit-check select { width: auto !important; min-width: 130px; min-height: 44px; max-width: 100%; font: 400 16px var(--font); }
 .visit-door-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 4px; }
 .visit-door-row .ui-button { flex: 1 1 140px; }
 .visit-ask p { margin: 4px 0 8px; font-size: 13px; }

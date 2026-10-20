@@ -33,7 +33,7 @@ export type PathIntent =
   | { kind: 'street'; city: string; place: string | null }
 
 /** First segments that belong to something else: the API, the build, the share and invite links, the mail pages, the operator pages, the socket and the image folders. Never a place. */
-export const RESERVED_PREFIXES: readonly string[] = Object.freeze(['api', 'assets', 's', 'j', 'v', 'e', 'shop', 'agents', 'admin', 'socket', 'og', 'icons', 'c', 'ev', 'app', '.well-known', 'privacy', 'money', 'features', 'pages', 'skills']);
+export const RESERVED_PREFIXES: readonly string[] = Object.freeze(['api', 'assets', 's', 'j', 'v', 'e', 'shop', 'agents', 'admin', 'socket', 'og', 'icons', 'c', 'ev', 'app', '.well-known', 'privacy', 'money', 'about', 'features', 'pages', 'skills']);
 
 const games = (game: GameSlug | null): PathIntent => ({ kind: 'games', game });
 /** The words that always mean what they say, whatever the registry holds. */

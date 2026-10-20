@@ -50,7 +50,7 @@
 ## Release state
 
 - **Local implementation:** `verified-local`
-- **Deployment:** `verified` — live `7603fe394`, CI 39314854556, continuity ok, smoke PASS 295
+- **Deployment:** `handed-off` — f216863c8 published to main (CI 39426013555); deployment handed to Codex (search-indexing-20261020) for one combined release with its SEO fix and the /about index exception. Previous live: `7603fe394`, then b9ecaaf74 by another agent
 - **Release gate:** tests above; owner asks to deploy.
 - **References:** `server/privacy-page.ts`, `server/money-page.ts`
 
@@ -61,3 +61,7 @@
 | 2026-10-19T12:00Z | active | registered | this file | write pages |
 | 2026-10-19 | verified-local | pages written, tests and build pass | commit a523ccd95 | edge + full tests, push, deploy |
 | 2026-10-19T20:20Z | complete | added /skills; merged main; deployed | live 7603fe394, smoke PASS 295 | none |
+| 2026-10-20 | active | /features: rain and smoke, street lights, city news, regulars remember you, reduce shake (open-source waves, live b9ecaaf74); /pages Settings line | server/docs-pages.test.ts 8 pass | release |
+| 2026-10-20T12:00Z | active | /about (what Allworld is, why we built it, the vision, where it is today, join in) as prose in the guide shell; About in the guide nav, /pages, the landing's quiet links, sitemap, reserved words, both hosts | server/docs-pages.test.ts 10 pass; typecheck clean; desktop and 390 px screenshots | release. Note for search-indexing-20261020 (Codex, uncommitted): its index exception in server/security-headers.ts names features, pages and skills only; /about needs adding |
+| 2026-10-20T12:55Z | handed-off | gates on f216863c8: typecheck, build, size 0 over; Worker 198/3 (3 known); full suite 46 fail + 250 cancelled by the run's time limit, all 46 also fail on 4d229318e; pushed to main | CI 39426013555 | Codex packages and deploys the combined release; check /about and /features live afterwards |
+| 2026-10-20T13:10Z | active | owner: the goal is the OASIS of Ready Player One, eventually; /about vision rewritten around it (real world first, then built worlds, one you everywhere, always alive, a real life inside it, open and run with its people) | server/docs-pages.test.ts 10 pass; typecheck clean | branch claude/about-oasis offered to Codex's combined release, else release after it |

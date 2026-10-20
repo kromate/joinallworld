@@ -5,11 +5,12 @@
  *
  * rewardChips({ cash, needs: { id: change }, skills: { id: xp gained }, order }) → up to four
  *   [{ text, kind: 'money' | 'gain' | 'loss' | 'xp', glyph }] — money first, then gains by size, losses last.
- * cheer(parent) — a short burst of confetti under the top bar for a finished goal: CSS only
- *   (.life-burst in src/ui/shell.css), removed when its last piece has faded, nothing under reduced motion.
+ * cheer(parent) — a finished goal: confetti under the top bar (CSS only, .life-burst in src/ui/shell.css, nothing under reduced
+ *   motion) and, with the large tier, one nudge of the camera. All of it comes from feel('goal-done') (./feel/index.ts).
  */
 import { money, cap } from '../ui/dom.ts';
 import { glyph, hasGlyph } from '../ui/phone/icons.ts';
+import { feel } from './feel/index.ts';
 
 export type RewardKind = 'money' | 'gain' | 'loss' | 'xp';
 export interface RewardChip { text: string; kind: RewardKind; glyph: string }
@@ -64,25 +65,12 @@ export function showReward(parent: Element | null | undefined, detail: RewardInp
   }
   node.lastChild!.addEventListener('animationend', () => node.remove(), { once: true })
   parent.append(node)
+  // Money coming in makes the chips pop (medium tier). Money has its own sound already, and a pay chip alone gets no confetti.
+  if ((detail.cash ?? 0) > 0) feel('pay-received', { pop: node, burst: false })
   return true
 }
 
-const COLOURS = ['#f2b01e', '#2fa866', '#2a5bd7', '#e2572b', '#7a3fb0', '#ffffff'];
+/** A finished goal's moment (large tier): confetti and one nudge of the camera. Its sound already plays with the toast (src/app/state/toasts.ts). */
 export function cheer(parent: Element | null | undefined = globalThis.document?.body) {
-  const doc = globalThis.document;
-  if (!doc?.createElement || !parent || globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-  doc.querySelector('.life-burst')?.remove();
-  const box = doc.createElement('div');
-  box.className = 'life-burst'; box.setAttribute('aria-hidden', 'true');
-  for (let i = 0; i < 22; i += 1) {
-    const piece = doc.createElement('i'), angle = (i / 22) * Math.PI * 2, far = 70 + ((i * 37) % 60);
-    piece.style.setProperty('--c', COLOURS[i % COLOURS.length]!);
-    piece.style.setProperty('--x', `${Math.round(Math.cos(angle) * far)}px`);
-    piece.style.setProperty('--y', `${Math.round(Math.sin(angle) * far * 0.7 + 50)}px`);
-    piece.style.setProperty('--r', `${(i % 2 ? 1 : -1) * (120 + i * 9)}deg`);
-    piece.style.animationDelay = `${(i % 5) * 18}ms`;
-    box.append(piece);
-  }
-  box.lastChild!.addEventListener('animationend', () => box.remove(), { once: true });
-  parent.append(box);
+  feel('goal-done', { parent });
 }

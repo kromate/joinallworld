@@ -3,6 +3,8 @@
 .worlds-hero{display:grid;gap:4px;padding:16px 18px}
 .worlds-hero>small{font-size:13px;font-weight:600;color:var(--c-muted)}
 .worlds-hero>strong{font-size:24px;font-weight:700;line-height:1.15;letter-spacing:-.2px}
+.ph.is-wide .worlds-hero{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px}
+.ph.is-wide .worlds-hero>:not(.ui-button),.ph.is-wide .worlds-hero>.ui-button:only-of-type{grid-column:1/-1}
 .worlds-hero>p{margin:2px 0 10px;font-size:14px;line-height:1.5;color:var(--c-ink-2)}
 .worlds-form h3{margin:0 0 10px}
 .worlds-label{display:block;margin:10px 0 6px;font-size:13px;font-weight:650}
@@ -20,10 +22,10 @@
 .worlds-card{border:1px solid var(--c-line);border-radius:14px;background:#fff;overflow:hidden}
 .worlds-cover{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;background:var(--c-fill);color:#fff;text-align:left;cursor:pointer;overflow:hidden}
 .worlds-cover img,.worlds-cover i{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.worlds-cover b,.worlds-cover small{position:absolute;left:12px;right:12px;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+.worlds-cover b,.worlds-cover small{z-index:1;position:absolute;left:12px;right:12px;text-shadow:0 1px 3px rgba(0,0,0,.55)}
 .worlds-cover b{bottom:26px;font-size:17px;line-height:1.2}
 .worlds-cover small{bottom:10px;font-size:12px;font-weight:500;opacity:.95}
-.worlds-cover::after{content:"";position:absolute;inset:auto 0 0;height:60%;background:linear-gradient(to top,rgba(0,0,0,.6),transparent)}
+.worlds-cover::after{content:"";z-index:0;pointer-events:none;position:absolute;inset:auto 0 0;height:60%;background:linear-gradient(to top,rgba(0,0,0,.6),transparent)}
 .worlds-blurb{margin:8px 12px 0;font-size:13px;line-height:1.4;color:var(--c-ink-2)}
 .worlds-acts{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:6px;padding:10px 12px 12px}
 .worlds-acts .ui-button{min-height:40px;padding:0 6px;font-size:13px}

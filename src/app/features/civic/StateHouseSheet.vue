@@ -38,5 +38,5 @@ const data = computed(() => item.value.data)
 </template>
 
 <style scoped>
-.civic-note { font-size: 12px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
+.civic-note { font-size: 13px !important; line-height: 1.5 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
 </style>

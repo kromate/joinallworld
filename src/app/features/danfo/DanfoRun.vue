@@ -63,6 +63,13 @@ function say(text: string | null, by = 'Conductor · AI'): void {
   if (!text) return
   bubble.text = text; bubble.by = by; bubble.gloss = glossFor(city, text); bubble.at = Date.now()
 }
+// The city's news on the radio between stops (src/news/radio.ts, fetched at the first quiet stretch): when the conductor has said nothing for 20 s.
+let radioAt = Date.now(), radioN = 0
+function radio(): void {
+  if (phase.value !== 'driving' || Date.now() - bubble.at < 20000 || Date.now() - radioAt < 25000) return
+  radioAt = Date.now()
+  void import('../../../news/radio.ts').then((module) => { if (!gone && phase.value === 'driving') say(module.radioLine(city, Date.now(), radioN++), 'Radio') }).catch(() => { /* no radio today */ })
+}
 function flashOf(text: string): void { flash.value = text; setTimeout(() => { if (flash.value === text) flash.value = '' }, 1400) }
 
 /** Tells the server about a stop, in order. A lost connection is retried; a refusal ends the run. */
@@ -238,7 +245,7 @@ onMounted(async () => {
   await mountView()
   addEventListener('keydown', onDown); addEventListener('keyup', onUp); addEventListener('resize', resize)
   document.addEventListener('visibilitychange', hidden)
-  poll = setInterval(() => { if (phase.value === 'driving' || phase.value === 'paused' || phase.value === 'ready') void pollRun() }, 4000)
+  poll = setInterval(() => { if (phase.value === 'driving' || phase.value === 'paused' || phase.value === 'ready') void pollRun(); radio() }, 4000)
   frame = requestAnimationFrame(tick)
   track('danfo_run', { action: 'start', route: line.id, earned: 0 })
 })

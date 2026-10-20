@@ -9,6 +9,8 @@ export interface ViewPreferences {
   bob: boolean
   vignette: boolean
   snapTurn: boolean
+  /** Reduce shake and flashes: true or false is the player's choice; null follows the system's reduced-motion setting. */
+  reduceShake: boolean | null
 }
 
 export const VIEW_PREFERENCES_DEFAULTS: Readonly<ViewPreferences> = {
@@ -16,6 +18,7 @@ export const VIEW_PREFERENCES_DEFAULTS: Readonly<ViewPreferences> = {
   bob: false,
   vignette: false,
   snapTurn: false,
+  reduceShake: null,
 }
 
 type PreferenceStorage = Pick<Storage, 'getItem' | 'setItem'>
@@ -33,6 +36,7 @@ export function parseViewPreferences(value: unknown): ViewPreferences {
     bob: typeof saved.bob === 'boolean' ? saved.bob : VIEW_PREFERENCES_DEFAULTS.bob,
     vignette: typeof saved.vignette === 'boolean' ? saved.vignette : VIEW_PREFERENCES_DEFAULTS.vignette,
     snapTurn: typeof saved.snapTurn === 'boolean' ? saved.snapTurn : VIEW_PREFERENCES_DEFAULTS.snapTurn,
+    reduceShake: typeof saved.reduceShake === 'boolean' ? saved.reduceShake : VIEW_PREFERENCES_DEFAULTS.reduceShake,
   }
 }
 

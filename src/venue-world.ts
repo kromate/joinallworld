@@ -104,7 +104,7 @@ import { spotsOf } from './life.ts';
 import type * as THREE from 'three';
 import type { Ident as AmbientIdent } from './scene/ambient/plan.ts';
 import type { AmbientPerson } from './scene/ambient/layer.ts';
-import type { Colour, ThreeModule, Vec3, SceneCamera, SceneTag as DomTag, ScenePerson, SceneThing, WalkSpot, SceneWalk, CrowdPerson } from './scene/types.ts';
+import type { Colour, ThreeModule, Vec3, SceneCamera, SceneTag as DomTag, ScenePerson, SceneThing, WalkSpot, SceneWalk, CrowdPerson, PropMark } from './scene/types.ts';
 import type { OccluderBox } from './scene/camera-collision.ts';
 import type { HomePick } from './scene/home-scene.ts';
 import type { SceneControls } from './scene/controls.ts';
@@ -113,7 +113,10 @@ import type { LifeState } from './types/life.ts';
 import { inputMode, readFacts } from './ui/inputMode.ts';
 import { NPC_WORD, addNpcWord, npcAria, npcTitle } from './ui/npc-mark.ts';
 import { createShaderWarmup } from './scene/shader-warmup.ts';
+import { createGovernor, pageScale, releaseGovernor, setActiveGovernor } from './scene/governor.ts';
+import { lightFps } from './lightMode.ts';
 import { releaseSharedGpu } from './scene/shared-gpu.ts';
+import type { FxHost } from './scene/fx/index.ts';
 
 type RenderBenchmark = import('./scene/render-benchmark.ts').RenderBenchmark;
 type RenderMeasurement = ReturnType<typeof import('./scene/render-benchmark.ts')['observeRenders']>;
@@ -160,6 +163,8 @@ export interface VenueDiagnostics extends SceneDiagnostics {
   tier: string
   matte: boolean
   pixelRatio: number | undefined
+  /** The frame governor (src/scene/governor.ts): the render scale now, whether `?scale=` fixed it, and its last verdict. */
+  governor: { locked: boolean; scale: number; p90: number | null; slow: boolean; pressed: boolean; fullSeconds: number; seq: number; clock: number }
   shadowMap: number
   avatarPx: number | null
   tags: ShownTag[]
@@ -265,9 +270,20 @@ export interface HostScene {
   objects?(): { id: string; itemId: string; x: number; y?: number; z: number }[]
   dispose?(): void
 }
+/** describeAt(): a spot, a person, a game table, a home object, a named prop (scenery), bare floor, or the sky; with the nearest spot to the place. */
+export type TapDescription =
+  | { kind: 'spot'; id: string; label: string }
+  | { kind: 'person'; id: string }
+  | { kind: 'thing'; id: string }
+  | { kind: 'object'; id: string }
+  | { kind: 'prop'; name: string; at: { x: number; z: number }; near: { id: string; label: string } | null }
+  | { kind: 'floor'; at: { x: number; z: number }; near: { id: string; label: string } | null }
+  | { kind: 'sky' };
 /** What createVenueWorld() returns. Every method draws at most one frame, and only when something changed. */
 export interface VenueWorld {
   setView(factory: SceneViewFactory | null): boolean
+  /** What a tap at this point of the page would land on, read only: nothing moves and no view changes. `near` is the spot closest to that place. */
+  describeAt?(clientX: number, clientY: number): TapDescription | null
   update(): void
   captureCanvas(): HTMLCanvasElement | null
   setStreet(street: WorldStreetResponse | null): void
@@ -477,6 +493,15 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   let gone = false;
   // New shader programs link before the draw that first needs them (src/scene/shader-warmup.ts).
   const warmup = createShaderWarmup(renderer);
+  // The frame governor (src/scene/governor.ts): fed the gap between the frames this host's own loop draws, it answers with a render scale. `?scale=0.8` fixes it.
+  const governor = createGovernor({ locked: pageScale() }), baseRatio = renderer.getPixelRatio?.() ?? 1;
+  let lastTickAt = 0, marked = false;
+  setActiveGovernor(governor);
+  /** Draw at `scale` of the tier's pixel ratio (setPixelRatio resizes the canvas itself) and size the post stack's buffers to match. */
+  function applyScale(scale: number) { renderer.setPixelRatio?.(baseRatio * scale); fx?.post?.setSize(size.width, size.height, renderer.getPixelRatio()); }
+  if (governor.locked) renderer.setPixelRatio?.(baseRatio * governor.scale);
+  // The high tier's post stack (bloom, grade, vignette, MSAA; src/scene/fx): fetched after the first frame, never on a phone or a wide screen.
+  let fx: FxHost | null = null, fxStarted = false;
   // Bodies are preloaded. Host mutations already request a draw, so mounting must not request a second one.
   const standIn = createStandIn(kit, () => {});
   // The graded sky behind the scene and the soft ground under it (one texture, one mesh, for every venue).
@@ -832,6 +857,10 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   // ---- the motion loop: frames only while something moves ------------------------------------
   function tick(dt: number) {
     const updateStarted = measurement ? performance.now() : undefined;
+    // The gap since the last frame of this run of frames (not in light mode, which draws at 30 on purpose); a run that stopped has no gap.
+    const stamp = performance.now();
+    if (lastTickAt && !lightFps()) { const next = governor.frame(stamp - lastTickAt); if (next !== null) applyScale(next); }
+    lastTickAt = stamp;
     let more = false;
     const yaw = (held.lookRight ? 1 : 0) - (held.lookLeft ? 1 : 0), pitch = (held.lookUp ? 1 : 0) - (held.lookDown ? 1 : 0);
     if (yaw || pitch) { orbit.rotate(yaw * LOOK_YAW * dt, pitch * LOOK_PITCH * dt); more = true; }
@@ -855,13 +884,16 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     if (reduced()) { orbit.snap(); ghost.now = ghost.goal; }
     else {
       more = orbit.step(dt) || more;
+      if (shake) more = shake.step(dt) || more;
       if (ghost.now !== ghost.goal) {
         const gap = ghost.goal - ghost.now;
         if (Math.abs(gap) < 0.02) ghost.now = ghost.goal; else { ghost.now += gap * (1 - Math.exp(-GHOST_RATE * dt)); more = true; }
       }
     }
     orbit.apply(camera);
+    if (shake) shake.apply(camera.position, orbit.azimuth, orbit.distance * 0.03);
     renderScene(updateStarted);
+    if (!more) lastTickAt = 0;
     return more;
   }
   const head = new THREE.Vector3(), eye = new THREE.Vector3();
@@ -1068,6 +1100,54 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
    *   floor    anywhere else on the floor; null when it looks at the sky
    * → { type, spot | person | hit, at } | null. Used by the tap and by the hover, so what lights up is what a click does.
    */
+  /** The props the current scene's batches recorded (PropMark, in the scene group's space), read once per scene. */
+  let propsOf: { scene: unknown; list: PropMark[] } | null = null;
+  const propPoint = new THREE.Vector3(), groupInverse = new THREE.Matrix4();
+  function sceneProps(): PropMark[] {
+    if (!current) return [];
+    if (propsOf?.scene === current) return propsOf.list;
+    const list: PropMark[] = [];
+    current.group.updateMatrixWorld(true);
+    groupInverse.copy(current.group.matrixWorld).invert();
+    current.group.traverse((object) => {
+      const marks = (object.userData as { props?: PropMark[] }).props;
+      if (!Array.isArray(marks)) return;
+      for (const mark of marks) {
+        propPoint.set(mark.x, 0, mark.z).applyMatrix4(object.matrixWorld).applyMatrix4(groupInverse);
+        list.push({ ...mark, x: propPoint.x, z: propPoint.z });
+      }
+    });
+    propsOf = { scene: current, list };
+    return list;
+  }
+  /** The prop drawn under a point of the page: of those whose upright box covers it, the one nearest the camera. */
+  function propAt(clientX: number, clientY: number): PropMark | null {
+    let best: PropMark | null = null, front = -Infinity;
+    for (const prop of sceneProps()) {
+      screenOf(prop.x, 0, prop.z, pixel); screenOf(prop.x, prop.h, prop.z, pixelTop);
+      const tall = Math.max(10, pixel.y - pixelTop.y), wide = Math.max(10, tall * (prop.r / Math.max(0.2, prop.h)));
+      if (clientY < pixelTop.y - 4 || clientY > pixel.y + wide * 0.35 || Math.abs(clientX - pixel.x) > wide + 4) continue;
+      if (pixel.y > front) { front = pixel.y; best = prop; }
+    }
+    return best;
+  }
+  function nearestSpotTo(at: { x: number; z: number }): { id: string; label: string } | null {
+    let best: WalkSpot | null = null, away = Infinity;
+    for (const spot of spotList) { const d = Math.hypot(spot.x - at.x, spot.z - at.z); if (d < away) { away = d; best = spot; } }
+    return best ? { id: best.id, label: best.label } : null;
+  }
+  function describeAt(clientX: number, clientY: number): TapDescription | null {
+    if (!current) return null;
+    const target = pick(clientX, clientY);
+    if (target?.type === 'spot') return { kind: 'spot', id: target.spot.id, label: target.spot.label };
+    if (target?.type === 'person') return { kind: 'person', id: target.person.id };
+    if (target?.type === 'thing') return { kind: 'thing', id: target.thing.id };
+    if (target?.type === 'object') return { kind: 'object', id: String(target.hit.id) };
+    const prop = propAt(clientX, clientY);
+    if (prop) return { kind: 'prop', name: prop.kind, at: { x: prop.x, z: prop.z }, near: nearestSpotTo(prop) };
+    const at = target?.type === 'floor' ? target.at : floorAt(clientX, clientY, { x: 0, z: 0 });
+    return at ? { kind: 'floor', at: { x: at.x, z: at.z }, near: nearestSpotTo(at) } : { kind: 'sky' };
+  }
   function pick(clientX: number, clientY: number): Target | null {
     const walk = walkOf();
     if (!walk || !walk.grid || !current) return null;
@@ -1281,10 +1361,17 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       if (!gone && epoch === rewardEpoch) cheer(globalThis.document?.querySelector('dialog[open]') || globalThis.document?.body);
     }).catch(() => { /* cheers are optional presentation */ });
   }
+  // A big moment (src/scene/feel/) nudges the camera: the shake is fetched the first time it is asked for, stepped by this loop (which runs until it has died away, well under a second) and added to the camera after the orbit has placed it. The orbit and the avatar are never moved.
+  let shake: import('./scene/feel/shake.ts').Shake | null = null;
+  function onShake(event: Event) {
+    const trauma = Number((event as CustomEvent<{ trauma?: number } | null>).detail?.trauma);
+    if (!(trauma > 0) || uiMode !== 'venue' || reduced()) return;
+    void import('./scene/feel/shake.ts').then(({ createShake }) => { if (gone) return; shake ??= createShake(); shake.kick(trauma); loop.wake(); }).catch(() => { /* a shake is optional presentation */ });
+  }
   function onMode(event: Event) { homeDoorEpoch++; uiMode = (event as CustomEvent<{ mode?: string } | null>).detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
   // Created after the shell: start from the view the shell wrote on its root element.
   uiMode = globalThis.document?.querySelector?.<HTMLElement>('.life-ui')?.dataset?.mode || 'venue';
-  win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward); win?.addEventListener?.('jaw:cheer', onCheer);
+  win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward); win?.addEventListener?.('jaw:cheer', onCheer); win?.addEventListener?.('jaw:shake', onShake);
   win?.addEventListener?.('jaw:key', onKey);
   win?.addEventListener?.('jaw:key-up', onKeyUp);
   win?.addEventListener?.('blur', dropInput);
@@ -1375,15 +1462,26 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
   // A scene that is not on screen (the map is in front) is not drawn: it is drawn when it is shown again (resize()).
   kit.requestRender = () => crowdReady();
   function crowdReady() { if (gone) return; warmup.mark(); current?.group.userData.refreshCharacterCosts?.(); readTags(); if (!loop.running) renderScene(); }
+  /** High tier, once, after the first frame: fetch the fx chunk and build the post stack on this renderer; draw it once it is ready. Any failure leaves the plain draw. */
+  function startFx() {
+    fxStarted = true;
+    void import('./scene/fx/index.ts').then(({ loadFx, fxTierFor }) => loadFx(fxTierFor(tier), { THREE, renderer, cityId })).then((host) => {
+      if (gone) { host.dispose(); return; }
+      fx = host;
+      if (!loop.running) renderScene();
+    }).catch(() => { /* no post stack: the plain draw stays */ });
+  }
   function renderScene(updateStarted?: number) {
     if (gone || container.hidden === true) return;
-    if (current && warmup.hold(scene, scene, camera, () => { if (!gone && !loop.running) renderScene(); })) return;
+    if (current && warmup.hold(scene, scene, camera, () => { if (!gone && !loop.running) renderScene(); }, fx?.post?.target)) return;
     if (!view) refreshStaticSolids();
     standIn.start(renderer);
     view?.render();
     lookIn(); aimGhost();
     lights.aim(camera, orbit.now.x + orbit.now.px, orbit.now.y, orbit.now.z + orbit.now.pz);
-    renderer.render(scene, camera); renderCount += 1; projectTags();
+    (fx?.post ?? renderer).render(scene, camera); renderCount += 1; projectTags();
+    if (!marked) { marked = true; container.setAttribute?.('data-drawn', '1'); container.dispatchEvent?.(new Event('allworld-drawn')); } // the loading card waits for this (ScenePane.vue hostUp)
+    if (tier.name === 'high' && !fxStarted) startFx();
     if (measurement) {
       const at = performance.now();
       measurement.record(at, updateStarted === undefined ? null : at - updateStarted, walker.moving);
@@ -1433,6 +1531,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     sceneMaterials(kit).glow.color.setScalar(typeof preset?.glow === 'number' && Number.isFinite(preset.glow) && preset.glow >= 0 ? preset.glow : HOST_LIGHTING.glow);
     background = current?.background || DEFAULT_BACKGROUND;
     renderer.setClearColor(background);
+    fx?.regrade(Date.now());
     // sky: [horizon, zenith]. A scene that names only a background gets a gentle rise from it.
     const pair = Array.isArray(current?.sky) ? current.sky : [background, mixHex(background, '#ffffff', 0.18)];
     sky.set(pair[0], pair[1]);
@@ -1490,6 +1589,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     camera.far = view.bounds ? Math.max(600 + whole * 1.38 + 50, whole * 1.38 + Math.hypot(view.bounds[3] - view.bounds[0], view.bounds[4] - view.bounds[1], view.bounds[5] - view.bounds[2])) : view.fit ? Math.max(360, whole * 2) : 360;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
+    fx?.post?.setSize(width, height, renderer.getPixelRatio());
     controls?.place({ top: insets.top, bottom: insets.bottom, wide: width > 1000, hintTop });
     setPivot();
     if (!loop.running) settleView();
@@ -1533,6 +1633,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     resetView();
     currentLocation = id;
     current = sceneFor(id);
+    governor.reset(); lastTickAt = 0; // a new scene: the old frames say nothing about it
     current.group.visible = true;
     current.setPlayer?.(player);
     dressStandIn();
@@ -1639,6 +1740,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     release() { dropInput(); releasePointers(); if (walker.mode === 'keys') walker.stop(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; } },
   };
   return {
+    describeAt,
     setView(factory) { view?.dispose(); view = null; viewSource.release(); view = factory?.(viewSource) ?? null; resize(); return true; },
     update() { renderScene(); },
     async benchmark() {
@@ -1702,7 +1804,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
         textures: renderer.info?.memory.textures,
         location: currentLocation, background, scenes: built.size, crowd: crowd.length,
         lighting: { hemi: lights.hemi.intensity, sun: lights.sun.intensity, sky: `#${lights.hemi.color.getHexString()}` },
-        tier: tier.name, matte: kit.matte, pixelRatio: renderer.getPixelRatio?.(), shadowMap: lights.sun.shadow.mapSize.x, avatarPx: avatarPixels(),
+        tier: tier.name, matte: kit.matte, pixelRatio: renderer.getPixelRatio?.(), governor: { locked: governor.locked, ...governor.verdict }, shadowMap: lights.sun.shadow.mapSize.x, avatarPx: avatarPixels(),
         tags: shownTags.map((tag) => ({ ...tag })),
       };
     },
@@ -1778,10 +1880,10 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       if (gone) return;
       view?.dispose(); view = null;
       detty?.hook.dispose(); detty = null;
-      gone = true; reducedMotion?.removeEventListener?.('change', onReducedMotion); loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
+      gone = true; releaseGovernor(governor); reducedMotion?.removeEventListener?.('change', onReducedMotion); loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
       releasePointers();
       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
-      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
+      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:shake', onShake); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
       controls?.dispose();
       if (canvas.style) { canvas.style.touchAction = previousTouchAction || ''; canvas.style.cursor = previousCursor || ''; }
       for (const entry of built.values()) entry.dispose?.();
@@ -1789,6 +1891,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
       sky.dispose(); ground.dispose();
       kit.dispose();
       lights.dispose();
+      fx?.dispose(); fx = null;
       if (!providedRenderer) releaseSharedGpu();
       renderer.dispose();
       // dispose() frees what the renderer made but keeps the WebGL context: a browser holds only so many, and takes the oldest away

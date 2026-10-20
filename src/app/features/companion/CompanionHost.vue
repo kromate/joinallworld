@@ -55,7 +55,7 @@ const shown = computed(() => settled.value && prefs.mode !== 'off' && !callUp.va
 const lesson = computed(() => game.view.value.career.teaching !== null)
 const viewport = ref(window.innerWidth)
 const floating = computed(() => shown.value && game.mode.value !== 'map' && game.mode.value !== 'buy' && !(viewport.value <= 720 && shell.ui.trayOpen) && !tour.active && !yieldsToLesson(lesson.value, viewport.value))
-const size = ref(window.innerWidth <= 480 ? 92 : 124)
+const size = ref(window.innerWidth <= 480 ? 92 : window.innerWidth >= 2400 ? 160 : 124)
 const pos = reactive({ x: 8, y: 400 })
 const override = ref<{ x: number; y: number } | null>(null)
 const canvas = ref<HTMLCanvasElement | null>(null)
@@ -72,7 +72,9 @@ function rest(): { x: number; y: number } {
   if (prefs.x !== undefined && prefs.y !== undefined) return { x: clamp(prefs.x * window.innerWidth, 4, window.innerWidth - size.value - 4), y: clamp(prefs.y * window.innerHeight, 56, window.innerHeight - size.value - 4) }
   // Out of the way of the bars, the venue card and the map's own buttons: the right edge, a little above the middle of the screen.
   const narrow = window.innerWidth <= 720
-  const x = window.innerWidth - size.value - (narrow ? 60 : 18)
+  // Beside the zoom buttons (a tablet's touch controls are there), and inside the HUD's 16:9 middle on a very wide window.
+  const edge = window.innerWidth >= 2400 && window.innerWidth >= window.innerHeight * 2 ? (window.innerWidth + window.innerHeight * 16 / 9) / 2 : window.innerWidth
+  const x = edge - size.value - (window.innerWidth <= 1100 ? 60 : 18)
   const y = narrow ? window.innerHeight * 0.4 : window.innerHeight * 0.52
   return { x, y: clamp(y, 100, window.innerHeight - size.value - 8) }
 }
@@ -366,7 +368,7 @@ function speak(line: Say): void {
 }
 function onSay(event: CustomEvent<Say>): void { if (event.detail?.text) speak(event.detail) }
 function onReduced(): void { reduced.value = reducedQuery?.matches === true }
-function onResize(): void { viewport.value = window.innerWidth; size.value = window.innerWidth <= 480 ? 92 : 124; activeStage()?.resize(size.value); place() }
+function onResize(): void { viewport.value = window.innerWidth; size.value = window.innerWidth <= 480 ? 92 : window.innerWidth >= 2400 ? 160 : 124; activeStage()?.resize(size.value); place() }
 watch(() => [game.mode.value, shell.sheet.value], () => { void nextTick(place) })
 watch(who, () => { memory = createMemory(ls, who.value); introDone = false; previous = null; sync() })
 

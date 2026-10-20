@@ -101,16 +101,16 @@ export const AWNING_DEPTH = 1.3, AWNING_TILT = 0.32;
 /** The bays as parts. Everything stands just proud of the wall, on the street's side. */
 export function shopParts(bays: readonly Bay[], base = 0.05): Parts {
   const p = emptyParts();
-  for (const bay of bays) {
+  bays.forEach((bay, bayIndex) => {
     const { x, z, width: w, facing: f, scale: k } = bay, ry = f > 0 ? 0 : Math.PI, at = (out: number): number => z + f * out;
     const kind = SHOP_NAMES[bay.shop]!, top = base + 3.3 * k;
     p.boxes.push({ x, y: base + 0.22, z: at(0.07), w: w - 0.3, h: 0.44, d: 0.14, ry, colour: '#3a3d42' });                    // the stall riser
-    p.glows.push({ x, y: base + 0.44 + 1.0 * k, z: at(0.05), w: w - 0.35, h: 2.0 * k, d: 0.06, ry, colour: kind.glow });          // the window
+    p.glows.push({ x, y: base + 0.44 + 1.0 * k, z: at(0.05), w: w - 0.35, h: 2.0 * k, d: 0.06, ry, colour: kind.glow, bay: bayIndex });          // the window
     const doorX = x + bay.door * (w / 2 - 0.75);
     p.boxes.push({ x: doorX, y: base + 1.12 * k, z: at(0.09), w: 0.95, h: 2.24 * k, d: 0.05, ry, colour: '#2b2f33' });          // the door
     for (const side of [-1, 1]) p.boxes.push({ x: x + side * (w / 2 - 0.08), y: base + 1.65 * k, z: at(0.1), w: 0.2, h: 3.3 * k, d: 0.2, ry, colour: '#d9d2c2' });
     p.boxes.push({ x, y: top - 0.38 * k, z: at(0.09), w, h: 0.76 * k, d: 0.12, ry, colour: '#26292d' });                       // the fascia
-    p.quads.push({ x, y: top - 0.38 * k, z: at(0.16), w: w - 0.5, h: 0.58 * k, ry, cell: bay.shop % SIGN_CELLS, lit: true });  // the sign
+    p.quads.push({ x, y: top - 0.38 * k, z: at(0.16), w: w - 0.5, h: 0.58 * k, ry, cell: bay.shop % SIGN_CELLS, lit: true, bay: bayIndex });  // the sign
     // The awning slopes down away from the wall, over the window; its valance hangs from the outer edge.
     const ay = base + 2.62 * k, mid = 0.08 + AWNING_DEPTH / 2 * Math.cos(AWNING_TILT);
     p.boxes.push({ x, y: ay, z: at(mid), w: w - 0.2, h: 0.05, d: AWNING_DEPTH, ry, tilt: AWNING_TILT, colour: bay.awning });
@@ -122,6 +122,6 @@ export function shopParts(bays: readonly Bay[], base = 0.05): Parts {
       p.quads.push({ x: mx, y: base + 0.48 + 0.85 * k, z: at(0.1), w: 0.62 * k, h: 1.7 * k, ry, cell: FIRST_MANNEQUIN + ((bay.shop + m) % MANNEQUIN_CELLS) });
     }
     if (kind.board) p.boxes.push({ x: doorX + bay.door * 1.1, y: base + 0.45, z: at(0.38), w: 0.6, h: 0.9, d: 0.08, ry, tilt: -0.12, colour: '#1d1f22' });
-  }
+  });
   return p;
 }

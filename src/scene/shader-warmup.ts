@@ -9,17 +9,21 @@
  * that is disposed meanwhile). A host asks `hold()` before it draws; while new programs
  * link, the draw is skipped (the last frame stays up) and `redraw` runs once they are ready.
  * Textures are handled the same way: new ones are uploaded a few milliseconds a frame before the first draw that needs them.
+ * What is covered: every material under the root, hidden ones too (three's compile() gathers them with traverse), so the rain's streaks and its
+ * splashes (hidden until the rain moves) are linked before the first draw that shows them. With a post stack the host passes its scene buffer:
+ * the scene's programs are linked again against it, once, because a program drawn into a render target differs from the one for the screen
+ * (tone mapping and output colour space are part of the key). Without that the stack's first frame relinked the whole scene in one frame.
  * Nothing changes what is drawn. Without the extension (or a renderer that cannot compile, as in the
  * tests) `hold()` is always false and drawing is unchanged.
  */
-import type { Camera, Material, Object3D, Texture, WebGLRenderer } from 'three';
+import type { Camera, Material, Object3D, Texture, WebGLRenderer, WebGLRenderTarget } from 'three';
 
 /** The longest a draw waits for links before it goes ahead (and waits for the rest itself). */
 const MAX_WAIT_MS = 1500;
 /** Objects can also arrive without a mark() (people streamed in by a scene): look again at most this often. */
 const RECHECK_MS = 500;
 
-type Compiling = Pick<WebGLRenderer, 'compile' | 'properties' | 'extensions'> & Partial<Pick<WebGLRenderer, 'initTexture'>>;
+type Compiling = Pick<WebGLRenderer, 'compile' | 'properties' | 'extensions'> & Partial<Pick<WebGLRenderer, 'initTexture' | 'setRenderTarget' | 'getRenderTarget'>>;
 type Program = { isReady?: () => boolean };
 
 function canCompileAsync(renderer: Partial<Compiling> | null | undefined): renderer is Compiling {
@@ -76,13 +80,14 @@ export interface ShaderWarmup {
    * Call before drawing `root` (part of `scene`) with `camera`. True while programs are linking: skip this draw; `redraw` is called
    * once they are ready. Looks for new materials after mark(), and otherwise at most twice a second (one walk over `root`).
    */
-  hold(root: Object3D, scene: Object3D, camera: Camera, redraw: () => void): boolean
+  hold(root: Object3D, scene: Object3D, camera: Camera, redraw: () => void, buffer?: WebGLRenderTarget | null): boolean
 }
 
 export function createShaderWarmup(renderer: unknown): ShaderWarmup {
   const target = renderer as Partial<Compiling> | null;
   const able = canCompileAsync(target);
   let dirty = true, waiting: Promise<void> | null = null, checked = -Infinity, uploads: Texture[] = [], uploading = false;
+  const warmedTargets = new WeakSet<object>();
   const canUpload = able && typeof (target as Compiling).initTexture === 'function';
   /** Upload what is pending, UPLOAD_BUDGET_MS a frame; redraw when done. */
   const drain = (redraw: () => void) => {
@@ -92,17 +97,25 @@ export function createShaderWarmup(renderer: unknown): ShaderWarmup {
   };
   return {
     mark() { dirty = true; },
-    hold(root, scene, camera, redraw) {
+    hold(root, scene, camera, redraw, buffer) {
       if (!able) return false;
       if (waiting || uploading) return true;
       const at = performance.now();
+      // A post stack draws the scene into its own buffer, which needs its own variant of every program: the first time, link them all.
+      const retarget = Boolean(buffer) && !warmedTargets.has(buffer!);
+      if (retarget) dirty = true;
       if (!dirty && at - checked < RECHECK_MS) return false;
       dirty = false; checked = at;
       const compiler = target as Compiling;
       if (canUpload) { uploads = pendingTextures(compiler, root); if (uploads.length) { uploading = true; requestAnimationFrame(() => drain(() => { dirty = true; redraw(); })); return true; } }
-      if (!hasUnlinked(compiler, root)) return false;
+      if (!retarget && !hasUnlinked(compiler, root)) return false;
       let materials: Set<Material>;
-      try { materials = compiler.compile(root, camera, scene as Parameters<Compiling['compile']>[2]); } catch { return false; }
+      const before = buffer && compiler.getRenderTarget ? compiler.getRenderTarget() : null;
+      try {
+        if (buffer) compiler.setRenderTarget?.(buffer);
+        materials = compiler.compile(root, camera, scene as Parameters<Compiling['compile']>[2]);
+      } catch { return false; } finally { if (buffer) compiler.setRenderTarget?.(before); }
+      if (buffer) warmedTargets.add(buffer);
       const started = at;
       const settle = () => {
         for (const material of materials) {

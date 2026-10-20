@@ -173,11 +173,16 @@ function onOption(name: string, raw: string): void {
 
     <!-- The table -->
     <template v-else>
-      <button class="gr-swap tb-back" type="button" @click="back">‹ All tables</button>
-      <h3 class="tb-title">{{ tableTitle(table) }} <BaseChip :tone="rowStake(table).tone">{{ rowStake(table).text }}</BaseChip><small>{{ table.venueLabel }}{{ table.watching ? ` · ${table.watching} watching` : '' }}</small></h3>
+      <div class="tb-top" :class="{ 'is-live': table.status !== 'open' }">
+        <button class="gr-swap tb-back" type="button" @click="back">‹ All tables</button>
+        <h3 class="tb-title">{{ tableTitle(table) }} <BaseChip :tone="rowStake(table).tone">{{ rowStake(table).text }}</BaseChip><small>{{ table.venueLabel }}{{ table.watching ? ` · ${table.watching} watching` : '' }}</small></h3>
+      </div>
       <p v-if="t.socket !== 'open'" class="ui-error" role="alert">Reconnecting to the table… your seat is kept. <button class="gr-swap" type="button" @click="tables.reconnect()">Try now</button></p>
 
       <template v-if="table.status === 'open'">
+        <div v-if="onPhone && !seated" class="tb-start">
+          <BaseButton variant="primary" :reason="t.pending ? 'Waiting for the table to answer.' : null" @click="playBots(1)">Play the computer</BaseButton>
+        </div>
         <div class="gr-card">
           <h3>At the table</h3>
           <p>
@@ -190,9 +195,6 @@ function onOption(name: string, raw: string): void {
             <p>You can watch from here. To sit, go to {{ table.venueLabel }}.</p>
             <BaseButton variant="primary" @click="goToVenue(table.venue)">Go to {{ table.venueLabel }}</BaseButton>
           </template>
-        </div>
-        <div v-if="onPhone && !seated" class="tb-start">
-          <BaseButton variant="primary" :reason="t.pending ? 'Waiting for the table to answer.' : null" @click="playBots(1)">Play the computer</BaseButton>
         </div>
         <!-- The stake -->
         <div v-if="stakeCard && stakes" class="gr-card tb-stake">
@@ -250,7 +252,7 @@ function onOption(name: string, raw: string): void {
         <WeaveBoard v-else-if="weave" :state="weave" :now="view.now" @play="tables.play" />
         <AyoBoard v-else-if="ayo" :state="ayo" :now="view.now" :pending="t.pending" :error="t.error" @play="tables.play" />
         <p v-else class="gr-note">This game cannot be shown in this version.</p>
-        <button v-if="table.status !== 'over' && seated" class="gr-swap" type="button" @click="forfeit">Leave the game (you forfeit)</button>
+        <button v-if="table.status !== 'over' && seated" class="gr-swap tb-leave" type="button" @click="forfeit">Leave the game (you forfeit)</button>
         <BaseButton v-if="table.status !== 'over' && !onPhone" block :reason="busyWhy" @click="invite">{{ growth.state.busy === 'table' ? 'Preparing…' : 'Invite a friend to this table' }}</BaseButton>
       </template>
     </template>
@@ -264,6 +266,11 @@ function onOption(name: string, raw: string): void {
 .gr-note { font-size: 12px; line-height: 1.45; color: var(--c-muted); margin: var(--s-2) 2px; }
 .gr-swap { background: none; border: 0; color: var(--c-muted); font: inherit; font-size: 12px; text-decoration: underline; padding: 4px; cursor: pointer; }
 .tb-back { min-height: var(--tap, 44px); }
+.tb-top { display: flex; align-items: center; gap: 4px 10px; margin: 0 0 var(--s-2); }
+.tb-top .tb-back { flex: none; padding: 4px 8px 4px 2px; }
+.tb-top .tb-title { flex: 1 1 auto; min-width: 0; margin: 0; font-size: 15px; text-align: right; }
+.tb-top.is-live .tb-title small { display: none; }
+.tb-leave { min-height: var(--tap, 44px); }
 .gr-card { background: #fff; border-radius: var(--r-md, 16px); box-shadow: var(--e-1), var(--ring); padding: 14px; margin: 0 0 var(--s-3); }
 .gr-card h3 { margin: 0 0 4px; font-size: 15px; }
 .gr-card p { margin: 0 0 8px; font-size: 13px; line-height: 1.45; color: var(--c-ink-2); }
@@ -274,6 +281,7 @@ function onOption(name: string, raw: string): void {
 .tb-start { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 6px; }
 .tb-start .base-button { flex: 1 1 auto; min-height: var(--tap, 44px); }
 .tb-option { display: grid; gap: 4px; font-size: 13px; margin: 8px 0; }
+.tb-option select:disabled { background: var(--c-fill); color: var(--c-ink-2); opacity: 1; }
 .tb-option select { min-height: var(--tap, 44px); border-radius: 12px; border: 1px solid var(--c-line); padding: 0 10px; font: inherit; background: #fff; }
 .tb-result.is-won { background: var(--c-green-soft); }
 .tb-playmoney { font-weight: 600; }

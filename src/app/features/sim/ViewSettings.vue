@@ -9,6 +9,8 @@ import {
 
 const preferences = reactive(readViewPreferences())
 const warning = ref('')
+/** What "Reduce shake" means while the person has not chosen: the device's own Reduced Motion setting. */
+const reducedMotion = typeof globalThis.matchMedia === 'function' && globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches
 const sync = (): void => { Object.assign(preferences, readViewPreferences()) }
 const stop = onViewPreferencesChange(sync)
 onBeforeUnmount(stop)
@@ -40,6 +42,8 @@ function change(patch: Partial<ViewPreferences>): void {
         <span class="settings-state">{{ preferences.vignette ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="preferences.vignette" aria-label="Comfort vignette" @change="change({ vignette: ($event.target as HTMLInputElement).checked })"><i class="ui-switch" aria-hidden="true" /></label>
       <label class="ui-row settings-row"><span class="ui-row-body"><b>Snap turning (30°)</b><small>Turns in fixed steps instead of rotating smoothly.</small></span>
         <span class="settings-state">{{ preferences.snapTurn ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="preferences.snapTurn" aria-label="Snap turning (30 degrees)" @change="change({ snapTurn: ($event.target as HTMLInputElement).checked })"><i class="ui-switch" aria-hidden="true" /></label>
+      <label class="ui-row settings-row"><span class="ui-row-body"><b>Reduce shake and flashes</b><small>No camera nudge or freeze on big moments. Follows your device's Reduced Motion setting until you choose.</small></span>
+        <span class="settings-state">{{ preferences.reduceShake ?? reducedMotion ? 'On' : 'Off' }}</span><input type="checkbox" role="switch" :checked="preferences.reduceShake ?? reducedMotion" aria-label="Reduce shake and flashes" @change="change({ reduceShake: ($event.target as HTMLInputElement).checked })"><i class="ui-switch" aria-hidden="true" /></label>
     </div>
     <p v-if="warning" class="ui-error" role="alert">{{ warning }}</p>
   </section>

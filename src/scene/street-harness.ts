@@ -10,6 +10,7 @@
  * looks from the street's start pose, where the map's dive ends on the home street (src/scene/street-life/street-scene.ts): eye height
  * on the near pavement, looking along the street. ?at=<ms> stops the street's clock at that instant (for screenshots).
  * ?px=&pz= stands the player's avatar there (the crowd gives way round it).
+ * ?post=1 draws through the high tier's post stack (src/scene/fx/post.ts; its ambient occlusion is on, &ao=0 turns it off; use &quality=high); window.__post has the stack and a timing helper.
  */
 import { createKit } from './kit.ts';
 import { buildNeighbourhoodScene } from './neighbourhood-scene.ts';
@@ -51,6 +52,8 @@ camera.position.set(x + num('dx', streetView ? 0 : -6), num('up', streetView ? 4
 camera.lookAt(num('lx', x), 0.3, num('lz', streetView ? 2 : 6));
 camera.updateProjectionMatrix();
 renderer.setSize(width, height, false);
+// ?post=1: the high tier's post stack in place of the plain draw, graded for the street's time of day.
+const post = params.get('post') === '1' ? await (await import('./quality.ts')).createBloom(THREE, renderer, width, height, 0.85, { kind: params.get('grade') as 'clear' | 'rains' | 'harmattan' || 'clear', band: time === 'day' ? 'day' : time === 'dusk' ? 'dusk' : 'night' }) : null;
 lights.apply(lightingFor('outdoor', time));
 lights.aim(camera);
 sky.set(...street.sky!);
@@ -65,8 +68,9 @@ const eye = (): void => {
   camera.fov = num('fov', 62); camera.position.set(...pose.eye); camera.lookAt(...pose.look); camera.updateProjectionMatrix();
   lights.aim(camera);
 };
-const draw = () => { eye(); street.look?.(camera.position.x, camera.position.z); renderer.render(scene, camera); document.getElementById('info')!.textContent = `${cityId} · ${streets ? (eyed ? 'eye pose · ' : 'waiting for the street · ') : ''}street · ${time}${params.get('models') === '1' ? ' · models' : ' · stand-ins'} · ${renderer.info.render.calls} calls · ${renderer.info.render.triangles} tris`; (window as unknown as { __diag: unknown }).__diag = { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles }; };
+const draw = () => { eye(); street.look?.(camera.position.x, camera.position.z); (post ?? renderer).render(scene, camera); document.getElementById('info')!.textContent = `${cityId} · ${streets ? (eyed ? 'eye pose · ' : 'waiting for the street · ') : ''}street · ${time}${params.get('models') === '1' ? ' · models' : ' · stand-ins'} · ${renderer.info.render.calls} calls · ${renderer.info.render.triangles} tris`; (window as unknown as { __diag: unknown }).__diag = { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles }; };
 draw();
+if (params.has('bench')) (window as unknown as Record<string, unknown>).__bench = (frames: number, through: 'plain' | 'post'): number => { const gl = renderer.getContext() as WebGL2RenderingContext, px = new Uint8Array(4); const t0 = performance.now(); for (let i = 0; i < frames; i += 1) { (through === 'post' && post ? post : renderer).render(scene, camera); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); } return (performance.now() - t0) / frames; };
 // Redraw a bounded number of times while the models arrive (a timeout chain: scene sources hold no interval).
 const redraw = (left: number): void => { draw(); if (left > 0) setTimeout(() => redraw(left - 1), 700) }
 if (params.get('models') === '1' || params.has('streetlife')) { street.startCrowd?.(renderer as never, draw); redraw(30); }

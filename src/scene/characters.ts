@@ -679,8 +679,10 @@ function limbLow(b: Drawing, name: string, x: number, y: number, z: number, pitc
 
 function markerOf(b: Drawing, marker: Marker | null | undefined): void {
   if (marker === 'crown') {
-    b.cyl(0, 3.1, 0, 0.13, 0.16, '#ffd34d', { seg: 6, top: 1.5, ...GLOW });
-    b.cone(0, 2.92, 0, 0.1, 0.16, '#ffd34d', { seg: 4, rz: Math.PI, ...GLOW });
+    // A small gold crown (a band with three points) over a down-pointing chevron: it reads as "you" from far away.
+    b.cyl(0, 3.1, 0, 0.14, 0.07, '#e8a92a', { seg: 4, open: true, ...GLOW });
+    for (const x of [-0.085, 0, 0.085]) b.cone(x, 3.2 + (x ? 0 : 0.03), 0, 0.045, x ? 0.12 : 0.17, '#ffd34d', { seg: 3, ...GLOW });
+    b.cone(0, 2.93, 0, 0.09, 0.14, '#ffe27a', { seg: 3, rz: Math.PI, ...GLOW });
   } else if (marker === 'npc') {
     b.ico(0, 3.02, 0, 0.12, 0.12, 0.12, '#58d68a', GLOW);
   } else if (marker === 'player') {

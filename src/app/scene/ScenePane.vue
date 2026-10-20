@@ -25,6 +25,7 @@ import { lightOn } from '../../lightMode.ts'
 import { placeNow } from '../features/places/placeState.ts'
 
 const SceneViewToggle = defineAsyncComponent(() => import('./SceneViewToggle.vue'))
+const TapCard = defineAsyncComponent(() => import('./TapCard.vue'))
 const viewHostRevision = ref(0)
 
 const props = defineProps<{
@@ -52,6 +53,10 @@ let tipTimer = 0
 let drawn = false
 let observer: ResizeObserver | null = null
 let disposed = false
+// The person card opened on someone: the player and that person walk up, face each other and greet; closing it ends the talk (talkStance.ts).
+// Loaded after the first paint: it is not part of the startup download.
+let stopTalking = (): void => {}, paneGone = false
+void import('./talkStance.ts').then((module) => { if (!paneGone) stopTalking = module.followTalk(shell, () => scene.venue.value) })
 
 /** Tell the scene how much of the screen the HUD covers, so it draws itself in the free part. The host redraws only if the snapped values changed. */
 function layout(): void {
@@ -64,10 +69,16 @@ function layout(): void {
   const rows = Math.max(0, ...props.rows().map((node) => { const row = node?.getBoundingClientRect(); return row?.height ? row.bottom : 0 }))
   venue.setInsets({ top: covered - page.top, bottom: stack?.height ? page.bottom - stack.top : 0, hint: rows ? rows - page.top : 0 })
 }
+let drawTimer = 0
 /** A host is drawing: the wait is over. After a wait the scene comes up with the same short fade as an arrival — never a flash. */
 function hostUp(): void {
   const box = container.value
   if (!box) return
+  // The venue host may still be linking shaders (shader-warmup.ts): the card stays until it has drawn once ('allworld-drawn', data-drawn), 2.5 s at most, so the fade shows a picture.
+  if (scene.venue.value?.host === 'venue' && !box.dataset.drawn) {
+    if (!drawTimer) { box.addEventListener('allworld-drawn', hostUp, { once: true }); drawTimer = window.setTimeout(() => { if (!box.dataset.drawn) { box.dataset.drawn = '1'; hostUp() } }, 2500) }
+    return
+  }
   if (waiting.value) { box.classList.remove('is-arriving'); void box.offsetWidth; box.classList.add('is-arriving') }
   waiting.value = false; stuck.value = null; clearTimeout(tipTimer)
   if (!drawn) { drawn = true; telemetry.sceneReady(true, box.querySelector('canvas')) }
@@ -138,6 +149,7 @@ onMounted(() => {
       onScenes, onError: sceneFailed,
       onHost: () => { viewHostRevision.value++; if (scene.venue.value) hostUp(); layout(); reportPlace() } })
       scene.venue.value = venue
+      if (import.meta.env.DEV) (window as unknown as { __awVenue?: unknown }).__awVenue = venue
       void import('../features/neighbourhood/neighbourhoodStore.ts').then((module) => module.startNeighbourhood())
       venue.setState(game.state.value)
       showPlayer(); showCrowd(); showGoal()
@@ -173,6 +185,7 @@ watch(() => props.hidden, (hidden) => { if (!hidden) { onResize(); layout() } },
 onBeforeUnmount(() => {
   disposed = true
   clearTimeout(tipTimer)
+  paneGone = true; stopTalking()
   window.removeEventListener('resize', onResize)
   observer?.disconnect()
   scene.venue.value?.dispose()
@@ -184,6 +197,7 @@ defineExpose({ layout })
 <template>
   <div id="venue-scene" ref="container" class="life-scene" :data-mode="game.mode.value" :hidden="hidden" @animationend.self="onResize">
     <SceneViewToggle v-if="!waiting" :host-revision="viewHostRevision" />
+    <TapCard v-if="!waiting" :bottom="props.bottom" />
     <div v-if="waiting" class="scene-wait" :class="{ 'is-stuck': failed || stuck }" role="status">
       <img src="/icons/world-loader.webp" width="96" height="96" alt="" />
       <SceneUnsupported v-if="failed" />

@@ -81,7 +81,7 @@
 .ph-note .ph-icon.ph-artwork{background-color:transparent;background-repeat:no-repeat;border-radius:23%;box-shadow:0 4px 8px #07162330,inset 0 1px 0 #ffffff26}
 .ph-icon svg{width:19px;height:19px}
 .ph-note>span:last-child{min-width:0;display:grid;gap:1px}
-.ph-note small{font-size:11px;font-weight:600;opacity:.82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph-note small{font-size:12px;font-weight:600;opacity:.82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ph-note b{font-size:13px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ph-note.is-compact b{-webkit-line-clamp:1}
 .ph-note.is-fresh{background:#f2f6f4e8}
@@ -99,7 +99,7 @@
 .ph-appbtn .ph-icon{transition:transform .12s ease-out}
 .ph-appbtn:hover .ph-icon{transform:scale(1.05)}
 .ph-appbtn:active .ph-icon{transform:scale(.93);filter:brightness(.88)}
-.ph-label{max-width:84px;font-size:11.5px;font-weight:500;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px #00131fcc}
+.ph-label{max-width:84px;font-size:12px;font-weight:500;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px #00131fcc}
 .ph-appbtn.is-running .ph-label::before{content:'';display:inline-block;width:5px;height:5px;margin:0 4px 1px 0;border-radius:50%;background:#8dffbd;vertical-align:middle}
 .ph-badge{position:absolute;top:0;left:calc(50% + 13px);min-width:21px;height:21px;padding:0 6px;border-radius:11px;background:var(--c-badge);color:#fff;font-size:11.5px;font-weight:700;line-height:21px;text-align:center;box-shadow:0 0 0 2px #ffffffe6,0 2px 4px #0000004d}
 .ph-dots{flex:none;display:flex;align-items:center;justify-content:center;height:36px}
@@ -125,7 +125,7 @@
 .ph-shade-close{display:grid;place-items:center;width:var(--tap);height:var(--tap);border:0;border-radius:50%;background:#ffffff24}
 .ph-shade-close svg{width:18px;height:18px}
 .ph-shade-list{flex:1;min-height:0;display:grid;gap:7px;align-content:start;overflow-y:auto;scrollbar-width:none;border-radius:18px}
-.ph-shade .ph-note{background:#ffffff1f}
+.ph-shade .ph-note{background:#ffffff1f;color:#f4f8f8!important}
 .ph-shade .ph-note.is-fresh{background:#ffffff3d}
 .ph-shade .ph-note b{-webkit-line-clamp:3}
 .ph-shade-all{flex:none;min-height:var(--tap);border:0;border-radius:var(--r-pill);background:#fff;color:var(--c-ink)!important;font-weight:700!important;font-size:13px!important}
@@ -152,15 +152,20 @@
 .ph.is-wide{width:min(780px,calc(100vw - 40px))}
 /* Expanded: running text keeps a readable measure instead of spanning the whole device. */
 .ph.is-wide .ph-appbody :is(.ui-note,.civic-note,.settings-note,.social-note,.ride-intro,.ride-blurb,.groceries-intro,.help-note,.goals-why){max-width:72ch}
-@media(max-width:899px){.ph-wide{display:none}}
+@media(max-width:699px){.ph-wide{display:none}}
 
 /* ---- sizes ---------------------------------------------------------------------------------- */
 @media(min-width:900px) and (min-height:960px){.ph{--ph-w:412px;--ph-h:min(860px,calc(100 * var(--ui-vh) - 96px))}#life-dialog[data-phone]{--ph-top:calc(100 * var(--ui-vh) - 14px - min(860px,100 * var(--ui-vh) - 96px))}}
+/* Tablets and big screens: the device grows a step (taller and a little wider; screens over 2400px also get the interface zoom from tokens.css), the icons and text with it. The expanded sheet gets wider too. */
+@media(min-width:700px) and (min-height:1000px){.ph{--ph-w:448px;--ph-h:min(920px,calc(100 * var(--ui-vh) - 136px))}#life-dialog[data-phone]{--ph-top:calc(100 * var(--ui-vh) - 14px - min(920px,100 * var(--ui-vh) - 136px))}.ph-icon{width:64px;height:64px;border-radius:16px}.ph-icon svg{width:32px;height:32px}.ph-label{max-width:96px}.ph-appbody{font-size:16px}}
+/* On a desktop device the home bar sits in its own strip under the app instead of over the last lines. */
+@media(min-width:521px){.ph[data-view=app] .ph-appbody{margin-bottom:20px}}
 @media(max-height:860px){.ph-clock b{font-size:50px}.ph-clock{padding-top:10px}.ph-notifs{margin-top:8px}.ph-group{margin-top:6px!important}}
 @media(max-height:790px){.ph-clock b{font-size:38px}.ph-clock span{font-size:12px}.ph-more{display:none}.ph-appbtn{min-height:70px}.ph-icon{width:48px;height:48px;border-radius:13px}}
 /* On a real phone the device is the screen: full width, no bezel, the scene still peeks above it. */
 @media(max-width:520px){
   #life-dialog[data-phone]{padding-bottom:0;--ph-top:calc(52px + env(safe-area-inset-top))}
+  #life-dialog[data-phone]::backdrop{background:rgba(8,14,11,.84)}
   .ph-stage{gap:6px}.ph-close{margin-right:10px}
   .ph{--ph-w:100vw;--ph-h:calc(100 * var(--ui-vh) - 58px - env(safe-area-inset-top));padding:0;border-radius:30px 30px 0 0;box-shadow:0 -1px 0 #ffffff33,var(--e-3);background:#0e1014}
   .ph::before,.ph::after,.ph-island{display:none}

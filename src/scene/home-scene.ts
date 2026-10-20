@@ -86,7 +86,11 @@ import type { ObjectAction } from './smart-objects/sequence.ts';
 import type { BodyPose, SkinnedBody } from './body/skinned.ts';
 import { HOUSES, DEFAULT_HOUSE, homeOf } from '../game/content/housing.ts';
 import { housesFor } from '../game/cities/housingRuntime.ts';
-import { cachedCityContent } from '../game/cities/registry.ts';
+import { cachedCityContent, cityRules } from '../game/cities/registry.ts';
+import { CLEAR_LOOK, lookAt, lookKey } from '../game/conditions/look.ts';
+import type { LookConditions } from '../game/conditions/look.ts';
+import type { Weather } from './fx/weather.ts';
+import { withWetQuery } from './weather-query.ts';
 import type { HomePalette } from '../types/content.ts';
 import { HOUSE_DESIGNS, HOUSE_STYLE } from '../game/content/world.ts';
 import { footprint, windowSlot, doorSlot, plotOf } from '../game/home-layout.ts';
@@ -410,6 +414,25 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
   let palette: HomePalette = ROOM_PALETTE, grid = 0, owned = false, tile = 1, drawn = '', lastState: LifeState | null = null, camera: THREE.Camera | null = null, canvas: HTMLElement | null = null, status = '', undrawn = false;
   let homeTime: TimeOfDay = 'day';
   glow.intensity = 26 * lightingFor('indoor', homeTime).lamps;
+  // The weather (src/scene/fx, one lazy chunk): rain falls on the yard round the house and never inside it. A dry day never loads it. It asks for no
+  // frames of its own: the host's ambient hooks below give it a window of frames when the player acts (as in the venues and the street).
+  let weatherFx: Weather | null = null, weatherAsked = false, wetNow: LookConditions = CLEAR_LOOK, onAmbient: ((ready: boolean) => void) | null = null;
+  function syncWeather(state: LifeState): boolean {
+    const city = state.estate?.city, next = Number.isFinite(state.t) && city ? withWetQuery(lookAt(city, null, cityRules(city)?.climate, state.t)) : wetNow;
+    const changed = lookKey(next) !== lookKey(wetNow);
+    wetNow = next;
+    if (weatherFx) { weatherFx.setTime(homeTime); weatherFx.update(wetNow); if (changed) onAmbient?.(true); return changed; }
+    if (!wetNow.wet || weatherAsked || gone) return changed;
+    weatherAsked = true;
+    void import('./fx/index.ts').then((fx) => fx.loadFxHere()).then(({ tier, weather: fx }) => {
+      if (gone) return;
+      const half = ROOM / 2 + 0.3;
+      // The whole house is cover at any height (the grid caps it): the room is a cutaway with no roof drawn, so drops above its roof line would read as rain in the room.
+      weatherFx = fx.createWeather({ THREE, parent: group, tier, time: homeTime, roofs: { boxes: [[-half, 0, -half, half, 1e6, half]], bounds: [-30, -30, 30, 30], buildings: true } });
+      weatherFx.update(wetNow); onAmbient?.(true);
+    }).catch(() => { weatherAsked = false; });
+    return changed;
+  }
   let plot: Plot = plotOf(1), plan: HousePlan = planOf(plot);
   // The floor the avatar stands on, and the floors drawn (0 … shownFloor): the ones above are lifted off.
   let level = 0, shownFloor = 0, restFloor = 0, lastAt = { x: NaN, z: NaN };
@@ -1220,11 +1243,19 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
       homeTime = nextTime;
       if (timeChanged) glow.intensity = 26 * lightingFor('indoor', homeTime).lamps;
       lastState = state;
+      const weatherChanged = syncWeather(state);
       const room = refresh(state);
-      const changed = refreshPeople(state) || room || first || undrawn || timeChanged;
+      const changed = refreshPeople(state) || room || first || undrawn || timeChanged || weatherChanged;
       undrawn = false;
       return changed;
     },
+    /** The weather's window of frames (the host's ambient hooks): the home has no people of its own to walk, so this is the rain alone. */
+    setAmbient() { return false; },
+    stepAmbient(dt: number) { return weatherFx?.step(dt) ?? false; },
+    wakeAmbient() { return weatherFx?.wake() ?? false; },
+    settleAmbient() { weatherFx?.settle(); },
+    get ambientAwake() { return weatherFx?.awake ?? false; },
+    set onAmbient(fn: ((ready: boolean) => void) | null) { onAmbient = fn; },
     /** The player's avatar: { look, seed, name, pose? }. Returns true when it changed what is drawn. */
     setPlayer({ look, seed, name, pose }: HomePlayer = {}) {
       if (pose != null) cancelDoor();
@@ -1417,6 +1448,7 @@ export function buildHomeScene(kit: Kit, options: { visit?: VisitHomeScene } = {
     },
     /** Free the house, the furniture and the avatars, and stop listening. */
     dispose() {
+      weatherFx?.dispose(); weatherFx = null;
       doorDone = null; hinge?.dispose(); hinge = null;
       useProps.dispose();
       sequence.dispose();

@@ -1,0 +1,47 @@
+diff --git a/src/venue-world.ts b/src/venue-world.ts
+index 57f6f687c..922b4e8eb 100644
+--- a/src/venue-world.ts
++++ b/src/venue-world.ts
+@@ -855,12 +855,14 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
+     if (reduced()) { orbit.snap(); ghost.now = ghost.goal; }
+     else {
+       more = orbit.step(dt) || more;
++      if (shake) more = shake.step(dt) || more;
+       if (ghost.now !== ghost.goal) {
+         const gap = ghost.goal - ghost.now;
+         if (Math.abs(gap) < 0.02) ghost.now = ghost.goal; else { ghost.now += gap * (1 - Math.exp(-GHOST_RATE * dt)); more = true; }
+       }
+     }
+     orbit.apply(camera);
++    if (shake) shake.apply(camera.position, orbit.azimuth, orbit.distance * 0.03);
+     renderScene(updateStarted);
+     return more;
+   }
+@@ -1281,10 +1283,17 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
+       if (!gone && epoch === rewardEpoch) cheer(globalThis.document?.querySelector('dialog[open]') || globalThis.document?.body);
+     }).catch(() => { /* cheers are optional presentation */ });
+   }
++  // A big moment (src/scene/feel/) nudges the camera: the shake is fetched the first time it is asked for, stepped by this loop (which runs until it has died away, well under a second) and added to the camera after the orbit has placed it. The orbit and the avatar are never moved.
++  let shake: import('./scene/feel/shake.ts').Shake | null = null;
++  function onShake(event: Event) {
++    const trauma = Number((event as CustomEvent<{ trauma?: number } | null>).detail?.trauma);
++    if (!(trauma > 0) || uiMode !== 'venue' || reduced()) return;
++    void import('./scene/feel/shake.ts').then(({ createShake }) => { if (gone) return; shake ??= createShake(); shake.kick(trauma); loop.wake(); }).catch(() => { /* a shake is optional presentation */ });
++  }
+   function onMode(event: Event) { homeDoorEpoch++; uiMode = (event as CustomEvent<{ mode?: string } | null>).detail?.mode || 'venue'; if (uiMode !== 'venue') dropInput(); }
+   // Created after the shell: start from the view the shell wrote on its root element.
+   uiMode = globalThis.document?.querySelector?.<HTMLElement>('.life-ui')?.dataset?.mode || 'venue';
+-  win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward); win?.addEventListener?.('jaw:cheer', onCheer);
++  win?.addEventListener?.('jaw:mode', onMode); win?.addEventListener?.('jaw:reward', onReward); win?.addEventListener?.('jaw:cheer', onCheer); win?.addEventListener?.('jaw:shake', onShake);
+   win?.addEventListener?.('jaw:key', onKey);
+   win?.addEventListener?.('jaw:key-up', onKeyUp);
+   win?.addEventListener?.('blur', dropInput);
+@@ -1781,7 +1790,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
+       gone = true; reducedMotion?.removeEventListener?.('change', onReducedMotion); loop.dispose(); standIn?.dispose(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; }
+       releasePointers();
+       for (const [type, listener] of Object.entries(listeners)) canvas.removeEventListener?.(type, listener, { capture: type === 'click' });
+-      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
++      win?.removeEventListener?.('jaw:mode', onMode); win?.removeEventListener?.('jaw:reward', onReward); win?.removeEventListener?.('jaw:cheer', onCheer); win?.removeEventListener?.('jaw:shake', onShake); win?.removeEventListener?.('jaw:key', onKey); win?.removeEventListener?.('jaw:key-up', onKeyUp); win?.removeEventListener?.('blur', dropInput);
+       controls?.dispose();
+       if (canvas.style) { canvas.style.touchAction = previousTouchAction || ''; canvas.style.cursor = previousCursor || ''; }
+       for (const entry of built.values()) entry.dispose?.();

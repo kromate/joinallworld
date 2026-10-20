@@ -123,13 +123,13 @@ const heading = computed(() => (venue.value ? 'Services at this market' : scope.
 </template>
 
 <style scoped>
-.sc-app { display: grid; gap: 12px; padding: 12px; align-content: start; min-width: 0; }
+.sc-app { display: grid; gap: 12px; padding: 0; align-content: start; min-width: 0; }
 .sc-tabs { display: flex; gap: 6px; }
 .sc-tabs button { flex: 1; min-height: 44px; border: 1px solid rgb(0 0 0 / 16%); border-radius: 10px; background: transparent; font: inherit; }
-.sc-tabs button.is-on { background: var(--c-fill, #eef1ef); font-weight: 600; }
+.sc-tabs button.is-on { background: var(--c-ink, #1b2230); border-color: var(--c-ink, #1b2230); color: #fff; font-weight: 600; }
 .sc-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); }
 .sc-title { margin: 0; font-size: 18px; }
-.sc-lead { margin: 0; font-size: 13px; color: var(--c-faint, #6b737c); }
+.sc-lead { margin: 0; font-size: 14px; color: var(--c-faint, #6b737c); }
 .sc-filters { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; min-width: 0; }
 .sc-filters label { display: grid; gap: 2px; min-width: 0; font-size: 12px; }
 .sc-filters label:first-child, .sc-filters > button { grid-column: 1 / -1; }

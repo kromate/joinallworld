@@ -108,21 +108,21 @@ function go(venue: string): void { shell.close(); void goTo(venue) }
 </template>
 
 <style scoped>
-.civic-note { font-size: 12px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
+.civic-note { font-size: 13px !important; line-height: 1.5 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
 .civic-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0 0; }
 .civic-actions .civic-action { flex: 1 1 140px; display: grid; margin: 0; }
 .civic-actions.is-stack { display: grid; }
 :global(.ph.is-wide) .civic-actions.is-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
 .civic-form { display: grid; gap: var(--s-3); margin: var(--s-2) 0; }
 .civic-form.is-card { padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
-.civic-form label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; margin: 0 !important; }
+.civic-form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; margin: 0 !important; }
 :global(.ph.is-wide) .civic-form input { max-width: 460px; }
 .ui-row.is-you { background: color-mix(in srgb, var(--app-tint, var(--c-green)) 8%, #fff); }
 .ui-row.is-you b { font-weight: 800; }
 .radio-now { position: relative; display: grid; gap: 3px; margin-bottom: var(--s-2); padding: 18px 18px 44px; border-radius: var(--r-lg); background: #18283e; color: #fff; overflow: hidden; overflow-wrap: anywhere; box-shadow: var(--e-1); }
 .radio-now.is-on { background: #442278; }
 .radio-now strong { display: block; font-size: 20px; letter-spacing: -.3px; }
-.radio-now small { font-size: 12px; line-height: 1.4; opacity: .85; }
+.radio-now small { font-size: 14px; line-height: 1.45; opacity: .9; }
 .radio-bars { position: absolute; left: 18px; bottom: 14px; display: flex; align-items: flex-end; gap: 4px; height: 20px; }
 .radio-bars i { width: 5px; border-radius: 3px; background: #ffffff80; }
 .radio-bars i:nth-child(1) { height: 8px; }

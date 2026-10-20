@@ -43,7 +43,7 @@ const note = computed(() => presenceNote(props.attended, props.event.live, props
       <small>{{ money(spray.left) }} left to spray today. Spraying is for show: it lifts Social and Fun and the money is gone.</small>
     </div>
     <div class="gr-actions">
-    <BaseButton v-if="!here" :variant="event.live ? 'primary' : 'default'" :reason="offline" @click="emit('go')">Go there</BaseButton>
+    <BaseButton v-if="!here" class="gr-go" variant="primary" :reason="offline" @click="emit('go')">Go there</BaseButton>
     <BaseButton @click="emit('calendar')">Add to my calendar</BaseButton>
     <BaseButton :disabled="sharing" :reason="offline" @click="emit('share')">Share</BaseButton>
     </div>
@@ -56,7 +56,8 @@ const note = computed(() => presenceNote(props.attended, props.event.live, props
 .gr-card p { margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: var(--c-ink-2); }
 .gr-actions,.gr-spray { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .gr-actions :deep(.base-button) { flex: 1 1 130px; max-width: 100%; }
-.gr-spray small { flex-basis: 100%; font-size: 12px; line-height: 1.5; color: var(--c-muted); }
-.gr-when { font-variant-numeric: tabular-nums; font-size: 12px !important; color: var(--c-muted) !important; }
-.gr-live { display: inline-block; background: var(--c-red); color: #fff; border-radius: 99px; font-size: 11px; font-weight: 700; padding: 2px 8px; margin-left: 6px; vertical-align: middle; }
+.gr-actions :deep(.gr-go) { flex-basis: 100%; }
+.gr-spray small { flex-basis: 100%; font-size: 13px; line-height: 1.5; color: var(--c-muted); }
+.gr-when { font-variant-numeric: tabular-nums; font-size: 13px !important; color: var(--c-muted) !important; }
+.gr-live { display: inline-block; background: var(--c-red); color: #fff; border-radius: 99px; font-size: 12px; font-weight: 700; padding: 3px 8px; margin-left: 6px; vertical-align: middle; }
 </style>

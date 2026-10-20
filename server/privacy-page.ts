@@ -9,9 +9,9 @@ import { OG_IMAGE, safeOrigin } from './growth/share.ts'
 import { escapeHtml as esc } from './path-meta.ts'
 
 const UPDATED = '19 October 2026'
-export const STYLE = `*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#193126;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
-.wrap{max-width:720px;margin:0 auto;padding:24px 20px 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{font-weight:800;color:#0f5132;text-decoration:none;font-size:20px}
-h1{font-size:28px;line-height:1.2;margin:0 0 6px}h2{font-size:19px;margin:28px 0 8px}p,li{margin:0 0 10px}ul{padding-left:20px}.meta{color:#5b6b63;font-size:14px}.foot{margin-top:32px;font-size:14px;color:#5b6b63}a{color:#0f5132}`
+export const STYLE = `@media(min-width:1800px){body{zoom:1.25}}@media(min-width:2800px){body{zoom:1.6}}*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#193126;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:24px 20px 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{display:inline-flex;align-items:center;min-height:44px;font-weight:800;color:#0f5132;text-decoration:none;font-size:20px}
+h1{font-size:28px;line-height:1.2;margin:0 0 8px}h1+.meta{font-size:16px;color:#34493f;margin-bottom:12px}h2{font-size:19px;margin:28px 0 8px}p,li{margin:0 0 10px}ul{padding-left:20px}.meta{color:#5b6b63;font-size:14px}.foot{margin-top:32px;font-size:14px;color:#5b6b63}a{color:#0f5132}.foot a{display:inline-flex;align-items:center;min-height:44px}@media(max-width:480px){.wrap{padding:12px 16px 40px}.top{margin-bottom:8px}h2{margin-top:24px}}`
 
 export function privacyPageHtml(origin: unknown = ''): string {
   const base = safeOrigin(origin), title = 'Privacy — Allworld'

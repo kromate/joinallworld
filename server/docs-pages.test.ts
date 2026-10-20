@@ -83,6 +83,6 @@ test('skills: the page is /skills itself, and a skill file under it is still ser
 
 test('about: what it is, why it was built and the vision, as prose with the live city count, and ways to join in', () => {
   const html = aboutPageHtml('https://joinallworld.com');
-  for (const words of ['<h1>About Allworld</h1>', 'id="what"', 'id="why"', 'id="vision"', 'id="today"', 'id="join"', '<div class="prose">', '<strong>Every country, every city.</strong>', 'open cities in', 'href="https://joinallworld.com/feedback"']) assert.ok(html.includes(words), words);
+  for (const words of ['<h1>About Allworld</h1>', 'id="what"', 'id="why"', 'id="vision"', 'id="today"', 'id="join"', '<div class="prose">', '<strong>The real world first.</strong>', 'the OASIS in Ready Player One', 'open cities in', 'href="https://joinallworld.com/feedback"']) assert.ok(html.includes(words), words);
   assert.equal(html.includes('**'), false, 'bold markers are turned into strong');
 });

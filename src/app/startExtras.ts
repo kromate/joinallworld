@@ -38,6 +38,8 @@ export function startAfterReady(): void {
   void import('../game/dilemma-pack.ts').catch(() => undefined)
   void import('./chatter/start.ts').then(({ startChatter }) => { startChatter() }, () => undefined)
   void import('./chatter/ambient.ts').then(({ startAmbient }) => { startAmbient() }, () => undefined)
+  // The installed app's offline page (features/start/offlineWorker.ts registers public/sw.js only inside the installed app).
+  void import('./features/start/offlineWorker.ts').then(({ startOfflineWorker }) => startOfflineWorker(), () => undefined)
   // "Add Allworld to your phone", once per device after a first session in the game: fetched only for a device that has not been asked (features/start/installPrompt.ts).
   try { if (globalThis.localStorage?.getItem(INSTALL_ASKED_KEY) === null) void import('./features/start/installPrompt.ts').then(({ startInstallPrompt }) => { startInstallPrompt() }, () => undefined) } catch { /* no storage: no bar */ }
   // The first minute (features/firstminute, docs/FEED.md): what is near, who is here and one thing to do, once per session, fetched only for a tab that has not shown it.

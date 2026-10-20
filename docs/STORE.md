@@ -12,6 +12,8 @@ codebase. This page is the owner's checklist; the code side is done and waits fo
 | Digital Asset Links at `/.well-known/assetlinks.json` | `server/site-files.ts`, both hosts | done; answers 404 until `PLAY_SIGNING_SHA256` is set |
 | The in-site install bar ("Add Allworld to your phone") | `src/app/features/start/installPrompt.ts`, `installEvent.ts`, `installPlan.ts` | done |
 | Package name | `com.joinallworld.app` (`PLAY_PACKAGE_NAME` in `server/site-files.ts`) | chosen; permanent once uploaded |
+| Offline page in the installed app | `public/sw.js` (navigation-only fetch handler, page written in the worker, nothing cached), registered by `src/app/features/start/offlineWorker.ts` only in the installed app | done 20 Oct |
+| Android package, version 1.0.0 (code 1) | built 20 Oct on the owner's Mac in `~/allworld-twa` (outside the repository); see "Built on 20 Oct" below | built; not uploaded |
 
 The icons: `public/icons/icon-512.png` is the globe on the brand green with the artwork inside the central 80 percent circle, so the same picture
 serves as the maskable icon (`icon-maskable-512.png`, `icon-maskable-192.png`: byte-for-byte copies of the 512 and 192 "any" icons).
@@ -46,6 +48,20 @@ Play installs are separate from home-screen installs (`utm_source=pwa`). `build`
 
 **PWABuilder (browser, no tools)**: <https://www.pwabuilder.com>, enter `https://joinallworld.com`, "Package for stores", Android. Set the package id
 to `com.joinallworld.app`, signing key "New", and download the zip: it contains the `.aab`, the keystore and a ready `assetlinks.json` snippet.
+
+### Built on 20 Oct 2026
+
+Built with Bubblewrap 1.27 from `~/allworld-twa/app/twa-manifest.json` (the answers above, `minSdkVersion` **24**: the current Android Browser
+Helper refuses 21; `targetSdkVersion` 36; notifications delegation on; fallback to Custom Tabs where Chrome is missing). Output:
+`~/allworld-twa/app/app-release-bundle.aab` (upload this) and `app-release-signed.apk` (for `adb install`). The upload key is
+`~/allworld-twa/android.keystore`, alias `upload`; its password is in `~/allworld-twa/private/` and in the macOS Keychain
+("Allworld Android keystore password"). **Copy the keystore and the password somewhere off this Mac.** Upload key SHA-256:
+`E4:7F:AC:23:09:61:C6:F9:CA:20:69:B5:86:FC:14:AE:57:9D:81:85:27:2E:8D:EE:DB:FE:DE:C7:DE:9B:CC:15`.
+Bubblewrap's settings are in `~/.bubblewrap/config.json` (Zulu JDK 21; the Android SDK through the link folder `~/allworld-twa/sdk`, because
+Bubblewrap wants `sdkmanager` under `<sdk>/bin`). To make version 2: raise `appVersionCode`/`appVersionName` in `twa-manifest.json`, run
+`bubblewrap update --skipVersionUpgrade` then `bubblewrap build` from `~/allworld-twa/app` with the two `BUBBLEWRAP_*_PASSWORD` variables set
+from the password file. Checked on the Android 15 emulator: installs, opens on the green splash and runs the game (the browser bar shows until
+`PLAY_SIGNING_SHA256` is set, as expected).
 
 ## 3. Upload, and get the fingerprint into the site
 
@@ -120,9 +136,9 @@ Text is drawn from `src/entry-variants.ts` (the home row) so the store says what
 
 - **Quality bar for a web wrapper.** Play expects an app that works and is more than a link. A TWA that opens a blank page or a browser error when
   the phone is offline can be refused. Today `public/sw.js` only handles notifications (it deliberately has no fetch handler and caches nothing),
-  so **there is no offline page**: offline the app shows Chrome's error screen. A small offline fallback page and a fetch handler that serves it
-  only for a failed page request would fix it without caching the game; it is not built (it changes the worker's documented promise), say if you
-  want it before submission. A related risk: Chrome only fires the `beforeinstallprompt` that drives our "Add Allworld to your phone" bar on a
+  and showed Chrome's error screen offline. Since 20 Oct the installed app registers the worker, and a page load with no network shows a small
+  Allworld page ("You are offline", Try again, and it retries every 10 seconds) answering 200: Chrome's app checks have counted an error status
+  there as a crash. Nothing is cached; an ordinary browser tab still has no worker unless notifications are on. A related risk: Chrome only fires the `beforeinstallprompt` that drives our "Add Allworld to your phone" bar on a
   site it counts as installable; if the bar never shows on an Android phone, this is the first thing to check.
 - **Lighthouse and the installability check.** Run Lighthouse in Chrome DevTools (performance, accessibility, best practices, SEO) against
   `https://joinallworld.com`, and read DevTools, Application, Manifest: it lists any missing manifest field or icon and says whether the page is
@@ -138,6 +154,32 @@ Text is drawn from `src/entry-variants.ts` (the home row) so the store says what
   `admin.joinallworld.com` is another origin and opens in the browser, which is what we want.
 - **Review time.** The first review takes days; later updates are usually faster. Because the app is the website, a site release needs no new upload:
   only a change to the wrapper (name, icon, start address) does.
+
+## 5a. Rejection risks found on 20 Oct (Play help pages, Bubblewrap and PWABuilder issues)
+
+Most likely first. Unverified claims are marked.
+
+1. **Closed test (new personal account).** At least 12 testers opted in for 14 days in a row before production access can be requested;
+   recruit 15 to 20 so a dropout does not reset the clock, ask them to really use chat, the feed, uploads and games, and ship at least one
+   update during the test. The production-access form asks how testers were found, what they used, what feedback came and what changed:
+   answer with numbers and dated changes. (Play Console Help 14151465.)
+2. **"Webview spam" / minimum functionality.** Asset Links proves we own the site; also show app features: full screen with no browser bar,
+   notifications, the offline page, sharing and deep links. Never call the app "a website" in the listing.
+3. **Asset Links.** `assetlinks.json` must carry the **Play App Signing** SHA-256 (and the upload key's) before the Play-installed build is
+   tested; reinstall after fixing (Android caches the answer). Keep every page on `joinallworld.com` (another host shows the bar).
+4. **Payments.** Inside the app nothing may sell digital goods outside Play Billing or point to a web purchase. Hide buy buttons, prices
+   and payment links in the app itself (detect it by `document.referrer` starting `android-app://com.joinallworld.app` on the first page, or by
+   `utm_source=play` in the start address, and remember it for the session). **Not built yet.**
+5. **User-generated content.** Users accept terms that forbid objectionable content before they first post, chat or upload; report and
+   block reachable from profiles, messages, posts and pictures. **There is no terms page and no acceptance step yet.**
+6. **Age.** No age gate: set the target audience to 13+ (or 18+) only, keep listing art not child-appealing, and state "13 and over" in the
+   terms and at sign-up. **Not built yet.**
+7. **Account deletion.** Play wants a web address, outside the app, that tells people how to delete their account; `/privacy` describes it in
+   Settings → Account, which works in any browser at joinallworld.com: give `https://joinallworld.com/privacy` as that address and say so there.
+8. **Reviewer access.** Guest play needs no sign-in; say so under App access. Phone sign-in by SMS blocks a reviewer: give an e-mail test account.
+9. **Money wording.** The game shows "₦" amounts ("claim at least ₦1,000,000 in the game"). A reviewer may read the naira sign as real money;
+   say "in-game naira" or "coins" in the listing and consider how the in-app banners read.
+10. **Crashes on low-end phones.** Reviewers use varied phones; test the 3D world on a cheap Android before submitting.
 
 ## 6. iPhone
 

@@ -1027,7 +1027,10 @@ export function createAtlas(container: HTMLElement, { ladder = NO_PORT, dive = (
       for (const country of sheets[WORLD].topology.features.filter(feature => statusOf('country', feature.id) === 'open')) {
         const mine = country.id === here, cityId = regionEntry('country', country.id).city;
         const locked = Boolean(cityId && cityAccess(cityId, { current, story: storyView }) === 'locked');
-        push(mine ? 'country:home' : `country:${country.id}`, at(relLon(country.at[0]), country.at[1]), country.name, { priority: mine ? 1000 : 500, fixed: true, size: dn.city, compact: true, anchor: 'above', cls: `is-city ${locked ? 'is-locked' : 'is-open'}${mine ? ' is-you' : ''}`, note: mine ? 'You are here' : locked ? 'Locked' : 'Open' });
+        // Only the player's own country is always named. Every other open country takes its turn like any label, bigger countries
+        // first, and gives way rather than sit on another name: with every country open, always-named labels piled up.
+        const b = country.bounds, span = b.maxLon - b.minLon, area = (span > 180 ? 360 - span : span) * (b.maxLat - b.minLat);   // islands across the date line are not as wide as the world
+        push(mine ? 'country:home' : `country:${country.id}`, at(relLon(country.at[0]), country.at[1]), country.name, { priority: mine ? 1000 : 500 + Math.min(300, Math.sqrt(Math.max(0, area)) * 6), fixed: mine, size: dn.city, compact: true, anchor: 'above', cls: `is-city ${locked ? 'is-locked' : 'is-open'}${mine ? ' is-you' : ''}`, note: mine ? 'You are here' : locked ? 'Locked' : 'Open' });
       }
       for (const route of plannedRoutes(current)) push(`hub:${route.to.id}`, at(relLon(route.to.lon), route.to.lat), route.to.name, { priority: 60, size: 10, anchor: 'right', cls: 'is-capital' });
     }

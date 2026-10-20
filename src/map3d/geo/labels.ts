@@ -121,6 +121,8 @@ export function placeLabels(candidates: readonly LabelCandidate[], { cap = LABEL
         if (dx || dy) { box = { left: box.left + dx, right: box.right + dx, top: box.top + dy, bottom: box.bottom + dy }; at = { ...candidate, x: candidate.x + dx, y: candidate.y + dy }; displaced = true; }
       }
       if (!candidate.fixed && (placed.some((other) => overlaps(box, other.box, pad)) || avoid.some((other) => overlaps(box, other, 0)))) continue;
+      // A name that cannot move and is not always shown is left off rather than cut by the edge of the screen.
+      if (!candidate.fixed && !candidate.alts?.length && !onScreen(box, width, height)) continue;
       placed.push({ ...at, shown: text, abbreviated: text !== candidate.text, box, home: { x: candidate.x, y: candidate.y }, displaced });
       break;
     }

@@ -1,3 +1,4 @@
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts'
 // Shared server test fixture: a real server on a random port with a controllable clock.
 // Usage is documented in server/routes/index.ts ("HOW TO TEST").
 import { mkdtemp, rm, writeFile, rename } from 'node:fs/promises';
@@ -82,12 +83,19 @@ export async function fixture(t: TestContext, { disk, ...options }: FixtureOptio
   async function request(path: string, body?: unknown, cookie?: string): Promise<Response> {
     return fetch(base + path, { method: body ? 'POST' : 'GET', headers: { ...(body ? { 'Content-Type': 'application/json' } : {}), ...(cookie ? { Cookie: cookie } : {}) }, body: body ? JSON.stringify(body) : undefined });
   }
-  async function device(name: string): Promise<Device> {
+  async function device(name: string, { terms = true }: { terms?: boolean } = {}): Promise<Device> {
     const res = await request('/api/session', { name });
     const header = res.headers.get('set-cookie');
     if (header === null) throw new TypeError('The session answer set no cookie');
     // The server under test answers with its documented session shape.
-    return { cookie: header.split(';')[0] ?? '', ...((await res.json()) as SessionResponse).session };
+    const device = { cookie: header.split(';')[0] ?? '', ...((await res.json()) as SessionResponse).session };
+    if (terms) { const accepted = await request('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, device.cookie); if (!accepted.ok) throw Error('Test player terms were not accepted'); }
+    return device;
+  }
+  /** Explicitly accept sharing terms after account linking; guest consent is intentionally not migrated. */
+  async function acceptSharingTerms(cookie: string): Promise<void> {
+    const accepted = await request('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, cookie);
+    if (!accepted.ok) throw Error('Test account sharing terms were not accepted');
   }
   async function action(cookie: string, fields: (Partial<ActionRequest> & Pick<ActionRequest, 'type'>) | ActionAttempt): Promise<ActionResponse & { error?: string }> { return (await request('/api/action', { actionId: `${time}:${randomUUID()}`, cityId: 'lagos', ...fields }, cookie)).json() as Promise<ActionResponse & { error?: string }>; }
   // `life-changed` (one character on several devices, docs/DEVICES.md) is a hint to a character's own sockets that arrives a
@@ -103,5 +111,5 @@ export async function fixture(t: TestContext, { disk, ...options }: FixtureOptio
   async function joinRoom(device: { cookie: string }): Promise<TestSocket> { const peer = await socket(device); peer.ws.send(JSON.stringify({ type: 'join', cityId: 'lagos', venueId: 'park' })); await peer.next(); return peer; }
   /** A client id / request id as a browser makes one: server time, then a random UUID (server/routes/once.ts). */
   const id = () => `${time}:${randomUUID()}`;
-  return { base, request, device, action, socket, joinRoom, id, logs, advance: (ms: number): void => { time += ms; }, dir, server, now: () => time, flush: async (): Promise<void> => { await server.store.flush?.(); } };
+  return { base, request, device, acceptSharingTerms, action, socket, joinRoom, id, logs, advance: (ms: number): void => { time += ms; }, dir, server, now: () => time, flush: async (): Promise<void> => { await server.store.flush?.(); } };
 }

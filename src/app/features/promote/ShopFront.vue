@@ -7,9 +7,11 @@ import './shopfront.css'
 import { useApp } from '../../state/app.ts'
 import { mediaUrl } from '../feed/feedApi.ts'
 import type { ListingView } from '../../../types/promote.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const props = defineProps<{ listing: ListingView; opened?: boolean }>()
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const note = (): void => { void game.fetchJson('/api/promote/contact', { method: 'POST', body: { listing: props.listing.id, via: 'street' } }).catch(() => undefined) }
 const message = (): void => { note(); shell.open('person', { player: props.listing.owner.id, name: props.listing.owner.name }) }
 const visit = (): void => { note(); shell.open('showcase', { shop: props.listing.shop }) }
@@ -21,7 +23,7 @@ const visit = (): void => { note(); shell.open('showcase', { shop: props.listing
     <div class="shopfront-body">
       <div class="shopfront-head">
         <img v-if="listing.photo" class="shopfront-photo" :src="mediaUrl(listing.photo)" alt="" loading="lazy" width="64" height="64">
-        <div class="feed-who"><b>{{ listing.name }}</b><small>{{ listing.categoryLabel }}<template v-if="listing.area"> · {{ listing.area }}</template><template v-if="listing.boosted"> · Sponsored</template></small></div>
+        <div class="feed-who"><b>{{ listing.name }}</b><small>{{ listing.categoryLabel }}<template v-if="listing.area"> · {{ listing.area }}</template><template v-if="!playApp && listing.boosted"> · Sponsored</template></small></div>
       </div>
       <p v-if="listing.about" class="feed-body">{{ listing.about }}</p>
       <div class="feed-bar"><button type="button" @click="message">Message {{ listing.owner.name }}</button><button v-if="listing.shop" type="button" @click="visit">Visit shop</button></div>

@@ -26,9 +26,11 @@ import { enterRoom, enterSquare, loadPlaces, places } from '../places/placesStor
 import { keepBadge } from './badgeMark.ts'
 import type { FeedTab, Visibility } from '../../../feed/model.ts'
 import type { FeedMe, FeedMedia, InboxLine, NearLine, NewsLine, PostView, Suggestion } from '../../../types/feed.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const props = defineProps<{ params?: { tab?: string; post?: string } | null }>()
 const { game, shell, scene } = useApp()
+const playApp = isPlayApp()
 const api = feedApi((path, options) => game.fetchJson(path, options))
 type Tab = FeedTab | 'inbox'
 const asked = props.params?.tab === 'near' || props.params?.tab === 'friends' || props.params?.tab === 'city' || props.params?.tab === 'world' || props.params?.tab === 'inbox' ? props.params.tab : null
@@ -56,7 +58,7 @@ async function load(more = false): Promise<void> {
   if (!r.ok) { failed.value = r.reason; return }
   posts.value = more ? [...posts.value, ...r.posts.filter((p) => !posts.value.some((q) => q.id === p.id))] : r.posts
   next.value = r.next
-  if (!more) { news.value = r.news ?? []; sponsored.value = r.sponsored ?? []; near.value = r.near ?? null }
+  if (!more) { news.value = r.news ?? []; sponsored.value = playApp ? [] : r.sponsored ?? []; near.value = r.near ?? null }
   if (tab.value === 'friends' && !more && r.posts.length < 4) void loadSuggestions()
 }
 async function loadSuggestions(): Promise<void> { const r = await api.suggestions(); if (r.ok) suggestions.value = r.people.slice(0, 8) }
@@ -249,10 +251,10 @@ async function addFriend(s: Suggestion): Promise<void> {
       <EmptyState v-else-if="!posts.length && !loading" icon="people" :title="tab === 'friends' ? 'Your friends have not posted yet' : 'Quiet so far'" :text="tab === 'friends' ? 'Post the first thing, add people you meet, or start a crew. The World tab is never empty.' : 'Be the first to post here.'" />
       <template v-for="(p, i) in posts" :key="p.id">
         <PostCard :post="p" :api="api" :now="now" @changed="replace" @removed="removed" @person="person" @open="openPost" @toast="toast" @share="share" @event="openEvent" @gig="openGig" @duet="answerDuet" />
-        <SponsoredCard v-if="i === 0 && sponsored[0]" :listing="sponsored[0]" />
-        <SponsoredCard v-if="i === 5 && sponsored[1]" :listing="sponsored[1]" />
+        <SponsoredCard v-if="!playApp && i === 0 && sponsored[0]" :listing="sponsored[0]" />
+        <SponsoredCard v-if="!playApp && i === 5 && sponsored[1]" :listing="sponsored[1]" />
       </template>
-      <SponsoredCard v-if="!posts.length && sponsored[0]" :listing="sponsored[0]" />
+      <SponsoredCard v-if="!playApp && !posts.length && sponsored[0]" :listing="sponsored[0]" />
       <button v-if="next" type="button" class="social-btn" :disabled="loading" @click="load(true)">More</button>
       <p v-if="loading" class="feed-note" role="status">Loading…</p>
     </template>

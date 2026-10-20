@@ -171,7 +171,8 @@ export default function feedRoutes(ctx: RouteContext): Record<RouteKey, RouteHan
       const tab = request.query.get('tab'), city = await cityOf(request)
       if (tab !== 'near' && tab !== 'friends' && tab !== 'city' && tab !== 'world') throw ctx.fail(400, 'invalid_tab')
       const after = request.query.get('after')
-      const page = await readAs(request, (db, viewer) => { const r = feed.read(db, viewer, { tab, city, after }); return r.ok && tab !== 'friends' && !after ? { ...r, sponsored: promote.sponsored(db, viewer, city, tab === 'world') } : r })
+      const playApp = request.header?.('X-Allworld-App') === 'play'
+      const page = await readAs(request, (db, viewer) => { const r = feed.read(db, viewer, { tab, city, after }); return r.ok && tab !== 'friends' && !after ? { ...r, sponsored: playApp ? [] : promote.sponsored(db, viewer, city, tab === 'world') } : r })
       // Sponsored cards shown are counted for the business (a number, nobody's name), after the answer.
       const shown = 'sponsored' in page && page.sponsored?.length ? page.sponsored.map((s) => s.order) : []
       if (shown.length) { const work = ctx.store.transact((db) => promote.noteShown(db, shown), { durable: false }).catch(() => undefined); if (ctx.waitUntil) ctx.waitUntil(work) }

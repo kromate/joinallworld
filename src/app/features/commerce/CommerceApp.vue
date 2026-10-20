@@ -12,9 +12,11 @@ import SkeletonRows from '../../ui/SkeletonRows.vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import { addressLabel } from '../world/worldContent.ts'
 import { clearStoreReturn } from './connectionReturn.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const result = ref<CommerceResponse | null>(null), loading = ref(true), busy = ref(false), error = ref(''), notice = ref('')
 const tab = ref<'mine' | 'explore'>('mine'), editing = ref(false)
 const name = ref(''), description = ref(''), category = ref<CommerceCategory>('food'), serviceArea = ref(''), adultAndTerms = ref(false)
@@ -154,7 +156,7 @@ onMounted(async () => {
       <button type="button" :aria-pressed="tab === 'mine'" @click="tab = 'mine'">My Store</button>
       <button type="button" :aria-pressed="tab === 'explore'" @click="tab = 'explore'">Explore shops</button>
     </div>
-    <p v-if="offline" class="ui-note" role="status">You are offline. Reconnect to update your store or check real earnings.</p>
+    <p v-if="offline" class="ui-note" role="status">You are offline. Reconnect to update your store<template v-if="!playApp"> or check real earnings</template>.</p>
     <template v-if="tab === 'mine'">
       <p v-if="error" class="ui-error" role="alert">{{ error }}</p>
       <p v-if="notice" class="commerce-notice" role="status">{{ notice }}</p>
@@ -199,7 +201,7 @@ onMounted(async () => {
             <p v-if="!result.enabled" class="ui-note">Commerce connections are not available on this server yet. Your store draft is saved.</p>
           </section>
           <template v-else>
-            <section class="commerce-earnings" aria-labelledby="earnings-heading">
+            <section v-if="!playApp" class="commerce-earnings" aria-labelledby="earnings-heading">
               <div class="commerce-section-title"><h3 id="earnings-heading">Real store earnings</h3><button class="ui-button is-small" type="button" :disabled="loading || busy || offline" @click="load(true)">{{ loading ? 'Checking…' : 'Refresh' }}</button></div>
               <p v-if="result.connectionError" class="ui-error" role="status">{{ result.connectionError }}</p>
               <dl v-if="details" class="commerce-totals"><div><dt>Net sales collected</dt><dd>{{ money(details.summary.collectedMinor, details.summary.currency) }}</dd></div><div><dt>Refunded</dt><dd>{{ money(details.summary.refundedMinor, details.summary.currency) }}</dd></div><div><dt>Orders awaiting payment</dt><dd>{{ details.summary.pendingOrderCount }}</dd></div></dl>

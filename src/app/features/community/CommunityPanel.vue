@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { agreeBeforeSocketSharing } from '../terms/agree.ts'
 // The community panel: who is here, nearby voice, room chat. It renders the controller's state
 // (src/types/community.ts CommunityState) and calls its actions; it holds no rule of its own.
 // Everything a player or the server typed (nicknames, chat lines, the server's sentences) is shown
@@ -49,16 +50,29 @@ async function reportScam(line: ChatLine): Promise<void> {
     scamNote.value = sent.ok === false ? sent.reason ?? 'That report was not sent.' : 'Report received. A moderator will look at it.'
   } catch (error) { scamNote.value = error instanceof Error ? error.message : 'That report was not sent. Try again.' }
 }
+async function reportMessage(line: ChatLine): Promise<void> {
+  if (!line.authorId || mine(line)) return
+  try {
+    const { useApp } = await import('../../state/app.ts')
+    const note = scamReportText(`Room message from ${line.author}: ${line.body}`, 300)
+    const sent = await useApp().game.fetchJson<{ ok?: boolean; code?: string; reason?: string }>('/api/social/reports', { method: 'POST', body: { id: line.authorId, reason: 'other', text: note } })
+    scamNote.value = sent.ok === false ? sent.reason ?? 'That report was not sent.' : 'Message reported. A moderator will look at it.'
+  } catch (error) { scamNote.value = error instanceof Error ? error.message : 'That report was not sent. Try again.' }
+}
 
 async function saveName(): Promise<void> { await control()?.saveName(nickname.value) }
-function send(): void {
+async function send(): Promise<void> {
   if (!draft.value.trim()) return
+  try { if (!await agreeBeforeSocketSharing()) return } catch { scamNote.value = 'Your agreement could not be checked. Try again.'; return }
   if (control()?.sendChat(draft.value)) { draft.value = ''; void nextTick(grow) }
 }
 /** A person's card opens over the game, so the panel steps aside. */
 function openPerson(id: string, name: string): void { props.store.close(); props.store.openPerson(id, name) }
 /** The HUD's own Invite button opens the share sheet (src/app/features/growth/InviteButton.vue): this presses it. */
 function invite(): void { document.querySelector<HTMLButtonElement>('[data-invite-button]')?.click() }
+async function joinVoice(): Promise<void> {
+  try { if (await agreeBeforeSocketSharing()) await control()?.joinVoice() } catch { scamNote.value = 'Your agreement could not be checked. Try again.' }
+}
 function chooseDevice(event: Event): void { control()?.selectDevice((event.target as HTMLSelectElement).value) }
 /** Enter sends, Shift+Enter makes a new line; Enter while a phone keyboard is composing a word does neither. */
 function onComposerKey(event: KeyboardEvent): void {
@@ -187,7 +201,7 @@ onBeforeUnmount(() => { viewport?.removeEventListener('resize', lift); viewport?
           </p>
           <ul class="community-members" aria-label="Room members">
             <li v-for="member in s.members" :key="member.id" :class="[`is-${member.voice}`, { 'is-you': member.you }]">
-              <component :is="member.you ? 'div' : 'button'" class="community-person" :type="member.you ? undefined : 'button'" :aria-label="member.you ? undefined : `${member.name}, open card`" @click="member.you || openPerson(member.id, member.name)">
+              <component :is="member.you ? 'div' : 'button'" class="community-person" :type="member.you ? undefined : 'button'" :aria-label="member.you ? undefined : `${member.name}, open card to report or block`" @click="member.you || openPerson(member.id, member.name)">
                 <span class="community-avatar" aria-hidden="true" :style="{ '--hue': hueOf(member.id) }">{{ initialOf(member.name) }}
                   <svg v-if="member.voice !== 'off'" class="community-mic" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z" /><path d="M6 11a6 6 0 0 0 12 0M12 17v4" /><path v-if="member.voice === 'muted'" d="M4 4l16 16" /></svg>
                 </span>
@@ -221,7 +235,7 @@ onBeforeUnmount(() => { viewport?.removeEventListener('resize', lift); viewport?
               <h3>Voice</h3>
               <p class="community-voice-status" role="status">{{ voiceLine }}</p>
             </div>
-            <button v-if="!s.voice.on" class="community-join-voice" type="button" :disabled="!s.voice.canJoin" @click="control()?.joinVoice()">
+            <button v-if="!s.voice.on" class="community-join-voice" type="button" :disabled="!s.voice.canJoin" @click="joinVoice">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z" /><path d="M6 11a6 6 0 0 0 12 0M12 17v4" /></svg>{{ s.voice.joinLabel }}
             </button>
             <div v-else class="community-voice-buttons">
@@ -271,6 +285,7 @@ onBeforeUnmount(() => { viewport?.removeEventListener('resize', lift); viewport?
               <div class="community-meta"><strong><NpcBadge v-if="line.npc" lead />{{ mine(line) ? 'You' : line.author }}</strong><time v-if="line.at">{{ clock(line.at) }}</time><small v-if="line.delivery && line.delivery !== 'Sent'">{{ line.delivery }}</small></div>
               <p><template v-for="(part, i) in lineParts(line.body)" :key="i"><button v-if="part.link" type="button" class="community-link" data-community-link @click="openLink(part.link, line)">{{ part.text }}</button><template v-else>{{ part.text }}</template></template></p>
               <ScamNotice v-if="line.scam && !mine(line)" @report="reportScam(line)" />
+              <button v-else-if="line.authorId && !mine(line) && !line.npc" type="button" class="community-link" data-community-report-message :aria-label="`Report ${line.author}'s room message`" @click="reportMessage(line)">Report message</button>
               <button v-if="line.canRetry" type="button" data-community-retry-message @click="control()?.retryMessage(line.key)">Retry message</button>
             </li>
           </ol>

@@ -21,9 +21,11 @@ import ShareShop from './ShareShop.vue'
 import ShopFront from './ShopFront.vue'
 import { CODE_WORDS, DRAFT_PARTS, PRICE_NOTE, TEMPLATES, WEEKDAYS, WEEKDAYS_SHORT, adultConsentBody, categoryList, draftClashes, draftOf, draftProblems, emptyDraft, emptyService, iconList, inputOf, mergeDraft, refusalProblem, statusWords, templateList, wordsFor } from './showcaseModel.ts'
 import type { Problem, ShopDraft, ShopFace } from './showcaseModel.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const props = defineProps<{ city: string; venue?: string; setup?: string }>()
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const account = useAccountLite()
 /** A guest cannot open a shop: the server answers `account_required`. From /shops or /services the editor then shows the checklist and the sign-up button. */
 const needsAccount = ref(false)
@@ -253,7 +255,7 @@ function pick(template: keyof typeof TEMPLATES): void {
   draft.logo = TEMPLATES[template].icon
 }
 function jump(step: string): void { document.getElementById(`se-s-${step}`)?.scrollIntoView({ block: 'start', behavior: reduced() ? 'auto' : 'smooth' }) }
-const STEPS = [['look', 'Look'], ['about', 'About'], ['services', 'Services'], ['hours', 'Hours'], ['photos', 'Photos'], ['contact', 'Contact and payment']] as const
+const STEPS = [['look', 'Look'], ['about', 'About'], ['services', 'Services'], ['hours', 'Hours'], ['photos', 'Photos'], ['contact', playApp ? 'Contact' : 'Contact and payment']] as const
 </script>
 
 <template>
@@ -354,11 +356,11 @@ const STEPS = [['look', 'Look'], ['about', 'About'], ['services', 'Services'], [
             </section>
 
             <section id="se-s-contact" class="se-step" aria-labelledby="se-h-contact" tabindex="-1">
-              <h3 id="se-h-contact"><span aria-hidden="true">6</span> Contact and payment</h3>
+              <h3 id="se-h-contact"><span aria-hidden="true">6</span> {{ playApp ? 'Contact' : 'Contact and payment' }}</h3>
               <FieldRow v-slot="a" field="chat" label="Chat link" hint="Paste the link where people can message you. In your messaging app, look for “Share link” or “Copy chat link”." :error="errors.chat"><input v-bind="a" v-model="draft.chat" type="url" inputmode="url" autocomplete="off" placeholder="Paste your chat link"></FieldRow>
-              <FieldRow v-slot="a" field="pay" label="Payment link (optional)" hint="Only if you take payment online: paste the link to your own payment page. Leave it empty if people pay you another way." :error="errors.pay"><input v-bind="a" v-model="draft.pay" type="url" inputmode="url" autocomplete="off"></FieldRow>
+              <FieldRow v-if="!playApp" v-slot="a" field="pay" label="Payment link (optional)" hint="Only if you take payment online: paste the link to your own payment page. Leave it empty if people pay you another way." :error="errors.pay"><input v-bind="a" v-model="draft.pay" type="url" inputmode="url" autocomplete="off"></FieldRow>
               <p class="se-help">Your links are never shown on the shop.</p>
-              <details class="se-more"><summary>More about your links</summary><p class="se-help">They are given only to signed-in adults who press Chat or Pay, after a screen that says they are leaving Allworld. Changing your shop’s name or either link sends it back for review. A changed payment link shows “Payment details changed recently” for 7 days.</p></details>
+              <details class="se-more"><summary>More about your links</summary><p class="se-help">{{ playApp ? 'Your chat link is given only to signed-in adults who press Chat, after a screen that says they are leaving Allworld.' : 'They are given only to signed-in adults who press Chat or Pay, after a screen that says they are leaving Allworld. Changing your shop’s name or either link sends it back for review. A changed payment link shows “Payment details changed recently” for 7 days.' }}</p></details>
             </section>
 
             <div class="se-save">

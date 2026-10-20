@@ -1,3 +1,5 @@
+import { sharingSocketAction } from '../../src/types/sharing.ts'
+import { requireSharingTerms } from '../sharing-policy.ts'
 /**
  * WEBSOCKET MESSAGE REGISTRY — the contract for server/ws/*.js
  * ===========================================================================
@@ -119,6 +121,11 @@ export function buildSocketHandlers(ctx: RouteContext, modules: readonly WsHandl
       messages.set(type, {
         room: typeof entry === 'function' ? false : entry.room === true,
         handle: async (ws, message) => {
+          if (sharingSocketAction(type, message.enabled)) await ctx.store.read(db => {
+            const session = ctx.core.sessionOf(ws, db)
+            if (!session) throw ctx.fail(401, 'device_session_required')
+            requireSharingTerms(ctx, db, session)
+          })
           await prepareSocketCityContent(ctx, ws, message);
           try { await handle(ws, message); } catch (error) { throw await warmCityContentFailure(error); }
         },

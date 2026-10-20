@@ -13,9 +13,11 @@ import type { Tier } from '../../../promote/model.ts'
 import type { ListingView, PromoteMe } from '../../../types/promote.ts'
 import type { StreetView } from '../../../types/neighbourhood.ts'
 import ShopFront from './ShopFront.vue'
+import { isPlayApp } from '../../playMode.ts'
 
 const props = defineProps<{ params?: { tab?: string; paid?: string; listing?: string } | null }>()
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const tab = ref<'directory' | 'street' | 'mine'>(props.params?.tab === 'mine' ? 'mine' : props.params?.tab === 'street' || props.params?.listing ? 'street' : 'directory')
 // The business street: every live listing of the city as a shop front, by kind (GET /api/promote/street). A billboard's tap opens it with that business first.
 const street = ref<StreetView | null>(null)
@@ -75,7 +77,7 @@ const when = (ms?: number): string => (ms ? new Date(ms).toLocaleDateString(unde
     <nav class="feed-tabs"><button type="button" :class="{ 'is-on': tab === 'directory' }" @click="tab = 'directory'">Near you</button><button type="button" :class="{ 'is-on': tab === 'street' }" @click="tab = 'street'">Business street</button><button type="button" :class="{ 'is-on': tab === 'mine' }" @click="tab = 'mine'">My business</button></nav>
 
     <template v-if="tab === 'street'">
-      <p class="social-note">The business street of {{ street?.cityName ?? 'your city' }}: every business open to customers, kind by kind. Those with a running boost come first, and also stand on the city's billboards.</p>
+      <p class="social-note">The business street of {{ street?.cityName ?? 'your city' }}: every business open to customers, kind by kind.<template v-if="!playApp"> Those with a running boost come first, and also stand on the city's billboards.</template></p>
       <ShopFront v-if="opened" :listing="opened" opened />
       <p v-if="street && !street.total" class="feed-note">No businesses on the street yet. Be the first: it is free.</p>
       <template v-for="g in street?.groups ?? []" :key="g.category">
@@ -90,7 +92,7 @@ const when = (ms?: number): string => (ms ? new Date(ms).toLocaleDateString(unde
       <select v-model="category" aria-label="Kind of business"><option value="">Everything</option><option v-for="[id, label] in CATEGORIES" :key="id" :value="id">{{ label }}</option></select>
       <p v-if="!listings.length" class="feed-note">No businesses listed here yet. Be the first: it is free.</p>
       <article v-for="l in listings" :key="l.id" class="feed-card" :data-listing="l.id">
-        <div class="feed-head"><div class="feed-who"><b>{{ l.name }}</b><small>{{ l.categoryLabel }}<template v-if="l.area"> · {{ l.area }}</template> · {{ l.cityName }}<template v-if="l.boosted"> · Sponsored</template></small></div></div>
+        <div class="feed-head"><div class="feed-who"><b>{{ l.name }}</b><small>{{ l.categoryLabel }}<template v-if="l.area"> · {{ l.area }}</template> · {{ l.cityName }}<template v-if="!playApp && l.boosted"> · Sponsored</template></small></div></div>
         <img v-if="l.photo" class="feed-media" :src="mediaUrl(l.photo)" alt="" loading="lazy">
         <p v-if="l.about" class="feed-body">{{ l.about }}</p>
         <div class="feed-bar"><button type="button" @click="open(l)">Message {{ l.owner.name }}</button><button v-if="l.shop" type="button" @click="shop(l)">Visit shop</button></div>
@@ -102,15 +104,15 @@ const when = (ms?: number): string => (ms ? new Date(ms).toLocaleDateString(unde
       <p v-if="me && !me.account" class="feed-note">Sign in first (Settings → Account), so your business stays yours.</p>
       <p v-else-if="me && !me.adult" class="feed-note">Listing a business is for people confirmed as 18 or older.</p>
       <div v-for="l in me?.listings ?? []" :key="l.id" class="feed-card feed-form">
-        <div class="feed-head"><div class="feed-who"><b>{{ l.name }}</b><small>{{ status[l.status] }}<template v-if="l.boosted"> · Sponsored now</template></small></div><button type="button" class="feed-pill" @click="edit(l)">Edit</button><button type="button" class="feed-pill" @click="remove(l)">Remove</button></div>
+        <div class="feed-head"><div class="feed-who"><b>{{ l.name }}</b><small>{{ status[l.status] }}<template v-if="!playApp && l.boosted"> · Sponsored now</template></small></div><button type="button" class="feed-pill" @click="edit(l)">Edit</button><button type="button" class="feed-pill" @click="remove(l)">Remove</button></div>
         <p v-if="l.reason" class="feed-error">{{ l.reason }}</p>
-        <div v-if="l.status === 'live'" class="feed-row">
+        <div v-if="!playApp && l.status === 'live'" class="feed-row">
           <button v-for="tier in (['boost', 'spotlight'] as const)" :key="tier" type="button" class="social-btn" :disabled="me?.payment === 'closed'" @click="boosting = { listing: l.id, tier, weeks: 1, email: '', arcon: '' }">{{ TIERS[tier].label }} · {{ naira(prices[tier]) }}/week</button>
         </div>
-        <p v-if="l.status === 'live' && me?.payment === 'closed'" class="feed-note">Boosts open soon. Your free listing is live.</p>
+        <p v-if="!playApp && l.status === 'live' && me?.payment === 'closed'" class="feed-note">Boosts open soon. Your free listing is live.</p>
       </div>
 
-      <form v-if="boosting" class="feed-card feed-form" @submit.prevent="order">
+      <form v-if="!playApp && boosting" class="feed-card feed-form" @submit.prevent="order">
         <b>{{ TIERS[boosting.tier].label }}</b><p class="feed-note">{{ TIERS[boosting.tier].what }}.</p>
         <label>Weeks<input v-model.number="boosting.weeks" type="number" min="1" :max="PROMOTE.weeksMax"></label>
         <p class="feed-note">Total {{ naira(prices[boosting.tier] * Math.max(1, Math.min(PROMOTE.weeksMax, boosting.weeks || 1))) }}, paid to Allworld.</p>
@@ -118,7 +120,7 @@ const when = (ms?: number): string => (ms ? new Date(ms).toLocaleDateString(unde
         <label>Advertising approval number (optional)<input v-model="boosting.arcon" maxlength="60" placeholder="If you have one"></label>
         <div class="feed-row"><button type="submit" class="social-btn is-primary" :disabled="busy">{{ me?.payment === 'bachs' ? 'Pay with card or transfer' : 'Get bank details' }}</button><button type="button" class="feed-pill" @click="boosting = null">Cancel</button></div>
       </form>
-      <div v-if="bank" class="feed-card feed-form"><b>Pay {{ naira(bank.amount) }} by bank transfer</b><p class="feed-body">{{ bank.text }}</p><p class="feed-note">Use the reference <b>{{ bank.ref }}</b>. Your boost starts once we see the payment.</p><button type="button" class="feed-pill" @click="bank = null">Done</button></div>
+      <div v-if="!playApp && bank" class="feed-card feed-form"><b>Pay {{ naira(bank.amount) }} by bank transfer</b><p class="feed-body">{{ bank.text }}</p><p class="feed-note">Use the reference <b>{{ bank.ref }}</b>. Your boost starts once we see the payment.</p><button type="button" class="feed-pill" @click="bank = null">Done</button></div>
 
       <form v-if="me?.account && me?.adult" class="feed-card feed-form" @submit.prevent="save">
         <b>{{ form.id ? 'Edit your business' : 'List your business, free' }}</b>
@@ -132,7 +134,7 @@ const when = (ms?: number): string => (ms ? new Date(ms).toLocaleDateString(unde
         <button type="submit" class="social-btn is-primary" :disabled="busy || form.name.trim().length < 2">{{ form.id ? 'Save' : 'List it' }}</button>
       </form>
 
-      <template v-if="me?.orders.length"><b>Boosts</b>
+      <template v-if="!playApp && me?.orders.length"><b>Boosts</b>
         <ul class="social-list"><li v-for="o in me.orders" :key="o.id" class="social-row"><div><strong>{{ o.listingName }} · {{ TIERS[o.tier].label }} · {{ o.weeks }} week{{ o.weeks === 1 ? '' : 's' }}</strong><small>{{ orderWord[o.status] }} · {{ naira(o.amount) }}<template v-if="o.endsAt"> · until {{ when(o.endsAt) }}</template> · {{ o.ref }}</small></div></li></ul>
       </template>
     </template>

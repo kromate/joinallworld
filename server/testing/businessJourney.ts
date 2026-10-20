@@ -13,7 +13,7 @@ import type { JourneyDevice, JourneyHost } from './cityJourney.ts'
  * nobody is looking and the owner collects the box once, also when two of their devices press at the same moment; rent
  * is taken from the box, and a stall nobody stocks is wound up and pays out what is left.
  */
-export interface BusinessHost extends Pick<JourneyHost, 'now' | 'request' | 'elapse'> {
+export interface BusinessHost extends Pick<JourneyHost, 'now' | 'request' | 'elapse' | 'acceptSharingTerms'> {
   funding: {
     credit(device: JourneyDevice, amount: number, reason: string, clientId: string): Promise<Record<string, unknown>>
     debit(device: JourneyDevice, amount: number, reason: string, clientId: string): Promise<Record<string, unknown>>

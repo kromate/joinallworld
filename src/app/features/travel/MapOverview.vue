@@ -20,13 +20,15 @@ import { linkWords } from './travelBoundary.ts'
 import { mapUi } from './travelState.ts'
 import { isListOpen, layers, tell, wide } from './travelMapState.ts'
 import { useCrowd } from './useCrowd.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const { game } = useApp()
+const playApp = isPlayApp()
 const civic = useCivic()
 const view = game.view
 
 // The sea-plot layer is not offered on the map for now.
-const availableLayers = computed(() => LAYERS.filter(item => item.id !== 'sea'))
+const availableLayers = computed(() => LAYERS.filter(item => item.id !== 'sea' && (!playApp || item.id !== 'billboards')))
 const open = computed(() => isListOpen())
 const destinations = computed(() => view.value.travel.destinations)
 const places = computed(() => destinations.value.filter((item) => matchesFilter(item, mapUi.filter)))

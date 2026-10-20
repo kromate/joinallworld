@@ -10,6 +10,7 @@ import { feedApi } from './feedApi.ts'
 import { shareLink, whatsappUrl } from './feedShare.ts'
 import { FEED } from '../../../feed/model.ts'
 import type { EventView } from '../../../types/feed.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 // The area's noticeboard and its monthly meetup (docs/NEIGHBOURHOOD.md) are the Neighbours side of this app, fetched only when it is opened.
 const NoticeboardApp = defineAsyncComponent(() => import('../neighbourhood/NoticeboardApp.vue'))
@@ -18,6 +19,7 @@ const GluePart = defineAsyncComponent(() => import('../glue/GluePart.vue'))
 const props = defineProps<{ params?: { event?: string; code?: string; tab?: string } | null }>()
 const side = ref<'plans' | 'hood' | 'talks'>(props.params?.tab === 'neighbours' ? 'hood' : props.params?.tab === 'talks' ? 'talks' : 'plans')
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const api = feedApi((path, options) => game.fetchJson(path, options))
 const events = ref<EventView[]>([]), mine = ref<EventView[]>([]), open = ref<EventView | null>(null), busy = ref(false), making = ref(false)
 const toast = (t: string, tone?: 'error'): void => game.toast(t, tone === 'error' ? 'error' : 'info')
@@ -82,12 +84,12 @@ const go = (e: EventView): void => { if (/square/i.test(e.place.label ?? '')) sh
         <p v-if="open.about" class="feed-body">{{ open.about }}</p>
         <p class="feed-note">Hosted by {{ open.by.name }}<template v-if="open.cohosts.length"> with {{ open.cohosts.map((c) => c.name).join(', ') }}</template> · {{ open.going }} going · {{ open.maybe }} maybe · room for {{ open.cap }}</p>
         <p v-if="open.friendsGoing.length" class="feed-note">Friends going: {{ open.friendsGoing.map((f) => f.name).join(', ') }}</p>
-        <p v-if="open.price" class="feed-note" data-earn="ticket">Ticket ₦{{ open.price.toLocaleString('en-NG') }}<template v-if="open.ticket"> · you have one</template></p>
-        <form v-if="open.price && !open.ticket && !open.mine && open.phase !== 'over'" class="feed-row" @submit.prevent="buy(open)">
+        <p v-if="!playApp && open.price" class="feed-note" data-earn="ticket">Ticket ₦{{ open.price.toLocaleString('en-NG') }}<template v-if="open.ticket"> · you have one</template></p>
+        <form v-if="!playApp && open.price && !open.ticket && !open.mine && open.phase !== 'over'" class="feed-row" @submit.prevent="buy(open)">
           <template v-if="buying"><input v-model="ticket.email" type="email" autocomplete="email" placeholder="E-mail for the receipt" aria-label="E-mail for the receipt"><button type="submit" class="social-btn is-primary" :disabled="busy || !ticket.email.includes('@')">Pay ₦{{ open.price.toLocaleString('en-NG') }}</button></template>
           <button v-else type="button" class="social-btn is-primary" @click="buying = true">Buy a ticket</button>
         </form>
-        <div v-if="open.mine && open.phase !== 'over'" class="feed-row">
+        <div v-if="!playApp && open.mine && open.phase !== 'over'" class="feed-row">
           <template v-if="pricing"><input v-model.number="ticket.price" type="number" min="200" step="100" aria-label="Ticket price in naira"><button type="button" class="social-btn" :disabled="busy" @click="setPrice(open, ticket.price)">Set price</button><button v-if="open.price" type="button" class="feed-pill" @click="setPrice(open, 0)">Make it free</button></template>
           <button v-else type="button" class="feed-pill" @click="pricing = true">{{ open.price ? 'Change the ticket price' : 'Sell tickets (real money)' }}</button>
         </div>

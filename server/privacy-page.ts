@@ -8,7 +8,7 @@
 import { OG_IMAGE, safeOrigin } from './growth/share.ts'
 import { escapeHtml as esc } from './path-meta.ts'
 
-const UPDATED = '19 October 2026'
+const UPDATED = '20 October 2026'
 export const STYLE = `*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#193126;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
 .wrap{max-width:720px;margin:0 auto;padding:24px 20px 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{font-weight:800;color:#0f5132;text-decoration:none;font-size:20px}
 h1{font-size:28px;line-height:1.2;margin:0 0 6px}h2{font-size:19px;margin:28px 0 8px}p,li{margin:0 0 10px}ul{padding-left:20px}.meta{color:#5b6b63;font-size:14px}.foot{margin-top:32px;font-size:14px;color:#5b6b63}a{color:#0f5132}`
@@ -40,11 +40,15 @@ export function privacyPageHtml(origin: unknown = ''): string {
 <p>Other players see your nickname, your character, your public posts and your badges. People you add as friends see friends-only posts. Nobody sees your e-mail, your contacts or your position. Allworld does not sell data and does not show you advertising based on your data.</p>
 <h2>Children</h2>
 <p>Allworld asks your age once. Players under 18 cannot post publicly, use real-money features, or be followed by strangers, and analytics is off for them.</p>
-<h2>Your account: download and erase</h2>
-<p>In the game, Settings → Account lets you download everything this server stores about your account, and erase the account and your character's saved life. Erasing removes your posts, badges, contacts codes and payment references; a sale that was already paid stays as a record without your name.</p>
+<h2 id="delete">Delete your account</h2>
+<p>You can delete your Allworld account outside the app. Open <a href="https://joinallworld.com">joinallworld.com</a> in any browser, sign in with the same email account, then open Settings → Account → Erase account. Confirm your sign-in again. Tick the option to also remove your character's saved life if you want it removed; otherwise it stays on that browser as a guest. Settings → Account also lets you download your account data.</p>
+<p>Erasing removes the Allworld account, its email and device sign-ins, set-aside characters, and the selected saved life. It removes linked shop galleries, location-related progress and payment-provider references held on the account. It does not delete your separate sign-in-provider account.</p>
+<p>Messages already sent to others, social conversations, feed posts, public listings and some shared-world records are currently retained. Chat photos and voice notes normally expire after 30 days; a server setting can change the photo period. Paid sale history, security audit records and historical backups are retained without a fixed automatic expiry. These records are not all removed by the account action.</p>
+<p>If you cannot sign in, or want retained posts, messages or records removed, email <a href="mailto:support@joinallworld.com">support@joinallworld.com</a> with the subject “Allworld account deletion”. Give your player code and sign-in email, never your password. Ownership must be verified before deletion. This page is a draft pending a lawyer's review.</p>
 <h2>Where it is kept</h2>
 <p>Allworld runs on Cloudflare's network and keeps your data encrypted in transit. Payments are handled by Bachs under its own terms. The source code is public (AGPL), so what this page says can be checked.</p>
 <h2>Contact</h2>
-<p>Questions about privacy: use Help in the game, or the contact address on the site. This page changes when the game changes; the date at the top is the last change.</p>
+<p>Questions about privacy: use Help in the game or email <a href="mailto:support@joinallworld.com">support@joinallworld.com</a>. This page changes when the game changes; the date at the top is the last change.</p>
+<p><a href="${esc(`${base}/terms`)}">Allworld's rules</a></p>
 <p class="foot"><a href="${esc(`${base}/`)}">Back to Allworld</a></p></main></body></html>`
 }

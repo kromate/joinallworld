@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { SHARING_TERMS_VERSION } from '../../src/types/sharing.ts'
 import { randomUUID } from 'node:crypto'
 import { DEFAULT_LOOK } from '../../src/game/content/traits.ts'
 import { FICTIONAL_CITY_ID as CITY, FICTIONAL_NEIGHBOUR_CITY_ID as OTHER } from '../../src/game/cities/testing/fictionalCity.test-fixture.ts'
@@ -9,6 +10,7 @@ export interface JourneySocket { send(value: object): void; next(): Promise<unkn
 export interface JourneyHost {
   now(): number
   request(path: string, body?: object, cookie?: string): Promise<{ status: number; headers: Pick<Headers, 'get'>; json(): Promise<unknown> }>
+  acceptSharingTerms?(cookie: string): Promise<void>
   elapse(device: JourneyDevice, city: string, ms: number): Promise<void>
   qualify(device: JourneyDevice, city: string): Promise<void>
   /** Change the stored life of a character, as a damaged or hostile save would. Hosts that cannot do it leave it out. */
@@ -38,7 +40,7 @@ export function qualifyState(value: unknown): void {
 }
 
 /** What a scripted run needs of a host: read a life, send one action, let a timed action finish, start a new life in a city. */
-export function driver(host: Pick<JourneyHost, 'now' | 'request' | 'elapse'>) {
+export function driver(host: Pick<JourneyHost, 'now' | 'request' | 'elapse' | 'acceptSharingTerms'>) {
   const id = (): string => `${host.now()}:${randomUUID()}`
   async function read(path: string, cookie?: string): Promise<Record<string, unknown>> {
     const response = await host.request(path, undefined, cookie)
@@ -73,6 +75,11 @@ export function driver(host: Pick<JourneyHost, 'now' | 'request' | 'elapse'>) {
     const device = { id: text(object(answer.session).id), cookie }
     assert.equal(object((await life(device, city)).estate).city, city)
     await action(device, city, 'onboarding.quick-start', { look: DEFAULT_LOOK })
+    if (host.acceptSharingTerms) await host.acceptSharingTerms(cookie)
+    else {
+      const accepted = await host.request('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, cookie)
+      assert.equal(accepted.status, 200, 'the journey explicitly accepts sharing terms after Play')
+    }
     await action(device, city, 'onboarding.traits', { traits: ['musical', 'tech-bro-or-sis'] })
     await action(device, city, 'onboarding.dream', { dream: 'yaba-unicorn' })
     await action(device, city, 'onboarding.lottery')

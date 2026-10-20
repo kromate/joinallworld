@@ -17,6 +17,7 @@ import { jpeg, shopBody, toBase64 } from '../server/testing/showcasePictures.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
 import { layoutBindings } from '../server/testing/sqliteStorage.ts'
 import { SHOWCASE } from '../src/types/showcase.ts'
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts'
 
 await loadCityContent('lagos')
 
@@ -112,6 +113,7 @@ test('Worker: a showcase shop from sign-in to approval, the contact release, a f
     const signedIn = await worker.dispatchFetch(origin + '/api/account/sign-in', { method: 'POST', headers: { origin, 'content-type': 'application/json', cookie }, body: JSON.stringify({ csrf, idToken }) })
     assert.equal(signedIn.status, 200)
     cookie = signedIn.headers.get('set-cookie')?.split(';')[0] ?? cookie
+    assert.equal((await call('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, cookie)).status, 200)
     const session = (await call('/api/session', undefined, cookie)).session
     return { cookie, id: String(session.id) }
   }

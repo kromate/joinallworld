@@ -46,6 +46,7 @@ export const modelReport = (api: Fetcher, by: string, id: string) => call<{ ok: 
 export const modelFileUrl = (hash: string): string => `/api/spaces/model-file/${hash}`
 export async function modelUpload(file: Blob, name: string, house = false): Promise<ModelDone | Refusal> {
   try {
+    if (!await (await import('../terms/agree.ts')).agreeBeforeSocketSharing()) throw Error('Sharing cancelled.')
     const response = await fetch(`/api/spaces/models?name=${encodeURIComponent(name)}${house ? '&house=1' : ''}`, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'model/gltf-binary' }, body: file })
     const answer = await response.json().catch(() => null) as (ModelDone | Refusal | { error?: string }) | null
     if (answer && 'ok' in answer) return answer
@@ -86,6 +87,7 @@ export const worldDelete = (api: Fetcher, id: string) => call<{ ok: true; code: 
 export const worldCoverUrl = (card: Pick<WorldCard, 'id' | 'cover'>): string | null => (card.cover ? `/api/spaces/world-cover/${card.id}?v=${card.cover}` : null)
 export async function worldCoverUpload(id: string, picture: Blob): Promise<{ ok: true; code: 'saved'; cover: string } | Refusal> {
   try {
+    if (!await (await import('../terms/agree.ts')).agreeBeforeSocketSharing()) throw Error('Sharing cancelled.')
     const response = await fetch(`/api/spaces/worlds/cover?id=${encodeURIComponent(id)}`, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'image/webp', Accept: 'application/json' }, body: picture })
     return await response.json() as { ok: true; code: 'saved'; cover: string } | Refusal
   } catch { return { ok: false, code: 'offline', reason: 'The cover could not be sent.' } }

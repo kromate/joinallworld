@@ -16,12 +16,17 @@ import { tour } from '../tour/tourState.ts'
 import { chipDue, chipHiddenUntil, chipText, dismissChip } from './bonusModel.ts'
 import { runMoment } from './bonusMoment.ts'
 import { askBonus, bonus, loadOffer } from './bonusStore.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const lite = useAccountLite()
 const storage = (): Storage | null => { try { return globalThis.localStorage } catch { return null } }
 const hidden = ref(chipHiddenUntil(storage()))
-const text = computed(() => chipText(bonus.offer))
+const text = computed(() => {
+  const line = chipText(bonus.offer)
+  return playApp ? line?.replace(' in the game ·', ' of in-game naira ·') ?? null : line
+})
 // The guest bar's own conditions (a guest on a server with accounts, connected, in the venue view, nothing in front), without its week-long dismissal.
 const eligible = computed(() => {
   const view = game.view.value

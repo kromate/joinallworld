@@ -376,13 +376,13 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     const generation = identityGeneration, actor = client.session?.id ?? null
     return api<T>(path, options, () => generation === identityGeneration && actor === (client.session?.id ?? null))
   }
-  async function api<T extends object = Record<string, unknown>>(path: string, options: ApiOptions = {}, responseCurrent: () => boolean = () => true): Promise<T & ApiEnvelope> {
+  async function api<T extends object = Record<string, unknown>>(path: string, options: ApiOptions = {}, responseCurrent: () => boolean = () => true, termsRetry = true): Promise<T & ApiEnvelope> {
     const cooling = cooldownError(path); if (cooling) throw cooling
     let response: FetchResponse;
     try {
       // A string, or a falsy value, goes out as it is (fetch decides); anything else is JSON.
       response = await fetch(path, { ...options, body: options.body && typeof options.body !== 'string' ? JSON.stringify(options.body) : options.body as BodyInit | null | undefined,
-        headers: { 'Content-Type': 'application/json', ...(client.session && path !== '/api/session' ? { 'X-Allworld-Actor': client.session.id } : {}), ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(10000) });
+        headers: { 'Content-Type': 'application/json', ...(await import('./app/playMode.ts')).playRequestHeaders(), ...(client.session && path !== '/api/session' ? { 'X-Allworld-Actor': client.session.id } : {}), ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(10000) });
     } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error(TEXT.connectionLost); }
     let payload: Payload;
     try { payload = await response.json() as Payload; } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error('Server returned an unreadable response'); }
@@ -406,6 +406,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       if (typeof payload.retryAfter === 'number' && Number.isFinite(payload.retryAfter) && payload.retryAfter > 0) error.retryAfter = payload.retryAfter;
       if (response.status === 429) noteCooldown(path, false, error.retryAfter)
       if (response.status === 503 && error.code === 'server_busy') noteCooldown(path, true, error.retryAfter)
+      if (termsRetry && error.code === 'sharing_terms_required' && await (await import('./app/features/terms/agree.ts')).agreeToShare((p, o) => api(p, o, responseCurrent), client.session?.id)) return api<T>(path, options, responseCurrent, false);
       throw error;
     }
     const key = routeKey(path); if (key) routeCooldowns.delete(key); coreCooldown = { until: 0, attempts: 0 }

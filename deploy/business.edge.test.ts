@@ -19,6 +19,7 @@ import { lagosTime } from '../src/game/clock.ts'
 import { loadCityContent } from '../src/game/cities/registry.ts'
 import { layoutBindings, readStoredCollection, writeStoredCollection } from '../server/testing/sqliteStorage.ts';
 import type { AsyncExec } from '../server/testing/sqliteStorage.ts';
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts'
 
 await loadCityContent('lagos')
 
@@ -137,6 +138,9 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
     method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) },
     ...(body ? { body: JSON.stringify(body) } : {}),
   })
+  const acceptSharingTerms = async (cookie: string): Promise<void> => {
+    assert.equal((await request('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, cookie)).status, 200)
+  }
   const guest = await request('/api/session', { name: 'Business fixture founder' })
   assert.equal(guest.status, 200)
   const guestCookie = guest.headers.get('set-cookie')?.split(';')[0]
@@ -169,6 +173,7 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
   const host: BusinessHost = {
     now: () => fixtureNow,
     request,
+    acceptSharingTerms,
     funding,
     elapse: async (device, city, ms) => {
       const db = await storage()
@@ -234,6 +239,7 @@ test('Worker: a shop from opening to winding up, and a look at it writes no row'
     return { id: String(object(answer.session).id), cookie: String(response.headers.get('set-cookie')).split(';')[0] ?? '' }
   }
   const dele = await cookieOf('Dele')
+  await acceptSharingTerms(dele.cookie)
   assert.equal((await host.request('/api/life?city=lagos', undefined, dele.cookie)).status, 200)
   await edit(dele, 'lagos', (state) => { state.cash = 50000; state.ledger = []; state.ledgerDays = []; state.location = 'market' })
   const businessDb = await storage()

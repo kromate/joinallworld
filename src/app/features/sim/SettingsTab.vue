@@ -174,6 +174,7 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
     <AccountSettings />
 
     <h3 class="ui-section">Privacy</h3>
+    <p class="settings-note"><a href="/terms" target="_blank" rel="noopener">Allworld's rules</a> · <a href="/privacy#delete" target="_blank" rel="noopener">Delete your account</a></p>
     <div class="ui-rows">
       <button type="button" class="ui-row" @click="shell.open('neighbours')"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="neighbours" /></span><span class="ui-row-body"><b>Neighbours directory</b><small>Hide or list your home</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>
       <button type="button" class="ui-row" @click="shell.open('richlist')"><span class="ui-row-icon" aria-hidden="true"><GameIcon inline name="richlist" /></span><span class="ui-row-body"><b>Rich List</b><small>Hide or show your balance</small></span><span class="ui-row-end"><GameIcon inline name="chevron" /></span></button>

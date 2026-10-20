@@ -32,7 +32,9 @@ async function setup(t: TestContext) {
     const { csrf } = await call('/api/account', undefined, d.cookie);
     const res = await fetch(f.base + '/api/account/sign-in', { method: 'POST', headers: { Origin: f.base, 'Content-Type': 'application/json', Cookie: d.cookie }, body: JSON.stringify({ idToken, csrf }) });
     assert.equal(res.status, 200);
-    return { ...d, cookie: (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie };
+    const cookie = (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie;
+    await f.acceptSharingTerms(cookie);
+    return { ...d, cookie };
   }
   const admin = (path: string, cookie: string, body: Json) => call(path, { clientId: f.id(), ...body }, cookie);
   const trust = (): Promise<ReturnType<typeof peekTrust>> => f.server.store.read((db) => JSON.parse(JSON.stringify(peekTrust(db))));

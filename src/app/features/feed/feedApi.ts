@@ -58,6 +58,7 @@ export type FeedApi = ReturnType<typeof feedApi>
 /** Upload a photo, a portrait or a clip: the bytes as they are, with their type. Answers the stored media or a refusal. */
 export async function uploadMedia(blob: Blob, use: 'post' | 'portrait', extra: { ms?: number; w?: number; h?: number } = {}): Promise<Answer<{ media: FeedMedia }>> {
   try {
+    if (!await (await import('../terms/agree.ts')).agreeBeforeSocketSharing()) throw Error('Sharing cancelled.')
     const res = await fetch(`/api/feed/media${q({ use, ...extra })}`, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': blob.type || 'application/octet-stream' }, body: blob })
     const data = await res.json() as Answer<{ media: FeedMedia }> & { error?: string }
     if (!res.ok) return { ok: false, code: data.error ?? 'upload_failed', reason: res.status === 413 ? 'That file is too big.' : res.status === 415 ? 'That kind of file cannot be posted.' : 'The upload did not go through. Try again.' }

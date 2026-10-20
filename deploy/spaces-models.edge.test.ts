@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url'
 import { claimsFor, makeKey, signToken } from '../server/accounts/test-tokens.ts'
 import { TOKEN_KEYS_URL } from '../server/accounts/token.ts'
 import { layoutBindings } from '../server/testing/sqliteStorage.ts'
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts'
 
 type Json = Record<string, any>
 interface Bucket { get(key: string): Promise<{ arrayBuffer(): Promise<ArrayBuffer> } | null> }
@@ -70,7 +71,9 @@ test('Worker: a model upload goes to R2 by its hash and comes back byte for byte
       const idToken = await signToken(key, claimsFor(project, Date.now(), { subject: `Uid${address.replace(/\W/g, '')}`, email: address, n: ++minted }))
       const signedIn = await worker.dispatchFetch(origin + '/api/account/sign-in', { method: 'POST', headers: { origin, 'content-type': 'application/json', cookie }, body: JSON.stringify({ csrf, idToken }) })
       assert.equal(signedIn.status, 200)
-      return signedIn.headers.get('set-cookie')?.split(';')[0] ?? cookie
+      const accountCookie = signedIn.headers.get('set-cookie')?.split(';')[0] ?? cookie
+      assert.equal((await call('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, accountCookie)).status, 200)
+      return accountCookie
     }
     const op = (path: string, body: unknown) => call(path, body, undefined, { authorization: `Bearer ${operator}` })
     return { call, session, account, op }

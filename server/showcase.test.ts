@@ -40,7 +40,9 @@ async function setup(t: TestContext, env: Json = {}) {
     const { csrf } = await call('/api/account', undefined, d.cookie);
     const res = await fetch(f.base + '/api/account/sign-in', { method: 'POST', headers: { Origin: f.base, 'Content-Type': 'application/json', Cookie: d.cookie }, body: JSON.stringify({ idToken: await token(address), csrf }) });
     assert.equal(res.status, 200);
-    return { ...d, cookie: (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie };
+    const cookie = (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie;
+    await f.acceptSharingTerms(cookie);
+    return { ...d, cookie };
   }
   const adult = async (d: Device) => assert.equal((await call('/api/growth/consent', { cityId: 'lagos', age: 'adult' }, d.cookie)).ok, true);
   const founder = await account(FOUNDER, 'Founder');

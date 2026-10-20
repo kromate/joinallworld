@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { composerLines, createDrafts, dayLabel, emojiOnly, filterChats, friendsToStart, giftDetail, giftLine, insertMention, liveMentions, listTime, mentionChoices, onlyUnread, mentionQuery, pieces, previewOf, shortcodes, showCount, sortChats, threadRows } from './messagesText.ts'
+import { composerLines, createDrafts, dayLabel, emojiOnly, filterChats, friendsToStart, giftDetail, giftLine, insertMention, liveMentions, listTime, mentionChoices, onlyUnread, mentionQuery, messageReportText, pieces, previewOf, shortcodes, showCount, sortChats, threadRows } from './messagesText.ts'
 import { EMOJI_CATEGORIES, QUICK_REACTIONS } from './emojiData.ts'
 import type { Conversation, Message } from '../../../types/social.ts'
 
@@ -29,6 +29,13 @@ test('mentions are cut out of the body by the server\'s positions, and a bad pos
   assert.deepEqual(parts.map((piece) => [piece.text, piece.mention?.id]), [['Hi ', undefined], ['@Bola', 'b'], [' and ', undefined], ['@everyone', 'everyone'], ['!', undefined]])
   assert.deepEqual(pieces('plain', undefined), [{ text: 'plain' }])
   assert.deepEqual(pieces('short', [{ id: 'b', start: 3, end: 40 }]), [{ text: 'short' }])
+})
+
+test('message report context identifies its sender and never exceeds the report text limit', () => {
+  assert.equal(messageReportText('Bola', '  Please send a code  ', 300), 'Message from Bola: Please send a code')
+  assert.equal(messageReportText('Bola', '123456789', 12), 'Message from')
+  assert.equal(messageReportText('Bola', 'anything', 0), '')
+  assert.equal(messageReportText('A', '🙂X', 17), 'Message from A: 🙂')
 })
 
 test('the @ picker: finds the word at the caret, filters members, inserts a name, and drops a mention whose text was edited away', () => {

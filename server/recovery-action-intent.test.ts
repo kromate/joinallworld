@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { fixture } from './test-fixture.ts'
 import coreRoutes from './routes/core.ts'
+import sharingRoutes from './routes/sharing.ts'
 import { characterCity, fileCharacter } from './character.ts'
 import type { ActionRequest, TimedId } from '../src/types/protocol.ts'
 import type { LifeState } from '../src/types/life.ts'
@@ -55,7 +56,7 @@ test('public action receipt wins first: a moved retry replays it against the cur
 })
 
 test('moved retry wins first: its refused receipt fences a late original after return and rejects payload or authority conflicts', async t => {
-  const f = await fixture(t, { routes: [coreRoutes, authorityProbe] })
+  const f = await fixture(t, { routes: [coreRoutes, sharingRoutes, authorityProbe] })
   const ada = await f.device('Ada')
   await f.request('/api/life?city=lagos', null, ada.cookie)
   const move = async (to: 'lagos' | 'ibadan') => f.server.store.transact(db => {

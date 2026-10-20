@@ -8,8 +8,10 @@ import { applyArtist, cancelPremiere, loadPremieres, schedulePremiere, watch } f
 import { shareGist } from '../growth/shareMoment.ts'
 import { PREMIERE } from '../../../watch/premiere.ts'
 import type { PremiereView } from '../../../types/watch.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 onMounted(() => { void loadPremieres(true) })
 const data = computed(() => watch.premieres)
 const artist = computed(() => data.value?.artist ?? null)
@@ -34,19 +36,19 @@ const fail = (): void => game.toast('That could not be shared. Try again.', 'err
 
 <template>
   <div class="watch-part" data-watch="premieres">
-    <p class="social-note">New music, heard together. An artist drops a song in a world; fans listen at the same moment; the front row is the first {{ PREMIERE.frontRow }} with a ticket.</p>
+    <p class="social-note">New music, heard together. An artist drops a song in a world; fans listen at the same moment<template v-if="!playApp">; the front row is the first {{ PREMIERE.frontRow }} with a ticket</template>.</p>
     <p v-if="problem" class="ui-error" role="alert">{{ problem }}</p>
     <p v-if="!data" class="social-note">Loading…</p>
     <template v-else>
       <p v-if="!data.premieres.length" class="social-note">No premieres are coming up.</p>
       <article v-for="item in data.premieres" :key="item.id" class="watch-card" :data-watch-premiere="item.id">
         <header><strong>{{ item.artist }} · “{{ item.title }}”</strong><small>{{ item.phase === 'live' ? 'On now' : item.phase === 'over' ? 'Over' : when(item.start) }}</small></header>
-        <p class="social-note">{{ item.place }} · {{ item.going }} going · {{ item.price ? `tickets ${naira(item.price)} (paid to the artist)` : 'free' }}</p>
+        <p class="social-note">{{ item.place }} · {{ item.going }} going<template v-if="!playApp"> · {{ item.price ? `tickets ${naira(item.price)} (paid to the artist)` : 'free' }}</template></p>
         <p v-if="item.front.length" class="social-note">Front row: {{ item.front.join(', ') }}</p>
         <p v-if="item.me?.front" class="social-note" data-watch="front">You are in the front row.</p>
         <div class="watch-row">
           <button v-if="item.world && item.phase !== 'over'" type="button" class="ui-button is-primary" data-watch="open-world" @click="openWorld(item.world)">{{ item.phase === 'live' ? 'Go in and listen' : 'See the world' }}</button>
-          <button v-if="!item.me?.artist && !item.me?.going && item.phase !== 'over'" type="button" class="ui-button" data-watch="ticket" @click="openEvent(item.event)">{{ item.price ? 'Get a ticket' : 'Say you are going' }}</button>
+          <button v-if="!item.me?.artist && !item.me?.going && item.phase !== 'over' && (!playApp || !item.price)" type="button" class="ui-button" data-watch="ticket" @click="openEvent(item.event)">{{ item.price ? 'Get a ticket' : 'Say you are going' }}</button>
           <button v-if="item.line" type="button" class="social-btn" @click="shareGist(item.line, fail)">Share</button>
           <button v-if="item.me?.artist && item.phase === 'upcoming'" type="button" class="social-btn" @click="cancel(item)">Call it off</button>
         </div>
@@ -55,7 +57,7 @@ const fail = (): void => game.toast('That could not be shared. Try again.', 'err
       <section class="watch-card" aria-label="For artists">
         <header><strong>For artists</strong></header>
         <template v-if="artist?.status === 'approved'">
-          <p class="social-note">You are approved as <b>{{ artist.name }}</b>. Make an event in Plans (set a ticket price there if you like, through Earn), then turn it into your premiere. Put a world with a screen on it, and your track plays for everyone inside.</p>
+          <p class="social-note">You are approved as <b>{{ artist.name }}</b>. Make an event in Plans<template v-if="!playApp"> (set a ticket price there if you like, through Earn)</template>, then turn it into your premiere. Put a world with a screen on it, and your track plays for everyone inside.</p>
           <label class="social-note" for="watch-event">Your event</label>
           <select id="watch-event" v-model="plan.event" class="watch-input">
             <option value="">Choose one of your events…</option>

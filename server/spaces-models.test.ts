@@ -48,7 +48,9 @@ async function setup(t: TestContext, { on = true }: { on?: boolean } = {}) {
     const { csrf } = await call('/api/account', undefined, d.cookie);
     const res = await fetch(f.base + '/api/account/sign-in', { method: 'POST', headers: { Origin: f.base, 'Content-Type': 'application/json', Cookie: d.cookie }, body: JSON.stringify({ idToken: await token(address), csrf }) });
     assert.equal(res.status, 200);
-    return { ...d, cookie: (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie };
+    const cookie = (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie;
+    await f.acceptSharingTerms(cookie);
+    return { ...d, cookie };
   }
   const upload = (d: Device, bytes: Uint8Array, name = 'My chair') => call(`/api/spaces/models?name=${encodeURIComponent(name)}`, bytes, d.cookie);
   const op = (body?: unknown) => call('/api/mod/spaces/models', body, undefined, { Authorization: `Bearer ${OPERATOR}` });

@@ -78,8 +78,8 @@ test('the people row: you, someone in voice (live ring, near), someone muted; ev
   assert.match(html, /<li class="is-muted">/)
   assert.match(text(html), /In voice · near/)
   assert.match(text(html), /Muted · far/)
-  assert.match(html, /<button[^>]*class="community-person"[^>]*aria-label="Bea &lt;b&gt;, open card"/)
-  assert.match(html, /<button[^>]*aria-label="Cy, open card"/)
+  assert.match(html, /<button[^>]*class="community-person"[^>]*aria-label="Bea &lt;b&gt;, open card to report or block"/)
+  assert.match(html, /<button[^>]*aria-label="Cy, open card to report or block"/)
   assert.doesNotMatch(html, /aria-label="Alex, open card"/, 'you are not a button')
 })
 
@@ -103,6 +103,7 @@ test('chat: own lines are marked and named You with a time, a delivery state sho
   assert.equal((html.match(/class="is-mine"/g) ?? []).length, 2)
   assert.match(html, /<strong>You<\/strong><time>/)
   assert.match(html, /<strong>Bea<\/strong>/)
+  assert.match(html, /data-community-report-message[^>]*aria-label="Report Bea(?:&#39;|')s room message"[^>]*>Report message<\/button>/)
   assert.doesNotMatch(html, /<small>Sent<\/small>/)
   assert.match(html, /<small>Sending…<\/small>/)
   assert.doesNotMatch(text(html), /No messages yet/)

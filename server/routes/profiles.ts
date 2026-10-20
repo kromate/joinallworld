@@ -1,3 +1,4 @@
+import { termsPageHtml } from '../terms-page.ts'
 import { readPublicProfile } from '../public-profile.ts'
 import { publicProfilePageHtml, unavailableProfilePageHtml } from '../public-profile-page.ts'
 import { feedService } from '../feed/service.ts'
@@ -17,6 +18,7 @@ export default function profileRoutes(ctx: RouteContext): Record<RouteKey, Route
   /** The feed's part of the page: portrait, handle, bio, status, the latest public posts. Nothing for a guest viewer beyond what is public. */
   const socialOf = (db: Db, id: string, origin: string): string => { const found = feed.profile(db, null, id); if (!found.ok) return ''; const page = feed.read(db, null, { tab: 'author', by: id }); return profileSocialHtml(found.profile, 'posts' in page ? page.posts.filter((p) => p.vis === 'public') : [], origin) }
   // The public privacy page (server/privacy-page.ts): plain HTML, cacheable, the same on both hosts.
+  ctx.pages?.set('/terms', async ({ path, origin }) => path === '/terms' || path === '/terms/' ? { status: 200, cache: true, html: termsPageHtml(origin) } : null)
   ctx.pages?.set('/privacy', async ({ origin }) => ({ status: 200, cache: true, html: privacyPageHtml(origin) }))
   // The public money page (server/money-page.ts): what game naira is, what real money exists, who holds it, how to report a scam.
   ctx.pages?.set('/money', async ({ origin }) => ({ status: 200, cache: true, html: moneyPageHtml(origin) }))

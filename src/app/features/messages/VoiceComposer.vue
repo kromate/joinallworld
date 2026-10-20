@@ -25,6 +25,7 @@ async function send(): Promise<void> {
     const data = await new Promise<string>((resolve, reject) => { const reader = new FileReader(); reader.onload = () => typeof reader.result === 'string' ? resolve(reader.result.split(',')[1] ?? '') : reject(Error('Recording could not be read.')); reader.onerror = () => reject(Error('Recording could not be read.')); reader.readAsDataURL(draft.blob) })
     if (turn !== generation || identity !== props.meId || destination !== props.conv) return
     sending = new AbortController()
+    if (!await (await import('../terms/agree.ts')).agreeBeforeSocketSharing()) return
     const response = await fetch('/api/social/voice', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Allworld-Actor': identity }, body: JSON.stringify({ ...target, clientId: id, body: '', data, ...(replyTo ? { replyTo } : {}) }), signal: sending.signal })
     const answer: unknown = await response.json()
     if (turn !== generation || identity !== props.meId || destination !== props.conv) return

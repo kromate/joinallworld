@@ -17,10 +17,12 @@ import { PRICE_NOTE, openStatus, placeWords, weekLines, wordsFor, zoneOf } from 
 import { DEAL_LINE, initialOf, menuPageOf, messageLink, pageCount, pageOf, pageSizeOf, payLink, roomColours, roomFromMine, roomFromView, roomLabel, roomPhotoUrl } from './roomModel.ts'
 import type { RoomData, RoomRequest } from './roomModel.ts'
 import type { RoomScene, RoomView } from './roomScene.ts'
+import { isPlayApp } from '../../../playMode.ts'
 
 const props = defineProps<{ request: RoomRequest }>()
 const emit = defineEmits<{ close: [] }>()
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 
 const data = shallowRef<RoomData | null>(null)
 const status = ref<'loading' | 'ready' | 'gone' | 'nogl'>('loading')
@@ -50,8 +52,8 @@ const kind = computed(() => (data.value ? SHOWCASE_CATEGORY_LABELS[data.value.ca
 const preview = computed(() => data.value?.access === 'preview')
 const hasChat = computed(() => data.value !== null && (data.value.access === 'released' || messageLink(data.value) !== null))
 const chatHref = computed(() => (data.value && data.value.access !== 'released' ? messageLink(data.value, item.value) : null))
-const payHref = computed(() => (data.value && data.value.access !== 'released' ? payLink(data.value) : null))
-const showPay = computed(() => data.value !== null && (data.value.access === 'released' ? data.value.hasPay : payHref.value !== null))
+const payHref = computed(() => (!playApp && data.value && data.value.access !== 'released' ? payLink(data.value) : null))
+const showPay = computed(() => !playApp && data.value !== null && (data.value.access === 'released' ? data.value.hasPay : payHref.value !== null))
 
 onMounted(async () => {
   // A modal dialog: the page behind is inert, the room is above everything (the tour included, which waits while a dialog is open).
@@ -115,7 +117,7 @@ function onKey(event: KeyboardEvent): void {
 /** A seller's link, released one at a time to a signed-in adult, when the room was not opened from the shop's public address. */
 async function release(what: 'chat' | 'pay'): Promise<void> {
   const room = data.value
-  if (!room || busy.value) return
+  if (!room || busy.value || (playApp && what === 'pay')) return
   busy.value = what; note.value = ''; needs.value = false
   const key = `go:${what}`, clientId = ids.get(key) ?? newClientId()
   ids.set(key, clientId)
@@ -126,7 +128,7 @@ async function release(what: 'chat' | 'pay'): Promise<void> {
     const code = (error as { code?: string } | null)?.code
     ids.delete(key)
     needs.value = code === 'account_required'
-    note.value = needs.value ? 'Sign in to message or pay the seller from here. The shop page outside the game needs no account.' : wordsFor(code, error instanceof Error ? error.message : 'That did not work. Try again.')
+    note.value = needs.value ? (playApp ? 'Sign in to message the seller from here. The shop page outside the game needs no account.' : 'Sign in to message or pay the seller from here. The shop page outside the game needs no account.') : wordsFor(code, error instanceof Error ? error.message : 'That did not work. Try again.')
   } finally { busy.value = '' }
 }
 async function report(): Promise<void> {

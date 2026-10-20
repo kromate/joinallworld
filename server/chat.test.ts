@@ -653,6 +653,7 @@ test('the founder: strangers cannot add or mention him, he may add the players w
   const idToken = await signToken(key, claimsFor(PROJECT, f.now(), { subject: 'Founder', email: ADDRESS, n: 1 }));
   const signed = await page('/api/account/sign-in', { idToken, csrf }, device.cookie); await signed.text();
   const zed: Device = { ...device, cookie: (signed.headers.get('set-cookie') ?? '').split(';')[0] ?? '' };
+  await f.acceptSharingTerms(zed.cookie);
   await get(f, '/api/social/me', zed);
   const [ada, bola] = await people(f, ['Ada', 'Bola']);
   await befriend(f, ada, bola);

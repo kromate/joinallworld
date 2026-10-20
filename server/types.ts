@@ -1,3 +1,4 @@
+import type { SharingAcceptance } from '../src/types/sharing.ts'
 import type { RetentionPolicy } from './retention-policy.ts'
 /**
  * Server-only types: what is stored, and the contracts between the host and its modules.
@@ -79,6 +80,7 @@ export interface CityLifeRecord {
  * Receipts are per SESSION (`actions`, `once`), not per city.
  */
 export interface SessionRecord {
+  sharingTerms?: SharingAcceptance
   /** The `sid` cookie value. Never returned, logged or copied into a collection. */
   secret: string
   /** The only id other players, collections and responses ever see. */
@@ -174,6 +176,7 @@ export type AccountProviderId = 'google' | 'password'
 export interface ParkedLife { id: string; name: string; at: number }
 /** Keyed by account id (`fb:<provider subject>`). */
 export interface AccountRecord {
+  sharingTerms?: SharingAcceptance
   v: 1
   id: string
   provider: AccountProviderId

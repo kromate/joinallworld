@@ -52,7 +52,7 @@ import { announceLines, announceUi } from '../announce/announceStore.ts'
 import type { UpdateLine } from './messagesThread.ts'
 import { isOutbox, lastLine, partnerOf, provisionalKey, readOnlyReason, targetOf, threadKind, threadTitle, updateLines } from './messagesThread.ts'
 import { romanceState } from './romanceCard.ts'
-import { filterChats, friendsToStart, onlyUnread, listTime, previewOf, sortChats, threadRows } from './messagesText.ts'
+import { filterChats, friendsToStart, messageReportText, onlyUnread, listTime, previewOf, sortChats, threadRows } from './messagesText.ts'
 import Composer from './Composer.vue'
 import MessageAction from './MessageAction.vue'
 import MessageBubble from './MessageBubble.vue'
@@ -401,6 +401,7 @@ const lightbox = ref<Message | null>(null)
 const voiceAllowed = computed(() => Boolean(me.value?.limits.voice?.on && ui.open && !ui.open.startsWith('h.') && (conv.value?.kind === 'group' || Boolean(partner.value && me.value?.friends.some(friend => friend.id === partner.value)))))
 /** The scam banner's Report: the sender is reported as a scam with the line as the note; the server keeps the last messages as evidence. */
 async function reportScam(line: Message): Promise<void> { if (line.from) await perform('/api/social/reports', { id: line.from.id, reason: SCAM_REPORT_REASON, text: scamReportText(line.body, me.value?.limits.reportText) }, 'Report received. A moderator will look at it.') }
+async function reportMessage(line: Message): Promise<void> { if (line.from && line.body) await perform('/api/social/reports', { id: line.from.id, reason: 'other', text: messageReportText(line.from.name, line.body, me.value?.limits.reportText ?? 300) }, 'Message reported. A moderator will look at it.') }
 async function reportVoice(line: Message): Promise<void> { if (line.voice && ui.open) await perform('/api/social/reports', { conv: ui.open, voice: line.voice.id, reason: 'other' }, 'Voice note reported and hidden for you.') }
 const pictureAllowed = computed(() => Boolean(me.value?.limits.pictures.on && ui.open && !ui.open.startsWith('h.') && (conv.value?.kind === 'group' || Boolean(partner.value && me.value?.friends.some((friend) => friend.id === partner.value))) && !readOnly.value))
 async function pictureSent(result: { conv: Pick<Conversation, 'id'> }): Promise<void> {
@@ -585,7 +586,7 @@ defineExpose({
                 <b v-else-if="romanceState(row.item.romance)">{{ romanceState(row.item.romance) }}</b>
               </div>
               <div v-else-if="row.item.sys" class="bubble is-sys">{{ row.item.body }}</div>
-              <MessageBubble v-else @menu="menuUp = $event" :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(row.item))" :pinned="isPinned(row.item)" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" :now="now" :partner="title" :request-busy="Boolean(row.item.request && requests.busy.has(row.item.request.id))" :request-offline="!connected" @request="(id, op) => answerCard(row.item, id, op)" @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @report-scam="reportScam" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
+              <MessageBubble v-else @menu="menuUp = $event" :item="row.item" :me-id="me.me.id" :group="isGroup" :head="row.head" :tail="row.tail" :time="time(row.item.at)" :can-react="conv?.kind !== 'house'" :can-actions="true" :can-pin="Boolean(pins.state.view?.canManage && canPinMessage(row.item))" :pinned="isPinned(row.item)" :pin-pending="pins.state.pending" :pin-blocked="pins.state.retryable" :pin-offline="!connected" :voice-enabled="me.prefs.voiceNotes !== 'nobody'" :now="now" :partner="title" :request-busy="Boolean(row.item.request && requests.busy.has(row.item.request.id))" :request-offline="!connected" @request="(id, op) => answerCard(row.item, id, op)" @pin="(item, pinned) => pins.change({ message: item, pinned })" @reply="(line) => { replying = line; composer?.focus() }" @react="react" @player="openCard" @jump="jump" @report-voice="reportVoice" @report-scam="reportScam" @report-message="reportMessage" @picture="(line) => { lightbox = line }" @edit="(item) => { messageAction = { kind: 'edit', item } }" @remove="(item) => { messageAction = { kind: 'delete', item } }" @forward="(item) => { messageAction = { kind: 'forward', item } }" />
             </template>
           </div>
           <button v-if="fresh > 0 || !atBottom" type="button" class="messages-latest" :aria-label="fresh ? `Jump to latest, ${fresh} new` : 'Jump to latest'" @click="toLatest">↓<span v-if="fresh" class="messages-badge">{{ fresh }}</span></button>

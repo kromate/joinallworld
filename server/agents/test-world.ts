@@ -39,6 +39,7 @@ export async function world(t: TestContext, options: FixtureOptions = {}, outsid
     const body = await response.json() as SignInResponse;
     if (response.status !== 200) throw new Error(`sign-in answered ${response.status}: ${JSON.stringify(body)}`);
     const cookie = (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '';
+    await f.acceptSharingTerms(cookie);
     if (old) f.advance(25 * HOUR);
     return { id: g.id, cookie, subject };
   }

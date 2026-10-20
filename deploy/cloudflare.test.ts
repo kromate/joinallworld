@@ -15,6 +15,7 @@ import { layoutBindings, readStoredCollection, writeStoredCollection } from '../
 import { MAIN_GATE_APPROACH } from '../src/campus/unilag/layout.ts';
 import { createCampusWalk } from '../src/campus/unilag/walk.ts';
 import type { AsyncExec } from '../server/testing/sqliteStorage.ts';
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts';
 
 /** The pieces of the pinned tooling (miniflare, esbuild) these tests use; the packages live in deploy/tooling, not in the repo's own dependencies. */
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; addEventListener(type: 'close', listener: (event: { code: number }) => void): void; accept(): void; send(data: string): void; close(): void }
@@ -111,6 +112,9 @@ async function fixture(t: TestContext, { clockShiftMs = 0, fixedNowMs, sleeps = 
   async function request(path: string, body?: object | null, cookie?: string | null, headers: Record<string, string> = {}) {
     return send(origin + path, { method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}), ...headers }, body: body ? JSON.stringify(body) : undefined });
   }
+  async function acceptSharingTerms(cookie: string): Promise<void> {
+    assert.equal((await request('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, cookie)).status, 200);
+  }
   async function device(name: string): Promise<Device> {
     const response = await request('/api/session', { name });
     assert.equal(response.status, 200);
@@ -159,7 +163,7 @@ async function fixture(t: TestContext, { clockShiftMs = 0, fixedNowMs, sleeps = 
     for (let done = 0; done < count; done += 50) await Promise.all(Array.from({ length: Math.min(50, count - done) }, async (_, i) => { const response = await make(done + i); statuses[response.status] = (statuses[response.status] ?? 0) + 1; await response.arrayBuffer(); }));
     return statuses;
   }
-  return { spend, logged: () => lines.join('\n'), atHost: (host: string,path: string,method='GET') => send(host+path,{method}), request, device, action, life, socket, storage, upgrade, origin, skip, nextDay, fetch: (path: string, init?: RequestInit & { headers?: Record<string, string> }) => send(origin + path, init), hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { await stop(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs }); await within('Miniflare restart', mf.ready); } };
+  return { spend, logged: () => lines.join('\n'), atHost: (host: string,path: string,method='GET') => send(host+path,{method}), request, acceptSharingTerms, device, action, life, socket, storage, upgrade, origin, skip, nextDay, fetch: (path: string, init?: RequestInit & { headers?: Record<string, string> }) => send(origin + path, init), hibernate: () => mf.unsafeEvictDurableObject('joinallworld-conformance', 'JoinAllworldState', { name: 'joinallworld-v1', webSockets: 'hibernate' }), restart: async () => { await stop(); mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), unsafeInspectDurableObjects: true, handleStructuredLogs }); await within('Miniflare restart', mf.ready); } };
 }
 
 test('Cloudflare: public IDs, origin isolation, atomic duplicate fare, replay window and restart durability', async t => {
@@ -204,6 +208,7 @@ test('Cloudflare: settlement once across restart, sliding expiry, expired token 
 
 test('Cloudflare: two clients presence, chat dedupe, signaling isolation and travel eviction', async t => {
   const f = await fixture(t, { sleeps: true }), a = await f.device('Ada'), b = await f.device('Bola');
+  await Promise.all([a, b].map(who => f.acceptSharingTerms(who.cookie)));
   const x = await f.socket(a), y = await f.socket(b);
   x.send({ type: 'join', cityId: 'lagos', venueId: 'park' });
   const solo = await x.next(); assert.equal(solo.members.length, 1); assert.ok(!JSON.stringify(solo).includes(a.cookie.slice(11))); assert.equal(solo.members[0].muted, true);
@@ -233,6 +238,7 @@ test('Cloudflare: two clients presence, chat dedupe, signaling isolation and tra
 
 test('Cloudflare: a replaced object instance leaves the room watcher alone: no cross-instance I/O, presence still updates, no stray frames', async t => {
   const f = await fixture(t, { sleeps: true }), a = await f.device('Ada'), b = await f.device('Bola');
+  await Promise.all([a, b].map(who => f.acceptSharingTerms(who.cookie)));
   const x = await f.socket(a), y = await f.socket(b);
   x.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next();
   y.send({ type: 'join', cityId: 'lagos', venueId: 'park' }); await x.next(); await y.next();
@@ -272,6 +278,7 @@ test('Cloudflare: voice cap, per-session socket cap, and a session’s request l
   const f = await fixture(t), members = [];
   for (let index = 0; index < 9; index++) {
     const device = await f.device(`Voice ${index}`), socket = await f.socket(device);
+    await f.acceptSharingTerms(device.cookie);
     socket.send({ type: 'join', cityId: 'lagos', venueId: 'park' });
     for (const member of members) await member.next(); await socket.next();
     socket.send({ type: 'voice-state', enabled: true, muted: true });
@@ -563,9 +570,10 @@ test('Recovery parity: Node and Worker share onboarding, social, blocking, civic
  const {fixture:nodeFixture}=await import('../server/test-fixture.ts');
  const edge=await fixture(t), node=await nodeFixture(t,{now:Date.now});
  /** What both hosts' fixtures offer the shared script (method syntax: the Node fixture takes a narrower cookie and body). */
- interface Driver { device(name: string): Promise<{ id: string; cookie: string }>; request(path: string, body?: object | null, cookie?: string | null): Promise<Response> }
+ interface Driver { device(name: string): Promise<{ id: string; cookie: string }>; request(path: string, body?: object | null, cookie?: string | null): Promise<Response>; acceptSharingTerms?(cookie: string): Promise<void> }
  async function sequence(f: Driver){
    const a=await f.device('Ada'),b=await f.device('Bola'),out=[];
+   if (f.acceptSharingTerms) await Promise.all([a, b].map(who => f.acceptSharingTerms!(who.cookie)));
    const call=async(path: string,body?: object | null,who: { cookie: string } | undefined=a)=>{const r=await f.request(path,body,who?.cookie);const data=await r.json();return {status:r.status,...data};};
    for(const who of [a,b])await call('/api/social/me',null,who);
    out.push((await call('/api/social/friends/request',{to:b.id,cityId:'lagos'})).code);
@@ -736,6 +744,7 @@ async function combined(t: TestContext, overrides?: Record<string, unknown>) {
     const request = { actionId: `${Date.now() + (typeof overrides?.clockShiftMs === 'number' ? overrides.clockShiftMs : 0)}:${randomUUID()}`, cityId: CITY, type: 'onboarding.quick-start', payload: { look: presetLook(preset), ...(joining ? { joining: true } : {}) } };
     const first = await post('/api/action', request, who), again = await post('/api/action', request, who);
     assert.deepEqual([first.code, again.code, again.duplicate], ['playing', 'playing', true], 'a double tap on Play is one start');
+    await f.acceptSharingTerms(who.cookie);
     assert.equal((await get('/api/social/me', who)).me.name, name);
     return { who, state: first.state };
   }
@@ -1248,6 +1257,7 @@ test('Cloudflare: the founder is every player’s first friend — tagged, once,
   assert.deepEqual((await me(ada)).friends, []);
   const device = await f.player('Zed');
   const zed = { id: device.id, cookie: (await f.signIn('Founder', device.cookie)).cookie };
+  await f.acceptSharingTerms(zed.cookie);
   assert.equal((await me(zed)).me.id, zed.id);
   // The earlier player on their next session, and a new one on their first.
   const bola = await f.player('Bola');
@@ -1278,9 +1288,11 @@ test('Cloudflare: the founder’s Players view and paged chats — cursors, sear
   const post = async (path: string, body: object, who: { cookie: string }): Promise<Answer> => { const response = await f.request(path, body, who.cookie, f.from()); return { status: response.status, ...(await response.json()) as object } as Answer; };
   const device = await f.player('Zed');
   const zed = { id: device.id, cookie: (await f.signIn('Founder', device.cookie)).cookie };
+  await f.acceptSharingTerms(zed.cookie);
   await get('/api/social/me', zed);
   const names = ['Ada Obi', 'Bola', 'Chidi', 'Dayo', 'Ebere'];
   const players = []; for (const name of names) { const who = await f.player(name); await get('/api/social/me', who); players.push(who); }
+  await f.acceptSharingTerms(players[1]!.cookie);
   // Pages by cursor, newest first: five players, two at a time, each once.
   const seen: string[] = [];
   let cursor: string | null = null, calls = 0;

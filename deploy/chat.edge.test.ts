@@ -10,6 +10,7 @@ import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import type { PingServerFrame } from '../src/types/ping.ts';
 import { layoutBindings } from '../server/testing/sqliteStorage.ts';
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts'
 
 interface StubSocket { addEventListener(type: 'message', listener: (event: { data: string }) => void): void; accept(): void; send(data: string): void; close(): void }
 type MiniflareResponse = Response & { webSocket?: StubSocket | null }
@@ -55,6 +56,7 @@ async function fixture(t: TestContext, sleeps = false) {
     const response = await send(origin + '/api/session', { method: 'POST', headers: { origin, 'content-type': 'application/json' }, body: JSON.stringify({ name }) });
     assert.equal(response.status, 200);
     const who: Device = { ...(await response.json() as { session: { id: string; name: string } }).session, cookie: (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '' };
+    assert.equal((await request('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, who)).status, 200);
     await request('/api/life?city=lagos', null, who); await request('/api/social/me', null, who);
     return who;
   }

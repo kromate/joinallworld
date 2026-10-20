@@ -41,6 +41,7 @@ async function setup(t: TestContext, { on = true, scripts = true }: { on?: boole
     const res = await fetch(f.base + '/api/account/sign-in', { method: 'POST', headers: { Origin: f.base, 'Content-Type': 'application/json', Cookie: d.cookie }, body: JSON.stringify({ idToken: await token(address), csrf }) });
     assert.equal(res.status, 200);
     const cookie = (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie;
+    await f.acceptSharingTerms(cookie);
     await f.request('/api/social/me', undefined, cookie);
     return { ...d, cookie };
   }

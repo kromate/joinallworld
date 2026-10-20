@@ -525,7 +525,7 @@ export type NodeSocketErrorCode =
   | ArenaErrorCode
 /** WORKER: codes only the Worker sends, in addition to every code above: a retried chat id with another body, and an expired session on an open socket. */
 export type WorkerSocketErrorCode = 'chat_id_conflict' | 'device_session_required'
-export type SocketErrorCode = NodeSocketErrorCode | WorkerSocketErrorCode
+export type SocketErrorCode = 'sharing_terms_required' | NodeSocketErrorCode | WorkerSocketErrorCode
 
 /**
  * Any refused frame. `code` and `error` always hold the same machine code.

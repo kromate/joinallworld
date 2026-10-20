@@ -14,6 +14,8 @@ import type { VuePanel } from '../../types/panel.ts'
 import { civicNews } from './civicBadges.ts'
 import { bodyLoader } from '../../state/panelBody.ts'
 
+const playApp = (): boolean => globalThis.document?.documentElement?.dataset.allworldApp === 'play'
+
 export const governor = definePanel({
   id: 'governor', title: 'Chairman', titleFor: state => civicTitle(state.estate.city), placement: 'phone', order: 40, live: false, group: 'city',
   badge: (state, view) => civicNews(view, state),
@@ -29,6 +31,7 @@ export const neighbours = definePanel({
 })
 export const ads = definePanel({
   id: 'ads', title: 'Billboards', placement: 'phone', order: 44, live: false, group: 'city',
+  hidden: playApp,
   component: defineAsyncComponent(bodyLoader('civic/AdsApp')),
 })
 export const huntSheet = definePanel({

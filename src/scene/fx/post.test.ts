@@ -26,6 +26,8 @@ function fakes(log: string[]) {
     EffectComposer: Composer,
     RenderPass: class extends Pass { scene: unknown; camera: unknown; constructor(scene: unknown, camera: unknown) { super('render'); this.scene = scene; this.camera = camera } },
     EffectPass: class extends Pass { camera: unknown; effects: unknown[]; constructor(camera: unknown, ...effects: unknown[]) { super('effects'); this.camera = camera; this.effects = effects } },
+    Effect: class { args: unknown[]; constructor(...args: unknown[]) { this.args = args; log.push(`effect ${String(args[0]).toLowerCase()}`) } },
+    BlendFunction: { SRC: 30 },
     BloomEffect: effect('bloom'), LUT3DEffect: effect('lut'), VignetteEffect: effect('vignette'), ToneMappingEffect: effect('tone'),
     ToneMappingMode: { NEUTRAL: 9, ACES_FILMIC: 7, AGX: 8 },
     N8AOPostPass: class extends Pass {
@@ -52,8 +54,8 @@ const renderer = (toneMapping = 7) => ({ toneMapping }) as never
 test('the passes are added in order: render, ambient occlusion, then one grading pass', () => {
   const log: string[] = []
   buildPost(THREE, renderer(), fakes(log), 1280, 720, { ao: true })
-  assert.deepEqual(log.filter((l) => l.startsWith('add ')), ['add render', 'add ao', 'add effects'])
-  assert.deepEqual(log.filter((l) => l.startsWith('effect ')), ['effect bloom', 'effect tone', 'effect lut', 'effect vignette'])
+  assert.deepEqual(log.filter((l) => l.startsWith('add ')), ['add render', 'add ao', 'add effects', 'add effects'])
+  assert.deepEqual(log.filter((l) => l.startsWith('effect ')), ['effect clamp', 'effect bloom', 'effect tone', 'effect lut', 'effect vignette'])
 })
 
 test('the frame buffers are half float with 4x MSAA', () => {
@@ -69,7 +71,7 @@ test('without ao the pass is not built, even if the library was handed in', () =
   const log: string[] = []
   buildPost(THREE, renderer(), fakes(log), 1280, 720, { ao: false })
   assert.ok(!log.includes('new ao'))
-  assert.deepEqual(log.filter((l) => l.startsWith('add ')), ['add render', 'add effects'])
+  assert.deepEqual(log.filter((l) => l.startsWith('add ')), ['add render', 'add effects', 'add effects'])
 })
 
 test('ao settings reach the pass', () => {

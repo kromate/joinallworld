@@ -6,7 +6,7 @@
 // Renting: the five house tiers, their weekly rent and move-in cost, and moving. Moving pays the landlord and the agent (three
 // weeks of rent) with the 'property.house-move' action; furniture moves with the player and anything that does not fit goes
 // to storage. Every disabled Move button says what is missing (view.property.houses[].blocked).
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { MOVE_IN_WEEKS } from '../../../game/content/housing.ts'
 import { linkWords } from '../../../ui/link.ts'
@@ -17,18 +17,17 @@ import { useAct } from '../kit/act.ts'
 import MyHouse from '../travel/MyHouse.vue'
 import { minutesToGo, offeredTiers } from '../travel/myHouseModel.ts'
 import { hostRead, modelsMine, type ModelView } from '../spaces/spacesClient.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 // Who can come in, invitations and the house link: fetched with the Home tab, not with the first download.
-const VisitHome = lazyComponent(() => import('../visit/VisitHome.vue'))
+const VisitHome = defineAsyncComponent(() => import('../visit/VisitHome.vue'))
 // Passing property on (docs/LEGACY.md): fetched only when its section is opened.
-const PassOn = lazyComponent(() => import('../legacy/PassOn.vue'))
+const PassOn = defineAsyncComponent(() => import('../legacy/PassOn.vue'))
 // Design with AI, the AI host, My 3D models and Walk in 3D (docs/SPACES.md, docs/SPACES-3D.md): fetched only when opened.
-const DesignSheet = lazyComponent(() => import('../spaces/DesignSheet.vue'))
-const HostSheet = lazyComponent(() => import('../spaces/HostSheet.vue'))
-const ModelsSheet = lazyComponent(() => import('../spaces/ModelsSheet.vue'))
-const CopyHouseSheet = lazyComponent(() => import('../spaces/CopyHouseSheet.vue'))
+const DesignSheet = defineAsyncComponent(() => import('../spaces/DesignSheet.vue'))
+const HostSheet = defineAsyncComponent(() => import('../spaces/HostSheet.vue'))
+const ModelsSheet = defineAsyncComponent(() => import('../spaces/ModelsSheet.vue'))
+const CopyHouseSheet = defineAsyncComponent(() => import('../spaces/CopyHouseSheet.vue'))
 const copyOpen = ref(false)
-const WorldScreen = lazyComponent(() => import('../spaces/WorldScreen.vue'))
+const WorldScreen = defineAsyncComponent(() => import('../spaces/WorldScreen.vue'))
 const designOpen = ref(false)
 const hostOpen = ref(false)
 const modelsOpen = ref(false)

@@ -4,7 +4,7 @@
 // from the line's number (src/app/features/growth/shareMoment.ts).
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
@@ -12,15 +12,14 @@ import CivicAction from '../civic/CivicAction.vue'
 import { shareGist } from '../growth/shareMoment.ts'
 import { gist, loadGist } from './gistStore.ts'
 import { agoText } from './gistModel.ts'
-import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
 
 // The works card and the home-city pin are fetched when this app opens, never at first paint.
-const EpisodeCard = lazyComponent(() => import('./EpisodeCard.vue'))
+const EpisodeCard = defineAsyncComponent(() => import('./EpisodeCard.vue'))
 // The city front page (docs/SHARE-LOOPS.md): yesterday's newspaper of the city, shareable as a picture.
-const FrontPageCard = lazyComponent(() => import('../shareloops/FrontPageCard.vue'))
-const CityWorks = lazyComponent(() => import('./CityWorks.vue'))
-const HomePin = lazyQuiet(() => import('./HomePin.vue'))
-const BirthdayCard = lazyComponent(() => import('./BirthdayCard.vue'))
+const FrontPageCard = defineAsyncComponent(() => import('../shareloops/FrontPageCard.vue'))
+const CityWorks = defineAsyncComponent(() => import('./CityWorks.vue'))
+const HomePin = defineAsyncComponent(() => import('./HomePin.vue'))
+const BirthdayCard = defineAsyncComponent(() => import('./BirthdayCard.vue'))
 const { game } = useApp()
 const city = computed(() => game.view.value.cityId)
 const offline = computed(() => !game.view.value.connected)

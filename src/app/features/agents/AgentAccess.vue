@@ -3,17 +3,16 @@
 // A player makes an agent key for their own character or for a new agent character, sees the key ONCE with the connection
 // address and a ready-to-paste configuration, lists keys with when they were last used, revokes them, and removes agent characters.
 // The server decides everything (who may make a key, the caps, what an agent may do); this only asks and tells.
-import { onMounted, ref } from 'vue'
+import { defineAsyncComponent, onMounted, ref } from 'vue'
 import { takeAgentSetup } from './claimEntry.ts'
 import { useApp } from '../../state/app.ts'
 import { useAccountLite } from '../account/useAccountLite.ts'
 import { AGENT_EXPLAINER, SUSPENDED_WORDS, mcpSnippet, since } from './agentsModel.ts'
 import { CLAIM_KEY } from './claimEntry.ts'
 import type { AgentKeyMade, AgentsView } from './agentsModel.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
-const AgentJoin = lazyComponent(() => import('./AgentJoin.vue'))
-const AgentArena = lazyComponent(() => import('./AgentArena.vue'))
+const AgentJoin = defineAsyncComponent(() => import('./AgentJoin.vue'))
+const AgentArena = defineAsyncComponent(() => import('./AgentArena.vue'))
 const { game } = useApp()
 const lite = useAccountLite()
 const view = ref<AgentsView | null>(null)

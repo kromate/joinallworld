@@ -3,15 +3,14 @@
 // happening, stays in view. Cancel is the shell's own; the rule beside it is the server's (the fare
 // was charged at departure and is not refunded). The bar fills from the server's own numbers each
 // time it reports: from the fraction done, to full, over the seconds left (one CSS animation). Under it the ride's written banter (RideBanter.vue).
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { paidText } from './travelModel.ts'
 import type { TripInfo } from './travelModel.ts'
 import SkipTrip from './SkipTrip.vue'
-import { lazyComponent } from '../../state/lazy.ts'
 
-const RideBanter = lazyComponent(() => import('./RideBanter.vue'))
+const RideBanter = defineAsyncComponent(() => import('./RideBanter.vue'))
 const props = defineProps<{ trip: TripInfo }>()
 const { command, game } = useApp()
 // A trip between cities leaves from the city it started in; one inside a city runs in the city the player is in.

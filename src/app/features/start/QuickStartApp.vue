@@ -8,7 +8,7 @@
 // (src/quick-start/entry.ts). The name and character are kept on the device as they are edited (startBoundary.ts).
 // params: { reason: 'new', problem?: { reason, name }, creator?: true } — or none, when the shell opened it because
 // the life is still held for its look.
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { cr } from './creatorState.ts'
 import EntryPage from './EntryPage.vue'
 import { entryShown } from './entryModel.ts'
@@ -17,9 +17,8 @@ import { isPathAddress } from './pathAddress.ts'
 import { problemOf } from './quickStartModel.ts'
 import { qs } from './quickStartState.ts'
 import { quickDraft } from './startBoundary.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
-const CreatorApp = lazyComponent(loadCreatorApp)
+const CreatorApp = defineAsyncComponent(loadCreatorApp)
 // The creator is the first screen (a short address, a refusal, an edited character): its preview is asked for at once, as the landing always did.
 const warmPreview = (): void => { void import('./lookPreview.ts').then((module) => module.warmLookPreview()).catch(() => undefined) }
 const props = defineProps<{ params?: unknown }>()

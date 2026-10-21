@@ -2,15 +2,14 @@
 // Mounted once in App.vue, and tiny on purpose: the notices of a ping (an incoming one, the landing of a join link, "they
 // joined you") are fetched only when there is one. Like the toast stack they live inside the open dialog (`host`) when
 // there is one, so a sheet can never cover them.
-
+import { defineAsyncComponent } from 'vue'
 import { pingUi, startPing } from './pingLoader.ts'
-import { lazyQuiet } from '../../state/lazy.ts'
 
 withDefaults(defineProps<{ host?: string }>(), { host: 'body' })
 startPing()
-const PingNotices = lazyQuiet(() => import('./PingNotices.vue'))
+const PingNotices = defineAsyncComponent(() => import('./PingNotices.vue'))
 // A visit's notices (a house link, a knock, an invitation) come with the same trigger.
-const VisitNotices = lazyQuiet(() => import('../visit/VisitNotices.vue'))
+const VisitNotices = defineAsyncComponent(() => import('../visit/VisitNotices.vue'))
 </script>
 
 <template>

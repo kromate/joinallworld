@@ -3,7 +3,7 @@
 // it speaks up. Fetched after the first frame (companionLoader.ts). The 3D model has its own tiny canvas and loop (stage.ts) so the venue
 // scene can stay idle; if WebGL is missing the flat twin is shown instead. It never covers a control for long: it can be dragged, it steps
 // aside for calls and tours, and it can be turned off (Companion: lively / quiet / off, on this device).
-import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, shallowRef, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, reactive, ref, shallowRef, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { callStore } from '../calls/callState.ts'
 import { tour } from '../tour/tourState.ts'
@@ -32,9 +32,8 @@ import { heard, takeLine } from './say.ts'
 import type { Say } from './say.ts'
 import type { CompanionAction, CompanionContext } from './types.ts'
 import { heard as heardLine } from '../../../audio/voice/emit.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
-const CompanionSheet = lazyComponent(() => import('./CompanionSheet.vue'))
+const CompanionSheet = defineAsyncComponent(() => import('./CompanionSheet.vue'))
 
 const app = useApp()
 const { game, shell } = app

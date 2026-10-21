@@ -2,15 +2,14 @@
 // My 3D models (docs/SPACES-3D.md, phase 1): pick a .glb, see it in 3D before it goes anywhere, name it, upload it. The same check
 // the server runs (src/spaces/glb.ts) runs here first, so a file that would be refused is refused at once, with what to change.
 // Lazy: opened from Houses.
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref } from 'vue'
 import '../../../ui/controls.css'
 import { useApp } from '../../state/app.ts'
 import BaseSheet from '../../ui/BaseSheet.vue'
 import { checkGlb, GLB_LIMITS, type GlbInfo } from '../../../spaces/glb.ts'
 import { modelBytes, modelDelete, modelFileUrl, modelRename, modelUpload, modelsMine, type ModelView, type ModelsMine } from './spacesClient.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
-const ModelPreview = lazyComponent(() => import('./ModelPreview.vue'))
+const ModelPreview = defineAsyncComponent(() => import('./ModelPreview.vue'))
 /** `place`: the player wants this model in their house now; the Houses app opens the 3D screen with it in hand. */
 const emit = defineEmits<{ close: []; place: [model: ModelView] }>()
 const { game } = useApp()

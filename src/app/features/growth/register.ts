@@ -7,7 +7,7 @@
 // HudSidebar.vue lists only existing panels today (`!isVuePanel`), so registering them before it
 // renders Vue chips would make them vanish from the HUD: add them to NATIVE_PANELS together with
 // that change.
-
+import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { social } from '../social/useSocial.ts'
@@ -20,7 +20,6 @@ import { sharedGrowth } from './growthShared.ts'
 import { missionsBadge, missionsNotifications } from './missionsModel.ts'
 import { referBadge } from './referModel.ts'
 import { bodyLoader } from '../../state/panelBody.ts'
-import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
 
 /** App-icon colours for the growth apps (their glyphs arrive with the Phone). */
 const TINTS = Object.freeze({ missions: '#256b45', events: '#b23a2e', refer: '#2b5fa8', touch: '#6a3fa0' })
@@ -29,36 +28,36 @@ export const missions = definePanel({
   id: 'missions', title: 'Missions', placement: 'phone', order: 11, group: 'life', tint: TINTS.missions,
   badge: (_state, view) => missionsBadge(view),
   notifications: (_state, view) => missionsNotifications(view),
-  component: lazyComponent(bodyLoader('growth/MissionsApp')),
+  component: defineAsyncComponent(bodyLoader('growth/MissionsApp')),
 })
 
 export const events = definePanel({
   id: 'events', title: 'Events', placement: 'phone', order: 41, group: 'city', tint: TINTS.events,
   badge: (_state, view) => eventsBadge(view),
   notifications: (_state, view) => eventsNotifications(view, view.connected ? upcomingEvents(view.now, 7, view.cityId) : []),
-  component: lazyComponent(bodyLoader('growth/EventsApp')),
+  component: defineAsyncComponent(bodyLoader('growth/EventsApp')),
 })
 
 export const refer = definePanel({
   id: 'refer', title: 'Bring a friend', short: 'Friends', placement: 'phone', order: 39, group: 'people', tint: TINTS.refer,
   badge: () => referBadge(sharedGrowth.value?.state.hello?.referral),
-  component: lazyComponent(bodyLoader('growth/ReferApp')),
+  component: defineAsyncComponent(bodyLoader('growth/ReferApp')),
 })
 
 export const touch = definePanel({
   id: 'touch', title: 'Stay in touch', short: 'In touch', placement: 'phone', order: 94, group: 'life', tint: TINTS.touch, live: false,
-  component: lazyComponent(bodyLoader('growth/TouchApp')),
+  component: defineAsyncComponent(bodyLoader('growth/TouchApp')),
 })
 
 export const shareSheet = definePanel({
   id: 'share-sheet', title: 'Share', icon: 'people', placement: 'modal', live: false,
-  component: lazyComponent(bodyLoader('growth/ShareSheet')),
+  component: defineAsyncComponent(bodyLoader('growth/ShareSheet')),
 })
 
 /** The calm "While you were away" sheet; the away card's last line opens it. */
 export const awaySheet = definePanel({
   id: 'away-sheet', title: 'While you were away', icon: 'bell', placement: 'modal', live: false,
-  component: lazyComponent(() => import('./AwaySheet.vue')),
+  component: defineAsyncComponent(() => import('./AwaySheet.vue')),
 })
 
 export const GROWTH_PANELS: readonly VuePanel[] = [missions, events, refer, touch, shareSheet, awaySheet]
@@ -74,14 +73,14 @@ export const away = definePanel({
     const lines = notificationLines(social.me, { connected: view.connected, now: view.now, notices: view.social?.notices, seen: noticeMarks.seen(view.session?.id ?? null, view.cityId) })
     return awayCardFor(view, growth.state.hello, growth.awayDismissed.value, lines) ? 'alert' : 'hud'
   },
-  component: lazyQuiet(() => import('./AwayChip.vue')),
+  component: defineAsyncComponent(() => import('./AwayChip.vue')),
 })
 
 export const inbox = definePanel({
   id: 'social-inbox', title: 'Inbox', icon: 'messages', placement: 'hud', order: 30,
   /** Someone at the door cannot wait in the tray: a knock is shown as an alert. */
   slot: (_state, view) => inboxSlot(view.connected, social.me),
-  component: lazyQuiet(() => import('./InboxChip.vue')),
+  component: defineAsyncComponent(() => import('./InboxChip.vue')),
 })
 
 export const GROWTH_HUD_PANELS: readonly VuePanel[] = [away, inbox]

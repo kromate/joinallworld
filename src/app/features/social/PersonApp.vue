@@ -2,14 +2,13 @@
 // The person card ('person', opened from a card): an NPC's quote and timed interactions, or a
 // player's Chat, Add friend, interactions, Ask to be my Bae, Send money, Block and Report.
 // Every disabled control says why. All names and text are rendered as text.
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useApp } from '../../state/app.ts'
 import NpcCard from './NpcCard.vue'
 import PlayerCard from './PlayerCard.vue'
 import { personTarget } from './personModel.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 // Their handle, bio, posts and work (src/app/features/feed): fetched when a player's card opens.
-const FeedPersonCard = lazyComponent(() => import('../feed/FeedPersonCard.vue'))
+const FeedPersonCard = defineAsyncComponent(() => import('../feed/FeedPersonCard.vue'))
 
 const props = defineProps<{ params?: unknown }>()
 const { game } = useApp()

@@ -2,7 +2,7 @@
 // Decides when the guest bar (account/GuestBar.vue, fetched only then) is on screen: a guest, accounts configured, in the
 // venue view, with nothing else in front (the tour, a sheet, a running activity or trip, a call) and not dismissed in the
 // last 7 days. The coach tip does not hold it back: they are in separate rows of the bottom stack. It sits in the bottom stack just above the navigation, so it never covers it.
-import { computed, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { barDue, barFacts, dismissBar, hiddenUntil } from '../account/guestBarModel.ts'
 import { signupShown } from '../account/shownOnce.ts'
@@ -10,13 +10,12 @@ import { offerDue, owed, settle } from '../growth/touchOfferModel.ts'
 import { useAccountLite } from '../account/useAccountLite.ts'
 import { callVisible } from '../calls/callState.ts'
 import { tour } from '../tour/tourState.ts'
-import { lazyQuiet } from '../../state/lazy.ts'
 
-const GuestBar = lazyQuiet(() => import('../account/GuestBar.vue'))
-const TouchOffer = lazyQuiet(() => import('../growth/TouchOffer.vue'))
-const MailNotice = lazyQuiet(() => import('../growth/MailNotice.vue'))
+const GuestBar = defineAsyncComponent(() => import('../account/GuestBar.vue'))
+const TouchOffer = defineAsyncComponent(() => import('../growth/TouchOffer.vue'))
+const MailNotice = defineAsyncComponent(() => import('../growth/MailNotice.vue'))
 // Offers notifications after a win at a table or a new friend, never on arrival (growth/notifyAsk.ts).
-const NotifyAsk = lazyQuiet(() => import('../growth/NotifyAsk.vue'))
+const NotifyAsk = defineAsyncComponent(() => import('../growth/NotifyAsk.vue'))
 const app = useApp()
 const { game, shell } = app
 const lite = useAccountLite()

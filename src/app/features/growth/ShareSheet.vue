@@ -7,7 +7,7 @@
 // For an invitation (the invite link, the house, a table) it also offers Copy link, Telegram and a
 // QR code, says what the inviter gets (the referral rules, with their conditions) and how many
 // friends have joined, each by name (a tap opens their card). The QR encoder is only fetched when the code is asked for.
-import { computed, nextTick, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onMounted, ref } from 'vue'
 import { input } from '../../state/inputMode.ts'
 import { REFERRAL } from '../../../game/content/growth.ts'
 import { channelLinks } from '../../../ui/share-links.ts'
@@ -20,10 +20,9 @@ import { friendGetsLine, inviterLimitLine, inviterRewardLine, isInviteSheet, joi
 import type { ShareChannel } from './inviteModel.ts'
 import type { InviteRules } from './inviteLines.ts'
 import { useGrowth } from './useGrowth.ts'
-import { lazyQuiet } from '../../state/lazy.ts'
 
 defineProps<{ params?: unknown }>()
-const ShareQr = lazyQuiet(() => import('./ShareQr.vue'))
+const ShareQr = defineAsyncComponent(() => import('./ShareQr.vue'))
 const growth = useGrowth()
 const { shell } = useApp()
 const sharing = growth.state

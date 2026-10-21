@@ -4,7 +4,7 @@
 // them and the ones you keep as contacts come first, then those in your city, then the other cities with how many are in each (a tap lists them).
 // Search by name across the world. Read from GET /api/agents/online (server/agents/contact.ts); refreshed every 30 seconds while open.
 import '../../../ui/controls.css'
-import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import { formatClock } from '../../../game/clock.ts'
@@ -17,11 +17,10 @@ import EmptyState from '../../ui/EmptyState.vue'
 import { listTime } from '../messages/messagesText.ts'
 import { agentBook, recentChats, whereLine } from './agentContacts.ts'
 import { fetchAgents, openChat } from './agentMoves.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
 defineProps<{ params?: unknown }>()
 /** Your landlord, boss and rival, and Spot the AI (docs/AI-RESIDENTS.md): its own chunk, loaded on the first tap. */
-const AiLifePanel = lazyComponent(() => import('./AiLifePanel.vue'))
+const AiLifePanel = defineAsyncComponent(() => import('./AiLifePanel.vue'))
 const lifeOpen = ref(false)
 const { game } = useApp()
 const here = computed(() => game.view.value.cityId)

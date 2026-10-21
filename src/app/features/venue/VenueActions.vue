@@ -1,15 +1,14 @@
 <script setup lang="ts">
 // Activity cards are fetched when the venue's activity rail is expanded.
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import type { ActivityCard } from '../../../types/view.ts'
 import { social } from '../social/useSocial.ts'
 import { useApp } from '../../state/app.ts'
 import GameIcon from '../../ui/GameIcon.vue'
 import { activityFace, effectTags } from './venueModel.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
 // A place of worship offers a quiet Pray action: the gate (a few lines, fetched here) decides, and the panel with the notice that prayers are read by the people who run Allworld is fetched only at a place of worship.
-const PrayGate = lazyComponent(() => import('../prayers/PrayGate.vue'))
+const PrayGate = defineAsyncComponent(() => import('../prayers/PrayGate.vue'))
 const props = defineProps<{ pending: string | null }>()
 const emit = defineEmits<{ start: [card: ActivityCard, choice?: string] }>()
 const { game, shell } = useApp()

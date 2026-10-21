@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // How to play: the Help app in the phone, and the help sheet (the ? key) outside it.
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { shortcutRows } from '../../../ui/keys-text.ts'
 import BaseButton from '../../ui/BaseButton.vue'
@@ -8,10 +8,9 @@ import GameIcon from '../../ui/GameIcon.vue'
 import { openWorld } from '../tour/tourWorld.ts'
 import { feedCredits } from '../world/feedCredits.ts'
 import { FEEDBACK_URL } from '../feedback/board.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
 /** Game art credits: the component and its data load only when asked for (src/app/features/help/AssetCredits.vue). */
-const AssetCredits = lazyComponent(() => import('./AssetCredits.vue'))
+const AssetCredits = defineAsyncComponent(() => import('./AssetCredits.vue'))
 const showArt = ref(false)
 
 const { game, shell } = useApp()

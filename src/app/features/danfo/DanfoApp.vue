@@ -4,7 +4,7 @@
 // board. Driving itself is full screen (DanfoRun.vue, loaded when a run starts). Game naira only; the server settles every run.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { money } from '../../ui/format.ts'
 import SectionTitle from '../../ui/SectionTitle.vue'
@@ -14,9 +14,8 @@ import { danfoApi } from './danfoApi.ts'
 import type { BoardAnswerRow } from './danfoApi.ts'
 import { voidWords } from './runModel.ts'
 import { track } from '../world/worldModel.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
-const DanfoRun = lazyComponent(() => import('./DanfoRun.vue'))
+const DanfoRun = defineAsyncComponent(() => import('./DanfoRun.vue'))
 const { game } = useApp()
 const api = danfoApi(game.fetchJson)
 const city = computed(() => game.view.value.cityId)

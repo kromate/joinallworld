@@ -2,36 +2,35 @@
 // (src/ui/panels/index.js, onboarding.js, quick-start.js, session.js, account.js), so they are
 // listed before any component code has been fetched. Each component is fetched the first time it
 // is opened.
-
+import { defineAsyncComponent } from 'vue'
 import { definePanel } from '../../state/panels.ts'
 import type { VuePanel } from '../../types/panel.ts'
 import { play } from '../../../quick-start/entry.ts'
 import { quickStartRequired } from './startGate.ts'
 import { loadOnboardingApp } from './loadCreator.ts'
 import { sessionRequired } from './sessionModel.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
 /** The landing screen of a new device; it replaces the nickname form as the session gate. */
 export const quickStart = definePanel({
   id: 'quick-start', title: 'Welcome to Allworld', placement: 'modal', role: 'session-gate', live: false, fullscreen: true,
   /** A life whose look the server has not confirmed is held here — unless its Play is being sent right now. */
   required: (_state, view) => quickStartRequired(view, play.sending),
-  component: lazyComponent(() => import('./QuickStartApp.vue')),
+  component: defineAsyncComponent(() => import('./QuickStartApp.vue')),
 })
 /** Settling in is offered, never required: a new life starts from the landing screen. */
 export const onboarding = definePanel({
   id: 'onboarding', title: 'Make this life yours', placement: 'modal', live: false, fullscreen: true,
-  component: lazyComponent(loadOnboardingApp),
+  component: defineAsyncComponent(loadOnboardingApp),
 })
 export const session = definePanel({
   id: 'session', title: 'Your city life', placement: 'modal', role: 'session-gate', live: false,
   /** A new device stays in nickname entry until the server has accepted its session; an expired saved preview stays dismissible. */
   required: (_state, view) => sessionRequired(view.params, view.connected),
-  component: lazyComponent(() => import('./SessionApp.vue')),
+  component: defineAsyncComponent(() => import('./SessionApp.vue')),
 })
 export const account = definePanel({
   id: 'account', title: 'Account', placement: 'modal',
-  component: lazyComponent(() => import('./AccountApp.vue')),
+  component: defineAsyncComponent(() => import('./AccountApp.vue')),
 })
 
 export const START_PANELS: readonly VuePanel[] = [quickStart, onboarding, session, account]

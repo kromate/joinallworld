@@ -1,15 +1,14 @@
 <script setup lang="ts">
 // One ranked board with room for player names and aligned amounts at phone width.
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import type { RichRow } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import SectionTitle from '../../ui/SectionTitle.vue'
 import CivicAvatar from './CivicAvatar.vue'
-import { lazyQuiet } from '../../state/lazy.ts'
 
 const props = defineProps<{ title: string; rows: readonly RichRow[]; none: string; /** The board's name and the city, when the list goes on below the rows given (the server's page size is the length of `rows`). */ more?: { path: string; size: number } }>()
-const MoreRows = lazyQuiet(() => import('./MoreRows.vue'))
+const MoreRows = defineAsyncComponent(() => import('./MoreRows.vue'))
 const last = computed(() => props.rows.at(-1))
 </script>
 

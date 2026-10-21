@@ -3,13 +3,12 @@
 // wide screen, icon only on a phone. It opens the share sheet with the player's own link made. The
 // invitation prompts that sit under it (InviteNudge.vue, with when to prompt in inviteNudgeModel.ts) are
 // fetched once the game is idle, so only the button is in the first download.
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref } from 'vue'
 import GameIcon from '../../ui/GameIcon.vue'
 import { useApp } from '../../state/app.ts'
 import { inviteBusy, shareInvite } from './shareInvite.ts'
-import { lazyQuiet } from '../../state/lazy.ts'
 
-const InviteNudge = lazyQuiet(() => import('./InviteNudge.vue'))
+const InviteNudge = defineAsyncComponent(() => import('./InviteNudge.vue'))
 defineProps<{ params?: unknown }>()
 const { game } = useApp()
 const shown = computed(() => game.view.value.onboarding?.required !== true)

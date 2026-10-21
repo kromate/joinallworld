@@ -2,7 +2,7 @@
 // My Life is a readable projection of the systems that already own progress. It does not create
 // awards or infer history: every line comes from the current LifeView and every action reuses an
 // existing destination.
-import { computed, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
 import type { AchievementRow } from '../../../types/achievements.ts'
 import type { MissionRow, RelationshipCard } from '../../../types/view.ts'
 import { cityName } from '../../../game/cities/registry.ts'
@@ -24,12 +24,11 @@ import ProjectBoard from './ProjectBoard.vue'
 import RhythmCard from './RhythmCard.vue'
 import SeasonCard from './SeasonCard.vue'
 import { useRetention } from './useRetention.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
-const PublicProfile = lazyComponent(() => import('../social/PublicProfile.vue'))
-const StoryModePanel = lazyComponent(() => import('../story/StoryModePanel.vue'))
+const PublicProfile = defineAsyncComponent(() => import('../social/PublicProfile.vue'))
+const StoryModePanel = defineAsyncComponent(() => import('../story/StoryModePanel.vue'))
 // The share loops (docs/SHARE-LOOPS.md): passport, Wrapped, street fame, the start card and the street video, fetched when the tab is opened.
-const LoopsHub = lazyComponent(() => import('../shareloops/LoopsHub.vue'))
+const LoopsHub = defineAsyncComponent(() => import('../shareloops/LoopsHub.vue'))
 
 const props = defineProps<{ params?: unknown }>()
 const askedTab = (props.params as { tab?: unknown } | null)?.tab

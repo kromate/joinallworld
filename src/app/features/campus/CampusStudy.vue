@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Study: the academic record, applying and matriculating, registering a semester, the timetable
 // with its lectures, assignments and tests, campus jobs and the programme options.
-import { computed, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, ref, watch } from 'vue'
 import { lagosTime } from '../../../game/clock.ts'
 import { money } from '../../ui/format.ts'
 import CampusCard from './CampusCard.vue'
@@ -14,10 +14,9 @@ import {
 } from './campusModel.ts'
 import type { StudentLike } from './campusModel.ts'
 import { choices, useCampus } from './useCampus.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
 const { state, view, blocked, connected, student: viewed, act } = useCampus()
-const CampusAssignment = lazyComponent(() => import('./CampusAssignment.vue'))
+const CampusAssignment = defineAsyncComponent(() => import('./CampusAssignment.vue'))
 const assignmentOpen = ref(false)
 const assignmentContext = computed(() => JSON.stringify([view.value.session?.id, view.value.cityId,
   state.value.unilagStudent.programme, state.value.unilagStudent.term?.semester, state.value.unilagStudent.term?.startDay]))

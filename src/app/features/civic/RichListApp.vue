@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Rich List: top balances and top earners of the week, plus the real city counters. Everything
 // shown comes from the server (GET /api/civic/richlist); nothing is estimated here.
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import type { RichListResponse } from '../../../types/civic.ts'
 import { money } from '../../ui/format.ts'
@@ -13,13 +13,12 @@ import RichBoard from './RichBoard.vue'
 import { count, richKey, richPath } from './civicModel.ts'
 import type { BoardFamily } from './civicModel.ts'
 import { useCivic, useLoaded, useOffline } from './useCivic.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
 const props = defineProps<{ params?: unknown }>()
 // The cities, states and countries board is its own lazily loaded part of this screen.
-const PlacesBoard = lazyComponent(() => import('./PlacesBoard.vue'))
+const PlacesBoard = defineAsyncComponent(() => import('./PlacesBoard.vue'))
 // So is the city's economy (docs/NEIGHBOURHOOD.md): the treasury, median prices and game naira in circulation beside the rich list.
-const EconomyApp = lazyComponent(() => import('../neighbourhood/EconomyApp.vue'))
+const EconomyApp = defineAsyncComponent(() => import('../neighbourhood/EconomyApp.vue'))
 const tabParam = typeof props.params === 'object' && props.params !== null ? Reflect.get(props.params, 'tab') : null
 const tab = ref<'players' | 'places' | 'economy'>(tabParam === 'places' ? 'places' : tabParam === 'economy' ? 'economy' : 'players')
 const family = ref<BoardFamily>('humans')

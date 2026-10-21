@@ -13,7 +13,7 @@
 // Three.js and every scene module are fetched after the HUD is on screen. A device that cannot
 // draw the scene still gets the whole game.
 import '../../ui/scene-loading.css'
-import { onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
+import { defineAsyncComponent, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { useApp } from '../state/app.ts'
 import { cityScenesHere, loadSceneWorld, warmCityScenes } from './loaders.ts'
 import type { ScenesState } from '../types/scene.ts'
@@ -23,10 +23,9 @@ import { noteChunkFailure } from '../state/updateNotice.ts'
 import { social } from '../features/social/useSocial.ts'
 import { lightOn } from '../../lightMode.ts'
 import { placeNow } from '../features/places/placeState.ts'
-import { lazyQuiet } from '../state/lazy.ts'
 
-const SceneViewToggle = lazyQuiet(() => import('./SceneViewToggle.vue'))
-const TapCard = lazyQuiet(() => import('./TapCard.vue'))
+const SceneViewToggle = defineAsyncComponent(() => import('./SceneViewToggle.vue'))
+const TapCard = defineAsyncComponent(() => import('./TapCard.vue'))
 const viewHostRevision = ref(0)
 
 const props = defineProps<{
@@ -42,7 +41,7 @@ const { game, ready, shell, scene, command, showPlayer, showCrowd, showGoal, rep
 const container = ref<HTMLElement | null>(null)
 const failed = ref(false)
 /** When the scene is not drawn (this browser cannot, or the renderer threw), the words and the Copy link button are a lazy chunk (SceneUnsupported.vue). */
-const SceneUnsupported = lazyQuiet(() => import('./SceneUnsupported.vue'))
+const SceneUnsupported = defineAsyncComponent(() => import('./SceneUnsupported.vue'))
 const waiting = ref(true)
 const phase = ref('Preparing your world…')
 /** The city's own scenes are not here: the fetch is waiting to try again, or has stopped until the player asks. */

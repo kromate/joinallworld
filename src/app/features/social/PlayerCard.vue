@@ -6,7 +6,7 @@
 // cannot send it twice.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onMounted, ref, watch } from 'vue'
 import { presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { PersonCard } from '../../../types/social.ts'
@@ -22,12 +22,11 @@ import GateNote from './GateNote.vue'
 import PlayerAvatar from './PlayerAvatar.vue'
 import PersonCallButton from '../calls/PersonCallButton.vue'
 import PingButton from '../ping/PingButton.vue'
-import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
-const VisitButton = lazyQuiet(() => import('../visit/VisitButton.vue'))
-const PersonJustice = lazyComponent(() => import('../politics/PersonJustice.vue'))
-const PublicProfile = lazyComponent(() => import('./PublicProfile.vue'))
+const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
+const PersonJustice = defineAsyncComponent(() => import('../politics/PersonJustice.vue'))
+const PublicProfile = defineAsyncComponent(() => import('./PublicProfile.vue'))
 // A resident or a house agent: chat, call, go to them, keep as a contact (features/agents).
-const AgentActions = lazyComponent(() => import('../agents/AgentActions.vue'))
+const AgentActions = defineAsyncComponent(() => import('../agents/AgentActions.vue'))
 import PingStrip from '../ping/PingStrip.vue'
 import { pingInstead } from '../ping/pingModel.ts'
 import type { SocialResult } from './socialClient.ts'

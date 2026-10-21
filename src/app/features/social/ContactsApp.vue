@@ -3,7 +3,7 @@
 // friends — and Find a player. All names are rendered as text.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { presenceText } from '../../../game/social-lines.ts'
 import { cityName } from '../../../game/cities/registry.ts'
 import type { SearchResult } from '../../../types/social.ts'
@@ -11,8 +11,7 @@ import BaseButton from '../../ui/BaseButton.vue'
 import EmptyState from '../../ui/EmptyState.vue'
 import NpcBadge from '../../ui/NpcBadge.vue'
 import CallButton from './CallButton.vue'
-import { lazyQuiet } from '../../state/lazy.ts'
-const VisitButton = lazyQuiet(() => import('../visit/VisitButton.vue'))
+const VisitButton = defineAsyncComponent(() => import('../visit/VisitButton.vue'))
 import FounderTag from './FounderTag.vue'
 import AiTag from './AiTag.vue'
 import GateNote from './GateNote.vue'
@@ -25,7 +24,7 @@ import { useSocialScreen } from './useSocialScreen.ts'
 defineProps<{ params?: unknown }>()
 const { game, shell, client, state, view, gate, action, runAction, retryLoad, cannot } = useSocialScreen()
 const { data: familyData, error: familyError, loading: familyLoading, load: loadFamily } = useFamily(client)
-const PersonCallButton = lazyQuiet(() => import('../calls/PersonCallButton.vue'))
+const PersonCallButton = defineAsyncComponent(() => import('../calls/PersonCallButton.vue'))
 const linkedMummy = computed(() => familyData.value?.slots.find(link => link.slot === 'mummy' && link.state === 'accepted'))
 const social = computed(() => view.value.social)
 // Never offer the NPC call until the server confirms whether that family role belongs to a real player.

@@ -3,13 +3,12 @@
 // Allworld House (AI housemates, adults vote, Sunday eviction on a stage) and artist premieres. Each part loads when its tab opens.
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
-import { ref } from 'vue'
-import { lazyComponent } from '../../state/lazy.ts'
+import { defineAsyncComponent, ref } from 'vue'
 
 const props = defineProps<{ params?: { tab?: string } | null }>()
-const MatchNights = lazyComponent(() => import('./MatchNights.vue'))
-const HouseShow = lazyComponent(() => import('./HouseShow.vue'))
-const Premieres = lazyComponent(() => import('./Premieres.vue'))
+const MatchNights = defineAsyncComponent(() => import('./MatchNights.vue'))
+const HouseShow = defineAsyncComponent(() => import('./HouseShow.vue'))
+const Premieres = defineAsyncComponent(() => import('./Premieres.vue'))
 type Tab = 'matches' | 'house' | 'premieres'
 const TABS: readonly { id: Tab; label: string }[] = [{ id: 'matches', label: 'Match nights' }, { id: 'house', label: 'Allworld House' }, { id: 'premieres', label: 'Premieres' }]
 const tab = ref<Tab>(TABS.find((item) => item.id === props.params?.tab)?.id ?? 'matches')

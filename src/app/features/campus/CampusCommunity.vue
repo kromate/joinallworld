@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Community: the events that are on, the faculty quiz, clubs, discoveries, the penalty shoot-out
 // and the shared board.
-import { computed, ref } from 'vue'
+import { computed, defineAsyncComponent, ref } from 'vue'
 import CampusBoard from './CampusBoard.vue'
 import CampusCard from './CampusCard.vue'
 import CampusControl from './CampusControl.vue'
@@ -10,11 +10,10 @@ import ProjectBoard from '../passport/ProjectBoard.vue'
 import { CAMPUS_CLUBS, CAMPUS_DISCOVERIES } from './campusContent.ts'
 import { at, clubReason, discoveryReason, onCampus, penaltyReason, quizReason, title } from './campusModel.ts'
 import { useCampus } from './useCampus.ts'
-import { lazyQuiet } from '../../state/lazy.ts'
 
 const { state, connected, blocked, community, act } = useCampus()
 // The campus gist board (docs/SOCIAL-GLUE.md): current students read it, adults post, no names; fetched when opened.
-const GluePart = lazyQuiet(() => import('../glue/GluePart.vue'))
+const GluePart = defineAsyncComponent(() => import('../glue/GluePart.vue'))
 const gist = ref(false)
 const eligible = computed(() => community.value?.eligible === true)
 const events = computed(() => community.value?.events ?? [])

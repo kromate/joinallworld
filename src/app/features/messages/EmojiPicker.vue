@@ -1,9 +1,8 @@
 <script setup lang="ts">
 // A small emoji picker: categories, the ones this device used last, and a search by keyword. Text only (src/app/features/messages/emojiData.ts).
-import { computed, ref } from 'vue'
-import { lazyComponent } from '../../state/lazy.ts'
+import { computed, defineAsyncComponent, ref } from 'vue'
 // The sticker tab (Pidgin, owambe, table games) is fetched when it is first opened.
-const StickerPack = lazyComponent(() => import('./StickerPack.vue'))
+const StickerPack = defineAsyncComponent(() => import('./StickerPack.vue'))
 import { EMOJI_CATEGORIES } from './emojiData.ts'
 
 const emit = defineEmits<{ pick: [char: string]; sticker: [text: string] }>()

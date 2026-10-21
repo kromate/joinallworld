@@ -48,5 +48,5 @@ test('the shell keeps the screen a device has open when the place changed elsewh
   assert.match(source, /onSocketOpen\(\(again\) => \{ if \(again\) void game\.wake\(\) \}\)/)
   assert.match(source, /onSocketClose\(\(code\) => \{ if \(code === SESSION_CHANGED\) void sessionMoved\(\) \}\)/)
   const page = await readFile(new URL('../App.vue', import.meta.url), 'utf8')
-  assert.match(page, /else \{ wakeSocket\(\); retryNow\(\) \}/)
+  assert.match(page, /else \{ wakeSocket\(\); void game\.wake\(\) \}/)
 })

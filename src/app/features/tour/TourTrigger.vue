@@ -2,14 +2,13 @@
 // The only part of the tour in the first download. The deciding part (TourDecider.vue) is fetched when a walkthrough may be due for this
 // player (not seen, hints on, nothing played yet) or when one is asked for: Phone → Help and Settings ('jaw:tour'), or the ? key
 // ('jaw:shortcuts'). A request that arrives while it is being fetched is kept and sent again once it is listening.
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { defineAsyncComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { coachHints } from '../hud/coachModel.ts'
 import { tourDue, tourSeen } from './tourSeen.ts'
 import { tour } from './tourState.ts'
-import { lazyQuiet } from '../../state/lazy.ts'
 
-const TourDecider = lazyQuiet(() => import('./TourDecider.vue'))
+const TourDecider = defineAsyncComponent(() => import('./TourDecider.vue'))
 const { game } = useApp()
 const loaded = ref(false)
 const asked: Event[] = []

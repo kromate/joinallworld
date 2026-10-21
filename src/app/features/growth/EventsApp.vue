@@ -2,7 +2,7 @@
 // Events: the Phone app. What is on now and this week, where, a Go button, "add to my calendar"
 // (a file the phone's own calendar opens — nothing is sent anywhere) and spraying at a party.
 // The list is computed from the server's clock (src/game/calendar.ts), with no request.
-import { computed, onMounted, ref, shallowRef } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref, shallowRef } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { isDeparting } from '../../../life.ts'
 import EmptyState from '../../ui/EmptyState.vue'
@@ -22,9 +22,8 @@ import type { Feed } from '../../../festivals/client.ts'
 // Detty December (docs/DETTY-DECEMBER.md): the season's nights, drop, Returnee badge and card in Lagos, Accra and Abuja, 1 to 31 December.
 // Everything of it is fetched when the app opens (a dynamic import), so the app's own download does not grow.
 import type { DettyFeed } from '../../../festivals/detty-client.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 type DettyLib = typeof import('../detty/dettyEvents.ts')
-const DettyPanel = lazyComponent(() => import('../detty/DettyPanel.vue'))
+const DettyPanel = defineAsyncComponent(() => import('../detty/DettyPanel.vue'))
 
 defineProps<{ params?: unknown }>()
 const { game, shell, goTo } = useApp()

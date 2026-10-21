@@ -16,7 +16,7 @@
 import '../../../ui/panels/fullscreen.css'
 import '../../../ui/panels/quick-start.css'
 import '../../../ui/panels/creator.css'
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { APPEARANCE, TRAITS_REQUIRED } from '../../../game/content/traits.ts'
 import type { PreviewFocus } from '../../../scene/avatar-preview.ts'
 import type { DreamId, Look, TraitId } from '../../../types/life.ts'
@@ -51,11 +51,10 @@ import { currentDraft, draft as quickDraftRef, qs } from './quickStartState.ts'
 import { invitedWords, inviterName } from '../growth/inviterLookup.ts'
 import { firstLanding, joinTarget, keepDraft, nameProblem, pendingRef, presetLook, shuffleLook, suggestName, track, withBody } from './startBoundary.ts'
 import type { QuickDraft } from './startBoundary.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
 const props = defineProps<{ mode: CreatorMode; params?: unknown }>()
 // "What did you get" (docs/SHARE-LOOPS.md): the start card of a settled life, fetched only when asked for.
-const StartCard = lazyComponent(() => import('../shareloops/StartCard.vue'))
+const StartCard = defineAsyncComponent(() => import('../shareloops/StartCard.vue'))
 const showStart = ref(false)
 const { game, shell, command } = useApp()
 const state = game.state

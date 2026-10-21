@@ -1,8 +1,7 @@
 import type { AsyncComponentLoader, Component } from 'vue'
-
+import { defineAsyncComponent } from 'vue'
 import { definePanel } from './panels.ts'
 import type { PanelMeta, PanelPlacement, VuePanel } from '../types/panel.ts'
-import { lazyComponent, lazyQuiet } from './lazy.ts'
 
 type PanelOptions = Omit<PanelMeta, 'id' | 'title' | 'placement'>
 
@@ -14,7 +13,7 @@ export function lazyPanel(
   load: AsyncComponentLoader<Component>,
   options: PanelOptions = {},
 ): VuePanel {
-  return definePanel({ ...options, id, title, placement, component: (placement === 'hud' ? lazyQuiet : lazyComponent)(load) })
+  return definePanel({ ...options, id, title, placement, component: defineAsyncComponent(load) })
 }
 
 /** The common case for a phone app. */

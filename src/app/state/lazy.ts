@@ -17,32 +17,24 @@ export const LAZY_FAILED_TEXT = 'Couldn’t load this. Check your connection.'
 /** The loading logic without any rendering: one shared load per screen, whatever number of places show it. */
 export function createLazyScreen<T>(load: () => Promise<T>) {
   const view = reactive({ failed: false })
-  let timer: ReturnType<typeof setTimeout> | undefined, settle: (value: T) => void, started = false
+  let settle!: (value: T) => void, timer: ReturnType<typeof setTimeout> | undefined, started = 0
   const done = new Promise<T>((resolve) => { settle = resolve })
   const give = (): void => { view.failed = true; void noteChunkFailure() }
-  const attempt = (tries: number): void => {
-    load().then((loaded) => { clearTimeout(timer); view.failed = false; settle(loaded) },
-      () => { if (tries < 2) setTimeout(attempt, tries ? 3000 : 1000, tries + 1); else give() }) // retries after 1 s, then 3 s
-  }
-  const start = (): void => { started = true; clearTimeout(timer); timer = setTimeout(give, LAZY_TIMEOUT_MS); view.failed = false; attempt(0) }
-  return { view, retry: start, loader(): Promise<T> { if (!started) start(); return done } }
+  // One attempt, then retries after 1 s and 3 s.
+  const go = (tries: number): unknown => load().then((loaded) => { clearTimeout(timer); view.failed = false; settle(loaded) }, () => tries < 2 ? setTimeout(go, tries ? 3000 : 1000, tries + 1) : give())
+  const retry = (): void => { clearTimeout(timer); timer = setTimeout(give, LAZY_TIMEOUT_MS); view.failed = false; go(0) }
+  return { view, retry, loader: (): Promise<T> => (started++ || retry(), done) }
 }
 
-const box = 'padding:16px;text-align:center'
-
 /** Same as defineAsyncComponent(), with the loading line, the retries and the failure message described above. */
-export const lazyComponent = <T extends Component>(load: AsyncComponentLoader<T>): T => make(load, false)
-/** For a small inline piece (chip, banner, button): nothing is shown while it loads or if it fails, but it still retries. */
-export const lazyQuiet = <T extends Component>(load: AsyncComponentLoader<T>): T => make(load, true)
-
-function make<T extends Component>(load: AsyncComponentLoader<T>, quiet: boolean): T {
+export function lazyComponent<T extends Component>(load: AsyncComponentLoader<T>): T {
   const { view, loader, retry } = createLazyScreen<T>(load as () => Promise<T>)
   return defineAsyncComponent({
     loader: loader as AsyncComponentLoader<T>,
     suspensible: false, // inside a Suspense a failure would hang its fallback; this screen speaks for itself
     delay: LAZY_SHOW_AFTER_MS,
-    ...(quiet ? {} : { loadingComponent: () => view.failed
-      ? h('div', { role: 'alert', style: box }, [h('p', LAZY_FAILED_TEXT), h('button', { type: 'button', class: 'ui-button is-primary', onClick: retry }, 'Try again')])
-      : h('p', { role: 'status', style: box }, LAZY_LOADING_TEXT) }),
+    loadingComponent: () => h('p', { role: view.failed ? 'alert' : 'status', style: 'padding:16px;text-align:center' }, view.failed
+      ? [`${LAZY_FAILED_TEXT} `, h('button', { type: 'button', class: 'ui-button is-primary', onClick: () => retry() }, 'Try again')]
+      : LAZY_LOADING_TEXT),
   })
 }

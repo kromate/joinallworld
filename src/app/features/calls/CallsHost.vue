@@ -2,17 +2,16 @@
 // Mounted once in App.vue. It is tiny on purpose: the call screens (and the controller behind them) are
 // fetched only when a call is placed or arrives. Like the toast stack, the screens live inside the open
 // dialog (`host`) when there is one, so a modal sheet can never cover an incoming call.
-
+import { defineAsyncComponent } from 'vue'
 import { callStore, callVisible } from './callState.ts'
 import { startCalls } from './callsLoader.ts'
 import { agentCallStore } from './agentCallState.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
 withDefaults(defineProps<{ host?: string }>(), { host: 'body' })
 startCalls()
-const CallsUi = lazyComponent(() => import('./CallsUi.vue'))
+const CallsUi = defineAsyncComponent(() => import('./CallsUi.vue'))
 // A call with an AI character (Phase 15): its screen, recognition and voice code load only when one is started.
-const AgentCallScreen = lazyComponent(() => import('./AgentCallScreen.vue'))
+const AgentCallScreen = defineAsyncComponent(() => import('./AgentCallScreen.vue'))
 </script>
 
 <template>

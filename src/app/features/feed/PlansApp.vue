@@ -4,18 +4,17 @@
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import './feed.css'
-import { onMounted, ref } from 'vue'
+import { defineAsyncComponent, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { feedApi } from './feedApi.ts'
 import { shareLink, whatsappUrl } from './feedShare.ts'
 import { FEED } from '../../../feed/model.ts'
 import type { EventView } from '../../../types/feed.ts'
-import { lazyComponent, lazyQuiet } from '../../state/lazy.ts'
 
 // The area's noticeboard and its monthly meetup (docs/NEIGHBOURHOOD.md) are the Neighbours side of this app, fetched only when it is opened.
-const NoticeboardApp = lazyComponent(() => import('../neighbourhood/NoticeboardApp.vue'))
+const NoticeboardApp = defineAsyncComponent(() => import('../neighbourhood/NoticeboardApp.vue'))
 // Hosted talks on a stage (docs/SOCIAL-GLUE.md "Stage rooms"): the Talks side, fetched only when it is opened.
-const GluePart = lazyQuiet(() => import('../glue/GluePart.vue'))
+const GluePart = defineAsyncComponent(() => import('../glue/GluePart.vue'))
 const props = defineProps<{ params?: { event?: string; code?: string; tab?: string } | null }>()
 const side = ref<'plans' | 'hood' | 'talks'>(props.params?.tab === 'neighbours' ? 'hood' : props.params?.tab === 'talks' ? 'talks' : 'plans')
 const { game, shell } = useApp()

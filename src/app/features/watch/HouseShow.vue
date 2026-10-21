@@ -1,14 +1,13 @@
 <script setup lang="ts">
 // Allworld House (docs/ALLWORLD-HOUSE.md): the season's AI housemates (always marked AI) with today's diary-room line, an adult's one save
 // vote a week, the weeks with their reveals and share cards, and on Sunday night the eviction stage (stage mode, world-events/StagePanel).
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { loadHouse, voteHousemate, watch } from './watchStore.ts'
 import { shareGist } from '../growth/shareMoment.ts'
 import { HOUSE } from '../../../watch/house.ts'
-import { lazyComponent } from '../../state/lazy.ts'
 
-const StagePanel = lazyComponent(() => import('../world-events/StagePanel.vue'))
+const StagePanel = defineAsyncComponent(() => import('../world-events/StagePanel.vue'))
 const { game, shell } = useApp()
 let timer: ReturnType<typeof setInterval> | undefined
 onMounted(() => { void loadHouse(true); timer = setInterval(() => { void loadHouse() }, 30000) })

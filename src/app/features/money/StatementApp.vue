@@ -7,15 +7,14 @@
 // the server" fetches GET /api/support/statement, the same statement computed from the server's own
 // copy, and says whether the two agree (a toast, and a line that stays under the button). Nothing
 // here changes anything.
-import { computed, onUnmounted, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, onUnmounted, ref, watch } from 'vue'
 import type { WalletStatement } from '../../../types/view.ts'
 import type { WalletHistoryResponse } from '../../../types/support.ts'
 import { formatClock } from '../../../game/clock.ts'
 import { useApp } from '../../state/app.ts'
 import { linkWords } from '../../../ui/link.ts'
-import { lazyQuiet } from '../../state/lazy.ts'
 // Loaded when the wallet opens, not with it: it only matters while money is short.
-const ReliefLink = lazyQuiet(() => import('../relief/ReliefLink.vue'))
+const ReliefLink = defineAsyncComponent(() => import('../relief/ReliefLink.vue'))
 import { money, signedMoney } from '../../ui/format.ts'
 import EmptyState from '../../ui/EmptyState.vue'
 import HowItWorks from '../../ui/HowItWorks.vue'

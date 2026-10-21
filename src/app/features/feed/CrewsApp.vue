@@ -7,7 +7,7 @@
 import '../../../ui/controls.css'
 import '../../../ui/panels/social.css'
 import './feed.css'
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import PlayerAvatar from '../social/PlayerAvatar.vue'
 import PostCard from './PostCard.vue'
@@ -20,9 +20,8 @@ import type { CommunityKind, LocalScope } from '../../../feed/model.ts'
 import { cityCatalogue, loadCityRules } from '../../../game/cities/registry.ts'
 import { enterByLink, enterRoom } from '../places/placesStore.ts'
 import type { CrewView, PostView } from '../../../types/feed.ts'
-import { lazyQuiet } from '../../state/lazy.ts'
 // The gist board and group trips of a community (docs/SOCIAL-GLUE.md), fetched when a community is opened.
-const GluePart = lazyQuiet(() => import('../glue/GluePart.vue'))
+const GluePart = defineAsyncComponent(() => import('../glue/GluePart.vue'))
 
 const props = defineProps<{ params?: { code?: string; crew?: string } | null }>()
 const { game, shell } = useApp()
